@@ -491,24 +491,23 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="101"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="98"/>
         <source>To</source>
         <translation>A</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="259"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="373"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="175"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="256"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="370"/>
         <source>Both</source>
         <translation>Entrambi</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="78"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="75"/>
         <source>From</source>
         <translation>Da</translation>
     </message>
@@ -524,17 +523,17 @@
         <translation type="unfinished">Gestione Numerazione automatica</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="343"/>
         <source>Folio</source>
         <translation>Pagina</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="32"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="29"/>
         <source>Range</source>
         <translation>Applicazione</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="45"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="42"/>
         <source>Apply to Selected Locations</source>
         <translation>Alle posizioni selezionate</translation>
     </message>
@@ -554,19 +553,19 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 Nota: queste opzioni non consentono attivare o disattivare la numerazione automatica, ma solo la loro politica di aggiornamento.</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="168"/>
         <source>Conductor</source>
         <translation>Conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="185"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="272"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="350"/>
         <source>Only New</source>
         <translation>Solo nuovi</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="52"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="49"/>
         <source>Apply to Selected Folios</source>
         <translation>Alle pagine selezionate</translation>
     </message>
@@ -576,18 +575,18 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>In sviluppo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="153"/>
         <source>Update Policy</source>
         <translation>Gestione dell&apos;aggiornamento</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="59"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="56"/>
         <source>Apply to Entire Project</source>
         <translation>All&apos;intero progetto</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="195"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="288"/>
         <source>Only Existent</source>
         <translation>Solo esistenti</translation>
     </message>
@@ -597,24 +596,24 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Installazione</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="208"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="307"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="383"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="205"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="304"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="380"/>
         <source>Disable</source>
         <translation>Disabilita</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="243"/>
         <source>Element</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Stato del progetto:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Existent</source>
         <translation>Esistenti</translation>
     </message>
@@ -632,9 +631,8 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Files csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialogo</translation>
+        <translation type="vanished">Dialogo</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="76"/>
@@ -672,17 +670,17 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Posizione della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="23"/>
         <source>inclure les en-têtes</source>
         <translation>includere le intestazioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="33"/>
         <source>Formater en tant que liste de materiel</source>
         <translation>Formatta come un elenco di parti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Layout di pagina</translation>
     </message>
@@ -690,42 +688,41 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>BorderPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
         <source>x</source>
         <translation>x</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
         <source>Dimensions du folio</source>
         <translation>Dimensione dello schema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="23"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="39"/>
         <source>px</source>
         <comment>pixel</comment>
         <extracomment>pixel</extracomment>
         <translation type="unfinished">px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="69"/>
         <source>Colonnes :</source>
         <translation>Colonne :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="79"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="59"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="76"/>
         <source>Afficher les en-têtes</source>
         <translation>Visualizzare le intestatzioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Linee :</translation>
     </message>
@@ -792,228 +789,227 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="518"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="515"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="427"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="21"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="271"/>
         <source>bus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="385"/>
         <source>Phase</source>
         <translation>Fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="371"/>
         <source>Terre</source>
         <translation>Terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="75"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="72"/>
         <source>Texte</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="261"/>
         <source>cable</source>
         <translation>Cavo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="391"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
         <source>phase</source>
         <translation>fase</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
         <source>terre</source>
         <translation>terra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="89"/>
         <source>Autonumérotation</source>
         <translation>Numerazione automatica</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="421"/>
         <source>Protective Earth Neutral</source>
         <translation>Neutro con funzione di terra (sistema TN-C)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="82"/>
         <source>Tension / Protocole :</source>
         <translation>Tensione / Protocollo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="181"/>
         <source>Position et rotation du texte de conducteur :</source>
         <translation>Posizione e rotazione del testo del conduttore:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Mostra un solo testo per ogni potenziale nella pagina.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="408"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="337"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="405"/>
         <source>Nombre de phase</source>
         <translation>Numero di fasi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="357"/>
         <source>Neutre</source>
         <translation>Neutro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="457"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="454"/>
         <source>Apparence</source>
         <translation>Aspetto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>abilitare l&apos;opzione di un solo testo per potenziale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="102"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="99"/>
         <source>Taille du texte</source>
         <translation>Dimensione del testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
         <source>neutre</source>
         <translation>neutro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="200"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Horizontal en bas</source>
         <translation>Orizzontale in basso</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
         <source>Texte visible</source>
         <translation>Testo visibile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="34"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="46"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="31"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="43"/>
         <source>&amp;Multifilaire</source>
         <translation>&amp;Multifilare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="466"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="463"/>
         <source>Taille :</source>
         <translation>Dimensione:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="227"/>
         <source>éditer les numérotations</source>
         <translation>Modifica la numerazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="220"/>
         <source>Taille du texte :</source>
         <translation>Dimensione del testo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="511"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="508"/>
         <source>Taille de trait :</source>
         <translation>Dimensione del tratto:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="173"/>
         <source>Vertical à droite</source>
         <translation>Verticale a destra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="486"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="557"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="483"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="554"/>
         <source>Style du conducteur</source>
         <translation>Stile del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <source>Vertical à gauche</source>
         <translation>Verticale a sinistra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="128"/>
         <source>Section du conducteur</source>
         <translation>Sezione del conuttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
         <source>Horizontal en haut</source>
         <translation>Orizzontale in alto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="158"/>
         <source>Fonction :</source>
         <translation>Funzione :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="489"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="486"/>
         <source>Style :</source>
         <translation>Stile:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Texte :</source>
         <translation>Testo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="55"/>
         <source>Couleur du texte:</source>
         <translation>Colore del testo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="496"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="493"/>
         <source>Couleur secondaire :</source>
         <translation>Colore secondario :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="528"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="567"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="525"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="564"/>
         <source>Couleur :</source>
         <translation>Colore :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="254"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Formula del testo :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="65"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="564"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="62"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="561"/>
         <source>Couleur du conducteur</source>
         <translation>Colore del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="313"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="310"/>
         <source>Unifilaire</source>
         <translation>Unifilare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
         <source>TextLabel</source>
         <translation>Etichetta</translation>
     </message>
@@ -1039,14 +1035,13 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
+        <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>Configurazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>GroupBox</source>
-        <translation>GroupBox</translation>
+        <translation type="vanished">GroupBox</translation>
     </message>
 </context>
 <context>
@@ -1068,23 +1063,22 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="47"/>
         <source>Nom</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
         <translation>I nomi possono contenere solo lettere minuscole, numeri e punteggiatura.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="52"/>
         <source>Valeur</source>
         <translation>Valore</translation>
     </message>
@@ -1092,27 +1086,22 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="20"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="28"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="25"/>
         <source>x 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="33"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="30"/>
         <source>x 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="38"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="35"/>
         <source>x 3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1231,18 +1220,17 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>DynamicElementTextItemEditor</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="39"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="66"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="182"/>
@@ -1270,7 +1258,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Inserire il nome del nuovo gruppo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="74"/>
         <source>Ajouter un groupe de textes</source>
         <translation>Aggiungere un gruppo di testi</translation>
     </message>
@@ -1280,22 +1268,22 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Testi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="88"/>
         <source>Supprimer la sélection</source>
         <translation>Eliminare la selezione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
         <translation>Esporta la configurazione corrente dei testi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="60"/>
         <source>Ajouter un texte</source>
         <translation>Aggiungere un testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="33"/>
         <source>Importer une configuration de texte</source>
         <translation>Importa una configurazione dei testi</translation>
     </message>
@@ -1514,19 +1502,18 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="199"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="196"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="115"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="255"/>
@@ -1540,7 +1527,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Modifica le informazioni di un testo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="59"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="56"/>
         <source>Information de l&apos;élément</source>
         <translation>Informazione dell&apos;elemento</translation>
     </message>
@@ -1565,7 +1552,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="43"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="40"/>
         <source>Largeur</source>
         <translation>Larghezza</translation>
     </message>
@@ -1581,7 +1568,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Ruotare un campo di testo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="209"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="206"/>
         <source>Police</source>
         <translation>Carattere</translation>
     </message>
@@ -1591,22 +1578,22 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Modificare il testo di un campo di testo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="135"/>
         <source>Rotation</source>
         <translation>Rotazione</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="69"/>
         <source>Conserver la rotation visuel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="54"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="51"/>
         <source>Texte utilisateur</source>
         <translation>Testo utente</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="159"/>
         <source>Encadrer le texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1621,23 +1608,23 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Modificare l&apos;allineamento di un campo di testo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="17"/>
         <source>Couleur</source>
         <translation>Colore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="64"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="148"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="61"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="145"/>
         <source>Texte composé</source>
         <translation>Testo composto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="125"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Sorgente del testo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="155"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="152"/>
         <source>Alignement</source>
         <translation>Allineamento</translation>
     </message>
@@ -1787,17 +1774,16 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="58"/>
         <source>Supprimer ce texte</source>
         <translation>Cancella questo testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="54"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Testo</translation>
     </message>
@@ -1805,9 +1791,8 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ElementInfoWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
@@ -2102,42 +2087,41 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ElementQueryWidget</name>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="265"/>
         <source>Tous</source>
         <translation>Tutti</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="214"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="211"/>
         <source>Filtre :</source>
         <translation>Filtrato :</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="173"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="170"/>
         <source>Pas de filtre</source>
         <translation>Senza filtro</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="178"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="175"/>
         <source>N&apos;est pas vide</source>
         <translation>Non è vuoto</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="102"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="99"/>
         <source>Ajouter la sélection</source>
         <translation>Aggiungi alla selezione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="188"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="185"/>
         <source>Contient</source>
         <translation>Contiene</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="285"/>
         <source>Borniers</source>
         <translation>Blocchi terminali</translation>
     </message>
@@ -2147,17 +2131,17 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Posizione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="82"/>
         <source>Monter la sélection</source>
         <translation>Spostare in alto la selezione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="331"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="328"/>
         <source>Configuration</source>
         <translation>Configurazione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
         <translation>Informazioni disponibili</translation>
     </message>
@@ -2167,17 +2151,17 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Titolo della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="113"/>
         <source>Supprimer la sélection</source>
         <translation>Rimuovere la selezione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="399"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="396"/>
         <source>Requête SQL personnalisée</source>
         <translation>Richiesta SQL personalizzata</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="340"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="337"/>
         <source>Ouvrir la configuration sélectionné</source>
         <translation>Aprire la configurazione selezionata</translation>
     </message>
@@ -2187,57 +2171,57 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Numero della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="245"/>
         <source>Simples</source>
         <translation>Semolice</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="275"/>
         <source>Boutons et commutateurs</source>
         <translation>Pulsante e interruttore</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="183"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="180"/>
         <source>Est vide</source>
         <translation>E&apos; vuoto</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="198"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="195"/>
         <source>Est égal à</source>
         <translation>E&apos; uguale a</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="203"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="200"/>
         <source>N&apos;est pas égale à</source>
         <translation>Non è uguale a</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="295"/>
         <source>Vignettes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="409"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="406"/>
         <source>Requête SQL :</source>
         <translation>Richiede SQL :</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="236"/>
         <source>Type d&apos;éléments</source>
         <translation>Tipo di elementi</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="42"/>
         <source>Informations à exporter</source>
         <translation>Informazioni da esportare</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="127"/>
         <source>Descendre la sélection</source>
         <translation>Scorri la selezione verso il basso</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="255"/>
         <source>Organes de protection</source>
         <translation>Organismi di protezione</translation>
     </message>
@@ -2247,17 +2231,17 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Posizione della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="308"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="305"/>
         <source>Contacteurs et relais</source>
         <translation>Contattori e relè</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="193"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="190"/>
         <source>Ne contient pas</source>
         <translation>Non contiene</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="367"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="364"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Salva la cnfigurazione attuale</translation>
     </message>
@@ -2687,37 +2671,32 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
 <context>
     <name>EllipseEditor</name>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation type="unfinished">Centro :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="27"/>
         <source>Y</source>
         <translation type="unfinished">Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="57"/>
         <source>X</source>
         <translation type="unfinished">X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="67"/>
         <source>Vertical :</source>
         <translation type="unfinished">Verticale :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="87"/>
         <source>Horizontal :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="107"/>
         <source>Diamètres :</source>
         <translation type="unfinished">Diametro :</translation>
     </message>
@@ -2915,47 +2894,46 @@ Tutti gli elementi e le sotto-cartelle presenti in essa saranno cancellate.</tra
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="187"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="184"/>
         <source>De</source>
         <translation>Da</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="171"/>
         <source>À</source>
         <translation>A</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="75"/>
         <source>C&amp;réer de nouveaux folios</source>
         <translation>C&amp;rea nuove pagine</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation>Opzioni per le numerazione automatica</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="129"/>
         <source>Nouveaux folios</source>
         <translation>Nuove pagine</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="63"/>
         <source>Sélection:</source>
         <translation>Selezione:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="37"/>
         <source>Numérotation automatique de Folio :</source>
         <translation>Numerazione automatica della pagina:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="88"/>
         <source>Numérotation automatique des folios sélectionnés</source>
         <translation>Numerazione automatica delle pagine selezionate</translation>
     </message>
@@ -3014,17 +2992,16 @@ Il campo &quot;Incremento&quot; non viene utilizzato.</translation>
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="69"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
         <translation>Inserire qui la formula: es. %prefix%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="101"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
         <source>You can use the following variables to your formula:
  -%prefix: Default Element Prefix
  -%l: Element Line
@@ -3046,12 +3023,12 @@ that you create. Text and number inputs are
 che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
         <translation>Denominazione automatica :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="50"/>
         <source>Formule</source>
         <translation>Formula</translation>
     </message>
@@ -3059,78 +3036,73 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
 <context>
     <name>FreeTerminalEditor</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="17"/>
         <source>Déplacer dans :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="60"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="57"/>
         <source>Type :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="67"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="64"/>
         <source>Fonction :</source>
         <translation type="unfinished">Funzione :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="74"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="71"/>
         <source>LED :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="81"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="78"/>
         <source>Appliquer le déplacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="103"/>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="132"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="100"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="129"/>
         <source>Générique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="108"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="105"/>
         <source>Fusible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="113"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="110"/>
         <source>Sectionnable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="118"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="115"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="123"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="120"/>
         <source>Terre</source>
         <translation type="unfinished">Terra</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="134"/>
         <source>Phase</source>
         <translation type="unfinished">Fasi</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="139"/>
         <source>Neutre</source>
         <translation type="unfinished">Neutro</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="151"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="148"/>
         <source>Sans</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="156"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="153"/>
         <source>Avec</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3171,15 +3143,14 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="427"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="302"/>
@@ -3243,17 +3214,17 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Russo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
         <source>Textes indépendants</source>
         <translation>Testi indipendenti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>Répertoire de la collection commune</source>
         <translation>Elenco della collezione comune</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>È possibile definire la visulizzazione predefinita dei differenti testi di QElectroTech</translation>
     </message>
@@ -3273,58 +3244,58 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Brasiliano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Ricaricare la raccolta di elementi per applicare le modifiche)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
         <source>Langues</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="407"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Textes d&apos;éléments</source>
         <translation>Testi degli elementi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>La Griglia deve essere attiva per vedere le modifiche.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="672"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="669"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>Spostamento alla tastiera: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="722"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Editor schemi (tasto: sinistra/destra) X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="48"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Permetti la riduzione dello zoom al di fuori della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="98"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="749"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>Spostamento alla tastiera con il tasto ALT: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="579"/>
         <source>Grille : 1 - 30</source>
         <translation>Griglia: 1 - 30</translation>
     </message>
@@ -3344,24 +3315,24 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Sloveno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="784"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>Editor schemi (tasto:  alto/basso) Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="313"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Ogni elemento include informazioni sui suoi autori, licenze o qualsiasi altra informazione che si ritienga utile in un campo libero.
 Qui è possibile specificare il valore predefinito di questo campo per gli oggetti che verranno creati:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="144"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Salvataggio automatico dei progetti (applicato al prossimo avvio di QElectrotech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="27"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Usare i colori di sistema</translation>
     </message>
@@ -3381,14 +3352,14 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Norvégien</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="384"/>
         <source>Textes</source>
         <translation>Testi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="532"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="417"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="529"/>
         <source>Police :</source>
         <translation>Carattere :</translation>
     </message>
@@ -3403,14 +3374,14 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Ungherese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="21"/>
         <source>Apparence</source>
         <translation>Aspetto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="270"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="253"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="267"/>
         <source>Par defaut</source>
         <translation>Predefinito</translation>
     </message>
@@ -3420,27 +3391,27 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Rumeno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Utilizzare le fin&amp;estre (applicato al prossivo avvio de QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source>Projets</source>
         <translation>Progetti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="350"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Applicato al prossimo avvio di QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Désactivé</source>
         <translation>Disattivato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="198"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Esporta le morsettiere dalla nomenclatura</translation>
     </message>
@@ -3455,13 +3426,13 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Japanese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="755"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>Editor schemi (tasto:   sinistra/destra) X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="447"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="476"/>
         <source>Rotation :</source>
         <translation>Rotazione :</translation>
     </message>
@@ -3476,7 +3447,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Paesi bassi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Numerare le colonne del cartiglio a partire da 0 (altrimenti inizia da 1)</translation>
@@ -3492,14 +3463,14 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Portoghese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="44"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="41"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Utilizzare le &quot;gestures&quot; del touchpad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Parcourir...</source>
         <translation>Sfoglia...</translation>
     </message>
@@ -3514,12 +3485,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Spagnolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="297"/>
         <source>Gestion des éléments</source>
         <translation>Gestione degli elementi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="576"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="573"/>
         <source>Grille + Clavier</source>
         <translation>Griglia + Tastiera</translation>
     </message>
@@ -3529,37 +3500,37 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Percorso della raccolta comune</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="206"/>
         <source>Collections</source>
         <translation>Collezioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Accès aux collections</source>
         <translation>Accesso alle collezioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Utilizzare le cartelle (applicato al prossivo avvio di QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="729"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>Editor schemi (tasto: alto/basso) Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="151"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Non saranno copiate le etichette degli elementi dopo un &quot;copia e incolla&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="181"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
         <translation>Utilizzare il numero di pagina al posto della posizione nel progetto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="306"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>Evidenzia nel pannello gli elementi appena integrati</translation>
     </message>
@@ -3569,32 +3540,32 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Percorso dei cartigli utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="437"/>
         <source>Longueur :</source>
         <translation>Lunghezza:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="245"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>Elenco della collezione utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>Elenco dei cartigli utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
         <source>DiagramEditor xGrid</source>
         <translation>Editor schemi X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="613"/>
         <source>DiagramEditor yGrid</source>
         <translation>Editor schemi Y</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="526"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="523"/>
         <source>Autres textes</source>
         <translation>Altri testi</translation>
     </message>
@@ -3652,54 +3623,53 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="138"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="135"/>
         <source>X :</source>
         <translation>X :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="128"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="125"/>
         <source>Y :</source>
         <translation>Y :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Formulare</translation>
+        <translation type="vanished">Formulare</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="80"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="77"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="327"/>
         <source>Aucun</source>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="274"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="433"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="271"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="430"/>
         <source>Marge</source>
         <translation>Margine</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="247"/>
         <source>En tête</source>
         <translation>In testa</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="486"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="483"/>
         <source>Alignement :</source>
         <translation>Allineamento :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="214"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="211"/>
         <source>Tableau précédent :</source>
         <translation>Tabella precedente :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="37"/>
         <source>Géometrie et lignes</source>
         <translation>Geometrie e linee</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="176"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="173"/>
         <source>Tableau précédent</source>
         <translation>Tabella precedente</translation>
     </message>
@@ -3714,30 +3684,30 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Cambiare il carattere di una tabella</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="56"/>
         <source>Tableau suivant</source>
         <translation>Tabella seguente</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="364"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="507"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="361"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="504"/>
         <source>Droite</source>
         <translation>Destra</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="350"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="493"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="347"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="490"/>
         <source>Gauche</source>
         <translation>Sinistra</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="530"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="384"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="527"/>
         <source>Police</source>
         <translation>Carattere</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="43"/>
         <source>Toutes</source>
         <translation>Tutti</translation>
     </message>
@@ -3775,8 +3745,8 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Modifica i margini di un&apos;intestazione della tabella</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="357"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="500"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="354"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="497"/>
         <source>Centré</source>
         <translation>Centro</translation>
     </message>
@@ -3786,37 +3756,37 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Modifica il numero di righe visualizzate da una tabella</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="557"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="554"/>
         <source>Contenu</source>
         <translation>Contenuto</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="400"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="397"/>
         <source>Tableau</source>
         <translation>Tabella</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="98"/>
         <source>Ajuster le tableau au folio</source>
         <translation>Sistemare a tabella dello schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="197"/>
         <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
         <translation>Applica la geometria a tutte le tabelle collegate a questa</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="343"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="340"/>
         <source>Aligement :</source>
         <translation>Allineamento :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Visualizzazione</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="224"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="221"/>
         <source>Lignes à afficher :</source>
         <translation>Linee da visualizzare :</translation>
     </message>
@@ -3826,12 +3796,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Modificare i margini della tabella</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="30"/>
         <source>Nom du tableau</source>
         <translation>Nome della tabella</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="231"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
     </message>
@@ -3839,22 +3809,21 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="47"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Posizione fissa</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="27"/>
         <source>Dimension de l&apos;image</source>
         <translation>Dimensioni dell&apos;immagine</translation>
     </message>
@@ -3900,17 +3869,16 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
+        <translation type="vanished">Finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="27"/>
         <source>Écraser les textes existants</source>
         <translation>Cancellare i testi esistenti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Testo dell&apos;etichetta</translation>
     </message>
@@ -3918,33 +3886,32 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
 <context>
     <name>IndiTextPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="54"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="90"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="106"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
         <translation>X :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="119"/>
         <source>Y :</source>
         <translation>Y :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="150"/>
         <source>Texte</source>
         <translation>Testo</translation>
     </message>
@@ -3970,7 +3937,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Ruotare un campo di testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="157"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="380"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="412"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
@@ -3988,22 +3955,22 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Modificare la dimensione di più campi di testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="143"/>
         <source>Cliquez ici pour annuler le formatage html</source>
         <translation>Fare clic qui per annullare la formattazione html</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="34"/>
         <source>Taille :</source>
         <translation>Dimensione:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="44"/>
         <source>Angle :</source>
         <translation>Angolo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="27"/>
         <source>Éditeur avancé</source>
         <translation>Editor avanzato</translation>
     </message>
@@ -4013,7 +3980,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Modifica le proprietà di un testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="129"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>Il contenuto, la dimensione e il carattere del testo non possono essere modificati perché formattati in html.
@@ -4089,37 +4056,36 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>LineEditor</name>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation>X1 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="63"/>
         <source>X2 :</source>
         <translation>X2 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="56"/>
         <source>Y1 :</source>
         <translation>Y1 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="87"/>
         <source>Y2 :</source>
         <translation>Y2 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="80"/>
         <source>Fin 1 :</source>
         <translation>Fine 1 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="94"/>
         <source>Fin 2 :</source>
         <translation>Fine 2 :</translation>
     </message>
@@ -4165,8 +4131,8 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Modifica una riga</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="107"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="114"/>
         <source>Longueur :</source>
         <translation>Lunghezza :</translation>
     </message>
@@ -4174,9 +4140,8 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>LinkSingleElementWidget</name>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="209"/>
@@ -4190,7 +4155,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Délier</source>
         <translation>Annulla il collegamento</translation>
     </message>
@@ -4207,12 +4172,12 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>N° di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="17"/>
         <source>Voir cet élément</source>
         <translation>Mostra questo elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="46"/>
         <source>Voir l&apos;élément lié</source>
         <translation>Mostra l&apos;elemento collegato</translation>
     </message>
@@ -4260,7 +4225,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Mostrare l&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="60"/>
         <source>Recherche</source>
         <translation>Cerca</translation>
     </message>
@@ -4299,7 +4264,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Colore del conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
         <translation>Questo elemento è già collegato</translation>
     </message>
@@ -4335,9 +4300,8 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
@@ -4366,7 +4330,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Mostrare l&apos;elemento master</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="144"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Collega l&apos;elemento selezionato&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -4382,7 +4346,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Mostrare l&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="29"/>
         <source>Éléments liés</source>
         <translation>Elementi collegati</translation>
     </message>
@@ -4402,12 +4366,12 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Collegare l&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="120"/>
         <source>Éléments disponibles</source>
         <translation>Elementi disponibili</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Scollega l&apos;elemento selezionato&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -4480,35 +4444,33 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Variabili del cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
+        <translation type="vanished">Finestra di dialogo</translation>
     </message>
 </context>
 <context>
     <name>NameListWidget</name>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="23"/>
         <source>Texte</source>
         <translation>Testo</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
         <translation>Lingua</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="45"/>
         <source>Copier dans le presse papier</source>
         <translation>Copia dagli appunti</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="33"/>
         <source>Ajouter une ligne</source>
         <translation>Aggiungere una riga</translation>
     </message>
@@ -4642,9 +4604,8 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>NumPartEditorW</name>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="125"/>
@@ -4846,27 +4807,26 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="33"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="17"/>
         <source>Points du polygone :</source>
         <translation>Punti del poligono ::</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="41"/>
         <source>Polygone fermé</source>
         <translation>Chiudi il poligono</translation>
     </message>
@@ -4894,12 +4854,12 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Modifica un poligono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="52"/>
         <source>Ajouter un point</source>
         <translation>Aggiuni un punto</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="61"/>
         <source>Supprimer ce point</source>
         <translation>Cancella questo punto</translation>
     </message>
@@ -5094,17 +5054,16 @@ Funzione : %1</translation>
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="28"/>
         <source>Recharger</source>
         <translation>Ricaricare</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation>Ricgiesta</translation>
     </message>
@@ -5139,17 +5098,17 @@ Funzione : %1</translation>
 <context>
     <name>ProjectPrintWindow</name>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="182"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="179"/>
         <source>Dessiner les bornes</source>
         <translation>Disegna terminali</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="215"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="212"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
         <translation>Se questa opzione è selezionata, la pagina verrà ingrandito o ridotto per riempire l&apos;intera superficie stampabile di una e una sola pagina. &quot;</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="346"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="343"/>
         <source>Première page</source>
         <translation>Prima pagina</translation>
     </message>
@@ -5164,37 +5123,36 @@ Funzione : %1</translation>
         <translation>Esporta in pdf</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="391"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="388"/>
         <source>Afficher deux pages</source>
         <translation>Visualizza le pagine affiancate</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="225"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="222"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
         <translation>Se questa opzione è selezionata, i margini del foglio verranno ignorati e l&apos;intera superficie verrà utilizzata per la stampa. Questo potrebbe non essere supportato dalla tua stampante.</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="400"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="397"/>
         <source>Afficher un aperçu de toutes les pages</source>
         <translation>Visualizza tutte le pagine</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation>MainWindow</translation>
+        <translation type="vanished">MainWindow</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="31"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
         <translation>Pagina da stampare :</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="198"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="195"/>
         <source>Adapter le folio à la page</source>
         <translation>Adatta lo schema alla pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="168"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="165"/>
         <source>Dessiner le cartouche</source>
         <translation>Draw the title block</translation>
     </message>
@@ -5204,12 +5162,12 @@ Funzione : %1</translation>
         <translation>Stampa</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="373"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="370"/>
         <source>Dernière page</source>
         <translation>Ultima pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="113"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="110"/>
         <source>À la date du  :</source>
         <translation>In data di  :</translation>
     </message>
@@ -5219,62 +5177,62 @@ Funzione : %1</translation>
         <translation>Folio senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="208"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="205"/>
         <source>Utiliser toute la feuille</source>
         <translation>Usa l&apos;intera pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="328"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="325"/>
         <source>Paysage</source>
         <translation>Paesaggio</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="337"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="334"/>
         <source>Portrait</source>
         <translation>Ritratto</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="70"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="67"/>
         <source>Tout cocher</source>
         <translation>Seleziona tutto</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="161"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Dessiner le cadre</source>
         <translation>Disegna il bordo</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="192"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="189"/>
         <source>Option d&apos;impression</source>
         <translation>Opzioni di stampa</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="310"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="307"/>
         <source>Zoom arrière</source>
         <translation>Zoom Out</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="77"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="74"/>
         <source>Tout décocher</source>
         <translation>Deseleziona tutto</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="292"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="289"/>
         <source>Ajuster la largeur</source>
         <translation>Adatta alla larghezza</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="355"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="352"/>
         <source>Page précédente</source>
         <translation>Pagina precedente</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="259"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="256"/>
         <source>toolBar</source>
         <translation>toolBar</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="155"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="152"/>
         <source>Option de rendu</source>
         <translation>Opzione di rendering</translation>
     </message>
@@ -5301,42 +5259,42 @@ Funzione : %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="409"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="406"/>
         <source>mise en page</source>
         <translation>Layout di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="364"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="361"/>
         <source>Page suivante</source>
         <translation>Pagina seguente</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="175"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="172"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Mantieni i colori dei conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="301"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="298"/>
         <source>Ajuster la page</source>
         <translation>Adatta alla pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="319"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="316"/>
         <source>Zoom avant</source>
         <translation>Zoom avanti</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="108"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="105"/>
         <source>À partir de la date du :</source>
         <translation>Dalla data di :</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="103"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="100"/>
         <source>Toutes les dates</source>
         <translation>Tutte le date</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="382"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="379"/>
         <source>Afficher une seule page</source>
         <translation>Mostra pagina singola</translation>
     </message>
@@ -9373,32 +9331,31 @@ Aggiungi una nuova tabella o regola la tabella esistente per visualizzate tutte 
         <translation>L&apos;elemento « %1 » esiste già. Cosa si vuole fare?</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Nuovo nome:</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Finestra di dialogo</translation>
+        <translation type="vanished">Finestra di dialogo</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="41"/>
         <source>Annuler</source>
         <translation>Annulla</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="34"/>
         <source>Renommer</source>
         <translation>Rinomina</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="27"/>
         <source>Écraser</source>
         <translation>Cancella</translation>
     </message>
@@ -9655,136 +9612,135 @@ Aggiungi una nuova tabella o regola la tabella esistente per visualizzate tutte 
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="221"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponibile come %impianto per i modelli di cartigli&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="87"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="121"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="131"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="207"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="188"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="204"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>Ne pas modifier</source>
         <translation>Non modificare</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="98"/>
         <source>Date :</source>
         <translation>Data:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="332"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>È possibile definire delle associazioni nome/valore personalizzate da utilizzare nel cartiglio. Esempio: associando il nome &quot;volta&quot; al valore &quot;1745&quot; invece di %{volta} apparirà il numero 1745 nel cartiglio.</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="57"/>
         <source>Localisation</source>
         <translation>Posizione</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="167"/>
         <source>Date fixe :</source>
         <translation>Data fissa :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="125"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Disponibile come %filename per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="115"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Disponibile come %indexrev per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="64"/>
         <source>Fichier :</source>
         <translation>File:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="147"/>
         <source>Pas de date</source>
         <translation>Nessuna data</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="211"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Disponibile come %locmach per i modelli di cartigli0</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="154"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Disponibile come %date per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Principali</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="174"/>
         <source>Appliquer la date actuelle</source>
         <translation>Applica la data corrente</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="231"/>
         <source>Titre :</source>
         <translation>Titolo:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="324"/>
         <source>Personnalisées</source>
         <translation>Personalizzazioni</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="91"/>
         <source>Auteur :</source>
         <translation>Autore: </translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="251"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="261"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="271"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="281"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="238"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="258"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="268"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="278"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="288"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="298"/>
         <source>Supprimer ce texte</source>
         <translation>Cancella questo testo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="108"/>
         <source>Installation :</source>
         <translation>Installazione:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="138"/>
         <source>Folio :</source>
         <translation>Pagina :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="71"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Disponibile come %title per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="81"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Disponibile come %author per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="197"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -9797,7 +9753,7 @@ si possono utilizzare le seguenti variabili:
 - %autonum : Numerazione automatica di pagina</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="50"/>
         <source>Indice Rev</source>
         <translation>Indice Rev</translation>
     </message>
@@ -9805,12 +9761,11 @@ si possono utilizzare le seguenti variabili:
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
+        <location filename="../sources/ui/reportpropertiewidget.ui" line="32"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : la position du folio dans le projet 
@@ -9829,7 +9784,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
 % c: numero della colonna</translation>
     </message>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
+        <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>Etichetta di riferimento alla pagina</translation>
     </message>
@@ -9837,27 +9792,26 @@ Creare il proprio testo utilizzando le seguenti variabili:
 <context>
     <name>SearchAndReplaceWidget</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="73"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="70"/>
         <source>Mode</source>
         <translation>Modalità</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definire le proprietàs da sostituire nelle pagine&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
         <source>Folio</source>
         <translation>Pagina</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="154"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="151"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mostra opzioni avanzate&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9867,17 +9821,17 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Campi di testo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="238"/>
         <source>Remplacer :</source>
         <translation>Sostituisci:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="120"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="117"/>
         <source>Aller à la correspondance précédente</source>
         <translation>Vai alla corrispondenza precedente</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
         <source>Tout remplacer</source>
         <translation>Sostituisci tutto</translation>
     </message>
@@ -9887,7 +9841,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Corrispondenza :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
         <source>Remplacer</source>
         <translation>Sostituisci</translation>
     </message>
@@ -9902,12 +9856,12 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Pagine</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="261"/>
         <source>Champ texte de folio</source>
         <translation>Campo di testo della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
         <translation>Vai alla corrispondenza seguente</translation>
     </message>
@@ -9942,7 +9896,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="208"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definire le proprietàs da sostituire nei conduttori&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -9952,52 +9906,52 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Elementi slave</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="38"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="35"/>
         <source>Chercher :</source>
         <translation>Carca:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="339"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="336"/>
         <source>Quitter</source>
         <translation>Esci</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="231"/>
         <source>avancé</source>
         <translation>avanzato</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="93"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="90"/>
         <source>Sensible à la casse</source>
         <translation>Rispetta le maiuscole</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="77"/>
         <source>Texte brut</source>
         <translation>Semplice testo</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definire le proprietàs da sostituire negli elementi&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="274"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sostituisci la corrispondenza selezionata&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="134"/>
         <source>Actualiser</source>
         <translation>Aggiornare</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>Conducteur</source>
         <translation>Conduttore</translation>
     </message>
@@ -10017,7 +9971,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation>Elementi</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="85"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="82"/>
         <source>Mots entiers</source>
         <translation>Intere parole</translation>
     </message>
@@ -10050,7 +10004,7 @@ Creare il proprio testo utilizzando le seguenti variabili:
         <translation> [modificato]</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="221"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sostituisci la corrispondenza verificata&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -10058,62 +10012,61 @@ Creare il proprio testo utilizzando le seguenti variabili:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="226"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="223"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="100"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="97"/>
         <source>Définition</source>
         <translation>Definizione</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="150"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Aggiungere un criterio di numerazione&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cancellare un criterio di numerazione&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="57"/>
         <source>Supprimer la numérotation</source>
         <translation>Eliminare la numerazione</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="236"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="233"/>
         <source>Valeur</source>
         <translation>Valore</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="49"/>
         <source>Nom de la nouvelle numérotation</source>
         <translation>Nome della nuova numerazione</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="181"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="178"/>
         <source>Suivant</source>
         <translation>Successivo</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="252"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="249"/>
         <source>Incrémentation</source>
         <translation>Incremento</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="164"/>
         <source>Précédent</source>
         <translation>Precedente</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="25"/>
         <source>Numérotations disponibles :</source>
         <translation>Numerazioni disponibili:</translation>
     </message>
@@ -10198,12 +10151,11 @@ Gli altri campi non sono usati.</translation>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="23"/>
         <source>Type</source>
         <translation>Tipo</translation>
     </message>
@@ -10213,77 +10165,77 @@ Gli altri campi non sono usati.</translation>
         <translation>Modifica le proprietà di una primitiva</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="128"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="125"/>
         <source>Aucun</source>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="183"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="180"/>
         <source>Croix</source>
         <translation>A croce</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="130"/>
         <source>Plein</source>
         <translation>Pieno</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="203"/>
         <source>Style</source>
         <translation>Stile</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="87"/>
         <source>Tiret</source>
         <translation>Trattino</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
         <translation>Tratto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="173"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="170"/>
         <source>Horizontal</source>
         <translation>Orizzontale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="193"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="190"/>
         <source>Diagonal avant</source>
         <translation>Diagonale avanti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="107"/>
         <source>Tiret custom</source>
         <translation>Tratto personalizzato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="118"/>
         <source>Remplissage</source>
         <translation>Riempimento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="226"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="223"/>
         <source>Verrouiller la position</source>
         <translation>Blocca la posizione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="233"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="230"/>
         <source>Polygone fermé</source>
         <translation>Poligono chiuso</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
         <source>Normal</source>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="92"/>
         <source>Pointillé</source>
         <translation>Punteggiato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="198"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="195"/>
         <source>Diagonal en croix</source>
         <translation>Diagonale a croce</translation>
     </message>
@@ -10293,17 +10245,17 @@ Gli altri campi non sono usati.</translation>
         <translation>Chiudi il poligono</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="97"/>
         <source>Traits et points</source>
         <translation>Trattino punto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="30"/>
         <source>Épaisseur</source>
         <translation>Spessore</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="102"/>
         <source>Traits points points</source>
         <translation>Trattino punto punto</translation>
     </message>
@@ -10314,43 +10266,43 @@ Gli altri campi non sono usati.</translation>
         <translation>Modificare una forma semplice</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="135"/>
         <source>Densité 1</source>
         <translation>Densità 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="143"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="140"/>
         <source>Densité 2</source>
         <translation>Densità 2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="148"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="145"/>
         <source>Densité 3</source>
         <translation>Densità 3</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="150"/>
         <source>Densité 4</source>
         <translation>Densità 4</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="158"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="155"/>
         <source>Densité 5</source>
         <translation>Densità 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="163"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="160"/>
         <source>Densité 6</source>
         <translation>Densità 6</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="165"/>
         <source>Densité 7</source>
         <translation>Densità 7</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="210"/>
         <source>Couleur</source>
         <translation>Colore</translation>
     </message>
@@ -10370,12 +10322,12 @@ Gli altri campi non sono usati.</translation>
         <translation>Modifica le proprietà di una forma semplice</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="178"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="175"/>
         <source>Vertical</source>
         <translation>Verticale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="188"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="185"/>
         <source>Diagonal arrière</source>
         <translation>Diagonale posteriore</translation>
     </message>
@@ -12372,12 +12324,11 @@ Gli altri campi non sono usati.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Formulaire</translation>
+        <translation type="vanished">Formulaire</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="48"/>
         <source>Information à afficher</source>
         <translation>Informazioni da visualizzare</translation>
     </message>
@@ -12387,17 +12338,17 @@ Gli altri campi non sono usati.</translation>
         <translation>Posizione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="142"/>
         <source>Configuration</source>
         <translation>Configurazione</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Informazioni disponibili</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="158"/>
         <source>Requête SQL :</source>
         <translation>Richiesta SQL :</translation>
     </message>
@@ -12460,32 +12411,27 @@ Gli altri campi non sono usati.</translation>
         <translation>Sposta un terminale</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
         <source>y :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="44"/>
         <source>Orientation :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="57"/>
         <source>x :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="64"/>
         <source>Nom :</source>
         <translation type="unfinished">Nome:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="71"/>
         <source>Type :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12526,148 +12472,143 @@ Gli altri campi non sono usati.</translation>
 <context>
     <name>TerminalStripEditor</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="24"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="21"/>
         <source>Disposition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="240"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="237"/>
         <source>Ponter les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="247"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="244"/>
         <source>Déponter les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="258"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="255"/>
         <source>Propriétés</source>
         <translation type="unfinished">Proprietà</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="264"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="261"/>
         <source>Nom :</source>
         <translation type="unfinished">Nome:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="271"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="268"/>
         <source>Commentaire :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="298"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="278"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="275"/>
         <source>Installation :</source>
         <translation type="unfinished">Installazione:</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Localisation :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="87"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="84"/>
         <source>Type :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="230"/>
         <source>Degrouper les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="108"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="105"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Générique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="57"/>
         <source>Effectuer le déplacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="97"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="94"/>
         <source>Couleur pont :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="113"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="110"/>
         <source>Fusible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="118"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="115"/>
         <source>Sectionnable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="123"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="120"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="128"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="125"/>
         <source>Terre</source>
         <translation type="unfinished">Terra</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="176"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="173"/>
         <source>Déplacer dans :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="192"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="189"/>
         <source>Phase</source>
         <translation type="unfinished">Fasi</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="197"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="194"/>
         <source>Neutre</source>
         <translation type="unfinished">Neutro</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="219"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="216"/>
         <source>Position automatique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="77"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="74"/>
         <source>Étage :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="226"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="223"/>
         <source>Grouper les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="166"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="163"/>
         <source>Fonction :</source>
         <translation type="unfinished">Funzione :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="40"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="37"/>
         <source>Sans</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="45"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="42"/>
         <source>Avec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="136"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="133"/>
         <source>LED :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12908,17 +12849,16 @@ Gli altri campi non sono usati.</translation>
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>Modello:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="241"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponibile come %impianto per i modelli di cartiglio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -12940,98 +12880,98 @@ Gli altri campi non sono usati.</translation>
         <translation>Modello predefinito</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="173"/>
         <source>Date :</source>
         <translation>Data:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="411"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>È possibile definire delle associazioni nome/valore personalizzate da utilizzare nel cartiglio. Esempio: associando il nome &quot;volta&quot; al valore &quot;1745&quot; invece di %{volta} apparirà il numero 1745 nel cartiglio.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="29"/>
         <source>Informations des cartouches</source>
         <translation>Informazioni mostrate nel cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="326"/>
         <source>Date fixe :</source>
         <translation>Data fissa: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Disponibile come %filename per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="366"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Disponibile come %indexrev per i modelli di cartigli</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="227"/>
         <source>Indice Rev:</source>
         <translation>Indice Rev.:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="262"/>
         <source>Fichier :</source>
         <translation>File :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="285"/>
         <source>Pas de date</source>
         <translation>Nessuna data</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="234"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Disponibile come %locmach per i modelli di cartigli</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="313"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Disponibile come %date per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Principales</source>
         <translation>Principale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="380"/>
         <source>Localisation:</source>
         <translation>Posizione:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="299"/>
         <source>Appliquer la date actuelle</source>
         <translation>Applica la data corrente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="346"/>
         <source>Titre :</source>
         <translation>Titolo:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="292"/>
         <source>Date courante</source>
         <translation>Data corrente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="403"/>
         <source>Personnalisées</source>
         <translation>Personalizzazioni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="220"/>
         <source>Auteur :</source>
         <translation>Autore: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="373"/>
         <source>Installation :</source>
         <translation>Installazione:</translation>
     </message>
@@ -13042,32 +12982,32 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <translation>Creare una numerazione automatica della pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
         <source>Folio :</source>
         <translation>Pagina: </translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="359"/>
         <source>Page Num:</source>
         <translation>Pag. numero:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="81"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mostra i cartigli nella parte inferiore (orizontalmente) o destra (verticalmente) della pagina.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="248"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Disponibile come %title per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="269"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Disponibile come %author per i modelli di cartiglio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="335"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -13578,9 +13518,8 @@ Lunghezza massima : %2px</translation>
         <translation>Alto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Moduo</translation>
+        <translation type="vanished">Moduo</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="110"/>
@@ -13593,12 +13532,12 @@ Lunghezza massima : %2px</translation>
         <translation>Destra</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="249"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="246"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Prefisso dei contatti temporizzati:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
         <translation>Regolazione dell&apos;offset verticale per i riferimenti incrociati. 10px corrisponde a 1 passo di movimento.</translation>
     </message>
@@ -13608,12 +13547,12 @@ Lunghezza massima : %2px</translation>
         <translation>Allineamento del testo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="39"/>
         <source>Positionner :</source>
         <translation>Posizione :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="31"/>
         <source>Représentation:</source>
         <translation>Presentazione:</translation>
     </message>
@@ -13628,12 +13567,12 @@ Lunghezza massima : %2px</translation>
         <translation>Sotto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
         <source>XRef Vertical Offset:</source>
         <translation>Offset verticale XRef:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="203"/>
         <source>Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
@@ -13650,22 +13589,22 @@ Lunghezza massima : %2px</translation>
 % LM: posizione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="151"/>
         <source>Maitre</source>
         <translation>Maestro</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Tipo :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="60"/>
         <source>10px corresponds to 1 tile displacement</source>
         <translation>10px corrisponde a 1 passo di movimentot</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Label des références croisées</source>
         <translation>Etichetta di riferimento incrociato</translation>
     </message>
@@ -13675,27 +13614,27 @@ Lunghezza massima : %2px</translation>
         <translation>Organo di protezione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="227"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="224"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Opzione di visualizzazione incrociata</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="197"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="194"/>
         <source>(%f-%l%c)</source>
         <translation>(%f-%l%c)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="242"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="239"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Prefisso del contatto di alimentazione :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="95"/>
         <source>XRef slave position</source>
         <translation>Posizione XRef dello slave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="118"/>
         <source>Afficher en croix</source>
         <translation>Mostra croce</translation>
     </message>
@@ -13710,17 +13649,17 @@ Lunghezza massima : %2px</translation>
         <translation>In fondo alla pagina</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="164"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="161"/>
         <source>%f-%l%c</source>
         <translation>%f-%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Default - Fit to XRef height</source>
         <translation>Default - Adatta all&apos;altezza XRef</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="187"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Esclave</source>
         <translation>Schiavo</translation>
     </message>
@@ -13730,17 +13669,17 @@ Lunghezza massima : %2px</translation>
         <translation>Sotto l&apos;etichetta dell&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="233"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="230"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Mostra i contatti di potenza nella croce</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="114"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="111"/>
         <source>Affiche&amp;r en contacts</source>
         <translation>Visualizza&amp;re come contatti</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="262"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="259"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Prefisso contatto in scambio :</translation>
     </message>
@@ -13753,9 +13692,8 @@ Lunghezza massima : %2px</translation>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation>Modulo</translation>
+        <translation type="vanished">Modulo</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="62"/>
@@ -13788,7 +13726,7 @@ Lunghezza massima : %2px</translation>
         <translation>Progetto senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="22"/>
+        <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
     </message>

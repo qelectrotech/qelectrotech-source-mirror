@@ -492,95 +492,94 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="32"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="29"/>
         <source>Range</source>
         <translation>Aralık</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="45"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="42"/>
         <source>Apply to Selected Locations</source>
         <translation>Seçili Yerlere Uygula</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="52"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="49"/>
         <source>Apply to Selected Folios</source>
         <translation>Seçili Sayfalara Uygula</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="59"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="56"/>
         <source>Apply to Entire Project</source>
         <translation>Bütün Projeye Uygula</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="78"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="75"/>
         <source>From</source>
         <translation>Başlangıç</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="101"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="98"/>
         <source>To</source>
         <translation>Bitiş</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Proje Durumu:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="153"/>
         <source>Update Policy</source>
         <translation>Güncelleme Kuralları</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="168"/>
         <source>Conductor</source>
         <translation>İletken</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="259"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="373"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="175"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="256"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="370"/>
         <source>Both</source>
         <translation>Hepsi</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="185"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="272"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="350"/>
         <source>Only New</source>
         <translation>Sadece Yeni</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="195"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="288"/>
         <source>Only Existent</source>
         <translation>Sadece Var Olan</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="208"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="307"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="383"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="205"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="304"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="380"/>
         <source>Disable</source>
         <translation>Devre Dışı</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="243"/>
         <source>Element</source>
         <translatorcomment>I am not sure about this It should be checked</translatorcomment>
         <translation>Element</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="343"/>
         <source>Folio</source>
         <translation>Sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Existent</source>
         <translation>Var Olan</translation>
     </message>
@@ -625,22 +624,21 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Diyalog</translation>
+        <translation type="obsolete">Diyalog</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation type="unfinished">Düzen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="23"/>
         <source>inclure les en-têtes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="33"/>
         <source>Formater en tant que liste de materiel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -693,42 +691,41 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>BorderPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
         <source>Dimensions du folio</source>
         <translation>Sayfa boyutları</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="23"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="39"/>
         <source>px</source>
         <comment>pixel</comment>
         <extracomment>pixel</extracomment>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
         <source>x</source>
         <translation>x</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Satırlar :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="79"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="59"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="76"/>
         <source>Afficher les en-têtes</source>
         <translation>Başlıkları göster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="69"/>
         <source>Colonnes :</source>
         <translation>Sütunlar :</translation>
     </message>
@@ -795,229 +792,228 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="21"/>
         <source>Type</source>
         <translation>Tip</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="220"/>
         <source>Taille du texte :</source>
         <translation>Metin boyutu :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
         <source>Texte visible</source>
         <translation>Görünür metin</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translatorcomment>I am not sure about this.It should be checked.</translatorcomment>
         <translation>Sayfa potansiyeli başına birmetin göster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Sayfa potansiyeli başına bir metin göster. </translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="102"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="99"/>
         <source>Taille du texte</source>
         <translation>Metin boyutu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="75"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="72"/>
         <source>Texte</source>
         <translation>Metin</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Texte :</source>
         <translation>Metin :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="158"/>
         <source>Fonction :</source>
         <translation>Fonksiyon :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="254"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Metin Formülü :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="82"/>
         <source>Tension / Protocole :</source>
         <translation>Gerilim / Protokol :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="89"/>
         <source>Autonumérotation</source>
         <translation>Otomatik numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="227"/>
         <source>éditer les numérotations</source>
         <translation>Numaralandırmayı düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="128"/>
         <source>Section du conducteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
         <source>Horizontal en haut</source>
         <translation>Üst yatay</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="200"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Horizontal en bas</source>
         <translation>Aşağı yatay</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <source>Vertical à gauche</source>
         <translation>Dikey Sol</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="173"/>
         <source>Vertical à droite</source>
         <translation>Dikey sağ</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="181"/>
         <source>Position et rotation du texte de conducteur :</source>
         <translation>İletken metninin yeri ve yönü :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="261"/>
         <source>cable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="271"/>
         <source>bus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="313"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="310"/>
         <source>Unifilaire</source>
         <translation>Tek Hatlı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="408"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="337"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="405"/>
         <source>Nombre de phase</source>
         <translation>Faz sayısı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="357"/>
         <source>Neutre</source>
         <translation>Nötr</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
         <source>neutre</source>
         <translation>nötr</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="385"/>
         <source>Phase</source>
         <translation>Faz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="391"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
         <source>phase</source>
         <translation>faz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="421"/>
         <source>Protective Earth Neutral</source>
         <translation>Koruma ve Nötr İletkeni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="427"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="371"/>
         <source>Terre</source>
         <translation>Toprak</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
         <source>terre</source>
         <translation>toprak</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
         <source>TextLabel</source>
         <translation>EtiketMetni</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="55"/>
         <source>Couleur du texte:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="457"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="454"/>
         <source>Apparence</source>
         <translation>Görünüm</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="496"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="493"/>
         <source>Couleur secondaire :</source>
         <translation>İkincil renk :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="518"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="515"/>
         <source>px</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="528"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="567"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="525"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="564"/>
         <source>Couleur :</source>
         <translation>Renk :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="511"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="508"/>
         <source>Taille de trait :</source>
         <translation>Çizgi boyutu :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="65"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="564"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="62"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="561"/>
         <source>Couleur du conducteur</source>
         <translation>İletken rengi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="34"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="46"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="31"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="43"/>
         <source>&amp;Multifilaire</source>
         <translation>&amp;Çoklu Hatlı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="466"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="463"/>
         <source>Taille :</source>
         <translation>Boyut :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="486"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="557"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="483"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="554"/>
         <source>Style du conducteur</source>
         <translation>İletken Şekli</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="489"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="486"/>
         <source>Style :</source>
         <translation>Şekil :</translation>
     </message>
@@ -1044,11 +1040,6 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     <name>ConfigSaveLoaderWidget</name>
     <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
-        <source>GroupBox</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
         <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1073,23 +1064,22 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
         <translation>Etiketler yalnızca küçük harfler, sayılar ve kısa çizgiler içerebilir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="47"/>
         <source>Nom</source>
         <translation>İsim</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="52"/>
         <source>Valeur</source>
         <translation>Değer</translation>
     </message>
@@ -1097,27 +1087,26 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="20"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="28"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="25"/>
         <source>x 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="33"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="30"/>
         <source>x 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="38"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="35"/>
         <source>x 3</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1238,42 +1227,41 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>DynamicElementTextItemEditor</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
         <translation>Metin yapılandırmasını dışa aktar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="39"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="66"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="33"/>
         <source>Importer une configuration de texte</source>
         <translation>Metin yapılandırması içe aktar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="60"/>
         <source>Ajouter un texte</source>
         <translation>Metin ekle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="74"/>
         <source>Ajouter un groupe de textes</source>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
         <translation>Grup metin ekle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="88"/>
         <source>Supprimer la sélection</source>
         <translation>Seçimi sil</translation>
     </message>
@@ -1525,73 +1513,72 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="69"/>
         <source>Conserver la rotation visuel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="54"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="51"/>
         <source>Texte utilisateur</source>
         <translation>Kullanıcı metni</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="59"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="56"/>
         <source>Information de l&apos;élément</source>
         <translation>Öğe bilgisi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="159"/>
         <source>Encadrer le texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="64"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="148"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="61"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="145"/>
         <source>Texte composé</source>
         <translation>Oluşturulan metin</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="17"/>
         <source>Couleur</source>
         <translation>Renk</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="209"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="206"/>
         <source>Police</source>
         <translation>Font</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="125"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Metin Kaynağı</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="135"/>
         <source>Rotation</source>
         <translation>Döndürme</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="199"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="196"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="43"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="40"/>
         <source>Largeur</source>
         <translation>Genişlik</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="115"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="155"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="152"/>
         <source>Alignement</source>
         <translation>Hizalama</translation>
     </message>
@@ -1799,17 +1786,16 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="54"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Metin etiketi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="58"/>
         <source>Supprimer ce texte</source>
         <translation>Bu metni sil</translation>
     </message>
@@ -1817,9 +1803,8 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>ElementInfoWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
@@ -2121,142 +2106,141 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
 <context>
     <name>ElementQueryWidget</name>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="42"/>
         <source>Informations à exporter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="82"/>
         <source>Monter la sélection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="102"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="99"/>
         <source>Ajouter la sélection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="113"/>
         <source>Supprimer la sélection</source>
         <translation type="unfinished">Seçimi sil</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="127"/>
         <source>Descendre la sélection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="173"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="170"/>
         <source>Pas de filtre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="178"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="175"/>
         <source>N&apos;est pas vide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="183"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="180"/>
         <source>Est vide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="188"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="185"/>
         <source>Contient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="193"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="190"/>
         <source>Ne contient pas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="198"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="195"/>
         <source>Est égal à</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="203"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="200"/>
         <source>N&apos;est pas égale à</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="214"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="211"/>
         <source>Filtre :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="236"/>
         <source>Type d&apos;éléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="245"/>
         <source>Simples</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="265"/>
         <source>Tous</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="295"/>
         <source>Vignettes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="308"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="305"/>
         <source>Contacteurs et relais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="275"/>
         <source>Boutons et commutateurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="285"/>
         <source>Borniers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="255"/>
         <source>Organes de protection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="331"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="328"/>
         <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="340"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="337"/>
         <source>Ouvrir la configuration sélectionné</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="367"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="364"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="399"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="396"/>
         <source>Requête SQL personnalisée</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="409"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="406"/>
         <source>Requête SQL :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2705,37 +2689,36 @@ Bu klasördeki tüm öğeler ve klasörler silinecek.</translation>
 <context>
     <name>EllipseEditor</name>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="27"/>
         <source>Y</source>
         <translation type="unfinished">Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="57"/>
         <source>X</source>
         <translation type="unfinished">X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="67"/>
         <source>Vertical :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="87"/>
         <source>Horizontal :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="107"/>
         <source>Diamètres :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2933,47 +2916,46 @@ Bu klasördeki tüm öğeler ve klasörler silinecek.</translation>
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="37"/>
         <source>Numérotation automatique de Folio :</source>
         <translation>Sayfanın otomatik numaralandırılması :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="63"/>
         <source>Sélection:</source>
         <translation>Seçim:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="75"/>
         <source>C&amp;réer de nouveaux folios</source>
         <translation>Y&amp;eni sayfa oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="88"/>
         <source>Numérotation automatique des folios sélectionnés</source>
         <translation>Otomatik sayfa numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="129"/>
         <source>Nouveaux folios</source>
         <translation>Yeni Sayfalar</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation> Numaralandırma Seçenekleri</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="171"/>
         <source>À</source>
         <translation>Belirli sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="187"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="184"/>
         <source>De</source>
         <translation>Arasında</translation>
     </message>
@@ -3032,27 +3014,26 @@ Bir numaralandırma değişkeni şunları içerir: bir tür, bir değer ve bir a
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
         <translation>Otomatik Adlandırma:</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="50"/>
         <source>Formule</source>
         <translation>Formül</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="69"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
         <translation>Buraya Formül Ekle Örn.:%prefix%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="101"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
         <source>You can use the following variables to your formula:
  -%prefix: Default Element Prefix
  -%l: Element Line
@@ -3077,78 +3058,77 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
 <context>
     <name>FreeTerminalEditor</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="17"/>
         <source>Déplacer dans :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="60"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="57"/>
         <source>Type :</source>
         <translation type="unfinished">Type :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="67"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="64"/>
         <source>Fonction :</source>
         <translation type="unfinished">Fonksiyon :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="74"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="71"/>
         <source>LED :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="81"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="78"/>
         <source>Appliquer le déplacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="103"/>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="132"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="100"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="129"/>
         <source>Générique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="108"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="105"/>
         <source>Fusible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="113"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="110"/>
         <source>Sectionnable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="118"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="115"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="123"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="120"/>
         <source>Terre</source>
         <translation type="unfinished">Toprak</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="134"/>
         <source>Phase</source>
         <translation type="unfinished">Faz</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="139"/>
         <source>Neutre</source>
         <translation type="unfinished">Nötr</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="151"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="148"/>
         <source>Sans</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="156"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="153"/>
         <source>Avec</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3189,17 +3169,16 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="21"/>
         <source>Apparence</source>
         <translation>Görünüm</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="27"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Sistem renklerini kullan</translation>
     </message>
@@ -3214,74 +3193,74 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <translation>Ortak Kütüphane Yolu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="270"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="253"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="267"/>
         <source>Par defaut</source>
         <translation>Varsayılan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Parcourir...</source>
         <translation>Göz Atın...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Değişiklikleri uygulamak için öğe kütüphanelerini yeniden yüklemelisiniz)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source>Projets</source>
         <translation>Projeler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="144"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Projelerin otomatik olarak yedeklenmesi (QElectroTech&apos;in bir sonraki açılışında uygulanır)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="151"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>#Kopyala-Yapıştır yaparken öğelerin etiketlerinden tutmayın</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="44"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="41"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Touchpad hareketlerini kullan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="181"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
         <translation>Projedeki pozisyonlarının yerine sayfa numaralandırmasını kullan</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Başlık bloğunun 0&apos;dan başlayarak sütunlarını numaralandır(Aksi takdirde &quot;1&quot;)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="198"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
         <translation>#Terminalleri tanımlandırmada dışa aktar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Désactivé</source>
         <translation>Devredışı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> dk</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="48"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>#Yakınlaştırmanın sayfanın ötesine geçmesine izin ver</translation>
     </message>
@@ -3292,173 +3271,173 @@ atayabilirsiz. Metin ve sayı girişleri ayrıca mevcut.</translation>
         <translation>Kullanıcı başlık blokları dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="206"/>
         <source>Collections</source>
         <translation>Koleksiyonlar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Accès aux collections</source>
         <translation>Koleksiyonlara Erişim</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>Répertoire de la collection commune</source>
         <translation>Ortak koleksiyon dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="245"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>Kullanıcı koleksiyon dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>Kullanıcı başlık blokları dizini</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="297"/>
         <source>Gestion des éléments</source>
         <translation>Öğe Yönetimi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="306"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>#Yeni entegre edilen öğeleri panelde vurgulayın</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="313"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>#Her öğe,boş bi alanda &quot;Yazarları, Lisansı veya başka bir alanda yararlı bulduğunuz veriler&quot; hakkında bilgiler içerir.
 #Burada, oluşturacağınız öğeler için bu alanın varsayılan içeriğini belirtebilirsiniz :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="350"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>QElectroTech&apos;in bir sonraki başlatma işleminde uygulanır</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>Burada çeşitli metinlerin QElectroTech içinde varsayılan görünümünü tanımlayabilirsiniz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="576"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="573"/>
         <source>Grille + Clavier</source>
         <translation>Izgara + Klavye</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="579"/>
         <source>Grille : 1 - 30</source>
         <translation>Izgara: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
         <source>DiagramEditor xGrid</source>
         <translation>Diyagram Editörü xIzgarası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="613"/>
         <source>DiagramEditor yGrid</source>
         <translation>Diyagram Editörü yIzgarası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>&amp;Windows&apos;u kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>&amp;Sekmeleri kullan (QElectroTech&apos;in bir sonraki başlatılmasında uygulanır)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="98"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
         <source>Langues</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="384"/>
         <source>Textes</source>
         <translation>Metinler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="407"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Textes d&apos;éléments</source>
         <translation>Öğelerin Metinleri</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="532"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="417"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="529"/>
         <source>Police :</source>
         <translation>Yazı Tipi :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="427"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="437"/>
         <source>Longueur :</source>
         <translation>Uzunluk :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="447"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="476"/>
         <source>Rotation :</source>
         <translation>Dönüş:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
         <source>Textes indépendants</source>
         <translation>Bağımsız Metinler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="526"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="523"/>
         <source>Autres textes</source>
         <translation>Diğer Metinler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>Değişiklikleri görebilmek için Izgara&apos;nın etkin olması gerekir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="672"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="669"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>Klavye hareketi: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="722"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Diyagram Editörü (Tuş : Sol / Sağ)  xIzgara</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="729"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>Diyagram Editörü (Tuş : Yukarı / Aşağı) yIzgarası</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="749"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>ALT tuşuyla Klavye hareketi : 1 - 9 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="755"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>Diyagram Editörü (Tuş : Sol / Sağ)  xIzgara</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="784"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>Diyagram Editörü (Tuş : Yukarı / Aşağı) yIzgarası</translation>
     </message>
@@ -3672,133 +3651,132 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation type="unfinished">Görünüm</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="30"/>
         <source>Nom du tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="80"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="77"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="327"/>
         <source>Aucun</source>
         <translation type="unfinished">Yok</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="43"/>
         <source>Toutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="224"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="221"/>
         <source>Lignes à afficher :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="128"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="125"/>
         <source>Y :</source>
         <translation type="unfinished">Y :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="56"/>
         <source>Tableau suivant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="138"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="135"/>
         <source>X :</source>
         <translation type="unfinished">X :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="176"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="173"/>
         <source>Tableau précédent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="214"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="211"/>
         <source>Tableau précédent :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="37"/>
         <source>Géometrie et lignes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="197"/>
         <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="98"/>
         <source>Ajuster le tableau au folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="231"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="247"/>
         <source>En tête</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="274"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="433"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="271"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="430"/>
         <source>Marge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="343"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="340"/>
         <source>Aligement :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="350"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="493"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="347"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="490"/>
         <source>Gauche</source>
         <translation type="unfinished">Sol</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="357"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="500"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="354"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="497"/>
         <source>Centré</source>
         <translation type="unfinished">Orta</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="364"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="507"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="361"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="504"/>
         <source>Droite</source>
         <translation type="unfinished">Sağ</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="530"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="384"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="527"/>
         <source>Police</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="400"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="397"/>
         <source>Tableau</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="486"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="483"/>
         <source>Alignement :</source>
         <translation type="unfinished">Hizalama :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="557"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="554"/>
         <source>Contenu</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3858,22 +3836,21 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Pozisyonu Kilitle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="27"/>
         <source>Dimension de l&apos;image</source>
         <translation>Görüntünün Boyutu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="47"/>
         <source>%</source>
         <translation>%</translation>
     </message>
@@ -3922,17 +3899,16 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Diyalog</translation>
+        <translation type="vanished">Diyalog</translation>
     </message>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Metin Etiketi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="27"/>
         <source>Écraser les textes existants</source>
         <translation>Varolan metinleri sil</translation>
     </message>
@@ -3940,60 +3916,59 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>IndiTextPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
         <translation>X :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="27"/>
         <source>Éditeur avancé</source>
         <translation>Gelişmiş Editör</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="34"/>
         <source>Taille :</source>
         <translation>Boyut :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="44"/>
         <source>Angle :</source>
         <translation>Açı :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="54"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="90"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="106"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="119"/>
         <source>Y :</source>
         <translation>Y :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="129"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>Metin içeriği, boyutu ve yazı tipi html&apos;deki biçimlendirmeler nedeniyle değiştirilemez.
 Lütfen bunun için gelişmiş editörü kullanın.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="150"/>
         <source>Texte</source>
         <translation>Metin</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="157"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="380"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="412"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
@@ -4001,7 +3976,7 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
         <translation>Yazı Tipi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="143"/>
         <source>Cliquez ici pour annuler le formatage html</source>
         <translation>HTML biçimlendirmeyi iptal et</translation>
     </message>
@@ -4154,43 +4129,42 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
         <translation>Bir hattı düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="56"/>
         <source>Y1 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="63"/>
         <source>X2 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="80"/>
         <source>Fin 1 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="87"/>
         <source>Y2 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="94"/>
         <source>Fin 2 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="107"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="114"/>
         <source>Longueur :</source>
         <translation type="unfinished">Uzunluk :</translation>
     </message>
@@ -4198,32 +4172,31 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
 <context>
     <name>LinkSingleElementWidget</name>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="17"/>
         <source>Voir cet élément</source>
         <translation>Bu öğeyi gör</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Délier</source>
         <translation>Bağı Çöz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="46"/>
         <source>Voir l&apos;élément lié</source>
         <translation>Bağlı öğeye bakın</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
         <translation>Bu öğe zaten bağlı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="60"/>
         <source>Recherche</source>
         <translation>#Arama</translation>
     </message>
@@ -4359,27 +4332,26 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="29"/>
         <source>Éléments liés</source>
         <translation>Bağlantılı öğeler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="120"/>
         <source>Éléments disponibles</source>
         <translation>Mevcut öğeler</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Seçili öğenin bağlantısını kopar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="144"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Seçili öğenin bağlantısını yap&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -4499,9 +4471,8 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Diyalog</translation>
+        <translation type="vanished">Diyalog</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
@@ -4512,27 +4483,26 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
 <context>
     <name>NameListWidget</name>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
         <translation>Dil</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="23"/>
         <source>Texte</source>
         <translation>Metin</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="33"/>
         <source>Ajouter une ligne</source>
         <translation>Bir çizgi ekle</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="45"/>
         <source>Copier dans le presse papier</source>
         <translation>Pano&apos;ya kopyala</translation>
     </message>
@@ -4666,9 +4636,8 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
 <context>
     <name>NumPartEditorW</name>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
@@ -4870,37 +4839,36 @@ Lütfen bunun için gelişmiş editörü kullanın.</translation>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="33"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="41"/>
         <source>Polygone fermé</source>
         <translation>Kapalı çokgen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="52"/>
         <source>Ajouter un point</source>
         <translation>Bir nokta ekle</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="61"/>
         <source>Supprimer ce point</source>
         <translation>Bu noktayı sil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="17"/>
         <source>Points du polygone :</source>
         <translation>Poligonun noktaları :</translation>
     </message>
@@ -5117,17 +5085,16 @@ Aşağıdaki değişkenler uyumsuz :
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="28"/>
         <source>Recharger</source>
         <translation type="unfinished">Yeniden yükle</translation>
     </message>
@@ -5162,162 +5129,157 @@ Aşağıdaki değişkenler uyumsuz :
 <context>
     <name>ProjectPrintWindow</name>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="20"/>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="31"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
         <translation type="unfinished">Yazdırılacak sayfakar :</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="70"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="67"/>
         <source>Tout cocher</source>
         <translation type="unfinished">Tümünü işaretle</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="77"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="74"/>
         <source>Tout décocher</source>
         <translation type="unfinished">Tümünü Kaldır</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="103"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="100"/>
         <source>Toutes les dates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="108"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="105"/>
         <source>À partir de la date du :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="113"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="110"/>
         <source>À la date du  :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="155"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="152"/>
         <source>Option de rendu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="161"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Dessiner le cadre</source>
         <translation type="unfinished">Çerçeveyi çiz</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="168"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="165"/>
         <source>Dessiner le cartouche</source>
         <translation type="unfinished">Anteti çiz</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="175"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="172"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation type="unfinished">İletkenlerin renklerini koru</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="182"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="179"/>
         <source>Dessiner les bornes</source>
         <translation type="unfinished">Terminalleri çiz</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="192"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="189"/>
         <source>Option d&apos;impression</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="198"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="195"/>
         <source>Adapter le folio à la page</source>
         <translation type="unfinished">Sayfaya sığdırın</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="208"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="205"/>
         <source>Utiliser toute la feuille</source>
         <translation type="unfinished">Tüm sayfayı kullan</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="215"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="212"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="225"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="222"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="259"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="256"/>
         <source>toolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="292"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="289"/>
         <source>Ajuster la largeur</source>
         <translation type="unfinished">Genişliği Ayarla</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="301"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="298"/>
         <source>Ajuster la page</source>
         <translation type="unfinished">Sayfayı Ayarla</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="310"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="307"/>
         <source>Zoom arrière</source>
         <translation type="unfinished">Uzaklaştır</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="319"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="316"/>
         <source>Zoom avant</source>
         <translation type="unfinished">Yakınlaştır</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="328"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="325"/>
         <source>Paysage</source>
         <translation type="unfinished">Sayfa boyunca</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="337"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="334"/>
         <source>Portrait</source>
         <translation type="unfinished">Portre</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="346"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="343"/>
         <source>Première page</source>
         <translation type="unfinished">İlk sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="355"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="352"/>
         <source>Page précédente</source>
         <translation type="unfinished">Önceki sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="364"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="361"/>
         <source>Page suivante</source>
         <translation type="unfinished">Sonraki sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="373"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="370"/>
         <source>Dernière page</source>
         <translation type="unfinished">Son sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="382"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="379"/>
         <source>Afficher une seule page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="391"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="388"/>
         <source>Afficher deux pages</source>
         <translation type="unfinished">İki sayfa göster</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="400"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="397"/>
         <source>Afficher un aperçu de toutes les pages</source>
         <translation type="unfinished">Tüm sayfaları önizle</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="409"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="406"/>
         <source>mise en page</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9387,32 +9349,31 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>RenameDialog</name>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Diyalog</translation>
+        <translation type="vanished">Diyalog</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Yeni isim :</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="27"/>
         <source>Écraser</source>
         <translation>Üzerine yaz</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="34"/>
         <source>Renommer</source>
         <translation>Yeniden Adlndır</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="41"/>
         <source>Annuler</source>
         <translation>Vazgeç</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Metin Etiketi</translation>
     </message>
@@ -9674,109 +9635,108 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Ana</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="50"/>
         <source>Indice Rev</source>
         <translation>Rev Endeksi</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="57"/>
         <source>Localisation</source>
         <translation>Konum</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="64"/>
         <source>Fichier :</source>
         <translation>Dosya :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="71"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Antet şablonları için %title değişkeni olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="87"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="121"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="131"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="207"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="188"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="204"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>Ne pas modifier</source>
         <translation>Değiştirmeyin</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="81"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Antet şablonları için %author değişkeni olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="91"/>
         <source>Auteur :</source>
         <translation>Yazar :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="98"/>
         <source>Date :</source>
         <translation>Tarih :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="108"/>
         <source>Installation :</source>
         <translation>Kurulum :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="115"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Antet şablonları için %indexrev değişkeni olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="125"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Antet şablonları için %filenameı  değişkeni olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="138"/>
         <source>Folio :</source>
         <translation>Sayfa :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="147"/>
         <source>Pas de date</source>
         <translation>Tarih yok</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="154"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Antet şablonları için %date değişkeni olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="167"/>
         <source>Date fixe :</source>
         <translation>Sabit tarih:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="174"/>
         <source>Appliquer la date actuelle</source>
         <translation>Geçerli tarihi uygula</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="221"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Antet şablonları için %plant olarak mevcut&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="197"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -9789,33 +9749,33 @@ Aşağıdaki değişkenler kullanılabilir:
 -%autonum : Sayfa Otomatik Numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="211"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Antet şablonları için %lochmach olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="231"/>
         <source>Titre :</source>
         <translation>Başlık :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="251"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="261"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="271"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="281"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="238"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="258"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="268"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="278"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="288"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="298"/>
         <source>Supprimer ce texte</source>
         <translation>Bu metni sil</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="324"/>
         <source>Personnalisées</source>
         <translation>Özelleştir</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="332"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Burada, antete işlemek için kendi ad / değer ilişkilerinizi tanımlayabilirsiniz. örnek:
@@ -9825,17 +9785,16 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
+        <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>#Sayfa Raporu Etiketi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
+        <location filename="../sources/ui/reportpropertiewidget.ui" line="32"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : la position du folio dans le projet 
@@ -9858,122 +9817,121 @@ Créer votre propre texte en vous aidant des variables suivantes :
 <context>
     <name>SearchAndReplaceWidget</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
         <translation>Bir sonraki eşleşmeye git</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="154"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="151"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gelişmiş ayarları göster&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="120"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="117"/>
         <source>Aller à la correspondance précédente</source>
         <translation>Bir önceki eşleşmeye git</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="339"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="336"/>
         <source>Quitter</source>
         <translation>Çıkış</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Öğelerde değiştirilecek özellikleri tanımla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="261"/>
         <source>Champ texte de folio</source>
         <translation>Sayfa metin alanı</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="208"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;İletkenlerde değiştirilecek özellikleri tanımla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Sayfalarda değiştirilecek özellikleri tanımla&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
         <source>Folio</source>
         <translation>Sayfa</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="77"/>
         <source>Texte brut</source>
         <translation>Sade Metin</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="73"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="70"/>
         <source>Mode</source>
         <translation>Mod</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="85"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="82"/>
         <source>Mots entiers</source>
         <translation>Bütün kelime</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="93"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="90"/>
         <source>Sensible à la casse</source>
         <translation>Büyük küçük harf duyarlı</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="274"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;Seçilen eşlenmişi değiştir&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="221"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;İşaretli seçilenleri değiştir&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="231"/>
         <source>avancé</source>
         <translation>gelişmiş</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
         <source>Élément</source>
         <translation>Öğe</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>Conducteur</source>
         <translation>İletken</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="238"/>
         <source>Remplacer :</source>
         <translation>Değiştir :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
         <source>Remplacer</source>
         <translation>Değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
         <source>Tout remplacer</source>
         <translation>Tümünü değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="38"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="35"/>
         <source>Chercher :</source>
         <translation>Bul :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="134"/>
         <source>Actualiser</source>
         <translation>Gerçekleştir</translation>
     </message>
@@ -10079,62 +10037,61 @@ Créer votre propre texte en vous aidant des variables suivantes :
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="25"/>
         <source>Numérotations disponibles :</source>
         <translation>Mevcut numaralandırma :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="49"/>
         <source>Nom de la nouvelle numérotation</source>
         <translation>#Yeni numaralandırmanın adı</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="57"/>
         <source>Supprimer la numérotation</source>
         <translation>Numaralandırmayı sil</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="100"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="97"/>
         <source>Définition</source>
         <translation>Tanım</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numaralandırma değişkenini sil&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="150"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numaralandırma değişkeni ekle&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="164"/>
         <source>Précédent</source>
         <translation>Önceki</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="181"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="178"/>
         <source>Suivant</source>
         <translation>Sonraki</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="226"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="223"/>
         <source>Type</source>
         <translation>Tür</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="236"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="233"/>
         <source>Valeur</source>
         <translation>#Değer</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="252"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="249"/>
         <source>Incrémentation</source>
         <translation>#Artış</translation>
     </message>
@@ -10221,153 +10178,152 @@ Diğer alanlar kullanılmaz.</translation>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
         <translation>Özellik</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="30"/>
         <source>Épaisseur</source>
         <translation>Kalınlık</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
         <source>Normal</source>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="87"/>
         <source>Tiret</source>
         <translation>Kesik Çizgili</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="92"/>
         <source>Pointillé</source>
         <translation>Noktalı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="97"/>
         <source>Traits et points</source>
         <translation>Özellikler ve Noktalar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="102"/>
         <source>Traits points points</source>
         <translation>Nokta Nokta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="107"/>
         <source>Tiret custom</source>
         <translation>Özel Çizgi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="23"/>
         <source>Type</source>
         <translation>Tür</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="210"/>
         <source>Couleur</source>
         <translation>Renk</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="118"/>
         <source>Remplissage</source>
         <translation>Dolgu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="203"/>
         <source>Style</source>
         <translation>Stil</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="128"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="125"/>
         <source>Aucun</source>
         <translation>Yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="130"/>
         <source>Plein</source>
         <translation>Tam</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="135"/>
         <source>Densité 1</source>
         <translation>Yoğunluk 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="143"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="140"/>
         <source>Densité 2</source>
         <translation>Yoğunluk 2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="148"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="145"/>
         <source>Densité 3</source>
         <translation>Yoğunluk 3</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="150"/>
         <source>Densité 4</source>
         <translation>Yoğunluk 4</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="158"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="155"/>
         <source>Densité 5</source>
         <translation>Yoğunluk 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="163"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="160"/>
         <source>Densité 6</source>
         <translation>Yoğunluk 6</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="165"/>
         <source>Densité 7</source>
         <translation>Yoğunluk 7</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="173"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="170"/>
         <source>Horizontal</source>
         <translation>Yatay</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="178"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="175"/>
         <source>Vertical</source>
         <translation>Dikey</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="183"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="180"/>
         <source>Croix</source>
         <translation>Çapraz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="188"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="185"/>
         <source>Diagonal arrière</source>
         <translation>Arka çapraz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="193"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="190"/>
         <source>Diagonal avant</source>
         <translation>Ön çapraz</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="198"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="195"/>
         <source>Diagonal en croix</source>
         <translation>Çaprazlama</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="226"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="223"/>
         <source>Verrouiller la position</source>
         <translation>#Pozisyonu Kilitle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="233"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="230"/>
         <source>Polygone fermé</source>
         <translation>#Kapalı Çokgen</translation>
     </message>
@@ -12395,27 +12351,26 @@ Diğer alanlar kullanılmaz.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="48"/>
         <source>Information à afficher</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="142"/>
         <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="158"/>
         <source>Requête SQL :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12483,32 +12438,31 @@ Diğer alanlar kullanılmaz.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
         <source>y :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="44"/>
         <source>Orientation :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="57"/>
         <source>x :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="64"/>
         <source>Nom :</source>
         <translation type="unfinished">İsim :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="71"/>
         <source>Type :</source>
         <translation type="unfinished">Type :</translation>
     </message>
@@ -12549,148 +12503,147 @@ Diğer alanlar kullanılmaz.</translation>
 <context>
     <name>TerminalStripEditor</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="24"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="21"/>
         <source>Disposition</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="240"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="237"/>
         <source>Ponter les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="247"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="244"/>
         <source>Déponter les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="258"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="255"/>
         <source>Propriétés</source>
         <translation type="unfinished">Özellikler</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="264"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="261"/>
         <source>Nom :</source>
         <translation type="unfinished">İsim :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="271"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="268"/>
         <source>Commentaire :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="298"/>
         <source>Description</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="278"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="275"/>
         <source>Installation :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Localisation :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="87"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="84"/>
         <source>Type :</source>
         <translation type="unfinished">Type :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="230"/>
         <source>Degrouper les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="108"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="105"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Générique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="obsolete">Form</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="57"/>
         <source>Effectuer le déplacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="97"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="94"/>
         <source>Couleur pont :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="113"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="110"/>
         <source>Fusible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="118"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="115"/>
         <source>Sectionnable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="123"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="120"/>
         <source>Diode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="128"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="125"/>
         <source>Terre</source>
         <translation type="unfinished">Toprak</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="176"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="173"/>
         <source>Déplacer dans :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="192"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="189"/>
         <source>Phase</source>
         <translation type="unfinished">Faz</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="197"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="194"/>
         <source>Neutre</source>
         <translation type="unfinished">Nötr</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="219"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="216"/>
         <source>Position automatique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="77"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="74"/>
         <source>Étage :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="226"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="223"/>
         <source>Grouper les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="166"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="163"/>
         <source>Fonction :</source>
         <translation type="unfinished">Fonksiyon :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="40"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="37"/>
         <source>Sans</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="45"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="42"/>
         <source>Avec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="136"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="133"/>
         <source>LED :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12931,107 +12884,106 @@ Diğer alanlar kullanılmaz.</translation>
 <context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="29"/>
         <source>Informations des cartouches</source>
         <translation>Antet Bilgileri</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>#Şablon :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="81"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Anteti, sayfanın altında (yatay) veya sağda (dikey) olarak görüntüler.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Principales</source>
         <translation>Ana</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="173"/>
         <source>Date :</source>
         <translation>#Tarih :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="220"/>
         <source>Auteur :</source>
         <translation>#Yazar :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="234"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Antet şablonları için %lochmach olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="227"/>
         <source>Indice Rev:</source>
         <translation>Rev İndeksi:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="241"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Antet şablonları için %plant olarak mevcut&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="248"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Antet şablonları için %başlık olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
         <source>Folio :</source>
         <translation>#Sayfa :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="262"/>
         <source>Fichier :</source>
         <translation>#Dosya :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="269"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Antet şablonları için %author olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Antet şablonları için %filename olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="285"/>
         <source>Pas de date</source>
         <translation>#Tarih yok</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="292"/>
         <source>Date courante</source>
         <translation>#Güncel tarih</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="299"/>
         <source>Appliquer la date actuelle</source>
         <translation>Geçerli tarihi uygula</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="313"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Antet şablonları için %date olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="326"/>
         <source>Date fixe :</source>
         <translation>#Sabit tarih:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="335"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -13044,38 +12996,38 @@ Aşağıdaki değişkenler kullanılabilir:
 -%autonum : Sayfa Otomatik Numaralandırma</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="346"/>
         <source>Titre :</source>
         <translation>Başlık :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="359"/>
         <source>Page Num:</source>
         <translation>Sayfa No :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="366"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Antet şablonları için %indexrev olarak mevcuttur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="373"/>
         <source>Installation :</source>
         <translation>#Kurulum :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="380"/>
         <source>Localisation:</source>
         <translation>Konum:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="403"/>
         <source>Personnalisées</source>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
         <translation>Özelleştir</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="411"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Burada, antete işlemek için kendi ad / değer ilişkilerinizi tanımlayabilirsiniz. örnek:
@@ -13600,87 +13552,86 @@ Maksimum uzunluk :%2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Type :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="31"/>
         <source>Représentation:</source>
         <translation>Gösterim:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="39"/>
         <source>Positionner :</source>
         <translation>Yer :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
         <source>XRef Vertical Offset:</source>
         <translation>XRef Dikey Ofset:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="60"/>
         <source>10px corresponds to 1 tile displacement</source>
         <translation>1 kare alanına 10 piksel karşılık gelir</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
         <translation>Çapraz Referanslar için Dikey Ofset Seti. 10px, 1 kare alanına karşılık gelir.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Default - Fit to XRef height</source>
         <translation>Varsayılan - XRef yüksekliğine sığdır</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="95"/>
         <source>XRef slave position</source>
         <translation>Xref slave pozisyonu</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="114"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="111"/>
         <source>Affiche&amp;r en contacts</source>
         <translation>Kontakla&amp;rı görüntüle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="118"/>
         <source>Afficher en croix</source>
         <translation>Çapraz görüntüle</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Label des références croisées</source>
         <translation>Çapraz referans etiketi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="151"/>
         <source>Maitre</source>
         <translation>Master</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="164"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="161"/>
         <source>%f-%l%c</source>
         <translation>%f-%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="187"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Esclave</source>
         <translation>Bağımlı</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="197"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="194"/>
         <source>(%f-%l%c)</source>
         <translation>(%f-%l%c)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="203"/>
         <source>Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
@@ -13697,27 +13648,27 @@ Maksimum uzunluk :%2px
 %LM : Konum </translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="227"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="224"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Çapraz ekran seçeneği</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="233"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="230"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Güç kontaklarını çapraz göster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="242"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="239"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Güç kontaklarının ön eki:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="249"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="246"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Zamanlı kontakların öneki :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="262"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="259"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>İnvertör kontaklarının öneki :</translation>
     </message>
@@ -13775,12 +13726,11 @@ Maksimum uzunluk :%2px
 <context>
     <name>diagramselection</name>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation type="vanished">Form</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="22"/>
+        <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>
         <translation>MetinEtiketi</translation>
     </message>

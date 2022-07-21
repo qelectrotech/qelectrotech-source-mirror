@@ -491,94 +491,93 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="26"/>
         <source>Form</source>
-        <translation>Beheer automatische nummering</translation>
+        <translation type="vanished">Beheer automatische nummering</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="149"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Projectstatus :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="32"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="29"/>
         <source>Range</source>
         <translation>Bereik</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="45"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="42"/>
         <source>Apply to Selected Locations</source>
         <translation>Op geselecteerde locaties toepassen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="52"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="49"/>
         <source>Apply to Selected Folios</source>
         <translation>Op geselecteerde schemabladen toepassen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="59"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="56"/>
         <source>Apply to Entire Project</source>
         <translation>Op het gehele project toepassen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="78"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="75"/>
         <source>From</source>
         <translation>Van</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="101"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="98"/>
         <source>To</source>
         <translation>Tot</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="156"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="153"/>
         <source>Update Policy</source>
         <translation>Updatebeleid</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="168"/>
         <source>Conductor</source>
         <translation>Geleiders</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="275"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="353"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="185"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="272"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="350"/>
         <source>Only New</source>
         <translation>Nieuwe</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="178"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="259"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="373"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="175"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="256"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="370"/>
         <source>Both</source>
         <translation>Beide</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="208"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="307"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="383"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="205"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="304"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="380"/>
         <source>Disable</source>
         <translation>Uitgeschakeld</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="243"/>
         <source>Element</source>
         <translation>Elementen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="291"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="195"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="288"/>
         <source>Only Existent</source>
         <translation>Bestaande</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="343"/>
         <source>Folio</source>
         <translation>Schemabladen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
+        <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="360"/>
         <source>Existent</source>
         <translation>Bestaande</translation>
     </message>
@@ -622,22 +621,21 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Stuklijstweergave</translation>
+        <translation type="vanished">Stuklijstweergave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="20"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Pagina-indeling</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="26"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="23"/>
         <source>inclure les en-têtes</source>
         <translation>Inclusief kopteksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.ui" line="36"/>
+        <location filename="../sources/ui/bomexportdialog.ui" line="33"/>
         <source>Formater en tant que liste de materiel</source>
         <translation>Volgens materiaallijst</translation>
     </message>
@@ -690,42 +688,41 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>BorderPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="23"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="39"/>
         <source>px</source>
         <comment>pixel</comment>
         <extracomment>pixel</extracomment>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="29"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="45"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="42"/>
         <source>x</source>
         <translation>x</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="72"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="69"/>
         <source>Colonnes :</source>
         <translation>Kolommen:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="62"/>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="79"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="59"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="76"/>
         <source>Afficher les en-têtes</source>
         <translation>Toon kaderteksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="55"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Rijen:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Kaderopmaak</translation>
+        <translation type="vanished">Kaderopmaak</translation>
     </message>
     <message>
-        <location filename="../sources/ui/borderpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
         <source>Dimensions du folio</source>
         <translation>Schemabladafmetingen</translation>
     </message>
@@ -792,88 +789,88 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="220"/>
         <source>Taille du texte :</source>
         <translation>Tekstgrootte :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="82"/>
         <source>Tension / Protocole :</source>
         <translation>Voltage / Protocol :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="210"/>
         <source>Texte :</source>
         <translation>Tekst :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="161"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="158"/>
         <source>Fonction :</source>
         <translation>Functie :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="75"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="72"/>
         <source>Texte</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="301"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="313"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="298"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="310"/>
         <source>Unifilaire</source>
         <translation>Eéndraadschema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="102"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="99"/>
         <source>Taille du texte</source>
         <translation>Tekstgrootte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="24"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="21"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="135"/>
         <source>Texte visible</source>
         <translation>Tekst weergeven</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="58"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="55"/>
         <source>Couleur du texte:</source>
         <translation>Tekstkleur:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="148"/>
         <source>activer l&apos;option un texte par potentiel</source>
         <translation>de optie één potentiaaltekst per schemablad activeren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="195"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="192"/>
         <source>Horizontal en haut</source>
         <translation>Boven horizontaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="200"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="197"/>
         <source>Horizontal en bas</source>
         <translation>Onder horizontaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="168"/>
         <source>Vertical à gauche</source>
         <translation>Links verticaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="173"/>
         <source>Vertical à droite</source>
         <translation>Rechts verticaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="181"/>
         <source>Position et rotation du texte de conducteur :</source>
         <translation>Plaats en oriëntatie van de geleidertekst :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="391"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
         <source>phase</source>
         <translation>Fase</translation>
     </message>
@@ -896,142 +893,141 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <translation>Stippellijn</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
         <source>terre</source>
         <translation>Aarde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
         <source>neutre</source>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Geleidereigenschappen</translation>
+        <translation type="vanished">Geleidereigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="254"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Tekstformule :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="151"/>
         <source>Afficher un texte de potentiel par folio. </source>
         <translation>Toon één potentiaaltekst per schemablad. </translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="34"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="46"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="31"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="43"/>
         <source>&amp;Multifilaire</source>
         <translation>&amp;Meerdradenschema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="92"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="89"/>
         <source>Autonumérotation</source>
         <translation>Autonummering</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="227"/>
         <source>éditer les numérotations</source>
         <translation>nummering bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="131"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="128"/>
         <source>Section du conducteur</source>
         <translation>Geleiderdoorsnede</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="264"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="261"/>
         <source>cable</source>
         <translation>Kabel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="271"/>
         <source>bus</source>
         <translation>Bus</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="340"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="408"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="337"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="405"/>
         <source>Nombre de phase</source>
         <translation>Aantal fasen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="360"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="357"/>
         <source>Neutre</source>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="385"/>
         <source>Phase</source>
         <translation>Fase</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="421"/>
         <source>Protective Earth Neutral</source>
         <translation>Gecombineerde veiligheidsaarde en nul</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="427"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="424"/>
         <source>PEN</source>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="374"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="371"/>
         <source>Terre</source>
         <translation>Aarde</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="330"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="327"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="466"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="463"/>
         <source>Taille :</source>
         <translation>Dikte :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="486"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="557"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="483"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="554"/>
         <source>Style du conducteur</source>
         <translation>Geleiderstijl</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="496"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="493"/>
         <source>Couleur secondaire :</source>
         <translation>Secundaire kleur :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="518"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="515"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="511"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="508"/>
         <source>Taille de trait :</source>
         <translation>Lijndikte :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="65"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="564"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="62"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="561"/>
         <source>Couleur du conducteur</source>
         <translation>Geleiderkleur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="457"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="454"/>
         <source>Apparence</source>
         <translation>Weergave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="528"/>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="567"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="525"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="564"/>
         <source>Couleur :</source>
         <translation>Kleur :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/conductorpropertieswidget.ui" line="489"/>
+        <location filename="../sources/ui/conductorpropertieswidget.ui" line="486"/>
         <source>Style :</source>
         <translation>Stijl :</translation>
     </message>
@@ -1039,12 +1035,11 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>GroupBox</source>
-        <translation>Groepenvenster</translation>
+        <translation type="vanished">Groepenvenster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configsaveloaderwidget.ui" line="17"/>
+        <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>Configuratie</translation>
     </message>
@@ -1068,23 +1063,22 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Informatie</translation>
+        <translation type="vanished">Informatie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="20"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
         <translation>Namen mogen alleen kleine letters, cijfers en koppeltekens bevatten.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="50"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="47"/>
         <source>Nom</source>
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramcontextwidget.ui" line="55"/>
+        <location filename="../sources/ui/diagramcontextwidget.ui" line="52"/>
         <source>Valeur</source>
         <translation>Waarde</translation>
     </message>
@@ -1092,27 +1086,26 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Grepen</translation>
+        <translation type="vanished">Grepen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="20"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
         <translation>Grepen:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="28"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="25"/>
         <source>x 1</source>
         <translation>x 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="33"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="30"/>
         <source>x 2</source>
         <translation>x 2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="38"/>
+        <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="35"/>
         <source>x 3</source>
         <translation>x 3</translation>
     </message>
@@ -1231,41 +1224,40 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>DynamicElementTextItemEditor</name>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Elementtekst bewerken</translation>
+        <translation type="vanished">Elementtekst bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
         <translation>Huidige tekstconfiguratie exporteren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="25"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="39"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="66"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="80"/>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="94"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="22"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="36"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="33"/>
         <source>Importer une configuration de texte</source>
         <translation>Tekstconfiguratie importeren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="63"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="60"/>
         <source>Ajouter un texte</source>
         <translation>Tekst toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="74"/>
         <source>Ajouter un groupe de textes</source>
         <translation>Een groep teksten toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="88"/>
         <source>Supprimer la sélection</source>
         <translation>Selectie verwijderen</translation>
     </message>
@@ -1514,73 +1506,72 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Tekst bewerken</translation>
+        <translation type="vanished">Tekst bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="69"/>
         <source>Conserver la rotation visuel</source>
         <translation>Rotatie behouden</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="54"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="51"/>
         <source>Texte utilisateur</source>
         <translation>Eigen tekst</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="59"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="56"/>
         <source>Information de l&apos;élément</source>
         <translation>Elementinformatie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="162"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="159"/>
         <source>Encadrer le texte</source>
         <translation>Tekst omkaderen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="64"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="148"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="61"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="145"/>
         <source>Texte composé</source>
         <translation>Samengestelde tekst</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="17"/>
         <source>Couleur</source>
         <translation>Kleur</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="209"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="206"/>
         <source>Police</source>
         <translation>Lettertype</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="125"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Tekstbron</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="138"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="135"/>
         <source>Rotation</source>
         <translation>Rotatie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="199"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="196"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="43"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="40"/>
         <source>Largeur</source>
         <translation>Breedte</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="115"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="112"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="155"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="152"/>
         <source>Alignement</source>
         <translation>Uitlijning</translation>
     </message>
@@ -1787,17 +1778,16 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Tekstlabel</translation>
+        <translation type="vanished">Tekstlabel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="54"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfopartwidget.ui" line="61"/>
+        <location filename="../sources/ui/elementinfopartwidget.ui" line="58"/>
         <source>Supprimer ce texte</source>
         <translation>Deze tekst verwijderen</translation>
     </message>
@@ -1805,9 +1795,8 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ElementInfoWidget</name>
     <message>
-        <location filename="../sources/ui/elementinfowidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Informatie</translation>
+        <translation type="vanished">Informatie</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
@@ -2107,142 +2096,141 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ElementQueryWidget</name>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Exporteren</translation>
+        <translation type="vanished">Exporteren</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="35"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
         <translation>Beschikbare gegevens</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="45"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="42"/>
         <source>Informations à exporter</source>
         <translation>Te exporteren gegevens</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="85"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="82"/>
         <source>Monter la sélection</source>
         <translation>Selectie omhoog verplaatsen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="102"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="99"/>
         <source>Ajouter la sélection</source>
         <translation>Selectie toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="116"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="113"/>
         <source>Supprimer la sélection</source>
         <translation>Selectie verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="130"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="127"/>
         <source>Descendre la sélection</source>
         <translation>Selectie omlaag verplaatsen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="173"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="170"/>
         <source>Pas de filtre</source>
         <translation>Geen filter</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="178"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="175"/>
         <source>N&apos;est pas vide</source>
         <translation>Is niet leeg</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="183"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="180"/>
         <source>Est vide</source>
         <translation>Is leeg</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="188"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="185"/>
         <source>Contient</source>
         <translation>Bevat</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="193"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="190"/>
         <source>Ne contient pas</source>
         <translation>Bevat niet</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="198"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="195"/>
         <source>Est égal à</source>
         <translation>Is gelijk aan</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="203"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="200"/>
         <source>N&apos;est pas égale à</source>
         <translation>Is niet gelijk aan</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="214"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="211"/>
         <source>Filtre :</source>
         <translation>Filter :</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="239"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="236"/>
         <source>Type d&apos;éléments</source>
         <translation>Elementtypen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="248"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="245"/>
         <source>Simples</source>
         <translation>Enkelvoudige</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="268"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="265"/>
         <source>Tous</source>
         <translation>Alles</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="295"/>
         <source>Vignettes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="308"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="305"/>
         <source>Contacteurs et relais</source>
         <translation>Contactoren en relais</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="278"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="275"/>
         <source>Boutons et commutateurs</source>
         <translation>Knoppen en schakelaars</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="288"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="285"/>
         <source>Borniers</source>
         <translation>Terminals</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="258"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="255"/>
         <source>Organes de protection</source>
         <translation>Beveiligingsorganen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="331"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="328"/>
         <source>Configuration</source>
         <translation>Configuratie</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="340"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="337"/>
         <source>Ouvrir la configuration sélectionné</source>
         <translation>Geselecteerde configuratie openen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="367"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="364"/>
         <source>Sauvegarder la configuration actuelle</source>
         <translation>Huidige configuratie opslaan</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="399"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="396"/>
         <source>Requête SQL personnalisée</source>
         <translation>Persoonlijke SQL-query</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="409"/>
+        <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="406"/>
         <source>Requête SQL :</source>
         <translation>SQL-query :</translation>
     </message>
@@ -2691,37 +2679,36 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>EllipseEditor</name>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Ellips</translation>
+        <translation type="vanished">Ellips</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="23"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation>Middelpunt :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="30"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="27"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="60"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="57"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="70"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="67"/>
         <source>Vertical :</source>
         <translation>Verticaal :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="90"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="87"/>
         <source>Horizontal :</source>
         <translation>Horizontaal :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/ellipseeditor.ui" line="110"/>
+        <location filename="../sources/editor/ui/ellipseeditor.ui" line="107"/>
         <source>Diamètres :</source>
         <translation>Diameters:</translation>
     </message>
@@ -2919,47 +2906,46 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="26"/>
         <source>Form</source>
-        <translation>Automatische schemabladnummering</translation>
+        <translation type="vanished">Automatische schemabladnummering</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="78"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="75"/>
         <source>C&amp;réer de nouveaux folios</source>
         <translation>M&amp;aak nieuwe schemabladen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="91"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="88"/>
         <source>Numérotation automatique des folios sélectionnés</source>
         <translation>Geselecteerde schemabladen automatisch nummeren</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="107"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation> Opties voor nummering</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="132"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="129"/>
         <source>Nouveaux folios</source>
         <translation>Nieuwe schemabladen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="174"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="171"/>
         <source>À</source>
         <translation>Tot</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="187"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="184"/>
         <source>De</source>
         <translation>Van</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="66"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="63"/>
         <source>Sélection:</source>
         <translation>Selectie :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="40"/>
+        <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="37"/>
         <source>Numérotation automatique de Folio :</source>
         <translation>Automatische schemabladnummering :</translation>
     </message>
@@ -3017,27 +3003,26 @@ Het veld &quot;Waarde&quot; heeft nu geen betekenis.
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="26"/>
         <source>Form</source>
-        <translation>Automatische naamgeving</translation>
+        <translation type="vanished">Automatische naamgeving</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="41"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
         <translation>Automatische naamgeving :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="53"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="50"/>
         <source>Formule</source>
         <translation>Formule</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="69"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
         <translation>Geef hier de formule,b.v.: %prefix%I%c</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="101"/>
+        <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="98"/>
         <source>You can use the following variables to your formula:
  -%prefix: Default Element Prefix
  -%l: Element Line
@@ -3062,78 +3047,73 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
 <context>
     <name>FreeTerminalEditor</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="17"/>
         <source>Déplacer dans :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="60"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="57"/>
         <source>Type :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="67"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="64"/>
         <source>Fonction :</source>
         <translation type="unfinished">Functie :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="74"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="71"/>
         <source>LED :</source>
         <translation type="unfinished">LED :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="81"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="78"/>
         <source>Appliquer le déplacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="103"/>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="132"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="100"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="129"/>
         <source>Générique</source>
         <translation type="unfinished">Algemeen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="108"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="105"/>
         <source>Fusible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="113"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="110"/>
         <source>Sectionnable</source>
         <translation type="unfinished">Deelbaar</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="118"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="115"/>
         <source>Diode</source>
         <translation type="unfinished">Diode</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="123"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="120"/>
         <source>Terre</source>
         <translation type="unfinished">Aarde</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="134"/>
         <source>Phase</source>
         <translation type="unfinished">Fase</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="139"/>
         <source>Neutre</source>
         <translation type="unfinished">Nul</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="151"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="148"/>
         <source>Sans</source>
         <translation type="unfinished">Zonder</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="156"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="153"/>
         <source>Avec</source>
         <translation type="unfinished">Met</translation>
     </message>
@@ -3174,12 +3154,12 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="24"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="21"/>
         <source>Apparence</source>
         <translation>Weergave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="30"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="27"/>
         <source>Utiliser les couleurs du système</source>
         <translation>Gebruik systeemkleuren</translation>
     </message>
@@ -3194,52 +3174,52 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
         <translation>Pad naar de algemene collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="270"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="232"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="253"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="267"/>
         <source>Par defaut</source>
         <translation>Standaard</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="237"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="258"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
         <source>Parcourir...</source>
         <translation>Bladeren...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="280"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Herlaadt collecties om de wijzigingen toe te passen)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="125"/>
         <source>Projets</source>
         <translation>Projecten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="44"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="41"/>
         <source>Utiliser les gestes du pavé tactile</source>
         <translation>Gebruik touchpad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="181"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="178"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
         <translation>Gebruik schemabladnummers in plaats van hun plaats in het project</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="158"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>Nummer kolommen vanaf 0 (in plaats van vanaf 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="168"/>
         <source>Désactivé</source>
         <translation>Uitschakelen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> min</translation>
@@ -3250,200 +3230,199 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
         <translation>Pad naar gebruikerstitelblokken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="206"/>
         <source>Collections</source>
         <translation>Collecties</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="212"/>
         <source>Accès aux collections</source>
         <translation>Collectiemappen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="224"/>
         <source>Répertoire de la collection commune</source>
         <translation>Map van de algemene collectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="245"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>Map van de gebruikerscollectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="287"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>Map van de gebruikerstitelblokken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="297"/>
         <source>Gestion des éléments</source>
         <translation>Elementenbeheer</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="306"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>Markeer nieuw toegevoegde elementen in het paneel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="313"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Elk element bevat een vrij tekstveld met informatie over de auteur, de licentie of andere voor u relevante informatie.
 Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="350"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Toegepast na herstarten van QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="390"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>Hier kunt u de standaardweergave van verschillende QElectroTech-teksten instellen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="576"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="573"/>
         <source>Grille + Clavier</source>
         <translation>Raster + Toetsenbord</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="579"/>
         <source>Grille : 1 - 30</source>
         <translation>Raster in schemabewerker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="646"/>
         <source>DiagramEditor xGrid</source>
         <translation>In x-richting: (1 - 30)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="613"/>
         <source>DiagramEditor yGrid</source>
         <translation>In y-richting: (1 - 30)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="62"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Ven&amp;sters gebruiken (toegepast na herstarten van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="69"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
         <translation>Tabs gebruiken (toegepast na he&amp;rstarten van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="98"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
         <translation>Schaalmethode voor weergave met hoge pixeldichtheid (hdpi) (toegepast na opnieuw starten van QElectroTech):</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="341"/>
         <source>Langues</source>
         <translation>Taal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="384"/>
         <source>Textes</source>
         <translation>Teksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="407"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="404"/>
         <source>Textes d&apos;éléments</source>
         <translation>Elementteksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="532"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="417"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="483"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="529"/>
         <source>Police :</source>
         <translation>Lettertype:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="427"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="490"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="437"/>
         <source>Longueur :</source>
         <translation>Grootte :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="447"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="476"/>
         <source>Rotation :</source>
         <translation>Rotatie :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="470"/>
         <source>Textes indépendants</source>
         <translation>Losse teksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="526"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="523"/>
         <source>Autres textes</source>
         <translation>Overige teksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="620"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>Het raster moet geactiveerd zijn om de wijzigingen te kunnen zien.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="672"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="669"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>Verplaatsing van selectie met pijltjestoetsen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="722"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="719"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Pijltje links / rechts in x-richting: (1 - 30)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="729"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="726"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>Pijltje omhoog / omlaag in y-richting: (1 - 30)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="749"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>Verplaatsing van selectie met ALT + pijltjestoetsen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="755"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>ALT + Pijltje links / rechts in x-richting: (1 - 9)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="784"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>ALT + Pijltje omhoog / omlaag in  y-richting: (1 - 9)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="144"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>Automatisch een backup van projecten maken (toegepast na herstarten van QElectroTech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="151"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>Vergeet elementlabels bij kopiëren/plakken</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="201"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="198"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Exporteer de terminals in de naamgeving</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="48"/>
         <source>Autoriser le dézoom au delà du folio</source>
         <translation>Sta uitzoomen toe buiten het schemabladbereik</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation>Algemene configuratie</translation>
+        <translation type="vanished">Algemene configuratie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
@@ -3655,133 +3634,132 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Tabeleigenchappen</translation>
+        <translation type="vanished">Tabeleigenchappen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="24"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Weergave</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="33"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="30"/>
         <source>Nom du tableau</source>
         <translation>Tabelnaam</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="80"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="77"/>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.cpp" line="327"/>
         <source>Aucun</source>
         <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="46"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="43"/>
         <source>Toutes</source>
         <translation>Alle</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="224"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="221"/>
         <source>Lignes à afficher :</source>
         <translation>Weergegeven rijen:</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="128"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="125"/>
         <source>Y :</source>
         <translation>Y :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="59"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="56"/>
         <source>Tableau suivant</source>
         <translation>Volgende tabel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="138"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="135"/>
         <source>X :</source>
         <translation>X :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="176"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="173"/>
         <source>Tableau précédent</source>
         <translation>Vorige tabel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="214"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="211"/>
         <source>Tableau précédent :</source>
         <translation>Vorige tabel :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="40"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="37"/>
         <source>Géometrie et lignes</source>
         <translation>Afmetingen en rijen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="200"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="197"/>
         <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
         <translation>Pas de afmetingen toe op alle hieraan gekoppelde tabellen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="101"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="98"/>
         <source>Ajuster le tableau au folio</source>
         <translation>Pas de tabel aan op het schemablad</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="234"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="231"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="250"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="247"/>
         <source>En tête</source>
         <translation>Kop</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="274"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="433"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="271"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="430"/>
         <source>Marge</source>
         <translation>Marge</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="343"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="340"/>
         <source>Aligement :</source>
         <translation>Uitlijning :</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="350"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="493"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="347"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="490"/>
         <source>Gauche</source>
         <translation>Links</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="357"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="500"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="354"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="497"/>
         <source>Centré</source>
         <translation>Midden</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="364"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="507"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="361"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="504"/>
         <source>Droite</source>
         <translation>Rechts</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="387"/>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="530"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="384"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="527"/>
         <source>Police</source>
         <translation>Lettertype</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="400"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="397"/>
         <source>Tableau</source>
         <translation>Tabel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="486"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="483"/>
         <source>Alignement :</source>
         <translation>Uitlijning:</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="557"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="554"/>
         <source>Contenu</source>
         <translation>Inhoud</translation>
     </message>
@@ -3842,22 +3820,21 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Afbeeldingseigenschappen</translation>
+        <translation type="vanished">Afbeeldingseigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="23"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Positie vergrendelen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="27"/>
         <source>Dimension de l&apos;image</source>
         <translation>Afbeeldingsgrootte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/imagepropertieswidget.ui" line="50"/>
+        <location filename="../sources/ui/imagepropertieswidget.ui" line="47"/>
         <source>%</source>
         <translation>%</translation>
     </message>
@@ -3903,17 +3880,16 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Importeren elementteksten</translation>
+        <translation type="vanished">Importeren elementteksten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="27"/>
         <source>Écraser les textes existants</source>
         <translation>Bestaande teksten overschrijven</translation>
     </message>
@@ -3921,60 +3897,59 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>IndiTextPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Tekstbewerker</translation>
+        <translation type="vanished">Tekstbewerker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
         <translation>X :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="27"/>
         <source>Éditeur avancé</source>
         <translation>Geavanceerde tekstbewerker</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="34"/>
         <source>Taille :</source>
         <translation>Breedte :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="44"/>
         <source>Angle :</source>
         <translation>Hoek :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="54"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="90"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="106"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="119"/>
         <source>Y :</source>
         <translation>Y :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="129"/>
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>De inhoud, de grootte en het lettertype van een tekst kan in html-weergave niet worden gewijzigd.
 Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="150"/>
         <source>Texte</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="157"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="380"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="412"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
@@ -3982,7 +3957,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <translation>Lettertype</translation>
     </message>
     <message>
-        <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="143"/>
         <source>Cliquez ici pour annuler le formatage html</source>
         <translation>Klik hier om de html-opmaak te verwijderen</translation>
     </message>
@@ -4133,43 +4108,42 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <translation>Een lijn wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Lijninstellingen</translation>
+        <translation type="vanished">Lijninstellingen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="52"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation>X1 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="59"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="56"/>
         <source>Y1 :</source>
         <translation>Y1 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="66"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="63"/>
         <source>X2 :</source>
         <translation>X2 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="83"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="80"/>
         <source>Fin 1 :</source>
         <translation>Uiteinde 1 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="90"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="87"/>
         <source>Y2 :</source>
         <translation>Y2 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="97"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="94"/>
         <source>Fin 2 :</source>
         <translation>Uiteinde 2 :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="110"/>
-        <location filename="../sources/editor/ui/lineeditor.ui" line="117"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="107"/>
+        <location filename="../sources/editor/ui/lineeditor.ui" line="114"/>
         <source>Longueur :</source>
         <translation>Lengte :</translation>
     </message>
@@ -4177,17 +4151,16 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>LinkSingleElementWidget</name>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Kruisverwijzing</translation>
+        <translation type="vanished">Kruisverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="56"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
         <translation>Dit element is al verbonden</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="63"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="60"/>
         <source>Recherche</source>
         <translation>Zoeken</translation>
     </message>
@@ -4262,12 +4235,12 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <translation>Geleiderdoorsnede</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="17"/>
         <source>Voir cet élément</source>
         <translation>Toon dit element</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="49"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="46"/>
         <source>Voir l&apos;élément lié</source>
         <translation>Toon verbonden element</translation>
     </message>
@@ -4302,7 +4275,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <translation>Kruisverwijzing (doel)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="39"/>
         <source>Délier</source>
         <translation>Verbinding verbreken</translation>
     </message>
@@ -4338,17 +4311,16 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="20"/>
         <source>Form</source>
-        <translation>Elementverwijzingen</translation>
+        <translation type="vanished">Elementverwijzingen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbreek verbinding met het geselecteerde element&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="144"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Met het geselecteerde element verbinden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -4381,12 +4353,12 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <translation>Plaats</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="120"/>
         <source>Éléments disponibles</source>
         <translation>Beschikbare elementen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/masterpropertieswidget.ui" line="29"/>
         <source>Éléments liés</source>
         <translation>Verbonden elementen</translation>
     </message>
@@ -4478,9 +4450,8 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <location filename="../sources/NameList/ui/namelistdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Namenlijst</translation>
+        <translation type="vanished">Namenlijst</translation>
     </message>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
@@ -4491,27 +4462,26 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>NameListWidget</name>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Namenlijst</translation>
+        <translation type="vanished">Namenlijst</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="21"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
         <translation>Taal</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="26"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="23"/>
         <source>Texte</source>
         <translation>Tekst</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="36"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="33"/>
         <source>Ajouter une ligne</source>
         <translation>Regel toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/NameList/ui/namelistwidget.ui" line="48"/>
+        <location filename="../sources/NameList/ui/namelistwidget.ui" line="45"/>
         <source>Copier dans le presse papier</source>
         <translation>Naar klembord kopiëren</translation>
     </message>
@@ -4645,9 +4615,8 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>NumPartEditorW</name>
     <message>
-        <location filename="../sources/autoNum/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation>Bladnummering</translation>
+        <translation type="vanished">Bladnummering</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
@@ -4848,37 +4817,36 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>PolygonEditor</name>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Veelhoek</translation>
+        <translation type="vanished">Veelhoek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="31"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="36"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="33"/>
         <source>Y</source>
         <translation>Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="44"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="41"/>
         <source>Polygone fermé</source>
         <translation>Gesloten veelhoek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="55"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="52"/>
         <source>Ajouter un point</source>
         <translation>Een hoekpunt toevoegen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="64"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="61"/>
         <source>Supprimer ce point</source>
         <translation>Hoekpunt verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/polygoneditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/polygoneditor.ui" line="17"/>
         <source>Points du polygone :</source>
         <translation>Hoekpunten veelhoek :</translation>
     </message>
@@ -5096,17 +5064,16 @@ De volgende variabelen zijn mogelijk :
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Dialoog</translation>
+        <translation type="vanished">Dialoog</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation>Verzoek</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="28"/>
         <source>Recharger</source>
         <translation>Herladen</translation>
     </message>
@@ -5141,162 +5108,161 @@ De volgende variabelen zijn mogelijk :
 <context>
     <name>ProjectPrintWindow</name>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation>Afdrukinstellingen</translation>
+        <translation type="vanished">Afdrukinstellingen</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="31"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
         <translation>Af te drukken schemabladen :</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="70"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="67"/>
         <source>Tout cocher</source>
         <translation>Selecteer alles</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="77"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="74"/>
         <source>Tout décocher</source>
         <translation>Deselecteer alles</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="103"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="100"/>
         <source>Toutes les dates</source>
         <translation>Alle datums</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="108"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="105"/>
         <source>À partir de la date du :</source>
         <translation>Vanaf de datum :</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="113"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="110"/>
         <source>À la date du  :</source>
         <translation>Van de datum :</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="155"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="152"/>
         <source>Option de rendu</source>
         <translation>Afdrukweergave</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="161"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="158"/>
         <source>Dessiner le cadre</source>
         <translation>Teken het kader</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="168"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="165"/>
         <source>Dessiner le cartouche</source>
         <translation>Teken het titelblok</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="175"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="172"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Behoud geleiderkleuren</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="182"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="179"/>
         <source>Dessiner les bornes</source>
         <translation>Teken de terminals</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="192"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="189"/>
         <source>Option d&apos;impression</source>
         <translation>Afdrukopties</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="198"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="195"/>
         <source>Adapter le folio à la page</source>
         <translation>Pas het schemablad aan op de pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="208"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="205"/>
         <source>Utiliser toute la feuille</source>
         <translation>Gebruik het gehele blad</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="215"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="212"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
         <translation>Als deze optie is aangevinkt, wordt het schemablad vergroot of verkleind om het volledige afdrukbare gebied van slechts één pagina te vullen. &quot;</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="225"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="222"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
         <translation>Als deze optie is aangevinkt, worden de marges van het vel genegeerd en wordt het volledige oppervlak gebruikt voor afdrukken. Dit wordt mogelijk niet ondersteund door uw printer.</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="259"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="256"/>
         <source>toolBar</source>
         <translation>Werkbalk</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="292"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="289"/>
         <source>Ajuster la largeur</source>
         <translation>In breedte passend</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="301"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="298"/>
         <source>Ajuster la page</source>
         <translation>Blad passend</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="310"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="307"/>
         <source>Zoom arrière</source>
         <translation>Uitzoomen</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="319"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="316"/>
         <source>Zoom avant</source>
         <translation>Inzoomen</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="328"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="325"/>
         <source>Paysage</source>
         <translation>Landschap</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="337"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="334"/>
         <source>Portrait</source>
         <translation>Portret</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="346"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="343"/>
         <source>Première page</source>
         <translation>Eerste blad</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="355"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="352"/>
         <source>Page précédente</source>
         <translation>Vorig blad</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="364"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="361"/>
         <source>Page suivante</source>
         <translation>Volgend blad</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="373"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="370"/>
         <source>Dernière page</source>
         <translation>Laatste blad</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="382"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="379"/>
         <source>Afficher une seule page</source>
         <translation>Toon één pagina</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="391"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="388"/>
         <source>Afficher deux pages</source>
         <translation>Toon twee pagina&apos;s</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="400"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="397"/>
         <source>Afficher un aperçu de toutes les pages</source>
         <translation>Toon een overzicht van alle pagina&apos;s</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.ui" line="409"/>
+        <location filename="../sources/print/projectprintwindow.ui" line="406"/>
         <source>mise en page</source>
         <translation>indeling</translation>
     </message>
@@ -9376,32 +9342,31 @@ Maak een nieuwe tabel of pas de huidige tabel aan zodat alle informatie hierin k
 <context>
     <name>RenameDialog</name>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Naam wijzigen</translation>
+        <translation type="vanished">Naam wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="20"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Nieuwe naam :</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="30"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="27"/>
         <source>Écraser</source>
         <translation>Overschrijven</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="37"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="34"/>
         <source>Renommer</source>
         <translation>Hernoemen</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="44"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="41"/>
         <source>Annuler</source>
         <translation>Annuleren</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="54"/>
+        <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
@@ -9663,109 +9628,108 @@ Maak een nieuwe tabel of pas de huidige tabel aan zodat alle informatie hierin k
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Wijzigen schemablad</translation>
+        <translation type="vanished">Wijzigen schemablad</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="45"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Hoofdgegevens</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="53"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="50"/>
         <source>Indice Rev</source>
         <translation>Revisie-index</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="60"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="57"/>
         <source>Localisation</source>
         <translation>Locatie</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="67"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="64"/>
         <source>Fichier :</source>
         <translation>Bestand :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="71"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %title voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="87"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="121"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="131"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="191"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="207"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="217"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="227"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="188"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="204"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>Ne pas modifier</source>
         <translation>Ongewijzigd</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="81"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %author voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="91"/>
         <source>Auteur :</source>
         <translation>Auteur :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="101"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="98"/>
         <source>Date :</source>
         <translation>Datum :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="111"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="108"/>
         <source>Installation :</source>
         <translation>Installatie :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="115"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %indexrev voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="125"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %filename voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="138"/>
         <source>Folio :</source>
         <translation>Schemablad :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="147"/>
         <source>Pas de date</source>
         <translation>Geen datum</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="154"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Beschikbaar als %date voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="167"/>
         <source>Date fixe :</source>
         <translation>Vaste datum:</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="177"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="174"/>
         <source>Appliquer la date actuelle</source>
         <translation>Huidige datum gebruiken</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="221"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beschikbaar als %plant voor in titelbloksjablonen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="197"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -9778,33 +9742,33 @@ De volgende variabelen zijn te gebruiken:
 - %autonum : Automatische schemabladnummering</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="211"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Beschikbaar als %locmach voor in titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="231"/>
         <source>Titre :</source>
         <translation>Naam :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="241"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="251"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="261"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="271"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="281"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="291"/>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="301"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="238"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="258"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="268"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="278"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="288"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="298"/>
         <source>Supprimer ce texte</source>
         <translation>Deze tekst verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="327"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="324"/>
         <source>Personnalisées</source>
         <translation>Eigen gegevens</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
+        <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="332"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Hier kunt u variabele / waarde associaties voor in het titelblok definiëren. Voorbeeld. :
@@ -9814,17 +9778,16 @@ Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wor
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Label schemabladenoverzicht</translation>
+        <translation type="vanished">Label schemabladenoverzicht</translation>
     </message>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
+        <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>Label voor schemabladenoverzicht</translation>
     </message>
     <message>
-        <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
+        <location filename="../sources/ui/reportpropertiewidget.ui" line="32"/>
         <source>Vous pouvez définir un label personnalisé pour les reports de folio.
 Créer votre propre texte en vous aidant des variables suivantes :
 %f : la position du folio dans le projet 
@@ -9847,122 +9810,121 @@ Maak uw eigen label met behulp van de volgende variabelen:
 <context>
     <name>SearchAndReplaceWidget</name>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Zoeken en vervangen</translation>
+        <translation type="vanished">Zoeken en vervangen</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="103"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
         <translation>Volgend zoekresultaat</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="154"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="151"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afficher les options avancées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Geavanceerde opties&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="120"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="117"/>
         <source>Aller à la correspondance précédente</source>
         <translation>Vorig zoekresultaat</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="339"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="336"/>
         <source>Quitter</source>
         <translation>Afsluiten</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="198"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les éléments&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definieer de te vervangen elementeigenschappen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="264"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="261"/>
         <source>Champ texte de folio</source>
         <translation>Tekstveld op schemablad</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="208"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les conducteurs&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definieer de te vervangen geleidereigenschappen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="245"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Définir les propriétés à remplacer dans les folios&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Definieer de te vervangen schemabladeigenschappen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="251"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="248"/>
         <source>Folio</source>
         <translation>Schemablad</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="80"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="77"/>
         <source>Texte brut</source>
         <translation>Platte tekst</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="73"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="70"/>
         <source>Mode</source>
         <translation>Modus</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="85"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="82"/>
         <source>Mots entiers</source>
         <translation>Hele woorden</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="93"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="90"/>
         <source>Sensible à la casse</source>
         <translation>Hoofdlettergevoelig</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="274"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer la correspondance sélectionnée&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vervang de overeenkomstige selectie&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="221"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Remplacer les correspondances cochées&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vervang de aangevinkte overeenkomsten&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="234"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="231"/>
         <source>avancé</source>
         <translation>Geavanceerd</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="204"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="201"/>
         <source>Élément</source>
         <translation>Element</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="214"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="211"/>
         <source>Conducteur</source>
         <translation>Geleider</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="241"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="238"/>
         <source>Remplacer :</source>
         <translation>Vervang :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="280"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="277"/>
         <source>Remplacer</source>
         <translation>Vervang</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="227"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="224"/>
         <source>Tout remplacer</source>
         <translation>Vervang alles</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="38"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="35"/>
         <source>Chercher :</source>
         <translation>Zoek :</translation>
     </message>
     <message>
-        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="137"/>
+        <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="134"/>
         <source>Actualiser</source>
         <translation>Vernieuwen</translation>
     </message>
@@ -10068,62 +10030,61 @@ Maak uw eigen label met behulp van de volgende variabelen:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="20"/>
         <source>Form</source>
-        <translation>Selectie automatische nummering</translation>
+        <translation type="vanished">Selectie automatische nummering</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Variabele verwijderen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="150"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Variabele toevoegen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="100"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="97"/>
         <source>Définition</source>
         <translation>Definitie</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="28"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="25"/>
         <source>Numérotations disponibles :</source>
         <translation>Beschikbare nummeringen :</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="52"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="49"/>
         <source>Nom de la nouvelle numérotation</source>
         <translation>Naam van de nieuwe nummering</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="60"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="57"/>
         <source>Supprimer la numérotation</source>
         <translation>Nummering verwijderen</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="167"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="164"/>
         <source>Précédent</source>
         <translation>Vorige</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="181"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="178"/>
         <source>Suivant</source>
         <translation>Volgende</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="226"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="223"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="236"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="233"/>
         <source>Valeur</source>
         <translation>Waarde</translation>
     </message>
     <message>
-        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="252"/>
+        <location filename="../sources/autoNum/ui/selectautonumw.ui" line="249"/>
         <source>Incrémentation</source>
         <translation>Increment</translation>
     </message>
@@ -10207,153 +10168,152 @@ De andere velden hebben nu geen betekenis.</translation>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Vrije vorm-eigenschappen</translation>
+        <translation type="vanished">Vrije vorm-eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="20"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
         <translation>Lijnsoort</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="33"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="30"/>
         <source>Épaisseur</source>
         <translation>Lijndikte</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="85"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="82"/>
         <source>Normal</source>
         <translation>Normaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="90"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="87"/>
         <source>Tiret</source>
         <translation>Streep</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="95"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="92"/>
         <source>Pointillé</source>
         <translation>Punt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="100"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="97"/>
         <source>Traits et points</source>
         <translation>Streep punt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="105"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="102"/>
         <source>Traits points points</source>
         <translation>Streep punt punt</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="110"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="107"/>
         <source>Tiret custom</source>
         <translation>Streep (aangepast)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="26"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="23"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="40"/>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="213"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="37"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="210"/>
         <source>Couleur</source>
         <translation>Kleur</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="118"/>
         <source>Remplissage</source>
         <translation>Vulling</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="203"/>
         <source>Style</source>
         <translation>Stijl</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="128"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="125"/>
         <source>Aucun</source>
         <translation>Geen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="133"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="130"/>
         <source>Plein</source>
         <translation>Volledig</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="138"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="135"/>
         <source>Densité 1</source>
         <translation>Dichtheid 1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="143"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="140"/>
         <source>Densité 2</source>
         <translation>Dichtheid 2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="148"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="145"/>
         <source>Densité 3</source>
         <translation>Dichtheid 3</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="153"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="150"/>
         <source>Densité 4</source>
         <translation>Dichtheid 4</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="158"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="155"/>
         <source>Densité 5</source>
         <translation>Dichtheid 5</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="163"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="160"/>
         <source>Densité 6</source>
         <translation>Dichtheid 6</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="165"/>
         <source>Densité 7</source>
         <translation>Dichtheid 7</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="173"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="170"/>
         <source>Horizontal</source>
         <translation>Horizontaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="178"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="175"/>
         <source>Vertical</source>
         <translation>Verticaal</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="183"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="180"/>
         <source>Croix</source>
         <translation>Gekruist</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="188"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="185"/>
         <source>Diagonal arrière</source>
         <translation>Schuin naar achteren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="193"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="190"/>
         <source>Diagonal avant</source>
         <translation>Schuin naar voren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="198"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="195"/>
         <source>Diagonal en croix</source>
         <translation>Schuin gekruist</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="226"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="223"/>
         <source>Verrouiller la position</source>
         <translation>Positie vergrendelen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="233"/>
+        <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="230"/>
         <source>Polygone fermé</source>
         <translation>Gesloten veelhoek</translation>
     </message>
@@ -12381,27 +12341,26 @@ De andere velden hebben nu geen betekenis.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Informatieweergave</translation>
+        <translation type="vanished">Informatieweergave</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="38"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Beschikbare informatie</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="51"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="48"/>
         <source>Information à afficher</source>
         <translation>Weergegeven informatie</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="145"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="142"/>
         <source>Configuration</source>
         <translation>Configuratie</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="161"/>
+        <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="158"/>
         <source>Requête SQL :</source>
         <translation>SQL-query :</translation>
     </message>
@@ -12469,32 +12428,31 @@ De andere velden hebben nu geen betekenis.</translation>
         <translation>Terminaltype wijzigen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Terminal bewerken</translation>
+        <translation type="vanished">Terminal bewerken</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
         <source>y :</source>
         <translation>y :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="47"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="44"/>
         <source>Orientation :</source>
         <translation>Oriëntatie :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="60"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="57"/>
         <source>x :</source>
         <translation>x :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="67"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="64"/>
         <source>Nom :</source>
         <translation>Naam :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="71"/>
         <source>Type :</source>
         <translation>Type :</translation>
     </message>
@@ -12535,148 +12493,143 @@ De andere velden hebben nu geen betekenis.</translation>
 <context>
     <name>TerminalStripEditor</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="24"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="21"/>
         <source>Disposition</source>
         <translation>Plaatsing</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="240"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="237"/>
         <source>Ponter les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="247"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="244"/>
         <source>Déponter les bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="258"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="255"/>
         <source>Propriétés</source>
         <translation>Eigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="264"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="261"/>
         <source>Nom :</source>
         <translation>Naam :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="271"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="268"/>
         <source>Commentaire :</source>
         <translation type="unfinished">Commentaar :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="301"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="298"/>
         <source>Description</source>
         <translation>Beschrijving</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="278"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="275"/>
         <source>Installation :</source>
         <translation>Installatie :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="294"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="291"/>
         <source>Localisation :</source>
         <translation>Locatie :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="87"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="84"/>
         <source>Type :</source>
         <translation>Type :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="233"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="230"/>
         <source>Degrouper les bornes</source>
         <translation>Terminals degroeperen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="108"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="105"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Générique</source>
         <translation>Algemeen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="57"/>
         <source>Effectuer le déplacement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="97"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="94"/>
         <source>Couleur pont :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="113"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="110"/>
         <source>Fusible</source>
         <translation>Zekering</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="118"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="115"/>
         <source>Sectionnable</source>
         <translation>Deelbaar</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="123"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="120"/>
         <source>Diode</source>
         <translation>Diode</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="128"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="125"/>
         <source>Terre</source>
         <translation>Aarde</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="176"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="173"/>
         <source>Déplacer dans :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="192"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="189"/>
         <source>Phase</source>
         <translation>Fase</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="197"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="194"/>
         <source>Neutre</source>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="219"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="216"/>
         <source>Position automatique</source>
         <translation>Automatisch plaatsen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="77"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="74"/>
         <source>Étage :</source>
         <translation>Etage :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="226"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="223"/>
         <source>Grouper les bornes</source>
         <translation>Terminals groeperen</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="166"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="163"/>
         <source>Fonction :</source>
         <translation>Functie :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="40"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="37"/>
         <source>Sans</source>
         <translation>Zonder</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="45"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="42"/>
         <source>Avec</source>
         <translation>Met</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="136"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="133"/>
         <source>LED :</source>
         <translation>LED :</translation>
     </message>
@@ -12945,82 +12898,81 @@ De andere velden hebben nu geen betekenis.</translation>
         <translation>Maak een automatische schemabladnummering</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="49"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>Sjabloon:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="26"/>
         <source>Form</source>
-        <translation>Titelblokeigenschappen</translation>
+        <translation type="vanished">Titelblokeigenschappen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="258"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
         <source>Folio :</source>
         <translation>Schemablad :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="223"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="220"/>
         <source>Auteur :</source>
         <translation>Auteur :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="230"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="227"/>
         <source>Indice Rev:</source>
         <translation>Revisie-index:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="241"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beschikbaar als %plant voor in titelbloksjablonen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="276"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %filename voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="285"/>
         <source>Pas de date</source>
         <translation>Geen datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="292"/>
         <source>Date courante</source>
         <translation>Huidige datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="302"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="299"/>
         <source>Appliquer la date actuelle</source>
         <translation>Gebruik huidige datum</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="168"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="165"/>
         <source>Principales</source>
         <translation>Hoofdgegevens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="29"/>
         <source>Informations des cartouches</source>
         <translation>Titelblokinformatie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="234"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
         <translation>Beschikbaar als %locmach voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="313"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
         <translation>Beschikbaar als %date voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="326"/>
         <source>Date fixe :</source>
         <translation>Vaste datum:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="338"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="335"/>
         <source>Disponible en tant que %folio pour les modèles de cartouches
 Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
@@ -13033,62 +12985,62 @@ De volgende variabelen zijn te gebruiken:
 - %autonum : Schemablad-autonummering</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="349"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="346"/>
         <source>Titre :</source>
         <translation>Naam :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="81"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Plaats het titelblok onderaan (horizontaal) of rechts (verticaal) op het schemablad.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="262"/>
         <source>Fichier :</source>
         <translation>Bestand :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="176"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="173"/>
         <source>Date :</source>
         <translation>Datum :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="269"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %author voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="248"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %title voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="359"/>
         <source>Page Num:</source>
         <translation>Bladnummer :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="376"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="373"/>
         <source>Installation :</source>
         <translation>Installatie :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="366"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
         <translation>Naam beschikbaar als %indexrev voor titelbloksjablonen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="380"/>
         <source>Localisation:</source>
         <translation>Locatie:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="406"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="403"/>
         <source>Personnalisées</source>
         <translation>Eigen gegevens</translation>
     </message>
     <message>
-        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.ui" line="411"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Hier kunt u variabele / waarde associaties definiëren. Bijvoorbeeld :
@@ -13585,87 +13537,86 @@ Maximale afmeting : %2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation>Eigenschappen kruisverwijzingen</translation>
+        <translation type="vanished">Eigenschappen kruisverwijzingen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="22"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Type:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="34"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="31"/>
         <source>Représentation:</source>
         <translation>Weergave van kruisverwijzingen:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="42"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="39"/>
         <source>Positionner :</source>
         <translation>Positie van verwijzer:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="53"/>
         <source>XRef Vertical Offset:</source>
         <translation>Plaatsingshoogte van verwijzer:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="60"/>
         <source>10px corresponds to 1 tile displacement</source>
         <translation>10px komt overeen met 1 tegel verplaatsing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
         <source>Set Vertical Offset for the Cross References. 10px corresponds to 1 tile displacement.</source>
         <translation>Geef verticale positie voor kruisverwijzingen. 10px komt overeen met 1 tegel verplaatsing.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="66"/>
         <source>Default - Fit to XRef height</source>
         <translation>Standaard - volgens hoogte kruisverwijzing</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="95"/>
         <source>XRef slave position</source>
         <translation>Positie van het doel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="114"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="111"/>
         <source>Affiche&amp;r en contacts</source>
         <translation>&amp;Contactenweergave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="121"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="118"/>
         <source>Afficher en croix</source>
         <translation>Kruisweergave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="131"/>
         <source>Label des références croisées</source>
         <translation>Formule voor het label van kruisverwijzingen</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="154"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="151"/>
         <source>Maitre</source>
         <translation>Verwijzer</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="164"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="161"/>
         <source>%f-%l%c</source>
         <translation>%f-%l%c</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="187"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="184"/>
         <source>Esclave</source>
         <translation>Doel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="197"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="194"/>
         <source>(%f-%l%c)</source>
         <translation>(%f-%l%c)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="206"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="203"/>
         <source>Créer votre propre texte en vous aidant des variables suivantes :
 %f : le numéro de folio 
 %F: le label de folio
@@ -13682,27 +13633,27 @@ Maximale afmeting : %2px
 %LM : De locatie </translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="227"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="224"/>
         <source>Option d&apos;affichage en croix</source>
         <translation>Opties voor kruisweergave</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="233"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="230"/>
         <source>Afficher les contacts de puissance dans la croix</source>
         <translation>Toon vermogenscontacten in het kruis</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="242"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="239"/>
         <source>Préfixe des contacts de puissance :</source>
         <translation>Voorvoegsel voor vermogenscontacten :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="249"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="246"/>
         <source>Préfixe des contacts temporisés :</source>
         <translation>Voorvoegsel voor tijdvertraagde contacten :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/xrefpropertieswidget.ui" line="262"/>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="259"/>
         <source>Préfixe des contacts inverseurs :</source>
         <translation>Voorvoegsel voor wisselcontacten :</translation>
     </message>
@@ -13760,12 +13711,11 @@ Maximale afmeting : %2px
 <context>
     <name>diagramselection</name>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation>Bladselectie</translation>
+        <translation type="vanished">Bladselectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.ui" line="22"/>
+        <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
     </message>
