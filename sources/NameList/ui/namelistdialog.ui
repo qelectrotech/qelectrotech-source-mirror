@@ -10,9 +10,6 @@
     <height>370</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
   <layout class="QVBoxLayout" name="m_main_layout">
    <item>
     <widget class="QLabel" name="m_top_label">

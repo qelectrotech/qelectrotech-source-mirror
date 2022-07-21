@@ -10,9 +10,6 @@
     <height>105</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
     <enum>QLayout::SetMinimumSize</enum>
