@@ -496,10 +496,6 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>A projekt állapota:</translation>
@@ -626,10 +622,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Párbeszédablak</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Oldal elrendezés</translation>
@@ -692,11 +684,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 </context>
 <context>
     <name>BorderPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translatorcomment>A tervlap oszlopainak és sorainak számához</translatorcomment>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
         <source>Dimensions du folio</source>
@@ -797,10 +784,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 </context>
 <context>
     <name>ConductorPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="21"/>
         <source>Type</source>
@@ -1044,10 +1027,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <source>GroupBox</source>
-        <translation type="vanished">Csoport doboz</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>Konfiguráció</translation>
@@ -1072,10 +1051,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
@@ -1094,10 +1069,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 </context>
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
@@ -1232,10 +1203,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 </context>
 <context>
     <name>DynamicElementTextItemEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
@@ -1515,10 +1482,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Szöveg forrása</translation>
@@ -1787,10 +1750,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Szövegcímke</translation>
@@ -1803,10 +1762,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 </context>
 <context>
     <name>ElementInfoWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
         <source>Informations</source>
@@ -2104,10 +2059,6 @@ Megjegyzés: ezek a lehetőségek NEM engedélyezik, vagy blokkolják az Automat
 </context>
 <context>
     <name>ElementQueryWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
@@ -2687,10 +2638,6 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
 <context>
     <name>EllipseEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation>Közép :</translation>
@@ -2914,10 +2861,6 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation> Számozás lehetőségei</translation>
@@ -3012,10 +2955,6 @@ A „;Növekedés”; mező nincs használva.
 </context>
 <context>
     <name>FormulaAutonumberingW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
@@ -3359,10 +3298,6 @@ Szöveg és szám szintén bevihető.</translation>
         <translation>Engedélyezze a kicsinyítést a tervlapon</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="398"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Felhasználói gyűjtemény elérési útvonala</translation>
@@ -3644,10 +3579,6 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Megjelenítés</translation>
@@ -3830,10 +3761,6 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Pozíció rögzítése</translation>
@@ -3890,10 +3817,6 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialógus</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Szövegcímke</translation>
@@ -3906,10 +3829,6 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
 </context>
 <context>
     <name>IndiTextPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
@@ -4118,10 +4037,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
         <translation>Vonal szerkesztése</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation>X1 :</translation>
@@ -4160,10 +4075,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
 </context>
 <context>
     <name>LinkSingleElementWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
@@ -4321,10 +4232,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A kiválasztott elem szétválasztása&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -4460,10 +4367,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Párbeszédablak</translation>
-    </message>
-    <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
         <translation>Szövegmező változói</translation>
@@ -4471,10 +4374,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
 </context>
 <context>
     <name>NameListWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
@@ -4624,10 +4523,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
 </context>
 <context>
     <name>NumPartEditorW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
@@ -4826,10 +4721,6 @@ Ehhez speciális szerkesztőt kell használni.</translation>
 </context>
 <context>
     <name>PolygonEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Forma</translation>
-    </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
@@ -5072,10 +4963,6 @@ Az összeférhetetlen változók a következők:
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation>Igénylés</translation>
@@ -5115,10 +5002,6 @@ Az összeférhetetlen változók a következők:
 </context>
 <context>
     <name>ProjectPrintWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="vanished">Fő ablak</translation>
-    </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
@@ -9336,10 +9219,6 @@ Kérlek adj hozzá egy új táblázatot, vagy igazítsd a meglévőt megfelelő 
 <context>
     <name>RenameDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialógus</translation>
-    </message>
-    <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Új név :</translation>
@@ -9622,10 +9501,6 @@ Kérlek adj hozzá egy új táblázatot, vagy igazítsd a meglévőt megfelelő 
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Fő</translation>
@@ -9771,10 +9646,6 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>A tervlap hivatkozásának címkéje</translation>
@@ -9801,10 +9672,6 @@ Hozd létre saját szövegedet a következő változók használatával:
 </context>
 <context>
     <name>SearchAndReplaceWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="70"/>
         <source>Mode</source>
@@ -10022,10 +9889,6 @@ Hozd létre saját szövegedet a következő változók használatával:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="25"/>
         <source>Numérotations disponibles :</source>
         <translation>Elérhető számozások :</translation>
@@ -10161,10 +10024,6 @@ A többi mező nincs használva.</translation>
 </context>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
@@ -12335,10 +12194,6 @@ A többi mező nincs használva.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Elérhető információ</translation>
@@ -12420,10 +12275,6 @@ A többi mező nincs használva.</translation>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>A csatlakozó típusának megváltoztatása</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
@@ -12863,10 +12714,6 @@ A többi mező nincs használva.</translation>
 </context>
 <context>
     <name>TitleBlockPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="29"/>
         <source>Informations des cartouches</source>
@@ -13530,10 +13377,6 @@ Maximális hossz : %2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Típus :</translation>
@@ -13704,10 +13547,6 @@ Maximális hossz : %2px
 </context>
 <context>
     <name>diagramselection</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>

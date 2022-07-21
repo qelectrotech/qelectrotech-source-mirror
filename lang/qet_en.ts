@@ -491,10 +491,6 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Project Status:</translation>
@@ -621,10 +617,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Page layout</translation>
@@ -716,10 +708,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Rows:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
@@ -903,10 +891,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>neutral</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Text Formula :</translation>
@@ -1059,10 +1043,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
@@ -1081,10 +1061,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 </context>
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
@@ -1219,10 +1195,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 </context>
 <context>
     <name>DynamicElementTextItemEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
@@ -1502,10 +1474,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Source of text</translation>
@@ -1774,10 +1742,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
@@ -1790,10 +1754,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 </context>
 <context>
     <name>ElementInfoWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
         <source>Informations</source>
@@ -2091,10 +2051,6 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 </context>
 <context>
     <name>ElementQueryWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
@@ -2676,10 +2632,6 @@ All the elements and contents file in this folder will be deleted.</translation>
 <context>
     <name>EllipseEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation>Center :</translation>
@@ -2903,10 +2855,6 @@ All the elements and contents file in this folder will be deleted.</translation>
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation> Options of numbering</translation>
@@ -3002,10 +2950,6 @@ The &quot;Incrementation&quot; field is not used.
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
         <translation>Automatic name :</translation>
@@ -3037,10 +2981,6 @@ that you create. Text and number inputs are
 </context>
 <context>
     <name>FreeTerminalEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Form</translation>
-    </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="17"/>
         <source>Déplacer dans :</source>
@@ -3244,10 +3184,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="198"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Export terminals in the parts list</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="144"/>
@@ -3628,10 +3564,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Display</translation>
@@ -3814,10 +3746,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Lock Position</translation>
@@ -3874,10 +3802,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>TextLabel</translation>
@@ -3890,10 +3814,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 </context>
 <context>
     <name>IndiTextPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
@@ -4102,10 +4022,6 @@ Please use the advanced editor for this.</translation>
         <translation>Edit a line</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation></translation>
@@ -4144,10 +4060,6 @@ Please use the advanced editor for this.</translation>
 </context>
 <context>
     <name>LinkSingleElementWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
@@ -4305,10 +4217,6 @@ Please use the advanced editor for this.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unlink the selected item&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -4444,10 +4352,6 @@ Please use the advanced editor for this.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
         <translation>Title block variables</translation>
@@ -4455,10 +4359,6 @@ Please use the advanced editor for this.</translation>
 </context>
 <context>
     <name>NameListWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
@@ -4608,10 +4508,6 @@ Please use the advanced editor for this.</translation>
 </context>
 <context>
     <name>NumPartEditorW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
@@ -4810,10 +4706,6 @@ Please use the advanced editor for this.</translation>
 </context>
 <context>
     <name>PolygonEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
@@ -5057,10 +4949,6 @@ The following variables are incompatible:
 </context>
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
@@ -9304,10 +9192,6 @@ Please add a new table or adjust the existing table to display all information.<
 <context>
     <name>RenameDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>new name :</translation>
@@ -9590,10 +9474,6 @@ Please add a new table or adjust the existing table to display all information.<
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Main</translation>
@@ -9740,10 +9620,6 @@ E.g. associating the name &quot;volta&quot; with the value &quot;1745&quot; will
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>Label of folio referencing</translation>
@@ -9770,10 +9646,6 @@ Create your own text by using the following variables:
 </context>
 <context>
     <name>SearchAndReplaceWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
@@ -9991,10 +9863,6 @@ Create your own text by using the following variables:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete a variable numbering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -10130,10 +9998,6 @@ The other fields are not used.</translation>
 </context>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
@@ -12304,10 +12168,6 @@ The other fields are not used.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Available information</translation>
@@ -12389,10 +12249,6 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>Change the type of a terminal</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
@@ -12515,10 +12371,6 @@ The other fields are not used.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Générique</source>
         <translation>Generic</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Form</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="57"/>
@@ -12868,10 +12720,6 @@ The other fields are not used.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>Template:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
@@ -13503,10 +13351,6 @@ Maximum length : %2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Type:</translation>
@@ -13676,10 +13520,6 @@ Maximum length : %2px
 </context>
 <context>
     <name>diagramselection</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>

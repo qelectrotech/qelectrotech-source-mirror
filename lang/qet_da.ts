@@ -491,10 +491,6 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Projekt status:</translation>
@@ -621,10 +617,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialogboks</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Side indstilling</translation>
@@ -716,10 +708,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Linjer:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
@@ -903,10 +891,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
         <translation>neutral</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Formel tekst:</translation>
@@ -1035,10 +1019,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <source>GroupBox</source>
-        <translation type="vanished">Gruppe boks</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>Opsætning</translation>
@@ -1063,10 +1043,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
@@ -1085,10 +1061,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 </context>
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
@@ -1223,10 +1195,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 </context>
 <context>
     <name>DynamicElementTextItemEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
@@ -1506,10 +1474,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Kilde tekst</translation>
@@ -1778,10 +1742,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Tekst etiket</translation>
@@ -1794,10 +1754,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 </context>
 <context>
     <name>ElementInfoWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
         <source>Informations</source>
@@ -2095,10 +2051,6 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
 </context>
 <context>
     <name>ElementQueryWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
@@ -2680,10 +2632,6 @@ Alle symboler og fil indhold bliver slettet.</translation>
 <context>
     <name>EllipseEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation>Centrer:</translation>
@@ -2907,10 +2855,6 @@ Alle symboler og fil indhold bliver slettet.</translation>
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation> Nummereringsindstillinger</translation>
@@ -3006,10 +2950,6 @@ Feltet &quot;Incrementation&quot; anvendes ikke.
 </context>
 <context>
     <name>FormulaAutonumberingW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
@@ -3254,10 +3194,6 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="198"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Eksportere terminalrækker i BOM</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="144"/>
@@ -3638,10 +3574,6 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Vise</translation>
@@ -3824,10 +3756,6 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Lås placering</translation>
@@ -3884,10 +3812,6 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialogboks</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Tekst etiket</translation>
@@ -3900,10 +3824,6 @@ Her kan standardværdien angives for dette felt for de oprettede symboler:</tran
 </context>
 <context>
     <name>IndiTextPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
@@ -4112,10 +4032,6 @@ Brug avanceret redigering til dette.</translation>
         <translation>Ændre streg</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation>X1:</translation>
@@ -4154,10 +4070,6 @@ Brug avanceret redigering til dette.</translation>
 </context>
 <context>
     <name>LinkSingleElementWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
@@ -4315,10 +4227,6 @@ Brug avanceret redigering til dette.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Slette valgt symbol&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -4454,10 +4362,6 @@ Brug avanceret redigering til dette.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialogboks</translation>
-    </message>
-    <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
         <translation>Titelblok variabler</translation>
@@ -4465,10 +4369,6 @@ Brug avanceret redigering til dette.</translation>
 </context>
 <context>
     <name>NameListWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
@@ -4618,10 +4518,6 @@ Brug avanceret redigering til dette.</translation>
 </context>
 <context>
     <name>NumPartEditorW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
@@ -4820,10 +4716,6 @@ Brug avanceret redigering til dette.</translation>
 </context>
 <context>
     <name>PolygonEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
@@ -5068,10 +4960,6 @@ Følgende variabler er ikke kompatible:
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation>Forespørgsel</translation>
@@ -5111,10 +4999,6 @@ Følgende variabler er ikke kompatible:
 </context>
 <context>
     <name>ProjectPrintWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="vanished">Hoved vindue</translation>
-    </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
@@ -9347,10 +9231,6 @@ Tilføj ny tabel, eller juster eksisterende tabel for at vise alle oplysninger.<
 <context>
     <name>RenameDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialogboks</translation>
-    </message>
-    <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Nyt navn:</translation>
@@ -9633,10 +9513,6 @@ Tilføj ny tabel, eller juster eksisterende tabel for at vise alle oplysninger.<
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Forside</translation>
@@ -9783,10 +9659,6 @@ Eksempel: forbind navn &quot;volta&quot; og værdi &quot;1745&quot; erstat %{vol
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>Etiket ark rapport</translation>
@@ -9813,10 +9685,6 @@ Opret tekst ved hjælp af følgende variabler:
 </context>
 <context>
     <name>SearchAndReplaceWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
@@ -10035,10 +9903,6 @@ Opret tekst ved hjælp af følgende variabler:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Slet variabel nummerering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -10176,10 +10040,6 @@ De andre felter anvendes ikke.</translation>
 </context>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
@@ -12350,10 +12210,6 @@ De andre felter anvendes ikke.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
-    </message>
-    <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Information tilgængelig</translation>
@@ -12435,10 +12291,6 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>Ændre terminal type</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formular</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
@@ -12910,10 +12762,6 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>Skabelon:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
@@ -13546,10 +13394,6 @@ Maksimum længde: %2piksel
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Type:</translation>
@@ -13719,10 +13563,6 @@ Maksimum længde: %2piksel
 </context>
 <context>
     <name>diagramselection</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Form</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>

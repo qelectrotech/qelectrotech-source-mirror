@@ -491,10 +491,6 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Beheer automatische nummering</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Projectstatus :</translation>
@@ -621,10 +617,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Stuklijstweergave</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Pagina-indeling</translation>
@@ -716,10 +708,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Rijen:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Kaderopmaak</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
@@ -903,10 +891,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <translation>Nul</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Geleidereigenschappen</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Tekstformule :</translation>
@@ -1035,10 +1019,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <source>GroupBox</source>
-        <translation type="vanished">Groepenvenster</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>Configuratie</translation>
@@ -1063,10 +1043,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Informatie</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
@@ -1085,10 +1061,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 </context>
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Grepen</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
@@ -1223,10 +1195,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 </context>
 <context>
     <name>DynamicElementTextItemEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Elementtekst bewerken</translation>
-    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
@@ -1506,10 +1474,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Tekst bewerken</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="69"/>
         <source>Conserver la rotation visuel</source>
         <translation>Rotatie behouden</translation>
@@ -1778,10 +1742,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Tekstlabel</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
@@ -1794,10 +1754,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 </context>
 <context>
     <name>ElementInfoWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Informatie</translation>
-    </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
         <source>Informations</source>
@@ -2095,10 +2051,6 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
 </context>
 <context>
     <name>ElementQueryWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Exporteren</translation>
-    </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
@@ -2679,10 +2631,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>EllipseEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Ellips</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation>Middelpunt :</translation>
@@ -2906,10 +2854,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Automatische schemabladnummering</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="75"/>
         <source>C&amp;réer de nouveaux folios</source>
         <translation>M&amp;aak nieuwe schemabladen</translation>
@@ -3002,10 +2946,6 @@ Het veld &quot;Waarde&quot; heeft nu geen betekenis.
 </context>
 <context>
     <name>FormulaAutonumberingW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Automatische naamgeving</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
@@ -3421,10 +3361,6 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
         <translation>Sta uitzoomen toe buiten het schemabladbereik</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Algemene configuratie</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
         <translation>Naar boven afronden bij meer dan 0,5</translation>
@@ -3634,10 +3570,6 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Tabeleigenchappen</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Weergave</translation>
@@ -3820,10 +3752,6 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Afbeeldingseigenschappen</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Positie vergrendelen</translation>
@@ -3880,10 +3808,6 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Importeren elementteksten</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Tekstlabel</translation>
@@ -3896,10 +3820,6 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
 </context>
 <context>
     <name>IndiTextPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Tekstbewerker</translation>
-    </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
@@ -4108,10 +4028,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <translation>Een lijn wijzigen</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Lijninstellingen</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation>X1 :</translation>
@@ -4150,10 +4066,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 </context>
 <context>
     <name>LinkSingleElementWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Kruisverwijzing</translation>
-    </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
@@ -4311,10 +4223,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Elementverwijzingen</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Verbreek verbinding met het geselecteerde element&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -4450,10 +4358,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Namenlijst</translation>
-    </message>
-    <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
         <translation>Titelblokvariabelen</translation>
@@ -4461,10 +4365,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 </context>
 <context>
     <name>NameListWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Namenlijst</translation>
-    </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
@@ -4614,10 +4514,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 </context>
 <context>
     <name>NumPartEditorW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Bladnummering</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
@@ -4816,10 +4712,6 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
 </context>
 <context>
     <name>PolygonEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Veelhoek</translation>
-    </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
@@ -5064,10 +4956,6 @@ De volgende variabelen zijn mogelijk :
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Dialoog</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation>Verzoek</translation>
@@ -5107,10 +4995,6 @@ De volgende variabelen zijn mogelijk :
 </context>
 <context>
     <name>ProjectPrintWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="vanished">Afdrukinstellingen</translation>
-    </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
@@ -9342,10 +9226,6 @@ Maak een nieuwe tabel of pas de huidige tabel aan zodat alle informatie hierin k
 <context>
     <name>RenameDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Naam wijzigen</translation>
-    </message>
-    <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Nieuwe naam :</translation>
@@ -9628,10 +9508,6 @@ Maak een nieuwe tabel of pas de huidige tabel aan zodat alle informatie hierin k
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Wijzigen schemablad</translation>
-    </message>
-    <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Hoofdgegevens</translation>
@@ -9778,10 +9654,6 @@ Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wor
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Label schemabladenoverzicht</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>Label voor schemabladenoverzicht</translation>
@@ -9809,10 +9681,6 @@ Maak uw eigen label met behulp van de volgende variabelen:
 </context>
 <context>
     <name>SearchAndReplaceWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Zoeken en vervangen</translation>
-    </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
@@ -10030,10 +9898,6 @@ Maak uw eigen label met behulp van de volgende variabelen:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Selectie automatische nummering</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Variabele verwijderen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -10167,10 +10031,6 @@ De andere velden hebben nu geen betekenis.</translation>
 </context>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Vrije vorm-eigenschappen</translation>
-    </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
@@ -12341,10 +12201,6 @@ De andere velden hebben nu geen betekenis.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Informatieweergave</translation>
-    </message>
-    <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Beschikbare informatie</translation>
@@ -12426,10 +12282,6 @@ De andere velden hebben nu geen betekenis.</translation>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>Terminaltype wijzigen</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Terminal bewerken</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
@@ -12901,10 +12753,6 @@ De andere velden hebben nu geen betekenis.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>Sjabloon:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Titelblokeigenschappen</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
@@ -13537,10 +13385,6 @@ Maximale afmeting : %2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Eigenschappen kruisverwijzingen</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Type:</translation>
@@ -13710,10 +13554,6 @@ Maximale afmeting : %2px
 </context>
 <context>
     <name>diagramselection</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Bladselectie</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>

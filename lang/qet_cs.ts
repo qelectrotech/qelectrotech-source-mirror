@@ -491,10 +491,6 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="146"/>
         <source>Project Status:</source>
         <translation>Stav projektu:</translation>
@@ -621,10 +617,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>Rozvržení strany</translation>
@@ -716,10 +708,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/ui/borderpropertieswidget.ui" line="52"/>
         <source>Lignes :</source>
         <translation>Řádky:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
@@ -903,10 +891,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <translation>Nulový</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="251"/>
         <source>Formule du texte :</source>
         <translation>Vzorec textu:</translation>
@@ -1035,10 +1019,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <source>GroupBox</source>
-        <translation type="vanished">Skupinový rámeček</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>Nastavení</translation>
@@ -1063,10 +1043,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
@@ -1085,10 +1061,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 </context>
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
@@ -1223,10 +1195,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 </context>
 <context>
     <name>DynamicElementTextItemEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
@@ -1506,10 +1474,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
         <source>Source du texte</source>
         <translation>Zdroj textu</translation>
@@ -1778,10 +1742,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>Textový štítek</translation>
@@ -1794,10 +1754,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 </context>
 <context>
     <name>ElementInfoWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
         <source>Informations</source>
@@ -2095,10 +2051,6 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
 </context>
 <context>
     <name>ElementQueryWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
@@ -2681,10 +2633,6 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
 <context>
     <name>EllipseEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation>Střed:</translation>
@@ -2908,10 +2856,6 @@ Všechny prvky a složky obsažené v této složce budou smazány.</translation
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="104"/>
         <source> Options de numérotation</source>
         <translation>Volby pro číslování</translation>
@@ -3006,10 +2950,6 @@ Pole „Přírůstek“ se nepoužívá.</translation>
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
         <translation>Automatické pojmenování:</translation>
@@ -3050,10 +2990,6 @@ textu a čísel.</translation>
 </context>
 <context>
     <name>FreeTerminalEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="17"/>
         <source>Déplacer dans :</source>
@@ -3258,10 +3194,6 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="198"/>
         <source>Exporter les bornes dans la nomenclature</source>
         <translation>Vyvést svorky do seznamu součástí</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="144"/>
@@ -3642,10 +3574,6 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>Zobrazení</translation>
@@ -3828,10 +3756,6 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>Zamknout polohu</translation>
@@ -3888,10 +3812,6 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>Textový štítek</translation>
@@ -3904,10 +3824,6 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
 </context>
 <context>
     <name>IndiTextPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
@@ -4116,10 +4032,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
         <translation>Upravit čáru</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation>X1:</translation>
@@ -4158,10 +4070,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
 </context>
 <context>
     <name>LinkSingleElementWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="53"/>
         <source>Cet élément est déjà lié</source>
@@ -4319,10 +4227,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Odpojit vybraný prvek&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -4458,10 +4362,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
 <context>
     <name>NameListDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
         <translation>Proměnné záhlaví výkresu</translation>
@@ -4469,10 +4369,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
 </context>
 <context>
     <name>NameListWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
@@ -4622,10 +4518,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
 </context>
 <context>
     <name>NumPartEditorW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
@@ -4824,10 +4716,6 @@ Na toto , prosím, použijte pokročilý editor.</translation>
 </context>
 <context>
     <name>PolygonEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="28"/>
         <source>X</source>
@@ -5074,10 +4962,6 @@ Následující proměnné jsou neslučitelné:
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
         <translation>Žádost</translation>
@@ -5117,10 +5001,6 @@ Následující proměnné jsou neslučitelné:
 </context>
 <context>
     <name>ProjectPrintWindow</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="vanished">Hlavní okno</translation>
-    </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="28"/>
         <source>Folios à imprimer :</source>
@@ -9362,10 +9242,6 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
 <context>
     <name>RenameDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">Dialog</translation>
-    </message>
-    <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>Nový název:</translation>
@@ -9648,10 +9524,6 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>Hlavní</translation>
@@ -9798,10 +9670,6 @@ Přiřazení názvu volta a hodnoty 1745 nahradí v záhlaví výkresu %{volta} 
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>Štítek odkazování listu</translation>
@@ -9828,10 +9696,6 @@ Vytvořte svůj vlastní text pomocí následujících proměnných:
 </context>
 <context>
     <name>SearchAndReplaceWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="100"/>
         <source>Aller à la correspondance suivante</source>
@@ -10049,10 +9913,6 @@ Vytvořte svůj vlastní text pomocí následujících proměnných:
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="130"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Smazat proměnnou číslování&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -10181,10 +10041,6 @@ Pole „Přírůstek“ se nepoužívá.</translation>
 </context>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
@@ -12355,10 +12211,6 @@ Pole „Přírůstek“ se nepoužívá.</translation>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>Dostupné informace</translation>
@@ -12440,10 +12292,6 @@ Pole „Přírůstek“ se nepoužívá.</translation>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>Změnit typ svorky</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
@@ -12566,10 +12414,6 @@ Pole „Přírůstek“ se nepoužívá.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Générique</source>
         <translation>Obecný</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">Formulář</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="57"/>
@@ -12919,10 +12763,6 @@ Pole „Přírůstek“ se nepoužívá.</translation>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="46"/>
         <source>Modèle :</source>
         <translation>Vzor:</translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="255"/>
@@ -13554,10 +13394,6 @@ Největší délka: %2px</translation>
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>Typ:</translation>
@@ -13727,10 +13563,6 @@ Největší délka: %2px</translation>
 </context>
 <context>
     <name>diagramselection</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">Formulář</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>

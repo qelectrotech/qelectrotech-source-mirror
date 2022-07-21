@@ -491,10 +491,6 @@
 <context>
     <name>AutoNumberingManagementW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="29"/>
         <source>Range</source>
         <translation>範囲</translation>
@@ -621,10 +617,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>BOMExportDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="obsolete">ダイアログ</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/bomexportdialog.ui" line="17"/>
         <source>Mise en page</source>
         <translation>レイアウト</translation>
@@ -687,10 +679,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </context>
 <context>
     <name>BorderPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/borderpropertieswidget.ui" line="17"/>
         <source>Dimensions du folio</source>
@@ -788,10 +776,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </context>
 <context>
     <name>ConductorPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="21"/>
         <source>Type</source>
@@ -1035,10 +1019,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>ConfigSaveLoaderWidget</name>
     <message>
-        <source>GroupBox</source>
-        <translation type="vanished">GroupBox</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/configsaveloaderwidget.ui" line="14"/>
         <source>Configuration</source>
         <translation>設定</translation>
@@ -1063,10 +1043,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DiagramContextWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/diagramcontextwidget.ui" line="17"/>
         <location filename="../sources/ui/diagramcontextwidget.cpp" line="155"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
@@ -1085,10 +1061,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </context>
 <context>
     <name>DiagramEditorHandlerSizeWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="17"/>
         <source>Poignées :</source>
@@ -1223,10 +1195,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </context>
 <context>
     <name>DynamicElementTextItemEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="19"/>
         <source>Exporter l&apos;actuelle configuration des textes</source>
@@ -1506,10 +1474,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>DynamicTextFieldEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="69"/>
         <source>Conserver la rotation visuel</source>
         <translation type="unfinished"></translation>
@@ -1778,10 +1742,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>ElementInfoPartWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/elementinfopartwidget.ui" line="51"/>
         <source>TextLabel</source>
         <translation>テキストラベル</translation>
@@ -1794,10 +1754,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </context>
 <context>
     <name>ElementInfoWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
         <source>Informations</source>
@@ -2095,10 +2051,6 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </context>
 <context>
     <name>ElementQueryWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="32"/>
         <source>Informations disponibles</source>
@@ -2678,10 +2630,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>EllipseEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="obsolete">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/ellipseeditor.ui" line="20"/>
         <source>Centre :</source>
         <translation type="unfinished"></translation>
@@ -2906,10 +2854,6 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>FolioAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/folioautonumbering.ui" line="37"/>
         <source>Numérotation automatique de Folio :</source>
         <translation>フォリオの自動採番 :</translation>
@@ -3005,10 +2949,6 @@ Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 <context>
     <name>FormulaAutonumberingW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="38"/>
         <source>Dénomination automatique :</source>
         <translation>自動の名前 :</translation>
@@ -3048,10 +2988,6 @@ that you create. Text and number inputs are
 </context>
 <context>
     <name>FreeTerminalEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="17"/>
         <source>Déplacer dans :</source>
@@ -3159,10 +3095,6 @@ that you create. Text and number inputs are
 </context>
 <context>
     <name>GeneralConfigurationPage</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="21"/>
         <source>Apparence</source>
@@ -3640,10 +3572,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>GraphicsTablePropertiesEditor</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.ui" line="21"/>
         <source>Affichage</source>
         <translation>表示</translation>
@@ -3826,10 +3754,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>ImagePropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/imagepropertieswidget.ui" line="20"/>
         <source>Verrouiller la position</source>
         <translation>位置を固定</translation>
@@ -3886,10 +3810,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 <context>
     <name>ImportElementTextPatternDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">ダイアログ</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/importelementtextpatterndialog.ui" line="17"/>
         <source>TextLabel</source>
         <translation>テキストラベル</translation>
@@ -3902,10 +3822,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
 </context>
 <context>
     <name>IndiTextPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="17"/>
         <source>X :</source>
@@ -4114,10 +4030,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>線を変更</translation>
     </message>
     <message>
-        <source>Form</source>
-        <translation type="obsolete">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/lineeditor.ui" line="49"/>
         <source>X1 :</source>
         <translation type="unfinished"></translation>
@@ -4156,10 +4068,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 </context>
 <context>
     <name>LinkSingleElementWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="17"/>
         <source>Voir cet élément</source>
@@ -4317,10 +4225,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>MasterPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="29"/>
         <source>Éléments liés</source>
         <translation>リンクする要素</translation>
@@ -4456,10 +4360,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>NameListDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">ダイアログ</translation>
-    </message>
-    <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
         <translation>表題欄の変数</translation>
@@ -4467,10 +4367,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 </context>
 <context>
     <name>NameListWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/NameList/ui/namelistwidget.ui" line="18"/>
         <source>Langue</source>
@@ -4620,10 +4516,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 </context>
 <context>
     <name>NumPartEditorW</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="110"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="117"/>
@@ -4822,10 +4714,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 </context>
 <context>
     <name>PolygonEditor</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.ui" line="17"/>
         <source>Points du polygone :</source>
@@ -5067,10 +4955,6 @@ Les variables suivantes sont incompatibles :
 </context>
 <context>
     <name>ProjectDBModelPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="17"/>
         <source>Requête</source>
@@ -9325,10 +9209,6 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>RenameDialog</name>
     <message>
-        <source>Dialog</source>
-        <translation type="vanished">ダイアログ</translation>
-    </message>
-    <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.ui" line="17"/>
         <source>Nouveau nom :</source>
         <translation>新しい名前 :</translation>
@@ -9611,10 +9491,6 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>ReplaceFolioWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="42"/>
         <source>Principales</source>
         <translation>主要</translation>
@@ -9761,10 +9637,6 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>ReportPropertieWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="17"/>
         <source>Label de report de folio</source>
         <translation>フォリオ参照のラベル</translation>
@@ -9791,10 +9663,6 @@ Créer votre propre texte en vous aidant des variables suivantes :
 </context>
 <context>
     <name>SearchAndReplaceWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.ui" line="35"/>
         <source>Chercher :</source>
@@ -10012,10 +9880,6 @@ Créer votre propre texte en vous aidant des variables suivantes :
 <context>
     <name>SelectAutonumW</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="25"/>
         <source>Numérotations disponibles :</source>
         <translation>使用できる採番 :</translation>
@@ -10151,10 +10015,6 @@ Les autres champs ne sont pas utilisés.</source>
 </context>
 <context>
     <name>ShapeGraphicsItemPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.ui" line="17"/>
         <source>Trait</source>
@@ -12325,10 +12185,6 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>SummaryQueryWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/dataBase/ui/summaryquerywidget.ui" line="35"/>
         <source>Informations disponibles</source>
         <translation>使用可能な情報</translation>
@@ -12410,10 +12266,6 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">フォーム</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="17"/>
@@ -12536,10 +12388,6 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="184"/>
         <source>Générique</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Form</source>
-        <translation type="obsolete">フォーム</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="57"/>
@@ -12857,10 +12705,6 @@ Les autres champs ne sont pas utilisés.</source>
 </context>
 <context>
     <name>TitleBlockPropertiesWidget</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="29"/>
         <source>Informations des cartouches</source>
@@ -13525,10 +13369,6 @@ Longueur maximale : %2px
 <context>
     <name>XRefPropertiesWidget</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="19"/>
         <source>Type :</source>
         <translation>種類 :</translation>
@@ -13699,10 +13539,6 @@ Longueur maximale : %2px
 </context>
 <context>
     <name>diagramselection</name>
-    <message>
-        <source>Form</source>
-        <translation type="vanished">フォーム</translation>
-    </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="19"/>
         <source>TextLabel</source>
