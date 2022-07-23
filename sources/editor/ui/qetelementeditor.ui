@@ -35,6 +35,7 @@
     <addaction name="m_new_action"/>
     <addaction name="m_open_action"/>
     <addaction name="m_open_from_file_action"/>
+    <addaction name="m_import_dxf"/>
     <addaction name="m_open_dxf_action"/>
     <addaction name="m_save_action"/>
     <addaction name="m_save_as_action"/>
@@ -499,6 +500,15 @@
    </property>
    <property name="shortcut">
     <string>Space</string>
+   </property>
+  </action>
+  <action name="m_import_dxf">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/run-dxf.png</normaloff>:/ico/16x16/run-dxf.png</iconset>
+   </property>
+   <property name="text">
+    <string>Importer un dxf</string>
    </property>
   </action>
  </widget>

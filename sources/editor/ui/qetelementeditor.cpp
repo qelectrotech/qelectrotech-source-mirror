@@ -46,6 +46,7 @@
 #include "dynamictextfieldeditor.h"
 #include "../../newelementwizard.h"
 #include "../editorcommands.h"
+#include "../../dxf/dxftoelmt.h"
 
 #include <QSettings>
 #include <QActionGroup>
@@ -1490,3 +1491,31 @@ void QETElementEditor::on_m_donate_action_triggered() {
 }
 
 void QETElementEditor::on_m_about_qt_action_triggered() { qApp->aboutQt(); }
+
+void QETElementEditor::on_m_import_dxf_triggered()
+{
+	if (dxf2ElmtIsPresent(true, this))
+	{
+		QString file_path{QFileDialog::getOpenFileName(this,
+													   QObject::tr("Importer un fichier dxf"),
+													   "/home",
+													   "DXF (*.dxf)")};
+		if (file_path.isEmpty()) {
+			return;
+		}
+
+		QMessageBox::information(this, tr("Avertissement"), tr("L'import d'un dxf volumineux peut prendre du temps \n"
+															   "veuillez patienter durant l'import..."));
+
+		const QByteArray array_{dxfToElmt(file_path)};
+		if (array_.isEmpty()) {
+			return;
+		}
+		QDomDocument xml_;
+		xml_.setContent(array_);
+
+		m_elmt_scene->fromXml(xml_);
+		fillPartsList();
+	}
+}
+
