@@ -47,6 +47,7 @@
 #include "../../newelementwizard.h"
 #include "../editorcommands.h"
 #include "../../dxf/dxftoelmt.h"
+#include "../UndoCommand/openelmtcommand.h"
 
 #include <QSettings>
 #include <QActionGroup>
@@ -1514,8 +1515,7 @@ void QETElementEditor::on_m_import_dxf_triggered()
 		QDomDocument xml_;
 		xml_.setContent(array_);
 
-		m_elmt_scene->fromXml(xml_);
-		fillPartsList();
+		m_elmt_scene->undoStack().push(new OpenElmtCommand(xml_, m_elmt_scene));
 	}
 }
 
