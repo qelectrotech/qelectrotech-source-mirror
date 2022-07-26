@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThirdPartyBinaryInstallDialog</class>
+ <widget class="QDialog" name="ThirdPartyBinaryInstallDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>373</width>
+    <height>64</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Logiciel tiers requis</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="2">
+    <widget class="QDialogButtonBox" name="m_button_box">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QPushButton" name="m_download_pb">
+     <property name="text">
+      <string>Télechargement</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/edit-download.png</normaloff>:/ico/16x16/edit-download.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="m_install_dir_pb">
+     <property name="text">
+      <string>Dossier installation</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../qelectrotech.qrc">
+       <normaloff>:/ico/16x16/folder-open.png</normaloff>:/ico/16x16/folder-open.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="m_label">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="margin">
+      <number>5</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../qelectrotech.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>m_button_box</sender>
+   <signal>accepted()</signal>
+   <receiver>ThirdPartyBinaryInstallDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_button_box</sender>
+   <signal>rejected()</signal>
+   <receiver>ThirdPartyBinaryInstallDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

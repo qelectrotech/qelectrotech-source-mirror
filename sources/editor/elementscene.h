@@ -37,6 +37,9 @@ class QKeyEvent;
 	This class is the canvas allowing the visual edition of an electrial element.
 	It displays the various primitives composing the drawing of the element,
 	the border due to its fixed size and its hotspot.
+
+	For add and remove item prefer use custom method addItems and removeItems instead of
+	addItem and removeItem, because these methods emit signal partAdded and partRemoved.
 */
 class ElementScene : public QGraphicsScene
 {
@@ -124,6 +127,8 @@ class ElementScene : public QGraphicsScene
 		void cut();
 		void copy();
 		QETElementEditor* editor() const;
+		void addItems(QVector<QGraphicsItem *> items);
+		void removeItems(QVector<QGraphicsItem *> items);
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;

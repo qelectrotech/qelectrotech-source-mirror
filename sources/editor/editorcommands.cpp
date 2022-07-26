@@ -90,54 +90,6 @@ void ElementEditionCommand::setElementView(ElementView *view) {
 	m_view = view;
 }
 
-/*** DeletePartsCommand ***/
-/**
-	Constructeur
-	@param scene ElementScene concernee
-	@param parts Liste des parties supprimees
-	@param parent QUndoCommand parent
-*/
-DeletePartsCommand::DeletePartsCommand(
-	ElementScene *scene,
-	const QList<QGraphicsItem *>& parts,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, nullptr, parent),
-	deleted_parts(parts)
-{
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> qgiManager().manage(qgi);
-	}
-}
-
-/// Destructeur : detruit egalement les parties supprimees
-DeletePartsCommand::~DeletePartsCommand()
-{
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> qgiManager().release(qgi);
-	}
-}
-
-/// Restaure les parties supprimees
-void DeletePartsCommand::undo()
-{
-	m_scene -> blockSignals(true);
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> addItem(qgi);
-	}
-	m_scene -> blockSignals(false);
-}
-
-/// Supprime les parties
-void DeletePartsCommand::redo()
-{
-	m_scene -> blockSignals(true);
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> removeItem(qgi);
-	}
-	m_scene -> blockSignals(false);
-}
-
 /*** CutPartsCommand ***/
 /**
 	Constructeur
@@ -150,7 +102,7 @@ CutPartsCommand::CutPartsCommand(
 	const QList<QGraphicsItem *>& parts,
 	QUndoCommand *parent
 ) :
-	DeletePartsCommand(scene, parts, parent)
+	DeletePartsCommand(scene, parts.toVector(), parent)
 {
 	setText(QString(QObject::tr("couper des parties", "undo caption")));
 }
@@ -201,58 +153,6 @@ void MovePartsCommand::redo()
 		return;
 	}
 	foreach(QGraphicsItem *qgi, moved_parts) qgi -> moveBy(movement.x(), movement.y());
-}
-
-/*** AddPartCommand ***/
-/**
-	Constructeur
-	@param name Nom de la partie ajoutee
-	@param scene ElementScene concernee
-	@param p partie ajoutee
-	@param parent QUndoCommand parent
-*/
-AddPartCommand::AddPartCommand(
-	const QString &name,
-	ElementScene *scene,
-	QGraphicsItem *p,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), scene, nullptr, parent),
-	part(p),
-	first_redo(true)
-{
-	m_scene -> qgiManager().manage(part);
-}
-
-/// Destructeur
-AddPartCommand::~AddPartCommand()
-{
-	m_scene -> qgiManager().release(part);
-}
-
-/// Annule l'ajout
-void AddPartCommand::undo()
-{
-	m_scene -> removeItem(part);
-}
-
-/// Refait l'ajout
-void AddPartCommand::redo()
-{
-	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
-	if (first_redo) {
-		if (!part -> zValue()) {
-			// the added part has no specific zValue already defined, we put it
-			// above existing items (but still under terminals)
-			QList<QGraphicsItem *> existing_items = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
-			qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
-			part -> setZValue(z);
-		}
-		m_scene -> clearSelection();
-		first_redo = false;
-		return;
-	}
-	m_scene -> addItem(part);
 }
 
 /**

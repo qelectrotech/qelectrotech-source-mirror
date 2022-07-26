@@ -17,7 +17,7 @@
 */
 #include "eseventaddpolygon.h"
 
-#include "../editorcommands.h"
+#include "../UndoCommand/addpartcommand.h"
 #include "../elementscene.h"
 #include "../graphicspart/partpolygon.h"
 

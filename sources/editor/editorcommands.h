@@ -34,6 +34,7 @@
 #include "graphicspart/partterminal.h"
 #include "graphicspart/parttext.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "UndoCommand/deletepartscommand.h"
 
 
 /**
@@ -72,29 +73,6 @@ class ElementEditionCommand : public QUndoCommand
 };
 
 /**
-	This command deletes one or several primitives/parts when editing an
-	electrical element.
-*/
-class DeletePartsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>&, QUndoCommand * = nullptr);
-	~DeletePartsCommand() override;
-	private:
-	DeletePartsCommand(const DeletePartsCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	
-	// attributes
-	private:
-	/// Deleted primitives
-	QList<QGraphicsItem *> deleted_parts;
-};
-
-/**
 	This command cut primitives when editing an electrical element.
 */
 class CutPartsCommand : public DeletePartsCommand {
@@ -128,30 +106,6 @@ class MovePartsCommand : public ElementEditionCommand {
 	QList<QGraphicsItem *> moved_parts;
 	/// applied movement
 	QPointF movement;
-	/// Prevent the first call to redo()
-	bool first_redo;
-};
-
-/**
-	This command adds a primitive when editing an electrical element.
-*/
-class AddPartCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = nullptr);
-	~AddPartCommand() override;
-	private:
-	AddPartCommand(const AddPartCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	
-	// attributes
-	private:
-	/// Added primitive
-	QGraphicsItem *part;
 	/// Prevent the first call to redo()
 	bool first_redo;
 };
@@ -310,6 +264,5 @@ private:
     QList<QGraphicsItem*> m_items;
 
 };
-
 
 #endif

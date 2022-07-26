@@ -17,7 +17,7 @@
 */
 #include "eseventaddline.h"
 
-#include "../editorcommands.h"
+#include "../UndoCommand/addpartcommand.h"
 #include "../elementscene.h"
 #include "../graphicspart/partline.h"
 #include "../ui/qetelementeditor.h"

@@ -119,7 +119,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
-				emit(partsAdded());
 			}
 			return;
 		}
@@ -151,7 +150,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e)
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
-				emit(partsAdded());
 			}
 			return;
 		}
@@ -171,7 +169,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e)
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
-				emit(partsAdded());
 			}
 			return;
 		}
@@ -199,7 +196,6 @@ void ElementScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
-				emit(partsAdded());
 			}
 			return;
 		}
@@ -223,7 +219,6 @@ void ElementScene::keyPressEvent(QKeyEvent *event)
 			{
 				delete m_event_interface;
 				m_event_interface = nullptr;
-				emit(partsAdded());
 			}
 			return;
 		}
@@ -726,6 +721,38 @@ QETElementEditor* ElementScene::editor() const
 }
 
 /**
+ * @brief ElementScene::addItems
+ * Add items to the scene and emit partsAdded.
+ * Prefer always use this method instead of QGraphicsScene::addItem
+ * even if you want to add one item, for gain the signal emission
+ * @param items
+ */
+void ElementScene::addItems(QVector<QGraphicsItem *> items)
+{
+	for (const auto &item : items) {
+		addItem(item);
+	}
+
+	emit partsAdded();
+}
+
+/**
+ * @brief ElementScene::removeItems
+ * Remove items from the scene and emit partsRemoved.
+ * Prefer always use this method instead of QGraphicsScene::removeItem
+ * even if you want to remove one item, for gain the signal emission
+ * @param items
+ */
+void ElementScene::removeItems(QVector<QGraphicsItem *> items)
+{
+	for (const auto &item : items) {
+		removeItem(item);
+	}
+
+	emit partsRemoved();
+}
+
+/**
 	@brief ElementScene::slot_select
 	Select the item in content,
 	every others items in the scene are deselected
@@ -796,18 +823,15 @@ void ElementScene::slot_invertSelection()
 */
 void ElementScene::slot_delete()
 {
-	// check that there is something selected
-	// verifie qu'il y a qqc de selectionne
-	QList<QGraphicsItem *> selected_items = selectedItems();
-	if (selected_items.isEmpty()) return;
+	const auto selected_items{selectedItems().toVector()};
+	if (selected_items.isEmpty()) {
+		return;
+	}
 
-	// erase everything that is selected
-	// efface tout ce qui est selectionne
 	m_undo_stack.push(new DeletePartsCommand(this, selected_items));
 
-	// removing items does not trigger QGraphicsScene::selectionChanged()
-	emit(partsRemoved());
-	emit(selectionChanged());
+		// removing items does not trigger QGraphicsScene::selectionChanged()
+	emit selectionChanged();
 }
 
 /**
