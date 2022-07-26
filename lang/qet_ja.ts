@@ -2270,29 +2270,29 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="279"/>
+        <location filename="../sources/editor/elementscene.cpp" line="274"/>
         <source>Déplacer une primitive</source>
         <translation>プリミティブを移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="835"/>
+        <location filename="../sources/editor/elementscene.cpp" line="859"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>作成者の情報を編集</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="840"/>
+        <location filename="../sources/editor/elementscene.cpp" line="864"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>この自由欄を要素の作成者、ライセンス、他の有用と考えられる情報などに利用できます。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="904"/>
+        <location filename="../sources/editor/elementscene.cpp" line="928"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>名前を編集</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="906"/>
+        <location filename="../sources/editor/elementscene.cpp" line="930"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>要素名を複数の言語で入力できます。</translation>
     </message>
@@ -6640,52 +6640,52 @@ Options disponibles :
 <context>
     <name>QETElementEditor</name>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="213"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="214"/>
         <source>&amp;Nouveau</source>
         <translation>新規作成 (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="222"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="223"/>
         <source>&amp;Ouvrir</source>
         <translation>開く (&amp;O)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="231"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="232"/>
         <source>&amp;Ouvrir depuis un fichier</source>
         <translation>ファイルから開く (&amp;O)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="240"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="241"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
         <translation>DXF コンバータ・プラグインを開始 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="249"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="250"/>
         <source>&amp;Enregistrer</source>
         <translation>保存 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="258"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="259"/>
         <source>Enregistrer sous</source>
         <translation>名前を付けて保存</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="267"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="268"/>
         <source>Enregistrer dans un fichier</source>
         <translation>ファイルへ保存</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="276"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="277"/>
         <source>Recharger</source>
         <translation>再読込</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="285"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="286"/>
         <source>&amp;Quitter</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="204"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="205"/>
         <source>Tout sélectionner</source>
         <translation>全て選択</translation>
     </message>
@@ -6695,167 +6695,172 @@ Options disponibles :
         <translation type="unfinished">QElectroTech - 要素エディタ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="92"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="93"/>
         <source>&amp;Aide</source>
         <translation type="unfinished">ヘルプ (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="111"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="112"/>
         <source>Annulations</source>
         <translation type="unfinished">復元</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="123"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="124"/>
         <source>Parties</source>
         <translation type="unfinished">部品</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="135"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="136"/>
         <source>Informations</source>
         <translation type="unfinished">情報</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="144"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="145"/>
         <source>Outils</source>
         <translation type="unfinished">ツール</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="161"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="162"/>
         <source>Affichage</source>
         <translation type="unfinished">表示</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="176"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="177"/>
         <source>Élément</source>
         <translation type="unfinished">要素</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="189"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="190"/>
         <source>Annulation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="294"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="295"/>
         <source>Désélectionner tout</source>
         <translation>選択を解除</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="303"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="304"/>
         <source>Co&amp;uper</source>
         <translation>切り取り (&amp;T)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="312"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="313"/>
         <source>Cop&amp;ier</source>
         <translation>コピー (&amp;C)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="321"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="322"/>
         <source>C&amp;oller</source>
         <translation>貼り付け (&amp;P)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="330"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="331"/>
         <source>C&amp;oller dans la zone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="339"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="340"/>
         <source>Un fichier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="348"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="349"/>
         <source>Un élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="438"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="439"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation type="unfinished">QElectroTech について (&amp;A）</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="441"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="442"/>
         <source>Affiche des informations sur QElectroTech</source>
         <translation type="unfinished">QElectroTech の情報の表示</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="450"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="451"/>
         <source>Manuel en ligne</source>
         <translation type="unfinished">オンライン・マニュアル</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="453"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="454"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <translation type="unfinished">既定のブラウザを起動し QElectroTech のオンライン・マニュアルへ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="462"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="463"/>
         <source>Chaine Youtube</source>
         <translation type="unfinished">Yotube チャンネル</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="465"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="466"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <translation type="unfinished">既定のブラウザを起動し QElectroTech の Youtube チャンネルへ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="474"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="475"/>
         <source>Soutenir le projet par un don</source>
         <translation type="unfinished">寄付によるプロジェクトの支援</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="477"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="478"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <translation type="unfinished">寄付による QElectroTech プロジェクトの支援</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="486"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="487"/>
         <source>À propos de &amp;Qt</source>
         <translation type="unfinished">&amp;Qt について</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="489"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="490"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <translation type="unfinished">Qt ライブラリの情報の表示</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="498"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="499"/>
         <source>Rotation</source>
         <translation type="unfinished">回転</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="501"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="502"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="357"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="511"/>
+        <source>Importer un dxf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="358"/>
         <source>Inverser la sélection</source>
         <translation>選択を反転</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="366"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="367"/>
         <source>&amp;Supprimer</source>
         <translation>削除 (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="375"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="376"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
         <translation>要素の名前と情報を編集</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="384"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="385"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <translation>作成者の情報を編集</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="393"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="394"/>
         <source>Éditer les propriétés de l&apos;élément</source>
         <translation>要素の属性を編集</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="947"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="949"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6870,7 +6875,7 @@ DXFtoQET.exe を C:\Users\user_name\AppData\Roaming\qet\ ディレクトリに�
 </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="953"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="955"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6885,7 +6890,7 @@ DXFtoQET.app を /Users/user_name/.qet/ directory に置いてください
 </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="959"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="961"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6902,7 +6907,7 @@ DXFtoQET のバイナリをあなたの /home/user_name/.qet/ ディレクトリ
 </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="969"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6929,156 +6934,167 @@ DXFtoQET.app を /Users/user_name/.qet/ ディレクトリに置いてくださ�
 </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="979"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="981"/>
         <source>Annuler</source>
         <translation>元に戻す</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="980"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="982"/>
         <source>Refaire</source>
         <translation>やり直す</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="990"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="992"/>
         <source>Ctrl+Shift+O</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="992"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="994"/>
         <source>Ctrl+Shift+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="993"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="997"/>
         <source>Ctrl+Shift+A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="996"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="998"/>
         <source>Ctrl+I</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1000"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1002"/>
         <source>Ctrl+Shift+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1007"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1009"/>
         <source>Backspace</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1001"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1003"/>
         <source>Ctrl+E</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1002"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1004"/>
         <source>Ctrl+Y</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1017"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1019"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>重なり</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="402"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="403"/>
         <source>Zoom avant</source>
         <translation>ズームイン</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="411"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="412"/>
         <source>Zoom arrière</source>
         <translation>ズームアウト</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="420"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="421"/>
         <source>Zoom adapté</source>
         <translation>全体に合わせてズーム</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="429"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="430"/>
         <source>Pas de zoom</source>
         <translation>ズームのリセット</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1028"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1030"/>
         <source>Ctrl+9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1029"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1031"/>
         <source>Ctrl+0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1034"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
         <source>Ajouter une ligne</source>
         <translation>線を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1035"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
         <source>Ajouter un rectangle</source>
         <translation>矩形を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1038"/>
         <source>Ajouter une ellipse</source>
         <translation>楕円を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1039"/>
         <source>Ajouter un polygone</source>
         <translation>多角形を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1038"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1040"/>
         <source>Ajouter du texte</source>
         <translation>テキストを追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1039"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1041"/>
         <source>Ajouter un arc de cercle</source>
         <translation>弧を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1040"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1042"/>
         <source>Ajouter une borne</source>
         <translation>端子を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1041"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1043"/>
         <source>Ajouter un champ texte dynamique</source>
         <translation>動的なテキスト領域を追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1056"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation>ダブルクリックで完了、右クリックで最後の点をキャンセル</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1057"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1059"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
         <translation>図に編集不可能な要素テキストを追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1060"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
         <translation>図に編集可能な要素テキストを追加</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1060"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1062"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>部品</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1507"/>
+        <source>Avertissement</source>
+        <translation type="unfinished">警告</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1507"/>
+        <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="33"/>
@@ -7086,81 +7102,81 @@ DXFtoQET.app を /Users/user_name/.qet/ ディレクトリに置いてくださ�
         <translation>ファイル (&amp;F)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="49"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="50"/>
         <source>&amp;Édition</source>
         <translation>編集 (&amp;E)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="82"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="83"/>
         <source>Afficha&amp;ge</source>
         <translation>表示 (&amp;D)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="53"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="54"/>
         <source>Coller depuis...</source>
         <translation>読み込んで貼り付け...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="447"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="449"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[変更あり]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="451"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="453"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [読み取り専用]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1164"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1165"/>
         <source>Aucune modification</source>
         <translation>変更なし</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1176"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1177"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>要素エディタ</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="528"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="665"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="530"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="667"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n 選択部品.</numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="733"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="735"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>端子がありません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="734"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="736"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt;端子がないと他の要素に導体で接続できません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="755"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="757"/>
         <source>Absence de borne</source>
         <translation>端子がありません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="756"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="758"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
         <translation>&lt;br&gt; &lt;b&gt; エラー &lt;/ b&gt;: &lt;br&gt; フォリオ参照は端子が1つでなければなりません &lt;br&gt; &lt;b&gt; 解決法 &lt;/ b&gt; :&lt;br&gt; 要素の端子が1つだけであることを確認してください</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="770"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
         <translation>この要素は検証されました</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="771"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="773"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
@@ -7168,12 +7184,12 @@ DXFtoQET.app を /Users/user_name/.qet/ ディレクトリに置いてくださ�
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="776"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="778"/>
         <source> et</source>
         <translation> と</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="778"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="780"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
         <translation>
@@ -7181,186 +7197,186 @@ DXFtoQET.app を /Users/user_name/.qet/ ディレクトリに置いてくださ�
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="788"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="790"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="795"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="797"/>
         <source>Erreurs</source>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="798"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="800"/>
         <source>Avertissements</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="214"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="216"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>ファイル %1 が存在しません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="73"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="75"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation type="unfinished">表示</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="220"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1414"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="222"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1415"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>ファイル %1 を開けません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="227"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1419"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="229"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1420"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>このファイルは有効な XML 文書ではありません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="233"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1425"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="235"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1426"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="244"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="314"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="246"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="316"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>読み取り専用</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="245"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="315"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="247"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="317"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>この要素を変更する権限がありません。読み取り専用で開きます。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="276"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="340"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="278"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="342"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>エラー</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="277"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="279"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>このファイルに書き込めません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="341"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="343"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>要素を保存できません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="838"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>ファイルを開けません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="842"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>開こうとしているファイル %1 は存在しないか、既に存在しないようです。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1371"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1372"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>要素を再読込</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1372"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1373"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>この要素は最後に保存されてから変更されました。再読込を行うと変更が失われます。本当にこの要素の再読込を行いますか?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1249"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1278"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1362"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1250"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1279"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>保存に失敗しました</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1249"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1278"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1362"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1250"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1279"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>保存に失敗しました,
 条件を満たしません</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1335"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1336"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>名前を付けて保存</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1337"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1338"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech 要素 (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="877"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="879"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>現在の要素を保存しますか?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="879"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="881"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>要素 %1 を保存しますか?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="490"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="492"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation>部品が多すぎます、リストは表示されません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="425"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="427"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>ファイルを開く</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="427"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="429"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech 要素 (*.elmt);;XML ファイル (*.xml);;全てのファイル (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="291"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="297"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1440"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1446"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="293"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="299"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1441"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1447"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>存在しない要素。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="292"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1441"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="294"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1442"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>選ばれたパスは要素に対応しません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="298"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1447"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="300"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1448"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>要素が存在しません。</translation>
@@ -8101,84 +8117,78 @@ Que désirez vous faire ?</source>
         <translation>画像を読み込めません。</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="105"/>
+        <location filename="../sources/editor/UndoCommand/deletepartscommand.cpp" line="34"/>
         <source>suppression</source>
         <comment>undo caption</comment>
         <translation>削除</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="155"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="107"/>
         <source>couper des parties</source>
         <comment>undo caption</comment>
         <translation>部品を切り取り</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="177"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="129"/>
         <source>déplacement</source>
         <comment>undo caption</comment>
         <translation>移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="220"/>
-        <source>ajout %1</source>
-        <comment>undo caption</comment>
-        <translation>追加 %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="271"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="171"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
         <translation>名前の変更</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="320"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="220"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
         <translation>最前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="323"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="223"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
         <translation>前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="326"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="226"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
         <translation>背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="329"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="229"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
         <translation>最背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="446"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="346"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
         <translation>補足情報の変更</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="578"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="478"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
         <translation>スケール %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="580"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="480"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
         <translation>スケール %1 プリミティブ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="600"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="500"/>
         <source>Modifier les propriétées de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="614"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="514"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
         <translation type="unfinished">選択を回転</translation>
@@ -9214,6 +9224,16 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripcolor.cpp" line="37"/>
         <source>Modifier la couleur d&apos;un pont de bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/UndoCommand/openelmtcommand.cpp" line="31"/>
+        <source>Ouvrir un element</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1500"/>
+        <source>Importer un fichier dxf</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -12857,6 +12877,24 @@ Les autres champs ne sont pas utilisés.</source>
         <location filename="../sources/editor/ui/texteditor.cpp" line="286"/>
         <source>Modifier la couleur d&apos;un texte</source>
         <translation>テキストの色を変更</translation>
+    </message>
+</context>
+<context>
+    <name>ThirdPartyBinaryInstallDialog</name>
+    <message>
+        <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="14"/>
+        <source>Logiciel tiers requis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="33"/>
+        <source>Télechargement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="44"/>
+        <source>Dossier installation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

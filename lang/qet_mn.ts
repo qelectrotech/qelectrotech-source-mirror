@@ -2269,29 +2269,29 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="279"/>
+        <location filename="../sources/editor/elementscene.cpp" line="274"/>
         <source>Déplacer une primitive</source>
         <translation>Анхдагчийг зөөх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="835"/>
+        <location filename="../sources/editor/elementscene.cpp" line="859"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Зохиогчийн мэдээллийг засах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="840"/>
+        <location filename="../sources/editor/elementscene.cpp" line="864"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Та энэхүү хэсгийг элементийн зохиогч, түүний лиценз эсвэл хэрэгцээтэй бусад мэдээллийг тодорхойлоход ашиглаж болно.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="904"/>
+        <location filename="../sources/editor/elementscene.cpp" line="928"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Нэрсийг засах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="906"/>
+        <location filename="../sources/editor/elementscene.cpp" line="930"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Та элементийн нэрийг олон хэл дээр оруулах боломжтой.</translation>
     </message>
@@ -6605,52 +6605,52 @@ Options disponibles :
 <context>
     <name>QETElementEditor</name>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="213"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="214"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Шинэ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="222"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="223"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Нээх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="231"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="232"/>
         <source>&amp;Ouvrir depuis un fichier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="240"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="241"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="249"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="250"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Хадгалах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="258"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="259"/>
         <source>Enregistrer sous</source>
         <translation>Шинээр хадгалах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="267"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="268"/>
         <source>Enregistrer dans un fichier</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="276"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="277"/>
         <source>Recharger</source>
         <translation>Дахиэ ачааллуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="285"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="286"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Гарах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="204"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="205"/>
         <source>Tout sélectionner</source>
         <translation>Бүгдийг идэвхижүүлэх</translation>
     </message>
@@ -6660,167 +6660,172 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="92"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="93"/>
         <source>&amp;Aide</source>
         <translation type="unfinished">&amp;Тусламж</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="111"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="112"/>
         <source>Annulations</source>
         <translation type="unfinished">Буцаах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="123"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="124"/>
         <source>Parties</source>
         <translation type="unfinished">Хэсгүүд</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="135"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="136"/>
         <source>Informations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="144"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="145"/>
         <source>Outils</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="161"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="162"/>
         <source>Affichage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="176"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="177"/>
         <source>Élément</source>
         <translation type="unfinished">Элемент</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="189"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="190"/>
         <source>Annulation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="294"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="295"/>
         <source>Désélectionner tout</source>
         <translation>Юу ч сонгохгүй байх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="303"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="304"/>
         <source>Co&amp;uper</source>
         <translation>Устгаж&amp;хуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="312"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="313"/>
         <source>Cop&amp;ier</source>
         <translation>&amp;Хуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="321"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="322"/>
         <source>C&amp;oller</source>
         <translation>&amp;Хуулж тавих</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="330"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="331"/>
         <source>C&amp;oller dans la zone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="339"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="340"/>
         <source>Un fichier</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="348"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="349"/>
         <source>Un élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="438"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="439"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation type="unfinished">QElectroTech-н тухай</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="441"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="442"/>
         <source>Affiche des informations sur QElectroTech</source>
         <translation type="unfinished">QElectroTech-н мэдээллийг харуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="450"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="451"/>
         <source>Manuel en ligne</source>
         <translation type="unfinished">Онлайн гарын авлага</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="453"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="454"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="462"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="463"/>
         <source>Chaine Youtube</source>
         <translation type="unfinished">Youtube суваг</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="465"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="466"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="474"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="475"/>
         <source>Soutenir le projet par un don</source>
         <translation type="unfinished">төслийг хандив өгч дэмжих</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="477"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="478"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <translation type="unfinished">QElectroTech төслийг хандив өгч дэмжих</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="486"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="487"/>
         <source>À propos de &amp;Qt</source>
         <translation type="unfinished">&amp;Qt-н тухай</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="489"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="490"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <translation type="unfinished">Qt library-н тухай мэдээллийг харуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="498"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="499"/>
         <source>Rotation</source>
         <translation type="unfinished">Эргэлт</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="501"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="502"/>
         <source>Space</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="357"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="511"/>
+        <source>Importer un dxf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="358"/>
         <source>Inverser la sélection</source>
         <translation>Эсрэг сонголт</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="366"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="367"/>
         <source>&amp;Supprimer</source>
         <translation>&amp;Устгах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="375"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="376"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="384"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="385"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <translation type="unfinished">Зохиогчийн мэдээллийг засах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="393"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="394"/>
         <source>Éditer les propriétés de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="947"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="949"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6830,7 +6835,7 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="953"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="955"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6840,7 +6845,7 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="959"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="961"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6851,7 +6856,7 @@ make it executable : chmod +x ./DXFtoQET
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="969"/>
         <source>To install the plugin DXFtoQET
 Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 
@@ -6867,156 +6872,167 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="979"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="981"/>
         <source>Annuler</source>
         <translation>Буцаах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="980"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="982"/>
         <source>Refaire</source>
         <translation type="unfinished">Б</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="990"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="992"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="992"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="994"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="993"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="997"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="996"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="998"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1000"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1002"/>
         <source>Ctrl+Shift+V</source>
         <translation>Ctrl+Shift+V</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1007"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1009"/>
         <source>Backspace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1001"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1003"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1002"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1004"/>
         <source>Ctrl+Y</source>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1017"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1019"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation type="unfinished">Гүн</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="402"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="403"/>
         <source>Zoom avant</source>
         <translation>Татах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="411"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="412"/>
         <source>Zoom arrière</source>
         <translation>Холдуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="420"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="421"/>
         <source>Zoom adapté</source>
         <translation type="unfinished">Харахад тохиромжтой</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="429"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="430"/>
         <source>Pas de zoom</source>
         <translation>Таталтыг хэвийн болгох</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1028"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1030"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1029"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1031"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1034"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
         <source>Ajouter une ligne</source>
         <translation>Шулуун нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1035"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
         <source>Ajouter un rectangle</source>
         <translation>Дөрвөн өнцөгт нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1038"/>
         <source>Ajouter une ellipse</source>
         <translation>Зууван нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1039"/>
         <source>Ajouter un polygone</source>
         <translation>Олон талт нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1038"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1040"/>
         <source>Ajouter du texte</source>
         <translation>Текст нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1039"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1041"/>
         <source>Ajouter un arc de cercle</source>
         <translation>Нум нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1040"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1042"/>
         <source>Ajouter une borne</source>
         <translation>Холболт нэмэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1041"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1043"/>
         <source>Ajouter un champ texte dynamique</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1056"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation type="unfinished">Дүрсийг дуусгахын тулд 2 удаа дарна уу, Сүүлийн цэгийг арилгахын тулд баруун товчийг дарна уу</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1057"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1059"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1060"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1060"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1062"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>Хэсгүүд</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1507"/>
+        <source>Avertissement</source>
+        <translation type="unfinished">Анхааруулга</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1507"/>
+        <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="33"/>
@@ -7024,46 +7040,46 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         <translation type="unfinished">&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="49"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="50"/>
         <source>&amp;Édition</source>
         <translation type="unfinished">&amp;Засах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="82"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="83"/>
         <source>Afficha&amp;ge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="53"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="54"/>
         <source>Coller depuis...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="447"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="449"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation type="unfinished">[Өөрчлөгдсөн]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="451"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="453"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1164"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1165"/>
         <source>Aucune modification</source>
         <translation>Тохиргоогүй</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1176"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1177"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="528"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="665"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="530"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="667"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -7071,35 +7087,35 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="733"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="735"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="734"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="736"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="755"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="757"/>
         <source>Absence de borne</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="756"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="758"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="770"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="771"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="773"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation type="unfinished">
@@ -7108,12 +7124,12 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="776"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="778"/>
         <source> et</source>
         <translation> ба</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="778"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="780"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
         <translation type="unfinished">
@@ -7122,185 +7138,185 @@ Put DXFtoQET.app binary on /Users/user_name/.qet/ directory
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="788"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="790"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="795"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="797"/>
         <source>Erreurs</source>
         <translation>Алдаанууд</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="798"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="800"/>
         <source>Avertissements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="214"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="216"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>%1 нэртэй файл байхгүй байна.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="73"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="75"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Дэлгэцэнд харуулах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="220"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1414"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="222"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1415"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>%1 файлыг нээх боломжгүй байна.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="227"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1419"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="229"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1420"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="233"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1425"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="235"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1426"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Алдаа</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="244"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="314"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="246"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="316"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="245"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="315"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="247"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="317"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="276"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="340"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="278"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="342"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Алдаа</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="277"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="279"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation type="unfinished">Энэ файл дээр хуулах боломжгүй</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="341"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="343"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="838"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation type="unfinished">Файлыг нээх боломжгүй байна</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="842"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation type="unfinished">Таны нээхээр оролдож буй  %1 файл нь устсан эсвэл байхгүй байна.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1371"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1372"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1372"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1373"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1249"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1278"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1362"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1250"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1279"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1249"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1278"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1362"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1250"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1279"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1335"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1336"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1337"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1338"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="877"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="879"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="879"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="881"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="490"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="492"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="425"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="427"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation type="unfinished">Файлыг нээх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="427"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="429"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="291"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="297"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1440"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1446"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="293"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="299"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1441"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1447"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="292"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1441"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="294"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1442"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="298"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1447"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="300"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1448"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -8054,84 +8070,78 @@ Que désirez vous faire ?</source>
         <translation type="unfinished">Огноо</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="105"/>
+        <location filename="../sources/editor/UndoCommand/deletepartscommand.cpp" line="34"/>
         <source>suppression</source>
         <comment>undo caption</comment>
         <translation>устгалт</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="155"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="107"/>
         <source>couper des parties</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="177"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="129"/>
         <source>déplacement</source>
         <comment>undo caption</comment>
         <translation>зөөх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="220"/>
-        <source>ajout %1</source>
-        <comment>undo caption</comment>
-        <translation>оруулах %1</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="271"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="171"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
         <translation>нэрсийг янзлах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="320"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="220"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
         <translation>урагш нь гаргах</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="323"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="223"/>
         <source>rapprocher</source>
         <comment>undo caption</comment>
         <translation>Дээшлүүлэх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="326"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="226"/>
         <source>éloigner</source>
         <comment>undo caption</comment>
         <translation>доогуур</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="329"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="229"/>
         <source>envoyer au fond</source>
         <comment>undo caption</comment>
         <translation>Хойш нь илгээх</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="446"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="346"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="578"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="478"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
         <translation>Хэмжээс %1</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="580"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="480"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
         <translation>Хэмжээс %1 анхны</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="600"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="500"/>
         <source>Modifier les propriétées de l&apos;élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="614"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="514"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
         <translation type="unfinished">Сонголтыг эргүүлэх</translation>
@@ -9161,6 +9171,16 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripcolor.cpp" line="37"/>
         <source>Modifier la couleur d&apos;un pont de bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/UndoCommand/openelmtcommand.cpp" line="31"/>
+        <source>Ouvrir un element</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1500"/>
+        <source>Importer un fichier dxf</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -12796,6 +12816,24 @@ The other fields are not used.</translation>
         <location filename="../sources/editor/ui/texteditor.cpp" line="286"/>
         <source>Modifier la couleur d&apos;un texte</source>
         <translation>Текстийн өнгийг өөрчлөх</translation>
+    </message>
+</context>
+<context>
+    <name>ThirdPartyBinaryInstallDialog</name>
+    <message>
+        <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="14"/>
+        <source>Logiciel tiers requis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="33"/>
+        <source>Télechargement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="44"/>
+        <source>Dossier installation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
