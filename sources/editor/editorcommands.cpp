@@ -90,54 +90,6 @@ void ElementEditionCommand::setElementView(ElementView *view) {
 	m_view = view;
 }
 
-/*** DeletePartsCommand ***/
-/**
-	Constructeur
-	@param scene ElementScene concernee
-	@param parts Liste des parties supprimees
-	@param parent QUndoCommand parent
-*/
-DeletePartsCommand::DeletePartsCommand(
-	ElementScene *scene,
-	const QList<QGraphicsItem *>& parts,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, nullptr, parent),
-	deleted_parts(parts)
-{
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> qgiManager().manage(qgi);
-	}
-}
-
-/// Destructeur : detruit egalement les parties supprimees
-DeletePartsCommand::~DeletePartsCommand()
-{
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> qgiManager().release(qgi);
-	}
-}
-
-/// Restaure les parties supprimees
-void DeletePartsCommand::undo()
-{
-	m_scene -> blockSignals(true);
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> addItem(qgi);
-	}
-	m_scene -> blockSignals(false);
-}
-
-/// Supprime les parties
-void DeletePartsCommand::redo()
-{
-	m_scene -> blockSignals(true);
-	foreach(QGraphicsItem *qgi, deleted_parts) {
-		m_scene -> removeItem(qgi);
-	}
-	m_scene -> blockSignals(false);
-}
-
 /*** CutPartsCommand ***/
 /**
 	Constructeur
@@ -150,7 +102,7 @@ CutPartsCommand::CutPartsCommand(
 	const QList<QGraphicsItem *>& parts,
 	QUndoCommand *parent
 ) :
-	DeletePartsCommand(scene, parts, parent)
+	DeletePartsCommand(scene, parts.toVector(), parent)
 {
 	setText(QString(QObject::tr("couper des parties", "undo caption")));
 }

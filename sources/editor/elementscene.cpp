@@ -823,16 +823,14 @@ void ElementScene::slot_invertSelection()
 */
 void ElementScene::slot_delete()
 {
-	// check that there is something selected
-	// verifie qu'il y a qqc de selectionne
-	QList<QGraphicsItem *> selected_items = selectedItems();
-	if (selected_items.isEmpty()) return;
+	const auto selected_items{selectedItems().toVector()};
+	if (selected_items.isEmpty()) {
+		return;
+	}
 
-	// erase everything that is selected
-	// efface tout ce qui est selectionne
 	m_undo_stack.push(new DeletePartsCommand(this, selected_items));
 
-	// removing items does not trigger QGraphicsScene::selectionChanged()
+		// removing items does not trigger QGraphicsScene::selectionChanged()
 	emit selectionChanged();
 }
 

@@ -34,6 +34,7 @@
 #include "graphicspart/partterminal.h"
 #include "graphicspart/parttext.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "UndoCommand/deletepartscommand.h"
 
 
 /**
@@ -69,29 +70,6 @@ class ElementEditionCommand : public QUndoCommand
 		/// Element editor/view/scene the command should take place on
 		ElementScene *m_scene;
 		ElementView *m_view;
-};
-
-/**
-	This command deletes one or several primitives/parts when editing an
-	electrical element.
-*/
-class DeletePartsCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>&, QUndoCommand * = nullptr);
-	~DeletePartsCommand() override;
-	private:
-	DeletePartsCommand(const DeletePartsCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	
-	// attributes
-	private:
-	/// Deleted primitives
-	QList<QGraphicsItem *> deleted_parts;
 };
 
 /**
