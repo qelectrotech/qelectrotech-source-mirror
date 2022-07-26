@@ -15,30 +15,36 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef OPENELMTCOMMAND_H
-#define OPENELMTCOMMAND_H
+#ifndef ADDPARTCOMMAND_H
+#define ADDPARTCOMMAND_H
 
 #include <QUndoCommand>
-#include <QDomDocument>
 #include <QPointer>
 
 class ElementScene;
 class QGraphicsItem;
 
-class OpenElmtCommand : public QUndoCommand
+/**
+ * @brief The AddPartCommand class
+ * Undo command use to add a graphics part into an element scene.
+ */
+class AddPartCommand : public QUndoCommand
 {
 	public:
-		OpenElmtCommand(const QDomDocument &document, QPointer<ElementScene> scene, QUndoCommand *parent = nullptr);
-		~OpenElmtCommand() override;
-
-		virtual void undo() override;
-		virtual void redo() override;
+		AddPartCommand(const QString &text, QPointer<ElementScene> scene, QGraphicsItem *part, QUndoCommand *parent = nullptr);
+		~AddPartCommand() override;
 
 	private:
-		QDomDocument m_document;
-		bool m_first_redo{true};
+		AddPartCommand(const AddPartCommand &);
+
+	public:
+		void undo() override;
+		void redo() override;
+
+	private:
 		QPointer<ElementScene> m_scene;
-		QList<QGraphicsItem *> m_graphics_item;
+		QVector<QGraphicsItem *> m_part;
+		bool m_first_redo{true};
 };
 
-#endif // OPENELMTCOMMAND_H
+#endif // ADDPARTCOMMAND_H

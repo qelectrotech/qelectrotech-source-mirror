@@ -203,58 +203,6 @@ void MovePartsCommand::redo()
 	foreach(QGraphicsItem *qgi, moved_parts) qgi -> moveBy(movement.x(), movement.y());
 }
 
-/*** AddPartCommand ***/
-/**
-	Constructeur
-	@param name Nom de la partie ajoutee
-	@param scene ElementScene concernee
-	@param p partie ajoutee
-	@param parent QUndoCommand parent
-*/
-AddPartCommand::AddPartCommand(
-	const QString &name,
-	ElementScene *scene,
-	QGraphicsItem *p,
-	QUndoCommand *parent
-) :
-	ElementEditionCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), scene, nullptr, parent),
-	part(p),
-	first_redo(true)
-{
-	m_scene -> qgiManager().manage(part);
-}
-
-/// Destructeur
-AddPartCommand::~AddPartCommand()
-{
-	m_scene -> qgiManager().release(part);
-}
-
-/// Annule l'ajout
-void AddPartCommand::undo()
-{
-	m_scene -> removeItem(part);
-}
-
-/// Refait l'ajout
-void AddPartCommand::redo()
-{
-	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
-	if (first_redo) {
-		if (!part -> zValue()) {
-			// the added part has no specific zValue already defined, we put it
-			// above existing items (but still under terminals)
-			QList<QGraphicsItem *> existing_items = m_scene -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
-			qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
-			part -> setZValue(z);
-		}
-		m_scene -> clearSelection();
-		first_redo = false;
-		return;
-	}
-	m_scene -> addItem(part);
-}
-
 /**
 	Constructeur
 	@param element_scene Element edite

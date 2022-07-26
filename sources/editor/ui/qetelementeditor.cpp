@@ -1130,7 +1130,6 @@ void QETElementEditor::setupConnection()
 	});
 
 	connect(&(m_elmt_scene -> undoStack()), &QUndoStack::indexChanged, [this]() {
-		this->updatePartsList();
 		this->updateInformations();
 	});
 }

@@ -17,7 +17,7 @@
 */
 #include "eseventadddynamictextfield.h"
 
-#include "../editorcommands.h"
+#include "../UndoCommand/addpartcommand.h"
 #include "../elementscene.h"
 #include "../graphicspart/partdynamictextfield.h"
 

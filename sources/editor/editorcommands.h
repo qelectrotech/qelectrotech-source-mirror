@@ -133,30 +133,6 @@ class MovePartsCommand : public ElementEditionCommand {
 };
 
 /**
-	This command adds a primitive when editing an electrical element.
-*/
-class AddPartCommand : public ElementEditionCommand {
-	// constructors, destructor
-	public:
-	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = nullptr);
-	~AddPartCommand() override;
-	private:
-	AddPartCommand(const AddPartCommand &);
-	
-	// methods
-	public:
-	void undo() override;
-	void redo() override;
-	
-	// attributes
-	private:
-	/// Added primitive
-	QGraphicsItem *part;
-	/// Prevent the first call to redo()
-	bool first_redo;
-};
-
-/**
 	This command changes the translated names of an electrical element.
 */
 class ChangeNamesCommand : public ElementEditionCommand {
@@ -310,6 +286,5 @@ private:
     QList<QGraphicsItem*> m_items;
 
 };
-
 
 #endif

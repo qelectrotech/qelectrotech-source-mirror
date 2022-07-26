@@ -17,7 +17,7 @@
 */
 #include "eseventaddtext.h"
 
-#include "../editorcommands.h"
+#include "../UndoCommand/addpartcommand.h"
 #include "../elementscene.h"
 #include "../graphicspart/parttext.h"
 

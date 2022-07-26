@@ -31,11 +31,16 @@ OpenElmtCommand::OpenElmtCommand(const QDomDocument &document,
 	setText(QObject::tr("Ouvrir un element"));
 }
 
+OpenElmtCommand::~OpenElmtCommand()
+{
+	if (m_scene) {
+		m_scene->qgiManager().release(m_graphics_item);
+	}
+}
+
 void OpenElmtCommand::undo()
 {
-	for (const auto &item : qAsConst(m_graphics_item)) {
-		m_scene->removeItem(item);
-	}
+	m_scene->removeItems(m_graphics_item.toVector());
 }
 
 void OpenElmtCommand::redo()
@@ -47,6 +52,7 @@ void OpenElmtCommand::redo()
 	if (m_first_redo)
 	{
 		m_scene->fromXml(m_document, QPointF(), true, &m_graphics_item);
+		m_scene->qgiManager().manage(m_graphics_item);
 		m_first_redo = false;
 
 			//m_document is now useless,
@@ -54,9 +60,8 @@ void OpenElmtCommand::redo()
 		m_document.clear();
 	}
 	else {
-		for (const auto &item : qAsConst(m_graphics_item)) {
-			m_scene->addItem(item);
-		}
+		m_scene->addItems(m_graphics_item.toVector());
 	}
+
 	m_scene->slot_select(m_graphics_item);
 }
