@@ -28,6 +28,7 @@
  * Return the dxf at @a file_path converted to elmt.
  * The returned value is a QByteArray, instead of a
  * QDomDocument or QString, to let user do what they want with that.
+ * If something goes wrong the QByteArray returned is empty.
  * @param file_path
  * @return
  */
@@ -42,11 +43,18 @@ QByteArray dxfToElmt(const QString &file_path)
 	const QStringList arguments{file_path, QStringLiteral("-v")};
 
 	process_.start(program, arguments);
-	process_.waitForFinished();
 
-	const auto byte_array{process_.readAll()};
-	process_.close();
-	return byte_array;
+	if (process_.waitForFinished())
+	{
+		const auto byte_array{process_.readAll()};
+		process_.close();
+		return byte_array;
+	}
+	else
+	{
+			//Something goes wrong we return an empty QByteArray
+		return QByteArray();
+	}
 }
 
 QString dxf2ElmtDirPath()
