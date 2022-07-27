@@ -77,7 +77,7 @@ QString dxf2ElmtBinaryPath()
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	return dxf2ElmtDirPath() + QStringLiteral("/dxf2elmt.exe");
 #elif defined(Q_OS_MAC)
-	return dxf2ElmtDirPath() + QStringLiteral("/dxf2elmt");
+	return dxf2ElmtDirPath() + QStringLiteral("/./dxf2elmt");
 #else
 	return dxf2ElmtDirPath() + QStringLiteral("/dxf2elmt");
 #endif
