@@ -17,6 +17,9 @@
 */
 #include "qgimanager.h"
 
+#include <QGraphicsScene>
+#include <QGraphicsItem>
+
 /**
 	Constructeur
 	@param sc QGraphicsScene a utiliser pour gerer au mieux les QGraphicsItem

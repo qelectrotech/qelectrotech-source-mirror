@@ -17,9 +17,12 @@
 */
 #ifndef QGI_MANAGER_H
 #define QGI_MANAGER_H
+
 #include <QtCore>
-#include <QGraphicsScene>
-#include <QGraphicsItem>
+
+class QGraphicsScene;
+class QGraphicsItem;
+
 /**
 	This class provides a QGraphicsItem manager, which can delete QGraphicsItem
 	as soon as there is no reference to them anymore.
