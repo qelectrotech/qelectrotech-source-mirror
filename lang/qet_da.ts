@@ -1922,7 +1922,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="125"/>
         <source>Vignette</source>
-        <translation type="unfinished">Hoved</translation>
+        <translation>Miniature</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="128"/>
@@ -1942,7 +1942,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="131"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Andet</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="133"/>
@@ -2199,7 +2199,7 @@ Bemærk: Disse muligheder VIL IKKE tillade eller blokere autonummereringer, kun 
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="298"/>
         <source>Vignettes</source>
-        <translation type="unfinished"></translation>
+        <translation>Miniaturer</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="308"/>
@@ -3068,83 +3068,83 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
         <source>Déplacer dans :</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt til:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="60"/>
         <source>Type :</source>
-        <translation type="unfinished">Type:</translation>
+        <translation>Type:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="67"/>
         <source>Fonction :</source>
-        <translation type="unfinished">Funktion:</translation>
+        <translation>Funktion:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="74"/>
         <source>LED :</source>
-        <translation type="unfinished">LED:</translation>
+        <translation>LED:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="81"/>
         <source>Appliquer le déplacement</source>
-        <translation type="unfinished"></translation>
+        <translation>Udfør flytning</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="103"/>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="132"/>
         <source>Générique</source>
-        <translation type="unfinished">Generisk</translation>
+        <translation>Generisk</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="108"/>
         <source>Fusible</source>
-        <translation type="unfinished"></translation>
+        <translation>Sikring</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="113"/>
         <source>Sectionnable</source>
-        <translation type="unfinished">Sektionsbar</translation>
+        <translation>Sektionsbar</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="118"/>
         <source>Diode</source>
-        <translation type="unfinished">Diode</translation>
+        <translation>Diode</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="123"/>
         <source>Terre</source>
-        <translation type="unfinished">Jord</translation>
+        <translation>Jord</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
         <source>Phase</source>
-        <translation type="unfinished">Fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="142"/>
         <source>Neutre</source>
-        <translation type="unfinished">Neutral</translation>
+        <translation>Neutral</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="151"/>
         <source>Sans</source>
-        <translation type="unfinished">Uden</translation>
+        <translation>Uden</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="156"/>
         <source>Avec</source>
-        <translation type="unfinished">Med</translation>
+        <translation>Med</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="114"/>
         <source>Modifier des propriétés de borniers</source>
-        <translation type="unfinished">Ænfre terminalrækker egenskaber</translation>
+        <translation>Ænfre terminalrække egenskaber</translation>
     </message>
 </context>
 <context>
@@ -3152,27 +3152,27 @@ Tekst og nummer inddata er også tilgængelig.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="207"/>
         <source>Label</source>
-        <translation type="unfinished">Etiket</translation>
+        <translation>Etiket</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="208"/>
         <source>Référence croisé</source>
-        <translation type="unfinished">Referencekors</translation>
+        <translation>Referencekors</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="209"/>
         <source>Type</source>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="210"/>
         <source>Fonction</source>
-        <translation type="unfinished">Funktion</translation>
+        <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="211"/>
         <source>led</source>
-        <translation type="unfinished">LED</translation>
+        <translation>LED</translation>
     </message>
 </context>
 <context>
@@ -6814,7 +6814,7 @@ Kommandovalg:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="511"/>
         <source>Importer un dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer dxf</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
@@ -7250,13 +7250,14 @@ Gem DXFtoQET.app binær kode i /Users/user_name/.qet/ mappen
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1507"/>
         <source>Avertissement</source>
-        <translation type="unfinished">Advarsel</translation>
+        <translation>Advarsel</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1507"/>
         <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
 veuillez patienter durant l&apos;import...</source>
-        <translation type="unfinished"></translation>
+        <translation>Import af stor dxf fil kan tage tid
+vent venligst...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="840"/>
@@ -9108,12 +9109,12 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="54"/>
         <source>Ajouter %1 bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj %1 terminaler</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="141"/>
         <source>Enlever %1 bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern %1 terminaler</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="173"/>
@@ -9130,30 +9131,30 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="176"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="198"/>
         <source> d&apos;un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation> en terminalgruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="177"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="199"/>
         <source> du groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation> fra terminalgruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="179"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="201"/>
         <source>vers un groupe de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>til en terminalgruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="180"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="202"/>
         <source>vers le groupe de bornes %1</source>
-        <translation type="unfinished"></translation>
+        <translation>til terminalgruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="195"/>
         <source>Déplacer des bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt terminal</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="144"/>
@@ -9236,27 +9237,27 @@ Voulez-vous la remplacer ?</source>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="27"/>
         <source>Ponter des bornes entre-elles</source>
-        <translation type="unfinished"></translation>
+        <translation>Brokoble terminaler</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="56"/>
         <source>Supprimer des ponts de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern terminalbro</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripcolor.cpp" line="37"/>
         <source>Modifier la couleur d&apos;un pont de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ændre terminalbro farve</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/openelmtcommand.cpp" line="31"/>
         <source>Ouvrir un element</source>
-        <translation type="unfinished"></translation>
+        <translation>Åbn symbol</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1500"/>
         <source>Importer un fichier dxf</source>
-        <translation type="unfinished"></translation>
+        <translation>Importer dxf fil</translation>
     </message>
 </context>
 <context>
@@ -12571,12 +12572,12 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="240"/>
         <source>Ponter les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal bro</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="247"/>
         <source>Déponter les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Fjern terminaler</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="258"/>
@@ -12591,7 +12592,7 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="271"/>
         <source>Commentaire :</source>
-        <translation type="unfinished">Kommentar:</translation>
+        <translation>Kommentar:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="301"/>
@@ -12627,17 +12628,17 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
         <source>Effectuer le déplacement</source>
-        <translation type="unfinished"></translation>
+        <translation>Udfør flytning</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="97"/>
         <source>Couleur pont :</source>
-        <translation type="unfinished"></translation>
+        <translation>Bro farve:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="113"/>
@@ -12662,7 +12663,7 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="176"/>
         <source>Déplacer dans :</source>
-        <translation type="unfinished"></translation>
+        <translation>Flyt til:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="192"/>
@@ -12712,7 +12713,7 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="127"/>
         <source>Bornes indépendantes</source>
-        <translation type="unfinished"></translation>
+        <translation>Uafhængige terminaler</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="195"/>
@@ -12725,42 +12726,42 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="14"/>
         <source>Gestionnaire de borniers</source>
-        <translation type="unfinished">Terminal håndtering</translation>
+        <translation>Terminalrække håndtering</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="43"/>
         <source>toolBar</source>
-        <translation type="unfinished">værktøjsbjælke</translation>
+        <translation>værktøjsbjælke</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="61"/>
         <source>Ajouter un bornier</source>
-        <translation type="unfinished">Tilføj terminalrække</translation>
+        <translation>Tilføj terminalrække</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="64"/>
         <source>Ajouter un bornier au projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilføj klemrække til projekt</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="73"/>
         <source>Supprimer le bornier</source>
-        <translation type="unfinished">Slet terminalrække</translation>
+        <translation>Slet terminalrække</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="76"/>
         <source>Supprimer le bornier du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Slet terminalrække i projekt</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="85"/>
         <source>Recharger</source>
-        <translation type="unfinished">Genindlæs</translation>
+        <translation>Genindlæs</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="88"/>
         <source>Recharger les borniers</source>
-        <translation type="unfinished"></translation>
+        <translation>Genindlæs klemrække</translation>
     </message>
 </context>
 <context>
@@ -12821,17 +12822,17 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.ui" line="14"/>
         <source>Explorateur de bornier</source>
-        <translation type="unfinished">Terminalrække stifinder</translation>
+        <translation>Terminalrække stifinder</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="211"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Ikke navngivet projekt</translation>
+        <translation>Ikke navngivet projekt</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="217"/>
         <source>Bornes indépendante</source>
-        <translation type="unfinished">Uafhængige terminaler</translation>
+        <translation>Uafhængige terminaler</translation>
     </message>
 </context>
 <context>
@@ -12909,17 +12910,17 @@ De andre felter anvendes ikke.</translation>
     <message>
         <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="14"/>
         <source>Logiciel tiers requis</source>
-        <translation type="unfinished"></translation>
+        <translation>Tredjepartssoftware påkrævet</translation>
     </message>
     <message>
         <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="33"/>
         <source>Télechargement</source>
-        <translation type="unfinished"></translation>
+        <translation>Hent</translation>
     </message>
     <message>
         <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="44"/>
         <source>Dossier installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Installationsmappe</translation>
     </message>
 </context>
 <context>
