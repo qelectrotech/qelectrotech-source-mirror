@@ -80,8 +80,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QString tableName() const;
 		int displayNRowOffset() const;
 		int displayedRowCount() const;
-		QetGraphicsTableItem *previousTable() const;
-		QetGraphicsTableItem *nextTable() const;
+		QPointer<QetGraphicsTableItem> previousTable() const;
+		QPointer<QetGraphicsTableItem> nextTable() const;
 		void setToMinimumHeight();
 		void initLink();
 		QUuid uuid() const {return m_uuid;}
@@ -141,9 +141,8 @@ class QetGraphicsTableItem : public QetGraphicsItem
 		QetGraphicsHandlerItem m_handler_item;
 		QetGraphicsHeaderItem *m_header_item = nullptr;
 
-		QetGraphicsTableItem
-		*m_previous_table = nullptr,
-		*m_next_table = nullptr;
+		QPointer<QetGraphicsTableItem> m_previous_table,
+		m_next_table;
 
 		QString m_name;
 		QUuid
