@@ -512,6 +512,10 @@ int QetGraphicsTableItem::displayNRowOffset() const
  */
 int QetGraphicsTableItem::displayedRowCount() const
 {
+	if (!m_model) {
+		return 0;
+	}
+
 		//Calcule the number of rows to display.
 	auto row_count = m_model->rowCount();
 
@@ -524,12 +528,12 @@ int QetGraphicsTableItem::displayedRowCount() const
 	return row_count;
 }
 
-QetGraphicsTableItem *QetGraphicsTableItem::previousTable() const
+QPointer<QetGraphicsTableItem> QetGraphicsTableItem::previousTable() const
 {
 	return m_previous_table;
 }
 
-QetGraphicsTableItem *QetGraphicsTableItem::nextTable() const
+QPointer<QetGraphicsTableItem> QetGraphicsTableItem::nextTable() const
 {
 	return m_next_table;
 }
@@ -1088,15 +1092,15 @@ void QetGraphicsTableItem::previousTableDisplayRowChanged()
  */
 void QetGraphicsTableItem::removeUselessNextTable(bool recursive)
 {
-	if (!m_next_table) {
-		return;
-	}
-
-	if (recursive) {
-		m_next_table->removeUselessNextTable();
-	}
-	if (m_next_table->displayedRowCount() <= 0) {
-		delete m_next_table;
-		m_next_table = nullptr;
+	if (m_next_table)
+	{
+		if (recursive) {
+			m_next_table->removeUselessNextTable();
+		}
+		if (m_next_table->displayedRowCount() <= 0)
+		{
+			m_next_table.data()->deleteLater();
+			m_next_table.clear();
+		}
 	}
 }
