@@ -63,5 +63,9 @@ void OpenElmtCommand::redo()
 		m_scene->addItems(m_graphics_item.toVector());
 	}
 
-	m_scene->slot_select(m_graphics_item);
+#pragma message("@TODO uncommante slot_select when fixed, see itemChange function for each primitve")
+		//Commented because take a lot of time
+		//when a lot of primitive are loaded
+		//need work
+	//m_scene->slot_select(m_graphics_item);
 }
