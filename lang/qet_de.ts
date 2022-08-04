@@ -9293,7 +9293,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
         <translation>Tabellenbeschränkung</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Tabellengeometrie ändern</translation>
     </message>

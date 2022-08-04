@@ -9285,7 +9285,7 @@ Kérlek adj hozzá egy új táblázatot, vagy igazítsd a meglévőt megfelelő 
         <translation>Táblázat korlátozása</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>A táblázat méretének a módosítása</translation>
     </message>

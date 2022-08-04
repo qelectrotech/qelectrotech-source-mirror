@@ -9307,7 +9307,7 @@ Voeg een nieuwe tafel toe of pas de bestaande tabel aan om alle informatie weer 
         <translation>Tabel limieten</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Wijzig de geometrie van een tabel</translation>
     </message>

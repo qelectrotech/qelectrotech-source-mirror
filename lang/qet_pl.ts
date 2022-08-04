@@ -9338,7 +9338,7 @@ Dodaj nową tabelę lub dostosuj istniejącą, aby wyświetlić wszystkie inform
         <translation>Ograniczenie tabeli</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Zmień wymiary tabeli</translation>
     </message>

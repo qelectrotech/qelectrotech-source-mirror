@@ -9297,7 +9297,7 @@ Tilføj ny tabel, eller juster eksisterende tabel for at vise alle oplysninger.<
         <translation>Tabel begrænsning</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Ændre tabel geometri</translation>
     </message>

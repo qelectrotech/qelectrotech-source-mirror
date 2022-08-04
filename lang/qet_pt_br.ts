@@ -9296,7 +9296,7 @@ Adicione uma nova tabela ou ajuste a tabela existente para exibir todas as infor
         <translation>Limitação de tabela</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Modifique a geometria de uma tabela</translation>
     </message>

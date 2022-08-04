@@ -9307,7 +9307,7 @@ Přidejte novou tabulku nebo upravte stávající tabulku tak, aby zobrazovala v
         <translation>Omezení tabulky</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Změnit sestavení tabulky</translation>
     </message>

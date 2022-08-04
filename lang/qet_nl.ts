@@ -9291,7 +9291,7 @@ Maak een nieuwe tabel of pas de huidige tabel aan zodat alle informatie hierin k
         <translation>Tabelgrenzen</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Geometrie van een tabel wijzigen</translation>
     </message>

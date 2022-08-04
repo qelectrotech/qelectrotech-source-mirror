@@ -6975,7 +6975,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation></translation>
+        <translation>To install the plugin DXFtoQET
+Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Install on Windows
+Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="955"/>
@@ -6985,7 +6990,12 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation></translation>
+        <translation>To install the plugin DXFtoQET
+Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Install on macOSX
+Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="961"/>
@@ -6996,7 +7006,13 @@ Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation></translation>
+        <translation>To install the plugin DXFtoQET
+Visit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Install on Linux
+Put DXFtoQET binary on your /home/user_name/.qet/ directory
+make it executable : chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1043"/>
@@ -9258,7 +9274,7 @@ Please add a new table or adjust the existing table to display all information.<
         <translation>Table limitation</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="962"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Modify the geometry of a table</translation>
     </message>
