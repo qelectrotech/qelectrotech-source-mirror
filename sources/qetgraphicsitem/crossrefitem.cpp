@@ -759,6 +759,9 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 	}
 
 		//Draw a switch contact
+	
+	
+	
 	else if (flags &SW)
 	{
 		bounding_rect = QRectF(0, offset, 24, 20);
@@ -799,16 +802,12 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 				QRectF rr(9.5, offset+17, 5, 3);
 				painter.drawArc(rr, 0, 180*16);
 			}
+			
 		}
-	else if (flags &Other)
-	{
-		bounding_rect = QRectF(0, offset, 24, 20);
-		}
-
 
 			//Draw position text
 		QRectF text_rect = painter.boundingRect(
-					QRectF(30, offset+5, 5, 10),
+					QRectF(30, offset+4, 5, 10),
 					Qt::AlignLeft | Qt::AlignVCenter,
 					str);
 		painter.drawText(text_rect,
@@ -826,11 +825,30 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
 		
-	}else if(flags &Other){
+	}
 	
-		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
-		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+		//Draw a other symbol
+	else if(flags &Other)
+	{
+		bounding_rect = QRectF(0, offset, 24, 20);
 	
+			//Draw the first arc symbol
+		QRectF r(8, offset+4, 5, 3);
+				painter.drawArc(r, 10*16, 270*16);
+		
+			//Draw the second arc symbol
+		QRectF r2(11.2, offset+4, 5, 3);
+				painter.drawArc(r2, 160*16, 300*16);
+
+			//Draw position text
+		QRectF text_rect = painter.boundingRect(
+					QRectF(30, offset, 5, 10), 
+					Qt::AlignLeft | Qt::AlignVCenter, 
+					str);
+		painter.drawText(text_rect,
+					Qt::AlignLeft | Qt::AlignVCenter, 
+					str);
+		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_hovered_contacts_map.contains(elmt)) {
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
@@ -838,11 +856,11 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		else {
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
 		}
-		m_drawed_contacts += 1;
-		}
-
-	return bounding_rect;
+		++m_drawed_contacts;
+	}
+		return bounding_rect;
 }
+
 
 /**
 	@brief CrossRefItem::fillCrossRef
