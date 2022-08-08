@@ -627,7 +627,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 		}
 	}
 
-	bounding_rect.adjust(-4, -4, 4, 4);
+	bounding_rect.adjust(-30, -4, 4, 4);
 	prepareGeometryChange();
 	m_bounding_rect = bounding_rect;
 	m_shape_path.addRect(bounding_rect);
@@ -646,7 +646,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 	QString str = elementPositionText(elmt);
 	int offset = m_drawed_contacts*10;
 	QRectF bounding_rect = QRectF(0, offset, 24, 10);
-
+	
 	QPen pen = painter.pen();
 	m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
 	painter.setPen(pen);
@@ -765,6 +765,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 	else if (flags &SW)
 	{
 		bounding_rect = QRectF(0, offset, 24, 20);
+		bounding_rect.adjust(-20, -4, 4, 4);
 
 			//draw the NO side
 		painter.drawLine(0, offset+6, 8, offset+6);
@@ -827,10 +828,11 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		
 	}
 	
-		//Draw a other symbol
+		//Draw Other symbol "ↈ"
 	else if(flags &Other)
 	{
 		bounding_rect = QRectF(0, offset, 24, 20);
+		bounding_rect.adjust(-20, -4, 4, 4);
 	
 			//Draw the first arc symbol
 		QRectF r(8, offset+4, 5, 3);
