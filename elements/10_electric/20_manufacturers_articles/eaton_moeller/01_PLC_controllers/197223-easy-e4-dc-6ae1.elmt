@@ -13,8 +13,7 @@
         <elementInformation show="1" name="unity"></elementInformation>
         <elementInformation show="1" name="manufacturer">Eaton</elementInformation>
         <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="designation">197221</elementInformation>
-        <elementInformation show="1" name="description">EASY-E4-AC-12RC1_io</elementInformation>
+        <elementInformation show="1" name="designation">197223</elementInformation>
         <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
         <elementInformation show="1" name="label"></elementInformation>
         <elementInformation show="1" name="quantity"></elementInformation>

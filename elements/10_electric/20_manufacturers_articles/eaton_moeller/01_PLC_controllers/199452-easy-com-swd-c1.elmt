@@ -10,7 +10,6 @@
         <kindInformation name="type">coil</kindInformation>
     </kindInformations>
     <elementInformations>
-        <elementInformation name="description" show="1">EASY-E4-AC-12RC1_io</elementInformation>
         <elementInformation name="label" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="manufacturer" show="1">Eaton</elementInformation>
@@ -19,7 +18,7 @@
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="quantity" show="1"></elementInformation>
         <elementInformation name="manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="designation" show="1">197221</elementInformation>
+        <elementInformation name="designation" show="1">199452</elementInformation>
         <elementInformation name="supplier" show="1"></elementInformation>
     </elementInformations>
     <informations>Author:  https://t.me/pandzmitriusz </informations>

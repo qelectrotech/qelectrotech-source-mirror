@@ -12,7 +12,6 @@
     <elementInformations>
         <elementInformation name="unity" show="1"></elementInformation>
         <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
-        <elementInformation name="description" show="1">EASY-E4-AC-12RC1_io</elementInformation>
         <elementInformation name="plant" show="1"></elementInformation>
         <elementInformation name="comment" show="1"></elementInformation>
         <elementInformation name="designation" show="1">197221</elementInformation>
