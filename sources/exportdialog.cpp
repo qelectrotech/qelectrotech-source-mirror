@@ -554,7 +554,10 @@ void ExportDialog::generateDxf(
 				continue;
             QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
             QPolygonF poly = t.map(polygon);
-            Createdxf::drawPolygon(file_path,poly,0);
+            if(poly.isClosed())
+                Createdxf::drawPolygon(file_path,poly,0);
+            else
+                Createdxf::drawPolyline(file_path,poly,0);
 		}
 
 		// Draw arcs and ellipses
