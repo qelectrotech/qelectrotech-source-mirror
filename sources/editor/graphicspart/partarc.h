@@ -61,6 +61,9 @@ class PartArc : public AbstractPartEllipse
 		void setSpanAngle(const int &span_angle) override {AbstractPartEllipse::setSpanAngle(span_angle); adjusteHandlerPos();}
 		QRectF sceneGeometricRect() const override;
 
+		void addHandler() override;
+		void removeHandler() override;
+
 	protected:
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
@@ -72,11 +75,7 @@ class PartArc : public AbstractPartEllipse
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void sceneSelectionChanged ();
 		
-		void addHandler();
-		void removeHandler();
-
 	private:
 		QPropertyUndoCommand *m_undo_command = nullptr;
 		QPropertyUndoCommand *m_undo_command2 = nullptr;

@@ -90,6 +90,9 @@ class PartPolygon : public CustomElementGraphicPart
 		void setRotation (qreal angle);
 		qreal rotation () const;
 
+		void addHandler() override;
+		void removeHandler() override;
+
 	protected:
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
@@ -100,10 +103,7 @@ class PartPolygon : public CustomElementGraphicPart
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void sceneSelectionChanged ();
-		
-		void addHandler();
-		void removeHandler();
+
 		void insertPoint();
 		void removePoint();
 		

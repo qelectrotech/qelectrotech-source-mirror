@@ -298,6 +298,9 @@ class CustomElementGraphicPart : public QGraphicsObject, public CustomElementPar
 			return QObject::property(name);}
 
 		virtual QPainterPath shadowShape ()const = 0;
+
+		virtual void addHandler() {}
+		virtual void removeHandler() {}
 		virtual void setHandlerColor(QPointF /*pos*/,
 					     const QColor &/*color*/) {}
 		virtual void resetAllHandlerColor() {}

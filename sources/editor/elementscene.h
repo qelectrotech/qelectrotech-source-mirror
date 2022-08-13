@@ -32,6 +32,7 @@ class ElementPrimitiveDecorator;
 class QETElementEditor;
 class ESEventInterface;
 class QKeyEvent;
+class CustomElementGraphicPart;
 /**
 	@brief The ElementScene class
 	This class is the canvas allowing the visual edition of an electrial element.
@@ -87,6 +88,8 @@ class ElementScene : public QGraphicsScene
 
 		int m_x_grid,
 		    m_y_grid;
+
+		QPointer<CustomElementGraphicPart> m_single_selected_item;
 	
 		// methods
 	public:

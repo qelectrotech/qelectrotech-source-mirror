@@ -58,6 +58,9 @@ class PartEllipse : public  AbstractPartEllipse
 		QPainterPath shadowShape() const override;
 		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
 
+		void addHandler() override;
+		void removeHandler() override;
+
 	protected:
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
@@ -69,10 +72,6 @@ class PartEllipse : public  AbstractPartEllipse
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void sceneSelectionChanged ();
-		
-		void addHandler();
-		void removeHandler();
 
 	private:
 		QPropertyUndoCommand *m_undo_command;

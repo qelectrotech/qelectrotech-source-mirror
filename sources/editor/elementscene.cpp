@@ -1354,24 +1354,28 @@ void ElementScene::managePrimitivesGroups()
 		m_decorator -> hide();
 	}
 
+	if (m_single_selected_item) {
+		m_single_selected_item->removeHandler();
+		m_single_selected_item.clear();
+	}
+
 		// should we hide the decorator?
-	QList<QGraphicsItem *> selected_items = zItems(
-				ElementScene::Selected
-				| ElementScene::IncludeTerminals);
+	const auto selected_items{zItems(ElementScene::Selected | ElementScene::IncludeTerminals)};
 	if (selected_items.size() <= 1)
 	{
-		m_decorator -> hide();
+		m_decorator->hide();
+
+		if (!selected_items.isEmpty())
+		{
+			if (CustomElementGraphicPart *item_ = dynamic_cast<CustomElementGraphicPart *>(selected_items.first()))
+			{
+				item_->addHandler();
+				m_single_selected_item = item_;
+			}
+		}
 	}
 	else
 	{
-		for(QGraphicsItem *qgi : selected_items)
-		{
-			/* We recall set selected,
-			 * then every primitive will remove there handler
-			 * because there are several item selected
-			 */
-			qgi->setSelected(true);
-		}
 		m_decorator -> setZValue(1000000);
 		m_decorator -> setPos(0, 0);
 		m_decorator -> setItems(selected_items);

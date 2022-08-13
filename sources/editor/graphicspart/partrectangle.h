@@ -85,6 +85,9 @@ class PartRectangle :  public CustomElementGraphicPart
 		void startUserTransformation(const QRectF &) override;
 		void handleUserTransformation(const QRectF &, const QRectF &) override;
 
+		void addHandler() override;
+		void removeHandler() override;
+
 	protected:
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
@@ -96,10 +99,6 @@ class PartRectangle :  public CustomElementGraphicPart
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
-		void sceneSelectionChanged ();
-		
-		void addHandler();
-		void removeHandler();
 	
 	private:
 		QRectF m_rect,

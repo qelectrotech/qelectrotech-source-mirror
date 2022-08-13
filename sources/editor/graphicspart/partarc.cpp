@@ -197,32 +197,12 @@ void PartArc::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 */
 QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
-	if (change == ItemSelectedHasChanged && scene())
-	{
-		if (value.toBool() == true)
-		{
-				//When item is selected, he must to be up to date whene the selection in the scene change, for display or not the handler,
-				//according to the number of selected items.
-			connect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
-
-			if (scene()->selectedItems().size() == 1)
-				addHandler();
-		}
-		else
-		{
-			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
-			removeHandler();
-		}
-	}
-	else if (change == ItemPositionHasChanged)
+	if (change == ItemPositionHasChanged)
 	{
 		adjusteHandlerPos();
 	}
 	else if (change == ItemSceneChange)
 	{
-		if(scene())
-			disconnect(scene(), &QGraphicsScene::selectionChanged, this, &PartArc::sceneSelectionChanged);
-
 		setSelected(false); //This is item removed from scene, then we deselect this, and so, the handlers is also removed.
 	}
 
@@ -440,18 +420,6 @@ void PartArc::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSc
 		m_undo_command = nullptr;
 		m_vector_index = -1;
 	}
-}
-
-/**
-	@brief PartArc::sceneSelectionChanged
-	When the scene selection change, if there are several primitive selected, we remove the handler of this item
-*/
-void PartArc::sceneSelectionChanged()
-{
-	if (this->isSelected() && scene()->selectedItems().size() == 1)
-		addHandler();
-	else
-		removeHandler();
 }
 
 /**
