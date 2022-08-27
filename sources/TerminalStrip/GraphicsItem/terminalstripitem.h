@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2021 The QElectroTech Team
+	Copyright 2006-2022 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,20 +15,30 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef QGRAPHICSITEMUTILITY_H
-#define QGRAPHICSITEMUTILITY_H
+#ifndef TERMINALSTRIPITEM_H
+#define TERMINALSTRIPITEM_H
 
-#include <QtGlobal>
+#include <QGraphicsObject>
 
-class QGraphicsItem;
-class Element;
-class QPainter;
+#include "terminalstriplayoutpattern.h"
+#include "../../qetgraphicsitem/qetgraphicsitem.h"
 
-namespace QGIUtility
+class TerminalStrip;
+
+class TerminalStripItem : public QetGraphicsItem
 {
-	bool centerToParentBottom  (QGraphicsItem *item);
-	bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset = 0 );
-	void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter);
-}
+		Q_OBJECT
 
-#endif // QGRAPHICSITEMUTILITY_H
+	public:
+		TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsItem *parent = nullptr);
+
+		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+		QRectF boundingRect() const override;
+
+	private:
+		QPointer<TerminalStrip> m_strip;
+		TerminalStripDrawer m_drawer;
+
+};
+
+#endif // TERMINALSTRIPITEM_H

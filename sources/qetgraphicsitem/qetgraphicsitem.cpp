@@ -64,6 +64,10 @@ void QetGraphicsItem::setPos(qreal x, qreal y) {
 	setPos(QPointF(x, y));
 }
 
+bool QetGraphicsItem::isHovered() const {
+	return m_hovered;
+}
+
 /**
 	@brief QetGraphicsItem::state
 	@return the current state of this item 
@@ -154,4 +158,16 @@ void QetGraphicsItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 		diagram()->elementsMover().endMovement();
 		event->accept();
 	}
+}
+
+void QetGraphicsItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+	m_hovered = true;
+	QGraphicsObject::hoverEnterEvent(event);
+}
+
+void QetGraphicsItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	m_hovered = false;
+	QGraphicsObject::hoverLeaveEvent(event);
 }

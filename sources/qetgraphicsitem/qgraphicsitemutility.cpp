@@ -90,5 +90,19 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 
 	return true;
 }
+
+void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter)
+{
+	painter->save();
+	QPen t;
+	t.setColor(Qt::gray);
+	t.setStyle(Qt::DashDotLine);
+	t.setCosmetic(true);
+
+	painter->setPen(t);
+	painter->drawRoundedRect(item->boundingRect(),10,10);
+	painter->restore();
+}
+
 }
 
