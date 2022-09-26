@@ -64,7 +64,8 @@ DynamicTextFieldEditor::~DynamicTextFieldEditor()
 	@param part
 	@return true if part can be edited by this widget
 */
-bool DynamicTextFieldEditor::setPart(CustomElementPart *part) {
+bool DynamicTextFieldEditor::setPart(CustomElementPart *part)
+{
 	disconnectConnections();
 
 	QGraphicsItem *qgi = part -> toItem();
@@ -82,24 +83,24 @@ bool DynamicTextFieldEditor::setPart(CustomElementPart *part) {
 	return true;
 }
 
-bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts) {
-	if (parts.isEmpty()) {
+bool DynamicTextFieldEditor::setParts(QList <CustomElementPart *> parts)
+{
+	if (parts.isEmpty())
+	{
 		m_parts.clear();
-		if (m_text_field) {
-			disconnectConnections();
-		}
+		disconnectConnections();
 		m_text_field = nullptr;
+
 		return true;
 	}
 
-	if (PartDynamicTextField *part = static_cast<PartDynamicTextField *>(parts.first())) {
-		if (m_text_field) {
-			disconnectConnections();
-		}
-
+	if (PartDynamicTextField *part = static_cast<PartDynamicTextField *>(parts.first()))
+	{
+		disconnectConnections();
 		m_text_field = part;
 		m_parts.clear();
 		m_parts.append(part);
+
 		for (int i=1; i < parts.length(); i++)
 			m_parts.append(static_cast<PartDynamicTextField*>(parts[i]));
 
@@ -183,7 +184,8 @@ void DynamicTextFieldEditor::setupWidget()
 
 void DynamicTextFieldEditor::setUpConnections()
 {
-	assert(m_connection_list.isEmpty());
+	disconnectConnections();
+
 	//Setup the connection
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::colorChanged,
 		[this](){this -> updateForm();});
@@ -211,10 +213,10 @@ void DynamicTextFieldEditor::setUpConnections()
 
 void DynamicTextFieldEditor::disconnectConnections()
 {
-	//Remove previous connection
+		//Remove previous connection
 	if(!m_connection_list.isEmpty())
-		for(const QMetaObject::Connection& con : m_connection_list) {
-			disconnect(con);
+		for(const auto &connection : m_connection_list) {
+			disconnect(connection);
 		}
 	m_connection_list.clear();
 }
