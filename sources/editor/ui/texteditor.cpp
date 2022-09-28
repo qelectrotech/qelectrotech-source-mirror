@@ -70,8 +70,10 @@ void TextEditor::updateForm()
 	setUpEditConnection();
 }
 
-void TextEditor::setUpChangeConnection(QPointer<PartText> part) {
-	assert(m_change_connection.isEmpty());
+void TextEditor::setUpChangeConnection(QPointer<PartText> part)
+{
+	disconnectChangeConnection();
+
 	m_change_connection << connect(part, &PartText::plainTextChanged, this, &TextEditor::updateForm);
 	m_change_connection << connect(part, &PartText::xChanged,         this, &TextEditor::updateForm);
 	m_change_connection << connect(part, &PartText::yChanged,         this, &TextEditor::updateForm);
@@ -82,8 +84,8 @@ void TextEditor::setUpChangeConnection(QPointer<PartText> part) {
 
 void TextEditor::disconnectChangeConnection()
 {
-	for (QMetaObject::Connection c : m_change_connection) {
-		disconnect(c);
+	for (const auto &connection : qAsConst(m_change_connection)) {
+		disconnect(connection);
 	}
 	m_change_connection.clear();
 }
@@ -122,20 +124,19 @@ bool TextEditor::setPart(CustomElementPart *part) {
 	return false;
 }
 
-bool TextEditor::setParts(QList <CustomElementPart *> parts) {
-	if (parts.isEmpty()) {
+bool TextEditor::setParts(QList <CustomElementPart *> parts)
+{
+	if (parts.isEmpty())
+	{
 		m_parts.clear();
-		if (m_text) {
-			disconnectChangeConnection();
-		}
+		disconnectChangeConnection();
 		m_text = nullptr;
 		return true;
 	}
 
-	if (PartText *part = static_cast<PartText *>(parts.first())) {
-		if (m_text) {
-			disconnectChangeConnection();
-		}
+	if (PartText *part = static_cast<PartText *>(parts.first()))
+	{
+		disconnectChangeConnection();
 		m_text = part;
 		m_parts.clear();
 		m_parts.append(part);
