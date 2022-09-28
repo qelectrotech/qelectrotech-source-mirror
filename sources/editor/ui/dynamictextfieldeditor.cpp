@@ -31,7 +31,6 @@
 #include <QColorDialog>
 #include <QGraphicsItem>
 #include <QPointer>
-#include <assert.h>
 
 DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
 											   PartDynamicTextField *text_field,
