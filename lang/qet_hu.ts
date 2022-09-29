@@ -6323,7 +6323,7 @@ Elérhető lehetőségek:
         <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
-        <translation>Sor hozzáadása</translation>
+        <translation>Vonal rajzolása</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
@@ -7010,7 +7010,7 @@ végrahajtásához : chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
         <source>Ajouter une ligne</source>
-        <translation>Vonal hozzáadása</translation>
+        <translation>Vonal rajzolása</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
