@@ -50,7 +50,6 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	addPage(buildStep1());
 	addPage(buildStep2());
 	addPage(buildStep3());
-	setFixedSize(705, 325);
 }
 
 /**
