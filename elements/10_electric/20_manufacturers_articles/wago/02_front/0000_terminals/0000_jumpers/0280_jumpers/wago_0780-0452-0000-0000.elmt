@@ -1,0 +1,20 @@
+<definition height="20" hotspot_x="14" link_type="simple" version="0.90" type="element" width="20" hotspot_y="12">
+    <names>
+        <name lang="fr">780-452</name>
+        <name lang="de">780-452</name>
+        <name lang="en">780-452</name>
+        <name lang="cs">780-452</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">780-452</elementInformation>
+        <elementInformation name="description" show="1">Jumper for Series 280, 769</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon x8="-5.3" x6="-8.9" x3="-3.1" y6="-8" x2="-3.1" x5="0.5" x7="-8.9" y4="3.5" y8="3.5" y1="-3.6" y5="-8" antialias="false" y3="3.5" y7="3.5" x4="0.5" y2="-3.6" x1="-5.3" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <text font="Sans Serif,1,-1,5,50,0,0,0,0,0" rotation="0" y="-5.3" color="#000000" x="-7.4" text="780−452"/>
+    </description>
+</definition>

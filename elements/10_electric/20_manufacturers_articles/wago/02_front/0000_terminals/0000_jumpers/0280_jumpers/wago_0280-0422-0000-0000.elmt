@@ -1,0 +1,23 @@
+<definition height="30" hotspot_x="14" link_type="simple" version="0.90" type="element" width="20" hotspot_y="15">
+    <names>
+        <name lang="fr">280-422</name>
+        <name lang="de">280-422</name>
+        <name lang="en">280-422</name>
+        <name lang="cs">280-422</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="designation" show="1">280-422</elementInformation>
+        <elementInformation name="description" show="1">Jumper for Series 280, 769</elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect ry="0" height="16" style="line-style:normal;line-weight:thin;filling:green;color:none" rx="0" width="9.8" y="-8" x="-9.1" antialias="false"/>
+        <polygon style="line-style:normal;line-weight:none;filling:yellow;color:none" x2="0.7" x1="-9.1" y3="8" y1="-8" y2="-8" antialias="false" x3="-9.1"/>
+        <polygon y4="-4.5" x4="-1" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-7.4" x1="-7.4" y3="6.5" y1="-4.5" y2="6.5" antialias="false" x3="-1"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" rotation="270" y="5.14" color="#000000" x="-3.34" text="280-422"/>
+        <rect ry="0" height="16" style="line-style:normal;line-weight:thin;filling:none;color:black" rx="0" width="9.8" y="-8" x="-9.1" antialias="false"/>
+    </description>
+</definition>
