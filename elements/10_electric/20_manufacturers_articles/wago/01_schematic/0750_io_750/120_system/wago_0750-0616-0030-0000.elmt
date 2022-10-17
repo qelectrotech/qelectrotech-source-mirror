@@ -1,0 +1,57 @@
+<definition height="110" width="730" version="0.90" hotspot_y="55" link_type="simple" type="element" hotspot_x="365">
+    <names>
+        <name lang="pt">750-616/030-000</name>
+        <name lang="nl">750-616/030-000</name>
+        <name lang="ar">750-616/030-000</name>
+        <name lang="it">750-616/030-000</name>
+        <name lang="cs">750-616/030-000</name>
+        <name lang="pl">750-616/030-000</name>
+        <name lang="es">750-616/030-000</name>
+        <name lang="fr">750-616/030-000</name>
+        <name lang="en">750-616/030-000</name>
+        <name lang="de">750-616/030-000</name>
+        <name lang="el">750-616/030-000</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">Distance-Module</elementInformation>
+        <elementInformation show="1" name="designation">750-616/030-000</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect y="-40" height="90" width="720" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-360" rx="0" ry="0"/>
+        <text y="45" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="WAGO 750-616/030-000" x="-330"/>
+        <text y="45" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="Distance-Module" x="-138"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="117.5"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-122.5"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="197.5"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-202.5"/>
+        <dynamic_text y="29.5" text_from="ElementInfo" z="8" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" frame="false" rotation="0" Halignment="AlignLeft" uuid="{2c999323-a268-4a64-a87e-29a40a169a45}" text_width="-1" x="220" keep_visual_rotation="true">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="277.5"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-282.5"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="37.5"/>
+        <circle y="-42.5" diameter="5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5"/>
+        <polygon y2="-10" x2="-356" closed="false" y1="-10" x1="-362" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <arc y="-12.5" height="5" width="5" angle="180" antialias="true" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="360"/>
+        <polygon y2="10" x2="-356" closed="false" y1="10" x1="-362" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <arc y="7.5" height="5" width="5" angle="180" antialias="true" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="360"/>
+        <polygon y2="30" x2="-356" closed="false" y1="30" x1="-362" antialias="false" style="line-style:normal;line-weight:hight;filling:none;color:black"/>
+        <arc y="27.5" height="5" width="5" angle="180" antialias="true" start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="360"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="2" x="-116"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="7" x="125"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="5" x="-196"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="4" x="206"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="1" x="-276"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="8" x="286"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="6" x="-36"/>
+        <text y="-42" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="3" x="46"/>
+        <line y2="20" x2="70" end2="none" y1="-20" x1="-70" antialias="false" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none" length2="1.5"/>
+        <text y="10" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="24VDC" x="-70"/>
+        <text y="-3" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" text="230VAC" x="23"/>
+    </description>
+</definition>
