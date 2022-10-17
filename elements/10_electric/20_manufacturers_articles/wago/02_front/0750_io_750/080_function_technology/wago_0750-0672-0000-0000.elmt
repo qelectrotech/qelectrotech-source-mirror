@@ -20,7 +20,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="-43.66" antialias="false" ry="0" y="-113.49" height="5" rx="0" width="15.33"/>
         <circle style="line-style:normal;line-weight:thin;filling:green;color:black" x="-3.71" antialias="false" diameter="6.29" y="24.31"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="-24.52" antialias="false" ry="0" y="-116.23" height="10.63" rx="0" width="22.87"/>
-        <dynamic_text rotation="0" frame="false" font="Sans Serif,4.57,-1,5,25,0,0,0,0,0" x="-3.64" text_from="ElementInfo" keep_visual_rotation="true" text_width="-1" y="-82.82" uuid="{c7511385-12bc-4afe-9d33-fd1c38474d8c}" Valignment="AlignTop" z="7" Halignment="AlignLeft">
+        <dynamic_text rotation="0" frame="false" font="Sans Serif,5,-1,5,25,0,0,0,0,0" x="-3.64" text_from="ElementInfo" keep_visual_rotation="true" text_width="-1" y="-82.82" uuid="{c7511385-12bc-4afe-9d33-fd1c38474d8c}" Valignment="AlignTop" z="7" Halignment="AlignLeft">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
@@ -39,7 +39,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle style="line-style:normal;line-weight:thin;filling:green;color:black" x="-3.71" antialias="false" diameter="6.29" y="39.35"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="28.14" antialias="false" ry="0" y="-113.49" height="5" rx="0" width="15.33"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x="-38.85" antialias="false" ry="0" y="29.69" height="7.43" rx="0" width="29.61"/>
-        <polygon y1="-2.34" x4="45.17" x3="48.03" x1="45.17" style="line-style:normal;line-weight:thin;filling:orange;color:black" y4="15.93" y2="-2.34" x2="48.03" antialias="false" y3="15.93"/>
+        <polygon y1="-2.34" x4="45.17" x3="48" x1="45.17" style="line-style:normal;line-weight:thin;filling:orange;color:black" y4="15.93" y2="-2.34" x2="48" antialias="false" y3="15.93"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="25.38" antialias="false" ry="0" y="-114.92" height="8.06" rx="0" width="21.1"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x="-38.85" antialias="false" ry="0" y="52.16" height="2.52" rx="0" width="29.61"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x="-38.85" antialias="false" ry="0" y="-45.2" height="7.43" rx="0" width="29.61"/>
@@ -50,7 +50,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon y1="-3.45" closed="false" x1="-48" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-3.45" x2="-45.12" antialias="false"/>
         <polygon y1="6.49" closed="false" x1="45.16" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="6.49" x2="48.05" antialias="false"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" x="-38.85" antialias="false" ry="0" y="-67.61" height="7.43" rx="0" width="29.61"/>
-        <text rotation="0" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" x="-6.21" y="61.91" text="750-672" color="#000000"/>
+        <text rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" x="-6.21" y="61.91" text="750-672" color="#000000"/>
         <circle style="line-style:normal;line-weight:thin;filling:red;color:black" x="-38.58" antialias="false" diameter="6.29" y="-98.2"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" x="-46.42" antialias="false" ry="0" y="-114.92" height="8.06" rx="0" width="21.1"/>
         <circle style="line-style:normal;line-weight:thin;filling:green;color:black" x="-3.71" antialias="false" diameter="6.29" y="-20.68"/>

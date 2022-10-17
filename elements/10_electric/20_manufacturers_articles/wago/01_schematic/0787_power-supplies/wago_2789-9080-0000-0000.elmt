@@ -22,12 +22,12 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect height="80" y="-40" width="60" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" ry="0" x="-30"/>
-        <text y="16" text="IO-Link" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-11.0156"/>
+        <text y="16" text="IO-Link" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-11"/>
         <text y="31" text="L+" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-22.5"/>
         <circle y="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-22.5"/>
         <text y="-11" text="WAGO" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-15"/>
-        <text y="31" text="L-" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="17.1094"/>
-        <text y="31" text="C/Q" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-4.39062"/>
+        <text y="31" text="L-" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="17.11"/>
+        <text y="31" text="C/Q" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" color="#000000" x="-4.39"/>
         <circle y="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="17.5"/>
         <circle y="37.5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" diameter="5" x="-2.5"/>
         <line style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="2" end2="none" x1="30" end1="none" length2="1.5" antialias="true" y2="2" x2="-30" length1="1.5"/>

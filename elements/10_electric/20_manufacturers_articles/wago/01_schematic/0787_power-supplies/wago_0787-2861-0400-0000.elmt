@@ -1,65 +1,57 @@
-<definition type="element" version="0.51" link_type="simple" hotspot_x="365" height="110" hotspot_y="55" width="730">
+<definition hotspot_x="365" link_type="simple" width="730" hotspot_y="55" version="0.90" type="element" height="110">
     <names>
-        <name lang="de">787-2861/0400-0000</name>
         <name lang="en">787-2861/0400-0000</name>
         <name lang="fr">787-2861/0400-0000</name>
+        <name lang="de">787-2861/0400-0000</name>
         <name lang="cs">787-2861/0400-0000</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">787-2861/0400-0000</elementInformation>
         <elementInformation show="1" name="description">ECB / Electronic Circuit Breaker 24V / 4.0A</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <text x="122" text="Vout+" size="9" y="-24"/>
-        <text x="203" text="Vout+" size="9" y="-24"/>
-        <text x="-197" text="Vin+" size="9" y="-24"/>
-        <text x="282" text="GND" size="9" y="-24"/>
-        <text x="41" text="S1 (DI)" size="9" y="-24"/>
-        <text x="-116" text="Vin+" size="9" y="-24"/>
-        <text x="-37" text="GND" size="9" y="-24"/>
-        <circle diameter="5" antialias="true" x="117.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="5" antialias="true" x="-122.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="5" antialias="true" x="197.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="5" antialias="true" x="-202.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line end2="none" antialias="false" x1="-360" end1="none" x2="-360" length2="1.5" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <circle diameter="5" antialias="true" x="277.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="5" antialias="true" x="-282.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="5" antialias="true" x="37.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle diameter="5" antialias="true" x="-42.5" y="-42.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <input x="220" text="X123" size="9" rotate="true" y="41" tagg="label"/>
-        <line end2="none" antialias="false" x1="360" end1="none" x2="360" length2="1.5" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="-117" end1="none" x2="-43" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="123" end1="none" x2="197" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="-197" end1="none" x2="-123" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="203" end1="none" x2="277" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="-277" end1="none" x2="-203" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="283" end1="none" x2="360" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="-360" end1="none" x2="-283" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="-37" end1="none" x2="37" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="43" end1="none" x2="117" length2="1.5" y2="-40" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40"/>
-        <line end2="none" antialias="false" x1="-360" end1="none" x2="360" length2="1.5" y2="50" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50"/>
-        <text x="206" text="7" size="5" y="-42"/>
-        <text x="125" text="6" size="5" y="-42"/>
-        <text x="-130" text="Electronic Circuit Breaker 24 V / 4 A" size="9" y="45"/>
-        <text x="-196" text="2" size="5" y="-42"/>
-        <text x="-115" text="3" size="5" y="-42"/>
-        <text x="-276" text="1" size="5" y="-42"/>
-        <text x="-278" text="S2 (DO)" size="9" y="-24"/>
-        <text x="-35" text="4" size="5" y="-42"/>
-        <text x="-330" text="WAGO 0787-2861/0400-0000" size="9" y="45"/>
-        <text x="286" text="8" size="5" y="-42"/>
-        <text x="45" text="5" size="5" y="-42"/>
-        <terminal orientation="n" x="-40" y="-40"/>
-        <terminal orientation="n" x="40" y="-40"/>
-        <terminal orientation="n" x="280" y="-40"/>
-        <terminal orientation="n" x="-200" y="-40"/>
-        <terminal orientation="n" x="-120" y="-40"/>
-        <terminal orientation="n" x="-280" y="-40"/>
-        <terminal orientation="n" x="200" y="-40"/>
-        <terminal orientation="n" x="120" y="-40"/>
+        <rect width="720" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" ry="0" x="-360" y="-40" rx="0" height="90"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="117.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-122.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="197.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-202.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="277.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-282.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="37.5" y="-42.5"/>
+        <circle diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="-42.5" y="-42.5"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Vout+" color="#000000" x="122" y="-24"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Vout+" color="#000000" x="203" y="-24"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Vin+" color="#000000" x="-197" y="-24"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="GND" color="#000000" x="282" y="-24"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="S1 (DI)" color="#000000" x="41" y="-24"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Vin+" color="#000000" x="-116" y="-24"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="GND" color="#000000" x="-37" y="-24"/>
+        <dynamic_text z="17" frame="false" rotation="0" keep_visual_rotation="false" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" text_width="-1" text_from="ElementInfo" x="220" y="29.5" Valignment="AlignTop" uuid="{f3761e6d-75a7-4645-9c4c-65628a0c4f1e}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="7" color="#000000" x="206" y="-42"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="6" color="#000000" x="125" y="-42"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="Electronic Circuit Breaker 24 V / 4 A" color="#000000" x="-130" y="45"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="2" color="#000000" x="-196" y="-42"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="3" color="#000000" x="-115" y="-42"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="1" color="#000000" x="-276" y="-42"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="S2 (DO)" color="#000000" x="-278" y="-24"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="4" color="#000000" x="-35" y="-42"/>
+        <text rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="WAGO 0787-2861/0400-0000" color="#000000" x="-330" y="45"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="8" color="#000000" x="286" y="-42"/>
+        <text rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="5" color="#000000" x="45" y="-42"/>
+        <terminal orientation="n" name="" x="-40" y="-40" uuid="{4a84a546-6c27-4ca1-bae5-861ef403e6dc}" type="Generic"/>
+        <terminal orientation="n" name="" x="40" y="-40" uuid="{0cc75559-72b6-4fee-b07a-a3e15421460e}" type="Generic"/>
+        <terminal orientation="n" name="" x="280" y="-40" uuid="{993f20f8-73e9-47d2-bfc4-7e7eaa190cd7}" type="Generic"/>
+        <terminal orientation="n" name="" x="-200" y="-40" uuid="{b1356919-a146-4b93-9f00-35fc3e082093}" type="Generic"/>
+        <terminal orientation="n" name="" x="-120" y="-40" uuid="{e50c7578-f820-49ce-8b63-3dc767470440}" type="Generic"/>
+        <terminal orientation="n" name="" x="-280" y="-40" uuid="{f354e12d-1516-4f95-87eb-682e0c58071b}" type="Generic"/>
+        <terminal orientation="n" name="" x="200" y="-40" uuid="{3728326f-e56c-4c28-88d4-d06e206454d0}" type="Generic"/>
+        <terminal orientation="n" name="" x="120" y="-40" uuid="{09e77d2c-ee43-4084-b48a-f259a845ec59}" type="Generic"/>
     </description>
 </definition>

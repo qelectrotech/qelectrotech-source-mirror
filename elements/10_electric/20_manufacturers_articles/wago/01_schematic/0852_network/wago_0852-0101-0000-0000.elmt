@@ -23,7 +23,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text x="37.1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="−" y="-90" rotation="0"/>
         <text x="17.6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="+" y="-90" rotation="0"/>
         <circle x="-12.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="97.5"/>
-        <text x="23.4718" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="RPS" y="-84" rotation="0"/>
+        <text x="23.47" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="RPS" y="-84" rotation="0"/>
         <circle x="-62.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="27.5"/>
         <text x="-54.2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="2" y="-32" rotation="0"/>
         <text x="-42.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="+" y="-90" rotation="0"/>

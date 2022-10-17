@@ -1,20 +1,20 @@
 <definition type="element" width="80" height="11" version="0.80" hotspot_x="11" hotspot_y="6" link_type="thumbnail">
-  <names>
-    <name lang="en">2000-410</name>
-    <name lang="fr">2000-410</name>
-    <name lang="de">2000-410</name>
-    <name lang="cs">2000-410</name>
-  </names>
+    <names>
+        <name lang="en">2000-410</name>
+        <name lang="fr">2000-410</name>
+        <name lang="de">2000-410</name>
+        <name lang="cs">2000-410</name>
+    </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">2000-410</elementInformation>
         <elementInformation show="1" name="description">Jumper for Series 2000, 2020, 2200</elementInformation>
     </elementInformations>
-  <informations>Author: plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-  <description>
-    <polygon x1="-8.28" x2="-8.28" x3="64.16" x4="64.16" y1="3.89" y2="-3.79" y3="-3.79" y4="3.89" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
-    <text x="20.55" y="1.43" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2000-410" color="#000000" rotation="0"/>
-  </description>
+    <description>
+        <polygon x1="-8.28" x2="-8.28" x3="64.16" x4="64.16" y1="3.89" y2="-3.79" y3="-3.79" y4="3.89" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+        <text x="20.55" y="1.43" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="2000-410" color="#000000" rotation="0"/>
+    </description>
 </definition>

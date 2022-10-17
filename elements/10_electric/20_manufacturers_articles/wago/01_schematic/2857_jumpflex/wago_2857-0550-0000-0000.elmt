@@ -25,17 +25,17 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <dynamic_text y="-11" frame="false" uuid="{0ca5997d-183f-4290-b1b3-35ab23bc0440}" z="7" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" keep_visual_rotation="true" Halignment="AlignLeft" x="-203" text_width="-1" rotation="0" text_from="UserText" Valignment="AlignTop">
             <text>in-active</text>
         </dynamic_text>
-        <text y="-26" text="11" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-342.875" color="#000000" rotation="0"/>
+        <text y="-26" text="11" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-342.88" color="#000000" rotation="0"/>
         <dynamic_text y="-14" frame="false" uuid="{8dbdc91c-a98f-4ac2-92ae-18a0dff194ba}" z="9" font="Sans Serif,8,-1,5,0,0,0,0,0,0,normal" keep_visual_rotation="true" Halignment="AlignLeft" x="76" text_width="-1" rotation="0" text_from="UserText" Valignment="AlignTop">
             <text>0 mA ... 20 mA</text>
         </dynamic_text>
-        <text y="-16" text="(GND)" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-160.328" color="#000000" rotation="0"/>
-        <text y="-26" text="12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-386.969" color="#000000" rotation="0"/>
+        <text y="-16" text="(GND)" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-160.33" color="#000000" rotation="0"/>
+        <text y="-26" text="12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-387" color="#000000" rotation="0"/>
         <line y2="-39" length1="1.5" end2="none" y1="-13" x2="-390" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-390"/>
         <line y2="-39" length1="1.5" end2="none" y1="-33" x2="-270" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-270"/>
-        <text y="-26" text="14" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-274.969" color="#000000" rotation="0"/>
+        <text y="-26" text="14" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-275" color="#000000" rotation="0"/>
         <line y2="-39" length1="1.5" end2="none" y1="-24" x2="-330" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-330"/>
-        <text y="-24" text="DO" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-158.328" color="#000000" rotation="0"/>
+        <text y="-24" text="DO" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-158.33" color="#000000" rotation="0"/>
         <line y2="-13" length1="1.5" end2="none" y1="-13" x2="-300" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-390"/>
         <text y="-16" text="(GND)" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-221" color="#000000" rotation="0"/>
         <line y2="-33" length1="1.5" end2="none" y1="-33" x2="-300" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-270"/>

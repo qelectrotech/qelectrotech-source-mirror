@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">857-412</elementInformation>
+        <elementInformation show="1" name="description">857-412</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <dynamic_text Valignment="AlignTop" y="-14" z="1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{04cc5cef-7c64-4df9-97b1-30ff4bc922bc}" text_from="UserText" rotation="0" frame="false" x="-280" text_width="-1" Halignment="AlignLeft">

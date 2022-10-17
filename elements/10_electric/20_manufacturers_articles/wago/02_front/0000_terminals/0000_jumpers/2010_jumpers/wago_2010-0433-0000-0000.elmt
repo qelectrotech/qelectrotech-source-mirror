@@ -1,21 +1,21 @@
 <definition type="element" width="63" height="11" version="0.80" hotspot_x="6" hotspot_y="6" link_type="thumbnail">
-  <names>
-    <name lang="en">2010-433</name>
-    <name lang="fr">2010-433</name>
-    <name lang="de">2010-433</name>
-    <name lang="cs">2010-433</name>
-  </names>
+    <names>
+        <name lang="en">2010-433</name>
+        <name lang="fr">2010-433</name>
+        <name lang="de">2010-433</name>
+        <name lang="cs">2010-433</name>
+    </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">2010-433</elementInformation>
         <elementInformation show="1" name="description">Jumper for Series 2010, 2210</elementInformation>
     </elementInformations>
-  <informations>Author: plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-  <description>
-    <polygon x1="-3.05" x2="53.83" x3="53.83" x4="-3.05" y1="-4.06" y2="-4.06" y3="4.05" y4="4.05" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
-    <polygon x1="5.43" x2="5.43" x3="46.87" x4="46.87" y1="1.71" y2="-1.71" y3="-1.71" y4="1.71" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" antialias="false"/>
-    <text x="18.29" y="1.43" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2010-433" color="#000000" rotation="0"/>
-  </description>
+    <description>
+        <polygon x1="-3.05" x2="53.83" x3="53.83" x4="-3.05" y1="-4.06" y2="-4.06" y3="4.05" y4="4.05" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false"/>
+        <polygon x1="5.43" x2="5.43" x3="46.87" x4="46.87" y1="1.71" y2="-1.71" y3="-1.71" y4="1.71" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" antialias="false"/>
+        <text x="18.29" y="1.43" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="2010-433" color="#000000" rotation="0"/>
+    </description>
 </definition>

@@ -22,7 +22,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" width="60" x="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" height="80" antialias="false" rx="0" ry="0"/>
-        <text color="#000000" y="16" x="-18.0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="Modbus TCP"/>
+        <text color="#000000" y="16" x="-18" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" text="Modbus TCP"/>
         <text color="#000000" y="-11" x="-14" font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" text="WAGO"/>
         <text color="#000000" y="33" x="7.1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X6"/>
         <text color="#000000" y="33" x="-12.4" font="Sans Serif,4,-1,5,50,0,0,0,0,0" rotation="0" text="X5"/>

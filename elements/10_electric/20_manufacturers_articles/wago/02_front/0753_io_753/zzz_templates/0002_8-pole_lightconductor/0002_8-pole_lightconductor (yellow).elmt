@@ -18,7 +18,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon x2="18.5" x4="0" y2="-126.5" x3="18.5" antialias="false" y4="-116.6" x1="0" y1="-126.5" style="line-style:normal;line-weight:thin;filling:yellow;color:black" y3="-116.6"/>
         <line x2="0" length2="1.5" y2="-126.5" length1="1.5" end1="none" end2="none" antialias="false" x1="0" y1="73.5" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle diameter="5.15" x="3.22" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
-        <circle diameter="5.15" x="-20.97" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <circle diameter="5.15" x="-21" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <rect rx="0" x="-24" y="-116.6" ry="0" antialias="false" height="10.6" style="line-style:normal;line-weight:thin;filling:none;color:black" width="24"/>
         <rect rx="0" x="0" y="-116.6" ry="0" antialias="false" height="10.6" style="line-style:normal;line-weight:thin;filling:none;color:black" width="24"/>
         <rect rx="0" x="-21" y="-104.24" ry="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="18.29"/>
@@ -36,15 +36,15 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect rx="0" x="-10.43" y="-97.95" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
         <circle diameter="5.15" x="3.28" y="48.49" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="5.15" x="-20.92" y="48.49" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
-        <text x="0.62" y="-85.95" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="D"/>
-        <text x="-23.58" y="-85.95" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="D"/>
+        <text x="0.62" y="-85.95" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="D"/>
+        <text x="-23.58" y="-85.95" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="D"/>
         <circle diameter="5.15" x="13.23" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
-        <circle diameter="5.15" x="-10.97" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <circle diameter="5.15" x="-11" y="-60.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <rect rx="0" x="-10.43" y="-88.81" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
         <circle diameter="9.72" x="0.37" y="-71.22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle diameter="9.72" x="-23.83" y="-71.22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="22" y="-100.41" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="E"/>
-        <text x="-2.19" y="-100.41" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="E"/>
+        <text x="22" y="-100.41" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="E"/>
+        <text x="-2.19" y="-100.41" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="E"/>
         <circle diameter="5.15" x="3.28" y="-25.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="5.15" x="-20.92" y="-25.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="5.15" x="-10.85" y="11.33" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
@@ -55,22 +55,22 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle diameter="5.15" x="-10.91" y="-25.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="5.15" x="-10.91" y="48.49" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="5.15" x="13.29" y="48.49" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
-        <text x="0.62" y="-91.09" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="C"/>
-        <text x="-23.58" y="-91.09" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="C"/>
-        <text x="-2.25" y="-85.95" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="H"/>
-        <text x="21.94" y="-85.95" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="H"/>
+        <text x="0.62" y="-91.09" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="C"/>
+        <text x="-23.58" y="-91.09" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="C"/>
+        <text x="-2.25" y="-85.95" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="H"/>
+        <text x="21.94" y="-85.95" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="H"/>
         <circle diameter="9.72" x="10.37" y="-71.22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle diameter="9.72" x="-13.83" y="-71.22" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="22.1" y="-95.84" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="F"/>
-        <text x="-2.1" y="-95.84" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="F"/>
+        <text x="22.1" y="-95.84" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="F"/>
+        <text x="-2.1" y="-95.84" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="F"/>
         <circle diameter="9.72" x="0.42" y="-36.69" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle diameter="9.72" x="-23.77" y="-36.69" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="0.62" y="-95.84" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="B"/>
-        <text x="-23.58" y="-95.84" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="B"/>
+        <text x="0.62" y="-95.84" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="B"/>
+        <text x="-23.58" y="-95.84" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="B"/>
         <circle diameter="9.72" x="-23.72" y="0.47" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle diameter="9.72" x="0.48" y="0.47" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="21.85" y="-90.98" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="G"/>
-        <text x="-2.34" y="-90.98" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="G"/>
+        <text x="21.85" y="-91" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="G"/>
+        <text x="-2.34" y="-91" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="G"/>
         <circle diameter="9.72" x="-23.77" y="37.63" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <circle diameter="9.72" x="0.42" y="37.63" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <rect rx="0" x="5.77" y="-97.95" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
@@ -95,10 +95,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle diameter="9.72" x="10.48" y="0.47" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <rect rx="0" x="-18.43" y="-93.38" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
         <rect rx="0" x="5.77" y="-93.38" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
-        <circle diameter="8" x="-12.97" y="-70.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <circle diameter="8" x="-13" y="-70.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="11.23" y="-70.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
-        <polygon x2="-5.31" x4="-11.35" y2="-44.97" x3="-5.31" antialias="false" y4="-37.37" x1="-11.35" y1="-44.97" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
-        <polygon x2="18.89" x4="12.84" y2="-44.97" x3="18.89" antialias="false" y4="-37.37" x1="12.84" y1="-44.97" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
+        <polygon x2="-5.31" x4="-11.35" y2="-45" x3="-5.31" antialias="false" y4="-37.37" x1="-11.35" y1="-45" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
+        <polygon x2="18.89" x4="12.84" y2="-45" x3="18.89" antialias="false" y4="-37.37" x1="12.84" y1="-45" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
         <circle diameter="8" x="-12.85" y="1.33" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="11.34" y="1.33" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="11.28" y="38.49" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
@@ -106,9 +106,9 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle diameter="8" x="11.28" y="-35.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="-12.91" y="-35.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <polygon x2="16.31" x4="6.24" y2="54.25" x3="16.31" antialias="false" y4="67.45" x1="6.24" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
-        <polygon x2="-7.88" x4="-17.96" y2="54.25" x3="-7.88" antialias="false" y4="67.45" x1="-17.96" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
-        <polygon x2="8.89" x4="2.84" y2="-44.97" x3="8.89" antialias="false" y4="-37.37" x1="2.84" y1="-44.97" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
-        <polygon x2="-15.31" x4="-21.36" y2="-44.97" x3="-15.31" antialias="false" y4="-37.37" x1="-21.36" y1="-44.97" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
+        <polygon x2="-7.88" x4="-18" y2="54.25" x3="-7.88" antialias="false" y4="67.45" x1="-18" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
+        <polygon x2="8.89" x4="2.84" y2="-45" x3="8.89" antialias="false" y4="-37.37" x1="2.84" y1="-45" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
+        <polygon x2="-15.31" x4="-21.36" y2="-45" x3="-15.31" antialias="false" y4="-37.37" x1="-21.36" y1="-45" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-37.37"/>
         <circle diameter="8" x="-22.86" y="1.33" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="1.34" y="1.33" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="1.28" y="38.49" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
@@ -116,10 +116,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle diameter="8" x="1.28" y="-35.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="-22.92" y="-35.83" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <polygon x2="6.24" x4="2.2" y2="65.45" x3="6.24" antialias="false" y4="67.45" x1="2.2" y1="65.45" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
-        <polygon x2="-17.96" x4="-22" y2="65.45" x3="-17.96" antialias="false" y4="67.45" x1="-22" y1="65.45" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
+        <polygon x2="-18" x4="-22" y2="65.45" x3="-18" antialias="false" y4="67.45" x1="-22" y1="65.45" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
         <polygon x2="20.34" x4="16.31" y2="65.45" x3="20.34" antialias="false" y4="67.45" x1="16.31" y1="65.45" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
         <polygon x2="-3.85" x4="-7.88" y2="65.45" x3="-3.85" antialias="false" y4="67.45" x1="-7.88" y1="65.45" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="67.45"/>
-        <polygon x2="-17.96" x4="-22" y2="54.25" x3="-17.96" antialias="false" y4="56.24" x1="-22" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="56.24"/>
+        <polygon x2="-18" x4="-22" y2="54.25" x3="-18" antialias="false" y4="56.24" x1="-22" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="56.24"/>
         <polygon x2="6.24" x4="2.2" y2="54.25" x3="6.24" antialias="false" y4="56.24" x1="2.2" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="56.24"/>
         <polygon x2="-3.85" x4="-7.88" y2="54.25" x3="-3.85" antialias="false" y4="56.24" x1="-7.88" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="56.24"/>
         <polygon x2="20.34" x4="16.31" y2="54.25" x3="20.34" antialias="false" y4="56.24" x1="16.31" y1="54.25" style="line-style:normal;line-weight:thin;filling:none;color:black" y3="56.24"/>
@@ -132,7 +132,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon x2="-24" y2="-53.9" antialias="false" closed="false" x1="24" y1="-53.9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon x2="-24" y2="-45.9" antialias="false" closed="false" x1="24" y1="-45.9" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon x2="-24" y2="-8.7" antialias="false" closed="false" x1="24" y1="-8.7" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <circle diameter="8" x="-22.97" y="-70.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <circle diameter="8" x="-23" y="-70.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle diameter="8" x="1.22" y="-70.36" antialias="false" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <polygon x2="-24" y2="-82.56" antialias="false" closed="false" x1="24" y1="-82.56" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon x2="18.89" x4="12.84" y2="29.35" x3="18.89" antialias="false" y4="36.95" x1="12.84" y1="29.35" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="36.95"/>
@@ -143,15 +143,15 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon x2="-5.25" x4="-11.3" y2="-7.81" x3="-5.25" antialias="false" y4="-0.21" x1="-11.3" y1="-7.81" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-0.21"/>
         <polygon x2="-15.25" x4="-21.3" y2="-7.81" x3="-15.25" antialias="false" y4="-0.21" x1="-21.3" y1="-7.81" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-0.21"/>
         <polygon x2="8.94" x4="2.9" y2="-7.81" x3="8.94" antialias="false" y4="-0.21" x1="2.9" y1="-7.81" style="line-style:normal;line-weight:thin;filling:gray;color:black" y3="-0.21"/>
-        <text x="-23.58" y="-100.35" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="A"/>
-        <text x="0.62" y="-100.35" rotation="0" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" text="A"/>
+        <text x="-23.58" y="-100.35" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="A"/>
+        <text x="0.62" y="-100.35" rotation="0" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" text="A"/>
         <rect rx="0" x="5.77" y="-102.53" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
         <rect rx="0" x="-18.43" y="-102.53" ry="0" antialias="false" height="2.86" style="line-style:normal;line-weight:thin;filling:gray;color:black" width="5.72"/>
         <polygon x2="24" x4="21.5" y2="-82.59" x3="24" antialias="false" y4="-32.59" x1="21.5" y1="-82.59" style="line-style:normal;line-weight:thin;filling:orange;color:black" y3="-32.59"/>
         <polygon x2="0" x4="-2.5" y2="-82.59" x3="0" antialias="false" y4="-32.59" x1="-2.5" y1="-82.59" style="line-style:normal;line-weight:thin;filling:orange;color:black" y3="-32.59"/>
         <polygon x2="0" y2="-48.14" antialias="false" closed="false" x1="-2.5" y1="-48.14" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon x2="24" y2="-48.14" antialias="false" closed="false" x1="21.5" y1="-48.14" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <text x="-23" y="-120" rotation="0" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" color="#000000" text="753-xxx"/>
-        <text x="1" y="-120" rotation="0" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" color="#000000" text="yyy-zzz"/>
+        <text x="-23" y="-120" rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" text="753-xxx"/>
+        <text x="1" y="-120" rotation="0" font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" text="yyy-zzz"/>
     </description>
 </definition>

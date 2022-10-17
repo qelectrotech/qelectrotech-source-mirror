@@ -35,7 +35,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-6.2" x2="-2.8" x1="-2" antialias="false" closed="false" y2="-7"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6.84" x2="0.8" x1="0.8" antialias="false" closed="false" y2="3.26"/>
         <polygon style="line-style:normal;line-weight:thin;filling:gray;color:black" x4="0" y1="-6.24" y4="-6.24" x2="1.59" x3="0" y5="-7" x1="1.59" antialias="false" x5="0.8" y2="-3.4" y3="-3.4"/>
-        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7.04" x2="0.8" x1="0.8" antialias="false" closed="false" y2="-3.46"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-7" x2="0.8" x1="0.8" antialias="false" closed="false" y2="-3.46"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="18.8" x2="-5" x1="5" antialias="false" closed="false" y2="18.8"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="10.3" x2="-5" x1="5" antialias="false" closed="false" y2="10.3"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="6.2" x2="4.38" x1="3.59" antialias="false" closed="false" y2="7"/>
@@ -46,7 +46,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-16.5" x2="-5" x1="5" antialias="false" closed="false" y2="-16.5"/>
         <polygon style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-11.3" x2="-5" x1="5" antialias="false" closed="false" y2="-11.3"/>
         <polygon style="line-style:normal;line-weight:thin;filling:gray;color:black" x4="2.8" y1="-11.3" y4="-16.5" x2="-2.8" x3="-2.8" x1="2.8" antialias="false" y2="-11.3" y3="-16.5"/>
-        <dynamic_text text_width="-1" y="13.4" frame="false" z="28" rotation="90" keep_visual_rotation="true" uuid="{f243acac-d2ee-47a9-ba16-f6c7134738fd}" x="5" text_from="ElementInfo" Halignment="AlignHCenter" Valignment="AlignVCenter" font="Sans Serif,3.43,-1,5,25,0,0,0,0,0">
+        <dynamic_text text_width="-1" y="13.4" frame="false" z="28" rotation="90" keep_visual_rotation="true" uuid="{f243acac-d2ee-47a9-ba16-f6c7134738fd}" x="5" text_from="ElementInfo" Halignment="AlignHCenter" Valignment="AlignVCenter" font="Sans Serif,3,-1,5,25,0,0,0,0,0">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>

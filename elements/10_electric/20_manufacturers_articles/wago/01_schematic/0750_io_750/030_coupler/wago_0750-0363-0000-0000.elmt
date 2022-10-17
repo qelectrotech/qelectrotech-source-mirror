@@ -34,7 +34,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         </dynamic_text>
         <text rotation="0" color="#000000" y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-355" text="Eth1"/>
         <text rotation="0" color="#000000" y="24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-355" text="Eth2"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <circle antialias="true" y="17.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-362.5"/>
         <circle antialias="true" y="-2.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-362.5"/>

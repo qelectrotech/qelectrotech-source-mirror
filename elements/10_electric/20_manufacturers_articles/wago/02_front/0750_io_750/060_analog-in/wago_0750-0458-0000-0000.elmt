@@ -26,10 +26,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.34" height="3.5" y="9.52" width="3.5" ry="0"/>
         <polygon y1="21.72" x1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="12" y2="21.72" closed="false"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.34" height="3.5" y="-4.77" width="3.5" ry="0"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.34" height="3.5" y="59.03" width="3.5" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.34" height="3.5" y="59" width="3.5" ry="0"/>
         <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="0.42" diameter="7.32" y="-28.61"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.4" height="3.5" y="-4.77" width="3.5" ry="0"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.4" height="3.5" y="59.03" width="3.5" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.4" height="3.5" y="59" width="3.5" ry="0"/>
         <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="-10.31" diameter="7.32" y="-42.9"/>
         <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="0.42" diameter="7.32" y="-57.19"/>
         <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="-10.31" diameter="7.32" y="-28.61"/>
@@ -50,9 +50,9 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-6.83" height="40" y="-105.39" width="14.86" ry="0"/>
         <circle style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="-10.31" diameter="7.32" y="42.63"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.57" height="5" y="-12.77" width="5" ry="0"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.18" height="5" y="51.03" width="5" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.18" height="5" y="51" width="5" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.18" height="5" y="-12.77" width="5" ry="0"/>
-        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.57" height="5" y="51.03" width="5" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.57" height="5" y="51" width="5" ry="0"/>
         <polygon y1="-117.6" x1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" y4="-106.6" x2="12" x4="-12" x3="12" y2="-117.6" y3="-106.6"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.18" height="5" y="1.52" width="5" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="1.57" height="5" y="1.52" width="5" ry="0"/>
@@ -76,7 +76,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon y1="-13.72" x1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="12" y2="-13.72" closed="false"/>
         <polygon y1="-12.95" x1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="12" y2="-12.95" closed="false"/>
         <polygon y1="-63.28" x1="-12" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x2="12" y2="-63.28" closed="false"/>
-        <rect style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false" rx="0" x="-4.55" height="37.45" y="-103.96" width="10.29" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:green;color:black" antialias="false" rx="0" x="-4.55" height="37.45" y="-104" width="10.29" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-69.65" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-94.24" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-99.38" width="3.14" ry="0"/>
@@ -84,10 +84,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-74.37" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-79.37" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-89.66" width="3.14" ry="0"/>
-        <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-103.96" width="3.14" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="-4.55" height="3.14" y="-104" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-94.24" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-69.65" width="3.14" ry="0"/>
-        <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-103.96" width="3.14" ry="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-104" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-84.52" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-99.38" width="3.14" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" rx="0" x="2.6" height="3.14" y="-74.37" width="3.14" ry="0"/>
@@ -98,6 +98,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-9.18" height="5" y="-63.08" width="5" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:orange;color:black" antialias="false" rx="0" x="9.5" height="7.2" y="-2.3" width="2.5" ry="0"/>
         <rect style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" rx="0" x="-12" height="8.9" y="-126.5" width="18.2" ry="0"/>
-        <text rotation="0" color="#000000" x="-11.27" y="-120.25" text="750-458" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0"/>
+        <text rotation="0" color="#000000" x="-11.27" y="-120.25" text="750-458" font="Sans Serif,3,-1,5,50,0,0,0,0,0"/>
     </description>
 </definition>

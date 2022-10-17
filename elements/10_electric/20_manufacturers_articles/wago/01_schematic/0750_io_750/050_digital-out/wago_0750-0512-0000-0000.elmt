@@ -22,7 +22,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <line y1="50" length2="1.5" x2="200" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="8.5" length1="1.5" antialias="false" x1="200" end1="none" end2="circle"/>
-        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="50" rotation="0" x="202.219" text="N" color="#000000"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="50" rotation="0" x="202.22" text="N" color="#000000"/>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="50" rotation="0" x="-118.75" text="N" color="#000000"/>
         <line y1="26.5" length2="1.5" x2="-200" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-11.5" length1="1.5" antialias="false" x1="-200" end1="circle" end2="circle"/>
         <line y1="26.5" length2="1.5" x2="120" style="line-style:normal;line-weight:thin;filling:black;color:black" y2="-11.5" length1="1.5" antialias="false" x1="120" end1="circle" end2="circle"/>

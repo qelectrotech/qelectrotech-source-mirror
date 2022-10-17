@@ -5,11 +5,11 @@
         <name lang="cs">2003-6643</name>
         <name lang="de">2003-6643 - P2/P1/PE</name>
     </names>
-    <kindInformations/>
+    <kindInformations />
     <elementInformations>
         <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
         <elementInformation name="designation" show="1">2003-6643</elementInformation>
-        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="description" show="1"/>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license

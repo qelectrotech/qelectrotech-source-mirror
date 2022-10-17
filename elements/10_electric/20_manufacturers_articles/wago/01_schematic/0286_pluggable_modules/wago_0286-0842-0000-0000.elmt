@@ -40,14 +40,14 @@ EN 60617: 07-22-03
         <circle x="-52" antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="78"/>
         <circle x="-12" antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="58"/>
         <line y1="-10" antialias="false" y2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="20" length1="1.5" x1="7"/>
-        <line y1="-14.192" antialias="false" y2="-5.792" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="7" length1="1.5" x1="7"/>
+        <line y1="-14.19" antialias="false" y2="-5.79" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="7" length1="1.5" x1="7"/>
         <circle x="18" antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-12"/>
         <circle x="-12" antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-12"/>
         <circle x="18" antialias="true" diameter="4" style="line-style:normal;line-weight:normal;filling:black;color:black" y="43"/>
-        <line y1="85.808" antialias="false" y2="94.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="7" length1="1.5" x1="7"/>
-        <line y1="75.808" antialias="false" y2="84.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-28" length1="1.5" x1="-28"/>
+        <line y1="85.81" antialias="false" y2="94.21" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="7" length1="1.5" x1="7"/>
+        <line y1="75.81" antialias="false" y2="84.21" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-28" length1="1.5" x1="-28"/>
         <text x="-54" text="PE" y="109" rotation="270" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-50.006" length1="1.5" x1="-29.24"/>
+        <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-50" length1="1.5" x1="-29.24"/>
         <rect x="-45" height="4" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="58" ry="0" width="10" rx="0"/>
         <line y1="40" antialias="false" y2="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="1" length1="1.5" x1="9"/>
         <line y1="55" antialias="false" y2="65" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-24" length1="1.5" x1="-16"/>
@@ -59,8 +59,8 @@ EN 60617: 07-22-03
         <line y1="80" antialias="false" y2="80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-32.42" length1="1.5" x1="-49.61"/>
         <polygon y1="45" x4="-22" closed="false" antialias="false" y2="43" x3="-19" y4="45" style="line-style:normal;line-weight:normal;filling:black;color:black" x2="-19" x1="-22" y3="47"/>
         <line y1="50" antialias="false" y2="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="1" length1="1.5" x1="-2"/>
-        <line y1="85.808" antialias="false" y2="94.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="3"/>
-        <line y1="75.808" antialias="false" y2="84.208" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-32" length1="1.5" x1="-32"/>
+        <line y1="85.81" antialias="false" y2="94.21" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="3"/>
+        <line y1="75.81" antialias="false" y2="84.21" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-32" length1="1.5" x1="-32"/>
         <line y1="65" antialias="false" y2="65" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-24" length1="1.5" x1="-27"/>
         <line y1="45" antialias="false" y2="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-0.67" length1="1.5" x1="-18.45"/>
         <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-49.93" length1="1.5" x1="-46"/>
@@ -73,7 +73,7 @@ EN 60617: 07-22-03
         <line y1="5" antialias="false" y2="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-10" length1="1.5" x1="0"/>
         <line y1="5" antialias="false" y2="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="20" length1="1.5" x1="10"/>
         <line y1="-10" antialias="false" y2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="-10"/>
-        <line y1="-14.192" antialias="false" y2="-5.792" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="3"/>
+        <line y1="-14.19" antialias="false" y2="-5.79" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="3" length1="1.5" x1="3"/>
         <circle x="-4" antialias="true" diameter="18" style="line-style:normal;line-weight:normal;filling:none;color:black" y="16"/>
         <rect x="-12" height="10" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y="20" ry="0" width="4" rx="0"/>
         <line y1="60" antialias="false" y2="60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" x2="-26.14" length1="1.5" x1="-33.87"/>

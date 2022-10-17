@@ -94,7 +94,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text color="#000000" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="205" y="-42" rotation="0"/>
         <text color="#000000" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="285" y="-42" rotation="0"/>
         <text color="#000000" text="PFC200 CS 2ETH RS CAN DPS" font="Sans Serif,9,-1,5,50,0,0,0,0,0" x="-137" y="105" rotation="0"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X3" x="-371" rotation="0" color="#000000"/>
         <text y="69" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X4" x="-371" rotation="0" color="#000000"/>

@@ -17,28 +17,28 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect ry="0" y="-40" x="-310" rx="0" antialias="false" style="line-style:normal;line-weight:normal;filling:white;color:black" height="110" width="620"/>
         <rect ry="0" y="-40" x="70" rx="0" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" height="35" width="220"/>
         <rect ry="0" y="-40" x="-120" rx="0" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" height="35" width="160"/>
-        <text y="40" rotation="0" x="-237.766" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="Modbus-Adr.:"/>
+        <text y="40" rotation="0" x="-237.77" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="Modbus-Adr.:"/>
         <circle y="27.5" x="307.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
         <circle y="-42.5" x="157.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
-        <text y="-20" rotation="0" x="-26.4061" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="L3"/>
+        <text y="-20" rotation="0" x="-26.41" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="L3"/>
         <text y="-27" rotation="0" x="95" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
         <text y="34" rotation="0" x="-299" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="X1 IN"/>
-        <text y="-20" rotation="0" x="-66.703" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="L2"/>
+        <text y="-20" rotation="0" x="-66.7" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="L2"/>
         <circle y="-42.5" x="-22.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
-        <text y="34" rotation="0" x="254.156" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="X2 OUT"/>
+        <text y="34" rotation="0" x="254.16" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="X2 OUT"/>
         <circle y="-42.5" x="97.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
         <circle y="27.5" x="-312.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
-        <text y="-27" rotation="0" x="155.891" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
-        <text y="-27" rotation="0" x="215.781" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
-        <text y="-27" rotation="0" x="275.672" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
-        <text y="-13" rotation="0" x="264.672" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="IN"/>
+        <text y="-27" rotation="0" x="155.89" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
+        <text y="-27" rotation="0" x="215.78" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
+        <text y="-27" rotation="0" x="275.67" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S2"/>
+        <text y="-13" rotation="0" x="264.67" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="IN"/>
         <circle y="-42.5" x="17.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
-        <text y="-13" rotation="0" x="202.781" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="IL3"/>
+        <text y="-13" rotation="0" x="202.78" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="IL3"/>
         <circle y="-42.5" x="217.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
-        <text y="-13" rotation="0" x="142.891" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="IL2"/>
-        <text y="-27" rotation="0" x="255.672" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S1"/>
-        <text y="-27" rotation="0" x="195.781" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S1"/>
-        <text y="-27" rotation="0" x="135.891" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S1"/>
+        <text y="-13" rotation="0" x="142.89" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="IL2"/>
+        <text y="-27" rotation="0" x="255.67" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S1"/>
+        <text y="-27" rotation="0" x="195.78" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S1"/>
+        <text y="-27" rotation="0" x="135.89" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="S1"/>
         <circle y="-42.5" x="-62.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5"/>
         <dynamic_text frame="false" y="49.5" text_from="ElementInfo" rotation="0" Valignment="AlignBottom" uuid="{3ebb4c11-a1a6-423f-a245-f5ce472c9dd3}" x="235" keep_visual_rotation="true" z="27" Halignment="AlignHCenter" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1">
             <text></text>
@@ -61,7 +61,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
             <text>19200 / 8 E 1</text>
         </dynamic_text>
         <text y="65" rotation="0" x="-80" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="3-phase Power Measurement 1A"/>
-        <dynamic_text frame="false" y="24" text_from="UserText" rotation="0" Valignment="AlignTop" uuid="{203a8c33-b9e5-4505-970d-1aa369b0f71b}" x="-142.766" keep_visual_rotation="true" z="43" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1">
+        <dynamic_text frame="false" y="24" text_from="UserText" rotation="0" Valignment="AlignTop" uuid="{203a8c33-b9e5-4505-970d-1aa369b0f71b}" x="-142.77" keep_visual_rotation="true" z="43" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1">
             <text>1</text>
         </dynamic_text>
         <text y="-24" rotation="0" x="-253" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" text="GND"/>

@@ -64,7 +64,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text y="-42" text="4" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="205"/>
         <text y="-42" text="8" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" x="285"/>
         <text y="45" text="EtherNet/IP Coupler M12" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" x="-138"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <arc y="-12.5" height="5" width="5" start="90" angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="360"/>
         <arc y="7.5" height="5" width="5" start="90" angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true" x="360"/>

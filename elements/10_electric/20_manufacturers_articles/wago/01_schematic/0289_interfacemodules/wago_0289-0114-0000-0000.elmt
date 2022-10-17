@@ -21,37 +21,37 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" end1="none" y2="-20" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-100" end1="none" y2="-100" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="17.5"/>
-        <text rotation="0" x="-54.1875" text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-62" color="#000000"/>
+        <text rotation="0" x="-54.19" text="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-62" color="#000000"/>
         <text rotation="0" x="-55" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-102" color="#000000"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" end1="none" y2="-60" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
         <text rotation="0" x="-54" text="15" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="18" color="#000000"/>
-        <text rotation="0" x="48.625" text="16" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="18" color="#000000"/>
+        <text rotation="0" x="48.63" text="16" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="18" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-2.5"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" end1="none" y2="20" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
-        <text rotation="0" x="-54.1875" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-82" color="#000000"/>
-        <text rotation="0" x="-54.8125" text="11" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-22" color="#000000"/>
+        <text rotation="0" x="-54.19" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-82" color="#000000"/>
+        <text rotation="0" x="-54.81" text="11" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-22" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-2.5"/>
-        <text rotation="0" x="51.4375" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-62" color="#000000"/>
+        <text rotation="0" x="51.44" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-62" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-22.5"/>
         <text rotation="0" x="-54" text="13" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-2" color="#000000"/>
-        <text rotation="0" x="50.625" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-102" color="#000000"/>
+        <text rotation="0" x="50.63" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-102" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-62.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-62.5"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-80" end1="none" y2="-80" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-42.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-22.5"/>
-        <text rotation="0" x="-54.8125" text="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" color="#000000"/>
-        <text rotation="0" x="51.4375" text="6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-82" color="#000000"/>
+        <text rotation="0" x="-54.81" text="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" color="#000000"/>
+        <text rotation="0" x="51.44" text="6" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-82" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-42.5"/>
-        <text rotation="0" x="47.8125" text="12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-22" color="#000000"/>
+        <text rotation="0" x="47.81" text="12" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-22" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-82.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-82.5"/>
-        <text rotation="0" x="48.625" text="14" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-2" color="#000000"/>
-        <text rotation="0" x="47.8125" text="10" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" color="#000000"/>
+        <text rotation="0" x="48.63" text="14" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-2" color="#000000"/>
+        <text rotation="0" x="47.81" text="10" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-102.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-102.5"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" end1="none" y2="0" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
-        <text rotation="0" x="50.625" text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-122" color="#000000"/>
+        <text rotation="0" x="50.63" text="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-122" color="#000000"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" diameter="5" y="-122.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" diameter="5" y="-122.5"/>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" y2="-40" antialias="false" x1="-60" x2="60" end2="none" length2="1.5"/>
@@ -72,21 +72,21 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-15" antialias="false" height="10" y="-25" width="30"/>
         <rect rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-15" antialias="false" height="10" y="-85" width="30"/>
         <rect rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-15" antialias="false" height="10" y="-65" width="30"/>
-        <terminal name="R1.2" x="60" y="-120"  orientation="e"/>
-        <terminal name="R2.2" x="60" y="-100"  orientation="e"/>
-        <terminal name="R3.2" x="60" y="-80"   orientation="e"/>
-        <terminal name="R4.2" x="60" y="-60"   orientation="e"/>
-        <terminal name="R5.2" x="60" y="-40"   orientation="e"/>
-        <terminal name="R6.2" x="60" y="-20"   orientation="e"/>
-        <terminal name="R7.2" x="60" y="0"     orientation="e"/>
-        <terminal name="R8.2" x="60" y="20"    orientation="e"/>
+        <terminal name="R1.2" x="60" y="-120" orientation="e"/>
+        <terminal name="R2.2" x="60" y="-100" orientation="e"/>
+        <terminal name="R3.2" x="60" y="-80" orientation="e"/>
+        <terminal name="R4.2" x="60" y="-60" orientation="e"/>
+        <terminal name="R5.2" x="60" y="-40" orientation="e"/>
+        <terminal name="R6.2" x="60" y="-20" orientation="e"/>
+        <terminal name="R7.2" x="60" y="0" orientation="e"/>
+        <terminal name="R8.2" x="60" y="20" orientation="e"/>
         <terminal name="R1.1" x="-60" y="-120" orientation="w"/>
         <terminal name="R2.1" x="-60" y="-100" orientation="w"/>
-        <terminal name="R3.1" x="-60" y="-80"  orientation="w"/>
-        <terminal name="R4.1" x="-60" y="-60"  orientation="w"/>
-        <terminal name="R5.1" x="-60" y="-40"  orientation="w"/>
-        <terminal name="R6.1" x="-60" y="-20"  orientation="w"/>
-        <terminal name="R7.1" x="-60" y="0"    orientation="w"/>
-        <terminal name="R8.1" x="-60" y="20"   orientation="w"/>
+        <terminal name="R3.1" x="-60" y="-80" orientation="w"/>
+        <terminal name="R4.1" x="-60" y="-60" orientation="w"/>
+        <terminal name="R5.1" x="-60" y="-40" orientation="w"/>
+        <terminal name="R6.1" x="-60" y="-20" orientation="w"/>
+        <terminal name="R7.1" x="-60" y="0" orientation="w"/>
+        <terminal name="R8.1" x="-60" y="20" orientation="w"/>
     </description>
 </definition>

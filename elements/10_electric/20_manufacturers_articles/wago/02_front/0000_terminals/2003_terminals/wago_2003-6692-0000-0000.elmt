@@ -5,10 +5,10 @@
         <name lang="fr">2003-6692</name>
         <name lang="en">2003-6692</name>
     </names>
-    <kindInformations/>
+    <kindInformations />
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
-        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="description"/>
         <elementInformation show="1" name="designation">2003-6692</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
