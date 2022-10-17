@@ -79,7 +79,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text y="-42" rotation="0" x="205" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="4"/>
         <text y="-42" rotation="0" x="285" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="8"/>
         <text y="105" rotation="0" x="-137" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="PFC100 CS 2ETH RS"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X3" x="-371" rotation="0" color="#000000"/>
         <arc y="-12.5" x="360" antialias="true" width="5" angle="180" start="90" style="line-style:normal;line-weight:normal;filling:white;color:black" height="5"/>

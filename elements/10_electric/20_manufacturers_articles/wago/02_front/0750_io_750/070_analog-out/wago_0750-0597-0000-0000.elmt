@@ -26,10 +26,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="1.34" rx="0" height="3.5" y="9.52" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
         <polygon x1="-12" antialias="false" y1="21.7" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="21.7" x2="12" closed="false"/>
         <rect x="1.34" rx="0" height="3.5" y="-4.77" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
-        <rect x="1.34" rx="0" height="3.5" y="59.03" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect x="1.34" rx="0" height="3.5" y="59" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
         <circle x="0.42" y="-28.61" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7.32"/>
         <rect x="-9.4" rx="0" height="3.5" y="-4.77" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
-        <rect x="-9.4" rx="0" height="3.5" y="59.03" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect x="-9.4" rx="0" height="3.5" y="59" width="3.5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
         <circle x="-10.31" y="-42.9" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7.32"/>
         <circle x="0.42" y="-57.19" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7.32"/>
         <circle x="-10.31" y="-28.61" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7.32"/>
@@ -49,9 +49,9 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle x="0.42" y="42.63" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7.32"/>
         <circle x="-10.31" y="42.63" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7.32"/>
         <rect x="1.57" rx="0" height="5" y="-12.77" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
-        <rect x="-9.18" rx="0" height="5" y="51.03" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect x="-9.18" rx="0" height="5" y="51" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
         <rect x="-9.18" rx="0" height="5" y="-12.77" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
-        <rect x="1.57" rx="0" height="5" y="51.03" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
+        <rect x="1.57" rx="0" height="5" y="51" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
         <polygon x1="-12" antialias="false" y1="-117.6" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-117.6" x3="12" y4="-106.6" x2="12" x4="-12" y3="-106.6"/>
         <rect x="-9.18" rx="0" height="5" y="1.52" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
         <rect x="1.57" rx="0" height="5" y="1.52" width="5" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" ry="0"/>
@@ -98,6 +98,6 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="2.5" rx="0" height="3" y="-74.5" width="3" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" ry="0"/>
         <rect x="-4.5" rx="0" height="3" y="-69.5" width="3" antialias="false" style="line-style:normal;line-weight:thin;filling:green;color:black" ry="0"/>
         <rect x="2.5" rx="0" height="3" y="-69.5" width="3" antialias="false" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" ry="0"/>
-        <text x="-11.57" rotation="0" y="-120.25" font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" text="750-597" color="#000000"/>
+        <text x="-11.57" rotation="0" y="-120.25" font="Sans Serif,3,-1,5,50,0,0,0,0,0" text="750-597" color="#000000"/>
     </description>
 </definition>

@@ -14,7 +14,8 @@
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
-        <rect style="line-style:normal;line-weight:thin;filling:orange;color:orange" rx="0" y="-87" x="0" width="1.6" ry="0" height="192" antialias="false"/>        <dynamic_text text_from="ElementInfo" Halignment="AlignHCenter" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="20" text_width="-1" x="7" frame="false" Valignment="AlignVCenter" z="67" keep_visual_rotation="true" rotation="90" uuid="{96477b97-cb32-430e-b7f3-d40524511543}">
+        <rect style="line-style:normal;line-weight:thin;filling:orange;color:orange" rx="0" y="-87" x="0" width="1.6" ry="0" height="192" antialias="false"/>
+        <dynamic_text text_from="ElementInfo" Halignment="AlignHCenter" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="20" text_width="-1" x="7" frame="false" Valignment="AlignVCenter" z="67" keep_visual_rotation="true" rotation="90" uuid="{96477b97-cb32-430e-b7f3-d40524511543}">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>

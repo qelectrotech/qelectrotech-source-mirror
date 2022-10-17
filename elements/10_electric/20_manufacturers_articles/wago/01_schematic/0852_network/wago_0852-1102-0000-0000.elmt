@@ -21,11 +21,11 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="7.5" antialias="true" x="57.5"/>
         <text text="ALM" rotation="0" color="#000000" y="83" x="-5" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text text="−" rotation="0" color="#000000" y="-90" x="-23" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="8" rotation="0" color="#000000" y="8" x="48.625" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="8" rotation="0" color="#000000" y="8" x="48.63" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-12.5" antialias="true" x="57.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="97.5" antialias="true" x="7.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-32.5" antialias="true" x="57.5"/>
-        <text text="6" rotation="0" color="#000000" y="-12" x="48.625" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="6" rotation="0" color="#000000" y="-12" x="48.63" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text text="Industrial Switch" rotation="0" color="#000000" y="61" x="-38" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-52.5" antialias="true" x="-62.5"/>
         <text text="−" rotation="0" color="#000000" y="-90" x="37" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
@@ -35,12 +35,12 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text text="3" rotation="0" color="#000000" y="-32" x="-54.2" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text text="+" rotation="0" color="#000000" y="-90" x="-42.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="7.5" antialias="true" x="-62.5"/>
-        <text text="1" rotation="0" color="#000000" y="-52" x="-54.1875" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <text text="7" rotation="0" color="#000000" y="8" x="-54.8125" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="1" rotation="0" color="#000000" y="-52" x="-54.19" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="7" rotation="0" color="#000000" y="8" x="-54.81" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-12.5" antialias="true" x="-62.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="37.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-32.5" antialias="true" x="-62.5"/>
-        <text text="5" rotation="0" color="#000000" y="-12" x="-54.8125" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text text="5" rotation="0" color="#000000" y="-12" x="-54.81" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="17.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="-22.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-102.5" antialias="true" x="-42.5"/>

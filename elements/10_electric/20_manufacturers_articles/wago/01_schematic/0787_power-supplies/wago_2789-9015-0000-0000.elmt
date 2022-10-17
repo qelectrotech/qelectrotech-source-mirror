@@ -24,8 +24,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="-30" rx="0" height="80" y="-40" antialias="false" width="60" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-19" rotation="0" text="Modbus RTU" y="16" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="-14" rotation="0" text="WAGO" y="-11" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text x="7.1094" rotation="0" text="X6" y="31" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text x="-12.3906" rotation="0" text="X5" y="31" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="7.11" rotation="0" text="X6" y="31" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-12.39" rotation="0" text="X5" y="31" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000"/>
         <circle x="7.5" diameter="5" y="37.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <circle x="-12.5" diameter="5" y="37.5" antialias="true" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
         <line end2="none" x1="30" y2="2" x2="-30" length2="1.5" y1="2" antialias="true" length1="1.5" end1="none" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>

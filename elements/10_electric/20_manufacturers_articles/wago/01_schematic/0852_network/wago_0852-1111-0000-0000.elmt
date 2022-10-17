@@ -29,7 +29,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text color="#000000" x="-53.8" rotation="0" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="8"/>
         <circle x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" antialias="true" y="-12.5"/>
         <circle x="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" antialias="true" y="-32.5"/>
-        <text color="#000000" x="-53.8125" rotation="0" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-12"/>
+        <text color="#000000" x="-53.81" rotation="0" text="3" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-12"/>
         <circle x="-22.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" antialias="true" y="-102.5"/>
         <circle x="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" antialias="true" y="-102.5"/>
         <text color="#000000" x="-42" rotation="0" text="5-Port 1000BASE-T" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="54"/>

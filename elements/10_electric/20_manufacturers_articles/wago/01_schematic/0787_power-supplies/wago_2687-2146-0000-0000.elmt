@@ -27,8 +27,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
             <info_name>label</info_name>
         </dynamic_text>
         <text text="1" x="-27" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-58"/>
-        <arc width="5" angle="-175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.5" antialias="true" height="3.3332" start="0" y="-63"/>
-        <arc width="5" angle="-175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21.5" antialias="true" height="3.8334" start="180" y="-62.8334"/>
+        <arc width="5" angle="-175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-16.5" antialias="true" height="3.33" start="0" y="-63"/>
+        <arc width="5" angle="-175" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-21.5" antialias="true" height="3.83" start="180" y="-62.83"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-12.5" antialias="true" y="67.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="47.5" antialias="true" y="-12.5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="47.5" antialias="true" y="27.5"/>

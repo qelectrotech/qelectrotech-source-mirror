@@ -24,25 +24,25 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect x="-360" style="line-style:normal;line-weight:normal;filling:white;color:black" height="150" width="720" ry="0" y="-40" rx="0" antialias="false"/>
         <circle x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="37.5" antialias="true"/>
         <circle x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="57.5" antialias="true"/>
-        <text x="-303.062" text="IP Adr. 4:" rotation="0" y="65" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-303.06" text="IP Adr. 4:" rotation="0" y="65" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="-303" text="IP Adr. 2:" rotation="0" y="25" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text x="-303.062" text="IP Adr. 3:" rotation="0" y="44" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-303.06" text="IP Adr. 3:" rotation="0" y="44" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="-303" text="IP Adr. 1:" rotation="0" y="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <dynamic_text text_from="UserText" frame="false" text_width="-1" x="-247.063" z="9" rotation="0" y="28.5" uuid="{dbb62cd4-6984-4416-b9a0-b4a7741c4da5}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
+        <dynamic_text text_from="UserText" frame="false" text_width="-1" x="-247.06" z="9" rotation="0" y="28.5" uuid="{dbb62cd4-6984-4416-b9a0-b4a7741c4da5}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text>192.168.2.1</text>
         </dynamic_text>
         <dynamic_text text_from="UserText" frame="false" text_width="-1" x="-247" z="9" rotation="0" y="-11.5" uuid="{dbb62cd4-6984-4416-b9a0-b4a7741c4da5}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text>192.168.0.1</text>
         </dynamic_text>
-        <dynamic_text text_from="UserText" frame="false" text_width="-1" x="-247.063" z="10" rotation="0" y="49.5" uuid="{fcc5f24d-d71e-4e20-93d9-a354469345a6}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
+        <dynamic_text text_from="UserText" frame="false" text_width="-1" x="-247.06" z="10" rotation="0" y="49.5" uuid="{fcc5f24d-d71e-4e20-93d9-a354469345a6}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text>192.168.3.1</text>
         </dynamic_text>
         <dynamic_text text_from="UserText" frame="false" text_width="-1" x="-247" z="10" rotation="0" y="9.5" uuid="{fcc5f24d-d71e-4e20-93d9-a354469345a6}" Valignment="AlignTop" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Halignment="AlignLeft">
             <text>192.168.1.1</text>
         </dynamic_text>
-        <text x="-355.062" text="Eth12" rotation="0" y="64" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-355.06" text="Eth12" rotation="0" y="64" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <circle x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="17.5" antialias="true"/>
-        <text x="-355.062" text="Eth11" rotation="0" y="44" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
+        <text x="-355.06" text="Eth11" rotation="0" y="44" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <line length1="1.5" x1="40" y1="10" y2="-38" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="40" end1="none" antialias="false" end2="none"/>
         <text x="-355" text="Eth2" rotation="0" y="24" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
         <line length1="1.5" x1="-40" y1="-8.5" y2="-38" length2="1.5" style="line-style:normal;line-weight:thin;filling:black;color:black" x2="-40" end1="circle" antialias="false" end2="none"/>
@@ -85,7 +85,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text x="205" text="4" rotation="0" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="285" text="8" rotation="0" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000"/>
         <text x="-137" text="PFC200 G2 4ETH RS" rotation="0" y="105" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X11" x="-376" rotation="0" color="#000000"/>
         <text y="69" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X12" x="-376" rotation="0" color="#000000"/>

@@ -82,7 +82,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text color="#000000" x="205" rotation="0" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="4"/>
         <text color="#000000" x="285" rotation="0" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="8"/>
         <text color="#000000" x="-137" rotation="0" y="105" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text="PFC200 G2 2xETH 2xSFP"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X11" x="-376" rotation="0" color="#000000"/>
         <text y="69" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X12" x="-376" rotation="0" color="#000000"/>

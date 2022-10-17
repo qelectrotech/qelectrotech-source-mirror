@@ -1,20 +1,20 @@
 <definition type="element" width="40" height="11" version="0.80" hotspot_x="9" hotspot_y="6" link_type="thumbnail">
-  <names>
-    <name lang="en">2001-404</name>
-    <name lang="fr">2001-404</name>
-    <name lang="de">2001-404</name>
-    <name lang="cs">2001-404</name>
-  </names>
+    <names>
+        <name lang="en">2001-404</name>
+        <name lang="fr">2001-404</name>
+        <name lang="de">2001-404</name>
+        <name lang="cs">2001-404</name>
+    </names>
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">2001-404</elementInformation>
         <elementInformation show="1" name="description">Jumper for Series 2001, 2201</elementInformation>
     </elementInformations>
-  <informations>Author: plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-  <description>
-    <rect x="-3.26" y="-3.43" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="32.58" height="6.86" antialias="false"/>
-    <text x="2.86" y="1.14" font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" text="2001-404" color="#000000" rotation="0"/>
-  </description>
+    <description>
+        <rect x="-3.26" y="-3.43" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:white;color:black" width="32.58" height="6.86" antialias="false"/>
+        <text x="2.86" y="1.14" font="Sans Serif,2,-1,5,50,0,0,0,0,0" text="2001-404" color="#000000" rotation="0"/>
+    </description>
 </definition>

@@ -47,7 +47,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text color="#000000" text="4" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="-34"/>
         <text color="#000000" text="WAGO 857-500" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" rotation="0" x="-330"/>
         <text color="#000000" text="8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="286"/>
-        <text color="#000000" text="NPN/&#xa;PNP" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="-53"/>
+        <text color="#000000" text="NPN/&#10;PNP" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="-53"/>
         <text color="#000000" text="OUT+" font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-25" rotation="0" x="27"/>
         <text color="#000000" text="5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-42" rotation="0" x="46"/>
         <terminal type="Generic" y="-40" name="" uuid="{c25cc3fe-5230-4f3d-9406-fb779eb78e74}" x="200" orientation="n"/>

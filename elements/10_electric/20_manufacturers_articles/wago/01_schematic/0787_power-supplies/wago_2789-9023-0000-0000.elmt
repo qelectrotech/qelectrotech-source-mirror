@@ -22,10 +22,10 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect height="80" x="-30" rx="0" y="-40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" width="60"/>
-        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-17.0156" text="EtherNet/IP" y="16" color="#000000" rotation="0"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-17" text="EtherNet/IP" y="16" color="#000000" rotation="0"/>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-14" text="WAGO" y="-11" color="#000000" rotation="0"/>
-        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="7.1094" text="X6" y="33" color="#000000" rotation="0"/>
-        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-12.3906" text="X5" y="33" color="#000000" rotation="0"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="7.11" text="X6" y="33" color="#000000" rotation="0"/>
+        <text font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-12.39" text="X5" y="33" color="#000000" rotation="0"/>
         <circle x="7.5" y="37.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
         <circle x="-12.5" y="37.5" diameter="5" style="line-style:normal;line-weight:normal;filling:white;color:black" antialias="true"/>
         <polygon x1="0" y2="-36" x2="0" y1="-42" antialias="false" closed="false" style="line-style:normal;line-weight:hight;filling:none;color:black"/>

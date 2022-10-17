@@ -16,7 +16,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     <description>
         <polygon x21="-18" y26="67.5" y2="-123.5" x3="8" y27="70.5" y6="-120.5" y1="-123.5" y24="70.5" y15="-124.5" y7="-117.5" y4="-119.5" y8="-117.5" x4="5" x1="12" x16="-12" x27="8" x15="-16" x19="-16" y3="-119.5" y22="73.5" x22="-2" y23="70.5" y12="-126.5" y5="-120.5" y16="-124.5" y10="-123.5" x28="12" x11="-2" style="line-style:normal;line-weight:thin;filling:yellow;color:black" x23="-2" x5="5" y13="-120.5" x25="-10" y25="67.5" y28="70.5" y18="71.5" y17="71.5" x6="-2" x20="-18" x10="-2" x7="-2" y21="73.5" antialias="false" y11="-126.5" y19="67.5" x13="-18" x18="-16" y9="-123.5" x8="-10" y14="-120.5" x26="8" x2="8" x12="-18" x17="-12" x24="-10" x9="-10" x14="-16" y20="67.5"/>
         <polygon y1="-126.5" y4="-116.6" antialias="false" y2="-126.5" x2="6" x1="-12" y3="-116.6" x3="6" x4="-12" style="line-style:normal;line-weight:thin;filling:yellow;color:black"/>
-        <circle antialias="false" y="-60.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-8.97" diameter="5.15"/>
+        <circle antialias="false" y="-60.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-9" diameter="5.15"/>
         <rect antialias="false" ry="0" y="-116.6" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-12" height="10.6" width="24"/>
         <circle antialias="false" y="-14.34" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="0.17" diameter="2.86"/>
         <rect antialias="false" ry="0" y="-113.85" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-8" height="5" width="16.09"/>
@@ -24,7 +24,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect antialias="false" ry="0" y="-115.28" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-10.9" height="8.06" width="22.15"/>
         <circle antialias="false" y="-14.34" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-7.89" diameter="2.86"/>
         <circle antialias="false" y="48.49" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-8.92" diameter="5.15"/>
-        <circle antialias="false" y="-60.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="1.03" diameter="5.15"/>
+        <circle antialias="false" y="-60.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="1" diameter="5.15"/>
         <circle antialias="false" y="-71.22" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-11.83" diameter="9.72"/>
         <circle antialias="false" y="-25.83" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-8.92" diameter="5.15"/>
         <circle antialias="false" y="11.33" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="1.15" diameter="5.15"/>
@@ -38,19 +38,19 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle antialias="false" y="-36.69" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-1.77" diameter="9.72"/>
         <circle antialias="false" y="37.63" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-1.77" diameter="9.72"/>
         <circle antialias="false" y="0.47" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-1.71" diameter="9.72"/>
-        <circle antialias="false" y="-70.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-0.97" diameter="8"/>
-        <polygon y1="-44.97" y4="-37.37" antialias="false" y2="-44.97" x2="6.69" x1="0.65" y3="-37.37" x3="6.69" x4="0.65" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <circle antialias="false" y="-70.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-1" diameter="8"/>
+        <polygon y1="-45" y4="-37.37" antialias="false" y2="-45" x2="6.69" x1="0.65" y3="-37.37" x3="6.69" x4="0.65" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle antialias="false" y="1.33" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-0.85" diameter="8"/>
         <circle antialias="false" y="38.49" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-0.91" diameter="8"/>
         <circle antialias="false" y="-35.83" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-0.91" diameter="8"/>
-        <polygon y1="54.25" y4="67.45" antialias="false" y2="54.25" x2="4.12" x1="-5.96" y3="67.45" x3="4.12" x4="-5.96" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <polygon y1="-44.97" y4="-37.37" antialias="false" y2="-44.97" x2="-3.31" x1="-9.36" y3="-37.37" x3="-3.31" x4="-9.36" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
+        <polygon y1="54.25" y4="67.45" antialias="false" y2="54.25" x2="4.12" x1="-6" y3="67.45" x3="4.12" x4="-6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="-45" y4="-37.37" antialias="false" y2="-45" x2="-3.31" x1="-9.36" y3="-37.37" x3="-3.31" x4="-9.36" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <circle antialias="false" y="1.33" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-10.86" diameter="8"/>
         <circle antialias="false" y="38.49" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-10.92" diameter="8"/>
         <circle antialias="false" y="-35.83" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-10.92" diameter="8"/>
-        <polygon y1="65.45" y4="67.45" antialias="false" y2="65.45" x2="-5.96" x1="-10" y3="67.45" x3="-5.96" x4="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="65.45" y4="67.45" antialias="false" y2="65.45" x2="-6" x1="-10" y3="67.45" x3="-6" x4="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="65.45" y4="67.45" antialias="false" y2="65.45" x2="8.15" x1="4.12" y3="67.45" x3="8.15" x4="4.12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <polygon y1="54.25" y4="56.24" antialias="false" y2="54.25" x2="-5.96" x1="-10" y3="56.24" x3="-5.96" x4="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="54.25" y4="56.24" antialias="false" y2="54.25" x2="-6" x1="-10" y3="56.24" x3="-6" x4="-10" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="54.25" y4="56.24" antialias="false" y2="54.25" x2="8.15" x1="4.12" y3="56.24" x3="8.15" x4="4.12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="24.49" antialias="false" y2="24.49" x2="-12" x1="12" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="32.49" antialias="false" y2="32.49" x2="12" x1="-12" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
@@ -60,7 +60,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon y1="-53.9" antialias="false" y2="-53.9" x2="-12" x1="12" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="-45.9" antialias="false" y2="-45.9" x2="-12" x1="12" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="-8.7" antialias="false" y2="-8.7" x2="-12" x1="12" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <circle antialias="false" y="-70.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-10.97" diameter="8"/>
+        <circle antialias="false" y="-70.36" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-11" diameter="8"/>
         <polygon y1="-82.56" antialias="false" y2="-82.56" x2="-12" x1="12" closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <polygon y1="29.35" y4="36.95" antialias="false" y2="29.35" x2="6.69" x1="0.65" y3="36.95" x3="6.69" x4="0.65" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
         <polygon y1="29.35" y4="36.95" antialias="false" y2="29.35" x2="-3.31" x1="-9.36" y3="36.95" x3="-3.31" x4="-9.36" style="line-style:normal;line-weight:thin;filling:gray;color:black"/>
@@ -77,19 +77,19 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <rect antialias="false" ry="0" y="-88.5" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-6.54" height="3" width="5.72"/>
         <rect antialias="false" ry="0" y="-93.5" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-6.54" height="3" width="5.72"/>
         <rect antialias="false" ry="0" y="-103.5" rx="0" style="line-style:normal;line-weight:thin;filling:gray;color:black" x="-6.54" height="3" width="5.72"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-101" text="A" x="-11.7" rotation="0"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-96" text="B" x="-11.7" rotation="0"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-91" text="C" x="-11.7" rotation="0"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-86" text="D" x="-11.7" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-101" text="A" x="-11.7" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-96" text="B" x="-11.7" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-91" text="C" x="-11.7" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-86" text="D" x="-11.7" rotation="0"/>
         <dynamic_text font="Sans Serif,4,-1,5,25,0,0,0,0,0" frame="false" Halignment="AlignHCenter" keep_visual_rotation="true" y="16.93" Valignment="AlignVCenter" uuid="{7e6b9aba-9db0-4037-a375-6029b90c44cb}" z="69" x="-4.06" text_width="-1" text_from="ElementInfo" rotation="0">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-101" text="E" x="9.7" rotation="0"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-96" text="F" x="9.79" rotation="0"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-91" text="G" x="9.54" rotation="0"/>
-        <text font="Sans Serif,2.29,-1,5,50,0,0,0,0,0" color="#000000" y="-86" text="H" x="9.63" rotation="0"/>
-        <text font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" color="#000000" y="-121.96" text="753-661/" x="-12" rotation="0"/>
-        <text font="Sans Serif,2.86,-1,5,50,0,0,0,0,0" color="#000000" y="-117.96" text="000-003" x="-11.41" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-101" text="E" x="9.7" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-96" text="F" x="9.79" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-91" text="G" x="9.54" rotation="0"/>
+        <text font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" y="-86" text="H" x="9.63" rotation="0"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" y="-122" text="753-661/" x="-12" rotation="0"/>
+        <text font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" y="-118" text="000-003" x="-11.41" rotation="0"/>
     </description>
 </definition>

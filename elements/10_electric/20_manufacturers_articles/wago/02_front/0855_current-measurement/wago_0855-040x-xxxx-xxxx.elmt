@@ -13,7 +13,7 @@
 License:see http://qelectrotech.org/wiki/doc/elements_license
     </informations>
     <description>
-        <polygon x1="-8.47" antialias="false" y11="-51.97" y13="-49.91" x13="-6.03" y16="33.06" y7="33.06" x7="10.93" y14="-46.61" x14="-8.47" x9="8.12" y1="46.64" x12="-2.41" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" x2="-6.03" y5="50.37" x4="1.69" x10="5.45" y15="-33" x11="1.69" y3="51.86" x3="-2.41" y8="-33" x8="10.93" y10="-50.33" y6="47.26" x15="-10.88" y9="-47.23" y2="49.94" y12="-51.82" x16="-10.88" x5="5.45" x6="8.12" y4="52"/>
+        <polygon x1="-8.47" antialias="false" y11="-52" y13="-49.91" x13="-6" y16="33.06" y7="33.06" x7="10.93" y14="-46.61" x14="-8.47" x9="8.12" y1="46.64" x12="-2.41" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" x2="-6" y5="50.37" x4="1.69" x10="5.45" y15="-33" x11="1.69" y3="51.86" x3="-2.41" y8="-33" x8="10.93" y10="-50.33" y6="47.26" x15="-10.88" y9="-47.23" y2="49.94" y12="-51.82" x16="-10.88" x5="5.45" x6="8.12" y4="52"/>
         <circle y="36" x="-7" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" diameter="14"/>
         <circle y="-50" x="-7" style="line-style:normal;line-weight:thin;filling:white;color:black" antialias="false" diameter="14"/>
         <polygon x1="66" antialias="false" y7="-33" x7="68" y1="35" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" x2="-66" y5="-35" x4="-68" y3="33" x3="-68" y8="33" x8="68" y6="-35" y2="35" x5="-66" x6="66" y4="-33"/>

@@ -19,21 +19,21 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text x="49.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="4" y="-32" rotation="0"/>
         <text x="49.25" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="2" y="-52" rotation="0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" y="7.5" diameter="5"/>
-        <text x="-22.9844" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="−" y="-90" rotation="0"/>
-        <text x="48.625" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="8" y="8" rotation="0"/>
+        <text x="-23" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="−" y="-90" rotation="0"/>
+        <text x="48.63" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="8" y="8" rotation="0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" y="-12.5" diameter="5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="57.5" antialias="true" y="-32.5" diameter="5"/>
-        <text x="48.625" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="6" y="-12" rotation="0"/>
+        <text x="48.63" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="6" y="-12" rotation="0"/>
         <text x="-49" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" text="Industrial ECO-Switch" y="66" rotation="0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" y="-52.5" diameter="5"/>
-        <text x="-54.1875" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="3" y="-32" rotation="0"/>
+        <text x="-54.19" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="3" y="-32" rotation="0"/>
         <text x="-42.5" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="+" y="-90" rotation="0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" y="7.5" diameter="5"/>
-        <text x="-54.1875" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="1" y="-52" rotation="0"/>
-        <text x="-54.8125" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="7" y="8" rotation="0"/>
+        <text x="-54.19" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="1" y="-52" rotation="0"/>
+        <text x="-54.81" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="7" y="8" rotation="0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" y="-12.5" diameter="5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-62.5" antialias="true" y="-32.5" diameter="5"/>
-        <text x="-54.8125" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="5" y="-12" rotation="0"/>
+        <text x="-54.81" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" text="5" y="-12" rotation="0"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-22.5" antialias="true" y="-102.5" diameter="5"/>
         <circle style="line-style:normal;line-weight:normal;filling:white;color:black" x="-42.5" antialias="true" y="-102.5" diameter="5"/>
         <text x="-43" font="Sans Serif,7,-1,5,50,0,0,0,0,0" color="#000000" text="8-Port 1000BASE-T" y="54" rotation="0"/>

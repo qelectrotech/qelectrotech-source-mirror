@@ -49,8 +49,8 @@ License:see http://qelectrotech.org/wiki/doc/elements_license
         <text color="#f6f5f4" rotation="270" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="3" y="19" text="789-800"/>
         <text color="#000000" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-13" y="38" text="Automatik"/>
         <text color="#000000" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-7" y="-35" text="Hand"/>
-        <polygon x1="5" y8="-60.3" y4="-48.16" y10="-45" x7="0.5" y3="-48.16" x10="5" y1="-60.3" x5="-3.5" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y5="-56.02" antialias="false" x2="3.5" x3="3.5" x6="0.5" x8="-5" y7="-60.3" y9="-45" y2="-60.3" y6="-56.02" x9="-5" x4="-3.5"/>
-        <polygon x1="15" y8="-60.3" y4="-48.16" y10="-45" x7="10.5" y3="-48.16" x10="15" y1="-60.3" x5="6.5" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y5="-56.02" antialias="false" x2="13.5" x3="13.5" x6="10.5" x8="5" y7="-60.3" y9="-45" y2="-60.3" y6="-56.02" x9="5" x4="6.5"/>
+        <polygon x1="5" y8="-60.3" y4="-48.16" y10="-45" x7="0.5" y3="-48.16" x10="5" y1="-60.3" x5="-3.5" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y5="-56" antialias="false" x2="3.5" x3="3.5" x6="0.5" x8="-5" y7="-60.3" y9="-45" y2="-60.3" y6="-56" x9="-5" x4="-3.5"/>
+        <polygon x1="15" y8="-60.3" y4="-48.16" y10="-45" x7="10.5" y3="-48.16" x10="15" y1="-60.3" x5="6.5" style="line-style:normal;line-weight:thin;filling:HTMLWhiteSnow;color:black" y5="-56" antialias="false" x2="13.5" x3="13.5" x6="10.5" x8="5" y7="-60.3" y9="-45" y2="-60.3" y6="-56" x9="5" x4="6.5"/>
         <ellipse style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7" height="3" x="6.5" y="-88.6" antialias="false"/>
         <ellipse style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7" height="3" x="-3.5" y="-65.8" antialias="false"/>
         <ellipse style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="7" height="3" x="6.5" y="-65.8" antialias="false"/>

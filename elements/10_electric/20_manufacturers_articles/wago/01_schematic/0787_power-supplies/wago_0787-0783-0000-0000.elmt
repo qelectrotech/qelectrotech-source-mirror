@@ -15,10 +15,10 @@
     <elementInformations>
         <elementInformation show="1" name="designation">787-783</elementInformation>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">787-783</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <circle antialias="false" diameter="3" y="-31.5" x="8.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>

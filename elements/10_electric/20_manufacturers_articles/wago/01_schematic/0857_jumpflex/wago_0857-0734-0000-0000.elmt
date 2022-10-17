@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">857-734</elementInformation>
+        <elementInformation show="1" name="description">857-734</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text x="45" color="#000000" text="14 (RL)" font="Sans Serif,9,-1,5,50,0,0,0,0,0" rotation="0" y="-24"/>
@@ -53,11 +53,11 @@
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" end1="none" length2="1.5" length1="1.5" end2="simple" y2="-9" x2="-32" x1="-44" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" end1="none" length2="1.5" length1="1.5" end2="none" y2="-20" x2="-120" x1="-120" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" end1="none" length2="1.5" length1="1.5" end2="none" y2="-20" x2="-60" x1="-120" antialias="false"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.819" end1="none" length2="1.5" length1="1.5" end2="none" y2="-13.713" x2="-11" x1="-11" antialias="false"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.60696" end1="none" length2="1.5" length1="1.5" end2="none" y2="-3.50093" x2="-11" x1="-11" antialias="false"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.6051" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71114" x2="-11" x1="-11" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.82" end1="none" length2="1.5" length1="1.5" end2="none" y2="-13.71" x2="-11" x1="-11" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.61" end1="none" length2="1.5" length1="1.5" end2="none" y2="-3.5" x2="-11" x1="-11" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.61" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71" x2="-11" x1="-11" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18.82" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71" x2="-14.3" x1="-14.3" antialias="false"/>
-        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.71114" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71114" x2="-24.3" x1="-14.3" antialias="false"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6.71" end1="none" length2="1.5" length1="1.5" end2="none" y2="6.71" x2="-24.3" x1="-14.3" antialias="false"/>
         <polygon y3="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" y2="4" closed="false" x3="120" x2="120" x1="-10" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" end1="simple" length2="1.5" length1="1.5" end2="none" y2="-6" x2="0" x1="-10" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" end1="none" length2="1.5" length1="1.5" end2="none" y2="-16" x2="40" x1="-10" antialias="false"/>

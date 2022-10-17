@@ -97,7 +97,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <text rotation="0" x="205" text="4" color="#000000" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="285" text="8" color="#000000" y="-42" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text rotation="0" x="-137" text="PFC200 G2 4ETH CAN USB" color="#000000" y="125" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
-        <text  y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
+        <text y="9" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X1" x="-371" rotation="0" color="#000000"/>
         <text y="29" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X2" x="-371" rotation="0" color="#000000"/>
         <text y="49" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X6" x="-371" rotation="0" color="#000000"/>
         <text y="69" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text="X4" x="-371" rotation="0" color="#000000"/>

@@ -15,9 +15,9 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <rect y="-40" x="-360" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" width="720" antialias="false" height="90"/>
-        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" x="-278.234" text="24V Out" color="#000000" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" x="-278.23" text="24V Out" color="#000000" rotation="0"/>
         <line y2="20" end1="none" y1="20" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="280" x2="-200"/>
-        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" x="-198.234" text="0V Out" color="#000000" rotation="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-24" x="-198.23" text="0V Out" color="#000000" rotation="0"/>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="8" x="343" text="0V" color="#000000" rotation="0"/>
         <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-13" x="337" text="24V" color="#000000" rotation="0"/>
         <line y2="10" end1="none" y1="10" length1="1.5" end2="none" length2="1.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="40" x2="360"/>

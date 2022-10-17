@@ -37,12 +37,12 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <line style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="0" end2="none" antialias="false" length1="1.5" y2="40" end1="none" length2="1.5" y1="-40" x1="0"/>
         <text text="L" color="#000000" rotation="0" x="-37" y="-13" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
         <text text="N" color="#000000" rotation="0" x="-37" y="7" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="3.3332" start="0" x="-16.5" y="-33" angle="-175" width="5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="3.33" start="0" x="-16.5" y="-33" angle="-175" width="5"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="21.5" end2="none" antialias="false" length1="1.5" y2="-32" end1="none" length2="1.5" y1="-32" x1="20"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="18.5" end2="none" antialias="false" length1="1.5" y2="-32" end1="none" length2="1.5" y1="-32" x1="17"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="15.5" end2="none" antialias="false" length1="1.5" y2="-32" end1="none" length2="1.5" y1="-32" x1="14"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" x2="21.5" end2="none" antialias="false" length1="1.5" y2="-30" end1="none" length2="1.5" y1="-30" x1="14"/>
-        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="3.8334" start="180" x="-21.5" y="-32.8334" angle="-175" width="5"/>
+        <arc style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" height="3.83" start="180" x="-21.5" y="-32.83" angle="-175" width="5"/>
         <text color="#000000" x="32" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-23" text="+"/>
         <text color="#000000" x="32" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-3" text="−"/>
         <text color="#000000" x="32" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="17" text="−"/>

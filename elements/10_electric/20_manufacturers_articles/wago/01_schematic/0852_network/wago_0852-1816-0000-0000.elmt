@@ -41,7 +41,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <circle y="-42.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="57.5" antialias="true"/>
         <circle y="127.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="7.5" antialias="true"/>
         <circle y="-62.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="57.5" antialias="true"/>
-        <text y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="48.625" text="6" color="#000000"/>
+        <text y="-42" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="48.63" text="6" color="#000000"/>
         <text y="102" rotation="0" font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="-49" text="Lean Managed Switch" color="#000000"/>
         <circle y="-82.5" style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-62.5" antialias="true"/>
         <text y="-120" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="37.1" text="−" color="#000000"/>

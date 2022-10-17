@@ -1,10 +1,10 @@
 <definition type="element" width="17" height="177" version="0.80" hotspot_x="9" hotspot_y="84" link_type="thumbnail">
-  <names>
-    <name lang="de">769-171/000-006</name>
-    <name lang="fr">769-171/000-006</name>
-    <name lang="cs">769-171/000-006</name>
-    <name lang="en">769-171/000-006</name>
-  </names>
+    <names>
+        <name lang="de">769-171/000-006</name>
+        <name lang="fr">769-171/000-006</name>
+        <name lang="cs">769-171/000-006</name>
+        <name lang="en">769-171/000-006</name>
+    </names>
     <kindInformations>
         <kindInformation name="type">sectional</kindInformation>
         <kindInformation name="function">generic</kindInformation>
@@ -14,23 +14,23 @@
         <elementInformation show="1" name="designation">769-171/000-006</elementInformation>
         <elementInformation show="1" name="description">4mm² X-Com 2L 2P</elementInformation>
     </elementInformations>
-  <informations>Author: plc-user for QElectroTech
+    <informations>Author: plc-user for QElectroTech
 License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
-  <description>
+    <description>
         <polygon x4="5" style="line-style:normal;line-weight:thin;filling:blue;color:black" antialias="false" x1="5" x2="-5" y2="-83" x3="-5" y3="92" y4="92" y1="-83"/>
         <rect x="-2.8" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" y="-7" rx="0" ry="0" width="7.2" height="14"/>
         <circle x="-2" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="4" y="32.7"/>
         <circle x="-2" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="4" y="61.3"/>
         <polygon x4="3.6" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" antialias="false" x1="-2" x2="-2" y2="-6.2" x3="3.6" y3="-6.2" y4="6.2" y1="6.2"/>
         <arc angle="121" x="-5.72" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="210" y="65.6" width="11.43" height="11.43"/>
-        <arc angle="121" x="-5.715" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="210" y="37" width="11.43" height="11.43"/>
+        <arc angle="121" x="-5.72" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="210" y="37" width="11.43" height="11.43"/>
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-5" x2="5" y2="8.2" y1="8.2"/>
         <circle x="-4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8.6" y="67"/>
         <circle x="-4.3" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8.6" y="38.43"/>
         <arc angle="121" x="-5.7" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="30" y="37" width="11.4" height="11.4"/>
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-5" x2="5" y2="-8.5" y1="-8.5"/>
-        <arc angle="121" x="-5.715" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="30" y="65.6" width="11.43" height="11.43"/>
+        <arc angle="121" x="-5.72" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" start="30" y="65.6" width="11.43" height="11.43"/>
         <polygon x4="3.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x1="3.9" x2="-3.3" y2="31.3" x3="-3.3" y3="24.6" y4="24.6" y1="31.3"/>
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="-3.4" x2="-3.4" y2="-8.5" y1="8.3"/>
         <polygon x4="3.9" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x1="3.9" x2="-3.3" y2="60" x3="-3.3" y3="53.2" y4="53.2" y1="60"/>
@@ -55,7 +55,7 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="5" x2="-5" y2="-56.5" y1="-56.5"/>
         <polygon closed="false" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x1="5" x2="-5" y2="-51.3" y1="-51.3"/>
         <polygon x4="2.82" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x1="2.82" x2="-2.8" y2="-51.3" x3="-2.8" y3="-56.5" y4="-56.5" y1="-51.3"/>
-        <dynamic_text Valignment="AlignVCenter" font="Sans Serif,3.43,-1,5,25,0,0,0,0,0" x="5.14" uuid="{f243acac-d2ee-47a9-ba16-f6c7134738fd}" z="64" Halignment="AlignHCenter" keep_visual_rotation="true" y="13.4" frame="false" text_from="ElementInfo" rotation="90" text_width="-1">
+        <dynamic_text Valignment="AlignVCenter" font="Sans Serif,3,-1,5,25,0,0,0,0,0" x="5.14" uuid="{f243acac-d2ee-47a9-ba16-f6c7134738fd}" z="64" Halignment="AlignHCenter" keep_visual_rotation="true" y="13.4" frame="false" text_from="ElementInfo" rotation="90" text_width="-1">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>

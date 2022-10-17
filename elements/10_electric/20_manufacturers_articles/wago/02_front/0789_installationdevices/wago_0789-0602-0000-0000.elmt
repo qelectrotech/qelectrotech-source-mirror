@@ -72,12 +72,12 @@ License:see http://qelectrotech.org/wiki/doc/elements_license
         <rect rx="0" width="2" x="4" ry="0" antialias="false" y="59" height="5" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
         <text rotation="0" color="#000000" text="789-602" x="-60" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="5"/>
         <text rotation="0" color="#000000" text="4 Ch. EnOcean Radio Receiver" x="-60" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="10"/>
-        <polygon y7="5.1011" y16="10.0229" y12="6.7915" x22="43.51" x21="43.772" x3="43.508" x14="51.528" y14="5.9266" antialias="false" y18="10.3963" x6="51.528" y20="10.471" y9="7.6249" y24="9.6022" y2="2.8014" y21="10.3885" x8="46.07" y23="9.9855" style="line-style:normal;line-weight:thin;filling:none;color:black" x5="44.082" y22="10.2096" y19="10.471" x20="44.156" x15="51.528" x9="46.07" y17="10.247" x18="50.92" x4="43.752" x24="43.176" x12="47.356" x23="43.32" x17="51.186" y8="5.1011" y4="2.363" y1="3.1709" y5="2.251" y13="5.9266" y6="2.251" x1="43.176" x10="48.626" x13="47.356" y15="9.5747" x19="50.54" x2="43.282" x7="51.528" x16="51.392" y3="2.5439" y10="7.6249" x11="48.626" y11="6.7915"/>
-        <polygon y9="10.4691" y8="10.4691" y5="11.3673" y1="11.3595" y7="2.251" x6="37.26" x4="30.206" x8="42.14" y3="13.3938" y10="9.0381" antialias="false" x1="34.694" x3="31.566" x2="35.962" x5="31.244" x9="39.246" y4="11.3595" y2="11.3595" style="line-style:normal;line-weight:thin;filling:none;color:black" x10="39.246" y6="2.251" x7="42.14" x11="36.224" y11="9.0381"/>
-        <polygon y9="1.3586" y8="-0.6777" y5="6.0681" y1="2.251" x16="21.16" y7="1.3409" x6="33.166" x4="30.05" x8="36.27" x14="24.612" y3="2.251" y10="1.3586" antialias="false" y13="6.6342" y16="2.251" x1="24.056" x3="26.59" x2="24.056" x13="27.146" y12="10.4691" x5="30.05" y14="10.4691" x9="37.586" y4="2.251" x12="27.146" y2="6.0583" x15="21.16" y15="10.4691" style="line-style:normal;line-weight:thin;filling:none;color:black" x10="36.652" y6="1.3409" x7="31.834" x11="30.634" y11="10.4691"/>
-        <polygon y7="2.3395" y16="10.471" y12="10.0229" x3="52.896" x14="60.308" y14="10.3963" antialias="false" y18="10.2096" x6="59.966" y20="9.6022" y9="2.7365" y2="2.8014" x8="60.59" style="line-style:normal;line-weight:thin;filling:none;color:black" x5="53.47" y19="9.9855" x20="52.564" x15="59.928" x9="60.764" y17="10.3885" x18="52.898" x4="53.14" x12="60.78" x17="53.16" y8="2.5282" y4="2.363" y1="3.1709" y5="2.251" y13="10.247" y6="2.251" x1="52.564" x10="60.916" x13="60.574" y15="10.471" x19="52.708" x2="52.67" x7="60.322" x16="53.544" y3="2.5439" y10="3.1945" x11="60.916" y11="9.5747"/>
-        <polygon y1="5.1011" y3="7.6249" y4="7.6249" x1="55.44" x3="58.024" y2="5.1011" antialias="false" x4="55.44" x2="58.024" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <polygon y1="7.6249" y3="4.5134" x1="37.186" x3="39.246" y2="7.6249" antialias="false" x2="39.246" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y7="5.1" y16="10" y12="6.79" x22="43.51" x21="43.77" x3="43.51" x14="51.53" y14="5.93" antialias="false" y18="10.4" x6="51.53" y20="10.47" y9="7.62" y24="9.6" y2="2.8" y21="10.39" x8="46.07" y23="10" style="line-style:normal;line-weight:thin;filling:none;color:black" x5="44.08" y22="10.21" y19="10.47" x20="44.16" x15="51.53" x9="46.07" y17="10.25" x18="50.92" x4="43.75" x24="43.18" x12="47.36" x23="43.32" x17="51.19" y8="5.1" y4="2.36" y1="3.17" y5="2.25" y13="5.93" y6="2.25" x1="43.18" x10="48.63" x13="47.36" y15="9.57" x19="50.54" x2="43.28" x7="51.53" x16="51.39" y3="2.54" y10="7.62" x11="48.63" y11="6.79"/>
+        <polygon y9="10.47" y8="10.47" y5="11.37" y1="11.36" y7="2.25" x6="37.26" x4="30.21" x8="42.14" y3="13.39" y10="9" antialias="false" x1="34.69" x3="31.57" x2="36" x5="31.24" x9="39.25" y4="11.36" y2="11.36" style="line-style:normal;line-weight:thin;filling:none;color:black" x10="39.25" y6="2.25" x7="42.14" x11="36.22" y11="9"/>
+        <polygon y9="1.36" y8="-0.68" y5="6.07" y1="2.25" x16="21.16" y7="1.34" x6="33.17" x4="30.05" x8="36.27" x14="24.61" y3="2.25" y10="1.36" antialias="false" y13="6.63" y16="2.25" x1="24.06" x3="26.59" x2="24.06" x13="27.15" y12="10.47" x5="30.05" y14="10.47" x9="37.59" y4="2.25" x12="27.15" y2="6.06" x15="21.16" y15="10.47" style="line-style:normal;line-weight:thin;filling:none;color:black" x10="36.65" y6="1.34" x7="31.83" x11="30.63" y11="10.47"/>
+        <polygon y7="2.34" y16="10.47" y12="10" x3="52.9" x14="60.31" y14="10.4" antialias="false" y18="10.21" x6="60" y20="9.6" y9="2.74" y2="2.8" x8="60.59" style="line-style:normal;line-weight:thin;filling:none;color:black" x5="53.47" y19="10" x20="52.56" x15="59.93" x9="60.76" y17="10.39" x18="52.9" x4="53.14" x12="60.78" x17="53.16" y8="2.53" y4="2.36" y1="3.17" y5="2.25" y13="10.25" y6="2.25" x1="52.56" x10="60.92" x13="60.57" y15="10.47" x19="52.71" x2="52.67" x7="60.32" x16="53.54" y3="2.54" y10="3.19" x11="60.92" y11="9.57"/>
+        <polygon y1="5.1" y3="7.62" y4="7.62" x1="55.44" x3="58" y2="5.1" antialias="false" x4="55.44" x2="58" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <polygon y1="7.62" y3="4.51" x1="37.19" x3="39.25" y2="7.62" antialias="false" x2="39.25" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <rect rx="0" width="10" x="-10" ry="0" antialias="false" y="58" height="28" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
         <rect rx="0" width="10" x="-30" ry="0" antialias="false" y="58" height="28" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
         <rect rx="0" width="10" x="-50" ry="0" antialias="false" y="58" height="28" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
@@ -121,20 +121,20 @@ License:see http://qelectrotech.org/wiki/doc/elements_license
         <text rotation="0" color="#000000" text="14" x="-58" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
         <text rotation="0" color="#000000" text="12" x="-47" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
         <text rotation="0" color="#000000" text="11" x="-38" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="24" x="-27.6563" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="22" x="-17.6563" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="21" x="-7.65625" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="34" x="2.6875" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="32" x="12.6875" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="31" x="22.6875" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="44" x="32.0312" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="42" x="42.0312" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="41" x="52.0313" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
-        <text rotation="0" color="#000000" text="+" x="-57.9062" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
-        <text rotation="0" color="#000000" text="−" x="-47.9062" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
-        <text rotation="0" color="#000000" text="FE" x="-38.9061" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
-        <text rotation="0" color="#000000" text="Antenna" x="31.9064" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
+        <text rotation="0" color="#000000" text="24" x="-27.66" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="22" x="-17.66" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="21" x="-7.66" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="34" x="2.69" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="32" x="12.69" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="31" x="22.69" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="44" x="32" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="42" x="42" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="41" x="52" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="57"/>
+        <text rotation="0" color="#000000" text="+" x="-57.91" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
+        <text rotation="0" color="#000000" text="−" x="-47.91" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
+        <text rotation="0" color="#000000" text="FE" x="-38.91" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
+        <text rotation="0" color="#000000" text="Antenna" x="31.91" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-53"/>
         <text rotation="0" color="#000000" text="LRN" x="23" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-10"/>
-        <text rotation="0" color="#000000" text="CLR" x="38.9688" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-10"/>
+        <text rotation="0" color="#000000" text="CLR" x="39" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-10"/>
     </description>
 </definition>

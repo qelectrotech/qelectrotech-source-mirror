@@ -8,10 +8,10 @@
     <elementInformations>
         <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
         <elementInformation show="1" name="designation">857-718</elementInformation>
+        <elementInformation show="1" name="description">857-718</elementInformation>
     </elementInformations>
-    <informations>
-        Author: plc-user for QElectroTech
-        License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
     </informations>
     <description>
         <text text="14 (RL)" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" x="45" y="-24" rotation="0"/>
@@ -60,10 +60,10 @@
         <line y2="-11.7" length1="1.5" x2="5" length2="1.5" x1="-18" y1="-11.7" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
         <line y2="0.3" length1="1.5" x2="5" length2="1.5" x1="-18" y1="0.3" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
         <polygon y2="-16.7" x2="-14" x1="-11" y1="-11.7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" x3="-18" y3="-16.7"/>
-        <polygon y2="-1.31605" x2="-158.831" x1="-158.831" y1="-8.83937" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-151.31" y3="-5.07771"/>
-        <polygon y2="-1.31605" x2="-151.31" x1="-151.31" y1="-8.83937" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
-        <polygon y2="-5.07771" x2="-147.549" x1="-162.591" y1="-5.07771" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
-        <polygon y4="-5.07771" y2="-5.07771" x2="-170.112" x1="-155.07" x4="-140.028" y1="-20.1243" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-155.07" y3="9.96892"/>
+        <polygon y2="-1.32" x2="-158.83" x1="-158.83" y1="-8.84" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-151.31" y3="-5.08"/>
+        <polygon y2="-1.32" x2="-151.31" x1="-151.31" y1="-8.84" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <polygon y2="-5.08" x2="-147.55" x1="-162.59" y1="-5.08" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false"/>
+        <polygon y4="-5.08" y2="-5.08" x2="-170.11" x1="-155.07" x4="-140" y1="-20.12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-155.07" y3="10"/>
         <line y2="-5" length1="1.5" x2="-170" length2="1.5" x1="-200" y1="-5" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
         <line y2="-20" length1="1.5" x2="-60" length2="1.5" x1="-155" y1="-20" antialias="false" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" end1="none"/>
         <terminal x="40" orientation="n" y="-40"/>

@@ -27,8 +27,8 @@ License:see https://qelectrotech.org/wiki_new/doc/elements_license
             <info_name>label</info_name>
         </dynamic_text>
         <text color="#000000" x="-27" font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" y="-58" text="1"/>
-        <arc x="-16.5" height="3.3332" y="-63" width="5" angle="-175" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
-        <arc x="-21.5" height="3.8334" y="-62.8334" width="5" angle="-175" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <arc x="-16.5" height="3.33" y="-63" width="5" angle="-175" start="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
+        <arc x="-21.5" height="3.83" y="-62.83" width="5" angle="-175" start="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true"/>
         <line length1="1.5" y2="-60" end1="none" end2="none" length2="1.5" x2="21.5" x1="14" y1="-60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
         <line length1="1.5" y2="-62" end1="none" end2="none" length2="1.5" x2="15.5" x1="14" y1="-62" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
         <line length1="1.5" y2="-62" end1="none" end2="none" length2="1.5" x2="18.5" x1="17" y1="-62" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
