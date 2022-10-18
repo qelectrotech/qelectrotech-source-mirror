@@ -7,7 +7,7 @@
     </names>
     <elementInformations>
         <elementInformation name="designation" show="1">780-458</elementInformation>
-        <elementInformation name="description" show="1">Jumper for Series 280, 769</elementInformation>
+        <elementInformation name="description" show="1">Jumper for Series 280, 769, 780, 880</elementInformation>
         <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
     </elementInformations>
     <informations>Author: plc-user for QElectroTech
