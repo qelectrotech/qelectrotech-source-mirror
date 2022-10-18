@@ -1,0 +1,50 @@
+<definition version="0.90" hotspot_y="46" link_type="simple" type="element" width="740" height="100" hotspot_x="376">
+    <names>
+        <name lang="de">750-8000</name>
+        <name lang="en">750-8000</name>
+        <name lang="fr">750-8000</name>
+        <name lang="pl">750-8000</name>
+        <name lang="pt">750-8000</name>
+        <name lang="cs">750-8000</name>
+        <name lang="es">750-8000</name>
+        <name lang="ar">750-8000</name>
+        <name lang="it">750-8000</name>
+        <name lang="nl">750-8000</name>
+        <name lang="el">750-8000</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">750-8000</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">Basic Controller 100 2xEth ECO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" y="-40" antialias="false" width="720" height="90" x="-360" rx="0"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" text="WAGO 750-8000" rotation="0" color="#000000" x="-330"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="45" text="Basic Controller 100 ECO" rotation="0" color="#000000" x="-138"/>
+        <dynamic_text Halignment="AlignLeft" uuid="{f1606b59-bc7a-4998-bb76-37468b3f68bd}" z="5" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" keep_visual_rotation="true" y="29.5" text_from="ElementInfo" frame="false" rotation="0" text_width="-1" x="220">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" text="IP Adr.:" rotation="0" color="#000000" x="-317"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="4" text="Eth1" rotation="0" color="#000000" x="-355"/>
+        <dynamic_text Halignment="AlignLeft" uuid="{2a4edf8b-b990-41e3-8e67-5e2dea578790}" z="8" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" keep_visual_rotation="true" y="-11.5" text_from="UserText" frame="false" rotation="0" text_width="-1" x="-270">
+            <text>192.168.1.1</text>
+        </dynamic_text>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="24" text="Eth2" rotation="0" color="#000000" x="-355"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="9" text="X1" rotation="0" color="#000000" x="-371"/>
+        <text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="29" text="X2" rotation="0" color="#000000" x="-371"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="17.5" antialias="true" x="-362.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-2.5" antialias="true" x="-362.5"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" text="0V" rotation="0" color="#000000" x="-199"/>
+        <text font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-22" text="24V" rotation="0" color="#000000" x="-279"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-202.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" y="-42.5" antialias="true" x="-282.5"/>
+        <terminal uuid="{96de800b-4318-488f-bb7e-694c7eb0105e}" orientation="w" y="20" type="Generic" name="" x="-360"/>
+        <terminal uuid="{03369ff3-55fa-4c36-9025-a2cc349693be}" orientation="n" y="-40" type="Generic" name="" x="-280"/>
+        <terminal uuid="{68d2fd84-2465-45d3-8ff0-7128566d3ae3}" orientation="w" y="0" type="Generic" name="" x="-360"/>
+        <terminal uuid="{74ef9f46-4bed-4498-a1f1-e11036fa86a4}" orientation="n" y="-40" type="Generic" name="" x="-200"/>
+    </description>
+</definition>
