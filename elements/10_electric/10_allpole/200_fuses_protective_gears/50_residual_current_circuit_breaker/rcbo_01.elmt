@@ -1,0 +1,83 @@
+<definition link_type="master" height="110" type="element" hotspot_x="45" version="0.90" width="100" hotspot_y="60">
+    <uuid uuid="{06fbc81f-6a14-4a5b-8585-d4bbc88964fe}"/>
+    <names>
+        <name lang="pl">Wyłącznik różnicowoprądowy z wyłącznikiem</name>
+        <name lang="es">Disyuntor de corriente residual con disyuntor</name>
+        <name lang="ca">Interruptor diferencial amb disjuntor</name>
+        <name lang="fr">Disjoncteur différentiel avec disjoncteur</name>
+        <name lang="pt">Disjuntor de corrente residual com disjuntor</name>
+        <name lang="tr">Devre kesicili kaçak akım devre kesici</name>
+        <name lang="ar">قاطع دارة التيار المتبقي مع قاطع الدائرة</name>
+        <name lang="nb">Feilstrømsbryter med effektbryter</name>
+        <name lang="sl">Odklopnik na diferenčni tok z odklopnikom</name>
+        <name lang="sr">Прекидач диференцијалне струје са прекидачем</name>
+        <name lang="mn">Хэлхээ таслагчтай үлдэгдэл гүйдлийн таслуур</name>
+        <name lang="el">Διακόπτης υπολειπόμενου ρεύματος με διακόπτη κυκλώματος</name>
+        <name lang="en">Residual current circuit breaker with circuit breaker</name>
+        <name lang="ja">サーキットブレーカ付き残留電流サーキットブレーカ</name>
+        <name lang="da">Fejlstrømsafbryder med afbryder</name>
+        <name lang="ro">Întrerupător de curent rezidual cu întreruptor de circuit</name>
+        <name lang="cs">Proudový chránič s proudovým chráničem</name>
+        <name lang="hr">Zaštitna sklopka zaštitne struje s prekidačem</name>
+        <name lang="hu">Maradékáram-megszakító megszakítóval</name>
+        <name lang="nl">Aardlekschakelaar met stroomonderbreker</name>
+        <name lang="ru">Автомат защитного отключения с автоматическим выключателем</name>
+        <name lang="de">Fehlerstromschutzschalter mit Leitungsschutzschalter</name>
+        <name lang="it">Interruttore differenziale con interruttore automatico</name>
+    </names>
+    <kindInformations>
+        <kindInformation name="type">protection</kindInformation>
+    </kindInformations>
+    <elementInformations>
+        <elementInformation name="description" show="1">RCBO 1P+N</elementInformation>
+    </elementInformations>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" y1="-34" length1="1.5" end2="none" x1="12" length2="1.5" antialias="false" end1="none"/>
+        <polygon x2="50" y3="-26" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="50" y2="-40" y1="-40" closed="false" x1="45" antialias="false"/>
+        <line x2="-24" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="20" y1="20" length1="1.5" end2="none" x1="-16.5" length2="1.5" antialias="false" end1="none"/>
+        <polygon x2="50" y3="-26" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="46" y2="-15" y1="0" closed="false" x1="50" antialias="true"/>
+        <rect x="48" style="line-style:normal;line-weight:thin;filling:none;color:black" y="0" height="10" ry="0" rx="0" width="4" antialias="false"/>
+        <circle x="-11" style="line-style:normal;line-weight:thin;filling:black;color:black" y="29" diameter="2" antialias="false"/>
+        <text x="38" y="-42" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="T" color="#000000" rotation="0"/>
+        <rect x="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" y="15" height="10" ry="0" rx="0" width="12" antialias="false"/>
+        <dynamic_text x="-70" z="11" frame="false" uuid="{36c7c79e-5fa0-4035-bc90-aaf80cb42d7e}" text_from="ElementInfo" y="-50" Valignment="AlignTop" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" text_width="-1" rotation="0" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line x2="-30" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="-14" y1="15" length1="1.5" end2="none" x1="-30" length2="1.5" antialias="false" end1="none"/>
+        <line x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" y1="-34" length1="1.5" end2="none" x1="8" length2="1.5" antialias="false" end1="none"/>
+        <polygon x2="10" y3="-6" x7="5" x4="14" x6="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-12" x3="14" y6="-15" y2="-6" y7="-26" y5="-12" y1="-3" x5="10" closed="false" x1="10" antialias="true"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-40" y1="-27" length1="1.5" end2="none" x1="10" length2="1.5" antialias="false" end1="none"/>
+        <text x="13" y="-38" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="1" color="#000000" rotation="0"/>
+        <line x2="8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-27" y1="-27" length1="1.5" end2="none" x1="12" length2="1.5" antialias="false" end1="none"/>
+        <text x="13" y="42" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="2" color="#000000" rotation="0"/>
+        <text x="-7" y="42" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="N" color="#000000" rotation="0"/>
+        <line x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" y1="-34" length1="1.5" end2="none" x1="-8" length2="1.5" antialias="false" end1="none"/>
+        <line x2="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" y1="-34" length1="1.5" end2="none" x1="-12" length2="1.5" antialias="false" end1="none"/>
+        <line x2="20" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-4" y1="-4" length1="1.5" end2="none" x1="0" length2="1.5" antialias="false" end1="none"/>
+        <line x2="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="5" y1="40" length1="1.5" end2="none" x1="10" length2="1.5" antialias="false" end1="none"/>
+        <text x="-7" y="-38" font="Sans Serif,4,-1,5,50,0,0,0,0,0" text="N" color="#000000" rotation="0"/>
+        <polygon x2="-10" y3="10" x7="-15" x4="-10" x6="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="4" x3="-10" y6="-15" y2="10" y7="-25" y5="4" y1="40" x5="-10" closed="false" x1="-10" antialias="true"/>
+        <line x2="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-40" y1="-26" length1="1.5" end2="none" x1="-10" length2="1.5" antialias="false" end1="none"/>
+        <line x2="-12" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-26" y1="-26" length1="1.5" end2="none" x1="-8" length2="1.5" antialias="false" end1="none"/>
+        <rect x="-36" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-26" height="12" ry="0" rx="0" width="12" antialias="false"/>
+        <line x2="-43" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-20" y1="-20" length1="1.5" end2="none" x1="-24" length2="1.5" antialias="false" end1="none"/>
+        <line x2="-43" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-16" y1="-24" length1="1.5" end2="none" x1="-43" length2="1.5" antialias="false" end1="none"/>
+        <line x2="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-26" y1="-14" length1="1.5" end2="none" x1="-30" length2="1.5" antialias="false" end1="none"/>
+        <line x2="48" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="-20" y1="-20" length1="1.5" end2="none" x1="-25.5883" length2="1.5" antialias="false" end1="none"/>
+        <polygon x2="20" y3="6" x4="0" x6="20" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="6" x3="20" y6="-14" y2="-14" y5="-14" y1="-14" x5="0" closed="false" x1="0" antialias="false"/>
+        <arc x="6" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-3" height="8" angle="180" width="8" start="270" antialias="true"/>
+        <polygon x2="30" y3="-40" x4="35" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-40" x3="30" y2="10" y5="-43" y1="10" x5="45" closed="false" x1="10" antialias="false"/>
+        <circle x="9" style="line-style:normal;line-weight:thin;filling:black;color:black" y="9" diameter="2" antialias="false"/>
+        <ellipse x="-16.5" style="line-style:normal;line-weight:thin;filling:none;color:black" height="8" y="16" width="33" antialias="false"/>
+        <polygon x2="50" y3="30" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="-10" y2="30" y1="10" closed="false" x1="50" antialias="false"/>
+        <line x2="40" style="line-style:dashed;line-weight:thin;filling:none;color:black" y2="-41.5" y1="-45" length1="1.5" end2="none" x1="40" length2="1.5" antialias="false" end1="none"/>
+        <line x2="42" style="line-style:normal;line-weight:thin;filling:none;color:black" y2="-45" y1="-45" length1="1.5" end2="none" x1="38" length2="1.5" antialias="false" end1="none"/>
+        <terminal x="10" uuid="{15f6379b-45f2-45e3-b007-e49670986548}" y="-40" type="Generic" name="" orientation="n"/>
+        <terminal x="-10" uuid="{6e84f9e9-fde1-473c-aa8a-99711e3e45e9}" y="-40" type="Generic" name="" orientation="n"/>
+        <terminal x="-10" uuid="{8f448f26-eb1e-4919-b9b5-c6750b298bd0}" y="40" type="Generic" name="" orientation="s"/>
+        <terminal x="10" uuid="{733c8f11-7902-46b3-811b-64c6d10dd7bf}" y="40" type="Generic" name="" orientation="s"/>
+    </description>
+</definition>
