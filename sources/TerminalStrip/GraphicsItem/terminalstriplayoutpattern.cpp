@@ -20,6 +20,7 @@
 #include "../physicalterminal.h"
 #include "../realterminal.h"
 #include "../terminalstrip.h"
+#include "../terminalstripbridge.h"
 
 #include <QPainter>
 
@@ -79,10 +80,13 @@ void TerminalStripDrawer::paint(QPainter *painter)
 			//Move painter pos to next drawing
 		painter->translate(m_pattern.m_header_rect.width(),0);
 
+		int x_offset{m_pattern.m_header_rect.width()};
+
 			//Draw spacer
 		painter->drawRect(m_pattern.m_spacer_rect);
 			//Move painter pos to next drawing
 		painter->translate(m_pattern.m_spacer_rect.width(),0);
+		x_offset += m_pattern.m_spacer_rect.width();
 
 
 			//Draw terminals
@@ -90,6 +94,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		const auto terminals_text_orientation{m_pattern.m_terminals_text_orientation};
 		const auto terminals_text_option{m_pattern.terminalsTextOption()};
 		QRect terminal_rect;
+
+		QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
 
 			//Loop over physical terminals
 		for (const auto &physical_t : m_strip->physicalTerminal())
@@ -108,6 +114,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 				}
 
 				terminal_rect = m_pattern.m_terminal_rect[index_];
+					//Draw terminal rect
 				painter->drawRect(terminal_rect);
 
 					//Draw text
@@ -130,12 +137,44 @@ void TerminalStripDrawer::paint(QPainter *painter)
 								  terminals_text_option[index_]);
 				painter->restore();
 
+					//Add bridge anchor
+				if (shared_real_terminal->isBridged())
+				{
+					painter->save();
+					if (const auto bridge_ = shared_real_terminal->bridge())
+					{
+						const auto anchor_center{m_pattern.m_bridge_point_d/2};
+						painter->setBrush(Qt::SolidPattern);
+						painter->drawEllipse(QPointF{terminal_rect.width()/2, m_pattern.m_bridge_point_y_offset[index_]},
+											 anchor_center,
+											 anchor_center);
+
+						auto anchor_points{bridges_anchor_points.value(bridge_->uuid())};
+						anchor_points.append(QPointF{x_offset + terminal_rect.width()/2,
+													 m_pattern.m_bridge_point_y_offset[index_]});
+						bridges_anchor_points.insert(bridge_->uuid(), anchor_points);
+					}
+					painter->restore();
+				}
+
 					//Move painter pos to next drawing
 				painter->translate(terminal_rect.width(),0);
+				x_offset += terminal_rect.width();
 			}
 		}
 
 		painter->restore();
+
+			//Draw the bridges
+		for (const auto &points_ : qAsConst(bridges_anchor_points))
+		{
+			painter->save();
+			auto pen_{painter->pen()};
+			pen_.setWidth(2);
+			painter->setPen(pen_);
+			painter->drawPolyline(QPolygonF{points_});
+			painter->restore();
+		}
 	}
 }
 
