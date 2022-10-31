@@ -1,0 +1,24 @@
+<definition hotspot_x="10" width="20" height="50" type="element" version="0.90" hotspot_y="24" link_type="simple">
+    <names>
+        <name lang="de">249-101 Endklammer 6mm (TS15)</name>
+        <name lang="fr">249-101 End-Stop 6mm (TS15)</name>
+        <name lang="cs">249-101 Koncová svorka 6mm (TS15)</name>
+        <name lang="en">249-101 End-Stop 6mm (TS15)</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">249-101</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="description">End-Stop 6mm TS15</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="12" ry="0" antialias="false" y="-22" height="46.4" rx="0" x="-6" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <rect width="9" ry="0" antialias="false" y="-20" height="42" rx="0" x="-6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="12" ry="0" antialias="false" y="-16" height="34" rx="0" x="-6" style="line-style:normal;line-weight:thin;filling:lightgray;color:black"/>
+        <rect width="12" ry="0" antialias="false" y="-14" height="28" rx="0" x="-6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="12" ry="0" antialias="false" y="-4.2" height="8.4" rx="0" x="-6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="12" ry="0" antialias="false" y="-3" height="6" rx="0" x="-6" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+    </description>
+</definition>
