@@ -1,0 +1,26 @@
+<definition width="40" hotspot_x="19" hotspot_y="130" type="element" height="260" version="0.90" link_type="simple">
+    <names>
+        <name lang="en">709-167 Profile support for 709-153</name>
+        <name lang="fr">709-167 Support profilé pour 709-153</name>
+        <name lang="de">709-167 Profilträger für 709-153</name>
+        <name lang="cs">709-167 Podpora profilu pro 709-153</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">WAGO</elementInformation>
+        <elementInformation name="designation" show="1">709-167</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="16" antialias="false" y="-127.6" x="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" height="255.2"/>
+        <rect width="16" antialias="false" y="-40" x="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="80"/>
+        <rect width="16" antialias="false" y="-84" x="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="168"/>
+        <rect width="16" antialias="false" y="-50" x="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="100"/>
+        <rect width="16" antialias="false" y="-90" x="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="180"/>
+        <rect width="16" antialias="false" y="-122" x="0" rx="0" ry="0" style="line-style:normal;line-weight:thin;filling:none;color:black" height="244"/>
+        <circle antialias="false" y="-14" x="-14" style="line-style:normal;line-weight:thin;filling:white;color:black" diameter="28"/>
+        <circle antialias="false" y="-5" x="-5" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="10"/>
+    </description>
+</definition>

@@ -1,0 +1,33 @@
+<definition height="270" link_type="simple" hotspot_y="134" type="element" width="40" version="0.90" hotspot_x="20">
+    <uuid uuid="{76ebf35d-813d-4f00-bb1a-25453729c89b}"/>
+    <names>
+        <name lang="en">709-169 Profile support for 709-156</name>
+        <name lang="cs">709-169 Podpora profilu pro 709-156</name>
+        <name lang="fr">709-169 Support profilé pour 709-156</name>
+        <name lang="de">709-169 Profilträger für 709-156</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">709-169</elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect ry="0" rx="0" y="-128.3" height="256.6" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:lightgray;color:black" width="16"/>
+        <rect ry="0" rx="0" y="77" height="18" antialias="false" x="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" width="10"/>
+        <rect ry="0" rx="0" y="-95" height="18" antialias="false" x="-5" style="line-style:normal;line-weight:thin;filling:none;color:black" width="10"/>
+        <rect ry="0" rx="0" y="-72" height="34" antialias="false" x="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" width="14"/>
+        <circle y="23.5" antialias="false" x="-6.5" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="13"/>
+        <rect ry="0" rx="0" y="-15" height="30" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" width="16"/>
+        <rect ry="0" rx="0" y="-77" height="154" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" width="16"/>
+        <rect ry="0" rx="0" y="-22" height="44" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" width="16"/>
+        <rect ry="0" rx="0" y="-95" height="190" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" width="16"/>
+        <rect ry="0" rx="0" y="-119.25" height="238.5" antialias="false" x="-8" style="line-style:normal;line-weight:thin;filling:none;color:black" width="16"/>
+        <circle y="-14" antialias="false" x="-14" style="line-style:normal;line-weight:thin;filling:white;color:black" diameter="28"/>
+        <circle y="-5" antialias="false" x="-5" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="10"/>
+        <circle y="-36.5" antialias="false" x="-6.5" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="13"/>
+        <rect ry="0" rx="0" y="38" height="34" antialias="false" x="-7" style="line-style:normal;line-weight:thin;filling:none;color:black" width="14"/>
+    </description>
+</definition>

@@ -1,0 +1,24 @@
+<definition width="310" hotspot_x="13" type="element" height="270" version="0.90" hotspot_y="135" link_type="simple">
+    <names>
+        <name lang="en">709-156 Cover for 709-169 (150mm)</name>
+        <name lang="fr">709-156 Couverture pour 709-169 (150mm)</name>
+        <name lang="de">709-156 Abdeckung für 709-169 (150mm)</name>
+        <name lang="cs">709-156 Kryt pro 709-169 (150mm)</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">709-156</elementInformation>
+        <elementInformation show="1" name="description">max. length: 1000mm</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect width="300" y="-129" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="258" rx="0" ry="0" x="-8"/>
+        <rect width="300" y="-34" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="68" rx="0" ry="0" x="-8"/>
+        <rect width="300" y="-45" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="90" rx="0" ry="0" x="-8"/>
+        <rect width="300" y="-133" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="266" rx="0" ry="0" x="-8"/>
+        <rect width="300" y="-92.5" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="185" rx="0" ry="0" x="-8"/>
+        <rect width="300" y="-87" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" height="174" rx="0" ry="0" x="-8"/>
+    </description>
+</definition>
