@@ -1,0 +1,89 @@
+<definition hotspot_y="55" width="740" version="0.90" type="element" height="110" hotspot_x="375" link_type="simple">
+    <uuid uuid="{560cb9cc-07c4-4794-8aa8-41108ea446c6}"/>
+    <names>
+        <name lang="en">UC20-WL2000-EC</name>
+        <name lang="fr">UC20-WL2000-EC</name>
+        <name lang="de">UC20-WL2000-EC</name>
+        <name lang="cs">UC20-WL2000-EC</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">UC20-WL2000-EC</elementInformation>
+        <elementInformation show="1" name="manufacturer">Weidmüller</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect y="-40" rx="0" ry="0" antialias="false" x="-360" width="720" height="90" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text y="27" rotation="0" text="Vcc Outputs" x="283" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <polygon y2="0" closed="false" antialias="false" x2="110" x1="110" y3="10" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="120" y1="-30"/>
+        <dynamic_text y="-11.5" uuid="{0eade2e8-8ab3-424f-8809-ba9aaf87b3fe}" rotation="0" keep_visual_rotation="true" Valignment="AlignTop" x="-257" text_width="-1" frame="false" z="4" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" Halignment="AlignLeft">
+            <text>192.168.0.101</text>
+        </dynamic_text>
+        <circle diameter="2" y="-31" antialias="false" x="209" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle diameter="2" y="-31" antialias="false" x="149" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y2="0" closed="false" antialias="false" x2="150" x1="150" y3="10" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="160" y1="-30"/>
+        <circle diameter="2" y="-31" antialias="false" x="109" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <polygon y2="20" closed="false" antialias="false" x2="210" x1="210" y3="30" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="220" y1="-30"/>
+        <polygon y2="-30" closed="false" antialias="false" x2="200" x4="220" x1="200" y3="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-40" x3="220" y1="-40"/>
+        <polygon y2="-30" closed="false" antialias="false" x2="100" x4="120" x1="100" y3="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-40" x3="120" y1="-40"/>
+        <polygon y2="-30" closed="false" antialias="false" x2="140" x4="160" x1="140" y3="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-40" x3="160" y1="-40"/>
+        <circle diameter="5" y="17.5" antialias="true" x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <text y="4" rotation="0" text="IP Adr. 1:" x="-312" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="24" rotation="0" text="Eth2" x="-355" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <circle diameter="5" y="-2.5" antialias="true" x="-362.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="157.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="137.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="117.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="97.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="257.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="237.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="217.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle diameter="5" y="-42.5" antialias="true" x="197.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <line y2="30" end1="none" antialias="false" x2="358" length1="1.5" x1="210" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="30" end2="none"/>
+        <dynamic_text y="8.5" uuid="{6a02c068-70a7-4dae-8f67-d8b64ec0e56f}" rotation="0" keep_visual_rotation="true" Valignment="AlignTop" x="-257" text_width="-1" frame="false" z="26" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="UserText" Halignment="AlignLeft">
+            <text>192.168.1.101</text>
+        </dynamic_text>
+        <line y2="10" end1="none" antialias="false" x2="358" length1="1.5" x1="110" length2="1.5" style="line-style:normal;line-weight:hight;filling:none;color:black" y1="10" end2="none"/>
+        <text y="45" rotation="0" text="UC20-WL2000-EC" x="-330" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="24" rotation="0" text="IP Adr. 2:" x="-312" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="-22" rotation="0" text="−" x="257" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="-22" rotation="0" text="+" x="217" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="-22" rotation="0" text="−" x="157" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="-22" rotation="0" text="+" x="117" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="4" rotation="0" text="Eth1" x="-355" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="3.1" x="102" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <dynamic_text y="29.5" uuid="{9598054e-7691-48e0-8c5b-e6c097bbf869}" rotation="0" keep_visual_rotation="true" Valignment="AlignTop" x="220" text_width="-1" frame="false" z="36" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_from="ElementInfo" Halignment="AlignLeft">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text y="-42" rotation="0" text="3.2" x="123" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="3.3" x="143" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="3.4" x="163" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="4.1" x="203" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="4.2" x="223" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="4.3" x="243" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="-42" rotation="0" text="4.4" x="263" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="45" rotation="0" text="AutomationController EtherCAT" x="-138" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0"/>
+        <text y="9" rotation="0" text="X1" x="-371" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <text y="29" rotation="0" text="X2" x="-371" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0"/>
+        <arc y="27.5" antialias="true" x="360" width="5" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black" angle="180" start="90"/>
+        <arc y="7.5" antialias="true" x="360" width="5" height="5" style="line-style:normal;line-weight:normal;filling:white;color:black" angle="180" start="90"/>
+        <polygon y2="20" closed="false" antialias="false" x2="250" x1="250" y3="30" style="line-style:normal;line-weight:thin;filling:none;color:black" x3="260" y1="-30"/>
+        <polygon y2="-30" closed="false" antialias="false" x2="240" x4="260" x1="240" y3="-30" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-40" x3="260" y1="-40"/>
+        <circle diameter="2" y="-31" antialias="false" x="249" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text y="7" rotation="0" text="Vcc System / Inputs" x="265" color="#000000" font="Sans Serif,7,-1,5,50,0,0,0,0,0"/>
+        <terminal y="-40" uuid="{fdb1ce29-038b-4f7e-98e3-28b630687bd1}" x="160" type="Generic" name="" orientation="n"/>
+        <terminal y="0" uuid="{964d02f8-0df7-4678-8335-db8ed7fb41e4}" x="-360" type="Generic" name="" orientation="w"/>
+        <terminal y="-40" uuid="{3afcca78-9d5b-48ca-9707-374fb0e15538}" x="260" type="Generic" name="" orientation="n"/>
+        <terminal y="-40" uuid="{0f60175f-45d7-4ac7-925b-73de4532b180}" x="240" type="Generic" name="" orientation="n"/>
+        <terminal y="-40" uuid="{112017a8-c652-40dd-abc4-8eccab8193ef}" x="200" type="Generic" name="" orientation="n"/>
+        <terminal y="-40" uuid="{6681f089-cddd-49c6-9845-5da6b2652e88}" x="120" type="Generic" name="" orientation="n"/>
+        <terminal y="-40" uuid="{f1a9e005-459e-453b-a87e-a07be9d9cd69}" x="140" type="Generic" name="" orientation="n"/>
+        <terminal y="-40" uuid="{7c6ae10b-fc88-434d-8daf-891782ae8fba}" x="220" type="Generic" name="" orientation="n"/>
+        <terminal y="30" uuid="{f2ab7e4b-3142-461e-881c-9885fca297de}" x="360" type="Generic" name="" orientation="e"/>
+        <terminal y="-40" uuid="{67846f85-bb9b-4b8e-a3f5-b87ef7776996}" x="100" type="Generic" name="" orientation="n"/>
+        <terminal y="10" uuid="{aaca00a8-2392-441d-ae39-d23d585f143f}" x="360" type="Generic" name="" orientation="e"/>
+        <terminal y="20" uuid="{c2368fe3-a863-4f80-b0c1-4db76b09a281}" x="-360" type="Generic" name="" orientation="w"/>
+    </description>
+</definition>
