@@ -22,6 +22,7 @@
 #include "diagrameventinterface.h"
 
 class Element;
+class QStatusBar;
 
 /**
 	@brief The DiagramEventAddElement class
@@ -51,6 +52,7 @@ class DiagramEventAddElement : public DiagramEventInterface
 		ElementsLocation m_location;
 		Element *m_element;
 		QString m_integrate_path;
+		QPointer<QStatusBar> m_status_bar;
 };
 
 #endif // DIAGRAMEVENTADDELEMENT_H

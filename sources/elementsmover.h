@@ -19,10 +19,14 @@
 #define ELEMENTS_MOVER_H
 
 #include <QPointF>
+#include <QPointer>
+
 #include "diagramcontent.h"
 
 class ConductorTextItem;
 class Diagram;
+class QStatusBar;
+
 /**
 	This class manages the interactive movement of different items (elements,
 	conductors, text items etc...) on a particular diagram.
@@ -57,5 +61,7 @@ class ElementsMover {
 	Diagram *diagram_;
 	QGraphicsItem *m_movement_driver;
 	DiagramContent m_moved_content;
+		QPointer<QStatusBar> m_status_bar;
+
 };
 #endif

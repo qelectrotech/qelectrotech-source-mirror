@@ -28,6 +28,8 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "undocommand/addgraphicsobjectcommand.h"
+#include "qetapp.h"
+#include "qetdiagrameditor.h"
 
 /**
 	@brief ElementsMover::ElementsMover Constructor
@@ -38,16 +40,13 @@ ElementsMover::ElementsMover() :
 	diagram_(nullptr),
 	m_movement_driver(nullptr),
 	m_moved_content()
-{
-
-}
+{}
 
 /**
 	@brief ElementsMover::~ElementsMover Destructor
 */
 ElementsMover::~ElementsMover()
-{
-}
+{}
 
 /**
 	@brief ElementsMover::isReady
@@ -74,6 +73,15 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 		// Be sure we have diagram to work
 	if (!diagram) return(-1);
 	diagram_ = diagram;
+
+	if (!diagram->views().isEmpty()) {
+		const auto qde = QETApp::diagramEditorAncestorOf(diagram->views().at(0));
+		if (qde) {
+			m_status_bar = qde->statusBar();
+		}
+	} else {
+		m_status_bar.clear();
+	}
 
 		// Take count of driver item
 	m_movement_driver = driver_item;
@@ -145,6 +153,12 @@ void ElementsMover::continueMovement(const QPointF &movement)
 //			c->setPos(0,0);				// because set the pos to 0,0 so text move to, and after call updatePath but because text pos is user defined
 //		}								// we don't move it.
 		c->updatePath();
+	}
+
+	if (m_status_bar)
+	{
+		const auto point_{m_movement_driver->scenePos()};
+		m_status_bar->showMessage(QLatin1String("x %1 : y %2").arg(QString::number(point_.x()), QString::number(point_.y())));
 	}
 }
 
@@ -227,4 +241,8 @@ void ElementsMover::endMovement()
 		// There is no movement in progress now
 	movement_running_ = false;
 	m_moved_content.clear();
+
+	if (m_status_bar) {
+		m_status_bar->clearMessage();
+	}
 }

@@ -21,6 +21,8 @@
 #include "../diagram.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 #include "../factory/elementfactory.h"
+#include "../qetapp.h"
+#include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/conductor.h"
 
@@ -49,6 +51,15 @@ DiagramEventAddElement::DiagramEventAddElement(ElementsLocation &location, Diagr
 			m_element -> setFlag(QGraphicsItem::ItemIsSelectable, false);
 			m_diagram -> addItem(m_element);
 			m_running = true;
+
+			if (!diagram->views().isEmpty()) {
+				const auto qde = QETApp::diagramEditorAncestorOf(diagram->views().at(0));
+				if (qde) {
+					m_status_bar = qde->statusBar();
+				}
+			} else {
+				m_status_bar.clear();
+			}
 		}
 	}
 }
@@ -65,6 +76,11 @@ DiagramEventAddElement::~DiagramEventAddElement()
 		m_diagram->removeItem(m_element);
 		m_element->deleteLater();
 	}
+
+	if (m_status_bar) {
+		m_status_bar->clearMessage();
+	}
+
 	for (auto view : m_diagram->views())
 		view -> setContextMenuPolicy(Qt::DefaultContextMenu);
 }
@@ -77,8 +93,14 @@ DiagramEventAddElement::~DiagramEventAddElement()
 */
 void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_element) {
-		m_element->setPos(Diagram::snapToGrid(event->scenePos()));
+	if (m_element)
+	{
+		const auto pos_{Diagram::snapToGrid(event->scenePos())};
+		m_element->setPos(pos_);
+
+		if (m_status_bar) {
+			m_status_bar->showMessage(QLatin1String("x %1 : y %2").arg(QString::number(pos_.x()), QString::number(pos_.y())));
+		}
 	}
 	event->setAccepted(true);
 }
