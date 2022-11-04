@@ -158,7 +158,7 @@ void ElementsMover::continueMovement(const QPointF &movement)
 	if (m_status_bar)
 	{
 		const auto point_{m_movement_driver->scenePos()};
-		m_status_bar->showMessage(QString(QLatin1String("x %1 : y %2")).arg((QString::number(point_.x()), QString::number(point_.y()))));
+		m_status_bar->showMessage(QString(QLatin1String("x %1 : y %2")).arg(QString::number(point_.x()), QString::number(point_.y())));
 	}
 }
 
