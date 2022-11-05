@@ -34,19 +34,12 @@
 /**
 	@brief ElementsMover::ElementsMover Constructor
 */
-ElementsMover::ElementsMover() :
-	movement_running_(false),
-	current_movement_(),
-	diagram_(nullptr),
-	m_movement_driver(nullptr),
-	m_moved_content()
-{}
+ElementsMover::ElementsMover(){}
 
 /**
 	@brief ElementsMover::~ElementsMover Destructor
 */
-ElementsMover::~ElementsMover()
-{}
+ElementsMover::~ElementsMover(){}
 
 /**
 	@brief ElementsMover::isReady
@@ -55,7 +48,7 @@ ElementsMover::~ElementsMover()
 */
 bool ElementsMover::isReady() const
 {
-	return(!movement_running_);
+	return(!m_movement_running);
 }
 
 /**
@@ -68,11 +61,11 @@ bool ElementsMover::isReady() const
 int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 {
 		// They must be no movement in progress
-	if (movement_running_) return(-1);
+	if (m_movement_running) return(-1);
 
 		// Be sure we have diagram to work
 	if (!diagram) return(-1);
-	diagram_ = diagram;
+	m_diagram = diagram;
 
 	if (!diagram->views().isEmpty()) {
 		const auto qde = QETApp::diagramEditorAncestorOf(diagram->views().at(0));
@@ -87,7 +80,7 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	m_movement_driver = driver_item;
 
 		// At the beginning of movement, move is NULL
-	current_movement_ = QPointF(0.0, 0.0);
+	m_current_movement = QPointF(0.0, 0.0);
 
 	m_moved_content = DiagramContent(diagram);
 	m_moved_content.removeNonMovableItems();
@@ -111,7 +104,7 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 
 	/* At this point, we've got all info to manage movement.
 	 * There is now a move in progress */
-	movement_running_ = true;
+	m_movement_running = true;
 
 	return(m_moved_content.count());
 }
@@ -123,9 +116,9 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 */
 void ElementsMover::continueMovement(const QPointF &movement)
 {
-	if (!movement_running_ || movement.isNull()) return;
+	if (!m_movement_running || movement.isNull()) return;
 
-	current_movement_ += movement;
+	m_current_movement += movement;
 
 	//Move every movable item, except conductor
 	typedef DiagramContent dc;
@@ -171,14 +164,14 @@ void ElementsMover::continueMovement(const QPointF &movement)
 void ElementsMover::endMovement()
 {
 		// A movement must be inited
-	if (!movement_running_) return;
+	if (!m_movement_running) return;
 
 		//empty command to be used has parent of commands below
 	QUndoCommand *undo_object = new QUndoCommand();
 
 		//Create undo move if there is a movement
-	if (!current_movement_.isNull()) {
-		QUndoCommand *quc = new MoveElementsCommand(diagram_, m_moved_content, current_movement_, undo_object);
+	if (!m_current_movement.isNull()) {
+		QUndoCommand *quc = new MoveElementsCommand(m_diagram, m_moved_content, m_current_movement, undo_object);
 		undo_object->setText(quc->text());
 	}
 
@@ -187,7 +180,7 @@ void ElementsMover::endMovement()
 	typedef DiagramContent dc;
 	if (m_moved_content.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
 		m_moved_content.items(dc::Elements).size() == 1 &&
-		diagram_ -> project() -> autoConductor())
+		m_diagram -> project() -> autoConductor())
 	{
 		Element *elmt = m_moved_content.m_elements.first();
 
@@ -200,7 +193,7 @@ void ElementsMover::endMovement()
 			Conductor *conductor = new Conductor(pair.first, pair.second);
 
 				//Create an undo object for each new auto conductor, with undo_object for parent
-			new AddGraphicsObjectCommand(conductor, diagram_, QPointF(), undo_object);
+			new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
 				if (undo_object->text().isEmpty())
 					undo_object->setText(QObject::tr("Ajouter %n conducteur(s)", "add a numbers of conductor one or more", acc));
 
@@ -224,9 +217,9 @@ void ElementsMover::endMovement()
 				conductor->setProperties(others_properties);
 			else
 			{
-				conductor -> setProperties(diagram_ -> defaultConductorProperties);
+				conductor -> setProperties(m_diagram -> defaultConductorProperties);
 					//Autonum the new conductor, the undo command associated for this, have for parent undo_object
-				ConductorAutoNumerotation can  (conductor, diagram_, undo_object);
+				ConductorAutoNumerotation can  (conductor, m_diagram, undo_object);
 				can.numerate();
 			}
 		}
@@ -234,12 +227,12 @@ void ElementsMover::endMovement()
 
 		//Add undo_object if have child
 	if (undo_object->childCount() >= 1)
-		diagram_ -> undoStack().push(undo_object);
+		m_diagram -> undoStack().push(undo_object);
 	else
 		delete undo_object;
 
 		// There is no movement in progress now
-	movement_running_ = false;
+	m_movement_running = false;
 	m_moved_content.clear();
 
 	if (m_status_bar) {

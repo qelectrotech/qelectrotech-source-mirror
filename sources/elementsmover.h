@@ -39,27 +39,27 @@ class QStatusBar;
 	element mover is ready for a new movement by calling isReady().
 */
 class ElementsMover {
-	// constructors, destructor
+		// constructors, destructor
 	public:
-	ElementsMover();
-	virtual ~ElementsMover();
+		ElementsMover();
+		virtual ~ElementsMover();
 	private:
-	ElementsMover(const ElementsMover &);
+		ElementsMover(const ElementsMover &);
 	
 	// methods
 	public:
-	bool isReady() const;
-	int  beginMovement(Diagram *, QGraphicsItem * = nullptr);
-	void continueMovement(const QPointF &);
-	void endMovement();
+		bool isReady() const;
+		int  beginMovement(Diagram *, QGraphicsItem * = nullptr);
+		void continueMovement(const QPointF &);
+		void endMovement();
 	
-	// attributes
+		// attributes
 	private:
-	bool movement_running_;
-	QPointF current_movement_;
-	Diagram *diagram_;
-	QGraphicsItem *m_movement_driver;
-	DiagramContent m_moved_content;
+		bool m_movement_running{false};
+		QPointF m_current_movement;
+		Diagram *m_diagram{nullptr};
+		QGraphicsItem *m_movement_driver{nullptr};
+		DiagramContent m_moved_content;
 		QPointer<QStatusBar> m_status_bar;
 
 };
