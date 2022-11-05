@@ -20,7 +20,6 @@
 
 #include <QPointF>
 #include <QPointer>
-#include <QLatin1String>
 #include "diagramcontent.h"
 
 class ConductorTextItem;

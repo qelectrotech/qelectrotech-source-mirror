@@ -99,7 +99,7 @@ void DiagramEventAddElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		m_element->setPos(pos_);
 
 		if (m_status_bar) {
-			m_status_bar->showMessage(QString(QLatin1String("x %1 : y %2")).arg(QString::number(pos_.x()), QString::number(pos_.y())));
+			m_status_bar->showMessage(QString("x %1 : y %2").arg(QString::number(pos_.x()), QString::number(pos_.y())));
 		}
 	}
 	event->setAccepted(true);
