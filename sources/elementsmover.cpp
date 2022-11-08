@@ -20,7 +20,6 @@
 #include "conductorautonumerotation.h"
 #include "diagram.h"
 #include "qetgraphicsitem/conductor.h"
-#include "diagramcommands.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -28,6 +27,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "undocommand/addgraphicsobjectcommand.h"
+#include "undocommand/movegraphicsitemcommand.h"
 
 /**
 	@brief ElementsMover::ElementsMover Constructor
@@ -164,7 +164,7 @@ void ElementsMover::endMovement()
 
 		//Create undo move if there is a movement
 	if (!current_movement_.isNull()) {
-		QUndoCommand *quc = new MoveElementsCommand(diagram_, m_moved_content, current_movement_, undo_object);
+		QUndoCommand *quc = new MoveGraphicsItemCommand(diagram_, m_moved_content, current_movement_, undo_object);
 		undo_object->setText(quc->text());
 	}
 
