@@ -32,6 +32,7 @@ class ElementTextItemGroup;
 class Diagram;
 class DiagramTextItem;
 class QetGraphicsTableItem;
+class TerminalStripItem;
 
 /**
 	This class provides a container that makes the transmission of diagram content
@@ -62,8 +63,9 @@ class DiagramContent
 			Shapes = 128,
 			TextGroup = 256,
 			Tables = 512,
-			All = 1023,
-			SelectedOnly = 1024
+			TerminalStrip = 1024,
+			All = 2047,
+			SelectedOnly = 2048
 		};
 		
 		QList<Element *> m_elements;
@@ -78,6 +80,7 @@ class DiagramContent
 		QSet<ElementTextItemGroup *> m_texts_groups;
 		QList<QGraphicsItem *> m_selected_items;
 		QVector<QetGraphicsTableItem *> m_tables;
+		QVector<TerminalStripItem *> m_terminal_strip;
 
 		
 		QList<DiagramTextItem *> selectedTexts() const;

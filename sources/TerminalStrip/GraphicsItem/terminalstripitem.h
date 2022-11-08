@@ -32,8 +32,12 @@ class TerminalStripItem : public QetGraphicsItem
 	public:
 		TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsItem *parent = nullptr);
 
+		enum {Type = UserType + 1011};
+		int type() const override {return Type;}
+
 		void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 		QRectF boundingRect() const override;
+		QString name() const override;
 
 	private:
 		QPointer<TerminalStrip> m_strip;

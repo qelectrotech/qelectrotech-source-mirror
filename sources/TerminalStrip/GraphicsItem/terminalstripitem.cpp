@@ -47,3 +47,11 @@ QRectF TerminalStripItem::boundingRect() const
 
 	return br_;
 }
+
+/**
+ * @brief TerminalStripItem::name
+ * @return usual name of this item
+ */
+QString TerminalStripItem::name() const {
+	return tr("plan de bornes");
+}

@@ -18,6 +18,7 @@
 #include "addterminalstripitemdialog.h"
 #include "ui_addterminalstripitemdialog.h"
 
+#include "../../undocommand/addgraphicsobjectcommand.h"
 #include "../terminalstrip.h"
 #include "../GraphicsItem/terminalstripitem.h"
 #include "../../diagram.h"
@@ -32,7 +33,9 @@ void AddTerminalStripItemDialog::openDialog(Diagram *diagram, QWidget *parent)
 		{
 			auto item_ = new TerminalStripItem(strip_);
 			diagram->addItem(item_);
-			item_->setPos(20, 20);
+			item_->setPos(50, 50);
+
+			diagram->project()->undoStack()->push(new AddGraphicsObjectCommand(item_, diagram, QPointF{50, 50}));
 		}
 	}
 }
@@ -60,8 +63,8 @@ TerminalStrip *AddTerminalStripItemDialog::selectedTerminalStrip() const
 {
 	if (m_project)
 	{
-		QUuid uuid_{ui->m_terminal_strip_cb->currentData().toUuid()};
-		for (const auto &strip_ : m_project->terminalStrip())
+		const QUuid uuid_{ui->m_terminal_strip_cb->currentData().toUuid()};
+		for (auto &&strip_ : m_project->terminalStrip())
 		{
 			if (strip_->uuid() == uuid_) {
 				return strip_;
@@ -76,7 +79,7 @@ void AddTerminalStripItemDialog::fillComboBox()
 {
 	if (m_project)
 	{
-		for (const auto strip_ : m_project->terminalStrip())
+		for (auto &&strip_ : m_project->terminalStrip())
 		{
 			const auto text{strip_->installation() + " " + strip_->location() + " " + strip_->name()};
 			ui->m_terminal_strip_cb->addItem(text, strip_->uuid());

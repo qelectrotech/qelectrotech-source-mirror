@@ -171,7 +171,7 @@ void ElementsMover::endMovement()
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
 	typedef DiagramContent dc;
-	if (m_moved_content.items(dc::TextFields | dc::Images | dc::Shapes).size() == 0 &&
+	if (m_moved_content.items(dc::TextFields | dc::Images | dc::Shapes | dc::TerminalStrip).size() == 0 &&
 		m_moved_content.items(dc::Elements).size() == 1 &&
 		diagram_ -> project() -> autoConductor())
 	{

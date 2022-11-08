@@ -266,7 +266,8 @@ QString QET::ElementsAndConductorsSentence(
 		int images_count,
 		int shapes_count,
 		int element_text_count,
-		int tables_count)
+		int tables_count,
+		int terminal_strip_count)
 {
 	QString text;
 	if (elements_count) {
@@ -327,6 +328,14 @@ QString QET::ElementsAndConductorsSentence(
 					"%n tableau(s)",
 					"part of a sentence listing the content of diagram",
 					tables_count);
+	}
+
+	if (terminal_strip_count) {
+		if (!text.isEmpty()) text += ", ";
+		text += QObject::tr(
+					"%n plan de bornes",
+					"part of a sentence listing the content of a diagram",
+					terminal_strip_count);
 	}
 
 	return(text);
