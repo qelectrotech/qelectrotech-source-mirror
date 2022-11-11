@@ -51,7 +51,9 @@ class ElementsPanelWidget : public QWidget {
 		*prj_move_diagram_top,
 		*prj_move_diagram_down,
 		*prj_move_diagram_upx10,
-		*prj_move_diagram_downx10;
+		*prj_move_diagram_upx100,
+		*prj_move_diagram_downx10,
+		*prj_move_diagram_downx100;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QMenu *context_menu;
 	QLineEdit *filter_textfield;
@@ -71,7 +73,9 @@ class ElementsPanelWidget : public QWidget {
 	void requestForDiagramMoveDown(Diagram *);
 	void requestForDiagramMoveUpTop(Diagram *);
 	void requestForDiagramMoveUpx10(Diagram *);
+	void requestForDiagramMoveUpx100(Diagram *);
 	void requestForDiagramMoveDownx10(Diagram *);
+	void requestForDiagramMoveDownx100(Diagram *);
 	
 	public slots:
 	void openDirectoryForSelectedItem();
@@ -87,7 +91,9 @@ class ElementsPanelWidget : public QWidget {
 	void moveDiagramDown();
 	void moveDiagramUpTop();
 	void moveDiagramUpx10();
+	void moveDiagramUpx100();
 	void moveDiagramDownx10();
+	void moveDiagramDownx100();
 	void addTitleBlockTemplate();
 	void editTitleBlockTemplate();
 	void removeTitleBlockTemplate();

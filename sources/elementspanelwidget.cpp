@@ -62,8 +62,10 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
 	prj_move_diagram_down    = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce folio"),               this);
 	prj_move_diagram_upx10   = new QAction(QET::Icons::GoUpDouble,             tr("Remonter ce folio x10"),           this);
+	prj_move_diagram_upx100  = new QAction(QET::Icons::GoUpDouble,             tr("Remonter ce folio x100"),           this);
 	prj_move_diagram_top     = new QAction(QET::Icons::GoTop,                  tr("Remonter ce folio au debut"),               this);
 	prj_move_diagram_downx10 = new QAction(QET::Icons::GoDownDouble,           tr("Abaisser ce folio x10"),           this);
+	prj_move_diagram_downx100 = new QAction(QET::Icons::GoDownDouble,           tr("Abaisser ce folio x100"),           this);
 	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau modèle"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("Éditer ce modèle"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
@@ -73,6 +75,11 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_move_diagram_up -> setShortcut(QKeySequence(Qt::Key_F3));
 	prj_move_diagram_down -> setShortcut(QKeySequence(Qt::Key_F4));
 	prj_move_diagram_top -> setShortcut(QKeySequence(Qt::Key_F5));
+	prj_move_diagram_downx10 -> setShortcut(QKeySequence(Qt::Key_F6));
+	prj_move_diagram_downx100 -> setShortcut(QKeySequence(Qt::Key_F7));
+	prj_move_diagram_upx10 -> setShortcut(QKeySequence(Qt::Key_F8));
+	prj_move_diagram_upx100 -> setShortcut(QKeySequence(Qt::Key_F9));
+
 
 
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
@@ -95,7 +102,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
 	connect(prj_move_diagram_top,  SIGNAL(triggered()), this,           SLOT(moveDiagramUpTop()));
 	connect(prj_move_diagram_upx10,   SIGNAL(triggered()), this,        SLOT(moveDiagramUpx10()));
+	connect(prj_move_diagram_upx100,  SIGNAL(triggered()), this,        SLOT(moveDiagramUpx100()));
 	connect(prj_move_diagram_downx10, SIGNAL(triggered()), this,        SLOT(moveDiagramDownx10()));
+	connect(prj_move_diagram_downx100,SIGNAL(triggered()), this,        SLOT(moveDiagramDownx100()));
 	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
 	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
 	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
@@ -273,6 +282,16 @@ void ElementsPanelWidget::moveDiagramUpx10()
 }
 
 /**
+	Emet le signal requestForDiagramMoveUpx100 avec le schema selectionne
+*/
+void ElementsPanelWidget::moveDiagramUpx100()
+{
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveUpx100(selected_diagram));
+	}
+}
+
+/**
 	Emet le signal requestForDiagramMoveDownx10 avec le schema selectionne
 */
 void ElementsPanelWidget::moveDiagramDownx10()
@@ -282,6 +301,15 @@ void ElementsPanelWidget::moveDiagramDownx10()
 	}
 }
 
+/**
+	Emet le signal requestForDiagramMoveDownx100 avec le schema selectionne
+*/
+void ElementsPanelWidget::moveDiagramDownx100()
+{
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveDownx100(selected_diagram));
+	}
+}
 
 /**
 	Opens a template editor to create a new title block template.
@@ -349,7 +377,9 @@ void ElementsPanelWidget::updateButtons()
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
 		prj_move_diagram_top   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_upx10   -> setEnabled(is_writable && diagram_position > 10);
+		prj_move_diagram_upx100   -> setEnabled(is_writable && diagram_position > 100);
 		prj_move_diagram_downx10 -> setEnabled(is_writable && diagram_position < project_diagrams_count - 10);
+		prj_move_diagram_downx100 -> setEnabled(is_writable && diagram_position < project_diagrams_count - 100);
 	} else if (current_type == QET::TitleBlockTemplatesCollection) {
 		TitleBlockTemplateLocation location = elements_panel -> templateLocationForItem(current_item);
 		tbt_add    -> setEnabled(!location.isReadOnly());
@@ -396,9 +426,11 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			context_menu -> addAction(prj_del_diagram);
 			context_menu -> addAction(prj_move_diagram_top);
 			context_menu -> addAction(prj_move_diagram_upx10);
+			context_menu -> addAction(prj_move_diagram_upx100);
 			context_menu -> addAction(prj_move_diagram_up);
 			context_menu -> addAction(prj_move_diagram_down);
 			context_menu -> addAction(prj_move_diagram_downx10);
+			context_menu -> addAction(prj_move_diagram_downx100);
 			break;
 		case QET::TitleBlockTemplatesCollection:
 			context_menu -> addAction(tbt_add);
@@ -452,6 +484,31 @@ void ElementsPanelWidget::keyPressEvent   (QKeyEvent *e) {
 					case Qt::Key_F5:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 						emit(requestForDiagramMoveUpTop(selected_diagram));
+					}
+					
+					break;
+					case Qt::Key_F6:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveDownx10(selected_diagram));
+					}
+					
+					break;
+					case Qt::Key_F7:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveDownx100(selected_diagram));
+					}
+					
+					
+					break;
+					case Qt::Key_F8:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveUpx10(selected_diagram));
+					}					
+					
+					break;
+					case Qt::Key_F9:
+					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						emit(requestForDiagramMoveUpx100(selected_diagram));
 					}
 					break;
 				}
