@@ -16,6 +16,7 @@
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "bridgeterminalscommand.h"
+#include "../terminalstripbridge.h"
 
 BridgeTerminalsCommand::BridgeTerminalsCommand(TerminalStrip *strip,
 											   QVector<QSharedPointer<RealTerminal>> real_terminal,
@@ -57,8 +58,18 @@ UnBridgeTerminalsCommand::UnBridgeTerminalsCommand(TerminalStrip *strip,
 
 	if (strip->canUnBridge(real_terminal))
 	{
-		m_terminals = real_terminal;
-		m_bridge = strip->isBridged(real_terminal.first());
+        m_bridge = strip->isBridged(real_terminal.first());
+
+            //If bridge have one more terminals than @real_terminal
+            //that mean every terminals of the bridge must be unbridged by this undo command,
+            //else the single terminal who's not umbridged by this undo command
+            //continue to have a bridge (to nothing) and this nowhere bridge is visible
+            //in the terminal strip graphic item and terminal strip editor dialog.
+        if (m_bridge->realTerminals().size() == real_terminal.size() + 1) {
+            m_terminals = m_bridge->realTerminals();
+        } else {
+            m_terminals = real_terminal;
+        }
 	}
 }
 
