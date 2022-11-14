@@ -19,6 +19,7 @@
 #define DIAGRAMEVENTINTERFACE_H
 
 #include <QObject>
+#include <QPointer>
 
 class QGraphicsSceneMouseEvent;
 class QGraphicsSceneWheelEvent;
@@ -63,9 +64,9 @@ class DiagramEventInterface : public QObject
 		void finish(); //Emited when the interface finish is job.
 
 	protected:
-		Diagram *m_diagram;
-		bool m_running;
-		bool m_abort;
+        QPointer<Diagram> m_diagram;
+        bool m_running{false};
+        bool m_abort{false};
 };
 
 #endif // DIAGRAMEVENTINTERFACE_H

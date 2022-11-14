@@ -23,15 +23,14 @@
 #include <QKeyEvent>
 
 DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
-	m_diagram(diagram),
-	m_running(false),
-	m_abort(false)
+    QObject{diagram},
+    m_diagram{diagram}
 {
 	m_diagram -> clearSelection();
 }
 
 DiagramEventInterface::~DiagramEventInterface()
-{};
+{}
 
 void DiagramEventInterface::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	Q_UNUSED (event);
