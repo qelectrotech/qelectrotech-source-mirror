@@ -85,13 +85,15 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	m_moved_content = DiagramContent(diagram);
 	m_moved_content.removeNonMovableItems();
 
-		//Remove element text, if the parent element is selected.
-	for(const auto &deti : qAsConst(m_moved_content.m_element_texts)) {
+        //Remove element text and text group, if the parent element is selected.
+    const auto element_text{m_moved_content.m_element_texts};
+    for(const auto &deti : element_text) {
 		if(m_moved_content.m_elements.contains(deti->parentElement())) {
 			m_moved_content.m_element_texts.remove(deti);
 		}
-	}
-	for(const auto &etig : qAsConst(m_moved_content.m_texts_groups)) {
+    }
+    const auto element_text_group{m_moved_content.m_texts_groups};
+    for(const auto &etig : element_text_group) {
 		if (m_moved_content.m_elements.contains(etig->parentElement())) {
 			m_moved_content.m_texts_groups.remove(etig);
 		}
