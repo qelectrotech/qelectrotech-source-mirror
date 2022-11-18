@@ -8660,7 +8660,7 @@ What do you want to do ?</translation>
         <translation>Collection</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="202"/>
+        <location filename="../sources/elementsmover.cpp" line="204"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>

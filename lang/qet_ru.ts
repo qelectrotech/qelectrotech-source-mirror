@@ -8732,7 +8732,7 @@ Que désirez vous faire ?</source>
         <translation>Коллекция</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="202"/>
+        <location filename="../sources/elementsmover.cpp" line="204"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translatorcomment>добавить номера одного или нескольких проводников</translatorcomment>
