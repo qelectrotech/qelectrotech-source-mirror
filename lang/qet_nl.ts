@@ -406,7 +406,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.cpp" line="180"/>
         <source>Sélectionner la police des cellules du tableau</source>
-        <translation>Het lettertype voor de cellen van de tabel selecteren</translation>
+        <translation>Het lettertype van de cellen van de tabel selecteren</translation>
     </message>
 </context>
 <context>
@@ -460,12 +460,12 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
         <source>Element</source>
-        <translation>Elementen</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Conducteur</source>
-        <translation>Geleiders</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="64"/>
@@ -480,7 +480,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="24"/>
         <source>Folio</source>
-        <translation>Schemabladen</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="154"/>
@@ -538,7 +538,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="171"/>
         <source>Conductor</source>
-        <translation>Geleiders</translation>
+        <translation>Geleider</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="188"/>
@@ -564,7 +564,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="246"/>
         <source>Element</source>
-        <translation>Elementen</translation>
+        <translation>Element</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="198"/>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="346"/>
         <source>Folio</source>
-        <translation>Schemabladen</translation>
+        <translation>Schemablad</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingmanagementw.ui" line="363"/>
@@ -2670,7 +2670,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce folio x100</source>
-        <translation type="unfinished">Schemablad 100 omhoog</translation>
+        <translation>Schemablad 100 omhoog</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -2685,7 +2685,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Abaisser ce folio x100</source>
-        <translation type="unfinished">Schemablad 100 omlaag</translation>
+        <translation>Schemablad 100 omlaag</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -6743,12 +6743,12 @@ Opties :
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="340"/>
         <source>Un fichier</source>
-        <translation>Een bestand</translation>
+        <translation>een bestand</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="349"/>
         <source>Un élément</source>
-        <translation>Een element</translation>
+        <translation>een element</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="358"/>
@@ -6758,7 +6758,7 @@ Opties :
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="367"/>
         <source>&amp;Supprimer</source>
-        <translation>&amp;Verwijder</translation>
+        <translation>&amp;Verwijderen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="439"/>
@@ -7095,7 +7095,7 @@ de DXFtoQET.app binary in /Users/user_name/.qet/ directory
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="54"/>
         <source>Coller depuis...</source>
-        <translation>Plakken van...</translation>
+        <translation>Plakken uit...</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="449"/>
