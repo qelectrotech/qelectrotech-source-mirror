@@ -40,7 +40,6 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
 	connect(projectAutoNumConfigPage,SIGNAL(saveCurrentTbp()),newDiagramPage,SLOT(saveCurrentTbp()));
 	connect(projectAutoNumConfigPage,SIGNAL(loadSavedTbp()),newDiagramPage,SLOT(loadSavedTbp()));
-	m_properties_dialog->setMinimumHeight(690);
 }
 
 /**
