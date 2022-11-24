@@ -2671,7 +2671,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce folio x100</source>
-        <translation type="unfinished">Flyt ark op x100</translation>
+        <translation>Flyt ark op x100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -2686,7 +2686,7 @@ Alle symboler og fil indhold bliver slettet.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Abaisser ce folio x100</source>
-        <translation type="unfinished">Flyt ark ned x100</translation>
+        <translation>Flyt ark ned x100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -11249,7 +11249,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="176"/>
         <source>White : Seashell</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Hvid : Musling</translation>
+        <translation>Hvid : Musling</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="177"/>
@@ -11273,7 +11273,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="180"/>
         <source>White : Ivory</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Hvid : Elfenben</translation>
+        <translation>Hvid : Elfenben</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="181"/>
@@ -11657,7 +11657,7 @@ De andre felter anvendes ikke.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="256"/>
         <source>Yellow : Moccasin</source>
         <comment>element part filling</comment>
-        <translation type="unfinished">Gul : Mokkasin</translation>
+        <translation>Gul : Mokkasin</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="257"/>
