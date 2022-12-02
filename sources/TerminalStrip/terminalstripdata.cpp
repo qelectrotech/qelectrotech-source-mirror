@@ -34,7 +34,7 @@ QDomElement TerminalStripData::toXml(QDomDocument &xml_document) const
 
 	root_elmt.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 
-	auto info_elmt = xml_document.createElement("informations");
+    auto info_elmt = xml_document.createElement(QStringLiteral("informations"));
 	root_elmt.appendChild(info_elmt);
 
 	if (!m_installation.isEmpty()) {
@@ -65,23 +65,23 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 		return false;
 	}
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
-	m_uuid = QUuid::fromString(xml_element.attribute(QLatin1String("uuid")));
+    m_uuid = QUuid::fromString(xml_element.attribute(QStringLiteral("uuid")));
 #else
 	m_uuid = QUuid(xml_element.attribute(QStringLiteral("uuid")));
 #endif
 
 	for (auto &xml_info :
-		 QETXML::findInDomElement(xml_element.firstChildElement("informations"),
-								  QStringLiteral("information")))
+         QETXML::findInDomElement(xml_element.firstChildElement(QStringLiteral("informations")),
+                                  QStringLiteral("information")))
 	{
-		auto name = xml_info.attribute("name");
+        auto name = xml_info.attribute(QStringLiteral("name"));
 		auto value = xml_info.text();
 
-		if (name == QStringLiteral("installation"))     { m_installation = value;}
-		else if (name == QStringLiteral("location"))    {m_location = value;}
-		else if (name == QStringLiteral("name"))        {m_name = value;}
-		else if (name == QStringLiteral("comment"))     {m_comment = value;}
-		else if (name == QStringLiteral("description")) {m_description = value;}
+        if (name == QLatin1String("installation"))     { m_installation = value;}
+        else if (name == QLatin1String("location"))    {m_location = value;}
+        else if (name == QLatin1String("name"))        {m_name = value;}
+        else if (name == QLatin1String("comment"))     {m_comment = value;}
+        else if (name == QLatin1String("description")) {m_description = value;}
 	}
 
 	return true;
@@ -101,7 +101,7 @@ TerminalStripData &TerminalStripData::operator=(const TerminalStripData &other)
 
 QDomElement TerminalStripData::infoToXml(QDomDocument &xml_doc, const QString &name, const QString &value)
 {
-	auto xml_elmt = xml_doc.createElement("information");
+    auto xml_elmt = xml_doc.createElement(QStringLiteral("information"));
 	xml_elmt.setAttribute(QStringLiteral("name"), name);
 	xml_elmt.appendChild(xml_doc.createTextNode(value));
 
