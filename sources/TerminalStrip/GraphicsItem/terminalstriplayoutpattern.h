@@ -18,14 +18,10 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
-//#include <QPointer>
 #include <QSize>
 #include <QTextOption>
 #include <QVector>
 #include <QRect>
-
-//class QPainter;
-//class TerminalStrip;
 
 /**
  * @brief The TerminalStripLayoutPattern class
@@ -109,22 +105,5 @@ class TerminalStripLayoutPattern
 			QTextOption()
 		};
 };
-
-//class TerminalStripDrawer
-//{
-//	public:
-//		TerminalStripDrawer(QPointer<TerminalStrip> strip);
-//		void paint(QPainter *painter);
-
-//		QRectF boundingRect() const;
-
-//	private:
-//		int height() const;
-//		int width() const;
-
-//	private:
-//		QPointer<TerminalStrip> m_strip;
-//		TerminalStripLayoutPattern m_pattern;
-//};
 
 #endif // TERMINALSTRIPLAYOUTPATTERN_H

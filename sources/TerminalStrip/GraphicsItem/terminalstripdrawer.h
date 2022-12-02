@@ -19,7 +19,6 @@
 #define TERMINALSTRIPDRAWER_H
 
 #include <QPointer>
-
 #include "terminalstriplayoutpattern.h"
 
 class QPainter;
