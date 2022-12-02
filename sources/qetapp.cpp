@@ -36,6 +36,7 @@
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
 #include "machine_info.h"
+#include "TerminalStrip/ui/terminalstripeditorwindow.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -159,6 +160,7 @@ QETApp::~QETApp()
 	ElementFactory::dropInstance();
 	ElementPictureFactory::dropInstance();
 	MachineInfo::dropInstance();
+    TerminalStripEditorWindow::dropInstance();
 }
 
 
@@ -1128,7 +1130,28 @@ QFont QETApp::indiTextsItemFont(qreal size)
 */
 QList<QETDiagramEditor *> QETApp::diagramEditors()
 {
-	return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
+    return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
+}
+
+/**
+ * @brief QETApp::diagramEditor
+ * @param project
+ * @return The diagram editor of @a project or nullptr.
+ */
+QETDiagramEditor *QETApp::diagramEditor(QETProject *project)
+{
+    for (const auto &editor : QETApp::instance()->detectWindows<QETDiagramEditor>())
+    {
+        for (const auto &project_view : editor->openedProjects())
+        {
+            if (project_view->project() == project)
+            {
+                return editor;
+            }
+        }
+    }
+
+    return nullptr;
 }
 
 /**

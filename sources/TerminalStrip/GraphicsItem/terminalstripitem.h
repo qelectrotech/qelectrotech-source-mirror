@@ -39,6 +39,8 @@ class TerminalStripItem : public QetGraphicsItem
 		QRectF boundingRect() const override;
 		QString name() const override;
 
+        void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+
 	private:
 		QPointer<TerminalStrip> m_strip;
 		TerminalStripDrawer m_drawer;

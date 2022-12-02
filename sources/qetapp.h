@@ -148,7 +148,8 @@ class QETApp : public QObject
 		static QFont indiTextsItemFont (qreal = -1.0);
 		static QETDiagramEditor *diagramEditorForFile(const QString &);
 		static QETDiagramEditor *diagramEditorAncestorOf (const QWidget *child);
-		static QList<QETDiagramEditor *> diagramEditors();
+        static QList<QETDiagramEditor *> diagramEditors();
+        static QETDiagramEditor* diagramEditor(QETProject *project);
 		static QList<QETElementEditor *> elementEditors();
 		static QList<QETElementEditor *> elementEditors(QETProject *);
 		static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors();

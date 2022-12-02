@@ -447,8 +447,7 @@ void QETDiagramEditor::setUpActions()
 	{
 		if (auto project = this->currentProject())
 		{
-			auto tsew {new TerminalStripEditorWindow{project, this}};
-			tsew->show();
+            TerminalStripEditorWindow::instance(project, this)->show();
 		}
 	});
 

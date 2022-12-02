@@ -17,6 +17,8 @@
 */
 #include "terminalstripitem.h"
 #include "../../qetgraphicsitem/qgraphicsitemutility.h"
+#include "../terminalstrip.h"
+#include "../ui/terminalstripeditorwindow.h"
 
 TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsItem *parent) :
 	QetGraphicsItem{parent},
@@ -53,5 +55,12 @@ QRectF TerminalStripItem::boundingRect() const
  * @return usual name of this item
  */
 QString TerminalStripItem::name() const {
-	return tr("plan de bornes");
+    return tr("plan de bornes");
+}
+
+void TerminalStripItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    Q_UNUSED (event);
+
+    TerminalStripEditorWindow::edit(m_strip);
 }
