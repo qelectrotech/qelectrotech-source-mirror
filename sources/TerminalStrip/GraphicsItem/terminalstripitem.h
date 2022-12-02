@@ -20,7 +20,7 @@
 
 #include <QGraphicsObject>
 
-#include "terminalstriplayoutpattern.h"
+#include "terminalstripdrawer.h"
 #include "../../qetgraphicsitem/qetgraphicsitem.h"
 
 class TerminalStrip;

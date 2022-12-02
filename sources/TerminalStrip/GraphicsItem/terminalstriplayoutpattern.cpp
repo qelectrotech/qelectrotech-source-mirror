@@ -16,215 +16,216 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstriplayoutpattern.h"
+#include <QDebug>
 
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../terminalstrip.h"
-#include "../terminalstripbridge.h"
+//#include "../physicalterminal.h"
+//#include "../realterminal.h"
+//#include "../terminalstrip.h"
+//#include "../terminalstripbridge.h"
 
-#include <QPainter>
+//#include <QPainter>
 
-/**
- * @brief TerminalStripDrawer::TerminalStripDrawer
- * @param strip
- * @param pattern
- */
-TerminalStripDrawer::TerminalStripDrawer(QPointer<TerminalStrip> strip) :
-	m_strip(strip)
-{}
+///**
+// * @brief TerminalStripDrawer::TerminalStripDrawer
+// * @param strip
+// * @param pattern
+// */
+//TerminalStripDrawer::TerminalStripDrawer(QPointer<TerminalStrip> strip) :
+//	m_strip(strip)
+//{}
 
-/**
- * @brief TerminalStripDrawer::paint
- * @param painter
- */
-void TerminalStripDrawer::paint(QPainter *painter)
-{
-	if (m_strip)
-	{
-			//To draw text, QPainter need a Qrect. Instead of create an instance
-			//for each text, we re-use the same instance of QRect.
-		QRect text_rect;
-		painter->save();
+///**
+// * @brief TerminalStripDrawer::paint
+// * @param painter
+// */
+//void TerminalStripDrawer::paint(QPainter *painter)
+//{
+//	if (m_strip)
+//	{
+//			//To draw text, QPainter need a Qrect. Instead of create an instance
+//			//for each text, we re-use the same instance of QRect.
+//		QRect text_rect;
+//		painter->save();
 
-		auto pen_{painter->pen()};
-		pen_.setColor(Qt::black);
-		pen_.setWidth(1);
+//		auto pen_{painter->pen()};
+//		pen_.setColor(Qt::black);
+//		pen_.setWidth(1);
 
-		auto brush_ = painter->brush();
-		brush_.setColor(Qt::white);
+//		auto brush_ = painter->brush();
+//		brush_.setColor(Qt::white);
 
-		painter->setPen(pen_);
-		painter->setBrush(brush_);
+//		painter->setPen(pen_);
+//		painter->setBrush(brush_);
 
-			//Draw header
-		painter->drawRect(m_pattern.m_header_rect);
+//			//Draw header
+//		painter->drawRect(m_pattern.m_header_rect);
 
-			//Draw the header text
-		painter->save();
+//			//Draw the header text
+//		painter->save();
 
-		if (m_pattern.m_header_text_orientation == Qt::Horizontal)
-		{
-			text_rect.setRect(0,m_pattern.m_header_rect.y(),m_pattern.m_header_rect.width(),m_pattern.m_header_rect.height());
-		}
-		else
-		{
-			painter->translate(m_pattern.m_header_rect.bottomLeft());
-			painter->rotate(270);
-			text_rect.setRect(0,0,m_pattern.m_header_rect.height(),m_pattern.m_header_rect.width());
-		}
+//		if (m_pattern.m_header_text_orientation == Qt::Horizontal)
+//		{
+//			text_rect.setRect(0,m_pattern.m_header_rect.y(),m_pattern.m_header_rect.width(),m_pattern.m_header_rect.height());
+//		}
+//		else
+//		{
+//			painter->translate(m_pattern.m_header_rect.bottomLeft());
+//			painter->rotate(270);
+//			text_rect.setRect(0,0,m_pattern.m_header_rect.height(),m_pattern.m_header_rect.width());
+//		}
 
-		const auto text_{m_strip->installation() + " " + m_strip->location() + " " + m_strip->name()};
-		painter->drawText(text_rect, text_, m_pattern.headerTextOption());
-		painter->restore();
+//		const auto text_{m_strip->installation() + " " + m_strip->location() + " " + m_strip->name()};
+//		painter->drawText(text_rect, text_, m_pattern.headerTextOption());
+//		painter->restore();
 
-			//Move painter pos to next drawing
-		painter->translate(m_pattern.m_header_rect.width(),0);
+//			//Move painter pos to next drawing
+//		painter->translate(m_pattern.m_header_rect.width(),0);
 
-		int x_offset{m_pattern.m_header_rect.width()};
+//		int x_offset{m_pattern.m_header_rect.width()};
 
-			//Draw spacer
-		painter->drawRect(m_pattern.m_spacer_rect);
-			//Move painter pos to next drawing
-		painter->translate(m_pattern.m_spacer_rect.width(),0);
-		x_offset += m_pattern.m_spacer_rect.width();
+//			//Draw spacer
+//		painter->drawRect(m_pattern.m_spacer_rect);
+//			//Move painter pos to next drawing
+//		painter->translate(m_pattern.m_spacer_rect.width(),0);
+//		x_offset += m_pattern.m_spacer_rect.width();
 
 
-			//Draw terminals
-		const auto terminals_text_rect{m_pattern.m_terminals_text_rect};
-		const auto terminals_text_orientation{m_pattern.m_terminals_text_orientation};
-		const auto terminals_text_option{m_pattern.terminalsTextOption()};
-		QRect terminal_rect;
+//			//Draw terminals
+//		const auto terminals_text_rect{m_pattern.m_terminals_text_rect};
+//		const auto terminals_text_orientation{m_pattern.m_terminals_text_orientation};
+//		const auto terminals_text_option{m_pattern.terminalsTextOption()};
+//		QRect terminal_rect;
 
-		QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
+//		QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
 
-			//Loop over physical terminals
-		for (const auto &physical_t : m_strip->physicalTerminal())
-		{
-				//Get the good offset according to how many level have the current physical terminal
-			const QVector<QSharedPointer<RealTerminal>> real_terminal{physical_t->realTerminals()};
-			const auto real_t_count{real_terminal.size()};
-			const auto offset_{4 - real_t_count};
+//			//Loop over physical terminals
+//		for (const auto &physical_t : m_strip->physicalTerminal())
+//		{
+//				//Get the good offset according to how many level have the current physical terminal
+//			const QVector<QSharedPointer<RealTerminal>> real_terminal{physical_t->realTerminals()};
+//			const auto real_t_count{real_terminal.size()};
+//			const auto offset_{4 - real_t_count};
 
-				//Loop over real terminals
-			for (auto i=0 ; i<real_t_count ; ++i)
-			{
-				const auto index_ = offset_ + i;
-				if (index_ >= 4) {
-					break;
-				}
+//				//Loop over real terminals
+//			for (auto i=0 ; i<real_t_count ; ++i)
+//			{
+//				const auto index_ = offset_ + i;
+//				if (index_ >= 4) {
+//					break;
+//				}
 
-				terminal_rect = m_pattern.m_terminal_rect[index_];
-					//Draw terminal rect
-				painter->drawRect(terminal_rect);
+//				terminal_rect = m_pattern.m_terminal_rect[index_];
+//					//Draw terminal rect
+//				painter->drawRect(terminal_rect);
 
-					//Draw text
-				painter->save();
-				if (terminals_text_orientation[index_] == Qt::Horizontal)
-				{
-					text_rect = terminals_text_rect[index_];
-				}
-				else
-				{
-					const auto rect_{terminals_text_rect[index_]};
-					painter->translate(rect_.bottomLeft());
-					painter->rotate(270);
-					text_rect.setRect(0, 0, rect_.height(), rect_.width());
-				}
+//					//Draw text
+//				painter->save();
+//				if (terminals_text_orientation[index_] == Qt::Horizontal)
+//				{
+//					text_rect = terminals_text_rect[index_];
+//				}
+//				else
+//				{
+//					const auto rect_{terminals_text_rect[index_]};
+//					painter->translate(rect_.bottomLeft());
+//					painter->rotate(270);
+//					text_rect.setRect(0, 0, rect_.height(), rect_.width());
+//				}
 
-				const auto shared_real_terminal{real_terminal[i]};
-				painter->drawText(text_rect,
-								  shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
-								  terminals_text_option[index_]);
-				painter->restore();
+//				const auto shared_real_terminal{real_terminal[i]};
+//				painter->drawText(text_rect,
+//								  shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
+//								  terminals_text_option[index_]);
+//				painter->restore();
 
-					//Add bridge anchor
-				if (shared_real_terminal->isBridged())
-				{
-					painter->save();
-					if (const auto bridge_ = shared_real_terminal->bridge())
-					{
-						const auto anchor_center{m_pattern.m_bridge_point_d/2};
-						painter->setBrush(Qt::SolidPattern);
-						painter->drawEllipse(QPointF{terminal_rect.width()/2, m_pattern.m_bridge_point_y_offset[index_]},
-											 anchor_center,
-											 anchor_center);
+//					//Add bridge anchor
+//				if (shared_real_terminal->isBridged())
+//				{
+//					painter->save();
+//					if (const auto bridge_ = shared_real_terminal->bridge())
+//					{
+//						const auto anchor_center{m_pattern.m_bridge_point_d/2};
+//						painter->setBrush(Qt::SolidPattern);
+//						painter->drawEllipse(QPointF{terminal_rect.width()/2, m_pattern.m_bridge_point_y_offset[index_]},
+//											 anchor_center,
+//											 anchor_center);
 
-						auto anchor_points{bridges_anchor_points.value(bridge_->uuid())};
-						anchor_points.append(QPointF{x_offset + terminal_rect.width()/2,
-													 m_pattern.m_bridge_point_y_offset[index_]});
-						bridges_anchor_points.insert(bridge_->uuid(), anchor_points);
-					}
-					painter->restore();
-				}
+//						auto anchor_points{bridges_anchor_points.value(bridge_->uuid())};
+//						anchor_points.append(QPointF{x_offset + terminal_rect.width()/2,
+//													 m_pattern.m_bridge_point_y_offset[index_]});
+//						bridges_anchor_points.insert(bridge_->uuid(), anchor_points);
+//					}
+//					painter->restore();
+//				}
 
-					//Move painter pos to next drawing
-				painter->translate(terminal_rect.width(),0);
-				x_offset += terminal_rect.width();
-			}
-		}
+//					//Move painter pos to next drawing
+//				painter->translate(terminal_rect.width(),0);
+//				x_offset += terminal_rect.width();
+//			}
+//		}
 
-		painter->restore();
+//		painter->restore();
 
-			//Draw the bridges
-		for (const auto &points_ : qAsConst(bridges_anchor_points))
-		{
-			painter->save();
-			auto pen_{painter->pen()};
-			pen_.setWidth(2);
-			painter->setPen(pen_);
-			painter->drawPolyline(QPolygonF{points_});
-			painter->restore();
-		}
-	}
-}
+//			//Draw the bridges
+//		for (const auto &points_ : qAsConst(bridges_anchor_points))
+//		{
+//			painter->save();
+//			auto pen_{painter->pen()};
+//			pen_.setWidth(2);
+//			painter->setPen(pen_);
+//			painter->drawPolyline(QPolygonF{points_});
+//			painter->restore();
+//		}
+//	}
+//}
 
-QRectF TerminalStripDrawer::boundingRect() const
-{
-	return QRect{0, 0, width(), height()};;
-}
+//QRectF TerminalStripDrawer::boundingRect() const
+//{
+//	return QRect{0, 0, width(), height()};;
+//}
 
-int TerminalStripDrawer::height() const
-{
-	auto height_{m_pattern.m_header_rect.y() + m_pattern.m_header_rect.height()};
+//int TerminalStripDrawer::height() const
+//{
+//	auto height_{m_pattern.m_header_rect.y() + m_pattern.m_header_rect.height()};
 
-	height_ = std::max(height_, m_pattern.m_spacer_rect.y() + m_pattern.m_spacer_rect.height());
+//	height_ = std::max(height_, m_pattern.m_spacer_rect.y() + m_pattern.m_spacer_rect.height());
 
-	for (const auto &rect : m_pattern.m_terminal_rect) {
-		height_ = std::max(height_, rect.y() + rect.height());
-	}
+//	for (const auto &rect : m_pattern.m_terminal_rect) {
+//		height_ = std::max(height_, rect.y() + rect.height());
+//	}
 
-	return height_;
-}
+//	return height_;
+//}
 
-int TerminalStripDrawer::width() const
-{
-	int width_{m_pattern.m_header_rect.width() + m_pattern.m_spacer_rect.width()};
+//int TerminalStripDrawer::width() const
+//{
+//	int width_{m_pattern.m_header_rect.width() + m_pattern.m_spacer_rect.width()};
 
-	if (m_strip)
-	{
-			//Loop over physical terminals
-		for (const auto &physical_t : m_strip->physicalTerminal())
-		{
-			//Get the good offset according to how many level have the current physical terminal
-			const QVector<QSharedPointer<RealTerminal>> real_terminal{physical_t->realTerminals()};
-			const auto real_t_count{real_terminal.size()};
-			const auto offset_{4 - real_t_count};
+//	if (m_strip)
+//	{
+//			//Loop over physical terminals
+//		for (const auto &physical_t : m_strip->physicalTerminal())
+//		{
+//			//Get the good offset according to how many level have the current physical terminal
+//			const QVector<QSharedPointer<RealTerminal>> real_terminal{physical_t->realTerminals()};
+//			const auto real_t_count{real_terminal.size()};
+//			const auto offset_{4 - real_t_count};
 
-			//Loop over real terminals
-			for (auto i=0 ; i<real_t_count ; ++i)
-			{
-				const auto index_ = offset_ + i;
-				if (index_ >= 4) {
-					break;
-				}
+//			//Loop over real terminals
+//			for (auto i=0 ; i<real_t_count ; ++i)
+//			{
+//				const auto index_ = offset_ + i;
+//				if (index_ >= 4) {
+//					break;
+//				}
 
-				width_ += m_pattern.m_terminal_rect[index_].width();
-			}
-		}
-	}
+//				width_ += m_pattern.m_terminal_rect[index_].width();
+//			}
+//		}
+//	}
 
-	return width_;
-}
+//	return width_;
+//}
 
 TerminalStripLayoutPattern::TerminalStripLayoutPattern()
 {
