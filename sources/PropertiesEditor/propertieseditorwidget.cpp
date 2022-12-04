@@ -51,13 +51,13 @@ QString PropertiesEditorWidget::title() const
 	Set the editor in live edit mode.
 	When an editor is in live edit mode,
 	every change is applied immediately (no need to call apply).
-	If live edit can be enable, return true, else false.
-	By default this method do nothing and return false
-	(live edit is disable).
-	Herited class of PropertiesEditorWidget must reimplemente
-	this methode to manage the live edit mode.
+	If live edit can be enabled, return true, or else false.
+	By default this method does nothing and returns false
+	(live edit is disabled).
+	Inherited class of PropertiesEditorWidget must reimplement
+	this method to manage the live edit mode.
 	@param live_edit true to enable live edit
-	@return true if live edit is enable, else false.
+	@return true if live edit is enabled, else false.
 */
 bool PropertiesEditorWidget::setLiveEdit(bool live_edit) {
 	Q_UNUSED(live_edit);
@@ -67,7 +67,7 @@ bool PropertiesEditorWidget::setLiveEdit(bool live_edit) {
 /**
 	@brief PropertiesEditorWidget::isLiveEdit
 	@return true if this editor is in live edit mode
-	else return fasle.
+	else return false.
 */
 bool PropertiesEditorWidget::isLiveEdit() const
 {

@@ -38,7 +38,7 @@
 
 /**
  * @brief ProjectPrintWindow::ProjectPrintWindow
- * Use this static function to properly lauch the print dialog.
+ * Use this static function to properly launch the print dialog.
  * @param project : project to print
  * @param format : native format to print in physical printer, or pdf format to export in pdf
  * @param parent : parent widget
@@ -242,7 +242,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			qgi->setFlag(QGraphicsItem::ItemIsFocusable, false);
 		}
 	}
-		//Disable intercation
+		//Disable interaction
 	for (auto view : diagram->views()) {
 		view->setInteractive(false);
 	}
@@ -636,7 +636,7 @@ void ProjectPrintWindow::savePageSetupForCurrentPrinter()
 
 /**
  * @brief ProjectPrintWindow::saveReloadDiagramParameters
- * Save or restor the parameter of @diagram
+ * Save or restore the parameter of @diagram
  * @param diagram
  * @param options
  * @param save

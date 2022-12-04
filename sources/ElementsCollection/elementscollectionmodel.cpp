@@ -128,7 +128,7 @@ bool ElementsCollectionModel::canDropMimeData(const QMimeData *data,
 	if (!qsi)
 		qsi = itemFromIndex(parent);
 
-		//Drop in the common collection is forbiden
+		//Drop in the common collection is forbidden
 	if (qsi->type() == FileElementCollectionItem::Type)
 		if (static_cast<FileElementCollectionItem *>(qsi)->isCommonCollection())
 			return false;
@@ -193,7 +193,7 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data,
 		if (location.exist())
 		{
 				//If feci have a child with the same path of location,
-				//we remove the existing child befor insert new child
+				//we remove the existing child before insert new child
 			for (int i=0 ; i<feci->rowCount() ; i++) {
 				if (static_cast<FileElementCollectionItem *>(
 							feci->child(i))->collectionPath()

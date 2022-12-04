@@ -434,7 +434,7 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 
 /**
 	@brief TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate
-	Load the additionnal field of title block "text"
+	Load the additional field of title block "text"
 */
 void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
 {

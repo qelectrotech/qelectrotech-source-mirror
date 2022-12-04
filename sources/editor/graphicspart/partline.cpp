@@ -606,7 +606,7 @@ QPainterPath PartLine::path() const
 
 	//debugPaint(painter);
 
-		//Determine if we must to draw extremity
+		//Determine if we must draw extremity
 	qreal reduced_line_length = line_length - (length1 * requiredLengthForEndType(first_end));
 	bool draw_1st_end = first_end && reduced_line_length >= 0;
 
@@ -685,7 +685,7 @@ QPainterPath PartLine::path() const
 			stop_point = four_points2[0];
 		}
 
-			//Adjust the end point accordint to the pen width
+			//Adjust the end point according to the pen width
 		if (pen_width && (second_end == Qet::Simple || second_end == Qet::Circle))
 			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
 	}

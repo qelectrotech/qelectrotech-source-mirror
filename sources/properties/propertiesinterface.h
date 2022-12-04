@@ -36,7 +36,7 @@ class PropertiesInterface
 			@brief toSettings
 			Save properties to setting file.
 			@param settings : is use for prefix a word
-			befor the name of each paramètre
+			before the name of each parameter
 			@param QString
 		*/
 		virtual void toSettings (QSettings &settings,
@@ -45,7 +45,7 @@ class PropertiesInterface
 			@brief fromSettings
 			load properties to setting file.
 			@param settings : is use for prefix a word
-			befor the name of each paramètre
+			before the name of each parameter
 			@param QString
 		*/
 		virtual void fromSettings (const QSettings &settings,

@@ -34,7 +34,7 @@ class QetGraphicsHeaderItem;
 	Margins, to edit the margin between the cell and the text.
 	Text font.
 	Text alignment in the cell
-	These three parameters are not settable directly with the table but trough the model to be displayed by the table.
+	These three parameters are not settable directly with the table but through the model to be displayed by the table.
 	The table search these parameters only in the index(0,0) for all the table.
 	By consequence, set data in other index than 0,0 is useless also these parameter can't be set individually for each cell.
 	The margins is stored in the model in index Qt::UserRole+1 and for value a QString. See QETUtils::marginsFromString and  QETUtils::marginsToString

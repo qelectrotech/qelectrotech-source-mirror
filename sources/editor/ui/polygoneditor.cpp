@@ -117,7 +117,7 @@ bool PolygonEditor::setPart(CustomElementPart *new_part)
 
 /**
 	@brief PolygonEditor::currentPart
-	@return the curent edited part
+	@return the current edited part
 */
 CustomElementPart *PolygonEditor::currentPart() const
 {

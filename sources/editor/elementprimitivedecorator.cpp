@@ -47,14 +47,14 @@ ElementPrimitiveDecorator::~ElementPrimitiveDecorator()
 }
 
 /**
-	@return the internal bouding rect, i.e. the smallest rectangle containing
+	@return the internal bounding rect, i.e. the smallest rectangle containing
 	the bounding rectangle of every selected item.
 */
 QRectF ElementPrimitiveDecorator::internalBoundingRect() const
 {
 	if (!decorated_items_.count() || !scene()) return(QRectF());
 
-	//if @decorated_items_ contain one item and if this item is a vertical or horizontal partline, apply a specific methode
+	//if @decorated_items_ contains one item and if this item is a vertical or horizontal partline, apply a specific method
 	if ((decorated_items_.count() == 1) && (decorated_items_.first() -> xmlName() == "line")) {
 		QRectF horto = decorated_items_.first() -> sceneGeometricRect();
 		if (!horto.width() || !horto.height()) {
@@ -102,7 +102,7 @@ void ElementPrimitiveDecorator::paint(QPainter *painter,
 	painter -> setPen(pen);
 	painter -> drawRect(modified_bounding_rect_);
 	
-	// uncomment to draw the real bouding rect (=adjusted internal bounding rect)
+	// uncomment to draw the real bounding rect (=adjusted internal bounding rect)
 	// painter -> setBrush(QBrush(QColor(240, 0, 0, 127)));
 	// painter -> drawRect(boundingRect());
 	painter -> restore();
@@ -349,7 +349,7 @@ void ElementPrimitiveDecorator::saveOriginalBoundingRect()
 
 /**
 	Adjust the effective bounding rect. This method should be called after the
-	modified_bouding_rect_ attribute was modified.
+	modified_bounding_rect_ attribute was modified.
 */
 void ElementPrimitiveDecorator::adjustEffectiveBoundingRect()
 {

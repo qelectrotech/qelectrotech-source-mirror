@@ -90,31 +90,31 @@ class XmlElementCollection : public QObject
 	signals:
 		/**
 			@brief elementAdded
-			This signal is emited when a element is added to this collection
+			This signal is emitted when a element is added to this collection
 			@param collection_path : the path of element in this collection
 		*/
 		void elementAdded(QString collection_path);
 		/**
 			@brief elementChanged
-			This signal is emited when the defintion of the element at path was changed
+			This signal is emitted when the definition of the element at path was changed
 			@param collection_path : the path of this element in this collection
 		*/
 		void elementChanged (QString collection_path);
 		/**
 			@brief elementRemoved
-			This signal is emited when an element is removed to this collection
+			This signal is emitted when an element is removed from this collection
 			@param collection_path : the path of the removed element in this collection
 		*/
 		void elementRemoved(QString collection_path);
 		/**
 			@brief directorieAdded
-			This signal is emited when a directorie is added to this collection
-			@param collection_path : the path of the new directorie
+			This signal is emitted when a directory is added to this collection
+			@param collection_path : the path of the new directory
 		*/
 		void directorieAdded(QString collection_path);
 		/**
 			@brief directoryRemoved
-			This signal is emited when a directory is removed to this collection
+			This signal is emitted when a directory is removed from this collection
 			@param collection_path : the path of the removed directory
 		*/
 		void directoryRemoved(QString collection_path);

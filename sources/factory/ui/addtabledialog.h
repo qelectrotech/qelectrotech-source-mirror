@@ -28,8 +28,8 @@ class AddTableDialog;
 
 /**
 	@brief The AddTableDialog class
-	Provide a dialog used to edit the properties of table befor adding to a diagram.
-	The main difference betwen this dialog and the widget used to edit the properties of table
+	Provide a dialog used to edit the properties of table before adding to a diagram.
+	The main difference between this dialog and the widget used to edit the properties of table
 	is that the dialog have two extra check box.
 	One for adjust the size of the table to diagram
 	Second for add new tables on new folios if the table can't fit into diagram

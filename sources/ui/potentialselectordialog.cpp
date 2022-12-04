@@ -35,7 +35,7 @@
 
 /**
 	@brief The NewConductorPotentialSelector class
-	Use for get the conductor propertie when two potentials is linked by a conductor
+	Used for getting the conductor properties when two potentials are linked by a conductor
 */
 class NewConductorPotentialSelector : public AbstractPotentialSelector
 {
@@ -45,7 +45,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 		{
 			Terminal *terminal_1 = conductor->terminal1;
 			Terminal *terminal_2 = conductor->terminal2;
-			//We temporarily remove the conductor of his two terminals,
+			//We temporarily remove the conductor of its two terminals,
 			//to get the two existing potential
 			terminal_1->removeConductor(conductor);
 			terminal_2->removeConductor(conductor);
@@ -75,7 +75,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 
 		/**
 			@brief getPotential
-			Get the conductor propertie of the potential at terminal,
+			Get the conductor properties of the potential at terminal,
 			and the number of wire in this potential.
 			@param terminal
 			@param seq_num
@@ -140,7 +140,7 @@ class NewConductorPotentialSelector : public AbstractPotentialSelector
 
 /**
 	@brief The LinkReportPotentialSelector class
-	Use for get the conductor propertie when two potentials is linked with a folio report
+	Use for getting the conductor properties when two potentials are linked with a folio report
 */
 class LinkReportPotentialSelector : public AbstractPotentialSelector
 {

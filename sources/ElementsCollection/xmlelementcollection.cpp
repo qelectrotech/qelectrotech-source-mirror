@@ -160,7 +160,7 @@ QDomElement XmlElementCollection::root() const
 
 /**
 	@brief XmlElementCollection::importCategory
-	@return The QDomElement import (the begining of a xml collection) or
+	@return The QDomElement import (the beginning of an xml collection) or
 	a null QDomElement if doesn't exist.
 */
 QDomElement XmlElementCollection::importCategory() const
@@ -511,7 +511,7 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 
 /**
 	@brief XmlElementCollection::addElementDefinition
-	Add the élément defintion xml_definition
+	Add the element definition xml_definition
 	in the directory at path dir_path with the name elmt_name.
 	@param dir_path :
 	the path of the directory where we must add the element.
@@ -624,13 +624,13 @@ bool XmlElementCollection::exist(const QString &path) const
 
 /**
 	@brief XmlElementCollection::createDir
-	Create a child directorie at path path with the name name.
+	Create a child directory at path path with the name name.
 	Emit directorieAdded if success.
 	@param path : path of parent diectorie
 	@param name : name of the directori to create.
-	@param name_list : translation of the directorie name.
+	@param name_list : translation of the directory name.
 	@return true if creation success,
-	if directorie already exist return true.
+	if directory already exists, return true.
 */
 bool XmlElementCollection::createDir(const QString& path,
 				     const QString& name,
@@ -644,7 +644,7 @@ bool XmlElementCollection::createDir(const QString& path,
 
 	QDomElement parent_dir = directory(path);
 	if (parent_dir.isNull()) {
-		qDebug() << "XmlElementCollection::createDir : directorie at path doesn't exist";
+		qDebug() << "XmlElementCollection::createDir : directory at path doesn't exist";
 		return false;
 	}
 
@@ -663,7 +663,7 @@ bool XmlElementCollection::createDir(const QString& path,
 	@brief XmlElementCollection::removeDir
 	Remove the directory at path path.
 	@param path
-	@return true if successfuly removed and emit directoryRemoved(QString),
+	@return true if successfully removed and emit directoryRemoved(QString),
 	else false.
 */
 bool XmlElementCollection::removeDir(const QString& path)
@@ -682,7 +682,7 @@ bool XmlElementCollection::removeDir(const QString& path)
 	Return all locations stored in dom_element (element and directory).
 	If dom_element is null, return all location owned by this collection
 	dom_element must be a child of this collection.
-	@param dom_element : dom_element where we must to search location.
+	@param dom_element : dom_element where we must search location.
 	@param childs = if true return all childs location of dom_element,
 	if false, only return the direct childs location of dom_element.
 	@return
@@ -867,7 +867,7 @@ ElementsLocation XmlElementCollection::copyDirectory(
 		QDomNode other_collection_node = source.projectCollection()->child(source.collectionPath(false)).cloneNode(deep_copy);
 
 		//We don't make a deep copy,
-		// but we must to get the local names of the copied directory
+		// but we must get the local names of the copied directory
 		if (!deep_copy) {
 			QDomNode names = source.projectCollection()->child(source.collectionPath(false)).namedItem("names");
 			if (!names.isNull() && names.isElement())

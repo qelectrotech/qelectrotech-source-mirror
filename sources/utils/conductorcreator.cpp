@@ -152,7 +152,7 @@ QList<Conductor *> ConductorCreator::existingPotential()
 		{
 			c_list.append(t->conductors().first());
 			
-				//We must to check m_terminals_list contain a terminal
+				//We must check if m_terminals_list contains a terminal
 				//in the same potential of c, and if true, exclude this terminal from the search.
 			for (Conductor *c : t->conductors().first()->relatedPotentialConductors(false))
 			{

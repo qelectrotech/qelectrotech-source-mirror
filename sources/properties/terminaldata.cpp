@@ -53,9 +53,9 @@ void TerminalData::setParent(QGraphicsObject* parent)
 
 /**
 	@brief TerminalData::toSettings
-	Save properties to setting file.
+	Save properties to settings file.
 
-	QString is use for prefix a word befor the name of each paramètre
+	QString is used to prefix a word before the name of each parameter
 	@param settings UNUSED
 	@param prefix UNUSED
 */
@@ -68,9 +68,9 @@ void TerminalData::toSettings(QSettings &settings, const QString prefix) const
 
 /**
 	@brief TerminalData::fromSettings
-	load properties to setting file.
+	load properties to settings file.
 
-	QString is use for prefix a word befor the name of each paramètre
+	QString is used to prefix a word before the name of each parameter
 	@param settings UNUSED
 	@param prefix UNUSED
 */
@@ -87,7 +87,7 @@ void TerminalData::fromSettings(const QSettings &settings, const QString prefix)
 	to xml_element
 
 	@note This method is only called from the PartTerminal
-	and should never called from the Terminal class
+	and should never be called from the Terminal class
 	@param xml_document
 	@return xml_element : DomElement with
 	the name, number, position and orientation of the terminal
@@ -115,7 +115,7 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 	load properties to xml element
 
 	@note This method is only called from the PartTerminal
-	and should never called from the Terminal class
+	and should never be called from the Terminal class
 	@param xml_element
 	@return true if succeeded / false if the attribute is not real
 */

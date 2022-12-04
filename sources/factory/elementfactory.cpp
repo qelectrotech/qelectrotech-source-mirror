@@ -29,7 +29,7 @@ ElementFactory* ElementFactory::factory_ = nullptr;
 /**
 	@brief ElementFactory::createElement
 	@param location create element at this location
-	@param qgi parent item for this elemnt
+	@param qgi parent item for this element
 	@param state state of the creation
 	@return the element or 0
 */

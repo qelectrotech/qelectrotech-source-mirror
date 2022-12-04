@@ -36,7 +36,7 @@ class QCheckBox;
 
 /**
  * @brief The ProjectPrintWindow class
- * Windows used to configur and view diagram befor print
+ * Windows used to configure and view diagram before print
  */
 class ProjectPrintWindow : public QMainWindow
 {

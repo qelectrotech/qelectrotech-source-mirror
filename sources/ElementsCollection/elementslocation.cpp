@@ -140,7 +140,7 @@ bool ElementsLocation::operator!=(const ElementsLocation &other) const
 	@return The base name of the element or directory.
 	Unlike ElementsLocation::fileName,
 	this method don't return the extension name.
-	For exemple if this location represent an element they return myElement.
+	For example if this location represent an element they return myElement.
 	@see fileName()
 */
 QString ElementsLocation::baseName() const

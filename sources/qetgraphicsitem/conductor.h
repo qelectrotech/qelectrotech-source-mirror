@@ -188,7 +188,7 @@ class Conductor : public QGraphicsObject
 		ConductorTextItem *m_text_item;
 			/// Segments composing the conductor
 		ConductorSegment *segments;
-			/// Attributs related to mouse interaction
+			/// Attributes related to mouse interaction
 		bool m_moving_segment;
 		int moved_point;
 		qreal m_previous_z_value;

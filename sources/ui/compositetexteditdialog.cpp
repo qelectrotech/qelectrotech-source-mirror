@@ -68,7 +68,7 @@ void CompositeTextEditDialog::setUpComboBox()
 		qstrl.removeAll("formula");
 	}
 	
-		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
+		//We use a QMap because the keys of the map are sorted, then no matter the current local,
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : qstrl) {

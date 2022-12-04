@@ -226,7 +226,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	else {
 		strl = QETInformation::elementInfoKeys();
 	}
-		//We use a QMap because the keys of the map are sorted, then no matter the curent local,
+		//We use a QMap because the keys of the map are sorted, then no matter the current local,
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : strl)

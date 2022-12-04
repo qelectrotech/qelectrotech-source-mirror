@@ -177,7 +177,7 @@ QVariant ProjectDBModel::data(const QModelIndex &index, int role) const
 
 /**
 	@brief ProjectDBModel::setQuery
-	Query the internall bd with query.
+	Query the internal bd with query.
 	@param query
 */
 void ProjectDBModel::setQuery(const QString &query)

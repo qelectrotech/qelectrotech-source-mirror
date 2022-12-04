@@ -91,7 +91,7 @@ TerminalStrip *TerminalStripCreatorDialog::generatedTerminalStrip() const
 /**
  * @brief TerminalStripCreatorDialog::setCursorToEmptyLine
  * Set the cursor to the first empty field.
- * It's usefull when user create a new terminal strip
+ * It's useful when user creates a new terminal strip
  * with some value prefilled, to increase productivity.
  */
 void TerminalStripCreatorDialog::setCursorToEmptyLine()

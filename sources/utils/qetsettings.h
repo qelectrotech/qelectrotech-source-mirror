@@ -23,7 +23,7 @@
 /**
  *Interface to use QSettings in QElectroTech
  *Prefer use this namespace instead of directly QSettings
- *It's notably usefull when some QSettings value are use in
+ *It's notably useful when some QSettings value are used in
  *different part of QElectroTech source code
  */
 namespace QetSettings

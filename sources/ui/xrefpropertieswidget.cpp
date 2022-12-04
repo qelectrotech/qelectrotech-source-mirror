@@ -151,7 +151,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 
 /**
 	@brief XRefPropertiesWidget::updateDisplay
-	Update display with the curent displayed type.
+	Update display with the current displayed type.
 */
 void XRefPropertiesWidget::updateDisplay()
 {

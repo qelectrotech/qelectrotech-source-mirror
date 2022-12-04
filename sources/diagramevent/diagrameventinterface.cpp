@@ -54,7 +54,7 @@ void DiagramEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
 
 /**
 	@brief DiagramEventInterface::keyPressEvent
-	By default, press escape key abort the curent action
+	By default, press escape key abort the current action
 	@param event
 */
 void DiagramEventInterface::keyPressEvent(QKeyEvent *event)

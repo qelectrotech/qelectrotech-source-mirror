@@ -27,7 +27,7 @@
 /**
 	@brief ConductorPropertiesDialog::ConductorPropertiesDialog
 	Constructor
-	@param conductor : conductor to edit propertie
+	@param conductor : conductor to edit properties
 	@param parent : parent widget
 */
 ConductorPropertiesDialog::ConductorPropertiesDialog(
@@ -57,7 +57,7 @@ ConductorPropertiesDialog::~ConductorPropertiesDialog()
 /**
 	@brief ConductorPropertiesDialog::PropertiesDialog
 	Static method for open and apply properties.
-	@param conductor : conductor to edit propertie
+	@param conductor : conductor to edit properties
 	@param parent : parent widget
 */
 void ConductorPropertiesDialog::PropertiesDialog(Conductor *conductor,
@@ -101,7 +101,7 @@ ConductorProperties ConductorPropertiesDialog::properties() const
 /**
 	@brief ConductorPropertiesDialog::applyAll
 	@return
-	true -> must apply the propertie to all conductor at the same potential
+	true -> must apply properties to all conductors at the same potential
 	false -> must apply properties only for the edited conductor
 */
 bool ConductorPropertiesDialog::applyAll() const

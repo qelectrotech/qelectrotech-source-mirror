@@ -72,7 +72,7 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 {
 	if(item->type() == DynamicElementTextItem::Type)
 	{
-		//Befor add text to this group we must to set the text at the same rotation of this group
+		//Before adding text to this group we must set the text at the same rotation of this group
 		if((item->rotation() != rotation()) && !m_block_alignment_update)
 			item->setRotation(rotation());
 		
@@ -111,8 +111,8 @@ void ElementTextItemGroup::addToGroup(QGraphicsItem *item)
 void ElementTextItemGroup::removeFromGroup(QGraphicsItem *item)
 {
 	QGraphicsItemGroup::removeFromGroup(item);
-	//the item transformation is not reseted, we must to do it,
-	// because for exemple if the group rotation is 45°
+	//the item transformation is not reset, we must do it ourselves,
+	// because for example if the group rotation is 45°
 	//When item is removed from group,
 	// visually the item is unchanged (so 45°)
 	// but if we call item->rotation() the returned value is 0.
@@ -257,7 +257,7 @@ void ElementTextItemGroup::updateAlignment()
 		}
 	}
 	
-		//Restor the rotation
+		//Restore the rotation
 	setRotation(rotation_);
 	
 	if(m_Xref_item)
@@ -309,7 +309,7 @@ void ElementTextItemGroup::setHoldToBottomPage(bool hold)
 		{
 			//We use timer to let the time of the parent element
 			// xref to be updated,
-			// befor update the position of this group
+			// before updating the position of this group
 			//because the position of this group is related
 			// to the size of the parent element Xref
 			m_linked_changed_timer = connect(

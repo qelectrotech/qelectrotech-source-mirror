@@ -36,7 +36,7 @@ class Diagram;
 	This interface work like this :
 	You need to create an interface and call diagram::setEventInterface(pointer_of_your_interface).
 	When a diagram get an event (mouse or key) if they have an event interface,
-	they send the event (with the status accepted to false) to the interface (for exemple mousePressEvent).
+	they send the event (with the status accepted to false) to the interface (for example mousePressEvent).
 	If the interface do something with this event, you need to set to true the accepted status of the event, then diagram do nothing.
 	When the interface job is done, we need to emit the signal finish(), the diagram use this signal to delete the interface.
 	Be carreful with the destructor, diagram can at any time (even if interface is still running) delete the interface,
@@ -61,7 +61,7 @@ class DiagramEventInterface : public QObject
 		virtual void init();
 
 	signals:
-		void finish(); //Emited when the interface finish is job.
+		void finish(); //Emitted when the interface finishes its job.
 
 	protected:
         QPointer<Diagram> m_diagram;

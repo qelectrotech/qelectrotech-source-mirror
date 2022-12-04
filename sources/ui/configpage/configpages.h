@@ -63,7 +63,7 @@ public slots:
 	// attributes
 	private:
 	ProjectPropertiesDialog    *ppd_;
-	QETProject                 *m_project; ///< Project to edit propertie
+	QETProject                 *m_project; ///< Project to edit properties
 	BorderPropertiesWidget     *bpw;       ///< Widget to edit default diagram dimensions
 	TitleBlockPropertiesWidget *ipw;       ///< Widget to edit default title block properties
 	ConductorPropertiesWidget  *m_cpw;       ///< Widget to edit default conductor properties

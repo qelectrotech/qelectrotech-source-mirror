@@ -34,7 +34,7 @@ class sqlite3;
 	This class wrap a sqlite data base where you can find several thing
 	about the content of a project.
  *
-	@note this class is still in developement.
+	@note this class is still in development.
 */
 class projectDataBase : public QObject
 {

@@ -40,7 +40,7 @@ QDomElement ElementData::toXml(QDomDocument &xml_element) const {
  * The tag name of xml_element must be definition
  * and have an attribute "type"
  * @param xml_element : tagName must be 'definition'
- * @return true is successfuly loaded
+ * @return true is successfully loaded
  */
 bool ElementData::fromXml(const QDomElement &xml_element)
 {

@@ -212,7 +212,7 @@ int QetShapeItem::pointsCount() const
 
 /**
 	@brief QetShapeItem::setNextPoint
-	Add a new point to the curent polygon
+	Add a new point to the current polygon
 	@param P the new point.
 */
 void QetShapeItem::setNextPoint(QPointF P)
@@ -994,7 +994,7 @@ void QetShapeItem::editProperty()
 
 /**
 	@brief QetShapeItem::name
-	@return the name of the curent shape.
+	@return the name of the current shape.
 */
 QString QetShapeItem::name() const
 {

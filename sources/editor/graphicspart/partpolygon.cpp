@@ -499,7 +499,7 @@ void PartPolygon::removeHandler()
 
 /**
 	@brief PartPolygon::insertPoint
-	Insert a point in this polygone
+	Insert a point in this polygon
 */
 void PartPolygon::insertPoint()
 {

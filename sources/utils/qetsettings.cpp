@@ -29,7 +29,7 @@ namespace QetSettings
 	* QElectroTech settings
 	* the value is in form of a string.
 	* @a policy can be : Round, Ceil, Floor, RoundPreferFloor, PassThrough
-	* In case of wrong policy, PassThrough is use as defaukt value.
+	* In case of wrong policy, PassThrough is use as default value.
 	* The value is stored with key : hdpi_scale_factor_rounding_policy
 	* @sa Qt::HighDpiScaleFactorRoundingPolicy
 	* @param policy

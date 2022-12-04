@@ -34,7 +34,7 @@ class QETProject;
 	void ProjectDBModel::setQuery(const QString &query).
 	The indentifier method is used by widget editor to retrieve
 	the good widget for edit the query.
-	By defaut identifer return the string 'unknow'.
+	By default identifer returns the string 'unknow'.
 	You should use setIdentfier method to set your custom identifier.
 	At the time this sentence is written, there is two identifier :
 	nomenclature

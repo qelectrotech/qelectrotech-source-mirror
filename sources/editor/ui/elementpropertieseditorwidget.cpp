@@ -76,7 +76,7 @@ ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget()
 
 /**
 	@brief ElementPropertiesEditorWidget::upDateInterface
-	Update the interface with the curent value
+	Update the interface with the current value
 */
 void ElementPropertiesEditorWidget::upDateInterface()
 {

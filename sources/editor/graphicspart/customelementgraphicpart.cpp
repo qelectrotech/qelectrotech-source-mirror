@@ -156,7 +156,7 @@ void CustomElementGraphicPart::setAntialiased(const bool b)
 
 /**
 	@brief CustomElementGraphicPart::stylesToXml
-	Write the curent style to xml element.
+	Write the current style to xml element.
 	The style are stored like this:
 	name-of-style:value;name-of-style:value
 	Each style separate by ; and name-style/value are separate by :
@@ -893,7 +893,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 
 /**
 	@brief CustomElementGraphicPart::resetStyles
-	Reset the curent style to default,
+	Reset the current style to default,
 	same style of default constructor
 */
 void CustomElementGraphicPart::resetStyles()

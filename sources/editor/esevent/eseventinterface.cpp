@@ -84,7 +84,7 @@ bool ESEventInterface::wheelEvent(QGraphicsSceneWheelEvent *event) {
 
 /**
 	@brief ESEventInterface::keyPressEvent
-	By default, press escape key abort the curent action
+	By default, press escape key abort the current action
 	@param event
 	@return
 */

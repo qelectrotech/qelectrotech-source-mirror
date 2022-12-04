@@ -329,7 +329,7 @@ void QETElementEditor::fromLocation(const ElementsLocation &location)
  * @brief QETElementEditor::toLocation
  * Save the edited element into @location
  * @param location
- * @return true if succesfully saved
+ * @return true if successfully saved
  */
 bool QETElementEditor::toLocation(const ElementsLocation &location)
 {
@@ -1259,7 +1259,7 @@ bool QETElementEditor::on_m_save_action_triggered()
  */
 bool QETElementEditor::on_m_save_as_action_triggered()
 {
-	// Check element befor writing
+	// Check element before writing
 	if (checkElement()) {
 		//Ask a location to user
 		ElementsLocation location = ElementDialog::getSaveElementLocation(this);
@@ -1328,7 +1328,7 @@ void QETElementEditor::on_m_open_dxf_action_triggered()
 
 bool QETElementEditor::on_m_save_as_file_action_triggered()
 {
-	// Check element befor writing
+	// Check element before writing
 	if (checkElement()) {
 		//Ask a filename to user, for save the element
 		QString fn = QFileDialog::getSaveFileName(

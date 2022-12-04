@@ -65,13 +65,13 @@ bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_f
 	point.setY(border.bottom() - item_to_center -> boundingRect().height() - offset );
 	point.rx() -= (item_to_center -> boundingRect().width()/2);
 	
-		//Apply the difference between the pos() of item and his bounding rect
+		//Apply the difference between the pos() of item and its bounding rect
 	QPointF tl = item_to_center->boundingRect().topLeft();
 	point.rx() -= tl.x();
 	point.ry() -= tl.y();
 	
-	item_to_center -> setPos(0,0);	  //Due to a weird behavior or bug, before set the new position and rotation,
-	item_to_center -> setRotation(0); //we must to set the position and rotation at 0.
+	item_to_center -> setPos(0,0);	  //Due to a weird behavior or bug, before setting the new position and rotation,
+	item_to_center -> setRotation(0); //we must set the position and rotation to 0.
 	
 	item_to_center->setPos(item_to_center->mapFromScene(point));
 	

@@ -108,8 +108,8 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 /**
 	@brief DiagramEventAddImage::mouseDoubleClickEvent
-	This method is only use to overwrite double click.
-	When double click, image propertie dialog isn't open.
+	This method is used only to overwrite double click.
+	When double click, image properties dialog isn't open.
 	@param event : event of mouse double click.
 */
 void DiagramEventAddImage::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
@@ -118,7 +118,7 @@ void DiagramEventAddImage::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
 
 /**
 	@brief DiagramEventAddImage::wheelEvent
-	Action when mouse wheel is rotate
+	Action when mouse wheel is rotated
 	@param event: evet of mouse wheel
 */
 void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
@@ -148,13 +148,13 @@ bool DiagramEventAddImage::isNull() const
 
 /**
 	@brief DiagramEventAddImage::openDialog
-	Open dialog for select the image to add.
+	Open dialog to select the image to add.
 */
 void DiagramEventAddImage::openDialog()
 {
 	if (m_diagram -> isReadOnly()) return;
 	
-	//Open dialog for select image
+	//Open dialog to select image
 	QString pathPictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
 	QString fileName = QFileDialog::getOpenFileName(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Selectionner une image..."), pathPictures, QObject::tr("Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)"));
 	

@@ -288,7 +288,7 @@ QString ElementQueryWidget::queryStr() const
 	if (ui->m_edit_sql_query_cb->isChecked()) {
 		return ui->m_sql_query->text();
 	}
-		//Made a string list with the colomns (keys) choosen by the user
+		//Made a string list with the columns (keys) chosen by the user
 	QStringList keys = selectedKeys();
 
 	QString select ="SELECT ";
@@ -405,7 +405,7 @@ void ElementQueryWidget::setGroupBy(QString text, bool set)
 /**
 	@brief ElementQueryWidget::setCount
 	Add the query instruction COUNT.
-	Unlike setGroupBy, you have to write the entire sentance.
+	Unlike setGroupBy, you have to write the entire sentence.
 	ex : text = "COUNT(*) AS designation_qty".
 	the query will contain what you write.
 	@param text : the count instruction
@@ -437,7 +437,7 @@ void ElementQueryWidget::updateQueryLine()
 */
 QStringList ElementQueryWidget::selectedKeys() const
 {
-		//Made a string list with the colomns (keys) choosen by the user
+		//Made a string list with the columns (keys) chosen by the user
 	QStringList keys;
 	int row = 0;
 	while (auto *item = ui->m_choosen_list->item(row))

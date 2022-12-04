@@ -87,7 +87,7 @@ DynamicElementTextModel::DynamicElementTextModel(Element *element, QObject *pare
 
 DynamicElementTextModel::~DynamicElementTextModel()
 {
-		//Connection is not destroy automaticaly,
+		//Connection is not destroy automatically,
 		//because was not connected to a slot, but a lambda
 	for(DynamicElementTextItem *deti : m_hash_text_connect.keys())
 		setConnection(deti, false);
@@ -1623,7 +1623,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			if(!deti)
 				break;
 				
-				//We use a QMap because the keys of the map are sorted, then no matter the curent local,
+				//We use a QMap because the keys of the map are sorted, then no matter the current local,
 				//the value of the combo box are always alphabetically sorted
 			QMap <QString, QString> info_map;
 			for(const QString& str : availableInfo(deti)) {
@@ -1880,8 +1880,8 @@ bool DynamicTextItemDelegate::eventFilter(QObject *object, QEvent *event)
 	
 	//This is a bad hack, for change the normal behavior :
 	//in normal behavior,
-	//the value is commited when the spinbox lose focus or enter key is pressed
-	//With this hack the value is commited each time the value change without the need to validate.
+	//the value is committed when the spinbox lose focus or enter key is pressed
+	//With this hack the value is committed each time the value change without the need to validate.
 	//then the change is apply in live
 	if(object->objectName() == "pos_dialog" || object->objectName() == "font_size" || object->objectName() == "rot_spinbox" || \
 	   object->objectName() == "group_rotation" || object->objectName() == "group_v_adjustment" || object->objectName() == "width_spinbox" ||\

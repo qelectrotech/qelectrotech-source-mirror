@@ -236,11 +236,11 @@ bool DiagramTextItem::isHtml() const
 
 /**
 	@brief DiagramTextItem::paint
-	Draw this text field. This method draw the text by calling QGraphicsTextItem::paint.
-	If text is hovered, this method draw the bounding rect in grey
+	Draw this text field. This method draws the text by calling QGraphicsTextItem::paint.
+	If text is hovered, this method draws the bounding rect in grey
 	@param painter : painter to use
 	@param option : style option
-	@param widget : widget where must to draw
+	@param widget : widget that is drawn to
 */
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
@@ -413,7 +413,7 @@ void DiagramTextItem::prepareAlignment()
 
 /**
 	@brief DiagramTextItem::finishAlignment
-	Call this function after changing the bouding rect of this text
+	Call this function after changing the bounding rect of this text
 	to set the position of this text according to the alignment property.
 */
 void DiagramTextItem::finishAlignment()
