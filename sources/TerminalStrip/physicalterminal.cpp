@@ -108,7 +108,7 @@ void PhysicalTerminal::addTerminal(const QSharedPointer<RealTerminal> &terminal)
  * @brief removeTerminal
  * Remove @a terminal from the list of real terminal
  * @param terminal
- * @return true if sucessfully removed
+ * @return true if successfully removed
  */
 bool PhysicalTerminal::removeTerminal(const QSharedPointer<RealTerminal> &terminal)
 {

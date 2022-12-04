@@ -475,7 +475,7 @@ void QETTitleBlockTemplateEditor::initMenus()
 }
 
 /**
-	Initalize toolbars.
+	Initialize toolbars.
 */
 void QETTitleBlockTemplateEditor::initToolbars()
 {

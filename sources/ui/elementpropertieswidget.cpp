@@ -154,7 +154,7 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 
 /**
 	@brief ElementPropertiesWidget::setTextsGroup
-	Conveniance function :
+	Convenience function :
 	same as call : ElementPropertiesWidget::setElement,
 	with parameter the parent element of group.
 	Set the dynamics text tab as current tab,

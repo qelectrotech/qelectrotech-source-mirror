@@ -84,7 +84,7 @@ void SlaveElement::unlinkAllElements()
 
 /**
 	@brief SlaveElement::unlinkElement
-	Unlink the given elmt in parametre
+	Unlink the given element in parameter
 	@param elmt
 */
 void SlaveElement::unlinkElement(Element *elmt)

@@ -28,7 +28,7 @@ class QPainter;
 	@brief The QetGraphicsHandlerUtility class
 	This class provide some methods to create and use handler for
 	modify graphics shape like line rectangle etc...
-	They also provide some conveniance static method.
+	They also provide some convenience static method.
 */
 class QetGraphicsHandlerUtility
 {

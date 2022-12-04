@@ -165,7 +165,7 @@ void MasterPropertiesWidget::setElement(Element *element)
 
 /**
 	@brief MasterPropertiesWidget::apply
-	If link betwen edited element and other change,
+	If link between edited element and other change,
 	apply the change with a QUndoCommand (got with method associatedUndo)
 	pushed to the stack of element project.
 	Return true if link change, else false
@@ -179,7 +179,7 @@ void MasterPropertiesWidget::apply()
 
 /**
 	@brief MasterPropertiesWidget::reset
-	Reset curent widget, clear eveything and rebuild widget.
+	Reset current widget, clear eveything and rebuild widget.
 */
 void MasterPropertiesWidget::reset()
 {
@@ -346,11 +346,11 @@ void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
 
 /**
 	@brief MasterPropertiesWidget::on_link_button_clicked
-	move curent item in the free_list to linked_list
+	move current item in the free_list to linked_list
 */
 void MasterPropertiesWidget::on_link_button_clicked()
 {
-		//take the curent item from free_list and push it to linked_list
+		//take the current item from free_list and push it to linked_list
 	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
 	if (qtwi)
 	{
@@ -365,11 +365,11 @@ void MasterPropertiesWidget::on_link_button_clicked()
 
 /**
 	@brief MasterPropertiesWidget::on_unlink_button_clicked
-	move curent item in linked_list to free_list
+	move current item in linked_list to free_list
 */
 void MasterPropertiesWidget::on_unlink_button_clicked()
 {
-		//take the curent item from linked_list and push it to free_list
+		//take the current item from linked_list and push it to free_list
 	QTreeWidgetItem *qtwi = ui->m_link_tree_widget->currentItem();
 	if(qtwi)
 	{
@@ -424,9 +424,9 @@ void MasterPropertiesWidget::showedElementWasDeleted()
 void MasterPropertiesWidget::diagramWasdeletedFromProject()
 {
 	// We use a timer because if the removed diagram
-	// contain slave element linked to the edited element
-	// we must to wait for this elements be unlinked,
-	// else the linked list provide deleted elements.
+	// contains slave element linked to the edited element
+	// we must wait for this elements be unlinked,
+	// or else the linked list provides deleted elements.
 	QTimer::singleShot(10, this, SLOT(updateUi()));
 }
 

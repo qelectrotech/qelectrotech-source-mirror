@@ -143,7 +143,7 @@ bool ArcEditor::setParts(QList <CustomElementPart *> parts)
 
 /**
 	@brief ArcEditor::currentPart
-	@return the curent edited part, or 0 if there is no edited part
+	@return the current edited part, or 0 if there is no edited part
 */
 CustomElementPart *ArcEditor::currentPart() const
 {

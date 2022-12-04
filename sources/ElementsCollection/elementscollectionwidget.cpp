@@ -585,7 +585,7 @@ void ElementsCollectionWidget::resetShowThisDir()
 
 /**
 	@brief ElementsCollectionWidget::dirProperties
-	Open an informative dialog about the curent index
+	Open an informative dialog about the current index
 */
 void ElementsCollectionWidget::dirProperties()
 {

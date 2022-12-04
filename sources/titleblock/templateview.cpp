@@ -259,7 +259,7 @@ void TitleBlockTemplateView::paste()
 	TitleBlockCell *erased_cell = selected_cell -> cell();
 	if (!erased_cell) return;
 
-	// change num_row and num_col attributes of pasted cells so they get positionned relatively to selected_cell
+	// change num_row and num_col attributes of pasted cells so they get positioned relatively to selected_cell
 	normalizeCells(pasted_cells, erased_cell -> num_row, erased_cell -> num_col);
 
 	PasteTemplateCellsCommand *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
@@ -657,7 +657,7 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 		total_width_helper_cell_ -> split_background_color = QColor(Qt::red);
 		total_width_helper_cell_ -> split_foreground_color = QColor(Qt::black);
 		total_width_helper_cell_ -> split_label = QString(
-			tr("[%1px]", "content of the extra helper cell added when the total width of cells is greather than the preview width")
+			tr("[%1px]", "content of the extra helper cell added when the total width of cells is greater than the preview width")
 		).arg(total_applied_width - preview_width_);
 		total_width_helper_cell_ -> split_size = total_applied_width - preview_width_;
 	}

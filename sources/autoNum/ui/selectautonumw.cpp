@@ -198,7 +198,7 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 	//transform button to int
 	int answer = ui -> buttonBox -> buttonRole(button);
 	switch (answer) {
-			//Reset the curent context
+			//Reset the current context
 		case QDialogButtonBox::ResetRole:
 			setContext(m_context);
 			break;

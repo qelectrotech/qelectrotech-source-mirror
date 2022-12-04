@@ -35,7 +35,7 @@ SearchAndReplaceWorker::SearchAndReplaceWorker()
 /**
 	@brief SearchAndReplaceWorker::replaceDiagram
 	Replace all properties of each diagram in diagram_list,
-	by the current titleblock propertie of this worker
+	by the current titleblock properties of this worker
 	@param diagram_list : list of diagram to be changed,
 	all diagrams must belong to the same project;
 */

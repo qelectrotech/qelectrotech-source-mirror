@@ -33,7 +33,7 @@ class QetGraphicsItem : public QGraphicsObject
 		QetGraphicsItem(QGraphicsItem *parent = nullptr);
 		~QetGraphicsItem() override = 0;
 
-		//public methode
+		//public method
 		Diagram *diagram () const;
 		virtual void setPos (const QPointF &p);
 		virtual void setPos (qreal x, qreal y);

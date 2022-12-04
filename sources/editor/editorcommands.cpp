@@ -483,8 +483,8 @@ void ScalePartsCommand::adjustText()
 
 /**
  * @brief changeElementDataCommand::changeElementDataCommand
- * Change the properties of the drawed element
- * @param scene : scene to belong the property
+ * Change the properties of the drawn element
+ * @param scene : scene belonging to the property
  * @param old_data : old data
  * @param new_data : new data
  * @param parent : parent undo command

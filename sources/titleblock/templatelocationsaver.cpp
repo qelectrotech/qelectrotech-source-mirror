@@ -101,7 +101,7 @@ void TitleBlockTemplateLocationSaver::updateTemplates()
 }
 
 /**
-	Enable or diable the "new name" text field depending of the selected
+	Enable or disable the "new name" text field depending of the selected
 	template.
 */
 void TitleBlockTemplateLocationSaver::updateNewName()

@@ -259,12 +259,12 @@ void LinkElementCommand::setUpNewLink(
 /**
 	@brief LinkElementCommand::makeLink
 	Make the link between m_element and element_list;
-	This method unlink elements if needed.
+	This method unlinks elements if needed.
 	@param element_list
 */
 void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 {
-	//List is empty, that mean m_element must be free, so we unlink all elements
+	//List is empty, that means m_element must be free, so we unlink all elements
 	if (element_list.isEmpty())
 	{
 		m_element->unlinkAllElements();
@@ -275,8 +275,8 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 	foreach(Element *elmt, element_list)
 		m_element->linkToElement(elmt);
 
-	/* At this point may be there are unwanted linked elements to m_element.
-	 * We must to unlink it.
+	/* At this point there may be unwanted linked elements to m_element.
+	 * We must unlink it.
 	 * Elements from element_list are wanted so we compare element_list
 	 *  to current linked element of m_element
 	 */

@@ -257,7 +257,7 @@ ElementsLocation ECHSXmlToFile::copyElement(ElementsLocation &source, ElementsLo
 	
 	QString new_element_name = rename.isEmpty() ? source.fileName() : rename;
 	
-	//Get the xml descrption of the element
+	//Get the xml description of the element
 	QDomDocument document;
 	document.appendChild(document.importNode(source.xml(), true));
 	
@@ -336,22 +336,22 @@ ElementsLocation ElementCollectionHandler::copy(ElementsLocation &source, Elemen
 
 /**
 	@brief ElementCollectionHandler::createDir
-	Create a directorie with name as child of parent.
+	Create a directory with name as child of parent.
 	Parent must be a directory
 	@param parent : parent of the dir to create
-	@param name : name of directorie to create
-	@param name_list : translations of the directorie name
-	@return : ElementsLocation that represent the new directorie, location can be null if an error was occurred
+	@param name : name of directory to create
+	@param name_list : translations of the directory name
+	@return : ElementsLocation that represent the new directory, location can be null if an error was occurred
 */
 ElementsLocation ElementCollectionHandler::createDir(ElementsLocation &parent, const QString &name, const NamesList &name_list)
 {
-	//Parent must be a directorie and writable
+	//Parent must be a directory and writable
 	if (!(parent.isDirectory() && parent.isWritable() && parent.exist())) {
 		qDebug() << "ElementCollectionHandler::createDir : the prerequisites are not valid. " << parent;
 		return ElementsLocation();
 	}
 	
-	//Directorie to create must not already exist
+	//Directory to create must not already exist
 	ElementsLocation created_dir = parent;
 	created_dir.addToPath(name);
 	if (created_dir.exist()) {

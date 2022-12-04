@@ -27,7 +27,7 @@
 
 /**
  * @brief The BridgeTerminalsCommand class
- * UndoCommand use to create bridge betwen terminals
+ * UndoCommand use to create bridge between terminals
  * of a terminals strip
  */
 class BridgeTerminalsCommand : public QUndoCommand
@@ -48,7 +48,7 @@ class BridgeTerminalsCommand : public QUndoCommand
 
 /**
  * @brief The UnBridgeTerminalsCommand class
- * UndoCommand use to remove bridge betwen terminals
+ * UndoCommand use to remove bridge between terminals
  * of a terminals strip
  */
 class UnBridgeTerminalsCommand : public QUndoCommand

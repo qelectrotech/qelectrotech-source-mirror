@@ -35,7 +35,7 @@ class QKeyEvent;
 class CustomElementGraphicPart;
 /**
 	@brief The ElementScene class
-	This class is the canvas allowing the visual edition of an electrial element.
+	This class is the canvas allowing the visual edition of an electrical element.
 	It displays the various primitives composing the drawing of the element,
 	the border due to its fixed size and its hotspot.
 
@@ -70,7 +70,7 @@ class ElementScene : public QGraphicsScene
 	
 		// attributes
 	private:
-		ElementData m_element_data; ///ElementData. Actualy in transition with old data storage
+		ElementData m_element_data; ///ElementData. Actually in transition with old data storage
 		QGIManager m_qgi_manager;
 		QUndoStack m_undo_stack;
 

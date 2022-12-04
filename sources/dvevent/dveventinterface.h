@@ -29,15 +29,15 @@ class Diagram;
 /**
 	@brief The DVEventInterface class
 	This class is the main interface for manage event of a Diagram View.
-	This do nothing, for create new event behavior,
-	we must to create new class from this.
-	Each method return a bool:
-	True if the methode do something else return false.
-	Each method of DVEventInterface return false;
-	isRunning() return true if action is started but not finish.
-	By default return false.
-	isFinish() return true when the action is finish, or not started.
-	By default return true.
+	This does nothing, to create new event behavior,
+	we must create new class from this.
+	Each method returns a bool:
+	True if the method does something, else return false.
+	Each method of DVEventInterface returns false;
+	isRunning() returns true if action is started but not finished.
+	By default: return false.
+	isFinish() returns true when the action is finished, or not started.
+	By default: return true.
 */
 class DVEventInterface : public QObject
 {
@@ -59,7 +59,7 @@ class DVEventInterface : public QObject
 	signals:
 		/**
 			@brief finish
-			emited when the interface finish is work
+			emitted when the interface finishes its job
 		 */
 		void finish();
 

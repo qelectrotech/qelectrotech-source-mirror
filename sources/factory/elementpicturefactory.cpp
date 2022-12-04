@@ -153,7 +153,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 {
 	QDomElement dom = location.xml();
 
-		//Check if the curent version can read the xml description
+		//Check if the current version can read the xml description
 	if (dom.hasAttribute("version"))
 	{
 		bool conv_ok;
@@ -292,7 +292,7 @@ void ElementPictureFactory::parseLine(const QDomElement &dom, QPainter &painter,
 	qreal line_length(line.length());
 	qreal pen_width = painter.pen().widthF();
 
-		//Check if we must to draw extremity
+		//Check if we must draw extremity
 	bool draw_1st_end, draw_2nd_end;
 	qreal reduced_line_length = line_length - (length1 * PartLine::requiredLengthForEndType(first_end));
 	draw_1st_end = first_end && reduced_line_length >= 0;
@@ -322,7 +322,7 @@ void ElementPictureFactory::parseLine(const QDomElement &dom, QPainter &painter,
 			start_point = four_points1[0];
 		}
 
-			//Adjust the begining according to the width of the pen
+			//Adjust the beginning according to the width of the pen
 		if (pen_width && (first_end == Qet::Simple || first_end == Qet::Circle)) {
 			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
 		}
@@ -511,7 +511,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 
 	QColor text_color(dom.attribute("color", "#000000"));
 
-		//Instanciate a QTextDocument (like the QGraphicsTextItem class)
+		//Instantiate a QTextDocument (like the QGraphicsTextItem class)
 		//for generate the graphics rendering of the text
 	QTextDocument text_document;
 	text_document.setDefaultFont(font_);

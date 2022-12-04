@@ -27,7 +27,7 @@
 
 /**
 	@brief DiagramPropertiesDialog::DiagramPropertiesDialog
-	Deafult constructor
+	Default constructor
 	@param diagram : diagram to edit properties
 	@param parent : parent widget
 */

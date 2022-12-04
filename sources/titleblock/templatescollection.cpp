@@ -561,7 +561,7 @@ QString TitleBlockTemplatesFilesCollection::toFileName(const QString &template_n
 }
 
 /**
-	Handle the changes occuring on the file system.
+	Handle the changes occurring on the file system.
 	@param str Path of the directory that changed.
 */
 void TitleBlockTemplatesFilesCollection::fileSystemChanged(const QString &str) {

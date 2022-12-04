@@ -146,7 +146,7 @@ void NameListWidget::setClipboardValue(QHash<QString, QString> value)
 
 /**
 	@brief NameListWidget::clean
-	Clean the lists of names by removing the emtpy lines
+	Clean the lists of names by removing the empty lines
 */
 void NameListWidget::clean()
 {

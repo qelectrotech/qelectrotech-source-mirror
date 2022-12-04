@@ -78,7 +78,7 @@ class ElementXmlRetroCompatibility
 	@brief Element::Element
 	@param location : location of this element
 	@param parent : parent graphics item
-	@param state : state of the instanciation
+	@param state : state of the instantiation
 	@param link_type
 */
 Element::Element(
@@ -238,7 +238,7 @@ void Element::paint(
 		painter->drawPicture(0, 0, m_picture);
 	}
 
-	painter->restore(); //Restor the QPainter after use drawPicture
+	painter->restore(); //Restorr the QPainter after use drawPicture
 
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
@@ -426,7 +426,7 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		return(false);
 	}
 
-		//Check if the curent version can read the xml description
+		//Check if the current version can read the xml description
 	if (xml_def_elmt.hasAttribute(QStringLiteral("version")))
 	{
 		bool conv_ok;
@@ -627,7 +627,7 @@ bool Element::parseInput(const QDomElement &dom_element)
 
 /**
 	@brief Element::parseDynamicText
-	Create the dynamic text field describ in dom_element
+	Create the dynamic text field described in dom_element
 	@param dom_element
 	@return
 */
@@ -637,7 +637,7 @@ DynamicElementTextItem *Element::parseDynamicText(
 	DynamicElementTextItem *deti = new DynamicElementTextItem(this);
 		//Because the xml description of a .elmt file is the same as how a dynamic text field is save to xml in a .qet file
 		//wa call fromXml, we just change the tagg name (.elmt = dynamic_text, .qet = dynamic_elmt_text)
-		//and the uuid (because the uuid, is the uuid of the descritpion and not the uuid of instantiated dynamic text field)
+		//and the uuid (because the uuid, is the uuid of the description and not the uuid of instantiated dynamic text field)
 
 	QDomElement dom(dom_element.cloneNode(true).toElement());
 	dom.setTagName(DynamicElementTextItem::xmlTagName());
@@ -664,7 +664,7 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 	Terminal *new_terminal = new Terminal(data, this);
 	m_terminals << new_terminal;
 
-		//Sort from top to bottom and left to rigth
+		//Sort from top to bottom and left to right
 	std::sort(m_terminals.begin(),
 		  m_terminals.end(),
 		  [](Terminal *a,
@@ -747,7 +747,7 @@ bool Element::fromXml(QDomElement &e,
 	}
 
 
-		//Check that associated id/adress doesn't conflict with table_id_adr
+		//Check that associated id/address doesn't conflict with table_id_adr
 	for(auto found_id : priv_id_adr.keys())
 	{
 		if (table_id_adr.contains(found_id))
@@ -758,7 +758,7 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
-		//Copie the association id/adress
+		//Copie the association id/address
 	for(auto found_id : priv_id_adr.keys()) {
 		table_id_adr.insert(found_id,
 							priv_id_adr.value(found_id));
@@ -813,7 +813,7 @@ bool Element::fromXml(QDomElement &e,
 	}
 	setRotation(90*read_ori);
 
-		//Befor load the dynamic text field,
+		//Before loading the dynamic text field,
 		//we remove the dynamic text field created from the description of this element, to avoid doublons.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		delete deti;
@@ -869,7 +869,7 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
-	//We must to block the update of the alignment when load the information
+	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		deti->m_block_alignment = true;
@@ -1025,7 +1025,7 @@ QDomElement Element::toXml(
 		for(DynamicElementTextItem *deti : deti_list)
 			group->addToGroup(deti);
 
-			//Restor the alignement
+			//Restorr the alignment
 		group->setAlignment(al);
 
 			//Save the group to xml
@@ -1216,7 +1216,7 @@ QList<ElementTextItemGroup *> Element::textGroups() const
 	Add the text text to the group group;
 	If group isn't owned by this element return false.
 	The text must be a text of this element.
-	@return : true if the text was succesfully added to the group.
+	@return : true if the text was successfully added to the group.
 */
 bool Element::addTextToGroup(DynamicElementTextItem *text,
 				 ElementTextItemGroup *group)
@@ -1239,7 +1239,7 @@ bool Element::addTextToGroup(DynamicElementTextItem *text,
 	@brief Element::removeTextFromGroup
 	Remove the text text from the group group,
 	en reparent text to this element
-	@return true if text was succesfully removed
+	@return true if text was successfully removed
 */
 bool Element::removeTextFromGroup(DynamicElementTextItem *text,
 				  ElementTextItemGroup *group)
@@ -1568,7 +1568,7 @@ void Element::freezeNewAddedElement()
 /**
 	@brief Element::actualLabel
 	Always return the current label to be displayed.
-	This function is usefull when label is based on formula, because label can change at any time.
+	This function is useful when label is based on formula, because label can change at any time.
 	@return
 */
 QString Element::actualLabel()

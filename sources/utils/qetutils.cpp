@@ -93,9 +93,9 @@ qreal QETUtils::graphicsHandlerSize(QGraphicsItem *item)
  * Sort the string @a str_a and @a str_b and take in
  * count if string begin with an int to sort it
  * as int and not as string in this case.
- * For exemple if we have to sort the string :
+ * For example if we have to sort the string :
  * "3str", 10str", "100str", "2str", "20str".
- * The default behavior when sorting QString with the comparaison operator will be:
+ * The default behavior when sorting QString with the comparison operator will be:
  * "10str" "100str" "2str", "20str", "3str"
  * When sorting with this function, the result will be :
  * "10str", "2str", "3str", "20str", "100str"

@@ -475,9 +475,9 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 	if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)) //special treatment for report
 	{
 			/*
-			 * May be in some case the old and new composite text have both the var %{label},
-			 * and so we don't have to remove connection and after set conection,
-			 * but for that we must to do several check and because I'm lazy,
+			 * May be in some case the old and new composite text both have the var %{label},
+			 * and so we don't have to remove connection and after set connection,
+			 * but for that we must do several checks and because I'm lazy,
 			 * in every case I remove connection and set it after ;)
 			 */
 		if(old_composite_text.contains("%{label}"))
@@ -691,7 +691,7 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 
 QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange change, const QVariant &value)
 {
-		//The first time this text is added to a scene, we make several cheking and connection
+		//The first time this text is added to a scene, we make several checking and connection
 		//according to the link type of the parent element
 	if(change == QGraphicsItem::ItemSceneHasChanged && m_first_scene_change)
 	{
@@ -785,7 +785,7 @@ void DynamicElementTextItem::elementInfoChanged()
 
 	if (m_text_from == ElementInfo)
 	{
-			//If the info is the label, then we must to make some connection
+			//If the info is the label, then we must make some connection
 			//if the label is created from a formula
 		if(m_info_name == "label")
 		{
@@ -801,7 +801,7 @@ void DynamicElementTextItem::elementInfoChanged()
 	}
 	else if (m_text_from == CompositeText)
 	{
-			//If the composite have the label variable, we must to make some
+			//If the composite have the label variable, we must make some
 			//connection if the label is created from a formula
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
@@ -911,7 +911,7 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 	Diagram *other_diagram = m_other_report.data()->diagram();
 	
 		//Because the variable %F is a reference to another text which can contain variables,
-		//we must to replace %F by the real text, to check if the real text contain the variable %id
+		//we must replace %F by the real text, to check if the real text contains the variable %id
 	if (other_diagram && string.contains("%F"))
 	{
 		m_F_str = other_diagram->border_and_titleblock.folio();
@@ -940,7 +940,7 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	Diagram *other_diagram = m_other_report.data()->diagram();
 	
 		//Because the variable %F is a reference to another text which can contain variables,
-		//we must to replace %F by the real text, to check if the real text contain the variable %id
+		//we must replace %F with the real text, to check if the real text contains the variable %id
 	if (other_diagram && string.contains("%F"))
 	{
 		string.replace("%F", m_F_str);

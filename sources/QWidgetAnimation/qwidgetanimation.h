@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -28,19 +28,19 @@
 
 	The role of behavior is to calcul as best the animation process
 	when widget is show.
-	Because this class don't change the current and final size
-	of the widget but her maximum size during the animation process,
-	we must to know in advance the final size of the widget.
+	Because this class doesn't change the current and final size
+	of the widget but its maximum size during the animation process,
+	we need to know in advance the final size of the widget.
 	Behavior minimumSizeHint : the final size of the widget
-	will be his minimum size hint.
+	will be its minimum size hint.
 	Behavior availableSpace : the final size of widget will be
-	the available size of her parent.
+	the available size of its parent.
 	Since parent can have other widgets you can add a QVector of widget
-	to subtract of the final size.
+	to subtract from the final size.
 	Because we suppose the animated widget will take the maximum
 	available space, we subtract the minimum size hint of widgets in QVector.
 	Behavior lastSize :
-	The widget will have the same size as the last time he was showed.
+	The widget will have the same size as the last time it was displayed.
 */
 class QWidgetAnimation : public QPropertyAnimation
 {

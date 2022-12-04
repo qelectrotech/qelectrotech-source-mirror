@@ -165,7 +165,7 @@ QPainterPath CrossRefItem::shape() const{
 	@param add_prefix
 	@return the string corresponding to the position of elmt in the diagram.
 	if add_prefix is true,
-	prefix (for power and delay contact) is added to the poistion text.
+	prefix (for power and delay contact) is added to the position text.
 */
 QString CrossRefItem::elementPositionText(
 		const Element *elmt, const bool &add_prefix) const
@@ -190,7 +190,7 @@ QString CrossRefItem::elementPositionText(
 
 /**
 	@brief CrossRefItem::updateProperties
-	update the curent properties
+	update the current properties
 */
 void CrossRefItem::updateProperties()
 {
@@ -247,7 +247,7 @@ void CrossRefItem::updateLabel()
 
 /**
 	@brief CrossRefItem::autoPos
-	Calculate and set position automaticaly.
+	Calculate and set position automatically.
 */
 void CrossRefItem::autoPos()
 {
@@ -546,7 +546,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 	}
 	//Adjust according to the NC
 	if (nc_bounding.height() > default_bounding.height() - header)
-		default_bounding.setHeight(nc_bounding.height() + header); //adjust the heigth
+		default_bounding.setHeight(nc_bounding.height() + header); //adjust the height
 	if (nc_bounding.width() > default_bounding.width()/2)
 		default_bounding.setWidth(nc_bounding.width()*2);//adjust the width
 
@@ -660,7 +660,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		painter.drawLine(0, offset+6, 8, offset+6);
 		painter.drawLine(16, offset+6, 24, offset+6);
 
-		///take exemple of this code for display the terminal text
+		///take example of this code for display the terminal text
 		/*QFont font = QETApp::diagramTextsFont(4);
 		font.setBold(true);
 		painter.setFont(font);
@@ -986,11 +986,11 @@ void CrossRefItem::AddExtraInfo(QPainter &painter, const QString& type)
 
 /**
 	@brief CrossRefItem::NOElements
-	@return The linked elements of m_element wich are open or switch contact.
+	@return The linked elements of m_element which are open or switch contact.
 	If linked element is a power contact,
-	xref propertie is set to don't show power contact
-	and this cross item must be drawed as cross,
-	the element is not append in the list.
+	xref property is set to not show power contact
+	and this cross item must be drawn as a cross,
+	the element is not appended in the list.
 */
 QList<Element *> CrossRefItem::NOElements() const
 {
@@ -998,8 +998,8 @@ QList<Element *> CrossRefItem::NOElements() const
 
 	foreach (Element *elmt, m_element->linkedElements())
 	{
-		//We continue if element is a power contact and xref propertie
-		//is set to don't show power contact
+		//We continue if element is a power contact and xref property
+		//is set to not show power contact
 		if (m_properties.displayHas() == XRefProperties::Cross &&
 			!m_properties.showPowerContact() &&
 			elmt -> kindInformations()["type"].toString() == "power")
@@ -1018,12 +1018,12 @@ QList<Element *> CrossRefItem::NOElements() const
 
 /**
 	@brief CrossRefItem::NCElements
-	@return The linked elements of m_element wich are close
+	@return The linked elements of m_element which are close
 	or switch contact
 	If linked element is a power contact,
-	xref propertie is set to don't show power contact
-	and this cross item must be drawed as cross,
-	the element is not append in the list.
+	xref property is set to not show power contact
+	and this cross item must be drawn as a cross,
+	the element is not appended in the list.
 */
 QList<Element *> CrossRefItem::NCElements() const
 {
@@ -1031,8 +1031,8 @@ QList<Element *> CrossRefItem::NCElements() const
 
 	foreach (Element *elmt, m_element->linkedElements())
 	{
-		//We continue if element is a power contact and xref propertie
-		//is set to don't show power contact
+		//We continue if element is a power contact and xref property
+		//is set to not show power contact
 		if (m_properties.displayHas() == XRefProperties::Cross &&
 			!m_properties.showPowerContact() &&
 			elmt -> kindInformations()["type"].toString() == "power")

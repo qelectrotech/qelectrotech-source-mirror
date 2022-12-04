@@ -126,7 +126,7 @@ bool ESEventAddArc::keyPressEvent(QKeyEvent *event) {
 
 /**
 	@brief ESEventAddArc::updateArc
-	Redraw the arc with curent value
+	Redraw the arc with current value
 */
 void ESEventAddArc::updateArc()
 {

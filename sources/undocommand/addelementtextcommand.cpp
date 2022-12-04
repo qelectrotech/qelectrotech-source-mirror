@@ -441,8 +441,8 @@ void AlignmentTextsGroupCommand::undo()
 	if(m_group)
 	{
 		m_group.data()->setAlignment(m_previous_alignment);
-		//The alignment befor this command was free, then we must
-		//to restor the pos of each texts
+		//The alignment before this command was free, then we must
+		//to restore the pos of each texts
 		if(!m_texts_pos.isEmpty())
 		{
 			for(DynamicElementTextItem *deti : m_group.data()->texts())

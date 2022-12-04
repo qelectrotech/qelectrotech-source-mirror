@@ -83,7 +83,7 @@ void DiagramImageItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 
 /**
 	@brief DiagramImageItem::editProperty
-	Open the approriate dialog to edit this image
+	Open the appropriate dialog to edit this image
 */
 void DiagramImageItem::editProperty()
 {
@@ -129,9 +129,9 @@ QString DiagramImageItem::name() const
 
 /**
 	@brief DiagramImageItem::fromXml
-	Load this image fro xml elemebt e
+	Load this image from xml element e
 	@param e
-	@return true if succesfully load.
+	@return true if successfully loaded.
 */
 bool DiagramImageItem::fromXml(const QDomElement &e)
 {

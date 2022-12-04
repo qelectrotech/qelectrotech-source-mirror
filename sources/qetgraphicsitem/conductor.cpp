@@ -92,13 +92,13 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	setZValue(11);
 	m_previous_z_value = zValue();
 
-		//Add this conductor to the list of conductor of each of the two terminal
+		//Add this conductor to the list of conductors of each of the two terminals
 	bool ajout_p1 = terminal1 -> addConductor(this);
 	bool ajout_p2 = terminal2 -> addConductor(this);
 		//m_valid become false if the conductor can't be added to terminal (conductor already exist)
 	m_valid = (!ajout_p1 || !ajout_p2) ? false : true;
 
-		//Default attribut for paint a conductor
+		//Default attribute to paint a conductor
 	if (!pen_and_brush_initialized)
 	{
 		conductor_pen.setJoinStyle(Qt::MiterJoin);
@@ -111,7 +111,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		pen_and_brush_initialized = true;
 	}
 
-		//By default, the 4 profils are nuls -> we must to use priv_calculeConductor
+		//By default, the 4 profiles are nuls -> we must use priv_calculeConductor
 	conductor_profiles.insert(Qt::TopLeftCorner,     ConductorProfile());
 	conductor_profiles.insert(Qt::TopRightCorner,    ConductorProfile());
 	conductor_profiles.insert(Qt::BottomLeftCorner,  ConductorProfile());
@@ -135,7 +135,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 
 /**
 	@brief Conductor::~Conductor
-	Destructor. The conductor is removed from is terminal
+	Destructor. The conductor is removed from its terminal
 */
 Conductor::~Conductor()
 {
@@ -847,7 +847,7 @@ void Conductor::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphics
 		saveProfile();
 		has_to_save_profile = false;
 	}
-		//When handler is released, the conductor can have more segment than befor the handler was moved
+		//When handler is released, the conductor can have more segment than before the handler was moved
 		//then we remove all handles and new ones are added
 	removeHandler();
 	addHandler();
@@ -1036,7 +1036,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	// Terminal is uniquely identified by the uuid of the terminal and the element
 	if (terminal1->uuid().isNull()) {
 		// legacy method to identify the terminal
-		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compability
+		dom_element.setAttribute("terminal1", table_adr_id.value(terminal1)); // for backward compatibility
 	} else {
 		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
 		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
@@ -1044,7 +1044,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 
 	if (terminal2->uuid().isNull()) {
 		// legacy method to identify the terminal
-		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compability
+		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compatibility
 	} else {
 		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
 		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
@@ -1242,7 +1242,7 @@ QPointF Conductor::posForText(Qt::Orientations &flag)
 	bool all_segment_is_vertical   = true;
 	bool all_segment_is_horizontal = true;
 
-		//Go to first segement
+		//Go to first segment
 	while (!segment->isFirstSegment()) {
 		segment = segment->previousSegment();
 	}
@@ -1265,7 +1265,7 @@ QPointF Conductor::posForText(Qt::Orientations &flag)
 		if (segment -> firstPoint().y() != segment -> secondPoint().y())
 			all_segment_is_horizontal = false;
 
-			//We must to compare length segment, but they can be negative
+			//We must compare length segment, but they can be negative
 			//so we multiply by -1 to make it positive.
 		int saved = biggest_segment -> length();
 		if (saved < 0) saved *= -1;
@@ -1517,7 +1517,7 @@ QPainterPath Conductor::path() const
 	@brief Conductor::setPropertiesToPotential
 	@param property
 	@param only_text
-	Set propertie to conductor and every conductors in
+	Set property to conductor and every conductors in
 	the same potential of conductor.
 	If only_text is true only formula, text,
 	function and tension/protocol is set
@@ -1760,7 +1760,7 @@ void Conductor::setUpConnectionForFormula(QString old_formula, QString new_formu
 	if (diagram())
 	{
 			//Because the variable %F is a reference to another text which can contain variables,
-			//we must to replace %F by the real text, to check if the real text contain the variable %id
+			//we must replace %F by the real text, to check if the real text contains the variable %id
 		if (old_formula.contains("%F"))
 			old_formula.replace("%F", diagram()->border_and_titleblock.folio());
 
@@ -2063,8 +2063,8 @@ Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram)
 	@brief relatedConductors
 	@param conductor
 	@return return all conductors who share the same terminals
-	of conductor given as parametre,
-	except conductor himself.
+	of conductor given as parameter,
+	except conductor itself.
 */
 QList <Conductor *> relatedConductors(const Conductor *conductor) {
 	QList<Conductor *> other_conductors_list = conductor -> terminal1 -> conductors();

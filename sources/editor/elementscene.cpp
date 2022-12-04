@@ -332,8 +332,8 @@ void ElementScene::setEventInterface(ESEventInterface *event_interface)
 	if (m_event_interface)
 	{
 		delete m_event_interface;
-		//We must to re-init because previous interface
-		//Reset his own init when deleted
+		//We must re-init because previous interface
+		//Reset its own init when deleted
 		event_interface->init();
 	}
 	m_event_interface = event_interface;
@@ -772,11 +772,11 @@ void ElementScene::slot_select(const ElementContent &content)
 {
 	blockSignals(true);
 
-	/* Befor clear selection,
-	 * we must to remove the handlers items in @content,
+	/* Before clearing selection,
+	 * we must remove the handlers items in @content,
 	 * because if in @content there are a selected item,
 	 * but also its handlers items, When item is deselected,
-	 * the item delete its handlers items,
+	 * the item deletes its handlers items,
 	 * then handlers in content doesn't exist anymore and cause segfault
 	 */
 	QList<QGraphicsItem*> items_list;

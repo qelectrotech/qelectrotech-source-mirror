@@ -59,7 +59,7 @@ QString SummaryQueryWidget::queryStr() const
 		return ui->m_user_query_le->text();
 	}
 
-		//Made a string list with the colomns (keys) choosen by the user
+		//Made a string list with the columns (keys) choosen by the user
 	QStringList keys = selectedKeys();
 
 	QString select ="SELECT ";
@@ -169,7 +169,7 @@ void SummaryQueryWidget::updateQueryLine()
 */
 QStringList SummaryQueryWidget::selectedKeys() const
 {
-		//Made a string list with the colomns (keys) choosen by the user
+		//Made a string list with the columns (keys) choosen by the user
 	QStringList keys;
 	int row = 0;
 	while (auto *item = ui->m_choosen_list->item(row))

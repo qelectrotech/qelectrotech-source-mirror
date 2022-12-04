@@ -143,8 +143,8 @@ QString RealTerminal::label() const {
 
 /**
  * @brief RealTerminal::Xref
- * @return Conveniant method to get the XRef
- * formated to string
+ * @return Convenient method to get the XRef
+ * formatted to string
  */
 QString RealTerminal::Xref() const
 {

@@ -477,7 +477,7 @@ QVector<QSharedPointer<RealTerminal>> TerminalStrip::realTerminals() const
  * @brief TerminalStrip::setSortedTo
  * Sort the physical terminal owned by this strip in the same order
  * as \p sorted_vector.
- * \p sorted_vector must contain exaclty the same physical terminal as this strip
+ * \p sorted_vector must contain exactly the same physical terminal as this strip
  * else this function do nothing.
  *
  * To avoid any mistake, you should call TerminalStrip::physicalTerminal()
@@ -715,7 +715,7 @@ bool TerminalStrip::isBridgeable(QSharedPointer<TerminalStripBridge> bridge, con
 
 /**
  * @brief TerminalStrip::setBridge
- * Set a bridge betwen all real terminal of @a real_terminals
+ * Set a bridge between all real terminal of @a real_terminals
  * @sa TerminalStrip::isBridgeable
  * @return true if bridge was successfully created
  */
@@ -975,7 +975,7 @@ QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
 
 	root_elmt.appendChild(m_data.toXml(parent_document));
 
-		//Undrawed terminals
+		//Undrawn terminals
 	auto xml_layout = parent_document.createElement("layout");
 	for (auto &phy_t : m_physical_terminals) {
 		xml_layout.appendChild(phy_t->toXml(parent_document));

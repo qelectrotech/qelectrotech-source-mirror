@@ -32,11 +32,11 @@ class ElementTextItemGroup;
 	@brief The CrossRefItem class
 	This clas provide an item, for show the cross reference,
 	like the contacts linked to a coil.
-	The item setpos automaticaly when parent move.
+	The item setpos automatically when parent move.
 	All slave displayed in cross ref will be updated
 	when folio position change in the project.
-	It's the responsability of the master element
-	to informe displayed slave are moved,
+	It's the responsibility of the master element
+	to inform displayed slave are moved,
 	by calling the slot updateLabel
 	By default master element is the parent graphics item of this Xref,
 	but if the Xref must be snap to the label of master,
