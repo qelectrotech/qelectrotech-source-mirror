@@ -107,7 +107,7 @@
             <text>Profinet IP</text>
         </dynamic_text>
         <dynamic_text rotation="0" uuid="{a41b1614-37ea-4b36-be76-a16b194b98d6}" text_from="UserText" Halignment="AlignLeft" frame="false" y="-50" z="232" font="Sans Serif,5,-1,5,0,0,0,0,0,0,normal" x="80" text_width="-1" Valignment="AlignTop">
-            <text>MAC ADRESS :</text>
+            <text>MAC ADDRESS :</text>
         </dynamic_text>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length2="1.5" x1="80" length1="1.5" end2="none" y1="0" x2="100" y2="0" end1="none"/>
         <rect style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" y="-180" rx="0" width="360" x="0" height="120" ry="0"/>

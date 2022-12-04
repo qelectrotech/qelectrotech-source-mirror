@@ -43,7 +43,7 @@ echo "This script :"
 echo "\t - up date the svn depot"
 echo "\t - built the application bundle,"
 echo "\t - copy over required Qt frameworks,"
-echo "\t - copy additionnal files: translations, titleblocks and elements,"
+echo "\t - copy additional files: translations, titleblocks and elements,"
 echo "\t - create image disk."
 echo
 echo "Enjoy ;-)"
@@ -93,7 +93,7 @@ if [ -e "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
     read userinput
     if  [ "$userinput" == "n" ] ; then
         echo
-        echo "Process is stoped."
+        echo "Process is stopped."
         echo
         exit
     fi

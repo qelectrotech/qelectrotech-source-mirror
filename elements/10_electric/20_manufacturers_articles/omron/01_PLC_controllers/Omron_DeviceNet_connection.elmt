@@ -15,7 +15,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <polygon y1="23" y2="48" antialias="false" y3="48" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-13" closed="false"/>
         <polygon y1="-13" y2="-38" antialias="false" y3="-38" x1="-28" x2="-28" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="-4" closed="false"/>
         <ellipse antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" width="5.00431" height="5" x="-30.551" y="-12.5"/>
-        <text size="6" text="brigth" x="-24" y="2"/>
+        <text size="6" text="bright" x="-24" y="2"/>
         <text size="6" text="blue" x="-24" y="12"/>
         <text size="6" text="black" x="-24" y="22"/>
         <text size="6" text="red" x="-24" y="-8"/>

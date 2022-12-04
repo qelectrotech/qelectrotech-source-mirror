@@ -54,7 +54,7 @@
         <text text="Error" rotation="0" x="123" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-122"/>
         <text text="I>max" rotation="0" x="30" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-126"/>
         <text text=">60%" rotation="0" x="104" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-122"/>
-        <text text="Trafic" rotation="0" x="104" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-126"/>
+        <text text="Traffic" rotation="0" x="104" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-126"/>
         <text text="Reset" rotation="0" x="50" color="#ffffff" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-80"/>
         <rect ry="0" height="15" x="117" style="line-style:normal;line-weight:normal;filling:HTMLGreenLimeGreen;color:black" width="38" y="-20" rx="0" antialias="false"/>
         <text text="Temp." rotation="0" x="85" color="#00008b" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-126"/>

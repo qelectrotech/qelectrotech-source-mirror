@@ -63,7 +63,7 @@ Bonne utilisation !</informations>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="100" y2="100" x2="50" end1="none" x1="20" length2="1.5" antialias="false"/>
         <text size="7" x="236" text="RS 485 A" y="53"/>
         <text size="6" x="392" text="RX /&#xa;TX -" y="140"/>
-        <text size="7" x="29" text="IP ADRESS : " y="123"/>
+        <text size="7" x="29" text="IP ADDRESS : " y="123"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="60" y2="0" x2="180" end1="none" x1="180" length2="1.5" antialias="false"/>
         <text size="6" x="362" text="RX /&#xa;TX +" y="140"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="165" y2="170" x2="399" end1="none" x1="399" length2="1.5" antialias="false"/>

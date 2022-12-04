@@ -235,7 +235,7 @@ QString SingleApplication::currentUser() const
  * Sends message to the Primary Instance.
  * @param message The message to send.
  * @param timeout the maximum timeout in milliseconds for blocking functions.
- * @return true if the message was sent successfuly, false otherwise.
+ * @return true if the message was sent successfully, false otherwise.
  */
 bool SingleApplication::sendMessage( const QByteArray &message, int timeout )
 {

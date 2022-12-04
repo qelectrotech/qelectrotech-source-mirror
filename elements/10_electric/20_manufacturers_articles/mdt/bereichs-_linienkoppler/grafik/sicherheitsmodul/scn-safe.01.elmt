@@ -8,7 +8,7 @@
         <elementInformation show="1" name="quantity">1</elementInformation>
         <elementInformation show="1" name="manufacturer_reference"/>
         <elementInformation show="1" name="machine_manufacturer_reference"/>
-        <elementInformation show="1" name="description">Safty Modul</elementInformation>
+        <elementInformation show="1" name="description">Safety Module</elementInformation>
         <elementInformation show="1" name="designation">SCN-SAFE.01</elementInformation>
         <elementInformation show="1" name="supplier"/>
         <elementInformation show="1" name="manufacturer">MDT</elementInformation>

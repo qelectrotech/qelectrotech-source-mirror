@@ -74,7 +74,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <rect y="-55.1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-34.73" height="3.25" width="2.66" antialias="false"/>
         <line x2="-23.425" y1="-59" end1="none" x1="-23.425" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-20.65" end2="none"/>
         <text y="-24.55" size="2" text="1" x="-21.43"/>
-        <text y="-71.35" size="3" text="Bus Adress" x="-40.715"/>
+        <text y="-71.35" size="3" text="Bus Address" x="-40.715"/>
         <text y="-63.55" size="3" text="ON" x="-23.425"/>
         <rect y="-176.65" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-12.12" height="165.75" width="27.93" antialias="false"/>
         <text y="57.35" size="2" text="153-1AA03-0XB0" x="-10.125"/>
@@ -95,7 +95,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line x2="-2.81" y1="-163" end1="none" x1="5.17" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-159.1" end2="none"/>
         <line x2="-2.81" y1="-138.3" end1="none" x1="4.505" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-141.55" end2="none"/>
         <text y="50.85" size="3" text="DC24V" x="-30.075"/>
-        <text y="-53.15" size="3" text="Adress :" x="-8.795"/>
+        <text y="-53.15" size="3" text="Address :" x="-8.795"/>
         <input y="-46" size="5" text="_" tagg="label" x="-4.805" rotate="true"/>
         <line x2="14.6029" y1="-149.896" end1="none" x1="5.30589" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-149.896" end2="none"/>
         <terminal y="20.3" orientation="e" x="22.46"/>
