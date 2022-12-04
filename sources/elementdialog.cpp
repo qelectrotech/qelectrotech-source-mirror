@@ -238,7 +238,7 @@ void ElementDialog::checkAccept()
 /**
 	@brief ElementDialog::location
 	@return The selected location or a null location if user has selected nothing
-	or selection isn't compatible with the curent mode
+	or selection isn't compatible with the current mode
 */
 ElementsLocation ElementDialog::location() const
 {

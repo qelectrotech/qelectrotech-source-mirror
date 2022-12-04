@@ -39,7 +39,7 @@
  * designation                    -> exhaustive comment used to explain what the element does.
  * description                    -> exhaustive description used to explain what the element does.
  * plant                          -> the plant assigned to the element
- * comment                        -> a little comment wich can be displayed in the folio
+ * comment                        -> a little comment which can be displayed in the folio
  * manufacturer                   -> the manufacturer of the element
  * manufacturer_reference         -> the manufacturer reference of the element
  * quantity                       -> quantity of the element

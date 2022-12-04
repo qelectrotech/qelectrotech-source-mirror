@@ -341,7 +341,7 @@ inline bool Diagram::displayGrid() {
 
 /**
 	@brief Diagram::setUseBorder
-	Set whether the diagram border (including rows/colums headers and the title
+	Set whether the diagram border (including rows/columns headers and the title
 	block) should be rendered along with the diagram. When set to false, the size
 	of the smallest rectangle containing all items is considered as the diagram
 	size.
@@ -362,7 +362,7 @@ inline bool Diagram::useBorder() {
 
 /**
 	@brief Diagram::setBorderOptions
-	Set the rendering options for the diagram border (including rows/colums
+	Set the rendering options for the diagram border (including rows/columns
 	headers and the title block)
 	@param bo Enabled options ORed together
 	@see BorderOptions
@@ -375,7 +375,7 @@ inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
 
 /**
 	@brief Diagram::borderOptions
-	@return The rendering optios for the diagram border
+	@return The rendering options for the diagram border
 	@see setBorderOptions
 */
 inline Diagram::BorderOptions Diagram::borderOptions() {

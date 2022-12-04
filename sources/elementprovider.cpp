@@ -58,7 +58,7 @@ QVector <QPointer<Element>> ElementProvider::freeElement(ElementData::Types filt
 	QVector<QPointer<Element>> free_elmt;
 	QList<Element *> elmt_list;
 
-		//serch in all diagram
+		//search in all diagram
 	for (const auto &diagram_ : qAsConst(m_diagram_list))
 	{
 			//get all element in diagram d
@@ -124,7 +124,7 @@ QVector<QPointer<Element>> ElementProvider::find(ElementData::Types elmt_type) c
 	@brief ElementProvider::table
 	@param table
 	@param model
-	@return All tables wich display the derivated class of model (if set)
+	@return All tables which display the derivated class of model (if set)
 	and not already in all the chain of next/previous table of table (if set)
 	If table and model are nullptr, return every tables
 */

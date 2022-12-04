@@ -145,7 +145,7 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 
 /**
 	@brief The ChangeDiagramTextCommand class
-	This commad modifies a text item.
+	This command modifies a text item.
 */
 class ChangeDiagramTextCommand : public QUndoCommand {
 	// constructors, destructor

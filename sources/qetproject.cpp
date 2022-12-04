@@ -629,7 +629,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 /**
 	@brief QETProject::addConductorAutoNum
 	Add a new conductor numerotation context. If key already exist,
-	replace old context by the new context
+	replace old context with the new context
 	@param key
 	@param context
 */
@@ -640,7 +640,7 @@ void QETProject::addConductorAutoNum(const QString& key, const NumerotationConte
 /**
 	@brief QETProject::addElementAutoNum
 	Add a new element numerotation context. If key already exist,
-	replace old context by the new context
+	replace old context with the new context
 	@param key
 	@param context
 */
@@ -653,7 +653,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 /**
 	@brief QETProject::addFolioAutoNum
 	Add a new folio numerotation context. If key already exist,
-	replace old context by the new context
+	replace old context with the new context
 	@param key
 	@param context
 */
@@ -1045,7 +1045,7 @@ bool QETProject::isEmpty() const
 /**
 	@brief QETProject::importElement
 	Import the element represented by location
-	to the embbeded collection of this project
+	to the embedded collection of this project
 	@param location
 	@return the location of the imported element, location can be null.
 */
@@ -1082,7 +1082,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 		if (ied.exec() == QDialog::Accepted) {
 			QET::Action action = ied.action();
 
-			//Use the exisitng element
+			//Use the exisiting element
 			if (action == QET::Ignore) {
 				return existing_location;
 			}
@@ -1211,7 +1211,7 @@ QList<ElementsLocation> QETProject::unusedElements() const
 	within this project, false otherwise
 */
 bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
-	// a diagram can only use a title block template embedded wihtin its parent project
+	// a diagram can only use a title block template embedded within its parent project
 	if (location.parentProject() != this) return(false);
 
 	foreach (Diagram *diagram, diagrams()) {
@@ -1641,7 +1641,7 @@ void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 	default conductor
 	defaut folio report
 	default Xref
-	@param xml_element : xml element to use for store default propertie.
+	@param xml_element : xml element to use to store default properties.
 */
 void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 {
@@ -1720,7 +1720,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	@brief QETProject::addDiagram
 	Add a diagram in this project
 	@param diagram added diagram
-	@param pos postion of the new diagram, by default at the end
+	@param pos position of the new diagram, by default at the end
 */
 void QETProject::addDiagram(Diagram *diagram, int pos)
 {

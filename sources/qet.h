@@ -79,7 +79,7 @@ namespace QET {
 	
 	/// Supported types of interactive scaling, typically for a single element primitive
 	enum ScalingMethod {
-		FreeScaling,              ///< do not interfer with the default scaling process
+		FreeScaling,              ///< do not interfere with the default scaling process
 		SnapScalingPointToGrid,   ///< snap the point used to define the new bounding rectangle to the grid
 		RoundScaleRatios          ///< adjust the scaling movement so that the induced scaling ratios are rounded
 	};
@@ -128,7 +128,7 @@ namespace QET {
 		Retry,   ///< The operation must be tried again
 		Ignore,  ///< Skip the current item
 		Erase,   ///< Erase the target content
-		Abort,   ///< abort the whole operation, ignoring the curent item
+		Abort,   ///< abort the whole operation, ignoring the current item
 		Managed, ///< the current item was handled by the Strategy object: do not treat it and continue
 		Rename   ///< the target has to be renamed
 	};
@@ -152,7 +152,7 @@ namespace QET {
 	enum QetCollection {
 		Common,		///< From common collection
 		Custom,		///< From user collection
-		Embedded	///< From an embedded collection (a project for exemple)
+		Embedded	///< From an embedded collection (a project for example)
 	};
 
 	QString qetCollectionToString (const QetCollection &c);

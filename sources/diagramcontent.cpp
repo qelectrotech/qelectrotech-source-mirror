@@ -356,7 +356,7 @@ bool DiagramContent::potentialIsManaged(QList<Conductor *> conductors)
 
 /**
 	@brief DiagramContent::hasTextEditing
-	@return true if handle a text currently in editing intercation
+	@return true if handle a text currently in editing interaction
 */
 bool DiagramContent::hasTextEditing()
 {
@@ -436,7 +436,7 @@ int DiagramContent::count(int filter) const
 	@param filter
 	@return A string that describe the items of the diagram
 	content according to filter.
-	Exemple : X elements, Y conductors etc....
+	Example : X elements, Y conductors etc....
 */
 QString DiagramContent::sentence(int filter) const
 {

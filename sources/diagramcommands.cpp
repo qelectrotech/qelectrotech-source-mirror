@@ -26,8 +26,8 @@
 /**
 	@brief PasteDiagramCommand::PasteDiagramCommand
 	Constructor
-	@param dia : diagram where we must to paste
-	@param c : content to past
+	@param dia : diagram where we must paste
+	@param c : content to paste
 	@param parent : parent undo command
 */
 PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c, QUndoCommand *parent) :
@@ -64,7 +64,7 @@ void PasteDiagramCommand::undo()
 
 /**
 	@brief PasteDiagramCommand::redo
-	Redo this commnand
+	Redo this command
 */
 void PasteDiagramCommand::redo()
 {
@@ -244,7 +244,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement)
 							| dc::ElementTextFields
 							| dc::Tables))
 	{
-		//If curent item have parent, and parent item is in content_to_move
+		//If current item has parent, and parent item is in content_to_move
 		//we don't apply movement to this item, because this item will be moved by is parent.
 		if (qgi->parentItem())
 			if (content_to_move.items().contains(qgi->parentItem()))

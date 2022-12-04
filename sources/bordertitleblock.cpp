@@ -108,15 +108,15 @@ DiagramContext BorderTitleBlock::titleblockInformation() const
 
 /**
 	@brief BorderTitleBlock::titleBlockRectForQPainter
-	@return The title block rect to use with the QPainter in the method draw.
-	The returned rect is alway horizontal
-	(like displayed at the bottom of rect) only the top left change of pos
-	according to the edge where the title block need to be displayed.
+	@return The title block rect to use with the QPainter in the draw method.
+	The returned rect is always horizontal
+	(as displayed at the bottom of rect) only the top left change of pos
+	according to the edge where the title block needs to be displayed.
 	Rect according to edge:
 	Bottom : top left is at the bottom left edge of the diagram rect.
 	Right : top left is at the bottom right of diagram rect.
-	Befor use this rect you need to rotate the QPainter by -90°
-	for snap the rect at the right edge of diagram.
+	Before using this rect you need to rotate the QPainter by -90°
+	to snap the rect at the right edge of diagram.
 */
 QRectF BorderTitleBlock::titleBlockRectForQPainter() const
 {

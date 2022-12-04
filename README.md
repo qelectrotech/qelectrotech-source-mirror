@@ -16,11 +16,11 @@ The main goal of the developers is to provide a libre, easy to use and effective
 ### Version
 
 The current stable version is 0.80 and was released on 2021.02.21.  
-Once it has been officialy released, the stable version is always frozen and is no longer developed.
+Once it has been officially released, the stable version is always frozen and is no longer developed.
 
 New functionalities, bug and issue fixings are further made in the development version (currently 0.9), which can also be [downloaded](https://qelectrotech.org/download.html).
 
-Users who want to test and take benefits from the last software implementations should use the development version. But... use it at your own risk, since things are sometimes broken or only partialy implemented until they are done!
+Users who want to test and take benefits from the last software implementations should use the development version. But... use it at your own risk, since things are sometimes broken or only partially implemented until they are done!
 
 ### License
 
@@ -28,7 +28,7 @@ The software is licensed under [GNU/GPL](https://www.gnu.org/licenses/old-licens
 You are free to use, copy, modify and redistribute it under the terms of the license.
 
 
-Like many other open source softwares, QElectroTech is provided as it is, without any warranty.
+Like many other open source software, QElectroTech is provided as is, without any warranty.
 
 ### Development / technical choices
 

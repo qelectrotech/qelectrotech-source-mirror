@@ -191,7 +191,7 @@ class QETApp : public QObject
 		bool every_template_reduced;
 		bool every_template_visible;
 		QSignalMapper signal_map;
-		QETArguments qet_arguments_; ///< Comand-line arguments parser
+		QETArguments qet_arguments_; ///< Command-line arguments parser
 		/**
 			@brief non_interactive_execution_
 			Whether the application will end

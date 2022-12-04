@@ -239,7 +239,7 @@ bool NewElementWizard::validStep2()
 
 /**
 	@brief NewElementWizard::createNewElement
-	Lauch an element editor for create the new element
+	Launch an element editor to create the new element
 */
 void NewElementWizard::createNewElement()
 {

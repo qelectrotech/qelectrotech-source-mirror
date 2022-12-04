@@ -890,8 +890,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 				if (whole_content)
 					list_conductors << cond;
 					/* When we did not export the whole diagram,
-					 * we must to remove the non selected conductors.
-					 * At this step that mean a conductor which one
+					 * we must remove the non-selected conductors.
+					 * At this step that means a conductor which one
 					 * of these two element are not selected
 					 */
 				else if (cond->terminal1->parentItem()->isSelected()
@@ -1279,8 +1279,8 @@ bool Diagram::fromXml(QDomElement &document,
 																   QStringLiteral("-1")).toInt());
 
 		/* We try to paste from another project,
-		 *  then befor paste elements,
-		 *  we must to import the definition of the pasted elements
+		 *  then before paste elements,
+		 *  we must import the definition of the pasted elements
 		 *  (owned by other project)
 		 *  in the embedded collection of this project
 		 */
@@ -1547,7 +1547,7 @@ void Diagram::refreshContents()
 /**
 	@brief Diagram::addItem
 	Réimplemented from QGraphicsScene::addItem(QGraphicsItem *item)
-	Do some specific operation if item need it (for exemple an element)
+	Do some specific operation if item need it (for example an element)
 	@param item
 */
 void Diagram::addItem(QGraphicsItem *item)
@@ -1578,7 +1578,7 @@ void Diagram::addItem(QGraphicsItem *item)
 /**
 	@brief Diagram::removeItem
 	Reimplemented from QGraphicsScene::removeItem(QGraphicsItem *item)
-	Do some specific operation if item need it (for exemple an element)
+	Do some specific operation if item need it (for example an element)
 	@param item
 */
 void Diagram::removeItem(QGraphicsItem *item)
@@ -2268,7 +2268,7 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 /**
 	@brief Diagram::snapToGrid
 	Return a nearest snap point of p
-	@param p point to find the nearest snaped point
+	@param p point to find the nearest snapped point
 	@return
 */
 QPointF Diagram::snapToGrid(const QPointF &p)

@@ -263,7 +263,7 @@ ConductorProperties::~ConductorProperties()
 
 /**
 	@brief ConductorProperties::toXml
-	Export conductor propertie, in the XML element 'e'
+	Export conductor properties to the XML element 'e'
 	@param e the xml element
 */
 void ConductorProperties::toXml(QDomElement &e) const
@@ -308,7 +308,7 @@ void ConductorProperties::toXml(QDomElement &e) const
 
 /**
 	@brief ConductorProperties::fromXml
-	Import conductor propertie, from the attribute of the xml element 'e'
+	Import conductor properties from the attribute of the xml element 'e'
 	@param e the xml document
 */
 void ConductorProperties::fromXml(QDomElement &e)

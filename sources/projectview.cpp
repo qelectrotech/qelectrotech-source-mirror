@@ -761,13 +761,13 @@ void ProjectView::initWidgets()
 	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
 	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)), Qt::QueuedConnection);
 	
-	//arrows buttton to return on first view
+	//arrows button to return on first view
 	QToolButton *m_first_view_button =new QToolButton;
 	m_first_view_button->setDefaultAction(m_first_view);
 	m_first_view_button->setAutoRaise(true);
 	m_tab->setCornerWidget(m_first_view_button, Qt::TopLeftCorner);
 	
-	//arrows buttton to go on last view
+	//arrows button to go on last view
 	QToolButton *m_end_view_button =new QToolButton;
 	m_end_view_button->setDefaultAction(m_end_view);
 	m_end_view_button->setAutoRaise(true);

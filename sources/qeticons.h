@@ -19,7 +19,7 @@
 #define QET_ICONS_H
 #include <QIcon>
 /**
-	This namespace is meant to delare icons used within the QElectroTech
+	This namespace is meant to declare icons used within the QElectroTech
 	application.
 */
 namespace QET {
