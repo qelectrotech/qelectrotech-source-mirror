@@ -130,7 +130,7 @@
             <text>Profinet IP</text>
         </dynamic_text>
         <dynamic_text Valignment="AlignTop" y="-20.2386" font="Sans Serif,4,-1,5,0,0,0,0,0,0,normal" rotation="0" frame="false" uuid="{a41b1614-37ea-4b36-be76-a16b194b98d6}" text_width="-1" text_from="UserText" x="27" z="106" Halignment="AlignLeft">
-            <text>MAC ADRESS :</text>
+            <text>MAC ADDRESS :</text>
         </dynamic_text>
         <dynamic_text Valignment="AlignTop" y="-48.67" font="Sans Serif,2,-1,5,0,0,0,0,0,0,normal" rotation="270" frame="false" uuid="{bad3e12d-018e-4fb5-9956-db53162b40ac}" text_width="-1" text_from="UserText" x="6" z="107" Halignment="AlignLeft">
             <text>ERROR</text>

@@ -55,7 +55,7 @@ Bonne utilisation !</informations>
         <text size="7" x="358" text="FAIL SAVE" y="53"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="100" y2="100" x2="420" end1="none" x1="390" length2="1.5" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="100" y2="100" x2="50" end1="none" x1="20" length2="1.5" antialias="false"/>
-        <text size="7" x="29" text="IP ADRESS : " y="123"/>
+        <text size="7" x="29" text="IP ASDRESS : " y="123"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="60" y2="0" x2="180" end1="none" x1="180" length2="1.5" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="165" y2="170" x2="320" end1="none" x1="320" length2="1.5" antialias="false"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="165" y2="170" x2="290" end1="none" x1="290" length2="1.5" antialias="false"/>

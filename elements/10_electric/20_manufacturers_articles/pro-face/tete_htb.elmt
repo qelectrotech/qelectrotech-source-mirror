@@ -83,7 +83,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-73" x1="-69" end2="simple" y2="-83" length2="1.5" antialias="false" x2="-60" end1="none"/>
         <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-97" width="11" height="3" x="3" antialias="false"/>
         <rect style="line-style:normal;line-weight:normal;filling:none;color:black" y="-55" width="11" height="3" x="21" antialias="false"/>
-        <text size="9" y="-90" x="-73" text="ADRESS"/>
+        <text size="9" y="-90" x="-73" text="ADDRESS"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="96.5" diameter="4" x="76" antialias="true"/>
         <text size="6" y="-64" x="-75" text="TENS"/>
         <rect style="line-style:normal;line-weight:normal;filling:black;color:black" y="-55" width="11" height="3" x="3" antialias="false"/>

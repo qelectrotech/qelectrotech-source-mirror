@@ -73,7 +73,7 @@
         <rect y="17" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-22" height="5" width="4" antialias="false"/>
         <line x2="-5" y1="11" end1="none" x1="-5" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="70" end2="none"/>
         <text y="64" size="3" text="1" x="-2"/>
-        <text y="-8" size="4" text="Bus Adress" x="-31"/>
+        <text y="-8" size="4" text="Bus Address" x="-31"/>
         <text y="4" size="5" text="ON" x="-5"/>
         <rect y="-170" style="line-style:normal;line-weight:normal;filling:none;color:black" x="12" height="255" width="42" antialias="false"/>
         <text y="190" size="3" text="153-1AA03-0XB0" x="15"/>
@@ -94,7 +94,7 @@
         <line x2="26" y1="-149" end1="none" x1="38" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-143" end2="none"/>
         <line x2="26" y1="-111" end1="none" x1="37" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-116" end2="none"/>
         <text y="180" size="5" text="DC24V" x="-15"/>
-        <text y="20" size="5" text="Adress :" x="17"/>
+        <text y="20" size="5" text="Address :" x="17"/>
         <input y="31" size="7" text="_" tagg="label" x="23" rotate="true"/>
         <line x2="61.943" y1="-128.84" end1="none" x1="38.9134" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" antialias="false" y2="-128.84" end2="none"/>
         <terminal y="102" orientation="e" x="64"/>

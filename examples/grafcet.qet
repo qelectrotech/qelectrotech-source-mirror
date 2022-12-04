@@ -1092,7 +1092,7 @@
                     <element name="etape_entree.elmt">
                         <definition width="90" hotspot_y="30" height="90" type="element" hotspot_x="45" version="0.2">
                             <names>
-                                <name lang="en">Imput step</name>
+                                <name lang="en">Input step</name>
                                 <name lang="fr">Etape d'entrée</name>
                             </names>
                             <description>

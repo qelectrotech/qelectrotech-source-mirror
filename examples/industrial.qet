@@ -13554,9 +13554,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <inputs/>
                 <elementInformations>
                     <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
-                    <elementInformation show="1" name="comment">Input Conector</elementInformation>
+                    <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A0 / QB0</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector</elementInformation>
                     <elementInformation show="1" name="label">17 A0 / QB0</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -14060,9 +14060,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <inputs/>
                 <elementInformations>
                     <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
-                    <elementInformation show="1" name="comment">Input Conector</elementInformation>
+                    <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A1/IB0</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 0</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 0</elementInformation>
                     <elementInformation show="1" name="label">19 A1/IB0</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -14303,7 +14303,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <elementInformations>
                     <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A1/IB1</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 1</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 1</elementInformation>
                     <elementInformation show="1" name="label">20 A1/IB1</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -15380,9 +15380,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <inputs/>
                 <elementInformations>
                     <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
-                    <elementInformation show="1" name="comment">Input Conector</elementInformation>
+                    <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A2/IB0</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 0</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 0</elementInformation>
                     <elementInformation show="1" name="label">22 A2/IB0</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -15891,9 +15891,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <inputs/>
                 <elementInformations>
                     <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
-                    <elementInformation show="1" name="comment">Input Conector</elementInformation>
+                    <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A2/IB1</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 1</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 1</elementInformation>
                     <elementInformation show="1" name="label">23 A2/IB1</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -16821,9 +16821,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <inputs/>
                 <elementInformations>
                     <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
-                    <elementInformation show="1" name="comment">Input Conector</elementInformation>
+                    <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A3/IB0</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 0</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 0</elementInformation>
                     <elementInformation show="1" name="label">25 A3/IB0</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -17196,7 +17196,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <elementInformations>
                     <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A3/IB1</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 1</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 1</elementInformation>
                     <elementInformation show="1" name="label">26 A3/IB1</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -18222,9 +18222,9 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <inputs/>
                 <elementInformations>
                     <elementInformation show="1" name="manufacturer">Schneider Electric</elementInformation>
-                    <elementInformation show="1" name="comment">Input Conector</elementInformation>
+                    <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A4/IB0</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 0</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 0</elementInformation>
                     <elementInformation show="1" name="label">28 A4/IB0</elementInformation>
                 </elementInformations>
                 <dynamic_texts>
@@ -18426,7 +18426,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011&#xd;
                 <elementInformations>
                     <elementInformation show="1" name="comment">Input Connector</elementInformation>
                     <elementInformation show="1" name="formula">%id A4/IB1</elementInformation>
-                    <elementInformation show="1" name="description">8 Input Conector Byte 1</elementInformation>
+                    <elementInformation show="1" name="description">8 Input Connector Byte 1</elementInformation>
                     <elementInformation show="1" name="label">29 A4/IB1</elementInformation>
                 </elementInformations>
                 <dynamic_texts>

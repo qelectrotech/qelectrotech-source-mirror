@@ -12,7 +12,7 @@ QET_LANG_DIR=$(readlink -f "${current_dir}/../lang/")
 
 # checks for the qelectrotech binary executable file
 if [ ! -x "${QET_EXE}" ]; then
-	echo "Errror : executable file not found. Aborting."
+	echo "Error : executable file not found. Aborting."
 	exit 1
 fi
 

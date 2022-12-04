@@ -20,7 +20,7 @@ Bonne utilisation !</informations>
         <input rotate="true" size="9" x="302.5" text="_" tagg="label" y="90.55"/>
         <input rotate="true" size="7" x="89" text="XXX . XXX . XXX . XXX" tagg="none" y="121"/>
         <text size="5" x="43" text="RS 232" y="73"/>
-        <text size="7" x="29" text="IP ADRESS : " y="123"/>
+        <text size="7" x="29" text="IP ADDRESS : " y="123"/>
         <text size="4" x="68" text="B" y="92"/>
         <line style="line-style:dotted;line-weight:normal;filling:none;color:black" end2="none" length1="1.5" y1="40" y2="40" x2="390" end1="none" x1="370" length2="1.5" antialias="false"/>
         <text size="5" x="386" text="10 BASE-T" y="73"/>
