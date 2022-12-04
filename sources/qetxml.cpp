@@ -165,7 +165,7 @@ QBrush QETXML::brushFromXml(const QDomElement &element)
 	@brief QETXML::fileSystemDirToXmlCollectionDir
 	@param document : owner document of returned QDomElement,
 	use to create the QDomElement.
-	@param dir : file system direcory to convert to QDomElement directory
+	@param dir : file system directory to convert to QDomElement directory
 	@param rename : by default the attribute "name" of the returned
 	QDomElement is the same name of @dir
 	but we can override itwith rename
@@ -656,7 +656,7 @@ QDomElement createXmlProperty(const QString& name, const char* value) {
 
 /*!
  * \brief propertyInteger
- * Reads an interger from the XML element.
+ * Reads an integer from the XML element.
  * \param e DomElement which contains the property attribute
  * \param attribute_name Name of the attribute
  * \param entier Return value if success
@@ -710,7 +710,7 @@ QDomElement createXmlProperty(const QString& name, const QColor value) {
 
 /*!
  * \brief PropertiesInterface::propertyInteger
- * Reads an interger from the XML element.
+ * Reads an integer from the XML element.
  * \param e DomElement which contains the property attribute
  * \param attribute_name Name of the attribute
  * \param entier Return value if success

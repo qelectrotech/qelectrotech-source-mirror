@@ -25,10 +25,10 @@
  * Inside this namespace you will fin all information used in QElectrotech for
  * element, conductor and diagram.
  * Each information have 3 values :
- * #1 the info key = the key of an information as a QString used in the code (exemple : label)
+ * #1 the info key = the key of an information as a QString used in the code (example : label)
  * #2 the info key to variable = the key in form of a variable.
- * This is used by the user to replace a variable by the string of this variable (exemple : %{label})
- * #3 the info key translated to the current local (exemple label in dutch = Betriebsmittelkennzeichen)
+ * This is used by the user to replace a variable by the string of this variable (example : %{label})
+ * #3 the info key translated to the current local (example label in dutch = Betriebsmittelkennzeichen)
  */
 namespace QETInformation
 {

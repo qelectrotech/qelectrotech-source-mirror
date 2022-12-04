@@ -90,7 +90,7 @@ bool ConductorNumExport::toCsv()
 
 /**
 	@brief ConductorNumExport::wiresNum
-	@return the wire num formated in csv
+	@return the wire num formatted in csv
 */
 QString ConductorNumExport::wiresNum() const
 {
@@ -126,7 +126,7 @@ void ConductorNumExport::fillHash()
 				continue;
 			}
 
-			//We must to define if the connected terminal is a folio report, if it is the case
+			//We must define if the connected terminal is a folio report, if it is the case
 			//we don't add the num to the hash because the terminal doesn't represent a real terminal.
 			if(!(c->terminal1->parentElement()->linkType() & Element::AllReport))
 			{

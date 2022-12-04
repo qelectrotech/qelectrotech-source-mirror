@@ -187,12 +187,12 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_edit_properties,	///< Edit the properties of the current project.
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
-		*m_clean_project,		///< Clean the content of the curent project by removing useless items
+		*m_clean_project,		///< Clean the content of the current project by removing useless items
 		*m_project_folio_list,		///< Sommaire des schemas
 		*m_csv_export,			///< generate nomenclature
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item
-		*m_terminal_strip_dialog = nullptr, ///<Lauch terminal strip dialog
+		*m_terminal_strip_dialog = nullptr, ///<Launch terminal strip dialog
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_export_project_db,		///Export to file the internal database of the current project

@@ -109,9 +109,9 @@ class DiagramView : public QGraphicsView
 		void titleChanged(DiagramView *, const QString &);
 			/// Signal emitted when users wish to locate an element from the diagram within elements collection
 		void findElementRequired(const ElementsLocation &);
-			/// Signal emmitted when diagram must be show
+			/// Signal emitted when diagram must be show
 		void showDiagram (Diagram *);
-			/// Signal emmtted when free rubberband changed.
+			/// Signal emitted when free rubberband changed.
 			/// When free rubberband selection ends this signal will be emitted with null value.
 		void freeRubberBandChanged(QPolygonF polygon);
 	

@@ -177,7 +177,7 @@ QString QETInformation::elementInfoToVar(const QString &info)
  * @brief QETInformation::infoToVar
  * @param info
  * @return return the string @info prepended by %{ ans appended by }
- * exemple : if info is label, the returned string is %{label}
+ * example : if info is label, the returned string is %{label}
  */
 QString QETInformation::infoToVar(const QString &info)
 {

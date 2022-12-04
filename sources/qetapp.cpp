@@ -452,7 +452,7 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 
 /**
 	@brief QETApp::availableTitleBlockTemplatesCollections
-	@return the list of all available title block tempaltes collections,
+	@return the list of all available title block templates collections,
 	beginning with the common and custom ones, plus the projects-embedded ones.
 */
 QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections()
@@ -554,7 +554,8 @@ QString QETApp::commonElementsDir()
 
 /**
 	@brief QETApp::customElementsDir
-	@return the dir path of user elements collection ened by a "/" separator
+	@return the dir path of user elements collection appended with a
+	"/" separator
 */
 QString QETApp::customElementsDir()
 {
@@ -905,7 +906,7 @@ void QETApp::overrideCommonElementsDir(const QString &new_ced) {
 /**
 	@brief QETApp::overrideCommonTitleBlockTemplatesDir
 	Define the path of the directory containing the common title block
-	tempaltes collection.
+	templates collection.
 	@param new_ctbtd
 */
 void QETApp::overrideCommonTitleBlockTemplatesDir(const QString &new_ctbtd) {
@@ -2121,8 +2122,8 @@ void QETApp::checkBackupFiles()
 	{
 		for (QETProject *project : registeredProjects().values())
 		{
-			/* We must to adjust with the flag
-			 * QUrl::StripTrailingSlash to compar a path formated
+			/* We must adjust with the flag
+			 * QUrl::StripTrailingSlash to compare a path formatted
 			 * like the path returned by KAutoSaveFile
 			 */
 			const QString path = QUrl::fromLocalFile(
@@ -2166,7 +2167,7 @@ void QETApp::checkBackupFiles()
 					 )
 			== QMessageBox::Ok)
 	{
-		//If there is opened editors, we find those who are visible
+		//If there are open editors, find those that are visible
 		if (diagramEditors().count())
 		{
 			diagramEditors().first()->setVisible(true);

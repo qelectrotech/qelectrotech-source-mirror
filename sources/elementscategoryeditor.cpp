@@ -141,7 +141,7 @@ void ElementsCategoryEditor::acceptCreation()
 		return;
 	}
 	
-		//User must enter a directorie name
+		//User must enter a directory name
 	if (!m_file_line_edit -> isValid()) {
 		QET::QetMessageBox::critical(this,
 									 tr("Nom interne manquant", "message box title"),

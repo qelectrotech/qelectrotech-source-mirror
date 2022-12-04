@@ -451,7 +451,7 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
-		//Lauch the plugin of terminal generator
+		//Launch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
 
@@ -1390,7 +1390,7 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 
 /**
 	@brief QETDiagramEditor::addItemGroupTriggered
-	This slot is called when an item must be added to the curent diagram,
+	This slot is called when an item must be added to the current diagram,
 	this slot use the DVEventInterface to add item
 	@param action : Action that describe the item to add.
 */
@@ -1809,7 +1809,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	sub_window -> setWindowIcon(project_view -> windowIcon());
 	sub_window -> systemMenu() -> clear();
 
-	//By defaut QMdiSubWindow have a QAction "close" with shortcut QKeySequence::Close
+	//By default QMdiSubWindow have a QAction "close" with shortcut QKeySequence::Close
 	//But the QAction m_close_file of this class have the same shortcut too.
 	//We remove the shortcut of the QAction of QMdiSubWindow for avoid conflic
 	for(QAction *act : sub_window->actions())
@@ -2062,7 +2062,7 @@ void QETDiagramEditor::projectWasClosed(ProjectView *project_view)
 		undo_group.removeStack(project -> undoStack());
 		QETApp::unregisterProject(project);
 	}
-	//When project is closed, a lot of signal are emited, notably if there is an item selected in a diagram.
+	//When project is closed, a lot of signal are emitted, notably if there is an item selected in a diagram.
 	//In some special case, since signal/slot connection can be direct or queued, some signal are handled after QObject is deleted, and crash qet
 	//notably in the function Diagram::elements when she call items() (I don't know exactly why).
 	//set nullptr to "m_selection_properties_editor->setDiagram()" fix this crash

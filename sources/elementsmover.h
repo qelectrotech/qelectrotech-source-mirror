@@ -32,11 +32,11 @@ class QStatusBar;
 
 	A movement work in 3 steps:
 	1: beginMovement    -> init a new movement
-	2: continueMovement -> continue the curent movement
-	3: endMovement      -> finish the curent movement
+	2: continueMovement -> continue the current movement
+	3: endMovement      -> finish the current movement
 
-	A movement in progress must finish befor start a new movement. We can know if
-	element mover is ready for a new movement by calling isReady().
+	A movement in progress must finish before starting a new movement. We can
+	know if element mover is ready for a new movement by calling isReady().
 */
 class ElementsMover {
 		// constructors, destructor

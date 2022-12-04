@@ -31,7 +31,7 @@ set(QET_DIR ${PROJECT_SOURCE_DIR})
 # Add sub directories
 option(PACKAGE_TESTS "Build the tests" ON)
 if(PACKAGE_TESTS)
-  message("Add sub directorie tests")
+  message("Add sub directory tests")
   add_subdirectory(tests)
 endif()
 

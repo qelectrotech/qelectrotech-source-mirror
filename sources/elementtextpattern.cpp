@@ -150,7 +150,7 @@ ImportElementTextPattern::ImportElementTextPattern(Element *elmt):
 	
 	bool ok=false;
 	bool erase = false;
-		//Remove the .xml extention of the files
+		//Remove the .xml extension of the files
 	result.replaceInStrings(".xml", "");
 	QString name = getName(result, &ok, &erase);
 	
