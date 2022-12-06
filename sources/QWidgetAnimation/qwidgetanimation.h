@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2021 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -69,7 +69,7 @@ class QWidgetAnimation : public QPropertyAnimation
 	private:
 		enum currentState {
 			Showing,
-			Hidding,
+			Hiding,
 			Finish
 		};
 
