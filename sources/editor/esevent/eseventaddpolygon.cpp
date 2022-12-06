@@ -117,7 +117,7 @@ bool ESEventAddPolygon::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 				m_polygon->removeLastPoint();
 				m_polygon->setClosed(true);
 			}
-			m_scene->undoStack().push(new AddPartCommand(QObject::tr("Polygone"), m_scene, m_polygon));
+			m_scene->undoStack().push(new AddPartCommand(QObject::tr("Polygon"), m_scene, m_polygon));
 
 				//Set m_polygon to nullptr for create new polygon at next mouse press
 			m_polygon = nullptr;
