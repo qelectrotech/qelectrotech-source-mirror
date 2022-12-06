@@ -65,7 +65,7 @@ void QetGraphicsTableItem::adjustTableToFolio(
 
 		//Calcul the maximum row to display to fit the nomenclature into diagram
 	auto available_height = drawable_rect.height() - table->pos().y();
-	auto min_row_height = table->minimumRowHeigth();
+	auto min_row_height = table->minimumRowHeight();
 	table->setDisplayNRow(int(floor(available_height/min_row_height))); //Convert a double to int, but max_row_to_display is already rounded an integer so we assume everything is ok
 }
 
@@ -564,10 +564,10 @@ void QetGraphicsTableItem::initLink()
 }
 
 /**
-	@brief QetGraphicsTableItem::minimumRowHeigth
+	@brief QetGraphicsTableItem::minimumRowHeight
 	@return the minimum height of a row
 */
-int QetGraphicsTableItem::minimumRowHeigth() const
+int QetGraphicsTableItem::minimumRowHeight() const
 {
 	return m_minimum_row_height;
 }
