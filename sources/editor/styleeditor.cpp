@@ -382,7 +382,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	auto main_layout = new QVBoxLayout();
 	main_layout -> setContentsMargins(0,0,0,0);
 
-	main_layout -> addWidget(new QLabel("<u>" + tr("Apparence :") + "</u> "));
+	main_layout -> addWidget(new QLabel("<u>" + tr("Appearance :") + "</u> "));
 
 	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
