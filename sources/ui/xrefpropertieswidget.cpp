@@ -108,7 +108,7 @@ void XRefPropertiesWidget::buildUi()
 	ui -> m_xrefpos_cb -> addItem(tr("Top"),"top");
 	ui -> m_xrefpos_cb -> addItem(tr("Bottom"),"bottom");
 	ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
-	ui -> m_xrefpos_cb -> addItem(tr("Rigth"),"right");
+	ui -> m_xrefpos_cb -> addItem(tr("Right"),"right");
 	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
