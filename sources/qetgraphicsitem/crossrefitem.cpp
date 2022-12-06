@@ -29,7 +29,7 @@
 //define the height of the header.
 static int header = 5;
 //define the minimal height of the cross (without header)
-static int cross_min_heigth = 33;
+static int cross_min_height = 33;
 
 /**
 	@brief CrossRefItem::CrossRefItem
@@ -520,7 +520,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 	if (no_str.isEmpty() && nc_str.isEmpty()) return;
 
 	//this is the default size of cross ref item
-	QRectF default_bounding(0, 0, 40, header + cross_min_heigth);
+	QRectF default_bounding(0, 0, 40, header + cross_min_height);
 
 	//Bounding rect of the NO text
 	QRectF no_bounding;
