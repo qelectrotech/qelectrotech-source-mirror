@@ -9277,7 +9277,7 @@ Wilt u deze vervangen ?</translation>
         <location filename="../sources/qtextorientationwidget.cpp" line="39"/>
         <source>Example</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Voorbeeld</translation>
     </message>
 </context>
 <context>
@@ -13568,7 +13568,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
         <location filename="../sources/titleblock/templateview.cpp" line="660"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greater than the preview width</comment>
-        <translation type="unfinished">[%1px]</translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="714"/>
@@ -13798,7 +13798,7 @@ Maximale afmeting : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="111"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechts</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="112"/>
