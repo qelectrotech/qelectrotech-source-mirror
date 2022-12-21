@@ -3194,12 +3194,12 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
         <translation>Gebruik systeemkleuren</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="398"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Pad naar de gebruikerscollectie</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Chemin de la collection commune</source>
         <translation>Pad naar de algemene collectie</translation>
     </message>
@@ -3255,7 +3255,7 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
         <translation> min</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="412"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="411"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Pad naar gebruikerstitelblokken</translation>
     </message>
@@ -3610,6 +3610,11 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="319"/>
         <source>Mongol</source>
         <translation>Mongools</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
+        <source>Ukrainien</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -3204,17 +3204,17 @@ form
         <translation>Usar cores de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="398"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
         <source>Chemin de la collection utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="412"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="411"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Chemin de la collection commune</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3621,6 +3621,11 @@ form
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="319"/>
         <source>Mongol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
+        <source>Ukrainien</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -3214,17 +3214,17 @@ that you create. Text and number inputs are
         <translation>Использовать системные цвета</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="398"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="397"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Путь к коллекции пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="412"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="411"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Путь к штампам пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Chemin de la collection commune</source>
         <translation>Путь к общей коллекции</translation>
     </message>
@@ -3633,6 +3633,11 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="319"/>
         <source>Mongol</source>
         <translation>Монгольский</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
+        <source>Ukrainien</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
