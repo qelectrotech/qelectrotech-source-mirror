@@ -32,6 +32,11 @@ TerminalStripDrawer::TerminalStripDrawer(QPointer<TerminalStrip> strip) :
     m_strip(strip)
 {}
 
+void TerminalStripDrawer::setStrip(TerminalStrip *strip)
+{
+    m_strip = strip;
+}
+
 /**
  * @brief TerminalStripDrawer::paint
  * @param painter

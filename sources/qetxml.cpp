@@ -21,6 +21,7 @@
 
 #include <QDir>
 #include <QFont>
+#include <QGraphicsItem>
 #include <QPen>
 
 /**
@@ -917,7 +918,39 @@ bool validXmlProperty(const QDomElement& e) {
     if (!e.hasAttribute("value"))
         return false;
 
-	return true;
+    return true;
+}
+
+/**
+ * @brief qGraphicsItemPosToXml
+ * Save the pos of a QGraphicsItem into an xml element.
+ * The tag name of the xml element is pos and there is 3 attributes:
+ * x, y, z.
+ * @param item
+ * @param document
+ * @return
+ */
+QDomElement qGraphicsItemPosToXml(QGraphicsItem *item, QDomDocument &document)
+{
+    auto dom_pos = document.createElement(QStringLiteral("pos"));
+    dom_pos.setAttribute(QStringLiteral("x"), QString::number(item->pos().x()));
+    dom_pos.setAttribute(QStringLiteral("y"), QString::number(item->pos().y()));
+    dom_pos.setAttribute(QStringLiteral("z"), QString::number(item->zValue()));
+
+    return dom_pos;
+}
+
+bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt)
+{
+    if (xml_elmt.tagName() == QLatin1String("pos"))
+    {
+        item->setX(xml_elmt.attribute(QStringLiteral("x"), QStringLiteral("0")).toDouble());
+        item->setY(xml_elmt.attribute(QStringLiteral("y"), QStringLiteral("0")).toDouble());
+        item->setZValue(xml_elmt.attribute(QStringLiteral("z"), QStringLiteral("0")).toInt());
+
+        return true;
+    }
+    return false;
 }
 
 }

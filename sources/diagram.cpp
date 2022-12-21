@@ -18,6 +18,8 @@
 #include "diagram.h"
 
 #include "ElementsCollection/elementcollectionhandler.h"
+#include "TerminalStrip/GraphicsItem/terminalstripitem.h"
+#include "xml/terminalstripitemxml.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
@@ -873,6 +875,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QVector<DiagramImageItem *> list_images;
 	QVector<QetShapeItem *> list_shapes;
 	QVector<QetGraphicsTableItem *> table_vector;
+    QVector<TerminalStripItem *> strip_vector;
 
 	//Ckeck graphics item to "XMLise"
 	for(QGraphicsItem *qgi : items())
@@ -922,6 +925,12 @@ QDomDocument Diagram::toXml(bool whole_content) {
 				if (whole_content || table->isSelected())
 					table_vector << table;
 			}
+            case TerminalStripItem::Type: {
+                const auto strip = static_cast<TerminalStripItem *>(qgi);
+                if (whole_content || strip->isSelected()) {
+                    strip_vector << strip;
+                }
+            }
 		}
 	}
 
@@ -978,6 +987,11 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		}
 		dom_root.appendChild(tables);
 	}
+
+    if (!strip_vector.isEmpty()) {
+        dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
+    }
+
 
 	return(document);
 }
@@ -1423,6 +1437,9 @@ bool Diagram::fromXml(QDomElement &document,
 		added_tables << table;
 	}
 
+        //Load terminal strip item
+    QVector<TerminalStripItem *> added_strips { TerminalStripItemXml::fromXml(this, root) };
+
 	//Translate items if a new position was given in parameter
 	if (position != QPointF())
 	{
@@ -1433,6 +1450,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto text    : qAsConst(added_texts      )) added_items << text;
 		for (auto image   : qAsConst(added_images     )) added_items << image;
 		for (auto table   : qAsConst(added_tables     )) added_items << table;
+        for (const auto &strip : qAsConst(added_strips)) added_items << strip;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
@@ -1473,8 +1491,9 @@ bool Diagram::fromXml(QDomElement &document,
 		content_ptr -> m_shapes		= QSet<QetShapeItem *>(
 					added_shapes.begin(),
 					added_shapes.end());
+        content_ptr->m_terminal_strip.swap(added_strips);
 #endif
-		content_ptr -> m_tables             = added_tables;
+        content_ptr->m_tables.swap(added_tables);
 	}
 
 	adjustSceneRect();
@@ -1528,20 +1547,25 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root,
 */
 void Diagram::refreshContents()
 {
-	ElementProvider provider_(this);
+    DiagramContent dc_(this, false);
 
-	for (Element *elmt : elements())
-	{
+    for (auto &elmt : dc_.m_elements) {
 		elmt->initLink(project());
-		for (DynamicElementTextItem *deti : elmt->dynamicTextItems())
+        for (auto &deti : elmt->dynamicTextItems())
 			deti->refreshLabelConnection();
 	}
 
-	for (Conductor *conductor : conductors())
+    for (auto &conductor : dc_.conductors()) {
 		conductor->refreshText();
+    }
 
-	for (auto table : provider_.table())
+    for (auto &table : qAsConst(dc_.m_tables)) {
 		table->initLink();
+    }
+
+    for (auto &strip :qAsConst(dc_.m_terminal_strip)) {
+        strip->refreshPending();
+    }
 }
 
 /**

@@ -15,31 +15,23 @@
     You should have received a copy of the GNU General Public License
     along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef TERMINALSTRIPDRAWER_H
-#define TERMINALSTRIPDRAWER_H
+#ifndef TERMINALSTRIPITEMXML_H
+#define TERMINALSTRIPITEMXML_H
 
-#include <QPointer>
-#include "terminalstriplayoutpattern.h"
+#include <QDomElement>
 
-class QPainter;
-class TerminalStrip;
+class TerminalStripItem;
+class QETProject;
+class Diagram;
 
-class TerminalStripDrawer
+class TerminalStripItemXml
 {
     public:
-        TerminalStripDrawer(QPointer<TerminalStrip> strip = QPointer<TerminalStrip>());
+        static QDomElement toXml(const QVector<TerminalStripItem *> &items, QDomDocument &document);
+        static QVector<TerminalStripItem *> fromXml(Diagram *diagram, const QDomElement &xml_elmt);
 
-        void setStrip(TerminalStrip *strip);
-        void paint(QPainter *painter);
-        QRectF boundingRect() const;
-
-    private:
-        int height() const;
-        int width() const;
-
-    private:
-        QPointer<TerminalStrip> m_strip;
-        TerminalStripLayoutPattern m_pattern;
+        static QDomElement toXml(TerminalStripItem *item, QDomDocument &document);
+        static bool fromXml(TerminalStripItem *item, QETProject *project, const QDomElement &xml_elmt);
 };
 
-#endif // TERMINALSTRIPDRAWER_H
+#endif // TERMINALSTRIPITEMXML_H

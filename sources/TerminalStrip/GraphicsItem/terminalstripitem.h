@@ -19,6 +19,7 @@
 #define TERMINALSTRIPITEM_H
 
 #include <QGraphicsObject>
+#include <QUuid>
 
 #include "terminalstripdrawer.h"
 #include "../../qetgraphicsitem/qetgraphicsitem.h"
@@ -27,10 +28,16 @@ class TerminalStrip;
 
 class TerminalStripItem : public QetGraphicsItem
 {
+        friend class TerminalStripItemXml;
+
 		Q_OBJECT
 
 	public:
 		TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsItem *parent = nullptr);
+        TerminalStripItem(QGraphicsItem *parent = nullptr);
+
+        void setTerminalStrip(TerminalStrip *strip);
+        QPointer<TerminalStrip> terminalStrip() const;
 
 		enum {Type = UserType + 1011};
 		int type() const override {return Type;}
@@ -41,9 +48,12 @@ class TerminalStripItem : public QetGraphicsItem
 
         void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 
+        void refreshPending();
+
 	private:
 		QPointer<TerminalStrip> m_strip;
 		TerminalStripDrawer m_drawer;
+        QUuid m_pending_strip_uuid;
 
 };
 

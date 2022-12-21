@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripitem.h"
+
+#include "../diagram.h"
 #include "../../qetgraphicsitem/qgraphicsitemutility.h"
 #include "../terminalstrip.h"
 #include "../ui/terminalstripeditorwindow.h"
@@ -26,7 +28,29 @@ TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsIte
 	m_drawer{strip}
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	setAcceptHoverEvents(true);
+    setAcceptHoverEvents(true);
+}
+
+TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
+    QetGraphicsItem { parent }
+{
+    setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+    setAcceptHoverEvents(true);
+}
+
+void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
+{
+    m_strip = strip;
+    m_drawer.setStrip(strip);
+    m_pending_strip_uuid = QUuid();
+}
+
+/**
+ * @brief TerminalStripItem::terminalStrip
+ * @return The strip drawed by this item
+ */
+QPointer<TerminalStrip> TerminalStripItem::terminalStrip() const {
+    return m_strip;
 }
 
 void TerminalStripItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -62,5 +86,22 @@ void TerminalStripItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
     Q_UNUSED (event);
 
-    TerminalStripEditorWindow::edit(m_strip);
+    if (m_strip) {
+        TerminalStripEditorWindow::edit(m_strip);
+    }
+}
+
+void TerminalStripItem::refreshPending()
+{
+    if (!m_pending_strip_uuid.isNull()
+        && diagram()
+        && diagram()->project())
+    {
+        for (const auto &strip_ : diagram()->project()->terminalStrip()) {
+            if (strip_->uuid() == m_pending_strip_uuid) {
+                setTerminalStrip(strip_);
+                break;
+            }
+        }
+    }
 }
