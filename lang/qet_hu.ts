@@ -2668,7 +2668,7 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce folio x100</source>
-        <translation type="unfinished">Tervlap mozgatása fel 100 lappal</translation>
+        <translation>Tervlap mozgatása fel 100 lappal</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -2683,7 +2683,7 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Abaisser ce folio x100</source>
-        <translation type="unfinished">Tervlap mozgatása le 100 lappal</translation>
+        <translation>Tervlap mozgatása le 100 lappal</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -3619,7 +3619,7 @@ A szövegmező alapértelmezett értékének meghatározása az új elemek alá 
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
         <source>Ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukrán</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="411"/>
@@ -9276,7 +9276,7 @@ Cserélni akarod?</translation>
         <location filename="../sources/qtextorientationwidget.cpp" line="39"/>
         <source>Example</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Például</translation>
     </message>
 </context>
 <context>
@@ -13566,7 +13566,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/titleblock/templateview.cpp" line="660"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greater than the preview width</comment>
-        <translation type="unfinished">[%1px]</translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="714"/>
@@ -13797,7 +13797,7 @@ Maximális hossz : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="111"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Jobb</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="112"/>
