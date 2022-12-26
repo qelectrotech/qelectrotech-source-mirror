@@ -126,6 +126,12 @@ void AboutQETDialog::setTranslators()
 	addAuthor(ui->m_translators_label, "Aziz Karabudak",                            "aziz.karabudak@argevi.com",      tr("Traduction en Turc"));
 	addAuthor(ui->m_translators_label, "Emir Izmiroglu",                            "emirizmiroglu@gmail.com",        tr("Traduction en Turc"));
 	addAuthor(ui->m_translators_label, "Gábor Gubányi",                             "gubanyig@gmail.com",             tr("Traduction en hongrois"));
+	addAuthor(ui->m_translators_label, "",                                          "",                               tr("Traduction en serbe"));
+	addAuthor(ui->m_translators_label, "Yaroslav",                                  "",                               tr("Traduction en ukarinien"));
+	addAuthor(ui->m_translators_label, "JoelAs",                                    "",                               tr("Traduction en norvegien"));
+	addAuthor(ui->m_translators_label, "Yuki",                                      "yuki.atoh@gmail.com",            tr("Traduction en japonais"));
+	addAuthor(ui->m_translators_label, "Nathalie",                                  "nathalie.roussier@giz.de",       tr("Traduction en mongol"));
+	addAuthor(ui->m_translators_label, "Uroš Platiše",                              "uros.platise@energycon.eu",      tr("Traduction en slovene"));
 }
 
 /**
