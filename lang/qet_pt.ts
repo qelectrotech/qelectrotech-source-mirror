@@ -90,8 +90,8 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="94"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="148"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="151"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="154"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="157"/>
         <source>Développement</source>
         <translation type="unfinished">Desenvolvimento</translation>
     </message>
@@ -207,82 +207,119 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="136"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="129"/>
+        <source>Traduction en serbe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
+        <source>Traduction en norvegien</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
+        <source>Traduction en japonais</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
+        <source>Traduction en mongol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
+        <source>Traduction en slovene</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="142"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation type="unfinished">Pacotes Fedora e Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="137"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="143"/>
         <source>Paquets Mageia</source>
         <translation type="unfinished">Pacotes Mageia</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="138"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="139"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="140"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="144"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="146"/>
         <source>Paquets Debian</source>
         <translation type="unfinished">Pacotes Debian</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="141"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="142"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="147"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="148"/>
         <source>Paquets Gentoo</source>
         <translation type="unfinished">Pacotes Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="143"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="149"/>
         <source>Paquets OS/2</source>
         <translation type="unfinished">Pacotes OS/2</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="144"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="150"/>
         <source>Paquets FreeBSD</source>
         <translation type="unfinished">Pacotes FreeBSD</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="151"/>
         <source>Paquets MAC OS X</source>
         <translation type="unfinished">Pacotes MAC OS X</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="146"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="152"/>
         <source>Paquets Archlinux AUR</source>
         <translation type="unfinished">Pacotes Archlinux AUR</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="147"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="153"/>
         <source>Icônes</source>
         <translation type="unfinished">Ícones</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="149"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="150"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="155"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="156"/>
         <source>Documentation</source>
         <translation type="unfinished">Documentação</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="152"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="158"/>
         <source>Collection d&apos;éléments</source>
         <translation type="unfinished">Colecção de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="153"/>
-        <source>Python plugin qet-tb-generator</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="154"/>
-        <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="170"/>
-        <source>redimensionneur d&apos;éléments</source>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="175"/>
+        <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="171"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="179"/>
+        <source>Convertisseur d&apos;élément DXF</source>
+        <comment>Dxf2elmt</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="181"/>
+        <source>Outil de traduction d&apos;éléments</source>
+        <comment>Qet_translate</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="159"/>
+        <source>Paquets Snap</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
+        <source>Traduction en ukrainien</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="177"/>
         <source>Générateur d&apos;élément lambda</source>
         <comment>Lambda element generator</comment>
         <translation type="unfinished"></translation>
