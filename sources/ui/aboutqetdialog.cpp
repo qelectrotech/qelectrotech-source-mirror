@@ -156,7 +156,6 @@ void AboutQETDialog::setContributors()
 	addAuthor(ui->m_contrib_label, "Arun Kishore Eswara", "eswara.arun@gmail.com",               tr("Documentation"));
 	addAuthor(ui->m_contrib_label, "René Negre",          "runsys@qelectrotech.org",             tr("Développement"));
 	addAuthor(ui->m_contrib_label, "Nuri",                "nuri@qelectrotech.org",               tr("Collection d'éléments"));
-	addAuthor(ui->m_contrib_label, "Raul Roda",           "",                                    tr("Python plugin qet-tb-generator"));
 	addAuthor(ui->m_contrib_label, "Maximilian Federle",   "",                                   tr("Paquets Snap"));
 }
 
@@ -173,8 +172,15 @@ void AboutQETDialog::setVersion()
 
 void AboutQETDialog::setAnnexProject()
 {
-	addLibrary(ui->m_annex_project_label, tr("redimensionneur d'éléments", "Element scaler"),  "https://github.com/plc-user/QET_ElementScaler");
-	addLibrary(ui->m_annex_project_label, tr("Générateur d'élément lambda", "Lambda element generator"), "https://github.com/asnigma/qet_gen_element");
+	addLibrary(ui->m_annex_project_label, tr("Redimensionneur d'éléments", "Element scaler"),
+	 "https://github.com/plc-user/QET_ElementScaler");
+	addLibrary(ui->m_annex_project_label, tr("Générateur d'élément lambda", "Lambda element generator"),
+	 "https://github.com/asnigma/qet_gen_element");
+	addLibrary(ui->m_annex_project_label, tr("Convertisseur d'élément DXF", "Dxf2elmt"),
+	 "https://github.com/antonioaja/dxf2elmt");
+	addLibrary(ui->m_annex_project_label, tr("Outil de traduction d'éléments", "Qet_translate"),
+	 "https://qelectrotech.org/forum/viewtopic.php?pid=16027#p16027");
+
 }
 
 /**
