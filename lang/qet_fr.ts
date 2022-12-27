@@ -212,11 +212,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
-        <source>Traduction en norvegien</source>
-        <translation>Traduction en norvégien</translation>
-    </message>
-    <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Traduction en japonais</source>
         <translation></translation>
@@ -225,11 +220,6 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Traduction en mongol</source>
         <translation></translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
-        <source>Traduction en slovene</source>
-        <translation>Traduction en slovène</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="142"/>
@@ -316,6 +306,16 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Traduction en ukrainien</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
+        <source>Traduction en norvégien</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
+        <source>Traduction en slovène</source>
         <translation></translation>
     </message>
     <message>
