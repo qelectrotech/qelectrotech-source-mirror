@@ -1,0 +1,68 @@
+<definition link_type="simple" type="element" width="110" hotspot_x="52" hotspot_y="51" height="110" version="0.90">
+    <uuid uuid="{9a1d91f7-d818-4d42-9912-c4003e04212d}"/>
+    <names>
+        <name lang="en">Flush Shutter ZMNHCD1</name>
+        <name lang="cs">Flush Shutter ZMNHCD1</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="quantity">1</elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity">1</elementInformation>
+        <elementInformation show="1" name="manufacturer_reference">Shelly Plus 1</elementInformation>
+        <elementInformation show="1" name="supplier">Alterco Robotics</elementInformation>
+        <elementInformation show="1" name="description">Wifi potential free relay</elementInformation>
+        <elementInformation show="1" name="manufacturer">Alterco Robotics</elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation">Shelly Plus 1</elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+    </elementInformations>
+    <informations>KevinarCZ</informations>
+    <description>
+        <polygon x1="18" antialias="false" y2="54" y6="-46" y4="29" y5="-41" x3="18" style="line-style:normal;line-weight:normal;filling:HTMLBlueRoyalBlue;color:HTMLBlueRoyalBlue" x4="53" x5="53" x6="48" y1="-46" x2="18" y3="54"/>
+        <polygon x1="18" antialias="false" y2="-46" y6="54" y4="29" y5="54" x3="-47" style="line-style:normal;line-weight:normal;filling:HTMLGrayDarkSlateGray;color:HTMLBlueRoyalBlue" x4="-47" x5="-12" x6="18" y1="-46" x2="-42" y3="-41"/>
+        <rect antialias="false" y="-26" x="38" width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0.5" height="60" ry="0.5"/>
+        <rect antialias="false" y="-26" x="21.5" width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0.5" height="73" ry="0.5"/>
+        <rect antialias="false" y="-45" x="-27" width="64" style="line-style:normal;line-weight:normal;filling:HTMLBlueMediumBlue;color:HTMLBlueMediumBlue" rx="0" height="15" ry="0"/>
+        <rect antialias="false" y="-26" x="30" width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0.5" height="66" ry="0.5"/>
+        <circle antialias="false" y="-41" diameter="7" x="-24.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle antialias="false" y="-41" diameter="7" x="-14.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle antialias="false" y="-41" diameter="7" x="-4.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle antialias="false" y="-41" diameter="7" x="5.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle antialias="false" y="-41" diameter="7" x="16.5" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <circle antialias="false" y="-41" diameter="7" x="26.65" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <rect antialias="false" y="-45" x="-40" width="10" style="line-style:normal;line-weight:normal;filling:white;color:black" rx="0" height="15" ry="0"/>
+        <line x1="-21" antialias="false" y2="-35.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-39.5" x2="-21" length2="1.5"/>
+        <line x1="-11" antialias="false" y2="-35.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-39.5" x2="-11" length2="1.5"/>
+        <line x1="-1" antialias="false" y2="-35.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-39.5" x2="-1" length2="1.5"/>
+        <line x1="20" antialias="false" y2="-35.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-39.5" x2="20" length2="1.5"/>
+        <line x1="30" antialias="false" y2="-35.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-39.5" x2="30" length2="1.5"/>
+        <line x1="-23" antialias="false" y2="-37.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-37.5" x2="-19" length2="1.5"/>
+        <line x1="-13" antialias="false" y2="-37.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-37.5" x2="-9" length2="1.5"/>
+        <line x1="-3" antialias="false" y2="-37.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-37.5" x2="1" length2="1.5"/>
+        <line x1="7" antialias="false" y2="-37.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-37.5" x2="11" length2="1.5"/>
+        <line x1="18" antialias="false" y2="-37.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-37.5" x2="22" length2="1.5"/>
+        <line x1="28" antialias="false" y2="-37.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-37.5" x2="32" length2="1.5"/>
+        <rect antialias="false" y="-36" x="46" width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0.5" height="65" ry="0.5"/>
+        <line x1="9" antialias="false" y2="-35.5" length1="1.5" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" end1="none" y1="-39.5" x2="9" length2="1.5"/>
+        <circle antialias="false" y="-43" diameter="2" x="-36" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <circle antialias="false" y="-38.5" diameter="2" x="-36" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <circle antialias="false" y="-34" diameter="2" x="-36" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <rect antialias="false" y="-29" x="0" width="17" style="line-style:normal;line-weight:normal;filling:HTMLGrayBlack;color:HTMLGrayDimGray" rx="0" height="43" ry="0"/>
+        <rect antialias="false" y="-29" x="-17" width="17" style="line-style:normal;line-weight:normal;filling:black;color:HTMLGrayDimGray" rx="0" height="43" ry="0"/>
+        <circle antialias="false" y="23.5" diameter="5" x="-44.5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text text="TS" y="-26" x="-37" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <text text="N" y="-30" x="29" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <text text="L" y="-30" x="19" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <text text="Q1" y="-30" x="7" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <text text="Q2" y="-30" x="-3" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <text text="I2" y="-30" x="-13" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <text text="I1" y="-30" x="-23" rotation="0" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné"/>
+        <terminal y="-41" uuid="{ca70406a-7894-4b7b-979f-443e430ff766}" x="9" type="Generic" orientation="n" name=""/>
+        <terminal y="-41" uuid="{13630ad0-8bf4-4c69-bd2b-8be371f7408c}" x="-1" type="Generic" orientation="n" name=""/>
+        <terminal y="-41" uuid="{4b0bf6d2-f378-444f-99a7-20554d6df527}" x="20" type="Generic" orientation="n" name=""/>
+        <terminal y="-41" uuid="{ce3bbdcf-4cbb-494b-96a7-43e8cec90ba8}" x="30" type="Generic" orientation="n" name=""/>
+        <terminal y="-41" uuid="{a1079085-bdf7-4a95-9827-6a64f926239f}" x="-11" type="Generic" orientation="n" name=""/>
+        <terminal y="-41" uuid="{8fb3f0a9-e83c-4376-8684-b2a241659a99}" x="-21" type="Generic" orientation="n" name=""/>
+    </description>
+</definition>

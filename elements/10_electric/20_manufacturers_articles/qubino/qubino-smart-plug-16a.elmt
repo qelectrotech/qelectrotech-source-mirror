@@ -1,0 +1,56 @@
+<definition width="80" hotspot_x="40" version="0.90" height="100" link_type="thumbnail" type="element" hotspot_y="49">
+    <uuid uuid="{2c26dc09-1c7e-4c8d-a4c4-374f718ce611}"/>
+    <names>
+        <name lang="cs">Zásuvka Smart Plug 16A</name>
+        <name lang="en">Socket Smart Plug 16A</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">Hager</elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="designation">SNS216</elementInformation>
+        <elementInformation show="1" name="description">Prise de courant modulaire 16A 2P+T connexion SanVis</elementInformation>
+    </elementInformations>
+    <informations>Author: KevinarCZ</informations>
+    <description>
+        <circle y="34" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="-18.5" antialias="false"/>
+        <circle y="-9.7" style="line-style:normal;line-weight:thin;filling:gray;color:black" diameter="8" x="-4" antialias="true"/>
+        <circle y="34" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="12.5" antialias="false"/>
+        <circle y="34" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5" x="-2.5" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" y2="-32" x2="2" end2="none" length1="1.5" length2="1.5" y1="-36" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2" y2="-32" x2="-2" end2="none" length1="1.5" length2="1.5" y1="-36" antialias="false"/>
+        <circle y="-9.7" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="8" x="-21" antialias="true"/>
+        <circle y="-9.7" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="8" x="13" antialias="true"/>
+        <rect y="-42" width="70" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" ry="0" x="-35" height="83" antialias="false"/>
+        <circle y="-36.6" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="60" x="-30" antialias="true"/>
+        <rect y="26" width="20" style="line-style:normal;line-weight:normal;filling:gray;color:black" rx="2.5" ry="2.5" x="-10" height="5" antialias="false"/>
+        <arc y="16" width="4" style="line-style:normal;line-weight:normal;filling:gray;color:black" angle="180" x="-2" height="4" start="0" antialias="true"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-2" y2="23" x2="-2" end2="none" length1="1.5" length2="1.5" y1="19" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" y2="23" x2="2" end2="none" length1="1.5" length2="1.5" y1="19" antialias="false"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-29.5" y2="-8" x2="-27" y3="-19.2" x3="-27" y1="-8" antialias="false"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-29" y2="-5" x2="-27" y3="6" x3="-27" y1="-5" antialias="false"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="29" y2="-5" x2="27" y3="6" x3="27" y1="-5" antialias="false"/>
+        <polygon closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="29" y2="-8" x2="27" y3="-19" x3="27" y1="-8" antialias="false"/>
+        <arc y="-33" width="4" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="180" x="-2" height="4" start="180" antialias="true"/>
+        <text y="-38" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" x="9" rotation="0" text="Smart Plug 16A"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-17" y2="36.5" x2="-15" end2="none" length1="1.5" length2="1.5" y1="36.5" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-1" y2="36.5" x2="1" end2="none" length1="1.5" length2="1.5" y1="36.5" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="14" y2="36.5" x2="16" end2="none" length1="1.5" length2="1.5" y1="36.5" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-16" y2="37.5" x2="-16" end2="none" length1="1.5" length2="1.5" y1="35.5" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="0" y2="37.5" x2="0" end2="none" length1="1.5" length2="1.5" y1="35.5" antialias="false"/>
+        <line end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="15" y2="37.5" x2="15" end2="none" length1="1.5" length2="1.5" y1="35.5" antialias="false"/>
+        <text y="39" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" x="-12" rotation="0" text="L"/>
+        <text y="39" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" x="19" rotation="0" text="N"/>
+        <text y="39" color="#000000" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" x="4" rotation="0" text="PE"/>
+        <terminal y="41" uuid="{cc97a17c-2a01-4d6b-9190-511fba966e0b}" x="-16" type="Generic" name="" orientation="s"/>
+        <terminal y="41" uuid="{3de32d92-977a-4850-86f5-2fad7d4b92c7}" x="15" type="Generic" name="" orientation="s"/>
+        <terminal y="41" uuid="{ee23d7b4-0f04-4250-afb9-d56f889ea258}" x="0" type="Generic" name="" orientation="s"/>
+    </description>
+</definition>
