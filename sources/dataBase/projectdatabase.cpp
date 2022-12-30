@@ -28,10 +28,9 @@
 #include <QLocale>
 #include <QSqlError>
 
-#if defined(Q_OS_LINUX) || defined(Q_OS_WINDOWS)
 #include <QSqlDriver>
 #include <sqlite3.h>
-#endif
+
 
 /**
 	@brief projectDataBase::projectDataBase
