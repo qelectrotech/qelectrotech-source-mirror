@@ -308,6 +308,7 @@ macx {
         # les chemins definis precedemment sont relatifs au dossier contenant le binaire executable
         DEFINES += QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
         DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+        LIBS +=   /opt/digikam.org.x86_64/lib/libsqlite3.0.dylib
 }
 
 # Compilers-specific options
