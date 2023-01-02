@@ -42,7 +42,6 @@
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
-#include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "ui/diagrameditorhandlersizewidget.h"
 
 #ifdef BUILD_WITHOUT_KF5
@@ -441,16 +440,6 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
-	m_terminal_strip_dialog = new QAction(QET::Icons::TerminalStrip, tr("Gestionnaire de borniers (DEV)"), this);
-	connect(m_terminal_strip_dialog, &QAction::triggered, this, [=]()
-	{
-		if (auto project = this->currentProject())
-		{
-			auto tsew {new TerminalStripEditorWindow{project, this}};
-			tsew->show();
-		}
-	});
-
 		//Launch the plugin of terminal generator
 	m_project_terminalBloc = new QAction(QET::Icons::TerminalStrip, tr("Lancer le plugin de création de borniers"), this);
 	connect(m_project_terminalBloc, &QAction::triggered, this, &QETDiagramEditor::generateTerminalBlock);
@@ -826,7 +815,6 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_project_export_conductor_num);
-	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
@@ -1540,8 +1528,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_nomenclature            -> setEnabled(editable_project);
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
-	m_terminal_strip_dialog       -> setEnabled(editable_project);
-
 
 	slot_updateUndoStack();
 	slot_updateModeActions();
