@@ -84,6 +84,39 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 		0x006C,
 		0x0065,
 		0x0072};
+	const QChar ukrainian_data[20] = {
+		0x0406,
+		0x043c,
+		0x043f,
+		0x043e,
+		0x0440,
+		0x0442,
+		0x043e,
+		0x0432,
+		0x0430,
+		0x043d,
+		0x0456,
+		0x0020,
+		0x0435,
+		0x043b,
+		0x0435,
+		0x043c,
+		0x0435,
+		0x043d,
+		0x0442,
+		0x0438};
+	const QChar japanese_data[10] = {
+		0x30A4,
+		0x30F3,
+		0x30D0,
+		0x30FC,
+		0x30C8,
+		0x3055,
+		0x308C,
+		0x305F,
+		0x8981,
+		0x7D20};
+
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
 	names.addName("de", "Importierte elemente");
@@ -100,8 +133,9 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	names.addName("ro", "Elemente importate");
 	names.addName("tr", QString(turkish_data, 12));
 	names.addName("da", "Importerede elementer");
-	names.addName("hr", "Uvezeni elementi");
 	names.addName("sl", "Uvoženi elementi");
+	names.addName("ja", QString(japanese_data, 10));
+	names.addName("uk", QString(ukrainian_data, 20));
 #else
 #	if TODO_LIST
 #		pragma message("@TODO remove code for QT 6 or later")
@@ -120,8 +154,8 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	names.addName("ca", "Elements importats");
 	names.addName("ro", "Elemente importate");
 	names.addName("da", "Importerede elementer");
-	names.addName("hr", "Uvezeni elementi");
 	names.addName("sl", "Uvoženi elementi");
+	names.addName("uk", "Імпортовані елементи");
 #endif
 
 	import.appendChild(names.toXml(m_dom_document));
