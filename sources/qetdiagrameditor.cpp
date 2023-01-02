@@ -44,6 +44,7 @@
 #include "diagram.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "ui/diagrameditorhandlersizewidget.h"
+#include "TerminalStrip/ui/addterminalstripitemdialog.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -446,8 +447,7 @@ void QETDiagramEditor::setUpActions()
 	{
 		if (auto project = this->currentProject())
 		{
-			auto tsew {new TerminalStripEditorWindow{project, this}};
-			tsew->show();
+            TerminalStripEditorWindow::instance(project, this)->show();
 		}
 	});
 
@@ -664,6 +664,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_rectangle = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"));
 	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
 	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
+	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Ajouter un plan de bornes"));
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
 	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
@@ -671,17 +672,22 @@ void QETDiagramEditor::setUpActions()
 	add_rectangle->setStatusTip(tr("Ajoute un rectangle sur le folio actuel"));
 	add_ellipse  ->setStatusTip(tr("Ajoute une ellipse sur le folio actuel"));
 	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
+	add_terminal_strip->setStatusTip(tr("Ajoute un plan de bornier sur le folio actuel"));
 
-	add_text     ->setData("text");
-	add_image    ->setData("image");
-	add_line     ->setData("line");
-	add_rectangle->setData("rectangle");
-	add_ellipse  ->setData("ellipse");
-	add_polyline ->setData("polyline");
+    add_text     ->setData(QStringLiteral("text"));
+    add_image    ->setData(QStringLiteral("image"));
+    add_line     ->setData(QStringLiteral("line"));
+    add_rectangle->setData(QStringLiteral("rectangle"));
+    add_ellipse  ->setData(QStringLiteral("ellipse"));
+    add_polyline ->setData(QStringLiteral("polyline"));
+	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 
-	for(QAction *action : m_add_item_actions_group.actions()) {
-		action->setCheckable(true);
-	}
+    add_text->setCheckable(true);
+    add_line->setCheckable(true);
+    add_rectangle->setCheckable(true);
+    add_ellipse->setCheckable(true);
+    add_polyline->setCheckable(true);
+
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 
 		//Depth action
@@ -1423,14 +1429,23 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		if (deai->isNull())
 		{
 			delete deai;
-			action->setChecked(false);
 			return;
 		}
 		else
 			diagram_event = deai;
 	}
 	else if (value == "text")
+	{
 		diagram_event = new DiagramEventAddText(d);
+	}
+	else if (value == QLatin1String("terminal_strip"))
+	{
+		const auto diagram_view{currentDiagramView()};
+		if (diagram_view)
+		{
+			AddTerminalStripItemDialog::openDialog(diagram_view->diagram(), this);
+		}
+	}
 
 	if (diagram_event)
 	{

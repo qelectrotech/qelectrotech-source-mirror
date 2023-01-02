@@ -121,6 +121,14 @@ void TerminalStripBridge::fromXml(const QDomElement &dom_element)
 }
 
 /**
+ * @brief TerminalStripBridge::uuid
+ * @return The uuid of this terminal
+ */
+QUuid TerminalStripBridge::uuid() const noexcept {
+	return m_uuid;
+}
+
+/**
  * @brief TerminalStripBridge::addTerminals
  * @param real_terminals
  * @return Add terminals of @a real_terminals to this bridge.

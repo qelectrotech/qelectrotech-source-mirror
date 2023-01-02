@@ -17,11 +17,18 @@
 */
 #ifndef QGRAPHICSITEMUTILITY_H
 #define QGRAPHICSITEMUTILITY_H
+
 #include <QtGlobal>
+
 class QGraphicsItem;
 class Element;
+class QPainter;
 
-bool centerToParentBottom  (QGraphicsItem *item);
-bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset = 0 );
+namespace QGIUtility
+{
+	bool centerToParentBottom  (QGraphicsItem *item);
+	bool centerToBottomDiagram (QGraphicsItem *item_to_center, Element *element_to_follow, qreal offset = 0 );
+	void drawBoundingRectSelection(QGraphicsItem *item, QPainter *painter);
+}
 
 #endif // QGRAPHICSITEMUTILITY_H

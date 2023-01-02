@@ -975,8 +975,9 @@ QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
 
 	root_elmt.appendChild(m_data.toXml(parent_document));
 
-		//Undrawn terminals
-	auto xml_layout = parent_document.createElement("layout");
+		//Undrawed terminals
+    auto xml_layout = parent_document.createElement(QStringLiteral("layout"));
+
 	for (auto &phy_t : m_physical_terminals) {
 		xml_layout.appendChild(phy_t->toXml(parent_document));
 	}

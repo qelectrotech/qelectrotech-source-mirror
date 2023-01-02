@@ -19,6 +19,8 @@
 #define TERMINALSTRIPEDITORWINDOW_H
 
 #include <QMainWindow>
+#include <QMutex>
+#include <QPointer>
 
 class QETProject;
 class TerminalStripTreeDockWidget;
@@ -35,16 +37,47 @@ class TerminalStripEditorWindow : public QMainWindow
 {
 		Q_OBJECT
 
-	public:
+    private:
+            //We need to use a QPointer instead of a raw pointer because when window_
+            //have got a parent widget, the parent widget can delete the window_
+            //instance in her destrucor and then window_ become a dangling pointer.
+        static QPointer<TerminalStripEditorWindow> window_;
+
+    public:
+        static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr) {
+            static QMutex mutex_;
+            if (!window_) {
+                mutex_.lock();
+                if (!window_)
+                    window_ = new TerminalStripEditorWindow{project, parent};
+                mutex_.unlock();
+            }
+            return window_;
+        }
+
+        static void dropInstance () {
+            static QMutex mutex;
+            if (window_) {
+                mutex.lock();
+                window_->deleteLater();
+                window_.clear();
+                mutex.unlock();
+            }
+        }
+
+        static void edit(TerminalStrip *strip);
+
+    public:
 		explicit TerminalStripEditorWindow(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripEditorWindow();
+
+        void setCurrentStrip(TerminalStrip *strip);
 
 	private slots:
 		void on_m_add_terminal_strip_triggered();
 		void on_m_remove_terminal_triggered();
 		void on_m_reload_triggered();
 		void on_m_button_box_clicked(QAbstractButton *button);
-
 		void on_m_stacked_widget_currentChanged(int arg1);
 
 	private:

@@ -42,6 +42,8 @@ class QetGraphicsItem : public QGraphicsObject
 {return is_movable_;}
 		virtual void setMovable (bool movable) { is_movable_ = movable;}
 
+		bool isHovered() const;
+
 		virtual void editProperty () {}
 		virtual QString name ()const
 {return QString("");}
@@ -54,6 +56,8 @@ class QetGraphicsItem : public QGraphicsObject
 		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
 	protected:
 		bool is_movable_;
@@ -61,6 +65,9 @@ class QetGraphicsItem : public QGraphicsObject
 		bool snap_to_grid_;
 		QPointF m_mouse_to_origin_movement;
 		QET::GraphicsItemState m_state = QET:: GIOK;
+
+	private:
+		bool m_hovered{false};
 
 };
 

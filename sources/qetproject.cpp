@@ -225,7 +225,33 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if(opened_here) {
 		file->close();
 	}
-	return ProjectState::Ok;
+    return ProjectState::Ok;
+}
+
+/**
+ * @brief QETProject::refresh
+ * Refresh everything in the project.
+ * This is notably use when open a project from file.
+ */
+void QETProject::refresh()
+{
+    DialogWaiting *dlgWaiting { nullptr };
+    if(DialogWaiting::hasInstance())
+    {
+        dlgWaiting = DialogWaiting::instance();
+        dlgWaiting->setModal(true);
+        dlgWaiting->show();
+    }
+
+    for(const auto &diagram : diagrams())
+    {
+        if(dlgWaiting)
+        {
+            dlgWaiting->setProgressBar(dlgWaiting->progressBarValue()+1);
+            dlgWaiting->setDetail(diagram->title());
+        }
+        diagram->refreshContents();
+    }
 }
 
 /**
@@ -1388,6 +1414,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the terminal strip
 	readTerminalStripXml(xml_project);
 
+        //Now that all are loaded we refresh content of the project.
+    refresh();
+
 
 	m_data_base.blockSignals(false);
 	m_data_base.updateDB();
@@ -1460,18 +1489,6 @@ void QETProject::readDiagramsXml(QDomDocument &xml_project)
 								 "<b>Ouverture du projet en cours...</b><br/>"
 								 "Mise en place des références croisées"
 								 "</p>"));
-	}
-
-	m_data_base.updateDB(); //All diagrams and items are created we need to update the database
-
-	for(const auto &diagram : diagrams())
-	{
-		if(dlgWaiting)
-		{
-			dlgWaiting->setProgressBar(dlgWaiting->progressBarValue()+1);
-			dlgWaiting->setDetail(diagram->title());
-		}
-		diagram->refreshContents();
 	}
 }
 
