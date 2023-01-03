@@ -147,15 +147,16 @@ void TerminalStripDrawer::paint(QPainter *painter)
                     painter->save();
                     if (const auto bridge_ = shared_real_terminal->bridge())
                     {
-                        const auto anchor_center{m_pattern.m_bridge_point_d/2};
+                        const auto x_anchor{terminal_rect.width()/2};
+                        const auto y_anchor {m_pattern.m_bridge_point_y_offset[index_]};
+                        const auto radius_anchor{m_pattern.m_bridge_point_d/2};
+
                         painter->setBrush(Qt::SolidPattern);
-                        painter->drawEllipse(QPointF{terminal_rect.width()/2, m_pattern.m_bridge_point_y_offset[index_]},
-                                             anchor_center,
-                                             anchor_center);
+                        painter->drawEllipse(QPointF(x_anchor, y_anchor),
+                                             radius_anchor, radius_anchor);
 
                         auto anchor_points{bridges_anchor_points.value(bridge_->uuid())};
-                        anchor_points.append(QPointF{x_offset + terminal_rect.width()/2,
-                                                     m_pattern.m_bridge_point_y_offset[index_]});
+                        anchor_points.append(QPointF(x_offset + x_anchor, y_anchor));
                         bridges_anchor_points.insert(bridge_->uuid(), anchor_points);
                     }
                     painter->restore();
