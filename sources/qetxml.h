@@ -25,6 +25,7 @@ class QDomDocument;
 class QDir;
 class QFile;
 class QAbstractItemModel;
+class QGraphicsItem;
 
 /**
  *This namespace contain some function to use xml with QET.
@@ -89,6 +90,10 @@ namespace QETXML
 
 	QVector<QDomElement> findInDomElement(const QDomElement &dom_elmt,
 										  const QString &tag_name);
+
+    QDomElement qGraphicsItemPosToXml(QGraphicsItem *item, QDomDocument &document);
+    bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt);
+
 	QString boolToString(bool value);
 	bool boolFromString(const QString &value,
 					 bool default_value = true,

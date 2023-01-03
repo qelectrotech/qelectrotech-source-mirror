@@ -234,6 +234,7 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
+        void refresh();
 
 	// attributes
 	private:

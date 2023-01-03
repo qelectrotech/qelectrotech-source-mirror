@@ -20,7 +20,6 @@
 #include "conductorautonumerotation.h"
 #include "diagram.h"
 #include "qetgraphicsitem/conductor.h"
-#include "diagramcommands.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -30,6 +29,7 @@
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
+#include "undocommand/movegraphicsitemcommand.h"
 
 /**
 	@brief ElementsMover::ElementsMover Constructor
@@ -176,18 +176,19 @@ void ElementsMover::endMovement()
 
 		//Create undo move if there is a movement
 	if (!m_current_movement.isNull()) {
-		QUndoCommand *quc{new MoveElementsCommand(m_diagram, m_moved_content, m_current_movement, undo_object)};
+        QUndoCommand *quc{new MoveGraphicsItemCommand(m_diagram, m_moved_content, m_current_movement, undo_object)};
 		undo_object->setText(quc->text());
 	}
 
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
 	typedef DiagramContent dc;
-	if (m_moved_content.items(dc::TextFields
-							  | dc::Images
-							  | dc::Shapes).isEmpty()
-		&& m_moved_content.items(dc::Elements).size() == 1
-		&& m_diagram->project()->autoConductor())
+    if (m_moved_content.items(dc::TextFields
+                              | dc::Images
+                              | dc::Shapes
+                              | dc::TerminalStrip).isEmpty()
+        && m_moved_content.items(dc::Elements).size() == 1
+        && m_diagram->project()->autoConductor())
 	{
 		const Element *elmt{m_moved_content.m_elements.first()};
 		const auto aligned_free_terminals{elmt->AlignedFreeTerminals()};

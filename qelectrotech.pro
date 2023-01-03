@@ -160,6 +160,8 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/TerminalStrip/*.h) \
            $$files(sources/TerminalStrip/ui/*.h) \
            $$files(sources/TerminalStrip/UndoCommand/*.h) \
+           $$files(sources/TerminalStrip/GraphicsItem/*.h) \
+           $$files(sources/xml/*.h) \
            $$files(sources/dxf/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
@@ -197,6 +199,8 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/TerminalStrip/*.cpp) \
            $$files(sources/TerminalStrip/ui/*.cpp) \
            $$files(sources/TerminalStrip/UndoCommand/*.cpp) \
+           $$files(sources/TerminalStrip/GraphicsItem/*.cpp) \
+           $$files(sources/xml/*.cpp) \
            $$files(sources/dxf/*.cpp)
 
 # Needed for use promote QTreeWidget in terminalstripeditor.ui

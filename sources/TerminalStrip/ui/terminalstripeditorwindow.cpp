@@ -19,6 +19,8 @@
 
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "freeterminaleditor.h"
+#include "../../qetapp.h"
+#include "../../qetdiagrameditor.h"
 #include "../../qetproject.h"
 #include "../realterminal.h"
 #include "../terminalstrip.h"
@@ -26,6 +28,8 @@
 #include "terminalstripeditor.h"
 #include "terminalstripeditorwindow.h"
 #include "terminalstriptreedockwidget.h"
+
+QPointer<TerminalStripEditorWindow> TerminalStripEditorWindow::window_;
 
 static const int EMPTY_PAGE = 0;
 static const int FREE_TERMINAL_PAGE = 1;
@@ -35,6 +39,16 @@ static const int TERMINAL_STRIP_PAGE = 2;
  * @param project
  * @param parent
  */
+void TerminalStripEditorWindow::edit(TerminalStrip *strip)
+{
+    if (const auto project_ = strip->project())
+    {
+        auto editor_  = TerminalStripEditorWindow::instance(project_, QETApp::diagramEditor(project_));
+        editor_->setCurrentStrip(strip);
+        editor_->show();
+    }
+}
+
 TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::TerminalStripEditorWindow),
@@ -59,7 +73,11 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
  */
 TerminalStripEditorWindow::~TerminalStripEditorWindow()
 {
-	delete ui;
+    delete ui;
+}
+
+void TerminalStripEditorWindow::setCurrentStrip(TerminalStrip *strip) {
+    m_tree_dock->setSelectedStrip(strip);
 }
 
 /**
