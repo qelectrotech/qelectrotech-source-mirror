@@ -1753,9 +1753,30 @@ NamesList QETProject::namesListForIntegrationCategory()
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 	NamesList	names;
 	const QChar russian_data[24] = {
-		0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440,
-		0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020,
-		0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B};
+		0x0418, 
+		0x043C, 
+		0x043F, 
+		0x043E, 
+		0x0440, 
+		0x0442, 
+		0x0438, 
+		0x0440,
+		0x043E, 
+		0x0432, 
+		0x0430, 
+		0x043D, 
+		0x043D, 
+		0x044B, 
+		0x0435, 
+		0x0020,
+		0x044D, 
+		0x043B, 
+		0x0435, 
+		0x043C, 
+		0x0435, 
+		0x043D, 
+		0x0442, 
+		0x044B};
 	const QChar greek_data[18] = {
 		0x0395,
 		0x03b9,
@@ -1775,6 +1796,40 @@ NamesList QETProject::namesListForIntegrationCategory()
 		0x03b5,
 		0x03af,
 		0x03b1};
+	const QChar turkish_data[12] = {
+		0x0130,
+		0x0074,
+		0x0068,
+		0x0061,
+		0x006C,
+		0x0020,
+		0x00F6,
+		0x011F,
+		0x0065,
+		0x006C,
+		0x0065,
+		0x0072};
+	const QChar ukrainian_data[20] = {
+		0x0406,
+		0x043c,
+		0x043f,
+		0x043e,
+		0x0440,
+		0x0442,
+		0x043e,
+		0x0432,
+		0x0430,
+		0x043d,
+		0x0456,
+		0x0020,
+		0x0435,
+		0x043b,
+		0x0435,
+		0x043c,
+		0x0435,
+		0x043d,
+		0x0442,
+		0x0438};
 	const QChar japanese_data[10] = {
 		0x30A4,
 		0x30F3,
@@ -1801,7 +1856,11 @@ NamesList QETProject::namesListForIntegrationCategory()
 	names.addName("hr", "Uvezeni elementi");
 	names.addName("ca", "Elements importats");
 	names.addName("ro", "Elemente importate");
+	names.addName("tr", QString(turkish_data, 12));
+	names.addName("da", "Importerede elementer");
+	names.addName("sl", "Uvoženi elementi");
 	names.addName("ja", QString(japanese_data, 10));
+	names.addName("uk", QString(ukrainian_data, 20));
 	return (names);
 #else
 #	if TODO_LIST
@@ -1821,6 +1880,9 @@ NamesList QETProject::namesListForIntegrationCategory()
 	names.addName("hr", "Uvezeni elementi");
 	names.addName("ca", "Elements importats");
 	names.addName("ro", "Elemente importate");
+	names.addName("da", "Importerede elementer");
+	names.addName("sl", "Uvoženi elementi");
+	names.addName("uk", "Імпортовані елементи");
 	return (names);
 #endif
 }
