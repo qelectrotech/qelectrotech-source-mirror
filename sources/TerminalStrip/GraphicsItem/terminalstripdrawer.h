@@ -19,7 +19,7 @@
 #define TERMINALSTRIPDRAWER_H
 
 #include <QPointer>
-#include "terminalstriplayoutpattern.h"
+#include "properties/terminalstriplayoutpattern.h"
 
 class QPainter;
 class TerminalStrip;
@@ -27,11 +27,15 @@ class TerminalStrip;
 class TerminalStripDrawer
 {
     public:
-        TerminalStripDrawer(QPointer<TerminalStrip> strip = QPointer<TerminalStrip>());
+        TerminalStripDrawer(QPointer<TerminalStrip> strip = QPointer<TerminalStrip>(),
+                            QSharedPointer<TerminalStripLayoutPattern> layout = QSharedPointer<TerminalStripLayoutPattern>());
 
         void setStrip(TerminalStrip *strip);
         void paint(QPainter *painter);
         QRectF boundingRect() const;
+
+        void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+        bool haveLayout() const;
 
     private:
         int height() const;
@@ -39,7 +43,7 @@ class TerminalStripDrawer
 
     private:
         QPointer<TerminalStrip> m_strip;
-        TerminalStripLayoutPattern m_pattern;
+        QSharedPointer<TerminalStripLayoutPattern> m_pattern;
 };
 
 #endif // TERMINALSTRIPDRAWER_H

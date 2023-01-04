@@ -50,6 +50,11 @@ class TerminalStripItem : public QetGraphicsItem
 
         void refreshPending();
 
+        void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+
+    private:
+        void setDefaultLayout();
+
 	private:
 		QPointer<TerminalStrip> m_strip;
 		TerminalStripDrawer m_drawer;

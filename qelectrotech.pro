@@ -126,7 +126,9 @@ INCLUDEPATH += sources/ui
 #               sources/print
 
 # Fichiers sources
-HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
+HEADERS += $$files(sources/*.h) \
+           $$files(sources/project/*.h) \
+           $$files(sources/ui/*.h) \
            $$files(sources/editor/*.h) \
            $$files(sources/titleblock/*.h) \
            $$files(sources/richtext/*.h) \
@@ -161,11 +163,13 @@ HEADERS += $$files(sources/*.h) $$files(sources/ui/*.h) \
            $$files(sources/TerminalStrip/ui/*.h) \
            $$files(sources/TerminalStrip/UndoCommand/*.h) \
            $$files(sources/TerminalStrip/GraphicsItem/*.h) \
+           $$files(sources/TerminalStrip/GraphicsItem/properties/*.h) \
            $$files(sources/xml/*.h) \
            $$files(sources/dxf/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
+           $$files(sources/project/*.cpp) \
            $$files(sources/titleblock/*.cpp) \
            $$files(sources/richtext/*.cpp) \
            $$files(sources/ui/*.cpp) \
@@ -200,6 +204,7 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/TerminalStrip/ui/*.cpp) \
            $$files(sources/TerminalStrip/UndoCommand/*.cpp) \
            $$files(sources/TerminalStrip/GraphicsItem/*.cpp) \
+           $$files(sources/TerminalStrip/GraphicsItem/properties/*.cpp) \
            $$files(sources/xml/*.cpp) \
            $$files(sources/dxf/*.cpp)
 

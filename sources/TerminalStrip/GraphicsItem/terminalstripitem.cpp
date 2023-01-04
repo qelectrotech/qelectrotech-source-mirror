@@ -18,9 +18,10 @@
 #include "terminalstripitem.h"
 
 #include "../diagram.h"
-#include "../../qetgraphicsitem/qgraphicsitemutility.h"
 #include "../terminalstrip.h"
 #include "../ui/terminalstripeditorwindow.h"
+#include "../../project/projectpropertieshandler.h"
+#include "../../qetgraphicsitem/qgraphicsitemutility.h"
 
 TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsItem *parent) :
 	QetGraphicsItem{parent},
@@ -29,6 +30,7 @@ TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsIte
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
     setAcceptHoverEvents(true);
+    setDefaultLayout();
 }
 
 TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
@@ -43,6 +45,10 @@ void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
     m_strip = strip;
     m_drawer.setStrip(strip);
     m_pending_strip_uuid = QUuid();
+
+    if (!m_drawer.haveLayout()) {
+        setDefaultLayout();
+    }
 }
 
 /**
@@ -103,5 +109,17 @@ void TerminalStripItem::refreshPending()
                 break;
             }
         }
+    }
+}
+
+void TerminalStripItem::setLayout(QSharedPointer<TerminalStripLayoutPattern> layout)
+{
+    m_drawer.setLayout(layout);
+}
+
+void TerminalStripItem::setDefaultLayout()
+{
+    if (m_strip && m_strip->project()) {
+        m_drawer.setLayout(m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler().defaultLayout());
     }
 }
