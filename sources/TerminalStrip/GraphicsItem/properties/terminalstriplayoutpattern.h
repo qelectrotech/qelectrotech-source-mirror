@@ -18,10 +18,11 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
+#include <QRect>
 #include <QSize>
 #include <QTextOption>
+#include <QUuid>
 #include <QVector>
-#include <QRect>
 
 /**
  * @brief The TerminalStripLayoutPattern class
