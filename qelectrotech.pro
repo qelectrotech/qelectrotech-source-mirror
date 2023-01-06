@@ -289,7 +289,7 @@ man.extra          = sh man/compress_man_pages.sh
 INSTALLS += target elements tbt lang copyright
 # Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
 unix {
-        INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples appdata
+        INSTALLS += desktop mime_package icons man examples appdata
 }
 
 # Options de compilation communes a Unix et MacOS X
