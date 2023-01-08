@@ -924,12 +924,14 @@ QDomDocument Diagram::toXml(bool whole_content) {
 				auto table = static_cast<QetGraphicsTableItem *>(qgi);
 				if (whole_content || table->isSelected())
 					table_vector << table;
+                break;
 			}
             case TerminalStripItem::Type: {
                 const auto strip = static_cast<TerminalStripItem *>(qgi);
                 if (whole_content || strip->isSelected()) {
                     strip_vector << strip;
                 }
+                break;
             }
 		}
 	}

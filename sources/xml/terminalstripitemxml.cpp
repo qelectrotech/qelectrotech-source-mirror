@@ -38,8 +38,12 @@ const QString STRIP_ITEMS_TAG_NAME { QStringLiteral("terminal_strip_items") };
 QDomElement TerminalStripItemXml::toXml(const QVector<TerminalStripItem *> &items, QDomDocument &document)
 {
     auto dom_element = document.createElement(STRIP_ITEMS_TAG_NAME);
-    for (const auto &item : items) {
-        dom_element.appendChild(toXml(item, document));
+    for (const auto &item : items)
+    {
+        const auto child_ = toXml(item, document);
+        if (!child_.isNull()) {
+            dom_element.appendChild(child_);
+        }
     }
 
     return dom_element;
@@ -76,20 +80,25 @@ QVector<TerminalStripItem *> TerminalStripItemXml::fromXml(Diagram *diagram, con
  * Save @a item to an xml element with tag "terminal_strip_item"
  * @param item : item to save in xml
  * @param document : parent document used to create the QDomElement returned by this function.
- * @return QDomElement where are saved @a item.
+ * @return QDomElement where are saved @a item, note that the returned QDomElement can be null.
  */
 QDomElement TerminalStripItemXml::toXml(TerminalStripItem *item, QDomDocument &document)
 {
+    if (item->terminalStrip())
+    {
         //Terminal strip item dom element
-    auto dom_element = document.createElement(STRIP_ITEM_TAG_NAME);
+        auto dom_element = document.createElement(STRIP_ITEM_TAG_NAME);
 
-    auto dom_strip = document.createElement(QStringLiteral("terminal_strip"));
-    dom_strip.setAttribute(QStringLiteral("uuid"), item->terminalStrip()->uuid().toString());
-    dom_element.appendChild(dom_strip);
+        auto dom_strip = document.createElement(QStringLiteral("terminal_strip"));
+        dom_strip.setAttribute(QStringLiteral("uuid"), item->terminalStrip()->uuid().toString());
+        dom_element.appendChild(dom_strip);
 
-    dom_element.appendChild(QETXML::qGraphicsItemPosToXml(item, document));
+        dom_element.appendChild(QETXML::qGraphicsItemPosToXml(item, document));
 
-    return dom_element;
+        return dom_element;
+    } else {
+        return QDomElement();
+    }
 }
 
 /**

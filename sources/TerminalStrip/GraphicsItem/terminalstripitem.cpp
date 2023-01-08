@@ -100,6 +100,7 @@ void TerminalStripItem::refreshPending()
         for (const auto &strip_ : diagram()->project()->terminalStrip()) {
             if (strip_->uuid() == m_pending_strip_uuid) {
                 setTerminalStrip(strip_);
+                m_pending_strip_uuid = QUuid();
                 break;
             }
         }
