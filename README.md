@@ -15,10 +15,10 @@ The main goal of the developers is to provide a libre, easy to use and effective
 
 ### Version
 
-The current stable version is 0.80 and was released on 2021.02.21.  
+The current stable version is 0.90 and was released on 2023.01.06.
 Once it has been officially released, the stable version is always frozen and is no longer developed.
 
-New functionalities, bug and issue fixings are further made in the development version (currently 0.9), which can also be [downloaded](https://qelectrotech.org/download.html).
+New functionalities, bug and issue fixings are further made in the development version (currently 0.100), which can also be [downloaded](https://qelectrotech.org/download.html).
 
 Users who want to test and take benefits from the last software implementations should use the development version. But... use it at your own risk, since things are sometimes broken or only partially implemented until they are done!
 
@@ -76,7 +76,7 @@ The GUI can fit to small or big screens, and even to multi-display configuration
 ![](https://download.tuxfamily.org/qet/images-features/0030.png "GUI overview")
 
 
-The GUI of QElectroTech is translated in 19 languages.  
+The GUI of QElectroTech is translated in 25 languages.
 You only need to restart the application for the new selected language to take effect.
 ![](https://download.tuxfamily.org/qet/images-features/0040.png "Lang menu")
 
@@ -93,7 +93,7 @@ With only 2 mouse clicks you can add a full automatic generated table of content
 Changes in the documentation are updated on the fly.
 ![](https://download.tuxfamily.org/qet/images-features/0060.png "Table of content")
 
-Choose from more than 7.000 symbols...
+Choose from more than 8.200 symbols...
 The embedded QET collection contains a rich library of electric, logic, pneumatic, hydraulic and fluid symbols.  
 The library grows at every new release thanks to an active user community.
 ![](https://download.tuxfamily.org/qet/images-features/0070.png "Collections")
