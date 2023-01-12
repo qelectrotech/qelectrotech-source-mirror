@@ -434,7 +434,7 @@ QString QETProject::title() const
 /**
 	@return la version de QElectroTech declaree dans le fichier projet lorsque
 	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
-	depuis un fichier, cette methode retourne -1.
+	depuis un fichier, cette methode une version nulle.
 */
 QVersionNumber QETProject::declaredQElectroTechVersion()
 {
