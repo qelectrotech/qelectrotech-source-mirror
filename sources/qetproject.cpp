@@ -1340,7 +1340,6 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		if (root_elmt.hasAttribute(QStringLiteral("version")))
 		{
 			bool conv_ok;
-			qreal r_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
 			QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
 			m_project_qet_version = QVersionNumber::fromString(root_elmt.attribute(QStringLiteral("version")));
 
@@ -1372,6 +1371,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 				//Since QElectrotech 0.9 the compatibility with project made with
 				//Qet 0.6 or lower is break;
 				//keep float here for very old version
+			qreal r_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
 			if (conv_ok && r_project_qet_version <= 0.6)
 			{
 				auto ret = QET::QetMessageBox::warning(
