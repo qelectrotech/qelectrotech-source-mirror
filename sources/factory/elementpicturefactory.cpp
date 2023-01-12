@@ -156,9 +156,9 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 		//Check if the current version can read the xml description
 	if (dom.hasAttribute("version"))
 	{
-		bool conv_ok;
-		qreal element_version = dom.attribute("version").toDouble(&conv_ok);
-		if (conv_ok && QET::version.toDouble() < element_version)
+		QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
+		QVersionNumber element_version = QVersionNumber::fromString(dom.attribute("version"));
+		if (qet_version < element_version)
 		{
 			std::cerr << qPrintable(
 			QObject::tr("Avertissement : l'élément "

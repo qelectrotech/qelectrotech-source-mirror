@@ -429,10 +429,9 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		//Check if the current version can read the xml description
 	if (xml_def_elmt.hasAttribute(QStringLiteral("version")))
 	{
-		bool conv_ok;
-		qreal element_version = xml_def_elmt.attribute(
-					QStringLiteral("version")).toDouble(&conv_ok);
-		if (conv_ok && QET::version.toDouble() < element_version)
+		QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
+		QVersionNumber element_version = QVersionNumber::fromString(xml_def_elmt.attribute(QStringLiteral("version")));
+		if (qet_version < element_version)
 		{
 			std::cerr << qPrintable(
 				QObject::tr("Avertissement : l'élément "
