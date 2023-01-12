@@ -98,7 +98,7 @@ class QETProject : public QObject
 		QString currentDir() const;
 		QString pathNameTitle() const;
 		QString title() const;
-		qreal declaredQElectroTechVersion();
+		QVersionNumber declaredQElectroTechVersion();
 		void setTitle(const QString &);
 
 			///DEFAULT PROPERTIES
@@ -247,7 +247,7 @@ class QETProject : public QObject
 			/// Project title
 		QString project_title_;
 			/// QElectroTech version declared in the XML document at opening time
-		qreal m_project_qet_version = -1;
+		QVersionNumber m_project_qet_version;
 			/// Whether options were modified
 		bool m_modified = false;
 			/// Whether the project is read only

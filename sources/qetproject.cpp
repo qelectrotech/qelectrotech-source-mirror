@@ -436,7 +436,7 @@ QString QETProject::title() const
 	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
 	depuis un fichier, cette methode retourne -1.
 */
-qreal QETProject::declaredQElectroTechVersion()
+QVersionNumber QETProject::declaredQElectroTechVersion()
 {
 	return(m_project_qet_version);
 }
@@ -1340,11 +1340,14 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		if (root_elmt.hasAttribute(QStringLiteral("version")))
 		{
 			bool conv_ok;
-			m_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
+			qreal r_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
+			QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
+			m_project_qet_version = QVersionNumber::fromString(root_elmt.attribute(QStringLiteral("version")));
+
 #if TODO_LIST
 #pragma message("@TODO use of version convert")
 #endif
-			if (conv_ok && QET::version.toDouble() < m_project_qet_version)
+			if (qet_version < m_project_qet_version)
 			{
 				int ret = QET::QetMessageBox::warning(
 							nullptr,
@@ -1365,9 +1368,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 					return;
 				}
 			}
+
 				//Since QElectrotech 0.9 the compatibility with project made with
 				//Qet 0.6 or lower is break;
-			if (conv_ok && m_project_qet_version <= 0.6 )
+				//keep float here for very old version
+			if (conv_ok && r_project_qet_version <= 0.6)
 			{
 				auto ret = QET::QetMessageBox::warning(
 							   nullptr,
