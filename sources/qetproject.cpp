@@ -225,7 +225,7 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	if(opened_here) {
 		file->close();
 	}
-    return ProjectState::Ok;
+    return m_state;
 }
 
 /**
@@ -1392,6 +1392,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	else
 	{
 		m_state = ProjectParsingFailed;
+		return;
 	}
 
 	m_data_base.blockSignals(true);
