@@ -43,7 +43,7 @@
 	<mime-type type="application/x-qet-titleblock">
 		<sub-class-of type="text/xml"/>
 		<comment>QElectroTech title block template file</comment>
-		<comment xml:lang="de">QElectroTech Zeichnungskopf Vorlagedatei</comment>
+		<comment xml:lang="de">QElectroTech Schriftfeld Vorlagedatei</comment>
 		<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
 		<comment xml:lang="ar">QElectrotech نموذج إطار تعريف</comment>
 		<comment xml:lang="ru">Файл шаблона основной надписи листа QElectroTech</comment>
