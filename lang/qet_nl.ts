@@ -209,17 +209,17 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="129"/>
         <source>Traduction en serbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Servische vertaling</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Traduction en japonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Japanse vertaling</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Traduction en mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Mongoolse vertaling</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="142"/>
@@ -284,19 +284,19 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="175"/>
         <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation>Element schalen</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="179"/>
         <source>Convertisseur d&apos;élément DXF</source>
         <comment>Dxf2elmt</comment>
-        <translation type="unfinished"></translation>
+        <translation>DXF naar element converteren</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="181"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vertaalhulp voor elementen</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="159"/>
@@ -306,17 +306,17 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Traduction en ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation>Oekraïense vertaling</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Traduction en norvégien</source>
-        <translation type="unfinished"></translation>
+        <translation>Noorse vertaling</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en slovène</source>
-        <translation type="unfinished"></translation>
+        <translation>Sloveense vertaling</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="177"/>
@@ -451,12 +451,12 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenstrook toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="20"/>
         <source>Ajouter le plan de bornes suivant :</source>
-        <translation type="unfinished"></translation>
+        <translation>Voeg de volgende klemmenstook toe :</translation>
     </message>
 </context>
 <context>
@@ -3664,7 +3664,7 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
         <source>Ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation>Oekraïens</translation>
     </message>
 </context>
 <context>
@@ -6561,7 +6561,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
         <source>Ajouter un plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenstrook toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
@@ -6596,7 +6596,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Ajoute un plan de bornier sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenstrook op het huidige schemablad toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="756"/>
@@ -7639,26 +7639,32 @@ dus graag even geduld...</translation>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit document lijkt te zijn opgeslagen met versie %1
+ welke nieuwer is dan deze versie ! 
+Je gebruikt nu Qelectrotech versie %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1361"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation> 
+ Mogelijk kan het openen van dit document geheel of gedeeltelijk mislukken 
+Wat wil je doen ?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1384"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Het project dat je probeert te openen is gedeeltelijk compatibel met deze versie %1 van QElectrotech 
+</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1387"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Om het volledig compatibel te maken, open je hetzelfde project met versie 0.8 of 0.80 van QElectroTech, sla je het project op en open je het opnieuw met deze versie.
+Wat wil je doen?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1383"/>
@@ -8228,8 +8234,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="335"/>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n klemmenstrook</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -12854,7 +12860,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="82"/>
         <source>plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>klemmenstrook</translation>
     </message>
 </context>
 <context>
