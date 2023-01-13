@@ -1378,7 +1378,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 				//Qet 0.6 or lower is break;
 				//keep float here for very old version
 			qreal r_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
-			if (conv_ok && r_project_qet_version <= 0.6)
+			if (conv_ok && m_project_qet_version < QVersionNumber(0, 100) && r_project_qet_version <= 0.6)
 			{
 				auto ret = QET::QetMessageBox::warning(
 							   nullptr,
