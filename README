@@ -8,7 +8,7 @@ QET utilise le format XML pour ses éléments et ses schémas et inclut un édit
 
 [de]
 QElectroTech ist eine Qt5 Software, um Schaltpläne zu erstellen.
-QET benutzt das XML Format für seine Bauteile und seine Projekte, und beinhaltet einen Schaltplaneditor, einen Bauteileditor sowie einen Zeichnungskopfeditor.
+QET benutzt das XML Format für seine Bauteile und seine Projekte, und beinhaltet einen Schaltplaneditor, einen Bauteileditor sowie einen Schriftfeldeditor.
 
 
 [ru]
