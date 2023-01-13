@@ -104,7 +104,7 @@
         
         
         LangString installed         ${LANG_GERMAN} "${SOFT_NAME} ist bereits installiert. $\n$\nKlicken Sie auf `OK`, um die alte Version zu deinstallieren, oder auf `Abbrechen`, um das Upgrade abzubrechen." 
-        LangString wrongArch         ${LANG_GERMAN} "Dieses Programm läuft ausschließlich unter Windows 64 Bits."
+        LangString wrongArch         ${LANG_GERMAN} "Dieses Programm läuft ausschließlich unter Windows 64 Bit."
         LangString Elements          ${LANG_GERMAN}  "Bauteile"
         LangString Electric          ${LANG_GERMAN}  "Elektrik"
         LangString Logic             ${LANG_GERMAN}  "Logik"
@@ -115,13 +115,13 @@
         LangString Refrigeration     ${LANG_GERMAN}  "Kältetechnik"
         LangString Solar_thermal     ${LANG_GERMAN}  "Solar-Wärmetechnik"
         LangString Lang              ${LANG_GERMAN}  "Sprachen"
-        LangString Titleblocks       ${LANG_GERMAN}  "Zeichnungsköpfe"
+        LangString Titleblocks       ${LANG_GERMAN}  "Schriftfelder"
         LangString Examples          ${LANG_GERMAN}  "Beispiele"
-        LangString Check             ${LANG_GERMAN}  "Check to start ${SOFT_NAME}"
-        LangString var1              ${LANG_GERMAN}  "Elements of the official collection"
-        LangString var2              ${LANG_GERMAN}  "languagues files"
-        LangString var3              ${LANG_GERMAN}  "Examples of cartridges"
-        LangString var4              ${LANG_GERMAN}  "Examples of diagrams"
+        LangString Check             ${LANG_GERMAN}  "Ankreuzen zum Starten von ${SOFT_NAME}"
+        LangString var1              ${LANG_GERMAN}  "Elemente der offiziellen Sammlung"
+        LangString var2              ${LANG_GERMAN}  "Sprachdateien"
+        LangString var3              ${LANG_GERMAN}  "Schriftfeld-Beispiele"
+        LangString var4              ${LANG_GERMAN}  "Schaltplan-Beispiele"
         
         
         LangString installed         ${LANG_RUSSIAN} "${SOFT_NAME} уже установлен. $\n$\nДля удаления предыдущей версии нажмите `OK` или `Cancel` для отмены обновления." 

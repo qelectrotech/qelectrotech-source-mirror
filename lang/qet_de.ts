@@ -2615,7 +2615,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/elementspanel.cpp" line="174"/>
         <source>Cartouches embarqués</source>
-        <translation>eingebettete Zeichnungsköpfe</translation>
+        <translation>eingebettete Schriftfelder</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="175"/>
@@ -2627,31 +2627,31 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
         <location filename="../sources/elementspanel.cpp" line="192"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Ziehen/Ablegen, um den Zeichnungskopf auf der Folie anzuwenden.</translation>
+        <translation>Ziehen/Ablegen, um das Schriftfeld auf der Folie anzuwenden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="230"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation>Doppelklick zum Öffnen oder Schließen der Sammlung &quot;QElectroTech-Zeichnungsköpfe&quot;</translation>
+        <translation>Doppelklick zum Öffnen oder Schließen der Sammlung &quot;QElectroTech-Schriftfelder&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="231"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Diese Sammlung von Zeichnungsköpfen kommt standardmäßig mit QElectroTech. Sie ist fester Bestandteil vom System und kann nicht verändert werden.</translation>
+        <translation>Diese Sammlung von Schriftfeldern kommt standardmäßig mit QElectroTech. Sie ist fester Bestandteil vom System und kann nicht verändert werden.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="238"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation>Doppelklick zum Öffnen oder Schließen Ihrer persönlichen Zeichnungskopf-Sammlung</translation>
+        <translation>Doppelklick zum Öffnen oder Schließen Ihrer persönlichen Schriftfeld-Sammlung</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="239"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dies ist Ihre persönliche Zeichnungskopf-Sammlung. Benutzen Sie sie, um Ihre eigenen Zeichnungsköpfe zu erstellen, ablegen und bearbeiten.</translation>
+        <translation>Dies ist Ihre persönliche Schriftfeld-Sammlung. Benutzen Sie sie, um Ihre eigenen Schriftfelder zu erstellen, ablegen und bearbeiten.</translation>
     </message>
 </context>
 <context>
@@ -2739,17 +2739,17 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Nouveau modèle</source>
-        <translation>Neuer Zeichnungskopf</translation>
+        <translation>Neues Schriftfeld</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Éditer ce modèle</source>
-        <translation>Zeichnungskopf bearbeiten</translation>
+        <translation>Schriftfeld bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Supprimer ce modèle</source>
-        <translation>Zeichnungskopf löschen</translation>
+        <translation>Schriftfeld löschen</translation>
     </message>
 </context>
 <context>
@@ -2967,7 +2967,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
         <source>Dessiner le cartouche</source>
-        <translation>Zeichnungskopf zeichnen</translation>
+        <translation>Schriftfeld zeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
@@ -3121,8 +3121,8 @@ that you create. Text and number inputs are
  - %F: Foliennummer
  - %f oder %id: Seitennummer der Folie
  - %total: Anzahl der Folien im Projekt
-Sie können auch beliebige Variable verwenden,
-die Sie im Zeichnungskopf kreiert haben.
+Sie können auch beliebige Variablen verwenden,
+die Sie im Schriftfeld erstellt haben.
 Texte und Zahlen sind ebenso erlaubt.</translation>
     </message>
 </context>
@@ -3258,7 +3258,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="411"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation>Pfad zu den Benutzer-Zeichnungsköpfen</translation>
+        <translation>Pfad zu den Benutzer-Schriftfeldern</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
@@ -3303,7 +3303,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
-        <translation>Spalten vom Zeichnungskopf ab 0 nummerieren (sonst ab 1)</translation>
+        <translation>Spalten vom Schriftfeld ab 0 nummerieren (sonst ab 1)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
@@ -3371,7 +3371,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation>Pfad zu den Benutzer-Zeichnungsköpfen</translation>
+        <translation>Pfad zu den Benutzer-Schriftfeldern</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
@@ -3686,7 +3686,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
         <location filename="../sources/genericpanel.cpp" line="220"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Das ist ein QElectroTech-Projekt: eine *.qet Datei, in der Folien, eingebettete Bauteile und eingebettete Zeichnungsköpfe gespeichert sind.</translation>
+        <translation>Das ist ein QElectroTech-Projekt: eine *.qet Datei, in der Folien, eingebettete Bauteile und eingebettete Schriftfelder gespeichert sind.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="348"/>
@@ -3704,7 +3704,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/genericpanel.cpp" line="498"/>
         <source>Modèles de cartouche</source>
-        <translation>Zeichnungskopf-Vorlagen</translation>
+        <translation>Schriftfeld-Vorlagen</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="636"/>
@@ -3716,7 +3716,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
         <location filename="../sources/genericpanel.cpp" line="639"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un folio.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Das ist eine Zeichnungskopf-Vorlage, die auf eine Folie angewendet werden kann.</translation>
+        <translation>Das ist eine Schriftfeld-Vorlage, die auf eine Folie angewendet werden kann.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="919"/>
@@ -4128,13 +4128,13 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="153"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation>Zeichnungskopf-Vorlage einbetten</translation>
+        <translation>Schriftfeld-Vorlage einbetten</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="157"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Die Zeichnungskopf-Vorlage wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
+        <translation>Die Schriftfeld-Vorlage wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="169"/>
@@ -4557,7 +4557,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/NameList/ui/namelistdialog.cpp" line="69"/>
         <source>Variables de cartouche</source>
-        <translation>Zeichnungskopf-Variablen</translation>
+        <translation>Schriftfeld-Variablen</translation>
     </message>
 </context>
 <context>
@@ -5205,7 +5205,7 @@ Folgende Variablen sind inkompatibel:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="186"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Benutzerdefinierte Eigenschaften können erstellt werden. Sie sind für alle Folien des Projekts verfügbar (typischerweise in den Zeichnungsköpfen).</translation>
+        <translation>Benutzerdefinierte Eigenschaften können erstellt werden. Sie sind für alle Folien des Projekts verfügbar (typischerweise in den Schriftfeldern).</translation>
     </message>
 </context>
 <context>
@@ -5258,7 +5258,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation>Zeichnungskopf anzeigen</translation>
+        <translation>Schriftfeld anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
@@ -5471,7 +5471,7 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation>Im Projekt unbenutzte Zeichnungskopf-Vorlagen löschen</translation>
+        <translation>Im Projekt unbenutzte Schriftfeld-Vorlagen löschen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="669"/>
@@ -5560,13 +5560,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="426"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
-        <translation>QET-Zeichnungsköpfe</translation>
+        <translation>QET-Schriftfelder</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="446"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
-        <translation>Benutzer-Zeichnungsköpfe</translation>
+        <translation>Benutzer-Schriftfelder</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1219"/>
@@ -5661,13 +5661,13 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="1971"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Verstecke alle Zeichnungskopf-Editoren</translation>
+        <translation>&amp;Verstecke alle Schriftfeld-Editoren</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1974"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Zeige alle Zeichnungskopf-Editoren</translation>
+        <translation>&amp;Zeige alle Schriftfeld-Editoren</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1977"/>
@@ -5714,7 +5714,7 @@ Voulez-vous enregistrer les modifications ?</source>
         <location filename="../sources/qetapp.cpp" line="2116"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation>Zeichnungskopf-Editor</translation>
+        <translation>Schriftfeld-Editor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2168"/>
@@ -5773,7 +5773,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetapp.cpp" line="2300"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  --common-tbt-dir=DIR          Pfad zur Zeichnungskopf-Sammlung setzen
+        <translation>  --common-tbt-dir=DIR          Pfad zur Schriftfeld-Sammlung setzen
 </translation>
     </message>
     <message>
@@ -6605,7 +6605,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
-        <translation>Bearbeitet die Folieneigenschaften (Maße, Zeichnungskopf-Daten, Leitereigenschaften...)</translation>
+        <translation>Bearbeitet die Folieneigenschaften (Maße, Schriftfeld-Daten, Leitereigenschaften...)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
@@ -7702,7 +7702,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="181"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation>Zeichnungskopf-Vorlage kopieren</translation>
+        <translation>Schriftfeld-Vorlage kopieren</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="182"/>
@@ -7960,7 +7960,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="714"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation>QElectroTech - Zeichnungskopf-Editor</translation>
+        <translation>QElectroTech - Schriftfeld-Editor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="729"/>
@@ -7984,7 +7984,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="832"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation>QElectroTech-Zeichnungskopf-Vorlagen (*%1);;XML-Dateien (*.xml);;Alle Dateien (*)</translation>
+        <translation>QElectroTech-Schriftfeld-Vorlagen (*%1);;XML-Dateien (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="874"/>
@@ -8002,7 +8002,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="898"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation>QElectroTech Zeichnungskopf-Vorlagen (*%1)</translation>
+        <translation>QElectroTech Schriftfeld-Vorlagen (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1006"/>
@@ -8013,7 +8013,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1010"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Sie können dieses freie Textfeld benutzen, um die Autoren, die Lizenz, oder jede weitere nützliche Information über den Zeichnungskopf zu speichern.</translation>
+        <translation>Sie können dieses freie Textfeld benutzen, um die Autoren, die Lizenz, oder jede weitere nützliche Information über das Schriftfeld zu speichern.</translation>
     </message>
 </context>
 <context>
@@ -8103,7 +8103,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/undocommand/changetitleblockcommand.cpp" line="36"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>Zeichnungskopf bearbeiten</translation>
+        <translation>Schriftfeld bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="443"/>
@@ -9806,7 +9806,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="74"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>In der Zeichnungskopf-Vorlagen als %title verfügbar</translation>
+        <translation>In der Schriftfeld-Vorlage als %title verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="77"/>
@@ -9823,7 +9823,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="84"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>In der Zeichnungskopf-Vorlage als %author verfügbar</translation>
+        <translation>In der Schriftfeld-Vorlage als %author verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="94"/>
@@ -9843,12 +9843,12 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="118"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation>In der Zeichnungskopf-Vorlagen als %indexrev verfügbar</translation>
+        <translation>In der Schriftfeld-Vorlage als %indexrev verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="128"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>In der Zeichnungskopf-Vorlagen als %filename verfügbar</translation>
+        <translation>In der Schriftfeld-Vorlage als %filename verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="141"/>
@@ -9863,7 +9863,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>In der Zeichnungskopf-Vorlagen als %date verfügbar</translation>
+        <translation>In der Schriftfeld-Vorlage als %date verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="170"/>
@@ -9878,7 +9878,7 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="224"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In Zeichnungskopf-Vorlagen als %plant verfügbar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In Schriftfeld-Vorlagen als %plant verfügbar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="200"/>
@@ -9887,7 +9887,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation>In der Zeichnungskopf-Vorlagen als %folio verfügbar.
+        <translation>In der Schriftfeld-Vorlage als %folio verfügbar.
 Folgende Variablen stehen im Feld Folie zur Verfügung:
 %id: Seitennummer der Folie im Projekt
 %total: Anzahl der Folien im Projekt
@@ -9896,7 +9896,7 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="214"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation>In der Zeichnungskopf-Vorlagen als %locmach verfügbar</translation>
+        <translation>In der Schriftfeld-Vorlage als %locmach verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="234"/>
@@ -9923,8 +9923,8 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier können Sie Ihre eigenen Kombinationen Variablen/Werte für die Einträge der Datenfelder im Zeichnungskopf definieren. Zum Beispiel: 
-die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt im Zeichnungskopf %{volta} durch 1745 ersetzen.</translation>
+        <translation>Hier können Sie Ihre eigenen Kombinationen Variablen/Werte für die Einträge der Datenfelder im Schriftfeld definieren. Zum Beispiel:
+die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt im Schriftfeld %{volta} durch 1745 ersetzen.</translation>
     </message>
 </context>
 <context>
@@ -13079,7 +13079,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="341"/>
         <source>Title block templates actions</source>
-        <translation>Aktionen zum Zeichnungskopf</translation>
+        <translation>Aktionen zum Schriftfeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="355"/>
@@ -13115,12 +13115,12 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="244"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Disponible en tant que %plant pour les modèles de cartouches&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In Zeichnungskopf-Vorlagen als %plant verfügbar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In Schriftfeld-Vorlagen als %plant verfügbar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="279"/>
         <source>Disponible en tant que %filename pour les modèles de cartouches</source>
-        <translation>In Zeichnungskopf-Vorlagen als %filename verfügbar</translation>
+        <translation>In Schriftfeld-Vorlagen als %filename verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
@@ -13145,17 +13145,17 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="32"/>
         <source>Informations des cartouches</source>
-        <translation>Daten im Zeichnungskopf</translation>
+        <translation>Daten im Schriftfeld</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="237"/>
         <source>Disponible en tant que %locmach pour les modèles de cartouches</source>
-        <translation>In Zeichnungskopf-Vorlagen als %locmach verfügbar</translation>
+        <translation>In Schriftfeld-Vorlagen als %locmach verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="316"/>
         <source>Disponible en tant que %date pour les modèles de cartouches</source>
-        <translation>In Zeichnungskopf-Vorlagen als %date verfügbar</translation>
+        <translation>In Schriftfeld-Vorlagen als %date verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="329"/>
@@ -13169,7 +13169,7 @@ Les variables suivantes sont utilisables :
 - %id : numéro du folio courant dans le projet 
 - %total : nombre total de folios dans le projet 
 - %autonum : Folio Auto Numeration</source>
-        <translation>In Zeichnungskopf-Vorlagen als %folio verfügbar.
+        <translation>In Schriftfeld-Vorlagen als %folio verfügbar.
 Folgende Variablen stehen im Feld Folie zur Verfügung:
 %id: Seitennummer der Folie im Projekt
 %total: Anzahl der Folien im Projekt
@@ -13183,7 +13183,7 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="84"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Affiche le cartouche en bas (horizontalement) ou à droite (verticalement) du folio.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zeigt den Zeichnungskopf unter der Folie (waagerecht) oder rechts davon (senkrecht) an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Zeigt das Schriftfeld unter der Folie (waagerecht) oder rechts davon (senkrecht) an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="265"/>
@@ -13198,12 +13198,12 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="272"/>
         <source>Disponible en tant que %author pour les modèles de cartouches</source>
-        <translation>In Zeichnungskopf-Vorlagen als %author verfügbar</translation>
+        <translation>In Schriftfeld-Vorlagen als %author verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="251"/>
         <source>Disponible en tant que %title pour les modèles de cartouches</source>
-        <translation>In Zeichnungskopf-Vorlagen als %title verfügbar</translation>
+        <translation>In Schriftfeld-Vorlagen als %title verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="362"/>
@@ -13218,7 +13218,7 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="369"/>
         <source>Disponible en tant que %indexrev pour les modèles de cartouches</source>
-        <translation>In Zeichnungskopf-Vorlagen als %indexrev verfügbar</translation>
+        <translation>In Schriftfeld-Vorlagen als %indexrev verfügbar</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="383"/>
@@ -13234,8 +13234,8 @@ Folgende Variablen stehen im Feld Folie zur Verfügung:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier können Sie Ihre eigenen Kombinationen Variablen/Werte für die Einträge der Datenfelder im Zeichnungskopf definieren. Zum Beispiel: 
-die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt im Zeichnungskopf %{volta} durch 1745 ersetzen.</translation>
+        <translation>Hier können Sie Ihre eigenen Kombinationen Variablen/Werte für die Einträge der Datenfelder im Schriftfeld definieren. Zum Beispiel:
+die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt im Schriftfeld %{volta} durch 1745 ersetzen.</translation>
     </message>
 </context>
 <context>
@@ -13396,7 +13396,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="480"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Jede Zelle des Zeichnungskopfs zeigt einen Wert und optional einen vorangestelltes Label an. Beide Elemente können in verschiedenen Sprachen übersetzt werden.&lt;br/&gt;Gerade wird eine &lt;em&gt;Vorlage&lt;/em&gt; für Zeichnungskopf bearbeitet. Tragen Sie keine statischen Daten ein: nutzen Sie eher Variablen mit der Form %{Variablenname}, um deren Werte im Zeichnungskopf der Folie anzuzeigen.</translation>
+        <translation>Jede Zelle des Schriftfelds zeigt einen Wert und optional einen vorangestelltes Label an. Beide Elemente können in verschiedene Sprachen übersetzt werden.&lt;br/&gt;Gerade wird eine &lt;em&gt;Vorlage&lt;/em&gt; für ein Schriftfeld bearbeitet. Tragen Sie keine statischen Daten ein: Nutzen Sie eher Variablen in der Form %{Variablenname}, um deren Werte im Schriftfeld der Folie anzuzeigen.</translation>
     </message>
 </context>
 <context>
@@ -13405,14 +13405,14 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <location filename="../sources/titleblock/templatedeleter.cpp" line="61"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Zeichnungskopf-Vorlage löschen?</translation>
+        <translation>Schriftfeld-Vorlage löschen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="63"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Möchten Sie wirklich diese Zeichnungskopf-Vorlage (%1) löschen?
+        <translation>Möchten Sie wirklich diese Schriftfeld-Vorlage (%1) löschen?
 </translation>
     </message>
 </context>
@@ -13508,7 +13508,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="224"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Es existiert bereits ein Logo mit dem Namen &quot;%1&quot; in dieser Zeichnungskopf-Vorlage. Vorhandenes Logo ersetzen oder neues Logo umbenennen?</translation>
+        <translation>Es existiert bereits ein Logo mit dem Namen &quot;%1&quot; in dieser Schriftfeld-Vorlage. Vorhandenes Logo ersetzen oder neues Logo umbenennen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
@@ -13716,13 +13716,13 @@ Maximale Länge: %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="150"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Zeichnungsköpfe vom Projekt ohne Titel (id %1)</translation>
+        <translation>Schriftfelder vom Projekt ohne Titel (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="158"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Zeichnungsköpfe vom Projekt &quot;%1&quot;</translation>
+        <translation>Schriftfelder vom Projekt &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -13750,7 +13750,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>XRef Vertical Offset:</source>
-        <translation>Abstand zum Zeichnungskopf:</translation>
+        <translation>Abstand zum Schriftfeld:</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
