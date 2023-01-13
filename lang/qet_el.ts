@@ -447,6 +447,19 @@
     </message>
 </context>
 <context>
+    <name>AddTerminalStripItemDialog</name>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished">Διάλογος</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="20"/>
+        <source>Ajouter le plan de bornes suivant :</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AlignmentTextDialog</name>
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
@@ -1097,7 +1110,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1811"/>
+        <location filename="../sources/diagram.cpp" line="1837"/>
         <source>Modifier la profondeur</source>
         <translation>Μετατροπή του βάθους</translation>
     </message>
@@ -5518,133 +5531,133 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="226"/>
+        <location filename="../sources/qetapp.cpp" line="228"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="424"/>
+        <location filename="../sources/qetapp.cpp" line="426"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>Πινακίδες QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="444"/>
+        <location filename="../sources/qetapp.cpp" line="446"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>Πινακίδες χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1930"/>
+        <location filename="../sources/qetapp.cpp" line="1953"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Τερματισμός</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1932"/>
+        <location filename="../sources/qetapp.cpp" line="1955"/>
         <source>&amp;Masquer</source>
         <translation>Από&amp;κρυψη</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1934"/>
+        <location filename="../sources/qetapp.cpp" line="1957"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Εμφάνιση</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1936"/>
+        <location filename="../sources/qetapp.cpp" line="1959"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Απόκρυψη όλων των επεξεργαστών διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1939"/>
+        <location filename="../sources/qetapp.cpp" line="1962"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>Εμ&amp;φάνιση όλων των επεξεργαστών διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1942"/>
+        <location filename="../sources/qetapp.cpp" line="1965"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>Από&amp;κρυψη όλων των επεξεργαστών στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1945"/>
+        <location filename="../sources/qetapp.cpp" line="1968"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>Προ&amp;βολή όλων των επεξεργαστών στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1948"/>
+        <location filename="../sources/qetapp.cpp" line="1971"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Α&amp;πόκρυψη όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1951"/>
+        <location filename="../sources/qetapp.cpp" line="1974"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Ε&amp;μφάνιση όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1954"/>
+        <location filename="../sources/qetapp.cpp" line="1977"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Νέος επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1956"/>
+        <location filename="../sources/qetapp.cpp" line="1979"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Νέος επεξεργαστής στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1958"/>
+        <location filename="../sources/qetapp.cpp" line="1981"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Κλείσιμο του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1959"/>
+        <location filename="../sources/qetapp.cpp" line="1982"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Ελαχιστοποιεί το QElectroTech στο πλαίσιο συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1960"/>
+        <location filename="../sources/qetapp.cpp" line="1983"/>
         <source>Restaurer QElectroTech</source>
         <translation>Επαναφορά του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2072"/>
+        <location filename="../sources/qetapp.cpp" line="2095"/>
         <source>Éditeurs de schémas</source>
         <translation>Επεξεργαστές διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2082"/>
+        <location filename="../sources/qetapp.cpp" line="2105"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Επεξεργαστές στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2093"/>
+        <location filename="../sources/qetapp.cpp" line="2116"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Επεξεργαστές πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2145"/>
+        <location filename="../sources/qetapp.cpp" line="2168"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Βρέθηκε το παρακάτω αρχείο επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτεί;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2148"/>
+        <location filename="../sources/qetapp.cpp" line="2171"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Βρέθηκαν τα παρακάτω αρχεία επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτούν;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2163"/>
+        <location filename="../sources/qetapp.cpp" line="2186"/>
         <source>Fichier de restauration</source>
         <translation>Αρχεία επαναφοράς</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2265"/>
+        <location filename="../sources/qetapp.cpp" line="2288"/>
         <source>Usage : </source>
         <translation>Χρήση: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2268"/>
+        <location filename="../sources/qetapp.cpp" line="2291"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5660,7 +5673,7 @@ Options disponibles :
   --license                     προβολή της άδειας χρήσης</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2267"/>
+        <location filename="../sources/qetapp.cpp" line="2290"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5669,106 +5682,106 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1681"/>
+        <location filename="../sources/qetapp.cpp" line="1704"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Ρύθμιση του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2274"/>
+        <location filename="../sources/qetapp.cpp" line="2297"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιορίστε τον κατάλογο της συλλογής στοιχείων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2277"/>
+        <location filename="../sources/qetapp.cpp" line="2300"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιορίστε τον κατάλογο της συλλογής πινακίδων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2280"/>
+        <location filename="../sources/qetapp.cpp" line="2303"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=ΚΑΤΑΛΟΓΟΣ              Προσδιορίστε τον κατάλογο των ρυθμίσεων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2282"/>
+        <location filename="../sources/qetapp.cpp" line="2305"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=ΚΑΤΑΛΟΓΟΣ                Προσδιορίστε τον κατάλογο των αρχείων γλώσσας</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="112"/>
+        <location filename="../sources/qetapp.cpp" line="113"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση... Αρχικοποίηση της προσωρινής μνήμης συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="123"/>
+        <location filename="../sources/qetapp.cpp" line="124"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση ... Επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="128"/>
+        <location filename="../sources/qetapp.cpp" line="129"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση... Ανοίγουν τα αρχεία</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1196"/>
+        <location filename="../sources/qetapp.cpp" line="1219"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1198"/>
+        <location filename="../sources/qetapp.cpp" line="1221"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1200"/>
+        <location filename="../sources/qetapp.cpp" line="1223"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Διάγρα</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1202"/>
+        <location filename="../sources/qetapp.cpp" line="1225"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Ηλεκτρικ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1204"/>
+        <location filename="../sources/qetapp.cpp" line="1227"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1825"/>
+        <location filename="../sources/qetapp.cpp" line="1848"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1923"/>
+        <location filename="../sources/qetapp.cpp" line="1946"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση ... Εικονίδιο πλαισίου συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1927"/>
+        <location filename="../sources/qetapp.cpp" line="1950"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1977"/>
+        <location filename="../sources/qetapp.cpp" line="2000"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -5777,12 +5790,12 @@ Options disponibles :
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="774"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
         <source>Afficha&amp;ge</source>
         <translation>Προβο&amp;λή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="839"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="845"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Εμφανίζει (ή όχι) το πλαίσιο στοιχείων</translation>
     </message>
@@ -5797,17 +5810,17 @@ Options disponibles :
         <translation>&amp;Κλιμάκωση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>C&amp;oller</source>
         <translation>Επι&amp;κόλληση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
         <source>Cop&amp;ier</source>
         <translation>Αντι&amp;γραφή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
         <source>Co&amp;uper</source>
         <translation>Α&amp;ποκοπή</translation>
     </message>
@@ -5827,12 +5840,12 @@ Options disponibles :
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
         <source>Ctrl+Shift+X</source>
         <translation>Ctrl+Shift+X</translation>
     </message>
@@ -5842,7 +5855,7 @@ Options disponibles :
         <translation>Αποεπιλογή όλων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="772"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="778"/>
         <source>&amp;Édition</source>
         <translation>Ε&amp;πεξεργασία</translation>
     </message>
@@ -5862,12 +5875,12 @@ Options disponibles :
         <translation>Αποθήκευση ως</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="265"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
         <source>E&amp;xporter</source>
         <translation>Ε&amp;ξαγωγή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="776"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="782"/>
         <source>Fe&amp;nêtres</source>
         <translation>Παρά&amp;θυρα</translation>
     </message>
@@ -5877,12 +5890,12 @@ Options disponibles :
         <translation>&amp;Κλείσιμο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="771"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="777"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Αρχείο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Imprimer</source>
         <translation>Εκτύπωση</translation>
     </message>
@@ -5912,7 +5925,7 @@ Options disponibles :
         <translation>&amp;Νέο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="712"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
         <source>Outils</source>
         <translation>Εργαλεία</translation>
     </message>
@@ -5922,7 +5935,7 @@ Options disponibles :
         <translation>Άν&amp;οιγμα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="996"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1002"/>
         <source>Ouvrir un fichier</source>
         <translation>Άνοιγμα αρχείου</translation>
     </message>
@@ -5937,7 +5950,7 @@ Options disponibles :
         <translation>Περιστροφή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Τερματισμός</translation>
     </message>
@@ -5967,52 +5980,52 @@ Options disponibles :
         <translation>Εστίαση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Annuler</source>
         <translation>Αναίρεση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Refaire</source>
         <translation>Επαναφορά</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Επαναφορά των αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="382"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="836"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="842"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Προβολή ή απόκρυψη της κύριας γραμμής εργαλείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="837"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="843"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Προβολή ή απόκρυψη της γραμμής εργαλείων Προβολής</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="838"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="844"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Προβολή ή απόκρυψη της γραμμής εργαλείων Διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="721"/>
         <source>Affichage</source>
         <translation>Προβολή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="718"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="724"/>
         <source>Schéma</source>
         <translation>Διάγραμμα</translation>
     </message>
@@ -6022,12 +6035,12 @@ Options disponibles :
         <translation>Προσθήκη πεδίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="214"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
         <source>Aucune modification</source>
         <translation>Καμία αλλαγή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="840"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="846"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Προβολή ή απόκρυψη του καταλόγου αναιρέσεων</translation>
     </message>
@@ -6037,7 +6050,7 @@ Options disponibles :
         <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
@@ -6064,33 +6077,33 @@ Options disponibles :
         <translation>Περιστροφή των επιλεγμένων κειμένων κατά μία συγκεκριμένη γωνία</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="701"/>
         <source>Chercher/remplacer</source>
         <translation>Αναζήτηση / Αντικατάσταση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="773"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
         <source>&amp;Projet</source>
         <translation>Έρ&amp;γο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
         <source>&amp;Récemment ouverts</source>
         <translation>Προσφάτως ανοιγμένα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="925"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="948"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="931"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="954"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
         <translation>Το έργο %1 αποθηκεύτηκε στον κατάλογο: %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1098"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1104"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Το αρχείο, το όποιο προσπαθείτε να ανοίξετε, δεν φαίνεται να είναι αναγνώσιμο και δεν μπορεί να ανοιχτεί. Παρακαλώ, ελέγξτε τα δικαιώματα του αρχείου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1113"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1119"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Το έργο, το οποίο προσπαθείτε να ανοίξετε, δεν φαίνεται να είναι εγγράψιμο. Θα ανοιχτεί μόνο για ανάγνωση.</translation>
     </message>
@@ -6105,53 +6118,53 @@ Options disponibles :
         <translation>χρήση παραθύρων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="844"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="850"/>
         <source>Afficher les projets</source>
         <translation>Προβολή των έργων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="393"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="394"/>
         <source>Propriétés du projet</source>
         <translation>Ιδιότητες του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="412"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
         <source>Nettoyer le projet</source>
         <translation>Καθαρισμός του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1130"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1894"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1136"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1909"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Αδυναμία ανοίγματος του έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1132"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1138"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Το αρχείο %1 δεν δείχνει να είναι αρχείο έργου QElectroTech. Κατά συνέπεια, δεν μπορεί να ανοιχτεί.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="99"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="100"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="101"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="102"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Αναιρέσεις</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Επιλέξτε μια ενέργεια για να επαναφέρετε τις αλλαγές που κάνατε στο διάγραμμα σας</translation>
@@ -6172,7 +6185,7 @@ Options disponibles :
         <translation>Προσθήκη εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="437"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
         <source>Ajouter un sommaire</source>
         <translation>Προσθήκη περίληψης</translation>
     </message>
@@ -6192,31 +6205,31 @@ Options disponibles :
         <translation>Ctrl+8</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Κλείνει το QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Αναιρεί την προηγούμενη πράξη</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Επαναφέρει την προηγούμενη αναίρεση</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="322"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Τοποθετεί τα επιλεγμένα στοιχεία στο πρόχειρο αντιγραφής</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Αντιγράφει τα επιλεγμένα στοιχεία</translation>
@@ -6234,30 +6247,30 @@ Options disponibles :
         <translation>Εύρεση του επιλεγμένου  στοιχείου στον πίνακα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="343"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Επαναφορά της διαδρομής των αγωγών, αγνοώντας τις αλλαγές του χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="349"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Αυτόματη δημιουργία αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="158"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="159"/>
         <source>Projets</source>
         <comment>dock title</comment>
         <translation>Έργα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="190"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
         <source>Collections</source>
         <translation>Συλλογές</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Χρήση της αυτόματης δημιουργίας αγωγών όταν αυτό είναι δυνατόν</translation>
@@ -6275,7 +6288,7 @@ Options disponibles :
         <translation>Εμφανίζει τα διάφορα ανοιγμένα έργα, σε παράθυρα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="429"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="430"/>
         <source>Ajouter une nomenclature</source>
         <translation>Προσθήκη ονοματολογίας</translation>
     </message>
@@ -6292,88 +6305,98 @@ Options disponibles :
         <translation>Επιτρέπει την επιλογή στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
+        <source>Ajouter un plan de bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
         <translation>Προσθέτει ένα πεδίο κειμένου στην τρέχουσα σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="670"/>
         <source>Ajoute une image sur le folio actuel</source>
         <translation>Προσθήκη εικόνας στην τρέχουσα σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="670"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
         <source>Ajoute une ligne sur le folio actuel</source>
         <translation>Προσθήκη γραμμής στην τρέχουσα σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
         <translation>Προσθήκη ορθογώνιου στην τρέχουσα σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
         <translation>Προσθήκη έλλειψης στην τρέχουσα σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
         <translation>Προσθήκη πολυγραμμής στην τρέχουσα σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="750"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
+        <source>Ajoute un plan de bornier sur le folio actuel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="756"/>
         <source>Ajouter</source>
         <translation>Προσθήκη</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1415"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1421"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation>Διπλό κλικ για τελείωμα του σχήματος, Δεξί κλικ για ακύρωση του τελευταίου σημείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1675"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1690"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Επεξεργασία του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1682"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1697"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Επεξεργασία του πεδίου κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1689"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1704"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Επεξεργασία εικόνας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1696"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1711"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>Επεξεργασία αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1704"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1719"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Επεξεργασία του επιλεγμένου αντικειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1895"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1910"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά το άνοιγμα του αρχείου %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1943"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1958"/>
         <source>Active le projet « %1 »</source>
         <translation>Ενεργοποιεί το έργο « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2295"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2310"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Σφάλμα</translation>
@@ -6396,66 +6419,66 @@ Options disponibles :
         <translation>Επόμενο έργο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτό το παράθυρο εμφανίζει τις διάφορες δράσεις που γίνονται στην τρέχουσα σελίδα. Πατήστε σε μια δράση για να επιστρέψετε στην κατάσταση της σελίδας αμέσως μετά την εφαρμογή.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
         <source>Exporter en pdf</source>
         <translation>Εξαγωγή ως pdf</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Εξάγει μία ή περισσότερες σελίδες του τρέχοντος έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="358"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation>Χρώμα παρασκηνίου λευκό/γκρι</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation>Εμφανίζει το χρώμα παρασκηνίου της σελίδας σε λευκό ή γκρι</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="368"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
         <source>Afficher la grille</source>
         <translation>Εμφάνιση του δικτυώματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="370"/>
         <source>Affiche ou masque la grille des folios</source>
         <translation>Εμφάνιση ή απόκρυψη του δικτυώματος της σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="381"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="382"/>
         <source>Propriétés du folio</source>
         <translation>Ιδιότητες σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="399"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
         <source>Ajouter un folio</source>
         <translation>Προσθήκη σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="408"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="409"/>
         <source>Supprimer le folio</source>
         <translation>Διαγραφή σελίδας</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="422"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="423"/>
         <source>Exporter au format CSV</source>
         <translation>Εξαγωγή ως CSV</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="444"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="445"/>
         <source>Gestionnaire de borniers (DEV)</source>
         <translation>Διαχειριστής ακροδεκτών (DEV)</translation>
     </message>
@@ -6613,36 +6636,36 @@ Options disponibles :
         <translation>Προσθήκη πολυγραμμής</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Εξάγει την τρέχουσα σελίδα σε διαφορετική μορφή</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Εκτυπώνει μία ή περισσότερες σελίδες του τρέχοντος έργου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="754"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="760"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Βάθος</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1480"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1495"/>
         <source>Groupe</source>
         <translation>Ομάδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation>Επικολλάει τα περιεχόμενα του προχείρου στη σελίδα</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation>Επεξεργαστείτε τις ιδιότητες της σελίδας (διαστάσεις, πληροφορίες πινακίδας, ιδιότητες αγωγών...)</translation>
@@ -6666,24 +6689,24 @@ Options disponibles :
         <translation>Ενεργοποιεί το προηγούμενο έργο</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="998"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1004"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>Έργα QElectroTech (*.qet);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1081"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1097"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1087"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1103"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Αδυναμία ανοίγματος του αρχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1083"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1089"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Φαίνεται ότι το αρχείο 1% που προσπαθείτε να ανοίξετε δεν υπάρχει.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1112"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1118"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Άνοιγμα του αρχείου μόνο για ανάγνωση</translation>
@@ -7565,77 +7588,72 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1168"/>
+        <location filename="../sources/qetproject.cpp" line="1194"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1327"/>
-        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
-Que désirez vous faire ?</source>
-        <comment>message box content</comment>
-        <translation>Αυτό το έγγραφο φαίνεται να έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech. Είναι πιθανό ότι το άνοιγμα του συνόλου ή μέρους του παρόντος εγγράφου να αποτύχει.
-Τι θα θέλατε να γίνει;</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetproject.cpp" line="1325"/>
+        <location filename="../sources/qetproject.cpp" line="1354"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="359"/>
+        <location filename="../sources/qetproject.cpp" line="385"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Έργο « %1 : %2»</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="366"/>
+        <location filename="../sources/qetproject.cpp" line="392"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Έργο %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="373"/>
+        <location filename="../sources/qetproject.cpp" line="399"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Ανώνυμο έργο</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="382"/>
+        <location filename="../sources/qetproject.cpp" line="408"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [μόνο-για-ανάγνωση]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="390"/>
+        <location filename="../sources/qetproject.cpp" line="416"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [Αλλαγμένο]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1348"/>
+        <location filename="../sources/qetproject.cpp" line="1356"/>
+        <source>Ce document semble avoir été enregistré avec une version %1 
+qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="1385"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1349"/>
-        <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version de QElectroTech.
-Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8 de QElectroTech sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
-Que désirez vous faire ?</source>
-        <translation>Το έργο που προσπαθείτε να ανοίξετε είναι εν μέρει συμβατό με την έκδοση του QElectroTech που διαθέτετε.
-Για να το κάνετε πλήρως συμβατό, ανοίξτε το ίδιο έργο με την έκδοση 0.8 του QElectroTech αποθηκεύστε το έργο και ανοίξτε το ξανά με αυτήν την έκδοση.
-Τι θέλετε να κάνετε;</translation>
+        <location filename="../sources/qetproject.cpp" line="1386"/>
+        <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1417"/>
+        <location filename="../sources/qetproject.cpp" line="1461"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου...&lt;/b&gt;&lt;br/&gt;Δημιουργία των σελίδων&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1459"/>
+        <location filename="../sources/qetproject.cpp" line="1503"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του τρέχοντος έργου ...&lt;/b&gt;&lt;br/&gt;Εφαρμογή των παραπομπών&lt;/p&gt;</translation>
     </message>
@@ -8003,18 +8021,18 @@ Que désirez vous faire ?</source>
         <translation>Εξαγωγή στο πρόχειρο</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="396"/>
+        <location filename="../sources/qet.cpp" line="405"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL δεν μπορεί να βρεθεί - αλλά ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="400"/>
+        <location filename="../sources/qet.cpp" line="409"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL υπάρχει αλλά δεν μπορεί να ανοιχτεί - αλλά ούτως ή άλλως την έχετε στην καρδιά σας, έτσι δεν είναι;</translation>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="164"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="438"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="437"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Προσοχή: Το στοιχείο έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech.</translation>
     </message>
@@ -8052,26 +8070,26 @@ Que désirez vous faire ?</source>
         <translation>αποκοπή %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="184"/>
-        <location filename="../sources/diagramcommands.cpp" line="395"/>
+        <location filename="../sources/diagramcommands.cpp" line="248"/>
+        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="53"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>μετακίνηση %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="417"/>
+        <location filename="../sources/diagramcommands.cpp" line="270"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>επεξεργασία κειμένου</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="469"/>
+        <location filename="../sources/diagramcommands.cpp" line="322"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>μετατροπή αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="539"/>
+        <location filename="../sources/diagramcommands.cpp" line="392"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Επαναφορά %1</translation>
@@ -8083,7 +8101,7 @@ Que désirez vous faire ?</source>
         <translation>μετατροπή πινακίδας</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="590"/>
+        <location filename="../sources/diagramcommands.cpp" line="443"/>
         <source>modifier les dimensions du folio</source>
         <comment>undo caption</comment>
         <translation>Επεξεργασία των διαστάσεων της σελίδας</translation>
@@ -8196,7 +8214,7 @@ Que désirez vous faire ?</source>
         <translation>κείμενο</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="273"/>
+        <location filename="../sources/qet.cpp" line="274"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8205,7 +8223,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="282"/>
+        <location filename="../sources/qet.cpp" line="283"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8214,7 +8232,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="291"/>
+        <location filename="../sources/qet.cpp" line="292"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8223,7 +8241,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="300"/>
+        <location filename="../sources/qet.cpp" line="301"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8232,7 +8250,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="309"/>
+        <location filename="../sources/qet.cpp" line="310"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8241,7 +8259,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="318"/>
+        <location filename="../sources/qet.cpp" line="319"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8250,7 +8268,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="326"/>
+        <location filename="../sources/qet.cpp" line="327"/>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
         <translation>
@@ -8258,77 +8276,86 @@ Que désirez vous faire ?</source>
             <numerusform>%n πίνακες</numerusform>
         </translation>
     </message>
+    <message numerus="yes">
+        <location filename="../sources/qet.cpp" line="335"/>
+        <source>%n plan de bornes</source>
+        <comment>part of a sentence listing the content of a diagram</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../sources/qet.cpp" line="623"/>
-        <location filename="../sources/qet.cpp" line="754"/>
-        <location filename="../sources/qetxml.cpp" line="269"/>
+        <location filename="../sources/qet.cpp" line="632"/>
+        <location filename="../sources/qet.cpp" line="763"/>
+        <location filename="../sources/qetxml.cpp" line="270"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Δεν είναι δυνατό το άνοιγμα του αρχείου %1 για εγγραφή, παρουσιάστηκε σφάλμα %2</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="644"/>
+        <location filename="../sources/qet.cpp" line="653"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την εγγραφή του αρχείου %1, το σφάλμα%2 βρέθηκε.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="718"/>
+        <location filename="../sources/qet.cpp" line="727"/>
         <source>Amener au premier plan</source>
         <translation>Μετακίνηση εμπρός</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="719"/>
+        <location filename="../sources/qet.cpp" line="728"/>
         <source>Rapprocher</source>
         <translation>Ανύψωση</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="720"/>
+        <location filename="../sources/qet.cpp" line="729"/>
         <source>Éloigner</source>
         <translation>Χαμήλωμα</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="721"/>
+        <location filename="../sources/qet.cpp" line="730"/>
         <source>Envoyer au fond</source>
         <translation>Μετακίνηση πίσω</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="723"/>
+        <location filename="../sources/qet.cpp" line="732"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>Φέρνει την επιλογή(ες) στο προσκήνιο</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="724"/>
+        <location filename="../sources/qet.cpp" line="733"/>
         <source>Rapproche la ou les sélections</source>
         <translation>Ανασυγκρότηση της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="725"/>
+        <location filename="../sources/qet.cpp" line="734"/>
         <source>Éloigne la ou les sélections</source>
         <translation>Απομάκρυνση της επιλογής(ών)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="726"/>
+        <location filename="../sources/qet.cpp" line="735"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>Αποστολή των επιλογών στο παρασκήνιο</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="728"/>
+        <location filename="../sources/qet.cpp" line="737"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Πάνω</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="729"/>
+        <location filename="../sources/qet.cpp" line="738"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Κάτω</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="730"/>
+        <location filename="../sources/qet.cpp" line="739"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="731"/>
+        <location filename="../sources/qet.cpp" line="740"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Shift+Home</translation>
     </message>
@@ -8716,7 +8743,7 @@ Que désirez vous faire ?</source>
         <translation>Συλλογή</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="204"/>
+        <location filename="../sources/elementsmover.cpp" line="205"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -9057,22 +9084,22 @@ Voulez-vous la remplacer ?</source>
         <translation>Δημιουργία αγωγών</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2392"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2407"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε το:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator&lt;/a&gt;&lt;br&gt; Απαιτεί python 3.5 ή παραπάνω  &lt;br&gt; &lt;B&gt; &lt;U&gt; Πρώτη εγκατάσταση στα Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Εγκατάσταση, εάν απαιτείται, python 3.5 ή παραπάνω &lt;br&gt; Επισκεφθείτε το: &lt;br&gt; &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Ενημέρωση στα Windows &lt;/B&gt; &lt;/U&gt; &lt;br&gt; python -m pip install  --upgrade qet_tb_generator &lt;br&gt;&gt;&gt; Ο χρήστης θα μπορούσε να ξεκινήσει σε ένα τερματικό αυτό το σενάριο σε αυτό τον κατάλογο  &lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2412"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2427"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.9 bundle only, &lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε το:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator&lt;/a&gt;&lt;br&gt; Απαιτεί python 3.5 ή παραπάνω  &lt;br&gt; &lt;B&gt; &lt;U&gt; Πρώτη εγκατάσταση στο OSX &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Εγκατάσταση, εάν απαιτείται, python 3.9 μόνο &lt;br&gt; 2. Εκτελέστε το σενάριο Profile.command &lt;br&gt;επειδή το πρόγραμμα χρησιμοποιεί ενσωματωμένο PATH για εντοπισμό του plugin qet-tb-generator &lt;br&gt; Επισκευτείτε το :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Αναβάθμιση στο macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2430"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2445"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Για να εγκαταστήσετε το πρόσθετο qet_tb_generator&lt;br&gt;Επισκεφθείτε το:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt; Απαιτεί python 3.5 ή παραπάνω  &lt;br&gt;&lt;br&gt; &lt;B&gt; &lt;U&gt; Πρώτη εγκατάσταση στο Linux &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. ελέγχτε αν έχετε εγκατεστημένο το pip3: pip3 --version&lt;br&gt;αν οχι, εγκαταστήστε το με: sudo apt-get install python3-pip&lt;br&gt;2. Εγκαταστήστε την εφαρμογή: sudo pip3 install qet_tb_generator&lt;br&gt;3. Εκκινήστε την εφαρμογή: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Αναβάθμιση σε Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2465"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Σφάλμα εκκίνησης του προσθέτου qet_tb_generator</translation>
     </message>
@@ -9101,7 +9128,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
         <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="581"/>
-        <location filename="../sources/qetapp.cpp" line="2017"/>
+        <location filename="../sources/qetapp.cpp" line="2040"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>Αυτό είναι ένα σφάλμα στον κώδικα</translation>
@@ -9278,12 +9305,12 @@ Voulez-vous la remplacer ?</source>
         <translation>Επεξεργασία των ιδιοτήτων ενος στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="27"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="28"/>
         <source>Ponter des bornes entre-elles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="56"/>
+        <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="57"/>
         <source>Supprimer des ponts de bornes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12802,6 +12829,14 @@ Les autres champs ne sont pas utilisés.</source>
     </message>
 </context>
 <context>
+    <name>TerminalStripItem</name>
+    <message>
+        <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="82"/>
+        <source>plan de bornes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TerminalStripModel</name>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="283"/>
@@ -13892,12 +13927,12 @@ Longueur maximale : %2px
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="628"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="627"/>
         <source>Exporter la base de données interne du projet</source>
         <translation>Εξαγωγή της εσωτερικής βάσης δεδομένων έργου</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="636"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="635"/>
         <source>sans_nom</source>
         <translation>ανώνυμο</translation>
     </message>
