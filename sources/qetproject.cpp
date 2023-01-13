@@ -1348,13 +1348,18 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 #endif
 			if (qet_version < m_project_qet_version)
 			{
+			
 				int ret = QET::QetMessageBox::warning(
 							nullptr,
 							tr("Avertissement",
 							   "message box title"),
-							tr("Ce document semble avoir été enregistré avec "
-							   "une version ultérieure de QElectroTech. Il est "
-							   "possible que l'ouverture de tout ou partie de ce "
+							tr("Ce document semble avoir été enregistré avec une version %1" 
+							   " \n"
+							   "qui est ultérieure à votre version !"
+							   " \n"
+							   "Vous utilisez actuellement QElectroTech en version %2").arg(root_elmt.attribute(QStringLiteral("version")), QET::version +
+							   ".\n"
+							    "Il est alors possible que l'ouverture de tout ou partie de ce "
 							   "document échoue.\n"
 							   "Que désirez vous faire ?",
 							   "message box content"),
@@ -1378,12 +1383,14 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   nullptr,
 							   tr("Avertissement ", "message box title"),
 							   tr("Le projet que vous tentez d'ouvrir est partiellement "
-								  "compatible avec votre version de QElectroTech.\n"
+								  "compatible avec votre version %1 de QElectroTech").arg(QET::version) +
+								  ".\n"
 								  "Afin de le rendre totalement compatible veuillez ouvrir ce même projet "
-								  "avec la version 0.8 de QElectroTech sauvegarder le projet "
+								  "avec la version 0.80 de QElectroTech et sauvegarder le projet "
 								  "et l'ouvrir à  nouveau avec cette version.\n"
-								  "Que désirez vous faire ?"),
-							   QMessageBox::Open | QMessageBox::Cancel);
+								  "Que désirez vous faire ?",
+							   QMessageBox::Open | QMessageBox::Cancel
+							   );
 
 				if (ret == QMessageBox::Cancel)
 				{
