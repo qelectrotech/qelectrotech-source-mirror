@@ -1357,7 +1357,8 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   " \n"
 							   "qui est ultérieure à votre version !"
 							   " \n"
-							   "Vous utilisez actuellement QElectroTech en version %2").arg(root_elmt.attribute(QStringLiteral("version")), QET::version +
+							   "Vous utilisez actuellement QElectroTech en version %2")
+							   .arg(root_elmt.attribute(QStringLiteral("version")), QET::version +
 							   ".\n"
 							    "Il est alors possible que l'ouverture de tout ou partie de ce "
 							   "document échoue.\n"
@@ -1383,7 +1384,8 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   nullptr,
 							   tr("Avertissement ", "message box title"),
 							   tr("Le projet que vous tentez d'ouvrir est partiellement "
-								  "compatible avec votre version %1 de QElectroTech").arg(QET::version) +
+								  "compatible avec votre version %1 de QElectroTech")
+								  .arg(QET::version) +
 								  ".\n"
 								  "Afin de le rendre totalement compatible veuillez ouvrir ce même projet "
 								  "avec la version 0.80 de QElectroTech et sauvegarder le projet "
