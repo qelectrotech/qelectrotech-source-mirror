@@ -114,112 +114,112 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="105"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="106"/>
         <source>Traduction en espagnol</source>
-        <translation>Übersetzung ins Spanische</translation>
+        <translation>für Spanisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="107"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="108"/>
         <source>Traduction en russe</source>
-        <translation>Übersetzung ins Russische</translation>
+        <translation>für Russisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="109"/>
         <source>Traduction en portugais</source>
-        <translation>Übersetzung ins Portugisische</translation>
+        <translation>für Portugisisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Traduction en tchèque</source>
-        <translation>Übersetzung ins Tschechische</translation>
+        <translation>für Tschechisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
         <source>Traduction en polonais</source>
-        <translation>Übersetzung ins Polnische</translation>
+        <translation>für Polnisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="112"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="113"/>
         <source>Traduction en allemand</source>
-        <translation>Übersetzung ins Deutsche</translation>
+        <translation>für Deutsch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="114"/>
         <source>Traduction en roumain</source>
-        <translation>Übersetzung ins Rumänische</translation>
+        <translation>für Rumänisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="115"/>
         <source>Traduction en italien</source>
-        <translation>Übersetzung ins Italienische</translation>
+        <translation>für Italienisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="116"/>
         <source>Traduction en arabe</source>
-        <translation>Übersetzung ins Arabische</translation>
+        <translation>für Arabisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="117"/>
         <source>Traduction en croate</source>
-        <translation>Übersetzung ins Kroatische</translation>
+        <translation>für Kroatisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="118"/>
         <source>Traduction en catalan</source>
-        <translation>Übersetzung ins Katalanische</translation>
+        <translation>für Katalanisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="119"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="120"/>
         <source>Traduction en grec</source>
-        <translation>Übersetzung ins Griechische</translation>
+        <translation>für Griechisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="121"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="122"/>
         <source>Traduction en néerlandais</source>
-        <translation>Übersetzung ins Niederländische</translation>
+        <translation>für Niederländisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="123"/>
         <source>Traduction en flamand</source>
-        <translation>Übersetzung ins Flämische</translation>
+        <translation>für Flämisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="124"/>
         <source>Traduction en danois</source>
-        <translation>Übersetzung ins Dänische</translation>
+        <translation>für Dänisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="125"/>
         <source>Traduction en brézilien</source>
-        <translation>Übersetzung ins Brasilianische</translation>
+        <translation>für Brasilianisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="126"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="127"/>
         <source>Traduction en Turc</source>
-        <translation>Übersetzung in Türkisch</translation>
+        <translation>für Türkisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="128"/>
         <source>Traduction en hongrois</source>
-        <translation>Übersetzung in Ungarisch</translation>
+        <translation>für Ungarisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="129"/>
         <source>Traduction en serbe</source>
-        <translation>Übersetzung in Serbisch</translation>
+        <translation>für Serbisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Traduction en japonais</source>
-        <translation>Übersetzung in Japanisch</translation>
+        <translation>für Japanisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Traduction en mongol</source>
-        <translation>Übersetzung in Mongolisch</translation>
+        <translation>für Mongolisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="142"/>
@@ -296,7 +296,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="181"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
-        <translation>Tool zum Übersetzen von Elementen</translation>
+        <translation type="unfinished">Element-Namen übersetzen</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="159"/>
@@ -306,17 +306,17 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Traduction en ukrainien</source>
-        <translation>Übersetzung in Ukrainisch</translation>
+        <translation>für Ukrainisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Traduction en norvégien</source>
-        <translation>Übersetzung in Norwegisch</translation>
+        <translation>für Norwegisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en slovène</source>
-        <translation>Übersetzung in Slowenisch</translation>
+        <translation>für Slowenisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="177"/>
@@ -512,7 +512,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="34"/>
         <source>Element</source>
-        <translation>Bauteile</translation>
+        <translation>Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
@@ -3131,7 +3131,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation type="unfinished">Klemmen-Editor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
@@ -3197,7 +3197,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="151"/>
         <source>Sans</source>
-        <translation type="unfinished">nein</translation>
+        <translation>ohne</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="156"/>
@@ -3235,7 +3235,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="211"/>
         <source>led</source>
-        <translation type="unfinished">led</translation>
+        <translation type="unfinished">LED</translation>
     </message>
 </context>
 <context>
@@ -6187,7 +6187,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>Ctrl+Q</source>
-        <translation>Strg+Q</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
@@ -6902,7 +6902,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="499"/>
         <source>Rotation</source>
-        <translation>Drehung</translation>
+        <translation>Drehen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="502"/>
@@ -7060,7 +7060,7 @@ Ausführbar machen: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
         <source>Ctrl+Q</source>
-        <translation>Strg+Q</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="997"/>
@@ -7661,7 +7661,8 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/qetproject.cpp" line="1384"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
-        <translation>Das Projekt, das Sie zu öffnen versuchen, ist teilweise mit Ihrer Version %1 von QElectroTech kompatibel.</translation>
+        <translation>Das Projekt, das Sie zu öffnen versuchen, ist teilweise mit Ihrer Version %1 von QElectroTech kompatibel.
+</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1387"/>
@@ -8330,9 +8331,9 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/qet.cpp" line="335"/>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Klemmenplan</numerusform>
+            <numerusform>%n Klemmenpläne</numerusform>
         </translation>
     </message>
     <message>
@@ -12624,7 +12625,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="14"/>
         <source>Création groupe de bornes</source>
-        <translation type="unfinished">Erstellen einer Klemmengruppe</translation>
+        <translation>Klemmleiste erstellen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripcreatordialog.ui" line="20"/>
@@ -12657,7 +12658,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="24"/>
         <source>Disposition</source>
-        <translation type="unfinished">Anordnung</translation>
+        <translation>Anordnung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="240"/>
@@ -12667,7 +12668,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="247"/>
         <source>Déponter les bornes</source>
-        <translation>Klemmen entfernen</translation>
+        <translation>Brücker entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="258"/>
@@ -12723,12 +12724,12 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
         <source>Effectuer le déplacement</source>
-        <translation type="unfinished">Verschieben durchführen</translation>
+        <translation>Verschieben anwenden</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="97"/>
         <source>Couleur pont :</source>
-        <translation type="unfinished">Brückerfarbe:</translation>
+        <translation>Brückerfarbe:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="113"/>
@@ -12753,7 +12754,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="176"/>
         <source>Déplacer dans :</source>
-        <translation>Verschieben nach:</translation>
+        <translation>verschieben nach:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="192"/>
@@ -12768,7 +12769,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="219"/>
         <source>Position automatique</source>
-        <translation>Automatische Positionierung</translation>
+        <translation>automatisch anordnen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="77"/>
@@ -12803,7 +12804,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="127"/>
         <source>Bornes indépendantes</source>
-        <translation type="unfinished">nicht zugeordnet</translation>
+        <translation>nicht zugeordnete Klemmen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="195"/>
@@ -12816,17 +12817,17 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="14"/>
         <source>Gestionnaire de borniers</source>
-        <translation type="unfinished">Klemmleisten-Manager</translation>
+        <translation>Klemmleisten-Planer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="43"/>
         <source>toolBar</source>
-        <translation type="unfinished">Werkzeugleiste Druckoptionen</translation>
+        <translation>Werkzeugleiste</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="61"/>
         <source>Ajouter un bornier</source>
-        <translation type="unfinished">Klemmblock hinzufügen</translation>
+        <translation>Klemmleiste hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditorwindow.ui" line="64"/>
@@ -12892,7 +12893,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="293"/>
         <source>Couleur / numéro de fil câble</source>
-        <translation>Farbe/Aderzahl des Kabels</translation>
+        <translation type="unfinished">Farbe/Nummer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="294"/>
@@ -12907,7 +12908,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="296"/>
         <source>led</source>
-        <translation type="unfinished">led</translation>
+        <translation>LED</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="290"/>
@@ -12920,17 +12921,17 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.ui" line="14"/>
         <source>Explorateur de bornier</source>
-        <translation type="unfinished">Klemmleisten-Planer</translation>
+        <translation>Klemmleisten-Planer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="211"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Projekt ohne Titel</translation>
+        <translation>Projekt ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="217"/>
         <source>Bornes indépendante</source>
-        <translation type="unfinished">Unabhängige Klemmen</translation>
+        <translation>nicht zugeordnete Klemmen</translation>
     </message>
 </context>
 <context>
@@ -13008,17 +13009,17 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="14"/>
         <source>Logiciel tiers requis</source>
-        <translation type="unfinished">Software von Drittanbietern erforderlich</translation>
+        <translation>Software von Drittanbietern erforderlich</translation>
     </message>
     <message>
         <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="33"/>
         <source>Télechargement</source>
-        <translation type="unfinished">Download</translation>
+        <translation>Download</translation>
     </message>
     <message>
         <location filename="../sources/ui/thirdpartybinaryinstalldialog.ui" line="44"/>
         <source>Dossier installation</source>
-        <translation">Installationsordner</translation>
+        <translation>Installationsordner</translation>
     </message>
 </context>
 <context>
