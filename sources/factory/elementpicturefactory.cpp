@@ -19,8 +19,8 @@
 
 #include "../ElementsCollection/elementslocation.h"
 #include "../editor/graphicspart/partline.h"
-#include "../qet.h"
 #include "../qetapp.h"
+#include "../qetversion.h"
 
 #include <QAbstractTextDocumentLayout>
 #include <QDomElement>
@@ -154,19 +154,16 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	QDomElement dom = location.xml();
 
 		//Check if the current version can read the xml description
-	if (dom.hasAttribute("version"))
-	{
-		QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
-		QVersionNumber element_version = QVersionNumber::fromString(dom.attribute("version"));
-		if (qet_version < element_version)
-		{
-			std::cerr << qPrintable(
-			QObject::tr("Avertissement : l'élément "
-			" a été enregistré avec une version"
-			" ultérieure de QElectroTech.")
-			) << std::endl;
-		}
-	}
+    const auto elmt_version = QetVersion::fromXmlAttribute(dom);
+    if (!elmt_version.isNull()
+        && QetVersion::currentVersion() < elmt_version)
+    {
+        std::cerr << qPrintable(
+                         QObject::tr("Avertissement : l'élément "
+                                     " a été enregistré avec une version"
+                                     " ultérieure de QElectroTech.")
+                         ) << std::endl;
+    }
 
 		//This attributes must be present and valid
 	int w, h, hot_x, hot_y;

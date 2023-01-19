@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "machine_info.h"
+
+#include "qetversion.h"
+
 #include <QScreen>
 #include <QProcess>
 #include <QApplication>
@@ -28,7 +31,6 @@
 #ifdef Q_OS_WIN
 #include <windows.h>
 #endif
-#include "qet.h"
 
 MachineInfo *MachineInfo::m_instance = nullptr;
 /**
@@ -121,7 +123,7 @@ void MachineInfo::send_info_to_debug()
 #endif
 #endif
 	qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
-	qInfo()<< "QElectroTech V " + QET::displayedVersion;
+    qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
 	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
 	      + " - " + pc.built.arch

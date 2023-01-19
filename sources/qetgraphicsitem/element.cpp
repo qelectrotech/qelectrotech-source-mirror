@@ -34,6 +34,7 @@
 #include "elementtextitemgroup.h"
 #include "iostream"
 #include "../qetxml.h"
+#include "../qetversion.h"
 
 #include <QDomElement>
 #include <utility>
@@ -426,20 +427,17 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 		return(false);
 	}
 
-		//Check if the current version can read the xml description
-	if (xml_def_elmt.hasAttribute(QStringLiteral("version")))
-	{
-		QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
-		QVersionNumber element_version = QVersionNumber::fromString(xml_def_elmt.attribute(QStringLiteral("version")));
-		if (qet_version < element_version)
-		{
-			std::cerr << qPrintable(
-				QObject::tr("Avertissement : l'élément "
-				" a été enregistré avec une version"
-				" ultérieure de QElectroTech.")
-			) << std::endl;
-		}
-	}
+        //Check if the current version can read the xml description
+    const auto elmt_version = QetVersion::fromXmlAttribute(xml_def_elmt);
+    if (!elmt_version.isNull()
+        && QetVersion::currentVersion() < elmt_version)
+    {
+        std::cerr << qPrintable(
+                         QObject::tr("Avertissement : l'élément "
+                                     " a été enregistré avec une version"
+                                     " ultérieure de QElectroTech.")
+                         ) << std::endl;
+    }
 
 		//This attribute must be present and valid
 	int w = 0, h = 0, hot_x = 0, hot_y = 0;

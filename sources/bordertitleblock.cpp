@@ -22,8 +22,10 @@
 #include "diagramposition.h"
 #include "math.h"
 #include "qetapp.h"
+#include "qetversion.h"
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
+
 
 #include <QLocale>
 #include <QPainter>
@@ -317,7 +319,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setPlant(ip.plant);
 	setLocMach(ip.locmach);
 	setIndicerev(ip.indexrev);
-	setVersion(QET::displayedVersion);
+    setVersion(QetVersion::displayedVersion());
 	setFolio(ip.folio);
 	setAutoPageNum(ip.auto_page_num);
 	if (m_edge != ip.display_at)

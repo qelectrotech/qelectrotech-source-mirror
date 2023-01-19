@@ -33,6 +33,7 @@
 #include "ui/importelementdialog.h"
 #include "TerminalStrip/terminalstrip.h"
 #include "qetxml.h"
+#include "qetversion.h"
 
 #include <QHash>
 #include <QStandardPaths>
@@ -907,7 +908,7 @@ QDomDocument QETProject::toXml()
 	// racine du projet
 	QDomDocument xml_doc;
 	QDomElement project_root = xml_doc.createElement("project");
-	project_root.setAttribute("version", QET::version);
+    QetVersion::toXmlAttribute(project_root);
 	if (project_title_.isEmpty())
 	{
 		// if project_title_is Empty add title from m_file_path
@@ -1337,18 +1338,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	if (root_elmt.tagName() == QLatin1String("project"))
 	{
 		//Normal opening mode
-		if (root_elmt.hasAttribute(QStringLiteral("version")))
+        m_project_qet_version = QetVersion::fromXmlAttribute(root_elmt);
+        if (!m_project_qet_version.isNull())
 		{
-			bool conv_ok;
-			QVersionNumber qet_version = QVersionNumber::fromString(QET::version);
-			m_project_qet_version = QVersionNumber::fromString(root_elmt.attribute(QStringLiteral("version")));
-
-#if TODO_LIST
-#pragma message("@TODO use of version convert")
-#endif
-			if (qet_version < m_project_qet_version)
+            if (QetVersion::currentVersion() < m_project_qet_version)
 			{
-			
 				int ret = QET::QetMessageBox::warning(
 							nullptr,
 							tr("Avertissement",
@@ -1357,7 +1351,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   "\n qui est ultérieure à votre version !"
 							   " \n"
 							   "Vous utilisez actuellement QElectroTech en version %2")
-							.arg(root_elmt.attribute(QStringLiteral("version")), QET::version + 
+                            .arg(root_elmt.attribute(QStringLiteral("version")), QetVersion::currentVersion().toString() +
 							tr(".\n Il est alors possible que l'ouverture de tout ou partie de ce "
 							   "document échoue.\n"
 							   "Que désirez vous faire ?"),
@@ -1374,16 +1368,14 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 				//Since QElectrotech 0.9 the compatibility with project made with
 				//Qet 0.6 or lower is break;
-				//keep float here for very old version
-			qreal r_project_qet_version = root_elmt.attribute(QStringLiteral("version")).toDouble(&conv_ok);
-			if (conv_ok && m_project_qet_version < QVersionNumber(0, 100) && r_project_qet_version <= 0.6)
+            if (m_project_qet_version <= QetVersion::versionZeroDotSix())
 			{
 				auto ret = QET::QetMessageBox::warning(
 							nullptr,
 							tr("Avertissement ", "message box title"),
 							tr("Le projet que vous tentez d'ouvrir est partiellement "
 							   "compatible avec votre version %1 de QElectroTech.\n")
-							.arg(QET::version) +
+                            .arg(QetVersion::currentVersion().toString()) +
 							tr("Afin de le rendre totalement compatible veuillez ouvrir ce même projet "
 							   "avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet "
 							   "et l'ouvrir à  nouveau avec cette version.\n"

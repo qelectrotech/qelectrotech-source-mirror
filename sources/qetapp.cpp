@@ -37,6 +37,7 @@
 #include "ui/configpage/generalconfigurationpage.h"
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
+#include "qetversion.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -2314,7 +2315,7 @@ void QETApp::printHelp()
 */
 void QETApp::printVersion()
 {
-	std::cout << qPrintable(QET::displayedVersion) << std::endl;
+    std::cout << qPrintable(QetVersion::displayedVersion()) << std::endl;
 }
 
 /**

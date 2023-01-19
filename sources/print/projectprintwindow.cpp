@@ -20,6 +20,8 @@
 #include "../diagram.h"
 #include "../qeticons.h"
 #include "../qetproject.h"
+#include "../qetversion.h"
+
 #include "ui_projectprintwindow.h"
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
@@ -84,7 +86,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		if (!file_name.endsWith(".pdf")) {
 			file_name.append(".pdf");
 		}
-		printer_->setCreator(QString("QElectroTech %1").arg(QET::displayedVersion));
+        printer_->setCreator(QString("QElectroTech %1").arg(QetVersion::displayedVersion()));
 		printer_->setOutputFileName(file_name);
 		printer_->setOutputFormat(QPrinter::PdfFormat);
 	}

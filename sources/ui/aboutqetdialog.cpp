@@ -21,6 +21,7 @@
 #include "../qet.h"
 #include "../qetapp.h"
 #include "ui_aboutqetdialog.h"
+#include "../qetversion.h"
 
 #include <QDate>
 
@@ -165,7 +166,7 @@ void AboutQETDialog::setContributors()
 void AboutQETDialog::setVersion()
 {
 	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V "
-			+ QET::displayedVersion
+            + QetVersion::displayedVersion()
 			+ "</span>";
 	ui->m_version_label->setText(str + MachineInfo::instance()->compilation_info());
 }
