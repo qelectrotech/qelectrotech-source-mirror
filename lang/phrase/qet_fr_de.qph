@@ -62,7 +62,7 @@
 </phrase>
 <phrase>
     <source>Abscisse :</source>
-    <target>Abzisse:</target>
+    <target>Abszisse:</target>
 </phrase>
 <phrase>
     <source>Erreur</source>
@@ -91,5 +91,13 @@
 <phrase>
     <source>Conducteurs</source>
     <target>Leitungen</target>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>Schriftfeld</target>
+</phrase>
+<phrase>
+    <source>traduction</source>
+    <target>Übersetzung</target>
 </phrase>
 </QPH>
