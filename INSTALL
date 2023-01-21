@@ -20,6 +20,17 @@ $ make
 # umask 0022
 # make install
 
+[de]
+Abhängigkeiten:
+libQt5 (Pakete libqt5*)
+cupsys-bsd zum Drucken
+
+Kompilieren:
+$ qmake (qmake-qt5 für Debian-basierende Systeme)
+$ make
+# umask 0022
+# make install
+
 [ru]
 Зависимости:
 libQt5 (пакет libqt5*)
