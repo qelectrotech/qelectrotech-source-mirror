@@ -296,7 +296,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="182"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
-        <translation type="unfinished">Element-Namen übersetzen</translation>
+        <translation>Element-Namen übersetzen</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="160"/>
@@ -366,7 +366,7 @@
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="46"/>
         <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
-        <translation>Neue Folie und Tabelle hinzufügen wenn erforderlich.</translation>
+        <translation>Folie und Tabelle hinzufügen, wenn erforderlich.</translation>
     </message>
     <message>
         <location filename="../sources/factory/ui/addtabledialog.ui" line="66"/>
@@ -464,7 +464,7 @@
     <message>
         <location filename="../sources/ui/alignmenttextdialog.ui" line="26"/>
         <source>Alignement du texte</source>
-        <translation>Textausrichtung</translation>
+        <translation>Ausrichtung</translation>
     </message>
 </context>
 <context>
@@ -1026,7 +1026,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
         <source>Position et rotation du texte de conducteur :</source>
-        <translation>Position und Drehung der Leiterbeschriftung:</translation>
+        <translation>Position und Ausrichtung der Leiterbeschriftung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="496"/>
@@ -1147,7 +1147,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagrameditorhandlersizewidget.ui" line="20"/>
@@ -1970,7 +1970,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="124"/>
         <source>Bornier</source>
-        <translation>Klemmleiste</translation>
+        <translation>Klemme</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="125"/>
@@ -1995,7 +1995,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="131"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="133"/>
@@ -2046,7 +2046,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="146"/>
         <source>Séctionnable</source>
-        <translation>Reihenklemme</translation>
+        <translation>Trennklemme</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
@@ -3131,7 +3131,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Klemmen-Editor</translation>
+        <translation>Klemmen-Editor</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="20"/>
@@ -3182,7 +3182,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="123"/>
         <source>Terre</source>
-        <translation type="unfinished">Erde</translation>
+        <translation>Erde</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="137"/>
@@ -3202,7 +3202,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="156"/>
         <source>Avec</source>
-        <translation type="unfinished">ja</translation>
+        <translation>mit</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="114"/>
@@ -3215,7 +3215,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="207"/>
         <source>Label</source>
-        <translation type="unfinished">Label</translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="208"/>
@@ -3225,7 +3225,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="209"/>
         <source>Type</source>
-        <translation type="unfinished">Typ</translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="210"/>
@@ -3235,7 +3235,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="211"/>
         <source>led</source>
-        <translation type="unfinished">LED</translation>
+        <translation>LED</translation>
     </message>
 </context>
 <context>
@@ -4994,7 +4994,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation>Sie versuchen zwei verschiedene Potenziale zu verbinden.
+        <translation>Sie versuchen, zwei verschiedene Potenziale zu verbinden.
 Wählen Sie die anzuwendenden Eigenschaften für das neue Potenzial.</translation>
     </message>
     <message>
@@ -5054,7 +5054,8 @@ Farbe des Leiters: %1</translation>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="334"/>
         <source>
 Section du conducteur : %1</source>
-        <translation>Leiterquerschnitt: %1</translation>
+        <translation>
+Leiterquerschnitt: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/potentialselectordialog.cpp" line="341"/>
@@ -5872,12 +5873,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Annuler</source>
-        <translation>Rückgängig: </translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Refaire</source>
-        <translation>Wiederholen: </translation>
+        <translation>Wiederholen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
@@ -6187,7 +6188,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished">Strg+Q</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="620"/>
@@ -7034,7 +7035,7 @@ Ausführbar machen: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="981"/>
         <source>Annuler</source>
-        <translation>Rückgängig: </translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="75"/>
@@ -7060,7 +7061,7 @@ Ausführbar machen: chmod +x ./DXFtoQET
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="995"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished">Strg+Q</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="997"/>
@@ -7594,7 +7595,7 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="386"/>
+        <location filename="../sources/qetproject.cpp" line="385"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Projekt &quot;%1: %2&quot;</translation>
@@ -7641,7 +7642,7 @@ les conditions requises ne sont pas valides</source>
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
         <translation>Dieses Dokument wurde offenbar mit einer neueren Version (%1) erstellt! 
-Sie verwenden QElectroTech derzeit in der Version %2.</translation>
+Sie verwenden derzeit QElectroTech Version %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1355"/>
@@ -8043,7 +8044,7 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="162"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="436"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation>Warnung: das Bauteil wurde mit einer nachfolgenden Version von QElectroTech gespeichert.</translation>
+        <translation>Warnung: das Bauteil wurde mit einer neueren Version von QElectroTech gespeichert.</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="88"/>
@@ -9151,11 +9152,11 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
         <location filename="../sources/conductorproperties.cpp" line="826"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2041"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="581"/>
+        <location filename="../sources/qetapp.cpp" line="2040"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
-        <translation>Dies ist ein Programmfehler.</translation>
+        <translation>dies ist ein Programmfehler</translation>
     </message>
     <message>
         <location filename="../sources/machine_info.cpp" line="127"/>
@@ -9181,12 +9182,12 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="38"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="55"/>
         <source>Ajouter une borne</source>
-        <translation type="unfinished">Klemme einfügen</translation>
+        <translation>Klemme einfügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="39"/>
         <source>Ajouter la borne %1</source>
-        <translation type="unfinished">Klemme %1 einfügen</translation>
+        <translation>Klemme %1 einfügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="41"/>
@@ -9203,23 +9204,23 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="54"/>
         <source>Ajouter %1 bornes</source>
-        <translation type="unfinished">%1 Klemme(n) hinzufügen</translation>
+        <translation>%1 Klemme(n) hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="141"/>
         <source>Enlever %1 bornes</source>
-        <translation type="unfinished">%1 Klemme(n) entfernen</translation>
+        <translation>%1 Klemme(n) entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="173"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="196"/>
         <source>Déplacer une borne</source>
-        <translation type="unfinished">Klemme verschieben</translation>
+        <translation>Klemme verschieben</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="174"/>
         <source>Déplacer la borne %1</source>
-        <translation type="unfinished">Klemme %1 verschieben</translation>
+        <translation>Klemme %1 verschieben</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="176"/>
@@ -9248,7 +9249,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="195"/>
         <source>Déplacer des bornes</source>
-        <translation type="unfinished">Klemmen verschieben</translation>
+        <translation>Klemmen verschieben</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="144"/>
@@ -9263,7 +9264,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="142"/>
         <source>Enlever une borne</source>
-        <translation type="unfinished">eine Klemme entfernen</translation>
+        <translation>eine Klemme entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripdata.cpp" line="27"/>
@@ -9291,7 +9292,7 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="495"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
-        <translation type="unfinished">Trennklemme</translation>
+        <translation>Trennklemme</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="497"/>
@@ -9303,7 +9304,7 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="499"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
-        <translation type="unfinished">Erde</translation>
+        <translation>Erde</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="534"/>
@@ -9315,13 +9316,13 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="535"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
-        <translation type="unfinished">Aussenleiter</translation>
+        <translation>Aussenleiter</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="536"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
-        <translation type="unfinished">Neutralleiter</translation>
+        <translation>Neutralleiter</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementdatacommand.cpp" line="27"/>
@@ -9336,12 +9337,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp" line="57"/>
         <source>Supprimer des ponts de bornes</source>
-        <translation type="unfinished">Brücken entfernen</translation>
+        <translation>Brücker entfernen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/changeterminalstripcolor.cpp" line="37"/>
         <source>Modifier la couleur d&apos;un pont de bornes</source>
-        <translation type="unfinished">Farbe des Brückers ändern</translation>
+        <translation>Brückerfarbe ändern</translation>
     </message>
     <message>
         <location filename="../sources/editor/UndoCommand/openelmtcommand.cpp" line="31"/>
@@ -12719,7 +12720,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
@@ -12893,7 +12894,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="293"/>
         <source>Couleur / numéro de fil câble</source>
-        <translation type="unfinished">Farbe/Nummer</translation>
+        <translation>Farbe/Adernummer</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripmodel.cpp" line="294"/>
@@ -13978,7 +13979,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="299"/>
         <source>Insert HTML entity</source>
-        <translation>HTML-Objekt einfügen</translation>
+        <translation>HTML-Entität einfügen</translation>
     </message>
 </context>
 <context>
@@ -14132,7 +14133,7 @@ Maximale Länge: %2px
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="84"/>
         <source>Texte indépendant</source>
-        <translation>Unabhängiges Textfeld</translation>
+        <translation>Textfeld</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
