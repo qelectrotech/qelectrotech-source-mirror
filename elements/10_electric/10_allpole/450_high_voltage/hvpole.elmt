@@ -1,108 +1,102 @@
-<definition link_type="simple" hotspot_y="93" width="150" hotspot_x="70" type="element" height="200" version="0.90">
-    <uuid uuid="{5d28f9f9-87bb-0384-63bd-b303038214cf}" />
+<definition hotspot_y="94" width="140" height="200" hotspot_x="66" type="element" version="0.100" link_type="simple">
+    <uuid uuid="{c856a940-e0b9-4893-a0da-cb3765fdf1d6}"/>
     <names>
-        <name lang="el">Πυλώνας υψηλής τάσης</name>
-        <name lang="nl">Hoogspanningsmast</name>
-        <name lang="de">Hochspannungsmast</name>
-        <name lang="it">Traliccio</name>
-        <name lang="pl">Słup wysokiego napięcia</name>
-        <name lang="cs">Sloup</name>
-        <name lang="en">HV Pole</name>
         <name lang="fr">Pylone HTB</name>
+        <name lang="pl">Słup wysokiego napięcia</name>
+        <name lang="en">HV Pole</name>
+        <name lang="el">Πυλώνας υψηλής τάσης</name>
+        <name lang="de">Hochspannungsmast</name>
+        <name lang="nl">Hoogspanningsmast</name>
+        <name lang="it">Traliccio</name>
+        <name lang="cs">Sloup</name>
     </names>
-    <elementInformations />
+    <elementInformations/>
     <informations>Author: Arun Kishore Eswara
 License: Creative Commons Attribution 3.0 base License</informations>
     <description>
-        <dynamic_text x="33" keep_visual_rotation="false" Valignment="AlignTop" uuid="{cbd8483d-1ce3-4ece-a99c-ce92a982b96a}" frame="false" z="1" rotation="0" text_from="ElementInfo" Halignment="AlignLeft" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="9.05">
-            <text />
+        <polygon closed="false" x2="-20" antialias="false" y3="-86" y1="-85" x1="-34" y2="-90" x3="2" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <polygon closed="false" x2="0" antialias="false" y3="-36" y1="-35" x1="-14" y2="-40" x3="22" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <ellipse y="-40.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <polygon closed="false" x2="-50" antialias="false" y3="-36" y1="-35" x1="-64" y2="-40" x3="-28" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <polygon closed="false" x2="50" antialias="false" y3="-36" y1="-35" x1="36" y2="-40" x3="72" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <ellipse y="-40.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <polygon closed="false" x2="20" antialias="false" y3="-86" y1="-85" x1="6" y2="-90" x3="42" style="line-style:normal;line-weight:normal;filling:none;color:green"/>
+        <ellipse y="-40.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-41" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-41" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-41" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-85.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-41.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-41.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-41.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-42" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-42" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-42" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-85.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-42.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-42.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-86" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-42.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-43" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-86.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-43" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <dynamic_text y="10" frame="false" Valignment="AlignTop" text_width="-1" font="Sans Serif,8,-1,5,50,0,0,0,0,0" uuid="{cbd8483d-1ce3-4ece-a99c-ce92a982b96a}" keep_visual_rotation="false" text_from="ElementInfo" rotation="0" Halignment="AlignLeft" x="32" z="23">
+            <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <line antialias="true" x2="-64" end1="none" length1="1.5" y1="-44" y2="-43" x1="-52" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="-47.8" end1="none" length1="1.5" y1="-88.52" y2="-78.38" x1="-21.3" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="-1.8" end1="none" length1="1.5" y1="-41.31" y2="-44.21" x1="-19.8" style="line-style:normal;line-weight:normal;filling:green;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="-4.75" end1="none" length1="1.5" y1="-87.52" y2="-77.38" x1="17.75" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="50.2" end1="none" length1="1.5" y1="-41.31" y2="-44.21" x1="32.2" style="line-style:normal;line-weight:normal;filling:green;color:green" end2="none" length2="1.5" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-83.62" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-84.25" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-84.14" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-84.66" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-43.9" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-84.76" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-85.17" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-85.69" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-43.9" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-85.28" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-86.21" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-44.42" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-86.72" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-85.79" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-87.24" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-87.75" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-44.42" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-86.31" />
-        <ellipse antialias="true" x="16.62" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-88.27" />
-        <rect antialias="false" x="24.35" width="11" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" height="7.45" y="97.07" ry="0" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-43.9" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-86.83" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-44.93" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-87.34" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-44.93" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-87.86" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-45.45" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-88.37" />
-        <ellipse antialias="true" x="-23" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-88.89" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-45.45" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-46" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-46" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-46.48" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-46.48" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-44.42" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-47" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-47" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-47.51" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-47.51" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-48" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-48" />
-        <ellipse antialias="true" x="48.52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-48.55" />
-        <ellipse antialias="true" x="-2" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-48.55" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-44.93" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-45.45" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-46" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-46.48" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-47" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-47.51" />
-        <polygon antialias="true" x3="-20.19" x2="-21.36" y5="-82.1" y1="-53.39" y3="-53.39" x6="-21.36" y2="-83.35" x4="-10.81" y4="-53.39" x1="-27.23" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-21.36" y6="-82.1" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-48" />
-        <ellipse antialias="true" x="-52" width="2.64" style="line-style:normal;line-weight:thin;filling:white;color:black" height="0.77" y="-48.55" />
-        <polygon antialias="true" x3="16.72" x2="18.16" y5="-53.39" y1="-53.39" y3="-54.6" x6="18.16" y2="-82.55" x4="16.72" y4="-53.39" x1="23.91" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="6.65" y6="-82.55" closed="false" />
-        <polygon antialias="true" x3="19" x2="-19.57" y5="15.76" y1="15.76" y3="36.86" y2="36.86" x4="12" y4="15.76" x1="-13.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-13.25" closed="false" />
-        <polygon antialias="true" x3="12.25" x2="-30.1" y1="36.86" y3="15.76" y2="95.83" x4="-13.05" y4="15.76" x1="-19.65" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" />
-        <polygon antialias="true" x3="18.85" x2="29.3" y1="16.38" y3="36.86" y2="95.83" x4="18.85" y4="36.86" x1="-13.05" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" />
-        <rect antialias="false" x="-35.05" width="11" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" height="7.45" y="96.45" ry="0" />
-        <rect antialias="true" x="-31.75" width="3.3" style="line-style:normal;line-weight:normal;filling:white;color:black" rx="0" height="2.48" y="94" ry="0" />
-        <rect antialias="true" x="27.65" width="3.3" style="line-style:normal;line-weight:normal;filling:white;color:black" rx="0" height="2.48" y="94.59" ry="0" />
-        <polygon antialias="true" x3="-13.05" x2="11.7" y5="-48.18" y1="-47.55" y3="15.76" x6="2.9" y2="15.76" x4="21.05" y4="-14.66" x1="30.95" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="2.9" y6="-48.18" closed="false" />
-        <polygon antialias="true" x3="50.92" x2="-52.22" y5="-53.32" y1="-53.32" y3="-48.23" y2="-48.23" x4="23.25" y4="-53.32" x1="-27.07" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-27.07" />
-        <line antialias="false" x2="20.37" end1="none" length1="1.5" y1="-14.66" y2="-14.66" x1="-21.92" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" length2="1.5" />
-        <polygon antialias="true" x3="-3.7" x2="-32.85" y5="15.76" y1="15.76" y3="-48.18" x6="11.7" y2="-48.18" x4="-22.4" y4="-14.66" x1="-13.05" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="11.7" y6="15.76" closed="false" />
-        <polygon x1="-25.15" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="74.1" x9="1.25" y9="36.86" x5="-12.5" x2="-28.45" y6="61.69" x8="-21.85" y2="86.52" y8="49.27" y5="61.69" x7="-5.9" antialias="true" x4="-26.25" x10="1.25" y7="49.27" closed="false" y4="74.1" y10="36.86" x3="-18.55" y1="86.52" x6="-24.05" />
-        <polygon x1="24.35" style="line-style:normal;line-weight:normal;filling:none;color:black" y3="74.1" x9="-2.05" y9="36.86" x5="11.15" x2="27.65" y6="61.69" x8="20.5" y2="86.52" y8="49.27" y5="61.69" x7="4.55" antialias="true" x4="25.45" y7="49.27" closed="false" y4="74.1" x3="17.75" y1="86.52" x6="23.25" />
-        <polygon antialias="true" x3="-18" x2="7.3" y1="12" y3="-0.38" y2="12" x4="-6.45" y4="-0.38" x1="-14.15" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" />
-        <polygon antialias="true" x3="16.65" x2="-8.65" y1="12" y3="-1" y2="12" x4="5.65" y4="-1" x1="12.8" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" />
-        <polygon antialias="true" x3="-9.75" x2="-25.7" y5="-48.18" y1="-24.59" y3="-37.62" y2="-24.59" x4="-29.55" y4="-37.62" x1="-16.9" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-4.25" closed="false" />
-        <polygon antialias="true" x3="8.95" x2="23.8" y5="-48.18" y1="-24.59" y3="-37" y2="-24.59" x4="27.65" y4="-37" x1="15.55" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="2.9" closed="false" />
-        <polygon antialias="false" x3="-23.5" x2="-14.7" y1="-62.45" y3="-72.38" y2="-62.45" x4="-18" y4="-72.38" x1="-25.15" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" />
-        <polygon antialias="true" x3="14.45" x2="22.15" y1="-62.45" y3="-73" y2="-62.45" x4="19.95" y4="-73" x1="10.05" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" />
-        <line antialias="true" x2="-9" end1="none" length1="1.5" y1="-87.9" y2="-84.66" x1="-21.3" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="33.1" end1="none" length1="1.5" y1="-87.28" y2="-84" x1="18.3" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="73.35" end1="none" length1="1.5" y1="-43.59" y2="-40.31" x1="49.75" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="18.35" end1="none" length1="1.5" y1="-43.59" y2="-37.31" x1="-1.25" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <line antialias="true" x2="-33.65" end1="none" length1="1.5" y1="-43.59" y2="-37.31" x1="-51.25" style="line-style:normal;line-weight:normal;filling:none;color:green" end2="none" length2="1.5" />
-        <terminal x="-51" uuid="{86abbe07-5aad-4ddd-9fad-df7ff39fbf2d}" name="" orientation="s" type="Generic" y="-43" />
-        <terminal x="-1" uuid="{5a2769a6-9497-4b3b-80db-53b6e8f9462e}" name="" orientation="s" type="Generic" y="-44" />
-        <terminal x="50" uuid="{0cfd25ad-c99b-42b1-8574-34347068a953}" name="" orientation="s" type="Generic" y="-44" />
-        <terminal x="18" uuid="{ea9b3fa3-4eee-49ed-ae4e-935b4998e033}" name="" orientation="n" type="Generic" y="-87" />
-        <terminal x="-22" uuid="{1b6fd201-7954-434a-a863-612d0fffcc0d}" name="" orientation="n" type="Generic" y="-89" />
+        <ellipse y="-43" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-86" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-43.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-43.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-43.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-44" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-44" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-44" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-87" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-86.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-44.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-44.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-44.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-45" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="48.5"/>
+        <ellipse y="-45" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-51.5"/>
+        <ellipse y="-87.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-45" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-1.5"/>
+        <ellipse y="-87" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-88" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-87.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-88.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-88" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-89" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-88.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-89.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-89" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-90" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="18.5"/>
+        <ellipse y="-89.5" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <ellipse y="-90" antialias="true" width="3" height="1" style="line-style:normal;line-weight:thin;filling:white;color:black" x="-21.5"/>
+        <polygon x4="-8" y4="-54" x2="-20" y5="-85" antialias="true" y3="-54" x5="-20" y1="-54" x1="-26" y2="-85" x3="-17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-13" y4="16" x2="-30.5" antialias="true" y3="16" y1="37" x1="-20" y2="95" x3="13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="96" ry="0" antialias="false" width="12" height="7.5" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-36"/>
+        <rect y="94" ry="0" antialias="true" width="4" height="2" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="-32"/>
+        <polygon x4="26" y4="-54" x2="-51" antialias="true" y3="-45" y1="-54" x1="-26" y2="-45" x3="51" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" x2="22.5" antialias="false" y1="-14.5" end1="none" x1="-22.5" y2="-14.5" end2="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-22.5" y4="-14.5" x2="-33" y5="16" antialias="true" y3="-45" x5="13" y1="16" x1="-13" y2="-45" x3="-3.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y2="86" y1="86" x1="-26" y4="74" y3="74" x5="-12.5" x3="-19" y7="50" closed="false" x2="-28.5" x7="-6" x10="-19.5" y5="62" x4="-26.5" x8="-22" antialias="true" y6="62" x9="1.5" x6="-24.5" y9="37" y8="50" style="line-style:normal;line-weight:normal;filling:none;color:black" y10="37"/>
+        <polygon x4="-7" y4="-1" closed="false" x2="8" antialias="true" y3="-1" y1="12" x1="-14" y2="12" x3="-18.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-30" y4="-36" closed="false" x2="-26" y5="-45" antialias="true" y3="-36" x5="-4" y1="-24.5" x1="-17" y2="-24.5" x3="-9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="-16" y4="-73" closed="false" x2="-11.5" antialias="false" y3="-73" y1="-62" x1="-24" y2="-62" x3="-22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="8" y4="-54" x2="20" y5="-85" antialias="true" y3="-54" x5="20" y1="-54" x1="26" y2="-85" x3="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="13" y4="16" x2="30.5" antialias="true" y3="16" y1="37" x1="20" y2="95" x3="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="96" ry="0" antialias="false" width="12" height="7.5" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="24"/>
+        <rect y="94" ry="0" antialias="true" width="4" height="2" rx="0" style="line-style:normal;line-weight:normal;filling:white;color:black" x="28"/>
+        <polygon x4="22.5" y4="-14.5" x2="33" y5="16" antialias="true" y3="-45" x5="-13" y1="16" x1="13" y2="-45" x3="3.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y2="86" y1="86" x1="26" y4="74" y3="74" x5="12.5" x3="19" y7="50" closed="false" x2="28.5" x7="6" x10="19.5" y5="62" x4="26.5" x8="22" antialias="true" y6="62" x9="-1.5" x6="24.5" y9="37" y8="50" style="line-style:normal;line-weight:normal;filling:none;color:black" y10="37"/>
+        <polygon x4="7" y4="-1" closed="false" x2="-8" antialias="true" y3="-1" y1="12" x1="14" y2="12" x3="18.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="30" y4="-36" closed="false" x2="26" y5="-45" antialias="true" y3="-36" x5="4" y1="-24.5" x1="17" y2="-24.5" x3="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="16" y4="-73" closed="false" x2="11.5" antialias="false" y3="-73" y1="-62" x1="24" y2="-62" x3="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="-40" name="" uuid="{f226075d-676e-4cf6-93f3-25174ee5a458}" orientation="s" type="Generic" x="0"/>
+        <terminal y="-40" name="" uuid="{386bfcbd-796e-4de0-b4c0-19da222d131a}" orientation="s" type="Generic" x="50"/>
+        <terminal y="-90" name="" uuid="{1b6fd201-7954-434a-a863-612d0fffcc0d}" orientation="n" type="Generic" x="-20"/>
+        <terminal y="-90" name="" uuid="{ea9b3fa3-4eee-49ed-ae4e-935b4998e033}" orientation="n" type="Generic" x="20"/>
+        <terminal y="-40" name="" uuid="{86abbe07-5aad-4ddd-9fad-df7ff39fbf2d}" orientation="s" type="Generic" x="-50"/>
     </description>
 </definition>
