@@ -74,7 +74,7 @@ include(sources/QWidgetAnimation/QWidgetAnimation.pri)
 
 DEFINES += QAPPLICATION_CLASS=QApplication
 DEFINES += QT_MESSAGELOGCONTEXT
-DEFINES += GIT_COMMIT_SHA="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" rev-parse --verify HEAD)\\\""
+DEFINES += GIT_COMMIT_SHA="\\\"$(shell git -C \""$$_PRO_FILE_PWD_"\" rev-parse --verify HEAD 2>/dev/null || true)\\\""
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
