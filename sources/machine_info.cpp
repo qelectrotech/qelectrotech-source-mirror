@@ -122,7 +122,9 @@ void MachineInfo::send_info_to_debug()
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
 #endif
 #endif
-	qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
+	if (strlen(GIT_COMMIT_SHA)) {
+		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
+	}
     qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
 	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
@@ -383,7 +385,9 @@ QString MachineInfo::compilation_info()
 	compilation_info += " - " + pc.built.arch;
 	compilation_info += " - Date : " + pc.built.date;
 	compilation_info += " : " + pc.built.time;
-	compilation_info += "<br> Git Revision : " + QString(GIT_COMMIT_SHA);
+	if (strlen(GIT_COMMIT_SHA)) {
+		compilation_info += "<br> Git Revision : " + QString(GIT_COMMIT_SHA);
+	}
 	compilation_info += " <br>Run with Qt " + QString(qVersion());
 	compilation_info += " using"
 			+ QString(" %1 thread(s)").arg(pc.cpu.ThreadCount);
