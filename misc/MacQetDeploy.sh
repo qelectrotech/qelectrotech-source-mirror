@@ -79,11 +79,12 @@ GITCOMMIT=$(git rev-parse --short HEAD)
 A=$(git rev-list HEAD --count)
 HEAD=$(($A+473))
 
-VERSION=$(cat sources/qet.h | grep "const QString version" |  cut -d\" -f2 | cut -d\" -f1)          #Find version tag in GIT sources/qet.h
-tagName=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -f1)                 #Find displayedVersion tag in GIT sources/qet.h
-
+#VERSION=$(cat sources/qet.h | grep "const QString version" |  cut -d\" -f2 | cut -d\" -f1)          #Find version tag in GIT sources/qet.h
+#tagName=$(cat sources/qet.h | grep displayedVersion |  cut -d\" -f2 | cut -d\" -f1)                 #Find displayedVersion tag in GIT sources/qet.h
+VERSION=0.100
+tagName=0.100-DEV
 # On recupere le numero de version de l'originale 
-tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
+#tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h  | cut -d\" -f2 | cut -d\" -f1 )
 
 # Dmg de la dernière revision déjà créé
 if [ -e "build-aux/mac-osx/${APPNAME} $tagName r$HEAD.dmg" ] ; then
@@ -113,7 +114,7 @@ mkdir temp
 cp -Rf "sources/qet.h" "temp/qet.h"
 
 # On modifie l'originale avec le numero de revision du depot svn
-sed -i "" "s/const QString displayedVersion =.*/const QString displayedVersion = \"$tagName r$GITCOMMIT\";/" sources/qet.h
+#sed -i "" "s/const QString displayedVersion =.*/const QString displayedVersion = \"$tagName r$GITCOMMIT\";/" sources/qet.h
 
 # Apres la compilation 
 cleanVerionTag () {
