@@ -661,7 +661,7 @@
 -Update Only Existent: only existent Elements will be updated. New Elements will be assigned their formula but will not update once created.
 -Disable: both New and Existent Element labels will not be updated. This is valid for new folios as well.
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
-        <translation>In dit menu kun je instellen of en wat een automatische nummering moet updaten. Voor het automatisch nummeren van elementen zijn er 4 opties:
+        <translation>In dit menu kan worden ingesteld of en wat een automatische nummering moet updaten. Voor het automatisch nummeren van elementen zijn er 4 opties:
 -Beide: nieuwe en bestaande elementen zullen worden geüpdatet. Dit is de standaard instelling.
 -Nieuwe: alleen nieuwe elementen zullen worden geüpdatet. Bestaande elementlabels blijven ongewijzigd.
 -Bestaande: alleen bestaande elementen zullen worden geüpdatet. Nieuwe elementen krijgen hun label volgens de formule maar worden zodra aangemaakt niet geüpdatet.
@@ -796,7 +796,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="20"/>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="31"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
-        <translation>Voer hier uw samengestelde tekst in m.b.v. de beschikbare variabelen</translation>
+        <translation>Voer hier een samengestelde tekst in m.b.v. de beschikbare variabelen</translation>
     </message>
 </context>
 <context>
@@ -1212,7 +1212,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/diagramview.cpp" line="53"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>In dit gebied maakt u schema&apos;s door het toevoegen van elementen en deze met geleiders met elkaar te verbinden. Tevens kunt u onafhankelijk hiervan teksten plaatsen.</translation>
+        <translation>In dit gebied kunnen schema&apos;s worden gemaakt door het toevoegen van elementen en deze d.m.v. geleiders met elkaar te verbinden. Tevens kunnen hier losse teksten worden geplaatst.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="81"/>
@@ -1252,7 +1252,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation>Even geduld alstublieft</translation>
+        <translation>Even geduld</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
@@ -1312,7 +1312,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="77"/>
         <source>Ajouter un groupe de textes</source>
-        <translation>Een groep teksten toevoegen</translation>
+        <translation>Een tekstenverzameling toevoegen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.ui" line="91"/>
@@ -1337,12 +1337,12 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
         <source>Nom du groupe</source>
-        <translation>Groepsnaam</translation>
+        <translation>Naam van de tekstenverzameling</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
         <source>Entrer le nom du nouveau groupe</source>
-        <translation>Geef de naam van de nieuwe groep</translation>
+        <translation>Geef de naam van de nieuwe tekstenverzameling</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextitemeditor.h" line="43"/>
@@ -1516,7 +1516,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="661"/>
         <source>Éditer un groupe de textes</source>
-        <translation>Een groep teksten bewerken</translation>
+        <translation>Een tekstenverzameling bewerken</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="669"/>
@@ -1558,7 +1558,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1143"/>
         <source>Déplacer un texte dans un autre groupe</source>
-        <translation>Een tekst naar een andere groep verplaatsen</translation>
+        <translation>Een tekst naar een andere verzameling verplaatsen</translation>
     </message>
 </context>
 <context>
@@ -1737,7 +1737,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Choisissez l&apos;élément que vous souhaitez ouvrir.</source>
         <comment>dialog content</comment>
-        <translation>Kies het element dat wilt u openen.</translation>
+        <translation>Kies het te openen element.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="66"/>
@@ -1749,7 +1749,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation>Kies het element waarin u uw definitie wilt bewaren.</translation>
+        <translation>Kies het element waarin de definitie moet worden bewaard.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="70"/>
@@ -1794,7 +1794,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementdialog.cpp" line="232"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation>U dient een element of een categorie met een naam voor het element te selecteren.</translation>
+        <translation>Selecteer een element of een categorie met een naam voor het element.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="200"/>
@@ -1831,7 +1831,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementdialog.cpp" line="220"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation>Het element bestaat al. Wilt u het overschrijven?</translation>
+        <translation>Het element bestaat al. Moet het worden overschreven?</translation>
     </message>
 </context>
 <context>
@@ -2333,12 +2333,12 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="875"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>U kunt deze ruimte gebruiken om de auteurs van het element, de licentie of andere voor u belengrijke informatie te vermelden.</translation>
+        <translation>Deze ruimte kan worden gebruikt om de auteurs van het element, de licentie of andere belangrijke informatie te vermelden.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="941"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
-        <translation>U kunt de elementnaam in meerdere talen opgeven.</translation>
+        <translation>De elementnaam kan in meerdere talen worden opgegeven.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="939"/>
@@ -2352,7 +2352,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="124"/>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
-        <translation>U kunt voor elke taal de categorienaam opgeven.</translation>
+        <translation>Er kan voor elke taal een categorienaam worden opgegeven.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="113"/>
@@ -2369,7 +2369,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>L&apos;item demandé n&apos;est pas une categrie. Abandon.</source>
         <comment>message box content</comment>
-        <translation>Gevraagde item is geen categorie. Annuleren.</translation>
+        <translation>Het gevraagde item is geen categorie. Annuleren.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="54"/>
@@ -2381,7 +2381,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementscategoryeditor.cpp" line="55"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation>Gevraagde categorie bestaat niet. Annuleren.</translation>
+        <translation>De gevraagde categorie bestaat niet. Annuleren.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="60"/>
@@ -2411,7 +2411,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementscategoryeditor.cpp" line="80"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>U beschikt niet over de vereiste rechten om deze categorie te bewerken zodat deze in alleen-lezen modus geopend zal worden.</translation>
+        <translation>Er zijn aanvullende rechten vereist om deze categorie te kunnen bewerken en zal in alleen-lezen modus worden geopend.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="147"/>
@@ -2423,19 +2423,19 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/elementscategoryeditor.cpp" line="148"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
-        <translation>U moet een interne naam geven.</translation>
+        <translation>Er moet een interne naam worden opgegeven.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="160"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
-        <translation>Interne naam is al gebruikt</translation>
+        <translation>Interne naam is al in gebruik</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="161"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation>Interne naam wordt al gebruikt voor een andere categorie. Kies een andere naam.</translation>
+        <translation>Deze interne naam wordt al gebruikt voor een andere categorie. Kies een andere naam.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="172"/>
@@ -2523,7 +2523,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Weet u zeker dat u dit element wilt verwijderen ?
+        <translation>Moet dit element echt worden verwijderd ?
 </translation>
     </message>
     <message>
@@ -2536,7 +2536,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="412"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation>Element kon niet worden verwijdert.</translation>
+        <translation>Element kon niet worden verwijderd.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="437"/>
@@ -2549,7 +2549,7 @@ Noot: Geen van deze opties bepalen het al of niet automatisch nummeren maar alle
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
-        <translation>Weet u zeker dat u deze map wilt verwijderen ? Alle elementen en mappen in deze map worden ook verwijderd.</translation>
+        <translation>Moet deze map echt worden verwijderd ? Alle elementen en mappen in deze map worden ook gewist.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="454"/>
@@ -2647,7 +2647,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/elementspanel.cpp" line="239"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Dit is uw persoonlijke titelbloksjablonencollectie -- gebruik deze voor het toevoegen, wijzigen en opslaan van uw eigen titelbloksjablonen.</translation>
+        <translation>Dit is de persoonlijke titelbloksjablonencollectie -- gebruik deze voor het toevoegen, wijzigen en opslaan van eigen titelbloksjablonen.</translation>
     </message>
 </context>
 <context>
@@ -2844,7 +2844,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/exportdialog.cpp" line="83"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Kies de schemabladen die u wilt exporteren en hun formaat :</translation>
+        <translation>Kies de te exporteren schemabladen en hun formaat :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="86"/>
@@ -2865,7 +2865,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/exportdialog.cpp" line="725"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
-        <translation>U dient voor elk te exporteren schemablad een unieke, niet lege bestandsnaam op te geven.</translation>
+        <translation>Voor elk te exporteren schemablad moet een unieke, niet lege bestandsnaam worden opgegeven.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="740"/>
@@ -2877,13 +2877,13 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <location filename="../sources/exportdialog.cpp" line="741"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
-        <translation>U moet het pad naar de map opgeven waar de afbeeldingsbestanden worden opgeslagen.</translation>
+        <translation>Hier moet het pad naar de map waar de afbeeldingsbestanden moeten worden opgeslagen worden opgegeven.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="784"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
-        <translation>U heeft niet de vereiste rechten om bestand %1 op te slaan.</translation>
+        <translation>Er zijn aanvullende rechten vereist om bestand %1 op te slaan.</translation>
     </message>
 </context>
 <context>
@@ -3044,9 +3044,9 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>Hier kunt u de automatische nummering van nieuwe schemabladen definieren.
+        <translation>Hier wordt de automatische nummering van nieuwe schemabladen gedefinieert.
 -Een automatische nummering bestaat uit minimaal één variabele.
--Met de knoppen + en - kunt u variabelen toevoegen of verwijderen 
+-Met de knoppen + en - kunnen variabelen worden toegevoegd of verwijderd 
 -Een variable bestaat uit : een type, een waarde en een increment.
 -De typen &quot;Cijfer 1:, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; staan voor een numeriek type in het veld &quot;Waarde&quot; dat elk schemabladnummer met de waarde in het veld &quot;Increment&quot; ophoogt.
 -Cijfer 01&quot; en &quot;Cijfer 001&quot; staan voor schemabladnummers met 2 respectievelijk 3 cijfers.
@@ -3108,15 +3108,15 @@ Het veld &quot;Waarde&quot; heeft nu geen betekenis.
 You can also assign any other titleblock variable 
 that you create. Text and number inputs are
  also available.</source>
-        <translation>U kunt de volgende variabelen in uw formule gebruiken:
+        <translation>De volgende variabelen zijn in de formule te gebruiken:
  -%prefix: Standaard elementvoorvoegsel
  -%l: Elementrij
  -%c: Elementkolom
  -%F: Schemabladnaam
  -%f of %d: Schemablad-ID
  -%total: Alle schemabladen
-U kunt ook een variabele maken en deze aan een titelblok toewijzen.
-U kunt hier ook teksten en nummers gebruiken.</translation>
+Ook iedere andere titelblokvariabele kan hier worden toegewezen.
+Teksten en nummers zijn ook beschikbaar.</translation>
     </message>
 </context>
 <context>
@@ -3348,8 +3348,8 @@ U kunt hier ook teksten en nummers gebruiken.</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Elk element bevat een vrij tekstveld met informatie over de auteur, de licentie of andere voor u relevante informatie.
-Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</translation>
+        <translation>Elk element bevat een vrij tekstveld met informatie over de auteur, de licentie of andere relevante informatie.
+Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
@@ -3942,7 +3942,7 @@ Hieronder kunt u hiervan de standaardtekst voor nieuwe elementen opgeven:</trans
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="20"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
-        <translation>Dit element bestaat al in dit project. De versie verschilt echter. Wat wilt u doen?</translation>
+        <translation>Dit element bestaat al in dit project. De versie verschilt echter. Welke actie moet worden uitgevoerd?</translation>
     </message>
     <message>
         <location filename="../sources/ui/importelementdialog.ui" line="27"/>
@@ -4127,7 +4127,7 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="157"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Dit sjabloon bestaat reeds in dit project. De versie verschilt echter, Wat wilt u doen?</translation>
+        <translation>Dit sjabloon bestaat reeds in dit project. De versie verschilt echter, Welke actie moet worden uitgevoerd?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="169"/>
@@ -4693,13 +4693,13 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/newelementwizard.cpp" line="201"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
-        <translation>U moet een categorie selecteren.</translation>
+        <translation>Er moet een categorie worden gekozen.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="219"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
-        <translation>U moet een bestandsnaam geven</translation>
+        <translation>Er moet een bestandsnaam worden opgegeven</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="232"/>
@@ -4987,8 +4987,8 @@ Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
         <location filename="../sources/ui/potentialselectordialog.ui" line="38"/>
         <source>Vous tentez de lier deux potentiels différents ensemble.
 Veuillez choisir les propriétées à appliquer au nouveau potentiel.</source>
-        <translation>U probeert twee verschillende potentialen met elkaar te verbinden. 
-Kies welk potentiaal u wilt gebruiken.</translation>
+        <translation>Verschillende potentialen kunnen niet met elkaar verbonden worden.
+Kies welk potentiaal moet worden gebruikt.</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/potentialselectordialog.cpp" line="294"/>
@@ -5200,7 +5200,7 @@ De volgende variabelen zijn mogelijk :
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="186"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les folios de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Hieronder kunt u eigen gegevens die voor op alle schemabladen beschikbaar zijn invoeren (typisch voor in titelblokken).</translation>
+        <translation>Hieronder kunnen eigen gegevens worden ingevoerd die voor op alle schemabladen in het project beschikbaar zijn (typisch voor in titelblokken).</translation>
     </message>
 </context>
 <context>
@@ -5424,8 +5424,7 @@ De volgende variabelen zijn mogelijk :
         <location filename="../sources/projectview.cpp" line="314"/>
         <source>Le projet à été modifié.
 Voulez-vous enregistrer les modifications ?</source>
-        <translation>Het project is gewijzigd.
-Wilt u de wijzigingen opslaan?</translation>
+        <translation>Het project is gewijzigd. Wijzigingen opslaan?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="335"/>
@@ -5448,7 +5447,7 @@ Wilt u de wijzigingen opslaan?</translation>
         <location filename="../sources/projectview.cpp" line="385"/>
         <source>Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Weet u zeker dat u dit schemablad uit het project wilt verwijderen ? Deze wijziging is onomkeerbaar.</translation>
+        <translation>Moet dit schemablad echt uit het project worden verwijderd ? Deze wijziging is onomkeerbaar.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="661"/>
@@ -6353,7 +6352,7 @@ Opties :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1104"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
-        <translation>Bestand openen mislukt. Controleer of u de juiste machtigingen heeft.</translation>
+        <translation>Bestand openen mislukt. Controleer of de juiste machtigingen aanwezig zijn.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1119"/>
@@ -7388,7 +7387,7 @@ dus graag even geduld...</translation>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1373"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
-        <translation>Dit element is gewijzigd. Als u nu herlaadt gaan de wijzigingen verloren! Wilt u herladen?</translation>
+        <translation>Dit element is gewijzigd. Bij herladen gaan de wijzigingen verloren! Herladen?</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1336"/>
@@ -7412,7 +7411,7 @@ dus graag even geduld...</translation>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="881"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
-        <translation>Wilt u element: %1 opslaan ?</translation>
+        <translation>Moet element: %1 worden opgeslagen ?</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="293"/>
@@ -7641,30 +7640,30 @@ dus graag even geduld...</translation>
 Vous utilisez actuellement QElectroTech en version %2</source>
         <translation>Dit document lijkt te zijn opgeslagen met versie %1
  welke nieuwer is dan deze versie ! 
-Je gebruikt nu Qelectrotech versie %2</translation>
+Qelectrotech versie %2 wordt nu gebruikt</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1355"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
-        <translation> 
- Mogelijk kan het openen van dit document geheel of gedeeltelijk mislukken 
-Wat wil je doen ?</translation>
+        <translation>.
+ Het kan zijn dat het openen van dit document geheel of gedeeltelijk mislukt.
+Document openen ?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1376"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
-        <translation>Het project dat je probeert te openen is gedeeltelijk compatibel met deze versie %1 van QElectrotech 
+        <translation>Het te openen project is gedeeltelijk compatibel met deze versie %1 van QElectrotech.
 </translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1379"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
-        <translation>Om het volledig compatibel te maken, open je hetzelfde project met versie 0.8 of 0.80 van QElectroTech, sla je het project op en open je het opnieuw met deze versie.
-Wat wil je doen?</translation>
+        <translation>Om het volledig compatibel te maken, moet hetzelfde project met versie 0.8 of 0.80 van QElectroTech worden geopend en worden opgeslagen waarna het met deze versie kan worden geopend.
+Document toch openen?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1375"/>
@@ -7695,7 +7694,7 @@ Wat wil je doen?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Wilt u sjabloon %1 opslaan?</translation>
+        <translation>Moet sjabloon %1 worden opgeslagen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="172"/>
@@ -8018,7 +8017,7 @@ Wat wil je doen?</translation>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="1010"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Dit veld kunt u gebruiken voor informatie over auteurs, licentie of andere voor u relevante informatie.</translation>
+        <translation>Dit veld kan worden gebruikt voor informatie over auteurs, licentie of andere relevante informatie.</translation>
     </message>
 </context>
 <context>
@@ -8043,17 +8042,17 @@ Wat wil je doen?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1031"/>
         <source>Exporter vers le presse-papier</source>
-        <translation>Naar klembord exporteren</translation>
+        <translation>Naar het klembord exporteren</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="405"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>De tekst met de GNU/GPL licentie is niet gevonden, hopelijk kent u die?.. computer will explode......?</translation>
+        <translation>De tekst met de GNU/GPL licentie is onvindbaar maar die ken je waarschijnlijk wel uit het hoofd?</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="409"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>De tekst met de GNU/GPL licentie is wel gevonden, maar openen lukt niet. hopelijk kent u die?.. computer will explode......?</translation>
+        <translation>De tekst met de GNU/GPL licentie is wel gevonden, maar openen lukt niet. Die ken je waarschijnlijk wel uit het hoofd.?</translation>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="162"/>
@@ -8235,7 +8234,7 @@ Wat wil je doen?</translation>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n klemmenstrook</numerusform>
+            <numerusform>%n terminaloverzicht</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -8706,7 +8705,7 @@ Wat wil je doen?</translation>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="155"/>
         <source> un groupe de texte</source>
-        <translation> een tekstverzameling</translation>
+        <translation> meerdere teksten</translation>
     </message>
     <message>
         <location filename="../sources/conductornumexport.cpp" line="48"/>
@@ -8792,7 +8791,7 @@ Wat wil je doen?</translation>
         <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
         <translation>Er bestaat al een tekstconfiguratie met de naam &lt;&lt; %1 &gt;&gt;.
-Wilt u deze vervangen ?</translation>
+Wil je deze vervangen ?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="85"/>
@@ -9928,7 +9927,7 @@ De volgende variabelen zijn te gebruiken:
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="335"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier kunt u variabele / waarde associaties voor in het titelblok definiëren. Voorbeeld. :
+        <translation>Hier kunnen variabele / waarde associaties voor in het titelblok worden gedefiniëerd. Voorbeeld. :
 Door associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wordt in het titelblok %{volta} door 1745 vervangen.</translation>
     </message>
 </context>
@@ -9954,8 +9953,8 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>U kunt voor het schemabladenoverzicht een eigen label definiëren.
-Maak uw eigen label met behulp van de volgende variabelen:
+        <translation>Voor het schemabladenoverzicht kan een eigen label worden gedefiniëerd
+met behulp van de volgende variabelen:
 
 %f : De plaats van het schemablad in het project 
 %F : Het schemabladnummer
@@ -10269,9 +10268,9 @@ Si le chiffre défini dans le champ Valeur possède moins de digits que le type 
 Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
 </source>
         <comment>help dialog about the folio autonumerotation</comment>
-        <translation>Hier kunt u de automatische nummering van nieuwe schemabladen definieren.
+        <translation>Hier kan de automatische nummering van nieuwe schemabladen worden gedefinieerd.
 -Een automatische nummering bestaat uit minimaal één variabele.
--U kunt hier met de knoppen + en -variabelen toevoegen of verwijderen.
+-Met de knoppen + en - kunnen variabelen worden toegevoegd of verwijderd.
 -Een variable bestaat uit : een type, een waarde en een increment.
 -De typen &quot;Cijfer 1:, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren een numeriek type in het veld &quot;Waarde&quot; dat elk schemabladnummer met de waarde in het veld &quot;Increment&quot; ophoogt.
 -Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren schemabladnummers met 2 respectievelijk 3 cijfers.
@@ -10301,9 +10300,9 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
-        <translation>Hier kunt u de automatische nummering van nieuwe geleiders definieren.
+        <translation>Hier kan de automatische nummering van nieuwe geleiders worden gedefinieerd.
 -Een automatische nummering bestaat uit minimaal één variabele.
--U kunt hier met de knoppen + en - variabelen toevoegen of verwijderen.
+-Met de knoppen + en - kunnen variabelen worden toegevoegd of verwijderd.
 -Een variable bestaat uit : een type, een waarde en een increment.
 -De typen &quot;Cijfer 1:, &quot;Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren een numeriek type in het veld &quot;Waarde&quot; dat elk geleidernummer met de waarde in het veld &quot;Increment&quot; ophoogt.
 -Cijfer 01&quot; en &quot;Cijfer 001&quot; representeren geleidernummers met 2 respectievelijk 3 cijfers.
@@ -13416,7 +13415,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
         <source>Êtes-vous sûr  de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Weet u zeker dat u titelbloksjabloon %1 wilt verwijderen ?
+        <translation>Moet titelbloksjabloon %1 echt worden verwijderd ?
 </translation>
     </message>
 </context>
@@ -13512,7 +13511,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="224"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Er betaat al een logo met de naam &quot;%1&quot; in dit titelbloksjabloon. Wilt u dit vervangen of wilt u het nieuwe logo onder een andere naam opslaan?</translation>
+        <translation>Er bestaat in dit titelbloksjabloon al een logo met de naam &quot;%1&quot;. Moet dit worden vervangen of moet het nieuwe logo onder een andere naam worden opgeslagen?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
@@ -13563,7 +13562,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="357"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation>U moet een nieuwe naam.invoeren.</translation>
+        <translation>Er moet een nieuwe naam worden ingevoerd.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="366"/>
