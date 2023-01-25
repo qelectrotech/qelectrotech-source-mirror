@@ -1,9 +1,6 @@
 #!/bin/bash
 #set -x
 
-#delete old qet.h
-rm sources/qet.h
-
 cd sources
 git reset --hard origin/master
 
@@ -17,13 +14,7 @@ git pull --recurse-submodules
 # get the number of the new revision
 GITCOMMIT=$(git rev-parse --short HEAD)
 
-tagName=$(cat sources/qet.h | grep displayedVersion | cut -d\" -f2 | cut -d\" -f1)                 #Find displayedVersion tag in GIT sources/qet.h
-
-# We recover the version number of the original
-tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h | cut -d\" -f2 | cut -d\" -f1 )
-
-# We modify the original with the revision number of the svn repository
-sed -i 's/'"const QString displayedVersion =.*/const QString displayedVersion = \"$tagName+$GITCOMMIT\";"'/' sources/qet.h
+tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -n 1| cut -c32-40| sed -e 's/,/./g' -e 's/ //g')   #Find major, minor, and micro version numbers in sources/qetversion.cp
 
 cd ~
 flatpak-builder --force-clean --ccache --repo=qet_git/0.8-dev qet_git/build-dir qet_git/build-aux/flatpak/org.qelectrotech.QElectroTech.json --gpg-sign=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --gpg-homedir=gpg
