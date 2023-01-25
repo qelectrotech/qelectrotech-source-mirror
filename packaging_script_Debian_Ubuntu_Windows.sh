@@ -112,9 +112,6 @@ fi
 
 cd debian/ && rm -rf *ex *EX README*
 
-#cd $DEFAULT_DIR/qelectrotech-$VERSION.r$HEAD/debian/patches/
-#sed -i 's/'"$VERSION+[0-9]*"'/'"$VERSION+$GITCOMMIT"'/' 03_qet.diff
-
 #deplacement dans le paquet_qet
 cd $DEFAULT_DIR/qelectrotech-$VERSION.r$HEAD/
 quilt push -a -f
@@ -250,20 +247,11 @@ cd qelectrotech-$VERSION.r$HEAD/build-aux/windows/
 cp {lang_extra.nsh,QET64.nsi,lang_extra_fr.nsh} /$DEFAULT_DIR/nsis_base64$HEAD/
 
 #copy and update folders of  readytouse_base skeleton
-#cd $DEFAULT_DIR
-#cp -r readytouse_base qelectrotech-$VERSION+git$HEAD-x86-win32-readytouse
-#cd qelectrotech-$VERSION.r$HEAD/
-#cp -r {elements,examples,titleblocks} /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win32-readytouse
-#cp -r lang/*.qm  /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win32-readytouse/lang
-
-#copy and update folders of  readytouse_base skeleton
 cd $DEFAULT_DIR
 cp -r readytouse_base qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse
 cd qelectrotech-$VERSION.r$HEAD/
 cp -r {elements,examples,titleblocks} /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse
 cp -r lang/*.qm  /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse/lang
-
-
 
 export PATH=/home/laurent/digikam3333/project/bundles/mxe/build.win64/usr/bin:$PATH
 
@@ -287,8 +275,6 @@ sed -i 's/'"0.5-dev_x86_64-win64+[0-9]*"'/'"$VERSION"_x86_64-win64+git"$HEAD"'/'
 makensis QET64.nsi
 
 #################################################################################################################
-
-
 
 #crompress readytouse
 cd $DEFAULT_DIR
@@ -336,10 +322,6 @@ if [ $? != 0 ]; then
 echo "RSYNC ERROR: problem syncing qelectrotech-$VERSION.r$HEAD "
 rsync -e ssh -av -W --delete-after --no-owner --no-g --chmod=g+w --progress  /home/laurent/builds/nightly/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/nightly/
 } fi
-
-#cd ~/paquet_qet/script
-#sed -i 's/'[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-[0-9]'/'"$name$i"'/' dl_link.inc.php
-#scp dl_link.inc.php "${SSH_TARGET}"
 
 else
   echo  -e "\033[1;33mExit.\033[m"
