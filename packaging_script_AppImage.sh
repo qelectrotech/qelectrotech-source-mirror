@@ -9,19 +9,15 @@ git reset --hard origin/master
 
 cd ..
 # get updates
-git pull --recurse-submodules
-
-#sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
+#git pull --recurse-submodules
+git pull
 
 GITCOMMIT=$(git rev-parse --short HEAD)
 A=$(git rev-list HEAD --count)
 HEAD=$(($A+473))
 
-# We recover the version number of the original
-tagName=$(sed -n "s/const QString displayedVersion =\(.*\)/\1/p" sources/qet.h | cut -d\" -f2 | cut -d\" -f1 )
-
-# On modifie l'originale avec le numéro de révision du dépôt GIT
-sed -i 's/'"const QString displayedVersion =.*/const QString displayedVersion = \"$tagName+$GITCOMMIT\";"'/' sources/qet.h
+#Find major, minor, and micro version numbers in sources/qetversion.cp
+tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -n 1| cut -c32-40| sed -e 's/,/./g' -e 's/ //g')   #Find major, minor, and micro version numbers in sources/qetversion.cp
 
 rm -Rf build/
 mkdir build && cd build
@@ -39,9 +35,10 @@ cp -r ../{elements,examples,titleblocks,lang,man} qelectrotech/usr/share/
 
 ./linuxdeployqt-continuous-x86_64.AppImage qelectrotech/usr/share/qelectrotech.desktop  -appimage -bundle-non-qt-libs -verbose=1 -extra-plugins=iconengines
 rm qelectrotech/AppRun
-sed -i 's/'"QElectroTech_0.8-DEV.*/QElectroTech_0.8-DEV-r"$HEAD""'/' qelectrotech/qelectrotech.desktop
+sed -i 's/'"QElectroTech_*.*/QElectroTech_$tagName-r$HEAD"'/' qelectrotech/qelectrotech.desktop
 cp AppRun qelectrotech/
 rm QElectroTech_*.AppImage
 
 ARCH=x86_64 ./appimagetool-x86_64.AppImage qelectrotech
-chmod -x QElectroTech_0.8-DEV-r$HEAD-x86_64.AppImage
+chmod -x QElectroTech_$tagName-r$HEAD-x86_64.AppImage
+shasum -a 256 QElectroTech_$tagName-r$HEAD-x86_64.AppImage > QElectroTech_$tagName-r$HEAD-x86_64.AppImage-SHA256.txt
