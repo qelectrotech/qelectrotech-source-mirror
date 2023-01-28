@@ -1,0 +1,38 @@
+<definition type="element" hotspot_x="15" version="0.5" hotspot_y="14" link_type="simple" width="110" height="70">
+    <uuid uuid="{4f308d28-f0dd-48cd-9012-1efe18ef59df}"/>
+    <names>
+        <name lang="ar">مدخلات الإخراج</name>
+        <name lang="ca">d'entrada i sortida</name>
+        <name lang="cs">vstup výstup</name>
+        <name lang="da">input output</name>
+        <name lang="de">Input-Output</name>
+        <name lang="el">εισόδου-εξόδου</name>
+        <name lang="en">input output</name>
+        <name lang="es">de entrada y salida</name>
+        <name lang="fr">entrée sortie</name>
+        <name lang="hr">ulaz izlaz</name>
+        <name lang="hu">bemenet kimenet</name>
+        <name lang="it">input Output</name>
+        <name lang="ja">入出力</name>
+        <name lang="mn">оролт гаралт</name>
+        <name lang="nb">inngangsutgang</name>
+        <name lang="nl">invoer uitvoer</name>
+        <name lang="pl">wejście wyjście</name>
+        <name lang="pt">entrada saída</name>
+        <name lang="pt_br">entrada saída</name>
+        <name lang="ro">intrare ieșire</name>
+        <name lang="ru">ввод, вывод</name>
+        <name lang="sl">vhodni izhod</name>
+        <name lang="sr">улаз излаз</name>
+        <name lang="tr">giriş çıkış</name>
+    </names>
+    <informations>ezza</informations>
+    <description>
+        <polygon x1="-10" x4="80" x5="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" y2="0" y4="40" antialias="true" y3="0" y5="40" x2="0" x3="90"/>
+        <input text="Entrée-Sortie" x="-6" y="18.5" tagg="label" size="9" rotate="true"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" y2="41" length1="1.5" antialias="false" end1="triangle" x2="40"/>
+        <line x1="40" length2="1.5" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" y2="-1" length1="1.5" antialias="false" end1="none" x2="40"/>
+        <terminal x="40" y="-10" orientation="n"/>
+        <terminal x="40" y="50" orientation="s"/>
+    </description>
+</definition>

@@ -1,0 +1,47 @@
+<definition hotspot_y="40" width="60" version="0.100" type="element" height="80" link_type="simple" hotspot_x="36">
+    <uuid uuid="{73261ef9-a9d4-46f0-927d-f8100766af9b}"/>
+    <names>
+        <name lang="tr">çıktı</name>
+        <name lang="ru">вывод</name>
+        <name lang="da">produktion</name>
+        <name lang="pl">wyjście</name>
+        <name lang="nl">uitvoer</name>
+        <name lang="ro">ieșire</name>
+        <name lang="en">output</name>
+        <name lang="ca">sortida</name>
+        <name lang="el">παραγωγή</name>
+        <name lang="de">Ausgang</name>
+        <name lang="hu">Kimenet</name>
+        <name lang="sr">излаз</name>
+        <name lang="cs">výstup</name>
+        <name lang="it">produzione</name>
+        <name lang="hr">izlaz</name>
+        <name lang="fr">sortir</name>
+        <name lang="sl">izhod</name>
+        <name lang="mn">гаралт</name>
+        <name lang="pt">saída</name>
+        <name lang="ja">出力</name>
+        <name lang="es">producción</name>
+        <name lang="ar">انتاج</name>
+        <name lang="nb">produksjon</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-21" text_width="-1" z="1" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-32" frame="false" text_from="UserText" rotation="0" uuid="{8572931b-022a-4b55-8046-ccdea0c578eb}">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="-20" antialias="false" x1="-30"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="15" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="20" frame="false" text_from="ElementInfo" rotation="0" uuid="{ea048edc-52d7-4bb5-89f8-66bb17f4d184}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-17" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-19" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-18" color="#000000" text="Q" x="-5.5" rotation="0"/>
+        <rect y="-35" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-20" antialias="false" height="70" rx="0"/>
+        <terminal y="0" orientation="w" name="" x="-30" type="Generic" uuid="{1c83ff59-65c1-4b0d-8424-0d21c5d6027f}"/>
+    </description>
+</definition>

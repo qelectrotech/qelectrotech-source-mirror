@@ -1,0 +1,54 @@
+<definition hotspot_y="44" height="90" version="0.100" link_type="simple" type="element" width="80" hotspot_x="34">
+    <uuid uuid="{3667ab5d-cbb7-43f4-a4b1-e37503938d6e}"/>
+    <names>
+        <name lang="ar">قرار</name>
+        <name lang="ca">Decisió</name>
+        <name lang="cs">Rozhodnutí</name>
+        <name lang="da">Afgørelse</name>
+        <name lang="de">Entscheidung</name>
+        <name lang="el">Απόφαση</name>
+        <name lang="en">Decision</name>
+        <name lang="es">Decisión</name>
+        <name lang="fr">Décision</name>
+        <name lang="hr">Odluka</name>
+        <name lang="hu">Döntés</name>
+        <name lang="it">Decisione</name>
+        <name lang="ja">決断</name>
+        <name lang="mn">Шийдвэр</name>
+        <name lang="nb">Beslutning</name>
+        <name lang="nl">Beslissing</name>
+        <name lang="pl">Decyzja</name>
+        <name lang="pt">Decisão</name>
+        <name lang="pt_br">Decisão</name>
+        <name lang="ro">Decizie</name>
+        <name lang="ru">Решение</name>
+        <name lang="sl">Odločitev</name>
+        <name lang="sr">Одлука</name>
+        <name lang="tr">Karar</name>
+    </names>
+    <elementInformations/>
+    <informations>ezza</informations>
+    <description>
+        <polygon x1="-30" y1="0" y3="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="true" x3="30" x5="-30" x4="0" x2="0" y5="0" y4="30"/>
+        <dynamic_text x="19" z="3" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="-33" uuid="{82fadf30-6dc5-4cac-84db-138d393538c9}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text x="27" z="3" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="-15" uuid="{82fadf30-6dc5-4cac-84db-138d393538c9}" rotation="0" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text>n</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text x="2" z="3" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="25" uuid="{82fadf30-6dc5-4cac-84db-138d393538c9}" rotation="0" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text>y</text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="triangle" length1="1.5" x1="0" y1="35" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" x2="0" end2="none"/>
+        <line end1="triangle" length1="1.5" x1="36" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" x2="30" end2="none"/>
+        <line end1="none" length1="1.5" x1="0" y1="-40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-30" antialias="false" x2="0" end2="none"/>
+        <line end1="none" length1="1.5" x1="0" y1="30" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="40" antialias="false" x2="0" end2="none"/>
+        <line end1="none" length1="1.5" x1="30" y1="0" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" x2="40" end2="none"/>
+        <terminal x="40" orientation="e" y="0" uuid="{8f7ca23e-bb77-413c-bd2c-86e325c787d3}" name="" type="Generic"/>
+        <terminal x="0" orientation="n" y="-40" uuid="{dc3495e2-0e2a-45db-ae26-00df406932e7}" name="" type="Generic"/>
+        <terminal x="0" orientation="s" y="40" uuid="{85f38d96-dbc2-4d5f-ab05-99460c2c4a6b}" name="" type="Generic"/>
+    </description>
+</definition>

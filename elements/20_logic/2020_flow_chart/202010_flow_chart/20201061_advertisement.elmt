@@ -1,0 +1,47 @@
+<definition hotspot_y="15" height="50" version="0.100" link_type="simple" type="element" width="90" hotspot_x="46">
+    <uuid uuid="{e829b88c-64dc-4117-816c-984c8467dc45}"/>
+    <names>
+        <name lang="de">Anzeige</name>
+        <name lang="nb">annonse</name>
+        <name lang="es">anuncio</name>
+        <name lang="ar">الإعلانات</name>
+        <name lang="ca">anunci</name>
+        <name lang="ru">реклама</name>
+        <name lang="ja">広告</name>
+        <name lang="it">annuncio pubblicitario</name>
+        <name lang="el">διαφήμιση</name>
+        <name lang="cs">reklama</name>
+        <name lang="pt">anúncio</name>
+        <name lang="nl">advertentie</name>
+        <name lang="ro">publicitate</name>
+        <name lang="hu">hirdetés</name>
+        <name lang="tr">İlan</name>
+        <name lang="pl">Reklama</name>
+        <name lang="sl">oglas</name>
+        <name lang="fr">publicité</name>
+        <name lang="mn">сурталчилгаа</name>
+        <name lang="en">advertisement</name>
+        <name lang="da">reklame</name>
+        <name lang="sr">реклама</name>
+        <name lang="hr">oglas</name>
+    </names>
+    <elementInformations/>
+    <informations>ezza</informations>
+    <description>
+        <arc x="-25.5" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-10" start="89.9375" angle="72.5" width="30"/>
+        <dynamic_text x="44" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="-10" uuid="{e5f40892-69b7-488d-a4de-8898c731a67a}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text x="-19.8183" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="-7.04542" uuid="{e5f40892-69b7-488d-a4de-8898c731a67a}" rotation="0" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon closed="false" x1="-10" y1="-10" y3="-10" x6="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" antialias="true" y6="30" x3="40" x5="5" x4="40" x2="-10" y5="30" y4="30"/>
+        <line end1="none" length1="1.5" x1="-28" y1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" antialias="false" x2="-39" end2="none"/>
+        <arc x="-25" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="0" start="203.938" angle="62.4375" width="30"/>
+        <line end1="none" length1="1.5" x1="-28" y1="10" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20.5034" antialias="false" x2="-24" end2="none"/>
+        <line end1="none" length1="1.5" x1="-25" y1="1" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9.66516" antialias="false" x2="-28.0558" end2="none"/>
+        <terminal x="-40" orientation="w" y="10" uuid="{ed075017-1a14-403f-929d-5379d8736fa1}" name="" type="Generic"/>
+    </description>
+</definition>

@@ -1,0 +1,58 @@
+<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+    <uuid uuid="{c794d8c1-ce06-4204-b29c-07b5d1291d1a}"/>
+    <names>
+        <name lang="tr">özel veya değil (XNOR)</name>
+        <name lang="ru">эксклюзив или нет (XNOR)</name>
+        <name lang="da">eksklusiv eller ej (XNOR)</name>
+        <name lang="pl">wyłączne lub nie (XNOR)</name>
+        <name lang="nl">exclusief of niet (XNOR)</name>
+        <name lang="ro">exclusiv sau nu (XNOR)</name>
+        <name lang="en">exclusive or not (XNOR)</name>
+        <name lang="ca">exclusiu o no (XNOR)</name>
+        <name lang="el">αποκλειστική ή όχι (XNOR)</name>
+        <name lang="de">exklusiv oder nicht (XNOR)</name>
+        <name lang="hu">kizárólagos vagy nem (XNOR)</name>
+        <name lang="sr">ексклузивно или не (XNOR)</name>
+        <name lang="cs">exkluzivní nebo ne (XNOR)</name>
+        <name lang="it">esclusiva o meno (XNOR)</name>
+        <name lang="hr">ekskluzivno ili ne (XNOR)</name>
+        <name lang="fr">exclusif ou non (XNOR)</name>
+        <name lang="sl">ekskluzivno ali ne (XNOR)</name>
+        <name lang="mn">онцгой эсвэл үгүй (XNOR)</name>
+        <name lang="pt">exclusivo ou não (XNOR)</name>
+        <name lang="ja">排他的かどうか (XNOR)</name>
+        <name lang="es">exclusivo o no (XNOR)</name>
+        <name lang="ar">حصري أم لا (XNOR)</name>
+        <name lang="nb">eksklusiv eller ikke (XNOR)</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="26" antialias="false" x1="28"/>
+        <dynamic_text font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-1" text_width="-1" z="1" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="ElementInfo" rotation="0" uuid="{c0f01bfc-b868-4ae9-95c9-701cfe06a267}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,8,-1,5,50,0,0,0,0,0" y="-41" text_width="-1" z="2" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="ElementInfo" rotation="0" uuid="{a849181c-5ea1-44cf-a7d9-ec0be9b727e3}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-17" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-19" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-22" text_width="-1" z="4" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="23" frame="false" text_from="ElementInfo" rotation="0" uuid="{2f45c720-7e19-4010-ad2c-f129e3c98933}">
+            <text></text>
+        </dynamic_text>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-17.95" color="#000000" text="=1" x="-9.78906" rotation="0"/>
+        <circle y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20.5" antialias="true"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="15" text_width="-1" z="7" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="20" frame="false" text_from="ElementInfo" rotation="0" uuid="{f5a580ad-caf3-4a3b-a9b5-bc6a779f3aa4}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-20" y2="-20" x2="-21" antialias="false" x1="-30"/>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="20" y2="20" x2="-21" antialias="false" x1="-30"/>
+        <rect y="-35" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-20" antialias="false" height="70" rx="0"/>
+        <terminal y="-20" orientation="w" name="" x="-30" type="Generic" uuid="{e7c3a904-ead4-48f1-9124-8a0b387dca69}"/>
+        <terminal y="20" orientation="w" name="" x="-30" type="Generic" uuid="{cb42047f-9888-4457-bb5a-a85eec17bdfe}"/>
+        <terminal y="0" orientation="e" name="" x="30" type="Generic" uuid="{80a559b5-9f86-49d8-a70f-23e4610b146b}"/>
+    </description>
+</definition>

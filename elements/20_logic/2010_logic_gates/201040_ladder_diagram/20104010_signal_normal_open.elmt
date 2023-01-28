@@ -1,0 +1,47 @@
+<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+    <uuid uuid="{22d7dad9-9124-4d5d-acf9-ae479a03031f}"/>
+    <names>
+        <name lang="mn">хэвийн нээлттэй дохио</name>
+        <name lang="ca">senyal d'obertura normal</name>
+        <name lang="pt">sinal normal aberto</name>
+        <name lang="el">σήμα κανονικό ανοιχτό</name>
+        <name lang="de">Signal normal offen</name>
+        <name lang="pl">sygnał normalnie otwarty</name>
+        <name lang="it">segnale normalmente aperto</name>
+        <name lang="ru">сигнал нормально открытый</name>
+        <name lang="tr">sinyal normal açık</name>
+        <name lang="en">signal normal open</name>
+        <name lang="es">señal normal abierta</name>
+        <name lang="sr">сигнал нормално отворен</name>
+        <name lang="nb">signal normal åpen</name>
+        <name lang="ar">إشارة فتح عادي</name>
+        <name lang="sl">signal normalno odprt</name>
+        <name lang="ro">semnal normal deschis</name>
+        <name lang="ja">シグナルノーマルオープン</name>
+        <name lang="da">signal normal åben</name>
+        <name lang="cs">signál normálně otevřený</name>
+        <name lang="nl">signaal normaal open</name>
+        <name lang="fr">signal normal ouvert</name>
+        <name lang="hr">signal normalno otvoren</name>
+        <name lang="hu">normál nyitva jelzés</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="ElementInfo" y="5" z="1" rotation="0" uuid="{e67eb40d-60ea-433f-9901-d6616a2b262a}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-19" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="-25" z="1" rotation="0" uuid="{e67eb40d-60ea-433f-9901-d6616a2b262a}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-17" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="5" length1="1.5" length2="1.5" y2="-5" x2="10" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" length1="1.5" length2="1.5" y2="5" x2="-10" antialias="false" end2="none" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="19" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="-10" antialias="false" end2="none" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" uuid="{bf5f3fe8-beef-440d-afa2-6a72a8410b1c}" name="" orientation="e" type="Generic" x="20"/>
+        <terminal y="0" uuid="{f7e53c57-3c92-4c59-adeb-9677750cbdb5}" name="" orientation="w" type="Generic" x="-20"/>
+    </description>
+</definition>

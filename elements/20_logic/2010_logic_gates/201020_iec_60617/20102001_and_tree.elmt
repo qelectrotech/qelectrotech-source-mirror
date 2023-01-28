@@ -1,0 +1,62 @@
+<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+    <uuid uuid="{3cf24f59-a920-4e47-938f-d97f6b84e9ec}"/>
+    <names>
+        <name lang="ru">И (три входа) (AND)</name>
+        <name lang="tr">VE (üç giriş) (AND)</name>
+        <name lang="da">OG (tre indgange) (AND)</name>
+        <name lang="pl">I (trzy wejścia) (AND)</name>
+        <name lang="nl">EN (drie ingangen) (AND)</name>
+        <name lang="ro">AND (trei intrări) (AND)</name>
+        <name lang="en">AND (three inputs) (AND)</name>
+        <name lang="ca">AND (tres entrades) (AND)</name>
+        <name lang="el">ΚΑΙ (τρεις είσοδοι) (AND)</name>
+        <name lang="de">UND (drei Eingänge) (AND)</name>
+        <name lang="hu">ÉS (három bemenet) (AND)</name>
+        <name lang="sr">И (три улаза) (AND)</name>
+        <name lang="cs">AND (tři vstupy) (AND)</name>
+        <name lang="it">AND (tre ingressi) (AND)</name>
+        <name lang="hr">I (tri ulaza) (AND)</name>
+        <name lang="fr">ET (trois entrées) (AND)</name>
+        <name lang="sl">IN (trije vhodi) (AND)</name>
+        <name lang="mn">БА (гурван оролт) (AND)</name>
+        <name lang="pt">E (três entradas) (AND)</name>
+        <name lang="ja">AND (3 入力) (AND)</name>
+        <name lang="es">Y (tres entradas) (AND)</name>
+        <name lang="ar">و (ثلاثة مدخلات) (AND)</name>
+        <name lang="nb">OG (tre innganger) (AND)</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="-21" antialias="false" x1="-30"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-21" text_width="-1" z="1" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{80eb932e-e74e-4b49-a718-81804cf181a3}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-1" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{3406f5e1-5395-4f38-8279-9122659d9f7a}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-17" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-19" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-41" text_width="-1" z="4" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{f753565e-6101-4746-a0fd-c3a5db091267}">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="20" y2="20" x2="-21" antialias="false" x1="-30"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-21" text_width="-1" z="5" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="25" frame="false" text_from="UserText" rotation="0" uuid="{5b435267-a927-44ea-a94f-2c6c00810f06}">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-20" y2="-20" x2="-21" antialias="false" x1="-30"/>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="21" antialias="false" x1="30"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="15" text_width="-1" z="9" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="20" frame="false" text_from="ElementInfo" rotation="0" uuid="{f883d3f0-1c2e-42f5-9463-727cb4c5ee7e}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-18" color="#000000" text="&amp;" x="-4" rotation="0"/>
+        <rect y="-35" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-20" antialias="false" height="70" rx="0"/>
+        <terminal y="0" orientation="e" name="" x="30" type="Generic" uuid="{0f885f65-2806-48e1-9c68-20e299890e7f}"/>
+        <terminal y="20" orientation="w" name="" x="-30" type="Generic" uuid="{e627df89-61a0-429a-acbe-2b847b5c6112}"/>
+        <terminal y="0" orientation="w" name="" x="-30" type="Generic" uuid="{30741de1-afd2-44a3-a129-183a58c85ccd}"/>
+        <terminal y="-20" orientation="w" name="" x="-30" type="Generic" uuid="{1df57d2b-58b8-4e46-9d91-f7fd80a11599}"/>
+    </description>
+</definition>

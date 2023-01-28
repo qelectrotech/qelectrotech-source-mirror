@@ -1,0 +1,53 @@
+<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+    <uuid uuid="{d0725150-e6f4-4dd0-89c7-fe31f0ad2dbb}"/>
+    <names>
+        <name lang="ru">НЕТ (NOT)</name>
+        <name lang="tr">OLUMSUZLUK (NOT)</name>
+        <name lang="da">IKKE (NOT)</name>
+        <name lang="pl">NIE (NOT)</name>
+        <name lang="nl">NIET (NOT)</name>
+        <name lang="ro">NU (NOT)</name>
+        <name lang="en">NOT (NOT)</name>
+        <name lang="ca">NO (NOT)</name>
+        <name lang="el">ΔΕΝ (NOT)</name>
+        <name lang="de">NICHT (NOT)</name>
+        <name lang="hu">NEM (NOT)</name>
+        <name lang="sr">НЕ (NOT)</name>
+        <name lang="cs">NE (NOT)</name>
+        <name lang="it">NON (NOT)</name>
+        <name lang="hr">NE (NOT)</name>
+        <name lang="fr">NE PAS (NOT)</name>
+        <name lang="sl">NE (NOT)</name>
+        <name lang="mn">ҮГҮЙ (NOT)</name>
+        <name lang="pt">NÃO (NOT)</name>
+        <name lang="ja">いいえ (NOT)</name>
+        <name lang="es">NO (NOT)</name>
+        <name lang="ar">ليس (NOT)</name>
+        <name lang="nb">IKKE (NOT)</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="26" antialias="false" x1="28"/>
+        <circle y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20.5" antialias="true"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-22" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-31" frame="false" text_from="UserText" rotation="0" uuid="{3c50cac1-608b-49c0-8e7c-6b731bfe0fc8}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-17" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-19" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-21" text_width="-1" z="4" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="25" frame="false" text_from="UserText" rotation="0" uuid="{2f45c720-7e19-4010-ad2c-f129e3c98933}">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="-20" antialias="false" x1="-29"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="15" text_width="-1" z="6" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="20" frame="false" text_from="ElementInfo" rotation="0" uuid="{3c038ee1-1153-4c08-800f-1c04dcea6ccb}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-18" color="#000000" text="1" x="-4" rotation="0"/>
+        <rect y="-35" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-20" antialias="false" height="70" rx="0"/>
+        <terminal y="0" orientation="e" name="" x="30" type="Generic" uuid="{7aec7e30-042b-40e0-b53f-5df3e340d646}"/>
+        <terminal y="0" orientation="w" name="" x="-30" type="Generic" uuid="{d66d850e-955d-4ca5-82a4-f8b3f49cfb40}"/>
+    </description>
+</definition>

@@ -1,0 +1,57 @@
+<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+    <uuid uuid="{c7969e18-3138-4cce-bcd7-b08056342584}"/>
+    <names>
+        <name lang="ru">ИЛИ (два входа) (OR)</name>
+        <name lang="tr">VEYA (iki giriş) (OR)</name>
+        <name lang="da">ELLER (to indgange) (OR)</name>
+        <name lang="pl">LUB (dwa wejścia) (OR)</name>
+        <name lang="nl">OF (twee ingangen) (OR)</name>
+        <name lang="ro">SAU (două intrări) (OR)</name>
+        <name lang="en">OR (two inputs) (OR)</name>
+        <name lang="ca">O (dues entrades) (OR)</name>
+        <name lang="el">Ή (δύο εισόδους) (OR)</name>
+        <name lang="de">ODER (zwei Eingänge) (OR)</name>
+        <name lang="hu">VAGY (két bemenet) (OR)</name>
+        <name lang="sr">ИЛИ (два улаза) (OR)</name>
+        <name lang="cs">NEBO (dva vstupy) (OR)</name>
+        <name lang="it">OR (due ingressi) (OR)</name>
+        <name lang="hr">ILI (dva ulaza) (OR)</name>
+        <name lang="fr">OU (deux entrées) (OR)</name>
+        <name lang="sl">ALI (dva vhoda) (OR)</name>
+        <name lang="mn">OR (хоёр оролт) (OR)</name>
+        <name lang="pt">OU (duas entradas) (OR)</name>
+        <name lang="ja">OR (2 つの入力) (OR)</name>
+        <name lang="es">O (dos entradas) (OR)</name>
+        <name lang="ar">أو (مدخلين) (OR)</name>
+        <name lang="nb">ELLER (to innganger) (OR)</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-1" text_width="-1" z="1" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{c0f01bfc-b868-4ae9-95c9-701cfe06a267}">
+            <text></text>
+        </dynamic_text>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-17.95" color="#000000" text="≥1" x="-9.78906" rotation="0"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-41" text_width="-1" z="2" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{a849181c-5ea1-44cf-a7d9-ec0be9b727e3}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-21" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="22" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-17" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-19" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-20" y2="-20" x2="-21" antialias="false" x1="-30"/>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="20" y2="20" x2="-21" antialias="false" x1="-30"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="15" text_width="-1" z="7" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="20" frame="false" text_from="ElementInfo" rotation="0" uuid="{f5a580ad-caf3-4a3b-a9b5-bc6a779f3aa4}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="21" antialias="false" x1="30"/>
+        <rect y="-35" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-20" antialias="false" height="70" rx="0"/>
+        <terminal y="-20" orientation="w" name="" x="-30" type="Generic" uuid="{e7c3a904-ead4-48f1-9124-8a0b387dca69}"/>
+        <terminal y="20" orientation="w" name="" x="-30" type="Generic" uuid="{cb42047f-9888-4457-bb5a-a85eec17bdfe}"/>
+        <terminal y="0" orientation="e" name="" x="30" type="Generic" uuid="{0002ffed-7fc6-4af7-b954-86595d94fae3}"/>
+    </description>
+</definition>

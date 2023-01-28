@@ -1,0 +1,48 @@
+<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+    <uuid uuid="{e582cd61-5c4b-460a-9a91-54597ee5c206}"/>
+    <names>
+        <name lang="mn">дохионы импульс нэмэгдэж байна</name>
+        <name lang="ca">impuls de senyal que augmenta</name>
+        <name lang="pt">impulsos de sinal subindo</name>
+        <name lang="el">ώθηση σήματος αυξάνεται</name>
+        <name lang="de">Signalimpuls steigend</name>
+        <name lang="pl">impuls sygnału narastający</name>
+        <name lang="it">segnale impulsi in aumento</name>
+        <name lang="ru">сигнальные импульсы нарастают</name>
+        <name lang="tr">yükselen sinyal dürtüsü</name>
+        <name lang="en">signal impuls rising</name>
+        <name lang="es">aumento de impulso de señal</name>
+        <name lang="sr">сигнални импулс расте</name>
+        <name lang="nb">signalimpulsen stiger</name>
+        <name lang="ar">ارتفاع نبضات الإشارة</name>
+        <name lang="sl">signalni impulz narašča</name>
+        <name lang="ro">impulsul semnalului în creștere</name>
+        <name lang="ja">信号インパルス上昇</name>
+        <name lang="da">signalimpuls stiger</name>
+        <name lang="cs">signální impuls stoupá</name>
+        <name lang="nl">signaalimpuls stijgt</name>
+        <name lang="fr">impulsion de signal montante</name>
+        <name lang="hr">signalni impuls raste</name>
+        <name lang="hu">jel impulzus emelkedik</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="6" color="#000000" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="P" x="-2"/>
+        <dynamic_text text_from="ElementInfo" y="3" z="2" rotation="0" uuid="{22ab1308-32e5-4940-94ca-d328ff7dee27}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-19" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="-23" z="2" rotation="0" uuid="{22ab1308-32e5-4940-94ca-d328ff7dee27}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-15" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="5" length1="1.5" length2="1.5" y2="-5" x2="10" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" length1="1.5" length2="1.5" y2="5" x2="-10" antialias="false" end2="none" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="19" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="-10" antialias="false" end2="none" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" uuid="{ad2f775b-7fc0-4110-b494-fffad12539d9}" name="" orientation="w" type="Generic" x="-20"/>
+        <terminal y="0" uuid="{76c2b4b1-82ab-4526-8984-7508817f945c}" name="" orientation="e" type="Generic" x="20"/>
+    </description>
+</definition>

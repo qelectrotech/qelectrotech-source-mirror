@@ -1,0 +1,48 @@
+<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+    <uuid uuid="{8ff1e4c6-e1b9-46fb-94fc-887f7dd1070d}"/>
+    <names>
+        <name lang="mn">дохиог эргүүлэх</name>
+        <name lang="ca">senyal invertit</name>
+        <name lang="pt">sinal invertido</name>
+        <name lang="el">αναστροφή σήματος</name>
+        <name lang="de">Signal invertieren</name>
+        <name lang="pl">odwrócenie sygnału</name>
+        <name lang="it">segnale invertito</name>
+        <name lang="ru">инвертировать сигнал</name>
+        <name lang="tr">sinyal ters</name>
+        <name lang="en">signal invert</name>
+        <name lang="es">inversión de señal</name>
+        <name lang="sr">сигнал инверт</name>
+        <name lang="nb">signal invertere</name>
+        <name lang="ar">عكس الإشارة</name>
+        <name lang="sl">invert signala</name>
+        <name lang="ro">inversarea semnalului</name>
+        <name lang="ja">信号反転</name>
+        <name lang="da">signal invertere</name>
+        <name lang="cs">invertovat signál</name>
+        <name lang="nl">signaal omkeren</name>
+        <name lang="fr">inverser le signal</name>
+        <name lang="hr">invertirati signal</name>
+        <name lang="hu">jel invert</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="ElementInfo" y="2" z="2" rotation="0" uuid="{85b2bcb0-d53e-45df-9ba0-b429c8996101}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-22" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="-26" z="2" rotation="0" uuid="{85b2bcb0-d53e-45df-9ba0-b429c8996101}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-18" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="5" length1="1.5" length2="1.5" y2="-5" x2="10" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="-5" length1="1.5" length2="1.5" y2="5" x2="-10" antialias="false" end2="none" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="19" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="-10" antialias="false" end2="none" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text y="3.20028" color="#000000" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="NOT" x="-8.83048"/>
+        <terminal y="0" uuid="{38f751ce-8447-4bdd-9f6f-d9e489d9ac3b}" name="" orientation="w" type="Generic" x="-20"/>
+        <terminal y="0" uuid="{02bc4d40-00dc-411c-b7ad-1bef3dfc52cf}" name="" orientation="e" type="Generic" x="20"/>
+    </description>
+</definition>
