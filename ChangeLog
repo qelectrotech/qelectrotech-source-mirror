@@ -1,3 +1,16 @@
+====== ChangeLog from 0.9.0 to 0.9.1 ======
+
+*Bug fix:
+Avoid WARNING: mime_xml.path is not defined
+Update *.qm translations files
+Improve 20 logic elements, thanks Vbxier
+
+*Element Editor:
+Fix wrong calculation of the bounding rect of an arc
+
+
+
+
 ====== ChangeLog from 0.8 to 0.9 ======
 
 
