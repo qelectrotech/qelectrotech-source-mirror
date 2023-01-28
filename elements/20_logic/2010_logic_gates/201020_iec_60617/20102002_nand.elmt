@@ -1,4 +1,4 @@
-<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+<definition hotspot_y="40" width="70" version="0.9" type="element" height="80" link_type="simple" hotspot_x="34">
     <uuid uuid="{80ed8df4-5282-41df-ba03-7e70d88d1942}"/>
     <names>
         <name lang="tr">VE YOK (NAND)</name>

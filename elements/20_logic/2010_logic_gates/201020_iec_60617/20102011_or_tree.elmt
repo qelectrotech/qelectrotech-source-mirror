@@ -1,4 +1,4 @@
-<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+<definition hotspot_y="40" width="70" version="0.9" type="element" height="80" link_type="simple" hotspot_x="34">
     <uuid uuid="{b124f64a-db9b-4832-91eb-70e3598683c7}"/>
     <names>
         <name lang="ru">ИЛИ (три входа) (OR)</name>

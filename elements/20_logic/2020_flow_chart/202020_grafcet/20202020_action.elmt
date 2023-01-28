@@ -1,4 +1,4 @@
-<definition height="30" width="120" hotspot_x="68" type="element" hotspot_y="15" version="0.100" link_type="simple">
+<definition height="30" width="120" hotspot_x="68" type="element" hotspot_y="15" version="0.9" link_type="simple">
     <uuid uuid="{0163208a-f5dc-4d4c-ae71-9f5b60e2eb5e}"/>
     <names>
         <name lang="ar">العمل المستمر</name>

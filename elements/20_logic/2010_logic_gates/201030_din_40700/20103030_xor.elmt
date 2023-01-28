@@ -1,4 +1,4 @@
-<definition hotspot_y="25" width="50" version="0.100" type="element" height="50" link_type="simple" hotspot_x="24">
+<definition hotspot_y="25" width="50" version="0.9" type="element" height="50" link_type="simple" hotspot_x="24">
     <uuid uuid="{afc211b6-f434-4ca1-aaab-842377976168}"/>
     <names>
         <name lang="tr">özel veya (XOR)</name>

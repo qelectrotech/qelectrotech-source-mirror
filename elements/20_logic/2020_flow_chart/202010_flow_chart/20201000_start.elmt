@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="40" hotspot_y="14" width="80" version="0.100.0" height="40" link_type="simple">
+<definition type="element" hotspot_x="40" hotspot_y="14" width="80" version="0.9.0" height="40" link_type="simple">
     <uuid uuid="{7c9c72fd-a864-4a71-9b35-004463380ffa}"/>
     <names>
         <name lang="fr">commencer</name>

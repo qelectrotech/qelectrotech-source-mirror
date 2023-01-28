@@ -1,4 +1,4 @@
-<definition hotspot_y="25" width="60" version="0.100" type="element" height="50" link_type="simple" hotspot_x="34">
+<definition hotspot_y="25" width="60" version="0.9" type="element" height="50" link_type="simple" hotspot_x="34">
     <uuid uuid="{f60521cb-53b0-4a93-8290-c8415ff8dfd2}"/>
     <names>
         <name lang="tr">VEYA (OR)</name>

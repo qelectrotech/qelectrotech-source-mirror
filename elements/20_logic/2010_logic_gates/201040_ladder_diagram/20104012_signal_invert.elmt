@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.9">
     <uuid uuid="{8ff1e4c6-e1b9-46fb-94fc-887f7dd1070d}"/>
     <names>
         <name lang="mn">дохиог эргүүлэх</name>

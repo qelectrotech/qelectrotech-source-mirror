@@ -1,4 +1,4 @@
-<definition hotspot_y="14" height="70" version="0.100" link_type="simple" type="element" width="110" hotspot_x="15">
+<definition hotspot_y="14" height="70" version="0.9" link_type="simple" type="element" width="110" hotspot_x="15">
     <uuid uuid="{d4f1fb3e-a1a0-44f3-8a66-57c489b4c645}"/>
     <names>
         <name lang="de">Ende Schleife</name>

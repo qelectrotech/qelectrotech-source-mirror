@@ -1,4 +1,4 @@
-<definition hotspot_y="40" width="60" version="0.100" type="element" height="80" link_type="simple" hotspot_x="36">
+<definition hotspot_y="40" width="60" version="0.9" type="element" height="80" link_type="simple" hotspot_x="36">
     <uuid uuid="{73261ef9-a9d4-46f0-927d-f8100766af9b}"/>
     <names>
         <name lang="tr">çıktı</name>

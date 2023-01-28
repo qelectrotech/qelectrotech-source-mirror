@@ -1,4 +1,4 @@
-<definition hotspot_y="5" height="50" version="0.100" link_type="simple" type="element" width="90" hotspot_x="6">
+<definition hotspot_y="5" height="50" version="0.9" link_type="simple" type="element" width="90" hotspot_x="6">
     <uuid uuid="{893da351-ae2a-4ce5-8838-3d5dff44fd22}"/>
     <names>
         <name lang="de">Verzögerung</name>

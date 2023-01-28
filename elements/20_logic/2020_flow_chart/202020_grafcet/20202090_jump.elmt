@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="9" hotspot_y="26" version="0.100" type="element" link_type="simple" width="20">
+<definition height="30" hotspot_x="9" hotspot_y="26" version="0.9" type="element" link_type="simple" width="20">
     <uuid uuid="{21cb245e-072d-4ce3-8418-9265ea9ba1a4}"/>
     <names>
         <name lang="hu">Ugrás</name>

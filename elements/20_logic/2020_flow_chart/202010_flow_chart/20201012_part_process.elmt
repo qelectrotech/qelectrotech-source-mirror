@@ -1,4 +1,4 @@
-<definition hotspot_y="14" height="70" version="0.100" link_type="simple" type="element" width="110" hotspot_x="15">
+<definition hotspot_y="14" height="70" version="0.9" link_type="simple" type="element" width="110" hotspot_x="15">
     <uuid uuid="{6bdb4a9b-813f-470c-a30f-60f41fd5f90d}"/>
     <names>
         <name lang="de">Teil Prozess</name>

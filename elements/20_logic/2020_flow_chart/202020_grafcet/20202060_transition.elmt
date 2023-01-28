@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="20" hotspot_y="14" version="0.100" type="element" link_type="simple" width="40">
+<definition height="30" hotspot_x="20" hotspot_y="14" version="0.9" type="element" link_type="simple" width="40">
     <uuid uuid="{f562347a-c622-4379-acb8-f121d2120b47}"/>
     <names>
         <name lang="ar">انتقال</name>

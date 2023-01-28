@@ -1,4 +1,4 @@
-<definition height="40" hotspot_x="68" hotspot_y="15" version="0.100" type="element" link_type="simple" width="120">
+<definition height="40" hotspot_x="68" hotspot_y="15" version="0.9" type="element" link_type="simple" width="120">
     <uuid uuid="{d034082e-1a87-4477-9d9f-09ea9b4add1d}"/>
     <names>
         <name lang="hu">Művelet, amely megtakarítja a deaktiválást</name>

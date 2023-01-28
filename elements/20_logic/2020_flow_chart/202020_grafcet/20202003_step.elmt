@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="20" hotspot_y="24" version="0.100" type="element" link_type="simple" width="40">
+<definition height="50" hotspot_x="20" hotspot_y="24" version="0.9" type="element" link_type="simple" width="40">
     <uuid uuid="{84b15659-337d-40e8-a31c-ada948099339}"/>
     <names>
         <name lang="hu">makró lépés</name>

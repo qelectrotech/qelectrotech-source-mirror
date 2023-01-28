@@ -1,4 +1,4 @@
-<definition hotspot_y="27" width="60" version="0.100" type="element" height="50" link_type="simple" hotspot_x="24">
+<definition hotspot_y="27" width="60" version="0.9" type="element" height="50" link_type="simple" hotspot_x="24">
     <uuid uuid="{020d4c49-a150-4e2d-a58e-054e29f3792b}"/>
     <names>
         <name lang="tr">Giriş</name>

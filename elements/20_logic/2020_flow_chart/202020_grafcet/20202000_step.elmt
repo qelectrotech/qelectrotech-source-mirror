@@ -1,4 +1,4 @@
-<definition height="50" width="40" hotspot_x="20" type="element" hotspot_y="21" version="0.100" link_type="simple">
+<definition height="50" width="40" hotspot_x="20" type="element" hotspot_y="21" version="0.9" link_type="simple">
     <uuid uuid="{74639d89-3cde-4b4b-905f-68a73814a091}"/>
     <names>
         <name lang="ar">خطوة أولية</name>

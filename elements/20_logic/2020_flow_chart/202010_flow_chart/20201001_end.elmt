@@ -1,4 +1,4 @@
-<definition type="element" hotspot_x="40" hotspot_y="26" width="80" version="0.100.0" height="40" link_type="simple">
+<definition type="element" hotspot_x="40" hotspot_y="26" width="80" version="0.9.0" height="40" link_type="simple">
     <uuid uuid="{cc66cfb2-2add-43f7-bccc-8c749ff0243f}"/>
     <names>
         <name lang="ar">نهاية</name>

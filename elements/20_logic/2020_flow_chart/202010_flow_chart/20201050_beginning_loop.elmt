@@ -1,4 +1,4 @@
-<definition hotspot_y="14" height="70" version="0.100" link_type="simple" type="element" width="110" hotspot_x="15">
+<definition hotspot_y="14" height="70" version="0.9" link_type="simple" type="element" width="110" hotspot_x="15">
     <uuid uuid="{200bbd3c-9ffd-4dcc-92b2-2f79225f1a74}"/>
     <names>
         <name lang="de">Anfang Schleife</name>

@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="35" hotspot_y="25" version="0.100" type="element" link_type="simple" width="60">
+<definition height="50" hotspot_x="35" hotspot_y="25" version="0.9" type="element" link_type="simple" width="60">
     <uuid uuid="{1da8b042-d123-4a0b-9867-53246b9e47f8}"/>
     <names>
         <name lang="hu">kizárólagos vagy nem (XNOR)</name>

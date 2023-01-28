@@ -1,4 +1,4 @@
-<definition hotspot_y="25" width="50" version="0.100" type="element" height="50" link_type="simple" hotspot_x="24">
+<definition hotspot_y="25" width="50" version="0.9" type="element" height="50" link_type="simple" hotspot_x="24">
     <uuid uuid="{11efb292-c4f6-45e4-98b0-b39767f9796d}"/>
     <names>
         <name lang="tr">OLUMSUZLUK (NOT)</name>

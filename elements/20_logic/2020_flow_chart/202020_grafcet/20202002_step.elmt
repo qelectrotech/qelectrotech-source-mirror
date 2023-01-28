@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="21" hotspot_y="24" version="0.100" type="element" link_type="simple" width="50">
+<definition height="50" hotspot_x="21" hotspot_y="24" version="0.9" type="element" link_type="simple" width="50">
     <uuid uuid="{d2258ebf-7e55-435d-be2f-591dfe3ab01b}"/>
     <names>
         <name lang="hu">befoglaló lépés</name>

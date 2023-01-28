@@ -1,4 +1,4 @@
-<definition hotspot_y="44" height="90" version="0.100" link_type="simple" type="element" width="90" hotspot_x="54">
+<definition hotspot_y="44" height="90" version="0.9" link_type="simple" type="element" width="90" hotspot_x="54">
     <uuid uuid="{239d4751-407f-4131-970b-efee6abcbb5a}"/>
     <names>
         <name lang="de">Entscheidung</name>

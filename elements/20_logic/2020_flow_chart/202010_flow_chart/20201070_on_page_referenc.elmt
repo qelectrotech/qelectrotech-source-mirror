@@ -1,4 +1,4 @@
-<definition hotspot_y="26" height="40" version="0.100" link_type="simple" type="element" width="30" hotspot_x="15">
+<definition hotspot_y="26" height="40" version="0.9" link_type="simple" type="element" width="30" hotspot_x="15">
     <uuid uuid="{594d17b7-9b36-473e-9adc-0f834b79e395}"/>
     <names>
         <name lang="de">On-Page-Referenz</name>

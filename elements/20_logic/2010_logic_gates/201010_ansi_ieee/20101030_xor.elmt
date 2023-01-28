@@ -1,4 +1,4 @@
-<definition height="50" hotspot_x="34" hotspot_y="25" version="0.100" type="element" link_type="simple" width="60">
+<definition height="50" hotspot_x="34" hotspot_y="25" version="0.9" type="element" link_type="simple" width="60">
     <uuid uuid="{a530ea27-3c1a-4980-89e3-c147aedc28c6}"/>
     <names>
         <name lang="hu">exkluzív ill (XOR)</name>

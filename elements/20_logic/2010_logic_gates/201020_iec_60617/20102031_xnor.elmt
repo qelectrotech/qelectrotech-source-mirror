@@ -1,4 +1,4 @@
-<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+<definition hotspot_y="40" width="70" version="0.9" type="element" height="80" link_type="simple" hotspot_x="34">
     <uuid uuid="{c794d8c1-ce06-4204-b29c-07b5d1291d1a}"/>
     <names>
         <name lang="tr">özel veya değil (XNOR)</name>

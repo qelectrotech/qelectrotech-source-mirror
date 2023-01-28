@@ -1,4 +1,4 @@
-<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+<definition link_type="simple" hotspot_x="24" type="element" height="20" width="50" hotspot_y="10" version="0.9">
     <uuid uuid="{22bc7ca8-7f9e-46d3-b37a-a2b778f6b8df}"/>
     <names>
         <name lang="mn">таймерыг импульс болгон ашигладаг</name>

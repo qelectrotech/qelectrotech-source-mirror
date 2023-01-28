@@ -1,4 +1,4 @@
-<definition hotspot_y="14" height="70" version="0.100" link_type="simple" type="element" width="110" hotspot_x="15">
+<definition hotspot_y="14" height="70" version="0.9" link_type="simple" type="element" width="110" hotspot_x="15">
     <uuid uuid="{05e3100b-c30f-43d7-8802-31fabfad9f21}"/>
     <names>
         <name lang="de">Alternativer Prozess</name>

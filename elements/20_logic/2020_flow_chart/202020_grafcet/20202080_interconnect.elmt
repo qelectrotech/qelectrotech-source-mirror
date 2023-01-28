@@ -1,4 +1,4 @@
-<definition height="30" hotspot_x="4" hotspot_y="14" version="0.100" type="element" link_type="simple" width="20">
+<definition height="30" hotspot_x="4" hotspot_y="14" version="0.9" type="element" link_type="simple" width="20">
     <uuid uuid="{ed650396-9629-498f-9a67-96ba297a5c08}"/>
     <names>
         <name lang="ar">الإتصال</name>

@@ -1,4 +1,4 @@
-<definition hotspot_y="14" height="70" version="0.100" link_type="simple" type="element" width="110" hotspot_x="15">
+<definition hotspot_y="14" height="70" version="0.9" link_type="simple" type="element" width="110" hotspot_x="15">
     <uuid uuid="{7a7b3f10-5d72-40a1-bec9-fa549a5c6408}"/>
     <names>
         <name lang="de">Prozess</name>
