@@ -1,0 +1,48 @@
+<definition link_type="simple" hotspot_x="26" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+    <uuid uuid="{2209933f-3111-40ff-a3fc-0947b566f3e4}"/>
+    <names>
+        <name lang="ar">عكس خرج إشارة</name>
+        <name lang="ca">invertir la sortida del senyal</name>
+        <name lang="cs">invertovat výstup signálu</name>
+        <name lang="da">signaludgang inverteres</name>
+        <name lang="de">Signalausgang invertieren</name>
+        <name lang="el">αναστροφή εξόδου σήματος</name>
+        <name lang="en">signal output invert</name>
+        <name lang="es">inversión de salida de señal</name>
+        <name lang="fr">inversion de sortie de signal</name>
+        <name lang="hr">izlazni signal invertirati</name>
+        <name lang="hu">jelkimenet invertál</name>
+        <name lang="it">inversione dell'uscita del segnale</name>
+        <name lang="ja">信号出力反転</name>
+        <name lang="mn">дохионы гаралтыг эргүүлэх</name>
+        <name lang="nb">inverter signalutgang</name>
+        <name lang="nl">signaaluitgang omkeren</name>
+        <name lang="pl">odwrócenie sygnału wyjściowego</name>
+        <name lang="pt">inversão de saída de sinal</name>
+        <name lang="pt_br">inversão de saída de sinal</name>
+        <name lang="ro">inversarea semnalului de ieșire</name>
+        <name lang="ru">инвертированный выходной сигнал</name>
+        <name lang="sl">izhodni signal invert</name>
+        <name lang="sr">сигнал излаз инверт</name>
+        <name lang="tr">sinyal çıkışı ters</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc y="-5" antialias="true" height="10" width="4" start="80" angle="-160" x="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="4" length1="1.5" length2="1.5" y2="-4" x2="6" antialias="true" end2="none" end1="none" x1="-6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text text_from="UserText" y="-23" z="2" rotation="0" uuid="{a1aa6277-a4a7-4ca1-9672-934408a2586d}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-14" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="ElementInfo" y="5" z="2" rotation="0" uuid="{a1aa6277-a4a7-4ca1-9672-934408a2586d}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-19" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc y="-5" antialias="true" height="10" width="4" start="-100" angle="-160" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="20" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="-10" antialias="false" end2="none" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" uuid="{1ca69e32-96cd-4f05-b273-7fd8fb82b791}" name="" orientation="w" type="Generic" x="-20"/>
+    </description>
+</definition>

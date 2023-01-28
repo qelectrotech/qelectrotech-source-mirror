@@ -1,0 +1,47 @@
+<definition link_type="simple" hotspot_x="26" type="element" height="20" width="50" hotspot_y="10" version="0.100">
+    <uuid uuid="{d340f1ff-98bf-4258-a705-392782a276f3}"/>
+    <names>
+        <name lang="mn">Дохионы гаралтыг дахин тохируулах</name>
+        <name lang="ca">Restableix la sortida del senyal</name>
+        <name lang="pt">Redefinir saída de sinal</name>
+        <name lang="el">Επαναφορά εξόδου σήματος</name>
+        <name lang="de">Signal Ausgang rücksetzen</name>
+        <name lang="pl">Zresetuj wyjście sygnału</name>
+        <name lang="it">Reimpostare l'uscita del segnale</name>
+        <name lang="ru">Выходной сигнал сброса</name>
+        <name lang="tr">Sinyal çıkışını sıfırla</name>
+        <name lang="en">Reset signal output</name>
+        <name lang="es">Restablecer salida de señal</name>
+        <name lang="sr">Ресетујте излаз сигнала</name>
+        <name lang="nb">Tilbakestill signalutgang</name>
+        <name lang="ar">إعادة ضبط خرج الإشارة</name>
+        <name lang="sl">Ponastavi izhod signala</name>
+        <name lang="ro">Resetați semnalul de ieșire</name>
+        <name lang="ja">リセット信号出力</name>
+        <name lang="da">Nulstil signaludgang</name>
+        <name lang="cs">Resetujte výstup signálu</name>
+        <name lang="nl">Signaaluitgang resetten</name>
+        <name lang="fr">Sortie de signal de réinitialisation</name>
+        <name lang="hr">Resetirajte izlaz signala</name>
+        <name lang="hu">Reset jel kimenet</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <text y="3.52187" color="#000000" rotation="0" font="Sans Serif,6,-1,5,50,0,0,0,0,0" text="R" x="-2.63755"/>
+        <arc y="-5" antialias="true" height="10" width="4" start="80" angle="-160" x="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text text_from="ElementInfo" y="6" z="3" rotation="0" uuid="{30178294-fd84-45aa-bafa-bb64e767df3c}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-17" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="-23" z="3" rotation="0" uuid="{30178294-fd84-45aa-bafa-bb64e767df3c}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-15" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <arc y="-5" antialias="true" height="10" width="4" start="-100" angle="-160" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="20" antialias="false" end2="none" end1="none" x1="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="-10" antialias="false" end2="none" end1="none" x1="-19" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" uuid="{2b186eb1-bc08-4d56-8783-def2dc9966fc}" name="" orientation="w" type="Generic" x="-20"/>
+    </description>
+</definition>

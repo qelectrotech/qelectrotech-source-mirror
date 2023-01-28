@@ -1,0 +1,45 @@
+<definition height="50" hotspot_x="21" hotspot_y="24" version="0.100" type="element" link_type="simple" width="50">
+    <uuid uuid="{d2258ebf-7e55-435d-be2f-591dfe3ab01b}"/>
+    <names>
+        <name lang="hu">befoglaló lépés</name>
+        <name lang="hr">obuhvatni korak</name>
+        <name lang="ro">pas de anexare</name>
+        <name lang="ca">pas de tancament</name>
+        <name lang="sl">zapiralni korak</name>
+        <name lang="tr">çevreleyen adım</name>
+        <name lang="en">enclosing step</name>
+        <name lang="mn">хаалттай алхам</name>
+        <name lang="pt">etapa de fechamento</name>
+        <name lang="ru">ограждающая ступенька</name>
+        <name lang="ar">أرفق خطوة</name>
+        <name lang="es">paso envolvente</name>
+        <name lang="pl">stopień zamykający</name>
+        <name lang="ja">包囲ステップ</name>
+        <name lang="it">passo di chiusura</name>
+        <name lang="de">Einschließender Schritt</name>
+        <name lang="el">κλιμακωτό βήμα</name>
+        <name lang="da">omsluttende trin</name>
+        <name lang="nb">omsluttende trinn</name>
+        <name lang="sr">оградни корак</name>
+        <name lang="fr">étape d'enfermement</name>
+        <name lang="cs">uzavírací krok</name>
+        <name lang="nl">omsluitende stap</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-14" frame="false" z="1" text_width="-1" y="-10" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{363f99d2-74a9-4e99-9844-5c2a9ad0eac6}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="16" frame="false" z="2" text_width="-1" y="-4" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{01127e1b-5c5c-44f7-80a5-6c40a027c45c}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect height="30" rx="0" x="-15" antialias="false" y="-15" width="30" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <polygon x1="-15" x5="15" x4="15" y3="-15" antialias="false" x3="6" x2="-7" y5="6" x7="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" y8="6" x6="6" y4="-5" x8="-15" y6="15" y2="-15" y1="-5" y7="15"/>
+        <terminal orientation="e" x="20" name="" y="0" type="Generic" uuid="{af048eba-fa01-4a94-82ca-45d8d9f8f1b3}"/>
+        <terminal orientation="n" x="0" name="" y="-20" type="Generic" uuid="{7948ab13-acb4-42b8-9900-d9448cadae4b}"/>
+        <terminal orientation="s" x="0" name="" y="20" type="Generic" uuid="{3bf2a658-fdf1-4a41-a1e4-ee8488bd2832}"/>
+    </description>
+</definition>

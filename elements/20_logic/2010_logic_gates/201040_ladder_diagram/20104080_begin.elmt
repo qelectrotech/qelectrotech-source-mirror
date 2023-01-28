@@ -1,0 +1,46 @@
+<definition link_type="simple" hotspot_x="14" type="element" height="30" width="20" hotspot_y="14" version="0.100">
+    <uuid uuid="{52010218-d97e-4462-af73-f345e9d74ddf}"/>
+    <names>
+        <name lang="mn">Эхлэх</name>
+        <name lang="ca">començar</name>
+        <name lang="pt">começar</name>
+        <name lang="el">αρχίσει</name>
+        <name lang="de">Start</name>
+        <name lang="pl">zaczynać</name>
+        <name lang="it">inizio</name>
+        <name lang="ru">начинать</name>
+        <name lang="tr">başlamak</name>
+        <name lang="en">begin</name>
+        <name lang="es">comenzar</name>
+        <name lang="sr">почети</name>
+        <name lang="nb">begynne</name>
+        <name lang="ar">يبدأ</name>
+        <name lang="sl">začeti</name>
+        <name lang="ro">ÎNCEPE</name>
+        <name lang="ja">始める</name>
+        <name lang="da">begynde</name>
+        <name lang="cs">začít</name>
+        <name lang="nl">beginnen</name>
+        <name lang="fr">commencer</name>
+        <name lang="hr">početi</name>
+        <name lang="hu">kezdődik</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text text_from="ElementInfo" y="1" z="1" rotation="0" uuid="{e67eb40d-60ea-433f-9901-d6616a2b262a}" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-9" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text text_from="UserText" y="-21" z="1" rotation="0" uuid="{e67eb40d-60ea-433f-9901-d6616a2b262a}" font="Sans Serif,5,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" frame="false" keep_visual_rotation="false" text_width="-1" x="-8" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y1="-10" length1="1.5" length2="1.5" y2="10" x2="-10" antialias="false" end2="none" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line y1="0" length1="1.5" length2="1.5" y2="0" x2="-1" antialias="false" end2="none" end1="none" x1="-10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal y="0" uuid="{bf5f3fe8-beef-440d-afa2-6a72a8410b1c}" name="" orientation="e" type="Generic" x="0"/>
+        <terminal y="10" uuid="{66947c31-322e-459d-838d-6536b37a3e4a}" name="" orientation="s" type="Generic" x="-10"/>
+        <terminal y="-10" uuid="{d622a128-afab-46c5-873c-494a7cc0fd46}" name="" orientation="n" type="Generic" x="-10"/>
+    </description>
+</definition>

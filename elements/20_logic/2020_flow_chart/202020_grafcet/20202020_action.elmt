@@ -1,0 +1,44 @@
+<definition height="30" width="120" hotspot_x="68" type="element" hotspot_y="15" version="0.100" link_type="simple">
+    <uuid uuid="{0163208a-f5dc-4d4c-ae71-9f5b60e2eb5e}"/>
+    <names>
+        <name lang="ar">العمل المستمر</name>
+        <name lang="ca">Acció contínua</name>
+        <name lang="cs">Nepřetržité působení</name>
+        <name lang="da">Kontinuerlig handling</name>
+        <name lang="de">Kontinuierliche Aktion</name>
+        <name lang="el">Συνεχής δράση</name>
+        <name lang="en">Continuous action</name>
+        <name lang="es">Acción continua</name>
+        <name lang="fr">Action continue</name>
+        <name lang="hr">Kontinuirano djelovanje</name>
+        <name lang="hu">Folyamatos cselekvés</name>
+        <name lang="it">Azione continua</name>
+        <name lang="ja">連続行動</name>
+        <name lang="mn">Тасралтгүй үйлдэл</name>
+        <name lang="nb">Kontinuerlig handling</name>
+        <name lang="nl">Continue actie</name>
+        <name lang="pl">Ciągłe działanie</name>
+        <name lang="pt">Ação contínua</name>
+        <name lang="pt_br">Ação contínua</name>
+        <name lang="ro">Acțiune continuă</name>
+        <name lang="ru">Непрерывное действие</name>
+        <name lang="sl">Neprekinjeno delovanje</name>
+        <name lang="sr">Континуирана акција</name>
+        <name lang="tr">Sürekli eylem</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-10" text_from="ElementInfo" frame="false" x="48" z="1" Valignment="AlignTop" keep_visual_rotation="false" rotation="0" text_width="-1" Halignment="AlignLeft" font="Sans Serif,7,-1,5,50,0,0,0,0,0" uuid="{3271c4dc-d542-495e-8264-2b47a35ff1c7}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="-8" text_from="UserText" frame="false" x="-56" z="1" Valignment="AlignTop" keep_visual_rotation="false" rotation="0" text_width="-1" Halignment="AlignLeft" font="Sans Serif,5,-1,5,50,0,0,0,0,0" uuid="{3271c4dc-d542-495e-8264-2b47a35ff1c7}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect y="-10" x="-55" height="20" antialias="false" width="100" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <terminal y="0" x="-60" type="Generic" orientation="w" name="" uuid="{d7cd8b41-bab6-4e7f-8f49-2603eee3d629}"/>
+    </description>
+</definition>

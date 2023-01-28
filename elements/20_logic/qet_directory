@@ -1,16 +1,28 @@
 <qet-directory>
     <names>
-        <name lang="pl">Programowanie</name>
-        <name lang="cs">Logika</name>
-        <name lang="it">Logica</name>
-        <name lang="el">Λογικά κυκλώματα</name>
-        <name lang="fr">Logique</name>
+        <name lang="ar">المنطق</name>
+        <name lang="ca">lògiques</name>
+        <name lang="cs">logiky</name>
+        <name lang="da">logikker</name>
         <name lang="de">Logik</name>
-        <name lang="en">Logic</name>
-	<name lang="es">Lógica</name>
-        <name lang="nl">Logica</name>
-        <name lang="ru">Логика</name>
-        <name lang="da">Logik</name>
-        <name lang="ja">論理</name>
+        <name lang="el">λογικές</name>
+        <name lang="en">logics</name>
+        <name lang="es">lógicas</name>
+        <name lang="fr">logiques</name>
+        <name lang="hr">logike</name>
+        <name lang="hu">logikák</name>
+        <name lang="it">logiche</name>
+        <name lang="ja">ロジック</name>
+        <name lang="mn">логик</name>
+        <name lang="nb">logikk</name>
+        <name lang="nl">logica's</name>
+        <name lang="pl">logika</name>
+        <name lang="pt">lógicas</name>
+        <name lang="pt_br">lógicas</name>
+        <name lang="ro">logici</name>
+        <name lang="ru">логика</name>
+        <name lang="sl">logike</name>
+        <name lang="sr">логике</name>
+        <name lang="tr">mantık</name>
     </names>
 </qet-directory>

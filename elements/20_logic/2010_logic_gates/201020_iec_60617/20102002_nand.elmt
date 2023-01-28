@@ -1,0 +1,58 @@
+<definition hotspot_y="40" width="70" version="0.100" type="element" height="80" link_type="simple" hotspot_x="34">
+    <uuid uuid="{80ed8df4-5282-41df-ba03-7e70d88d1942}"/>
+    <names>
+        <name lang="tr">VE YOK (NAND)</name>
+        <name lang="ru">И НЕТ (NAND)</name>
+        <name lang="da">OG IKKE (NAND)</name>
+        <name lang="pl">I NIE (NAND)</name>
+        <name lang="nl">EN NIET (NAND)</name>
+        <name lang="ro">SI NU (NAND)</name>
+        <name lang="en">AND NOT (NAND)</name>
+        <name lang="ca">I NO (NAND)</name>
+        <name lang="el">ΚΑΙ ΟΧΙ (NAND)</name>
+        <name lang="de">UND NICHT (NAND)</name>
+        <name lang="hu">ÉS NEM (NAND)</name>
+        <name lang="sr">И НЕ (NAND)</name>
+        <name lang="cs">A NE (NAND)</name>
+        <name lang="it">E NON (NAND)</name>
+        <name lang="hr">I NE (NAND)</name>
+        <name lang="fr">ET PAS (NAND)</name>
+        <name lang="sl">IN NE (NAND)</name>
+        <name lang="mn">БАС ҮГҮЙ (NAND)</name>
+        <name lang="pt">E NÃO (NAND)</name>
+        <name lang="ja">AND NOT (NAND)</name>
+        <name lang="es">Y NO (NAND)</name>
+        <name lang="ar">و لا (NAND)</name>
+        <name lang="nb">OG IKKE (NAND)</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-1" text_width="-1" z="1" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{c0f01bfc-b868-4ae9-95c9-701cfe06a267}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-41" text_width="-1" z="2" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-30" frame="false" text_from="UserText" rotation="0" uuid="{a849181c-5ea1-44cf-a7d9-ec0be9b727e3}">
+            <text></text>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="0" y2="0" x2="25.75" antialias="false" x1="29.75"/>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-17" text_width="-1" z="3" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="-19" frame="false" text_from="UserText" rotation="0" uuid="{5173581e-2de8-44a4-905c-5a0d450e21a5}">
+            <text></text>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="-23" text_width="-1" z="4" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="23.75" frame="false" text_from="UserText" rotation="0" uuid="{2f45c720-7e19-4010-ad2c-f129e3c98933}">
+            <text></text>
+        </dynamic_text>
+        <circle y="-2.5" diameter="5" style="line-style:normal;line-weight:normal;filling:none;color:black" x="20.25" antialias="true"/>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="-20" y2="-20" x2="-21" antialias="false" x1="-30"/>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" y="15" text_width="-1" z="7" keep_visual_rotation="false" Halignment="AlignLeft" Valignment="AlignTop" x="20" frame="false" text_from="ElementInfo" rotation="0" uuid="{f5a580ad-caf3-4a3b-a9b5-bc6a779f3aa4}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line length1="1.5" end1="none" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" y1="20" y2="20" x2="-21" antialias="false" x1="-30"/>
+        <text font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="-18" color="#000000" text="&amp;" x="-5" rotation="0"/>
+        <rect y="-35" width="40" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0" x="-20" antialias="false" height="70" rx="0"/>
+        <terminal y="-20" orientation="w" name="" x="-30" type="Generic" uuid="{e7c3a904-ead4-48f1-9124-8a0b387dca69}"/>
+        <terminal y="20" orientation="w" name="" x="-30" type="Generic" uuid="{cb42047f-9888-4457-bb5a-a85eec17bdfe}"/>
+        <terminal y="0" orientation="e" name="" x="29.75" type="Generic" uuid="{3117d5ea-cf48-4c8d-9363-3d4ccc84acc5}"/>
+    </description>
+</definition>

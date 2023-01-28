@@ -1,0 +1,48 @@
+<definition height="40" hotspot_x="68" hotspot_y="25" version="0.100" type="element" link_type="simple" width="120">
+    <uuid uuid="{972b2371-3160-4776-8b33-d9156924a76d}"/>
+    <names>
+        <name lang="hu">Folyamatos feltételes cselekvés</name>
+        <name lang="hr">Kontinuirano uvjetno djelovanje</name>
+        <name lang="ro">Acțiune condiționată continuă</name>
+        <name lang="ca">Acció condicional contínua</name>
+        <name lang="sl">Neprekinjeno pogojno dejanje</name>
+        <name lang="tr">Sürekli koşullu eylem</name>
+        <name lang="en">Continuous conditional action</name>
+        <name lang="mn">Тасралтгүй нөхцөлт үйлдэл</name>
+        <name lang="pt">Ação condicional contínua</name>
+        <name lang="ru">Непрерывное условное действие</name>
+        <name lang="ar">العمل الشرطي المستمر</name>
+        <name lang="es">Acción condicional continua</name>
+        <name lang="pl">Ciągłe działanie warunkowe</name>
+        <name lang="ja">継続的な条件付きアクション</name>
+        <name lang="it">Azione condizionale continua</name>
+        <name lang="de">Kontinuierliche Aktion mit Bedingung</name>
+        <name lang="el">Συνεχής υπό όρους δράση</name>
+        <name lang="da">Kontinuerlig betinget handling</name>
+        <name lang="nb">Kontinuerlig betinget handling</name>
+        <name lang="sr">Континуирано условно дејство</name>
+        <name lang="fr">Action conditionnelle continue</name>
+        <name lang="cs">Nepřetržitá podmíněná akce</name>
+        <name lang="nl">Continue voorwaardelijke actie</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-50" frame="false" z="1" text_width="-1" y="-30" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{3271c4dc-d542-495e-8264-2b47a35ff1c7}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="48" frame="false" z="1" text_width="-1" y="-10" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{3271c4dc-d542-495e-8264-2b47a35ff1c7}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="-56" frame="false" z="1" text_width="-1" y="-8" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{3271c4dc-d542-495e-8264-2b47a35ff1c7}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect height="20" rx="0" x="-55" antialias="false" y="-10" width="100" style="line-style:normal;line-weight:normal;filling:none;color:black" ry="0"/>
+        <line end2="none" y1="-10" x1="-50" length1="1.5" end1="none" length2="1.5" x2="-50" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-20"/>
+        <terminal orientation="w" x="-60" name="" y="0" type="Generic" uuid="{d7cd8b41-bab6-4e7f-8f49-2603eee3d629}"/>
+    </description>
+</definition>

@@ -1,0 +1,40 @@
+<definition hotspot_y="5" height="50" version="0.100" link_type="simple" type="element" width="90" hotspot_x="6">
+    <uuid uuid="{893da351-ae2a-4ce5-8838-3d5dff44fd22}"/>
+    <names>
+        <name lang="de">Verzögerung</name>
+        <name lang="nb">forsinkelse</name>
+        <name lang="es">demora</name>
+        <name lang="ar">تأخير</name>
+        <name lang="ca">retard</name>
+        <name lang="ru">задерживать</name>
+        <name lang="ja">遅れ</name>
+        <name lang="it">ritardo</name>
+        <name lang="el">καθυστέρηση</name>
+        <name lang="cs">zpoždění</name>
+        <name lang="pt">atraso</name>
+        <name lang="nl">vertraging</name>
+        <name lang="ro">întârziere</name>
+        <name lang="hu">késleltetés</name>
+        <name lang="tr">gecikme</name>
+        <name lang="pl">opóźnienie</name>
+        <name lang="sl">zamuda</name>
+        <name lang="fr">retard</name>
+        <name lang="mn">саатал</name>
+        <name lang="en">delay</name>
+        <name lang="da">forsinke</name>
+        <name lang="sr">кашњење</name>
+        <name lang="hr">odgoditi</name>
+    </names>
+    <elementInformations/>
+    <informations>ezza</informations>
+    <description>
+        <dynamic_text x="-6" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="7" uuid="{42338d17-df88-42aa-945c-2e435c4f5c0a}" rotation="0" text_from="ElementInfo" font="Sans Serif,9,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length1="1.5" x1="10" y1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" x2="1" end2="none"/>
+        <arc x="40" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="0" start="270.938" angle="180" width="40"/>
+        <polygon closed="false" x1="60" y1="0" y3="40" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0" antialias="false" x3="10" x4="60" x2="10" y4="40"/>
+        <terminal x="0" orientation="w" y="20" uuid="{78de70f2-3de2-4a3b-b1ad-d17f87af8273}" name="" type="Generic"/>
+    </description>
+</definition>

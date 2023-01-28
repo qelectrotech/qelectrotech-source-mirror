@@ -1,0 +1,46 @@
+<definition hotspot_y="34" height="70" version="0.100" link_type="simple" type="element" width="90" hotspot_x="45">
+    <uuid uuid="{e68e25d3-5556-438f-8bf6-5898708a7883}"/>
+    <names>
+        <name lang="de">Vorbereitung</name>
+        <name lang="nb">forberedelse</name>
+        <name lang="es">preparación</name>
+        <name lang="ar">تجهيز</name>
+        <name lang="ca">preparació</name>
+        <name lang="ru">подготовка</name>
+        <name lang="ja">準備</name>
+        <name lang="it">preparazione</name>
+        <name lang="el">παρασκευή</name>
+        <name lang="cs">příprava</name>
+        <name lang="pt">preparação</name>
+        <name lang="nl">voorbereiding</name>
+        <name lang="ro">pregătire</name>
+        <name lang="hu">készítmény</name>
+        <name lang="tr">hazırlık</name>
+        <name lang="pl">przygotowanie</name>
+        <name lang="sl">priprava</name>
+        <name lang="fr">préparation</name>
+        <name lang="mn">бэлтгэл</name>
+        <name lang="en">preparation</name>
+        <name lang="da">forberedelse</name>
+        <name lang="sr">припрема</name>
+        <name lang="hr">priprema</name>
+    </names>
+    <elementInformations/>
+    <informations>ezza</informations>
+    <description>
+        <polygon closed="false" y2="-20" x6="-40" y3="0" x5="-30" y6="0" x3="40" y8="-20" x7="-30" x8="-30" y4="20" y5="20" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="-20" x4="30" y1="-20" x1="-30" x2="30" antialias="true"/>
+        <line end1="triangle" length1="1.5" x1="0" y1="25" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="20" antialias="false" x2="0" end2="none"/>
+        <dynamic_text x="45" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="-10" uuid="{c2e8cbae-e920-40ef-98d7-8806f208d2bb}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text x="-30" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="-15" uuid="{c2e8cbae-e920-40ef-98d7-8806f208d2bb}" rotation="0" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="none" length1="1.5" x1="0" y1="20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" x2="0" end2="none"/>
+        <line end1="none" length1="1.5" x1="0" y1="-20" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-29" antialias="false" x2="0" end2="none"/>
+        <terminal x="0" orientation="n" y="-30" uuid="{55734b80-79c9-4cd0-abd0-631b9d911ac0}" name="" type="Generic"/>
+        <terminal x="0" orientation="s" y="30" uuid="{6b55fd64-9de0-409c-8104-59e5b541ff76}" name="" type="Generic"/>
+    </description>
+</definition>

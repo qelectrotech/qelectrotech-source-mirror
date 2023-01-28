@@ -1,0 +1,46 @@
+<definition hotspot_y="14" height="70" version="0.100" link_type="simple" type="element" width="110" hotspot_x="15">
+    <uuid uuid="{d4f1fb3e-a1a0-44f3-8a66-57c489b4c645}"/>
+    <names>
+        <name lang="de">Ende Schleife</name>
+        <name lang="nb">endeløkke</name>
+        <name lang="es">bucle final</name>
+        <name lang="ar">حلقة النهاية</name>
+        <name lang="ca">bucle final</name>
+        <name lang="ru">конец цикла</name>
+        <name lang="ja">エンドループ</name>
+        <name lang="it">ciclo finale</name>
+        <name lang="el">τελικός βρόχος</name>
+        <name lang="cs">koncová smyčka</name>
+        <name lang="pt">loop final</name>
+        <name lang="nl">einde lus</name>
+        <name lang="ro">buclă de capăt</name>
+        <name lang="hu">vég hurok</name>
+        <name lang="tr">son döngü</name>
+        <name lang="pl">końcowa pętla</name>
+        <name lang="sl">končna zanka</name>
+        <name lang="fr">boucle de fin</name>
+        <name lang="mn">төгсгөлийн гогцоо</name>
+        <name lang="en">end loop</name>
+        <name lang="da">endeløkke</name>
+        <name lang="sr">завршна петља</name>
+        <name lang="hr">završna petlja</name>
+    </names>
+    <elementInformations/>
+    <informations>ezza</informations>
+    <description>
+        <polygon x1="90" y1="0" y3="40" x6="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="30" antialias="false" y6="1.42109e-14" x3="80" x5="-10" x4="0" x2="90" y5="30" y4="40"/>
+        <dynamic_text x="95" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="0" uuid="{69f7adcc-b4cb-49f9-921e-cd38f566fd03}" rotation="0" text_from="ElementInfo" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text x="0" z="2" frame="false" Valignment="AlignTop" Halignment="AlignLeft" y="0" uuid="{69f7adcc-b4cb-49f9-921e-cd38f566fd03}" rotation="0" text_from="UserText" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_width="-1" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end1="triangle" length1="1.5" x1="40" y1="45" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="40" antialias="false" x2="40" end2="none"/>
+        <line end1="none" length1="1.5" x1="40" y1="-9.89565" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-0.113043" antialias="false" x2="40" end2="none"/>
+        <line end1="none" length1="1.5" x1="40" y1="40" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="50" antialias="false" x2="40" end2="none"/>
+        <terminal x="40" orientation="n" y="-10" uuid="{57b7e209-a46c-4ed7-9efb-4fafe6573315}" name="" type="Generic"/>
+        <terminal x="40" orientation="s" y="50" uuid="{77c6dacf-52dc-4304-b6b2-39678276cf9e}" name="" type="Generic"/>
+    </description>
+</definition>

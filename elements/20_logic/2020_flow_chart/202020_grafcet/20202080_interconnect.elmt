@@ -1,0 +1,48 @@
+<definition height="30" hotspot_x="4" hotspot_y="14" version="0.100" type="element" link_type="simple" width="20">
+    <uuid uuid="{ed650396-9629-498f-9a67-96ba297a5c08}"/>
+    <names>
+        <name lang="ar">الإتصال</name>
+        <name lang="ca">connexió</name>
+        <name lang="cs">spojení</name>
+        <name lang="da">forbindelse</name>
+        <name lang="de">Verbindung</name>
+        <name lang="el">σύνδεση</name>
+        <name lang="en">connection</name>
+        <name lang="es">conexión</name>
+        <name lang="fr">lien</name>
+        <name lang="hr">veza</name>
+        <name lang="hu">kapcsolat</name>
+        <name lang="it">connessione</name>
+        <name lang="ja">繋がり</name>
+        <name lang="mn">холболт</name>
+        <name lang="nb">forbindelse</name>
+        <name lang="nl">verbinding</name>
+        <name lang="pl">połączenie</name>
+        <name lang="pt">conexão</name>
+        <name lang="pt_br">conexão</name>
+        <name lang="ro">conexiune</name>
+        <name lang="ru">связь</name>
+        <name lang="sl">povezava</name>
+        <name lang="sr">везу</name>
+        <name lang="tr">bağlantı</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" x="13" frame="false" z="1" text_width="-1" y="0" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="ElementInfo" uuid="{d6742252-6675-4592-9e13-e528e2400a94}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" x="7" frame="false" z="1" text_width="-1" y="-23" Valignment="AlignTop" Halignment="AlignLeft" rotation="0" keep_visual_rotation="false" text_from="UserText" uuid="{d6742252-6675-4592-9e13-e528e2400a94}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end2="none" y1="0" x1="9" length1="1.5" end1="none" length2="1.5" x2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0"/>
+        <line end2="none" y1="0" x1="0" length1="1.5" end1="none" length2="1.5" x2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="9"/>
+        <line end2="none" y1="-10" x1="0" length1="1.5" end1="none" length2="1.5" x2="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0"/>
+        <terminal orientation="n" x="0" name="" y="-10" type="Generic" uuid="{adaedd18-3058-44ab-a96d-a7da6204a774}"/>
+        <terminal orientation="e" x="10" name="" y="0" type="Generic" uuid="{87615fac-d610-4f22-b474-4c67f1f70f54}"/>
+        <terminal orientation="s" x="0" name="" y="10" type="Generic" uuid="{8e33c1eb-7d94-477d-9d2d-12b85ffd6dde}"/>
+    </description>
+</definition>
