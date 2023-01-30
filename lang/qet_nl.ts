@@ -3359,7 +3359,7 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
-        <translation>Hier kunt u de standaardweergave van verschillende QElectroTech-teksten instellen</translation>
+        <translation>Hier kan de standaardweergave van verschillende QElectroTech-teksten worden ingesteld</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="576"/>
@@ -4031,7 +4031,7 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
         <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
 Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>De inhoud, de grootte en het lettertype van een tekst kan in html-weergave niet worden gewijzigd.
-Hiervoor gebruikt u de geavanceerde tekstbewerker.</translation>
+Hiervoor wordt de geavanceerde tekstbewerker gebruikt.</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
@@ -5636,12 +5636,12 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="2169"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation>&lt;b&gt;Het volgende herstelbestand is gevonden,&lt;br&gt;Wilt u het openen ?&lt;/b&gt;&lt;br&gt;</translation>
+        <translation>&lt;b&gt;Het volgende herstelbestand is gevonden,&lt;br&gt;Moet het worden geopend ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2172"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
-        <translation>&lt;b&gt;De volgende herstelbestanden zijn gevonden,&lt;br&gt;Wilt u ze openen ?&lt;/b&gt;&lt;br&gt;</translation>
+        <translation>&lt;b&gt;De volgende herstelbestanden zijn gevonden,&lt;br&gt;Moeten ze worden geopend ?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2187"/>
@@ -8791,7 +8791,7 @@ Document toch openen?</translation>
         <source>Une configuration de textes nommée &lt;&lt; %1 &gt;&gt; existe déjà.
 Voulez-vous la remplacer ?</source>
         <translation>Er bestaat al een tekstconfiguratie met de naam &lt;&lt; %1 &gt;&gt;.
-Wil je deze vervangen ?</translation>
+Moet deze worden vervangen ?</translation>
     </message>
     <message>
         <location filename="../sources/elementtextpattern.cpp" line="85"/>
@@ -9120,7 +9120,7 @@ Wil je deze vervangen ?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2445"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation>Installatie van de qet_tb_generator&lt;br&gt;Ga naar:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Vereist Python 3.5 of hoger.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Eerste installatie onder Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Controleer of je pip3 geinstalleerd hebt: pip3 --version&lt;br&gt;Indien nodig installeer met: sudo apt get install python3-pip&lt;br&gt;2. Installeer het programma: sudo pip3 install qet_tb_generator&lt;br&gt;3  Voer het programma uit: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Updaten onder Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
+        <translation>Installatie van de qet_tb_generator&lt;br&gt;Ga naar:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Vereist Python 3.5 of hoger.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Eerste installatie onder Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Controleer of pip3 is geinstalleerd: pip3 --version&lt;br&gt;Installeer het indien nodig met: sudo apt get install python3-pip&lt;br&gt;2. Installeer daarne het programma: sudo pip3 install qet_tb_generator&lt;br&gt;3  Voer het programma uit: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Updaten onder Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2465"/>
@@ -9528,7 +9528,7 @@ Maak een nieuwe tabel of pas de huidige tabel aan zodat alle informatie hierin k
     <message>
         <location filename="../sources/ElementsCollection/ui/renamedialog.cpp" line="31"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
-        <translation>Het element « %1 » bestaat al. Wat wilt u doen ?</translation>
+        <translation>Het element « %1 » bestaat al. Hoe nu verder ?</translation>
     </message>
 </context>
 <context>
@@ -13237,7 +13237,7 @@ De volgende variabelen zijn te gebruiken:
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="414"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple :
 associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Hier kunt u variabele / waarde associaties definiëren. Bijvoorbeeld :
+        <translation>Hier kunnen variabele / waarde associaties worden gedefiniëerd. Bijvoorbeeld :
 Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; wordt in het titelblok %{volta} door 1745 vervangen.</translation>
     </message>
 </context>
@@ -13387,7 +13387,7 @@ Door de associatie van de naam &quot;volta&quot; met de waarde &quot;1745&quot; 
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="480"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Elke cel van het titelblok heeft een waarde, eventueel voorafgegaan door een label. Beide in verschillende talen.&lt;br/&gt;Aangezien u nu een titelblok&lt;em&gt;sjabloon&lt;/em&gt; bewerkt, is het beter geen vaste waarden maar variabelen te gebruiken zoals %{variable-name} die op het schemablad automatisch door de juiste waarden vervangen worden.</translation>
+        <translation>Elke cel van het titelblok heeft een waarde, eventueel voorafgegaan door een label. Beide in verschillende talen.&lt;br/&gt;Aangezien er nu een titelblok&lt;em&gt;sjabloon&lt;/em&gt; wordt bewerkt, is het beter geen vaste waarden maar variabelen te gebruiken zoals %{variable-name} die op het schemablad automatisch door de juiste waarden vervangen worden.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="323"/>
