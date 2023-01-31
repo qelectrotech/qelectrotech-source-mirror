@@ -445,29 +445,37 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 }
 
 /**
-	Prolonge une borne.
-	@param terminal Le point correspondant a la borne
-	@param terminal_orientation L'orientation de la borne
-	@param ext_size la taille de la prolongation
-	@return le point correspondant a la borne apres prolongation
-*/
-QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation terminal_orientation, qreal ext_size) {
+ * @brief Conductor::extendTerminal
+ * @param terminal : point to extend (must be the docking point of a terminal)
+ * @param terminal_orientation : the orientation of the terminal
+ * @param ext_size : how many to extrend (10 by default)
+ * @return the point with an extension of @ext_size
+ * and rounded to nearest multiple of ten
+ * in order to be snapped to the grid of the diagram.
+ */
+QPointF Conductor::extendTerminal(const QPointF &terminal, Qet::Orientation terminal_orientation, qreal ext_size)
+{
 	QPointF extended_terminal;
 	switch(terminal_orientation) {
 		case Qet::North:
-			extended_terminal = QPointF(terminal.x(), terminal.y() - ext_size);
+			extended_terminal = QPointF(terminal.x(),
+										std::round((terminal.y() - ext_size)/10)*10);
 			break;
 		case Qet::East:
-			extended_terminal = QPointF(terminal.x() + ext_size, terminal.y());
+			extended_terminal = QPointF(std::round((terminal.x() + ext_size)/10)*10,
+										terminal.y());
 			break;
 		case Qet::South:
-			extended_terminal = QPointF(terminal.x(), terminal.y() + ext_size);
+			extended_terminal = QPointF(terminal.x(),
+										std::round((terminal.y() + ext_size)/10)*10);
 			break;
 		case Qet::West:
-			extended_terminal = QPointF(terminal.x() - ext_size, terminal.y());
+			extended_terminal = QPointF(std::round((terminal.x() - ext_size)/10)*10,
+										terminal.y());
 			break;
 		default: extended_terminal = terminal;
 	}
+
 	return(extended_terminal);
 }
 
