@@ -802,13 +802,13 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1637"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1645"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1642"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1650"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Edit the properties of several conductors</translation>
@@ -9141,12 +9141,12 @@ Do you want to replace it ?</translation>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="127"/>
+        <location filename="../sources/machine_info.cpp" line="129"/>
         <source>Compilation : </source>
         <translation>Compilation: </translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="379"/>
+        <location filename="../sources/machine_info.cpp" line="381"/>
         <source>Compilation :   </source>
         <translation>Compilation :   </translation>
     </message>
