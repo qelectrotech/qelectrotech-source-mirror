@@ -1,0 +1,50 @@
+<definition type="element" height="50" version="0.100.0" link_type="simple" hotspot_y="28" width="40" hotspot_x="22">
+    <uuid uuid="{e95fd274-0f17-49f7-85e9-e7a6f96da9d1}"/>
+    <names>
+        <name lang="ja">エアコンプレッサー可変速</name>
+        <name lang="fr">Vitesse variable du compresseur d'air</name>
+        <name lang="en">Air compressor variable speed</name>
+        <name lang="ru">Регулируемая скорость воздушного компрессора</name>
+        <name lang="sr">Променљива брзина ваздушног компресора</name>
+        <name lang="tr">Hava kompresörü değişken hız</name>
+        <name lang="de">Druckluftkompressor variable Drehzahl</name>
+        <name lang="es">Compresor de aire de velocidad variable</name>
+        <name lang="cs">Proměnná rychlost vzduchového kompresoru</name>
+        <name lang="it">Compressore d'aria a velocità variabile</name>
+        <name lang="ca">Compressor d'aire de velocitat variable</name>
+        <name lang="sl">Spremenljiva hitrost zračnega kompresorja</name>
+        <name lang="da">Luftkompressor variabel hastighed</name>
+        <name lang="pl">Zmienna prędkość sprężarki powietrza</name>
+        <name lang="nl">Luchtcompressor variabele snelheid</name>
+        <name lang="mn">Агаарын компрессорын хувьсах хурд</name>
+        <name lang="ar">ضاغط هواء متغير السرعة</name>
+        <name lang="ro">Viteza variabila a compresorului de aer</name>
+        <name lang="hr">Promjenjiva brzina zračnog kompresora</name>
+        <name lang="nb">Luftkompressor variabel hastighet</name>
+        <name lang="hu">Változtatható fordulatszámú légkompresszor</name>
+        <name lang="el">Μεταβλητή ταχύτητα αεροσυμπιεστή</name>
+        <name lang="pt">Velocidade variável do compressor de ar</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" frame="false" x="-21" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" y="-34" z="1" Halignment="AlignLeft" keep_visual_rotation="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" frame="false" x="-20" Valignment="AlignTop" text_from="UserText" text_width="-1" y="14.5" z="1" Halignment="AlignLeft" keep_visual_rotation="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line y2="-9" length2="1.5" x2="10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-10" length1="1.5" end2="none" y1="10"/>
+        <line y2="1" length2="1.5" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-17" length1="1.5" end2="none" y1="1"/>
+        <polygon y4="-9" x4="8" y2="-7" y3="-11" x2="10" style="line-style:normal;line-weight:thin;filling:black;color:black" x3="12" antialias="true" x1="8" y1="-9"/>
+        <line y2="-15" length2="1.5" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" length1="1.5" end2="none" y1="-10"/>
+        <circle diameter="20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-10"/>
+        <line y2="-1" length2="1.5" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-17" length1="1.5" end2="none" y1="-1"/>
+        <polygon y4="-4" x4="-3" y2="-4" y3="-10" x2="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="0" antialias="true" x1="-3" y1="-4"/>
+        <line y2="10" length2="1.5" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" length1="1.5" end2="none" y1="15"/>
+        <terminal x="0" type="Generic" y="-20" uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" name="" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,48 @@
+<definition link_type="simple" width="70" hotspot_x="34" type="element" height="50" hotspot_y="25" version="0.100.0">
+    <uuid uuid="{cbb8ebc9-7534-4001-88bb-0f4f0ab7badb}"/>
+    <names>
+        <name lang="da">trykluftkøling</name>
+        <name lang="ca">refrigeració per aire comprimit</name>
+        <name lang="cs">chlazení stlačeným vzduchem</name>
+        <name lang="ar">تبريد الهواء المضغوط</name>
+        <name lang="it">raffreddamento ad aria compressa</name>
+        <name lang="pl">chłodzenie sprężonym powietrzem</name>
+        <name lang="hr">hlađenje komprimiranim zrakom</name>
+        <name lang="fr">refroidissement par air comprimé</name>
+        <name lang="es">refrigeración por aire comprimido</name>
+        <name lang="ru">охлаждение сжатым воздухом</name>
+        <name lang="en">compressed air cooling</name>
+        <name lang="ja">圧縮空気冷却</name>
+        <name lang="el">ψύξη πεπιεσμένου αέρα</name>
+        <name lang="ro">racire cu aer comprimat</name>
+        <name lang="pt">refrigeração de ar comprimido</name>
+        <name lang="sl">hlajenje s stisnjenim zrakom</name>
+        <name lang="de">Druckluftkühlung</name>
+        <name lang="sr">хлађење компримованим ваздухом</name>
+        <name lang="mn">шахсан агаарын хөргөлт</name>
+        <name lang="nl">persluchtkoeling</name>
+        <name lang="hu">sűrített levegős hűtés</name>
+        <name lang="nb">trykkluftkjøling</name>
+        <name lang="tr">basınçlı hava soğutma</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-30" x="-25" frame="false" keep_visual_rotation="false" rotation="0" Halignment="AlignLeft" z="1" text_width="-1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="ElementInfo" uuid="{e5aead9b-687a-4a50-a051-ee102ec98a93}" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="15" x="5" frame="false" keep_visual_rotation="false" rotation="0" Halignment="AlignLeft" z="1" text_width="-1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_from="UserText" uuid="{e5aead9b-687a-4a50-a051-ee102ec98a93}" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" length1="1.5" end1="none" y1="-15" x1="0" length2="1.5" antialias="false" y2="15"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" length1="1.5" end1="none" y1="0" x1="-30" length2="1.5" antialias="false" y2="0"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x2="2" y3="19.5" x4="-2" y4="14.5" y1="14.5" x3="0" x1="-2" antialias="true" y2="14.5"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x2="-2" y3="-14.5" x4="0" y4="-19.5" y1="-19.5" x3="2" x1="0" antialias="true" y2="-14.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" y3="0" x4="0" y4="20" y1="0" x3="20" x1="-20" y5="0" antialias="true" y2="-20" x5="-20"/>
+        <terminal y="0" x="-30" name="" type="Generic" orientation="w" uuid="{056574b6-1dbe-44eb-9df3-14046b6238ff}"/>
+        <terminal y="0" x="30" name="" type="Generic" orientation="e" uuid="{8e7706d2-dcea-4f3c-8555-601dc914e55a}"/>
+    </description>
+</definition>

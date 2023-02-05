@@ -1,0 +1,49 @@
+<definition link_type="simple" width="70" hotspot_x="34" type="element" height="50" hotspot_y="25" version="0.100.0">
+    <uuid uuid="{6d551a6a-377f-4391-8ed4-dbe319beb418}"/>
+    <names>
+        <name lang="da">Trykluft temperaturkontrol</name>
+        <name lang="ca">Control de temperatura de l'aire comprimit</name>
+        <name lang="cs">Regulace teploty stlačeného vzduchu</name>
+        <name lang="ar">التحكم في درجة حرارة الهواء المضغوط</name>
+        <name lang="it">Controllo della temperatura dell'aria compressa</name>
+        <name lang="pl">Kontrola temperatury sprężonego powietrza</name>
+        <name lang="hr">Regulacija temperature komprimiranog zraka</name>
+        <name lang="fr">Contrôle de la température de l'air comprimé</name>
+        <name lang="es">Control de temperatura del aire comprimido</name>
+        <name lang="ru">Контроль температуры сжатого воздуха</name>
+        <name lang="en">Compressed air temperature control</name>
+        <name lang="ja">圧縮空気温度制御</name>
+        <name lang="el">Έλεγχος θερμοκρασίας πεπιεσμένου αέρα</name>
+        <name lang="ro">Controlul temperaturii aerului comprimat</name>
+        <name lang="pt">Controle de temperatura do ar comprimido</name>
+        <name lang="sl">Regulacija temperature stisnjenega zraka</name>
+        <name lang="de">Druckluft Temperaturregelung</name>
+        <name lang="sr">Контрола температуре компримованог ваздуха</name>
+        <name lang="mn">Шахсан агаарын температурын хяналт</name>
+        <name lang="nl">Persluchttemperatuurregeling</name>
+        <name lang="hu">Sűrített levegő hőmérséklet szabályozás</name>
+        <name lang="nb">Trykkluft temperaturkontroll</name>
+        <name lang="tr">Basınçlı hava sıcaklık kontrolü</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text y="-30" x="-30" frame="false" keep_visual_rotation="false" rotation="0" Halignment="AlignLeft" z="1" text_width="-1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" text_from="ElementInfo" uuid="{0f15ca90-f1a9-4c58-bece-f733a947403e}" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text y="15" x="5" frame="false" keep_visual_rotation="false" rotation="0" Halignment="AlignLeft" z="1" text_width="-1" font="Sans Serif,5,-1,5,50,0,0,0,0,0" text_from="UserText" uuid="{0f15ca90-f1a9-4c58-bece-f733a947403e}" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x2="2" y3="19.5" x4="-2" y4="14.5" y1="14.5" x3="0" x1="-2" antialias="true" y2="14.5"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" y3="0" x4="0" y4="20" y1="0" x3="20" x1="-20" y5="0" antialias="true" y2="-20" x5="-20"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" length1="1.5" end1="none" y1="1" x1="0" length2="1.5" antialias="false" y2="15"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="0" length1="1.5" end1="none" y1="-5" x1="0" length2="1.5" antialias="false" y2="-19"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30" length1="1.5" end1="none" y1="0" x1="-30" length2="1.5" antialias="false" y2="0"/>
+        <polygon style="line-style:normal;line-weight:thin;filling:black;color:black" x2="2" y3="-0.5" x4="-2" y4="-5.5" y1="-5.5" x3="0" x1="-2" antialias="true" y2="-5.5"/>
+        <terminal y="0" x="-30" name="" type="Generic" orientation="w" uuid="{a23a3e28-64b5-4023-b63e-e2d243aceb1d}"/>
+        <terminal y="0" x="30" name="" type="Generic" orientation="e" uuid="{ca7dbd71-3f07-4e0e-b60b-b73f23208beb}"/>
+    </description>
+</definition>

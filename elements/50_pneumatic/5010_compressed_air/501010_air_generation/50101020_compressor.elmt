@@ -1,0 +1,50 @@
+<definition type="element" height="50" version="0.100.0" link_type="simple" hotspot_y="28" width="50" hotspot_x="36">
+    <uuid uuid="{a0db616e-2b39-4914-a8e1-a91f8877eb9b}"/>
+    <names>
+        <name lang="ja">モーター付きエアコンプレッサー</name>
+        <name lang="fr">Compresseur d'air avec moteur</name>
+        <name lang="en">Air compressor with motor</name>
+        <name lang="ru">Воздушный компрессор с двигателем</name>
+        <name lang="sr">Ваздушни компресор са мотором</name>
+        <name lang="tr">Motorlu hava kompresörü</name>
+        <name lang="de">Druckluftkompressor mit Motor</name>
+        <name lang="es">compresor de aire con motor</name>
+        <name lang="cs">Vzduchový kompresor s motorem</name>
+        <name lang="it">Compressore d'aria con motore</name>
+        <name lang="ca">Compressor d'aire amb motor</name>
+        <name lang="sl">Zračni kompresor z motorjem</name>
+        <name lang="da">Luftkompressor med motor</name>
+        <name lang="pl">Sprężarka powietrza z silnikiem</name>
+        <name lang="nl">Luchtcompressor met motor</name>
+        <name lang="mn">Мотортой агаарын компрессор</name>
+        <name lang="ar">ضاغط هواء بمحرك</name>
+        <name lang="ro">Compresor de aer cu motor</name>
+        <name lang="hr">Zračni kompresor s motorom</name>
+        <name lang="nb">Luftkompressor med motor</name>
+        <name lang="hu">Légkompresszor motorral</name>
+        <name lang="el">Συμπιεστής αέρα με κινητήρα</name>
+        <name lang="pt">Compressor de ar com motor</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" frame="false" x="-24" Valignment="AlignTop" text_from="ElementInfo" text_width="-1" y="-30" z="1" Halignment="AlignLeft" keep_visual_rotation="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text font="Sans Serif,5,-1,5,50,0,0,0,0,0" rotation="0" frame="false" x="-24" Valignment="AlignTop" text_from="UserText" text_width="-1" y="13.5" z="1" Halignment="AlignLeft" keep_visual_rotation="false" uuid="{386a23c2-0051-4fac-9fee-f1d46ed7364d}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <circle diameter="15" x="-32.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-7.5"/>
+        <line y2="-15" length2="1.5" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" length1="1.5" end2="none" y1="-10"/>
+        <circle diameter="20" x="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-10"/>
+        <polygon y4="-4" x4="-3" y2="-4" y3="-10" x2="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="0" antialias="true" x1="-3" y1="-4"/>
+        <line y2="1" length2="1.5" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-17" length1="1.5" end2="none" y1="1"/>
+        <line y2="-1" length2="1.5" x2="-10" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="-17" length1="1.5" end2="none" y1="-1"/>
+        <line y2="10" length2="1.5" x2="0" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x1="0" length1="1.5" end2="none" y1="15"/>
+        <text font="Sans Serif,7,-1,5,50,0,0,0,0,0" rotation="0" x="-29.0386" y="2.99074" text="M" color="#000000"/>
+        <terminal x="0" type="Generic" y="-20" uuid="{8c314fc9-c749-4ab9-93f4-1c85f676afdd}" name="" orientation="n"/>
+    </description>
+</definition>
