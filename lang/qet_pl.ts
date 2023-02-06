@@ -209,17 +209,17 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Traduction en serbe</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na serbski</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Traduction en japonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na japoński</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en mongol</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na mongolski</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="143"/>
@@ -284,19 +284,19 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="176"/>
         <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana rozmiaru elementu</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="180"/>
         <source>Convertisseur d&apos;élément DXF</source>
         <comment>Dxf2elmt</comment>
-        <translation type="unfinished"></translation>
+        <translation>Konwersja elementu do DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="182"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
-        <translation type="unfinished"></translation>
+        <translation>Narzędzie do tłumaczenia nazw elementów</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="160"/>
@@ -306,17 +306,17 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Traduction en ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na ukraiński</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Traduction en norvégien</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na norweski</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Traduction en slovène</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na słoweński</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="178"/>
@@ -453,12 +453,12 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished">Dialog</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="20"/>
         <source>Ajouter le plan de bornes suivant :</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodaj następujący plan listw zaciskowych:</translation>
     </message>
 </context>
 <context>
@@ -2039,23 +2039,23 @@ Uwaga: te opcje nie pozwalają na zablokowanie automatycznej numeracji tylko ust
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
         <source>Générique</source>
-        <translation>Ogólne</translation>
+        <translation>Standardowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
         <source>Fusible</source>
-        <translation>Bezpiecznik</translation>
+        <translation>Bezpiecznikowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="146"/>
         <source>Séctionnable</source>
         <translatorcomment>tłumaczenie niepewne</translatorcomment>
-        <translation>Odłączany</translation>
+        <translation>Odłącznikowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
         <source>Diode</source>
-        <translation>Dioda</translation>
+        <translation>Diodowy</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="151"/>
@@ -2732,7 +2732,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce folio x100</source>
-        <translation type="unfinished">Przenieś arkusz w górę o 100</translation>
+        <translation>Przenieś arkusz w górę o 100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -2747,7 +2747,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Abaisser ce folio x100</source>
-        <translation type="unfinished">Przenieś arkusz w dół o 100</translation>
+        <translation>Przenieś arkusz w dół o 100</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -3173,7 +3173,7 @@ Litery i cyfry mogą być używane.</translation>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="103"/>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="132"/>
         <source>Générique</source>
-        <translation>Ogólne</translation>
+        <translation>Standardowy</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="108"/>
@@ -3185,7 +3185,7 @@ Litery i cyfry mogą być używane.</translation>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="113"/>
         <source>Sectionnable</source>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>Łączeniowy</translation>
+        <translation>Odłącznikowy</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/freeterminaleditor.ui" line="118"/>
@@ -3687,7 +3687,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
         <source>Ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukraiński</translation>
     </message>
 </context>
 <context>
@@ -6587,7 +6587,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
         <source>Ajouter un plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw plan listwy zaciskowej</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="669"/>
@@ -6622,7 +6622,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Ajoute un plan de bornier sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw plan listwy zaciskowej w bieżącym arkuszu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="756"/>
@@ -7669,26 +7669,32 @@ wymagane warunki nie zostały spełnione</translation>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląda na to, że ten dokument został zapisany jako wersja %1
+ która jest późniejsza niż twoja wersja 
+Obecnie używasz QElectroTech w wersji %2</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1355"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation>.
+ W tym przypadku możliwe jest, że otwarcie całości lub części tego dokumentu nie powiedzie się.
+Co chcesz zrobić?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1376"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt, który próbujesz otworzyć, jest częściowo zgodny z twoją wersją %1 QElectroTech.
+</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1379"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Dla pełnej kompatybilności, otwórz ten projekt z wersją 0.8 lub 0.80 QElectroTech, zapisz projekt i otwórz go ponownie z tą wersją.
+Co chcesz zrobić?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1375"/>
@@ -8327,19 +8333,19 @@ Que désirez vous faire ?</source>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
         <translation>
-            <numerusform>%n tabela(e)</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n tabela</numerusform>
+            <numerusform>%n tabele</numerusform>
+            <numerusform>%n tabel</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="335"/>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n plan zacisków</numerusform>
+            <numerusform>%n plan zacisków</numerusform>
+            <numerusform>%n plan zacisków</numerusform>
         </translation>
     </message>
     <message>
@@ -9407,7 +9413,7 @@ Czy chcesz ją zastąpić?</translation>
         <location filename="../sources/qtextorientationwidget.cpp" line="39"/>
         <source>Example</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Przykład</translation>
     </message>
 </context>
 <context>
@@ -12899,7 +12905,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="82"/>
         <source>plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>plan zacisków</translation>
     </message>
 </context>
 <context>
@@ -13705,7 +13711,7 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
         <location filename="../sources/titleblock/templateview.cpp" line="660"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greater than the preview width</comment>
-        <translation type="unfinished">[%1px]</translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="714"/>
@@ -13935,7 +13941,7 @@ Długość maksymalna: %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="111"/>
         <source>Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Prawy</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="112"/>
