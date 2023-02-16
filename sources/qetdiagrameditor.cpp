@@ -548,6 +548,7 @@ void QETDiagramEditor::setUpActions()
 	open_file    ->setShortcut(QKeySequence::Open);
 	m_close_file ->setShortcut(QKeySequence::Close);
 	m_save_file    ->setShortcut(QKeySequence::Save);
+	m_save_file_as  ->setShortcut(tr("Ctrl+Shift+S"));
 
 	new_file     ->setStatusTip( tr("Crée un nouveau projet", "status bar tip") );
 	open_file    ->setStatusTip( tr("Ouvre un projet existant", "status bar tip") );
