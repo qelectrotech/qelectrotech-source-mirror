@@ -44,6 +44,7 @@ class TerminalStripDrawer
     private:
         QPointer<TerminalStrip> m_strip;
         QSharedPointer<TerminalStripLayoutPattern> m_pattern;
+        bool m_debug_draw { false };
 };
 
 #endif // TERMINALSTRIPDRAWER_H

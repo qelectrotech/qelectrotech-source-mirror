@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TerminalStripLayoutEditor</class>
+ <widget class="QWidget" name="TerminalStripLayoutEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>553</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>Borne niveau 2 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>En tête :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="m_y_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="5">
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="m_header_text_orientation_cb">
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Alignement du texte d'en tête :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Orientation du texte d'en tête :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QComboBox" name="m_header_text_alignment_cb">
+        <item>
+         <property name="text">
+          <string>Gauche</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Centre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>Orientation du texte de borne :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="m_terminal_text_orientation_cb">
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Alignement du texte de borne :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
+        <item>
+         <property name="text">
+          <string>Gauche</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Centre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QSpinBox" name="m_height_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="5">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Décalage vertical</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Espace :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Borne niveau 0 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Borne niveau 1 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Hauteur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QSpinBox" name="m_width_header_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QSpinBox" name="m_width_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string>Borne niveau 3 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Largeur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QSpinBox" name="m_height_header_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QSpinBox" name="m_y_header_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLabel" name="label_18">
+     <property name="text">
+      <string>Point de pont</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>m_y_header_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_y_terminal_1_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_bridge_point_0_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_height_terminal_0_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_width_terminal_0_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_y_terminal_0_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_height_spacer_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_height_header_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_y_spacer_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_width_spacer_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_width_header_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_y_terminal_2_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_y_terminal_3_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_width_terminal_1_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_width_terminal_2_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_width_terminal_3_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>276</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_height_terminal_1_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_height_terminal_2_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_height_terminal_3_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_bridge_point_1_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_bridge_point_3_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>220</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_bridge_point_2_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>189</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_header_text_alignment_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>506</x>
+     <y>259</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_header_text_orientation_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>259</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_terminal_text_alignment_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>506</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_terminal_text_orientation_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>valueEdited()</slot>
+ </slots>
+</ui>

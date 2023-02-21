@@ -62,6 +62,14 @@ void TerminalStripDrawer::paint(QPainter *painter)
         painter->setPen(pen_);
         painter->setBrush(brush_);
 
+        if (m_debug_draw)
+        {
+            painter->save();
+            painter->setPen(Qt::blue);
+            painter->drawRect(boundingRect());
+            painter->restore();
+        }
+
             //Draw header
         painter->drawRect(m_pattern->m_header_rect);
 
@@ -141,6 +149,13 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 painter->drawText(text_rect,
                                   shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
                                   terminals_text_option[index_]);
+
+                if (m_debug_draw)
+                {
+                    painter->setPen(Qt::blue);
+                    painter->drawRect(text_rect);
+                }
+
                 painter->restore();
 
                     //Add bridge anchor
@@ -169,7 +184,6 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 x_offset += terminal_rect.width();
             }
         }
-
         painter->restore();
 
             //Draw the bridges

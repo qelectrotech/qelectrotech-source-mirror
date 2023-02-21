@@ -161,6 +161,7 @@ HEADERS += $$files(sources/*.h) \
            $$files(sources/print/*.h) \
            $$files(sources/TerminalStrip/*.h) \
            $$files(sources/TerminalStrip/ui/*.h) \
+           $$files(sources/TerminalStrip/ui/ConfigPage/*h) \
            $$files(sources/TerminalStrip/UndoCommand/*.h) \
            $$files(sources/TerminalStrip/GraphicsItem/*.h) \
            $$files(sources/TerminalStrip/GraphicsItem/properties/*.h) \
@@ -202,6 +203,7 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/print/*.cpp) \
            $$files(sources/TerminalStrip/*.cpp) \
            $$files(sources/TerminalStrip/ui/*.cpp) \
+           $$files(sources/TerminalStrip/ui/ConfigPage/*cpp) \
            $$files(sources/TerminalStrip/UndoCommand/*.cpp) \
            $$files(sources/TerminalStrip/GraphicsItem/*.cpp) \
            $$files(sources/TerminalStrip/GraphicsItem/properties/*.cpp) \
@@ -236,7 +238,8 @@ FORMS += $$files(sources/richtext/*.ui) \
          $$files(sources/dataBase/ui/*.ui) \
          $$files(sources/factory/ui/*.ui) \
          $$files(sources/print/*.ui) \
-         $$files(sources/TerminalStrip/ui/*.ui)
+         $$files(sources/TerminalStrip/ui/*.ui) \
+         $$files(sources/TerminalStrip/ui/ConfigPage/*.ui)
 
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
