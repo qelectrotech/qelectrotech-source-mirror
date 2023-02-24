@@ -64,13 +64,8 @@ ShapeGraphicsItemPropertiesWidget::~ShapeGraphicsItemPropertiesWidget()
 */
 void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 {
-	if (m_shape != shape)
-	{
-		for (QMetaObject::Connection c : m_connect_list) {
-			disconnect(c);
-		}
-
-		m_connect_list.clear();
+    if (m_shape != shape) {
+        clearEditConnection();
 	}
 	if (!shape) {
 		return;
@@ -80,15 +75,8 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 	ui->m_close_polygon->setVisible(m_shape->shapeType() == QetShapeItem::Polygon);
 	ui->m_filling_gb->setHidden(m_shape->shapeType() == QetShapeItem::Line);
 
-	if (m_live_edit)
-	{
-		m_connect_list << connect(m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-		m_connect_list << connect(m_shape, &QetShapeItem::brushChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-		m_connect_list << connect(m_shape, &QetShapeItem::closeChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-	}
-
+    updateUi();
 	setUpEditConnection();
-	updateUi();
 }
 
 /**
@@ -98,14 +86,11 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 */
 void ShapeGraphicsItemPropertiesWidget::setItems(QList<QetShapeItem *> shapes_list)
 {
-	for (QMetaObject::Connection c : m_connect_list) {
-		disconnect(c);
-	}
-	m_connect_list.clear();
+    clearEditConnection();
 	m_shapes_list.clear();
 	m_shape = nullptr;
 
-	if (shapes_list.size() == 0) {
+    if (shapes_list.isEmpty()) {
 		updateUi();
 	}
 	else if (shapes_list.size() == 1)
@@ -372,10 +357,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 		//Disconnect every connections of editor widgets
 		//to avoid an unwanted edition (QSpinBox emit valueChanged no matter if changer by user or by program)
-	for (QMetaObject::Connection c : m_edit_connection) {
-		disconnect(c);
-	}
-	m_edit_connection.clear();
+    clearEditConnection();
 
 	if (m_shape)
 	{
@@ -473,37 +455,59 @@ bool ShapeGraphicsItemPropertiesWidget::setLiveEdit(bool live_edit)
 
 	if (m_live_edit) {
 		setUpEditConnection();
-	}
-	else
-	{
-		for (QMetaObject::Connection c : m_edit_connection) {
-			disconnect(c);
-		}
-		m_edit_connection.clear();
+    } else {
+        clearEditConnection();
 	}
 	return true;
 }
 
 /**
-	@brief ShapeGraphicsItemPropertiesWidget::setUpEditConnection
-	Disconnect the previous connection, and reconnect the connection between the editors widgets and void ShapeGraphicsItemPropertiesWidget::apply function
+ * @brief ShapeGraphicsItemPropertiesWidget::setUpEditConnection
+ * Disconnect the previous connection, and reconnect the connection between
+ * the editors widgets and void ShapeGraphicsItemPropertiesWidget::apply function
 */
 void ShapeGraphicsItemPropertiesWidget::setUpEditConnection()
 {
-	for (QMetaObject::Connection c : m_edit_connection) {
-		disconnect(c);
-	}
-	m_edit_connection.clear();
+    clearEditConnection();
 
 	if (m_shape || !m_shapes_list.isEmpty())
 	{
-		m_edit_connection << connect (ui->m_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-		m_edit_connection << connect (ui->m_size_dsb, SIGNAL(valueChanged(double)), this, SLOT(apply()));
-		m_edit_connection << connect (ui->m_brush_style_cb, SIGNAL(activated(int)), this, SLOT(apply()));
-		m_edit_connection << connect (ui->m_close_polygon, &QCheckBox::clicked, this, &ShapeGraphicsItemPropertiesWidget::apply);
-		m_edit_connection << connect (m_shape, &QetShapeItem::penChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-		m_edit_connection << connect (m_shape, &QetShapeItem::closeChanged, this, &ShapeGraphicsItemPropertiesWidget::updateUi);
-	}
+        m_edit_connection << connect (ui->m_style_cb, qOverload<int>(&QComboBox::activated),
+                                      this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+        m_edit_connection << connect (ui->m_size_dsb, qOverload<double>(&QDoubleSpinBox::valueChanged),
+                                      this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+        m_edit_connection << connect (ui->m_color_kpb, &KColorButton::changed,
+                                      this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+        m_edit_connection << connect (ui->m_brush_style_cb, qOverload<int>(&QComboBox::activated),
+                                      this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+        m_edit_connection << connect (ui->m_brush_color_kpb, &KColorButton::changed,
+                                      this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+        m_edit_connection << connect (ui->m_close_polygon, &QCheckBox::clicked,
+                                      this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+        m_edit_connection << connect (m_shape, &QetShapeItem::penChanged,
+                                      this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+
+        m_edit_connection << connect (m_shape, &QetShapeItem::closeChanged,
+                                      this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+
+        m_edit_connection << connect (m_shape, &QetShapeItem::brushChanged,
+                                      this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+
+    }
+}
+
+void ShapeGraphicsItemPropertiesWidget::clearEditConnection()
+{
+    for (const auto &c : qAsConst(m_edit_connection)) {
+        disconnect(c);
+    }
+    m_edit_connection.clear();
 }
 
 void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked()
@@ -515,19 +519,5 @@ void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked()
 		for (QPointer<QetShapeItem> qsi : m_shapes_list) {
 			qsi->setMovable(!ui->m_lock_pos_cb->isChecked());
 		}
-	}
-}
-
-void ShapeGraphicsItemPropertiesWidget::on_m_color_kpb_changed(const QColor &newColor)
-{
-	if(newColor.isValid() && m_live_edit) {
-		apply();
-	}
-}
-
-void ShapeGraphicsItemPropertiesWidget::on_m_brush_color_kpb_changed(const QColor &newColor)
-{
-	if(newColor.isValid() && m_live_edit) {
-		apply();
 	}
 }
