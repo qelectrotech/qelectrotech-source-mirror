@@ -8,6 +8,10 @@ Improve 20 logic elements, thanks Vbxier
 *Element Editor:
 Fix wrong calculation of the bounding rect of an arc
 
+*Diagram editor:
+Improve conductor first and last segment position.
+Unwanted change of the filling color of shapes in some condition.
+
 
 
 
