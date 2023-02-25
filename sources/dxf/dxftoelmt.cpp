@@ -61,7 +61,7 @@ QString dxf2ElmtDirPath()
 {
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	return (QDir::homePath() + QStringLiteral("/Application Data/qet/binary"));
-#elif defined(Q_OS_MAC)
+#elif defined(Q_OS_MACOS)
 	return (QDir::homePath() + QStringLiteral("/.qet/binary"));
 #else
 	return (QDir::homePath() + QStringLiteral("/.qet/binary"));
@@ -76,7 +76,7 @@ QString dxf2ElmtBinaryPath()
 {
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	return dxf2ElmtDirPath() + QStringLiteral("/dxf2elmt.exe");
-#elif defined(Q_OS_MAC)
+#elif defined(Q_OS_MACOS)
 	return dxf2ElmtDirPath() + QStringLiteral("/./dxf2elmt");
 #else
 	return dxf2ElmtDirPath() + QStringLiteral("/dxf2elmt");

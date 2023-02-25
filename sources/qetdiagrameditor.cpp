@@ -2375,7 +2375,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {("")});
 	}
 
-#elif  defined(Q_OS_MAC)
+#elif  defined(Q_OS_MACOS)
 	if (openedProjects().count()){
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
@@ -2424,7 +2424,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		"<br>"
 		" C:\\users\\XXXX\\AppData\\Local\\Programs\\Python\\Python36-32\\Scripts   "
 		"<br>");
-#elif defined(Q_OS_MAC)
+#elif defined(Q_OS_MACOS)
 	QString message=QObject::tr(
 		"To install the plugin qet_tb_generator"
 		"<br>Visit  :"
