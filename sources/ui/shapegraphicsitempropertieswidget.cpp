@@ -472,16 +472,16 @@ void ShapeGraphicsItemPropertiesWidget::setUpEditConnection()
 
 	if (m_shape || !m_shapes_list.isEmpty())
 	{
-        m_edit_connection << connect (ui->m_style_cb, qOverload<int>(&QComboBox::activated),
+        m_edit_connection << connect (ui->m_style_cb, QOverload<int>::of(&QComboBox::activated),
                                       this, &ShapeGraphicsItemPropertiesWidget::apply);
 
-        m_edit_connection << connect (ui->m_size_dsb, qOverload<double>(&QDoubleSpinBox::valueChanged),
+        m_edit_connection << connect (ui->m_size_dsb, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
                                       this, &ShapeGraphicsItemPropertiesWidget::apply);
 
         m_edit_connection << connect (ui->m_color_kpb, &KColorButton::changed,
                                       this, &ShapeGraphicsItemPropertiesWidget::apply);
 
-        m_edit_connection << connect (ui->m_brush_style_cb, qOverload<int>(&QComboBox::activated),
+        m_edit_connection << connect (ui->m_brush_style_cb, QOverload<int>::of(&QComboBox::activated),
                                       this, &ShapeGraphicsItemPropertiesWidget::apply);
 
         m_edit_connection << connect (ui->m_brush_color_kpb, &KColorButton::changed,
