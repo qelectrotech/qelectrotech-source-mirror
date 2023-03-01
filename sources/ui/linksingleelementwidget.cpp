@@ -296,7 +296,7 @@ void LinkSingleElementWidget::buildTree()
 			QStringList search_list;
 			QStringList str_list;
 			
-			if (elmt->conductors().size())
+            if (!elmt->conductors().isEmpty())
 			{
 				ConductorProperties cp = elmt->conductors().first()->properties();
 				str_list << cp.text;
@@ -316,7 +316,7 @@ void LinkSingleElementWidget::buildTree()
 					search_list << str_list.last();
 			}
 			else
-				str_list << "" << "" << "";
+                str_list << "" << "" << "" << "" << "";
 			
 			if (Diagram *diag = elmt->diagram())
 			{
