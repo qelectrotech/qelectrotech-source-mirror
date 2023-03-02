@@ -284,7 +284,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="176"/>
         <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation>Redimensionador de itens</translation>
+        <translation>Redimensionador de elementos</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="180"/>
@@ -296,7 +296,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="182"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
-        <translation>Ferramenta de tradução de itens</translation>
+        <translation>Ferramenta de tradução de elementos</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="160"/>
@@ -663,8 +663,8 @@
 Note: These options DO NOT allow or block Auto Numberings, only their Update Policy.</source>
         <translation>Neste menu, você pode definir se deseja que as autonumerações sejam atualizadas ou não. Para autonumeração de Elementos, você tem 4 opções de política de atualização:
 Ambos: Os Elementos novos e existentes serão atualizados. Esta é a opção padrão.
-Atualizar apenas novo: Somente os novos elementos criados serão atualizados. Os elementos existentes não serão atualizados.
-Atualizar somente existente: Somente os elementos existentes serão atualizados. Os novos elementos receberão a fórmula, mas não serão atualizados depois de criados.
+Atualizar apenas novo: Somente os novos Elementos criados serão atualizados. Os elementos existentes não serão atualizados.
+Atualizar somente existente: Somente os Elementos existentes serão atualizados. Os novos Elementos receberão a fórmula, mas não serão atualizados depois de criados.
 Desabilitar: Os Elementos novos e existentes não serão atualizados. Isso também é válido para novas páginas.
 Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua Política de Atualização.</translation>
     </message>
@@ -1438,7 +1438,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="570"/>
         <source>Modifier la police d&apos;un texte d&apos;élément</source>
-        <translation>Alterar a fonte do texto de um item</translation>
+        <translation>Alterar a fonte do texto de um elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="626"/>
@@ -1732,13 +1732,13 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/elementdialog.cpp" line="62"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
-        <translation>Abrir um item</translation>
+        <translation>Abrir um elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Choisissez l&apos;élément que vous souhaitez ouvrir.</source>
         <comment>dialog content</comment>
-        <translation>Selecione o item que deseja abrir.</translation>
+        <translation>Selecione o elemento que deseja abrir.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="66"/>
@@ -1750,7 +1750,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation>Selecione o item no qual deseja salvar a sua definição.</translation>
+        <translation>Selecione o elemento no qual deseja salvar a sua definição.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="70"/>
@@ -1795,7 +1795,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/elementdialog.cpp" line="232"/>
         <source>Vous devez sélectionner un élément ou une catégorie avec un nom pour l&apos;élément.</source>
         <comment>message box content</comment>
-        <translation>Você deve selecionar um item ou categoria com um nome para o item.</translation>
+        <translation>Você deve selecionar um elemento ou uma categoria com um nome para o elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="200"/>
@@ -1832,7 +1832,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/elementdialog.cpp" line="220"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation>Este item já existe. Tem certeza que deseja sobrescrevê-lo?</translation>
+        <translation>Este elemento já existe. Tem certeza que deseja sobrescrevê-lo?</translation>
     </message>
 </context>
 <context>
@@ -1871,7 +1871,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="14"/>
         <source>Propriété de l&apos;élément</source>
-        <translation>Propriedades do item</translation>
+        <translation>Propriedades do elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
@@ -2517,7 +2517,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="394"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation>Apagar este item?</translation>
+        <translation>Apagar este elemento?</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="395"/>
@@ -3374,7 +3374,7 @@ que você cria. Entradas de texto e números
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Cada elemento inclui informações sobre seus autores, licença ou qualquer outra informação que você considera útil em um campo livre.
-Aqui você pode especificar o valor padrão deste campo para os itens que você irá criar:</translation>
+Aqui você pode especificar o valor padrão deste campo para os elementos que você irá criar:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
@@ -4415,12 +4415,12 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Délier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Desvincule o item selecionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Desvincule o elemento selecionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="147"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Lier l&apos;élément sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vincule o item selecionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vincule o elemento selecionado&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.ui" line="123"/>
@@ -4709,7 +4709,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="232"/>
         <source>Un élément portant le même nom existe déjà</source>
-        <translation>Um item com o mesmo nome já existe</translation>
+        <translation>Um elemento com o mesmo nome já existe</translation>
     </message>
 </context>
 <context>
@@ -6219,7 +6219,7 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation>Procurar o item selecionado no painel</translation>
+        <translation>Procurar o elemento selecionado no painel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
@@ -8738,7 +8738,7 @@ O que você deseja fazer?</translation>
     <message>
         <location filename="../sources/undocommand/changeelementinformationcommand.cpp" line="50"/>
         <source>Modifier les informations de plusieurs éléments</source>
-        <translation>Editar informações para vários itens</translation>
+        <translation>Editar informações para vários elementos</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/linkelementcommand.cpp" line="38"/>
@@ -8898,7 +8898,7 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="202"/>
         <source>chargement %p% (%v sur %m)</source>
-        <translation type="unfinished">Carregando %p% (%v de %m)</translation>
+        <translation>Carregando %p% (%v de %m)</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="56"/>
@@ -9351,7 +9351,7 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/editor/UndoCommand/openelmtcommand.cpp" line="31"/>
         <source>Ouvrir un element</source>
-        <translation>Abra um item</translation>
+        <translation>Abra um elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1500"/>
