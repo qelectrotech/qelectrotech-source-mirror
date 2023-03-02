@@ -478,6 +478,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="de">Titel</translation>
                 <translation lang="ru">Название</translation>
                 <translation lang="pt">Título</translation>
+                <translation lang="pt_br">Título</translation>
                 <translation lang="en">Ref</translation>
                 <translation lang="hr">Naslov</translation>
                 <translation lang="it">Titolo</translation>
@@ -499,6 +500,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="de">Autor</translation>
                 <translation lang="ru">Файл</translation>
                 <translation lang="pt">Ficheiro</translation>
+                <translation lang="pt_br">Arquivo</translation>
                 <translation lang="el">Αρχείο</translation>
                 <translation lang="en">author</translation>
                 <translation lang="hr">Datoteka</translation>
@@ -528,6 +530,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="de">Datei</translation>
                 <translation lang="ru">Файл</translation>
                 <translation lang="pt">Ficheiro</translation>
+                <translation lang="pt_br">Arquivo</translation>
                 <translation lang="el">Αρχείο</translation>
                 <translation lang="en">File</translation>
                 <translation lang="hr">Datoteka</translation>
@@ -588,6 +591,7 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="de">Titel</translation>
                 <translation lang="ru">Название</translation>
                 <translation lang="pt">Título</translation>
+                <translation lang="pt_br">Título</translation>
                 <translation lang="en">Title</translation>
                 <translation lang="hr">Naslov</translation>
                 <translation lang="it">Titolo</translation>
@@ -638,6 +642,8 @@ Created by potrace 1.11, written by Peter Selinger 2001-2013
                 <translation lang="fr">Folio</translation>
                 <translation lang="nl">Pagina</translation>
                 <translation lang="da">Ark</translation>
+                <translation lang="pt">Página</translation>
+                <translation lang="pt_br">Página</translation>
             </label>
         </field>
     </grid>

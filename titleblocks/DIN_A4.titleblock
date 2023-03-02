@@ -48,6 +48,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Datum</translation>
                 <translation lang="ru">Дата</translation>
                 <translation lang="pt">Data</translation>
+                <translation lang="pt_br">Data</translation>
                 <translation lang="en">Date</translation>
                 <translation lang="hr">Datum</translation>
                 <translation lang="it">Data</translation>
@@ -74,6 +75,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Datum</translation>
                 <translation lang="ru">Дата</translation>
                 <translation lang="pt">Data</translation>
+                <translation lang="pt_br">Data</translation>
                 <translation lang="en">Date</translation>
                 <translation lang="hr">Datum</translation>
                 <translation lang="it">Data</translation>
@@ -95,6 +97,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Titel</translation>
                 <translation lang="ru">Название</translation>
                 <translation lang="pt">Título</translation>
+                <translation lang="pt_br">Título</translation>
                 <translation lang="en">Title</translation>
                 <translation lang="hr">Naslov</translation>
                 <translation lang="it">Titolo</translation>
@@ -116,6 +119,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Datei</translation>
                 <translation lang="ru">Файл</translation>
                 <translation lang="pt">Ficheiro</translation>
+                <translation lang="pt_br">Arquivo</translation>
                 <translation lang="en">File</translation>
                 <translation lang="hr">Datoteka</translation>
                 <translation lang="it">File</translation>
@@ -138,6 +142,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Datei</translation>
                 <translation lang="ru">Файл</translation>
                 <translation lang="pt">Ficheiro</translation>
+                <translation lang="pt_br">Arquivo</translation>
                 <translation lang="en">File</translation>
                 <translation lang="hr">Datoteka</translation>
                 <translation lang="it">File</translation>
@@ -240,6 +245,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Seite</translation>
                 <translation lang="ru">Фолио</translation>
                 <translation lang="pt">Folha</translation>
+                <translation lang="pt_br">Folha</translation>
                 <translation lang="en">Folio</translation>
                 <translation lang="hr">List</translation>
                 <translation lang="it">Foglio</translation>
@@ -275,6 +281,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Datum</translation>
                 <translation lang="ru">Дата</translation>
                 <translation lang="pt">Data</translation>
+                <translation lang="pt_br">Data</translation>
                 <translation lang="en">Date</translation>
                 <translation lang="hr">Datum</translation>
                 <translation lang="it">Data</translation>
@@ -334,6 +341,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
                 <translation lang="de">Seite</translation>
                 <translation lang="ru">Фолио</translation>
                 <translation lang="pt">Folha</translation>
+                <translation lang="pt_br">Folha</translation>
                 <translation lang="en">Folio</translation>
                 <translation lang="hr">List</translation>
                 <translation lang="it">Foglio</translation>
