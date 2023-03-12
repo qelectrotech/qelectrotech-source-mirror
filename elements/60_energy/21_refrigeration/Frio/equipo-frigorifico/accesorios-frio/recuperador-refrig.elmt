@@ -1,6 +1,7 @@
 <definition hotspot_y="38" link_type="simple" width="80" version="0.80" type="element" height="80" hotspot_x="14">
     <uuid uuid="{f04984ce-d9f1-4af1-b640-2fac0d1f382d}"/>
     <names>
+        <name lang="de">Vacuumpumpe</name>
         <name lang="fr">Pompe à vide</name>
         <name lang="ca">Recuperador refrig.</name>
         <name lang="es">Recuperador refrig.</name>
@@ -12,18 +13,18 @@
         <ellipse width="1" y="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x="10" antialias="true" height="5"/>
         <polygon y10="-4" y6="2" y8="-1" x5="10" closed="false" y1="-4" y2="-4" x8="16" x7="14" x2="12" x6="12" y9="-3" x1="15" x10="15" x4="10" y3="-2" y4="0" antialias="false" y5="1" style="line-style:normal;line-weight:normal;filling:none;color:red" y7="1" x3="10" x9="16"/>
         <polygon x3="8.4812" x1="10" y2="15" y1="12" y4="17" x4="10" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="8.4812" y3="18" closed="false" antialias="false"/>
-        <ellipse width="0.95" y="5.00904" style="line-style:normal;line-weight:normal;filling:red;color:red" x="10.15" antialias="true" height="3.31325"/>
-        <polygon x3="46.25" x1="23.45" y2="-18.1837" y1="-9.9006" y4="-17.3554" x4="46.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25.35" y3="-26.4669" x5="45.3" closed="false" antialias="false" y5="-17.3554"/>
+        <ellipse width="0.95" y="5" style="line-style:normal;line-weight:normal;filling:red;color:red" x="10.15" antialias="true" height="3.31325"/>
+        <polygon x3="46.25" x1="23.45" y2="-18.1837" y1="-9.9" y4="-17.3554" x4="46.25" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="25.35" y3="-26.4669" x5="45.3" closed="false" antialias="false" y5="-17.3554"/>
         <ellipse width="0.95" y="-4.10241" style="line-style:normal;line-weight:normal;filling:blue;color:blue" x="0.65" antialias="true" height="3.31325"/>
-        <polygon y6="-7.9006" x3="12.9" x1="-6.1" y2="33.5151" y1="16.9488" y4="0.38253" x6="-6.1" x4="22.4" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-6.1" x2="12.9" y3="8.66566" x5="3.4" y7="16.9488" closed="false" antialias="false" y5="-16.1837"/>
-        <ellipse width="0.95" y="5.00904" style="line-style:normal;line-weight:normal;filling:red;color:red" x="9.2" antialias="true" height="3.31325"/>
-        <polygon y6="-17.8404" y8="16.9488" x5="41.4" closed="false" y1="16.9488" y2="36" x8="-8" x7="-8" x2="12.9" x6="3.4" x1="-8" x4="60.4" y3="16.9488" y4="-16.1837" antialias="false" y5="-32.75" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="-7.9006" x3="60.4"/>
+        <polygon y6="-7.9" x3="12.9" x1="-6.1" y2="33.5151" y1="16.9488" y4="0.38253" x6="-6.1" x4="22.4" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-6.1" x2="12.9" y3="8.66566" x5="3.4" y7="16.9488" closed="false" antialias="false" y5="-16.1837"/>
+        <ellipse width="0.95" y="5" style="line-style:normal;line-weight:normal;filling:red;color:red" x="9.2" antialias="true" height="3.31325"/>
+        <polygon y6="-17.8404" y8="16.9488" x5="41.4" closed="false" y1="16.9488" y2="36" x8="-8" x7="-8" x2="12.9" x6="3.4" x1="-8" x4="60.4" y3="16.9488" y4="-16.1837" antialias="false" y5="-32.75" style="line-style:normal;line-weight:normal;filling:none;color:black" y7="-7.9" x3="60.4"/>
         <line x1="23.25" y2="-16.5271" end1="none" y1="0.38253" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="60.5" antialias="false" length1="1.5"/>
-        <polygon x3="22.5" x1="23.45" y2="-12.3855" y1="-9.9006" y4="-28.9518" x4="42.45" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20.6" y3="-20.6687" x5="46.25" closed="false" antialias="false" y5="-26.4669"/>
+        <polygon x3="22.5" x1="23.45" y2="-12.3855" y1="-9.9" y4="-28.9518" x4="42.45" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="20.6" y3="-20.6687" x5="46.25" closed="false" antialias="false" y5="-26.4669"/>
         <polygon x3="43.4" x1="27.25" y2="-16.5271" y1="-11.5572" y4="-16.5271" x4="43.4" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="28.2" y3="-23.1536" x5="46.25" closed="false" antialias="false" y5="-18.1837"/>
         <polygon x3="40.55" x1="43.4" y2="-19.012" y1="-17.3554" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="40.55" y3="-21.497" closed="false" antialias="false"/>
-        <line x1="23.45" y2="-11.5572" end1="none" y1="-9.9006" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="27.25" antialias="false" length1="1.5"/>
-        <ellipse width="0.95" y="-4.10241" style="line-style:normal;line-weight:normal;filling:blue;color:blue" x="-0.3" antialias="true" height="3.31325"/>
+        <line x1="23.45" y2="-11.5572" end1="none" y1="-9.9" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="27.25" antialias="false" length1="1.5"/>
+        <ellipse width="0.95" y="-4.1" style="line-style:normal;line-weight:normal;filling:blue;color:blue" x="-0.3" antialias="true" height="3.31325"/>
         <dynamic_text Valignment="AlignTop" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="3.5497" uuid="{b2761f3c-3cab-4bed-8ad6-0a4a77ef9433}" Halignment="AlignLeft" rotation="0" x="26.3" text_width="-1" frame="false" text_from="ElementInfo" z="17">
             <text></text>
             <info_name>label</info_name>
