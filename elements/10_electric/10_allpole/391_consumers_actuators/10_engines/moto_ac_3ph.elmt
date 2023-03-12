@@ -2,6 +2,7 @@
     <uuid uuid="{bae1c471-52c4-4eb0-86c8-7283000b359e}"/>
     <names>
         <name lang="en">AC MOTOR 3-Phases</name>
+        <name lang="de">Drehstrommotor</name>
     </names>
     <elementInformations/>
     <informations>Author: The QElectroTech team
