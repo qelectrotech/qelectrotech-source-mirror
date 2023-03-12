@@ -2,6 +2,8 @@
     <uuid uuid="{fc322143-365e-480b-a75c-89171b76cf32}"/>
     <names>
         <name lang="cs">Krokový motor</name>
+        <name lang="de">Schrittmotor</name>
+        <name lang="en">Stepper motor</name>
         <name lang="fr">moteur pas à pas</name>
     </names>
     <elementInformations>
