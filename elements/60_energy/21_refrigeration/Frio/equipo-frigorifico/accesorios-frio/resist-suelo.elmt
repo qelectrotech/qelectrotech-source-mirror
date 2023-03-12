@@ -1,20 +1,27 @@
-<definition width="70" version="0.4" hotspot_x="33" hotspot_y="7" height="30" type="element" ic="true">
-<uuid uuid="{6800729C-2CB6-4F8D-A577-AD03218DBF83}"/><names>
+<definition link_type="simple" height="30" hotspot_x="32" type="element" width="70" hotspot_y="14" version="0.100.0">
+    <uuid uuid="{c24025ff-244f-4c93-9bd8-2de29e709295}"/>
+    <names>
         <name lang="es">Resistencias suelo</name>
+        <name lang="de">Fußbodenheizungselement</name>
     </names>
+    <elementInformations/>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-24.0444" y2="15" x2="24.0481"/>
-        <arc width="5" x="22" y="5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <rect width="4" x="24" y="14" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <arc width="5" x="-27" y="10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-24.0444" y2="5" x2="24.0481"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24.0444" y2="0" x2="24.0481"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-24.0444" y2="10" x2="24.0481"/>
-        <arc width="5" x="-27" y="0" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
-        <rect width="4" x="24" y="-1" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <terminal x="29" y="0" nameHidden="45" number="" name="" orientation="e"/>
-        <terminal x="29" y="15" nameHidden="1" number="" name="" orientation="e"/>
+        <arc start="90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="21.5" height="6" angle="-180" width="6" y="-3" antialias="true"/>
+        <arc start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-27.5" height="7" angle="-180" width="6" y="3" antialias="true"/>
+        <arc start="-90" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-27.5" height="7" angle="-180" width="6" y="-10" antialias="true"/>
+        <line x2="24" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="10" y1="10" length2="1.5" x1="-24" length1="1.5" antialias="false"/>
+        <line x2="24" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-3" y1="-3" length2="1.5" x1="-24" length1="1.5" antialias="false"/>
+        <line x2="24" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-10" y1="-10" length2="1.5" x1="-24" length1="1.5" antialias="false"/>
+        <line x2="24" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="3" y1="3" length2="1.5" x1="-24" length1="1.5" antialias="false"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25" height="2" width="4" y="9" rx="0" antialias="false"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="25" height="2" width="4" y="-11" rx="0" antialias="false"/>
+        <dynamic_text rotation="0" text_width="-1" text_from="ElementInfo" frame="false" keep_visual_rotation="false" Halignment="AlignLeft" uuid="{023421f7-db8a-4833-8d78-7278c51bd804}" x="-19" z="10" Valignment="AlignTop" y="6" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal">
+            <text></text>
+            <info_name>formula</info_name>
+        </dynamic_text>
+        <terminal uuid="{ac3db985-5bda-40b1-8fdd-c8096eab16bb}" x="30" orientation="e" name="" type="Generic" y="-10"/>
+        <terminal uuid="{22f77ab3-3a71-4c88-95f9-07bd97dbd334}" x="30" orientation="e" name="" type="Generic" y="10"/>
     </description>
 </definition>

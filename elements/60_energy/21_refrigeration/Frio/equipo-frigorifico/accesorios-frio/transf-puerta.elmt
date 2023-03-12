@@ -1,26 +1,31 @@
-<definition width="40" version="0.4" hotspot_x="20" hotspot_y="15" height="30" link_type="simple" type="element" ic="true">
-<uuid uuid="{730100B0-94B9-4546-AE09-2282E0192873}"/><names>
+<definition hotspot_y="11" height="30" link_type="simple" width="40" type="element" hotspot_x="19" version="0.100.0">
+    <uuid uuid="{26b5b5e4-ace3-430c-bda9-f3ba95127f6d}"/>
+    <names>
         <name lang="es">Transformador de puerta</name>
     </names>
+    <elementInformations/>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <circle x="0" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <rect width="3" x="-9" y="-13" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="-12.2667" y2="-3" x2="-10.7111"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10.7333" y2="-5" x2="12.2889"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12.2667" y2="-1" x2="-10.7111"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="10.7333" y2="-3" x2="12.2889"/>
-        <rect width="3" x="10" y="-7" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="3" x="-13" y="-7" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-8" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <rect width="3" x="6" y="10" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="7" y="11" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
-        <circle x="-4" y="-2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-12.2667" y2="-5" x2="-10.7111"/>
-        <input x="-14" y="-6" size="4" rotate="true" text="220/12V" tagg="label"/>
-        <terminal x="14" y="-4" orientation="e"/>
-        <terminal x="-14" y="-5" orientation="w"/>
+        <circle y="2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" antialias="true" x="-1"/>
+        <rect y="-9" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-9" height="3" width="3" rx="0"/>
+        <line x2="-10.7111" y2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end2="none" length1="1.5" x1="-12.2667" end1="none" y1="1" length2="1.5"/>
+        <line x2="12.2889" y2="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end2="none" length1="1.5" x1="10.7333" end1="none" y1="-1" length2="1.5"/>
+        <line x2="-10.7111" y2="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end2="none" length1="1.5" x1="-12.2667" end1="none" y1="3" length2="1.5"/>
+        <line x2="12.2889" y2="1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end2="none" length1="1.5" x1="10.7333" end1="none" y1="1" length2="1.5"/>
+        <rect y="-3" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="10" height="15" width="3" rx="0"/>
+        <rect y="-6" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-10" height="20" width="20" rx="0"/>
+        <rect y="-3" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-13" height="15" width="3" rx="0"/>
+        <circle y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1" antialias="true" x="-8"/>
+        <rect y="14" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="6" height="3" width="3" rx="0"/>
+        <circle y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1" antialias="true" x="7"/>
+        <circle y="2" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" antialias="true" x="-5"/>
+        <line x2="-10.7111" y2="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" end2="none" length1="1.5" x1="-12.2667" end1="none" y1="-1" length2="1.5"/>
+        <dynamic_text y="-19" uuid="{b5a0330e-abf6-4c9c-88bf-d826daf9ed1c}" keep_visual_rotation="false" text_from="ElementInfo" x="-5" rotation="0" z="15" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignLeft" Valignment="AlignTop" frame="false" text_width="-1">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal y="0" uuid="{fa0bd90d-8cc7-4a7e-87fe-a47b84f1320a}" x="-14" orientation="w" type="Generic" name=""/>
+        <terminal y="0" uuid="{b5250bf9-a5de-4bef-bc0d-30e0679f783b}" x="14" orientation="e" type="Generic" name=""/>
     </description>
 </definition>

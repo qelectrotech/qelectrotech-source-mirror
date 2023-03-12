@@ -1,37 +1,36 @@
-<definition hotspot_y="19" link_type="simple" width="60" version="0.80" type="element" height="50" hotspot_x="15">
-    <uuid uuid="{f2cee94b-154b-405b-9b8b-bbdc06f7a41e}"/>
+<definition hotspot_y="19" width="60" hotspot_x="14" type="element" version="0.100.0" link_type="simple" height="50">
+    <uuid uuid="{fbc32297-22ed-45ff-86e2-81396ad3d31b}"/>
     <names>
         <name lang="fr">Thermométre à bulbe</name>
-        <name lang="es">Termómetro bulbo</name>
         <name lang="de">Kolbenthermometer</name>
+        <name lang="es">Termómetro bulbo</name>
     </names>
     <elementInformations/>
     <informations>Rafael Ferrando.
 Mantenimiento de Instalaciones Térmicas</informations>
     <description>
-        <circle y="-14" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11" diameter="22" antialias="true"/>
-        <circle y="-13" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-10" diameter="20" antialias="true"/>
-        <line x1="-7" y2="-1" end1="none" y1="-7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="1" antialias="false" length1="1.5"/>
-        <circle y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" diameter="1" antialias="true"/>
-        <circle y="-4" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" diameter="1" antialias="true"/>
-        <circle y="-9" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7" diameter="1" antialias="true"/>
-        <circle y="-10" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" diameter="1" antialias="true"/>
-        <circle y="-11" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" diameter="1" antialias="true"/>
-        <rect width="0" y="11" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-5.74456" ry="0" antialias="false" height="1"/>
-        <rect width="5.53188" y="8" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" x="-2.97862" ry="0" antialias="false" height="3"/>
-        <arc start="0" width="8.2127" y="15" angle="-180" style="line-style:normal;line-weight:normal;filling:none;color:red" x="-0.212679" antialias="true" height="11"/>
-        <line x1="-0.212679" y2="12" end1="none" y1="21" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" x2="-0.212679" antialias="false" length1="1.5"/>
-        <circle y="16" style="line-style:normal;line-weight:normal;filling:none;color:red" x="8" diameter="7" antialias="true"/>
-        <arc start="-60" width="2" y="2" angle="-230" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1" antialias="true" height="4"/>
-        <line x1="-7" y2="0" end1="none" y1="-7" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="0" antialias="false" length1="1.5"/>
-        <line x1="-2" y2="0" end1="none" y1="-3" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" end2="none" x2="1" antialias="false" length1="1.5"/>
-        <ellipse width="1" y="2" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" antialias="true" height="0"/>
-        <dynamic_text Valignment="AlignTop" font="Sans Serif,4,-1,5,25,0,0,0,0,0" y="-6" uuid="{d8dd305c-330b-4f8d-8934-8c4a2f8df423}" Halignment="AlignLeft" rotation="0" x="-1" text_width="-1" frame="false" text_from="ElementInfo" z="18">
+        <line length2="1.5" antialias="false" x2="8" end2="none" end1="none" y1="20" x1="8" y2="18" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <circle antialias="true" diameter="22" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-11" y="-14"/>
+        <circle antialias="true" diameter="20" style="line-style:normal;line-weight:thin;filling:none;color:black" x="-10" y="-13"/>
+        <line length2="1.5" antialias="false" x2="1" end2="none" end1="none" y1="-7" x1="-7" y2="-1" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle antialias="true" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8" y="0"/>
+        <circle antialias="true" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-9" y="-4"/>
+        <circle antialias="true" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-7" y="-9"/>
+        <circle antialias="true" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" y="-10"/>
+        <circle antialias="true" diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2" y="-11"/>
+        <rect antialias="false" ry="0" width="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-3" rx="0" y="8" height="3"/>
+        <arc antialias="true" width="8" start="0" style="line-style:normal;line-weight:normal;filling:none;color:red" x="0" y="15" height="11" angle="-180"/>
+        <line length2="1.5" antialias="false" x2="0" end2="none" end1="none" y1="20" x1="0" y2="11" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <circle antialias="true" diameter="7" style="line-style:normal;line-weight:normal;filling:none;color:red" x="8" y="14"/>
+        <line length2="1.5" antialias="false" x2="0" end2="none" end1="none" y1="-7" x1="-7" y2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length2="1.5" antialias="false" x2="1" end2="none" end1="none" y1="-3" x1="-2" y2="0" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon y5="20" x6="36" antialias="false" x2="23" x5="39" y6="18" x3="26" y1="18" y4="23" x1="26" y2="21" y3="23" x4="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <dynamic_text text_width="-1" z="18" Valignment="AlignBottom" rotation="0" keep_visual_rotation="true" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignLeft" uuid="{d8dd305c-330b-4f8d-8934-8c4a2f8df423}" frame="false" x="10" text_from="ElementInfo" y="-2">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <polygon y6="20" x5="38" closed="true" y1="20" y2="23" x2="22" x6="35" x1="25" x4="35" y3="25" y4="25" antialias="false" y5="22" style="line-style:normal;line-weight:normal;filling:none;color:black" x3="25"/>
-        <line x1="12" y2="23" end1="none" y1="23" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red" end2="none" x2="22" antialias="false" length1="1.5"/>
-        <terminal name="" y="22" uuid="{d89b205e-92c8-4c58-858e-b7889eceff49}" x="39" orientation="e"/>
+        <line length2="1.5" antialias="false" x2="23" end2="none" end1="none" y1="21" x1="12" y2="21" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:red"/>
+        <text color="#000000" text="°C" rotation="0" font="Sans Serif,4,-1,5,50,0,0,0,0,0" x="-3" y="6"/>
+        <terminal name="" type="Generic" uuid="{d89b205e-92c8-4c58-858e-b7889eceff49}" x="40" orientation="e" y="20"/>
     </description>
 </definition>
