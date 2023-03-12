@@ -2,6 +2,7 @@
 <uuid uuid="{E3B1E62F-3AB4-4443-AD01-C7FA4494C88D}"/><names>
         <name lang="ca">Vàlv.equilibrat TA</name>
         <name lang="es">Valv.equilibrado TA</name>
+        <name lang="de">Abgleichventil TA</name>
         <name lang="fr">Vanne d'équilibrage TA</name>
     </names>
     <informations>Rafael Ferrando.
@@ -18,7 +19,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <polygon y3="-0.266935" y4="5.9509" x1="-2.95145" closed="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="0.621328" x4="-3.71003" y1="6.83916" x2="1.6" antialias="false" x3="0.841424"/>
         <input tagg="label" x="-8" text="_" rotate="true" size="4" y="-10.5"/>
         <line x1="3" length2="1.5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="4" length1="1.5" y1="2" x2="5" antialias="false" end2="none"/>
-        <terminal x="10.7" y="-0.0679127" orientation="e"/>
-        <terminal x="-9.6" y="-0.0679127" orientation="w"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
     </description>
 </definition>
