@@ -1,0 +1,34 @@
+<definition link_type="simple" type="element" width="90" hotspot_x="41" hotspot_y="45" version="0.100.0" height="90">
+    <uuid uuid="{a228a5d6-8f90-4c61-9389-96872a5d3f97}"/>
+    <names>
+        <name lang="cs">LaskaKit SCD41</name>
+        <name lang="en">LaskaKit SCD41</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: KevinarCZ</informations>
+    <description>
+        <rect antialias="false" y="-40" rx="0" width="80" ry="0" x="-36" style="line-style:normal;line-weight:normal;filling:none;color:black" height="80"/>
+        <circle antialias="false" y="-35" x="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle antialias="false" y="25" x="29" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle antialias="false" y="-35" x="29" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <circle antialias="false" y="25" x="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <rect antialias="false" y="-20" rx="0" width="30" ry="0" x="-11" style="line-style:normal;line-weight:normal;filling:gray;color:black" height="30"/>
+        <polygon y1="-15" antialias="false" y3="5" y2="5" x3="14" y5="-15" x5="9" style="line-style:normal;line-weight:normal;filling:white;color:black" x1="-6" x2="-6" y4="-10" x4="14"/>
+        <rect antialias="false" y="-15" rx="0" width="10" ry="0" x="29" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20"/>
+        <rect antialias="false" y="-15" rx="0" width="10" ry="0" x="-31" style="line-style:normal;line-weight:normal;filling:none;color:black" height="20"/>
+        <text text="l a s k a k i t" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,obyčejné" color="#000000" y="-28" x="-11" rotation="0"/>
+        <circle antialias="false" y="30.5" x="-12.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle antialias="false" y="30.5" x="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle antialias="false" y="30.5" x="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle antialias="false" y="30.5" x="17.5" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <text text="SCD41" font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,obyčejné" color="#000000" y="17" x="-4" rotation="0"/>
+        <text text="GND" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" color="#000000" y="28" x="-8" rotation="270"/>
+        <text text="VDD" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" color="#000000" y="28" x="1" rotation="270"/>
+        <text text="SCL" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" color="#000000" y="28" x="11" rotation="270"/>
+        <text text="SDA" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" color="#000000" y="28" x="21" rotation="270"/>
+        <terminal y="33" name="" type="Generic" uuid="{4f6cc46c-6a97-45a8-a251-e6c237d623cc}" x="20" orientation="s"/>
+        <terminal y="33" name="" type="Generic" uuid="{1bef4101-a638-48dc-b0b1-0a41418a7b37}" x="10" orientation="s"/>
+        <terminal y="33" name="" type="Generic" uuid="{8a144056-f3de-4e34-abd8-f6e11b9f9bcc}" x="0" orientation="s"/>
+        <terminal y="33" name="" type="Generic" uuid="{58a8ce83-9b2e-432d-8e50-96e80fc3208a}" x="-10" orientation="s"/>
+    </description>
+</definition>

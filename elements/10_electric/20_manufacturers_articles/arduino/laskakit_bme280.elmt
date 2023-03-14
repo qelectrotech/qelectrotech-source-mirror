@@ -1,0 +1,53 @@
+<definition hotspot_x="35" type="element" width="80" link_type="simple" height="90" hotspot_y="64" version="0.100.0">
+    <uuid uuid="{eaf12c73-76d9-4ee1-ab05-8fa26cef4798}"/>
+    <names>
+        <name lang="en">LaskaKit BME280</name>
+        <name lang="cs">LaskaKit BME280</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+    </elementInformations>
+    <informations>Author: KevinarCZ</informations>
+    <description>
+        <arc start="180" angle="-180" y="-32" antialias="true" width="20" x="19" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="180" angle="180" y="-16" antialias="true" width="4" x="15" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect y="-7" ry="0" antialias="false" width="10" x="-25.5" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <rect y="-7" ry="0" antialias="false" width="10" x="24" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <line end1="none" end2="none" length2="1.5" antialias="false" y1="-7" x2="19.5" length1="1.5" style="line-style:dashed;line-weight:normal;filling:none;color:black" y2="-7" x1="-10.5"/>
+        <circle y="15.5" antialias="false" diameter="5" x="17.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="15.5" antialias="false" diameter="5" x="7.5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="15.5" antialias="false" diameter="5" x="-2.4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="15.5" antialias="false" diameter="5" x="-13" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,obyčejné" rotation="0" y="-10" text="μSUP" x="-25.5" color="#000000"/>
+        <text font="MS Shell Dlg 2,4,-1,5,50,0,0,0,0,0,obyčejné" rotation="0" y="-10" text="μSUP" x="23.5" color="#000000"/>
+        <polygon y3="23" antialias="false" y1="-22" x3="39" x2="-30" y4="-22" closed="false" x4="39" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="23" x1="-30"/>
+        <circle y="-27" antialias="false" diameter="10" x="-25" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle y="-27" antialias="false" diameter="10" x="24" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="180" angle="-180" y="-32" antialias="true" width="20" x="-30" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc start="180" angle="180" y="-16" antialias="true" width="4" x="-10" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line end1="none" end2="none" length2="1.5" antialias="false" y1="-22" x2="-10" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14" x1="-10"/>
+        <line end1="none" end2="none" length2="1.5" antialias="false" y1="-22" x2="19" length1="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" y2="-14" x1="19"/>
+        <polygon closed="false" y1="-14" x6="9.5" x1="-6" y7="-37" y5="-62" style="line-style:normal;line-weight:normal;filling:none;color:black" x8="15" antialias="false" y3="-42" x5="9.5" y6="-42" x4="-0.5" x2="-6" x3="-0.5" x7="15" y4="-62" y8="-14" y2="-37"/>
+        <rect y="-34" ry="0" antialias="false" width="6" x="-3.5" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <rect y="-34" ry="0" antialias="false" width="6" x="6.5" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <rect y="-60" ry="0" antialias="false" width="6" x="1.5" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0"/>
+        <text font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="90" y="3" text="SDA" x="-11.5" color="#000000"/>
+        <text font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="90" y="5" text="SCL" x="-1.5" color="#000000"/>
+        <text font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="90" y="2" text="GND" x="8.5" color="#000000"/>
+        <text font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="90" y="4" text="VCC" x="18.5" color="#000000"/>
+        <terminal uuid="{c5d594f6-6e32-4b48-aafa-99380c975756}" orientation="s" y="18" type="Generic" x="20" name=""/>
+        <terminal uuid="{7455f0b0-d175-4d84-a126-b5ca17aa86fa}" orientation="s" y="18" type="Generic" x="10" name=""/>
+        <terminal uuid="{7f8f1cd7-0cdf-49d8-b49a-e005651b7c21}" orientation="s" y="18" type="Generic" x="0.1" name=""/>
+        <terminal uuid="{415bc8c0-73f5-4a95-b1e3-45fbece8b5fc}" orientation="s" y="18" type="Generic" x="-10.5" name=""/>
+    </description>
+</definition>

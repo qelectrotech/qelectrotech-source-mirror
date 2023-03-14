@@ -1,0 +1,105 @@
+<definition type="element" version="0.100.0" width="150" hotspot_y="39" link_type="simple" hotspot_x="80" height="80">
+    <uuid uuid="{0ebfefd8-92c7-4994-b5d4-a1e7ad6ae527}"/>
+    <names>
+        <name lang="en">Indoor Air Quality Gas Sensor CCS811</name>
+        <name lang="cs">Senzor kvality ovzduší CCS811</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1"></elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+    </elementInformations>
+    <informations>Author: KevinarCZ</informations>
+    <description>
+        <line length1="1.5" end2="none" x2="-46.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-46.5" antialias="false" y2="-15" y1="-23.5" end1="none" length2="1.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="12.5" y="26.5"/>
+        <rect ry="0" width="52" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="-56" y="-15" height="30"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-40" y="-26.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-24" y="-26.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-16" y="-26.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-32" y="-26.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="2.5" y="26.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-47" y="26.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-71.5" y="6.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-71.5" y="-8.5"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-17" y="26.5"/>
+        <line length1="1.5" end2="none" x2="-45.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-45.5" antialias="false" y2="23.5" y1="15" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-38.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-38.5" antialias="false" y2="-15" y1="-23.5" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-14.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-14.5" antialias="false" y2="-15" y1="-23.5" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-22.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-22.5" antialias="false" y2="-15" y1="-23.5" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-30.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-30.5" antialias="false" y2="-15" y1="-23.5" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-15.5" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-15.5" antialias="false" y2="26.5" y1="15" end1="none" length2="1.5"/>
+        <text text="MCU" color="#000000" x="-37" rotation="0" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,obyčejné" y="-3"/>
+        <circle diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-48" y="-26.5"/>
+        <line length1="1.5" end2="none" x2="-56" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-68.5" antialias="false" y2="-7" y1="-7" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-56" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-68.5" antialias="false" y2="8" y1="8" end1="none" length2="1.5"/>
+        <rect ry="0" width="30.5" rx="0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="false" x="30" y="-5" height="21"/>
+        <ellipse width="-1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="-15" y="20.5" height="1"/>
+        <line length1="1.5" end2="none" x2="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-45" antialias="false" y2="-25" y1="-25" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-37" antialias="false" y2="-25" y1="-25" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-24" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-29" antialias="false" y2="-25" y1="-25" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-21" antialias="false" y2="-25" y1="-25" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="-17" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-44" antialias="false" y2="28" y1="28" end1="none" length2="1.5"/>
+        <line length1="1.5" end2="none" x2="2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-14" antialias="false" y2="28" y1="28" end1="none" length2="1.5"/>
+        <text text="3" color="#000000" x="-74" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="-9"/>
+        <text text="2" color="#000000" x="-74" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="6"/>
+        <text text="nINT" color="#000000" x="-64" rotation="0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-8"/>
+        <text text="nRESET" color="#000000" x="-68" rotation="0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="6"/>
+        <text text="nWAKE" color="#000000" x="-47" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="26"/>
+        <text text="ADDR" color="#000000" x="-40" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-16"/>
+        <text text="SDA" color="#000000" x="-32" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-16"/>
+        <text text="SCL" color="#000000" x="-24" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-16"/>
+        <text text="VDD" color="#000000" x="-16" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-16"/>
+        <text text="8" color="#000000" x="-44" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="-27"/>
+        <text text="1" color="#000000" x="-36" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="-27"/>
+        <text text="9" color="#000000" x="-28" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="-27"/>
+        <text text="10" color="#000000" x="-21" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="-27"/>
+        <text text="6" color="#000000" x="-13" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="-27"/>
+        <text text="with integrated ADC" color="#000000" x="-46" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="7"/>
+        <line length1="1.5" end2="none" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" antialias="false" y2="6" y1="-5" end1="none" length2="1.5"/>
+        <polygon x3="-47.5" y3="28" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" antialias="false" y2="28" y1="10" closed="false"/>
+        <polygon x3="-48" y3="-25" x2="-70" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-70" antialias="false" y2="-25" y1="-9" closed="false"/>
+        <text text="GND" color="#000000" x="-17" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="26"/>
+        <polygon x3="-4" y3="10" x2="4" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="4" antialias="false" y2="10" y1="26" closed="false"/>
+        <line length1="1.5" end2="none" x2="12" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="6" antialias="false" y2="28" y1="28" end1="none" length2="1.5"/>
+        <polygon x3="-4" y3="5" x2="14" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="14" antialias="false" y2="5" y1="26" closed="false"/>
+        <line length1="1.5" end2="none" x2="30" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-4" antialias="false" y2="0" y1="0" end1="none" length2="1.5"/>
+        <text text="EP" color="#000000" x="-13" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="33"/>
+        <text text="7" color="#000000" x="-43" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="33"/>
+        <text text="4" color="#000000" x="6" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="33"/>
+        <text text="5" color="#000000" x="17" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="33"/>
+        <text text="PWM" color="#000000" x="7" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="20"/>
+        <polygon x3="47" y3="16" x2="47" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-15" antialias="false" y2="21" y1="21" closed="false"/>
+        <text text="Sense" color="#000000" x="17" rotation="270" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="20"/>
+        <circle diameter="1" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x="13.5" y="4.5"/>
+        <line length1="1.5" end2="none" x2="14" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="30" antialias="false" y2="5" y1="5" end1="none" length2="1.5"/>
+        <text text="H-" color="#000000" x="25" rotation="0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="4"/>
+        <text text="S+" color="#000000" x="25" rotation="0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-1"/>
+        <text text="S-" color="#000000" x="48" rotation="0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="19"/>
+        <circle diameter="1" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="false" x="-15" y="-18.5"/>
+        <polygon x3="46" y3="-5" x2="46" style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-14" antialias="false" y2="-18" y1="-18" closed="false"/>
+        <text text="H+" color="#000000" x="47" rotation="0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" y="-6"/>
+        <polygon x3="64" y3="-25" x2="64" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="16" x4="-12.5" antialias="false" y2="28" y1="28" closed="false" y4="-25"/>
+        <text text="MOX" color="#000000" x="38" rotation="0" font="MS Shell Dlg 2,5,-1,5,50,0,0,0,0,0,obyčejné" y="5"/>
+        <text text="Gas Sensor" color="#000000" x="36" rotation="0" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" y="11"/>
+        <terminal type="Generic" name="" orientation="n" x="-14.5" uuid="{4c181e33-e6a0-485d-9626-4724f4ab7d1a}" y="-25"/>
+        <terminal type="Generic" name="" orientation="w" x="-70" uuid="{7eaa10a9-3ad3-4f23-be65-4036fe272a7d}" y="-7"/>
+        <terminal type="Generic" name="" orientation="w" x="-70" uuid="{f3aac5c7-3430-4ea0-a371-5c3a57d2ca7f}" y="8"/>
+        <terminal type="Generic" name="" orientation="s" x="4" uuid="{332e6d04-7d6c-4f5a-a7a9-19285688e9cb}" y="28"/>
+        <terminal type="Generic" name="" orientation="n" x="-30.5" uuid="{2ad8be97-8303-48d7-acef-667ba790f5da}" y="-25"/>
+        <terminal type="Generic" name="" orientation="s" x="14" uuid="{5fed9e6e-9af7-46c1-b4f6-27d71b8fc29a}" y="28"/>
+        <terminal type="Generic" name="" orientation="n" x="-22.5" uuid="{61650cc9-d194-4dce-9e88-0097e8b92766}" y="-25"/>
+        <terminal type="Generic" name="" orientation="s" x="-15.5" uuid="{3e607bfd-61ac-420b-b60e-c15525113c5f}" y="28"/>
+        <terminal type="Generic" name="" orientation="n" x="-46.5" uuid="{0597c909-a252-434b-97ab-9093de1f5632}" y="-25"/>
+        <terminal type="Generic" name="" orientation="s" x="-45.5" uuid="{87b6c831-4bcb-4caf-8b6b-78ff1be8b4ca}" y="28"/>
+        <terminal type="Generic" name="" orientation="n" x="-38.5" uuid="{587b0ead-8462-4169-beec-56b1286a6ba3}" y="-25"/>
+    </description>
+</definition>

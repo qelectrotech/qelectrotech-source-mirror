@@ -1,0 +1,34 @@
+<definition height="80" type="element" width="50" hotspot_y="40" hotspot_x="25" version="0.100.0" link_type="simple">
+    <uuid uuid="{045fba31-4da7-4992-8070-4c88f7de03ba}"/>
+    <names>
+        <name lang="en">LaskaKit LF-2</name>
+        <name lang="cs">LaskaKit LF-2</name>
+    </names>
+    <elementInformations/>
+    <informations>Author: KevinarCZ</informations>
+    <description>
+        <polygon y2="25" x5="20" x2="-20" y4="35" x6="20" y1="-35" y6="-35" x1="-20" y3="35" y5="25" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" x3="-15" x4="15"/>
+        <circle diameter="4" x="-12" y="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="4" x="8" y="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="4" x="-5" y="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="4" x="1" y="-32" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="8" x="-16" y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="8" x="8" y="-8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect ry="0" height="20" rx="0" x="-14" width="10" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <rect ry="0" height="20" rx="0" x="4" width="10" y="15" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <circle diameter="5" x="-11.5" y="27.5" style="line-style:normal;line-weight:normal;filling:HTMLBlueRoyalBlue;color:HTMLBlueRoyalBlue" antialias="false"/>
+        <circle diameter="5" x="-11.5" y="17.5" style="line-style:normal;line-weight:normal;filling:HTMLGrayDarkSlateGray;color:black" antialias="false"/>
+        <circle diameter="5" x="6.5" y="17.5" style="line-style:normal;line-weight:normal;filling:HTMLGrayDarkSlateGray;color:black" antialias="false"/>
+        <circle diameter="5" x="6.5" y="27.5" style="line-style:normal;line-weight:normal;filling:HTMLBlueRoyalBlue;color:HTMLBlueRoyalBlue" antialias="false"/>
+        <line end1="none" y2="25" length2="1.5" x2="12" y1="25" length1="1.5" x1="6" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <line end1="none" y2="25" length2="1.5" x2="-6" y1="25" length1="1.5" x1="-12" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false"/>
+        <text color="#000000" text="+ 5V" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="270" x="-8" y="-13"/>
+        <text color="#000000" text="OUT_L" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="270" x="-2" y="-11"/>
+        <text color="#000000" text="OUT_R" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="270" x="4" y="-11"/>
+        <text color="#000000" text="GND" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="270" x="12" y="-14"/>
+        <terminal type="Generic" name="" x="-10" orientation="n" y="-30" uuid="{95f73f14-e1ea-4c4a-b708-9c762d55c0e0}"/>
+        <terminal type="Generic" name="" x="10" orientation="n" y="-30" uuid="{840717f9-7255-4d7c-9e14-cc0e26125537}"/>
+        <terminal type="Generic" name="" x="3" orientation="n" y="-30" uuid="{e9c54ce3-1cdb-490a-9079-63c657f1c338}"/>
+        <terminal type="Generic" name="" x="-3" orientation="n" y="-30" uuid="{286017a3-3656-43ac-94b7-139efcfe63b8}"/>
+    </description>
+</definition>
