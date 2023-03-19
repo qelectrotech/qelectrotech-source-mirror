@@ -130,6 +130,23 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 terminal_rect = m_pattern->m_terminal_rect[index_];
                     //Draw terminal rect
                 painter->drawRect(terminal_rect);
+                    //Draw a stronger line if the current terminal have level
+                    //and the current level is the first
+                if (real_t_count > 1 && i == 0)
+                {
+                    painter->save();
+                    pen_ = painter->pen();
+                    pen_.setWidth(4);
+                    pen_.setCapStyle(Qt::FlatCap);
+                    painter->setPen(pen_);
+                    const auto p1 { terminal_rect.topLeft() };
+                        //We can't use terminal_rect.bottomLeft for p2 because
+                        //the returned value deviate from the true value
+                        //(see Qt documentation about QRect)
+                    const QPoint p2 { p1.x(), p1.y() + terminal_rect.height() };
+                    painter->drawLine(p1, p2);
+                    painter->restore();
+                }
 
                     //Draw text
                 painter->save();
