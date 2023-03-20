@@ -64,11 +64,6 @@ echo
 echo "______________________________________________________________"
 echo "Run GIT:"
 
-# recupere le numero de la dernière revision
-# Si il y a ':' garde la 2e partie
-# Remplace les lettres par 'rien'
-#revAv=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
-
 # Fait une mise à jour
 git pull
 #git checkout foliolist_position
@@ -181,6 +176,7 @@ echo "Copy file missing:"
 QET_ELMT_DIR="${current_dir}/elements/"
 QET_TBT_DIR="${current_dir}/titleblocks/"
 QET_LANG_DIR="${current_dir}/lang/"
+QET_EXAMPLES_DIR="${current_dir}/examples/"
 
 
 # Add new folder for Qt dialog translation see
@@ -209,6 +205,13 @@ fi
 if [ -d "${LANG_DIR}" ]; then
    echo "Copying translations in the bundle... "
    cp ${current_dir}/lang1/*.qm $BUNDLE/Contents/Resources/lang
+
+fi
+
+if [ -d "${QET_EXAMPLES_DIR}" ]; then
+   echo "Copying examples in the bundle... "
+   mkdir $BUNDLE/Contents/Resources/examples
+   cp ${current_dir}/examples/*.qet $BUNDLE/Contents/Resources/examples
 
 fi
 codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" $BUNDLE
