@@ -214,7 +214,7 @@ if [ -d "${QET_EXAMPLES_DIR}" ]; then
    cp ${current_dir}/examples/*.qet $BUNDLE/Contents/Resources/examples
 
 fi
-codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" $BUNDLE
+codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" --options=runtime $BUNDLE
 ### create zip tarball ###############################################
 
 echo
@@ -222,6 +222,14 @@ echo "______________________________________________________________"
 echo "Create zip tarball:"
 
 /usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+
+### notarize zip tarball ###############################################
+
+echo
+echo "______________________________________________________________"
+echo "Notarize zip tarball:"
+
+xcrun notarytool submit build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip --keychain-profile "org.qelectrotech" --wait 
 
 ### The end, process is done ##########################################
 
