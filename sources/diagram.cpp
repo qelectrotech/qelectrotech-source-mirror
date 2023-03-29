@@ -360,7 +360,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 #pragma message("@TODO move code to new function")
 #endif
 	//Move item with the keyboard arrow
-	if(event->modifiers() == Qt::NoModifier)
+    #ifdef Q_OS_MACOS
+    if(event->modifiers() == Qt::KeypadModifier)
+    #else
+    if(event->modifiers() == Qt::NoModifier)
+    #endif
 	{
 		QSettings settings;
 		int xKeyGrid = settings.value(QStringLiteral("diagrameditor/key_Xgrid"),
@@ -369,26 +373,26 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 									  Diagram::yKeyGrid).toInt();
 		switch(event->key())
 		{
-			case Qt::Key_Left:
+            case Qt::Key_Left:
 				for (Element *item : dc.m_elements)
 				{
-					left_position = item->sceneBoundingRect().x();
+                    left_position = item->sceneBoundingRect().x();
 					if(left_position <= 5)
 						return;
 				}
 				movement = QPointF(-xKeyGrid, 0.0);
-				break;
-			case Qt::Key_Right:
+                break;
+            case Qt::Key_Right:
 				movement = QPointF(+xKeyGrid, 0.0);
 				break;
-			case Qt::Key_Up:
-				for(Element *item : dc.m_elements)
+            case Qt::Key_Up:
+                for(Element *item : dc.m_elements)
 				{
 					top_position = item->sceneBoundingRect().y();
 					if(top_position <= 5)
 						return;
 				}
-				movement = QPointF(0.0, -yKeyGrid);
+                movement = QPointF(0.0, -yKeyGrid);
 				break;
 			case Qt::Key_Down:
 				movement = QPointF(0.0, +yKeyGrid);
@@ -479,7 +483,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 								Qt::AlignRight));
 			}
 		}
-	}
+    }
 	event->ignore();
 	QGraphicsScene::keyPressEvent(event);
 }
