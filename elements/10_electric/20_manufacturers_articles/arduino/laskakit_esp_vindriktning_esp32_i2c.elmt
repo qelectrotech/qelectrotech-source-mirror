@@ -1,0 +1,121 @@
+<definition link_type="simple" hotspot_x="97" hotspot_y="61" height="110" version="0.100.0" type="element" width="180">
+    <uuid uuid="{82615e34-5557-41a8-9049-92f127111a9f}"/>
+    <names>
+        <name lang="en">LaskaKit ESP-Vindriktning ESP-32 I2C</name>
+        <name lang="cs">LaskaKit ESP-Vindriktning ESP-32 I2C</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="quantity"></elementInformation>
+        <elementInformation show="1" name="comment"></elementInformation>
+        <elementInformation show="1" name="unity"></elementInformation>
+        <elementInformation show="1" name="plant"></elementInformation>
+        <elementInformation show="1" name="designation"></elementInformation>
+        <elementInformation show="1" name="manufacturer"></elementInformation>
+        <elementInformation show="1" name="supplier"></elementInformation>
+        <elementInformation show="1" name="label"></elementInformation>
+        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
+        <elementInformation show="1" name="description"></elementInformation>
+    </elementInformations>
+    <informations>Author: KevinarCZ</informations>
+    <description>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="36" rx="0" height="9" antialias="false" x="39" width="21"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23" diameter="6" antialias="false" x="70"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="36" rx="0" height="9" antialias="false" x="12" width="21"/>
+        <text color="#000000" y="35" x="-1" text="   J4&#xa;---------&#xa; +5V&#xa; GND&#xa; IO13&#xa; IO14&#xa; IO27&#xa; IO32" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="51.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="24.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="0" antialias="false" x1="-60" end2="none" y2="0" length1="1.5" x2="-59" end1="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="29.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="56.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="46.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-4" antialias="false" x1="-61" end2="none" y2="-5" length1="1.5" x2="-61" end1="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="19.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="14.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="2" antialias="false" x1="-60" end2="none" y2="2" length1="1.5" x2="-59" end1="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="41.5" diameter="1" antialias="false" x="41.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-4" antialias="false" x1="-64" end2="none" y2="-5" length1="1.5" x2="-64" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-1" antialias="false" x1="-68" end2="none" y2="-1" length1="1.5" x2="-67" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="1" antialias="false" x1="-68" end2="none" y2="1" length1="1.5" x2="-67" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="4" antialias="false" x1="-63" end2="none" y2="3" length1="1.5" x2="-63" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="4" antialias="false" x1="-62" end2="none" y2="3" length1="1.5" x2="-62" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-2" antialias="false" x1="-60" end2="none" y2="-2" length1="1.5" x2="-59" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-4" antialias="false" x1="-62" end2="none" y2="-5" length1="1.5" x2="-62" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-1" antialias="false" x1="-60" end2="none" y2="-1" length1="1.5" x2="-59" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-3" antialias="false" x1="-68" end2="none" y2="-3" length1="1.5" x2="-67" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="1" antialias="false" x1="-60" end2="none" y2="1" length1="1.5" x2="-59" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="2" antialias="false" x1="-68" end2="none" y2="2" length1="1.5" x2="-67" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="4" antialias="false" x1="-61" end2="none" y2="3" length1="1.5" x2="-61" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-4" antialias="false" x1="-63" end2="none" y2="-5" length1="1.5" x2="-63" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-3" antialias="false" x1="-60" end2="none" y2="-3" length1="1.5" x2="-59" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="0" antialias="false" x1="-68" end2="none" y2="0" length1="1.5" x2="-67" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="4" antialias="false" x1="-64" end2="none" y2="3" length1="1.5" x2="-64" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-2" antialias="false" x1="-68" end2="none" y2="-2" length1="1.5" x2="-67" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="4" antialias="false" x1="-65" end2="none" y2="3" length1="1.5" x2="-65" end1="none"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="12" rx="0" height="10" antialias="false" x="-71" width="15"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="4" antialias="false" x1="-66" end2="none" y2="3" length1="1.5" x2="-66" end1="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="17" diameter="6" antialias="false" x="-80"/>
+        <circle style="line-style:normal;line-weight:normal;filling:black;color:black" y="14.5" diameter="5" antialias="false" x="-66.2"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23" diameter="6" antialias="false" x="-80"/>
+        <rect ry="5" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" rx="5" height="20" antialias="false" x="-90" width="5"/>
+        <text color="#000000" y="22" x="-52" text="RESET" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="270"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5" y1="-6" antialias="false" x1="-87.5" end2="none" y2="6" length1="1.5" x2="-87.5" end1="none"/>
+        <text color="#000000" y="-20" x="-70" text="ESP - VINDRIKTNING&#xa;            v3.0" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="0"/>
+        <text color="#000000" y="-23" x="-36" text="BUZZER = IO15" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="-43" x="-29" text="IR RCV = IO26" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="-20" x="-29" text="OPT0 = IO33 (ADC1 CH5)" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-4" rx="0" height="7" antialias="false" x="-67" width="7"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-4" antialias="false" x1="-66" end2="none" y2="-5" length1="1.5" x2="-66" end1="none"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5" y1="-4" antialias="false" x1="-65" end2="none" y2="-5" length1="1.5" x2="-65" end1="none"/>
+        <polygon x7="70" x1="-93" y11="45" y8="-25" x6="70" y12="25" style="line-style:normal;line-weight:normal;filling:none;color:black" x5="-32" y4="-25" y7="-25" x12="-32" x13="-82" y3="-25" x14="-82" y10="45" x11="-32" y6="-45" x2="-82" antialias="false" y5="-45" y13="25" y15="15" x4="-32" y14="15" x3="-82" y1="-15" x10="68" y2="-15" x9="78" x15="-93" x8="78" y9="35"/>
+        <text color="#000000" y="8" x="-84" text="J1" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="-43" x="-24" text="SENSOR = UART 2" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="-13" x="-24" text="FAN = IO12" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="-43" x="-19" text="I2C = +3V3, GND, SCL, SDA" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="25" x="-1" text="   J3&#xa;---------&#xa;+3v3&#xa; GND&#xa;  IO5&#xa; IO18&#xa; IO19&#xa; IO23" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="-36" x="-7" text="l á s k a k i t" font="MS Shell Dlg 2,4,-1,5,75,0,0,0,0,0,tučné" rotation="90"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-24" diameter="4" antialias="false" x="60"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30" diameter="4" antialias="false" x="60"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-36" diameter="4" antialias="false" x="60"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="-42" diameter="4" antialias="false" x="60"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-45" rx="0" height="45" antialias="false" x="9" width="45"/>
+        <rect ry="0" style="line-style:normal;line-weight:thin;filling:HTMLGrayGainsboro;color:black" y="-42" rx="0" height="39" antialias="false" x="12" width="39"/>
+        <text color="#000000" y="-35" x="22" text="ESSPRESS f" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="0"/>
+        <text color="#000000" y="-27" x="15" text="ESP-32-WROOM-32" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="0"/>
+        <text color="#000000" y="-18" x="61" text="I2C" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10" rx="0" height="9" antialias="false" x="70" width="5"/>
+        <text color="#000000" y="-10" x="65" text="µSUP" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="9" rx="0" height="21" antialias="false" x="61" width="9"/>
+        <text color="#000000" y="12" x="72" text="SENSOR" font="MS Shell Dlg 2,3,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="11.5" diameter="1" antialias="false" x="66.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="16.5" diameter="1" antialias="false" x="66.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="21.5" diameter="1" antialias="false" x="66.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" y="26.5" diameter="1" antialias="false" x="66.5"/>
+        <text color="#000000" y="39" x="62" text="J3" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <text color="#000000" y="39" x="8" text="J4" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="20" rx="0" height="10" antialias="false" x="12" width="21"/>
+        <text color="#000000" y="22" x="8" text="FAN" font="MS Shell Dlg 2,2,-1,5,50,0,0,0,0,0,obyčejné" rotation="90"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:HTMLBrownCornsilk;color:black" y="20" rx="0" height="10" antialias="false" x="15" width="15"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:HTMLBrownCornsilk;color:black" y="-8" rx="0" height="5" antialias="false" x="70" width="5"/>
+        <rect ry="2" style="line-style:normal;line-weight:thin;filling:white;color:black" y="20" rx="2" height="9" antialias="false" x="39" width="17"/>
+        <rect ry="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-57" rx="0" height="12" antialias="false" x="9" width="45"/>
+        <polygon x7="27" x1="12" y11="-55" y8="-51" x6="22" y12="-51" style="line-style:normal;line-weight:normal;filling:none;color:white" x5="22" y4="-51" x16="50" y7="-55" x12="37" x13="42" y3="-55" x14="42" y10="-55" x11="37" closed="false" y6="-55" x2="12" antialias="false" y5="-51" y13="-51" y15="-55" x4="17" y14="-55" x3="17" y1="-47" y16="-47" x10="32" y2="-55" x9="32" x15="50" x8="27" y9="-51"/>
+        <line style="line-style:normal;line-weight:normal;filling:none;color:white" length2="1.5" y1="-55" antialias="false" x1="46" end2="none" y2="-47" length1="1.5" x2="46" end1="none"/>
+        <terminal y="42" orientation="s" x="57" uuid="{23078511-0bb4-4350-b61f-a2fe1af04065}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="30" uuid="{e207c45f-69cc-4f36-9878-bf8f2b65ebae}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="47" uuid="{1c875cc5-98ba-4319-b796-3884cce576f4}" name="" type="Generic"/>
+        <terminal y="12" orientation="e" x="67" uuid="{c07bab7f-e1c0-4834-a766-20d154e8e9f0}" name="" type="Generic"/>
+        <terminal y="-22" orientation="e" x="62" uuid="{2392ec07-1302-4640-9cb3-0fe3f1dc62f0}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="15" uuid="{52819082-4aaa-494c-8ade-a582c52908fe}" name="" type="Generic"/>
+        <terminal y="22" orientation="e" x="67" uuid="{f9c7dbcc-6f00-4822-887d-be9739670ca5}" name="" type="Generic"/>
+        <terminal y="17" orientation="e" x="67" uuid="{091d9801-ef5e-4f0d-b485-74cb7b87742d}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="42" uuid="{4874ef83-f2c1-41a0-a28a-6cacc365ec79}" name="" type="Generic"/>
+        <terminal y="27" orientation="e" x="67" uuid="{78ccea3d-8fdd-4211-a3a0-ba746bd6f912}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="52" uuid="{e7ba91e3-29d7-452b-a740-eb41160a05e6}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="20" uuid="{28a78e50-ac05-456e-9b6f-32b520f28c83}" name="" type="Generic"/>
+        <terminal y="-40" orientation="e" x="62" uuid="{2a3b3d54-5987-46d2-ba2d-9ff76cdb3441}" name="" type="Generic"/>
+        <terminal y="42" orientation="s" x="25" uuid="{f7974a32-3834-4314-b82e-1e6d39073149}" name="" type="Generic"/>
+        <terminal y="-28" orientation="e" x="62" uuid="{1f1ac60f-8e7d-44ec-ba28-26ad55adbe76}" name="" type="Generic"/>
+        <terminal y="-34" orientation="e" x="62" uuid="{d0660a10-5331-4caf-abb8-56e438e9fcb0}" name="" type="Generic"/>
+    </description>
+</definition>
