@@ -224,12 +224,18 @@ echo "Create zip tarball:"
 /usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
 
 ### notarize zip tarball ###############################################
-
+echo  -e "\033[1;31mWould you like to upload for Notarize packages "${APPNAME}"-"$VERSION"-"r$HEAD-arm64.zip", n/Y?.\033[m"
+read a
+if [[ $a == "Y" || $a == "y" ]]; then
 echo
 echo "______________________________________________________________"
 echo "Notarize zip tarball:"
 
 xcrun notarytool submit build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip --keychain-profile "org.qelectrotech" --wait 
+else
+echo  -e "\033[1;33mExit.\033[m"
+
+fi
 
 ### The end, process is done ##########################################
 
@@ -259,6 +265,31 @@ echo The disque image is in the folder \'build-aux/mac-osx\'.
 #     echo
 #fi 
 
+# Clean up disk folder
+echo 'Cleaning up... '
+rm "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+
+# staple the app
+echo  -e "\033[1;31mWould you like to  staple the app MacOS packages "${APPNAME}"-"$VERSION"-"r$HEAD", n/Y?.\033[m"
+read a
+if [[ $a == "Y" || $a == "y" ]]; then
+xcrun stapler staple -v $BUNDLE
+else
+echo  -e "\033[1;33mExit.\033[m"
+
+fi
+
+
+echo
+echo "______________________________________________________________"
+echo "Re Create zip tarball:"
+
+/usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+
+
+# Clean up disk folder
+echo 'Cleaning up... '
+rm -rf $BUNDLE
 
 
 #rsync to TF DMG builds
