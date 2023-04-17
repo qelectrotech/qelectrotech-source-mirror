@@ -251,7 +251,6 @@ void ConductorTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 void ConductorTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 {
 	Q_UNUSED(e);
-	qDebug() << "Leave mouse over";
 	m_mouse_hover = false;
 	update();
 }
