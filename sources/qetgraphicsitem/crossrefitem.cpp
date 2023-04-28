@@ -765,7 +765,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 	else if (flags &SW)
 	{
 		bounding_rect = QRectF(0, offset, 24, 20);
-		bounding_rect.adjust(-20, -4, 4, 4);
+		bounding_rect.adjust(0, -4, 4, 4);
 
 			//draw the NO side
 		painter.drawLine(0, offset+6, 8, offset+6);
@@ -832,7 +832,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 	else if(flags &Other)
 	{
 		bounding_rect = QRectF(0, offset, 24, 20);
-		bounding_rect.adjust(-20, -4, 4, 4);
+		bounding_rect.adjust(0, -4, 4, 4);
 	
 			//Draw the first arc symbol
 		QRectF r(8, offset+4, 5, 3);
