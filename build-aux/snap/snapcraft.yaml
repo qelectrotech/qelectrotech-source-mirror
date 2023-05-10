@@ -1,6 +1,6 @@
 name: qelectrotech
 title: QElectroTech
-base: core22
+base: core20
 adopt-info: qelectrotech
 license: GPL-2.0
 summary: Electrical diagram editor
@@ -68,14 +68,14 @@ parts:
   kde-sdk-setup:
     plugin: nil
     build-snaps:
-      - kde-frameworks-5-102-qt-5-15-8-core22-sdk
+      - kde-frameworks-5-99-qt-5-15-7-core20-sdk
     build-packages:
       - g++
       - mesa-common-dev
       - libglvnd-dev
       - rsync
     override-build: |
-      rsync -a --ignore-existing /snap/kde-frameworks-5-102-qt-5-15-8-core22-sdk/current/ /
+      rsync -a --ignore-existing /snap/kde-frameworks-5-99-qt-5-15-7-core20-sdk/current/ /
 
   dxf-to-qet:
     after: [kde-sdk-setup]
@@ -113,10 +113,10 @@ parts:
   cleanup:
     after: [qelectrotech, dxf-to-qet, qet-tb-generator]
     plugin: nil
-    build-snaps: [kde-frameworks-5-102-qt-5-15-8-core22]
+    build-snaps: [kde-frameworks-5-99-qt-5-15-7-core20]
     override-prime: |
       set -eux
-      for snap in "kde-frameworks-5-102-qt-5-15-8-core22"; do  # List all content-snaps you're using here
+      for snap in "kde-frameworks-5-99-qt-5-15-7-core20"; do  # List all content-snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
       done
       for cruft in bug lintian man; do
