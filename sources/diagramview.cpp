@@ -1219,6 +1219,11 @@ QList<QAction *> DiagramView::contextMenuActions() const
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
+	QGraphicsView::contextMenuEvent(e);
+	if(e->isAccepted())
+	return;
+
+
 	if (auto qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
 	{
 		if (!qgi->isSelected()) {
