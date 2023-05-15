@@ -1,5 +1,5 @@
 /*
-    Copyright 2006-2022 The QElectroTech Team
+    Copyright 2006-2023 The QElectroTech Team
     This file is part of QElectroTech.
 
     QElectroTech is free software: you can redistribute it and/or modify
@@ -19,32 +19,74 @@
 #define TERMINALSTRIPDRAWER_H
 
 #include <QPointer>
+
 #include "properties/terminalstriplayoutpattern.h"
 
 class QPainter;
 class TerminalStrip;
 
-class TerminalStripDrawer
+namespace TerminalStripDrawer
 {
-    public:
-        TerminalStripDrawer(QPointer<TerminalStrip> strip = QPointer<TerminalStrip>(),
-                            QSharedPointer<TerminalStripLayoutPattern> layout = QSharedPointer<TerminalStripLayoutPattern>());
+    class AbstractBridgeInterface
+    {
+        public:
+            AbstractBridgeInterface() {}
+            virtual ~AbstractBridgeInterface() {}
+            virtual QUuid uuid() const = 0;
+    };
 
-        void setStrip(TerminalStrip *strip);
-        void paint(QPainter *painter);
-        QRectF boundingRect() const;
+    class AbstractRealTerminalInterface
+    {
+        public:
+            AbstractRealTerminalInterface() {}
+            virtual ~AbstractRealTerminalInterface() {}
+            virtual QString label() const = 0;
+            virtual bool isBridged() const = 0;
+            virtual AbstractBridgeInterface* bridge() const = 0;
+    };
 
-        void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
-        bool haveLayout() const;
+    class AbstractPhysicalTerminalInterface
+    {
+        public:
+            AbstractPhysicalTerminalInterface() {}
+            virtual ~AbstractPhysicalTerminalInterface() {}
+            virtual QVector<QSharedPointer<AbstractRealTerminalInterface>> realTerminals() const = 0;
+    };
 
-    private:
-        int height() const;
-        int width() const;
+    class AbstractTerminalStripInterface
+    {
+        public:
+            AbstractTerminalStripInterface() {}
+            virtual ~AbstractTerminalStripInterface() {}
+            virtual QString installation() const = 0;
+            virtual QString location() const = 0;
+            virtual QString name() const = 0;
+            virtual QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const = 0;
+            virtual bool operator()() = 0;
+    };
 
-    private:
-        QPointer<TerminalStrip> m_strip;
-        QSharedPointer<TerminalStripLayoutPattern> m_pattern;
-        bool m_debug_draw { false };
-};
+    class TerminalStripDrawer
+    {
+        public:
+            TerminalStripDrawer(QPointer<TerminalStrip> strip = QPointer<TerminalStrip>(),
+                                QSharedPointer<TerminalStripLayoutPattern> layout = QSharedPointer<TerminalStripLayoutPattern>());
+
+            void setStrip(TerminalStrip *strip);
+            void paint(QPainter *painter);
+            QRectF boundingRect() const;
+
+            void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+            bool haveLayout() const;
+
+        private:
+            int height() const;
+            int width() const;
+
+        private:
+            QScopedPointer <AbstractTerminalStripInterface> m_strip;
+            QSharedPointer<TerminalStripLayoutPattern> m_pattern;
+            bool m_debug_draw { false };
+    };
+}
 
 #endif // TERMINALSTRIPDRAWER_H

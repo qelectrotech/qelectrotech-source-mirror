@@ -22,6 +22,9 @@
 #include "../realterminal.h"
 #include "../terminalstrip.h"
 #include "../terminalstripbridge.h"
+#include "trueterminalstrip.h"
+
+namespace TerminalStripDrawer {
 
 /**
  * @brief TerminalStripDrawer::TerminalStripDrawer
@@ -30,13 +33,13 @@
  */
 TerminalStripDrawer::TerminalStripDrawer(QPointer<TerminalStrip> strip,
                                          QSharedPointer<TerminalStripLayoutPattern> layout) :
-    m_strip(strip),
+    m_strip{new TrueTerminalStrip{strip.data()}},
     m_pattern(layout)
 {}
 
 void TerminalStripDrawer::setStrip(TerminalStrip *strip)
 {
-    m_strip = strip;
+    m_strip.reset(new TrueTerminalStrip{strip});
 }
 
 /**
@@ -115,8 +118,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
         for (const auto &physical_t : m_strip->physicalTerminal())
         {
                 //Get the good offset according to how many level have the current physical terminal
-            const QVector<QSharedPointer<RealTerminal>> real_terminal{physical_t->realTerminals()};
-            const auto real_t_count{real_terminal.size()};
+            const QVector<QSharedPointer<AbstractRealTerminalInterface>> real_terminal_vector{physical_t->realTerminals()};
+            const auto real_t_count{real_terminal_vector.size()};
             const auto offset_{4 - real_t_count};
 
                 //Loop over real terminals
@@ -162,7 +165,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                     text_rect.setRect(0, 0, rect_.height(), rect_.width());
                 }
 
-                const auto shared_real_terminal{real_terminal[i]};
+                const auto shared_real_terminal{real_terminal_vector[i]};
                 painter->drawText(text_rect,
                                   shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
                                   terminals_text_option[index_]);
@@ -179,7 +182,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 if (shared_real_terminal->isBridged())
                 {
                     painter->save();
-                    if (const auto bridge_ = shared_real_terminal->bridge())
+                    if (QScopedPointer<AbstractBridgeInterface> bridge_ {
+                        shared_real_terminal->bridge() })
                     {
                         const auto x_anchor{terminal_rect.width()/2};
                         const auto y_anchor {m_pattern->m_bridge_point_y_offset[index_]};
@@ -261,8 +265,8 @@ int TerminalStripDrawer::width() const
             for (const auto &physical_t : m_strip->physicalTerminal())
             {
                 //Get the good offset according to how many level have the current physical terminal
-                const QVector<QSharedPointer<RealTerminal>> real_terminal{physical_t->realTerminals()};
-                const auto real_t_count{real_terminal.size()};
+                const QVector<QSharedPointer<AbstractRealTerminalInterface>> real_terminal_vector{physical_t->realTerminals()};
+                const auto real_t_count{real_terminal_vector.size()};
                 const auto offset_{4 - real_t_count};
 
                 //Loop over real terminals
@@ -283,3 +287,5 @@ int TerminalStripDrawer::width() const
 
     return 0;
 }
+
+} //End namespace TerminalStripDrawer
