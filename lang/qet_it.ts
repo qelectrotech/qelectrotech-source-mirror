@@ -6,7 +6,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="20"/>
         <source>À propos de QElectrotech</source>
-        <translation type="unfinished">A proposito di QElectroTech</translation>
+        <translation>A proposito di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="30"/>
@@ -26,7 +26,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="216"/>
         <source>Contributeurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Contributori</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="296"/>
@@ -36,7 +36,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="348"/>
         <source>Projet annexe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Allegati al progetto</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="428"/>
@@ -199,7 +199,7 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="127"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="128"/>
         <source>Traduction en Turc</source>
-        <translation type="unfinished">Traduzione in Turco</translation>
+        <translation type="unfinished">Traduzione in turco</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="129"/>
@@ -209,17 +209,17 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="130"/>
         <source>Traduction en serbe</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Traduzione in serbo</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="133"/>
         <source>Traduction en japonais</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Traduzione in giapponese</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en mongol</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Traduzione in mongolo</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="143"/>
@@ -284,13 +284,13 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="176"/>
         <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ridimensionamento degli elementi</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="180"/>
         <source>Convertisseur d&apos;élément DXF</source>
         <comment>Dxf2elmt</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conversione elementi DXF</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="182"/>
@@ -301,28 +301,28 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="160"/>
         <source>Paquets Snap</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pacchetti Snap</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="131"/>
         <source>Traduction en ukrainien</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Traduzione in ucraino</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="132"/>
         <source>Traduction en norvégien</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Traduzione in norvegese</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Traduction en slovène</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Traduzione in sloveno</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="178"/>
         <source>Générateur d&apos;élément lambda</source>
         <comment>Lambda element generator</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Generatore elementi lambda</translation>
     </message>
 </context>
 <context>
@@ -456,7 +456,7 @@
     <message>
         <location filename="../sources/TerminalStrip/ui/addterminalstripitemdialog.ui" line="20"/>
         <source>Ajouter le plan de bornes suivant :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aggiunge il piano di terminali seguente :</translation>
     </message>
 </context>
 <context>
@@ -805,7 +805,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1645"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1650"/>
@@ -830,7 +830,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="76"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertiesdialog.cpp" line="80"/>
@@ -864,7 +864,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="274"/>
         <source>bus</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">bus</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="388"/>
@@ -3345,7 +3345,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
         <source>Langues</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingue</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="407"/>
@@ -3375,7 +3375,7 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
-        <translation type="unfinished"></translation>
+        <translation>Metodo di scaling per display ad alta densità (hdpi) (Applica al prossimo avvio di QElectroTech) :</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
@@ -3487,7 +3487,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Utilizzare le fin&amp;estre (applicato al prossivo avvio de QElectroTech)</translation>
+        <translation>Utilizzare le finestre (applicato al prossivo avvio de QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
@@ -3670,7 +3670,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <location filename="../sources/genericpanel.cpp" line="214"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished">Nessun file</translation>
+        <translation>Nessun file</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="220"/>
@@ -3682,7 +3682,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <location filename="../sources/genericpanel.cpp" line="348"/>
         <source>Folio sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished"></translation>
+        <translation >Pagina senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="360"/>
@@ -4101,7 +4101,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="47"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished">impossibile accedere alla categoria genitore</translation>
+        <translation>Impossibile accedere alla categoria genitore</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="48"/>
@@ -4113,7 +4113,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="88"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="153"/>
@@ -4124,31 +4124,31 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="157"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished">Il modello è già stato integrato nel progetto. Tuttavia, la versione che tenti di applicare semra diversa. Che vuoi fare?</translation>
+        <translation>Il modello è già stato integrato nel progetto. Tuttavia, la versione che tenti di applicare sembra diversa. Cosa vuoi fare?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="169"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Utilizzare il modello già integrato</translation>
+        <translation>Utilizzare il modello già integrato</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="178"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Integrare il modello inserito</translation>
+        <translation >Integrare il modello inserito</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="188"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Eliminare il modello già inserito</translation>
+        <translation >Eliminare il modello già inserito</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="198"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Far coesistere i due modelli</translation>
+        <translation >Far coesistere i due modelli</translation>
     </message>
 </context>
 <context>
@@ -4604,13 +4604,13 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/ui/configpage/configpages.cpp" line="203"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">Nuova pagina</translation>
+        <translation>Nuova pagina</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">Nuovo progetto</translation>
+        <translation>Nuovo progetto</translation>
     </message>
 </context>
 <context>
@@ -4619,7 +4619,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/newelementwizard.cpp" line="48"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
-        <translation type="unfinished">Crea un nuovo elemento: Assistente</translation>
+        <translation>Crea un nuovo elemento: Assistente</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="49"/>
@@ -4630,7 +4630,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/newelementwizard.cpp" line="84"/>
         <source>Étape 1/3 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 1 di 4: Categoria relativa</translation>
+        <translation type="unfinished">Passo 1 di 3: Categoria relativa</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="85"/>
@@ -4642,7 +4642,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/newelementwizard.cpp" line="111"/>
         <source>Étape 2/3 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 2 di 4: Nome del file</translation>
+        <translation type="unfinished">Passo 2 di 3: Nome del file</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="112"/>
@@ -4654,7 +4654,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/newelementwizard.cpp" line="136"/>
         <source>Étape 3/3 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished">Passo 3 di 4: Nome dell&apos;elemento</translation>
+        <translation type="unfinished">Passo 3 di 3: Nome dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
@@ -4666,7 +4666,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/newelementwizard.cpp" line="142"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
-        <translation type="unfinished">Nome del nuovo elemento</translation>
+        <translation>Nome del nuovo elemento</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="200"/>
@@ -4674,19 +4674,19 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/newelementwizard.cpp" line="231"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="201"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Devi selezionare una categoria.</translation>
+        <translation>Devi selezionare una categoria.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="219"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Devi inserire il nome del file</translation>
+        <translation>Devi inserire il nome del file</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="117"/>
@@ -4939,13 +4939,13 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="237"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="239"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Il poligono deve contenere almeno due punti.</translation>
+        <translation>Il poligono deve contenere almeno due punti.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/polygoneditor.cpp" line="331"/>
@@ -5281,7 +5281,7 @@ Funzione : %1</translation>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="433"/>
         <source>Folio sans titre</source>
-        <translation>Folio senza titolo</translation>
+        <translation>Pagina senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
@@ -5426,7 +5426,7 @@ Funzione : %1</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="335"/>
         <source>sansnom</source>
-        <translation>sena nome</translation>
+        <translation>senza nome</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="669"/>
@@ -5472,7 +5472,7 @@ Do you want to save changes?</translation>
         <location filename="../sources/projectview.cpp" line="384"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Eliminare la pagina?</translation>
+        <translation>Eliminare la pagina?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="385"/>
@@ -6219,7 +6219,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cancellazioni</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
@@ -6413,7 +6413,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aggiunge una riga</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
@@ -6448,7 +6448,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="595"/>
         <source>SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">SPAZIO</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
@@ -6519,7 +6519,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
         <source>Ajouter un plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aggiunge un piano di terminali</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
@@ -6763,7 +6763,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="162"/>
         <source>Affichage</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Visualizzazione</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="177"/>
@@ -6773,7 +6773,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="190"/>
         <source>Annulation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Annulla</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="331"/>
@@ -6783,17 +6783,17 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="340"/>
         <source>Un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un file</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="349"/>
         <source>Un élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="394"/>
         <source>Éditer les propriétés de l&apos;élément</source>
-        <translation>Modificare le propietà dell&apos;elemento</translation>
+        <translation>Modificare le proprietà dell&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="439"/>
@@ -6853,12 +6853,12 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="502"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spazio</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="511"/>
         <source>Importer un dxf</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Importa un dxf</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="278"/>
@@ -7600,7 +7600,7 @@ Rendere eseguibile il file con il comando: chmod +x ./DXFtoQET
         <location filename="../sources/qetproject.cpp" line="400"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Progetto senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="409"/>
@@ -8172,7 +8172,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="270"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Modifica il testo</translation>
+        <translation>Modifica il testo</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="322"/>
@@ -8496,7 +8496,7 @@ La si vuole sostituire ?</translation>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="62"/>
         <source>Projet sans titre</source>
-        <translation>Untitled project</translation>
+        <translation>Progetto senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="205"/>
@@ -12643,7 +12643,7 @@ Gli altri campi non sono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="24"/>
         <source>Disposition</source>
-        <translation type="unfinished"></translation>
+        <translation>Disposizione</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="240"/>
@@ -12658,17 +12658,17 @@ Gli altri campi non sono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="258"/>
         <source>Propriétés</source>
-        <translation type="unfinished">Proprietà</translation>
+        <translation>Proprietà</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="264"/>
         <source>Nom :</source>
-        <translation type="unfinished">Nome:</translation>
+        <translation type="unfinished">Nome :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="271"/>
         <source>Commentaire :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Commento :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="301"/>
@@ -12678,17 +12678,17 @@ Gli altri campi non sono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="278"/>
         <source>Installation :</source>
-        <translation type="unfinished">Installazione:</translation>
+        <translation>Installazione :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="294"/>
         <source>Localisation :</source>
-        <translation type="unfinished"></translation>
+        <translation>Localizzazione :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="87"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="233"/>
@@ -12699,17 +12699,17 @@ Gli altri campi non sono usati.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="108"/>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="187"/>
         <source>Générique</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Generico</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Forma</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="60"/>
         <source>Effectuer le déplacement</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Effettuare il piazzamento</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="97"/>
@@ -12719,17 +12719,17 @@ Gli altri campi non sono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="113"/>
         <source>Fusible</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fusibile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="118"/>
         <source>Sectionnable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sezionabile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="123"/>
         <source>Diode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diodo</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="128"/>
@@ -12759,7 +12759,7 @@ Gli altri campi non sono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="77"/>
         <source>Étage :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stadio :</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="226"/>
@@ -12774,12 +12774,12 @@ Gli altri campi non sono usati.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="40"/>
         <source>Sans</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Senza</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="45"/>
         <source>Avec</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Con</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="136"/>
