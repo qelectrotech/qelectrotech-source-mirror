@@ -1,0 +1,53 @@
+<definition height="160" width="30" hotspot_y="88" link_type="thumbnail" type="element" hotspot_x="15" version="0.100.0">
+    <names>
+        <name lang="de">2206-8035 1L+6L schwarz</name>
+        <name lang="cs">2206-8035 1L+6L černá</name>
+        <name lang="en">2206-8035 1L+6L black</name>
+        <name lang="fr">2206-8035 1L+6L noir</name>
+    </names>
+    <kindInformations/>
+    <elementInformations>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+        <elementInformation show="1" name="designation">2206-8035</elementInformation>
+        <elementInformation show="1" name="description">6mm² 1L+6L</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <polygon x2="9" x4="-9" y4="-82.3" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-82.3" y2="65" x3="-9" antialias="false" x1="9" y3="65"/>
+        <rect ry="0" height="6" width="6" y="-46" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="1"/>
+        <rect ry="0" height="6" width="6" y="-25" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="1"/>
+        <polygon x2="9" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y1="-80" y2="-80" closed="false" antialias="false" x1="-9"/>
+        <circle y="-34" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8" x="0"/>
+        <circle y="-34" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8" x="-8"/>
+        <rect ry="0" height="6" width="6" y="-66" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="1"/>
+        <rect ry="0" height="19" width="18" y="-9.5" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" rx="0" antialias="false" x="-9"/>
+        <circle y="-55" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8" x="-8"/>
+        <circle y="-75" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8" x="-8"/>
+        <rect ry="0" height="7.5" width="7.5" y="-8" style="line-style:normal;line-weight:thin;filling:gray;color:black" rx="0" antialias="false" x="0.5"/>
+        <circle y="-55" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8" x="0"/>
+        <circle y="-75" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="8" x="0"/>
+        <rect ry="0" height="6" width="6" y="-46" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="-7"/>
+        <rect ry="0" height="7.5" width="7.5" y="-8" style="line-style:normal;line-weight:thin;filling:gray;color:black" rx="0" antialias="false" x="-8"/>
+        <rect ry="0" height="6" width="6" y="-66" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="-7"/>
+        <rect ry="0" height="3" width="3" y="-5.75" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" rx="0" antialias="false" x="-5.75"/>
+        <dynamic_text rotation="90" font="Sans Serif,4,-1,5,25,0,0,0,0,0" Halignment="AlignHCenter" Valignment="AlignVCenter" keep_visual_rotation="true" y="20" text_width="-1" text_from="ElementInfo" z="17" frame="false" x="8" uuid="{96477b97-cb32-430e-b7f3-d40524511543}">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <rect ry="0" height="3" width="3" y="-5.75" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" rx="0" antialias="false" x="2.75"/>
+        <ellipse height="18" width="16" y="44" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" x="-8"/>
+        <polygon x2="9" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" y1="64" y2="64" closed="false" antialias="false" x1="-9"/>
+        <rect ry="0" height="8" width="14" y="35" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="-7"/>
+        <rect ry="0" height="2" width="14" y="38" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="-7"/>
+        <rect ry="0" height="19" width="18" y="14" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" rx="0" antialias="false" x="-9"/>
+        <rect ry="0" height="9" width="18" y="19.5" style="line-style:normal;line-weight:thin;filling:none;color:lightgray" rx="0" antialias="false" x="-9"/>
+        <rect ry="0" height="7.5" width="7.5" y="0.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" rx="0" antialias="false" x="-8"/>
+        <rect ry="0" height="3" width="3" y="2.75" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" rx="0" antialias="false" x="-5.75"/>
+        <rect ry="0" height="7.5" width="7.5" y="0.5" style="line-style:normal;line-weight:thin;filling:gray;color:black" rx="0" antialias="false" x="0.5"/>
+        <rect ry="0" height="3" width="3" y="2.75" style="line-style:normal;line-weight:thin;filling:HTMLGraySlateGray;color:black" rx="0" antialias="false" x="2.75"/>
+        <circle y="-16" style="line-style:normal;line-weight:thin;filling:gray;color:black" antialias="false" diameter="4" x="-2"/>
+        <rect ry="0" height="6" width="6" y="-25" style="line-style:normal;line-weight:thin;filling:HTMLOrangeOrange;color:black" rx="0" antialias="false" x="-7"/>
+    </description>
+</definition>
