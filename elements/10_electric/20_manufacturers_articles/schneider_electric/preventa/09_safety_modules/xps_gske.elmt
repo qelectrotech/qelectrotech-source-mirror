@@ -2,6 +2,7 @@
 <uuid uuid="{87E3FAA8-8FE9-447D-8788-3D4FDEF28A74}"/><names>
         <name lang="ar">XPS-GSKE</name>
         <name lang="en">XPS-GSKE</name>
+        <name lang="de">XPS-GSKE</name>
         <name lang="fr">XPS-GSKE</name>
         <name lang="pl">XPS-GSKE</name>
         <name lang="cs">XPS-GSKE</name>
@@ -43,12 +44,12 @@
         <terminal x="-190" y="-60" orientation="n"/>
         <terminal x="-160" y="-60" orientation="n"/>
         <terminal x="-130" y="-60" orientation="n"/>
-        <terminal x="-90" y="-59.2463" orientation="n"/>
-        <terminal x="-50" y="-59.2463" orientation="n"/>
-        <terminal x="30" y="-59.2463" orientation="n"/>
-        <terminal x="100" y="-59.2463" orientation="n"/>
-        <terminal x="170" y="-59.2463" orientation="n"/>
-        <terminal x="240" y="-59.2463" orientation="n"/>
+        <terminal x="-90" y="-60" orientation="n"/>
+        <terminal x="-50" y="-60" orientation="n"/>
+        <terminal x="30" y="-60" orientation="n"/>
+        <terminal x="100" y="-60" orientation="n"/>
+        <terminal x="170" y="-60" orientation="n"/>
+        <terminal x="240" y="-60" orientation="n"/>
         <terminal x="-190" y="70" orientation="s"/>
         <terminal x="-160" y="70" orientation="s"/>
         <terminal x="-130" y="70" orientation="s"/>

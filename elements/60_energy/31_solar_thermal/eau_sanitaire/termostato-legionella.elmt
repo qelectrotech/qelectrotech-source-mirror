@@ -36,6 +36,6 @@
         <input size="4" text="Legionella" tagg="label" y="-29.3702" rotate="true" x="-15"/>
         <terminal orientation="s" y="0" x="-10"/>
         <terminal orientation="s" y="0" x="10"/>
-        <terminal orientation="s" y="-0.0823937" x="0.74"/>
+        <terminal orientation="s" y="0" x="0.74"/>
     </description>
 </definition>

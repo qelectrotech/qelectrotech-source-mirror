@@ -49,9 +49,9 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <polygon x4="16.168" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="14.4345" x1="16.168" y2="12.8552" x2="18.8653" y3="16.0138" x3="18.8653" y4="14.4345"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.4345" x1="18.8653" y2="14.4345" x2="22.2368"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-12.1333" x1="16.168" y2="-18.3257" x2="20.2023"/>
-        <terminal x="0.0307027" y="-43.6027" orientation="n"/>
-        <terminal x="0.0307027" y="44.5303" orientation="s"/>
-        <terminal x="0.0307027" y="-28.4725" orientation="e"/>
+        <terminal x="0" y="-43.6027" orientation="n"/>
+        <terminal x="0" y="44.5303" orientation="s"/>
+        <terminal x="0" y="-28.4725" orientation="e"/>
         <terminal x="-1.12196" y="-7.0613" orientation="e"/>
         <terminal x="28.271" y="-18.3257" orientation="e"/>
         <terminal x="28.8473" y="11.5103" orientation="e"/>

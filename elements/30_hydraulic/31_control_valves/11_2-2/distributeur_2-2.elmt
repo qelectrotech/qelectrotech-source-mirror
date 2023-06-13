@@ -27,8 +27,8 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line antialias="false" x1="-9.9999" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="4.6835" y1="14.6836" end1="none" x2="-9.9999"/>
         <line antialias="false" x1="-1.25e-06" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" end2="none" y2="9.6835" y1="-10.3164" end1="none" x2="-1.25e-06"/>
         <terminal orientation="s" x="10" y="14.6836"/>
-        <terminal orientation="s" x="-9.9999" y="14.6836"/>
+        <terminal orientation="s" x="-10" y="14.6836"/>
         <terminal orientation="n" x="10" y="-15.3164"/>
-        <terminal orientation="n" x="-9.9999" y="-15.3164"/>
+        <terminal orientation="n" x="-10" y="-15.3164"/>
     </description>
 </definition>

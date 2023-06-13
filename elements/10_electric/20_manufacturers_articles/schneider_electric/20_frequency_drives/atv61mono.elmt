@@ -223,7 +223,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <terminal x="160" orientation="n" y="-50"/>
         <terminal x="-80" orientation="s" y="50"/>
         <terminal x="-160" orientation="s" y="50"/>
-        <terminal x="180.336" orientation="n" y="-50"/>
+        <terminal x="180" orientation="n" y="-50"/>
         <terminal x="-20" orientation="n" y="-50"/>
         <terminal x="-40" orientation="n" y="-50"/>
     </description>

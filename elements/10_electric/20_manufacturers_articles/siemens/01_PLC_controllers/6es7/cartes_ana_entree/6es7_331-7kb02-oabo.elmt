@@ -100,7 +100,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <terminal y="-10" orientation="n" x="180"/>
         <terminal y="-10" orientation="n" x="140"/>
         <terminal y="-10" orientation="n" x="20"/>
-        <terminal y="-9.9996" orientation="n" x="100"/>
-        <terminal y="-9.9996" orientation="n" x="60"/>
+        <terminal y="-10" orientation="n" x="100"/>
+        <terminal y="-10" orientation="n" x="60"/>
     </description>
 </definition>

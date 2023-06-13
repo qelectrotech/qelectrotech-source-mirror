@@ -33,6 +33,6 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="34.1184" x1="-9.36736" y2="34.1184" x2="9.35264"/>
         <input x="-10" y="38" size="4" rotate="true" text="Ø_&quot;H" tagg="label"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:red" y1="-6" x1="-6" y2="-8" x2="6"/>
-        <terminal x="-0.21536" y="-9.4613" orientation="n"/>
+        <terminal x="0" y="-9.4613" orientation="n"/>
     </description>
 </definition>
