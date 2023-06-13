@@ -63,10 +63,10 @@
         </dynamic_text>
         <terminal name="" x="0" y="-20" orientation="n" uuid="{3df8699b-43a1-49c1-b3fa-7d796925f1ba}"/>
         <terminal name="" x="20" y="-20" orientation="n" uuid="{982f8530-4d05-4898-98d8-eff984bdee69}"/>
-        <terminal name="" x="40" y="-21" orientation="n" uuid="{c2f4a1a9-a2d0-4b8c-bfcf-21b3fc086a1a}"/>
+        <terminal name="" x="40" y="-20" orientation="n" uuid="{c2f4a1a9-a2d0-4b8c-bfcf-21b3fc086a1a}"/>
         <terminal name="" x="20" y="10" orientation="s" uuid="{4f7f506e-bf2f-4d24-ba5b-c00b97944b25}"/>
         <terminal name="" x="0" y="10" orientation="s" uuid="{0aaa2455-818f-4d41-a60a-7c49c97624fa}"/>
-        <terminal name="" x="40" y="9.96107" orientation="s" uuid="{854f00a1-93ca-48e3-9084-f000c7d94518}"/>
-        <terminal name="" x="20" y="9.96107" orientation="s" uuid="{c3b19e93-736b-4fd4-9575-1ab895e8b007}"/>
+        <terminal name="" x="40" y="10" orientation="s" uuid="{854f00a1-93ca-48e3-9084-f000c7d94518}"/>
+        <terminal name="" x="20" y="10" orientation="s" uuid="{c3b19e93-736b-4fd4-9575-1ab895e8b007}"/>
     </description>
 </definition>

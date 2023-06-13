@@ -488,10 +488,10 @@
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <terminal x="286.94" y="5" orientation="n"/>
+        <terminal x="287" y="5" orientation="n"/>
         <terminal x="273" y="5" orientation="n"/>
         <terminal x="263" y="5" orientation="n"/>
-        <terminal x="45" y="249.31" orientation="s"/>
+        <terminal x="45" y="250" orientation="s"/>
         <terminal x="354" y="5" orientation="n"/>
         <terminal x="366" y="5" orientation="n"/>
         <terminal x="301" y="5" orientation="n"/>
@@ -526,10 +526,10 @@
         <terminal x="142" y="5" orientation="n"/>
         <terminal x="208" y="5" orientation="n"/>
         <terminal x="234" y="5" orientation="n"/>
-        <terminal x="16.92" y="249.31" orientation="s"/>
+        <terminal x="17" y="250" orientation="s"/>
         <terminal x="65" y="155" orientation="s"/>
         <terminal x="65" y="210" orientation="s"/>
-        <terminal x="35" y="249.31" orientation="s"/>
+        <terminal x="35" y="250" orientation="s"/>
         <terminal x="113" y="220" orientation="s"/>
         <terminal x="245" y="220" orientation="s"/>
         <terminal x="260" y="220" orientation="s"/>

@@ -3,6 +3,7 @@
     <names>
         <name lang="hu">SEW MOVITRAC 3000</name>
         <name lang="en">SEW MOVITRAC 3000</name>
+        <name lang="de">SEW MOVITRAC 3000</name>
         <name lang="cs">SEW MOVITRAC 3000</name>
     </names>
     <elementInformations/>
@@ -382,53 +383,53 @@
         <line end1="none" y1="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none" length2="1.5" x1="158" y2="60" x2="142"/>
         <line end1="none" y1="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none" length2="1.5" x1="138" y2="60" x2="122"/>
         <line end1="none" y1="60" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="false" length1="1.5" end2="none" length2="1.5" x1="118" y2="60" x2="102"/>
-        <terminal x="270" y="-52" orientation="n"/>
-        <terminal x="120" y="62" orientation="s"/>
-        <terminal x="-109.764" y="-52" orientation="n"/>
-        <terminal x="-170" y="62" orientation="s"/>
-        <terminal x="-69.7639" y="62" orientation="s"/>
-        <terminal x="-190" y="62" orientation="s"/>
-        <terminal x="-9.7639" y="62" orientation="s"/>
-        <terminal x="30" y="-52" orientation="n"/>
-        <terminal x="-230" y="62" orientation="s"/>
-        <terminal x="-70" y="-52" orientation="n"/>
-        <terminal x="10.2361" y="62" orientation="s"/>
-        <terminal x="80" y="62" orientation="s"/>
-        <terminal x="-250" y="62" orientation="s"/>
-        <terminal x="10" y="-52" orientation="n"/>
-        <terminal x="160" y="62" orientation="s"/>
-        <terminal x="130" y="-52" orientation="n"/>
-        <terminal x="220.236" y="62" orientation="s"/>
-        <terminal x="-49.7639" y="62" orientation="s"/>
-        <terminal x="170" y="-52" orientation="n"/>
-        <terminal x="-210" y="62" orientation="s"/>
-        <terminal x="110" y="-52" orientation="n"/>
-        <terminal x="-250" y="-52" orientation="n"/>
-        <terminal x="40" y="62" orientation="s"/>
-        <terminal x="200.236" y="62" orientation="s"/>
-        <terminal x="240" y="62" orientation="s"/>
-        <terminal x="-10" y="-52" orientation="n"/>
-        <terminal x="230" y="-52" orientation="n"/>
-        <terminal x="180" y="62" orientation="s"/>
-        <terminal x="100" y="62" orientation="s"/>
-        <terminal x="-230" y="-52" orientation="n"/>
-        <terminal x="90" y="-52" orientation="n"/>
-        <terminal x="-50" y="-52" orientation="n"/>
-        <terminal x="210" y="-52" orientation="n"/>
-        <terminal x="-210" y="-52" orientation="n"/>
-        <terminal x="70" y="-52" orientation="n"/>
-        <terminal x="290" y="-52" orientation="n"/>
-        <terminal x="140" y="62" orientation="s"/>
-        <terminal x="-90" y="-52" orientation="n"/>
-        <terminal x="60" y="62" orientation="s"/>
-        <terminal x="190" y="-52" orientation="n"/>
-        <terminal x="-270" y="62" orientation="s"/>
-        <terminal x="50" y="-52" orientation="n"/>
-        <terminal x="-150" y="62" orientation="s"/>
-        <terminal x="-30" y="-52" orientation="n"/>
-        <terminal x="150" y="-52" orientation="n"/>
-        <terminal x="-29.7639" y="62" orientation="s"/>
-        <terminal x="-270" y="-52" orientation="n"/>
-        <terminal x="250" y="-52" orientation="n"/>
+        <terminal x="270" y="-50" orientation="n"/>
+        <terminal x="120" y="60" orientation="s"/>
+        <terminal x="-110" y="-50" orientation="n"/>
+        <terminal x="-170" y="60" orientation="s"/>
+        <terminal x="-70" y="60" orientation="s"/>
+        <terminal x="-190" y="60" orientation="s"/>
+        <terminal x="-10" y="60" orientation="s"/>
+        <terminal x="30" y="-50" orientation="n"/>
+        <terminal x="-230" y="60" orientation="s"/>
+        <terminal x="-70" y="-50" orientation="n"/>
+        <terminal x="10" y="60" orientation="s"/>
+        <terminal x="80" y="60" orientation="s"/>
+        <terminal x="-250" y="60" orientation="s"/>
+        <terminal x="10" y="-50" orientation="n"/>
+        <terminal x="160" y="60" orientation="s"/>
+        <terminal x="130" y="-50" orientation="n"/>
+        <terminal x="220" y="60" orientation="s"/>
+        <terminal x="-50" y="60" orientation="s"/>
+        <terminal x="170" y="-50" orientation="n"/>
+        <terminal x="-210" y="60" orientation="s"/>
+        <terminal x="110" y="-50" orientation="n"/>
+        <terminal x="-250" y="-50" orientation="n"/>
+        <terminal x="40" y="60" orientation="s"/>
+        <terminal x="200" y="60" orientation="s"/>
+        <terminal x="240" y="60" orientation="s"/>
+        <terminal x="-10" y="-50" orientation="n"/>
+        <terminal x="230" y="-50" orientation="n"/>
+        <terminal x="180" y="60" orientation="s"/>
+        <terminal x="100" y="60" orientation="s"/>
+        <terminal x="-230" y="-50" orientation="n"/>
+        <terminal x="90" y="-50" orientation="n"/>
+        <terminal x="-50" y="-50" orientation="n"/>
+        <terminal x="210" y="-50" orientation="n"/>
+        <terminal x="-210" y="-50" orientation="n"/>
+        <terminal x="70" y="-50" orientation="n"/>
+        <terminal x="290" y="-50" orientation="n"/>
+        <terminal x="140" y="60" orientation="s"/>
+        <terminal x="-90" y="-50" orientation="n"/>
+        <terminal x="60" y="60" orientation="s"/>
+        <terminal x="190" y="-50" orientation="n"/>
+        <terminal x="-270" y="60" orientation="s"/>
+        <terminal x="50" y="-50" orientation="n"/>
+        <terminal x="-150" y="60" orientation="s"/>
+        <terminal x="-30" y="-50" orientation="n"/>
+        <terminal x="150" y="-50" orientation="n"/>
+        <terminal x="-30" y="60" orientation="s"/>
+        <terminal x="-270" y="-50" orientation="n"/>
+        <terminal x="250" y="-50" orientation="n"/>
     </description>
 </definition>

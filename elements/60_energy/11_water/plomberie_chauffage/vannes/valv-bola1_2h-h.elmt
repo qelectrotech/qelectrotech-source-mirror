@@ -15,7 +15,7 @@
         <arc width="3.57" angle="-180" y="-3.23554" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.74625" start="-90" antialias="true" height="6.66786"/>
         <arc width="3.57" angle="-180" y="-6.15277" style="line-style:normal;line-weight:normal;filling:none;color:black" x="7.74625" start="-90" antialias="true" height="2.9172"/>
         <rect width="8.925" y="-6.15277" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-19.9213" antialias="false" height="12.5023"/>
-        <arc width="14.28" angle="-180" y="0.0983906" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.765" start="0" antialias="true" height="7.91809"/>
+        <arc width="14.28" angle="-180" y="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-8.765" start="0" antialias="true" height="7.91809"/>
         <rect width="6.2475" y="-10.3202" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.74875" antialias="false" height="2.08372"/>
         <rect width="21.8662" y="-13.2374" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-4.3025" antialias="false" height="1.25023"/>
         <rect width="1.785" y="-11.9871" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-2.5175" antialias="false" height="1.66696"/>
@@ -31,7 +31,7 @@
         <line y1="-6.15277" end1="none" x1="16.225" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="16.6712" antialias="false" y2="-3.23554" length2="1.5"/>
         <line y1="3.43232" end1="none" x1="16.6712" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="16.225" antialias="false" y2="6.34952" length2="1.5"/>
         <input size="4" text="1/2&quot;HH" y="12.593" tagg="label" x="-10.04" rotate="true"/>
-        <terminal y="0.0983906" orientation="w" x="-19.475"/>
-        <terminal y="0.0983906" orientation="e" x="16.225"/>
+        <terminal y="0" orientation="w" x="-19.475"/>
+        <terminal y="0" orientation="e" x="16.225"/>
     </description>
 </definition>

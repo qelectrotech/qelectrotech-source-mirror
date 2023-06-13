@@ -77,7 +77,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="107.172"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="87.172"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-22.8284" diameter="5.65685" x="17.1716"/>
-        <terminal orientation="n" y="-30" x="-3.55271e-15"/>
+        <terminal orientation="n" y="-30" x="0"/>
         <terminal orientation="n" y="-30" x="20"/>
         <terminal orientation="n" y="-30" x="90"/>
         <terminal orientation="n" y="-30" x="110"/>

@@ -36,7 +36,7 @@ Mantenimiento de Instalaciones Térmicas</informations>
         <line y1="-4.80654" end1="none" x1="8.285" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x2="8.285" antialias="false" y2="-5.84785" length2="1.5"/>
         <input size="4" text="latig.1/2M" y="-21.9175" tagg="label" x="2.285" rotate="true"/>
         <rect width="12" y="11.8239" style="line-style:normal;line-weight:normal;filling:none;color:black" x="6.285" antialias="false" height="3.21347"/>
-        <terminal y="0.243845" orientation="e" x="4.625"/>
+        <terminal y="0" orientation="e" x="4.625"/>
         <terminal y="21.3529" orientation="s" x="12.2399"/>
     </description>
 </definition>

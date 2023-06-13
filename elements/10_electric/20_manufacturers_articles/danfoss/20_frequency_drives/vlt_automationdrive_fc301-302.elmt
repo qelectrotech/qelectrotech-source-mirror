@@ -172,7 +172,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <input size="9" text="_" rotate="true" y="-20" tagg="label" x="-20"/>
         <terminal orientation="n" y="-2" x="320"/>
         <terminal orientation="s" y="88" x="20"/>
-        <terminal orientation="n" y="-2" x="-3.55271e-15"/>
+        <terminal orientation="n" y="-2" x="0"/>
         <terminal orientation="n" y="-2" x="20"/>
         <terminal orientation="s" y="88" x="40"/>
         <terminal orientation="n" y="-2" x="60"/>

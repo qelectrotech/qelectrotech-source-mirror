@@ -93,7 +93,7 @@
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685" x="107.172" y="-22.8284" antialias="true"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685" x="87.172" y="-22.8284" antialias="true"/>
         <circle style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685" x="17.1716" y="-22.8284" antialias="true"/>
-        <terminal orientation="n" x="-3.55271e-15" uuid="{70a99dea-23dc-412a-a6b2-42253eb5b038}" y="-23" name=""/>
+        <terminal orientation="n" x="0" uuid="{70a99dea-23dc-412a-a6b2-42253eb5b038}" y="-23" name=""/>
         <terminal orientation="n" x="20" uuid="{ce2bf6d8-18a3-4e4b-a452-656cbf757f60}" y="-23" name=""/>
         <terminal orientation="n" x="90" uuid="{26c5b2aa-17f1-4e29-9a43-b517b5771be8}" y="-23" name=""/>
         <terminal orientation="n" x="110" uuid="{474a7540-9dcc-40f9-acd5-fc14fe65dbfe}" y="-23" name=""/>

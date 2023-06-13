@@ -115,12 +115,12 @@
         <terminal orientation="n" y="-55" x="330"/>
         <terminal orientation="n" y="-55" x="360"/>
         <terminal orientation="n" y="-55" x="390"/>
-        <terminal orientation="n" y="-55" x="419.999"/>
-        <terminal orientation="n" y="-55" x="449.999"/>
-        <terminal orientation="n" y="-55" x="479.999"/>
-        <terminal orientation="n" y="-55" x="509.999"/>
-        <terminal orientation="n" y="-55" x="539.997"/>
-        <terminal orientation="n" y="-55" x="569.997"/>
-        <terminal orientation="n" y="-55" x="599.997"/>
+        <terminal orientation="n" y="-55" x="420"/>
+        <terminal orientation="n" y="-55" x="450"/>
+        <terminal orientation="n" y="-55" x="480"/>
+        <terminal orientation="n" y="-55" x="510"/>
+        <terminal orientation="n" y="-55" x="540"/>
+        <terminal orientation="n" y="-55" x="570"/>
+        <terminal orientation="n" y="-55" x="600"/>
     </description>
 </definition>

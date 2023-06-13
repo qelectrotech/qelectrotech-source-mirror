@@ -170,7 +170,7 @@
         <rect x="-90" width="20" height="20" y="70" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line end1="none" x1="260" length1="1.5" antialias="false" y1="49" y2="40" length2="1.5" x2="260" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line end1="none" x1="220" length1="1.5" antialias="false" y1="49" y2="40" length2="1.5" x2="220" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect x="-49.9783" width="20" height="20" y="-90.001" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-49.9783" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <dynamic_text x="201.747" y="-36.1699" text_from="UserText" Valignment="AlignTop" z="74" font="MS Shell Dlg 2,9,-1,5,50,0,0,0,0,0,Normal" uuid="{db238024-5079-4f9c-bc6a-bf3f3e695a47}" rotation="0" frame="false" Halignment="AlignLeft" text_width="-1">
             <text>Entrées sélection</text>
         </dynamic_text>
@@ -224,11 +224,11 @@
         <rect x="-90" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="510" width="20" height="20" y="70" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="290" width="20" height="20" y="70" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect x="-9.97834" width="20" height="20" y="-90.001" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="-9.97834" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="430" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="70" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="250" width="20" height="20" y="70" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect x="30.0217" width="20" height="20" y="-90.001" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect x="30.0217" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="470" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="510" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect x="-170" width="20" height="20" y="-90" antialias="false" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -284,7 +284,7 @@
         <terminal x="-120" name="" y="90" uuid="{4b95a1c2-7f86-4e79-a253-1b7e6b8072fc}" orientation="s"/>
         <terminal x="240" name="" y="-90" uuid="{7dcffc1a-ef1a-47d7-a4d9-a11772f4e8bd}" orientation="n"/>
         <terminal x="-80" name="" y="90" uuid="{f7c1ee72-95ef-4c26-9ac4-4c6cfce02f81}" orientation="s"/>
-        <terminal x="0.0216568" name="" y="-90.001" uuid="{af6df1d7-0788-4f4c-9ccb-d0786f20fe19}" orientation="n"/>
+        <terminal x="0.0216568" name="" y="-90" uuid="{af6df1d7-0788-4f4c-9ccb-d0786f20fe19}" orientation="n"/>
         <terminal x="440" name="" y="90" uuid="{6eddb619-7e35-4c05-aaa5-5b1270698d5f}" orientation="s"/>
         <terminal x="200" name="" y="-90" uuid="{6720635e-30a2-47b7-a0f7-782d90880e2e}" orientation="n"/>
         <terminal x="560" name="" y="-90" uuid="{1d99b0cc-fcdf-4d71-9e2d-53a4a678ad75}" orientation="n"/>
@@ -301,10 +301,10 @@
         <terminal x="-159.934" name="" y="90.0645" uuid="{8e060829-654c-44ef-9096-edbcd6ea1173}" orientation="s"/>
         <terminal x="-159.829" name="" y="-89.9746" uuid="{aa8dbe72-81cd-45fb-99a5-e52be40dd46b}" orientation="n"/>
         <terminal x="160" name="" y="-90" uuid="{a3507d6c-8e4f-4425-90bb-e184ca0210f9}" orientation="n"/>
-        <terminal x="-39.9783" name="" y="-90.001" uuid="{3f9753ff-eba3-40c9-903e-6429cd49f4df}" orientation="n"/>
+        <terminal x="-39.9783" name="" y="-90" uuid="{3f9753ff-eba3-40c9-903e-6429cd49f4df}" orientation="n"/>
         <terminal x="300" name="" y="90" uuid="{5f941806-f987-41c1-b28e-c63698575b45}" orientation="s"/>
         <terminal x="80" name="" y="-90" uuid="{d24d278a-0219-4aac-b075-67229411dce3}" orientation="n"/>
-        <terminal x="40.0217" name="" y="-90.001" uuid="{904db2b6-1df9-4453-b8fa-75fa3115ccbf}" orientation="n"/>
+        <terminal x="40.0217" name="" y="-90" uuid="{904db2b6-1df9-4453-b8fa-75fa3115ccbf}" orientation="n"/>
         <terminal x="220" name="" y="90" uuid="{5ad39c4d-1163-494a-b4e8-aad6cdc4a179}" orientation="s"/>
         <terminal x="260" name="" y="90" uuid="{d8d71536-bedc-4640-8313-65093775038d}" orientation="s"/>
         <terminal x="320" name="" y="-90" uuid="{30751c35-6051-4418-89f6-a63051c62880}" orientation="n"/>

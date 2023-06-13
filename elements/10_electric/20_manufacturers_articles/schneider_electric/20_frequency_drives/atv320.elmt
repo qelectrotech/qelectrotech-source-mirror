@@ -382,7 +382,7 @@
         <terminal y="-50" x="-120" orientation="n"/>
         <terminal y="50" x="-60" orientation="s"/>
         <terminal y="50" x="20" orientation="s"/>
-        <terminal y="-50" x="180.336" orientation="n"/>
+        <terminal y="-50" x="180" orientation="n"/>
         <terminal y="-50" x="120" orientation="n"/>
         <terminal y="50" x="80" orientation="s"/>
         <terminal y="-50" x="160" orientation="n"/>
