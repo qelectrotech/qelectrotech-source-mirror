@@ -1,7 +1,8 @@
-<definition hotspot_x="39" hotspot_y="95" width="80" link_type="slave" type="element" version="0.90" height="190">
+<definition hotspot_x="39" hotspot_y="95" width="80" link_type="thumbnail" type="element" version="0.90" height="190">
     <uuid uuid="{15c59ed1-0111-493c-be5f-8993615c9e0c}"/>
     <names>
         <name lang="fr">CDS 743F</name>
+        <name lang="de">CDS 743F</name>
         <name lang="cs">CDS 743F</name>
     </names>
     <kindInformations>
