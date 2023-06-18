@@ -24,7 +24,7 @@ License:see http://qelectrotech.org/wiki/doc/elements_license
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1.8" length2="1.5" y2="1.8" end2="none" antialias="false" x2="1.8" end1="none" y1="-1.8" length1="1.5"/>
         <line style="line-style:normal;line-weight:normal;filling:none;color:black" x1="1.8" length2="1.5" y2="1.8" end2="none" antialias="false" x2="-1.8" end1="none" y1="-1.8" length1="1.5"/>
         <line style="line-style:normal;line-weight:thin;filling:none;color:black" x1="0" length2="1.5" y2="1.8" end2="none" antialias="false" x2="0" end1="none" y1="-1.8" length1="1.5"/>
-        <line style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-1.8" length2="1.5" y2="-4.44089e-16" end2="none" antialias="false" x2="1.8" end1="none" y1="-4.44089e-16" length1="1.5"/>
+        <line style="line-style:normal;line-weight:thin;filling:none;color:black" x1="-1.8" length2="1.5" y2="0" end2="none" antialias="false" x2="1.8" end1="none" y1="0" length1="1.5"/>
         <rect height="90" width="90" style="line-style:normal;line-weight:thin;filling:none;color:black" y="-45" rx="0" antialias="false" ry="0" x="-45"/>
         <dynamic_text font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" rotation="0" uuid="{30be4cb6-8791-4dab-8d0d-f10e094bcfcf}" keep_visual_rotation="true" y="41" z="11" frame="false" text_from="ElementInfo" text_width="-1" Halignment="AlignHCenter" x="-10.6953">
             <text>-X1</text>

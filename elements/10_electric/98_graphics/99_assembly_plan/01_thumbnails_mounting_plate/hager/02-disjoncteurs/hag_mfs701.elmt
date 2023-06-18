@@ -1,7 +1,8 @@
-<definition height="190" link_type="slave" hotspot_x="20" version="0.90" width="40" hotspot_y="95" type="element">
+<definition height="190" link_type="thumbnail" hotspot_x="20" version="0.90" width="40" hotspot_y="95" type="element">
     <uuid uuid="{2c71e0d9-0179-445d-8e78-75ff4398871b}"/>
     <names>
         <name lang="cs">MFS701</name>
+        <name lang="de">MFS701</name>
         <name lang="fr">MFS701</name>
     </names>
     <kindInformations>

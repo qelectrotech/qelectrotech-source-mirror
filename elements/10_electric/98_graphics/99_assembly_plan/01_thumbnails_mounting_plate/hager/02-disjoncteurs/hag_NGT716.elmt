@@ -1,7 +1,8 @@
-<definition type="element" hotspot_y="94" height="190" version="0.90" width="40" link_type="slave" hotspot_x="20">
+<definition type="element" hotspot_y="94" height="190" version="0.90" width="40" link_type="thumbnail" hotspot_x="20">
     <uuid uuid="{e0fa6ea9-44ab-4847-b21a-e958cf8ec2a7}"/>
     <names>
         <name lang="fr">NGT716</name>
+        <name lang="de">NGT716</name>
         <name lang="cs">NGT716</name>
     </names>
     <kindInformations>

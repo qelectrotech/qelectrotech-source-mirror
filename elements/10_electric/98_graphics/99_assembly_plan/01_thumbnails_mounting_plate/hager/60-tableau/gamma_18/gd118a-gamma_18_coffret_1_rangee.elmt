@@ -1,9 +1,9 @@
-<definition type="element" width="729" height="513" version="0.80" hotspot_x="5" hotspot_y="4" link_type="terminal">
+<definition type="element" width="729" height="513" version="0.80" hotspot_x="5" hotspot_y="4" link_type="thumbnail">
   <uuid uuid="{bbbff340-75a5-4baf-ae4a-767a0c9f6175}"/>
   <names>
     <name lang="fr">GD118A - Coffret Gamma 13 - 1 rangée</name>
     <name lang="cs">GD118A - Plastová rozvodnice Gamma 13 - 1 řada</name>
-    <name lang="de">GD118A - Kunststoff-Schalttafel  Gamma 13 - 1-reihig</name>
+    <name lang="de">GD118A - Kunststoff-Schalttafel Gamma 13 - 1-reihig</name>
     <name lang="en">GD118A - Plastic control panel Gamma 13 - 1 row</name>
   </names>
   <elementInformations>

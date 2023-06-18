@@ -1,4 +1,4 @@
-<definition version="0.90" hotspot_x="40" height="180" type="element" width="80" link_type="simple" hotspot_y="90">
+<definition version="0.90" hotspot_x="40" height="180" type="element" width="80" link_type="thumbnail" hotspot_y="90">
     <uuid uuid="{1bf8a0ae-e16f-4561-9d35-04957c314c0f}"/>
     <names>
         <name lang="cs">ACA 516D</name>

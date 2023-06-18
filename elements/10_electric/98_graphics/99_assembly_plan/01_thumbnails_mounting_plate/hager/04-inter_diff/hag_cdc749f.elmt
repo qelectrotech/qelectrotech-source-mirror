@@ -1,7 +1,8 @@
-<definition type="element" height="190" hotspot_y="95" version="0.90" hotspot_x="39" link_type="slave" width="80">
+<definition type="element" height="190" hotspot_y="95" version="0.90" hotspot_x="39" link_type="thumbnail" width="80">
     <uuid uuid="{021d4326-96ac-428e-985b-e9f499378335}"/>
     <names>
         <name lang="cs">CDC 748F</name>
+        <name lang="de">CDC 748F</name>
         <name lang="fr">CDC 748F</name>
     </names>
     <kindInformations>

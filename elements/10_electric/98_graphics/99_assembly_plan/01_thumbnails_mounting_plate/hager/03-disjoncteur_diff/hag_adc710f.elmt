@@ -1,8 +1,10 @@
-<definition type="element" hotspot_y="94" height="190" version="0.90" width="80" link_type="slave" hotspot_x="39">
+<definition type="element" hotspot_y="94" height="190" version="0.90" width="80" link_type="thumbnail" hotspot_x="39">
     <uuid uuid="{cd94e8fa-f0c3-4db2-9c8b-f8a205299045}"/>
     <names>
         <name lang="fr">ADC 710F</name>
         <name lang="cs">ADC 710F</name>
+        <name lang="de">ADC 710F</name>
+        <name lang="en">ADC 710F</name>
     </names>
     <kindInformations>
         <kindInformation name="type">power</kindInformation>
