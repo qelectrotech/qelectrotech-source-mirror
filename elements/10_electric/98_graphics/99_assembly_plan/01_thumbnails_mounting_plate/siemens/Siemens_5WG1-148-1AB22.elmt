@@ -1,63 +1,64 @@
-<definition link_type="thumbnail" version="0.80" type="element" hotspot_x="6" height="210" width="90" hotspot_y="5">
-    <uuid uuid="{f80c56fb-ca6b-4632-bf1e-fb59f11790e1}"/>
+<definition type="element" hotspot_y="95" height="190" version="0.90" width="80" link_type="thumbnail" hotspot_x="41">
+    <uuid uuid="{f81c1a37-640a-485d-a1a5-cc5a2e5ae52e}"/>
     <names>
         <name lang="fr">5WG1-148-1AB22 - IP Interface</name>
+        <name lang="en">5WG1-148-1AB22 - IP Interface</name>
+        <name lang="de">5WG1-148-1AB22 - IP Interface</name>
         <name lang="cs">5WG1-148-1AB22 - Jednotka rozhraní IP</name>
     </names>
     <elementInformations>
-        <elementInformation show="1" name="plant"></elementInformation>
-        <elementInformation show="1" name="supplier"></elementInformation>
-        <elementInformation show="1" name="manufacturer_reference"></elementInformation>
-        <elementInformation show="1" name="comment"></elementInformation>
-        <elementInformation show="1" name="description"></elementInformation>
-        <elementInformation show="1" name="unity"></elementInformation>
-        <elementInformation show="1" name="label"></elementInformation>
-        <elementInformation show="1" name="quantity"></elementInformation>
-        <elementInformation show="1" name="machine_manufacturer_reference"></elementInformation>
-        <elementInformation show="1" name="designation"></elementInformation>
-        <elementInformation show="1" name="manufacturer">Siemens</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Siemens</elementInformation>
+        <elementInformation name="designation" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
     </elementInformations>
     <informations>Alexandre Dis</informations>
     <description>
-        <rect x="0" rx="0" ry="0" antialias="false" height="200" width="80" style="line-style:normal;line-weight:thin;filling:white;color:black" y="0"/>
-        <rect x="63" rx="0" ry="0" antialias="false" height="15" width="10" style="line-style:normal;line-weight:thin;filling:yellow;color:black" y="185"/>
-        <rect x="53" rx="0" ry="0" antialias="false" height="15" width="10" style="line-style:normal;line-weight:thin;filling:white;color:black" y="185"/>
-        <text x="54" color="#000000" text="-" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="184" rotation="0"/>
-        <text x="60" color="#000000" text="+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="184" rotation="0"/>
-        <dynamic_text x="3" text_from="ElementInfo" uuid="{2f27ce99-add9-404a-932d-6492bab15cf0}" Halignment="AlignLeft" text_width="-1" font="Sans Serif,9,-1,5,50,0,0,0,0,0" Valignment="AlignTop" y="-20.45" rotation="0" z="6" frame="false">
+        <rect style="line-style:normal;line-weight:thin;filling:white;color:black" height="180" x="-36" width="72" ry="0" antialias="false" rx="0" y="-90"/>
+        <rect style="line-style:normal;line-weight:thin;filling:yellow;color:black" height="13.5" x="20.7" width="9" ry="0" antialias="false" rx="0" y="76.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:white;color:black" height="13.5" x="11.7" width="9" ry="0" antialias="false" rx="0" y="76.5"/>
+        <text x="12.6" text="-" y="75.6" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="18" text="+" y="75.6" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <dynamic_text text_width="-1" x="-33.3" keep_visual_rotation="true" text_from="ElementInfo" uuid="{3bb9bc95-d24f-408d-b840-1a3e8f53fcae}" Valignment="AlignTop" y="-108.41" z="6" font="Sans Serif,8,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" rotation="0" frame="false">
             <text></text>
             <info_name>label</info_name>
         </dynamic_text>
-        <text x="-1" color="#ffffff" text="ABB" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="53" rotation="0"/>
-        <dynamic_text x="8" text_from="UserText" uuid="{54b3aa60-90eb-4d45-824d-83dca67c972d}" Halignment="AlignLeft" text_width="-1" font="Sans Serif,7,-1,5,50,0,0,0,0,0" Valignment="AlignTop" y="124" rotation="0" z="8" frame="false">
+        <dynamic_text text_width="-1" x="-28.8" keep_visual_rotation="true" text_from="UserText" uuid="{7129773a-93fc-411d-b178-b33fda1f6f9f}" Valignment="AlignTop" y="21.6" z="8" font="Sans Serif,6,-1,5,50,0,0,0,0,0" Halignment="AlignLeft" rotation="0" frame="false">
             <text>_</text>
         </dynamic_text>
-        <rect x="18" rx="0" ry="0" antialias="false" height="15" width="10" style="line-style:normal;line-weight:thin;filling:red;color:black" y="185"/>
-        <rect x="0" rx="0" ry="0" antialias="false" height="110.5" width="80" style="line-style:normal;line-weight:thin;filling:none;color:black" y="45"/>
-        <rect x="8" rx="0" ry="0" antialias="false" height="15" width="10" style="line-style:normal;line-weight:thin;filling:black;color:black" y="185"/>
-        <text x="10" color="#000000" text="-" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="182" rotation="0"/>
-        <text x="17" color="#000000" text="+" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="182" rotation="0"/>
-        <text x="8" color="#000000" text="KNX EIB" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="154" rotation="0"/>
-        <text x="5" color="#000000" text="Siemens" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="55" rotation="0"/>
-        <text x="5" color="#000000" text="5WG1-148-1AB22" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="63" rotation="0"/>
-        <text x="5" color="#000000" text="IP Interface" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="70" rotation="0"/>
-        <circle x="24" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="119"/>
-        <circle x="24" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="79"/>
-        <rect x="22" rx="0" ry="0" antialias="false" height="50" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="77"/>
-        <circle x="54" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="99"/>
-        <circle x="54" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="119"/>
-        <circle x="54" diameter="6" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="79"/>
-        <rect x="52" rx="0" ry="0" antialias="false" height="50" width="10" style="line-style:normal;line-weight:normal;filling:none;color:black" y="77"/>
-        <line x2="29" y2="36" end2="none" end1="none" x1="29" length1="1.5" antialias="false" y1="7" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line x2="19" y2="37" end2="none" end1="none" x1="29" length1="1.5" antialias="false" y1="37" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line x2="19" y2="27" end2="none" end1="none" x1="19" length1="1.5" antialias="false" y1="36" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line x2="14" y2="22" end2="none" end1="none" x1="19" length1="1.5" antialias="false" y1="27" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line x2="14" y2="7" end2="none" end1="none" x1="14" length1="1.5" antialias="false" y1="22" style="line-style:normal;line-weight:normal;filling:none;color:black" length2="1.5"/>
-        <line x2="40" y2="45" end2="none" end1="none" x1="40" length1="1.5" antialias="false" y1="0" style="line-style:normal;line-weight:thin;filling:none;color:black" length2="1.5"/>
-        <text x="42" color="#000000" text="Link" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="83" rotation="0"/>
-        <text x="45" color="#000000" text="Rx" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="103" rotation="0"/>
-        <text x="46" color="#000000" text="Tx" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="124" rotation="0"/>
-        <text x="4" color="#000000" text="Opération" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="83" rotation="0"/>
-        <text x="11" color="#000000" text="Line" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="124" rotation="0"/>
+        <rect style="line-style:normal;line-weight:thin;filling:red;color:black" height="13.5" x="-19.8" width="9" ry="0" antialias="false" rx="0" y="76.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:none;color:black" height="99.45" x="-36" width="72" ry="0" antialias="false" rx="0" y="-49.5"/>
+        <rect style="line-style:normal;line-weight:thin;filling:black;color:black" height="13.5" x="-28.8" width="9" ry="0" antialias="false" rx="0" y="76.5"/>
+        <text x="-27" text="-" y="73.8" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-20.7" text="+" y="73.8" font="Sans Serif,8,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-28.8" text="KNX EIB" y="48.6" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-31.5" text="Siemens" y="-40.5" font="Sans Serif,4,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-31.5" text="5WG1-148-1AB22" y="-33.3" font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-31.5" text="IP Interface" y="-27" font="Sans Serif,3,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.4" antialias="false" diameter="5.4" y="17.1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="-14.4" antialias="false" diameter="5.4" y="-18.9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="45" x="-16.2" width="9" ry="0" antialias="false" rx="0" y="-20.7"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="12.6" antialias="false" diameter="5.4" y="-0.9"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="12.6" antialias="false" diameter="5.4" y="17.1"/>
+        <circle style="line-style:normal;line-weight:normal;filling:none;color:black" x="12.6" antialias="false" diameter="5.4" y="-18.9"/>
+        <rect style="line-style:normal;line-weight:normal;filling:none;color:black" height="45" x="10.8" width="9" ry="0" antialias="false" rx="0" y="-20.7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-9.9" length2="1.5" antialias="false" x1="-9.9" end1="none" y1="-83.7" length1="1.5" y2="-57.6"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18.9" length2="1.5" antialias="false" x1="-9.9" end1="none" y1="-56.7" length1="1.5" y2="-56.7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-18.9" length2="1.5" antialias="false" x1="-18.9" end1="none" y1="-57.6" length1="1.5" y2="-65.7"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-23.4" length2="1.5" antialias="false" x1="-18.9" end1="none" y1="-65.7" length1="1.5" y2="-70.2"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-23.4" length2="1.5" antialias="false" x1="-23.4" end1="none" y1="-70.2" length1="1.5" y2="-83.7"/>
+        <line end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="0" length2="1.5" antialias="false" x1="0" end1="none" y1="-90" length1="1.5" y2="-49.5"/>
+        <text x="1.8" text="Link" y="-15.3" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="4.5" text="Rx" y="2.7" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="5.4" text="Tx" y="21.6" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-32.4" text="Operation" y="-15.3" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
+        <text x="-26.1" text="Line" y="21.6" font="Sans Serif,2,-1,5,50,0,0,0,0,0" color="#000000" rotation="0"/>
     </description>
 </definition>
