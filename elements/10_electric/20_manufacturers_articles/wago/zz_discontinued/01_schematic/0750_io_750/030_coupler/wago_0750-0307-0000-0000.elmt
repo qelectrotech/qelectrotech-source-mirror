@@ -1,0 +1,83 @@
+<definition link_type="simple" hotspot_x="364" type="element" version="0.90" hotspot_y="55" width="730" height="110">
+    <names>
+        <name lang="fr">750-307</name>
+        <name lang="cs">750-307</name>
+        <name lang="de">750-307</name>
+        <name lang="en">750-307</name>
+    </names>
+    <elementInformations>
+        <elementInformation show="1" name="designation">750-307</elementInformation>
+        <elementInformation show="1" name="description">CANopen - Coupler MCS</elementInformation>
+        <elementInformation show="1" name="manufacturer">WAGO</elementInformation>
+    </elementInformations>
+    <informations>Author: plc-user for QElectroTech
+License:see https://qelectrotech.org/wiki_new/doc/elements_license
+    </informations>
+    <description>
+        <rect style="line-style:normal;line-weight:normal;filling:white;color:black" x="-360" antialias="false" width="720" height="90" ry="0" rx="0" y="-40"/>
+        <text x="-224" text="Baudrate:" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="4"/>
+        <dynamic_text text_width="-1" keep_visual_rotation="true" z="3" Halignment="AlignLeft" x="-160" text_from="UserText" rotation="0" frame="false" uuid="{90a13ffc-be0b-404b-a664-d681cfa55813}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-11.5" Valignment="AlignTop">
+            <text>1000</text>
+        </dynamic_text>
+        <line x1="40" y2="-38" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false" x2="40" end1="none" y1="10" end2="none"/>
+        <line x1="-40" y2="-38" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" length2="1.5" antialias="false" x2="-40" end1="circle" y1="-8.5" end2="none"/>
+        <line x1="200" y2="30" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false" x2="358" end1="none" y1="30" end2="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-362.5" antialias="true" y="-2.5"/>
+        <line x1="120" y2="-40" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" length2="1.5" antialias="false" x2="120" end1="circle" y1="11.5" end2="none"/>
+        <line x1="280" y2="-37" style="line-style:normal;line-weight:thin;filling:black;color:black" length1="1.5" length2="1.5" antialias="false" x2="280" end1="circle" y1="31.5" end2="none"/>
+        <line x1="-120" y2="-38" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false" x2="-120" end1="none" y1="-10" end2="none"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-42.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-122.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-202.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="-282.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="277.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="197.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="117.5" antialias="true" y="-42.5"/>
+        <circle style="line-style:normal;line-weight:normal;filling:white;color:black" diameter="5" x="37.5" antialias="true" y="-42.5"/>
+        <line x1="40" y2="10" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false" x2="358" end1="none" y1="10" end2="none"/>
+        <line x1="200" y2="-38" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false" x2="200" end1="none" y1="30" end2="none"/>
+        <line x1="-120" y2="-10" style="line-style:normal;line-weight:thin;filling:none;color:black" length1="1.5" length2="1.5" antialias="false" x2="358" end1="none" y1="-10" end2="none"/>
+        <text x="-330" text="WAGO 750-307" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="45"/>
+        <text x="-317" text="Node-ID:" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="4"/>
+        <dynamic_text text_width="-1" keep_visual_rotation="true" z="24" Halignment="AlignLeft" x="-258" text_from="UserText" rotation="0" frame="false" uuid="{c6507cb0-b07e-4f4f-8613-860404aeab13}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-11.5" Valignment="AlignTop">
+            <text>1</text>
+        </dynamic_text>
+        <text x="281" text="PE" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="201" text="PE" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="-199" text="0V" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="-279" text="24V" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="123" text="−" rotation="0" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="43" text="−" rotation="0" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="-39" text="+" rotation="0" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="-119" text="+" rotation="0" font="Sans Serif,12,-1,5,50,0,0,0,0,0" color="#000000" y="-22"/>
+        <text x="-355" text="CAN" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="4"/>
+        <dynamic_text text_width="-1" keep_visual_rotation="true" z="34" Halignment="AlignLeft" x="220" text_from="ElementInfo" rotation="0" frame="false" uuid="{831547ea-ad0e-4329-9c65-44cca59cc92c}" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="29.5" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text x="-276" text="1" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="-195" text="5" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="-115" text="2" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="-35" text="6" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="45" text="3" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="125" text="7" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="205" text="4" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="285" text="8" rotation="0" font="Sans Serif,5,-1,5,50,0,0,0,0,0" color="#000000" y="-42"/>
+        <text x="-138" text="CANopen - Coupler MCS" rotation="0" font="Sans Serif,9,-1,5,50,0,0,0,0,0" color="#000000" y="45"/>
+        <arc angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" x="360" antialias="true" width="5" height="5" start="90" y="-12.5"/>
+        <arc angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" x="360" antialias="true" width="5" height="5" start="90" y="7.5"/>
+        <arc angle="180" style="line-style:normal;line-weight:normal;filling:white;color:black" x="360" antialias="true" width="5" height="5" start="90" y="27.5"/>
+        <terminal type="Generic" x="-40" name="" uuid="{2efc2605-3fd0-4f15-a8a5-1851d27c7993}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="-360" name="" uuid="{57c730ae-c534-44c9-ac88-c67cd36bcdd4}" orientation="w" y="0"/>
+        <terminal type="Generic" x="280" name="" uuid="{f8f9d1df-5ea5-49fb-abbe-55cb126f5232}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="40" name="" uuid="{6f76e801-a66d-4bec-b6e0-f2760277cc7d}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="-200" name="" uuid="{8d7cf1ef-5701-4189-905e-b504929fad01}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="-120" name="" uuid="{c3cd3295-89c1-41c2-98a0-8433b1350a25}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="120" name="" uuid="{a3497073-657a-4b1e-b590-d4a3471e4a14}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="360" name="" uuid="{d815c6dd-df3b-4e39-9fa5-7c6ee7877595}" orientation="e" y="10"/>
+        <terminal type="Generic" x="-280" name="" uuid="{a61ad10c-d827-4aca-a2be-d1e75d2e4808}" orientation="n" y="-40"/>
+        <terminal type="Generic" x="360" name="" uuid="{7e248bf0-6b16-47f5-8bc0-4aa5074cd997}" orientation="e" y="-10"/>
+        <terminal type="Generic" x="360" name="" uuid="{66c77aed-3c9c-4c99-a299-000973c344c4}" orientation="e" y="30"/>
+        <terminal type="Generic" x="200" name="" uuid="{7e864ff5-c46f-4371-ab71-34265072f38c}" orientation="n" y="-40"/>
+    </description>
+</definition>
