@@ -35,8 +35,7 @@ namespace TerminalStripDrawer
             QString installation() const override;
             QString location() const override;
             QString name() const override;
-            QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const override;
-            bool operator()() override;
+			QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const override;
 
         private:
             QPointer<TerminalStrip> m_strip;

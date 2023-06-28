@@ -25,6 +25,11 @@
 
 namespace TerminalStripDrawer
 {
+    /**
+     * @brief TrueTerminalStrip::TrueTerminalStrip
+     * Constructor, this class don't take ownership of @a strip
+     * @param strip
+     */
     TrueTerminalStrip::TrueTerminalStrip(TerminalStrip *strip) :
         m_strip { strip }
     {}
@@ -67,11 +72,6 @@ namespace TerminalStripDrawer
         }
 
         return vector_;
-    }
-
-    bool TrueTerminalStrip::operator()()
-    {
-        return m_strip;
     }
 
     TruePhysicalTerminal::TruePhysicalTerminal(QSharedPointer<PhysicalTerminal> physical) :

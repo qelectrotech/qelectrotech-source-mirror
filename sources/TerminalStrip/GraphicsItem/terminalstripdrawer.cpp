@@ -1,5 +1,5 @@
 /*
-    Copyright 2006-2022 The QElectroTech Team
+    Copyright 2006-2023 The QElectroTech Team
     This file is part of QElectroTech.
 
     QElectroTech is free software: you can redistribute it and/or modify
@@ -31,15 +31,15 @@ namespace TerminalStripDrawer {
  * @param strip
  * @param pattern
  */
-TerminalStripDrawer::TerminalStripDrawer(QPointer<TerminalStrip> strip,
+TerminalStripDrawer::TerminalStripDrawer(QSharedPointer<AbstractTerminalStripInterface> strip,
                                          QSharedPointer<TerminalStripLayoutPattern> layout) :
-    m_strip{new TrueTerminalStrip{strip.data()}},
-    m_pattern(layout)
+    m_strip { strip },
+    m_pattern { layout }
 {}
 
-void TerminalStripDrawer::setStrip(TerminalStrip *strip)
+void TerminalStripDrawer::setStrip(QSharedPointer<AbstractTerminalStripInterface> strip)
 {
-    m_strip.reset(new TrueTerminalStrip{strip});
+	m_strip = strip;
 }
 
 /**

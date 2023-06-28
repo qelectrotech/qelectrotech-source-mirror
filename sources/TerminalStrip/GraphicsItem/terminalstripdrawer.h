@@ -62,16 +62,15 @@ namespace TerminalStripDrawer
             virtual QString location() const = 0;
             virtual QString name() const = 0;
             virtual QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> physicalTerminal() const = 0;
-            virtual bool operator()() = 0;
     };
 
     class TerminalStripDrawer
     {
         public:
-            TerminalStripDrawer(QPointer<TerminalStrip> strip = QPointer<TerminalStrip>(),
+            TerminalStripDrawer(QSharedPointer<AbstractTerminalStripInterface> strip = QSharedPointer<AbstractTerminalStripInterface> { nullptr },
                                 QSharedPointer<TerminalStripLayoutPattern> layout = QSharedPointer<TerminalStripLayoutPattern>());
 
-            void setStrip(TerminalStrip *strip);
+            void setStrip(QSharedPointer<AbstractTerminalStripInterface> strip);
             void paint(QPainter *painter);
             QRectF boundingRect() const;
 
@@ -83,7 +82,7 @@ namespace TerminalStripDrawer
             int width() const;
 
         private:
-            QScopedPointer <AbstractTerminalStripInterface> m_strip;
+            QSharedPointer <AbstractTerminalStripInterface> m_strip;
             QSharedPointer<TerminalStripLayoutPattern> m_pattern;
             bool m_debug_draw { false };
     };

@@ -17,16 +17,21 @@
 */
 #include "terminalstripitem.h"
 
+
 #include "../diagram.h"
-#include "../terminalstrip.h"
-#include "../ui/terminalstripeditorwindow.h"
 #include "../../project/projectpropertieshandler.h"
 #include "../../qetgraphicsitem/qgraphicsitemutility.h"
+#include "../terminalstrip.h"
+#include "../ui/terminalstripeditorwindow.h"
+#include "trueterminalstrip.h"
 
-TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip, QGraphicsItem *parent) :
-	QetGraphicsItem{parent},
-	m_strip{strip},
-	m_drawer{strip}
+TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip,
+                                     QGraphicsItem *parent) :
+    QetGraphicsItem { parent },
+    m_strip { strip },
+    m_drawer { QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
+			  new TerminalStripDrawer::TrueTerminalStrip { strip }}
+	}
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
     setAcceptHoverEvents(true);
@@ -43,7 +48,8 @@ TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
 void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
 {
     m_strip = strip;
-    m_drawer.setStrip(strip);
+    m_drawer.setStrip(QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
+                          new TerminalStripDrawer::TrueTerminalStrip { strip }});
     m_pending_strip_uuid = QUuid();
 
     if (!m_drawer.haveLayout()) {
