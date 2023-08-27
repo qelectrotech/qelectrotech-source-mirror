@@ -735,5 +735,6 @@
         <file>ico/22x22/color/color-11-gray-08-slategray.png</file>
         <file>ico/22x22/color/color-11-gray-09-darkslategray.png</file>
         <file>ico/22x22/color/color-11-gray-10-black.png</file>
+        <file>ico/24x16/zh.png</file>
     </qresource>
 </RCC>
