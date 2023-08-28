@@ -1841,7 +1841,11 @@ NamesList QETProject::namesListForIntegrationCategory()
 		0x305F,
 		0x8981,
 		0x7D20};
-
+	const QChar chinese_data[4] ={
+		0x8FDB,
+		0x53E3,
+		0x5546,
+		0x54C1};
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
 	names.addName("de", "Importierte elemente");
@@ -1861,6 +1865,7 @@ NamesList QETProject::namesListForIntegrationCategory()
 	names.addName("sl", "Uvoženi elementi");
 	names.addName("ja", QString(japanese_data, 10));
 	names.addName("uk", QString(ukrainian_data, 20));
+	names.addName("zh", QString(chinese_data, 4));
 	return (names);
 #else
 #	if TODO_LIST
