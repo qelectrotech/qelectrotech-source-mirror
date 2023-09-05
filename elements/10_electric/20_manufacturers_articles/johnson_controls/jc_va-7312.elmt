@@ -1,0 +1,66 @@
+<definition height="120" width="110" hotspot_x="55" version="0.100.0" link_type="simple" type="element" hotspot_y="96">
+    <uuid uuid="{281c06ad-00d1-42ca-9583-fb2cfa263cec}"/>
+    <names>
+        <name lang="fr">Vanne trois voies VA-7312</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">VA-7312</elementInformation>
+        <elementInformation name="manufacturer" show="1">Johnson Controls</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <circle diameter="20" x="-10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-10"/>
+        <text text="M" x="-5" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="5"/>
+        <rect height="15" width="80" x="-40" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-44.8945"/>
+        <text text="ELECTRONIC BOARD" x="-31.8575" rotation="0" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-34.6858"/>
+        <polygon antialias="false" y2="-10" x3="-30" y3="-30" closed="false" x1="-10" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <polygon antialias="false" y2="-10" x3="10" y3="0" closed="false" x1="30" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <rect height="13" width="4" x="-6" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-26"/>
+        <rect height="13" width="2" x="3" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-26"/>
+        <line antialias="false" y2="-20" length1="1.5" length2="1.5" end2="none" x1="-30" y1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-6"/>
+        <line antialias="false" y2="-20" length1="1.5" length2="1.5" end2="none" x1="5" y1="-20" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <text text="4" x="-34.0625" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-59.7188"/>
+        <text text="3" x="-13" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-60"/>
+        <text text="2" x="6.15625" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-60.5625"/>
+        <text text="1" x="26.2188" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-59.8594"/>
+        <rect height="20" width="20" x="-40.6094" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-75"/>
+        <rect height="20" width="20" x="-20.6094" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-75"/>
+        <rect height="20" width="20" x="-0.609375" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-75"/>
+        <rect height="20" width="20" x="19.3906" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-75"/>
+        <line antialias="false" y2="-75" length1="1.5" length2="1.5" end2="none" x1="-30" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <line antialias="false" y2="-75" length1="1.5" length2="1.5" end2="none" x1="-10" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <line antialias="false" y2="-75" length1="1.5" length2="1.5" end2="none" x1="10" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="10"/>
+        <line antialias="false" y2="-75" length1="1.5" length2="1.5" end2="none" x1="30" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <text text="0...10V" x="-28" rotation="0" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-84"/>
+        <text text="COM" x="-8" rotation="0" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-84"/>
+        <text text="COM 0V" x="12" rotation="0" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-84"/>
+        <text text="24V AC" x="32" rotation="0" color="#000000" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="-84"/>
+        <line antialias="false" y2="-55" length1="1.5" length2="1.5" end2="none" x1="-30" y1="-45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-30"/>
+        <line antialias="false" y2="-54" length1="1.5" length2="1.5" end2="none" x1="30" y1="-45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <line antialias="false" y2="-45" length1="1.5" length2="1.5" end2="none" x1="-10" y1="-55" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-10"/>
+        <line antialias="false" y2="-45" length1="1.5" length2="1.5" end2="none" x1="11" y1="-55" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="11"/>
+        <line antialias="false" y2="-50" length1="1.5" length2="1.5" end2="none" x1="-10" y1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="11"/>
+        <circle diameter="2" x="-11" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-51"/>
+        <circle diameter="2" x="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-51"/>
+        <circle diameter="2" x="-31" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21"/>
+        <circle diameter="2" x="29" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-21"/>
+        <polygon antialias="false" y2="-90" x3="50" y4="20" y3="20" x4="-50" x1="-50" y1="-90" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="50"/>
+        <dynamic_text z="38" x="55.6667" text_from="ElementInfo" rotation="0" uuid="{8e237d62-0ec8-4701-a5df-adef756a9745}" keep_visual_rotation="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" text_width="-1" y="-52.6667">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="-30" name="" orientation="n" uuid="{59b49b01-a771-41e6-a822-10ebd64277c8}" type="Generic" y="-90"/>
+        <terminal x="10" name="" orientation="n" uuid="{0dfe5151-2564-4bd6-b6c1-a2655e20c9a1}" type="Generic" y="-90"/>
+        <terminal x="-10" name="" orientation="n" uuid="{e96f551e-99a2-4e6b-a3c0-543a2b1852c4}" type="Generic" y="-90"/>
+        <terminal x="30" name="" orientation="n" uuid="{3c17aaf7-62cc-4dfd-b074-05792d44ec95}" type="Generic" y="-90"/>
+    </description>
+</definition>

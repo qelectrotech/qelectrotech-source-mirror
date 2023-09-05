@@ -1,0 +1,46 @@
+<definition type="element" hotspot_y="34" version="0.100.0" hotspot_x="25" width="60" height="70" link_type="simple">
+    <uuid uuid="{edb83356-81fe-49ce-9af3-37d0073389d7}"/>
+    <names>
+        <name lang="fr">Pressostat différentiel avec filtres P233 A4-PHC</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Johnson Controls</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">P233 A4-PHC</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect x="-20" width="50" height="60" ry="0" style="line-style:dotted;line-weight:normal;filling:none;color:black" rx="0" y="-30" antialias="false"/>
+        <rect x="-17.0273" width="10.2216" height="7" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="5.80571" antialias="false"/>
+        <circle x="-3" style="line-style:normal;line-weight:normal;filling:black;color:black" y="16" antialias="false" diameter="4"/>
+        <polygon y1="7.19305" x2="-10.0273" y2="9.19305" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-13.0273" closed="false" antialias="false" x3="-13.0273" y3="11.193"/>
+        <circle x="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-18" antialias="false" diameter="4"/>
+        <line end1="none" y1="9.20248" x2="-3.30547" end2="none" length2="1.5" y2="9.19036" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-6.72273" antialias="false"/>
+        <circle x="22" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-18" antialias="false" diameter="4"/>
+        <polygon y1="-25" x2="-10" y2="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" closed="false" antialias="false" x3="-12" y3="-16"/>
+        <polygon y1="-25" x2="20" y2="-16" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" closed="false" antialias="false" x3="22" y3="-16"/>
+        <line end1="none" y1="25" x2="0" end2="none" length2="1.5" y2="20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" antialias="false"/>
+        <polygon y1="-16.4665" x2="-0.183019" y2="17.1713" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-12.0432" closed="false" antialias="false"/>
+        <text color="#000000" x="22" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-22" rotation="0" text="3"/>
+        <text color="#000000" x="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="27" rotation="0" text="1"/>
+        <text color="#000000" x="-8" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-22" rotation="0" text="2"/>
+        <line end1="none" y1="-25" x2="-10" end2="none" length2="1.5" y2="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="-10" antialias="false"/>
+        <line end1="none" y1="-30" x2="20" end2="none" length2="1.5" y2="-25" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="20" antialias="false"/>
+        <line end1="none" y1="21" x2="0" end2="none" length2="1.5" y2="30" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" antialias="false"/>
+        <dynamic_text x="36" text_from="ElementInfo" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="18" frame="false" text_width="-1" Valignment="AlignTop" y="-12" uuid="{652e67dc-9ead-4dc0-b9b3-ecfd4a4ad7a4}" rotation="0" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" orientation="s" type="Generic" name="" y="30" uuid="{6f198a9d-72ad-484a-94bc-16e1ed87e30a}"/>
+        <terminal x="-10" orientation="n" type="Generic" name="" y="-30" uuid="{5ecbc54f-4c97-41e4-a9eb-b4f405e85ad5}"/>
+        <terminal x="20" orientation="n" type="Generic" name="" y="-30" uuid="{be091ad7-7f40-460e-8224-22e9837e07c8}"/>
+    </description>
+</definition>

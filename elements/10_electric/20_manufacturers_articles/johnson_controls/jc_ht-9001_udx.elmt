@@ -1,0 +1,79 @@
+<definition height="160" width="150" hotspot_x="95" version="0.100.0" link_type="simple" type="element" hotspot_y="104">
+    <uuid uuid="{2b3ffcdc-a14d-4ed5-b460-c03c7bc5bb91}"/>
+    <names>
+        <name lang="en">Hygrometric probe</name>
+        <name lang="fr">Sonde hydrométrique de température</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">HT 9001 UDX</elementInformation>
+        <elementInformation name="manufacturer" show="1">Johnson Controls</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text text="C" x="-81" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="30"/>
+        <polygon x6="-9" x5="-9" antialias="false" y2="-30" y5="-30" x3="41" y4="-30" y6="-80" y3="-80" x4="41" closed="false" x1="-9" y1="-80" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="41" x2="-9" y7="-80"/>
+        <rect height="5" width="30" x="1" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-93"/>
+        <text text="A" x="-60" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="30"/>
+        <line antialias="false" y2="-98" length1="1.5" length2="1.5" end2="none" x1="2" y1="-83" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="30"/>
+        <text text="B" x="-40" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="30"/>
+        <line antialias="false" y2="-86" length1="1.5" length2="1.5" end2="none" x1="2" y1="-83" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="3"/>
+        <text text="Bt" x="-21" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="30"/>
+        <line antialias="false" y2="-82" length1="1.5" length2="1.5" end2="none" x1="2" y1="-83" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="5"/>
+        <polygon x6="-70" x5="-70" antialias="false" y2="0" y5="0" x3="-20" y4="0" y6="-50" y3="-50" x4="-20" closed="false" x1="-70" y1="-50" style="line-style:normal;line-weight:normal;filling:none;color:black" x7="-20" x2="-70" y7="-50"/>
+        <rect height="5" width="30" x="-60" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-63"/>
+        <line antialias="false" y2="-95" length1="1.5" length2="1.5" end2="none" x1="30" y1="-98" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="29"/>
+        <line antialias="false" y2="-68" length1="1.5" length2="1.5" end2="none" x1="-59" y1="-53" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-31"/>
+        <line antialias="false" y2="-99" length1="1.5" length2="1.5" end2="none" x1="30" y1="-98" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="27"/>
+        <line antialias="false" y2="-56" length1="1.5" length2="1.5" end2="none" x1="-59" y1="-53" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-58"/>
+        <line antialias="false" y2="-90" length1="1.5" length2="1.5" end2="none" x1="-4" y1="-80" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-4"/>
+        <line antialias="false" y2="-52" length1="1.5" length2="1.5" end2="none" x1="-59" y1="-53" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-56"/>
+        <line antialias="false" y2="-90" length1="1.5" length2="1.5" end2="none" x1="-4" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="1"/>
+        <line antialias="false" y2="-65" length1="1.5" length2="1.5" end2="none" x1="-31" y1="-68" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-32"/>
+        <line antialias="false" y2="-90" length1="1.5" length2="1.5" end2="none" x1="31" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="36"/>
+        <line antialias="false" y2="-80" length1="1.5" length2="1.5" end2="none" x1="36" y1="-90" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="36"/>
+        <line antialias="false" y2="-69" length1="1.5" length2="1.5" end2="none" x1="-31" y1="-68" end1="none" style="line-style:normal;line-weight:thin;filling:none;color:black" x2="-34"/>
+        <line antialias="false" y2="-60" length1="1.5" length2="1.5" end2="none" x1="-65" y1="-50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-65"/>
+        <text text="T" x="1" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-65"/>
+        <line antialias="false" y2="-60" length1="1.5" length2="1.5" end2="none" x1="-65" y1="-60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-60"/>
+        <text text="E" x="26" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-40"/>
+        <line antialias="false" y2="-60" length1="1.5" length2="1.5" end2="none" x1="-30" y1="-60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25"/>
+        <line antialias="false" y2="-50" length1="1.5" length2="1.5" end2="none" x1="-25" y1="-60" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25"/>
+        <text text="RH" x="-60" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-35"/>
+        <text text="E" x="-35" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-10"/>
+        <rect height="20" width="20" x="-86" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15"/>
+        <rect height="20" width="20" x="-66" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15"/>
+        <rect height="20" width="20" x="-46" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15"/>
+        <rect height="20" width="20" x="-26" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="15"/>
+        <line antialias="false" y2="35" length1="1.5" length2="1.5" end2="none" x1="-76" y1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-76"/>
+        <line antialias="false" y2="35" length1="1.5" length2="1.5" end2="none" x1="-56" y1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-56"/>
+        <line antialias="false" y2="35" length1="1.5" length2="1.5" end2="none" x1="-36" y1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-36"/>
+        <line antialias="false" y2="35" length1="1.5" length2="1.5" end2="none" x1="-16" y1="50" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-16"/>
+        <text text="24V" x="-74" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="41"/>
+        <text text="COM" x="-54" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="41"/>
+        <text text="HR" x="-34" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="41"/>
+        <text text="TEMP" x="-14" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="41"/>
+        <polygon antialias="false" y2="-75" x3="-10" y3="-75" closed="false" x1="-75" y1="15" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-75"/>
+        <line antialias="false" y2="0" length1="1.5" length2="1.5" end2="none" x1="-55" y1="15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-55"/>
+        <line antialias="false" y2="0" length1="1.5" length2="1.5" end2="none" x1="-35" y1="15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-35"/>
+        <polygon antialias="false" y2="8" x3="6" y3="-30" closed="false" x1="-55" y1="8" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="6"/>
+        <polygon antialias="false" y2="12" x3="-15" y4="14" y3="12" x4="-15" closed="false" x1="30" y1="-30" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <polygon antialias="false" y2="-100" x3="50" y4="50" y3="-100" x4="50" x1="-90" y1="50" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="-90"/>
+        <dynamic_text z="49" x="60" text_from="ElementInfo" rotation="0" uuid="{b2710558-b7b4-47bb-8453-5031d028cc02}" keep_visual_rotation="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" text_width="-1" y="-30">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="-16" name="" orientation="s" uuid="{4c145ed6-4ae0-4b93-a839-2d2c0e2ec51f}" type="Generic" y="50"/>
+        <terminal x="-36" name="" orientation="s" uuid="{4977c4e3-309b-4cbe-9a52-f2adde2082f2}" type="Generic" y="50"/>
+        <terminal x="-56" name="" orientation="s" uuid="{35558adf-2d35-405a-8a5e-b338682f5d24}" type="Generic" y="50"/>
+        <terminal x="-76" name="" orientation="s" uuid="{68b3a792-b32c-48c5-a70e-949b5f503540}" type="Generic" y="50"/>
+    </description>
+</definition>

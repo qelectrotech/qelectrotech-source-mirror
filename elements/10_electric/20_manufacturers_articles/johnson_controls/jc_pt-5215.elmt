@@ -1,0 +1,50 @@
+<definition height="120" width="120" hotspot_x="84" version="0.100.0" link_type="simple" type="element" hotspot_y="45">
+    <uuid uuid="{46be1181-a766-49fd-b3f0-2000cc93eca4}"/>
+    <names>
+        <name lang="en">Differential pressure sensor PT-5215</name>
+        <name lang="fr">Capteur de pression différentiel PT-5215</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">PT-5215</elementInformation>
+        <elementInformation name="manufacturer" show="1">Johnson Controls</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect height="30" width="30" x="-10" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="30"/>
+        <rect height="30" width="30" x="-10" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="0"/>
+        <rect height="30" width="30" x="-10" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-30"/>
+        <rect height="40" width="40" x="-65" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-20"/>
+        <line antialias="false" y2="45" length1="1.5" length2="1.5" end2="none" x1="20" y1="45" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <line antialias="false" y2="15" length1="1.5" length2="1.5" end2="none" x1="20" y1="15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <line antialias="false" y2="-15" length1="1.5" length2="1.5" end2="none" x1="20" y1="-15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="30"/>
+        <line antialias="false" y2="-5" length1="1.5" length2="1.5" end2="none" x1="5" y1="-25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" x2="5"/>
+        <line antialias="false" y2="-15" length1="1.5" length2="1.5" end2="none" x1="-5" y1="-15" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:red" x2="15"/>
+        <line antialias="false" y2="5" length1="1.5" length2="1.5" end2="none" x1="-5" y1="25" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="15"/>
+        <line antialias="false" y2="5" length1="1.5" length2="1.5" end2="none" x1="15" y1="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="5"/>
+        <line antialias="false" y2="15" length1="1.5" length2="1.5" end2="none" x1="15" y1="5" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="15"/>
+        <circle diameter="20" x="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:red" y="35"/>
+        <polygon antialias="false" y2="0" x3="-70" y4="45" y3="45" x4="-10" closed="false" x1="-65" y1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-70"/>
+        <polygon antialias="false" y2="25" x3="-10" y3="25" closed="false" x1="-45" y1="20" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-45"/>
+        <polygon antialias="false" y2="-5" closed="false" x1="-10" y1="-5" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25"/>
+        <line antialias="false" y2="19.687" length1="1.5" length2="1.5" end2="none" x1="-64.6539" y1="-19.7541" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="-25.2128"/>
+        <text text="Δ P" x="-46.3827" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-7.48603"/>
+        <text text="E" x="-58.743" rotation="0" color="#000000" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="13.5196"/>
+        <polygon x5="-80" antialias="false" y2="-40" y5="-40" x3="30" y4="70" y3="70" x4="-80" x1="-65" y1="-40" style="line-style:dotted;line-weight:normal;filling:none;color:black" x2="30"/>
+        <dynamic_text z="21" x="-60" text_from="ElementInfo" rotation="0" uuid="{20c6b362-8eef-42e9-bf6f-5b0429583685}" keep_visual_rotation="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" text_width="-1" y="-70">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="30" name="" orientation="e" uuid="{9a6af8c0-8993-4a4e-9373-bc9cc717ae21}" type="Generic" y="15"/>
+        <terminal x="30" name="" orientation="e" uuid="{3acf8a3f-224e-4f52-ae18-1cf5f671c79f}" type="Generic" y="-15"/>
+        <terminal x="30" name="" orientation="e" uuid="{830bb86c-d003-4af0-8a8a-3884b1407fd9}" type="Generic" y="45"/>
+    </description>
+</definition>

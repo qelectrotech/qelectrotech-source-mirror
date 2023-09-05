@@ -1,0 +1,50 @@
+<definition type="element" hotspot_y="22" version="0.100.0" hotspot_x="105" width="210" height="50" link_type="simple">
+    <uuid uuid="{5f85425e-2dcb-4751-9542-91ddffad2b08}"/>
+    <names>
+        <name lang="fr">Carte de sortie automate Sofrel S550 4AI</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">S550 4AI </elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text color="#000000" x="51" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="4a"/>
+        <text color="#000000" x="-29" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="2a"/>
+        <text color="#000000" x="-69" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="1a"/>
+        <text color="#000000" x="11" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="3a"/>
+        <text color="#000000" x="-9" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="2b"/>
+        <text color="#000000" x="-49" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="1b"/>
+        <text color="#000000" x="71" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="4b"/>
+        <text color="#000000" x="31" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="3b"/>
+        <rect x="-80" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="-40" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="0" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="40" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="-80" width="160" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="0" antialias="false"/>
+        <text color="#000000" x="-23.9537" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="6.56248" rotation="0" text="Analogic inputs"/>
+        <text color="#000000" x="-65" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="AI1"/>
+        <text color="#000000" x="-26" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="AI2"/>
+        <text color="#000000" x="14.143" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="16.8565" rotation="0" text="AI3"/>
+        <text color="#000000" x="54" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="AI4"/>
+        <rect x="-100" width="200" height="40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="-20" antialias="false"/>
+        <text color="#000000" x="-25" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-5" rotation="0" text="S550 4AI"/>
+        <terminal x="-70" orientation="s" type="Generic" name="" y="20" uuid="{d9b3fd6e-d89d-4029-ab91-0efd3e0c9a4b}"/>
+        <terminal x="70" orientation="s" type="Generic" name="" y="20" uuid="{dd299d69-34cd-4d96-b767-47db17ec7e5e}"/>
+        <terminal x="-30" orientation="s" type="Generic" name="" y="20" uuid="{727727d6-bd50-4c72-9b99-59ff55df4030}"/>
+        <terminal x="-10" orientation="s" type="Generic" name="" y="20" uuid="{3df27f0f-795f-4a26-97b2-060977d8c26c}"/>
+        <terminal x="30" orientation="s" type="Generic" name="" y="20" uuid="{95a295cb-6443-4e3f-883a-1514b1b547f0}"/>
+        <terminal x="50" orientation="s" type="Generic" name="" y="20" uuid="{f571f1d0-78ad-40c4-b44b-df7abd55aa1c}"/>
+        <terminal x="-50" orientation="s" type="Generic" name="" y="20" uuid="{c5ee13bb-b2fc-49b6-a32d-228da39c7f66}"/>
+        <terminal x="10" orientation="s" type="Generic" name="" y="20" uuid="{714bb30a-eddb-48c7-ad85-ec8a9b1ee475}"/>
+    </description>
+</definition>
