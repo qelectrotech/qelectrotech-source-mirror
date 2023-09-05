@@ -96,7 +96,7 @@ parts:
       - git
       - libsqlite3-dev
     override-build: |
-      displayed_version=$(grep "displayedVersion" sources/qet.h | tr -d "\";" | cut -d" " -f5)
+      displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -n 1| cut -c32-40| sed -e 's/,/./g' -e 's/ //g')
       snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
