@@ -24,10 +24,6 @@ layout:
 
 apps:
   qelectrotech:
-    command: desktop-launch $SNAP/usr/local/bin/qelectrotech
-    command-chain:
-      - bin/qelectrotech-launch
-    desktop: usr/share/applications/qelectrotech.desktop
     extensions: [kde-neon]
     plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control]
     environment: &env
