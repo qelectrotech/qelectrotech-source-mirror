@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: snapcore/action-build@v1
       id: build
-    - uses: snapcore/action-publish@v1
+    - uses: snapcore/action-publish@@master.
       env:
         SNAPCRAFT_STORE_LEGACY_CREDENTIALS: ${{ secrets.SNAPSTORE_LOGIN }}
       with:
