@@ -35,16 +35,16 @@ apps:
       PYTHONPATH: $SNAP:$SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3.8:$SNAP/usr/lib/python3.8/lib-dynload
 
   qet-tb-generator:
-    command: qet_tb_generator
-    command-chain:
-      - bin/qelectrotech-launch
-    extensions: [kde-neon]
+    command: desktop-launch $SNAP/bin/qet_tb_generator
+    extensions: 
+     - kde-neon
     plugs: *plugs
     environment: *env
       
   dxf-to-qet:
     command: desktop-launch $SNAP/bin/DXFtoQET
-    extensions: [kde-neon]
+    extensions: 
+     - kde-neon
     plugs: *plugs
     environment: *env
 
