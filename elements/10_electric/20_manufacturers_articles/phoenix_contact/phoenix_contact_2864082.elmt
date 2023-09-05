@@ -1,0 +1,66 @@
+<definition width="90" height="60" version="0.100.0" link_type="simple" hotspot_x="34" type="element" hotspot_y="35">
+    <uuid uuid="{8cfdd76e-d944-4cae-b75c-4a427bc129db}"/>
+    <names>
+        <name lang="fr">Conditionneur de signal Phoenix Contact 2864082</name>
+        <name lang="en">Signal conditioner Phoenix Contact 2864082 </name>
+    </names>
+    <elementInformations>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1">Mini MCR </elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Phoenix Contact</elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">2864082</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text text="+Ub" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-21" color="#000000" x="14" rotation="0"/>
+        <text text="GND3" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-21" color="#000000" x="34" rotation="0"/>
+        <rect width="80" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="50" ry="0" y="-30" x="-30"/>
+        <text text="3" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-26" color="#000000" x="-19" rotation="0"/>
+        <text text="4" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-26" color="#000000" x="1" rotation="0"/>
+        <text text="7" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-26" color="#000000" x="21" rotation="0"/>
+        <text text="8" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-26" color="#000000" x="41" rotation="0"/>
+        <text text="1" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-11" color="#000000" x="-28" rotation="0"/>
+        <text text="2" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="9" color="#000000" x="-28" rotation="0"/>
+        <text text="6" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="9" color="#000000" x="46" rotation="0"/>
+        <text text="5" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-11" color="#000000" x="46" rotation="0"/>
+        <text text="+Ub" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-21" color="#000000" x="-26" rotation="0"/>
+        <text text="GND3" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-21" color="#000000" x="-6" rotation="0"/>
+        <text text="OUT U/I" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-8" color="#000000" x="26" rotation="0"/>
+        <text text="GND2" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="12" color="#000000" x="33" rotation="0"/>
+        <text text="GND1" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="12" color="#000000" x="-25" rotation="0"/>
+        <text text="IN U/I" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-8" color="#000000" x="-25" rotation="0"/>
+        <rect width="26" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="25" ry="0" y="-13" x="-5"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11.6992" end1="none" antialias="false" length2="1.5" length1="1.5" x2="20.759" y2="-12.7396" x1="-4.7964"/>
+        <rect width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="5" ry="0" y="-10" x="-1"/>
+        <rect width="1" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" antialias="false" height="5" ry="0" y="-10" x="2"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" end1="none" antialias="false" length2="1.5" length1="1.5" x2="-2" y2="-10" x1="-1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" end1="none" antialias="false" length2="1.5" length1="1.5" x2="-2" y2="-5" x1="-1"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" end1="none" antialias="false" length2="1.5" length1="1.5" x2="4" y2="-5" x1="2"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" end1="none" antialias="false" length2="1.5" length1="1.5" x2="4" y2="-10" x1="3"/>
+        <text text="~" font="Sans Serif,10,-1,5,50,0,0,0,0,0" y="3" color="#000000" x="-4" rotation="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2.41149" end1="none" antialias="false" length2="1.5" length1="1.5" x2="0" y2="0" x1="1.43626"/>
+        <polygon x3="17" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" y3="5" antialias="false" x2="11" y2="9" x1="11"/>
+        <text text="MINI MCR-SL-UI-UI" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="18" color="#000000" x="-13" rotation="0"/>
+        <polygon x3="20" y4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" y3="-18" antialias="false" x2="-20" y2="-18" x4="20" x1="-20"/>
+        <polygon x3="40" y4="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" y3="-16" antialias="false" x2="0" y2="-16" x4="40" x1="0"/>
+        <dynamic_text frame="false" uuid="{827e1bbf-e049-408c-890e-7fd78dfdbb3b}" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" y="-15" z="32" text_from="ElementInfo" x="55" rotation="0" keep_visual_rotation="false" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal uuid="{33ee7b78-48f9-4989-97a1-62097e05abe1}" orientation="w" type="Generic" name="" y="-10" x="-30"/>
+        <terminal uuid="{f7cde1fd-659f-4c1a-aa2f-a88580b38cf9}" orientation="n" type="Generic" name="" y="-30" x="-20"/>
+        <terminal uuid="{16545305-f06b-4d3f-8d5e-88c348fa51b5}" orientation="n" type="Generic" name="" y="-30" x="20"/>
+        <terminal uuid="{e4cd57ea-6527-4da7-b7e7-21d600313e0f}" orientation="w" type="Generic" name="" y="10" x="-30"/>
+        <terminal uuid="{8fed5407-8d20-419c-a16d-cda4e9cca0a6}" orientation="n" type="Generic" name="" y="-30" x="40"/>
+        <terminal uuid="{6f140013-565f-463d-af37-72ba92efa517}" orientation="e" type="Generic" name="" y="10" x="50"/>
+        <terminal uuid="{4ec4e105-e58d-45c3-93d6-59c5d71e6d02}" orientation="e" type="Generic" name="" y="-10" x="50"/>
+        <terminal uuid="{39e4e1bd-cfcf-4105-bcfd-fe8178ffbba2}" orientation="n" type="Generic" name="" y="-30" x="0"/>
+    </description>
+</definition>

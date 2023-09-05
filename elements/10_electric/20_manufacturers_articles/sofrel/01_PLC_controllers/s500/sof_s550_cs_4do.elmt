@@ -1,0 +1,56 @@
+<definition type="element" hotspot_y="22" version="0.100.0" hotspot_x="95" width="230" height="50" link_type="simple">
+    <uuid uuid="{675a844e-ef77-42b4-af48-4acba5135370}"/>
+    <names>
+        <name lang="fr">Automate Sofrel carte de sortie S550 4DO</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Sofrel</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">S550 4DO</elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text color="#000000" x="51" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="4a"/>
+        <text color="#000000" x="112" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="Db"/>
+        <text color="#000000" x="92" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="Da"/>
+        <text color="#000000" x="92" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="DWG"/>
+        <text color="#000000" x="-29" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="2a"/>
+        <text color="#000000" x="-69" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="1a"/>
+        <text color="#000000" x="11" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="3a"/>
+        <text color="#000000" x="-9" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="2b"/>
+        <text color="#000000" x="-49" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="1b"/>
+        <text color="#000000" x="71" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="4b"/>
+        <text color="#000000" x="31" font="Sans Serif,2,-1,5,50,0,0,0,0,0" y="24" rotation="0" text="3b"/>
+        <rect x="-80" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="-40" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="0" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="40" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <rect x="-80" width="200" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="0" antialias="false"/>
+        <text color="#000000" x="-4.83203" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="6.6875" rotation="0" text="Digital outputs"/>
+        <text color="#000000" x="-65" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="AI1"/>
+        <text color="#000000" x="-26" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="AI2"/>
+        <text color="#000000" x="14.143" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="16.8565" rotation="0" text="AI3"/>
+        <text color="#000000" x="54" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="17" rotation="0" text="AI4"/>
+        <rect x="-90" width="220" height="40" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="-20" antialias="false"/>
+        <text color="#000000" x="-8.33333" font="Sans Serif,9,-1,5,50,0,0,0,0,0" y="-5" rotation="0" text="S550 4DO"/>
+        <rect x="80" width="40" height="10" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="10" antialias="false"/>
+        <terminal x="110" orientation="s" type="Generic" name="" y="20" uuid="{9b3bd469-0d30-4d9f-943c-4b5677a61c69}"/>
+        <terminal x="30" orientation="s" type="Generic" name="" y="20" uuid="{138c983a-41b0-4e3d-ab65-7973e17abd08}"/>
+        <terminal x="70" orientation="s" type="Generic" name="" y="20" uuid="{44b3e120-7b6c-42ed-829a-f30ec1d2b291}"/>
+        <terminal x="10" orientation="s" type="Generic" name="" y="20" uuid="{3147ccfa-e547-4f98-a540-b5e51e1c132f}"/>
+        <terminal x="-30" orientation="s" type="Generic" name="" y="20" uuid="{5aa1b3ef-14f9-447e-b1c0-6efc2b67815a}"/>
+        <terminal x="-10" orientation="s" type="Generic" name="" y="20" uuid="{a8301f8c-b1a1-42ac-a6ec-168153881371}"/>
+        <terminal x="-50" orientation="s" type="Generic" name="" y="20" uuid="{1fe0becf-4b45-4629-bf0a-2945336ee51f}"/>
+        <terminal x="-70" orientation="s" type="Generic" name="" y="20" uuid="{dd6f681e-67e5-4744-b607-23a8a08c8608}"/>
+        <terminal x="50" orientation="s" type="Generic" name="" y="20" uuid="{c44a97f5-f40e-46f3-9a36-2aae3339bd72}"/>
+        <terminal x="90" orientation="s" type="Generic" name="" y="20" uuid="{0beb3213-6945-42ba-a748-672af4d66f35}"/>
+    </description>
+</definition>

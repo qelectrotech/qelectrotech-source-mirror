@@ -1,0 +1,56 @@
+<definition height="100" width="120" hotspot_x="45" version="0.100.0" link_type="simple" type="element" hotspot_y="24">
+    <uuid uuid="{c4a13b21-13f6-4a3d-98ab-b0e3901cd059}"/>
+    <names>
+        <name lang="en">Interface converter Phoenix Contact 2744461</name>
+        <name lang="fr">Convertisseur d'interface Phoenix Contact 2744461</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">2744461</elementInformation>
+        <elementInformation name="manufacturer" show="1">Phoenix Contact</elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect height="15" width="30" x="31" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="19"/>
+        <text text="+24V" x="-30" rotation="0" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-6"/>
+        <rect height="11" width="10" x="49" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="21"/>
+        <text text="0V" x="-4" rotation="0" color="#000000" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-6"/>
+        <text text="1" x="-18" rotation="0" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-14"/>
+        <text text="2" x="2" rotation="0" color="#000000" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-14"/>
+        <rect height="15" width="30" x="-29" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:none;color:black" y="19"/>
+        <rect height="11" width="10" x="-27" ry="0" antialias="false" rx="0" style="line-style:normal;line-weight:normal;filling:black;color:black" y="21"/>
+        <text text="Pasive/Active" x="-35" rotation="0" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="15"/>
+        <text text="DTE/DCE" x="30" rotation="0" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="16"/>
+        <text text="CONVERTER&#xa;RS232/20mA" x="-6" rotation="0" color="#000000" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="42"/>
+        <line antialias="false" y2="-11" length1="1.5" length2="1.5" end2="none" x1="24" y1="-11" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="64"/>
+        <arc height="24" width="12" x="24" angle="90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23" start="180"/>
+        <arc height="24" width="12" x="52" angle="90" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y="-23" start="270"/>
+        <line antialias="false" y2="1" length1="1.5" length2="1.5" end2="none" x1="30" y1="1" end1="none" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="57"/>
+        <text text="SubD9cF" x="24" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-14"/>
+        <polygon antialias="false" y2="70" x3="70" y4="-20" y3="-20" x4="-40" x1="-40" y1="70" style="line-style:normal;line-weight:normal;filling:none;color:black" x2="70"/>
+        <text text="TXD+" x="-36" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="64"/>
+        <text text="TXD-" x="-16" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="64"/>
+        <text text="PE" x="6" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="64"/>
+        <text text="RXD+" x="24" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="64"/>
+        <dynamic_text z="21" x="80" text_from="ElementInfo" rotation="0" uuid="{173cb209-60a5-4d10-984d-368d60ddf2e6}" keep_visual_rotation="false" Valignment="AlignTop" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" frame="false" text_width="-1" y="20">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <text text="RXD-" x="44" rotation="0" color="#000000" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="64"/>
+        <terminal x="-30" name="" orientation="s" uuid="{e7b77db3-fe3e-4580-9b81-41180119af0c}" type="Generic" y="70"/>
+        <terminal x="10" name="" orientation="s" uuid="{b62331d2-fe78-430c-9523-b3fa5fb203db}" type="Generic" y="70"/>
+        <terminal x="-10" name="" orientation="s" uuid="{2c9120e1-57f5-4aba-a955-49e3a8fdb855}" type="Generic" y="70"/>
+        <terminal x="30" name="" orientation="s" uuid="{95ffc029-c914-4f89-a19b-13146f891cf5}" type="Generic" y="70"/>
+        <terminal x="50" name="" orientation="s" uuid="{0a5fa5bc-178e-47ea-9550-226535d1e0b5}" type="Generic" y="70"/>
+        <terminal x="-20" name="" orientation="n" uuid="{78bdacad-f1cd-43c0-af49-d5478ef7c434}" type="Generic" y="-20"/>
+        <terminal x="0" name="" orientation="n" uuid="{1cfb7c02-5086-4755-adf8-ee08c0da71f9}" type="Generic" y="-20"/>
+    </description>
+</definition>

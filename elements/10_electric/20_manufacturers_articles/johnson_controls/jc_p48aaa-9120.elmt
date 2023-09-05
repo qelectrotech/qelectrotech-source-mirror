@@ -1,0 +1,44 @@
+<definition type="element" hotspot_y="34" version="0.100.0" hotspot_x="15" width="60" height="70" link_type="simple">
+    <uuid uuid="{52b003f5-c234-466f-a573-165063640c8a}"/>
+    <names>
+        <name lang="fr">Pressostat eau-vapeur P48AAA-9120</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Johnson Controls</elementInformation>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">P48AAA-9120</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <rect x="-10" width="50" height="60" ry="0" style="line-style:dotted;line-weight:normal;filling:none;color:black" rx="0" y="-30" antialias="false"/>
+        <circle x="8" style="line-style:normal;line-weight:normal;filling:black;color:black" y="-22" antialias="false" diameter="4"/>
+        <rect x="21" width="14" height="9" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" rx="0" y="-7" antialias="false"/>
+        <polygon y1="-4" x2="33" y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" closed="false" antialias="false" x3="30" y3="0"/>
+        <text color="#000000" x="22.3851" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="0.47824" rotation="0" text="P"/>
+        <line end1="none" y1="-30" x2="10" end2="none" length2="1.5" y2="-20" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="10" antialias="false"/>
+        <circle x="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" y="12" antialias="false" diameter="4"/>
+        <circle x="28" style="line-style:normal;line-weight:normal;filling:none;color:black" y="12" antialias="false" diameter="4"/>
+        <line end1="none" y1="-19.7765" x2="-1.80004" end2="none" length2="1.5" y2="13.1365" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="11.7786" antialias="false"/>
+        <line end1="none" y1="-2" x2="21" end2="none" length2="1.5" y2="-2" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="5" antialias="false"/>
+        <line end1="none" y1="30" x2="0" end2="none" length2="1.5" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="0" antialias="false"/>
+        <line end1="none" y1="30" x2="30" end2="none" length2="1.5" y2="16" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" x1="30" antialias="false"/>
+        <text color="#000000" x="14" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="-21" rotation="0" text="A"/>
+        <text color="#000000" x="2" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="28" rotation="0" text="B"/>
+        <text color="#000000" x="32" font="Sans Serif,5,-1,5,50,0,0,0,0,0" y="28" rotation="0" text="C"/>
+        <dynamic_text x="46" text_from="ElementInfo" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" Halignment="AlignLeft" z="23" frame="false" text_width="-1" Valignment="AlignTop" y="-14" uuid="{81bb3f4b-419f-4dc5-80d4-ff8e1bf4250a}" rotation="0" keep_visual_rotation="false">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal x="0" orientation="s" type="Generic" name="" y="30" uuid="{b4fb1d59-95fa-47dd-9a02-f827cfc89225}"/>
+        <terminal x="10" orientation="n" type="Generic" name="" y="-30" uuid="{4ef5bf9e-996b-4585-8508-06e9b413c6b7}"/>
+        <terminal x="30" orientation="s" type="Generic" name="" y="30" uuid="{90edcfd9-7d57-41f3-9f6c-a1a385ca065d}"/>
+    </description>
+</definition>

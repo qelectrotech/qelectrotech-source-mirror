@@ -1,0 +1,70 @@
+<definition width="120" height="100" version="0.100.0" link_type="simple" hotspot_x="64" type="element" hotspot_y="44">
+    <uuid uuid="{89f68db9-9cec-47e1-9f06-d474a9252951}"/>
+    <names>
+        <name lang="fr">Convertisseur d'interface Phoenix Contact 2744416</name>
+        <name lang="en">Interface converter Phoenix Contact 2744416</name>
+    </names>
+    <elementInformations>
+        <elementInformation name="label" show="1"></elementInformation>
+        <elementInformation name="unity" show="1"></elementInformation>
+        <elementInformation name="comment" show="1"></elementInformation>
+        <elementInformation name="manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="plant" show="1"></elementInformation>
+        <elementInformation name="quantity" show="1"></elementInformation>
+        <elementInformation name="manufacturer" show="1">Phoenix Contact</elementInformation>
+        <elementInformation name="machine_manufacturer_reference" show="1"></elementInformation>
+        <elementInformation name="description" show="1"></elementInformation>
+        <elementInformation name="designation" show="1">2744416</elementInformation>
+        <elementInformation name="supplier" show="1"></elementInformation>
+    </elementInformations>
+    <informations></informations>
+    <description>
+        <text text="14" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-36" color="#000000" x="-39" rotation="0"/>
+        <text text="4" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="48" color="#000000" x="12" rotation="0"/>
+        <text text="2" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="48" color="#000000" x="-28" rotation="0"/>
+        <text text="3" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="48" color="#000000" x="-8" rotation="0"/>
+        <text text="13" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-36" color="#000000" x="-49" rotation="0"/>
+        <text text="15" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-36" color="#000000" x="-29" rotation="0"/>
+        <text text="6" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="48" color="#000000" x="32" rotation="0"/>
+        <text text="8" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="34" color="#000000" x="46" rotation="0"/>
+        <text text="16" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="-36" color="#000000" x="-19" rotation="0"/>
+        <polygon x3="50" y4="-40" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" y3="-40" antialias="false" x2="50" y2="50" x4="-60" x1="-60"/>
+        <text text="D(A)" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="43" color="#000000" x="-53" rotation="0"/>
+        <text text="D(B)" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="43" color="#000000" x="-33" rotation="0"/>
+        <text text="T(A)" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="43" color="#000000" x="-13" rotation="0"/>
+        <text text="T(B)" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="43" color="#000000" x="7" rotation="0"/>
+        <text text="GND" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="43" color="#000000" x="26" rotation="0"/>
+        <text text="PE" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="32" color="#000000" x="38" rotation="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" end1="none" antialias="false" length2="1.5" length1="1.5" x2="30" y2="10" x1="30"/>
+        <arc width="24" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" antialias="true" height="12" start="180" y="-2" x="18"/>
+        <arc width="24" style="line-style:normal;line-weight:normal;filling:none;color:black" angle="90" antialias="true" height="12" start="90" y="-20" x="18"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" end1="none" antialias="false" length2="1.5" length1="1.5" x2="18" y2="-14" x1="18"/>
+        <text text="SubD9cM" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-24" color="#000000" x="14" rotation="0"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" end1="none" antialias="false" length2="1.5" length1="1.5" x2="-50" y2="-40" x1="-50"/>
+        <line end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" end1="none" antialias="false" length2="1.5" length1="1.5" x2="-30" y2="-40" x1="-30"/>
+        <text text="+24V" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-25" color="#000000" x="-58" rotation="0"/>
+        <text text="+24V" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-30" color="#000000" x="-47" rotation="0"/>
+        <text text="0V" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-24" color="#000000" x="-33" rotation="0"/>
+        <text text="0V" font="Sans Serif,4,-1,5,50,0,0,0,0,0" y="-30" color="#000000" x="-22" rotation="0"/>
+        <text text="1" font="Sans Serif,3,-1,5,50,0,0,0,0,0" y="48" color="#000000" x="-48" rotation="0"/>
+        <text text="CONVERTER&#xa;RS232/RS485" font="Sans Serif,6,-1,5,50,0,0,0,0,0" y="10" color="#000000" x="-50" rotation="0"/>
+        <dynamic_text frame="false" uuid="{2d7bb32e-cba3-4c07-81ab-e106cc4e4faa}" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" y="-11" z="62" text_from="ElementInfo" x="60" rotation="0" keep_visual_rotation="false" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <dynamic_text frame="false" uuid="{59157b8a-2544-440f-b875-01f91639adea}" Halignment="AlignLeft" font="Sans Serif,9,-1,5,0,0,0,0,0,0,normal" text_width="-1" y="-25" z="76" text_from="ElementInfo" x="-15" rotation="0" keep_visual_rotation="false" Valignment="AlignTop">
+            <text></text>
+            <info_name>label</info_name>
+        </dynamic_text>
+        <terminal uuid="{7c2f4edd-2f0c-4221-857d-7b1e48306c7b}" orientation="s" type="Generic" name="" y="50" x="31"/>
+        <terminal uuid="{0acd2d60-feaf-471f-aad5-df40211ca608}" orientation="s" type="Generic" name="" y="50" x="-30"/>
+        <terminal uuid="{6b4a42dc-f426-403c-ad53-3d20505e7207}" orientation="s" type="Generic" name="" y="50" x="-10"/>
+        <terminal uuid="{27cc2e80-3cf0-4a32-86af-f0c542f71a71}" orientation="e" type="Generic" name="" y="30" x="50"/>
+        <terminal uuid="{ea9c8955-87c8-4efb-a873-50ed554455f5}" orientation="s" type="Generic" name="" y="50" x="10"/>
+        <terminal uuid="{539fdf11-6ad7-4e6e-b28f-d3ebde5c8e13}" orientation="s" type="Generic" name="" y="50" x="-50"/>
+        <terminal uuid="{767580f2-7ba1-4c77-a6e0-87cca2e4f847}" orientation="n" type="Generic" name="" y="-40" x="-50"/>
+        <terminal uuid="{b846d7e5-93a9-48b5-be42-34b7a29e1975}" orientation="n" type="Generic" name="" y="-40" x="-40"/>
+        <terminal uuid="{f0446e25-fba3-4010-957c-25674e6e622b}" orientation="n" type="Generic" name="" y="-40" x="-20"/>
+        <terminal uuid="{ca3c15cb-e501-46fe-86e0-8e5472b4fcf5}" orientation="n" type="Generic" name="" y="-40" x="-30"/>
+    </description>
+</definition>
