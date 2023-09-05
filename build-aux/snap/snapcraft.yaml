@@ -24,7 +24,7 @@ layout:
 
 apps:
   qelectrotech:
-    command: qelectrotech		
+    command: desktop-launch $SNAP/usr/local/bin/qelectrotech
     common-id: qelectrotech.desktop
     extensions: 
      - kde-neon
