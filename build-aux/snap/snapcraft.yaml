@@ -15,8 +15,6 @@ compression: lzo
 architectures:
   - build-on: [amd64]
     build-for: [amd64]
-  - build-on: [arm64]
-    build-for: [arm64]
     
 layout:
   /usr/local/share/qelectrotech:
@@ -26,7 +24,7 @@ layout:
 
 apps:
   qelectrotech:
-    command: desktop-launch $SNAP/usr/local/bin/qelectrotech
+    command: $SNAP/usr/local/bin/qelectrotech
     common-id: qelectrotech.desktop
     extensions: 
      - kde-neon
@@ -37,14 +35,14 @@ apps:
       PYTHONPATH: $SNAP:$SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3.8:$SNAP/usr/lib/python3.8/lib-dynload
 
   qet-tb-generator:
-    command: desktop-launch $SNAP/bin/qet_tb_generator
+    command: $SNAP/bin/qet_tb_generator
     extensions: 
      - kde-neon
     plugs: *plugs
     environment: *env
       
   dxf-to-qet:
-    command: desktop-launch $SNAP/bin/DXFtoQET
+    command: $SNAP/bin/DXFtoQET
     extensions: 
      - kde-neon
     plugs: *plugs
