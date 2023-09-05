@@ -1,6 +1,6 @@
 name: qelectrotech
 title: QElectroTech
-base: core20
+base: core22
 adopt-info: qelectrotech
 license: GPL-2.0
 summary: Electrical diagram editor
@@ -68,14 +68,14 @@ parts:
   kde-sdk-setup:
     plugin: nil
     build-snaps:
-      - kde-frameworks-5-99-qt-5-15-7-core20-sdk
+      - kf5-5-104-qt-5-15-8-core22-sdk
     build-packages:
       - g++
       - mesa-common-dev
       - libglvnd-dev
       - rsync
     override-build: |
-      rsync -a --ignore-existing /snap/kde-frameworks-5-99-qt-5-15-7-core20-sdk/current/ /
+      rsync -a --ignore-existing /snap/kf5-5-104-qt-5-15-8-core22-sdk/current/ /
 
   dxf-to-qet:
     after: [kde-sdk-setup]
