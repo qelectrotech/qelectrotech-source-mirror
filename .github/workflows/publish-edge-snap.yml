@@ -9,12 +9,12 @@ jobs:
   publish_amd64:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: snapcore/action-build@v1
       id: build
     - uses: snapcore/action-publish@v1
       env:
-        SNAPCRAFT_STORE_LEGACY_CREDENTIALS: ${{ secrets.SNAPSTORE_LOGIN }}
+        SNAPCRAFT_STORE_LEGACY_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
       with:
         snap: ${{ steps.build.outputs.snap }}
         release: edge
