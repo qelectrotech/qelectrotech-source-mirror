@@ -101,12 +101,12 @@ parts:
       snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
-      snapcraftctl set-version "$snap_version"
+      craftctl set-version "$snap_version"
       qmake "$SNAPCRAFT_PART_SRC/qelectrotech.pro"
       make -j${SNAPCRAFT_PARALLEL_BUILD_COUNT}
       make install INSTALL_ROOT="$SNAPCRAFT_PART_INSTALL"
     override-stage: |
-      snapcraftctl stage
+      craftctl default
       # patch desktop file with correct icon path
       SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
       $SED_CMD usr/local/share/applications/qelectrotech.desktop
