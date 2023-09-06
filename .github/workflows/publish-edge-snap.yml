@@ -7,12 +7,12 @@ on:
 
 jobs:
   publish_amd64:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - uses: snapcore/action-build@v1
       id: build
-    - uses: snapcore/action-publish@master 
+    - uses: snapcore/action-publish@v1
       env:
         SNAPCRAFT_STORE_LEGACY_CREDENTIALS: ${{ secrets.SNAPSTORE_LOGIN }}
       with:
