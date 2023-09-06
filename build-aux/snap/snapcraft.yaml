@@ -83,10 +83,10 @@ parts:
     plugin: nil
     source: https://github.com/qelectrotech/DXFtoQET-2020.git
     override-build: |
-      qmake "$SNAPCRAFT_PART_SRC/DXFtoQET.pro"
+      qmake "$CRAFT_PART_SRC/DXFtoQET.pro"
       make -j$(nproc)
-      mkdir -p "$SNAPCRAFT_PART_INSTALL/bin"
-      cp DXFtoQET "$SNAPCRAFT_PART_INSTALL/bin/"
+      mkdir -p "$CRAFT_PART_INSTALL/bin"
+      cp DXFtoQET "$CRAFT_PART_INSTALL/bin/"
 
   qelectrotech:
     after: [kde-sdk-setup]
@@ -102,9 +102,9 @@ parts:
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       craftctl set version="$snap_version"
-      qmake "$SNAPCRAFT_PART_SRC/qelectrotech.pro"
-      make -j${SNAPCRAFT_PARALLEL_BUILD_COUNT}
-      make install INSTALL_ROOT="$SNAPCRAFT_PART_INSTALL"
+      qmake "$CRAFT_PART_SRC/qelectrotech.pro"
+      make -j${CRAFT_PARALLEL_BUILD_COUNT}
+      make install INSTALL_ROOT="$CRAFT_PART_INSTALL"
     override-stage: |
       craftctl default
       # patch desktop file with correct icon path
@@ -118,10 +118,10 @@ parts:
     override-prime: |
       set -eux
       for snap in "kf5-5-108-qt-5-15-10-core22"; do  # List all content-snaps you're using here
-        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" "$SNAPCRAFT_PRIME/usr/{}" \;
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" "$CRAFT_PRIME/usr/{}" \;
       done
       for cruft in bug lintian man; do
-        rm -rf $SNAPCRAFT_PRIME/usr/share/$cruft
+        rm -rf $CRAFT_PRIME/usr/share/$cruft
       done
-      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
-      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
+      find $CRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+      find $CRAFT_PRIME/usr/share -type d -empty -delete
