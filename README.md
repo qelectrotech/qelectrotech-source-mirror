@@ -219,7 +219,7 @@ Nowadays, QET is not only used by many individuals, teachers and students but al
 If you love QElectroTech, you can help developers to buy new hardware to test
 and implement new features. Thanks in advance for your generous donations.
 
-For more information, look at [Paypal](https://www.paypal.com/donate/?token=rqf80cP0Ck1F2jn4Y46G7tIPv9bq7x0crXkwt3GZ6OZYG6ihJYi8lZxmmQ8itsFwMUdd1G&country.x=GB&locale.x=GB)
+For more information, look at [Paypal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZHC9D7C3MDPC)
 
 
 
