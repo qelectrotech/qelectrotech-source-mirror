@@ -18,12 +18,6 @@
 #include "terminalstripdrawer.h"
 #include <QPainter>
 
-#include "../physicalterminal.h"
-#include "../realterminal.h"
-#include "../terminalstrip.h"
-#include "../terminalstripbridge.h"
-#include "trueterminalstrip.h"
-
 namespace TerminalStripDrawer {
 
 /**

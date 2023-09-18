@@ -44,6 +44,5 @@ void TerminalStripProjectConfigPage::initWidgets()
 
     auto v_layout = new QVBoxLayout { this };
     v_layout->addWidget(m_layout_editor);
-    v_layout->addStretch();
     setLayout(v_layout);
 }

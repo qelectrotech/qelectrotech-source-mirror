@@ -23,15 +23,29 @@ TerminalStripLayoutEditor::TerminalStripLayoutEditor(QSharedPointer<TerminalStri
                                                      QWidget *parent) :
     QWidget{ parent },
     ui{ new Ui::TerminalStripLayoutEditor },
-    m_layout{ layout }
+	m_layout{ layout }
 {
     ui->setupUi(this);
+	ui->m_graphics_view->setScene(new QGraphicsScene{ this });
+	ui->m_graphics_view->scene()->addItem(&m_preview_strip_item);
     updateUi();
 }
 
 TerminalStripLayoutEditor::~TerminalStripLayoutEditor()
 {
-    delete ui;
+	delete ui;
+}
+
+void TerminalStripLayoutEditor::resizeEvent(QResizeEvent *event)
+{
+	QWidget::resizeEvent(event);
+	updatePreview();
+}
+
+void TerminalStripLayoutEditor::showEvent(QShowEvent *event)
+{
+	QWidget::showEvent(event);
+	updatePreview();
 }
 
 void TerminalStripLayoutEditor::valueEdited()
@@ -118,7 +132,8 @@ void TerminalStripLayoutEditor::valueEdited()
             break;
     }
 
-
+	updateUi();
+	m_preview_strip_item.update();
 }
 
 void TerminalStripLayoutEditor::updateUi()
@@ -193,7 +208,14 @@ void TerminalStripLayoutEditor::updateUi()
         ui->m_terminal_text_alignment_cb->setCurrentIndex(1);
     } else if (terminal_alignment &Qt::AlignRight) {
         ui->m_terminal_text_alignment_cb->setCurrentIndex(2);
-    }
+	}
 
-     m_ui_updating = false;
+	m_ui_updating = false;
+	updatePreview();
+}
+
+void TerminalStripLayoutEditor::updatePreview()
+{
+	ui->m_graphics_view->fitInView(m_preview_strip_item.boundingRect().adjusted(-5,-5,5,5),
+								   Qt::KeepAspectRatio);
 }
