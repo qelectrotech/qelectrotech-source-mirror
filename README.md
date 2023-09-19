@@ -44,7 +44,7 @@ Here are the technical choices made for the software development:
     [kwidgetsaddons](https://github.com/KDE/kwidgetsaddons).  
 *   Coding language: [C++](https://en.wikipedia.org/wiki/C%2B%2B)
 *   GUI translations: [Qt Linguist](http://doc.qt.io/qt-5/qtlinguist-index.html)
-*   Version control: [GIT](https://git.tuxfamily.org/qet/qet.git/)
+*   Version control: [GIT](https://github.com/qelectrotech/qelectrotech-source-mirror.git)
 *   File format for projects, elements and titleblocks: [XML](http://www.w3schools.com/xml/xml_whatis.asp)
 *   Main development platform: [GNU/Linux](http://getgnulinux.org/en/linux/)
 *   Targeted platforms: Windows, GNU/Linux, Mac OS X, BSDs
