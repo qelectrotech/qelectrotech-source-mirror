@@ -32,29 +32,30 @@ namespace Ui {
 
 class PreviewStripItem : public QGraphicsItem
 {
-  public:
-	PreviewStripItem (QSharedPointer<TerminalStripLayoutPattern> layout) :
-		m_drawer {QSharedPointer<TerminalStripDrawer::DemoTerminalStrip>{new TerminalStripDrawer::DemoTerminalStrip},
-				  layout}
-	{}
+    friend class TerminalStripLayoutEditor;
 
-	QRectF boundingRect() const override {
-		return m_drawer.boundingRect();
-	}
+    public:
+        PreviewStripItem (QSharedPointer<TerminalStripLayoutPattern> layout) :
+            m_drawer {QSharedPointer<TerminalStripDrawer::DemoTerminalStrip>{new TerminalStripDrawer::DemoTerminalStrip},
+                     layout}
+        {}
 
-  protected:
-	void paint(QPainter *painter,
-			   const QStyleOptionGraphicsItem *option,
-			   QWidget *widget = nullptr) override
-	{
-		Q_UNUSED (option); Q_UNUSED (widget);
-		m_drawer.paint(painter);
-	}
+        QRectF boundingRect() const override {
+            return m_drawer.boundingRect();
+        }
 
-  private:
-	TerminalStripDrawer::TerminalStripDrawer m_drawer;
+    protected:
+        void paint(QPainter *painter,
+                   const QStyleOptionGraphicsItem *option,
+                   QWidget *widget = nullptr) override
+        {
+            Q_UNUSED (option); Q_UNUSED (widget);
+            m_drawer.paint(painter);
+        }
 
-};
+    private:
+        TerminalStripDrawer::TerminalStripDrawer m_drawer;
+    };
 
 /**
  * @brief The TerminalStripLayoutEditor class
@@ -76,7 +77,9 @@ class TerminalStripLayoutEditor : public QWidget
     private slots:
         void valueEdited();
 
-	private:
+        void on_m_display_preview_help_clicked(bool checked);
+
+    private:
 		void updateUi();
 		void updatePreview();
 

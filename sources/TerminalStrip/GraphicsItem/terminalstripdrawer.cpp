@@ -59,7 +59,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
         painter->setPen(pen_);
         painter->setBrush(brush_);
 
-        if (m_debug_draw)
+        if (m_preview_draw)
         {
             painter->save();
             painter->setPen(Qt::blue);
@@ -156,7 +156,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                     const auto rect_{terminals_text_rect[index_]};
                     painter->translate(rect_.bottomLeft());
                     painter->rotate(270);
-                    text_rect.setRect(0, 0, rect_.height(), rect_.width());
+                    text_rect.setRect(0, 0, rect_.height(), terminal_rect.width());
                 }
 
                 const auto shared_real_terminal{real_terminal_vector[i]};
@@ -164,7 +164,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                                   shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
                                   terminals_text_option[index_]);
 
-                if (m_debug_draw)
+                if (m_preview_draw)
                 {
                     painter->setPen(Qt::blue);
                     painter->drawRect(text_rect);
@@ -227,6 +227,10 @@ void TerminalStripDrawer::setLayout(QSharedPointer<TerminalStripLayoutPattern> l
 bool TerminalStripDrawer::haveLayout() const
 {
     return !m_pattern.isNull();
+}
+
+void TerminalStripDrawer::setPreviewDraw(bool draw) {
+    m_preview_draw = draw;
 }
 
 int TerminalStripDrawer::height() const

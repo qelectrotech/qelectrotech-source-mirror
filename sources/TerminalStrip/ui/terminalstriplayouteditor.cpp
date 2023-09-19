@@ -219,3 +219,10 @@ void TerminalStripLayoutEditor::updatePreview()
 	ui->m_graphics_view->fitInView(m_preview_strip_item.boundingRect().adjusted(-5,-5,5,5),
 								   Qt::KeepAspectRatio);
 }
+
+void TerminalStripLayoutEditor::on_m_display_preview_help_clicked(bool checked)
+{
+    m_preview_strip_item.m_drawer.setPreviewDraw(checked);
+    m_preview_strip_item.update();
+}
+
