@@ -33,7 +33,6 @@ Like many other open source software, QElectroTech is provided as is, without an
 ### Development / technical choices
 
 The development follows the classical way of free and open source software: the source code, written by a community of users, is freely accessible.
-If you are reading this on Github, be aware that this is an hourly synced mirror. Our real code repository [is located here](https://git.tuxfamily.org/qet/qet.git/).
 
 Here are the technical choices made for the software development:
 
