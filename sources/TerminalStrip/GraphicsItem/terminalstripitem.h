@@ -47,12 +47,15 @@ class TerminalStripItem : public QetGraphicsItem
 		QString name() const override;
 
         void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
-
         void refreshPending();
+        void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+
+    private:
+        void setDefaultLayout();
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		TerminalStripDrawer m_drawer;
+        TerminalStripDrawer::TerminalStripDrawer m_drawer;
         QUuid m_pending_strip_uuid;
 
 };

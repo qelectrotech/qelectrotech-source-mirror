@@ -18,10 +18,11 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
+#include <QRect>
 #include <QSize>
 #include <QTextOption>
+#include <QUuid>
 #include <QVector>
-#include <QRect>
 
 /**
  * @brief The TerminalStripLayoutPattern class
@@ -81,6 +82,9 @@ class TerminalStripLayoutPattern
 
 		int m_bridge_point_d{5};
 		QVector<int> m_bridge_point_y_offset{50,70,90,110};
+
+        QUuid m_uuid{QUuid::createUuid()};
+        QString m_name;
 
 	private:
 		void updateHeaderTextOption();

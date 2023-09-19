@@ -186,7 +186,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return mrtd.led_ ? Qt::Checked : Qt::Unchecked;
 	}
-	else if (role == Qt::BackgroundRole && index.column() <= CONDUCTOR_CELL )
+    else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
 	{
 		if (m_modified_cell.contains(mrtd.element_) &&
 			m_modified_cell.value(mrtd.element_).at(index.column()))

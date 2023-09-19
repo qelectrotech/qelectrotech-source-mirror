@@ -20,6 +20,7 @@
 
 #include "ElementsCollection/elementslocation.h"
 #include "NameList/nameslist.h"
+#include "project/projectpropertieshandler.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
@@ -27,10 +28,12 @@
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
 #include "titleblockproperties.h"
+
 #ifdef BUILD_WITHOUT_KF5
 #else
 #	include <KAutoSaveFile>
 #endif
+
 #include <QHash>
 
 class Diagram;
@@ -86,6 +89,7 @@ class QETProject : public QObject
 
 		// methods
 	public:
+        ProjectPropertiesHandler& projectPropertiesHandler();
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		ProjectState state() const;
@@ -291,6 +295,8 @@ class QETProject : public QObject
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
+
+        ProjectPropertiesHandler m_project_properties_handler;
 };
 
 Q_DECLARE_METATYPE(QETProject *)
