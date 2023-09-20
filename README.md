@@ -46,7 +46,7 @@ Here are the technical choices made for the software development:
 *   GUI translations: [Qt Linguist](http://doc.qt.io/qt-5/qtlinguist-index.html)
 *   Version control: [GIT](https://github.com/qelectrotech/qelectrotech-source-mirror.git)
 *   Doxygen documentation :[Doxygen](https://download.qelectrotech.org/qet/doxygen/html/)
-*   QtCreator qch doxygen :[QElectroTech.qch](https://download.qelectrotech.org/qet/doxygen/QElectroTech.qch)
+*   QtCreator qch doxygen :[QElectroTech.qch](https://download.qelectrotech.org/qet/doxygen/)
 *   File format for projects, elements and titleblocks: [XML](http://www.w3schools.com/xml/xml_whatis.asp)
 *   Main development platform: [GNU/Linux](http://getgnulinux.org/en/linux/)
 *   Targeted platforms: Windows, GNU/Linux, Mac OS X, BSDs
