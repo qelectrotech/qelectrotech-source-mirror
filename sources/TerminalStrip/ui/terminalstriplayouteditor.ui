@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>553</width>
-    <height>387</height>
+    <width>767</width>
+    <height>544</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,22 +17,130 @@
    <property name="sizeConstraint">
     <enum>QLayout::SetMaximumSize</enum>
    </property>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_6">
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>Espace :</string>
+      <string>Borne niveau 0 :</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QSpinBox" name="m_y_header_sb">
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>En tête :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="4">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0" colspan="5">
+    <widget class="QGraphicsView" name="m_graphics_view"/>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLabel" name="label_18">
+     <property name="text">
+      <string>Point de pont</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_1_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="4" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_0_sb">
+   <item row="8" column="0" colspan="5">
+    <widget class="Line" name="line_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QSpinBox" name="m_height_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Décalage vertical</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="4">
+    <widget class="QCheckBox" name="m_display_preview_help">
+     <property name="text">
+      <string>Afficher l'aide</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QSpinBox" name="m_width_header_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Largeur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QSpinBox" name="m_y_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Hauteur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Prévisualisation :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QSpinBox" name="m_y_header_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -45,69 +153,6 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Borne niveau 1 :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3">
-    <widget class="QSpinBox" name="m_height_spacer_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>En tête :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QSpinBox" name="m_y_terminal_2_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>Borne niveau 0 :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="3">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Hauteur</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="4">
-    <widget class="QLabel" name="label_18">
-     <property name="text">
-      <string>Point de pont</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_2_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_0_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1">
     <widget class="QSpinBox" name="m_y_terminal_0_sb">
      <property name="maximum">
@@ -115,29 +160,15 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="4">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="2" column="2">
+    <widget class="QSpinBox" name="m_width_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="8" column="0" colspan="5">
-    <widget class="Line" name="line_5">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Largeur</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_3_sb">
+   <item row="6" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_2_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -158,32 +189,23 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="m_header_text_orientation_cb">
+      <item row="1" column="3">
+       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
         <item>
          <property name="text">
-          <string>Horizontal</string>
+          <string>Gauche</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Vertical</string>
+          <string>Centre</string>
          </property>
         </item>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Alignement du texte d'en tête :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Orientation du texte d'en tête :</string>
-        </property>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="0" column="3">
@@ -205,10 +227,17 @@
         </item>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_16">
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_15">
         <property name="text">
-         <string>Orientation du texte de borne :</string>
+         <string>Alignement du texte d'en tête :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Alignement du texte de borne :</string>
         </property>
        </widget>
       </item>
@@ -226,51 +255,39 @@
         </item>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_17">
+      <item row="0" column="1">
+       <widget class="QComboBox" name="m_header_text_orientation_cb">
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_16">
         <property name="text">
-         <string>Alignement du texte de borne :</string>
+         <string>Orientation du texte de borne :</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
-       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
-        <item>
-         <property name="text">
-          <string>Gauche</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Centre</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Droite</string>
-         </property>
-        </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Orientation du texte d'en tête :</string>
+        </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Décalage vertical</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_1_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QSpinBox" name="m_y_terminal_1_sb">
+   <item row="1" column="3">
+    <widget class="QSpinBox" name="m_height_header_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -283,78 +300,29 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_1_sb">
+   <item row="4" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_0_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
-    <widget class="QSpinBox" name="m_height_header_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_0_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_2_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QSpinBox" name="m_y_spacer_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QSpinBox" name="m_width_spacer_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="2">
-    <widget class="QSpinBox" name="m_width_header_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_3_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_10">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>Borne niveau 3 :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_1_sb">
-     <property name="maximum">
-      <number>1000</number>
+      <string>Espace :</string>
      </property>
     </widget>
    </item>
    <item row="7" column="2">
     <widget class="QSpinBox" name="m_width_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_2_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -367,8 +335,61 @@
      </property>
     </widget>
    </item>
+   <item row="7" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string>Borne niveau 3 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Borne niveau 1 :</string>
+     </property>
+    </widget>
+   </item>
    <item row="10" column="0" colspan="5">
-    <widget class="QGraphicsView" name="m_graphics_view"/>
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

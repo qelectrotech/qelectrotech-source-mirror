@@ -97,6 +97,7 @@ namespace TerminalStripDrawer
         QUuid lvl_1 = QUuid::createUuid();
         QUuid lvl_2 = QUuid::createUuid();
         QUuid lvl_3 = QUuid::createUuid();
+        QUuid lvl_4 = QUuid::createUuid();
 
         QVector <QSharedPointer<AbstractRealTerminalInterface>> real_terminals_vector;
 
@@ -109,6 +110,9 @@ namespace TerminalStripDrawer
         real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
                                  new DemoRealTerminal( QStringLiteral("signal"),
                                                        lvl_3)};
+        real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
+                                 new DemoRealTerminal( QStringLiteral("teach"),
+                                                       lvl_4)};
         m_physical_terminal << QSharedPointer<AbstractPhysicalTerminalInterface> {
                                new DemoPhysicalTerminal {real_terminals_vector}};
 
@@ -122,6 +126,9 @@ namespace TerminalStripDrawer
         real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
                                  new DemoRealTerminal( QStringLiteral("signal"),
                                                        lvl_3)};
+        real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
+                                 new DemoRealTerminal( QStringLiteral("teach"),
+                                                       lvl_4)};
         m_physical_terminal << QSharedPointer<AbstractPhysicalTerminalInterface> {
                                new DemoPhysicalTerminal {real_terminals_vector}};
 
@@ -135,6 +142,9 @@ namespace TerminalStripDrawer
         real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
                                  new DemoRealTerminal( QStringLiteral("signal"),
                                                        lvl_3)};
+        real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
+                                 new DemoRealTerminal( QStringLiteral("teach"),
+                                                       lvl_4)};
         m_physical_terminal << QSharedPointer<AbstractPhysicalTerminalInterface> {
                                new DemoPhysicalTerminal {real_terminals_vector}};
     }

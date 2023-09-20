@@ -77,6 +77,8 @@ namespace TerminalStripDrawer
             void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
             bool haveLayout() const;
 
+            void setPreviewDraw(bool draw = true);
+
         private:
             int height() const;
             int width() const;
@@ -84,7 +86,7 @@ namespace TerminalStripDrawer
         private:
             QSharedPointer <AbstractTerminalStripInterface> m_strip;
             QSharedPointer<TerminalStripLayoutPattern> m_pattern;
-            bool m_debug_draw { false };
+            bool m_preview_draw { false };
     };
 }
 
