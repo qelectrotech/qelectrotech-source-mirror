@@ -1850,10 +1850,10 @@ NamesList QETProject::namesListForIntegrationCategory()
 		0x8981,
 		0x7D20};
 	const QChar chinese_data[4] ={
-		0x8FDB,
-		0x53E3,
-		0x5546,
-		0x54C1};
+		0x5BFC,
+		0x5165,
+		0x5143,
+		0x4EF6};
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
 	names.addName("de", "Importierte elemente");
