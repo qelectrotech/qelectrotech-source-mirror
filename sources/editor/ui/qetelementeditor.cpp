@@ -460,8 +460,8 @@ void QETElementEditor::fillPartsList()
 	QList<QGraphicsItem *> qgis = m_elmt_scene -> zItems();
 
 	QSettings settings;
-  int maxParts = settings.value("elementeditor/max-parts-element-editor-list", 200).toInt();
-  if (qgis.count() <= maxParts) {
+	int maxParts = settings.value("elementeditor/max-parts-element-editor-list", 200).toInt();
+	if (qgis.count() <= maxParts)
 	{
 		for (int j = qgis.count() - 1 ; j >= 0 ; -- j)
 		{
