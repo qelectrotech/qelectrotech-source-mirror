@@ -179,11 +179,11 @@ if [[ $a == "Y" || $a == "y" ]]; then
     echo -e "\033[1;33mRsync to TF qelectrotech-$VERSION.r$HEAD .\033[m"
     echo -e	"\033[1;31mrsync to TF password ssh and TF\033[m"
     cd $DEFAULT_DIR/script
-    rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude-from=ExclusionRSync ~/apt/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/debian/
+    rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude-from=ExclusionRSync ~/apt/ server:download.qelectrotech.org/qet/qet-repository/debian/
     if [ $? != 0 ]; then
     {
       echo "RSYNC ERROR: problem syncing qelectrotech-$VERSION.r$HEAD "
-      rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude-from=ExclusionRSync ~/apt/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/debian/
+      rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude-from=ExclusionRSync ~/apt/ server:download.qelectrotech.org/qet/qet-repository/debian/
     } fi
 
   else
@@ -316,11 +316,11 @@ fi
 echo  -e "\033[1;31mWould you like to upload Windows packages n/Y?.\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
-rsync -e ssh -av -W --delete-after --no-owner --no-g --chmod=g+w --progress  /home/laurent/builds/nightly/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/nightly/
+rsync -e ssh -av -W --delete-after --no-owner --no-g --chmod=g+w --progress  /home/laurent/builds/nightly/ server:download.qelectrotech.org/qet/qet-repository/builds/nightly/
 if [ $? != 0 ]; then
 {
 echo "RSYNC ERROR: problem syncing qelectrotech-$VERSION.r$HEAD "
-rsync -e ssh -av -W --delete-after --no-owner --no-g --chmod=g+w --progress  /home/laurent/builds/nightly/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/nightly/
+rsync -e ssh -av -W --delete-after --no-owner --no-g --chmod=g+w --progress  /home/laurent/builds/nightly/ server:download.qelectrotech.org/qet/qet-repository/builds/nightly/
 } fi
 
 else
