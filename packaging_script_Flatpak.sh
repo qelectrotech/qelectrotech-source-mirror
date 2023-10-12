@@ -19,4 +19,4 @@ tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -
 cd ~
 flatpak-builder --force-clean --ccache --repo=qet_git/0.8-dev qet_git/build-dir qet_git/build-aux/flatpak/org.qelectrotech.QElectroTech.json --gpg-sign=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --gpg-homedir=gpg
 flatpak build-update-repo qet_git/0.8-dev --title="Development builds of QElectroTech" --prune --prune-depth=4 --generate-static-deltas --gpg-sign=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --gpg-homedir=gpg
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress qet_git/0.8-dev/ scorpio810@ssh.tuxfamily.org:/home/qet/qet-repository/builds/Flatpak/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress qet_git/0.8-dev/ server:download.qelectrotech.org/qet/qet-repository/builds/Flatpak/
