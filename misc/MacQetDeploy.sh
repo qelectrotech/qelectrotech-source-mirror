@@ -260,7 +260,7 @@ hdiutil internet-enable -yes -quiet "${APPNAME} $VERSION r$HEAD.dmg"
 
 # Clean up disk folder
 echo 'Cleaning up... '
-cp -Rf "${APPNAME} $VERSION r$HEAD.dmg" "build-aux/mac-osx/${APPNAME} $VERSION r$HEAD.dmg"
+cp -Rf "${APPNAME} $VERSION r$HEAD.dmg" "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-intel_X86_64.dmg"
 rm -f "${APPNAME} $VERSION r$HEAD.dmg"
 rm -rf $imagedir
 rm -rf $BUNDLE
@@ -297,14 +297,14 @@ echo The disque image is in the folder \'build-aux/mac-osx\'.
 
 
 #rsync to TF DMG builds
-echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$VERSION"_"r$HEAD.dmg", n/Y?.\033[m"
+echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$VERSION"_"r$HEAD-intel.dmg", n/Y?.\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
-cp -Rf "build-aux/mac-osx/${APPNAME} $VERSION r$HEAD.dmg" /Users/laurent/MAC_OS_X/
+cp -Rf "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-intel_X86_64.dmg" /Users/laurent/MAC_OS_X/
 rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/qet-repository/builds/MAC_OS_X/intel_X86_64/
 if [ $? != 0 ]; then
 {
-echo "RSYNC ERROR: problem syncing ${APPNAME} $VERSION r$HEAD.dmg"
+echo "RSYNC ERROR: problem syncing ${APPNAME}-$VERSION-r$HEAD-intel_X86_64.dmg"
 rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/qet-repository/builds/MAC_OS_X/intel_X86_64/
 
 } fi
