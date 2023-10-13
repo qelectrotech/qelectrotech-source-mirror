@@ -16,6 +16,12 @@
     # along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
  # Need homebrew and coreutils installed see <http://brew.sh>.
 
+ 
+#Force MacOSX12.3.sdk
+#see: https://www.downtowndougbrown.com/2023/08/how-to-create-a-qt-5-arm-intel-universal-binary-for-mac/
+
+export DEVELOPER_DIR=/Applications/Xcode_14.01.app/Contents/Developer
+
 # configuration
 APPNAME='qelectrotech'
 BUNDLE=$APPNAME.app
