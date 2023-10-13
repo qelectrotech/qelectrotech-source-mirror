@@ -301,11 +301,11 @@ echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$VERSI
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
 cp -Rf "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-intel_X86_64.dmg" /Users/laurent/MAC_OS_X/
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/qet-repository/builds/MAC_OS_X/intel_X86_64/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/builds/MAC_OS_X/intel_X86_64/
 if [ $? != 0 ]; then
 {
 echo "RSYNC ERROR: problem syncing ${APPNAME}-$VERSION-r$HEAD-intel_X86_64.dmg"
-rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/qet-repository/builds/MAC_OS_X/intel_X86_64/
+rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/builds/MAC_OS_X/intel_X86_64/
 
 } fi
 
