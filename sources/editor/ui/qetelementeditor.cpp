@@ -53,11 +53,6 @@
 #include <QActionGroup>
 
 /**
-  Number max of primitive displayed by the parts list widget
-  */
-#define QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST 200
-
-/**
  * @brief QETElementEditor::QETElementEditor
  * @param parent
  */
@@ -464,7 +459,9 @@ void QETElementEditor::fillPartsList()
 	m_parts_list -> clear();
 	QList<QGraphicsItem *> qgis = m_elmt_scene -> zItems();
 
-	if (qgis.count() <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST)
+	QSettings settings;
+	int maxParts = settings.value("elementeditor/max-parts-element-editor-list", 200).toInt();
+	if (qgis.count() <= maxParts)
 	{
 		for (int j = qgis.count() - 1 ; j >= 0 ; -- j)
 		{
@@ -489,7 +486,7 @@ void QETElementEditor::fillPartsList()
 		}
 	}
 	else {
-		m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée.")));
+		m_parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non générée: %1").arg(qgis.count())));
 	}
 	m_parts_list -> blockSignals(false);
 }
@@ -678,10 +675,12 @@ void QETElementEditor::updateInformations()
 void QETElementEditor::updatePartsList()
 {
 	int items_count = m_elmt_scene -> items().count();
+	QSettings settings;
+  const int maxParts = settings.value("elementeditor/max-parts-element-editor-list", 200).toInt();
 	if (m_parts_list -> count() != items_count) {
 		fillPartsList();
 	}
-	else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
+	else if (items_count <= maxParts) {
 		m_parts_list -> blockSignals(true);
 		int i = 0;
 		QList<QGraphicsItem *> items = m_elmt_scene -> zItems();
