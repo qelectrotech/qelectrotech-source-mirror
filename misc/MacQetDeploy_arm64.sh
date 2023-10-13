@@ -19,6 +19,7 @@
  
 #Force MacOSX12.3.sdk
 #see: https://www.downtowndougbrown.com/2023/08/how-to-create-a-qt-5-arm-intel-universal-binary-for-mac/
+
 export DEVELOPER_DIR=/Applications/Xcode_14.01.app/Contents/Developer
 
 # configuration
