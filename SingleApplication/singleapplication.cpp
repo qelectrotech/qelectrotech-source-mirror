@@ -1,6 +1,4 @@
-// The MIT License (MIT)
-//
-// Copyright (c) Itay Grudev 2015 - 2020
+// Copyright (c) Itay Grudev 2015 - 2023
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -8,6 +6,9 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
+//
+// Permission is not granted to use this software or any of the associated files
+// as sample data for the purposes of building machine learning models.
 //
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
@@ -66,12 +67,20 @@ SingleApplication::SingleApplication( int &argc, char *argv[], bool allowSeconda
 #ifdef Q_OS_UNIX
     // By explicitly attaching it and then deleting it we make sure that the
     // memory is deleted even after the process has crashed on Unix.
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+    d->memory = new QSharedMemory( QNativeIpcKey( d->blockServerName ) );
+#else
     d->memory = new QSharedMemory( d->blockServerName );
+#endif
     d->memory->attach();
     delete d->memory;
 #endif
     // Guarantee thread safe behaviour with a shared memory block.
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+    d->memory = new QSharedMemory( QNativeIpcKey( d->blockServerName ) );
+#else
     d->memory = new QSharedMemory( d->blockServerName );
+#endif
 
     // Create a shared memory block
     if( d->memory->create( sizeof( InstancesInfo ) )){
@@ -235,9 +244,10 @@ QString SingleApplication::currentUser() const
  * Sends message to the Primary Instance.
  * @param message The message to send.
  * @param timeout the maximum timeout in milliseconds for blocking functions.
- * @return true if the message was sent successfully, false otherwise.
+ * @param sendMode mode of operation
+ * @return true if the message was sent successfuly, false otherwise.
  */
-bool SingleApplication::sendMessage( const QByteArray &message, int timeout )
+bool SingleApplication::sendMessage( const QByteArray &message, int timeout, SendMode sendMode )
 {
     Q_D( SingleApplication );
 
@@ -248,7 +258,7 @@ bool SingleApplication::sendMessage( const QByteArray &message, int timeout )
     if( ! d->connectToPrimary( timeout,  SingleApplicationPrivate::Reconnect ) )
       return false;
 
-    return d->writeConfirmedMessage( timeout, message );
+    return d->writeConfirmedMessage( timeout, message, sendMode );
 }
 
 /**

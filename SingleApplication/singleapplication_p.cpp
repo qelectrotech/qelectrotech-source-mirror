@@ -1,6 +1,4 @@
-// The MIT License (MIT)
-//
-// Copyright (c) Itay Grudev 2015 - 2020
+// Copyright (c) Itay Grudev 2015 - 2023
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -8,6 +6,9 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
+//
+// Permission is not granted to use this software or any of the associated files
+// as sample data for the purposes of building machine learning models.
 //
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
@@ -130,7 +131,12 @@ QString SingleApplicationPrivate::getUsername()
 
 void SingleApplicationPrivate::genBlockServerName()
 {
+#ifdef Q_OS_MACOS
+    // Maximum key size on macOS is PSHMNAMLEN (31).
+    QCryptographicHash appData( QCryptographicHash::Md5 );
+#else
     QCryptographicHash appData( QCryptographicHash::Sha256 );
+#endif
 #if QT_VERSION < QT_VERSION_CHECK(6, 3, 0)
     appData.addData( "SingleApplication", 17 );
 #else
@@ -283,7 +289,7 @@ void SingleApplicationPrivate::writeAck( QLocalSocket *sock ) {
     sock->putChar('\n');
 }
 
-bool SingleApplicationPrivate::writeConfirmedMessage (int msecs, const QByteArray &msg)
+bool SingleApplicationPrivate::writeConfirmedMessage (int msecs, const QByteArray &msg, SingleApplication::SendMode sendMode)
 {
     QElapsedTimer time;
     time.start();
@@ -301,7 +307,13 @@ bool SingleApplicationPrivate::writeConfirmedMessage (int msecs, const QByteArra
         return false;
 
     // Frame 2: The message
-    return writeConfirmedFrame( static_cast<int>(msecs - time.elapsed()), msg );
+    const bool result = writeConfirmedFrame( static_cast<int>(msecs - time.elapsed()), msg );
+
+    // Block if needed
+    if (socket && sendMode == SingleApplication::BlockUntilPrimaryExit)
+        socket->waitForDisconnected(-1);
+
+    return result;
 }
 
 bool SingleApplicationPrivate::writeConfirmedFrame( int msecs, const QByteArray &msg )
