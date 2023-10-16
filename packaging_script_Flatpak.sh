@@ -7,6 +7,8 @@ git reset --hard origin/master
 cd ..
 
 # get updates
+git submodule init
+git submodule update
 git pull --recurse-submodules
 
 #sed -i 's/DEFINES += QET_EXPORT_PROJECT_DB/#DEFINES += QET_EXPORT_PROJECT_DB/' qelectrotech.pro
