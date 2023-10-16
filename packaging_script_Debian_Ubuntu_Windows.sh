@@ -17,6 +17,7 @@ cd $DEFAULT_DIR
 cd qet_git
 # get updates
 git pull --recurse-submodules
+git pull
 
 GITCOMMIT=$(git rev-parse --short HEAD)
 
