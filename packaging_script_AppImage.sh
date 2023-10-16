@@ -9,6 +9,8 @@ git reset --hard origin/master
 
 cd ..
 # get updates
+git submodule init
+git submodule update
 git pull --recurse-submodules
 git pull
 
