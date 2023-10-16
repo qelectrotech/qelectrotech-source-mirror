@@ -71,6 +71,7 @@ echo "______________________________________________________________"
 echo "Run GIT:"
 
 # Fait une mise à jour
+git pull --recurse-submodules
 git pull
 #git checkout foliolist_position
 
