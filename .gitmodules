@@ -1,0 +1,6 @@
+[submodule "pugixml"]
+	path = pugixml
+	url = https://github.com/zeux/pugixml.git
+[submodule "SingleApplication"]
+	path = SingleApplication
+	url = https://github.com/itay-grudev/SingleApplication.git
