@@ -4,6 +4,10 @@ without any warranty of fitness for your purpose or working.
 The usage, the modification and the integration of the elements into electric
 diagrams is allowed without any condition, whatever the final license of the
 diagrams is.
+
+Permission is not granted to use this software or any of the associated files
+as sample data for the purposes of building machine learning models.
+
 If you redistribute all or a part of the QElectroTech collection, with or
 without any modification, out of an electric diagram, you must respect the
 conditions of the CC-BY license:
