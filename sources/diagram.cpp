@@ -94,9 +94,13 @@ Diagram::Diagram(QETProject *project) :
 	pen.setColor(Qt::black);
 	conductor_setter_ -> setPen(pen);
 
-	connect(&border_and_titleblock,
-			&BorderTitleBlock::informationChanged,
-			this, &Diagram::diagramInformationChanged);
+	connect(&border_and_titleblock, &BorderTitleBlock::informationChanged, this, [this]() {
+		for (auto conductor : content().conductors()) {
+			conductor->refreshText();
+		}
+		emit diagramInformationChanged();
+	});
+
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::needTitleBlockTemplate,
 		this, &Diagram::setTitleBlockTemplate);
@@ -109,9 +113,6 @@ Diagram::Diagram(QETProject *project) :
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::borderChanged,
 		this, &Diagram::adjustSceneRect);
-	connect(&border_and_titleblock,
-		&BorderTitleBlock::titleBlockFolioChanged,
-		this, &Diagram::updateLabels);
 	connect(this, &Diagram::diagramActivated,
 		this, &Diagram::loadElmtFolioSeq);
 	connect(this, &Diagram::diagramActivated,
@@ -1760,19 +1761,6 @@ void Diagram::invertSelection()
 
 	blockSignals(false);
 	emit selectionChanged();
-}
-
-/**
-	@brief Diagram::updateLabels
-	Update elements and conductors that reference folio field
-	in their labels.
-*/
-void Diagram::updateLabels()
-{
-	for (Conductor *cnd : content().conductors())
-	{
-		cnd->refreshText();
-	}
 }
 
 /**
