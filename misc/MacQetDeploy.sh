@@ -76,6 +76,8 @@ echo "Run GIT:"
 #revAv=$(svnversion | cut -d : -f 2 | tr -d '[:alpha:]')
 
 # Fait une mise à jour
+git submodule init
+git submodule update
 git pull --recurse-submodules
 git pull
 #git checkout foliolist_position
