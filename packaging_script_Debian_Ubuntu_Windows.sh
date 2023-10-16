@@ -16,6 +16,8 @@ export DEBEMAIL DEBFULLNAME
 cd $DEFAULT_DIR
 cd qet_git
 # get updates
+git submodule init
+git submodule update
 git pull --recurse-submodules
 git pull
 
