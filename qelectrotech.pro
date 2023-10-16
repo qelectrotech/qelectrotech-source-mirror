@@ -119,7 +119,7 @@ INCLUDEPATH += sources/ui
 #               sources/NameList \
 #               sources/NameList/ui \
 #               sources/utils \
-#               sources/pugixml \
+#               pugixml \
 #               sources/dataBase \
 #               sources/dataBase/ui \
 #               sources/factory/ui \
