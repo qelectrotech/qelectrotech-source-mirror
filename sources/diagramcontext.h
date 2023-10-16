@@ -17,7 +17,7 @@
 */
 #ifndef DIAGRAM_CONTEXT_H
 #define DIAGRAM_CONTEXT_H
-#include "pugixml/pugixml.hpp"
+#include "pugixml/src/pugixml.hpp"
 
 #include <QDomElement>
 #include <QHash>
