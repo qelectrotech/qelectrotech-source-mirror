@@ -9,7 +9,7 @@ git reset --hard origin/master
 
 cd ..
 # get updates
-#git pull --recurse-submodules
+git pull --recurse-submodules
 git pull
 
 GITCOMMIT=$(git rev-parse --short HEAD)
