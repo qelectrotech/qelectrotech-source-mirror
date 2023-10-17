@@ -489,15 +489,6 @@ void BorderTitleBlock::displayBorder(bool db) {
 }
 
 /**
-	@brief BorderTitleBlock::slot_setAutoPageNum
-	@param pageAutoNum :
-	Set Page (Folio) Auto Num
-*/
-void BorderTitleBlock::slot_setAutoPageNum(QString pageAutoNum) {
-	btb_auto_page_num_=std::move(pageAutoNum);
-}
-
-/**
 	@brief BorderTitleBlock::updateRectangles
 	This method update the diagram rect according
 	to the value of rows and columns (number and size)
