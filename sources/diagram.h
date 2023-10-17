@@ -259,7 +259,7 @@ class Diagram : public QGraphicsScene
 
 	public slots:
 		void adjustSceneRect ();
-		void titleChanged(const QString &);
+		void titleChanged();
 		void titleBlockTemplateChanged(const QString &);
 		void titleBlockTemplateRemoved(const QString &,
 					       const QString & = QString());
@@ -275,7 +275,7 @@ class Diagram : public QGraphicsScene
 	signals:
 		void showDiagram (Diagram *);
 		void usedTitleBlockTemplateChanged(const QString &);
-		void diagramTitleChanged(Diagram *, const QString &);
+		void diagramTitleChanged(Diagram *);
 
 		/// Signal emitted when users wish to locate an element
 		/// from the diagram within elements collection

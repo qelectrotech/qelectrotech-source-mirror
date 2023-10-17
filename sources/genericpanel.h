@@ -164,7 +164,7 @@ class GenericPanel : public QTreeWidget {
 	virtual void diagramAdded(QETProject *, Diagram *);
 	virtual void diagramRemoved(QETProject *, Diagram *);
 	virtual void projectDiagramsOrderChanged(QETProject *, int, int);
-	virtual void diagramTitleChanged(Diagram *, const QString &);
+	virtual void diagramTitleChanged(Diagram *);
 	virtual void templatesCollectionChanged(TitleBlockTemplatesCollection*,
 						const QString &);
 	virtual void diagramUsedTemplate(TitleBlockTemplatesCollection *,

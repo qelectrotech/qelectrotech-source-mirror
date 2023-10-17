@@ -322,8 +322,8 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip)
 	btb_version_ = QetVersion::displayedVersion();
 	btb_auto_page_num_ = ip.auto_page_num;
 	additional_fields_ = ip.context;
+	btb_title_ = ip.title;
 
-	setTitle(ip.title);
 	setFolio(ip.folio);
 
 	if (m_edge != ip.display_at)
@@ -884,19 +884,6 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos)
 		letter = incrementLetters(letter);
 
 	return(DiagramPosition(letter, row_number));
-}
-
-/**
-	@brief BorderTitleBlock::setTitle
-	@param title the new value of the "Title" field
-*/
-void BorderTitleBlock::setTitle(const QString &title)
-{
-	if (btb_title_ != title)
-	{
-		btb_title_ = title;
-		emit(diagramTitleChanged(title));
-	}
 }
 
 /**

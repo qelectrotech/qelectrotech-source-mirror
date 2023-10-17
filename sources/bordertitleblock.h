@@ -159,7 +159,6 @@ class BorderTitleBlock : public QObject
 		DiagramPosition convertPosition(const QPointF &);
 		
 		// methods to set title block basic data
-		void setTitle(const QString &title);
 		void setFolio(const QString &folio);
 		void setFolioData(int, int, const QString& = nullptr,
 				  const DiagramContext & = DiagramContext());
@@ -212,11 +211,6 @@ class BorderTitleBlock : public QObject
 			Signal emitted after display options have changed
 		*/
 		void displayChanged();
-		/**
-			@brief diagramTitleChanged
-			Signal emitted after the title has changed
-		*/
-		void diagramTitleChanged(const QString &);
 		/**
 			@brief titleBlockFolioChanged
 			Signal emitted after Folio has changed

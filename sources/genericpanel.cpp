@@ -791,10 +791,8 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
 	@brief GenericPanel::diagramTitleChanged
 	Inform this panel the diagram \a diagram has changed its title to \a title.
 	@param diagram
-	@param title (unused)
 */
-void GenericPanel::diagramTitleChanged(Diagram *diagram, const QString &title) {
-	Q_UNUSED(title)
+void GenericPanel::diagramTitleChanged(Diagram *diagram) {
 	GenericPanel::addDiagram(diagram);
 	emit(panelContentChanged());
 }

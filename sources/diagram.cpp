@@ -107,7 +107,7 @@ Diagram::Diagram(QETProject *project) :
 		&BorderTitleBlock::needTitleBlockTemplate,
 		this, &Diagram::setTitleBlockTemplate);
 	connect(&border_and_titleblock,
-		&BorderTitleBlock::diagramTitleChanged,
+		&BorderTitleBlock::informationChanged,
 		this, &Diagram::titleChanged);
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::titleBlockFolioChanged,
@@ -1644,8 +1644,8 @@ void Diagram::removeItem(QGraphicsItem *item)
 	emit(diagramTitleChanged(this, title));
 	@param title
 */
-void Diagram::titleChanged(const QString &title) {
-	emit(diagramTitleChanged(this, title));
+void Diagram::titleChanged() {
+	emit(diagramTitleChanged(this));
 }
 
 /**
