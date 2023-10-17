@@ -1947,6 +1947,7 @@ DiagramContext QETProject::projectProperties()
 void QETProject::setProjectProperties(const DiagramContext &context) {
 	m_project_properties = context;
 	updateDiagramsFolioData();
+	emit projectInformationsChanged(this);
 }
 
 /**

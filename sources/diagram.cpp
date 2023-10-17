@@ -97,6 +97,12 @@ Diagram::Diagram(QETProject *project) :
 		emit diagramInformationChanged();
 	});
 
+	connect(m_project, &QETProject::projectInformationsChanged, this, [this]() {
+		for (auto conductor : content().conductors()) {
+			conductor->refreshText();
+		}
+	});
+
 	connect(&border_and_titleblock,
 		&BorderTitleBlock::needTitleBlockTemplate,
 		this, &Diagram::setTitleBlockTemplate);
