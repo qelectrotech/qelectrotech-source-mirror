@@ -159,18 +159,10 @@ class BorderTitleBlock : public QObject
 		DiagramPosition convertPosition(const QPointF &);
 		
 		// methods to set title block basic data
-		void setAuthor(const QString &author);
-		void setDate(const QDate &date);
 		void setTitle(const QString &title);
 		void setFolio(const QString &folio);
 		void setFolioData(int, int, const QString& = nullptr,
 				  const DiagramContext & = DiagramContext());
-		void setPlant(const QString &plant);
-		void setLocMach(const QString &locmach);
-		void setIndicerev(const QString &indexrev);
-		void setFileName(const QString &filename);
-		void setVersion(const QString &version);
-		void setAutoPageNum(const QString &auto_page_num);
 		void setPreviousFolioNum(const QString &previous);
 		void setNextFolioNum(const QString &next);
 		
