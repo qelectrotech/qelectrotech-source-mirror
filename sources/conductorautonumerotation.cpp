@@ -23,7 +23,6 @@
 #include "diagram.h"
 #include "qet.h"
 #include "qetdiagrameditor.h"
-#include "qetgraphicsitem/conductor.h"
 #include "ui/potentialselectordialog.h"
 
 /**
@@ -221,32 +220,36 @@ void ConductorAutoNumerotation::numeratePotential()
 */
 void ConductorAutoNumerotation::numerateNewConductor()
 {
-	if (!m_conductor || m_diagram->conductorsAutonumName().isEmpty())
+	if (m_conductor) {
 		return;
+	}
 
-	NumerotationContext context = m_diagram->project()->conductorAutoNum(
-				m_diagram -> conductorsAutonumName());
-	if (context.isEmpty())
-		return;
+	if (!m_diagram->conductorsAutonumName().isEmpty())
+	{
+		NumerotationContext context = m_diagram->project()->conductorAutoNum(
+			m_diagram -> conductorsAutonumName());
+		if (context.isEmpty())
+			return;
 
-	QString autoNum_name = m_diagram->project()->conductorCurrentAutoNum();
-	QString formula = autonum::numerotationContextToFormula(context);
+		QString autoNum_name = m_diagram->project()->conductorCurrentAutoNum();
+		QString formula = autonum::numerotationContextToFormula(context);
 
-	ConductorProperties cp = m_conductor -> properties();
-	cp.m_formula = formula;
-	m_conductor->setProperties(cp);
+		ConductorProperties cp = m_conductor -> properties();
+		cp.m_formula = formula;
+		m_conductor->setProperties(cp);
 
-	autonum::setSequential(formula,
-			       m_conductor->rSequenceNum(),
-			       context,
-			       m_diagram,
-			       autoNum_name);
+		autonum::setSequential(formula,
+							   m_conductor->rSequenceNum(),
+							   context,
+							   m_diagram,
+							   autoNum_name);
 
-	NumerotationContextCommands ncc (context, m_diagram);
-	m_diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
+		NumerotationContextCommands ncc (context, m_diagram);
+		m_diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
+	}
 
 	applyText(autonum::AssignVariables::formulaToLabel(
-			  formula,
-			  m_conductor->rSequenceNum(),
-			  m_diagram));
+		m_conductor->properties().m_formula,
+		m_conductor->rSequenceNum(),
+		m_diagram));
 }

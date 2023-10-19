@@ -19,11 +19,12 @@
 #define CONDUCTORAUTONUMEROTATION_H
 
 #include "autoNum/assignvariables.h"
+#include "qetgraphicsitem/conductor.h"
 
 #include <QList>
+#include <QPointer>
 
 class Diagram;
-class Conductor;
 class QUndoCommand;
 class ConductorProperties;
 
@@ -52,7 +53,7 @@ class ConductorAutoNumerotation
 
 		//attributes
 		Diagram            *m_diagram;
-		Conductor          *m_conductor;
+		QPointer<Conductor> m_conductor;
 		QList <Conductor *>  conductor_list;
 		QUndoCommand       *m_parent_undo;
 };
