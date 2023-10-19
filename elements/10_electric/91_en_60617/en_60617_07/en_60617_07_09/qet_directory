@@ -1,9 +1,0 @@
-<qet-directory>
-    <names>
-        <name lang="fr">09- Interrupteurs fonctionnement sous l'effet de la température</name>
-        <name lang="de">09- Temperaturabhängige Schalter</name>
-        <name lang="ja">09- 温度感知スイッチ</name>
-        <name lang="cs">09- Spínače citlivé na teplotu</name>
-        <name lang="en">09- Switches (temperature sensitive)</name>
-    </names>
-</qet-directory>

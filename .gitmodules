@@ -4,3 +4,7 @@
 [submodule "SingleApplication"]
 	path = SingleApplication
 	url = https://github.com/itay-grudev/SingleApplication.git
+[submodule "elements"]
+	path = elements
+	url = https://github.com/qelectrotech/qelectrotech-elements.git
+

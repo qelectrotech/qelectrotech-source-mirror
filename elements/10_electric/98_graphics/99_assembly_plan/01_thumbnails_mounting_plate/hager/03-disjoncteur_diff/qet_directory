@@ -1,8 +1,0 @@
-<qet-directory>
-    <names>
-        <name lang="fr">Disjoncteur différentiel</name>
-        <name lang="en">Residual current circuit breaker</name>
-        <name lang="de">Fehlerstrom-Schutzschalter (RCD)</name>
-        <name lang="cs">Proudový chránič-jistič</name>
-    </names>
-</qet-directory>
