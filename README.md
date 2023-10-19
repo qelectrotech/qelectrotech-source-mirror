@@ -26,10 +26,10 @@ Users who want to test and take benefits from the last software implementations 
 
 The software is licensed under [GNU/GPL](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).  
 You are free to use, copy, modify and redistribute it under the terms of the license.
-
+```txt
 Permission is not granted to use this software or any of the associated files
 as sample data for the purposes of building machine learning models.
-
+```
 Like many other open source software, QElectroTech is provided as is, without any warranty.
 
 ### Development / technical choices
