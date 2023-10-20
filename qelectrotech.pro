@@ -322,9 +322,11 @@ macx {
         DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
         
 
-        contains(QMAKE_TARGET.arch, x86_64) {
+        contains(QMAKE_TARGET.arch, x86) {
+        message( "It's x86" )
         LIBS +=   /opt/digikam.org.x86_64/lib/libsqlite3.0.dylib
         } else {
+        message( "It's arm64" )
         LIBS +=   /opt/digikam.org.arm64/lib/libsqlite3.0.dylib
         }
       }
