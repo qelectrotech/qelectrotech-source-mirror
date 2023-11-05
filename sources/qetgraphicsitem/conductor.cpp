@@ -542,7 +542,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		final_conductor_pen.setColor(m_properties.m_color_2);
 		final_conductor_pen.setStyle(Qt::CustomDashLine);
 		QVector<qreal> dash_pattern;
-		dash_pattern << m_properties.m_dash_size-2 << m_properties.m_dash_size;
+		dash_pattern << m_properties.m_dash_size << m_properties.m_dash_size *2;
 		final_conductor_pen.setDashPattern(dash_pattern);
 		painter->save();
 		painter->setPen(final_conductor_pen);
