@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - uses: snapcore/action-build@v1
       id: build
     - uses: snapcore/action-publish@v1
