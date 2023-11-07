@@ -220,7 +220,7 @@ void ConductorAutoNumerotation::numeratePotential()
 */
 void ConductorAutoNumerotation::numerateNewConductor()
 {
-	if (m_conductor) {
+	if (!m_conductor) {
 		return;
 	}
 
