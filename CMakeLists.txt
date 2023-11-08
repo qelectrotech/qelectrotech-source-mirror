@@ -125,7 +125,7 @@ target_include_directories(
   ${QET_DIR}/sources/NameList
   ${QET_DIR}/sources/NameList/ui
   ${QET_DIR}/sources/utils
-  ${QET_DIR}/sources/pugixml
+  ${QET_DIR}/pugixml/src
   ${QET_DIR}/sources/dataBase
   ${QET_DIR}/sources/dataBase/ui
   ${QET_DIR}/sources/factory/ui

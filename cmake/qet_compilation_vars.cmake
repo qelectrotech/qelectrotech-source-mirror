@@ -387,9 +387,9 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.cpp
   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.h
 
-  ${QET_DIR}/sources/pugixml/pugiconfig.hpp
-  ${QET_DIR}/sources/pugixml/pugixml.cpp
-  ${QET_DIR}/sources/pugixml/pugixml.hpp
+  ${QET_DIR}/pugixml/src/pugiconfig.hpp
+  ${QET_DIR}/pugixml/src/pugixml.cpp
+  ${QET_DIR}/pugixml/src/pugixml.hpp
 
   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
