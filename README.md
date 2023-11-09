@@ -46,8 +46,8 @@ Here are the technical choices made for the software development:
 *   Libraries: Qt 5.x
 *   [KF5 Framework](https://github.com/KDE)  
     [Cmake](https://cmake.org/install/)   
-    [kcoreaddons](https://github.com/KDE/kcoreaddons)   
-    [kwidgetsaddons](https://github.com/KDE/kwidgetsaddons).  
+    [kcoreaddons](https://github.com/KDE/kcoreaddons/tree/kf5)   
+    [kwidgetsaddons](https://github.com/KDE/kwidgetsaddons/tree/kf5).  
 *   Coding language: [C++](https://en.wikipedia.org/wiki/C%2B%2B)
 *   GUI translations: [Qt Linguist](http://doc.qt.io/qt-5/qtlinguist-index.html)
 *   Version control: [GIT](https://github.com/qelectrotech/qelectrotech-source-mirror.git)
