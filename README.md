@@ -35,7 +35,7 @@ Like many other open source software, QElectroTech is provided as is, without an
 ### Development / technical choices
 
 The development follows the classical way of free and open source software: the source code, written by a community of users, is freely accessible.
-*    Get sources ans sub-modules
+*    Get sources and sub-modules
 ```txt
 git clone --recursive https://github.com/qelectrotech/qelectrotech-source-mirror.git
 ```
