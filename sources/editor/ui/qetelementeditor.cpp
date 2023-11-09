@@ -945,19 +945,19 @@ void QETElementEditor::writeSettings() const
 void QETElementEditor::setupActions()
 {
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on Windows\n"
 					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n"
 					   ));
 #elif defined(Q_OS_MAC)
-	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on macOSX\n"
 					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
 					  ));
 #else
-	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on Linux\n"
 					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
@@ -965,7 +965,7 @@ void QETElementEditor::setupActions()
 					  ));
 #endif
 
-	ui->m_open_dxf_action -> setWhatsThis (tr("To install the plugin DXFtoQET\nVisit https://download.tuxfamily.org/qet/builds/dxf_to_elmt/\n"
+	ui->m_open_dxf_action -> setWhatsThis (tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
 					 "\n"
 					 ">> Install on Linux\n"
 					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
@@ -1475,7 +1475,7 @@ void QETElementEditor::on_m_zoom_original_action_triggered() { m_view->zoomReset
 void QETElementEditor::on_m_about_qet_action_triggered() { QETApp::instance()->aboutQET(); }
 
 void QETElementEditor::on_m_online_manual_triggered() {
-	QString link = "https://download.tuxfamily.org/qet/manual_0.7/build/index.html";
+	QString link = "https://download.qelectrotech.org/qet/manual_0.7/build/index.html";
 	QDesktopServices::openUrl(QUrl(link));
 }
 
