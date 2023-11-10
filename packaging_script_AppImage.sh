@@ -1,5 +1,5 @@
 #!/bin/bash 
-#nettoyage des chroots
+
 set -x
 
 
@@ -48,12 +48,12 @@ chmod -x QElectroTech_$tagName-r$HEAD-x86_64.AppImage
 shasum -a 256 QElectroTech_$tagName-r$HEAD-x86_64.AppImage > QElectroTech_$tagName-r$HEAD-x86_64.AppImage-SHA256.txt
 mv QElectroTech_$tagName-r$HEAD-x86_64.AppImage* ../AppImage/0.100.0/
 cd ..
-  #rsync to TF
-  echo -e "\033[1;31mWould you like to RSYNC Debian packages to TF n/Y?.\033[m"
+  #rsync to server
+  echo -e "\033[1;31mWould you like to RSYNC Appimage to server n/Y?.\033[m"
   read a
   if [[ $a == "Y" || $a == "y" ]]; then
-    echo -e "\033[1;33mRsync to TF qelectrotech-$VERSION.r$HEAD .\033[m"
-    echo -e	"\033[1;31mrsync to TF password ssh and TF\033[m"
+    echo -e "\033[1;33mRsync to server qelectrotech-$VERSION.r$HEAD .\033[m"
+    echo -e	"\033[1;31mrsync to server password ssh and TF\033[m"
     cd $DEFAULT_DIR/script
     rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress ~/qelectrotech-source-mirror/AppImage/0.100.0/ server:download.qelectrotech.org/qet/builds/AppImage/0.100.0/
     if [ $? != 0 ]; then
