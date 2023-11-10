@@ -65,3 +65,7 @@ cd ..
   else
     echo -e "\033[1;33mExit.\033[m"
   fi
+else
+  echo  -e "\033[1;33mExit.\033[m"
+fi
+exit
