@@ -11444,19 +11444,19 @@ Andere Felder werden nicht verwendet.</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="200"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Normal</translation>
+        <translation>Durchgezogen</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="201"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation>Strich</translation>
+        <translation>Gestrichelt</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="202"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
-        <translation>Gestrichelt</translation>
+        <translation>Gepunktet</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="203"/>
