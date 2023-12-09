@@ -970,12 +970,10 @@ bool QetShapeItem::toDXF(const QString &filepath,const QPen &pen)
 				Createdxf::dxfColor(pen));
 	    return true;
 	case Polygon:
-        if(m_polygon.isClosed()) {
+        if(m_polygon.isClosed())
             Createdxf::drawPolygon(filepath,m_polygon,Createdxf::dxfColor(pen));
-        }
-        else {
+        else
             Createdxf::drawPolyline(filepath,m_polygon,Createdxf::dxfColor(pen));
-        }
 	    return true;
 	default:
 	    return false;
