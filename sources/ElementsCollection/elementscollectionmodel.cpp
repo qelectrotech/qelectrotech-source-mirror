@@ -258,6 +258,7 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data,
 	@param projects : list of projects to load
 */
 void ElementsCollectionModel::loadCollections(bool common_collection,
+                          bool company_collection,
 					      bool custom_collection,
 					      QList<QETProject *> projects)
 {
@@ -265,10 +266,12 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 
 	if (common_collection)
 		addCommonCollection(false);
+	if (company_collection)
+		addCompanyCollection(false);
 	if (custom_collection)
 		addCustomCollection(false);
 
-	if (common_collection || custom_collection)
+	if (common_collection || company_collection || custom_collection)
 		m_items_list_to_setUp.append(items());
 
 
@@ -321,22 +324,41 @@ void ElementsCollectionModel::addCommonCollection(bool set_data)
 }
 
 /**
-	@brief ElementsCollectionModel::addCustomCollection
-	Add the custom elements collection to this model
-	@param set_data
+    @brief ElementsCollectionModel::addCompanyCollection
+    Add the company elements collection to this model
+    @param set_data
+*/
+void ElementsCollectionModel::addCompanyCollection(bool set_data)
+{
+    FileElementCollectionItem *feci = new FileElementCollectionItem();
+    if (feci->setRootPath(QETApp::companyElementsDirN(),
+                  set_data,
+                  m_hide_element)) {
+        invisibleRootItem()->appendRow(feci);
+        if (set_data)
+            feci->setUpData();
+    }
+    else
+        delete feci;
+}
+
+/**
+    @brief ElementsCollectionModel::addCustomCollection
+    Add the custom elements collection to this model
+    @param set_data
 */
 void ElementsCollectionModel::addCustomCollection(bool set_data)
 {
-	FileElementCollectionItem *feci = new FileElementCollectionItem();
-	if (feci->setRootPath(QETApp::customElementsDirN(),
-			      set_data,
-			      m_hide_element)) {
-		invisibleRootItem()->appendRow(feci);
-		if (set_data)
-			feci->setUpData();
-	}
-	else
-		delete feci;
+    FileElementCollectionItem *feci = new FileElementCollectionItem();
+    if (feci->setRootPath(QETApp::customElementsDirN(),
+                  set_data,
+                  m_hide_element)) {
+        invisibleRootItem()->appendRow(feci);
+        if (set_data)
+            feci->setUpData();
+    }
+    else
+        delete feci;
 }
 
 /**
@@ -557,8 +579,9 @@ QModelIndex ElementsCollectionModel::indexFromLocation(
 {
 	QList <ElementCollectionItem *> child_list;
 
-	for (int i=0 ; i<rowCount() ; i++)
+    for (int i=0 ; i<rowCount() ; i++){
 		child_list.append(static_cast<ElementCollectionItem *>(item(i)));
+    }
 
 		foreach(ElementCollectionItem *eci, child_list) {
 
@@ -567,7 +590,8 @@ QModelIndex ElementsCollectionModel::indexFromLocation(
 			if (eci->type() == FileElementCollectionItem::Type) {
 				if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
 					if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
-						 (location.isCustomCollection() && !feci->isCommonCollection()) ) {
+                                             (location.isCompanyCollection() && feci->isCompanyCollection()) ||
+					     (location.isCustomCollection() && !feci->isCommonCollection()) ) {
 						match_eci = feci->itemAtPath(location.collectionPath(false));
 					}
 				}

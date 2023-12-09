@@ -509,7 +509,10 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 			case QET::Common :
 				collection = QETApp::commonTitleBlockTemplatesCollection();
 				break;
-			case QET::Custom :
+            case QET::Company :
+            //    collection = QETApp::companyTitleBlockTemplatesCollection();
+                break;
+            case QET::Custom :
 				collection = QETApp::customTitleBlockTemplatesCollection();
 				break;
 			case QET::Embedded :

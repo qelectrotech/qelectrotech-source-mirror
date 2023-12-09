@@ -17,7 +17,7 @@
 */
 #include "macosxopenevent.h"
 
-#include "singleapplication.h"
+#include "../singleapplication.h"
 
 #include <QFileOpenEvent>
 

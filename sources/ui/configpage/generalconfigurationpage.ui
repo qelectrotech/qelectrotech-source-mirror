@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
+    <width>872</width>
     <height>411</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -243,13 +243,34 @@
            </widget>
           </item>
           <item row="2" column="0">
+           <widget class="QLabel" name="label_16">
+            <property name="text">
+             <string>Répertoire de la collection company</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="m_company_elmt_path_cb">
+            <item>
+             <property name="text">
+              <string>Par defaut</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Parcourir...</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="3" column="0">
            <widget class="QLabel" name="label_8">
             <property name="text">
              <string>Répertoire de la collection utilisateur</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <widget class="QComboBox" name="m_custom_elmt_path_cb">
             <item>
              <property name="text">
@@ -263,7 +284,14 @@
             </item>
            </widget>
           </item>
-          <item row="3" column="1">
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Répertoire des cartouches utilisateur</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
            <widget class="QComboBox" name="m_custom_tbt_path_cb">
             <item>
              <property name="text">
@@ -277,17 +305,10 @@
             </item>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="5" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>(Recharger les collections d'éléments pour appliquer les changements)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_10">
-            <property name="text">
-             <string>Répertoire des cartouches utilisateur</string>
             </property>
            </widget>
           </item>
@@ -847,9 +868,9 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout_1">
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="label_1">
            <property name="text">
             <string>Max. parts in Element Editor List</string>
            </property>

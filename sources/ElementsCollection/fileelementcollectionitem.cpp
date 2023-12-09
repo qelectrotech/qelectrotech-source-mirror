@@ -120,9 +120,11 @@ QString FileElementCollectionItem::localName()
 
 	else if (isDir()) {
 		if (isCollectionRoot()) {
-			if (m_path == QETApp::commonElementsDirN())
-				setText(QObject::tr("Collection QET"));
-			else if (m_path == QETApp::customElementsDirN())
+            if (m_path == QETApp::commonElementsDirN())
+                setText(QObject::tr("Collection QET"));
+            else if (m_path == QETApp::companyElementsDirN())
+                setText(QObject::tr("Collection Company"));
+            else if (m_path == QETApp::customElementsDirN())
 				setText(QObject::tr("Collection utilisateur"));
 			else
 				setText(QObject::tr("Collection inconnue"));
@@ -194,6 +196,8 @@ QString FileElementCollectionItem::collectionPath() const
 	if (isCollectionRoot()) {
 		if (m_path == QETApp::commonElementsDirN())
 			return "common://";
+		else if (m_path == QETApp::companyElementsDirN())
+			return "company://";
 		else
 			return "custom://";
 	}
@@ -217,19 +221,29 @@ QString FileElementCollectionItem::collectionPath() const
 bool FileElementCollectionItem::isCollectionRoot() const
 {
 	if (m_path == QETApp::commonElementsDirN()
-			|| m_path == QETApp::customElementsDirN())
-		return true;
+            || m_path == QETApp::companyElementsDirN()
+            || m_path == QETApp::customElementsDirN())
+        return true;
 	else
 		return false;
 }
 
 /**
-	@brief FileElementCollectionItem::isCommonCollection
-	@return True if this item represent the common collection
+    @brief FileElementCollectionItem::isCommonCollection
+    @return True if this item represent the common collection
 */
 bool FileElementCollectionItem::isCommonCollection() const
 {
-	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
+    return fileSystemPath().startsWith(QETApp::commonElementsDirN());
+}
+
+/**
+    @brief FileElementCollectionItem::isCompanyCollection
+    @return True if this item represent the company collection
+*/
+bool FileElementCollectionItem::isCompanyCollection() const
+{
+    return fileSystemPath().startsWith(QETApp::companyElementsDirN());
 }
 
 /**
@@ -306,6 +320,8 @@ void FileElementCollectionItem::setUpIcon()
 	if (isCollectionRoot()) {
 		if (m_path == QETApp::commonElementsDirN())
 			setIcon(QIcon(":/ico/16x16/qet.png"));
+		else if (m_path == QETApp::companyElementsDirN())
+			setIcon(QIcon(":/ico/16x16/go-company.png"));
 		else
 			setIcon(QIcon(":/ico/16x16/go-home.png"));
 	}

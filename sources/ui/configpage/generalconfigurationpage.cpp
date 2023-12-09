@@ -138,6 +138,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_common_elmt_path_cb->blockSignals(false);
 	}
 
+	path = settings.value("elements-collections/company-collection-path", "default").toString();
+	if (path != "default")
+	{
+		ui->m_company_elmt_path_cb->blockSignals(true);
+		ui->m_company_elmt_path_cb->setCurrentIndex(1);
+		ui->m_company_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
+		ui->m_company_elmt_path_cb->blockSignals(false);
+	}
+
 	path = settings.value("elements-collections/custom-collection-path", "default").toString();
 	if (path != "default")
 	{
@@ -241,6 +250,21 @@ void GeneralConfigurationPage::applyConf()
 		QETApp::resetCollectionsPath();
 	}
 	
+	path = settings.value("elements-collections/company-collection-path").toString();
+	if (ui->m_company_elmt_path_cb->currentIndex() == 1)
+	{
+		QString path = ui->m_company_elmt_path_cb->currentText();
+		QDir dir(path);
+		settings.setValue("elements-collections/company-collection-path",
+						  dir.exists() ? path : "default");
+	}
+	else {
+		settings.setValue("elements-collections/company-collection-path", "default");
+	}
+	if (path != settings.value("elements-collections/company-collection-path").toString()) {
+		QETApp::resetCollectionsPath();
+	}
+
 	path = settings.value("elements-collections/custom-collection-path").toString();
 	if (ui->m_custom_elmt_path_cb->currentIndex() == 1)
 	{
@@ -394,6 +418,20 @@ void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int 
 		}
 		else {
 			ui->m_common_elmt_path_cb->setCurrentIndex(0);
+		}
+	}
+}
+
+void GeneralConfigurationPage::on_m_company_elmt_path_cb_currentIndexChanged(int index)
+{
+	if (index == 1)
+	{
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection company"), QDir::homePath());
+		if (!path.isEmpty()) {
+			ui->m_company_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
+		}
+		else {
+			ui->m_company_elmt_path_cb->setCurrentIndex(0);
 		}
 	}
 }

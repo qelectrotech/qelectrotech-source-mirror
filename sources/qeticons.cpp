@@ -32,6 +32,7 @@ namespace QET {
 		QIcon Autoconnect;
 		QIcon BringForward;
 		QIcon Cancel;
+		QIcon Company;
 		QIcon Conductor;
 		QIcon ConductorEdit;
 		QIcon ConductorSettings;
@@ -395,6 +396,8 @@ void QET::Icons::initIcons()
 	Autoconnect         .addFile(":/ico/22x22/autoconnect.png");
 	BringForward        .addFile(":/ico/22x22/bring_forward.png");
 	Cancel              .addFile(":/ico/16x16/item-cancel.png");
+	Company             .addFile(":/ico/16x16/go-company.png");
+	Company             .addFile(":/ico/22x22/go-company.png");
 	Conductor           .addFile(":/ico/16x16/conductor.png");
 	ConductorEdit       .addFile(":/ico/16x16/conductor-edit.png");
 	ConductorSettings   .addFile(":/ico/16x16/conductor-reset.png");

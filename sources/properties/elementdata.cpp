@@ -362,6 +362,7 @@ QString ElementData::masterTypeToString(ElementData::MasterType type)
 		case ElementData::Commutator:
 			return QStringLiteral("commutator");
 	}
+    return QStringLiteral("coil");
 }
 
 ElementData::MasterType ElementData::masterTypeFromString(const QString &string)
@@ -394,6 +395,7 @@ QString ElementData::slaveTypeToString(ElementData::SlaveType type)
 		case ElementData::delayOnOff:
 			return QStringLiteral("delayOnOff");
 	}
+    return QStringLiteral("simple");
 }
 
 ElementData::SlaveType ElementData::slaveTypeFromString(const QString &string)
@@ -428,6 +430,7 @@ QString ElementData::slaveStateToString(ElementData::SlaveState type)
 		case Other:
 			return QStringLiteral("Other");
 	}
+    return QStringLiteral("Other");
 }
 
 ElementData::SlaveState ElementData::slaveStateFromString(const QString &string)
@@ -462,6 +465,7 @@ QString ElementData::terminalTypeToString(ElementData::TerminalType type)
 		case ElementData::TTGround:
 			return QStringLiteral("ground");
 	}
+    return QStringLiteral("generic");
 }
 
 ElementData::TerminalType ElementData::terminalTypeFromString(const QString &string)
@@ -498,6 +502,7 @@ QString ElementData::translatedTerminalType(ElementData::TerminalType type)
 		case ElementData::TTGround:
 			return QObject::tr("Terre", "ground terminal element type");
 	}
+    return QObject::tr("Générique", "generic terminal element type");
 }
 
 QString ElementData::terminalFunctionToString(ElementData::TerminalFunction function)
@@ -510,6 +515,7 @@ QString ElementData::terminalFunctionToString(ElementData::TerminalFunction func
 		case ElementData::TFNeutral:
 			return QStringLiteral("neutral");
 	}
+    return QStringLiteral("generic");
 }
 
 ElementData::TerminalFunction ElementData::terminalFunctionFromString(const QString &string)
@@ -535,6 +541,7 @@ QString ElementData::translatedTerminalFunction(ElementData::TerminalFunction fu
 		case TFPhase :   return QObject::tr("Phase", "phase terminal element function" );
 		case TFNeutral : return QObject::tr("Neutre", "neutral terminal element function");
 	}
+    return QObject::tr("Générique", "generic terminal element function");
 }
 
 void ElementData::kindInfoFromXml(const QDomElement &xml_element)

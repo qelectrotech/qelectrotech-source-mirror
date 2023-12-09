@@ -42,6 +42,7 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_m_font_pb_clicked();
 		void on_m_dyn_text_font_pb_clicked();
 		void on_m_common_elmt_path_cb_currentIndexChanged(int index);
+		void on_m_company_elmt_path_cb_currentIndexChanged(int index);
 		void on_m_custom_elmt_path_cb_currentIndexChanged(int index);
 		void on_m_custom_tbt_path_cb_currentIndexChanged(int index);
 		void on_m_indi_text_font_pb_clicked();
