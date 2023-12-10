@@ -172,7 +172,6 @@ QString TerminalData::typeToString(TerminalData::Type type)
 		case Outer :
 			return QString("Outer");
 	}
-    return QString("Generic");
 }
 
 /**
