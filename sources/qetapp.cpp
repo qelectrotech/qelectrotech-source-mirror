@@ -679,6 +679,9 @@ void QETApp::resetCollectionsPath()
 	m_common_element_dir.clear();
 	m_common_element_dir_is_set = false;
 
+	m_company_element_dir.clear();
+	m_company_element_dir_is_set = false;
+
 	m_custom_element_dir.clear();
 	m_custom_element_dir_is_set = false;
 
