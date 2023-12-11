@@ -66,6 +66,13 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/SearchAndReplace/ui/replaceelementdialog.ui
   ${QET_DIR}/sources/SearchAndReplace/ui/replacefoliowidget.ui
   ${QET_DIR}/sources/SearchAndReplace/ui/searchandreplacewidget.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/addterminalstripitemdialog.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/freeterminaleditor.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripcreatordialog.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripeditor.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripeditorwindow.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstriplayouteditor.ui
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstriptreedockwidget.ui
   ${QET_DIR}/sources/ui/aboutqetdialog.ui
   ${QET_DIR}/sources/ui/alignmenttextdialog.ui
   ${QET_DIR}/sources/ui/bomexportdialog.ui
@@ -75,6 +82,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/conductorpropertieswidget.ui
   ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
   ${QET_DIR}/sources/ui/diagramcontextwidget.ui
+  ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.ui
   ${QET_DIR}/sources/ui/diagramselection.ui
   ${QET_DIR}/sources/ui/dialogwaiting.ui
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
@@ -91,6 +99,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/potentialselectordialog.ui
   ${QET_DIR}/sources/ui/reportpropertiewidget.ui
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.ui
+  ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.ui
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.ui
   ${QET_DIR}/sources/ui/xrefpropertieswidget.ui
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.ui
@@ -184,6 +193,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetresult.h
   ${QET_DIR}/sources/qetxml.cpp
   ${QET_DIR}/sources/qetxml.h
+  ${QET_DIR}/sources/qetversion.cpp
+  ${QET_DIR}/sources/qetversion.h
   ${QET_DIR}/sources/qfilenameedit.cpp
   ${QET_DIR}/sources/qfilenameedit.h
   ${QET_DIR}/sources/qgimanager.cpp
@@ -243,6 +254,9 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/dvevent/dveventinterface.cpp
   ${QET_DIR}/sources/dvevent/dveventinterface.h
+
+  ${QET_DIR}/sources/dxf/dxftoelmt.cpp
+  ${QET_DIR}/sources/dxf/dxftoelmt.h
 
   ${QET_DIR}/sources/editor/arceditor.cpp
   ${QET_DIR}/sources/editor/arceditor.h
@@ -322,6 +336,12 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/editor/UndoCommand/pastepartscommand.cpp
   ${QET_DIR}/sources/editor/UndoCommand/pastepartscommand.h
+  ${QET_DIR}/sources/editor/UndoCommand/openelmtcommand.cpp
+  ${QET_DIR}/sources/editor/UndoCommand/openelmtcommand.h
+  ${QET_DIR}/sources/editor/UndoCommand/deletepartscommand.cpp
+  ${QET_DIR}/sources/editor/UndoCommand/deletepartscommand.h
+  ${QET_DIR}/sources/editor/UndoCommand/addpartcommand.cpp
+  ${QET_DIR}/sources/editor/UndoCommand/addpartcommand.h
 
   ${QET_DIR}/sources/ElementsCollection/elementcollectionhandler.cpp
   ${QET_DIR}/sources/ElementsCollection/elementcollectionhandler.h
@@ -367,6 +387,9 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/print/projectprintwindow.cpp
   ${QET_DIR}/sources/print/projectprintwindow.h
+
+  ${QET_DIR}/sources/project/projectpropertieshandler.cpp
+  ${QET_DIR}/sources/project/projectpropertieshandler.h
 
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
@@ -427,7 +450,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/terminalelement.cpp
   ${QET_DIR}/sources/qetgraphicsitem/terminalelement.h
   ${QET_DIR}/sources/qetgraphicsitem/terminal.h
-
 
   ${QET_DIR}/sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp
   ${QET_DIR}/sources/qetgraphicsitem/ViewItem/projectdbmodel.h
@@ -508,6 +530,65 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblock/templatevisualcell.cpp
   ${QET_DIR}/sources/titleblock/templatevisualcell.h
 
+  ${QET_DIR}/sources/TerminalStrip/physicalterminal.cpp
+  ${QET_DIR}/sources/TerminalStrip/physicalterminal.h
+  ${QET_DIR}/sources/TerminalStrip/realterminal.cpp
+  ${QET_DIR}/sources/TerminalStrip/realterminal.h
+  ${QET_DIR}/sources/TerminalStrip/terminalstripbridge.cpp
+  ${QET_DIR}/sources/TerminalStrip/terminalstripbridge.h
+  ${QET_DIR}/sources/TerminalStrip/terminalstrip.cpp
+  ${QET_DIR}/sources/TerminalStrip/terminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/terminalstripdata.cpp
+  ${QET_DIR}/sources/TerminalStrip/terminalstripdata.h
+  ${QET_DIR}/sources/TerminalStrip/ui/addterminalstripitemdialog.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/addterminalstripitemdialog.h
+  ${QET_DIR}/sources/TerminalStrip/ui/freeterminaleditor.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/freeterminaleditor.h
+  ${QET_DIR}/sources/TerminalStrip/ui/freeterminalmodel.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/freeterminalmodel.h
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripcreatordialog.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripcreatordialog.h
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripeditor.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripeditor.h
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripeditorwindow.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripeditorwindow.h
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstriplayouteditor.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstriplayouteditor.h
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripmodel.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstripmodel.h
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/terminalstriptreedockwidget.h
+  ${QET_DIR}/sources/TerminalStrip/ui/ConfigPage/terminalstripprojectconfigpage.cpp
+  ${QET_DIR}/sources/TerminalStrip/ui/ConfigPage/terminalstripprojectconfigpage.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/addterminalstripcommand.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/addterminalstripcommand.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/addterminaltostripcommand.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/bridgeterminalscommand.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/bridgeterminalscommand.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/changeterminallevel.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/changeterminallevel.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/changeterminalstripcolor.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/changeterminalstripcolor.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/changeterminalstripdata.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/changeterminalstripdata.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/groupterminalscommand.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/groupterminalscommand.h
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp
+  ${QET_DIR}/sources/TerminalStrip/UndoCommand/sortterminalstripcommand.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/demoterminalstrip.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/demoterminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripitem.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/trueterminalstrip.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/trueterminalstrip.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripdrawer.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/terminalstripdrawer.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutpattern.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutpattern.h
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.cpp
+  ${QET_DIR}/sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.h
+
   ${QET_DIR}/sources/ui/aboutqetdialog.cpp
   ${QET_DIR}/sources/ui/aboutqetdialog.h
   ${QET_DIR}/sources/ui/abstractelementpropertieseditorwidget.cpp
@@ -528,6 +609,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configsaveloaderwidget.h
   ${QET_DIR}/sources/ui/diagramcontextwidget.cpp
   ${QET_DIR}/sources/ui/diagramcontextwidget.h
+  ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.cpp
+  ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.h
   ${QET_DIR}/sources/ui/diagrampropertiesdialog.cpp
   ${QET_DIR}/sources/ui/diagrampropertiesdialog.h
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.cpp
@@ -572,6 +655,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/reportpropertiewidget.h
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.cpp
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.h
+  ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.cpp
+  ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.h
   ${QET_DIR}/sources/ui/xrefpropertieswidget.cpp
@@ -588,6 +673,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h
   ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.cpp
   ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.h
+  ${QET_DIR}/sources/undocommand/changeelementdatacommand.cpp
+  ${QET_DIR}/sources/undocommand/changeelementdatacommand.h
   ${QET_DIR}/sources/undocommand/changeelementinformationcommand.cpp
   ${QET_DIR}/sources/undocommand/changeelementinformationcommand.h
   ${QET_DIR}/sources/undocommand/changetitleblockcommand.cpp
@@ -602,13 +689,20 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
   ${QET_DIR}/sources/undocommand/rotatetextscommand.cpp
   ${QET_DIR}/sources/undocommand/rotatetextscommand.h
+  ${QET_DIR}/sources/undocommand/movegraphicsitemcommand.cpp
+  ${QET_DIR}/sources/undocommand/movegraphicsitemcommand.h
 
   ${QET_DIR}/sources/utils/conductorcreator.cpp
   ${QET_DIR}/sources/utils/conductorcreator.h
   ${QET_DIR}/sources/utils/macosxopenevent.cpp
   ${QET_DIR}/sources/utils/macosxopenevent.h
+  ${QET_DIR}/sources/utils/qetsettings.cpp
+  ${QET_DIR}/sources/utils/qetsettings.h
   ${QET_DIR}/sources/utils/qetutils.cpp
   ${QET_DIR}/sources/utils/qetutils.h
+
+  ${QET_DIR}/sources/xml/terminalstripitemxml.cpp
+  ${QET_DIR}/sources/xml/terminalstripitemxml.h
   )
 
 set(TS_FILES
