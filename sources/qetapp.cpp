@@ -75,6 +75,9 @@ TitleBlockTemplate *QETApp::default_titleblock_template_ = nullptr;
 QString QETApp::m_common_element_dir = QString();
 bool QETApp::m_common_element_dir_is_set = false;
 
+QString QETApp::m_company_element_dir = QString();
+bool QETApp::m_company_element_dir_is_set = false;
+
 QString QETApp::m_custom_element_dir = QString();
 bool QETApp::m_custom_element_dir_is_set = false;
 
@@ -556,52 +559,101 @@ QString QETApp::commonElementsDir()
 }
 
 /**
-	@brief QETApp::customElementsDir
-	@return the dir path of user elements collection appended with a
-	"/" separator
+    @brief QETApp::customElementsDir
+    @return the dir path of user elements collection appended with a
+    "/" separator
 */
 QString QETApp::customElementsDir()
 {
-	if (m_custom_element_dir_is_set)
-	{
-		return m_custom_element_dir;
-	}
-	else
-	{
-		m_custom_element_dir_is_set = true;
+    if (m_custom_element_dir_is_set)
+    {
+        return m_custom_element_dir;
+    }
+    else
+    {
+        m_custom_element_dir_is_set = true;
 
-		QSettings settings;
-		QString path = settings.value(
-						   "elements-collections/custom-collection-path",
-						   "default").toString();
-		if (path != "default" && !path.isEmpty())
-		{
-			QDir dir(path);
-			if (dir.exists())
-			{
-				m_custom_element_dir = path;
-				if(!m_custom_element_dir.endsWith("/")) {
-					m_custom_element_dir.append("/");
-				}
-				return m_custom_element_dir;
-			}
-		}
+        QSettings settings;
+        QString path = settings.value(
+                           "elements-collections/custom-collection-path",
+                           "default").toString();
+        if (path != "default" && !path.isEmpty())
+        {
+            QDir dir(path);
+            if (dir.exists())
+            {
+                m_custom_element_dir = path;
+                if(!m_custom_element_dir.endsWith("/")) {
+                    m_custom_element_dir.append("/");
+                }
+                return m_custom_element_dir;
+            }
+        }
 
-		m_custom_element_dir = configDir() + "elements/";
-		return m_custom_element_dir;
-	}
+        m_custom_element_dir = configDir() + "elements/";
+        return m_custom_element_dir;
+    }
 }
 
 /**
-	@brief QETApp::commonElementsDirN
-	like QString QETApp::commonElementsDir but without "/" at the end
-	@return QString path
+    @brief QETApp::companyElementsDir
+    @return the dir path of company elements collection appended with a
+    "/" separator
+*/
+QString QETApp::companyElementsDir()
+{
+    if (m_company_element_dir_is_set)
+    {
+        return m_company_element_dir;
+    }
+    else
+    {
+        m_company_element_dir_is_set = true;
+
+        QSettings settings;
+        QString path = settings.value(
+                           "elements-collections/company-collection-path",
+                           "default").toString();
+        if (path != "default" && !path.isEmpty())
+        {
+            QDir dir(path);
+            if (dir.exists())
+            {
+                m_company_element_dir = path;
+                if(!m_company_element_dir.endsWith("/")) {
+                    m_company_element_dir.append("/");
+                }
+                return m_company_element_dir;
+            }
+        }
+
+        m_company_element_dir = configDir() + "elements/";
+        return m_company_element_dir;
+    }
+}
+
+/**
+    @brief QETApp::commonElementsDirN
+    like QString QETApp::commonElementsDir but without "/" at the end
+    @return QString path
 */
 QString QETApp::commonElementsDirN()
 {
-	QString path = commonElementsDir();
-	if (path.endsWith("/")) path.remove(path.length()-1, 1);
-	return path;
+    QString path = commonElementsDir();
+    if (path.endsWith("/")) path.remove(path.length()-1, 1);
+    return path;
+}
+
+/**
+    @brief QETApp::companyElementsDirN
+    like QString QETApp::companyElementsDir but without "/" at the end
+    @return QString path
+*/
+QString QETApp::companyElementsDirN()
+{
+    QString path = companyElementsDir();
+    if (path.endsWith("/")) path.remove(path.length()-1, 1);
+    return path;
 }
 
 /**
@@ -626,6 +678,9 @@ void QETApp::resetCollectionsPath()
 {
 	m_common_element_dir.clear();
 	m_common_element_dir_is_set = false;
+
+	m_company_element_dir.clear();
+	m_company_element_dir_is_set = false;
 
 	m_custom_element_dir.clear();
 	m_custom_element_dir_is_set = false;
@@ -758,9 +813,13 @@ QString QETApp::realPath(const QString &sym_path) {
 	QString directory;
 	if (sym_path.startsWith("common://")) {
 		directory = commonElementsDir();
-	} else if (sym_path.startsWith("custom://")) {
-		directory = customElementsDir();
-	} else if (sym_path.startsWith(QETAPP_COMMON_TBT_PROTOCOL "://")) {
+    } else if (sym_path.startsWith("company://")) {
+        directory = companyElementsDir();
+    } else if (sym_path.startsWith("company://")) {
+        directory = companyElementsDir();
+    } else if (sym_path.startsWith("custom://")) {
+        directory = customElementsDir();
+    } else if (sym_path.startsWith(QETAPP_COMMON_TBT_PROTOCOL "://")) {
 		directory = commonTitleBlockTemplatesDir();
 	} else if (sym_path.startsWith(QETAPP_CUSTOM_TBT_PROTOCOL "://")) {
 		directory = customTitleBlockTemplatesDir();
@@ -790,6 +849,7 @@ QString QETApp::symbolicPath(const QString &real_path) {
 	// get the common and custom folders
 	// recupere les dossier common et custom
 	QString commond = commonElementsDir();
+	QString companyd = companyElementsDir();
 	QString customd = customElementsDir();
 	QString chemin;
 	// analyzes the file path passed in parameter
@@ -798,6 +858,10 @@ QString QETApp::symbolicPath(const QString &real_path) {
 		chemin = "common://"
 				+ real_path.right(
 					real_path.length() - commond.length());
+	} else if (real_path.startsWith(companyd)) {
+		chemin = "company://"
+				+ real_path.right(
+					real_path.length() - companyd.length());
 	} else if (real_path.startsWith(customd)) {
 		chemin = "custom://"
 				+ real_path.right(
@@ -1913,11 +1977,15 @@ void QETApp::initConfiguration()
 	QDir config_dir(QETApp::configDir());
 	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
 
-	QDir custom_elements_dir(QETApp::customElementsDir());
-	if (!custom_elements_dir.exists())
-		custom_elements_dir.mkpath(QETApp::customElementsDir());
+    QDir custom_elements_dir(QETApp::customElementsDir());
+    if (!custom_elements_dir.exists())
+        custom_elements_dir.mkpath(QETApp::customElementsDir());
 
-	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
+    QDir company_elements_dir(QETApp::companyElementsDir());
+    if (!company_elements_dir.exists())
+        company_elements_dir.mkpath(QETApp::companyElementsDir());
+
+    QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
 	if (!custom_tbt_dir.exists())
 		custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
 

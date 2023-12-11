@@ -168,7 +168,7 @@ QString ElementsLocation::baseName() const
 	@brief ElementsLocation::collectionPath
 	Return the path of the represented element relative to collection
 	if protocol is true the path is prepended by
-	the collection type (common://, custom:// or embed://)
+	the collection type (common://, company://, custom:// or embed://)
 	else if false,
 	only the collection path is returned without the collection type.
 	@param protocol
@@ -181,7 +181,7 @@ QString ElementsLocation::collectionPath(bool protocol) const
 	else
 	{
 		QString path = m_collection_path;
-		return path.remove(QRegularExpression("common://|custom://|embed://"));
+		return path.remove(QRegularExpression("common://|company://|custom://|embed://"));
 	}
 }
 
@@ -229,7 +229,7 @@ QString ElementsLocation::path() const
 	@brief ElementsLocation::setPath
 	Set the path of this item.
 	The path can be relative to a collection
-	(start by common:// , custom:// or embed://) or not.
+	(start by common://, company://, custom:// or embed://) or not.
 	@param path
 */
 void ElementsLocation::setPath(const QString &path)
@@ -290,15 +290,20 @@ void ElementsLocation::setPath(const QString &path)
 
 	// The path is in file system,
 	// the given path is relative to common or custom collection
-	else if (path.startsWith("common://") || path.startsWith("custom://"))
+	else if (path.startsWith("common://") || path.startsWith("company://") || path.startsWith("custom://"))
 	{
 		QString p;
-		if (path.startsWith("common://"))
-		{
-			tmp_path.remove("common://");
-			p = QETApp::commonElementsDirN() + "/" + tmp_path;
-		}
-		else
+        if (path.startsWith("common://"))
+        {
+            tmp_path.remove("common://");
+            p = QETApp::commonElementsDirN() + "/" + tmp_path;
+        }
+        else if (path.startsWith("company://"))
+        {
+            tmp_path.remove("company://");
+            p = QETApp::companyElementsDirN() + "/" + tmp_path;
+        }
+        else
 		{
 			tmp_path.remove("custom://");
 			p = QETApp::customElementsDirN() + "/" + tmp_path;
@@ -314,13 +319,19 @@ void ElementsLocation::setPath(const QString &path)
 		if(path_.endsWith(".elmt"))
 		{
 			m_file_system_path = path_;
-			if (path_.startsWith(QETApp::commonElementsDirN()))
-			{
-				path_.remove(QETApp::commonElementsDirN()+="/");
-				path_.prepend("common://");
-				m_collection_path = path_;
-			}
-			else if (path_.startsWith(QETApp::customElementsDirN()))
+            if (path_.startsWith(QETApp::commonElementsDirN()))
+            {
+                path_.remove(QETApp::commonElementsDirN()+="/");
+                path_.prepend("common://");
+                m_collection_path = path_;
+            }
+            else if (path_.startsWith(QETApp::companyElementsDirN()))
+            {
+                path_.remove(QETApp::companyElementsDirN()+="/");
+                path_.prepend("company://");
+                m_collection_path = path_;
+            }
+            else if (path_.startsWith(QETApp::customElementsDirN()))
 			{
 				path_.remove(QETApp::customElementsDirN()+="/");
 				path_.prepend("custom://");
@@ -330,13 +341,19 @@ void ElementsLocation::setPath(const QString &path)
 		else
 		{
 			m_file_system_path = path_;
-			if (path_.startsWith(QETApp::commonElementsDirN()))
-			{
-				path_.remove(QETApp::commonElementsDirN()+="/");
-				path_.prepend("common://");
-				m_collection_path = path_;
-			}
-			else if (path_.startsWith(QETApp::customElementsDirN()))
+            if (path_.startsWith(QETApp::commonElementsDirN()))
+            {
+                path_.remove(QETApp::commonElementsDirN()+="/");
+                path_.prepend("common://");
+                m_collection_path = path_;
+            }
+            else if (path_.startsWith(QETApp::companyElementsDirN()))
+            {
+                path_.remove(QETApp::companyElementsDirN()+="/");
+                path_.prepend("company://");
+                m_collection_path = path_;
+            }
+            else if (path_.startsWith(QETApp::customElementsDirN()))
 			{
 				path_.remove(QETApp::customElementsDirN()+="/");
 				path_.prepend("custom://");
@@ -484,13 +501,23 @@ bool ElementsLocation::isFileSystem() const
 }
 
 /**
-	@brief ElementsLocation::isCommonCollection
-	@return
-	True if this location represent an item from the common collection
+    @brief ElementsLocation::isCommonCollection
+    @return
+    True if this location represent an item from the common collection
 */
 bool ElementsLocation::isCommonCollection() const
 {
-	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
+    return fileSystemPath().startsWith(QETApp::commonElementsDirN());
+}
+
+/**
+    @brief ElementsLocation::isCompanyCollection
+    @return
+    True if this location represent an item from the company collection
+*/
+bool ElementsLocation::isCompanyCollection() const
+{
+    return fileSystemPath().startsWith(QETApp::companyElementsDirN());
 }
 
 /**

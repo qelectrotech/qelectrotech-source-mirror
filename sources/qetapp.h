@@ -79,10 +79,12 @@ class QETApp : public QObject
 		static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
 		static TitleBlockTemplatesCollection *titleBlockTemplatesCollection(const QString &);
 		
-		static QString commonElementsDir();
-		static QString customElementsDir();
+        static QString commonElementsDir();
+        static QString companyElementsDir();
+        static QString customElementsDir();
 		static QString commonElementsDirN();
-		static QString customElementsDirN();
+        static QString companyElementsDirN();
+        static QString customElementsDirN();
 		static void resetCollectionsPath();
 		static QString commonTitleBlockTemplatesDir();
 		static QString customTitleBlockTemplatesDir();
@@ -212,6 +214,9 @@ class QETApp : public QObject
 
 		static QString m_common_element_dir;
 		static bool m_common_element_dir_is_set;
+
+		static QString m_company_element_dir;
+		static bool m_company_element_dir_is_set;
 
 		static QString m_custom_element_dir;
 		static bool m_custom_element_dir_is_set;

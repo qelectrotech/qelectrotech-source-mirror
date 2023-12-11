@@ -687,6 +687,8 @@ QString QET::qetCollectionToString(const QET::QetCollection &c)
 	{
 		case Common :
 			return "common";
+		case Company :
+			return "company";
 		case Custom :
 			return "custom";
 		case Embedded :
@@ -706,6 +708,8 @@ QET::QetCollection QET::qetCollectionFromString(const QString &str)
 {
 	if (str == "common")
 		return QetCollection::Common;
+	else if (str == "company")
+		return QetCollection::Company;
 	else if (str == "custom")
 		return QetCollection::Custom;
 	else if (str == "embedded")

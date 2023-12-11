@@ -221,8 +221,9 @@ bool ElementsPanel::matchesFilter(const QTreeWidgetItem *item,
 void ElementsPanel::reload()
 {
 	QIcon system_icon(":/ico/16x16/qet.png");
+	QIcon company_icon(":/ico/16x16/go-company.png");
 	QIcon user_icon(":/ico/16x16/go-home.png");
-	
+
 	// load the common title block templates collection
 	TitleBlockTemplatesCollection *common_tbt_collection = QETApp::commonTitleBlockTemplatesCollection();
 	common_tbt_collection_item_ = addTemplatesCollection(common_tbt_collection, invisibleRootItem());

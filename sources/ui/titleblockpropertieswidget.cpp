@@ -419,6 +419,8 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 		QET::QetCollection qc = tbt_c -> collection();
 		if (qc == QET::QetCollection::Common)
 			icon = QET::Icons::QETLogo;
+		else if (qc == QET::QetCollection::Company)
+			icon = QET::Icons::Company;
 		else if (qc == QET::QetCollection::Custom)
 			icon = QET::Icons::Home;
 		else if (qc == QET::QetCollection::Embedded)

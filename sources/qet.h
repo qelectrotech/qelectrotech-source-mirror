@@ -147,6 +147,7 @@ namespace QET {
 		///Enum used to specify the origin of a collection of thing (title block, element etc...)
 	enum QetCollection {
 		Common,		///< From common collection
+		Company,	///< From company collection
 		Custom,		///< From user collection
 		Embedded	///< From an embedded collection (a project for example)
 	};

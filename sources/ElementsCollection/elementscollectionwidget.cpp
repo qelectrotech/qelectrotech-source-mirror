@@ -96,7 +96,7 @@ void ElementsCollectionWidget::addProject(QETProject *project)
 		m_progress_bar->show();
 		m_tree_view->setDisabled(true);
 		QList <QETProject *> prj; prj.append(project);
-		m_model->loadCollections(false,false, prj);
+        m_model->loadCollections(false, false, false, prj);
 	}
 	else {
 		m_waiting_project.append(project);
@@ -387,7 +387,8 @@ void ElementsCollectionWidget::deleteElement()
 	if (! (loc.isElement()
 	       && loc.exist()
 	       && loc.isFileSystem()
-	       && loc.collectionPath().startsWith("custom://")) ) return;
+           && (loc.collectionPath().startsWith("company://")
+               || loc.collectionPath().startsWith("custom://"))) ) return;
 
 	if (QET::QetMessageBox::question(
 		this,
@@ -430,7 +431,8 @@ void ElementsCollectionWidget::deleteDirectory()
 	if (! (loc.isDirectory()
 	       && loc.exist()
 	       && loc.isFileSystem()
-	       && loc.collectionPath().startsWith("custom://")) ) return;
+           && (loc.collectionPath().startsWith("company://")
+              || loc.collectionPath().startsWith("custom://"))) ) return;
 
 	if (QET::QetMessageBox::question(
 		this,
@@ -655,7 +657,7 @@ void ElementsCollectionWidget::reload()
 		this,
 		&ElementsCollectionWidget::loadingFinished);
 
-	m_new_model->loadCollections(true, true, project_list);
+    m_new_model->loadCollections(true, true, true, project_list);
 }
 
 /**
