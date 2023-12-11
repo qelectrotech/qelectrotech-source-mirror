@@ -1102,7 +1102,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>CustomElementGraphicPart</name>
     <message>
-        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1366"/>
+        <location filename="../sources/editor/graphicspart/customelementgraphicpart.cpp" line="1362"/>
         <source>Déplacer une primitive</source>
         <translation>Μετακίνηση ενός βασικού στοιχείου</translation>
     </message>
@@ -2513,13 +2513,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>Αναζήτηση</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="394"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="395"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
         <translation>Διαγραφή του στοιχείου;</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="395"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="396"/>
         <source>Êtes-vous sûr  de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
@@ -2527,25 +2527,25 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="410"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="411"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
         <translation>Διαγράφεται το στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="412"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="413"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Η απόπειρα διαγραφής του στοιχείου απέτυχε.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="437"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="439"/>
         <source>Supprimer le dossier?</source>
         <comment>message box title</comment>
         <translation>Διαγραφή του φακέλου;</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="438"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="440"/>
         <source>Êtes-vous sûr  de vouloir supprimer le dossier ?
 Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</source>
         <comment>message box content</comment>
@@ -2553,24 +2553,24 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 Όλα τα στοιχεία που περιέχονται σε αυτόν τον φάκελο θα διαγραφούν.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="454"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="456"/>
         <source>Suppression du dossier</source>
         <comment>message box title</comment>
         <translation>Διαγραφή του φακέλου</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="456"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="458"/>
         <source>La suppression du dossier a échoué.</source>
         <comment>message box content</comment>
         <translation>Η διαγραφή του φακέλου απέτυχε.</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="595"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="597"/>
         <source>Le dossier %1 contient</source>
         <translation>Ο φάκελος %1 περιέχει </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="597"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="599"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n στοιχείο(α), τμήμα(τα)</numerusform>
@@ -2578,7 +2578,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="600"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="602"/>
         <source>dans %n dossier(s).</source>
         <translation>
             <numerusform>στον(ους) φάκελο(υς) %n</numerusform>
@@ -2586,17 +2586,17 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="603"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="605"/>
         <source>Chemin de la collection :  %1</source>
         <translation>Διαδρομή της συλλογής:  %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="607"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="609"/>
         <source>Chemin dans le système de fichiers :  %1</source>
         <translation>Διαδρομή στο σύστημα αρχείων:  %1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="612"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="614"/>
         <source>Propriété du dossier %1</source>
         <translation>Ιδιότητες του φακέλου %1</translation>
     </message>
@@ -2627,25 +2627,25 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>Σύρετε το πρότυπο πινακίδας στη σελίδα για να το εφαρμόσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="230"/>
+        <location filename="../sources/elementspanel.cpp" line="231"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής πινακίδων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="231"/>
+        <location filename="../sources/elementspanel.cpp" line="232"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η συλλογή πινακίδων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="238"/>
+        <location filename="../sources/elementspanel.cpp" line="239"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="239"/>
+        <location filename="../sources/elementspanel.cpp" line="240"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Αυτή είναι η προσωπική σας συλλογή από πινακίδες --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικές σας πινακίδες.</translation>
@@ -3248,36 +3248,38 @@ that you create. Text and number inputs are
         <translation>Χρήση των χρωμάτων του συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="405"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="443"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Διαδρομή της συλλογής χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="419"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="457"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Διαδρομή των πινακίδων χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="391"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="415"/>
         <source>Chemin de la collection commune</source>
         <translation>Διαδρομή της κοινής συλλογής</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="270"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="277"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
         <source>Par defaut</source>
         <translation>Προεπιλογή</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="275"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="282"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="303"/>
         <source>Parcourir...</source>
         <translation>Πλοήγηση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="283"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>(Επαναφόρτωση των συλλογών στοιχείων για να ισχύσουν οι αλλαγές)</translation>
     </message>
@@ -3314,19 +3316,19 @@ that you create. Text and number inputs are
         <translation> λεπτά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>Επισήμανση των προσφάτως ενσωματωμένων στοιχείων στον πίνακα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="337"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>Κάθε στοιχείο περιέχει πληροφορίες σχετικά με τους δημιουργούς του, την άδειά του ή οποιεσδήποτε άλλες πληροφορίες που θεωρείτε χρήσιμες σε ένα ελεύθερο πεδίο.
 Μπορείτε να καθορίσετε εδώ την προεπιλεγμένη τιμή αυτού του πεδίου για τα στοιχεία που θα δημιουργήσετε:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="374"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>Εφαρμογή στην επόμενη εκκίνηση του QElectroTech)</translation>
     </message>
@@ -3356,7 +3358,7 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>Κατάλογος της κοινής συλλογής</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>Κατάλογος της συλλογής χρήστη</translation>
     </message>
@@ -3366,32 +3368,32 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>Κατάλογος των πινακίδων χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="300"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
         <source>Gestion des éléments</source>
         <translation>Διαχείριση των στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="393"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="414"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>Εδώ μπορείτε να ορίσετε την προεπιλεγμένη εμφάνιση των διαφόρων κειμένων του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="576"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
         <source>Grille + Clavier</source>
         <translation>Δικτύωμα + Πληκτρολόγιο</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="582"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="603"/>
         <source>Grille : 1 - 30</source>
         <translation>Δικτύωμα: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="649"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
         <source>DiagramEditor xGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="616"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
         <source>DiagramEditor yGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων yGrid</translation>
     </message>
@@ -3411,96 +3413,101 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>Μέθοδος για την κλιμάκωση σε οθόνες με υψηλή πυκνότητα εικονοστοιχείων (hdpi). (Εφαρμογή στην επόμενη εκκίνηση του Qelectrotech)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="344"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <source>Répertoire de la collection company</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="365"/>
         <source>Langues</source>
         <translation>Γλώσσες</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="387"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
         <source>Textes</source>
         <translation>Κείμενα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="407"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="428"/>
         <source>Textes d&apos;éléments</source>
         <translation>Κείμενα στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="420"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="486"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="532"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="441"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="507"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="553"/>
         <source>Police :</source>
         <translation>Γραμματοσειρά:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="430"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="440"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="461"/>
         <source>Longueur :</source>
         <translation>Μήκος:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="450"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="479"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="471"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
         <source>Rotation :</source>
         <translation>Περιστροφή:</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="473"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="494"/>
         <source>Textes indépendants</source>
         <translation>Ανεξάρτητα κείμενα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="526"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="547"/>
         <source>Autres textes</source>
         <translation>Άλλα Κείμενα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="623"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>Το δικτύωμα πρέπει να είναι ενεργό για να δείτε τις αλλαγές.</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="672"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>Μετακίνηση πληκτρολογίου: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="722"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: αριστερά / δεξιά) xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="729"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="750"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: επάνω / κάτω) yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="752"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="773"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>Μετακίνηση πληκτρολογίου με το πλήκτρο ALT: 1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="758"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: αριστερά / δεξιά)  xGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>Επεξεργαστής διαγραμμάτων (πλήκτρο: επάνω / κάτω) yGrid</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="846"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="867"/>
         <source>Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="854"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
         <source>Max. parts in Element Editor List</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3545,148 +3552,153 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>Χωρίς στρογγυλοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="281"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="305"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Γενικές</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="299"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="323"/>
         <source>Système</source>
         <translation>Σύστημα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="303"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="327"/>
         <source>Arabe</source>
         <translation>Αραβικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="304"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="328"/>
         <source>Brézilien</source>
         <translation>Βραζιλιάνικα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="329"/>
         <source>Catalan</source>
         <translation>Καταλανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="306"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="330"/>
         <source>Tchèque</source>
         <translation>Τσέχικα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="307"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="331"/>
         <source>Allemand</source>
         <translation>Γερμανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="308"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="332"/>
         <source>Danois</source>
         <translation>Δανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="309"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="333"/>
         <source>Grec</source>
         <translation>Ελληνικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="310"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="334"/>
         <source>Anglais</source>
         <translation>Αγγλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="335"/>
         <source>Espagnol</source>
         <translation>Ισπανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="312"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="336"/>
         <source>Français</source>
         <translation>Γαλλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="313"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
         <source>Croate</source>
         <translation>Κροατικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="314"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="338"/>
         <source>Italien</source>
         <translation>Ιταλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="315"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="339"/>
         <source>Japonais</source>
         <translation>Ιαπωνικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="316"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="340"/>
         <source>Polonais</source>
         <translation>Πολωνικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="317"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="341"/>
         <source>Portugais</source>
         <translation>Πορτογαλικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="318"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="342"/>
         <source>Roumains</source>
         <translation>Ρουμανικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="319"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="343"/>
         <source>Russe</source>
         <translation>Ρώσικα</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="320"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="344"/>
         <source>Slovène</source>
         <translation>Σλοβενικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="345"/>
         <source>Pays-Bas</source>
         <translation>Ολλανδικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="322"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="346"/>
         <source>Norvege</source>
         <translation>Νορβηγικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="347"/>
         <source>Belgique-Flemish</source>
         <translation>Φλαμανδικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="324"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
         <source>Turc</source>
         <translation>Τουρκικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="325"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
         <source>Hongrois</source>
         <translation>Ουγγρικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="326"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
         <source>Mongol</source>
         <translation>Μογγολικά</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="351"/>
         <source>Ukrainien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="328"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="352"/>
         <source>Chinois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="448"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="429"/>
+        <source>Chemin de la collection company</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="486"/>
         <source>To high values might lead to crashes of the application.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5551,133 +5563,133 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="229"/>
+        <location filename="../sources/qetapp.cpp" line="232"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="427"/>
+        <location filename="../sources/qetapp.cpp" line="430"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>Πινακίδες QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="447"/>
+        <location filename="../sources/qetapp.cpp" line="450"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>Πινακίδες χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1954"/>
+        <location filename="../sources/qetapp.cpp" line="2022"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Τερματισμός</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1956"/>
+        <location filename="../sources/qetapp.cpp" line="2024"/>
         <source>&amp;Masquer</source>
         <translation>Από&amp;κρυψη</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1958"/>
+        <location filename="../sources/qetapp.cpp" line="2026"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Εμφάνιση</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1960"/>
+        <location filename="../sources/qetapp.cpp" line="2028"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Απόκρυψη όλων των επεξεργαστών διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1963"/>
+        <location filename="../sources/qetapp.cpp" line="2031"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>Εμ&amp;φάνιση όλων των επεξεργαστών διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1966"/>
+        <location filename="../sources/qetapp.cpp" line="2034"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>Από&amp;κρυψη όλων των επεξεργαστών στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1969"/>
+        <location filename="../sources/qetapp.cpp" line="2037"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>Προ&amp;βολή όλων των επεξεργαστών στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1972"/>
+        <location filename="../sources/qetapp.cpp" line="2040"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Α&amp;πόκρυψη όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1975"/>
+        <location filename="../sources/qetapp.cpp" line="2043"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>Ε&amp;μφάνιση όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1978"/>
+        <location filename="../sources/qetapp.cpp" line="2046"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Νέος επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1980"/>
+        <location filename="../sources/qetapp.cpp" line="2048"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Νέος επεξεργαστής στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1982"/>
+        <location filename="../sources/qetapp.cpp" line="2050"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Κλείσιμο του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1983"/>
+        <location filename="../sources/qetapp.cpp" line="2051"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Ελαχιστοποιεί το QElectroTech στο πλαίσιο συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1984"/>
+        <location filename="../sources/qetapp.cpp" line="2052"/>
         <source>Restaurer QElectroTech</source>
         <translation>Επαναφορά του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2096"/>
+        <location filename="../sources/qetapp.cpp" line="2164"/>
         <source>Éditeurs de schémas</source>
         <translation>Επεξεργαστές διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2106"/>
+        <location filename="../sources/qetapp.cpp" line="2174"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Επεξεργαστές στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2117"/>
+        <location filename="../sources/qetapp.cpp" line="2185"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Επεξεργαστές πινακίδων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2169"/>
+        <location filename="../sources/qetapp.cpp" line="2237"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Βρέθηκε το παρακάτω αρχείο επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτεί;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2172"/>
+        <location filename="../sources/qetapp.cpp" line="2240"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Βρέθηκαν τα παρακάτω αρχεία επαναφοράς,&lt;br&gt;Θέλεις να ανοιχτούν;&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2187"/>
+        <location filename="../sources/qetapp.cpp" line="2255"/>
         <source>Fichier de restauration</source>
         <translation>Αρχεία επαναφοράς</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2289"/>
+        <location filename="../sources/qetapp.cpp" line="2357"/>
         <source>Usage : </source>
         <translation>Χρήση: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2292"/>
+        <location filename="../sources/qetapp.cpp" line="2360"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5693,7 +5705,7 @@ Options disponibles :
   --license                     προβολή της άδειας χρήσης</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2291"/>
+        <location filename="../sources/qetapp.cpp" line="2359"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5702,106 +5714,106 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1705"/>
+        <location filename="../sources/qetapp.cpp" line="1769"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Ρύθμιση του QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2298"/>
+        <location filename="../sources/qetapp.cpp" line="2366"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιορίστε τον κατάλογο της συλλογής στοιχείων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2301"/>
+        <location filename="../sources/qetapp.cpp" line="2369"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιορίστε τον κατάλογο της συλλογής πινακίδων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2304"/>
+        <location filename="../sources/qetapp.cpp" line="2372"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=ΚΑΤΑΛΟΓΟΣ              Προσδιορίστε τον κατάλογο των ρυθμίσεων
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2306"/>
+        <location filename="../sources/qetapp.cpp" line="2374"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=ΚΑΤΑΛΟΓΟΣ                Προσδιορίστε τον κατάλογο των αρχείων γλώσσας</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="114"/>
+        <location filename="../sources/qetapp.cpp" line="117"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση... Αρχικοποίηση της προσωρινής μνήμης συλλογής στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="125"/>
+        <location filename="../sources/qetapp.cpp" line="128"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση ... Επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="130"/>
+        <location filename="../sources/qetapp.cpp" line="133"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση... Ανοίγουν τα αρχεία</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1220"/>
+        <location filename="../sources/qetapp.cpp" line="1284"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1222"/>
+        <location filename="../sources/qetapp.cpp" line="1286"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1224"/>
+        <location filename="../sources/qetapp.cpp" line="1288"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Διάγρα</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1226"/>
+        <location filename="../sources/qetapp.cpp" line="1290"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Ηλεκτρικ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1228"/>
+        <location filename="../sources/qetapp.cpp" line="1292"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1849"/>
+        <location filename="../sources/qetapp.cpp" line="1913"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1947"/>
+        <location filename="../sources/qetapp.cpp" line="2015"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Φόρτωση ... Εικονίδιο πλαισίου συστήματος</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1951"/>
+        <location filename="../sources/qetapp.cpp" line="2019"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2001"/>
+        <location filename="../sources/qetapp.cpp" line="2069"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -7589,13 +7601,13 @@ les conditions requises ne sont pas valides</source>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1203"/>
+        <location filename="../sources/qetproject.cpp" line="1206"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1356"/>
+        <location filename="../sources/qetproject.cpp" line="1359"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
@@ -7631,44 +7643,44 @@ les conditions requises ne sont pas valides</source>
         <translation>%1 [Αλλαγμένο]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1358"/>
+        <location filename="../sources/qetproject.cpp" line="1361"/>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1363"/>
+        <location filename="../sources/qetproject.cpp" line="1366"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1384"/>
+        <location filename="../sources/qetproject.cpp" line="1387"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1387"/>
+        <location filename="../sources/qetproject.cpp" line="1390"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1383"/>
+        <location filename="../sources/qetproject.cpp" line="1386"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
         <translation>Προειδοποίηση</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1458"/>
+        <location filename="../sources/qetproject.cpp" line="1461"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του έργου...&lt;/b&gt;&lt;br/&gt;Δημιουργία των σελίδων&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1500"/>
+        <location filename="../sources/qetproject.cpp" line="1503"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Άνοιγμα του τρέχοντος έργου ...&lt;/b&gt;&lt;br/&gt;Εφαρμογή των παραπομπών&lt;/p&gt;</translation>
     </message>
@@ -8302,7 +8314,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="632"/>
-        <location filename="../sources/qet.cpp" line="763"/>
+        <location filename="../sources/qet.cpp" line="767"/>
         <location filename="../sources/qetxml.cpp" line="270"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
@@ -8315,62 +8327,62 @@ Que désirez vous faire ?</source>
         <translation>Παρουσιάστηκε σφάλμα κατά την εγγραφή του αρχείου %1, το σφάλμα%2 βρέθηκε.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="727"/>
+        <location filename="../sources/qet.cpp" line="731"/>
         <source>Amener au premier plan</source>
         <translation>Μετακίνηση εμπρός</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="728"/>
+        <location filename="../sources/qet.cpp" line="732"/>
         <source>Rapprocher</source>
         <translation>Ανύψωση</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="729"/>
+        <location filename="../sources/qet.cpp" line="733"/>
         <source>Éloigner</source>
         <translation>Χαμήλωμα</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="730"/>
+        <location filename="../sources/qet.cpp" line="734"/>
         <source>Envoyer au fond</source>
         <translation>Μετακίνηση πίσω</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="732"/>
+        <location filename="../sources/qet.cpp" line="736"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>Φέρνει την επιλογή(ες) στο προσκήνιο</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="733"/>
+        <location filename="../sources/qet.cpp" line="737"/>
         <source>Rapproche la ou les sélections</source>
         <translation>Ανασυγκρότηση της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="734"/>
+        <location filename="../sources/qet.cpp" line="738"/>
         <source>Éloigne la ou les sélections</source>
         <translation>Απομάκρυνση της επιλογής(ών)</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="735"/>
+        <location filename="../sources/qet.cpp" line="739"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>Αποστολή των επιλογών στο παρασκήνιο</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="737"/>
+        <location filename="../sources/qet.cpp" line="741"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Πάνω</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="738"/>
+        <location filename="../sources/qet.cpp" line="742"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Κάτω</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="739"/>
+        <location filename="../sources/qet.cpp" line="743"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="740"/>
+        <location filename="../sources/qet.cpp" line="744"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Shift+Home</translation>
     </message>
@@ -8739,11 +8751,16 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="126"/>
+        <source>Collection Company</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="128"/>
         <source>Collection utilisateur</source>
         <translation>Συλλογή χρήστη</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="128"/>
+        <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="130"/>
         <source>Collection inconnue</source>
         <translation>Άγνωστη συλλογή</translation>
     </message>
@@ -9135,7 +9152,7 @@ Voulez-vous la remplacer ?</source>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
-        <location filename="../sources/ElementsCollection/elementslocation.cpp" line="388"/>
+        <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
@@ -9143,7 +9160,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
         <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2041"/>
+        <location filename="../sources/qetapp.cpp" line="2109"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>Αυτό είναι ένα σφάλμα στον κώδικα</translation>
@@ -13206,7 +13223,7 @@ Les autres champs ne sont pas utilisés.</source>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="355"/>
-        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="480"/>
+        <location filename="../sources/ui/titleblockpropertieswidget.cpp" line="482"/>
         <source>Créer un Folio Numérotation Auto</source>
         <translation>Δημιουργία Αυτόματης αρίθμησης Σελίδων</translation>
     </message>

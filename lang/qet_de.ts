@@ -5602,175 +5602,175 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>Benutzer-Schriftfelder</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1281"/>
+        <location filename="../sources/qetapp.cpp" line="1284"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1283"/>
+        <location filename="../sources/qetapp.cpp" line="1286"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1285"/>
+        <location filename="../sources/qetapp.cpp" line="1288"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Folie</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1287"/>
+        <location filename="../sources/qetapp.cpp" line="1290"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrik</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1289"/>
+        <location filename="../sources/qetapp.cpp" line="1292"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1766"/>
+        <location filename="../sources/qetapp.cpp" line="1769"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech Einstellungen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1910"/>
+        <location filename="../sources/qetapp.cpp" line="1913"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Lade...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2012"/>
+        <location filename="../sources/qetapp.cpp" line="2015"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Lade... Symbole des Systemsbenachrichtigungsfelds</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2016"/>
+        <location filename="../sources/qetapp.cpp" line="2019"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2019"/>
+        <location filename="../sources/qetapp.cpp" line="2022"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Beenden</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2021"/>
+        <location filename="../sources/qetapp.cpp" line="2024"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Verstecken</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2023"/>
+        <location filename="../sources/qetapp.cpp" line="2026"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Zeigen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2025"/>
+        <location filename="../sources/qetapp.cpp" line="2028"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Verstecke alle Schaltplaneditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2028"/>
+        <location filename="../sources/qetapp.cpp" line="2031"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Zeige alle Schaltplaneditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2031"/>
+        <location filename="../sources/qetapp.cpp" line="2034"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Verstecke alle Bauteileditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2034"/>
+        <location filename="../sources/qetapp.cpp" line="2037"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Zeige alle Bauteileditoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2037"/>
+        <location filename="../sources/qetapp.cpp" line="2040"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Verstecke alle Schriftfeld-Editoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2040"/>
+        <location filename="../sources/qetapp.cpp" line="2043"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Zeige alle Schriftfeld-Editoren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2043"/>
+        <location filename="../sources/qetapp.cpp" line="2046"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Neuer Schaltplaneditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2045"/>
+        <location filename="../sources/qetapp.cpp" line="2048"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Neuer Bauteileditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2047"/>
+        <location filename="../sources/qetapp.cpp" line="2050"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Anwendung QElectroTech schließen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2048"/>
+        <location filename="../sources/qetapp.cpp" line="2051"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>QElectroTech in Systembenachrichtigungsfeld minimieren</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2049"/>
+        <location filename="../sources/qetapp.cpp" line="2052"/>
         <source>Restaurer QElectroTech</source>
         <translation>QElectroTech wiederherstellen</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2066"/>
+        <location filename="../sources/qetapp.cpp" line="2069"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2161"/>
+        <location filename="../sources/qetapp.cpp" line="2164"/>
         <source>Éditeurs de schémas</source>
         <translation>Schaltplaneditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2171"/>
+        <location filename="../sources/qetapp.cpp" line="2174"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Bauteileditor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2182"/>
+        <location filename="../sources/qetapp.cpp" line="2185"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Schriftfeld-Editor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2234"/>
+        <location filename="../sources/qetapp.cpp" line="2237"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Die folgende Sicherungsdatei wurde gefunden,&lt;br&gt;Möchten Sie sie öffnen?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2237"/>
+        <location filename="../sources/qetapp.cpp" line="2240"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Die folgenden Sicherungsdateien wurden gefunden,&lt;br&gt;Möchten Sie sie öffnen?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2252"/>
+        <location filename="../sources/qetapp.cpp" line="2255"/>
         <source>Fichier de restauration</source>
         <translation>Sicherungsdatei</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2354"/>
+        <location filename="../sources/qetapp.cpp" line="2357"/>
         <source>Usage : </source>
         <translation>Verwendung: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2356"/>
+        <location filename="../sources/qetapp.cpp" line="2359"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5779,7 +5779,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2357"/>
+        <location filename="../sources/qetapp.cpp" line="2360"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5796,28 +5796,28 @@ Verfügbare Optionen:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2363"/>
+        <location filename="../sources/qetapp.cpp" line="2366"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Setzt Pfad zur Bauteilsammlung
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2366"/>
+        <location filename="../sources/qetapp.cpp" line="2369"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Pfad zur Schriftfeld-Sammlung setzen
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2369"/>
+        <location filename="../sources/qetapp.cpp" line="2372"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Setzt Pfad zur Konfiguration
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2371"/>
+        <location filename="../sources/qetapp.cpp" line="2374"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Setzt Pfad zu den Sprachdateien
@@ -9159,16 +9159,16 @@ Möchten Sie sie ersetzen?</translation>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2106"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
+        <location filename="../sources/qetapp.cpp" line="2109"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>dies ist ein Programmfehler</translation>
@@ -9292,51 +9292,49 @@ Möchten Sie sie ersetzen?</translation>
         <translation type="unfinished">Klemme %1 sortieren</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="495"/>
-        <location filename="../sources/properties/elementdata.cpp" line="505"/>
+        <location filename="../sources/properties/elementdata.cpp" line="491"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
         <translation>Generisch</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="497"/>
+        <location filename="../sources/properties/elementdata.cpp" line="493"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
         <translation>Sicherungsklemme</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="499"/>
+        <location filename="../sources/properties/elementdata.cpp" line="495"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>Trennklemme</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="501"/>
+        <location filename="../sources/properties/elementdata.cpp" line="497"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>Diode</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="503"/>
+        <location filename="../sources/properties/elementdata.cpp" line="499"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
         <translation>Erde</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="540"/>
-        <location filename="../sources/properties/elementdata.cpp" line="544"/>
+        <location filename="../sources/properties/elementdata.cpp" line="534"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
         <translation>Generisch</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="541"/>
+        <location filename="../sources/properties/elementdata.cpp" line="535"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>Aussenleiter</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="542"/>
+        <location filename="../sources/properties/elementdata.cpp" line="536"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
         <translation>Neutralleiter</translation>
@@ -9422,12 +9420,12 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1008"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1006"/>
         <source>une shape</source>
         <translation>ein Shape</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1004"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1002"/>
         <source>une ligne</source>
         <translation>einer Linie</translation>
     </message>
@@ -9457,17 +9455,17 @@ Bitte fügen Sie eine neue Tabelle hinzu oder passen Sie die vorhandene Tabelle 
         <translation>%1 ändern</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1005"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1003"/>
         <source>un rectangle</source>
         <translation>eines Rechtecks</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1006"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1004"/>
         <source>une éllipse</source>
         <translation>einer Ellipse</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1007"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1005"/>
         <source>une polyligne</source>
         <translation>eine Polylinie</translation>
     </message>
