@@ -627,7 +627,7 @@ QString QETApp::companyElementsDir()
             }
         }
 
-        m_company_element_dir = configDir() + "elements/";
+        m_company_element_dir = configDir() + "elements-company/";
         return m_company_element_dir;
     }
 }
