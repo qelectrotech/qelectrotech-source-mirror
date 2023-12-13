@@ -8753,7 +8753,7 @@ What do you wish to do ?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="126"/>
         <source>Collection Company</source>
-        <translation>Collection Company</translation>
+        <translation>Company Collection</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="128"/>
