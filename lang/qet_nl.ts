@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<TS version="2.1" language="nl_NL">
 <context>
     <name>AboutQETDialog</name>
     <message>
@@ -3324,17 +3324,17 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
         <source>Répertoire de la collection commune</source>
-        <translation>Map van de algemene collectie</translation>
+        <translation>Algemene collectie map</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation>Map van de gebruikerscollectie</translation>
+        <translation>Gebruiker collectie map</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation>Map van de gebruikerstitelblokken</translation>
+        <translation>Gebruiker titelblokken map</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
@@ -3401,7 +3401,7 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>Répertoire de la collection company</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedrijf collectie map</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="365"/>
@@ -3490,12 +3490,12 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="867"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
         <source>Max. parts in Element Editor List</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. onderdelen in Element Editor Lijst</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
@@ -3686,17 +3686,17 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="352"/>
         <source>Chinois</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinees</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="429"/>
         <source>Chemin de la collection company</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedrijf collectie map</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="486"/>
         <source>To high values might lead to crashes of the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Te hoge waarden kunnen leiden tot crashes van de applicatie.</translation>
     </message>
 </context>
 <context>
@@ -8759,7 +8759,7 @@ Document toch openen?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="126"/>
         <source>Collection Company</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedrijf collectie</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="128"/>
