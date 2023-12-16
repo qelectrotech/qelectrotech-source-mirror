@@ -2638,12 +2638,24 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="239"/>
+        <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanel.cpp" line="240"/>
+        <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanel.cpp" line="247"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>双击折叠或展开您的个人图框集合</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="240"/>
+        <location filename="../sources/elementspanel.cpp" line="248"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>这是您的个人图框集合——用它来创建、存储和编辑您自己的图框。</translation>
@@ -3292,12 +3304,12 @@ that you create. Text and number inputs are
         <translation>窗体</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="443"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="467"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>用户集合路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="415"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="439"/>
         <source>Chemin de la collection commune</source>
         <translation>通用集合路径</translation>
     </message>
@@ -3306,6 +3318,7 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="277"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="319"/>
         <source>Par defaut</source>
         <translation>默认</translation>
     </message>
@@ -3314,11 +3327,12 @@ that you create. Text and number inputs are
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="282"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="303"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="324"/>
         <source>Parcourir...</source>
         <translation>浏览...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>（重新加载元件集合以应用更改）</translation>
     </message>
@@ -3334,7 +3348,7 @@ that you create. Text and number inputs are
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="457"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="495"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>用户图框路径</translation>
     </message>
@@ -3354,59 +3368,59 @@ that you create. Text and number inputs are
         <translation>通用集合目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>用户集合目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>用户图框目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="321"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="342"/>
         <source>Gestion des éléments</source>
         <translation>元件管理</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="351"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>突出显示面板中新集成的元素</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="337"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>每个元素都包含有关其作者、许可证或您认为在自由领域有用的任何其他信息的信息。
 您可以在此处为要创建的元素指定此字段的默认值：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="374"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>适用于下一次启动QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="414"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="435"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>在这里您可以定义 QElectroTech 不同文本的默认外观</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="597"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>Grille + Clavier</source>
         <translation>网格+键盘</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="603"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="624"/>
         <source>Grille : 1 - 30</source>
         <translation>网格 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="670"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="691"/>
         <source>DiagramEditor xGrid</source>
         <translation>原理图编辑器x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="637"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="658"/>
         <source>DiagramEditor yGrid</source>
         <translation>原理图编辑器y网格</translation>
     </message>
@@ -3431,96 +3445,101 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="365"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
+        <source>Répertoire des cartouches company</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="386"/>
         <source>Langues</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="408"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
         <source>Textes</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="428"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
         <source>Textes d&apos;éléments</source>
         <translation>文本元素</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="441"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="507"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="553"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="574"/>
         <source>Police :</source>
         <translation>字体 ：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="514"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="461"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="482"/>
         <source>Longueur :</source>
         <translation>长度 ：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="471"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="500"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
         <source>Rotation :</source>
         <translation>旋转 ：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="494"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
         <source>Textes indépendants</source>
         <translation>独立文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="547"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="568"/>
         <source>Autres textes</source>
         <translation>其他文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="644"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="665"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>网格必须处于活动状态才能看到更改。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="693"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="714"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>键盘移动：1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="743"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="764"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>原理图编辑器（键：左/右）x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="750"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="771"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>原理图编辑器（键：上/下）y网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="773"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="794"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>使用 ALT 键的键盘移动：1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="779"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="800"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>原理图编辑器（键：左/右）x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="808"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="829"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>原理图编辑器（键：上/下）y网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="867"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
         <source>Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="875"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="896"/>
         <source>Max. parts in Element Editor List</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3550,153 +3569,158 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>没有四舍五入</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="305"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="329"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="323"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="347"/>
         <source>Système</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="327"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="351"/>
         <source>Arabe</source>
         <translation>阿拉伯语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="328"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="352"/>
         <source>Brézilien</source>
         <translation>巴西语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="329"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="353"/>
         <source>Catalan</source>
         <translation>加泰罗尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="330"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="354"/>
         <source>Tchèque</source>
         <translation>捷克语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="331"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
         <source>Allemand</source>
         <translation>德语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="332"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="356"/>
         <source>Danois</source>
         <translation>丹麦语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="333"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
         <source>Grec</source>
         <translation>希腊语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="334"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Anglais</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="335"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
         <source>Espagnol</source>
         <translation>西班牙语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="336"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
         <source>Français</source>
         <translation>法语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
         <source>Croate</source>
         <translation>克罗地亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="338"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
         <source>Italien</source>
         <translation>意大利语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="339"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
         <source>Japonais</source>
         <translation>日语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="340"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
         <source>Polonais</source>
         <translation>波兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="341"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
         <source>Portugais</source>
         <translation>葡萄牙语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="342"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
         <source>Roumains</source>
         <translation>罗马尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="343"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
         <source>Russe</source>
         <translation>俄语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="344"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
         <source>Slovène</source>
         <translation>斯洛文尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="345"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Pays-Bas</source>
         <translation>荷兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="346"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Norvege</source>
         <translation>挪威语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="347"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
         <source>Belgique-Flemish</source>
         <translation>比利时-佛兰德语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="348"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
         <source>Turc</source>
         <translation>土耳其语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
         <source>Hongrois</source>
         <translation>匈牙利语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
         <source>Mongol</source>
         <translation>蒙古语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="351"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
         <source>Ukrainien</source>
         <translation>乌克兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="352"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
         <source>Chinois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="429"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="453"/>
         <source>Chemin de la collection company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="486"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="481"/>
+        <source>Chemin des cartouches company</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="524"/>
         <source>To high values might lead to crashes of the application.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5562,211 +5586,217 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="117"/>
+        <location filename="../sources/qetapp.cpp" line="121"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>加载中...正在初始化元件集合缓存</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="128"/>
+        <location filename="../sources/qetapp.cpp" line="132"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>加载中...原理图编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="133"/>
+        <location filename="../sources/qetapp.cpp" line="137"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>加载中...正在打开文件</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="232"/>
+        <location filename="../sources/qetapp.cpp" line="238"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="430"/>
+        <location filename="../sources/qetapp.cpp" line="436"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>QET图框</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="450"/>
+        <location filename="../sources/qetapp.cpp" line="457"/>
+        <source>Cartouches company</source>
+        <comment>title of the company&apos;s 					title block templates collection</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="477"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>用户图框</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1284"/>
+        <location filename="../sources/qetapp.cpp" line="1351"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1286"/>
+        <location filename="../sources/qetapp.cpp" line="1353"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1288"/>
+        <location filename="../sources/qetapp.cpp" line="1355"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1290"/>
+        <location filename="../sources/qetapp.cpp" line="1357"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Electrique</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1292"/>
+        <location filename="../sources/qetapp.cpp" line="1359"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1769"/>
+        <location filename="../sources/qetapp.cpp" line="1836"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>配置QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1913"/>
+        <location filename="../sources/qetapp.cpp" line="1980"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>加载中...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2015"/>
+        <location filename="../sources/qetapp.cpp" line="2086"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>加载中...系统托盘图标</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2019"/>
+        <location filename="../sources/qetapp.cpp" line="2090"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2022"/>
+        <location filename="../sources/qetapp.cpp" line="2093"/>
         <source>&amp;Quitter</source>
         <translation>退出（&amp;Q）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2024"/>
+        <location filename="../sources/qetapp.cpp" line="2095"/>
         <source>&amp;Masquer</source>
         <translation>隐藏（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2026"/>
+        <location filename="../sources/qetapp.cpp" line="2097"/>
         <source>&amp;Restaurer</source>
         <translation>恢复（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2028"/>
+        <location filename="../sources/qetapp.cpp" line="2099"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>隐藏所有原理图编辑器（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2031"/>
+        <location filename="../sources/qetapp.cpp" line="2102"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>恢复所有原理图编辑器（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2034"/>
+        <location filename="../sources/qetapp.cpp" line="2105"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>隐藏所有元件编辑器（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2037"/>
+        <location filename="../sources/qetapp.cpp" line="2108"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>恢复所有元件编辑器（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2040"/>
+        <location filename="../sources/qetapp.cpp" line="2111"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>隐藏所有图框编辑器（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2043"/>
+        <location filename="../sources/qetapp.cpp" line="2114"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>恢复所有图框编辑器（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2046"/>
+        <location filename="../sources/qetapp.cpp" line="2117"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>新建原理图编辑器（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2048"/>
+        <location filename="../sources/qetapp.cpp" line="2119"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>新建元件编辑器（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2050"/>
+        <location filename="../sources/qetapp.cpp" line="2121"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>关闭 QElectroTech 应用程序</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2051"/>
+        <location filename="../sources/qetapp.cpp" line="2122"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>减少系统托盘中的 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2052"/>
+        <location filename="../sources/qetapp.cpp" line="2123"/>
         <source>Restaurer QElectroTech</source>
         <translation>恢复 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2069"/>
+        <location filename="../sources/qetapp.cpp" line="2140"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2164"/>
+        <location filename="../sources/qetapp.cpp" line="2235"/>
         <source>Éditeurs de schémas</source>
         <translation>原理图编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2174"/>
+        <location filename="../sources/qetapp.cpp" line="2245"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>元件编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2185"/>
+        <location filename="../sources/qetapp.cpp" line="2256"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>图框编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2237"/>
+        <location filename="../sources/qetapp.cpp" line="2308"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;找到以下还原文件，&lt;br&gt;要打开它吗？&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2240"/>
+        <location filename="../sources/qetapp.cpp" line="2311"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;已找到以下恢复文件，&lt;br&gt;要打开它们吗？&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2255"/>
+        <location filename="../sources/qetapp.cpp" line="2326"/>
         <source>Fichier de restauration</source>
         <translation>恢复文件</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2357"/>
+        <location filename="../sources/qetapp.cpp" line="2428"/>
         <source>Usage : </source>
         <translation>用量： </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2359"/>
+        <location filename="../sources/qetapp.cpp" line="2430"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5775,7 +5805,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2360"/>
+        <location filename="../sources/qetapp.cpp" line="2431"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5792,28 +5822,28 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2366"/>
+        <location filename="../sources/qetapp.cpp" line="2437"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR 设置元件集合文件夹
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2369"/>
+        <location filename="../sources/qetapp.cpp" line="2440"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR 设置图框类型集合文件夹
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2372"/>
+        <location filename="../sources/qetapp.cpp" line="2443"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR 设置配置文件夹
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2374"/>
+        <location filename="../sources/qetapp.cpp" line="2445"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR 定义包含语言文件的文件夹
@@ -7166,11 +7196,6 @@ Options disponibles :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="489"/>
-        <source>Trop de primitives, liste non générée: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="734"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
@@ -7294,45 +7319,9 @@ Options disponibles :
         <translation>无法保存元件</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
-        <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation>在原理图中添加不可编辑的文本元件</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1059"/>
-        <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation>在原理图中添加可编辑的文本元件</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1506"/>
-        <source>Avertissement</source>
-        <translation>警告</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1506"/>
-        <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
-veuillez patienter durant l&apos;import...</source>
-        <translation>导入大型 dxf 可能需要时间
-正在导入，请稍候...</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="779"/>
-        <source> %n avertissement(s)</source>
-        <comment>warnings</comment>
-        <translation>
-            <numerusform> %n 警告</numerusform>
-        </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="839"/>
-        <source>Impossible d&apos;ouvrir le fichier</source>
-        <comment>message box title</comment>
-        <translation>无法打开文件</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="841"/>
-        <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation>您尝试打开的文件 %1 似乎不存在或不再存在。</translation>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="489"/>
+        <source>Trop de primitives, liste non générée: %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="948"/>
@@ -7380,6 +7369,47 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1058"/>
+        <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
+        <translation>在原理图中添加不可编辑的文本元件</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1059"/>
+        <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
+        <translation>在原理图中添加可编辑的文本元件</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1506"/>
+        <source>Avertissement</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1506"/>
+        <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+        <translation>导入大型 dxf 可能需要时间
+正在导入，请稍候...</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="779"/>
+        <source> %n avertissement(s)</source>
+        <comment>warnings</comment>
+        <translation>
+            <numerusform> %n 警告</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="839"/>
+        <source>Impossible d&apos;ouvrir le fichier</source>
+        <comment>message box title</comment>
+        <translation>无法打开文件</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="841"/>
+        <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
+        <translation>您尝试打开的文件 %1 似乎不存在或不再存在。</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1371"/>
@@ -9144,16 +9174,16 @@ Voulez-vous la remplacer ?</source>
         <translation>粘贴</translation>
     </message>
     <message>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
+        <location filename="../sources/qetapp.cpp" line="2180"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2109"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>这是代码中的错误</translation>
@@ -9277,49 +9307,51 @@ Voulez-vous la remplacer ?</source>
         <translation>对端子排 %1 进行排序</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="491"/>
+        <location filename="../sources/properties/elementdata.cpp" line="495"/>
+        <location filename="../sources/properties/elementdata.cpp" line="505"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
         <translation>通用的</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="493"/>
+        <location filename="../sources/properties/elementdata.cpp" line="497"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
         <translation>保险丝保护的</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="495"/>
+        <location filename="../sources/properties/elementdata.cpp" line="499"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>可分段</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="497"/>
+        <location filename="../sources/properties/elementdata.cpp" line="501"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>二极管</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="499"/>
+        <location filename="../sources/properties/elementdata.cpp" line="503"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
         <translation>接地</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="534"/>
+        <location filename="../sources/properties/elementdata.cpp" line="540"/>
+        <location filename="../sources/properties/elementdata.cpp" line="544"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
         <translation>通用的</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="535"/>
+        <location filename="../sources/properties/elementdata.cpp" line="541"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>相线</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="536"/>
+        <location filename="../sources/properties/elementdata.cpp" line="542"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
         <translation>中线性</translation>
@@ -9405,12 +9437,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1006"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1008"/>
         <source>une shape</source>
         <translation>图形</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1002"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1004"/>
         <source>une ligne</source>
         <translation>直线</translation>
     </message>
@@ -9440,17 +9472,17 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
         <translation>修改 %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1003"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1005"/>
         <source>un rectangle</source>
         <translation>矩形</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1004"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1006"/>
         <source>une éllipse</source>
         <translation>椭圆形</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1005"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1007"/>
         <source>une polyligne</source>
         <translation>折线</translation>
     </message>

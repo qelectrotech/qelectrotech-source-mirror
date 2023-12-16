@@ -264,14 +264,14 @@
            </widget>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="label_17">
             <property name="text">
-             <string>Répertoire de la collection utilisateur</string>
+             <string>Répertoire des cartouches company</string>
             </property>
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QComboBox" name="m_custom_elmt_path_cb">
+           <widget class="QComboBox" name="m_company_tbt_path_cb">
             <item>
              <property name="text">
               <string>Par defaut</string>
@@ -285,13 +285,34 @@
            </widget>
           </item>
           <item row="4" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Répertoire de la collection utilisateur</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="m_custom_elmt_path_cb">
+            <item>
+             <property name="text">
+              <string>Par defaut</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Parcourir...</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="5" column="0">
            <widget class="QLabel" name="label_10">
             <property name="text">
              <string>Répertoire des cartouches utilisateur</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="5" column="1">
            <widget class="QComboBox" name="m_custom_tbt_path_cb">
             <item>
              <property name="text">
@@ -305,7 +326,7 @@
             </item>
            </widget>
           </item>
-          <item row="5" column="1">
+          <item row="6" column="1">
            <widget class="QLabel" name="label_9">
             <property name="text">
              <string>(Recharger les collections d'éléments pour appliquer les changements)</string>

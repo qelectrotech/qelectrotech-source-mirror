@@ -64,6 +64,7 @@ QString QETApp::config_dir = QString();
 
 QString QETApp::lang_dir = QString();
 TitleBlockTemplatesFilesCollection *QETApp::m_common_tbt_collection;
+TitleBlockTemplatesFilesCollection *QETApp::m_company_tbt_collection;
 TitleBlockTemplatesFilesCollection *QETApp::m_custom_tbt_collection;
 ElementsCollectionCache *QETApp::collections_cache_ = nullptr;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
@@ -81,7 +82,10 @@ bool QETApp::m_company_element_dir_is_set = false;
 QString QETApp::m_custom_element_dir = QString();
 bool QETApp::m_custom_element_dir_is_set = false;
 
+QString QETApp::m_user_company_tbt_dir = QString();
+
 QString QETApp::m_user_custom_tbt_dir = QString();
+
 QETApp *QETApp::m_qetapp = nullptr;
 
 bool lang_is_set = false;
@@ -158,6 +162,8 @@ QETApp::~QETApp()
 
 	if (m_custom_tbt_collection)
 		delete m_custom_tbt_collection;
+	if (m_company_tbt_collection)
+		delete m_company_tbt_collection;
 	if (m_common_tbt_collection)
 		delete m_common_tbt_collection;
 
@@ -437,6 +443,27 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 }
 
 /**
+	@brief QETApp::companyTitleBlockTemplatesCollection
+	@return the company's title block templates collection,
+	i.e. the one managed by the admin
+*/
+TitleBlockTemplatesFilesCollection *QETApp::companyTitleBlockTemplatesCollection()
+{
+	if (!m_company_tbt_collection) {
+		m_company_tbt_collection =
+				new TitleBlockTemplatesFilesCollection(
+					QETApp::companyTitleBlockTemplatesDir());
+		m_company_tbt_collection -> setTitle(
+					tr("Cartouches company",
+					   "title of the company's \
+					title block templates collection"));
+		m_company_tbt_collection -> setProtocol(QETAPP_COMPANY_TBT_PROTOCOL);
+		m_company_tbt_collection -> setCollection(QET::QetCollection::Company);
+	}
+	return(m_company_tbt_collection);
+}
+
+/**
 	@brief QETApp::customTitleBlockTemplatesCollection
 	@return the custom title block templates collection,
 	i.e. the one managed by the end user
@@ -466,6 +493,7 @@ QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesColle
 	QList<TitleBlockTemplatesCollection *> collections_list;
 
 	collections_list << commonTitleBlockTemplatesCollection();
+	collections_list << companyTitleBlockTemplatesCollection();
 	collections_list << customTitleBlockTemplatesCollection();
 
 	foreach(QETProject *opened_project, registered_projects_) {
@@ -485,6 +513,8 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(
 		const QString &protocol) {
 	if (protocol == QETAPP_COMMON_TBT_PROTOCOL) {
 		return(m_common_tbt_collection);
+	} else if (protocol == QETAPP_COMPANY_TBT_PROTOCOL) {
+		return(m_company_tbt_collection);
 	} else if (protocol == QETAPP_CUSTOM_TBT_PROTOCOL) {
 		return(m_custom_tbt_collection);
 	} else {
@@ -685,6 +715,8 @@ void QETApp::resetCollectionsPath()
 	m_custom_element_dir.clear();
 	m_custom_element_dir_is_set = false;
 
+	m_user_company_tbt_dir.clear();
+
 	m_user_custom_tbt_dir.clear();
 }
 
@@ -716,6 +748,39 @@ QString QETApp::commonTitleBlockTemplatesDir()
 			   + "/" + QUOTE(QET_COMMON_TBT_PATH));
 	#endif
 #endif
+}
+
+/**
+	@brief QETApp::companyTitleBlockTemplatesDir
+	@return the path of the directory containing the company title block
+	templates collection.
+*/
+QString QETApp::companyTitleBlockTemplatesDir()
+{
+		if (m_user_company_tbt_dir.isEmpty())
+	{
+			QSettings settings;
+			QString path = settings.value(
+						"elements-collections/company-tbt-path",
+						"default").toString();
+			if (path != "default" && !path.isEmpty())
+			{
+				QDir dir(path);
+				if (dir.exists())
+				{
+					m_user_company_tbt_dir = path;
+					return m_user_company_tbt_dir;
+				}
+			}
+		else {
+			m_user_company_tbt_dir = "default";
+		}
+	}
+	else if (m_user_company_tbt_dir != "default") {
+		return m_user_company_tbt_dir;
+	}
+
+	return(configDir() + "titleblocks-company/");
 }
 
 /**
@@ -813,14 +878,16 @@ QString QETApp::realPath(const QString &sym_path) {
 	QString directory;
 	if (sym_path.startsWith("common://")) {
 		directory = commonElementsDir();
-    } else if (sym_path.startsWith("company://")) {
-        directory = companyElementsDir();
-    } else if (sym_path.startsWith("company://")) {
-        directory = companyElementsDir();
-    } else if (sym_path.startsWith("custom://")) {
-        directory = customElementsDir();
-    } else if (sym_path.startsWith(QETAPP_COMMON_TBT_PROTOCOL "://")) {
+	} else if (sym_path.startsWith("company://")) {
+		directory = companyElementsDir();
+	} else if (sym_path.startsWith("company://")) {
+		directory = companyElementsDir();
+	} else if (sym_path.startsWith("custom://")) {
+		directory = customElementsDir();
+	} else if (sym_path.startsWith(QETAPP_COMMON_TBT_PROTOCOL "://")) {
 		directory = commonTitleBlockTemplatesDir();
+	} else if (sym_path.startsWith(QETAPP_COMPANY_TBT_PROTOCOL "://")) {
+		directory = companyTitleBlockTemplatesDir();
 	} else if (sym_path.startsWith(QETAPP_CUSTOM_TBT_PROTOCOL "://")) {
 		directory = customTitleBlockTemplatesDir();
 	} else return(QString());
@@ -1985,9 +2052,13 @@ void QETApp::initConfiguration()
     if (!company_elements_dir.exists())
         company_elements_dir.mkpath(QETApp::companyElementsDir());
 
+    QDir company_tbt_dir(QETApp::companyTitleBlockTemplatesDir());
+    if (!company_tbt_dir.exists())
+       company_tbt_dir.mkpath(QETApp::companyTitleBlockTemplatesDir());
+
     QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
-	if (!custom_tbt_dir.exists())
-		custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
+    if (!custom_tbt_dir.exists())
+	custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
 
 	/* recent files
 	 * note:

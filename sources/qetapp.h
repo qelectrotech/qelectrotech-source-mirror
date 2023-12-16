@@ -33,6 +33,7 @@ class QAction;
 class QMainWindow;
 
 #define QETAPP_COMMON_TBT_PROTOCOL "commontbt"
+#define QETAPP_COMPANY_TBT_PROTOCOL "companytbt"
 #define QETAPP_CUSTOM_TBT_PROTOCOL "customtbt"
 
 class AboutQET;
@@ -75,6 +76,7 @@ class QETApp : public QObject
 		static ElementsCollectionCache *collectionCache();
 		
 		static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
+		static TitleBlockTemplatesFilesCollection *companyTitleBlockTemplatesCollection();
 		static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();
 		static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
 		static TitleBlockTemplatesCollection *titleBlockTemplatesCollection(const QString &);
@@ -87,6 +89,7 @@ class QETApp : public QObject
         static QString customElementsDirN();
 		static void resetCollectionsPath();
 		static QString commonTitleBlockTemplatesDir();
+		static QString companyTitleBlockTemplatesDir();
 		static QString customTitleBlockTemplatesDir();
 		static bool registerProject(QETProject *);
 		static bool unregisterProject(QETProject *);
@@ -204,6 +207,7 @@ class QETApp : public QObject
 		QPalette initial_palette_;   ///< System color palette
 		
 		static TitleBlockTemplatesFilesCollection *m_common_tbt_collection;
+		static TitleBlockTemplatesFilesCollection *m_company_tbt_collection;
 		static TitleBlockTemplatesFilesCollection *m_custom_tbt_collection;
 		static ElementsCollectionCache *collections_cache_;
 		static QMap<uint, QETProject *> registered_projects_;
@@ -221,6 +225,7 @@ class QETApp : public QObject
 		static QString m_custom_element_dir;
 		static bool m_custom_element_dir_is_set;
 
+		static QString m_user_company_tbt_dir;
 		static QString m_user_custom_tbt_dir;
 
 	
