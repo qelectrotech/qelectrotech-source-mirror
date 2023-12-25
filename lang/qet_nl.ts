@@ -2985,7 +2985,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
         <source>Dessiner les bornes</source>
-        <translation>Teken de klemmen</translation>
+        <translation>Teken de aansluitklemmen</translation>
     </message>
 </context>
 <context>
@@ -3323,7 +3323,7 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="495"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation>Pad naar gebruikerstitelblokken</translation>
+        <translation>Pad naar eigen titelblokken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
@@ -3338,17 +3338,17 @@ Teksten en nummers zijn ook beschikbaar.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
         <source>Répertoire de la collection commune</source>
-        <translation>Algemene collectie map</translation>
+        <translation>Algemene elementencollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation>Gebruiker collectie map</translation>
+        <translation>Eigen elementencollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation>Gebruiker titelblokken map</translation>
+        <translation>Eigen titelblokkencollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="342"/>
@@ -3415,12 +3415,12 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>Répertoire de la collection company</source>
-        <translation>Bedrijf collectie map</translation>
+        <translation>Bedrijfselementencollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
         <source>Répertoire des cartouches company</source>
-        <translation>Bedrijf titelblokken map</translation>
+        <translation>Bedrijfstitelblokkencollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="386"/>
@@ -3710,17 +3710,17 @@ Hieronder kan de standaardtekst voor nieuwe elementen worden opgegeven:</transla
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="453"/>
         <source>Chemin de la collection company</source>
-        <translation>Bedrijf collectie map</translation>
+        <translation>Map bedrijfscollectie</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="481"/>
         <source>Chemin des cartouches company</source>
-        <translation>Map met bedrijfsstuklijsten</translation>
+        <translation>Map bedrijfstitelblokken</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="524"/>
         <source>To high values might lead to crashes of the application.</source>
-        <translation>Te hoge waarden kunnen leiden tot crashes van de applicatie.</translation>
+        <translation>Te hoge waarden kunnen leiden tot vastlopen van de applicatie.</translation>
     </message>
 </context>
 <context>
@@ -8301,8 +8301,8 @@ Document toch openen?</translation>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n klemmenoverzicht</numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n aansluitklemmenoverzicht</numerusform>
+            <numerusform>%n aansluitklemmenoverzichten</numerusform>
         </translation>
     </message>
     <message>
@@ -12635,12 +12635,12 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="165"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
-        <translation>Oriëntatie van een klem wijzigen</translation>
+        <translation>Oriëntatie van een aansluitklem wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="143"/>
         <source>Déplacer une borne</source>
-        <translation>Klem verplaatsen</translation>
+        <translation>Aansluitklem verplaatsen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="122"/>
@@ -12650,27 +12650,27 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
         <source>Bornier intérieur</source>
-        <translation>Interne klem</translation>
+        <translation>Interne aansluitklem</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
         <source>Bornier extérieur</source>
-        <translation>Externe klem</translation>
+        <translation>Externe aansluitklem</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
         <source>Modifier le nom du terminal</source>
-        <translation>Naam van de klem wijzigen</translation>
+        <translation>Naam van de aansluitklem wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="206"/>
         <source>Modifier le type d&apos;une borne</source>
-        <translation>Klemtype wijzigen</translation>
+        <translation>Type aansluitklem wijzigen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
         <source>Form</source>
-        <translation>Klem bewerken</translation>
+        <translation>Aansluitklem bewerken</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="20"/>
@@ -12847,7 +12847,7 @@ De andere velden hebben nu geen betekenis.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="219"/>
         <source>Position automatique</source>
-        <translation>Automatisch plaatsen</translation>
+        <translation>Automatisch indelen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstripeditor.ui" line="77"/>
