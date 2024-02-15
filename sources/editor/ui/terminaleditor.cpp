@@ -60,7 +60,7 @@ void TerminalEditor::updateForm()
 	ui->m_x_dsb->setValue(m_part->property("x").toReal());
 	ui->m_y_dsb->setValue(m_part->property("y").toReal());
 	ui->m_orientation_cb->setCurrentIndex(ui->m_orientation_cb->findData(m_part->property("orientation")));
-	ui->m_name_le->setText(m_part->name());
+	ui->m_name_le->setText(m_part->terminalName());
 	ui->m_type_cb->setCurrentIndex(ui->m_orientation_cb->findData(m_part->terminalType()));
 
 	activeConnections(true);
@@ -181,9 +181,9 @@ void TerminalEditor::nameEdited()
 	m_locked = true;
 	QString name_(ui->m_name_le->text());
 
-	if (m_part->name() != name_)
+	if (m_part->terminalName() != name_)
 	{
-		auto undo = new QPropertyUndoCommand(m_part, "name", m_part->property("name"), name_);
+		auto undo = new QPropertyUndoCommand(m_part, "terminal_name", m_part->property("terminal_name"), name_);
 		undo->setText(tr("Modifier le nom du terminal"));
 		undoStack().push(undo);
 	}

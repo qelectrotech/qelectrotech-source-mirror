@@ -179,10 +179,10 @@ qreal PartTerminal::rotation() const {
 }
 
 /**
-	@brief PartTerminal::setName
+	@brief PartTerminal::setTerminalName
 	@param name
 */
-void PartTerminal::setName(QString& name) {
+void PartTerminal::setTerminalName(const QString& name) {
 	if (d -> m_name == name) return;
 	d -> m_name = name;
 	emit nameChanged();

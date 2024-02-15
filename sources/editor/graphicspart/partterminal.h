@@ -32,7 +32,7 @@ class PartTerminal : public CustomElementGraphicPart
 	Q_OBJECT
 
 	Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
-	Q_PROPERTY(QString name READ name WRITE setName)
+	Q_PROPERTY(QString terminal_name READ terminalName WRITE setTerminalName)
 	Q_PROPERTY(TerminalData::Type terminal_type READ terminalType WRITE setTerminalType)
 
 	public:
@@ -78,8 +78,10 @@ class PartTerminal : public CustomElementGraphicPart
 		void setRotation(qreal angle);
 
 
-		QString name() const override { return d -> m_name; }
-		void setName(QString& name);
+		QString terminalName() const { return d -> m_name; }
+		void setTerminalName(const QString& name);
+
+		QString name() const override { return QObject::tr("Borne");}
 
 		TerminalData::Type terminalType() const {return d->m_type;}
 		void setTerminalType(TerminalData::Type type);

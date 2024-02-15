@@ -469,6 +469,12 @@ void QETElementEditor::fillPartsList()
 			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi))
 			{
 				QString part_desc = cep -> name();
+				if (PartTerminal *terminal = dynamic_cast<PartTerminal *>(qgi)) {
+					const auto t_name { terminal->terminalName() } ;
+					if (!t_name.isEmpty()) {
+						part_desc += QLatin1String(" : ") + t_name;
+					}
+				}
 				QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
 				QVariant v;
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
