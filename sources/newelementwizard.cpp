@@ -90,6 +90,7 @@ QWizardPage *NewElementWizard::buildStep1()
 	m_model = new ElementsCollectionModel(m_tree_view);
 	m_model->hideElement();
 	m_model->addCustomCollection();
+	m_model->addCompanyCollection();
 
 	m_tree_view->setModel(m_model);
 	m_tree_view->setHeaderHidden(true);
