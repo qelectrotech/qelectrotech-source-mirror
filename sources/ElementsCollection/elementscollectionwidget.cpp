@@ -593,10 +593,10 @@ void ElementsCollectionWidget::dirProperties()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(
 				m_index_at_context_menu);
-	if (eci && eci->isDir()) {
+				if (eci && eci->isDir()) {
 		QString txt1 = tr("Le dossier %1 contient").arg(
 					eci->localName());
-		QString txt2 = tr("%n élément(s), répartie(s)",
+					QString txt2 = tr("%n élément(s), répartie(s)",
 				  "",
 				  eci->elementsChild().size());
 		QString txt3 = tr("dans %n dossier(s).",
@@ -613,7 +613,7 @@ void ElementsCollectionWidget::dirProperties()
 			this,
 			tr("Propriété du dossier %1").arg(eci->localName()),
 			txt1 + " " + txt2 + " " + txt3 + "\n\n" + txt4 + "\n" + txt5);
-	}
+		}
 }
 
 /**
@@ -633,7 +633,8 @@ void ElementsCollectionWidget::reload()
 	// Force to repaint now,
 	// else tree view will be not disabled immediately
 	m_tree_view->repaint();
-
+	m_progress_bar->setFormat(QObject::tr("chargement %p% (%v sur %m)"));
+	
 	QList <QETProject *> project_list;
 	project_list.append(m_waiting_project);
 	m_waiting_project.clear();
