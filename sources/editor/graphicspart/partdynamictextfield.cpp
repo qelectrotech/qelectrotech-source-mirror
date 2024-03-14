@@ -176,6 +176,12 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 		font_.fromString(dom_elmt.attribute("font"));
 		setFont(font_);
 	}
+	else if (dom_elmt.hasAttribute("font_size")) {
+#if TODO_LIST
+#pragma message("@TODO plc-user: remove again, when elements are converted!")
+#endif
+		setFont(QETApp::dynamicTextsItemFont(dom_elmt.attribute("font_size", QString::number(9)).toInt()));
+	}
 	else {
 #if TODO_LIST
 #pragma message("@TODO remove in futur")
