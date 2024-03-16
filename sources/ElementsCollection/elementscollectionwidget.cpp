@@ -593,10 +593,18 @@ void ElementsCollectionWidget::dirProperties()
 {
 	ElementCollectionItem *eci = elementCollectionItemForIndex(
 				m_index_at_context_menu);
+				//When the user right-clicks on the collection tree and
+				//selects the collection property, the collection name,
+				//file path and number of elements will be added 
+				//to the qInfo log file.
+					qInfo() <<tr("Le dossier") <<(eci->localName())
+					<<tr("contient")<<eci->elementsChild().size()
+					<<tr("éléments") <<"\n"<< "Path:"
+					<<(static_cast<FileElementCollectionItem*>(eci)->fileSystemPath());
 				if (eci && eci->isDir()) {
 		QString txt1 = tr("Le dossier %1 contient").arg(
 					eci->localName());
-					QString txt2 = tr("%n élément(s), répartie(s)",
+		QString txt2 = tr("%n élément(s), répartie(s)",
 				  "",
 				  eci->elementsChild().size());
 		QString txt3 = tr("dans %n dossier(s).",
