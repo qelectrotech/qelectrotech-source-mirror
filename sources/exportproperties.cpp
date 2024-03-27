@@ -36,6 +36,7 @@ ExportProperties::ExportProperties() :
 	draw_border(true),
 	draw_titleblock(true),
 	draw_terminals(false),
+	draw_bg_transparent(false),
 	draw_colored_conductors(true),
 	exported_area(QET::BorderArea)
 {
