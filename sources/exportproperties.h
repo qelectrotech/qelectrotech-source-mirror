@@ -46,6 +46,7 @@ class ExportProperties {
 	bool draw_border;               ///< Whether to render the border (along with rows/columns headers)
 	bool draw_titleblock;           ///< Whether to render the title block
 	bool draw_terminals;            ///< Whether to render terminals
+	bool draw_bg_transparent;       ///< Whether to use transparency for SVG-Export
 	bool draw_colored_conductors;   ///< Whether to render conductors colors
 	QET::DiagramArea exported_area; ///< Area of diagrams to be rendered
 };
