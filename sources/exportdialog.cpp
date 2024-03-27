@@ -404,11 +404,12 @@ void ExportDialog::generateSvg(
 	int iRed = 254;
 	int iGreen = 253;
 	int iBlue = 252;
-	diagram->background_color.getRgb(&iRed, &iGreen, &iBlue);
+	int iAlpha = 251;
+	diagram->background_color.getRgb(&iRed, &iGreen, &iBlue, &iAlpha);
 	if (epw->exportProperties().draw_bg_transparent == true) {
 		diagram->background_color = QColor(iRed, iGreen, iBlue, 0);
 		} else {
-		diagram->background_color = QColor(iRed, iGreen, iBlue, 255);
+		diagram->background_color = QColor(iRed, iGreen, iBlue, iAlpha);
 		}
 	
 	// genere une QPicture a partir du schema
