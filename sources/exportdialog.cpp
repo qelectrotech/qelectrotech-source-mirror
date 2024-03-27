@@ -401,10 +401,10 @@ void ExportDialog::generateSvg(
 	saveReloadDiagramParameters(diagram, true);
 
 	// FIXME: This is a Quick-and-Dirty-Hack to achieve transparency in SVG-Background:
-	if (epw->exportProperties().draw_bg_transparent) {
-		diagram->background_color = Qt::transparent;
+	if (epw->exportProperties().draw_bg_transparent == true) {
+		diagram->background_color = QColor(255, 255, 255, 0);
 		} else {
-		//diagram->background_color = Qt::blue;
+		diagram->background_color = QColor(255, 255, 255, 255);
 		}
 	
 	// genere une QPicture a partir du schema
