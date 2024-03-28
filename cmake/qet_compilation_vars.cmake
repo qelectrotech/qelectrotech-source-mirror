@@ -706,33 +706,33 @@ set(QET_SRC_FILES
   )
 
 set(TS_FILES
-  ${QET_DIR}/lang/qet_ca.ts
-  ${QET_DIR}/lang/qet_de.ts
-  ${QET_DIR}/lang/qet_es.ts
-  ${QET_DIR}/lang/qet_fr.ts
-  ${QET_DIR}/lang/qet_it.ts
-  ${QET_DIR}/lang/qet_mn.ts
-  ${QET_DIR}/lang/qet_pt_br.ts
-  ${QET_DIR}/lang/qet_ru.ts
-  ${QET_DIR}/lang/qet_sr.ts
-  ${QET_DIR}/lang/qet_zh.ts
-  ${QET_DIR}/lang/qet_be.ts
-  ${QET_DIR}/lang/qet_da.ts
-  ${QET_DIR}/lang/qet_en.ts
-  ${QET_DIR}/lang/qet_fi.ts
-  ${QET_DIR}/lang/qet_hu.ts
-  ${QET_DIR}/lang/qet_nl.ts
-  ${QET_DIR}/lang/qet_pl.ts
-  ${QET_DIR}/lang/qet_ro.ts
-  ${QET_DIR}/lang/qet_sk.ts
   ${QET_DIR}/lang/qet_ar.ts
+  ${QET_DIR}/lang/qet_be.ts
+  ${QET_DIR}/lang/qet_ca.ts
   ${QET_DIR}/lang/qet_cs.ts
+  ${QET_DIR}/lang/qet_da.ts
+  ${QET_DIR}/lang/qet_de.ts
   ${QET_DIR}/lang/qet_el.ts
+  ${QET_DIR}/lang/qet_en.ts
+  ${QET_DIR}/lang/qet_es.ts
+  ${QET_DIR}/lang/qet_fi.ts
+  ${QET_DIR}/lang/qet_fr.ts
   ${QET_DIR}/lang/qet_hr.ts
+  ${QET_DIR}/lang/qet_hu.ts
+  ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
+  ${QET_DIR}/lang/qet_nl.ts
   ${QET_DIR}/lang/qet_no.ts
+  ${QET_DIR}/lang/qet_pl.ts
   ${QET_DIR}/lang/qet_pt.ts
+  ${QET_DIR}/lang/qet_pt_BR.ts
+  ${QET_DIR}/lang/qet_ro.ts
+  ${QET_DIR}/lang/qet_ru.ts
+  ${QET_DIR}/lang/qet_sk.ts
   ${QET_DIR}/lang/qet_sl.ts
+  ${QET_DIR}/lang/qet_sr.ts
   ${QET_DIR}/lang/qet_tr.ts
+  ${QET_DIR}/lang/qet_zh.ts
   )
