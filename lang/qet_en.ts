@@ -2567,17 +2567,17 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="600"/>
         <source>Le dossier</source>
-        <translation>The folder</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="601"/>
         <source>contient</source>
-        <translation>contains</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="602"/>
         <source>éléments</source>
-        <translation>elements</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="605"/>
@@ -2826,89 +2826,106 @@ All the elements and contents file in this folder will be deleted.</translation>
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="901"/>
+        <location filename="../sources/exportdialog.cpp" line="908"/>
+        <location filename="../sources/exportdialog.cpp.org" line="901"/>
         <source>Aperçu</source>
         <translation>Preview</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="154"/>
+        <location filename="../sources/exportdialog.cpp.org" line="154"/>
         <source>Dimensions</source>
         <translation>Dimensions</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="782"/>
+        <location filename="../sources/exportdialog.cpp" line="789"/>
+        <location filename="../sources/exportdialog.cpp.org" line="782"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Can not write to this file</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
+        <location filename="../sources/exportdialog.cpp.org" line="78"/>
         <source>Exporter</source>
         <translation>Export</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="153"/>
+        <location filename="../sources/exportdialog.cpp.org" line="153"/>
         <source>Nom de fichier</source>
         <translation>Filename</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1005"/>
-        <location filename="../sources/exportdialog.cpp" line="1010"/>
+        <location filename="../sources/exportdialog.cpp" line="1012"/>
+        <location filename="../sources/exportdialog.cpp" line="1017"/>
+        <location filename="../sources/exportdialog.cpp.org" line="1005"/>
+        <location filename="../sources/exportdialog.cpp.org" line="1010"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="724"/>
+        <location filename="../sources/exportdialog.cpp" line="731"/>
+        <location filename="../sources/exportdialog.cpp.org" line="724"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Target files names</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="68"/>
+        <location filename="../sources/exportdialog.cpp.org" line="68"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
         <translation>Export the project folios</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="83"/>
+        <location filename="../sources/exportdialog.cpp.org" line="83"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>Choose the folios you wish to export and specify their size :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="86"/>
+        <location filename="../sources/exportdialog.cpp.org" line="86"/>
         <source>Tout cocher</source>
         <translation>Check all</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="87"/>
+        <location filename="../sources/exportdialog.cpp.org" line="87"/>
         <source>Tout décocher</source>
         <translation>Uncheck all</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="152"/>
+        <location filename="../sources/exportdialog.cpp.org" line="152"/>
         <source>Titre du folio</source>
         <translation>Title of folio</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="725"/>
+        <location filename="../sources/exportdialog.cpp" line="732"/>
+        <location filename="../sources/exportdialog.cpp.org" line="725"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>You must enter a non-empty, unique filename for each folio to export.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="740"/>
+        <location filename="../sources/exportdialog.cpp" line="747"/>
+        <location filename="../sources/exportdialog.cpp.org" line="740"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Directory missing</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="741"/>
+        <location filename="../sources/exportdialog.cpp" line="748"/>
+        <location filename="../sources/exportdialog.cpp.org" line="741"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>You must specify the path of the directory in which the images files will be saved.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="784"/>
+        <location filename="../sources/exportdialog.cpp" line="791"/>
+        <location filename="../sources/exportdialog.cpp.org" line="784"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>It appears you do not have the required permissions to write the file %1.</translation>
@@ -2917,89 +2934,94 @@ All the elements and contents file in this folder will be deleted.</translation>
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="131"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>Export in the directory</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="150"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
         <source>Dossier cible :</source>
         <translation>Target directory:</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="155"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Parcourir</source>
         <translation>Browse</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
         <source>Format :</source>
         <translation>Format:</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>DXF (*.dxf)</source>
         <translation>DXF (*.dxf)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="178"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>Rendering options</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="185"/>
         <source>Exporter entièrement le folio</source>
         <translation>Export fully folio</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="186"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter seulement les éléments</source>
         <translation>Export elements only</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="209"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Keep conductors colors</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
+        <source>SVG: fond transparent</source>
+        <translation>SVG-background transparent</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
         <source>Dessiner la grille</source>
         <translation>Draw the grid</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="197"/>
         <source>Dessiner le cadre</source>
         <translation>Draw the border</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="201"/>
         <source>Dessiner le cartouche</source>
         <translation>Draw the title block</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="205"/>
         <source>Dessiner les bornes</source>
         <translation>Draw terminals</translation>
     </message>
@@ -7331,7 +7353,7 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="960"/>
@@ -7341,7 +7363,7 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="966"/>
@@ -7352,7 +7374,7 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="974"/>
@@ -7368,7 +7390,7 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1512"/>
@@ -8089,7 +8111,8 @@ What do you wish to do ?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1031"/>
+        <location filename="../sources/exportdialog.cpp" line="1038"/>
+        <location filename="../sources/exportdialog.cpp.org" line="1031"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Export to clipboard</translation>
     </message>
@@ -8451,27 +8474,32 @@ What do you wish to do ?</translation>
         <translation>rectangle</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="992"/>
+        <location filename="../sources/exportdialog.cpp" line="999"/>
+        <location filename="../sources/exportdialog.cpp.org" line="992"/>
         <source>Folio sans titre</source>
         <translation>Folio Untitled</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="994"/>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
+        <location filename="../sources/exportdialog.cpp.org" line="994"/>
         <source>schema</source>
         <translation>diagram</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1019"/>
+        <location filename="../sources/exportdialog.cpp" line="1026"/>
+        <location filename="../sources/exportdialog.cpp.org" line="1019"/>
         <source>Conserver les proportions</source>
         <translation>Keep aspect ratio</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1023"/>
+        <location filename="../sources/exportdialog.cpp" line="1030"/>
+        <location filename="../sources/exportdialog.cpp.org" line="1023"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Reset size</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1034"/>
+        <location filename="../sources/exportdialog.cpp.org" line="1027"/>
         <source>Aperçu</source>
         <translation>Preview</translation>
     </message>
@@ -9400,16 +9428,16 @@ Do you want to replace it ?</translation>
         <translation>Default layout</translation>
     </message>
     <message>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
+        <location filename="../sources/qetapp.cpp" line="2180"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2180"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>this is an error in the code</translation>
@@ -9704,7 +9732,7 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="195"/>
         <source>°</source>
-        <translation>°</translation>
+        <translation type="unfinished">°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
