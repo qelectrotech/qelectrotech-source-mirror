@@ -36,7 +36,7 @@ our $default_language = 'fr';
 our @misc_desktop_files = qw(misc/qelectrotech.desktop);
 our @misc_xml_files     = qw(misc/qelectrotech.xml);
 our @readme_files       = qw(CREDIT README INSTALL ELEMENTS.LICENSE build-aux/linux/fedora/README.elements);
-our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro da pt_br hu sr tr nb ja mn);
+our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro da pt_BR hu sr tr nb ja mn uk zh);
 our %languages = (
 	'fr' => {
 		'name'               => 'Français',
@@ -167,7 +167,7 @@ our %languages = (
 		'translator_mail_ml' => '',
 		'qt'                 => 1
 	},
-	'pt_br' => {
+	'pt_BR' => {
 		'name'               => 'Brasileiro',
 		'french_name'        => 'Brésilien',
 		'translator_name'    => 'Hilario & Thiago Cruz',
@@ -195,6 +195,13 @@ our %languages = (
 		'translator_mail_ml' => 'aziz.karabudak@argevi.com',
 		'qt'                 => 1
 	},
+	'uk' => {
+		'name'               => 'українська',
+		'french_name'        => 'Ukrainien',
+		'translator_name'    => 'Yaroslav',
+		'translator_mail_ml' => 'arik.tov105@gmail.com',
+		'qt'                 => 1
+	},
 	'nb' => {
 		'name'               => 'Norwegian',
 		'french_name'        => 'Norvege',
@@ -216,6 +223,13 @@ our %languages = (
 		'french_name'        => 'Mongol',
 		'translator_name'    => 'Nathalie',
 		'translator_mail_ml' => 'nathalie.roussier@giz.de>',
+		'qt'                 => 1,
+	},
+	'zh' => {
+		'name'               => '中国人',
+		'french_name'        => 'Chinois',
+		'translator_name'    => 'Eric Wang',
+		'translator_mail_ml' => 'Eric Wang <nohackwhl@gmail.com>>',
 		'qt'                 => 1,
 	}
 );
