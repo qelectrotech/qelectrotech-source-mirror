@@ -2986,7 +2986,7 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
         <source>SVG: fond transparent</source>
-        <translation>SVG-Hintergrund transparent</translation>
+        <translation>SVG-background transparent</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
