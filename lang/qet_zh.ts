@@ -2865,49 +2865,49 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>尺寸</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="724"/>
+        <location filename="../sources/exportdialog.cpp" line="731"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>目标文件名</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="725"/>
+        <location filename="../sources/exportdialog.cpp" line="732"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>您必须为每个要导出的页面输入一个非空且唯一的文件名。</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="740"/>
+        <location filename="../sources/exportdialog.cpp" line="747"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>未指定文件夹</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="741"/>
+        <location filename="../sources/exportdialog.cpp" line="748"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>您必须指定保存图像文件的文件夹路径。</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="782"/>
+        <location filename="../sources/exportdialog.cpp" line="789"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>无法写入此文件</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="784"/>
+        <location filename="../sources/exportdialog.cpp" line="791"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>您似乎没有写入文件 %1 的权限。</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="901"/>
+        <location filename="../sources/exportdialog.cpp" line="908"/>
         <source>Aperçu</source>
         <translation>检查</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1005"/>
-        <location filename="../sources/exportdialog.cpp" line="1010"/>
+        <location filename="../sources/exportdialog.cpp" line="1012"/>
+        <location filename="../sources/exportdialog.cpp" line="1017"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -2915,91 +2915,96 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="131"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>导出到文件夹</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="150"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
         <source>Dossier cible :</source>
         <translation>目标文件夹：</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="155"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Parcourir</source>
         <translation>浏览</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
         <source>Format :</source>
         <translation>格式：</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>DXF (*.dxf)</source>
         <translation>DXF (*.dxf)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="178"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>渲染选项</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="185"/>
         <source>Exporter entièrement le folio</source>
         <translation>导出整个页面</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="186"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter seulement les éléments</source>
         <translation>仅导出元件</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
         <source>Dessiner la grille</source>
         <translation>绘制网格</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="197"/>
         <source>Dessiner le cadre</source>
         <translation>绘制框架</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="201"/>
         <source>Dessiner le cartouche</source>
         <translation>绘制标题栏</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="205"/>
         <source>Dessiner les bornes</source>
         <translation>绘制端子</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="209"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>保留导体颜色</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
+        <source>SVG: fond transparent</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8359,32 +8364,32 @@ Que désirez vous faire ?</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="992"/>
+        <location filename="../sources/exportdialog.cpp" line="999"/>
         <source>Folio sans titre</source>
         <translation>无标题页面</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="994"/>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
         <source>schema</source>
         <translation>原理图</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1019"/>
+        <location filename="../sources/exportdialog.cpp" line="1026"/>
         <source>Conserver les proportions</source>
         <translation>保持纵横比</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1023"/>
+        <location filename="../sources/exportdialog.cpp" line="1030"/>
         <source>Réinitialiser les dimensions</source>
         <translation>重置尺寸</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Aperçu</source>
         <translation>草图</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1031"/>
+        <location filename="../sources/exportdialog.cpp" line="1038"/>
         <source>Exporter vers le presse-papier</source>
         <translation>导出到剪贴板</translation>
     </message>

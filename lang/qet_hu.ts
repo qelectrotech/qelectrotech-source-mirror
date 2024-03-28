@@ -2874,49 +2874,49 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
         <translation>Kiterjedések</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="724"/>
+        <location filename="../sources/exportdialog.cpp" line="731"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Cél fájl nevek</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="725"/>
+        <location filename="../sources/exportdialog.cpp" line="732"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>Muszáj beírni egy egyedi fájlnevet egyenként a tervlapok exportálásához.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="740"/>
+        <location filename="../sources/exportdialog.cpp" line="747"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>A könyvtár hiányzik</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="741"/>
+        <location filename="../sources/exportdialog.cpp" line="748"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Muszáj meghatározni a könyvtár útvonalát, amelyikbe a képfájl mentve lesz.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="782"/>
+        <location filename="../sources/exportdialog.cpp" line="789"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Nem lehet írni ezt a fájl-t</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="784"/>
+        <location filename="../sources/exportdialog.cpp" line="791"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Úgy tűnik nem rendelkezel a szükséges engedéllyel a fájl írásához %1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="901"/>
+        <location filename="../sources/exportdialog.cpp" line="908"/>
         <source>Aperçu</source>
         <translation>Előnézet</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1005"/>
-        <location filename="../sources/exportdialog.cpp" line="1010"/>
+        <location filename="../sources/exportdialog.cpp" line="1012"/>
+        <location filename="../sources/exportdialog.cpp" line="1017"/>
         <source>px</source>
         <translation>pixel</translation>
     </message>
@@ -2924,91 +2924,96 @@ Az összes elem és fájl a mappában törölve lesz.</translation>
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="131"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>Exportálás a könyvtárba</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="150"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
         <source>Dossier cible :</source>
         <translation>Cél könyvtár:</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="155"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Parcourir</source>
         <translation>Böngészés</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
         <source>Format :</source>
         <translation>Formátum :</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitkép (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>DXF (*.dxf)</source>
         <translation>DXF (*.dxf)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="178"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>Feldolgozás lehetőségei</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="185"/>
         <source>Exporter entièrement le folio</source>
         <translation>Összes tervlap exportálása</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="186"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter seulement les éléments</source>
         <translation>Csak az elemek exportálása</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
         <source>Dessiner la grille</source>
         <translation>Pontrács rajzolása</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="197"/>
         <source>Dessiner le cadre</source>
         <translation>Keret rajzolása</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="201"/>
         <source>Dessiner le cartouche</source>
         <translation>Tervjel rajzolása</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="205"/>
         <source>Dessiner les bornes</source>
         <translation>Sorkapcsok rajzolása</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="209"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Vezetékek színének megtartása</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
+        <source>SVG: fond transparent</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8405,32 +8410,32 @@ Mit szeretnél csinálni?</translation>
         <translation> szöveg csoport</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="992"/>
+        <location filename="../sources/exportdialog.cpp" line="999"/>
         <source>Folio sans titre</source>
         <translation>Cím nélküli tervlap</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="994"/>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
         <source>schema</source>
         <translation>Terv</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1019"/>
+        <location filename="../sources/exportdialog.cpp" line="1026"/>
         <source>Conserver les proportions</source>
         <translation>Képarány megtartása</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1023"/>
+        <location filename="../sources/exportdialog.cpp" line="1030"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Méret visszaállítása</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Aperçu</source>
         <translation>Előnézet</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1031"/>
+        <location filename="../sources/exportdialog.cpp" line="1038"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Exportálás a vágólapra</translation>
     </message>

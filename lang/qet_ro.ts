@@ -2853,49 +2853,49 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>Dimensiuni</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="724"/>
+        <location filename="../sources/exportdialog.cpp" line="731"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Numele fișierelor țintă</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="725"/>
+        <location filename="../sources/exportdialog.cpp" line="732"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="740"/>
+        <location filename="../sources/exportdialog.cpp" line="747"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Dosarul nu este specificat</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="741"/>
+        <location filename="../sources/exportdialog.cpp" line="748"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Trebuie să specificați calea dosarului în care vor fi salvate fișierele imagine.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="782"/>
+        <location filename="../sources/exportdialog.cpp" line="789"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Nu se poate scrie în acest fișier</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="784"/>
+        <location filename="../sources/exportdialog.cpp" line="791"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Se pare că nu aveți permisiunile necesare pentru a scrie în fișierul %1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="901"/>
+        <location filename="../sources/exportdialog.cpp" line="908"/>
         <source>Aperçu</source>
         <translation>Previzualizare</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1005"/>
-        <location filename="../sources/exportdialog.cpp" line="1010"/>
+        <location filename="../sources/exportdialog.cpp" line="1012"/>
+        <location filename="../sources/exportdialog.cpp" line="1017"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -2903,91 +2903,96 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="131"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>Exportă în dosar</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="150"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
         <source>Dossier cible :</source>
         <translation>Dosar țintă :</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="155"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Parcourir</source>
         <translation>Navighează</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
         <source>Format :</source>
         <translation>Format :</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>DXF (*.dxf)</source>
         <translation>DXF (*.dxf)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="178"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>Opțiuni de randare</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="185"/>
         <source>Exporter entièrement le folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="186"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter seulement les éléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
         <source>Dessiner la grille</source>
         <translation>Desenează grila</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="197"/>
         <source>Dessiner le cadre</source>
         <translation>Desenează cadrul</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="201"/>
         <source>Dessiner le cartouche</source>
         <translation>Desenează cartușul</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="205"/>
         <source>Dessiner les bornes</source>
         <translation>Desenează bornele</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="209"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Păstrează culorile conductorilor</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
+        <source>SVG: fond transparent</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8239,32 +8244,32 @@ Que désirez vous faire ?</source>
         <translation>text</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="992"/>
+        <location filename="../sources/exportdialog.cpp" line="999"/>
         <source>Folio sans titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="994"/>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
         <source>schema</source>
         <translation>schemă</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1019"/>
+        <location filename="../sources/exportdialog.cpp" line="1026"/>
         <source>Conserver les proportions</source>
         <translation>Păstrează proporțiile</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1023"/>
+        <location filename="../sources/exportdialog.cpp" line="1030"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Resetează dimensiunile</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Aperçu</source>
         <translation>Previzualizare</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1031"/>
+        <location filename="../sources/exportdialog.cpp" line="1038"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Exportă în memoria tampon</translation>
     </message>

@@ -2837,7 +2837,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="901"/>
+        <location filename="../sources/exportdialog.cpp" line="908"/>
         <source>Aperçu</source>
         <translation>Podgląd</translation>
     </message>
@@ -2847,7 +2847,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
         <translation>Wymiary</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="782"/>
+        <location filename="../sources/exportdialog.cpp" line="789"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Nie można zapisać do tego pliku</translation>
@@ -2863,13 +2863,13 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
         <translation>Nazwa pliku</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1005"/>
-        <location filename="../sources/exportdialog.cpp" line="1010"/>
+        <location filename="../sources/exportdialog.cpp" line="1012"/>
+        <location filename="../sources/exportdialog.cpp" line="1017"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="724"/>
+        <location filename="../sources/exportdialog.cpp" line="731"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Nazwy plików docelowych</translation>
@@ -2901,25 +2901,25 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
         <translation>Tytuł arkusza</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="725"/>
+        <location filename="../sources/exportdialog.cpp" line="732"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>Musisz podać nieużywaną nazwę pliku dla eksportowanych arkuszy.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="740"/>
+        <location filename="../sources/exportdialog.cpp" line="747"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Brak katalogu</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="741"/>
+        <location filename="../sources/exportdialog.cpp" line="748"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Musisz podać ścieżkę do katalogu, w którym są zapisywane pliki obrazów.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="784"/>
+        <location filename="../sources/exportdialog.cpp" line="791"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Wydaje się, że nie masz uprawnień wymaganych do zapisu pliku %1.</translation>
@@ -2928,91 +2928,96 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="131"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>Eksport do katalogu</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="150"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="152"/>
         <source>Dossier cible :</source>
         <translation>Katalog docelowy:</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="155"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="157"/>
         <source>Parcourir</source>
         <translation>Przeglądaj</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="165"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="167"/>
         <source>Format :</source>
         <translation>Format:</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="169"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="170"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmapa (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="171"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="173"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="174"/>
         <source>DXF (*.dxf)</source>
         <translation>DXF (*.dxf)</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="178"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
         <translation>Opcje renderowania</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="183"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="185"/>
         <source>Exporter entièrement le folio</source>
         <translation>Eksport kompletnego arkusza</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="186"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="188"/>
         <source>Exporter seulement les éléments</source>
         <translation>Eksport elementów</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="191"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
         <source>Dessiner la grille</source>
         <translation>Rysuj siatkę</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="195"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="197"/>
         <source>Dessiner le cadre</source>
         <translation>Rysuj obramowanie</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="199"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="201"/>
         <source>Dessiner le cartouche</source>
         <translation>Rysuj tabliczkę rysunkową</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="203"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="205"/>
         <source>Dessiner les bornes</source>
         <translation>Rysuj terminale</translation>
     </message>
     <message>
-        <location filename="../sources/exportpropertieswidget.cpp" line="207"/>
+        <location filename="../sources/exportpropertieswidget.cpp" line="209"/>
         <source>Conserver les couleurs des conducteurs</source>
         <translation>Zachowaj kolory przewodów</translation>
+    </message>
+    <message>
+        <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
+        <source>SVG: fond transparent</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -8126,7 +8131,7 @@ Co chcesz zrobić?</translation>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1031"/>
+        <location filename="../sources/exportdialog.cpp" line="1038"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Eksport do schowka</translation>
     </message>
@@ -8496,27 +8501,27 @@ Co chcesz zrobić?</translation>
         <translation>prostokąt</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="992"/>
+        <location filename="../sources/exportdialog.cpp" line="999"/>
         <source>Folio sans titre</source>
         <translation>Tytuł arkusza</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="994"/>
+        <location filename="../sources/exportdialog.cpp" line="1001"/>
         <source>schema</source>
         <translation>schemat</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1019"/>
+        <location filename="../sources/exportdialog.cpp" line="1026"/>
         <source>Conserver les proportions</source>
         <translation>Zachowaj proporcje</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1023"/>
+        <location filename="../sources/exportdialog.cpp" line="1030"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Skasuj rozmiar</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1034"/>
         <source>Aperçu</source>
         <translation>Podgląd</translation>
     </message>
