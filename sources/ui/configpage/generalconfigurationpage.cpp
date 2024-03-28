@@ -349,7 +349,7 @@ void GeneralConfigurationPage::fillLang()
 
 		// all lang available on lang directory
 	ui->m_lang_cb->addItem(QET::Icons::sa,		tr("Arabe"), "ar");
-	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brézilien"), "pt_br");
+	ui->m_lang_cb->addItem(QET::Icons::br,		tr("Brézilien"), "pt_BR");
 	ui->m_lang_cb->addItem(QET::Icons::catalonia,	tr("Catalan"), "ca");
 	ui->m_lang_cb->addItem(QET::Icons::cs,		tr("Tchèque"), "cs");
 	ui->m_lang_cb->addItem(QET::Icons::de,		tr("Allemand"), "de");
