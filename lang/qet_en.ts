@@ -2827,105 +2827,88 @@ All the elements and contents file in this folder will be deleted.</translation>
     <name>ExportDialog</name>
     <message>
         <location filename="../sources/exportdialog.cpp" line="908"/>
-        <location filename="../sources/exportdialog.cpp.org" line="901"/>
         <source>Aperçu</source>
         <translation>Preview</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="154"/>
-        <location filename="../sources/exportdialog.cpp.org" line="154"/>
         <source>Dimensions</source>
         <translation>Dimensions</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="789"/>
-        <location filename="../sources/exportdialog.cpp.org" line="782"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Can not write to this file</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="78"/>
-        <location filename="../sources/exportdialog.cpp.org" line="78"/>
         <source>Exporter</source>
         <translation>Export</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="153"/>
-        <location filename="../sources/exportdialog.cpp.org" line="153"/>
         <source>Nom de fichier</source>
         <translation>Filename</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1012"/>
         <location filename="../sources/exportdialog.cpp" line="1017"/>
-        <location filename="../sources/exportdialog.cpp.org" line="1005"/>
-        <location filename="../sources/exportdialog.cpp.org" line="1010"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="731"/>
-        <location filename="../sources/exportdialog.cpp.org" line="724"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Target files names</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="68"/>
-        <location filename="../sources/exportdialog.cpp.org" line="68"/>
         <source>Exporter les folios du projet</source>
         <comment>window title</comment>
         <translation>Export the project folios</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="83"/>
-        <location filename="../sources/exportdialog.cpp.org" line="83"/>
         <source>Choisissez les folios que vous désirez exporter ainsi que leurs dimensions :</source>
         <translation>Choose the folios you wish to export and specify their size :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="86"/>
-        <location filename="../sources/exportdialog.cpp.org" line="86"/>
         <source>Tout cocher</source>
         <translation>Check all</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="87"/>
-        <location filename="../sources/exportdialog.cpp.org" line="87"/>
         <source>Tout décocher</source>
         <translation>Uncheck all</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="152"/>
-        <location filename="../sources/exportdialog.cpp.org" line="152"/>
         <source>Titre du folio</source>
         <translation>Title of folio</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="732"/>
-        <location filename="../sources/exportdialog.cpp.org" line="725"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque folio à exporter.</source>
         <comment>message box content</comment>
         <translation>You must enter a non-empty, unique filename for each folio to export.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="747"/>
-        <location filename="../sources/exportdialog.cpp.org" line="740"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Directory missing</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="748"/>
-        <location filename="../sources/exportdialog.cpp.org" line="741"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>You must specify the path of the directory in which the images files will be saved.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="791"/>
-        <location filename="../sources/exportdialog.cpp.org" line="784"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>It appears you do not have the required permissions to write the file %1.</translation>
@@ -8112,7 +8095,6 @@ What do you wish to do ?</translation>
     <name>QObject</name>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1038"/>
-        <location filename="../sources/exportdialog.cpp.org" line="1031"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Export to clipboard</translation>
     </message>
@@ -8475,31 +8457,26 @@ What do you wish to do ?</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="999"/>
-        <location filename="../sources/exportdialog.cpp.org" line="992"/>
         <source>Folio sans titre</source>
         <translation>Folio Untitled</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1001"/>
-        <location filename="../sources/exportdialog.cpp.org" line="994"/>
         <source>schema</source>
         <translation>diagram</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1026"/>
-        <location filename="../sources/exportdialog.cpp.org" line="1019"/>
         <source>Conserver les proportions</source>
         <translation>Keep aspect ratio</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1030"/>
-        <location filename="../sources/exportdialog.cpp.org" line="1023"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Reset size</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1034"/>
-        <location filename="../sources/exportdialog.cpp.org" line="1027"/>
         <source>Aperçu</source>
         <translation>Preview</translation>
     </message>
