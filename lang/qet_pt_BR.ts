@@ -3007,7 +3007,7 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
         <source>SVG: fond transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG: Fundo transparente</translation>
     </message>
 </context>
 <context>
