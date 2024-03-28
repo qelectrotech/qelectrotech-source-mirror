@@ -2567,17 +2567,17 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="600"/>
         <source>Le dossier</source>
-        <translation type="unfinished"></translation>
+        <translation>The folder</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="601"/>
         <source>contient</source>
-        <translation type="unfinished"></translation>
+        <translation>contains</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="602"/>
         <source>éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>elements</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="605"/>
@@ -3003,7 +3003,7 @@ All the elements and contents file in this folder will be deleted.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="213"/>
         <source>SVG: fond transparent</source>
-        <translation>SVG-background transparent</translation>
+        <translation>SVG-Hintergrund transparent</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="193"/>
@@ -7353,7 +7353,7 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="960"/>
@@ -7363,7 +7363,7 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="966"/>
@@ -7374,7 +7374,7 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="974"/>
@@ -7390,7 +7390,7 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1512"/>
@@ -9732,7 +9732,7 @@ Please add a new table or adjust the existing table to display all information.<
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="195"/>
         <source>°</source>
-        <translation type="unfinished">°</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
