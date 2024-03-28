@@ -399,6 +399,13 @@ void ExportDialog::generateSvg(
 		QIODevice &io_device)
 {
 	saveReloadDiagramParameters(diagram, true);
+
+	// set the transparency for the SVG-Background:
+	if (epw->exportProperties().draw_bg_transparent == true) {
+		diagram->background_color.setAlpha(0);
+		} else {
+		diagram->background_color.setAlpha(255);
+		}
 	
 	// genere une QPicture a partir du schema
 	QPicture picture;

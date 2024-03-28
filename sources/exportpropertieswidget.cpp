@@ -63,6 +63,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const
 	export_properties.draw_border             = draw_border    -> isChecked();
 	export_properties.draw_titleblock         = draw_titleblock     -> isChecked();
 	export_properties.draw_terminals          = draw_terminals -> isChecked();
+	export_properties.draw_bg_transparent     = draw_bg_transparent -> isChecked();
 	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
 	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
 	
@@ -84,6 +85,7 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	draw_border             -> setChecked(export_properties.draw_border);
 	draw_titleblock         -> setChecked(export_properties.draw_titleblock);
 	draw_terminals          -> setChecked(export_properties.draw_terminals);
+	draw_bg_transparent     -> setChecked(export_properties.draw_bg_transparent);
 	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	
 	if (export_properties.exported_area == QET::BorderArea) {
@@ -207,6 +209,10 @@ void ExportPropertiesWidget::build()
 	draw_colored_conductors = new QCheckBox(tr("Conserver les couleurs des conducteurs"), groupbox_options);
 	optionshlayout -> addWidget(draw_colored_conductors, 3, 0);
 	
+	// use transparent background for SVG-Export
+	draw_bg_transparent = new QCheckBox(tr("SVG: fond transparent"), groupbox_options);
+	optionshlayout -> addWidget(draw_bg_transparent, 3, 1);
+	
 	vboxLayout -> addWidget(groupbox_options);
 	
 	setLayout(vboxLayout);
@@ -220,6 +226,7 @@ void ExportPropertiesWidget::build()
 	setTabOrder(draw_grid, draw_titleblock);
 	setTabOrder(draw_titleblock, draw_terminals);
 	setTabOrder(draw_terminals, draw_colored_conductors);
+	setTabOrder(draw_colored_conductors, draw_bg_transparent);
 	
 	// connexion du bouton permettant le choix du repertoire
 	connect(button_browse, SIGNAL(released()), this, SLOT(slot_chooseADirectory()));
@@ -231,5 +238,6 @@ void ExportPropertiesWidget::build()
 	connect(draw_border,              SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_titleblock,          SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_terminals,           SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_bg_transparent,      SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_colored_conductors,  SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 }
