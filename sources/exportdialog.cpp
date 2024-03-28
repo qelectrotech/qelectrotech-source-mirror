@@ -401,15 +401,10 @@ void ExportDialog::generateSvg(
 	saveReloadDiagramParameters(diagram, true);
 
 	// set the transparency for the SVG-Background:
-	int iRed = 254;
-	int iGreen = 253;
-	int iBlue = 252;
-	int iAlpha = 251;
-	diagram->background_color.getRgb(&iRed, &iGreen, &iBlue, &iAlpha);
 	if (epw->exportProperties().draw_bg_transparent == true) {
-		diagram->background_color = QColor(iRed, iGreen, iBlue, 0);
+		diagram->background_color.setAlpha(0);
 		} else {
-		diagram->background_color = QColor(iRed, iGreen, iBlue, iAlpha);
+		diagram->background_color.setAlpha(255);
 		}
 	
 	// genere une QPicture a partir du schema
