@@ -24,9 +24,9 @@
 	Cette classe represente une liste de noms, utilisee
 	par les elements et categories pour embarquer un meme nom en plusieurs
 	langues.
-	Les langues sont representees par deux lettres (typiquement : les deux
-	premieres de la locale du systeme) ; exemples : en pour l'anglais, fr
-	pour le francais.
+	Les langues sont representees par deux ou cinq lettres (typiquement : 
+	les deux premieres de la locale du systeme) ; exemples : en pour l'anglais, 
+	fr pour le francais, pt_BR pour le portugais brésilien. 
 */
 class NamesList {
 	// constructors, destructor

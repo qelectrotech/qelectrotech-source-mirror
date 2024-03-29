@@ -38,13 +38,14 @@ NamesList::~NamesList()
 
 /**
 	Ajoute un nom a la liste
-	@param lang Sigle de deux lettres representant une langue. Si cela n'est
-	pas respecte, l'insertion n'est pas effectuee.
+	@param lang Sigle de deux ou cinq lettres representant une langue. Si cela
+	n'est pas respecte, l'insertion n'est pas effectuee.
 	@param name Nom lui-meme. Ce ne doit pas etre une chaine de caractere vide.
 	Si cela n'est pas respecte, l'insertion n'est pas effectuee.
 */
 void NamesList::addName(const QString &lang, const QString &name) {
-	if (lang.length() != 2) return;
+	if ((lang.length() != 2) && (lang.length() != 5)) return;
+	if ((lang.length() == 5) && (lang[2] != '_')) return;
 	hash_names.insert(lang, name);
 }
 
