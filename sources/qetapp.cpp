@@ -2044,21 +2044,21 @@ void QETApp::initConfiguration()
 	QDir config_dir(QETApp::configDir());
 	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
 
-    QDir custom_elements_dir(QETApp::customElementsDir());
-    if (!custom_elements_dir.exists())
-        custom_elements_dir.mkpath(QETApp::customElementsDir());
+	QDir custom_elements_dir(QETApp::customElementsDir());
+	if (!custom_elements_dir.exists())
+		custom_elements_dir.mkpath(QETApp::customElementsDir());
 
-    QDir company_elements_dir(QETApp::companyElementsDir());
-    if (!company_elements_dir.exists())
-        company_elements_dir.mkpath(QETApp::companyElementsDir());
+	QDir company_elements_dir(QETApp::companyElementsDir());
+	if (!company_elements_dir.exists())
+		company_elements_dir.mkpath(QETApp::companyElementsDir());
 
-    QDir company_tbt_dir(QETApp::companyTitleBlockTemplatesDir());
-    if (!company_tbt_dir.exists())
-       company_tbt_dir.mkpath(QETApp::companyTitleBlockTemplatesDir());
+	QDir company_tbt_dir(QETApp::companyTitleBlockTemplatesDir());
+	if (!company_tbt_dir.exists())
+		company_tbt_dir.mkpath(QETApp::companyTitleBlockTemplatesDir());
 
-    QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
-    if (!custom_tbt_dir.exists())
-	custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
+	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
+	if (!custom_tbt_dir.exists())
+		custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
 
 	/* recent files
 	 * note:
