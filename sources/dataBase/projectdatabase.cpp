@@ -429,8 +429,8 @@ void projectDataBase::populateElementTable()
 }
 
 /**
-	@brief projectDataBase::populateElementsInfoTable
-	Populate the elements info table
+	@brief projectDataBase::populateElementInfoTable
+	Populate the element info table
 */
 void projectDataBase::populateElementInfoTable()
 {
