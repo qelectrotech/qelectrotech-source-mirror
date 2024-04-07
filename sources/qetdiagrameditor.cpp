@@ -1546,6 +1546,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_item_actions_group.       setEnabled(editable_project);
 	m_row_column_actions_group.     setEnabled(editable_project);
 	m_grey_background->             setEnabled(opened_diagram);
+	m_draw_grid->                   setEnabled(opened_diagram);
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
