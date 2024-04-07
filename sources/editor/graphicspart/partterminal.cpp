@@ -176,6 +176,7 @@ qreal PartTerminal::rotation() const {
 		case Qet::South : return 180;
 		case Qet::West  : return 270;
 	}
+	return 0;
 }
 
 /**
