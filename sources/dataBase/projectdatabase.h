@@ -31,7 +31,7 @@ class sqlite3;
 
 /**
 	@brief The projectDataBase class
-	This class wrap a sqlite data base where you can find several thing
+	This class wraps a sqlite data base where you can find several things
 	about the content of a project.
  *
 	@note this class is still in development.
