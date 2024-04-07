@@ -52,8 +52,8 @@ static int BACKUP_INTERVAL = 120000; //interval in ms of backup = 2min
 QETProject::QETProject(QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
-    m_data_base(this, this),
-    m_project_properties_handler{this}
+	m_data_base(this, this),
+	m_project_properties_handler{this}
 {
 	setDefaultTitleBlockProperties(TitleBlockProperties::defaultProperties());
 
@@ -63,7 +63,7 @@ QETProject::QETProject(QObject *parent) :
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
 {
-    return m_project_properties_handler;
+	return m_project_properties_handler;
 }
 
 /**
@@ -75,8 +75,8 @@ ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
-    m_data_base(this, this),
-    m_project_properties_handler{this}
+	m_data_base(this, this),
+	m_project_properties_handler{this}
 {
 	QFile file(path);
 	m_state = openFile(&file);
@@ -97,8 +97,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 	QObject              (parent),
 	m_titleblocks_collection(this),
-    m_data_base(this, this),
-    m_project_properties_handler{this}
+	m_data_base(this, this),
+	m_project_properties_handler{this}
 {
 	m_state = openFile(backup);
 		//Failed to open from the backup, try to open the crashed
