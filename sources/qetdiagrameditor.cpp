@@ -447,7 +447,7 @@ void QETDiagramEditor::setUpActions()
 	{
 		if (auto project = this->currentProject())
 		{
-			TerminalStripEditorWindow::instance(project, this)->show();
+            TerminalStripEditorWindow::instance(project, this)->show();
 		}
 	});
 
@@ -675,19 +675,19 @@ void QETDiagramEditor::setUpActions()
 	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
 	add_terminal_strip->setStatusTip(tr("Ajoute un plan de bornier sur le folio actuel"));
 
-	add_text     ->setData(QStringLiteral("text"));
-	add_image    ->setData(QStringLiteral("image"));
-	add_line     ->setData(QStringLiteral("line"));
-	add_rectangle->setData(QStringLiteral("rectangle"));
-	add_ellipse  ->setData(QStringLiteral("ellipse"));
-	add_polyline ->setData(QStringLiteral("polyline"));
+    add_text     ->setData(QStringLiteral("text"));
+    add_image    ->setData(QStringLiteral("image"));
+    add_line     ->setData(QStringLiteral("line"));
+    add_rectangle->setData(QStringLiteral("rectangle"));
+    add_ellipse  ->setData(QStringLiteral("ellipse"));
+    add_polyline ->setData(QStringLiteral("polyline"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
 
-	add_text->setCheckable(true);
-	add_line->setCheckable(true);
-	add_rectangle->setCheckable(true);
-	add_ellipse->setCheckable(true);
-	add_polyline->setCheckable(true);
+    add_text->setCheckable(true);
+    add_line->setCheckable(true);
+    add_rectangle->setCheckable(true);
+    add_ellipse->setCheckable(true);
+    add_polyline->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 

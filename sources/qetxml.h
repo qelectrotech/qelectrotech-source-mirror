@@ -91,61 +91,61 @@ namespace QETXML
 	QVector<QDomElement> findInDomElement(const QDomElement &dom_elmt,
 										  const QString &tag_name);
 
-	QDomElement qGraphicsItemPosToXml(QGraphicsItem *item, QDomDocument &document);
-	bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt);
+    QDomElement qGraphicsItemPosToXml(QGraphicsItem *item, QDomDocument &document);
+    bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt);
 
 	QString boolToString(bool value);
 	bool boolFromString(const QString &value,
 					 bool default_value = true,
 					 bool *conv_ok = nullptr);
 
-	const QString integerS = "int";
-	const QString doubleS = "double";
-	const QString boolS = "bool";
-	const QString stringS = "string";
-	const QString uuidS = "uuid";
-	const QString colorS = "color";
+    const QString integerS = "int";
+    const QString doubleS = "double";
+    const QString boolS = "bool";
+    const QString stringS = "string";
+    const QString uuidS = "uuid";
+    const QString colorS = "color";
 
-	enum PropertyFlags {
-			Success = 0,
-			NotFound = 1,
-			NoValidConversion = 2,
-			// = 4
-	};
+    enum PropertyFlags {
+        Success = 0,
+        NotFound = 1,
+        NoValidConversion = 2,
+        // = 4
+    };
 
-	/*!
-	 * Use this functions to add properties to the xml document
-	 */
-	QDomElement createXmlProperty(const QString& name, const QString value);
-	QDomElement createXmlProperty(const QString& name, const char* value);
-	QDomElement createXmlProperty(const QString& name, const int value);
-	QDomElement createXmlProperty(const QString& name, const double value);
-	QDomElement createXmlProperty(const QString& name, const bool value);
-	QDomElement createXmlProperty(const QString& name, const QUuid value);
-	QDomElement createXmlProperty(const QString& name, const QColor value);
+    /*!
+     * Use this functions to add properties to the xml document
+     */
+    QDomElement createXmlProperty(const QString& name, const QString value);
+    QDomElement createXmlProperty(const QString& name, const char* value);
+    QDomElement createXmlProperty(const QString& name, const int value);
+    QDomElement createXmlProperty(const QString& name, const double value);
+    QDomElement createXmlProperty(const QString& name, const bool value);
+    QDomElement createXmlProperty(const QString& name, const QUuid value);
+    QDomElement createXmlProperty(const QString& name, const QColor value);
 
-	PropertyFlags propertyInteger(const QString& value, int* entry = nullptr);
-	PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr);
-	PropertyFlags propertyDouble(const QString& value, double* entry = nullptr);
-	PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr);
-	PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr);
-	PropertyFlags propertyBool(const QString& value, bool* entry = nullptr);
-	PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr);
-	PropertyFlags propertyUuid(const QString& value, QUuid* entry = nullptr);
-	PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr);
-	PropertyFlags propertyColor(const QString& value, QColor* entry = nullptr);
-	PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr);
+    PropertyFlags propertyInteger(const QString& value, int* entry = nullptr);
+    PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int *entier = nullptr);
+    PropertyFlags propertyDouble(const QString& value, double* entry = nullptr);
+    PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double *reel = nullptr);
+    PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string = nullptr);
+    PropertyFlags propertyBool(const QString& value, bool* entry = nullptr);
+    PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean = nullptr);
+    PropertyFlags propertyUuid(const QString& value, QUuid* entry = nullptr);
+    PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid = nullptr);
+    PropertyFlags propertyColor(const QString& value, QColor* entry = nullptr);
+    PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color = nullptr);
 
-	QDomElement property(const QDomElement& e, const QString& name);
-	bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
+    QDomElement property(const QDomElement& e, const QString& name);
+    bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr);
 
-	/*!
-	 * \brief PropertiesInterface::validXmlProperty
-	 * Check if the Xml element contains the needed fields
-	 * \param e Xml Property
-	 * \return True if name, type, value attribute are available, else false
-	 */
-	bool validXmlProperty(const QDomElement& e);
+    /*!
+     * \brief PropertiesInterface::validXmlProperty
+     * Check if the Xml element contains the needed fields
+     * \param e Xml Property
+     * \return True if name, type, value attribute are available, else false
+     */
+    bool validXmlProperty(const QDomElement& e);
 }
 
 #endif // QETXML_H

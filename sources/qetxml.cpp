@@ -631,28 +631,28 @@ bool boolFromString(const QString &value, bool default_value, bool *conv_ok)
 
 PropertyFlags debugReadXml(PropertyFlags flag, const QDomElement &e, const QString& attribute_name, const QString& attr, const QString& type)
 {
-	if (flag == QETXML::PropertyFlags::NoValidConversion)
-		qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << type << ". value: " << attr;
+    if (flag == QETXML::PropertyFlags::NoValidConversion)
+        qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "No valid Conversion: " << attribute_name << ". type: " << type << ". value: " << attr;
 
-	return flag;
+    return flag;
 }
 
 QDomElement createXmlProperty(const QString& name, const QString value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", stringS);
-	p.setAttribute("value", value);
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", stringS);
+    p.setAttribute("value", value);
+    return p;
 }
 
 QDomElement createXmlProperty(const QString& name, const char* value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", stringS);
-	p.setAttribute("value", value);
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", stringS);
+    p.setAttribute("value", value);
+    return p;
 }
 
 /*!
@@ -665,48 +665,48 @@ QDomElement createXmlProperty(const QString& name, const char* value) {
  *		  \p entier is not valid and the return value is False
  */
 QDomElement createXmlProperty(const QString& name, const int value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", integerS);
-	p.setAttribute("value", QString::number(value));
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", integerS);
+    p.setAttribute("value", QString::number(value));
+    return p;
 }
 
 QDomElement createXmlProperty(const QString& name, const double value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", doubleS);
-	p.setAttribute("value", QString::number(value));
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", doubleS);
+    p.setAttribute("value", QString::number(value));
+    return p;
 }
 
 QDomElement createXmlProperty(const QString& name, const bool value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", boolS);
-	p.setAttribute("value", QString::number(value));
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", boolS);
+    p.setAttribute("value", QString::number(value));
+    return p;
 }
 
 QDomElement createXmlProperty(const QString& name, const QUuid value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", uuidS);
-	p.setAttribute("value", value.toString());
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", uuidS);
+    p.setAttribute("value", value.toString());
+    return p;
 }
 
 QDomElement createXmlProperty(const QString& name, const QColor value) {
-	QDomDocument doc;
-	QDomElement p = doc.createElement("property");
-	p.setAttribute("name", name);
-	p.setAttribute("type", colorS);
-	p.setAttribute("value", value.name());
-	return p;
+    QDomDocument doc;
+    QDomElement p = doc.createElement("property");
+    p.setAttribute("name", name);
+    p.setAttribute("type", colorS);
+    p.setAttribute("value", value.name());
+    return p;
 }
 
 /*!
@@ -720,159 +720,159 @@ QDomElement createXmlProperty(const QString& name, const QColor value) {
  */
 PropertyFlags propertyInteger(const QDomElement &e, const QString& attribute_name, int* entier) {
 
-	QString attr;
+    QString attr;
 
-	if (!attribute(e, attribute_name, integerS, &attr)) {
-		return PropertyFlags::NotFound;
-	}
+    if (!attribute(e, attribute_name, integerS, &attr)) {
+        return PropertyFlags::NotFound;
+    }
 
-	return debugReadXml(propertyInteger(attr, entier), e, attribute_name, attr, integerS);
+    return debugReadXml(propertyInteger(attr, entier), e, attribute_name, attr, integerS);
 }
 
 PropertyFlags propertyInteger(const QString& value, int* entier) {
-	// verifie la validite de l'attribut
-	bool ok;
-	int tmp = value.toInt(&ok);
-	if (!ok) {
-		return QETXML::PropertyFlags::NoValidConversion;
-	}
+    // verifie la validite de l'attribut
+    bool ok;
+    int tmp = value.toInt(&ok);
+    if (!ok) {
+        return QETXML::PropertyFlags::NoValidConversion;
+    }
 
-	if (entier != nullptr)
-		*entier = tmp;
+    if (entier != nullptr)
+        *entier = tmp;
 
-	return PropertyFlags::Success;
+    return PropertyFlags::Success;
 }
 
 PropertyFlags propertyDouble(const QDomElement &e, const QString& attribute_name, double* reel) {
 
-	QString attr;
+    QString attr;
 
-	if (!attribute(e, attribute_name, doubleS, &attr)) {
-		return PropertyFlags::NotFound;
-	}
+    if (!attribute(e, attribute_name, doubleS, &attr)) {
+        return PropertyFlags::NotFound;
+    }
 
-	return debugReadXml(propertyDouble(attr, reel), e, attribute_name, attr, doubleS);
+    return debugReadXml(propertyDouble(attr, reel), e, attribute_name, attr, doubleS);
 }
 
 PropertyFlags propertyDouble(const QString& value, double* reel)
 {
-	// verifie la validite de l'attribut
-	bool ok;
-	double tmp = value.toDouble(&ok);
-	if (!ok) {
-	return QETXML::PropertyFlags::NoValidConversion;
-	}
+    // verifie la validite de l'attribut
+    bool ok;
+    double tmp = value.toDouble(&ok);
+    if (!ok) {
+        return QETXML::PropertyFlags::NoValidConversion;
+    }
 
-	if (reel != nullptr)
-		*reel = tmp;
+    if (reel != nullptr)
+        *reel = tmp;
 
-	return PropertyFlags::Success;
+    return PropertyFlags::Success;
 }
 
 PropertyFlags propertyBool(const QDomElement &e, const QString& attribute_name, bool* boolean) {
 
-	QString attr;
+    QString attr;
 
-	if (!attribute(e, attribute_name, boolS, &attr)) {
-		return PropertyFlags::NotFound;
-	}
+    if (!attribute(e, attribute_name, boolS, &attr)) {
+        return PropertyFlags::NotFound;
+    }
 
-	return debugReadXml(propertyBool(attr, boolean), e, attribute_name, attr, boolS);
+    return debugReadXml(propertyBool(attr, boolean), e, attribute_name, attr, boolS);
 }
 
 PropertyFlags propertyBool(const QString& value, bool* boolean)
 {
-	// verifie la validite de l'attribut
-	bool ok;
-	bool tmp = value.toInt(&ok);
-	if (!ok) {
-		if (value == "true" || value == "1")
-			tmp = true;
-		else if (value == "false" || value == "0")
-			tmp = false;
-		else {
-			return QETXML::PropertyFlags::NoValidConversion;
-		}
-	}
+    // verifie la validite de l'attribut
+    bool ok;
+    bool tmp = value.toInt(&ok);
+    if (!ok) {
+        if (value == "true" || value == "1")
+            tmp = true;
+        else if (value == "false" || value == "0")
+            tmp = false;
+        else {
+            return QETXML::PropertyFlags::NoValidConversion;
+        }
+    }
 
-	if (boolean != nullptr)
-		*boolean = tmp;
+    if (boolean != nullptr)
+        *boolean = tmp;
 
-	return PropertyFlags::Success;
+    return PropertyFlags::Success;
 }
 
 PropertyFlags propertyColor(const QDomElement &e, const QString& attribute_name, QColor* color) {
 
-	QString attr;
+    QString attr;
 
-	if (!attribute(e, attribute_name, colorS, &attr)) {
-		return PropertyFlags::NotFound;
-	}
+    if (!attribute(e, attribute_name, colorS, &attr)) {
+        return PropertyFlags::NotFound;
+    }
 
-	return debugReadXml(propertyColor(attr, color), e, attribute_name, attr, colorS);
+    return debugReadXml(propertyColor(attr, color), e, attribute_name, attr, colorS);
 }
 
 PropertyFlags propertyColor(const QString& value, QColor* color)
 {
-	// verifie la validite de l'attribut
-	QColor tmp = QColor(value);
-	if (!tmp.isValid()) {
-		return QETXML::PropertyFlags::NoValidConversion;
-	}
+    // verifie la validite de l'attribut
+    QColor tmp = QColor(value);
+    if (!tmp.isValid()) {
+        return QETXML::PropertyFlags::NoValidConversion;
+    }
 
-	if (color != nullptr)
-		*color = tmp;
+    if (color != nullptr)
+        *color = tmp;
 
-	return PropertyFlags::Success;
+    return PropertyFlags::Success;
 }
 
 PropertyFlags propertyUuid(const QDomElement &e, const QString& attribute_name, QUuid* uuid) {
-	QString attr;
+    QString attr;
 
-	if (!attribute(e, attribute_name, uuidS, &attr)) {
-		return PropertyFlags::NotFound;
-	}
+    if (!attribute(e, attribute_name, uuidS, &attr)) {
+        return PropertyFlags::NotFound;
+    }
 
-	return debugReadXml(propertyUuid(attr, uuid), e, attribute_name, attr, uuidS);
+    return debugReadXml(propertyUuid(attr, uuid), e, attribute_name, attr, uuidS);
 }
 
 PropertyFlags propertyUuid(const QString& value, QUuid* uuid)
 {
-	if (QUuid(value).isNull()){
-		return QETXML::PropertyFlags::NoValidConversion;
-	}
+    if (QUuid(value).isNull()){
+        return QETXML::PropertyFlags::NoValidConversion;
+    }
 
 
-	if (uuid != nullptr)
-		*uuid = QUuid(value);
+    if (uuid != nullptr)
+        *uuid = QUuid(value);
 
-	return PropertyFlags::Success;
+    return PropertyFlags::Success;
 }
 
 PropertyFlags propertyString(const QDomElement& e, const QString& attribute_name, QString* string) {
 
-	QString attr;
-	if (!attribute(e, attribute_name, stringS, &attr)) {
-		return PropertyFlags::NotFound;
-	}
+    QString attr;
+    if (!attribute(e, attribute_name, stringS, &attr)) {
+        return PropertyFlags::NotFound;
+    }
 
-	// verifie la validite de l'attribut
-	if (string != nullptr)
-		*string = attr;
+    // verifie la validite de l'attribut
+    if (string != nullptr)
+        *string = attr;
 
-	return PropertyFlags::Success;
+    return PropertyFlags::Success;
 }
 
 QDomElement property(const QDomElement& e, const QString& name) {
-	for (int i=0; i < e.childNodes().count(); i++) {
-		QDomElement child = e.childNodes().at(i).toElement();
-		if (!validXmlProperty(child))
-			continue; // there might also non property childs
+    for (int i=0; i < e.childNodes().count(); i++) {
+        QDomElement child = e.childNodes().at(i).toElement();
+        if (!validXmlProperty(child))
+            continue; // there might also non property childs
 
-		if (child.attribute("name") == name)
-			return child;
-	}
-	return QDomElement();
+        if (child.attribute("name") == name)
+            return child;
+    }
+    return QDomElement();
 }
 
 /*!
@@ -885,40 +885,40 @@ QDomElement property(const QDomElement& e, const QString& name) {
  * \return
  */
 bool attribute(const QDomElement& e, const QString& attribute_name, const QString& type, QString* attr) {
-	QDomElement p = property(e, attribute_name);
-	if (p.isNull()) {
-		// check if legacy property is available,
-		// where the property is inside the element as attribute
-		if (!e.hasAttribute(attribute_name)) {
-			qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "Property " << attribute_name << "is not available";
-			return false;
-		}
+    QDomElement p = property(e, attribute_name);
+    if (p.isNull()) {
+        // check if legacy property is available,
+        // where the property is inside the element as attribute
+        if (!e.hasAttribute(attribute_name)) {
+            qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ". " << "Property " << attribute_name << "is not available";
+            return false;
+        }
 
-		*attr = e.attribute(attribute_name);
+        *attr = e.attribute(attribute_name);
 
-	} else {
-		if (p.attribute("type") != type) {
-			qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ", Property: " << attribute_name << "(" << p.attribute("type") << ") has not type: " << type;
-			return false;
-		}
+    } else {
+        if (p.attribute("type") != type) {
+            qDebug() << "\t\t\t" << "Tagname: " << e.tagName() << ", Property: " << attribute_name << "(" << p.attribute("type") << ") has not type: " << type;
+            return false;
+        }
 
-		*attr = p.attribute("value");
+        *attr = p.attribute("value");
 
-	}
-	return true;
+    }
+    return true;
 }
 
 bool validXmlProperty(const QDomElement& e) {
-	if (!e.hasAttribute("name"))
-		return false;
+    if (!e.hasAttribute("name"))
+        return false;
 
-	if (!e.hasAttribute("type"))
-		return false;
+    if (!e.hasAttribute("type"))
+        return false;
 
-	if (!e.hasAttribute("value"))
-		return false;
+    if (!e.hasAttribute("value"))
+        return false;
 
-	return true;
+    return true;
 }
 
 /**
@@ -932,25 +932,25 @@ bool validXmlProperty(const QDomElement& e) {
  */
 QDomElement qGraphicsItemPosToXml(QGraphicsItem *item, QDomDocument &document)
 {
-	auto dom_pos = document.createElement(QStringLiteral("pos"));
-	dom_pos.setAttribute(QStringLiteral("x"), QString::number(item->pos().x()));
-	dom_pos.setAttribute(QStringLiteral("y"), QString::number(item->pos().y()));
-	dom_pos.setAttribute(QStringLiteral("z"), QString::number(item->zValue()));
+    auto dom_pos = document.createElement(QStringLiteral("pos"));
+    dom_pos.setAttribute(QStringLiteral("x"), QString::number(item->pos().x()));
+    dom_pos.setAttribute(QStringLiteral("y"), QString::number(item->pos().y()));
+    dom_pos.setAttribute(QStringLiteral("z"), QString::number(item->zValue()));
 
-	return dom_pos;
+    return dom_pos;
 }
 
 bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt)
 {
-	if (xml_elmt.tagName() == QLatin1String("pos"))
-	{
-		item->setX(xml_elmt.attribute(QStringLiteral("x"), QStringLiteral("0")).toDouble());
-		item->setY(xml_elmt.attribute(QStringLiteral("y"), QStringLiteral("0")).toDouble());
-		item->setZValue(xml_elmt.attribute(QStringLiteral("z"), QStringLiteral("0")).toInt());
+    if (xml_elmt.tagName() == QLatin1String("pos"))
+    {
+        item->setX(xml_elmt.attribute(QStringLiteral("x"), QStringLiteral("0")).toDouble());
+        item->setY(xml_elmt.attribute(QStringLiteral("y"), QStringLiteral("0")).toDouble());
+        item->setZValue(xml_elmt.attribute(QStringLiteral("z"), QStringLiteral("0")).toInt());
 
-		return true;
-	}
-	return false;
+        return true;
+    }
+    return false;
 }
 
 }

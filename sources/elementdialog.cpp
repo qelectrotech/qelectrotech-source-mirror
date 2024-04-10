@@ -93,9 +93,9 @@ void ElementDialog::setUpWidget()
 			prjs.append(prj);
 
 	if (m_mode == OpenElement)
-		m_model->loadCollections(true, true, true, prjs);
+        m_model->loadCollections(true, true, true, prjs);
 	else
-		m_model->loadCollections(false, true, true, prjs);
+        m_model->loadCollections(false, true, true, prjs);
 
 	m_tree_view->setModel(m_model);
 	m_tree_view->setHeaderHidden(true);

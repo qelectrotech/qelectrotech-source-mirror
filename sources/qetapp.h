@@ -81,12 +81,12 @@ class QETApp : public QObject
 		static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
 		static TitleBlockTemplatesCollection *titleBlockTemplatesCollection(const QString &);
 		
-		static QString commonElementsDir();
-		static QString companyElementsDir();
-		static QString customElementsDir();
+        static QString commonElementsDir();
+        static QString companyElementsDir();
+        static QString customElementsDir();
 		static QString commonElementsDirN();
-		static QString companyElementsDirN();
-		static QString customElementsDirN();
+        static QString companyElementsDirN();
+        static QString customElementsDirN();
 		static void resetCollectionsPath();
 		static QString commonTitleBlockTemplatesDir();
 		static QString companyTitleBlockTemplatesDir();
@@ -153,8 +153,8 @@ class QETApp : public QObject
 		static QFont indiTextsItemFont (qreal = -1.0);
 		static QETDiagramEditor *diagramEditorForFile(const QString &);
 		static QETDiagramEditor *diagramEditorAncestorOf (const QWidget *child);
-		static QList<QETDiagramEditor *> diagramEditors();
-		static QETDiagramEditor* diagramEditor(QETProject *project);
+        static QList<QETDiagramEditor *> diagramEditors();
+        static QETDiagramEditor* diagramEditor(QETProject *project);
 		static QList<QETElementEditor *> elementEditors();
 		static QList<QETElementEditor *> elementEditors(QETProject *);
 		static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors();

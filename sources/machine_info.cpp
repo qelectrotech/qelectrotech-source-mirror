@@ -125,10 +125,10 @@ void MachineInfo::send_info_to_debug()
 	if (strlen(GIT_COMMIT_SHA)) {
 		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
 	}
-	qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
+    qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
 	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
 	qInfo()<< "Built with Qt " + pc.built.QT
-		  + " - " + pc.built.arch
+	      + " - " + pc.built.arch
 		  + " - Date : " + pc.built.date
 		  + " : " + pc.built.time;
 	qInfo()<< "Run with Qt "+ QString(qVersion())
@@ -261,7 +261,7 @@ void MachineInfo::init_get_cpu_info_linux()
 	QString linuxGPUOutput = linuxgpuinfo.readAllStandardOutput();
 	pc.gpu.info=QString(linuxGPUOutput.toLocal8Bit().constData());
 	linuxgpuinfo.close();
-
+    
 	QProcess linuxgpuRAM;
 	linuxgpuRAM.start("bash",
 			QStringList()
@@ -271,6 +271,9 @@ void MachineInfo::init_get_cpu_info_linux()
 	QString linuxGPURAMOutput = linuxgpuRAM.readAllStandardOutput();
 	pc.gpu.RAM=QString(linuxGPURAMOutput.toLocal8Bit().constData());
 	linuxgpuRAM.close();
+    
+ 
+       
 }
 
 /**
