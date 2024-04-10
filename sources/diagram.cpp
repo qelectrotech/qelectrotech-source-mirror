@@ -193,7 +193,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 			 */
 		QPen pen;
 		Diagram::background_color == Qt::black? pen.setColor(Qt::white)
-						      : pen.setColor(Qt::black);
+							  : pen.setColor(Qt::black);
 		pen.setCosmetic(true);
 		p->setPen(pen);
 
@@ -363,11 +363,11 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 #pragma message("@TODO move code to new function")
 #endif
 	//Move item with the keyboard arrow
-    #ifdef Q_OS_MACOS
-    if(event->modifiers() == Qt::KeypadModifier)
-    #else
-    if(event->modifiers() == Qt::NoModifier)
-    #endif
+	#ifdef Q_OS_MACOS
+	if(event->modifiers() == Qt::KeypadModifier)
+	#else
+	if(event->modifiers() == Qt::NoModifier)
+	#endif
 	{
 		QSettings settings;
 		int xKeyGrid = settings.value(QStringLiteral("diagrameditor/key_Xgrid"),
@@ -376,26 +376,26 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 									  Diagram::yKeyGrid).toInt();
 		switch(event->key())
 		{
-            case Qt::Key_Left:
+			case Qt::Key_Left:
 				for (Element *item : dc.m_elements)
 				{
-                    left_position = item->sceneBoundingRect().x();
+					left_position = item->sceneBoundingRect().x();
 					if(left_position <= 5)
 						return;
 				}
 				movement = QPointF(-xKeyGrid, 0.0);
-                break;
-            case Qt::Key_Right:
+				break;
+			case Qt::Key_Right:
 				movement = QPointF(+xKeyGrid, 0.0);
 				break;
-            case Qt::Key_Up:
-                for(Element *item : dc.m_elements)
+			case Qt::Key_Up:
+				for(Element *item : dc.m_elements)
 				{
 					top_position = item->sceneBoundingRect().y();
 					if(top_position <= 5)
 						return;
 				}
-                movement = QPointF(0.0, -yKeyGrid);
+				movement = QPointF(0.0, -yKeyGrid);
 				break;
 			case Qt::Key_Down:
 				movement = QPointF(0.0, +yKeyGrid);
@@ -486,7 +486,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 								Qt::AlignRight));
 			}
 		}
-    }
+	}
 	event->ignore();
 	QGraphicsScene::keyPressEvent(event);
 }
@@ -601,9 +601,9 @@ void Diagram::setConductorsAutonumName(const QString &name) {
 	@return Une QImage representant le schema
 */
 bool Diagram::toPaintDevice(QPaintDevice &pix,
-			    int width,
-			    int height,
-			    Qt::AspectRatioMode aspectRatioMode) {
+				int width,
+				int height,
+				Qt::AspectRatioMode aspectRatioMode) {
 	// determine the source area = schema content + margins
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
@@ -650,9 +650,9 @@ bool Diagram::toPaintDevice(QPaintDevice &pix,
 	// renders itself
 	// effectue le rendu lui-meme
 	render(&p,
-	       QRect(QPoint(0, 0),image_size),
-	       source_area,
-	       aspectRatioMode);
+			QRect(QPoint(0, 0),image_size),
+			source_area,
+			aspectRatioMode);
 	p.end();
 
 	// restore selected items
@@ -767,7 +767,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		// Conductor autonum
 		if (!m_conductors_autonum_name.isEmpty()) {
 			dom_root.setAttribute(QStringLiteral("conductorAutonum"),
-					      m_conductors_autonum_name);
+						  m_conductors_autonum_name);
 		}
 
 		//Default New Element
@@ -776,7 +776,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 		//Default New Conductor
 		dom_root.setAttribute(QStringLiteral("freezeNewConductor"),
-				      m_freeze_new_conductors_
+					  m_freeze_new_conductors_
 					  ? QStringLiteral("true") : QStringLiteral("false"));
 
 		//Element Folio Sequential Variables
@@ -791,10 +791,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							QStringLiteral("elementunitfolioseq"));
 				folioSequentialsToXml(&m_elmt_unitfolio_max,
-						      &elmtfolioseq,
+							  &elmtfolioseq,
 							  QStringLiteral("sequf_"),
 							  QStringLiteral("unitfolioseq"),
-						      &document);
+							  &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_tenfolio_max.isEmpty()) {
@@ -802,10 +802,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							QStringLiteral("elementtenfolioseq"));
 				folioSequentialsToXml(&m_elmt_tenfolio_max,
-						      &elmtfolioseq,
+							  &elmtfolioseq,
 							  QStringLiteral("seqtf_"),
 							  QStringLiteral("tenfolioseq"),
-						      &document);
+							  &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			if (!m_elmt_hundredfolio_max.isEmpty()) {
@@ -813,10 +813,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							QStringLiteral("elementhundredfolioseq"));
 				folioSequentialsToXml(&m_elmt_hundredfolio_max,
-						      &elmtfolioseq,
+							  &elmtfolioseq,
 							  QStringLiteral("seqhf_"),
 							  QStringLiteral("hundredfolioseq"),
-						      &document);
+							  &document);
 				elmtfoliosequential.appendChild(elmtfolioseq);
 			}
 			dom_root.appendChild(elmtfoliosequential);
@@ -834,10 +834,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							QStringLiteral("conductorunitfolioseq"));
 				folioSequentialsToXml(&m_cnd_unitfolio_max,
-						      &cndfolioseq,
+							  &cndfolioseq,
 							  QStringLiteral("sequf_"),
 							  QStringLiteral("unitfolioseq"),
-						      &document);
+							  &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
 			if (!m_cnd_tenfolio_max.isEmpty()) {
@@ -845,10 +845,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							QStringLiteral("conductortenfolioseq"));
 				folioSequentialsToXml(&m_cnd_tenfolio_max,
-						      &cndfolioseq,
+							  &cndfolioseq,
 							  QStringLiteral("seqtf_"),
 							  QStringLiteral("tenfolioseq"),
-						      &document);
+							  &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
 			if (!m_cnd_hundredfolio_max.isEmpty()) {
@@ -856,10 +856,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 						document.createElement(
 							QStringLiteral("conductorhundredfolioseq"));
 				folioSequentialsToXml(&m_cnd_hundredfolio_max,
-						      &cndfolioseq,
+							  &cndfolioseq,
 							  QStringLiteral("seqhf_"),
 							  QStringLiteral("hundredfolioseq"),
-						      &document);
+							  &document);
 				cndfoliosequential.appendChild(cndfolioseq);
 			}
 			dom_root.appendChild(cndfoliosequential);
@@ -882,7 +882,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QVector<DiagramImageItem *> list_images;
 	QVector<QetShapeItem *> list_shapes;
 	QVector<QetGraphicsTableItem *> table_vector;
-    QVector<TerminalStripItem *> strip_vector;
+	QVector<TerminalStripItem *> strip_vector;
 
 	//Ckeck graphics item to "XMLise"
 	for(QGraphicsItem *qgi : items())
@@ -931,15 +931,15 @@ QDomDocument Diagram::toXml(bool whole_content) {
 				auto table = static_cast<QetGraphicsTableItem *>(qgi);
 				if (whole_content || table->isSelected())
 					table_vector << table;
-                break;
+				break;
 			}
-            case TerminalStripItem::Type: {
-                const auto strip = static_cast<TerminalStripItem *>(qgi);
-                if (whole_content || strip->isSelected()) {
-                    strip_vector << strip;
-                }
-                break;
-            }
+			case TerminalStripItem::Type: {
+				const auto strip = static_cast<TerminalStripItem *>(qgi);
+				if (whole_content || strip->isSelected()) {
+					strip_vector << strip;
+				}
+				break;
+			}
 		}
 	}
 
@@ -951,7 +951,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		auto dom_elements = document.createElement(QStringLiteral("elements"));
 		for (auto elmt : list_elements) {
 			dom_elements.appendChild(elmt->toXml(document,
-							     table_adr_id));
+								 table_adr_id));
 		}
 		dom_root.appendChild(dom_elements);
 	}
@@ -997,9 +997,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		dom_root.appendChild(tables);
 	}
 
-    if (!strip_vector.isEmpty()) {
-        dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
-    }
+	if (!strip_vector.isEmpty()) {
+		dom_root.appendChild(TerminalStripItemXml::toXml(strip_vector, document));
+	}
 
 
 	return(document);
@@ -1015,10 +1015,10 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	@param doc
 */
 void Diagram::folioSequentialsToXml(QHash<QString,
-				    QStringList> *hash,
-				    QDomElement *domElement,
-				    const QString& seq_type,
-				    const QString& type,
+					QStringList> *hash,
+					QDomElement *domElement,
+					const QString& seq_type,
+					const QString& type,
 					QDomDocument *doc)
 {
 	QHash<QString, QStringList>::iterator i;
@@ -1030,7 +1030,7 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 
 		for (int j = 0; j < i.value().size(); j++) {
 			folioseq.setAttribute(seq_type + QString::number(j+1),
-					      i.value().at(j));
+							i.value().at(j));
 		}
 		domElement->appendChild(folioseq);
 	}
@@ -1068,9 +1068,9 @@ void Diagram::folioSequentialsToXml(QHash<QString,
 	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomDocument &document,
-		      QPointF position,
-		      bool consider_informations,
-		      DiagramContent *content_ptr) {
+				QPointF position,
+				bool consider_informations,
+				DiagramContent *content_ptr) {
 	QDomElement root = document.documentElement();
 	return(fromXml(root, position, consider_informations, content_ptr));
 }
@@ -1220,9 +1220,9 @@ Terminal* findTerminal(int conductor_index,
 	\~French true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomElement &document,
-		      QPointF position,
-		      bool consider_informations,
-			  DiagramContent *content_ptr)
+				QPointF position,
+				bool consider_informations,
+				DiagramContent *content_ptr)
 {
 	const QDomElement& root = document;
 		// The first element must be a diagram
@@ -1323,7 +1323,7 @@ bool Diagram::fromXml(QDomElement &document,
 								type_id,
 								other_project);
 					ech.importFromProject(m_project,
-							      location);
+								location);
 				}
 			}
 		}
@@ -1446,8 +1446,8 @@ bool Diagram::fromXml(QDomElement &document,
 		added_tables << table;
 	}
 
-        //Load terminal strip item
-    QVector<TerminalStripItem *> added_strips { TerminalStripItemXml::fromXml(this, root) };
+		//Load terminal strip item
+	QVector<TerminalStripItem *> added_strips { TerminalStripItemXml::fromXml(this, root) };
 
 	//Translate items if a new position was given in parameter
 	if (position != QPointF())
@@ -1459,7 +1459,7 @@ bool Diagram::fromXml(QDomElement &document,
 		for (auto text    : qAsConst(added_texts      )) added_items << text;
 		for (auto image   : qAsConst(added_images     )) added_items << image;
 		for (auto table   : qAsConst(added_tables     )) added_items << table;
-        for (const auto &strip : qAsConst(added_strips)) added_items << strip;
+		for (const auto &strip : qAsConst(added_strips)) added_items << strip;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
@@ -1500,9 +1500,9 @@ bool Diagram::fromXml(QDomElement &document,
 		content_ptr -> m_shapes		= QSet<QetShapeItem *>(
 					added_shapes.begin(),
 					added_shapes.end());
-        content_ptr->m_terminal_strip.swap(added_strips);
+		content_ptr->m_terminal_strip.swap(added_strips);
 #endif
-        content_ptr->m_tables.swap(added_tables);
+		content_ptr->m_tables.swap(added_tables);
 	}
 
 	adjustSceneRect();
@@ -1556,25 +1556,25 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root,
 */
 void Diagram::refreshContents()
 {
-    DiagramContent dc_(this, false);
+	DiagramContent dc_(this, false);
 
-    for (auto &elmt : dc_.m_elements) {
+	for (auto &elmt : dc_.m_elements) {
 		elmt->initLink(project());
-        for (auto &deti : elmt->dynamicTextItems())
+		for (auto &deti : elmt->dynamicTextItems())
 			deti->refreshLabelConnection();
 	}
 
-    for (auto &conductor : dc_.conductors()) {
+	for (auto &conductor : dc_.conductors()) {
 		conductor->refreshText();
-    }
+	}
 
-    for (auto &table : qAsConst(dc_.m_tables)) {
+	for (auto &table : qAsConst(dc_.m_tables)) {
 		table->initLink();
-    }
+	}
 
-    for (auto &strip :qAsConst(dc_.m_terminal_strip)) {
-        strip->refreshPending();
-    }
+	for (auto &strip :qAsConst(dc_.m_terminal_strip)) {
+		strip->refreshPending();
+	}
 }
 
 /**
