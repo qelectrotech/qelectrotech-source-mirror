@@ -170,7 +170,7 @@ QETApp::~QETApp()
 	ElementFactory::dropInstance();
 	ElementPictureFactory::dropInstance();
 	MachineInfo::dropInstance();
-    TerminalStripEditorWindow::dropInstance();
+	TerminalStripEditorWindow::dropInstance();
 }
 
 
@@ -589,101 +589,101 @@ QString QETApp::commonElementsDir()
 }
 
 /**
-    @brief QETApp::customElementsDir
-    @return the dir path of user elements collection appended with a
-    "/" separator
+	@brief QETApp::customElementsDir
+	@return the dir path of user elements collection appended with a
+	"/" separator
 */
 QString QETApp::customElementsDir()
 {
-    if (m_custom_element_dir_is_set)
-    {
-        return m_custom_element_dir;
-    }
-    else
-    {
-        m_custom_element_dir_is_set = true;
+	if (m_custom_element_dir_is_set)
+	{
+		return m_custom_element_dir;
+	}
+	else
+	{
+		m_custom_element_dir_is_set = true;
 
-        QSettings settings;
-        QString path = settings.value(
-                           "elements-collections/custom-collection-path",
-                           "default").toString();
-        if (path != "default" && !path.isEmpty())
-        {
-            QDir dir(path);
-            if (dir.exists())
-            {
-                m_custom_element_dir = path;
-                if(!m_custom_element_dir.endsWith("/")) {
-                    m_custom_element_dir.append("/");
-                }
-                return m_custom_element_dir;
-            }
-        }
+		QSettings settings;
+		QString path = settings.value(
+						   "elements-collections/custom-collection-path",
+						   "default").toString();
+		if (path != "default" && !path.isEmpty())
+		{
+			QDir dir(path);
+			if (dir.exists())
+			{
+				m_custom_element_dir = path;
+				if(!m_custom_element_dir.endsWith("/")) {
+					m_custom_element_dir.append("/");
+				}
+				return m_custom_element_dir;
+			}
+		}
 
-        m_custom_element_dir = configDir() + "elements/";
-        return m_custom_element_dir;
-    }
+		m_custom_element_dir = configDir() + "elements/";
+		return m_custom_element_dir;
+	}
 }
 
 /**
-    @brief QETApp::companyElementsDir
-    @return the dir path of company elements collection appended with a
-    "/" separator
+	@brief QETApp::companyElementsDir
+	@return the dir path of company elements collection appended with a
+	"/" separator
 */
 QString QETApp::companyElementsDir()
 {
-    if (m_company_element_dir_is_set)
-    {
-        return m_company_element_dir;
-    }
-    else
-    {
-        m_company_element_dir_is_set = true;
+	if (m_company_element_dir_is_set)
+	{
+		return m_company_element_dir;
+	}
+	else
+	{
+		m_company_element_dir_is_set = true;
 
-        QSettings settings;
-        QString path = settings.value(
-                           "elements-collections/company-collection-path",
-                           "default").toString();
-        if (path != "default" && !path.isEmpty())
-        {
-            QDir dir(path);
-            if (dir.exists())
-            {
-                m_company_element_dir = path;
-                if(!m_company_element_dir.endsWith("/")) {
-                    m_company_element_dir.append("/");
-                }
-                return m_company_element_dir;
-            }
-        }
+		QSettings settings;
+		QString path = settings.value(
+						   "elements-collections/company-collection-path",
+						   "default").toString();
+		if (path != "default" && !path.isEmpty())
+		{
+			QDir dir(path);
+			if (dir.exists())
+			{
+				m_company_element_dir = path;
+				if(!m_company_element_dir.endsWith("/")) {
+					m_company_element_dir.append("/");
+				}
+				return m_company_element_dir;
+			}
+		}
 
-        m_company_element_dir = configDir() + "elements-company/";
-        return m_company_element_dir;
-    }
+		m_company_element_dir = configDir() + "elements-company/";
+		return m_company_element_dir;
+	}
 }
 
 /**
-    @brief QETApp::commonElementsDirN
-    like QString QETApp::commonElementsDir but without "/" at the end
-    @return QString path
+	@brief QETApp::commonElementsDirN
+	like QString QETApp::commonElementsDir but without "/" at the end
+	@return QString path
 */
 QString QETApp::commonElementsDirN()
 {
-    QString path = commonElementsDir();
-    if (path.endsWith("/")) path.remove(path.length()-1, 1);
-    return path;
+	QString path = commonElementsDir();
+	if (path.endsWith("/")) path.remove(path.length()-1, 1);
+	return path;
 }
 
 /**
-    @brief QETApp::companyElementsDirN
-    like QString QETApp::companyElementsDir but without "/" at the end
-    @return QString path
+	@brief QETApp::companyElementsDirN
+	like QString QETApp::companyElementsDir but without "/" at the end
+	@return QString path
 */
 QString QETApp::companyElementsDirN()
 {
-    QString path = companyElementsDir();
-    if (path.endsWith("/")) path.remove(path.length()-1, 1);
-    return path;
+	QString path = companyElementsDir();
+	if (path.endsWith("/")) path.remove(path.length()-1, 1);
+	return path;
 }
 
 /**
@@ -1263,7 +1263,7 @@ QFont QETApp::indiTextsItemFont(qreal size)
 */
 QList<QETDiagramEditor *> QETApp::diagramEditors()
 {
-    return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
+	return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
 }
 
 /**
@@ -1273,18 +1273,18 @@ QList<QETDiagramEditor *> QETApp::diagramEditors()
  */
 QETDiagramEditor *QETApp::diagramEditor(QETProject *project)
 {
-    for (const auto &editor : QETApp::instance()->detectWindows<QETDiagramEditor>())
-    {
-        for (const auto &project_view : editor->openedProjects())
-        {
-            if (project_view->project() == project)
-            {
-                return editor;
-            }
-        }
-    }
+	for (const auto &editor : QETApp::instance()->detectWindows<QETDiagramEditor>())
+	{
+		for (const auto &project_view : editor->openedProjects())
+		{
+			if (project_view->project() == project)
+			{
+				return editor;
+			}
+		}
+	}
 
-    return nullptr;
+	return nullptr;
 }
 
 /**
@@ -2454,7 +2454,7 @@ void QETApp::printHelp()
 */
 void QETApp::printVersion()
 {
-    std::cout << qPrintable(QetVersion::displayedVersion()) << std::endl;
+	std::cout << qPrintable(QetVersion::displayedVersion()) << std::endl;
 }
 
 /**

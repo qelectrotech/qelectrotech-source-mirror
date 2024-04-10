@@ -85,15 +85,15 @@ int ElementsMover::beginMovement(Diagram *diagram, QGraphicsItem *driver_item)
 	m_moved_content = DiagramContent(diagram);
 	m_moved_content.removeNonMovableItems();
 
-        //Remove element text and text group, if the parent element is selected.
-    const auto element_text{m_moved_content.m_element_texts};
-    for(const auto &deti : element_text) {
+		//Remove element text and text group, if the parent element is selected.
+	const auto element_text{m_moved_content.m_element_texts};
+	for(const auto &deti : element_text) {
 		if(m_moved_content.m_elements.contains(deti->parentElement())) {
 			m_moved_content.m_element_texts.remove(deti);
 		}
-    }
-    const auto element_text_group{m_moved_content.m_texts_groups};
-    for(const auto &etig : element_text_group) {
+	}
+	const auto element_text_group{m_moved_content.m_texts_groups};
+	for(const auto &etig : element_text_group) {
 		if (m_moved_content.m_elements.contains(etig->parentElement())) {
 			m_moved_content.m_texts_groups.remove(etig);
 		}
@@ -153,7 +153,7 @@ void ElementsMover::continueMovement(const QPointF &movement)
 		conductor->updatePath();
 	}
 
-    if (m_status_bar && m_movement_driver)
+	if (m_status_bar && m_movement_driver)
 	{
 		const auto point_{m_movement_driver->scenePos()};
 		m_status_bar->showMessage(QString("x %1 : y %2").arg(QString::number(point_.x()), QString::number(point_.y())));
@@ -176,19 +176,19 @@ void ElementsMover::endMovement()
 
 		//Create undo move if there is a movement
 	if (!m_current_movement.isNull()) {
-        QUndoCommand *quc{new MoveGraphicsItemCommand(m_diagram, m_moved_content, m_current_movement, undo_object)};
+		QUndoCommand *quc{new MoveGraphicsItemCommand(m_diagram, m_moved_content, m_current_movement, undo_object)};
 		undo_object->setText(quc->text());
 	}
 
 		//There is only one element moved, and project authorize auto conductor,
 		//we try auto connection of conductor;
 	typedef DiagramContent dc;
-    if (m_moved_content.items(dc::TextFields
-                              | dc::Images
-                              | dc::Shapes
-                              | dc::TerminalStrip).isEmpty()
-        && m_moved_content.items(dc::Elements).size() == 1
-        && m_diagram->project()->autoConductor())
+	if (m_moved_content.items(dc::TextFields
+								| dc::Images
+								| dc::Shapes
+								| dc::TerminalStrip).isEmpty()
+		&& m_moved_content.items(dc::Elements).size() == 1
+		&& m_diagram->project()->autoConductor())
 	{
 		const Element *elmt{m_moved_content.m_elements.first()};
 		const auto aligned_free_terminals{elmt->AlignedFreeTerminals()};

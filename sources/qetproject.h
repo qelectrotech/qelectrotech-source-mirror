@@ -89,7 +89,7 @@ class QETProject : public QObject
 
 		// methods
 	public:
-        ProjectPropertiesHandler& projectPropertiesHandler();
+		ProjectPropertiesHandler& projectPropertiesHandler();
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		ProjectState state() const;
@@ -238,7 +238,7 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
-        void refresh();
+		void refresh();
 
 	// attributes
 	private:
@@ -296,7 +296,7 @@ class QETProject : public QObject
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
 
-        ProjectPropertiesHandler m_project_properties_handler;
+		ProjectPropertiesHandler m_project_properties_handler;
 };
 
 Q_DECLARE_METATYPE(QETProject *)

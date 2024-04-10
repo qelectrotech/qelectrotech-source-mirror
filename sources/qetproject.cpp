@@ -260,7 +260,7 @@ void QETProject::refresh()
 			dlgWaiting->setDetail(diagram->title());
 		}
 		diagram->refreshContents();
-    }
+	}
 }
 
 /**
@@ -510,7 +510,7 @@ void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titl
 				collection = QETApp::commonTitleBlockTemplatesCollection();
 				break;
 			case QET::Company :
-			//    collection = QETApp::companyTitleBlockTemplatesCollection();
+			//	collection = QETApp::companyTitleBlockTemplatesCollection();
 				break;
 			case QET::Custom :
 				collection = QETApp::customTitleBlockTemplatesCollection();
@@ -919,7 +919,7 @@ QDomDocument QETProject::toXml()
 	// racine du projet
 	QDomDocument xml_doc;
 	QDomElement project_root = xml_doc.createElement("project");
-    QetVersion::toXmlAttribute(project_root);
+	QetVersion::toXmlAttribute(project_root);
 	if (project_title_.isEmpty())
 	{
 		// if project_title_is Empty add title from m_file_path
@@ -1362,7 +1362,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   "\n qui est ultérieure à votre version !"
 							   " \n"
 							   "Vous utilisez actuellement QElectroTech en version %2")
-						    .arg(root_elmt.attribute(QStringLiteral("version")), QetVersion::currentVersion().toString() +
+							.arg(root_elmt.attribute(QStringLiteral("version")), QetVersion::currentVersion().toString() +
 							tr(".\n Il est alors possible que l'ouverture de tout ou partie de ce "
 							   "document échoue.\n"
 							   "Que désirez vous faire ?"),
@@ -1386,7 +1386,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							tr("Avertissement ", "message box title"),
 							tr("Le projet que vous tentez d'ouvrir est partiellement "
 							   "compatible avec votre version %1 de QElectroTech.\n")
-						    .arg(QetVersion::currentVersion().toString()) +
+							.arg(QetVersion::currentVersion().toString()) +
 							tr("Afin de le rendre totalement compatible veuillez ouvrir ce même projet "
 							   "avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet "
 							   "et l'ouvrir à  nouveau avec cette version.\n"
