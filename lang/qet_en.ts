@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en">
+<TS version="2.1" language="en_US">
 <context>
     <name>AboutQETDialog</name>
     <message>
@@ -9209,7 +9209,7 @@ Do you want to replace it ?</translation>
         <translation>Compilation: </translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="381"/>
+        <location filename="../sources/machine_info.cpp" line="378"/>
         <source>Compilation :   </source>
         <translation>Compilation :   </translation>
     </message>
@@ -9322,49 +9322,51 @@ Do you want to replace it ?</translation>
         <translation>Sort terminal block %1</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="491"/>
+        <location filename="../sources/properties/elementdata.cpp" line="495"/>
+        <location filename="../sources/properties/elementdata.cpp" line="505"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
         <translation>Generic</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="493"/>
+        <location filename="../sources/properties/elementdata.cpp" line="497"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
         <translation>Fuse</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="495"/>
+        <location filename="../sources/properties/elementdata.cpp" line="499"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>Sectionable</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="497"/>
+        <location filename="../sources/properties/elementdata.cpp" line="501"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>Diode</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="499"/>
+        <location filename="../sources/properties/elementdata.cpp" line="503"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
         <translation>Ground</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="534"/>
+        <location filename="../sources/properties/elementdata.cpp" line="540"/>
+        <location filename="../sources/properties/elementdata.cpp" line="544"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
         <translation>Generic</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="535"/>
+        <location filename="../sources/properties/elementdata.cpp" line="541"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>Phase</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="536"/>
+        <location filename="../sources/properties/elementdata.cpp" line="542"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
         <translation>Neutral</translation>
@@ -10367,6 +10369,50 @@ Les autres champs ne sont pas utilisés.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the conductor autonumerotation</comment>
         <translation>This is where you can define how new conductors will be numbered.
+-A numbering is composed of a minimum variable.
+-You can add or delete a dialing variable through the - and + buttons.
+A numbering variable includes: a type, a value and an increment.
+
+the &quot;Digit 1&quot;, &quot;Digit 01&quot; and &quot;Digit 001&quot; types represent a numeric type defined in the &quot;Value&quot; field, which is incremented to each new conductor by the value of the &quot;Incrementation&quot; field.
+- &quot;Digit 01&quot; and &quot;Digit 001&quot;, are respectively represented on the diagram by two and three digits minimum.
+If the digit defined in the Value field has fewer digits than the chosen type, it will be preceded by one or two 0s in order to respect its type.
+
+-Type &quot;Text&quot;, represents a fixed text.
+The &quot;Incrementation&quot; field is not used.
+
+-The &quot;folio&quot; type represents the number of the current folio.
+The other fields are not used.
+
+-The &quot;Folio&quot; type represents the name of the current folio.
+The other fields are not used.</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="259"/>
+        <source>Element Autonumérotation</source>
+        <comment>title window</comment>
+        <translation>Element Auto Numbering</translation>
+    </message>
+    <message>
+        <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="261"/>
+        <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types &quot;Chiffre 1&quot;, &quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, représentent un type numérique défini dans le champ &quot;Valeur&quot;, qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ &quot;Incrémentation&quot;.
+-&quot;Chiffre 01&quot; et &quot;Chiffre 001&quot;, sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type &quot;Texte&quot;, représente un texte fixe.
+Le champ &quot;Incrémentation&quot; n&apos;est pas utilisé.
+
+-Le type &quot;N° folio&quot; représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type &quot;Folio&quot; représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+        <comment>help dialog about the element autonumerotation</comment>
+        <translation>This is where you can define how new elements will be numbered.
 -A numbering is composed of a minimum variable.
 -You can add or delete a dialing variable through the - and + buttons.
 A numbering variable includes: a type, a value and an increment.
