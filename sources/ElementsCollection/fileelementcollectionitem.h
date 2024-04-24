@@ -47,9 +47,9 @@ class FileElementCollectionItem : public ElementCollectionItem
 		QString name() const override;
 		QString collectionPath() const override;
 		bool isCollectionRoot() const override;
-        bool isCommonCollection() const;
-        bool isCompanyCollection() const;
-        bool isCustomCollection() const;
+		bool isCommonCollection() const;
+		bool isCompanyCollection() const;
+		bool isCustomCollection() const;
 		void addChildAtPath(const QString &collection_name) override;
 
 		void setUpData() override;

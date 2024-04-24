@@ -23,8 +23,8 @@
 #include <QKeyEvent>
 
 DiagramEventInterface::DiagramEventInterface(Diagram *diagram) :
-    QObject{diagram},
-    m_diagram{diagram}
+	QObject{diagram},
+	m_diagram{diagram}
 {
 	m_diagram -> clearSelection();
 }

@@ -75,9 +75,9 @@ class ElementsLocation
 		bool isElement() const;
 		bool isDirectory() const;
 		bool isFileSystem() const;
-        bool isCommonCollection() const;
-        bool isCompanyCollection() const;
-        bool isCustomCollection() const;
+		bool isCommonCollection() const;
+		bool isCompanyCollection() const;
+		bool isCustomCollection() const;
 		bool isProject() const;
 		bool exist() const;
 		bool isWritable() const;

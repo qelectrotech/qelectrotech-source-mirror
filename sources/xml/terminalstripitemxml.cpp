@@ -1,19 +1,19 @@
 /*
-    Copyright 2006-2022 The QElectroTech Team
-    This file is part of QElectroTech.
-
-    QElectroTech is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 2 of the License, or
-    (at your option) any later version.
-
-    QElectroTech is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	Copyright 2006-2022 The QElectroTech Team
+	This file is part of QElectroTech.
+	
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+	
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripitemxml.h"
 
@@ -37,16 +37,16 @@ const QString STRIP_ITEMS_TAG_NAME { QStringLiteral("terminal_strip_items") };
  */
 QDomElement TerminalStripItemXml::toXml(const QVector<TerminalStripItem *> &items, QDomDocument &document)
 {
-    auto dom_element = document.createElement(STRIP_ITEMS_TAG_NAME);
-    for (const auto &item : items)
-    {
-        const auto child_ = toXml(item, document);
-        if (!child_.isNull()) {
-            dom_element.appendChild(child_);
-        }
-    }
+	auto dom_element = document.createElement(STRIP_ITEMS_TAG_NAME);
+	for (const auto &item : items)
+	{
+		const auto child_ = toXml(item, document);
+		if (!child_.isNull()) {
+			dom_element.appendChild(child_);
+		}
+	}
 
-    return dom_element;
+	return dom_element;
 }
 
 /**
@@ -59,20 +59,20 @@ QDomElement TerminalStripItemXml::toXml(const QVector<TerminalStripItem *> &item
  */
 QVector<TerminalStripItem *> TerminalStripItemXml::fromXml(Diagram *diagram, const QDomElement &xml_elmt)
 {
-    QVector<TerminalStripItem *> returned_vector;
+	QVector<TerminalStripItem *> returned_vector;
 
-    for (const auto &dom_elmt : QETXML::subChild(xml_elmt,
-                                                 STRIP_ITEMS_TAG_NAME,
-                                                 STRIP_ITEM_TAG_NAME))
-    {
-        auto strip_item = new TerminalStripItem();
-        diagram->addItem(strip_item);
-        returned_vector << strip_item;
+	for (const auto &dom_elmt : QETXML::subChild(xml_elmt,
+												 STRIP_ITEMS_TAG_NAME,
+												 STRIP_ITEM_TAG_NAME))
+	{
+		auto strip_item = new TerminalStripItem();
+		diagram->addItem(strip_item);
+		returned_vector << strip_item;
 
-        TerminalStripItemXml::fromXml(strip_item, diagram->project(), dom_elmt);
-    }
+		TerminalStripItemXml::fromXml(strip_item, diagram->project(), dom_elmt);
+	}
 
-    return returned_vector;
+	return returned_vector;
 }
 
 /**
@@ -84,21 +84,21 @@ QVector<TerminalStripItem *> TerminalStripItemXml::fromXml(Diagram *diagram, con
  */
 QDomElement TerminalStripItemXml::toXml(TerminalStripItem *item, QDomDocument &document)
 {
-    if (item->terminalStrip())
-    {
-        //Terminal strip item dom element
-        auto dom_element = document.createElement(STRIP_ITEM_TAG_NAME);
+	if (item->terminalStrip())
+	{
+		//Terminal strip item dom element
+		auto dom_element = document.createElement(STRIP_ITEM_TAG_NAME);
 
-        auto dom_strip = document.createElement(QStringLiteral("terminal_strip"));
-        dom_strip.setAttribute(QStringLiteral("uuid"), item->terminalStrip()->uuid().toString());
-        dom_element.appendChild(dom_strip);
+		auto dom_strip = document.createElement(QStringLiteral("terminal_strip"));
+		dom_strip.setAttribute(QStringLiteral("uuid"), item->terminalStrip()->uuid().toString());
+		dom_element.appendChild(dom_strip);
 
-        dom_element.appendChild(QETXML::qGraphicsItemPosToXml(item, document));
+		dom_element.appendChild(QETXML::qGraphicsItemPosToXml(item, document));
 
-        return dom_element;
-    } else {
-        return QDomElement();
-    }
+		return dom_element;
+	} else {
+		return QDomElement();
+	}
 }
 
 /**
@@ -112,29 +112,29 @@ QDomElement TerminalStripItemXml::toXml(TerminalStripItem *item, QDomDocument &d
  */
 bool TerminalStripItemXml::fromXml(TerminalStripItem *item, QETProject *project, const QDomElement &xml_elmt)
 {
-    if (xml_elmt.tagName() == STRIP_ITEM_TAG_NAME)
-    {
-        bool a{false};
+	if (xml_elmt.tagName() == STRIP_ITEM_TAG_NAME)
+	{
+		bool a{false};
 
-        const auto ts = xml_elmt.firstChildElement(QStringLiteral("terminal_strip"));
-        if (!ts.isNull())
-        {
-            const QUuid uuid_(ts.attribute(QStringLiteral("uuid")));
-            item->m_pending_strip_uuid = uuid_;
+		const auto ts = xml_elmt.firstChildElement(QStringLiteral("terminal_strip"));
+		if (!ts.isNull())
+		{
+			const QUuid uuid_(ts.attribute(QStringLiteral("uuid")));
+			item->m_pending_strip_uuid = uuid_;
 
-            for (const auto &ts : project->terminalStrip()) {
-                if (ts->uuid() == uuid_) {
-                    item->setTerminalStrip(ts);
-                    a = true;
-                    break;
-                }
-            }
-        }
+			for (const auto &ts : project->terminalStrip()) {
+				if (ts->uuid() == uuid_) {
+					item->setTerminalStrip(ts);
+					a = true;
+					break;
+				}
+			}
+		}
 
-        bool b{QETXML::qGraphicsItemPosFromXml(item,
-                                               xml_elmt.firstChildElement(QStringLiteral("pos")))};
+		bool b{QETXML::qGraphicsItemPosFromXml(item,
+											   xml_elmt.firstChildElement(QStringLiteral("pos")))};
 
-        return (a && b);
-    }
-    return false;
+		return (a && b);
+	}
+	return false;
 }

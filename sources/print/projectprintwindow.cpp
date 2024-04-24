@@ -86,7 +86,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		if (!file_name.endsWith(".pdf")) {
 			file_name.append(".pdf");
 		}
-        printer_->setCreator(QString("QElectroTech %1").arg(QetVersion::displayedVersion()));
+		printer_->setCreator(QString("QElectroTech %1").arg(QetVersion::displayedVersion()));
 		printer_->setOutputFileName(file_name);
 		printer_->setOutputFormat(QPrinter::PdfFormat);
 	}
@@ -98,11 +98,11 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 QString ProjectPrintWindow::docName(QETProject *project)
 {
 	QString doc_name;
-    if (!project->filePath().isEmpty()) {
-        doc_name = QFileInfo(project->filePath()).baseName();
-    } else if (!project->title().isEmpty()) {
-        doc_name = project->title();
-        doc_name = QET::stringToFileName(doc_name);
+	if (!project->filePath().isEmpty()) {
+		doc_name = QFileInfo(project->filePath()).baseName();
+	} else if (!project->title().isEmpty()) {
+		doc_name = project->title();
+		doc_name = QET::stringToFileName(doc_name);
 	}
 
 	if (doc_name.isEmpty()) {
@@ -669,7 +669,7 @@ QList<Diagram *> ProjectPrintWindow::selectedDiagram() const
 
 void ProjectPrintWindow::exportToPDF()
 {
-    auto file_name = QFileDialog::getSaveFileName(this, tr("Exporter sous : "), m_printer->outputFileName(), tr("Fichier (*.pdf)"));
+	auto file_name = QFileDialog::getSaveFileName(this, tr("Exporter sous : "), m_printer->outputFileName(), tr("Fichier (*.pdf)"));
 	if (file_name.isEmpty()) {
 		return;
 	}

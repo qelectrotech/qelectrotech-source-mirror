@@ -449,7 +449,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	root.setAttribute("hotspot_y",   QString("%1").arg(
 				  -(qRound(size.y() - (ymargin/2)))));
 
-    QetVersion::toXmlAttribute(root);
+	QetVersion::toXmlAttribute(root);
 	root.setAttribute("link_type", m_element_data.typeToString(m_element_data.m_type));
 
 	//Uuid used to compare two elements

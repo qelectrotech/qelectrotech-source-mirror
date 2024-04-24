@@ -64,9 +64,9 @@ class DiagramEventInterface : public QObject
 		void finish(); //Emitted when the interface finishes its job.
 
 	protected:
-        QPointer<Diagram> m_diagram;
-        bool m_running{false};
-        bool m_abort{false};
+		QPointer<Diagram> m_diagram;
+		bool m_running{false};
+		bool m_abort{false};
 };
 
 #endif // DIAGRAMEVENTINTERFACE_H

@@ -247,21 +247,21 @@ class changeElementDataCommand : public ElementEditionCommand
 };
 
 /**
-    @brief The RotateSelectionInESCommand class
-    Rotate the selected items in the element editor
+	@brief The RotateSelectionInESCommand class
+	Rotate the selected items in the element editor
 */
 
 class RotateElementsCommand : public ElementEditionCommand
 {
 
 public:
-    RotateElementsCommand(ElementScene *scene, QUndoCommand *parent=nullptr);
-    void undo() override;
-    void redo() override;
+	RotateElementsCommand(ElementScene *scene, QUndoCommand *parent=nullptr);
+	void undo() override;
+	void redo() override;
 
 private:
-    ElementScene *m_scene =nullptr;
-    QList<QGraphicsItem*> m_items;
+	ElementScene *m_scene =nullptr;
+	QList<QGraphicsItem*> m_items;
 
 };
 

@@ -443,7 +443,7 @@ ElementData::SlaveState ElementData::slaveStateFromString(const QString &string)
 		return ElementData::SW;
 	} else if (string == QLatin1String("Other")){
 		return ElementData::Other;
-    }
+	}
 
 	qDebug() << "ElementData::slaveStateFromString : string : "
 			 << string

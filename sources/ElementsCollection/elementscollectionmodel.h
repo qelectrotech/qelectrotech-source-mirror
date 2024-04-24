@@ -42,11 +42,11 @@ class ElementsCollectionModel : public QStandardItemModel
 		bool canDropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) const override;
 		bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent) override;
 
-        void loadCollections(bool common_collection, bool company_collection, bool custom_collection, QList<QETProject *> projects);
+		void loadCollections(bool common_collection, bool company_collection, bool custom_collection, QList<QETProject *> projects);
 
-        void addCommonCollection(bool set_data = true);
-        void addCompanyCollection(bool set_data = true);
-        void addCustomCollection(bool set_data = true);
+		void addCommonCollection(bool set_data = true);
+		void addCompanyCollection(bool set_data = true);
+		void addCustomCollection(bool set_data = true);
 		void addLocation(const ElementsLocation& location);
 
 		void addProject(QETProject *project, bool set_data = true);

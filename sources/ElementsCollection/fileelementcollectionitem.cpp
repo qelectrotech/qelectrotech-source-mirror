@@ -41,8 +41,8 @@ FileElementCollectionItem::FileElementCollectionItem()
 	@return true if path exist.
 */
 bool FileElementCollectionItem::setRootPath(const QString& path,
-					    bool set_data,
-					    bool hide_element)
+						bool set_data,
+						bool hide_element)
 {
 	QDir dir(path);
 	if (dir.exists())
@@ -120,11 +120,11 @@ QString FileElementCollectionItem::localName()
 
 	else if (isDir()) {
 		if (isCollectionRoot()) {
-            if (m_path == QETApp::commonElementsDirN())
-                setText(QObject::tr("Collection QET"));
-            else if (m_path == QETApp::companyElementsDirN())
-                setText(QObject::tr("Collection Company"));
-            else if (m_path == QETApp::customElementsDirN())
+			if (m_path == QETApp::commonElementsDirN())
+				setText(QObject::tr("Collection QET"));
+			else if (m_path == QETApp::companyElementsDirN())
+				setText(QObject::tr("Collection Company"));
+			else if (m_path == QETApp::customElementsDirN())
 				setText(QObject::tr("Collection utilisateur"));
 			else
 				setText(QObject::tr("Collection inconnue"));
@@ -221,29 +221,29 @@ QString FileElementCollectionItem::collectionPath() const
 bool FileElementCollectionItem::isCollectionRoot() const
 {
 	if (m_path == QETApp::commonElementsDirN()
-            || m_path == QETApp::companyElementsDirN()
-            || m_path == QETApp::customElementsDirN())
-        return true;
+			|| m_path == QETApp::companyElementsDirN()
+			|| m_path == QETApp::customElementsDirN())
+		return true;
 	else
 		return false;
 }
 
 /**
-    @brief FileElementCollectionItem::isCommonCollection
-    @return True if this item represent the common collection
+	@brief FileElementCollectionItem::isCommonCollection
+	@return True if this item represent the common collection
 */
 bool FileElementCollectionItem::isCommonCollection() const
 {
-    return fileSystemPath().startsWith(QETApp::commonElementsDirN());
+	return fileSystemPath().startsWith(QETApp::commonElementsDirN());
 }
 
 /**
-    @brief FileElementCollectionItem::isCompanyCollection
-    @return True if this item represent the company collection
+	@brief FileElementCollectionItem::isCompanyCollection
+	@return True if this item represent the company collection
 */
 bool FileElementCollectionItem::isCompanyCollection() const
 {
-    return fileSystemPath().startsWith(QETApp::companyElementsDirN());
+	return fileSystemPath().startsWith(QETApp::companyElementsDirN());
 }
 
 /**
@@ -347,8 +347,8 @@ void FileElementCollectionItem::setUpIcon()
 	@param hide_element
 */
 void FileElementCollectionItem::setPathName(const QString& path_name,
-					    bool set_data,
-					    bool hide_element)
+						bool set_data,
+						bool hide_element)
 {
 	m_path = path_name;
 
