@@ -590,7 +590,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(
 			if (eci->type() == FileElementCollectionItem::Type) {
 				if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
 					if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
-											 (location.isCompanyCollection() && feci->isCompanyCollection()) ||
+						 (location.isCompanyCollection() && feci->isCompanyCollection()) ||
 						 (location.isCustomCollection() && !feci->isCommonCollection()) ) {
 						match_eci = feci->itemAtPath(location.collectionPath(false));
 					}
