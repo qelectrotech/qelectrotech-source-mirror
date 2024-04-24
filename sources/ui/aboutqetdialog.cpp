@@ -64,17 +64,17 @@ void AboutQETDialog::setAbout()
 			tr(" Les développeurs de QElectroTech", "about tab, developers line") +
 			"<br><br>"
 			"<a href=\"https://qelectrotech.org/\">https://qelectrotech.org/</a>"
-            "<br><br>" +
-            "The program is provided AS IS with NO WARRANTY OF ANY KIND,"
-            "<br>"
-             " INCLUDING THE WARRANTY OF DESIGN, "
-            "<br>"
-             "MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.";
-            "<br>"
+			"<br><br>" +
+			"The program is provided AS IS with NO WARRANTY OF ANY KIND,"
+			"<br>"
+			" INCLUDING THE WARRANTY OF DESIGN, "
+			"<br>"
+			"MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.";
+			"<br>"
 			"<br><br>" +
 			tr("Contact : <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line");
-           
-            
+
+
 
 	ui->m_about_label->setText(str);
 }
@@ -91,7 +91,7 @@ void AboutQETDialog::setAuthors()
 	addAuthor(ui->m_author_label, "Ronny Desmedt",      "r.desmedt@live.be",               tr("Convertisseur DXF"));
 	addAuthor(ui->m_author_label, "Raul Roda",          "raulroda8@gmail.com",             tr("Plugin Bornier"));
 	addAuthor(ui->m_author_label, "Abhishek Bansal",    "abhishek@qelectrotech.org",       tr("Développement"));
-	addAuthor(ui->m_author_label, "Simon De Backer",    "￼￼debacker@qelectrotech.org",       tr("Développement"));
+	addAuthor(ui->m_author_label, "Simon De Backer",    "debacker@qelectrotech.org",       tr("Développement"));
 	addAuthor(ui->m_author_label, "David Varley",       "David.Varley@cborn.com",          tr("Développement"));
 	addAuthor(ui->m_author_label, "Damian Caceres",     "damiancaceresmoreno@yahoo.es",    tr("Développement"));
 	addAuthor(ui->m_author_label, "Martin Marmsoler",   "martin.marmsoler@gmail.com",      tr("Développement"));
@@ -166,7 +166,7 @@ void AboutQETDialog::setContributors()
 void AboutQETDialog::setVersion()
 {
 	QString str = "<span style=\"font-weight:bold;font-size:16pt;\">QElectroTech V "
-            + QetVersion::displayedVersion()
+		+ QetVersion::displayedVersion()
 			+ "</span>";
 	ui->m_version_label->setText(str + MachineInfo::instance()->compilation_info());
 }

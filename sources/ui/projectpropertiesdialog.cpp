@@ -36,13 +36,13 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	m_properties_dialog -> setWindowTitle(QObject::tr("Propriétés du projet", "window title"));
 	m_properties_dialog -> addPage(new ProjectMainConfigPage(project));
 
-    NewDiagramPage *newDiagramPage = new NewDiagramPage(project,parent,this);
+	NewDiagramPage *newDiagramPage = new NewDiagramPage(project,parent,this);
 	m_properties_dialog -> addPage(newDiagramPage);
 
-    ProjectAutoNumConfigPage *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
+	ProjectAutoNumConfigPage *projectAutoNumConfigPage = new ProjectAutoNumConfigPage (project);
 	m_properties_dialog -> addPage(projectAutoNumConfigPage);
 
-    m_properties_dialog->addPage(new TerminalStripProjectConfigPage { project, parent });
+	m_properties_dialog->addPage(new TerminalStripProjectConfigPage { project, parent });
 
 	connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
 	connect(projectAutoNumConfigPage,SIGNAL(saveCurrentTbp()),newDiagramPage,SLOT(saveCurrentTbp()));

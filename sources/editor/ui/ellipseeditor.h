@@ -33,7 +33,7 @@ class StyleEditor;
  */
 class EllipseEditor : public ElementItemEditor
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		explicit EllipseEditor (QETElementEditor *editor, PartEllipse *part = nullptr, QWidget *parent = nullptr);

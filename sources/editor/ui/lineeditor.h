@@ -21,7 +21,7 @@
 #include "../elementitemeditor.h"
 
 namespace Ui {
-    class LineEditor;
+	class LineEditor;
 }
 
 class PartLine;
@@ -33,11 +33,11 @@ class StyleEditor;
  */
 class LineEditor : public ElementItemEditor
 {
-     Q_OBJECT
+	Q_OBJECT
 
-    public:
-	explicit LineEditor(QETElementEditor *editor, PartLine *part = nullptr, QWidget *parent = nullptr);
-	~LineEditor() override;
+	public:
+		explicit LineEditor(QETElementEditor *editor, PartLine *part = nullptr, QWidget *parent = nullptr);
+		~LineEditor() override;
 
 		bool setPart(CustomElementPart *part)            override;
 		bool setParts(QList <CustomElementPart *> parts) override;
