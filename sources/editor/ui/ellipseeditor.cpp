@@ -34,7 +34,7 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *part, QWidge
 	ui(new Ui::EllipseEditor),
 	m_part(part)
 {
-    ui->setupUi(this);
+	ui->setupUi(this);
 	m_style = new StyleEditor(editor);
 	ui->m_main_layout->insertWidget(0, m_style);
 	updateForm();

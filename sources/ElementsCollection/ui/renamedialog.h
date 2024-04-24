@@ -23,7 +23,7 @@
 #include <QDialog>
 
 namespace Ui {
-    class RenameDialog;
+	class RenameDialog;
 }
 
 class RenameDialog : public QDialog

@@ -32,8 +32,8 @@ class ProjectPropertiesDialog : public QObject {
 		enum Page {
 			Main    = 0,
 			Diagram = 1,
-            Autonum = 2,
-            TerminalStrip = 3
+			Autonum = 2,
+			TerminalStrip = 3
 		};
 
 		ProjectPropertiesDialog(QETProject *project, QWidget *parent = nullptr);

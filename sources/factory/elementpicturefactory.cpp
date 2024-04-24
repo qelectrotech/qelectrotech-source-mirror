@@ -154,16 +154,16 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	QDomElement dom = location.xml();
 
 		//Check if the current version can read the xml description
-    const auto elmt_version = QetVersion::fromXmlAttribute(dom);
-    if (!elmt_version.isNull()
-        && QetVersion::currentVersion() < elmt_version)
-    {
-        std::cerr << qPrintable(
-                         QObject::tr("Avertissement : l'élément "
-                                     " a été enregistré avec une version"
-                                     " ultérieure de QElectroTech.")
-                         ) << std::endl;
-    }
+	const auto elmt_version = QetVersion::fromXmlAttribute(dom);
+	if (!elmt_version.isNull()
+		&& QetVersion::currentVersion() < elmt_version)
+	{
+		std::cerr << qPrintable(
+						 QObject::tr("Avertissement : l'élément "
+									 " a été enregistré avec une version"
+									 " ultérieure de QElectroTech.")
+						 ) << std::endl;
+	}
 
 		//This attributes must be present and valid
 	int w, h, hot_x, hot_y;
@@ -249,7 +249,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 
 void ElementPictureFactory::parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const
 {
-	     if (dom.tagName() == "line")    (parseLine   (dom, painter, prim));
+		 if (dom.tagName() == "line")    (parseLine   (dom, painter, prim));
 	else if (dom.tagName() == "rect")    (parseRect   (dom, painter, prim));
 	else if (dom.tagName() == "ellipse") (parseEllipse(dom, painter, prim));
 	else if (dom.tagName() == "circle")  (parseCircle (dom, painter, prim));

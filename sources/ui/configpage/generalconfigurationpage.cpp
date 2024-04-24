@@ -122,12 +122,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
-    /*
-        Nombre maximum de primitives affichees par la "liste des parties"
-        Au-dela, un petit message est affiche, indiquant que ce nombre a ete depasse
-        et que la liste ne sera donc pas mise a jour.
-    */
-    ui->MaxPartsElementEditorList_sb->setValue(settings.value("elementeditor/max-parts-element-editor-list", 200).toInt());
+	/*
+	  Nombre maximum de primitives affichees par la "liste des parties"
+	  Au-dela, un petit message est affiche, indiquant que ce nombre a ete depasse
+	  et que la liste ne sera donc pas mise a jour.
+	*/
+	ui->MaxPartsElementEditorList_sb->setValue(settings.value("elementeditor/max-parts-element-editor-list", 200).toInt());
 	
 	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
 	if (path != "default")
@@ -209,7 +209,7 @@ void GeneralConfigurationPage::applyConf()
 
 		//ELEMENT EDITOR
 	settings.setValue("elementeditor/default-informations", ui->m_default_elements_info->toPlainText());
-    settings.setValue("elementeditor/max-parts-element-editor-list", ui->MaxPartsElementEditorList_sb->value());
+	settings.setValue("elementeditor/max-parts-element-editor-list", ui->MaxPartsElementEditorList_sb->value());
 
 		//DIAGRAM VIEW
 	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());
@@ -223,7 +223,7 @@ void GeneralConfigurationPage::applyConf()
 		//NOMENCLATURE
 	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
 
-	
+
 		//DIAGRAM EDITOR
 	QString view_mode = ui->m_use_tab_mode_rb->isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
@@ -520,11 +520,11 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 
 void GeneralConfigurationPage::on_MaxPartsElementEditorList_sb_valueChanged(int value)
 {
-    if (value > 500) {
-        ui->MaxPartsElementEditorList_sb->setToolTip(tr("To high values might lead to crashes of the application."));
-        ui->MaxPartsElementEditorList_sb->setStyleSheet("background-color: orange");
-    } else {
-        ui->MaxPartsElementEditorList_sb->setToolTip("");
-        ui->MaxPartsElementEditorList_sb->setStyleSheet("");
-    }
+	if (value > 500) {
+		ui->MaxPartsElementEditorList_sb->setToolTip(tr("To high values might lead to crashes of the application."));
+		ui->MaxPartsElementEditorList_sb->setStyleSheet("background-color: orange");
+	} else {
+		ui->MaxPartsElementEditorList_sb->setToolTip("");
+		ui->MaxPartsElementEditorList_sb->setStyleSheet("");
+	}
 }

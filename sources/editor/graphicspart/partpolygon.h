@@ -117,6 +117,6 @@ class PartPolygon : public CustomElementGraphicPart
 		QAction *m_insert_point,
 				*m_remove_point;
 		QPointF m_context_menu_pos;
-        qreal m_rot;
+		qreal m_rot;
 };
 #endif

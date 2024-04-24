@@ -124,7 +124,7 @@ void ReplaceConductorDialog::setProperties(const ConductorProperties &properties
 	ui->m_pen_cb      ->setChecked (m_properties.singleLineProperties.isPen());
 	ui->m_phase_cb    ->setChecked (m_properties.singleLineProperties.phasesCount());
 	ui->m_phase_slider->setValue   (m_properties.singleLineProperties.phasesCount());
-	
+
 	updatePreview(false);
 }
 
@@ -252,7 +252,7 @@ void ReplaceConductorDialog::setColorButton2(const QColor &color)
 
 void ReplaceConductorDialog::on_m_erase_formula_cb_clicked()
 {
-    ui->m_formula_le->setText(ui->m_erase_formula_cb->isChecked()
+	ui->m_formula_le->setText(ui->m_erase_formula_cb->isChecked()
 			      ? SearchAndReplaceWorker::eraseText()
 			      : QString());
 	ui->m_formula_le->setDisabled(ui->m_erase_formula_cb->isChecked());

@@ -295,83 +295,83 @@ void TextEditor::setUpWidget(QWidget *parent)
 	setWindowTitle(tr("Form"));
 	resize(378, 133);
 	QGridLayout *gridLayout = new QGridLayout(parent);
-	    gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-	    m_y_sb = new QSpinBox(parent);
-	    m_y_sb->setObjectName(QString::fromUtf8("m_y_sb"));
-	    m_y_sb->setMinimum(-10000);
-	    m_y_sb->setMaximum(10000);
+	gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+	m_y_sb = new QSpinBox(parent);
+	m_y_sb->setObjectName(QString::fromUtf8("m_y_sb"));
+	m_y_sb->setMinimum(-10000);
+	m_y_sb->setMaximum(10000);
 
-	    gridLayout->addWidget(m_y_sb, 1, 3, 1, 1);
+	gridLayout->addWidget(m_y_sb, 1, 3, 1, 1);
 
-	    QLabel*label_2 = new QLabel(tr("Y :"),parent);
+	QLabel*label_2 = new QLabel(tr("Y :"),parent);
 
-	    gridLayout->addWidget(label_2, 1, 2, 1, 1);
+	gridLayout->addWidget(label_2, 1, 2, 1, 1);
 
-	    QLabel*label_4 = new QLabel(tr("Police :"),parent);
+	QLabel*label_4 = new QLabel(tr("Police :"),parent);
 
-	    gridLayout->addWidget(label_4, 2, 0, 1, 1);
+	gridLayout->addWidget(label_4, 2, 0, 1, 1);
 
-	    m_rotation_sb = new QSpinBox(parent);
-	    m_rotation_sb->setSuffix(tr("\302\260"));
-	    m_rotation_sb->setWrapping(true);
-	    m_rotation_sb->setMaximum(360);
+	m_rotation_sb = new QSpinBox(parent);
+	m_rotation_sb->setSuffix(tr("\302\260"));
+	m_rotation_sb->setWrapping(true);
+	m_rotation_sb->setMaximum(360);
 
-	    gridLayout->addWidget(m_rotation_sb, 1, 5, 1, 1);
+	gridLayout->addWidget(m_rotation_sb, 1, 5, 1, 1);
 
-	    QLabel *label_3 = new QLabel(tr("Rotation :"),parent);
+	QLabel *label_3 = new QLabel(tr("Rotation :"),parent);
 
-	    gridLayout->addWidget(label_3, 1, 4, 1, 1);
+	gridLayout->addWidget(label_3, 1, 4, 1, 1);
 
-	    m_x_sb = new QSpinBox(parent);
-	    m_x_sb->setObjectName(QString::fromUtf8("m_x_sb"));
-	    m_x_sb->setMinimum(-10000);
-	    m_x_sb->setMaximum(10000);
+	m_x_sb = new QSpinBox(parent);
+	m_x_sb->setObjectName(QString::fromUtf8("m_x_sb"));
+	m_x_sb->setMinimum(-10000);
+	m_x_sb->setMaximum(10000);
 
-	    gridLayout->addWidget(m_x_sb, 1, 1, 1, 1);
+	gridLayout->addWidget(m_x_sb, 1, 1, 1, 1);
 
-	    QLabel *label = new QLabel(tr("X :"),parent);
+	QLabel *label = new QLabel(tr("X :"),parent);
 
-	    gridLayout->addWidget(label, 1, 0, 1, 1);
+	gridLayout->addWidget(label, 1, 0, 1, 1);
 
-	    m_size_sb = new QSpinBox(parent);
-	    m_size_sb->setObjectName(QString::fromUtf8("m_size_sb"));
+	m_size_sb = new QSpinBox(parent);
+	m_size_sb->setObjectName(QString::fromUtf8("m_size_sb"));
 
-	    gridLayout->addWidget(m_size_sb, 2, 1, 1, 1);
+	gridLayout->addWidget(m_size_sb, 2, 1, 1, 1);
 
-	    m_line_edit = new QLineEdit(parent);
-	    m_line_edit->setObjectName(QString::fromUtf8("m_line_edit"));
-	    m_line_edit->setClearButtonEnabled(true);
-	    m_line_edit->setPlaceholderText(tr("Entrer votre texte ici"));
+	m_line_edit = new QLineEdit(parent);
+	m_line_edit->setObjectName(QString::fromUtf8("m_line_edit"));
+	m_line_edit->setClearButtonEnabled(true);
+	m_line_edit->setPlaceholderText(tr("Entrer votre texte ici"));
 
-	    gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
+	gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
 #ifdef BUILD_WITHOUT_KF5
 #else
-	    m_color_pb = new KColorButton(parent);
-	    m_color_pb->setObjectName(QString::fromUtf8("m_color_pb"));
+	m_color_pb = new KColorButton(parent);
+	m_color_pb->setObjectName(QString::fromUtf8("m_color_pb"));
 
-	    connect(
-		    m_color_pb,
-		    &KColorButton::changed,
-		    this,
-		    &TextEditor::on_m_color_pb_changed);
+	connect(
+		m_color_pb,
+		&KColorButton::changed,
+		this,
+		&TextEditor::on_m_color_pb_changed);
 
-	    gridLayout->addWidget(m_color_pb, 2, 5, 1, 1);
-    #endif
-	    QLabel *label_5 = new QLabel(parent);
-	    label_5->setObjectName(QString::fromUtf8("label_5"));
+	gridLayout->addWidget(m_color_pb, 2, 5, 1, 1);
+#endif
+	QLabel *label_5 = new QLabel(parent);
+	label_5->setObjectName(QString::fromUtf8("label_5"));
 
-	    gridLayout->addWidget(label_5, 2, 4, 1, 1);
+	gridLayout->addWidget(label_5, 2, 4, 1, 1);
 
-	    m_font_pb = new QPushButton(tr("Couleur :"),parent);
-	    connect(m_font_pb,
-		    &QPushButton::pressed,
-		    this,
-		    &TextEditor::on_m_font_pb_clicked);
+	m_font_pb = new QPushButton(tr("Couleur :"),parent);
+	connect(m_font_pb,
+		&QPushButton::pressed,
+		this,
+		&TextEditor::on_m_font_pb_clicked);
 
-	    gridLayout->addWidget(m_font_pb, 2, 2, 1, 2);
+	gridLayout->addWidget(m_font_pb, 2, 2, 1, 2);
 
-	    QSpacerItem *verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+	QSpacerItem *verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-	    gridLayout->addItem(verticalSpacer, 3, 2, 1, 1);
-	    setLayout(gridLayout);
+	gridLayout->addItem(verticalSpacer, 3, 2, 1, 1);
+	setLayout(gridLayout);
 }

@@ -195,10 +195,10 @@ QRectF QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(
  */
 QRectF QetGraphicsHandlerUtility::rectForArc(const QRectF &rect, qreal start_angle, qreal span_angle)
 {
-    QPainterPath path;
-    path.arcMoveTo(rect, start_angle);
-    path.arcTo(rect, start_angle, span_angle);
-    return path.boundingRect();
+	QPainterPath path;
+	path.arcMoveTo(rect, start_angle);
+	path.arcTo(rect, start_angle, span_angle);
+	return path.boundingRect();
 }
 
 /**

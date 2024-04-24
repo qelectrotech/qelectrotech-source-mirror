@@ -137,7 +137,7 @@ class Conductor : public QGraphicsObject
 		{return m_autoNum_seq;}
 		void setSequenceNum(const autonum::sequentialNumbers& sn);
 
-        QList<QPointF> junctions() const;
+		QList<QPointF> junctions() const;
 
 	private:
 		void setUpConnectionForFormula(
@@ -227,7 +227,7 @@ class Conductor : public QGraphicsObject
 		static int getCoeff(const qreal &, const qreal &);
 		static int getSign(const qreal &);
 		QHash<ConductorSegmentProfile *, qreal> shareOffsetBetweenSegments(const qreal &offset, const QList<ConductorSegmentProfile *> &, const qreal & = 0.01) const;
-        static QPointF extendTerminal(const QPointF &, Qet::Orientation, qreal = 10);
+		static QPointF extendTerminal(const QPointF &, Qet::Orientation, qreal = 10);
 		static Qt::Corner movementType(const QPointF &, const QPointF &);
 		static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
 };

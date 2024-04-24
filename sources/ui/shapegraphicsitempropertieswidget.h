@@ -53,12 +53,12 @@ class ShapeGraphicsItemPropertiesWidget : public PropertiesEditorWidget
 
 	private:
 		void setUpEditConnection();
-        void clearEditConnection();
+		void clearEditConnection();
 
 	private slots:
 		void on_m_lock_pos_cb_clicked();
 
-    private:
+	private:
 		Ui::ShapeGraphicsItemPropertiesWidget *ui;
 		QetShapeItem *m_shape;
 		QList <QPointer<QetShapeItem>> m_shapes_list;

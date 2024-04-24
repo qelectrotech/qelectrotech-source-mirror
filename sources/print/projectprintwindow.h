@@ -40,7 +40,7 @@ class QCheckBox;
  */
 class ProjectPrintWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 	public:
 		static void launchDialog(QETProject *project, QPrinter::OutputFormat format = QPrinter::NativeFormat, QWidget *parent = nullptr);

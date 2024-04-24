@@ -106,7 +106,7 @@ void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
 	menu.addAction(ui->m_delete_action);
 	menu.addAction(ui->m_cut_action);
 	menu.addAction(ui->m_copy_action);
-    menu.addAction((ui->m_rotate_action));
+	menu.addAction((ui->m_rotate_action));
 	menu.addSeparator();
 	menu.addAction(ui->m_paste_action);
 	menu.addAction(ui->m_paste_in_area_action);
@@ -1026,10 +1026,10 @@ void QETElementEditor::setupActions()
 	depth_toolbar -> addActions(m_depth_action_group -> actions());
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
-        //Rotate action
+		//Rotate action
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
-        //Zoom action
+		//Zoom action
 	ui->m_zoom_in_action       -> setShortcut(QKeySequence::ZoomIn);
 	ui->m_zoom_out_action      -> setShortcut(QKeySequence::ZoomOut);
 	ui->m_zoom_fit_best_action -> setShortcut(QKeySequence(tr("Ctrl+9")));

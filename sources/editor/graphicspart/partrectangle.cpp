@@ -31,7 +31,7 @@
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent) :
 	CustomElementGraphicPart(editor, parent)
 {
-    m_rot=0;
+	m_rot=0;
 }
 
 /**
@@ -201,7 +201,7 @@ QRectF PartRectangle::sceneGeometricRect() const
 */
 QPointF PartRectangle::sceneTopLeft() const
 {
-    return(mapToScene(rect().topLeft()));
+	return(mapToScene(rect().topLeft()));
 }
 
 /**
