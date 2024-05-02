@@ -25,109 +25,109 @@
 
 namespace TerminalStripDrawer
 {
-    /**
-     * @brief TrueTerminalStrip::TrueTerminalStrip
-     * Constructor, this class don't take ownership of @a strip
-     * @param strip
-     */
-    TrueTerminalStrip::TrueTerminalStrip(TerminalStrip *strip) :
-        m_strip { strip }
-    {}
+	/**
+	 * @brief TrueTerminalStrip::TrueTerminalStrip
+	 * Constructor, this class don't take ownership of @a strip
+	 * @param strip
+	 */
+	TrueTerminalStrip::TrueTerminalStrip(TerminalStrip *strip) :
+		m_strip { strip }
+	{}
 
 
-    QString TrueTerminalStrip::installation() const
-    {
-        if (m_strip) {
-            return m_strip->installation();
-        } else {
-            return QString();
-        }
-    }
+	QString TrueTerminalStrip::installation() const
+	{
+		if (m_strip) {
+			return m_strip->installation();
+		} else {
+			return QString();
+		}
+	}
 
-    QString TrueTerminalStrip::location() const
-    {
-        if (m_strip) {
-            return m_strip->location();
-        } else {
-            return QString();
-        }
-    }
+	QString TrueTerminalStrip::location() const
+	{
+		if (m_strip) {
+			return m_strip->location();
+		} else {
+			return QString();
+		}
+	}
 
-    QString TrueTerminalStrip::name() const
-    {
-        if (m_strip) {
-            return m_strip->name();
-        } else {
-            return QString();
-        }
-    }
+	QString TrueTerminalStrip::name() const
+	{
+		if (m_strip) {
+			return m_strip->name();
+		} else {
+			return QString();
+		}
+	}
 
-    QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> TrueTerminalStrip::physicalTerminal() const
-    {
-        QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> vector_;
-        if (m_strip) {
-            for (const auto &phy : m_strip->physicalTerminal()) {
-                vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new TruePhysicalTerminal(phy) });
-            }
-        }
+	QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> TrueTerminalStrip::physicalTerminal() const
+	{
+		QVector<QSharedPointer<AbstractPhysicalTerminalInterface>> vector_;
+		if (m_strip) {
+			for (const auto &phy : m_strip->physicalTerminal()) {
+				vector_.append(QSharedPointer<AbstractPhysicalTerminalInterface>{ new TruePhysicalTerminal(phy) });
+			}
+		}
 
-        return vector_;
-    }
+		return vector_;
+	}
 
-    TruePhysicalTerminal::TruePhysicalTerminal(QSharedPointer<PhysicalTerminal> physical) :
-        m_physical { physical }
-    {}
+	TruePhysicalTerminal::TruePhysicalTerminal(QSharedPointer<PhysicalTerminal> physical) :
+		m_physical { physical }
+	{}
 
-    QVector<QSharedPointer<AbstractRealTerminalInterface>> TruePhysicalTerminal::realTerminals() const
-    {
-        QVector<QSharedPointer<AbstractRealTerminalInterface>> vector_;
-        if (m_physical) {
-            for (const auto &real_ : m_physical->realTerminals()) {
-                vector_.append(QSharedPointer<AbstractRealTerminalInterface> { new TrueRealTerminal{ real_ }});
-            }
-        }
+	QVector<QSharedPointer<AbstractRealTerminalInterface>> TruePhysicalTerminal::realTerminals() const
+	{
+		QVector<QSharedPointer<AbstractRealTerminalInterface>> vector_;
+		if (m_physical) {
+			for (const auto &real_ : m_physical->realTerminals()) {
+				vector_.append(QSharedPointer<AbstractRealTerminalInterface> { new TrueRealTerminal{ real_ }});
+			}
+		}
 
-        return vector_;
-    }
+		return vector_;
+	}
 
-    TrueRealTerminal::TrueRealTerminal(QSharedPointer<RealTerminal> real) :
-        m_real { real }
-    {}
+	TrueRealTerminal::TrueRealTerminal(QSharedPointer<RealTerminal> real) :
+		m_real { real }
+	{}
 
-    QString TrueRealTerminal::label() const
-    {
-        if (m_real) {
-            return m_real->label();
-        } else {
-            return QString();
-        }
-    }
+	QString TrueRealTerminal::label() const
+	{
+		if (m_real) {
+			return m_real->label();
+		} else {
+			return QString();
+		}
+	}
 
-    bool TrueRealTerminal::isBridged() const
-    {
-        if (m_real) {
-            return m_real->isBridged();
-        } else {
-            return false;
-        }
-    }
+	bool TrueRealTerminal::isBridged() const
+	{
+		if (m_real) {
+			return m_real->isBridged();
+		} else {
+			return false;
+		}
+	}
 
-        //Return a raw pointer, the pointer is not managed by this class
-    AbstractBridgeInterface* TrueRealTerminal::bridge() const
-    {
-        return new TrueBridge(m_real->bridge());
-    }
+		//Return a raw pointer, the pointer is not managed by this class
+	AbstractBridgeInterface* TrueRealTerminal::bridge() const
+	{
+		return new TrueBridge(m_real->bridge());
+	}
 
-    TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
-        m_bridge { bridge }
-    {}
+	TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
+		m_bridge { bridge }
+	{}
 
-    QUuid TrueBridge::uuid() const
-    {
-        if (m_bridge) {
-            return m_bridge->uuid();
-        } else {
-            return QUuid();
-        }
-    }
+	QUuid TrueBridge::uuid() const
+	{
+		if (m_bridge) {
+			return m_bridge->uuid();
+		} else {
+			return QUuid();
+		}
+	}
 }

@@ -1,19 +1,19 @@
 ﻿/*
-        Copyright 2006-2024 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2024 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #ifndef TERMINALSTRIPMODEL_H
 #define TERMINALSTRIPMODEL_H
@@ -67,14 +67,14 @@ class TerminalStripModel : public QAbstractTableModel
 		static int levelForColumn(TerminalStripModel::Column column);
 		static TerminalStripModel::Column columnTypeForIndex(const QModelIndex &index);
 
-        Q_OBJECT
-    public:
-        TerminalStripModel(TerminalStrip *terminal_strip, QObject *parent = nullptr);
+		Q_OBJECT
+	public:
+		TerminalStripModel(TerminalStrip *terminal_strip, QObject *parent = nullptr);
 		void setTerminalStrip(TerminalStrip *terminal_strip);
 
-        virtual int rowCount    (const QModelIndex &parent = QModelIndex()) const override;
-        virtual int columnCount (const QModelIndex &parent = QModelIndex()) const override;
-        virtual QVariant data   (const QModelIndex &index, int role = Qt::DisplayRole) const override;
+		virtual int rowCount    (const QModelIndex &parent = QModelIndex()) const override;
+		virtual int columnCount (const QModelIndex &parent = QModelIndex()) const override;
+		virtual QVariant data   (const QModelIndex &index, int role = Qt::DisplayRole) const override;
 		virtual bool setData (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
 		virtual QVariant headerData (int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 		virtual Qt::ItemFlags flags (const QModelIndex &index) const override;
@@ -96,8 +96,8 @@ class TerminalStripModel : public QAbstractTableModel
 		modelRealTerminalData realDataAtIndex(int index) const;
 		QPixmap bridgePixmapFor(const QModelIndex &index) const;
 
-    private:
-        QPointer<TerminalStrip> m_terminal_strip;
+	private:
+		QPointer<TerminalStrip> m_terminal_strip;
 		QHash<QPointer<Element>, QVector<bool>> m_modified_cell;
 		QVector<modelPhysicalTerminalData> m_physical_data;
 		struct BridgePixmap

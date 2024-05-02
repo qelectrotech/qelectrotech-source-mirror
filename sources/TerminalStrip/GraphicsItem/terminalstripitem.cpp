@@ -26,35 +26,35 @@
 #include "trueterminalstrip.h"
 
 TerminalStripItem::TerminalStripItem(QPointer<TerminalStrip> strip,
-                                     QGraphicsItem *parent) :
-    QetGraphicsItem { parent },
-    m_strip { strip },
-    m_drawer { QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
+									 QGraphicsItem *parent) :
+	QetGraphicsItem { parent },
+	m_strip { strip },
+	m_drawer { QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
 			  new TerminalStripDrawer::TrueTerminalStrip { strip }}
 	}
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-    setAcceptHoverEvents(true);
-    setDefaultLayout();
+	setAcceptHoverEvents(true);
+	setDefaultLayout();
 }
 
 TerminalStripItem::TerminalStripItem(QGraphicsItem *parent) :
-    QetGraphicsItem { parent }
+	QetGraphicsItem { parent }
 {
-    setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-    setAcceptHoverEvents(true);
+	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setAcceptHoverEvents(true);
 }
 
 void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
 {
-    m_strip = strip;
-    m_drawer.setStrip(QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
-                          new TerminalStripDrawer::TrueTerminalStrip { strip }});
-    m_pending_strip_uuid = QUuid();
+	m_strip = strip;
+	m_drawer.setStrip(QSharedPointer<TerminalStripDrawer::TrueTerminalStrip> {
+						  new TerminalStripDrawer::TrueTerminalStrip { strip }});
+	m_pending_strip_uuid = QUuid();
 
-    if (!m_drawer.haveLayout()) {
-        setDefaultLayout();
-    }
+	if (!m_drawer.haveLayout()) {
+		setDefaultLayout();
+	}
 }
 
 /**
@@ -62,7 +62,7 @@ void TerminalStripItem::setTerminalStrip(TerminalStrip *strip)
  * @return The strip drawed by this item
  */
 QPointer<TerminalStrip> TerminalStripItem::terminalStrip() const {
-    return m_strip;
+	return m_strip;
 }
 
 void TerminalStripItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -91,42 +91,42 @@ QRectF TerminalStripItem::boundingRect() const
  * @return usual name of this item
  */
 QString TerminalStripItem::name() const {
-    return tr("plan de bornes");
+	return tr("plan de bornes");
 }
 
 void TerminalStripItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
-    Q_UNUSED (event);
+	Q_UNUSED (event);
 
-    if (m_strip) {
-        TerminalStripEditorWindow::edit(m_strip);
-    }
+	if (m_strip) {
+		TerminalStripEditorWindow::edit(m_strip);
+	}
 }
 
 void TerminalStripItem::refreshPending()
 {
-    if (!m_pending_strip_uuid.isNull()
-        && diagram()
-        && diagram()->project())
-    {
-        for (const auto &strip_ : diagram()->project()->terminalStrip()) {
-            if (strip_->uuid() == m_pending_strip_uuid) {
-                setTerminalStrip(strip_);
-                m_pending_strip_uuid = QUuid();
-                break;
-            }
-        }
-    }
+	if (!m_pending_strip_uuid.isNull()
+		&& diagram()
+		&& diagram()->project())
+	{
+		for (const auto &strip_ : diagram()->project()->terminalStrip()) {
+			if (strip_->uuid() == m_pending_strip_uuid) {
+				setTerminalStrip(strip_);
+				m_pending_strip_uuid = QUuid();
+				break;
+			}
+		}
+	}
 }
 
 void TerminalStripItem::setLayout(QSharedPointer<TerminalStripLayoutPattern> layout)
 {
-    m_drawer.setLayout(layout);
+	m_drawer.setLayout(layout);
 }
 
 void TerminalStripItem::setDefaultLayout()
 {
-    if (m_strip && m_strip->project()) {
-        m_drawer.setLayout(m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler().defaultLayout());
-    }
+	if (m_strip && m_strip->project()) {
+		m_drawer.setLayout(m_strip->project()->projectPropertiesHandler().terminalStripLayoutHandler().defaultLayout());
+	}
 }
