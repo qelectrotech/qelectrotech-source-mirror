@@ -41,12 +41,12 @@ static const int TERMINAL_STRIP_PAGE = 2;
  */
 void TerminalStripEditorWindow::edit(TerminalStrip *strip)
 {
-    if (const auto project_ = strip->project())
-    {
-        auto editor_  = TerminalStripEditorWindow::instance(project_, QETApp::diagramEditor(project_));
-        editor_->setCurrentStrip(strip);
-        editor_->show();
-    }
+	if (const auto project_ = strip->project())
+	{
+		auto editor_  = TerminalStripEditorWindow::instance(project_, QETApp::diagramEditor(project_));
+		editor_->setCurrentStrip(strip);
+		editor_->show();
+	}
 }
 
 TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidget *parent) :
@@ -73,11 +73,11 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
  */
 TerminalStripEditorWindow::~TerminalStripEditorWindow()
 {
-    delete ui;
+	delete ui;
 }
 
 void TerminalStripEditorWindow::setCurrentStrip(TerminalStrip *strip) {
-    m_tree_dock->setSelectedStrip(strip);
+	m_tree_dock->setSelectedStrip(strip);
 }
 
 /**

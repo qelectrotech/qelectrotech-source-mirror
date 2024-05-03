@@ -5,16 +5,16 @@
 
 class mytest : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    mytest();
-    ~mytest();
+	mytest();
+	~mytest();
 
 private slots:
-    void initTestCase();
-    void cleanupTestCase();
-    void test_case1();
+	void initTestCase();
+	void cleanupTestCase();
+	void test_case1();
 
 };
 

@@ -1,19 +1,19 @@
 ﻿/*
-        Copyright 2006-2024 The QElectroTech Team
-        This file is part of QElectroTech.
+	Copyright 2006-2024 The QElectroTech Team
+	This file is part of QElectroTech.
 
-        QElectroTech is free software: you can redistribute it and/or modify
-        it under the terms of the GNU General Public License as published by
-        the Free Software Foundation, either version 2 of the License, or
-        (at your option) any later version.
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
 
-        QElectroTech is distributed in the hope that it will be useful,
-        but WITHOUT ANY WARRANTY; without even the implied warranty of
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-        GNU General Public License for more details.
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License
-        along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripmodel.h"
 #include "../terminalstrip.h"
@@ -105,8 +105,8 @@ TerminalStripModel::Column TerminalStripModel::columnTypeForIndex(const QModelIn
  * @param parent
  */
 TerminalStripModel::TerminalStripModel(TerminalStrip *terminal_strip, QObject *parent) :
-    QAbstractTableModel(parent),
-    m_terminal_strip(terminal_strip)
+	QAbstractTableModel(parent),
+	m_terminal_strip(terminal_strip)
 {
 	fillPhysicalTerminalData();
 
@@ -129,11 +129,11 @@ void TerminalStripModel::setTerminalStrip(TerminalStrip *terminal_strip)
 
 int TerminalStripModel::rowCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent)
+	Q_UNUSED(parent)
 
-    if (!m_terminal_strip) {
-        return 0;
-    }
+	if (!m_terminal_strip) {
+		return 0;
+	}
 
 	auto count = 0;
 	for (const auto &mptd : m_physical_data) {
@@ -145,7 +145,7 @@ int TerminalStripModel::rowCount(const QModelIndex &parent) const
 
 int TerminalStripModel::columnCount(const QModelIndex &parent) const
 {
-    Q_UNUSED(parent)
+	Q_UNUSED(parent)
 	return COLUMN_COUNT;
 }
 
@@ -186,7 +186,7 @@ QVariant TerminalStripModel::data(const QModelIndex &index, int role) const
 	{
 		return mrtd.led_ ? Qt::Checked : Qt::Unchecked;
 	}
-    else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
+	else if (role == Qt::BackgroundRole && index.column() < COLUMN_COUNT )
 	{
 		if (m_modified_cell.contains(mrtd.element_) &&
 			m_modified_cell.value(mrtd.element_).at(index.column()))
@@ -794,7 +794,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 {
 	if (index.column() == TYPE_CELL) {
 		auto qcb = new QComboBox(parent);
-        qcb->setObjectName(QStringLiteral("terminal_type"));
+		qcb->setObjectName(QStringLiteral("terminal_type"));
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTGeneric),   ElementData::TTGeneric);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTFuse),      ElementData::TTFuse);
 		qcb->addItem(ElementData::translatedTerminalType(ElementData::TTSectional), ElementData::TTSectional);
@@ -805,7 +805,7 @@ QWidget *TerminalStripModelDelegate::createEditor(QWidget *parent, const QStyleO
 	}
 	if (index.column() == FUNCTION_CELL) {
 		auto qcb = new QComboBox(parent);
-        qcb->setObjectName(QStringLiteral("terminal_function"));
+		qcb->setObjectName(QStringLiteral("terminal_function"));
 		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFGeneric), ElementData::TFGeneric);
 		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFPhase),   ElementData::TFPhase);
 		qcb->addItem(ElementData::translatedTerminalFunction(ElementData::TFNeutral), ElementData::TFNeutral);

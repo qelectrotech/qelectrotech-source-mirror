@@ -180,7 +180,7 @@ void TerminalStripEditor::reload()
 	if (m_model)
 	{
 		m_model->reload();
-        spanMultiLevelTerminals();
+		spanMultiLevelTerminals();
 	}
 }
 
