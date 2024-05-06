@@ -110,13 +110,14 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	l'utiliser en mode export
 */
 void ExportPropertiesWidget::setPrintingMode(bool mode) {
-	dirpath_label   -> setVisible(!mode);
-	dirpath         -> setVisible(!mode);
-	button_browse   -> setVisible(!mode);
-	format_label    -> setVisible(!mode);
-	format          -> setVisible(!mode);
-	export_border   -> setVisible(!mode);
-	export_elements -> setVisible(!mode);
+	dirpath_label       -> setVisible(!mode);
+	dirpath             -> setVisible(!mode);
+	button_browse       -> setVisible(!mode);
+	format_label        -> setVisible(!mode);
+	format              -> setVisible(!mode);
+	export_border       -> setVisible(!mode);
+	export_elements     -> setVisible(!mode);
+	draw_bg_transparent -> setVisible(!mode);
 }
 
 /**
