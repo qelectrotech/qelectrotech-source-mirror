@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_file_menu">
@@ -283,7 +283,10 @@
      <normaloff>:/ico/16x16/application-exit.png</normaloff>:/ico/16x16/application-exit.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Quitter</string>
+    <string>&amp;Fermer cet éditeur</string>
+   </property>
+   <property name="toolTip">
+    <string>Fermer cet éditeur</string>
    </property>
   </action>
   <action name="m_deselect_all_action">

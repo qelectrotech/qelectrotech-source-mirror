@@ -1010,8 +1010,10 @@ void QETElementEditor::setupActions()
 
 #ifndef Q_OS_MAC
 	ui->m_delete_action -> setShortcut(QKeySequence(Qt::Key_Delete));
+	ui->m_quit_action -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 #else
 	ui->m_delete_action -> setShortcut(QKeySequence(tr("Backspace")));
+	ui->m_quit_action -> setShortcut(QKeySequence(tr("Ctrl+W")));
 #endif
 
 		//Depth action
