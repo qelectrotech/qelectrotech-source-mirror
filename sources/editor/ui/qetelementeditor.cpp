@@ -997,7 +997,6 @@ void QETElementEditor::setupActions()
 	ui->m_open_from_file_action   -> setShortcut(tr("Ctrl+Shift+O"));
 	ui->m_save_action             -> setShortcut(QKeySequence::Save);
 	ui->m_save_as_file_action     -> setShortcut(tr("Ctrl+Shift+S"));
-	ui->m_quit_action             -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	ui->m_select_all_act          -> setShortcut(QKeySequence::SelectAll);
 	ui->m_deselect_all_action     -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	ui->m_revert_selection_action -> setShortcut(QKeySequence(tr("Ctrl+I")));
