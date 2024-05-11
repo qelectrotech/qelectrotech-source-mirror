@@ -5241,12 +5241,12 @@ Las siguientes variables son incompatibles;
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="349"/>
         <source>Position</source>
-        <translation type="unfinished">Posición</translation>
+        <translation>Posición</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="351"/>
         <source>Position du folio</source>
-        <translation type="unfinished">Posición del folio</translation>
+        <translation>Posición del folio</translation>
     </message>
 </context>
 <context>
@@ -5254,17 +5254,17 @@ Las siguientes variables son incompatibles;
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulario</translation>
+        <translation>Formulario</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
         <source>Requête</source>
-        <translation type="unfinished"></translation>
+        <translation>Solicitar</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="31"/>
         <source>Recharger</source>
-        <translation type="unfinished">Recargar</translation>
+        <translation>Recargar</translation>
     </message>
 </context>
 <context>
@@ -5299,204 +5299,204 @@ Las siguientes variables son incompatibles;
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="20"/>
         <source>MainWindow</source>
-        <translation type="unfinished"></translation>
+        <translation>Pantalla Principal</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="31"/>
         <source>Folios à imprimer :</source>
-        <translation type="unfinished">Folios a imprimir :</translation>
+        <translation>Folios a imprimir :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="70"/>
         <source>Tout cocher</source>
-        <translation type="unfinished">Marca todos</translation>
+        <translation>Marca todos</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="77"/>
         <source>Tout décocher</source>
-        <translation type="unfinished">Desmarca todos</translation>
+        <translation>Desmarcar todos</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="103"/>
         <source>Toutes les dates</source>
-        <translation type="unfinished"></translation>
+        <translation>Todas las fechas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="108"/>
         <source>À partir de la date du :</source>
-        <translation type="unfinished"></translation>
+        <translation>A partir de la fecha :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="113"/>
         <source>À la date du  :</source>
-        <translation type="unfinished"></translation>
+        <translation>A fecha del :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="155"/>
         <source>Option de rendu</source>
-        <translation type="unfinished"></translation>
+        <translation>Opciones de representación :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="161"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Dibuja el marco</translation>
+        <translation>Dibujar el marco</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="168"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Dibuja el rótulo</translation>
+        <translation>Dibujar el rótulo</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="175"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished">Conserva los colores de los conductores</translation>
+        <translation>Conservar los colores de los conductores</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="182"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Dibuja los conectores</translation>
+        <translation>Dibujar los conectores</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="192"/>
         <source>Option d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Opciones de impresión :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="198"/>
         <source>Adapter le folio à la page</source>
-        <translation type="unfinished">Adaptar el folio a la página</translation>
+        <translation>Adaptar el folio a la página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="208"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished">Utilizar toda la hoja</translation>
+        <translation>Utilizar toda la hoja</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="215"/>
         <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Si esta opción es seleccionada, el folio será agrandado o reducido de manera que entre toda la región imprimible e una sola hoja.&quot;</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="225"/>
         <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si esta opción es selccionada, los marges de la hoja serán ingnorados y esa superficie será utilizada para la impresión. Esto puede no ser soportado por tu impresora.</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="259"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Barra de herramientas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="292"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished">Ajustar ancho de página</translation>
+        <translation>Ajustar el ancho de página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="301"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished">Ajustar ancho y alto de la página</translation>
+        <translation>Ajustar el ancho y alto de la página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="310"/>
         <source>Zoom arrière</source>
-        <translation type="unfinished">Reducir</translation>
+        <translation>Reducir zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="319"/>
         <source>Zoom avant</source>
-        <translation type="unfinished">Ampliar</translation>
+        <translation>Ampliar zoom</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="328"/>
         <source>Paysage</source>
-        <translation type="unfinished">Apaisado</translation>
+        <translation>Apaisado</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="337"/>
         <source>Portrait</source>
-        <translation type="unfinished">Retrato</translation>
+        <translation>Retrato</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="346"/>
         <source>Première page</source>
-        <translation type="unfinished">Primera página</translation>
+        <translation>Primera página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="355"/>
         <source>Page précédente</source>
-        <translation type="unfinished">Página anterior</translation>
+        <translation>Página anterior</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="364"/>
         <source>Page suivante</source>
-        <translation type="unfinished">Página siguiente</translation>
+        <translation>Página siguiente</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="373"/>
         <source>Dernière page</source>
-        <translation type="unfinished">Última página</translation>
+        <translation>Última página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="382"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar una sóla página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="391"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished">Mostrar dos páginas</translation>
+        <translation>Mostrar dos páginas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="400"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished">Mostrar vista preliminar de todas las páginas</translation>
+        <translation>Mostrar vista preliminar de todas las páginas</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="409"/>
         <source>mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Diseño de página</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="68"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished">Opciones de impresión</translation>
+        <translation>Opciones de impresión</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="109"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished">proyecto</translation>
+        <translation>proyecto</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="140"/>
         <source>Imprimer</source>
-        <translation type="unfinished">Imprimir</translation>
+        <translation>Imprimir</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="146"/>
         <source>Exporter en pdf</source>
-        <translation type="unfinished"></translation>
+        <translation>Exporta a PDF</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="169"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diseño de página (no disponible en Windows al exportar a PDF</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="433"/>
         <source>Folio sans titre</source>
-        <translation type="unfinished">Folio sin título</translation>
+        <translation>Folio sin título</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="672"/>
         <source>Exporter sous : </source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar a :</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.cpp" line="672"/>
         <source>Fichier (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichero (*.PDF)</translation>
     </message>
 </context>
 <context>
@@ -14216,7 +14216,7 @@ Ancho máximo : %2xp
     <message>
         <location filename="../sources/dataBase/projectdatabase.cpp" line="635"/>
         <source>sans_nom</source>
-        <translation type="unfinished"></translation>
+        <translation>sin nombre</translation>
     </message>
 </context>
 <context>
