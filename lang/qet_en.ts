@@ -7081,7 +7081,7 @@ Available options:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="232"/>
         <source>&amp;Ouvrir depuis un fichier</source>
-        <translation>&amp;Open from a file</translation>
+        <translation>Open from &amp;file</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="268"/>
@@ -7241,7 +7241,7 @@ Available options:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="241"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation>&amp;Starting the DXF converter plugin</translation>
+        <translation>Starting the &amp;DXF converter plugin</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1066"/>
