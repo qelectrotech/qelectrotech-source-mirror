@@ -6820,12 +6820,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="232"/>
         <source>&amp;Ouvrir depuis un fichier</source>
-        <translation>Aus einer Datei &amp;öffnen</translation>
+        <translation>Aus &amp;Datei öffnen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="241"/>
         <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation>DXF Konverter-P&amp;lugin ausführen</translation>
+        <translation>DXF Konverter-&amp;Plugin ausführen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="250"/>
@@ -6835,7 +6835,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="259"/>
         <source>Enregistrer sous</source>
-        <translation>Speichern unter</translation>
+        <translation>Speichern &amp;unter</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="268"/>
@@ -6900,12 +6900,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="286"/>
         <source>&amp;Fermer cet éditeur</source>
-        <translation>&amp;Schließen Sie diesen Editor</translation>
+        <translation>&amp;Editor schließen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="289"/>
         <source>Fermer cet éditeur</source>
-        <translation>Schließen Sie diesen Editor</translation>
+        <translation>Editor schließen</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="298"/>
@@ -7005,7 +7005,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="514"/>
         <source>Importer un dxf</source>
-        <translation>DXF importieren</translation>
+        <translation>DXF &amp;importieren</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="361"/>
@@ -7252,7 +7252,7 @@ veuillez patienter durant l&apos;import...</source>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="50"/>
         <source>&amp;Édition</source>
-        <translation>B&amp;earbeiten</translation>
+        <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="83"/>
@@ -7321,12 +7321,12 @@ veuillez patienter durant l&apos;import...</source>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1066"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
-        <translation>Fügt ein Bauteiltext ein, was im Schaltplaneditor NICHT bearbeitet werden kann</translation>
+        <translation>Fügt einen Bauteiltext ein, der im Schaltplaneditor NICHT bearbeitet werden kann</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1067"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
-        <translation>Fügt ein Bauteiltext ein, was im Schaltplaneditor bearbeitet werden kann</translation>
+        <translation>Fügt einen Bauteiltext ein, der im Schaltplaneditor bearbeitet werden kann</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="763"/>
@@ -7533,7 +7533,7 @@ les conditions requises ne sont pas valides</source>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1449"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
-        <translation>Dem virtuellen Pfad entspricht kein Bauteil.</translation>
+        <translation>Der gewählte virtuelle Pfad passt nicht zu einem Bauteil.</translation>
     </message>
 </context>
 <context>
