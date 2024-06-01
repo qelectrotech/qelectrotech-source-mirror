@@ -1,4 +1,4 @@
-; this file is part of installer for QElectroTech
+﻿; this file is part of installer for QElectroTech
 ; Copyright (C)2015 QElectroTech Team <scorpio@qelectrotech.org>
 ;
 ; This program is free software; you can redistribute it and/or
