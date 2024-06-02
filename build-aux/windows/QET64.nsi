@@ -266,13 +266,13 @@ Section ""
 	; write file associations registry keys
 	WriteRegStr   HKEY_CLASSES_ROOT "Applications\qelectrotech.exe\shell\open\command" ""             "$\"$final_qet_exe$\" $\"%1$\""
 	WriteRegStr   HKEY_CLASSES_ROOT ".qet"                                             ""             "qet_diagram_file"
-	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file"                                 ""             "Schéma QET"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file"                                 ""             "Diagram QET"
 	WriteRegDWORD HKEY_CLASSES_ROOT "qet_diagram_file"                                 "EditFlags"    0x00000000
 	WriteRegDWORD HKEY_CLASSES_ROOT "qet_diagram_file"                                 "BrowserFlags" 0x00000008
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\DefaultIcon"                     ""             "$final_project_ico"
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\shell\open\command"              ""             "$\"$final_qet_exe$\" $\"%1$\""
 	WriteRegStr   HKEY_CLASSES_ROOT ".elmt"                                            ""             "qet_element_file"
-	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                 ""             "Élément QET"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                 ""             "Element QET"
 	WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                 "EditFlags"    0x00000000
 	WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                 "BrowserFlags" 0x00000008
 	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\DefaultIcon"                     ""             "$final_element_ico"
