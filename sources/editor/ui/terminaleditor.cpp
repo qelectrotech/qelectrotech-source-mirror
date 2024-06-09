@@ -219,9 +219,9 @@ void TerminalEditor::activeConnections(bool active)
 {
 	if (active) {
 		m_editor_connections << connect(ui->m_x_dsb, QOverload<qreal>::of(&QDoubleSpinBox::valueChanged),
-										this, &TerminalEditor::posEdited);
+										[this]() { TerminalEditor::posEdited(); ui->m_x_dsb->setFocus();} ) ;
 		m_editor_connections << connect(ui->m_y_dsb, QOverload<qreal>::of(&QDoubleSpinBox::valueChanged),
-										this, &TerminalEditor::posEdited);
+										[this]() { TerminalEditor::posEdited(); ui->m_y_dsb->setFocus(); } ) ;
 		m_editor_connections << connect(ui->m_orientation_cb,  QOverload<int>::of(&QComboBox::activated),
 										this, &TerminalEditor::orientationEdited);
 		m_editor_connections << connect(ui->m_name_le, &QLineEdit::editingFinished,
