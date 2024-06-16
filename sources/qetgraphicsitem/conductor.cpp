@@ -1048,6 +1048,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	} else {
 		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
 		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
+		dom_element.setAttribute("terminalname1", terminal1->name());
 	}
 
 	if (terminal2->uuid().isNull()) {
@@ -1056,6 +1057,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	} else {
 		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
 		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
+		dom_element.setAttribute("terminalname2", terminal2->name());
 	}
 	dom_element.setAttribute("freezeLabel", m_freeze_label? "true" : "false");
 

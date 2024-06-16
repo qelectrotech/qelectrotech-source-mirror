@@ -744,6 +744,11 @@ QUuid Terminal::uuid() const
 	return d->m_uuid;
 }
 
+QString Terminal::name() const
+{
+	return d->m_name;
+}
+
 /**
 	@brief Conductor::relatedPotentialTerminal
 	Return terminal at the same potential from the same
