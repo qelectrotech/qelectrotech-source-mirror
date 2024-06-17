@@ -73,7 +73,8 @@ class Terminal : public QGraphicsObject
 		int       conductorsCount     () const;
 		Diagram  *diagram             () const;
 		Element  *parentElement       () const;
-		QUuid uuid                    () const;
+		QUuid     uuid                () const;
+		QString   name                () const;
 
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;
