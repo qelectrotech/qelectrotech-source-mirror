@@ -1041,11 +1041,6 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 	
-	if (terminal1->parentElement()->linkedElements().isEmpty()) {
-	} else {
-	dom_element.setAttribute("element1_linked", terminal1->parentElement()->linkedElements().last()->actualLabel());
-	}
-
 	// Terminal is uniquely identified by the uuid of the terminal and the element
 	if (terminal1->uuid().isNull()) {
 		// legacy method to identify the terminal
@@ -1053,23 +1048,27 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 	} else {
 		dom_element.setAttribute("element1", terminal1->parentElement()->uuid().toString());
 		dom_element.setAttribute("element1_label", terminal1->parentElement()->actualLabel());
+		if (terminal1->parentElement()->linkedElements().isEmpty()) {
+			//
+		} else {
+			dom_element.setAttribute("element1_linked", terminal1->parentElement()->linkedElements().last()->actualLabel());
+		}
 		dom_element.setAttribute("element1_name", terminal1->parentElement()->name());
 		dom_element.setAttribute("terminal1", terminal1->uuid().toString());
 		dom_element.setAttribute("terminalname1", terminal1->name());
-		
 	}
 
-	if (terminal2->parentElement()->linkedElements().isEmpty()) {
-	} else {
-	dom_element.setAttribute("element2_linked", terminal2->parentElement()->linkedElements().last()->actualLabel());
-	}
-	
 	if (terminal2->uuid().isNull()) {
 		// legacy method to identify the terminal
 		dom_element.setAttribute("terminal2", table_adr_id.value(terminal2)); // for backward compatibility
 	} else {
 		dom_element.setAttribute("element2", terminal2->parentElement()->uuid().toString());
 		dom_element.setAttribute("element2_label", terminal2->parentElement()->actualLabel());
+		if (terminal2->parentElement()->linkedElements().isEmpty()) {
+			//
+		} else {
+			dom_element.setAttribute("element2_linked", terminal2->parentElement()->linkedElements().last()->actualLabel());
+		}
 		dom_element.setAttribute("element2_name", terminal2->parentElement()->name());
 		dom_element.setAttribute("terminal2", terminal2->uuid().toString());
 		dom_element.setAttribute("terminalname2", terminal2->name());
