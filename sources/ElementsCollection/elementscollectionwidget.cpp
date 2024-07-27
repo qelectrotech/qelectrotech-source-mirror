@@ -189,6 +189,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tree_view = new ElementsTreeView(this);
 	m_tree_view->setHeaderHidden(true);
 	m_tree_view->setIconSize(QSize(50, 50));
+	m_tree_view->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_tree_view->setDragDropMode(QAbstractItemView::DragDrop);
 	m_tree_view->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_tree_view->setAutoExpandDelay(500);
