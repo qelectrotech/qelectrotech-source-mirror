@@ -231,7 +231,7 @@ echo
 echo "______________________________________________________________"
 echo "Create zip tarball:"
 
-/usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+/usr/bin/ditto -ck -rsrc --sequesterRsrc --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
 
 ### notarize zip tarball ###############################################
 echo  -e "\033[1;31mWould you like to upload for Notarize packages "${APPNAME}"-"$VERSION"-"r$HEAD-arm64.zip", n/Y?.\033[m"
@@ -294,7 +294,7 @@ echo
 echo "______________________________________________________________"
 echo "Re Create zip tarball:"
 
-/usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+/usr/bin/ditto -ck -rsrc --sequesterRsrc --keepParent/ $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
 
 
 # Clean up disk folder
