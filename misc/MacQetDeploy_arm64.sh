@@ -294,7 +294,7 @@ echo
 echo "______________________________________________________________"
 echo "Re Create zip tarball:"
 
-/usr/bin/ditto -ck -rsrc --sequesterRsrc --keepParent/ $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+/usr/bin/ditto -ck -rsrc --sequesterRsrc --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
 
 
 # Clean up disk folder
