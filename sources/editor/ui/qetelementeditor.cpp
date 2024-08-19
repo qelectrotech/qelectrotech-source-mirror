@@ -47,6 +47,7 @@
 #include "../../newelementwizard.h"
 #include "../editorcommands.h"
 #include "../../dxf/dxftoelmt.h"
+#include "../../qet_elementscaler/qet_elementscaler.h"
 #include "../UndoCommand/openelmtcommand.h"
 
 #include <QSettings>
@@ -1332,6 +1333,24 @@ void QETElementEditor::on_m_open_dxf_action_triggered()
 	DXF -> start(program,arguments);
 }
 
+void QETElementEditor::on_m_open_scaled_element_action_triggered()
+{
+#ifdef TODO_LIST
+#	pragma message("@TODO Merge 'Element-Scaling' code into QET")
+#	pragma message("https://github.com/plc-user/QET_ElementScaler")
+#endif
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+	QString program = (QDir::homePath() + "/Application Data/qet/QET_ElementScaler.exe");
+#elif defined(Q_OS_MAC)
+	QString program = (QDir::homePath() + "/.qet/QET_ElementScaler.app");
+#else
+	QString program = (QDir::homePath() + "/.qet/QET_ElementScaler");
+#endif
+	QStringList arguments;
+	QProcess *ES = new QProcess(qApp);
+	ES -> start(program,arguments);
+}
+
 bool QETElementEditor::on_m_save_as_file_action_triggered()
 {
 	// Check element before writing
@@ -1504,7 +1523,7 @@ void QETElementEditor::on_m_import_dxf_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   QObject::tr("Importer un fichier dxf"),
-													   "/home",
+													   QDir::homePath(),
 													   "DXF (*.dxf)")};
 		if (file_path.isEmpty()) {
 			return;
@@ -1514,6 +1533,29 @@ void QETElementEditor::on_m_import_dxf_triggered()
 															   "veuillez patienter durant l'import..."));
 
 		const QByteArray array_{dxfToElmt(file_path)};
+		if (array_.isEmpty()) {
+			return;
+		}
+		QDomDocument xml_;
+		xml_.setContent(array_);
+
+		m_elmt_scene->undoStack().push(new OpenElmtCommand(xml_, m_elmt_scene));
+	}
+}
+
+void QETElementEditor::on_m_import_scaled_element_triggered()
+{
+	if (ElementScalerIsPresent(true, this))
+	{
+		QString file_path{QFileDialog::getOpenFileName(this,
+													   tr("Importer un élément à redimensionner"),
+													   QDir::homePath(),
+													   tr("Éléments QElectroTech (*.elmt)"))};
+		if (file_path.isEmpty()) {
+			return;
+		}
+
+		const QByteArray array_{ElementScaler(file_path, this)};
 		if (array_.isEmpty()) {
 			return;
 		}
