@@ -258,6 +258,9 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dxf/dxftoelmt.cpp
   ${QET_DIR}/sources/dxf/dxftoelmt.h
 
+  ${QET_DIR}/sources/dxf/qet_elementscaler.cpp
+  ${QET_DIR}/sources/dxf/qet_elementscaler.h
+
   ${QET_DIR}/sources/editor/arceditor.cpp
   ${QET_DIR}/sources/editor/arceditor.h
   ${QET_DIR}/sources/editor/editorcommands.cpp
