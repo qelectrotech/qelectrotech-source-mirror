@@ -805,13 +805,13 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1645"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1661"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>Leitereigenschaften ändern</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1650"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1666"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>Eigenschaften von mehreren Leitern ändern</translation>
