@@ -9443,6 +9443,13 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="145"/>
         <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+        <translation>Die Software QET_ElementScaler wird benötigt, um Elemente zu skalieren.
+Bitte laden Sie diese über den unten stehenden Link herunter und entpacken Sie sie in den Installationsordner.</translation>
+    </message>
+    <message>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="100"/>
+        <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation></translation>
     </message>
 </context>

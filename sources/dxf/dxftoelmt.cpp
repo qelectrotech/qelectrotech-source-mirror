@@ -97,8 +97,8 @@ bool dxf2ElmtIsPresent(bool install_dialog, QWidget *parent)
 	const bool exist{QFile::exists(dxf2ElmtBinaryPath())};
 	if (!exist && install_dialog)
 	{
-		auto string_{QStringLiteral("L'import dxf nécessite le logiciel dxf2elmt. \n"
-									"Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d'installation")};
+		auto string_{QObject::tr("L'import dxf nécessite le logiciel dxf2elmt.\n"
+								 "Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d'installation")};
 
 		ThirdPartyBinaryInstallDialog dialog_(string_,
 											  QStringLiteral("https://github.com/antonioaja/dxf2elmt/releases"),
