@@ -9493,7 +9493,7 @@ Do you want to replace it ?</translation>
         <translation>direction</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="143"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="145"/>
         <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation>The QET_ElementScaler software is required to scale elements.

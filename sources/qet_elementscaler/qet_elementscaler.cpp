@@ -68,6 +68,8 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 	if (ok && !item.isEmpty()) {
 		mirrorIndex = items.indexOf(item, 0);
 	}
+	else
+		return QByteArray();
 
 	QProcess process_;
 	const QString program{ElementScalerBinaryPath()};
