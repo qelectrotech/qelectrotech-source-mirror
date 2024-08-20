@@ -41,7 +41,7 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 	bool ok;
 	double fx = QInputDialog::getDouble(parent, QObject::tr("Entrer le facteur d'échelle"),
 										QObject::tr("Facteur X:"), 1.0, 0.1, 100, 5, &ok,
-										Qt::WindowFlags(), 1);
+										Qt::WindowFlags());
 	QString sFactorX = "1.0";
 	if (ok)
 		sFactorX = (QString::number(fx, 'f', 5));
@@ -50,18 +50,41 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 
 	double fy = QInputDialog::getDouble(parent, QObject::tr("Entrer le facteur d'échelle"),
 										QObject::tr("Facteur Y:"), fx, 0.1, 100, 5, &ok,
-										Qt::WindowFlags(), 1);
+										Qt::WindowFlags());
 	QString sFactorY = "1.0";
 	if (ok)
 		sFactorY = (QString::number(fy, 'f', 5));
 	else
 		return QByteArray();
 
+	const QStringList items{QObject::tr("sans"),
+							QObject::tr("horizontal"),
+							QObject::tr("vertical"),
+							QObject::tr("horizontal + vertical")};
+	QString item = QInputDialog::getItem(parent,
+										 QObject::tr("Retourner l'élément :"),
+										 QObject::tr("direction"), items, 0, false, &ok);
+	int8_t mirrorIndex = 0;
+	if (ok && !item.isEmpty()) {
+		mirrorIndex = items.indexOf(item, 0);
+	}
+	else
+		return QByteArray();
+
 	QProcess process_;
 	const QString program{ElementScalerBinaryPath()};
-	const QStringList arguments{QStringLiteral("-x"), sFactorX,
-								QStringLiteral("-y"), sFactorY,
-								QStringLiteral("-o"), QStringLiteral("-f"), file_path};
+	QStringList arguments{QStringLiteral("-x"), sFactorX,
+						  QStringLiteral("-y"), sFactorY};
+	switch (mirrorIndex) {
+		case 1: arguments << QStringLiteral("--FlipHorizontal");
+				break;
+		case 2: arguments << QStringLiteral("--FlipVertical");
+				break;
+		case 3: arguments << QStringLiteral("--FlipHorizontal")
+						  << QStringLiteral("--FlipVertical");
+				break;
+	}
+	arguments << QStringLiteral("-o") << QStringLiteral("-f") << file_path;
 
 	process_.start(program, arguments);
 

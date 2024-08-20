@@ -9463,7 +9463,37 @@ Do you want to replace it ?</translation>
         <translation>Y Factor:</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="122"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="60"/>
+        <source>sans</source>
+        <translation>none</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="61"/>
+        <source>horizontal</source>
+        <translation>horizontal</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="62"/>
+        <source>vertical</source>
+        <translation>vertical</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="63"/>
+        <source>horizontal + vertical</source>
+        <translation>horizontal + vertical</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="65"/>
+        <source>Retourner l&apos;élément :</source>
+        <translation>Mirror element</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="66"/>
+        <source>direction</source>
+        <translation>direction</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="145"/>
         <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation>The QET_ElementScaler software is required to scale elements.
