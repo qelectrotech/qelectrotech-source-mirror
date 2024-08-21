@@ -9506,6 +9506,13 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
         <translation>Die Software QET_ElementScaler wird benötigt, um Elemente zu skalieren.
 Bitte laden Sie diese über den unten stehenden Link herunter und entpacken Sie sie in den Installationsordner.</translation>
     </message>
+    <message>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="100"/>
+        <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+        <translation>Für den dxf-Import ist die Software dxf2elmt erforderlich.
+Bitte laden Sie diese über den Link herunter und entpacken Sie sie in den Installationsordner.</translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
