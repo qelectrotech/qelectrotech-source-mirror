@@ -1,0 +1,15 @@
+name: Auto-changelog generation
+
+on:
+  pull_request:
+    branches: 
+    - master
+
+jobs:
+  changelog_gen:
+    runs-on: ubuntu-latest
+
+
+
+steps:
+  - uses: actions/checkout@v3
