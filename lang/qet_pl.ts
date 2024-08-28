@@ -2575,17 +2575,18 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="600"/>
         <source>Le dossier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Dokumenty</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="601"/>
         <source>contient</source>
-        <translation type="unfinished"></translation>
+        <translation>zawartość</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="602"/>
         <source>éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>elementy</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="605"/>
@@ -2668,13 +2669,14 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
         <location filename="../sources/elementspanel.cpp" line="239"/>
         <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="240"/>
         <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>To jest kolekcja tabliczek rysunkowych programu — użyj jej do tworzenia, przechowywania i edytowania własnych tabliczek.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="247"/>
@@ -3017,7 +3019,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="214"/>
         <source>SVG: fond transparent</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG: przeźroczysty</translation>
     </message>
 </context>
 <context>
@@ -3447,7 +3449,7 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
@@ -3467,12 +3469,12 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>Répertoire de la collection company</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog kolekcji programu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
         <source>Répertoire des cartouches company</source>
-        <translation type="unfinished"></translation>
+        <translation>Katalog tabliczek rysunkowych programu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="386"/>
@@ -3561,12 +3563,13 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
         <source>Editor</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Edytor</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="896"/>
         <source>Max. parts in Element Editor List</source>
-        <translation type="unfinished"></translation>
+        <translation>Maksymalna ilość na liście Edytora Elementów</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
@@ -3748,22 +3751,24 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
         <source>Chinois</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiński</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="453"/>
         <source>Chemin de la collection company</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Ścieżka do kolekcji programu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="481"/>
         <source>Chemin des cartouches company</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Ścieżka do tabliczek rysunkowych programu</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="524"/>
         <source>To high values might lead to crashes of the application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zbyt wysokie wartość mogą spowodować przeciążenie oprogramowania.</translation>
     </message>
 </context>
 <context>
@@ -4399,7 +4404,7 @@ Użyj do tego zaawansowanego edytora.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="52"/>
         <source>Enregistrer la disposition</source>
-        <translation type="unfinished">Zapisz pozycję</translation>
+        <translation>Zapisz pozycję</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="464"/>
@@ -5647,7 +5652,8 @@ Czy chcesz zapisać zmiany?</translation>
         <location filename="../sources/qetapp.cpp" line="457"/>
         <source>Cartouches company</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Tabliczki rysunkowe oprogramowania</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="477"/>
@@ -6115,7 +6121,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished">Ctrl+Shift+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
@@ -6901,12 +6907,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="287"/>
         <source>&amp;Fermer cet éditeur</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zamknij edytor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="290"/>
         <source>Fermer cet éditeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Zamknij edytor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="299"/>
@@ -7007,7 +7013,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="524"/>
         <source>importer un élément à redimensionner</source>
-        <translation type="unfinished"></translation>
+        <translation>importuj element i zmień jego rozmiar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1043"/>
@@ -7373,7 +7379,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="496"/>
         <source>Trop de primitives, liste non générée: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zbyt dużo elementów podstawowych, lista nie zostanie wygenerowana: %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="955"/>
@@ -7383,7 +7389,12 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on Windows
 Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w systemie Windows
+Umieść plik binarny DXFtoQET.exe w katalogu C:\Users\user_name\AppData\Roaming\qet\ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="961"/>
@@ -7393,7 +7404,12 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w systemie macOSX
+Umieść plik binarny DXFtoQET.app w katalogu /Users/user_name/.qet/ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
@@ -7404,7 +7420,13 @@ Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
 Put DXFtoQET binary on your /home/user_name/.qet/ directory
 make it executable : chmod +x ./DXFtoQET
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w systemie Linux
+Umieść plik binarny DXFtoQET w katalogu /home/user_name/.qet/ directory
+ustaw go jako wykonywalny: chmod +x ./DXFtoQET
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="975"/>
@@ -7420,12 +7442,24 @@ Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory
 &gt;&gt; Install on macOSX
 Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Aby zainstalować wtyczkę DXFtoQET
+Odwiedź https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
+
+&gt;&gt; Instalacja w systemie Linux
+Umieść plik binarny DXFtoQET w katalogu /home/user_name/.qet/ directory
+ustaw go jako wykonywalny: chmod +x ./DXFtoQET
+
+&gt;&gt; Instalacja w systemie Windows
+Umieść plik binarny DXFtoQET.exe w katalogu C:\Users\user_name\AppData\Roaming\qet\ 
+
+&gt;&gt; Instalacja w systemie macOSX
+Umieść plik binarny DXFtoQET.app w katalogu /Users/user_name/.qet/ 
+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1016"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1532"/>
@@ -7442,12 +7476,12 @@ proszę czekać podczas importowania...</translation>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1551"/>
         <source>Importer un élément à redimensionner</source>
-        <translation type="unfinished"></translation>
+        <translation>importuj element i zmień jego rozmiar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1553"/>
         <source>Éléments QElectroTech (*.elmt)</source>
-        <translation type="unfinished">Elementy QElectroTech (*.elmt)</translation>
+        <translation>Elementy QElectroTech (*.elmt)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="846"/>
@@ -8876,7 +8910,8 @@ Co chcesz zrobić?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="126"/>
         <source>Collection Company</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Kolekcja programu</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="128"/>
@@ -9244,7 +9279,8 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2431"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Aby zainstalować wtyczkę qet_tb_generator&lt;br&gt;Odwiedź:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Pierwsza instalacja na macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Zailstaluj, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Uruchom Profile.command script&lt;br&gt;ponieważ program używa zakodowanego na stałe PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2450"/>
@@ -9492,64 +9528,68 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.cpp" line="70"/>
         <source>%p% effectué (%v sur %m)</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>%p% przeprowadzone (%v nad %m)</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.cpp" line="26"/>
         <source>Disposition par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślny układ</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="42"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="51"/>
         <source>Entrer le facteur d&apos;échelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Wprowadź współczynnik skali</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="43"/>
         <source>Facteur X:</source>
-        <translation type="unfinished"></translation>
+        <translation>Współczynnik X:</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="52"/>
         <source>Facteur Y:</source>
-        <translation type="unfinished"></translation>
+        <translation>Współczynnik Y:</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="60"/>
         <source>sans</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>bez</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="61"/>
         <source>horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>horyzontalny</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="62"/>
         <source>vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>wertykalny</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="63"/>
         <source>horizontal + vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>horyzontalny + wertykalny</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="65"/>
         <source>Retourner l&apos;élément :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Odwróć element:</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="66"/>
         <source>direction</source>
-        <translation type="unfinished"></translation>
+        <translation>kierunek</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="145"/>
         <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Do skalowania elementów wymagane jest oprogramowanie QET_ElementScaler.
+Pobierz go, klikając poniższy link i rozpakuj w folderze instalacyjnym</translation>
     </message>
 </context>
 <context>
@@ -10140,7 +10180,8 @@ skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zast�
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="20"/>
         <source>Label de report de folio</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Etykieta odnośnika arkusza</translation>
     </message>
     <message>
         <location filename="../sources/ui/reportpropertiewidget.ui" line="35"/>
@@ -10506,7 +10547,7 @@ Les autres champs ne sont pas utilisés.</source>
 - Każda zmienna określa: typ, wartość i inkrementację.
 
 - Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego przewodu o wartość określoną w polu &quot;Inkrementacja&quot;.
-- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie.
 Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
 
 - Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
@@ -10516,7 +10557,7 @@ Pole &quot;Inkrementacja&quot; nie jest używane.</translation>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="259"/>
         <source>Element Autonumérotation</source>
         <comment>title window</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatyczne numerowanie elementu</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="261"/>
@@ -10538,7 +10579,23 @@ Les autres champs ne sont pas utilisés.
 -Le type &quot;Folio&quot; représente le nom du folio en cours.
 Les autres champs ne sont pas utilisés.</source>
         <comment>help dialog about the element autonumerotation</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować w jaki sposób będą numerowane nowe elementy.
+- Każdy numer składa się z minimum jednej zmiennej.
+- Można dodawać i usuwać zmienne numeru za pomocą przycisków + i -.
+- Każda zmienna określa: typ, wartość i inkrementację.
+
+-Typ numeracji &quot;Numer 1&quot;, &quot;Numer 01&quot;, &quot;Numer 001&quot; oznacza ilość cyfr w numerze dla pola &quot;Wartość&quot;, która zwiększy się dla każdego nowego elementu o wartość określoną w polu &quot;Inkrementacja&quot;.
+- &quot;Numer 01&quot; i &quot;Numer 001&quot; oznacza odpowiednio dwie lub trzy cyfry w schemacie.
+Jeżeli numer określony w polu &quot;Wartość&quot; składa się z mniejszej ilości cyfr niż zostało to określone w polu &quot;Typ&quot;, cyfry zostaną poprzedzone jednym lub dwoma zerami dla zachowania zgodności typu.
+
+- Typ &quot;Tekst&quot; oznacza tekst, który nie podlega zmianom.
+Pole &quot;Inkrementacja&quot; nie jest używane.
+
+-Pole &quot;Nr arkusza&quot; oznacza numer bieżącego arkusza.
+Pozostałe pola nie są używane.
+
+-Pole &quot;Folio&quot; oznacza nazwę bieżącego arkusza.
+Pozostałe pola nie są używane.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.cpp" line="233"/>
@@ -10708,7 +10765,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="182"/>
         <source>Modifier le trait d&apos;une forme</source>
-        <translation type="unfinished"></translation>
+        <translation>Zmiana obrysu kształtu</translation>
     </message>
     <message>
         <location filename="../sources/ui/shapegraphicsitempropertieswidget.cpp" line="197"/>
@@ -13092,117 +13149,121 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="23"/>
         <source>Borne niveau 0 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal poziomu 0:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="30"/>
         <source>En tête :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Góra:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="47"/>
         <source>Point de pont</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne (dosłownie punkt mostowy)</translatorcomment>
+        <translation>Zwornik</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="75"/>
         <source>Décalage vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Przesunięcie pionowe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="82"/>
         <source>Afficher l&apos;aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokaż pomoc</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="110"/>
         <source>Largeur</source>
-        <translation type="unfinished">Szerokość</translation>
+        <translation>Szerokość</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="131"/>
         <source>Hauteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Wysokość</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="138"/>
         <source>Prévisualisation :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Zapowiedź:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="196"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="215"/>
         <source>Gauche</source>
-        <translation type="unfinished">Lewo</translation>
+        <translation>Lewo</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="201"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="220"/>
         <source>Centre</source>
-        <translation type="unfinished">Środek</translation>
+        <translation>Środek</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="206"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="225"/>
         <source>Droite</source>
-        <translation type="unfinished">Prawo</translation>
+        <translation>Prawo</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="233"/>
         <source>Alignement du texte d&apos;en tête :</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyrównanie tekstu nagłówka:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="240"/>
         <source>Alignement du texte de borne :</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyrównanie tekstu zacisku:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="248"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="262"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Linie pionowe</translation>
+        <translation>Pionowa</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="253"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="267"/>
         <source>Vertical</source>
-        <translation type="unfinished">Linie poziome</translation>
+        <translation>Pozioma</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="275"/>
         <source>Orientation du texte de borne :</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientacja tekstu zacisku:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="282"/>
         <source>Orientation du texte d&apos;en tête :</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientacja tekstu nagłówka:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="299"/>
         <source>Borne niveau 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal poziomu 2:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="313"/>
         <source>Espace :</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>niepewne</translatorcomment>
+        <translation>Dystans:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="369"/>
         <source>Borne niveau 3 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal poziomu 3:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="383"/>
         <source>Borne niveau 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminal poziomu 1:</translation>
     </message>
 </context>
 <context>
@@ -13263,7 +13324,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/TerminalStrip/ui/ConfigPage/terminalstripprojectconfigpage.cpp" line="33"/>
         <source>Plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Plan zacisków</translation>
     </message>
 </context>
 <context>
