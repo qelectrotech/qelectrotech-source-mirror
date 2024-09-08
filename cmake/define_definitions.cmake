@@ -69,3 +69,7 @@ else()
 endif()
 message("QET_COMPONENTS            :" ${QET_COMPONENTS})
 message("Qt version                :" ${Qt${QT_VERSION_MAJOR}_VERSION})
+
+if(QMFILES_AS_RESOURCE)
+  add_definitions(-DQMFILES_AS_RESOURCE)
+endif()

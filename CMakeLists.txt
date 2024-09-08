@@ -71,10 +71,6 @@ find_package(
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
-qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
-qt_add_translation(QM_FILES ${TS_FILES})
-
 # als laatse
 include(cmake/define_definitions.cmake)
 
@@ -85,6 +81,14 @@ add_executable(
   ${QM_FILES}
   ${QET_DIR}/qelectrotech.qrc
   )
+
+if(QMFILES_AS_RESOURCE)
+  qt_add_translations(${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/lang")
+else()
+  qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+  set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
+  qt_add_translation(QM_FILES ${TS_FILES})
+endif()
 
 find_package(SQLite3 REQUIRED)
 
@@ -152,6 +156,7 @@ install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share
 install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
 install(FILES misc/qelectrotech.xml DESTINATION share/mime/packages)
 install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
-install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
-
+if(NOT QMFILES_AS_RESOURCE)
+  install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
+endif()
 endif()
