@@ -30,7 +30,7 @@
 
 //Code to use QColor as key for QHash
 inline uint qHash(const QColor &key, uint seed) {
-	return qHash(key.name(), seed);
+	return qHash((QString)key.name(), (size_t)seed);
 }
 
 //needed to use QPointer<Element> as key of QHash
