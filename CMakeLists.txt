@@ -86,12 +86,15 @@ add_executable(
   ${QET_DIR}/qelectrotech.qrc
   )
 
+find_package(SQLite3 REQUIRED)
+
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
   PRIVATE
   pugixml::pugixml
   SingleApplication::SingleApplication
+  SQLite::SQLite3
   ${KF6_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES}
   )

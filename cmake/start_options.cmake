@@ -29,4 +29,4 @@ add_definitions(-DQET_ALLOW_OVERRIDE_CD_OPTION)
 add_definitions(-DQET_ALLOW_OVERRIDE_DD_OPTION)
 
 #comment the line below to disable the project database export
-#add_definitions(-DQET_EXPORT_PROJECT_DB) #error Todo
+add_definitions(-DQET_EXPORT_PROJECT_DB)
