@@ -50,13 +50,13 @@ if(NOT DEFINED QT_VERSION_MAJOR)
    REQUIRED
    )
 endif()
-message(".. QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
 find_package(
   Qt${QT_VERSION_MAJOR}
  COMPONENTS
  ${QET_COMPONENTS}
  REQUIRED)
+ message(".. Qt version                :" ${Qt${QT_VERSION_MAJOR}_VERSION})
 
 Include(FetchContent)
 

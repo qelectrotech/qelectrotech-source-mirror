@@ -51,7 +51,6 @@ if(NOT DEFINED QT_VERSION_MAJOR)
    REQUIRED
    )
 endif()
-message(".. QT_VERSION_MAJOR          :" ${QT_VERSION_MAJOR})
 
 find_package(
   Qt${QT_VERSION_MAJOR}
@@ -59,6 +58,7 @@ find_package(
  ${QET_COMPONENTS}
  Test
  REQUIRED)
+ message(".. Qt version                :" ${Qt${QT_VERSION_MAJOR}_VERSION})
 
 include(../../cmake/fetch_kdeaddons.cmake)
 include(../../cmake/fetch_singleapplication.cmake)
