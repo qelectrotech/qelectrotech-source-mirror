@@ -103,7 +103,7 @@ bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 
 	// parse its content as XML
 	QDomDocument xml_doc;
-	bool xml_parsing = xml_doc.setContent(&template_file);
+	bool xml_parsing = (bool)xml_doc.setContent(&template_file);
 	if (!xml_parsing) {
 		return(false);
 	}
