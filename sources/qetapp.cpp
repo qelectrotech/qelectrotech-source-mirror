@@ -45,7 +45,7 @@
 #define STRINGIFY(x) #x
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -2368,7 +2368,7 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 	return;
 #else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();

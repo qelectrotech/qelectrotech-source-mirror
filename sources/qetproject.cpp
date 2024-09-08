@@ -86,7 +86,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	init();
 }
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 /**
 	@brief QETProject::QETProject
@@ -330,7 +330,7 @@ void QETProject::setFilePath(const QString &filepath)
 	if (filepath == m_file_path) {
 		return;
 	}
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
@@ -1911,7 +1911,7 @@ NamesList QETProject::namesListForIntegrationCategory()
 */
 void QETProject::writeBackup()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 #	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 	QDomDocument xml_project(toXml());

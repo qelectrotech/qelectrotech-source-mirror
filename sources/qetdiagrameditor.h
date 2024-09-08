@@ -43,7 +43,7 @@ class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
 class AutoNumberingDockWidget;
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 class KAutoSaveFile;
 #endif
@@ -69,7 +69,7 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *currentProjectView() const;
 		QETProject *currentProject() const;
 		bool drawGrid() const;
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 		void openBackupFiles (QList<KAutoSaveFile *> backup_files);
 #endif
