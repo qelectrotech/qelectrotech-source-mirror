@@ -736,6 +736,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_sk.ts
   ${QET_DIR}/lang/qet_sl.ts
   ${QET_DIR}/lang/qet_sr.ts
+  ${QET_DIR}/lang/qet_sv.ts
   ${QET_DIR}/lang/qet_tr.ts
   ${QET_DIR}/lang/qet_zh.ts
   )

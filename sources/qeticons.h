@@ -218,6 +218,7 @@ namespace QET {
 		extern QIcon uk;
 		extern QIcon mn;
 		extern QIcon zh;
+		extern QIcon se;
 		extern QIcon translation;
 		extern QIcon listDrawings;
 		extern QIcon AutoNum;

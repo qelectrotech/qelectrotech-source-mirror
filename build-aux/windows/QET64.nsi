@@ -125,6 +125,7 @@
         !insertmacro MUI_LANGUAGE "Dutch"
         !insertmacro MUI_LANGUAGE "Dutch_Belgium"
         !insertmacro MUI_LANGUAGE "Danish"
+        !insertmacro MUI_LANGUAGE "Swedish"
 	!insertmacro MUI_RESERVEFILE_LANGDLL
 	
 	!include lang_extra.nsh
