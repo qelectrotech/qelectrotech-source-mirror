@@ -45,7 +45,6 @@ if(NOT DEFINED QT_VERSION_MAJOR)
     QT
    NAMES
     Qt6
-    Qt5
    COMPONENTS
     ${QET_COMPONENTS}
    REQUIRED
@@ -85,6 +84,6 @@ target_link_libraries(
     PUBLIC
     gmock gmock_main
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF6_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 

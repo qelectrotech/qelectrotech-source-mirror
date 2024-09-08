@@ -58,7 +58,6 @@ find_package(
   QT
  NAMES
   Qt6
-  Qt5
  COMPONENTS
   ${QET_COMPONENTS}
  REQUIRED
@@ -71,9 +70,10 @@ find_package(
  REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+
+qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
-qt5_add_translation(QM_FILES ${TS_FILES})
+qt_add_translation(QM_FILES ${TS_FILES})
 
 # als laatse
 include(cmake/define_definitions.cmake)
@@ -92,7 +92,7 @@ target_link_libraries(
   PRIVATE
   pugixml::pugixml
   SingleApplication::SingleApplication
-  ${KF5_PRIVATE_LIBRARIES}
+  ${KF6_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES}
   )
 
