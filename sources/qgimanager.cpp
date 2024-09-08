@@ -89,18 +89,6 @@ void QGIManager::release(const QList<QGraphicsItem *> &qgis) {
 	foreach(QGraphicsItem *qgi, qgis) release(qgi);
 }
 
-void QGIManager::manage(const QVector<QGraphicsItem *> &items) {
-	for (const auto &qgi : items) {
-		manage(qgi);
-	}
-}
-
-void QGIManager::release(const QVector<QGraphicsItem *> &items) {
-	for (const auto &qgi : items) {
-		release(qgi);
-	}
-}
-
 /**
 	Indique au QGIManager de detruire les QGraphicsItem restants lors de sa
 	destruction si ceux-ci n'appartiennent pas a la scene
