@@ -29,12 +29,12 @@
 #include "modelTerminalData.h"
 
 //Code to use QColor as key for QHash
-inline uint qHash(const QColor &key, uint seed) {
-	return qHash((QString)key.name(), (size_t)seed);
+inline size_t qHash(const QColor &key, size_t seed) {
+	return qHash(key.name(), seed);
 }
 
 //needed to use QPointer<Element> as key of QHash
-inline uint qHash(const QPointer<Element> &key, uint seed) {
+inline size_t qHash(const QPointer<Element> &key, size_t seed) {
 	if (key)
 		return qHash(key->uuid(), seed);
 	else
