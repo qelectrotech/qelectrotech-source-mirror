@@ -639,7 +639,7 @@ bool TerminalStrip::isBridgeable(const QVector<QSharedPointer<RealTerminal>> &re
 		// Get the physical terminal and pos
 	auto first_physical_terminal = first_real_terminal->physicalTerminal();
 	QVector<shared_physical_terminal> physical_vector{first_physical_terminal};
-	QVector<int> pos_vector{m_physical_terminals.indexOf(first_physical_terminal)};
+	QVector<qsizetype> pos_vector{m_physical_terminals.indexOf(first_physical_terminal)};
 
 	auto bridge_ = isBridged(first_real_terminal);
 		//bool to know at the end of this function if at least one terminal is not bridged
