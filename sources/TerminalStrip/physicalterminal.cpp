@@ -131,7 +131,7 @@ bool PhysicalTerminal::setLevelOf(const QSharedPointer<RealTerminal> &terminal, 
 	if (i >= 0)
 	{
 #if QT_VERSION >= QT_VERSION_CHECK(5,14,0)
-		m_real_terminal.swapItemsAt(i, std::min(level, m_real_terminal.size()-1));
+		m_real_terminal.swapItemsAt(i, std::min((qsizetype)level, m_real_terminal.size()-1));
 #else
 		auto j = std::min(level, m_real_terminal.size()-1);
 		std::swap(m_real_terminal.begin()[i], m_real_terminal.begin()[j]);
