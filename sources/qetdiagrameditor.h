@@ -195,7 +195,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_terminal_strip_dialog = nullptr, ///<Launch terminal strip dialog
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
+#ifdef QET_EXPORT_PROJECT_DB
 		*m_export_project_db,		///Export to file the internal database of the current project
+#endif
 		*m_tile_window,			///< Show MDI subwindows as tile
 		*m_cascade_window,		///< Show MDI subwindows as cascade
 		*m_previous_window,		///< Switch to the previous document
