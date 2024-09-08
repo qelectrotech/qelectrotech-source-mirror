@@ -941,8 +941,8 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 	} else {
 		// separate previous digits from last digit
 		// separe les digits precedents du dernier digit
-		QString first_digits(string.left(string.count() - 1));
-		QChar last_digit(string.at(string.count() - 1));
+		QString first_digits(string.left(string.length() - 1));
+		QChar last_digit(string.at(string.length() - 1));
 		if (last_digit != 'Z') {
 			// increments the last digit
 			// incremente le dernier digit
