@@ -55,7 +55,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 		item_list = diagram->items();
 	}
 
-	for (const auto &item : qAsConst(item_list))
+	for (const auto &item : std::as_const(item_list))
 	{
 		switch (item->type())
 		{
@@ -391,10 +391,10 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const
 	if (filter & ElementTextFields) for(auto qgi : m_element_texts) items_list << qgi;
 	if (filter & TextGroup)			for(auto qgi : m_texts_groups)  items_list << qgi;
 	if (filter & Tables)            for(auto qgi : m_tables)        items_list << qgi;
-	if (filter & TerminalStrip)     for(const auto qgi : qAsConst(m_terminal_strip)) items_list << qgi;
+	if (filter & TerminalStrip)     for(const auto qgi : std::as_const(m_terminal_strip)) items_list << qgi;
 
 	if (filter & SelectedOnly) {
-		for(const auto &qgi : qAsConst(items_list)) {
+		for(const auto &qgi : std::as_const(items_list)) {
 			if (!qgi -> isSelected()) items_list.removeOne(qgi);
 		}
 	}
@@ -420,7 +420,7 @@ int DiagramContent::count(int filter) const
 		if (filter & ElementTextFields)  for(auto deti      : m_element_texts)        { if (deti      -> isSelected()) ++ count; }
 		if (filter & TextGroup)          for(auto etig      : m_texts_groups)         { if (etig      -> isSelected()) ++ count; }
 		if (filter & Tables)             for(auto table     : m_tables)               { if (table     -> isSelected()) ++ count;  }
-		if (filter & TerminalStrip)      for(const auto &strip : qAsConst(m_terminal_strip)) {if (strip->isSelected()) ++ count;}
+		if (filter & TerminalStrip)      for(const auto &strip : std::as_const(m_terminal_strip)) {if (strip->isSelected()) ++ count;}
 	}
 	else {
 		if (filter & Elements)           count += m_elements.count();

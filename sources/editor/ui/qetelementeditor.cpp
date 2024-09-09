@@ -1069,7 +1069,7 @@ void QETElementEditor::updateAction()
 			<< ui->m_revert_selection_action
 			<< ui->m_paste_from_file_action
 			<< ui->m_paste_from_element_action;
-	for (auto action : qAsConst(ro_list)) {
+	for (auto action : std::as_const(ro_list)) {
 		action->setDisabled(m_read_only);
 	}
 
@@ -1084,7 +1084,7 @@ void QETElementEditor::updateAction()
 				<< ui->m_flip_action
 				<< ui->m_mirror_action;
 	auto items_selected = !m_read_only && m_elmt_scene->selectedItems().count();
-	for (auto action : qAsConst(select_list)) {
+	for (auto action : std::as_const(select_list)) {
 		action->setEnabled(items_selected);
 	}
 

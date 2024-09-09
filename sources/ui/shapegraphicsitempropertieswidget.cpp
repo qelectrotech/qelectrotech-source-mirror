@@ -504,7 +504,7 @@ void ShapeGraphicsItemPropertiesWidget::setUpEditConnection()
 
 void ShapeGraphicsItemPropertiesWidget::clearEditConnection()
 {
-	for (const auto &c : qAsConst(m_edit_connection)) {
+	for (const auto &c : std::as_const(m_edit_connection)) {
 		disconnect(c);
 	}
 	m_edit_connection.clear();

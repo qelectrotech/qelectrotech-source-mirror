@@ -85,7 +85,7 @@ QDomElement TerminalStripBridge::toXml(QDomDocument &parent_document) const
 	root_elmt.setAttribute(QStringLiteral("color"), m_color.name());
 
 	auto terminals_elmt = parent_document.createElement(QStringLiteral("real_terminals"));
-	for (const auto &real_t : qAsConst(m_real_terminals))
+	for (const auto &real_t : std::as_const(m_real_terminals))
 	{
 		if (real_t)
 		{

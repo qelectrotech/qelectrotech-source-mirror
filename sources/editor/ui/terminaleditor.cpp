@@ -229,7 +229,7 @@ void TerminalEditor::activeConnections(bool active)
 		m_editor_connections << connect(ui->m_type_cb, QOverload<int>::of(&QComboBox::activated),
 										this, &TerminalEditor::typeEdited);
 	} else {
-		for (auto const & con : qAsConst(m_editor_connections)) {
+		for (auto const & con : std::as_const(m_editor_connections)) {
 			QObject::disconnect(con);
 		}
 		m_editor_connections.clear();
