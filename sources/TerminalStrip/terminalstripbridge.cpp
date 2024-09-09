@@ -106,7 +106,7 @@ void TerminalStripBridge::fromXml(const QDomElement &dom_element)
 	}
 
 	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid"), m_uuid.toString()));
-	m_color.setNamedColor(dom_element.attribute(QStringLiteral("color")));
+	m_color = QColor::fromString(dom_element.attribute(QStringLiteral("color")));
 
 	const auto real_t_vector = QETXML::subChild(dom_element,
 										 QStringLiteral("real_terminals"),
