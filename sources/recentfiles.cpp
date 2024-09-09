@@ -33,7 +33,7 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 	menu_(nullptr)
 {
 	mapper_ = new QSignalMapper(this);
-	connect(mapper_, SIGNAL(mapped(const QString &)), this, SLOT(handleMenuRequest(const QString &)));
+	connect(mapper_, &QSignalMapper::mappedString, this, &RecentFiles::handleMenuRequest);
 
 	extractFilesFromSettings();
 	buildMenu();
