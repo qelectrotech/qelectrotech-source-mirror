@@ -68,7 +68,7 @@ else()
   add_definitions(-DBUILD_WITHOUT_KF6)
 endif()
 message("QET_COMPONENTS            :" ${QET_COMPONENTS})
-message("Qt version                :" ${Qt${QT_VERSION_MAJOR}_VERSION})
+message("Qt version                :" ${Qt6_VERSION})
 
 if(QMFILES_AS_RESOURCE)
   add_definitions(-DQMFILES_AS_RESOURCE)
