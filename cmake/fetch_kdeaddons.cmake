@@ -14,42 +14,55 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-message(" - fetch_kdeaddons")
+message(STATUS "fetch_kdeaddons")
 
-if(DEFINED BUILD_WITH_KF6)
-  Include(FetchContent)
-
-  option(BUILD_KF6 "Build KF6 libraries, use system ones otherwise" NO)
+if(BUILD_WITH_KF6)
+  option(BUILD_KF6 "Build KF6 libraries, use system ones otherwise" OFF)
+  block(PROPAGATE KF6_GIT_TAG)
+  set(BUILD_TESTING OFF)
+  set(KDE_SKIP_TEST_SETTINGS ON)
+  set(BUILD_DESIGNERPLUGIN OFF)
+  set(KCOREADDONS_USE_QML OFF)
+  find_package(ECM REQUIRED NO_MODULE)
+  list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+  set(ecm_version ${ECM_VERSION})
 
   if(BUILD_KF6)
+    Include(FetchContent)
 
     if(NOT DEFINED KF6_GIT_TAG)
       set(KF6_GIT_TAG v6.5.0)
     endif()
-
-    # 
-    set(BUILD_TESTING OFF)
-    FetchContent_Declare(
-      ecm
-      GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
-      GIT_TAG        ${KF6_GIT_TAG})
-    FetchContent_MakeAvailable(ecm)
 
     FetchContent_Declare(
       kcoreaddons
       GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
       GIT_TAG        ${KF6_GIT_TAG})
     FetchContent_MakeAvailable(kcoreaddons)
+    get_target_property(kca_version KF6::CoreAddons VERSION)
 
     FetchContent_Declare(
       kwidgetsaddons
       GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
       GIT_TAG        ${KF6_GIT_TAG})
     FetchContent_MakeAvailable(kwidgetsaddons)
+    get_target_property(kwa_version KF6::WidgetsAddons VERSION)
   else()
     find_package(KF6CoreAddons REQUIRED)
+    set(kca_version ${KF6CoreAddons_VERSION})
     find_package(KF6WidgetsAddons REQUIRED)
-  endif()
+    set(kwa_version ${KF6WidgetsAddons_VERSION})
+    endif()
+
+  get_target_property(kca_type KF6::WidgetsAddons TYPE)
+  get_target_property(kwa_type KF6::CoreAddons TYPE)
+
+  message(NOTICE "ecm version            : " ${ecm_version})
+  message(NOTICE "kcoreaddons library    : " ${kca_type})
+  message(NOTICE "kcoreaddons version    : " ${kca_version})
+  message(NOTICE "kwidgetsaddons library : " ${kwa_type})
+  message(NOTICE "kwidgetsaddons version : " ${kwa_version})
+  endblock()
 
   set(KF6_PRIVATE_LIBRARIES
     KF6::WidgetsAddons

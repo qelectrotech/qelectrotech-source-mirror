@@ -27,6 +27,13 @@ project(qelectrotech
 include(cmake/copyright_message.cmake)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
+include(cmake/qet_compilation_vars.cmake)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(Qt6 REQUIRED COMPONENTS ${QET_COMPONENTS})
+qt_standard_project_setup()
 
 # Add sub directories
 option(PACKAGE_TESTS "Build the tests" ON)
@@ -43,38 +50,17 @@ include(cmake/git_last_commit_sha.cmake)
 include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
-include(cmake/qet_compilation_vars.cmake)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-SET(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(
-  QT
- NAMES
-  Qt6
- COMPONENTS
-  ${QET_COMPONENTS}
- REQUIRED
- )
-
-find_package(
-  Qt${QT_VERSION_MAJOR}
- COMPONENTS
- ${QET_COMPONENTS}
- REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
 # als laatse
 include(cmake/define_definitions.cmake)
 
-add_executable(
+qt_add_executable(
   ${PROJECT_NAME}
   ${QET_RES_FILES}
   ${QET_SRC_FILES}

@@ -17,6 +17,8 @@
 message(" - qet_compilation_vars")
 
 set(QET_COMPONENTS
+  Core
+  Gui
   LinguistTools
   PrintSupport
   Xml

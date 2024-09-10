@@ -62,7 +62,7 @@ message("PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
 message("QET_DIR                   :" ${QET_DIR})
 message("GIT_COMMIT_SHA            :" ${GIT_COMMIT_SHA})
 
-if(BUILD_WITH_KF6)
+if(BUILD_WITH_KF6 AND BUILD_KF6)
   message("KF6_GIT_TAG               :" ${KF6_GIT_TAG})
 else()
   add_definitions(-DBUILD_WITHOUT_KF6)
