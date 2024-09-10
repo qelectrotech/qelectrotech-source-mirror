@@ -16,7 +16,7 @@
 
 include(cmake/hoto_update_cmake_message.cmake)
 
-cmake_minimum_required(VERSION 3.14...3.19 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.21.1 FATAL_ERROR)
 
 project(qelectrotech
   VERSION 0.9.0
