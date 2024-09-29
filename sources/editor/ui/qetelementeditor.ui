@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>33</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_file_menu">
@@ -37,7 +37,6 @@
     <addaction name="m_open_from_file_action"/>
     <addaction name="m_import_scaled_element"/>
     <addaction name="m_import_dxf"/>
-    <addaction name="m_open_dxf_action"/>
     <addaction name="m_save_action"/>
     <addaction name="m_save_as_action"/>
     <addaction name="m_save_as_file_action"/>
@@ -231,15 +230,6 @@
    </property>
    <property name="text">
     <string>&amp;Ouvrir depuis un fichier</string>
-   </property>
-  </action>
-  <action name="m_open_dxf_action">
-   <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
-     <normaloff>:/ico/16x16/run-dxf.png</normaloff>:/ico/16x16/run-dxf.png</iconset>
-   </property>
-   <property name="text">
-    <string>&amp;Lancer le plugin convertisseur DXF</string>
    </property>
   </action>
   <action name="m_save_action">

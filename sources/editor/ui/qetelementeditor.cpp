@@ -951,39 +951,6 @@ void QETElementEditor::writeSettings() const
  */
 void QETElementEditor::setupActions()
 {
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
-					 "\n"
-					 ">> Install on Windows\n"
-					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n"
-					   ));
-#elif defined(Q_OS_MAC)
-	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
-					 "\n"
-					 ">> Install on macOSX\n"
-					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
-					  ));
-#else
-	ui->m_open_dxf_action -> setStatusTip(tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
-					 "\n"
-					 ">> Install on Linux\n"
-					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
-					 "make it executable : chmod +x ./DXFtoQET\n"
-					  ));
-#endif
-
-	ui->m_open_dxf_action -> setWhatsThis (tr("To install the plugin DXFtoQET\nVisit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/\n"
-					 "\n"
-					 ">> Install on Linux\n"
-					 "Put DXFtoQET binary on your /home/user_name/.qet/ directory\n"
-					 "make it executable : chmod +x ./DXFtoQET\n"
-					 ">> Install on Windows\n"
-					 "Put DXFtoQET.exe binary on C:\\Users\\user_name\\AppData\\Roaming\\qet\\ directory \n"
-					 "\n"
-					 ">> Install on macOSX\n"
-					 "Put DXFtoQET.app binary on /Users/user_name/.qet/ directory \n"
-					  ));
-
 	m_undo_action = m_elmt_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	m_redo_action = m_elmt_scene -> undoStack().createRedoAction(this, tr("Refaire"));
 	m_undo_action -> setIcon(QET::Icons::EditUndo);
@@ -1313,24 +1280,6 @@ void QETElementEditor::on_m_open_from_file_action_triggered()
 	QString open_dir = m_file_name.isEmpty() ? QETApp::customElementsDir() : QDir(m_file_name).absolutePath();
 	QString user_filename = QETElementEditor::getOpenElementFileName(this, open_dir);
 	openElement(user_filename);
-}
-
-void QETElementEditor::on_m_open_dxf_action_triggered()
-{
-#ifdef TODO_LIST
-#	pragma message("@TODO Merge 'DXF to GET-2020' code in to Qet")
-#	pragma message("https://github.com/qelectrotech/DXFtoQET-2020")
-#endif
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	QString program = (QDir::homePath() + "/Application Data/qet/DXFtoQET.exe");
-#elif defined(Q_OS_MAC)
-	QString program = (QDir::homePath() + "/.qet/DXFtoQET.app");
-#else
-	QString program = (QDir::homePath() + "/.qet/DXFtoQET");
-#endif
-	QStringList arguments;
-	QProcess *DXF = new QProcess(qApp);
-	DXF -> start(program,arguments);
 }
 
 void QETElementEditor::on_m_open_scaled_element_action_triggered()
