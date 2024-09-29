@@ -22,6 +22,8 @@
 #include <QProcess>
 #include <QMessageBox>
 #include <QDir>
+#include <iostream>
+#include <QDebug>
 
 /**
  * @brief dxftoElmt
@@ -43,12 +45,15 @@ QByteArray dxfToElmt(const QString &file_path)
 	const QStringList arguments{file_path, QStringLiteral("-v")};
 
 	process_.start(program, arguments);
-
+	
 	if (process_.waitForFinished())
 	{
-		const auto byte_array{process_.readAll()};
-		process_.close();
-		return byte_array;
+		qInfo()<<"\n Start converting DXF file..........\n"<< file_path;
+		qInfo()<< process_.readAllStandardError(); //Print standard error to log file
+		
+			const auto byte_array{process_.readAll()};
+			process_.close();
+			return byte_array;
 	}
 	else
 	{
