@@ -9,8 +9,6 @@ if [ ! -d "$to" ] && [ -d "$from" ]; then
   cp -av "$from/." "$to"
 fi
 
-# link DXFtoQET so that QET finds it
-mkdir -p "$HOME/.qet"
-ln -snf "$SNAP/bin/DXFtoQET" "$HOME/.qet/DXFtoQET"
+
 
 exec "${@}"
