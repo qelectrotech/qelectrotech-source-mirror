@@ -49,7 +49,7 @@ QByteArray dxfToElmt(const QString &file_path)
 	if (process_.waitForFinished())
 	{
 		qInfo()<<"\n Start converting DXF file..........\n"<< file_path;
-		qInfo()<< process_.readAllStandardError(); //Print standard error to log file
+		qInfo()<< process_.readAllStandardError().data(); //Print standard error to log file
 		
 			const auto byte_array{process_.readAll()};
 			process_.close();
