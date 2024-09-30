@@ -96,7 +96,7 @@ parts:
       $SED_CMD usr/local/share/applications/qelectrotech.desktop
 
   cleanup:
-    after: [qelectrotech, dxf-to-qet]
+    after: [qelectrotech, qet-tb-generator]
     plugin: nil
     build-snaps: [kf5-5-110-qt-5-15-11-core22]
     override-prime: |
