@@ -2363,19 +2363,12 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
-		success = process->startDetached("qet_tb_generator", {("")});
-	}
-	if (openedProjects().count()){
 		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {("")});
+	
 	}
-	if (openedProjects().count()){
+	else  {
 		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {("")});
 	}
 
 #elif  defined(Q_OS_MACOS)
@@ -2383,28 +2376,19 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator", {("")});
+			success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
-		if (openedProjects().count()){
-		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {("")});
-	}
+	
 
 #else
 	if (openedProjects().count()){
 		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
+	
 	else  {
-		success = process->startDetached("qet_tb_generator", {("")});
-	}
-	if (openedProjects().count()){
 		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator", {("")});
-	}
+	
 
 #endif
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
