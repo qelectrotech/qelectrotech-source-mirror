@@ -2366,10 +2366,6 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	
-	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
 
 #elif  defined(Q_OS_MACOS)
 	if (openedProjects().count()){
