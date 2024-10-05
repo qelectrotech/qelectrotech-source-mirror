@@ -2376,7 +2376,7 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
-			success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	
 
