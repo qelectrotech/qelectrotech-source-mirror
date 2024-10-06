@@ -2363,8 +2363,21 @@ void QETDiagramEditor::generateTerminalBlock()
 		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
 	else  {
+		success = process->startDetached("qet_tb_generator", {("")});
+	}
+	if (openedProjects().count()){
+		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+	}
+	else  {
+		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {("")});
+	}
+	if (openedProjects().count()){
 		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 	}
+	else  {
+		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {("")});
+	}
+
 	
 
 #elif  defined(Q_OS_MACOS)
