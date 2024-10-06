@@ -21,7 +21,9 @@
 #include <QFile>
 #include <QProcess>
 #include <QInputDialog>
+#include <QMessageBox>
 #include <QDir>
+#include <QDebug>
 
 /**
  * @brief QET_ElementScaler
@@ -90,8 +92,17 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 
 	if (process_.waitForFinished())
 	{
-		const auto byte_array{process_.readAll()};
+		const auto byte_array{process_.readAllStandardOutput()};
+		const auto error_output{process_.readAllStandardError()};
 		process_.close();
+		if (error_output.length() > 0) {
+			// inform the user about log-output via QMessageBox
+			QMessageBox msgBox;
+			msgBox.setText("QET_ElementScaler: \nadditional information about import / scaling");
+			msgBox.setInformativeText("See details here:");
+			msgBox.setDetailedText(error_output);
+			msgBox.exec();
+		}
 		return byte_array;
 	}
 	else
