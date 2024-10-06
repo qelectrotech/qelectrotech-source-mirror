@@ -22,7 +22,6 @@
 #include <QProcess>
 #include <QMessageBox>
 #include <QDir>
-#include <iostream>
 #include <QDebug>
 
 /**
@@ -45,11 +44,20 @@ QByteArray dxfToElmt(const QString &file_path)
 	const QStringList arguments{file_path, QStringLiteral("-v")};
 
 	process_.start(program, arguments);
+	// qInfo()<<"\n Start converting DXF file..........\n"<< file_path;
+	 //qInfo()<< process_.readAllStandardError().data(); //Print standard error to log file
 	
 	if (process_.waitForFinished())
 	{
-		qInfo()<<"\n Start converting DXF file..........\n"<< file_path;
-		qInfo()<< process_.readAllStandardError().data(); //Print standard error to log file
+		bool dxf2elmterr = process_.readAllStandardError().isEmpty();
+		QString message=QObject::tr(
+		"Error: Make sure the file is a valid .dxf file");
+		
+		if (!dxf2elmterr){
+		QMessageBox::warning(nullptr,
+				     QObject::tr("Error: to convert this dxf file."),
+				     message);
+		}
 		
 			const auto byte_array{process_.readAll()};
 			process_.close();
