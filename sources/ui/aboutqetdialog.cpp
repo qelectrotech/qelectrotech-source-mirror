@@ -264,4 +264,5 @@ void AboutQETDialog::on_m_log_comboBox_currentTextChanged(const QString &arg1)
 		ui->m_log_textEdit->setPlainText(log_File.readAll());
 	}
 	log_File.close();
+	ui->m_log_textEdit->moveCursor(QTextCursor::End);
 }
