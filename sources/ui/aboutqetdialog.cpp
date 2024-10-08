@@ -218,6 +218,7 @@ void AboutQETDialog::setLoginfo()
 	{
 		ui->m_log_comboBox->addItem(fileInfo.absoluteFilePath());
 	}
+	ui->m_log_comboBox->setCurrentIndex(ui->m_log_comboBox->count() - 1);
 }
 
 /**
