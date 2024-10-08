@@ -23,7 +23,6 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QDir>
-#include <QDebug>
 
 /**
  * @brief QET_ElementScaler
