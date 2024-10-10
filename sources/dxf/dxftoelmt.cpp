@@ -54,6 +54,7 @@ QByteArray dxfToElmt(const QString &file_path)
 			if (error_output.length() > 0) {
 			// inform the user about log-output via QMessageBox
 			QMessageBox msgBox;
+			msgBox.setIcon(QMessageBox::Critical);
 			msgBox.setText(QObject::tr ("Dxf2elmt: \nError: Make sure the file is a valid .dxf file"));
 			msgBox.setInformativeText (QObject::tr("See details here:"));
 			msgBox.setDetailedText(error_output);
