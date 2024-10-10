@@ -97,8 +97,8 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 		if (error_output.length() > 0) {
 			// inform the user about log-output via QMessageBox
 			QMessageBox msgBox;
-			msgBox.setText("QET_ElementScaler: \nadditional information about import / scaling");
-			msgBox.setInformativeText("See details here:");
+			msgBox.setText (QObject::tr("QET_ElementScaler: \nadditional information about import / scaling"));
+			msgBox.setInformativeText(QObject::tr("See details here:"));
 			msgBox.setDetailedText(error_output);
 			msgBox.exec();
 		}
