@@ -2676,7 +2676,7 @@ Wszystkie elementy i podkatalogi znajdujące się w tym katalogu zostaną usuni�
         <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>To jest kolekcja tabliczek rysunkowych programu — użyj jej do tworzenia, przechowywania i edytowania własnych tabliczek.</translation>
+        <translation>To jest kolekcja firmowych tabliczek rysunkowych — użyj jej do tworzenia, przechowywania i edytowania własnych tabliczek.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="247"/>
@@ -3469,12 +3469,12 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>Répertoire de la collection company</source>
-        <translation>Katalog kolekcji programu</translation>
+        <translation>Katalog kolekcji firmowej</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
         <source>Répertoire des cartouches company</source>
-        <translation>Katalog tabliczek rysunkowych programu</translation>
+        <translation>Katalog firmowych tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="386"/>
@@ -3757,13 +3757,13 @@ Tutaj możesz określić domyślną zawartość tego pola:</translation>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="453"/>
         <source>Chemin de la collection company</source>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>Ścieżka do kolekcji programu</translation>
+        <translation>Ścieżka do kolekcji firmowej</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="481"/>
         <source>Chemin des cartouches company</source>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>Ścieżka do tabliczek rysunkowych programu</translation>
+        <translation>Ścieżka do firmowych tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="524"/>
@@ -5653,7 +5653,7 @@ Czy chcesz zapisać zmiany?</translation>
         <source>Cartouches company</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>Tabliczki rysunkowe oprogramowania</translation>
+        <translation>Firmowe tabliczki rysunkowe</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="477"/>
@@ -8831,7 +8831,7 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="126"/>
         <source>Collection Company</source>
         <translatorcomment>niepewne</translatorcomment>
-        <translation>Kolekcja programu</translation>
+        <translation>Kolekcja firmowa</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="128"/>
@@ -9508,7 +9508,8 @@ Czy chcesz ją zastąpić?</translation>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
 additional information about import / scaling</source>
-        <translation type="unfinished"></translation>
+        <translation>QET_ElementScaler:
+dodatkowe informacje o imporcie/skalowaniu</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="155"/>
@@ -9521,19 +9522,21 @@ Pobierz go, klikając poniższy link i rozpakuj w folderze instalacyjnym</transl
         <location filename="../sources/dxf/dxftoelmt.cpp" line="57"/>
         <source>Dxf2elmt: 
 Error: Make sure the file is a valid .dxf file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dxf2elmt:
+Błąd: Upewnij się, że plik jest prawidłowym plikiem .dxf</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobacz szczegóły tutaj:</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="111"/>
         <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
-        <translation type="unfinished"></translation>
+        <translation>Import DXF wymaga oprogramowania dxf2elmt.
+Pobierz go, klikając poniższy link i rozpakuj w folderze instalacyjnym</translation>
     </message>
 </context>
 <context>
