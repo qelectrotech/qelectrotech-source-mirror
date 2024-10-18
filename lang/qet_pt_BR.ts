@@ -9454,7 +9454,7 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
-additional information about import / scaling</source>
+additional information about %1 import / scaling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -9464,19 +9464,19 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="57"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
-Error: Make sure the file is a valid .dxf file</source>
+Error: Make sure the file %1 is a valid .dxf file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="111"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="112"/>
         <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation type="unfinished"></translation>

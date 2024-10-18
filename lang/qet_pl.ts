@@ -9507,9 +9507,8 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
-additional information about import / scaling</source>
-        <translation>QET_ElementScaler:
-dodatkowe informacje o imporcie/skalowaniu</translation>
+additional information about %1 import / scaling</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="155"/>
@@ -9519,20 +9518,19 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
 Pobierz go, klikając poniższy link i rozpakuj w folderze instalacyjnym</translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="57"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
-Error: Make sure the file is a valid .dxf file</source>
-        <translation>Dxf2elmt:
-Błąd: Upewnij się, że plik jest prawidłowym plikiem .dxf</translation>
+Error: Make sure the file %1 is a valid .dxf file</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
         <translation>Zobacz szczegóły tutaj:</translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="111"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="112"/>
         <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation>Import DXF wymaga oprogramowania dxf2elmt.

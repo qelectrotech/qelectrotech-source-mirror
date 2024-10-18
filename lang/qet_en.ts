@@ -9433,7 +9433,7 @@ Do you want to replace it ?</translation>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="66"/>
         <source>Retourner l&apos;élément :</source>
-        <translation>Mirror element</translation>
+        <translation>Mirror element :</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="67"/>
@@ -9443,8 +9443,9 @@ Do you want to replace it ?</translation>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
-additional information about import / scaling</source>
-        <translation></translation>
+additional information about %1 import / scaling</source>
+        <translation>QET_ElementScaler: 
+additional information about %1 import / scaling</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="155"/>
@@ -9454,19 +9455,20 @@ Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper da
 Please download it from the link below and unzip it into the installation folder</translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="57"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
-Error: Make sure the file is a valid .dxf file</source>
-        <translation></translation>
+Error: Make sure the file %1 is a valid .dxf file</source>
+        <translation>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="111"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="112"/>
         <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation>Importing dxf requires the dxf2elmt software.
