@@ -29,7 +29,7 @@ apps:
     common-id: qelectrotech.desktop
     extensions: 
      - kde-neon
-    plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control]
+    plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control, wayland, x11]
     environment: &env
       TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
       HOME: $SNAP_USER_COMMON
