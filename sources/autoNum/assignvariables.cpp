@@ -222,8 +222,45 @@ namespace autonum
 		str.replace("%{supplier}", dc.value("supplier").toString());
 		str.replace("%{quantity}", dc.value("quantity").toString());
 		str.replace("%{unity}", dc.value("unity").toString());
-		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
+				str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
+		str.replace("%{description_auxiliary1}", dc.value("description_auxiliary1").toString());
+		str.replace("%{designation_auxiliary1}", dc.value("designation_auxiliary1").toString());
+		str.replace("%{manufacturer_auxiliary1}", dc.value("manufacturer_auxiliary1").toString());
+		str.replace("%{manufacturer_reference_auxiliary1}", dc.value("manufacturer_reference_auxiliary1").toString());
+		str.replace("%{supplier_auxiliary1}", dc.value("supplier_auxiliary1").toString());
+		str.replace("%{quantity_auxiliary1}", dc.value("quantity_auxiliary1").toString());
+		str.replace("%{unity_auxiliary1}", dc.value("unity_auxiliary1").toString());
+		
 		str.replace("%{auxiliary2}", dc.value("auxiliary2").toString());
+		str.replace("%{description_auxiliary2}", dc.value("description_auxiliary2").toString());
+		str.replace("%{designation_auxiliary2}", dc.value("designation_auxiliary2").toString());
+		str.replace("%{manufacturer_auxiliary2}", dc.value("manufacturer_auxiliary2").toString());
+		str.replace("%{manufacturer_reference_auxiliary2}", dc.value("manufacturer_reference_auxiliary2").toString());
+		str.replace("%{supplier_auxiliary2}", dc.value("supplier_auxiliary2").toString());
+		str.replace("%{quantity_auxiliary2}", dc.value("quantity_auxiliary2").toString());
+		str.replace("%{unity_auxiliary2}", dc.value("unity_auxiliary2").toString());
+		
+		
+		str.replace("%{auxiliary3}", dc.value("auxiliary3").toString());
+		str.replace("%{description_auxiliary3}", dc.value("description_auxiliary3").toString());
+		str.replace("%{designation_auxiliary3}", dc.value("designation_auxiliary3").toString());
+		str.replace("%{manufacturer_auxiliary3}", dc.value("manufacturer_auxiliary3").toString());
+		str.replace("%{manufacturer_reference_auxiliary3}", dc.value("manufacturer_reference_auxiliary3").toString());
+		str.replace("%{supplier_auxiliary3}", dc.value("supplier_auxiliary3").toString());
+		str.replace("%{quantity_auxiliary3}", dc.value("quantity_auxiliary3").toString());
+		str.replace("%{unity_auxiliary3}", dc.value("unity_auxiliary3").toString());
+		
+		
+		str.replace("%{auxiliary4}", dc.value("auxiliary4").toString());
+		str.replace("%{description_auxiliary4}", dc.value("description_auxiliary4").toString());
+		str.replace("%{designation_auxiliary4}", dc.value("designation_auxiliary4").toString());
+		str.replace("%{manufacturer_auxiliary4}", dc.value("manufacturer_auxiliary4").toString());
+		str.replace("%{manufacturer_reference_auxiliary4}", dc.value("manufacturer_reference_auxiliary4").toString());
+		str.replace("%{supplier_auxiliary4}", dc.value("supplier_auxiliary4").toString());
+		str.replace("%{quantity_auxiliary4}", dc.value("quantity_auxiliary4").toString());
+		str.replace("%{unity_auxiliary4}", dc.value("unity_auxiliary4").toString());
+		
+		
 		str.replace("%{machine_manufacturer_reference}",
 			    dc.value("machine_manufacturer_reference").toString());
 		str.replace("%{location}", dc.value("location").toString());

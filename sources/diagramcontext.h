@@ -45,7 +45,42 @@
  * quantity                       -> quantity of the element
  * unity                          -> unity of the element
  * auxiliary1                     -> auxiliary 1 of element
+ * description_auxiliary1
+ * designation_auxiliary1
+ * manufacturer_auxiliary1
+ * manufacturer_reference_auxiliary1
+ * machine_manufacturer_reference_auxiliary1
+ * supplier_auxiliary1
+ * quantity_auxiliary1
+ * unity_auxiliary1
  * auxiliary2                     -> auxiliary 2 of element
+ * description_auxiliary2
+ * designation_auxiliary2
+ * manufacturer_auxiliary2
+ * manufacturer_reference_auxiliary2
+ * machine_manufacturer_reference_auxiliary2
+ * supplier_auxiliary2
+ * quantity_auxiliary2
+ * unity_auxiliary2
+ * auxiliary3                     -> auxiliary 1 of element
+ * description_auxiliary3
+ * designation_auxiliary3
+ * manufacturer_auxiliary3
+ * manufacturer_reference_auxiliary3
+ * machine_manufacturer_reference_auxiliary3
+ * supplier_auxiliary3
+ * quantity_auxiliary3
+ * unity_auxiliary3
+ * auxiliary4                     -> auxiliary 1 of element
+ * description_auxiliary4
+ * designation_auxiliary4
+ * manufacturer_auxiliary4
+ * manufacturer_reference_auxiliary4
+ * machine_manufacturer_reference_auxiliary4
+ * supplier_auxiliary4
+ * quantity_auxiliary4
+ * unity_auxiliary4
+ * 
  * machine_manufacturer_reference -> reference of the machine manufacturer
  * supplier                       -> the supplier of the element
  * function                       -> the function of element
