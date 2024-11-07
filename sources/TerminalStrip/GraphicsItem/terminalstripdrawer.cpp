@@ -64,6 +64,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
             painter->save();
             painter->setPen(Qt::blue);
             painter->drawRect(boundingRect());
+            painter->drawLine(QPointF{boundingRect().left(), boundingRect().center().y()},
+                              QPointF{boundingRect().right(), boundingRect().center().y()});
             painter->restore();
         }
 
@@ -144,6 +146,15 @@ void TerminalStripDrawer::paint(QPainter *painter)
                     painter->drawLine(p1, p2);
                     painter->restore();
                 }
+
+				if(m_preview_draw)
+                {
+                    painter->save();
+                    painter->setPen(Qt::yellow);
+                    painter->drawLine(QPoint{terminal_rect.x(), terminal_rect.y() + terminal_rect.height()/2},
+                                      QPoint{terminal_rect.width(), terminal_rect.y() + terminal_rect.height()/2});
+                    painter->restore();
+				}
 
                     //Draw text
                 painter->save();
