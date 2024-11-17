@@ -35,7 +35,17 @@ static int MAX_DND_PIXMAP_HEIGHT = 375;
 */
 ElementsTreeView::ElementsTreeView(QWidget *parent) :
 	QTreeView(parent)
-{}
+{
+	// force du noir sur une alternance de blanc (comme le schema) et de gris
+	// clair, avec du blanc sur bleu pas trop fonce pour la selection
+	QPalette qp = palette();
+	qp.setColor(QPalette::Text,            Qt::black);
+	qp.setColor(QPalette::Base,            Qt::white);
+	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
+	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
+	qp.setColor(QPalette::HighlightedText, Qt::black);
+	setPalette(qp);
+}
 
 /**
 	@brief ElementsTreeView::startDrag
