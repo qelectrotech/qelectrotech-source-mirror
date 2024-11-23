@@ -591,7 +591,7 @@ bool ElementsLocation::isWritable() const
 /**
 	@brief ElementsLocation::projectCollection
 	@return
-	If this location represente a item in an embedded project collection,
+	If this location represents an item in an embedded project collection,
 	return this collection else return nullptr.
 */
 XmlElementCollection *ElementsLocation::projectCollection() const
