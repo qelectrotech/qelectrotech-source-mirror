@@ -115,12 +115,12 @@ void QETMainWindow::initCommonActions()
 	upgrade_M -> setStatusTip(tr("Lance le navigateur par défaut vers le dépot Nightly en ligne de QElectroTech", "status bar tip"));
 
 	connect(upgrade_, &QAction::triggered, [](bool) {
-	QString link = "https://qelectrotech.org/download_windows_QET.html";
+	QString link = "https://qelectrotech.org/download.php";
 	QDesktopServices::openUrl(QUrl(link));
 	});
 
 	connect(upgrade_M, &QAction::triggered, [](bool) {
-	QString link = "https://qelectrotech.org/download_mac_QET.html";
+	QString link = "https://qelectrotech.org/download.php";
 	QDesktopServices::openUrl(QUrl(link));
 	});
 
