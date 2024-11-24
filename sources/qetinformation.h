@@ -22,7 +22,7 @@
 #include <QHash>
 
 /**
- * Inside this namespace you will fin all information used in QElectrotech for
+ * Inside this namespace you will find all information used in QElectrotech for
  * element, conductor and diagram.
  * Each information have 3 values :
  * #1 the info key = the key of an information as a QString used in the code (example : label)

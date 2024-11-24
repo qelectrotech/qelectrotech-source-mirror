@@ -970,7 +970,7 @@ QModelIndex DynamicElementTextModel::indexFromGroup(
 /**
 	@brief DynamicElementTextModel::indexIsText
 	@param index
-	@return True if index represente a text, both for the column 0 and 1.
+	@return True if index represents a text, both for the column 0 and 1.
 	Return false if index is a child of an index associated to a text.
 */
 bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
@@ -1000,7 +1000,7 @@ bool DynamicElementTextModel::indexIsText(const QModelIndex &index) const
 /**
 	@brief DynamicElementTextModel::indexIsGroup
 	@param index
-	@return True if index represente a group, both for the column 0 and 1.
+	@return True if index represents a group, both for the column 0 and 1.
 	Return false if index is a child of an index associated to a group.
 */
 bool DynamicElementTextModel::indexIsGroup(const QModelIndex &index) const
