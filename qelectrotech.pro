@@ -281,7 +281,7 @@ mime_package.path  = $$join(INSTALL_PREFIX,,,$${QET_MIME_PACKAGE_PATH})
 mime_package.files = misc/qelectrotech.xml
 
 desktop.path       = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
-desktop.files      = misc/qelectrotech.desktop
+desktop.files      = misc/org.qelectrotech.qelectrotech.desktop
 
 appdata.path       = $$join(INSTALL_PREFIX,,,$${QET_APPDATA_PATH})
 appdata.files      = misc/qelectrotech.appdata.xml
