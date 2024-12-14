@@ -33,7 +33,7 @@ my $no = '[no]';
 my $todo = 'TODO';
 
 our $default_language = 'fr';
-our @misc_desktop_files = qw(misc/qelectrotech.desktop);
+our @misc_desktop_files = qw(misc/org.qelectrotech.qelectrotech.desktop);
 our @misc_xml_files     = qw(misc/qelectrotech.xml);
 our @readme_files       = qw(CREDIT README INSTALL ELEMENTS.LICENSE build-aux/linux/fedora/README.elements);
 our @ordered_languages  = qw(fr en es pt cs pl ca de it ar sl hr el nl be ru ro da pt_BR hu sr tr nb ja mn uk zh);
