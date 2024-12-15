@@ -5,7 +5,7 @@
   "runtime-version": "5.15-23.08",
   "sdk": "org.kde.Sdk",
   "command": "qelectrotech",
-  "rename-desktop-file": "qelectrotech.desktop",
+  "rename-desktop-file": "org.qelectrotech.qelectrotech.desktop",
   "rename-appdata-file": "qelectrotech.appdata.xml",
   "rename-icon": "qelectrotech",
   "copy-icon": true,

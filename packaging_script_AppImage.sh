@@ -39,9 +39,9 @@ rm -Rf qelectrotech/usr/share/{elements,examples,titleblocks,lang,man,doc}
 cp ../build/qelectrotech qelectrotech/usr/bin/
 cp -r ../{elements,examples,titleblocks,lang,man} qelectrotech/usr/share/
 
-./linuxdeployqt-continuous-x86_64.AppImage qelectrotech/usr/share/qelectrotech.desktop  -appimage -bundle-non-qt-libs -verbose=1 -extra-plugins=iconengines
+./linuxdeployqt-continuous-x86_64.AppImage qelectrotech/usr/share/org.qelectrotech.qelectrotech.desktop  -appimage -bundle-non-qt-libs -verbose=1 -extra-plugins=iconengines
 rm qelectrotech/AppRun
-sed -i 's/'"QElectroTech_*.*/QElectroTech_$tagName-r$HEAD"'/' qelectrotech/qelectrotech.desktop
+sed -i 's/'"QElectroTech_*.*/QElectroTech_$tagName-r$HEAD"'/' qelectrotech/org.qelectrotech.qelectrotech.desktop
 cp AppRun qelectrotech/
 rm QElectroTech_*.AppImage
 

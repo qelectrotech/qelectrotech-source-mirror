@@ -93,7 +93,7 @@ parts:
       craftctl default
       # patch desktop file with correct icon path
       SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
-      $SED_CMD usr/local/share/applications/qelectrotech.desktop
+      $SED_CMD usr/local/share/applications/org.qelectrotech.qelectrotech.desktop
 
   cleanup:
     after: [qelectrotech, qet-tb-generator]
