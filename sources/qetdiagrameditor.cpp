@@ -1558,7 +1558,9 @@ void QETDiagramEditor::slot_updateActions()
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
+#ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
+#endif
 	m_project_terminalBloc        -> setEnabled(editable_project);
 
 
