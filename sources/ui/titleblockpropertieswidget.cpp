@@ -49,7 +49,7 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(
 
 /**
 	@brief TitleBlockPropertiesWidget::TitleBlockPropertiesWidget
-	default constructor with tempalte list
+	default constructor with template list
 	@param tbt_collection template list
 	@param titleblock properties to edit
 	@param current_date if true, display the radio button "current date"
@@ -113,17 +113,17 @@ TitleBlockPropertiesWidget::~TitleBlockPropertiesWidget()
 */
 void TitleBlockPropertiesWidget::setProperties(
 		const TitleBlockProperties &properties) {
-	ui -> m_title_le  -> setText (properties.title);
-	ui -> m_author_le -> setText (properties.author);
-	ui -> m_file_le   -> setText (properties.filename);
-	ui -> m_plant      -> setText (properties.plant);
-	ui -> m_loc   -> setText (properties.locmach);
-	ui -> m_indice    -> setText (properties.indexrev);
-	ui -> m_folio_le  -> setText (properties.folio);
+	ui -> m_title_le      -> setText (properties.title);
+	ui -> m_author_le     -> setText (properties.author);
+	ui -> m_file_le       -> setText (properties.filename);
+	ui -> m_plant         -> setText (properties.plant);
+	ui -> m_loc           -> setText (properties.locmach);
+	ui -> m_indice        -> setText (properties.indexrev);
+	ui -> m_folio_le      -> setText (properties.folio);
 	ui -> m_display_at_cb -> setCurrentIndex(properties.display_at == Qt::BottomEdge ? 0 : 1);
 	ui->auto_page_cb->setCurrentText(properties.auto_page_num);
 
-	//About date	
+	//About date
 	ui -> m_date_now_pb -> setDisabled(true);
 	ui -> m_date_edit   -> setDisabled(true);
 	ui -> m_date_edit   -> setDate(QDate::currentDate());
@@ -172,13 +172,13 @@ void TitleBlockPropertiesWidget::setProperties(
 TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 {
 	TitleBlockProperties prop;
-	prop.title    = ui -> m_title_le  -> text();
-	prop.author   = ui -> m_author_le -> text();
-	prop.filename = ui -> m_file_le   -> text();
-	prop.plant  = ui -> m_plant      -> text();
-	prop.locmach  = ui -> m_loc   -> text();
-	prop.indexrev = ui -> m_indice    -> text();
-	prop.folio    = ui -> m_folio_le  -> text();
+	prop.title      = ui -> m_title_le      -> text();
+	prop.author     = ui -> m_author_le     -> text();
+	prop.filename   = ui -> m_file_le       -> text();
+	prop.plant      = ui -> m_plant         -> text();
+	prop.locmach    = ui -> m_loc           -> text();
+	prop.indexrev   = ui -> m_indice        -> text();
+	prop.folio      = ui -> m_folio_le      -> text();
 	prop.display_at = ui -> m_display_at_cb -> currentIndex() == 0 ? Qt::BottomEdge : Qt::RightEdge;
 
 	if (ui->m_no_date_rb->isChecked()) {
@@ -218,7 +218,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
 	prop.title    = ui -> m_title_le  -> text();
 	prop.author   = ui -> m_author_le -> text();
 	prop.filename = ui -> m_file_le   -> text();
-	prop.plant    = ui -> m_plant      -> text();
+	prop.plant    = ui -> m_plant     -> text();
 	prop.locmach  = ui -> m_loc       -> text();
 	prop.indexrev = ui -> m_indice    -> text();
 	prop.folio    = "%autonum";
