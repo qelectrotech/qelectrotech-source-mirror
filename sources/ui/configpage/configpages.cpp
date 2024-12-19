@@ -57,6 +57,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	// default titleblock properties
 	QList <TitleBlockTemplatesCollection *> c;
 	c << QETApp::commonTitleBlockTemplatesCollection()
+	  << QETApp::companyTitleBlockTemplatesCollection()
 	  << QETApp::customTitleBlockTemplatesCollection();
 	if (m_project) c << m_project->embeddedTitleBlockTemplatesCollection();
 	ipw = new TitleBlockPropertiesWidget(
