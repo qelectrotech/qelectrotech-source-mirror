@@ -205,6 +205,8 @@ void ElementPropertiesEditorWidget::populateTree()
 					  QETInformation::translatedInfoKey(key));
 		qtwi->setData(0, Qt::UserRole, key);
 		qtwi->setText(1, m_data.m_informations.value(key).toString());
+		// Adjust column width
+		ui->m_tree->resizeColumnToContents(0);
 	}
 }
 
