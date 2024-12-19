@@ -57,7 +57,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 	TitleBlockPropertiesWidget  *titleblock_infos;
 
 	if (QETProject *parent_project = diagram -> project())
-		titleblock_infos  = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, diagram->project(),  this);
+		titleblock_infos = new TitleBlockPropertiesWidget(parent_project -> embeddedTitleBlockTemplatesCollection(), titleblock, false, diagram->project(), this);
 	else
 		titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, diagram->project(), this);
 
