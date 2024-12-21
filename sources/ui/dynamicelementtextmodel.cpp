@@ -1622,13 +1622,18 @@ QWidget *DynamicTextItemDelegate::createEditor(
 			DynamicElementTextItem *deti = detm->textFromIndex(index);
 			if(!deti)
 				break;
+				
+				//We use a QMap because the keys of the map are sorted, then no matter the current local,
+				//the value of the combo box are always alphabetically sorted
+			QMap <QString, QString> info_map;
+			for(const QString& str : availableInfo(deti)) {
+				info_map.insert(QETInformation::translatedInfoKey(str), str);
+			}
 			
 			QComboBox *qcb = new QComboBox(parent);
 			qcb->setObjectName("info_text");
-
-			QStringList strl = availableInfo(deti);
-			for (int i=0; i<strl.size();++i) {
-				qcb -> addItem(strl[i], QETInformation::translatedInfoKey(strl[i]));
+			for (const QString& key : info_map.keys()) {
+				qcb->addItem(key, info_map.value(key));
 			}
 			return qcb;
 		}
