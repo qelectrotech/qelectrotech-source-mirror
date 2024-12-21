@@ -312,7 +312,6 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 {
 	QStringList list = { ELMT_LABEL,
 						 ELMT_PLANT,
-						 ELMT_LOCATION,
 						 ELMT_COMMENT,
 						 ELMT_FUNCTION,
 						 ELMT_DESCRIPTION,
@@ -323,6 +322,8 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
 						 ELMT_UNITY,
+						 ELMT_LOCATION,
+						 ELMT_PLANT,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,
