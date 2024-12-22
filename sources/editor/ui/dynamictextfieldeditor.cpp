@@ -222,11 +222,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 
 	if(type & ElementData::AllReport) {
 		strl = QETInformation::folioReportInfoKeys();
-	}
-	else {
-		strl = QETInformation::elementInfoKeys();
-	}
-		//We use a QMap because the keys of the map are sorted, then no matter the current local,
+			//We use a QMap because the keys of the map are sorted, then no matter the current local,
 		//the value of the combo box are always alphabetically sorted
 	QMap <QString, QString> info_map;
 	for(const QString& str : strl)
@@ -235,6 +231,13 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 
 	for (const QString& key : info_map.keys())
 		ui -> m_elmt_info_cb -> addItem(key, info_map.value(key));
+	}
+	else {
+		strl = QETInformation::elementInfoKeys();
+		for (int i=0; i<strl.size();++i) {
+		ui -> m_elmt_info_cb -> addItem(strl[i], QETInformation::translatedInfoKey(strl[i]));
+	}
+	}
 }
 
 void DynamicTextFieldEditor::on_m_x_sb_editingFinished()
