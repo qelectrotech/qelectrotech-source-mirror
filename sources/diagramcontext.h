@@ -62,7 +62,7 @@
  * supplier_auxiliary2
  * quantity_auxiliary2
  * unity_auxiliary2
- * auxiliary3                     -> auxiliary 1 of element
+ * auxiliary3                     -> auxiliary 3 of element
  * description_auxiliary3
  * designation_auxiliary3
  * manufacturer_auxiliary3
@@ -71,7 +71,7 @@
  * supplier_auxiliary3
  * quantity_auxiliary3
  * unity_auxiliary3
- * auxiliary4                     -> auxiliary 1 of element
+ * auxiliary4                     -> auxiliary 4 of element
  * description_auxiliary4
  * designation_auxiliary4
  * manufacturer_auxiliary4
