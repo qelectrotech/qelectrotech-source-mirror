@@ -821,19 +821,25 @@ void DiagramView::scrollOnMovement(QKeyEvent *e)
 			{
 				if (qgraphicsitem_cast<Conductor *>(qgi))
 					continue;
-				if(qgi->parentItem() && qgi->parentItem()->isSelected())
+				if (qgi->parentItem() && qgi->parentItem()->isSelected())
 					continue;
 
 				qreal x = qgi->pos().x();
 				qreal y = qgi->pos().y();
 				qreal bottom = viewed_scene.bottom();
-				qreal top = viewed_scene.top();
-				qreal left = viewed_scene.left();
-				qreal right = viewed_scene.right();
-				qreal elmt_top = y + qgi->boundingRect().top();
+				qreal top    = viewed_scene.top();
+				qreal left   = viewed_scene.left();
+				qreal right  = viewed_scene.right();
+				qreal elmt_top    = y + qgi->boundingRect().top();
 				qreal elmt_bottom = y + qgi->boundingRect().bottom();
-				qreal elmt_right = x + qgi->boundingRect().right();
-				qreal elmt_left = x + qgi->boundingRect().left();
+				qreal elmt_right  = x + qgi->boundingRect().right();
+				qreal elmt_left   = x + qgi->boundingRect().left();
+				if (qgi->parentItem()) {
+					elmt_top    += qgi->parentItem()->y();
+					elmt_bottom += qgi->parentItem()->y();
+					elmt_right  += qgi->parentItem()->x();
+					elmt_left   += qgi->parentItem()->x();
+				}
 
 				bool elmt_right_of_left_margin = elmt_left>=left;
 				bool elmt_left_of_right_margin = elmt_right<=right;
@@ -841,7 +847,7 @@ void DiagramView::scrollOnMovement(QKeyEvent *e)
 				bool elmt_above_bottom_margin  = elmt_bottom<=bottom;
 
 				if (!(elmt_right_of_left_margin && elmt_left_of_right_margin) ||
-					!(elmt_below_top_margin    && elmt_above_bottom_margin )  )
+				    !(elmt_below_top_margin     && elmt_above_bottom_margin )  )
 				{
 						QScrollBar *h = horizontalScrollBar();
 						QScrollBar *v = verticalScrollBar();
