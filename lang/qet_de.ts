@@ -9056,47 +9056,47 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation>Zusatzinfo 1</translation>
+        <translation>Zusatzinfo Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Description textuelle auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Artikelbeschreibung Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Numéro d&apos;article auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelnummer Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Fabricant auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hersteller Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Numéro de commande auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bestellnummer Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro interne auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Interne Nummer Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Fournisseur auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lieferant Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Quantité auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menge Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Unité auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einheit Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
@@ -9106,132 +9106,132 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="282"/>
         <source>Description textuelle auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelbeschreibung Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Numéro d&apos;article auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelnummer Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Fabricant auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hersteller Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Numéro de commande auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bestellnummer Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Numéro interne auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Interne Nummer Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Fournisseur auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lieferant Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Quantité auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menge Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="289"/>
         <source>Unité auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einheit Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="290"/>
         <source>Bloc auxiliaire 3</source>
-        <translation type="unfinished">Zusatzinfo 3</translation>
+        <translation type="unfinished">Zusatzinfo Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="291"/>
         <source>Description textuelle auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelbeschreibung Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="292"/>
         <source>Numéro d&apos;article auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelnummer Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Fabricant auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hersteller Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="294"/>
         <source>Numéro de commande auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bestellnummer Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="295"/>
         <source>Numéro interne auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Interne Nummer Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="296"/>
         <source>Fournisseur auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lieferant Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="297"/>
         <source>Quantité auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menge Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Unité auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einheit Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Bloc auxiliaire 4</source>
-        <translation type="unfinished">Zusatzinfo 4</translation>
+        <translation type="unfinished">Zusatzinfo Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Description textuelle auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelbeschreibung Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Numéro d&apos;article auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artikelnummer Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Fabricant auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hersteller Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="303"/>
         <source>Numéro de commande auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bestellnummer Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="304"/>
         <source>Numéro interne auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Interne Nummer Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="305"/>
         <source>Fournisseur auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lieferant Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Quantité auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Menge Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="307"/>
         <source>Unité auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einheit Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="257"/>
