@@ -847,7 +847,7 @@ void DiagramView::scrollOnMovement(QKeyEvent *e)
 				bool elmt_above_bottom_margin  = elmt_bottom<=bottom;
 
 				if (!(elmt_right_of_left_margin && elmt_left_of_right_margin) ||
-					!(elmt_below_top_margin     && elmt_above_bottom_margin )  )
+				    !(elmt_below_top_margin     && elmt_above_bottom_margin )  )
 				{
 						QScrollBar *h = horizontalScrollBar();
 						QScrollBar *v = verticalScrollBar();
