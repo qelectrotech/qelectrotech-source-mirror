@@ -22,7 +22,7 @@ class CompositeTextEditDialog : public QDialog
 	
 	public:
 		explicit CompositeTextEditDialog(DynamicElementTextItem *text, QWidget *parent = nullptr);
-		explicit CompositeTextEditDialog(QString text, QWidget *parent = nullptr);
+		explicit CompositeTextEditDialog(QString text, bool report,  QWidget *parent = nullptr);
 		~CompositeTextEditDialog() override;
 		
 		QString plainText() const;
@@ -34,7 +34,7 @@ class CompositeTextEditDialog : public QDialog
 		void focusInEvent(QFocusEvent *event) override;
 	
 	private :
-		void setUpComboBox();
+		void setUpComboBox(bool is_report);
 		QString infoToVar(const QString& info) const;
 	
 	private:

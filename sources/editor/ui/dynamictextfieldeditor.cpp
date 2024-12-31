@@ -364,7 +364,12 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
 
 void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 {
-	CompositeTextEditDialog ctd(m_text_field.data() -> compositeText(), this);
+	bool isReport = false;
+	if (elementEditor()->elementScene()->elementData().m_type & ElementData::AllReport) {
+		isReport = true;
+	}
+
+	CompositeTextEditDialog ctd(m_text_field.data() -> compositeText(), isReport, this);
 	if(ctd.exec()) {
 		QString ct = ctd.plainText();
 		for (int i = 0; i < m_parts.length(); i++) {
