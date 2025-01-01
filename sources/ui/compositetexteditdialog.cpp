@@ -18,10 +18,15 @@ CompositeTextEditDialog::CompositeTextEditDialog(DynamicElementTextItem *text, Q
 	m_default_text = m_text->compositeText();
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
-	setUpComboBox();
+	bool report = false;
+	if ((m_text) &&(m_text->parentElement()->linkType()) & (Element::AllReport))
+	{
+		report = true;
+	}
+	setUpComboBox(report);
 }
 
-CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) :
+CompositeTextEditDialog::CompositeTextEditDialog(QString text, bool report, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::CompositeTextEditDialog)
 {
@@ -29,7 +34,7 @@ CompositeTextEditDialog::CompositeTextEditDialog(QString text, QWidget *parent) 
 	m_default_text = std::move(text);
 	ui->m_plain_text_edit->setPlainText(m_default_text);
 	ui->m_plain_text_edit->setPlaceholderText(tr("Entrée votre texte composé ici, en vous aidant des variables disponible"));
-	setUpComboBox();
+	setUpComboBox(report);
 }
 
 CompositeTextEditDialog::~CompositeTextEditDialog()
@@ -50,13 +55,9 @@ QString CompositeTextEditDialog::plainText() const
 	@brief CompositeTextEditDialog::setUpComboBox
 	Add the available element information in the combo box
 */
-void CompositeTextEditDialog::setUpComboBox()
+void CompositeTextEditDialog::setUpComboBox(bool is_report)
 {
 	QStringList qstrl;
-	bool is_report = false;
-	if (m_text && m_text->parentElement()->linkType() & Element::AllReport) {
-		is_report = true;
-	}
 
 	if(is_report) //Special treatment for text owned by a folio report
 	{
@@ -68,15 +69,9 @@ void CompositeTextEditDialog::setUpComboBox()
 		qstrl.removeAll("formula");
 	}
 	
-		//We use a QMap because the keys of the map are sorted, then no matter the current local,
-		//the value of the combo box are always alphabetically sorted
-	QMap <QString, QString> info_map;
-	for(const QString& str : qstrl) {
-		info_map.insert(QETInformation::translatedInfoKey(str),
-						is_report ? QETInformation::folioReportInfoToVar(str) : QETInformation::elementInfoToVar(str));
-	}
-	for(const QString& key : info_map.keys()) {
-		ui->m_info_cb->addItem(key, info_map.value(key));
+	for (int i=0; i<qstrl.size();++i) {
+		ui -> m_info_cb -> addItem(QETInformation::translatedInfoKey(qstrl[i]),
+								   is_report ? QETInformation::folioReportInfoToVar(qstrl[i]) : QETInformation::elementInfoToVar(qstrl[i]));
 	}
 }
 
