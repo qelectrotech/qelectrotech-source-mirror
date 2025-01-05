@@ -1,5 +1,5 @@
 /*
-	Copyright 2025 The QElectroTech Team
+	Copyright 2024-2025 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
