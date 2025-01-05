@@ -119,6 +119,7 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 
 	names.addName("fr", "Éléments importés");
 	names.addName("en", "Imported elements");
+	names.addName("nl_BE","Elementen geïmporteerd");
 	names.addName("de", "Importierte elemente");
 	names.addName("es", "Elementos importados");
 	names.addName("ru", QString(russian_data, 24));

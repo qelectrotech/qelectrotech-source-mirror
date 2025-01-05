@@ -211,7 +211,7 @@ namespace QET {
 		extern QIcon sl;
 		extern QIcon nl;
 		extern QIcon no;
-		extern QIcon be;
+		extern QIcon nl_BE;
 		extern QIcon tr;
 		extern QIcon uk;
 		extern QIcon mn;

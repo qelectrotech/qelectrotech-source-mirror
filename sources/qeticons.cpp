@@ -203,7 +203,7 @@ namespace QET {
 		QIcon sl;
 		QIcon nl;
 		QIcon no;
-		QIcon be;
+		QIcon nl_BE;
 		QIcon tr;
 		QIcon uk;
 		QIcon mn;
@@ -674,7 +674,7 @@ void QET::Icons::initIcons()
 	sl                  .addFile(":/ico/24x16/sl.png");
 	nl                  .addFile(":/ico/24x16/nl.png");
 	no                  .addFile(":/ico/24x16/no.png");
-	be                  .addFile(":/ico/24x16/be.png");
+	nl_BE               .addFile(":/ico/24x16/nl_BE.png");
 	tr                  .addFile(":/ico/24x16/tr.png");
 	uk                  .addFile(":/ico/24x16/ua.png");
 	mn                  .addFile(":/ico/24x16/mn.png");
