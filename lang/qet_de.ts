@@ -3318,7 +3318,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
-        <translation>(Bauteilsammlungen neu laden, um die Änderungen zu aktualisieren)</translation>
+        <translation>(Bauteilsammlungen neu laden, um die Änderungen zu übernehmen)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
