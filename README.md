@@ -77,12 +77,12 @@ Take advantage of the modern GUI
 Toolbars and panels can be enabled/disabled, moved and displayed the way you want to work.  
 Panels can be stacked on each other (as tabs) or docked on the sides (as docks) or completely separated from the main window (as windows).  
 The GUI can fit to small or big screens, and even to multi-display configurations.
-![](https://download.tuxfamily.org/qet/images-features/0030.png "GUI overview")
+![](https://download.qelectrotech.org/qet/images-features/0030.png "GUI overview")
 
 
 The GUI of QElectroTech is translated in 25 languages.
 You only need to restart the application for the new selected language to take effect.
-![](https://download.tuxfamily.org/qet/images-features/0040.png "Lang menu")
+![](https://download.qelectrotech.org/qet/images-features/0040.png "Lang menu")
 
 Create technical documentation in professional quality
 
@@ -91,56 +91,56 @@ You can set vertical and horizontal headers (printed rulers) individually on and
 
 Titlebocks can be created and edited with the embedded titleblock editor to perfectly suit your needs.  
 Custom variables can be defined to display the informations you wish in the titleblock.
-![](https://download.tuxfamily.org/qet/images-features/0055.png "Titleblock editor")
+![](https://download.qelectrotech.org/qet/images-features/0055.png "Titleblock editor")
 
 With only 2 mouse clicks you can add a full automatic generated table of content.  
 Changes in the documentation are updated on the fly.
-![](https://download.tuxfamily.org/qet/images-features/0060.png "Table of content")
+![](https://download.qelectrotech.org/qet/images-features/0060.png "Table of content")
 
 Choose from more than 8.200 symbols...
 The embedded QET collection contains a rich library of electric, logic, pneumatic, hydraulic and fluid symbols.  
 The library grows at every new release thanks to an active user community.
-![](https://download.tuxfamily.org/qet/images-features/0070.png "Collections")
+![](https://download.qelectrotech.org/qet/images-features/0070.png "Collections")
 
 ...or create your own collection
 
 The embedded element editor is a nice tool to create your own elements (symbols or anything else).  
 Your own elements are stored in the user collection.
-![](https://download.tuxfamily.org/qet/images-features/0080.png "Element editor")
+![](https://download.qelectrotech.org/qet/images-features/0080.png "Element editor")
 
 Quickly find what you need
 
 All collections can quickly be searched with the integrated search engine.  
 Furthermore, the search request can be restricted to the folder of your choice.
-![](https://download.tuxfamily.org/qet/images-features/0090.png "Search engine")
+![](https://download.qelectrotech.org/qet/images-features/0090.png "Search engine")
 
 Easily draw complex schematics
 
 To add an element on the drawing area, it only needs a drag & drop from the collection panel.
-![](https://download.tuxfamily.org/qet/images-features/0102.png "Drag and drop")
+![](https://download.qelectrotech.org/qet/images-features/0102.png "Drag and drop")
 
 Elements are automatically connected if they are aligned, or connected from point to point by pulling a conductor with the mouse.
-![](https://download.tuxfamily.org/qet/images-features/0105.png "Conductor connections")
+![](https://download.qelectrotech.org/qet/images-features/0105.png "Conductor connections")
 
 The path of every conductor can be modified by moving its handles with the mouse.
-![](https://download.tuxfamily.org/qet/images-features/0107.png "Conductor handles")
+![](https://download.qelectrotech.org/qet/images-features/0107.png "Conductor handles")
 And of course, you can accurately zoom with the mouse wheel over the drawing area to catch the smallest details.
 
 Link elements together to create cross references
 
 Several types of element can be linked together to display a cross reference text.  
 All types of cross references are automatically updated on the fly, you don't need to think about them if you make changes.
-![](https://download.tuxfamily.org/qet/images-features/0112.png "Cross ref elements")
+![](https://download.qelectrotech.org/qet/images-features/0112.png "Cross ref elements")
 To speed up your work, linkable elements are easily searched and shown.
-![](https://download.tuxfamily.org/qet/images-features/0115.png  "Cross ref search")
+![](https://download.qelectrotech.org/qet/images-features/0115.png  "Cross ref search")
 
 
 Export informations to a parts list
 Informations of all elements in the project can be exported to a .csv file that can be read and edited by any spreadsheet application.
-![](https://download.tuxfamily.org/qet/images-features/0122.png "Element informations")
+![](https://download.qelectrotech.org/qet/images-features/0122.png "Element informations")
 
 This way, you can make your own parts list or bill of material using the full power of a spreadsheet program.
-![](https://download.tuxfamily.org/qet/images-features/0125.png "Spreadsheet")
+![](https://download.qelectrotech.org/qet/images-features/0125.png "Spreadsheet")
 Print to pdf and/or export your work to images
 
 Your whole documentation or only selected parts of it can be printed to a real printer or to a pdf file.  
@@ -165,7 +165,7 @@ The nomenclature is presented in the form of a configurable table separated into
 - Display: the size and position of the table, the margins between text and the table cell, the alignment of the text in the cells and the font. The configuration of the table headers and the table itself are separate.  
 - Content: the information to display in the table and the order in which it should be displayed.  
 
-![](https://download.tuxfamily.org/qet/images_depeche_linuxfr/08/dialogue_nomenclature.png "nomenclature dialogue")
+![](https://download.qelectrotech.org/qet/images_depeche_linuxfr/08/dialogue_nomenclature.png "nomenclature dialogue")
 
 In order to speed up the establishment of a nomenclature, it is possible to export / import the display and content configurations separately. This is the "Configuration" part that can be seen in the photos above.  
 
@@ -184,7 +184,7 @@ Finally two buttons are available in the property panel:
 - "Apply geometry to all tables linked to this one": applies the three properties mentioned above to all linked tables in order to save time and maintain aesthetic consistency.  
 
 And to finish a table   
-![](https://download.tuxfamily.org/qet/images_depeche_linuxfr/08/tableau.png "table")
+![](https://download.qelectrotech.org/qet/images_depeche_linuxfr/08/tableau.png "table")
 
 
 Summary
