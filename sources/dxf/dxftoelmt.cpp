@@ -21,7 +21,7 @@
 #include <QFile>
 #include <QProcess>
 #include <QMessageBox>
-#include <QDir>
+#include <QStandardPaths>
 
 /**
  * @brief dxftoElmt
@@ -71,13 +71,7 @@ QByteArray dxfToElmt(const QString &file_path)
 
 QString dxf2ElmtDirPath()
 {
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	return (QDir::homePath() + QStringLiteral("/Application Data/qet/binary"));
-#elif defined(Q_OS_MACOS)
-	return (QDir::homePath() + QStringLiteral("/.qet/binary"));
-#else
-	return (QDir::homePath() + QStringLiteral("/.qet/binary"));
-#endif
+	return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/binary";
 }
 
 /**

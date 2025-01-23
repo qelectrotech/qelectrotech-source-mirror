@@ -112,7 +112,8 @@ void myMessageOutput(QtMsgType type,
 		txt+= context.function ? context.function : "";
 		txt+=")\n";
 	}
-	QFile outFile(QETApp::configDir()
+	QFile outFile(QETApp::dataDir()
+			  +"/"
 			  +QDate::currentDate().toString("yyyyMMdd")
 			  +".log");
 	if(outFile.open(QIODevice::WriteOnly | QIODevice::Append))
@@ -131,7 +132,7 @@ void myMessageOutput(QtMsgType type,
 void delete_old_log_files(int days)
 {
 	const QDate today = QDate::currentDate();
-	const QString path = QETApp::configDir() + "/";
+	const QString path = QETApp::dataDir() + "/";
 
 	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
 	filter = filter.arg("[0123456789]"); // valid characters

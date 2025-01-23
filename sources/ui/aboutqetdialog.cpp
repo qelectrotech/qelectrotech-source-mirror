@@ -208,7 +208,7 @@ void AboutQETDialog::setLicence()
 */
 void AboutQETDialog::setLoginfo()
 {
-	const QString path = QETApp::configDir() + "/";
+	const QString path = QETApp::dataDir() + "/";
 	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
 	filter = filter.arg("[0123456789]"); // valid characters
 	Q_FOREACH (auto fileInfo,
