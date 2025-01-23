@@ -16,8 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "machine_info.h"
-
+#include "qetapp.h"
 #include "qetversion.h"
+#include <QSettings>
 
 #include <QScreen>
 #include <QProcess>
@@ -146,12 +147,22 @@ void MachineInfo::send_info_to_debug()
 		  + " - Version : "+pc.os.name
 		  + " - Kernel : "+pc.os.kernel;
 		
+		
+	qInfo()<< " System language:"<< QString(QETApp::langFromSetting().toLatin1());
+	qInfo()<< " language Path:"<< QString(QETApp::languagesPath().toLatin1());
+	qInfo()<< " Common Elements Dir:"<< QString(QETApp::commonElementsDir().toLatin1());
+	qInfo()<< " Common TitleBlock Templates Dir:"<< QString(QETApp::commonTitleBlockTemplatesDir().toLatin1());
+	qInfo()<< " Custom Elements Dir:"<< QString(QETApp::customElementsDir().toLatin1());
+	qInfo()<< " Custom TitleBlock Templates Dir:"<< QString(QETApp::customTitleBlockTemplatesDir().toLatin1());
+	qInfo()<< " Company Elements Dir:"<< QString(QETApp::companyElementsDir().toLatin1());
+	qInfo()<< " Company TitleBlock Templates Dir:"<< QString(QETApp::companyTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " Standard Location :"<< QStringList(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
 	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 	qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
 	qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 	qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
 	qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+	
 	
 	
 	qInfo()<< "*** Qt screens ***";
