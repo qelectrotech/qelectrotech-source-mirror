@@ -27,6 +27,7 @@
 #include <QStorageInfo>
 #include <QLibraryInfo>
 #include <QStorageInfo>
+#include <QStandardPaths>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -144,6 +145,15 @@ void MachineInfo::send_info_to_debug()
 		  + "  - " + pc.cpu.Architecture
 		  + " - Version : "+pc.os.name
 		  + " - Kernel : "+pc.os.kernel;
+		
+	qInfo()<< " Standard Location :"<< QStringList(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+	qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
+	qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+	qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
+	qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+	
+	
 	qInfo()<< "*** Qt screens ***";
 
 	for (int ii = 0; ii < pc.screen.count; ++ii) {
@@ -411,3 +421,4 @@ QString MachineInfo::compilation_info()
 	}
 	return compilation_info;
 }
+
