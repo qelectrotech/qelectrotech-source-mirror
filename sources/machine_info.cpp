@@ -159,7 +159,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " User Location:"<< QString(QETApp::configDir().toLatin1());
 	
 	
-	qInfo()<< " Config Location :"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+	qInfo()<< " Config Location :"<< QStringList(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
 	qInfo()<< " Project stalefiles Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 	//qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
 	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
