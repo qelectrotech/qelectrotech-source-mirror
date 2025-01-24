@@ -821,17 +821,17 @@ QString QETApp::customTitleBlockTemplatesDir()
 	Return the QET configuration folder, i.e. the path to the folder in
 	which QET will read configuration and customization information
 	specific to the current user. This file is generally
-	C:\\Documents And Settings\\user\\Application Data\ qet
+	C:/Users/<USER>/AppData/Local/<APPNAME>
 	on Windows and
-	~/.qet
+	~/.config/<APPNAME>
 	under UNIX-like systems.
 	\~French Renvoie le dossier de configuration de QET,
 	c-a-d le chemin du dossier dans lequel QET lira les informations
 	de configuration et de personnalisation propres a l'utilisateur courant.
 	Ce dossier est generalement
-	C:\\Documents And Settings\\utilisateur\\Application Data\\qet
+	C:/Users/<USER>/AppData/Local/<APPNAME>
 	sous Windows et
-	~/.qet
+	~/.config/<APPNAME>
 	sous les systemes type UNIX.
 	\~ @return The path of the QElectroTech configuration folder
 	\~French Le chemin du dossier de configuration de QElectroTech
