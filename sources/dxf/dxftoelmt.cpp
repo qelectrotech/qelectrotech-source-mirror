@@ -17,11 +17,11 @@
 */
 #include "dxftoelmt.h"
 #include "../ui/thirdpartybinaryinstalldialog.h"
+#include "../qetapp.h"
 
 #include <QFile>
 #include <QProcess>
 #include <QMessageBox>
-#include <QStandardPaths>
 
 /**
  * @brief dxftoElmt
@@ -71,7 +71,7 @@ QByteArray dxfToElmt(const QString &file_path)
 
 QString dxf2ElmtDirPath()
 {
-	return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/binary";
+	return QETApp::dataDir() + "/binary";
 }
 
 /**

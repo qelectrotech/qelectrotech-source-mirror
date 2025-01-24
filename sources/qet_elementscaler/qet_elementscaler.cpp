@@ -17,12 +17,12 @@
 */
 #include "qet_elementscaler.h"
 #include "../ui/thirdpartybinaryinstalldialog.h"
+#include "../qetapp.h"
 
 #include <QFile>
 #include <QProcess>
 #include <QInputDialog>
 #include <QMessageBox>
-#include <QStandardPaths>
 
 /**
  * @brief QET_ElementScaler
@@ -113,7 +113,7 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 
 QString ElementScalerDirPath()
 {
-	return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/binary";
+	return QETApp::dataDir() + "/binary";
 }
 
 /**
