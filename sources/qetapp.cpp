@@ -121,7 +121,7 @@ QETApp::QETApp() :
 		tr("Chargement... Initialisation du cache des collections d'éléments",
 		   "splash screen caption"));
 	if (!collections_cache_) {
-	QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+	QString cache_path = QETApp::dataDir() + "/elements_cache.sqlite";
 
 		collections_cache_ = new ElementsCollectionCache(cache_path, this);
 		collections_cache_->setLocale(langFromSetting());
@@ -620,7 +620,7 @@ QString QETApp::customElementsDir()
 			}
 		}
 
-		m_custom_element_dir = configDir() + "elements/";
+		m_custom_element_dir = dataDir() + "/elements/";
 		return m_custom_element_dir;
 	}
 }
@@ -657,7 +657,7 @@ QString QETApp::companyElementsDir()
 			}
 		}
 
-		m_company_element_dir = configDir() + "elements-company/";
+		m_company_element_dir = dataDir() + "/elements-company/";
 		return m_company_element_dir;
 	}
 }
@@ -780,7 +780,7 @@ QString QETApp::companyTitleBlockTemplatesDir()
 		return m_user_company_tbt_dir;
 	}
 
-	return(configDir() + "titleblocks-company/");
+	return(dataDir() + "/titleblocks-company/");
 }
 
 /**
@@ -813,7 +813,7 @@ QString QETApp::customTitleBlockTemplatesDir()
 		return m_user_custom_tbt_dir;
 	}
 
-	return(configDir() + "titleblocks/");
+	return(dataDir() + "/titleblocks/");
 }
 
 /**
@@ -821,17 +821,17 @@ QString QETApp::customTitleBlockTemplatesDir()
 	Return the QET configuration folder, i.e. the path to the folder in
 	which QET will read configuration and customization information
 	specific to the current user. This file is generally
-	C:\\Documents And Settings\\user\\Application Data\ qet
+	C:/Users/<USER>/AppData/Local/<APPNAME>
 	on Windows and
-	~/.qet
+	~/.config/<APPNAME>
 	under UNIX-like systems.
 	\~French Renvoie le dossier de configuration de QET,
 	c-a-d le chemin du dossier dans lequel QET lira les informations
 	de configuration et de personnalisation propres a l'utilisateur courant.
 	Ce dossier est generalement
-	C:\\Documents And Settings\\utilisateur\\Application Data\\qet
+	C:/Users/<USER>/AppData/Local/<APPNAME>
 	sous Windows et
-	~/.qet
+	~/.config/<APPNAME>
 	sous les systemes type UNIX.
 	\~ @return The path of the QElectroTech configuration folder
 	\~French Le chemin du dossier de configuration de QElectroTech
@@ -841,21 +841,32 @@ QString QETApp::configDir()
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (config_dir != QString()) return(config_dir);
 #endif
-#ifdef Q_OS_WIN32
-	// recupere l'emplacement du dossier Application Data
-	// char *app_data_env = getenv("APPDATA");
-	// QString app_data_str(app_data_env);
-	QProcess * process = new QProcess();
-	QString app_data_str = (process->processEnvironment()).value("APPDATA");
-	// delete app_data_env;
-	delete process;
-	if (app_data_str.isEmpty()) {
-		app_data_str = QDir::homePath() + "/Application Data";
+	QString configdir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+	if (configdir.endsWith('/')) {
+		configdir.remove(configdir.length()-1, 1);
 	}
-	return(app_data_str + "/qet/");
-#else
-	return(QDir::homePath() + "/.qet/");
-#endif
+	return configdir;
+}
+
+/**
+	@brief QETApp::dataDir
+	Return the QET data folder, i.e. the path to the folder in
+	which QET will save log-files and elements-cache and where
+	to find user-collections and user-titleblocks by default
+	specific to the current user. This directory is generally
+	C:/Users/<USER>/AppData/Roaming/<APPNAME>
+	on Windows and
+	~/.local/share/<APPNAME>
+	under UNIX-like systems.
+	\~ @return The path of the QElectroTech data-folder
+*/
+QString QETApp::dataDir()
+{
+	QString datadir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+	if (datadir.endsWith('/')) {
+		datadir.remove(datadir.length()-1, 1);
+	}
+	return datadir;
 }
 
 /**
@@ -1536,7 +1547,7 @@ void QETApp::useSystemPalette(bool use) {
 				"}"
 				);
 	} else {
-		QFile file(configDir() + "style.css");
+		QFile file(configDir() + "/style.css");
 		file.open(QFile::ReadOnly);
 		QString styleSheet = QLatin1String(file.readAll());
 		qApp->setStyleSheet(styleSheet);
@@ -2043,6 +2054,12 @@ void QETApp::initConfiguration()
 	// cree les dossiers de configuration si necessaire
 	QDir config_dir(QETApp::configDir());
 	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
+
+	// we definitely need the dataDir for log files and element cache
+	// Nous avons absolument besoin du répertoire dataDir pour
+	// les fichiers journaux et le cache des éléments.
+	QDir data_dir(QETApp::dataDir());
+	if (!data_dir.exists()) data_dir.mkpath(QETApp::dataDir());
 
 	QDir custom_elements_dir(QETApp::customElementsDir());
 	if (!custom_elements_dir.exists())
