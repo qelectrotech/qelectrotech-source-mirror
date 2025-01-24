@@ -156,13 +156,15 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " Custom TitleBlock Templates Dir:"<< QString(QETApp::customTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " Company Elements Dir:"<< QString(QETApp::companyElementsDir().toLatin1());
 	qInfo()<< " Company TitleBlock Templates Dir:"<< QString(QETApp::companyTitleBlockTemplatesDir().toLatin1());
+	qInfo()<< " User Location:"<< QString(QETApp::configDir().toLatin1());
+	
 	
 	qInfo()<< " Standard Location :"<< QStringList(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
 	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 	qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
-	qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-	qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
-	qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
+	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
+	// qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
 	
 	
 	
