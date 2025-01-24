@@ -157,11 +157,14 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " Company Elements Dir:"<< QString(QETApp::companyElementsDir().toLatin1());
 	qInfo()<< " Company TitleBlock Templates Dir:"<< QString(QETApp::companyTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " User Location:"<< QString(QETApp::configDir().toLatin1());
-	
-	
-	qInfo()<< " Config Location :"<< QStringList(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
-	qInfo()<< " Project stalefiles Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-	//qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
+
+	qInfo()<< " for QET configuration-files:";
+	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+	qInfo()<< " for data-files (user-/company-collections, titleblocks, etc.):";
+	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+	qInfo()<< " directory for project stalefiles:";
+	qInfo()<< " Generic Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
+	// qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
 	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
 	// qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
