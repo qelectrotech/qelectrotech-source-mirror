@@ -2054,6 +2054,12 @@ void QETApp::initConfiguration()
 	QDir config_dir(QETApp::configDir());
 	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
 
+	// we definitely need the dataDir for log files and element cache
+	// Nous avons absolument besoin du répertoire dataDir pour
+	// les fichiers journaux et le cache des éléments.
+	QDir data_dir(QETApp::dataDir());
+	if (!data_dir.exists()) data_dir.mkpath(QETApp::dataDir());
+
 	QDir custom_elements_dir(QETApp::customElementsDir());
 	if (!custom_elements_dir.exists())
 		custom_elements_dir.mkpath(QETApp::customElementsDir());
