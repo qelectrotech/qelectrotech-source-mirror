@@ -850,8 +850,9 @@ QString QETApp::configDir()
 
 /**
 	@brief QETApp::dataDir
-	Return the QET data folder, i.e. the path to the folder in which
-	QET will find user-collections and user-titleblocks by default
+	Return the QET data folder, i.e. the path to the folder in
+	which QET will save log-files and elements-cache and where
+	to find user-collections and user-titleblocks by default
 	specific to the current user. This directory is generally
 	C:/Users/<USER>/AppData/Roaming/<APPNAME>
 	on Windows and
