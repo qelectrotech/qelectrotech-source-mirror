@@ -152,7 +152,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " Native Country Name:"<< QLocale::system().nativeCountryName();
 	qInfo()<< " Native Language Name:"<< QLocale::system().nativeLanguageName();	
 	qInfo()<< "";
-	qInfo()<< " System language:"<< QString(QETApp::langFromSetting().toLatin1());
+	qInfo()<< " System language defined in QET configuration:"<< QString(QETApp::langFromSetting().toLatin1());
 	qInfo()<< " language Path:"<< QString(QETApp::languagesPath().toLatin1());
 	qInfo()<< " Common Elements Dir:"<< QString(QETApp::commonElementsDir().toLatin1());
 	qInfo()<< " Common TitleBlock Templates Dir:"<< QString(QETApp::commonTitleBlockTemplatesDir().toLatin1());
