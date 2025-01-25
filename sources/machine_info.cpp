@@ -164,7 +164,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 	qInfo()<< " For QET configuration-files:";
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	qInfo()<< " App Config Location: see Regedit"
+	qInfo()<< " App Config Location: see Regedit: HKEY_CURRENT_USER\Software\QElectroTech\"
 #else
 	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +".conf/";
 #endif
