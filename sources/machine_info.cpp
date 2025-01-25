@@ -146,8 +146,12 @@ void MachineInfo::send_info_to_debug()
 		  + "  - " + pc.cpu.Architecture
 		  + " - Version : "+pc.os.name
 		  + " - Kernel : "+pc.os.kernel;
-		
-		
+	qInfo()<< "";
+	
+	qInfo()<< " OS System language:"<< QLocale::system().name();
+	qInfo()<< " Native Country Name:"<< QLocale::system().nativeCountryName();
+	qInfo()<< " Native Language Name:"<< QLocale::system().nativeLanguageName();	
+	qInfo()<< "";
 	qInfo()<< " System language:"<< QString(QETApp::langFromSetting().toLatin1());
 	qInfo()<< " language Path:"<< QString(QETApp::languagesPath().toLatin1());
 	qInfo()<< " Common Elements Dir:"<< QString(QETApp::commonElementsDir().toLatin1());
@@ -157,18 +161,18 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " Company Elements Dir:"<< QString(QETApp::companyElementsDir().toLatin1());
 	qInfo()<< " Company TitleBlock Templates Dir:"<< QString(QETApp::companyTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " User Location:"<< QString(QETApp::configDir().toLatin1());
-
-	qInfo()<< " for QET configuration-files:";
+	qInfo()<< "";
+	qInfo()<< " For QET configuration-files:";
 	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-	qInfo()<< " for data-files (user-/company-collections, titleblocks, etc.):";
+	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
 	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-	qInfo()<< " directory for project stalefiles:";
+	qInfo()<< " Directory for project stalefiles:";
 	qInfo()<< " Generic Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation);
 	// qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
 	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
 	// qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-	
+		qInfo()<< "";
 	
 	
 	qInfo()<< "*** Qt screens ***";
@@ -182,7 +186,7 @@ void MachineInfo::send_info_to_debug()
 			+ QString::number(pc.screen.height[ii])
 			+ " )";
 	}
-
+	qInfo()<< "";
 	foreach (const QStorageInfo &storage, QStorageInfo::mountedVolumes()) {
 			if (storage.isReadOnly())
 				qDebug() << "isReadOnly:" << storage.isReadOnly();
