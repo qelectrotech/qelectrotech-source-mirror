@@ -163,9 +163,12 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " User Location:"<< QString(QETApp::configDir().toLatin1());
 	qInfo()<< "";
 	qInfo()<< " For QET configuration-files:";
-#ifdef Q_OS_WIN
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	qInfo()<< " App Config Location: see Regedit: HKEY_CURRENT_USER\Software\QElectroTech\";
+#else
+	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +".conf/";
 #endif
+
 	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +".conf/";
 
 	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
