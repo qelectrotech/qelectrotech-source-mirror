@@ -19,6 +19,7 @@
 #include "qetapp.h"
 #include "qetversion.h"
 #include <QSettings>
+#include <QDirIterator>
 
 #include <QScreen>
 #include <QProcess>
@@ -177,11 +178,50 @@ void MachineInfo::send_info_to_debug()
 	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
 	// qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
 		qInfo()<< "";
+		
+
+	qInfo()<< " For elmt-files (user-/common-collections, user-/company-collections, user-/custom-collections, etc.):";
+	QStringList nameFilters;
+	nameFilters << "*.elmt";
+	
+	int commomElementsDir = 0;
+	QDirIterator it1(QETApp::commonElementsDir().toLatin1(),nameFilters,  QDir::Files, QDirIterator::Subdirectories);
+			while (it1.hasNext())
+			{
+				if(it1.next() > 0 )
+				{
+				commomElementsDir ++;
+				}
+			}
+	qInfo()<< " Common Elements count:"<< commomElementsDir;
 	
 	
+	int customElementsDir = 0;
+	QDirIterator it2(QETApp::customElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
+			while (it2.hasNext())
+			{
+				if(it2.next() > 0 )
+				{
+				customElementsDir ++;
+				}
+			}
+	qInfo()<< " Custom Elements count:"<< customElementsDir;
+	
+	int companyElementsDir = 0;
+	QDirIterator it3(QETApp::companyElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
+			while (it3.hasNext())
+			{
+				if(it3.next() > 0 )
+				{
+				companyElementsDir ++;
+				}
+			}
+	qInfo()<< " Company Elements count:"<< companyElementsDir;
+
+
 	qInfo()<< "*** Qt screens ***";
 
-	for (int ii = 0; ii < pc.screen.count; ++ii) {
+	for (int ii = 0; ii < pc.screen.count; ++ii) { 
 		qInfo()<<"( "
 			+ QString::number(ii + 1)
 			+ " : "
