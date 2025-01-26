@@ -62,8 +62,10 @@ int BOMExportDialog::exec()
 	auto r = QDialog::exec();
 	if (r == QDialog::Accepted)
 	{
-			//save in csv file
-		QString file_name = tr("nomenclature_") + QString(m_project ->title() + ".csv");
+			//save in csv file in same directory as project by default
+		QString dir = m_project->currentDir();
+		if (dir.isEmpty()) dir = QETApp::documentDir();
+		QString file_name = dir + "/" + tr("nomenclature_") + QString(m_project ->title() + ".csv");
 		QString file_path = QFileDialog::getSaveFileName(this, tr("Enregister sous... "), file_name, tr("Fichiers csv (*.csv)"));
 		QFile file(file_path);
 		if (!file_path.isEmpty())

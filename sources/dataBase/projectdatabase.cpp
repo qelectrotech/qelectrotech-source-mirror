@@ -670,8 +670,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	if(dir_.isEmpty()) {
 		dir_ = db->project()->filePath();
 		if (dir_.isEmpty()) {
-			dir_ = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first();
-			dir_ += QString("/") += tr("sans_nom") += ".sqlite";
+			dir_ = QETApp::documentDir() + "/" + tr("sans_nom") + ".sqlite";
 		} else {
 			dir_.remove(".qet");
 			dir_.append(".sqlite");

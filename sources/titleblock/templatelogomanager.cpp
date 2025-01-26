@@ -17,10 +17,9 @@
 */
 #include "templatelogomanager.h"
 
+#include "../qetapp.h"
 #include "../qeticons.h"
 #include "../titleblocktemplate.h"
-
-#include <QStandardPaths>
 
 /**
 	Constructor
@@ -78,7 +77,7 @@ void TitleBlockTemplateLogoManager::emitLogosChangedSignal()
 */
 void TitleBlockTemplateLogoManager::initWidgets()
 {
-	open_dialog_dir_.setPath(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
+	open_dialog_dir_.setPath(QETApp::documentDir());
 
 	setWindowTitle(tr("Gestionnaire de logos"));
 	setWindowIcon(QET::Icons::InsertImage);

@@ -98,6 +98,8 @@ class QETApp : public QObject
 		static int projectId(const QETProject *);
 		static QString configDir();
 		static QString dataDir();
+		static QString documentDir();
+		static QString pictureDir();
 		static QString languagesPath();
 		static QString realPath(const QString &);
 		static QString symbolicPath(const QString &);

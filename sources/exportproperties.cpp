@@ -16,21 +16,18 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "exportproperties.h"
-
-#include <QStandardPaths>
+#include "qetapp.h"
 
 /**
 	Constructeur par defaut :
-	  * le repertoire de destination est le Bureau de l'utilisateur
+	  * le repertoire de destination est l'emplacement des documents de l'utilisateur
 	  * le format d'export est PNG
 	  * la grille et les bornes ne doivent pas etre dessinees
 	  * la bordure et le cartouche doivent etre dessines
 	  * la zone exportee est le schema avec son cadre et son cartouche
 */
 ExportProperties::ExportProperties() :
-	destination_directory(
-		QStandardPaths::writableLocation(
-			QStandardPaths::DesktopLocation)),
+	destination_directory(QETApp::documentDir()),
 	format("PNG"),
 	draw_grid(false),
 	draw_border(true),
@@ -85,14 +82,13 @@ void ExportProperties::toSettings(QSettings &settings,
 */
 void ExportProperties::fromSettings(QSettings &settings,
 				    const QString &prefix) {
-	QString desktop_path = QStandardPaths::writableLocation(
-				QStandardPaths::DesktopLocation);
+	QString export_path = QETApp::documentDir();
 	destination_directory.setPath(
 				settings.value(
 					prefix + "path",
-					desktop_path).toString());
+					export_path).toString());
 	if (!destination_directory.exists())
-		destination_directory.setPath(desktop_path);
+		destination_directory.setPath(export_path);
 
 	format = settings.value(prefix + "format").toString();
 

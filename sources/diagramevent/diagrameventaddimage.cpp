@@ -18,6 +18,7 @@
 
 #include "diagrameventaddimage.h"
 
+#include "../qetapp.h"
 #include "../diagram.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
@@ -155,7 +156,7 @@ void DiagramEventAddImage::openDialog()
 	if (m_diagram -> isReadOnly()) return;
 	
 	//Open dialog to select image
-	QString pathPictures = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+	QString pathPictures = QETApp::pictureDir();
 	QString fileName = QFileDialog::getOpenFileName(m_diagram->views().isEmpty()? nullptr : m_diagram->views().first(), QObject::tr("Selectionner une image..."), pathPictures, QObject::tr("Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)"));
 	
 	if (fileName.isEmpty()) return;

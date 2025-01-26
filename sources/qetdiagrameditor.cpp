@@ -65,7 +65,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_zoom_actions_group       (this),
 	m_select_actions_group     (this),
 	m_file_actions_group       (this),
-	open_dialog_dir            (QStandardPaths::writableLocation(QStandardPaths::DesktopLocation))
+	open_dialog_dir            (QETApp::documentDir())
 {
 		//Trivial property use to set the graphics handler size
 	setProperty("graphics_handler_size", 10);
