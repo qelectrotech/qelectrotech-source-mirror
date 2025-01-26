@@ -360,9 +360,11 @@ void QETProject::setFilePath(const QString &filepath)
 }
 
 /**
-	@return le dossier contenant le fichier projet si celui-ci a ete
-	enregistre ; dans le cas contraire, cette methode retourne l'emplacement
-	du bureau de l'utilisateur.
+	@return the folder containing the project file if it has been saved;
+	otherwise, this method returns the location of the user's documents.
+	en français:
+	@return le dossier contenant le fichier du projet s'il a été enregistré ;
+	sinon, cette méthode renvoie l'emplacement des documents de l'utilisateur.
 */
 QString QETProject::currentDir() const
 {

@@ -20,7 +20,7 @@
 
 /**
 	Constructeur par defaut :
-	  * le repertoire de destination est le Bureau de l'utilisateur
+	  * le repertoire de destination est l'emplacement des documents de l'utilisateur
 	  * le format d'export est PNG
 	  * la grille et les bornes ne doivent pas etre dessinees
 	  * la bordure et le cartouche doivent etre dessines
