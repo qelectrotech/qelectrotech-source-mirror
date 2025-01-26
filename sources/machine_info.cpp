@@ -180,7 +180,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 
 
-	qInfo()<< " For elmt-files (user-/common-collections, user-/company-collections, user-/custom-collections, etc.):";
+	qInfo()<< " Count the *.elmt files you have in your collections (Official-common-collection, user-/company-collections, user-/custom-collections, etc.):";
 	QStringList nameFilters;
 	nameFilters << "*.elmt";
 	
