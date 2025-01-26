@@ -177,8 +177,8 @@ void MachineInfo::send_info_to_debug()
 	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
 	// qInfo()<< " Cache Location:"<< QStandardPaths::writableLocation(QStandardPaths::CacheLocation);
-		qInfo()<< "";
-		
+	qInfo()<< "";
+
 
 	qInfo()<< " For elmt-files (user-/common-collections, user-/company-collections, user-/custom-collections, etc.):";
 	QStringList nameFilters;
@@ -217,7 +217,7 @@ void MachineInfo::send_info_to_debug()
 				}
 			}
 	qInfo()<< " Company Elements count:"<< companyElementsDir;
-
+	qInfo()<< "";
 
 	qInfo()<< "*** Qt screens ***";
 
@@ -231,6 +231,7 @@ void MachineInfo::send_info_to_debug()
 			+ " )";
 	}
 	qInfo()<< "";
+	
 	foreach (const QStorageInfo &storage, QStorageInfo::mountedVolumes()) {
 			if (storage.isReadOnly())
 				qDebug() << "isReadOnly:" << storage.isReadOnly();
@@ -242,7 +243,7 @@ void MachineInfo::send_info_to_debug()
 		 }
 		 
 	QStorageInfo storage(qApp->applicationDirPath());
-		  
+		
 			if (storage.isReadOnly())
 			qDebug() << "isReadOnly:" << storage.isReadOnly();
 	
