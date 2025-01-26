@@ -105,13 +105,13 @@ void PasteDiagramCommand::redo()
 	}
 	else
 	{
-		const QList <QGraphicsItem *> qgis_list = content.items(filter);
+		const QList<QGraphicsItem *> qgis_list = content.items(filter);
 		for (QGraphicsItem *item : qgis_list) {
 			diagram->addItem(item);
 		}
 	}
 
-	const QList <QGraphicsItem *> qgis_list = content.items();
+	const QList<QGraphicsItem *> qgis_list = content.items();
 	for (QGraphicsItem *qgi : qgis_list)
 		qgi -> setSelected(true);
 }

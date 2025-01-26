@@ -359,7 +359,7 @@ Terminal* Terminal::alignedWithTerminal() const
 	path.lineTo(line.p2());
 
 	//Get all QGraphicsItem in the alignement of this terminal
-	QList <QGraphicsItem *> qgi_list = diagram() -> items(path);
+	QList<QGraphicsItem *> qgi_list = diagram() -> items(path);
 
 	//Remove all terminals of the parent element
 	foreach (Terminal *t, parent_element_ -> terminals())

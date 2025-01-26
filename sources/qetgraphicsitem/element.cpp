@@ -1166,7 +1166,7 @@ void Element::removeTextGroup(ElementTextItemGroup *group)
 	if(!m_texts_group.contains(group))
 		return;
 
-	const QList <QGraphicsItem *> items_list = group->childItems();
+	const QList<QGraphicsItem *> items_list = group->childItems();
 
 	for(QGraphicsItem *qgi : items_list)
 	{
