@@ -169,8 +169,6 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +".conf/";
 #endif
 
-	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +".conf/";
-
 	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
 	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 	qInfo()<< " Directory for project stalefiles:";
