@@ -160,7 +160,6 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " Custom TitleBlock Templates Dir:"<< QString(QETApp::customTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " Company Elements Dir:"<< QString(QETApp::companyElementsDir().toLatin1());
 	qInfo()<< " Company TitleBlock Templates Dir:"<< QString(QETApp::companyTitleBlockTemplatesDir().toLatin1());
-	qInfo()<< " User Location:"<< QString(QETApp::configDir().toLatin1());
 	qInfo()<< "";
 	qInfo()<< " For QET configuration-files:";
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
