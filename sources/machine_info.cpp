@@ -193,7 +193,7 @@ void MachineInfo::send_info_to_debug()
 				commomElementsDir ++;
 				}
 			}
-	qInfo()<< " Common Elements count:"<< commomElementsDir;
+	qInfo()<< " Common Elements count:"<< commomElementsDir << "Elements";
 	
 	
 	int customElementsDir = 0;
@@ -205,7 +205,7 @@ void MachineInfo::send_info_to_debug()
 				customElementsDir ++;
 				}
 			}
-	qInfo()<< " Custom Elements count:"<< customElementsDir;
+	qInfo()<< " Custom Elements count:"<< customElementsDir << "Elements";
 	
 	int companyElementsDir = 0;
 	QDirIterator it3(QETApp::companyElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
@@ -216,7 +216,8 @@ void MachineInfo::send_info_to_debug()
 				companyElementsDir ++;
 				}
 			}
-	qInfo()<< " Company Elements count:"<< companyElementsDir;
+	qInfo()<< " Company Elements count:"<< companyElementsDir << "Elements";
+	
 	qInfo()<< "";
 
 	qInfo()<< "*** Qt screens ***";
@@ -251,7 +252,7 @@ void MachineInfo::send_info_to_debug()
 			qInfo()  << "FileSystemType:" << storage.fileSystemType();
 			qInfo()  << "SizeTotal:" << storage.bytesTotal()/1000000000  <<  "GB";
 			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1000000000 <<  "GB";
-		
+			qInfo()<< "Count All Elements in collections ="<< commomElementsDir + customElementsDir + customElementsDir << "Elements";
 		
 }
 
