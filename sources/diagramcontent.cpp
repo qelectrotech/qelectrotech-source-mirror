@@ -48,7 +48,7 @@ DiagramContent::DiagramContent()
 DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 	m_selected_items(diagram->selectedItems())
 {
-	QList <QGraphicsItem *> item_list;
+	QList<QGraphicsItem *> item_list;
 	if (selected) {
 		item_list = m_selected_items;
 	} else {
