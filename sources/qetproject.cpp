@@ -36,7 +36,6 @@
 #include "qetversion.h"
 
 #include <QHash>
-#include <QStandardPaths>
 #include <QTimer>
 #include <QtConcurrent>
 #include <QtDebug>
@@ -369,7 +368,7 @@ QString QETProject::currentDir() const
 {
 	QString current_directory;
 	if (m_file_path.isEmpty()) {
-		current_directory = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+		current_directory = QETApp::documentDir();
 	} else {
 		current_directory = QFileInfo(m_file_path).absoluteDir().absolutePath();
 	}

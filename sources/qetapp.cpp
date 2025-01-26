@@ -870,6 +870,44 @@ QString QETApp::dataDir()
 }
 
 /**
+	@brief QETApp::documentDir
+	Return the standard-folder where to save users documents
+	This directory is generally
+	C:/Users/<USER>/Documents
+	on Windows and
+	~/Documents
+	under UNIX-like systems.
+	\~ @return The path of users document-folder
+*/
+QString QETApp::documentDir()
+{
+	QString docdir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+	if (docdir.endsWith('/')) {
+		docdir.remove(docdir.length()-1, 1);
+	}
+	return docdir;
+}
+
+/**
+	@brief QETApp::pictureDir
+	Returns the standard-folder of users pictures
+	This directory is generally
+	C:/Users/<USER>/Pictures
+	on Windows and
+	~/Pictures
+	under UNIX-like systems.
+	\~ @return The path of users picture-folder
+*/
+QString QETApp::pictureDir()
+{
+	QString picturedir = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
+	if (picturedir.endsWith('/')) {
+		picturedir.remove(picturedir.length()-1, 1);
+	}
+	return picturedir;
+}
+
+/**
 	@brief QETApp::realPath
 	Allows you to know the absolute path of the * .elmt file
 	corresponding to a symbolic path

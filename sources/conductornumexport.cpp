@@ -17,6 +17,7 @@
 */
 #include "conductornumexport.h"
 
+#include "qetapp.h"
 #include "diagram.h"
 #include "diagramcontent.h"
 #include "qetgraphicsitem/conductor.h"
@@ -45,7 +46,10 @@ ConductorNumExport::ConductorNumExport(QETProject *project, QWidget *parent) :
 */
 bool ConductorNumExport::toCsv()
 {
-	QString name = QObject::tr("numero_de_fileries_") + m_project->title() + ".csv";
+		//save in csv file in same directory as project by default
+	QString dir = m_project->currentDir();
+	if (dir.isEmpty()) dir = QETApp::documentDir();
+	QString name = dir + "/" + QObject::tr("numero_de_fileries_") + m_project->title() + ".csv";
 	//    if(!name.endsWith(".csv")) {
 	//        name += ".csv";
 	//    }
