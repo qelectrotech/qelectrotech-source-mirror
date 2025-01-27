@@ -166,11 +166,11 @@ void MachineInfo::send_info_to_debug()
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	qInfo()<< " App Config Location: see Regedit: HKEY_CURRENT_USER/Software/QElectroTech/";
 #else
-	qInfo()<< " App Config Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) +".conf/";
+	qInfo()<< " App Config Location:"<< QETApp::configDir();
 #endif
 
 	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
-	qInfo()<< " App Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+	qInfo()<< " App Data Location:"<< QETApp::dataDir();
 	qInfo()<< " Directory for project stalefiles:";
 	qInfo()<< " Generic Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/stalefiles/QElectroTech/";
 	// qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
