@@ -180,7 +180,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 
 
-	qInfo()<< " Count the *.elmt files you have in your collections (Official-common-collection, user-/company-collections, user-/custom-collections, etc.):";
+	qInfo()<< " Count the elements in your collections (Official-common-collection, company-collections, custom-collections):";
 	QStringList nameFilters;
 	nameFilters << "*.elmt";
 	
@@ -252,7 +252,7 @@ void MachineInfo::send_info_to_debug()
 			qInfo()  << "FileSystemType:" << storage.fileSystemType();
 			qInfo()  << "SizeTotal:" << storage.bytesTotal()/1000000000  <<  "GB";
 			qInfo()  << "AvailableSize:" << storage.bytesAvailable()/1000000000 <<  "GB";
-			qInfo()<< "Count All Elements in collections ="<< commomElementsDir + customElementsDir + customElementsDir << "Elements";
+			qInfo()<< "Count All Elements in collections ="<< commomElementsDir + customElementsDir + companyElementsDir << "Elements";
 		
 }
 
