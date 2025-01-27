@@ -64,6 +64,9 @@ common_tbt_dir_(qet_arguments.common_tbt_dir_),
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_(qet_arguments.config_dir_),
 #endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	data_dir_(qet_arguments.data_dir_),
+#endif
 	lang_dir_(qet_arguments.lang_dir_),
 	print_help_(qet_arguments.print_help_),
 	print_license_(qet_arguments.print_license_),
@@ -89,6 +92,9 @@ QETArguments &QETArguments::operator=(const QETArguments &qet_arguments) {
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_ = qet_arguments.config_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	data_dir_ = qet_arguments.data_dir_;
 #endif
 	lang_dir_        = qet_arguments.lang_dir_;
 	print_help_      = qet_arguments.print_help_;
@@ -190,6 +196,9 @@ void QETArguments::clear()
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_.clear();
 #endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	data_dir_.clear();
+#endif
 }
 
 /**
@@ -239,6 +248,7 @@ void QETArguments::handleFileArgument(const QString &file) {
 	  * --common-elements-dir=
 	  * --common-tbt-dir
 	  * --config-dir=
+	  * --data-dir=
 	  * --lang-dir=
 	  * --help
 	  * --version
@@ -266,7 +276,6 @@ void QETArguments::handleOptionArgument(const QString &option) {
 		common_elements_dir_ = option.mid(ced_arg.length());
 		return;
 	}
-	
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
 	QString ctbtd_arg("--common-tbt-dir=");
@@ -281,7 +290,13 @@ void QETArguments::handleOptionArgument(const QString &option) {
 		config_dir_ = option.mid(cd_arg.length());
 		return;
 	}
-	
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	QString dd_arg("--data-dir=");
+	if (option.startsWith(dd_arg)) {
+		data_dir_ = option.mid(dd_arg.length());
+		return;
+	}
 #endif
 	
 	QString ld_arg("--lang-dir=");
@@ -350,6 +365,25 @@ bool QETArguments::configDirSpecified() const
 QString QETArguments::configDir() const
 {
 	return(config_dir_);
+}
+#endif
+
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+/**
+	@return true si l'utilisateur a specifie un dossier pour la data
+*/
+bool QETArguments::dataDirSpecified() const
+{
+	return(!data_dir_.isEmpty());
+}
+
+/**
+	@return le dossier de data specifie par l'utilisateur.
+	Si l'utilisateur n'en a pas specifie, une chaine vide est retournee.
+*/
+QString QETArguments::dataDir() const
+{
+	return(data_dir_);
 }
 #endif
 

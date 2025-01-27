@@ -57,6 +57,9 @@ DEFINES += QET_ALLOW_OVERRIDE_CTBTD_OPTION
 # Commenter la ligne ci-dessous pour desactiver l'option --config-dir
 DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
+# Commenter la ligne ci-dessous pour desactiver l'option --data-dir
+DEFINES += QET_ALLOW_OVERRIDE_DD_OPTION
+
 #comment the line below to disable the project database export
 DEFINES += QET_EXPORT_PROJECT_DB
 
