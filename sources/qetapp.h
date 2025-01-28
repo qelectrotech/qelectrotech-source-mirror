@@ -143,6 +143,18 @@ class QETApp : public QObject
 		static QString config_dir;
 #endif
 		
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	public:
+		static void overrideDataDir(const QString &);
+	private:
+		/**
+			@brief data_dir
+			Directory containing the users data
+			and the custom elements collection
+		*/
+		static QString data_dir;
+#endif
+		
 	public:
 		static void overrideLangDir(const QString &);
 		/**

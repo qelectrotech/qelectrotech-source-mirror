@@ -62,6 +62,10 @@ QString QETApp::common_tbt_dir_ = QString();
 QString QETApp::config_dir = QString();
 #endif
 
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+QString QETApp::data_dir = QString();
+#endif
+
 QString QETApp::lang_dir = QString();
 TitleBlockTemplatesFilesCollection *QETApp::m_common_tbt_collection;
 TitleBlockTemplatesFilesCollection *QETApp::m_company_tbt_collection;
@@ -842,7 +846,7 @@ QString QETApp::configDir()
 	if (config_dir != QString()) return(config_dir);
 #endif
 	QString configdir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-	if (configdir.endsWith('/')) {
+	while (configdir.endsWith('/')) {
 		configdir.remove(configdir.length()-1, 1);
 	}
 	return configdir;
@@ -862,8 +866,11 @@ QString QETApp::configDir()
 */
 QString QETApp::dataDir()
 {
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	if (data_dir != QString()) return(data_dir);
+#endif
 	QString datadir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-	if (datadir.endsWith('/')) {
+	while (datadir.endsWith('/')) {
 		datadir.remove(datadir.length()-1, 1);
 	}
 	return datadir;
@@ -882,7 +889,7 @@ QString QETApp::dataDir()
 QString QETApp::documentDir()
 {
 	QString docdir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-	if (docdir.endsWith('/')) {
+	while (docdir.endsWith('/')) {
 		docdir.remove(docdir.length()-1, 1);
 	}
 	return docdir;
@@ -901,7 +908,7 @@ QString QETApp::documentDir()
 QString QETApp::pictureDir()
 {
 	QString picturedir = QStandardPaths::writableLocation(QStandardPaths::PicturesLocation);
-	if (picturedir.endsWith('/')) {
+	while (picturedir.endsWith('/')) {
 		picturedir.remove(picturedir.length()-1, 1);
 	}
 	return picturedir;
@@ -1114,7 +1121,32 @@ void QETApp::overrideConfigDir(const QString &new_cd) {
 	QFileInfo new_cd_info(new_cd);
 	if (new_cd_info.isDir()) {
 		config_dir = new_cd_info.absoluteFilePath();
-		if (!config_dir.endsWith("/")) config_dir += "/";
+		// directory entries always without trailing slash
+		while (config_dir.endsWith('/')) {
+			config_dir.remove(config_dir.length()-1, 1);
+		}
+	}
+}
+#endif
+
+
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+/**
+	@brief QETApp::overrideDataDir
+	Redefines the path of the data folder
+	\~French Redefinit le chemin du dossier de data
+	\~ @param new_dd :
+	New path to data folder
+	\~French Nouveau chemin du dossier de data
+*/
+void QETApp::overrideDataDir(const QString &new_dd) {
+	QFileInfo new_dd_info(new_dd);
+	if (new_dd_info.isDir()) {
+		data_dir = new_dd_info.absoluteFilePath();
+		// directory entries always without trailing slash
+		while (data_dir.endsWith('/')) {
+			data_dir.remove(data_dir.length()-1, 1);
+		}
 	}
 }
 #endif
@@ -1944,6 +1976,7 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 	Parse the following arguments:
 	  - --common-elements-dir=
 	  - --config-dir
+	  - --data-dir
 	  - --help
 	  - --version
 	  - -v
@@ -1956,6 +1989,7 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(
 	Parse les arguments suivants :
 	  - --common-elements-dir=
 	  - --config-dir
+	  - --data-dir
 	  - --help
 	  - --version
 	  - -v
@@ -1993,6 +2027,11 @@ void QETApp::parseArguments()
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (qet_arguments_.configDirSpecified()) {
 		overrideConfigDir(qet_arguments_.configDir());
+	}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	if (qet_arguments_.dataDirSpecified()) {
+		overrideDataDir(qet_arguments_.dataDir());
 	}
 #endif
 
@@ -2496,6 +2535,9 @@ void QETApp::printHelp()
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 		+ tr("  --config-dir=DIR              Definir le dossier de configuration\n")
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+		+ tr("  --data-dir=DIR                Definir le dossier de data\n")
 #endif
 		+ tr("  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue\n")
 	);

@@ -54,6 +54,10 @@ class QETArguments : public QObject {
 	virtual bool configDirSpecified() const;
 	virtual QString configDir() const;
 #endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	virtual bool dataDirSpecified() const;
+	virtual QString dataDir() const;
+#endif
 	virtual bool langDirSpecified() const;
 	virtual QString langDir() const;
 	virtual bool printHelpRequested() const;
@@ -83,6 +87,9 @@ class QETArguments : public QObject {
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString config_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_DD_OPTION
+	QString data_dir_;
 #endif
 	QString lang_dir_;
 	bool print_help_;

@@ -7,6 +7,7 @@ QET_EXE=$(readlink -f "${current_dir}/../qelectrotech")
 QET_ELEMENTS_DIR=$(readlink -f "${current_dir}/../elements/")
 QET_TBT_DIR=$(readlink -f "${current_dir}/../titleblocks/")
 QET_CONFIG_DIR=""
+QET_DATA_DIR=""
 QET_LANG_DIR=$(readlink -f "${current_dir}/../lang/")
 # REDEFINE_LANG="es"
 
@@ -29,6 +30,10 @@ fi
 
 if [ -d "${QET_CONFIG_DIR}" ]; then
 	OPTIONS="${OPTIONS} --config-dir=${QET_CONFIG_DIR}"
+fi
+
+if [ -d "${QET_DATA_DIR}" ]; then
+	OPTIONS="${OPTIONS} --data-dir=${QET_DATA_DIR}"
 fi
 
 if [ -d "${QET_LANG_DIR}" ]; then
