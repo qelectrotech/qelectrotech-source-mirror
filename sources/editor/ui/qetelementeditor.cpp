@@ -1472,7 +1472,7 @@ void QETElementEditor::on_m_import_dxf_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   QObject::tr("Importer un fichier dxf"),
-													   QDir::homePath(),
+													   QETApp::documentDir(),
 													   "DXF (*.dxf)")};
 		if (file_path.isEmpty()) {
 			return;
@@ -1498,7 +1498,7 @@ void QETElementEditor::on_m_import_scaled_element_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   tr("Importer un élément à redimensionner"),
-													   QDir::homePath(),
+													   QETApp::documentDir(),
 													   tr("Éléments QElectroTech (*.elmt)"))};
 		if (file_path.isEmpty()) {
 			return;
