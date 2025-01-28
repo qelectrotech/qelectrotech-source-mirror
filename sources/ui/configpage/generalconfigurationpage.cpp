@@ -436,7 +436,7 @@ void GeneralConfigurationPage::on_m_common_elmt_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection commune"), QDir::homePath());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection commune"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_common_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -450,7 +450,7 @@ void GeneralConfigurationPage::on_m_company_elmt_path_cb_currentIndexChanged(int
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection company"), QDir::homePath());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection company"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_company_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -464,7 +464,7 @@ void GeneralConfigurationPage::on_m_custom_elmt_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QDir::homePath());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin de la collection utilisateur"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_custom_elmt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -478,7 +478,7 @@ void GeneralConfigurationPage::on_m_company_tbt_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches company"), QDir::homePath());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches company"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_company_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
@@ -492,7 +492,7 @@ void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int i
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches utilisateur"), QDir::homePath());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des cartouches utilisateur"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_custom_tbt_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}
