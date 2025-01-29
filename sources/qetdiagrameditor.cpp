@@ -2404,9 +2404,9 @@ void QETDiagramEditor::generateTerminalBlock()
 	}
 #endif
 	else {
-		process->close();
 		qInfo() << "No project loaded - no need to start \"qet_tb_generator\"";
 	}
+	process->close();
 
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	QString message=QObject::tr(
