@@ -2360,50 +2360,31 @@ void QETDiagramEditor::generateTerminalBlock()
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 		//process->start("qet_tb_generator");
 
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	if (openedProjects().count()) {
 		QList<QString> exeList;
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 		exeList << QStandardPaths::findExecutable("qet_tb_generator.exe")
 				<< "qet_tb_generator"
 				<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
 				<< (QETApp::dataDir() + "/binary/qet_tb_generator.exe");
-		foreach(QString exe, exeList) {
-			qInfo() << " success so far: " << success << "  - now searching for " << exe;
-			if ((success == false) && exe.length() && QFile::exists(exe)) {
-				success = process->startDetached(exe, {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-			}
-		}
-	}
 #elif  defined(Q_OS_MACOS)
-	if (openedProjects().count()) {
-		QList<QString> exeList;
 		exeList << QStandardPaths::findExecutable("qet_tb_generator")
 				<< "/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator"
 				<< (QDir::homePath() + "/.qet/qet_tb_generator.app")
 				<< (QETApp::dataDir() + "/binary/qet_tb_generator");
-		foreach(QString exe, exeList) {
-			qInfo() << " success so far: " << success << "  - now searching for " << exe;
-			if ((success == false) && exe.length() && QFile::exists(exe)) {
-				success = process->startDetached(exe, {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-			}
-		}
-	}
 #else
-	if (openedProjects().count()) {
-		QList<QString> exeList;
 		exeList << QStandardPaths::findExecutable("qet_tb_generator")
 				<< (QETApp::dataDir() + "/binary/qet_tb_generator")
 				<< (QDir::homePath() + "/.qet/qet_tb_generator")
 				<< "qet_tb_generator";
+#endif
 		foreach(QString exe, exeList) {
 			qInfo() << " success so far: " << success << "  - now searching for " << exe;
 			if ((success == false) && exe.length() && QFile::exists(exe)) {
 				success = process->startDetached(exe, {(QETDiagramEditor::currentProjectView()->project()->filePath())});
 			}
 		}
-	}
-#endif
-	else {
+	} else {
 		qInfo() << "No project loaded - no need to start \"qet_tb_generator\"";
 	}
 	process->close();
