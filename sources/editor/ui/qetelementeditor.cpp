@@ -1282,24 +1282,6 @@ void QETElementEditor::on_m_open_from_file_action_triggered()
 	openElement(user_filename);
 }
 
-void QETElementEditor::on_m_open_scaled_element_action_triggered()
-{
-#ifdef TODO_LIST
-#	pragma message("@TODO Merge 'Element-Scaling' code into QET")
-#	pragma message("https://github.com/plc-user/QET_ElementScaler")
-#endif
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	QString program = (QDir::homePath() + "/Application Data/qet/QET_ElementScaler.exe");
-#elif defined(Q_OS_MAC)
-	QString program = (QDir::homePath() + "/.qet/QET_ElementScaler.app");
-#else
-	QString program = (QDir::homePath() + "/.qet/QET_ElementScaler");
-#endif
-	QStringList arguments;
-	QProcess *ES = new QProcess(qApp);
-	ES -> start(program,arguments);
-}
-
 bool QETElementEditor::on_m_save_as_file_action_triggered()
 {
 	// Check element before writing
@@ -1472,7 +1454,7 @@ void QETElementEditor::on_m_import_dxf_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   QObject::tr("Importer un fichier dxf"),
-													   QDir::homePath(),
+													   QETApp::documentDir(),
 													   "DXF (*.dxf)")};
 		if (file_path.isEmpty()) {
 			return;
@@ -1498,7 +1480,7 @@ void QETElementEditor::on_m_import_scaled_element_triggered()
 	{
 		QString file_path{QFileDialog::getOpenFileName(this,
 													   tr("Importer un élément à redimensionner"),
-													   QDir::homePath(),
+													   QETApp::documentDir(),
 													   tr("Éléments QElectroTech (*.elmt)"))};
 		if (file_path.isEmpty()) {
 			return;
