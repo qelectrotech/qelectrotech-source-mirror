@@ -2358,19 +2358,23 @@ void QETDiagramEditor::generateTerminalBlock()
 	QProcess *process = new QProcess(qApp);
 
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	exeList << QStandardPaths::findExecutable("qet_tb_generator.exe")
-			<< "qet_tb_generator"
+	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator.exe")
+			<< (QDir::currentPath() + "/qet_tb_generator.exe")
+			<< QStandardPaths::findExecutable("qet_tb_generator.exe")
 			<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
-			<< (QETApp::dataDir() + "/binary/qet_tb_generator.exe");
+			<< "qet_tb_generator.exe"
+			<< "qet_tb_generator";    // from original code: missing ".exe" ???
 #elif  defined(Q_OS_MACOS)
-	exeList << QStandardPaths::findExecutable("qet_tb_generator")
-			<< "/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator"
+	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator")
+			<< (QDir::currentPath() + "/qet_tb_generator")
+			<< QStandardPaths::findExecutable("qet_tb_generator")
 			<< (QDir::homePath() + "/.qet/qet_tb_generator.app")
-			<< (QETApp::dataDir() + "/binary/qet_tb_generator");
+			<< "/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator";
 #else
-	exeList << QStandardPaths::findExecutable("qet_tb_generator")
-			<< (QETApp::dataDir() + "/binary/qet_tb_generator")
+	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator")
+			<< (QDir::currentPath() + "/qet_tb_generator")
 			<< (QDir::homePath() + "/.qet/qet_tb_generator")
+			<< QStandardPaths::findExecutable("qet_tb_generator")
 			<< "qet_tb_generator";
 #endif
 
