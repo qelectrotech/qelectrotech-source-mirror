@@ -2354,30 +2354,34 @@ void QETDiagramEditor::generateTerminalBlock()
 #endif
 
 	bool success = false;
+	QList<QString> exeList;
 	QProcess *process = new QProcess(qApp);
+
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+	exeList << QStandardPaths::findExecutable("qet_tb_generator.exe")
+			<< "qet_tb_generator"
+			<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
+			<< (QETApp::dataDir() + "/binary/qet_tb_generator.exe");
+#elif  defined(Q_OS_MACOS)
+	exeList << QStandardPaths::findExecutable("qet_tb_generator")
+			<< "/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator"
+			<< (QDir::homePath() + "/.qet/qet_tb_generator.app")
+			<< (QETApp::dataDir() + "/binary/qet_tb_generator");
+#else
+	exeList << QStandardPaths::findExecutable("qet_tb_generator")
+			<< (QETApp::dataDir() + "/binary/qet_tb_generator")
+			<< (QDir::homePath() + "/.qet/qet_tb_generator")
+			<< "qet_tb_generator";
+#endif
 
 		// If launched under control:
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 		//process->start("qet_tb_generator");
 
+	qInfo() << " project to use for qet_tb_generator: "
+			<< (QETDiagramEditor::currentProjectView()->project()->filePath());
+
 	if (openedProjects().count()) {
-		QList<QString> exeList;
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-		exeList << QStandardPaths::findExecutable("qet_tb_generator.exe")
-				<< "qet_tb_generator"
-				<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
-				<< (QETApp::dataDir() + "/binary/qet_tb_generator.exe");
-#elif  defined(Q_OS_MACOS)
-		exeList << QStandardPaths::findExecutable("qet_tb_generator")
-				<< "/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator"
-				<< (QDir::homePath() + "/.qet/qet_tb_generator.app")
-				<< (QETApp::dataDir() + "/binary/qet_tb_generator");
-#else
-		exeList << QStandardPaths::findExecutable("qet_tb_generator")
-				<< (QETApp::dataDir() + "/binary/qet_tb_generator")
-				<< (QDir::homePath() + "/.qet/qet_tb_generator")
-				<< "qet_tb_generator";
-#endif
 		foreach(QString exe, exeList) {
 			qInfo() << " success so far: " << success << "  - now searching for " << exe;
 			if ((success == false) && exe.length() && QFile::exists(exe)) {
