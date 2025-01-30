@@ -2353,55 +2353,50 @@ void QETDiagramEditor::generateTerminalBlock()
 #	pragma message("https://github.com/qelectrotech/qet_tb_generator")
 #endif
 
-	bool success;
+	bool success = false;
+	QList<QString> exeList;
 	QProcess *process = new QProcess(qApp);
+
+#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
+	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator.exe")
+			<< (QDir::currentPath() + "/qet_tb_generator.exe")
+			<< QStandardPaths::findExecutable("qet_tb_generator.exe")
+			<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
+			<< "qet_tb_generator.exe"
+			<< "qet_tb_generator";    // from original code: missing ".exe" ???
+#elif  defined(Q_OS_MACOS)
+	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator")
+			<< (QDir::currentPath() + "/qet_tb_generator")
+			<< QStandardPaths::findExecutable("qet_tb_generator")
+			<< (QDir::homePath() + "/.qet/qet_tb_generator.app")
+			<< "/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator";
+#else
+	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator")
+			<< (QDir::currentPath() + "/qet_tb_generator")
+			<< (QDir::homePath() + "/.qet/qet_tb_generator")
+			<< QStandardPaths::findExecutable("qet_tb_generator")
+			<< "qet_tb_generator";
+#endif
 
 		// If launched under control:
 		//connect(process, SIGNAL(errorOcurred(int error)), this, SLOT(slot_generateTerminalBlock_error()));
 		//process->start("qet_tb_generator");
 
-#if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	if (openedProjects().count()){
-		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached("qet_tb_generator", {("")});
-	}
-	if (openedProjects().count()){
-		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe", {("")});
-	}
-	if (openedProjects().count()){
-		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/qet_tb_generator.exe", {("")});
-	}
+	qInfo() << " project to use for qet_tb_generator: "
+			<< (QETDiagramEditor::currentProjectView()->project()->filePath());
 
-	
+	if (openedProjects().count()) {
+		foreach(QString exe, exeList) {
+			qInfo() << " success so far: " << success << "  - now searching for " << exe;
+			if ((success == false) && exe.length() && QFile::exists(exe)) {
+				success = process->startDetached(exe, {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+			}
+		}
+	} else {
+		qInfo() << "No project loaded - no need to start \"qet_tb_generator\"";
+	}
+	process->close();
 
-#elif  defined(Q_OS_MACOS)
-	if (openedProjects().count()){
-		success = process->startDetached("/Library/Frameworks/Python.framework/Versions/3.11/bin/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	else  {
-		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator.app", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	
-
-#else
-	if (openedProjects().count()){
-		success = process->startDetached("qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	
-	else  {
-		success = process->startDetached(QDir::homePath() + "/.qet/qet_tb_generator", {(QETDiagramEditor::currentProjectView()->project()->filePath())});
-	}
-	
-
-#endif
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
 	QString message=QObject::tr(
 		"To install the plugin qet_tb_generator"
