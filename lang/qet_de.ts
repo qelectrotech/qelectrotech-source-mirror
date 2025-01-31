@@ -125,7 +125,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="110"/>
         <source>Traduction en portugais</source>
-        <translation>für Portugisisch</translation>
+        <translation>für Portugiesisch </translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="111"/>
@@ -3009,7 +3009,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="214"/>
         <source>SVG: fond transparent</source>
-        <translation>SVG-Hintergrund transparent</translation>
+        <translation>SVG-transparenter Hintergrund</translation>
     </message>
 </context>
 <context>
@@ -5245,7 +5245,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.ui" line="20"/>
@@ -6505,17 +6505,17 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished">Strg+Umschalt+S</translation>
+        <translation>Strg+Umschalt+S</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
         <source>SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation>Leertaste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
         <source>Ctrl+SPACE</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+Leertaste</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
@@ -6995,7 +6995,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="496"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Leertaste</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="505"/>
@@ -7111,7 +7111,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="980"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished">Strg+Q</translation>
+        <translation>Strg+Q</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="969"/>
@@ -7136,7 +7136,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="983"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+W</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1004"/>
@@ -9066,37 +9066,37 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Numéro d&apos;article auxiliaire 1</source>
-        <translation type="unfinished">Artikelnummer Zusatzartikel 1</translation>
+        <translation>Artikelnummer Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Fabricant auxiliaire 1</source>
-        <translation type="unfinished">Hersteller Zusatzartikel 1</translation>
+        <translation>Hersteller Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Numéro de commande auxiliaire 1</source>
-        <translation type="unfinished">Bestellnummer Zusatzartikel 1</translation>
+        <translation>Bestellnummer Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro interne auxiliaire 1</source>
-        <translation type="unfinished">Interne Nummer Zusatzartikel 1</translation>
+        <translation>Interne Nummer Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Fournisseur auxiliaire 1</source>
-        <translation type="unfinished">Lieferant Zusatzartikel 1</translation>
+        <translation>Lieferant Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Quantité auxiliaire 1</source>
-        <translation type="unfinished">Menge Zusatzartikel 1</translation>
+        <translation>Menge Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Unité auxiliaire 1</source>
-        <translation type="unfinished">Einheit Zusatzartikel 1</translation>
+        <translation>Einheit Zusatzartikel 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
@@ -9106,132 +9106,132 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="282"/>
         <source>Description textuelle auxiliaire 2</source>
-        <translation type="unfinished">Artikelbeschreibung Zusatzartikel 2</translation>
+        <translation>Artikelbeschreibung Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Numéro d&apos;article auxiliaire 2</source>
-        <translation type="unfinished">Artikelnummer Zusatzartikel 2</translation>
+        <translation>Artikelnummer Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Fabricant auxiliaire 2</source>
-        <translation type="unfinished">Hersteller Zusatzartikel 2</translation>
+        <translation>Hersteller Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Numéro de commande auxiliaire 2</source>
-        <translation type="unfinished">Bestellnummer Zusatzartikel 2</translation>
+        <translation>Bestellnummer Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Numéro interne auxiliaire 2</source>
-        <translation type="unfinished">Interne Nummer Zusatzartikel 2</translation>
+        <translation>Interne Nummer Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Fournisseur auxiliaire 2</source>
-        <translation type="unfinished">Lieferant Zusatzartikel 2</translation>
+        <translation>Lieferant Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Quantité auxiliaire 2</source>
-        <translation type="unfinished">Menge Zusatzartikel 2</translation>
+        <translation>Menge Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="289"/>
         <source>Unité auxiliaire 2</source>
-        <translation type="unfinished">Einheit Zusatzartikel 2</translation>
+        <translation>Einheit Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="290"/>
         <source>Bloc auxiliaire 3</source>
-        <translation type="unfinished">Zusatzinfo Zusatzartikel 3</translation>
+        <translation>Zusatzinfo Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="291"/>
         <source>Description textuelle auxiliaire 3</source>
-        <translation type="unfinished">Artikelbeschreibung Zusatzartikel 3</translation>
+        <translation>Artikelbeschreibung Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="292"/>
         <source>Numéro d&apos;article auxiliaire 3</source>
-        <translation type="unfinished">Artikelnummer Zusatzartikel 3</translation>
+        <translation>Artikelnummer Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Fabricant auxiliaire 3</source>
-        <translation type="unfinished">Hersteller Zusatzartikel 3</translation>
+        <translation>Hersteller Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="294"/>
         <source>Numéro de commande auxiliaire 3</source>
-        <translation type="unfinished">Bestellnummer Zusatzartikel 3</translation>
+        <translation>Bestellnummer Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="295"/>
         <source>Numéro interne auxiliaire 3</source>
-        <translation type="unfinished">Interne Nummer Zusatzartikel 3</translation>
+        <translation>Interne Nummer Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="296"/>
         <source>Fournisseur auxiliaire 3</source>
-        <translation type="unfinished">Lieferant Zusatzartikel 3</translation>
+        <translation>Lieferant Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="297"/>
         <source>Quantité auxiliaire 3</source>
-        <translation type="unfinished">Menge Zusatzartikel 3</translation>
+        <translation>Menge Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Unité auxiliaire 3</source>
-        <translation type="unfinished">Einheit Zusatzartikel 3</translation>
+        <translation>Einheit Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Bloc auxiliaire 4</source>
-        <translation type="unfinished">Zusatzinfo Zusatzartikel 4</translation>
+        <translation>Zusatzinfo Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Description textuelle auxiliaire 4</source>
-        <translation type="unfinished">Artikelbeschreibung Zusatzartikel 4</translation>
+        <translation>Artikelbeschreibung Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Numéro d&apos;article auxiliaire 4</source>
-        <translation type="unfinished">Artikelnummer Zusatzartikel 4</translation>
+        <translation>Artikelnummer Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Fabricant auxiliaire 4</source>
-        <translation type="unfinished">Hersteller Zusatzartikel 4</translation>
+        <translation>Hersteller Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="303"/>
         <source>Numéro de commande auxiliaire 4</source>
-        <translation type="unfinished">Bestellnummer Zusatzartikel 4</translation>
+        <translation>Bestellnummer Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="304"/>
         <source>Numéro interne auxiliaire 4</source>
-        <translation type="unfinished">Interne Nummer Zusatzartikel 4</translation>
+        <translation>Interne Nummer Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="305"/>
         <source>Fournisseur auxiliaire 4</source>
-        <translation type="unfinished">Lieferant Zusatzartikel 4</translation>
+        <translation>Lieferant Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Quantité auxiliaire 4</source>
-        <translation type="unfinished">Menge Zusatzartikel 3</translation>
+        <translation>Menge Zusatzartikel 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="307"/>
         <source>Unité auxiliaire 4</source>
-        <translation type="unfinished">Einheit Zusatzartikel 4</translation>
+        <translation>Einheit Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="257"/>
@@ -9321,17 +9321,17 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2404"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
-        <translation>Installation des Plug-ins qet_tb_generator&lt;br&gt;Siehe: &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Benötigt Python 3.5 oder höher.&lt;br&gt; &lt;br&gt;&lt;B&gt;&lt;U&gt; Erstinstallation unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Python 3.5 oder höher installieren&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Siehe: &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt; &lt;br&gt;&lt;B&gt;&lt;U&gt; Update unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt; &lt;br&gt;&gt;&gt;Plug-in (Skript) in diesem Pfad verschieben und mit der Eingabeaufforderung von dort aus ausführen:&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
+        <translation>Installation des Plugins qet_tb_generator:&lt;br&gt;Besuche &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Erfordert Python 3.5 oder höher.&lt;br&gt;&lt;B&gt;&lt;U&gt; Erstinstallation unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Falls erforderlich, installiere Python 3.5 oder höher&lt;br&gt; Besuche :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualisierung unter Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;Der Benutzer kann in einem Terminal dieses Skript in folgendem Verzeichnis ausführen:&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2424"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Installation des Plugins qet_tb_generator:&lt;br&gt;Besuche &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Erstinstallation unter macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Falls erforderlich, installiere das Python 3.11-Bundle: &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2. Führe das Skript Profile.command aus&lt;br&gt;da das Programm einen festgelegten PATH zur Lokalisierung des Plugins qet-tb-generator verwendet.&lt;br&gt;Besuche :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;Anleitung&lt;/a&gt;&lt;br&gt;3. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualisierung unter macOS&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2443"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Installation des Plugins qet_tb_generator:&lt;br&gt;Besuche &lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Erfordert Python 3.5 oder höher.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Erstinstallation unter Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Überprüfe, ob pip3 installiert ist: pip3 --version&lt;br&gt;Falls nicht, installiere es mit: sudo apt-get install python3-pip&lt;br&gt;2. Installiere das Programm: sudo pip3 install qet_tb_generator&lt;br&gt;3. Starte das Programm: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Aktualisierung unter Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2463"/>
@@ -9436,25 +9436,25 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="176"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="198"/>
         <source> d&apos;un groupe de bornes</source>
-        <translation type="unfinished"> einer Klemmengruppe</translation>
+        <translation> einer Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="177"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="199"/>
         <source> du groupe de bornes %1</source>
-        <translation type="unfinished"> der Klemmengruppe %1</translation>
+        <translation> der Klemmengruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="179"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="201"/>
         <source>vers un groupe de bornes</source>
-        <translation type="unfinished">zu einer Klemmengruppe</translation>
+        <translation>zu einer Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="180"/>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="202"/>
         <source>vers le groupe de bornes %1</source>
-        <translation type="unfinished">zur Klemmengruppe %1</translation>
+        <translation>zur Klemmengruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="195"/>
@@ -9464,12 +9464,12 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="144"/>
         <source>d&apos;un groupe de bornes</source>
-        <translation type="unfinished">einer Klemmengruppe</translation>
+        <translation>einer Klemmengruppe</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="145"/>
         <source>du groupe de bornes %1</source>
-        <translation type="unfinished">der Klemmengruppe %1</translation>
+        <translation>der Klemmengruppe %1</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/addterminaltostripcommand.cpp" line="142"/>
@@ -9484,7 +9484,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/TerminalStrip/UndoCommand/sortterminalstripcommand.cpp" line="27"/>
         <source>Trier le bornier %1</source>
-        <translation type="unfinished">Klemme %1 sortieren</translation>
+        <translation>Klemme entfernen</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="495"/>
@@ -9621,7 +9621,8 @@ Möchten Sie sie ersetzen?</translation>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
 additional information about %1 import / scaling</source>
-        <translation type="unfinished"></translation>
+        <translation>QET_ElementScaler: 
+zusätzliche Informationen betreffend Import / Skalierung von %1</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="155"/>
@@ -9634,13 +9635,14 @@ Bitte laden Sie diese über den unten stehenden Link herunter und entpacken Sie 
         <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
 Error: Make sure the file %1 is a valid .dxf file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dxf2elmt:
+Fehler: Stellen Sie sicher, dass die Datei %1 eine gültige dxf-Datei ist</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlermeldung:</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="112"/>
@@ -13208,37 +13210,37 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="23"/>
         <source>Borne niveau 0 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemme Ebene 0:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="30"/>
         <source>En tête :</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="47"/>
         <source>Point de pont</source>
-        <translation type="unfinished"></translation>
+        <translation>Brückenpunkt</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="75"/>
         <source>Décalage vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>vertikaler Versatz</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="82"/>
         <source>Afficher l&apos;aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Hilfe anzeigen</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="110"/>
         <source>Largeur</source>
-        <translation type="unfinished">Breite</translation>
+        <translation>Breite</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="131"/>
@@ -13254,29 +13256,29 @@ Andere Felder werden nicht verwendet.</translation>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="196"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="215"/>
         <source>Gauche</source>
-        <translation type="unfinished">Linksbündig</translation>
+        <translation>Linksbündig</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="201"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="220"/>
         <source>Centre</source>
-        <translation type="unfinished">Zentriert</translation>
+        <translation>Zentriert</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="206"/>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="225"/>
         <source>Droite</source>
-        <translation type="unfinished">Rechtsbündig</translation>
+        <translation>Rechtsbündig</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="233"/>
         <source>Alignement du texte d&apos;en tête :</source>
-        <translation type="unfinished"></translation>
+        <translation>Textausrichtung Titel:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="240"/>
         <source>Alignement du texte de borne :</source>
-        <translation type="unfinished"></translation>
+        <translation>Textausrichtung Klemmen:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="248"/>
@@ -13293,32 +13295,32 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="275"/>
         <source>Orientation du texte de borne :</source>
-        <translation type="unfinished"></translation>
+        <translation>Textdrehung Klemmen:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="282"/>
         <source>Orientation du texte d&apos;en tête :</source>
-        <translation type="unfinished"></translation>
+        <translation>Textdrehung Titel:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="299"/>
         <source>Borne niveau 2 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemme Ebene 2:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="313"/>
         <source>Espace :</source>
-        <translation type="unfinished"></translation>
+        <translation>Abstand:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="369"/>
         <source>Borne niveau 3 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemme Ebene 3:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="383"/>
         <source>Borne niveau 1 :</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemme Ebene 1:</translation>
     </message>
 </context>
 <context>
@@ -13379,7 +13381,7 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/ConfigPage/terminalstripprojectconfigpage.cpp" line="33"/>
         <source>Plan de bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemmenplan</translation>
     </message>
 </context>
 <context>
