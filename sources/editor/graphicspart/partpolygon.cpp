@@ -116,7 +116,7 @@ void PartPolygon::fromXml(const QDomElement &qde)
 
 /**
 	@brief PartPolygon::toXml
-	Export this polygin in xml
+	Export this polygon in xml
 	@param xml_document : Xml document to use for create the xml element
 	@return an xml element that describe this polygon
 */

@@ -67,12 +67,12 @@ class PartRectangle :  public CustomElementGraphicPart
 
 		QRectF rect() const;
 		void   setRect(const QRectF &rect);
-		qreal XRadius() const {return m_xRadius;}
-		void setXRadius(qreal X);
-		qreal YRadius() const {return m_yRadius;}
-		void setYRadius(qreal Y);
-		void setRotation(qreal angle);
-		qreal rotation() const;
+		qreal  XRadius() const {return m_xRadius;}
+		void   setXRadius(qreal X);
+		qreal  YRadius() const {return m_yRadius;}
+		void   setYRadius(qreal Y);
+		void   setRotation(qreal angle);
+		qreal  rotation() const;
 
 		QRectF  sceneGeometricRect() const override;
 		virtual QPointF sceneTopLeft() const;

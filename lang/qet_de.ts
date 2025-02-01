@@ -3009,7 +3009,7 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="214"/>
         <source>SVG: fond transparent</source>
-        <translation>SVG-transparenter Hintergrund</translation>
+        <translation>SVG: transparenter Hintergrund</translation>
     </message>
 </context>
 <context>
