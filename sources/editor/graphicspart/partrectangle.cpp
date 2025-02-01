@@ -96,16 +96,6 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
 	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
 
-	QRectF rect = m_rect.normalized();
-	qreal x = m_xRadius;
-	if (x > rect.width()/2) {
-		x = rect.width()/2;
-	}
-	qreal y = m_yRadius;
-	if (y > rect.height()/2) {
-		y = rect.height()/2;
-	}
-
 	xml_element.setAttribute("rx", QString::number(m_xRadius));
 	xml_element.setAttribute("ry", QString::number(m_yRadius));
 
