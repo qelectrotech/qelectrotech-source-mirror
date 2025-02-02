@@ -162,13 +162,13 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " Company Elements Dir:"<< QString(QETApp::companyElementsDir().toLatin1());
 	qInfo()<< " Company TitleBlock Templates Dir:"<< QString(QETApp::companyTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< "";
-	qInfo()<< " For QET configuration-files:";
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	qInfo()<< " App Config Location: see Regedit: HKEY_CURRENT_USER/Software/QElectroTech/";
+	qInfo()<< " App-Config: see Registry \"HKEY_CURRENT_USER/Software/QElectroTech/\"";
+	qInfo()<< " additional config-files:";
 #else
-	qInfo()<< " App Config Location:"<< QETApp::configDir();
+	qInfo()<< " For QET configuration-files:";
 #endif
-
+	qInfo()<< " App Config Location:"<< QETApp::configDir();
 	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
 	qInfo()<< " App Data Location:"<< QETApp::dataDir();
 	qInfo()<< " Directory for project stalefiles:";
