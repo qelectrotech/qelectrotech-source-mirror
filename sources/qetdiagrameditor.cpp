@@ -2387,9 +2387,14 @@ void QETDiagramEditor::generateTerminalBlock()
 
 	if (openedProjects().count()) {
 		foreach(QString exe, exeList) {
-			qInfo() << " success so far: " << success << "  - now searching for " << exe;
 			if ((success == false) && exe.length() && QFile::exists(exe)) {
 				success = process->startDetached(exe, {(QETDiagramEditor::currentProjectView()->project()->filePath())});
+			}
+			if (success == true) {
+				qInfo() << " qet_tb_generator found here:" << exe;
+				break;
+			} else {
+				qInfo() << " qet_tb_generator not found :" << exe;
 			}
 		}
 	} else {
