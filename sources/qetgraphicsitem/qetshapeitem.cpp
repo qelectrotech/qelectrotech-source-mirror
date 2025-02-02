@@ -906,17 +906,6 @@ QDomElement QetShapeItem::toXml(QDomDocument &document) const
 
 		if (m_shapeType == Rectangle)
 		{
-			QRectF rect(m_P1, m_P2);
-			rect = rect.normalized();
-			qreal x = m_xRadius;
-			if (x > rect.width()/2) {
-				x = rect.width()/2;
-			}
-			qreal y = m_yRadius;
-			if (y > rect.height()/2) {
-				y = rect.height()/2;
-			}
-
 			result.setAttribute("rx", QString::number(m_xRadius));
 			result.setAttribute("ry", QString::number(m_yRadius));
 		}
