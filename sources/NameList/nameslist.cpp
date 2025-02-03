@@ -168,8 +168,13 @@ void NamesList::fromXml(const pugi::xml_node &xml_element, const QHash<QString, 
 }
 
 /**
+	Exports the list of names to an XML element.
+	Make sure that the list of names is not empty before exporting.
+	If list is empty, set name to "en" / "NoName"
+	French:
 	Exporte la liste des noms vers un element XML. Veillez a verifier que la
 	liste de noms n'est pas vide avant de l'exporter.
+	Si la liste est vide, le nom sera "en" / "NoName".
 	@param xml_document Le document XML dans lequel l'element XML sera insere
 	@param xml_options A set of options related to XML parsing.
 	@return L'element XML correspondant a la section "names"
@@ -179,6 +184,12 @@ QDomElement NamesList::toXml(QDomDocument &xml_document, const QHash<QString, QS
 {
 	QHash<QString, QString> xml_opt = getXmlOptions(xml_options);
 	QDomElement names_elmt = xml_document.createElement(xml_opt["ParentTagName"]);
+	if (hash_names.isEmpty()) {
+		QDomElement name_elmt = xml_document.createElement(xml_opt["TagName"]);
+		name_elmt.setAttribute(xml_opt["LanguageAttribute"], "en");
+		name_elmt.appendChild(xml_document.createTextNode("NoName"));
+		names_elmt.appendChild(name_elmt);
+	}
 	QHashIterator<QString, QString> names_iterator(hash_names);
 	while (names_iterator.hasNext()) {
 		names_iterator.next();
