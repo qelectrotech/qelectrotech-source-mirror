@@ -2083,10 +2083,10 @@ void QETDiagramEditor::projectWasClosed(ProjectView *project_view)
 		undo_group.removeStack(project -> undoStack());
 		QETApp::unregisterProject(project);
 	}
-	//When project is closed, a lot of signal are emitted, notably if there is an item selected in a diagram.
-	//In some special case, since signal/slot connection can be direct or queued, some signal are handled after QObject is deleted, and crash qet
-	//notably in the function Diagram::elements when she call items() (I don't know exactly why).
-	//set nullptr to "m_selection_properties_editor->setDiagram()" fix this crash
+	//When project is closed, a lot of signals are emitted, notably if there is an item selected in a diagram.
+	//In some special case, since signal/slot connection can be direct or queued, some signals are handled after QObject is deleted, and crash qet
+	//notably in the function Diagram::elements when it calls items() (I don't know exactly why).
+	//set nullptr to "m_selection_properties_editor->setDiagram()" fixes this crash
 	m_selection_properties_editor->setDiagram(nullptr);
 	project_view -> deleteLater();
 	project -> deleteLater();
