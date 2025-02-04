@@ -9101,7 +9101,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Bloc auxiliaire 2</source>
-        <translation>Zusatzinfo 2</translation>
+        <translation>Zusatzinfo Zusatzartikel 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="282"/>
@@ -9642,7 +9642,7 @@ Fehler: Stellen Sie sicher, dass die Datei %1 eine gültige dxf-Datei ist</trans
         <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
         <source>See details here:</source>
-        <translation>Fehlermeldung:</translation>
+        <translation>Details:</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="112"/>

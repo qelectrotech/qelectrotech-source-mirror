@@ -25,7 +25,7 @@
 	@brief DiagramContext::add
 	Add all value of other to this.
 	If a key already exist, the value is replaced.
-	If a key doesn't exist, she will be added.
+	If a key doesn't exist, it will be added.
 	All other keys of this context, which are not present in other, stay unchanged.
 	@param other
 */
@@ -124,7 +124,7 @@ int DiagramContext::count()
 
 /**
 	@brief DiagramContext::keyMustShow
-	@return the value pairs with key, if key no found, return false
+	@return the value pairs with key, if key not found, return false
 */
 bool DiagramContext::keyMustShow(const QString &key) const
 {
@@ -135,7 +135,7 @@ bool DiagramContext::keyMustShow(const QString &key) const
 
 bool DiagramContext::operator==(const DiagramContext &dc) const
 {
-	return(m_content     == dc.m_content &&
+	return(m_content == dc.m_content &&
 		   m_content_show == dc.m_content_show);
 }
 
