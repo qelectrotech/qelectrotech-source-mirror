@@ -870,7 +870,7 @@ QIcon ElementsLocation::icon() const
 
 /**
 	@brief ElementLocation::name
-	@return The name of the represented element in the current local
+	@return The name of the represented element in the current locale
 */
 QString ElementsLocation::name() const
 {
