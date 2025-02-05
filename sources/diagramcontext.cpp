@@ -151,10 +151,14 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const
 void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 {
 	foreach (QString key, keys()) {
+		if (m_content[key].toString().trimmed().isEmpty()) { continue; }
 		QDomElement property = e.ownerDocument().createElement(tag_name);
+		// try to sort attributes by removing and re-adding
+		property.removeAttribute("show");
+		property.removeAttribute("name");
+		property.setAttribute("show", m_content_show[key]);
 		property.setAttribute("name", key);
-		property.setAttribute("show",m_content_show[key]);
-		QDomText value = e.ownerDocument().createTextNode(m_content[key].toString());
+		QDomText value = e.ownerDocument().createTextNode(m_content[key].toString().trimmed());
 		property.appendChild(value);
 		e.appendChild(property);
 	}

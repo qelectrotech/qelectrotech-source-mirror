@@ -111,11 +111,15 @@ const QString NamesList::operator[](const QString &lang) const
 
 
 /**
+	Loads the list of names from an XML element. This element is assumed to be
+	the parent of a ‘names’ element, which itself contains the ‘names’. The
+	names previously contained in the list are not deleted, but can be overwritten.
+	French:
 	Charge la liste de noms depuis un element XML. Cet element est sense etre
 	le parent d'un element "names", qui contient lui meme les "name".
 	Les noms precedemment contenus dans la liste ne sont pas effaces mais
 	peuvent etre ecrases.
-	@param xml_element L'element XML a analyser
+	@param xml_element L'element XML a analyser / The XML element to be parsed
 	@param xml_options A set of options related to XML parsing.
 	@see getXmlOptions()
 */
@@ -190,14 +194,15 @@ QDomElement NamesList::toXml(QDomDocument &xml_document, const QHash<QString, QS
 		name_elmt.setAttribute(xml_opt["LanguageAttribute"], "en");
 		name_elmt.appendChild(xml_document.createTextNode("NoName"));
 		names_elmt.appendChild(name_elmt);
-	}
-	QMapIterator<QString, QString> names_iterator(map_names);
-	while (names_iterator.hasNext()) {
-		names_iterator.next();
-		QDomElement name_elmt = xml_document.createElement(xml_opt["TagName"]);
-		name_elmt.setAttribute(xml_opt["LanguageAttribute"], names_iterator.key());
-		name_elmt.appendChild(xml_document.createTextNode(names_iterator.value().trimmed()));
-		names_elmt.appendChild(name_elmt);
+	} else {
+		QMapIterator<QString, QString> names_iterator(map_names);
+		while (names_iterator.hasNext()) {
+			names_iterator.next();
+			QDomElement name_elmt = xml_document.createElement(xml_opt["TagName"]);
+			name_elmt.setAttribute(xml_opt["LanguageAttribute"], names_iterator.key());
+			name_elmt.appendChild(xml_document.createTextNode(names_iterator.value().trimmed()));
+			names_elmt.appendChild(name_elmt);
+		}
 	}
 	return(names_elmt);
 }
