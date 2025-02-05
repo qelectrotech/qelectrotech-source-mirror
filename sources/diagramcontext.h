@@ -99,7 +99,7 @@ class DiagramContext
 	
 		void add(DiagramContext other);
 		void remove(const QString &key);
-		QList<QString> keys(KeyOrder = None) const;
+		QList<QString> keys(KeyOrder = Alphabetical) const;
 		bool contains(const QString &) const;
 		const QVariant operator[](const QString &) const;
 		bool addValue(const QString &, const QVariant &, bool show = true);
