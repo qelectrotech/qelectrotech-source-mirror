@@ -79,6 +79,11 @@ class ExportDialog : public QDialog {
 	QSignalMapper *reset_mapper_;
 	QSignalMapper *clipboard_mapper_;
 	
+	// constants for exporting images:
+	static const int BMPmaxSize     =  32767;
+	static const int JPGmaxSize     =  65535;
+	static const int GeneralMaxSize = 100000;
+	
 	// project whose diagrams are to be exported
 	QETProject *project_;
 	
