@@ -1008,12 +1008,12 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	file_name -> setMinimumWidth(280);
 	
 	width = new QSpinBox();
-	width -> setRange(1, 10000);
+	width -> setRange(1, 100000);
 	width -> setSuffix(tr("px"));
 	width -> setValue(diagram_size.width());
 	
 	height = new QSpinBox();
-	height -> setRange(1, 10000);
+	height -> setRange(1, 100000);
 	height -> setSuffix(tr("px"));
 	height -> setValue(diagram_size.height());
 	
