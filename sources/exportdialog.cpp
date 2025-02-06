@@ -868,7 +868,25 @@ void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 	// recupere le format a utiliser (acronyme et extension)
 	QString format_acronym = epw -> exportProperties().format;
 	QString format_extension = "." + format_acronym.toLower();
-	
+
+	// set maximum width / height according specifications of export-type
+	if (format_extension == ".bmp") {
+		foreach (auto line, diagram_lines_.values() ) {
+			line->width ->setRange(1, 32768);
+			line->height->setRange(1, 32768);
+		}
+	} else if (format_extension == ".jpg") {
+		foreach (auto line, diagram_lines_.values() ) {
+			line->width ->setRange(1, 65535);
+			line->height->setRange(1, 65535);
+		}
+	} else {
+		foreach (auto line, diagram_lines_.values() ) {
+			line->width ->setRange(1, 100000);
+			line->height->setRange(1, 100000);
+		}
+	}
+
 	// parcourt les schemas a exporter
 	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
 		QString diagram_filename = diagram_line -> file_name -> text();
