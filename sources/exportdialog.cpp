@@ -869,16 +869,13 @@ void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 	QString format_acronym = epw -> exportProperties().format;
 	QString format_extension = "." + format_acronym.toLower();
 
-	// set maximum width / height according specifications of export-type
-	if (format_extension == ".bmp") {
+	// set maximum width / height according limitations in QPainter
+	if ((format_extension == ".bmp") ||
+	    (format_extension == ".jpg") ||
+	    (format_extension == ".png")) {
 		foreach (auto line, diagram_lines_.values() ) {
-			line->width ->setRange(1, BMPmaxSize);
-			line->height->setRange(1, BMPmaxSize);
-		}
-	} else if (format_extension == ".jpg") {
-		foreach (auto line, diagram_lines_.values() ) {
-			line->width ->setRange(1, JPGmaxSize);
-			line->height->setRange(1, JPGmaxSize);
+			line->width ->setRange(1, RasterMaxSize);
+			line->height->setRange(1, RasterMaxSize);
 		}
 	} else {
 		foreach (auto line, diagram_lines_.values() ) {
