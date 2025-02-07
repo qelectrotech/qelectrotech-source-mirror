@@ -59,7 +59,7 @@ class ExportDialog : public QDialog {
 		QPushButton *preview;
 		QPushButton *clipboard;
 	};
-	
+
 	// attributes
 	private:
 	QHash<int, ExportDialog::ExportDiagramLine *> diagram_lines_;
@@ -78,15 +78,15 @@ class ExportDialog : public QDialog {
 	QSignalMapper *ratio_mapper_;
 	QSignalMapper *reset_mapper_;
 	QSignalMapper *clipboard_mapper_;
-	
+
+	// QPainter limits size of pixel-images to 2^15 - 1
 	// constants for exporting images:
-	static const int BMPmaxSize     =  32767;
-	static const int JPGmaxSize     =  65535;
+	static const int RasterMaxSize  =  32767;
 	static const int GeneralMaxSize = 100000;
-	
+
 	// project whose diagrams are to be exported
 	QETProject *project_;
-	
+
 	// methods
 	QWidget *initDiagramsListPart();
 	void saveReloadDiagramParameters(Diagram *, bool = true);
@@ -96,7 +96,7 @@ class ExportDialog : public QDialog {
 	void exportDiagram(ExportDiagramLine *);
 	qreal diagramRatio(Diagram *);
 	QSize diagramSize(Diagram *);
-	
+
 	public slots:
 	void slot_correctWidth(int);
 	void slot_correctHeight(int);
