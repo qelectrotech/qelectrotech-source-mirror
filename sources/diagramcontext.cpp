@@ -151,7 +151,10 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const
 void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 {
 	foreach (QString key, keys()) {
-		if (m_content[key].toString().trimmed().isEmpty()) { continue; }
+		if ((tag_name == "elementInformation") &&
+			(m_content[key].toString().trimmed().isEmpty())) {
+			continue;
+		}
 		QDomElement property = e.ownerDocument().createElement(tag_name);
 		// try to sort attributes by removing and re-adding
 		property.removeAttribute("show");
