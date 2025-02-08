@@ -117,46 +117,53 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 		0x8981,
 		0x7D20};
 
-	names.addName("fr", "Éléments importés");
-	names.addName("en", "Imported elements");
-	names.addName("nl_BE","Elementen geïmporteerd");
-	names.addName("de", "Importierte elemente");
-	names.addName("es", "Elementos importados");
-	names.addName("ru", QString(russian_data, 24));
-	names.addName("cs", "Zavedené prvky");
-	names.addName("pl", "Elementy importowane");
-	names.addName("pt", "elementos importados");
-	names.addName("it", "Elementi importati");
-	names.addName("el", QString(greek_data, 18));
-	names.addName("nl", "Elementen geïmporteerd");
-	names.addName("hr", "Uvezeni elementi");
-	names.addName("ca", "Elements importats");
-	names.addName("ro", "Elemente importate");
-	names.addName("tr", QString(turkish_data, 12));
-	names.addName("da", "Importerede elementer");
-	names.addName("sl", "Uvoženi elementi");
-	names.addName("ja", QString(japanese_data, 10));
-	names.addName("uk", QString(ukrainian_data, 20));
+	names.addName("ca",    "Elements importats");
+	names.addName("cs",    "Zavedené prvky");
+	names.addName("da",    "Importerede elementer");
+	names.addName("de",    "Importierte elemente");
+	names.addName("el",    QString(greek_data, 18));
+	names.addName("en",    "Imported elements");
+	names.addName("es",    "Elementos importados");
+	names.addName("fr",    "Éléments importés");
+	names.addName("hr",    "Uvezeni elementi");
+	names.addName("it",    "Elementi importati");
+	names.addName("ja",    QString(japanese_data, 10));
+	names.addName("nl_BE", "Elementen geïmporteerd");
+	names.addName("nl",    "Elementen geïmporteerd");
+	names.addName("pl",    "Elementy importowane");
+	names.addName("pt_BR", "elementos importados");
+	names.addName("pt",    "elementos importados");
+	names.addName("ro",    "Elemente importate");
+	names.addName("ru",    QString(russian_data, 24));
+	names.addName("sl",    "Uvoženi elementi");
+	names.addName("tr",    QString(turkish_data, 12));
+	names.addName("uk",    QString(ukrainian_data, 20));
 #else
 #	if TODO_LIST
 #		pragma message("@TODO remove code for QT 6 or later")
 #	endif
 	qDebug() << "Help code for QT 6 or later";
-	names.addName("fr", "Éléments importés");
-	names.addName("en", "Imported elements");
-	names.addName("de", "Importierte elemente");
-	names.addName("es", "Elementos importados");
-	names.addName("cs", "Zavedené prvky");
-	names.addName("pl", "Elementy importowane");
-	names.addName("pt", "elementos importados");
-	names.addName("it", "Elementi importati");
-	names.addName("nl", "Elementen geïmporteerd");
-	names.addName("hr", "Uvezeni elementi");
-	names.addName("ca", "Elements importats");
-	names.addName("ro", "Elemente importate");
-	names.addName("da", "Importerede elementer");
-	names.addName("sl", "Uvoženi elementi");
-	names.addName("uk", "Імпортовані елементи");
+	names.addName("ca",    "Elements importats");
+	names.addName("cs",    "Zavedené prvky");
+	names.addName("da",    "Importerede elementer");
+	names.addName("de",    "Importierte elemente");
+	names.addName("el",    "Εισηγμένα στοιχεία");
+	names.addName("en",    "Imported elements");
+	names.addName("es",    "Elementos importados");
+	names.addName("fr",    "Éléments importés");
+	names.addName("hr",    "Uvezeni elementi");
+	names.addName("it",    "Elementi importati");
+	names.addName("ja",    "インバートされた要素");
+	names.addName("nl_BE", "Elementen geïmporteerd");
+	names.addName("nl",    "Elementen geïmporteerd");
+	names.addName("pl",    "Elementy importowane");
+	names.addName("pt_BR", "elementos importados");
+	names.addName("pt",    "elementos importados");
+	names.addName("ro",    "Elemente importate");
+	names.addName("ru",    "Импортированные элементы");
+	names.addName("sl",    "Uvoženi elementi");
+	names.addName("tr",    "İthal öğeler");
+	names.addName("uk",    "Імпортовані елементи");
 #endif
 
 	import.appendChild(names.toXml(m_dom_document));
