@@ -89,19 +89,24 @@ const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const
 	QDomElement xml_element;
 	if (qFuzzyCompare(rect().width(), rect().height()))
 	{
+		double w = qRound(rect().width() * 100.0) / 100.0;
 		xml_element = xml_document.createElement("circle");
-		xml_element.setAttribute("diameter", QString("%1").arg(rect().width()));
+		xml_element.setAttribute("diameter", QString("%1").arg(w));
 	}
 	else
 	{
+		double w = qRound(rect().width()  * 100.0) / 100.0;
+		double h = qRound(rect().height() * 100.0) / 100.0;
 		xml_element = xml_document.createElement("ellipse");
-		xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-		xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+		xml_element.setAttribute("width",  QString("%1").arg(w));
+		xml_element.setAttribute("height", QString("%1").arg(h));
 	}
 
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	double x = qRound(top_left.x() * 100.0) / 100.0;
+	double y = qRound(top_left.y() * 100.0) / 100.0;
+	xml_element.setAttribute("x", QString("%1").arg(x));
+	xml_element.setAttribute("y", QString("%1").arg(y));
 
 	stylesToXml(xml_element);
 

@@ -96,8 +96,11 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("terminal");
 
-	xml_element.setAttribute("x", QString("%1").arg(q->scenePos().x()));
-	xml_element.setAttribute("y", QString("%1").arg(q->scenePos().y()));
+	qreal x = (qRound(q->scenePos().x() * 100.0) / 100.0);
+	qreal y = (qRound(q->scenePos().y() * 100.0) / 100.0);
+
+	xml_element.setAttribute("x", QString("%1").arg(x));
+	xml_element.setAttribute("y", QString("%1").arg(y));
 
 	xml_element.setAttribute("uuid", m_uuid.toString());
 	xml_element.setAttribute("name", m_name);

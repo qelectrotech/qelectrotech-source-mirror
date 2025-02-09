@@ -91,13 +91,19 @@ const QDomElement PartRectangle::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("rect");
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-	xml_element.setAttribute("width",  QString("%1").arg(m_rect.width()));
-	xml_element.setAttribute("height", QString("%1").arg(m_rect.height()));
+	qreal x  = (qRound(top_left.x() * 100.0) / 100.0);
+	qreal y  = (qRound(top_left.y() * 100.0) / 100.0);
+	qreal w  = (qRound(m_rect.width() * 100.0) / 100.0);
+	qreal h  = (qRound(m_rect.height() * 100.0) / 100.0);
+	qreal rx = (qRound(m_xRadius * 100.0) / 100.0);
+	qreal ry = (qRound(m_yRadius * 100.0) / 100.0);
 
-	xml_element.setAttribute("rx", QString::number(m_xRadius));
-	xml_element.setAttribute("ry", QString::number(m_yRadius));
+	xml_element.setAttribute("x", QString::number(x));
+	xml_element.setAttribute("y", QString::number(y));
+	xml_element.setAttribute("width",  QString::number(w));
+	xml_element.setAttribute("height", QString::number(h));
+	xml_element.setAttribute("rx", QString::number(rx));
+	xml_element.setAttribute("ry", QString::number(ry));
 
 	stylesToXml(xml_element);
 	return(xml_element);

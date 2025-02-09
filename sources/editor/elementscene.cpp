@@ -414,8 +414,8 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 {
 	QRectF size= elementSceneGeometricRect();
 
-	// if the element doesn't contains the origin point of the scene
-	// we move the element to the origin for solve this default before saving
+	// if the element doesn't contain the origin point of the scene
+	// we move the element to the origin to solve this default before saving
 	if (!size.contains(0,0) && all_parts)
 	{
 		centerElementToOrigine();
@@ -469,9 +469,9 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
 
-	if(type_ == ElementData::Simple ||
-	   type_ == ElementData::Master ||
-	   type_ == ElementData::Terminale||
+	if (type_ == ElementData::Simple ||
+		type_ == ElementData::Master ||
+		type_ == ElementData::Terminale ||
 		type_ == ElementData::Thumbnail)
 	{
 		QDomElement element_info = xml_document.createElement("elementInformations");
@@ -482,7 +482,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	//complementary information about the element
 	QDomElement informations_element = xml_document.createElement("informations");
 	root.appendChild(informations_element);
-	informations_element.appendChild(xml_document.createTextNode(m_element_data.m_drawing_information));
+	informations_element.appendChild(xml_document.createTextNode(m_element_data.m_drawing_information.trimmed()));
 
 	QDomElement description = xml_document.createElement("description");
 
