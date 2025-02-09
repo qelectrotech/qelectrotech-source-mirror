@@ -101,11 +101,14 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement(xmlName());
 
-	xml_element.setAttribute("x", QString::number(pos().x()));
-	xml_element.setAttribute("y", QString::number(pos().y()));
+	qreal x   = (qRound(pos().x() * 100.0) / 100.0);
+	qreal y   = (qRound(pos().y() * 100.0) / 100.0);
+	qreal rot = (qRound(rotation() * 10.0) /  10.0);
+	xml_element.setAttribute("x", QString::number(x));
+	xml_element.setAttribute("y", QString::number(y));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("font", font().toString());
-	xml_element.setAttribute("rotation", QString::number(rotation()));
+	xml_element.setAttribute("rotation", QString::number(rot));
 	xml_element.setAttribute("color", defaultTextColor().name());
 
 	return(xml_element);

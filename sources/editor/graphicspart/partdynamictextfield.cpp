@@ -97,10 +97,14 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 {
 	QDomElement root_element = dom_doc.createElement(xmlName());
 
-	root_element.setAttribute("x", QString::number(pos().x()));
-	root_element.setAttribute("y", QString::number(pos().y()));
+	qreal x   = (qRound(pos().x()  * 100.0) / 100.0);
+	qreal y   = (qRound(pos().y()  * 100.0) / 100.0);
+	qreal rot = (qRound(rotation() *  10.0) /  10.0);
+
+	root_element.setAttribute("x", QString::number(x));
+	root_element.setAttribute("y", QString::number(y));
 	root_element.setAttribute("z", QString::number(zValue()));
-	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
+	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rot)));
 	root_element.setAttribute("font", font().toString());
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");

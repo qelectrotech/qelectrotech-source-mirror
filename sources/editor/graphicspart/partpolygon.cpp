@@ -126,8 +126,10 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const
 	int i = 1;
 	foreach(QPointF point, m_polygon) {
 		point = mapToScene(point);
-		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(point.x()));
-		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(point.y()));
+		qreal x = ((qRound(point.x() * 100.0)) / 100.0);
+		qreal y = ((qRound(point.y() * 100.0)) / 100.0);
+		xml_element.setAttribute(QString("x%1").arg(i), QString("%1").arg(x));
+		xml_element.setAttribute(QString("y%1").arg(i), QString("%1").arg(y));
 		++ i;
 	}
 	if (!m_closed) xml_element.setAttribute("closed", "false");

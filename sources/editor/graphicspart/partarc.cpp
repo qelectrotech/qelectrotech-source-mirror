@@ -106,13 +106,21 @@ const QDomElement PartArc::toXml(QDomDocument &xml_document) const
 {
 	QDomElement xml_element = xml_document.createElement("arc");
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
-	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
-	xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
-	xml_element.setAttribute("height", QString("%1").arg(rect().height()));
+	
+	qreal x = qRound(top_left.x()    * 100.0) / 100.0;
+	qreal y = qRound(top_left.y()    * 100.0) / 100.0;
+	qreal w = qRound(rect().width()  * 100.0) / 100.0;
+	qreal h = qRound(rect().height() * 100.0) / 100.0;
+	qreal s = qRound(m_start_angle   * 100.0) / 100.0;
+	qreal a = qRound(m_span_angle    * 100.0) / 100.0;
+
+	xml_element.setAttribute("x", QString("%1").arg(x));
+	xml_element.setAttribute("y", QString("%1").arg(y));
+	xml_element.setAttribute("width",  QString("%1").arg(w));
+	xml_element.setAttribute("height", QString("%1").arg(h));
 		//to maintain compatibility with the previous version, we write the angle in degrees.
-	xml_element.setAttribute("start", QString("%1").arg(m_start_angle / 16));
-	xml_element.setAttribute("angle", QString("%1").arg(m_span_angle / 16));
+	xml_element.setAttribute("start", QString("%1").arg(s / 16));
+	xml_element.setAttribute("angle", QString("%1").arg(a / 16));
 	stylesToXml(xml_element);
 	return(xml_element);
 }
