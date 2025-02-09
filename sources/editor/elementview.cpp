@@ -321,10 +321,12 @@ ElementContent ElementView::paste(const QDomDocument &xml_document, const QPoint
 }
 
 /**
+	Paste the XML document "xml_document" at position pos
 	Colle le document XML xml_document a la position pos
 	@param xml_document Document XML a coller
 */
 ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
+	// object to retrieve content added to the scheme by pasting
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	ElementContent content_pasted;
 
@@ -358,6 +360,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
 	m_scene -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
 
+	// if something has actually been added to the scheme, a cancel object is created
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();

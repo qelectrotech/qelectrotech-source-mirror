@@ -274,7 +274,7 @@ void QetGraphicsTableItem::paint(
 		offset += m_header_item->sectionSize(i);
 	}
 
-		//Calcule the number of rows to display.
+		//calculate the number of rows to display.
 	auto row_count = m_model->rowCount();
 
 	if (m_previous_table) //Remove the number of row already displayed by previous tables
@@ -516,7 +516,7 @@ int QetGraphicsTableItem::displayedRowCount() const
 		return 0;
 	}
 
-		//Calcule the number of rows to display.
+		//calculate the number of rows to display.
 	auto row_count = m_model->rowCount();
 
 	if (m_previous_table) //Remove the number of row already displayed by previous tables
@@ -858,7 +858,7 @@ void QetGraphicsTableItem::modelReseted()
 
 /**
 	@brief QetGraphicsTableItem::setUpColumnAndRowMinimumSize
-	Calcule the minimum row height and the minimum column width for each columns
+	Calculate the minimum row height and the minimum column width for each columns
 	this function doesn't change the geometry of the table.
 */
 void QetGraphicsTableItem::setUpColumnAndRowMinimumSize()
