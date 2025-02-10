@@ -336,29 +336,20 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(xml_document);
 	if (pasted_content_bounding_rect.isEmpty()) return(content_pasted);
 
+	// ok ... there is something to do for us!
+	int initialOffsetX = 10 + (qRound((pasted_content_bounding_rect.width())/10) * 10);
+
 	// paste copied parts with offset
 	// copier/coller avec decalage
-	QRectF final_pasted_content_bounding_rect;
-	++ offset_paste_count_;
-	if (!offset_paste_count_) {
-		// the pasted content was cut
-		start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
-		final_pasted_content_bounding_rect = pasted_content_bounding_rect;
-	}
-	else {
-		// the pasted content was copied
-		if (offset_paste_count_ == 1) {
-			start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
-		} else {
-			pasted_content_bounding_rect.moveTopLeft(start_top_left_corner_);
-		}
+	QRectF  final_pasted_content_bounding_rect;
+	QPointF offset(initialOffsetX, 0);
+	++ offset_paste_count_;  // == 0 when selection was cut to clipboard
+	// place pasted parts right from copied selection or already pasted parts
+	offset.setX(initialOffsetX * offset_paste_count_);
+	offset.setY(0);
+	final_pasted_content_bounding_rect = pasted_content_bounding_rect.translated(offset);
 
-		// on applique le decalage qui convient
-		final_pasted_content_bounding_rect = applyMovement(
-			pasted_content_bounding_rect,
-			QETElementEditor::pasteOffset()
-		);
-	}
+	start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
 	QPointF old_start_top_left_corner = start_top_left_corner_;
 	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
 	m_scene -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
