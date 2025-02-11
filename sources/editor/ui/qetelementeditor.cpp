@@ -962,25 +962,25 @@ void QETElementEditor::setupActions()
 
 	ui->m_new_action              -> setShortcut(QKeySequence::New);
 	ui->m_open_action             -> setShortcut(QKeySequence::Open);
-	ui->m_open_from_file_action   -> setShortcut(tr("Ctrl+Shift+O"));
+	ui->m_open_from_file_action   -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
 	ui->m_save_action             -> setShortcut(QKeySequence::Save);
-	ui->m_save_as_file_action     -> setShortcut(tr("Ctrl+Shift+S"));
+	ui->m_save_as_file_action     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
 	ui->m_select_all_act          -> setShortcut(QKeySequence::SelectAll);
-	ui->m_deselect_all_action     -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
-	ui->m_revert_selection_action -> setShortcut(QKeySequence(tr("Ctrl+I")));
+	ui->m_deselect_all_action     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_A);
+	ui->m_revert_selection_action -> setShortcut(Qt::CTRL | Qt::Key_I);
 	ui->m_cut_action              -> setShortcut(QKeySequence::Cut);
 	ui->m_copy_action             -> setShortcut(QKeySequence::Copy);
 	ui->m_paste_action            -> setShortcut(QKeySequence::Paste);
-	ui->m_paste_in_area_action    -> setShortcut(tr("Ctrl+Shift+V"));
-	ui->m_edit_names_action       -> setShortcut(QKeySequence(tr("Ctrl+E")));
-	ui->m_edit_author_action      -> setShortcut(tr("Ctrl+Y"));
+	ui->m_paste_in_area_action    -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+	ui->m_edit_names_action       -> setShortcut(Qt::CTRL | Qt::Key_E);
+	ui->m_edit_author_action      -> setShortcut(Qt::CTRL | Qt::Key_Y);
 
-#ifndef Q_OS_MAC
-	ui->m_delete_action -> setShortcut(QKeySequence(Qt::Key_Delete));
-	ui->m_quit_action -> setShortcut(QKeySequence(tr("Ctrl+Q")));
+#ifdef Q_OS_MAC
+	ui->m_delete_action -> setShortcut(Qt::Key_Backspace);
+	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_W);
 #else
-	ui->m_delete_action -> setShortcut(QKeySequence(tr("Backspace")));
-	ui->m_quit_action -> setShortcut(QKeySequence(tr("Ctrl+W")));
+	ui->m_delete_action -> setShortcut(Qt::Key_Delete);
+	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_Q);
 #endif
 
 		//Depth action
@@ -1001,8 +1001,8 @@ void QETElementEditor::setupActions()
 		//Zoom action
 	ui->m_zoom_in_action       -> setShortcut(QKeySequence::ZoomIn);
 	ui->m_zoom_out_action      -> setShortcut(QKeySequence::ZoomOut);
-	ui->m_zoom_fit_best_action -> setShortcut(QKeySequence(tr("Ctrl+9")));
-	ui->m_zoom_original_action -> setShortcut(QKeySequence(tr("Ctrl+0")));
+	ui->m_zoom_fit_best_action -> setShortcut(Qt::CTRL | Qt::Key_9);
+	ui->m_zoom_original_action -> setShortcut(Qt::CTRL | Qt::Key_0);
 
 		//Add primitive actions
 	m_add_part_action_grp = new QActionGroup(this);

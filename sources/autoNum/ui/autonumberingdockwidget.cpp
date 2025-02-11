@@ -151,7 +151,7 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		//Set Combobox Context
 	setContext();
 	
-	ui->m_configure_pb->setShortcut(QKeySequence( tr("Ctrl+Shift+P")));
+	ui->m_configure_pb->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_P);
 }
 
 /**

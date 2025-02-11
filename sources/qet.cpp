@@ -738,10 +738,10 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
 	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
 
-	edit_raise   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Up")));
-	edit_lower   ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Down")));
-	edit_backward->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+End")));
-	edit_forward ->setShortcut(QKeySequence(QObject::tr("Ctrl+Shift+Home")));
+	edit_raise   ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
+	edit_lower   ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
+	edit_backward->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_End);
+	edit_forward ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
 
 	edit_forward ->setData(QET::BringForward);
 	edit_raise   ->setData(QET::Raise);

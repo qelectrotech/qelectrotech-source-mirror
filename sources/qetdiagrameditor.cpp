@@ -264,7 +264,7 @@ void QETDiagramEditor::setUpActions()
 {
 		//Export to another file type (jpeg, dxf etc...)
 	m_export_to_images = new QAction(QET::Icons::DocumentExport,  tr("E&xporter"), this);
-	m_export_to_images->setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
+	m_export_to_images->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_X);
 	m_export_to_images->setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
 	connect(m_export_to_images, &QAction::triggered, [this]() {
 		ProjectView *current_project = currentProjectView();
@@ -296,7 +296,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Quit editor
 	m_quit_editor = new QAction(QET::Icons::ApplicationExit, tr("&Quitter"),  this);
-	m_quit_editor->setShortcut(QKeySequence(tr("Ctrl+Q")));
+	m_quit_editor->setShortcut(Qt::CTRL | Qt::Key_Q);
 	m_quit_editor->setStatusTip(tr("Ferme l'application QElectroTech", "status bar tip"));
 	connect(m_quit_editor, &QAction::triggered, this, &QETDiagramEditor::close);
 
@@ -339,7 +339,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Reset conductor path
 	m_conductor_reset = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
-	m_conductor_reset->setShortcut( QKeySequence( tr("Ctrl+K")		) );
+	m_conductor_reset->setShortcut(Qt::CTRL | Qt::Key_K);
 	m_conductor_reset->setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	connect(m_conductor_reset, &QAction::triggered, [this]() {
 		if (DiagramView *dv = currentDiagramView())
@@ -380,7 +380,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Edit current diagram properties
 	m_edit_diagram_properties = new QAction(QET::Icons::DialogInformation, tr("Propriétés du folio"), this);
-	m_edit_diagram_properties->setShortcut( QKeySequence( tr("Ctrl+L")));
+	m_edit_diagram_properties->setShortcut(Qt::CTRL | Qt::Key_L);
 	m_edit_diagram_properties     -> setStatusTip(tr("Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)", "status bar tip"));
 	connect(m_edit_diagram_properties, &QAction::triggered, [this]() {
 		if (ProjectView *project_view = currentProjectView())
@@ -398,7 +398,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Add new folio to current project
 	m_project_add_diagram = new QAction(QET::Icons::DiagramAdd, tr("Ajouter un folio"), this);
-	m_project_add_diagram->setShortcut(QKeySequence(tr("Ctrl+T")));
+	m_project_add_diagram->setShortcut(Qt::CTRL | Qt::Key_T);
 	connect(m_project_add_diagram, &QAction::triggered, [this]() {
 		if (ProjectView *current_project = currentProjectView()) {
 			current_project->project()->addNewDiagram();
@@ -592,10 +592,10 @@ void QETDiagramEditor::setUpActions()
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
 	m_group_selected_texts = m_selection_actions_group.addAction(QET::Icons::textGroup,       tr("Grouper les textes sélectionnés"));
 
-	m_delete_selection->setShortcut(QKeySequence::Delete);
-	m_rotate_selection->setShortcut(QKeySequence( tr("SPACE")));
-	m_rotate_texts    ->setShortcut(QKeySequence( tr("Ctrl+SPACE")));
-	m_edit_selection  ->setShortcut(QKeySequence( tr("Ctrl+E")));
+	m_delete_selection->setShortcut(Qt::Key_Delete);
+	m_rotate_selection->setShortcut(Qt::Key_Space);
+	m_rotate_texts    ->setShortcut(Qt::CTRL | Qt::Key_Space);
+	m_edit_selection  ->setShortcut(Qt::CTRL | Qt::Key_E);
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
@@ -618,7 +618,7 @@ void QETDiagramEditor::setUpActions()
 
 	select_all    ->setShortcut(QKeySequence::SelectAll);
 	select_nothing->setShortcut(QKeySequence::Deselect);
-	select_invert ->setShortcut(QKeySequence( tr("Ctrl+I")));
+	select_invert ->setShortcut(Qt::CTRL | Qt::Key_I);
 
 	select_all    ->setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip") );
 	select_nothing->setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip") );
@@ -640,9 +640,9 @@ void QETDiagramEditor::setUpActions()
 
 	zoom_in     ->setShortcut(QKeySequence::ZoomIn);
 	zoom_out    ->setShortcut(QKeySequence::ZoomOut);
-	zoom_content->setShortcut(QKeySequence( tr("Ctrl+8")));
-	zoom_fit    ->setShortcut(QKeySequence( tr("Ctrl+9")));
-	zoom_reset  ->setShortcut(QKeySequence( tr("Ctrl+0")));
+	zoom_content->setShortcut(Qt::CTRL | Qt::Key_8);
+	zoom_fit    ->setShortcut(Qt::CTRL | Qt::Key_9);
+	zoom_reset  ->setShortcut(Qt::CTRL | Qt::Key_0);
 
 	zoom_in     ->setStatusTip(tr("Agrandit le folio", "status bar tip"));
 	zoom_out    ->setStatusTip(tr("Rétrécit le folio", "status bar tip"));

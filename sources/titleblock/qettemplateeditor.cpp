@@ -392,23 +392,23 @@ void QETTitleBlockTemplateEditor::initActions()
 
 	new_              -> setShortcut(QKeySequence::New);
 	open_             -> setShortcut(QKeySequence::Open);
-	open_from_file_   -> setShortcut(tr("Ctrl+Shift+O", "shortcut to open a template from a file"));
+	open_from_file_   -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
 	save_             -> setShortcut(QKeySequence::Save);
-	save_as_file_     -> setShortcut(tr("Ctrl+Shift+S", "shortcut to save a template to a file"));
-	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
+	save_as_file_     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	quit_             -> setShortcut(Qt::CTRL | Qt::Key_Q);
 	undo_             -> setShortcut(QKeySequence::Undo);
 	redo_             -> setShortcut(QKeySequence::Redo);
 	cut_              -> setShortcut(QKeySequence::Cut);
 	copy_             -> setShortcut(QKeySequence::Copy);
 	paste_            -> setShortcut(QKeySequence::Paste);
-	edit_logos_       -> setShortcut(QKeySequence(tr("Ctrl+T", "shortcut to manage embedded logos")));
-	edit_info_        -> setShortcut(QKeySequence(tr("Ctrl+Y", "shortcut to edit extra information")));
-	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to merge cells")));
-	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to split merged cell")));
+	edit_logos_       -> setShortcut(Qt::CTRL | Qt::Key_T);
+	edit_info_        -> setShortcut(Qt::CTRL | Qt::Key_Y);
+	merge_cells_      -> setShortcut(Qt::CTRL | Qt::Key_J);
+	split_cell_       -> setShortcut(Qt::CTRL | Qt::Key_K);
 	zoom_in_          -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out_         -> setShortcut(QKeySequence::ZoomOut);
-	zoom_fit_         -> setShortcut(QKeySequence(tr("Ctrl+9", "shortcut to enable fit zoom")));
-	zoom_reset_       -> setShortcut(QKeySequence(tr("Ctrl+0", "shortcut to reset zoom")));
+	zoom_fit_         -> setShortcut(Qt::CTRL | Qt::Key_9);
+	zoom_reset_       -> setShortcut(Qt::CTRL | Qt::Key_0);
 
 	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
 	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));
