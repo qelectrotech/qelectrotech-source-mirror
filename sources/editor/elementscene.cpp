@@ -418,8 +418,8 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	// we move the element to the origin to solve this default before saving
 	if (!size.contains(0,0) && all_parts)
 	{
-		centerElementToOrigine();
-		//recalcul the size after movement
+		centerElementToOrigin();
+		//recalculate the size after movement
 		size = elementSceneGeometricRect();
 	}
 
@@ -598,6 +598,7 @@ QRectF ElementScene::elementSceneGeometricRect() const
 	foreach (QGraphicsItem *qgi, items()) {
 		if (qgi->type() == ElementPrimitiveDecorator::Type) continue;
 		if (qgi->type() == QGraphicsRectItem::Type) continue;
+		if (qgi->type() == PartText::Type) continue;
 		if (qgi->type() == PartDynamicTextField::Type) continue;
 		if (CustomElementPart *cep = dynamic_cast <CustomElementPart*> (qgi)) {
 			esgr |= cep -> sceneGeometricRect();
@@ -1317,29 +1318,21 @@ bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2)
 }
 
 /**
-	@brief ElementScene::centerElementToOrigine
+	@brief ElementScene::centerElementToOrigin
 	try to center better is possible the element to the scene
-	(the calcul isn't optimal but work good)
 */
-void ElementScene::centerElementToOrigine()
+void ElementScene::centerElementToOrigin()
 {
 	QRectF size= elementSceneGeometricRect();
-	int center_x = qRound(size.center().x());
-	int center_y = qRound(size.center().y());
-
-	//define the movement of translation
-	int move_x = center_x - (center_x %10);
-	if (center_x < 0) move_x -= 10;
-	int move_y = center_y - (center_y %10);
-	if (center_y < 0) move_y -= 10;
-
-	//move each primitive by @move
+	// relative move of each primitive with @move with integer values
+	int offsetX = qRound(size.center().x()) * (-1);
+	int offsetY = qRound(size.center().y()) * (-1);
 	foreach (QGraphicsItem *qgi, items()) {
 		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
 		if (qgi -> type() == QGraphicsRectItem::Type) continue;
-		//deselect item for disable decorator
+		// deselect item to disable decorator
 		qgi -> setSelected(false);
-		qgi -> moveBy(-(move_x), -(move_y));
+		qgi -> moveBy(offsetX, offsetY);
 	}
 	emit (needZoomFit());
 }
