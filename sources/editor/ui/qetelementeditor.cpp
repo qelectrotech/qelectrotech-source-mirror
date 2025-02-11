@@ -975,12 +975,12 @@ void QETElementEditor::setupActions()
 	ui->m_edit_names_action       -> setShortcut(Qt::CTRL | Qt::Key_E);
 	ui->m_edit_author_action      -> setShortcut(Qt::CTRL | Qt::Key_Y);
 
-#ifndef Q_OS_MAC
-	ui->m_delete_action -> setShortcut(Qt::Key_Delete);
-	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_Q);
-#else
+#ifdef Q_OS_MAC
 	ui->m_delete_action -> setShortcut(Qt::Key_Backspace);
 	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_W);
+#else
+	ui->m_delete_action -> setShortcut(Qt::Key_Delete);
+	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_Q);
 #endif
 
 		//Depth action
