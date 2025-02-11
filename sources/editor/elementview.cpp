@@ -307,10 +307,12 @@ ElementContent ElementView::pasteAreaDefined(const QRectF &target_rect) {
 	@param pos Coin superieur gauche du rectangle cible
 */
 ElementContent ElementView::paste(const QDomDocument &xml_document, const QPointF &pos) {
+	// object to retrieve content added to the scheme by pasting
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	ElementContent content_pasted;
 	m_scene -> fromXml(xml_document, pos, false, &content_pasted);
 
+	// if something has actually been added to the scheme, an undo object is created
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();
@@ -321,10 +323,12 @@ ElementContent ElementView::paste(const QDomDocument &xml_document, const QPoint
 }
 
 /**
+	Paste the XML document "xml_document" at position pos
 	Colle le document XML xml_document a la position pos
 	@param xml_document Document XML a coller
 */
 ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
+	// object to retrieve content added to the scheme by pasting
 	// objet pour recuperer le contenu ajoute au schema par le coller
 	ElementContent content_pasted;
 
@@ -332,32 +336,25 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	QRectF pasted_content_bounding_rect = m_scene -> boundingRectFromXml(xml_document);
 	if (pasted_content_bounding_rect.isEmpty()) return(content_pasted);
 
-	// copier/coller avec decalage
-	QRectF final_pasted_content_bounding_rect;
-	++ offset_paste_count_;
-	if (!offset_paste_count_) {
-		// the pasted content was cut
-		start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
-		final_pasted_content_bounding_rect = pasted_content_bounding_rect;
-	}
-	else {
-		// the pasted content was copied
-		if (offset_paste_count_ == 1) {
-			start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
-		} else {
-			pasted_content_bounding_rect.moveTopLeft(start_top_left_corner_);
-		}
+	// ok ... there is something to do for us!
+	int initialOffsetX = 10 + (qRound((pasted_content_bounding_rect.width())/10) * 10);
 
-		// on applique le decalage qui convient
-		final_pasted_content_bounding_rect = applyMovement(
-			pasted_content_bounding_rect,
-			QETElementEditor::pasteOffset()
-		);
-	}
+	// paste copied parts with offset
+	// copier/coller avec decalage
+	QRectF  final_pasted_content_bounding_rect;
+	QPointF offset(initialOffsetX, 0);
+	++ offset_paste_count_;  // == 0 when selection was cut to clipboard
+	// place pasted parts right from copied selection or already pasted parts
+	offset.setX(initialOffsetX * offset_paste_count_);
+	offset.setY(0);
+	final_pasted_content_bounding_rect = pasted_content_bounding_rect.translated(offset);
+
+	start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
 	QPointF old_start_top_left_corner = start_top_left_corner_;
 	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
 	m_scene -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
 
+	// if something has actually been added to the scheme, a cancel object is created
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
 	if (content_pasted.count()) {
 		m_scene -> clearSelection();
@@ -591,10 +588,12 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	@return
 */
 QRectF ElementView::applyMovement(const QRectF &start, const QPointF &offset) {
+	// calculates the offset to be applied from the offset
 	// calcule le decalage a appliquer a partir de l'offset
 	QPointF final_offset;
 	final_offset.rx() =  start.width() + offset.x();
 
+	// applies the calculated offset
 	// applique le decalage ainsi calcule
 	return(start.translated(final_offset));
 }

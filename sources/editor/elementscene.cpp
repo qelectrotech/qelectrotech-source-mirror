@@ -517,11 +517,11 @@ QRectF ElementScene::boundingRectFromXml(const QDomDocument &xml_document)
 	ElementContent loaded_content = loadContent(xml_document);
 	if (loaded_content.isEmpty()) return(QRectF());
 
-	// calcule the boundingRect
+	// calculate the boundingRect
 	// calcule le boundingRect
 	QRectF bounding_rect = elementContentBoundingRect(loaded_content);
 
-	// destroy charged parties
+	// destroy loaded parts
 	// detruit les parties chargees
 	qDeleteAll(loaded_content);
 
