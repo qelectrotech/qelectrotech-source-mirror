@@ -151,7 +151,7 @@ class ElementScene : public QGraphicsScene
 		void initPasteArea();
 		static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
 		QMutex *m_decorator_lock;
-		void centerElementToOrigine();
+		void centerElementToOrigin();
 	
 	public slots:
 		void slot_select(const ElementContent &);
