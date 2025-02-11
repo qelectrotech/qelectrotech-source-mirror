@@ -532,11 +532,6 @@
         <source>Folio</source>
         <translation type="unfinished">Folio</translation>
     </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="154"/>
-        <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>AutoNumberingManagementW</name>
@@ -687,27 +682,27 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="68"/>
         <source>nomenclature_</source>
         <translation type="unfinished">listă componente_</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="67"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
         <source>Enregister sous... </source>
         <translation type="unfinished">Salvează ca... </translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="67"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
         <source>Fichiers csv (*.csv)</source>
         <translation type="unfinished">Fișiere csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="76"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
         <source>Erreur</source>
         <translation type="unfinished">Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="77"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="79"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -716,17 +711,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="120"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
         <source>Position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
         <source>Position du folio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="126"/>
         <source>Quantité numéro d&apos;article</source>
         <comment>Special field with name : designation quantity</comment>
         <translation type="unfinished"></translation>
@@ -789,7 +784,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="20"/>
-        <location filename="../sources/ui/compositetexteditdialog.cpp" line="31"/>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="36"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1231,7 +1226,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="889"/>
+        <location filename="../sources/diagramview.cpp" line="895"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Nedenumit</translation>
@@ -1630,44 +1625,44 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="245"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="256"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="240"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="251"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="267"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="262"/>
         <source>Pivoter un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="278"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="273"/>
         <source>Modifier le texte d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="289"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="284"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="411"/>
         <source>Modifier la police d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="301"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="296"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="314"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="309"/>
         <source>Modifier la largeur d&apos;un texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="327"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="322"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="364"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="359"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1705,17 +1700,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1731"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1726"/>
         <source>Gauche</source>
         <translation type="unfinished">Stânga</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1732"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1727"/>
         <source>Centre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1733"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1728"/>
         <source>Droite</source>
         <translation type="unfinished">Dreapta</translation>
     </message>
@@ -2311,24 +2306,24 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="870"/>
+        <location filename="../sources/editor/elementscene.cpp" line="871"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Editați informația despre autor</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="875"/>
+        <location filename="../sources/editor/elementscene.cpp" line="876"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Puteți utiliza acest câmp pentru a menționa autorii elementului, licența acestuia sau toate celelalte informații pe care le considerați utile.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="939"/>
+        <location filename="../sources/editor/elementscene.cpp" line="940"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Editați denumirile</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="941"/>
+        <location filename="../sources/editor/elementscene.cpp" line="942"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Puteți specifica numele elementului in mai multe limbi.</translation>
     </message>
@@ -2803,7 +2798,7 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="296"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="297"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Export</translation>
@@ -2889,13 +2884,13 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>Se pare că nu aveți permisiunile necesare pentru a scrie în fișierul %1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="908"/>
+        <location filename="../sources/exportdialog.cpp" line="923"/>
         <source>Aperçu</source>
         <translation>Previzualizare</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1012"/>
-        <location filename="../sources/exportdialog.cpp" line="1017"/>
+        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1032"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -4627,33 +4622,33 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>NewDiagramPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="96"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="97"/>
         <source>Folio</source>
         <translation type="unfinished">Folio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="97"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="98"/>
         <source>Conducteur</source>
         <translation>Conductor</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="98"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="99"/>
         <source>Reports de folio</source>
         <translation>Rapoarte folio</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="99"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="100"/>
         <source>Références croisées</source>
         <translation>Referință încrucișată</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="203"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="205"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
         <translation>Proiect nou</translation>
@@ -4874,10 +4869,10 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartArc</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="328"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="332"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="338"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="345"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="336"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="340"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="346"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="353"/>
         <source>Modifier un arc</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4891,7 +4886,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="489"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="491"/>
         <source>Déplacer un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4899,7 +4894,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartEllipse</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="279"/>
+        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="284"/>
         <source>Modifier un rectangle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4907,7 +4902,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartLine</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partline.cpp" line="241"/>
+        <location filename="../sources/editor/graphicspart/partline.cpp" line="248"/>
         <source>Modifier une ligne</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4925,17 +4920,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="428"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="430"/>
         <source>Modifier un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="511"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="513"/>
         <source>Ajouter un point à un polygone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="544"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="546"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4943,12 +4938,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartText</name>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="294"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="297"/>
         <source>Déplacer un texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="354"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="357"/>
         <source>Modifier un champ texte</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5116,7 +5111,7 @@ Les variables suivantes sont incompatibles :
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="355"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="356"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Tipărește</translation>
@@ -5563,217 +5558,217 @@ Doriți să se salveze modificările ?</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="121"/>
+        <location filename="../sources/qetapp.cpp" line="125"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Se încarcă... Se inițializează cache colecție elemente</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="132"/>
+        <location filename="../sources/qetapp.cpp" line="136"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="137"/>
+        <location filename="../sources/qetapp.cpp" line="141"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Se încarcă... Se deschid fișiere</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="238"/>
+        <location filename="../sources/qetapp.cpp" line="242"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation type="unfinished">LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="436"/>
+        <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation type="unfinished">Cartușe QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="457"/>
+        <location filename="../sources/qetapp.cpp" line="461"/>
         <source>Cartouches company</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="477"/>
+        <location filename="../sources/qetapp.cpp" line="481"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation type="unfinished">Cartușe utilizator</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1351"/>
+        <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1353"/>
+        <location filename="../sources/qetapp.cpp" line="1434"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1355"/>
+        <location filename="../sources/qetapp.cpp" line="1436"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Schemă</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1357"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Electric</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1359"/>
+        <location filename="../sources/qetapp.cpp" line="1440"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1836"/>
+        <location filename="../sources/qetapp.cpp" line="1917"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Configurare QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1980"/>
+        <location filename="../sources/qetapp.cpp" line="2068"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Se încarcă...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2086"/>
+        <location filename="../sources/qetapp.cpp" line="2180"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Se încarcă... Pictograma din bara de sistem</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2090"/>
+        <location filename="../sources/qetapp.cpp" line="2184"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2093"/>
+        <location filename="../sources/qetapp.cpp" line="2187"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Termină</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2095"/>
+        <location filename="../sources/qetapp.cpp" line="2189"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Ascunde</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2097"/>
+        <location filename="../sources/qetapp.cpp" line="2191"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Arată</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2099"/>
+        <location filename="../sources/qetapp.cpp" line="2193"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Ascunde editoarele de schemă</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2102"/>
+        <location filename="../sources/qetapp.cpp" line="2196"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Arată toate editoarele de schemă</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2105"/>
+        <location filename="../sources/qetapp.cpp" line="2199"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Ascunde toate editoarele de elemente</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2108"/>
+        <location filename="../sources/qetapp.cpp" line="2202"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Arată toate editoarele de elemente</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2111"/>
+        <location filename="../sources/qetapp.cpp" line="2205"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Ascunde toate editoarele de cartuș</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2114"/>
+        <location filename="../sources/qetapp.cpp" line="2208"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Arată toate editoarele de cartuș</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2117"/>
+        <location filename="../sources/qetapp.cpp" line="2211"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>Editor de schemă &amp;nou</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2119"/>
+        <location filename="../sources/qetapp.cpp" line="2213"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>Editor de element &amp;nou</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2121"/>
+        <location filename="../sources/qetapp.cpp" line="2215"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Închide aplicația QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2122"/>
+        <location filename="../sources/qetapp.cpp" line="2216"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Minimizează QElectroTech în bara de sistem</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2123"/>
+        <location filename="../sources/qetapp.cpp" line="2217"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restaurează QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2140"/>
+        <location filename="../sources/qetapp.cpp" line="2234"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2235"/>
+        <location filename="../sources/qetapp.cpp" line="2329"/>
         <source>Éditeurs de schémas</source>
         <translation>Editoare de schemă</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2245"/>
+        <location filename="../sources/qetapp.cpp" line="2339"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editoare element</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2256"/>
+        <location filename="../sources/qetapp.cpp" line="2350"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation type="unfinished">Editoare cartuș</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2308"/>
+        <location filename="../sources/qetapp.cpp" line="2402"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2311"/>
+        <location filename="../sources/qetapp.cpp" line="2405"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2326"/>
+        <location filename="../sources/qetapp.cpp" line="2420"/>
         <source>Fichier de restauration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2428"/>
+        <location filename="../sources/qetapp.cpp" line="2522"/>
         <source>Usage : </source>
         <translation>Utilizare : </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2430"/>
+        <location filename="../sources/qetapp.cpp" line="2524"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5782,7 +5777,7 @@ Doriți să se salveze modificările ?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2431"/>
+        <location filename="../sources/qetapp.cpp" line="2525"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5799,26 +5794,32 @@ Opțiuni disponibile:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2437"/>
+        <location filename="../sources/qetapp.cpp" line="2531"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>--common-elements-dir=DIR     Definește dosarul colecției de elemente
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2440"/>
+        <location filename="../sources/qetapp.cpp" line="2534"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          Definește dosarul colecției de cartușe</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2443"/>
+        <location filename="../sources/qetapp.cpp" line="2537"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Definește dosarul de configurare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2445"/>
+        <location filename="../sources/qetapp.cpp" line="2540"/>
+        <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2542"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>--config-dir=DIR              Definește dosarul care conține fișierele de limbă</translation>
@@ -6094,51 +6095,6 @@ Opțiuni disponibile:
         <translation type="unfinished">Adaugă o elipsă</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
-        <source>Ctrl+Shift+X</source>
-        <translation>Ctrl+Shift+X</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
-        <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
-        <source>Ctrl+K</source>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
-        <source>Ctrl+L</source>
-        <translation>Ctrl+L</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
-        <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="643"/>
-        <source>Ctrl+8</source>
-        <translation>Ctrl+8</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
-        <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
-        <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
@@ -6169,18 +6125,18 @@ Opțiuni disponibile:
         <translation>Deschide proiectul numai pentru citire</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1914"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1916"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1962"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1964"/>
         <source>Active le projet « %1 »</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2316"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Eroare</translation>
@@ -6237,11 +6193,6 @@ Opțiuni disponibile:
         <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Editează elementul selectat</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
-        <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
@@ -6500,16 +6451,6 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
-        <source>SPACE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
-        <source>Ctrl+SPACE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -6702,7 +6643,7 @@ Opțiuni disponibile:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1913"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Nu se poate deschide proiectul</translation>
@@ -6724,31 +6665,31 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1694"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1696"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Editare element</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1701"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Editare câmp text</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1708"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1710"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Editare imagine</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1717"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Editează obiectele selectate</translation>
@@ -7064,64 +7005,14 @@ Opțiuni disponibile:
         <translation>Refă</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="965"/>
-        <source>Ctrl+Shift+O</source>
-        <translation>Ctrl+Shift+O</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
-        <source>Ctrl+Shift+S</source>
-        <translation>Ctrl+Shift+S</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="980"/>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1500"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1482"/>
         <source>Importer un élément à redimensionner</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1502"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1484"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <translation type="unfinished">Elemente QElectroTech (*.elmt)</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="969"/>
-        <source>Ctrl+Shift+A</source>
-        <translation>Ctrl+Shift+A</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="970"/>
-        <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="974"/>
-        <source>Ctrl+Shift+V</source>
-        <translation>Ctrl+Shift+V</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="982"/>
-        <source>Backspace</source>
-        <translation>Backspace</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="983"/>
-        <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1004"/>
-        <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1005"/>
-        <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1017"/>
@@ -7144,25 +7035,15 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1481"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1463"/>
         <source>Avertissement</source>
         <translation type="unfinished">Avertisment</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1481"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1463"/>
         <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
 veuillez patienter durant l&apos;import...</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="975"/>
-        <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="976"/>
-        <source>Ctrl+Y</source>
-        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1036"/>
@@ -7300,21 +7181,21 @@ veuillez patienter durant l&apos;import...</source>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="218"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1389"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1371"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Nu se poate deschide fișierul %1.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="225"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1394"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1376"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Acest fișier nu este un document XML valid</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="231"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1400"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1382"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Eroare</translation>
@@ -7364,13 +7245,13 @@ veuillez patienter durant l&apos;import...</source>
         <translation>Se pare că fișierul %1 pe care încercați să-l deschideți nu există sau nu mai există.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1346"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1328"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Reâncarcă elementul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1347"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1329"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Ați făcut modificări pe acest element. Dacă îl reâncărcați, aceste modificări se vor pierde. Sigur doriți să reâncărcați acest element ?</translation>
@@ -7378,27 +7259,27 @@ veuillez patienter durant l&apos;import...</source>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1224"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1253"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1337"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1319"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>A eșuat înregistrarea</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1224"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1253"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1337"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1319"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>A eșuat înregistrarea,
 condițiile nu sunt valide</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1310"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1292"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Salvează ca</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1312"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1294"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Elemente QElectroTech (*.elmt)</translation>
@@ -7430,22 +7311,22 @@ condițiile nu sunt valide</translation>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="289"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="295"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1415"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1421"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1397"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1403"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Element inexistent.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="296"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1422"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1404"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Elementul nu există.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="290"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1416"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1398"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Calea virtuală selectată nu corespunde nici unui element.</translation>
@@ -7567,11 +7448,6 @@ condițiile nu sunt valide</translation>
         <translation>Afișează QElectroTech în mod ecran complet</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="224"/>
-        <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
         <location filename="../sources/qetmainwindow.cpp" line="237"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
@@ -7581,86 +7457,86 @@ condițiile nu sunt valide</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="394"/>
+        <location filename="../sources/qetproject.cpp" line="395"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="401"/>
+        <location filename="../sources/qetproject.cpp" line="402"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Proiect %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="408"/>
+        <location filename="../sources/qetproject.cpp" line="409"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Proiect fără titlu</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="417"/>
+        <location filename="../sources/qetproject.cpp" line="418"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [doar citire]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="425"/>
+        <location filename="../sources/qetproject.cpp" line="426"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [modificat]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1206"/>
+        <location filename="../sources/qetproject.cpp" line="1207"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>A intervenit o eroare în timpul introducerii modelului.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1359"/>
+        <location filename="../sources/qetproject.cpp" line="1360"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Avertisment</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1361"/>
+        <location filename="../sources/qetproject.cpp" line="1362"/>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1366"/>
+        <location filename="../sources/qetproject.cpp" line="1367"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1386"/>
+        <location filename="../sources/qetproject.cpp" line="1387"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1387"/>
+        <location filename="../sources/qetproject.cpp" line="1388"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1390"/>
+        <location filename="../sources/qetproject.cpp" line="1391"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1461"/>
+        <location filename="../sources/qetproject.cpp" line="1462"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1503"/>
+        <location filename="../sources/qetproject.cpp" line="1504"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7770,24 +7646,6 @@ Que désirez vous faire ?</source>
         <translation>Fără zoom</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
-        <source>Ctrl+T</source>
-        <comment>shortcut to manage embedded logos</comment>
-        <translation>Ctrl+T</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
-        <source>Ctrl+J</source>
-        <comment>shortcut to merge cells</comment>
-        <translation>Ctrl+J</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="407"/>
-        <source>Ctrl+K</source>
-        <comment>shortcut to split merged cell</comment>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="896"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
@@ -7846,42 +7704,6 @@ Que désirez vous faire ?</source>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>De&amp;sparte celulele</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="395"/>
-        <source>Ctrl+Shift+O</source>
-        <comment>shortcut to open a template from a file</comment>
-        <translation>Ctrl+Shift+O</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="397"/>
-        <source>Ctrl+Shift+S</source>
-        <comment>shortcut to save a template to a file</comment>
-        <translation>Ctrl+Shift+S</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="398"/>
-        <source>Ctrl+Q</source>
-        <comment>shortcut to quit</comment>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
-        <source>Ctrl+Y</source>
-        <comment>shortcut to edit extra information</comment>
-        <translation>Ctrl+Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="410"/>
-        <source>Ctrl+9</source>
-        <comment>shortcut to enable fit zoom</comment>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="411"/>
-        <source>Ctrl+0</source>
-        <comment>shortcut to reset zoom</comment>
-        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="440"/>
@@ -8217,32 +8039,32 @@ Que désirez vous faire ?</source>
         <translation>text</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="999"/>
+        <location filename="../sources/exportdialog.cpp" line="1014"/>
         <source>Folio sans titre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1001"/>
+        <location filename="../sources/exportdialog.cpp" line="1016"/>
         <source>schema</source>
         <translation>schemă</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1026"/>
+        <location filename="../sources/exportdialog.cpp" line="1041"/>
         <source>Conserver les proportions</source>
         <translation>Păstrează proporțiile</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1030"/>
+        <location filename="../sources/exportdialog.cpp" line="1045"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Resetează dimensiunile</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1034"/>
+        <location filename="../sources/exportdialog.cpp" line="1049"/>
         <source>Aperçu</source>
         <translation>Previzualizare</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1038"/>
+        <location filename="../sources/exportdialog.cpp" line="1053"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Exportă în memoria tampon</translation>
     </message>
@@ -8389,26 +8211,6 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="739"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="741"/>
-        <source>Ctrl+Shift+Up</source>
-        <translation type="unfinished">Ctrl+Shift+Up</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="742"/>
-        <source>Ctrl+Shift+Down</source>
-        <translation type="unfinished">Ctrl+Shift+Down</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="743"/>
-        <source>Ctrl+Shift+End</source>
-        <translation type="unfinished">Ctrl+Shift+End</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="744"/>
-        <source>Ctrl+Shift+Home</source>
-        <translation type="unfinished">Ctrl+Shift+Home</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/terminal.cpp" line="69"/>
@@ -8584,23 +8386,23 @@ Que désirez vous faire ?</source>
         <translation>Proprietățile proiectului</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="159"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Selectionner une image...</source>
         <translation>Selectați o imagine...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="159"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="62"/>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="166"/>
+        <location filename="../sources/conductornumexport.cpp" line="66"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Erreur</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="166"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Impossible de charger l&apos;image.</source>
         <translation>Nu se poate încărca imaginea.</translation>
     </message>
@@ -8683,22 +8485,22 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="48"/>
+        <location filename="../sources/conductornumexport.cpp" line="52"/>
         <source>numero_de_fileries_</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="53"/>
+        <location filename="../sources/conductornumexport.cpp" line="57"/>
         <source>Enregister sous... </source>
         <translation type="unfinished">Salvează ca... </translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="53"/>
+        <location filename="../sources/conductornumexport.cpp" line="57"/>
         <source>Fichiers csv (*.csv)</source>
         <translation type="unfinished">Fișiere csv (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="63"/>
+        <location filename="../sources/conductornumexport.cpp" line="67"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -9130,12 +8932,12 @@ Que désirez vous faire ?</source>
         <translation type="unfinished">Adaugă un rezumat</translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="129"/>
+        <location filename="../sources/machine_info.cpp" line="132"/>
         <source>Compilation : </source>
         <translation type="unfinished">Compilație : </translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="378"/>
+        <location filename="../sources/machine_info.cpp" line="455"/>
         <source>Compilation :   </source>
         <translation type="unfinished"></translation>
     </message>
@@ -9295,16 +9097,16 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
+        <location filename="../sources/qetapp.cpp" line="2274"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2180"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation type="unfinished"></translation>
@@ -9315,7 +9117,7 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1474"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1456"/>
         <source>Importer un fichier dxf</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9388,22 +9190,22 @@ Voulez-vous la remplacer ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2404"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2406"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2424"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2426"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2443"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2445"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2463"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2465"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation type="unfinished"></translation>
     </message>
@@ -9582,7 +9384,7 @@ additional information about %1 import / scaling</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="155"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="149"/>
         <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation type="unfinished"></translation>
@@ -9600,7 +9402,7 @@ Error: Make sure the file %1 is a valid .dxf file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="112"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="106"/>
         <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation type="unfinished"></translation>
@@ -9649,12 +9451,12 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
 <context>
     <name>QetShapeItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1006"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="995"/>
         <source>une shape</source>
         <translation>o formă</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1002"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
         <source>une ligne</source>
         <translation>o linie</translation>
     </message>
@@ -9684,17 +9486,17 @@ Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;af
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1003"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
         <source>un rectangle</source>
         <translation>un dreptunghi</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1004"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="993"/>
         <source>une éllipse</source>
         <translation>o elipsă</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1005"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="994"/>
         <source>une polyligne</source>
         <translation>o linie multiplă</translation>
     </message>
@@ -13814,125 +13616,125 @@ asociind numele &quot;volta&quot; cu valoarea &quot;1745&quot; se va înlocui %{
 <context>
     <name>TitleBlockTemplateLogoManager</name>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="83"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="82"/>
         <source>Gestionnaire de logos</source>
         <translation>Administrator logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="86"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="85"/>
         <source>Logos embarqués dans ce modèle :</source>
         <translation>Logo-uri inluse în acest model :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="95"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
         <source>Ajouter un logo</source>
         <translation>Adăugă un logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="96"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="95"/>
         <source>Exporter ce logo</source>
         <translation>Exportă acest logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="97"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="96"/>
         <source>Supprimer ce logo</source>
         <translation>Șterge acest logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="98"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="97"/>
         <source>Propriétés</source>
         <translation>Proprietăți</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="99"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="98"/>
         <source>Nom :</source>
         <translation>Nume :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="101"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="205"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="100"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="204"/>
         <source>Renommer</source>
         <translation>Redenumește</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="102"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="101"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="266"/>
         <source>Type :</source>
         <translation>Tip :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="198"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="197"/>
         <source>Logo déjà existant</source>
         <translation>Logo deja există</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="204"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="203"/>
         <source>Remplacer</source>
         <translation>Înlocuiește</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="224"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="223"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
         <translation>Un logo denumit &quot;%1&quot; deja există în acest model de cartuș. Doriți să-l înlocuiți sau preferați specificarea unui alt nume pentru acest nou logo ?</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="262"/>
         <source>Type : %1</source>
         <translation>Tip : %1</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="281"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="280"/>
         <source>Choisir une image / un logo</source>
         <translation>Alegeți o imagine /un logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="283"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="282"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
         <translation>Imagini vectoriale (*.svg);;Imagini bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Toate fișierele (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="290"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="323"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="289"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
         <source>Erreur</source>
         <translation>Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="290"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="289"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
         <translation>Nu se poate deschide fișierul specificat</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="315"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="314"/>
         <source>Choisir un fichier pour exporter ce logo</source>
         <translation>Alegeți un fișier pentru exportul acestui logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="317"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="316"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
         <translation>Toate fișierele (*);;Imagini vectoriale (*.svg);;Imagini bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="323"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
         <translation>Nu se poate exporta la fișierul specificat</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="352"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="351"/>
         <source>Renommer un logo</source>
         <translation>Redenumiți un logo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="357"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="356"/>
         <source>Vous devez saisir un nouveau nom.</source>
         <translation>Trebuie să introduceți un nume nou.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="366"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="365"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
         <translation>Numele nou nu poate fi gol.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="375"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="374"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
         <translation>Numele introdus este deja utilizat de un alt logo.</translation>
     </message>
@@ -14312,7 +14114,7 @@ Longueur maximale : %2px
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="674"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="673"/>
         <source>sans_nom</source>
         <translation type="unfinished"></translation>
     </message>
