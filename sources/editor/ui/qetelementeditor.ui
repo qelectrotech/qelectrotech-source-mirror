@@ -492,9 +492,6 @@
    <property name="text">
     <string>Rotation</string>
    </property>
-   <property name="shortcut">
-    <string>Space</string>
-   </property>
   </action>
   <action name="m_import_dxf">
    <property name="icon">
