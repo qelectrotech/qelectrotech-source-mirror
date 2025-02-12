@@ -146,7 +146,7 @@ void MoveGraphicsItemCommand::move(const QPointF &movement)
 					   conductor->pos() + movement);
 	}
 
-		//Recalcul the path of other conductors
+		//Recalculate the path of other conductors
 	for (const auto &conductor : qAsConst(m_content.m_conductors_to_update)) {
 		setupAnimation(conductor, "animPath", 1, 1);
 	}

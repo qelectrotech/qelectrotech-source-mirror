@@ -251,7 +251,7 @@ void CrossRefItem::updateLabel()
 */
 void CrossRefItem::autoPos()
 {
-	//We calcul the position according to the snapTo of the xrefproperties
+	//We calculate the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
 		QGIUtility::centerToBottomDiagram(this,
 				      m_element,
@@ -564,7 +564,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 */
 void CrossRefItem::drawAsCross(QPainter &painter)
 {
-	//calcul the size of the cross
+	//calculate the size of the cross
 	setUpCrossBoundingRect(painter);
 	m_hovered_contacts_map.clear();
 
