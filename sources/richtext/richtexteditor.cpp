@@ -461,19 +461,19 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	m_bold_action = createCheckableAction(
 				QIcon(":/ico/32x32/format-text-bold.png"),
 				tr("Texte en gras"), editor, SLOT(setFontBold(bool)), this);
-	m_bold_action->setShortcut(tr("CTRL+B"));
+	m_bold_action->setShortcut(Qt::CTRL | Qt::Key_B);
 	addAction(m_bold_action);
 
 	m_italic_action = createCheckableAction(
 				QIcon(":/ico/32x32/format-text-italic.png"),
 				tr("Texte en italique"), editor, SLOT(setFontItalic(bool)), this);
-	m_italic_action->setShortcut(tr("CTRL+I"));
+	m_italic_action->setShortcut(Qt::CTRL | Qt::Key_I);
 	addAction(m_italic_action);
 
 	m_underline_action = createCheckableAction(
 				QIcon(":/ico/32x32/format-text-underline.png"),
 				tr("Texte souligé"), editor, SLOT(setFontUnderline(bool)), this);
-	m_underline_action->setShortcut(tr("CTRL+U"));
+	m_underline_action->setShortcut(Qt::CTRL | Qt::Key_U);
 	addAction(m_underline_action);
 
 
