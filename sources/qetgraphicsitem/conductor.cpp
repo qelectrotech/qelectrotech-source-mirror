@@ -824,7 +824,7 @@ void Conductor::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsSce
 			//Position of the last point
 		QPointF p = m_moved_segment -> middle();
 
-			//Calcul the movement
+			//Calculate the movement
 		m_moved_segment -> moveX(pos_.x() - p.x());
 		m_moved_segment -> moveY(pos_.y() - p.y());
 

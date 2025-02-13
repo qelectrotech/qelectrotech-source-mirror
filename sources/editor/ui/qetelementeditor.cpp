@@ -996,6 +996,7 @@ void QETElementEditor::setupActions()
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
 		//Rotate action
+	ui->m_rotate_action -> setShortcut(Qt::Key_Space);
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
 		//Zoom action

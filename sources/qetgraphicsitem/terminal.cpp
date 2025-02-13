@@ -43,7 +43,7 @@ const qreal Terminal::Z = 1000;
 */
 void Terminal::init()
 {
-		//Calcul the docking point of the element
+		//Calculate the docking point of the element
 		//m_pos of d is the docking point of conductor
 	dock_elmt_ = d->m_pos;
 	switch(d->m_orientation) {
@@ -53,7 +53,7 @@ void Terminal::init()
 		case Qet::South: dock_elmt_ += QPointF(0, -Terminal::terminalSize); break;
 	}
 
-		//Calcul the bounding rect
+		//Calculate the bounding rect
 	qreal dcx = d->m_pos.x();
 	qreal dcy = d->m_pos.y();
 	qreal dex = dock_elmt_.x();

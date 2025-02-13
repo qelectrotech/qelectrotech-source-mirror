@@ -275,7 +275,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Print
 	m_print = new QAction(QET::Icons::DocumentPrint,   tr("Imprimer"),  this);
-	m_print->setShortcut(QKeySequence(QKeySequence::Print));
+	m_print->setShortcut(QKeySequence::Print);
 	m_print->setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
 	connect(m_print, &QAction::triggered, [this]() {
 		auto project = currentProject();
@@ -548,7 +548,7 @@ void QETDiagramEditor::setUpActions()
 	open_file    ->setShortcut(QKeySequence::Open);
 	m_close_file ->setShortcut(QKeySequence::Close);
 	m_save_file    ->setShortcut(QKeySequence::Save);
-	m_save_file_as  ->setShortcut(tr("Ctrl+Shift+S"));
+	m_save_file_as  ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
 
 	new_file     ->setStatusTip( tr("Crée un nouveau projet", "status bar tip") );
 	open_file    ->setStatusTip( tr("Ouvre un projet existant", "status bar tip") );
