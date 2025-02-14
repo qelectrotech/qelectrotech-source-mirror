@@ -805,13 +805,13 @@ bool Element::fromXml(QDomElement &e,
 	// orientation
 	bool conv_ok;
 	int read_ori = e.attribute(QStringLiteral("orientation")).toInt(&conv_ok);
-	if (!conv_ok || read_ori < 0 || read_ori > 3) {
+	if (!(conv_ok) || (read_ori < 0) || (read_ori > 3)) {
 		read_ori = 0;
 	}
 	setRotation(90*read_ori);
 
 		//Before loading the dynamic text field,
-		//we remove the dynamic text field created from the description of this element, to avoid doublons.
+		//we remove the dynamic text field created from the description of this element, to avoid doubles.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
 		delete deti;
 	m_dynamic_text_list.clear();
