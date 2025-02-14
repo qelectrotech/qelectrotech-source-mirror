@@ -93,11 +93,11 @@
      <string>&amp;Aide</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="m_about_qet_action"/>
     <addaction name="m_online_manual"/>
     <addaction name="m_youtube_action"/>
     <addaction name="m_donate_action"/>
     <addaction name="m_about_qt_action"/>
+    <addaction name="m_about_qet_action"/>
    </widget>
    <addaction name="m_file_menu"/>
    <addaction name="m_edit_menu"/>
