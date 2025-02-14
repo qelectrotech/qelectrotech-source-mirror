@@ -41,8 +41,8 @@ ElementsTreeView::ElementsTreeView(QWidget *parent) :
 	QPalette qp = palette();
 	qp.setColor(QPalette::Text,            Qt::black);
 	qp.setColor(QPalette::Base,            Qt::white);
-	qp.setColor(QPalette::AlternateBase, QColor(0xe8e8e8));
-	qp.setColor(QPalette::Highlight, QColor(0x678db2));
+	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
+	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
 	qp.setColor(QPalette::HighlightedText, Qt::black);
 	setPalette(qp);
 }

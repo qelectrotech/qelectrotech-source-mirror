@@ -779,8 +779,7 @@ void ElementsCollectionWidget::search()
 	const QStringList text_list = text.split("+", Qt::SkipEmptyParts);
 #endif
 	QModelIndexList match_index;
-	for (const QString& txt : text_list)
-	{
+	for (QString txt : text_list) {
 		match_index << m_model->match(m_showed_index.isValid()
 						  ? m_model->index(0,0,m_showed_index)
 						  : m_model->index(0,0),
@@ -791,7 +790,7 @@ void ElementsCollectionWidget::search()
 						  | Qt::MatchRecursive);
 	}
 
-	for (QModelIndex index : std::as_const(match_index))
+	for(QModelIndex index : match_index)
 		showAndExpandItem(index);
 }
 

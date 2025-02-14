@@ -236,7 +236,7 @@ void AboutQETDialog::addAuthor(QLabel *label, const QString &name, const QString
 	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;&lrm;<br/><br/>";
 
 		// Add the function of the person
-	new_text += author_template.arg(work, name, email);
+	new_text += author_template.arg(work).arg(name).arg(email);
 	label->setText(new_text);
 }
 
@@ -253,7 +253,7 @@ void AboutQETDialog::addLibrary(QLabel *label, const QString &name, const QStrin
 	QString Library_template = "<span style=\"text-decoration: underline;\">%1</span> : &lt;<a href=\"%3\">%3</a>&gt;&lrm;<br/><br/>";
 
 		// Add the function of the person
-	new_text += Library_template.arg(name, link);
+	new_text += Library_template.arg(name).arg(link);
 	label->setText(new_text);
 }
 

@@ -223,8 +223,7 @@ void LineEditor::setUpChangeConnections()
  */
 void LineEditor::disconnectChangeConnections()
 {
-	for (const auto& connection : std::as_const(m_change_connections))
-	{
+	for (auto connection : m_change_connections) {
 		disconnect(connection);
 	}
 

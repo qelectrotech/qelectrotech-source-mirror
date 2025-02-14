@@ -203,7 +203,7 @@ void LinkElementCommand::redo()
 		QStringList str_txt;
 		QStringList str_funct;
 		QStringList str_tens;
-		for (const Conductor* c : std::as_const(c_list))
+		for (const Conductor *c : c_list)
 		{
 			str_txt   << c->properties().text;
 			str_funct << c->properties().m_function;

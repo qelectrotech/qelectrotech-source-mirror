@@ -513,7 +513,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Color
 	c_value = clist.first().color;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.color != c_value)
 			equal = false;
@@ -524,7 +524,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//bicolor
 	b_value = clist.first().m_bicolor;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_bicolor != b_value)
 			equal = false;
@@ -535,7 +535,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//second color
 	c_value = clist.first().m_color_2;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_color_2 != c_value)
 			equal = false;
@@ -546,7 +546,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Dash size
 	i_value = clist.first().m_dash_size;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_dash_size != i_value)
 			equal = false;
@@ -557,7 +557,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//text
 	s_value = clist.first().text;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.text != s_value)
 			equal = false;
@@ -568,7 +568,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//text color
 	c_value = clist.first().text_color;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.text_color != c_value)
 			equal = false;
@@ -579,7 +579,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//formula
 	s_value = clist.first().m_formula;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_formula != s_value)
 			equal = false;
@@ -590,7 +590,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 	//cable
 	s_value = clist.first().m_cable;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_cable != s_value)
 			equal = false;
@@ -601,7 +601,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 	//bus
 	s_value = clist.first().m_bus;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_bus != s_value)
 			equal = false;
@@ -612,7 +612,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 	//function
 	s_value = clist.first().m_function;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_function != s_value)
 			equal = false;
@@ -623,7 +623,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Tension protocol
 	s_value = clist.first().m_tension_protocol;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_tension_protocol != s_value)
 			equal = false;
@@ -634,7 +634,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//conductor_color
 	s_value = clist.first().m_wire_color;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_wire_color != s_value)
 			equal = false;
@@ -645,7 +645,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//conductor_section
 	s_value = clist.first().m_wire_section;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_wire_section != s_value)
 			equal = false;
@@ -657,7 +657,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//text size
 	i_value = clist.first().text_size;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.text_size != i_value)
 			equal = false;
@@ -668,7 +668,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//conductor size
 	d_value = clist.first().cond_size;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.cond_size != d_value)
 			equal = false;
@@ -679,7 +679,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//show text
 	b_value = clist.first().m_show_text;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_show_text != b_value)
 			equal = false;
@@ -690,7 +690,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//One text per folio
 	b_value = clist.first().m_one_text_per_folio;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_one_text_per_folio != b_value)
 			equal = false;
@@ -701,7 +701,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Text rotation for vertical conducor
 	d_value = clist.first().verti_rotate_text;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.verti_rotate_text != d_value)
 			equal = false;
@@ -712,7 +712,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Text rotation for horizontal conducor
 	d_value = clist.first().horiz_rotate_text;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.horiz_rotate_text != d_value)
 			equal = false;
@@ -723,7 +723,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Text alignment for horizontal conducor
 	align_value = clist.first().m_horizontal_alignment;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_horizontal_alignment != align_value)
 			equal = false;
@@ -734,7 +734,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 
 		//Text alignment for vertical conducor
 	align_value = clist.first().m_vertical_alignment;
-	for (const ConductorProperties& cp : clist)
+	for(ConductorProperties cp : clist)
 	{
 		if (cp.m_vertical_alignment != align_value)
 			equal = false;

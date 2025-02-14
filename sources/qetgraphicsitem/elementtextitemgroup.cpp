@@ -214,7 +214,7 @@ void ElementTextItemGroup::updateAlignment()
 	else if (texts.size() > 1)
 	{
 		qreal width = 0;
-		for (QGraphicsItem* item : std::as_const(texts))
+		for(QGraphicsItem *item : texts)
 			if(item->boundingRect().width() > width)
 				width = item->boundingRect().width();
 		
@@ -226,8 +226,8 @@ void ElementTextItemGroup::updateAlignment()
 		if(m_alignment == Qt::AlignLeft)
 		{
 			QPointF ref = texts.first()->pos();
-
-			for (QGraphicsItem* item : std::as_const(texts))
+				
+			for(QGraphicsItem *item : texts)
 			{
 				item->setPos(0, ref.y()+y_offset);
 				y_offset+=item->boundingRect().height() + m_vertical_adjustment;
@@ -236,8 +236,8 @@ void ElementTextItemGroup::updateAlignment()
 		else if(m_alignment == Qt::AlignVCenter)
 		{
 			QPointF ref(width/2,0);
-
-			for (QGraphicsItem* item : std::as_const(texts))
+			
+			for(QGraphicsItem *item : texts)
 			{
 				item->setPos(ref.x() - item->boundingRect().width()/2,
 							 ref.y() + y_offset);
@@ -247,8 +247,8 @@ void ElementTextItemGroup::updateAlignment()
 		else if (m_alignment == Qt::AlignRight)
 		{
 			QPointF ref(width,0);
-
-			for (QGraphicsItem* item : std::as_const(texts))
+			
+			for(QGraphicsItem *item : texts)
 			{
 				item->setPos(ref.x() - item->boundingRect().width(),
 							 ref.y() + y_offset);

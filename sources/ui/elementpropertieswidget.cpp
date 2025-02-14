@@ -140,8 +140,7 @@ void ElementPropertiesWidget::setDynamicText(DynamicElementTextItem *text)
 	if(text->parentElement())
 	{
 		setElement(text->parentElement());
-		for (AbstractElementPropertiesEditorWidget* aepew :
-			 std::as_const(m_list_editor))
+		for(AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
 		{
 			if (QString(aepew->metaObject()->className()) == "DynamicElementTextItemEditor")
 			{
@@ -167,8 +166,7 @@ void ElementPropertiesWidget::setTextsGroup(ElementTextItemGroup *group)
 	if(group->parentItem() && group->parentItem()->type() == Element::Type)
 	{
 		setElement(static_cast<Element *>(group->parentItem()));
-		for (AbstractElementPropertiesEditorWidget* aepew :
-			 std::as_const(m_list_editor))
+		for(AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
 		{
 			if (QString(aepew->metaObject()->className()) == "DynamicElementTextItemEditor")
 			{
@@ -316,8 +314,7 @@ void ElementPropertiesWidget::updateUi()
 	m_list_editor << new DynamicElementTextItemEditor(m_element, this);
 
 		//Add each editors in tab widget
-	for (AbstractElementPropertiesEditorWidget* aepew :
-		 std::as_const(m_list_editor))
+	for (AbstractElementPropertiesEditorWidget *aepew : m_list_editor)
 	{
 		aepew->setLiveEdit(m_live_edit);
 		m_tab->addTab(aepew, aepew->title());

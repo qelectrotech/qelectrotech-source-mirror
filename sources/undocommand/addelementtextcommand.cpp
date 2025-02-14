@@ -184,7 +184,7 @@ void AddTextsGroupCommand::redo()
 		}
 		else
 		{
-			for (DynamicElementTextItem* deti : std::as_const(m_deti_list))
+			for(DynamicElementTextItem *deti : m_deti_list)
 				m_element.data()->addTextToGroup(
 							deti,
 							m_group.data());
@@ -194,7 +194,7 @@ void AddTextsGroupCommand::redo()
 	else if(m_group)
 	{
 		m_element.data()->addTextGroup(m_group.data());
-		for (DynamicElementTextItem* deti : std::as_const(m_deti_list))
+		for(DynamicElementTextItem *deti : m_deti_list)
 			m_element.data()->addTextToGroup(deti, m_group.data());
 	}
 }
@@ -236,9 +236,8 @@ void RemoveTextsGroupCommand::undo()
 	if(m_element && m_group)
 	{
 		m_element.data()->addTextGroup(m_group.data());
-
-		for (const QPointer<DynamicElementTextItem>& p :
-			 std::as_const(m_text_list))
+		
+		for(const QPointer<DynamicElementTextItem>& p : m_text_list)
 			if(p)
 				m_element.data()->addTextToGroup(
 							p.data(),
@@ -253,8 +252,7 @@ void RemoveTextsGroupCommand::redo()
 {
 	if(m_element && m_group)
 	{
-		for (const QPointer<DynamicElementTextItem>& p :
-			 std::as_const(m_text_list))
+		for(const QPointer<DynamicElementTextItem>& p : m_text_list)
 			if(p)
 				m_element.data()->removeTextFromGroup(
 							p.data(),

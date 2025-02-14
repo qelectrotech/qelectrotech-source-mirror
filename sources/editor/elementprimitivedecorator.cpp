@@ -613,13 +613,13 @@ void ElementPrimitiveDecorator::addHandler()
 	if (m_handler_vector.isEmpty() && scene())
 	 {
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapFromScene(getResizingsPoints()));
-
-		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
-		{
-			scene()->addItem(handler);
-			handler->setColor(Qt::darkGreen);
-			handler->installSceneEventFilter(this);
-			handler->setZValue(this->zValue() + 1);
+		 
+		 for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		 { 
+			 scene()->addItem(handler);
+			 handler->setColor(Qt::darkGreen);
+			 handler->installSceneEventFilter(this);
+			 handler->setZValue(this->zValue()+1);
 		 }
 	 }
 }
@@ -727,12 +727,12 @@ QVariant ElementPrimitiveDecorator::itemChange(QGraphicsItem::GraphicsItemChange
 	else if (change == ItemVisibleHasChanged)
 	{
 		bool visible = value.toBool();
-		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		for(QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setVisible(visible);
 	}
 	else if (change == ItemZValueHasChanged && !m_handler_vector.isEmpty())
 	{
-		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setZValue(this->zValue()+1);
 	}
 	

@@ -95,7 +95,7 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 		
 	
 		//For each selected element, we determine if conductors must be moved or updated.
-	for (Element* elmt : std::as_const(m_elements))
+	for(Element *elmt : m_elements)
 	{
 		if (elmt->isSelected())
 		{
@@ -176,7 +176,7 @@ QList<Conductor *> DiagramContent::conductors(int filter) const
 	if (filter & ConductorsToUpdate) result += m_conductors_to_update;
 	if (filter & OtherConductors)    result += m_other_conductors;
 	if (filter & SelectedOnly) {
-		for (Conductor* conductor : std::as_const(result))
+		for(Conductor *conductor : result)
 		{
 			if (!conductor->isSelected())
 				result.removeAll(conductor);

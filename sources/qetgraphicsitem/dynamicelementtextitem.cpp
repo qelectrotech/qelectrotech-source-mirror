@@ -1000,8 +1000,7 @@ void DynamicElementTextItem::setupFormulaConnection()
 
 void DynamicElementTextItem::clearFormulaConnection()
 {
-	for (const QMetaObject::Connection& con :
-		 std::as_const(m_formula_connection))
+	for (const QMetaObject::Connection& con : m_formula_connection)
 		disconnect(con);
 	m_formula_connection.clear();
 }

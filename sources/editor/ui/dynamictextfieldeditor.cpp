@@ -51,9 +51,7 @@ DynamicTextFieldEditor::~DynamicTextFieldEditor()
 {
 	delete ui;
 	if(!m_connection_list.isEmpty()) {
-		for (const QMetaObject::Connection& con :
-			 std::as_const(m_connection_list))
-		{
+		for(const QMetaObject::Connection& con : m_connection_list) {
 			disconnect(con);
 		}
 	}
@@ -205,8 +203,7 @@ void DynamicTextFieldEditor::disconnectConnections()
 {
 		//Remove previous connection
 	if(!m_connection_list.isEmpty())
-		for (const auto& connection : std::as_const(m_connection_list))
-		{
+		for(const auto &connection : m_connection_list) {
 			disconnect(connection);
 		}
 	m_connection_list.clear();

@@ -102,7 +102,7 @@ QString ConductorNumExport::wiresNum() const
 
 	QStringList list = m_hash.keys();
 	list.sort();
-	for (const QString& key : list)
+	for (QString key : list)
 	{
 		for (int i=0; i<m_hash.value(key) ; ++i) {
 			csv.append(key + "\n");

@@ -545,7 +545,7 @@ void QETElementEditor::updateInformations()
 	QString selection_xml_name = part -> xmlName();
 	bool same_xml_name = true;
 	bool style_editable = true;
-	for (QGraphicsItem* qgi : std::as_const(selected_qgis))
+	for (QGraphicsItem *qgi: selected_qgis)
 	{
 		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
 			cep_list << cep;
@@ -582,11 +582,9 @@ void QETElementEditor::updateInformations()
 			bool equal = true;
 			QList<CustomElementPart*> parts = editor -> currentParts();
 			if (parts.length() == cep_list.length()) {
-				for (auto cep : std::as_const(cep_list))
-				{
+				for (auto cep: cep_list) {
 					bool part_found = false;
-					for (auto part : std::as_const(parts))
-					{
+					for (auto part: parts) {
 						if (part == cep) {
 							part_found = true;
 							break;
@@ -791,12 +789,12 @@ bool QETElementEditor::checkElement()
 
 	dialog_message += "<ol>";
 	QList<QETWarning> total = warnings << errors;
-	for (const QETWarning& warning : total)
+	for(QETWarning warning : total)
 	{
 		dialog_message += "<li>";
-		dialog_message +=
-			QString(tr("<b>%1</b> : %2", "warning title: warning description"))
-				.arg(warning.first, warning.second);
+		dialog_message += QString(
+							  tr("<b>%1</b> : %2", "warning title: warning description")
+							  ).arg(warning.first).arg(warning.second);
 		dialog_message += "</li>";
 	}
 	dialog_message += "</ol>";

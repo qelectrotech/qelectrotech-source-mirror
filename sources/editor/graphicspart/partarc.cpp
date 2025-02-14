@@ -265,7 +265,7 @@ void PartArc::switchResizeMode()
 	if (m_resize_mode == 1)
 	{
 		m_resize_mode = 2;
-		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setColor(Qt::darkGreen);
 	}
 	else if (m_resize_mode == 2)
@@ -276,7 +276,7 @@ void PartArc::switchResizeMode()
 		removeHandler();
 		addHandler();
 
-		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setColor(Qt::magenta);
 	}
 	else
@@ -287,7 +287,7 @@ void PartArc::switchResizeMode()
 		removeHandler();
 		addHandler();
 
-		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 			qghi->setColor(Qt::blue);
 	}
 }
@@ -445,7 +445,7 @@ void PartArc::addHandler()
 		else
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
 
-		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
+		for(QetGraphicsHandlerItem *handler : m_handler_vector)
 		{
 			QColor color = Qt::blue;
 			if (m_resize_mode == 2)

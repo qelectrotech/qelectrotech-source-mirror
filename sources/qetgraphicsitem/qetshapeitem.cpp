@@ -49,14 +49,11 @@ QetShapeItem::QetShapeItem(QPointF p1, QPointF p2, ShapeType type, QGraphicsItem
 	setAcceptHoverEvents(true);
 	m_pen.setStyle(Qt::SolidLine);
 		//ensure handlers are always above this item
-	connect(
-		this,
-		&QetShapeItem::zChanged,
-		[this]()
-		{
-			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
-				qghi->setZValue(this->zValue() + 1);
-		});
+	connect(this, &QetShapeItem::zChanged, [this]()
+	{
+		for(QetGraphicsHandlerItem *qghi : m_handler_vector)
+			qghi->setZValue(this->zValue()+1);
+	});
 
 	m_insert_point = new QAction(tr("Ajouter un point"), this);
 	m_insert_point->setIcon(QET::Icons::Add);
@@ -490,8 +487,7 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
 					if (m_handler_vector.count() > 2)
 					{
-						for (QetGraphicsHandlerItem* qghi :
-							 std::as_const(m_handler_vector))
+						for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 						{
 							if (qghi->contains(qghi->mapFromScene(event->scenePos())))
 							{
@@ -524,16 +520,14 @@ void QetShapeItem::switchResizeMode()
 		if (m_resize_mode == 1)
 		{
 			m_resize_mode = 2;
-			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
-			{
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 				qghi->setColor(Qt::darkGreen);
 			}
 		}
 		else
 		{
 			m_resize_mode = 1;
-			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
-			{
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 				qghi->setColor(Qt::blue);
 			}
 		}
@@ -543,7 +537,7 @@ void QetShapeItem::switchResizeMode()
 		if (m_resize_mode == 1)
 		{
 			m_resize_mode = 2;
-			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
 				qghi->setColor(Qt::darkGreen);
 		}
 		else if (m_resize_mode == 2)
@@ -552,8 +546,7 @@ void QetShapeItem::switchResizeMode()
 			qDeleteAll(m_handler_vector);
 			m_handler_vector.clear();
 			addHandler();
-			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
-			{
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 				qghi->setColor(Qt::magenta);
 			}
 		}
@@ -563,10 +556,10 @@ void QetShapeItem::switchResizeMode()
 			qDeleteAll(m_handler_vector);
 			m_handler_vector.clear();
 			addHandler();
-			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
-			{
+			for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
 				qghi->setColor(Qt::blue);
 			}
+
 		}
 	}
 }

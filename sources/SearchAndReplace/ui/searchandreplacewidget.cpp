@@ -127,7 +127,7 @@ void SearchAndReplaceWidget::clear()
 	qDeleteAll(m_conductor_hash.keys());
 	m_conductor_hash.clear();
 
-	for (QTreeWidgetItem* qtwi : std::as_const(m_category_qtwi))
+	for (QTreeWidgetItem *qtwi : m_category_qtwi)
 		qtwi->setHidden(false);
 
 	ui->m_tree_widget->collapseAll();
@@ -284,17 +284,18 @@ void SearchAndReplaceWidget::fillItemsList()
 		dc += DiagramContent(diagram, false);
 	}
 
-	for (Element* elmt : std::as_const(dc.m_elements)) addElement(elmt);
+	for (Element *elmt : dc.m_elements)
+		addElement(elmt);
 
 	//Sort child of each "element type" tree item.
 	//we hide, "element type" tree item, if they do not have children
-	for (QTreeWidgetItem* qtwi : std::as_const(m_qtwi_elmts))
+	for(QTreeWidgetItem *qtwi : m_qtwi_elmts)
 	{
 		qtwi->sortChildren(0, Qt::AscendingOrder);
 		qtwi->setHidden(qtwi->childCount() ? false : true);
 	}
 
-	for (IndependentTextItem* iti : std::as_const(dc.m_text_fields))
+	for (IndependentTextItem *iti : dc.m_text_fields)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_indi_text_qtwi);
 		qtwi->setText(0, iti->toPlainText());
@@ -305,7 +306,7 @@ void SearchAndReplaceWidget::fillItemsList()
 
 	m_indi_text_qtwi->sortChildren(0, Qt::AscendingOrder);
 
-	for (Conductor* c : std::as_const(dc.m_potential_conductors))
+	for (Conductor *c : dc.m_potential_conductors)
 	{
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(m_conductor_qtwi);
 		qtwi->setText(0, c->properties().text);
@@ -378,8 +379,7 @@ void SearchAndReplaceWidget::search()
 			(*it)->setHidden(false);
 		}
 
-		for (QTreeWidgetItem* item : std::as_const(m_category_qtwi))
-		{
+		for (QTreeWidgetItem *item : m_category_qtwi) {
 			item->setExpanded(false);
 		}
 		m_root_qtwi->setExpanded(true);
@@ -442,9 +442,9 @@ void SearchAndReplaceWidget::search()
 		}
 
 		QPalette background = ui->m_search_le->palette();
-		background.setColor(
-			QPalette::Base,
-			match ? QColor(0xE0FFF0) : QColor(0xFFE0EF));
+		background.setColor(QPalette::Base, match
+				    ? QColor("#E0FFF0")
+				    : QColor("#FFE0EF"));
 		ui->m_search_le->setPalette(background);
 
 			//Go to the first occurrence
@@ -488,8 +488,7 @@ void SearchAndReplaceWidget::setUpConenctions()
 	connect(m_select_elements, &QAction::triggered, [this]()
 	{
 		DiagramContent dc(m_diagram_hash.value(ui->m_tree_widget->currentItem()), false);
-		for (auto elmt : std::as_const(dc.m_elements))
-		{
+		for (auto elmt : dc.m_elements) {
 			if (auto item = m_element_hash.key(elmt)) {
 				item->setCheckState(0, Qt::Checked);
 			}
@@ -509,8 +508,7 @@ void SearchAndReplaceWidget::setUpConenctions()
 	connect(m_select_texts, &QAction::triggered, [this]()
 	{
 		DiagramContent dc(m_diagram_hash.value(ui->m_tree_widget->currentItem()), false);
-		for (auto text : std::as_const(dc.m_text_fields))
-		{
+		for (auto text : dc.m_text_fields) {
 			if (auto item = m_text_hash.key(text)) {
 				item->setCheckState(0, Qt::Checked);
 			}
@@ -860,8 +858,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Diagram *diagram)
 	list.append(prop.indexrev);
 	list.append(prop.folio);
 	list.append(prop.date.toString());
-	for (const QString& key : prop.context.keys())
-	{
+	for (QString key : prop.context.keys()) {
 		list.append(prop.context.value(key).toString());
 	}
 
@@ -877,7 +874,7 @@ QStringList SearchAndReplaceWidget::searchTerms(Element *element)
 {
 	QStringList list;
 	DiagramContext context = element->elementInformations();
-	for (const QString& key : QETInformation::elementInfoKeys())
+	for (QString key : QETInformation::elementInfoKeys())
 	{
 		QString str = context.value(key).toString();
 		if (!str.isEmpty()) {

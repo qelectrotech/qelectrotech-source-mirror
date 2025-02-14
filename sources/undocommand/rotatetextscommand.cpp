@@ -69,10 +69,10 @@ m_diagram(diagram)
 		}
 		if(!text.isNull())
 			setText(text);
-
-		for (DiagramTextItem* dti : std::as_const(texts_list))
+		
+		for(DiagramTextItem *dti : texts_list)
 			setupAnimation(dti, "rotation", dti->rotation(), m_rotation);
-		for (ElementTextItemGroup* grp : std::as_const(groups_list))
+		for(ElementTextItemGroup *grp : groups_list)
 			setupAnimation(grp, "rotation", grp->rotation(), m_rotation);
 	}
 	else

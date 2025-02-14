@@ -469,7 +469,7 @@ void StyleEditor::updateForm()
 		size_weight   -> setCurrentIndex(first_part -> lineWeight());
 		filling_color -> setCurrentIndex(first_part -> filling());
 
-		for (auto cegp : std::as_const(m_part_list))
+		for (auto cegp : m_part_list)
 		{
 			if (first_part -> antialiased() != cegp -> antialiased()) antialiasing -> setChecked(false);
 			if (first_part -> color()       != cegp -> color())      outline_color -> setCurrentIndex(-1);

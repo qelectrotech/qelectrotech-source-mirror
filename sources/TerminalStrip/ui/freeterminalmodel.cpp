@@ -315,8 +315,7 @@ void FreeTerminalModel::fillTerminalVector()
 											b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
 	});
 
-	for (const auto& terminal_ : std::as_const(free_terminal_vector))
-	{
+	for (const auto &terminal_ : free_terminal_vector) {
 		m_terminal_vector.append(terminal_->realTerminal());
 		m_real_t_data.append(modelRealTerminalData::data(terminal_->realTerminal()));
 	}

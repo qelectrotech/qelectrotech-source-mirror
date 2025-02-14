@@ -128,7 +128,7 @@ void SearchAndReplaceWorker::replaceElement(QList<Element *> list)
 		{
 			DiagramContext old_context;
 			DiagramContext new_context =  old_context = elmt->elementInformations();
-			for (const QString& key : QETInformation::elementInfoKeys())
+			for (QString key : QETInformation::elementInfoKeys())
 			{
 				new_context.addValue(key, applyChange(old_context.value(key).toString(),
 													  m_element_context.value(key).toString()));
@@ -219,7 +219,7 @@ void SearchAndReplaceWorker::replaceConductor(QList<Conductor *> list)
 		{
 			QSet <Conductor *> conductors_list = c->relatedPotentialConductors(true);
 			conductors_list << c;
-			for (Conductor* cc : std::as_const(conductors_list))
+			for (Conductor *cc : conductors_list)
 			{
 				QVariant old_value, new_value;
 				old_value.setValue(cc->properties());
@@ -270,26 +270,22 @@ void SearchAndReplaceWorker::replaceAdvanced(
 		return;
 	}
 
-	for (Diagram* dd : std::as_const(diagrams))
-	{
+	for (Diagram *dd : diagrams) {
 		if (dd->project() != project_) {
 			return;
 		}
 	}
-	for (Element* elmt : std::as_const(elements))
-	{
+	for (Element *elmt : elements) {
 		if (!elmt->diagram() || elmt->diagram()->project() != project_) {
 			return;
 		}
 	}
-	for (IndependentTextItem* text : std::as_const(texts))
-	{
+	for (IndependentTextItem *text : texts) {
 		if (!text->diagram() || text->diagram()->project() != project_) {
 			return;
 		}
 	}
-	for (Conductor* cc : std::as_const(conductors))
-	{
+	for (Conductor *cc : conductors) {
 		if (!cc->diagram() || cc->diagram()->project() != project_) {
 			return;
 		}
@@ -304,7 +300,7 @@ void SearchAndReplaceWorker::replaceAdvanced(
 	project_->undoStack()->beginMacro(QObject::tr("Rechercher / remplacer avancé"));
 	if (who == 0)
 	{
-		for (Diagram* diagram : std::as_const(diagrams))
+		for (Diagram *diagram : diagrams)
 		{
 			TitleBlockProperties old_properties = diagram->border_and_titleblock.exportTitleBlock();
 			TitleBlockProperties new_properties = replaceAdvanced(diagram);
@@ -315,7 +311,7 @@ void SearchAndReplaceWorker::replaceAdvanced(
 	}
 	else if (who == 1)
 	{
-		for (Element* element : std::as_const(elements))
+		for (Element *element : elements)
 		{
 			DiagramContext old_context = element->elementInformations();
 			DiagramContext new_context = replaceAdvanced(element);
@@ -326,7 +322,7 @@ void SearchAndReplaceWorker::replaceAdvanced(
 	}
 	else if (who == 2)
 	{
-		for (Conductor* conductor : std::as_const(conductors))
+		for (Conductor *conductor : conductors)
 		{
 			ConductorProperties old_properties = conductor->properties();
 			ConductorProperties new_properties = replaceAdvanced(conductor);
@@ -335,7 +331,7 @@ void SearchAndReplaceWorker::replaceAdvanced(
 				QSet <Conductor *> potential_conductors = conductor->relatedPotentialConductors(true);
 				potential_conductors << conductor;
 
-				for (Conductor* c : std::as_const(potential_conductors))
+				for (Conductor *c : potential_conductors)
 				{
 					QVariant old_value, new_value;
 					old_value.setValue(c->properties());
@@ -347,7 +343,7 @@ void SearchAndReplaceWorker::replaceAdvanced(
 	}
 	else if (who == 3)
 	{
-		for (IndependentTextItem* text : std::as_const(texts))
+		for (IndependentTextItem *text : texts)
 		{
 			QRegularExpression rx(m_advanced_struct.search);
 			if (!rx.isValid())

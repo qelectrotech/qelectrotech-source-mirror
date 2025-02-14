@@ -620,11 +620,12 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const
 		if (read_only_) {
 			tag = tr("[Lecture seule]", "window title tag");
 		}
-		titleblock_title =
-			QString(tr("%1 %2",
-					   "part of the window title - %1 is the filepath or "
-					   "template name, %2 is the [Changed] or [Read only] tag"))
-				.arg(titleblock_title, tag);
+		titleblock_title = QString(
+			tr(
+				"%1 %2",
+				"part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag"
+			)
+		).arg(titleblock_title).arg(tag);
 	}
 
 	return(titleblock_title);
@@ -724,10 +725,12 @@ void QETTitleBlockTemplateEditor::updateEditorTitle()
 	if (titleblock_title.isEmpty()) {
 		title = min_title;
 	} else {
-		title = QString(tr("%1 - %2",
-						   "window title: %1 is the base window title, %2 is a "
-						   "template name"))
-					.arg(min_title, titleblock_title);
+		title = QString(
+			tr(
+				"%1 - %2",
+				"window title: %1 is the base window title, %2 is a template name"
+			)
+		).arg(min_title).arg(titleblock_title);
 	}
 	setWindowTitle(title);
 }

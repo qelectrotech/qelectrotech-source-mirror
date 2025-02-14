@@ -48,9 +48,8 @@ ReplaceElementDialog::~ReplaceElementDialog()
 void ReplaceElementDialog::setContext(DiagramContext context)
 {
 	m_context = context;
-
-	for (ElementInfoPartWidget* eipw : std::as_const(m_eipw_list))
-	{
+	
+	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw->setText(m_context[eipw->key()].toString());
 	}
 }
@@ -74,8 +73,8 @@ void ReplaceElementDialog::buildWidget()
 	connect(ui->m_button_box, &QDialogButtonBox::clicked, [this](QAbstractButton *button_) {
 		this->done(ui->m_button_box->buttonRole(button_));
 	});
-
-	for (const QString& str : QETInformation::elementInfoKeys())
+	
+	for (QString str : QETInformation::elementInfoKeys())
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		eipw->setEraseTextVisible(true);

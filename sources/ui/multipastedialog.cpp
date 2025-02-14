@@ -117,7 +117,7 @@ void MultiPasteDialog::on_m_button_box_accepted()
 		m_diagram->clearSelection();
 		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, m_pasted_content));
 
-		for (const DiagramContent& dc : std::as_const(m_pasted_content_list))
+		for(DiagramContent dc : m_pasted_content_list)
 		{
 			QList<Element *> pasted_elements = dc.m_elements;
 				//Sort the list element by there pos (top -> bottom)

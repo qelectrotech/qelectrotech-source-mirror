@@ -75,7 +75,9 @@ GraphicsTablePropertiesEditor::~GraphicsTablePropertiesEditor()
 void GraphicsTablePropertiesEditor::setTable(QetGraphicsTableItem *table)
 {
 	if (m_table_item) {
-		for (const auto& c : std::as_const(m_connect_list)) { disconnect(c); }
+		for (auto c : m_connect_list) {
+			disconnect(c);
+		}
 		if (m_current_model_editor)
 		{
 			ui->m_content_layout->removeWidget(m_current_model_editor);
@@ -306,11 +308,9 @@ void GraphicsTablePropertiesEditor::updateUi()
 {
 		//Disconnect every connections of editor widgets
 		//to avoid an unwanted edition (QSpinBox emit valueChanged no matter if changer by user or by program)
-		for (const QMetaObject::Connection& c :
-			 std::as_const(m_edit_connection))
-		{
-			disconnect(c);
-		}
+	for (QMetaObject::Connection c : m_edit_connection) {
+		disconnect(c);
+	}
 	m_edit_connection.clear();
 
 	ui->m_next_pb->setEnabled(m_table_item->nextTable());
@@ -433,8 +433,7 @@ void GraphicsTablePropertiesEditor::updateInfoLabel()
 */
 void GraphicsTablePropertiesEditor::setUpEditConnection()
 {
-	for (const QMetaObject::Connection& c : std::as_const(m_edit_connection))
-	{
+	for (QMetaObject::Connection c : m_edit_connection) {
 		disconnect(c);
 	}
 
@@ -543,7 +542,7 @@ void GraphicsTablePropertiesEditor::on_m_apply_geometry_to_linked_table_pb_click
 	auto new_displayN_row  = m_table_item->displayNRow();
 		//Apply to all linked table
 	auto parent_undo = new QUndoCommand(tr("Appliquer la géometrie d'un tableau aux tableau liée à celui-ci"));
-	for (auto table : std::as_const(vector_))
+	for (auto table : vector_)
 	{
 		new QPropertyUndoCommand(table, "pos", table->pos(), new_pos, parent_undo);
 		new QPropertyUndoCommand(table, "size", table->size(), new_size, parent_undo);

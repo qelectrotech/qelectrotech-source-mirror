@@ -55,8 +55,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 
 		//When removing a deti we must know its parent item, for re-adding deti as child of the parent
 		//when undoing this command
-	for (DynamicElementTextItem* deti :
-		 std::as_const(m_removed_contents.m_element_texts))
+	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(deti->parentGroup())
 			m_grp_texts_hash.insert(deti, deti->parentGroup());
@@ -74,9 +73,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 	}
 
 		//The deletion of the groups is not managed by this undo, but by a RemoveTextsGroupCommand
-	for (ElementTextItemGroup* group :
-		 std::as_const(m_removed_contents.m_texts_groups))
-	{
+	for(ElementTextItemGroup *group : m_removed_contents.m_texts_groups) {
 		new RemoveTextsGroupCommand(group->parentElement(), group, this);
 	}
 
@@ -84,7 +81,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 	setPotentialsOfRemovedElements();
 
 		//Get all linkeds table of removed table.
-	for (auto table : std::as_const(m_removed_contents.m_tables))
+	for (auto table : m_removed_contents.m_tables)
 	{
 			//Table is already managed, jump to next loop
 		if (m_table_scene_hash.keys().contains(table))
@@ -125,7 +122,7 @@ DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand()
 */
 void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 {
-	for (Element* elmt : std::as_const(m_removed_contents.m_elements))
+	for (Element *elmt : m_removed_contents.m_elements)
 	{
 			//a list of terminals who have at least two conductors docked in.
 		QList<Terminal *> terminals_list;
@@ -182,8 +179,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 					//If a conductor was already created between these two terminals
 					//in this undo command, from another removed element, we do nothing
 				bool exist_ = false;
-				for (QPair<Terminal*, Terminal*> pair :
-					 std::as_const(m_connected_terminals))
+				for (QPair<Terminal *, Terminal *> pair : m_connected_terminals)
 				{
 					if  (pair.first == hub_terminal && pair.second == t) {
 						exist_ = true;
@@ -230,7 +226,7 @@ Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(
 {
 	QList<Conductor *> conductor_list = terminal->conductors();
 	conductor_list.removeAll(conductor_to_exclude);
-	for (Conductor* c : std::as_const(conductor_list))
+	for(Conductor *c : conductor_list)
 	{
 		Terminal *other_terminal = c->terminal1 == terminal ? c->terminal2 : c->terminal1;
 		if(!m_removed_contents.items(DiagramContent::Elements).contains(other_terminal->parentElement())) {
@@ -238,7 +234,7 @@ Terminal *DeleteQGraphicsItemCommand::terminalInSamePotential(
 		}
 	}
 		//No one of direct conductor of terminal are docked to an element which is not removed
-	for (Conductor* c : std::as_const(conductor_list))
+	for(Conductor *c : conductor_list)
 	{
 		Terminal *other_terminal = c->terminal1 == terminal ? c->terminal2 : c->terminal1;
 		Terminal *terminal_to_return = terminalInSamePotential(other_terminal, c);
@@ -262,12 +258,11 @@ void DeleteQGraphicsItemCommand::undo()
 		m_diagram->addItem(item);
 
 		//We relink element after every element was added to diagram
-	for (Element* e : std::as_const(m_removed_contents.m_elements))
+	for(Element *e : m_removed_contents.m_elements)
 		for(Element *elmt : m_link_hash[e])
 				e->linkToElement(elmt);
 
-	for (DynamicElementTextItem* deti :
-		 std::as_const(m_removed_contents.m_element_texts))
+	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(m_elmt_text_hash.keys().contains(deti))
 			m_elmt_text_hash.value(deti)->addDynamicTextItem(deti);
@@ -312,15 +307,14 @@ void DeleteQGraphicsItemCommand::redo()
 		}
 	}
 
-	for (Element* e : std::as_const(m_removed_contents.m_elements))
+	for(Element *e : m_removed_contents.m_elements)
 	{
 			//Get linked element, for relink it at undo
 		if (!e->linkedElements().isEmpty())
 			m_link_hash.insert(e, e->linkedElements());
 	}
 
-	for (DynamicElementTextItem* deti :
-		 std::as_const(m_removed_contents.m_element_texts))
+	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
 		if(deti->parentGroup() && deti->parentGroup()->parentElement())
 			deti->parentGroup()->parentElement()->removeTextFromGroup(deti, deti->parentGroup());

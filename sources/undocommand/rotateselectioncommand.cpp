@@ -74,8 +74,8 @@ m_diagram(diagram)
 					break;
 			}
 		}
-
-		for (QPropertyUndoCommand* undo : std::as_const(m_undo))
+		
+		for (QPropertyUndoCommand *undo : m_undo)
 			undo->setAnimated(true, false);
 	}
 }
@@ -87,8 +87,8 @@ void RotateSelectionCommand::undo()
 {
 	m_diagram->showMe();
 	QUndoCommand::undo();
-
-	for (const QPointer<ConductorTextItem>& cti : std::as_const(m_cond_text))
+	
+	for(const QPointer<ConductorTextItem>& cti : m_cond_text)
 	{
 		cti->forceRotateByUser(m_rotate_by_user.value(cti.data()));
 		if(!cti->wasRotateByUser())
@@ -103,11 +103,11 @@ void RotateSelectionCommand::redo()
 {
 	m_diagram->showMe();
 	QUndoCommand::redo();
-
-	for (const QPointer<ConductorTextItem>& cti : std::as_const(m_cond_text))
-	{
-		m_rotate_by_user.insert(cti, cti->wasRotateByUser());
-		cti->forceRotateByUser(true);
+	
+		for(const QPointer<ConductorTextItem>& cti : m_cond_text)
+		{
+			m_rotate_by_user.insert(cti, cti->wasRotateByUser());
+			cti->forceRotateByUser(true);
 		}
 }
 

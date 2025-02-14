@@ -201,8 +201,8 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 	p.setRenderHint(QPainter::TextAntialiasing, true);
 
 	// cercle gris a fond jaune
-	p.setPen(QPen(QBrush(QColor(0x9FA8A8)), 2.0));
-	p.setBrush(QBrush(QColor(0xffffaa)));
+	p.setPen(QPen(QBrush(QColor("#9FA8A8")), 2.0));
+	p.setBrush(QBrush(QColor("#ffffaa")));
 	p.drawEllipse(drawing_rectangle);
 
 	// ligne rouge indiquant l'angle actuel
@@ -230,10 +230,10 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 	qreal square_offset = - squares_size / 2.0;
 	QRectF square_qrect = QRect(square_offset, square_offset, squares_size, squares_size);
 	p.setPen(Qt::NoPen);
-	p.setBrush(QBrush(QColor(0x248A34)));
+	p.setBrush(QBrush(QColor("#248A34")));
 	for (double drawing_angle = 0.0 ; drawing_angle < 360.0 ; drawing_angle += squares_interval_) {
 		if (must_highlight_angle_ && highlight_angle_ == drawing_angle && underMouse()) {
-			p.setBrush(QBrush(QColor(0x43FF5F)));
+			p.setBrush(QBrush(QColor("#43FF5F")));
 		}
 		p.resetTransform();
 		p.translate(drawing_rectangle_center);
@@ -242,7 +242,7 @@ void QTextOrientationWidget::paintEvent(QPaintEvent *event) {
 		p.rotate(-45.0);
 		p.drawRect(square_qrect);
 		if (must_highlight_angle_ && highlight_angle_ == drawing_angle) {
-			p.setBrush(QBrush(QColor(0x248A34)));
+			p.setBrush(QBrush(QColor("#248A34")));
 		}
 	}
 

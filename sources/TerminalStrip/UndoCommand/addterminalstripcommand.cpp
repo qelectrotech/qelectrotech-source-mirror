@@ -74,8 +74,7 @@ RemoveTerminalStripCommand::~RemoveTerminalStripCommand()
 void RemoveTerminalStripCommand::undo()
 {
 	if (m_project && m_strip) {
-		for (const auto& elmt : std::as_const(m_elements))
-		{
+		for (auto elmt : m_elements) {
 			m_strip->addTerminal(elmt);
 		}
 		m_project->addTerminalStrip(m_strip);
@@ -85,8 +84,7 @@ void RemoveTerminalStripCommand::undo()
 void RemoveTerminalStripCommand::redo()
 {
 	if (m_project && m_strip) {
-		for (const auto& elmt : std::as_const(m_elements))
-		{
+		for (auto elmt : m_elements) {
 			m_strip->removeTerminal(elmt);
 		}
 		m_project->removeTerminalStrip(m_strip);

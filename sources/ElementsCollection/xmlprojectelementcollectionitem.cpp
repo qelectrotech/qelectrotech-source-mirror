@@ -206,8 +206,7 @@ void XmlProjectElementCollectionItem::setUpData()
 		ElementsLocation location(embeddedPath(), m_project);
 		DiagramContext context = location.elementInformations();
 		QStringList search_list;
-		for (const QString& key : context.keys())
-		{
+		for (QString key : context.keys()) {
 			search_list.append(context.value(key).toString());
 		}
 		search_list.append(localName());

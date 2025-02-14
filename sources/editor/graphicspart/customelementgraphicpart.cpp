@@ -530,7 +530,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde)
 
 		//Check each pair of style
 	QRegularExpression rx("^\\s*([a-z-]+)\\s*:\\s*([a-zA-Z-]+)\\s*$");
-	for (const auto& style : std::as_const(styles))
+	for (auto style : styles)
 	{
 		auto rx_match = rx.match(style);
 		if (!rx_match.hasMatch()) {

@@ -1936,8 +1936,8 @@ QStringList DynamicTextItemDelegate::availableInfo(
 		QStringList info_list = QETInformation::elementInfoKeys();
 		info_list.removeAll("formula"); //No need to have formula
 		DiagramContext dc = elmt->elementInformations();
-
-		for (const QString& info : std::as_const(info_list))
+		
+		for(const QString& info : info_list)
 		{
 			if(dc.contains(info))
 				qstrl << info;

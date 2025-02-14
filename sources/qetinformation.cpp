@@ -73,8 +73,7 @@ QString QETInformation::titleblockInfoKeysToVar(const QString &info)
 QHash<QString, QString> QETInformation::titleblockTranslatedKeyHashVar()
 {
 	QHash <QString, QString> hash_;
-	for (const QString& str : titleblockInfoKeys())
-	{
+	for (QString str : titleblockInfoKeys()) {
 		hash_.insert(translatedInfoKey(str), titleblockInfoKeysToVar(str));
 	}
 	return hash_;

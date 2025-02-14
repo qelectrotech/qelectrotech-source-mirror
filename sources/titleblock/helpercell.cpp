@@ -96,13 +96,13 @@ void HelperCell::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 */
 void HelperCell::setType(QET::TitleBlockColumnLength type) {
 	if (type == QET::Absolute) {
-		background_color = QColor(0xC0FFFF);
+		background_color = QColor("#C0FFFF");
 		foreground_color = Qt::black;
 	} else if (type == QET::RelativeToTotalLength) {
-		background_color = QColor(0xFFA858);
+		background_color = QColor("#FFA858");
 		foreground_color = Qt::black;
 	} else if (type == QET::RelativeToRemainingLength) {
-		background_color = QColor(0xFFC0C0);
+		background_color = QColor("#FFC0C0");
 		foreground_color = Qt::black;
 	}
 }
