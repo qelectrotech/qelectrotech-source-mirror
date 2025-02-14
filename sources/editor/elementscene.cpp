@@ -1099,7 +1099,7 @@ void ElementScene::reset()
 			items_list << qgi;
 	}
 
-	for (QGraphicsItem *qgi : items_list)
+	for (QGraphicsItem* qgi : std::as_const(items_list))
 	{
 		removeItem(qgi);
 		qgiManager().release(qgi);

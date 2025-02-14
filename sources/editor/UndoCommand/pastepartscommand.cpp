@@ -61,7 +61,8 @@ PastePartsCommand::~PastePartsCommand()
 void PastePartsCommand::undo()
 {
 	m_scene->blockSignals(true);
-	for (auto qgi : m_pasted_content) {
+	for (auto qgi : std::as_const(m_pasted_content))
+	{
 		m_scene->removeItem(qgi);
 	}
 	m_scene->blockSignals(false);
@@ -84,7 +85,8 @@ void PastePartsCommand::redo()
 		m_first_redo = false;
 	} else {
 		m_scene->blockSignals(true);
-		for (auto qgi : m_pasted_content) {
+		for (auto qgi : std::as_const(m_pasted_content))
+		{
 			m_scene->addItem(qgi);
 		}
 		m_scene->blockSignals(false);

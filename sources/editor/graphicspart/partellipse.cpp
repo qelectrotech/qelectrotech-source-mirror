@@ -241,13 +241,13 @@ void PartEllipse::switchResizeMode()
 	if (m_resize_mode == 1)
 	{
 		m_resize_mode = 2;
-		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
 			qghi->setColor(Qt::darkGreen);
 	}
 	else
 	{
 		m_resize_mode = 1;
-		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
 			qghi->setColor(Qt::blue);
 	}
 }
@@ -334,7 +334,7 @@ void PartEllipse::addHandler()
 	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointsForRect(m_rect)));
 
-		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
 		{
 			QColor color = Qt::blue;
 			if (m_resize_mode == 2)

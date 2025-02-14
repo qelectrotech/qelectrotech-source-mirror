@@ -160,7 +160,8 @@ void projectDataBase::removeElement(Element *element)
 void projectDataBase::elementInfoChanged(Element *element)
 {
 	auto hash = elementInfoToString(element);
-	for (auto str : QETInformation::elementInfoKeys()) {
+	for (const auto& str : QETInformation::elementInfoKeys())
+	{
 		m_update_element_query.bindValue(":" + str, hash.value(str));
 	}
 	m_update_element_query.bindValue(":uuid", element->uuid().toString());
@@ -540,7 +541,8 @@ void projectDataBase::prepareQuery()
 
 		//UPDATE DIAGRAM INFO
 	QString update_diagram_str("UPDATE diagram_info SET ");
-	for (auto str : QETInformation::diagramInfoKeys()) {
+	for (const auto& str : QETInformation::diagramInfoKeys())
+	{
 		update_diagram_str.append(str + " = :" + str + ", ");
 	}
 	update_diagram_str.remove(update_diagram_str.length()-2, 2); //Remove the last ", "
@@ -580,7 +582,8 @@ void projectDataBase::prepareQuery()
 
 		//UPDATE ELEMENT INFO
 	QString update_str("UPDATE element_info SET ");
-	for (auto string : QETInformation::elementInfoKeys()) {
+	for (const auto& string : QETInformation::elementInfoKeys())
+	{
 		update_str.append(string + " = :" + string + ", ");
 	}
 	update_str.remove(update_str.length()-2, 2); //Remove the last ", "
@@ -597,7 +600,7 @@ void projectDataBase::prepareQuery()
 QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 {
 	QHash<QString, QString> hash; //Store the value for each columns
-	for (auto key : QETInformation::elementInfoKeys())
+	for (const auto& key : QETInformation::elementInfoKeys())
 	{
 		if (key == "label") {
 			hash.insert(key, elmt->actualLabel());

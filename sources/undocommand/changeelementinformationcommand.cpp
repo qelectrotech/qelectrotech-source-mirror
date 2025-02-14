@@ -60,7 +60,8 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 		//In case of other undo_undo have the same elements as keys
 	if (m_map.size() == other_undo->m_map.size())
 	{
-		for (auto key : other_undo->m_map.keys()) {
+		for (const auto& key : other_undo->m_map.keys())
+		{
 			if (!m_map.keys().contains(key)) {
 				return false;
 			}
@@ -69,12 +70,13 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 			//Other_undo will be merged with this undo :
 			//Replace the new_info values of this m_map
 			//by the new_info values of other_undo's m_map
-		for (auto key : other_undo->m_map.keys())
-		{
-			m_map.insert(key,
-						 qMakePair(
-							 m_map.value(key).first,
-							 other_undo->m_map.value(key).second));
+			for (const auto& key : other_undo->m_map.keys())
+			{
+				m_map.insert(
+					key,
+					qMakePair(
+						m_map.value(key).first,
+						other_undo->m_map.value(key).second));
 		}
 		return true;
 	}
@@ -113,8 +115,7 @@ void ChangeElementInformationCommand::updateProjectDB()
 			//need to have a list of element instead of QPointer<Element>
 			//for the function elementInfoChange of the database
 		QList<Element *> list_;
-		for (auto p_elmt : m_map.keys())
-			list_ << p_elmt.data();
+		for (const auto& p_elmt : m_map.keys()) list_ << p_elmt.data();
 
 		elmt->diagram()->project()->dataBase()->elementInfoChanged(list_);
 	}

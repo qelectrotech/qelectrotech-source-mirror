@@ -204,7 +204,7 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 	layout.addWidget(&label);
 
 	QHash <QRadioButton *, ConductorProperties> H;
-	for (ConductorProperties cp : list)
+	for (const ConductorProperties& cp : list)
 	{
 		QString text;
 		if(!cp.text.isEmpty())

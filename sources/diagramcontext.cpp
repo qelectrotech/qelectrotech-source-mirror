@@ -31,9 +31,7 @@
 */
 void DiagramContext::add(DiagramContext other)
 {
-	for (QString key : other.keys()) {
-		addValue(key, other.value(key));
-	}
+	for (const QString& key : other.keys()) { addValue(key, other.value(key)); }
 }
 
 /**
@@ -258,7 +256,8 @@ bool DiagramContext::isKeyAcceptable(const QString &key)
 QDebug operator <<(QDebug debug, const DiagramContext &context)
 {
 	debug << "DiagramContext";
-	for (auto key : context.keys()) {
+	for (const auto& key : context.keys())
+	{
 		debug.nospace() << key << " : " << context.value(key) << "\n";
 	}
 	debug << " end DiagramContext";

@@ -93,8 +93,9 @@ void ArcEditor::setUpChangeConnections()
 
 void ArcEditor::disconnectChangeConnections()
 {
-	for (QMetaObject::Connection c : m_change_connections) {
-	disconnect(c);
+	for (const QMetaObject::Connection& c : std::as_const(m_change_connections))
+	{
+		disconnect(c);
 	}
 	m_change_connections.clear();
 }

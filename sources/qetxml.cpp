@@ -516,7 +516,7 @@ void QETXML::modelHeaderDataFromXml(
 	auto meta_enum_orientation = QMetaEnum::fromType<Qt::Orientations>();
 	auto meta_enum_role        = QMetaEnum::fromType<Qt::ItemDataRole>();
 
-	for (auto child : QETXML::directChild(element, "data"))
+	for (const auto& child : QETXML::directChild(element, "data"))
 	{
 		auto section_ = child.attribute("section", "-1").toInt();
 		auto orientation_ = Qt::Orientation(

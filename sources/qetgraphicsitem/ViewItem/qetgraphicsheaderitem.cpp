@@ -133,7 +133,7 @@ void QetGraphicsHeaderItem::paint(
 
 	//Draw vertical lines
 	auto offset= 0;
-	for(auto size : m_current_sections_width)
+	for (auto size : std::as_const(m_current_sections_width))
 	{
 		QPointF p1(offset+size, m_current_rect.top());
 		QPointF p2(offset+size, m_current_rect.bottom());
@@ -188,7 +188,7 @@ bool QetGraphicsHeaderItem::toDXF(const QString &filepath)
 
 	//Draw vertical lines
 	auto offset= 0;
-	for(auto size : m_current_sections_width)
+	for (auto size : std::as_const(m_current_sections_width))
 	{
 		QPointF p1(offset+size, m_current_rect.top());
 		QPointF p2(offset+size, m_current_rect.bottom());

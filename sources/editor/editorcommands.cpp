@@ -521,7 +521,7 @@ ElementEditionCommand(QObject::tr("Pivoter la selection", "undo caption"), scene
 */
 void RotateElementsCommand::undo()
 {
-	for (QGraphicsItem *item : m_items)
+	for (QGraphicsItem* item : std::as_const(m_items))
 	{
 		if (item->type() == PartTerminal::Type) {
 			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
@@ -549,7 +549,7 @@ void RotateElementsCommand::undo()
 */
 void RotateElementsCommand::redo()
 {
-	for (QGraphicsItem *item : m_items)
+	for (QGraphicsItem* item : std::as_const(m_items))
 	{
 		if (item->type() == PartTerminal::Type) {
 			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);

@@ -95,17 +95,20 @@ void replaceAdvancedDialog::fillWhatComboBox(int index)
 	
 	if (index == 0)
 	{
-		for (QString str : QETInformation::diagramInfoKeys()) {
+		for (const QString& str : QETInformation::diagramInfoKeys())
+		{
 			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 	else if (index == 1) {
-		for (QString str : QETInformation::elementInfoKeys()) {
+		for (const QString& str : QETInformation::elementInfoKeys())
+		{
 			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}
 	else if (index == 2) {
-		for (auto str : QETInformation::conductorInfoKeys()) {
+		for (const auto& str : QETInformation::conductorInfoKeys())
+		{
 			ui->m_what_cb->addItem(QETInformation::translatedInfoKey(str), str);
 		}
 	}

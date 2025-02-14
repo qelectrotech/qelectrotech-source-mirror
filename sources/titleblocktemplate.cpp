@@ -1717,10 +1717,12 @@ QString TitleBlockTemplate::finalTextForCell(
 
 	if (cell.display_label && !cell.label.isEmpty()) {
 		cell_label = interpreteVariables(cell_label, diagram_context);
-		cell_text = QString(tr(" %1 : %2", "titleblock content - please let the blank space at the beginning")).arg(cell_label).arg(cell_text);
-	} else {
-		cell_text = QString(tr(" %1")).arg(cell_text);
+		cell_text  = QString(tr(" %1 : %2",
+								"titleblock content - please let the blank "
+								"space at the beginning"))
+						.arg(cell_label, cell_text);
 	}
+	else { cell_text = QString(tr(" %1")).arg(cell_text); }
 	return(cell_text);
 }
 

@@ -732,7 +732,7 @@ bool Element::fromXml(QDomElement &e,
 	{
 		if (auto terminal_ = qgraphicsitem_cast<Terminal *>(qgi))
 		{
-			for(auto qde : liste_terminals)
+			for (auto qde : std::as_const(liste_terminals))
 			{
 				if (terminal_ -> fromXml(qde))
 				{
@@ -812,7 +812,7 @@ bool Element::fromXml(QDomElement &e,
 
 		//Before loading the dynamic text field,
 		//we remove the dynamic text field created from the description of this element, to avoid doublons.
-	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+	for (DynamicElementTextItem* deti : std::as_const(m_dynamic_text_list))
 		delete deti;
 	m_dynamic_text_list.clear();
 
@@ -868,10 +868,10 @@ bool Element::fromXml(QDomElement &e,
 
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
-	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+	for (DynamicElementTextItem* deti : std::as_const(m_dynamic_text_list))
 		deti->m_block_alignment = true;
 	setElementInformations(dc);
-	for(DynamicElementTextItem *deti : m_dynamic_text_list)
+	for (DynamicElementTextItem* deti : std::as_const(m_dynamic_text_list))
 		deti->m_block_alignment = false;
 
 	m_state = QET::GIOK;
@@ -1011,15 +1011,15 @@ QDomElement Element::toXml(
 
 			//Remove the texts from group
 		QList<DynamicElementTextItem *> deti_list = group->texts();
-		for(DynamicElementTextItem *deti : deti_list)
+		for (DynamicElementTextItem* deti : std::as_const(deti_list))
 			group->removeFromGroup(deti);
 
 			//Save the texts to xml
-		for (DynamicElementTextItem *deti : deti_list)
+		for (DynamicElementTextItem* deti : std::as_const(deti_list))
 			dyn_text.appendChild(deti->toXml(document));
 
 			//Re add texts to group
-		for(DynamicElementTextItem *deti : deti_list)
+		for (DynamicElementTextItem* deti : std::as_const(deti_list))
 			group->addToGroup(deti);
 
 			//Restorr the alignment
@@ -1079,7 +1079,7 @@ void Element::removeDynamicTextItem(DynamicElementTextItem *deti)
 		return;
 	}
 
-	for(ElementTextItemGroup *group : m_texts_group)
+	for (ElementTextItemGroup* group : std::as_const(m_texts_group))
 	{
 		if(group->texts().contains(deti))
 		{

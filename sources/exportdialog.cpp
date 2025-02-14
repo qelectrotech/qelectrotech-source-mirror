@@ -505,7 +505,7 @@ void ExportDialog::generateDxf(
 
 		ElementPictureFactory::primitives primitives = ElementPictureFactory::instance()->getPrimitives(elmt->location());
 
-		for(QGraphicsSimpleTextItem *text : primitives.m_texts)
+		for (QGraphicsSimpleTextItem* text : std::as_const(primitives.m_texts))
 		{
 			qreal fontSize = text->font().pointSizeF();
 			if (fontSize < 0)
@@ -524,7 +524,7 @@ void ExportDialog::generateDxf(
 			y = transformed_point.y() - xdir * fontSize * 0.5;
 			QStringList lines = text->text().split('\n');
 			qreal offset = fontSize * 1.6;
-			for (QString line : lines)
+			for (const QString& line : std::as_const(lines))
 			{
 				if (line.size() > 0 && line != "_" ) {
 					Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360 - angle, 0, 0.72);
@@ -534,28 +534,29 @@ void ExportDialog::generateDxf(
 			}
 		}
 
-		for (QLineF line : primitives.m_lines)
+		for (QLineF line : std::as_const(primitives.m_lines))
 		{
 			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
 			QLineF l = t.map(line);
 			Createdxf::drawLine(file_path, l, 0);
 		}
 
-		for (QRectF rect : primitives.m_rectangles)
+		for (QRectF rect : std::as_const(primitives.m_rectangles))
 		{
 			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
 			QRectF r = t.mapRect(rect);
 			Createdxf::drawRectangle(file_path,r,0);
 		}
 
-		for (QRectF circle_rect : primitives.m_circles)
+		for (QRectF circle_rect : std::as_const(primitives.m_circles))
 		{
 			QTransform t = QTransform().translate(elem_pos_x,elem_pos_y).rotate(rotation_angle);
 			QPointF c = t.map(QPointF(circle_rect.center().x(),circle_rect.center().y()));
 			Createdxf::drawCircle(file_path,c,circle_rect.width()/2,0);
 		}
 
-		for (QVector<QPointF> polygon : primitives.m_polygons)
+		for (const QVector<QPointF>& polygon :
+			 std::as_const(primitives.m_polygons))
 		{
 			if (polygon.size() == 0)
 				continue;
@@ -568,7 +569,7 @@ void ExportDialog::generateDxf(
 		}
 
 		// Draw arcs and ellipses
-		for (QVector<qreal> arc : primitives.m_arcs)
+		for (const QVector<qreal>& arc : std::as_const(primitives.m_arcs))
 		{
 			if (arc.size() == 0)
 				continue;

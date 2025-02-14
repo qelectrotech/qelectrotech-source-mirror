@@ -929,7 +929,10 @@ void QETDiagramEditor::save()
 			QString title = (project_view -> project() -> title ());
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
-			statusBar()-> showMessage(tr("Projet %1 enregistré dans le repertoire: %2.").arg(title).arg (filePath), 2000);
+			statusBar()->showMessage(
+				tr("Projet %1 enregistré dans le repertoire: %2.")
+					.arg(title, filePath),
+				2000);
 			m_element_collection_widget->highlightUnusedElement();
 		}
 		else {
@@ -952,7 +955,10 @@ void QETDiagramEditor::saveAs()
 			QString title = (project_view -> project() -> title ());
 			if (title.isEmpty()) title = "QElectroTech ";
 			QString filePath = (project_view -> project() -> filePath ());
-			statusBar()->showMessage(tr("Projet %1 enregistré dans le repertoire: %2.").arg(title).arg (filePath), 2000);
+			statusBar()->showMessage(
+				tr("Projet %1 enregistré dans le repertoire: %2.")
+					.arg(title, filePath),
+				2000);
 			m_element_collection_widget->highlightUnusedElement();
 		}
 		else {
@@ -1614,7 +1620,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_rotate_selection
 			    << m_edit_selection
 			    << m_group_selected_texts;
-		for(QAction *action : action_list)
+		for (QAction* action : std::as_const(action_list))
 			action->setEnabled(false);
 
 		return;
@@ -1646,13 +1652,13 @@ void QETDiagramEditor::slot_updateComplexActions()
 	QList<ElementTextItemGroup *> groups = DiagramContent(diagram_).selectedTextsGroup();
 	int selected_texts = texts.count();
 	int selected_conductor_texts   = 0;
-	for(DiagramTextItem *dti : texts)
+	for (DiagramTextItem* dti : std::as_const(texts))
 	{
 		if(dti->type() == ConductorTextItem::Type)
 			selected_conductor_texts++;
 	}
 	int selected_dynamic_elmt_text = 0;
-	for(DiagramTextItem *dti : texts)
+	for (DiagramTextItem* dti : std::as_const(texts))
 	{
 		if(dti->type() == DynamicElementTextItem::Type)
 			selected_dynamic_elmt_text++;
@@ -1665,7 +1671,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	{
 		Element *elmt = deti_list.first()->parentElement();
 		bool ok = true;
-		for(DynamicElementTextItem *deti : deti_list)
+		for (DynamicElementTextItem* deti : std::as_const(deti_list))
 		{
 			if(elmt != deti->parentElement())
 				ok = false;

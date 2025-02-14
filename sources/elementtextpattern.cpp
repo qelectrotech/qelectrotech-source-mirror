@@ -220,7 +220,7 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 	
 		//Replace the original uuid of texts in the xml description, by a new one for every texts
 	QHash<QUuid, QUuid> uuid_hash;
-	for(QDomElement text : texts)
+	for (QDomElement text : std::as_const(texts))
 	{
 		QUuid original_uuid(text.attribute("uuid"));
 		QUuid new_uuid = QUuid::createUuid();
@@ -231,7 +231,7 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 	
 		//In each group of the xml description, replace the original uuids, by the news created upper. 
 	QList <QDomElement> groups = QET::findInDomElement(root, "texts_groups", "texts_group");
-	for(const QDomElement& group : groups)
+	for (const QDomElement& group : std::as_const(groups))
 	{
 		for(QDomElement text : QET::findInDomElement(group, "texts", "text"))
 		{
@@ -260,14 +260,14 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 	}
 	
 		//Add the texts to element
-	for(const QDomElement& text : texts)
+	for (const QDomElement& text : std::as_const(texts))
 	{
 		DynamicElementTextItem *deti = new DynamicElementTextItem(m_element);
 		undo_stack.push(new AddElementTextCommand(m_element, deti));
 		deti->fromXml(text);
 	}
 		//Add the groups to element
-	for(const QDomElement& xml_group : groups)
+	for (const QDomElement& xml_group : std::as_const(groups))
 		undo_stack.push(new AddTextsGroupCommand(m_element, xml_group));
 	
 	undo_stack.endMacro();

@@ -98,7 +98,7 @@ void CrossRefItem::init()
 */
 void CrossRefItem::setUpConnection()
 {
-	for(const QMetaObject::Connection& c : m_update_connection)
+	for (const QMetaObject::Connection& c : std::as_const(m_update_connection))
 		disconnect(c);
 	
 	m_update_connection.clear();
@@ -424,7 +424,7 @@ void CrossRefItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 */
 void CrossRefItem::linkedChanged()
 {
-	for(const QMetaObject::Connection& c : m_slave_connection)
+	for (const QMetaObject::Connection& c : std::as_const(m_slave_connection))
 		disconnect(c);
 
 	m_slave_connection.clear();
@@ -524,7 +524,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 	//Bounding rect of the NO text
 	QRectF no_bounding;
-	for (auto str : no_str)
+	for (const auto& str : no_str)
 	{
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
 		no_bounding = no_bounding.united(bounding);
@@ -538,7 +538,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 	//Bounding rect of the NC text
 	QRectF nc_bounding;
-	for (auto str : nc_str)
+	for (const auto& str : nc_str)
 	{
 		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
 		nc_bounding = nc_bounding.united(bounding);

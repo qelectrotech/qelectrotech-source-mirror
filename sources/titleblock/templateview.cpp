@@ -1150,11 +1150,10 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems
 QString TitleBlockTemplateView::makePrettyToolTip(const QString &string) {
 	QString css_style = QString("white-space: pre;");
 
-	QString final_tooltip_content = QString(
-		"<div style=\"%1\">%2</div>"
-	).arg(css_style).arg(string);
+	QString final_tooltip_content =
+		QString("<div style=\"%1\">%2</div>").arg(css_style, string);
 
-	return(final_tooltip_content);
+	return (final_tooltip_content);
 }
 
 /**

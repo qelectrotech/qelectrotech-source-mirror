@@ -304,7 +304,7 @@ void PartLine::addHandler()
 
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector));
 
-		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
 		{
 			handler->setColor(Qt::blue);
 			scene()->addItem(handler);

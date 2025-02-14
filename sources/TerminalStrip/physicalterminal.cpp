@@ -31,7 +31,8 @@ PhysicalTerminal::PhysicalTerminal(TerminalStrip *parent_strip,
 	m_parent_terminal_strip(parent_strip),
 	m_real_terminal(terminals)
 {
-	for (const auto &real_t : m_real_terminal) {
+	for (const auto& real_t : std::as_const(m_real_terminal))
+	{
 		if (real_t) {
 			real_t->setPhysicalTerminal(sharedRef());
 		}
@@ -86,7 +87,8 @@ QDomElement PhysicalTerminal::toXml(QDomDocument &parent_document) const
  */
 void PhysicalTerminal::setTerminals(const QVector<QSharedPointer<RealTerminal>> &terminals) {
 	m_real_terminal = terminals;
-	for (const auto &real_t : m_real_terminal) {
+	for (const auto& real_t : std::as_const(m_real_terminal))
+	{
 		if (real_t) {
 			real_t->setPhysicalTerminal(sharedRef());
 		}
@@ -148,7 +150,8 @@ void PhysicalTerminal::setParentStrip(TerminalStrip *strip)
 
 PhysicalTerminal::~PhysicalTerminal()
 {
-	for (const auto &real_t : m_real_terminal) {
+	for (const auto& real_t : std::as_const(m_real_terminal))
+	{
 		if (real_t) {
 			real_t->setPhysicalTerminal(QSharedPointer<PhysicalTerminal>());
 		}

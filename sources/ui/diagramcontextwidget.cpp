@@ -71,7 +71,7 @@ void DiagramContextWidget::setContext (const DiagramContext &context)
 	clear();
 
 	int i = 0;
-	for (QString key : context.keys(DiagramContext::Alphabetical))
+	for (const QString& key : context.keys(DiagramContext::Alphabetical))
 	{
 		ui->m_table->setItem(i, 0, new QTableWidgetItem(key));
 		ui->m_table->setItem(i, 1, new QTableWidgetItem(context[key].toString()));

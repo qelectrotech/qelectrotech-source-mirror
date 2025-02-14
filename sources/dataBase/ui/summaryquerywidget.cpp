@@ -67,7 +67,8 @@ QString SummaryQueryWidget::queryStr() const
 
 	QString column;
 	bool first = true;
-	for (auto key: keys) {
+	for (const auto& key : std::as_const(keys))
+	{
 		if (first) {
 			first = false;
 		} else {
@@ -104,9 +105,9 @@ void SummaryQueryWidget::setQuery(const QString &query)
 
 			//Get the select -> the item in the right list
 		QStringList split = select.split(",");
-		for (auto str : split)
+		for (const auto& str : std::as_const(split))
 		{
-			for (auto item : m_items_list)
+			for (auto item : std::as_const(m_items_list))
 			{
 				if (item->data(Qt::UserRole).toString() == str) {
 					ui->m_available_list->takeItem(ui->m_available_list->row(item));
@@ -123,7 +124,7 @@ void SummaryQueryWidget::setQuery(const QString &query)
 */
 void SummaryQueryWidget::setUpItems()
 {
-	for (auto key : QETInformation::diagramInfoKeys())
+	for (const auto& key : QETInformation::diagramInfoKeys())
 	{
 		if (key == "filename" || key == "display_folio") {
 			continue;

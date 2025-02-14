@@ -241,7 +241,8 @@ int TerminalStripDrawer::height() const
 
 		height_ = std::max(height_, m_pattern->m_spacer_rect.y() + m_pattern->m_spacer_rect.height());
 
-		for (const auto &rect : m_pattern->m_terminal_rect) {
+		for (const auto& rect : std::as_const(m_pattern->m_terminal_rect))
+		{
 			height_ = std::max(height_, rect.y() + rect.height());
 		}
 

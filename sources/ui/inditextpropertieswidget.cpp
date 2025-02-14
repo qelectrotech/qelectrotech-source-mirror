@@ -71,7 +71,8 @@ IndiTextPropertiesWidget::~IndiTextPropertiesWidget()
 void IndiTextPropertiesWidget::setText(IndependentTextItem *text)
 {
 	if (m_text) {
-		for (QMetaObject::Connection c : m_connect_list) {
+		for (const QMetaObject::Connection& c : std::as_const(m_connect_list))
+		{
 			disconnect(c);
 		}
 	}
@@ -89,7 +90,8 @@ void IndiTextPropertiesWidget::setText(IndependentTextItem *text)
 
 void IndiTextPropertiesWidget::setText(QList<IndependentTextItem *> text_list)
 {
-	for (QMetaObject::Connection c : m_connect_list) {
+	for (const QMetaObject::Connection& c : std::as_const(m_connect_list))
+	{
 		disconnect(c);
 	}
 	m_connect_list.clear();
@@ -125,7 +127,9 @@ void IndiTextPropertiesWidget::apply()
 	if (m_text && m_text->diagram()) {
 		d = m_text->diagram();
 	} else if (!m_text_list.isEmpty()) {
-		for (QPointer<IndependentTextItem> piti : m_text_list) {
+		for (const QPointer<IndependentTextItem>& piti :
+			 std::as_const(m_text_list))
+		{
 			if (piti->diagram()) {
 				d = piti->diagram();
 				break;
@@ -158,7 +162,9 @@ bool IndiTextPropertiesWidget::setLiveEdit(bool live_edit)
 		setUpEditConnection();
 	}
 	else {
-		for (QMetaObject::Connection c : m_edit_connection) {
+		for (const QMetaObject::Connection& c :
+			 std::as_const(m_edit_connection))
+		{
 			disconnect(c);
 		}
 		m_edit_connection.clear();
@@ -220,7 +226,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			qreal rotation_ = m_text_list.first()->rotation();
 			int size_ = m_text_list.first()->font().pointSize();
 			QFont font_ = m_text_list.first()->font();
-			for (QPointer<IndependentTextItem> piti : m_text_list)
+			for (const QPointer<IndependentTextItem>& piti : m_text_list)
 			{
 				if (piti->rotation() != rotation_) {
 					angle_equal = false;
@@ -236,7 +242,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			if ((angle_equal && (ui->m_angle_sb->value() != rotation_)) ||
 				(!angle_equal && (ui->m_angle_sb->value() != ui->m_angle_sb->minimum())))
 			{
-				for (QPointer<IndependentTextItem> piti : m_text_list)
+				for (const QPointer<IndependentTextItem>& piti : m_text_list)
 				{
 					if (piti)
 					{
@@ -251,7 +257,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			else if ((size_equal && (ui->m_size_sb->value() != size_)) ||
 					 (!size_equal && (ui->m_size_sb->value() != ui->m_size_sb->minimum())))
 			{
-				for (QPointer<IndependentTextItem> piti : m_text_list)
+				for (const QPointer<IndependentTextItem>& piti : m_text_list)
 				{
 					if (piti)
 					{
@@ -267,7 +273,7 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 			else if ((m_font_is_selected && !font_equal) ||
 					 (m_font_is_selected && (font_equal && (m_selected_font != font_))))
 			{
-				for (QPointer<IndependentTextItem> piti : m_text_list)
+				for (const QPointer<IndependentTextItem>& piti : m_text_list)
 				{
 					if (piti)
 					{
@@ -324,7 +330,8 @@ QUndoCommand *IndiTextPropertiesWidget::associatedUndo() const
 */
 void IndiTextPropertiesWidget::setUpEditConnection()
 {
-	for (QMetaObject::Connection c : m_edit_connection) {
+	for (const QMetaObject::Connection& c : std::as_const(m_edit_connection))
+	{
 		disconnect(c);
 	}
 	m_edit_connection.clear();
@@ -354,7 +361,8 @@ void IndiTextPropertiesWidget::updateUi()
 
 		//Disconnect every connections of editor widgets
 		//to avoid an unwanted edition (QSpinBox emit valueChanged no matter if changer by user or by program)
-	for (QMetaObject::Connection c : m_edit_connection) {
+	for (const QMetaObject::Connection& c : std::as_const(m_edit_connection))
+	{
 		disconnect(c);
 	}
 	m_edit_connection.clear();
@@ -388,7 +396,8 @@ void IndiTextPropertiesWidget::updateUi()
 		int size_ = m_text_list.first()->font().pointSize();
 		QFont font_ = m_text_list.first()->font();
 
-		for (QPointer<IndependentTextItem> piti : m_text_list)
+		for (const QPointer<IndependentTextItem>& piti :
+			 std::as_const(m_text_list))
 		{
 			if (piti->rotation() != rotation_) {
 				angle_equal = false;
@@ -403,7 +412,9 @@ void IndiTextPropertiesWidget::updateUi()
 		ui->m_angle_sb->setValue(angle_equal ? rotation_ : 0);
 		
 		bool valid_ = true;
-		for (QPointer<IndependentTextItem> piti : m_text_list) {
+		for (const QPointer<IndependentTextItem>& piti :
+			 std::as_const(m_text_list))
+		{
 			if (piti->isHtml()) {
 				valid_ = false;
 			}
@@ -436,10 +447,11 @@ void IndiTextPropertiesWidget::on_m_break_html_pb_clicked()
 	if (m_text) {
 		m_text->setPlainText(m_text->toPlainText());
 	}
-	for (QPointer<IndependentTextItem> piti : m_text_list) {
+	for (const QPointer<IndependentTextItem>& piti : std::as_const(m_text_list))
+	{
 		piti->setPlainText(piti->toPlainText());
 	}
-	
+
 	updateUi();
 }
 

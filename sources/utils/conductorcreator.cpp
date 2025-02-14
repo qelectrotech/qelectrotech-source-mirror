@@ -49,7 +49,7 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 	d->undoStack().beginMacro(QObject::tr("Création de conducteurs"));
 	
 	QList<Conductor *> c_list;
-	for (Terminal *t : m_terminals_list)
+	for (Terminal* t : std::as_const(m_terminals_list))
 	{
 		if (t == hub_terminal) {
 			continue;
@@ -108,12 +108,14 @@ void ConductorCreator::setUpPropertieToUse()
 		if (potentials.size() >= 2)
 		{
 			QList <ConductorProperties> cp_list;
-			for(Conductor *c : potentials) {
+			for (Conductor* c : std::as_const(potentials))
+			{
 				cp_list.append(c->properties());
 			}
-			
+
 			m_properties = PotentialSelectorDialog::chosenProperties(cp_list);
-			for (Conductor *c : potentials) {
+			for (Conductor* c : std::as_const(potentials))
+			{
 				if (c->properties() == m_properties) {
 					m_sequential_number = c->sequenceNum();
 				}
@@ -141,8 +143,8 @@ QList<Conductor *> ConductorCreator::existingPotential()
 {
 	QList<Conductor *> c_list;
 	QList<Terminal *> t_exclude;
-	
-	for (Terminal *t : m_terminals_list)
+
+	for (Terminal* t : std::as_const(m_terminals_list))
 	{
 		if (t_exclude.contains(t)) {
 			continue;
@@ -182,8 +184,8 @@ QList<Conductor *> ConductorCreator::existingPotential()
 Terminal *ConductorCreator::hubTerminal()
 {
 	Terminal *hub_terminal = m_terminals_list.first();
-	
-	for (Terminal *tt : m_terminals_list)
+
+	for (Terminal* tt : std::as_const(m_terminals_list))
 	{
 		if (tt->scenePos().x() < hub_terminal->scenePos().x()) {
 			hub_terminal = tt;

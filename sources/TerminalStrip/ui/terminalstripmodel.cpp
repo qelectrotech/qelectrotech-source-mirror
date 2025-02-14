@@ -428,7 +428,7 @@ modelRealTerminalData TerminalStripModel::modelRealTerminalDataForIndex(const QM
 void TerminalStripModel::buildBridgePixmap(const QSize &pixmap_size)
 {
 	m_bridges_pixmaps.clear();
-	for (auto color_ : TerminalStripBridge::bridgeColor())
+	for (const auto& color_ : TerminalStripBridge::bridgeColor())
 	{
 		QPen pen;
 		pen.setColor(color_);

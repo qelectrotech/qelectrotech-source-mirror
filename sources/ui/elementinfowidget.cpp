@@ -158,7 +158,7 @@ bool ElementInfoWidget::event(QEvent *event)
 */
 void ElementInfoWidget::enableLiveEdit()
 {
-	for (ElementInfoPartWidget *eipw : m_eipw_list)
+	for (ElementInfoPartWidget* eipw : std::as_const(m_eipw_list))
 		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
 }
 
@@ -168,7 +168,7 @@ void ElementInfoWidget::enableLiveEdit()
 */
 void ElementInfoWidget::disableLiveEdit()
 {
-	for (ElementInfoPartWidget *eipw : m_eipw_list)
+	for (ElementInfoPartWidget* eipw : std::as_const(m_eipw_list))
 		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
 }
 
@@ -185,11 +185,14 @@ void ElementInfoWidget::buildInterface()
 		keys = QETInformation::elementInfoKeys();
 	}
 
-	for (auto str : keys)
-	{
-		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
-		ui->scroll_vlayout->addWidget(eipw);
-		m_eipw_list << eipw;
+	 for (const auto& str : std::as_const(keys))
+	 {
+		 ElementInfoPartWidget* eipw = new ElementInfoPartWidget(
+			 str,
+			 QETInformation::translatedInfoKey(str),
+			 this);
+		 ui->scroll_vlayout->addWidget(eipw);
+		 m_eipw_list << eipw;
 	}
 
 	ui->scroll_vlayout->addStretch();
@@ -227,8 +230,9 @@ void ElementInfoWidget::updateUi()
 	if (m_live_edit) disableLiveEdit();
 
 	const auto element_info{m_element->elementInformations()};
-	
-	for (ElementInfoPartWidget *eipw : m_eipw_list) {
+
+	for (ElementInfoPartWidget* eipw : std::as_const(m_eipw_list))
+	{
 		eipw -> setText (element_info[eipw->key()].toString());
 	}
 

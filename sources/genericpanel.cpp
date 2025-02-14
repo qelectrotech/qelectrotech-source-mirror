@@ -356,14 +356,12 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi,
 		int diagram_folio_idx = diagram -> folioIndex();
 		if (diagram_folio_idx != -1)
 		{
-			displayed_label = QString(
-				tr(
-				   "%1 - %2",
-				   "label displayed for a diagram in the panel ;"
-				   " %1 is the folio index, %2 is the diagram title"
-				   )
-				).arg(displayed_label).arg(displayed_title);
-			diagram_qtwi -> setText(0, displayed_label);
+			displayed_label =
+				QString(tr("%1 - %2",
+						   "label displayed for a diagram in the panel ;"
+						   " %1 is the folio index, %2 is the diagram title"))
+					.arg(displayed_label, displayed_title);
+			diagram_qtwi->setText(0, displayed_label);
 		}
 
 	}
@@ -910,8 +908,8 @@ void GenericPanel::deleteItem(QTreeWidgetItem *item, bool deleted_on_cascade) {
 */
 void GenericPanel::markItemAsUnused(QTreeWidgetItem *qtwi) {
 	QLinearGradient t(0, 0, 200, 0);
-	t.setColorAt(0, QColor("#ffc0c0"));
-	t.setColorAt(1, QColor("#ffffff"));
+	t.setColorAt(0, QColor(0xffc0c0));
+	t.setColorAt(1, QColor(0xffffff));
 	qtwi -> setBackground(0, QBrush(t));
 	qtwi -> setToolTip(0,
 			   QString(tr("%1 [non utilisé dans le projet]")).arg(

@@ -89,7 +89,8 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix + "xrefpos").toString()).toStdString().data()));
 
-	for (QString key : m_prefix_keys) {
+	for (const QString& key : std::as_const(m_prefix_keys))
+	{
 		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
 	}
 }

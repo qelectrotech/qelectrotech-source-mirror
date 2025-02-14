@@ -98,7 +98,8 @@ void QWidgetAnimation::show()
 		int available_ = m_orientation == Qt::Horizontal
 				? m_widget->parentWidget()->width()
 				: m_widget->parentWidget()->height();
-		for (auto w : m_widget_to_substract) {
+		for (auto w : std::as_const(m_widget_to_substract))
+		{
 			available_ -= m_orientation == Qt::Horizontal
 					? w->minimumSizeHint().width()
 					: w->minimumSizeHint().height();

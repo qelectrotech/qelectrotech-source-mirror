@@ -377,7 +377,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 		switch(event->key())
 		{
 			case Qt::Key_Left:
-				for (Element *item : dc.m_elements)
+				for (Element* item : std::as_const(dc.m_elements))
 				{
 					left_position = item->sceneBoundingRect().x();
 					if(left_position <= 5)
@@ -389,7 +389,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 				movement = QPointF(+xKeyGrid, 0.0);
 				break;
 			case Qt::Key_Up:
-				for(Element *item : dc.m_elements)
+				for (Element* item : std::as_const(dc.m_elements))
 				{
 					top_position = item->sceneBoundingRect().y();
 					if(top_position <= 5)
@@ -420,7 +420,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 		switch(event->key())
 		{
 			case Qt::Key_Left:
-				for (Element *item : dc.m_elements)
+				for (Element* item : std::as_const(dc.m_elements))
 				{
 					left_position = item->sceneBoundingRect().x();
 					if(left_position <= 5)
@@ -432,7 +432,7 @@ void Diagram::keyPressEvent(QKeyEvent *event)
 				movement = QPointF(+xKeyGridFine, 0.0);
 				break;
 			case Qt::Key_Up:
-				for(Element *item : dc.m_elements)
+				for (Element* item : std::as_const(dc.m_elements))
 				{
 					top_position = item->sceneBoundingRect().y();
 					if(top_position <= 5)
@@ -949,7 +949,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	if (!list_elements.isEmpty()) {
 		auto dom_elements = document.createElement(QStringLiteral("elements"));
-		for (auto elmt : list_elements) {
+		for (auto elmt : std::as_const(list_elements))
+		{
 			dom_elements.appendChild(elmt->toXml(document,
 								 table_adr_id));
 		}
@@ -958,7 +959,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	if (!list_conductors.isEmpty()) {
 		auto dom_conductors = document.createElement(QStringLiteral("conductors"));
-		for (auto cond : list_conductors) {
+		for (auto cond : std::as_const(list_conductors))
+		{
 			dom_conductors.appendChild(cond->toXml(document,
 							       table_adr_id));
 		}
@@ -967,7 +969,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	if (!list_texts.isEmpty()) {
 		auto dom_texts = document.createElement(QStringLiteral("inputs"));
-		for (auto dti : list_texts) {
+		for (auto dti : std::as_const(list_texts))
+		{
 			dom_texts.appendChild(dti->toXml(document));
 		}
 		dom_root.appendChild(dom_texts);
@@ -975,7 +978,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	if (!list_images.isEmpty()) {
 		auto dom_images = document.createElement(QStringLiteral("images"));
-		for (auto dii : list_images) {
+		for (auto dii : std::as_const(list_images))
+		{
 			dom_images.appendChild(dii->toXml(document));
 		}
 		dom_root.appendChild(dom_images);
@@ -983,7 +987,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	if (!list_shapes.isEmpty()) {
 		auto dom_shapes = document.createElement(QStringLiteral("shapes"));
-		for (auto dii : list_shapes) {
+		for (auto dii : std::as_const(list_shapes))
+		{
 			dom_shapes.appendChild(dii -> toXml(document));
 		}
 		dom_root.appendChild(dom_shapes);
@@ -991,7 +996,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 
 	if (table_vector.size()) {
 		auto tables = document.createElement(QStringLiteral("tables"));
-		for (auto table : table_vector) {
+		for (auto table : std::as_const(table_vector))
+		{
 			tables.appendChild(table->toXml(document));
 		}
 		dom_root.appendChild(tables);
@@ -1376,9 +1382,11 @@ bool Diagram::fromXml(QDomElement &document,
 
 		// Load text
 	QList<IndependentTextItem *> added_texts;
-	for (auto text_xml : QET::findInDomElement(root,
-											   QStringLiteral("inputs"),
-											   QStringLiteral("input"))) {
+	for (const auto& text_xml : QET::findInDomElement(
+			 root,
+			 QStringLiteral("inputs"),
+			 QStringLiteral("input")))
+	{
 		IndependentTextItem *iti = new IndependentTextItem();
 		iti -> fromXml(text_xml);
 		addItem(iti);
@@ -1387,9 +1395,11 @@ bool Diagram::fromXml(QDomElement &document,
 
 		// Load image
 	QList<DiagramImageItem *> added_images;
-	for (auto image_xml : QET::findInDomElement(root,
-												QStringLiteral("images"),
-												QStringLiteral("image"))) {
+	for (const auto& image_xml : QET::findInDomElement(
+			 root,
+			 QStringLiteral("images"),
+			 QStringLiteral("image")))
+	{
 		DiagramImageItem *dii = new DiagramImageItem ();
 		dii -> fromXml(image_xml);
 		addItem(dii);
@@ -1398,9 +1408,11 @@ bool Diagram::fromXml(QDomElement &document,
 
 		// Load shape
 	QList<QetShapeItem *> added_shapes;
-	for (auto shape_xml : QET::findInDomElement(root,
-												QStringLiteral("shapes"),
-												QStringLiteral("shape"))) {
+	for (const auto& shape_xml : QET::findInDomElement(
+			 root,
+			 QStringLiteral("shapes"),
+			 QStringLiteral("shape")))
+	{
 		QetShapeItem *dii = new QetShapeItem (QPointF(0,0));
 		dii -> fromXml(shape_xml);
 		addItem(dii);
@@ -1463,7 +1475,8 @@ bool Diagram::fromXml(QDomElement &document,
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
-		for (auto item : added_items) {
+		for (auto item : std::as_const(added_items))
+		{
 			items_rect = items_rect.united(
 						item->mapToScene(
 							item->boundingRect()
@@ -1475,7 +1488,7 @@ bool Diagram::fromXml(QDomElement &document,
 						position.y() - point_.y()));
 
 			//Translate all added items
-		for (auto qgi : added_items)
+		for (auto qgi : std::as_const(added_items))
 			qgi->setPos(qgi->pos() += pos_);
 	}
 
@@ -1834,7 +1847,7 @@ void Diagram::changeZValue(QET::DepthOption option)
 					    DiagramContent::Shapes | \
 					    DiagramContent::Images);
 	QList<QGraphicsObject *> list;
-	for(QGraphicsItem *item : l)
+	for (QGraphicsItem* item : std::as_const(l))
 		list << item->toGraphicsObject();
 
 	qreal maxz=0,
@@ -1850,7 +1863,7 @@ void Diagram::changeZValue(QET::DepthOption option)
 
 	if(option == QET::Raise)
 	{
-		for(QGraphicsObject *qgo : list)
+		for (QGraphicsObject* qgo : std::as_const(list))
 			if(qgo->zValue() < (Terminal::Z-2))	//Ensure item is always below terminal
 				new QPropertyUndoCommand(qgo,
 							 "z",
@@ -1860,7 +1873,7 @@ void Diagram::changeZValue(QET::DepthOption option)
 	}
 	else if(option == QET::Lower)
 	{
-		for(QGraphicsObject *qgo : list)
+		for (QGraphicsObject* qgo : std::as_const(list))
 			if(qgo->zValue() < (Terminal::Z-2))	//Ensure item is always below terminal
 				new QPropertyUndoCommand(qgo,
 							 "z",
@@ -1870,21 +1883,13 @@ void Diagram::changeZValue(QET::DepthOption option)
 	}
 	else if (option == QET::BringForward)
 	{
-		for(QGraphicsObject *qgo : list)
-				new QPropertyUndoCommand(qgo,
-							 "z",
-							 qgo->zValue(),
-							 maxz+1,
-							 undo);
+		for (QGraphicsObject* qgo : std::as_const(list))
+			new QPropertyUndoCommand(qgo, "z", qgo->zValue(), maxz + 1, undo);
 	}
 	else if(option == QET::SendBackward)
 	{
-		for(QGraphicsObject *qgo : list)
-				new QPropertyUndoCommand(qgo,
-							 "z",
-							 qgo->zValue(),
-							 minz-1,
-							 undo);
+		for (QGraphicsObject* qgo : std::as_const(list))
+			new QPropertyUndoCommand(qgo, "z", qgo->zValue(), minz - 1, undo);
 	}
 
 	if(undo->childCount())

@@ -130,9 +130,9 @@ void ElementQueryWidget::setQuery(const QString &query)
 
 			//Get the select -> the item in the right list
 		QStringList split = select.split(",");
-		for (auto str : split)
+		for (const auto& str : std::as_const(split))
 		{
-			for (auto item : m_items_list)
+			for (auto item : std::as_const(m_items_list))
 			{
 				if (item->data(Qt::UserRole).toString() == str) {
 					ui->m_var_list->takeItem(ui->m_var_list->row(item));
@@ -209,7 +209,8 @@ void ElementQueryWidget::setQuery(const QString &query)
 
 			//Filter for selected data
 		QStringList strl;
-		for (auto item : m_items_list) {
+		for (auto item : std::as_const(m_items_list))
+		{
 			strl.append(item->data(Qt::UserRole).toString());
 		}
 
@@ -236,7 +237,7 @@ void ElementQueryWidget::setQuery(const QString &query)
 
 
 		QRegularExpressionMatch rxm;
-		for (auto str : split_where)
+		for (const auto& str : split_where)
 		{
 			rxm = rx_is_not_null.match(str);
 			if (rxm.hasMatch()) {
@@ -297,7 +298,8 @@ QString ElementQueryWidget::queryStr() const
 
 	QString column;
 	bool first = true;
-	for (auto key: keys) {
+	for (auto key : std::as_const(keys))
+	{
 		if (first) {
 			first = false;
 		} else {
@@ -454,7 +456,7 @@ QStringList ElementQueryWidget::selectedKeys() const
 */
 void ElementQueryWidget::setUpItems()
 {
-	for(QString key : QETInformation::elementInfoKeys())
+	for (const QString& key : QETInformation::elementInfoKeys())
 	{
 		if (key == "formula")
 			continue;
@@ -464,8 +466,7 @@ void ElementQueryWidget::setUpItems()
 		m_items_list << item;
 	}
 
-
-	for (auto key : m_export_info.keys())
+	for (const auto& key : m_export_info.keys())
 	{
 		auto item = new QListWidgetItem(m_export_info.value(key), ui->m_var_list);
 		item->setData(Qt::UserRole, key);

@@ -29,7 +29,7 @@
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
 QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
-QColor Terminal::warningColor      = QColor("#ff8000");
+QColor		Terminal::warningColor		= QColor(0xff8000);
 QColor Terminal::forbiddenColor    = QColor(Qt::red);
 const qreal Terminal::terminalSize = 4.0;
 const qreal Terminal::Z = 1000;

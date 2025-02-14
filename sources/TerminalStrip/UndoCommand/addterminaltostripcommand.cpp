@@ -161,7 +161,8 @@ MoveTerminalCommand::MoveTerminalCommand(QSharedPointer<PhysicalTerminal> termin
 	m_new_strip {new_strip}
 {
 	QString t_label;
-	for (auto real_t : terminal->realTerminals()) {
+	for (const auto& real_t : terminal->realTerminals())
+	{
 		if (!t_label.isEmpty())
 			t_label.append(", ");
 		t_label.append(real_t->label());

@@ -277,7 +277,8 @@ void PartPolygon::setClosed(bool close)
 */
 void PartPolygon::setHandlerColor(QPointF pos, const QColor &color)
 {
-	for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+	for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+	{
 		if (qghi->pos() == mapToScene(pos)) {
 			qghi->setColor(color);
 		}
@@ -290,7 +291,8 @@ void PartPolygon::setHandlerColor(QPointF pos, const QColor &color)
 */
 void PartPolygon::resetAllHandlerColor()
 {
-	for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+	for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+	{
 		qghi->setColor(Qt::blue);
 	}
 }
@@ -380,7 +382,7 @@ void PartPolygon::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 		list << m_insert_point;
 		if (m_handler_vector.count() > 2)
 		{
-			for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+			for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
 			{
 				if (qghi->contains(qghi->mapFromScene(event->scenePos())))
 				{
@@ -476,7 +478,7 @@ void PartPolygon::addHandler()
 	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(m_polygon));
 
-		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
 		{
 			handler->setColor(Qt::blue);
 			scene()->addItem(handler);

@@ -803,7 +803,7 @@ void Conductor::handlerMousePressEvent(QetGraphicsHandlerItem *qghi, QGraphicsSc
 		m_moved_segment = segmentsList().at(m_vector_index+1);
 		before_mov_text_pos_ = m_text_item -> pos();
 
-		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
 			if(handler != qghi)
 				handler->hide();
 	}
@@ -871,7 +871,7 @@ void Conductor::addHandler()
 	{
 		m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(handlerPoints()), QETUtils::graphicsHandlerSize(this));
 
-		for(QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
 		{
 			handler->setColor(Qt::blue);
 			scene()->addItem(handler);
@@ -1703,7 +1703,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 	this_terminal << terminal1 << terminal2;
 
 		// Return all conductors of terminal 1 and 2
-	for (Terminal *terminal : this_terminal)
+	for (Terminal* terminal : std::as_const(this_terminal))
 	{
 		if (!t_list->contains(terminal))
 		{
@@ -1723,7 +1723,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 
 			other_conductors_list_t.removeAll(this);
 				//Get the conductors at the same potential for each conductors of other_conductors_list_t
-			for (Conductor *c : other_conductors_list_t) {
+			for (Conductor* c : std::as_const(other_conductors_list_t))
+			{
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list);
 			}
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
@@ -2016,7 +2017,7 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 	QList<QLineF> lines;
 	QList<QPointF> points;
 
-	for (QPolygonF polygon : polygons)
+	for (const QPolygonF& polygon : polygons)
 	{
 		if (polygon.count() <= 1)
 			continue;
@@ -2031,7 +2032,7 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 		// we make orthogonal projections of the point on the different
 		// segments of the polygon, sorting them by increasing length
 	QMap<qreal, QPointF> intersections;
-	for (QLineF line : lines)
+	for (QLineF line : std::as_const(lines))
 	{
 		QPointF intersection_point;
 		if (QET::orthogonalProjection(point, line, &intersection_point)) {

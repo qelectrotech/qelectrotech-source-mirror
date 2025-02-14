@@ -456,7 +456,7 @@ void TerminalStripEditor::on_m_group_terminals_pb_clicked()
 
 			QVector<QSharedPointer<RealTerminal>> vector_;
 			int count_ = 0;
-			for (const auto & mrtd : mrtd_vector)
+			for (const auto& mrtd : std::as_const(mrtd_vector))
 			{
 				const auto real_t = mrtd.real_terminal.toStrongRef();
 				vector_.append(real_t);

@@ -130,7 +130,8 @@ ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
 
 ElementPictureFactory::~ElementPictureFactory()
 {
-	for (primitives p : m_primitives_H.values()) {
+	for (const primitives& p : m_primitives_H.values())
+	{
 		qDeleteAll(p.m_texts);
 	}
 }
@@ -580,7 +581,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 			  << rx.patternErrorOffset();
 		return;
 	}
-	for (auto style : styles)
+	for (const auto& style : styles)
 	{
 		QRegularExpressionMatch match = rx.match(style);
 		if (!match.hasMatch()) {

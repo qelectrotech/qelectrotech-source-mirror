@@ -309,7 +309,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 
 			//Scrolls through the page for print
 		bool first_ = true;
-		for (auto page : page_to_print)
+		for (auto page : std::as_const(page_to_print))
 		{
 			first_ ? first_ = false : m_printer->newPage();
 			diagram->render(painter, QRect(QPoint(0,0), page.size()), page.translated(diagram_rect.topLeft()), Qt::KeepAspectRatio);
@@ -320,7 +320,8 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 	for (auto view : diagram->views()) {
 		view->setInteractive(true);
 	}
-	for (auto qgi : focusable_items) {
+	for (auto qgi : std::as_const(focusable_items))
+	{
 		qgi->setFlag(QGraphicsItem::ItemIsFocusable, true);
 	}
 	saveReloadDiagramParameters(diagram, option, false);

@@ -79,23 +79,23 @@ void DynamicElementTextItemEditor::apply()
 	deti_list << m_element.data()->dynamicTextItems();
 		for(ElementTextItemGroup *group : m_element.data()->textGroups())
 			deti_list << group->texts();
-		
-	for (DynamicElementTextItem *deti : deti_list)
-	{
-		QUndoCommand *undo = m_model->undoForEditedText(deti);
 
-		if (undo->childCount() == 1)
+		for (DynamicElementTextItem* deti : std::as_const(deti_list))
 		{
-			QPropertyUndoCommand *quc = new QPropertyUndoCommand(static_cast<const QPropertyUndoCommand *>(undo->child(0)));
-			if (quc->text().isEmpty())
-				quc->setText(undo->text());
-			undo_list << quc;
-			delete undo;
-		}
-		else if(undo->childCount() > 1)
-			undo_list << undo;
-		else
-			delete undo;
+			QUndoCommand* undo = m_model->undoForEditedText(deti);
+
+			if (undo->childCount() == 1)
+			{
+				QPropertyUndoCommand* quc = new QPropertyUndoCommand(
+					static_cast<const QPropertyUndoCommand*>(undo->child(0)));
+				if (quc->text().isEmpty()) quc->setText(undo->text());
+				undo_list << quc;
+				delete undo;
+			}
+			else if (undo->childCount() > 1)
+				undo_list << undo;
+			else
+				delete undo;
 	}
 	
 		//Get all texts groups of the edited element
@@ -127,8 +127,7 @@ void DynamicElementTextItemEditor::apply()
 		{
 			QUndoStack &us = m_element->diagram()->undoStack();
 			us.beginMacro(tr("Modifier des textes d'élément"));
-			for (QUndoCommand *quc : undo_list)
-				us.push(quc);
+			for (QUndoCommand* quc : std::as_const(undo_list)) us.push(quc);
 			us.endMacro();
 		}
 	}

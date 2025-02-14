@@ -557,7 +557,7 @@ QString TitleBlockTemplatesFilesCollection::toTemplateName(const QString &file_n
 	@return the file name for \a template_name
 */
 QString TitleBlockTemplatesFilesCollection::toFileName(const QString &template_name) {
-	return(QString("%1%2").arg(template_name).arg(TITLEBLOCKS_FILE_EXTENSION));
+	return (QString("%1%2").arg(template_name, TITLEBLOCKS_FILE_EXTENSION));
 }
 
 /**

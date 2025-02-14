@@ -2405,7 +2405,7 @@ void QETApp::checkBackupFiles()
 		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
 					   "Voulez-vous les ouvrir ?</b><br>"));
 	}
-	for(const KAutoSaveFile *kasf : stale_files)
+	for (const KAutoSaveFile* kasf : std::as_const(stale_files))
 	{
 #	ifdef Q_OS_WIN
 	//Remove the first character '/' before the name of the drive
@@ -2439,7 +2439,7 @@ void QETApp::checkBackupFiles()
 	else //Clear backup file
 	{
 		//Remove the stale files
-		for (KAutoSaveFile *stale : stale_files)
+		for (KAutoSaveFile* stale : std::as_const(stale_files))
 		{
 			stale->open(QIODevice::ReadWrite);
 			delete stale;

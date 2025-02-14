@@ -92,8 +92,9 @@ void TextEditor::disconnectChangeConnection()
 
 void TextEditor::disconnectEditConnection()
 {
-	for (QMetaObject::Connection c : m_edit_connection) {
-	disconnect(c);
+	for (const QMetaObject::Connection& c : std::as_const(m_edit_connection))
+	{
+		disconnect(c);
 	}
 	m_edit_connection.clear();
 }

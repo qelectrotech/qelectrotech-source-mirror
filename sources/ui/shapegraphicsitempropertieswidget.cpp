@@ -121,7 +121,7 @@ void ShapeGraphicsItemPropertiesWidget::apply()
 	}
 	else if (!m_shapes_list.isEmpty())
 	{
-		for (QPointer<QetShapeItem> qsi : m_shapes_list)
+		for (const QPointer<QetShapeItem>& qsi : std::as_const(m_shapes_list))
 		{
 			if (qsi->diagram()) {
 				d = qsi->diagram();
@@ -222,7 +222,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			if (ui->m_style_cb->currentIndex() != -1 &&
 				Qt::PenStyle(ui->m_style_cb->currentIndex() + 1) != shape_->pen().style())
 			{
-				for (QPointer<QetShapeItem> qsi : m_shapes_list)
+				for (const QPointer<QetShapeItem>& qsi : m_shapes_list)
 				{
 					QPen pen = qsi->pen();
 
@@ -239,7 +239,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			if (ui->m_size_dsb->value() > 0 &&
 				ui->m_size_dsb->value() != shape_->pen().widthF())
 			{
-				for (QPointer<QetShapeItem> qsi : m_shapes_list)
+				for (const QPointer<QetShapeItem>& qsi : m_shapes_list)
 				{
 					QPen pen = pen_H.contains(qsi) ? pen_H.value(qsi) : qsi->pen();
 					pen.setWidthF(ui->m_size_dsb->value());
@@ -250,7 +250,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			QColor c =ui->m_color_kpb->color();
 			if (c != QPalette().color(QPalette::Button) && shape_->pen().color() != c)
 			{
-				for (QPointer<QetShapeItem> qsi : m_shapes_list)
+				for (const QPointer<QetShapeItem>& qsi : m_shapes_list)
 				{
 					QPen pen = pen_H.contains(qsi) ? pen_H.value(qsi) : qsi->pen();
 					pen.setColor(c);
@@ -258,7 +258,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				}
 			}
 
-			for (QPointer<QetShapeItem> qsi : pen_H.keys())
+			for (const QPointer<QetShapeItem>& qsi : pen_H.keys())
 			{
 				if (!parent_undo) {
 					parent_undo = new QUndoCommand(tr("Modifier une forme simple"));
@@ -271,7 +271,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			if (ui->m_brush_style_cb->currentIndex() != -1 &&
 				shape_->brush().style() != Qt::BrushStyle(ui->m_brush_style_cb->currentIndex()))
 			{
-				for (QPointer<QetShapeItem> qsi : m_shapes_list)
+				for (const QPointer<QetShapeItem>& qsi : m_shapes_list)
 				{
 					QBrush brush = qsi->brush();
 					brush.setStyle(Qt::BrushStyle(ui->m_brush_style_cb->currentIndex()));
@@ -282,7 +282,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			c = ui->m_brush_color_kpb->color();
 			if (c != QPalette().color(QPalette::Button) && shape_->brush().color() != c)
 			{
-				for (QPointer<QetShapeItem> qsi : m_shapes_list)
+				for (const QPointer<QetShapeItem>& qsi : m_shapes_list)
 				{
 					QBrush brush = brush_H.contains(qsi) ? brush_H.value(qsi) : qsi->brush();
 					brush.setColor(c);
@@ -290,7 +290,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				}
 			}
 
-			for (QPointer<QetShapeItem> qsi : brush_H.keys())
+			for (const QPointer<QetShapeItem>& qsi : brush_H.keys())
 			{
 				if (!parent_undo) {
 					parent_undo = new QUndoCommand(tr("Modifier une forme simple"));
@@ -383,7 +383,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 		bool same = true;
 			//Pen
 		Qt::PenStyle ps = m_shapes_list.first()->pen().style();
-		for (QetShapeItem *qsi : m_shapes_list) {
+		for (QetShapeItem* qsi : std::as_const(m_shapes_list))
+		{
 			if (qsi->pen().style() != ps) {
 				same = false;
 				break;
@@ -393,7 +394,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 		same = true;
 		qreal pw = m_shapes_list.first()->pen().widthF();
-		for (QetShapeItem *qsi : m_shapes_list) {
+		for (QetShapeItem* qsi : std::as_const(m_shapes_list))
+		{
 			if (qsi->pen().widthF() != pw) {
 				same = false;
 				break;
@@ -403,7 +405,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 		same = true;
 		QColor pc = m_shapes_list.first()->pen().color();
-		for (QetShapeItem *qsi : m_shapes_list) {
+		for (QetShapeItem* qsi : std::as_const(m_shapes_list))
+		{
 			if (qsi->pen().color() != pc) {
 				same = false;
 				break;
@@ -416,7 +419,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 		same = true;
 		Qt::BrushStyle bs = m_shapes_list.first()->brush().style();
-		for (QetShapeItem *qsi : m_shapes_list) {
+		for (QetShapeItem* qsi : std::as_const(m_shapes_list))
+		{
 			if (qsi->brush().style() != bs) {
 				same = false;
 				break;
@@ -426,7 +430,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 		same = true;
 		QColor bc = m_shapes_list.first()->brush().color();
-		for (QetShapeItem *qsi : m_shapes_list) {
+		for (QetShapeItem* qsi : std::as_const(m_shapes_list))
+		{
 			if (qsi->brush().color() != bc) {
 				same = false;
 				break;
@@ -516,7 +521,8 @@ void ShapeGraphicsItemPropertiesWidget::on_m_lock_pos_cb_clicked()
 		m_shape->setMovable(!ui->m_lock_pos_cb->isChecked());
 	}
 	else if (!m_shapes_list.isEmpty()) {
-		for (QPointer<QetShapeItem> qsi : m_shapes_list) {
+		for (const QPointer<QetShapeItem>& qsi : std::as_const(m_shapes_list))
+		{
 			qsi->setMovable(!ui->m_lock_pos_cb->isChecked());
 		}
 	}

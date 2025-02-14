@@ -59,7 +59,7 @@ void NameListWidget::addLine()
 */
 void NameListWidget::setNames(const NamesList &name_list)
 {
-	for (QString lang : name_list.langs())
+	for (const QString& lang : name_list.langs())
 	{
 		QString value = name_list[lang];
 		QStringList values;
@@ -138,7 +138,8 @@ void NameListWidget::setClipboardValue(QHash<QString, QString> value)
 		
 		QStringList list = value.keys();
 		list.sort();
-		for (QString key : list) {
+		for (const QString& key : list)
+		{
 			ui->m_clipboard_cb->addItem(key, value.value(key));
 		}
 	}

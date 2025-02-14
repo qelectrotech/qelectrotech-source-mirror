@@ -153,7 +153,8 @@ QVector<QetGraphicsTableItem *> ElementProvider::table(
 		}
 	}
 
-	for (auto d : m_diagram_list) {
+	for (auto d : std::as_const(m_diagram_list))
+	{
 		for (auto item_ : d->items())
 		{
 			if(item_->type() == QetGraphicsTableItem::Type)

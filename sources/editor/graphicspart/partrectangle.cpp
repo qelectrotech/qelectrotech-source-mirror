@@ -361,7 +361,7 @@ void PartRectangle::switchResizeMode()
 	if (m_resize_mode == 1)
 	{
 		m_resize_mode = 2;
-		for (QetGraphicsHandlerItem *qghi : m_handler_vector)
+		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
 			qghi->setColor(Qt::darkGreen);
 	}
 	else if (m_resize_mode == 2)
@@ -370,7 +370,8 @@ void PartRectangle::switchResizeMode()
 		qDeleteAll(m_handler_vector);
 		m_handler_vector.clear();
 		addHandler();
-		for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		{
 			qghi->setColor(Qt::magenta);
 		}
 	}
@@ -380,7 +381,8 @@ void PartRectangle::switchResizeMode()
 		qDeleteAll(m_handler_vector);
 		m_handler_vector.clear();
 		addHandler();
-		for (QetGraphicsHandlerItem *qghi : m_handler_vector) {
+		for (QetGraphicsHandlerItem* qghi : std::as_const(m_handler_vector))
+		{
 			qghi->setColor(Qt::blue);
 		}
 	}
@@ -512,7 +514,7 @@ void PartRectangle::addHandler()
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(QetGraphicsHandlerUtility::pointForRadiusRect(m_rect, m_xRadius, m_yRadius)));
 		}
 
-		for (QetGraphicsHandlerItem *handler : m_handler_vector)
+		for (QetGraphicsHandlerItem* handler : std::as_const(m_handler_vector))
 		{
 			QColor color;
 			if(m_resize_mode == 1)       {color = Qt::blue;}

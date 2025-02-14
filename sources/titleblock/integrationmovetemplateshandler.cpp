@@ -82,14 +82,15 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(con
 	@param message Error message.
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::errorWithATemplate(const TitleBlockTemplateLocation &tbt, const QString &message) {
-	QString error_message = QString("Une erreur s'est produite avec le modèle %1 : %2").arg(tbt.toString()).arg(message);
+	QString error_message =
+		QString("Une erreur s'est produite avec le modèle %1 : %2")
+			.arg(tbt.toString(), message);
 	QET::QetMessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
 		error_message,
 		QMessageBox::Ok,
-		QMessageBox::Ok
-	);
+		QMessageBox::Ok);
 	return(QET::Ignore);
 }
 
@@ -116,7 +117,7 @@ QString IntegrationMoveTitleBlockTemplatesHandler::dateString() const
 	This name is based on the current date.
 */
 QString IntegrationMoveTitleBlockTemplatesHandler::newNameForTemplate(const TitleBlockTemplateLocation &tbt) {
-	return(QString("%1-%2.elmt").arg(tbt.name()).arg(dateString()));
+	return (QString("%1-%2.elmt").arg(tbt.name(), dateString()));
 }
 
 /**
