@@ -6915,7 +6915,7 @@ Available options:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="531"/>
         <source>importer un élément à redimensionner</source>
-        <translation>import an element to resize</translation>
+        <translation>Import an element to resize</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1023"/>
