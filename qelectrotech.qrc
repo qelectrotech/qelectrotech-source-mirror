@@ -49,6 +49,7 @@
         <file>ico/16x16/endline-none.png</file>
         <file>ico/16x16/endline-simple.png</file>
         <file>ico/16x16/endline-triangle.png</file>
+        <file>ico/16x16/flip.png</file>
         <file>ico/16x16/folder-new.png</file>
         <file>ico/16x16/folder.png</file>
         <file>ico/16x16/go-company.png</file>
@@ -60,6 +61,7 @@
         <file>ico/16x16/list-add.png</file>
         <file>ico/16x16/list-remove.png</file>
         <file>ico/16x16/masquer.png</file>
+        <file>ico/16x16/mirror.png</file>
         <file>ico/16x16/neutral.png</file>
         <file>ico/16x16/north.png</file>
         <file>ico/16x16/orientations.png</file>

@@ -452,7 +452,7 @@ QRectF PartLine::boundingRect() const
 /**
 	@brief PartLine::isUseless
 	@return true if this part is irrelevant and does not deserve to be Retained / registered.
-	A line is relevant when is two point is different
+	A line is relevant when start-point and end-point are different
 */
 bool PartLine::isUseless() const
 {
@@ -579,15 +579,52 @@ void PartLine::setSecondEndLength(const qreal &l)
 }
 
 void PartLine::setRotation(qreal angle) {
-
-	QTransform rotation = QTransform().translate(m_line.p1().x(),m_line.p1().y()).rotate(angle-m_rot).translate(-m_line.p1().x(),-m_line.p1().y());
-	m_rot=angle;
-
-	setLine(rotation.map(m_line));
+	double tmp, x, y;
+	if (angle > 0) {
+		tmp = m_line.p1().y();
+		y   = m_line.p1().x();
+		x   = (-1) * tmp;
+		m_line.setP1(QPointF(x, y));
+		tmp = m_line.p2().y();
+		y   = m_line.p2().x();
+		x   = (-1) * tmp;
+		m_line.setP2(QPointF(x, y));
+	} else {
+		tmp = m_line.p1().x();
+		x   = m_line.p1().y();
+		y   = (-1) * tmp;
+		m_line.setP1(QPointF(x, y));
+		tmp = m_line.p2().x();
+		x   = m_line.p2().y();
+		y   = (-1) * tmp;
+		m_line.setP2(QPointF(x, y));
+	}
+	prepareGeometryChange();
+	setLine(m_line);
+	adjustHandlerPos();
+	emit lineChanged();
 }
 
 qreal PartLine::rotation() const {
-	return m_rot;
+	return qRound(m_rot * 100.0) / 100.0;
+}
+
+void PartLine::flip() {
+	m_line.setP1(QPointF(m_line.p1().x(), (-1) * m_line.p1().y()));
+	m_line.setP2(QPointF(m_line.p2().x(), (-1) * m_line.p2().y()));
+	setLine(m_line);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit lineChanged();
+}
+
+void PartLine::mirror() {
+	m_line.setP1(QPointF((-1) * m_line.p1().x(), m_line.p1().y()));
+	m_line.setP2(QPointF((-1) * m_line.p2().x(), m_line.p2().y()));
+	setLine(m_line);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit lineChanged();
 }
 
 

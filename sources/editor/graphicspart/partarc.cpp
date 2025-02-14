@@ -170,6 +170,62 @@ QPainterPath PartArc::shadowShape() const
 	return (pps.createStroke(shape));
 }
 
+
+void PartArc::setRotation(qreal angle) {
+// idea taken from QET_ElementScaler:
+if (angle > 0) {
+	m_start_angle += 270.0 * 16;
+	while (m_start_angle < 0) { m_start_angle += (360*16); }
+	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }
+	qreal width  = m_rect.height();
+	qreal height = m_rect.width();
+	qreal x = (m_rect.y() + m_rect.height()) * (-1);
+	qreal y = m_rect.x();
+	m_rect  = QRectF(x, y, width, height);
+} else {
+	m_start_angle -= 270.0 * 16;
+	while (m_start_angle < 0) { m_start_angle += (360*16); }
+	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }
+	qreal width  = m_rect.height();
+	qreal height = m_rect.width();
+	qreal x = m_rect.y();
+	qreal y = (m_rect.x() + m_rect.width()) * (-1);
+	m_rect  = QRectF(x, y, width, height);
+	}
+
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
+qreal PartArc::rotation() const {
+	return qRound(m_rot * 100.0) / 100.0;
+}
+
+void PartArc::flip() {
+	m_start_angle = (-1) * m_start_angle;
+	m_span_angle  = (-1) * m_span_angle;
+	while (m_start_angle < 0) { m_start_angle += (360*16); }
+	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }
+	qreal y = ((-1.0) * m_rect.y()) - m_rect.height();
+	m_rect  = QRectF(m_rect.x(), y, m_rect.width(), m_rect.height());
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
+void PartArc::mirror() {
+	m_start_angle = (180.0 * 16) - m_start_angle;
+	m_span_angle = (-1) * m_span_angle;
+	while (m_start_angle < 0) { m_start_angle += (360*16); }
+	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }
+	qreal x = ((-1.0) * m_rect.x()) - m_rect.width();
+	m_rect  = QRectF(x, m_rect.y(), m_rect.width(), m_rect.height());
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
 /**
  * @brief PartArc::sceneGeometricRect
  * @return the minimum,

@@ -27,7 +27,7 @@ class QetGraphicsHandlerItem;
 	drawing of an electrical element within the element editor.
 	All coordinates is in item coordinate, except pos()
 */
-class PartRectangle :  public CustomElementGraphicPart
+class PartRectangle : public CustomElementGraphicPart
 {
 		Q_OBJECT
 
@@ -73,6 +73,8 @@ class PartRectangle :  public CustomElementGraphicPart
 		void   setYRadius(qreal Y);
 		void   setRotation(qreal angle);
 		qreal  rotation() const;
+		void   flip();
+		void   mirror();
 
 		QRectF  sceneGeometricRect() const override;
 		virtual QPointF sceneTopLeft() const;

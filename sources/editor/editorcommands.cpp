@@ -531,19 +531,28 @@ void RotateElementsCommand::undo()
 			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
 			rect->setRotation(rect->rotation()-90);
 		}
+		else if (item->type() == PartArc::Type) {
+			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
+			arc->setRotation(arc->rotation()-90);
+		}
+		else if (item->type() == PartEllipse::Type) {
+			PartEllipse* ellipse = qgraphicsitem_cast<PartEllipse*>(item);
+			ellipse->setRotation(ellipse->rotation()-90);
+		}
 		else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(line->rotation()-15);
+			line->setRotation(line->rotation()-90);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(poly->rotation()-15);
+			poly->setRotation(poly->rotation()-90);
 		}
 		else {
-			item->setRotation(item->rotation()-15);
+			item->setRotation(item->rotation()-90);
 		}
 	}
 }
+
 /**
 	@brief RotateElementsCommand::redo
 */
@@ -559,17 +568,115 @@ void RotateElementsCommand::redo()
 			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
 			rect->setRotation(rect->rotation()+90);
 		}
+		else if (item->type() == PartArc::Type) {
+			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
+			arc->setRotation(arc->rotation()+90);
+		}
+		else if (item->type() == PartEllipse::Type) {
+			PartEllipse* ellipse = qgraphicsitem_cast<PartEllipse*>(item);
+			ellipse->setRotation(ellipse->rotation()+90);
+		}
 		else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(line->rotation()+15);
+			line->setRotation(line->rotation()+90);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(poly->rotation()+15);
+			poly->setRotation(poly->rotation()+90);
 		}
 		else {
-			item->setRotation(item->rotation()+15);
+			item->setRotation(item->rotation()+90);
 		}
 	}
+}
 
+
+MirrorElementsCommand::MirrorElementsCommand(ElementScene *scene, QUndoCommand *parent) :
+ElementEditionCommand(QObject::tr("Miroir de sélection", "undo caption"), scene, nullptr, parent)
+{
+	m_items = scene->selectedItems();
+}
+
+/**
+	@brief MirrorElementsCommand::redo
+*/
+void MirrorElementsCommand::redo()
+{
+	foreach (auto *item, m_items) {
+		if ((item->type() == PartText::Type)  ||
+			(item->type() == PartDynamicTextField::Type))  {
+				continue;
+		} else if (item->type() == PartArc::Type) {
+			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
+			arc->mirror();
+		} else if (item->type() == PartEllipse::Type) {
+			PartEllipse* ellipse = qgraphicsitem_cast<PartEllipse*>(item);
+			ellipse->mirror();
+		} else if (item->type() == PartLine::Type) {
+			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
+			line->mirror();
+		} else if (item->type() == PartPolygon::Type) {
+			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
+			poly->mirror();
+		} else if (item->type() == PartRectangle::Type) {
+			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
+			rect->mirror();
+		} else if (item->type() == PartTerminal::Type) {
+			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
+			term->mirror();
+		}
+	}
+}
+/**
+	@brief MirrorElementsCommand::undo
+*/
+void MirrorElementsCommand::undo()
+{
+	redo();
+}
+
+
+FlipElementsCommand::FlipElementsCommand(ElementScene *scene, QUndoCommand *parent) :
+ElementEditionCommand(QObject::tr("Retourner la sélection", "undo caption"), scene, nullptr, parent)
+{
+	m_items = scene->selectedItems();
+}
+
+/**
+	@brief FlipElementsCommand::redo
+*/
+void FlipElementsCommand::redo()
+{
+	foreach (auto *item, m_items) {
+		if ((item->type() == PartText::Type)  ||
+			(item->type() == PartDynamicTextField::Type))  {
+				continue;
+		} else if (item->type() == PartArc::Type) {
+			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
+			arc->flip();
+		} else if (item->type() == PartEllipse::Type) {
+			PartEllipse* ellipse = qgraphicsitem_cast<PartEllipse*>(item);
+			ellipse->flip();
+		} else if (item->type() == PartLine::Type) {
+			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
+			line->flip();
+		} else if (item->type() == PartPolygon::Type) {
+			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
+			poly->flip();
+		} else if (item->type() == PartRectangle::Type) {
+			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
+			rect->flip();
+		} else if (item->type() == PartTerminal::Type) {
+			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
+			term->flip();
+		}
+	}
+}
+
+/**
+	@brief FlipElementsCommand::undo
+*/
+void FlipElementsCommand::undo()
+{
+	redo();
 }

@@ -87,8 +87,10 @@ class PartPolygon : public CustomElementGraphicPart
 		void setHandlerColor(QPointF pos, const QColor &color) final;
 		void resetAllHandlerColor() final;
 
-		void setRotation (qreal angle);
+		void  setRotation (qreal angle);
 		qreal rotation () const;
+		void  flip();
+		void  mirror();
 
 		void addHandler() override;
 		void removeHandler() override;

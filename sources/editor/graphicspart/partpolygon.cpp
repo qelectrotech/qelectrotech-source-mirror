@@ -297,17 +297,49 @@ void PartPolygon::resetAllHandlerColor()
 
 
 void PartPolygon::setRotation(qreal angle) {
+	for (auto &punkt : m_polygon) {
+		double tmp, x, y;
+		if (angle > 0) {
+			tmp = punkt.y();
+			y   = punkt.x();
+			x   = (-1) * tmp;
+		} else {
+			tmp = punkt.x();
+			x   = punkt.y();
+			y   = (-1) * tmp;
+		}
+		punkt = QPointF(x, y);
+	}
 
-	QTransform rotation = QTransform().translate(m_polygon.first().x(),m_polygon.first().y()).rotate(angle-m_rot).translate(-m_polygon.first().x(),-m_polygon.first().y());
-	m_rot=angle;
-
-	setPolygon(rotation.map(m_polygon));
+	setPolygon(m_polygon);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit polygonChanged();
 }
 
 qreal PartPolygon::rotation() const {
-	return m_rot;
+	return qRound(m_rot * 100.0) / 100.0;
 }
 
+void PartPolygon::flip() {
+	for (auto &pt : m_polygon) {
+		pt = QPointF(pt.x(), (-1) * pt.y());
+	}
+	setPolygon(m_polygon);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit polygonChanged();
+}
+
+void PartPolygon::mirror() {
+	for (auto &pt : m_polygon) {
+		pt = QPointF((-1) * pt.x(), pt.y());
+	}
+	setPolygon(m_polygon);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit polygonChanged();
+}
 
 
 /**
