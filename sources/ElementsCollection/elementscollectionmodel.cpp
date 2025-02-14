@@ -26,7 +26,11 @@
 #include "xmlprojectelementcollectionitem.h"
 
 #include <QFutureWatcher>
-#include <QtConcurrent>
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+#include <QtConcurrentMap>
+#else
+#include <QtConcurrentRun>
+#endif
 
 /**
 	@brief ElementsCollectionModel::ElementsCollectionModel

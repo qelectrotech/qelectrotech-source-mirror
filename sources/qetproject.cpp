@@ -37,7 +37,7 @@
 
 #include <QHash>
 #include <QTimer>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 #include <QtDebug>
 #include <utility>
 

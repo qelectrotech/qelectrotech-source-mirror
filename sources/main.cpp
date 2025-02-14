@@ -23,7 +23,7 @@
 #include "utils/qetsettings.h"
 
 #include <QStyleFactory>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 
 /**
 	@brief myMessageOutput
