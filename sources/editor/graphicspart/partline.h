@@ -105,7 +105,7 @@ class PartLine : public CustomElementGraphicPart
 		bool sceneEventFilter(QGraphicsItem *watched, QEvent *event) override;
 		
 	private:
-		void adjusteHandlerPos();
+		void adjustHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);

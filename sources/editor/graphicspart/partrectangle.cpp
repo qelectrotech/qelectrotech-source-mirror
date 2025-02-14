@@ -147,7 +147,7 @@ void PartRectangle::setRect(const QRectF &rect)
 	if (rect == m_rect) return;
 	prepareGeometryChange();
 	m_rect = rect;
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit rectChanged();
 }
 
@@ -155,7 +155,7 @@ void PartRectangle::setXRadius(qreal X)
 {
 	m_xRadius = X;
 	update();
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit XRadiusChanged();
 }
 
@@ -163,7 +163,7 @@ void PartRectangle::setYRadius(qreal Y)
 {
 	m_yRadius = Y;
 	update();
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit YRadiusChanged();
 }
 
@@ -303,7 +303,7 @@ QVariant PartRectangle::itemChange(QGraphicsItem::GraphicsItemChange change, con
 {
 	if (change == ItemPositionHasChanged)
 	{
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 	else if (change == ItemSceneChange)
 	{
@@ -387,9 +387,9 @@ void PartRectangle::switchResizeMode()
 }
 
 /**
-	@brief PartRectangle::adjusteHandlerPos
+	@brief PartRectangle::adjustHandlerPos
 */
-void PartRectangle::adjusteHandlerPos()
+void PartRectangle::adjustHandlerPos()
 {
 	if (m_handler_vector.isEmpty()) {
 		return;
@@ -469,7 +469,7 @@ void PartRectangle::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphic
 		}
 	}
 
-	adjusteHandlerPos();
+	adjustHandlerPos();
 }
 
 void PartRectangle::handlerMouseReleaseEvent(QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event)

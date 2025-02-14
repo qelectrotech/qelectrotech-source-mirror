@@ -99,7 +99,7 @@ class PartPolygon : public CustomElementGraphicPart
 		void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
 	
 	private:
-		void adjusteHandlerPos();
+		void adjustHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);

@@ -164,7 +164,7 @@ QVariant PartLine::itemChange(QGraphicsItem::GraphicsItemChange change, const QV
 {
 	if (change == ItemPositionHasChanged)
 	{
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 	else if (change == ItemSceneChange)
 	{
@@ -215,10 +215,10 @@ bool PartLine::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
-	@brief PartLine::adjusteHandlerPos
+	@brief PartLine::adjustHandlerPos
 	Adjust the position of the handler item
 */
-void PartLine::adjusteHandlerPos()
+void PartLine::adjustHandlerPos()
 {
 	if(m_handler_vector.isEmpty())
 		return;
@@ -272,7 +272,7 @@ void PartLine::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsScen
 
 	emit lineChanged();
 
-	adjusteHandlerPos();
+	adjustHandlerPos();
 }
 
 /**
@@ -540,7 +540,7 @@ void PartLine::setLine(const QLineF &line)
 	if (m_line == line) return;
 	prepareGeometryChange();
 	m_line = line;
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit lineChanged();
 }
 

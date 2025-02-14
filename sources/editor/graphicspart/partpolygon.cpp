@@ -219,7 +219,7 @@ void PartPolygon::setPolygon(const QPolygonF &polygon)
 	if (m_polygon == polygon) return;
 	prepareGeometryChange();
 	m_polygon = polygon;
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit polygonChanged();
 }
 
@@ -320,7 +320,7 @@ QVariant PartPolygon::itemChange(QGraphicsItem::GraphicsItemChange change, const
 {
 	if (change == ItemPositionHasChanged)
 	{
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 	else if (change == ItemSceneChange)
 	{
@@ -395,9 +395,9 @@ void PartPolygon::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 }
 
 /**
-	@brief PartPolygon::adjusteHandlerPos
+	@brief PartPolygon::adjustHandlerPos
 */
-void PartPolygon::adjusteHandlerPos()
+void PartPolygon::adjustHandlerPos()
 {
 	if(m_handler_vector.isEmpty())
 		return;
@@ -446,7 +446,7 @@ void PartPolygon::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsS
 
 	prepareGeometryChange();
 	m_polygon.replace(m_vector_index, new_pos);
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit polygonChanged();
 }
 

@@ -207,7 +207,7 @@ QVariant PartArc::itemChange(QGraphicsItem::GraphicsItemChange change, const QVa
 {
 	if (change == ItemPositionHasChanged)
 	{
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 	else if (change == ItemSceneChange)
 	{
@@ -293,9 +293,9 @@ void PartArc::switchResizeMode()
 }
 
 /**
-	@brief PartArc::adjusteHandlerPos
+	@brief PartArc::adjustHandlerPos
 */
-void PartArc::adjusteHandlerPos()
+void PartArc::adjustHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
 		return;

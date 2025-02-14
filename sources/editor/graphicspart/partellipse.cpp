@@ -186,7 +186,7 @@ QVariant PartEllipse::itemChange(QGraphicsItem::GraphicsItemChange change, const
 {
 	if (change == ItemPositionHasChanged)
 	{
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 	else if (change == ItemSceneChange)
 	{
@@ -253,9 +253,9 @@ void PartEllipse::switchResizeMode()
 }
 
 /**
-	@brief PartEllipse::adjusteHandlerPos
+	@brief PartEllipse::adjustHandlerPos
 */
-void PartEllipse::adjusteHandlerPos()
+void PartEllipse::adjustHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
 		return;
@@ -305,7 +305,7 @@ void PartEllipse::handlerMouseMoveEvent(QetGraphicsHandlerItem *qghi, QGraphicsS
 	else
 		setRect(QetGraphicsHandlerUtility::mirrorRectForPosAtIndex(m_rect, new_pos, m_vector_index));
 
-	adjusteHandlerPos();
+	adjustHandlerPos();
 }
 
 /**

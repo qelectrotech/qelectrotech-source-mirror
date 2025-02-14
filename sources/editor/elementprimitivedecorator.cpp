@@ -120,7 +120,7 @@ void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items
 	if (focusItem() != this) {
 		setFocus();
 	}
-	adjusteHandlerPos();
+	adjustHandlerPos();
 }
 
 /**
@@ -356,7 +356,7 @@ void ElementPrimitiveDecorator::adjustEffectiveBoundingRect()
 	prepareGeometryChange();
 	effective_bounding_rect_ = modified_bounding_rect_ | effective_bounding_rect_;
 	update();
-	adjusteHandlerPos();
+	adjustHandlerPos();
 }
 
 /**
@@ -492,9 +492,9 @@ QVector<QPointF> ElementPrimitiveDecorator::getResizingsPoints() const
 }
 
 /**
-	@brief ElementPrimitiveDecorator::adjusteHandlerPos
+	@brief ElementPrimitiveDecorator::adjustHandlerPos
 */
-void ElementPrimitiveDecorator::adjusteHandlerPos()
+void ElementPrimitiveDecorator::adjustHandlerPos()
 {
 	QVector <QPointF> points_vector = mapToScene(getResizingsPoints());
 	for (int i = 0 ; i < points_vector.size() ; ++i)

@@ -58,9 +58,10 @@ void QetGraphicsTableItem::adjustTableToFolio(
 
 	auto size_ = table->size();
 	size_.setWidth(int(drawable_rect.width() - (margins.left() + margins.right())));
-		//Size must be a multiple of 10, because the table adjust itself by step of 10.
+		//Size must be a multiple of 10, because the table adjusts itself by step of 10.
 	while (size_.width()%10) {
-		--size_.rwidth();    }
+		--size_.rwidth();
+	}
 	table->setSize(size_);
 
 		//Calculate the maximum row to display to fit the nomenclature into diagram
