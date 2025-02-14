@@ -221,7 +221,7 @@ void QETMainWindow::updateFullScreenAction()
 		fullscreen_action_ -> setIcon(QET::Icons::FullScreenEnter);
 		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode plein écran", "status bar tip"));
 	}
-	fullscreen_action_ -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
+	fullscreen_action_ -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_F);
 }
 
 /**
