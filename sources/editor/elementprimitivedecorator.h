@@ -94,7 +94,7 @@ class ElementPrimitiveDecorator : public QGraphicsObject
 	
 		
 	private:
-		void adjusteHandlerPos();
+		void adjustHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);

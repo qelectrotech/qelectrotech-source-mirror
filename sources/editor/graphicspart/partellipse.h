@@ -56,7 +56,7 @@ class PartEllipse : public  AbstractPartEllipse
 		void              fromXml (const QDomElement &) override;
 		QPainterPath shape() const override;
 		QPainterPath shadowShape() const override;
-		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjusteHandlerPos();}
+		void setRect(const QRectF &rect) override {AbstractPartEllipse::setRect(rect); adjustHandlerPos();}
 
 		void addHandler() override;
 		void removeHandler() override;
@@ -68,7 +68,7 @@ class PartEllipse : public  AbstractPartEllipse
 
 	private:
 		void switchResizeMode();
-		void adjusteHandlerPos();
+		void adjustHandlerPos();
 		void handlerMousePressEvent   (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseMoveEvent    (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);
 		void handlerMouseReleaseEvent (QetGraphicsHandlerItem *qghi, QGraphicsSceneMouseEvent *event);

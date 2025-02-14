@@ -129,7 +129,7 @@ bool QetShapeItem::setLine(const QLineF &line)
 	prepareGeometryChange();
 	m_P1 = line.p1();
 	m_P2 = line.p2();
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	return true;
 }
 
@@ -146,7 +146,7 @@ bool QetShapeItem::setRect(const QRectF &rect)
 		prepareGeometryChange();
 		m_P1 = rect.topLeft();
 		m_P2 = rect.bottomRight();
-		adjusteHandlerPos();
+		adjustHandlerPos();
 		return true;
 	}
 
@@ -166,7 +166,7 @@ bool QetShapeItem::setPolygon(const QPolygonF &polygon)
 	}
 	prepareGeometryChange();
 	m_polygon = polygon;
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	return true;
 }
 
@@ -189,7 +189,7 @@ void QetShapeItem::setXRadius(qreal X)
 {
 	m_xRadius = X;
 	update();
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit XRadiusChanged();
 }
 
@@ -197,7 +197,7 @@ void QetShapeItem::setYRadius(qreal Y)
 {
 	m_yRadius = Y;
 	update();
-	adjusteHandlerPos();
+	adjustHandlerPos();
 	emit YRadiusChanged();
 }
 
@@ -398,7 +398,7 @@ QVariant QetShapeItem::itemChange(QGraphicsItem::GraphicsItemChange change,
 		}
 	}
 	else if (change == ItemPositionHasChanged) {
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 	else if (change == ItemSceneHasChanged)
 	{
@@ -606,10 +606,10 @@ void QetShapeItem::addHandler()
 }
 
 /**
-	@brief QetShapeItem::adjusteHandlerPos
+	@brief QetShapeItem::adjustHandlerPos
 	Adjust the position of the handler item
 */
-void QetShapeItem::adjusteHandlerPos()
+void QetShapeItem::adjustHandlerPos()
 {
 	if (m_handler_vector.isEmpty()) {
 		return;
@@ -737,7 +737,7 @@ void QetShapeItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		case Line:
 			prepareGeometryChange();
 			m_vector_index == 0 ? m_P1 = new_pos : m_P2 = new_pos;
-			adjusteHandlerPos();
+			adjustHandlerPos();
 			break;
 
 		case Rectangle:
@@ -761,7 +761,7 @@ void QetShapeItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				else {
 					setYRadius(radius);
 				}
-				adjusteHandlerPos();
+				adjustHandlerPos();
 				break;
 			}
 		case Ellipse:
@@ -777,7 +777,7 @@ void QetShapeItem::handlerMouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		case Polygon:
 			prepareGeometryChange();
 			m_polygon.replace(m_vector_index, new_pos);
-			adjusteHandlerPos();
+			adjustHandlerPos();
 			break;
 	}	//End switch
 }

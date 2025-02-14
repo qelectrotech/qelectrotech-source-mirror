@@ -164,7 +164,7 @@ class Conductor : public QGraphicsObject
 				QGraphicsItem *watched, QEvent *event) override;
 
 	private:
-		void adjusteHandlerPos();
+		void adjustHandlerPos();
 		
 		void handlerMousePressEvent(
 				QetGraphicsHandlerItem *qghi,

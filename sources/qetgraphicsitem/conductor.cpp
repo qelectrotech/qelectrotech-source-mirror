@@ -203,7 +203,7 @@ void Conductor::segmentsToPath()
 	if (isSelected() && !m_moving_segment)
 	{
 		if(handlerPoints().size() == m_handler_vector.size())
-			adjusteHandlerPos();
+			adjustHandlerPos();
 		else
 		{
 			removeHandler();
@@ -718,7 +718,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 		calculateTextItemPosition();
 	}
 	else if (change == QGraphicsItem::ItemPositionHasChanged && isSelected()) {
-		adjusteHandlerPos();
+		adjustHandlerPos();
 	}
 
 	return(QGraphicsObject::itemChange(change, value));
@@ -770,10 +770,10 @@ bool Conductor::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 }
 
 /**
-	@brief Conductor::adjusteHandlerPos
+	@brief Conductor::adjustHandlerPos
 	Adjust the position of the handler item
 */
-void Conductor::adjusteHandlerPos()
+void Conductor::adjustHandlerPos()
 {
 	if (m_handler_vector.isEmpty())
 		return;

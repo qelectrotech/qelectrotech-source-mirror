@@ -130,7 +130,7 @@ class QetShapeItem : public QetGraphicsItem
 	private:
 		void switchResizeMode();
 		void addHandler();
-		void adjusteHandlerPos();
+		void adjustHandlerPos();
 		void insertPoint();
 		void removePoint();
 		
