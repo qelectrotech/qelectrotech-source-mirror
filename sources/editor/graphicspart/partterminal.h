@@ -74,8 +74,10 @@ class PartTerminal : public CustomElementGraphicPart
 		Qet::Orientation orientation() const {return d -> m_orientation;}
 		void setOrientation(Qet::Orientation ori);
 
+		void  setRotation(qreal angle);
 		qreal rotation() const;
-		void setRotation(qreal angle);
+		void  flip();
+		void  mirror();
 
 
 		QString terminalName() const { return d -> m_name; }

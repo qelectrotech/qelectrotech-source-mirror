@@ -166,7 +166,23 @@ void PartTerminal::setRotation(qreal angle) {
 	else if (180 <= angle_mod && angle_mod < 270) new_ori = Qet::South;
 	else new_ori = Qet::West;
 
+	double tmp, y, x;
+	if (angle > 0) {
+		tmp = d->m_pos.y();
+		y   = d->m_pos.x();
+		x   = (-1) * tmp;
+	} else {
+		tmp = d->m_pos.x();
+		x   = d->m_pos.y();
+		y   = (-1) * tmp;
+	}
+	d->m_pos.setX(x); d->m_pos.setY(y);
+
+	setPos(d->m_pos);
 	setOrientation(new_ori);
+	emit xChanged();
+	emit yChanged();
+	emit orientationChanged();
 }
 
 qreal PartTerminal::rotation() const {
@@ -178,6 +194,43 @@ qreal PartTerminal::rotation() const {
 	}
 	return 0;
 }
+
+void PartTerminal::flip() {
+	d->m_pos.setY((-1.0) * d->m_pos.y());
+
+	switch (d->m_orientation) {
+		case Qet::North : setOrientation(Qet::South);
+						  break;
+		case Qet::East  : return;
+		case Qet::South : setOrientation(Qet::North);
+						  break;
+		case Qet::West  : return;
+	}
+	setPos(d->m_pos);
+	updateSecondPoint();
+	prepareGeometryChange();
+	emit yChanged();
+	emit orientationChanged();
+}
+
+void PartTerminal::mirror() {
+	d->m_pos.setX((-1.0) * d->m_pos.x());
+	switch (d->m_orientation) {
+		case Qet::North : return;
+		case Qet::East  : setOrientation(Qet::West);
+						  break;
+		case Qet::South : return;
+		case Qet::West  : setOrientation(Qet::East);
+						  break;
+	}
+	setPos(d->m_pos);
+	updateSecondPoint();
+	prepareGeometryChange();
+	emit xChanged();
+	emit orientationChanged();
+}
+
+
 
 /**
 	@brief PartTerminal::setTerminalName

@@ -265,4 +265,26 @@ private:
 
 };
 
+class MirrorElementsCommand : public ElementEditionCommand
+{
+public:
+	MirrorElementsCommand(ElementScene *scene, QUndoCommand *parent=nullptr);
+	void undo() override;
+	void redo() override;
+private:
+	ElementScene *m_scene =nullptr;
+	QList<QGraphicsItem*> m_items;
+};
+
+class FlipElementsCommand : public ElementEditionCommand
+{
+public:
+	FlipElementsCommand(ElementScene *scene, QUndoCommand *parent=nullptr);
+	void undo() override;
+	void redo() override;
+private:
+	ElementScene *m_scene =nullptr;
+	QList<QGraphicsItem*> m_items;
+};
+
 #endif

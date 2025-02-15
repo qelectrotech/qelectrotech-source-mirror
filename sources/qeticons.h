@@ -98,6 +98,7 @@ namespace QET {
 		extern QIcon EndLineSimple;
 		extern QIcon EndLineTriangle;
 		extern QIcon EPS;
+		extern QIcon Flip;
 		extern QIcon Folder;
 		extern QIcon FolderDelete;
 		extern QIcon FolderEdit;
@@ -123,6 +124,7 @@ namespace QET {
 		extern QIcon InsertImage;
 		extern QIcon Lower;
 		extern QIcon IC_MoveFile;
+		extern QIcon Mirror;
 		extern QIcon Names;
 		extern QIcon Neutral;
 		extern QIcon NewDiagram;

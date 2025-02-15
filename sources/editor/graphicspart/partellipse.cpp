@@ -236,6 +236,50 @@ bool PartEllipse::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 	return false;
 }
 
+
+void PartEllipse::setRotation(qreal angle) {
+// idea taken from QET_ElementScaler:
+	if (angle > 0) {
+		qreal width  = m_rect.height();
+		qreal height = m_rect.width();
+		qreal x = (m_rect.y() + m_rect.height()) * (-1);
+		qreal y = m_rect.x();
+		m_rect  = QRectF(x, y, width, height);
+	} else {
+		qreal width  = m_rect.height();
+		qreal height = m_rect.width();
+		qreal x = m_rect.y();
+		qreal y = (m_rect.x() + m_rect.width()) * (-1);
+		m_rect  = QRectF(x, y, width, height);
+		}
+		prepareGeometryChange();
+		adjustHandlerPos();
+		emit rectChanged();
+}
+
+qreal PartEllipse::rotation() const {
+	return qRound(m_rot * 100.0) / 100.0;
+}
+
+void PartEllipse::flip() {
+	qreal y = ((-1.0) * m_rect.y()) - m_rect.height();
+	m_rect  = QRectF(m_rect.x(), y, m_rect.width(), m_rect.height());
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
+void PartEllipse::mirror() {
+	qreal x = ((-1.0) * m_rect.x()) - m_rect.width();
+	m_rect  = QRectF(x, m_rect.y(), m_rect.width(), m_rect.height());
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
+
+
+
 void PartEllipse::switchResizeMode()
 {
 	if (m_resize_mode == 1)

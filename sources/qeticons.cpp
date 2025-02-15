@@ -92,6 +92,7 @@ namespace QET {
 		QIcon EndLineSimple;
 		QIcon EndLineTriangle;
 		QIcon EPS;
+		QIcon Flip;
 		QIcon Folder;
 		QIcon FolderDelete;
 		QIcon FolderEdit;
@@ -117,6 +118,7 @@ namespace QET {
 		QIcon InsertImage;
 		QIcon Lower;
 		QIcon IC_MoveFile;
+		QIcon Mirror;
 		QIcon Names;
 		QIcon Neutral;
 		QIcon NewDiagram;
@@ -517,6 +519,7 @@ void QET::Icons::initIcons()
 	EndLineSimple       .addFile(":/ico/16x16/endline-simple.png");
 	EndLineTriangle     .addFile(":/ico/16x16/endline-triangle.png");
 	EPS                 .addFile(":/ico/32x32/image-x-eps.png");
+	Flip                .addFile(":/ico/16x16/flip.png");
 	Folder              .addFile(":/ico/16x16/folder.png");
 	FolderDelete        .addFile(":/ico/16x16/folder-delete.png");
 	FolderDelete        .addFile(":/ico/22x22/folder-delete.png");
@@ -552,6 +555,7 @@ void QET::Icons::initIcons()
 	InsertImage         .addFile(":/ico/22x22/insert-image.png");
 	Lower               .addFile(":/ico/22x22/lower.png");
 	IC_MoveFile         .addFile(":/ico/16x16/item-move.png");
+	Mirror              .addFile(":/ico/16x16/mirror.png");
 	Names               .addFile(":/ico/22x22/names.png");
 	Neutral             .addFile(":/ico/16x16/neutral.png");
 	NewDiagram          .addFile(":/ico/128x128/diagram.png");

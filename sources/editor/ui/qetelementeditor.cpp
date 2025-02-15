@@ -107,6 +107,9 @@ void QETElementEditor::contextMenu(QPoint p, QList<QAction *> actions)
 	menu.addAction(ui->m_delete_action);
 	menu.addAction(ui->m_cut_action);
 	menu.addAction(ui->m_copy_action);
+	menu.addSeparator();
+	menu.addAction((ui->m_mirror_action));
+	menu.addAction((ui->m_flip_action));
 	menu.addAction((ui->m_rotate_action));
 	menu.addSeparator();
 	menu.addAction(ui->m_paste_action);
@@ -999,6 +1002,15 @@ void QETElementEditor::setupActions()
 	ui->m_rotate_action -> setShortcut(Qt::Key_Space);
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
+		//Flip action
+	ui->m_flip_action -> setShortcut(Qt::Key_F);
+	connect(ui->m_flip_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new FlipElementsCommand(this->elementScene()));});
+
+		//Mirror action
+	ui->m_mirror_action -> setShortcut(Qt::Key_M);
+	connect(ui->m_mirror_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new MirrorElementsCommand(this->elementScene()));});
+
+
 		//Zoom action
 	ui->m_zoom_in_action       -> setShortcut(QKeySequence::ZoomIn);
 	ui->m_zoom_out_action      -> setShortcut(QKeySequence::ZoomOut);
@@ -1063,7 +1075,9 @@ void QETElementEditor::updateAction()
 				<< ui->m_cut_action
 				<< ui->m_copy_action
 				<< ui->m_delete_action
-				<< ui->m_rotate_action;
+				<< ui->m_rotate_action
+				<< ui->m_flip_action
+				<< ui->m_mirror_action;
 	auto items_selected = !m_read_only && m_elmt_scene->selectedItems().count();
 	for (auto action : qAsConst(select_list)) {
 		action->setEnabled(items_selected);

@@ -60,6 +60,10 @@ class PartArc : public AbstractPartEllipse
 		void setStartAngle(const int &start_angle) override {AbstractPartEllipse::setStartAngle(start_angle); adjustHandlerPos();}
 		void setSpanAngle(const int &span_angle) override {AbstractPartEllipse::setSpanAngle(span_angle); adjustHandlerPos();}
 		QRectF sceneGeometricRect() const override;
+		void   setRotation(qreal angle);
+		qreal  rotation() const;
+		void   flip();
+		void   mirror();
 
 		void addHandler() override;
 		void removeHandler() override;
@@ -83,5 +87,6 @@ class PartArc : public AbstractPartEllipse
 			m_vector_index = -1;
 		QPointF m_span_point;
 		QVector<QetGraphicsHandlerItem *> m_handler_vector;
+		qreal m_rot = 0;
 };
 #endif

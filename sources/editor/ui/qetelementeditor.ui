@@ -77,6 +77,8 @@
     <addaction name="m_edit_author_action"/>
     <addaction name="m_edit_element_properties_action"/>
     <addaction name="m_rotate_action"/>
+    <addaction name="m_mirror_action"/>
+    <addaction name="m_flip_action"/>
    </widget>
    <widget class="QMenu" name="m_display_menu">
     <property name="title">
@@ -93,11 +95,11 @@
      <string>&amp;Aide</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="m_about_qet_action"/>
     <addaction name="m_online_manual"/>
     <addaction name="m_youtube_action"/>
     <addaction name="m_donate_action"/>
     <addaction name="m_about_qt_action"/>
+    <addaction name="m_about_qet_action"/>
    </widget>
    <addaction name="m_file_menu"/>
    <addaction name="m_edit_menu"/>
@@ -491,6 +493,24 @@
    </property>
    <property name="text">
     <string>Rotation</string>
+   </property>
+  </action>
+  <action name="m_mirror_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/mirror.png</normaloff>:/ico/16x16/mirror.png</iconset>
+   </property>
+   <property name="text">
+    <string>Mirror</string>
+   </property>
+  </action>
+  <action name="m_flip_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/flip.png</normaloff>:/ico/16x16/flip.png</iconset>
+   </property>
+   <property name="text">
+    <string>Flip</string>
    </property>
   </action>
   <action name="m_import_dxf">

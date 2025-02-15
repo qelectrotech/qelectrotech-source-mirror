@@ -168,16 +168,61 @@ void PartRectangle::setYRadius(qreal Y)
 }
 
 void PartRectangle::setRotation(qreal angle) {
+	// for whatever reason: with "rect" we need to use scene-positions...
+	auto pos = mapToScene(m_rect.x(),m_rect.y());
+	qreal width  = m_rect.height();
+	qreal height = m_rect.width();
+	qreal x; qreal y;
+	if (angle > 0) {
+		x = (pos.y() + m_rect.height()) * (-1);
+		y = pos.x();
+	} else {
+		x = pos.y();
+		y = (pos.x() + m_rect.width()) * (-1);
+	}
 
-	QTransform rotation = QTransform().rotate(angle-m_rot);
-	m_rot=angle;
+	pos = mapFromScene(x, y);
+	m_rect.setX(pos.x());   m_rect.setY(pos.y());
+	m_rect.setWidth(width); m_rect.setHeight(height);
+	std::swap (m_xRadius, m_yRadius);
 
-	setRect(rotation.mapRect(m_rect));
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
 }
 
 qreal PartRectangle::rotation() const {
-	return m_rot;
+	return qRound(m_rot * 100.0) / 100.0;
 }
+
+void PartRectangle::flip() {
+	// for whatever reason: with "rect" we need to use scene-positions...
+	qreal height = m_rect.height();
+	auto pos = mapToScene(m_rect.x(),m_rect.y());
+	qreal x = pos.x();
+	qreal y = ((-1.0) * pos.y()) - height;
+	pos = mapFromScene(x, y);
+	m_rect.setX(pos.x());   m_rect.setY(pos.y());
+	m_rect.setHeight(height);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
+void PartRectangle::mirror() {
+	// for whatever reason: with "rect" we need to use scene-positions...
+	qreal width = m_rect.width();
+	auto pos = mapToScene(m_rect.x(),m_rect.y());
+	qreal x = ((-1.0) * pos.x()) - width;
+	qreal y = pos.y();
+	pos = mapFromScene(x, y);
+	m_rect.setX(pos.x());   m_rect.setY(pos.y());
+	m_rect.setWidth(width);
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
+}
+
 
 /**
 	@brief PartRectangle::sceneGeometricRect
