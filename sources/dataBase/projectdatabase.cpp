@@ -256,7 +256,7 @@ bool projectDataBase::createDataBase()
 	m_data_base.exec("PRAGMA temp_store = MEMORY");
 	m_data_base.exec("PRAGMA journal_mode = MEMORY");
 	m_data_base.exec("PRAGMA synchronous = OFF");
-
+	
 	QSqlQuery query_(m_data_base);
 	bool first_ = true;
 
@@ -398,6 +398,14 @@ void projectDataBase::createElementNomenclatureView()
 	if (!query.exec(create_view)) {
 		qDebug() << query.lastError();
 	}
+	
+	QSqlQuery query_version{m_data_base};
+	query_version.exec("select sqlite_version();");
+	query_version.next();
+	QString version = query_version.value("sqlite_version()").toString();
+	query_version.finish();
+	
+	qInfo() << "SQLite version: " << version;
 }
 
 /**
