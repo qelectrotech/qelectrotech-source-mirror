@@ -273,7 +273,7 @@ void PartText::setFont(const QFont &font) {
 
 void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if((event -> buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
-		QPointF pos = event -> scenePos() + (m_origine_pos - event -> buttonDownScenePos(Qt::LeftButton));
+		QPointF pos = event -> scenePos() + (m_origin_pos - event -> buttonDownScenePos(Qt::LeftButton));
 		event -> modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene() -> snapToGrid(pos));
 	}
 	else {
@@ -283,7 +283,7 @@ void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 void PartText::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	if(event -> button() == Qt::LeftButton)
-		m_origine_pos = this -> pos();
+		m_origin_pos = this -> pos();
 
 	QGraphicsObject::mousePressEvent(event);
 }
@@ -291,9 +291,9 @@ void PartText::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if((event -> button() & Qt::LeftButton) &&
 		(flags() & QGraphicsItem::ItemIsMovable) &&
-		m_origine_pos != pos())
+		m_origin_pos != pos())
 	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origine_pos), QVariant(pos()));
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
 		undo -> setText(tr("Déplacer un texte"));
 		undo -> enableAnimation();
 		elementScene() -> undoStack().push(undo);

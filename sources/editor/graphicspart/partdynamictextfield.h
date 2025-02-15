@@ -114,7 +114,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void finishAlignment();
 
 	private:
-		QPointF m_origine_pos,
+		QPointF m_origin_pos,
 				m_saved_point;
 		QString m_text,
 				m_info_name,

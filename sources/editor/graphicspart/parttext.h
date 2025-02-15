@@ -100,6 +100,6 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		QPointF saved_point_;
 		qreal saved_font_size_;
 		QGraphicsItem *decorator_;
-		QPointF m_origine_pos;
+		QPointF m_origin_pos;
 };
 #endif
