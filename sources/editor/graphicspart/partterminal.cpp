@@ -150,7 +150,7 @@ void PartTerminal::setOrientation(Qet::Orientation ori) {
 	prepareGeometryChange();
 	d -> m_orientation = ori;
 	updateSecondPoint();
-	emit orientationChanged();
+	emit orientationChanged(); // all terminal-signals call "updateForm"
 }
 
 /**
@@ -180,9 +180,7 @@ void PartTerminal::setRotation(qreal angle) {
 
 	setPos(d->m_pos);
 	setOrientation(new_ori);
-	emit xChanged();
-	emit yChanged();
-	emit orientationChanged();
+	emit orientationChanged(); // all terminal-signals call "updateForm"
 }
 
 qreal PartTerminal::rotation() const {
@@ -201,35 +199,32 @@ void PartTerminal::flip() {
 	switch (d->m_orientation) {
 		case Qet::North : setOrientation(Qet::South);
 						  break;
-		case Qet::East  : return;
+		case Qet::East  : break;
 		case Qet::South : setOrientation(Qet::North);
 						  break;
-		case Qet::West  : return;
+		case Qet::West  : break;
 	}
 	setPos(d->m_pos);
 	updateSecondPoint();
 	prepareGeometryChange();
-	emit yChanged();
-	emit orientationChanged();
+	emit yChanged(); // all terminal-signals call "updateForm"
 }
 
 void PartTerminal::mirror() {
 	d->m_pos.setX((-1.0) * d->m_pos.x());
 	switch (d->m_orientation) {
-		case Qet::North : return;
+		case Qet::North : break;
 		case Qet::East  : setOrientation(Qet::West);
 						  break;
-		case Qet::South : return;
+		case Qet::South : break;
 		case Qet::West  : setOrientation(Qet::East);
 						  break;
 	}
 	setPos(d->m_pos);
 	updateSecondPoint();
 	prepareGeometryChange();
-	emit xChanged();
-	emit orientationChanged();
+	emit xChanged(); // all terminal-signals call "updateForm"
 }
-
 
 
 /**
@@ -239,7 +234,7 @@ void PartTerminal::mirror() {
 void PartTerminal::setTerminalName(const QString& name) {
 	if (d -> m_name == name) return;
 	d -> m_name = name;
-	emit nameChanged();
+	emit nameChanged(); // all terminal-signals call "updateForm"
 }
 
 /**
@@ -253,7 +248,7 @@ void PartTerminal::setTerminalType(TerminalData::Type type)
 		return;
 	}
 	d->m_type = type;
-	emit terminalTypeChanged();
+	emit terminalTypeChanged(); // all terminal-signals call "updateForm"
 }
 
 void PartTerminal::setNewUuid()
@@ -262,6 +257,8 @@ void PartTerminal::setNewUuid()
 }
 
 /**
+	Updates the position of the second point according to the position
+	and orientation of the terminal.
 	Met a jour la position du second point en fonction de la position et de
 	l'orientation de la borne.
 */
