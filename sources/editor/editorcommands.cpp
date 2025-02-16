@@ -619,9 +619,12 @@ ElementEditionCommand(QObject::tr("Miroir de sélection", "undo caption"), scene
 void MirrorElementsCommand::redo()
 {
 	foreach (auto *item, m_items) {
-		if ((item->type() == PartText::Type)  ||
-			(item->type() == PartDynamicTextField::Type))  {
-				continue;
+		if (item->type() == PartText::Type) {
+			PartText* staticText = qgraphicsitem_cast<PartText*>(item);
+			//staticText->mirror();
+		} else if (item->type() == PartDynamicTextField::Type)  {
+			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
+			dyntext->mirror();
 		} else if (item->type() == PartArc::Type) {
 			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
 			arc->mirror();
@@ -664,9 +667,12 @@ ElementEditionCommand(QObject::tr("Retourner la sélection", "undo caption"), sc
 void FlipElementsCommand::redo()
 {
 	foreach (auto *item, m_items) {
-		if ((item->type() == PartText::Type)  ||
-			(item->type() == PartDynamicTextField::Type))  {
-				continue;
+		if (item->type() == PartText::Type) {
+			PartText* staticText = qgraphicsitem_cast<PartText*>(item);
+			//staticText->flip();
+		} else if (item->type() == PartDynamicTextField::Type) {
+			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
+			dyntext->flip();
 		} else if (item->type() == PartArc::Type) {
 			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
 			arc->flip();

@@ -69,7 +69,30 @@ QString PartDynamicTextField::xmlName() const
 void PartDynamicTextField::setRotation(qreal angle) {
 	QGraphicsObject::setRotation(QET::correctAngle(rotation()+angle, true));
 	setPos(QTransform().rotate(angle).map(pos()));
+}
 
+void PartDynamicTextField::mirror() {
+	// at first: rotate the text:
+	QGraphicsObject::setRotation(QET::correctAngle(360-rotation(), true));
+	// then see, where we need to re-position depending on the angle!
+	qreal rot = qRound(QET::correctAngle(rotation(), true));
+	qreal c = qCos(qDegreesToRadians(rot));
+	qreal s = qSin(qDegreesToRadians(rot));
+	qreal x = (-1) * pos().x() - c * boundingRect().width();
+	qreal y = pos().y() - s * boundingRect().width();
+	setPos(x, y);
+}
+
+void PartDynamicTextField::flip() {
+	// at first: rotate the text:
+	QGraphicsObject::setRotation(QET::correctAngle(360-rotation(), true));
+	// then see, where we need to re-position depending on the angle!
+	qreal rot = qRound(QET::correctAngle(rotation(), true));
+	qreal c = qCos(qDegreesToRadians(rot));
+	qreal s = qSin(qDegreesToRadians(rot));
+	qreal x = pos().x() + s * boundingRect().height();
+	qreal y = (-1) * pos().y() - c * boundingRect().height();
+	setPos(x, y);
 }
 
 /**
