@@ -64,6 +64,15 @@ PartText::~PartText()
 }
 
 /**
+	Redefines setRotation
+	@param angle
+*/
+void PartText::setRotation(qreal angle) {
+	QGraphicsObject::setRotation(QET::correctAngle(rotation()+angle, true));
+	setPos(QTransform().rotate(angle).map(pos()));
+}
+
+/**
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
 */
@@ -89,7 +98,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	setPlainText(xml_element.attribute("text"));
 	setPos(xml_element.attribute("x").toDouble(),
 			xml_element.attribute("y").toDouble());
-	setRotation(xml_element.attribute("rotation", QString::number(0)).toDouble());
+	QGraphicsObject::setRotation(QET::correctAngle(xml_element.attribute("rotation", QString::number(0)).toDouble()));
 }
 
 /**
@@ -116,6 +125,7 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 
 /**
 	@return Les coordonnees du point situe en bas a gauche du texte.
+			The coordinates of the point at the bottom left of the text.
 */
 QPointF PartText::margin() const
 {
@@ -124,8 +134,10 @@ QPointF PartText::margin() const
 	qreal document_margin = document() -> documentMargin();
 
 	QPointF margin(
+		// margin around the text
 		// marge autour du texte
 		document_margin,
+		// margin above the text + distance between the top of the text and the baseline
 		// marge au-dessus du texte + distance entre le plafond du texte et la baseline
 		document_margin + qfm.ascent()
 	);
@@ -273,7 +285,7 @@ void PartText::setFont(const QFont &font) {
 
 void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 	if((event -> buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
-		QPointF pos = event -> scenePos() + (m_origine_pos - event -> buttonDownScenePos(Qt::LeftButton));
+		QPointF pos = event -> scenePos() + (m_origin_pos - event -> buttonDownScenePos(Qt::LeftButton));
 		event -> modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene() -> snapToGrid(pos));
 	}
 	else {
@@ -283,7 +295,7 @@ void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 void PartText::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 	if(event -> button() == Qt::LeftButton)
-		m_origine_pos = this -> pos();
+		m_origin_pos = this -> pos();
 
 	QGraphicsObject::mousePressEvent(event);
 }
@@ -291,9 +303,9 @@ void PartText::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 void PartText::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 	if((event -> button() & Qt::LeftButton) &&
 		(flags() & QGraphicsItem::ItemIsMovable) &&
-		m_origine_pos != pos())
+		m_origin_pos != pos())
 	{
-		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origine_pos), QVariant(pos()));
+		QPropertyUndoCommand *undo = new QPropertyUndoCommand(this, "pos", QVariant(m_origin_pos), QVariant(pos()));
 		undo -> setText(tr("Déplacer un texte"));
 		undo -> enableAnimation();
 		elementScene() -> undoStack().push(undo);

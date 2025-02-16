@@ -101,6 +101,11 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void setKeepVisualRotation(const bool &keep);
 		bool keepVisualRotation() const;
 
+		void setRotation(qreal angle);
+		void mirror();
+		void flip();
+
+
 	protected:
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -114,7 +119,7 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		void finishAlignment();
 
 	private:
-		QPointF m_origine_pos,
+		QPointF m_origin_pos,
 				m_saved_point;
 		QString m_text,
 				m_info_name,

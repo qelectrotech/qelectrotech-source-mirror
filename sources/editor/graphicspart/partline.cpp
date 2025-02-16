@@ -579,26 +579,9 @@ void PartLine::setSecondEndLength(const qreal &l)
 }
 
 void PartLine::setRotation(qreal angle) {
-	double tmp, x, y;
-	if (angle > 0) {
-		tmp = m_line.p1().y();
-		y   = m_line.p1().x();
-		x   = (-1) * tmp;
-		m_line.setP1(QPointF(x, y));
-		tmp = m_line.p2().y();
-		y   = m_line.p2().x();
-		x   = (-1) * tmp;
-		m_line.setP2(QPointF(x, y));
-	} else {
-		tmp = m_line.p1().x();
-		x   = m_line.p1().y();
-		y   = (-1) * tmp;
-		m_line.setP1(QPointF(x, y));
-		tmp = m_line.p2().x();
-		x   = m_line.p2().y();
-		y   = (-1) * tmp;
-		m_line.setP2(QPointF(x, y));
-	}
+	m_rot += angle;
+	m_line.setP1(QTransform().rotate(angle).map(m_line.p1()));
+	m_line.setP2(QTransform().rotate(angle).map(m_line.p2()));
 	prepareGeometryChange();
 	setLine(m_line);
 	adjustHandlerPos();

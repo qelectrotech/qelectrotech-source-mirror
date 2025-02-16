@@ -251,10 +251,10 @@ void PartEllipse::setRotation(qreal angle) {
 		qreal x = m_rect.y();
 		qreal y = (m_rect.x() + m_rect.width()) * (-1);
 		m_rect  = QRectF(x, y, width, height);
-		}
-		prepareGeometryChange();
-		adjustHandlerPos();
-		emit rectChanged();
+	}
+	prepareGeometryChange();
+	adjustHandlerPos();
+	emit rectChanged();
 }
 
 qreal PartEllipse::rotation() const {

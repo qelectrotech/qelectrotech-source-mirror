@@ -77,6 +77,7 @@
     <addaction name="m_edit_author_action"/>
     <addaction name="m_edit_element_properties_action"/>
     <addaction name="m_rotate_action"/>
+    <addaction name="m_rotateFine_action"/>
     <addaction name="m_mirror_action"/>
     <addaction name="m_flip_action"/>
    </widget>
@@ -493,6 +494,15 @@
    </property>
    <property name="text">
     <string>Rotation</string>
+   </property>
+  </action>
+  <action name="m_rotateFine_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/16x16/orientations.png</normaloff>:/ico/16x16/orientations.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fine-Rotation</string>
    </property>
   </action>
   <action name="m_mirror_action">

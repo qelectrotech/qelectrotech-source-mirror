@@ -265,6 +265,20 @@ private:
 
 };
 
+class RotateFineElementsCommand : public ElementEditionCommand
+{
+
+public:
+	RotateFineElementsCommand(ElementScene *scene, QUndoCommand *parent=nullptr);
+	void undo() override;
+	void redo() override;
+
+private:
+	ElementScene *m_scene =nullptr;
+	QList<QGraphicsItem*> m_items;
+
+};
+
 class MirrorElementsCommand : public ElementEditionCommand
 {
 public:
