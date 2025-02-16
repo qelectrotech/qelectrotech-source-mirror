@@ -1002,6 +1002,10 @@ void QETElementEditor::setupActions()
 	ui->m_rotate_action -> setShortcut(Qt::Key_Space);
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
+		//Rotate Fine action = rotate with smaller inkrement
+	ui->m_rotateFine_action -> setShortcut(Qt::CTRL | Qt::Key_Space);
+	connect(ui->m_rotateFine_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateFineElementsCommand(this->elementScene()));});
+
 		//Flip action
 	ui->m_flip_action -> setShortcut(Qt::Key_F);
 	connect(ui->m_flip_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new FlipElementsCommand(this->elementScene()));});
@@ -1076,6 +1080,7 @@ void QETElementEditor::updateAction()
 				<< ui->m_copy_action
 				<< ui->m_delete_action
 				<< ui->m_rotate_action
+				<< ui->m_rotateFine_action
 				<< ui->m_flip_action
 				<< ui->m_mirror_action;
 	auto items_selected = !m_read_only && m_elmt_scene->selectedItems().count();

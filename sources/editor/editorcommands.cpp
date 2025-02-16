@@ -607,6 +607,71 @@ void RotateElementsCommand::redo()
 }
 
 
+RotateFineElementsCommand::RotateFineElementsCommand(ElementScene *scene, QUndoCommand *parent) :
+ElementEditionCommand(QObject::tr("Pivoter la selection", "undo caption"), scene, nullptr, parent)
+{
+	m_items = scene->selectedItems();
+}
+
+/**
+	@brief RotateFineElementsCommand::undo
+*/
+void RotateFineElementsCommand::undo()
+{
+	for (QGraphicsItem *item : m_items)
+	{
+		if (item->type() == PartLine::Type) {
+			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
+			line->setRotation(-5);
+		}
+		else if (item->type() == PartPolygon::Type) {
+			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
+			poly->setRotation(-5);
+		}
+		else if (item->type() == PartText::Type) {
+			PartText* text = qgraphicsitem_cast<PartText*>(item);
+			text->setRotation(-5);
+		}
+		else if (item->type() == PartDynamicTextField::Type) {
+			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
+			dyntext->setRotation(-5);
+		}
+		else {
+			//item->setRotation(-5);
+		}
+	}
+}
+
+/**
+	@brief RotateFineElementsCommand::redo
+*/
+void RotateFineElementsCommand::redo()
+{
+	for (QGraphicsItem *item : m_items)
+	{
+		if (item->type() == PartLine::Type) {
+			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
+			line->setRotation(+5);
+		}
+		else if (item->type() == PartPolygon::Type) {
+			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
+			poly->setRotation(+5);
+		}
+		else if (item->type() == PartText::Type) {
+			PartText* text = qgraphicsitem_cast<PartText*>(item);
+			text->setRotation(+5);
+		}
+		else if (item->type() == PartDynamicTextField::Type) {
+			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
+			dyntext->setRotation(+5);
+		}
+		else {
+			//item->setRotation(+5);
+		}
+	}
+}
+
+
 MirrorElementsCommand::MirrorElementsCommand(ElementScene *scene, QUndoCommand *parent) :
 ElementEditionCommand(QObject::tr("Miroir de sélection", "undo caption"), scene, nullptr, parent)
 {
