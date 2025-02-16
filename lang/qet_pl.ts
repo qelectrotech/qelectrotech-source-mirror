@@ -5815,7 +5815,7 @@ Dostępne opcje:
         <location filename="../sources/qetapp.cpp" line="2540"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --data-dir=DIR                Zdefiniuj folder data</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2542"/>
@@ -6938,12 +6938,13 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="504"/>
         <source>Mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>Mirror</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="513"/>
         <source>Flip</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>do zrobienia</translatorcomment>
+        <translation>Flip</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="522"/>
@@ -8096,13 +8097,13 @@ Co chcesz zrobić?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="595"/>
         <source>Miroir de sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odbicie zaznaczenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="640"/>
         <source>Retourner la sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Powrót do zaznaczenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -8917,42 +8918,50 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Description textuelle auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Oznaczenie wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Numéro d&apos;article auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Fabricant auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Producent wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Numéro de commande auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer sterowania pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro interne auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wewnętrzny wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Fournisseur auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Dostawca wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Quantité auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Ilość wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Unité auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Jednostka wyposażenia pomocniczego 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
@@ -8962,132 +8971,157 @@ Czy chcesz ją zastąpić?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="282"/>
         <source>Description textuelle auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Oznaczenie wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Numéro d&apos;article auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Fabricant auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Producent wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Numéro de commande auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer sterowania pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Numéro interne auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wewnętrzny wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Fournisseur auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Dostawca wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Quantité auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Ilość wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="289"/>
         <source>Unité auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Jednostka wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="290"/>
         <source>Bloc auxiliaire 3</source>
-        <translation type="unfinished">Zestyki pomocnicze 3</translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Zestyki pomocnicze 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="291"/>
         <source>Description textuelle auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Oznaczenie wyposażenia pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="292"/>
         <source>Numéro d&apos;article auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wyposażenia pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Fabricant auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wyposażenia pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="294"/>
         <source>Numéro de commande auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer sterowania pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="295"/>
         <source>Numéro interne auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wewnętrzny wyposażenia pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="296"/>
         <source>Fournisseur auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Dostawca wyposażenia pomocniczego 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="297"/>
         <source>Quantité auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Ilość wyposażenia pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Unité auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Jednostka wyposażenia pomocniczego 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Bloc auxiliaire 4</source>
-        <translation type="unfinished">Zestyki pomocnicze 4</translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Zestyki pomocnicze 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Description textuelle auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenie wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Numéro d&apos;article auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Fabricant auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="303"/>
         <source>Numéro de commande auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer sterowania pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="304"/>
         <source>Numéro interne auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wewnętrzny wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="305"/>
         <source>Fournisseur auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Numer wewnętrzny wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Quantité auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Ilość wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="307"/>
         <source>Unité auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Niepewne</translatorcomment>
+        <translation>Jednostka wyposażenia pomocniczego 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="257"/>
@@ -9491,7 +9525,8 @@ Czy chcesz ją zastąpić?</translation>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
 additional information about %1 import / scaling</source>
-        <translation type="unfinished"></translation>
+        <translation>QET_ElementScaler: 
+dodatkowe informacje o %1 imporcie/skalowaniu</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="149"/>
@@ -9504,7 +9539,8 @@ Pobierz go, klikając poniższy link i rozpakuj w folderze instalacyjnym</transl
         <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
 Error: Make sure the file %1 is a valid .dxf file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dxf2elmt: 
+Błąd: Upewnij się, że plik %1 jest prawidłowym plikiem .dxf</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
