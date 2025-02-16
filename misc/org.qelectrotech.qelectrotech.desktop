@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=QElectroTech 
+Name=QElectroTech
 TryExec=qelectrotech
 Exec=qelectrotech %F
 Icon=qelectrotech
