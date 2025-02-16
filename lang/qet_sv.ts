@@ -532,11 +532,6 @@
         <source>Configurer</source>
         <translation>Konfigurera</translation>
     </message>
-    <message>
-        <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="154"/>
-        <source>Ctrl+Shift+P</source>
-        <translation>Ctrl+Skift+P</translation>
-    </message>
 </context>
 <context>
     <name>AutoNumberingManagementW</name>
@@ -692,27 +687,27 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
         <translation>Formatera som materialförteckning</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="66"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="68"/>
         <source>nomenclature_</source>
         <translation>förteckning_</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="67"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
         <source>Enregister sous... </source>
         <translation>Spara som... </translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="67"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="69"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>CSV-filer (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="76"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
         <source>Erreur</source>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="77"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="79"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -721,17 +716,17 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="120"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
         <source>Position</source>
         <translation>Position</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
         <source>Position du folio</source>
         <translation>Bladposition</translation>
     </message>
     <message>
-        <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
+        <location filename="../sources/ui/bomexportdialog.cpp" line="126"/>
         <source>Quantité numéro d&apos;article</source>
         <comment>Special field with name : designation quantity</comment>
         <translation>Antal artiklar</translation>
@@ -794,7 +789,7 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
     </message>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.cpp" line="20"/>
-        <location filename="../sources/ui/compositetexteditdialog.cpp" line="31"/>
+        <location filename="../sources/ui/compositetexteditdialog.cpp" line="36"/>
         <source>Entrée votre texte composé ici, en vous aidant des variables disponible</source>
         <translation>Ange din sammansatta text här, med hjälp av de tillgängliga variablerna</translation>
     </message>
@@ -1241,7 +1236,7 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
         <translation>Anslut de markerade plintarna</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="889"/>
+        <location filename="../sources/diagramview.cpp" line="895"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Namnlöst</translation>
@@ -1635,44 +1630,44 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
         <translation>Typsnitt:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="245"/>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="256"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="240"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="251"/>
         <source>Déplacer un champ texte</source>
         <translation>Flytta ett textfält</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="267"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="262"/>
         <source>Pivoter un champ texte</source>
         <translation>Rotera ett textfält</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="278"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="273"/>
         <source>Modifier le texte d&apos;un champ texte</source>
         <translation>Ändra texten i ett textfält</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="289"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="284"/>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="411"/>
         <source>Modifier la police d&apos;un champ texte</source>
         <translation>Ändra typsnitt för ett textfält</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="301"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="296"/>
         <source>Modifier le cadre d&apos;un champ texte</source>
         <translation>Ändra ram för ett textfält</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="314"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="309"/>
         <source>Modifier la largeur d&apos;un texte</source>
         <translation>Ändra bredd på en text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="327"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="322"/>
         <source>Modifier l&apos;information d&apos;un texte</source>
         <translation>Ändra information i en text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="364"/>
+        <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="359"/>
         <source>Modifier la source de texte, d&apos;un texte</source>
         <translation>Ändra källan för en text</translation>
     </message>
@@ -1710,17 +1705,17 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
         <translation>Sammansatt text</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1731"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1726"/>
         <source>Gauche</source>
         <translation>Vänster</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1732"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1727"/>
         <source>Centre</source>
         <translation>Mitten</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1733"/>
+        <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1728"/>
         <source>Droite</source>
         <translation>Höger</translation>
     </message>
@@ -2325,24 +2320,24 @@ Notera: Dessa alternativ TILLÅTER ELLER BLOCKERAR INTE auto-numreringen, endast
         <translation>Flytta ett grafikobjekt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="870"/>
+        <location filename="../sources/editor/elementscene.cpp" line="871"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation>Redigera information om skapare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="875"/>
+        <location filename="../sources/editor/elementscene.cpp" line="876"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Du kan använda detta fält för att nämna skaparna av symbolen, dess licens eller annan information som du anser vara användbar.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="939"/>
+        <location filename="../sources/editor/elementscene.cpp" line="940"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Redigera namn</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="941"/>
+        <location filename="../sources/editor/elementscene.cpp" line="942"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Du kan ange namnet på symbolen för flera språk.</translation>
     </message>
@@ -2817,7 +2812,7 @@ Alla objekt och mappar som finns i den här mappen kommer att raderas.</translat
 <context>
     <name>ExportConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="296"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="297"/>
         <source>Export</source>
         <comment>configuration page title</comment>
         <translation>Exportera</translation>
@@ -2903,13 +2898,13 @@ Alla objekt och mappar som finns i den här mappen kommer att raderas.</translat
         <translation>Det verkar som om du inte har de nödvändiga behörigheterna för att skriva till filen %1.</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="908"/>
+        <location filename="../sources/exportdialog.cpp" line="923"/>
         <source>Aperçu</source>
         <translation>Översikt</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1012"/>
-        <location filename="../sources/exportdialog.cpp" line="1017"/>
+        <location filename="../sources/exportdialog.cpp" line="1027"/>
+        <location filename="../sources/exportdialog.cpp" line="1032"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -4670,33 +4665,33 @@ Använd den avancerade redigeraren för detta.</translation>
 <context>
     <name>NewDiagramPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="96"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="97"/>
         <source>Folio</source>
         <translation>Blad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="97"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="98"/>
         <source>Conducteur</source>
         <translation>Förbindningar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="98"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="99"/>
         <source>Reports de folio</source>
         <translation>Bladhänvisningar</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="99"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="100"/>
         <source>Références croisées</source>
         <translation>Korsreferenser</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="203"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
         <source>Nouveau folio</source>
         <comment>configuration page title</comment>
         <translation>Nytt blad</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="204"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="205"/>
         <source>Nouveau projet</source>
         <comment>configuration page title</comment>
         <translation>Nytt projekt</translation>
@@ -4917,10 +4912,10 @@ Använd den avancerade redigeraren för detta.</translation>
 <context>
     <name>PartArc</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="328"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="332"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="338"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="345"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="392"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="396"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="402"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="409"/>
         <source>Modifier un arc</source>
         <translation>Redigera en båge</translation>
     </message>
@@ -4934,7 +4929,7 @@ Använd den avancerade redigeraren för detta.</translation>
         <translation>Dynamisk textetikett</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="489"/>
+        <location filename="../sources/editor/graphicspart/partdynamictextfield.cpp" line="491"/>
         <source>Déplacer un champ texte</source>
         <translation>Flytta en textetikett</translation>
     </message>
@@ -4942,7 +4937,7 @@ Använd den avancerade redigeraren för detta.</translation>
 <context>
     <name>PartEllipse</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="279"/>
+        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="328"/>
         <source>Modifier un rectangle</source>
         <translation>Redigera en rektangel</translation>
     </message>
@@ -4950,7 +4945,7 @@ Använd den avancerade redigeraren för detta.</translation>
 <context>
     <name>PartLine</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partline.cpp" line="241"/>
+        <location filename="../sources/editor/graphicspart/partline.cpp" line="248"/>
         <source>Modifier une ligne</source>
         <translation>Redigera en linje</translation>
     </message>
@@ -4968,17 +4963,17 @@ Använd den avancerade redigeraren för detta.</translation>
         <translation>Ta bort punkt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="428"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="462"/>
         <source>Modifier un polygone</source>
         <translation>Ändra en polygon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="511"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="545"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Lägg till en punkt på en polygon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="544"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="578"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Ta bort en punkt från en polygon</translation>
     </message>
@@ -4986,12 +4981,12 @@ Använd den avancerade redigeraren för detta.</translation>
 <context>
     <name>PartText</name>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="294"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="297"/>
         <source>Déplacer un texte</source>
         <translation>Flytta en text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/parttext.cpp" line="354"/>
+        <location filename="../sources/editor/graphicspart/parttext.cpp" line="357"/>
         <source>Modifier un champ texte</source>
         <translation>Ändra en textetikett</translation>
     </message>
@@ -5168,7 +5163,7 @@ Följande variabler är inkompatibla:
 <context>
     <name>PrintConfigPage</name>
     <message>
-        <location filename="../sources/ui/configpage/configpages.cpp" line="355"/>
+        <location filename="../sources/ui/configpage/configpages.cpp" line="356"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
         <translation>Utskrift</translation>
@@ -5615,217 +5610,217 @@ Vill du spara ändringarna?</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="121"/>
+        <location filename="../sources/qetapp.cpp" line="125"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>Laddar... Initialisering av cache för symbolbibliotek</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="132"/>
+        <location filename="../sources/qetapp.cpp" line="136"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>Laddar... Schemaredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="137"/>
+        <location filename="../sources/qetapp.cpp" line="141"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Laddar... Öppnar file</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="238"/>
+        <location filename="../sources/qetapp.cpp" line="242"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation>LTR</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="436"/>
+        <location filename="../sources/qetapp.cpp" line="440"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>QET-titelblock</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="457"/>
+        <location filename="../sources/qetapp.cpp" line="461"/>
         <source>Cartouches company</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translation>Organisationens titelblock</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="477"/>
+        <location filename="../sources/qetapp.cpp" line="481"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>Personliga titelblock</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1351"/>
+        <location filename="../sources/qetapp.cpp" line="1432"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1353"/>
+        <location filename="../sources/qetapp.cpp" line="1434"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1355"/>
+        <location filename="../sources/qetapp.cpp" line="1436"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1357"/>
+        <location filename="../sources/qetapp.cpp" line="1438"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Elektrisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1359"/>
+        <location filename="../sources/qetapp.cpp" line="1440"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1836"/>
+        <location filename="../sources/qetapp.cpp" line="1917"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>Konfigurera QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1980"/>
+        <location filename="../sources/qetapp.cpp" line="2068"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Laddar...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2086"/>
+        <location filename="../sources/qetapp.cpp" line="2180"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Laddar... Ikoner för systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2090"/>
+        <location filename="../sources/qetapp.cpp" line="2184"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2093"/>
+        <location filename="../sources/qetapp.cpp" line="2187"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Avsluta</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2095"/>
+        <location filename="../sources/qetapp.cpp" line="2189"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Dölj</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2097"/>
+        <location filename="../sources/qetapp.cpp" line="2191"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Återställ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2099"/>
+        <location filename="../sources/qetapp.cpp" line="2193"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Dölj alla schemaredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2102"/>
+        <location filename="../sources/qetapp.cpp" line="2196"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Återställ alla schemaredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2105"/>
+        <location filename="../sources/qetapp.cpp" line="2199"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Dölj alla symbolredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2108"/>
+        <location filename="../sources/qetapp.cpp" line="2202"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Återställ alla symbolredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2111"/>
+        <location filename="../sources/qetapp.cpp" line="2205"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Dölj alla titelblockredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2114"/>
+        <location filename="../sources/qetapp.cpp" line="2208"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>&amp;Återställ alla titelblockredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2117"/>
+        <location filename="../sources/qetapp.cpp" line="2211"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Ny schemaredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2119"/>
+        <location filename="../sources/qetapp.cpp" line="2213"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Ny symbolredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2121"/>
+        <location filename="../sources/qetapp.cpp" line="2215"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Stäng programmet QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2122"/>
+        <location filename="../sources/qetapp.cpp" line="2216"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Stäng QElectroTech till systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2123"/>
+        <location filename="../sources/qetapp.cpp" line="2217"/>
         <source>Restaurer QElectroTech</source>
         <translation>Återställ QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2140"/>
+        <location filename="../sources/qetapp.cpp" line="2234"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2235"/>
+        <location filename="../sources/qetapp.cpp" line="2329"/>
         <source>Éditeurs de schémas</source>
         <translation>Schemaredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2245"/>
+        <location filename="../sources/qetapp.cpp" line="2339"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Symbolredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2256"/>
+        <location filename="../sources/qetapp.cpp" line="2350"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>Titelblockredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2308"/>
+        <location filename="../sources/qetapp.cpp" line="2402"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Följande återställningsfil har hittats,&lt;br&gt;vill du öppna den?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2311"/>
+        <location filename="../sources/qetapp.cpp" line="2405"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;Följande återställningsfiler har hittats,&lt;br&gt;vill du öppna dem?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2326"/>
+        <location filename="../sources/qetapp.cpp" line="2420"/>
         <source>Fichier de restauration</source>
         <translation>Återställningsfil</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2428"/>
+        <location filename="../sources/qetapp.cpp" line="2522"/>
         <source>Usage : </source>
         <translation>Användning: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2430"/>
+        <location filename="../sources/qetapp.cpp" line="2524"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5834,7 +5829,7 @@ Vill du spara ändringarna?</translation>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2431"/>
+        <location filename="../sources/qetapp.cpp" line="2525"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5851,28 +5846,34 @@ Tillgängliga alternativ :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2437"/>
+        <location filename="../sources/qetapp.cpp" line="2531"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR Ange mappen för symbolbibliotek
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2440"/>
+        <location filename="../sources/qetapp.cpp" line="2534"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR Ange mappen för titelblockbibliotek
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2443"/>
+        <location filename="../sources/qetapp.cpp" line="2537"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR Ange konfigurationsmappen
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2445"/>
+        <location filename="../sources/qetapp.cpp" line="2540"/>
+        <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+        <translation>  --data-dir=DIR                Definiera datamapp</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="2542"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR Ange mappen som innehåller språkfilerna
@@ -5933,11 +5934,6 @@ Tillgängliga alternativ :
         <translation>E&amp;xportera</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
-        <source>Ctrl+Shift+X</source>
-        <translation>Ctrl+Skift+X</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
@@ -5969,11 +5965,6 @@ Tillgängliga alternativ :
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Avsluta</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
@@ -6042,11 +6033,6 @@ Tillgängliga alternativ :
         <translation>Återställ förbindningar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
-        <source>Ctrl+K</source>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="343"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
@@ -6092,11 +6078,6 @@ Tillgängliga alternativ :
         <translation>Bladegenskaper</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
-        <source>Ctrl+L</source>
-        <translation>Ctrl+L</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
@@ -6111,11 +6092,6 @@ Tillgängliga alternativ :
         <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
         <source>Ajouter un folio</source>
         <translation>Lägg till ett blad</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
-        <source>Ctrl+T</source>
-        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="409"/>
@@ -6276,11 +6252,6 @@ Tillgängliga alternativ :
         <translation>S&amp;täng</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="551"/>
-        <source>Ctrl+Shift+S</source>
-        <translation>Ctrl+Skift+S</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
@@ -6387,21 +6358,6 @@ Tillgängliga alternativ :
         <translation>Gruppera markerade textetiketter</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="596"/>
-        <source>SPACE</source>
-        <translation>SPACE</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="597"/>
-        <source>Ctrl+SPACE</source>
-        <translation>Ctrl+SPACE</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="598"/>
-        <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
@@ -6439,11 +6395,6 @@ Tillgängliga alternativ :
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
         <source>Inverser la sélection</source>
         <translation>Invertera markering</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="621"/>
-        <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
@@ -6487,21 +6438,6 @@ Tillgängliga alternativ :
         <location filename="../sources/qetdiagrameditor.cpp" line="638"/>
         <source>Pas de zoom</source>
         <translation>Återställ zoom</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="643"/>
-        <source>Ctrl+8</source>
-        <translation>Ctrl+8</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
-        <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
-        <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="647"/>
@@ -6740,7 +6676,7 @@ Tillgängliga alternativ :
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1913"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Det går inte att öppna projektet</translation>
@@ -6762,48 +6698,48 @@ Tillgängliga alternativ :
         <translation>Grupp</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1694"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1696"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Redigera symbol</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1701"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Redigera textfält</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1708"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1710"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Redigera bild</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1715"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1717"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>Redigera förbindning</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1723"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Redigera markerat objekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1914"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1916"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation>Ett fel uppstod när filen &quot;%1&quot; öppnades.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1962"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1964"/>
         <source>Active le projet « %1 »</source>
         <translation>Aktiverar projektet &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2314"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2316"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fel</translation>
@@ -6822,266 +6758,262 @@ Tillgängliga alternativ :
         <translation>&amp;Fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="51"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="50"/>
         <source>&amp;Édition</source>
         <translation>&amp;Redigera</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="55"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="54"/>
         <source>Coller depuis...</source>
         <translation>Klistra in från...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="84"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="85"/>
         <source>Afficha&amp;ge</source>
         <translation>&amp;Visning</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="94"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="95"/>
         <source>&amp;Aide</source>
         <translation>&amp;Hjälp</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="113"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="114"/>
         <source>Annulations</source>
         <translation>Ändringar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="125"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="126"/>
         <source>Parties</source>
         <translation>Delar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="137"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="138"/>
         <source>Informations</source>
         <translation>Information</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="146"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="147"/>
         <source>Outils</source>
         <translation>Verktyg</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="163"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="164"/>
         <source>Affichage</source>
         <translation>Visning</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="178"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="179"/>
         <source>Élément</source>
         <translation>Symboler</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="191"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="192"/>
         <source>Annulation</source>
         <translation>Annulering</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="206"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="207"/>
         <source>Tout sélectionner</source>
         <translation>Markera allt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="215"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="216"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Ny</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="224"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="225"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Öppna</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="233"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="234"/>
         <source>&amp;Ouvrir depuis un fichier</source>
         <translation>Öppna från en &amp;fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="242"/>
-        <source>&amp;Lancer le plugin convertisseur DXF</source>
-        <translation>Starta plugin för &amp;DXF-omvandlare</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="251"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="243"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Spara</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="260"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="252"/>
         <source>Enregistrer sous</source>
         <translation>Spara som</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="269"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="261"/>
         <source>Enregistrer dans un fichier</source>
         <translation>Spara till en fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="278"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="270"/>
         <source>Recharger</source>
         <translation>Ladda om</translation>
     </message>
     <message>
-        <source>&amp;Quitter</source>
-        <translation type="obsolete">&amp;Avsluta</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="287"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="279"/>
         <source>&amp;Fermer cet éditeur</source>
         <translation>S&amp;täng den här redigeraren</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="290"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="282"/>
         <source>Fermer cet éditeur</source>
         <translation>Stäng den här redigeraren</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="299"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="291"/>
         <source>Désélectionner tout</source>
         <translation>Avmarkera allt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="308"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="300"/>
         <source>Co&amp;uper</source>
         <translation>&amp;Klipp ut</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="317"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="309"/>
         <source>Cop&amp;ier</source>
         <translation>K&amp;opiera</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="326"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="318"/>
         <source>C&amp;oller</source>
         <translation>K&amp;listra in</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="335"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="327"/>
         <source>C&amp;oller dans la zone</source>
         <translation>&amp;Klistra in i området</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="344"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="336"/>
         <source>Un fichier</source>
         <translation>En fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="353"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="345"/>
         <source>Un élément</source>
         <translation>En symbol</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="362"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="354"/>
         <source>Inverser la sélection</source>
         <translation>Invertera markering</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="371"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="363"/>
         <source>&amp;Supprimer</source>
         <translation>&amp;Ta bort</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="380"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="372"/>
         <source>Éditer le nom et les traductions de l&apos;élément</source>
         <translation>Redigera symbolens namn och översättningar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="389"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="381"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <translation>Redigera information om skapare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="398"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="390"/>
         <source>Éditer les propriétés de l&apos;élément</source>
         <translation>Redigera symbolens egenskaper</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="407"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="399"/>
         <source>Zoom avant</source>
         <translation>Zooma in</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="416"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="408"/>
         <source>Zoom arrière</source>
         <translation>Zooma ut</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="425"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="417"/>
         <source>Zoom adapté</source>
         <translation>Zooma anpassad</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="434"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="426"/>
         <source>Pas de zoom</source>
         <translation>Återställ zoom</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="443"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="435"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation>&amp;Om QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="446"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="438"/>
         <source>Affiche des informations sur QElectroTech</source>
         <translation>Visar information om QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="455"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="447"/>
         <source>Manuel en ligne</source>
         <translation>Manual online</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="458"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="450"/>
         <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
         <translation>Visar QElectroTechs onlinehandbok med standardwebbläsaren</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="467"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="459"/>
         <source>Chaine Youtube</source>
         <translation>Youtube-kanal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="470"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="462"/>
         <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
         <translation>Visar QElectroTechs YouTube-kanal med standardwebbläsaren</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="479"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="471"/>
         <source>Soutenir le projet par un don</source>
         <translation>Stötta projektet med en donation</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="482"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="474"/>
         <source>Soutenir le projet QElectroTech par un don</source>
         <translation>Stöd QElectroTech-projektet med en donation</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="491"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="483"/>
         <source>À propos de &amp;Qt</source>
         <translation>Om &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="494"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="486"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <translation>Visar information om Qt-biblioteket</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="503"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="495"/>
         <source>Rotation</source>
         <translation>Rotation</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="506"/>
-        <source>Space</source>
-        <translation>Mellanslag</translation>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="504"/>
+        <source>Mirror</source>
+        <translation>Spegla</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="515"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="513"/>
+        <source>Flip</source>
+        <translation>Vänd</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="522"/>
         <source>Importer un dxf</source>
         <translation>Importera en DXF-fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.ui" line="524"/>
+        <location filename="../sources/editor/ui/qetelementeditor.ui" line="531"/>
         <source>importer un élément à redimensionner</source>
         <translation>importera en symbol som ska storleksanpassas</translation>
     </message>
@@ -7092,120 +7024,120 @@ Tillgängliga alternativ :
         <translation>Visa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="212"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="215"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Filen %1 finns inte.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="218"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1440"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="221"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1386"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Det går inte att öppna filen %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="225"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1445"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="228"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1391"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Filen är inte ett giltigt XML-dokument</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="231"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1451"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="234"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1397"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="242"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="312"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="245"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="315"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Skrivskyddad redigering</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="243"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="313"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="246"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="316"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Du har inte de nödvändiga behörigheterna för att ändra denna symbol. Den kommer därför öppnas i skrivskyddat läge.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="274"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="338"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="277"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="341"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="275"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="278"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Det går inte att skriva till denna fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="289"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="295"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1466"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1472"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="292"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="298"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1412"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1418"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Symbolen finns inte.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="290"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1467"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="293"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1413"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Den valda virtuella sökvägen matchar inte en symbol.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="296"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1473"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="299"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1419"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Symbolen finns inte.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="339"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="342"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Det går inte att spara symbolen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="423"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="426"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Öppna en fil</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="425"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="428"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech-symboler (*.elmt);;XML-filer (*.xml);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="445"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="448"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Ändrad]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="449"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="452"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [Skrivskyddad]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="496"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="499"/>
         <source>Trop de primitives, liste non générée: %1</source>
         <translation>För många grafikbojekt, listan genererades inte: %1</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="534"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="671"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="537"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="674"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n markerad del.</numerusform>
@@ -7213,35 +7145,35 @@ Tillgängliga alternativ :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="741"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="744"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Anslutning saknas</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="742"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="745"/>
         <source>&lt;br&gt;En l&apos;absence de borne, l&apos;élément ne pourra être relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>&lt;br&gt;Utan anslutning kan symbolen inte anslutas till andra symboler via förbindningar.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="763"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="766"/>
         <source>Absence de borne</source>
         <translation>Anslutning saknas</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="764"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="767"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les reports de folio doivent posséder une seul borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Verifier que l&apos;élément ne possède qu&apos;une seul borne</source>
         <translation>&lt;br&gt;&lt;b&gt;Fel&lt;/b&gt; :&lt;br&gt;Bladhänvisningar får bara ha en anslutning.&lt;br&gt;&lt;b&gt;Lösning&lt;/b&gt; :&lt;br&gt;Kontrollera att symbolen endast har en anslutning</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="776"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="779"/>
         <source>La vérification de cet élément a généré</source>
         <comment>message box content</comment>
         <translation>Kontroll av denna symbol genererad</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="779"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="782"/>
         <source> %n erreur(s)</source>
         <comment>errors</comment>
         <translation>
@@ -7250,12 +7182,12 @@ Tillgängliga alternativ :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="784"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="787"/>
         <source> et</source>
         <translation> och</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="786"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="789"/>
         <source> %n avertissement(s)</source>
         <comment>warnings</comment>
         <translation>
@@ -7264,323 +7196,189 @@ Tillgängliga alternativ :
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="796"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="799"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="803"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="806"/>
         <source>Erreurs</source>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="806"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="809"/>
         <source>Avertissements</source>
         <translation>Varningar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="846"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="849"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Det går inte att öppna filen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="848"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="851"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Det verkar som om filen %1 du försöker öppna inte finns eller inte längre finns.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="885"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="888"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Spara den aktuella symbolen?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="887"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="890"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Vill du registrera symbolen %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="955"/>
-        <source>To install the plugin DXFtoQET
-Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Install on Windows
-Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
-</source>
-        <translation>Så här installerar du insticksprogrammet DXFtoQET
-Besök https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Installera på Windows
-Lägg DXFtoQET.exe i mappen C:\Users\&lt;användarnamn&gt;\AppData\Roaming\qet\
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="961"/>
-        <source>To install the plugin DXFtoQET
-Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Install on macOSX
-Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
-</source>
-        <translation>Så här installerar du insticksprogrammet DXFtoQET
-Besök https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Installera på macOSX
-Lägg DXFtoQET.app i mappen /Användare/&lt;användarnamn&gt;/.qet/
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="967"/>
-        <source>To install the plugin DXFtoQET
-Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Install on Linux
-Put DXFtoQET binary on your /home/user_name/.qet/ directory
-make it executable : chmod +x ./DXFtoQET
-</source>
-        <translation>Så här installerar du insticksprogrammet DXFtoQET
-Besök https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Installera på Linux
-Lägg binärfilen DXFtoQET i mappen /home/&lt;användarnamn&gt;/.qet/
-gör den körbar: chmod +x ./DXFtoQET
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="975"/>
-        <source>To install the plugin DXFtoQET
-Visit https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Install on Linux
-Put DXFtoQET binary on your /home/user_name/.qet/ directory
-make it executable : chmod +x ./DXFtoQET
-&gt;&gt; Install on Windows
-Put DXFtoQET.exe binary on C:\Users\user_name\AppData\Roaming\qet\ directory 
-
-&gt;&gt; Install on macOSX
-Put DXFtoQET.app binary on /Users/user_name/.qet/ directory 
-</source>
-        <translation>Så här installerar du insticksprogrammet DXFtoQET
-Besök https://download.qelectrotech.org/qet/builds/dxf_to_elmt/
-
-&gt;&gt; Installera på Linux
-Lägg binärfilen DXFtoQET i mappen /home/&lt;användarnamn&gt;/.qet/
-gör den körbar : chmod +x ./DXFtoQET
-&gt;&gt; Installera på Windows
-Lägg DXFtoQET.exe-i mappen C:\Users\&lt;användarnamn&gt;\AppData\Roaming\qet\
-
-&gt;&gt; Installera på macOSX
-Lägg DXFtoQET.app i mappen /Användare/&lt;användarnamn&gt;/.qet/
-</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="987"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="957"/>
         <source>Annuler</source>
         <translation>Ångra</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="988"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="958"/>
         <source>Refaire</source>
         <translation>Gör om</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="998"/>
-        <source>Ctrl+Shift+O</source>
-        <translation>Ctrl+Skift+O</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1000"/>
-        <source>Ctrl+Shift+S</source>
-        <translation>Ctrl+Skift+S</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1013"/>
-        <source>Ctrl+Q</source>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1551"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1497"/>
         <source>Importer un élément à redimensionner</source>
         <translation>Importera en symbol som ska storleksanpassas</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1553"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1499"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <translation>QElectroTech-symbol (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1002"/>
-        <source>Ctrl+Shift+A</source>
-        <translation>Ctrl+Shift+A</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1003"/>
-        <source>Ctrl+I</source>
-        <translation>Ctrl+I</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1007"/>
-        <source>Ctrl+Shift+V</source>
-        <translation>Ctrl+Shift+V</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1008"/>
-        <source>Ctrl+E</source>
-        <translation>Ctrl+E</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1009"/>
-        <source>Ctrl+Y</source>
-        <translation>Ctrl+Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1015"/>
-        <source>Backspace</source>
-        <translation>Backspace</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1016"/>
-        <source>Ctrl+W</source>
-        <translation>Ctrl+W</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1026"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="996"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Djup</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1037"/>
-        <source>Ctrl+9</source>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1038"/>
-        <source>Ctrl+0</source>
-        <translation>Ctrl+0</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1043"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1023"/>
         <source>Ajouter une ligne</source>
         <translation>Lägg till en linje</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1044"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1024"/>
         <source>Ajouter un rectangle</source>
         <translation>Lägg till en rektangel</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1045"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1025"/>
         <source>Ajouter une ellipse</source>
         <translation>Lägg till en ellips</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1046"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1026"/>
         <source>Ajouter un polygone</source>
         <translation>Lägg till en polygon</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1047"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1027"/>
         <source>Ajouter du texte</source>
         <translation>Lägg till en text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1048"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1028"/>
         <source>Ajouter un arc de cercle</source>
         <translation>Lägg till en båge</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1049"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1029"/>
         <source>Ajouter une borne</source>
         <translation>Lägg till en anslutning</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1050"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1030"/>
         <source>Ajouter un champ texte dynamique</source>
         <translation>Lägg till ett dynamiskt textfält</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1065"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1045"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation>Dubbelklicka för att avsluta polygonen, högerklicka för att ångra den sista punkten</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1066"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1046"/>
         <source>Ajouter un texte d&apos;élément non éditable dans les schémas</source>
         <translation>Lägg till symboltext som inte är redigerbar i scheman</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1067"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1047"/>
         <source>Ajouter un texte d&apos;élément pouvant être édité dans les schémas</source>
         <translation>Lägg till symboltext som är redigerbar i scheman</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1069"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1049"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>Delar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1172"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1154"/>
         <source>Aucune modification</source>
         <translation>Inga ändringar</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1184"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1166"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Symbolredigerare</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1257"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1286"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1388"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1239"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1268"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1334"/>
         <source>Echec de l&apos;enregistrement</source>
         <translation>Registrering misslyckades</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1257"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1286"/>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1388"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1239"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1268"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1334"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
         <translation>Registreringen misslyckades,
 villkoren är ogiltiga</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1361"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1307"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Spara som</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1363"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1309"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech-symboler (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1397"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1343"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Ladda om symbol</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1398"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1344"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Du har gjort ändringar i denna symbol. Om du laddar om den kommer dessa ändringar att gå förlorade. Vill du verkligen ladda om symbolen?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1532"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1478"/>
         <source>Avertissement</source>
         <translation>Varning</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1532"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1478"/>
         <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
 veuillez patienter durant l&apos;import...</source>
         <translation>Att importera en stor DXF-filkan ta lite tid,
@@ -7703,11 +7501,6 @@ ha tålamod under importeringen...</translation>
         <translation>Visar QElectroTech i helskärmsläge</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="224"/>
-        <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
         <location filename="../sources/qetmainwindow.cpp" line="237"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
@@ -7717,49 +7510,49 @@ ha tålamod under importeringen...</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="394"/>
+        <location filename="../sources/qetproject.cpp" line="395"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Projekt « %1 : %2 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="401"/>
+        <location filename="../sources/qetproject.cpp" line="402"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Projekt %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="408"/>
+        <location filename="../sources/qetproject.cpp" line="409"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Namnlöst projekt</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="417"/>
+        <location filename="../sources/qetproject.cpp" line="418"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [skrivskyddad]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="425"/>
+        <location filename="../sources/qetproject.cpp" line="426"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [modifierad]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1206"/>
+        <location filename="../sources/qetproject.cpp" line="1207"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Ett fel uppstod under modellintegreringen.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1359"/>
+        <location filename="../sources/qetproject.cpp" line="1360"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Varning</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1361"/>
+        <location filename="../sources/qetproject.cpp" line="1362"/>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
@@ -7768,7 +7561,7 @@ Vous utilisez actuellement QElectroTech en version %2</source>
 Du använder för närvarande QElectroTech version %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1366"/>
+        <location filename="../sources/qetproject.cpp" line="1367"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
@@ -7777,32 +7570,32 @@ Que désirez vous faire ?</source>
 Vad vill du göra?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1386"/>
+        <location filename="../sources/qetproject.cpp" line="1387"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
         <translation>Varning</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1387"/>
+        <location filename="../sources/qetproject.cpp" line="1388"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
         <translation>Projektet du försöker öppna är delvis kompatibelt med din version %1 av QElectroTech.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1390"/>
+        <location filename="../sources/qetproject.cpp" line="1391"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
         <translation>För att göra det helt kompatibelt, öppna samma projekt med QElectroTech version 0.8 eller 0.80, spara projektet och öppna det igen med denna version.
 Vad vill du göra?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1461"/>
+        <location filename="../sources/qetproject.cpp" line="1462"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Öppnar det aktuella projektet...&lt;/b&gt;&lt;br/&gt;Skapar blad&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1503"/>
+        <location filename="../sources/qetproject.cpp" line="1504"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Öppnar det aktuella projektet...&lt;/b&gt;&lt;br/&gt;Skapar korsreferenser&lt;/p&gt;</translation>
     </message>
@@ -7958,60 +7751,6 @@ Vad vill du göra?</translation>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>S&amp;eparera celler</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="395"/>
-        <source>Ctrl+Shift+O</source>
-        <comment>shortcut to open a template from a file</comment>
-        <translation>Ctrl+Skift+O</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="397"/>
-        <source>Ctrl+Shift+S</source>
-        <comment>shortcut to save a template to a file</comment>
-        <translation>Ctrl+Skift+S</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="398"/>
-        <source>Ctrl+Q</source>
-        <comment>shortcut to quit</comment>
-        <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="404"/>
-        <source>Ctrl+T</source>
-        <comment>shortcut to manage embedded logos</comment>
-        <translation>Ctrl+T</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="405"/>
-        <source>Ctrl+Y</source>
-        <comment>shortcut to edit extra information</comment>
-        <translation>Ctrl+Y</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="406"/>
-        <source>Ctrl+J</source>
-        <comment>shortcut to merge cells</comment>
-        <translation>Ctrl+J</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="407"/>
-        <source>Ctrl+K</source>
-        <comment>shortcut to split merged cell</comment>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="410"/>
-        <source>Ctrl+9</source>
-        <comment>shortcut to enable fit zoom</comment>
-        <translation>Ctrl+9</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="411"/>
-        <source>Ctrl+0</source>
-        <comment>shortcut to reset zoom</comment>
-        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="440"/>
@@ -8175,7 +7914,7 @@ Vad vill du göra?</translation>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="578"/>
-        <location filename="../sources/qetapp.cpp" line="2180"/>
+        <location filename="../sources/qetapp.cpp" line="2274"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
@@ -8381,28 +8120,28 @@ Vad vill du göra?</translation>
         <translation>Ändra egenskaper för förbindningar</translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="48"/>
+        <location filename="../sources/conductornumexport.cpp" line="52"/>
         <source>numero_de_fileries_</source>
         <translation>förbindningsnummer_</translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="53"/>
+        <location filename="../sources/conductornumexport.cpp" line="57"/>
         <source>Enregister sous... </source>
         <translation>Spara som... </translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="53"/>
+        <location filename="../sources/conductornumexport.cpp" line="57"/>
         <source>Fichiers csv (*.csv)</source>
         <translation>Csv-filer (*.csv)</translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="62"/>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="166"/>
+        <location filename="../sources/conductornumexport.cpp" line="66"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Erreur</source>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../sources/conductornumexport.cpp" line="63"/>
+        <location filename="../sources/conductornumexport.cpp" line="67"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
@@ -8454,17 +8193,17 @@ Vad vill du göra?</translation>
         <translation>Ändra storlek på blad</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="159"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Selectionner une image...</source>
         <translation>Välj en bild...</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="159"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="160"/>
         <source>Image Files (*.png *.jpg  *.jpeg *.bmp *.svg)</source>
         <translation>Bildfiler (*.png *.jpg *.jpeg *.bmp *.svg)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="166"/>
+        <location filename="../sources/diagramevent/diagrameventaddimage.cpp" line="167"/>
         <source>Impossible de charger l&apos;image.</source>
         <translation>Det går inte att ladda bilden.</translation>
     </message>
@@ -8556,6 +8295,18 @@ Vad vill du göra?</translation>
         <translation>Rotera markering</translation>
     </message>
     <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="595"/>
+        <source>Miroir de sélection</source>
+        <comment>undo caption</comment>
+        <translation>Spegla markering</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/editorcommands.cpp" line="640"/>
+        <source>Retourner la sélection</source>
+        <comment>undo caption</comment>
+        <translation>Vänd markering</translation>
+    </message>
+    <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
         <source>Arc</source>
         <translation>Båge</translation>
@@ -8587,13 +8338,13 @@ Vad vill du göra?</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="65"/>
-        <location filename="../sources/editor/graphicspart/partterminal.h" line="84"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="86"/>
         <source>Borne</source>
         <translation>Anslutning</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
-        <location filename="../sources/qetinformation.cpp" line="238"/>
+        <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
@@ -8604,7 +8355,7 @@ Vad vill du göra?</translation>
         <translation>Båge</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partellipse.h" line="53"/>
+        <location filename="../sources/editor/graphicspart/partellipse.h" line="56"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>Ellips</translation>
@@ -8640,7 +8391,7 @@ Vad vill du göra?</translation>
         <translation>Text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1525"/>
+        <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1471"/>
         <source>Importer un fichier dxf</source>
         <translation>Importera en DXF-fil</translation>
     </message>
@@ -8723,32 +8474,32 @@ Vill du ersätta den?</translation>
         <translation> en textgrupp</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="999"/>
+        <location filename="../sources/exportdialog.cpp" line="1014"/>
         <source>Folio sans titre</source>
         <translation>Namnlöst blad</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1001"/>
+        <location filename="../sources/exportdialog.cpp" line="1016"/>
         <source>schema</source>
         <translation>schema</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1026"/>
+        <location filename="../sources/exportdialog.cpp" line="1041"/>
         <source>Conserver les proportions</source>
         <translation>Bibehåll proportioner</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1030"/>
+        <location filename="../sources/exportdialog.cpp" line="1045"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Återställ storlek</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1034"/>
+        <location filename="../sources/exportdialog.cpp" line="1049"/>
         <source>Aperçu</source>
         <translation>Översikt</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="1038"/>
+        <location filename="../sources/exportdialog.cpp" line="1053"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Exportera till urklipp</translation>
     </message>
@@ -8769,12 +8520,12 @@ Vill du ersätta den?</translation>
         <translation>Lägg till en innehållsförteckning</translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="129"/>
+        <location filename="../sources/machine_info.cpp" line="132"/>
         <source>Compilation : </source>
         <translation>Kompilering: </translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="378"/>
+        <location filename="../sources/machine_info.cpp" line="455"/>
         <source>Compilation :   </source>
         <translation>Kompilering:   </translation>
     </message>
@@ -8965,42 +8716,22 @@ Vill du ersätta den?</translation>
         <translation>Flyttar markering till bakgrunden</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="741"/>
-        <source>Ctrl+Shift+Up</source>
-        <translation>Ctrl+Shift+Upp</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="742"/>
-        <source>Ctrl+Shift+Down</source>
-        <translation>Ctrl+Shift+Ned</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="743"/>
-        <source>Ctrl+Shift+End</source>
-        <translation>Ctrl+Shift+End</translation>
-    </message>
-    <message>
-        <location filename="../sources/qet.cpp" line="744"/>
-        <source>Ctrl+Shift+Home</source>
-        <translation>Ctrl+Shift+Home</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2411"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2406"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Så här installerar du insticksprogrammet qet_tb_generator:&lt;br&gt;Besök:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Kräver Python 3.5 eller högre.&lt;br&gt;&lt;B&gt;&lt;U&gt; Första installation på Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installera, om nödvändigt, Python 3.5 eller högre&lt;br&gt;Besök:&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Uppdatera på Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;användare kan köra detta script i denna mapp&lt;br&gt;C:\users\&lt;användare&gt;\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2431"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2426"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Så här installerar du insticksprogrammet qet_tb_generator:&lt;br&gt;Besök:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Första installation på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Installera, om nödvändigt, paketet python 3.11, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Kör skriptet Profile.command&lt;br&gt; eftersom programmet använder hårdkodad PATH för att lokalisera pluginprogrammet qet-tb-generator&lt;br&gt;Besök:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt;Uppdatera på macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2450"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2445"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>Så här installerar du insticksprogrammet qet_tb_generator:&lt;br&gt;Besök:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Kräver Python 3.5 eller högre.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Första installation på Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Kontrollera att du har pip3 installerat: pip3 --version&lt;br&gt;Om inte, installera med: sudo apt-get install python3-pip&lt;br&gt;2. Installera programmet: sudo pip3 install qet_tb_generator&lt;br&gt;3. Kör programmet: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;Uppdatera på Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2470"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2465"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>Fel vid start av plugin qet_tb_generator</translation>
     </message>
@@ -9011,209 +8742,379 @@ Vill du ersätta den?</translation>
         <translation>Anslutning</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="196"/>
+        <location filename="../sources/qetinformation.cpp" line="230"/>
         <source>Auteur</source>
         <translation>Skapare</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="197"/>
+        <location filename="../sources/qetinformation.cpp" line="231"/>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="198"/>
+        <location filename="../sources/qetinformation.cpp" line="232"/>
         <source>Titre</source>
         <translation>Titel</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="199"/>
+        <location filename="../sources/qetinformation.cpp" line="233"/>
         <source>Fichier</source>
         <translation>Filnamn</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="200"/>
+        <location filename="../sources/qetinformation.cpp" line="234"/>
         <source>Installation (=)</source>
         <translation>Anläggning (=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="201"/>
-        <location filename="../sources/qetinformation.cpp" line="233"/>
+        <location filename="../sources/qetinformation.cpp" line="235"/>
+        <location filename="../sources/qetinformation.cpp" line="265"/>
         <source>Localisation (+)</source>
         <translation>Placering (+)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="202"/>
+        <location filename="../sources/qetinformation.cpp" line="236"/>
         <source>Indice de révision</source>
         <translation>Revisionsindex</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="203"/>
+        <location filename="../sources/qetinformation.cpp" line="237"/>
         <source>Position</source>
         <translation>Position</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="204"/>
+        <location filename="../sources/qetinformation.cpp" line="238"/>
         <source>Version de QElectroTech</source>
         <translation>QElectroTech-version</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="205"/>
+        <location filename="../sources/qetinformation.cpp" line="239"/>
         <source>Numéro de folio</source>
         <translation>Bladnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="206"/>
+        <location filename="../sources/qetinformation.cpp" line="240"/>
         <source>Position du folio</source>
         <translation>Bladposition</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="207"/>
+        <location filename="../sources/qetinformation.cpp" line="241"/>
         <source>Nombre de folio</source>
         <translation>Bladnamn</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="208"/>
+        <location filename="../sources/qetinformation.cpp" line="242"/>
         <source>Numéro du folio précédent</source>
         <translation>Föregående bladnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="209"/>
+        <location filename="../sources/qetinformation.cpp" line="243"/>
         <source>Numéro du folio suivant</source>
         <translation>Följande bladnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="210"/>
+        <location filename="../sources/qetinformation.cpp" line="244"/>
         <source>Titre du projet</source>
         <translation>Projekttitel</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="211"/>
+        <location filename="../sources/qetinformation.cpp" line="245"/>
         <source>Chemin du fichier du projet</source>
         <translation>Sökväg till projektfil</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="212"/>
+        <location filename="../sources/qetinformation.cpp" line="246"/>
         <source>Nom du fichier</source>
         <translation>Filnamn</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="213"/>
+        <location filename="../sources/qetinformation.cpp" line="247"/>
         <source>Date d&apos;enregistrement du fichier format local</source>
         <translation>Datum då filen sparades i lokalt format</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="214"/>
+        <location filename="../sources/qetinformation.cpp" line="248"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
         <translation>Datum då filen sparades i formatet DD-MM-ÅÅÅÅ</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="215"/>
+        <location filename="../sources/qetinformation.cpp" line="249"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
         <translation>Datum då filen sparades i formatet ÅÅÅÅ-MM-DD</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="216"/>
+        <location filename="../sources/qetinformation.cpp" line="250"/>
         <source>Heure d&apos;enregistrement du fichier</source>
         <translation>Tid då filen sparades</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="217"/>
+        <location filename="../sources/qetinformation.cpp" line="251"/>
         <source>Nom du fichier enregistré</source>
         <translation>Namn på den sparade filen</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="218"/>
+        <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Chemin du fichier enregistré</source>
         <translation>Sökväg till den sparade filen</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="219"/>
+        <location filename="../sources/qetinformation.cpp" line="253"/>
         <source>Formule du label</source>
         <translation>Formel för etikett</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="220"/>
+        <location filename="../sources/qetinformation.cpp" line="254"/>
         <source>Label</source>
         <translation>Etikett</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="221"/>
+        <location filename="../sources/qetinformation.cpp" line="255"/>
         <source>Commentaire</source>
         <translation>Kommentar</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="222"/>
-        <location filename="../sources/qetinformation.cpp" line="234"/>
+        <location filename="../sources/qetinformation.cpp" line="256"/>
+        <location filename="../sources/qetinformation.cpp" line="266"/>
         <source>Fonction</source>
         <translation>Funktion</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="223"/>
+        <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
         <translation>Extra 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="224"/>
+        <location filename="../sources/qetinformation.cpp" line="273"/>
+        <source>Description textuelle auxiliaire 1</source>
+        <translation>Extra 1 beskrivning</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="274"/>
+        <source>Numéro d&apos;article auxiliaire 1</source>
+        <translation>Extra 1 artikelnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="275"/>
+        <source>Fabricant auxiliaire 1</source>
+        <translation>Extra 1 tillverkare</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="276"/>
+        <source>Numéro de commande auxiliaire 1</source>
+        <translation>Extra 1 beställningsnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="277"/>
+        <source>Numéro interne auxiliaire 1</source>
+        <translation>Extra 1 typnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="278"/>
+        <source>Fournisseur auxiliaire 1</source>
+        <translation>Extra 1 leverantör</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="279"/>
+        <source>Quantité auxiliaire 1</source>
+        <translation>Extra 1 antal</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="280"/>
+        <source>Unité auxiliaire 1</source>
+        <translation>Extra 1 enhet</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Bloc auxiliaire 2</source>
         <translation>Extra 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="225"/>
+        <location filename="../sources/qetinformation.cpp" line="282"/>
+        <source>Description textuelle auxiliaire 2</source>
+        <translation>Extra 2 beskrivning</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="283"/>
+        <source>Numéro d&apos;article auxiliaire 2</source>
+        <translation>Extra 2 artikelnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="284"/>
+        <source>Fabricant auxiliaire 2</source>
+        <translation>Extra 2 tillverkare</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="285"/>
+        <source>Numéro de commande auxiliaire 2</source>
+        <translation>Extra 2 beställningsnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="286"/>
+        <source>Numéro interne auxiliaire 2</source>
+        <translation>Extra 2 typnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="287"/>
+        <source>Fournisseur auxiliaire 2</source>
+        <translation>Extra 2 leverantör</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="288"/>
+        <source>Quantité auxiliaire 2</source>
+        <translation>Extra 2 antal</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="289"/>
+        <source>Unité auxiliaire 2</source>
+        <translation>Extra 2 enhet</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="290"/>
+        <source>Bloc auxiliaire 3</source>
+        <translation>Extra 3</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="291"/>
+        <source>Description textuelle auxiliaire 3</source>
+        <translation>Extra 3 beskrivning</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="292"/>
+        <source>Numéro d&apos;article auxiliaire 3</source>
+        <translation>Extra 3 artikelnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="293"/>
+        <source>Fabricant auxiliaire 3</source>
+        <translation>Extra 3 tillverkare</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="294"/>
+        <source>Numéro de commande auxiliaire 3</source>
+        <translation>Extra 3 beställningsnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="295"/>
+        <source>Numéro interne auxiliaire 3</source>
+        <translation>Extra 3 typnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="296"/>
+        <source>Fournisseur auxiliaire 3</source>
+        <translation>Extra 3 leverantör</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="297"/>
+        <source>Quantité auxiliaire 3</source>
+        <translation>Extra 3 antal</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="298"/>
+        <source>Unité auxiliaire 3</source>
+        <translation>Extra 3 enhet</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="299"/>
+        <source>Bloc auxiliaire 4</source>
+        <translation>Extra 4</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="300"/>
+        <source>Description textuelle auxiliaire 4</source>
+        <translation>Extra 4 beskrivning</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="301"/>
+        <source>Numéro d&apos;article auxiliaire 4</source>
+        <translation>Extra 4 artikelnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="302"/>
+        <source>Fabricant auxiliaire 4</source>
+        <translation>Extra 4 tillverkare</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="303"/>
+        <source>Numéro de commande auxiliaire 4</source>
+        <translation>Extra 4 beställningsnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="304"/>
+        <source>Numéro interne auxiliaire 4</source>
+        <translation>Extra 4 typnummer</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="305"/>
+        <source>Fournisseur auxiliaire 4</source>
+        <translation>Extra 4 leverantör</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="306"/>
+        <source>Quantité auxiliaire 4</source>
+        <translation>Extra 4 antal</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="307"/>
+        <source>Unité auxiliaire 4</source>
+        <translation>Extra 4 enhet</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="257"/>
         <source>Description textuelle</source>
         <translation>Beskrivning</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="226"/>
+        <location filename="../sources/qetinformation.cpp" line="258"/>
         <source>Numéro d&apos;article</source>
         <translation>Artikelnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="227"/>
+        <location filename="../sources/qetinformation.cpp" line="259"/>
         <source>Fabricant</source>
         <translation>Tillverkare</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="228"/>
+        <location filename="../sources/qetinformation.cpp" line="260"/>
         <source>Numéro de commande</source>
         <translation>Beställningsnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="229"/>
+        <location filename="../sources/qetinformation.cpp" line="261"/>
         <source>Numéro interne</source>
         <translation>Typnummer</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="230"/>
+        <location filename="../sources/qetinformation.cpp" line="262"/>
         <source>Fournisseur</source>
         <translation>Leverantör</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="231"/>
+        <location filename="../sources/qetinformation.cpp" line="263"/>
         <source>Quantité</source>
         <translation>Antal</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="232"/>
+        <location filename="../sources/qetinformation.cpp" line="264"/>
         <source>Unité</source>
         <translation>Enhet</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="235"/>
+        <location filename="../sources/qetinformation.cpp" line="267"/>
         <source>Tension / Protocole</source>
         <translation>Spänning/protokoll</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="236"/>
+        <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Couleur du fil</source>
         <translation>Förbindningsfärg</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="237"/>
+        <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Section du fil</source>
         <translation>Förbindningstvärsnitt</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="239"/>
+        <location filename="../sources/qetinformation.cpp" line="271"/>
         <source>Formule du texte</source>
         <translation>Textformel</translation>
     </message>
@@ -9493,60 +9394,80 @@ Vill du ersätta den?</translation>
         <translation>Skapande av förbindningar</translation>
     </message>
     <message>
-        <location filename="../sources/dxf/dxftoelmt.cpp" line="100"/>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
+        <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+        <translation>Dxf2elmt: 
+Fel: Kontrollera att filen %1 är en giltig DXF-fil</translation>
+    </message>
+    <message>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="101"/>
+        <source>See details here:</source>
+        <translation>Se detaljer här:</translation>
+    </message>
+    <message>
+        <location filename="../sources/dxf/dxftoelmt.cpp" line="106"/>
         <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation>För att importera DXF-filer krävs programvaran dxf2elmt.
 Ladda ner den genom att följa länken nedan och packa upp den i installationsmappen.</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="42"/>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="51"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="43"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="52"/>
         <source>Entrer le facteur d&apos;échelle</source>
         <translation>Ange skalfaktor</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="43"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="44"/>
         <source>Facteur X:</source>
         <translation>X-faktor:</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="52"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="53"/>
         <source>Facteur Y:</source>
         <translation>Y-faktor:</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="60"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="61"/>
         <source>sans</source>
         <translation>utan</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="61"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="62"/>
         <source>horizontal</source>
         <translation>horisontell</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="62"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="63"/>
         <source>vertical</source>
         <translation>vertikal</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="63"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="64"/>
         <source>horizontal + vertical</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="65"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="66"/>
         <source>Retourner l&apos;élément :</source>
         <translation>Spegla symbol:</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="66"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="67"/>
         <source>direction</source>
         <translation>riktning</translation>
     </message>
     <message>
-        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="145"/>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
+        <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+        <translation>QET_ElementScaler: 
+Ytterligare information om %1, importering/skalning</translation>
+    </message>
+    <message>
+        <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="149"/>
         <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
 Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
         <translation>Programvaran QET_ElementScaler krävs för att skala symboler.
@@ -9571,26 +9492,26 @@ Ladda ner den genom att följa länken nedan och packa upp den i installationsma
 <context>
     <name>QetGraphicsTableItem</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="115"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="116"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
 Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
         <translation>Informationen som ska visas är större än vad som kan visas i tabellerna.
 Lägg till en ny tabell eller justera de befintliga tabellerna för att visa all information.</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="118"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="119"/>
         <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
 Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
         <translation>Informationen som ska visas är större än vad som kan visas i tabellen.
 Lägg till en ny tabell eller justera den befintliga tabellen för att visa all information.</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="121"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="122"/>
         <source>Limitation de tableau</source>
         <translation>Tabellbegränsning</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="966"/>
+        <location filename="../sources/qetgraphicsitem/ViewItem/qetgraphicstableitem.cpp" line="967"/>
         <source>Modifier la géometrie d&apos;un tableau</source>
         <translation>Ändra geometrin för en tabell</translation>
     </message>
@@ -9623,27 +9544,27 @@ Lägg till en ny tabell eller justera den befintliga tabellen för att visa all 
         <translation>Ändra %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1002"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="991"/>
         <source>une ligne</source>
         <translation>en linje</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1003"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="992"/>
         <source>un rectangle</source>
         <translation>en rektangel</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1004"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="993"/>
         <source>une éllipse</source>
         <translation>en ellips</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1005"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="994"/>
         <source>une polyligne</source>
         <translation>en polygon</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1006"/>
+        <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="995"/>
         <source>une shape</source>
         <translation>en grafisk form</translation>
     </message>
@@ -13822,125 +13743,125 @@ du associerar namnet ”volta” med värdet ”1745” kommer %{volta} att ers�
 <context>
     <name>TitleBlockTemplateLogoManager</name>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="83"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="82"/>
         <source>Gestionnaire de logos</source>
         <translation>Logotypansvarig</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="86"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="85"/>
         <source>Logos embarqués dans ce modèle :</source>
         <translation>Logotyper inbäddade i detta titelblock:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="95"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
         <source>Ajouter un logo</source>
         <translation>Lägg till en logotyp</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="96"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="95"/>
         <source>Exporter ce logo</source>
         <translation>Exportera denna logotyp</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="97"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="96"/>
         <source>Supprimer ce logo</source>
         <translation>Radera denna logotyp</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="98"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="97"/>
         <source>Propriétés</source>
         <translation>Egenskaper</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="99"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="98"/>
         <source>Nom :</source>
         <translation>Namn:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="101"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="205"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="100"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="204"/>
         <source>Renommer</source>
         <translation>Döp om</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="102"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="101"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="266"/>
         <source>Type :</source>
         <translation>Typ:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="198"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="197"/>
         <source>Logo déjà existant</source>
         <translation>Befintlig logotyp</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="204"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="203"/>
         <source>Remplacer</source>
         <translation>Ersätt</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="224"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="223"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
         <translation>Det finns redan en logotyp med namnet ”%1” i det här titelblocket. Vill du ersätta den eller vill du ange ett annat namn för den nya logotypen?</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="262"/>
         <source>Type : %1</source>
         <translation>Typ: %1</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="281"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="280"/>
         <source>Choisir une image / un logo</source>
         <translation>Val av bild/logotyp</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="283"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="282"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
         <translation>Vektorbilder (*.svg);;Bitmappsbilder (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Alla filer (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="290"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="323"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="289"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
         <source>Erreur</source>
         <translation>Fel</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="290"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="289"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
         <translation>Det går inte att öppna den angivna filen</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="315"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="314"/>
         <source>Choisir un fichier pour exporter ce logo</source>
         <translation>Välj en fil att exportera logotypen till</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="317"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="316"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
         <translation>Alla filer (*);;Vektorbilder (*.svg);;Bitmappsbilder (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="323"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
         <translation>Det går inte att exportera till den angivna filen</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="352"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="351"/>
         <source>Renommer un logo</source>
         <translation>Byt namn på en logotyp</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="357"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="356"/>
         <source>Vous devez saisir un nouveau nom.</source>
         <translation>Du måste ange ett nytt namn.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="366"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="365"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
         <translation>Det nya namnet får inte vara tomt.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="375"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="374"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
         <translation>Det namn som anges används redan av en annan logotyp.</translation>
     </message>
@@ -14324,12 +14245,12 @@ Maximal längd: %2px
 <context>
     <name>projectDataBase</name>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="627"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="674"/>
         <source>Exporter la base de données interne du projet</source>
         <translation>Exportera den interna projektdatabasen</translation>
     </message>
     <message>
-        <location filename="../sources/dataBase/projectdatabase.cpp" line="635"/>
+        <location filename="../sources/dataBase/projectdatabase.cpp" line="681"/>
         <source>sans_nom</source>
         <translation>namnlös</translation>
     </message>
@@ -14386,29 +14307,14 @@ Maximal längd: %2px
         <translation>Fet text</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="464"/>
-        <source>CTRL+B</source>
-        <translation>Ctrl+B</translation>
-    </message>
-    <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="469"/>
         <source>Texte en italique</source>
         <translation>Kursiv text</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="470"/>
-        <source>CTRL+I</source>
-        <translation>Ctrl+I</translation>
-    </message>
-    <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="475"/>
         <source>Texte souligé</source>
         <translation>Understruken text</translation>
-    </message>
-    <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="476"/>
-        <source>CTRL+U</source>
-        <translation>Ctrl+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="488"/>
