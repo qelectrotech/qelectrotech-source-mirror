@@ -33,7 +33,7 @@ PartDynamicTextField::PartDynamicTextField(QETElementEditor *editor, QGraphicsIt
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::dynamicTextsItemFont());
 	QSettings settings;
-	setRotation(settings.value("diagrameditor/dynamic_text_rotation", 0).toInt());
+	QGraphicsObject::setRotation(QET::correctAngle(settings.value("diagrameditor/dynamic_text_rotation", 0).toInt()));
 	setTextWidth(settings.value("diagrameditor/dynamic_text_width", -1).toInt());
 	setText("_");
 	setTextFrom(DynamicElementTextItem::UserText);
@@ -58,6 +58,18 @@ QString PartDynamicTextField::name() const
 QString PartDynamicTextField::xmlName() const
 {
 	return QString("dynamic_text");
+}
+
+
+
+/**
+	Redefines setRotation
+	@param angle
+*/
+void PartDynamicTextField::setRotation(qreal angle) {
+	QGraphicsObject::setRotation(QET::correctAngle(rotation()+angle, true));
+	setPos(QTransform().rotate(angle).map(pos()));
+
 }
 
 /**
@@ -172,7 +184,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 		dom_elmt.attribute("y", QString::number(0)).toDouble()
 	);
 	setZValue(dom_elmt.attribute("z", QString::number(zValue())).toDouble());
-	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
+	QGraphicsObject::setRotation(QET::correctAngle(dom_elmt.attribute("rotation", QString::number(0)).toDouble()));
 	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font")) {
@@ -255,7 +267,7 @@ void PartDynamicTextField::fromTextFieldXml(const QDomElement &dom_element)
 		setInfoName(dom_element.attribute("tagg", "label"));
 	}
 
-	QGraphicsTextItem::setRotation(dom_element.attribute("rotation", "0").toDouble());
+	QGraphicsObject::setRotation(QET::correctAngle(dom_element.attribute("rotation", "0").toDouble()));
 
 	//the origin transformation point of PartDynamicTextField is the top left corner, no matter the font size
 	//The origin transformation point of PartTextField is the middle of left edge, and so by definition, change with the size of the font

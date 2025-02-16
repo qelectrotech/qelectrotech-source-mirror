@@ -547,6 +547,14 @@ void RotateElementsCommand::undo()
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
 			poly->setRotation(-90);
 		}
+		else if (item->type() == PartText::Type) {
+			PartText* text = qgraphicsitem_cast<PartText*>(item);
+			text->setRotation(-90);
+		}
+		else if (item->type() == PartDynamicTextField::Type) {
+			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
+			dyntext->setRotation(-90);
+		}
 		else {
 			item->setRotation(item->rotation()-90);
 		}
@@ -583,6 +591,14 @@ void RotateElementsCommand::redo()
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
 			poly->setRotation(+90);
+		}
+		else if (item->type() == PartText::Type) {
+			PartText* text = qgraphicsitem_cast<PartText*>(item);
+			text->setRotation(+90);
+		}
+		else if (item->type() == PartDynamicTextField::Type) {
+			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
+			dyntext->setRotation(+90);
 		}
 		else {
 			item->setRotation(item->rotation()+90);
