@@ -40,7 +40,7 @@ class ElementData : public PropertiesInterface
 			AllReport      = 6,
 			Master         = 8,
 			Slave          = 16,
-			Terminale      = 32,
+			Terminal       = 32,
 			Thumbnail      = 64};
 		Q_ENUM(Type)
 		Q_DECLARE_FLAGS(Types, Type)

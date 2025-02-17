@@ -250,7 +250,7 @@ bool TerminalStrip::addTerminal(Element *terminal)
 		}
 	}
 
-	if (terminal->elementData().m_type != ElementData::Terminale) {
+	if (terminal->elementData().m_type != ElementData::Terminal) {
 		return false;
 	}
 

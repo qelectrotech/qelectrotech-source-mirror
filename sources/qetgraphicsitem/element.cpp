@@ -845,7 +845,7 @@ bool Element::fromXml(QDomElement &e,
 			   QStringLiteral("elementInformation"));
 
 		//Load override properties (For now, only used when the element is a terminal)
-	if (m_data.m_type == ElementData::Terminale)
+	if (m_data.m_type == ElementData::Terminal)
 	{
 
 		auto elmt_type_list = QETXML::subChild(e, QStringLiteral("properties"), QStringLiteral("element_type"));
@@ -976,7 +976,7 @@ QDomElement Element::toXml(
 	}
 
 		//Save override properties (For now, only used when the element is a terminal)
-	if (m_data.m_type == ElementData::Terminale)
+	if (m_data.m_type == ElementData::Terminal)
 	{
 		QDomElement properties = document.createElement(QStringLiteral("properties"));
 		QDomElement element_type = document.createElement(QStringLiteral("element_type"));

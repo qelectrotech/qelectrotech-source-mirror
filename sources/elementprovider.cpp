@@ -204,7 +204,7 @@ QVector<TerminalElement *> ElementProvider::freeTerminal() const
 
 		for (const auto element : elmt_list)
 		{
-			if (element->elementData().m_type == ElementData::Terminale)
+			if (element->elementData().m_type == ElementData::Terminal)
 			{
 				const auto te{static_cast<TerminalElement *>(element)};
 				if (!te->parentTerminalStrip()) {

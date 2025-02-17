@@ -102,7 +102,7 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 
 		returned_elmt.appendChild(xml_count);
 	}
-	else if (m_type == ElementData::Terminale)
+	else if (m_type == ElementData::Terminal)
 	{
 			//type
 		auto xml_type  = document.createElement(QStringLiteral("kindInformation"));
@@ -233,7 +233,7 @@ bool ElementData::operator==(const ElementData &data) const
 			return false;
 		}
 	}
-	else if (data.m_type == ElementData::Terminale) {
+	else if (data.m_type == ElementData::Terminal) {
 			//Check terminal type or overrided terminal type
 		if (data.m_terminal_type_is_override != m_terminal_type_is_override) {
 			return false;
@@ -309,7 +309,7 @@ QString ElementData::typeToString(ElementData::Type type)
 			return QStringLiteral("master");
 		case ElementData::Slave :
 			return QStringLiteral("slave");
-		case ElementData::Terminale :
+		case ElementData::Terminal :
 			return QStringLiteral("terminal");
 		case ElementData::Thumbnail:
 			return  QStringLiteral("thumbnail");
@@ -333,7 +333,7 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 	} else if (string == QLatin1String("slave")) {
 		return ElementData::Slave;
 	} else if (string == QLatin1String("terminal")) {
-		return ElementData::Terminale;
+		return ElementData::Terminal;
 	} else if (string == QLatin1String("thumbnail")) {
 		return ElementData::Thumbnail;
 	}
@@ -548,7 +548,7 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 {
 	if (m_type == ElementData::Master ||
 		m_type == ElementData::Slave  ||
-		m_type == ElementData::Terminale)
+		m_type == ElementData::Terminal)
 	{
 		auto xml_kind = xml_element.firstChildElement(QStringLiteral("kindInformations"));
 		for (const auto &dom_elmt : QETXML::findInDomElement(xml_kind, QStringLiteral("kindInformation")))
@@ -571,7 +571,7 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 					m_contact_count = dom_elmt.text().toInt();
 				}
 			}
-			else if (m_type == ElementData::Terminale) {
+			else if (m_type == ElementData::Terminal) {
 				if (name == QLatin1String("type")) {
 					m_terminal_type = terminalTypeFromString(dom_elmt.text());
 				} else if (name == QLatin1String("function")) {

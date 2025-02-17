@@ -463,7 +463,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 	auto type_ = m_element_data.m_type;
 	if (type_ == ElementData::Slave  ||
 		type_ == ElementData::Master ||
-		type_ == ElementData::Terminale ||
+		type_ == ElementData::Terminal ||
 		type_ == ElementData::Thumbnail)
 	{
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
@@ -471,7 +471,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 
 	if (type_ == ElementData::Simple ||
 		type_ == ElementData::Master ||
-		type_ == ElementData::Terminale ||
+		type_ == ElementData::Terminal ||
 		type_ == ElementData::Thumbnail)
 	{
 		QDomElement element_info = xml_document.createElement("elementInformations");
