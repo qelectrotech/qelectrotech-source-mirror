@@ -1875,6 +1875,7 @@ NamesList QETProject::namesListForIntegrationCategory()
 	names.addName("tr", QString(turkish_data, 12));
 	names.addName("da", "Importerede elementer");
 	names.addName("sl", "Uvoženi elementi");
+	names.addName("sv", "Importerade element");
 	names.addName("ja", QString(japanese_data, 10));
 	names.addName("uk", QString(ukrainian_data, 20));
 	names.addName("zh", QString(chinese_data, 4));
