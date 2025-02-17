@@ -686,7 +686,7 @@ void MirrorElementsCommand::redo()
 	foreach (auto *item, m_items) {
 		if (item->type() == PartText::Type) {
 			PartText* staticText = qgraphicsitem_cast<PartText*>(item);
-			//staticText->mirror();
+			staticText->mirror();
 		} else if (item->type() == PartDynamicTextField::Type)  {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
 			dyntext->mirror();
@@ -734,7 +734,7 @@ void FlipElementsCommand::redo()
 	foreach (auto *item, m_items) {
 		if (item->type() == PartText::Type) {
 			PartText* staticText = qgraphicsitem_cast<PartText*>(item);
-			//staticText->flip();
+			staticText->flip();
 		} else if (item->type() == PartDynamicTextField::Type) {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
 			dyntext->flip();

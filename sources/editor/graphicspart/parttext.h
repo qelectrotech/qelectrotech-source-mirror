@@ -62,6 +62,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 		void fromXml(const QDomElement &) override;
 		const QDomElement toXml(QDomDocument &) const override;
 		void setRotation(qreal angle);
+		void mirror();
+		void flip();
 		bool isUseless() const override;
 		QRectF sceneGeometricRect() const override;
 		void startUserTransformation(const QRectF &) override;

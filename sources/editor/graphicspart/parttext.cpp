@@ -72,6 +72,39 @@ void PartText::setRotation(qreal angle) {
 	setPos(QTransform().rotate(angle).map(pos()));
 }
 
+void PartText::mirror() {
+	// at first: rotate the text:
+	QGraphicsObject::setRotation(QET::correctAngle((360-rotation()), true));
+	// then see, where we need to re-position depending on text, font ...
+	QFontMetrics qfm(font());
+	qreal textwidth  = qfm.horizontalAdvance(toPlainText());
+	// ... and angle!!!
+	qreal rot = qRound(QET::correctAngle(rotation(), true));
+	qreal c = qCos(qDegreesToRadians(rot));
+	qreal s = qSin(qDegreesToRadians(rot));
+	// Now: Move!
+	qreal x = (-1) * pos().x() - c * (textwidth);
+	qreal y = pos().y() - s * (textwidth);
+	setPos(x, y);
+}
+
+void PartText::flip() {
+	// at first: rotate the text:
+	QGraphicsObject::setRotation(QET::correctAngle((360-rotation()), true));
+	// then see, where we need to re-position depending on text, font ...
+	QFontMetrics qfm(font());
+	qreal textheight = realSize() - qfm.descent();
+	// ... and angle!!!
+	qreal rot = qRound(QET::correctAngle(rotation(), true));
+	qreal c = qCos(qDegreesToRadians(rot));
+	qreal s = qSin(qDegreesToRadians(rot));
+	// Now: Move!
+	qreal x = pos().x() - s * (textheight);
+	qreal y = (-1) * pos().y() + c * (textheight);
+	setPos(x, y);
+}
+
+
 /**
 	Importe les proprietes d'un texte statique depuis un element XML
 	@param xml_element Element XML a lire
