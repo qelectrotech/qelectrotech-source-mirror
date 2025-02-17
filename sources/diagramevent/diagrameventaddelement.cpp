@@ -220,7 +220,7 @@ bool DiagramEventAddElement::buildElement()
 
 /**
 	@brief DiagramEventAddElement::addElement
-	Add an element at the current pos en current rotation,
+	Add an element at the current pos and current rotation,
 	if project autoconductor option is enable, and the element can be wired, we do it.
 */
 void DiagramEventAddElement::addElement()
