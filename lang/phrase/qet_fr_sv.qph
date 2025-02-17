@@ -1,0 +1,326 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr" language="sv">
+<phrase>
+    <source>Texte composé</source>
+    <target>Sammansatt text</target>
+</phrase>
+<phrase>
+    <source>Texte utilisateur</source>
+    <target>Egen text</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>Vänster</target>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>Höger</target>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Centrum</target>
+</phrase>
+<phrase>
+    <source>Élément</source>
+    <target>Objekt</target>
+    <definition>Vid referens av olika typer</definition>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Blad</target>
+</phrase>
+<phrase>
+    <source>Conducteur</source>
+    <target>Förbindning</target>
+</phrase>
+<phrase>
+    <source>Sans nom</source>
+    <target>Namnlös</target>
+</phrase>
+<phrase>
+    <source>Recharger</source>
+    <target>Ladda om</target>
+</phrase>
+<phrase>
+    <source>Projet sans titre</source>
+    <target>Namnlöst projekt</target>
+</phrase>
+<phrase>
+    <source>Folio sans titre</source>
+    <target>Namnlöst blad</target>
+</phrase>
+<phrase>
+    <source>Nom</source>
+    <target>Namn</target>
+</phrase>
+<phrase>
+    <source>Sélection</source>
+    <target>Urval</target>
+</phrase>
+<phrase>
+    <source>Désélectionner tout</source>
+    <target>Avmarkera allt</target>
+</phrase>
+<phrase>
+    <source>Sélectionner tout</source>
+    <target>Välj allt</target>
+</phrase>
+<phrase>
+    <source>Installation</source>
+    <target>Anläggning</target>
+</phrase>
+<phrase>
+    <source>Localisation</source>
+    <target>Placering</target>
+</phrase>
+<phrase>
+    <source>Reports de folio</source>
+    <target>Bladhänvisningar</target>
+</phrase>
+<phrase>
+    <source>Report de folio</source>
+    <target>Bladhänvisning</target>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Mitten</target>
+    <definition>Vid textjustering</definition>
+</phrase>
+<phrase>
+    <source>Collage multiple</source>
+    <target>Klistra in flera</target>
+</phrase>
+<phrase>
+    <source>Remplacer</source>
+    <target>Ersätt</target>
+</phrase>
+<phrase>
+    <source>Élément</source>
+    <target>Symbol</target>
+    <definition>Vid referens av symbol</definition>
+</phrase>
+<phrase>
+    <source>À</source>
+    <target>Till</target>
+</phrase>
+<phrase>
+    <source>De</source>
+    <target>Från</target>
+</phrase>
+<phrase>
+    <source>Nomenclature</source>
+    <target>Förteckning</target>
+</phrase>
+<phrase>
+    <source>Position du folio</source>
+    <target>Bladposition</target>
+</phrase>
+<phrase>
+    <source>Polygone fermé</source>
+    <target>Sluten polygon</target>
+</phrase>
+<phrase>
+    <source>Dossier</source>
+    <target>Mapp</target>
+</phrase>
+<phrase>
+    <source>Que souhaitez-vous faire</source>
+    <target>Vad vill du göra</target>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>Bibliotek</target>
+</phrase>
+<phrase>
+    <source>Collection de cartouches</source>
+    <target>Titelblockbibliotek</target>
+</phrase>
+<phrase>
+    <source>Collection company de cartouches</source>
+    <target>Organisationens titelblockbibliotek</target>
+</phrase>
+<phrase>
+    <source>Champ texte</source>
+    <target>Textfält</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Längd</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Nästa</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Följande</target>
+</phrase>
+<phrase>
+    <source>Chiffre</source>
+    <target>Siffra</target>
+</phrase>
+<phrase>
+    <source>Tout cocher</source>
+    <target>Markera allt</target>
+</phrase>
+<phrase>
+    <source>Tout décocher</source>
+    <target>Avmarkera allt</target>
+</phrase>
+<phrase>
+    <source>Titre</source>
+    <target>Titel</target>
+</phrase>
+<phrase>
+    <source>Dimensions</source>
+    <target>Dimensioner</target>
+</phrase>
+<phrase>
+    <source>Dimensions</source>
+    <target>Mått</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Översikt</target>
+</phrase>
+<phrase>
+    <source>Générique</source>
+    <target>Generisk</target>
+</phrase>
+<phrase>
+    <source>Sans</source>
+    <target>Utan</target>
+</phrase>
+<phrase>
+    <source>Avec</source>
+    <target>Med</target>
+</phrase>
+<phrase>
+    <source>Normal</source>
+    <target>Normal</target>
+</phrase>
+<phrase>
+    <source>Tiret</source>
+    <target>Streckad</target>
+</phrase>
+<phrase>
+    <source>Pointillé</source>
+    <target>Punktad</target>
+</phrase>
+<phrase>
+    <source>Remplissage</source>
+    <target>Fyllning</target>
+</phrase>
+<phrase>
+    <source>Apparence</source>
+    <target>Utseende</target>
+</phrase>
+<phrase>
+    <source>Contour</source>
+    <target>Kontur</target>
+</phrase>
+<phrase>
+    <source>Épaisseur</source>
+    <target>Tjocklek</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Geometri</target>
+</phrase>
+<phrase>
+    <source>Par defaut</source>
+    <target>Förinställt</target>
+</phrase>
+<phrase>
+    <source>Parcourir</source>
+    <target>Bläddra</target>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>Allmänt</target>
+</phrase>
+<phrase>
+    <source>Borne</source>
+    <target>Plint</target>
+</phrase>
+<phrase>
+    <source>Coller</source>
+    <target>Klistra in</target>
+</phrase>
+<phrase>
+    <source>Ouvrir</source>
+    <target>Öppna</target>
+</phrase>
+<phrase>
+    <source>Arc</source>
+    <target>Båge</target>
+</phrase>
+<phrase>
+    <source>Ellipse</source>
+    <target>Ellips</target>
+</phrase>
+<phrase>
+    <source>Ligne</source>
+    <target>Linje</target>
+</phrase>
+<phrase>
+    <source>Rectangle</source>
+    <target>Rektangel</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Orientering</target>
+</phrase>
+<phrase>
+    <source>Nord</source>
+    <target>Nord</target>
+</phrase>
+<phrase>
+    <source>Est</source>
+    <target>Öst</target>
+</phrase>
+<phrase>
+    <source>Sud</source>
+    <target>Syd</target>
+</phrase>
+<phrase>
+    <source>Ouest</source>
+    <target>Väst</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Typsnitt</target>
+</phrase>
+<phrase>
+    <source>Dimensions</source>
+    <target>Storlek</target>
+</phrase>
+<phrase>
+    <source>Sans titre</source>
+    <target>Namnlös</target>
+</phrase>
+<phrase>
+    <source>Borne</source>
+    <target>Anslutning</target>
+</phrase>
+<phrase>
+    <source>Sans titre</source>
+    <target>Namnlöst</target>
+</phrase>
+<phrase>
+    <source>Sans nom</source>
+    <target>Namnlöst</target>
+</phrase>
+<phrase>
+    <source>Décalage</source>
+    <target>Förkjutning</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>Visa</target>
+</phrase>
+<phrase>
+    <source>Affichage</source>
+    <target>Visning</target>
+</phrase>
+</QPH>
