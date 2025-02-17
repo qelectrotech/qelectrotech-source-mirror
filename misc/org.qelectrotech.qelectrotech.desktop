@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=QElectroTech 
+Name=QElectroTech
 TryExec=qelectrotech
 Exec=qelectrotech %F
 Icon=qelectrotech
@@ -10,7 +10,7 @@ MimeType=application/x-qet-project;application/x-qet-element;application/x-qet-t
 Categories=Graphics;Qt;VectorGraphics;Science;Electricity;Engineering;
 Keywords=Graphics;Science;Electricity;Engineering;
 Comment=Edit electrical diagrams.
-Comment[de]=Schaltpläne erstellen und bearbeiten.
+Comment[de]=Elektroschaltpläne erstellen und bearbeiten.
 Comment[fr]=Éditer des schémas électriques.
 Comment[ar]=تحرير مخططات كهربائية
 Comment[es]=Editar esquemas eléctricos
