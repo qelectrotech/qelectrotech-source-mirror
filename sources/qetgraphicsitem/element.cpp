@@ -632,8 +632,8 @@ DynamicElementTextItem *Element::parseDynamicText(
 		const QDomElement &dom_element)
 {
 	DynamicElementTextItem *deti = new DynamicElementTextItem(this);
-		//Because the xml description of a .elmt file is the same as how a dynamic text field is save to xml in a .qet file
-		//wa call fromXml, we just change the tagg name (.elmt = dynamic_text, .qet = dynamic_elmt_text)
+		//Because the xml description of a .elmt file is the same as how a dynamic text field is saved to xml in a .qet file
+		//we call fromXml, we just change the tagg name (.elmt = dynamic_text, .qet = dynamic_elmt_text)
 		//and the uuid (because the uuid, is the uuid of the description and not the uuid of instantiated dynamic text field)
 
 	QDomElement dom(dom_element.cloneNode(true).toElement());
@@ -845,7 +845,7 @@ bool Element::fromXml(QDomElement &e,
 			   QStringLiteral("elementInformation"));
 
 		//Load override properties (For now, only used when the element is a terminal)
-	if (m_data.m_type == ElementData::Terminale)
+	if (m_data.m_type == ElementData::Terminal)
 	{
 
 		auto elmt_type_list = QETXML::subChild(e, QStringLiteral("properties"), QStringLiteral("element_type"));
@@ -976,7 +976,7 @@ QDomElement Element::toXml(
 	}
 
 		//Save override properties (For now, only used when the element is a terminal)
-	if (m_data.m_type == ElementData::Terminale)
+	if (m_data.m_type == ElementData::Terminal)
 	{
 		QDomElement properties = document.createElement(QStringLiteral("properties"));
 		QDomElement element_type = document.createElement(QStringLiteral("element_type"));

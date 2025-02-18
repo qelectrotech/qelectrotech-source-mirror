@@ -179,7 +179,7 @@ void ElementInfoWidget::disableLiveEdit()
 void ElementInfoWidget::buildInterface()
 {
 	QStringList keys;
-	if (m_element.data()->elementData().m_type == ElementData::Terminale) {
+	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
 		keys = QETInformation::terminalElementInfoKeys();
 	 } else {
 		keys = QETInformation::elementInfoKeys();

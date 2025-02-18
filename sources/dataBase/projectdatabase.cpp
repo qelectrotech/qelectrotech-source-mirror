@@ -458,8 +458,8 @@ void projectDataBase::populateElementTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminale | ElementData::Master | ElementData::Thumbnail);
-			//Insert all value into the database
+		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
 			const auto elmt_data = elmt->elementData();
@@ -487,9 +487,9 @@ void projectDataBase::populateElementInfoTable()
 	for (const auto &diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminale | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
 
-			//Insert all value into the database
+			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
 			m_insert_element_info_query.bindValue(QStringLiteral(":uuid"), elmt->uuid().toString());

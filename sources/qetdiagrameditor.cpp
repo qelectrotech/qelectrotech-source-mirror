@@ -585,12 +585,12 @@ void QETDiagramEditor::setUpActions()
 	connect(&m_row_column_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::rowColumnGroupTriggered);
 
 		//Selections Actions (related to a selected item)
-	m_delete_selection    = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")                 );
+	m_delete_selection     = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")                 );
 	m_rotate_selection     = m_selection_actions_group.addAction( QET::Icons::TransformRotate,   tr("Pivoter")                   );
 	m_rotate_texts         = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")       );
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Retrouver dans le panel")   );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
-	m_group_selected_texts = m_selection_actions_group.addAction(QET::Icons::textGroup,       tr("Grouper les textes sélectionnés"));
+	m_group_selected_texts = m_selection_actions_group.addAction( QET::Icons::textGroup,         tr("Grouper les textes sélectionnés"));
 
 	m_delete_selection->setShortcut(Qt::Key_Delete);
 	m_rotate_selection->setShortcut(Qt::Key_Space);
