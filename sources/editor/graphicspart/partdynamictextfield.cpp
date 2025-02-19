@@ -209,6 +209,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 	setZValue(dom_elmt.attribute("z", QString::number(zValue())).toDouble());
 	QGraphicsObject::setRotation(QET::correctAngle(dom_elmt.attribute("rotation", QString::number(0)).toDouble()));
 	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
+	setLockToElement(dom_elmt.attribute("lock_to_element", "false") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font")) {
 		QFont font_;
@@ -487,6 +488,20 @@ void PartDynamicTextField::setKeepVisualRotation(const bool &keep)
 
 bool PartDynamicTextField::keepVisualRotation() const {
 	return m_keep_visual_rotation;
+}
+
+void PartDynamicTextField::setLockToElement(const bool &set)
+{
+	if (set == this->m_lock_to_element) {
+		return;
+	}
+
+	m_lock_to_element = set;
+	emit keepVisualRotationChanged(set);
+}
+
+bool PartDynamicTextField::lockToElement() const {
+	return m_lock_to_element;
 }
 
 /**

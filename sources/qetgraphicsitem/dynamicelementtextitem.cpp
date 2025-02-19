@@ -98,7 +98,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	root_element.setAttribute("font", font().toString());
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
-	
+	root_element.setAttribute("lock_to_element", m_lock_to_element ? "true" : "false");
+
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
@@ -220,6 +221,8 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	
 	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
 							  dom_elmt.attribute("y", QString::number(0)).toDouble());
+
+	setLockToElement(dom_elmt.attribute("lock_to_element", "false") == "true"? true : false);
 }
 
 /**
@@ -554,7 +557,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	@param event
 */
 void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{	
+{
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
 		if(diagram() && m_first_move)
@@ -1472,5 +1475,16 @@ void DynamicElementTextItem::setKeepVisualRotation(bool set)
 
 bool DynamicElementTextItem::keepVisualRotation() const {
 	return m_keep_visual_rotation;
+}
+
+void DynamicElementTextItem::setLockToElement(bool set)
+{
+	this->m_lock_to_element = set;
+	this->m_no_moveable = set;
+	emit lockToElementChanged(set);
+}
+
+bool DynamicElementTextItem::lockToElement() const {
+	return m_lock_to_element;
 }
 

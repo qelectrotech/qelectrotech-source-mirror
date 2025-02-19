@@ -51,6 +51,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
+	Q_PROPERTY(bool lockToElement READ lockToElement WRITE setLockToElement NOTIFY lockToElementChanged)
 
 	public:
 
@@ -72,6 +73,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void plainTextChanged();
 		void textWidthChanged(qreal width);
 		void keepVisualRotationChanged(bool keep);
+		void lockToElementChanged(bool lock);
 
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -109,6 +111,8 @@ class DynamicElementTextItem : public DiagramTextItem
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;
+		void setLockToElement(bool set);
+		bool lockToElement() const;
 
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -169,6 +173,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		qreal m_text_width = -1;
 		QPointF m_initial_position;
 		bool m_keep_visual_rotation = true;
+		bool m_lock_to_element = false;
 		qreal m_visual_rotation_ref = 0;
 };
 
