@@ -110,6 +110,7 @@ class DiagramTextItem : public QGraphicsTextItem
 		m_mouse_hover = false,
 		m_first_move = true,
 		m_no_editable,
+		m_no_moveable,
 		m_is_html = false;
 
 		QString

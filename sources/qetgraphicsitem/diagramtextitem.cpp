@@ -327,7 +327,12 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 */
 void DiagramTextItem::mousePressEvent (QGraphicsSceneMouseEvent *event)
 {
-	if (event->button() == Qt::LeftButton)
+	if (m_no_moveable)
+	{
+		event->ignore();
+		return;
+	}
+	else if (event->button() == Qt::LeftButton)
 	{
 		m_first_move = true;
 			//Save the pos of item at the beggining of the movement
