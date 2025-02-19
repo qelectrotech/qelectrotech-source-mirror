@@ -6,48 +6,81 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>354</width>
-    <height>391</height>
+    <width>403</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="m_main_grid_layout">
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_3">
+   <item row="12" column="1" colspan="2">
+    <widget class="QLineEdit" name="m_user_text_le"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_7">
      <property name="text">
-      <string>Couleur</string>
+      <string>Rotation</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="13" column="1">
-    <spacer name="verticalSpacer">
+   <item row="4" column="2">
+    <widget class="QCheckBox" name="m_keep_visual_rotation_cb">
+     <property name="text">
+      <string>Conserver la rotation visuel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QSpinBox" name="m_width_sb">
+     <property name="minimum">
+      <number>-1</number>
+     </property>
+     <property name="maximum">
+      <number>500</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QPushButton" name="m_alignment_pb">
+     <property name="text">
+      <string>Alignement</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="2">
+    <widget class="QDoubleSpinBox" name="m_x_sb">
+     <property name="minimum">
+      <double>-5000.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>5000.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="1" colspan="2">
+    <widget class="QComboBox" name="m_elmt_info_cb"/>
+   </item>
+   <item row="6" column="1">
+    <spacer name="verticalSpacer_2">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>18</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Largeur</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1" colspan="2">
+   <item row="11" column="1" colspan="2">
     <widget class="QComboBox" name="m_text_from_cb">
      <item>
       <property name="text">
@@ -66,18 +99,48 @@
      </item>
     </widget>
    </item>
-   <item row="2" column="2">
-    <widget class="QCheckBox" name="m_keep_visual_rotation_cb">
-     <property name="text">
-      <string>Conserver la rotation visuel</string>
+   <item row="15" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="1">
+    <widget class="QSpinBox" name="m_rotation_sb">
+     <property name="maximum">
+      <number>359</number>
      </property>
     </widget>
    </item>
-   <item row="11" column="1" colspan="2">
-    <widget class="QComboBox" name="m_elmt_info_cb"/>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Couleur</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
    </item>
-   <item row="4" column="1">
-    <spacer name="verticalSpacer_2">
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Largeur</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <spacer name="verticalSpacer_3">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -92,34 +155,7 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="1">
-    <widget class="QSpinBox" name="m_width_sb">
-     <property name="minimum">
-      <number>-1</number>
-     </property>
-     <property name="maximum">
-      <number>500</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QSpinBox" name="m_rotation_sb">
-     <property name="maximum">
-      <number>359</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Y</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0">
+   <item row="11" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Source du texte</string>
@@ -129,41 +165,44 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="1" colspan="2">
-    <widget class="QLineEdit" name="m_user_text_le"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>Rotation</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="1" colspan="2">
+   <item row="14" column="1" colspan="2">
     <widget class="QPushButton" name="m_composite_text_pb">
      <property name="text">
       <string>Texte composé</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="m_alignment_pb">
+   <item row="7" column="1">
+    <widget class="QSpinBox" name="m_size_sb"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>Alignement</string>
+      <string>Police</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="7" column="1" colspan="2">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>X</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1" colspan="2">
     <widget class="QCheckBox" name="m_frame_cb">
      <property name="text">
       <string>Encadrer le texte</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
+   <item row="7" column="2">
     <widget class="QPushButton" name="m_font_pb">
      <property name="text">
       <string/>
@@ -180,60 +219,32 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QDoubleSpinBox" name="m_x_sb">
-     <property name="minimum">
-      <double>-5000.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>5000.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QSpinBox" name="m_size_sb"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_5">
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>X</string>
+      <string>Y</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Police</string>
+   <item row="2" column="1" colspan="2">
+    <widget class="QCheckBox" name="m_lock_to_element_cb">
+     <property name="toolTip">
+      <string>Lock the position of the text to the position of the element so that the text can not be moved accidentally.</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <property name="text">
+      <string>Lock position to element</string>
      </property>
     </widget>
-   </item>
-   <item row="8" column="1">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>18</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>m_x_sb</tabstop>
   <tabstop>m_y_sb</tabstop>
+  <tabstop>m_lock_to_element_cb</tabstop>
   <tabstop>m_rotation_sb</tabstop>
   <tabstop>m_keep_visual_rotation_cb</tabstop>
   <tabstop>m_width_sb</tabstop>

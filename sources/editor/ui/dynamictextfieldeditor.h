@@ -70,6 +70,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		void on_m_color_kpb_changed(const QColor &newColor);
 
 		void on_m_keep_visual_rotation_cb_clicked();
+		void on_m_lock_to_element_cb_clicked();
 
 	private:
 		Ui::DynamicTextFieldEditor *ui;

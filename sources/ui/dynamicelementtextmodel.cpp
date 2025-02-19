@@ -51,7 +51,8 @@ static int x_txt_row     = 9;
 static int y_txt_row     = 10;
 static int rot_txt_row   = 11;
 static int keep_rot_row  = 12;
-static int align_txt_row = 13;
+static int lock_elem_row = 13;
+static int align_txt_row = 14;
 
 static int align_grp_row          = 0;
 static int x_grp_row              = 1;
@@ -355,6 +356,20 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 		qsi_list << keep_rotation << keep_rotation_a;
 		qsi->appendRow(qsi_list);
 
+		//lock to element
+		auto lock_to_element = new QStandardItem(tr("Lock position to element"));
+		lock_to_element->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+
+		auto lock_to_element_a = new QStandardItem;
+		lock_to_element_a->setCheckable(true);
+		lock_to_element_a->setCheckState(deti->lockToElement() ? Qt::Checked : Qt::Unchecked);
+		lock_to_element_a->setData(DynamicElementTextModel::lockToElement, Qt::UserRole+1);
+		lock_to_element_a->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsUserCheckable);
+
+		qsi_list.clear();
+		qsi_list << lock_to_element << lock_to_element_a;
+		qsi->appendRow(qsi_list);
+
 			//Alignment
 		QStandardItem *alignment = new QStandardItem(tr("Alignement"));
 		alignment->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
@@ -626,7 +641,17 @@ QUndoCommand *DynamicElementTextModel::undoForEditedText(
 			qpuc->setText(tr("Modifier le maintient de la rotation d'un texte d'élément"));
 		}
 	}
-		
+
+	if (text_qsi->child(lock_elem_row,1))
+	{
+		bool lock_elem = text_qsi->child(lock_elem_row, 1)->checkState() == Qt::Checked? true : false;
+		if (lock_elem != deti->lockToElement())
+		{
+			auto qpuc = new QPropertyUndoCommand(deti, "lockToElement", QVariant(deti->lockToElement()), QVariant(lock_elem), undo);
+			qpuc->setText(tr("Changed setting text position locked to element"));
+		}
+	}
+
 		//When text is in a groupe, they're isn't item for alignment of the text
 	if(text_qsi->child(align_txt_row, 1))
 	{
