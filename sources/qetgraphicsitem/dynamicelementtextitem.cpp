@@ -46,7 +46,7 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 	QSettings settings;
 	setRotation(settings.value("dynamic_text_rotation", 0).toInt());
 	setKeepVisualRotation(true);
-	setTextWidth(settings.value("dynamic_text_widht", -1).toInt());
+	setTextWidth(settings.value("dynamic_text_width", -1).toInt());
 	connect(this, &DynamicElementTextItem::textEdited, [this](const QString &old_str, const QString &new_str)
 	{
 		if(this->m_parent_element && this->m_parent_element->diagram())

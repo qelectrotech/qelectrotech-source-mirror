@@ -403,10 +403,10 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		//Set the maximum size of the pixmap to the minimum size of the layout
 	QPixmap pixmap = m_element->pixmap();
 	int margin = vlayout_->contentsMargins().left() + vlayout_->contentsMargins().right();
-	int widht_ = vlayout_->minimumSize().width()-margin;
+	int width_ = vlayout_->minimumSize().width()-margin;
 
-	if (pixmap.size().width() > widht_ || pixmap.size().height() > widht_) {
-		pix->setPixmap(m_element->pixmap().scaled (widht_, widht_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	if (pixmap.size().width() > width_ || pixmap.size().height() > width_) {
+		pix->setPixmap(m_element->pixmap().scaled (width_, width_, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	}
 	else {
 		pix->setPixmap(pixmap);
