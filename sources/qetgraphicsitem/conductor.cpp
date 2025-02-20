@@ -1505,7 +1505,7 @@ void Conductor::refreshText()
 		{
 			if (diagram())
 			{
-				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram());
+				QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
 				m_properties.text = text;
 				m_text_item->setPlainText(text);
 			}
@@ -1590,7 +1590,7 @@ void Conductor::setProperties(const ConductorProperties &property)
 	{
 		if (diagram())
 		{
-			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram());
+			QString text = autonum::AssignVariables::formulaToLabel(m_properties.m_formula, m_autoNum_seq, diagram(), nullptr, this);
 			m_properties.text = text;
 		}
 		else if (m_properties.text.isEmpty())
