@@ -20,6 +20,7 @@
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetxml.h"
 
@@ -189,12 +190,14 @@ namespace autonum
 	QString AssignVariables::formulaToLabel(QString formula,
 						sequentialNumbers &seqStruct,
 						Diagram *diagram,
-						const Element *elmt)
+						const Element *elmt,
+						const Conductor *cndr)
 	{
 		AssignVariables av(std::move(formula),
 				   seqStruct,
 				   diagram,
-				   elmt);
+				   elmt,
+				   cndr);
 		seqStruct = av.m_seq_struct;
 		return av.m_assigned_label;
 	}
@@ -301,13 +304,14 @@ namespace autonum
 	AssignVariables::AssignVariables(const QString& formula,
 					 const sequentialNumbers& seqStruct,
 					 Diagram *diagram,
-					 const Element *elmt):
+					 const Element *elmt,
+					 const Conductor *cndr):
 	m_diagram(diagram),
 	m_arg_formula(formula),
 	m_assigned_label(formula),
 	m_seq_struct(seqStruct),
-	m_element(elmt)
-	
+	m_element(elmt),
+	m_conductor(cndr)
 	{
 		if (m_diagram)
 		{
@@ -347,6 +351,14 @@ namespace autonum
 				}
 				m_assigned_label.replace("%l", m_diagram->convertPosition(m_element->scenePos()).letter());
 				m_assigned_label.replace("%prefix", m_element->getPrefix());
+			}
+
+			if (m_conductor)
+			{
+				m_assigned_label.replace("%wf", cndr->properties().m_function);
+				m_assigned_label.replace("%wv", cndr->properties().m_tension_protocol);
+				m_assigned_label.replace("%wc", cndr->properties().m_wire_color);
+				m_assigned_label.replace("%ws", cndr->properties().m_wire_section);
 			}
 
 			assignTitleBlockVar();
