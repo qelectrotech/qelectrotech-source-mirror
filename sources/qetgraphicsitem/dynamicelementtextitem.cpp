@@ -545,8 +545,16 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		if(m_slave_Xref_item)
 			m_slave_Xref_item->setDefaultTextColor(Qt::black);
 	}
-	
-	DiagramTextItem::mousePressEvent(event);
+
+	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
+	if(event->modifiers() & Qt::ShiftModifier || !m_parent_element)
+	{
+		m_move_parent = false;
+		DiagramTextItem::mousePressEvent(event);
+	} else {
+		m_move_parent = true;
+		parentElement()->mousePressEvent(event);
+	}
 }
 
 /**
@@ -557,26 +565,31 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {	
 	if((event->buttons() & Qt::LeftButton) && (flags() & ItemIsMovable))
 	{
-		if(diagram() && m_first_move)
-			diagram()->elementTextsMover().beginMovement(diagram(), this);
-		
-		if(m_first_move)
+		if(m_move_parent)
 		{
-			m_initial_position = pos();
-			if(parentElement())
-				parentElement()->setHighlighted(true);
+			parentElement()->mouseMoveEvent(event);
+		} else {
+			if(diagram() && m_first_move)
+				diagram()->elementTextsMover().beginMovement(diagram(), this);
+			
+			if(m_first_move)
+			{
+				m_initial_position = pos();
+				if(parentElement())
+					parentElement()->setHighlighted(true);
+			}
+			
+			QPointF current_parent_pos;
+			QPointF button_down_parent_pos;
+			current_parent_pos = mapToParent(mapFromScene(event->scenePos()));
+			button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
+			
+			QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+
+			if(diagram())
+				diagram()->elementTextsMover().continueMovement(event);
 		}
-		
-		QPointF current_parent_pos;
-		QPointF button_down_parent_pos;
-		current_parent_pos = mapToParent(mapFromScene(event->scenePos()));
-		button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
-		
-		QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
-		event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
-		
-		if(diagram())
-			diagram()->elementTextsMover().continueMovement(event);
 	} else {
 		event->ignore();
 	}
@@ -591,14 +604,19 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 */
 void DynamicElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-	if (m_parent_element)
-		m_parent_element->setHighlighted(false);
+	if(m_move_parent)
+	{
+		parentElement()->mouseReleaseEvent(event);
+	} else {
+		if (m_parent_element)
+			m_parent_element->setHighlighted(false);
 	
-	if(m_parent_element && m_parent_element->diagram())
-		m_parent_element.data()->diagram()->elementTextsMover().endMovement();
-	
-	if(!(event->modifiers() & Qt::ControlModifier))
-		QGraphicsTextItem::mouseReleaseEvent(event);
+		if(m_parent_element && m_parent_element->diagram())
+			m_parent_element.data()->diagram()->elementTextsMover().endMovement();
+		
+		if(!(event->modifiers() & Qt::ControlModifier))
+			QGraphicsTextItem::mouseReleaseEvent(event);
+	}
 }
 
 /**
