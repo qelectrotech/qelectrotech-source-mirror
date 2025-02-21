@@ -40,31 +40,15 @@ if(NOT DEFINED QET_COMPONENTS)
   message(".. QET_COMPONENTS is not set !!! I set them up !!!")
   include(../../cmake/qet_compilation_vars.cmake)
 endif()
-if(NOT DEFINED QT_VERSION_MAJOR)
-  find_package(
-    QT
-   NAMES
-    Qt6
-    Qt5
-   COMPONENTS
-    ${QET_COMPONENTS}
-   REQUIRED
-   )
-endif()
-message(".. QT_VERSION_MAJOR          :" ${QT_VERSION_MAJOR})
-
-find_package(
-  Qt${QT_VERSION_MAJOR}
- COMPONENTS
- ${QET_COMPONENTS}
- REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS ${QET_COMPONENTS})
+message(".. Qt version                :" ${Qt6_VERSION})
 
 Include(FetchContent)
 
 FetchContent_Declare(
   GTest
   GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG        release-1.10.0)
+  GIT_TAG        v1.15.2)
 
 FetchContent_MakeAvailable(GTest)
 
@@ -85,6 +69,6 @@ target_link_libraries(
     PUBLIC
     gmock gmock_main
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF6_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 

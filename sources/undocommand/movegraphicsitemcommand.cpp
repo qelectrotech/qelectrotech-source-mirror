@@ -139,7 +139,7 @@ void MoveGraphicsItemCommand::move(const QPointF &movement)
 	}
 
 		//Move some conductors
-	for (const auto &conductor : qAsConst(m_content.m_conductors_to_move)) {
+	for (const auto &conductor : std::as_const(m_content.m_conductors_to_move)) {
 		setupAnimation(conductor,
 					   "pos",
 					   conductor->pos(),
@@ -147,7 +147,7 @@ void MoveGraphicsItemCommand::move(const QPointF &movement)
 	}
 
 		//Recalculate the path of other conductors
-	for (const auto &conductor : qAsConst(m_content.m_conductors_to_update)) {
+	for (const auto &conductor : std::as_const(m_content.m_conductors_to_update)) {
 		setupAnimation(conductor, "animPath", 1, 1);
 	}
 }

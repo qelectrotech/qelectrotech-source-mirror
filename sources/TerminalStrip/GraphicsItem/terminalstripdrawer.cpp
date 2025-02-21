@@ -17,6 +17,7 @@
 */
 #include "terminalstripdrawer.h"
 #include <QPainter>
+#include <QHash>
 
 namespace TerminalStripDrawer {
 
@@ -202,7 +203,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 		painter->restore();
 
 			//Draw the bridges
-		for (const auto &points_ : qAsConst(bridges_anchor_points))
+		for (const auto &points_ : std::as_const(bridges_anchor_points))
 		{
 			painter->save();
 			auto pen_{painter->pen()};

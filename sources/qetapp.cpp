@@ -45,7 +45,7 @@
 #define STRINGIFY(x) #x
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -222,6 +222,23 @@ void QETApp::setLanguage(const QString &desired_language) {
 
 	// load translations for the QET application
 	// charge les traductions pour l'application QET
+#ifdef QMFILES_AS_RESOURCE
+	if (!qetTranslator.load(QLocale(desired_language), "qet" "_", ":/lang")) {
+		/* in case of failure,
+		 *  we fall back on the native channels for French
+		 * en cas d'echec,
+		 *  on retombe sur les chaines natives pour le francais
+		 */
+		if (desired_language != "fr") {
+			// use of the English version by default
+			// utilisation de la version anglaise par defaut
+			if(!qetTranslator.load(QLocale(desired_language), "qet", "_", ":/lang"))
+				qWarning() << "failed to load"
+						   << ":/lang/qet_en.qm" << "(" << __FILE__
+						   << __LINE__ << __FUNCTION__ << ")";
+		}
+	}
+#else
 	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
 		/* in case of failure,
 		 *  we fall back on the native channels for French
@@ -237,6 +254,8 @@ void QETApp::setLanguage(const QString &desired_language) {
 						   << __LINE__ << __FUNCTION__ << ")";
 		}
 	}
+#endif
+	qInfo() << "Loaded language file:" << qetTranslator.filePath();
 	qApp->installTranslator(&qetTranslator);
 
 	QString ltr_special_string = tr(
@@ -2368,7 +2387,7 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 	return;
 #else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();

@@ -44,17 +44,17 @@ QDomElement UserProperties::toXml(QDomDocument &xml_document) const
 
 	for (auto i = m_properties.begin(); i != m_properties.end(); ++i)
 	{
-		auto type = i.value().type();
+		auto type = i.value().typeId();
 		switch(type) {
-		case QVariant::Type::String:
+		case QMetaType::QString:
 			up.appendChild(QETXML::createXmlProperty(i.key(), i.value().toString())); break;
-		case QVariant::Type::Int:
+		case QMetaType::Int:
 			up.appendChild(QETXML::createXmlProperty(i.key(), i.value().toInt())); break;
-		case QVariant::Type::Double:
+		case QMetaType::Double:
 			up.appendChild(QETXML::createXmlProperty(i.key(), i.value().toDouble())); break;
-		case QVariant::Type::Bool:
+		case QMetaType::Bool:
 			up.appendChild(QETXML::createXmlProperty(i.key(), i.value().toBool())); break;
-		case QVariant::Type::Color:
+		case QMetaType::QColor:
 			up.appendChild(QETXML::createXmlProperty(i.key(), QColor(i.value().value<QColor>()))); break;
 		default:
 			break;

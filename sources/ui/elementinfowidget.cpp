@@ -203,7 +203,7 @@ void ElementInfoWidget::buildInterface()
 */
 ElementInfoPartWidget *ElementInfoWidget::infoPartWidgetForKey(const QString &key) const
 {
-	for (const auto &eipw : qAsConst(m_eipw_list))
+	for (const auto &eipw : std::as_const(m_eipw_list))
 	{
 		if (eipw->key() == key)
 			return eipw;
@@ -245,7 +245,7 @@ DiagramContext ElementInfoWidget::currentInfo() const
 {
 	DiagramContext info_;
 
-	for (const auto &eipw : qAsConst(m_eipw_list))
+	for (const auto &eipw : std::as_const(m_eipw_list))
 	{
 
 			//add value only if they're something to store

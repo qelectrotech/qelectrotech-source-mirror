@@ -150,7 +150,7 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 	
 	qInfo()<< " OS System language:"<< QLocale::system().name();
-	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeCountryName();
+	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeTerritoryName();
 	qInfo()<< " OS System Native Language Name:"<< QLocale::system().nativeLanguageName();	
 	qInfo()<< "";
 	qInfo()<< " System language defined in QET configuration:"<< QString(QETApp::langFromSetting().toLatin1());
@@ -188,7 +188,7 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it1(QETApp::commonElementsDir().toLatin1(),nameFilters,  QDir::Files, QDirIterator::Subdirectories);
 			while (it1.hasNext())
 			{
-				if(it1.next() > 0 )
+				if(it1.next() != "")
 				{
 				commomElementsDir ++;
 				}
@@ -200,7 +200,7 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it2(QETApp::customElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
 			while (it2.hasNext())
 			{
-				if(it2.next() > 0 )
+				if(it2.next() != "")
 				{
 				customElementsDir ++;
 				}
@@ -211,7 +211,7 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it3(QETApp::companyElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
 			while (it3.hasNext())
 			{
-				if(it3.next() > 0 )
+				if(it3.next() != "")
 				{
 				companyElementsDir ++;
 				}
