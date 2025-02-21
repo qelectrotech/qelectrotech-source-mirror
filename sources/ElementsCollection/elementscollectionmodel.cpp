@@ -26,7 +26,7 @@
 #include "xmlprojectelementcollectionitem.h"
 
 #include <QFutureWatcher>
-#include <QtConcurrentRun>
+#include <QtConcurrentMap>
 
 
 /**
