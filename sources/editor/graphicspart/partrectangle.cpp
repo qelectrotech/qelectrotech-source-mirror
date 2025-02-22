@@ -168,12 +168,14 @@ void PartRectangle::setYRadius(qreal Y)
 }
 
 void PartRectangle::setRotation(qreal angle) {
+	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
+	m_rot = QET::correctAngle(angle, true);
 	// for whatever reason: with "rect" we need to use scene-positions...
 	auto pos = mapToScene(m_rect.x(),m_rect.y());
 	qreal width  = m_rect.height();
 	qreal height = m_rect.width();
 	qreal x; qreal y;
-	if (angle > 0) {
+	if (diffAngle > 0) {
 		x = (pos.y() + m_rect.height()) * (-1);
 		y = pos.x();
 	} else {

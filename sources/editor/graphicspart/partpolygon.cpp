@@ -297,8 +297,9 @@ void PartPolygon::resetAllHandlerColor()
 
 
 void PartPolygon::setRotation(qreal angle) {
-	QTransform rotation = QTransform().rotate(angle);
-	m_rot += angle;
+	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
+	m_rot = QET::correctAngle(angle, true);
+	QTransform rotation = QTransform().rotate(diffAngle);
 	setPolygon(rotation.map(m_polygon));
 	prepareGeometryChange();
 	adjustHandlerPos();
