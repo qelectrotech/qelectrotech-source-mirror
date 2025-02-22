@@ -248,9 +248,9 @@ void DiagramEventAddElement::addElement()
 	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
 	new AddGraphicsObjectCommand(element, m_diagram, m_element -> pos(), undo_object);
 
-		//When we search for free aligned terminal we
-		//temporally  remove m_element to avoid any interaction with the function Element::AlignedFreeTerminals
-		//this is useful when an element who have two (or more) terminals opposite,
+		//When we search for free aligned terminal we temporally remove m_element to
+		//avoid any interaction with the function Element::AlignedFreeTerminals
+		//This is useful when an element has two (or more) terminals on opposite sides,
 		//because m_element is exactly at the same pos of the new element
 		//added to the scene so new conductor are created between terminal of the new element
 		//and the opposite terminal of m_element.
