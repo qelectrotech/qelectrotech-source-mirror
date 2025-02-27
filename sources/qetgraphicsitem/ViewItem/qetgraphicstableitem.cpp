@@ -1001,11 +1001,16 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 						m_header_item->minimumSectionWidth().at(at_b))+b);
 		sum_+= m_header_item->sectionSize(i);
 #else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
+		auto at_a = std::min(m_minimum_column_width.size()-1, (qsizetype) i);               //In case of the I is higher than m_minimum_column_width or
+		auto at_b = std::min(m_header_item->minimumSectionWidth().size()-1,(qsizetype) i); //m_header_item->minimumSectionWidth().size()
+		m_header_item->resizeSection(
+					i,
+					std::max(
+						m_minimum_column_width.at(at_a),
+						m_header_item->minimumSectionWidth().at(at_b))+b);
+		sum_+= m_header_item->sectionSize(i);
 #endif
-		qDebug()<<"Help code for QT 6 or later";
-#endif
+
 	}
 
 
