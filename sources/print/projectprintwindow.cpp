@@ -69,6 +69,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
 		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
 #else
+		print_dialog.setOptions(QAbstractPrintDialog::PrintShowPageSize);
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
