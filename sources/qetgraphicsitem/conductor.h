@@ -232,7 +232,7 @@ class Conductor : public QGraphicsObject
 		static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
 };
 
-Conductor * longuestConductorInPotential (Conductor *conductor, bool all_diagram = false);
+Conductor * longestConductorInPotential (Conductor *conductor, bool all_diagram = false);
 QList <Conductor *> relatedConductors (const Conductor *conductor);
 
 
