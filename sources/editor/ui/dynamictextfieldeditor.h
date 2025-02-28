@@ -21,10 +21,7 @@
 #include "../elementitemeditor.h"
 #include "../graphicspart/partdynamictextfield.h"
 
-#ifdef BUILD_WITHOUT_KF6
-#else
-#	include <KColorButton>
-#endif
+#include "../../colorbutton.h"
 
 namespace Ui {
 	class DynamicTextFieldEditor;
@@ -77,10 +74,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		QList<PartDynamicTextField*> m_parts;
 		QList<QMetaObject::Connection> m_connection_list;
 
-	#ifdef BUILD_WITHOUT_KF6
-	#else
-		KColorButton* m_color_kpb = nullptr;
-	#endif
+		ColorButton* m_color_kpb = nullptr;
 };
 
 #endif // DYNAMICTEXTFIELDEDITOR_H

@@ -111,6 +111,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
   ${QET_DIR}/sources/bordertitleblock.h
+  ${QET_DIR}/sources/colorbutton.cpp
+  ${QET_DIR}/sources/colorbutton.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/conductornumexport.cpp
