@@ -584,7 +584,9 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			current_parent_pos = mapToParent(mapFromScene(event->scenePos()));
 			button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 			
-			QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
+			int diffx = qRound(current_parent_pos.x() - button_down_parent_pos.x());
+			int diffy = qRound(current_parent_pos.y() - button_down_parent_pos.y());
+			QPointF new_pos = m_initial_position + QPointF(diffx, diffy);
 			setPos(new_pos);
 
 			if(diagram())
