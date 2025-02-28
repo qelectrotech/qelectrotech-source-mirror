@@ -172,8 +172,10 @@ QPainterPath PartArc::shadowShape() const
 
 
 void PartArc::setRotation(qreal angle) {
+	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
+	m_rot = QET::correctAngle(angle, true);
 // idea taken from QET_ElementScaler:
-if (angle > 0) {
+	if (diffAngle > 0) {
 	m_start_angle += 270.0 * 16;
 	while (m_start_angle < 0) { m_start_angle += (360*16); }
 	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }

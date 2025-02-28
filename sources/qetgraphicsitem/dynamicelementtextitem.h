@@ -170,6 +170,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		QPointF m_initial_position;
 		bool m_keep_visual_rotation = true;
 		qreal m_visual_rotation_ref = 0;
+		bool m_move_parent = true;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

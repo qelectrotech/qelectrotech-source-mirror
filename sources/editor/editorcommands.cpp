@@ -541,19 +541,19 @@ void RotateElementsCommand::undo()
 		}
 		else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(-90);
+			line->setRotation(line->rotation()-90);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(-90);
+			poly->setRotation(poly->rotation()-90);
 		}
 		else if (item->type() == PartText::Type) {
 			PartText* text = qgraphicsitem_cast<PartText*>(item);
-			text->setRotation(-90);
+			text->setRotation(text->rotation()-90);
 		}
 		else if (item->type() == PartDynamicTextField::Type) {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
-			dyntext->setRotation(-90);
+			dyntext->setRotation(dyntext->rotation()-90);
 		}
 		else {
 			item->setRotation(item->rotation()-90);
@@ -586,19 +586,19 @@ void RotateElementsCommand::redo()
 		}
 		else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(+90);
+			line->setRotation(line->rotation()+90);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(+90);
+			poly->setRotation(poly->rotation()+90);
 		}
 		else if (item->type() == PartText::Type) {
 			PartText* text = qgraphicsitem_cast<PartText*>(item);
-			text->setRotation(+90);
+			text->setRotation(text->rotation()+90);
 		}
 		else if (item->type() == PartDynamicTextField::Type) {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
-			dyntext->setRotation(+90);
+			dyntext->setRotation(dyntext->rotation()+90);
 		}
 		else {
 			item->setRotation(item->rotation()+90);
@@ -622,22 +622,22 @@ void RotateFineElementsCommand::undo()
 	{
 		if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(-5);
+			line->setRotation(line->rotation()-5);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(-5);
+			poly->setRotation(poly->rotation()-5);
 		}
 		else if (item->type() == PartText::Type) {
 			PartText* text = qgraphicsitem_cast<PartText*>(item);
-			text->setRotation(-5);
+			text->setRotation(text->rotation()-5);
 		}
 		else if (item->type() == PartDynamicTextField::Type) {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
-			dyntext->setRotation(-5);
+			dyntext->setRotation(dyntext->rotation()-5);
 		}
 		else {
-			//item->setRotation(-5);
+			//item->setRotation(item->rotation()-5);
 		}
 	}
 }
@@ -651,22 +651,22 @@ void RotateFineElementsCommand::redo()
 	{
 		if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->setRotation(+5);
+			line->setRotation(line->rotation()+5);
 		}
 		else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->setRotation(+5);
+			poly->setRotation(poly->rotation()+5);
 		}
 		else if (item->type() == PartText::Type) {
 			PartText* text = qgraphicsitem_cast<PartText*>(item);
-			text->setRotation(+5);
+			text->setRotation(text->rotation()+5);
 		}
 		else if (item->type() == PartDynamicTextField::Type) {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
-			dyntext->setRotation(+5);
+			dyntext->setRotation(dyntext->rotation()+5);
 		}
 		else {
-			//item->setRotation(+5);
+			//item->setRotation(item->rotation()+5);
 		}
 	}
 }

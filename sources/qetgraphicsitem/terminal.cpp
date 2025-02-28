@@ -695,11 +695,15 @@ bool Terminal::valideXml(QDomElement &terminal)
 
 /**
 	@brief Terminal::fromXml
+	Enables you to find out whether an XML element represents this terminal.
+	Warning, the XML element is not checked
 	Permet de savoir si un element XML represente cette borne. Attention,
 	l'element XML n'est pas verifie
-	@param terminal Le QDomElement a analyser
+	@param terminal Le QDomElement a analyser / QDomElement to check
 	@return true si la borne "se reconnait"
 	(memes coordonnes, meme orientation), false sinon
+	true, if the terminal ‘recognises’ itself (same coordinates,
+	same orientation), false otherwise
 */
 bool Terminal::fromXml(QDomElement &terminal)
 {
