@@ -550,6 +550,8 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		// draw the dot of the grid
 		QPen pen(Qt::black);
 		pen.setCosmetic(true);
+		QSettings settings;
+		pen.setWidth(settings.value(QStringLiteral("diagrameditor/grid_pointsize"), 1).toInt());
 		p -> setPen(pen);
 		p -> setBrush(Qt::NoBrush);
 		qreal limite_x = r.x() + r.width();
@@ -564,8 +566,8 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 			for (int gy = g_y ; gy < limite_y ; gy += drawn_y_grid) {
 				if (draw_cross) {
 					if (!(gx % 10) && !(gy % 10)) {
-						p -> drawLine(QLineF(gx - 0.25, gy, gx + 0.25, gy));
-						p -> drawLine(QLineF(gx, gy - 0.25, gx, gy + 0.25));
+						p -> drawLine(QLineF(gx - (pen.width()/4.0), gy, gx + (pen.width()/4.0), gy));
+						p -> drawLine(QLineF(gx, gy - (pen.width()/4.0), gx, gy + (pen.width()/4.0)));
 					} else {
 						p -> drawPoint(gx, gy);
 					}

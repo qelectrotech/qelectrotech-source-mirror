@@ -227,6 +227,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 				points << QPoint(gx, gy);
 			}
 		}
+		pen.setWidth(settings.value(QStringLiteral("diagrameditor/grid_pointsize"), 1).toInt());
+		p -> setPen(pen);
 		p -> drawPoints(points);
 	}
 
