@@ -213,8 +213,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 							  .insideBorderRect()
 							  .intersected(r);
 
-		qreal limite_x = rect.x() + rect.width();
-		qreal limite_y = rect.y() + rect.height();
+		qreal limit_x = rect.x() + rect.width();
+		qreal limit_y = rect.y() + rect.height();
 
 		int g_x = (int)ceil(rect.x());
 		while (g_x % xGrid) ++ g_x;
@@ -222,8 +222,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		while (g_y % yGrid) ++ g_y;
 
 		QPolygon points;
-		for (int gx = g_x ; gx < limite_x ; gx += xGrid) {
-			for (int gy = g_y ; gy < limite_y ; gy += yGrid) {
+		for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
+			for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
 				points << QPoint(gx, gy);
 			}
 		}
