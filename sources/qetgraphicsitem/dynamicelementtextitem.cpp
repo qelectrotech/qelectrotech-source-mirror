@@ -547,7 +547,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
-	if(event->modifiers() & Qt::ShiftModifier || !m_parent_element)
+	if((event->modifiers() & Qt::ShiftModifier) || !m_parent_element)
 	{
 		m_move_parent = false;
 		DiagramTextItem::mousePressEvent(event);
@@ -584,8 +584,10 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			current_parent_pos = mapToParent(mapFromScene(event->scenePos()));
 			button_down_parent_pos = mapToParent(mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 			
-			QPointF new_pos = m_initial_position + current_parent_pos - button_down_parent_pos;
-			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
+			int diffx = qRound(current_parent_pos.x() - button_down_parent_pos.x());
+			int diffy = qRound(current_parent_pos.y() - button_down_parent_pos.y());
+			QPointF new_pos = m_initial_position + QPointF(diffx, diffy);
+			setPos(new_pos);
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
