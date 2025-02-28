@@ -478,10 +478,12 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(element_info);
 	}
 
-	//complementary information about the element
-	QDomElement informations_element = xml_document.createElement("informations");
-	root.appendChild(informations_element);
-	informations_element.appendChild(xml_document.createTextNode(m_element_data.m_drawing_information.trimmed()));
+	//complementary information about the element, when available
+	if (!(m_element_data.m_drawing_information.trimmed().isEmpty())) {
+		QDomElement informations_element = xml_document.createElement("informations");
+		root.appendChild(informations_element);
+		informations_element.appendChild(xml_document.createTextNode(m_element_data.m_drawing_information.trimmed()));
+	}
 
 	QDomElement description = xml_document.createElement("description");
 
