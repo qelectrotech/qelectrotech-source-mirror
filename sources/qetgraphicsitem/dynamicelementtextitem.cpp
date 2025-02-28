@@ -547,7 +547,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 
 	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
-	if(event->modifiers() & Qt::ShiftModifier || !m_parent_element)
+	if((event->modifiers() & Qt::ShiftModifier) || !m_parent_element)
 	{
 		m_move_parent = false;
 		DiagramTextItem::mousePressEvent(event);
