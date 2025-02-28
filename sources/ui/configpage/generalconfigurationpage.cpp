@@ -71,6 +71,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
 	ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Ygrid", 1).toInt());
+	ui->DiagramEditor_Grid_PointSize_sb->setValue(settings.value("diagrameditor/grid_pointsize", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
@@ -237,6 +238,7 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
 	settings.setValue("diagrameditor/key_fine_Ygrid", ui->DiagramEditor_yKeyGridFine_sb->value());
+	settings.setValue("diagrameditor/grid_pointsize", ui->DiagramEditor_Grid_PointSize_sb->value());
 		//Dynamic text item
 	settings.setValue("diagrameditor/dynamic_text_rotation", ui->m_dyn_text_rotation_sb->value());
 	settings.setValue("diagrameditor/dynamic_text_width", ui->m_dyn_text_width_sb->value());
