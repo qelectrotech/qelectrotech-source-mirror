@@ -1339,17 +1339,17 @@ void Conductor::calculateTextItemPosition()
 		relatedPotentialConductors(false).size() > 0)
 	{
 
-		Conductor *longuest_conductor = longuestConductorInPotential(this);
+		Conductor *longest_conductor = longestConductorInPotential(this);
 
-			//The longuest conductor isn't this conductor
-			//we call calculateTextItemPosition of the longuest conductor
-		if(longuest_conductor != this)
+			//The longest conductor isn't this conductor
+			//we call calculateTextItemPosition of the longest conductor
+		if(longest_conductor != this)
 		{
-			longuest_conductor -> calculateTextItemPosition();
+			longest_conductor -> calculateTextItemPosition();
 			return;
 		}
 
-			//At this point this conductor is the longuest conductor we hide all text of conductor_list
+			//At this point this conductor is the longest conductor we hide all text of conductor_list
 		foreach (Conductor *c, relatedPotentialConductors(false)) {
 					c -> textItem() -> setVisible(false);
 		}
@@ -2072,19 +2072,19 @@ QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath
 }
 
 /**
-	@brief longuestConductorInPotential
+	@brief longestConductorInPotential
 	@param conductor : a conductor in the potential to search
 	@param all_diagram : true -> search in the whole project, false -> search only in the diagram of conductor
-	@return the longuest conductor in the same potential of conductor
+	@return the longest conductor in the same potential of conductor
 */
-Conductor * longuestConductorInPotential(Conductor *conductor, bool all_diagram) {
-	Conductor *longuest_conductor = conductor;
-	//Search the longuest conductor
+Conductor * longestConductorInPotential(Conductor *conductor, bool all_diagram) {
+	Conductor *longest_conductor = conductor;
+	//Search the longest conductor
 	foreach (Conductor *c, conductor -> relatedPotentialConductors(all_diagram))
-		if (c -> length() > longuest_conductor -> length())
-			longuest_conductor = c;
+		if (c -> length() > longest_conductor -> length())
+			longest_conductor = c;
 
-	return longuest_conductor;
+	return longest_conductor;
 }
 
 /**

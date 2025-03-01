@@ -314,7 +314,7 @@ QLineF Terminal::HelpLine() const
 
 	QLineF line(scene_dock , QPointF());
 
-		//Set te second point of line to the edge of diagram,
+		//Set the second point of line to the edge of diagram,
 		//according with the orientation of this terminal
 	switch (orientation())
 	{

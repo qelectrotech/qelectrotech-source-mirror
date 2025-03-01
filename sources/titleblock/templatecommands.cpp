@@ -1083,7 +1083,7 @@ void PasteTemplateCellsCommand::redo()
 }
 
 /**
-	@param cell Pointer to the cell impacted by te paste operation
+	@param cell Pointer to the cell impacted by the paste operation
 	@param new_cell_content Content pasted to the cell
 */
 void PasteTemplateCellsCommand::addPastedCell(TitleBlockCell *cell, const TitleBlockCell &new_cell_content) {
@@ -1091,7 +1091,7 @@ void PasteTemplateCellsCommand::addPastedCell(TitleBlockCell *cell, const TitleB
 }
 
 /**
-	@param cell Pointer to the cell impacted by te paste operation
+	@param cell Pointer to the cell impacted by the paste operation
 	@param former_cell_content Content of the cell before the paste operation
 */
 void PasteTemplateCellsCommand::addErasedCell(TitleBlockCell *cell, const TitleBlockCell &former_cell_content) {
