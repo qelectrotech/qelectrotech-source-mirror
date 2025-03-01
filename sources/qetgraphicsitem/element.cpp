@@ -765,14 +765,14 @@ bool Element::fromXml(QDomElement &e,
 	QList <QDomElement> uuid_list = QET::findInDomElement(e,
 														  QStringLiteral("links_uuids"),
 														  QStringLiteral("link_uuid"));
-	foreach (QDomElement qdo, uuid_list)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	foreach (QDomElement qdo, uuid_list)
 		tmp_uuids_link << qdo.attribute(QStringLiteral("uuid"));
 #else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-		qDebug()<<"Help code for QT 6 or later";
+		foreach (QDomElement qdo, uuid_list) {
+		tmp_uuids_link << QUuid(qdo.attribute(QStringLiteral("uuid")));
+		}
+		qInfo() << "tmp_uuids_link: " << tmp_uuids_link;
 #endif
 	//uuid of this element
 	m_uuid = QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString()));
