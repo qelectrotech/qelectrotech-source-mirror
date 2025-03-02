@@ -54,14 +54,7 @@ void PartRectangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 	Q_UNUSED(widget);
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	t.setCosmetic(options && options -> levelOfDetail < 1.0);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	t.setCosmetic(options && options -> levelOfDetailFromTransform(painter->worldTransform()) < 1.0);
-#endif
 	if (isSelected())
 		t.setColor(Qt::red);
 
