@@ -32,6 +32,10 @@
  */
 void ColorComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
+	// Padding for the color indicator
+	const int padding_x = 5;
+	const int padding_y = 2;
+
 	painter->save();
 
 	if (index.row() > 0)
@@ -47,7 +51,7 @@ void ColorComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 
 		// Draw color indicator rectangle
 		auto color = qvariant_cast<QColor>(index.data());
-		rect.adjust(5, 2, -5, -2);
+		rect.adjust(padding_x, padding_y, -padding_x, -padding_y);
 		painter->fillRect(rect, color);
 	} else {
 		// Draw a normal drop down item for custom color

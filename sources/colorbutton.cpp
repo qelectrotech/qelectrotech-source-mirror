@@ -73,6 +73,11 @@ void ColorButton::clicked(bool checked)
 */
 void ColorButton::paintEvent(QPaintEvent *e) {
 	QPushButton::paintEvent(e);
+
+	// Padding for the color indicator
+	const int padding_x = 5;
+	const int padding_y = 5;
+
 	QPainter painter(this);
 
 	// Get dimensions of the button paint surface
@@ -80,6 +85,6 @@ void ColorButton::paintEvent(QPaintEvent *e) {
 	auto r_height = painter.device()->height();
 
 	// Paint a rectangle with a margin of 5
-	auto color_indicator = QRect(5, 5, r_width - 10, r_height - 10);
+	auto color_indicator = QRect(padding_x, padding_y, r_width - padding_x * 2, r_height - padding_y * 2);
 	painter.fillRect(color_indicator, m_color);
 }
