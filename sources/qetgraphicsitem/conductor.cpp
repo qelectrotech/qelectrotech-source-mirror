@@ -520,14 +520,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetique line, below a certain zoom
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	if (options && options -> levelOfDetail < 1.0)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
-#endif
 	{
 		final_conductor_pen.setCosmetic(true);
 	}

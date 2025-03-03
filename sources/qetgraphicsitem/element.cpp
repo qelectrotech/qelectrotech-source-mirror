@@ -225,14 +225,7 @@ void Element::paint(
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	if (options && options -> levelOfDetail < 1.0)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
-#endif
 	{
 		painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
