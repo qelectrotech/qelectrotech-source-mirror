@@ -42,31 +42,19 @@ if(BUILD_WITH_KF6)
     FetchContent_MakeAvailable(kcoreaddons)
     get_target_property(kca_version KF6::CoreAddons VERSION)
 
-    FetchContent_Declare(
-      kwidgetsaddons
-      GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-      GIT_TAG        ${KF6_GIT_TAG})
-    FetchContent_MakeAvailable(kwidgetsaddons)
-    get_target_property(kwa_version KF6::WidgetsAddons VERSION)
   else()
     find_package(KF6CoreAddons REQUIRED)
     set(kca_version ${KF6CoreAddons_VERSION})
-    find_package(KF6WidgetsAddons REQUIRED)
-    set(kwa_version ${KF6WidgetsAddons_VERSION})
   endif()
 
-  get_target_property(kca_type KF6::WidgetsAddons TYPE)
   get_target_property(kwa_type KF6::CoreAddons TYPE)
 
   message(NOTICE "ecm version            : " ${ECM_VERSION})
   message(NOTICE "kcoreaddons library    : " ${kca_type})
   message(NOTICE "kcoreaddons version    : " ${kca_version})
-  message(NOTICE "kwidgetsaddons library : " ${kwa_type})
-  message(NOTICE "kwidgetsaddons version : " ${kwa_version})
   endblock()
 
   set(KF6_PRIVATE_LIBRARIES
-    KF6::WidgetsAddons
     KF6::CoreAddons
     )
 endif()
