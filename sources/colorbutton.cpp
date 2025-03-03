@@ -56,12 +56,12 @@ void ColorButton::setColor(const QColor &color)
 void ColorButton::clicked(bool checked)
 {
 	// Open color selection dialog
-	auto newColor = QColorDialog::getColor(m_color);
+	auto new_color = QColorDialog::getColor(m_color, this, tr("Select color"), QColorDialog::DontUseNativeDialog);
 
 	// Validate user input
-	if (newColor.isValid()) {
-		m_color = newColor;
-		emit changed(newColor);
+	if (new_color.isValid()) {
+		m_color = new_color;
+		emit changed(new_color);
 		update();
 	}
 }
@@ -75,7 +75,7 @@ void ColorButton::paintEvent(QPaintEvent *e) {
 	QPushButton::paintEvent(e);
 	QPainter painter(this);
 
-	// Get dimensions of te button paint surface
+	// Get dimensions of the button paint surface
 	auto r_width = painter.device()->width();
 	auto r_height = painter.device()->height();
 
