@@ -163,15 +163,8 @@ void Terminal::paint(
 		QWidget *)
 {
 	// en dessous d'un certain zoom, les bornes ne sont plus dessinees
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	if (options && options -> levelOfDetail < 0.5) return;
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 		return;
-#endif
 	painter -> save();
 
 	//annulation des renderhints
@@ -186,14 +179,7 @@ void Terminal::paint(
 	QPen t;
 	t.setWidthF(1.0);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	if (options && options -> levelOfDetail < 1.0)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
-#endif
 	{
 		t.setCosmetic(true);
 	}
