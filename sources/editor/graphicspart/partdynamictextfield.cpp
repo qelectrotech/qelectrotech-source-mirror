@@ -67,8 +67,9 @@ QString PartDynamicTextField::xmlName() const
 	@param angle
 */
 void PartDynamicTextField::setRotation(qreal angle) {
-	QGraphicsObject::setRotation(QET::correctAngle(rotation()+angle, true));
-	setPos(QTransform().rotate(angle).map(pos()));
+	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
+	QGraphicsObject::setRotation(QET::correctAngle(angle, true));
+	setPos(QTransform().rotate(diffAngle).map(pos()));
 }
 
 void PartDynamicTextField::mirror() {

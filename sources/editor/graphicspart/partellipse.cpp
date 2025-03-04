@@ -238,8 +238,10 @@ bool PartEllipse::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 
 
 void PartEllipse::setRotation(qreal angle) {
+	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
+	m_rot = QET::correctAngle(angle, true);
 // idea taken from QET_ElementScaler:
-	if (angle > 0) {
+	if (diffAngle > 0) {
 		qreal width  = m_rect.height();
 		qreal height = m_rect.width();
 		qreal x = (m_rect.y() + m_rect.height()) * (-1);

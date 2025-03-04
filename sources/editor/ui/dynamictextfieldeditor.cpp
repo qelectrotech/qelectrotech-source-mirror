@@ -140,10 +140,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
-#ifdef BUILD_WITHOUT_KF6
-#else
 		m_color_kpb -> setColor(m_text_field.data() -> color());
-#endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
 
@@ -169,16 +166,13 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF6
-#else
-	m_color_kpb = new KColorButton(this);
+	m_color_kpb = new ColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
 
-	connect(m_color_kpb, &KColorButton::changed,
+	connect(m_color_kpb, &ColorButton::changed,
 			this, &DynamicTextFieldEditor::on_m_color_kpb_changed);
 
 	ui->m_main_grid_layout->addWidget(m_color_kpb, 6, 1, 1, 2);
-#endif
 }
 
 void DynamicTextFieldEditor::setUpConnections()

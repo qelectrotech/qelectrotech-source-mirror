@@ -42,8 +42,9 @@ PartTerminal::~PartTerminal()
 }
 
 /**
+	Import terminal properties from an XML element
 	Importe les proprietes d'une borne depuis un element XML
-	@param xml_elmt Element XML a lire
+	@param xml_elmt Element XML a lire / XML element to read
 */
 void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	d -> fromXml(xml_elmt);
@@ -166,8 +167,9 @@ void PartTerminal::setRotation(qreal angle) {
 	else if (180 <= angle_mod && angle_mod < 270) new_ori = Qet::South;
 	else new_ori = Qet::West;
 
+	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
 	double tmp, y, x;
-	if (angle > 0) {
+	if (diffAngle > 0) {
 		tmp = d->m_pos.y();
 		y   = d->m_pos.x();
 		x   = (-1) * tmp;
