@@ -991,21 +991,14 @@ void QetGraphicsTableItem::adjustColumnsWidth()
 	int sum_=0;
 	for(auto i= 0 ; i<m_model->columnCount() ; ++i)
 	{
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		auto at_a = std::min(m_minimum_column_width.size()-1, i);               //In case of the I is higher than m_minimum_column_width or
-		auto at_b = std::min(m_header_item->minimumSectionWidth().size()-1, i); //m_header_item->minimumSectionWidth().size()
+		auto at_a = std::min((int)m_minimum_column_width.size()-1, i);               //In case of the I is higher than m_minimum_column_width or
+		auto at_b = std::min((int)m_header_item->minimumSectionWidth().size()-1, i); //m_header_item->minimumSectionWidth().size()
 		m_header_item->resizeSection(
 					i,
 					std::max(
 						m_minimum_column_width.at(at_a),
 						m_header_item->minimumSectionWidth().at(at_b))+b);
 		sum_+= m_header_item->sectionSize(i);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-		qDebug()<<"Help code for QT 6 or later";
-#endif
 	}
 
 
