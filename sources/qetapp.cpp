@@ -1275,7 +1275,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 							   9.0).toDouble();
 	auto diagram_texts_item_weight =
 			static_cast<QFont::Weight>(
-				settings.value("diagramitemweight").toInt());
+				settings.value("diagramitemweight", QFont::Normal).toInt());
 	QString diagram_texts_item_style  = settings.value("diagramitemstyle",
 							   "normal").toString();
 
