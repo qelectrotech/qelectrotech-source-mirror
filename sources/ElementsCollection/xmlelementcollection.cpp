@@ -46,125 +46,64 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	collection.appendChild(import);
 
 	NamesList names;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-
-	const QChar russian_data[24] = {
-		0x0418, 0x043C, 0x043F, 0x043E, 0x0440, 0x0442, 0x0438, 0x0440,
-		0x043E, 0x0432, 0x0430, 0x043D, 0x043D, 0x044B, 0x0435, 0x0020,
-		0x044D, 0x043B, 0x0435, 0x043C, 0x0435, 0x043D, 0x0442, 0x044B};
+	const QChar chinese_data[4] ={
+		QChar(0x5BFC), QChar(0x5165), QChar(0x5143), QChar(0x4EF6)};
 	const QChar greek_data[18] = {
-		0x0395,
-		0x03b9,
-		0x03c3,
-		0x03b7,
-		0x03b3,
-		0x03bc,
-		0x03ad,
-		0x03bd,
-		0x03b1,
-		0x0020,
-		0x03c3,
-		0x03c4,
-		0x03bf,
-		0x03b9,
-		0x03c7,
-		0x03b5,
-		0x03af,
-		0x03b1};
-	const QChar turkish_data[12] = {
-		0x0130,
-		0x0074,
-		0x0068,
-		0x0061,
-		0x006C,
-		0x0020,
-		0x00F6,
-		0x011F,
-		0x0065,
-		0x006C,
-		0x0065,
-		0x0072};
-	const QChar ukrainian_data[20] = {
-		0x0406,
-		0x043c,
-		0x043f,
-		0x043e,
-		0x0440,
-		0x0442,
-		0x043e,
-		0x0432,
-		0x0430,
-		0x043d,
-		0x0456,
-		0x0020,
-		0x0435,
-		0x043b,
-		0x0435,
-		0x043c,
-		0x0435,
-		0x043d,
-		0x0442,
-		0x0438};
+		QChar(0x0395), QChar(0x03b9), QChar(0x03c3), QChar(0x03b7),
+		QChar(0x03b3), QChar(0x03bc), QChar(0x03ad), QChar(0x03bd),
+		QChar(0x03b1), QChar(0x0020), QChar(0x03c3), QChar(0x03c4),
+		QChar(0x03bf), QChar(0x03b9), QChar(0x03c7), QChar(0x03b5),
+		QChar(0x03af), QChar(0x03b1)};
 	const QChar japanese_data[10] = {
-		0x30A4,
-		0x30F3,
-		0x30D0,
-		0x30FC,
-		0x30C8,
-		0x3055,
-		0x308C,
-		0x305F,
-		0x8981,
-		0x7D20};
-
+		QChar(0x30A4), QChar(0x30F3), QChar(0x30D0), QChar(0x30FC),
+		QChar(0x30C8), QChar(0x3055), QChar(0x308C), QChar(0x305F),
+		QChar(0x8981), QChar(0x7D20)};
+	const QChar russian_data[24] = {
+		QChar(0x0418), QChar(0x043C), QChar(0x043F), QChar(0x043E),
+		QChar(0x0440), QChar(0x0442), QChar(0x0438), QChar(0x0440),
+		QChar(0x043E), QChar(0x0432), QChar(0x0430), QChar(0x043D),
+		QChar(0x043D), QChar(0x044B), QChar(0x0435), QChar(0x0020),
+		QChar(0x044D), QChar(0x043B), QChar(0x0435), QChar(0x043C),
+		QChar(0x0435), QChar(0x043D), QChar(0x0442), QChar(0x044B)};
+	const QChar turkish_data[12] = {
+		QChar(0x0130), QChar(0x0074), QChar(0x0068), QChar(0x0061),
+		QChar(0x006C), QChar(0x0020), QChar(0x00F6), QChar(0x011F),
+		QChar(0x0065), QChar(0x006C), QChar(0x0065), QChar(0x0072)};
+	const QChar ukrainian_data[20] = {
+		QChar(0x0406), QChar(0x043c), QChar(0x043f), QChar(0x043e),
+		QChar(0x0440), QChar(0x0442), QChar(0x043e), QChar(0x0432),
+		QChar(0x0430), QChar(0x043d), QChar(0x0456), QChar(0x0020),
+		QChar(0x0435), QChar(0x043b), QChar(0x0435), QChar(0x043c),
+		QChar(0x0435), QChar(0x043d), QChar(0x0442), QChar(0x0438)};
 	names.addName("ca",    "Elements importats");
 	names.addName("cs",    "Zavedené prvky");
 	names.addName("da",    "Importerede elementer");
-	names.addName("de",    "Importierte elemente");
+	names.addName("de",    "Importierte Elemente");
 	names.addName("el",    QString(greek_data, 18));
+	//names.addName("el",    "Εισηγμένα στοιχεία);
 	names.addName("en",    "Imported elements");
 	names.addName("es",    "Elementos importados");
 	names.addName("fr",    "Éléments importés");
 	names.addName("hr",    "Uvezeni elementi");
 	names.addName("it",    "Elementi importati");
 	names.addName("ja",    QString(japanese_data, 10));
-	names.addName("nl_BE", "Elementen geïmporteerd");
+	//names.addName("ja",    "インバートされた要素");
 	names.addName("nl",    "Elementen geïmporteerd");
+	names.addName("nl_BE", "Elementen geïmporteerd");
 	names.addName("pl",    "Elementy importowane");
-	names.addName("pt_BR", "elementos importados");
-	names.addName("pt",    "elementos importados");
+	names.addName("pt",    "Elementos importados");
+	names.addName("pt_BR", "Elementos importados");
 	names.addName("ro",    "Elemente importate");
 	names.addName("ru",    QString(russian_data, 24));
+	//names.addName("ru",    "Импортированные элементы");
 	names.addName("sl",    "Uvoženi elementi");
+	names.addName("sv",    "Importerade element");
 	names.addName("tr",    QString(turkish_data, 12));
+	//names.addName("tr",    "İthal öğeler");
 	names.addName("uk",    QString(ukrainian_data, 20));
-#else
-#	if TODO_LIST
-#		pragma message("@TODO remove code for QT 6 or later")
-#	endif
-	qDebug() << "Help code for QT 6 or later";
-	names.addName("ca",    "Elements importats");
-	names.addName("cs",    "Zavedené prvky");
-	names.addName("da",    "Importerede elementer");
-	names.addName("de",    "Importierte elemente");
-	names.addName("el",    "Εισηγμένα στοιχεία");
-	names.addName("en",    "Imported elements");
-	names.addName("es",    "Elementos importados");
-	names.addName("fr",    "Éléments importés");
-	names.addName("hr",    "Uvezeni elementi");
-	names.addName("it",    "Elementi importati");
-	names.addName("ja",    "インバートされた要素");
-	names.addName("nl_BE", "Elementen geïmporteerd");
-	names.addName("nl",    "Elementen geïmporteerd");
-	names.addName("pl",    "Elementy importowane");
-	names.addName("pt_BR", "elementos importados");
-	names.addName("pt",    "elementos importados");
-	names.addName("ro",    "Elemente importate");
-	names.addName("ru",    "Импортированные элементы");
-	names.addName("sl",    "Uvoženi elementi");
-	names.addName("tr",    "İthal öğeler");
-	names.addName("uk",    "Імпортовані елементи");
-#endif
+	//names.addName("uk",    "Імпортовані елементи");
+	names.addName("zh",    QString(chinese_data, 4));
+	//names.addName("zh",    "导入元件");
 
 	import.appendChild(names.toXml(m_dom_document));
 }
