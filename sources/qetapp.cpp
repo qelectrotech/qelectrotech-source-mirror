@@ -1260,7 +1260,7 @@ QFont QETApp::diagramTextsFont(qreal size)
 }
 /**
 	@brief QETApp::diagramTextsItemFont
-	the font for to use in independent text item
+	the font to use in independent text items
 	@param size of font
 	@return
 */
