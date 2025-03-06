@@ -754,7 +754,14 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	return action_group;
 }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message)
+#else
+bool QET::writeToFile(const QDomDocument &xml_doc, QFile *file, QString *error_message)
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+#endif
 {
 	bool opened_here = file->isOpen() ? false : true;
 
