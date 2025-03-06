@@ -179,7 +179,7 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 					//If a conductor was already created between these two terminals
 					//in this undo command, from another removed element, we do nothing
 				bool exist_ = false;
-				for (QPair<Terminal *, Terminal *> pair : m_connected_terminals)
+				for (std::pair<Terminal *, Terminal *> pair : m_connected_terminals)
 				{
 					if  (pair.first == hub_terminal && pair.second == t) {
 						exist_ = true;
@@ -192,14 +192,8 @@ void DeleteQGraphicsItemCommand::setPotentialsOfRemovedElements()
 
 				if (exist_ == false)
 				{
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-					m_connected_terminals.append(qMakePair<Terminal *, Terminal *>(hub_terminal, t));
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-					qDebug()<<"Help code for QT 6 or later";
-#endif
+					m_connected_terminals.append(std::make_pair<Terminal *, Terminal *>((Terminal *)hub_terminal, (Terminal *)t));
+					qInfo() << "m_connected_terminals" << m_connected_terminals;
 					Conductor *new_cond = new Conductor(hub_terminal, t);
 					new_cond->setProperties(properties);
 					new AddGraphicsObjectCommand(new_cond, t->diagram(), QPointF(), this);
