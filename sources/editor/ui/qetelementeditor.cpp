@@ -487,7 +487,7 @@ void QETElementEditor::fillPartsList()
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-				qDebug()<<"Help code for QT 6 or later";
+				v.setValue(qgi);
 #endif
 				qlwi -> setData(42, v);
 				m_parts_list -> addItem(qlwi);
