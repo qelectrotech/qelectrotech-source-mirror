@@ -519,8 +519,8 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 	final_conductor_pen.setStyle(m_properties.style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
-		//Use a cosmetique line, below a certain zoom
-	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
+		//Use a cosmetic line, below a certain zoom
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
 		final_conductor_pen.setCosmetic(true);
 	}

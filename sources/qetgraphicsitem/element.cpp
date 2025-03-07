@@ -215,24 +215,24 @@ void Element::paint(
 		drawHighlight(painter, options);
 	}
 
-		//Set default pen and brush to QPainter
-		//for avoid a strange bug when the Qt theme is a "dark" theme.
-		//Some part of an element are gray or white instead of black.
-		//This bug seems append only  when the QPainter use drawPicture method.
+		//Set default pen and brush to QPainter to avoid a strange bug when
+		//the Qt theme is a "dark" theme.
+		//Some parts of an element are gray or white instead of black.
+		//This bug seems append only when the QPainter uses drawPicture method.
 		//See bug 175. https://qelectrotech.org/bugtracker/view.php?id=175
 	painter->save();
 	QPen pen;
 	QBrush brush;
 	painter->setPen(pen);
 	painter->setBrush(brush);
-	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 1.0)
+	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
 		painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
 		painter->drawPicture(0, 0, m_picture);
 	}
 
-	painter->restore(); //Restorr the QPainter after use drawPicture
+	painter->restore(); //Restore the QPainter after use drawPicture
 
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
