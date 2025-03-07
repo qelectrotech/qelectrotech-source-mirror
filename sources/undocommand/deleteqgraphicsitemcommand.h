@@ -52,7 +52,7 @@ class DeleteQGraphicsItemCommand : public QUndoCommand
 		QHash <Element *, QList<Element *> > m_link_hash; /// keep linked element for each removed element linked to other element.
 		QHash <DynamicElementTextItem *, Element *> m_elmt_text_hash; /// Keep the parent element of each deleted dynamic element text item
 		QHash <DynamicElementTextItem *, ElementTextItemGroup *> m_grp_texts_hash; ///Keep the parent group of each deleted element text item
-		QList <QPair<Terminal *, Terminal *>> m_connected_terminals;
+		QList <std::pair<Terminal *, Terminal *>> m_connected_terminals;
 		QHash <QetGraphicsTableItem *, QPointer<QGraphicsScene>> m_table_scene_hash;
 		bool m_remove_linked_table = false;
 };

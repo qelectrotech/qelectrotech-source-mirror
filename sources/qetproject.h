@@ -234,7 +234,6 @@ class QETProject : public QObject
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
-		NamesList namesListForIntegrationCategory();
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
