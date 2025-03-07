@@ -158,23 +158,20 @@ void PartTerminal::setRotation(qreal angle) {
 	else new_ori = Qet::West;
 
 	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
-	double tmp, y, x;
-	if (diffAngle > 0) {
-		tmp = d->m_pos.y();
-		y   = d->m_pos.x();
-		x   = (-1) * tmp;
-	} else {
-		tmp = d->m_pos.x();
-		x   = d->m_pos.y();
-		y   = (-1) * tmp;
-	}
-	d->m_pos.setX(x); d->m_pos.setY(y);
 
+	auto p1 = QTransform().rotate(diffAngle).map(pos());
+	d->m_pos.setX(p1.x()); d->m_pos.setY(p1.y());
 	setPos(d->m_pos);
 	setOrientation(new_ori);
+	updateSecondPoint();
+	prepareGeometryChange();
 	emit orientationChanged(); // all terminal-signals call "updateForm"
 }
 
+/**
+	@brief PartTerminal::rotation
+	@return current rotation-angle in degrees
+*/
 qreal PartTerminal::rotation() const {
 	switch (d->m_orientation) {
 		case Qet::North : return 0;
@@ -185,9 +182,13 @@ qreal PartTerminal::rotation() const {
 	return 0;
 }
 
+/**
+	@brief PartTerminal::flip
+	turn part upside down
+*/
 void PartTerminal::flip() {
-	d->m_pos.setY((-1.0) * d->m_pos.y());
-
+	d->m_pos.setX(         pos().x());
+	d->m_pos.setY((-1.0) * pos().y());
 	switch (d->m_orientation) {
 		case Qet::North : setOrientation(Qet::South);
 						  break;
@@ -202,8 +203,13 @@ void PartTerminal::flip() {
 	emit yChanged(); // all terminal-signals call "updateForm"
 }
 
+/**
+	@brief PartTerminal::mirror
+	turn part from left to right
+*/
 void PartTerminal::mirror() {
-	d->m_pos.setX((-1.0) * d->m_pos.x());
+	d->m_pos.setX((-1.0) * pos().x());
+	d->m_pos.setY(         pos().y());
 	switch (d->m_orientation) {
 		case Qet::North : break;
 		case Qet::East  : setOrientation(Qet::West);

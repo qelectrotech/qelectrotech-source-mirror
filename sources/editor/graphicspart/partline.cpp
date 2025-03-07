@@ -574,8 +574,12 @@ void PartLine::setSecondEndLength(const qreal &l)
 void PartLine::setRotation(qreal angle) {
 	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
 	m_rot = QET::correctAngle(angle, true);
-	m_line.setP1(QTransform().rotate(diffAngle).map(m_line.p1()));
-	m_line.setP2(QTransform().rotate(diffAngle).map(m_line.p2()));
+	auto p1 = mapToScene(m_line.p1());
+	auto p2 = mapToScene(m_line.p2());
+	p1 = QTransform().rotate(diffAngle).map(p1);
+	p2 = QTransform().rotate(diffAngle).map(p2);
+	m_line.setP1(mapFromScene(p1));
+	m_line.setP2(mapFromScene(p2));
 	prepareGeometryChange();
 	setLine(m_line);
 	adjustHandlerPos();
@@ -587,8 +591,12 @@ qreal PartLine::rotation() const {
 }
 
 void PartLine::flip() {
-	m_line.setP1(QPointF(m_line.p1().x(), (-1) * m_line.p1().y()));
-	m_line.setP2(QPointF(m_line.p2().x(), (-1) * m_line.p2().y()));
+	auto p1 = mapToScene(m_line.p1());
+	auto p2 = mapToScene(m_line.p2());
+	p1 = QPointF(p1.x(), (-1) * p1.y());
+	p2 = QPointF(p2.x(), (-1) * p2.y());
+	m_line.setP1(mapFromScene(p1));
+	m_line.setP2(mapFromScene(p2));
 	setLine(m_line);
 	prepareGeometryChange();
 	adjustHandlerPos();
@@ -596,8 +604,12 @@ void PartLine::flip() {
 }
 
 void PartLine::mirror() {
-	m_line.setP1(QPointF((-1) * m_line.p1().x(), m_line.p1().y()));
-	m_line.setP2(QPointF((-1) * m_line.p2().x(), m_line.p2().y()));
+	auto p1 = mapToScene(m_line.p1());
+	auto p2 = mapToScene(m_line.p2());
+	p1 = QPointF((-1) * p1.x(), p1.y());
+	p2 = QPointF((-1) * p2.x(), p2.y());
+	m_line.setP1(mapFromScene(p1));
+	m_line.setP2(mapFromScene(p2));
 	setLine(m_line);
 	prepareGeometryChange();
 	adjustHandlerPos();
