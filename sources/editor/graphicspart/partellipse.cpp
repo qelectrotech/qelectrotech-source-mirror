@@ -234,19 +234,19 @@ void PartEllipse::setRotation(qreal angle) {
 	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
 	m_rot = QET::correctAngle(angle, true);
 // idea taken from QET_ElementScaler:
+	auto p1 = mapToScene(m_rect.x(), m_rect.y());
+	qreal width  = m_rect.height();
+	qreal height = m_rect.width();
+	qreal x; qreal y;
 	if (diffAngle > 0) {
-		qreal width  = m_rect.height();
-		qreal height = m_rect.width();
-		qreal x = (m_rect.y() + m_rect.height()) * (-1);
-		qreal y = m_rect.x();
-		m_rect  = QRectF(x, y, width, height);
+		x = (p1.y() + m_rect.height()) * (-1);
+		y = p1.x();
 	} else {
-		qreal width  = m_rect.height();
-		qreal height = m_rect.width();
-		qreal x = m_rect.y();
-		qreal y = (m_rect.x() + m_rect.width()) * (-1);
-		m_rect  = QRectF(x, y, width, height);
+		x = m_rect.y();
+		y = (m_rect.x() + m_rect.width()) * (-1);
 	}
+	p1 = mapFromScene(x, y);
+	m_rect = QRectF(p1.x(), p1.y(), width, height);
 	prepareGeometryChange();
 	adjustHandlerPos();
 	emit rectChanged();
@@ -257,16 +257,20 @@ qreal PartEllipse::rotation() const {
 }
 
 void PartEllipse::flip() {
-	qreal y = ((-1.0) * m_rect.y()) - m_rect.height();
-	m_rect  = QRectF(m_rect.x(), y, m_rect.width(), m_rect.height());
+	auto p1 = mapToScene(m_rect.x(), m_rect.y());
+	p1.setY(((-1.0) * p1.y()) - m_rect.height());
+	p1 = mapFromScene(p1.x(), p1.y());
+	m_rect = QRectF(p1.x(), p1.y(), m_rect.width(), m_rect.height());
 	prepareGeometryChange();
 	adjustHandlerPos();
 	emit rectChanged();
 }
 
 void PartEllipse::mirror() {
-	qreal x = ((-1.0) * m_rect.x()) - m_rect.width();
-	m_rect  = QRectF(x, m_rect.y(), m_rect.width(), m_rect.height());
+	auto p1 = mapToScene(m_rect.x(), m_rect.y());
+	p1.setX(((-1.0) * p1.x()) - m_rect.width());
+	p1 = mapFromScene(p1.x(), p1.y());
+	m_rect = QRectF(p1.x(), p1.y(), m_rect.width(), m_rect.height());
 	prepareGeometryChange();
 	adjustHandlerPos();
 	emit rectChanged();

@@ -163,22 +163,19 @@ void PartRectangle::setYRadius(qreal Y)
 void PartRectangle::setRotation(qreal angle) {
 	qreal diffAngle = qRound((angle - rotation()) * 100.0) / 100.0;
 	m_rot = QET::correctAngle(angle, true);
-	// for whatever reason: with "rect" we need to use scene-positions...
-	auto pos = mapToScene(m_rect.x(),m_rect.y());
+	auto p1 = mapToScene(m_rect.x(),m_rect.y());
 	qreal width  = m_rect.height();
 	qreal height = m_rect.width();
 	qreal x; qreal y;
 	if (diffAngle > 0) {
-		x = (pos.y() + m_rect.height()) * (-1);
-		y = pos.x();
+		x = (p1.y() + m_rect.height()) * (-1);
+		y = p1.x();
 	} else {
-		x = pos.y();
-		y = (pos.x() + m_rect.width()) * (-1);
+		x = p1.y();
+		y = (p1.x() + m_rect.width()) * (-1);
 	}
-
-	pos = mapFromScene(x, y);
-	m_rect.setX(pos.x());   m_rect.setY(pos.y());
-	m_rect.setWidth(width); m_rect.setHeight(height);
+	p1 = mapFromScene(x, y);
+	m_rect = QRectF(p1.x(), p1.y(), width, height);
 	std::swap (m_xRadius, m_yRadius);
 
 	prepareGeometryChange();
@@ -191,13 +188,13 @@ qreal PartRectangle::rotation() const {
 }
 
 void PartRectangle::flip() {
-	// for whatever reason: with "rect" we need to use scene-positions...
-	qreal height = m_rect.height();
-	auto pos = mapToScene(m_rect.x(),m_rect.y());
-	qreal x = pos.x();
-	qreal y = ((-1.0) * pos.y()) - height;
-	pos = mapFromScene(x, y);
-	m_rect.setX(pos.x());   m_rect.setY(pos.y());
+	auto height = m_rect.height();
+	auto p1 = mapToScene(m_rect.x(),m_rect.y());
+	qreal x = p1.x();
+	qreal y = ((-1.0) * p1.y()) - height;
+	p1 = mapFromScene(x, y);
+	m_rect.setX(p1.x());
+	m_rect.setY(p1.y());
 	m_rect.setHeight(height);
 	prepareGeometryChange();
 	adjustHandlerPos();
@@ -205,13 +202,13 @@ void PartRectangle::flip() {
 }
 
 void PartRectangle::mirror() {
-	// for whatever reason: with "rect" we need to use scene-positions...
-	qreal width = m_rect.width();
-	auto pos = mapToScene(m_rect.x(),m_rect.y());
-	qreal x = ((-1.0) * pos.x()) - width;
-	qreal y = pos.y();
-	pos = mapFromScene(x, y);
-	m_rect.setX(pos.x());   m_rect.setY(pos.y());
+	auto width = m_rect.width();
+	auto p1 = mapToScene(m_rect.x(),m_rect.y());
+	qreal x = ((-1.0) * p1.x()) - width;
+	qreal y = p1.y();
+	p1 = mapFromScene(x, y);
+	m_rect.setX(p1.x());
+	m_rect.setY(p1.y());
 	m_rect.setWidth(width);
 	prepareGeometryChange();
 	adjustHandlerPos();
