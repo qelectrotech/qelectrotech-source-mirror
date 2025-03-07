@@ -887,11 +887,25 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </spacer>
           </item>
-          <item row="0" column="2">
-           <widget class="QSpinBox" name="DiagramEditor_Grid_PointSize_sb">
+          <item row="0" column="4">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>max:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="Label_Diagram_Grid_PointSize">
+            <property name="text">
+             <string>Taille des points de la grille de Diagram-Editor : 1 - 5</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QSpinBox" name="DiagramEditor_Grid_PointSize_max_sb">
             <property name="minimumSize">
              <size>
-              <width>80</width>
+              <width>60</width>
               <height>0</height>
              </size>
             </property>
@@ -903,10 +917,79 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="Label_Diagram_Grid_PointSize">
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_19">
             <property name="text">
-             <string>Taille du point Grille : 1 - 5</string>
+             <string>min:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QSpinBox" name="DiagramEditor_Grid_PointSize_min_sb">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Taille des points de la grille de l'éditeur d'éléments : 1 - 5</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QSpinBox" name="ElementEditor_Grid_PointSize_max_sb">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QLabel" name="label_21">
+            <property name="text">
+             <string>max:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QSpinBox" name="ElementEditor_Grid_PointSize_min_sb">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>min:</string>
             </property>
            </widget>
           </item>

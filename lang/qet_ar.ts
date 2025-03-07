@@ -796,13 +796,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1661"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1654"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>تغيير خاصيات الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1666"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1659"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>تغيير خاصيات موصلات متعددة</translation>
@@ -1107,7 +1107,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1833"/>
+        <location filename="../sources/diagram.cpp" line="1851"/>
         <source>Modifier la profondeur</source>
         <translation>تغيير العمق</translation>
     </message>
@@ -2326,26 +2326,26 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>نقلة أوليّة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="870"/>
+        <location filename="../sources/editor/elementscene.cpp" line="872"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير معلومات المؤلف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="875"/>
+        <location filename="../sources/editor/elementscene.cpp" line="877"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>يمكنكم استعمال هذا الحقل الحر لذكر المؤلفين , العنصر, ترخيصه أو أي معلومة أخرى ترونها ضرورية .</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="939"/>
+        <location filename="../sources/editor/elementscene.cpp" line="941"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translatorcomment>عنوان النافذة</translatorcomment>
         <translation>تحرير الأسماء</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="941"/>
+        <location filename="../sources/editor/elementscene.cpp" line="943"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>يمكنكم تعيين إسم العنصر بلغات متعدّدة .</translation>
     </message>
@@ -3541,17 +3541,34 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="909"/>
-        <source>Taille du point Grille : 1 - 5</source>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="969"/>
+        <source>max:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="900"/>
+        <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="992"/>
+        <source>min:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="946"/>
+        <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
         <source>Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="941"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1024"/>
         <source>Max. parts in Element Editor List</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3586,178 +3603,178 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="331"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>عام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
         <source>Système</source>
         <translation>النظام</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
         <source>Arabe</source>
         <translation>العربية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="354"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
         <source>Brézilien</source>
         <translation>البرازيلي</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
         <source>Catalan</source>
         <translation>الكتالونية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
         <source>Tchèque</source>
         <translation>التشيكية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
         <source>Allemand</source>
         <translation>الألمانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
         <source>Danois</source>
         <translation>دنماركية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
         <source>Grec</source>
         <translation>اليونانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
         <source>Anglais</source>
         <translation>الإنجليزية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
         <source>Espagnol</source>
         <translation>الإسبانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
         <source>Français</source>
         <translation>الفرنسية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Croate</source>
         <translation>الكرواتية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Italien</source>
         <translation>الإيطالية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
         <source>Japonais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
         <source>Polonais</source>
         <translation>البولندية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
         <source>Portugais</source>
         <translation>البرتغالية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
         <source>Roumains</source>
         <translation>الرومانية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
         <source>Russe</source>
         <translation>الروسية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
         <source>Slovène</source>
         <translation>السلوفينية</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
         <source>Pays-Bas</source>
         <translation>هولندا</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
         <source>Norvege</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
         <source>Belgique-Flemish</source>
         <translation>بلجيكا- فلامون</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="380"/>
         <source>Turc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
         <source>Hongrois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="382"/>
         <source>Mongol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Ukrainien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
         <source>Chinois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="385"/>
         <source>Suédois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="442"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="448"/>
         <source>Chemin de la collection commune</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="456"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="462"/>
         <source>Chemin de la collection company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="476"/>
         <source>Chemin de la collection utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="484"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="490"/>
         <source>Chemin des cartouches company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="498"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="504"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="527"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="533"/>
         <source>To high values might lead to crashes of the application.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4924,10 +4941,10 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartArc</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="394"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="398"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="404"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="411"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="391"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="395"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="401"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="408"/>
         <source>Modifier un arc</source>
         <translation>تعديل قوس</translation>
     </message>
@@ -4949,7 +4966,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartEllipse</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="330"/>
+        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="327"/>
         <source>Modifier un rectangle</source>
         <translation>تعديل مُستطيل</translation>
     </message>
@@ -4957,7 +4974,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
 <context>
     <name>PartLine</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partline.cpp" line="248"/>
+        <location filename="../sources/editor/graphicspart/partline.cpp" line="241"/>
         <source>Modifier une ligne</source>
         <translation>تعديل سطر</translation>
     </message>
@@ -4975,17 +4992,17 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>حذف هذه النقطة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="451"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="452"/>
         <source>Modifier un polygone</source>
         <translation>تعديل مُتعدد أضلع</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="534"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="535"/>
         <source>Ajouter un point à un polygone</source>
         <translation>إضافة نقطة لمتعدد الأضلع</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="567"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="568"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>حذف نقطةمن متغددالأضلع</translation>
     </message>
@@ -7913,7 +7930,7 @@ Que désirez vous faire ?</source>
     <name>QObject</name>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="162"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="436"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="429"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>: تحذير حّفظ العنصر بإصدار لاحق من QElectrotech.</translation>
     </message>
