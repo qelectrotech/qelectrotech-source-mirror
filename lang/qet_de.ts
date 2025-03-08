@@ -3557,7 +3557,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="900"/>
         <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
-        <translation>Punktgröße im Diagramm-Editor: 1 - 5</translation>
+        <translation>Punktgröße im Schaltplaneditor: 1 - 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
