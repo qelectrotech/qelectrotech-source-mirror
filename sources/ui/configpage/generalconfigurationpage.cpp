@@ -71,7 +71,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_yKeyGrid_sb->setValue(settings.value("diagrameditor/key_Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Xgrid", 1).toInt());
 	ui->DiagramEditor_yKeyGridFine_sb->setValue(settings.value("diagrameditor/key_fine_Ygrid", 1).toInt());
-	ui->DiagramEditor_Grid_PointSize_sb->setValue(settings.value("diagrameditor/grid_pointsize", 1).toInt());
+	ui->DiagramEditor_Grid_PointSize_min_sb->setValue(settings.value("diagrameditor/grid_pointsize_min", 1).toInt());
+	ui->DiagramEditor_Grid_PointSize_max_sb->setValue(settings.value("diagrameditor/grid_pointsize_max", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
@@ -129,7 +130,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	  et que la liste ne sera donc pas mise a jour.
 	*/
 	ui->MaxPartsElementEditorList_sb->setValue(settings.value("elementeditor/max-parts-element-editor-list", 200).toInt());
-	
+	ui->ElementEditor_Grid_PointSize_min_sb->setValue(settings.value("elementeditor/grid_pointsize_min", 1).toInt());
+	ui->ElementEditor_Grid_PointSize_max_sb->setValue(settings.value("elementeditor/grid_pointsize_max", 1).toInt());
+
 	QString path = settings.value("elements-collections/common-collection-path", "default").toString();
 	if (path != "default")
 	{
@@ -211,6 +214,8 @@ void GeneralConfigurationPage::applyConf()
 		//ELEMENT EDITOR
 	settings.setValue("elementeditor/default-informations", ui->m_default_elements_info->toPlainText());
 	settings.setValue("elementeditor/max-parts-element-editor-list", ui->MaxPartsElementEditorList_sb->value());
+	settings.setValue("elementeditor/grid_pointsize_min", ui->ElementEditor_Grid_PointSize_min_sb->value());
+	settings.setValue("elementeditor/grid_pointsize_max", ui->ElementEditor_Grid_PointSize_max_sb->value());
 
 		//DIAGRAM VIEW
 	settings.setValue("diagramview/gestures", ui->m_use_gesture_trackpad->isChecked());
@@ -238,7 +243,8 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/key_Ygrid", ui->DiagramEditor_yKeyGrid_sb->value());
 	settings.setValue("diagrameditor/key_fine_Xgrid", ui->DiagramEditor_xKeyGridFine_sb->value());
 	settings.setValue("diagrameditor/key_fine_Ygrid", ui->DiagramEditor_yKeyGridFine_sb->value());
-	settings.setValue("diagrameditor/grid_pointsize", ui->DiagramEditor_Grid_PointSize_sb->value());
+	settings.setValue("diagrameditor/grid_pointsize_min", ui->DiagramEditor_Grid_PointSize_min_sb->value());
+	settings.setValue("diagrameditor/grid_pointsize_max", ui->DiagramEditor_Grid_PointSize_max_sb->value());
 		//Dynamic text item
 	settings.setValue("diagrameditor/dynamic_text_rotation", ui->m_dyn_text_rotation_sb->value());
 	settings.setValue("diagrameditor/dynamic_text_width", ui->m_dyn_text_width_sb->value());
@@ -530,4 +536,26 @@ void GeneralConfigurationPage::on_MaxPartsElementEditorList_sb_valueChanged(int 
 		ui->MaxPartsElementEditorList_sb->setToolTip("");
 		ui->MaxPartsElementEditorList_sb->setStyleSheet("");
 	}
+}
+
+/**
+	@brief GeneralConfigurationPage::on_DiagramEditor_Grid_PointSize_min_sb_valueChanged
+	the min-value of the max-SpinBox has to be limited:
+	may not be smaller than current value of min-SpinBox
+	@param value - the new value of the min-SpinBox
+ */
+void GeneralConfigurationPage::on_DiagramEditor_Grid_PointSize_min_sb_valueChanged(int value)
+{
+	ui->DiagramEditor_Grid_PointSize_max_sb->setMinimum(std::max(1, value));
+}
+
+/**
+	@brief GeneralConfigurationPage::on_ElementEditor_Grid_PointSize_min_sb_valueChanged
+	the min-value of the max-SpinBox has to be limited:
+	may not be smaller than current value of min-SpinBox
+	@param value - the new value of the min-SpinBox
+ */
+void GeneralConfigurationPage::on_ElementEditor_Grid_PointSize_min_sb_valueChanged(int value)
+{
+	ui->ElementEditor_Grid_PointSize_max_sb->setMinimum(std::max(1, value));
 }

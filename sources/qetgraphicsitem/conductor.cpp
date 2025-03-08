@@ -1093,7 +1093,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 		dom_element.setAttribute("userx", QString::number(m_text_item->pos().x()));
 		dom_element.setAttribute("usery", QString::number(m_text_item->pos().y()));
 	}
-	if(m_text_item->wasRotateByUser())
+	if(m_text_item->wasRotatedByUser())
 		dom_element.setAttribute("rotation", QString::number(m_text_item->rotation()));
 
 	return(dom_element);
@@ -1367,7 +1367,7 @@ void Conductor::calculateTextItemPosition()
 		Qt::Orientations rotation;
 		QPointF text_pos = posForText(rotation);
 
-		if (!m_text_item -> wasRotateByUser())
+		if (!m_text_item -> wasRotatedByUser())
 		{
 			rotation == Qt::Vertical ? m_text_item -> setRotation(m_properties.verti_rotate_text):
 									   m_text_item -> setRotation(m_properties.horiz_rotate_text);

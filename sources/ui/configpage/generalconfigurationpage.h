@@ -48,6 +48,8 @@ class GeneralConfigurationPage : public ConfigPage
 		void on_m_custom_tbt_path_cb_currentIndexChanged(int index);
 		void on_m_indi_text_font_pb_clicked();
 		void on_MaxPartsElementEditorList_sb_valueChanged(int value);
+		void on_DiagramEditor_Grid_PointSize_min_sb_valueChanged(int value);
+		void on_ElementEditor_Grid_PointSize_min_sb_valueChanged(int value);
 
 	private:
 		void fillLang();

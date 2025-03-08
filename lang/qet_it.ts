@@ -797,13 +797,13 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1661"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1654"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished">Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1666"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1659"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation type="unfinished">Modifica le proprietà di più conduttori</translation>
@@ -1105,7 +1105,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1833"/>
+        <location filename="../sources/diagram.cpp" line="1851"/>
         <source>Modifier la profondeur</source>
         <translation>Modificare la profondità</translation>
     </message>
@@ -2310,24 +2310,24 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 <context>
     <name>ElementScene</name>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="870"/>
+        <location filename="../sources/editor/elementscene.cpp" line="872"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
         <translation type="unfinished">Modifica le informazioni sull&apos;autore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="875"/>
+        <location filename="../sources/editor/elementscene.cpp" line="877"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>Usare questo campo per specificare l&apos;autore dell&apos;elemento, la sua licenza, o qualunque altra informazione utile.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="939"/>
+        <location filename="../sources/editor/elementscene.cpp" line="941"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation type="unfinished">Modificare i nomi</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="941"/>
+        <location filename="../sources/editor/elementscene.cpp" line="943"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Inserire il nome dell&apos;elemento in più lingue.</translation>
     </message>
@@ -3269,42 +3269,42 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Modulo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
         <source>Grec</source>
         <translation>Greco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="380"/>
         <source>Turc</source>
         <translation>Turco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="382"/>
         <source>Mongol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Ukrainien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
         <source>Chinois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="456"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="462"/>
         <source>Chemin de la collection company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="470"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="476"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>Percorso della raccolta utente</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
         <source>Arabe</source>
         <translation>Arabo</translation>
     </message>
@@ -3334,28 +3334,28 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="331"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation type="unfinished">Generale</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
         <source>Russe</source>
         <translation>Russo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="385"/>
         <source>Suédois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="484"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="490"/>
         <source>Chemin des cartouches company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="527"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="533"/>
         <source>To high values might lead to crashes of the application.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3375,17 +3375,17 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>È possibile definire la visulizzazione predefinita dei differenti testi di QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Italien</source>
         <translation>Italiano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="349"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
         <source>Système</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="354"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
         <source>Brézilien</source>
         <translation>Brasiliano</translation>
     </message>
@@ -3425,17 +3425,34 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="909"/>
-        <source>Taille du point Grille : 1 - 5</source>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="969"/>
+        <source>max:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="933"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="900"/>
+        <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="992"/>
+        <source>min:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="946"/>
+        <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
         <source>Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="941"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1024"/>
         <source>Max. parts in Element Editor List</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3476,17 +3493,17 @@ che si crea. Si possono anche inserire caratteri alfanumerici.</translation>
         <translation>Griglia: 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
         <source>Belgique-Flemish</source>
         <translation>Belga-Fiammingo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
         <source>Allemand</source>
         <translation>Tedesco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
         <source>Slovène</source>
         <translation>Sloveno</translation>
     </message>
@@ -3513,17 +3530,17 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Usare i colori di sistema</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
         <source>Danois</source>
         <translation>Danese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Croate</source>
         <translation>Croato</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
         <source>Norvege</source>
         <translation>Norvégien</translation>
     </message>
@@ -3540,12 +3557,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Carattere :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
         <source>Polonais</source>
         <translation>Polacco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
         <source>Hongrois</source>
         <translation>Ungherese</translation>
     </message>
@@ -3564,7 +3581,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Predefinito</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
         <source>Roumains</source>
         <translation>Rumeno</translation>
     </message>
@@ -3594,12 +3611,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Esporta le morsettiere dalla nomenclatura</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
         <source>Anglais</source>
         <translation>Inglese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
         <source>Japonais</source>
         <translation>Japanese</translation>
     </message>
@@ -3615,12 +3632,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Rotazione :</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
         <source>Français</source>
         <translation>Francese</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
         <source>Pays-Bas</source>
         <translation>Paesi bassi</translation>
     </message>
@@ -3631,12 +3648,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Numerare le colonne del cartiglio a partire da 0 (altrimenti inizia da 1)</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
         <source>Catalan</source>
         <translation>Catalano</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
         <source>Portugais</source>
         <translation>Portoghese</translation>
     </message>
@@ -3655,12 +3672,12 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Sfoglia...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="356"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
         <source>Tchèque</source>
         <translation>Ceco</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
         <source>Espagnol</source>
         <translation>Spagnolo</translation>
     </message>
@@ -3675,7 +3692,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Griglia + Tastiera</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="442"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="448"/>
         <source>Chemin de la collection commune</source>
         <translation>Percorso della raccolta comune</translation>
     </message>
@@ -3715,7 +3732,7 @@ Qui è possibile specificare il valore predefinito di questo campo per gli ogget
         <translation>Evidenzia nel pannello gli elementi appena integrati</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="498"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="504"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>Percorso dei cartigli utente</translation>
     </message>
@@ -4915,10 +4932,10 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>PartArc</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="394"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="398"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="404"/>
-        <location filename="../sources/editor/graphicspart/partarc.cpp" line="411"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="391"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="395"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="401"/>
+        <location filename="../sources/editor/graphicspart/partarc.cpp" line="408"/>
         <source>Modifier un arc</source>
         <translation>Modifica un arco</translation>
     </message>
@@ -4940,7 +4957,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>PartEllipse</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="330"/>
+        <location filename="../sources/editor/graphicspart/partellipse.cpp" line="327"/>
         <source>Modifier un rectangle</source>
         <translation>Modifica un rettangolo</translation>
     </message>
@@ -4948,7 +4965,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>PartLine</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partline.cpp" line="248"/>
+        <location filename="../sources/editor/graphicspart/partline.cpp" line="241"/>
         <source>Modifier une ligne</source>
         <translation>Modifica una linea</translation>
     </message>
@@ -4956,12 +4973,12 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
 <context>
     <name>PartPolygon</name>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="567"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="568"/>
         <source>Supprimer un point d&apos;un polygone</source>
         <translation>Eleminare un punto ad un poligono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="451"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="452"/>
         <source>Modifier un polygone</source>
         <translation>Modifica un poligono</translation>
     </message>
@@ -4976,7 +4993,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
         <translation>Eliminare la pagina corrente</translation>
     </message>
     <message>
-        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="534"/>
+        <location filename="../sources/editor/graphicspart/partpolygon.cpp" line="535"/>
         <source>Ajouter un point à un polygone</source>
         <translation>Aggiungere un punto ad un poligono</translation>
     </message>
@@ -8233,7 +8250,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="162"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="436"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="429"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Attenzione: l&apos;elemento è stato salvato con una versione più recente di  QElectroTech.</translation>
     </message>

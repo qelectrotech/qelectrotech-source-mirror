@@ -480,6 +480,7 @@ bool ElementView::event(QEvent *e) {
 
 /**
 	Utilise le pincement du trackpad pour zoomer
+	Use trackpad pinch to zoom
 	@brief ElementView::gestureEvent
 	@param event
 	@return
@@ -502,6 +503,7 @@ bool ElementView::gestureEvent(QGestureEvent *event){
 
 /**
 	Dessine l'arriere-plan de l'editeur, cad la grille.
+	Draws the editor background, i.e. the grid.
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner
 */
@@ -514,20 +516,23 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	// dessine un fond blanc
+	// draw a white background
 	p -> setPen(Qt::NoPen);
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
 
 	// determine le zoom en cours
+	// determine the zoom-level
 	qreal zoom_factor = transform().m11();
 
 	// choisit la granularite de la grille en fonction du zoom en cours
+	// selects the grid granularity according to the current zoom level
 	int drawn_x_grid = 1;//scene_ -> xGrid();
 	int drawn_y_grid = 1;//scene_ -> yGrid();
 	bool draw_grid = true;
 	bool draw_cross = false;
 
-	if (zoom_factor < (4.0/3.0)) { //< no grid
+	if (zoom_factor < 1.0) { //< no grid
 		draw_grid = false;
 	} else if (zoom_factor < 4.0) { //< grid 10*10
 		drawn_x_grid *= 10;
@@ -547,23 +552,38 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 	m_scene->setGrid(drawn_x_grid, drawn_y_grid);
 
 	if (draw_grid) {
-		// draw the dot of the grid
+		// draw the dots of the grid
 		QPen pen(Qt::black);
 		pen.setCosmetic(true);
 		QSettings settings;
-		pen.setWidth(settings.value(QStringLiteral("diagrameditor/grid_pointsize"), 1).toInt());
+		int minWidthPen = settings.value(QStringLiteral("elementeditor/grid_pointsize_min"), 1).toInt();
+		int maxWidthPen = settings.value(QStringLiteral("elementeditor/grid_pointsize_max"), 1).toInt();
+		pen.setWidth(minWidthPen);
+		qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
+		qreal stepZoom = (25.0 - 1.0) / maxWidthPen;
+		for (int n=0; n<maxWidthPen; n++) {
+			if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
+				int widthPen = minWidthPen + qRound(n * stepPen);
+				pen.setWidth(widthPen);
+			}
+		}
+		if		(zoom_factor <= 1.0)
+					pen.setWidth(minWidthPen);
+		else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
+					pen.setWidth(maxWidthPen);
+
 		p -> setPen(pen);
 		p -> setBrush(Qt::NoBrush);
-		qreal limite_x = r.x() + r.width();
-		qreal limite_y = r.y() + r.height();
+		qreal limit_x = r.x() + r.width();
+		qreal limit_y = r.y() + r.height();
 
 		int g_x = (int)ceil(r.x());
 		while (g_x % drawn_x_grid) ++ g_x;
 		int g_y = (int)ceil(r.y());
 		while (g_y % drawn_y_grid) ++ g_y;
 
-		for (int gx = g_x ; gx < limite_x ; gx += drawn_x_grid) {
-			for (int gy = g_y ; gy < limite_y ; gy += drawn_y_grid) {
+		for (int gx = g_x ; gx < limit_x ; gx += drawn_x_grid) {
+			for (int gy = g_y ; gy < limit_y ; gy += drawn_y_grid) {
 				if (draw_cross) {
 					if (!(gx % 10) && !(gy % 10)) {
 						p -> drawLine(QLineF(gx - (pen.width()/4.0), gy, gx + (pen.width()/4.0), gy));

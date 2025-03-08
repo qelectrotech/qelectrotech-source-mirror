@@ -90,10 +90,10 @@ bool ConductorTextItem::wasMovedByUser() const
 }
 
 /**
-	@brief ConductorTextItem::wasRotateByUser
+	@brief ConductorTextItem::wasRotatedByUser
 	@return true if text was explicit moved by user else false
 */
-bool ConductorTextItem::wasRotateByUser() const
+bool ConductorTextItem::wasRotatedByUser() const
 {
 	return(rotate_by_user_);
 }

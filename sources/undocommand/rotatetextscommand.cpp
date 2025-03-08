@@ -45,7 +45,7 @@ m_diagram(diagram)
 		if(dti->type() == ConductorTextItem::Type)
 		{
 			ConductorTextItem *cti = static_cast<ConductorTextItem *>(dti);
-			m_cond_texts.insert(cti, cti->wasRotateByUser());
+			m_cond_texts.insert(cti, cti->wasRotatedByUser());
 		}
 	}
 	for(ElementTextItemGroup *etig : dc.selectedTextsGroup())

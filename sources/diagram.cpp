@@ -227,9 +227,27 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 				points << QPoint(gx, gy);
 			}
 		}
-		pen.setWidth(settings.value(QStringLiteral("diagrameditor/grid_pointsize"), 1).toInt());
+
+		qreal zoom_factor = p->transform().m11();
+		int minWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_min"), 1).toInt();
+		int maxWidthPen = settings.value(QStringLiteral("diagrameditor/grid_pointsize_max"), 1).toInt();
+		pen.setWidth(minWidthPen);
+		qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
+		qreal stepZoom = (5.0 - 1.0) / maxWidthPen;
+		for (int n=0; n<maxWidthPen; n++) {
+			if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
+				int widthPen = minWidthPen + qRound(n * stepPen);
+				pen.setWidth(widthPen);
+			}
+		}
+		if		(zoom_factor <= 1.0)
+					pen.setWidth(minWidthPen);
+		else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
+					pen.setWidth(maxWidthPen);
+
 		p -> setPen(pen);
-		p -> drawPoints(points);
+		if (zoom_factor > 0.5) // no grid below ... !
+				p -> drawPoints(points);
 	}
 
 	if (use_border_) border_and_titleblock.draw(p);
