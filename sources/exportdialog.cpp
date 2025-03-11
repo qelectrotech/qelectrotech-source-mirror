@@ -174,9 +174,7 @@ QWidget *ExportDialog::initDiagramsListPart()
 		ratio_mapper_  -> setMapping(diagram_line -> keep_ratio, line_count);
 		reset_mapper_  -> setMapping(diagram_line -> reset_size, line_count);
 		connect(diagram_line -> width,      SIGNAL(valueChanged(int)), width_mapper_,  SLOT(map()));
-		//connect(diagram_line -> width,      &QSpinBox::valueChanged, width_mapper_, qOverload<>(&QSignalMapper::map));
 		connect(diagram_line -> height,     SIGNAL(valueChanged(int)), height_mapper_, SLOT(map()));
-		//connect(diagram_line -> height,     &QSpinBox::valueChanged, height_mapper_, qOverload<>(&QSignalMapper::map));
 		connect(diagram_line -> keep_ratio, SIGNAL(toggled(bool)),     ratio_mapper_,  SLOT(map()));
 		connect(diagram_line -> reset_size, SIGNAL(clicked(bool)),     reset_mapper_,  SLOT(map()));
 		
