@@ -162,7 +162,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                     //Draw text
                 painter->save();
                 text_rect.setRect(0, terminals_text_y, terminal_rect.width(), terminals_text_height);
-                if (terminals_text_orientation[index_] == Qt::Vertical)
+                if (terminals_text_orientation == Qt::Vertical)
                 {
                     painter->translate(text_rect.bottomLeft());
                     painter->rotate(270);
@@ -172,7 +172,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 const auto shared_real_terminal{real_terminal_vector[i]};
                 painter->drawText(text_rect,
                                   shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
-                                  terminals_text_option[index_]);
+                                  terminals_text_option);
 
                 if (m_preview_draw)
                 {

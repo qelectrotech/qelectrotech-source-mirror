@@ -50,18 +50,18 @@ void TerminalStripLayoutPattern::setFont(const QFont &font) {
     QETUtils::pixelSizedFont(m_font);
 }
 
-void TerminalStripLayoutPattern::setTerminalsTextAlignment(const QVector<Qt::Alignment> &alignment)
+void TerminalStripLayoutPattern::setTerminalsTextAlignment(const Qt::Alignment &alignment)
 {
 	m_terminals_text_alignment = alignment;
 	updateTerminalsTextOption();
 }
 
-QVector<Qt::Alignment> TerminalStripLayoutPattern::terminalsTextAlignment() const
+Qt::Alignment TerminalStripLayoutPattern::terminalsTextAlignment() const
 {
 	return m_terminals_text_alignment;
 }
 
-QVector<QTextOption> TerminalStripLayoutPattern::terminalsTextOption() const
+QTextOption TerminalStripLayoutPattern::terminalsTextOption() const
 {
 	return m_terminals_text_option;
 }
@@ -74,16 +74,6 @@ void TerminalStripLayoutPattern::updateHeaderTextOption()
 
 void TerminalStripLayoutPattern::updateTerminalsTextOption()
 {
-	if (m_terminals_text_option.size() ==
-		m_terminals_text_alignment.size())
-	{
-		for (auto i = 0 ; i<m_terminals_text_option.size() ; ++i)
-		{
-			m_terminals_text_option[i].setAlignment(m_terminals_text_alignment.at(i));
-			m_terminals_text_option[i].setWrapMode(QTextOption::WordWrap);
-		}
-	}
-	else {
-		qDebug() << "TerminalStripLayoutPattern::updateTerminalsTextOption() : Wrong vector size";
-	}
+    m_terminals_text_option.setAlignment(m_terminals_text_alignment);
+    m_terminals_text_option.setWrapMode(QTextOption::WordWrap);
 }

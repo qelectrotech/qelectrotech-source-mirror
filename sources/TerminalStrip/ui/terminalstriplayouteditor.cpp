@@ -108,31 +108,19 @@ void TerminalStripLayoutEditor::valueEdited()
             m_layout.data()->setHeaderTextAlignment(Qt::AlignRight | Qt::AlignVCenter); break;
     }
 
-    m_layout.data()->m_terminals_text_orientation[0] = ui->m_terminal_text_orientation_cb->currentIndex() == 0 ?
-                                                           Qt::Horizontal :
-                                                           Qt::Vertical;
+    m_layout.data()->m_terminals_text_orientation = ui->m_terminal_text_orientation_cb->currentIndex() == 0 ?
+                                                        Qt::Horizontal :
+                                                        Qt::Vertical;
 
     switch (ui->m_terminal_text_alignment_cb->currentIndex()) {
         case 0:
-            m_layout.data()->setTerminalsTextAlignment(
-                        QVector<Qt::Alignment> { Qt::AlignLeft | Qt::AlignVCenter,
-                                                 Qt::AlignLeft | Qt::AlignVCenter,
-                                                 Qt::AlignLeft | Qt::AlignVCenter,
-                                                 Qt::AlignLeft | Qt::AlignVCenter });
+            m_layout.data()->setTerminalsTextAlignment(Qt::Alignment {Qt::AlignLeft | Qt::AlignVCenter});
             break;
         case 1:
-            m_layout.data()->setTerminalsTextAlignment(
-                        QVector<Qt::Alignment> { Qt::AlignHCenter | Qt::AlignVCenter,
-                                                 Qt::AlignHCenter | Qt::AlignVCenter,
-                                                 Qt::AlignHCenter | Qt::AlignVCenter,
-                                                 Qt::AlignHCenter | Qt::AlignVCenter });
+            m_layout.data()->setTerminalsTextAlignment(Qt::Alignment { Qt::AlignHCenter | Qt::AlignVCenter});
             break;
         default:
-            m_layout.data()->setTerminalsTextAlignment(
-                        QVector<Qt::Alignment> { Qt::AlignRight | Qt::AlignVCenter,
-                                                 Qt::AlignRight | Qt::AlignVCenter,
-                                                 Qt::AlignRight | Qt::AlignVCenter,
-                                                 Qt::AlignRight | Qt::AlignVCenter });
+            m_layout.data()->setTerminalsTextAlignment(Qt::Alignment { Qt::AlignRight | Qt::AlignVCenter});
             break;
     }
 
@@ -197,7 +185,7 @@ void TerminalStripLayoutEditor::updateUi()
         ui->m_header_text_orientation_cb->setCurrentIndex(1);
     }
 
-    if (data->m_terminals_text_orientation[0] == Qt::Horizontal) {
+    if (data->m_terminals_text_orientation == Qt::Horizontal) {
         ui->m_terminal_text_orientation_cb->setCurrentIndex(0);
     } else {
         ui->m_terminal_text_orientation_cb->setCurrentIndex(1);
@@ -212,7 +200,7 @@ void TerminalStripLayoutEditor::updateUi()
         ui->m_header_text_alignment_cb->setCurrentIndex(2);
     }
 
-    const auto terminal_alignment = data->terminalsTextAlignment().at(0);
+    const auto terminal_alignment = data->terminalsTextAlignment();
     if (terminal_alignment &Qt::AlignLeft) {
         ui->m_terminal_text_alignment_cb->setCurrentIndex(0);
     } else if (terminal_alignment &Qt::AlignHCenter) {

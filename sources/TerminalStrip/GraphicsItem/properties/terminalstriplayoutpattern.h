@@ -66,19 +66,13 @@ class TerminalStripLayoutPattern
 			QRect{0, 30, 20, 130}
 		};
 
-		void setTerminalsTextAlignment(const QVector<Qt::Alignment> &alignment);
-		QVector<Qt::Alignment> terminalsTextAlignment() const;
-        QVector<QTextOption> terminalsTextOption() const;
+            //Terminal text
+        void setTerminalsTextAlignment(const Qt::Alignment &alignment);
+        Qt::Alignment terminalsTextAlignment() const;
+        QTextOption terminalsTextOption() const;
         int m_terminals_text_height{50};
         int m_terminals_text_y{35};
-
-		QVector<Qt::Orientation> m_terminals_text_orientation
-		{
-			Qt::Vertical,
-			Qt::Vertical,
-			Qt::Vertical,
-			Qt::Vertical
-		};
+        Qt::Orientation m_terminals_text_orientation {Qt::Vertical};
 
 		int m_bridge_point_d{5};
 		QVector<int> m_bridge_point_y_offset{50,70,90,110};
@@ -95,20 +89,8 @@ class TerminalStripLayoutPattern
 		Qt::Alignment m_header_text_alignment{Qt::AlignCenter};
 		QTextOption m_header_text_option;
 
-		QVector<Qt::Alignment> m_terminals_text_alignment
-		{
-			Qt::AlignRight | Qt::AlignVCenter,
-			Qt::AlignRight | Qt::AlignVCenter,
-			Qt::AlignRight | Qt::AlignVCenter,
-			Qt::AlignRight | Qt::AlignVCenter
-		};
-		QVector<QTextOption> m_terminals_text_option
-		{
-			QTextOption(),
-			QTextOption(),
-			QTextOption(),
-			QTextOption()
-		};
+        Qt::Alignment m_terminals_text_alignment {Qt::AlignRight | Qt::AlignVCenter};
+        QTextOption m_terminals_text_option{QTextOption()};
 };
 
 #endif // TERMINALSTRIPLAYOUTPATTERN_H
