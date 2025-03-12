@@ -31,6 +31,7 @@ namespace QETUtils
 	QString marginsToString(const QMargins &margins);
 	QMargins marginsFromString(const QString &string);
 	qreal graphicsHandlerSize(QGraphicsItem *item);
+    void pixelSizedFont (QFont &font);
 
 	bool sortBeginIntString(const QString &str_a, const QString &str_b);
 
