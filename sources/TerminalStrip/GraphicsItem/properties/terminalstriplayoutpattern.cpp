@@ -16,10 +16,12 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstriplayoutpattern.h"
+#include "../../../utils/qetutils.h"
 #include <QDebug>
 
 TerminalStripLayoutPattern::TerminalStripLayoutPattern()
 {
+    m_font.setPixelSize(15);
 	updateHeaderTextOption();
 	updateTerminalsTextOption();
 }
@@ -37,6 +39,15 @@ Qt::Alignment TerminalStripLayoutPattern::headerTextAlignment() const
 
 QTextOption TerminalStripLayoutPattern::headerTextOption() const {
 	return m_header_text_option;
+}
+
+QFont TerminalStripLayoutPattern::font() const {
+    return m_font;
+}
+
+void TerminalStripLayoutPattern::setFont(const QFont &font) {
+    m_font = font;
+    QETUtils::pixelSizedFont(m_font);
 }
 
 void TerminalStripLayoutPattern::setTerminalsTextAlignment(const QVector<Qt::Alignment> &alignment)

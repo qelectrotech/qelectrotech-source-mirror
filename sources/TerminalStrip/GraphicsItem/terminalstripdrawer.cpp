@@ -56,6 +56,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
         auto brush_ = painter->brush();
         brush_.setColor(Qt::white);
 
+        painter->setFont(m_pattern->font());
+
         painter->setPen(pen_);
         painter->setBrush(brush_);
 

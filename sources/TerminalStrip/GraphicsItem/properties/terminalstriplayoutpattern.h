@@ -18,6 +18,7 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
+#include <QFont>
 #include <QRect>
 #include <QSize>
 #include <QTextOption>
@@ -51,6 +52,10 @@ class TerminalStripLayoutPattern
 
 			//Spacer between the header and the terminals
 		QRect m_spacer_rect{0, 50, 10, 90};
+
+            //Font
+        QFont font() const;
+        void setFont (const QFont &font);
 
 			//Terminals
 		QVector<QRect> m_terminal_rect
@@ -90,7 +95,8 @@ class TerminalStripLayoutPattern
 		void updateHeaderTextOption();
 		void updateTerminalsTextOption();
 
-	private:
+    private:
+        QFont m_font;
 		Qt::Alignment m_header_text_alignment{Qt::AlignCenter};
 		QTextOption m_header_text_option;
 

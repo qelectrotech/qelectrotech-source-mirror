@@ -15,9 +15,12 @@
         You should have received a copy of the GNU General Public License
         along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QFontDialog>
+
 #include "terminalstriplayouteditor.h"
 #include "ui_terminalstriplayouteditor.h"
 #include "../GraphicsItem/properties/terminalstriplayoutpattern.h"
+#include "../../utils/qetutils.h"
 
 TerminalStripLayoutEditor::TerminalStripLayoutEditor(QSharedPointer<TerminalStripLayoutPattern> layout,
                                                      QWidget *parent) :
@@ -54,8 +57,6 @@ void TerminalStripLayoutEditor::valueEdited()
         return;
     }
 
-    //auto *data_ = m_layout.data();
-
     m_layout.data()->m_header_rect.setRect(0,
                                            ui->m_y_header_sb->value(),
                                            ui->m_width_header_sb->value(),
@@ -90,6 +91,10 @@ void TerminalStripLayoutEditor::valueEdited()
     m_layout.data()->m_bridge_point_y_offset[1] = ui->m_bridge_point_1_sb->value();
     m_layout.data()->m_bridge_point_y_offset[2] = ui->m_bridge_point_2_sb->value();
     m_layout.data()->m_bridge_point_y_offset[3] = ui->m_bridge_point_3_sb->value();
+
+    auto font_ = ui->m_font_cb->currentFont();
+    font_.setPixelSize(ui->m_font_size_sb->value());
+    m_layout->setFont(font_);
 
     m_layout.data()->m_header_text_orientation = ui->m_header_text_orientation_cb->currentIndex() == 0 ?
                                                      Qt::Horizontal :
@@ -180,6 +185,10 @@ void TerminalStripLayoutEditor::updateUi()
     ui->m_bridge_point_2_sb->setValue(bridge_point[2]);
     ui->m_bridge_point_3_sb->setValue(bridge_point[3]);
 
+    const auto font = m_layout->font();
+    ui->m_font_size_sb->setValue(font.pixelSize());
+    ui->m_font_cb->setCurrentFont(font);
+
     if (data->m_header_text_orientation == Qt::Horizontal) {
         ui->m_header_text_orientation_cb->setCurrentIndex(0);
     } else {
@@ -225,4 +234,3 @@ void TerminalStripLayoutEditor::on_m_display_preview_help_clicked(bool checked)
     m_preview_strip_item.m_drawer.setPreviewDraw(checked);
     m_preview_strip_item.update();
 }
-

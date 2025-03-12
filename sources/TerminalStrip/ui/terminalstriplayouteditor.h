@@ -76,7 +76,6 @@ class TerminalStripLayoutEditor : public QWidget
 
     private slots:
         void valueEdited();
-
         void on_m_display_preview_help_clicked(bool checked);
 
     private:
