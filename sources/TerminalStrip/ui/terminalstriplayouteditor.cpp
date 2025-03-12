@@ -20,7 +20,6 @@
 #include "terminalstriplayouteditor.h"
 #include "ui_terminalstriplayouteditor.h"
 #include "../GraphicsItem/properties/terminalstriplayoutpattern.h"
-#include "../../utils/qetutils.h"
 
 TerminalStripLayoutEditor::TerminalStripLayoutEditor(QSharedPointer<TerminalStripLayoutPattern> layout,
                                                      QWidget *parent) :
@@ -137,6 +136,9 @@ void TerminalStripLayoutEditor::valueEdited()
             break;
     }
 
+    m_layout.data()->m_terminals_text_y = ui->m_terminal_text_y_sb->value();
+    m_layout.data()->m_terminals_text_height = ui->m_terminal_text_height_sb->value();
+
 	updateUi();
 	m_preview_strip_item.update();
 }
@@ -218,6 +220,9 @@ void TerminalStripLayoutEditor::updateUi()
     } else if (terminal_alignment &Qt::AlignRight) {
         ui->m_terminal_text_alignment_cb->setCurrentIndex(2);
 	}
+
+    ui->m_terminal_text_y_sb->setValue(data->m_terminals_text_y);
+    ui->m_terminal_text_height_sb->setValue(data->m_terminals_text_height);
 
 	m_ui_updating = false;
 	updatePreview();

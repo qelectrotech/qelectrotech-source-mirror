@@ -105,9 +105,10 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
 
             //Draw terminals
-        const auto terminals_text_rect{m_pattern->m_terminals_text_rect};
         const auto terminals_text_orientation{m_pattern->m_terminals_text_orientation};
         const auto terminals_text_option{m_pattern->terminalsTextOption()};
+        const auto terminals_text_height{m_pattern->m_terminals_text_height};
+        const auto terminals_text_y{m_pattern->m_terminals_text_y};
         QRect terminal_rect;
 
         QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
@@ -160,16 +161,12 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
                     //Draw text
                 painter->save();
-                if (terminals_text_orientation[index_] == Qt::Horizontal)
+                text_rect.setRect(0, terminals_text_y, terminal_rect.width(), terminals_text_height);
+                if (terminals_text_orientation[index_] == Qt::Vertical)
                 {
-                    text_rect = terminals_text_rect[index_];
-                }
-                else
-                {
-                    const auto rect_{terminals_text_rect[index_]};
-                    painter->translate(rect_.bottomLeft());
+                    painter->translate(text_rect.bottomLeft());
                     painter->rotate(270);
-                    text_rect.setRect(0, 0, rect_.height(), terminal_rect.width());
+                    text_rect.setRect(0, 0, text_rect.height(), text_rect.width());
                 }
 
                 const auto shared_real_terminal{real_terminal_vector[i]};

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>892</width>
-    <height>555</height>
+    <width>683</width>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -144,6 +144,9 @@
      <property name="text">
       <string>Afficher l'aide</string>
      </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
    <item row="0" column="2">
@@ -210,7 +213,14 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="6" column="3">
+      <item row="8" column="4">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Longueur maximal du texte de borne</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
        <widget class="QComboBox" name="m_header_text_orientation_cb">
         <item>
          <property name="text">
@@ -224,42 +234,7 @@
         </item>
        </widget>
       </item>
-      <item row="6" column="2">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Orientation du texte d'en tête :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="3">
-       <widget class="QComboBox" name="m_terminal_text_orientation_cb">
-        <item>
-         <property name="text">
-          <string>Horizontal</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Vertical</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="6" column="4">
-       <widget class="QLabel" name="label_15">
-        <property name="text">
-         <string>Alignement du texte d'en tête :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="2">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Orientation du texte de borne :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="5">
+      <item row="6" column="3">
        <widget class="QComboBox" name="m_header_text_alignment_cb">
         <item>
          <property name="text">
@@ -278,29 +253,38 @@
         </item>
        </widget>
       </item>
-      <item row="8" column="5">
-       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
+      <item row="5" column="5">
+       <widget class="QComboBox" name="m_terminal_text_orientation_cb">
         <item>
          <property name="text">
-          <string>Gauche</string>
+          <string>Horizontal</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Centre</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Droite</string>
+          <string>Vertical</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="8" column="4">
-       <widget class="QLabel" name="label_17">
+      <item row="5" column="2">
+       <widget class="QLabel" name="label_14">
         <property name="text">
-         <string>Alignement du texte de borne :</string>
+         <string>Orientation du texte d'en tête :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLabel" name="label_15">
+        <property name="text">
+         <string>Alignement du texte d'en tête :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="4">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Origine vertical du texte de borne :</string>
         </property>
        </widget>
       </item>
@@ -357,6 +341,52 @@
           </spacer>
          </item>
         </layout>
+       </widget>
+      </item>
+      <item row="6" column="5">
+       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
+        <item>
+         <property name="text">
+          <string>Gauche</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Centre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="8" column="5">
+       <widget class="QSpinBox" name="m_terminal_text_height_sb">
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>Orientation du texte de borne :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="5">
+       <widget class="QSpinBox" name="m_terminal_text_y_sb"/>
+      </item>
+      <item row="6" column="4">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Alignement du texte de borne :</string>
+        </property>
        </widget>
       </item>
      </layout>
@@ -891,6 +921,38 @@
     <hint type="sourcelabel">
      <x>507</x>
      <y>277</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_terminal_text_y_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>207</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_terminal_text_height_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>383</y>
     </hint>
     <hint type="destinationlabel">
      <x>445</x>

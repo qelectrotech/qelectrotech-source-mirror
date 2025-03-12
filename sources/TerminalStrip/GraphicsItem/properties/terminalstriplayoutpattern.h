@@ -68,15 +68,10 @@ class TerminalStripLayoutPattern
 
 		void setTerminalsTextAlignment(const QVector<Qt::Alignment> &alignment);
 		QVector<Qt::Alignment> terminalsTextAlignment() const;
-		QVector<QTextOption> terminalsTextOption() const;
+        QVector<QTextOption> terminalsTextOption() const;
+        int m_terminals_text_height{50};
+        int m_terminals_text_y{35};
 
-		QVector<QRect> m_terminals_text_rect
-		{
-			QRect{0,35,20,50},
-			QRect{0,35,20,50},
-			QRect{0,35,20,50},
-			QRect{0,35,20,50}
-		};
 		QVector<Qt::Orientation> m_terminals_text_orientation
 		{
 			Qt::Vertical,
