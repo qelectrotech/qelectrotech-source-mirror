@@ -213,8 +213,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 							  .insideBorderRect()
 							  .intersected(r);
 
-		qreal limite_x = rect.x() + rect.width();
-		qreal limite_y = rect.y() + rect.height();
+		qreal limit_x = rect.x() + rect.width();
+		qreal limit_y = rect.y() + rect.height();
 
 		int g_x = (int)ceil(rect.x());
 		while (g_x % xGrid) ++ g_x;
@@ -222,8 +222,8 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		while (g_y % yGrid) ++ g_y;
 
 		QPolygon points;
-		for (int gx = g_x ; gx < limite_x ; gx += xGrid) {
-			for (int gy = g_y ; gy < limite_y ; gy += yGrid) {
+		for (int gx = g_x ; gx < limit_x ; gx += xGrid) {
+			for (int gy = g_y ; gy < limit_y ; gy += yGrid) {
 				points << QPoint(gx, gy);
 			}
 		}
@@ -1139,8 +1139,8 @@ Terminal* findTerminal(int conductor_index,
 	assert(conductor_index == 1 || conductor_index == 2);
 
 	auto str_index = QString::number(conductor_index);
-	QString element_index  = QStringLiteral("element")  + str_index;
-	QString terminal_index = QStringLiteral("terminal") + str_index;
+	QString element_index  = QStringLiteral("element")  % str_index;
+	QString terminal_index = QStringLiteral("terminal") % str_index;
 
 	if (f.hasAttribute(element_index)) {
 		QUuid element_uuid = QUuid(f.attribute(element_index));
@@ -1483,14 +1483,6 @@ bool Diagram::fromXml(QDomElement &document,
 	if (content_ptr) {
 		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-		content_ptr -> m_text_fields        = added_texts.toSet();
-		content_ptr -> m_images			    = added_images.toSet();
-		content_ptr -> m_shapes			    = added_shapes.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
 					added_texts.begin(),
 					added_texts.end());
@@ -1501,7 +1493,6 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.begin(),
 					added_shapes.end());
 		content_ptr->m_terminal_strip.swap(added_strips);
-#endif
 		content_ptr->m_tables.swap(added_tables);
 	}
 
@@ -1536,9 +1527,9 @@ void Diagram::folioSequentialsFromXml(const QDomElement &root,
 			QStringList list;
 			int i = 1;
 			while (folioseq.hasAttribute(seq
-						     + QString::number(i))) {
+							 % QString::number(i))) {
 				list << folioseq.attribute(
-						seq + QString::number(i));
+						seq % QString::number(i));
 				i++;
 			}
 			hash->insert(title,list);

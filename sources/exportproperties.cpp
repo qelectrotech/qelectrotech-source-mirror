@@ -54,24 +54,24 @@ ExportProperties::~ExportProperties()
 void ExportProperties::toSettings(QSettings &settings,
 				  const QString &prefix) const
 {
-	settings.setValue(prefix + "path",
+	settings.setValue(prefix % "path",
 			  QDir::toNativeSeparators(
 				  destination_directory.absolutePath()));
-	settings.setValue(prefix + "format",
+	settings.setValue(prefix % "format",
 			  format);
-	settings.setValue(prefix + "drawgrid",
+	settings.setValue(prefix % "drawgrid",
 			  draw_grid);
-	settings.setValue(prefix + "drawborder",
+	settings.setValue(prefix % "drawborder",
 			  draw_border);
-	settings.setValue(prefix + "drawtitleblock",
+	settings.setValue(prefix % "drawtitleblock",
 			  draw_titleblock);
-	settings.setValue(prefix + "drawterminals",
+	settings.setValue(prefix % "drawterminals",
 			  draw_terminals);
-	settings.setValue(prefix + "drawbgtransparent",
+	settings.setValue(prefix % "drawbgtransparent",
 			  draw_bg_transparent);
-	settings.setValue(prefix + "drawcoloredconductors",
+	settings.setValue(prefix % "drawcoloredconductors",
 			  draw_colored_conductors);
-	settings.setValue(prefix + "area",
+	settings.setValue(prefix % "area",
 			  QET::diagramAreaToString(exported_area));
 }
 
@@ -85,30 +85,30 @@ void ExportProperties::fromSettings(QSettings &settings,
 	QString export_path = QETApp::documentDir();
 	destination_directory.setPath(
 				settings.value(
-					prefix + "path",
+					prefix % "path",
 					export_path).toString());
 	if (!destination_directory.exists())
 		destination_directory.setPath(export_path);
 
-	format = settings.value(prefix + "format").toString();
+	format = settings.value(prefix % "format").toString();
 
-	draw_grid = settings.value(prefix + "drawgrid",
+	draw_grid = settings.value(prefix % "drawgrid",
 				   false).toBool();
-	draw_border = settings.value(prefix + "drawborder",
+	draw_border = settings.value(prefix % "drawborder",
 				     true ).toBool();
-	draw_titleblock = settings.value(prefix + "drawtitleblock",
+	draw_titleblock = settings.value(prefix % "drawtitleblock",
 					 true ).toBool();
-	draw_terminals = settings.value(prefix + "drawterminals",
+	draw_terminals = settings.value(prefix % "drawterminals",
 					false).toBool();
-	draw_bg_transparent = settings.value(prefix + "drawbgtransparent",
+	draw_bg_transparent = settings.value(prefix % "drawbgtransparent",
 					false).toBool();
 	draw_colored_conductors = settings.value(
-				prefix + "drawcoloredconductors",
+				prefix % "drawcoloredconductors",
 				true ).toBool();
 
 	exported_area  = QET::diagramAreaFromString(
 				settings.value(
-					prefix + "area",
+					prefix % "area",
 					"border").toString());
 }
 

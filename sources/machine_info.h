@@ -84,12 +84,12 @@ class MachineInfo
 			QString version=
 #ifdef __GNUC__
 #ifdef __APPLE_CC__
-					"CLANG " + QString(__clang_version__);
+					"CLANG " % QString(__clang_version__);
 #else
-					"GCC " + QString(__VERSION__);
+					"GCC " % QString(__VERSION__);
 #endif
 #elif defined(Q_CC_MSVC)
-					"MSVC " + QString(QT_STRINGIFY(_MSC_FULL_VER));
+					"MSVC " % QString(QT_STRINGIFY(_MSC_FULL_VER));
 #endif
 			QString QT=QString(QT_VERSION_STR);
 			QString date=QString(__DATE__);

@@ -180,7 +180,7 @@ void ElementsPanelWidget::reloadAndFilter()
 }
 
 /**
-	* Emit the requestForProject signal with te selected project
+	* Emit the requestForProject signal with the selected project
 */
 void ElementsPanelWidget::activateProject()
 {

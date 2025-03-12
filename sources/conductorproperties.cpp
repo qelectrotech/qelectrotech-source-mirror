@@ -376,31 +376,31 @@ void ConductorProperties::fromXml(QDomElement &e)
 */
 void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const
 {
-	settings.setValue(prefix + "color", color.name());
-	settings.setValue(prefix + "bicolor", m_bicolor);
-	settings.setValue(prefix + "color2", m_color_2.name());
-	settings.setValue(prefix + "dash-size", m_dash_size);
-	settings.setValue(prefix + "style", writeStyle());
-	settings.setValue(prefix + "type", typeToString(type));
-	settings.setValue(prefix + "text", text);
-	settings.setValue(prefix + "text_color", text_color.name());
-	settings.setValue(prefix + "formula", m_formula);
-	settings.setValue(prefix + "cable", m_cable);
-	settings.setValue(prefix + "bus", m_bus);
-	settings.setValue(prefix + "function", m_function);
-	settings.setValue(prefix + "tension_protocol", m_tension_protocol);
-	settings.setValue(prefix + "conductor_color", m_wire_color);
-	settings.setValue(prefix + "conductor_section", m_wire_section);
-	settings.setValue(prefix + "textsize", QString::number(text_size));
-	settings.setValue(prefix + "size", QString::number(cond_size));
-	settings.setValue(prefix + "displaytext", m_show_text);
-	settings.setValue(prefix + "onetextperfolio", m_one_text_per_folio);
-	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
-	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
+	settings.setValue(prefix % "color", color.name());
+	settings.setValue(prefix % "bicolor", m_bicolor);
+	settings.setValue(prefix % "color2", m_color_2.name());
+	settings.setValue(prefix % "dash-size", m_dash_size);
+	settings.setValue(prefix % "style", writeStyle());
+	settings.setValue(prefix % "type", typeToString(type));
+	settings.setValue(prefix % "text", text);
+	settings.setValue(prefix % "text_color", text_color.name());
+	settings.setValue(prefix % "formula", m_formula);
+	settings.setValue(prefix % "cable", m_cable);
+	settings.setValue(prefix % "bus", m_bus);
+	settings.setValue(prefix % "function", m_function);
+	settings.setValue(prefix % "tension_protocol", m_tension_protocol);
+	settings.setValue(prefix % "conductor_color", m_wire_color);
+	settings.setValue(prefix % "conductor_section", m_wire_section);
+	settings.setValue(prefix % "textsize", QString::number(text_size));
+	settings.setValue(prefix % "size", QString::number(cond_size));
+	settings.setValue(prefix % "displaytext", m_show_text);
+	settings.setValue(prefix % "onetextperfolio", m_one_text_per_folio);
+	settings.setValue(prefix % "vertirotatetext", QString::number(verti_rotate_text));
+	settings.setValue(prefix % "horizrotatetext", QString::number(horiz_rotate_text));
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	settings.setValue(prefix + "horizontal-alignment", me.valueToKey(m_horizontal_alignment));
-	settings.setValue(prefix + "vertical-alignment", me.valueToKey(m_vertical_alignment));
+	settings.setValue(prefix % "horizontal-alignment", me.valueToKey(m_horizontal_alignment));
+	settings.setValue(prefix % "vertical-alignment", me.valueToKey(m_vertical_alignment));
 
 	singleLineProperties.toSettings(settings, prefix);
 }
@@ -417,36 +417,36 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	QColor settings_color_2 = QColor(settings.value(prefix + "color2").toString());
 	m_color_2 = (settings_color_2.isValid()? settings_color_2 : QColor(Qt::black));
 
-	m_bicolor   = settings.value(prefix + "bicolor", false).toBool();
-	m_dash_size = settings.value(prefix + "dash-size", 1).toInt();
+	m_bicolor   = settings.value(prefix % "bicolor", false).toBool();
+	m_dash_size = settings.value(prefix % "dash-size", 1).toInt();
 
-	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
+	QString setting_type = settings.value(prefix % "type", typeToString(Multi)).toString();
 	type = (setting_type == typeToString(Single)? Single : Multi);
 
 	singleLineProperties.fromSettings(settings, prefix);
 
-	text                 = settings.value(prefix + "text", "_").toString();
-	QColor settings_text_color = QColor(settings.value(prefix + "text_color").toString());
+	text                 = settings.value(prefix % "text", "_").toString();
+	QColor settings_text_color = QColor(settings.value(prefix % "text_color").toString());
 	text_color = (settings_text_color.isValid()? settings_text_color : QColor(Qt::black));
-	m_formula            = settings.value(prefix + "formula", "").toString();
-	m_cable              = settings.value(prefix + "cable", "").toString();
-	m_bus                = settings.value(prefix + "bus", "").toString();
-	m_function           = settings.value(prefix + "function", "").toString();
-	m_tension_protocol   = settings.value(prefix + "tension_protocol", "").toString();
-	m_wire_color         = settings.value(prefix + "conductor_color", "").toString();
-	m_wire_section       = settings.value(prefix + "conductor_section", "").toString();
-	text_size            = settings.value(prefix + "textsize", "7").toInt();
-	cond_size            = settings.value(prefix + "size", "1").toInt();
-	m_show_text          = settings.value(prefix + "displaytext", true).toBool();
-	m_one_text_per_folio = settings.value(prefix + "onetextperfolio", false).toBool();
-	verti_rotate_text    = settings.value((prefix + "vertirotatetext"), "270").toDouble();
-	horiz_rotate_text    = settings.value((prefix + "horizrotatetext"), "0").toDouble();
+	m_formula            = settings.value(prefix % "formula", "").toString();
+	m_cable              = settings.value(prefix % "cable", "").toString();
+	m_bus                = settings.value(prefix % "bus", "").toString();
+	m_function           = settings.value(prefix % "function", "").toString();
+	m_tension_protocol   = settings.value(prefix % "tension_protocol", "").toString();
+	m_wire_color         = settings.value(prefix % "conductor_color", "").toString();
+	m_wire_section       = settings.value(prefix % "conductor_section", "").toString();
+	text_size            = settings.value(prefix % "textsize", "7").toInt();
+	cond_size            = settings.value(prefix % "size", "1").toInt();
+	m_show_text          = settings.value(prefix % "displaytext", true).toBool();
+	m_one_text_per_folio = settings.value(prefix % "onetextperfolio", false).toBool();
+	verti_rotate_text    = settings.value((prefix % "vertirotatetext"), "270").toDouble();
+	horiz_rotate_text    = settings.value((prefix % "horizrotatetext"), "0").toDouble();
 
 	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
-	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
-	m_vertical_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix + "vertical-alignment", "AlignRight").toString().toStdString().data()));
+	m_horizontal_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix % "horizontal-alignment", "AlignBottom").toString().toStdString().data()));
+	m_vertical_alignment = Qt::Alignment(me.keyToValue(settings.value(prefix % "vertical-alignment", "AlignRight").toString().toStdString().data()));
 
-	readStyle(settings.value(prefix + "style").toString());
+	readStyle(settings.value(prefix % "style").toString());
 }
 
 /**
@@ -811,14 +811,7 @@ void ConductorProperties::readStyle(const QString &style_string) {
 	if (style_string.isEmpty()) return;
 
 	// recupere la liste des couples style / valeur
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code QString::SkipEmptyParts for QT 5.14 or later")
-#endif
 	QStringList styles = style_string.split(";", Qt::SkipEmptyParts);
-#endif
 
 	QRegularExpression Rx("^(?<name>[a-z-]+): (?<value>[a-z-]+)$");
 	if (!Rx.isValid())
@@ -896,10 +889,10 @@ int SingleLineProperties::operator!=(const SingleLineProperties &other) const
 void SingleLineProperties::toSettings(QSettings &settings,
 				      const QString &prefix) const
 {
-	settings.setValue(prefix + "hasGround",  hasGround);
-	settings.setValue(prefix + "hasNeutral", hasNeutral);
-	settings.setValue(prefix + "phases",     phases);
-	settings.setValue(prefix + "pen",        is_pen);
+	settings.setValue(prefix % "hasGround",  hasGround);
+	settings.setValue(prefix % "hasNeutral", hasNeutral);
+	settings.setValue(prefix % "phases",     phases);
+	settings.setValue(prefix % "pen",        is_pen);
 }
 
 /**
@@ -908,8 +901,8 @@ void SingleLineProperties::toSettings(QSettings &settings,
 */
 void SingleLineProperties::fromSettings(QSettings &settings,
 					const QString &prefix) {
-	hasGround  = settings.value(prefix + "hasGround",  true).toBool();
-	hasNeutral = settings.value(prefix + "hasNeutral", true).toBool();
-	phases     = settings.value(prefix + "phases",     1).toInt();
-	is_pen     = settings.value(prefix + "pen",        false).toBool();
+	hasGround  = settings.value(prefix % "hasGround",  true).toBool();
+	hasNeutral = settings.value(prefix % "hasNeutral", true).toBool();
+	phases     = settings.value(prefix % "phases",     1).toInt();
+	is_pen     = settings.value(prefix % "pen",        false).toBool();
 }

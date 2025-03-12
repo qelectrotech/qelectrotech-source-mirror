@@ -790,7 +790,7 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 	
 	// recupere le format a utiliser (acronyme et extension)
 	QString format_acronym = export_properties.format;
-	QString format_extension = "." + format_acronym.toLower();
+	QString format_extension = "." % format_acronym.toLower();
 	
 	// determine le nom de fichier a utiliser
 	QString diagram_path = diagram_line -> file_name -> text();
@@ -887,7 +887,7 @@ void ExportDialog::slot_checkDiagramsCount()
 void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 	// recupere le format a utiliser (acronyme et extension)
 	QString format_acronym = epw -> exportProperties().format;
-	QString format_extension = "." + format_acronym.toLower();
+	QString format_extension = "." % format_acronym.toLower();
 
 	// set maximum width / height according limitations in QPainter
 	if ((format_extension == ".bmp") ||
@@ -917,11 +917,11 @@ void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 		// cas 2 : l'extension est absente
 		if (diagram_filename_info.suffix().isEmpty()) {
 			if (force_extension) {
-				diagram_filename = diagram_filename_info.completeBaseName() + format_extension;
+				diagram_filename = diagram_filename_info.completeBaseName() % format_extension;
 			}
 		} else {
 			// cas 3 : l'extension est presente mais erronee
-			diagram_filename = diagram_filename_info.completeBaseName() + format_extension;
+			diagram_filename = diagram_filename_info.completeBaseName() % format_extension;
 		}
 		
 		diagram_line -> file_name -> setText(diagram_filename);
@@ -1034,7 +1034,7 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	if (diagram_title.isEmpty()) diagram_title = QObject::tr("Folio sans titre");
 	QString diagram_filename = diagram -> title();
 	if (diagram_filename.isEmpty()) diagram_filename = QObject::tr("schema");
-	diagram_filename = QET::stringToFileName(diagram_index % "_" + diagram_filename);
+	diagram_filename = QET::stringToFileName(diagram_index % "_" % diagram_filename);
 	
 	title_label = new QLabel(diagram_title);
 	
