@@ -163,16 +163,19 @@ void Terminal::paint(
 		QWidget *)
 {
 	// en dessous d'un certain zoom, les bornes ne sont plus dessinees
+	// below a certain zoom level, the terminals are no longer drawn
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 		return;
 	painter -> save();
 
-	//annulation des renderhints
+	// annulation des renderhints
+	// cancel renderhints
 	painter -> setRenderHint(QPainter::Antialiasing,          false);
 	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
 	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 
 	// on travaille avec les coordonnees de l'element parent
+	// work with the coordinates of the parent element
 	QPointF c = mapFromParent(d->m_pos);
 	QPointF e = mapFromParent(dock_elmt_);
 
@@ -185,11 +188,13 @@ void Terminal::paint(
 	}
 
 	// dessin de la borne en rouge
+	// draw the terminal in red
 	t.setColor(Qt::red);
 	painter -> setPen(t);
 	painter -> drawLine(c, e);
 
 	// dessin du point d'amarrage au conducteur en bleu
+	// draw the docking point to the conductor in blue
 	t.setColor(m_hovered_color);
 	painter -> setPen(t);
 	painter -> setBrush(m_hovered_color);
@@ -631,7 +636,7 @@ QDomElement Terminal::toXml(QDomDocument &doc) const
 
 	// for backward compatibility
 	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
-	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+	qdo.setAttribute("y", QString("%1").arg(dock_elmt_.y()));
 	// end for backward compatibility
 
 	qdo.setAttribute("orientation", d->m_orientation);
