@@ -55,11 +55,8 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	m_titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
 	m_titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 
-	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
-#if QT_VERSION < QT_VERSION_CHECK(4, 8, 0)	// ### Qt 6: remove
-#else
+	// disable the QPicture-based cache to avoid rendering errors and crashes
 	m_titleblock_template_renderer -> setUseCache(false);
-#endif
 
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
@@ -239,7 +236,8 @@ void BorderTitleBlock::borderToXml(QDomElement &xml_elmt) {
 	xml_elmt.setAttribute("displayrows", rowsAreDisplayed() ? "true" : "false");
 
 	// attribut datant de la version 0.1 - laisse pour retrocompatibilite
-	xml_elmt.setAttribute("height", QString("%1").arg(diagramHeight()));
+	// attribute from version 0.1 - leave for backwards-compatibility
+	xml_elmt.setAttribute("height",      QString("%1").arg(diagramHeight()));
 }
 
 /**
@@ -946,10 +944,10 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 		if (last_digit != 'Z') {
 			// increments the last digit
 			// incremente le dernier digit
-		last_digit = (char)(string[string.length()-1].unicode()) + 1;
+			last_digit = (char)(string[string.length()-1].unicode()) + 1;
 			return(first_digits + QString(last_digit));
 		} else {
-			return(incrementLetters(first_digits) + "A");
+			return(incrementLetters(first_digits) % "A");
 		}
 	}
 }

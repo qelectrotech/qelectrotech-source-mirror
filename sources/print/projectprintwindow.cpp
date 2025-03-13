@@ -24,13 +24,6 @@
 
 #include "ui_projectprintwindow.h"
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-#	include <QDesktopWidget>
-#else
-#	if TODO_LIST
-#		pragma message("@TODO remove code for QT 6 or later")
-#	endif
-#endif
 #include <QMarginsF>
 #include <QPageSetupDialog>
 #include <QPainter>
@@ -50,14 +43,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 	auto printer_ = new QPrinter();
 	QPrinter printer(QPrinter::HighResolution);
 	printer_->setDocName(ProjectPrintWindow::docName(project));
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	printer_->setOrientation(QPrinter::Landscape);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
 	printer_->setPageOrientation(QPageLayout::Landscape);
-#endif
 
 	if (format == QPrinter::NativeFormat) //To physical printer
 	{
@@ -66,15 +52,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
-#else
 		print_dialog.setOptions(QAbstractPrintDialog::PrintShowPageSize);
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-		qDebug()<<"Help code for QT 6 or later";
-#endif
 		if (print_dialog.exec() == QDialog::Rejected) {
 			delete  printer_;
 			return;
@@ -83,7 +61,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 	else //To pdf file
 	{
 		auto dir_path = project->currentDir();
-		QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + printer_->docName()));
+		QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path % "/" % printer_->docName()));
 		if (!file_name.endsWith(".pdf")) {
 			file_name.append(".pdf");
 		}
@@ -191,23 +169,21 @@ ProjectPrintWindow::~ProjectPrintWindow()
  */
 void ProjectPrintWindow::requestPaint()
 {
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-		#ifdef Q_OS_WIN
-			#ifdef QT_DEBUG
-			qDebug() << "--";
-			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
-			qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
-			#endif
+	#ifdef Q_OS_WIN
+		#ifdef QT_DEBUG
+		qDebug() << "--";
+		qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
+		qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
+		#endif
 
-			QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
-			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
-			m_printer->setResolution(dotsPerInch);
+		QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
+		qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
+		m_printer->setResolution(dotsPerInch);
 
-			#ifdef QT_DEBUG
-				qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
-				qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << m_printer->resolution();
-			qDebug() << "--";
-			#endif
+		#ifdef QT_DEBUG
+			qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
+			qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << m_printer->resolution();
+		qDebug() << "--";
 		#endif
 	#endif
 
@@ -260,15 +236,8 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 		diagram->render(painter, QRectF(), diagram_rect, Qt::KeepAspectRatio);
 	} else {
 		// Print on one or several pages
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-		auto printed_rect = full_page ? printer->paperRect() : printer->pageRect();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-	qDebug()<<"Help code for QT 6 or later";
-	auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) : printer->pageRect(QPrinter::Millimeter);
-#endif
+		auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter)
+									  : printer->pageRect(QPrinter::Millimeter);
 		auto used_width  = printed_rect.width();
 		auto used_height = printed_rect.height();
 		auto h_pages_count = horizontalPagesCount(diagram, option, full_page);
@@ -277,24 +246,17 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 		QVector<QVector<QRect>> page_grid;
 			//The diagram is printed on a matrix of sheet
 			//scrolls through the rows of the matrix
-		auto y_offset = 0;
+		qreal y_offset = 0;
 		for (auto i=0 ; i<v_pages_count ; ++i)
 		{
 			page_grid << QVector<QRect>();
 				//scrolls through the lines of sheet
-			auto x_offset = 0;
+			qreal x_offset = 0;
 			for (auto j=0 ; j<h_pages_count ; ++j)
 			{
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
 				page_grid.last() << QRect(QPoint(x_offset, y_offset),
 										  QSize(qMin(used_width, diagram_rect.width() - x_offset),
 												qMin(used_height, diagram_rect.height() - y_offset)));
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-				qDebug()<<"Help code for QT 6 or later";
-#endif
 				x_offset += used_width;
 			}
 			y_offset += used_height;
@@ -359,17 +321,10 @@ int ProjectPrintWindow::horizontalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	printable_area = full_page ? m_printer->paperRect() : m_printer->pageRect();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
 	printable_area =
 		full_page ?
 			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
 			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
-#endif
 	QRect diagram_rect = diagramRect(diagram, option);
 
 	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
@@ -388,17 +343,10 @@ int ProjectPrintWindow::verticalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	printable_area = full_page ? m_printer->paperRect() : m_printer->pageRect();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
 	printable_area =
 		full_page ?
 			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
 			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
-#endif
 	QRect diagram_rect = diagramRect(diagram, option);
 
 	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
@@ -469,43 +417,6 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 	}
 
 	settings.beginGroup(printer_section);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (settings.contains("orientation")) {
-		QString value = settings.value("orientation", "landscape").toString();
-		m_printer -> setOrientation(value == "landscape" ? QPrinter::Landscape : QPrinter::Portrait);
-	}
-	if (settings.contains("papersize")) {
-		int value = settings.value("papersize", QPrinter::A4).toInt();
-		if (value == QPrinter::Custom) {
-			bool w_ok, h_ok;
-			int w = settings.value("customwidthmm", -1).toInt(&w_ok);
-			int h = settings.value("customheightmm", -1).toInt(&h_ok);
-			if (w_ok && h_ok && w != -1 && h != -1) {
-				m_printer -> setPaperSize(QSizeF(w, h), QPrinter::Millimeter);
-			}
-		} else if (value < QPrinter::Custom) {
-			m_printer -> setPaperSize(static_cast<QPrinter::PaperSize>(value));
-		}
-	}
-
-	qreal margins[4];
-	m_printer -> getPageMargins(&margins[0], &margins[1], &margins[2], &margins[3], QPrinter::Millimeter);
-	QStringList margins_names(QStringList() << "left" << "top" << "right" << "bottom");
-	for (int i = 0 ; i < 4 ; ++ i) {
-		bool conv_ok;
-		qreal value = settings.value("margin" + margins_names.at(i), -1.0).toReal(&conv_ok);
-		if (conv_ok && value != -1.0) margins[i] = value;
-	}
-	m_printer->setPageMargins(
-		margins[0],
-		margins[1],
-		margins[2],
-		margins[3],
-		QPrinter::Millimeter);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
 	if (settings.contains("orientation"))
 	{
 		QString value = settings.value("orientation", "landscape").toString();
@@ -551,14 +462,13 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 	for (int i = 0; i < 4; ++i)
 	{
 		bool  conv_ok;
-		qreal value = settings.value("margin" + margins_names.at(i), -1.0)
+		qreal value = settings.value("margin" % margins_names.at(i), -1.0)
 						  .toReal(&conv_ok);
 		if (conv_ok && value != -1.0) margins[i] = value;
 	}
 	m_printer->setPageMargins(
 		QMarginsF(margins[0], margins[1], margins[2], margins[3]),
 		QPageLayout::Millimeter);
-#endif
 	m_printer->setFullPage(
 		settings.value("fullpage", "false").toString() == "true");
 
@@ -574,35 +484,6 @@ void ProjectPrintWindow::savePageSetupForCurrentPrinter()
 	while (!settings.group().isEmpty()) settings.endGroup();
 	settings.beginGroup("printers");
 	settings.beginGroup(printer_section);
-
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	settings.setValue("orientation", m_printer -> orientation() == QPrinter::Portrait ? "portrait" : "landscape");
-	settings.setValue("papersize", int(m_printer -> paperSize()));
-	if (m_printer -> paperSize() == QPrinter::Custom) {
-		QSizeF size = m_printer -> paperSize(QPrinter::Millimeter);
-		settings.setValue("customwidthmm", size.width());
-		settings.setValue("customheightmm", size.height());
-	} else {
-		settings.remove("customwidthmm");
-		settings.remove("customheightmm");
-	}
-	qreal left, top, right, bottom;
-	m_printer
-		->getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
-	settings.setValue("marginleft", left);
-	settings.setValue("margintop", top);
-	settings.setValue("marginright", right);
-	settings.setValue("marginbottom", bottom);
-	settings.setValue("fullpage", m_printer->fullPage() ? "true" : "false");
-	settings.endGroup();
-	settings.endGroup();
-	settings.sync();
-
-#else
-#	if TODO_LIST
-#		pragma message("@TODO remove code for QT 6 or later")
-#	endif
-	qDebug() << "Help code for QT 6 or later";
 
 	settings.setValue(
 		"orientation",
@@ -634,7 +515,6 @@ void ProjectPrintWindow::savePageSetupForCurrentPrinter()
 	settings.endGroup();
 	settings.endGroup();
 	settings.sync();
-#endif
 }
 
 /**
