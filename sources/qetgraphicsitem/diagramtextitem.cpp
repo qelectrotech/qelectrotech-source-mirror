@@ -483,7 +483,13 @@ void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 
 	m_mouse_hover = true;
 	QString str_ToolTip = toPlainText();
-	setToolTip( str_ToolTip );
+	
+	// Add movement instruction for DynamicElementTextItem
+	if (inherits("DynamicElementTextItem")) {
+		str_ToolTip += tr("\n<Shift> to move");
+	}
+	
+	setToolTip(str_ToolTip);
 	update();
 }
 
