@@ -384,9 +384,11 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 	points << depart0;
 
 	// prolongement de la borne de depart
+	// extend start terminal
 	points << depart;
 
 	// commence le vrai trajet
+	// starts the real path
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
 		if ((ori_depart == Qet::North && (ori_arrivee == Qet::South || ori_arrivee == Qet::West)) || (ori_depart == Qet::East && ori_arrivee == Qet::West)) {

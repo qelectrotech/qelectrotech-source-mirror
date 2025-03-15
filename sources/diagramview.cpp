@@ -1153,7 +1153,7 @@ void DiagramView::editSelection()
 	QGraphicsItem *item = m_diagram->selectedItems().first();
 
 		//We use dynamic_cast instead of qgraphicsitem_cast for QetGraphicsItem
-		//because they haven't got they own type().
+		//because they haven't got their own type().
 		//Use qgraphicsitem_cast will have weird behavior for this class.
 	if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item))
 		iti -> edit();
