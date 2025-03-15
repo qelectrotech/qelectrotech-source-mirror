@@ -1597,7 +1597,7 @@ void QETDiagramEditor::slot_updateUndoStack()
 
 /**
 	@brief QETDiagramEditor::slot_updateComplexActions
-	Manage the actions who need some conditions to be enable or not.
+	Manage the actions that need some conditions to be enabled or not.
 	This method does nothing if there is no project opened
 */
 void QETDiagramEditor::slot_updateComplexActions()
@@ -1633,7 +1633,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	int selected_elements_count = dc.count(DiagramContent::Elements);
 	m_find_element->setEnabled(selected_elements_count == 1);
 
-	//Action that need items (elements, conductors, texts...) selected, to be enabled
+	//Actions that need items (elements, conductors, texts...) selected, to be enabled
 	bool copiable_items  = dc.hasCopiableItems();
 	bool deletable_items = dc.hasDeletableItems();
 	m_cut              -> setEnabled(!ro && copiable_items);

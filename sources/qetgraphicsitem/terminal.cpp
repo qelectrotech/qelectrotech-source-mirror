@@ -37,6 +37,7 @@ const qreal Terminal::Z = 1000;
 /**
 	@brief Terminal::init
 	Methode privee pour initialiser la borne.
+	Private method to initialize the terminal.
 	@param number of terminal
 	@param name of terminal
 	@param hiddenName
@@ -92,17 +93,25 @@ Terminal::~Terminal() {
 	est bien un Element, cette fonction renvoie l'orientation par rapport a
 	la scene de la borne, en tenant compte du fait que l'element ait pu etre
 	pivote. Sinon elle renvoie son sens normal.
+	Used to find out the orientation of the terminal. If the terminal's parent
+	is in fact an Element, this function returns the orientation of the
+	terminal with respect to the scene, taking into account the angle of
+	rotation. scene, taking into account the fact that the element may have
+	been rotated. Otherwise it returns its normal direction.
 	@return L'orientation actuelle de la Terminal.
 */
 Qet::Orientation Terminal::orientation() const
 {
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
+		// current and default element orientations
 		int ori_cur = elt -> orientation();
 	if (ori_cur == 0) return(d->m_orientation);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
+			// calculates the angle of rotation implied by the orientation of the parent
+			// element angle of rotation of the terminal on the scene, divided by 90
 			int angle = ori_cur + d->m_orientation;
 			while (angle >= 4) angle -= 4;
 			return((Qet::Orientation)angle);

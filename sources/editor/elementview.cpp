@@ -559,19 +559,20 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 		int minWidthPen = settings.value(QStringLiteral("elementeditor/grid_pointsize_min"), 1).toInt();
 		int maxWidthPen = settings.value(QStringLiteral("elementeditor/grid_pointsize_max"), 1).toInt();
 		pen.setWidth(minWidthPen);
-		qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
-		qreal stepZoom = (25.0 - 1.0) / maxWidthPen;
-		for (int n=0; n<maxWidthPen; n++) {
-			if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
-				int widthPen = minWidthPen + qRound(n * stepPen);
-				pen.setWidth(widthPen);
+		if (minWidthPen != maxWidthPen) {
+			qreal stepPen  = (maxWidthPen - minWidthPen) / (qreal)maxWidthPen;
+			qreal stepZoom = (25.0 - 1.0) / maxWidthPen;
+			for (int n=0; n<maxWidthPen; n++) {
+				if ((zoom_factor > (1.0 + n * stepZoom)) && (zoom_factor <= (1.0 + (n+1) * stepZoom))) {
+					int widthPen = minWidthPen + qRound(n * stepPen);
+					pen.setWidth(widthPen);
+				}
 			}
+			if		(zoom_factor <= 1.0)
+						pen.setWidth(minWidthPen);
+			else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
+						pen.setWidth(maxWidthPen);
 		}
-		if		(zoom_factor <= 1.0)
-					pen.setWidth(minWidthPen);
-		else if (zoom_factor > (1.0 + stepZoom * maxWidthPen))
-					pen.setWidth(maxWidthPen);
-
 		p -> setPen(pen);
 		p -> setBrush(Qt::NoBrush);
 		qreal limit_x = r.x() + r.width();

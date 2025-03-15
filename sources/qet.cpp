@@ -32,6 +32,10 @@
 	en orientation. Si la chaine fait plusieurs caracteres, seul le
 	premier est pris en compte. En cas d'incoherence, Qet::North est
 	retourne.
+	Used to convert a string of characters (‘n’, ‘s’, ‘e’ or ‘w’)
+	into orientation. If the string is made up of several characters,
+	only the only the first is taken into account. In the event of an
+	inconsistency, Qet::North is returned.
 	@param s Chaine de caractere cense representer une orientation
 	@return l'orientation designee par la chaine de caractere
 */
@@ -60,6 +64,7 @@ QString Qet::orientationToString(Qet::Orientation o) {
 
 /**
 	Indique si deux orientations de Borne sont sur le meme axe (Vertical / Horizontal).
+	Indicates whether two terminal orientations are on the same axis (Vertical / Horizontal).
 	@param a La premiere orientation de Borne
 	@param b La seconde orientation de Borne
 	@return Un booleen a true si les deux orientations de bornes sont sur le meme axe
