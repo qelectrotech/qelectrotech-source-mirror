@@ -9079,7 +9079,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Quantité auxiliaire 4</source>
-        <translation>Menge Zusatzartikel 3</translation>
+        <translation>Menge Zusatzartikel 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="307"/>
