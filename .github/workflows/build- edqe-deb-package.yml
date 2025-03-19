@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      #! only for test, remove before MR !
+      - ci/cd
 
 jobs:
   publish_amd64:
