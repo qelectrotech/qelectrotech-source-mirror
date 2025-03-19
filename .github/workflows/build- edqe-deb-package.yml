@@ -8,8 +8,8 @@ on:
       - ci/cd
 
 jobs:
-  publish_amd64:
-    runs-on: debian-latest
+  build_amd64:
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v3
     - name: Checkout submodules
