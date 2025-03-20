@@ -21,3 +21,5 @@ jobs:
         mkdir build && cd build
         qmake  ../qelectrotech.pro
         make -j$(nproc)
+    - name: Package application
+      run: |
