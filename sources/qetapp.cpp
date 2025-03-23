@@ -1234,7 +1234,7 @@ bool QETApp::closeEveryEditor()
 /**
 	@brief QETApp::diagramTextsFont
 	The font to use
-	By default the font is "sans Serif" and size 9.
+	By default the font is "Sans Serif" and size 9.
 	@param size : the size of font
 	@return the font to use
 */
@@ -1243,16 +1243,22 @@ QFont QETApp::diagramTextsFont(qreal size)
 	QSettings settings;
 
 	//Font to use
-	QString diagram_texts_family = settings.value("diagramfont",
+	QString diagram_texts_family = settings.value("diagramitemfont",
 							  "Sans Serif").toString();
-	qreal diagram_texts_size     = settings.value("diagramsize",
+	qreal diagram_texts_size     = settings.value("diagramitemsize",
 							  9.0).toDouble();
+	auto diagram_texts_item_weight =
+			static_cast<QFont::Weight>(
+				settings.value("diagramitemweight", QFont::Normal).toInt());
+	QString diagram_texts_item_style  = settings.value("diagramitemstyle").toString();
 
 	if (size != -1.0) {
 		diagram_texts_size = size;
 	}
 	QFont diagram_texts_font = QFont(diagram_texts_family);
 	diagram_texts_font.setPointSizeF(diagram_texts_size);
+	diagram_texts_font.setWeight(diagram_texts_item_weight);
+	diagram_texts_font.setStyleName(diagram_texts_item_style);
 	if (diagram_texts_size <= 4.0) {
 		diagram_texts_font.setWeight(QFont::Light);
 	}
