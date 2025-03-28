@@ -170,7 +170,7 @@ void DynamicTextFieldEditor::setupWidget()
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
 
 	connect(m_color_kpb, &ColorButton::changed,
-			this, &DynamicTextFieldEditor::on_m_color_kpb_changed);
+			this, &DynamicTextFieldEditor::m_color_kpb_changed);
 
 	ui->m_main_grid_layout->addWidget(m_color_kpb, 6, 1, 1, 2);
 }
@@ -408,7 +408,7 @@ void DynamicTextFieldEditor::on_m_font_pb_clicked()
 	}
 }
 
-void DynamicTextFieldEditor::on_m_color_kpb_changed(const QColor &newColor) {
+void DynamicTextFieldEditor::m_color_kpb_changed(QColor newColor) {
 	if (!newColor.isValid()) {
 		return;
 	}
