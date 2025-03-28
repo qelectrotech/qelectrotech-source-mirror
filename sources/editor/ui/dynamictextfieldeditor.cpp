@@ -306,8 +306,8 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	}
 }
 
-void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
-	Q_UNUSED(arg1)
+void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(int index) {
+	Q_UNUSED(index)
 
 	QString info = ui -> m_elmt_info_cb -> currentData().toString();
 	for (int i = 0; i < m_parts.length(); i++) {

@@ -58,7 +58,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		void on_m_size_sb_editingFinished();	
 		void on_m_frame_cb_clicked();
 		void on_m_width_sb_editingFinished();
-		void on_m_elmt_info_cb_activated(const QString &arg1);
+		void on_m_elmt_info_cb_activated(int index);
 		void on_m_text_from_cb_activated(int index);
 		void on_m_composite_text_pb_clicked();
 		void on_m_alignment_pb_clicked();
