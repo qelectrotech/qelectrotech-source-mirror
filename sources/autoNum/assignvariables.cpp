@@ -47,7 +47,7 @@ namespace autonum
 	}
 
 	sequentialNumbers::~sequentialNumbers()
-{}
+	{}
 
 	sequentialNumbers &sequentialNumbers::operator=(
 			const sequentialNumbers &other)
@@ -656,7 +656,7 @@ namespace autonum
 			dirLevel = 0;
 		}
 
-		// Create Custom labels if qet_labels.xml if exit in customElementsDir
+		// Create Custom labels if qet_labels.xml exits in customElementsDir
 		if (current_location.fileName() != "10_electric"){
 		QString custom_labels = "qet_labels.xml";
 		QString customfilepath = QETApp::customElementsDir().append(custom_labels);
@@ -741,7 +741,7 @@ namespace autonum
 			}
 			rxml.readNext();
 		}
-}
+		}
 		return QString();
 	}
 }
