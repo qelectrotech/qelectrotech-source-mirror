@@ -67,7 +67,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		void on_m_alignment_pb_clicked();
 		void on_m_font_pb_clicked();
 
-		void on_m_color_kpb_changed(const QColor &newColor);
+		void m_color_kpb_changed(QColor newColor);
 
 		void on_m_keep_visual_rotation_cb_clicked();
 
