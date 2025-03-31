@@ -1,0 +1,22 @@
+name: Build edge .deb package
+
+on:
+  push:
+    branches:
+      - master
+      #! only for test, remove before MR !
+      - doxygen
+  
+jobs:  
+  doxygen:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: 'recurive'
+
+    - uses: mattnotmitt/doxygen-action@v1.9.5
+      with:
+        working-directory: '/'
+        doxyfile-path: 'Doxyfile'
+        enable-latex: true
