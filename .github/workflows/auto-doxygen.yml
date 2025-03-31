@@ -1,5 +1,4 @@
-name: Build edge .deb package
-
+name: Auto-build doxygen docs
 on:
   push:
     branches:
@@ -18,3 +17,7 @@ jobs:
       run: |
         sudo apt install doxygen -y
         doxygen Doxyfile
+    - uses: actions/upload-artifact@v4
+      with:
+       name: HTML_doxygen 
+       path: qelectrotech-source-mirror/doc/
