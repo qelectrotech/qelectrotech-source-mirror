@@ -12,7 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: 'recurive'
+        submodules: 'recursive'
+        show-progress: ''
     - name: Setup and run doxygen
       run: sudo apt install doxygen graphviz -y
     - name: Run doxygen
