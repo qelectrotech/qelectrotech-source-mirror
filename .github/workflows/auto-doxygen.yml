@@ -17,9 +17,8 @@ jobs:
       run: sudo apt install doxygen graphviz -y
     - name: Run doxygen
       run: doxygen Doxyfile
-    - uses: actions/upload-artifact@v4
-      with:
-       name: HTML_doxygen 
+    - uses: actions/upload-pages-artifact@v3
+      with: 
        path: ${{ github.workspace }}/doc/html/
     
     
@@ -43,5 +42,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
-        with:
-          artifact_name: HTML_doxygen
