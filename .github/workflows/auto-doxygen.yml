@@ -20,7 +20,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
        name: HTML_doxygen 
-       path: qelectrotech-source-mirror/doc/html/
+       path: ${{ github.workspace }}/doc/html/
     
   deploy:
     # Add a dependency to the build job
