@@ -12,9 +12,6 @@ set -x
 
 cd sources
 git reset --hard origin/master
-cd ..
-cd misc
-git reset --hard origin/master
 
 cd ..
 
@@ -46,7 +43,7 @@ rm -rf AppDir/qelectrotech/
 mkdir -p AppDir/qelectrotech/usr/bin
 cp build/qelectrotech AppDir/qelectrotech/usr/bin/
 mkdir -p AppDir/qelectrotech/usr/share/applications
-mv misc/org.qelectrotech.qelectrotech.desktop AppDir/qelectrotech/usr/share/applications/qelectrotech.desktop
+cp misc/org.qelectrotech.qelectrotech.desktop AppDir/qelectrotech/usr/share/applications/qelectrotech.desktop
 #cp misc/qelectrotech.appdata.xml AppDir/qelectrotech/usr/share/metainfo/
 #sed -i 's/'"QElectroTech-*.*/QElectroTech-$tagName-r$HEAD"'/' AppDir/qelectrotech/usr/share/applications/qelectrotech.desktop
 mkdir -p AppDir/qelectrotech/usr/share/icons/hicolor/256x256/apps
