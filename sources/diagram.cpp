@@ -63,13 +63,13 @@ QColor		Diagram::background_color = Qt::white;
 */
 Diagram::Diagram(QETProject *project) :
 	QGraphicsScene           (project),
-	m_project                 (project),
+	m_project                (project),
 	draw_grid_               (true),
 	use_border_              (true),
 	draw_terminals_          (true),
 	draw_colored_conductors_ (true),
-	m_event_interface (nullptr),
-	m_freeze_new_elements   (false),
+	m_event_interface        (nullptr),
+	m_freeze_new_elements    (false),
 	m_freeze_new_conductors_ (false)
 {
 	setItemIndexMethod(QGraphicsScene::NoIndex);

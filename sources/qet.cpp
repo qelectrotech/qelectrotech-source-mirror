@@ -26,6 +26,7 @@
 #include <QTextStream>
 #include <QRegularExpression>
 #include <QActionGroup>
+#include <QStringBuilder>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -403,7 +404,7 @@ QList<QDomElement> QET::findInDomElement(
 QString QET::license()
 {
 	// Recuperation du texte de la GNU/GPL dans un fichier integre a l'application
-	QFile *file_license = new QFile(":/LICENSE");
+	QFile *file_license = new QFile(":/licenses/QElectroTech.LICENSE");
 	QString txt_license;
 	// verifie que le fichier existe
 	if (!file_license -> exists()) {
@@ -424,6 +425,44 @@ QString QET::license()
 	return(txt_license);
 };
 
+/**
+	@brief Retrieves the text of a license for a specific component
+	@param name The identifier of the license to retrieve
+	@return A tuple containing <notice_text, license_text> for the requested license
+
+	This function manages licenses for components used in QElectroTech.
+	Currently supported licenses:
+	- QElectroTech itself
+	- QET-Elements
+	- "liberation-fonts": License for Liberation Fonts
+	- "osifont": License for osifont
+*/
+std::tuple<QString, QString> QET::licenses(const QString &name)
+{
+	// Map of supported license identifiers to their resource paths
+	const QMap<QString, QString> licenses = {
+		{"QElectroTech", ":/licenses/QElectroTech"},
+		{"QET-Elements", ":/licenses/QET-Elements"},
+		{"liberation-fonts", ":/fonts/liberation-fonts"},
+		{"osifont", ":/fonts/osifont"}
+	};
+
+	// Get base path for the license files
+	const QString base_path = licenses.value(name);
+	QFile license_file(base_path % QString(".LICENSE"));
+	QFile notice_file(base_path % QString(".NOTICE"));
+
+	// Helper lambda to read file content
+	auto readFile = [](QFile &file) -> QString {
+		file.open(QIODevice::ReadOnly | QIODevice::Text);
+		QTextStream stream(&file);
+		QString content = stream.readAll();
+		file.close();
+		return content;
+	};
+
+	return std::make_tuple((readFile(notice_file)).trimmed(), readFile(license_file));
+}
 
 /**
 	@return la liste des caracteres interdits dans les noms de fichiers sous

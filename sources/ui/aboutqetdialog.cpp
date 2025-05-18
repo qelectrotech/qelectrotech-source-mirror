@@ -41,7 +41,7 @@ AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	setVersion();
 	setAnnexProject();
 	setLibraries();
-	setLicence();
+	setLicenses();
 	setLoginfo();
 }
 
@@ -195,11 +195,14 @@ void AboutQETDialog::setLibraries()
 }
 
 /**
-	@brief AboutQETDialog::setLicence
+	@brief AboutQETDialog::setLicenses
 */
-void AboutQETDialog::setLicence()
+void AboutQETDialog::setLicenses()
 {
-	ui->m_license_text_edit->setPlainText(QET::license());
+	ui->m_licenses_comboBox->addItem("QElectroTech");
+	ui->m_licenses_comboBox->addItem("QET-Elements");
+	ui->m_licenses_comboBox->addItem("liberation-fonts");
+	ui->m_licenses_comboBox->addItem("osifont");
 }
 
 /**
@@ -255,6 +258,32 @@ void AboutQETDialog::addLibrary(QLabel *label, const QString &name, const QStrin
 		// Add the function of the person
 	new_text += Library_template.arg(name).arg(link);
 	label->setText(new_text);
+}
+
+/**
+	@brief Updates the displayed license text when a different one is selected
+
+	This slot is called when the user selects a different license in the 
+	licenses combo box. It retrieves the selected license text from QET's 
+	license collection and displays it in the text edit widgets.
+
+	@param license_name The identifier of the selected license
+*/
+void AboutQETDialog::on_m_licenses_comboBox_currentTextChanged(
+		const QString &license_name)
+{
+	std::tuple<QString, QString> license_info = QET::licenses(license_name);
+	ui->m_licenses_notice_plainTextEdit->setPlainText(std::get<0>(license_info));
+	ui->m_licenses_license_plainTextEdit->setPlainText(std::get<1>(license_info));
+	//adjust height of notice-field:
+	int LineCount = ui->m_licenses_notice_plainTextEdit->blockCount();
+	if (LineCount <= 4) {
+		QFontMetrics qfm (ui->m_licenses_notice_plainTextEdit->font());
+		int LineHeight = qfm.lineSpacing();
+		ui->m_licenses_notice_plainTextEdit->setMaximumHeight((LineCount + 1) * LineHeight);
+	} else {
+		ui->m_licenses_notice_plainTextEdit->setMaximumHeight(16777215);
+	}
 }
 
 void AboutQETDialog::on_m_log_comboBox_currentTextChanged(const QString &arg1)
