@@ -194,21 +194,22 @@
                 <translation lang="fr">%{document-n}</translation>
             </value>
             <label>
+                <translation lang="ar">المؤلف</translation>
+                <translation lang="ca">Autor</translation>
+                <translation lang="cs">Autor</translation>
+                <translation lang="da">Forfatter</translation>
+                <translation lang="de">Author</translation>
+                <translation lang="el">Σχεδίαση</translation>
+                <translation lang="en">Author</translation>
                 <translation lang="es">Autor</translation>
-                <translation lang="ro">Autor</translation>
+                <translation lang="fr">Document n°</translation>
+                <translation lang="hr">Autor</translation>
                 <translation lang="it">Autore</translation>
                 <translation lang="pl">Autor</translation>
-                <translation lang="hr">Autor</translation>
-                <translation lang="de">Author</translation>
-                <translation lang="ru">Автор</translation>
-                <translation lang="cs">Autor</translation>
-                <translation lang="en">Author</translation>
-                <translation lang="ca">Autor</translation>
-                <translation lang="ar">المؤلف</translation>
-                <translation lang="fr">Document n°</translation>
-                <translation lang="el">Σχεδίαση</translation>
-                <translation lang="da">Forfatter</translation>
                 <translation lang="pt">Autor</translation>
+                <translation lang="ro">Autor</translation>
+                <translation lang="ru">Автор</translation>
+                <translation lang="zh">作者</translation>
             </label>
         </field>
         <field rowspan="1" valign="center" col="8" row="4" hadjust="true" name="" displaylabel="true" align="center" fontsize="9">

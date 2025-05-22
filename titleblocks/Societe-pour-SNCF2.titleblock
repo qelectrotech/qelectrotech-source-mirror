@@ -320,20 +320,21 @@
                 <translation lang="fr">Modification client / Customer modification</translation>
             </value>
             <label>
-                <translation lang="da">Dato</translation>
-                <translation lang="ca">Data</translation>
-                <translation lang="en">Date</translation>
-                <translation lang="pt">Data</translation>
-                <translation lang="ru">Дата</translation>
-                <translation lang="es">Fecha</translation>
-                <translation lang="de">Datum</translation>
                 <translation lang="ar">تاريخ</translation>
-                <translation lang="pl">Data</translation>
-                <translation lang="ro">Data</translation>
-                <translation lang="el">Ημ/νία</translation>
+                <translation lang="ca">Data</translation>
                 <translation lang="cs">Datum</translation>
-                <translation lang="it">Data</translation>
+                <translation lang="da">Dato</translation>
+                <translation lang="de">Datum</translation>
+                <translation lang="el">Ημ/νία</translation>
+                <translation lang="en">Date</translation>
+                <translation lang="es">Fecha</translation>
                 <translation lang="hr">Datum</translation>
+                <translation lang="it">Data</translation>
+                <translation lang="pl">Data</translation>
+                <translation lang="pt">Data</translation>
+                <translation lang="ro">Data</translation>
+                <translation lang="ru">Дата</translation>
+                <translation lang="zh">日期</translation>
             </label>
         </field>
         <field fontsize="4" hadjust="true" colspan="1" row="10" align="center" valign="center" displaylabel="true" col="2" name="">

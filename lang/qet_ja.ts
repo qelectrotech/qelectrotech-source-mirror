@@ -45,16 +45,11 @@
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="508"/>
-        <source>Accord de licence</source>
-        <translation>ライセンス契約</translation>
+        <source>Licenses</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.ui" line="514"/>
-        <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation>このプログラムは GNU/GPL のもとでライセンスされます。</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/aboutqetdialog.ui" line="529"/>
+        <location filename="../sources/ui/aboutqetdialog.ui" line="532"/>
         <source>log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -797,13 +792,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1654"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1656"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>導体の属性変更</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1659"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1661"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>複数の導体の属性変更</translation>
@@ -1105,7 +1100,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1851"/>
+        <location filename="../sources/diagram.cpp" line="1852"/>
         <source>Modifier la profondeur</source>
         <translation>重なりの変更</translation>
     </message>
@@ -1193,6 +1188,12 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="57"/>
         <source>Maintenir ctrl pour un déplacement libre</source>
         <translation>Ctrl を押している間は自由に移動</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="489"/>
+        <source>
+&lt;Shift&gt; to move</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3596,178 +3597,178 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="337"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="335"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>全般</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="353"/>
         <source>Système</source>
         <translation>システム</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
         <source>Arabe</source>
         <translation>アラビア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Brézilien</source>
         <translation>ブラジル語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
         <source>Catalan</source>
         <translation>カタルーニャ語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
         <source>Tchèque</source>
         <translation>チェコ語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
         <source>Allemand</source>
         <translation>ドイツ語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
         <source>Danois</source>
         <translation>デンマーク語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
         <source>Grec</source>
         <translation>ギリシア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
         <source>Anglais</source>
         <translation>英語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
         <source>Espagnol</source>
         <translation>スペイン語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
         <source>Français</source>
         <translation>フランス語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
         <source>Croate</source>
         <translation>クロアチア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
         <source>Italien</source>
         <translation>イタリア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Japonais</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Polonais</source>
         <translation>ポーランド語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
         <source>Portugais</source>
         <translation>ポルトガル語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
         <source>Roumains</source>
         <translation>ルーマニア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
         <source>Russe</source>
         <translation>ロシア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
         <source>Slovène</source>
         <translation>スロベニア語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
         <source>Pays-Bas</source>
         <translation>オランダ語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
         <source>Norvege</source>
         <translation>ノルウェー語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
         <source>Belgique-Flemish</source>
         <translation>フラマン語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
         <source>Turc</source>
         <translation>トルコ語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
         <source>Hongrois</source>
         <translation>ハンガリー語</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="382"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="380"/>
         <source>Mongol</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
         <source>Ukrainien</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="384"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="382"/>
         <source>Chinois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="385"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Suédois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="448"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="451"/>
         <source>Chemin de la collection commune</source>
         <translation>共通コレクションのパス</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="462"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="465"/>
         <source>Chemin de la collection company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="476"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="479"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>ユーザ・コレクションのパス</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="490"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="493"/>
         <source>Chemin des cartouches company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="504"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="507"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>ユーザ表題欄のパス</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="533"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="538"/>
         <source>To high values might lead to crashes of the application.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5632,217 +5633,217 @@ Voulez-vous enregistrer les modifications ?</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="125"/>
+        <location filename="../sources/qetapp.cpp" line="127"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>読込中... 要素コレクションのキャッシュを初期化中</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="136"/>
+        <location filename="../sources/qetapp.cpp" line="138"/>
         <source>Chargement... Éditeur de schéma</source>
         <comment>splash screen caption</comment>
         <translation>読込中... フォリオ・エディタ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="141"/>
+        <location filename="../sources/qetapp.cpp" line="143"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>読込中... ファイルを開いています</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="242"/>
+        <location filename="../sources/qetapp.cpp" line="244"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="440"/>
+        <location filename="../sources/qetapp.cpp" line="442"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates 					collection provided by QElectroTech</comment>
         <translation>QET 表題欄</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="461"/>
+        <location filename="../sources/qetapp.cpp" line="463"/>
         <source>Cartouches company</source>
         <comment>title of the company&apos;s 					title block templates collection</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="481"/>
+        <location filename="../sources/qetapp.cpp" line="483"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s 					title block templates collection</comment>
         <translation>ユーザ表題欄</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1432"/>
+        <location filename="../sources/qetapp.cpp" line="1441"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1434"/>
+        <location filename="../sources/qetapp.cpp" line="1443"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1436"/>
+        <location filename="../sources/qetapp.cpp" line="1445"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>回路図</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1438"/>
+        <location filename="../sources/qetapp.cpp" line="1447"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>電気</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1440"/>
+        <location filename="../sources/qetapp.cpp" line="1449"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1917"/>
+        <location filename="../sources/qetapp.cpp" line="1926"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech の設定</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2068"/>
+        <location filename="../sources/qetapp.cpp" line="2077"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>読込中...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2180"/>
+        <location filename="../sources/qetapp.cpp" line="2233"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>読込中... システム・トレイ・アイコン</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2184"/>
+        <location filename="../sources/qetapp.cpp" line="2237"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2187"/>
+        <location filename="../sources/qetapp.cpp" line="2240"/>
         <source>&amp;Quitter</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2189"/>
+        <location filename="../sources/qetapp.cpp" line="2242"/>
         <source>&amp;Masquer</source>
         <translation>非表示 (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2191"/>
+        <location filename="../sources/qetapp.cpp" line="2244"/>
         <source>&amp;Restaurer</source>
         <translation>表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2193"/>
+        <location filename="../sources/qetapp.cpp" line="2246"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>回路図エディタを非表示 (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2196"/>
+        <location filename="../sources/qetapp.cpp" line="2249"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>回路図エディタを表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2199"/>
+        <location filename="../sources/qetapp.cpp" line="2252"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>要素エディタを非表示 (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2202"/>
+        <location filename="../sources/qetapp.cpp" line="2255"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>要素エディタを表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2205"/>
+        <location filename="../sources/qetapp.cpp" line="2258"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>表題欄テンプレート・エディタを非表示 (&amp;H)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2208"/>
+        <location filename="../sources/qetapp.cpp" line="2261"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>表題欄テンプレート・エディタを表示 (&amp;S)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2211"/>
+        <location filename="../sources/qetapp.cpp" line="2264"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>新規の回路図エディタ (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2213"/>
+        <location filename="../sources/qetapp.cpp" line="2266"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>新規の要素エディタ (&amp;N)</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2215"/>
+        <location filename="../sources/qetapp.cpp" line="2268"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>QElectroTech を終了</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2216"/>
+        <location filename="../sources/qetapp.cpp" line="2269"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>QElectroTech をシステム・トレイに最小化</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2217"/>
+        <location filename="../sources/qetapp.cpp" line="2270"/>
         <source>Restaurer QElectroTech</source>
         <translation>QElectroTech を復元</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2234"/>
+        <location filename="../sources/qetapp.cpp" line="2287"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2329"/>
+        <location filename="../sources/qetapp.cpp" line="2382"/>
         <source>Éditeurs de schémas</source>
         <translation>回路図エディタ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2339"/>
+        <location filename="../sources/qetapp.cpp" line="2392"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>要素エディタ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2350"/>
+        <location filename="../sources/qetapp.cpp" line="2403"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>表題欄テンプレート・エディタ</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2402"/>
+        <location filename="../sources/qetapp.cpp" line="2455"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;次の復元ファイルが見つかりました。&lt;br&gt;これを開きますか?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2405"/>
+        <location filename="../sources/qetapp.cpp" line="2458"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;以下の復元ファイルが見つかりました。&lt;br&gt;これらを開きますか?&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2420"/>
+        <location filename="../sources/qetapp.cpp" line="2473"/>
         <source>Fichier de restauration</source>
         <translation>復元ファイル</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2522"/>
+        <location filename="../sources/qetapp.cpp" line="2575"/>
         <source>Usage : </source>
         <translation>使用法: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2524"/>
+        <location filename="../sources/qetapp.cpp" line="2577"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5851,7 +5852,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2525"/>
+        <location filename="../sources/qetapp.cpp" line="2578"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5868,34 +5869,34 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2531"/>
+        <location filename="../sources/qetapp.cpp" line="2584"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     要素コレクションのディレクトリを指定
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2534"/>
+        <location filename="../sources/qetapp.cpp" line="2587"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR          表題欄テンプレート・コレクションのディレクトリを指定
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2537"/>
+        <location filename="../sources/qetapp.cpp" line="2590"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              設定ディレクトリを指定
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2540"/>
+        <location filename="../sources/qetapp.cpp" line="2593"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2542"/>
+        <location filename="../sources/qetapp.cpp" line="2595"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                言語ファイルのディレクトリを指定
@@ -8409,7 +8410,7 @@ Voulez-vous la remplacer ?</source>
         <translation>フォリオ番号</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="274"/>
+        <location filename="../sources/qet.cpp" line="280"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8417,7 +8418,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="283"/>
+        <location filename="../sources/qet.cpp" line="289"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8425,7 +8426,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="292"/>
+        <location filename="../sources/qet.cpp" line="298"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8433,7 +8434,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="301"/>
+        <location filename="../sources/qet.cpp" line="307"/>
         <source>%n image(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8441,7 +8442,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="310"/>
+        <location filename="../sources/qet.cpp" line="316"/>
         <source>%n forme(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8449,7 +8450,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="319"/>
+        <location filename="../sources/qet.cpp" line="325"/>
         <source>%n texte(s) d&apos;élément</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -8457,7 +8458,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="327"/>
+        <location filename="../sources/qet.cpp" line="333"/>
         <source>%n tableau(s)</source>
         <comment>part of a sentence listing the content of diagram</comment>
         <translation>
@@ -8465,7 +8466,7 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="335"/>
+        <location filename="../sources/qet.cpp" line="341"/>
         <source>%n plan de bornes</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
@@ -8473,66 +8474,66 @@ Voulez-vous la remplacer ?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="405"/>
+        <location filename="../sources/qet.cpp" line="411"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>GNU/GPL ライセンスを含むテキストファイルが見つかりません - でも全て覚えていますよね?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="409"/>
+        <location filename="../sources/qet.cpp" line="415"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>GNU/GPL ライセンスを含むテキストファイルが存在しますが開けません - でも全て覚えていますよね?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="635"/>
-        <location filename="../sources/qet.cpp" line="770"/>
+        <location filename="../sources/qet.cpp" line="679"/>
+        <location filename="../sources/qet.cpp" line="814"/>
         <location filename="../sources/qetxml.cpp" line="270"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>ファイル %1 は書き込み許可で開けません, エラーが発生しました %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="656"/>
+        <location filename="../sources/qet.cpp" line="700"/>
         <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>ファイル %1 の書き込み中にエラーが発生しました, エラー %2 が発生しました.</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="734"/>
+        <location filename="../sources/qet.cpp" line="778"/>
         <source>Amener au premier plan</source>
         <translation>最前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="735"/>
+        <location filename="../sources/qet.cpp" line="779"/>
         <source>Rapprocher</source>
         <translation>前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="736"/>
+        <location filename="../sources/qet.cpp" line="780"/>
         <source>Éloigner</source>
         <translation>背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="737"/>
+        <location filename="../sources/qet.cpp" line="781"/>
         <source>Envoyer au fond</source>
         <translation>最背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="739"/>
+        <location filename="../sources/qet.cpp" line="783"/>
         <source>Ramène la ou les sélections au premier plan</source>
         <translation>選択を最前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="740"/>
+        <location filename="../sources/qet.cpp" line="784"/>
         <source>Rapproche la ou les sélections</source>
         <translation>選択を前面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="741"/>
+        <location filename="../sources/qet.cpp" line="785"/>
         <source>Éloigne la ou les sélections</source>
         <translation>選択を背面へ移動</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="742"/>
+        <location filename="../sources/qet.cpp" line="786"/>
         <source>Envoie en arrière plan la ou les sélections</source>
         <translation>選択を最背面へ移動</translation>
     </message>
@@ -8557,7 +8558,7 @@ Voulez-vous la remplacer ?</source>
         <translation>qet_tb_generator プラグインの起動でエラー</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="69"/>
+        <location filename="../sources/qetgraphicsitem/terminal.cpp" line="70"/>
         <source>Borne</source>
         <comment>tooltip</comment>
         <translation>端子</translation>
@@ -9187,7 +9188,7 @@ Voulez-vous la remplacer ?</source>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
-        <location filename="../sources/qetapp.cpp" line="2274"/>
+        <location filename="../sources/qetapp.cpp" line="2327"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>

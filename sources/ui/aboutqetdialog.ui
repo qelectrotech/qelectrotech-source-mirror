@@ -503,20 +503,23 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_6">
+     <widget class="QWidget" name="tab_9">
       <attribute name="title">
-       <string>Accord de licence</string>
+       <string>Licenses</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_8">
+      <layout class="QVBoxLayout" name="verticalLayout_9">
        <item>
-        <widget class="QLabel" name="m_license_label">
-         <property name="text">
-          <string>Ce programme est sous licence GNU/GPL.</string>
+        <widget class="QComboBox" name="m_licenses_comboBox"/>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="m_licenses_notice_plainTextEdit">
+         <property name="readOnly">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QTextEdit" name="m_license_text_edit">
+        <widget class="QPlainTextEdit" name="m_licenses_license_plainTextEdit">
          <property name="readOnly">
           <bool>true</bool>
          </property>

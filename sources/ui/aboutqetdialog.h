@@ -46,7 +46,7 @@ class AboutQETDialog : public QDialog
 		void setVersion();
 		void setAnnexProject();
 		void setLibraries();
-		void setLicence();
+		void setLicenses();
 		void setLoginfo();
 		void addAuthor(
 				QLabel *label,
@@ -58,6 +58,7 @@ class AboutQETDialog : public QDialog
 				const QString &link);
 
 private slots:
+	void on_m_licenses_comboBox_currentTextChanged(const QString &arg1);
 	void on_m_log_comboBox_currentTextChanged(const QString &arg1);
 };
 

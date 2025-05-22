@@ -43,6 +43,7 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #ifdef BUILD_WITHOUT_KF5
@@ -111,6 +112,7 @@ QETApp::QETApp() :
 	initConfiguration();
 	initLanguage();
 	QET::Icons::initIcons();
+	initFonts();
 	initStyle();
 	initSplashScreen();
 	initSystemTray();
@@ -1234,7 +1236,7 @@ bool QETApp::closeEveryEditor()
 /**
 	@brief QETApp::diagramTextsFont
 	The font to use
-	By default the font is "Sans Serif" and size 9.
+	By default the font is "Liberation Sans" and size 9.
 	@param size : the size of font
 	@return the font to use
 */
@@ -1244,13 +1246,14 @@ QFont QETApp::diagramTextsFont(qreal size)
 
 	//Font to use
 	QString diagram_texts_family = settings.value("diagramitemfont",
-							  "Sans Serif").toString();
+							  "Liberation Sans").toString();
 	qreal diagram_texts_size     = settings.value("diagramitemsize",
 							  9.0).toDouble();
 	auto diagram_texts_item_weight =
 			static_cast<QFont::Weight>(
 				settings.value("diagramitemweight", QFont::Normal).toInt());
-	QString diagram_texts_item_style  = settings.value("diagramitemstyle").toString();
+	QString diagram_texts_item_style  = settings.value("diagramitemstyle",
+							   "Regular").toString();
 
 	if (size != -1.0) {
 		diagram_texts_size = size;
@@ -1276,14 +1279,14 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 
 	//Font to use
 	QString diagram_texts_item_family = settings.value("diagramitemfont",
-							   "Sans Serif").toString();
+							   "Liberation Sans").toString();
 	qreal diagram_texts_item_size     = settings.value("diagramitemsize",
 							   9.0).toDouble();
 	auto diagram_texts_item_weight =
 			static_cast<QFont::Weight>(
 				settings.value("diagramitemweight", QFont::Normal).toInt());
 	QString diagram_texts_item_style  = settings.value("diagramitemstyle",
-							   "normal").toString();
+							   "Regular").toString();
 
 	if (size != -1.0) {
 		diagram_texts_item_size = size;
@@ -2102,6 +2105,50 @@ void QETApp::setSplashScreenStep(const QString &message) {
 void QETApp::initLanguage()
 {
 	setLanguage(langFromSetting());
+}
+
+/**
+	@brief QETApp::initFonts
+	Setup the fonts to use in the application
+*/
+void QETApp::initFonts()
+{
+	QStringList fonts = {
+
+        /** "Liberation Fonts" Font Software is licensed under the SIL Open Font License, Version 1.1
+
+			See the file "fonts/liberation-fonts.LICENSE" for license information. */
+		":/fonts/LiberationMono-Regular.ttf",
+		":/fonts/LiberationMono-Bold.ttf",
+		":/fonts/LiberationMono-Italic.ttf",
+		":/fonts/LiberationMono-BoldItalic.ttf",
+		":/fonts/LiberationSans-Regular.ttf",
+		":/fonts/LiberationSans-Bold.ttf",
+		":/fonts/LiberationSans-Italic.ttf",
+		":/fonts/LiberationSans-BoldItalic.ttf",
+		":/fonts/LiberationSerif-Regular.ttf",
+		":/fonts/LiberationSerif-Bold.ttf",
+		":/fonts/LiberationSerif-Italic.ttf",
+		":/fonts/LiberationSerif-BoldItalic.ttf",
+
+        /** "osifont" Font Software is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3
+		    As a special exception, if you create a document which uses this font, and embed this font or unaltered
+			portions of this font into the document, this font does not by itself cause the resulting document to be
+			covered by the GNU General Public License. This exception does not however invalidate any other reasons why
+			the document might be covered by the GNU General Public License. If you modify this font, you may extend
+			this exception to your version of the font, but you are not obligated to do so. If you do not wish to do so,
+			delete this exception statement from your version.
+
+			See the file "fonts/osifont.LICENSE" for license information. */
+		":/fonts/osifont.ttf",
+		":/fonts/osifont-italic.ttf",	
+	};
+
+	for (const QString &font : fonts) {
+		if (QFontDatabase::addApplicationFont(font) == -1) {
+			qWarning() << "Failed to load font:" << font;
+		}
+	}
 }
 
 /**

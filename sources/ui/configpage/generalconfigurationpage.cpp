@@ -87,13 +87,11 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
 	
-	QString fontInfos = settings.value("diagramitemfont").toString() + " " +
-			settings.value("diagramitemsize").toString() + " (" +
-			settings.value("diagramitemstyle").toString() + ")";
+	QString fontInfos = settings.value("diagramitemfont", "Liberation Sans").toString() + " " +
+			settings.value("diagramitemsize", "9").toString() + " (" +
+			settings.value("diagramitemstyle", "Regular").toString() + ")";
 	ui->m_font_pb->setText(fontInfos);
 
-	
-	
 
 		//Dynamic element text item
 	ui->m_dyn_text_rotation_sb->setValue(settings.value("diagrameditor/dynamic_text_rotation", 0).toInt());
@@ -107,7 +105,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 				QString::number(font.pointSize()) + " (" +
 				font.styleName() + ")";
 		ui->m_dyn_text_font_pb->setText(fontInfos);
-	}
+	} else { ui->m_dyn_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
 
 		//Independent text item
 	ui->m_indi_text_rotation_sb->setValue(settings.value("diagrameditor/independent_text_rotation",0).toInt());
@@ -120,7 +118,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 							QString::number(font.pointSize()) + " (" +
 							font.styleName() + ")";
 		ui->m_indi_text_font_pb->setText(fontInfos);
-	}
+	} else { ui->m_indi_text_font_pb->setText("Liberation Sans 9 (Regular)"); }
 	
 	ui->m_highlight_integrated_elements->setChecked(settings.value("diagrameditor/highlight-integrated-elements", true).toBool());
 	ui->m_default_elements_info->setPlainText(settings.value("elementeditor/default-informations", "").toString());
@@ -266,7 +264,7 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/common-collection-path").toString()) {
 		QETApp::resetCollectionsPath();
 	}
-	
+
 	path = settings.value("elements-collections/company-collection-path").toString();
 	if (ui->m_company_elmt_path_cb->currentIndex() == 1)
 	{
@@ -405,7 +403,10 @@ void GeneralConfigurationPage::on_m_font_pb_clicked()
 {
 	bool ok;
 	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
+	QFont curFont = QFont(settings.value("diagramitemfont", "Liberation Sans").toString());
+	curFont.setPointSizeF(settings.value("diagramitemsize", "9").toInt());
+	curFont.setStyleName (settings.value("diagramitemstyle", "Regular").toString());
+	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
 		settings.setValue("diagramitemfont", font.family());
@@ -427,7 +428,9 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 {
 	bool ok;
 	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
+	QFont curFont;
+	curFont.fromString(settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
+	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
 		settings.setValue("diagrameditor/dynamic_text_font", font.toString());
@@ -516,7 +519,9 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 {
 	bool ok;
 	QSettings settings;
-	QFont font = QFontDialog::getFont(&ok, QFont("Sans Serif", 9), this);
+	QFont curFont;
+	curFont.fromString(settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
+	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
 		settings.setValue("diagrameditor/independent_text_font", font.toString());

@@ -28,7 +28,8 @@ class QActionGroup;
 	anywhere else within the QElectroTech application.
 */
 namespace QET {
-	QString license();
+	QString license();  // only QETs license
+	std::tuple<QString, QString> licenses(const QString &); // all licenses
 	
 		//Describe the current state of a graphic item
 	enum GraphicsItemState {

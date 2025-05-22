@@ -27,7 +27,7 @@
 #include <QVBoxLayout>
 
 /**
-	Constructeur
+	Constructeur / Constructor
 	@param editor L'editeur d'element concerne
 	@param p La partie a editer
 	@param parent le Widget parent
@@ -582,17 +582,17 @@ bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 */
 void StyleEditor::activeConnections(bool active) {
 	if (active) {
-		connect (outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
-		connect(line_style,        SIGNAL(activated(int)), this, SLOT(updatePartLineStyle()));
-		connect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
-		connect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
-		connect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
+		connect (outline_color, SIGNAL(activated(int)),    this, SLOT(updatePartColor()));
+		connect(line_style,     SIGNAL(activated(int)),    this, SLOT(updatePartLineStyle()));
+		connect(size_weight,    SIGNAL(activated(int)),    this, SLOT(updatePartLineWeight()));
+		connect(filling_color,  SIGNAL(activated(int)),    this, SLOT(updatePartFilling()));
+		connect(antialiasing,   SIGNAL(stateChanged(int)), this, SLOT(updatePartAntialiasing()));
 	} else {
-		disconnect(outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
-		disconnect(line_style,        SIGNAL(activated(int)), this, SLOT(updatePartLineStyle()));
-		disconnect(size_weight,       SIGNAL(activated(int)), this, SLOT(updatePartLineWeight()));
-		disconnect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
-		disconnect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
+		disconnect(outline_color, SIGNAL(activated(int)),    this, SLOT(updatePartColor()));
+		disconnect(line_style,    SIGNAL(activated(int)),    this, SLOT(updatePartLineStyle()));
+		disconnect(size_weight,   SIGNAL(activated(int)),    this, SLOT(updatePartLineWeight()));
+		disconnect(filling_color, SIGNAL(activated(int)),    this, SLOT(updatePartFilling()));
+		disconnect(antialiasing,  SIGNAL(stateChanged(int)), this, SLOT(updatePartAntialiasing()));
 	}
 }
 
