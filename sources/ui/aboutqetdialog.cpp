@@ -192,6 +192,8 @@ void AboutQETDialog::setLibraries()
 	addLibrary(ui->m_libraries_label, "KDE lib",            "https://api.kde.org");
 	addLibrary(ui->m_libraries_label, "Single application", "https://github.com/itay-grudev/SingleApplication");
 	addLibrary(ui->m_libraries_label, "pugixml",            "https://pugixml.org");
+	addLibrary(ui->m_libraries_label, "Liberation fonts",   "https://github.com/liberationfonts/liberation-fonts");
+	addLibrary(ui->m_libraries_label, "osifont",            "https://github.com/hikikomori82/osifont");
 }
 
 /**
