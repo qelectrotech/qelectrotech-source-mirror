@@ -143,7 +143,7 @@ void SummaryQueryWidget::setUpItems()
 */
 void SummaryQueryWidget::fillSavedQuery()
 {
-	QFile file(QETApp::configDir() + "/summary.json");
+	QFile file(QETApp::configDir() % "/summary.json");
 	if (file.open(QFile::ReadOnly))
 	{
 		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
@@ -296,7 +296,7 @@ void SummaryQueryWidget::reset()
 */
 void SummaryQueryWidget::saveConfig()
 {
-	QFile file_(QETApp::configDir() + "/summary.json");
+	QFile file_(QETApp::configDir() % "/summary.json");
 
 	if (file_.open(QFile::ReadWrite))
 	{
@@ -331,7 +331,7 @@ void SummaryQueryWidget::loadConfig()
 		return;
 	}
 
-	QFile file_(QETApp::configDir() + "/summary.json");
+	QFile file_(QETApp::configDir() % "/summary.json");
 	if (!file_.open(QFile::ReadOnly)) {
 		return;
 	}

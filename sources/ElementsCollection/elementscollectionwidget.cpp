@@ -620,7 +620,7 @@ void ElementsCollectionWidget::dirProperties()
 		QMessageBox::information(
 			this,
 			tr("Propriété du dossier %1").arg(eci->localName()),
-			txt1 + " " + txt2 + " " + txt3 + "\n\n" + txt4 + "\n" + txt5);
+			txt1 % " " % txt2 % " " % txt3 % "\n\n" % txt4 % "\n" % txt5);
 		}
 }
 

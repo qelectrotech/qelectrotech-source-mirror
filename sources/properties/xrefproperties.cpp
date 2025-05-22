@@ -47,24 +47,24 @@ XRefProperties::XRefProperties()
 void XRefProperties::toSettings(QSettings &settings,
 				const QString prefix) const
 {
-	settings.setValue(prefix + "showpowerctc", m_show_power_ctc);
+	settings.setValue(prefix % "showpowerctc", m_show_power_ctc);
 	QString display = m_display == Cross? "cross" : "contacts";
-	settings.setValue(prefix + "displayhas", display);
+	settings.setValue(prefix % "displayhas", display);
 	QString snap = m_snap_to == Bottom? "bottom" : "label";
-	settings.setValue(prefix + "snapto", snap);
+	settings.setValue(prefix % "snapto", snap);
 	int offset = m_offset;
-	settings.setValue(prefix + "offset", offset);
+	settings.setValue(prefix % "offset", offset);
 	QString master_label = m_master_label;
-	settings.setValue(prefix + "master_label", master_label);
+	settings.setValue(prefix % "master_label", master_label);
 	QString slave_label = m_slave_label;
-	settings.setValue(prefix + "slave_label", slave_label);
+	settings.setValue(prefix % "slave_label", slave_label);
 
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	settings.setValue(prefix + "xrefpos",  var.valueToKey(m_xref_pos));
+	settings.setValue(prefix % "xrefpos",  var.valueToKey(m_xref_pos));
 
 	foreach (QString key, m_prefix.keys()) {
-		settings.setValue(prefix + key + "prefix", m_prefix.value(key));
+		settings.setValue(prefix % key % "prefix", m_prefix.value(key));
 	}
 }
 
@@ -77,20 +77,20 @@ void XRefProperties::toSettings(QSettings &settings,
 void XRefProperties::fromSettings(const QSettings &settings,
 				  const QString prefix)
 {
-	m_show_power_ctc = settings.value(prefix + "showpowerctc", true).toBool();
-	QString display = settings.value(prefix + "displayhas", "cross").toString();
+	m_show_power_ctc = settings.value(prefix % "showpowerctc", true).toBool();
+	QString display = settings.value(prefix % "displayhas", "cross").toString();
 	display == "cross"? m_display = Cross : m_display = Contacts;
-	QString snap = settings.value(prefix + "snapto", "label").toString();
+	QString snap = settings.value(prefix % "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
-	m_offset = settings.value(prefix + "offset", "0").toInt();
-	m_master_label = settings.value(prefix + "master_label", "%f-%l%c").toString();
-	m_slave_label = settings.value(prefix + "slave_label", "(%f-%l%c)").toString();
+	m_offset = settings.value(prefix % "offset", "0").toInt();
+	m_master_label = settings.value(prefix % "master_label", "%f-%l%c").toString();
+	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix + "xrefpos").toString()).toStdString().data()));
+	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos").toString()).toStdString().data()));
 
 	for (QString key : m_prefix_keys) {
-		m_prefix.insert(key, settings.value(prefix + key + "prefix").toString());
+		m_prefix.insert(key, settings.value(prefix + key % "prefix").toString());
 	}
 }
 
@@ -124,7 +124,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 	QString slave_label = m_slave_label;
 	xml_element.setAttribute("slave_label", slave_label);
 	foreach (QString key, m_prefix.keys()) {
-		xml_element.setAttribute(key + "prefix", m_prefix.value(key));
+		xml_element.setAttribute(key % "prefix", m_prefix.value(key));
 	}
 
 	return xml_element;
@@ -155,7 +155,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
 	foreach (QString key, m_prefix_keys) {
-		m_prefix.insert(key, xml_element.attribute(key + "prefix"));
+		m_prefix.insert(key, xml_element.attribute(key % "prefix"));
 	}
 	return true;
 }

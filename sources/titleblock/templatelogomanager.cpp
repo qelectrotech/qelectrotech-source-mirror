@@ -312,7 +312,7 @@ void TitleBlockTemplateLogoManager::exportLogo()
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
 		tr("Choisir un fichier pour exporter ce logo"),
-		open_dialog_dir_.absolutePath() + "/" + current_logo,
+		open_dialog_dir_.absolutePath() % "/" % current_logo,
 		tr("Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)")
 	);
 	if (filepath.isEmpty()) return;

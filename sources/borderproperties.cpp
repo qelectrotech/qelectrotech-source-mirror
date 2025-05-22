@@ -138,12 +138,12 @@ void BorderProperties::fromXml(QDomElement &e) {
 */
 void BorderProperties::toSettings(QSettings &settings, const QString &prefix) const
 {
-	settings.setValue(prefix + "cols",        columns_count);
-	settings.setValue(prefix + "colsize",     columns_width);
-	settings.setValue(prefix + "displaycols", display_columns);
-	settings.setValue(prefix + "rows",        rows_count);
-	settings.setValue(prefix + "rowsize",     rows_height);
-	settings.setValue(prefix + "displayrows", display_rows);
+	settings.setValue(prefix % "cols",        columns_count);
+	settings.setValue(prefix % "colsize",     columns_width);
+	settings.setValue(prefix % "displaycols", display_columns);
+	settings.setValue(prefix % "rows",        rows_count);
+	settings.setValue(prefix % "rowsize",     rows_height);
+	settings.setValue(prefix % "displayrows", display_rows);
 }
 
 /**
@@ -156,13 +156,13 @@ void BorderProperties::toSettings(QSettings &settings, const QString &prefix) co
 	\~French prefixe a ajouter devant les noms des parametres
 */
 void BorderProperties::fromSettings(QSettings &settings, const QString &prefix) {
-	columns_count   = settings.value(prefix + "cols",            columns_count).toInt();
-	columns_width   = qRound(settings.value(prefix + "colsize",  columns_width).toDouble());
-	display_columns = settings.value(prefix + "displaycols",     display_columns).toBool();
+	columns_count   = settings.value(prefix % "cols",            columns_count).toInt();
+	columns_width   = qRound(settings.value(prefix % "colsize",  columns_width).toDouble());
+	display_columns = settings.value(prefix % "displaycols",     display_columns).toBool();
 	
-	rows_count      = settings.value(prefix + "rows",            rows_count).toInt();
-	rows_height     = qRound(settings.value(prefix + "rowsize",  rows_height).toDouble());
-	display_rows    = settings.value(prefix + "displayrows",     display_rows).toBool();
+	rows_count      = settings.value(prefix % "rows",            rows_count).toInt();
+	rows_height     = qRound(settings.value(prefix % "rowsize",  rows_height).toDouble());
+	display_rows    = settings.value(prefix % "displayrows",     display_rows).toBool();
 }
 
 /**

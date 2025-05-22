@@ -132,7 +132,7 @@ void RecentFiles::extractFilesFromSettings()
 	QSettings settings;
 	for (int i = size_ ; i >= 1  ; -- i)
 	{
-		QString key(identifier_ + "-recentfiles/file" + QString::number(i));
+		QString key(identifier_ % "-recentfiles/file" % QString::number(i));
 		QString value(settings.value(key, QString()).toString());
 		insertFile(value);
 	}
@@ -165,7 +165,7 @@ void RecentFiles::saveFilesToSettings()
 	QSettings settings;
 	for (int i = 0 ; i < size_ && i < list_.count() ; ++ i)
 	{
-		QString key(identifier_ + "-recentfiles/file" + QString::number(i + 1));
+		QString key(identifier_ % "-recentfiles/file" % QString::number(i + 1));
 		settings.setValue(key, list_[i]);
 	}
 }

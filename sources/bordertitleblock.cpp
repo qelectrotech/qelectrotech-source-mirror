@@ -949,7 +949,7 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 			last_digit = (char)(string[string.length()-1].unicode()) + 1;
 			return(first_digits + QString(last_digit));
 		} else {
-			return(incrementLetters(first_digits) + "A");
+			return(incrementLetters(first_digits) % "A");
 		}
 	}
 }

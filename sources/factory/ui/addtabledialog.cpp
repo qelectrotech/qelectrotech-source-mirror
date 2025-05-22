@@ -202,7 +202,7 @@ void AddTableDialog::on_m_table_margins_pb_clicked()
 
 void AddTableDialog::saveConfig()
 {
-	QFile file_(QETApp::configDir() + "/graphics_table.json");
+	QFile file_(QETApp::configDir() % "/graphics_table.json");
 	
 	if (file_.open(QFile::ReadWrite))
 	{
@@ -247,7 +247,7 @@ void AddTableDialog::loadConfig()
 		return;
 	}
 
-	QFile file_(QETApp::configDir() + "/graphics_table.json");
+	QFile file_(QETApp::configDir() % "/graphics_table.json");
 	if (!file_.open(QFile::ReadOnly)) {
 		return;
 	}
@@ -297,7 +297,7 @@ void AddTableDialog::loadConfig()
 
 void AddTableDialog::fillSavedQuery()
 {
-	QFile file(QETApp::configDir() + "/graphics_table.json");
+	QFile file(QETApp::configDir() % "/graphics_table.json");
 	if (file.open(QFile::ReadOnly))
 	{
 		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));

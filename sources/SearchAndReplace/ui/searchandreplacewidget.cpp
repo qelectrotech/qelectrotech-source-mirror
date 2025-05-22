@@ -419,7 +419,7 @@ void SearchAndReplaceWidget::search()
 			else
 			{
 					//entire word
-				QRegularExpression rx("\\b" + str + "\\b");
+				QRegularExpression rx("\\b" % str % "\\b");
 				if (!rx.isValid())
 					{
 					qWarning() <<QObject::tr("this is an error in the code")

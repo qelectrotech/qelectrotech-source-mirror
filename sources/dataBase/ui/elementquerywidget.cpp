@@ -416,7 +416,7 @@ void ElementQueryWidget::setGroupBy(QString text, bool set)
 void ElementQueryWidget::setCount(QString text, bool set)
 {
 	if (set) {
-		m_count = QString(", " + text + " ");
+		m_count = QString(", " % text % " ");
 	} else {
 		m_count.clear();
 	}
@@ -489,7 +489,7 @@ QPair<int, QString> ElementQueryWidget::FilterFor(const QString &key) const
 */
 void ElementQueryWidget::fillSavedQuery()
 {
-	QFile file(QETApp::configDir() + "/nomenclature.json");
+	QFile file(QETApp::configDir() % "/nomenclature.json");
 	if (file.open(QFile::ReadOnly))
 	{
 		QJsonDocument jsd(QJsonDocument::fromJson(file.readAll()));
@@ -625,7 +625,7 @@ void ElementQueryWidget::on_m_load_pb_clicked()
 		return;
 	}
 
-	QFile file_(QETApp::configDir() + "/nomenclature.json");
+	QFile file_(QETApp::configDir() % "/nomenclature.json");
 	if (!file_.open(QFile::ReadOnly)) {
 		return;
 	}
@@ -650,7 +650,7 @@ void ElementQueryWidget::on_m_load_pb_clicked()
 */
 void ElementQueryWidget::on_m_save_current_conf_pb_clicked()
 {
-	QFile file_(QETApp::configDir() + "/nomenclature.json");
+	QFile file_(QETApp::configDir() % "/nomenclature.json");
 
 	if (file_.open(QFile::ReadWrite))
 	{

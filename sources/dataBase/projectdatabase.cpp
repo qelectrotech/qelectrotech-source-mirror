@@ -549,7 +549,7 @@ void projectDataBase::prepareQuery()
 		//UPDATE DIAGRAM INFO
 	QString update_diagram_str("UPDATE diagram_info SET ");
 	for (auto str : QETInformation::diagramInfoKeys()) {
-		update_diagram_str.append(str + " = :" + str + ", ");
+		update_diagram_str.append(str % " = :" % str % ", ");
 	}
 	update_diagram_str.remove(update_diagram_str.length()-2, 2); //Remove the last ", "
 	update_diagram_str.append(" WHERE diagram_uuid = :uuid");
@@ -589,7 +589,7 @@ void projectDataBase::prepareQuery()
 		//UPDATE ELEMENT INFO
 	QString update_str("UPDATE element_info SET ");
 	for (auto string : QETInformation::elementInfoKeys()) {
-		update_str.append(string + " = :" + string + ", ");
+		update_str.append(string % " = :" % string % ", ");
 	}
 	update_str.remove(update_str.length()-2, 2); //Remove the last ", "
 	update_str.append(" WHERE element_uuid = :uuid");
@@ -678,7 +678,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 	if(dir_.isEmpty()) {
 		dir_ = db->project()->filePath();
 		if (dir_.isEmpty()) {
-			dir_ = QETApp::documentDir() + "/" + tr("sans_nom") + ".sqlite";
+			dir_ = QETApp::documentDir() % "/" % tr("sans_nom") % ".sqlite";
 		} else {
 			dir_.remove(".qet");
 			dir_.append(".sqlite");
@@ -690,7 +690,7 @@ void projectDataBase::exportDb(projectDataBase *db,
 		return;
 	}
 
-	QString connection_name("export_project_db_" + db->project()->uuid().toString());
+	QString connection_name("export_project_db_" % db->project()->uuid().toString());
 
 	if (true) //Enter in a scope only to nicely use QSqlDatabase::removeDatabase just after the end of the scope
 	{

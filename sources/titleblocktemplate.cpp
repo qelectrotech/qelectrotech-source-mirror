@@ -1740,9 +1740,9 @@ QString TitleBlockTemplate::interpreteVariables(
 	QString interpreted_string = string;
 	foreach (QString key,
 		 diagram_context.keys(DiagramContext::DecreasingLength)) {
-		interpreted_string.replace("%{" + key + "}",
+		interpreted_string.replace("%{" % key % "}",
 					   diagram_context[key].toString());
-		interpreted_string.replace("%" + key,
+		interpreted_string.replace("%" % key,
 					   diagram_context[key].toString());
 	}
 	return(interpreted_string);

@@ -108,7 +108,7 @@ QString XmlProjectElementCollectionItem::embeddedPath() const
 		if (xpeci->isCollectionRoot())
 			return xpeci->embeddedPath() + name();
 		else
-			return xpeci->embeddedPath() + "/" + name();
+			return xpeci->embeddedPath() % "/" % name();
 	}
 	else
 		return QString();

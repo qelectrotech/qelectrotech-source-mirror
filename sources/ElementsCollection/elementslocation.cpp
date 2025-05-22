@@ -196,9 +196,9 @@ QString ElementsLocation::projectCollectionPath() const
 		return QString();
 	else
 		return QString("project"
-				   + QString::number(QETApp::projectId(m_project))
-				   + "+"
-				   + collectionPath());
+				   % QString::number(QETApp::projectId(m_project))
+				   % "+"
+				   % collectionPath());
 }
 
 /**
@@ -296,17 +296,17 @@ void ElementsLocation::setPath(const QString &path)
 		if (path.startsWith("common://"))
 		{
 			tmp_path.remove("common://");
-			p = QETApp::commonElementsDirN() + "/" + tmp_path;
+			p = QETApp::commonElementsDirN() % "/" % tmp_path;
 		}
 		else if (path.startsWith("company://"))
 		{
 			tmp_path.remove("company://");
-			p = QETApp::companyElementsDirN() + "/" + tmp_path;
+			p = QETApp::companyElementsDirN() % "/" % tmp_path;
 		}
 		else
 		{
 			tmp_path.remove("custom://");
-			p = QETApp::customElementsDirN() + "/" + tmp_path;
+			p = QETApp::customElementsDirN() % "/" % tmp_path;
 		}
 
 		m_file_system_path = p;
@@ -464,7 +464,7 @@ QString ElementsLocation::toString() const
 	if (m_project) {
 		int project_id = QETApp::projectId(m_project);
 		if (project_id != -1) {
-			result += "project" + QString().setNum(project_id) + "+";
+			result += "project" % QString().setNum(project_id) % "+";
 		}
 	}
 	result += m_collection_path;
@@ -624,7 +624,7 @@ NamesList ElementsLocation::nameList()
 		{
 			//Open the qet_directory file,
 			// to get the traductions name of this dir
-			QFile dir_conf(fileSystemPath() + "/qet_directory");
+			QFile dir_conf(fileSystemPath() % "/qet_directory");
 			if (dir_conf.exists() && dir_conf.open(
 						QIODevice::ReadOnly
 						| QIODevice::Text))

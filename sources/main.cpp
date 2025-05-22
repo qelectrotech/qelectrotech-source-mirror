@@ -132,7 +132,7 @@ void myMessageOutput(QtMsgType type,
 void delete_old_log_files(int days)
 {
 	const QDate today = QDate::currentDate();
-	const QString path = QETApp::dataDir() + "/";
+	const QString path = QETApp::dataDir() % "/";
 
 	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
 	filter = filter.arg("[0123456789]"); // valid characters
@@ -148,7 +148,7 @@ void delete_old_log_files(int days)
 			QDir deletefile;
 			deletefile.setPath(filepath);
 			deletefile.remove(filepath);
-			qDebug() << "File " + filepath + " is deleted!";
+			qDebug() << "File " % filepath % " is deleted!";
 		}
 	}
 }

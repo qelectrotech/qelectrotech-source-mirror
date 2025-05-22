@@ -49,7 +49,7 @@ bool ConductorNumExport::toCsv()
 		//save in csv file in same directory as project by default
 	QString dir = m_project->currentDir();
 	if (dir.isEmpty()) dir = QETApp::documentDir();
-	QString name = dir + "/" + QObject::tr("numero_de_fileries_") + m_project->title() + ".csv";
+	QString name = dir % "/" % QObject::tr("numero_de_fileries_") % m_project->title() % ".csv";
 	//    if(!name.endsWith(".csv")) {
 	//        name += ".csv";
 	//    }
@@ -105,7 +105,7 @@ QString ConductorNumExport::wiresNum() const
 	for (QString key : list)
 	{
 		for (int i=0; i<m_hash.value(key) ; ++i) {
-			csv.append(key + "\n");
+			csv.append(key % "\n");
 		}
 	}
 

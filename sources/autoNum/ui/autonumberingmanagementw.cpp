@@ -177,7 +177,7 @@ void AutoNumberingManagementW::on_m_to_folios_cb_currentIndexChanged(int index)
 		QString from = ui->m_from_folios_cb->currentText();
 		QString to = ui->m_to_folios_cb->currentText();
 		ui->m_selected_folios_le->clear();
-		ui->m_selected_folios_le->insert(from + " - " + to);
+		ui->m_selected_folios_le->insert(from % " - " % to);
 		ui->m_selected_folios_le->setDisabled(true);
 	}
 	applyEnable(true);

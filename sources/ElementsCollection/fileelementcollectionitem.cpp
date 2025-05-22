@@ -67,7 +67,7 @@ QString FileElementCollectionItem::fileSystemPath() const
 	FileElementCollectionItem *feci =
 			static_cast<FileElementCollectionItem *> (parent());
 	if (feci)
-		return feci->fileSystemPath() + "/" + m_path;
+		return feci->fileSystemPath() % "/" % m_path;
 	else
 		return QString();//Null string
 }
@@ -131,7 +131,7 @@ QString FileElementCollectionItem::localName()
 		}
 		else
 		{
-			QString str(fileSystemPath() + "/qet_directory");
+			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
 			if(docu.load_file(str.toStdString().c_str()))
 			{
@@ -208,7 +208,7 @@ QString FileElementCollectionItem::collectionPath() const
 		if (eci->isCollectionRoot())
 			return eci->collectionPath() + m_path;
 		else
-			return eci->collectionPath() + "/" + m_path;
+			return eci->collectionPath() % "/" % m_path;
 	}
 	else
 		return QString();

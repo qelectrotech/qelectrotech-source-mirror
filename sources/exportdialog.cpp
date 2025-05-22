@@ -1014,7 +1014,7 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_s
 	if (diagram_title.isEmpty()) diagram_title = QObject::tr("Folio sans titre");
 	QString diagram_filename = diagram -> title();
 	if (diagram_filename.isEmpty()) diagram_filename = QObject::tr("schema");
-	diagram_filename = QET::stringToFileName(diagram_index + "_" + diagram_filename);
+	diagram_filename = QET::stringToFileName(diagram_index % "_" % diagram_filename);
 	
 	title_label = new QLabel(diagram_title);
 	

@@ -113,7 +113,7 @@ QByteArray ElementScaler(const QString &file_path, QWidget *parent)
 
 QString ElementScalerDirPath()
 {
-	return QETApp::dataDir() + "/binary";
+	return QETApp::dataDir() % "/binary";
 }
 
 /**
@@ -123,11 +123,11 @@ QString ElementScalerDirPath()
 QString ElementScalerBinaryPath()
 {
 #if defined(Q_OS_WIN32) || defined(Q_OS_WIN64)
-	return ElementScalerDirPath() + QStringLiteral("/QET_ElementScaler.exe");
+	return ElementScalerDirPath() % QStringLiteral("/QET_ElementScaler.exe");
 #elif defined(Q_OS_MACOS)
-	return ElementScalerDirPath() + QStringLiteral("/./QET_ElementScaler");
+	return ElementScalerDirPath() % QStringLiteral("/./QET_ElementScaler");
 #else
-	return ElementScalerDirPath() + QStringLiteral("/QET_ElementScaler");
+	return ElementScalerDirPath() % QStringLiteral("/QET_ElementScaler");
 #endif
 }
 

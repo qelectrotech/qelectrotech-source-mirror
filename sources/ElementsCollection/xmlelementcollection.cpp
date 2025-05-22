@@ -446,7 +446,7 @@ QString XmlElementCollection::addElement(ElementsLocation &location)
 			if (path.isEmpty())
 				path = str;
 			else
-				path = path + "/" + str;
+				path = path % "/" % str;
 
 			QDomElement child_element = child(parent_element, str);
 
@@ -530,7 +530,7 @@ bool XmlElementCollection::addElementDefinition(
 	dom_elmt.appendChild(xml_definition.cloneNode(true));
 	dom_dir.appendChild(dom_elmt);
 
-	emit elementAdded(dir_path + "/" + name);
+	emit elementAdded(dir_path % "/" % name);
 
 	return true;
 }
@@ -617,7 +617,7 @@ bool XmlElementCollection::createDir(const QString& path,
 				     const QString& name,
 				     const NamesList &name_list)
 {
-	QString new_dir_path = path + "/" + name;
+	QString new_dir_path = path % "/" % name;
 
 	if (!directory(new_dir_path).isNull()) {
 		return true;
@@ -724,7 +724,7 @@ ElementsLocation XmlElementCollection::domToLocation(
 			dom_element = dom_element.parentNode().toElement();
 
 			if (dom_element.tagName() == "category")
-				path.prepend(dom_element.attribute("name") + "/");
+				path.prepend(dom_element.attribute("name") % "/");
 		}
 
 		return ElementsLocation(path, m_project);
@@ -789,11 +789,11 @@ ElementsLocation XmlElementCollection::copyDirectory(
 
 	//Remove the previous directory with the same path
 	QDomElement element = child(destination.collectionPath(false)
-				    + "/" + new_dir_name);
+				    % "/" % new_dir_name);
 	if (!element.isNull()) {
 		element.parentNode().removeChild(element);
 		emit directoryRemoved(destination.collectionPath(false)
-				      + "/" + new_dir_name);
+				      % "/" % new_dir_name);
 	}
 
 	ElementsLocation created_location;
@@ -813,7 +813,7 @@ ElementsLocation XmlElementCollection::copyDirectory(
 		parent_dir_dom.appendChild(elmt_dom);
 
 		created_location.setPath(destination.projectCollectionPath()
-					 + "/" + new_dir_name);
+					 % "/" % new_dir_name);
 
 		if (deep_copy)
 		{
@@ -823,7 +823,7 @@ ElementsLocation XmlElementCollection::copyDirectory(
 						QDir::Name))
 			{
 				ElementsLocation sub_source(source.fileSystemPath()
-							    + "/" + str);
+							    % "/" % str);
 				copyDirectory(sub_source, created_location);
 			}
 
@@ -834,7 +834,7 @@ ElementsLocation XmlElementCollection::copyDirectory(
 						QDir::Name))
 			{
 				ElementsLocation sub_source(source.fileSystemPath()
-							    + "/" + str);
+							    % "/" % str);
 				copyElement(sub_source, created_location);
 			}
 		}
@@ -861,7 +861,7 @@ ElementsLocation XmlElementCollection::copyDirectory(
 		other_collection_dom_dir.setAttribute("name", new_dir_name);
 		parent_dir_dom.appendChild(other_collection_dom_dir);
 
-		created_location.setPath(destination.projectCollectionPath() + "/" + new_dir_name);
+		created_location.setPath(destination.projectCollectionPath() % "/" % new_dir_name);
 	}
 
 	emit directorieAdded(created_location.collectionPath(false));
@@ -906,7 +906,7 @@ ElementsLocation XmlElementCollection::copyElement(
 
 	//Remove the previous element with the same path
 	QDomElement element = child(destination.collectionPath(false)
-				    + "/" + new_elmt_name);
+				    % "/" % new_elmt_name);
 	bool removed = false;
 	if (!element.isNull()) {
 		element.parentNode().removeChild(element);
@@ -919,7 +919,7 @@ ElementsLocation XmlElementCollection::copyElement(
 	dir_dom.appendChild(elmt_dom);
 
 	ElementsLocation copy_loc(destination.projectCollectionPath()
-				  + "/" + new_elmt_name);
+				  % "/" % new_elmt_name);
 
 	if (removed) {
 		emit elementChanged(copy_loc.collectionPath(false));

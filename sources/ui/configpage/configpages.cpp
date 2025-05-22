@@ -339,9 +339,9 @@ void PrintConfigPage::applyConf()
 	epw -> exportProperties().toSettings(settings, prefix);
 
 	// annule l'enregistrement de certaines proprietes non pertinentes
-	settings.remove(prefix + "path");
-	settings.remove(prefix + "format");
-	settings.remove(prefix + "area");
+	settings.remove(prefix % "path");
+	settings.remove(prefix % "format");
+	settings.remove(prefix % "area");
 }
 
 /// @return l'icone de cette page

@@ -59,7 +59,7 @@ ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 		return;
 	
 		//Check if a conf with the same name already exist
-	if (QFileInfo::exists(dir.absoluteFilePath(m_name + ".xml")))
+	if (QFileInfo::exists(dir.absoluteFilePath(m_name % ".xml")))
 	{
 		bool r = QMessageBox::question(parentWidget(),
 									   QObject::tr("Configuration de textes"),
@@ -71,7 +71,7 @@ ExportElementTextPattern::ExportElementTextPattern(Element *elmt) :
 	}
 	
 	QDomDocument doc = xmlConf();
-	QET::writeXmlFile(doc, dir.absoluteFilePath(m_name + ".xml"));
+	QET::writeXmlFile(doc, dir.absoluteFilePath(m_name % ".xml"));
 }
 
 /**
@@ -202,7 +202,7 @@ void ImportElementTextPattern::apply(QString name, bool erase) const
 	if(!name.endsWith(".xml"))
 		name.append(".xml");
 	
-	QFile conf_file(QETApp::configDir() + "/element_texts_pattern/" + name);
+	QFile conf_file(QETApp::configDir() % "/element_texts_pattern/" % name);
 	if(!conf_file.open(QIODevice::ReadOnly | QIODevice::Text))
 		return;
 	

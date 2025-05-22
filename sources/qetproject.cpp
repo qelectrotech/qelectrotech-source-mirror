@@ -1141,7 +1141,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 				do
 				{
 					a++;
-					QString new_path = parent_path + "/" + name_ + QString::number(a) + ".elmt";
+					QString new_path = parent_path % "/" % name_ % QString::number(a) % ".elmt";
 					loc = ElementsLocation (new_path);
 				} while (loc.exist());
 
