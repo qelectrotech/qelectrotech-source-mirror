@@ -15,7 +15,7 @@ jobs:
         submodules: 'recursive'
         show-progress: ''
     - name: Setup and run doxygen
-      run: sudo apt install doxygen graphviz -y
+      run: sudo apt install doxygen graphviz qhelpgenerator-qt5 -y
     - name: Run doxygen
       run: doxygen Doxyfile
     - uses: actions/upload-pages-artifact@v3
