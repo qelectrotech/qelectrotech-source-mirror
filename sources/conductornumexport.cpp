@@ -64,8 +64,8 @@ bool ConductorNumExport::toCsv()
 			if(!QFile::remove(filename))
 			{
 				QMessageBox::critical(m_parent_widget, QObject::tr("Erreur"),
-									  QObject::tr("Impossible de remplacer le fichier!\n\n")+
-									  "Destination : "+filename+"\n");
+									  QObject::tr("Impossible de remplacer le fichier!\n\n") %
+									  "Destination : " % filename % "\n");
 				return false;
 			}
 		}
