@@ -188,6 +188,7 @@ QET_TBT_DIR="${current_dir}/titleblocks/"
 QET_LANG_DIR="${current_dir}/lang/"
 QET_EXAMPLES_DIR="${current_dir}/examples/"
 QET_FONTS_DIR="${current_dir}/fonts/"
+QET_LICENSES_DIR="${current_dir}/licenses/"
 
 
 # Add new folder for Qt dialog translation see
@@ -232,6 +233,13 @@ if [ -d "${QET_FONTS_DIR}" ]; then
    cp ${current_dir}/fonts/*.ttf $BUNDLE/Contents/Resources/fonts
 
 fi
+
+if [ -d "${QET_LICENSES_DIR}" ]; then
+    echo "Copying licenses in the bundle..."
+    mkdir $BUNDLE/Contents/Resources/licenses
+    cp -R ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
+fi
+
 codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" --options=runtime $BUNDLE
 ### create zip tarball ###############################################
 
