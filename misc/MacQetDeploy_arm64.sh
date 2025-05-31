@@ -187,6 +187,7 @@ QET_ELMT_DIR="${current_dir}/elements/"
 QET_TBT_DIR="${current_dir}/titleblocks/"
 QET_LANG_DIR="${current_dir}/lang/"
 QET_EXAMPLES_DIR="${current_dir}/examples/"
+QET_FONTS_DIR="${current_dir}/fonts/"
 
 
 # Add new folder for Qt dialog translation see
@@ -222,6 +223,13 @@ if [ -d "${QET_EXAMPLES_DIR}" ]; then
    echo "Copying examples in the bundle... "
    mkdir $BUNDLE/Contents/Resources/examples
    cp ${current_dir}/examples/*.qet $BUNDLE/Contents/Resources/examples
+
+fi
+
+if [ -d "${QET_FONTS_DIR}" ]; then
+   echo "Copying fonts in the bundle... "
+   mkdir $BUNDLE/Contents/Resources/fonts
+   cp ${current_dir}/fonts/*.ttf $BUNDLE/Contents/Resources/fonts
 
 fi
 codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" --options=runtime $BUNDLE
