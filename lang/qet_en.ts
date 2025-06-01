@@ -1193,7 +1193,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="489"/>
         <source>
 &lt;Shift&gt; to move</source>
-        <translation type="unfinished"></translation>
+        <translation>
+&lt;Shift&gt; to move</translation>
     </message>
 </context>
 <context>
