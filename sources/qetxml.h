@@ -94,6 +94,12 @@ namespace QETXML
     QDomElement qGraphicsItemPosToXml(QGraphicsItem *item, QDomDocument &document);
     bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt);
 
+    void orientationToAttribute(const Qt::Orientation &orientation, QDomElement &element);
+    Qt::Orientation orientationFromAttribute(const QDomElement &element, Qt::Orientation def_value = Qt::Vertical);
+
+    void alignmentToAttribute(const Qt::Alignment &alignment, QDomElement &element);
+    Qt::Alignment alignmentFromAttribute (const QDomElement &element);
+
 	QString boolToString(bool value);
 	bool boolFromString(const QString &value,
 					 bool default_value = true,

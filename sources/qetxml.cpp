@@ -953,4 +953,93 @@ bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt)
     return false;
 }
 
+/**
+ * @brief orientationToAttribute
+ * Write the Qt::orientation has an attribute of @param element.
+ * Attribute name is 'orientation' value is 'horizontal' or 'vertical'
+ * @param orientation
+ * @param element
+ */
+void orientationToAttribute(const Qt::Orientation &orientation, QDomElement &element)
+{
+    element.setAttribute(QStringLiteral("orientation"),
+                         orientation == Qt::Horizontal ? QStringLiteral("Horizontal") :
+                             QStringLiteral("Vertical"));
+}
+
+/**
+ * @brief orientationFromAttribute
+ * @param element
+ * @param def_value
+ * @return the Qt::Orientation read in @param element. If an error occur
+ * the returned orientation is @param def_value.
+ */
+Qt::Orientation orientationFromAttribute(const QDomElement &element, Qt::Orientation def_value)
+{
+    if (element.hasAttribute(QStringLiteral("orientation"))) {
+        const auto str {element.attribute(QStringLiteral("orientation"))};
+        if (str == QLatin1String("Horizontal"))
+            return Qt::Horizontal;
+        else if (str == QLatin1String("Vertical"))
+            return Qt::Vertical;
+    }
+        //Error occur during reading, we return the default value
+    return def_value;
+}
+
+void alignmentToAttribute(const Qt::Alignment &alignment, QDomElement &element)
+{
+    QStringList al;
+    if (alignment &Qt::AlignLeft)
+        al.append(QStringLiteral("Left"));
+    if (alignment &Qt::AlignRight)
+        al.append(QStringLiteral("Right"));
+    if (alignment &Qt::AlignHCenter)
+        al.append(QStringLiteral("HCenter"));
+    if (alignment &Qt::AlignJustify)
+        al.append(QStringLiteral("Justify"));
+    if (alignment &Qt::AlignTop)
+        al.append(QStringLiteral("Top"));
+    if (alignment &Qt::AlignBottom)
+        al.append(QStringLiteral("Bottom"));
+    if (alignment &Qt::AlignBottom)
+        al.append(QStringLiteral("VCenter"));
+    if (alignment &Qt::AlignBaseline)
+        al.append(QStringLiteral("Baseline"));
+
+    element.setAttribute(QStringLiteral("alignment"),al.join(QStringLiteral(" ")));
+}
+
+/**
+ * @brief alignmentFromAttribute
+ * @param element
+ * @return The alignment read in @param element. If an error
+ * occured the return Qt::alignment contain no set flag.
+ */
+Qt::Alignment alignmentFromAttribute(const QDomElement &element)
+{
+    Qt::Alignment al;
+    if (element.hasAttribute(QStringLiteral("alignment"))) {
+        const auto alignment {element.attribute(QStringLiteral("alignment"))};
+        if(alignment.contains(QStringLiteral("Left")))
+            al = al | Qt::AlignLeft;
+        if(alignment.contains(QStringLiteral("Right")))
+            al = al | Qt::AlignRight;
+        if(alignment.contains(QStringLiteral("HCenter")))
+            al = al | Qt::AlignHCenter;
+        if(alignment.contains(QStringLiteral("Justify")))
+            al = al | Qt::AlignJustify;
+        if(alignment.contains(QStringLiteral("Top")))
+            al = al | Qt::AlignTop;
+        if(alignment.contains(QStringLiteral("Bottom")))
+            al = al | Qt::AlignBottom;
+        if(alignment.contains(QStringLiteral("VCenter")))
+            al = al | Qt::AlignVCenter;
+        if(alignment.contains(QStringLiteral("Baseline")))
+            al = al | Qt::AlignBaseline;
+    }
+
+    return al;
+}
+
 }

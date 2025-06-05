@@ -26,8 +26,15 @@ TerminalStripLayoutPattern::TerminalStripLayoutPattern()
 	updateTerminalsTextOption();
 }
 
+/**
+ * @brief TerminalStripLayoutPattern::setHeaderTextAlignment
+ * Set text alignment to @param alignment. If alignment have no
+ * flag this function do nothing
+ * @param alignment
+ */
 void TerminalStripLayoutPattern::setHeaderTextAlignment(const Qt::Alignment &alignment)
 {
+    if (!alignment) return;
 	m_header_text_alignment = alignment;
 	updateHeaderTextOption();
 }
@@ -50,8 +57,15 @@ void TerminalStripLayoutPattern::setFont(const QFont &font) {
     QETUtils::pixelSizedFont(m_font);
 }
 
+/**
+ * @brief TerminalStripLayoutPattern::setTerminalsTextAlignment
+ * Set text alignment to @param alignment. If alignment have no
+ * flag this function do nothing
+ * @param alignment
+ */
 void TerminalStripLayoutPattern::setTerminalsTextAlignment(const Qt::Alignment &alignment)
 {
+    if (!alignment) return;
 	m_terminals_text_alignment = alignment;
 	updateTerminalsTextOption();
 }
