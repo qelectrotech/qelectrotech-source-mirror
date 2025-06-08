@@ -25,8 +25,8 @@ class TerminalStripLayoutPattern;
 
 /**
  * @brief The TerminalStripLayoutPatternXml class
- * A class used to save/restor a @class TerminalStripLayoutPattern to
- * xml
+ * A class with static function used to save/restor a
+ * @class TerminalStripLayoutPattern to xml
  */
 class TerminalStripLayoutPatternXml
 {

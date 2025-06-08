@@ -22,7 +22,7 @@
 
 class QDomDocument;
 class QPointF;
-class QRect;
+class QRectF;
 
 /**
  * @namespace QETSVG
@@ -32,8 +32,8 @@ class QRect;
  */
 namespace QETSVG
 {
-    QDomElement rectToElmt(const QRect &rect, QDomDocument &parent_document);
-    QRect rectFromElmt(const QDomElement &xml_element);
+    QDomElement rectToElmt(const QRectF &rect, QDomDocument &parent_document);
+    QRectF rectFromElmt(const QDomElement &xml_element);
 
     void yToAttribute(const qreal &y, QDomElement &xml_element);
     qreal yFromAttribute(const QDomElement &xml_element, const qreal &def_value=0);

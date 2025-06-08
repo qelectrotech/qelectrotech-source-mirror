@@ -29,7 +29,7 @@
  * @param parent_document
  * @return
  */
-QDomElement QETSVG::rectToElmt(const QRect &rect, QDomDocument &parent_document)
+QDomElement QETSVG::rectToElmt(const QRectF &rect, QDomDocument &parent_document)
 {
     auto dom_element = parent_document.createElement(QStringLiteral("rect"));
     if (!rect.isNull()) {
@@ -47,16 +47,16 @@ QDomElement QETSVG::rectToElmt(const QRect &rect, QDomDocument &parent_document)
  * The tag name must be 'rect' if not, the returned QRect is null.
  * @return a svg rect to QRect
  */
-QRect QETSVG::rectFromElmt(const QDomElement &xml_element)
+QRectF QETSVG::rectFromElmt(const QDomElement &xml_element)
 {
-    QRect rect;
+    QRectF rect_;
     if (xml_element.tagName() == QLatin1String("rect")) {
-        rect.setRect(xml_element.attribute(QStringLiteral("x"), QStringLiteral("0")).toInt(),
-                     static_cast<int> (yFromAttribute(xml_element, 0)),
-                     xml_element.attribute(QStringLiteral("width"), QStringLiteral("10")).toInt(),
-                     static_cast<int> (heightFromAttribute(xml_element, 10)));
+        rect_.setRect(xml_element.attribute(QStringLiteral("x"), QStringLiteral("0")).toDouble(),
+                      yFromAttribute(xml_element, 0),
+                      xml_element.attribute(QStringLiteral("width"), QStringLiteral("10")).toDouble(),
+                      heightFromAttribute(xml_element, 10));
     }
-    return rect;
+    return rect_;
 }
 
 /**
@@ -75,9 +75,9 @@ void QETSVG::yToAttribute(const qreal &y, QDomElement &xml_element) {
  * @return
  */
 qreal QETSVG::yFromAttribute(const QDomElement &xml_element, const qreal &def_value) {
-    qreal value;
-    if (QET::attributeIsAReal(xml_element, QStringLiteral("y"), &value)) {
-        return value;
+    qreal value_;
+    if (QET::attributeIsAReal(xml_element, QStringLiteral("y"), &value_)) {
+        return value_;
     }
     return def_value;
 }
@@ -92,9 +92,9 @@ void QETSVG::heightToAttribute(const qreal &height, QDomElement &xml_element) {
 }
 
 qreal QETSVG::heightFromAttribute(const QDomElement &xml_element, const qreal &def_value) {
-    qreal value;
-    if (QET::attributeIsAReal(xml_element, QStringLiteral("height"), &value)) {
-        return value;
+    qreal value_;
+    if (QET::attributeIsAReal(xml_element, QStringLiteral("height"), &value_)) {
+        return value_;
     }
     return def_value;
 }
@@ -104,9 +104,9 @@ void QETSVG::rToAttribute(const qreal &r, QDomElement &xml_element) {
 }
 
 qreal QETSVG::rFromAttribute(const QDomElement &xml_element, const qreal &def_value) {
-    qreal value;
-    if (QET::attributeIsAReal(xml_element, QStringLiteral("r"), &value)) {
-        return value;
+    qreal value_;
+    if (QET::attributeIsAReal(xml_element, QStringLiteral("r"), &value_)) {
+        return value_;
     }
     return def_value;
 
@@ -114,14 +114,14 @@ qreal QETSVG::rFromAttribute(const QDomElement &xml_element, const qreal &def_va
 
 void QETSVG::pointsToAttribute(const QVector<QPointF> &points, QDomElement &xml_element)
 {
-        QStringList strl;
+        QStringList strl_;
         for (const auto &point : points) {
-            strl.append(QString::number(point.x()) +
+            strl_.append(QString::number(point.x()) +
                         QString(",") +
                         QString::number(point.y()));
         }
 
-        xml_element.setAttribute(QStringLiteral("points"), strl.join(" "));
+        xml_element.setAttribute(QStringLiteral("points"), strl_.join(" "));
 }
 
 /**
@@ -132,7 +132,7 @@ void QETSVG::pointsToAttribute(const QVector<QPointF> &points, QDomElement &xml_
  */
 QVector<QPointF> QETSVG::pointsFromAttribute(const QDomElement &xml_element)
 {
-    QVector<QPointF> vector;
+    QVector<QPointF> vector_;
     if (const auto string_points = xml_element.attribute(QStringLiteral("points")).split(QStringLiteral(" ")) ;
         !string_points.isEmpty()) {
         bool x_ok, y_ok;    for (const auto &point : string_points) {
@@ -141,11 +141,11 @@ QVector<QPointF> QETSVG::pointsFromAttribute(const QDomElement &xml_element)
                 const auto x = string_x_y[0].toDouble(&x_ok);
                 const auto y = string_x_y[1].toDouble(&y_ok);
                 if (x_ok && y_ok) {
-                    vector.append(QPointF{x,y});
+                    vector_.append(QPointF{x,y});
                 }
             }
         }
     }
 
-    return vector;
+    return vector_;
 }

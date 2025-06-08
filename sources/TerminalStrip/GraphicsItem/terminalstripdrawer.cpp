@@ -95,7 +95,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
             //Move painter pos to next drawing
         painter->translate(m_pattern->m_header_rect.width(),0);
 
-        int x_offset{m_pattern->m_header_rect.width()};
+        qreal x_offset{m_pattern->m_header_rect.width()};
 
             //Draw spacer
         painter->drawRect(m_pattern->m_spacer_rect);
@@ -109,7 +109,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
         const auto terminals_text_option{m_pattern->terminalsTextOption()};
         const auto terminals_text_height{m_pattern->m_terminals_text_height};
         const auto terminals_text_y{m_pattern->m_terminals_text_y};
-        QRect terminal_rect;
+        QRectF terminal_rect;
 
         QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
 
@@ -145,7 +145,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                         //We can't use terminal_rect.bottomLeft for p2 because
                         //the returned value deviate from the true value
                         //(see Qt documentation about QRect)
-                    const QPoint p2 { p1.x(), p1.y() + terminal_rect.height() };
+                    const QPointF p2 { p1.x(), p1.y() + terminal_rect.height() };
                     painter->drawLine(p1, p2);
                     painter->restore();
                 }
@@ -154,8 +154,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 {
                     painter->save();
                     painter->setPen(Qt::yellow);
-                    painter->drawLine(QPoint{terminal_rect.x(), terminal_rect.y() + terminal_rect.height()/2},
-                                      QPoint{terminal_rect.width(), terminal_rect.y() + terminal_rect.height()/2});
+                    painter->drawLine(QPointF{terminal_rect.x(), terminal_rect.y() + terminal_rect.height()/2},
+                                      QPointF{terminal_rect.width(), terminal_rect.y() + terminal_rect.height()/2});
                     painter->restore();
 				}
 
@@ -226,7 +226,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
 QRectF TerminalStripDrawer::boundingRect() const
 {
-    return QRect{0, 0, width(), height()};;
+    return QRectF{0, 0, width(), height()};;
 }
 
 void TerminalStripDrawer::setLayout(QSharedPointer<TerminalStripLayoutPattern> layout)
@@ -243,7 +243,7 @@ void TerminalStripDrawer::setPreviewDraw(bool draw) {
     m_preview_draw = draw;
 }
 
-int TerminalStripDrawer::height() const
+qreal TerminalStripDrawer::height() const
 {
     if (m_pattern)
     {
@@ -261,11 +261,11 @@ int TerminalStripDrawer::height() const
     return 0;
 }
 
-int TerminalStripDrawer::width() const
+qreal TerminalStripDrawer::width() const
 {
     if (m_pattern)
     {
-        int width_{m_pattern->m_header_rect.width() + m_pattern->m_spacer_rect.width()};
+        qreal width_{m_pattern->m_header_rect.width() + m_pattern->m_spacer_rect.width()};
 
         if (m_strip)
         {

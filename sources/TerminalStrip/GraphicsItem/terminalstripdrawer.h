@@ -80,8 +80,8 @@ namespace TerminalStripDrawer
             void setPreviewDraw(bool draw = true);
 
         private:
-            int height() const;
-            int width() const;
+            qreal height() const;
+            qreal width() const;
 
         private:
             QSharedPointer <AbstractTerminalStripInterface> m_strip;

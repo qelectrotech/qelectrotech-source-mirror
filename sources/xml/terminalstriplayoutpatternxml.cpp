@@ -118,12 +118,12 @@ QDomElement TerminalStripLayoutPatternXml::toXml(const QSharedPointer<TerminalSt
         terminals_xml.appendChild(terminals_text_xml);
 
         auto bridge_xml = document.createElement(QStringLiteral("bridges"));
-        QETSVG::rToAttribute(static_cast<qreal>(pattern->m_bridge_point_d)/2, bridge_xml);
-        QETSVG::pointsToAttribute(QVector<QPointF>{QPointF{0, static_cast<qreal> (pattern->m_bridge_point_y_offset.at(0))},
-                                                   QPointF{0, static_cast<qreal> (pattern->m_bridge_point_y_offset.at(1))},
-                                                   QPointF{0, static_cast<qreal> (pattern->m_bridge_point_y_offset.at(2))},
-                                                   QPointF{0, static_cast<qreal> (pattern->m_bridge_point_y_offset.at(3))}},
-                                  bridge_xml);
+        QETSVG::rToAttribute(pattern->m_bridge_point_d/2, bridge_xml);
+        QVector<QPointF> points_vector;
+        for (const auto &y : pattern->m_bridge_point_y_offset) {
+            points_vector.append(QPointF{0,y});
+        }
+        QETSVG::pointsToAttribute(points_vector, bridge_xml);
         terminals_xml.appendChild(bridge_xml);
 
         pattern_xml.appendChild(terminals_xml);
@@ -181,10 +181,10 @@ void TerminalStripLayoutPatternXml::fromXml(QSharedPointer<TerminalStripLayoutPa
             layout->m_bridge_point_d = QETSVG::rFromAttribute(bridge_xml, 2.5)*2;
             if (const auto points = QETSVG::pointsFromAttribute(bridge_xml);
                 points.size() == 4) {
-                layout->m_bridge_point_y_offset[0]= static_cast<int>(points[0].y());
-                layout->m_bridge_point_y_offset[1]= static_cast<int>(points[1].y());
-                layout->m_bridge_point_y_offset[2]= static_cast<int>(points[2].y());
-                layout->m_bridge_point_y_offset[3]= static_cast<int>(points[3].y());
+                layout->m_bridge_point_y_offset[0]= points[0].y();
+                layout->m_bridge_point_y_offset[1]= points[1].y();
+                layout->m_bridge_point_y_offset[2]= points[2].y();
+                layout->m_bridge_point_y_offset[3]= points[3].y();
             }
         }
     }
