@@ -74,7 +74,7 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QPointer<QETProject> m_project;
 		QPointer<TerminalStrip> m_current_strip;
 
-		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
+        QHash<QTreeWidgetItem *, QPointer<TerminalStrip>> m_item_strip_H;
 		QHash<QUuid, QSharedPointer<RealTerminal>> m_uuid_terminal_H;
 		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
 		QVector<QMetaObject::Connection> m_strip_changed_connection;
