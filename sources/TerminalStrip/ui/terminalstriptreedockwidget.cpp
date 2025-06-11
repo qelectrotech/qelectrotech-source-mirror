@@ -30,11 +30,10 @@
 
 TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QWidget *parent) :
 	QDockWidget(parent),
-	ui(new Ui::TerminalStripTreeDockWidget),
-	m_project(project)
+    ui(new Ui::TerminalStripTreeDockWidget)
 {
 	ui->setupUi(this);
-	buildTree();
+    setProject(project);
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 13, 0)
 	ui->m_tree_view->expandRecursively(ui->m_tree_view->rootIndex());
@@ -46,6 +45,32 @@ TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QW
 TerminalStripTreeDockWidget::~TerminalStripTreeDockWidget()
 {
 	delete ui;
+}
+
+/**
+ * @brief TerminalStripTreeDockWidget::setProject
+ * Set @project as project handled by this tree dock.
+ * If a previous project was setted, everything is clear.
+ * This function track the destruction of the project,
+ * that  mean if the project pointer is deleted
+ * no need to call this function with a nullptr,
+ * everything is made inside this class.
+ * @param project
+ */
+void TerminalStripTreeDockWidget::setProject(QETProject *project)
+{
+    if(m_project && m_project_destroy_connection) {
+        disconnect(m_project_destroy_connection);
+    }
+    m_project = project;
+    if (m_project) {
+        m_project_destroy_connection = connect(m_project, &QObject::destroyed, [this](){
+            this->m_current_strip.clear();
+            this->reload();
+        });
+    }
+    m_current_strip.clear();
+    reload();
 }
 
 /**
@@ -205,6 +230,9 @@ void TerminalStripTreeDockWidget::on_m_tree_view_currentItemChanged(QTreeWidgetI
  */
 void TerminalStripTreeDockWidget::buildTree()
 {
+    if(!m_project) {
+        return;
+    }
 
 	auto title_ = m_project->title();
 	if (title_.isEmpty()) {

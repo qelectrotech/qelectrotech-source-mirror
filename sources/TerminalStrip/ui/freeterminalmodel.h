@@ -47,6 +47,7 @@ class FreeTerminalModel : public QAbstractTableModel
 
 	public:
 		explicit FreeTerminalModel(QETProject *project, QObject *parent = nullptr);
+        void setProject(QETProject *project);
 
 		int rowCount(const QModelIndex &parent) const override;
 		int columnCount(const QModelIndex &parent) const override;

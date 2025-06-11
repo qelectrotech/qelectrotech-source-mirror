@@ -19,8 +19,8 @@
 #define FREETERMINALEDITOR_H
 
 #include <QWidget>
+#include "../../qetproject.h"
 
-class QETProject;
 class RealTerminal;
 class FreeTerminalModel;
 class QTableView;
@@ -40,6 +40,8 @@ class FreeTerminalEditor : public QWidget
 		void reload();
 		void apply();
 
+        void setProject(QETProject *project);
+
 	private slots:
 		void on_m_type_cb_activated(int index);
 		void on_m_function_cb_activated(int index);
@@ -52,7 +54,7 @@ class FreeTerminalEditor : public QWidget
 
 	private:
 		Ui::FreeTerminalEditor *ui;
-		QETProject *m_project = nullptr;
-		FreeTerminalModel *m_model = nullptr;
+        QPointer <QETProject> m_project;
+        FreeTerminalModel *m_model {nullptr};
 };
 #endif // FREETERMINALEDITOR_H

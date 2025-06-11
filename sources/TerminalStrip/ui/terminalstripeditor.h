@@ -41,11 +41,13 @@ class TerminalStripEditor : public QWidget
 	public:
 		explicit TerminalStripEditor(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripEditor() override;
+        void setProject(QETProject *project);
 		void setCurrentStrip(TerminalStrip *strip_);
 		void reload();
 		void apply();
 
 	private:
+        void clear();
 		void spanMultiLevelTerminals();
 		void selectionChanged();
 		QSize setUpBridgeCellWidth();
@@ -67,9 +69,9 @@ class TerminalStripEditor : public QWidget
 
 	private:
 		Ui::TerminalStripEditor *ui;
-		QETProject *m_project {nullptr};
-		TerminalStrip *m_current_strip {nullptr};
-		TerminalStripModel *m_model {nullptr};
+        QPointer<QETProject> m_project;
+        QPointer<TerminalStrip> m_current_strip;
+        TerminalStripModel *m_model {nullptr};
 };
 
 #endif // TERMINALSTRIPEDITOR_H
