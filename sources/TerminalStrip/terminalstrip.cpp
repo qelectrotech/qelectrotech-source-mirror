@@ -1037,8 +1037,10 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 				}
 			}
 
-			auto raw_ptr = new PhysicalTerminal(this, real_t_vector);
-			m_physical_terminals.append(raw_ptr->sharedRef());
+            if (!real_t_vector.isEmpty()) {
+                auto raw_ptr = new PhysicalTerminal(this, real_t_vector);
+                m_physical_terminals.append(raw_ptr->sharedRef());
+            }
 		}
 
 	}
