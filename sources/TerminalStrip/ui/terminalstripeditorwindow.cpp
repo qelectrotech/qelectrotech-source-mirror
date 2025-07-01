@@ -55,6 +55,11 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
     m_project(project)
 {
 	ui->setupUi(this);
+    if (auto diagram_editor = QETApp::diagramEditor(project)) {
+        ui->m_tool_bar->addSeparator();
+        ui->m_tool_bar->addAction(diagram_editor->undo);
+        ui->m_tool_bar->addAction(diagram_editor->redo);
+    }
 	ui->m_remove_terminal->setDisabled(true);
 	addTreeDockWidget();
 

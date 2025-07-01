@@ -33,12 +33,12 @@
      <x>0</x>
      <y>0</y>
      <width>1364</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar">
+  <widget class="QToolBar" name="m_tool_bar">
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
