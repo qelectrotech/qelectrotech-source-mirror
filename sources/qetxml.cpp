@@ -182,7 +182,7 @@ QDomElement QETXML::fileSystemDirToXmlCollectionDir(
 	QDomElement dir_element = document.createElement("category");
 	dir_element.setAttribute("name", rename.isNull()? dir.dirName() : rename);
 
-		//Get the traduction of this directory
+		//Get the translation of this directory
 	QFile qet_dir(dir.filePath("qet_directory"));
 	if (qet_dir.exists() && qet_dir.open(
 				QIODevice::ReadOnly
