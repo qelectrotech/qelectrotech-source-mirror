@@ -525,7 +525,11 @@ void RotateElementsCommand::undo()
 	{
 		if (item->type() == PartTerminal::Type) {
 			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
+                    if(m_items.size() == 1) {
+                            term->previousOrientation();
+                    } else {
 			term->setRotation(term->rotation()-90);
+                    }
 		}
 		else if (item->type() == PartRectangle::Type) {
 			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
@@ -570,7 +574,11 @@ void RotateElementsCommand::redo()
 	{
 		if (item->type() == PartTerminal::Type) {
 			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
+                    if (m_items.size() == 1) {
+                            term->nextOrientation();
+                    } else {
 			term->setRotation(term->rotation()+90);
+                    }
 		}
 		else if (item->type() == PartRectangle::Type) {
 			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
