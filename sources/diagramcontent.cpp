@@ -59,7 +59,15 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 	{
 		switch (item->type())
 		{
-			case Element::Type:             { m_elements    << qgraphicsitem_cast<Element *>(item);             break;}
+			case Element::Type:
+			{
+				auto element = qgraphicsitem_cast<Element *>(item);
+				m_elements << element;
+				if (element->elementData().m_type == ElementData::Terminale) {
+					m_terminal_elements << static_cast<TerminalElement*>(element);
+				}
+				break;
+			}
 			case IndependentTextItem::Type: { m_text_fields << qgraphicsitem_cast<IndependentTextItem *>(item); break;}
 			case Conductor::Type:
 			{

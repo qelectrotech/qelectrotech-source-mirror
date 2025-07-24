@@ -28,6 +28,8 @@
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "addelementtextcommand.h"
+#include "../TerminalStrip/realterminal.h"
+#include "../TerminalStrip/physicalterminal.h"
 
 /**
 	@brief DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand
@@ -113,6 +115,36 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 DeleteQGraphicsItemCommand::~DeleteQGraphicsItemCommand()
 {
 	m_diagram->qgiManager().release(m_removed_contents.items(DiagramContent::All));
+}
+
+/**
+ * @brief DeleteQGraphicsItemCommand::hasNonDeletableTerminal
+ * Return true if @content have terminal element which can't be deleted.
+ * The reason why a terminal can't be deleted is because they have bridge
+ * or belong to a physical terminal with more than one level.
+ * @param diagram
+ * @param content
+ * @param dialog
+ * @return
+ */
+bool DeleteQGraphicsItemCommand::hasNonDeletableTerminal(const DiagramContent &content)
+{
+    if (!content.m_terminal_elements.isEmpty())
+    {
+        for (const auto &terminal : content.m_terminal_elements)
+        {
+            if (!terminal.isNull())
+            {
+                if (terminal->parentTerminalStrip()
+                    && (terminal->realTerminal()->isBridged()
+                        || terminal->realTerminal()->physicalTerminal()->levelCount() != 1)) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
 /**

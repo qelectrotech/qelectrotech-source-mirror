@@ -21,6 +21,8 @@
 #include <QSet>
 #include <QVector>
 
+#include "../qetgraphicsitem/terminalelement.h"
+
 class QGraphicsItem;
 class Conductor;
 class Element;
@@ -81,6 +83,7 @@ class DiagramContent
 		QList<QGraphicsItem *> m_selected_items;
 		QVector<QetGraphicsTableItem *> m_tables;
 		QVector<TerminalStripItem *> m_terminal_strip;
+		QVector<QPointer<TerminalElement>> m_terminal_elements;
 
 		
 		QList<DiagramTextItem *> selectedTexts() const;
