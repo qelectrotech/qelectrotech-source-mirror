@@ -232,7 +232,7 @@ fi
 if [ -d "${QET_LICENSES_DIR}" ]; then
     echo "Copying licenses in the bundle..."
     mkdir $BUNDLE/Contents/Resources/licenses
-    cp -R ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
+    cp -R -L ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
 fi
 ### create disk image ###############################################
 

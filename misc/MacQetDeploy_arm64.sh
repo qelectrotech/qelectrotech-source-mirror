@@ -237,7 +237,7 @@ fi
 if [ -d "${QET_LICENSES_DIR}" ]; then
     echo "Copying licenses in the bundle..."
     mkdir $BUNDLE/Contents/Resources/licenses
-    cp -R ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
+    cp -R -L ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
 fi
 
 codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" --options=runtime $BUNDLE
