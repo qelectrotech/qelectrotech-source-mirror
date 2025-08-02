@@ -391,7 +391,7 @@ void DiagramView::cut()
 void DiagramView::copy()
 {
 	QClipboard *presse_papier = QApplication::clipboard();
-	QString contenu_presse_papier = m_diagram -> toXml(false).toString(4);
+	QString contenu_presse_papier = m_diagram -> toXml(false, true).toString(4);
 	if (presse_papier -> supportsSelection()) presse_papier -> setText(contenu_presse_papier, QClipboard::Selection);
 	presse_papier -> setText(contenu_presse_papier);
 }
