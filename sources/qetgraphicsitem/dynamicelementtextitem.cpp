@@ -1212,6 +1212,12 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 			label = autonum::AssignVariables::formulaToLabel(label, elmt->rSequenceStruct(), elmt->diagram(), elmt);
 			string.replace("%{label}", label);
 		}
+			// if element is not linked, replace an empty string
+		else
+		{
+			string.replace("%{label}", "");
+		}
+
 		if (m_watched_conductor)
 		{
 			if(string.contains("%{function}"))
@@ -1222,6 +1228,18 @@ QString DynamicElementTextItem::reportReplacedCompositeText() const
 				string.replace("%{conductor_color}", m_watched_conductor.data()->properties().m_wire_color);
 			if(string.contains("%{conductor_section}"))
 				string.replace("%{conductor_section}", m_watched_conductor.data()->properties().m_wire_section);
+		}
+			// if no conductor is connected, replace an empty String
+		else
+		{
+			if(string.contains("%{function}"))
+				string.replace("%{function}", "");
+			if(string.contains("%{tension_protocol}"))
+				string.replace("%{tension_protocol}", "");
+			if(string.contains("%{conductor_color}"))
+				string.replace("%{conductor_color}", "");
+			if(string.contains("%{conductor_section}"))
+				string.replace("%{conductor_section}", "");
 		}
 	}
 	
