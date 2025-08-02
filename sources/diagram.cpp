@@ -1438,33 +1438,6 @@ bool Diagram::fromXml(QDomElement &document,
 		added_shapes << dii;
 	}
 
-		// Load conductor
-	QList<Conductor *> added_conductors;
-	for (auto f : QET::findInDomElement(root,
-										QStringLiteral("conductors"),
-										QStringLiteral("conductor")))
-	{
-		if (!Conductor::valideXml(f)) continue;
-
-		//Check if terminal that conductor must be linked is know
-
-		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
-		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
-
-		if (p1 && p2 && p1 != p2)
-		{
-			Conductor *c = new Conductor(p1, p2);
-			if (c->isValid())
-			{
-				addItem(c);
-				c -> fromXml(f);
-				added_conductors << c;
-			}
-			else
-				delete c;
-		}
-	}
-
 		//Load tables
 	QVector<QetGraphicsTableItem *> added_tables;
 	for (const auto &dom_table : QETXML::subChild(root,
@@ -1485,7 +1458,6 @@ bool Diagram::fromXml(QDomElement &document,
 	{
 		QVector <QGraphicsItem *> added_items;
 		for (auto element : qAsConst(added_elements   )) added_items << element;
-		for (auto cond    : qAsConst(added_conductors )) added_items << cond;
 		for (auto shape   : qAsConst(added_shapes     )) added_items << shape;
 		for (auto text    : qAsConst(added_texts      )) added_items << text;
 		for (auto image   : qAsConst(added_images     )) added_items << image;
@@ -1508,6 +1480,33 @@ bool Diagram::fromXml(QDomElement &document,
 			//Translate all added items
 		for (auto qgi : added_items)
 			qgi->setPos(qgi->pos() += pos_);
+	}
+
+	  // Load conductor
+	QList<Conductor *> added_conductors;
+	for (auto f : QET::findInDomElement(root,
+										QStringLiteral("conductors"),
+										QStringLiteral("conductor")))
+	{
+		if (!Conductor::valideXml(f)) continue;
+
+			   //Check if terminal that conductor must be linked is know
+
+		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
+		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
+
+		if (p1 && p2 && p1 != p2)
+		{
+			Conductor *c = new Conductor(p1, p2);
+			if (c->isValid())
+			{
+				addItem(c);
+				c -> fromXml(f);
+				added_conductors << c;
+			}
+			else
+				delete c;
+		}
 	}
 
 		//Filling of falculatory lists
