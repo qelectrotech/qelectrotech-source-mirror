@@ -5,9 +5,16 @@ on:
       - master
       #! only for test, remove before MR !
       - doxygen
+  pull_request:
+    branches:
+      - main
+      - doxygen       
+  
   
 jobs:  
   doxygen:
+    permissions:
+       contents: write    
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
@@ -16,13 +23,23 @@ jobs:
         show-progress: ''
     - name: Setup and run doxygen
       run: sudo apt install doxygen graphviz qhelpgenerator-qt5 -y
+    - name: Set up Git LFS
+      run: |
+          git lfs install
+          git lfs track "*.qch"  
+    - name: Run doxygen
+      run: doxygen Doxyfile
+    -  run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .gitattributes ${{ github.workspace }}/doc/QElectroTech.qch -f
+          git commit -m "Push updated QCH file"
+          git push
     - name: Run doxygen
       run: doxygen Doxyfile
     - uses: actions/upload-pages-artifact@v3
       with: 
        path: ${{ github.workspace }}/doc/html/
-    
-    
   deploy:
     # Add a dependency to the build job
     needs: doxygen
