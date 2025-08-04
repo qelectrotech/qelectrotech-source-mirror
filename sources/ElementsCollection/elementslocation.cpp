@@ -623,7 +623,7 @@ NamesList ElementsLocation::nameList()
 		else
 		{
 			//Open the qet_directory file,
-			// to get the traductions name of this dir
+			// to get the translated name of this dir
 			QFile dir_conf(fileSystemPath() % "/qet_directory");
 			if (dir_conf.exists() && dir_conf.open(
 						QIODevice::ReadOnly

@@ -224,6 +224,34 @@ void PartTerminal::mirror() {
 	emit xChanged(); // all terminal-signals call "updateForm"
 }
 
+void PartTerminal::nextOrientation()
+{
+    switch (d->m_orientation) {
+        case Qet::North :
+            setOrientation(Qet::East); break;
+        case Qet::East :
+            setOrientation(Qet::South); break;
+        case Qet::South :
+            setOrientation(Qet::West); break;
+        case Qet::West  :
+            setOrientation(Qet::North); break;
+    }
+}
+
+void PartTerminal::previousOrientation()
+{
+    switch (d->m_orientation) {
+    case Qet::North :
+        setOrientation(Qet::West); break;
+    case Qet::East :
+        setOrientation(Qet::North); break;
+    case Qet::South :
+        setOrientation(Qet::East); break;
+    case Qet::West  :
+        setOrientation(Qet::South); break;
+    }
+}
+
 
 /**
 	@brief PartTerminal::setTerminalName

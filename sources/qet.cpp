@@ -443,8 +443,8 @@ std::tuple<QString, QString> QET::licenses(const QString &name)
 	const QMap<QString, QString> licenses = {
 		{"QElectroTech", ":/licenses/QElectroTech"},
 		{"QET-Elements", ":/licenses/QET-Elements"},
-		{"liberation-fonts", ":/fonts/liberation-fonts"},
-		{"osifont", ":/fonts/osifont"}
+		{"liberation-fonts", ":/licenses/liberation-fonts"},
+		{"osifont", ":/licenses/osifont"}
 	};
 
 	// Get base path for the license files

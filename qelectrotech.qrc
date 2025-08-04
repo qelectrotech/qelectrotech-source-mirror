@@ -741,36 +741,34 @@
         <file>ico/24x16/zh.png</file>
 
         <!-- "Liberation Fonts" Font Software is licensed under the SIL Open Font License, Version 1.1
-             See the file "fonts/liberation-fonts.LICENSE" for license information. -->
+            See the file "fonts/liberation-fonts.LICENSE" for license information. -->
         <file>fonts/LiberationMono-Regular.ttf</file>
-	    <file>fonts/LiberationMono-Bold.ttf</file>
-	    <file>fonts/LiberationMono-Italic.ttf</file>
-	    <file>fonts/LiberationMono-BoldItalic.ttf</file>
-	    <file>fonts/LiberationSans-Regular.ttf</file>
-	    <file>fonts/LiberationSans-Bold.ttf</file>
-	    <file>fonts/LiberationSans-Italic.ttf</file>
-	    <file>fonts/LiberationSans-BoldItalic.ttf</file>
-	    <file>fonts/LiberationSerif-Regular.ttf</file>
-	    <file>fonts/LiberationSerif-Bold.ttf</file>
-	    <file>fonts/LiberationSerif-Italic.ttf</file>
-	    <file>fonts/LiberationSerif-BoldItalic.ttf</file>
-	    <file>fonts/liberation-fonts.NOTICE</file>
-	    <file>fonts/liberation-fonts.LICENSE</file>
+	<file>fonts/LiberationMono-Bold.ttf</file>
+	<file>fonts/LiberationMono-Italic.ttf</file>
+	<file>fonts/LiberationMono-BoldItalic.ttf</file>
+	<file>fonts/LiberationSans-Regular.ttf</file>
+	<file>fonts/LiberationSans-Bold.ttf</file>
+	<file>fonts/LiberationSans-Italic.ttf</file>
+	<file>fonts/LiberationSans-BoldItalic.ttf</file>
+	<file>fonts/LiberationSerif-Regular.ttf</file>
+	<file>fonts/LiberationSerif-Bold.ttf</file>
+	<file>fonts/LiberationSerif-Italic.ttf</file>
+	<file>fonts/LiberationSerif-BoldItalic.ttf</file>
+	<file>licenses/liberation-fonts.NOTICE</file>
+	<file>licenses/liberation-fonts.LICENSE</file>
 
         <!-- "osifont" Font Software is licensed under the GNU GENERAL PUBLIC LICENSE, Version 3
-		     As a special exception, if you create a document which uses this font, and embed this font or unaltered
-			 portions of this font into the document, this font does not by itself cause the resulting document to be
-			 covered by the GNU General Public License. This exception does not however invalidate any other reasons why
-			 the document might be covered by the GNU General Public License. If you modify this font, you may extend
-			 this exception to your version of the font, but you are not obligated to do so. If you do not wish to do so,
-			 delete this exception statement from your version.
-
-			 See the file "fonts/osifont.LICENSE" for license information. -->
-	    <file>fonts/osifont.ttf</file>
-	    <file>fonts/osifont-italic.ttf</file>
-	    <file>fonts/osifont.NOTICE</file>
-	    <file>fonts/osifont.LICENSE</file>
-
+	    As a special exception, if you create a document which uses this font, and embed this font or unaltered
+	    portions of this font into the document, this font does not by itself cause the resulting document to be
+	    covered by the GNU General Public License. This exception does not however invalidate any other reasons why
+	    the document might be covered by the GNU General Public License. If you modify this font, you may extend
+	    this exception to your version of the font, but you are not obligated to do so. If you do not wish to do so,
+	    delete this exception statement from your version.
+            See the file "fonts/osifont.LICENSE" for license information. -->
+	<file>fonts/osifont.ttf</file>
+	<file>fonts/osifont-italic.ttf</file>
+	<file>licenses/osifont.NOTICE</file>
+	<file>licenses/osifont.LICENSE</file>
 
 	<file>licenses/QElectroTech.NOTICE</file>
 	<file>licenses/QElectroTech.LICENSE</file>

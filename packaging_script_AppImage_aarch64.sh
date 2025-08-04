@@ -1,7 +1,8 @@
 #!/bin/bash 
 
 #Based on raspberry pi 5 8 Gb bookworm
-#sudo apt install libqt5svg5-dev qt5-qmake qtbase5-dev libkf5widgetsaddons-dev libkf5coreaddons-dev libsqlite3-dev pkgconf libqt5waylandclient5-dev libqt5waylandcompositor5-dev
+#sudo apt install git ssh rsync libqt5svg5-dev qt5-qmake qtbase5-dev libkf5widgetsaddons-dev libkf5coreaddons-dev libsqlite3-dev pkgconf libqt5waylandclient5-dev libqt5waylandcompositor5-dev g++ make
+#mkdir -p AppImage/0.100.0/aarch64
 # Get GIT sources
 #git clone --recursive https://github.com/qelectrotech/qelectrotech-source-mirror.git
 #git submodule update --init --recursive
@@ -29,7 +30,7 @@ HEAD=$(($A+473))
 tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
 #tagName=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -n 1| cut -c32-40| sed -e 's/,/./g' -e 's/ //g')   #Find major, minor, and micro version numbers in sources/qetversion.cp
 
-rm -Rf build/
+rm -rf build/
 mkdir build && cd build
 export EXTRA_PLATFORM_PLUGINS=libqwayland-generic.so
 export EXTRA_QT_MODULES="waylandcompositor"

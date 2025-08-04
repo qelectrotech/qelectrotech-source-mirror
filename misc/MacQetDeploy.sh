@@ -190,7 +190,8 @@ echo "Copy file missing:"
 QET_ELMT_DIR="${current_dir}/elements/"
 QET_TBT_DIR="${current_dir}/titleblocks/"
 QET_LANG_DIR="${current_dir}/lang/"
-
+QET_FONTS_DIR="${current_dir}/fonts/"
+QET_LICENSES_DIR="${current_dir}/licenses/"
 
 # Add new folder for Qt dialog translation see
 ## see <https://download.tuxfamily.org/qet/Qt_lang/>.
@@ -221,7 +222,18 @@ if [ -d "${LANG_DIR}" ]; then
 
 fi
 
+if [ -d "${QET_FONTS_DIR}" ]; then
+   echo "Copying fonts in the bundle... "
+   mkdir $BUNDLE/Contents/Resources/fonts
+   cp ${current_dir}/fonts/*.ttf $BUNDLE/Contents/Resources/fonts
 
+fi
+
+if [ -d "${QET_LICENSES_DIR}" ]; then
+    echo "Copying licenses in the bundle..."
+    mkdir $BUNDLE/Contents/Resources/licenses
+    cp -R -L ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
+fi
 ### create disk image ###############################################
 
 echo

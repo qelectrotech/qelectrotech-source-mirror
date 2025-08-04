@@ -78,6 +78,8 @@ class PartTerminal : public CustomElementGraphicPart
 		qreal rotation() const;
 		void  flip();
 		void  mirror();
+                void nextOrientation();
+                void previousOrientation();
 
 
 		QString terminalName() const { return d -> m_name; }
