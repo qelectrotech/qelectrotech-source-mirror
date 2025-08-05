@@ -221,11 +221,12 @@ namespace autonum
 		str.replace("%{designation}", dc.value("designation").toString());
 		str.replace("%{manufacturer}", dc.value("manufacturer").toString());
 		str.replace("%{manufacturer_reference}",
-			    dc.value("manufacturer_reference").toString());
+				dc.value("manufacturer_reference").toString());
 		str.replace("%{supplier}", dc.value("supplier").toString());
 		str.replace("%{quantity}", dc.value("quantity").toString());
 		str.replace("%{unity}", dc.value("unity").toString());
-				str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
+
+		str.replace("%{auxiliary1}", dc.value("auxiliary1").toString());
 		str.replace("%{description_auxiliary1}", dc.value("description_auxiliary1").toString());
 		str.replace("%{designation_auxiliary1}", dc.value("designation_auxiliary1").toString());
 		str.replace("%{manufacturer_auxiliary1}", dc.value("manufacturer_auxiliary1").toString());
@@ -264,10 +265,14 @@ namespace autonum
 		str.replace("%{unity_auxiliary4}", dc.value("unity_auxiliary4").toString());
 		
 		
-		str.replace("%{machine_manufacturer_reference}",
-			    dc.value("machine_manufacturer_reference").toString());
+		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
+
 		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
+		str.replace("%{tension_protocol}", dc.value("tension_protocol").toString());
+		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
+		str.replace("%{conductor_color}", dc.value("conductor_color").toString());
+
 		str.replace("%{void}", QString());
 
 		return str;
