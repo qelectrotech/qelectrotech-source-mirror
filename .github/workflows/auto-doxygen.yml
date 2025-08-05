@@ -3,12 +3,9 @@ on:
   push:
     branches:
       - master
-      #! only for test, remove before MR !
-      - doxygen
   pull_request:
     branches:
-      - main
-      - doxygen       
+      - main     
   
   
 jobs:  
