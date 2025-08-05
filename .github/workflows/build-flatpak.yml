@@ -1,0 +1,21 @@
+name: Build Flatpak package
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  flatpak:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-48
+      options: --privileged    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
+        show-progress: ''
+    - name: Create build dir
+      run: mkdir build/
+    
