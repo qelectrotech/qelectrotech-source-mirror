@@ -376,6 +376,7 @@ void DiagramView::zoomReset()
 
 /**
 	Copie les elements selectionnes du schema dans le presse-papier puis les supprime
+	Copies the selected elements from the diagram to the clipboard and then deletes them
 */
 void DiagramView::cut()
 {
@@ -387,13 +388,14 @@ void DiagramView::cut()
 
 /**
 	Copie les elements selectionnes du schema dans le presse-papier
+	Copies the selected elements from the diagram to the clipboard
 */
 void DiagramView::copy()
 {
-	QClipboard *presse_papier = QApplication::clipboard();
-	QString contenu_presse_papier = m_diagram -> toXml(false, true).toString(4);
-	if (presse_papier -> supportsSelection()) presse_papier -> setText(contenu_presse_papier, QClipboard::Selection);
-	presse_papier -> setText(contenu_presse_papier);
+	QClipboard *clipboard = QApplication::clipboard();
+	QString content_clipboard = m_diagram -> toXml(false, true).toString(4);
+	if (clipboard -> supportsSelection()) clipboard -> setText(content_clipboard, QClipboard::Selection);
+	clipboard -> setText(content_clipboard);
 }
 
 /**
@@ -405,11 +407,11 @@ void DiagramView::copy()
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (!isInteractive() || m_diagram -> isReadOnly()) return;
 
-	QString texte_presse_papier = QApplication::clipboard() -> text(clipboard_mode);
-	if ((texte_presse_papier).isEmpty()) return;
+	QString text_clipboard = QApplication::clipboard() -> text(clipboard_mode);
+	if ((text_clipboard).isEmpty()) return;
 
 	QDomDocument document_xml;
-	if (!document_xml.setContent(texte_presse_papier)) return;
+	if (!document_xml.setContent(text_clipboard)) return;
 
 	DiagramContent content_pasted;
 	m_diagram->fromXml(document_xml, pos, false, &content_pasted);
@@ -425,6 +427,7 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 
 /**
 	Colle le contenu du presse-papier sur le schema a la position de la souris
+	Pastes the contents of the clipboard into the diagram at the mouse position.
 */
 void DiagramView::pasteHere()
 {
