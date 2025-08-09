@@ -1336,8 +1336,8 @@ void Conductor::calculateTextItemPosition()
 
 		Conductor *longest_conductor = longestConductorInPotential(this);
 
-			//The longest conductor isn't this conductor
-			//we call calculateTextItemPosition of the longest conductor
+			//This conductor isn't the longest conductor?
+			//We call calculateTextItemPosition for the longest conductor
 		if(longest_conductor != this)
 		{
 			longest_conductor -> calculateTextItemPosition();
@@ -1355,7 +1355,7 @@ void Conductor::calculateTextItemPosition()
 		//position
 	if (m_text_item -> wasMovedByUser())
 	{
-			//Text field was moved by user :
+			//Text field was moved by user:
 			//we check if text field is yet  near the conductor
 		QPointF text_item_pos = m_text_item -> pos();
 		QPainterPath near_shape = nearShape();
@@ -1392,7 +1392,7 @@ void Conductor::calculateTextItemPosition()
 
 		m_text_item -> setPos(text_pos);
 
-			//Ensure text item don't collide with this conductor
+			//Ensure text item does not collide with this conductor
 		while (m_text_item->collidesWithItem(this))
 		{
 			if(rotation == Qt::Vertical)
@@ -1420,6 +1420,7 @@ void Conductor::calculateTextItemPosition()
 /**
 	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
 	dans priv_modifieConductor.
+	Save the current conductors profile for later use in priv_modifiedConductor.
 */
 void Conductor::saveProfile(bool undo) {
 	Qt::Corner current_path_type = currentPathType();
