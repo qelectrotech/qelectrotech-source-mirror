@@ -22,6 +22,7 @@
 
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 
 #include "../diagram.h"
 
@@ -65,6 +66,7 @@ void MoveGraphicsItemCommand::undo()
 		m_diagram->showMe();
 		m_anim_group.setDirection(QAnimationGroup::Forward);
 		m_anim_group.start();
+		updateConductors(false);
 	}
 	QUndoCommand::undo();
 }
@@ -87,6 +89,7 @@ void MoveGraphicsItemCommand::redo()
 		{
 			m_anim_group.setDirection(QAnimationGroup::Backward);
 			m_anim_group.start();
+			updateConductors(true);
 		}
 	}
 	QUndoCommand::redo();
@@ -137,19 +140,6 @@ void MoveGraphicsItemCommand::move(const QPointF &movement)
 			qgi->setPos(qgi->pos() + movement);
 		}
 	}
-
-		//Move some conductors
-	for (const auto &conductor : qAsConst(m_content.m_conductors_to_move)) {
-		setupAnimation(conductor,
-					   "pos",
-					   conductor->pos(),
-					   conductor->pos() + movement);
-	}
-
-		//Recalculate the path of other conductors
-	for (const auto &conductor : qAsConst(m_content.m_conductors_to_update)) {
-		setupAnimation(conductor, "animPath", 1, 1);
-	}
 }
 
 /**
@@ -167,9 +157,34 @@ void MoveGraphicsItemCommand::setupAnimation(QObject *target,
 											 const QVariant &end)
 {
 	QPropertyAnimation *animation{new QPropertyAnimation(target, property_name)};
-	animation->setDuration(300);
+	// duration must be set to 0, otherwise the conductors will not be updated
+	animation->setDuration(0);
 	animation->setStartValue(start);
 	animation->setEndValue(end);
 	animation->setEasingCurve(QEasingCurve::OutQuad);
 	m_anim_group.addAnimation(animation);
+}
+
+/**
+ * @brief MoveGraphicsItemCommand::connectConductors
+ * @param is_redo
+ */
+void MoveGraphicsItemCommand::updateConductors(bool is_redo)
+{
+	//Recalculate the path of 'conductors_to_move'
+	for (const auto &conductor : qAsConst(m_content.m_conductors_to_move)) {
+		conductor->updatePath();
+		if(conductor->textItem()->wasMovedByUser() == true){
+			if(is_redo)
+				conductor->textItem()->setPos(conductor->textItem()->pos() + m_movement);
+			else
+				conductor->textItem()->setPos(conductor->textItem()->pos() - m_movement);
+		}
+
+	}
+
+	// Recalculate the path of 'conductors_to_update'
+	for (const auto &conductor : qAsConst(m_content.m_conductors_to_update)) {
+		conductor->updatePath();
+	}
 }

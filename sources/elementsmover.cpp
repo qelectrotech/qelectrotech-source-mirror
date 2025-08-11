@@ -126,30 +126,28 @@ void ElementsMover::continueMovement(const QPointF &movement)
 										   | dc::Images
 										   | dc::Shapes
 										   | dc::ElementTextFields
-										   | dc::TextGroup
-										   | dc::ConductorsToMove))
+										   | dc::TextGroup))
 	{
 		if (qgi == m_movement_driver)
 			continue;
 		qgi->setPos(qgi->pos() + movement);
 	}
 
-	// Move some conductors
+	QVector<Conductor *>list_conductors;
+	for(auto *con : m_moved_content.m_conductors_to_move){
+		list_conductors << con;
+	}
+
+	// update conductors 'conductors_to_move'
+	for(auto *cond : list_conductors){
+		cond->updatePath();
+		if(cond->textItem()->wasMovedByUser() == true)
+			cond->textItem()->setPos(cond->textItem()->pos()+movement);
+	}
+
+	// update conductors 'conductors_to_update'
 	for (auto &conductor : m_moved_content.m_conductors_to_update)
 	{
-#if TODO_LIST
-#pragma message("@TODO fix this problem correctly, probably we must see conductor class.")
-#endif
-			//Due to a weird behavior, we must ensure that the position of the conductor is (0,0).
-			//If not, in some unknown case the function QGraphicsScene::itemsBoundingRect() return a rectangle
-			//that take into account the pos() of the conductor, even if the bounding rect returned by the conductor is not in the pos().
-			//For the user this situation appears when the top right of the folio is not at the top right of the graphicsview,
-			//but displaced to the right and/or bottom.
-
-	//@TODO fix this problem correctly, probably we must see conductor class.
-//		if (c->pos() != QPointF(0,0)) { //<- they work, but the conductor text return to its original pos when the pos is set by user and not auto
-//			c->setPos(0,0);				// because set the pos to 0,0 so text move to, and after call updatePath but because text pos is user defined
-//		}								// we don't move it.
 		conductor->updatePath();
 	}
 
