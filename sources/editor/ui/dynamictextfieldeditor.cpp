@@ -140,6 +140,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
+		ui->m_lock_to_element_cb->setChecked(m_text_field.data()->lockToElement());
 #ifdef BUILD_WITHOUT_KF5
 #else
 		m_color_kpb -> setColor(m_text_field.data() -> color());
@@ -197,6 +198,7 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepLockToElementChanged, this, [=](){this -> updateForm();});
 }
 
 void DynamicTextFieldEditor::disconnectConnections()
@@ -436,6 +438,19 @@ void DynamicTextFieldEditor::on_m_keep_visual_rotation_cb_clicked()
 		if(keep != m_parts[i] -> keepVisualRotation()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "keepVisualRotation", m_parts[i] -> frame(), keep);
 			undo -> setText(tr("Modifier la conservation de l'angle"));
+			undoStack().push(undo);
+		}
+	}
+}
+
+void DynamicTextFieldEditor::on_m_lock_to_element_cb_clicked()
+{
+	bool lock = ui -> m_lock_to_element_cb -> isChecked();
+
+	for (int i = 0; i < m_parts.length(); i++) {
+		if(lock != m_parts[i] -> lockToElement()) {
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "lockToElement", m_parts[i] -> frame(), lock);
+			undo -> setText(tr("Lock text position to element position"));
 			undoStack().push(undo);
 		}
 	}
