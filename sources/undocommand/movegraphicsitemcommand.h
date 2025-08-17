@@ -49,6 +49,7 @@ class MoveGraphicsItemCommand : public QUndoCommand
 
 	private:
 		void move(const QPointF &movement);
+		void updateConductors(bool is_redo = false);
 		void setupAnimation(QObject *target,
 							const QByteArray &property_name,
 							const QVariant &start,
