@@ -775,12 +775,12 @@ void QETDiagramEditor::setUpToolBar()
 void QETDiagramEditor::setUpMenu()
 {
 
-	QMenu *menu_fichier   = new QMenu(tr("&Fichier"));
-	QMenu *menu_edition   = new QMenu(tr("&Édition"));
-	QMenu *menu_project   = new QMenu(tr("&Projet"));
-	QMenu *menu_affichage = new QMenu(tr("Afficha&ge"));
-	//QMenu *menu_outils    = new QMenu(tr("O&utils"));
-	windows_menu          = new QMenu(tr("Fe&nêtres"));
+	QMenu* menu_fichier	  = new QMenu(tr("&Fichier"), this);
+	QMenu* menu_edition	  = new QMenu(tr("&Édition"), this);
+	QMenu* menu_project	  = new QMenu(tr("&Projet"), this);
+	QMenu* menu_affichage = new QMenu(tr("Afficha&ge"), this);
+	// QMenu *menu_outils    = new QMenu(tr("O&utils"), this);
+	windows_menu = new QMenu(tr("Fe&nêtres"), this);
 
 	insertMenu(settings_menu_, menu_fichier);
 	insertMenu(settings_menu_, menu_edition);
