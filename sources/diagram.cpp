@@ -38,6 +38,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
+#include "qetinformation.h"
 
 #include <cassert>
 #include <math.h>
@@ -2496,34 +2497,87 @@ bool Diagram::canRotateSelection() const
 void Diagram::correctTextPos(Element* elmt)
 {
 	for (auto deti : elmt->dynamicTextItems()){
-		if( deti->textFrom() == DynamicElementTextItem::ElementInfo ||
-			deti->textFrom() == DynamicElementTextItem::CompositeText) {
 
-			if (deti->text().isEmpty()){
-				deti->setText(deti->toPlainText());
+		  // correct dynamicElementTextItem of type ElementInfo
+		if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+			// save current PlainText
+			deti->setText(deti->toPlainText());
+				// writing an empty string to PlainText set
+				// the insertion point to the original insertion point
+			deti->setPlainText("");
+				// block the alignment calculation for the next write action
+			deti->m_block_alignment = true;
+				// we need to set the plain text with its value,
+				// otherewise the text value will not be copy
+			deti->setPlainText(deti->text());
+			deti->m_block_alignment = false;
+		}
+			// correct dynamicElementTextItem of type CompositeText
+		else if(deti->textFrom() == DynamicElementTextItem::CompositeText){
+			QString composite_text = deti->compositeText();
+
+				// create compositeText() without variables for slave item
+				// This string corresponds to the original text with original insertion point
+			if(elmt->linkType()==Element::Slave){
+				const QStringList variables_list = QETInformation::elementInfoKeys();
+				for (auto &variable : variables_list){
+					if(composite_text.contains(QETInformation::infoToVar(variable)))
+						composite_text.replace(QETInformation::infoToVar(variable),"");
+				}
 			}
-			// block alignment calculation
+				// create compositeText() without variables for report item
+			else if(elmt->linkType()&Element::AllReport){
+				const QStringList variables_list = QETInformation::folioReportInfoKeys();
+				for (auto &variable : variables_list){
+					if(composite_text.contains(QETInformation::infoToVar(variable)))
+						composite_text.replace(QETInformation::infoToVar(variable),"");
+				}
+			}
+
+			deti->setText(deti->toPlainText());
+			deti->setPlainText(composite_text);
 			deti->m_block_alignment = true;
 			deti->setPlainText(deti->text());
-			// release the alignment calculation
 			deti->m_block_alignment = false;
-			// writing an empty string sets the insertion point
-			// to the original insertion point
-			deti->setPlainText("");
+				// We need the string for the restoration, so we save it
+			deti->setText(composite_text);
 		}
 	}
-	  // same for textgroups
+
+		// same for textgroups
 	for (auto group : elmt->textGroups()){
 		for(DynamicElementTextItem *deti : group->texts()){
-			if( deti->textFrom() == DynamicElementTextItem::ElementInfo ||
-				deti->textFrom() == DynamicElementTextItem::CompositeText) {
-				if (deti->text().isEmpty()){
-					deti->setText(deti->toPlainText());
-				}
+			if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+				deti->setText(deti->toPlainText());
 				deti->m_block_alignment = true;
 				deti->setPlainText(deti->text());
 				deti->m_block_alignment = false;
 				deti->setPlainText("");
+			}
+
+			else if(deti->textFrom() == DynamicElementTextItem::CompositeText){
+				QString composite_text = deti->compositeText();
+				if(elmt->linkType()==Element::Slave){
+					QStringList variables_list = QETInformation::elementInfoKeys();
+					for (auto variable : variables_list){
+						if(composite_text.contains(QETInformation::infoToVar(variable)))
+							composite_text.replace(QETInformation::infoToVar(variable),"");
+					}
+				}
+				else if(elmt->linkType()&Element::AllReport){
+					QStringList variables_list = QETInformation::folioReportInfoKeys();
+					for (auto variable : variables_list){
+						if(composite_text.contains(QETInformation::infoToVar(variable)))
+							composite_text.replace(QETInformation::infoToVar(variable),"");
+					}
+				}
+
+				deti->setText(deti->toPlainText());
+				deti->setPlainText(composite_text);
+				deti->m_block_alignment = true;
+				deti->setPlainText(deti->text());
+				deti->m_block_alignment = false;
+				deti->setText(composite_text);
 			}
 		}
 	}
@@ -2541,18 +2595,41 @@ void Diagram::correctTextPos(Element* elmt)
 void Diagram::restoreText(Element* elmt)
 {
 	for (auto deti : elmt->dynamicTextItems()){
-		if( deti->textFrom() == DynamicElementTextItem::ElementInfo ||
-			deti->textFrom() == DynamicElementTextItem::CompositeText)
-		{
+			// restore info text
+		if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+				// delete the actual plainText without alignmant calculation
+			deti->m_block_alignment = true;
+			deti->setPlainText("");
+			deti->m_block_alignment = false;
+				// restore the plainText
+			deti->setPlainText(deti->text());
+		}
+			// restore composite text
+		else if	(deti->textFrom() == DynamicElementTextItem::CompositeText){
+			QString composite_text = deti->text();
+			deti->setText(deti->toPlainText());
+				// set the PlainText to the origin text without alignment calculation
+			deti->m_block_alignment = true;
+			deti->setPlainText(composite_text);
+			deti->m_block_alignment = false;
 			deti->setPlainText(deti->text());
 		}
 	}
-
+	  // same for text groups
 	for (auto group : elmt->textGroups()){
 		for(DynamicElementTextItem *deti : group->texts()){
-			if( deti->textFrom() == DynamicElementTextItem::ElementInfo ||
-				deti->textFrom() == DynamicElementTextItem::CompositeText)
-			{
+			if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+				deti->m_block_alignment = true;
+				deti->setPlainText("");
+				deti->m_block_alignment = false;
+				deti->setPlainText(deti->text());
+			}
+			else if	(deti->textFrom() == DynamicElementTextItem::CompositeText){
+				QString composite_text = deti->text();
+				deti->setText(deti->toPlainText());
+				deti->m_block_alignment = true;
+				deti->setPlainText(composite_text);
+				deti->m_block_alignment = false;
 				deti->setPlainText(deti->text());
 			}
 		}
