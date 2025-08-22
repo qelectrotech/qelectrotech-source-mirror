@@ -591,37 +591,32 @@ void ElementsCollectionWidget::resetShowThisDir()
 */
 void ElementsCollectionWidget::dirProperties()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(
-				m_index_at_context_menu);
-				//When the user right-clicks on the collection tree and
-				//selects the collection property, the collection name,
-				//file path and number of elements will be added 
-				//to the qInfo log file.
-					qInfo() <<tr("Le dossier") <<(eci->localName())
-					<<tr("contient")<<eci->elementsChild().size()
-					<<tr("éléments") <<"\n"<< "Path:"
-					<<(static_cast<FileElementCollectionItem*>(eci)->fileSystemPath());
-				if (eci && eci->isDir()) {
-		QString txt1 = tr("Le dossier %1 contient").arg(
-					eci->localName());
-		QString txt2 = tr("%n élément(s), répartie(s)",
-				  "",
-				  eci->elementsChild().size());
-		QString txt3 = tr("dans %n dossier(s).",
-				  "" ,
-				  eci->directoriesChild().size());
-		QString txt4 = tr("Chemin de la collection :  %1").arg(
-					eci->collectionPath());
-		QString txt5;
+	ElementCollectionItem* eci =
+		elementCollectionItemForIndex(m_index_at_context_menu);
+
+	if (eci && eci->isDir())
+	{
+		QString filePath;
 		if (eci->type() == FileElementCollectionItem::Type) {
-			txt5 = tr("Chemin dans le système de fichiers :  %1")
-				.arg(static_cast<FileElementCollectionItem*>(eci)->fileSystemPath());
+			filePath = tr("Chemin dans le système de fichiers :  %1")
+						   .arg(
+							   static_cast<FileElementCollectionItem*>(eci)
+								   ->fileSystemPath());
 		}
+		QString out =
+			tr("Le dossier %1 contient").arg(eci->localName()) % " "
+			% tr("%n élément(s), répartie(s)", "", eci->elementsChild().size())
+			% " "
+			% tr("dans %n dossier(s).", "", eci->directoriesChild().size())
+			% "\n\n"
+			% tr("Chemin de la collection :  %1").arg(eci->collectionPath())
+			% "\n" % filePath;
+		qInfo() << out;
 		QMessageBox::information(
 			this,
 			tr("Propriété du dossier %1").arg(eci->localName()),
-			txt1 % " " % txt2 % " " % txt3 % "\n\n" % txt4 % "\n" % txt5);
-		}
+			out);
+	}
 }
 
 /**
