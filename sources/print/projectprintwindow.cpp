@@ -234,9 +234,9 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 {
 
 	////Prepare the print////
-		//Deselect all
+	// Deselect all
 	diagram->deselectAll();
-		//Disable focus flags
+	// Disable focus flags
 	QList<QGraphicsItem *> focusable_items;
 	for (auto qgi : diagram->items()) {
 		if (qgi->flags() & QGraphicsItem::ItemIsFocusable) {
@@ -244,7 +244,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			qgi->setFlag(QGraphicsItem::ItemIsFocusable, false);
 		}
 	}
-		//Disable interaction
+	// Disable interaction
 	for (auto view : diagram->views()) {
 		view->setInteractive(false);
 	}
@@ -254,7 +254,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 
 
 	auto full_page = printer->fullPage();
-	auto diagram_rect = diagramRect(diagram, option);
+	auto diagram_rect = QRectF(diagramRect(diagram, option));
 	if (fit_page) {
 		diagram->render(painter, QRectF(), diagram_rect, Qt::KeepAspectRatio);
 	} else {
@@ -266,57 +266,58 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
 	qDebug()<<"Help code for QT 6 or later";
-	auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) : printer->pageRect(QPrinter::Millimeter);
+	auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) :
+									printer->pageRect(QPrinter::Millimeter);
 #endif
 		auto used_width  = printed_rect.width();
 		auto used_height = printed_rect.height();
 		auto h_pages_count = horizontalPagesCount(diagram, option, full_page);
 		auto v_pages_count = verticalPagesCount(diagram, option, full_page);
 
-		QVector<QVector<QRect>> page_grid;
-			//The diagram is printed on a matrix of sheet
-			//scrolls through the rows of the matrix
+		QVector<QVector<QRectF>> page_grid;
+		// The diagram is printed on a matrix of sheet
+		// scrolls through the rows of the matrix
 		auto y_offset = 0;
-		for (auto i=0 ; i<v_pages_count ; ++i)
+		for (auto i = 0; i < v_pages_count; ++i)
 		{
-			page_grid << QVector<QRect>();
-				//scrolls through the lines of sheet
+			page_grid << QVector<QRectF>();
+			// scrolls through the lines of sheet
 			auto x_offset = 0;
 			for (auto j=0 ; j<h_pages_count ; ++j)
 			{
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-				page_grid.last() << QRect(QPoint(x_offset, y_offset),
-										  QSize(qMin(used_width, diagram_rect.width() - x_offset),
-												qMin(used_height, diagram_rect.height() - y_offset)));
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-				qDebug()<<"Help code for QT 6 or later";
-#endif
+				page_grid.last() << QRectF(
+					QPoint(x_offset, y_offset),
+					QSize(
+						qMin(used_width, diagram_rect.width() - x_offset),
+						qMin(used_height, diagram_rect.height() - y_offset)));
+
 				x_offset += used_width;
 			}
 			y_offset += used_height;
 		}
 
-			//Retains only the pages to be printed
-		QVector<QRect> page_to_print;
+		// Retains only the pages to be printed
+		QVector<QRectF> page_to_print;
 		for (auto i=0 ; i < v_pages_count ; ++i) {
 			for (int j=0 ; j < h_pages_count ; ++j) {
 				page_to_print << page_grid.at(i).at(j);
 			}
 		}
 
-			//Scrolls through the page for print
+		// Scrolls through the page for print
 		bool first_ = true;
-		for (auto page : page_to_print)
+		for (auto& page : page_to_print)
 		{
 			first_ ? first_ = false : m_printer->newPage();
-			diagram->render(painter, QRect(QPoint(0,0), page.size()), page.translated(diagram_rect.topLeft()), Qt::KeepAspectRatio);
+			diagram->render(
+				painter,
+				QRectF(QPoint(0, 0), page.size()),
+				page.translated(diagram_rect.topLeft()),
+				Qt::KeepAspectRatio);
 		}
 	}
 
-		////Print is finished, restore diagram and graphics item properties
+	////Print is finished, restore diagram and graphics item properties
 	for (auto view : diagram->views()) {
 		view->setInteractive(true);
 	}
