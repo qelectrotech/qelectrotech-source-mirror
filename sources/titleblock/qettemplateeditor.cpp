@@ -437,8 +437,8 @@ void QETTitleBlockTemplateEditor::initActions()
 */
 void QETTitleBlockTemplateEditor::initMenus()
 {
-	file_menu_    = new QMenu(tr("&Fichier", "menu title"), this);
-	edit_menu_    = new QMenu(tr("&Édition", "menu title"), this);
+	file_menu_	  = new QMenu(tr("&Fichier", "menu title"), this);
+	edit_menu_	  = new QMenu(tr("&Édition", "menu title"), this);
 	display_menu_ = new QMenu(tr("Afficha&ge", "menu title"), this);
 
 	file_menu_    -> addAction(new_);
