@@ -716,7 +716,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="122"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>Seite</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="124"/>
@@ -5260,7 +5260,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="349"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>Seite</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/ViewItem/projectdbmodel.cpp" line="351"/>
@@ -8839,7 +8839,7 @@ Möchten Sie sie ersetzen?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="237"/>
         <source>Position</source>
-        <translation>Position</translation>
+        <translation>Seite</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="238"/>
