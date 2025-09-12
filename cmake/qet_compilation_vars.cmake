@@ -710,7 +710,6 @@ set(QET_SRC_FILES
 
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
-  ${QET_DIR}/lang/qet_be.ts
   ${QET_DIR}/lang/qet_ca.ts
   ${QET_DIR}/lang/qet_cs.ts
   ${QET_DIR}/lang/qet_da.ts
@@ -727,16 +726,19 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts
+  ${QET_DIR}/lang/qet_nl_BE.ts  
   ${QET_DIR}/lang/qet_no.ts
   ${QET_DIR}/lang/qet_pl.ts
   ${QET_DIR}/lang/qet_pt.ts
   ${QET_DIR}/lang/qet_pt_BR.ts
   ${QET_DIR}/lang/qet_ro.ts
+  ${QET_DIR}/lang/qet_rs.ts  
   ${QET_DIR}/lang/qet_ru.ts
   ${QET_DIR}/lang/qet_sk.ts
   ${QET_DIR}/lang/qet_sl.ts
   ${QET_DIR}/lang/qet_sr.ts
   ${QET_DIR}/lang/qet_sv.ts
   ${QET_DIR}/lang/qet_tr.ts
+  ${QET_DIR}/lang/qet_uk.ts
   ${QET_DIR}/lang/qet_zh.ts
   )
