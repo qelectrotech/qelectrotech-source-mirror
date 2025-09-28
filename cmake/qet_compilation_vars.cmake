@@ -17,6 +17,8 @@
 message(" - qet_compilation_vars")
 
 set(QET_COMPONENTS
+  Core
+  Gui
   LinguistTools
   PrintSupport
   Xml
@@ -109,6 +111,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
   ${QET_DIR}/sources/bordertitleblock.h
+  ${QET_DIR}/sources/colorbutton.cpp
+  ${QET_DIR}/sources/colorbutton.h
+  ${QET_DIR}/sources/colorcombobox.cpp
+  ${QET_DIR}/sources/colorcombobox.h
+  ${QET_DIR}/sources/colorcomboboxdelegate.cpp
+  ${QET_DIR}/sources/colorcomboboxdelegate.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/conductornumexport.cpp

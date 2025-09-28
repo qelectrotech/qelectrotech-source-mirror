@@ -42,7 +42,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="KColorButton" name="m_color_kpb"/>
+       <widget class="ColorButton" name="m_color_kpb"/>
       </item>
       <item row="1" column="1">
        <widget class="QDoubleSpinBox" name="m_size_dsb">
@@ -215,7 +215,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="KColorButton" name="m_brush_color_kpb"/>
+       <widget class="ColorButton" name="m_brush_color_kpb"/>
       </item>
      </layout>
     </widget>
@@ -251,9 +251,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KColorButton</class>
+   <class>ColorButton</class>
    <extends>QPushButton</extends>
-   <header>kcolorbutton.h</header>
+   <header>../colorbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

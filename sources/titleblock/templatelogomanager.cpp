@@ -217,7 +217,7 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 			connect(replace_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
 			connect(rename_button,  SIGNAL(clicked()), signal_mapper, SLOT(map()));
 			connect(cancel_button,  SIGNAL(clicked()), signal_mapper, SLOT(map()));
-			connect(signal_mapper, SIGNAL(mapped(int)), rename_dialog, SLOT(done(int)));
+			connect(signal_mapper, SIGNAL(mappedInt(int)), rename_dialog, SLOT(done(int)));
 		}
 		rd_label -> setText(
 			QString(tr(

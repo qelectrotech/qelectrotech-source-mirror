@@ -40,31 +40,15 @@ if(NOT DEFINED QET_COMPONENTS)
   message(".. QET_COMPONENTS is not set !!! I set them up !!!")
   include(../../cmake/qet_compilation_vars.cmake)
 endif()
-if(NOT DEFINED QT_VERSION_MAJOR)
-  find_package(
-    QT
-   NAMES
-    Qt6
-    Qt5
-   COMPONENTS
-    ${QET_COMPONENTS}
-   REQUIRED
-   )
-endif()
-message(".. QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
-
-find_package(
-  Qt${QT_VERSION_MAJOR}
- COMPONENTS
- ${QET_COMPONENTS}
- REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS ${QET_COMPONENTS})
+message(".. Qt version                :" ${Qt6_VERSION})
 
 Include(FetchContent)
 
 FetchContent_Declare(
   Catch2
   GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-  GIT_TAG        v2.13.10)
+GIT_TAG        v3.7.0)
 
 FetchContent_MakeAvailable(Catch2)
 
@@ -88,7 +72,7 @@ target_link_libraries(
     PUBLIC
     Catch2::Catch2
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF6_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})

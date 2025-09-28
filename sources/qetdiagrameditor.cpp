@@ -46,7 +46,7 @@
 #include "ui/diagrameditorhandlersizewidget.h"
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -95,7 +95,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_workspace.setTabsClosable(true);
 
 		//Set the signal mapper
-	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));
+	connect(&windowMapper, SIGNAL(mapped(QWidget*)), this, SLOT(activateWidget(QWidget*)));
 
 	setWindowTitle(tr("QElectroTech", "window title"));
 	setWindowIcon(QET::Icons::QETLogo);
@@ -1892,7 +1892,7 @@ bool QETDiagramEditor::drawGrid() const
 	return m_draw_grid->isChecked();
 }
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 /**
 	@brief QETDiagramEditor::openBackupFiles

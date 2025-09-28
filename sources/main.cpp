@@ -23,7 +23,7 @@
 #include "utils/qetsettings.h"
 
 #include <QStyleFactory>
-#include <QtConcurrentRun>
+#include <QThreadPool>
 
 /**
 	@brief myMessageOutput
@@ -216,7 +216,7 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 
-	QtConcurrent::run([=]()
+	QThreadPool::globalInstance()->start([=]()
 	{
 		// for debugging
 		qInstallMessageHandler(myMessageOutput);

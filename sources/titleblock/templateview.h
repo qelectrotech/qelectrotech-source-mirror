@@ -19,6 +19,8 @@
 #define TITLEBLOCK_SLASH_TEMPLATE_VIEW_H
 #include "../titleblocktemplate.h"
 
+#include <QGraphicsGridLayout>
+#include <QGraphicsLayoutItem>
 #include <QGraphicsView>
 class HelperCell;
 class SplittedHelperCell;

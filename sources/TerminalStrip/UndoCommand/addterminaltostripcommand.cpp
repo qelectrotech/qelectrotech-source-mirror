@@ -126,7 +126,7 @@ void RemoveTerminalFromStripCommand::redo()
 	if (m_strip)
 	{
 		QVector<QSharedPointer<RealTerminal>> real_t;
-		for (const auto &real_t_vector : qAsConst(m_terminals)) {
+		for (const auto &real_t_vector : std::as_const(m_terminals)) {
 			real_t.append(real_t_vector);
 		}
 

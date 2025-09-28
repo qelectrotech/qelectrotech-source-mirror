@@ -55,43 +55,6 @@ void MachineInfo::send_info_to_debug()
 		<< QLibraryInfo::isDebugBuild();
 	qInfo()<< "Qt library version:"
 		<< QLibraryInfo::version();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	qInfo()<< "Qt library location default prefix:"
-		<< QLibraryInfo::location(QLibraryInfo::PrefixPath);
-	qInfo()<< "Qt library location documentation:"
-		<< QLibraryInfo::location(QLibraryInfo::DocumentationPath);
-	qInfo()<< "Qt library location headers:"
-		<< QLibraryInfo::location(QLibraryInfo::HeadersPath);
-	qInfo()<< "Qt library location libraries:"
-		<< QLibraryInfo::location(QLibraryInfo::LibrariesPath);
-	qInfo()<< "Qt library location executables:"
-		<< QLibraryInfo::location(QLibraryInfo::LibraryExecutablesPath);
-	qInfo()<< "Qt library location Qt binaries:"
-		<< QLibraryInfo::location(QLibraryInfo::BinariesPath);
-	qInfo()<< "Qt library location Qt plugins:"
-		<< QLibraryInfo::location(QLibraryInfo::PluginsPath);
-	qInfo()<< "Qt library location installed QML extensions:"
-		<< QLibraryInfo::location(QLibraryInfo::ImportsPath);
-	qInfo()<< "Qt library location installed QML extensions:"
-		<< QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath);
-	qInfo()<< "Qt library location dependent Qt data:"
-		<< QLibraryInfo::location(QLibraryInfo::ArchDataPath);
-	qInfo()<< "Qt library location independent Qt data:"
-		<< QLibraryInfo::location(QLibraryInfo::DataPath);
-	qInfo()<< "Qt library location translation:"
-		<< QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-	qInfo()<< "Qt library location examples:"
-		<< QLibraryInfo::location(QLibraryInfo::ExamplesPath);
-	qInfo()<< "Qt library location Qt testcases:"
-		<< QLibraryInfo::location(QLibraryInfo::TestsPath);
-#ifndef Q_OS_WIN
-	qInfo()<< "Qt library location Qt settings:"
-		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
-#endif
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	qInfo()<< "Qt library path default prefix:"
 		<< QLibraryInfo::path(QLibraryInfo::PrefixPath);
 	qInfo()<< "Qt library path documentation:"
@@ -124,33 +87,32 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "Qt library path Qt settings:"
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
 #endif
-#endif
 	if (strlen(GIT_COMMIT_SHA)) {
-		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
+		qInfo() << "GitRevision " % QString(GIT_COMMIT_SHA);
 	}
-	qInfo()<< "QElectroTech V " + QetVersion::displayedVersion();
-	qInfo()<< QObject::tr("Compilation : ") + pc.built.version;
-	qInfo()<< "Built with Qt " + pc.built.QT
-		  + " - " + pc.built.arch
-		  + " - Date : " + pc.built.date
-		  + " : " + pc.built.time;
-	qInfo()<< "Run with Qt "+ QString(qVersion())
-		  + " using"
-		  + QString(" %1 thread(s)").arg(pc.cpu.ThreadCount);
-	qInfo()<< "CPU : " + pc.cpu.info;
+	qInfo()<< "QElectroTech V " % QetVersion::displayedVersion();
+	qInfo()<< QObject::tr("Compilation : ") % pc.built.version;
+	qInfo()<< "Built with Qt " % pc.built.QT
+		  % " - " % pc.built.arch
+		  % " - Date : " % pc.built.date
+		  % " : " % pc.built.time;
+	qInfo()<< "Run with Qt " % QString(qVersion())
+		  % " using"
+		  % QString(" %1 thread(s)").arg(pc.cpu.ThreadCount);
+	qInfo()<< "CPU : " % pc.cpu.info;
 	qInfo()<< pc.ram.Total;
 	qInfo()<< pc.ram.Available;
-	qInfo()<< "GPU : " + pc.gpu.info;
-	qInfo()<< "GPU RAM : " + pc.gpu.RAM;
+	qInfo()<< "GPU : " % pc.gpu.info;
+	qInfo()<< "GPU RAM : " % pc.gpu.RAM;
 
-	qInfo()<< "OS : " + pc.os.type
-		  + "  - " + pc.cpu.Architecture
-		  + " - Version : "+pc.os.name
-		  + " - Kernel : "+pc.os.kernel;
+	qInfo()<< "OS : " % pc.os.type
+		  % "  - " % pc.cpu.Architecture
+		  % " - Version : " % pc.os.name
+		  % " - Kernel : " % pc.os.kernel;
 	qInfo()<< "";
 	
 	qInfo()<< " OS System language:"<< QLocale::system().name();
-	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeCountryName();
+	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeTerritoryName();
 	qInfo()<< " OS System Native Language Name:"<< QLocale::system().nativeLanguageName();	
 	qInfo()<< "";
 	qInfo()<< " System language defined in QET configuration:"<< QString(QETApp::langFromSetting().toLatin1());
@@ -171,8 +133,8 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< " App Config Location:"<< QETApp::configDir();
 	qInfo()<< " For data-files (user-/company-collections, titleblocks, etc.):";
 	qInfo()<< " App Data Location:"<< QETApp::dataDir();
-	qInfo()<< " Directory for project stalefiles:";
-	qInfo()<< " Generic Data Location:"<< QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/stalefiles/QElectroTech/";
+	qInfo()<< " Directory for project's autosave files (stalefiles):";
+	qInfo()<< " Autosave:"<< QETApp::autosaveDir() % "/autosave";
 	// qInfo()<< " App Local DataLocation:"<< QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation);
 	// qInfo()<< " Home Location:"<< QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
 	// qInfo()<< " Runtime Location:"<< QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation);
@@ -188,7 +150,7 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it1(QETApp::commonElementsDir().toLatin1(),nameFilters,  QDir::Files, QDirIterator::Subdirectories);
 			while (it1.hasNext())
 			{
-				if(it1.next() > 0 )
+				if(it1.next() != "")
 				{
 				commomElementsDir ++;
 				}
@@ -200,7 +162,7 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it2(QETApp::customElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
 			while (it2.hasNext())
 			{
-				if(it2.next() > 0 )
+				if(it2.next() != "")
 				{
 				customElementsDir ++;
 				}
@@ -211,7 +173,7 @@ void MachineInfo::send_info_to_debug()
 	QDirIterator it3(QETApp::companyElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
 			while (it3.hasNext())
 			{
-				if(it3.next() > 0 )
+				if(it3.next() != "")
 				{
 				companyElementsDir ++;
 				}
@@ -452,29 +414,29 @@ int32_t MachineInfo::i_max_screen_height() {
 */
 QString MachineInfo::compilation_info()
 {
-	QString compilation_info = "<br />" + QObject::tr("Compilation :   ");
+	QString compilation_info = "<br />" % QObject::tr("Compilation :   ");
 	compilation_info +=pc.built.version;
 	
-	compilation_info += "<br>Built with Qt " + pc.built.QT;
-	compilation_info += " - " + pc.built.arch;
-	compilation_info += " - Date : " + pc.built.date;
-	compilation_info += " : " + pc.built.time;
+	compilation_info += "<br>Built with Qt " % pc.built.QT;
+	compilation_info += " - " % pc.built.arch;
+	compilation_info += " - Date : " % pc.built.date;
+	compilation_info += " : " % pc.built.time;
 	if (strlen(GIT_COMMIT_SHA)) {
-		compilation_info += "<br> Git Revision : " + QString(GIT_COMMIT_SHA);
+		compilation_info += "<br> Git Revision : " % QString(GIT_COMMIT_SHA);
 	}
-	compilation_info += " <br>Run with Qt " + QString(qVersion());
+	compilation_info += " <br>Run with Qt " % QString(qVersion());
 	compilation_info += " using"
 			+ QString(" %1 thread(s)").arg(pc.cpu.ThreadCount);
-	compilation_info +=  "<br> CPU : " + pc.cpu.info;
-	compilation_info += "<br>" + pc.ram.Total;
-	compilation_info += "<br>" + pc.ram.Available;
-	compilation_info += "<br>GPU : " + pc.gpu.info;
-	compilation_info += "<br>GPU RAM : " + pc.gpu.RAM;
+	compilation_info +=  "<br> CPU : " % pc.cpu.info;
+	compilation_info += "<br>" % pc.ram.Total;
+	compilation_info += "<br>" % pc.ram.Available;
+	compilation_info += "<br>GPU : " % pc.gpu.info;
+	compilation_info += "<br>GPU RAM : " % pc.gpu.RAM;
 
-	compilation_info += "<br>  OS : " + pc.os.type;
-	compilation_info += "  -   " + pc.cpu.Architecture;
-	compilation_info += " -  Version :    "+pc.os.name;
-	compilation_info += "</br> -  Kernel :     "+pc.os.kernel;
+	compilation_info += "<br>  OS : " % pc.os.type;
+	compilation_info += "  -   " % pc.cpu.Architecture;
+	compilation_info += " -  Version :    " % pc.os.name;
+	compilation_info += "</br> -  Kernel :     " % pc.os.kernel;
 	compilation_info += "<br>  *** Qt screens *** </br>";
 
 	for (int ii = 0; ii < pc.screen.count; ++ii) {

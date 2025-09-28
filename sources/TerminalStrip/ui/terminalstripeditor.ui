@@ -69,7 +69,7 @@
            </widget>
           </item>
           <item row="12" column="1" colspan="2">
-           <widget class="KColorCombo" name="m_bridge_color_cb"/>
+           <widget class="ColorComboBox" name="m_bridge_color_cb"/>
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_6">
@@ -323,9 +323,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KColorCombo</class>
+   <class>ColorComboBox</class>
    <extends>QComboBox</extends>
-   <header>kcolorcombo.h</header>
+   <header>../../colorcombobox.h</header>
   </customwidget>
  </customwidgets>
  <resources>

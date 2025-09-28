@@ -16,7 +16,7 @@
 
 include(cmake/hoto_update_cmake_message.cmake)
 
-cmake_minimum_required(VERSION 3.14...3.19 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.21.1 FATAL_ERROR)
 
 project(qelectrotech
   VERSION 0.9.0
@@ -27,6 +27,13 @@ project(qelectrotech
 include(cmake/copyright_message.cmake)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
+include(cmake/qet_compilation_vars.cmake)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(Qt6 REQUIRED COMPONENTS ${QET_COMPONENTS})
+qt_standard_project_setup()
 
 # Add sub directories
 option(PACKAGE_TESTS "Build the tests" ON)
@@ -43,42 +50,17 @@ include(cmake/git_last_commit_sha.cmake)
 include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
-include(cmake/qet_compilation_vars.cmake)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
-
-SET(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(
-  QT
- NAMES
-  Qt6
-  Qt5
- COMPONENTS
-  ${QET_COMPONENTS}
- REQUIRED
- )
-
-find_package(
-  Qt${QT_VERSION_MAJOR}
- COMPONENTS
- ${QET_COMPONENTS}
- REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
-qt5_add_translation(QM_FILES ${TS_FILES})
 
 # als laatse
 include(cmake/define_definitions.cmake)
 
-add_executable(
+qt_add_executable(
   ${PROJECT_NAME}
   ${QET_RES_FILES}
   ${QET_SRC_FILES}
@@ -86,13 +68,24 @@ add_executable(
   ${QET_DIR}/qelectrotech.qrc
   )
 
+if(QMFILES_AS_RESOURCE)
+  qt_add_translations(${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/lang")
+else()
+  qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+  set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
+  qt_add_translation(QM_FILES ${TS_FILES})
+endif()
+
+find_package(SQLite3 REQUIRED)
+
 target_link_libraries(
   ${PROJECT_NAME}
   PUBLIC
   PRIVATE
   pugixml::pugixml
   SingleApplication::SingleApplication
-  ${KF5_PRIVATE_LIBRARIES}
+  SQLite::SQLite3
+  ${KF6_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES}
   )
 
@@ -149,6 +142,7 @@ install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share
 install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
 install(FILES misc/qelectrotech.xml DESTINATION share/mime/packages)
 install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
-install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
-
+if(NOT QMFILES_AS_RESOURCE)
+  install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
+endif()
 endif()

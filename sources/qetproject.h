@@ -29,7 +29,7 @@
 #include "titleblock/templatescollection.h"
 #include "titleblockproperties.h"
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -47,7 +47,7 @@ class XmlElementCollection;
 class QTimer;
 class TerminalStrip;
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 class KAutoSaveFile;
 #endif
@@ -78,7 +78,7 @@ class QETProject : public QObject
 	public:
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
 #endif
@@ -287,7 +287,7 @@ class QETProject : public QObject
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF6
 #else
 		KAutoSaveFile m_backup_file;
 #endif

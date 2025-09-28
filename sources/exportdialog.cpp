@@ -128,7 +128,9 @@ int ExportDialog::diagramsToExportCount() const
 
 /**
 	Met en place la liste des schemas
+	Set up the schematics list
 	@return Le widget representant la liste des schemas
+	The widget representing the list of schematics
 */
 QWidget *ExportDialog::initDiagramsListPart()
 {
@@ -139,17 +141,17 @@ QWidget *ExportDialog::initDiagramsListPart()
 	reset_mapper_     = new QSignalMapper(this);
 	clipboard_mapper_ = new QSignalMapper(this);
 	
-	connect(preview_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
-	connect(width_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
-	connect(height_mapper_,    SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
-	connect(ratio_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
-	connect(reset_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
-	connect(clipboard_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_exportToClipBoard(int)));
+	connect(preview_mapper_,   SIGNAL(mappedInt(int)), this, SLOT(slot_previewDiagram(int)));
+	connect(width_mapper_,     SIGNAL(mappedInt(int)), this, SLOT(slot_correctHeight(int)));
+	connect(height_mapper_,    SIGNAL(mappedInt(int)), this, SLOT(slot_correctWidth(int)));
+	connect(ratio_mapper_,     SIGNAL(mappedInt(int)), this, SLOT(slot_keepRatioChanged(int)));
+	connect(reset_mapper_,     SIGNAL(mappedInt(int)), this, SLOT(slot_resetSize(int)));
+	connect(clipboard_mapper_, SIGNAL(mappedInt(int)), this, SLOT(slot_exportToClipBoard(int)));
 	
 	diagrams_list_layout_ = new QGridLayout();
 	
 	int line_count = 0;
-	diagrams_list_layout_ -> addWidget(new QLabel(tr("Titre du folio")),        line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
+	diagrams_list_layout_ -> addWidget(new QLabel(tr("Titre du folio")),   line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Nom de fichier")),   line_count, 2, Qt::AlignHCenter | Qt::AlignVCenter);
 	diagrams_list_layout_ -> addWidget(new QLabel(tr("Dimensions")),       line_count, 3, Qt::AlignHCenter | Qt::AlignVCenter);
 	
@@ -245,21 +247,28 @@ QSize ExportDialog::diagramSize(Diagram *diagram)
 	Cette methode ajuste la largeur d'un des schemas a exporter en fonction de
 	sa hauteur si et seulement si l'option "Conserver les proportions" est
 	activee pour ce schema.
-	@param diagram_id numero du schema concerne
+	This method adjusts the width of one of the layouts to be exported
+	according to its height if, and only if, the ‘Keep proportions’ option
+	is enabled for this layout.
+	@param diagram_id numero du schema concerne / number of drawing concerned
 */
 void ExportDialog::slot_correctWidth(int diagram_id)
 {
 	// recupere l'ExportDiagramLine concernee
+	// retrieve the ExportDiagramLine concerned
 	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
 	if (!current_diagram) return;
 	
 	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
+	// do nothing if the ‘Keep proportions’ option is not active
 	if (!(current_diagram -> keep_ratio -> isChecked())) return;
 	
 	// recupere les proportions du schema
+	// retrieve the proportions of the diagram
 	qreal diagram_ratio = diagramRatio(current_diagram -> diagram);
 	
 	// ajuste la largeur
+	// adjust the width
 	current_diagram -> width -> blockSignals(true);
 	current_diagram -> width -> setValue(qRound(current_diagram -> height -> value() * diagram_ratio));
 	current_diagram -> width -> blockSignals(false);
@@ -269,21 +278,28 @@ void ExportDialog::slot_correctWidth(int diagram_id)
 	Cette methode ajuste la hauteur d'un des schemas a exporter en fonction de
 	sa largeur si et seulement si l'option "Conserver les proportions" est
 	activee pour ce schema.
-	@param diagram_id numero du schema concerne
+	This method adjusts the height of one of the layouts to be exported
+	according to its width if, and only if, the ‘Keep proportions’ option
+	is enabled for this layout.
+	@param diagram_id numero du schema concerne / number of drawing concerned
 */
 void ExportDialog::slot_correctHeight(int diagram_id)
 {
 	// recupere l'ExportDiagramLine concernee
+	// retrieve the ExportDiagramLine concerned
 	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
 	if (!current_diagram) return;
 	
 	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
+	// do nothing if the ‘Keep proportions’ option is not active
 	if (!(current_diagram -> keep_ratio -> isChecked())) return;
 	
 	// recupere les proportions du schema
+	// retrieve the proportions of the diagram
 	qreal diagram_ratio = diagramRatio(current_diagram -> diagram);
 	
 	// ajuste la hauteur
+	// adjust the height
 	current_diagram -> height -> blockSignals(true);
 	current_diagram -> height -> setValue(qRound(current_diagram -> width -> value() / diagram_ratio));
 	current_diagram -> height -> blockSignals(false);
@@ -297,10 +313,12 @@ void ExportDialog::slot_correctHeight(int diagram_id)
 void ExportDialog::slot_keepRatioChanged(int diagram_id)
 {
 	// recupere l'ExportDiagramLine concernee
+	// retrieve the ExportDiagramLine concerned
 	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
 	if (!current_diagram) return;
 	
 	// gere l'icone du bouton "Conserver les proportions"
+	// manages the ‘Keep proportions’ button icon
 	if (current_diagram -> keep_ratio -> isChecked()) {
 		current_diagram -> keep_ratio -> setIcon(QET::Icons::ObjectLocked);
 	} else {
@@ -308,9 +326,11 @@ void ExportDialog::slot_keepRatioChanged(int diagram_id)
 	}
 	
 	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
+	// do nothing if the ‘Keep proportions’ option is not active
 	if (!(current_diagram -> keep_ratio -> isChecked())) return;
 	
 	// au contraire, si elle est activee, ajuste la hauteur en fonction de la largeur
+	// on the other hand, if it is active, adjusts the height according to the width
 	slot_correctHeight(diagram_id);
 }
 
@@ -770,7 +790,7 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 	
 	// recupere le format a utiliser (acronyme et extension)
 	QString format_acronym = export_properties.format;
-	QString format_extension = "." + format_acronym.toLower();
+	QString format_extension = "." % format_acronym.toLower();
 	
 	// determine le nom de fichier a utiliser
 	QString diagram_path = diagram_line -> file_name -> text();
@@ -867,7 +887,7 @@ void ExportDialog::slot_checkDiagramsCount()
 void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 	// recupere le format a utiliser (acronyme et extension)
 	QString format_acronym = epw -> exportProperties().format;
-	QString format_extension = "." + format_acronym.toLower();
+	QString format_extension = "." % format_acronym.toLower();
 
 	// set maximum width / height according limitations in QPainter
 	if ((format_extension == ".bmp") ||
@@ -897,11 +917,11 @@ void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 		// cas 2 : l'extension est absente
 		if (diagram_filename_info.suffix().isEmpty()) {
 			if (force_extension) {
-				diagram_filename = diagram_filename_info.completeBaseName() + format_extension;
+				diagram_filename = diagram_filename_info.completeBaseName() % format_extension;
 			}
 		} else {
 			// cas 3 : l'extension est presente mais erronee
-			diagram_filename = diagram_filename_info.completeBaseName() + format_extension;
+			diagram_filename = diagram_filename_info.completeBaseName() % format_extension;
 		}
 		
 		diagram_line -> file_name -> setText(diagram_filename);

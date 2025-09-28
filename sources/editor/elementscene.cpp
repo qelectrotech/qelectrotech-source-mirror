@@ -748,7 +748,7 @@ void ElementScene::addItems(QVector<QGraphicsItem *> items)
  */
 void ElementScene::removeItems(QVector<QGraphicsItem *> items)
 {
-	const int previous_selected_count{selectedItems().size()};
+	const qsizetype previous_selected_count{selectedItems().size()};
 
 		//block signal to avoid multiple emit of selection changed,
 		//we emit this signal only once at the end of this function.
