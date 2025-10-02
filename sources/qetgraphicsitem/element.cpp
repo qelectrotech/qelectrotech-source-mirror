@@ -34,6 +34,7 @@
 #include "elementtextitemgroup.h"
 #include "iostream"
 #include "../qetxml.h"
+#include "qgraphicsitemutility.h"
 
 #include <QDomElement>
 #include <utility>
@@ -242,7 +243,7 @@ void Element::paint(
 
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
-		drawSelection(painter, options);
+		QGIUtility::drawBoundingRectSelection(this, painter);
 	}
 }
 
@@ -339,34 +340,6 @@ void Element::drawAxes(
 }
 
 /*** Methodes privees ***/
-
-/**
-	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
-	@param painter Le QPainter a utiliser pour dessiner les bornes.
-	@param options Les options de style a prendre en compte
-*/
-void Element::drawSelection(
-		QPainter *painter,
-		const QStyleOptionGraphicsItem *options)
-{
-	Q_UNUSED(options)
-	painter -> save();
-	// Annulation des renderhints
-	painter -> setRenderHint(QPainter::Antialiasing,          false);
-	painter -> setRenderHint(QPainter::TextAntialiasing,      false);
-	painter -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	// Dessin du cadre de selection en gris
-	QPen t;
-	t.setColor(Qt::gray);
-	t.setStyle(Qt::DashDotLine);
-	t.setCosmetic(true);
-	painter -> setPen(t);
-	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundedRect(boundingRect().adjusted(1, 1, -1, -1),
-				   10,
-				   10);
-	painter -> restore();
-}
 
 /**
 	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.

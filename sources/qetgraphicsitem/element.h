@@ -197,9 +197,6 @@ class Element : public QetGraphicsItem
 		void setSize(int, int);
 
 	private:
-		void drawSelection(
-				QPainter *,
-				const QStyleOptionGraphicsItem *);
 		void drawHighlight(
 				QPainter *,
 				const QStyleOptionGraphicsItem *);
