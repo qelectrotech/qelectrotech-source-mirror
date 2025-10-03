@@ -74,6 +74,14 @@ class TerminalStripLayoutPattern
         qreal m_terminals_text_y{35};
         Qt::Orientation m_terminals_text_orientation {Qt::Vertical};
 
+			//Xref text
+		void setXrefTextAlignment(const Qt::Alignment &alignment);
+		Qt::Alignment xrefTextAlignment() const;
+		QTextOption xrefTextOption() const;
+		qreal m_xref_text_height{60};
+		qreal m_xref_text_y{95};
+		Qt::Orientation m_xref_text_orientation {Qt::Vertical};
+
         qreal m_bridge_point_d{5};
         QVector<qreal> m_bridge_point_y_offset{50,70,90,110};
 
@@ -89,8 +97,12 @@ class TerminalStripLayoutPattern
 		Qt::Alignment m_header_text_alignment{Qt::AlignCenter};
 		QTextOption m_header_text_option;
 
-        Qt::Alignment m_terminals_text_alignment {Qt::AlignRight | Qt::AlignVCenter};
-        QTextOption m_terminals_text_option{QTextOption()};
+		Qt::Alignment
+			m_terminals_text_alignment {Qt::AlignRight | Qt::AlignVCenter},
+			m_xref_text_alignment {Qt::AlignLeft | Qt::AlignVCenter};
+		QTextOption
+			m_terminals_text_option{QTextOption()},
+			m_xref_text_option{QTextOption()};
 };
 
 #endif // TERMINALSTRIPLAYOUTPATTERN_H

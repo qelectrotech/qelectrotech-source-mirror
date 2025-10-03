@@ -17,7 +17,6 @@
 */
 #include "terminalstriplayoutpattern.h"
 #include "../../../utils/qetutils.h"
-#include <QDebug>
 
 TerminalStripLayoutPattern::TerminalStripLayoutPattern()
 {
@@ -80,6 +79,29 @@ QTextOption TerminalStripLayoutPattern::terminalsTextOption() const
 	return m_terminals_text_option;
 }
 
+/**
+ * @brief TerminalStripLayoutPattern::setXrefTextAlignment
+ * Set text alignment to @param alignment. If alignment have no
+ * flag this function do nothing
+ * @param alignment
+ */
+void TerminalStripLayoutPattern::setXrefTextAlignment(const Qt::Alignment &alignment)
+{
+	if (!alignment) return;
+	m_xref_text_alignment = alignment;
+	updateTerminalsTextOption();
+}
+
+Qt::Alignment TerminalStripLayoutPattern::xrefTextAlignment() const
+{
+	return m_xref_text_alignment;
+}
+
+QTextOption TerminalStripLayoutPattern::xrefTextOption() const
+{
+	return m_xref_text_option;
+}
+
 void TerminalStripLayoutPattern::updateHeaderTextOption()
 {
 	m_header_text_option.setAlignment(m_header_text_alignment);
@@ -90,4 +112,7 @@ void TerminalStripLayoutPattern::updateTerminalsTextOption()
 {
     m_terminals_text_option.setAlignment(m_terminals_text_alignment);
     m_terminals_text_option.setWrapMode(QTextOption::WordWrap);
+
+	m_xref_text_option.setAlignment(m_xref_text_alignment);
+	m_xref_text_option.setWrapMode(QTextOption::WordWrap);
 }

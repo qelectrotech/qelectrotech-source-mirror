@@ -108,6 +108,7 @@ void TerminalStripLayoutEditor::valueEdited()
             m_layout.data()->setHeaderTextAlignment(Qt::AlignRight | Qt::AlignVCenter); break;
     }
 
+		//Terminal text
     m_layout.data()->m_terminals_text_orientation = ui->m_terminal_text_orientation_cb->currentIndex() == 0 ?
                                                         Qt::Horizontal :
                                                         Qt::Vertical;
@@ -126,6 +127,26 @@ void TerminalStripLayoutEditor::valueEdited()
 
     m_layout.data()->m_terminals_text_y = ui->m_terminal_text_y_sb->value();
     m_layout.data()->m_terminals_text_height = ui->m_terminal_text_height_sb->value();
+
+		//Xref text
+	m_layout.data()->m_xref_text_orientation = ui->m_xref_orientation_cb->currentIndex() == 0 ?
+														Qt::Horizontal :
+														Qt::Vertical;
+
+	switch (ui->m_xref_alignment_cb->currentIndex()) {
+	case 0:
+		m_layout.data()->setXrefTextAlignment(Qt::Alignment {Qt::AlignLeft | Qt::AlignVCenter});
+		break;
+	case 1:
+		m_layout.data()->setXrefTextAlignment(Qt::Alignment { Qt::AlignHCenter | Qt::AlignVCenter});
+		break;
+	default:
+		m_layout.data()->setXrefTextAlignment(Qt::Alignment { Qt::AlignRight | Qt::AlignVCenter});
+		break;
+	}
+
+	m_layout.data()->m_xref_text_y = ui->m_xref_y_sb->value();
+	m_layout.data()->m_xref_text_height = ui->m_xref_height_sb->value();
 
 	updateUi();
 	m_preview_strip_item.update();
@@ -200,6 +221,7 @@ void TerminalStripLayoutEditor::updateUi()
         ui->m_header_text_alignment_cb->setCurrentIndex(2);
     }
 
+		//Terminal text
     const auto terminal_alignment = data->terminalsTextAlignment();
     if (terminal_alignment &Qt::AlignLeft) {
         ui->m_terminal_text_alignment_cb->setCurrentIndex(0);
@@ -211,6 +233,25 @@ void TerminalStripLayoutEditor::updateUi()
 
     ui->m_terminal_text_y_sb->setValue(data->m_terminals_text_y);
     ui->m_terminal_text_height_sb->setValue(data->m_terminals_text_height);
+
+		//Xref text
+	if (data->m_xref_text_orientation == Qt::Horizontal) {
+		ui->m_xref_orientation_cb->setCurrentIndex(0);
+	} else {
+		ui->m_xref_orientation_cb->setCurrentIndex(1);
+	}
+
+	const auto xref_alignment = data->xrefTextAlignment();
+	if (xref_alignment &Qt::AlignLeft) {
+		ui->m_xref_alignment_cb->setCurrentIndex(0);
+	} else if (xref_alignment &Qt::AlignHCenter) {
+		ui->m_xref_alignment_cb->setCurrentIndex(1);
+	} else if (xref_alignment &Qt::AlignRight) {
+		ui->m_xref_alignment_cb->setCurrentIndex(2);
+	}
+
+	ui->m_xref_y_sb->setValue(data->m_xref_text_y);
+	ui->m_xref_height_sb->setValue(data->m_xref_text_height);
 
 	m_ui_updating = false;
 	updatePreview();

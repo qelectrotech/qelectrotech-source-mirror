@@ -16,6 +16,7 @@
     along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripdrawer.h"
+
 #include <QPainter>
 
 namespace TerminalStripDrawer {
@@ -111,6 +112,12 @@ void TerminalStripDrawer::paint(QPainter *painter)
         const auto terminals_text_y{m_pattern->m_terminals_text_y};
         QRectF terminal_rect;
 
+		const auto xref_text_orientation{m_pattern->m_xref_text_orientation};
+		const auto xref_text_option{m_pattern->xrefTextOption()};
+		const auto xref_text_height{m_pattern->m_xref_text_height};
+		const auto xref_text_y{m_pattern->m_xref_text_y};
+		QRectF xref_rect;
+
         QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
 
             //Loop over physical terminals
@@ -170,9 +177,9 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 }
 
                 const auto shared_real_terminal{real_terminal_vector[i]};
-                painter->drawText(text_rect,
-                                  shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
-                                  terminals_text_option);
+				painter->drawText(text_rect,
+								  shared_real_terminal ? shared_real_terminal->label() : QLatin1String(),
+								  terminals_text_option);
 
                 if (m_preview_draw)
                 {
@@ -181,6 +188,25 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 }
 
                 painter->restore();
+
+					//Draw xref
+				auto xref_string = shared_real_terminal->xref();
+				painter->save();
+				xref_rect.setRect(0, xref_text_y, terminal_rect.width(), xref_text_height);
+				if (xref_text_orientation == Qt::Vertical)
+				{
+					painter->translate(xref_rect.bottomLeft());
+					painter->rotate(270);
+					xref_rect.setRect(0, 0, xref_rect.height(), xref_rect.width());
+				}
+				painter->drawText(xref_rect, xref_string, xref_text_option);
+
+				if (m_preview_draw)
+				{
+					painter->setPen(Qt::blue);
+					painter->drawRect(xref_rect);
+				}
+				painter->restore();
 
                     //Add bridge anchor
                 if (shared_real_terminal->isBridged())

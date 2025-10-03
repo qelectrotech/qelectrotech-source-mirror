@@ -20,6 +20,7 @@
 #include "../realterminal.h"
 #include "../terminalstrip.h"
 #include "../terminalstripbridge.h"
+#include "../../autoNum/assignvariables.h"
 
 #include "terminalstripdrawer.h"
 
@@ -117,6 +118,15 @@ namespace TerminalStripDrawer
     {
         return new TrueBridge(m_real->bridge());
     }
+
+	QString TrueRealTerminal::xref() const
+	{
+		if (m_real && m_real->isElement()) {
+			return autonum::AssignVariables::genericXref(m_real->element());
+		} else {
+			return QString{};
+		}
+	}
 
     TrueBridge::TrueBridge(QSharedPointer<TerminalStripBridge> bridge) :
         m_bridge { bridge }

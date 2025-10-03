@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>683</width>
-    <height>589</height>
+    <width>961</width>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
-    <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
+    <enum>QLayout::SetMaximumSize</enum>
    </property>
    <item row="4" column="2">
     <widget class="QSpinBox" name="m_width_terminal_0_sb">
@@ -34,7 +34,7 @@
    <item row="3" column="0" colspan="4">
     <widget class="Line" name="line">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -173,7 +173,7 @@
    <item row="11" column="0" colspan="5">
     <widget class="Line" name="line_2">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -213,13 +213,6 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="8" column="4">
-       <widget class="QLabel" name="label_19">
-        <property name="text">
-         <string>Longueur maximal du texte de borne</string>
-        </property>
-       </widget>
-      </item>
       <item row="5" column="3">
        <widget class="QComboBox" name="m_header_text_orientation_cb">
         <item>
@@ -253,38 +246,17 @@
         </item>
        </widget>
       </item>
-      <item row="5" column="5">
-       <widget class="QComboBox" name="m_terminal_text_orientation_cb">
-        <item>
-         <property name="text">
-          <string>Horizontal</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Vertical</string>
-         </property>
-        </item>
-       </widget>
-      </item>
       <item row="5" column="2">
        <widget class="QLabel" name="label_14">
         <property name="text">
-         <string>Orientation du texte d'en tête :</string>
+         <string>Orientation</string>
         </property>
        </widget>
       </item>
       <item row="6" column="2">
        <widget class="QLabel" name="label_15">
         <property name="text">
-         <string>Alignement du texte d'en tête :</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="4">
-       <widget class="QLabel" name="label_13">
-        <property name="text">
-         <string>Origine vertical du texte de borne :</string>
+         <string>Alignement</string>
         </property>
        </widget>
       </item>
@@ -330,7 +302,7 @@
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -343,7 +315,48 @@
         </layout>
        </widget>
       </item>
-      <item row="6" column="5">
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_20">
+        <property name="text">
+         <string>Texte d'en tête</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Origine vertical</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Longueur maximal</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="4">
+       <widget class="QSpinBox" name="m_terminal_text_y_sb">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="4">
+       <widget class="QSpinBox" name="m_terminal_text_height_sb">
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="4">
        <widget class="QComboBox" name="m_terminal_text_alignment_cb">
         <item>
          <property name="text">
@@ -362,30 +375,87 @@
         </item>
        </widget>
       </item>
-      <item row="8" column="5">
-       <widget class="QSpinBox" name="m_terminal_text_height_sb">
-        <property name="minimum">
-         <number>30</number>
+      <item row="5" column="4">
+       <widget class="QComboBox" name="m_terminal_text_orientation_cb">
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>Texte borne</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>Référence croisée</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="5">
+       <widget class="QComboBox" name="m_xref_orientation_cb">
+        <item>
+         <property name="text">
+          <string>Horizontal</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vertical</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="5">
+       <widget class="QComboBox" name="m_xref_alignment_cb">
+        <item>
+         <property name="text">
+          <string>Gauche</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Centre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="7" column="5">
+       <widget class="QSpinBox" name="m_xref_y_sb">
         <property name="maximum">
          <number>1000</number>
         </property>
        </widget>
       </item>
-      <item row="5" column="4">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Orientation du texte de borne :</string>
+      <item row="8" column="5">
+       <widget class="QSpinBox" name="m_xref_height_sb">
+        <property name="minimum">
+         <number>30</number>
         </property>
-       </widget>
-      </item>
-      <item row="7" column="5">
-       <widget class="QSpinBox" name="m_terminal_text_y_sb"/>
-      </item>
-      <item row="6" column="4">
-       <widget class="QLabel" name="label_17">
-        <property name="text">
-         <string>Alignement du texte de borne :</string>
+        <property name="maximum">
+         <number>1000</number>
         </property>
        </widget>
       </item>
@@ -430,7 +500,7 @@
    <item row="9" column="0" colspan="5">
     <widget class="Line" name="line_5">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
@@ -957,6 +1027,70 @@
     <hint type="destinationlabel">
      <x>445</x>
      <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_alignment_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_height_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_orientation_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_y_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
     </hint>
    </hints>
   </connection>

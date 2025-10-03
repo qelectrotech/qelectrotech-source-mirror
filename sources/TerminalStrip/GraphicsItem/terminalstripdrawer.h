@@ -43,6 +43,7 @@ namespace TerminalStripDrawer
             virtual QString label() const = 0;
             virtual bool isBridged() const = 0;
             virtual AbstractBridgeInterface* bridge() const = 0;
+			virtual QString xref() const = 0;
     };
 
     class AbstractPhysicalTerminalInterface

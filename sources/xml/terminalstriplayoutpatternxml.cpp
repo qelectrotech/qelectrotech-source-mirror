@@ -117,6 +117,13 @@ QDomElement TerminalStripLayoutPatternXml::toXml(const QSharedPointer<TerminalSt
         QETSVG::heightToAttribute(pattern->m_terminals_text_height, terminals_text_xml);
         terminals_xml.appendChild(terminals_text_xml);
 
+		auto xref_text_xml = document.createElement(QStringLiteral("xref"));
+		QETXML::orientationToAttribute(pattern->m_xref_text_orientation, xref_text_xml);
+		QETXML::alignmentToAttribute(pattern->xrefTextAlignment(),xref_text_xml);
+		QETSVG::yToAttribute(pattern->m_xref_text_y, xref_text_xml);
+		QETSVG::heightToAttribute(pattern->m_xref_text_height, xref_text_xml);
+		terminals_xml.appendChild(xref_text_xml);
+
         auto bridge_xml = document.createElement(QStringLiteral("bridges"));
         QETSVG::rToAttribute(pattern->m_bridge_point_d/2, bridge_xml);
         QVector<QPointF> points_vector;
@@ -175,6 +182,14 @@ void TerminalStripLayoutPatternXml::fromXml(QSharedPointer<TerminalStripLayoutPa
             layout->m_terminals_text_y = QETSVG::yFromAttribute(terminals_text_xml);
             layout->m_terminals_text_height = QETSVG::heightFromAttribute(terminals_text_xml);
         }
+
+		if (const auto xref_text_xml = terminals_xml.firstChildElement(QStringLiteral("xref"));
+			!xref_text_xml.isNull()) {
+			layout->m_xref_text_orientation = QETXML::orientationFromAttribute(xref_text_xml, layout->m_xref_text_orientation);
+			layout->setXrefTextAlignment(QETXML::alignmentFromAttribute(xref_text_xml));
+			layout->m_xref_text_y = QETSVG::yFromAttribute(xref_text_xml);
+			layout->m_xref_text_height = QETSVG::heightFromAttribute(xref_text_xml);
+		}
 
         if (const auto bridge_xml = terminals_xml.firstChildElement(QStringLiteral("bridges"));
             !bridge_xml.isNull()) {
