@@ -24,12 +24,31 @@
 	Default constructor
 	@param parent : Parent Item
 */
+void QetGraphicsItem::showItem(QetGraphicsItem *item)
+{
+	if (item && item->diagram())
+	{
+		item->diagram()->showMe();
+		item->setSelected(true);
+
+			//Zoom to the item
+		for(QGraphicsView *view : item->scene()->views())
+		{
+			QRectF fit = item->sceneBoundingRect();
+			fit.adjust(-200, -200, 200, 200);
+			view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
+		}
+	}
+}
+
 QetGraphicsItem::QetGraphicsItem(QGraphicsItem *parent):
 	QGraphicsObject(parent),
 	is_movable_(true),
 	m_first_move(true),
 	snap_to_grid_(true)
-{}
+{
+	setAcceptHoverEvents(true);
+}
 
 QetGraphicsItem::~QetGraphicsItem()
 {}
@@ -66,6 +85,11 @@ void QetGraphicsItem::setPos(qreal x, qreal y) {
 
 bool QetGraphicsItem::isHovered() const {
 	return m_hovered;
+}
+
+QPointF QetGraphicsItem::hoverMousePos() const
+{
+	return m_mouse_hover_pos;
 }
 
 /**
@@ -164,6 +188,12 @@ void QetGraphicsItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
 	m_hovered = true;
 	QGraphicsObject::hoverEnterEvent(event);
+}
+
+void QetGraphicsItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	QGraphicsObject::hoverMoveEvent(event);
+	m_mouse_hover_pos = event->pos();
 }
 
 void QetGraphicsItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)

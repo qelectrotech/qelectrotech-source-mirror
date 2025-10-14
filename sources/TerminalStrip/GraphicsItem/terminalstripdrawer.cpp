@@ -45,6 +45,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 {
     if (m_strip && m_pattern)
     {
+		m_united_xref_text_rect = QRectF();
             //To draw text, QPainter need a Qrect. Instead of create an instance
             //for each text, we re-use the same instance of QRect.
         QRect text_rect;
@@ -91,11 +92,10 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
         const auto text_{m_strip->installation() + " " + m_strip->location() + " " + m_strip->name()};
         painter->drawText(text_rect, text_, m_pattern->headerTextOption());
-        painter->restore();
+		painter->restore();
 
             //Move painter pos to next drawing
         painter->translate(m_pattern->m_header_rect.width(),0);
-
         qreal x_offset{m_pattern->m_header_rect.width()};
 
             //Draw spacer
@@ -120,6 +120,8 @@ void TerminalStripDrawer::paint(QPainter *painter)
 
         QHash<QUuid, QVector<QPointF>> bridges_anchor_points;
 
+		m_hovered_xref = hoverTerminal{};
+		int physical_index = 0;
             //Loop over physical terminals
         for (const auto &physical_t : m_strip->physicalTerminal())
         {
@@ -190,15 +192,40 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 painter->restore();
 
 					//Draw xref
-				auto xref_string = shared_real_terminal->xref();
-				painter->save();
 				xref_rect.setRect(0, xref_text_y, terminal_rect.width(), xref_text_height);
+				painter->save();
 				if (xref_text_orientation == Qt::Vertical)
 				{
 					painter->translate(xref_rect.bottomLeft());
 					painter->rotate(270);
 					xref_rect.setRect(0, 0, xref_rect.height(), xref_rect.width());
 				}
+
+				QTransform transform;
+				transform.translate(x_offset, 0);
+
+				if (xref_text_orientation == Qt::Vertical)
+				{
+					transform.translate(0, xref_text_y + xref_text_height);
+					transform.rotate(270);
+				}
+
+				auto xref_string = shared_real_terminal->xref();
+
+				const auto mapped_xref_text_rect = transform.mapRect(painter->boundingRect(xref_rect, xref_string, xref_text_option));
+				if (m_united_xref_text_rect.isNull()) {
+					m_united_xref_text_rect = mapped_xref_text_rect;
+				} else {
+					m_united_xref_text_rect = m_united_xref_text_rect.united(mapped_xref_text_rect);
+				}
+
+					//if mouse hover the xref text, draw it in blue to advise user the xref is clickable.
+				if (!m_mouse_hover_pos.isNull() && mapped_xref_text_rect.contains(m_mouse_hover_pos)) {
+					painter->setPen(Qt::blue);
+					m_hovered_xref.physical = physical_index;
+					m_hovered_xref.real = i;
+				}
+
 				painter->drawText(xref_rect, xref_string, xref_text_option);
 
 				if (m_preview_draw)
@@ -234,6 +261,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
                 painter->translate(terminal_rect.width(),0);
                 x_offset += terminal_rect.width();
             }
+			physical_index++;
         }
         painter->restore();
 
@@ -267,6 +295,41 @@ bool TerminalStripDrawer::haveLayout() const
 
 void TerminalStripDrawer::setPreviewDraw(bool draw) {
     m_preview_draw = draw;
+}
+
+void TerminalStripDrawer::setMouseHoverPos(const QPointF &pos)
+{
+	m_last_mouse_pos_in_xrefs_rect = m_united_xref_text_rect.contains(m_mouse_hover_pos);
+	m_mouse_hover_pos = pos;
+}
+
+/**
+ * @brief TerminalStripDrawer::mouseHoverXref
+ * @return True if the mouse position (given through the function setMouseHoverPos)
+ * hover the rect of a xref.
+ */
+bool TerminalStripDrawer::mouseHoverXref() const {
+	return m_united_xref_text_rect.contains(m_mouse_hover_pos);
+}
+
+bool TerminalStripDrawer::needUpdate()
+{
+	if (mouseHoverXref()) {
+		return true;
+	} else if (m_last_mouse_pos_in_xrefs_rect) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * @brief TerminalStripDrawer::hoveredXref
+ * @return the current terminal hovered by the mouse
+ * in the xref bounding rectangle
+ */
+hoverTerminal TerminalStripDrawer::hoveredXref() const
+{
+	return m_hovered_xref;
 }
 
 qreal TerminalStripDrawer::height() const

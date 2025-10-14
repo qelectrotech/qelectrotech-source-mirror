@@ -27,6 +27,17 @@ class TerminalStrip;
 
 namespace TerminalStripDrawer
 {
+	/**
+	 * @brief The hoverTerminal struct
+	 * Just a little struct use to know what is the physical and real terminal
+	 * when the mouse hover the Xref string of a terminal.
+	 * If mouse don't hover a Xref the value is set to -1;
+	 */
+	struct hoverTerminal{
+		int physical{-1};
+		int real{-1};
+	};
+
     class AbstractBridgeInterface
     {
         public:
@@ -80,6 +91,11 @@ namespace TerminalStripDrawer
 
             void setPreviewDraw(bool draw = true);
 
+			void setMouseHoverPos(const QPointF &pos);
+			bool mouseHoverXref() const;
+			bool needUpdate();
+			hoverTerminal hoveredXref() const;
+
         private:
             qreal height() const;
             qreal width() const;
@@ -88,6 +104,10 @@ namespace TerminalStripDrawer
             QSharedPointer <AbstractTerminalStripInterface> m_strip;
             QSharedPointer<TerminalStripLayoutPattern> m_pattern;
             bool m_preview_draw { false };
+			QPointF m_mouse_hover_pos;
+			QRectF m_united_xref_text_rect;
+			bool m_last_mouse_pos_in_xrefs_rect{false};
+			hoverTerminal m_hovered_xref;
     };
 }
 
