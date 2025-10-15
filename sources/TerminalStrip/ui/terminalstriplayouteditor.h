@@ -74,10 +74,9 @@ class TerminalStripLayoutEditor : public QWidget
 		void resizeEvent(QResizeEvent *event) override;
 		void showEvent(QShowEvent *event) override;
 
-	private slots:
-		void valueEdited();
-
-		void on_m_display_preview_help_clicked(bool checked);
+    private slots:
+        void valueEdited();
+        void on_m_display_preview_help_clicked(bool checked);
 
 	private:
 		void updateUi();

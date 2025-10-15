@@ -54,6 +54,8 @@ class KAutoSaveFile;
 class QETDiagramEditor : public QETMainWindow
 {
 	Q_OBJECT
+
+        friend class TerminalStripEditorWindow;
 	
 	public:
 		QETDiagramEditor(

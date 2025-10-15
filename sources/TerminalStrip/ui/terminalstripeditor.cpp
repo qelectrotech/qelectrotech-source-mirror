@@ -84,6 +84,12 @@ TerminalStripEditor::~TerminalStripEditor() {
 	delete ui;
 }
 
+void TerminalStripEditor::setProject(QETProject *project)
+{
+    m_project = project;
+    setCurrentStrip(nullptr);
+}
+
 /**
  * @brief TerminalStripEditor::setCurrentStrip
  * Set the current terminal strip edited to \p strip_
@@ -98,27 +104,15 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 	if (m_current_strip) {
 		disconnect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::reload);
 		disconnect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::reload);
+        disconnect(m_current_strip, &QObject::destroyed, this, &TerminalStripEditor::clear);
 	}
 
 	ui->m_move_to_cb->clear();
 
-	if (!strip_)
-	{
-		ui->m_installation_le ->clear();
-		ui->m_location_le     ->clear();
-		ui->m_name_le         ->clear();
-		ui->m_comment_le      ->clear();
-		ui->m_description_te  ->clear();
-		m_current_strip = nullptr;
-
-		ui->m_table_widget->setModel(nullptr);
-		if (m_model) {
-			m_model->deleteLater();
-			m_model = nullptr;
-		}		
+    if (!strip_) {
+        clear();
 	}
-	else
-	{
+    else {
 		ui->m_installation_le ->setText(strip_->installation());
 		ui->m_location_le     ->setText(strip_->location());
 		ui->m_name_le         ->setText(strip_->name());
@@ -159,6 +153,7 @@ void TerminalStripEditor::setCurrentStrip(TerminalStrip *strip_)
 
 		connect(m_current_strip, &TerminalStrip::orderChanged, this, &TerminalStripEditor::reload);
 		connect(m_current_strip, &TerminalStrip::bridgeChanged, this, &TerminalStripEditor::reload);
+        connect(m_current_strip, &QObject::destroyed, this, &TerminalStripEditor::clear);
 	}
 }
 
@@ -228,6 +223,22 @@ void TerminalStripEditor::apply()
 	}
 
 	reload();
+}
+
+void TerminalStripEditor::clear()
+{
+    ui->m_installation_le ->clear();
+    ui->m_location_le     ->clear();
+    ui->m_name_le         ->clear();
+    ui->m_comment_le      ->clear();
+    ui->m_description_te  ->clear();
+    m_current_strip.clear();
+
+    ui->m_table_widget->setModel(nullptr);
+    if (m_model) {
+        m_model->deleteLater();
+        m_model = nullptr;
+    }
 }
 
 /**

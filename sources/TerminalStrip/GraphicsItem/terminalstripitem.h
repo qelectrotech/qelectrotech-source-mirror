@@ -46,18 +46,19 @@ class TerminalStripItem : public QetGraphicsItem
 		QRectF boundingRect() const override;
 		QString name() const override;
 
-		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
-		void refreshPending();
-		void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
+		void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+        void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) override;
+        void refreshPending();
+        void setLayout(QSharedPointer<TerminalStripLayoutPattern> layout);
 
 	private:
 		void setDefaultLayout();
 
 	private:
 		QPointer<TerminalStrip> m_strip;
-		TerminalStripDrawer::TerminalStripDrawer m_drawer;
-		QUuid m_pending_strip_uuid;
-
+        TerminalStripDrawer::TerminalStripDrawer m_drawer;
+        QUuid m_pending_strip_uuid;
 };
 
 #endif // TERMINALSTRIPITEM_H

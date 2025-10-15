@@ -1469,12 +1469,21 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 
 	if (!dv || value.isEmpty()) return;
 
-	if (value == "delete_selection")
-	{
-		diagram->clearSelection();
-		diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
-		dv->adjustSceneRect();
-	}
+        if (value == "delete_selection")
+        {
+            if (DeleteQGraphicsItemCommand::hasNonDeletableTerminal(dc)) {
+                QET::QetMessageBox::information(this,
+                                                tr("Suppression de borne impossible"),
+                                                tr("La suppression ne peut être effectué car la selection "
+												   "possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.\n"
+                                                   "Déponter et/ou supprimer les niveaux des bornes concerné "
+                                                   "afin de pouvoir les supprimer"));
+            } else {
+                diagram->clearSelection();
+                diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+                dv->adjustSceneRect();
+            }
+        }
 	else if (value == "rotate_selection")
 	{
 		RotateSelectionCommand *c = new RotateSelectionCommand(diagram);
