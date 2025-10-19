@@ -229,43 +229,53 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
 
 	// recupere les coordonnees fournies des bornes
+	// retrieve the coordinates provided for the terminals
 	QPointF new_p1 = mapFromScene(p1);
 	QPointF new_p2 = mapFromScene(p2);
 	QRectF new_rect = QRectF(new_p1, new_p2);
 
 	// recupere la largeur et la hauteur du profil
+	// retrieve the width and height of the profile
 	qreal profile_width  = conductor_profile.width();
 	qreal profile_height = conductor_profile.height();
 
 	// calcule les differences verticales et horizontales a appliquer
+	// calculates the vertical and horizontal differences to be applied
 	qreal h_diff = (qAbs(new_rect.width())  - qAbs(profile_width) ) * getSign(profile_width);
 	qreal v_diff = (qAbs(new_rect.height()) - qAbs(profile_height)) * getSign(profile_height);
 
 	// applique les differences aux segments
+	// apply the differences to the segments
 	QMultiHash<ConductorSegmentProfile *, qreal> segments_lengths;
 	segments_lengths.unite(shareOffsetBetweenSegments(h_diff, conductor_profile.horizontalSegments()));
 	segments_lengths.unite(shareOffsetBetweenSegments(v_diff, conductor_profile.verticalSegments()));
 
 	// en deduit egalement les coefficients d'inversion (-1 pour une inversion, +1 pour conserver le meme sens)
+	// also deduce the inversion coefficients (-1 for inversion, +1 to keep the same direction)
 	int horiz_coeff = getCoeff(new_rect.width(),  profile_width);
 	int verti_coeff = getCoeff(new_rect.height(), profile_height);
 
 	// genere les nouveaux points
+	// generate the new points
 	QList<QPointF> points;
 	points << new_p1;
 	int limit = conductor_profile.segments.count() - 1;
 	for (int i = 0 ; i < limit ; ++ i) {
 		// dernier point
+		// last point
 		QPointF previous_point = points.last();
 
 		// profil de segment de conducteur en cours
+		// current conductor segment profile
 		ConductorSegmentProfile *csp = conductor_profile.segments.at(i);
 
 		// coefficient et offset a utiliser pour ce point
+		// coefficient and offset to be used for this point
 		qreal coeff = csp -> isHorizontal ? horiz_coeff : verti_coeff;
 		qreal offset_applied = segments_lengths.value(csp);
 
 		// applique l'offset et le coeff au point
+		// apply coefficient and offset to point
 		if (csp -> isHorizontal) {
 			points << QPointF (
 				previous_point.x() + (coeff * offset_applied),
@@ -989,9 +999,9 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 
 /**
 	@brief Conductor::fromXml
-	Load the conductor and her information from xml element
+	Load the conductor and its information from xml element
 	@param dom_element
-	@return true is loading success else return false
+	@return true if loading succeeded else return false
 */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
@@ -1134,13 +1144,14 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		}
 	}
 
-	//If there isn't segment we generate automatic path and return true
+	// If there is no segment, we generate an automatic path and return true
 	if (!segments_x.size()) {
 		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		return(true);
 	}
 
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
+	// The collected lengths must be consistent with the positions of the terminals  
 	qreal width = 0.0, height = 0.0;
 	foreach (qreal t, segments_x) width  += t;
 	foreach (qreal t, segments_y) height += t;
@@ -1420,7 +1431,7 @@ void Conductor::calculateTextItemPosition()
 /**
 	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
 	dans priv_modifieConductor.
-	Save the current conductors profile for later use in priv_modifiedConductor.
+	Save the current conductors profile for later use in priv_modifieConductor.
 */
 void Conductor::saveProfile(bool undo) {
 	Qt::Corner current_path_type = currentPathType();
@@ -1487,7 +1498,7 @@ ConductorProfile Conductor::profile(Qt::Corner path_type) const
 /**
 	@brief Conductor::refreshText
 	Refresh the text of this conductor.
-	recalcule and set the text according to the formula.
+	recalculate and set the text according to the formula.
 */
 void Conductor::refreshText()
 {
