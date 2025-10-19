@@ -1008,7 +1008,7 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
 
-	bool return_ = pathFromXml(dom_element);
+	bool retval = pathFromXml(dom_element);
 
 	m_text_item -> fromXml(dom_element);
 	ConductorProperties pr;
@@ -1020,11 +1020,11 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	m_freeze_label = dom_element.attribute("freezeLabel") == "true"? true : false;
+	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
 
 	setProperties(pr);
 
-	return return_;
+	return retval;
 }
 
 /**
@@ -1267,65 +1267,57 @@ ConductorSegment *Conductor::middleSegment()
 */
 QPointF Conductor::posForText(Qt::Orientations &flag)
 {
-
-	ConductorSegment *segment      = segments;
-	bool all_segment_is_vertical   = true;
-	bool all_segment_is_horizontal = true;
+	ConductorSegment *segment        = segments;
+	bool all_segments_are_vertical   = true;
+	bool all_segments_are_horizontal = true;
 
 		//Go to first segment
 	while (!segment->isFirstSegment()) {
 		segment = segment->previousSegment();
 	}
 
-
 	QPointF p1 = segment -> firstPoint(); //<First point of conductor
-	ConductorSegment *biggest_segment = segment; //<biggest segment: contain the longest segment of conductor.
+	ConductorSegment *longest_segment = segment; //<the longest segment of conductor.
 
+		// check if all segments are horizontal or vertical ... first segment:
 	if (segment -> firstPoint().x() != segment -> secondPoint().x())
-		all_segment_is_vertical   = false;
+		all_segments_are_vertical   = false;
 	if (segment -> firstPoint().y() != segment -> secondPoint().y())
-		all_segment_is_horizontal = false;
-
+		all_segments_are_horizontal = false;
+		// find longest segment
 	while (segment -> hasNextSegment())
 	{
 		segment = segment -> nextSegment();
-
 		if (segment -> firstPoint().x() != segment -> secondPoint().x())
-			all_segment_is_vertical   = false;
+			all_segments_are_vertical   = false;
 		if (segment -> firstPoint().y() != segment -> secondPoint().y())
-			all_segment_is_horizontal = false;
+			all_segments_are_horizontal = false;
 
-			//We must compare length segment, but they can be negative
-			//so we multiply by -1 to make it positive.
-		int saved = biggest_segment -> length();
-		if (saved < 0) saved *= -1;
-		int curent = segment->length();
-		if (curent < 0) curent *= -1;
-
-		if (curent > saved) biggest_segment = segment;
+		if (qAbs(segment->length()) > qAbs(longest_segment -> length()))
+			longest_segment = segment;
 	}
 
-	QPointF p2 = segment -> secondPoint();//<Last point of conductor
+	QPointF p2 = segment -> secondPoint(); //<Last point of conductor
 
 	//If the conductor is horizontal or vertical
 	//Return the point at the middle of conductor
-	if (all_segment_is_vertical) { //<Vertical
+	if (all_segments_are_vertical) { //<Vertical
 		flag = Qt::Vertical;
 		if (p1.y() > p2.y()) {
 			p1.setY(p1.y() - (length()/2));
 		} else {
 			p1.setY(p1.y() + (length()/2));
 		}
-	} else if (all_segment_is_horizontal) { //<Horizontal
+	} else if (all_segments_are_horizontal) { //<Horizontal
 		flag = Qt::Horizontal;
 		if (p1.x() > p2.x()) {
 			p1.setX(p1.x() - (length()/2));
 		} else {
 			p1.setX(p1.x() + (length()/2));
 		}
-	} else { //Return the point at the middle of biggest segment.
-		p1 = biggest_segment->middle();
-		flag = (biggest_segment->isHorizontal())? Qt::Horizontal : Qt::Vertical;
+	} else { //Return the point at the middle of longest segment.
+		p1 = longest_segment->middle();
+		flag = (longest_segment->isHorizontal())? Qt::Horizontal : Qt::Vertical;
 	}
 	return p1;
 }
