@@ -18,8 +18,6 @@
 #include "slaveelement.h"
 
 #include "../diagram.h"
-#include "../diagramposition.h"
-#include "../qetapp.h"
 #include "dynamicelementtextitem.h"
 
 /**
