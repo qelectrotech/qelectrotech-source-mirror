@@ -57,21 +57,9 @@ TerminalStripEditor::TerminalStripEditor(QETProject *project, QWidget *parent) :
 	{
 		if (m_model->columnTypeForIndex(index) == TerminalStripModel::XRef)
 		{
-			auto mrtd = m_model->modelRealTerminalDataForIndex(index);
-			if (mrtd.element_)
-			{
-				auto elmt = mrtd.element_;
-				auto diagram = elmt->diagram();
-				if (diagram)
-				{
-					diagram->showMe();
-					if (diagram->views().size())
-					{
-						auto fit_view = elmt->sceneBoundingRect();
-						fit_view.adjust(-200,-200,200,200);
-						diagram->views().at(0)->fitInView(fit_view, Qt::KeepAspectRatioByExpanding);
-					}
-				}
+			const auto mrtd = m_model->modelRealTerminalDataForIndex(index);
+			if (mrtd.element_) {
+				QetGraphicsItem::showItem(mrtd.element_);
 			}
 		}
 	});

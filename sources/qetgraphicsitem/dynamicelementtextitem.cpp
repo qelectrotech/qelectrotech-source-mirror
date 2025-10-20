@@ -1277,18 +1277,8 @@ void DynamicElementTextItem::zoomToLinkedElement()
 			//move when linked element is in the same scene of this.
 		setSelected(false);
 		ungrabMouse();
-		
-		if(scene() != zoomed_element->scene())
-			zoomed_element->diagram()->showMe();
-		zoomed_element->setSelected(true);
-		
-			//Zoom to the element
-		for(QGraphicsView *view : zoomed_element->scene()->views())
-		{
-			QRectF fit = zoomed_element->sceneBoundingRect();
-			fit.adjust(-200, -200, 200, 200);
-			view->fitInView(fit, Qt::KeepAspectRatioByExpanding);
-		}
+
+		QetGraphicsItem::showItem(zoomed_element);
 	}
 }
 
