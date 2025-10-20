@@ -83,7 +83,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
-	ui->m_export_terminal->setChecked(settings.value("nomenclature-exportlist", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
 	
@@ -223,9 +222,6 @@ void GeneralConfigurationPage::applyConf()
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
-
-		//NOMENCLATURE
-	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
 
 
 		//DIAGRAM EDITOR
