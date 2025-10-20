@@ -33,9 +33,6 @@ class SlaveElement : public Element
 		void linkToElement(Element *elmt) override;
 		void unlinkAllElements() override;
 		void unlinkElement(Element *elmt) override;
-	
-	private:
-		QGraphicsTextItem *m_xref_item;
 };
 
 #endif // SLAVEELEMENT_H
