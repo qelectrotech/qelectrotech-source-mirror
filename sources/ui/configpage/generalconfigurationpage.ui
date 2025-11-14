@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>935</width>
+    <width>955</width>
     <height>556</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -82,7 +82,7 @@
        </item>
        <item>
         <widget class="QWidget" name="m_hdpi_round_policy_widget" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,1">
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -96,14 +96,28 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QCheckBox" name="m_hdpi_round_cb">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="m_hdpi_round_label">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Méthode de mise à l'echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="m_hdpi_round_policy_cb"/>
+           <widget class="QComboBox" name="m_hdpi_round_policy_cb">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
