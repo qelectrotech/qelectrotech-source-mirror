@@ -5,3 +5,4 @@
 # doxygen Doxyfile output
 doc/
 QElectroTech.tag
+build/
