@@ -890,7 +890,7 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="391"/>
         <source>phase</source>
-        <translation>fase</translation>
+        <translation>Fase</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.cpp" line="234"/>
@@ -913,12 +913,12 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="377"/>
         <source>terre</source>
-        <translation>terra</translation>
+        <translation>Terra</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="363"/>
         <source>neutre</source>
-        <translation>neutre</translation>
+        <translation>Neutre</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="14"/>
@@ -954,12 +954,12 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="171"/>
         <source>Vertical à gauche</source>
-        <translation>Vertical esquerra</translation>
+        <translation>Vertical a l&apos;esquerra</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="176"/>
         <source>Vertical à droite</source>
-        <translation>Vertical dreta</translation>
+        <translation>Vertical a la dreta</translation>
     </message>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="184"/>
@@ -1447,7 +1447,7 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="345"/>
         <source>Conserver la rotation visuel</source>
-        <translation>Mantenir la rotació visual</translation>
+        <translation>Manté la rotació visual</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="359"/>
@@ -1544,7 +1544,7 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="837"/>
         <source>Maintenir en bas de page</source>
-        <translation>Mantenir al final de la pàgina</translation>
+        <translation>Manté al final de la pàgina</translation>
     </message>
     <message>
         <location filename="../sources/ui/dynamicelementtextmodel.cpp" line="1143"/>
@@ -1593,7 +1593,7 @@ Nota: Aquestes opcions NO permeten ni bloquegen les numeracions automàtiques, n
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="72"/>
         <source>Conserver la rotation visuel</source>
-        <translation>Mantenir la rotació visual</translation>
+        <translation>Manté la rotació visual</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="115"/>
@@ -2726,7 +2726,7 @@ S&apos;eliminaran tots els elements i carpetes contingudes en aquesta carpeta.</
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Abaisser ce folio</source>
-        <translation>Retrocedir la posició del full</translation>
+        <translation>Retrocedeix la posició del full</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
@@ -2746,12 +2746,12 @@ S&apos;eliminaran tots els elements i carpetes contingudes en aquesta carpeta.</
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Abaisser ce folio x10</source>
-        <translation>Retrocedir 10 posicions el full</translation>
+        <translation>Retrocedeix 10 posicions el full</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Abaisser ce folio x100</source>
-        <translation>Retrocedir 100 posicions el full</translation>
+        <translation>Retrocedeix 100 posicions el full</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="88"/>
@@ -3130,7 +3130,7 @@ Si el número definit al camp Valor té menys dígits que el tipus escollit, ani
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="72"/>
         <source>Insert Formula Here e.g.: %prefix%l%c</source>
-        <translation>Inserir Fórmula Aquí, per exemple: %prefix%l%c</translation>
+        <translation>Insereix la fórmula aquí, per exemple: %prefix%l%c</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/formulaautonumberingw.ui" line="101"/>
@@ -3308,22 +3308,22 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Utiliser des fen&amp;êtres (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Utilitza fine&amp;stres (aplicat al proper llançament de QElectroTech)</translation>
+        <translation>Utilitza fine&amp;stres (s&apos;aplicarà al proper llançament de QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Utiliser des onglets (appliqué au prochain lance&amp;ment de QElectroTech)</source>
-        <translation>Utilitza pestanyes (aplicat al proper llança&amp;ment de QElectroTech)</translation>
+        <translation>Utilitza pestanyes (s&apos;aplicarà al proper llança&amp;ment de QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
-        <translation>Mètode d&apos;escalat de pantalla d&apos;alta densitat de píxels (HDPI) (aplicat al proper llançament de QElectroTech):</translation>
+        <translation>Mètode d&apos;escalat de pantalla d&apos;alta densitat de píxels (HDPI) (s&apos;aplicarà al proper llançament de QElectroTech):</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
-        <translation>Desament automàtic del projecte (aplicat al proper llançament de QElectroTech)</translation>
+        <translation>Desament automàtic del projecte (s&apos;aplicarà al proper llançament de QElectroTech)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
@@ -3345,7 +3345,7 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="181"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation>Utilitzeu els números de full en lloc de la seva posició en el projecte</translation>
+        <translation>Utilitza els números de full en lloc de la seva posició en el projecte</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
@@ -3360,7 +3360,7 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
         <source>Répertoire de la collection commune</source>
-        <translation>Directori de col·leccions comuns</translation>
+        <translation>Directori de la col·lecció compartida</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
@@ -3383,22 +3383,22 @@ Les entrades de text i nombres també
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
         <source>Répertoire de la collection company</source>
-        <translation>Directori de la col·lecció d&apos;empreses</translation>
+        <translation>Directori de la col·lecció d&apos;empresa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
         <source>Répertoire des cartouches company</source>
-        <translation>Directori de caixetins d&apos;empresa</translation>
+        <translation>Directori dels caixetins d&apos;empresa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
         <source>Répertoire de la collection utilisateur</source>
-        <translation>Directori de col·lecció d&apos;usuaris</translation>
+        <translation>Directori de la col·lecció d&apos;usuari</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
         <source>Répertoire des cartouches utilisateur</source>
-        <translation>Directori de caixetins d&apos;usuari</translation>
+        <translation>Directori dels caixetins d&apos;usuari</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
@@ -3425,7 +3425,7 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
-        <translation>Aplicat al proper llançament de QElectroTech</translation>
+        <translation>S&apos;aplicarà al proper llançament de QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
@@ -3479,17 +3479,17 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
         <source>Grille + Clavier</source>
-        <translation>Quadrícula + Teclat</translation>
+        <translation>Graella i teclat</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="624"/>
         <source>Grille : 1 - 30</source>
-        <translation>Quadrícula: 1 - 30</translation>
+        <translation>Graella de l&apos;editor d&apos;esquemes</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="658"/>
         <source>DiagramEditor yGrid</source>
-        <translation>Editor de diagrames yQuadrícula</translation>
+        <translation>Distància entre punts en vertical : 1-30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="665"/>
@@ -3499,37 +3499,37 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="691"/>
         <source>DiagramEditor xGrid</source>
-        <translation>Editor de diagrames xQuadrícula</translation>
+        <translation>Distància entre punts en horitzontal :  1-30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="714"/>
         <source>Déplacement au clavier : 1 - 30</source>
-        <translation>Moviment del teclat: 1 - 30</translation>
+        <translation>Desplaçament per la graella de l&apos;editor d&apos;esquemes utilitzant el teclat</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="764"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
-        <translation>Editor de diagrames (tecla: esquerra / dreta) xQuadrícula</translation>
+        <translation>Distància desplaçada amb les tecles esquerra i dreta en horitzontal : 1-30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="771"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
-        <translation>Editor de diagrames (tecla: amunt / avall) yQuadrícula</translation>
+        <translation>Distància desplaçada amb les tecles amunt i avall en vertical : 1-30</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="794"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
-        <translation>Moviment del teclat amb la tecla ALT: 1 - 9</translation>
+        <translation>Desplaçament per la graella de l&apos;editor d&apos;esquemes utilitzant el teclat amb la tecla ALT</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="800"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
-        <translation>Editor de diagrames (tecla: esquerra / dreta) xQuadrícula</translation>
+        <translation>Distància desplaçada amb les tecles esquerra i dreta en horitzontal : 1-9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="829"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
-        <translation>Editor de diagrames (tecla: amunt / avall) yQuadrícula</translation>
+        <translation>Distància desplaçada amb les tecles amunt i avall en vertical : 1-9</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="888"/>
@@ -3544,17 +3544,17 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
-        <translation>No conservar les etiquetes dels elements després de copiar i enganxar</translation>
+        <translation>No conservis les etiquetes dels elements després de copia i enganxa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
         <source>Autoriser le dézoom au delà du folio</source>
-        <translation>Permetre allunyar més enllà de la mida del full</translation>
+        <translation>Permet allunyar més enllà de la mida del full</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
-        <translation>Arrodoneix cap amunt per 0,5 i més</translation>
+        <translation>Arrodoneix cap amunt per 0,5 o més</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
@@ -3569,7 +3569,7 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
         <source>Arrondi supérieur pour 0.75 et plus</source>
-        <translation>Arrodoneix cap amunt per 0,75 i més</translation>
+        <translation>Arrodoneix cap amunt per 0,75 o més</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
@@ -3720,27 +3720,27 @@ Podeu especificar el valor per defecte d&apos;aquest camp per als elements que c
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="439"/>
         <source>Chemin de la collection commune</source>
-        <translation>Ruta de col·lecció comuna</translation>
+        <translation>Ruta de la col·lecció compartida</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="453"/>
         <source>Chemin de la collection company</source>
-        <translation>Ruta de col·lecció d&apos;empresa</translation>
+        <translation>Ruta de la col·lecció d&apos;empresa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="467"/>
         <source>Chemin de la collection utilisateur</source>
-        <translation>Ruta de col·lecció d&apos;usuaris</translation>
+        <translation>Ruta de la col·lecció d&apos;usuari</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="481"/>
         <source>Chemin des cartouches company</source>
-        <translation>Ruta de caixetins d&apos;empresa</translation>
+        <translation>Ruta dels caixetins d&apos;empresa</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="495"/>
         <source>Chemin des cartouches utilisateur</source>
-        <translation>Ruta de caixetins d&apos;usuaris</translation>
+        <translation>Ruta dels caixetins d&apos;usuaris</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="524"/>
@@ -5516,7 +5516,7 @@ Vol desar els canvis?</translation>
         <location filename="../sources/projectview.cpp" line="384"/>
         <source>Supprimer le folio ?</source>
         <comment>message box title</comment>
-        <translation>Suprimir el full?</translation>
+        <translation>Suprimeix el full?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="385"/>
@@ -6149,7 +6149,7 @@ Opcions disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="616"/>
         <source>Désélectionner tout</source>
-        <translation>Desselecciona</translation>
+        <translation>Desselecciona-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
@@ -6159,7 +6159,7 @@ Opcions disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
         <source>Ajouter un plan de bornes</source>
-        <translation>Afegiu un pla de borns</translation>
+        <translation>Afegeix un pla de borns</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="670"/>
@@ -6199,7 +6199,7 @@ Opcions disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
         <source>Chercher/remplacer</source>
-        <translation>Cerca/substitueix</translation>
+        <translation>Cerca i reemplaça</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
@@ -6527,7 +6527,7 @@ Opcions disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
-        <translation>Creació automàtica de conductor(s)</translation>
+        <translation>Creació automàtica de conductors</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="159"/>
@@ -7485,7 +7485,7 @@ Les condicions requerides no són vàlides</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="216"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation>Sortir de &amp;pantalla completa</translation>
+        <translation>Surt de &amp;pantalla completa</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="218"/>
@@ -8127,7 +8127,7 @@ Què voleu fer?</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1041"/>
         <source>Conserver les proportions</source>
-        <translation>Mantenir les proporcions</translation>
+        <translation>Manté les proporcions</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="1045"/>
@@ -9284,27 +9284,27 @@ Voleu substituir-la?</translation>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="56"/>
         <source>Chercher/remplacer les propriétés de folio</source>
-        <translation>Cerca/Substitueix les propietats del full</translation>
+        <translation>Cerca i reemplaça les propietats del full</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="120"/>
         <source>Chercher/remplacer les propriétés d&apos;éléments.</source>
-        <translation>Cerca/Substitueix les propietats dels elements.</translation>
+        <translation>Cerca i reemplaça les propietats dels elements.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="173"/>
         <source>Chercher/remplacer des textes independants</source>
-        <translation>Cercar/substituir textos independents</translation>
+        <translation>Cerca i reemplaça textos independents</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="213"/>
         <source>Chercher/remplacer les propriétés de conducteurs.</source>
-        <translation>Cerca/substitueix les propietats dels conductors.</translation>
+        <translation>Cerca i reemplaça les propietats dels conductors.</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="300"/>
         <source>Rechercher / remplacer avancé</source>
-        <translation>Cerca/substitueix avançat</translation>
+        <translation>Cerca i reemplaça avançat</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.cpp" line="26"/>
@@ -9370,7 +9370,7 @@ Voleu substituir-la?</translation>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="283"/>
         <source>Insérer un texte d&apos;élément dans un groupe de textes</source>
-        <translation>Inserir text d&apos;element en un grup de text</translation>
+        <translation>Insereix text d&apos;element en un grup de text</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addelementtextcommand.cpp" line="343"/>
@@ -9545,7 +9545,7 @@ Afegiu una taula nova o ajusteu la taula existent per mostrar la quantitat compl
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="667"/>
         <source>Ajouter un point à un polygone</source>
-        <translation>Afegir un punt a un polígon</translation>
+        <translation>Afegeix un punt a un polígon</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="701"/>
@@ -9986,7 +9986,7 @@ Afegiu una taula nova o ajusteu la taula existent per mostrar la quantitat compl
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="150"/>
         <source>Pas de date</source>
-        <translation>No hi cap data</translation>
+        <translation>Sense data</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replacefoliowidget.ui" line="157"/>
@@ -10077,7 +10077,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %LM : la localisation
 %l : le numéro de ligne
 %c : le numéro de colonne</source>
-        <translation>Podeu definir una etiqueta personalitzada per als informes de foli.
+        <translation>Podeu definir una etiqueta personalitzada per als informes de full.
 Creeu el vostre propi text utilitzant les variables següents:
 %f: la posició del full al projecte
 %F: el número de full
@@ -10318,7 +10318,7 @@ Creeu el vostre propi text utilitzant les variables següents:
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="133"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Suprimir una variable de numeració&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Suprimeix una variable de numeració&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/selectautonumw.ui" line="150"/>
@@ -13419,7 +13419,7 @@ Les autres champs ne sont pas utilisés.</source>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="288"/>
         <source>Pas de date</source>
-        <translation>No hi cap data</translation>
+        <translation>Sense data</translation>
     </message>
     <message>
         <location filename="../sources/ui/titleblockpropertieswidget.ui" line="295"/>
@@ -13709,7 +13709,7 @@ associar el nom &quot;volta&quot; amb el valor &quot;1745&quot; substituirà %{v
         <location filename="../sources/titleblock/templatedeleter.cpp" line="61"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Suprimir el model de caixetí?</translation>
+        <translation>Suprimeix el model de caixetí?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="63"/>
@@ -13943,13 +13943,13 @@ associar el nom &quot;volta&quot; amb el valor &quot;1745&quot; substituirà %{v
         <location filename="../sources/titleblock/templateview.cpp" line="583"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation>Suprimir aquesta columna</translation>
+        <translation>Suprimeix aquesta columna</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="584"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation>Suprimir aquesta línia</translation>
+        <translation>Suprimeix aquesta línia</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="585"/>
@@ -14056,7 +14056,7 @@ Longitud màxima : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="56"/>
         <source>XRef Vertical Offset:</source>
-        <translation>Desplaçament vertical de la XRef :</translation>
+        <translation>Desplaçament vertical de la referència creuada :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="63"/>
@@ -14071,12 +14071,12 @@ Longitud màxima : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="69"/>
         <source>Default - Fit to XRef height</source>
-        <translation>Per defecte - Ajusta a l&apos;alçada de la XRef</translation>
+        <translation>Per defecte - Ajusta a l&apos;alçada de la referència creuada</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="98"/>
         <source>XRef slave position</source>
-        <translation>Posició de l&apos;esclau XRef</translation>
+        <translation>Posició de l&apos;esclau de la referència creuada</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="114"/>
@@ -14086,7 +14086,7 @@ Longitud màxima : %2px
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="121"/>
         <source>Afficher en croix</source>
-        <translation>Mostra len creu</translation>
+        <translation>Mostra en creu</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="134"/>
