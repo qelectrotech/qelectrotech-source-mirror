@@ -35,7 +35,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-	if(MachineInfo::instance()->i_max_screen_height()<1000){
+	if(MachineInfo::instance()->i_max_screen_height() <= 1080){
 		pages_list -> setIconSize(QSize(64, 64));
 	} else {
 		pages_list -> setIconSize(QSize(128, 128));
