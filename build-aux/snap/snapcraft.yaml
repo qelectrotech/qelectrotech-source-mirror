@@ -33,7 +33,7 @@ apps:
     environment: &env
       TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
       HOME: $SNAP_USER_COMMON
-      PYTHONPATH: $SNAP:$SNAP/lib/python3.10/site-packages:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
+      PYTHONPATH: $SNAP:$SNAP/lib/python3.8/site-packages:$SNAP/usr/lib/python3.8:$SNAP/usr/lib/python3.8/lib-dynload
 
   qet-tb-generator:
     command: bin/qet_tb_generator
