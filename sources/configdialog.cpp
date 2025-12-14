@@ -69,7 +69,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 
 	// Add a layout for QDialog
 	QVBoxLayout *dialog_layout = new QVBoxLayout(this);
-	dialog_layout->addWidget(scroll); // add scroll to the QDialog's layout
+	dialog_layout -> addWidget(scroll); // add scroll to the QDialog's layout
 	dialog_layout -> addWidget(buttons);
 	setLayout(dialog_layout);
 
