@@ -79,9 +79,10 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(pages_list, SIGNAL(currentRowChanged(int)),
 		pages_widget, SLOT(setCurrentIndex(int)));
 
-	setMaximumSize(MachineInfo::instance()->i_max_screen_width(),
-				   MachineInfo::instance()->i_max_screen_height());
-	resize(1400,1000);
+	setMaximumSize((int)(0.85 * MachineInfo::instance()->i_max_screen_width()),
+				   (int)(0.85 * MachineInfo::instance()->i_max_screen_height()));
+	resize(std::min(1400,maximumWidth()),
+		   std::min(1000,maximumHeight()));
 
 #ifdef Q_OS_MACOS
 	if (parent) {
