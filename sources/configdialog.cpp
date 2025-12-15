@@ -79,16 +79,9 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(pages_list, SIGNAL(currentRowChanged(int)),
 		pages_widget, SLOT(setCurrentIndex(int)));
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 	// set maximum a bit smaller than available size = (screen-size - Task-Bar):
-	// "primaryScreen" <-> the screen where the main widget of application resides
-	setMaximumSize((int)(0.95 * QGuiApplication::primaryScreen()->availableSize().width()),
-				   (int)(0.95 * QGuiApplication::primaryScreen()->availableSize().height()));
-#else
-	// set maximum smaller than screen-size
-	setMaximumSize((int)(0.85 * MachineInfo::instance()->i_max_screen_width()),
-				   (int)(0.85 * MachineInfo::instance()->i_max_screen_height()));
-#endif
+	setMaximumSize((int)(0.94 * MachineInfo::instance()->i_max_available_width()),
+				   (int)(0.94 * MachineInfo::instance()->i_max_available_height()));
 	resize(std::min(1400,maximumWidth()),
 		   std::min(1000,maximumHeight()));
 
