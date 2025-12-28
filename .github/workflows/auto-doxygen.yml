@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - doxygen
    
   
   
@@ -38,7 +39,6 @@ jobs:
 
          [1]: https://github.com/peter-evans/create-pull-request
         branch: update-qch
-        base: doxygen-MR
         labels: | 
           qch
           cicd

@@ -6,3 +6,4 @@
 doc/*
 !doc/QElectroTech.qch
 QElectroTech.tag
+!doc/doc-utils
