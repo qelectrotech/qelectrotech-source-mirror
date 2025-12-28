@@ -142,6 +142,8 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
+		void correctTextPos(Element* elmt);
+		void restoreText(Element* elmt);
 	
 	public:
 		QUuid uuid();
@@ -167,7 +169,7 @@ class Diagram : public QGraphicsScene
 		QList < QSet <Conductor *> > potentials();
 	
 		// methods related to XML import/export
-		QDomDocument toXml(bool = true);
+		QDomDocument toXml(bool wholeContent = true, bool is_copy_command = false);
 		bool initFromXml(QDomElement &,
 				 QPointF = QPointF(),
 				 bool = true,

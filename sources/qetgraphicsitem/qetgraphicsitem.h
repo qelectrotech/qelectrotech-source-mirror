@@ -28,6 +28,9 @@ class QetGraphicsItem : public QGraphicsObject
 {
 	Q_OBJECT
 
+	public :
+		static void showItem (QetGraphicsItem *item);
+
 	public:
 		//constructor destructor
 		QetGraphicsItem(QGraphicsItem *parent = nullptr);
@@ -43,6 +46,7 @@ class QetGraphicsItem : public QGraphicsObject
 		virtual void setMovable (bool movable) { is_movable_ = movable;}
 
 		bool isHovered() const;
+		QPointF hoverMousePos() const;
 
 		virtual void editProperty () {}
 		virtual QString name ()const
@@ -57,6 +61,7 @@ class QetGraphicsItem : public QGraphicsObject
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
+		void hoverMoveEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
 
 	protected:
@@ -68,6 +73,7 @@ class QetGraphicsItem : public QGraphicsObject
 
 	private:
 		bool m_hovered{false};
+		QPointF m_mouse_hover_pos;
 
 };
 

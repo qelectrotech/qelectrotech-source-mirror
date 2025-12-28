@@ -32,15 +32,19 @@
  */
 FreeTerminalEditor::FreeTerminalEditor(QETProject *project, QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::FreeTerminalEditor),
-	m_project(project)
+    ui(new Ui::FreeTerminalEditor),
+    m_project(project)
 {
 	ui->setupUi(this);
 	ui->m_table_view->setItemDelegate(new FreeTerminalModelDelegate(ui->m_table_view));
 
-	m_model = new FreeTerminalModel(m_project, this);
+    m_model = new FreeTerminalModel(m_project, this);
 	ui->m_table_view->setModel(m_model);
 	ui->m_table_view->setCurrentIndex(m_model->index(0,0));
+
+    if (m_project) {
+        connect(m_project, &QObject::destroyed, this, &FreeTerminalEditor::reload);
+    }
 
 		//Disabled the move if the table is currently edited (yellow cell)
 	connect(m_model, &FreeTerminalModel::dataChanged, this, [=] {
@@ -133,6 +137,31 @@ void FreeTerminalEditor::apply()
 	}
 
 	reload();
+}
+
+/**
+ * @brief FreeTerminalEditor::setProject
+ * Set @project as project handled by this editor.
+ * If a previous project was setted, everything is clear.
+ * This function track the destruction of the project,
+ * that  mean if the project pointer is deleted
+ * no need to call this function with a nullptr,
+ * everything is made inside this class.
+ * @param project
+ */
+void FreeTerminalEditor::setProject(QETProject *project)
+{
+    if(m_project) {
+        disconnect(m_project, &QObject::destroyed, this, &FreeTerminalEditor::reload);
+    }
+    m_project = project;
+    if (m_model) {
+        m_model->setProject(project);
+    }
+    if (m_project) {
+        connect(m_project, &QObject::destroyed, this, &FreeTerminalEditor::reload);
+    }
+    reload();
 }
 
 void FreeTerminalEditor::on_m_type_cb_activated(int index)

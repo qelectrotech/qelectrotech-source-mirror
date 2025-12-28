@@ -18,7 +18,6 @@
 #ifndef SLAVEELEMENT_H
 #define SLAVEELEMENT_H
 
-#include "../properties/xrefproperties.h"
 #include "element.h"
 
 class SlaveElement : public Element
@@ -33,9 +32,6 @@ class SlaveElement : public Element
 		void linkToElement(Element *elmt) override;
 		void unlinkAllElements() override;
 		void unlinkElement(Element *elmt) override;
-	
-	private:
-		QGraphicsTextItem *m_xref_item;
 };
 
 #endif // SLAVEELEMENT_H

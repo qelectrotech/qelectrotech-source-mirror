@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2022 The QElectroTech Team
+	Copyright 2006-2025 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -49,6 +49,7 @@ class MoveGraphicsItemCommand : public QUndoCommand
 
 	private:
 		void move(const QPointF &movement);
+		void updateConductors(bool is_redo = false);
 		void setupAnimation(QObject *target,
 							const QByteArray &property_name,
 							const QVariant &start,

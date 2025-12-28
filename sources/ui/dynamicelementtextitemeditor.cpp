@@ -146,7 +146,6 @@ void DynamicElementTextItemEditor::setCurrentText(DynamicElementTextItem *text)
 		return;
 
 	ui->m_tree_view->expand(index);
-//	ui->m_tree_view->expand(index.QModelIndex::model()->index(0,0));  // commented by plc-user: leads to crash, when other textitem was selected before
 	ui->m_tree_view->setCurrentIndex(index);
 	ui->m_remove_selection->setEnabled(true);
 }

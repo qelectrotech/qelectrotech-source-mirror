@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2022 The QElectroTech Team
+	Copyright 2006-2025 The QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,6 +22,8 @@
 #include "../../project/projectpropertieshandler.h"
 #include "../../qetgraphicsitem/qgraphicsitemutility.h"
 #include "../terminalstrip.h"
+#include "../physicalterminal.h"
+#include "../realterminal.h"
 #include "../ui/terminalstripeditorwindow.h"
 #include "trueterminalstrip.h"
 
@@ -94,12 +96,52 @@ QString TerminalStripItem::name() const {
 	return tr("plan de bornes");
 }
 
+void TerminalStripItem::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+	QetGraphicsItem::hoverMoveEvent(event);
+	m_drawer.setMouseHoverPos(hoverMousePos());
+	if (m_drawer.needUpdate()) {
+		update();
+	}
+}
+
+void TerminalStripItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+	QetGraphicsItem::hoverLeaveEvent(event);
+	m_drawer.setMouseHoverPos(QPointF{});
+}
+
 void TerminalStripItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	Q_UNUSED (event);
 
+	const auto hovered = m_drawer.hoveredXref();
+
 	if (m_strip) {
-		TerminalStripEditorWindow::edit(m_strip);
+		if (hovered.physical >= 0 &&
+			hovered.real >= 0)
+		{
+			if (const auto physical_terminal = m_strip->physicalTerminal(hovered.physical);
+				!physical_terminal.isNull())
+			{
+				if (const auto real_terminal = physical_terminal->realTerminal(hovered.real);
+					!real_terminal.isNull() &&
+					real_terminal->isElement())
+				{
+					if (QPointer<Element> element = real_terminal->element();
+						!element.isNull())
+					{
+						//Unselect and ungrab mouse to prevent unwanted
+						//move when element is in the same scene of this.
+						setSelected(false);
+						ungrabMouse();
+						QetGraphicsItem::showItem(element);
+					}
+				}
+			}
+		} else {
+			TerminalStripEditorWindow::edit(m_strip);
+		}
 	}
 }
 

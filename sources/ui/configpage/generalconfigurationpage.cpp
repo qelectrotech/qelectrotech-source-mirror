@@ -21,6 +21,7 @@
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../utils/qetsettings.h"
+#include "../../qetmessagebox.h"
 
 #include <QFileDialog>
 #include <QFontDialog>
@@ -83,7 +84,6 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
-	ui->m_export_terminal->setChecked(settings.value("nomenclature-exportlist", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
 	
@@ -223,9 +223,6 @@ void GeneralConfigurationPage::applyConf()
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());
-
-		//NOMENCLATURE
-	settings.setValue("nomenclature/terminal-exportlist",ui->m_export_terminal->isChecked());
 
 
 		//DIAGRAM EDITOR
@@ -564,3 +561,29 @@ void GeneralConfigurationPage::on_ElementEditor_Grid_PointSize_min_sb_valueChang
 {
 	ui->ElementEditor_Grid_PointSize_max_sb->setMinimum(std::max(1, value));
 }
+
+void GeneralConfigurationPage::on_m_hdpi_round_cb_clicked(bool checked)
+{
+	if (checked) {
+		if (QMessageBox::Cancel == QET::QetMessageBox::warning(
+				this,
+				tr("Fonctionnalité expérimental"),
+				tr("AVERTISSEMENT :\n"
+				   "Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu "
+					"du projet en fonction de :\n\n"
+					"1 - la valeur sélectionnée \n"
+					"2 - du dpi de l'écran \n"
+					"3 - Modifier le projet sur un autre ordinateur et/ou écran n'ayant pas les mêmes paramètres des points 1 et 2."),
+				QMessageBox::StandardButton::Cancel|QMessageBox::StandardButton::Ok,
+				QMessageBox::StandardButton::Cancel
+														   )) {
+			ui->m_hdpi_round_cb->blockSignals(true);
+			ui->m_hdpi_round_cb->setChecked(false);
+			ui->m_hdpi_round_cb->blockSignals(false);
+			return;
+		}
+	}
+	ui->m_hdpi_round_label->setEnabled(checked);
+	ui->m_hdpi_round_policy_cb->setEnabled(checked);
+}
+

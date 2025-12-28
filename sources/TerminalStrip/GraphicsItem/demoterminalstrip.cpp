@@ -35,13 +35,14 @@ namespace TerminalStripDrawer
 			const QUuid m_uuid;
 	};
 
-	class DemoRealTerminal : public AbstractRealTerminalInterface
-	{
-		public:
-			DemoRealTerminal(const QString &label, const QUuid &bridge) :
+    class DemoRealTerminal : public AbstractRealTerminalInterface
+    {
+        public:
+			DemoRealTerminal(const QString &label, const QString &xref, const QUuid &bridge) :
 				m_label { label },
+				m_xref{ xref },
 				m_bridge { bridge }
-			{}
+            {}
 
 			QString label() const override {
 				return m_label;
@@ -55,10 +56,14 @@ namespace TerminalStripDrawer
 				return new DemoBridge { m_bridge };
 			}
 
-		private:
-			QString m_label;
-			QUuid m_bridge;
-	};
+			QString xref() const override {
+				return m_xref;
+			}
+
+        private:
+			QString m_label, m_xref;
+            QUuid m_bridge;
+    };
 
 	class DemoPhysicalTerminal : public AbstractPhysicalTerminalInterface
 	{
@@ -102,51 +107,63 @@ namespace TerminalStripDrawer
 		QVector <QSharedPointer<AbstractRealTerminalInterface>> real_terminals_vector;
 
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("24vdc"),
-														lvl_1)};
+																			   new DemoRealTerminal( QStringLiteral("24vdc"),
+																									QStringLiteral("1_A1"),
+																									lvl_1)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("0vdc"),
-														lvl_2)};
+																			   new DemoRealTerminal( QStringLiteral("0vdc"),
+																									QStringLiteral("1_A2"),
+																									lvl_2)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("signal"),
-														lvl_3)};
+																			   new DemoRealTerminal( QStringLiteral("signal"),
+																									QStringLiteral("1_A3"),
+																									lvl_3)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("teach"),
-														lvl_4)};
+																			   new DemoRealTerminal( QStringLiteral("teach"),
+																									QStringLiteral("1_A4"),
+																									lvl_4)};
 		m_physical_terminal << QSharedPointer<AbstractPhysicalTerminalInterface> {
-							   new DemoPhysicalTerminal {real_terminals_vector}};
+																				 new DemoPhysicalTerminal {real_terminals_vector}};
 
-		real_terminals_vector.clear();
+        real_terminals_vector.clear();
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("24vdc"),
-														lvl_1)};
+																			   new DemoRealTerminal( QStringLiteral("24vdc"),
+																									QStringLiteral("2_A1"),
+																									lvl_1)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("0vdc"),
-														lvl_2)};
+																			   new DemoRealTerminal( QStringLiteral("0vdc"),
+																									QStringLiteral("2_A2"),
+																									lvl_2)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("signal"),
-														lvl_3)};
+																			   new DemoRealTerminal( QStringLiteral("signal"),
+																									QStringLiteral("2_A3"),
+																									lvl_3)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("teach"),
-														lvl_4)};
+																			   new DemoRealTerminal( QStringLiteral("teach"),
+																									QStringLiteral("2_A4"),
+																									lvl_4)};
 		m_physical_terminal << QSharedPointer<AbstractPhysicalTerminalInterface> {
-							   new DemoPhysicalTerminal {real_terminals_vector}};
+																				 new DemoPhysicalTerminal {real_terminals_vector}};
 
-		real_terminals_vector.clear();
+
+        real_terminals_vector.clear();
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("24vdc"),
-														lvl_1)};
+																			   new DemoRealTerminal( QStringLiteral("24vdc"),
+																									QStringLiteral("3_A1"),
+																									lvl_1)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("0vdc"),
-														lvl_2)};
+																			   new DemoRealTerminal( QStringLiteral("0vdc"),
+																									QStringLiteral("3_A2"),
+																									lvl_2)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("signal"),
-														lvl_3)};
+																			   new DemoRealTerminal( QStringLiteral("signal"),
+																									QStringLiteral("3_A3"),
+																									lvl_3)};
 		real_terminals_vector << QSharedPointer<AbstractRealTerminalInterface> {
-								 new DemoRealTerminal( QStringLiteral("teach"),
-														lvl_4)};
+																			   new DemoRealTerminal( QStringLiteral("teach"),
+																									QStringLiteral("3_A4"),
+																									lvl_4)};
 		m_physical_terminal << QSharedPointer<AbstractPhysicalTerminalInterface> {
-							   new DemoPhysicalTerminal {real_terminals_vector}};
-	}
-
+																				 new DemoPhysicalTerminal {real_terminals_vector}};
+    }
 }

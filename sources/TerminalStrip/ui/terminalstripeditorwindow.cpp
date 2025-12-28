@@ -51,10 +51,15 @@ void TerminalStripEditorWindow::edit(TerminalStrip *strip)
 
 TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidget *parent) :
 	QMainWindow(parent),
-	ui(new Ui::TerminalStripEditorWindow),
-	m_project(project)
+    ui(new Ui::TerminalStripEditorWindow),
+    m_project(project)
 {
 	ui->setupUi(this);
+    if (auto diagram_editor = QETApp::diagramEditor(project)) {
+        ui->m_tool_bar->addSeparator();
+        ui->m_tool_bar->addAction(diagram_editor->undo);
+        ui->m_tool_bar->addAction(diagram_editor->redo);
+    }
 	ui->m_remove_terminal->setDisabled(true);
 	addTreeDockWidget();
 
@@ -74,6 +79,18 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 TerminalStripEditorWindow::~TerminalStripEditorWindow()
 {
 	delete ui;
+}
+
+/**
+ * @brief TerminalStripEditorWindow::setProject
+ * @param project
+ */
+void TerminalStripEditorWindow::setProject(QETProject *project)
+{
+    m_project = project;
+    m_tree_dock->setProject(project);
+    m_free_terminal_editor->setProject(project);
+    m_terminal_strip_editor->setProject(project);
 }
 
 void TerminalStripEditorWindow::setCurrentStrip(TerminalStrip *strip) {
@@ -200,4 +217,3 @@ void TerminalStripEditorWindow::on_m_button_box_clicked(QAbstractButton *button)
 void TerminalStripEditorWindow::on_m_stacked_widget_currentChanged(int arg1) {
 	ui->m_button_box->setHidden(arg1 == EMPTY_PAGE);
 }
-

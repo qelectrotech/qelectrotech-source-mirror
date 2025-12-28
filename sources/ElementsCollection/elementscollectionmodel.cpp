@@ -172,10 +172,12 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data,
 					   const QModelIndex &parent)
 {
 	Q_UNUSED(action)
-	QStandardItem *qsi = itemFromIndex(
-				parent.QModelIndex::model()->index(row, column));
-	if (!qsi)
-		qsi = itemFromIndex(parent);
+
+	const QAbstractItemModel* qaim = parent.QModelIndex::model();
+	if (! qaim) return false;
+
+	QStandardItem* qsi = itemFromIndex(qaim->index(row, column));
+	if (! qsi) qsi = itemFromIndex(parent);
 
 	if (qsi->type() == FileElementCollectionItem::Type)
 	{

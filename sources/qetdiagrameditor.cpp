@@ -775,12 +775,12 @@ void QETDiagramEditor::setUpToolBar()
 void QETDiagramEditor::setUpMenu()
 {
 
-	QMenu *menu_fichier   = new QMenu(tr("&Fichier"));
-	QMenu *menu_edition   = new QMenu(tr("&Édition"));
-	QMenu *menu_project   = new QMenu(tr("&Projet"));
-	QMenu *menu_affichage = new QMenu(tr("Afficha&ge"));
-	//QMenu *menu_outils    = new QMenu(tr("O&utils"));
-	windows_menu          = new QMenu(tr("Fe&nêtres"));
+	QMenu* menu_fichier	  = new QMenu(tr("&Fichier"), this);
+	QMenu* menu_edition	  = new QMenu(tr("&Édition"), this);
+	QMenu* menu_project	  = new QMenu(tr("&Projet"), this);
+	QMenu* menu_affichage = new QMenu(tr("Afficha&ge"), this);
+	// QMenu *menu_outils    = new QMenu(tr("O&utils"), this);
+	windows_menu = new QMenu(tr("Fe&nêtres"), this);
 
 	insertMenu(settings_menu_, menu_fichier);
 	insertMenu(settings_menu_, menu_edition);
@@ -1469,12 +1469,21 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 
 	if (!dv || value.isEmpty()) return;
 
-	if (value == "delete_selection")
-	{
-		diagram->clearSelection();
-		diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
-		dv->adjustSceneRect();
-	}
+        if (value == "delete_selection")
+        {
+            if (DeleteQGraphicsItemCommand::hasNonDeletableTerminal(dc)) {
+                QET::QetMessageBox::information(this,
+                                                tr("Suppression de borne impossible"),
+                                                tr("La suppression ne peut être effectué car la selection "
+												   "possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.\n"
+                                                   "Déponter et/ou supprimer les niveaux des bornes concerné "
+                                                   "afin de pouvoir les supprimer"));
+            } else {
+                diagram->clearSelection();
+                diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+                dv->adjustSceneRect();
+            }
+        }
 	else if (value == "rotate_selection")
 	{
 		RotateSelectionCommand *c = new RotateSelectionCommand(diagram);

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2022 The QElectroTech Team
+	Copyright 2006-2025 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #ifndef TERMINALSTRIPLAYOUTPATTERN_H
 #define TERMINALSTRIPLAYOUTPATTERN_H
 
+#include <QFont>
 #include <QRect>
 #include <QSize>
 #include <QTextOption>
@@ -43,45 +44,46 @@ class TerminalStripLayoutPattern
 		TerminalStripLayoutPattern();
 
 			//Header of terminal strip
-		QRect m_header_rect{0,30,50,130};
+        QRectF m_header_rect{0,30,50,130};
 		Qt::Orientation m_header_text_orientation{Qt::Horizontal};
 		void setHeaderTextAlignment(const Qt::Alignment &alignment);
 		Qt::Alignment headerTextAlignment() const;
 		QTextOption headerTextOption() const;
 
 			//Spacer between the header and the terminals
-		QRect m_spacer_rect{0, 50, 10, 90};
+        QRectF m_spacer_rect{0, 50, 10, 90};
+
+            //Font
+        QFont font() const;
+        void setFont (const QFont &font);
 
 			//Terminals
-		QVector<QRect> m_terminal_rect
+        QVector<QRectF> m_terminal_rect
 		{
-			QRect{0, 0, 20, 190},
-			QRect{0, 10, 20, 170},
-			QRect{0, 20, 20, 150},
-			QRect{0, 30, 20, 130}
+            QRectF{0, 0, 20, 190},
+            QRectF{0, 10, 20, 170},
+            QRectF{0, 20, 20, 150},
+            QRectF{0, 30, 20, 130}
 		};
 
-		void setTerminalsTextAlignment(const QVector<Qt::Alignment> &alignment);
-		QVector<Qt::Alignment> terminalsTextAlignment() const;
-		QVector<QTextOption> terminalsTextOption() const;
+            //Terminal text
+        void setTerminalsTextAlignment(const Qt::Alignment &alignment);
+        Qt::Alignment terminalsTextAlignment() const;
+        QTextOption terminalsTextOption() const;
+        qreal m_terminals_text_height{50};
+        qreal m_terminals_text_y{35};
+        Qt::Orientation m_terminals_text_orientation {Qt::Vertical};
 
-		QVector<QRect> m_terminals_text_rect
-		{
-			QRect{0,35,20,50},
-			QRect{0,35,20,50},
-			QRect{0,35,20,50},
-			QRect{0,35,20,50}
-		};
-		QVector<Qt::Orientation> m_terminals_text_orientation
-		{
-			Qt::Vertical,
-			Qt::Vertical,
-			Qt::Vertical,
-			Qt::Vertical
-		};
+			//Xref text
+		void setXrefTextAlignment(const Qt::Alignment &alignment);
+		Qt::Alignment xrefTextAlignment() const;
+		QTextOption xrefTextOption() const;
+		qreal m_xref_text_height{60};
+		qreal m_xref_text_y{95};
+		Qt::Orientation m_xref_text_orientation {Qt::Vertical};
 
-		int m_bridge_point_d{5};
-		QVector<int> m_bridge_point_y_offset{50,70,90,110};
+        qreal m_bridge_point_d{5};
+        QVector<qreal> m_bridge_point_y_offset{50,70,90,110};
 
 		QUuid m_uuid{QUuid::createUuid()};
 		QString m_name;
@@ -90,24 +92,17 @@ class TerminalStripLayoutPattern
 		void updateHeaderTextOption();
 		void updateTerminalsTextOption();
 
-	private:
+    private:
+        QFont m_font;
 		Qt::Alignment m_header_text_alignment{Qt::AlignCenter};
 		QTextOption m_header_text_option;
 
-		QVector<Qt::Alignment> m_terminals_text_alignment
-		{
-			Qt::AlignRight | Qt::AlignVCenter,
-			Qt::AlignRight | Qt::AlignVCenter,
-			Qt::AlignRight | Qt::AlignVCenter,
-			Qt::AlignRight | Qt::AlignVCenter
-		};
-		QVector<QTextOption> m_terminals_text_option
-		{
-			QTextOption(),
-			QTextOption(),
-			QTextOption(),
-			QTextOption()
-		};
+		Qt::Alignment
+			m_terminals_text_alignment {Qt::AlignRight | Qt::AlignVCenter},
+			m_xref_text_alignment {Qt::AlignLeft | Qt::AlignVCenter};
+		QTextOption
+			m_terminals_text_option{QTextOption()},
+			m_xref_text_option{QTextOption()};
 };
 
 #endif // TERMINALSTRIPLAYOUTPATTERN_H

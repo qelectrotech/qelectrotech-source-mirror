@@ -51,13 +51,14 @@ namespace TerminalStripDrawer
 			QSharedPointer<PhysicalTerminal> m_physical;
 	};
 
-	class TrueRealTerminal : public AbstractRealTerminalInterface
-	{
-		public:
-			TrueRealTerminal(QSharedPointer<RealTerminal> real);
-			QString label() const override;
-			bool isBridged() const override;
-			AbstractBridgeInterface* bridge() const override;
+    class TrueRealTerminal : public AbstractRealTerminalInterface
+    {
+        public:
+            TrueRealTerminal(QSharedPointer<RealTerminal> real);
+            QString label() const override;
+            bool isBridged() const override;
+            AbstractBridgeInterface* bridge() const override;
+			QString xref() const override;
 
 		private:
 			QSharedPointer<RealTerminal> m_real;

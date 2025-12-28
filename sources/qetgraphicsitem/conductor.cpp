@@ -229,43 +229,53 @@ void Conductor::updateConductorPath(const QPointF &p1, Qet::Orientation o1, cons
 	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
 
 	// recupere les coordonnees fournies des bornes
+	// retrieve the coordinates provided for the terminals
 	QPointF new_p1 = mapFromScene(p1);
 	QPointF new_p2 = mapFromScene(p2);
 	QRectF new_rect = QRectF(new_p1, new_p2);
 
 	// recupere la largeur et la hauteur du profil
+	// retrieve the width and height of the profile
 	qreal profile_width  = conductor_profile.width();
 	qreal profile_height = conductor_profile.height();
 
 	// calcule les differences verticales et horizontales a appliquer
+	// calculates the vertical and horizontal differences to be applied
 	qreal h_diff = (qAbs(new_rect.width())  - qAbs(profile_width) ) * getSign(profile_width);
 	qreal v_diff = (qAbs(new_rect.height()) - qAbs(profile_height)) * getSign(profile_height);
 
 	// applique les differences aux segments
+	// apply the differences to the segments
 	QMultiHash<ConductorSegmentProfile *, qreal> segments_lengths;
 	segments_lengths.unite(shareOffsetBetweenSegments(h_diff, conductor_profile.horizontalSegments()));
 	segments_lengths.unite(shareOffsetBetweenSegments(v_diff, conductor_profile.verticalSegments()));
 
 	// en deduit egalement les coefficients d'inversion (-1 pour une inversion, +1 pour conserver le meme sens)
+	// also deduce the inversion coefficients (-1 for inversion, +1 to keep the same direction)
 	int horiz_coeff = getCoeff(new_rect.width(),  profile_width);
 	int verti_coeff = getCoeff(new_rect.height(), profile_height);
 
 	// genere les nouveaux points
+	// generate the new points
 	QList<QPointF> points;
 	points << new_p1;
 	int limit = conductor_profile.segments.count() - 1;
 	for (int i = 0 ; i < limit ; ++ i) {
 		// dernier point
+		// last point
 		QPointF previous_point = points.last();
 
 		// profil de segment de conducteur en cours
+		// current conductor segment profile
 		ConductorSegmentProfile *csp = conductor_profile.segments.at(i);
 
 		// coefficient et offset a utiliser pour ce point
+		// coefficient and offset to be used for this point
 		qreal coeff = csp -> isHorizontal ? horiz_coeff : verti_coeff;
 		qreal offset_applied = segments_lengths.value(csp);
 
 		// applique l'offset et le coeff au point
+		// apply coefficient and offset to point
 		if (csp -> isHorizontal) {
 			points << QPointF (
 				previous_point.x() + (coeff * offset_applied),
@@ -989,16 +999,16 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 
 /**
 	@brief Conductor::fromXml
-	Load the conductor and her information from xml element
+	Load the conductor and its information from xml element
 	@param dom_element
-	@return true is loading success else return false
+	@return true if loading succeeded else return false
 */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
 
-	bool return_ = pathFromXml(dom_element);
+	bool retval = pathFromXml(dom_element);
 
 	m_text_item -> fromXml(dom_element);
 	ConductorProperties pr;
@@ -1010,11 +1020,11 @@ bool Conductor::fromXml(QDomElement &dom_element)
 	else
 		m_autoNum_seq.fromXml(dom_element.firstChildElement("sequentialNumbers"));
 
-	m_freeze_label = dom_element.attribute("freezeLabel") == "true"? true : false;
+	m_freeze_label = dom_element.attribute("freezeLabel") == "true" ? true : false;
 
 	setProperties(pr);
 
-	return return_;
+	return retval;
 }
 
 /**
@@ -1134,13 +1144,14 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		}
 	}
 
-	//If there isn't segment we generate automatic path and return true
+	// If there is no segment, we generate an automatic path and return true
 	if (!segments_x.size()) {
 		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		return(true);
 	}
 
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
+	// The collected lengths must be consistent with the positions of the terminals  
 	qreal width = 0.0, height = 0.0;
 	foreach (qreal t, segments_x) width  += t;
 	foreach (qreal t, segments_y) height += t;
@@ -1256,65 +1267,57 @@ ConductorSegment *Conductor::middleSegment()
 */
 QPointF Conductor::posForText(Qt::Orientations &flag)
 {
-
-	ConductorSegment *segment      = segments;
-	bool all_segment_is_vertical   = true;
-	bool all_segment_is_horizontal = true;
+	ConductorSegment *segment        = segments;
+	bool all_segments_are_vertical   = true;
+	bool all_segments_are_horizontal = true;
 
 		//Go to first segment
 	while (!segment->isFirstSegment()) {
 		segment = segment->previousSegment();
 	}
 
-
 	QPointF p1 = segment -> firstPoint(); //<First point of conductor
-	ConductorSegment *biggest_segment = segment; //<biggest segment: contain the longest segment of conductor.
+	ConductorSegment *longest_segment = segment; //<the longest segment of conductor.
 
+		// check if all segments are horizontal or vertical ... first segment:
 	if (segment -> firstPoint().x() != segment -> secondPoint().x())
-		all_segment_is_vertical   = false;
+		all_segments_are_vertical   = false;
 	if (segment -> firstPoint().y() != segment -> secondPoint().y())
-		all_segment_is_horizontal = false;
-
+		all_segments_are_horizontal = false;
+		// find longest segment
 	while (segment -> hasNextSegment())
 	{
 		segment = segment -> nextSegment();
-
 		if (segment -> firstPoint().x() != segment -> secondPoint().x())
-			all_segment_is_vertical   = false;
+			all_segments_are_vertical   = false;
 		if (segment -> firstPoint().y() != segment -> secondPoint().y())
-			all_segment_is_horizontal = false;
+			all_segments_are_horizontal = false;
 
-			//We must compare length segment, but they can be negative
-			//so we multiply by -1 to make it positive.
-		int saved = biggest_segment -> length();
-		if (saved < 0) saved *= -1;
-		int curent = segment->length();
-		if (curent < 0) curent *= -1;
-
-		if (curent > saved) biggest_segment = segment;
+		if (qAbs(segment->length()) > qAbs(longest_segment -> length()))
+			longest_segment = segment;
 	}
 
-	QPointF p2 = segment -> secondPoint();//<Last point of conductor
+	QPointF p2 = segment -> secondPoint(); //<Last point of conductor
 
 	//If the conductor is horizontal or vertical
 	//Return the point at the middle of conductor
-	if (all_segment_is_vertical) { //<Vertical
+	if (all_segments_are_vertical) { //<Vertical
 		flag = Qt::Vertical;
 		if (p1.y() > p2.y()) {
 			p1.setY(p1.y() - (length()/2));
 		} else {
 			p1.setY(p1.y() + (length()/2));
 		}
-	} else if (all_segment_is_horizontal) { //<Horizontal
+	} else if (all_segments_are_horizontal) { //<Horizontal
 		flag = Qt::Horizontal;
 		if (p1.x() > p2.x()) {
 			p1.setX(p1.x() - (length()/2));
 		} else {
 			p1.setX(p1.x() + (length()/2));
 		}
-	} else { //Return the point at the middle of biggest segment.
-		p1 = biggest_segment->middle();
-		flag = (biggest_segment->isHorizontal())? Qt::Horizontal : Qt::Vertical;
+	} else { //Return the point at the middle of longest segment.
+		p1 = longest_segment->middle();
+		flag = (longest_segment->isHorizontal())? Qt::Horizontal : Qt::Vertical;
 	}
 	return p1;
 }
@@ -1336,8 +1339,8 @@ void Conductor::calculateTextItemPosition()
 
 		Conductor *longest_conductor = longestConductorInPotential(this);
 
-			//The longest conductor isn't this conductor
-			//we call calculateTextItemPosition of the longest conductor
+			//This conductor isn't the longest conductor?
+			//We call calculateTextItemPosition for the longest conductor
 		if(longest_conductor != this)
 		{
 			longest_conductor -> calculateTextItemPosition();
@@ -1355,7 +1358,7 @@ void Conductor::calculateTextItemPosition()
 		//position
 	if (m_text_item -> wasMovedByUser())
 	{
-			//Text field was moved by user :
+			//Text field was moved by user:
 			//we check if text field is yet  near the conductor
 		QPointF text_item_pos = m_text_item -> pos();
 		QPainterPath near_shape = nearShape();
@@ -1392,7 +1395,7 @@ void Conductor::calculateTextItemPosition()
 
 		m_text_item -> setPos(text_pos);
 
-			//Ensure text item don't collide with this conductor
+			//Ensure text item does not collide with this conductor
 		while (m_text_item->collidesWithItem(this))
 		{
 			if(rotation == Qt::Vertical)
@@ -1420,6 +1423,7 @@ void Conductor::calculateTextItemPosition()
 /**
 	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
 	dans priv_modifieConductor.
+	Save the current conductors profile for later use in priv_modifieConductor.
 */
 void Conductor::saveProfile(bool undo) {
 	Qt::Corner current_path_type = currentPathType();
@@ -1486,7 +1490,7 @@ ConductorProfile Conductor::profile(Qt::Corner path_type) const
 /**
 	@brief Conductor::refreshText
 	Refresh the text of this conductor.
-	recalcule and set the text according to the formula.
+	recalculate and set the text according to the formula.
 */
 void Conductor::refreshText()
 {

@@ -190,6 +190,20 @@ QVector<QSharedPointer<RealTerminal>> PhysicalTerminal::realTerminals() const {
 }
 
 /**
+ * @brief PhysicalTerminal::realTerminal
+ * @param pos
+ * @return the real terminal at position pos.
+ * Note that the returned QSharedPointer can be null
+ */
+QSharedPointer<RealTerminal> PhysicalTerminal::realTerminal(int pos) const
+{
+	if (pos < m_real_terminal.size()) {
+		return m_real_terminal.at(pos);
+	}
+	else return QSharedPointer<RealTerminal>{};
+}
+
+/**
  * @brief uuid
  * @return the uuid of this physical terminal
  */

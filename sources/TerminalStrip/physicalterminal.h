@@ -86,6 +86,7 @@ class PhysicalTerminal
 		int levelCount() const;
 		int levelOf(const QSharedPointer<RealTerminal> &terminal) const;
 		QVector<QSharedPointer<RealTerminal>> realTerminals() const;
+		QSharedPointer<RealTerminal> realTerminal(int pos) const;
 		QUuid uuid() const;
 		int pos() const;
 		int realTerminalCount() const;

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2022 The QElectroTech Team
+	Copyright 2006-2025 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,16 +16,24 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstriplayoutpattern.h"
-#include <QDebug>
+#include "../../../utils/qetutils.h"
 
 TerminalStripLayoutPattern::TerminalStripLayoutPattern()
 {
+    m_font.setPixelSize(15);
 	updateHeaderTextOption();
 	updateTerminalsTextOption();
 }
 
+/**
+ * @brief TerminalStripLayoutPattern::setHeaderTextAlignment
+ * Set text alignment to @param alignment. If alignment have no
+ * flag this function do nothing
+ * @param alignment
+ */
 void TerminalStripLayoutPattern::setHeaderTextAlignment(const Qt::Alignment &alignment)
 {
+    if (!alignment) return;
 	m_header_text_alignment = alignment;
 	updateHeaderTextOption();
 }
@@ -39,20 +47,59 @@ QTextOption TerminalStripLayoutPattern::headerTextOption() const {
 	return m_header_text_option;
 }
 
-void TerminalStripLayoutPattern::setTerminalsTextAlignment(const QVector<Qt::Alignment> &alignment)
+QFont TerminalStripLayoutPattern::font() const {
+    return m_font;
+}
+
+void TerminalStripLayoutPattern::setFont(const QFont &font) {
+    m_font = font;
+    QETUtils::pixelSizedFont(m_font);
+}
+
+/**
+ * @brief TerminalStripLayoutPattern::setTerminalsTextAlignment
+ * Set text alignment to @param alignment. If alignment have no
+ * flag this function do nothing
+ * @param alignment
+ */
+void TerminalStripLayoutPattern::setTerminalsTextAlignment(const Qt::Alignment &alignment)
 {
+    if (!alignment) return;
 	m_terminals_text_alignment = alignment;
 	updateTerminalsTextOption();
 }
 
-QVector<Qt::Alignment> TerminalStripLayoutPattern::terminalsTextAlignment() const
+Qt::Alignment TerminalStripLayoutPattern::terminalsTextAlignment() const
 {
 	return m_terminals_text_alignment;
 }
 
-QVector<QTextOption> TerminalStripLayoutPattern::terminalsTextOption() const
+QTextOption TerminalStripLayoutPattern::terminalsTextOption() const
 {
 	return m_terminals_text_option;
+}
+
+/**
+ * @brief TerminalStripLayoutPattern::setXrefTextAlignment
+ * Set text alignment to @param alignment. If alignment have no
+ * flag this function do nothing
+ * @param alignment
+ */
+void TerminalStripLayoutPattern::setXrefTextAlignment(const Qt::Alignment &alignment)
+{
+	if (!alignment) return;
+	m_xref_text_alignment = alignment;
+	updateTerminalsTextOption();
+}
+
+Qt::Alignment TerminalStripLayoutPattern::xrefTextAlignment() const
+{
+	return m_xref_text_alignment;
+}
+
+QTextOption TerminalStripLayoutPattern::xrefTextOption() const
+{
+	return m_xref_text_option;
 }
 
 void TerminalStripLayoutPattern::updateHeaderTextOption()
@@ -63,16 +110,9 @@ void TerminalStripLayoutPattern::updateHeaderTextOption()
 
 void TerminalStripLayoutPattern::updateTerminalsTextOption()
 {
-	if (m_terminals_text_option.size() ==
-		m_terminals_text_alignment.size())
-	{
-		for (auto i = 0 ; i<m_terminals_text_option.size() ; ++i)
-		{
-			m_terminals_text_option[i].setAlignment(m_terminals_text_alignment.at(i));
-			m_terminals_text_option[i].setWrapMode(QTextOption::WordWrap);
-		}
-	}
-	else {
-		qDebug() << "TerminalStripLayoutPattern::updateTerminalsTextOption() : Wrong vector size";
-	}
+    m_terminals_text_option.setAlignment(m_terminals_text_alignment);
+    m_terminals_text_option.setWrapMode(QTextOption::WordWrap);
+
+	m_xref_text_option.setAlignment(m_xref_text_alignment);
+	m_xref_text_option.setWrapMode(QTextOption::WordWrap);
 }
