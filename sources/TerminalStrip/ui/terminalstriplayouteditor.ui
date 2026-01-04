@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>767</width>
-    <height>544</height>
+    <width>961</width>
+    <height>624</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,17 +17,17 @@
    <property name="sizeConstraint">
     <enum>QLayout::SetMaximumSize</enum>
    </property>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>Borne niveau 0 :</string>
+   <item row="4" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_0_sb">
+     <property name="maximum">
+      <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>En tête :</string>
+   <item row="6" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_2_sb">
+     <property name="maximum">
+      <number>1000</number>
      </property>
     </widget>
    </item>
@@ -38,37 +38,6 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="0" colspan="5">
-    <widget class="QGraphicsView" name="m_graphics_view"/>
-   </item>
-   <item row="3" column="4">
-    <widget class="QLabel" name="label_18">
-     <property name="text">
-      <string>Point de pont</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QSpinBox" name="m_y_terminal_1_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="5">
-    <widget class="Line" name="line_5">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="3">
-    <widget class="QSpinBox" name="m_height_spacer_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1">
     <widget class="QLabel" name="label_3">
      <property name="text">
@@ -76,15 +45,43 @@
      </property>
     </widget>
    </item>
-   <item row="11" column="4">
-    <widget class="QCheckBox" name="m_display_preview_help">
-     <property name="text">
-      <string>Afficher l'aide</string>
+   <item row="7" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_3_sb">
+     <property name="maximum">
+      <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="1" column="2">
-    <widget class="QSpinBox" name="m_width_header_sb">
+   <item row="5" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Borne niveau 0 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_1_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -97,22 +94,39 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_1_sb">
+   <item row="14" column="0" colspan="5">
+    <widget class="QGraphicsView" name="m_graphics_view"/>
+   </item>
+   <item row="2" column="3">
+    <widget class="QSpinBox" name="m_height_spacer_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
     </widget>
    </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_4">
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_10">
      <property name="text">
-      <string>Largeur</string>
+      <string>Borne niveau 3 :</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_2_sb">
+   <item row="6" column="0">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>Borne niveau 2 :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QSpinBox" name="m_width_spacer_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QSpinBox" name="m_height_terminal_0_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -125,17 +139,48 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="3">
-    <widget class="QLabel" name="label_5">
+   <item row="13" column="4">
+    <widget class="QCheckBox" name="m_display_preview_help">
      <property name="text">
-      <string>Hauteur</string>
+      <string>Afficher l'aide</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Prévisualisation :</string>
+      <string>Largeur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Espace :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0" colspan="5">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="4">
+    <widget class="QSpinBox" name="m_bridge_point_0_sb">
+     <property name="maximum">
+      <number>1000</number>
      </property>
     </widget>
    </item>
@@ -146,35 +191,14 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
-    <widget class="QSpinBox" name="m_y_terminal_3_sb">
-     <property name="maximum">
-      <number>1000</number>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Borne niveau 1 :</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QSpinBox" name="m_y_terminal_0_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QSpinBox" name="m_width_spacer_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_2_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="5">
+   <item row="10" column="0" colspan="5">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout_2">
       <property name="leftMargin">
@@ -189,26 +213,21 @@
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="1" column="3">
-       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
+      <item row="5" column="3">
+       <widget class="QComboBox" name="m_header_text_orientation_cb">
         <item>
          <property name="text">
-          <string>Gauche</string>
+          <string>Horizontal</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Centre</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Droite</string>
+          <string>Vertical</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="0" column="3">
+      <item row="6" column="3">
        <widget class="QComboBox" name="m_header_text_alignment_cb">
         <item>
          <property name="text">
@@ -227,21 +246,136 @@
         </item>
        </widget>
       </item>
-      <item row="0" column="2">
+      <item row="5" column="2">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Orientation</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
        <widget class="QLabel" name="label_15">
         <property name="text">
-         <string>Alignement du texte d'en tête :</string>
+         <string>Alignement</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_17">
+      <item row="1" column="2" colspan="4">
+       <widget class="QWidget" name="widget_2" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Police :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFontComboBox" name="m_font_cb"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Taille :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="m_font_size_sb">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="label_20">
         <property name="text">
-         <string>Alignement du texte de borne :</string>
+         <string>Texte d'en tête</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="7" column="2">
+       <widget class="QLabel" name="label_13">
+        <property name="text">
+         <string>Origine vertical</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="label_19">
+        <property name="text">
+         <string>Longueur maximal</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="4">
+       <widget class="QSpinBox" name="m_terminal_text_y_sb">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="4">
+       <widget class="QSpinBox" name="m_terminal_text_height_sb">
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="4">
+       <widget class="QComboBox" name="m_terminal_text_alignment_cb">
+        <item>
+         <property name="text">
+          <string>Gauche</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Centre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="4">
        <widget class="QComboBox" name="m_terminal_text_orientation_cb">
         <item>
          <property name="text">
@@ -255,8 +389,28 @@
         </item>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="m_header_text_orientation_cb">
+      <item row="2" column="4">
+       <widget class="QLabel" name="label_21">
+        <property name="text">
+         <string>Texte borne</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QLabel" name="label_22">
+        <property name="text">
+         <string>Référence croisée</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="5">
+       <widget class="QComboBox" name="m_xref_orientation_cb">
         <item>
          <property name="text">
           <string>Horizontal</string>
@@ -269,53 +423,68 @@
         </item>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_16">
-        <property name="text">
-         <string>Orientation du texte de borne :</string>
+      <item row="6" column="5">
+       <widget class="QComboBox" name="m_xref_alignment_cb">
+        <item>
+         <property name="text">
+          <string>Gauche</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Centre</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Droite</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="7" column="5">
+       <widget class="QSpinBox" name="m_xref_y_sb">
+        <property name="maximum">
+         <number>1000</number>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_14">
-        <property name="text">
-         <string>Orientation du texte d'en tête :</string>
+      <item row="8" column="5">
+       <widget class="QSpinBox" name="m_xref_height_sb">
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
+   <item row="6" column="2">
+    <widget class="QSpinBox" name="m_width_terminal_2_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QSpinBox" name="m_width_header_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>En tête :</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="3">
     <widget class="QSpinBox" name="m_height_header_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_9">
-     <property name="text">
-      <string>Borne niveau 2 :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_0_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Espace :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_3_sb">
      <property name="maximum">
       <number>1000</number>
      </property>
@@ -328,66 +497,52 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_2_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_3_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QSpinBox" name="m_width_terminal_1_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_0_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="3">
-    <widget class="QSpinBox" name="m_height_terminal_1_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_10">
-     <property name="text">
-      <string>Borne niveau 3 :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="4">
-    <widget class="QSpinBox" name="m_bridge_point_0_sb">
-     <property name="maximum">
-      <number>1000</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Borne niveau 1 :</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0" colspan="5">
-    <widget class="Line" name="line_2">
+   <item row="9" column="0" colspan="5">
+    <widget class="Line" name="line_5">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_3_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_1_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Hauteur</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QLabel" name="label_18">
+     <property name="text">
+      <string>Point de pont</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QSpinBox" name="m_y_terminal_0_sb">
+     <property name="maximum">
+      <number>1000</number>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Prévisualisation :</string>
      </property>
     </widget>
    </item>
@@ -808,6 +963,134 @@
     <hint type="destinationlabel">
      <x>276</x>
      <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_font_cb</sender>
+   <signal>currentFontChanged(QFont)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>245</x>
+     <y>276</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_font_size_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>507</x>
+     <y>277</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_terminal_text_y_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>207</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_terminal_text_height_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>277</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_alignment_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>365</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_height_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_orientation_cb</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>333</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_xref_y_sb</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>TerminalStripLayoutEditor</receiver>
+   <slot>valueEdited()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>836</x>
+     <y>398</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>480</x>
+     <y>311</y>
     </hint>
    </hints>
   </connection>

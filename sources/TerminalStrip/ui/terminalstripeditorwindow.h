@@ -43,17 +43,19 @@ class TerminalStripEditorWindow : public QMainWindow
 			//instance in her destrucor and then window_ become a dangling pointer.
 		static QPointer<TerminalStripEditorWindow> window_;
 
-	public:
-		static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr) {
-			static QMutex mutex_;
-			if (!window_) {
-				mutex_.lock();
-				if (!window_)
-					window_ = new TerminalStripEditorWindow{project, parent};
-				mutex_.unlock();
-			}
-			return window_;
-		}
+    public:
+        static TerminalStripEditorWindow* instance(QETProject *project, QWidget *parent = nullptr) {
+            static QMutex mutex_;
+            if (!window_) {
+                mutex_.lock();
+                if (!window_)
+                    window_ = new TerminalStripEditorWindow{project, parent};
+                mutex_.unlock();
+            } else {
+                window_->setProject(project);
+            }
+            return window_;
+        }
 
 		static void dropInstance () {
 			static QMutex mutex;
@@ -71,7 +73,8 @@ class TerminalStripEditorWindow : public QMainWindow
 		explicit TerminalStripEditorWindow(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripEditorWindow();
 
-		void setCurrentStrip(TerminalStrip *strip);
+        void setProject(QETProject *project);
+        void setCurrentStrip(TerminalStrip *strip);
 
 	private slots:
 		void on_m_add_terminal_strip_triggered();
@@ -87,7 +90,7 @@ class TerminalStripEditorWindow : public QMainWindow
 
 	private:
 		Ui::TerminalStripEditorWindow *ui{nullptr};
-		QETProject *m_project {nullptr};
+        QPointer <QETProject> m_project;
 		TerminalStripTreeDockWidget *m_tree_dock{nullptr};
 		FreeTerminalEditor *m_free_terminal_editor {nullptr};
 		TerminalStripEditor *m_terminal_strip_editor {nullptr};

@@ -132,3 +132,21 @@ bool QETUtils::sortBeginIntString(const QString &str_a, const QString &str_b)
 		return str_a<str_b;
 	}
 }
+
+/**
+ * @brief QETUtils::pixelSizedFont
+ * Set the font size to pixelSize instead of pointSize (if needed).
+ * The font used to draw diagram must be pixel sized instead of point sized (default by Qt)
+ * then no matter the screen dpi used, the text in diagram keep the same size.
+ * For more information see @link https://qelectrotech.org/forum/viewtopic.php?pid=6267#p6267 @endlink
+ * @param font
+ */
+void QETUtils::pixelSizedFont(QFont &font)
+{
+    if (font.pixelSize() > -1) {
+        return;
+    }
+
+    auto px = font.pointSizeF()/72 * QFontMetrics{font}.fontDpi();
+    font.setPixelSize(qRound(px));
+}

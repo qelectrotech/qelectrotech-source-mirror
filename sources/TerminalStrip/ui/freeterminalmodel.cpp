@@ -56,10 +56,30 @@ FreeTerminalModel::Column FreeTerminalModel::columnTypeForIndex(const QModelInde
  * @param parent
  */
 FreeTerminalModel::FreeTerminalModel(QETProject *project, QObject *parent) :
-	QAbstractTableModel(parent),
-	m_project(project)
+    QAbstractTableModel(parent) {
+    setProject(project);
+}
+
+/**
+ * @brief FreeTerminalModel::setProject
+ * Set @project as project handled by this model.
+ * If a previous project was setted, everything is clear.
+ * This function track the destruction of the project,
+ * that  mean if the project pointer is deleted
+ * no need to call this function with a nullptr,
+ * everything is made inside this class.
+ * @param project
+ */
+void FreeTerminalModel::setProject(QETProject *project)
 {
-	fillTerminalVector();
+    if(m_project) {
+        disconnect(m_project, &QObject::destroyed, this, &FreeTerminalModel::clear);
+    }
+    m_project = project;
+    if (m_project) {
+        connect(m_project, &QObject::destroyed, this, &FreeTerminalModel::clear);
+    }
+    clear();
 }
 
 /**
@@ -305,20 +325,22 @@ QVector<QSharedPointer<RealTerminal> > FreeTerminalModel::realTerminalForIndex(c
  */
 void FreeTerminalModel::fillTerminalVector()
 {
-	ElementProvider provider_(m_project);
-	auto free_terminal_vector = provider_.freeTerminal();
+    if (m_project) {
+        ElementProvider provider_(m_project);
+        auto free_terminal_vector = provider_.freeTerminal();
 
-	std::sort(free_terminal_vector.begin(), free_terminal_vector.end(),
-			  [](TerminalElement *a, TerminalElement *b)
-	{
-		return QETUtils::sortBeginIntString(a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
-											b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
-	});
+        std::sort(free_terminal_vector.begin(), free_terminal_vector.end(),
+                  [](TerminalElement *a, TerminalElement *b)
+                  {
+                      return QETUtils::sortBeginIntString(a->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString(),
+                                                          b->elementData().m_informations.value(QETInformation::ELMT_LABEL).toString());
+                  });
 
-	for (const auto &terminal_ : free_terminal_vector) {
-		m_terminal_vector.append(terminal_->realTerminal());
-		m_real_t_data.append(modelRealTerminalData::data(terminal_->realTerminal()));
-	}
+        for (const auto &terminal_ : free_terminal_vector) {
+            m_terminal_vector.append(terminal_->realTerminal());
+            m_real_t_data.append(modelRealTerminalData::data(terminal_->realTerminal()));
+        }
+    }
 }
 
 /****************************************************************

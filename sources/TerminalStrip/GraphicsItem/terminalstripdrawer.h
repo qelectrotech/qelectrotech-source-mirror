@@ -27,23 +27,35 @@ class TerminalStrip;
 
 namespace TerminalStripDrawer
 {
-	class AbstractBridgeInterface
-	{
-		public:
-			AbstractBridgeInterface() {}
-			virtual ~AbstractBridgeInterface() {}
-			virtual QUuid uuid() const = 0;
+	/**
+	 * @brief The hoverTerminal struct
+	 * Just a little struct use to know what is the physical and real terminal
+	 * when the mouse hover the Xref string of a terminal.
+	 * If mouse don't hover a Xref the value is set to -1;
+	 */
+	struct hoverTerminal{
+		int physical{-1};
+		int real{-1};
 	};
 
-	class AbstractRealTerminalInterface
-	{
-		public:
-			AbstractRealTerminalInterface() {}
-			virtual ~AbstractRealTerminalInterface() {}
-			virtual QString label() const = 0;
-			virtual bool isBridged() const = 0;
-			virtual AbstractBridgeInterface* bridge() const = 0;
-	};
+    class AbstractBridgeInterface
+    {
+        public:
+            AbstractBridgeInterface() {}
+            virtual ~AbstractBridgeInterface() {}
+            virtual QUuid uuid() const = 0;
+    };
+
+    class AbstractRealTerminalInterface
+    {
+        public:
+            AbstractRealTerminalInterface() {}
+            virtual ~AbstractRealTerminalInterface() {}
+            virtual QString label() const = 0;
+            virtual bool isBridged() const = 0;
+            virtual AbstractBridgeInterface* bridge() const = 0;
+			virtual QString xref() const = 0;
+    };
 
 	class AbstractPhysicalTerminalInterface
 	{
@@ -79,15 +91,24 @@ namespace TerminalStripDrawer
 
 			void setPreviewDraw(bool draw = true);
 
-		private:
-			int height() const;
-			int width() const;
+			void setMouseHoverPos(const QPointF &pos);
+			bool mouseHoverXref() const;
+			bool needUpdate();
+			hoverTerminal hoveredXref() const;
 
-		private:
-			QSharedPointer <AbstractTerminalStripInterface> m_strip;
-			QSharedPointer<TerminalStripLayoutPattern> m_pattern;
-			bool m_preview_draw { false };
-	};
+        private:
+            qreal height() const;
+            qreal width() const;
+
+        private:
+            QSharedPointer <AbstractTerminalStripInterface> m_strip;
+            QSharedPointer<TerminalStripLayoutPattern> m_pattern;
+            bool m_preview_draw { false };
+			QPointF m_mouse_hover_pos;
+			QRectF m_united_xref_text_rect;
+			bool m_last_mouse_pos_in_xrefs_rect{false};
+			hoverTerminal m_hovered_xref;
+    };
 }
 
 #endif // TERMINALSTRIPDRAWER_H

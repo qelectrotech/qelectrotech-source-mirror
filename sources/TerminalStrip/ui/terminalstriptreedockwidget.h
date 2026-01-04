@@ -49,6 +49,7 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		explicit TerminalStripTreeDockWidget(QETProject *project, QWidget *parent = nullptr);
 		~TerminalStripTreeDockWidget();
 
+        void setProject(QETProject *project = nullptr);
 		void reload();
 		bool currentIsStrip() const;
 		TerminalStrip* currentStrip() const;
@@ -74,11 +75,12 @@ class TerminalStripTreeDockWidget : public QDockWidget
 		QPointer<QETProject> m_project;
 		QPointer<TerminalStrip> m_current_strip;
 
-		QHash<QTreeWidgetItem *, TerminalStrip *> m_item_strip_H;
+        QHash<QTreeWidgetItem *, QPointer<TerminalStrip>> m_item_strip_H;
 		QHash<QUuid, QSharedPointer<RealTerminal>> m_uuid_terminal_H;
 		QHash<QUuid, QPointer<TerminalStrip>> m_uuid_strip_H;
 		QVector<QMetaObject::Connection> m_strip_changed_connection;
-		bool m_current_is_free_terminal{false};
+        bool m_current_is_free_terminal{false};
+        QMetaObject::Connection m_project_destroy_connection;
 };
 
 #endif // TERMINALSTRIPTREEDOCKWIDGET_H

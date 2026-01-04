@@ -35,7 +35,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-	if(MachineInfo::instance()->i_max_screen_height()<1000){
+	if(MachineInfo::instance()->i_max_screen_height() <= 1080){
 		pages_list -> setIconSize(QSize(64, 64));
 	} else {
 		pages_list -> setIconSize(QSize(128, 128));
@@ -69,7 +69,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 
 	// Add a layout for QDialog
 	QVBoxLayout *dialog_layout = new QVBoxLayout(this);
-	dialog_layout->addWidget(scroll); // add scroll to the QDialog's layout
+	dialog_layout -> addWidget(scroll); // add scroll to the QDialog's layout
 	dialog_layout -> addWidget(buttons);
 	setLayout(dialog_layout);
 
@@ -79,9 +79,11 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(pages_list, SIGNAL(currentRowChanged(int)),
 		pages_widget, SLOT(setCurrentIndex(int)));
 
-	setMaximumSize(MachineInfo::instance()->i_max_screen_width(),
-				   MachineInfo::instance()->i_max_screen_height());
-	resize(1400,1000);
+	// set maximum a bit smaller than available size = (screen-size - Task-Bar):
+	setMaximumSize((int)(0.94 * MachineInfo::instance()->i_max_available_width()),
+				   (int)(0.94 * MachineInfo::instance()->i_max_available_height()));
+	resize(std::min(1400,maximumWidth()),
+		   std::min(1000,maximumHeight()));
 
 #ifdef Q_OS_MACOS
 	if (parent) {

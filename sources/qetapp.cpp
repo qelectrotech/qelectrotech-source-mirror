@@ -1261,6 +1261,7 @@ QFont QETApp::diagramTextsFont(qreal size)
 	QFont diagram_texts_font = QFont(diagram_texts_family);
 	diagram_texts_font.setPointSizeF(diagram_texts_size);
 	diagram_texts_font.setWeight(diagram_texts_item_weight);
+	diagram_texts_font.setStyleHint(QFont::SansSerif);
 	diagram_texts_font.setStyleName(diagram_texts_item_style);
 	if (diagram_texts_size <= 4.0) {
 		diagram_texts_font.setWeight(QFont::Light);
@@ -1294,6 +1295,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	QFont diagram_texts_item_font = QFont(diagram_texts_item_family);
 	diagram_texts_item_font.setPointSizeF(diagram_texts_item_size);
 	diagram_texts_item_font.setWeight(diagram_texts_item_weight);
+	diagram_texts_item_font.setStyleHint(QFont::SansSerif);
 	diagram_texts_item_font.setStyleName(diagram_texts_item_style);
 	if (diagram_texts_item_size <= 4.0) {
 		diagram_texts_item_font.setWeight(QFont::Light);
@@ -1934,7 +1936,10 @@ void QETApp::configureQET()
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
 		cd.setParent(parent_widget, cd.windowFlags());
-		cd.setMaximumSize(parent_widget->size());
+		cd.setMaximumWidth(std::min(parent_widget->width(),
+									 (int)(0.94 * MachineInfo::instance()->i_max_available_width())));
+		cd.setMaximumHeight(std::min(parent_widget->height(),
+									  (int)(0.94 * MachineInfo::instance()->i_max_available_height())));
 	}
 
 	// display the dialog then avoid linking it to any parent widget

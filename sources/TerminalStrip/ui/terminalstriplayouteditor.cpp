@@ -15,6 +15,8 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QFontDialog>
+
 #include "terminalstriplayouteditor.h"
 #include "ui_terminalstriplayouteditor.h"
 #include "../GraphicsItem/properties/terminalstriplayoutpattern.h"
@@ -54,12 +56,10 @@ void TerminalStripLayoutEditor::valueEdited()
 		return;
 	}
 
-	//auto *data_ = m_layout.data();
-
-	m_layout.data()->m_header_rect.setRect(0,
-										   ui->m_y_header_sb->value(),
-										   ui->m_width_header_sb->value(),
-										   ui->m_height_header_sb->value());
+    m_layout.data()->m_header_rect.setRect(0,
+                                           ui->m_y_header_sb->value(),
+                                           ui->m_width_header_sb->value(),
+                                           ui->m_height_header_sb->value());
 
 	m_layout.data()->m_spacer_rect.setRect(0,
 										   ui->m_y_spacer_sb->value(),
@@ -91,9 +91,13 @@ void TerminalStripLayoutEditor::valueEdited()
 	m_layout.data()->m_bridge_point_y_offset[2] = ui->m_bridge_point_2_sb->value();
 	m_layout.data()->m_bridge_point_y_offset[3] = ui->m_bridge_point_3_sb->value();
 
-	m_layout.data()->m_header_text_orientation = ui->m_header_text_orientation_cb->currentIndex() == 0 ?
-													 Qt::Horizontal :
-													 Qt::Vertical;
+    auto font_ = ui->m_font_cb->currentFont();
+    font_.setPixelSize(ui->m_font_size_sb->value());
+    m_layout->setFont(font_);
+
+    m_layout.data()->m_header_text_orientation = ui->m_header_text_orientation_cb->currentIndex() == 0 ?
+                                                     Qt::Horizontal :
+                                                     Qt::Vertical;
 
 	switch (ui->m_header_text_alignment_cb->currentIndex()) {
 		case 0:
@@ -104,33 +108,45 @@ void TerminalStripLayoutEditor::valueEdited()
 			m_layout.data()->setHeaderTextAlignment(Qt::AlignRight | Qt::AlignVCenter); break;
 	}
 
-	m_layout.data()->m_terminals_text_orientation[0] = ui->m_terminal_text_orientation_cb->currentIndex() == 0 ?
-														   Qt::Horizontal :
-														   Qt::Vertical;
+		//Terminal text
+    m_layout.data()->m_terminals_text_orientation = ui->m_terminal_text_orientation_cb->currentIndex() == 0 ?
+                                                        Qt::Horizontal :
+                                                        Qt::Vertical;
 
-	switch (ui->m_terminal_text_alignment_cb->currentIndex()) {
-		case 0:
-			m_layout.data()->setTerminalsTextAlignment(
-						QVector<Qt::Alignment> { Qt::AlignLeft | Qt::AlignVCenter,
-												 Qt::AlignLeft | Qt::AlignVCenter,
-												 Qt::AlignLeft | Qt::AlignVCenter,
-												 Qt::AlignLeft | Qt::AlignVCenter });
-			break;
-		case 1:
-			m_layout.data()->setTerminalsTextAlignment(
-						QVector<Qt::Alignment> { Qt::AlignHCenter | Qt::AlignVCenter,
-												 Qt::AlignHCenter | Qt::AlignVCenter,
-												 Qt::AlignHCenter | Qt::AlignVCenter,
-												 Qt::AlignHCenter | Qt::AlignVCenter });
-			break;
-		default:
-			m_layout.data()->setTerminalsTextAlignment(
-						QVector<Qt::Alignment> { Qt::AlignRight | Qt::AlignVCenter,
-												 Qt::AlignRight | Qt::AlignVCenter,
-												 Qt::AlignRight | Qt::AlignVCenter,
-												 Qt::AlignRight | Qt::AlignVCenter });
-			break;
+    switch (ui->m_terminal_text_alignment_cb->currentIndex()) {
+        case 0:
+            m_layout.data()->setTerminalsTextAlignment(Qt::Alignment {Qt::AlignLeft | Qt::AlignVCenter});
+            break;
+        case 1:
+            m_layout.data()->setTerminalsTextAlignment(Qt::Alignment { Qt::AlignHCenter | Qt::AlignVCenter});
+            break;
+        default:
+            m_layout.data()->setTerminalsTextAlignment(Qt::Alignment { Qt::AlignRight | Qt::AlignVCenter});
+            break;
+    }
+
+    m_layout.data()->m_terminals_text_y = ui->m_terminal_text_y_sb->value();
+    m_layout.data()->m_terminals_text_height = ui->m_terminal_text_height_sb->value();
+
+		//Xref text
+	m_layout.data()->m_xref_text_orientation = ui->m_xref_orientation_cb->currentIndex() == 0 ?
+														Qt::Horizontal :
+														Qt::Vertical;
+
+	switch (ui->m_xref_alignment_cb->currentIndex()) {
+	case 0:
+		m_layout.data()->setXrefTextAlignment(Qt::Alignment {Qt::AlignLeft | Qt::AlignVCenter});
+		break;
+	case 1:
+		m_layout.data()->setXrefTextAlignment(Qt::Alignment { Qt::AlignHCenter | Qt::AlignVCenter});
+		break;
+	default:
+		m_layout.data()->setXrefTextAlignment(Qt::Alignment { Qt::AlignRight | Qt::AlignVCenter});
+		break;
 	}
+
+	m_layout.data()->m_xref_text_y = ui->m_xref_y_sb->value();
+	m_layout.data()->m_xref_text_height = ui->m_xref_height_sb->value();
 
 	updateUi();
 	m_preview_strip_item.update();
@@ -180,17 +196,21 @@ void TerminalStripLayoutEditor::updateUi()
 	ui->m_bridge_point_2_sb->setValue(bridge_point[2]);
 	ui->m_bridge_point_3_sb->setValue(bridge_point[3]);
 
-	if (data->m_header_text_orientation == Qt::Horizontal) {
-		ui->m_header_text_orientation_cb->setCurrentIndex(0);
-	} else {
-		ui->m_header_text_orientation_cb->setCurrentIndex(1);
-	}
+    const auto font = m_layout->font();
+    ui->m_font_size_sb->setValue(font.pixelSize());
+    ui->m_font_cb->setCurrentFont(font);
 
-	if (data->m_terminals_text_orientation[0] == Qt::Horizontal) {
-		ui->m_terminal_text_orientation_cb->setCurrentIndex(0);
-	} else {
-		ui->m_terminal_text_orientation_cb->setCurrentIndex(1);
-	}
+    if (data->m_header_text_orientation == Qt::Horizontal) {
+        ui->m_header_text_orientation_cb->setCurrentIndex(0);
+    } else {
+        ui->m_header_text_orientation_cb->setCurrentIndex(1);
+    }
+
+    if (data->m_terminals_text_orientation == Qt::Horizontal) {
+        ui->m_terminal_text_orientation_cb->setCurrentIndex(0);
+    } else {
+        ui->m_terminal_text_orientation_cb->setCurrentIndex(1);
+    }
 
 	const auto header_alignment = data->headerTextAlignment();
 	if (header_alignment &Qt::AlignLeft) {
@@ -201,14 +221,37 @@ void TerminalStripLayoutEditor::updateUi()
 		ui->m_header_text_alignment_cb->setCurrentIndex(2);
 	}
 
-	const auto terminal_alignment = data->terminalsTextAlignment().at(0);
-	if (terminal_alignment &Qt::AlignLeft) {
-		ui->m_terminal_text_alignment_cb->setCurrentIndex(0);
-	} else if (terminal_alignment &Qt::AlignHCenter) {
-		ui->m_terminal_text_alignment_cb->setCurrentIndex(1);
-	} else if (terminal_alignment &Qt::AlignRight) {
-		ui->m_terminal_text_alignment_cb->setCurrentIndex(2);
+		//Terminal text
+    const auto terminal_alignment = data->terminalsTextAlignment();
+    if (terminal_alignment &Qt::AlignLeft) {
+        ui->m_terminal_text_alignment_cb->setCurrentIndex(0);
+    } else if (terminal_alignment &Qt::AlignHCenter) {
+        ui->m_terminal_text_alignment_cb->setCurrentIndex(1);
+    } else if (terminal_alignment &Qt::AlignRight) {
+        ui->m_terminal_text_alignment_cb->setCurrentIndex(2);
 	}
+
+    ui->m_terminal_text_y_sb->setValue(data->m_terminals_text_y);
+    ui->m_terminal_text_height_sb->setValue(data->m_terminals_text_height);
+
+		//Xref text
+	if (data->m_xref_text_orientation == Qt::Horizontal) {
+		ui->m_xref_orientation_cb->setCurrentIndex(0);
+	} else {
+		ui->m_xref_orientation_cb->setCurrentIndex(1);
+	}
+
+	const auto xref_alignment = data->xrefTextAlignment();
+	if (xref_alignment &Qt::AlignLeft) {
+		ui->m_xref_alignment_cb->setCurrentIndex(0);
+	} else if (xref_alignment &Qt::AlignHCenter) {
+		ui->m_xref_alignment_cb->setCurrentIndex(1);
+	} else if (xref_alignment &Qt::AlignRight) {
+		ui->m_xref_alignment_cb->setCurrentIndex(2);
+	}
+
+	ui->m_xref_y_sb->setValue(data->m_xref_text_y);
+	ui->m_xref_height_sb->setValue(data->m_xref_text_height);
 
 	m_ui_updating = false;
 	updatePreview();
@@ -225,4 +268,3 @@ void TerminalStripLayoutEditor::on_m_display_preview_help_clicked(bool checked)
 	m_preview_strip_item.m_drawer.setPreviewDraw(checked);
 	m_preview_strip_item.update();
 }
-

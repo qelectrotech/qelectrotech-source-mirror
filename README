@@ -1,3 +1,7 @@
+[ca]
+QElectroTech és una aplicació Qt5 per crear esquemes elèctrics.
+QET utilitza el format XML per als seus elements i esquemes i inclou un editor d'esquemes, un editor d'elements i un editor de caixetins.
+
 [en]
 QElectroTech is a Qt5 application to design electric diagrams.
 It uses XML files for elements and diagrams, and includes both a diagram editor, a element editor, and an titleblock editor.

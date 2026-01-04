@@ -1,3 +1,33 @@
+[ca]
+Gràcies a Qt Software per la biblioteca Qt ( http://www.qtsoftware.com/ ), amb llicència GNU/GPL.
+Gràcies al projecte KDE ( http://www.kde.org/ ).
+Gràcies a Loic per les seves explicacions d'ordre matemàtic.
+Gràcies a Remi Collet pels paquets Fedora.
+Gràcies a Laurent Trinques pels paquets Debian.
+Gràcies a `trem' pels paquets Mandriva.
+Gràcies a TuxFamily ( http://tuxfamily.org/ ) per a l'allotjament del projecte.
+Gràcies a `Nishiki' pels seus elements i el seu suport suport.
+Gràcies a qtcentre.org per la seva classe SingleApplication.
+Gràcies a Alfredo Carreto per les seves traduccions i correccions al castellà ( http://electronicosmx.net )
+Gràcies a 'Dr.Slump' et Sivio pour leurs traductions a l'italià
+Gràcies a Jose Carlos Martins per les seves traduccions al portuguès
+Gràcies a Pavel Fric per les seves traduccions al txec
+Gràcies a Pawel Smiech per les seves traduccions al polonès
+Gràcies a Yuriy Litkevich per les seves traduccions al rus
+Gràcies a Youssef Ouamalkran i Antoni Mirabete per les seves traduccions al català
+Gràcies a Gabi Mandoc per les seves traduccions al romanès
+Gràcies a Markus Budde i Jonas Stein et Noah Braden per les seves traduccions a l'alemany
+Gràcies a Mohamed Souabni per les seves traduccions a l'àrab
+Gràcies a Uroš Platiše per les seves traduccions a l'eslovè
+Gràcies a Antun Marakovic per les seves traduccions al croat
+Gràcies a Nikos Papadopoylos && Yannis Gyftomitros per les seves traduccions al grec
+Gràcies a Markos Chandras pels paquets Gentoo
+Gràcies a David pels paquets Slackware
+Gràcies a Chipsterjulien pels paquets  Archlinux AUR
+Gràcies a Elbert de NL pels paquets  OS/2
+Gràcies a Zloidemon pels paquets  (port GCC)
+Gràcies a Mrbit per ebuild els paquets Gentoo
+
 [en]
 Thanks to Qt Software for their Qt library ( http://www.qtsoftware.com/ ), licensed under GNU/GPL.
 Thanks to the KDE project ( http://www.kde.org/ ).

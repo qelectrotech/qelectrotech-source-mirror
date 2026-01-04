@@ -38,6 +38,7 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
+#include "qetinformation.h"
 
 #include <cassert>
 #include <math.h>
@@ -762,10 +763,12 @@ QList < QSet <Conductor *> > Diagram::potentials()
 	represent the entire schema or only the selected content
 	\~French Booleen (a vrai par defaut) indiquant si le XML genere doit
 	representer l'integralite du schema ou seulement le contenu selectionne
+	\~ @param is_copy_command:
+	Boolean (false by default) indicating if function is called by an copy command
 	\~ @return An XML Document (QDomDocument)
 	\~French Un Document XML (QDomDocument)
 */
-QDomDocument Diagram::toXml(bool whole_content) {
+QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	// document
 	QDomDocument document;
 
@@ -912,8 +915,13 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		{
 			case Element::Type: {
 				auto elmt = static_cast<Element *>(qgi);
-				if (whole_content || elmt->isSelected())
+				if (whole_content || elmt->isSelected()){
+					//  For a copy/paste command, the text positions must be recalculated for
+					//  correct text alignment, before it is saved to the clipboard
+					if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
+						correctTextPos(elmt);
 					list_elements << elmt;
+				}
 				break;
 			}
 			case Conductor::Type: {
@@ -973,6 +981,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		for (auto elmt : list_elements) {
 			dom_elements.appendChild(elmt->toXml(document,
 								 table_adr_id));
+			// If copy is active we have to undo the changes we have made during creating(filling) 'list_elements'
+			if(is_copy_command && (elmt->linkType() == Element::Slave || elmt->linkType()&Element::AllReport))
+				restoreText(elmt);
 		}
 		dom_root.appendChild(dom_elements);
 	}
@@ -1428,33 +1439,6 @@ bool Diagram::fromXml(QDomElement &document,
 		added_shapes << dii;
 	}
 
-		// Load conductor
-	QList<Conductor *> added_conductors;
-	for (auto f : QET::findInDomElement(root,
-										QStringLiteral("conductors"),
-										QStringLiteral("conductor")))
-	{
-		if (!Conductor::valideXml(f)) continue;
-
-		//Check if terminal that conductor must be linked is know
-
-		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
-		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
-
-		if (p1 && p2 && p1 != p2)
-		{
-			Conductor *c = new Conductor(p1, p2);
-			if (c->isValid())
-			{
-				addItem(c);
-				c -> fromXml(f);
-				added_conductors << c;
-			}
-			else
-				delete c;
-		}
-	}
-
 		//Load tables
 	QVector<QetGraphicsTableItem *> added_tables;
 	for (const auto &dom_table : QETXML::subChild(root,
@@ -1475,7 +1459,6 @@ bool Diagram::fromXml(QDomElement &document,
 	{
 		QVector <QGraphicsItem *> added_items;
 		for (auto element : qAsConst(added_elements   )) added_items << element;
-		for (auto cond    : qAsConst(added_conductors )) added_items << cond;
 		for (auto shape   : qAsConst(added_shapes     )) added_items << shape;
 		for (auto text    : qAsConst(added_texts      )) added_items << text;
 		for (auto image   : qAsConst(added_images     )) added_items << image;
@@ -1498,6 +1481,33 @@ bool Diagram::fromXml(QDomElement &document,
 			//Translate all added items
 		for (auto qgi : added_items)
 			qgi->setPos(qgi->pos() += pos_);
+	}
+
+	  // Load conductor
+	QList<Conductor *> added_conductors;
+	for (auto f : QET::findInDomElement(root,
+										QStringLiteral("conductors"),
+										QStringLiteral("conductor")))
+	{
+		if (!Conductor::valideXml(f)) continue;
+
+			   //Check if terminal that conductor must be linked is know
+
+		Terminal* p1 = findTerminal(1, f, table_adr_id, added_elements);
+		Terminal* p2 = findTerminal(2, f, table_adr_id, added_elements);
+
+		if (p1 && p2 && p1 != p2)
+		{
+			Conductor *c = new Conductor(p1, p2);
+			if (c->isValid())
+			{
+				addItem(c);
+				c -> fromXml(f);
+				added_conductors << c;
+			}
+			else
+				delete c;
+		}
 	}
 
 		//Filling of falculatory lists
@@ -2471,4 +2481,157 @@ bool Diagram::canRotateSelection() const
 	}
 
 	return false;
+}
+/*
+ * 	To copy elements with right-aligned or centered elementtext, the text position
+	of dynamicElementTextItems in report- and slave elements must be reset
+	to the original insert position bevor writing to clipboard.
+	It is only necessary for right-aligned and centered texts,
+	but we do it for all, because it has no influence on other texts.
+*/
+/**
+	@brief Diagram::correctTextPos
+	set insertion position to the original insertion position of the element texts before copying
+	@param Element
+*/
+void Diagram::correctTextPos(Element* elmt)
+{
+	for (auto deti : elmt->dynamicTextItems()){
+
+		  // correct dynamicElementTextItem of type ElementInfo
+		if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+			// save current PlainText
+			deti->setText(deti->toPlainText());
+				// writing an empty string to PlainText set
+				// the insertion point to the original insertion point
+			deti->setPlainText("");
+				// block the alignment calculation for the next write action
+			deti->m_block_alignment = true;
+				// we need to set the plain text with its value,
+				// otherewise the text value will not be copy
+			deti->setPlainText(deti->text());
+			deti->m_block_alignment = false;
+		}
+			// correct dynamicElementTextItem of type CompositeText
+		else if(deti->textFrom() == DynamicElementTextItem::CompositeText){
+			QString composite_text = deti->compositeText();
+
+				// create compositeText() without variables for slave item
+				// This string corresponds to the original text with original insertion point
+			if(elmt->linkType()==Element::Slave){
+				const QStringList variables_list = QETInformation::elementInfoKeys();
+				for (auto &variable : variables_list){
+					if(composite_text.contains(QETInformation::infoToVar(variable)))
+						composite_text.replace(QETInformation::infoToVar(variable),"");
+				}
+			}
+				// create compositeText() without variables for report item
+			else if(elmt->linkType()&Element::AllReport){
+				const QStringList variables_list = QETInformation::folioReportInfoKeys();
+				for (auto &variable : variables_list){
+					if(composite_text.contains(QETInformation::infoToVar(variable)))
+						composite_text.replace(QETInformation::infoToVar(variable),"");
+				}
+			}
+
+			deti->setText(deti->toPlainText());
+			deti->setPlainText(composite_text);
+			deti->m_block_alignment = true;
+			deti->setPlainText(deti->text());
+			deti->m_block_alignment = false;
+				// We need the string for the restoration, so we save it
+			deti->setText(composite_text);
+		}
+	}
+
+		// same for textgroups
+	for (auto group : elmt->textGroups()){
+		for(DynamicElementTextItem *deti : group->texts()){
+			if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+				deti->setText(deti->toPlainText());
+				deti->m_block_alignment = true;
+				deti->setPlainText(deti->text());
+				deti->m_block_alignment = false;
+				deti->setPlainText("");
+			}
+
+			else if(deti->textFrom() == DynamicElementTextItem::CompositeText){
+				QString composite_text = deti->compositeText();
+				if(elmt->linkType()==Element::Slave){
+					QStringList variables_list = QETInformation::elementInfoKeys();
+					for (auto variable : variables_list){
+						if(composite_text.contains(QETInformation::infoToVar(variable)))
+							composite_text.replace(QETInformation::infoToVar(variable),"");
+					}
+				}
+				else if(elmt->linkType()&Element::AllReport){
+					QStringList variables_list = QETInformation::folioReportInfoKeys();
+					for (auto variable : variables_list){
+						if(composite_text.contains(QETInformation::infoToVar(variable)))
+							composite_text.replace(QETInformation::infoToVar(variable),"");
+					}
+				}
+
+				deti->setText(deti->toPlainText());
+				deti->setPlainText(composite_text);
+				deti->m_block_alignment = true;
+				deti->setPlainText(deti->text());
+				deti->m_block_alignment = false;
+				deti->setText(composite_text);
+			}
+		}
+	}
+}
+
+/*
+ * After changing the element texts for copying, the element texts has to be restored.
+ */
+/**
+	@brief Diagram::restoreText
+	After correcting the elementtext position during copying
+	the Text has to be restored
+	@param Element
+*/
+void Diagram::restoreText(Element* elmt)
+{
+	for (auto deti : elmt->dynamicTextItems()){
+			// restore info text
+		if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+				// delete the actual plainText without alignmant calculation
+			deti->m_block_alignment = true;
+			deti->setPlainText("");
+			deti->m_block_alignment = false;
+				// restore the plainText
+			deti->setPlainText(deti->text());
+		}
+			// restore composite text
+		else if	(deti->textFrom() == DynamicElementTextItem::CompositeText){
+			QString composite_text = deti->text();
+			deti->setText(deti->toPlainText());
+				// set the PlainText to the origin text without alignment calculation
+			deti->m_block_alignment = true;
+			deti->setPlainText(composite_text);
+			deti->m_block_alignment = false;
+			deti->setPlainText(deti->text());
+		}
+	}
+	  // same for text groups
+	for (auto group : elmt->textGroups()){
+		for(DynamicElementTextItem *deti : group->texts()){
+			if( deti->textFrom() == DynamicElementTextItem::ElementInfo){
+				deti->m_block_alignment = true;
+				deti->setPlainText("");
+				deti->m_block_alignment = false;
+				deti->setPlainText(deti->text());
+			}
+			else if	(deti->textFrom() == DynamicElementTextItem::CompositeText){
+				QString composite_text = deti->text();
+				deti->setText(deti->toPlainText());
+				deti->m_block_alignment = true;
+				deti->setPlainText(composite_text);
+				deti->m_block_alignment = false;
+				deti->setPlainText(deti->text());
+			}
+		}
+	}
 }
