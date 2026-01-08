@@ -107,7 +107,7 @@ bool dxf2ElmtIsPresent(bool install_dialog, QWidget *parent)
 								 "Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d'installation")};
 
 		ThirdPartyBinaryInstallDialog dialog_(string_,
-											  QStringLiteral("https://github.com/antonioaja/dxf2elmt/releases"),
+											  QStringLiteral("https://github.com/Vadoola/dxf2elmt/releases/tag/v0.5.1"),
 											  dxf2ElmtDirPath(),
 											  parent);
 		dialog_.exec();
