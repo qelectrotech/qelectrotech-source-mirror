@@ -178,7 +178,7 @@ void AboutQETDialog::setAnnexProject()
 	addLibrary(ui->m_annex_project_label, tr("Générateur d'élément lambda", "Lambda element generator"),
 	 "https://github.com/asnigma/qet_gen_element");
 	addLibrary(ui->m_annex_project_label, tr("Convertisseur d'élément DXF", "Dxf2elmt"),
-	 "https://github.com/antonioaja/dxf2elmt");
+	 "https://github.com/Vadoola/dxf2elmt");
 	addLibrary(ui->m_annex_project_label, tr("Outil de traduction d'éléments", "Qet_translate"),
 	 "https://qelectrotech.org/forum/viewtopic.php?pid=16027#p16027");
 
