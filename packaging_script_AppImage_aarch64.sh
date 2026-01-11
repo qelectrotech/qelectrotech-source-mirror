@@ -71,7 +71,7 @@ chmod +x AppDir/qelectrotech/AppRun
 # Get 64-bit ARM version of go-appimage appimagetool
 #wget -c https://github.com/$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-aarch64.AppImage" | head -n 1 | cut -d '"' -f 2)
 #chmod +x appimagetool-*.AppImage
-VERSION=$tagName-r$HEAD ./appimagetool-8*.AppImage ./AppDir/qelectrotech/
+VERSION=$tagName-r$HEAD ./appimagetool-9*.AppImage ./AppDir/qelectrotech/
 
 
 chmod -x QElectroTech-*.AppImage
