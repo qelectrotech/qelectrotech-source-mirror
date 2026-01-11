@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-#Based on raspberry pi 5 8 Gb bookworm
+#Based on raspberry pi 5 8 Gb Trixie
 #sudo apt install git ssh rsync libqt5svg5-dev qt5-qmake qtbase5-dev libkf5widgetsaddons-dev libkf5coreaddons-dev libsqlite3-dev pkgconf libqt5waylandclient5-dev libqt5waylandcompositor5-dev g++ make
 #mkdir -p AppImage/0.100.0/aarch64
 # Get GIT sources
