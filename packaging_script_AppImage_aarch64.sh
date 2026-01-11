@@ -76,7 +76,7 @@ VERSION=$tagName-r$HEAD ./appimagetool-9*.AppImage ./AppDir/qelectrotech/
 
 chmod -x QElectroTech-*.AppImage
 shasum -a 256 QElectroTech-$tagName-r$HEAD-aarch64.AppImage > QElectroTech-$tagName-r$HEAD-aarch64.AppImage-SHA256.txt
-mv QElectroTech-$tagName-r$HEAD-aarch64.AppImage* ./AppImage/0.100.0/aarch64
+mv QElectroTech-$tagName-r$HEAD-aarch64.AppImage* ./AppImage/0.100.0/aarch64/trixie
 cd ..
   #rsync to server
   echo -e "\033[1;31mWould you like to RSYNC Appimage to server n/Y?.\033[m"
