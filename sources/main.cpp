@@ -165,13 +165,9 @@ void delete_old_log_files(int days)
 int main(int argc, char **argv)
 {
 	// before creating Application:
-	// export environment-variable "QT_HASH_SEED" with value "1" for Qt5 and "0" for Qt6
-	// to have "clean" XML-diffs:
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	qputenv("QT_HASH_SEED", "1");
-#else
+	// export environment-variable "QT_HASH_SEED" with value "0" to
+	// disable radomisation for hashes in order to obtain "clean" XML-diffs:
 	qputenv("QT_HASH_SEED", "0");
-#endif
 	//Some setup, notably to use with QSetting.
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
