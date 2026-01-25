@@ -19,7 +19,7 @@
 
 namespace QetVersion
 {
-	QetVersion::VersionType VERSION_TYPE = QetVersion::dev;
+	QetVersion::VersionType VERSION_TYPE = QetVersion::stable;
 
 	QVersionNumber currentVersion()
 	{
