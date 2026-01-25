@@ -6,6 +6,8 @@
 
 **Closed issues:**
 
+- error in doxygen action code [\#414](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/414)
+- "NoName" is automatically inserted into empty text cells in title block [\#407](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/407)
 - Apple silicon download is not working [\#400](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/400)
 - Apple silicon download is not working [\#394](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/394)
 - Differenciating connector for proper labeling [\#390](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/390)
@@ -35,12 +37,16 @@
 
 **Merged pull requests:**
 
+- Update QCH Help file [\#416](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/416) ([Int-Circuit](https://github.com/Int-Circuit))
+- no random hashes to have more constant order of XML-tags [\#415](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/415) ([plc-user](https://github.com/plc-user))
+- Delete outdated QET docs [\#412](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/412) ([Int-Circuit](https://github.com/Int-Circuit))
 - Fixing translation file list in CMake [\#404](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/404) ([arummler](https://github.com/arummler))
 - Update dependencies to fix compilation errors [\#403](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/403) ([arummler](https://github.com/arummler))
 - Minor corrections to prevent crashes [\#401](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/401) ([Evilscrack](https://github.com/Evilscrack))
 - Correct compositeText alignment on copying [\#399](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/399) ([ChuckNr11](https://github.com/ChuckNr11))
 - Better handling of conductors when moving [\#398](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/398) ([ChuckNr11](https://github.com/ChuckNr11))
 - A few small improvements [\#395](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/395) ([ChuckNr11](https://github.com/ChuckNr11))
+- Added updated automatic doxygen build on push +  theme to make it fit with docs page [\#389](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/389) ([Int-Circuit](https://github.com/Int-Circuit))
 - qet\_de updated [\#388](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/388) ([Bisku](https://github.com/Bisku))
 - only calculate grid-point-size, when min != max [\#387](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/387) ([plc-user](https://github.com/plc-user))
 - Mouse hover text for dynamic text items [\#386](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/386) ([elevatormind](https://github.com/elevatormind))
