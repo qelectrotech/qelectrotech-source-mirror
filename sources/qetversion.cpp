@@ -19,11 +19,11 @@
 
 namespace QetVersion
 {
-	QetVersion::VersionType VERSION_TYPE = QetVersion::stable;
+	QetVersion::VersionType VERSION_TYPE = QetVersion::dev;
 
 	QVersionNumber currentVersion()
 	{
-		return QVersionNumber{ 0, 100, 0 };
+		return QVersionNumber{ 0, 100, 1 };
 	}
 
 	QString displayedVersion()
