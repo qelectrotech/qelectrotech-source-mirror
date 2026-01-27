@@ -24,6 +24,8 @@ class HelperCell;
 class SplittedHelperCell;
 class TitleBlockTemplateCommand;
 class TitleBlockTemplateCellsSet;
+class QGraphicsLayoutItem;
+class QGraphicsGridLayout;
 
 /**
 	This QGraphicsView subclass is used in the title block template editor to

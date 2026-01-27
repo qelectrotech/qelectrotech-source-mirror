@@ -17,6 +17,8 @@
 message(" - qet_compilation_vars")
 
 set(QET_COMPONENTS
+  Core
+  Gui
   LinguistTools
   PrintSupport
   Xml
@@ -109,6 +111,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
   ${QET_DIR}/sources/bordertitleblock.h
+  # ${QET_DIR}/sources/colorbutton.cpp
+  # ${QET_DIR}/sources/colorbutton.h
+  # ${QET_DIR}/sources/colorcombobox.cpp
+  # ${QET_DIR}/sources/colorcombobox.h
+  # ${QET_DIR}/sources/colorcomboboxdelegate.cpp
+  # ${QET_DIR}/sources/colorcomboboxdelegate.h
   ${QET_DIR}/sources/conductorautonumerotation.cpp
   ${QET_DIR}/sources/conductorautonumerotation.h
   ${QET_DIR}/sources/conductornumexport.cpp
@@ -726,19 +734,17 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts
-  ${QET_DIR}/lang/qet_nl_BE.ts  
+  ${QET_DIR}/lang/qet_nl_BE.ts
   ${QET_DIR}/lang/qet_no.ts
   ${QET_DIR}/lang/qet_pl.ts
   ${QET_DIR}/lang/qet_pt.ts
   ${QET_DIR}/lang/qet_pt_BR.ts
   ${QET_DIR}/lang/qet_ro.ts
-  ${QET_DIR}/lang/qet_rs.ts  
   ${QET_DIR}/lang/qet_ru.ts
   ${QET_DIR}/lang/qet_sk.ts
   ${QET_DIR}/lang/qet_sl.ts
   ${QET_DIR}/lang/qet_sr.ts
   ${QET_DIR}/lang/qet_sv.ts
   ${QET_DIR}/lang/qet_tr.ts
-  ${QET_DIR}/lang/qet_uk.ts
   ${QET_DIR}/lang/qet_zh.ts
   )

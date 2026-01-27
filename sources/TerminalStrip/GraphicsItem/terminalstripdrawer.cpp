@@ -18,6 +18,7 @@
 #include "terminalstripdrawer.h"
 
 #include <QPainter>
+#include <QHash>
 
 namespace TerminalStripDrawer {
 

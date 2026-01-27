@@ -14,54 +14,47 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-message(" - fetch_kdeaddons")
+message(STATUS "fetch_kdeaddons")
 
-if(DEFINED BUILD_WITH_KF5)
-  Include(FetchContent)
+if(BUILD_WITH_KF6)
+  option(BUILD_KF6 "Build KF6 libraries, use system ones otherwise" OFF)
+  block(PROPAGATE KF6_GIT_TAG)
+  set(BUILD_TESTING OFF)
+  set(KDE_SKIP_TEST_SETTINGS ON)
+  set(BUILD_DESIGNERPLUGIN OFF)
+  set(KCOREADDONS_USE_QML OFF)
+  set(BUILD_QCH OFF)
+  set(BUILD_SHARED_LIBS OFF)
+  find_package(ECM 6.8.0 REQUIRED NO_MODULE)
+  list(APPEND CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-  option(BUILD_KF5 "Build KF5 libraries, use system ones otherwise" YES)
+  if(BUILD_KF6)
+    Include(FetchContent)
 
-  if(BUILD_KF5)
-
-    if(NOT DEFINED KF5_GIT_TAG)
-      #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
-      set(KF5_GIT_TAG v5.77.0)
+    if(NOT DEFINED KF6_GIT_TAG)
+      set(KF6_GIT_TAG v6.8.0)
     endif()
-
-    # Fix stop the run autotests of kcoreaddons
-    # see
-    # https://invent.kde.org/frameworks/kcoreaddons/-/blob/master/CMakeLists.txt#L98
-    # issue:
-    # CMake Error at /usr/share/ECM/modules/ECMAddTests.cmake:89 (add_executable):
-    # Cannot find source file:
-    # see
-    # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
-    set(KDE_SKIP_TEST_SETTINGS "TRUE")
-    set(BUILD_TESTING "0")
-    FetchContent_Declare(
-      ecm
-      GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
-      GIT_TAG        ${KF5_GIT_TAG})
-    FetchContent_MakeAvailable(ecm)
 
     FetchContent_Declare(
       kcoreaddons
       GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-      GIT_TAG        ${KF5_GIT_TAG})
+      GIT_TAG        ${KF6_GIT_TAG})
     FetchContent_MakeAvailable(kcoreaddons)
+    get_target_property(kca_version KF6::CoreAddons VERSION)
 
-    FetchContent_Declare(
-      kwidgetsaddons
-      GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-      GIT_TAG        ${KF5_GIT_TAG})
-    FetchContent_MakeAvailable(kwidgetsaddons)
   else()
-    find_package(KF5CoreAddons REQUIRED)
-    find_package(KF5WidgetsAddons REQUIRED)
+    find_package(KF6CoreAddons REQUIRED)
+    set(kca_version ${KF6CoreAddons_VERSION})
   endif()
 
-  set(KF5_PRIVATE_LIBRARIES
-    KF5::WidgetsAddons
-    KF5::CoreAddons
+  get_target_property(kwa_type KF6::CoreAddons TYPE)
+
+  message(NOTICE "ecm version            : " ${ECM_VERSION})
+  message(NOTICE "kcoreaddons library    : " ${kca_type})
+  message(NOTICE "kcoreaddons version    : " ${kca_version})
+  endblock()
+
+  set(KF6_PRIVATE_LIBRARIES
+    KF6::CoreAddons
     )
 endif()
