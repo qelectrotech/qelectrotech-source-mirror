@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "recentfiles.h"
-#include "qeticons.h"
 #include <QMenu>
 
 /**
@@ -33,7 +32,7 @@ RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 	menu_(nullptr)
 {
 	mapper_ = new QSignalMapper(this);
-	connect(mapper_, SIGNAL(mapped(const QString &)), this, SLOT(handleMenuRequest(const QString &)));
+	connect(mapper_, &QSignalMapper::mappedString, this, &RecentFiles::fileOpeningRequested);
 
 	extractFilesFromSettings();
 	buildMenu();
@@ -101,13 +100,6 @@ void RecentFiles::clear()
 void RecentFiles::save()
 {
 	saveFilesToSettings();
-}
-
-/**
-	Gere les actions sur le menu
-*/
-void RecentFiles::handleMenuRequest(const QString &filepath) {
-	emit(fileOpeningRequested(filepath));
 }
 
 /**
@@ -193,6 +185,6 @@ void RecentFiles::buildMenu()
 
 		// lie l'action et le mapper
 		mapper_ -> setMapping(action, filepath);
-		connect(action, SIGNAL(triggered()), mapper_, SLOT(map()));
+		connect(action, &QAction::triggered, mapper_,  qOverload<>(&QSignalMapper::map));
 	}
 }

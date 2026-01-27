@@ -54,9 +54,6 @@ class RecentFiles : public QObject {
 	void saveFilesToSettings();
 	void buildMenu();
 	
-	private slots:
-	void handleMenuRequest(const QString &);
-	
 	// attributes
 	private:
 	QString identifier_;
