@@ -503,6 +503,9 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/SearchAndReplace/ui/searchandreplacewidget.cpp
   ${QET_DIR}/sources/SearchAndReplace/ui/searchandreplacewidget.h
 
+  ${QET_DIR}/sources/svg/qetsvg.cpp
+  ${QET_DIR}/sources/svg/qetsvg.h
+
   ${QET_DIR}/sources/titleblock/dimension.cpp
   ${QET_DIR}/sources/titleblock/dimension.h
   ${QET_DIR}/sources/titleblock/dimensionwidget.cpp
@@ -714,6 +717,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/xml/terminalstripitemxml.cpp
   ${QET_DIR}/sources/xml/terminalstripitemxml.h
+  ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.cpp
+  ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
 set(TS_FILES

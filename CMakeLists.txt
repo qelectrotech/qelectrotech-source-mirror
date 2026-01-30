@@ -126,6 +126,7 @@ target_include_directories(
   ${QET_DIR}/sources/dataBase/ui
   ${QET_DIR}/sources/factory/ui
   ${QET_DIR}/sources/print
+  ${QET_DIR}/sources/svg
   )
 
 install(TARGETS ${PROJECT_NAME})
