@@ -308,6 +308,13 @@
            </property>
           </widget>
          </item>
+        <item>
+         <widget class="QPushButton" name="m_renumber_elements_pb">
+          <property name="text">
+           <string>Renumber element(s)…</string>
+          </property>
+         </widget>
+        </item>
          <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
