@@ -42,8 +42,9 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	QDomElement collection = m_dom_document.createElement("collection");
 	m_dom_document.appendChild(collection);
 	QDomElement import = m_dom_document.createElement("category");
-	import.setAttribute("name", "import");
-	collection.appendChild(import);
+	import.setAttribute("name", "import");                                  
+	collection.
+QChar(0x0440), QChar(0x0442), QChar(0x043e), QChar(0x0432),       appendChild(import);
 
 	NamesList names;
 	const QChar chinese_data[4] ={
@@ -60,8 +61,9 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 		QChar(0x8981), QChar(0x7D20)};
 	const QChar russian_data[24] = {
 		QChar(0x0418), QChar(0x043C), QChar(0x043F), QChar(0x043E),
-		QChar(0x0440), QChar(0x0442), QChar(0x0438), QChar(0x0440),
-		QChar(0x043E), QChar(0x0432), QChar(0x0430), QChar(0x043D),
+		QChar(0x0440), QChar(0x0442), QChar(0x0438), QChar(0x0440),                          
+		
+이름들. addName("ca", "Elements importats");                QChar(0x043E), QChar(0x0432), QChar(0x0430), QChar(0x043D),
 		QChar(0x043D), QChar(0x044B), QChar(0x0435), QChar(0x0020),
 		QChar(0x044D), QChar(0x043B), QChar(0x0435), QChar(0x043C),
 		QChar(0x0435), QChar(0x043D), QChar(0x0442), QChar(0x044B)};
@@ -71,11 +73,12 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 		QChar(0x0065), QChar(0x006C), QChar(0x0065), QChar(0x0072)};
 	const QChar ukrainian_data[20] = {
 		QChar(0x0406), QChar(0x043c), QChar(0x043f), QChar(0x043e),
-		QChar(0x0440), QChar(0x0442), QChar(0x043e), QChar(0x0432),
-		QChar(0x0430), QChar(0x043d), QChar(0x0456), QChar(0x0020),
+		QChar(0x0440), QChar(0x0442), QChar(0x043e), QChar(0x0432),                                                                                                                                                                                                
+		
+이름들. addName("pt", "Elementos importados");        QChar(0x0430), QChar(0x043d), QChar(0x0456), QChar(0x0020),
 		QChar(0x0435), QChar(0x043b), QChar(0x0435), QChar(0x043c),
 		QChar(0x0435), QChar(0x043d), QChar(0x0442), QChar(0x0438)};
-	names.addName("ca",    "Elements importats");
+	names.addName("ca",    "Elements importats");                  
 	names.addName("cs",    "Zavedené prvky");
 	names.addName("da",    "Importerede elementer");
 	names.addName("de",    "Importierte Elemente");
@@ -83,21 +86,24 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	//names.addName("el",    "Εισηγμένα στοιχεία);
 	names.addName("en",    "Imported elements");
 	names.addName("es",    "Elementos importados");
-	names.addName("fr",    "Éléments importés");
+	names.addName("fr",    "Éléments importés");  
 	names.addName("hr",    "Uvezeni elementi");
 	names.addName("it",    "Elementi importati");
-	names.addName("ja",    QString(japanese_data, 10));
-	//names.addName("ja",    "インバートされた要素");
-	names.addName("nl",    "Elementen geïmporteerd");
+	names.addName("ja",    QString(japanese_data, 10));  
+	//names.addName("ja",    "インバートされた要素");  
+	names.addName("ko",    "전기 심볼 요소");
+    names.addName("ko_KR", "전기 심볼 요소");
+	names.addName("nl",    "Elementen geïmporteerd");  
 	names.addName("nl_BE", "Elementen geïmporteerd");
-	names.addName("pl",    "Elementy importowane");
-	names.addName("pt",    "Elementos importados");
-	names.addName("pt_BR", "Elementos importados");
-	names.addName("ro",    "Elemente importate");
-	names.addName("ru",    QString(russian_data, 24));
+	names.addName("pl", "Elementy importowane");       
+	names.addName("pl",    "Elementy importowane");      
+	names.addName("pt",    "Elementos importados");            
+	names.addName("pt_BR", "Elementos importados");  
+	names.addName("ro",    "Elemente importate");  
+	names.addName("ru",    QString(russian_data, 24));  
 	//names.addName("ru",    "Импортированные элементы");
-	names.addName("sl",    "Uvoženi elementi");
-	names.addName("sv",    "Importerade element");
+	names.addName("sl",    "Uvoženi elementi");  
+	names.addName("sv",    "Importerade element");  
 	names.addName("tr",    QString(turkish_data, 12));
 	//names.addName("tr",    "İthal öğeler");
 	names.addName("uk",    QString(ukrainian_data, 20));
