@@ -58,6 +58,10 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 		QChar(0x30A4), QChar(0x30F3), QChar(0x30D0), QChar(0x30FC),
 		QChar(0x30C8), QChar(0x3055), QChar(0x308C), QChar(0x305F),
 		QChar(0x8981), QChar(0x7D20)};
+	const QChar korean_data[8] = {
+		QChar(0xC804), QChar(0xAE30), QChar(0x0020),
+		QChar(0xC2EC), QChar(0xBCFC), QChar(0x0020),
+		QChar(0xC694), QChar(0xC18C)};
 	const QChar russian_data[24] = {
 		QChar(0x0418), QChar(0x043C), QChar(0x043F), QChar(0x043E),
 		QChar(0x0440), QChar(0x0442), QChar(0x0438), QChar(0x0440),
@@ -88,6 +92,8 @@ XmlElementCollection::XmlElementCollection(QETProject *project) :
 	names.addName("it",    "Elementi importati");
 	names.addName("ja",    QString(japanese_data, 10));
 	//names.addName("ja",    "インバートされた要素");
+	names.addName("ko",    QString(korean_data, 8));
+	names.addName("ko_KR", QString(korean_data, 8));
 	names.addName("nl",    "Elementen geïmporteerd");
 	names.addName("nl_BE", "Elementen geïmporteerd");
 	names.addName("pl",    "Elementy importowane");
