@@ -109,6 +109,7 @@
 	
 	; For consistency, we limit the installer to languages supported by QElectroTech itself
 	!insertmacro MUI_LANGUAGE "English" ;first language is the default language
+		!insertmacro MUI_LANGUAGE "Korean"
         !insertmacro MUI_LANGUAGE "French"
         !insertmacro MUI_LANGUAGE "Spanish"
         !insertmacro MUI_LANGUAGE "Russian"
@@ -403,5 +404,6 @@ Function un.onInit
 	!insertmacro MUI_UNGETLANGUAGE
 
 FunctionEnd
+
 
 
