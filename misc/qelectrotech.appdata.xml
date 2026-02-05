@@ -13,11 +13,12 @@
  <summary xml:lang="da">Elektrisk diagram redigering</summary>
  <summary xml:lang="de">Zeichenprogramm für Schaltpläne</summary>
  <summary xml:lang="el">Επεξεργαστής ηλεκτρικών διαγραμμάτων</summary>
- <summary xml:lang="ex">Editor de esquemas eléctricos</summary>
+ <summary xml:lang="es">Editor de esquemas eléctricos</summary>
  <summary xml:lang="fr">Éditeur de schémas électriques</summary>
  <summary xml:lang="hr">Editor elektro sheme</summary>
  <summary xml:lang="it">Programma per disegnare schemi elettrici</summary>
  <summary xml:lang="ja">電気回路図エディタ</summary>
+ <summary xml:lang="ko">전기 도면 편집기</summary>
  <summary xml:lang="nl">Elektrische schema bewerker</summary>
  <summary xml:lang="pl">Edytor schematów elektrycznych</summary>
  <summary xml:lang="pt">Editor de esquemas eléctricos</summary>
@@ -70,6 +71,10 @@
   <p xml:lang="ja">
    QElectroTech は電気回路図を作成する Qt5 アプリケーションです。
    QET は要素と回路図に XML 形式を利用し、回路図エディタ、要素エディタ、表題欄エディタを含みます。
+  </p>
+  <p xml:lang="ko">
+  QElectroTech는 전기 도면을 설계하기 위한 Qt5 기반 애플리케이션입니다.
+  요소와 도면을 XML 형식으로 관리하며, 도면 편집기, 요소 편집기, 표제란 편집기를 포함하고 있습니다.
   </p>
   <p xml:lang="nl">
    QElectroTech is een Qt5 applicatie om elektrische schema's te ontwerpen.
