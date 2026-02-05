@@ -17,8 +17,29 @@
         LangString var2              ${LANG_ENGLISH}  "languagues files"
         LangString var3              ${LANG_ENGLISH}  "Examples of cartridges"
         LangString var4              ${LANG_ENGLISH}  "Examples of diagrams"
+
         
-        
+        LangString installed         ${LANG_KOREAN} "${SOFT_NAME}이(가) 이미 설치되어 있습니다. $\n$\n이전 버전을 제거하려면 `OK`를, 업그레이드를 취소하려면 `Cancel`을 클릭하세요."
+        LangString wrongArch         ${LANG_KOREAN} "이 배포판은 64비트 컴퓨터에서만 사용할 수 있습니다."
+        LangString Elements          ${LANG_KOREAN} "요소"
+        LangString Electric          ${LANG_KOREAN} "전기"
+        LangString Logic             ${LANG_KOREAN} "로직"
+        LangString Hydraulic         ${LANG_KOREAN} "유압"
+        LangString Pneumatic         ${LANG_KOREAN} "공압"
+        LangString Energy            ${LANG_KOREAN} "에너지"
+        LangString water             ${LANG_KOREAN} "물"
+        LangString Refrigeration     ${LANG_KOREAN} "냉동"
+        LangString Solar_thermal     ${LANG_KOREAN} "태양열"
+        LangString Lang              ${LANG_KOREAN} "언어"
+        LangString Titleblocks       ${LANG_KOREAN} "표제란"
+        LangString Examples          ${LANG_KOREAN} "예제"
+        LangString Check             ${LANG_KOREAN} "${SOFT_NAME} 실행"
+        LangString var1              ${LANG_KOREAN} "공식 컬렉션 요소"
+        LangString var2              ${LANG_KOREAN} "언어 파일"
+        LangString var3              ${LANG_KOREAN} "표제란 예제"
+        LangString var4              ${LANG_KOREAN} "도면 예제"
+
+
         LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Anuluj` aby przerwać aktualizację."
         LangString wrongArch         ${LANG_POLISH}  "To oprogramowanie jest przeznaczone wyłącznie dla komputerów 64 bitowych."
         LangString Elements          ${LANG_POLISH}  "Elementy"
