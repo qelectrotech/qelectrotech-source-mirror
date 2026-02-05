@@ -14,6 +14,7 @@
 		<comment xml:lang="fr">Fichier projet QElectroTech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<comment xml:lang="ja">QElectroTech プロジェクト・ファイル</comment>
+		<comment xml:lang="ko">QElectroTech 프로젝트 파일</comment>
 		<comment xml:lang="nl">QElectroTech project bestand</comment>
 		<comment xml:lang="pl">Plik projektu QElectrotech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
@@ -34,6 +35,7 @@
 		<comment xml:lang="fr">Fichier élément QElectroTech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<comment xml:lang="ja">QElectroTech 要素ファイル</comment>
+		<comment xml:lang="ko">QElectroTech 요소 파일</comment>
 		<comment xml:lang="nl">QElectroTech element bestand</comment>
 		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
@@ -54,6 +56,7 @@
 		<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
 		<comment xml:lang="it">Modello di cartiglio per QElectroTech</comment>
 		<comment xml:lang="ja">QElectroTech 表題欄テンプレート</comment>
+		<comment xml:lang="ko">QElectroTech 표제란 템플릿 파일</comment>
 		<comment xml:lang="nl">QElectroTech titel bloksjabloon</comment>
 		<comment xml:lang="pl">Szablon tabliczki rysunkowej QElectroTech</comment>
 		<comment xml:lang="pt">Modelo de moldura QElectroTech</comment>
