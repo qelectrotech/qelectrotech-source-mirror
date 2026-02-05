@@ -126,8 +126,7 @@
         !insertmacro MUI_LANGUAGE "Dutch"
         !insertmacro MUI_LANGUAGE "Dutch_Belgium"
         !insertmacro MUI_LANGUAGE "Danish"
-        !insertmacro MUI_LANGUAGE "Swedish"
-	!insertmacro MUI_RESERVEFILE_LANGDLL
+        !insertmacro MUI_RESERVEFILE_LANGDLL
 	
 	!include lang_extra.nsh
 	!include lang_extra_fr.nsh
@@ -404,6 +403,7 @@ Function un.onInit
 	!insertmacro MUI_UNGETLANGUAGE
 
 FunctionEnd
+
 
 
 
