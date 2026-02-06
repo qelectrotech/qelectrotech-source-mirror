@@ -18,7 +18,7 @@ jobs:
         submodules: 'recursive'
         show-progress: ''
     - name: Setup and run doxygen
-      run: sudo apt install doxygen graphviz qhelpgenerator-qt5 -y
+      run: sudo apt update && sudo apt install doxygen graphviz qhelpgenerator-qt5 -y
     - name: Set up Git LFS
       run: |
           git lfs install
