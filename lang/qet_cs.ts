@@ -46,7 +46,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="508"/>
         <source>Licenses</source>
-        <translation type="unfinished"></translation>
+        <translation>Povolení</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="532"/>
@@ -1193,7 +1193,7 @@ Poznámka: tyto volby automatické číslování ani NEPOVOLÍ ani nezakáží, 
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="489"/>
         <source>
 &lt;Shift&gt; to move</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;Shift&gt; k přesunutí</translation>
     </message>
 </context>
 <context>
@@ -3544,29 +3544,29 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="874"/>
         <source>Affichage Grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit mřížku</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="969"/>
         <source>max:</source>
-        <translation type="unfinished"></translation>
+        <translation>max:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="900"/>
         <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost bodu v editoru diagramů: 1–5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="992"/>
         <source>min:</source>
-        <translation type="unfinished"></translation>
+        <translation>min:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="946"/>
         <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
-        <translation type="unfinished"></translation>
+        <translation>Velikost bodu v editoru prvků: 1–5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
@@ -3757,7 +3757,7 @@ Stanovte výchozí hodnotu textového pole pro nové prvky níže:</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
         <source>Suédois</source>
-        <translation type="unfinished"></translation>
+        <translation>Švédština</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="465"/>
@@ -5821,7 +5821,7 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="2593"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --data-dir=DIR                Stanovit adresář s daty</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2595"/>
@@ -6944,17 +6944,20 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="505"/>
         <source>Fine-Rotation</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Jemné otáčení</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="514"/>
         <source>Mirror</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zrcadlit</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="523"/>
         <source>Flip</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Převrátit</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="532"/>
@@ -8107,13 +8110,13 @@ Co si přejete udělat?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="676"/>
         <source>Miroir de sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zrcadlit výběr</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="724"/>
         <source>Retourner la sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Převrátit výběr</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partarc.h" line="52"/>
@@ -8926,182 +8929,182 @@ Chcete je nahradit?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Bloc auxiliaire 1</source>
-        <translation>Pomocný blok 1</translation>
+        <translation>Dodatečné informace o přídavném zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Description textuelle auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový popis přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Numéro d&apos;article auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Fabricant auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Výrobce přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Numéro de commande auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Objednací číslo přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro interne auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vnitřní číslo přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Fournisseur auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodavatel přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Quantité auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Unité auxiliaire 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka přídavného zařízení 1</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Bloc auxiliaire 2</source>
-        <translation>Pomocný blok 2</translation>
+        <translation>Dodatečné informace o přídavném zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="282"/>
         <source>Description textuelle auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový popis přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Numéro d&apos;article auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Fabricant auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Výrobce přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Numéro de commande auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Objednací číslo přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Numéro interne auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Vnitřní číslo přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Fournisseur auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodavatel přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Quantité auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="289"/>
         <source>Unité auxiliaire 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka přídavného zařízení 2</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="290"/>
         <source>Bloc auxiliaire 3</source>
-        <translation type="unfinished">Pomocný blok 3</translation>
+        <translation>Dodatečné informace o přídavném zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="291"/>
         <source>Description textuelle auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový popis přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="292"/>
         <source>Numéro d&apos;article auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Fabricant auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Výrobce přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="294"/>
         <source>Numéro de commande auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Objednací číslo přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="295"/>
         <source>Numéro interne auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Vnitřní číslo přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="296"/>
         <source>Fournisseur auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodavatel přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="297"/>
         <source>Quantité auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Unité auxiliaire 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka přídavného zařízení 3</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Bloc auxiliaire 4</source>
-        <translation type="unfinished">Pomocný blok 4</translation>
+        <translation>Dodatečné informace o přídavném zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Description textuelle auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový popis přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Numéro d&apos;article auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Fabricant auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Výrobce přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="303"/>
         <source>Numéro de commande auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Objednací číslo přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="304"/>
         <source>Numéro interne auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Vnitřní číslo přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="305"/>
         <source>Fournisseur auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Dodavatel přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Quantité auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Množství přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="307"/>
         <source>Unité auxiliaire 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka přídavného zařízení 4</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="257"/>
@@ -9491,7 +9494,8 @@ Chcete je nahradit?</translation>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="100"/>
         <source>QET_ElementScaler: 
 additional information about %1 import / scaling</source>
-        <translation type="unfinished"></translation>
+        <translation>QET_ElementScaler: 
+další informace týkající se zavedení/škálování %1</translation>
     </message>
     <message>
         <location filename="../sources/qet_elementscaler/qet_elementscaler.cpp" line="149"/>
@@ -9504,7 +9508,8 @@ Stáhněte jej z níže uvedeného odkazu a rozbalte jej do instalační složky
         <location filename="../sources/dxf/dxftoelmt.cpp" line="58"/>
         <source>Dxf2elmt: 
 Error: Make sure the file %1 is a valid .dxf file</source>
-        <translation type="unfinished"></translation>
+        <translation>Dxf2elmt: 
+Chyba: Ujistěte se, že soubor %1 je platný soubor .dxf</translation>
     </message>
     <message>
         <location filename="../sources/dxf/dxftoelmt.cpp" line="59"/>
