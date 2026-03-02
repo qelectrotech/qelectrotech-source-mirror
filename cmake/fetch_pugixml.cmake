@@ -1,4 +1,4 @@
-# Copyright 2006 The QElectroTech Team
+# Copyright 2006-2026 The QElectroTech Team
 # This file is part of QElectroTech.
 #
 # QElectroTech is free software: you can redistribute it and/or modify
@@ -14,14 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-message(" - fetch_pugixml")
-
-Include(FetchContent)
-
-option(BUILD_PUGIXML "Build pugixml library, use system one otherwise" YES)
-
+option(BUILD_PUGIXML "Build pugixml library, use system one otherwise" OFF)
 if(BUILD_PUGIXML)
-
+  Include(FetchContent)
+  message(" - fetch pugixml")
   FetchContent_Declare(
     pugixml
     GIT_REPOSITORY https://github.com/zeux/pugixml.git

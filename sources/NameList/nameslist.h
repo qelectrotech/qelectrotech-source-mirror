@@ -17,7 +17,7 @@
 */
 #ifndef NAMES_LIST_H
 #define NAMES_LIST_H
-#include "pugixml/src/pugixml.hpp"
+#include "pugixml.hpp"
 
 #include <QtXml>
 /**

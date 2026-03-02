@@ -1,4 +1,4 @@
-# Copyright 2006 The QElectroTech Team
+# Copyright 2006-2026 The QElectroTech Team
 # This file is part of QElectroTech.
 #
 # QElectroTech is free software: you can redistribute it and/or modify
@@ -16,9 +16,6 @@
 
 message(" - fetch_singleapplication")
 
-# https://github.com/itay-grudev/SingleApplication/issues/18
-#qmake
-#DEFINES += QAPPLICATION_CLASS=QGuiApplication
 set(QAPPLICATION_CLASS QApplication)
 
 Include(FetchContent)
@@ -26,6 +23,6 @@ Include(FetchContent)
 FetchContent_Declare(
   SingleApplication
   GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
-  GIT_TAG        v3.2.0)
+  GIT_TAG        v3.5.4)
 
 FetchContent_MakeAvailable(SingleApplication)

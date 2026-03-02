@@ -190,25 +190,28 @@ ProjectPrintWindow::~ProjectPrintWindow()
  */
 void ProjectPrintWindow::requestPaint()
 {
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
-		#ifdef Q_OS_WIN
-			#ifdef QT_DEBUG
-			qDebug() << "--";
-			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
-			qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
-			#endif
+#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+#ifdef Q_OS_WIN
+	auto screen = this->screen();
+	if(screen)
+	{
+#ifdef QT_DEBUG
+		qDebug() << "--";
+		qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
+		qDebug() << "DiagramPrintDialog::print  screennumber " << screen->name();
+#endif
 
-			QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
-			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
-			m_printer->setResolution(dotsPerInch);
+		qreal dotsPerInch = (qreal)screen->logicalDotsPerInch();
+		m_printer->setResolution(dotsPerInch);
 
-			#ifdef QT_DEBUG
-				qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
-				qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << m_printer->resolution();
-			qDebug() << "--";
-			#endif
-		#endif
-	#endif
+#ifdef QT_DEBUG
+		qDebug() << "DiagramPrintDialog::print  dotsPerInch " << dotsPerInch;
+		qDebug() << "DiagramPrintDialog::print  printer_->resolution() after" << m_printer->resolution();
+		qDebug() << "--";
+#endif
+	}
+#endif
+#endif
 
 	if (!m_project->diagrams().count()) {
 		return;
@@ -265,9 +268,9 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 #if TODO_LIST
 #pragma message("@TODO remove code for QT 6 or later")
 #endif
-	qDebug()<<"Help code for QT 6 or later";
-	auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) :
-									printer->pageRect(QPrinter::Millimeter);
+		qDebug()<<"Help code for QT 6 or later";
+		auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) :
+								printer->pageRect(QPrinter::Millimeter);
 #endif
 		auto used_width  = printed_rect.width();
 		auto used_height = printed_rect.height();
@@ -341,7 +344,7 @@ QRect ProjectPrintWindow::diagramRect(Diagram *diagram, const ExportProperties &
 		diagram_rect.setHeight(diagram_rect.height() - titleblock_height);
 	}
 
-		//Adjust the border of diagram to 1px (width of the line)
+	//Adjust the border of diagram to 1px (width of the line)
 	diagram_rect.adjust(0,0,1,1);
 
 	return (diagram_rect.toAlignedRect());
@@ -356,7 +359,7 @@ QRect ProjectPrintWindow::diagramRect(Diagram *diagram, const ExportProperties &
  * with the orientation and the paper format used by the actual printer
  */
 int ProjectPrintWindow::horizontalPagesCount(
-		Diagram *diagram, const ExportProperties &option, bool full_page) const
+	Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
@@ -385,7 +388,7 @@ int ProjectPrintWindow::horizontalPagesCount(
  * with the orientation and paper format used by the actual printer
  */
 int ProjectPrintWindow::verticalPagesCount(
-		Diagram *diagram, const ExportProperties &option, bool full_page) const
+	Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
@@ -511,7 +514,7 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 		QString value = settings.value("orientation", "landscape").toString();
 		m_printer->setPageOrientation(
 			value == "landscape" ? QPageLayout::Landscape :
-								   QPageLayout::Portrait);
+				QPageLayout::Portrait);
 	}
 	if (settings.contains("papersize"))
 	{
@@ -780,9 +783,9 @@ void ProjectPrintWindow::print()
 void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
 {
 	auto index = ui->m_date_from_cb->currentIndex();
-		// 0 = all date
-		// 1 = from the date
-		// 2 = at the date
+	// 0 = all date
+	// 1 = from the date
+	// 2 = at the date
 
 	if (index) { on_m_uncheck_all_clicked();  }
 	else       { on_m_check_all_pb_clicked(); }
@@ -792,7 +795,7 @@ void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
 	{
 		auto diagram_date = diagram->border_and_titleblock.date();
 		if ( (index == 1 && diagram_date >= date) ||
-			 (index == 2 && diagram_date == date) )
+			(index == 2 && diagram_date == date) )
 			m_diagram_list_hash.value(diagram)->setChecked(true);
 	}
 

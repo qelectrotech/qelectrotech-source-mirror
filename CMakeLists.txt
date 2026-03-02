@@ -45,11 +45,12 @@ endif()
 include(cmake/paths_compilation_installation.cmake)
 include(cmake/start_options.cmake)
 include(cmake/developer_options.cmake)
-include(cmake/git_update_submodules.cmake)
+#include(cmake/git_update_submodules.cmake)
 include(cmake/git_last_commit_sha.cmake)
 include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
+include(cmake/fetch_elements.cmake)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -57,10 +58,7 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
-# als laatse
 include(cmake/define_definitions.cmake)
-
-find_package(KF6WidgetsAddons REQUIRED)
 
 qt_add_executable(
   ${PROJECT_NAME}
@@ -89,7 +87,6 @@ target_link_libraries(
   SQLite::SQLite3
   ${KF6_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES}
-  KF6::WidgetsAddons
   )
 
 target_include_directories(
@@ -121,7 +118,6 @@ target_include_directories(
   ${QET_DIR}/sources/NameList
   ${QET_DIR}/sources/NameList/ui
   ${QET_DIR}/sources/utils
-  ${QET_DIR}/pugixml/src
   ${QET_DIR}/sources/dataBase
   ${QET_DIR}/sources/dataBase/ui
   ${QET_DIR}/sources/factory/ui
