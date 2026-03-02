@@ -59,6 +59,9 @@ Here are the technical choices made for the software development:
 
 If you wish to be informed of the latest developments, browse the [archive](https://listengine.tuxfamily.org/lists.tuxfamily.org/qet/) of the project mailing list where all commits (changes) are registered. This archive is publicly available, you don't need any account to access it.
 
+### Build QElectroTech under Windows
+To build QElectroTech under microsoft Windows, please follow [these instructions (french)](md/fr/fr_window_build_summary.md)
+
 
 # Features
 
