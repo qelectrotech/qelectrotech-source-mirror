@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-include(cmake/hoto_update_cmake_message.cmake)
-
 cmake_minimum_required(VERSION 3.5...4.2)
 
 project(qelectrotech
