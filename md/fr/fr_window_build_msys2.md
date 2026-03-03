@@ -94,7 +94,8 @@ Crée et/ou se rendre dans le dossier dans lequel vous voulez clonez le dépôt 
 ```
 mkdir C:\QElectroTech
 cd C:\QElectroTech
-git clone https://github.com/qelectrotech/qelectrotech-source-mirror.git
+
+git clone --recursive https://github.com/qelectrotech/qelectrotech-source-mirror.git
 ```
 
 Une fois le dépôt cloné lancer Qt creator puis choisir d'ouvrir un projet existant, en choisissant le _CMakeLists.txt_ se trouvant à la racine du projet QElectroTech, enfin dans l'assistant de création de projet choisir comme kit le kit que nous avons créer précédemment.
