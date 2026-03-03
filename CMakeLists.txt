@@ -45,12 +45,11 @@ endif()
 include(cmake/paths_compilation_installation.cmake)
 include(cmake/start_options.cmake)
 include(cmake/developer_options.cmake)
-#include(cmake/git_update_submodules.cmake)
+include(cmake/git_update_submodules.cmake)
 include(cmake/git_last_commit_sha.cmake)
 include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
-include(cmake/fetch_elements.cmake)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
