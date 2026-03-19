@@ -77,11 +77,7 @@
 #include <QDialogButtonBox>
 #include <QActionGroup>
 
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
 #include <QStringView>
-#else
-#define QStringView QStringRef
-#endif
 
 QT_BEGIN_NAMESPACE
 
@@ -745,14 +741,8 @@ QString RichTextEditor::text(Qt::TextFormat format) const
 			return m_simplifyRichText ? simplifyRichTextFilter(toHtml()) : toHtml();
 		case Qt::AutoText:
 			break;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 		case Qt::MarkdownText: //This enum value was added in Qt 5.14.
 			break;
-#endif
 		default:
 			qInfo("(RichTextEditor::text) no valid switch: %d",format);
 			break;

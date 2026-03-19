@@ -183,16 +183,7 @@ bool QET::orthogonalProjection(
 
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
-	QLineF::IntersectType it = line.
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-			intersect // ### Qt 6: remove
-#else
-			intersects
-#endif
-			(perpendicular_line, &intersection_point);
+	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
 
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
@@ -545,16 +536,8 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 QStringList QET::splitWithSpaces(const QString &string) {
 	// les chaines sont separees par des espaces non echappes
 	// = avec un nombre nul ou pair de backslashes devant
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-						   QString
-#else
-						   Qt
-#endif
-						   ::SkipEmptyParts);
+											   Qt::SkipEmptyParts);
 
 	QStringList returned_list;
 	foreach(QString escaped_string, escaped_strings) {
@@ -684,14 +667,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	}
 
 	QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if  (!file.commit())
@@ -822,14 +798,7 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 
 	QTextStream out(file);
 	out.seek(0);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if (opened_here) {

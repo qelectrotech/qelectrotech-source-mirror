@@ -394,16 +394,9 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 			 QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList rows_descriptions =
-			rows_string.split(QChar(';'), QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	QStringList rows_descriptions =
 			rows_string.split(QChar(';'), Qt::SkipEmptyParts);
-#endif
+
 	foreach (QString rows_description, rows_descriptions) {
 		QRegularExpressionMatch match;
 		match = row_size_format.match(rows_description);
@@ -436,16 +429,9 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	bool conv_ok;
 	qDebug() <<"is QRegularExpression ok?";
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList cols_descriptions =
-			cols_string.split(QChar(';'), QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	QStringList cols_descriptions =
 			cols_string.split(QChar(';'), Qt::SkipEmptyParts);
-#endif
+
 	foreach (QString cols_description, cols_descriptions) {
 		QRegularExpressionMatch match_abc,match_rel;
 		match_abc = abs_col_size_format.match(cols_description);

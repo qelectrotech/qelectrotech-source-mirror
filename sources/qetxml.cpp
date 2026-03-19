@@ -276,14 +276,7 @@ bool QETXML::writeXmlFile(
 	}
 
 	QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_document.toString(4);
 	file.close();

@@ -28,12 +28,10 @@
  */
 namespace QetSettings
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
 	void setHdpiScaleFactorRoundingPolicy(const QString &policy_str);
 	void setHdpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy policy);
 	Qt::HighDpiScaleFactorRoundingPolicy hdpiScaleFactorRoundingPolicy(
 			Qt::HighDpiScaleFactorRoundingPolicy default_policy = Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-#endif
 }
 
 #endif // QETSETTINGS_H

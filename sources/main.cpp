@@ -174,24 +174,9 @@ int main(int argc, char **argv)
 	QCoreApplication::setApplicationName("QElectroTech");
 	//Creation and execution of the application
 	//HighDPI
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-#endif
 
-
-#if QT_VERSION > QT_VERSION_CHECK(5, 7, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
-
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
-QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
-#endif
+	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
 
 	SingleApplication app(argc, argv, true);

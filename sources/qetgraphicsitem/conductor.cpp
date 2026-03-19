@@ -1725,14 +1725,7 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 			for (Conductor *c : other_conductors_list_t) {
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list);
 			}
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-			other_conductors += other_conductors_list_t.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());
-#endif
 		}
 	}
 

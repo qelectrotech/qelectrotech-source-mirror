@@ -267,11 +267,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
 								  type_ == ElementData::Master));
-#endif
 
 	updateTree();
 }
