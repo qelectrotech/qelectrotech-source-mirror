@@ -1,244 +1,298 @@
 /*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "exportpropertieswidget.h"
-#include <QFileSystemModel>
+#include "elementpropertieseditorwidget.h"
+
+#include "../../qetapp.h"
+#include "../../qetinformation.h"
+#include "ui_elementpropertieseditorwidget.h"
+#include "../../qetinformation.h"
+
+#include <QItemDelegate>
 
 /**
-	@brief ExportPropertiesWidget::ExportPropertiesWidget
-	Constructeur
-	@param parent QWidget parent
+	@brief The EditorDelegate class
+	This delegate is only use for disable the edition of the first
+	column of the information tree widget
 */
-ExportPropertiesWidget::ExportPropertiesWidget(QWidget *parent) : QWidget(parent) {
-	setMinimumWidth(680);
-	setMinimumHeight(720);
-	build();
-	setExportProperties(ExportProperties());
-}
-
-/**
-	@brief ExportPropertiesWidget::ExportPropertiesWidget
-	Constructeur
-	@param export_properties Parametres d'export a afficher / editer
-	@param parent QWidget parent
-*/
-ExportPropertiesWidget::ExportPropertiesWidget(const ExportProperties &export_properties, QWidget *parent) : QWidget(parent) {
-	build();
-	setExportProperties(export_properties);
-}
-
-/**
-	@brief ExportPropertiesWidget::~ExportPropertiesWidget
-	Destructeur
-*/
-ExportPropertiesWidget::~ExportPropertiesWidget()
+class EditorDelegate : public QItemDelegate
 {
-}
+	public:
+		EditorDelegate(QObject *parent) :
+			QItemDelegate(parent)
+		{}
+
+	QWidget* createEditor(QWidget *parent,
+			      const QStyleOptionViewItem &option,
+				  const QModelIndex &index) const override
+	{
+		if(index.column() == 1)
+		{
+			return QItemDelegate::createEditor(parent,
+							   option,
+							   index);
+		}
+		return nullptr;
+	}
+};
 
 /**
-	@brief ExportPropertiesWidget::exportProperties
-	@return les parametres d'export definis via le widget
-*/
-ExportProperties ExportPropertiesWidget::exportProperties() const
+ * @brief ElementPropertiesEditorWidget::ElementPropertiesEditorWidget
+ * @param data
+ * @param parent
+ */
+ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(ElementData data, QWidget *parent) :
+	QDialog(parent),
+	ui(new Ui::ElementPropertiesEditorWidget),
+	m_data(data)
 {
-	ExportProperties export_properties;
-	
-	export_properties.destination_directory   = QDir(dirpath -> text());
-	export_properties.format                  = format -> itemData(format -> currentIndex()).toString();
-	export_properties.draw_grid               = draw_grid      -> isChecked();
-	export_properties.draw_border             = draw_border    -> isChecked();
-	export_properties.draw_titleblock         = draw_titleblock     -> isChecked();
-	export_properties.draw_terminals          = draw_terminals -> isChecked();
-	export_properties.draw_bg_transparent     = draw_bg_transparent -> isChecked();
-	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
-	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
-	
-	return(export_properties);
+	ui->setupUi(this);
+	setUpInterface();
+	upDateInterface();
 }
 
 /**
-	@brief ExportPropertiesWidget::setExportProperties
-	@param export_properties les parametres d'export a afficher / editer via le widget
+	@brief ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget
+	Default destructor
 */
-void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_properties) {
-	dirpath -> setText(QDir::toNativeSeparators(export_properties.destination_directory.absolutePath()));
+ElementPropertiesEditorWidget::~ElementPropertiesEditorWidget()
+{
+	delete ui;
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::upDateInterface
+	Update the interface with the current value
+*/
+void ElementPropertiesEditorWidget::upDateInterface()
+{
+	ui->m_base_type_cb->setCurrentIndex(
+				ui->m_base_type_cb->findData(
+					m_data.m_type));
 	
-	int index = format -> findData(export_properties.format);
-	if (index == -1) index = 0;
-	format -> setCurrentIndex(index);
-	
-	draw_grid               -> setChecked(export_properties.draw_grid);
-	draw_border             -> setChecked(export_properties.draw_border);
-	draw_titleblock         -> setChecked(export_properties.draw_titleblock);
-	draw_terminals          -> setChecked(export_properties.draw_terminals);
-	draw_bg_transparent     -> setChecked(export_properties.draw_bg_transparent);
-	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
-	
-	if (export_properties.exported_area == QET::BorderArea) {
-		export_border -> setChecked(true);
-	} else {
-		export_elements -> setChecked(true);
+	if (m_data.m_type == ElementData::Slave)
+	{
+		ui->m_state_cb->setCurrentIndex(
+					ui->m_state_cb->findData(
+						m_data.m_slave_state));
+		ui->m_type_cb->setCurrentIndex (
+					ui->m_type_cb->findData(
+						m_data.m_slave_type));
+		ui->m_number_ctc->setValue(m_data.m_contact_count);
+	}
+	else if (m_data.m_type == ElementData::Master) {
+		ui->m_master_type_cb->setCurrentIndex(
+			ui->m_master_type_cb->findData (
+				m_data.m_master_type));
+
+		// NEU: Checkbox und Zahlenbox für max_slaves einstellen
+		if (m_data.m_max_slaves == -1) {
+			ui->max_slaves_checkbox->setChecked(false);
+			ui->max_slaves_spinbox->setEnabled(false);
+		} else {
+			ui->max_slaves_checkbox->setChecked(true);
+			ui->max_slaves_spinbox->setEnabled(true);
+			ui->max_slaves_spinbox->setValue(m_data.m_max_slaves);
+		}
+	} else if (m_data.m_type == ElementData::Terminal) {
+		ui->m_terminal_type_cb->setCurrentIndex(
+					ui->m_terminal_type_cb->findData(
+						m_data.m_terminal_type));
+		ui->m_terminal_func_cb->setCurrentIndex(
+					ui->m_terminal_func_cb->findData(
+						m_data.m_terminal_function));
+	}
+
+	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::setUpInterface
+*/
+void ElementPropertiesEditorWidget::setUpInterface()
+{
+		// Type combo box
+	ui->m_base_type_cb->addItem (tr("Simple"),  ElementData::Simple);
+	ui->m_base_type_cb->addItem (tr("Maître"),  ElementData::Master);
+	ui->m_base_type_cb->addItem (tr("Esclave"), ElementData::Slave);
+	ui->m_base_type_cb->addItem (tr("Renvoi de folio suivant"),   ElementData::NextReport);
+	ui->m_base_type_cb->addItem (tr("Renvoi de folio précédent"), ElementData::PreviousReport);
+	ui->m_base_type_cb->addItem (tr("Bornier"), ElementData::Terminal);
+	ui->m_base_type_cb->addItem (tr("Vignette"), ElementData::Thumbnail);
+
+		// Slave option
+	ui->m_state_cb->addItem(tr("Normalement ouvert"),       ElementData::NO);
+	ui->m_state_cb->addItem(tr("Normalement fermé"),        ElementData::NC);
+	ui->m_state_cb->addItem(tr("Inverseur"),                ElementData::SW);
+	ui->m_state_cb->addItem(tr("Other"),                    ElementData::Other);
+	ui->m_type_cb->addItem(tr("Simple"),                    ElementData::SSimple);
+	ui->m_type_cb->addItem(tr("Puissance"),                 ElementData::Power);
+	ui->m_type_cb->addItem(tr("Temporisé travail"),         ElementData::DelayOn);
+	ui->m_type_cb->addItem(tr("Temporisé repos"),           ElementData::DelayOff);
+	ui->m_type_cb->addItem(tr("Temporisé travail & repos"), ElementData::delayOnOff);
+
+		//Master option
+	ui->m_master_type_cb->addItem(tr("Bobine"),               ElementData::Coil);
+	ui->m_master_type_cb->addItem(tr("Organe de protection"), ElementData::Protection);
+	ui->m_master_type_cb->addItem(tr("Commutateur / bouton"), ElementData::Commutator);
+
+		//Terminal option
+	ui->m_terminal_type_cb->addItem(tr("Générique"),    ElementData::TTGeneric);
+	ui->m_terminal_type_cb->addItem(tr("Fusible"),      ElementData::TTFuse);
+	ui->m_terminal_type_cb->addItem(tr("Séctionnable"), ElementData::TTSectional);
+	ui->m_terminal_type_cb->addItem(tr("Diode"),        ElementData::TTDiode);
+	ui->m_terminal_type_cb->addItem(tr("Terre"),        ElementData::TTGround);
+
+	ui->m_terminal_func_cb->addItem(tr("Générique"), ElementData::TFGeneric);
+	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::TFPhase);
+	ui->m_terminal_func_cb->addItem(tr("Neutre"),    ElementData::TFNeutral);
+
+	//Disable the edition of the first column of the information tree
+	//by this little workaround
+	ui->m_tree->setItemDelegate(new EditorDelegate(this));
+	ui->m_tree->header()->resizeSection(0, 150);
+
+	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
+	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
+
+	populateTree();
+}
+
+void ElementPropertiesEditorWidget::updateTree()
+{
+	auto type_ = ui->m_base_type_cb->currentData().value<ElementData::Type>();
+
+	switch (type_) {
+		case ElementData::Simple:
+			ui->m_tree->setEnabled(true);
+			break;
+		case ElementData::Thumbnail:
+			ui->m_tree->setEnabled(true);
+			break;
+		case ElementData::NextReport:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::PreviousReport:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::Master:
+			ui->m_tree->setEnabled(true);
+			break;
+		case ElementData::Slave:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::Terminal:
+			ui->m_tree->setEnabled(true);
+			break;
+		default:
+			ui->m_tree->setDisabled(true);
+			break;
 	}
 }
 
 /**
-	@brief ExportPropertiesWidget::setPrintingMode
-	Puts the widget in Print or Export mode. Print mode
-	does not display as many options as Export mode.
-	/
-	Passe le widget en mode Impression ou en mode Export. Le mode Impression
-	n'affiche pas autant d'options que le mode Export.
-	@param mode
-	true to use the widget in print mode,
-	false to use it in export mode
-	/
-	true pour utiliser le widget en mode impression, false pour
-	l'utiliser en mode export
+	@brief ElementPropertiesEditorWidget::populateTree
+	Create QTreeWidgetItem of the tree widget and populate it
 */
-void ExportPropertiesWidget::setPrintingMode(bool mode) {
-	dirpath_label       -> setVisible(!mode);
-	dirpath             -> setVisible(!mode);
-	button_browse       -> setVisible(!mode);
-	format_label        -> setVisible(!mode);
-	format              -> setVisible(!mode);
-	export_border       -> setVisible(!mode);
-	export_elements     -> setVisible(!mode);
-	draw_bg_transparent -> setVisible(!mode);
-}
-
-/**
-	@brief ExportPropertiesWidget::slot_chooseADirectory
-	Slot asking the user to choose a folder
-	/ Slot demandant a l'utilisateur de choisir un dossier
-*/
-void ExportPropertiesWidget::slot_chooseADirectory()
-{
-	QString user_dir = QFileDialog::getExistingDirectory(
-		this,
-		tr("Exporter dans le dossier", "dialog title"),
-		dirpath -> text()
-	);
-	if (!user_dir.isEmpty()) {
-		dirpath -> setText(QDir::toNativeSeparators(user_dir));
+void ElementPropertiesEditorWidget::populateTree()
+{	
+	const auto keys = QETInformation::elementEditorElementInfoKeys();
+	for(const QString& key : keys)
+	{
+		QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree);
+		qtwi->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
+		qtwi->setData(0, Qt::DisplayRole,
+					  QETInformation::translatedInfoKey(key));
+		qtwi->setData(0, Qt::UserRole, key);
+		qtwi->setText(1, m_data.m_informations.value(key).toString());
+		// Adjust column width
+		ui->m_tree->resizeColumnToContents(0);
 	}
 }
 
 /**
-	@brief ExportPropertiesWidget::build
-	Generated the ExportPropertiesWidget ui
-	/ Cette methode construit le widget en lui-meme
+	@brief ElementPropertiesEditorWidget::on_m_buttonBox_accepted
+	Action on button accepted : the new information is set
 */
-void ExportPropertiesWidget::build()
+void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 {
-	// le dialogue est un empilement vertical d'elements
-	QVBoxLayout *vboxLayout = new QVBoxLayout();
-	vboxLayout -> setContentsMargins(0, 0, 0, 0);
-	
-	/* le dialogue comprend une ligne permettant d'indiquer un chemin de dossier (hboxLayout) */
-	QHBoxLayout *hboxLayout = new QHBoxLayout();
-	dirpath_label = new QLabel(tr("Dossier cible :"), this);
-	dirpath = new QLineEdit(this);
-	QCompleter *completer = new QCompleter(this);
-	completer -> setModel(new QFileSystemModel(completer));
-	dirpath -> setCompleter(completer);
-	button_browse = new QPushButton(tr("Parcourir"), this);
-	hboxLayout -> addWidget(dirpath_label);
-	hboxLayout -> addWidget(dirpath);
-	hboxLayout -> addWidget(button_browse);
-	hboxLayout -> addStretch();
-	
-	vboxLayout -> addLayout(hboxLayout);
-	
-	/* une ligne permettant de choisir le format (hboxLayout1) */
-	QHBoxLayout *hboxLayout1 = new QHBoxLayout();
-	format_label = new QLabel(tr("Format :"), this);
-	hboxLayout1 -> addWidget(format_label);
-	hboxLayout1 -> addWidget(format = new QComboBox(this));
-	format -> addItem(tr("PNG (*.png)"),    "PNG");
-	format -> addItem(tr("JPEG (*.jpg)"),   "JPG");
-	format -> addItem(tr("Bitmap (*.bmp)"), "BMP");
-	format -> addItem(tr("SVG (*.svg)"),    "SVG");
-	format -> addItem(tr("DXF (*.dxf)"),    "DXF");
-	hboxLayout1 -> addStretch();
-	
-	vboxLayout -> addLayout(hboxLayout1);
-	
-	/* un cadre permettant de specifier les options de l'image finale */
-	QGroupBox *groupbox_options = new QGroupBox(tr("Options de rendu", "groupbox title"));
-	QGridLayout *optionshlayout = new QGridLayout(groupbox_options);
-	
-	// Choix de la zone du schema a exporter
-	exported_content_choices = new QButtonGroup(groupbox_options);
-	export_border = new QRadioButton(tr("Exporter entièrement le folio"), groupbox_options);
-	optionshlayout -> addWidget(export_border, 0, 0);
-	exported_content_choices -> addButton(export_border);
-	export_elements = new QRadioButton(tr("Exporter seulement les éléments"), groupbox_options);
-	optionshlayout -> addWidget(export_elements, 0, 1);
-	exported_content_choices -> addButton(export_elements);
-	
-	// dessiner la grille
-	draw_grid = new QCheckBox(tr("Dessiner la grille"), groupbox_options);
-	optionshlayout -> addWidget(draw_grid, 1, 1);
-	
-	// dessiner le cadre
-	draw_border = new QCheckBox(tr("Dessiner le cadre"), groupbox_options);
-	optionshlayout -> addWidget(draw_border, 1, 0);
-	
-	// dessiner le cartouche
-	draw_titleblock = new QCheckBox(tr("Dessiner le cartouche"), groupbox_options);
-	optionshlayout -> addWidget(draw_titleblock, 2, 0);
-	
-	// dessiner les bornes
-	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
-	optionshlayout -> addWidget(draw_terminals, 2, 1);
-	
-	// conserver les couleurs des conducteurs
-	draw_colored_conductors = new QCheckBox(tr("Conserver les couleurs des conducteurs"), groupbox_options);
-	optionshlayout -> addWidget(draw_colored_conductors, 3, 0);
-	
-	// use transparent background for SVG-Export
-	draw_bg_transparent = new QCheckBox(tr("SVG: fond transparent"), groupbox_options);
-	optionshlayout -> addWidget(draw_bg_transparent, 3, 1);
-	
-	vboxLayout -> addWidget(groupbox_options);
-	
-	setLayout(vboxLayout);
+	m_data.m_type = ui->m_base_type_cb->currentData().value<ElementData::Type>();
 
-	// ordre des input selectionnes avec la touche tab
-	setTabOrder(dirpath, button_browse);
-	setTabOrder(button_browse, format);
-	setTabOrder(format, export_border);
-	setTabOrder(export_border, draw_border);
-	setTabOrder(draw_border, draw_grid);
-	setTabOrder(draw_grid, draw_titleblock);
-	setTabOrder(draw_titleblock, draw_terminals);
-	setTabOrder(draw_terminals, draw_colored_conductors);
-	setTabOrder(draw_colored_conductors, draw_bg_transparent);
+	if (m_data.m_type == ElementData::Slave)
+	{
+		m_data.m_slave_state = ui->m_state_cb->currentData().value<ElementData::SlaveState>();
+		m_data.m_slave_type  = ui->m_type_cb->currentData().value<ElementData::SlaveType>();
+		m_data.m_contact_count = ui->m_number_ctc->value();
+	}
+	else if (m_data.m_type == ElementData::Master) {
+		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
+
+		// NEU: Wenn Häkchen gesetzt, speichere die Zahl, ansonsten -1 (unendlich)
+		if (ui->max_slaves_checkbox->isChecked()) {
+			m_data.m_max_slaves = ui->max_slaves_spinbox->value();
+		} else {
+			m_data.m_max_slaves = -1;
+		}
+	}
+	else if (m_data.m_type == ElementData::Terminal)
+	{
+		m_data.m_terminal_type = ui->m_terminal_type_cb->currentData().value<ElementData::TerminalType>();
+		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
+	}
 	
-	// connexion du bouton permettant le choix du repertoire
-	connect(button_browse, SIGNAL(released()), this, SLOT(slot_chooseADirectory()));
+	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
+	{
+		QString txt = qtwi->text(1);
+		//remove line feed and carriage return
+		txt.remove("\r");
+		txt.remove("\n");
+
+		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
+									   txt);
+	}
 	
-	// emission de signaux lors du changement de format et lors du changement de zone exportee
-	connect(format,                   SIGNAL(currentIndexChanged(int)),         this, SIGNAL(formatChanged()));
-	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(exportedAreaChanged()));
-	connect(draw_grid,                SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_border,              SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_titleblock,          SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_terminals,           SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_bg_transparent,      SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_colored_conductors,  SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	this->close();
+}
+
+/**
+	@brief ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged
+	@param index : Action when combo-box base type index change
+*/
+void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int index)
+{
+	bool slave = false , master = false, terminal = false;
+
+	auto type_ = ui->m_base_type_cb->itemData(index).value<ElementData::Type>();
+	if (type_ == ElementData::Slave)
+		slave  = true;
+	else if (type_ == ElementData::Master)
+		master = true;
+	else if (type_ == ElementData::Terminal)
+		terminal = true;
+
+	ui->m_slave_gb->setVisible(slave);
+	ui->m_master_gb->setVisible(master);
+	ui->m_terminal_gb->setVisible(terminal);
+
+#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
+	ui->tabWidget->setTabVisible(1,
+								 (type_ == ElementData::Simple ||
+								  type_ == ElementData::Master));
+#endif
+
+	updateTree();
 }
