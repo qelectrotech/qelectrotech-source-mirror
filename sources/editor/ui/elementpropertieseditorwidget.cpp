@@ -1,4 +1,4 @@
-/*
+﻿/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -96,18 +96,8 @@ void ElementPropertiesEditorWidget::upDateInterface()
 	}
 	else if (m_data.m_type == ElementData::Master) {
 		ui->m_master_type_cb->setCurrentIndex(
-			ui->m_master_type_cb->findData (
-				m_data.m_master_type));
-
-		// NEU: Checkbox und Zahlenbox für max_slaves einstellen
-		if (m_data.m_max_slaves == -1) {
-			ui->max_slaves_checkbox->setChecked(false);
-			ui->max_slaves_spinbox->setEnabled(false);
-		} else {
-			ui->max_slaves_checkbox->setChecked(true);
-			ui->max_slaves_spinbox->setEnabled(true);
-			ui->max_slaves_spinbox->setValue(m_data.m_max_slaves);
-		}
+					ui->m_master_type_cb->findData (
+						m_data.m_master_type));
 	} else if (m_data.m_type == ElementData::Terminal) {
 		ui->m_terminal_type_cb->setCurrentIndex(
 					ui->m_terminal_type_cb->findData(
@@ -161,14 +151,10 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_terminal_func_cb->addItem(tr("Phase"),     ElementData::TFPhase);
 	ui->m_terminal_func_cb->addItem(tr("Neutre"),    ElementData::TFNeutral);
 
-	//Disable the edition of the first column of the information tree
-	//by this little workaround
+		//Disable the edition of the first column of the information tree
+		//by this little workaround
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
 	ui->m_tree->header()->resizeSection(0, 150);
-
-	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
-	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
-
 	populateTree();
 }
 
@@ -240,13 +226,6 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	}
 	else if (m_data.m_type == ElementData::Master) {
 		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
-
-		// NEU: Wenn Häkchen gesetzt, speichere die Zahl, ansonsten -1 (unendlich)
-		if (ui->max_slaves_checkbox->isChecked()) {
-			m_data.m_max_slaves = ui->max_slaves_spinbox->value();
-		} else {
-			m_data.m_max_slaves = -1;
-		}
 	}
 	else if (m_data.m_type == ElementData::Terminal)
 	{

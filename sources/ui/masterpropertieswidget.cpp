@@ -348,34 +348,16 @@ void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
 	@brief MasterPropertiesWidget::on_link_button_clicked
 	move current item in the free_list to linked_list
 */
-/**
- * @brief MasterPropertiesWidget::on_link_button_clicked
- * move current item in the free_list to linked_list
- */
 void MasterPropertiesWidget::on_link_button_clicked()
 {
-	// --- NEU: Prüfen, ob das Master-Limit im UI bereits erreicht ist ---
-	QVariant max_slaves_variant = m_element->kindInformations().value("max_slaves");
-
-	if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
-		int max_slaves = max_slaves_variant.toInt();
-
-		// Wir zählen, wie viele Elemente schon in der "Verbunden"-Liste liegen
-		if (max_slaves != -1 && ui->m_link_tree_widget->topLevelItemCount() >= max_slaves) {
-			// Limit erreicht! Wir brechen die Aktion einfach ab.
-			return;
-		}
-	}
-	// -------------------------------------------------------------------
-
-	//take the current item from free_list and push it to linked_list
+		//take the current item from free_list and push it to linked_list
 	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
 	if (qtwi)
 	{
 		ui->m_free_tree_widget->takeTopLevelItem(
-			ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
+					ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
 		ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
-
+		
 		if(m_live_edit)
 			apply();
 	}

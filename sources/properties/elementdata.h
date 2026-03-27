@@ -134,7 +134,6 @@ class ElementData : public PropertiesInterface
 		ElementData::Type       m_type = ElementData::Simple;
 
 		ElementData::MasterType m_master_type = ElementData::Coil;
-		int m_max_slaves = -1;
 
 		ElementData::SlaveType  m_slave_type  = ElementData::SSimple;
 		ElementData::SlaveState m_slave_state = ElementData::NO;
