@@ -183,3 +183,34 @@ void MasterElement::aboutDeleteXref()
 		return;
 	}
 }
+
+/**
+ * @brief MasterElement::isFull
+ * @return true if the master has reached its maximum number of slaves
+ */
+bool MasterElement::isFull() const
+{
+	// Lese das Limit aus den XML-Daten (kindInformations)
+	// Die value() Funktion im DiagramContext nimmt nur einen Parameter!
+	QVariant max_slaves_variant = kindInformations().value("max_slaves");
+
+	// Wenn der Wert nicht existiert oder leer ist, ist das Bauteil nie voll
+	if (!max_slaves_variant.isValid() || max_slaves_variant.toString().isEmpty()) {
+		return false;
+	}
+
+	// In Integer umwandeln
+	int max_slaves = max_slaves_variant.toInt();
+
+	// Wenn Limit -1 ist, ist der Master nie voll
+	if (max_slaves == -1) {
+		return false;
+	}
+
+	// Wenn die Anzahl der verbundenen Elemente größer oder gleich dem Limit ist, ist er voll
+	if (connected_elements.size() >= max_slaves) {
+		return true;
+	}
+
+	return false;
+}
