@@ -93,14 +93,15 @@ class GenericPanel : public QTreeWidget {
 	// diagram-related methods
 	public:
 	virtual QTreeWidgetItem *addDiagram(Diagram *,
-					    QTreeWidgetItem * = nullptr,
-					    PanelOptions = AddAllChild);
-	protected:
+									QTreeWidgetItem * = nullptr,
+									PanelOptions = AddAllChild);
 	virtual QTreeWidgetItem *getItemForDiagram(Diagram *, bool * = nullptr);
+
+	protected:
 	virtual QTreeWidgetItem *updateDiagramItem(QTreeWidgetItem *,
-						   Diagram *,
-						   PanelOptions = AddAllChild,
-						   bool = false);
+											   Diagram *,
+											   PanelOptions = AddAllChild,
+											   bool = false);
 	virtual QTreeWidgetItem *fillDiagramItem(
 			QTreeWidgetItem *,
 			PanelOptions = AddAllChild,
