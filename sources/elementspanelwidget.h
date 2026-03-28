@@ -38,7 +38,7 @@ class ElementsPanelWidget : public QWidget {
 	ElementsPanelWidget(const ElementsPanelWidget &);
 	
 	// attributes
-	private:
+	public:
 	ElementsPanel *elements_panel;
 	QAction *open_directory, *copy_path;
 	QAction *prj_activate,
