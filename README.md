@@ -18,7 +18,7 @@ The main goal of the developers is to provide a libre, easy to use and effective
 The current stable version is 0.100 and was released on 2026.01.25.
 Once it has been officially released, the stable version is always frozen and is no longer developed.
 
-New functionalities, bug and issue fixings are further made in the development version (currently 0.100), which can also be [downloaded](https://qelectrotech.org/download.php).
+New functionalities, bug and issue fixings are further made in the development version (currently 0.100.1 or 0.200.0 if based on new Qt6 port), which can also be [downloaded](https://qelectrotech.org/download.php).
 
 Users who want to test and take benefits from the last software implementations should use the development version. But... use it at your own risk, since things are sometimes broken or only partially implemented until they are done!
 
