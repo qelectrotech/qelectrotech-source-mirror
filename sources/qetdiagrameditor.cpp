@@ -1170,13 +1170,13 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 	ProjectView *project_view = new ProjectView(project);
 	//Highlight the current page
 	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
-		if (dv && dv->diagram() && pa && pa->elements_panel) {
+		if (dv && dv->diagram() && pa) {
 			// 1. Find the item in the tree that corresponds to this diagram
-			QTreeWidgetItem *item = pa->elements_panel->getItemForDiagram(dv->diagram());
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
 
 			// 2. If you find it, select it
 			if (item) {
-				pa->elements_panel->setCurrentItem(item);
+				pa->elementsPanel().setCurrentItem(item);
 			}
 		}
 	});
