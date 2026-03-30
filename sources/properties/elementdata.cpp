@@ -77,13 +77,15 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 
 		returned_elmt.appendChild(xml_type);
 
-		// NEU: max_slaves speichern
-		auto xml_max_slaves = document.createElement(QStringLiteral("kindInformation"));
-		xml_max_slaves.setAttribute(QStringLiteral("name"), QStringLiteral("max_slaves"));
-		auto max_slaves_txt = document.createTextNode(QString::number(m_max_slaves));
-		xml_max_slaves.appendChild(max_slaves_txt);
+		// Save max_slaves only if a specific limit is set (not default -1)
+		if (m_max_slaves != -1) {
+			auto xml_max_slaves = document.createElement(QStringLiteral("kindInformation"));
+			xml_max_slaves.setAttribute(QStringLiteral("name"), QStringLiteral("max_slaves"));
+			auto max_slaves_txt = document.createTextNode(QString::number(m_max_slaves));
+			xml_max_slaves.appendChild(max_slaves_txt);
 
-		returned_elmt.appendChild(xml_max_slaves);
+			returned_elmt.appendChild(xml_max_slaves);
+		}
 	}
 	else if (m_type == ElementData::Slave)
 	{
