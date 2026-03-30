@@ -164,7 +164,6 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	//Disable the edition of the first column of the information tree
 	//by this little workaround
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
-	ui->m_tree->header()->resizeSection(0, 150);
 
 	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
 	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
