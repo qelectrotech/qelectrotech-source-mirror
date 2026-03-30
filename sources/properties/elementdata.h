@@ -134,7 +134,7 @@ class ElementData : public PropertiesInterface
 		ElementData::Type       m_type = ElementData::Simple;
 
 		ElementData::MasterType m_master_type = ElementData::Coil;
-		int m_max_slaves = -1;
+		int m_max_slaves{-1};
 
 		ElementData::SlaveType  m_slave_type  = ElementData::SSimple;
 		ElementData::SlaveState m_slave_state = ElementData::NO;
@@ -142,7 +142,7 @@ class ElementData : public PropertiesInterface
 		ElementData::TerminalType     m_terminal_type     = ElementData::TTGeneric;
 		ElementData::TerminalFunction m_terminal_function = ElementData::TFGeneric;
 
-		int m_contact_count = 1;
+		int m_contact_count{1};
 		DiagramContext m_informations;
 		NamesList m_names_list;
 		QString m_drawing_information;
