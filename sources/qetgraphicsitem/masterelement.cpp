@@ -190,27 +190,20 @@ void MasterElement::aboutDeleteXref()
  */
 bool MasterElement::isFull() const
 {
-	// Lese das Limit aus den XML-Daten (kindInformations)
-	// Die value() Funktion im DiagramContext nimmt nur einen Parameter!
+	// Set default value to -1 (unlimited slaves)
+	int max_slaves = -1;
 	QVariant max_slaves_variant = kindInformations().value("max_slaves");
 
-	// Wenn der Wert nicht existiert oder leer ist, ist das Bauteil nie voll
-	if (!max_slaves_variant.isValid() || max_slaves_variant.toString().isEmpty()) {
-		return false;
+	// Overwrite default if a valid limit is defined in the element's XML
+	if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
+		max_slaves = max_slaves_variant.toInt();
 	}
 
-	// In Integer umwandeln
-	int max_slaves = max_slaves_variant.toInt();
-
-	// Wenn Limit -1 ist, ist der Master nie voll
+	// If no limit is set (-1), the master is never full
 	if (max_slaves == -1) {
 		return false;
 	}
 
-	// Wenn die Anzahl der verbundenen Elemente größer oder gleich dem Limit ist, ist er voll
-	if (connected_elements.size() >= max_slaves) {
-		return true;
-	}
-
-	return false;
+	// Return true if current connected elements reached or exceeded the limit
+	return connected_elements.size() >= max_slaves;
 }
