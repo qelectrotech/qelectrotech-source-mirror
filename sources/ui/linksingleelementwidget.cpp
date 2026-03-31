@@ -386,17 +386,17 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 	
 	//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_vector.removeAll(m_element->linkedElements().first());
-	// NEU: Filtere volle Master-Elemente aus der Liste heraus
+	// Filter out all master elements from the list
 	for (int i = elmt_vector.size() - 1; i >= 0; --i) {
 		Element *elmt = elmt_vector.at(i);
 
-		// Wenn das Element in der Liste ein Master ist
+		// If the item in the list is a master
 		if (elmt->linkType() == Element::Master) {
 
-			// Wir wandeln den generischen Element-Pointer in einen MasterElement-Pointer um
+			// We convert the generic element pointer into a MasterElement pointer
 			MasterElement *master = static_cast<MasterElement*>(elmt);
 
-			// Wenn der Master voll ist, werfen wir ihn aus der Liste!
+			// If the master is full, we'll remove it from the list!
 			if (master->isFull()) {
 				elmt_vector.removeAt(i);
 			}
