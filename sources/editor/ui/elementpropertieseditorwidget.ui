@@ -107,7 +107,7 @@
           <item row="1" column="0">
            <widget class="QCheckBox" name="max_slaves_checkbox">
             <property name="text">
-             <string>max. Slaves definieren</string>
+             <string>Définir le nombre maximal d'esclaves</string>
             </property>
            </widget>
           </item>
