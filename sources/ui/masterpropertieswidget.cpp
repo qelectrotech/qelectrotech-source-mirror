@@ -342,7 +342,7 @@ void MasterPropertiesWidget::headerCustomContextMenuRequested(const QPoint &pos)
 {
 	m_context_menu->clear();
 	m_context_menu->addAction(m_save_header_state);
-m_context_menu->popup(ui->m_free_tree_widget->header()->mapToGlobal(pos));
+	m_context_menu->popup(ui->m_free_tree_widget->header()->mapToGlobal(pos));
 }
 
 /**
@@ -352,33 +352,33 @@ m_context_menu->popup(ui->m_free_tree_widget->header()->mapToGlobal(pos));
  */
 void MasterPropertiesWidget::on_link_button_clicked()
 {
-    // Get the maximum number of allowed slaves from the element's information
-    QVariant max_slaves_variant = m_element->kindInformations().value("max_slaves");
+	// Get the maximum number of allowed slaves from the element's information
+	QVariant max_slaves_variant = m_element->kindInformations().value("max_slaves");
 
-    if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
-        int max_slaves = max_slaves_variant.toInt();
-        int current_slaves = ui->m_link_tree_widget->topLevelItemCount();
+	if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
+		int max_slaves = max_slaves_variant.toInt();
+		int current_slaves = ui->m_link_tree_widget->topLevelItemCount();
 
-        // If a limit is set and reached
-        if (max_slaves != -1 && current_slaves >= max_slaves) {
+		// If a limit is set and reached
+		if (max_slaves != -1 && current_slaves >= max_slaves) {
 
 
-            // Show a message box with the actual window as parent to ensure it's on top
-            QMessageBox::warning(this->window(),
-                                 tr("Maximum Slaves Reached"),
-                                 tr("This master element cannot accept any new slaves because it is full (Limit: %1).").arg(max_slaves));
-            return;
-        }
-    }
+			// Show a message box with the actual window as parent to ensure it's on top
+			QMessageBox::warning(this->window(),
+								 tr("Maximum Slaves Reached"),
+								 tr("This master element cannot accept any new slaves because it is full (Limit: %1).").arg(max_slaves));
+			return;
+		}
+	}
 
-    // Move current item from free_list to linked_list
-    QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
+	// Move current item from free_list to linked_list
+	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
 	if (qtwi)
 	{
 		ui->m_free_tree_widget->takeTopLevelItem(
-					ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
+			ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
 		ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
-		
+
 		if(m_live_edit)
 			apply();
 	}
