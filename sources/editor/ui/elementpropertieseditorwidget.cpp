@@ -240,7 +240,7 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	else if (m_data.m_type == ElementData::Master) {
 		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
 
-		// NEU: Wenn Häkchen gesetzt, speichere die Zahl, ansonsten -1 (unendlich)
+		//If the checkbox is checked, save the number; otherwise, -1 (infinity)
 		if (ui->max_slaves_checkbox->isChecked()) {
 			m_data.m_max_slaves = ui->max_slaves_spinbox->value();
 		} else {
