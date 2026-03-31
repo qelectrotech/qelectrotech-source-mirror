@@ -568,9 +568,12 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 			}
 			auto name = dom_elmt.attribute(QStringLiteral("name"));
 
-			if (m_type == ElementData::Master &&
-				name == QLatin1String("type")) {
-				m_master_type = masterTypeFromString(dom_elmt.text());
+			if (m_type == ElementData::Master) {
+				if (name == QLatin1String("type")) {
+					m_master_type = masterTypeFromString(dom_elmt.text());
+				} else if (name == QLatin1String("max_slaves")) {
+					m_max_slaves = dom_elmt.text().toInt();
+				}
 			}
 			else if (m_type == ElementData::Slave ) {
 				if (name == QLatin1String("type")) {
