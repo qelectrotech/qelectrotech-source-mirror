@@ -44,8 +44,6 @@ class MasterElement : public Element
 		void unlinkElement     (Element *elmt) override;
 		void initLink          (QETProject *project) override;
 		QRectF XrefBoundingRect() const;
-
-		bool isFull() const; // NEU: Prüft, ob das Slave-Limit erreicht ist
 		
 	protected:
 		QVariant itemChange(
