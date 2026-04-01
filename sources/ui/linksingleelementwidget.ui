@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>389</width>
-    <height>442</height>
+    <height>460</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -64,6 +64,23 @@
      </property>
     </widget>
    </item>
+
+   <item row="4" column="0" colspan="3">
+    <widget class="QLabel" name="m_hidden_masters_label">
+     <property name="text">
+      <string>Remarque : les éléments maîtres ayant atteint leur nombre maximal d'esclaves sont masqués.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <property name="font">
+      <font>
+       <italic>true</italic>
+      </font>
+     </property>
+    </widget>
+   </item>
+
   </layout>
  </widget>
  <resources/>
