@@ -2150,19 +2150,31 @@ Nota: Estas opciones NO permiten o bloquean las Numeraciones automáticas, solo 
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="375"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
+        <source>Nombre maximum de contacts esclaves défini : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
+        <source>Nombre de conctact esclaves utilisés : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="379"/>
         <source>Emplacement : %1
 </source>
         <translation>Ubicación : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="394"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="398"/>
         <source>Retrouver dans le panel</source>
         <translation>Encuentra en el panel</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="396"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="400"/>
         <source>Éditer l&apos;élément</source>
         <translation>Edita el elemento</translation>
     </message>
@@ -4624,7 +4636,7 @@ Por favor use el editor avanzado para esto.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="369"/>
-        <source>Cet élément maître ne peut accepter aucun nouvel esclave car il est plein (Limit: %1).</source>
+        <source>Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

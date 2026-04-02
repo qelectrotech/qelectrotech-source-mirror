@@ -2134,18 +2134,30 @@ Remarque: Ces options n&apos;autorisent ou bloquent l&apos;auto numérotation, s
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="375"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
+        <source>Nombre maximum de contacts esclaves défini : %1
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
+        <source>Nombre de conctact esclaves utilisés : %1
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="379"/>
         <source>Emplacement : %1
 </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="394"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="398"/>
         <source>Retrouver dans le panel</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="396"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="400"/>
         <source>Éditer l&apos;élément</source>
         <translation></translation>
     </message>
@@ -4587,7 +4599,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="369"/>
-        <source>Cet élément maître ne peut accepter aucun nouvel esclave car il est plein (Limit: %1).</source>
+        <source>Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).</source>
         <translation></translation>
     </message>
     <message>

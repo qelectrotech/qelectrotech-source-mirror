@@ -2094,7 +2094,19 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
 </translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="375"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
+        <source>Nombre maximum de contacts esclaves défini : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
+        <source>Nombre de conctact esclaves utilisés : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="379"/>
         <source>Emplacement : %1
 </source>
         <translation>Posizione : %1
@@ -2126,7 +2138,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Type : %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="396"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="400"/>
         <source>Éditer l&apos;élément</source>
         <translation>Modifica l&apos;elemento</translation>
     </message>
@@ -2143,7 +2155,7 @@ Nota: queste opzioni non consentono attivare o disattivare la numerazione automa
         <translation>Sottotipo : %1</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementpropertieswidget.cpp" line="394"/>
+        <location filename="../sources/ui/elementpropertieswidget.cpp" line="398"/>
         <source>Retrouver dans le panel</source>
         <translation>Mostra nello schema</translation>
     </message>
@@ -4540,7 +4552,7 @@ Si prega di utilizzare l&apos;editor avanzato per questo.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="369"/>
-        <source>Cet élément maître ne peut accepter aucun nouvel esclave car il est plein (Limit: %1).</source>
+        <source>Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
