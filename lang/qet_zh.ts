@@ -85,8 +85,8 @@
         <location filename="../sources/ui/aboutqetdialog.cpp" line="95"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="96"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="97"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="155"/>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="158"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="156"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="159"/>
         <source>Développement</source>
         <translation>开发</translation>
     </message>
@@ -213,88 +213,93 @@
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
+        <source>Traduction en coréen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
         <source>Traduction en mongol</source>
         <translation>蒙古语翻译</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="143"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="144"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora和Red Hat包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="144"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
         <source>Paquets Mageia</source>
         <translation>Mageia包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="145"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="146"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="147"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="148"/>
         <source>Paquets Debian</source>
         <translation>Debian包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="148"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="149"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="150"/>
         <source>Paquets Gentoo</source>
         <translation>Gentoo包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="150"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="151"/>
         <source>Paquets OS/2</source>
         <translation>OS/2包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="151"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="152"/>
         <source>Paquets FreeBSD</source>
         <translation>FreeBSD包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="152"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="153"/>
         <source>Paquets MAC OS X</source>
         <translation>MAC OS X包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="153"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="154"/>
         <source>Paquets Archlinux AUR</source>
         <translation>Archlinux AUR包</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="154"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="155"/>
         <source>Icônes</source>
         <translation>图标</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="156"/>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="157"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="158"/>
         <source>Documentation</source>
         <translation>文档</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="159"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="160"/>
         <source>Collection d&apos;éléments</source>
         <translation>元件库整合</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="176"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="177"/>
         <source>Redimensionneur d&apos;éléments</source>
         <comment>Element scaler</comment>
         <translation>元件缩放</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="180"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="181"/>
         <source>Convertisseur d&apos;élément DXF</source>
         <comment>Dxf2elmt</comment>
         <translation>DXF到元件转换</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="182"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="183"/>
         <source>Outil de traduction d&apos;éléments</source>
         <comment>Qet_translate</comment>
         <translation>元件翻译工具</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="160"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="161"/>
         <source>Paquets Snap</source>
         <translation>Snap包</translation>
     </message>
@@ -309,12 +314,12 @@
         <translation>挪威语翻译</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="136"/>
         <source>Traduction en slovène</source>
         <translation>斯洛文尼亚语翻译</translation>
     </message>
     <message>
-        <location filename="../sources/ui/aboutqetdialog.cpp" line="178"/>
+        <location filename="../sources/ui/aboutqetdialog.cpp" line="179"/>
         <source>Générateur d&apos;élément lambda</source>
         <comment>Lambda element generator</comment>
         <translation>Lambda元件生成器</translation>
@@ -792,13 +797,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1656"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1660"/>
         <source>Modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>编辑导体属性</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1661"/>
+        <location filename="../sources/qetgraphicsitem/conductor.cpp" line="1665"/>
         <source>Modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>编辑多个导体的属性</translation>
@@ -1100,7 +1105,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
 <context>
     <name>Diagram</name>
     <message>
-        <location filename="../sources/diagram.cpp" line="1852"/>
+        <location filename="../sources/diagram.cpp" line="1862"/>
         <source>Modifier la profondeur</source>
         <translation>修改深度</translation>
     </message>
@@ -1216,17 +1221,17 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>多重粘贴</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="504"/>
+        <location filename="../sources/diagramview.cpp" line="507"/>
         <source>X: %1 Y: %2</source>
         <translation>X: %1 Y: %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="607"/>
+        <location filename="../sources/diagramview.cpp" line="610"/>
         <source>Connecter les bornes sélectionnées</source>
         <translation>连接选定端子</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="895"/>
+        <location filename="../sources/diagramview.cpp" line="898"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>无标题</translation>
@@ -1321,22 +1326,22 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>编辑项目文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="172"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="171"/>
         <source>Modifier un texte d&apos;élément</source>
         <translation>编辑项目文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="182"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="181"/>
         <source>Modifier %1 textes d&apos;élément</source>
         <translation>编辑项目 %1 的文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="243"/>
         <source>Nom du groupe</source>
         <translation>组名称</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="244"/>
+        <location filename="../sources/ui/dynamicelementtextitemeditor.cpp" line="243"/>
         <source>Entrer le nom du nouveau groupe</source>
         <translation>输入新组的名称</translation>
     </message>
@@ -1870,7 +1875,7 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="27"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="119"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="136"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
@@ -1910,154 +1915,159 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>具体类型</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="113"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="110"/>
+        <source>Définir le nombre maximal d&apos;esclaves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="130"/>
         <source>Élément bornier</source>
         <translation>终端元素</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="126"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="143"/>
         <source>Fonction</source>
         <translation>功能</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="156"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="173"/>
         <source>Informations</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="166"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="183"/>
         <source>Nom</source>
         <translation>姓名</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="171"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="188"/>
         <source>Valeurs</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="119"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="132"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="129"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="142"/>
         <source>Simple</source>
         <translation>简单</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="120"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="130"/>
         <source>Maître</source>
         <translation>主</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="121"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="131"/>
         <source>Esclave</source>
         <translation>从</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="122"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="132"/>
         <source>Renvoi de folio suivant</source>
         <translation>下一个页面参考</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="123"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="133"/>
         <source>Renvoi de folio précédent</source>
         <translation>上一个页面参考</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="124"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="134"/>
         <source>Bornier</source>
         <translation>接线端子</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="125"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="135"/>
         <source>Vignette</source>
         <translation>缩略图</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="128"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="138"/>
         <source>Normalement ouvert</source>
         <translation>常开</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="129"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="139"/>
         <source>Normalement fermé</source>
         <translation>常闭</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="130"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="140"/>
         <source>Inverseur</source>
         <translation>逆变器</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="131"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="141"/>
         <source>Other</source>
         <translation>其他</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="133"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="143"/>
         <source>Puissance</source>
         <translation>电源</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="134"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
         <source>Temporisé travail</source>
         <translation>定时工作</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="135"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
         <source>Temporisé repos</source>
         <translation>定时休息</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="136"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="146"/>
         <source>Temporisé travail &amp; repos</source>
         <translation>定时作息</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="139"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="149"/>
         <source>Bobine</source>
         <translation>线圈</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="140"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
         <source>Organe de protection</source>
         <translation>保护性导体</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="141"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="151"/>
         <source>Commutateur / bouton</source>
         <translation>开关/按钮</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="144"/>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="150"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="154"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="160"/>
         <source>Générique</source>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="145"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="155"/>
         <source>Fusible</source>
         <translation>保险丝</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="146"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="156"/>
         <source>Séctionnable</source>
         <translation>可切割的</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="147"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="157"/>
         <source>Diode</source>
         <translation>二极管</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="151"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="161"/>
         <source>Phase</source>
         <translation>相</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="152"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="162"/>
         <source>Neutre</source>
         <translation>中性</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="148"/>
+        <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="158"/>
         <source>Terre</source>
         <translation>大地</translation>
     </message>
@@ -2561,27 +2571,12 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         <translation>文件夹删除失败。</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="600"/>
-        <source>Le dossier</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="601"/>
-        <source>contient</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="602"/>
-        <source>éléments</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="605"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="607"/>
         <source>Le dossier %1 contient</source>
         <translation>文件夹 %1 包含</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="607"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="608"/>
         <source>%n élément(s), répartie(s)</source>
         <translation>
             <numerusform>%n 个元素，分布式的</numerusform>
@@ -2595,17 +2590,17 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
         </translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="613"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="612"/>
         <source>Chemin de la collection :  %1</source>
         <translation>集合路径：%1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="617"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="601"/>
         <source>Chemin dans le système de fichiers :  %1</source>
         <translation>文件系统中的路径：%1</translation>
     </message>
     <message>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="622"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="617"/>
         <source>Propriété du dossier %1</source>
         <translation>文件夹 %1 的所有权</translation>
     </message>
@@ -3228,7 +3223,7 @@ that you create. Text and number inputs are
         <translation>包含</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="114"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminaleditor.cpp" line="118"/>
         <source>Modifier des propriétés de borniers</source>
         <translation>编辑端子排属性</translation>
     </message>
@@ -3236,27 +3231,27 @@ that you create. Text and number inputs are
 <context>
     <name>FreeTerminalModel</name>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="207"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="227"/>
         <source>Label</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="208"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="228"/>
         <source>Référence croisé</source>
         <translation>交叉参考</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="209"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="229"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="210"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="230"/>
         <source>Fonction</source>
         <translation>功能</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="211"/>
+        <location filename="../sources/TerminalStrip/ui/freeterminalmodel.cpp" line="231"/>
         <source>led</source>
         <translation>led</translation>
     </message>
@@ -3274,23 +3269,23 @@ that you create. Text and number inputs are
         <translation>使用系统颜色</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="128"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="142"/>
         <source>Projets</source>
         <translation>项目</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="181"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="148"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
         <translation>使用页面编号而不是它们在项目中的位置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="161"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="217"/>
         <source>Numéroter les colonnes de cartouche à partir de 0 (1 sinon)</source>
         <extracomment>Choix de l&apos;increment de depart 1 ou 0</extracomment>
         <translation>从 0 开始对标题栏列进行编号（否则为 1）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="147"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="155"/>
         <source>Sauvegarde automatique des projets (appliqué au prochain lancement de QElectroTech)</source>
         <translation>自动保存项目（适用于下次启动 QElectroTech）</translation>
     </message>
@@ -3300,14 +3295,9 @@ that you create. Text and number inputs are
         <translation>使用触摸板手势</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="154"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="184"/>
         <source>Ne pas conserver les labels des éléments lors des copier coller</source>
         <translation>复制粘贴时不保留元件标签</translation>
-    </message>
-    <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="201"/>
-        <source>Exporter les bornes dans la nomenclature</source>
-        <translation>将端子导出到物料清单</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="51"/>
@@ -3320,123 +3310,123 @@ that you create. Text and number inputs are
         <translation>窗体</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="479"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="477"/>
         <source>Chemin de la collection utilisateur</source>
         <translation>用户集合路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="451"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="449"/>
         <source>Chemin de la collection commune</source>
         <translation>通用集合路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="235"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="277"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="319"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="251"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="272"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="293"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="314"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="335"/>
         <source>Par defaut</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="240"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="261"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="282"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="303"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="324"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="256"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="277"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="298"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="319"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="340"/>
         <source>Parcourir...</source>
         <translation>浏览...</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="332"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="348"/>
         <source>(Recharger les collections d&apos;éléments pour appliquer les changements)</source>
         <translation>（重新加载元件集合以应用更改）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="165"/>
         <source>Désactivé</source>
         <translation>已禁用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="174"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="171"/>
         <source> min</source>
         <comment>minute</comment>
         <translation> 分钟</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="507"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="505"/>
         <source>Chemin des cartouches utilisateur</source>
         <translation>用户图框路径</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="209"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="225"/>
         <source>Collections</source>
         <translation>集合</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="215"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="231"/>
         <source>Accès aux collections</source>
         <translation>访问集合</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="227"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="243"/>
         <source>Répertoire de la collection commune</source>
         <translation>通用集合目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="290"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="306"/>
         <source>Répertoire de la collection utilisateur</source>
         <translation>用户集合目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="311"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="327"/>
         <source>Répertoire des cartouches utilisateur</source>
         <translation>用户图框目录</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="342"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
         <source>Gestion des éléments</source>
         <translation>元件管理</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="351"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="367"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <translation>突出显示面板中新集成的元素</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="374"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre.
 Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
         <translation>每个元素都包含有关其作者、许可证或您认为在自由领域有用的任何其他信息的信息。
 您可以在此处为要创建的元素指定此字段的默认值：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="395"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="411"/>
         <source>Appliqué au prochain lancement de QElectroTech</source>
         <translation>适用于下一次启动QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="435"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="451"/>
         <source>Vous pouvez définir ici l&apos;apparence par defaut des differents textes de QElectroTech</source>
         <translation>在这里您可以定义 QElectroTech 不同文本的默认外观</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="618"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="634"/>
         <source>Grille + Clavier</source>
         <translation>网格+键盘</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="624"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="640"/>
         <source>Grille : 1 - 30</source>
         <translation>网格 : 1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="691"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="707"/>
         <source>DiagramEditor xGrid</source>
         <translation>原理图编辑器x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="658"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="674"/>
         <source>DiagramEditor yGrid</source>
         <translation>原理图编辑器y网格</translation>
     </message>
@@ -3451,325 +3441,345 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
         <translation>使用选项卡（&amp;m）（适用于下一次 QElectroTech 启动）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="101"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="111"/>
         <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
         <translation>高像素密度 (hdpi) 显示器的缩放方法（适用于下一次 QElectroTech 启动）：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="248"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="264"/>
         <source>Répertoire de la collection company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="269"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="285"/>
         <source>Répertoire des cartouches company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="386"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="402"/>
         <source>Langues</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="429"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="445"/>
         <source>Textes</source>
         <translation>文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="449"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="465"/>
         <source>Textes d&apos;éléments</source>
         <translation>文本元素</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="462"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="528"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="574"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="478"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="544"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="590"/>
         <source>Police :</source>
         <translation>字体 ：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="472"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="535"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="488"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="551"/>
         <source>°</source>
         <translation>°</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="482"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="498"/>
         <source>Longueur :</source>
         <translation>长度 ：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="492"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="521"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="508"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="537"/>
         <source>Rotation :</source>
         <translation>旋转 ：</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="515"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="531"/>
         <source>Textes indépendants</source>
         <translation>独立文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="568"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="584"/>
         <source>Autres textes</source>
         <translation>其他文本</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="665"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="681"/>
         <source>La Grille doite etre active pour pouvoir voir les modifications.</source>
         <translation>网格必须处于活动状态才能看到更改。</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="714"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="730"/>
         <source>Déplacement au clavier : 1 - 30</source>
         <translation>键盘移动：1 - 30</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="764"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="780"/>
         <source>DiagramEditor (touche :   gauche / droite)  xGrid</source>
         <translation>原理图编辑器（键：左/右）x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="771"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="787"/>
         <source>DiagramEditor (touche :   haut / bas)  yGrid</source>
         <translation>原理图编辑器（键：上/下）y网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="794"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="810"/>
         <source>Déplacement au clavier avec la touche ALT : 1 - 9</source>
         <translation>使用 ALT 键的键盘移动：1 - 9</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="800"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="816"/>
         <source>DiagramEditor (touche :   gauche / droite ) xGrid</source>
         <translation>原理图编辑器（键：左/右）x网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="829"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="845"/>
         <source>DiagramEditor (touche :  haut / bas)  yGrid</source>
         <translation>原理图编辑器（键：上/下）y网格</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="874"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="890"/>
         <source>Affichage Grille</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="893"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="969"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="909"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="985"/>
         <source>max:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="900"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="916"/>
         <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="923"/>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="992"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="939"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1008"/>
         <source>min:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="946"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="962"/>
         <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1016"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1032"/>
         <source>Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1024"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1040"/>
         <source>Max. parts in Element Editor List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="45"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
         <source>Arrondi supérieur pour 0.5 et plus</source>
         <translation>向上取整为 0.5 或更多</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="46"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
         <source>Toujours arrondi supérieur</source>
         <translation>总是四舍五入</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="47"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
         <source>Toujours arrondi inférieur</source>
         <translation>总是向下舍入</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="48"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
         <source>Arrondi supérieur pour 0.75 et plus</source>
         <translation>向上取整为 0.75 及以上</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="49"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="50"/>
         <source>Pas d&apos;arrondi</source>
         <translation>没有四舍五入</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="335"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="332"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="353"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="350"/>
         <source>Système</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="354"/>
         <source>Arabe</source>
         <translation>阿拉伯语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="355"/>
         <source>Brézilien</source>
         <translation>巴西语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="356"/>
         <source>Catalan</source>
         <translation>加泰罗尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="357"/>
         <source>Tchèque</source>
         <translation>捷克语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="358"/>
         <source>Allemand</source>
         <translation>德语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="359"/>
         <source>Danois</source>
         <translation>丹麦语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="360"/>
         <source>Grec</source>
         <translation>希腊语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="361"/>
         <source>Anglais</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="362"/>
         <source>Espagnol</source>
         <translation>西班牙语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="363"/>
         <source>Français</source>
         <translation>法语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="364"/>
         <source>Croate</source>
         <translation>克罗地亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="365"/>
         <source>Italien</source>
         <translation>意大利语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="366"/>
         <source>Japonais</source>
         <translation>日语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
+        <source>Coréen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
         <source>Polonais</source>
         <translation>波兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="369"/>
         <source>Portugais</source>
         <translation>葡萄牙语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="370"/>
         <source>Roumains</source>
         <translation>罗马尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="371"/>
         <source>Russe</source>
         <translation>俄语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="372"/>
         <source>Slovène</source>
         <translation>斯洛文尼亚语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="373"/>
         <source>Pays-Bas</source>
         <translation>荷兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="374"/>
         <source>Norvege</source>
         <translation>挪威语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="375"/>
         <source>Belgique-Flemish</source>
         <translation>比利时-佛兰德语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="376"/>
         <source>Turc</source>
         <translation>土耳其语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="377"/>
         <source>Hongrois</source>
         <translation>匈牙利语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="380"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="378"/>
         <source>Mongol</source>
         <translation>蒙古语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="379"/>
         <source>Ukrainien</source>
         <translation>乌克兰语</translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="382"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="380"/>
         <source>Chinois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="383"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="381"/>
         <source>Suédois</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="465"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="463"/>
         <source>Chemin de la collection company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="493"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="491"/>
         <source>Chemin des cartouches company</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="538"/>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="536"/>
         <source>To high values might lead to crashes of the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="571"/>
+        <source>Fonctionnalité expérimental</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="572"/>
+        <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4363,6 +4373,11 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>搜索</translation>
     </message>
     <message>
+        <location filename="../sources/ui/linksingleelementwidget.ui" line="71"/>
+        <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="20"/>
         <source>Voir cet élément</source>
         <translation>查看此元件</translation>
@@ -4403,72 +4418,72 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>交叉引用（附属）</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="444"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="452"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="459"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="467"/>
         <source>Label</source>
         <translation>标签</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="445"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="453"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="460"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="468"/>
         <source>Commentaire</source>
         <translation>注释</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="446"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="469"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="461"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="484"/>
         <source>Label de folio</source>
         <translation>页面标签</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="447"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="455"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="462"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="470"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="481"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="485"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="496"/>
         <source>Position</source>
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="448"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="456"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="463"/>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="471"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="482"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="486"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="497"/>
         <source>Titre de folio</source>
         <translation>页面标题</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="454"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="480"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="469"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="495"/>
         <source>N° de folio</source>
         <translation>页面页数</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="464"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="475"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="479"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="490"/>
         <source>N° de fil</source>
         <translation>文件页数</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="465"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="476"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="480"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="491"/>
         <source>Fonction</source>
         <translation>功能</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="466"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="477"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="481"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="492"/>
         <source>Tension / Protocole</source>
         <translation>电压/协议</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="467"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="478"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="482"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="493"/>
         <source>Couleur du conducteur</source>
         <translation>导体颜色</translation>
     </message>
     <message>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="468"/>
-        <location filename="../sources/ui/linksingleelementwidget.cpp" line="479"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="483"/>
+        <location filename="../sources/ui/linksingleelementwidget.cpp" line="494"/>
         <source>Section du conducteur</source>
         <translation>导体截面积</translation>
     </message>
@@ -4534,57 +4549,67 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <translation>相关项目</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="48"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="54"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
         <source>Vignette</source>
         <translation>缩略图</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="49"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
         <source>Label de folio</source>
         <translation>页面标签</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="50"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="51"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
         <source>Titre de folio</source>
         <translation>页面标题</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="51"/>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="57"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="52"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="58"/>
         <source>Position</source>
         <translation>位置</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="55"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="56"/>
         <source>N° de folio</source>
         <translation>页面数量</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="63"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
         <source>Lier l&apos;élément</source>
         <translation>链接元件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="64"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
         <source>Délier l&apos;élément</source>
         <translation>取消链接元件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="65"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="66"/>
         <source>Montrer l&apos;élément</source>
         <translation>显示元件</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="66"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="67"/>
         <source>Montrer l&apos;élément maître</source>
         <translation>显示主项目</translation>
     </message>
     <message>
-        <location filename="../sources/ui/masterpropertieswidget.cpp" line="67"/>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="68"/>
         <source>Enregistrer la disposition</source>
         <translation>保存布局</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="368"/>
+        <source>Nombre maximal d&apos;esclaves atteint.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/masterpropertieswidget.cpp" line="369"/>
+        <source>Cet élément maître ne peut accepter aucun nouvel esclave car il est plein (Limit: %1).</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="62"/>
@@ -5498,17 +5523,17 @@ Les variables suivantes sont incompatibles :
         <translation>布局（在 Windows 上不适用于 PDF 导出）</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="433"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="434"/>
         <source>Folio sans titre</source>
         <translation>无标题页面</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="672"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="673"/>
         <source>Exporter sous : </source>
         <translation>导出为 ： </translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="672"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="673"/>
         <source>Fichier (*.pdf)</source>
         <translation>PDF文件(*.pdf)</translation>
     </message>
@@ -5676,175 +5701,175 @@ Voulez-vous enregistrer les modifications ?</source>
         <translation>用户图框</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1441"/>
+        <location filename="../sources/qetapp.cpp" line="1443"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1443"/>
+        <location filename="../sources/qetapp.cpp" line="1445"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1445"/>
+        <location filename="../sources/qetapp.cpp" line="1447"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1447"/>
+        <location filename="../sources/qetapp.cpp" line="1449"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Electrique</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1449"/>
+        <location filename="../sources/qetapp.cpp" line="1451"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1926"/>
+        <location filename="../sources/qetapp.cpp" line="1928"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translation>配置QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2077"/>
+        <location filename="../sources/qetapp.cpp" line="2082"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>加载中...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2233"/>
+        <location filename="../sources/qetapp.cpp" line="2238"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>加载中...系统托盘图标</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2237"/>
+        <location filename="../sources/qetapp.cpp" line="2242"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2240"/>
+        <location filename="../sources/qetapp.cpp" line="2245"/>
         <source>&amp;Quitter</source>
         <translation>退出（&amp;Q）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2242"/>
+        <location filename="../sources/qetapp.cpp" line="2247"/>
         <source>&amp;Masquer</source>
         <translation>隐藏（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2244"/>
+        <location filename="../sources/qetapp.cpp" line="2249"/>
         <source>&amp;Restaurer</source>
         <translation>恢复（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2246"/>
+        <location filename="../sources/qetapp.cpp" line="2251"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>隐藏所有原理图编辑器（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2249"/>
+        <location filename="../sources/qetapp.cpp" line="2254"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>恢复所有原理图编辑器（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2252"/>
+        <location filename="../sources/qetapp.cpp" line="2257"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>隐藏所有元件编辑器（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2255"/>
+        <location filename="../sources/qetapp.cpp" line="2260"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>恢复所有元件编辑器（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2258"/>
+        <location filename="../sources/qetapp.cpp" line="2263"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>隐藏所有图框编辑器（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2261"/>
+        <location filename="../sources/qetapp.cpp" line="2266"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation>恢复所有图框编辑器（&amp;R）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2264"/>
+        <location filename="../sources/qetapp.cpp" line="2269"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>新建原理图编辑器（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2266"/>
+        <location filename="../sources/qetapp.cpp" line="2271"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>新建元件编辑器（&amp;N）</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2268"/>
+        <location filename="../sources/qetapp.cpp" line="2273"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>关闭 QElectroTech 应用程序</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2269"/>
+        <location filename="../sources/qetapp.cpp" line="2274"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>减少系统托盘中的 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2270"/>
+        <location filename="../sources/qetapp.cpp" line="2275"/>
         <source>Restaurer QElectroTech</source>
         <translation>恢复 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2287"/>
+        <location filename="../sources/qetapp.cpp" line="2292"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2382"/>
+        <location filename="../sources/qetapp.cpp" line="2387"/>
         <source>Éditeurs de schémas</source>
         <translation>原理图编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2392"/>
+        <location filename="../sources/qetapp.cpp" line="2397"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>元件编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2403"/>
+        <location filename="../sources/qetapp.cpp" line="2408"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation>图框编辑器</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2455"/>
+        <location filename="../sources/qetapp.cpp" line="2460"/>
         <source>&lt;b&gt;Le fichier de restauration suivant a été trouvé,&lt;br&gt;Voulez-vous l&apos;ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;找到以下还原文件，&lt;br&gt;要打开它吗？&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2458"/>
+        <location filename="../sources/qetapp.cpp" line="2463"/>
         <source>&lt;b&gt;Les fichiers de restauration suivant on été trouvé,&lt;br&gt;Voulez-vous les ouvrir ?&lt;/b&gt;&lt;br&gt;</source>
         <translation>&lt;b&gt;已找到以下恢复文件，&lt;br&gt;要打开它们吗？&lt;/b&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2473"/>
+        <location filename="../sources/qetapp.cpp" line="2478"/>
         <source>Fichier de restauration</source>
         <translation>恢复文件</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2575"/>
+        <location filename="../sources/qetapp.cpp" line="2580"/>
         <source>Usage : </source>
         <translation>用量： </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2577"/>
+        <location filename="../sources/qetapp.cpp" line="2582"/>
         <source> [options] [fichier]...
 
 </source>
@@ -5853,7 +5878,7 @@ Voulez-vous enregistrer les modifications ?</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2578"/>
+        <location filename="../sources/qetapp.cpp" line="2583"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -5870,34 +5895,34 @@ Options disponibles :
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2584"/>
+        <location filename="../sources/qetapp.cpp" line="2589"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR 设置元件集合文件夹
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2587"/>
+        <location filename="../sources/qetapp.cpp" line="2592"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
         <translation>  --common-tbt-dir=DIR 设置图框类型集合文件夹
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2590"/>
+        <location filename="../sources/qetapp.cpp" line="2595"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR 设置配置文件夹
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2593"/>
+        <location filename="../sources/qetapp.cpp" line="2598"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="2595"/>
+        <location filename="../sources/qetapp.cpp" line="2600"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR 定义包含语言文件的文件夹
@@ -6221,7 +6246,7 @@ Options disponibles :
         <translation>深度</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1496"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1517"/>
         <source>Groupe</source>
         <translation>群组</translation>
     </message>
@@ -6705,7 +6730,7 @@ Options disponibles :
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1915"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1936"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>无法打开工程</translation>
@@ -6717,53 +6742,64 @@ Options disponibles :
         <translation>文件 %1 看起来不是 QElectroTech 工程文件。 因此无法打开。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1422"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1434"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
         <translation>双击完成形状，右击撤销最后一点</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1696"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1488"/>
+        <source>Suppression de borne impossible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1489"/>
+        <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1717"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>编辑元件</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1724"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>编辑文本字段</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1710"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1731"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>编辑图片</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1738"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>编辑导体</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1746"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>编辑所选对象</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1916"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1937"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation>打开文件 %1 时出错。</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1964"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
         <source>Active le projet « %1 »</source>
         <translation>激活工程“%1”</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2337"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>错误</translation>
@@ -7499,35 +7535,35 @@ les conditions requises ne sont pas valides</source>
         <translation>配置（&amp;C）</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="151"/>
+        <location filename="../sources/qetmainwindow.cpp" line="150"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
         <translation>帮助（&amp;A）</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="216"/>
+        <location filename="../sources/qetmainwindow.cpp" line="215"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>退出全屏模式（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="218"/>
+        <location filename="../sources/qetmainwindow.cpp" line="217"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>以窗口模式显示 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="220"/>
+        <location filename="../sources/qetmainwindow.cpp" line="219"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>切换到全屏模式（&amp;M）</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="222"/>
+        <location filename="../sources/qetmainwindow.cpp" line="221"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>以全屏模式显示 QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetmainwindow.cpp" line="237"/>
+        <location filename="../sources/qetmainwindow.cpp" line="236"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
         <translation>显示</translation>
@@ -7945,7 +7981,7 @@ Que désirez vous faire ?</source>
         <translation>元件图形</translation>
     </message>
     <message>
-        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="103"/>
+        <location filename="../sources/undocommand/deleteqgraphicsitemcommand.cpp" line="105"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>删除 %1</translation>
@@ -7964,7 +8000,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="248"/>
-        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="53"/>
+        <location filename="../sources/undocommand/movegraphicsitemcommand.cpp" line="54"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>移动 %1</translation>
@@ -8113,19 +8149,19 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="514"/>
-        <location filename="../sources/editor/editorcommands.cpp" line="611"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="619"/>
         <source>Pivoter la selection</source>
         <comment>undo caption</comment>
         <translation>旋转选择</translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="676"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="684"/>
         <source>Miroir de sélection</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/editorcommands.cpp" line="724"/>
+        <location filename="../sources/editor/editorcommands.cpp" line="732"/>
         <source>Retourner la sélection</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -8157,7 +8193,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="65"/>
-        <location filename="../sources/editor/graphicspart/partterminal.h" line="86"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="88"/>
         <source>Borne</source>
         <translation>端子排</translation>
     </message>
@@ -8369,7 +8405,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="162"/>
-        <location filename="../sources/qetgraphicsitem/element.cpp" line="429"/>
+        <location filename="../sources/qetgraphicsitem/element.cpp" line="402"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>警告：元件已在更高版本的 QElectroTech 中保存。</translation>
     </message>
@@ -8646,7 +8682,7 @@ Que désirez vous faire ?</source>
         <translation>集合</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/elementsmover.cpp" line="205"/>
+        <location filename="../sources/elementsmover.cpp" line="203"/>
         <source>Ajouter %n conducteur(s)</source>
         <comment>add a numbers of conductor one or more</comment>
         <translation>
@@ -8770,7 +8806,7 @@ Voulez-vous la remplacer ?</source>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="202"/>
-        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="644"/>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="639"/>
         <source>chargement %p% (%v sur %m)</source>
         <translation>正在加载 %p%（%v 在 %m 上）</translation>
     </message>
@@ -9157,22 +9193,22 @@ Voulez-vous la remplacer ?</source>
         <translation>导体的创建</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2406"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2427"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>要安装插件 qet_tb_generator&lt;br&gt;请访问：&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;需要python 3.5或更高版本。&lt;br&gt;&lt;B&gt;&lt;U&gt;首先在Windows上安装&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 如果需要，请安装 python 3.5 或更高版本&lt;br&gt;访问：&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; 在 Windows 上更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;用户可以在终端中启动此脚本目录&lt;br&gt;C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2426"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2447"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2445"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2466"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation>要安装插件 qet_tb_generator&lt;br&gt;请访问：&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt; br&gt;需要 python 3.5 或更高版本。&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;首先在 Linux 上安装&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. 检查您是否已安装 pip3： pip3 --version&lt;br&gt;如果未安装： sudo apt-get install python3-pip&lt;br&gt;2. 安装程序：sudo pip3 install qet_tb_generator&lt;br&gt;3。 运行程序：qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt;在 Linux 上更新&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2465"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2486"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation>启动 qet_tb_generator 插件时出错</translation>
     </message>
@@ -9192,16 +9228,16 @@ Voulez-vous la remplacer ?</source>
         <translation>粘贴</translation>
     </message>
     <message>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
-        <location filename="../sources/qetapp.cpp" line="2327"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
+        <location filename="../sources/qetapp.cpp" line="2332"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>这是代码中的错误</translation>
@@ -9212,7 +9248,7 @@ Voulez-vous la remplacer ?</source>
         <translation>编译： </translation>
     </message>
     <message>
-        <location filename="../sources/machine_info.cpp" line="455"/>
+        <location filename="../sources/machine_info.cpp" line="471"/>
         <source>Compilation :   </source>
         <translation>编译：   </translation>
     </message>
@@ -9325,51 +9361,51 @@ Voulez-vous la remplacer ?</source>
         <translation>对端子排 %1 进行排序</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="495"/>
         <location filename="../sources/properties/elementdata.cpp" line="505"/>
+        <location filename="../sources/properties/elementdata.cpp" line="515"/>
         <source>Générique</source>
         <comment>generic terminal element type</comment>
         <translation>通用的</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="497"/>
+        <location filename="../sources/properties/elementdata.cpp" line="507"/>
         <source>Fusible</source>
         <comment>fuse terminal element type</comment>
         <translation>保险丝保护的</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="499"/>
+        <location filename="../sources/properties/elementdata.cpp" line="509"/>
         <source>Sectionable</source>
         <comment>sectional terminal element type</comment>
         <translation>可分段</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="501"/>
+        <location filename="../sources/properties/elementdata.cpp" line="511"/>
         <source>Diode</source>
         <comment>diode terminal element type</comment>
         <translation>二极管</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="503"/>
+        <location filename="../sources/properties/elementdata.cpp" line="513"/>
         <source>Terre</source>
         <comment>ground terminal element type</comment>
         <translation>接地</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="540"/>
-        <location filename="../sources/properties/elementdata.cpp" line="544"/>
+        <location filename="../sources/properties/elementdata.cpp" line="550"/>
+        <location filename="../sources/properties/elementdata.cpp" line="554"/>
         <source>Générique</source>
         <comment>generic terminal element function</comment>
         <translation>通用的</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="541"/>
+        <location filename="../sources/properties/elementdata.cpp" line="551"/>
         <source>Phase</source>
         <comment>phase terminal element function</comment>
         <translation>相线</translation>
     </message>
     <message>
-        <location filename="../sources/properties/elementdata.cpp" line="542"/>
+        <location filename="../sources/properties/elementdata.cpp" line="552"/>
         <source>Neutre</source>
         <comment>neutral terminal element function</comment>
         <translation>中线性</translation>
@@ -12962,12 +12998,12 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>LED :</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="127"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="109"/>
         <source>Bornes indépendantes</source>
         <translation>独立端子</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="196"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstripeditor.cpp" line="179"/>
         <source>Modifier des propriétés de borniers</source>
         <translation>编辑端子排属性</translation>
     </message>
@@ -13018,7 +13054,7 @@ Les autres champs ne sont pas utilisés.</source>
 <context>
     <name>TerminalStripItem</name>
     <message>
-        <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="94"/>
+        <location filename="../sources/TerminalStrip/GraphicsItem/terminalstripitem.cpp" line="96"/>
         <source>plan de bornes</source>
         <translation>端子排规划</translation>
     </message>
@@ -13031,112 +13067,142 @@ Les autres champs ne sont pas utilisés.</source>
         <translation type="unfinished">窗体</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="23"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="65"/>
         <source>Borne niveau 0 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="30"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="482"/>
         <source>En tête :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="47"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="531"/>
         <source>Point de pont</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="75"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="44"/>
         <source>Décalage vertical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="82"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="145"/>
         <source>Afficher l&apos;aide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="110"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="155"/>
         <source>Largeur</source>
         <translation type="unfinished">宽度</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="131"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="252"/>
+        <source>Orientation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="259"/>
+        <source>Alignement</source>
+        <translation type="unfinished">对齐</translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="281"/>
+        <source>Police :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="291"/>
+        <source>Taille :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="321"/>
+        <source>Texte d&apos;en tête</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="331"/>
+        <source>Origine vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="338"/>
+        <source>Longueur maximal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="395"/>
+        <source>Texte borne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="405"/>
+        <source>Référence croisée</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="524"/>
         <source>Hauteur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="138"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="545"/>
         <source>Prévisualisation :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="196"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="215"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="234"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="363"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="430"/>
         <source>Gauche</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="201"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="220"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="239"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="368"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="435"/>
         <source>Centre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="206"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="225"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="244"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="373"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="440"/>
         <source>Droite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="233"/>
-        <source>Alignement du texte d&apos;en tête :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="240"/>
-        <source>Alignement du texte de borne :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="248"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="262"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="220"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="382"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="416"/>
         <source>Horizontal</source>
         <translation type="unfinished">水平的</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="253"/>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="267"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="225"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="387"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="421"/>
         <source>Vertical</source>
         <translation type="unfinished">竖直的</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="275"/>
-        <source>Orientation du texte de borne :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="282"/>
-        <source>Orientation du texte d&apos;en tête :</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="299"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="117"/>
         <source>Borne niveau 2 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="313"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="169"/>
         <source>Espace :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="369"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="110"/>
         <source>Borne niveau 3 :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="383"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="197"/>
         <source>Borne niveau 1 :</source>
         <translation type="unfinished"></translation>
     </message>
@@ -13210,12 +13276,12 @@ Les autres champs ne sont pas utilisés.</source>
         <translation>端子排浏览器</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="211"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="239"/>
         <source>Projet sans titre</source>
         <translation>无标题项目</translation>
     </message>
     <message>
-        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="217"/>
+        <location filename="../sources/TerminalStrip/ui/terminalstriptreedockwidget.cpp" line="245"/>
         <source>Bornes indépendante</source>
         <translation>独立端子</translation>
     </message>
