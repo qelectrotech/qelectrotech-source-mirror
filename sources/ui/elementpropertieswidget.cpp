@@ -373,8 +373,8 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	description_string += QString(tr("Dimensions : %1*%2\n")).arg(m_element -> size().width()).arg(m_element -> size().height());
 	description_string += QString(tr("Bornes : %1\n")).arg(m_element -> terminals().count());
 	if (m_element->linkType() == Element::Master){
-	description_string += QString(tr("Nombre maximum de contacts esclaves défini : %1\n")).arg(m_element -> elementData().m_max_slaves);
-	description_string += QString(tr("Nombre de conctact esclaves utilisés : %1\n")).arg(m_element ->linkedElements().count());
+	description_string += QString(tr("Nombre maximum de contacts esclaves définis : %1\n")).arg(m_element -> elementData().m_max_slaves);
+	description_string += QString(tr("Nombre de conctacts esclaves utilisés : %1\n")).arg(m_element ->linkedElements().count());
 	}
 	description_string += QString(tr("Emplacement : %1\n")).arg(m_element.data()->location().toString());
 
