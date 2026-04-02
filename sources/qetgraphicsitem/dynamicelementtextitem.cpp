@@ -1351,6 +1351,7 @@ void DynamicElementTextItem::updateXref()
 				{
 					m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
 					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
+					m_slave_Xref_item->setDefaultTextColor(Qt::black);
 					m_slave_Xref_item->installSceneEventFilter(this);
 					
 					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);

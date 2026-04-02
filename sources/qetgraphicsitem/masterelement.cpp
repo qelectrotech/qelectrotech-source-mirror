@@ -183,3 +183,27 @@ void MasterElement::aboutDeleteXref()
 		return;
 	}
 }
+
+/**
+ * @brief MasterElement::isFull
+ * @return true if the master has reached its maximum number of slaves
+ */
+bool MasterElement::isFull() const
+{
+	// Set default value to -1 (unlimited slaves)
+	int max_slaves = -1;
+	QVariant max_slaves_variant = kindInformations().value("max_slaves");
+
+	// Overwrite default if a valid limit is defined in the element's XML
+	if (max_slaves_variant.isValid() && !max_slaves_variant.toString().isEmpty()) {
+		max_slaves = max_slaves_variant.toInt();
+	}
+
+	// If no limit is set (-1), the master is never full
+	if (max_slaves == -1) {
+		return false;
+	}
+
+	// Return true if current connected elements reached or exceeded the limit
+	return connected_elements.size() >= max_slaves;
+}

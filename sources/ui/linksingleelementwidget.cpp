@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "linksingleelementwidget.h"
-
+#include "../qetgraphicsitem/masterelement.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -386,7 +386,22 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 	
 	//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_vector.removeAll(m_element->linkedElements().first());
-	
+	// Filter out all master elements from the list
+	for (int i = elmt_vector.size() - 1; i >= 0; --i) {
+		Element *elmt = elmt_vector.at(i);
+
+		// If the item in the list is a master
+		if (elmt->linkType() == Element::Master) {
+
+			// We convert the generic element pointer into a MasterElement pointer
+			MasterElement *master = static_cast<MasterElement*>(elmt);
+
+			// If the master is full, we'll remove it from the list!
+			if (master->isFull()) {
+				elmt_vector.removeAt(i);
+			}
+		}
+	}
 	return elmt_vector;
 }
 
