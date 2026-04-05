@@ -242,6 +242,7 @@ void ElementsPanelWidget::deleteDiagram()
 {
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramDeletion(selected_diagram));
+		elements_panel->reload();
 	}
 }
 
