@@ -218,9 +218,6 @@ void WiringListExport::toCsv()
 {
     if (!m_project) return;
 
-    // --- LIVE RAM-ABGRIFF ---
-    // Generiert den aktuellen Arbeitsspeicher-Stand als XML Dokument,
-    // OHNE auf die Festplatte zu speichern! Keine Latenz, keine ungespeicherten Daten.
     QDomDocument doc = m_project->toXml();
 
     if (doc.isNull()) {
