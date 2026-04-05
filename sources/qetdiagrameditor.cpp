@@ -1168,18 +1168,6 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 
 	// cree un ProjectView pour visualiser le projet
 	ProjectView *project_view = new ProjectView(project);
-	//Highlight the current page
-	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
-		if (dv && dv->diagram() && pa) {
-			// 1. Find the item in the tree that corresponds to this diagram
-			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
-
-			// 2. If you find it, select it
-			if (item) {
-				pa->elementsPanel().setCurrentItem(item);
-			}
-		}
-	});
 	addProjectView(project_view);
 
 	undo_group.addStack(project -> undoStack());
@@ -1839,6 +1827,19 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	// display error messages sent by the project view
 	connect(project_view, SIGNAL(errorEncountered(QString)),
 		this, SLOT(showError(const QString &)));
+
+	//Highlight the current page
+	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
+		if (dv && dv->diagram() && pa) {
+			// 1. Find the item in the tree that corresponds to this diagram
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
+
+				   // 2. If you find it, select it
+			if (item) {
+				pa->elementsPanel().setCurrentItem(item);
+			}
+		}
+	});
 
 	//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = m_workspace.activeSubWindow();
