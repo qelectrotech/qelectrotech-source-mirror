@@ -45,6 +45,7 @@
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "ui/diagrameditorhandlersizewidget.h"
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
+#include "wiringlistexport.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -465,13 +466,23 @@ void QETDiagramEditor::setUpActions()
 			wne.toCsv();
 		}
 	});
-
-#ifdef QET_EXPORT_PROJECT_DB
-	m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
-	connect(m_export_project_db, &QAction::triggered, [this]() {
-		projectDataBase::exportDb(this->currentProject()->dataBase(), this);
+	// Export wiring list to CSV
+	m_project_export_wiring_list = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter le plan de câblage"), this);
+	connect(m_project_export_wiring_list, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (project)
+		{
+			WiringListExport wle(project, this);
+			wle.toCsv();
+		}
 	});
-#endif
+
+	#ifdef QET_EXPORT_PROJECT_DB
+		m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
+		connect(m_export_project_db, &QAction::triggered, [this]() {
+			projectDataBase::exportDb(this->currentProject()->dataBase(), this);
+		});
+	#endif
 
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -835,6 +846,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
+	menu_project -> addAction(m_project_export_wiring_list);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
@@ -1579,6 +1591,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
+	m_project_export_wiring_list  -> setEnabled(opened_project);
 #ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
 #endif
