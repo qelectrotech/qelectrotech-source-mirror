@@ -67,7 +67,10 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	connect(this, &ElementsPanel::itemDoubleClicked, this, &ElementsPanel::slot_doubleClick);
 	connect(this, &GenericPanel::firstActivated, [this]() {QTimer::singleShot(250, this, SLOT(reload()));});
 	connect(this, &ElementsPanel::panelContentChanged, this, &ElementsPanel::panelContentChange);
-	
+
+		// manage signal itemClicked
+	connect(this, &ElementsPanel::itemClicked, this, &ElementsPanel::slot_clicked);
+
 		//Emit a signal instead au manage is own context menu
 	setContextMenuPolicy(Qt::CustomContextMenu);
 }
@@ -269,21 +272,28 @@ void ElementsPanel::reload()
 }
 
 /**
-	Gere le double-clic sur un element.
-	Si un double-clic sur un projet est effectue, le signal requestForProject
-	est emis.
-	Si un double-clic sur un schema est effectue, le signal requestForDiagram
-	est emis.
+	@brief ElementsPanel::slot_clicked
+	handle click on qtwi
+	@param qtwi item that was clickerd on
+*/
+void ElementsPanel::slot_clicked(QTreeWidgetItem *clickedItem, int) {
+
+	requestForItem(clickedItem);
+}
+
+/**
+	@brief ElementsPanel::slot_doubleClick
+	handle double click on qtwi
 	@param qtwi
 */
 void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 	int qtwi_type = qtwi -> type();
 	if (qtwi_type == QET::Project) {
-		QETProject *project = valueForItem<QETProject *>(qtwi);
-		emit(requestForProject(project));
+			// open project properties
+		emit(requestForProjectPropertiesEdition());
 	} else if (qtwi_type == QET::Diagram) {
-		Diagram *diagram = valueForItem<Diagram *>(qtwi);
-		diagram->showMe();
+			// open diagram properties
+		emit(requestForDiagramPropertiesEdition());
 	} else if (qtwi_type == QET::TitleBlockTemplate) {
 		TitleBlockTemplateLocation tbt = valueForItem<TitleBlockTemplateLocation>(qtwi);
 		emit(requestForTitleBlockTemplate(tbt));
@@ -453,5 +463,66 @@ void ElementsPanel::ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &ite
 	// affiche les parents
 	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
 		if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
+	}
+}
+
+/**
+ * @brief ElementsPanel::syncTabBars
+ * set the project- or diagram Tab corresponding to
+ * the selection in the treeView
+ */
+void ElementsPanel::requestForItem(QTreeWidgetItem *clickedItem)
+{
+		// activate diagram
+	if(clickedItem->type() == QET::Diagram){
+		Diagram *diagram = valueForItem<Diagram *>(clickedItem);
+			// if we click on diagramItem in annother project we need the other project
+		emit(requestForProject(projectForItem(clickedItem->parent())));
+			// required for keyPressEvent
+			// after emit the focus is on the diagram editor, we put it back to elementsPanel
+		this->setFocus();
+			// activate diagram
+		diagram->showMe();
+	}
+		// activate project
+	else if(clickedItem->type() == QET::Project) {
+		QETProject *project = projectForItem(clickedItem);
+		emit(requestForProject(project));
+		this->setFocus();
+	}
+}
+
+/**
+ *   @brief ElementsPanel::keyPressEvent
+ *   @param event
+ */
+void ElementsPanel::keyPressEvent(QKeyEvent *event)
+{
+	switch (event->key())
+	{
+	case Qt::Key_Up:{
+			// check if there is another item abbove
+		if(!itemAbove(currentItem()))
+			break;
+
+		setCurrentItem(itemAbove(currentItem()));
+		if (currentItem()->type()==QET::Diagram || currentItem()->type()==QET::Project){
+			requestForItem(currentItem());
+		}
+		break;
+	}
+	case Qt::Key_Down:{
+			// check if there is another item below
+		if(!itemBelow(currentItem()))
+			break;
+
+		setCurrentItem(itemBelow(currentItem()));
+		if (currentItem()->type()==QET::Diagram || currentItem()->type()==QET::Project){
+			requestForItem(currentItem());
+		}
+		break;
+	}
+	default:
+		QTreeView::keyPressEvent(event);
 	}
 }
