@@ -1841,6 +1841,18 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		}
 	});
 
+		//Highlight the current page in projectView on project activation
+	connect(this, &QETDiagramEditor::syncElementsPanel, this, [this]() {
+		if (pa && currentDiagramView()) {
+				// In the tree, find the element that corresponds to the diagram of the selected project.
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(currentDiagramView()->diagram());
+			if (item) {
+					// select the diagram
+				pa->elementsPanel().setCurrentItem(item);
+			}
+		}
+	});
+
 	//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = m_workspace.activeSubWindow();
 	bool maximise = ((!current_window)
@@ -2349,6 +2361,7 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 
 	slot_updateActions();
 	slot_updateWindowsMenu();
+	emit syncElementsPanel();
 }
 
 /**

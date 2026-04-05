@@ -139,15 +139,26 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project,
 	Q_UNUSED(options)
 	
 	bool first_add = (first_reload_ || !projects_to_display_.contains(project));
+	clearSelection();
 	
-	// create the QTreeWidgetItem representing the project
+		// create the QTreeWidgetItem representing the project
 	QTreeWidgetItem *qtwi_project = GenericPanel::addProject(project, nullptr, GenericPanel::All);
-	// the project will be inserted right before the common tb templates collection
+		// the project will be inserted right before the common tb templates collection
 	invisibleRootItem() -> insertChild(
 		indexOfTopLevelItem(common_tbt_collection_item_),
 		qtwi_project
 	);
-	if (first_add) qtwi_project -> setExpanded(true);
+	if (first_add){
+		qtwi_project -> setExpanded(true);
+			// on adding an project select first diagram
+		setCurrentItem(qtwi_project -> child(0));
+		qtwi_project -> child(0)->setSelected(true);
+	}
+	else {
+			// on adding an diagram to project select the last diagram
+		setCurrentItem(qtwi_project->child(qtwi_project->childCount()-2));
+		qtwi_project->child(qtwi_project->childCount()-2)->setSelected(true);
+	}
 	
 	if (TitleBlockTemplatesCollection *tbt_collection = project -> embeddedTitleBlockTemplatesCollection()) {
 		if (QTreeWidgetItem *tbt_collection_qtwi = itemForTemplatesCollection(tbt_collection)) {

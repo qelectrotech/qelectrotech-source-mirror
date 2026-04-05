@@ -766,7 +766,6 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
 	if (!moved_qtwi_diagram) return;
 	
 	// remove the QTWI then insert it back at the adequate location
-	bool was_selected = moved_qtwi_diagram -> isSelected();
 	qtwi_project -> removeChild (moved_qtwi_diagram);
 	qtwi_project -> insertChild (to, moved_qtwi_diagram);
 	
@@ -781,8 +780,8 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project,
 			updateDiagramItem(qtwi_diagram, diagram);
 	}
 	
-	if (was_selected)
-		setCurrentItem(moved_qtwi_diagram);
+		// select the moved diagram
+	setCurrentItem(qtwi_project -> child(from));
 
 	emit(panelContentChanged());
 }
