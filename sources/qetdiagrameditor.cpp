@@ -1180,18 +1180,6 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 
 	// cree un ProjectView pour visualiser le projet
 	ProjectView *project_view = new ProjectView(project);
-	//Highlight the current page
-	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
-		if (dv && dv->diagram() && pa) {
-			// 1. Find the item in the tree that corresponds to this diagram
-			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
-
-			// 2. If you find it, select it
-			if (item) {
-				pa->elementsPanel().setCurrentItem(item);
-			}
-		}
-	});
 	addProjectView(project_view);
 
 	undo_group.addStack(project -> undoStack());
@@ -1853,6 +1841,31 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	connect(project_view, SIGNAL(errorEncountered(QString)),
 		this, SLOT(showError(const QString &)));
 
+	//Highlight the current page
+	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
+		if (dv && dv->diagram() && pa) {
+			// 1. Find the item in the tree that corresponds to this diagram
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
+
+				   // 2. If you find it, select it
+			if (item) {
+				pa->elementsPanel().setCurrentItem(item);
+			}
+		}
+	});
+
+		//Highlight the current page in projectView on project activation
+	connect(this, &QETDiagramEditor::syncElementsPanel, this, [this]() {
+		if (pa && currentDiagramView()) {
+				// In the tree, find the element that corresponds to the diagram of the selected project.
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(currentDiagramView()->diagram());
+			if (item) {
+					// select the diagram
+				pa->elementsPanel().setCurrentItem(item);
+			}
+		}
+	});
+
 	//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = m_workspace.activeSubWindow();
 	bool maximise = ((!current_window)
@@ -2361,6 +2374,7 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 
 	slot_updateActions();
 	slot_updateWindowsMenu();
+	emit syncElementsPanel();
 }
 
 /**

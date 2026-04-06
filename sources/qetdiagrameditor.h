@@ -98,6 +98,9 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *findProject(const QString &) const;
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
 
+	signals:
+		void syncElementsPanel();
+
 	public slots:
 		void save();
 		void saveAs();
