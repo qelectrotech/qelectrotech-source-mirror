@@ -42,8 +42,7 @@
         {
           "type": "patch",
           "paths": [
-            "patches/fix-the-installation-paths.patch",
-            "patches/fix-appdata.patch"
+            "patches/fix-the-installation-paths.patch"
           ]
         }
       ]
