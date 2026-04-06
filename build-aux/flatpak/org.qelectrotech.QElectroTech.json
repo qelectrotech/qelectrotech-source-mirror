@@ -1,8 +1,7 @@
 {
   "id": "org.qelectrotech.QElectroTech",
-  "base-version": "5.15-23.08",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.15-23.08",
+  "runtime-version": "5.15-25.08",
   "sdk": "org.kde.Sdk",
   "command": "qelectrotech",
   "rename-desktop-file": "org.qelectrotech.qelectrotech.desktop",
@@ -17,6 +16,14 @@
     "--share=network",
     "--socket=cups",
     "--filesystem=host"
+  ],
+  "cleanup": [
+      "/include",
+      "/man",
+      "/share/doc",
+      "/share/man",
+      "*.la",
+      "*.a"
   ],
   "modules": [
     {
