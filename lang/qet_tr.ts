@@ -2157,13 +2157,13 @@ Not: Bu durum &quot;Otomatik Numaralandırma&quot;&apos;ya engel koymaz veya izi
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
-        <source>Nombre maximum de contacts esclaves défini : %1
+        <source>Nombre maximum de contacts esclaves définis : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
-        <source>Nombre de conctact esclaves utilisés : %1
+        <source>Nombre de contacts esclaves utilisés : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -2635,60 +2635,60 @@ Bu klasördeki tüm öğeler ve klasörler silinecek.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="158"/>
+        <location filename="../sources/elementspanel.cpp" line="172"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation>Bu projeyi daraltmak veya genişletmek için çift tıklayın</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="174"/>
+        <location filename="../sources/elementspanel.cpp" line="188"/>
         <source>Cartouches embarqués</source>
         <translation>Dahili çizim</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="175"/>
+        <location filename="../sources/elementspanel.cpp" line="189"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation>Bu dahili kütüphaneyi genişletmek veya daraltmak için çift tıklayınız</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="192"/>
+        <location filename="../sources/elementspanel.cpp" line="206"/>
         <source>Glissez-déposez ce modèle de cartouche sur un folio pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation>Uygulamak için bu antet şablonunu sayfaya sürükleyip bırakınız.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="231"/>
+        <location filename="../sources/elementspanel.cpp" line="245"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation>QElectroTech Antet koleksiyonunu genişletmek veya daraltmak için çift tıklayınız</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="232"/>
+        <location filename="../sources/elementspanel.cpp" line="246"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>QElectroTech ile birlikte gelen antet koleksiyonu budur. Bir sistem bileşeni olarak yüklendiği için normal olarak onu özelleştiremezsiniz.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="239"/>
+        <location filename="../sources/elementspanel.cpp" line="253"/>
         <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="240"/>
+        <location filename="../sources/elementspanel.cpp" line="254"/>
         <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="247"/>
+        <location filename="../sources/elementspanel.cpp" line="261"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation>Kişisel antet koleksiyonunuzu genişletmek veya daraltmak için çift tıklayınız</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="248"/>
+        <location filename="../sources/elementspanel.cpp" line="262"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Bu sizin kişisel antet koleksiyonunuz - kendi kütüphanenizi oluşturmak, saklamak ve düzenlemek için kullanın.</translation>
@@ -3854,7 +3854,7 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
         <translation>Bu, bir sayfaya uygulanabilecek bir antet şablonudur.</translation>
     </message>
     <message>
-        <location filename="../sources/genericpanel.cpp" line="917"/>
+        <location filename="../sources/genericpanel.cpp" line="916"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [Projede kullanılmıyor]</translation>
     </message>
@@ -5662,18 +5662,28 @@ Değişiklikleri kaydetmek ister misiniz ?</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="737"/>
+        <location filename="../sources/projectview.cpp" line="726"/>
+        <source>go one page left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="730"/>
+        <source>go one page right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/projectview.cpp" line="745"/>
         <source>Ce projet ne contient aucun folio</source>
         <comment>label displayed when a project contains no diagram</comment>
         <translation>Bu proje herhangi bir sayfa içermiyor</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="819"/>
+        <location filename="../sources/projectview.cpp" line="858"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des onglets de folio :&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Projenin açılışı devam ediyor ....&lt;/b&gt;&lt;br/&gt;Sayfa sekmeleri oluşturuluyor :&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="862"/>
+        <location filename="../sources/projectview.cpp" line="901"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Proje</translation>
@@ -5963,807 +5973,812 @@ Mevcut seçenekler:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="100"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="101"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="102"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="103"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="159"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="160"/>
         <source>Projets</source>
         <comment>dock title</comment>
         <translation>Projeler</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="192"/>
         <source>Collections</source>
         <translation>Kolleksiyonlar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>Aucune modification</source>
         <translation>Değişiklik yok</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
         <translation>Şema üzerinde çalışmak için bir işleme tıklayın</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ce panneau liste les différentes actions effectuées sur le folio courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translatorcomment>I am not sure about this. It should be checked.</translatorcomment>
         <translation>Bu panel, geçerli sayfada gerçekleştirilen farklı eylemleri listeler. Bir eylemi tıklamak, şemanın uygulamadan sonraki haline dönmesini sağlar.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>İptal edilenler</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
         <source>E&amp;xporter</source>
         <translation>D&amp;ışa aktar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
         <source>Exporte le folio courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Mevcut sayfayı başka bir formatta dışa aktarır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="278"/>
         <source>Imprimer</source>
         <translation>Yazdır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Imprime un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Mevcut projeden bir veya daha fazla sayfa yazdır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Çıkış</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="301"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>QElectroTech uygulamasını kapatır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Annuler</source>
         <translation>İptal</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Önceki eylemi iptal eder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Refaire</source>
         <translation>Yeniden yapma</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>İptal edilen eylemi geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
         <source>Co&amp;uper</source>
         <translation>Ke&amp;s</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
         <source>Cop&amp;ier</source>
         <translation>Kop&amp;yala</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="317"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="318"/>
         <source>C&amp;oller</source>
         <translation>Y&amp;apıştır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Seçili öğeleri panoya aktar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Seçilen öğeleri panoya kopyala</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Place les éléments du presse-papier sur le folio</source>
         <comment>status bar tip</comment>
         <translation>Panodaki öğeleri sayfaya yerleştirin</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="342"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>İletkenleri sıfırla</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="343"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="344"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Modifikasyonları dikkate almadan iletken yollarını yeniden hesaplar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="350"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
         <source>Création automatique de conducteur(s)</source>
         <comment>Tool tip of auto conductor</comment>
         <translation>Otomatik iletken (ler) oluşturma</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="351"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="352"/>
         <source>Utiliser la création automatique de conducteur(s) quand cela est possible</source>
         <comment>Status tip of auto conductor</comment>
         <translation>Mümkün olduğunda otomatik oluşturulan iletken(ler) kullanın</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="359"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
         <source>Couleur de fond blanc/gris</source>
         <comment>Tool tip of white/grey background button</comment>
         <translation>Beyaz / gri arka plan rengi</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="360"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="361"/>
         <source>Affiche la couleur de fond du folio en blanc ou en gris</source>
         <comment>Status tip of white/grey background button</comment>
         <translation>Sayfa&apos;nın arka plan rengini beyaz veya gri olarak görüntüler</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="369"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="370"/>
         <source>Afficher la grille</source>
         <translation>Izgarayı göster</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="370"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
         <source>Affiche ou masque la grille des folios</source>
         <translation>Sayfaların ızgarasını göster veya gizle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="382"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="383"/>
         <source>Propriétés du folio</source>
         <translation>Sayfa Özelikkleri</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="384"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="385"/>
         <source>Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)</source>
         <comment>status bar tip</comment>
         <translation>Sayfa özelliklerini düzenleyin (boyutlar, antet bilgileri, iletken özellikleri ...)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="394"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="395"/>
         <source>Propriétés du projet</source>
         <translation>Proje Özellikleri</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="400"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="401"/>
         <source>Ajouter un folio</source>
         <translation>Bir Sayfa Ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="409"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="410"/>
         <source>Supprimer le folio</source>
         <translation>Sayfayı sil</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="413"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="414"/>
         <source>Nettoyer le projet</source>
         <translation>Projeyi temizle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="439"/>
         <source>Ajouter un sommaire</source>
         <translation>Bir özet ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="430"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="431"/>
         <source>Ajouter une nomenclature</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="455"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="456"/>
         <source>Lancer le plugin de création de borniers</source>
         <translation>Terminal bloğu yaratma eklentisini başlatın</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="593"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="604"/>
         <source>Grouper les textes sélectionnés</source>
         <translation>Seçilen metinleri gruplandır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="713"/>
         <source>Chercher/remplacer</source>
         <translation>Bul / Değiştir</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="477"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
         <source>en utilisant des onglets</source>
         <translation>Sekmeleri kullan</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Exporter en pdf</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Exporte un ou plusieurs folios du projet courant</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="423"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="424"/>
         <source>Exporter au format CSV</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="445"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="446"/>
         <source>Gestionnaire de borniers (DEV)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="459"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="460"/>
         <source>Exporter la liste des noms de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="470"/>
+        <source>Exporter le plan de câblage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="481"/>
         <source>Exporter la base de donnée interne du projet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="478"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="489"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Farklı projeleri açık sekmelerde sunar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="493"/>
         <source>en utilisant des fenêtres</source>
         <translation>Pencereleri kullan</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="483"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Farklı projeleri alt alta açılan pencerelerde sunar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="492"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Yan yana</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="493"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="504"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Döşenmiş pencereleri düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="496"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="507"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Basamak</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="508"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Basamaklı pencereleri düzenleme</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="512"/>
         <source>Mode Selection</source>
         <translation>Seçim Modu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>Öğeleri seçmeye izin ver</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="513"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
         <source>Mode Visualisation</source>
         <translation>Görüntüleme modu</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="514"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="525"/>
         <source>Permet de visualiser le folio sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Sayfayı değiştirmeden görüntüleyebilirsiniz</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="530"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
         <source>Projet suivant</source>
         <translation>Sonraki proje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Bir sonraki projeyi aktifleştir</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="535"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="546"/>
         <source>Projet précédent</source>
         <translation>Önceki proje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="548"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Önceki projeyi aktifleştir</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="541"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="552"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;Yeni</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="542"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Aç</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Kaydet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="544"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
         <source>Enregistrer sous</source>
         <translation>Farklı kaydet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="545"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Kapat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="553"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="564"/>
         <source>Crée un nouveau projet</source>
         <comment>status bar tip</comment>
         <translation>Yeni bir proje oluştur</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="554"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="565"/>
         <source>Ouvre un projet existant</source>
         <comment>status bar tip</comment>
         <translation>Mevcut bir projeyi aç</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="555"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="566"/>
         <source>Ferme le projet courant</source>
         <comment>status bar tip</comment>
         <translation>Mevcut projeyi kapat</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="556"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="567"/>
         <source>Enregistre le projet courant et tous ses folios</source>
         <comment>status bar tip</comment>
         <translation>Mevcut projeyi ve tüm sayfaları kaydeder</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="557"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="568"/>
         <source>Enregistre le projet courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation>Mevcut projeyi başka bir dosya adıyla kaydet</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="570"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="581"/>
         <source>Ajouter une colonne</source>
         <translation>Bir Sütun ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="571"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="582"/>
         <source>Enlever une colonne</source>
         <translation>Bir sütunu kaldır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="572"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="583"/>
         <source>Ajouter une ligne</source>
         <comment>Add row</comment>
         <translation>Bir çizgi ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="573"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="584"/>
         <source>Enlever une ligne</source>
         <comment>Remove row</comment>
         <translation>Bir çizgi kaldır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="575"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="586"/>
         <source>Ajoute une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Sayfaya bir sutun ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="576"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="587"/>
         <source>Enlève une colonne au folio</source>
         <comment>status bar tip</comment>
         <translation>Sayfadan bir sutun kaldır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="577"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
         <source>Agrandit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Sayfa yüksekliğini büyütür</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="578"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
         <source>Rétrécit le folio en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Sayfayı Küçült</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="588"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="599"/>
         <source>Supprimer</source>
         <translation>Sil</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="589"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
         <source>Pivoter</source>
         <translation>Döndür</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="590"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
         <source>Orienter les textes</source>
         <translation>Metni düzelt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="591"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
         <source>Retrouver dans le panel</source>
         <translation>Panelde bul</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="592"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
         <source>Éditer l&apos;item sélectionné</source>
         <translation>Seçilen öğeyi düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="600"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="611"/>
         <source>Enlève les éléments sélectionnés du folio</source>
         <comment>status bar tip</comment>
         <translation>Seçilen öğeleri sayfadan kaldırır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="601"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="612"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Seçili öğeleri ve metinleri döndür</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="602"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="613"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation>Seçilen metinleri hassas bir açıyla döndürün</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="603"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="614"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
         <translation>Panelde seçilen öğeyi bul</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="615"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="626"/>
         <source>Tout sélectionner</source>
         <translation>Tümünü seç</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="616"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="627"/>
         <source>Désélectionner tout</source>
         <translation>Hiçbirini seçme</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="617"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="628"/>
         <source>Inverser la sélection</source>
         <translation>Seçimi ters çevir</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="623"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="634"/>
         <source>Sélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Sayfadaki tüm unsurları seç</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="624"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
         <source>Désélectionne tous les éléments du folio</source>
         <comment>status bar tip</comment>
         <translation>Sayfadaki tüm öğelerin seçimini kaldırın</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="625"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="636"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Seçili öğelerin seçimini kaldırın ve seçilmemiş öğeleri seçin</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="634"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
         <source>Zoom avant</source>
         <translation>Yakınlaştır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="635"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="646"/>
         <source>Zoom arrière</source>
         <translation>Uzaklaştır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="636"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="647"/>
         <source>Zoom sur le contenu</source>
         <translation>İçeriğe odaklan</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="637"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
         <source>Zoom adapté</source>
         <translation>Uyarlanmış yakınlaştırma</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="638"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="649"/>
         <source>Pas de zoom</source>
         <translation>Yakınlaştırma yok</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="647"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="658"/>
         <source>Agrandit le folio</source>
         <comment>status bar tip</comment>
         <translation>Sayfayı görüntüle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="648"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="659"/>
         <source>Rétrécit le folio</source>
         <comment>status bar tip</comment>
         <translation>Sayfayı Küçült</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="649"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="660"/>
         <source>Adapte le zoom de façon à afficher tout le contenu du folio indépendamment du cadre</source>
         <translation>Çerçevenin tüm içeriğini çerçeveden bağımsız olarak gösterecek şekilde yakınlaştırır</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="650"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="661"/>
         <source>Adapte le zoom exactement sur le cadre du folio</source>
         <comment>status bar tip</comment>
         <translation>Yakınlaştırmayı tam olarak sayfa çerçevesine uyarlar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="651"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Varsayılan yakınlaştırmayı geri yükle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="662"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
         <source>Ajouter un champ de texte</source>
         <translation>Bir metin alanı ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="663"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
         <source>Ajouter une image</source>
         <translation>Bir resim ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="664"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Ajouter une ligne</source>
         <comment>Draw line</comment>
         <translation>Bir çizgi ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="665"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
         <source>Ajouter un rectangle</source>
         <translation>Bir dikdörtgen ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="666"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="677"/>
         <source>Ajouter une ellipse</source>
         <translation>Bir elips ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="667"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="678"/>
         <source>Ajouter une polyligne</source>
         <translation>Bir çokgen ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="668"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="679"/>
         <source>Ajouter un plan de bornes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="670"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="681"/>
         <source>Ajoute un champ de texte sur le folio actuel</source>
         <translation>Geçerli sayfaya metin alanı ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="671"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="682"/>
         <source>Ajoute une image sur le folio actuel</source>
         <translation>Geçerli sayfaya resim ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="672"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="683"/>
         <source>Ajoute une ligne sur le folio actuel</source>
         <translation>Geçerli sayfaya çizgi ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="673"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="684"/>
         <source>Ajoute un rectangle sur le folio actuel</source>
         <translation>Geçerli sayfaya dikdörtgen ekler</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="674"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="685"/>
         <source>Ajoute une ellipse sur le folio actuel</source>
         <translation>Geçerli sayfaya elips ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
         <source>Ajoute une polyligne sur le folio actuel</source>
         <translation>Geçerli sayfaya devamlı çizgi ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="676"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="687"/>
         <source>Ajoute un plan de bornier sur le folio actuel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="719"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="730"/>
         <source>Outils</source>
         <translation>Araçlar</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="722"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="733"/>
         <source>Affichage</source>
         <translation>Görünüm</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="736"/>
         <source>Schéma</source>
         <translation>Şema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="757"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="768"/>
         <source>Ajouter</source>
         <translation>Ekle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="761"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="772"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Derinlik</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="778"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="789"/>
         <source>&amp;Fichier</source>
         <translation>&amp;Dosya</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="779"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="790"/>
         <source>&amp;Édition</source>
         <translation>&amp;Düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
         <source>&amp;Projet</source>
         <translation>&amp;Proje</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="792"/>
         <source>Afficha&amp;ge</source>
         <translation>Gö&amp;rünüm</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="783"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="794"/>
         <source>Fe&amp;nêtres</source>
         <translation>Pe&amp;ncere</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="792"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="803"/>
         <source>&amp;Récemment ouverts</source>
         <translation>&amp;Son Açılan</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="843"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="855"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Ana araç çubuğunu göster veya göster</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="844"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="856"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Görünüm araç çubuğunu göster veya göster</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="845"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="857"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Şema araç çubuğunu göster veya göster</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="846"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="858"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Cihazların paneli görüntülensin veya görüntülenmesin</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="847"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="859"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Değişiklikler listesi görüntüleniyor veya görüntülenmiyor</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="851"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="863"/>
         <source>Afficher les projets</source>
         <translation>Projeleri görüntüle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="932"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="955"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="944"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="967"/>
         <source>Projet %1 enregistré dans le repertoire: %2.</source>
         <translation>%1 projesi şu dizine kaydedildi : %2.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1003"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1015"/>
         <source>Ouvrir un fichier</source>
         <translation>Bir dosya aç</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1005"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1017"/>
         <source>Projets QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech Projeleri (*.qet);;XML Dosyaları (*.xml);;Tüm Dosyalar (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1088"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1104"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1100"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1116"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation>Dosya açılamadı</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1090"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1102"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation>Açmaya çalıştığınız %1 dosyası mevcut değil gibi görünüyor.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1105"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1117"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Açmaya çalıştığınız dosya okunabilir değil gibi görünüyor. Dosya açılamıyor. Lütfen dosyanın izinlerini kontrol edin.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1119"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1131"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Projeyi salt okunur açma</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1120"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1132"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Açmaya çalıştığınız proje yazılabilir değil gibi görünüyor. Salt okunur modda açılacaktır.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1137"/>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1936"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1149"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1962"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Proje açılamadı</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1139"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1151"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>%1 dosyasının bir QElectroTech proje dosyası olmadığı anlaşılıyor. Bu açılamaz.</translation>
@@ -6790,48 +6805,48 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <translation>Grup</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1717"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1718"/>
         <source>Éditer l&apos;élement</source>
         <comment>edit element</comment>
         <translation>Öğeyi düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1724"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1725"/>
         <source>Éditer le champ de texte</source>
         <comment>edit text field</comment>
         <translation>Metin alanını düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1731"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1732"/>
         <source>Éditer l&apos;image</source>
         <comment>edit image</comment>
         <translation>Resmi Düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1738"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1739"/>
         <source>Éditer le conducteur</source>
         <comment>edit conductor</comment>
         <translation>İletkeni düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1746"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1747"/>
         <source>Éditer l&apos;objet sélectionné</source>
         <comment>edit selected item</comment>
         <translation>Seçilen nesneyi düzenle</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1937"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1963"/>
         <source>Une erreur est survenue lors de l&apos;ouverture du fichier %1.</source>
         <comment>message box content</comment>
         <translation>Dosyayı açarken bir sorun oluştu %1.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1985"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2011"/>
         <source>Active le projet « %1 »</source>
         <translation>« %1 » projesini etkinleştir</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2337"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2363"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Hata</translation>
@@ -9228,22 +9243,22 @@ Değiştirmek ister misiniz?</translation>
         <translation>İletkenlerin oluşturulması</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2427"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2454"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.5 or above&lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://www.python.org/downloads/&apos;&gt;python.org&lt;/a&gt;&lt;br&gt;2. pip install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Windows&lt;/B&gt;&lt;/U&gt;&lt;br&gt;python -m pip install --upgrade qet_tb_generator&lt;br&gt;&gt;&gt;user could launch in a terminal this script in this directory&lt;br&gt; C:\users\XXXX\AppData\Local\Programs\Python\Python36-32\Scripts   &lt;br&gt;</source>
         <translation>Qet_tb_generator eklentisini yüklemek için &lt;br&gt; Ziyaret Et: &lt;br&gt; &lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt; qet-tb-generator &lt;/a&gt; &lt;br&gt; python 3.5 veya üzeri. &lt;br&gt; &lt;B&gt; &lt;U&gt; İlk önce Windows&apos;a yükleyin &lt;/B&gt; &lt;/U&gt; &lt;br&gt; 1. Gerekirse, python 3.5 veya üstü bir sürüm yükleyin. &lt;br&gt; Ziyaret: &lt;br&gt; &lt;a href=&apos;https://www.python.org/downloads/&apos;&gt; python.org &lt;/a&gt; &lt;br&gt; 2. pip install qet_tb_generator &lt;br&gt; &lt;B&gt; &lt;U&gt; Windows&apos;ta Güncelleme &lt;/B&gt; &lt;/U&gt; &lt;br&gt; python -m pip install --upgrade qet_tb_generator &lt;br&gt; &gt;&gt; kullanıcı bu script&apos;in terminalde  bu dizinde başlatılmasını sağlayabilir &lt;br&gt; C: \ users \ XXXX \ AppData \ Local \ Programs \ Python \ Python36-32 \ Scripts &lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2447"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2474"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2466"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2493"/>
         <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="2486"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="2513"/>
         <source>Error launching qet_tb_generator plugin</source>
         <translation type="unfinished">qet_tb_generator eklentisi başlatılırken hata oluştu</translation>
     </message>
@@ -14115,6 +14130,99 @@ Maksimum uzunluk :%2px
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
         <translation>Proje Antetleri &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>WiringListExport</name>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="224"/>
+        <location filename="../sources/wiringlistexport.cpp" line="239"/>
+        <source>Erreur</source>
+        <translation type="unfinished">Hata</translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="224"/>
+        <source>Impossible de lire la structure en mémoire du projet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="230"/>
+        <source>Exporter le plan de câblage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="232"/>
+        <source>Fichiers CSV (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="239"/>
+        <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="266"/>
+        <source>Page</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="267"/>
+        <source>Composant 1</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="268"/>
+        <source>Borne 1</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="269"/>
+        <source>Composant 2</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="270"/>
+        <source>Borne 2</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="271"/>
+        <source>Tension / Protocole</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished">Voltaj / Protokol</translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="272"/>
+        <source>Couleur du fil</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="273"/>
+        <source>Section du fil</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="274"/>
+        <source>Fonction</source>
+        <comment>Wiring list CSV header</comment>
+        <translation type="unfinished">Fonksiyon</translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="289"/>
+        <source>Export réussi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/wiringlistexport.cpp" line="289"/>
+        <source>Le plan de câblage a été exporté avec succès !</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
