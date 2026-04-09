@@ -46,6 +46,7 @@
 #include "ui/diagrameditorhandlersizewidget.h"
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
 #include "wiringlistexport.h"
+#include "ui/terminalnumberingdialog.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -477,6 +478,10 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
+	// Terminal Numbering
+	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
+	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
+
 	#ifdef QET_EXPORT_PROJECT_DB
 		m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
 		connect(m_export_project_db, &QAction::triggered, [this]() {
@@ -847,6 +852,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
 	menu_project -> addAction(m_project_export_wiring_list);
+	menu_project -> addAction(m_terminal_numbering);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
@@ -1580,6 +1586,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
 	m_project_export_wiring_list  -> setEnabled(opened_project);
+	m_terminal_numbering          -> setEnabled(editable_project);
 #ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
 #endif
@@ -2510,7 +2517,27 @@ void QETDiagramEditor::generateTerminalBlock()
 #endif
 	if ( !success ) {
 		QMessageBox::warning(nullptr,
-				     QObject::tr("Error launching qet_tb_generator plugin"),
-				     message);
+							 QObject::tr("Error launching qet_tb_generator plugin"),
+							 message);
+	}
+}
+
+/**
+ * @brief QETDiagramEditor::slot_terminalNumbering
+ * Opens the dialog for automatic terminal numbering and applies the generated undo command.
+ */
+void QETDiagramEditor::slot_terminalNumbering() {
+	TerminalNumberingDialog dialog(this);
+	if (dialog.exec() == QDialog::Accepted) {
+		QETProject *project = currentProject();
+		if (!project) return;
+
+		// Fetch the generated undo command from the dialog logic
+		QUndoCommand *macro = dialog.getUndoCommand(project);
+
+		// If changes were made, push them to the global undo stack
+		if (macro) {
+			undo_group.activeStack()->push(macro);
+		}
 	}
 }

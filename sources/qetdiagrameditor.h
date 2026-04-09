@@ -42,6 +42,7 @@ class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
 class AutoNumberingDockWidget;
+class TerminalNumberingDialog;
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -132,6 +133,7 @@ class QETDiagramEditor : public QETMainWindow
 		void projectWasClosed(ProjectView *);
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
+		void slot_terminalNumbering();
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
@@ -201,6 +203,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_project_export_wiring_list, ///< Action to export the wiring list
+		*m_terminal_numbering,         ///< Action to launch terminal numbering
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
 		*m_cascade_window,		///< Show MDI subwindows as cascade

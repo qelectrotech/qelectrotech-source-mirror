@@ -88,6 +88,7 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
   ${QET_DIR}/sources/ui/elementinfopartwidget.ui
   ${QET_DIR}/sources/ui/elementinfowidget.ui
+  ${QET_DIR}/sources/ui/terminalnumberingdialog.ui
   ${QET_DIR}/sources/ui/formulaassistantdialog.ui
   ${QET_DIR}/sources/ui/imagepropertieswidget.ui
   ${QET_DIR}/sources/ui/importelementdialog.ui
@@ -632,6 +633,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/elementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
   ${QET_DIR}/sources/ui/elementinfowidget.h
+  ${QET_DIR}/sources/ui/terminalnumberingdialog.cpp
+  ${QET_DIR}/sources/ui/terminalnumberingdialog.h
   ${QET_DIR}/sources/ui/elementpropertieswidget.cpp
   ${QET_DIR}/sources/ui/elementpropertieswidget.h
   ${QET_DIR}/sources/ui/formulaassistantdialog.cpp
