@@ -6159,7 +6159,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
         <source>Exporter le plan de câblage</source>
-        <translation>Export the wiring diagram</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
