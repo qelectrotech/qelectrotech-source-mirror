@@ -168,8 +168,10 @@ class ProjectView : public QWidget
 		// attributes
 	private:
 		QAction *m_add_new_diagram,
-		*m_first_view,
-		*m_end_view;
+			*m_first_view,
+			*m_end_view,
+			*m_next_view_left,
+			*m_next_view_right;
 		QETProject *m_project;
 		QVBoxLayout *layout_;
 		QWidget *fallback_widget_;

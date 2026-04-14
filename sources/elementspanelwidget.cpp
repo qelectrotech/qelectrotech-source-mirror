@@ -120,6 +120,12 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
 	);
 
+		// manage double click on TreeWidgetItem
+	connect(elements_panel, SIGNAL(requestForProjectPropertiesEdition()), this, SLOT(editProjectProperties()) );
+	connect(elements_panel, SIGNAL(requestForDiagramPropertiesEdition()), this, SLOT(editDiagramProperties()) );
+		// manage project activation
+	connect(elements_panel, SIGNAL(requestForProject(QETProject*)), this, SIGNAL(requestForProject(QETProject*)));
+
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
 	vlayout -> setContentsMargins(0,0,0,0);
@@ -236,6 +242,7 @@ void ElementsPanelWidget::deleteDiagram()
 {
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramDeletion(selected_diagram));
+		elements_panel->reload();
 	}
 }
 

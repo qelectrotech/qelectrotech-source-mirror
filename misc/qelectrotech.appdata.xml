@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2006-2026 The QElectroTech Team -->
-<application>
- <id type="desktop">qelectrotech.desktop</id>
+<component type="desktop-application">
+ <id>org.qelectrotech.QElectroTech</id>
+ <launchable type="desktop-id">org.qelectrotech.QElectroTech.desktop</launchable>
  <metadata_license>MIT</metadata_license>
  <project_license>GPL-2.0-or-later</project_license>
  <name>QElectroTech</name>
@@ -25,7 +26,7 @@
  <summary xml:lang="ru">Редактор электрических схем</summary>
  <content_rating type="oars-1.1"/>
  <releases>
-     <release version="0.9-dev" date="2021-02-21"/>
+     <release version="0.100.1-dev" date="2026"/>
  </releases>
  <description>
   <p>
@@ -93,9 +94,20 @@
    Приложение использует для хранения проектов и библиотек элементов файлы в XML формате. Приложение помимо редактора электричесих схем, содержит также редакторы элементов и редактор шаблонов листов.
   </p>
  </description>
- <url type="homepage">http://qelectrotech.org</url>
- <screenshots>
-  <screenshot type="default">http://download.tuxfamily.org/qet/screens/qelectrotech5.png</screenshot>
- </screenshots>
- <updatecontact>qet@lists.tuxfamily.org</updatecontact>
-</application>
+ <url type="homepage">https://qelectrotech.org</url>
+ <url type="bugtracker">https://qelectrotech.org/bugtracker</url>
+ <url type="vcs-browser">https://github.com/qelectrotech/qelectrotech-source-mirror</url>
+ <developer id="org.qelectrotech">
+   <name>QElectroTech</name>
+ </developer>
+  <screenshot type="default">
+    <image>https://qelectrotech.org/screenshots/qet_overview04.png</image>
+ </screenshot>
+  <screenshot>
+    <image>https://qelectrotech.org/screenshots/qet_overview06.png</image>
+ </screenshot>
+  <screenshot>
+    <image>https://qelectrotech.org/screenshots/qet_overview09.png</image>
+ </screenshot>
+ <update_contact>scorpio@qelectrotech.org</update_contact>
+</component>

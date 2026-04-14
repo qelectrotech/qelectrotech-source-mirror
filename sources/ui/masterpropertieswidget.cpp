@@ -366,7 +366,7 @@ void MasterPropertiesWidget::on_link_button_clicked()
 			// Show a message box with the actual window as parent to ensure it's on top
 			QMessageBox::warning(this->window(),
 								 tr("Nombre maximal d'esclaves atteint."),
-								 tr("Cet élément maître ne peut accepter aucun nouvel esclave car il est plein (Limit: %1).").arg(max_slaves));
+								 tr("Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).").arg(max_slaves));
 			return;
 		}
 	}

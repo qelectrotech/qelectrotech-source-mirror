@@ -45,6 +45,8 @@
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "ui/diagrameditorhandlersizewidget.h"
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
+#include "wiringlistexport.h"
+#include "ui/terminalnumberingdialog.h"
 
 #ifdef BUILD_WITHOUT_KF5
 #else
@@ -465,13 +467,27 @@ void QETDiagramEditor::setUpActions()
 			wne.toCsv();
 		}
 	});
-
-#ifdef QET_EXPORT_PROJECT_DB
-	m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
-	connect(m_export_project_db, &QAction::triggered, [this]() {
-		projectDataBase::exportDb(this->currentProject()->dataBase(), this);
+	// Export wiring list to CSV
+	m_project_export_wiring_list = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter le plan de câblage"), this);
+	connect(m_project_export_wiring_list, &QAction::triggered, [this]() {
+		QETProject *project = this->currentProject();
+		if (project)
+		{
+			WiringListExport wle(project, this);
+			wle.toCsv();
+		}
 	});
-#endif
+
+	// Terminal Numbering
+	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
+	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
+
+	#ifdef QET_EXPORT_PROJECT_DB
+		m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
+		connect(m_export_project_db, &QAction::triggered, [this]() {
+			projectDataBase::exportDb(this->currentProject()->dataBase(), this);
+		});
+	#endif
 
 		//MDI view style
 	m_tabbed_view_mode = new QAction(tr("en utilisant des onglets"), this);
@@ -835,6 +851,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
+	menu_project -> addAction(m_project_export_wiring_list);
+	menu_project -> addAction(m_terminal_numbering);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
@@ -1168,18 +1186,6 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 
 	// cree un ProjectView pour visualiser le projet
 	ProjectView *project_view = new ProjectView(project);
-	//Highlight the current page
-	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
-		if (dv && dv->diagram() && pa) {
-			// 1. Find the item in the tree that corresponds to this diagram
-			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
-
-			// 2. If you find it, select it
-			if (item) {
-				pa->elementsPanel().setCurrentItem(item);
-			}
-		}
-	});
 	addProjectView(project_view);
 
 	undo_group.addStack(project -> undoStack());
@@ -1579,6 +1585,8 @@ void QETDiagramEditor::slot_updateActions()
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
+	m_project_export_wiring_list  -> setEnabled(opened_project);
+	m_terminal_numbering          -> setEnabled(editable_project);
 #ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
 #endif
@@ -1839,6 +1847,31 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	// display error messages sent by the project view
 	connect(project_view, SIGNAL(errorEncountered(QString)),
 		this, SLOT(showError(const QString &)));
+
+	//Highlight the current page
+	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
+		if (dv && dv->diagram() && pa) {
+			// 1. Find the item in the tree that corresponds to this diagram
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(dv->diagram());
+
+				   // 2. If you find it, select it
+			if (item) {
+				pa->elementsPanel().setCurrentItem(item);
+			}
+		}
+	});
+
+		//Highlight the current page in projectView on project activation
+	connect(this, &QETDiagramEditor::syncElementsPanel, this, [this]() {
+		if (pa && currentDiagramView()) {
+				// In the tree, find the element that corresponds to the diagram of the selected project.
+			QTreeWidgetItem *item = pa->elementsPanel().getItemForDiagram(currentDiagramView()->diagram());
+			if (item) {
+					// select the diagram
+				pa->elementsPanel().setCurrentItem(item);
+			}
+		}
+	});
 
 	//We maximise the new window if the current window is inexistent or maximized
 	QWidget *current_window = m_workspace.activeSubWindow();
@@ -2348,6 +2381,7 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 
 	slot_updateActions();
 	slot_updateWindowsMenu();
+	emit syncElementsPanel();
 }
 
 /**
@@ -2483,7 +2517,27 @@ void QETDiagramEditor::generateTerminalBlock()
 #endif
 	if ( !success ) {
 		QMessageBox::warning(nullptr,
-				     QObject::tr("Error launching qet_tb_generator plugin"),
-				     message);
+							 QObject::tr("Error launching qet_tb_generator plugin"),
+							 message);
+	}
+}
+
+/**
+ * @brief QETDiagramEditor::slot_terminalNumbering
+ * Opens the dialog for automatic terminal numbering and applies the generated undo command.
+ */
+void QETDiagramEditor::slot_terminalNumbering() {
+	TerminalNumberingDialog dialog(this);
+	if (dialog.exec() == QDialog::Accepted) {
+		QETProject *project = currentProject();
+		if (!project) return;
+
+		// Fetch the generated undo command from the dialog logic
+		QUndoCommand *macro = dialog.getUndoCommand(project);
+
+		// If changes were made, push them to the global undo stack
+		if (macro) {
+			undo_group.activeStack()->push(macro);
+		}
 	}
 }

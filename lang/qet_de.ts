@@ -9723,7 +9723,7 @@ Bitte laden Sie diese über den Link herunter und entpacken Sie sie in den Insta
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.cpp" line="140"/>
         <source>Automatic terminal numbering</source>
-        <translation>Automatische Anschlussnummerierung</translation>
+        <translation>Automatische Klemmennummerierung</translation>
     </message>
 </context>
 <context>
