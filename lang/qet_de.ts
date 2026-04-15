@@ -214,7 +214,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en coréen</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Koreanische</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
@@ -779,6 +779,13 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     </message>
 </context>
 <context>
+    <name>ColumnResizerTestWidget</name>
+    <message>
+        <source>PushButton</source>
+        <translation type="obsolete">Taste</translation>
+    </message>
+</context>
+<context>
     <name>CompositeTextEditDialog</name>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
@@ -1201,7 +1208,8 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="489"/>
         <source>
 &lt;Shift&gt; to move</source>
-        <translation type="unfinished"></translation>
+        <translation>
+&lt;Shift&gt; zum bewegen</translation>
     </message>
 </context>
 <context>
@@ -1866,7 +1874,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="35"/>
         <source>Exclure de la numérotation auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Sperre der automatischen Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="51"/>
@@ -1925,7 +1933,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="110"/>
         <source>Définir le nombre maximal d&apos;esclaves</source>
-        <translation type="unfinished"></translation>
+        <translation>max. Slave-Anzahl definieren</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="130"/>
@@ -2154,13 +2162,15 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="376"/>
         <source>Nombre maximum de contacts esclaves définis : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Maximale Anzahl definierter Slave-Kontakte: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="377"/>
         <source>Nombre de contacts esclaves utilisés : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der verwendeten Slave-Kontakte: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="379"/>
@@ -3103,6 +3113,14 @@ In diesem Fall wird das Feld &quot;Inkrementierung&quot; ignoriert.
     </message>
 </context>
 <context>
+    <name>FontHelpers</name>
+    <message>
+        <source>%1</source>
+        <comment>@item Font name</comment>
+        <translation type="obsolete">%1% {1?}</translation>
+    </message>
+</context>
+<context>
     <name>FormulaAssistantDialog</name>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
@@ -3702,7 +3720,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="367"/>
         <source>Coréen</source>
-        <translation type="unfinished"></translation>
+        <translation>Koreanisch</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="368"/>
@@ -3792,7 +3810,7 @@ Hier unten kann der Standardwert dieses Textfeldes für Ihre eigenen Bauteile de
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="571"/>
         <source>Fonctionnalité expérimental</source>
-        <translation type="unfinished"></translation>
+        <translation>Experimentelle Funktion</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="572"/>
@@ -3802,7 +3820,12 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
 1 - la valeur sélectionnée 
 2 - du dpi de l&apos;écran 
 3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
-        <translation type="unfinished"></translation>
+        <translation>WARNUNG:
+Alle Einstellungen außer „Keine Rundung“ können je nach folgenden Faktoren zu Darstellungsfehlern im Projekt führen:
+
+1 – der gewählte Wert 
+2 – die Bildschirmauflösung (dpi) 
+3 – Bearbeitung des Projekts auf einem anderen Computer und/oder Bildschirm, der nicht über die gleichen Einstellungen wie unter Punkt 1 und 2 verfügt.</translation>
     </message>
 </context>
 <context>
@@ -4293,6 +4316,124 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     </message>
 </context>
 <context>
+    <name>KCharSelectData</name>
+    <message>
+        <source>Other</source>
+        <comment>KCharSelect section name</comment>
+        <translation type="obsolete">Andere</translation>
+    </message>
+</context>
+<context>
+    <name>KColumnResizerTestForms</name>
+    <message>
+        <source>GroupBox</source>
+        <translation type="obsolete">Gruppierung</translation>
+    </message>
+</context>
+<context>
+    <name>KColumnResizerTestGridAndForms</name>
+    <message>
+        <source>GroupBox</source>
+        <translation type="obsolete">Gruppierung</translation>
+    </message>
+    <message>
+        <source>PushButton</source>
+        <translation type="obsolete">Taste</translation>
+    </message>
+</context>
+<context>
+    <name>KColumnResizerTestGrids</name>
+    <message>
+        <source>GroupBox</source>
+        <translation type="obsolete">Gruppierung</translation>
+    </message>
+</context>
+<context>
+    <name>KFontChooser</name>
+    <message>
+        <source>%1</source>
+        <comment>@item Font style</comment>
+        <translation type="obsolete">%1% {1?}</translation>
+    </message>
+</context>
+<context>
+    <name>KFormat</name>
+    <message>
+        <source>y</source>
+        <comment>SI prefix for 10^⁻24</comment>
+        <translation type="obsolete">y</translation>
+    </message>
+    <message>
+        <source>T</source>
+        <comment>SI prefix for 10^12</comment>
+        <translation type="obsolete">T</translation>
+    </message>
+    <message>
+        <source>Y</source>
+        <comment>SI prefix for 10^24</comment>
+        <translation type="obsolete">Y</translation>
+    </message>
+    <message>
+        <source>%1 %2</source>
+        <comment>no Prefix</comment>
+        <extracomment>value without prefix, format &quot;&lt;val&gt; &lt;unit&gt;&quot;</extracomment>
+        <translation type="obsolete">%1 %2</translation>
+    </message>
+    <message>
+        <source>%1 %2%3</source>
+        <comment>MetricBinaryDialect</comment>
+        <extracomment>value with prefix, format &quot;&lt;val&gt; &lt;prefix&gt;&lt;unit&gt;&quot;</extracomment>
+        <translation type="obsolete">%1% {1 %2%3?}</translation>
+    </message>
+    <message>
+        <source>%1:%2.%3</source>
+        <extracomment>@item:intext Duration format minutes, seconds and milliseconds</extracomment>
+        <translation type="obsolete">%1% {1:%2.%3?}</translation>
+    </message>
+    <message>
+        <source>%1:%2</source>
+        <extracomment>@item:intext Duration format minutes and seconds
+----------
+@item:intext Duration format hours and minutes</extracomment>
+        <translation type="obsolete">%1% {1:%2?}</translation>
+    </message>
+    <message>
+        <source>%1:%2:%3.%4</source>
+        <extracomment>@item:intext Duration format hours, minutes, seconds, milliseconds</extracomment>
+        <translation type="obsolete">%1% {1:%2:%3.%4?}</translation>
+    </message>
+    <message>
+        <source>%1:%2:%3</source>
+        <extracomment>@item:intext Duration format hours, minutes, seconds</extracomment>
+        <translation type="obsolete">%1% {1:%2:%3?}</translation>
+    </message>
+</context>
+<context>
+    <name>KMessageBox</name>
+    <message>
+        <source>Information</source>
+        <translation type="obsolete">Information</translation>
+    </message>
+</context>
+<context>
+    <name>KMessageDialog</name>
+    <message>
+        <source>Information</source>
+        <translation type="obsolete">Information</translation>
+    </message>
+</context>
+<context>
+    <name>KStandardGuiItem</name>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="obsolete">&amp;OK</translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="obsolete">Abbre&amp;chen</translation>
+    </message>
+</context>
+<context>
     <name>LineEditor</name>
     <message>
         <location filename="../sources/editor/ui/lineeditor.cpp" line="42"/>
@@ -4397,7 +4538,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="71"/>
         <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinweis: Master-Elemente, die ihre maximale Anzahl an Slaves erreicht haben, werden ausgeblendet.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="459"/>
@@ -4626,12 +4767,12 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="368"/>
         <source>Nombre maximal d&apos;esclaves atteint.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die maximale Anzahl an Slaves wurde erreicht.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="369"/>
         <source>Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieser Master kann keine neuen Slave-Kontakte mehr akzeptieren, da das festgelegte Limit erreicht wurde (Limit: %1).</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="62"/>
@@ -5654,12 +5795,12 @@ Voulez-vous enregistrer les modifications ?</source>
     <message>
         <location filename="../sources/projectview.cpp" line="726"/>
         <source>go one page left</source>
-        <translation type="unfinished"></translation>
+        <translation>eine Seite nach links</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="730"/>
         <source>go one page right</source>
-        <translation type="unfinished"></translation>
+        <translation>eine Seite nach rechts</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="745"/>
@@ -6519,12 +6660,12 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="471"/>
         <source>Exporter le plan de câblage</source>
-        <translation type="unfinished"></translation>
+        <translation>Verdrahtungsplan erstellen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="482"/>
         <source>Numérotation automatique des bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Nummerierung der Klemmen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
@@ -6668,18 +6809,19 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1440"/>
         <source>Double-click pour terminer la forme, Click droit pour annuler le dernier point</source>
-        <translation>Doppelclick, um die Form zu beenden / Rechtsclick, um den letzten Punkt zu entfernen</translation>
+        <translation>Doppelclick, um die Form zu beenden / Rechtsklick, um den letzten Punkt zu entfernen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1494"/>
         <source>Suppression de borne impossible</source>
-        <translation type="unfinished"></translation>
+        <translation>Klemme kann nicht gelöscht werden</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1495"/>
         <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
 Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Löschung kann nicht durchgeführt werden, da die Auswahl eine oder mehrere Klemmen enthält, die überbrückt sind und/oder zu einer Klemme mit mehreren Ebenen gehören.
+Entfernen Sie die Überbrückung und/oder löschen Sie die Ebenen der betroffenen Klemmen, um sie löschen zu können</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1523"/>
@@ -6933,7 +7075,7 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="193"/>
         <source>Annulation</source>
-        <translation>Rückgängig: </translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="280"/>
@@ -9281,16 +9423,16 @@ Möchten Sie sie ersetzen?</translation>
         <translation>Einfügen</translation>
     </message>
     <message>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="261"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="405"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
+        <location filename="../sources/qetapp.cpp" line="2332"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
-        <location filename="../sources/qetapp.cpp" line="2332"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>dies ist ein Programmfehler</translation>
@@ -9581,7 +9723,7 @@ Bitte laden Sie diese über den Link herunter und entpacken Sie sie in den Insta
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.cpp" line="140"/>
         <source>Automatic terminal numbering</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Klemmennummerierung</translation>
     </message>
 </context>
 <context>
@@ -12899,42 +13041,42 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="14"/>
         <source>Numérotation automatique des bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatische Klemmennummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="20"/>
         <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres.&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Funktion nummeriert die Klemmen des Projekts entsprechend ihrer Position. Leere oder gesperrte Klemmen werden dabei ignoriert. Die Klemmenbezeichnung muss zuvor wie folgt konfiguriert werden: „-X:AB“. Der Teil vor dem Doppelpunkt (die Klemmenleiste) kann beliebig benannt werden. „AB“ kann aus Ziffern oder Buchstaben bestehen.</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="30"/>
         <source>Priorité des axes</source>
-        <translation type="unfinished"></translation>
+        <translation>Priorität der Achsen</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="36"/>
         <source>Priorité à l&apos;axe X (horizontal)</source>
-        <translation type="unfinished"></translation>
+        <translation>Priorität für die X-Achse (horizontal)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="46"/>
         <source>Priorité à l&apos;axe Y (vertical)</source>
-        <translation type="unfinished"></translation>
+        <translation>Priorität für die Y-Achse (vertikal)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="56"/>
         <source>Type de numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Art der Nummerierung</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="62"/>
         <source>Numérique uniquement (1, 2, 3...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Ziffern (1, 2, 3...)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="72"/>
         <source>Alphanumérique (A, B, C... 1, 2...)</source>
-        <translation type="unfinished"></translation>
+        <translation>Alphanumerisch (A, B, C... 1, 2...)</translation>
     </message>
 </context>
 <context>
@@ -13220,47 +13362,47 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="252"/>
         <source>Orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientierung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="259"/>
         <source>Alignement</source>
-        <translation type="unfinished">Ausrichtung</translation>
+        <translation>Ausrichtung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="281"/>
         <source>Police :</source>
-        <translation type="unfinished">Schriftart:</translation>
+        <translation>Schriftart:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="291"/>
         <source>Taille :</source>
-        <translation type="unfinished">Größe:</translation>
+        <translation>Größe:</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="321"/>
         <source>Texte d&apos;en tête</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopfzeile</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="331"/>
         <source>Origine vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikaler Ursprung</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="338"/>
         <source>Longueur maximal</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximale Länge</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="395"/>
         <source>Texte borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Anschlusstext</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="405"/>
         <source>Référence croisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Querverweis</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="524"/>
@@ -14208,91 +14350,91 @@ Maximale Länge: %2px
         <location filename="../sources/wiringlistexport.cpp" line="224"/>
         <location filename="../sources/wiringlistexport.cpp" line="239"/>
         <source>Erreur</source>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="224"/>
         <source>Impossible de lire la structure en mémoire du projet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Speicherstruktur des Projekts kann nicht gelesen werden.</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="230"/>
         <source>Exporter le plan de câblage</source>
-        <translation type="unfinished"></translation>
+        <translation>Verdrahtungsplan erstellen</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="232"/>
         <source>Fichiers CSV (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>CSV-Dateien (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="239"/>
         <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Datei kann nicht zum Schreiben geöffnet werden.</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="266"/>
         <source>Page</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Seite</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="267"/>
         <source>Composant 1</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil 1</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="268"/>
         <source>Borne 1</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anschluss 1</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="269"/>
         <source>Composant 2</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil 2</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="270"/>
         <source>Borne 2</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anschluss 2</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="271"/>
         <source>Tension / Protocole</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Spannung / Protokoll</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="272"/>
         <source>Couleur du fil</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Leiterfarbe</translation>
+        <translation>Leiterfarbe</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="273"/>
         <source>Section du fil</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Leiterquerschnitt</translation>
+        <translation>Leiterquerschnitt</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="274"/>
         <source>Fonction</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Funktion</translation>
+        <translation>Funktion</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="289"/>
         <source>Export réussi</source>
-        <translation type="unfinished"></translation>
+        <translation>Export erfolgreich</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="289"/>
         <source>Le plan de câblage a été exporté avec succès !</source>
-        <translation type="unfinished"></translation>
+        <translation>Der Verdrahtungsplan wurde erfolgreich exportiert!</translation>
     </message>
 </context>
 <context>
