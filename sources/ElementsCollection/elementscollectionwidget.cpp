@@ -176,16 +176,14 @@ void ElementsCollectionWidget::setUpAction()
 */
 void ElementsCollectionWidget::setUpWidget()
 {
-	//Setup the main layout
 	m_main_vlayout = new QVBoxLayout(this);
-	this->setLayout(m_main_vlayout);
+	m_main_vlayout->setContentsMargins(0, 0, 0, 0);
+	m_main_vlayout->setSpacing(2);
 
 	m_search_field = new QLineEdit(this);
-	m_search_field->setPlaceholderText(tr("Rechercher"));
+	m_search_field->setPlaceholderText(tr("Rechercher..."));
 	m_search_field->setClearButtonEnabled(true);
-	m_main_vlayout->addWidget(m_search_field);
 
-	//Setup the tree view
 	m_tree_view = new ElementsTreeView(this);
 	m_tree_view->setHeaderHidden(true);
 	m_tree_view->setIconSize(QSize(50, 50));
@@ -195,12 +193,29 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tree_view->setAnimated(true);
 	m_tree_view->setMouseTracking(true);
 	m_tree_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
-	m_main_vlayout->addWidget(m_tree_view);
 
-	//Setup the progress bar
+	//Setup the macros tree view (DEV)
+	m_macros_tree_view = new ElementsTreeView(this);
+	m_macros_tree_view->setHeaderHidden(true);
+	m_macros_tree_view->setIconSize(QSize(50, 50));
+	m_macros_tree_view->setDragDropMode(QAbstractItemView::DragDrop);
+	m_macros_tree_view->setContextMenuPolicy(Qt::CustomContextMenu);
+	m_macros_tree_view->setAutoExpandDelay(500);
+	m_macros_tree_view->setAnimated(true);
+	m_macros_tree_view->setMouseTracking(true);
+	m_macros_tree_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+	m_tab_widget = new QTabWidget(this);
+	m_tab_widget->setDocumentMode(true);
+	m_tab_widget->setTabPosition(QTabWidget::North);
+	m_tab_widget->addTab(m_tree_view, tr("Collections"));
+	m_tab_widget->addTab(m_macros_tree_view, tr("Modèles (DEV)"));
+
+	m_main_vlayout->addWidget(m_search_field);
+	m_main_vlayout->addWidget(m_tab_widget);
+
 	m_progress_bar = new QProgressBar(this);
 	m_progress_bar->setFormat(QObject::tr("chargement %p% (%v sur %m)"));
-
 	m_main_vlayout->addWidget(m_progress_bar);
 	m_progress_bar->hide();
 
@@ -256,22 +271,43 @@ void ElementsCollectionWidget::setUpConnection()
 		if (qde && eci)
 			qde->statusBar()->showMessage(eci->localName());
 	});
+
+	connect(m_macros_tree_view, &QTreeView::customContextMenuRequested,
+			this, &ElementsCollectionWidget::customContextMenu);
+
+	connect(m_macros_tree_view, &QTreeView::doubleClicked,
+		[this](const QModelIndex &index)
+		{
+			this->m_index_at_context_menu = index ;
+			this->editElement();
+		});
+
+	connect(m_macros_tree_view, &QTreeView::entered,
+		[this] (const QModelIndex &index) {
+			QETDiagramEditor *qde = QETApp::diagramEditorAncestorOf(this);
+			ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+			if (qde && eci)
+				qde->statusBar()->showMessage(eci->localName());
+		});
 }
 
 /**
-	@brief ElementsCollectionWidget::customContextMenu
-	Display the context menu of this widget at point
-	@param point
-*/
+ * @brief ElementsCollectionWidget::customContextMenu
+ * Display the context menu of this widget at point
+ * @param point
+ */
 void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 {
-	m_index_at_context_menu = m_tree_view->indexAt(point);
+	QTreeView *clicked_tree = qobject_cast<QTreeView *>(sender());
+	if (!clicked_tree) clicked_tree = m_tree_view; // Fallback
+
+	m_index_at_context_menu = clicked_tree->indexAt(point);
 	if (!m_index_at_context_menu.isValid()) return;
 
 	m_context_menu->clear();
 
 	ElementCollectionItem *eci = elementCollectionItemForIndex(
-				m_index_at_context_menu);
+		m_index_at_context_menu);
 	bool add_open_dir = false;
 
 	if (eci->isElement())
@@ -281,12 +317,14 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	{
 		add_open_dir = true;
 		FileElementCollectionItem *feci =
-				static_cast<FileElementCollectionItem*>(eci);
+		static_cast<FileElementCollectionItem*>(eci);
 		if (!feci->isCommonCollection())
 		{
 			if (feci->isDir())
 			{
-				m_context_menu->addAction(m_new_element);
+				if (!feci->isMacrosCollection()) {
+					m_context_menu->addAction(m_new_element);
+				}
 				m_context_menu->addAction(m_new_directory);
 				if (!feci->isCollectionRoot())
 				{
@@ -301,7 +339,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 	if (eci->type() == XmlProjectElementCollectionItem::Type)
 	{
 		XmlProjectElementCollectionItem *xpeci =
-			static_cast<XmlProjectElementCollectionItem *>(eci);
+		static_cast<XmlProjectElementCollectionItem *>(eci);
 		if (xpeci->isCollectionRoot())
 			add_open_dir = true;
 	}
@@ -320,7 +358,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 		m_context_menu->addAction(m_open_dir);
 	m_context_menu->addAction(m_reload);
 
-	m_context_menu->popup(mapToGlobal(m_tree_view->mapToParent(point)));
+	m_context_menu->popup(mapToGlobal(clicked_tree->mapToParent(point)));
 }
 
 /**
@@ -400,9 +438,10 @@ void ElementsCollectionWidget::deleteElement()
 		QFile file(loc.fileSystemPath());
 		if (file.remove())
 		{
-			m_model->removeRows(m_index_at_context_menu.row(),
-						1,
-						m_index_at_context_menu.parent());
+			QAbstractItemModel *clicked_model = const_cast<QAbstractItemModel*>(m_index_at_context_menu.model());
+			if (clicked_model) {
+				clicked_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+			}
 		}
 		else
 		{
@@ -445,9 +484,10 @@ void ElementsCollectionWidget::deleteDirectory()
 		QDir dir (loc.fileSystemPath());
 		if (dir.removeRecursively())
 		{
-			m_model->removeRows(m_index_at_context_menu.row(),
-						1,
-						m_index_at_context_menu.parent());
+			QAbstractItemModel *clicked_model = const_cast<QAbstractItemModel*>(m_index_at_context_menu.model());
+			if (clicked_model) {
+				clicked_model->removeRows(m_index_at_context_menu.row(), 1, m_index_at_context_menu.parent());
+			}
 		}
 		else
 		{
@@ -489,19 +529,29 @@ void ElementsCollectionWidget::editDirectory()
 */
 void ElementsCollectionWidget::newDirectory()
 {
-	ElementCollectionItem *eci = elementCollectionItemForIndex(
-				m_index_at_context_menu);
+	ElementCollectionItem *eci = elementCollectionItemForIndex(m_index_at_context_menu);
 
-	if (eci->type() != FileElementCollectionItem::Type) return;
+	if (!eci || eci->type() != FileElementCollectionItem::Type) return;
 
-	FileElementCollectionItem *feci =
-			static_cast<FileElementCollectionItem*>(eci);
+	FileElementCollectionItem *feci = static_cast<FileElementCollectionItem*>(eci);
 	if(feci->isCommonCollection()) return;
 
 	ElementsLocation location(feci->collectionPath());
 	ElementsCategoryEditor new_dir_editor(location, false, this);
-	if (new_dir_editor.exec() == QDialog::Accepted)
-		m_model->addLocation(new_dir_editor.createdLocation());
+
+	if (new_dir_editor.exec() == QDialog::Accepted) {
+		ElementsLocation new_loc = new_dir_editor.createdLocation();
+
+		if (new_loc.isMacrosCollection()) {
+			if (m_macros_model) {
+				m_macros_model->addLocation(new_loc);
+			}
+		} else {
+			if (m_model) {
+				m_model->addLocation(new_loc);
+			}
+		}
+	}
 }
 
 /**
@@ -662,12 +712,19 @@ void ElementsCollectionWidget::reload()
 		&ElementsCollectionWidget::loadingFinished);
 
 	m_new_model->loadCollections(true, true, true, project_list);
+
+	if (m_macros_model) {
+		m_macros_model->deleteLater();
+	}
+	m_macros_model = new ElementsCollectionModel(m_macros_tree_view);
+	m_macros_tree_view->setModel(m_macros_model);
+	m_macros_model->loadMacrosCollection();
 }
 
 /**
-	@brief ElementsCollectionWidget::loadingFinished
-	Process when collection finished to be loaded
-*/
+ * @brief ElementsCollectionWidget::loadingFinished
+ * Process when collection finished to be loaded
+ */
 void ElementsCollectionWidget::loadingFinished()
 {
 	if (m_new_model)
@@ -842,15 +899,21 @@ void ElementsCollectionWidget::showAndExpandItem(const QModelIndex &index,
 }
 
 /**
-	@brief ElementsCollectionWidget::elementCollectionItemForIndex
-	@param index
-	@return The internal pointer of index casted to ElementCollectionItem;
-*/
-ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(
-		const QModelIndex &index) {
-	if (!index.isValid())
-		return nullptr;
+ * @brief ElementsCollectionWidget::elementCollectionItemForIndex
+ * @param index
+ * @return The internal pointer of index casted to ElementCollectionItem;
+ */
+ElementCollectionItem *ElementsCollectionWidget::elementCollectionItemForIndex(const QModelIndex &index)
+{
+	if (!index.isValid()) return nullptr;
 
-	return static_cast<ElementCollectionItem*>(
-				m_model->itemFromIndex(index));
+	if (m_macros_model && index.model() == m_macros_model) {
+		return static_cast<ElementCollectionItem *>(m_macros_model->itemFromIndex(index));
+	}
+
+	if (m_model && index.model() == m_model) {
+		return static_cast<ElementCollectionItem *>(m_model->itemFromIndex(index));
+	}
+
+	return nullptr;
 }

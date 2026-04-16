@@ -50,6 +50,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 		bool isCommonCollection() const;
 		bool isCompanyCollection() const;
 		bool isCustomCollection() const;
+		bool isMacrosCollection() const;
 		void addChildAtPath(const QString &collection_name) override;
 
 		void setUpData() override;

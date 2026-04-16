@@ -91,6 +91,8 @@ QString QETApp::m_user_company_tbt_dir = QString();
 
 QString QETApp::m_user_custom_tbt_dir = QString();
 
+QString QETApp::m_user_macros_dir = QString();
+
 QETApp *QETApp::m_qetapp = nullptr;
 
 bool lang_is_set = false;
@@ -724,6 +726,8 @@ void QETApp::resetCollectionsPath()
 	m_user_company_tbt_dir.clear();
 
 	m_user_custom_tbt_dir.clear();
+
+	m_user_macros_dir.clear();
 }
 
 /**
@@ -820,6 +824,38 @@ QString QETApp::customTitleBlockTemplatesDir()
 	}
 
 	return(dataDir() + "/titleblocks/");
+}
+
+/**
+ * @brief QETApp::userMacrosDir
+ * @return the path of the directory containing the user macros collection.
+ */
+QString QETApp::userMacrosDir()
+{
+	if (m_user_macros_dir.isEmpty())
+	{
+		QSettings settings;
+		QString path = settings.value(
+			"elements-collections/macros-path",
+			"default").toString();
+			if (path != "default" && !path.isEmpty())
+			{
+				QDir dir(path);
+				if (dir.exists())
+				{
+					m_user_macros_dir = path;
+					return m_user_macros_dir;
+				}
+			}
+			else {
+				m_user_macros_dir = "default";
+			}
+	}
+	else if (m_user_macros_dir != "default") {
+		return m_user_macros_dir;
+	}
+
+	return(dataDir() + "/macros/");
 }
 
 /**
@@ -938,6 +974,8 @@ QString QETApp::realPath(const QString &sym_path) {
 		directory = commonElementsDir();
 	} else if (sym_path.startsWith("company://")) {
 		directory = companyElementsDir();
+	} else if (sym_path.startsWith("macros://")) {
+		directory = userMacrosDir();
 	} else if (sym_path.startsWith("company://")) {
 		directory = companyElementsDir();
 	} else if (sym_path.startsWith("custom://")) {
@@ -976,6 +1014,7 @@ QString QETApp::symbolicPath(const QString &real_path) {
 	QString commond = commonElementsDir();
 	QString companyd = companyElementsDir();
 	QString customd = customElementsDir();
+	QString macrosd = userMacrosDir();
 	QString chemin;
 	// analyzes the file path passed in parameter
 	// analyse le chemin de fichier passe en parametre
@@ -987,6 +1026,10 @@ QString QETApp::symbolicPath(const QString &real_path) {
 		chemin = "company://"
 				+ real_path.right(
 					real_path.length() - companyd.length());
+	} else if (real_path.startsWith(macrosd)) {
+		chemin = "macros://"
+		+ real_path.right(
+			real_path.length() - macrosd.length());
 	} else if (real_path.startsWith(customd)) {
 		chemin = "custom://"
 				+ real_path.right(
@@ -2211,6 +2254,10 @@ void QETApp::initConfiguration()
 	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
 	if (!custom_tbt_dir.exists())
 		custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
+
+	QDir macros_dir(QETApp::userMacrosDir());
+	if (!macros_dir.exists())
+		macros_dir.mkpath(QETApp::userMacrosDir());
 
 	/* recent files
 	 * note:

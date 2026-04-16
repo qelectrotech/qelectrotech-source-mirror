@@ -264,10 +264,12 @@ bool ElementsCollectionModel::dropMimeData(const QMimeData *data,
 	@param projects : list of projects to load
 */
 void ElementsCollectionModel::loadCollections(bool common_collection,
-						  bool company_collection,
-						  bool custom_collection,
-						  QList<QETProject *> projects)
+											  bool company_collection,
+											  bool custom_collection,
+											  QList<QETProject *> projects)
 {
+	clear();
+
 	m_items_list_to_setUp.clear();
 
 	if (common_collection)
@@ -280,34 +282,62 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 	if (common_collection || company_collection || custom_collection)
 		m_items_list_to_setUp.append(items());
 
-
 	for (QETProject *project : projects)
 	{
 		addProject(project, false);
 		m_items_list_to_setUp.append(projectItems(project));
 	}
+
 	auto *watcher = new QFutureWatcher<void>();
 	connect(watcher, &QFutureWatcher<void>::progressValueChanged,
-		this, &ElementsCollectionModel::loadingProgressValueChanged);
+			this, &ElementsCollectionModel::loadingProgressValueChanged);
 	connect(watcher, &QFutureWatcher<void>::progressRangeChanged,
-		this, &ElementsCollectionModel::loadingProgressRangeChanged);
+			this, &ElementsCollectionModel::loadingProgressRangeChanged);
 	connect(watcher, &QFutureWatcher<void>::finished,
-		this, &ElementsCollectionModel::loadingFinished);
-	connect(
-		watcher,
-		&QFutureWatcher<void>::finished,
-		watcher,
-		&QFutureWatcher<void>::deleteLater);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+			this, &ElementsCollectionModel::loadingFinished);
+	connect(watcher, &QFutureWatcher<void>::finished, watcher, &QFutureWatcher<void>::deleteLater);
+
+	#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	m_future = QtConcurrent::map(m_items_list_to_setUp, setUpData);
-#else
-#	if TODO_LIST
-#		pragma message("@TODO remove code for QT 6 or later")
-#	endif
-	qDebug() << "Help code for QT 6 or later"
-			 << "QtConcurrent::run its backwards now...function, object, args";
-#endif
+	#else
+	qDebug() << "Help code for QT 6 or later";
+	#endif
 	watcher->setFuture(m_future);
+}
+
+/**
+ * @brief ElementsCollectionModel::loadMacrosCollection
+ * Load the macros collection synchronously to avoid thread-collisions.
+ */
+void ElementsCollectionModel::loadMacrosCollection()
+{
+	m_items_list_to_setUp.clear();
+	addMacrosCollection(true);
+}
+
+/**
+ * @brief ElementsCollectionModel::addMacrosCollection
+ * Add the user macros collection to this model
+ * @param set_data
+ */
+void ElementsCollectionModel::addMacrosCollection(bool set_data)
+{
+	QString macrosPath = QETApp::userMacrosDir();
+	qDebug() << "=== MAKRO PFAD CHECK ===" << macrosPath;
+	if (macrosPath.endsWith("/")) {
+		macrosPath.remove(macrosPath.length() - 1, 1);
+	}
+
+	FileElementCollectionItem *feci = new FileElementCollectionItem();
+	if (feci->setRootPath(macrosPath,
+		set_data,
+		m_hide_element)) {
+		invisibleRootItem()->appendRow(feci);
+	if (set_data)
+		feci->setUpData();
+		}
+		else
+			delete feci;
 }
 
 /**
@@ -368,11 +398,11 @@ void ElementsCollectionModel::addCustomCollection(bool set_data)
 }
 
 /**
-	@brief ElementsCollectionModel::addLocation
-	Add the element or directory to this model.
-	If the location is already managed by this model, do nothing.
-	@param location
-*/
+ * @brief ElementsCollectionModel::addLocation
+ * Add the element or directory to this model.
+ * If the location is already managed by this model, do nothing.
+ * @param location
+ */
 void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 {
 	QModelIndex index = indexFromLocation(location);
@@ -387,14 +417,15 @@ void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 
 		if (project) {
 			XmlProjectElementCollectionItem *xpeci =
-					m_project_hash.value(project);
+			m_project_hash.value(project);
 
 			last_item = xpeci->lastItemForPath(
-						location.collectionPath(false),
-						collection_name);
+				location.collectionPath(false),
+											   collection_name);
 		}
 	}
-	else if (location.isCustomCollection()) {
+	// ANPASSUNG: Makros und Custom Collection werden hier behandelt!
+	else if (location.isCustomCollection() || location.isMacrosCollection()) {
 		QList <ElementCollectionItem *> child_list;
 
 		for (int i=0 ; i<rowCount() ; i++)
@@ -404,15 +435,18 @@ void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 
 			if (eci->type() == FileElementCollectionItem::Type) {
 				FileElementCollectionItem *feci =
-						static_cast<FileElementCollectionItem *>(eci);
+				static_cast<FileElementCollectionItem *>(eci);
 
-				if (feci->isCustomCollection()) {
+				// Wir prüfen explizit, ob es Custom ODER Macros ist, und weisen es richtig zu.
+				if ((location.isCustomCollection() && feci->isCustomCollection()) ||
+					(location.isMacrosCollection() && feci->isMacrosCollection())) {
+
 					last_item = feci->lastItemForPath(
-								location.collectionPath(false),
-								collection_name);
+						location.collectionPath(false),
+													  collection_name);
 					if(last_item)
 						break;
-				}
+					}
 			}
 		}
 	}
@@ -574,14 +608,14 @@ void ElementsCollectionModel::hideElement()
 }
 
 /**
-	@brief ElementsCollectionModel::indexFromLocation
-	Return the index who represent location.
-	Index can be non valid
-	@param location
-	@return
-*/
+ * @brief ElementsCollectionModel::indexFromLocation
+ * Return the index who represent location.
+ * Index can be non valid
+ * @param location
+ * @return
+ */
 QModelIndex ElementsCollectionModel::indexFromLocation(
-		const ElementsLocation &location)
+	const ElementsLocation &location)
 {
 	QList <ElementCollectionItem *> child_list;
 
@@ -589,30 +623,34 @@ QModelIndex ElementsCollectionModel::indexFromLocation(
 		child_list.append(static_cast<ElementCollectionItem *>(item(i)));
 	}
 
-		foreach(ElementCollectionItem *eci, child_list) {
+	foreach(ElementCollectionItem *eci, child_list) {
 
-			ElementCollectionItem *match_eci = nullptr;
+		ElementCollectionItem *match_eci = nullptr;
 
-			if (eci->type() == FileElementCollectionItem::Type) {
-				if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
-					if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
-						 (location.isCompanyCollection() && feci->isCompanyCollection()) ||
-						 (location.isCustomCollection() && !feci->isCommonCollection()) ) {
-						match_eci = feci->itemAtPath(location.collectionPath(false));
+		if (eci->type() == FileElementCollectionItem::Type) {
+			if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
+
+				// ANPASSUNG: Makro-Prüfung hinzugefügt, damit das Modell den Pfad im Baum findet!
+				if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
+					(location.isCompanyCollection() && feci->isCompanyCollection()) ||
+					(location.isMacrosCollection() && feci->isMacrosCollection()) ||
+					(location.isCustomCollection() && feci->isCustomCollection()) ) {
+
+					match_eci = feci->itemAtPath(location.collectionPath(false));
 					}
-				}
 			}
-			else if (eci->type() == XmlProjectElementCollectionItem::Type) {
-				if (XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci)) {
-					match_eci = xpeci->itemAtPath(location.collectionPath(false));
-				}
+		}
+		else if (eci->type() == XmlProjectElementCollectionItem::Type) {
+			if (XmlProjectElementCollectionItem *xpeci = static_cast<XmlProjectElementCollectionItem *>(eci)) {
+				match_eci = xpeci->itemAtPath(location.collectionPath(false));
 			}
-
-			if (match_eci)
-				return indexFromItem(match_eci);
 		}
 
-		return QModelIndex();
+		if (match_eci)
+			return indexFromItem(match_eci);
+	}
+
+	return QModelIndex();
 }
 
 /**

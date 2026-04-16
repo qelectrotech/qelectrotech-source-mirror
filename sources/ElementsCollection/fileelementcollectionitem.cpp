@@ -110,9 +110,9 @@ bool FileElementCollectionItem::isElement() const
 }
 
 /**
-	@brief FileElementCollectionItem::localName
-	@return the located name of this item
-*/
+ * @brief FileElementCollectionItem::localName
+ * @return the located name of this item
+ */
 QString FileElementCollectionItem::localName()
 {
 	if (!text().isNull())
@@ -120,12 +120,18 @@ QString FileElementCollectionItem::localName()
 
 	else if (isDir()) {
 		if (isCollectionRoot()) {
+			// --- NEU: Makro-Pfad laden ---
+			QString macrosPath = QETApp::userMacrosDir();
+			if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
+
 			if (m_path == QETApp::commonElementsDirN())
 				setText(QObject::tr("Collection QET"));
 			else if (m_path == QETApp::companyElementsDirN())
 				setText(QObject::tr("Collection Company"));
 			else if (m_path == QETApp::customElementsDirN())
 				setText(QObject::tr("Collection utilisateur"));
+			else if (m_path == macrosPath) // <-- NEU: Name des Ordners zuweisen
+				setText(QObject::tr("Makros"));
 			else
 				setText(QObject::tr("Collection inconnue"));
 		}
@@ -136,7 +142,7 @@ QString FileElementCollectionItem::localName()
 			if(docu.load_file(str.toStdString().c_str()))
 			{
 				if (QString(docu.document_element().name())
-						== "qet-directory")
+					== "qet-directory")
 				{
 					NamesList nl;
 					nl.fromXml(docu.document_element());
@@ -194,24 +200,29 @@ QString FileElementCollectionItem::name() const
 QString FileElementCollectionItem::collectionPath() const
 {
 	if (isCollectionRoot()) {
+		QString macrosPath = QETApp::userMacrosDir();
+		if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
+
 		if (m_path == QETApp::commonElementsDirN())
 			return "common://";
 		else if (m_path == QETApp::companyElementsDirN())
 			return "company://";
-		else
-			return "custom://";
+		else if (m_path == macrosPath)
+			return "macros://"; // <-- NEU: Protokoll für Makros zuweisen
+			else
+				return "custom://";
 	}
 	else if (parent() && parent()->type()
-		 == FileElementCollectionItem::Type) {
+		== FileElementCollectionItem::Type) {
 		ElementCollectionItem *eci =
-				static_cast<ElementCollectionItem*>(parent());
-		if (eci->isCollectionRoot())
-			return eci->collectionPath() + m_path;
+		static_cast<ElementCollectionItem*>(parent());
+	if (eci->isCollectionRoot())
+		return eci->collectionPath() + m_path;
 		else
 			return eci->collectionPath() % "/" % m_path;
-	}
-	else
-		return QString();
+		}
+		else
+			return QString();
 }
 
 /**
@@ -220,10 +231,14 @@ QString FileElementCollectionItem::collectionPath() const
 */
 bool FileElementCollectionItem::isCollectionRoot() const
 {
+	QString macrosPath = QETApp::userMacrosDir();
+	if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
+
 	if (m_path == QETApp::commonElementsDirN()
-			|| m_path == QETApp::companyElementsDirN()
-			|| m_path == QETApp::customElementsDirN())
-		return true;
+		|| m_path == QETApp::companyElementsDirN()
+		|| m_path == QETApp::customElementsDirN()
+		|| m_path == macrosPath) // <-- NEU: Makros sind jetzt ein echtes Root-Verzeichnis
+	return true;
 	else
 		return false;
 }
@@ -318,12 +333,17 @@ void FileElementCollectionItem::setUpIcon()
 		return;
 
 	if (isCollectionRoot()) {
+		QString macrosPath = QETApp::userMacrosDir();
+		if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
+
 		if (m_path == QETApp::commonElementsDirN())
 			setIcon(QIcon(":/ico/16x16/qet.png"));
 		else if (m_path == QETApp::companyElementsDirN())
 			setIcon(QIcon(":/ico/16x16/go-company.png"));
-		else
-			setIcon(QIcon(":/ico/16x16/go-home.png"));
+		else if (m_path == macrosPath)
+			setIcon(QIcon(":/ico/16x16/go-home.png")); // <-- NEU: Icon für Makros (z.B. go-home)
+			else
+				setIcon(QIcon(":/ico/16x16/go-home.png"));
 	}
 	else
 	{
@@ -392,4 +412,16 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 		if (set_data)
 			feci->setUpData();
 	}
+}
+
+/**
+ * @brief FileElementCollectionItem::isMacrosCollection
+ * @return True if this item represent the macros collection
+ */
+bool FileElementCollectionItem::isMacrosCollection() const
+{
+	QString macrosPath = QETApp::userMacrosDir();
+	if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
+
+	return fileSystemPath().startsWith(macrosPath);
 }

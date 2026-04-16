@@ -181,7 +181,7 @@ QString ElementsLocation::collectionPath(bool protocol) const
 	else
 	{
 		QString path = m_collection_path;
-		return path.remove(QRegularExpression("common://|company://|custom://|embed://"));
+		return path.remove(QRegularExpression("common://|company://|custom://|macros://|embed://"));
 	}
 }
 
@@ -232,54 +232,34 @@ QString ElementsLocation::path() const
 	(start by common://, company://, custom:// or embed://) or not.
 	@param path
 */
+
 void ElementsLocation::setPath(const QString &path)
 {
 	QString tmp_path = path;
-#ifdef Q_OS_WIN32
-		//On windows, we convert backslash to slash
+	#ifdef Q_OS_WIN32
 	tmp_path = QDir::fromNativeSeparators(path);
+	#endif
 
-#endif
+	QString macrosPath = QETApp::userMacrosDir();
+	if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
 
-	//There is a project, the path is for an embedded coolection.
 	if (m_project)
 	{
 		m_collection_path = path;
-		//Add the protocol to the collection path
 		if (!path.startsWith("embed://"))
 			m_collection_path.prepend("embed://");
-
 	}
-
-	//The path start with project, we get the project and the path from the string
 	else if (tmp_path.startsWith("project"))
 	{
-		QRegularExpression re
-			("^project(?<project_id>[0-9])\\+(?<collection_path>embed://*.*)$");
-		if (!re.isValid())
-		{
-			qWarning() <<QObject::tr("this is an error in the code")
-				  << re.errorString()
-				  << re.patternErrorOffset();
-			return;
-		}
+		QRegularExpression re ("^project(?<project_id>[0-9])\\+(?<collection_path>embed://*.*)$");
+		if (!re.isValid()) return;
 		QRegularExpressionMatch match = re.match(tmp_path);
-		if (!match.hasMatch())
-		{
-			qDebug()<<"no Match => return"
-				   <<tmp_path;
-			return;
-		}
+		if (!match.hasMatch()) return;
+
 		bool conv_ok;
 		uint project_id = match.captured("project_id").toUInt(&conv_ok);
-		if (!conv_ok)
-		{
-			qWarning()<<"toUint failed"
-				 <<match.captured("project_id")
-				 <<re
-				 <<tmp_path;
-			return;
-		}
+		if (!conv_ok) return;
+
 		QETProject *project = QETApp::project(project_id);
 		if (project)
 		{
@@ -287,10 +267,7 @@ void ElementsLocation::setPath(const QString &path)
 			m_project = project;
 		}
 	}
-
-	// The path is in file system,
-	// the given path is relative to common or custom collection
-	else if (path.startsWith("common://") || path.startsWith("company://") || path.startsWith("custom://"))
+	else if (path.startsWith("common://") || path.startsWith("company://") || path.startsWith("custom://") || path.startsWith("macros://"))
 	{
 		QString p;
 		if (path.startsWith("common://"))
@@ -303,6 +280,11 @@ void ElementsLocation::setPath(const QString &path)
 			tmp_path.remove("company://");
 			p = QETApp::companyElementsDirN() % "/" % tmp_path;
 		}
+		else if (path.startsWith("macros://"))
+		{
+			tmp_path.remove("macros://");
+			p = macrosPath % "/" % tmp_path;
+		}
 		else
 		{
 			tmp_path.remove("custom://");
@@ -312,7 +294,6 @@ void ElementsLocation::setPath(const QString &path)
 		m_file_system_path = p;
 		m_collection_path = path;
 	}
-	//In this case, the path is supposed to be relative to the file system.
 	else
 	{
 		QString path_ = path;
@@ -329,6 +310,13 @@ void ElementsLocation::setPath(const QString &path)
 			{
 				path_.remove(QETApp::companyElementsDirN()+="/");
 				path_.prepend("company://");
+				m_collection_path = path_;
+			}
+			else if (path_.startsWith(macrosPath))
+			{
+				QString matchPath = macrosPath + "/";
+				path_.remove(matchPath);
+				path_.prepend("macros://");
 				m_collection_path = path_;
 			}
 			else if (path_.startsWith(QETApp::customElementsDirN()))
@@ -351,6 +339,13 @@ void ElementsLocation::setPath(const QString &path)
 			{
 				path_.remove(QETApp::companyElementsDirN()+="/");
 				path_.prepend("company://");
+				m_collection_path = path_;
+			}
+			else if (path_.startsWith(macrosPath))
+			{
+				QString matchPath = macrosPath + "/";
+				path_.remove(matchPath);
+				path_.prepend("macros://");
 				m_collection_path = path_;
 			}
 			else if (path_.startsWith(QETApp::customElementsDirN()))
@@ -941,4 +936,15 @@ QDebug operator<< (QDebug debug, const ElementsLocation &location)
 	debug << msg;
 
 	return debug;
+}
+
+/**
+ * @brief ElementsLocation::isMacrosCollection
+ * @return True if this location represent an item from the macros collection
+ */
+bool ElementsLocation::isMacrosCollection() const
+{
+	QString macrosPath = QETApp::userMacrosDir();
+	if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
+	return fileSystemPath().startsWith(macrosPath);
 }
