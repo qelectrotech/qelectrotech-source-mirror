@@ -418,7 +418,8 @@ void ExportDialog::generateSvg(
 	
 	// "joue" la QPicture sur un QSvgGenerator
 	QSvgGenerator svg_engine;
-	svg_engine.setSize(QSize((width*9/16), (height*9/16)));
+	svg_engine.setSize(QSize(width, height));
+	svg_engine.setViewBox(QRect(0, 0, width*0.75, height*0.75));
 	svg_engine.setOutputDevice(&io_device);
 	QPainter svg_painter(&svg_engine);
 	picture.play(&svg_painter);
