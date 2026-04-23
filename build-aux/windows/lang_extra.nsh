@@ -348,27 +348,6 @@
         LangString var3              ${LANG_DANISH}  "Titel blokke eksempler"
         LangString var4              ${LANG_DANISH}  "Diagram eksempler"
         LangString uninstFailed      ${LANG_DANISH}  "Afinstallation af den tidligere version mislykkedes.$\nAfinstaller venligst ${SOFT_NAME} manuelt, inden du fortsætter."
-        
-        
-        LangString installed         ${LANG_DUTCH_BELGIAN} "${SOFT_NAME} is al geïnstalleerd. $\n$\nKlik op `OK` om de vorige versie te verwijderen of op `Annuleren` om deze upgrade te annuleren."
-        LangString wrongArch         ${LANG_DUTCH_BELGIAN} "Deze distributie is enkel voor 64-bit computers."
-        LangString Elements          ${LANG_DUTCH_BELGIAN}  "Elementen"
-        LangString Electric          ${LANG_DUTCH_BELGIAN}  "Elektriciteit"
-        LangString Logic             ${LANG_DUTCH_BELGIAN}  "Logica"
-        LangString Hydraulic         ${LANG_DUTCH_BELGIAN}  "Hydraulisch"
-        LangString Pneumatic         ${LANG_DUTCH_BELGIAN}  "Pneumatisch"
-        LangString Energy            ${LANG_DUTCH_BELGIAN}  "Energie"
-        LangString water             ${LANG_DUTCH_BELGIAN}  "Water"
-        LangString Refrigeration     ${LANG_DUTCH_BELGIAN}  "Koelinstallaties"
-        LangString Solar_thermal     ${LANG_DUTCH_BELGIAN}  "Zonne_warmte"
-        LangString Lang              ${LANG_DUTCH_BELGIAN}  "Taal"
-        LangString Titleblocks       ${LANG_DUTCH_BELGIAN}  "Titelblok"
-        LangString Examples          ${LANG_DUTCH_BELGIAN}  "Voorbeelden"
-        LangString Check             ${LANG_DUTCH_BELGIAN}  "Aanvinken om ${SOFT_NAME} te starten"
-        LangString var1              ${LANG_DUTCH_BELGIAN}  "Elementen van de officiële verzameling"
-        LangString var2              ${LANG_DUTCH_BELGIAN}  "Taalbestanden"
-        LangString var3              ${LANG_DUTCH_BELGIAN}  "Voorbeelden van titelblokken"
-        LangString var4              ${LANG_DUTCH_BELGIAN}  "Voorbeelden van schema's"
-        LangString uninstFailed      ${LANG_DUTCH_BELGIAN}  "Het verwijderen van de vorige versie is mislukt.$\nVerwijder ${SOFT_NAME} handmatig voordat u verdergaat."
+
         
         
