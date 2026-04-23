@@ -17,6 +17,7 @@
         LangString var2              ${LANG_ENGLISH}  "languagues files"
         LangString var3              ${LANG_ENGLISH}  "Examples of cartridges"
         LangString var4              ${LANG_ENGLISH}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_ENGLISH}  "Uninstallation of the previous version failed.$\nPlease uninstall ${SOFT_NAME} manually before continuing."
 
         
         LangString installed         ${LANG_KOREAN} "${SOFT_NAME}이(가) 이미 설치되어 있습니다. $\n$\n이전 버전을 제거하려면 `OK`를, 업그레이드를 취소하려면 `Cancel`을 클릭하세요."
@@ -38,6 +39,7 @@
         LangString var2              ${LANG_KOREAN} "언어 파일"
         LangString var3              ${LANG_KOREAN} "표제란 예제"
         LangString var4              ${LANG_KOREAN} "도면 예제"
+        LangString uninstFailed      ${LANG_KOREAN} "이전 버전을 제거하지 못했습니다.$\n계속하기 전에 ${SOFT_NAME}을(를) 수동으로 제거해 주세요."
 
 
         LangString installed         ${LANG_POLISH}  "${SOFT_NAME} jest już zainstalowany. $\n$\nKliknij `OK` aby odinstalować poprzednią wersję lub `Anuluj` aby przerwać aktualizację."
@@ -59,6 +61,7 @@
         LangString var2              ${LANG_POLISH}  "languagues files"
         LangString var3              ${LANG_POLISH}  "Examples of cartridges"
         LangString var4              ${LANG_POLISH}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_POLISH}  "Odinstalowanie poprzedniej wersji nie powiodło się.$\nPrzed kontynuowaniem odinstaluj ręcznie program ${SOFT_NAME}."
         
         
         LangString installed         ${LANG_GREEK}  "${SOFT_NAME} είναι ήδη εγκατεστημένο. $\n$\nΠάτησε `OK` για αφαίρεση της προηγούμενης έκδοσης ή `Cancel` για ακύρωση της αναβάθμισης." 
@@ -80,6 +83,7 @@
         LangString var2              ${LANG_GREEK}  "Αρχεία γλωσσών"
         LangString var3              ${LANG_GREEK}  "Examples of cartridges"
         LangString var4              ${LANG_GREEK}  "Παραδείγματα διαγραμμάτων"
+        LangString uninstFailed      ${LANG_GREEK}  "Η απεγκατάσταση της προηγούμενης έκδοσης απέτυχε.$\nΠαρακαλώ απεγκαταστήστε χειροκίνητα το ${SOFT_NAME} πριν συνεχίσετε."
         
         
         LangString installed         ${LANG_CZECH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -101,6 +105,7 @@
         LangString var2              ${LANG_CZECH}  "languagues files"
         LangString var3              ${LANG_CZECH}  "Examples of cartridges"
         LangString var4              ${LANG_CZECH}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_CZECH}  "Odinstalování předchozí verze se nezdařilo.$\nPřed pokračováním prosím odinstalujte ${SOFT_NAME} ručně."
         
         
         LangString installed         ${LANG_SPANISH} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -122,6 +127,7 @@
         LangString var2              ${LANG_SPANISH}  "languagues files"
         LangString var3              ${LANG_SPANISH}  "Examples of cartridges"
         LangString var4              ${LANG_SPANISH}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_SPANISH}  "La desinstalación de la versión anterior ha fallado.$\nPor favor, desinstale ${SOFT_NAME} manualmente antes de continuar."
         
         
         LangString installed         ${LANG_GERMAN} "${SOFT_NAME} ist bereits installiert. $\n$\nKlicken Sie auf `OK`, um die alte Version zu deinstallieren, oder auf `Abbrechen`, um das Upgrade abzubrechen." 
@@ -143,6 +149,7 @@
         LangString var2              ${LANG_GERMAN}  "Sprachdateien"
         LangString var3              ${LANG_GERMAN}  "Schriftfeld-Beispiele"
         LangString var4              ${LANG_GERMAN}  "Schaltplan-Beispiele"
+        LangString uninstFailed      ${LANG_GERMAN}  "Die Deinstallation der vorherigen Version ist fehlgeschlagen.$\nBitte deinstallieren Sie ${SOFT_NAME} manuell, bevor Sie fortfahren."
         
         
         LangString installed         ${LANG_RUSSIAN} "${SOFT_NAME} уже установлен. $\n$\nДля удаления предыдущей версии нажмите `OK` или `Cancel` для отмены обновления." 
@@ -164,6 +171,7 @@
         LangString var2              ${LANG_RUSSIAN}  "языковые файлы"
         LangString var3              ${LANG_RUSSIAN}  "Примеры штампов"
         LangString var4              ${LANG_RUSSIAN}  "Примеры схем"
+        LangString uninstFailed      ${LANG_RUSSIAN}  "Удаление предыдущей версии завершилось с ошибкой.$\nПожалуйста, удалите ${SOFT_NAME} вручную перед продолжением."
         
         
         LangString installed         ${LANG_ARABIC} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -185,6 +193,7 @@
         LangString var2              ${LANG_ARABIC}  "languagues files"
         LangString var3              ${LANG_ARABIC}  "Examples of cartridges"
         LangString var4              ${LANG_ARABIC}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_ARABIC}  "فشل إلغاء تثبيت الإصدار السابق. يرجى إلغاء تثبيت ${SOFT_NAME} يدويًا قبل المتابعة."
         
         
         LangString installed         ${LANG_CATALAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -206,6 +215,7 @@
         LangString var2              ${LANG_CATALAN}  "languagues files"
         LangString var3              ${LANG_CATALAN}  "Examples of cartridges"
         LangString var4              ${LANG_CATALAN}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_CATALAN}  "La desinstal·lació de la versió anterior ha fallat.$\nSi us plau, desinstal·leu ${SOFT_NAME} manualment abans de continuar."
         
         
         LangString installed         ${LANG_ITALIAN} "${SOFT_NAME} &egrave; già installato. $\n$\nFare click su `OK` per rimuovere la versione precedente o su `Annulla` per annullare questo aggiornamento." 
@@ -227,6 +237,7 @@
         LangString var2              ${LANG_ITALIAN}  "File della lingua"
         LangString var3              ${LANG_ITALIAN}  "Cartigli di esempio"
         LangString var4              ${LANG_ITALIAN}  "Schemi di esempio"
+        LangString uninstFailed      ${LANG_ITALIAN}  "La disinstallazione della versione precedente non è riuscita.$\nSi prega di disinstallare ${SOFT_NAME} manualmente prima di continuare."
         
         
         LangString installed         ${LANG_PORTUGUESE} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -248,6 +259,7 @@
         LangString var2              ${LANG_PORTUGUESE}  "languagues files"
         LangString var3              ${LANG_PORTUGUESE}  "Examples of cartridges"
         LangString var4              ${LANG_PORTUGUESE}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_PORTUGUESE}  "A desinstalação da versão anterior falhou.$\nPor favor, desinstale ${SOFT_NAME} manualmente antes de continuar."
         
         
         LangString installed         ${LANG_ROMANIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -269,6 +281,7 @@
         LangString var2              ${LANG_ROMANIAN}  "languagues files"
         LangString var3              ${LANG_ROMANIAN}  "Examples of cartridges"
         LangString var4              ${LANG_ROMANIAN}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_ROMANIAN}  "Dezinstalarea versiunii anterioare a eșuat.$\nVă rugăm să dezinstalați ${SOFT_NAME} manual înainte de a continua."
         
         
         LangString installed         ${LANG_CROATIAN} "${SOFT_NAME} is already installed. $\n$\nClick `OK` to remove the previous version or `Cancel` to cancel this upgrade." 
@@ -290,6 +303,7 @@
         LangString var2              ${LANG_CROATIAN}  "languagues files"
         LangString var3              ${LANG_CROATIAN}  "Examples of cartridges"
         LangString var4              ${LANG_CROATIAN}  "Examples of diagrams"
+        LangString uninstFailed      ${LANG_CROATIAN}  "Deinstalacija prethodne verzije nije uspjela.$\nMolimo deinstalirajte ${SOFT_NAME} ručno prije nastavka."
         
         
         LangString installed         ${LANG_DUTCH}  "${SOFT_NAME} is al geinstalleerd. $\n$\nklik `OK` om vorige versie te verwijderen of `annuleer` om deze upgrade te annuleren."
@@ -307,31 +321,11 @@
         LangString Titleblocks       ${LANG_DUTCH}  "Titelblok"
         LangString Examples          ${LANG_DUTCH}  "Voorbeelden"
         LangString Check             ${LANG_DUTCH}  "Check to start ${SOFT_NAME}"
-        LangString Check             ${LANG_DUTCH}  "Check to start ${SOFT_NAME}"
         LangString var1              ${LANG_DUTCH}  "Elements of the official collection"
         LangString var2              ${LANG_DUTCH}  "languagues files"
         LangString var3              ${LANG_DUTCH}  "Examples of cartridges"
         LangString var4              ${LANG_DUTCH}  "Examples of diagrams"
-
-        LangString installed         ${LANG_DUTCH_BELGIUM} "${SOFT_NAME} is reeds geinstallerd. $\n$\nKlik`OK` om vorige versie te verwijderen of `Afbreken` om de upgrade niet uit te voeren." 
-        LangString wrongArch         ${LANG_DUTCH_BELGIUM} "Deze distributie werkt enkel op 64 bits computers."
-        LangString Elements          ${LANG_DUTCH_BELGIUM}  "Elementen"
-        LangString Electric          ${LANG_DUTCH_BELGIUM}  "Electrisch"
-        LangString Logic             ${LANG_DUTCH_BELGIUM}  "Logica"
-        LangString Hydraulic         ${LANG_DUTCH_BELGIUM}  "Hydraulisch"
-        LangString Pneumatic         ${LANG_DUTCH_BELGIUM}  "Pneumatisch"
-        LangString Energy            ${LANG_DUTCH_BELGIUM}  "Energie"
-        LangString water             ${LANG_DUTCH_BELGIUM}  "Water"
-        LangString Refrigeration     ${LANG_DUTCH_BELGIUM}  "Klimatisatie"
-        LangString Solar_thermal     ${LANG_DUTCH_BELGIUM}  "Termisch & zonlicht"
-        LangString Lang              ${LANG_DUTCH_BELGIUM}  "Taal"
-        LangString Titleblocks       ${LANG_DUTCH_BELGIUM}  "Titelhoek"
-        LangString Examples          ${LANG_DUTCH_BELGIUM}  "Voorbeelden"
-        LangString Check             ${LANG_DUTCH_BELGIUM}  "Controleer om te beginnen ${SOFT_NAME}"
-        LangString var1              ${LANG_DUTCH_BELGIUM}  "Symbolen van de officielen verzameling"
-        LangString var2              ${LANG_DUTCH_BELGIUM}  "taal bestanden"
-        LangString var3              ${LANG_DUTCH_BELGIUM}  "Voorbeel titelhoeken"
-        LangString var4              ${LANG_DUTCH_BELGIUM}  "Voorbeeld schema's"
+        LangString uninstFailed      ${LANG_DUTCH}  "Het verwijderen van de vorige versie is mislukt.$\nVerwijder ${SOFT_NAME} handmatig voordat u verdergaat."
         
         
         LangString installed         ${LANG_DANISH} "${SOFT_NAME} er allerede installeret. $\n$\nKlik `Ok` for at fjerne foregående version eller `Annuller` for at annullere opgraderingen." 
@@ -353,5 +347,6 @@
         LangString var2              ${LANG_DANISH}  "Sprog filer"
         LangString var3              ${LANG_DANISH}  "Titel blokke eksempler"
         LangString var4              ${LANG_DANISH}  "Diagram eksempler"
+        LangString uninstFailed      ${LANG_DANISH}  "Afinstallation af den tidligere version mislykkedes.$\nAfinstaller venligst ${SOFT_NAME} manuelt, inden du fortsætter."
         
         
