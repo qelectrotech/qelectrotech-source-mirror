@@ -152,6 +152,7 @@ Var final_titleblock_ico
     !insertmacro MUI_LANGUAGE "Croatian"
     !insertmacro MUI_LANGUAGE "Dutch"
     !insertmacro MUI_LANGUAGE "Danish"
+    !insertmacro MUI_LANGUAGE "DutchBelgian"
 !insertmacro MUI_RESERVEFILE_LANGDLL
 
 ; Language strings for all supported locales
