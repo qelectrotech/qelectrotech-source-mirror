@@ -152,11 +152,24 @@ Var final_titleblock_ico
     !insertmacro MUI_LANGUAGE "Croatian"
     !insertmacro MUI_LANGUAGE "Dutch"
     !insertmacro MUI_LANGUAGE "Danish"
+    !insertmacro MUI_LANGUAGE "Hungarian"
+    !insertmacro MUI_LANGUAGE "Japanese"
+    !insertmacro MUI_LANGUAGE "Mongolian"
+    !insertmacro MUI_LANGUAGE "Norwegian"
+    !insertmacro MUI_LANGUAGE "PortugueseBR"
+    !insertmacro MUI_LANGUAGE "Serbian"
+    !insertmacro MUI_LANGUAGE "Slovak"
+    !insertmacro MUI_LANGUAGE "Slovenian"
+    !insertmacro MUI_LANGUAGE "Swedish"
+    !insertmacro MUI_LANGUAGE "Turkish"
+    !insertmacro MUI_LANGUAGE "Ukrainian"
+    !insertmacro MUI_LANGUAGE "SimpChinese"
 !insertmacro MUI_RESERVEFILE_LANGDLL
 
 ; Language strings for all supported locales
 !include lang_extra.nsh
 !include lang_extra_fr.nsh
+!include lang_extra_missing.nsh
 ; NOTE: The string "uninstFailed" must be defined in lang_extra.nsh and
 ; lang_extra_fr.nsh (and any other lang_extra_*.nsh) like so:
 ;   LangString uninstFailed ${LANG_ENGLISH} "Uninstallation of the previous version failed.$\nPlease uninstall QElectroTech manually before continuing."
