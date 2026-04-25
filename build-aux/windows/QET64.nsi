@@ -53,7 +53,7 @@ SetCompressor /FINAL /SOLID lzma
 ;--------------------------------
 ; General Product Description Definitions
 !define SOFT_NAME     "QElectroTech"
-!define SOFT_VERSION  "0.100.1_x86_64-win64+git8720"
+!define SOFT_VERSION  "0.5-dev_x86_64-win64+4094"
 !define SOFT_WEB_SITE "https://qelectrotech.org/"
 !define SOFT_BUILD    "1"
 
