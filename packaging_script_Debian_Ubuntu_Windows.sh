@@ -243,18 +243,18 @@ if [[ $a == "Y" || $a == "y" ]]; then
 cd $DEFAULT_DIR
 cp -r nsis_base nsis_base64$HEAD
 cd qelectrotech-$VERSION.r$HEAD/
-cp -r {elements,examples,titleblocks} /$DEFAULT_DIR/nsis_base64$HEAD/files
+cp -r {elements,examples,titleblocks,fonts} /$DEFAULT_DIR/nsis_base64$HEAD/files
 cp -r lang/*.qm  /$DEFAULT_DIR/nsis_base64$HEAD/files/lang
 
 cd $DEFAULT_DIR
 cd qelectrotech-$VERSION.r$HEAD/build-aux/windows/
-cp {lang_extra.nsh,QET64.nsi,lang_extra_fr.nsh} /$DEFAULT_DIR/nsis_base64$HEAD/
+cp {lang_extra.nsh,QET64.nsi,lang_extra_fr.nsh,lang_extra_missing.nsh} /$DEFAULT_DIR/nsis_base64$HEAD/
 
 #copy and update folders of  readytouse_base skeleton
 cd $DEFAULT_DIR
 cp -r readytouse_base qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse
 cd qelectrotech-$VERSION.r$HEAD/
-cp -r {elements,examples,titleblocks} /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse
+cp -r {elements,examples,titleblocks,fonts} /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse
 cp -r lang/*.qm  /$DEFAULT_DIR/qelectrotech-$VERSION+git$HEAD-x86-win64-readytouse/lang
 
 export PATH=/home/laurent/digikam3333/project/bundles/mxe/build.win64/usr/bin:$PATH
