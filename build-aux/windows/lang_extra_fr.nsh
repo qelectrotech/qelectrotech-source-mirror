@@ -17,4 +17,5 @@
         LangString var2              ${LANG_FRENCH}  "Fichiers de langues"
         LangString var3              ${LANG_FRENCH}  "Exemples de cartouches"
         LangString var4              ${LANG_FRENCH}  "Exemples de schémas"
+        LangString var5              ${LANG_FRENCH}  "Polices"
         LangString uninstFailed      ${LANG_FRENCH}  "La désinstallation de la version précédente a échoué.$\nVeuillez désinstaller ${SOFT_NAME} manuellement avant de continuer."

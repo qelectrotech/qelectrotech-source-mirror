@@ -23,6 +23,7 @@
         LangString var2              ${LANG_HUNGARIAN}  "Nyelvfájlok"
         LangString var3              ${LANG_HUNGARIAN}  "Rajzfejléc-példák"
         LangString var4              ${LANG_HUNGARIAN}  "Kapcsolási rajz példák"
+        LangString var5              ${LANG_HUNGARIAN}  "Betűtípusok"
         LangString uninstFailed      ${LANG_HUNGARIAN}  "Az előző verzió eltávolítása nem sikerült.$\nKérjük, távolítsa el manuálisan a ${SOFT_NAME} programot, mielőtt folytatná."
 
 
@@ -48,6 +49,7 @@
         LangString var2              ${LANG_JAPANESE}  "言語ファイル"
         LangString var3              ${LANG_JAPANESE}  "表題欄の例"
         LangString var4              ${LANG_JAPANESE}  "回路図の例"
+        LangString var5              ${LANG_JAPANESE}  "フォント"
         LangString uninstFailed      ${LANG_JAPANESE}  "前のバージョンのアンインストールに失敗しました。$\n続行する前に、${SOFT_NAME} を手動でアンインストールしてください。"
 
 
@@ -73,6 +75,7 @@
         LangString var2              ${LANG_MONGOLIAN}  "Хэлний файлууд"
         LangString var3              ${LANG_MONGOLIAN}  "Гарчгийн блокын жишээнүүд"
         LangString var4              ${LANG_MONGOLIAN}  "Схемийн жишээнүүд"
+        LangString var5              ${LANG_MONGOLIAN}  "Фонт"
         LangString uninstFailed      ${LANG_MONGOLIAN}  "Өмнөх хувилбарыг устгаж чадсангүй.$\nҮргэлжлүүлэхийн өмнө ${SOFT_NAME}-г гараар устгана уу."
 
 
@@ -98,6 +101,7 @@
         LangString var2              ${LANG_NORWEGIAN}  "Språkfiler"
         LangString var3              ${LANG_NORWEGIAN}  "Eksempler på titelblokker"
         LangString var4              ${LANG_NORWEGIAN}  "Eksempler på skjemaer"
+        LangString var5              ${LANG_NORWEGIAN}  "Skrifttyper"
         LangString uninstFailed      ${LANG_NORWEGIAN}  "Avinstallasjon av forrige versjon mislyktes.$\nVennligst avinstaller ${SOFT_NAME} manuelt før du fortsetter."
 
 
@@ -133,6 +137,7 @@
         LangString var2              ${LANG_PORTUGUESEBR}  "Arquivos de idioma"
         LangString var3              ${LANG_PORTUGUESEBR}  "Exemplos de legendas"
         LangString var4              ${LANG_PORTUGUESEBR}  "Exemplos de esquemas"
+        LangString var5              ${LANG_PORTUGUESEBR}  "Fontes"
         LangString uninstFailed      ${LANG_PORTUGUESEBR}  "A desinstalação da versão anterior falhou.$\nPor favor, desinstale ${SOFT_NAME} manualmente antes de continuar."
 
 
@@ -158,6 +163,7 @@
         LangString var2              ${LANG_SERBIAN}  "Језичке датотеке"
         LangString var3              ${LANG_SERBIAN}  "Примери заглавља"
         LangString var4              ${LANG_SERBIAN}  "Примери шема"
+        LangString var5              ${LANG_SERBIAN}  "Фонтови"
         LangString uninstFailed      ${LANG_SERBIAN}  "Деинсталација претходне верзије није успела.$\nМолимо деинсталирајте ${SOFT_NAME} ручно пре наставка."
 
 
@@ -183,6 +189,7 @@
         LangString var2              ${LANG_SLOVAK}  "Jazykové súbory"
         LangString var3              ${LANG_SLOVAK}  "Príklady popisových polí"
         LangString var4              ${LANG_SLOVAK}  "Príklady schém"
+        LangString var5              ${LANG_SLOVAK}  "Písma"
         LangString uninstFailed      ${LANG_SLOVAK}  "Odinštalovanie predchádzajúcej verzie zlyhalo.$\nPred pokračovaním odinštalujte ${SOFT_NAME} ručne."
 
 
@@ -208,6 +215,7 @@
         LangString var2              ${LANG_SLOVENIAN}  "Jezikovne datoteke"
         LangString var3              ${LANG_SLOVENIAN}  "Primeri glav risb"
         LangString var4              ${LANG_SLOVENIAN}  "Primeri shem"
+        LangString var5              ${LANG_SLOVENIAN}  "Pisave"
         LangString uninstFailed      ${LANG_SLOVENIAN}  "Odstranitev prejšnje različice ni uspela.$\nPred nadaljevanjem ročno odstranite ${SOFT_NAME}."
 
 
@@ -233,6 +241,7 @@
         LangString var2              ${LANG_SWEDISH}  "Språkfiler"
         LangString var3              ${LANG_SWEDISH}  "Exempel på ritningshuvuden"
         LangString var4              ${LANG_SWEDISH}  "Exempel på scheman"
+        LangString var5              ${LANG_SWEDISH}  "Teckensnitt"
         LangString uninstFailed      ${LANG_SWEDISH}  "Avinstallationen av den föregående versionen misslyckades.$\nAvinstallera ${SOFT_NAME} manuellt innan du fortsätter."
 
 
@@ -258,6 +267,7 @@
         LangString var2              ${LANG_TURKISH}  "Dil dosyaları"
         LangString var3              ${LANG_TURKISH}  "Başlık bloğu örnekleri"
         LangString var4              ${LANG_TURKISH}  "Şema örnekleri"
+        LangString var5              ${LANG_TURKISH}  "Yazı Tipleri"
         LangString uninstFailed      ${LANG_TURKISH}  "Önceki sürümün kaldırılması başarısız oldu.$\nDevam etmeden önce lütfen ${SOFT_NAME}'i manuel olarak kaldırın."
 
 
@@ -283,6 +293,7 @@
         LangString var2              ${LANG_UKRAINIAN}  "Мовні файли"
         LangString var3              ${LANG_UKRAINIAN}  "Приклади штампів"
         LangString var4              ${LANG_UKRAINIAN}  "Приклади схем"
+        LangString var5              ${LANG_UKRAINIAN}  "Шрифти"
         LangString uninstFailed      ${LANG_UKRAINIAN}  "Видалення попередньої версії завершилося помилкою.$\nБудь ласка, видаліть ${SOFT_NAME} вручну перед продовженням."
 
 
@@ -308,4 +319,5 @@
         LangString var2              ${LANG_SIMPCHINESE}  "语言文件"
         LangString var3              ${LANG_SIMPCHINESE}  "标题栏示例"
         LangString var4              ${LANG_SIMPCHINESE}  "图纸示例"
+        LangString var5              ${LANG_SIMPCHINESE}  "字体"
         LangString uninstFailed      ${LANG_SIMPCHINESE}  "卸载旧版本失败。$\n请在继续之前手动卸载 ${SOFT_NAME}。"

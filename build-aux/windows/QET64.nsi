@@ -277,6 +277,12 @@ Section "$(Examples)" SEC04
     File /r "./files/examples"
 SectionEnd
 
+SetOverwrite on
+Section "$(Fonts)" SEC05
+    SetOutPath "$INSTDIR\fonts"
+    File /r "./files/fonts"
+SectionEnd
+
 ;--------------------------------
 ; Component descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
@@ -284,6 +290,7 @@ SectionEnd
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC02} $(var2)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC03} $(var3)
     !insertmacro MUI_DESCRIPTION_TEXT ${SEC04} $(var4)
+    !insertmacro MUI_DESCRIPTION_TEXT ${SEC05} $(var5)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
