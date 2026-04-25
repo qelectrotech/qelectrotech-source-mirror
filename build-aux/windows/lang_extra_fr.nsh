@@ -10,6 +10,7 @@
         LangString Refrigeration     ${LANG_FRENCH}  "Climatisation"
         LangString Solar_thermal     ${LANG_FRENCH}  "Thermique & solaire"
         LangString Lang              ${LANG_FRENCH}  "Langues"
+        LangString Fonts             ${LANG_FRENCH}  "Polices"
         LangString Titleblocks       ${LANG_FRENCH}  "Cartouches"
         LangString Examples          ${LANG_FRENCH}  "Exemples"
         LangString Check             ${LANG_FRENCH}  "Cocher pour lancer ${SOFT_NAME}"
