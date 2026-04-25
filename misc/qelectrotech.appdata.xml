@@ -24,6 +24,19 @@
  <summary xml:lang="pl">Edytor schematów elektrycznych</summary>
  <summary xml:lang="pt">Editor de esquemas eléctricos</summary>
  <summary xml:lang="ru">Редактор электрических схем</summary>
+ <summary xml:lang="en">Electrical diagram editor</summary>
+ <summary xml:lang="hu">Elektromos kapcsolási rajz szerkesztő</summary>
+ <summary xml:lang="mn">Цахилгааны схемийн засварлагч</summary>
+ <summary xml:lang="nb">Elektrisk diagram editor</summary>
+ <summary xml:lang="pt_BR">Editor de diagramas elétricos</summary>
+ <summary xml:lang="ro">Editor de diagrame electrice</summary>
+ <summary xml:lang="sk">Editor elektrických schém</summary>
+ <summary xml:lang="sl">Urejevalnik električnih shem</summary>
+ <summary xml:lang="sr">Уређивач електричних дијаграма</summary>
+ <summary xml:lang="sv">Elektriskt diagramredigerare</summary>
+ <summary xml:lang="tr">Elektrik şeması düzenleyici</summary>
+ <summary xml:lang="uk">Редактор електричних схем</summary>
+ <summary xml:lang="zh">电气图编辑器</summary>
  <content_rating type="oars-1.1"/>
  <releases>
      <release version="0.100.1-dev" date="2026"/>
@@ -92,6 +105,58 @@
   <p xml:lang="ru">
    QElectroTech - приложение написанное на Qt5 и предназначено для разработки электрических схем.
    Приложение использует для хранения проектов и библиотек элементов файлы в XML формате. Приложение помимо редактора электричесих схем, содержит также редакторы элементов и редактор шаблонов листов.
+  </p>
+  <p xml:lang="hr">
+   QElectroTech je Qt5 aplikacija za projektiranje elektro shema.
+   Koristi XML datoteke za elemente i sheme, te uključuje uređivač shema, uređivač elemenata i uređivač zaglavlja.
+  </p>
+  <p xml:lang="hu">
+   A QElectroTech egy Qt5 alapú alkalmazás elektromos kapcsolási rajzok tervezéséhez.
+   XML fájlokat használ az elemekhez és rajzokhoz, és tartalmaz egy rajzszerkesztőt, egy elemszerkesztőt és egy fejlécszerkesztőt.
+  </p>
+  <p xml:lang="mn">
+   QElectroTech нь Qt5 дээр суурилсан цахилгааны схем зохиох програм юм.
+   Элемент болон схемүүдэд XML файл ашигладаг бөгөөд схем засварлагч, элемент засварлагч, гарчгийн блок засварлагчийг агуулдаг.
+  </p>
+  <p xml:lang="nb">
+   QElectroTech er et Qt5-program for å lage elektriske skjemaer.
+   Det bruker XML-filer for elementer og skjemaer, og inkluderer en skjemaeditor, en elementeditor og en tittelblokkreditor.
+  </p>
+  <p xml:lang="pt_BR">
+   QElectroTech é uma aplicação Qt5 para desenhar diagramas elétricos.
+   Utiliza arquivos XML para os elementos e diagramas, e inclui um editor de diagramas, um editor de elementos e um editor de cartuchos.
+  </p>
+  <p xml:lang="ro">
+   QElectroTech este o aplicație Qt5 pentru proiectarea schemelor electrice.
+   Utilizează fișiere XML pentru elemente și scheme, și include un editor de scheme, un editor de elemente și un editor de cartușe.
+  </p>
+  <p xml:lang="sk">
+   QElectroTech je Qt5 aplikácia na navrhovanie elektrických schém.
+   Pre prvky a schémy používa súbory XML a zahŕňa editor schém, editor prvkov a editor titulkových blokov.
+  </p>
+  <p xml:lang="sl">
+   QElectroTech je aplikacija Qt5 za načrtovanje električnih shem.
+   Za elemente in sheme uporablja datoteke XML ter vključuje urejevalnik shem, urejevalnik elementov in urejevalnik naslovnih blokov.
+  </p>
+  <p xml:lang="sr">
+   QElectroTech је Qt5 апликација за пројектовање електричних шема.
+   Користи XML датотеке за елементе и шеме, и укључује уређивач шема, уређивач елемената и уређивач заглавља.
+  </p>
+  <p xml:lang="sv">
+   QElectroTech är ett Qt5-program för att rita elektriska schema.
+   Det använder XML-filer för element och schema, och inkluderar en schemaredigerare, en elementredigerare och en titelblocksredigerare.
+  </p>
+  <p xml:lang="tr">
+   QElectroTech, elektrik şemaları tasarlamak için bir Qt5 uygulamasıdır.
+   Elemanlar ve şemalar için XML dosyaları kullanır; şema düzenleyicisi, eleman düzenleyicisi ve başlık bloğu düzenleyicisini içerir.
+  </p>
+  <p xml:lang="uk">
+   QElectroTech — це Qt5 застосунок для проектування електричних схем.
+   Використовує XML-файли для елементів і схем, і включає редактор схем, редактор елементів та редактор основних написів.
+  </p>
+  <p xml:lang="zh">
+   QElectroTech 是一款基于 Qt5 的电气图设计应用程序。
+   它使用 XML 文件存储元件和图纸，包含图纸编辑器、元件编辑器和标题栏编辑器。
   </p>
  </description>
  <url type="homepage">https://qelectrotech.org</url>
