@@ -20,6 +20,7 @@
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddelement.h"
+#include "diagramevent/diagrameventaddmacro.h"
 #include "dvevent/dveventinterface.h"
 #include "projectview.h"
 #include "qetdiagrameditor.h"
@@ -34,7 +35,9 @@
 #include "utils/conductorcreator.h"
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "diagram.h"
-
+#include "ElementsCollection/xmlelementcollection.h"
+#include "NameList/nameslist.h"
+#include "elementdialog.h"
 #include <QDropEvent>
 
 /**
@@ -83,6 +86,10 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		MultiPasteDialog d(this->m_diagram, this);
 		d.exec();
 	});
+
+	// Setup the action to create a template
+	m_create_template = new QAction(tr("Créer un template", "context menu action"), this);
+	connect(m_create_template, SIGNAL(triggered()), this, SLOT(createTemplateFromSelection()));
 
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
@@ -188,13 +195,13 @@ void DiagramView::dropEvent(QDropEvent *e) {
 }
 
 /**
-	@brief DiagramView::handleElementDrop
-	Handle the drop of an element.
-	@param event the QDropEvent describing the current drag'n drop
-*/
+ * @brief DiagramView::handleElementDrop
+ * Handle the drop of an element.
+ * @param event the QDropEvent describing the current drag'n drop
+ */
 void DiagramView::handleElementDrop(QDropEvent *event)
 {
-		//Build an element from the text of the mime data
+	//Build an element from the text of the mime data
 	ElementsLocation location(event->mimeData()->text());
 
 	if ( !(location.isElement() && location.exist()) )
@@ -203,20 +210,20 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 		return;
 	}
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	diagram()->setEventInterface(
-				new DiagramEventAddElement(
-					location, diagram(), mapToScene(event->pos())));
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-	diagram()->setEventInterface(
-				new DiagramEventAddElement(
-					location, diagram(), event->position()));
-#endif
+	QPointF drop_pos;
+	#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+	drop_pos = mapToScene(event->pos());
+	#else
+	drop_pos = event->position();
+	#endif
 
-		//Set focus to the view to get event
+	if (location.path().endsWith(".qetmak")) {
+		diagram()->setEventInterface(new DiagramEventAddMacro(location, diagram(), drop_pos));
+	} else {
+		diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), drop_pos));
+	}
+
+	//Set focus to the view to get event
 	this->setFocus();
 }
 
@@ -1202,6 +1209,7 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << qde->m_copy;
 			list << m_multi_paste;
 			list << m_separators.at(0);
+			list << m_create_template; // Add the create template action
 			list << qde->m_conductor_reset;
 			list << m_separators.at(1);
 			list << qde->m_selection_actions_group.actions();
@@ -1262,6 +1270,101 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 		context_menu->addActions(list);
 		context_menu->popup(e->globalPos());
 		e->accept();
+	}
+}
+
+/**
+ * @brief DiagramView::createTemplateFromSelection
+ * Triggered from the context menu to create a new template (macro) from the current selection.
+ */
+void DiagramView::createTemplateFromSelection()
+{
+	QList<QGraphicsItem *> selected_elements = m_diagram->selectedItems();
+
+	if (selected_elements.isEmpty()) {
+		return;
+	}
+
+	qDebug() << "Ready to create a template from" << selected_elements.size() << "elements!";
+
+	// Open the dialog to let the user select where to save the .qetmak file
+	ElementsLocation template_location = ElementDialog::getSaveTemplateLocation(this);
+
+	// Check if the user clicked 'Cancel' or closed the window
+	if (template_location.isNull()) {
+		qDebug() << "User canceled template creation.";
+		return;
+	}
+
+	qDebug() << "Will save template to:" << template_location.path();
+
+	QDomDocument content_xml = m_diagram->toXml(false, true);
+
+	QDomDocument macro_doc;
+	QDomElement root = macro_doc.createElement("qet_macro");
+	macro_doc.appendChild(root);
+
+	QDomElement collection_node = macro_doc.createElement("collection");
+	root.appendChild(collection_node);
+
+	QSet<QString> processed_types;
+
+	QDomNodeList element_nodes = content_xml.elementsByTagName("element");
+	for (int i = 0; i < element_nodes.count(); ++i) {
+		QDomElement elmt_node = element_nodes.at(i).toElement();
+		QString old_type = elmt_node.attribute("type");
+
+		if (old_type.isEmpty()) continue;
+
+		ElementsLocation loc(old_type, m_diagram->project());
+
+		QString clean_path = loc.collectionPath(false);
+
+		QString new_type = "macro://" + clean_path;
+		elmt_node.setAttribute("type", new_type);
+
+		if (!processed_types.contains(clean_path)) {
+			processed_types.insert(clean_path);
+
+			QDomElement definition_node = loc.xml();
+
+			if (!definition_node.isNull()) {
+				QDomElement collection_elmt = macro_doc.createElement("element");
+				collection_elmt.setAttribute("path", clean_path);
+
+				QDomNode imported_def = macro_doc.importNode(definition_node, true);
+				collection_elmt.appendChild(imported_def);
+
+				collection_node.appendChild(collection_elmt);
+			} else {
+				qDebug() << "Warnung: Konnte XML-Definition für" << old_type << "nicht laden.";
+			}
+		}
+	}
+
+	QDomElement content_container = macro_doc.createElement("diagram_content");
+	root.appendChild(content_container);
+
+	QDomNode imported_node = macro_doc.importNode(content_xml.documentElement(), true);
+	content_container.appendChild(imported_node);
+
+	QString full_path = template_location.fileSystemPath();
+
+	QDir().mkpath(QFileInfo(full_path).absolutePath());
+
+	QFile file(full_path);
+	if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		QTextStream out(&file);
+		out.setCodec("UTF-8");
+		out << macro_doc.toString(4);
+		file.close();
+		qDebug() << "Template successfully saved to:" << full_path;
+
+		QMessageBox::information(this, tr("Modèle enregistré"),
+								 tr("Le modèle a été enregistré avec succès sous :\n%1").arg(full_path));
+	} else {
+		qDebug() << "Error: Could not open file for writing:" << full_path;
+		QMessageBox::critical(this, tr("Erreur"), tr("Le fichier n'a pas pu être écrit."));
 	}
 }
 

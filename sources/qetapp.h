@@ -91,6 +91,7 @@ class QETApp : public QObject
 		static QString commonTitleBlockTemplatesDir();
 		static QString companyTitleBlockTemplatesDir();
 		static QString customTitleBlockTemplatesDir();
+		static QString userMacrosDir();
 		static bool registerProject(QETProject *);
 		static bool unregisterProject(QETProject *);
 		static QMap<uint, QETProject *> registeredProjects();
@@ -242,7 +243,7 @@ class QETApp : public QObject
 
 		static QString m_user_company_tbt_dir;
 		static QString m_user_custom_tbt_dir;
-
+		static QString m_user_macros_dir;
 	
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);

@@ -254,6 +254,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddmacro.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddmacro.h
 
   ${QET_DIR}/sources/dvevent/dveventinterface.cpp
   ${QET_DIR}/sources/dvevent/dveventinterface.h
