@@ -540,7 +540,7 @@ void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int 
 {
 	if (index == 1)
 	{
-		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des macros utilisateur (DEV)"), QETApp::documentDir());
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des macros utilisateur"), QETApp::documentDir());
 		if (!path.isEmpty()) {
 			ui->m_user_macros_path_cb->setItemData(1, path, Qt::DisplayRole);
 		}

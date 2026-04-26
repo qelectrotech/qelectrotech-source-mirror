@@ -18,7 +18,7 @@
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
 
-#include "ElementsCollection/elementslocation.h"
+#include "../ElementsCollection/elementslocation.h"
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
@@ -53,6 +53,7 @@ class DiagramView : public QGraphicsView
 		DVEventInterface *m_event_interface = nullptr;
 		QAction          *m_paste_here = nullptr;
 		QAction			 *m_multi_paste = nullptr;
+		QAction          *m_create_template = nullptr;
 		QPoint            m_paste_here_pos;
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
@@ -133,5 +134,6 @@ class DiagramView : public QGraphicsView
 	private slots:
 		void adjustGridToZoom();
 		void applyReadOnly();
+		void createTemplateFromSelection();
 };
 #endif

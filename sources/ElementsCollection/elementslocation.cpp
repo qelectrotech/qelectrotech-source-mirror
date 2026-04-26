@@ -297,7 +297,7 @@ void ElementsLocation::setPath(const QString &path)
 	else
 	{
 		QString path_ = path;
-		if(path_.endsWith(".elmt"))
+		if(path_.endsWith(".elmt") || path_.endsWith(".qetmak"))
 		{
 			m_file_system_path = path_;
 			if (path_.startsWith(QETApp::commonElementsDirN()))
@@ -366,10 +366,11 @@ void ElementsLocation::setPath(const QString &path)
 */
 bool ElementsLocation::addToPath(const QString &string)
 {
-	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive))
+	if (m_collection_path.endsWith(".elmt", Qt::CaseInsensitive) ||
+		m_collection_path.endsWith(".qetmak", Qt::CaseInsensitive))
 	{
 		qDebug() << "ElementsLocation::addToPath :"
-				" Can't add string to the path of an element";
+		" Can't add string to the path of an element or template";
 		return(false);
 	}
 
@@ -472,7 +473,7 @@ QString ElementsLocation::toString() const
 */
 bool ElementsLocation::isElement() const
 {
-	return m_collection_path.endsWith(".elmt");
+	return m_collection_path.endsWith(".elmt") || m_collection_path.endsWith(".qetmak");
 }
 
 /**

@@ -24,6 +24,7 @@
 #include "qeticons.h"
 #include "qetproject.h"
 #include "titleblock/templatedeleter.h"
+#include <QFileInfo>
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
@@ -152,6 +153,11 @@ void ElementsPanelWidget::openDirectoryForSelectedItem()
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString dir_path = elements_panel -> dirPathForItem(qtwi);
 		if (!dir_path.isEmpty()) {
+			QFileInfo fileInfo(dir_path);
+			// Wenn der Pfad auf eine Datei (z.B. Makro) zeigt, isoliere den Ordnerpfad
+			if (fileInfo.isFile()) {
+				dir_path = fileInfo.absolutePath();
+			}
 			QDesktopServices::openUrl(QUrl::fromLocalFile(dir_path));
 		}
 	}

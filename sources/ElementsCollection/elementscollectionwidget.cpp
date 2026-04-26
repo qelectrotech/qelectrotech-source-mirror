@@ -93,10 +93,7 @@ void ElementsCollectionWidget::addProject(QETProject *project)
 {
 	if (m_model)
 	{
-		m_progress_bar->show();
-		m_tree_view->setDisabled(true);
-		QList <QETProject *> prj; prj.append(project);
-		m_model->loadCollections(false, false, false, prj);
+		m_model->addProject(project, true);
 	}
 	else {
 		m_waiting_project.append(project);
@@ -194,7 +191,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tree_view->setMouseTracking(true);
 	m_tree_view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 
-	//Setup the macros tree view (DEV)
+	//Setup the macros tree view
 	m_macros_tree_view = new ElementsTreeView(this);
 	m_macros_tree_view->setHeaderHidden(true);
 	m_macros_tree_view->setIconSize(QSize(50, 50));
@@ -209,7 +206,7 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tab_widget->setDocumentMode(true);
 	m_tab_widget->setTabPosition(QTabWidget::North);
 	m_tab_widget->addTab(m_tree_view, tr("Collections"));
-	m_tab_widget->addTab(m_macros_tree_view, tr("Modèles (DEV)"));
+	m_tab_widget->addTab(m_macros_tree_view, tr("Modèles"));
 
 	m_main_vlayout->addWidget(m_search_field);
 	m_main_vlayout->addWidget(m_tab_widget);
@@ -258,11 +255,15 @@ void ElementsCollectionWidget::setUpConnection()
 		this, &ElementsCollectionWidget::dirProperties);
 
 	connect(m_tree_view, &QTreeView::doubleClicked,
-		[this](const QModelIndex &index)
-		{
-			this->m_index_at_context_menu = index ;
-			this->editElement();
-		});
+			[this](const QModelIndex &index)
+			{
+				this->m_index_at_context_menu = index ;
+				ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+				if (eci && eci->collectionPath().endsWith(".qetmak")) {
+					return; // Do nothing on double click for macros
+				}
+				this->editElement();
+			});
 
 	connect(m_tree_view, &QTreeView::entered,
 		[this] (const QModelIndex &index) {
@@ -276,11 +277,15 @@ void ElementsCollectionWidget::setUpConnection()
 			this, &ElementsCollectionWidget::customContextMenu);
 
 	connect(m_macros_tree_view, &QTreeView::doubleClicked,
-		[this](const QModelIndex &index)
-		{
-			this->m_index_at_context_menu = index ;
-			this->editElement();
-		});
+			[this](const QModelIndex &index)
+			{
+				this->m_index_at_context_menu = index ;
+				ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+				if (eci && eci->collectionPath().endsWith(".qetmak")) {
+					return; // Do nothing on double click for macros
+				}
+				this->editElement();
+			});
 
 	connect(m_macros_tree_view, &QTreeView::entered,
 		[this] (const QModelIndex &index) {
@@ -310,7 +315,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 		m_index_at_context_menu);
 	bool add_open_dir = false;
 
-	if (eci->isElement())
+	if (eci->isElement() && !eci->collectionPath().endsWith(".qetmak"))
 		m_context_menu->addAction(m_edit_element);
 
 	if (eci->type() == FileElementCollectionItem::Type)
@@ -398,6 +403,9 @@ void ElementsCollectionWidget::editElement()
 
 	if ( !(eci && eci->isElement()) ) return;
 
+	// Prevent the element editor from opening for macros
+	if (eci->collectionPath().endsWith(".qetmak")) return;
+
 	ElementsLocation location(eci->collectionPath());
 
 	QETApp *app = QETApp::instance();
@@ -422,11 +430,15 @@ void ElementsCollectionWidget::deleteElement()
 	if (!eci) return;
 
 	ElementsLocation loc(eci->collectionPath());
-	if (! (loc.isElement()
-		   && loc.exist()
-		   && loc.isFileSystem()
-		   && (loc.collectionPath().startsWith("company://")
-			   || loc.collectionPath().startsWith("custom://"))) ) return;
+
+	bool isDeletableFile = loc.isElement() || eci->collectionPath().endsWith(".qetmak");
+
+	if (! (isDeletableFile
+		&& loc.exist()
+		&& loc.isFileSystem()
+		&& (loc.collectionPath().startsWith("company://")
+		|| loc.collectionPath().startsWith("custom://")
+		|| loc.collectionPath().startsWith("macros://"))) ) return;
 
 	if (QET::QetMessageBox::question(
 		this,
@@ -468,10 +480,11 @@ void ElementsCollectionWidget::deleteDirectory()
 
 	ElementsLocation loc (eci->collectionPath());
 	if (! (loc.isDirectory()
-		   && loc.exist()
-		   && loc.isFileSystem()
-		   && (loc.collectionPath().startsWith("company://")
-			  || loc.collectionPath().startsWith("custom://"))) ) return;
+		&& loc.exist()
+		&& loc.isFileSystem()
+		&& (loc.collectionPath().startsWith("company://")
+		|| loc.collectionPath().startsWith("custom://")
+		|| loc.collectionPath().startsWith("macros://"))) ) return;
 
 	if (QET::QetMessageBox::question(
 		this,

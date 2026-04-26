@@ -42,7 +42,8 @@ class ElementDialog : public QDialog
 		OpenElement  = 0, ///< The dialog should open an element
 		SaveElement  = 1, ///< The dialog should select an element for saving
 		OpenCategory = 2, ///< The dialog should open a category
-		SaveCategory = 3  ///< The dialog should select a category for saving
+		SaveCategory = 3,  ///< The dialog should select a category for saving
+		SaveTemplate = 4  ///< The dialog should select a template for saving
 	};
 	
 		// constructors, destructor
@@ -74,6 +75,7 @@ class ElementDialog : public QDialog
 	public:
 		static ElementsLocation getOpenElementLocation(QWidget *parent = nullptr);
 		static ElementsLocation getSaveElementLocation(QWidget *parent = nullptr);
+		static ElementsLocation getSaveTemplateLocation(QWidget *parent = nullptr);
 	private:
 		static ElementsLocation execConfiguredDialog(int, QWidget *parent = nullptr);
 

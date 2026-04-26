@@ -93,7 +93,7 @@ QString FileElementCollectionItem::dirPath() const
 */
 bool FileElementCollectionItem::isDir() const
 {
-	if (m_path.endsWith(".elmt"))
+	if (m_path.endsWith(".elmt") || m_path.endsWith(".qetmak"))
 		return false;
 	else
 		return true;
@@ -120,7 +120,6 @@ QString FileElementCollectionItem::localName()
 
 	else if (isDir()) {
 		if (isCollectionRoot()) {
-			// --- NEU: Makro-Pfad laden ---
 			QString macrosPath = QETApp::userMacrosDir();
 			if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
 
@@ -130,7 +129,7 @@ QString FileElementCollectionItem::localName()
 				setText(QObject::tr("Collection Company"));
 			else if (m_path == QETApp::customElementsDirN())
 				setText(QObject::tr("Collection utilisateur"));
-			else if (m_path == macrosPath) // <-- NEU: Name des Ordners zuweisen
+			else if (m_path == macrosPath)
 				setText(QObject::tr("Makros"));
 			else
 				setText(QObject::tr("Collection inconnue"));
@@ -153,7 +152,11 @@ QString FileElementCollectionItem::localName()
 	}
 	else if (isElement()) {
 		ElementsLocation loc(collectionPath());
-		setText(loc.name());
+		QString display_name = loc.name();
+		if (display_name.endsWith(".qetmak")) {
+			display_name.remove(".qetmak");
+		}
+		setText(display_name);
 	}
 
 	return text();
@@ -175,7 +178,12 @@ QString FileElementCollectionItem::localName(const ElementsLocation &location)
 		localName();
 	}
 	else if (isElement()) {
-		setText(location.name());
+		QString display_name = location.name();
+		// Schneide die Endung .qetmak für die Anzeige ab
+		if (display_name.endsWith(".qetmak")) {
+			display_name.remove(".qetmak");
+		}
+		setText(display_name);
 	}
 
 	return text();
@@ -237,7 +245,7 @@ bool FileElementCollectionItem::isCollectionRoot() const
 	if (m_path == QETApp::commonElementsDirN()
 		|| m_path == QETApp::companyElementsDirN()
 		|| m_path == QETApp::customElementsDirN()
-		|| m_path == macrosPath) // <-- NEU: Makros sind jetzt ein echtes Root-Verzeichnis
+		|| m_path == macrosPath)
 	return true;
 	else
 		return false;
@@ -367,13 +375,13 @@ void FileElementCollectionItem::setUpIcon()
 	@param hide_element
 */
 void FileElementCollectionItem::setPathName(const QString& path_name,
-						bool set_data,
-						bool hide_element)
+											bool set_data,
+											bool hide_element)
 {
 	m_path = path_name;
 
-	//This isn't an element, we create the childs
-	if (!path_name.endsWith(".elmt"))
+	//This isn't an element or template, we create the childs
+	if (!path_name.endsWith(".elmt") && !path_name.endsWith(".qetmak"))
 		populate(set_data, hide_element);
 }
 
@@ -402,9 +410,9 @@ void FileElementCollectionItem::populate(bool set_data, bool hide_element)
 		return;
 
 		//Get all elmt file in this directory
-	dir.setNameFilters(QStringList() << "*.elmt");
+	dir.setNameFilters(QStringList() << "*.elmt" << "*.qetmak");
 	for (auto& str :
-		 dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
+		dir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name))
 	{
 		FileElementCollectionItem *feci = new FileElementCollectionItem();
 		appendRow(feci);

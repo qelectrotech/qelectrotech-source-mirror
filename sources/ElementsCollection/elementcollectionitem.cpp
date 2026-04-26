@@ -119,8 +119,8 @@ int ElementCollectionItem::rowForInsertItem(const QString &name)
 		return -1;
 
 	QList <ElementCollectionItem *> child;
-	//The item to insert is an element we search from element child
-	if (name.endsWith(".elmt"))
+	//The item to insert is an element/template we search from element child
+	if (name.endsWith(".elmt") || name.endsWith(".qetmak"))
 	{
 		child = elementsDirectChild();
 			//There isn't element, we insert at last position
