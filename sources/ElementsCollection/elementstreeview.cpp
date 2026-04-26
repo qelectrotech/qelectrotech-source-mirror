@@ -25,7 +25,7 @@
 #include "../qetproject.h"
 #include "../diagram.h"
 #include "xmlelementcollection.h"
-#include "../nameslist.h"
+#include "../NameList/nameslist.h"
 #include <QPainter>
 #include <QScopedPointer>
 #include <QDrag>

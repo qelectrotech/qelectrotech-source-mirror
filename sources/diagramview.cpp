@@ -36,7 +36,7 @@
 #include "undocommand/addgraphicsobjectcommand.h"
 #include "diagram.h"
 #include "ElementsCollection/xmlelementcollection.h"
-#include "nameslist.h"
+#include "NameList/nameslist.h"
 #include "elementdialog.h"
 #include <QDropEvent>
 

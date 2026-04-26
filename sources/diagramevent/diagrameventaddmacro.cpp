@@ -9,7 +9,7 @@
 #include "../qetdiagrameditor.h"
 #include "../qetproject.h"
 #include "../ElementsCollection/xmlelementcollection.h"
-#include "../nameslist.h"
+#include "../NameList/nameslist.h"
 #include "../diagramcommands.h"
 #include "../diagramcontent.h"
 #include <QFile>
