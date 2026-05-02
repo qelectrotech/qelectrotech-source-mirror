@@ -41,15 +41,22 @@ jobs:
             mingw-w64-ucrt-x86_64-kcoreaddons
             mingw-w64-ucrt-x86_64-extra-cmake-modules
             mingw-w64-ucrt-x86_64-nsis
-            
-      - name: Force Qt5 by removing Qt6 cmake files
+            mingw-w64-ucrt-x86_64-angleproject
+
+      - name: Force Qt5 — supprimer Qt6 cmake + tools
         shell: msys2 {0}
-        run: rm -rf /ucrt64/lib/cmake/Qt6
+        run: |
+          set -euo pipefail
+          rm -rf /ucrt64/lib/cmake/Qt6
+          pacman -R --noconfirm mingw-w64-ucrt-x86_64-qt6-tools 2>/dev/null || true
+          echo "=== windeployqt binaries ==="
+          ls /ucrt64/bin/windeployqt* || echo "AUCUN windeployqt trouve !"
 
       - name: Build with cmake
         shell: msys2 {0}
         run: |
-          cd $GITHUB_WORKSPACE
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
           mkdir build && cd build
           cmake -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
@@ -62,54 +69,85 @@ jobs:
             ..
           ninja
 
-      - name: Deploy with windeployqt
+      - name: Verify exe was built
         shell: msys2 {0}
         run: |
-          # ── Arborescence attendue par QET64.nsi ──────────────────────────
-          # nsis_root/
-          #   files/
-          #     bin/QElectroTech.exe  + DLLs + plugins Qt
-          #     elements/
-          #     lang/
-          #     titleblocks/
-          #     examples/
-          #     fonts/
-          #     ico/
-          #     LICENSE  ChangeLog  CREDIT  README  ...
-          #   images/         (wizard.bmp, header.bmp pour l'UI de l'installeur)
-          #   lang_extra.nsh  lang_extra_fr.nsh  lang_extra_missing.nsh
-          #   Lancer QET.bat
-          #   QET64.nsi
-          # ─────────────────────────────────────────────────────────────────
+          set -euo pipefail
+          EXE=$(find "$GITHUB_WORKSPACE/build" -maxdepth 3 -iname "qelectrotech.exe" | head -1)
+          if [ -z "$EXE" ]; then
+            echo "ERROR: aucun qelectrotech.exe trouve dans build/"
+            find "$GITHUB_WORKSPACE/build" -maxdepth 3 -name "*.exe" || true
+            exit 1
+          fi
+          SIZE=$(stat -c%s "$EXE")
+          echo "Exe trouve : $EXE ($SIZE octets)"
+          [ "$SIZE" -gt 100000 ] || { echo "ERROR: exe trop petit"; exit 1; }
 
+      - name: Deploy — copie exe + windeployqt + DLLs
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
           NSIS_ROOT="$GITHUB_WORKSPACE/nsis_root"
           FILES="$NSIS_ROOT/files"
           BIN="$FILES/bin"
           mkdir -p "$BIN"
 
-          # 1. Exécutable
-          cp "$GITHUB_WORKSPACE/build/qelectrotech.exe" "$BIN/QElectroTech.exe"
+          EXE=$(find "$GITHUB_WORKSPACE/build" -maxdepth 3 -iname "qelectrotech.exe" | head -1)
+          echo "Copie exe : $EXE -> $BIN/QElectroTech.exe"
+          cp "$EXE" "$BIN/QElectroTech.exe"
 
-          # 2. DLLs Qt + plugins via windeployqt (déposés dans bin/)
-          /ucrt64/bin/windeployqt \
+          cd "$BIN"
+          /ucrt64/bin/windeployqt-qt5 \
             --release \
             --no-translations \
             --no-compiler-runtime \
-            --dir "$BIN" \
-            "$BIN/QElectroTech.exe"
+            --no-opengl-sw \
+            ./QElectroTech.exe || true
+          ls -lh "$BIN/QElectroTech.exe" || { echo "ERROR: exe absent de bin/"; exit 1; }
+          DLL_COUNT=$(find "$BIN" -name "*.dll" | wc -l)
+          echo "DLLs presentes : $DLL_COUNT"
+          [ "$DLL_COUNT" -gt 5 ] || { echo "ERROR: trop peu de DLLs"; exit 1; }
+          cd "$GITHUB_WORKSPACE"
 
-          # 3. Runtimes MinGW (non gérés par windeployqt)
-          cp /ucrt64/bin/libgcc_s_seh-1.dll  "$BIN/"
-          cp /ucrt64/bin/libstdc++-6.dll      "$BIN/"
-          cp /ucrt64/bin/libwinpthread-1.dll  "$BIN/"
+          # --- DLLs runtime compilateur (non copiées par windeployqt) ---
+          echo "=== Copie DLLs runtime UCRT64 ==="
+          UCRT=/ucrt64/bin
+          for dll in \
+            libgcc_s_seh-1.dll \
+            libstdc++-6.dll \
+            libwinpthread-1.dll \
+            libgomp-1.dll \
+            libdouble-conversion.dll \
+            libpcre2-16-0.dll \
+            libzstd.dll \
+            libharfbuzz-0.dll \
+            libpng16-16.dll \
+            libfreetype-6.dll \
+            libbz2-1.dll \
+            libglib-2.0-0.dll \
+            libintl-8.dll \
+            libiconv-2.dll \
+            zlib1.dll \
+            libsqlite3-0.dll; do
+            if [ -f "$UCRT/$dll" ]; then
+              cp -v "$UCRT/$dll" "$BIN/"
+            else
+              echo "WARN: $dll non trouve dans $UCRT"
+            fi
+          done
 
-          # 4. DLLs KDE Frameworks
-          cp /ucrt64/bin/KF5*.dll "$BIN/" || true
+          # ICU (le numéro de version peut varier, on copie tout)
+          cp -v "$UCRT"/libicu*.dll "$BIN/" 2>/dev/null || echo "WARN: libicu*.dll non trouvees"
 
-          # 5. SQLite
-          cp /ucrt64/bin/libsqlite3-0.dll "$BIN/" || true
+          # KDE Frameworks 5 (kwidgetsaddons, kcoreaddons)
+          cp -v "$UCRT"/KF5*.dll "$BIN/" 2>/dev/null || echo "WARN: KF5*.dll non trouvees"
 
-          # 6. Données applicatives (éléments, traductions, exemples, ...)
+          echo "DLLs totales apres runtime : $(find "$BIN" -name '*.dll' | wc -l)"
+
+          # --- Diagnostic : DLLs encore manquantes ---
+          echo "=== ldd — dependances non resolues ==="
+          ldd "$BIN/QElectroTech.exe" | grep -i "not found" || echo "Aucune dependance manquante detectee"
+
           cp -r "$GITHUB_WORKSPACE/elements"    "$FILES/elements"    || true
           cp -r "$GITHUB_WORKSPACE/lang"        "$FILES/lang"        || true
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
@@ -117,58 +155,112 @@ jobs:
           cp -r "$GITHUB_WORKSPACE/fonts"       "$FILES/fonts"       || true
           cp -r "$GITHUB_WORKSPACE/ico"         "$FILES/ico"         || true
 
-          # 7. Fichiers texte attendus par le .nsi
           for f in LICENSE ChangeLog CREDIT README ELEMENTS.LICENSE \
                    qet_uninstall_file_associations.reg register_filetypes.bat; do
             cp "$GITHUB_WORKSPACE/$f" "$FILES/$f" 2>/dev/null || true
           done
 
-          # 8. Script NSIS + helpers .nsh + images de l'installeur
           cp "$GITHUB_WORKSPACE/build-aux/windows/QET64.nsi"              "$NSIS_ROOT/"
           cp "$GITHUB_WORKSPACE/build-aux/windows/lang_extra.nsh"         "$NSIS_ROOT/" || true
           cp "$GITHUB_WORKSPACE/build-aux/windows/lang_extra_fr.nsh"      "$NSIS_ROOT/" || true
           cp "$GITHUB_WORKSPACE/build-aux/windows/lang_extra_missing.nsh" "$NSIS_ROOT/" || true
           cp -r "$GITHUB_WORKSPACE/build-aux/windows/images"              "$NSIS_ROOT/" || true
 
-          # 9. Script de lancement requis par le .nsi ("Lancer QET.bat")
           if [ -f "$GITHUB_WORKSPACE/build-aux/windows/Lancer QET.bat" ]; then
             cp "$GITHUB_WORKSPACE/build-aux/windows/Lancer QET.bat" "$NSIS_ROOT/"
           else
-            # Fallback minimal si le fichier n'est pas dans le dépôt
             printf '@echo off\r\nstart "" "%%~dp0bin\\QElectroTech.exe" %%*\r\n' \
               > "$NSIS_ROOT/Lancer QET.bat"
           fi
+
+      - name: Ensure NSIS images (wizard.bmp + header.bmp)
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          IMG_SRC="$GITHUB_WORKSPACE/build-aux/windows/images"
+          IMG_DST="$GITHUB_WORKSPACE/nsis_root/images"
+          mkdir -p "$IMG_DST"
+
+          if [ -f "$IMG_SRC/wizard.bmp" ] && [ -f "$IMG_SRC/header.bmp" ]; then
+            echo "Images trouvees dans le repo, copie directe."
+            cp "$IMG_SRC/wizard.bmp" "$IMG_DST/wizard.bmp"
+            cp "$IMG_SRC/header.bmp" "$IMG_DST/header.bmp"
+          else
+            echo "Images absentes du repo — generation avec ImageMagick."
+            # wizard.bmp : 164x314 px, fond bleu QET, texte blanc
+            convert \
+              -size 164x314 \
+              gradient:"#1a3a5c"-"#2e6da4" \
+              -gravity Center \
+              -fill white \
+              -pointsize 13 \
+              -annotate 0 "QElectroTech" \
+              -type TrueColor \
+              BMP3:"$IMG_DST/wizard.bmp"
+            # header.bmp : 150x57 px, même palette
+            convert \
+              -size 150x57 \
+              gradient:"#1a3a5c"-"#2e6da4" \
+              -gravity Center \
+              -fill white \
+              -pointsize 11 \
+              -annotate 0 "QElectroTech" \
+              -type TrueColor \
+              BMP3:"$IMG_DST/header.bmp"
+            echo "BMPs generes."
+          fi
+
+          echo "Contenu de nsis_root/images/ :"
+          ls -lh "$IMG_DST/"
 
       - name: Extract version for installer name
         shell: msys2 {0}
         id: qet_version
         run: |
-          VERSION=$(grep -m1 'project.*VERSION' "$GITHUB_WORKSPACE/CMakeLists.txt" \
-            | grep -oP '[\d]+\.[\d]+[\w\+\-\.]*' | head -1 || echo "dev")
+          set -euo pipefail
+          VERSION=$(grep -A5 '^project(' "$GITHUB_WORKSPACE/CMakeLists.txt" \
+            | grep -oP '(?<=VERSION )[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+          [ -z "$VERSION" ] && VERSION="dev"
           GIT_SHORT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD 2>/dev/null || echo "unknown")
           FULL_VERSION="${VERSION}+git${GIT_SHORT}_x86_64-win64"
-          echo "version=$FULL_VERSION" >> $GITHUB_OUTPUT
+          echo "version=$FULL_VERSION" >> "$GITHUB_OUTPUT"
           echo "Detected version: $FULL_VERSION"
 
-      - name: Patch SOFT_VERSION in QET64.nsi
+      - name: Patch QET64.nsi — version et chemins
         shell: msys2 {0}
         run: |
-          # Remplace la version codée en dur dans le .nsi par celle du build courant
+          set -euo pipefail
           VERSION="${{ steps.qet_version.outputs.version }}"
           NSI="$GITHUB_WORKSPACE/nsis_root/QET64.nsi"
+          ROOT=$(cygpath -w "$GITHUB_WORKSPACE/nsis_root")
+          ROOT_FWD=$(echo "$ROOT" | tr '\\' '/')
+
           sed -i "s|!define SOFT_VERSION .*|!define SOFT_VERSION \"${VERSION}\"|" "$NSI"
+
+          sed -i \
+            -e "s|\"\./files/|\"${ROOT_FWD}/files/|g" \
+            -e "s|\"files\\\\|\"${ROOT_FWD}/files/|g" \
+            -e "s|\"files/LICENSE\"|\"${ROOT_FWD}/files/LICENSE\"|g" \
+            -e "s|\"\.\\\\images\\\\|\"${ROOT_FWD}/images/|g" \
+            -e "s|\"\./images/|\"${ROOT_FWD}/images/|g" \
+            "$NSI"
+
+          echo '=== SOFT_VERSION ==='
           grep 'SOFT_VERSION' "$NSI"
+          echo '=== File directives (10 premieres) ==='
+          grep -n 'File\|LICENSE\|images' "$NSI" | head -15
 
       - name: Build NSIS installer
-        shell: msys2 {0}
+        shell: cmd
+        working-directory: ${{ github.workspace }}\nsis_root
         run: |
-          cd "$GITHUB_WORKSPACE/nsis_root"
+          set PATH=%RUNNER_TEMP%\msys64\ucrt64\bin;%RUNNER_TEMP%\msys64\usr\bin;%PATH%
           makensis QET64.nsi
-          ls -lh Installer_QElectroTech-*.exe
 
       - name: Move installer to dist/
         shell: msys2 {0}
         run: |
+          set -euo pipefail
           mkdir -p "$GITHUB_WORKSPACE/dist"
           mv "$GITHUB_WORKSPACE/nsis_root"/Installer_QElectroTech-*.exe \
              "$GITHUB_WORKSPACE/dist/"
@@ -178,7 +270,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-logs
-          path: build/CMakeFiles/*.log
+          path: |
+            build/CMakeFiles/*.log
+            nsis_root/files/bin/
+          if-no-files-found: warn
 
       - name: Upload portable (files/ sans installeur)
         uses: actions/upload-artifact@v4
