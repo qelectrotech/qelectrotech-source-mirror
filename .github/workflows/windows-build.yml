@@ -128,7 +128,8 @@ jobs:
             libintl-8.dll \
             libiconv-2.dll \
             zlib1.dll \
-            libsqlite3-0.dll; do
+            libsqlite3-0.dll \
+            libmd4c.dll; do
             if [ -f "$UCRT/$dll" ]; then
               cp -v "$UCRT/$dll" "$BIN/"
             else
@@ -237,12 +238,13 @@ jobs:
 
           sed -i "s|!define SOFT_VERSION .*|!define SOFT_VERSION \"${VERSION}\"|" "$NSI"
 
+          # Les chemins ".\images\" sont laisses relatifs : makensis tourne
+          # depuis nsis_root/ (working-directory) et les resout correctement.
+          # On patche uniquement les chemins "files/" en absolus.
           sed -i \
             -e "s|\"\./files/|\"${ROOT_FWD}/files/|g" \
             -e "s|\"files\\\\|\"${ROOT_FWD}/files/|g" \
             -e "s|\"files/LICENSE\"|\"${ROOT_FWD}/files/LICENSE\"|g" \
-            -e "s|\"\.\\\\images\\\\|\"${ROOT_FWD}/images/|g" \
-            -e "s|\"\./images/|\"${ROOT_FWD}/images/|g" \
             "$NSI"
 
           echo '=== SOFT_VERSION ==='
