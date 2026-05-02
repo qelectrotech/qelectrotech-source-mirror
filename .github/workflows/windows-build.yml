@@ -129,7 +129,10 @@ jobs:
             libiconv-2.dll \
             zlib1.dll \
             libsqlite3-0.dll \
-            libmd4c.dll; do
+            libmd4c.dll \
+            libgraphite2.dll \
+            libbrotlidec.dll \
+            libpcre2-8-0.dll; do
             if [ -f "$UCRT/$dll" ]; then
               cp -v "$UCRT/$dll" "$BIN/"
             else
@@ -233,14 +236,15 @@ jobs:
           set -euo pipefail
           VERSION="${{ steps.qet_version.outputs.version }}"
           NSI="$GITHUB_WORKSPACE/nsis_root/QET64.nsi"
-          ROOT=$(cygpath -w "$GITHUB_WORKSPACE/nsis_root")
-          ROOT_FWD=$(echo "$ROOT" | tr '\\' '/')
+          # Chemin absolu en forward-slashes : NSIS (MSYS2) les accepte nativement
+          ROOT_FWD=$(cygpath -u "$GITHUB_WORKSPACE/nsis_root" | sed 's|/|//|g' || true)
+          ROOT_FWD=$(cygpath -m "$GITHUB_WORKSPACE/nsis_root")
 
           sed -i "s|!define SOFT_VERSION .*|!define SOFT_VERSION \"${VERSION}\"|" "$NSI"
 
+          # Patcher les chemins "files/" relatifs -> absolus (forward-slashes, NSIS MSYS2 OK)
           # Les chemins ".\images\" sont laisses relatifs : makensis tourne
-          # depuis nsis_root/ (working-directory) et les resout correctement.
-          # On patche uniquement les chemins "files/" en absolus.
+          # depuis nsis_root/ et les resout correctement.
           sed -i \
             -e "s|\"\./files/|\"${ROOT_FWD}/files/|g" \
             -e "s|\"files\\\\|\"${ROOT_FWD}/files/|g" \
@@ -253,10 +257,10 @@ jobs:
           grep -n 'File\|LICENSE\|images' "$NSI" | head -15
 
       - name: Build NSIS installer
-        shell: cmd
-        working-directory: ${{ github.workspace }}\nsis_root
+        shell: msys2 {0}
         run: |
-          set PATH=%RUNNER_TEMP%\msys64\ucrt64\bin;%RUNNER_TEMP%\msys64\usr\bin;%PATH%
+          set -euo pipefail
+          cd "$GITHUB_WORKSPACE/nsis_root"
           makensis QET64.nsi
 
       - name: Move installer to dist/
