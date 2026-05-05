@@ -1,0 +1,40 @@
+{
+    "name": "pypi-dependencies",
+    "buildsystem": "simple",
+    "build-commands": [],
+    "modules": [
+        {
+            "name": "python3-PySimpleGUI",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"PySimpleGUI\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/4d/d9/3de4b7ca71a7779e4f4a160088621b072a29d9b814a7fa9b5411571f4849/pysimplegui-5.0.8.3-py3-none-any.whl",
+                    "sha256": "67e35ad6dd76e9369051261114f4711308e87815a0488f7fa28b37c29a546f8b"
+                }
+            ]
+        },
+        {
+            "name": "python3-qet-tb-generator",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"qet-tb-generator\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/4d/d9/3de4b7ca71a7779e4f4a160088621b072a29d9b814a7fa9b5411571f4849/pysimplegui-5.0.8.3-py3-none-any.whl",
+                    "sha256": "67e35ad6dd76e9369051261114f4711308e87815a0488f7fa28b37c29a546f8b"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/63/d6/81de49a3ccec259583241fec4d79c668eff4acf9eb4d0226db36e1399f2d/qet_tb_generator-1.3.1-py3-none-any.whl",
+                    "sha256": "80fb4af229edfd5774e61f96fa387ff394d5060abd0ca45c3c74d29de1ce9b53"
+                }
+            ]
+        }
+    ]
+}

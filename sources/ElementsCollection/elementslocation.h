@@ -78,6 +78,7 @@ class ElementsLocation
 		bool isCommonCollection() const;
 		bool isCompanyCollection() const;
 		bool isCustomCollection() const;
+		bool isMacrosCollection() const;
 		bool isProject() const;
 		bool exist() const;
 		bool isWritable() const;

@@ -95,8 +95,8 @@ class GenericPanel : public QTreeWidget {
 	virtual QTreeWidgetItem *addDiagram(Diagram *,
 					    QTreeWidgetItem * = nullptr,
 					    PanelOptions = AddAllChild);
-	protected:
 	virtual QTreeWidgetItem *getItemForDiagram(Diagram *, bool * = nullptr);
+	protected:
 	virtual QTreeWidgetItem *updateDiagramItem(QTreeWidgetItem *,
 						   Diagram *,
 						   PanelOptions = AddAllChild,
@@ -171,6 +171,9 @@ class GenericPanel : public QTreeWidget {
 					 const QString &);
 	
 	// various other methods
+	public:
+	void setSelectedItem(QTreeWidgetItem *selectedItem);
+
 	protected:
 	virtual QString defaultText(QET::ItemType);
 	virtual QIcon   defaultIcon(QET::ItemType);
@@ -222,5 +225,7 @@ class GenericPanel : public QTreeWidget {
 		representing a title block template
 	*/
 	QHash<TitleBlockTemplateLocation, QTreeWidgetItem *> tb_templates_;
+
+	QTreeWidgetItem *m_selected_item = nullptr;
 };
 #endif

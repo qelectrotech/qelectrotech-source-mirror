@@ -30,6 +30,19 @@
     <number>0</number>
    </property>
    <item>
+    <widget class="QCheckBox" name="m_auto_num_locked_cb">
+     <property name="text">
+      <string>Exclure de la numérotation auto</string>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">margin: 5px; font-weight: bold;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">

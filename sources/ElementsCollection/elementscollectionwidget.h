@@ -25,6 +25,8 @@
 #include <QTimer>
 #include <QElapsedTimer>
 #include <QScopedPointer>
+#include <QTabWidget>
+#include <QTreeView>
 
 class ElementsCollectionModel;
 class QVBoxLayout;
@@ -90,9 +92,12 @@ class ElementsCollectionWidget : public QWidget
 	private:
 		ElementsCollectionModel *m_model = nullptr;
 		ElementsCollectionModel *m_new_model = nullptr;
+		ElementsCollectionModel *m_macros_model = nullptr;
 		QLineEdit *m_search_field;
 		QTimer m_search_timer;
 		ElementsTreeView *m_tree_view;
+		ElementsTreeView *m_macros_tree_view = nullptr;
+		QTabWidget *m_tab_widget = nullptr;
 		QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		QModelIndex m_index_at_context_menu;

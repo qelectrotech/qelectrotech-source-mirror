@@ -24,6 +24,7 @@
 #include "qeticons.h"
 #include "qetproject.h"
 #include "titleblock/templatedeleter.h"
+#include <QFileInfo>
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
@@ -120,6 +121,12 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
 	);
 
+		// manage double click on TreeWidgetItem
+	connect(elements_panel, SIGNAL(requestForProjectPropertiesEdition()), this, SLOT(editProjectProperties()) );
+	connect(elements_panel, SIGNAL(requestForDiagramPropertiesEdition()), this, SLOT(editDiagramProperties()) );
+		// manage project activation
+	connect(elements_panel, SIGNAL(requestForProject(QETProject*)), this, SIGNAL(requestForProject(QETProject*)));
+
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
 	vlayout -> setContentsMargins(0,0,0,0);
@@ -146,6 +153,11 @@ void ElementsPanelWidget::openDirectoryForSelectedItem()
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString dir_path = elements_panel -> dirPathForItem(qtwi);
 		if (!dir_path.isEmpty()) {
+			QFileInfo fileInfo(dir_path);
+			// Wenn der Pfad auf eine Datei (z.B. Makro) zeigt, isoliere den Ordnerpfad
+			if (fileInfo.isFile()) {
+				dir_path = fileInfo.absolutePath();
+			}
 			QDesktopServices::openUrl(QUrl::fromLocalFile(dir_path));
 		}
 	}
@@ -236,6 +248,7 @@ void ElementsPanelWidget::deleteDiagram()
 {
 	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
 		emit(requestForDiagramDeletion(selected_diagram));
+		elements_panel->reload();
 	}
 }
 
@@ -473,28 +486,33 @@ void ElementsPanelWidget::keyPressEvent   (QKeyEvent *e) {
 					break;
 					case Qt::Key_F3:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveUp(selected_diagram));
 					}
 					break;
 					case Qt::Key_F4:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveDown(selected_diagram));
 					}
 					break;
 					case Qt::Key_F5:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveUpTop(selected_diagram));
 					}
 					
 					break;
 					case Qt::Key_F6:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveDownx10(selected_diagram));
 					}
 					
 					break;
 					case Qt::Key_F7:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveDownx100(selected_diagram));
 					}
 					
@@ -502,12 +520,14 @@ void ElementsPanelWidget::keyPressEvent   (QKeyEvent *e) {
 					break;
 					case Qt::Key_F8:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveUpx10(selected_diagram));
 					}					
 					
 					break;
 					case Qt::Key_F9:
 					if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+						elements_panel->setSelectedItem(elements_panel->getItemForDiagram(selected_diagram));
 						emit(requestForDiagramMoveUpx100(selected_diagram));
 					}
 					break;

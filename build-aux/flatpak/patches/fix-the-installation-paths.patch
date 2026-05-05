@@ -1,16 +1,6 @@
-From 14f0685ddcf3a7d64bb85a3e9a9ac97c369bb508 Mon Sep 17 00:00:00 2001
-From: Laurent Trinques <scorpio@qelectrotech.org>
-Date: Sat, 26 Sep 2020 22:52:52 +0200
-Subject: [PATCH] build: Fix the installation paths
-
----
- qelectrotech.pro | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/qelectrotech.pro b/qelectrotech.pro
-index 7baddbb08..5dcda04b6 100644
---- a/qelectrotech.pro
-+++ b/qelectrotech.pro
+diff -ruN a/qelectrotech.pro b/qelectrotech.pro
+--- a/qelectrotech.pro	2023-04-20 11:47:07.695847458 +0200
++++ b/qelectrotech.pro	2023-04-20 11:51:14.843611898 +0200
 @@ -5,18 +5,18 @@
  # Chemins utilises pour la compilation et l'installation de QET
  unix {
@@ -35,6 +25,3 @@ index 7baddbb08..5dcda04b6 100644
          QET_APPDATA_PATH           = 'share/appdata'
  }
  win32 {
--- 
-2.35.1
-

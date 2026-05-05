@@ -1,8 +1,8 @@
 name: Auto-build doxygen docs
 on:
   push:
-    branches:
-      - master
+    tags:
+       - '**'
    
   
   
@@ -10,7 +10,7 @@ jobs:
   doxygen:
     permissions:
        contents: write    
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v4
@@ -18,7 +18,7 @@ jobs:
         submodules: 'recursive'
         show-progress: ''
     - name: Setup and run doxygen
-      run: sudo apt install doxygen graphviz qhelpgenerator-qt5 -y
+      run: sudo apt update && sudo apt install doxygen graphviz qhelpgenerator-qt5 -y
     - name: Set up Git LFS
       run: |
           git lfs install

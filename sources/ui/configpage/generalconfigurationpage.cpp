@@ -173,6 +173,15 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 		ui->m_custom_tbt_path_cb->blockSignals(false);
 	}
 	
+	path = settings.value("elements-collections/macros-path", "default").toString();
+	if (path != "default")
+	{
+		ui->m_user_macros_path_cb->blockSignals(true);
+		ui->m_user_macros_path_cb->setCurrentIndex(1);
+		ui->m_user_macros_path_cb->setItemData(1, path, Qt::DisplayRole);
+		ui->m_user_macros_path_cb->blockSignals(false);
+	}
+
 	fillLang();	
 }
 
@@ -315,6 +324,21 @@ void GeneralConfigurationPage::applyConf()
 	if (path != settings.value("elements-collections/custom-tbt-path").toString()) {
 		QETApp::resetCollectionsPath();
 	}
+
+	path = settings.value("elements-collections/macros-path").toString();
+	if (ui->m_user_macros_path_cb->currentIndex() == 1)
+	{
+		QString path = ui->m_user_macros_path_cb->currentText();
+		QDir dir(path);
+		settings.setValue("elements-collections/macros-path",
+						  dir.exists() ? path : "default");
+	}
+	else {
+		settings.setValue("elements-collections/macros-path", "default");
+	}
+	if (path != settings.value("elements-collections/macros-path").toString()) {
+		QETApp::resetCollectionsPath();
+	}
 }
 
 /**
@@ -358,6 +382,7 @@ void GeneralConfigurationPage::fillLang()
 	ui->m_lang_cb->addItem(QET::Icons::hr,		tr("Croate"), "hr");
 	ui->m_lang_cb->addItem(QET::Icons::it,		tr("Italien"), "it");
 	ui->m_lang_cb->addItem(QET::Icons::jp,		tr("Japonais"), "ja");
+	ui->m_lang_cb->addItem(QET::Icons::ko,      tr("Coréen"), "ko");
 	ui->m_lang_cb->addItem(QET::Icons::pl,		tr("Polonais"), "pl");
 	ui->m_lang_cb->addItem(QET::Icons::pt,		tr("Portugais"), "pt");
 	ui->m_lang_cb->addItem(QET::Icons::ro,		tr("Roumains"), "ro");
@@ -505,6 +530,19 @@ void GeneralConfigurationPage::on_m_custom_tbt_path_cb_currentIndexChanged(int i
 	}
 }
 
+void GeneralConfigurationPage::on_m_user_macros_path_cb_currentIndexChanged(int index)
+{
+	if (index == 1)
+	{
+		QString path = QFileDialog::getExistingDirectory(this, tr("Chemin des macros utilisateur"), QETApp::documentDir());
+		if (!path.isEmpty()) {
+			ui->m_user_macros_path_cb->setItemData(1, path, Qt::DisplayRole);
+		}
+		else {
+			ui->m_user_macros_path_cb->setCurrentIndex(0);
+		}
+	}
+}
 
 void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 {

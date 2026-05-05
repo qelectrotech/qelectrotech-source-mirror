@@ -1,0 +1,76 @@
+.TH QELECTROTECH 1 "AOÛT 2008" QElectroTech "사용자 설명서"
+.SH 이름
+qelectrotech \- 전기 도면 편집기
+.SH 사용법
+.B qelectrotech
+.B [\-\-common\-elements\-dir\fR=\fI경로\fB]
+.B [\-\-config\-dir\fR=\fI경로\fB]
+.B [\-\-lang\-dir\fR=\fI경로\fB]
+.B [\-\-help]
+.B [\-v\fR|\fB\-\-version]
+.B [\-\-license]
+.B [\fI파일\fB]...
+
+.SH 설명
+QElectroTech는 전기 도면 편집기입니다. 도면(*.qet)과 전기 요소(*.elmt)는 XML 형식으로 저장됩니다.
+도면에서 사용할 수 있는 요소는 공용 컬렉션 또는 사용자 컬렉션에서 가져올 수 있습니다.
+일반적으로 공용 컬렉션은 모든 사용자가 접근할 수 있지만 사용자가 편집할 수는 없습니다.
+사용자 컬렉션은 각 사용자에게 고유하며 사용자가 원하는 대로 수정할 수 있습니다.
+
+.SH 옵션
+.TP
+\fB\-\-common\-elements\-dir\fR=\fI경로\fR
+공용 요소(Elements) 컬렉션의 루트로 \fI경로\fR 폴더를 사용합니다.
+참고: 이 옵션은 컴파일 시 QET_ALLOW_OVERRIDE_CED_OPTION 지시문이 지정된 경우에만 활성화됩니다.
+.TP
+\fB\-\-config\-dir\fR=\fI경로\fR
+현재 사용자의 설정 폴더로 \fI경로\fR 폴더를 사용합니다.
+이 폴더에는 애플리케이션 설정을 담은 qelectrotech.conf 파일과, 사용자 요소 컬렉션을 담는 elements 하위 폴더가 포함됩니다.
+참고: 이 옵션은 컴파일 시 QET_ALLOW_OVERRIDE_CD_OPTION 지시문이 지정된 경우에만 활성화됩니다.
+.TP
+\fB\-\-lang\-dir\fR=\fI경로\fR
+애플리케이션 번역 파일을 \fI경로\fR 폴더에서 찾습니다.
+.TP
+\fB\-\-help\fR
+사용 가능한 옵션에 대한 간단한 설명을 표시합니다.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+애플리케이션 버전을 표시합니다(예: 0.1).
+.TP
+\fB\-\-license\fR
+애플리케이션 라이선스(GNU/GPL)를 표시합니다.
+
+.P
+참고: 위 옵션 중 마지막 3개(\-\-lang\-dir, \-\-help, \-\-version, \-\-license 관련)는 명령행에서 지정되면
+해당 정보를 표시한 뒤 프로그램이 종료됩니다.
+사용자가 이미 애플리케이션을 실행 중인 경우에는, 실행 중인 인스턴스가 명령행을 처리하며 특히 열 파일 목록에 적용됩니다.
+다만 폴더를 재정의하는 옵션(공용 컬렉션/설정 폴더/언어 파일 폴더)은 적용되지 않습니다.
+열 파일의 확장자가 .elmt로 끝나면 QElectroTech는 요소 편집기로 열려고 시도합니다.
+그 외에는 도면 파일로 간주합니다.
+
+.SH 작성자
+Benoît Ansieau <benoit@qelectrotech.org>
+.br
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
+.br
+Joshua Claveau <joshua@qelectrotech.org>
+.br
+Cyril.frausti <cyril@qelectrotech.org>
+.br
+
+.SH 버그 신고
+애플리케이션에서 비정상 동작이 의심되면, FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> 와
+BugTracker <http://qelectrotech.org/bugtracker/> 를 확인하여 이미 알려진 문제인지 확인해 주세요.
+해당 문제가 없다면 BugTracker를 통해 버그 리포트를 제출해 주세요.
+
+.SH 저작권
+Copyright © QElectroTech 개발자
+.br
+라이선스: GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+.br
+이 프로그램은 자유 소프트웨어입니다. 수정 및 재배포할 수 있습니다. 이 프로그램은 “있는 그대로(as is)” 제공되며 어떠한 보증도 없습니다.
+
+.SH 참고
+공식 사이트: <http://qelectrotech.org/>

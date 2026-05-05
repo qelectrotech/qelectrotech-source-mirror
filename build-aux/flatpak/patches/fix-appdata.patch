@@ -1,0 +1,54 @@
+From 5cb80674cec7363ed00bab5248b3674ca5241c2f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sabri=20=C3=9Cnal?= <yakushabb@gmail.com>
+Date: Fri, 20 Feb 2026 22:56:52 +0300
+Subject: [PATCH] Fix appdata paper cuts
+
+---
+ misc/qelectrotech.appdata.xml | 26 ++++++++++++++++++++------
+ 1 file changed, 20 insertions(+), 6 deletions(-)
+
+diff --git a/misc/qelectrotech.appdata.xml b/misc/qelectrotech.appdata.xml
+index dd06ab7..eb02119 100644
+--- a/misc/qelectrotech.appdata.xml
++++ b/misc/qelectrotech.appdata.xml
+@@ -1,7 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2006-2023 The QElectroTech Team -->
+-<application>
+- <id type="desktop">qelectrotech.desktop</id>
++<component type="desktop-application">
++ <id>org.qelectrotech.QElectroTech</id>
++ <launchable type="desktop-id">qelectrotech.desktop</launchable>
+  <metadata_license>MIT</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <name>QElectroTech</name>
+@@ -83,9 +84,22 @@
+    QET は要素と回路図に XML 形式を利用し、回路図エディタ、要素エディタ、表題欄エディタを含みます。
+    </p>
+  </description>
+- <url type="homepage">http://qelectrotech.org</url>
++ <url type="homepage">https://qelectrotech.org</url>
++ <url type="bugtracker">https://qelectrotech.org/bugtracker</url>
++ <url type="vcs-browser">https://github.com/qelectrotech/qelectrotech-source-mirror</url>
++ <developer id="org.qelectrotech">
++   <name>QElectroTech</name>
++ </developer>
+  <screenshots>
+-  <screenshot type="default">http://download.tuxfamily.org/qet/screens/qelectrotech5.png</screenshot>
++  <screenshot type="default">
++    <image>https://qelectrotech.org/screenshots/qet_overview04.png</image>
++ </screenshot>
++  <screenshot>
++    <image>https://qelectrotech.org/screenshots/qet_overview06.png</image>
++ </screenshot>
++  <screenshot>
++    <image>https://qelectrotech.org/screenshots/qet_overview09.png</image>
++ </screenshot>
+  </screenshots>
+- <updatecontact>qet@lists.tuxfamily.org</updatecontact>
+-</application>
++ <update_contact>qet@lists.tuxfamily.org</update_contact>
++</component>
+-- 
+2.53.0
+

@@ -721,6 +721,14 @@ void ProjectView::initActions()
 	
 	m_end_view = new QAction(QET::Icons::ArrowRightDouble, tr("Aller à la fin du projet"),this);
 	connect(m_end_view, &QAction::triggered, [this](){this->m_tab->setCurrentWidget(lastDiagram());});
+
+		// button to scroll one page left
+	m_next_view_left = new QAction(QET::Icons::ArrowLeft, tr("go one page left"),this);
+	connect(m_next_view_left, &QAction::triggered, [this](){this->m_tab->setCurrentWidget(previousDiagram());});
+
+		// button to scroll one page right
+	m_next_view_right = new QAction(QET::Icons::ArrowRight, tr("go one page right"),this);
+	connect(m_next_view_right, &QAction::triggered, [this](){this->m_tab->setCurrentWidget(nextDiagram());});
 }
 
 /**
@@ -748,34 +756,65 @@ void ProjectView::initWidgets()
 	m_tab = new QTabWidget(this);
 #endif
 	m_tab -> setMovable(true);
+		// setting UsesScrollButton ensures that when the tab bar is full, the tabs are scrolled.
+	m_tab -> setUsesScrollButtons(true);
+		// disable the internal scroll buttons of the TabWidget, we will use our own buttons.
+	m_tab->setStyleSheet("QTabBar QToolButton {border-image: ;border-width: 0px}");
+	m_tab->setStyleSheet("QTabBar::scroller {width: 0px;}");
 
+		   // add layouts
 	QHBoxLayout *TopRightCorner_Layout = new QHBoxLayout();
 	TopRightCorner_Layout->setContentsMargins(0,0,0,0);
+	// some place left to the 'next_right_view_button' button
+	TopRightCorner_Layout->insertSpacing(1,10);
 
-	QToolButton *add_new_diagram_button = new QToolButton;
-	add_new_diagram_button -> setDefaultAction(m_add_new_diagram);
-	add_new_diagram_button -> setAutoRaise(true);
-	TopRightCorner_Layout->addWidget(add_new_diagram_button);
+	QHBoxLayout *TopLeftCorner_Layout = new QHBoxLayout();
+	TopLeftCorner_Layout->setContentsMargins(0,0,0,0);
 
-	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
-	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int, int)), this, SLOT(tabMoved(int, int)), Qt::QueuedConnection);
-	
-	//arrows button to return on first view
-	QToolButton *m_first_view_button =new QToolButton;
-	m_first_view_button->setDefaultAction(m_first_view);
-	m_first_view_button->setAutoRaise(true);
-	m_tab->setCornerWidget(m_first_view_button, Qt::TopLeftCorner);
-	
-	//arrows button to go on last view
+		// add buttons
+	QToolButton *m_next_right_view_button =new QToolButton;
+	m_next_right_view_button->setDefaultAction(m_next_view_right);
+	m_next_right_view_button->setAutoRaise(true);
+	TopRightCorner_Layout->addWidget(m_next_right_view_button);
+
 	QToolButton *m_end_view_button =new QToolButton;
 	m_end_view_button->setDefaultAction(m_end_view);
 	m_end_view_button->setAutoRaise(true);
 	TopRightCorner_Layout->addWidget(m_end_view_button);
 
-	QWidget *tabwidget=new QWidget(this);
-	tabwidget->setLayout(TopRightCorner_Layout);
-	m_tab -> setCornerWidget(tabwidget, Qt::TopRightCorner);
+	QToolButton *add_new_diagram_button = new QToolButton;
+	add_new_diagram_button -> setDefaultAction(m_add_new_diagram);
+	add_new_diagram_button -> setAutoRaise(true);
+	TopRightCorner_Layout->addWidget(add_new_diagram_button);
+		// some place right to the 'add_new_diagram_button' button
+	TopRightCorner_Layout->addSpacing(5);
+
+	QToolButton *m_first_view_button =new QToolButton;
+	m_first_view_button->setDefaultAction(m_first_view);
+	m_first_view_button->setAutoRaise(true);
+	TopLeftCorner_Layout->addWidget(m_first_view_button);
+
+	QToolButton *m_next_left_view_button =new QToolButton;
+	m_next_left_view_button->setDefaultAction(m_next_view_left);
+	m_next_left_view_button->setAutoRaise(true);
+	TopLeftCorner_Layout->addWidget(m_next_left_view_button);
+
+		// some place right to the 'first_view_button' button
+	TopLeftCorner_Layout->addSpacing(10);
+
+		// add widgets to tabbar
+	QWidget *tabwidgetRight=new QWidget(this);
+	tabwidgetRight->setLayout(TopRightCorner_Layout);
+	m_tab -> setCornerWidget(tabwidgetRight, Qt::TopRightCorner);
+
+	QWidget *tabwidgetLeft=new QWidget(this);
+	tabwidgetLeft->setLayout(TopLeftCorner_Layout);
+	m_tab -> setCornerWidget(tabwidgetLeft, Qt::TopLeftCorner);
+
+		// manage signals
+	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
+	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
+	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);

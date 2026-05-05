@@ -160,6 +160,7 @@ void ElementInfoWidget::enableLiveEdit()
 {
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
 		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
+	connect(ui->m_auto_num_locked_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 }
 
 /**
@@ -170,6 +171,7 @@ void ElementInfoWidget::disableLiveEdit()
 {
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
 		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
+	disconnect(ui->m_auto_num_locked_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 }
 
 /**
@@ -193,6 +195,12 @@ void ElementInfoWidget::buildInterface()
 	}
 
 	ui->scroll_vlayout->addStretch();
+	// Show checkbox only if the element is a terminal
+	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
+		ui->m_auto_num_locked_cb->setVisible(true);
+	} else {
+		ui->m_auto_num_locked_cb->setVisible(false);
+	}
 }
 
 /**
@@ -231,6 +239,11 @@ void ElementInfoWidget::updateUi()
 	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw -> setText (element_info[eipw->key()].toString());
 	}
+	// Load the lock status for auto numbering
+	if (m_element->elementData().m_type == ElementData::Terminal) {
+		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
+		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
+	}
 
 	if (m_live_edit) {
 		enableLiveEdit();
@@ -259,6 +272,10 @@ DiagramContext ElementInfoWidget::currentInfo() const
 		}
 	}
 
+	// Save the auto numbering lock status
+	if (m_element->elementData().m_type == ElementData::Terminal) {
+		info_.addValue(QStringLiteral("auto_num_locked"), ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+	}
 	return info_;
 }
 

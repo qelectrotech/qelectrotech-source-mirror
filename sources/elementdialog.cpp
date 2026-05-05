@@ -74,6 +74,10 @@ void ElementDialog::setUpWidget()
 			title_ = tr("Enregistrer une catégorie", "dialog title");
 			label_ = tr("Choisissez une catégorie.", "dialog content");
 			break;
+		case SaveTemplate:
+			title_ = tr("Enregistrer un template", "dialog title");
+			label_ = tr("Choisissez l'emplacement dans lequel vous souhaitez enregistrer votre template.", "dialog content");
+			break;
 		default:
 			title_ = tr("Titre");
 			label_ = tr("Label");
@@ -92,10 +96,14 @@ void ElementDialog::setUpWidget()
 	foreach(QETProject *prj, QETApp::registeredProjects())
 			prjs.append(prj);
 
-	if (m_mode == OpenElement)
+	if (m_mode == OpenElement) {
 		m_model->loadCollections(true, true, true, prjs);
-	else
+	} else if (m_mode == SaveTemplate) {
+		// Load only the templates/macros collection for the template save dialog
+		m_model->loadMacrosCollection();
+	} else {
 		m_model->loadCollections(false, true, true, prjs);
+	}
 
 	m_tree_view->setModel(m_model);
 	m_tree_view->setHeaderHidden(true);
@@ -103,14 +111,21 @@ void ElementDialog::setUpWidget()
 
 	m_buttons_box = new QDialogButtonBox(this);
 
-	if (m_mode == SaveCategory || m_mode == SaveElement)
+	if (m_mode == SaveCategory || m_mode == SaveElement || m_mode == SaveTemplate)
 	{
 		m_buttons_box->setStandardButtons(QDialogButtonBox::Save | QDialogButtonBox::Cancel);
 		m_buttons_box->button(QDialogButtonBox::Save)->setDisabled(true);
 
 		m_text_field = new QFileNameEdit();
 		m_text_field->setDisabled(true);
-		m_text_field->setPlaceholderText(m_mode == SaveCategory? tr("Nom du nouveau dossier") : tr("Nom du nouvel élément"));
+
+		if (m_mode == SaveCategory) {
+			m_text_field->setPlaceholderText(tr("Nom du nouveau dossier"));
+		} else if (m_mode == SaveTemplate) {
+			m_text_field->setPlaceholderText(tr("Nom du nouveau template"));
+		} else {
+			m_text_field->setPlaceholderText(tr("Nom du nouvel élément"));
+		}
 
 		layout->addWidget(m_text_field);
 	}
@@ -156,14 +171,17 @@ void ElementDialog::checkCurrentLocation()
 	if (m_mode == OpenElement) {
 		m_buttons_box->button(QDialogButtonBox::Open)->setEnabled(m_location.isElement() && m_location.exist());
 	}
-	else if (m_mode == SaveElement)
+	else if (m_mode == SaveElement || m_mode == SaveTemplate)
 	{
 		m_buttons_box->button(QDialogButtonBox::Save)->setDisabled(true);
 
-			//Location doesn't exist
+		//Location doesn't exist
 		if (!m_location.exist()) { return; }
 
-		if (m_location.isElement())
+		// Accept .elmt for elements, and .qetmak for templates
+		bool is_valid_file = m_location.isElement() || (m_mode == SaveTemplate && m_location.path().endsWith(".qetmak"));
+
+		if (is_valid_file)
 		{
 			m_text_field->setDisabled(true);
 			m_buttons_box->button(QDialogButtonBox::Save)->setEnabled(true);
@@ -174,10 +192,10 @@ void ElementDialog::checkCurrentLocation()
 
 			if (m_text_field->text().isEmpty()) { return; }
 
-				//Only enable save button if the location at path :
-				//m_location.collectionPath + m_text_filed.text doesn't exist.
+			//Only enable save button if the location at path doesn't exist.
 			QString new_path = m_text_field->text();
-			if (!new_path.endsWith(".elmt")) new_path += ".elmt";
+			QString extension = (m_mode == SaveTemplate) ? ".qetmak" : ".elmt";
+			if (!new_path.endsWith(extension)) new_path += extension;
 
 			ElementsLocation loc = m_location;
 			loc.addToPath(new_path);
@@ -209,15 +227,19 @@ void ElementDialog::checkAccept()
 			return;
 		}
 	}
-	else if (m_mode == SaveElement)
+	else if (m_mode == SaveElement || m_mode == SaveTemplate)
 	{
-		if (loc.isElement())
+		bool is_valid_file = loc.isElement() || (m_mode == SaveTemplate && loc.path().endsWith(".qetmak"));
+
+		if (is_valid_file)
 		{
 			if (loc.exist())
 			{
+				QString msgTitle = (m_mode == SaveTemplate) ? tr("Écraser le template ?", "message box title") : tr("Écraser l'élément ?", "message box title");
+				QString msgContent = (m_mode == SaveTemplate) ? tr("Le template existe déjà. Voulez-vous l'écraser ?", "message box content") : tr("L'élément existe déjà. Voulez-vous l'écraser ?", "message box content");
 				QMessageBox::StandardButton answer = QET::QetMessageBox::question(this,
-																				  tr("Écraser l'élément ?", "message box title"),
-																				  tr("L'élément existe déjà. Voulez-vous l'écraser ?", "message box content"),
+																				  msgTitle,
+																				  msgContent,
 																				  QMessageBox::Yes | QMessageBox::No,
 																				  QMessageBox::No);
 				if (answer == QMessageBox::Yes) {accept();}
@@ -248,19 +270,21 @@ ElementsLocation ElementDialog::location() const
 		else {return ElementsLocation(); }
 	}
 
-	else if (m_mode == SaveElement)
+	else if (m_mode == SaveElement || m_mode == SaveTemplate)
 	{
-			//Current selected location is element, we return this location
-		if (m_location.isElement()) { return m_location; }
+		//Current selected location is element or template, we return this location
+		bool is_valid_file = m_location.isElement() || (m_mode == SaveTemplate && m_location.path().endsWith(".qetmak"));
+		if (is_valid_file) { return m_location; }
 
-			//Current selected location is directory, we return a location at path :
-			//m_location->collectionPath + m_text_field->text
+		//Current selected location is directory, we return a location at path :
+		//m_location->collectionPath + m_text_field->text
 		else if (m_location.isDirectory())
 		{
 			QString new_path = m_text_field->text();
 			if (new_path.isEmpty()) { return ElementsLocation(); }
 
-			if (!new_path.endsWith(".elmt")) { new_path += ".elmt"; }
+			QString extension = (m_mode == SaveTemplate) ? ".qetmak" : ".elmt";
+			if (!new_path.endsWith(extension)) { new_path += extension; }
 
 			ElementsLocation loc = m_location;
 			loc.addToPath(new_path);
@@ -289,6 +313,16 @@ ElementsLocation ElementDialog::getOpenElementLocation(QWidget *parentWidget) {
 */
 ElementsLocation ElementDialog::getSaveElementLocation(QWidget *parentWidget) {
 	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveElement, parentWidget));
+}
+
+/**
+ * @brief ElementDialog::getSaveTemplateLocation
+ * Display a dialog that allow to user to select a location for saving a template
+ * @param parentWidget
+ * @return The location where the template must be save
+ */
+ElementsLocation ElementDialog::getSaveTemplateLocation(QWidget *parentWidget) {
+	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveTemplate, parentWidget));
 }
 
 /**

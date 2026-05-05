@@ -53,8 +53,13 @@ class ElementsPanel : public GenericPanel {
 	signals:
 	void requestForProject(QETProject *);
 	void requestForTitleBlockTemplate(const TitleBlockTemplateLocation &);
-	
+		// Signal to open the project properties
+	void requestForProjectPropertiesEdition();
+		// Signal to open the diagram properties
+	void requestForDiagramPropertiesEdition();
+
 	public slots:
+	void slot_clicked(QTreeWidgetItem *, int);
 	void slot_doubleClick(QTreeWidgetItem *, int);
 	void reload();
 	void filter(const QString &, QET::Filtering = QET::RegularFilter);
@@ -63,7 +68,9 @@ class ElementsPanel : public GenericPanel {
 	void buildFilterList();
 	void applyCurrentFilter(const QList<QTreeWidgetItem *> &);
 	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
-	
+	void requestForItem(QTreeWidgetItem *);
+	void keyPressEvent(QKeyEvent *event)override;
+
 	protected:
 	void startDrag(Qt::DropActions) override;
 	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
