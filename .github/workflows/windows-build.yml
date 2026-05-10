@@ -317,17 +317,23 @@ jobs:
           if-no-files-found: warn
 
       - name: Zip portable (readytouse)
-        shell: msys2 {0}
-        run: |
-          set -euo pipefail
-          VERSION="${{ steps.qet_version.outputs.base_version }}"
-          HEAD="${{ steps.qet_version.outputs.head }}"
-          ZIP_NAME="qelectrotech-${VERSION}+git${HEAD}-x86-win64-readytouse.zip"
-          cd "$GITHUB_WORKSPACE/nsis_root/files"
-          zip -r "$GITHUB_WORKSPACE/dist/$ZIP_NAME" .
-          echo "ZIP created: $ZIP_NAME ($(du -sh "$GITHUB_WORKSPACE/dist/$ZIP_NAME" | cut -f1))"
-          echo "zip_name=$ZIP_NAME" >> "$GITHUB_OUTPUT"
         id: zip_portable
+        shell: pwsh
+        run: |
+          $version = "${{ steps.qet_version.outputs.base_version }}"
+          $head    = "${{ steps.qet_version.outputs.head }}"
+          $zipName = "qelectrotech-${version}+git${head}-x86-win64-readytouse.zip"
+          $src     = "$env:GITHUB_WORKSPACE\nsis_root\files"
+          $dst     = "$env:GITHUB_WORKSPACE\dist\$zipName"
+          $7z      = "C:\Program Files\7-Zip\7z.exe"
+
+          New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE\dist" | Out-Null
+          & $7z a -tzip -mx=5 -mmt=on $dst "$src\*"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          $sizeMB = [math]::Round((Get-Item $dst).Length / 1MB, 1)
+          Write-Output "ZIP created: $zipName ($sizeMB MB)"
+          "zip_name=$zipName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 
       - name: Upload portable (files/ without installer)
         uses: actions/upload-artifact@v4
