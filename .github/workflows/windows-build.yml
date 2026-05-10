@@ -316,11 +316,24 @@ jobs:
             nsis_root/files/bin/
           if-no-files-found: warn
 
+      - name: Zip portable (readytouse)
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.qet_version.outputs.base_version }}"
+          HEAD="${{ steps.qet_version.outputs.head }}"
+          ZIP_NAME="qelectrotech-${VERSION}+git${HEAD}-x86-win64-readytouse.zip"
+          cd "$GITHUB_WORKSPACE/nsis_root/files"
+          zip -r "$GITHUB_WORKSPACE/dist/$ZIP_NAME" .
+          echo "ZIP created: $ZIP_NAME ($(du -sh "$GITHUB_WORKSPACE/dist/$ZIP_NAME" | cut -f1))"
+          echo "zip_name=$ZIP_NAME" >> "$GITHUB_OUTPUT"
+        id: zip_portable
+
       - name: Upload portable (files/ without installer)
         uses: actions/upload-artifact@v4
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
-          path: nsis_root/files/
+          path: dist/${{ steps.zip_portable.outputs.zip_name }}
           retention-days: 14
 
       - name: Upload NSIS installer
@@ -354,6 +367,13 @@ jobs:
           name: qelectrotech-windows-installer
           path: downloaded/installer/
 
+      - name: Download portable artifact
+        uses: actions/download-artifact@v4
+        with:
+          pattern: qelectrotech-*-readytouse
+          path: downloaded/portable/
+          merge-multiple: true
+
       - name: Update nightly release
         uses: softprops/action-gh-release@v2
         with:
@@ -372,7 +392,9 @@ jobs:
             > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
           prerelease: true
           make_latest: false
-          files: downloaded/installer/*.exe
+          files: |
+            downloaded/installer/*.exe
+            downloaded/portable/*.zip
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate download page (index.html)
@@ -384,6 +406,8 @@ jobs:
           RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
           EXE_NAME=$(ls downloaded/installer/*.exe | xargs -I{} basename {})
           INSTALLER_URL="https://github.com/$REPO/releases/download/nightly/$EXE_NAME"
+          ZIP_NAME=$(ls downloaded/portable/*.zip | xargs -I{} basename {})
+          PORTABLE_URL="https://github.com/$REPO/releases/download/nightly/$ZIP_NAME"
 
           mkdir -p gh-pages
           cat > gh-pages/index.html << HTMLEOF
@@ -524,6 +548,13 @@ jobs:
                     <span class="btn-text">
                       Windows Installer
                       <small>.exe — recommended, includes all dependencies</small>
+                    </span>
+                  </a>
+                  <a class="btn btn-secondary" href="$PORTABLE_URL">
+                    <span class="btn-icon">📦</span>
+                    <span class="btn-text">
+                      Windows Portable
+                      <small>.zip — no installation required, extract and run</small>
                     </span>
                   </a>
                   <a class="btn btn-secondary" href="https://github.com/$REPO/releases/tag/nightly">
