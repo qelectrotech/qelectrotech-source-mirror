@@ -560,7 +560,7 @@ jobs:
                     <span class="btn-icon">📦</span>
                     <span class="btn-text">
                       Windows Portable
-                      <small>.zip — no installation required, extract and run</small>
+                      <small>.zip — no installation required, extract and run the file "Lancer QET.bat"</small>
                     </span>
                   </a>
                   <a class="btn btn-secondary" href="https://github.com/$REPO/releases/tag/nightly">
