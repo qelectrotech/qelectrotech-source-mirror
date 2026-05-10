@@ -27,6 +27,8 @@
 ;   - MUI2.nsh is unchanged; MUI_LANGDLL_ALLLANGUAGES is still valid
 ;   - FileFunc.nsh / Locate macro: unchanged
 ;   - Var /GLOBAL must be declared at global scope, not inside a Section
+;   - ${__FILEDIR__} resolves to the directory of the .nsi at compile time;
+;     used for bitmaps and LICENSE so no sed path-patching is needed.
 ;==============================================================================
 
 ;--------------------------------
@@ -100,11 +102,14 @@ Var final_titleblock_ico
 !define MUI_ICON   "${NSISDIR}\Contrib\Graphics\Icons\nsis3-install.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\nsis3-uninstall.ico"
 
-!define MUI_WELCOMEFINISHPAGE_BITMAP          ".\images\wizard.bmp"
+; ${__FILEDIR__} resolves at compile time to the directory containing this
+; .nsi file (= nsis_root/ when makensis runs from that folder).
+; No sed path-patching needed for these two defines.
+!define MUI_WELCOMEFINISHPAGE_BITMAP          "${__FILEDIR__}\images\wizard.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP_NOSTRETCH
 
 !define MUI_HEADERIMAGE
-!define MUI_HEADERIMAGE_BITMAP ".\images\header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "${__FILEDIR__}\images\header.bmp"
 
 ;--------------------------------
 ; Language Selection Dialog Settings (remember chosen language in registry)
@@ -116,7 +121,8 @@ Var final_titleblock_ico
 ; Pages
 !define MUI_COMPONENTSPAGE_SMALLDESC
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "files\LICENSE"
+; ${__FILEDIR__} resolves to nsis_root/ at compile time — no sed needed.
+!insertmacro MUI_PAGE_LICENSE "${__FILEDIR__}\files\LICENSE"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -124,7 +130,7 @@ Var final_titleblock_ico
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
-; Finish page – checkbox to launch QElectroTech
+; Finish page - checkbox to launch QElectroTech
 !define MUI_FINISHPAGE_RUN             "$INSTDIR\Lancer QET.bat"
 !define MUI_FINISHPAGE_RUN_NOTCHECKED
 !define MUI_FINISHPAGE_RUN_TEXT        "$(Check)"
@@ -173,7 +179,7 @@ Var final_titleblock_ico
 ; NOTE: The string "uninstFailed" must be defined in lang_extra.nsh and
 ; lang_extra_fr.nsh (and any other lang_extra_*.nsh) like so:
 ;   LangString uninstFailed ${LANG_ENGLISH} "Uninstallation of the previous version failed.$\nPlease uninstall QElectroTech manually before continuing."
-;   LangString uninstFailed ${LANG_FRENCH}  "La désinstallation de la version précédente a échoué.$\nVeuillez désinstaller QElectroTech manuellement avant de continuer."
+;   LangString uninstFailed ${LANG_FRENCH}  "La desinstallation de la version precedente a echoue.$\nVeuillez desinstaller QElectroTech manuellement avant de continuer."
 
 ;==============================================================================
 ; SECTIONS
@@ -182,76 +188,65 @@ Var final_titleblock_ico
 SetOverwrite on
 
 Section "Main Program"
-SectionIn RO  ; Read-only – always installed
+SectionIn RO  ; Read-only - always installed
 
     SetOutPath "$INSTDIR\bin\"
-    File "./files/bin/${SOFT_NAME}.exe"
+    File /r "./files/bin\*"
 
     SetOutPath "$INSTDIR"
-    File "./files/ChangeLog"
-    File "./files/CREDIT"
-    File "./files/ELEMENTS.LICENSE"
-    File "./files/LICENSE"
-    File "./files/qet_uninstall_file_associations.reg"
-    File "./files/README"
-    File "./files/register_filetypes.bat"
+    File /nonfatal "./files/ChangeLog"
+    File /nonfatal "./files/CREDIT"
+    File /nonfatal "./files/ELEMENTS.LICENSE"
+    File /nonfatal "./files/LICENSE"
+    File /nonfatal "./files/qet_uninstall_file_associations.reg"
+    File /nonfatal "./files/README"
+    File /nonfatal "./files/register_filetypes.bat"
     File "Lancer QET.bat"
 
     SetOutPath "$INSTDIR"
-    File /r "./files/ico"
+    File /nonfatal /r "./files/ico"
 
 SectionEnd
 
 ;---------------------------
-SetOverwrite on
 SubSection "$(Elements)" SEC01
 
-    SetOverwrite on
     Section "$(Electric)"
         SetOutPath "$INSTDIR\elements"
-        File /r "./files/elements/10_electric"
+        File /nonfatal /r "./files/elements/10_electric"
     SectionEnd
 
-    SetOverwrite on
     Section "$(Logic)"
         SetOutPath "$INSTDIR\elements"
-        File /r "./files/elements/20_logic"
+        File /nonfatal /r "./files/elements/20_logic"
     SectionEnd
 
-    SetOverwrite on
     Section "$(Hydraulic)"
         SetOutPath "$INSTDIR\elements"
-        File /r "./files/elements/30_hydraulic"
+        File /nonfatal /r "./files/elements/30_hydraulic"
     SectionEnd
 
-    SetOverwrite on
     Section "$(Pneumatic)"
         SetOutPath "$INSTDIR\elements"
-        File /r "./files/elements/50_pneumatic"
+        File /nonfatal /r "./files/elements/50_pneumatic"
     SectionEnd
 
     ;---------------------------------
     SubSection "$(Energy)"
 
-        SetOverwrite on
         Section "$(water)"
             SetOutPath "$INSTDIR\elements\60_energy"
-            File /r "./files/elements/60_energy/11_water"
-            File /r "./files/elements/60_energy/"
+            File /nonfatal /r "./files/elements/60_energy/11_water"
         SectionEnd
 
-        SetOverwrite on
         Section "$(Refrigeration)"
             SetOutPath "$INSTDIR\elements\60_energy"
-            File /r "./files/elements/60_energy/21_refrigeration"
-            File /r "./files/elements/60_energy/"
+            File /nonfatal /r "./files/elements/60_energy/21_refrigeration"
         SectionEnd
 
-        SetOverwrite on
         Section "$(Solar_thermal)"
             SetOutPath "$INSTDIR\elements\60_energy"
-            File /r "./files/elements/60_energy/31_solar_thermal"
-            File /r "./files/elements/60_energy/"
+            File /nonfatal /r "./files/elements/60_energy/31_solar_thermal"
         SectionEnd
 
     SubSectionEnd
@@ -259,28 +254,24 @@ SubSection "$(Elements)" SEC01
 SubSectionEnd
 
 ;-------------------------------
-SetOverwrite on
 Section "$(Lang)" SEC02
     SetOutPath "$INSTDIR\lang"
-    File "./files/lang/*.qm"
+    File /nonfatal "./files/lang/*.qm"
 SectionEnd
 
-SetOverwrite on
 Section "$(Titleblocks)" SEC03
     SetOutPath "$INSTDIR"
-    File /r "./files/titleblocks"
+    File /nonfatal /r "./files/titleblocks"
 SectionEnd
 
-SetOverwrite on
 Section "$(Examples)" SEC04
     SetOutPath "$INSTDIR"
-    File /r "./files/examples"
+    File /nonfatal /r "./files/examples"
 SectionEnd
 
-SetOverwrite on
 Section "$(Fonts)" SEC05
     SetOutPath "$INSTDIR"
-    File /r "./files/fonts"
+    File /nonfatal /r "./files/fonts"
 SectionEnd
 
 ;--------------------------------
@@ -320,7 +311,7 @@ Section ""
     StrCpy $final_element_ico      "$INSTDIR\ico\application-x-qet-element.ico"
     StrCpy $final_titleblock_ico   "$INSTDIR\ico\application-x-qet-titleblock.ico"
 
-    ; File associations – .qet
+    ; File associations - .qet
     WriteRegStr   HKEY_CLASSES_ROOT "Applications\qelectrotech.exe\shell\open\command" "" \
         '"$final_qet_exe" "%1"'
     WriteRegStr   HKEY_CLASSES_ROOT ".qet"                                              "" "qet_diagram_file"
@@ -330,7 +321,7 @@ Section ""
     WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\DefaultIcon"                      "" "$final_project_ico"
     WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\shell\open\command"               "" '"$final_qet_exe" "%1"'
 
-    ; File associations – .elmt
+    ; File associations - .elmt
     WriteRegStr   HKEY_CLASSES_ROOT ".elmt"                                             "" "qet_element_file"
     WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                  "" "Element QET"
     WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                  "EditFlags"    0x00000000
@@ -338,7 +329,7 @@ Section ""
     WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\DefaultIcon"                      "" "$final_element_ico"
     WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\shell\open\command"               "" '"$final_qet_exe" "%1"'
 
-    ; File associations – .titleblock
+    ; File associations - .titleblock
     WriteRegStr   HKEY_CLASSES_ROOT ".titleblock"                                       "" "qet_titleblock_file"
     WriteRegStr   HKEY_CLASSES_ROOT "qet_titleblock_file"                               "" "Titleblock QET"
     WriteRegDWORD HKEY_CLASSES_ROOT "qet_titleblock_file"                               "EditFlags"    0x00000000
@@ -379,7 +370,7 @@ Section ""
 SectionEnd
 
 ;--------------------------------
-; Locate callback – sets FILE_ATTRIBUTE_READONLY on each .elmt file
+; Locate callback - sets FILE_ATTRIBUTE_READONLY on each .elmt file
 Function LocateCallback
     SetFileAttributes $R9 FILE_ATTRIBUTE_READONLY
     Push $0
@@ -408,7 +399,7 @@ Function .onInit
         "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}" \
         "UninstallString"
 
-    ; No previous installation found → proceed normally
+    ; No previous installation found - proceed normally
     StrCmp $R0 "" done
 
     ; Also read the install dir of the previous version
@@ -416,11 +407,10 @@ Function .onInit
 
     ; Ask user whether to uninstall the existing version
     MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(installed)" IDOK uninst
-    Abort   ; user clicked Cancel → stop the installer
+    Abort   ; user clicked Cancel - stop the installer
 
 uninst:
     ; Remove surrounding quotes from the UninstallString if present
-    ; (some installers write: "C:\path\Uninstall.exe" — ExecWait needs clean path)
     StrCpy $R2 $R0 1        ; first character
     StrCmp $R2 '"' 0 unquoted
         ; Strip leading and trailing quote
@@ -430,19 +420,15 @@ uninst:
         StrCpy $R0 $R0 $R3                  ; remove trailing "
 unquoted:
 
-    ; Run the uninstaller silently, keeping it in its own directory
-    ; _?= prevents NSIS from copying the uninstaller to a temp folder,
-    ; so it can delete itself and the whole $INSTDIR tree.
     ClearErrors
     ${If} $R1 != ""
-        ExecWait '"$R0" /S _?=$R1'         ; silent uninstall using saved install dir
+        ExecWait '"$R0" /S _?=$R1'
     ${Else}
-        ExecWait '"$R0" /S'                 ; fallback if install dir unknown
+        ExecWait '"$R0" /S'
     ${EndIf}
 
     IfErrors uninstall_failed
 
-    ; Verify the old installation is gone before continuing
     ${If} $R1 != ""
         IfFileExists "$R1\${SOFT_NAME}.exe" uninstall_failed
         IfFileExists "$R1\bin\${SOFT_NAME}.exe" uninstall_failed

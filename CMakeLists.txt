@@ -57,7 +57,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(
   QT
  NAMES
-  Qt6
   Qt5
  COMPONENTS
   ${QET_COMPONENTS}
@@ -69,6 +68,7 @@ find_package(
  COMPONENTS
  ${QET_COMPONENTS}
  REQUIRED)
+find_package(SQLite3 REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
@@ -92,6 +92,7 @@ target_link_libraries(
   PRIVATE
   pugixml::pugixml
   SingleApplication::SingleApplication
+  SQLite::SQLite3
   ${KF5_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES}
   )
