@@ -394,7 +394,7 @@ jobs:
             | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
             | **Date** | ${{ github.event.head_commit.timestamp }} |
 
-            > ⚠️ This release is overwritten on every push to `master`.
+            > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
             > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
           prerelease: true
           make_latest: false
