@@ -7,6 +7,7 @@
     -d FilesDir=<absolute path to artifact\files>
     -d Version=<numeric version e.g. 0.100.1.0>
     -d ProductVersion=<display version e.g. 0.100.1-r8770-abc1234_x86_64-win64>
+    -d LicenseRtf=<absolute path to License.rtf>
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
@@ -36,7 +37,6 @@
 
     <!-- ============================================================
          All application files harvested in one pass from files\**
-         This avoids any duplicate identifiers between subdirectories
     ============================================================ -->
     <ComponentGroup Id="CG_AllFiles" Directory="INSTALLDIR">
       <Files Include="$(var.FilesDir)\**" />
@@ -102,8 +102,10 @@
       <ComponentGroupRef Id="CG_FileAssoc" />
     </Feature>
 
-    <!-- Minimal Windows Installer UI -->
-    <ui:WixUI Id="WixUI_Minimal" />
+    <!-- WixUI_Minimal with QElectroTech GPL-2 license -->
+    <ui:WixUI Id="WixUI_Minimal">
+      <ui:WixVariable Id="WixUILicenseRtf" Value="$(var.LicenseRtf)" />
+    </ui:WixUI>
 
     <!-- Properties shown in Programs and Features -->
     <Property Id="ARPPRODUCTICON" Value="qet.ico" />
