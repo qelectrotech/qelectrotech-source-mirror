@@ -32,44 +32,11 @@
     </StandardDirectory>
 
     <!-- ============================================================
-         bin\ — full harvest (exe + all DLLs + Qt subdirectories)
+         All application files harvested in one pass from files\**
+         This avoids any duplicate identifiers between subdirectories
     ============================================================ -->
-    <ComponentGroup Id="CG_Bin" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\bin\**" />
-    </ComponentGroup>
-
-    <!-- ============================================================
-         Root files in files\ (LICENSE, bat, reg...)
-    ============================================================ -->
-    <ComponentGroup Id="CG_Root" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\*" />
-    </ComponentGroup>
-
-    <!-- ============================================================
-         Application data — one ComponentGroup per folder
-    ============================================================ -->
-    <ComponentGroup Id="CG_Elements" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\elements\**" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Lang" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\lang\**" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Titleblocks" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\titleblocks\**" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Examples" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\examples\**" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Fonts" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\fonts\**" />
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Icons" Directory="INSTALLDIR">
-      <Files Include="$(var.FilesDir)\ico\**" />
+    <ComponentGroup Id="CG_AllFiles" Directory="INSTALLDIR">
+      <Files Include="$(var.FilesDir)\**" />
     </ComponentGroup>
 
     <!-- ============================================================
@@ -127,19 +94,12 @@
          Main feature (everything included)
     ============================================================ -->
     <Feature Id="ProductFeature" Title="QElectroTech" Level="1">
-      <ComponentGroupRef Id="CG_Bin" />
-      <ComponentGroupRef Id="CG_Root" />
-      <ComponentGroupRef Id="CG_Elements" />
-      <ComponentGroupRef Id="CG_Lang" />
-      <ComponentGroupRef Id="CG_Titleblocks" />
-      <ComponentGroupRef Id="CG_Examples" />
-      <ComponentGroupRef Id="CG_Fonts" />
-      <ComponentGroupRef Id="CG_Icons" />
+      <ComponentGroupRef Id="CG_AllFiles" />
       <ComponentGroupRef Id="CG_Shortcuts" />
       <ComponentGroupRef Id="CG_FileAssoc" />
     </Feature>
 
-    <!-- Minimal Windows Installer UI (requires xmlns:ui and WixToolset.UI.wixext) -->
+    <!-- Minimal Windows Installer UI -->
     <ui:WixUI Id="WixUI_Minimal" />
 
     <!-- Properties shown in Programs and Features -->
