@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: "Run ID de 'Windows Build' (laisse vide pour le dernier run réussi)"
+        description: "Run ID of 'Windows Build' (leave empty for the latest successful run)"
         required: false
         default: ""
 
@@ -15,7 +15,7 @@ jobs:
 
     steps:
       # ----------------------------------------------------------------
-      # 1. Checkout (pour récupérer QElectroTech.wxs et les sources)
+      # 1. Checkout (to retrieve QElectroTech.wxs and sources)
       # ----------------------------------------------------------------
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,32 +23,32 @@ jobs:
           fetch-depth: 0
 
       # ----------------------------------------------------------------
-      # 2. Télécharger l'artifact portable du build principal
-      #    Nécessite que windows-build.yml uploade un artifact nommé
-      #    "qelectrotech-windows-portable" (nom fixe)
+      # 2. Download the portable artifact from the main build
+      #    Requires windows-build.yml to upload an artifact named
+      #    "qelectrotech-windows-portable" (fixed name)
       # ----------------------------------------------------------------
       - name: Download portable artifact
         uses: actions/download-artifact@v4
         with:
           name: qelectrotech-windows-portable
           path: artifact\files
-          run-id: ${{ github.event.inputs.run_id != '' && github.event.inputs.run_id || github.run_id }}
+          run-id: ${{ github.event.inputs.run_id || github.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
 
       # ----------------------------------------------------------------
-      # 3. Extraire la version depuis les sources
+      # 3. Extract version from sources
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
         shell: pwsh
         run: |
-          # Version depuis qetversion.cpp (même logique que windows-build.yml)
+          # Version from qetversion.cpp (same logic as windows-build.yml)
           $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
           if ($src -match 'return QVersionNumber\{([^}]+)\}') {
             $ver = $Matches[1] -replace '\s','' -replace ',','.'
           } else {
-            # Fallback : CMakeLists.txt
+            # Fallback: CMakeLists.txt
             $cmake = Get-Content "CMakeLists.txt" -Raw
             if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
               $ver = $Matches[1]
@@ -57,14 +57,14 @@ jobs:
             }
           }
 
-          # Version numérique MSI : 4 chiffres obligatoire (ex. 0.100.1.0)
+          # Numeric MSI version: 4 digits required (e.g. 0.100.1.0)
           $verMsi = "$ver.0"
 
-          # Short SHA pour la version lisible
+          # Short SHA for the display version
           $sha = git rev-parse --short HEAD 2>$null
           if (-not $sha) { $sha = "unknown" }
 
-          # Numéro de révision cumulatif (même calcul que windows-build.yml)
+          # Cumulative revision number (same calculation as windows-build.yml)
           $count = git rev-list HEAD --count 2>$null
           $rev = [int]$count + 473
 
@@ -76,76 +76,70 @@ jobs:
           Write-Host "Version display : $verDisplay"
 
       # ----------------------------------------------------------------
-      # 4. Installer WiX v7 via dotnet tool
+      # 4. Install WiX v7, accept EULA and install WixUI extension
+      #    All done in one step: PATH is updated within the same step
+      #    so wix is immediately available for eula and extension commands
       # ----------------------------------------------------------------
       - name: Install WiX v7
         shell: pwsh
         run: |
           dotnet tool install --global wix --version 7.0.0
+          # Update PATH immediately for the rest of this step
           $toolsPath = [System.IO.Path]::Combine($env:USERPROFILE, '.dotnet', 'tools')
+          $env:PATH = "$toolsPath;$env:PATH"
+          # Also export for subsequent steps
           echo $toolsPath >> $env:GITHUB_PATH
-          Write-Host "WiX v7 installé."
-
-      # ----------------------------------------------------------------
-      # 5. Installer l'extension WixUI
-      #    WIX_ACCEPT_EULA=true est la méthode officielle pour accepter
-      #    la licence OSMF de WiX v7 en environnement CI
-      # ----------------------------------------------------------------
-      - name: Install WiX UI extension
-        shell: pwsh
-        env:
-          WIX_ACCEPT_EULA: true
-        run: |
+          # Accept OSMF EULA (official CI/CD method: writes a sentinel file)
+          wix eula accept wix7
+          # Install WixUI extension
           wix extension add WixToolset.UI.wixext/7.0.0
-          Write-Host "Extension UI installée."
+          Write-Host "WiX v7 installed, EULA accepted, UI extension added."
 
       # ----------------------------------------------------------------
-      # 6. Vérifier la présence du fichier WXS dans le dépôt
+      # 5. Check that the WXS file exists in the repository
       # ----------------------------------------------------------------
       - name: Check WXS file
         shell: pwsh
         run: |
           $wxs = "build-aux\windows\QElectroTech.wxs"
           if (-not (Test-Path $wxs)) {
-            Write-Error "Fichier WXS introuvable : $wxs"
-            Write-Host "Contenu de build-aux\windows\ :"
+            Write-Error "WXS file not found: $wxs"
+            Write-Host "Contents of build-aux\windows\ :"
             Get-ChildItem "build-aux\windows\" -ErrorAction SilentlyContinue
             exit 1
           }
-          Write-Host "WXS trouvé : $wxs"
+          Write-Host "WXS found: $wxs"
 
       # ----------------------------------------------------------------
-      # 7. Vérifier la structure de l'artifact et localiser files/
+      # 6. Check the artifact structure and locate files/
       # ----------------------------------------------------------------
       - name: Check artifact structure
         shell: pwsh
         run: |
-          Write-Host "=== Contenu de artifact\files (2 niveaux) ==="
+          Write-Host "=== Contents of artifact\files (2 levels) ==="
           Get-ChildItem -Path "artifact\files" -Depth 2 |
             Select-Object FullName | Format-Table -AutoSize
 
-          # Chercher qelectrotech.exe dans l'artifact
+          # Search for qelectrotech.exe in the artifact
           $exe = Get-ChildItem -Path "artifact\files" -Filter "qelectrotech.exe" -Recurse | Select-Object -First 1
           if (-not $exe) {
-            Write-Error "qelectrotech.exe introuvable dans l'artifact"
+            Write-Error "qelectrotech.exe not found in artifact"
             exit 1
           }
-          Write-Host "Executable : $($exe.FullName) ($([math]::Round($exe.Length/1MB,1)) MB)"
+          Write-Host "Executable: $($exe.FullName) ($([math]::Round($exe.Length/1MB,1)) MB)"
 
-          # FilesDir = dossier contenant bin\
+          # FilesDir = folder containing bin\
           $binDir   = $exe.Directory.FullName
           $filesDir = Split-Path $binDir -Parent
 
           echo "FILES_DIR=$filesDir" >> $env:GITHUB_ENV
-          Write-Host "FILES_DIR : $filesDir"
+          Write-Host "FILES_DIR: $filesDir"
 
       # ----------------------------------------------------------------
-      # 8. Construire le MSI
+      # 7. Build the MSI
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
-        env:
-          WIX_ACCEPT_EULA: true
         run: |
           $version    = "${{ steps.version.outputs.VERSION_MSI }}"
           $verDisplay = "${{ steps.version.outputs.VERSION_DISPLAY }}"
@@ -170,16 +164,16 @@ jobs:
             -o "dist\$outputName"
 
           if (-not (Test-Path "dist\$outputName")) {
-            Write-Error "MSI non généré : dist\$outputName"
+            Write-Error "MSI not generated: dist\$outputName"
             exit 1
           }
 
           $size = [math]::Round((Get-Item "dist\$outputName").Length / 1MB, 1)
-          Write-Host "MSI généré : dist\$outputName ($size MB) ✓"
+          Write-Host "MSI generated: dist\$outputName ($size MB) ✓"
           echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
 
       # ----------------------------------------------------------------
-      # 9. Upload de l'artifact MSI
+      # 8. Upload the MSI artifact
       # ----------------------------------------------------------------
       - name: Upload MSI artifact
         uses: actions/upload-artifact@v4
@@ -190,19 +184,19 @@ jobs:
           if-no-files-found: error
 
       # ----------------------------------------------------------------
-      # 10. Résumé
+      # 9. Summary
       # ----------------------------------------------------------------
       - name: Summary
         if: always()
         shell: pwsh
         run: |
-          Write-Host "=== Résumé build MSI ==="
+          Write-Host "=== MSI build summary ==="
           Write-Host "Version      : ${{ steps.version.outputs.VERSION_DISPLAY }}"
           Write-Host "WiX          : v7.0.0"
-          Write-Host "Image runner : ${{ runner.os }} / ${{ runner.arch }}"
+          Write-Host "Runner image : ${{ runner.os }} / ${{ runner.arch }}"
           if (Test-Path "dist\$env:MSI_NAME") {
             $size = [math]::Round((Get-Item "dist\$env:MSI_NAME").Length / 1MB, 1)
             Write-Host "MSI          : $env:MSI_NAME ($size MB) ✓"
           } else {
-            Write-Host "MSI          : ÉCHEC ✗"
+            Write-Host "MSI          : FAILED ✗"
           }
