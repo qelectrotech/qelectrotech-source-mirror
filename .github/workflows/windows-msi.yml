@@ -87,20 +87,28 @@ jobs:
           Write-Host "WiX v7 installé."
 
       # ----------------------------------------------------------------
-      # 5. Installer l'extension WixUI
-      #    WIX_ACCEPT_EULA=true est la méthode officielle pour accepter
-      #    la licence OSMF de WiX v7 en environnement CI
+      # 5. Accepter la licence OSMF WiX v7
+      #    "wix eula accept wix7" est la méthode officielle pour CI/CD
+      #    Elle écrit un fichier sentinel dans le profil utilisateur
+      #    qui autorise toutes les commandes wix suivantes
+      # ----------------------------------------------------------------
+      - name: Accept WiX EULA
+        shell: pwsh
+        run: |
+          wix eula accept wix7
+          Write-Host "EULA WiX v7 acceptée."
+
+      # ----------------------------------------------------------------
+      # 6. Installer l'extension WixUI
       # ----------------------------------------------------------------
       - name: Install WiX UI extension
         shell: pwsh
-        env:
-          WIX_ACCEPT_EULA: true
         run: |
           wix extension add WixToolset.UI.wixext/7.0.0
           Write-Host "Extension UI installée."
 
       # ----------------------------------------------------------------
-      # 6. Vérifier la présence du fichier WXS dans le dépôt
+      # 7. Vérifier la présence du fichier WXS dans le dépôt
       # ----------------------------------------------------------------
       - name: Check WXS file
         shell: pwsh
@@ -115,7 +123,7 @@ jobs:
           Write-Host "WXS trouvé : $wxs"
 
       # ----------------------------------------------------------------
-      # 7. Vérifier la structure de l'artifact et localiser files/
+      # 8. Vérifier la structure de l'artifact et localiser files/
       # ----------------------------------------------------------------
       - name: Check artifact structure
         shell: pwsh
@@ -140,12 +148,10 @@ jobs:
           Write-Host "FILES_DIR : $filesDir"
 
       # ----------------------------------------------------------------
-      # 8. Construire le MSI
+      # 9. Construire le MSI
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
-        env:
-          WIX_ACCEPT_EULA: true
         run: |
           $version    = "${{ steps.version.outputs.VERSION_MSI }}"
           $verDisplay = "${{ steps.version.outputs.VERSION_DISPLAY }}"
@@ -179,7 +185,7 @@ jobs:
           echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
 
       # ----------------------------------------------------------------
-      # 9. Upload de l'artifact MSI
+      # 10. Upload de l'artifact MSI
       # ----------------------------------------------------------------
       - name: Upload MSI artifact
         uses: actions/upload-artifact@v4
@@ -190,7 +196,7 @@ jobs:
           if-no-files-found: error
 
       # ----------------------------------------------------------------
-      # 10. Résumé
+      # 11. Résumé
       # ----------------------------------------------------------------
       - name: Summary
         if: always()
