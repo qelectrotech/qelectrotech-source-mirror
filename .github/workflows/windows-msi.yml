@@ -1,214 +1,152 @@
-name: Windows MSI (WiX v7)
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  QElectroTech.wxs — WiX v7 installer definition
+  Génère un MSI x64 pour QElectroTech (build MSYS2/UCRT64).
 
-on:
-  workflow_dispatch:
-    inputs:
-      run_id:
-        description: "Run ID de 'Windows Build' (laisse vide pour le dernier run réussi)"
-        required: false
-        default: ""
+  Variables passées depuis la ligne de commande wix build :
+    -d FilesDir=<chemin absolu vers artifact\files>
+    -d Version=<version numérique ex. 0.100.1.0>
+    -d ProductVersion=<version lisible ex. 0.100.1-r8770-abc1234_x86_64-win64>
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
-jobs:
-  build-msi:
-    name: Build MSI with WiX v7
-    runs-on: windows-latest
+  <Package
+    Name="QElectroTech"
+    Manufacturer="QElectroTech Team"
+    Version="!(bind.Variable.Version)"
+    UpgradeCode="A1B2C3D4-E5F6-7890-ABCD-EF1234567890"
+    Language="1033"
+    Codepage="1252"
+    InstallerVersion="500"
+    Scope="perMachine">
 
-    steps:
-      # ----------------------------------------------------------------
-      # 1. Checkout (pour récupérer QElectroTech.wxs et les sources)
-      # ----------------------------------------------------------------
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+    <!-- Mise à jour en place : désinstalle l'ancienne version automatiquement -->
+    <MajorUpgrade
+      DowngradeErrorMessage="Une version plus récente de QElectroTech est déjà installée."
+      Schedule="afterInstallInitialize" />
 
-      # ----------------------------------------------------------------
-      # 2. Télécharger l'artifact portable du build principal
-      #    Nécessite que windows-build.yml uploade un artifact nommé
-      #    "qelectrotech-windows-portable" (nom fixe)
-      # ----------------------------------------------------------------
-      - name: Download portable artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: qelectrotech-windows-portable
-          path: artifact\files
-          run-id: ${{ github.event.inputs.run_id != '' && github.event.inputs.run_id || github.run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
+    <!-- Répertoire d'installation -->
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLDIR" Name="QElectroTech" />
+    </StandardDirectory>
 
-      # ----------------------------------------------------------------
-      # 3. Extraire la version depuis les sources
-      # ----------------------------------------------------------------
-      - name: Extract version
-        id: version
-        shell: pwsh
-        run: |
-          # Version depuis qetversion.cpp (même logique que windows-build.yml)
-          $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
-          if ($src -match 'return QVersionNumber\{([^}]+)\}') {
-            $ver = $Matches[1] -replace '\s','' -replace ',','.'
-          } else {
-            # Fallback : CMakeLists.txt
-            $cmake = Get-Content "CMakeLists.txt" -Raw
-            if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
-              $ver = $Matches[1]
-            } else {
-              $ver = "0.0.0"
-            }
-          }
+    <!-- ============================================================
+         bin\ complet (exe + toutes les DLLs + sous-dossiers Qt)
+         Files harvest tout le dossier — pas d'attribut Exclude en WiX v7
+    ============================================================ -->
+    <ComponentGroup Id="CG_Bin" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\bin\**" />
+    </ComponentGroup>
 
-          # Version numérique MSI : 4 chiffres obligatoire (ex. 0.100.1.0)
-          $verMsi = "$ver.0"
+    <!-- ============================================================
+         Fichiers racine de files\ (LICENSE, bat, reg...)
+    ============================================================ -->
+    <ComponentGroup Id="CG_Root" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\*" />
+    </ComponentGroup>
 
-          # Short SHA pour la version lisible
-          $sha = git rev-parse --short HEAD 2>$null
-          if (-not $sha) { $sha = "unknown" }
+    <!-- ============================================================
+         Données applicatives — harvest par dossier
+    ============================================================ -->
+    <ComponentGroup Id="CG_Elements" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\elements\**" />
+    </ComponentGroup>
 
-          # Numéro de révision cumulatif (même calcul que windows-build.yml)
-          $count = git rev-list HEAD --count 2>$null
-          $rev = [int]$count + 473
+    <ComponentGroup Id="CG_Lang" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\lang\**" />
+    </ComponentGroup>
 
-          $verDisplay = "${ver}-r${rev}-${sha}_x86_64-win64"
+    <ComponentGroup Id="CG_Titleblocks" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\titleblocks\**" />
+    </ComponentGroup>
 
-          echo "VERSION_MSI=$verMsi"          >> $env:GITHUB_OUTPUT
-          echo "VERSION_DISPLAY=$verDisplay"  >> $env:GITHUB_OUTPUT
-          Write-Host "Version MSI     : $verMsi"
-          Write-Host "Version display : $verDisplay"
+    <ComponentGroup Id="CG_Examples" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\examples\**" />
+    </ComponentGroup>
 
-      # ----------------------------------------------------------------
-      # 4. Installer WiX v7 via dotnet tool
-      # ----------------------------------------------------------------
-      - name: Install WiX v7
-        shell: pwsh
-        run: |
-          dotnet tool install --global wix --version 7.0.0
-          $toolsPath = [System.IO.Path]::Combine($env:USERPROFILE, '.dotnet', 'tools')
-          echo $toolsPath >> $env:GITHUB_PATH
-          Write-Host "WiX v7 installé."
+    <ComponentGroup Id="CG_Fonts" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\fonts\**" />
+    </ComponentGroup>
 
-      # ----------------------------------------------------------------
-      # 5. Accepter la licence OSMF WiX v7
-      #    "wix eula accept wix7" est la méthode officielle pour CI/CD
-      #    Elle écrit un fichier sentinel dans le profil utilisateur
-      #    qui autorise toutes les commandes wix suivantes
-      # ----------------------------------------------------------------
-      - name: Accept WiX EULA
-        shell: pwsh
-        run: |
-          wix eula accept wix7
-          Write-Host "EULA WiX v7 acceptée."
+    <ComponentGroup Id="CG_Icons" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\ico\**" />
+    </ComponentGroup>
 
-      # ----------------------------------------------------------------
-      # 6. Installer l'extension WixUI
-      # ----------------------------------------------------------------
-      - name: Install WiX UI extension
-        shell: pwsh
-        run: |
-          wix extension add WixToolset.UI.wixext/7.0.0
-          Write-Host "Extension UI installée."
+    <!-- ============================================================
+         Raccourcis bureau + menu Démarrer
+    ============================================================ -->
+    <ComponentGroup Id="CG_Shortcuts" Directory="INSTALLDIR">
+      <Component Id="C_ShortcutDesktop" Guid="F1A2B3C4-D5E6-7890-5678-012345678901">
+        <Shortcut Id="DesktopShortcut"
+                  Directory="DesktopFolder"
+                  Name="QElectroTech"
+                  Target="[INSTALLDIR]Lancer QET.bat"
+                  Icon="qet.ico"
+                  WorkingDirectory="INSTALLDIR" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\QElectroTech"
+                       Name="DesktopShortcut"
+                       Type="integer" Value="1"
+                       KeyPath="yes" />
+      </Component>
+      <Component Id="C_ShortcutStartMenu" Guid="A2B3C4D5-E6F7-8901-6789-123456789012">
+        <Shortcut Id="StartMenuShortcut"
+                  Directory="ProgramMenuFolder"
+                  Name="QElectroTech"
+                  Target="[INSTALLDIR]Lancer QET.bat"
+                  Icon="qet.ico"
+                  WorkingDirectory="INSTALLDIR" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\QElectroTech"
+                       Name="StartMenuShortcut"
+                       Type="integer" Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
 
-      # ----------------------------------------------------------------
-      # 7. Vérifier la présence du fichier WXS dans le dépôt
-      # ----------------------------------------------------------------
-      - name: Check WXS file
-        shell: pwsh
-        run: |
-          $wxs = "build-aux\windows\QElectroTech.wxs"
-          if (-not (Test-Path $wxs)) {
-            Write-Error "Fichier WXS introuvable : $wxs"
-            Write-Host "Contenu de build-aux\windows\ :"
-            Get-ChildItem "build-aux\windows\" -ErrorAction SilentlyContinue
-            exit 1
-          }
-          Write-Host "WXS trouvé : $wxs"
+    <!-- ============================================================
+         Association fichier .qet
+    ============================================================ -->
+    <ComponentGroup Id="CG_FileAssoc" Directory="INSTALLDIR">
+      <Component Id="C_FileAssoc" Guid="B3C4D5E6-F7A8-9012-7890-234567890123">
+        <RegistryValue Root="HKCR" Key=".qet" Type="string" Value="QElectroTech.Document" KeyPath="yes" />
+        <RegistryValue Root="HKCR" Key="QElectroTech.Document" Type="string" Value="QElectroTech Project" />
+        <RegistryValue Root="HKCR" Key="QElectroTech.Document\DefaultIcon" Type="string"
+                       Value="[INSTALLDIR]ico\qelectrotech.ico" />
+        <RegistryValue Root="HKCR" Key="QElectroTech.Document\shell\open\command" Type="string"
+                       Value="&quot;[INSTALLDIR]bin\qelectrotech.exe&quot; &quot;%1&quot;" />
+      </Component>
+    </ComponentGroup>
 
-      # ----------------------------------------------------------------
-      # 8. Vérifier la structure de l'artifact et localiser files/
-      # ----------------------------------------------------------------
-      - name: Check artifact structure
-        shell: pwsh
-        run: |
-          Write-Host "=== Contenu de artifact\files (2 niveaux) ==="
-          Get-ChildItem -Path "artifact\files" -Depth 2 |
-            Select-Object FullName | Format-Table -AutoSize
+    <!-- ============================================================
+         Icône pour les raccourcis
+    ============================================================ -->
+    <Icon Id="qet.ico" SourceFile="!(bind.Variable.FilesDir)\ico\qelectrotech.ico" />
 
-          # Chercher qelectrotech.exe dans l'artifact
-          $exe = Get-ChildItem -Path "artifact\files" -Filter "qelectrotech.exe" -Recurse | Select-Object -First 1
-          if (-not $exe) {
-            Write-Error "qelectrotech.exe introuvable dans l'artifact"
-            exit 1
-          }
-          Write-Host "Executable : $($exe.FullName) ($([math]::Round($exe.Length/1MB,1)) MB)"
+    <!-- ============================================================
+         Feature principale (tout inclus)
+    ============================================================ -->
+    <Feature Id="ProductFeature" Title="QElectroTech" Level="1">
+      <ComponentGroupRef Id="CG_Bin" />
+      <ComponentGroupRef Id="CG_Root" />
+      <ComponentGroupRef Id="CG_Elements" />
+      <ComponentGroupRef Id="CG_Lang" />
+      <ComponentGroupRef Id="CG_Titleblocks" />
+      <ComponentGroupRef Id="CG_Examples" />
+      <ComponentGroupRef Id="CG_Fonts" />
+      <ComponentGroupRef Id="CG_Icons" />
+      <ComponentGroupRef Id="CG_Shortcuts" />
+      <ComponentGroupRef Id="CG_FileAssoc" />
+    </Feature>
 
-          # FilesDir = dossier contenant bin\
-          $binDir   = $exe.Directory.FullName
-          $filesDir = Split-Path $binDir -Parent
+    <!-- UI minimale Windows Installer -->
+    <UIRef Id="WixUI_Minimal" />
 
-          echo "FILES_DIR=$filesDir" >> $env:GITHUB_ENV
-          Write-Host "FILES_DIR : $filesDir"
+    <!-- Propriétés affichées dans Programmes et fonctionnalités -->
+    <Property Id="ARPPRODUCTICON" Value="qet.ico" />
+    <Property Id="ARPHELPLINK" Value="https://qelectrotech.org" />
+    <Property Id="ARPURLINFOABOUT" Value="https://qelectrotech.org" />
+    <Property Id="ARPCOMMENTS" Value="Logiciel libre de schémas électriques" />
 
-      # ----------------------------------------------------------------
-      # 9. Construire le MSI
-      # ----------------------------------------------------------------
-      - name: Build MSI
-        shell: pwsh
-        run: |
-          $version    = "${{ steps.version.outputs.VERSION_MSI }}"
-          $verDisplay = "${{ steps.version.outputs.VERSION_DISPLAY }}"
-          $filesDir   = $env:FILES_DIR
-          $wxs        = "build-aux\windows\QElectroTech.wxs"
-          $outputName = "QElectroTech-${verDisplay}.msi"
-
-          New-Item -ItemType Directory -Force -Path "dist" | Out-Null
-
-          Write-Host "=== wix build ==="
-          Write-Host "  WXS         : $wxs"
-          Write-Host "  Version     : $version"
-          Write-Host "  FilesDir    : $filesDir"
-          Write-Host "  Output      : dist\$outputName"
-
-          wix build $wxs `
-            -arch x64 `
-            -d "Version=$version" `
-            -d "ProductVersion=$verDisplay" `
-            -d "FilesDir=$filesDir" `
-            -ext WixToolset.UI.wixext `
-            -o "dist\$outputName"
-
-          if (-not (Test-Path "dist\$outputName")) {
-            Write-Error "MSI non généré : dist\$outputName"
-            exit 1
-          }
-
-          $size = [math]::Round((Get-Item "dist\$outputName").Length / 1MB, 1)
-          Write-Host "MSI généré : dist\$outputName ($size MB) ✓"
-          echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
-
-      # ----------------------------------------------------------------
-      # 10. Upload de l'artifact MSI
-      # ----------------------------------------------------------------
-      - name: Upload MSI artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: qelectrotech-windows-msi
-          path: dist\*.msi
-          retention-days: 14
-          if-no-files-found: error
-
-      # ----------------------------------------------------------------
-      # 11. Résumé
-      # ----------------------------------------------------------------
-      - name: Summary
-        if: always()
-        shell: pwsh
-        run: |
-          Write-Host "=== Résumé build MSI ==="
-          Write-Host "Version      : ${{ steps.version.outputs.VERSION_DISPLAY }}"
-          Write-Host "WiX          : v7.0.0"
-          Write-Host "Image runner : ${{ runner.os }} / ${{ runner.arch }}"
-          if (Test-Path "dist\$env:MSI_NAME") {
-            $size = [math]::Round((Get-Item "dist\$env:MSI_NAME").Length / 1MB, 1)
-            Write-Host "MSI          : $env:MSI_NAME ($size MB) ✓"
-          } else {
-            Write-Host "MSI          : ÉCHEC ✗"
-          }
+  </Package>
+</Wix>
