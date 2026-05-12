@@ -370,6 +370,14 @@ jobs:
       id-token: write
 
     steps:
+      - name: Checkout master (for build-aux scripts)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: source
+          sparse-checkout: build-aux/generate-page.py
+          sparse-checkout-cone-mode: false
+
       - name: Download installer artifact
         uses: actions/download-artifact@v4
         with:
@@ -428,7 +436,9 @@ jobs:
           export DATE SHORT REPO SHA="${{ github.sha }}" RUN_URL
           export RUN_NUMBER="${{ github.run_number }}"
           export INSTALLER_URL PORTABLE_URL MSI_URL
-          python3 build-aux/generate-page.py
+          # Write the page generator script to /tmp (build-aux/ not available
+          # in deploy-pages job which only checks out gh-pages branch)
+          python3 source/build-aux/generate-page.py
 
       - name: Add .nojekyll to disable Jekyll processing
         run: touch gh-pages/.nojekyll
