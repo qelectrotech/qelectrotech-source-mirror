@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  QElectroTech.wxs — WiX v7 installer definition
-  Génère un MSI x64 pour QElectroTech (build MSYS2/UCRT64).
+  QElectroTech.wxs - WiX v7 installer definition
+  Generates an x64 MSI for QElectroTech (MSYS2/UCRT64 build).
 
-  Variables passées depuis la ligne de commande wix build :
-    -d FilesDir=<chemin absolu vers artifact\files>
-    -d Version=<version numérique ex. 0.100.1.0>
-    -d ProductVersion=<version lisible ex. 0.100.1-r8770-abc1234_x86_64-win64>
+  Variables passed from the wix build command line:
+    -d FilesDir=<absolute path to artifact\files>
+    -d Version=<numeric version e.g. 0.100.1.0>
+    -d ProductVersion=<display version e.g. 0.100.1-r8770-abc1234_x86_64-win64>
 -->
-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
 
   <Package
     Name="QElectroTech"
     Manufacturer="QElectroTech Team"
-    Version="!(bind.Variable.Version)"
+    Version="$(var.Version)"
     UpgradeCode="A1B2C3D4-E5F6-7890-ABCD-EF1234567890"
     Language="1033"
     Codepage="1252"
     InstallerVersion="500"
     Scope="perMachine">
 
-    <!-- Mise à jour en place : désinstalle l'ancienne version automatiquement -->
+    <!-- In-place upgrade: automatically uninstalls the previous version -->
     <MajorUpgrade
-      DowngradeErrorMessage="Une version plus récente de QElectroTech est déjà installée."
+      DowngradeErrorMessage="A newer version of QElectroTech is already installed."
       Schedule="afterInstallInitialize" />
 
-    <!-- Répertoire d'installation -->
+    <!-- Installation directory -->
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLDIR" Name="QElectroTech" />
     </StandardDirectory>
 
     <!-- ============================================================
-         bin\ complet (exe + toutes les DLLs + sous-dossiers Qt)
-         Files harvest tout le dossier — pas d'attribut Exclude en WiX v7
+         bin\ — full harvest (exe + all DLLs + Qt subdirectories)
     ============================================================ -->
     <ComponentGroup Id="CG_Bin" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\bin\**" />
+      <Files Include="$(var.FilesDir)\bin\**" />
     </ComponentGroup>
 
     <!-- ============================================================
-         Fichiers racine de files\ (LICENSE, bat, reg...)
+         Root files in files\ (LICENSE, bat, reg...)
     ============================================================ -->
     <ComponentGroup Id="CG_Root" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\*" />
+      <Files Include="$(var.FilesDir)\*" />
     </ComponentGroup>
 
     <!-- ============================================================
-         Données applicatives — harvest par dossier
+         Application data — one ComponentGroup per folder
     ============================================================ -->
     <ComponentGroup Id="CG_Elements" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\elements\**" />
+      <Files Include="$(var.FilesDir)\elements\**" />
     </ComponentGroup>
 
     <ComponentGroup Id="CG_Lang" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\lang\**" />
+      <Files Include="$(var.FilesDir)\lang\**" />
     </ComponentGroup>
 
     <ComponentGroup Id="CG_Titleblocks" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\titleblocks\**" />
+      <Files Include="$(var.FilesDir)\titleblocks\**" />
     </ComponentGroup>
 
     <ComponentGroup Id="CG_Examples" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\examples\**" />
+      <Files Include="$(var.FilesDir)\examples\**" />
     </ComponentGroup>
 
     <ComponentGroup Id="CG_Fonts" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\fonts\**" />
+      <Files Include="$(var.FilesDir)\fonts\**" />
     </ComponentGroup>
 
     <ComponentGroup Id="CG_Icons" Directory="INSTALLDIR">
-      <Files Include="!(bind.Variable.FilesDir)\ico\**" />
+      <Files Include="$(var.FilesDir)\ico\**" />
     </ComponentGroup>
 
     <!-- ============================================================
-         Raccourcis bureau + menu Démarrer
+         Desktop + Start Menu shortcuts
     ============================================================ -->
     <ComponentGroup Id="CG_Shortcuts" Directory="INSTALLDIR">
       <Component Id="C_ShortcutDesktop" Guid="F1A2B3C4-D5E6-7890-5678-012345678901">
@@ -105,7 +105,7 @@
     </ComponentGroup>
 
     <!-- ============================================================
-         Association fichier .qet
+         .qet file association
     ============================================================ -->
     <ComponentGroup Id="CG_FileAssoc" Directory="INSTALLDIR">
       <Component Id="C_FileAssoc" Guid="B3C4D5E6-F7A8-9012-7890-234567890123">
@@ -119,12 +119,12 @@
     </ComponentGroup>
 
     <!-- ============================================================
-         Icône pour les raccourcis
+         Icon for shortcuts
     ============================================================ -->
-    <Icon Id="qet.ico" SourceFile="!(bind.Variable.FilesDir)\ico\qelectrotech.ico" />
+    <Icon Id="qet.ico" SourceFile="$(var.FilesDir)\ico\qelectrotech.ico" />
 
     <!-- ============================================================
-         Feature principale (tout inclus)
+         Main feature (everything included)
     ============================================================ -->
     <Feature Id="ProductFeature" Title="QElectroTech" Level="1">
       <ComponentGroupRef Id="CG_Bin" />
@@ -139,14 +139,14 @@
       <ComponentGroupRef Id="CG_FileAssoc" />
     </Feature>
 
-    <!-- UI minimale Windows Installer -->
-    <UIRef Id="WixUI_Minimal" />
+    <!-- Minimal Windows Installer UI (requires xmlns:ui and WixToolset.UI.wixext) -->
+    <ui:WixUI Id="WixUI_Minimal" />
 
-    <!-- Propriétés affichées dans Programmes et fonctionnalités -->
+    <!-- Properties shown in Programs and Features -->
     <Property Id="ARPPRODUCTICON" Value="qet.ico" />
     <Property Id="ARPHELPLINK" Value="https://qelectrotech.org" />
     <Property Id="ARPURLINFOABOUT" Value="https://qelectrotech.org" />
-    <Property Id="ARPCOMMENTS" Value="Logiciel libre de schémas électriques" />
+    <Property Id="ARPCOMMENTS" Value="Free electrical schematic editor" />
 
   </Package>
 </Wix>
