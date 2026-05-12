@@ -243,7 +243,21 @@ jobs:
           if-no-files-found: error
 
       # ----------------------------------------------------------------
-      # 11. Summary
+      # 11. Upload MSI to nightly release
+      #     The nightly release is created/updated by windows-build.yml.
+      #     The MSI is added here so the GitHub Pages can link to it.
+      # ----------------------------------------------------------------
+      - name: Upload MSI to nightly release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: nightly
+          files: dist/*.msi
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ----------------------------------------------------------------
+      # 12. Summary
       # ----------------------------------------------------------------
       - name: Summary
         if: always()
