@@ -136,7 +136,23 @@ jobs:
           Write-Host "FILES_DIR: $filesDir"
 
       # ----------------------------------------------------------------
-      # 7. Build the MSI
+      # 7. Replace Lancer QET.bat with the MSI-specific version
+      #    The portable version uses relative paths suited for the zip.
+      #    The MSI version uses %~dp0 to resolve paths relative to
+      #    the installation directory in Program Files.
+      # ----------------------------------------------------------------
+      - name: Replace Lancer QET.bat for MSI
+        shell: pwsh
+        run: |
+          $bat = "$env:FILES_DIR\Lancer QET.bat"
+          $content = "@echo off`r`nstart `"`" `"%~dp0bin\qelectrotech.exe`" --common-elements-dir=`"%~dp0elements/`" --common-tbt-dir=`"%~dp0titleblocks/`" --lang-dir=`"%~dp0lang/`" -style windowsvista`r`n"
+          [System.IO.File]::WriteAllText($bat, $content, [System.Text.Encoding]::ASCII)
+          Write-Host "Lancer QET.bat replaced for MSI installation."
+          Write-Host "=== Content of new Lancer QET.bat ==="
+          Get-Content $bat
+
+      # ----------------------------------------------------------------
+      # 8. Build the MSI
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -173,7 +189,7 @@ jobs:
           echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
 
       # ----------------------------------------------------------------
-      # 8. Upload the MSI artifact
+      # 9. Upload the MSI artifact
       # ----------------------------------------------------------------
       - name: Upload MSI artifact
         uses: actions/upload-artifact@v4
@@ -184,7 +200,7 @@ jobs:
           if-no-files-found: error
 
       # ----------------------------------------------------------------
-      # 9. Summary
+      # 10. Summary
       # ----------------------------------------------------------------
       - name: Summary
         if: always()
