@@ -539,8 +539,8 @@ jobs:
                   <span class="badge">nightly</span>
                 </div>
                 <div class="warning">
-                  ⚠️ These builds are generated automatically on every commit to <code>master</code>
-                  and may be unstable or incomplete.
+                  ⚠️ This is a development version; it introduces new features you want,
+                  but may cause bugs that have not yet been identified yet. <code>master</code>
                   For production use, download a
                   <a href="https://github.com/$REPO/releases">stable release</a>.
                 </div>
