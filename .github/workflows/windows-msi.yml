@@ -81,7 +81,7 @@ jobs:
       - name: Install WiX v7
         shell: pwsh
         run: |
-          dotnet tool install --global wix --version 7.0.0 --accept-eula
+          dotnet tool install --global wix --version 7.0.0 
           $toolsPath = [System.IO.Path]::Combine($env:USERPROFILE, '.dotnet', 'tools')
           echo $toolsPath >> $env:GITHUB_PATH
           Write-Host "WiX v7 installé."
