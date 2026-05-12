@@ -421,6 +421,21 @@ jobs:
           INSTALLER_URL="https://github.com/$REPO/releases/download/nightly/$EXE_NAME"
           ZIP_NAME=$(ls downloaded/portable/*.zip | xargs -I{} basename {})
           PORTABLE_URL="https://github.com/$REPO/releases/download/nightly/$ZIP_NAME"
+          # MSI — may not exist if windows-msi.yml has not been run yet
+          MSI_NAME=$(gh release view nightly --json assets --jq '.assets[].name' 2>/dev/null \
+            | grep '\.msi$' | head -1 || echo "")
+          if [ -n "$MSI_NAME" ]; then
+            MSI_URL="https://github.com/$REPO/releases/download/nightly/$MSI_NAME"
+            MSI_BLOCK='<a class="btn btn-msi" href="'"$MSI_URL"'">
+                    <span class="btn-icon">⬇</span>
+                    <span class="btn-text">
+                      Windows Installer
+                      <small>.msi — for enterprise / GPO deployment</small>
+                    </span>
+                  </a>'
+          else
+            MSI_BLOCK=''
+          fi
 
           mkdir -p gh-pages
           cat > gh-pages/index.html << HTMLEOF
@@ -512,6 +527,7 @@ jobs:
                 box-shadow: 0 4px 12px rgba(0,0,0,0.15);
               }
               .btn-primary { background: #2b6cb0; color: white; }
+              .btn-msi       { background: #6b46c1; color: white; }
               .btn-secondary { background: #edf2f7; color: #2d3748; }
               .btn-icon { font-size: 1.3em; }
               .btn-text small {
@@ -563,6 +579,7 @@ jobs:
                       <small>.exe — recommended, includes all dependencies</small>
                     </span>
                   </a>
+                  $MSI_BLOCK
                   <a class="btn btn-secondary" href="$PORTABLE_URL">
                     <span class="btn-icon">📦</span>
                     <span class="btn-text">
