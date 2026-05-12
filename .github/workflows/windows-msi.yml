@@ -15,7 +15,7 @@ jobs:
 
     steps:
       # ----------------------------------------------------------------
-      # 1. Checkout (pour récupérer QElectroTech.wxs et CMakeLists.txt)
+      # 1. Checkout (pour récupérer QElectroTech.wxs et les sources)
       # ----------------------------------------------------------------
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
       # ----------------------------------------------------------------
       # 2. Télécharger l'artifact portable du build principal
       #    Nécessite que windows-build.yml uploade un artifact nommé
-      #    "qelectrotech-windows-portable" (nom fixe, voir windows-build.yml)
+      #    "qelectrotech-windows-portable" (nom fixe)
       # ----------------------------------------------------------------
       - name: Download portable artifact
         uses: actions/download-artifact@v4
@@ -81,18 +81,22 @@ jobs:
       - name: Install WiX v7
         shell: pwsh
         run: |
-          dotnet tool install --global wix --version 7.0.0 
+          dotnet tool install --global wix --version 7.0.0
           $toolsPath = [System.IO.Path]::Combine($env:USERPROFILE, '.dotnet', 'tools')
           echo $toolsPath >> $env:GITHUB_PATH
           Write-Host "WiX v7 installé."
 
       # ----------------------------------------------------------------
       # 5. Installer l'extension WixUI
+      #    WIX_ACCEPT_EULA=true est la méthode officielle pour accepter
+      #    la licence OSMF de WiX v7 en environnement CI
       # ----------------------------------------------------------------
       - name: Install WiX UI extension
         shell: pwsh
+        env:
+          WIX_ACCEPT_EULA: true
         run: |
-          wix extension add WixToolset.UI.wixext/7.0.0 --accept-eula
+          wix extension add WixToolset.UI.wixext/7.0.0
           Write-Host "Extension UI installée."
 
       # ----------------------------------------------------------------
@@ -128,8 +132,7 @@ jobs:
           }
           Write-Host "Executable : $($exe.FullName) ($([math]::Round($exe.Length/1MB,1)) MB)"
 
-          # FilesDir = dossier contenant bin\ (soit artifact\files directement,
-          # soit un sous-dossier si l'artifact a une structure imbriquée)
+          # FilesDir = dossier contenant bin\
           $binDir   = $exe.Directory.FullName
           $filesDir = Split-Path $binDir -Parent
 
@@ -141,6 +144,8 @@ jobs:
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
+        env:
+          WIX_ACCEPT_EULA: true
         run: |
           $version    = "${{ steps.version.outputs.VERSION_MSI }}"
           $verDisplay = "${{ steps.version.outputs.VERSION_DISPLAY }}"
@@ -162,7 +167,6 @@ jobs:
             -d "ProductVersion=$verDisplay" `
             -d "FilesDir=$filesDir" `
             -ext WixToolset.UI.wixext `
-            --accept-eula `
             -o "dist\$outputName"
 
           if (-not (Test-Path "dist\$outputName")) {
