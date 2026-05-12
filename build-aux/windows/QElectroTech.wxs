@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  QElectroTech.wxs — WiX v4 installer definition
+  QElectroTech.wxs — WiX v7 installer definition
   Génère un MSI x64 pour QElectroTech (build MSYS2/UCRT64).
 
   Variables passées depuis la ligne de commande wix build :
-    -d FilesDir=<chemin absolu vers nsis_root\files>
+    -d FilesDir=<chemin absolu vers artifact\files>
     -d Version=<version numérique ex. 0.100.1.0>
-    -d ProductVersion=<version lisible ex. 0.100.1+git8754>
+    -d ProductVersion=<version lisible ex. 0.100.1-r8770-abc1234_x86_64-win64>
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
 
@@ -20,18 +20,18 @@
     InstallerVersion="500"
     Scope="perMachine">
 
-    <!-- Permet la mise à jour en place (désinstalle l'ancienne version automatiquement) -->
+    <!-- Mise à jour en place : désinstalle l'ancienne version automatiquement -->
     <MajorUpgrade
       DowngradeErrorMessage="Une version plus récente de QElectroTech est déjà installée."
       Schedule="afterInstallInitialize" />
 
-    <!-- Répertoire d'installation par défaut -->
+    <!-- Répertoire d'installation -->
     <StandardDirectory Id="ProgramFiles64Folder">
       <Directory Id="INSTALLDIR" Name="QElectroTech" />
     </StandardDirectory>
 
     <!-- ============================================================
-         Composants : exe principal
+         Exe principal + bat lanceur
     ============================================================ -->
     <ComponentGroup Id="CG_Exe" Directory="INSTALLDIR">
       <Component Id="C_MainExe" Guid="B1C2D3E4-F5A6-7890-BCDE-F12345678901">
@@ -41,62 +41,9 @@
       </Component>
       <Component Id="C_LauncherBat" Guid="C2D3E4F5-A6B7-8901-CDEF-123456789012">
         <File Id="lancer_qet_bat"
-              Source="!(bind.Variable.FilesDir)\..\Lancer QET.bat"
+              Source="!(bind.Variable.FilesDir)\Lancer QET.bat"
               KeyPath="yes" />
       </Component>
-    </ComponentGroup>
-
-    <!-- ============================================================
-         Composants : DLLs (bin\)
-    ============================================================ -->
-    <ComponentGroup Id="CG_Dlls" Directory="INSTALLDIR">
-      <Component Id="C_Dlls" Guid="D3E4F5A6-B7C8-9012-DEF0-234567890123">
-        <!-- Harvest automatique de tout bin\ sauf l'exe principal -->
-        <Files Include="!(bind.Variable.FilesDir)\bin\**"
-               Exclude="!(bind.Variable.FilesDir)\bin\qelectrotech.exe" />
-      </Component>
-    </ComponentGroup>
-
-    <!-- ============================================================
-         Composants : données applicatives
-    ============================================================ -->
-    <ComponentGroup Id="CG_Elements" Directory="INSTALLDIR">
-      <Component Id="C_Elements" Guid="E4F5A6B7-C8D9-0123-EF01-345678901234">
-        <Files Include="!(bind.Variable.FilesDir)\elements\**" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Lang" Directory="INSTALLDIR">
-      <Component Id="C_Lang" Guid="F5A6B7C8-D9E0-1234-F012-456789012345">
-        <Files Include="!(bind.Variable.FilesDir)\lang\**" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Titleblocks" Directory="INSTALLDIR">
-      <Component Id="C_Titleblocks" Guid="A6B7C8D9-E0F1-2345-0123-567890123456">
-        <Files Include="!(bind.Variable.FilesDir)\titleblocks\**" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Examples" Directory="INSTALLDIR">
-      <Component Id="C_Examples" Guid="B7C8D9E0-F1A2-3456-1234-678901234567">
-        <Files Include="!(bind.Variable.FilesDir)\examples\**" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Fonts" Directory="INSTALLDIR">
-      <Component Id="C_Fonts" Guid="C8D9E0F1-A2B3-4567-2345-789012345678">
-        <Files Include="!(bind.Variable.FilesDir)\fonts\**" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Icons" Directory="INSTALLDIR">
-      <Component Id="C_Icons" Guid="D9E0F1A2-B3C4-5678-3456-890123456789">
-        <Files Include="!(bind.Variable.FilesDir)\ico\**" />
-      </Component>
-    </ComponentGroup>
-
-    <ComponentGroup Id="CG_Misc" Directory="INSTALLDIR">
       <Component Id="C_License" Guid="E0F1A2B3-C4D5-6789-4567-901234567890">
         <File Id="LICENSE"
               Source="!(bind.Variable.FilesDir)\LICENSE"
@@ -105,7 +52,43 @@
     </ComponentGroup>
 
     <!-- ============================================================
-         Raccourcis bureau + menu démarrer
+         DLLs et sous-dossiers de bin\ (harvest automatique)
+         En WiX v7, Files est enfant direct de ComponentGroup
+    ============================================================ -->
+    <ComponentGroup Id="CG_Bin" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\bin\**"
+             Exclude="!(bind.Variable.FilesDir)\bin\qelectrotech.exe" />
+    </ComponentGroup>
+
+    <!-- ============================================================
+         Données applicatives — harvest automatique par dossier
+    ============================================================ -->
+    <ComponentGroup Id="CG_Elements" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\elements\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="CG_Lang" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\lang\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="CG_Titleblocks" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\titleblocks\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="CG_Examples" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\examples\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="CG_Fonts" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\fonts\**" />
+    </ComponentGroup>
+
+    <ComponentGroup Id="CG_Icons" Directory="INSTALLDIR">
+      <Files Include="!(bind.Variable.FilesDir)\ico\**" />
+    </ComponentGroup>
+
+    <!-- ============================================================
+         Raccourcis bureau + menu Démarrer
     ============================================================ -->
     <ComponentGroup Id="CG_Shortcuts" Directory="INSTALLDIR">
       <Component Id="C_ShortcutDesktop" Guid="F1A2B3C4-D5E6-7890-5678-012345678901">
@@ -136,7 +119,9 @@
       </Component>
     </ComponentGroup>
 
-    <!-- Association fichier .qet -->
+    <!-- ============================================================
+         Association fichier .qet
+    ============================================================ -->
     <ComponentGroup Id="CG_FileAssoc" Directory="INSTALLDIR">
       <Component Id="C_FileAssoc" Guid="B3C4D5E6-F7A8-9012-7890-234567890123">
         <RegistryValue Root="HKCR" Key=".qet" Type="string" Value="QElectroTech.Document" KeyPath="yes" />
@@ -149,7 +134,7 @@
     </ComponentGroup>
 
     <!-- ============================================================
-         Icône (pour les raccourcis)
+         Icône pour les raccourcis
     ============================================================ -->
     <Icon Id="qet.ico" SourceFile="!(bind.Variable.FilesDir)\ico\qelectrotech.ico" />
 
@@ -158,19 +143,18 @@
     ============================================================ -->
     <Feature Id="ProductFeature" Title="QElectroTech" Level="1">
       <ComponentGroupRef Id="CG_Exe" />
-      <ComponentGroupRef Id="CG_Dlls" />
+      <ComponentGroupRef Id="CG_Bin" />
       <ComponentGroupRef Id="CG_Elements" />
       <ComponentGroupRef Id="CG_Lang" />
       <ComponentGroupRef Id="CG_Titleblocks" />
       <ComponentGroupRef Id="CG_Examples" />
       <ComponentGroupRef Id="CG_Fonts" />
       <ComponentGroupRef Id="CG_Icons" />
-      <ComponentGroupRef Id="CG_Misc" />
       <ComponentGroupRef Id="CG_Shortcuts" />
       <ComponentGroupRef Id="CG_FileAssoc" />
     </Feature>
 
-    <!-- UI standard Windows Installer -->
+    <!-- UI minimale Windows Installer -->
     <UIRef Id="WixUI_Minimal" />
 
     <!-- Propriétés affichées dans Programmes et fonctionnalités -->
