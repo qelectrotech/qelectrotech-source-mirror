@@ -349,6 +349,13 @@ jobs:
           path: dist/Installer_*.exe
           retention-days: 14
 
+      - name: Upload portable (nom fixe pour le workflow MSI)
+        uses: actions/upload-artifact@v4
+        with:
+          name: qelectrotech-windows-portable
+          path: nsis_root/files/
+          retention-days: 14
+
   # ---------------------------------------------------------------------------
   # Job 2 : Publie une release nightly + page GitHub Pages
   # Ne tourne que sur push master (pas sur les PRs)
