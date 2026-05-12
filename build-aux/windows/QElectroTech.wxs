@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   QElectroTech.wxs - WiX v7 installer definition
-  Generates an x64 MSI for QElectroTech (MSYS2/UCRT64 build).
+  Generates a self-contained x64 MSI for QElectroTech (MSYS2/UCRT64 build).
 
   Variables passed from the wix build command line:
     -d FilesDir=<absolute path to artifact\files>
@@ -20,6 +20,9 @@
     Codepage="1252"
     InstallerVersion="500"
     Scope="perMachine">
+
+    <!-- Embed all cabinet files inside the MSI (self-contained installer) -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <!-- In-place upgrade: automatically uninstalls the previous version -->
     <MajorUpgrade
