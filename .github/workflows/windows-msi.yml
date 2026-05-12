@@ -136,7 +136,47 @@ jobs:
           Write-Host "FILES_DIR: $filesDir"
 
       # ----------------------------------------------------------------
-      # 7. Replace Lancer QET.bat with the MSI-specific version
+      # 7. Convert LICENSE (GPL-2) to RTF for the WixUI licence screen
+      #    RTF is the only format accepted by Windows Installer.
+      #    The conversion wraps plain text lines in basic RTF markup.
+      # ----------------------------------------------------------------
+      - name: Convert LICENSE to RTF
+        shell: pwsh
+        run: |
+          $licSrc  = "LICENSE"
+          $licRtf  = "$env:TEMP\License.rtf"
+
+          if (-not (Test-Path $licSrc)) {
+            Write-Error "LICENSE file not found in repository root"
+            exit 1
+          }
+
+          $lines = Get-Content $licSrc -Encoding UTF8
+
+          # RTF header — Courier New, 9pt, black
+          $rtf = New-Object System.Text.StringBuilder
+          [void]$rtf.AppendLine('{\rtf1\ansi\ansicpg1252\deff0')
+          [void]$rtf.AppendLine('{\fonttbl{\f0\fmodern\fprq1\fcharset0 Courier New;}}')
+          [void]$rtf.AppendLine('{\colortbl;\red0\green0\blue0;}')
+          [void]$rtf.AppendLine('\f0\fs18\cf1')
+
+          foreach ($line in $lines) {
+            # Escape RTF special characters
+            $escaped = $line `
+              -replace '\\', '\\\\' `
+              -replace '\{', '\{' `
+              -replace '\}', '\}'
+            [void]$rtf.AppendLine("$escaped\par")
+          }
+
+          [void]$rtf.AppendLine('}')
+
+          [System.IO.File]::WriteAllText($licRtf, $rtf.ToString(), [System.Text.Encoding]::ASCII)
+          echo "LICENSE_RTF=$licRtf" >> $env:GITHUB_ENV
+          Write-Host "License.rtf generated: $licRtf ($([math]::Round((Get-Item $licRtf).Length/1KB,1)) KB)"
+
+      # ----------------------------------------------------------------
+      # 8. Replace Lancer QET.bat with the MSI-specific version
       #    The portable version uses relative paths suited for the zip.
       #    The MSI version uses %~dp0 to resolve paths relative to
       #    the installation directory in Program Files.
@@ -152,7 +192,7 @@ jobs:
           Get-Content $bat
 
       # ----------------------------------------------------------------
-      # 8. Build the MSI
+      # 9. Build the MSI
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -160,6 +200,7 @@ jobs:
           $version    = "${{ steps.version.outputs.VERSION_MSI }}"
           $verDisplay = "${{ steps.version.outputs.VERSION_DISPLAY }}"
           $filesDir   = $env:FILES_DIR
+          $licRtf     = $env:LICENSE_RTF
           $wxs        = "build-aux\windows\QElectroTech.wxs"
           $outputName = "QElectroTech-${verDisplay}.msi"
 
@@ -169,6 +210,7 @@ jobs:
           Write-Host "  WXS         : $wxs"
           Write-Host "  Version     : $version"
           Write-Host "  FilesDir    : $filesDir"
+          Write-Host "  LicenseRtf  : $licRtf"
           Write-Host "  Output      : dist\$outputName"
 
           wix build $wxs `
@@ -176,6 +218,7 @@ jobs:
             -d "Version=$version" `
             -d "ProductVersion=$verDisplay" `
             -d "FilesDir=$filesDir" `
+            -d "LicenseRtf=$licRtf" `
             -ext WixToolset.UI.wixext `
             -o "dist\$outputName"
 
@@ -189,7 +232,7 @@ jobs:
           echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
 
       # ----------------------------------------------------------------
-      # 9. Upload the MSI artifact
+      # 10. Upload the MSI artifact
       # ----------------------------------------------------------------
       - name: Upload MSI artifact
         uses: actions/upload-artifact@v4
@@ -200,7 +243,7 @@ jobs:
           if-no-files-found: error
 
       # ----------------------------------------------------------------
-      # 10. Summary
+      # 11. Summary
       # ----------------------------------------------------------------
       - name: Summary
         if: always()
