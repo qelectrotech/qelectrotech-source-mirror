@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
-
+#include <QCoreApplication>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
@@ -47,7 +47,7 @@
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
 #include "wiringlistexport.h"
 #include "ui/terminalnumberingdialog.h"
-
+#include <QDebug>
 #ifdef BUILD_WITHOUT_KF5
 #else
 #	include <KAutoSaveFile>
@@ -176,12 +176,14 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, SIGNAL(requestForNewDiagram               (QETProject *)), this, SLOT(addDiagramToProject(QETProject *)));
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramDeletion          (Diagram *)), this, SLOT(removeDiagram(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveUp            (Diagram *)), this, SLOT(moveDiagramUp(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveDown          (Diagram *)), this, SLOT(moveDiagramDown(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveUpTop         (Diagram *)), this, SLOT(moveDiagramUpTop(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveUpx10         (Diagram *)), this, SLOT(moveDiagramUpx10(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramMoveDownx10       (Diagram *)), this, SLOT(moveDiagramDownx10(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramsDeletion         (const QList<Diagram *> &)), this, SLOT(removeDiagrams(const QList<Diagram *> &)));
+	connect(pa, SIGNAL(requestForDiagramMoveUp			  (const QList<Diagram *> &)), this, SLOT(moveDiagramUp(const QList<Diagram *>&)));
+	connect(pa, SIGNAL(requestForDiagramMoveDown		  (const QList<Diagram *> &)), this, SLOT(moveDiagramDown(const QList<Diagram *>&)));
+	connect(pa, SIGNAL(requestForDiagramMoveUpTop		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpTop(const QList<Diagram *>&)));
+	connect(pa, SIGNAL(requestForDiagramMoveUpx10		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpx10(const QList<Diagram *>&)));
+	connect(pa, SIGNAL(requestForDiagramMoveDownx10		  (const QList<Diagram *> &)), this, SLOT(moveDiagramDownx10(const QList<Diagram *>&)));
+	connect(pa, SIGNAL(requestForDiagramMoveUpx100		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpx100(const QList<Diagram *>&)));
+	connect(pa, SIGNAL(requestForDiagramMoveDownx100	  (const QList<Diagram *> &)), this, SLOT(moveDiagramDownx100(const QList<Diagram *>&)));
 }
 
 /**
@@ -2183,126 +2185,182 @@ void QETDiagramEditor::addDiagramToProject(QETProject *project)
 		project_view->project()->addNewDiagram();
 	}
 }
+/**
+ * @brief QETDiagramEditor::removeDiagram
+ * Wrapper für einzelne Diagramme, um Abwärtskompatibilität zu erhalten.
+ */
+void QETDiagramEditor::removeDiagram(Diagram *diagram)
+{
+	if (!diagram) return;
+	QList<Diagram *> list;
+	list << diagram;
+	removeDiagrams(list);
+}
+
+/**
+ * @brief QETDiagramEditor::removeDiagrams
+ * Deletes a list of folios with a single query.
+ */
+void QETDiagramEditor::removeDiagrams(const QList<Diagram *> &diagrams)
+{
+	if (diagrams.isEmpty()) return;
+
+	if (diagrams.count() == 1) {
+		QMessageBox::StandardButton reply;
+		reply = QMessageBox::question(this, tr("Supprimer le folio"),
+									  tr("Êtes-vous sûr de vouloir supprimer ce folio ?"),
+									  QMessageBox::Yes | QMessageBox::No);
+		if (reply == QMessageBox::No) return;
+	} else {
+		QMessageBox::StandardButton reply;
+		reply = QMessageBox::question(this, tr("Supprimer les folios"),
+									  tr("Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?").arg(diagrams.count()),
+									  QMessageBox::Yes | QMessageBox::No);
+		if (reply == QMessageBox::No) return;
+	}
+
+	ProjectView *project_view = nullptr;
+	if (QETProject *diagram_project = diagrams.first()->project()) {
+		project_view = findProject(diagram_project);
+	}
+
+	if (project_view) project_view->setUpdatesEnabled(false);
+	if (pa) pa->setUpdatesEnabled(false);
+
+	foreach (Diagram *diagram, diagrams) {
+		removeDiagramSilent(diagram);
+	}
+
+	if (pa) pa->setUpdatesEnabled(true);
+	if (project_view) project_view->setUpdatesEnabled(true);
+
+	emit syncElementsPanel();
+}
 
 /**
 	Supprime un schema de son projet
 	@param diagram Schema a supprimer
 */
-void QETDiagramEditor::removeDiagram(Diagram *diagram)
+void QETDiagramEditor::removeDiagramSilent(Diagram *diagram)
 {
 	if (!diagram) return;
 
-	// recupere le projet contenant le schema
 	if (QETProject *diagram_project = diagram -> project()) {
-		// recupere la vue sur ce projet
 		if (ProjectView *project_view = findProject(diagram_project)) {
-
-			// affiche le schema en question
-			project_view -> showDiagram(diagram);
 
 			// supprime le schema
-			project_view -> removeDiagram(diagram);
+			project_view -> removeDiagram(diagram, true);
+		}
+	}
+}
+void QETDiagramEditor::moveDiagramUp(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Forward loop for moving up
+				for (int i = 0; i < safeDiagrams.size(); ++i) {
+					project_view->moveDiagramUp(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
 		}
 	}
 }
 
-/**
-	Change l'ordre des schemas d'un projet, en decalant le schema vers le haut /
-	la gauche
-	@param diagram Schema a decaler vers le haut / la gauche
-*/
-void QETDiagramEditor::moveDiagramUp(Diagram *diagram)
-{
-	if (!diagram) return;
-
-	// recupere le projet contenant le schema
-	if (QETProject *diagram_project = diagram -> project()) {
-		if (diagram_project -> isReadOnly()) return;
-
-		// recupere la vue sur ce projet
-		if (ProjectView *project_view = findProject(diagram_project)) {
-			project_view -> moveDiagramUp(diagram);
+void QETDiagramEditor::moveDiagramDown(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Backward loop for moving down
+				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
+					project_view->moveDiagramDown(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
 		}
 	}
 }
 
-/**
-	Change l'ordre des schemas d'un projet, en decalant le schema vers le bas /
-	la droite
-	@param diagram Schema a decaler vers le bas / la droite
-*/
-void QETDiagramEditor::moveDiagramDown(Diagram *diagram)
-{
-	if (!diagram) return;
-
-	// recupere le projet contenant le schema
-	if (QETProject *diagram_project = diagram -> project()) {
-		if (diagram_project -> isReadOnly()) return;
-
-		// recupere la vue sur ce projet
-		if (ProjectView *project_view = findProject(diagram_project)) {
-			project_view -> moveDiagramDown(diagram);
+void QETDiagramEditor::moveDiagramUpTop(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Backward loop to preserve relative order of the selected items when moving to top
+				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
+					project_view->moveDiagramUpTop(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
 		}
 	}
 }
 
-/**
-	Change l'ordre des schemas d'un projet, en decalant le schema vers le haut /
-	la gauche en position 0
-	@param diagram Schema a decaler vers le haut / la gauche en position 0
-*/
-void QETDiagramEditor::moveDiagramUpTop(Diagram *diagram)
-{
-	if (!diagram) return;
-
-	// recupere le projet contenant le schema
-	if (QETProject *diagram_project = diagram -> project()) {
-		if (diagram_project -> isReadOnly()) return;
-
-		// recupere la vue sur ce projet
-		if (ProjectView *project_view = findProject(diagram_project)) {
-			project_view -> moveDiagramUpTop(diagram);
+void QETDiagramEditor::moveDiagramUpx10(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Forward loop for moving up
+				for (int i = 0; i < safeDiagrams.size(); ++i) {
+					project_view->moveDiagramUpx10(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
 		}
 	}
 }
 
-
-/**
-	Change l'ordre des schemas d'un projet, en decalant le schema vers le haut /
-	la gauche x10
-	@param diagram Schema a decaler vers le haut / la gauche x10
-*/
-void QETDiagramEditor::moveDiagramUpx10(Diagram *diagram)
-{
-	if (!diagram) return;
-
-	// recupere le projet contenant le schema
-	if (QETProject *diagram_project = diagram -> project()) {
-		if (diagram_project -> isReadOnly()) return;
-
-		// recupere la vue sur ce projet
-		if (ProjectView *project_view = findProject(diagram_project)) {
-			project_view -> moveDiagramUpx10(diagram);
+void QETDiagramEditor::moveDiagramDownx10(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Backward loop for moving down
+				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
+					project_view->moveDiagramDownx10(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
 		}
 	}
 }
 
-/**
-	Change l'ordre des schemas d'un projet, en decalant le schema vers le bas /
-	la droite x10
-	@param diagram Schema a decaler vers le bas / la droite x10
-*/
-void QETDiagramEditor::moveDiagramDownx10(Diagram *diagram)
-{
-	if (!diagram) return;
+void QETDiagramEditor::moveDiagramUpx100(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Forward loop for moving up
+				for (int i = 0; i < safeDiagrams.size(); ++i) {
+					project_view->moveDiagramUpx100(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
+		}
+	}
+}
 
-	// recupere le projet contenant le schema
-	if (QETProject *diagram_project = diagram -> project()) {
-		if (diagram_project -> isReadOnly()) return;
-
-		// recupere la vue sur ce projet
-		if (ProjectView *project_view = findProject(diagram_project)) {
-			project_view -> moveDiagramDownx10(diagram);
+void QETDiagramEditor::moveDiagramDownx100(const QList<Diagram *> &diagrams) {
+	if (diagrams.isEmpty()) return;
+	QList<Diagram *> safeDiagrams = diagrams;
+	if (QETProject *diagram_project = safeDiagrams.first()->project()) {
+		if (!diagram_project->isReadOnly()) {
+			if (ProjectView *project_view = findProject(diagram_project)) {
+				// Backward loop for moving down
+				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
+					project_view->moveDiagramDownx100(safeDiagrams.at(i));
+					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
+				}
+			}
 		}
 	}
 }

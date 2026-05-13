@@ -49,6 +49,7 @@ class ElementsPanel : public GenericPanel {
 	// methods used to get what is represented by a particular visual item
 	QString dirPathForItem(QTreeWidgetItem *);
 	QString filePathForItem(QTreeWidgetItem *);
+	QList<Diagram *> selectedDiagrams() const;
 	
 	signals:
 	void requestForProject(QETProject *);

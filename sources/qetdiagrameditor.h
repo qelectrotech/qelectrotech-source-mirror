@@ -138,12 +138,15 @@ class QETDiagramEditor : public QETMainWindow
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
 		void removeDiagram(Diagram *);
+		void removeDiagrams(const QList<Diagram *> &diagrams);
 		void removeDiagramFromProject();
-		void moveDiagramUp(Diagram *);
-		void moveDiagramDown(Diagram *);
-		void moveDiagramUpTop(Diagram *);
-		void moveDiagramUpx10(Diagram *);
-		void moveDiagramDownx10(Diagram *);
+		void moveDiagramUp(const QList<Diagram *> &diagrams);
+		void moveDiagramDown(const QList<Diagram *> &diagrams);
+		void moveDiagramUpTop(const QList<Diagram *> &diagrams);
+		void moveDiagramUpx10(const QList<Diagram *> &diagrams);
+		void moveDiagramDownx10(const QList<Diagram *> &diagrams);
+		void moveDiagramUpx100(const QList<Diagram *> &diagrams);
+		void moveDiagramDownx100(const QList<Diagram *> &diagrams);
 		void reloadOldElementPanel();
 		void diagramWasAdded(DiagramView *);
 		void findElementInPanel(const ElementsLocation &);
@@ -221,6 +224,8 @@ class QETDiagramEditor : public QETMainWindow
 		*m_find = nullptr;
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
+
+		void removeDiagramSilent(Diagram *diagram);
 
 		QMdiArea m_workspace;
 		QSignalMapper windowMapper;

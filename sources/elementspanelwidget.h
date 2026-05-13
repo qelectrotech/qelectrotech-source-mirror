@@ -69,13 +69,14 @@ class ElementsPanelWidget : public QWidget {
 	void requestForProjectPropertiesEdition(QETProject *);
 	void requestForDiagramPropertiesEdition(Diagram *);
 	void requestForDiagramDeletion(Diagram *);
-	void requestForDiagramMoveUp(Diagram *);
-	void requestForDiagramMoveDown(Diagram *);
-	void requestForDiagramMoveUpTop(Diagram *);
-	void requestForDiagramMoveUpx10(Diagram *);
-	void requestForDiagramMoveUpx100(Diagram *);
-	void requestForDiagramMoveDownx10(Diagram *);
-	void requestForDiagramMoveDownx100(Diagram *);
+	void requestForDiagramsDeletion(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveUp(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveDown(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveUpTop(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveUpx10(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveUpx100(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveDownx10(const QList<Diagram *> &diagrams);
+	void requestForDiagramMoveDownx100(const QList<Diagram *> &diagrams);
 	
 	public slots:
 	void openDirectoryForSelectedItem();

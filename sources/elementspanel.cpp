@@ -22,6 +22,7 @@
 #include "qeticons.h"
 #include "qetproject.h"
 #include "titleblock/templatescollection.h"
+#include <QApplication>
 
 /*
 	Lorsque le flag ENABLE_PANEL_DND_CHECKS est defini, le panel d'elements
@@ -42,7 +43,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	first_reload_(true)
 {
 	// selection unique
-	setSelectionMode(QAbstractItemView::SingleSelection);
+	setSelectionMode(QAbstractItemView::ExtendedSelection);
 	setColumnCount(1);
 	setExpandsOnDoubleClick(true);
 	setMouseTracking(true);
@@ -299,11 +300,14 @@ void ElementsPanel::reload()
 }
 
 /**
-	@brief ElementsPanel::slot_clicked
-	handle click on qtwi
-	@param qtwi item that was clickerd on
-*/
+ * @brief ElementsPanel::slot_clicked
+ * handle click on qtwi
+ * @param qtwi item that was clickerd on
+ */
 void ElementsPanel::slot_clicked(QTreeWidgetItem *clickedItem, int) {
+	if (QApplication::keyboardModifiers() & (Qt::ShiftModifier | Qt::ControlModifier)) {
+		return;
+	}
 
 	requestForItem(clickedItem);
 }
@@ -552,4 +556,21 @@ void ElementsPanel::keyPressEvent(QKeyEvent *event)
 	default:
 		QTreeView::keyPressEvent(event);
 	}
+}
+
+/**
+ * @brief ElementsPanel::selectedDiagrams
+ * @return A list of all currently selected diagrams in the panel.
+ */
+QList<Diagram *> ElementsPanel::selectedDiagrams() const
+{
+	QList<Diagram *> diagrams;
+	foreach (QTreeWidgetItem *item, selectedItems()) {
+		if (item->type() == QET::Diagram) {
+			if (Diagram *diagram = valueForItem<Diagram *>(item)) {
+				diagrams.append(diagram);
+			}
+		}
+	}
+	return diagrams;
 }

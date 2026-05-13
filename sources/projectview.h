@@ -104,8 +104,8 @@ class ProjectView : public QWidget
 		void changeLastTab();
 
 	public slots:
-		void removeDiagram(DiagramView *);
-		void removeDiagram(Diagram *);
+		void removeDiagram(DiagramView *diagram_view, bool silent = false);
+		void removeDiagram(Diagram *diagram, bool silent = false);
 		void showDiagram(DiagramView *);
 		void showDiagram(Diagram *);
 		void editProjectProperties();
@@ -122,6 +122,10 @@ class ProjectView : public QWidget
 		void moveDiagramUpx10(Diagram *);
 		void moveDiagramDownx10(DiagramView *);
 		void moveDiagramDownx10(Diagram *);
+		void moveDiagramUpx100(DiagramView *);
+		void moveDiagramUpx100(Diagram *);
+		void moveDiagramDownx100(DiagramView *);
+		void moveDiagramDownx100(Diagram *);
 		void exportProject();
 		QETResult save();
 		QETResult saveAs();
