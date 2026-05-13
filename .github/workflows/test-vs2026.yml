@@ -69,7 +69,13 @@ jobs:
             -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB"
+            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DBUILD_TESTING=OFF \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
+            -DSQLite3_INCLUDE_DIR=/ucrt64/include \
+            -DSQLite3_LIBRARY=/ucrt64/lib/libsqlite3.dll.a \
 
       - name: Build
         shell: msys2 {0}
