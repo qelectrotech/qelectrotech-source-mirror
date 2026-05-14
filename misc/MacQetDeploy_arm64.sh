@@ -85,7 +85,6 @@ HEAD=$(($A+473))
 
 
 VERSION=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
-#VERSION=$(cat sources/qetversion.cpp | grep "return QVersionNumber{ 0, "| head -n 1| cut -c32-40| sed -e 's/,/./g' -e 's/ //g')   #Find major, minor, and micro version numbers in sources/qetversion.cp
 
 # Tarball de la dernière revision déjà créé
 if [ -e "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip" ] ; then
@@ -108,7 +107,7 @@ echo
 echo "______________________________________________________________"
 echo "Run make install:"
 
-# pour effacer l’ancienne compilation
+# pour effacer l'ancienne compilation
 if [ -d $BUNDLE ] ; then
     echo "Removing hold bundle..."
     rm -rf $BUNDLE
@@ -173,7 +172,6 @@ if [ ! -d $BUNDLE ] ; then
     echo "ERROR: cannot find application bundle \"$BUNDLE\" in current directory"
     exit
 fi
-#~/Qt/5.5/clang_64/bin/macdeployqt $BUNDLE
 macdeployqt $BUNDLE
 
 ### add file missing #######################################
@@ -198,13 +196,11 @@ LANG_DIR="${current_dir}/lang1/"
 
 if [ -d "${QET_ELMT_DIR}" ]; then
     echo "Copying add elements in the bundle..."
-    #mkdir $BUNDLE/Contents/Resources/elements
     cp -R ${QET_ELMT_DIR} $BUNDLE/Contents/Resources/elements
 fi
 
 if [ -d "${QET_TBT_DIR}" ]; then
     echo "Copying titleblocks in the bundle..."
-    #mkdir $BUNDLE/Contents/Resources/titleblocks
     cp -R ${QET_TBT_DIR} $BUNDLE/Contents/Resources/titleblocks
 fi
 
@@ -217,21 +213,18 @@ fi
 if [ -d "${LANG_DIR}" ]; then
    echo "Copying translations in the bundle... "
    cp ${current_dir}/lang1/*.qm $BUNDLE/Contents/Resources/lang
-
 fi
 
 if [ -d "${QET_EXAMPLES_DIR}" ]; then
    echo "Copying examples in the bundle... "
    mkdir $BUNDLE/Contents/Resources/examples
    cp ${current_dir}/examples/*.qet $BUNDLE/Contents/Resources/examples
-
 fi
 
 if [ -d "${QET_FONTS_DIR}" ]; then
    echo "Copying fonts in the bundle... "
    mkdir $BUNDLE/Contents/Resources/fonts
    cp ${current_dir}/fonts/*.ttf $BUNDLE/Contents/Resources/fonts
-
 fi
 
 if [ -d "${QET_LICENSES_DIR}" ]; then
@@ -241,11 +234,12 @@ if [ -d "${QET_LICENSES_DIR}" ]; then
 fi
 
 codesign  --force --deep --sign --timestamp -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" --options=runtime $BUNDLE
-### create zip tarball ###############################################
+
+### create zip tarball for notarization ###############################################
 
 echo
 echo "______________________________________________________________"
-echo "Create zip tarball:"
+echo "Create zip tarball for notarization:"
 
 /usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
 
@@ -257,67 +251,44 @@ echo
 echo "______________________________________________________________"
 echo "Notarize zip tarball:"
 
-xcrun notarytool submit build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip --keychain-profile "org.qelectrotech" --wait 
+xcrun notarytool submit "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip" --keychain-profile "org.qelectrotech" --wait 
 else
 echo  -e "\033[1;33mExit.\033[m"
-
 fi
+
+### Clean up zip used for notarization ########################################
+echo 'Cleaning up notarization zip...'
+rm "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+
+### Staple the notarization ticket to the .app ################################
+echo  -e "\033[1;31mWould you like to staple the app MacOS packages "${APPNAME}"-"$VERSION"-"r$HEAD", n/Y?.\033[m"
+read a
+if [[ $a == "Y" || $a == "y" ]]; then
+xcrun stapler staple -v $BUNDLE
+else
+echo  -e "\033[1;33mExit.\033[m"
+fi
+
+### Re-create final zip tarball (without --sequesterRsrc so Gatekeeper works with Chrome) ###
+echo
+echo "______________________________________________________________"
+echo "Re-create final zip tarball (stapled, Gatekeeper-compatible):"
+
+# Do NOT use --sequesterRsrc: it breaks extended attributes extraction
+# in Chrome / Archive Utility, causing Gatekeeper to block the app.
+# ditto without --sequesterRsrc preserves the staple correctly.
+/usr/bin/ditto -c -k --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
+
+### Clean up bundle #######################################################
+echo 'Cleaning up bundle...'
+rm -rf $BUNDLE
 
 ### The end, process is done ##########################################
 
 echo
 echo "______________________________________________________________"
 echo "The process of creating deployable application zip is done."
-echo The disque image is in the folder \'build-aux/mac-osx\'.
-# Affiche les mise à jour depuis l'ancienne revision 
-#if [ ! $(($HEAD - $revAv)) -eq 0 ] ; then
-#    echo
-#    echo "There are new updates. This numero of revision is $HEAD."
- #   svn log -l $(($HEAD - $revAv))
-#else
- #   echo
-#    echo "There are not new updates. This numero of revision is $HEAD."
-# fi
-# echo
-
-# La version en local n'est pas conforme à la dernière version svn
-# svnversion | grep -q '[MS:]' ; if [ $? -eq 0 ] ; then 
-#     echo Please note that the latest \local version is $(svnversion).
-#     echo This is not the same version as the deposit. 
-#     echo You can use \'svn diff\' to see the differences. 
-#     echo And use \'svn revert \<fichier\>\' to delete the difference. 
-#     echo To go back, you can use svn update -r 360 
-#     echo to go to revision number 360.
-#     echo
-#fi 
-
-# Clean up disk folder
-echo 'Cleaning up... '
-rm "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
-
-# staple the app
-echo  -e "\033[1;31mWould you like to  staple the app MacOS packages "${APPNAME}"-"$VERSION"-"r$HEAD", n/Y?.\033[m"
-read a
-if [[ $a == "Y" || $a == "y" ]]; then
-xcrun stapler staple -v $BUNDLE
-else
-echo  -e "\033[1;33mExit.\033[m"
-
-fi
-
-
-echo
-echo "______________________________________________________________"
-echo "Re Create zip tarball:"
-
-#/usr/bin/ditto -c -k --sequesterRsrc --keepParent $BUNDLE "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip"
-cd "$(dirname $BUNDLE)" && zip -r --symlinks "build-aux/mac-osx/${APPNAME}-$VERSION-r$HEAD-arm64.zip" "$BUNDLE" && cd -
-
-
-# Clean up disk folder
-echo 'Cleaning up... '
-rm -rf $BUNDLE
-
+echo "The zip is in the folder 'build-aux/mac-osx'."
 
 #rsync to TF DMG builds
 echo  -e "\033[1;31mWould you like to upload MacOS packages "${APPNAME}"-"$VERSION"-"r$HEAD-arm64.zip", n/Y?.\033[m"
@@ -329,10 +300,7 @@ if [ $? != 0 ]; then
 {
 echo "RSYNC ERROR: problem syncing ${APPNAME}-$VERSION-r$HEAD-arm64.zip"
 rsync -e ssh -av --delete-after --no-owner --no-g --chmod=g+w --progress --exclude='.DS_Store' /Users/laurent/MAC_OS_X/ server:download.qelectrotech.org/qet/builds/MAC_OS_X/arm64/
-
 } fi
-
 else
 echo  -e "\033[1;33mExit.\033[m"
-
 fi
