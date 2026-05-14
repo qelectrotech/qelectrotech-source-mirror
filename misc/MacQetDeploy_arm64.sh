@@ -25,6 +25,7 @@ export DEVELOPER_DIR=/Applications/Xcode_14.01.app/Contents/Developer
 APPNAME='qelectrotech'
 BUNDLE=$APPNAME.app
 APPBIN="$BUNDLE/Contents/MacOS/$APPNAME"
+IDENTITY="Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)"
 
 # Script location
 current_dir=$(dirname "$0")
@@ -222,15 +223,41 @@ if [ -d "${QET_LICENSES_DIR}" ]; then
     cp -R -L ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
 fi
 
-### Sign the bundle #################################################
+### Sign the bundle (without --deep, component by component) ########
+# --deep is deprecated and can produce invalid signatures on nested
+# binaries. We sign frameworks and plugins first, then the bundle.
 
 echo
 echo "______________________________________________________________"
-echo "Code signing bundle:"
+echo "Code signing bundle (component by component):"
 
-codesign --force --deep --sign --timestamp \
-    -s "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" \
-    --options=runtime $BUNDLE
+# Sign frameworks
+find "$BUNDLE/Contents/Frameworks" -name "*.framework" -prune | while read fw; do
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$fw"
+done
+
+# Sign plugins (.dylib and .so)
+find "$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" \) | while read lib; do
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
+done
+
+# Sign remaining dylibs at bundle root level
+find "$BUNDLE/Contents/MacOS" -name "*.dylib" | while read lib; do
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
+done
+
+# Sign the bundle itself last
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$BUNDLE"
+
+# Verify signature before proceeding
+echo
+echo "Verifying bundle signature..."
+codesign --verify --deep --strict --verbose=2 "$BUNDLE"
+if [ $? -ne 0 ]; then
+    echo "ERROR: bundle signature verification failed, aborting."
+    exit 1
+fi
+echo "Bundle signature OK."
 
 ### Create zip for notarization only ################################
 # This ZIP is temporary — used only to submit to notarytool.
@@ -241,7 +268,7 @@ echo "______________________________________________________________"
 echo "Create temporary zip for notarization:"
 
 NOTARIZE_ZIP="/tmp/${APPNAME}-$VERSION-r$HEAD-arm64-notarize.zip"
-/usr/bin/ditto -c -k --keepParent $BUNDLE "$NOTARIZE_ZIP"
+/usr/bin/ditto -c -k --keepParent "$BUNDLE" "$NOTARIZE_ZIP"
 
 ### Notarize ########################################################
 
@@ -252,6 +279,11 @@ if [[ $a == "Y" || $a == "y" ]]; then
     echo "______________________________________________________________"
     echo "Notarizing:"
     xcrun notarytool submit "$NOTARIZE_ZIP" --keychain-profile "org.qelectrotech" --wait
+    if [ $? -ne 0 ]; then
+        echo "ERROR: notarization failed. Check the log with:"
+        echo "  xcrun notarytool log <submission-id> --keychain-profile org.qelectrotech"
+        exit 1
+    fi
 else
     echo -e "\033[1;33mExit.\033[m"
 fi
@@ -265,11 +297,10 @@ rm -f "$NOTARIZE_ZIP"
 echo -e "\033[1;31mWould you like to staple the app \"${APPNAME}-${VERSION}-r${HEAD}\", n/Y?\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
-    xcrun stapler staple -v $BUNDLE
-    # Verify staple is correctly applied
+    xcrun stapler staple -v "$BUNDLE"
     echo "Verifying staple..."
-    xcrun stapler validate -v $BUNDLE
-    spctl -a -vv $BUNDLE
+    xcrun stapler validate -v "$BUNDLE"
+    spctl -a -vv "$BUNDLE"
 else
     echo -e "\033[1;33mExit.\033[m"
 fi
@@ -277,9 +308,10 @@ fi
 ### Create final DMG ################################################
 # A DMG is used instead of a ZIP because it correctly preserves the
 # Gatekeeper staple when downloaded via Chrome or any other browser.
-# ZIP extraction via Archive Utility can strip extended attributes,
-# causing Gatekeeper to block the app with an "unverified developer"
-# warning. A signed and notarized DMG does not have this issue.
+#
+# We create the DMG directly in UDZO (compressed read-only) format
+# to avoid the UDRW -> UDZO conversion step, which can alter file
+# signatures and cause notarization to fail.
 
 echo
 echo "______________________________________________________________"
@@ -287,25 +319,23 @@ echo "Create final DMG (Gatekeeper-compatible with Chrome and Safari):"
 
 mkdir -p "build-aux/mac-osx"
 
-# Create a temporary writable DMG from the stapled .app bundle
+# Create compressed read-only DMG directly from the stapled .app bundle
 hdiutil create \
     -volname "QElectroTech $VERSION" \
     -srcfolder "$BUNDLE" \
     -ov \
-    -format UDRW \
-    -fs HFS+ \
-    "/tmp/qet_tmp.dmg"
-
-# Convert to compressed read-only DMG
-hdiutil convert "/tmp/qet_tmp.dmg" \
     -format UDZO \
-    -o "$DMG_PATH"
+    -fs HFS+ \
+    "$DMG_PATH"
 
-rm -f "/tmp/qet_tmp.dmg"
+if [ $? -ne 0 ]; then
+    echo "ERROR: hdiutil failed to create DMG."
+    exit 1
+fi
 
 # Sign the DMG itself
 codesign \
-    --sign "Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)" \
+    --sign "$IDENTITY" \
     --timestamp \
     "$DMG_PATH"
 
@@ -320,9 +350,18 @@ if [[ $a == "Y" || $a == "y" ]]; then
     echo "______________________________________________________________"
     echo "Notarizing DMG:"
     xcrun notarytool submit "$DMG_PATH" --keychain-profile "org.qelectrotech" --wait
+    if [ $? -ne 0 ]; then
+        echo "ERROR: DMG notarization failed. Check the log with:"
+        echo "  xcrun notarytool log <submission-id> --keychain-profile org.qelectrotech"
+        exit 1
+    fi
 
     echo "Stapling notarization ticket to DMG..."
     xcrun stapler staple "$DMG_PATH"
+    if [ $? -ne 0 ]; then
+        echo "ERROR: stapling DMG failed."
+        exit 1
+    fi
     echo "DMG notarized and stapled OK."
 else
     echo -e "\033[1;33mExit.\033[m"
@@ -331,7 +370,7 @@ fi
 ### Clean up bundle #################################################
 
 echo "Cleaning up bundle..."
-rm -rf $BUNDLE
+rm -rf "$BUNDLE"
 
 ### The end #########################################################
 
