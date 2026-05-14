@@ -1,10 +1,16 @@
 name: Windows MSI (WiX v7)
 
 on:
+  # Déclenché automatiquement après un build Windows réussi sur master
+  workflow_run:
+    workflows: ["Windows Build"]
+    types: [completed]
+    branches: [master]
+  # Toujours possible de lancer manuellement (ex: pour un run_id spécifique)
   workflow_dispatch:
     inputs:
       run_id:
-        description: "Run ID of 'Windows Build' (leave empty for the latest successful run)"
+        description: "Run ID of 'Windows Build' (leave empty for automatic)"
         required: false
         default: ""
 
@@ -12,6 +18,10 @@ jobs:
   build-msi:
     name: Build MSI with WiX v7
     runs-on: windows-latest
+    # Ne tourne que si le workflow Windows Build a réussi (ou si c'est manuel)
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
 
     steps:
       # ----------------------------------------------------------------
@@ -32,7 +42,9 @@ jobs:
         with:
           name: qelectrotech-windows-portable
           path: artifact\files
-          run-id: ${{ github.event.inputs.run_id || github.run_id }}
+          # workflow_run => utilise l'ID du run déclencheur
+          # workflow_dispatch => utilise l'input run_id si fourni, sinon le run courant
+          run-id: ${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
 
@@ -122,6 +134,10 @@ jobs:
 
           # Search for qelectrotech.exe in the artifact
           $exe = Get-ChildItem -Path "artifact\files" -Filter "qelectrotech.exe" -Recurse | Select-Object -First 1
+          if (-not $exe) {
+            # Also try QElectroTech.exe (capital Q)
+            $exe = Get-ChildItem -Path "artifact\files" -Filter "QElectroTech.exe" -Recurse | Select-Object -First 1
+          }
           if (-not $exe) {
             Write-Error "qelectrotech.exe not found in artifact"
             exit 1
