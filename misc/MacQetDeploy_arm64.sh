@@ -223,33 +223,50 @@ if [ -d "${QET_LICENSES_DIR}" ]; then
     cp -R -L ${QET_LICENSES_DIR} $BUNDLE/Contents/Resources/licenses
 fi
 
-### Sign the bundle (without --deep, component by component) ########
-# --deep is deprecated and can produce invalid signatures on nested
-# binaries. We sign frameworks and plugins first, then the bundle.
+### Sign the bundle #################################################
+# Sign in the correct order: deepest binaries first, bundle last.
+# We sign ALL .dylib files individually (including flat libs copied
+# by macdeployqt into Contents/Frameworks/) before signing the bundle.
+# Using --deep is deprecated and misses flat dylibs, causing notarization
+# to fail with "not signed with a valid Developer ID certificate".
 
 echo
 echo "______________________________________________________________"
-echo "Code signing bundle (component by component):"
+echo "Code signing (all dylibs, plugins, frameworks, then bundle):"
 
-# Sign frameworks
-find "$BUNDLE/Contents/Frameworks" -name "*.framework" -prune | while read fw; do
+# 1. Sign all flat .dylib files in Frameworks (copied by macdeployqt from Homebrew)
+echo "-- Signing dylibs in Frameworks..."
+find "$BUNDLE/Contents/Frameworks" -name "*.dylib" | while read lib; do
+    echo "  $(basename $lib)"
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
+done
+
+# 2. Sign .framework bundles
+echo "-- Signing .framework bundles..."
+find "$BUNDLE/Contents/Frameworks" -maxdepth 1 -name "*.framework" | while read fw; do
+    echo "  $(basename $fw)"
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$fw"
 done
 
-# Sign plugins (.dylib and .so)
+# 3. Sign plugins (.dylib and .so in PlugIns/)
+echo "-- Signing plugins..."
 find "$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" \) | while read lib; do
+    echo "  $(basename $lib)"
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 
-# Sign remaining dylibs at bundle root level
+# 4. Sign any remaining dylibs in MacOS/
+echo "-- Signing dylibs in MacOS/..."
 find "$BUNDLE/Contents/MacOS" -name "*.dylib" | while read lib; do
+    echo "  $(basename $lib)"
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 
-# Sign the bundle itself last
+# 5. Sign the bundle itself last
+echo "-- Signing bundle..."
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$BUNDLE"
 
-# Verify signature before proceeding
+# 6. Verify the whole bundle signature before proceeding
 echo
 echo "Verifying bundle signature..."
 codesign --verify --deep --strict --verbose=2 "$BUNDLE"
@@ -260,8 +277,8 @@ fi
 echo "Bundle signature OK."
 
 ### Create zip for notarization only ################################
-# This ZIP is temporary — used only to submit to notarytool.
-# The final deliverable will be a DMG (see below).
+# Temporary ZIP used only for notarytool submission.
+# The final deliverable is a DMG (see below).
 
 echo
 echo "______________________________________________________________"
@@ -282,6 +299,7 @@ if [[ $a == "Y" || $a == "y" ]]; then
     if [ $? -ne 0 ]; then
         echo "ERROR: notarization failed. Check the log with:"
         echo "  xcrun notarytool log <submission-id> --keychain-profile org.qelectrotech"
+        rm -f "$NOTARIZE_ZIP"
         exit 1
     fi
 else
@@ -308,10 +326,11 @@ fi
 ### Create final DMG ################################################
 # A DMG is used instead of a ZIP because it correctly preserves the
 # Gatekeeper staple when downloaded via Chrome or any other browser.
+# ZIP extraction via Archive Utility can strip extended attributes,
+# causing Gatekeeper to block the app.
 #
-# We create the DMG directly in UDZO (compressed read-only) format
-# to avoid the UDRW -> UDZO conversion step, which can alter file
-# signatures and cause notarization to fail.
+# The DMG is created directly in UDZO (compressed read-only) format
+# to avoid a UDRW -> UDZO conversion step that can alter file signatures.
 
 echo
 echo "______________________________________________________________"
@@ -319,7 +338,6 @@ echo "Create final DMG (Gatekeeper-compatible with Chrome and Safari):"
 
 mkdir -p "build-aux/mac-osx"
 
-# Create compressed read-only DMG directly from the stapled .app bundle
 hdiutil create \
     -volname "QElectroTech $VERSION" \
     -srcfolder "$BUNDLE" \
