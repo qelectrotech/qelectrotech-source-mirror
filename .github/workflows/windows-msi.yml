@@ -1,12 +1,12 @@
 name: Windows MSI (WiX v7)
 
 on:
-  # Déclenché automatiquement après un build Windows réussi sur master
+  # Triggered automatically after a successful Windows build on master
   workflow_run:
     workflows: ["Windows Build"]
     types: [completed]
     branches: [master]
-  # Toujours possible de lancer manuellement (ex: pour un run_id spécifique)
+  # Manual trigger still available (e.g. for a specific run_id)
   workflow_dispatch:
     inputs:
       run_id:
@@ -18,10 +18,14 @@ jobs:
   build-msi:
     name: Build MSI with WiX v7
     runs-on: windows-latest
-    # Ne tourne que si le workflow Windows Build a réussi (ou si c'est manuel)
+    # Only runs if Windows Build succeeded (or triggered manually)
     if: >
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
       # ----------------------------------------------------------------
@@ -42,8 +46,8 @@ jobs:
         with:
           name: qelectrotech-windows-portable
           path: artifact\files
-          # workflow_run => utilise l'ID du run déclencheur
-          # workflow_dispatch => utilise l'input run_id si fourni, sinon le run courant
+          # workflow_run => use the triggering run's ID
+          # workflow_dispatch => use input run_id if provided, otherwise current run
           run-id: ${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
@@ -259,10 +263,22 @@ jobs:
           if-no-files-found: error
 
       # ----------------------------------------------------------------
-      # 11. Upload MSI to nightly release
-      #     The nightly release is created/updated by windows-build.yml.
-      #     The MSI is added here so the GitHub Pages can link to it.
+      # 11. Delete old .msi asset then upload new MSI to nightly release
       # ----------------------------------------------------------------
+      - name: Delete old nightly .msi asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh release view nightly --repo "$REPO" --json assets \
+            --jq '.assets[] | select(.name | test("\\.msi$")) | .name' \
+          | while read -r name; do
+              echo "Deleting old asset: $name"
+              gh release delete-asset nightly "$name" --repo "$REPO" --yes
+            done
+          echo "Old .msi assets deleted."
+        shell: bash
+
       - name: Upload MSI to nightly release
         uses: softprops/action-gh-release@v2
         with:
@@ -289,3 +305,59 @@ jobs:
           } else {
             Write-Host "MSI          : FAILED ✗"
           }
+
+      # ----------------------------------------------------------------
+      # 13. Generate and deploy the GitHub Pages download page
+      #     Toutes les URLs sont connues ici (exe, zip, msi).
+      # ----------------------------------------------------------------
+      - name: Checkout (for generate-page.py)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: source
+          sparse-checkout: build-aux/generate-page.py
+          sparse-checkout-cone-mode: false
+
+      - name: Generate download page (index.html)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+
+          # Fetch asset names from the nightly release (source of truth)
+          ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
+
+          EXE_NAME=$(echo "$ASSETS" | grep '\.exe$' | head -1)
+          ZIP_NAME=$(echo "$ASSETS" | grep '\.zip$' | head -1)
+          MSI_NAME=$(echo "$ASSETS" | grep '\.msi$' | head -1 || echo "")
+
+          BASE="https://github.com/$REPO/releases/download/nightly"
+          INSTALLER_URL="$BASE/$EXE_NAME"
+          PORTABLE_URL="$BASE/$ZIP_NAME"
+          MSI_URL=""
+          [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
+
+          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
+          SHORT="${SHA:0:7}"
+          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
+          RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          RUN_NUMBER="${{ github.run_number }}"
+
+          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
+          export INSTALLER_URL PORTABLE_URL MSI_URL
+
+          python3 source/build-aux/generate-page.py
+
+      - name: Add .nojekyll
+        shell: bash
+        run: touch gh-pages/.nojekyll
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: gh-pages/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

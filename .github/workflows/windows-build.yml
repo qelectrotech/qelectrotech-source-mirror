@@ -1,11 +1,9 @@
 name: Windows Build
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 1'   # Every Monday at 2:00 UTC
+  workflow_dispatch:       # Manual trigger available at any time
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -366,8 +364,6 @@ jobs:
     if: github.event_name != 'pull_request'
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout master (for build-aux scripts)
@@ -390,6 +386,20 @@ jobs:
           pattern: qelectrotech-*-readytouse
           path: downloaded/portable/
           merge-multiple: true
+
+      - name: Delete old nightly assets (.exe and .zip)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Fetch existing .exe and .zip asset names and delete them
+          gh release view nightly --repo "$REPO" --json assets \
+            --jq '.assets[] | select(.name | test("\\.(exe|zip)$")) | .name' \
+          | while read -r name; do
+              echo "Deleting old asset: $name"
+              gh release delete-asset nightly "$name" --repo "$REPO" --yes
+            done
+          echo "Old .exe and .zip assets deleted."
 
       - name: Update nightly release
         uses: softprops/action-gh-release@v2
@@ -414,39 +424,5 @@ jobs:
             downloaded/portable/*.zip
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate download page (index.html)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DATE: "placeholder"
-        run: |
-          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
-          SHORT="${{ github.sha }}"
-          SHORT="${SHORT:0:7}"
-          REPO="${{ github.repository }}"
-          RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
-          EXE_NAME=$(ls downloaded/installer/*.exe | xargs -I{} basename {})
-          INSTALLER_URL="https://github.com/$REPO/releases/download/nightly/$EXE_NAME"
-          ZIP_NAME=$(ls downloaded/portable/*.zip | xargs -I{} basename {})
-          PORTABLE_URL="https://github.com/$REPO/releases/download/nightly/$ZIP_NAME"
-          MSI_NAME=$(gh release view nightly --json assets --jq '.assets[].name' 2>/dev/null \
-            | grep '\.msi$' | head -1 || echo "")
-          MSI_URL=""
-          [ -n "$MSI_NAME" ] && MSI_URL="https://github.com/$REPO/releases/download/nightly/$MSI_NAME"
-          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
-          export DATE SHORT REPO SHA="${{ github.sha }}" RUN_URL
-          export RUN_NUMBER="${{ github.run_number }}"
-          export INSTALLER_URL PORTABLE_URL MSI_URL
-          # Write the page generator script to /tmp (build-aux/ not available
-          # in deploy-pages job which only checks out gh-pages branch)
-          python3 source/build-aux/generate-page.py
-
-      - name: Add .nojekyll to disable Jekyll processing
-        run: touch gh-pages/.nojekyll
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: gh-pages/
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      # GitHub Pages is generated and deployed by windows-msi.yml
+      # after the MSI upload, so that all 3 URLs (exe, zip, msi) are known.
