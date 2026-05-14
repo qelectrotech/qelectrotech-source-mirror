@@ -27,6 +27,11 @@ BUNDLE=$APPNAME.app
 APPBIN="$BUNDLE/Contents/MacOS/$APPNAME"
 IDENTITY="Developer ID Application: Laurent TRINQUES (Y73WZ6WZ5X)"
 
+# Temp paths
+RW_DMG="/tmp/qet_rw.dmg"
+MOUNT_POINT="/tmp/qet_dmg_mount"
+STAGING="/tmp/qet_dmg_staging"
+
 # Script location
 current_dir=$(dirname "$0")
 
@@ -226,11 +231,10 @@ fi
 ### Sign the bundle #################################################
 # Sign in correct order: all dylibs first (including flat libs copied
 # by macdeployqt from Homebrew), then frameworks, plugins, bundle last.
-# --deep is deprecated and misses flat dylibs in Frameworks/.
 
 echo
 echo "______________________________________________________________"
-echo "Code signing (dylibs → frameworks → plugins → bundle):"
+echo "Code signing (dylibs -> frameworks -> plugins -> bundle):"
 
 # 1. Sign all flat .dylib files in Frameworks/
 echo "-- Signing dylibs in Frameworks/..."
@@ -281,17 +285,6 @@ spctl -a -vv "$BUNDLE"
 echo "Bundle signature OK."
 
 ### Notarize the .app (via temporary ZIP) ###########################
-# Strategy:
-#   1. Submit the .app as a ZIP to Apple notarytool → get ticket
-#   2. Staple the ticket onto the .app
-#   3. Create the DMG from the stapled .app
-#   4. Sign the DMG
-#   5. Staple the DMG directly (no re-submission needed: Apple
-#      recognises the ticket already registered for the .app bundle)
-#
-# This avoids submitting the DMG to notarytool, which would fail
-# because hdiutil copies the .app and can invalidate its Sealed
-# Resources signature during DMG creation.
 
 echo
 echo "______________________________________________________________"
@@ -338,48 +331,149 @@ else
     echo -e "\033[1;33mExit.\033[m"
 fi
 
-### Create DMG from the stapled .app ################################
-# The .app is already notarized and stapled at this point.
-# We create the DMG directly from it — no need to re-submit to
-# notarytool. Stapling the DMG directly retrieves the already-
-# registered ticket from Apple's CDN.
+### Create staging folder with Applications symlink #################
+# The staging folder contains the .app and a symlink to /Applications
+# so the user can drag-and-drop to install directly from the DMG.
 
 echo
 echo "______________________________________________________________"
-echo "Create DMG from stapled .app:"
+echo "Preparing DMG staging folder:"
 
-mkdir -p "build-aux/mac-osx"
+rm -rf "$STAGING"
+mkdir -p "$STAGING"
+cp -R "$BUNDLE" "$STAGING/"
+ln -s /Applications "$STAGING/Applications"
+echo "Staging folder ready: $STAGING"
 
+### Create writable DMG (UDRW) ######################################
+# We use a writable DMG first so we can re-sign the .app inside
+# after hdiutil copies it (hdiutil can invalidate Sealed Resources
+# during the copy, so we must re-sign inside the mounted volume).
+
+echo
+echo "______________________________________________________________"
+echo "Create writable DMG (UDRW) and re-sign .app inside:"
+
+rm -f "$RW_DMG"
 hdiutil create \
     -volname "QElectroTech $VERSION" \
-    -srcfolder "$BUNDLE" \
+    -srcfolder "$STAGING" \
     -ov \
-    -format UDZO \
+    -format UDRW \
     -fs HFS+ \
-    "$DMG_PATH"
+    "$RW_DMG"
 
 if [ $? -ne 0 ]; then
-    echo "ERROR: hdiutil failed to create DMG."
+    echo "ERROR: hdiutil failed to create writable DMG."
+    rm -rf "$STAGING"
     exit 1
 fi
 
-# Sign the DMG
-echo "Signing DMG..."
-codesign \
-    --sign "$IDENTITY" \
-    --timestamp \
-    "$DMG_PATH"
+# Mount the writable DMG
+rm -rf "$MOUNT_POINT"
+mkdir -p "$MOUNT_POINT"
+hdiutil attach "$RW_DMG" -mountpoint "$MOUNT_POINT" -nobrowse -noverify
 
-# Staple the DMG — retrieves the ticket already registered for the
-# .app bundle, no new notarytool submission required
-echo "Stapling DMG..."
-xcrun stapler staple "$DMG_PATH"
 if [ $? -ne 0 ]; then
-    echo "WARNING: stapling DMG failed. The DMG is still usable but"
-    echo "will require an internet connection for Gatekeeper validation."
+    echo "ERROR: failed to mount writable DMG."
+    rm -f "$RW_DMG"
+    rm -rf "$STAGING"
+    exit 1
 fi
 
-echo "DMG ready: $DMG_PATH"
+# Re-sign all binaries inside the mounted DMG
+echo "-- Re-signing dylibs inside DMG..."
+find "$MOUNT_POINT/$BUNDLE/Contents/Frameworks" -name "*.dylib" | while read lib; do
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
+done
+
+find "$MOUNT_POINT/$BUNDLE/Contents/Frameworks" -maxdepth 1 -name "*.framework" | while read fw; do
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$fw"
+done
+
+find "$MOUNT_POINT/$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" \) | while read lib; do
+    codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
+done
+
+echo "-- Re-signing main executable inside DMG..."
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    "$MOUNT_POINT/$BUNDLE/Contents/MacOS/$APPNAME"
+
+echo "-- Re-signing bundle inside DMG..."
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    "$MOUNT_POINT/$BUNDLE"
+
+# Verify signature inside the mounted DMG
+echo "Verifying bundle signature inside DMG..."
+codesign --verify --deep --strict --verbose=2 "$MOUNT_POINT/$BUNDLE"
+if [ $? -ne 0 ]; then
+    echo "ERROR: bundle signature invalid inside DMG, aborting."
+    hdiutil detach "$MOUNT_POINT"
+    rm -f "$RW_DMG"
+    rm -rf "$STAGING" "$MOUNT_POINT"
+    exit 1
+fi
+echo "Bundle signature inside DMG OK."
+
+# Detach the writable DMG
+hdiutil detach "$MOUNT_POINT"
+
+### Convert UDRW to final compressed UDZO ###########################
+
+echo
+echo "______________________________________________________________"
+echo "Convert to final compressed DMG (UDZO):"
+
+mkdir -p "build-aux/mac-osx"
+rm -f "$DMG_PATH"
+
+hdiutil convert "$RW_DMG" \
+    -format UDZO \
+    -o "$DMG_PATH"
+
+if [ $? -ne 0 ]; then
+    echo "ERROR: hdiutil convert failed."
+    rm -f "$RW_DMG"
+    rm -rf "$STAGING" "$MOUNT_POINT"
+    exit 1
+fi
+
+rm -f "$RW_DMG"
+rm -rf "$STAGING" "$MOUNT_POINT"
+
+### Sign the final DMG ##############################################
+
+echo "Signing final DMG..."
+codesign --sign "$IDENTITY" --timestamp "$DMG_PATH"
+
+### Notarize and staple the final DMG ###############################
+
+echo -e "\033[1;31mWould you like to notarize the DMG \"${DMG_NAME}\", n/Y?\033[m"
+read a
+if [[ $a == "Y" || $a == "y" ]]; then
+    echo
+    echo "______________________________________________________________"
+    echo "Notarizing DMG:"
+    xcrun notarytool submit "$DMG_PATH" --keychain-profile "org.qelectrotech" --wait
+    if [ $? -ne 0 ]; then
+        echo "ERROR: DMG notarization failed. Check the log with:"
+        echo "  xcrun notarytool log <submission-id> --keychain-profile org.qelectrotech"
+        exit 1
+    fi
+
+    echo "Stapling DMG..."
+    xcrun stapler staple "$DMG_PATH"
+    if [ $? -ne 0 ]; then
+        echo "ERROR: stapling DMG failed."
+        exit 1
+    fi
+    echo "DMG notarized and stapled OK."
+
+    echo "Verifying final DMG..."
+    spctl -a -vv "$DMG_PATH"
+else
+    echo -e "\033[1;33mExit.\033[m"
+fi
 
 ### Clean up bundle #################################################
 
