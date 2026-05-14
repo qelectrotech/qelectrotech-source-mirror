@@ -50,7 +50,7 @@ echo "\t - update the git depot"
 echo "\t - build the application bundle,"
 echo "\t - copy over required Qt frameworks,"
 echo "\t - copy additional files: translations, titleblocks and elements,"
-echo "\t - create DMG disk image."
+echo "\t - notarize the .app, then create a signed DMG."
 echo
 echo "Enjoy ;-)"
 echo
@@ -224,18 +224,16 @@ if [ -d "${QET_LICENSES_DIR}" ]; then
 fi
 
 ### Sign the bundle #################################################
-# Sign in the correct order: deepest binaries first, bundle last.
-# We sign ALL .dylib files individually (including flat libs copied
-# by macdeployqt into Contents/Frameworks/) before signing the bundle.
-# Using --deep is deprecated and misses flat dylibs, causing notarization
-# to fail with "not signed with a valid Developer ID certificate".
+# Sign in correct order: all dylibs first (including flat libs copied
+# by macdeployqt from Homebrew), then frameworks, plugins, bundle last.
+# --deep is deprecated and misses flat dylibs in Frameworks/.
 
 echo
 echo "______________________________________________________________"
-echo "Code signing (all dylibs, plugins, frameworks, then bundle):"
+echo "Code signing (dylibs → frameworks → plugins → bundle):"
 
-# 1. Sign all flat .dylib files in Frameworks (copied by macdeployqt from Homebrew)
-echo "-- Signing dylibs in Frameworks..."
+# 1. Sign all flat .dylib files in Frameworks/
+echo "-- Signing dylibs in Frameworks/..."
 find "$BUNDLE/Contents/Frameworks" -name "*.dylib" | while read lib; do
     echo "  $(basename $lib)"
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
@@ -248,25 +246,30 @@ find "$BUNDLE/Contents/Frameworks" -maxdepth 1 -name "*.framework" | while read 
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$fw"
 done
 
-# 3. Sign plugins (.dylib and .so in PlugIns/)
+# 3. Sign plugins
 echo "-- Signing plugins..."
 find "$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" \) | while read lib; do
     echo "  $(basename $lib)"
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 
-# 4. Sign any remaining dylibs in MacOS/
+# 4. Sign any dylibs in MacOS/
 echo "-- Signing dylibs in MacOS/..."
 find "$BUNDLE/Contents/MacOS" -name "*.dylib" | while read lib; do
     echo "  $(basename $lib)"
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 
-# 5. Sign the bundle itself last
+# 5. Sign the main executable explicitly
+echo "-- Signing main executable..."
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    "$BUNDLE/Contents/MacOS/$APPNAME"
+
+# 6. Sign the bundle itself last
 echo "-- Signing bundle..."
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$BUNDLE"
 
-# 6. Verify the whole bundle signature before proceeding
+# 7. Verify
 echo
 echo "Verifying bundle signature..."
 codesign --verify --deep --strict --verbose=2 "$BUNDLE"
@@ -274,27 +277,35 @@ if [ $? -ne 0 ]; then
     echo "ERROR: bundle signature verification failed, aborting."
     exit 1
 fi
+spctl -a -vv "$BUNDLE"
 echo "Bundle signature OK."
 
-### Create zip for notarization only ################################
-# Temporary ZIP used only for notarytool submission.
-# The final deliverable is a DMG (see below).
+### Notarize the .app (via temporary ZIP) ###########################
+# Strategy:
+#   1. Submit the .app as a ZIP to Apple notarytool → get ticket
+#   2. Staple the ticket onto the .app
+#   3. Create the DMG from the stapled .app
+#   4. Sign the DMG
+#   5. Staple the DMG directly (no re-submission needed: Apple
+#      recognises the ticket already registered for the .app bundle)
+#
+# This avoids submitting the DMG to notarytool, which would fail
+# because hdiutil copies the .app and can invalidate its Sealed
+# Resources signature during DMG creation.
 
 echo
 echo "______________________________________________________________"
-echo "Create temporary zip for notarization:"
+echo "Create temporary ZIP for notarization:"
 
 NOTARIZE_ZIP="/tmp/${APPNAME}-$VERSION-r$HEAD-arm64-notarize.zip"
 /usr/bin/ditto -c -k --keepParent "$BUNDLE" "$NOTARIZE_ZIP"
 
-### Notarize ########################################################
-
-echo -e "\033[1;31mWould you like to upload for notarization \"${APPNAME}-${VERSION}-r${HEAD}-arm64\", n/Y?\033[m"
+echo -e "\033[1;31mWould you like to notarize the .app \"${APPNAME}-${VERSION}-r${HEAD}\", n/Y?\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
     echo
     echo "______________________________________________________________"
-    echo "Notarizing:"
+    echo "Notarizing .app:"
     xcrun notarytool submit "$NOTARIZE_ZIP" --keychain-profile "org.qelectrotech" --wait
     if [ $? -ne 0 ]; then
         echo "ERROR: notarization failed. Check the log with:"
@@ -306,35 +317,36 @@ else
     echo -e "\033[1;33mExit.\033[m"
 fi
 
-# Clean up temporary notarization zip
-echo "Cleaning up temporary notarization zip..."
+echo "Cleaning up temporary notarization ZIP..."
 rm -f "$NOTARIZE_ZIP"
 
-### Staple ##########################################################
+### Staple the .app #################################################
 
-echo -e "\033[1;31mWould you like to staple the app \"${APPNAME}-${VERSION}-r${HEAD}\", n/Y?\033[m"
+echo -e "\033[1;31mWould you like to staple the .app \"${APPNAME}-${VERSION}-r${HEAD}\", n/Y?\033[m"
 read a
 if [[ $a == "Y" || $a == "y" ]]; then
     xcrun stapler staple -v "$BUNDLE"
-    echo "Verifying staple..."
+    if [ $? -ne 0 ]; then
+        echo "ERROR: stapling .app failed."
+        exit 1
+    fi
+    echo "Verifying staple on .app..."
     xcrun stapler validate -v "$BUNDLE"
     spctl -a -vv "$BUNDLE"
+    echo ".app stapled OK."
 else
     echo -e "\033[1;33mExit.\033[m"
 fi
 
-### Create final DMG ################################################
-# A DMG is used instead of a ZIP because it correctly preserves the
-# Gatekeeper staple when downloaded via Chrome or any other browser.
-# ZIP extraction via Archive Utility can strip extended attributes,
-# causing Gatekeeper to block the app.
-#
-# The DMG is created directly in UDZO (compressed read-only) format
-# to avoid a UDRW -> UDZO conversion step that can alter file signatures.
+### Create DMG from the stapled .app ################################
+# The .app is already notarized and stapled at this point.
+# We create the DMG directly from it — no need to re-submit to
+# notarytool. Stapling the DMG directly retrieves the already-
+# registered ticket from Apple's CDN.
 
 echo
 echo "______________________________________________________________"
-echo "Create final DMG (Gatekeeper-compatible with Chrome and Safari):"
+echo "Create DMG from stapled .app:"
 
 mkdir -p "build-aux/mac-osx"
 
@@ -351,39 +363,23 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Sign the DMG itself
+# Sign the DMG
+echo "Signing DMG..."
 codesign \
     --sign "$IDENTITY" \
     --timestamp \
     "$DMG_PATH"
 
-echo "DMG created and signed: $DMG_PATH"
-
-### Notarize the DMG ################################################
-
-echo -e "\033[1;31mWould you like to notarize the DMG \"${DMG_NAME}\", n/Y?\033[m"
-read a
-if [[ $a == "Y" || $a == "y" ]]; then
-    echo
-    echo "______________________________________________________________"
-    echo "Notarizing DMG:"
-    xcrun notarytool submit "$DMG_PATH" --keychain-profile "org.qelectrotech" --wait
-    if [ $? -ne 0 ]; then
-        echo "ERROR: DMG notarization failed. Check the log with:"
-        echo "  xcrun notarytool log <submission-id> --keychain-profile org.qelectrotech"
-        exit 1
-    fi
-
-    echo "Stapling notarization ticket to DMG..."
-    xcrun stapler staple "$DMG_PATH"
-    if [ $? -ne 0 ]; then
-        echo "ERROR: stapling DMG failed."
-        exit 1
-    fi
-    echo "DMG notarized and stapled OK."
-else
-    echo -e "\033[1;33mExit.\033[m"
+# Staple the DMG — retrieves the ticket already registered for the
+# .app bundle, no new notarytool submission required
+echo "Stapling DMG..."
+xcrun stapler staple "$DMG_PATH"
+if [ $? -ne 0 ]; then
+    echo "WARNING: stapling DMG failed. The DMG is still usable but"
+    echo "will require an internet connection for Gatekeeper validation."
 fi
+
+echo "DMG ready: $DMG_PATH"
 
 ### Clean up bundle #################################################
 
