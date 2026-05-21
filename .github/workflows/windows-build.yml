@@ -1,9 +1,11 @@
 name: Windows Build
 
 on:
-  schedule:
-    - cron: '0 2 * * 1'   # Every Monday at 2:00 UTC
-  workflow_dispatch:       # Manual trigger available at any time
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -179,9 +181,11 @@ jobs:
           done
           set -e
 
-          DLL_COUNT=$(find "$BIN" -name "*.dll" | wc -l)
-          echo "=== $DLL_COUNT DLLs present after scan ==="
+          DLL_SCAN=$(ls -1 "$BIN/"*.dll 2>/dev/null | wc -l)
+          echo "=== $DLL_SCAN DLLs present after scan ==="
           ls -lh "$BIN/QElectroTech.exe" || { echo "ERROR: exe missing from bin/"; exit 1; }
+          DLL_COUNT=$(find "$BIN" -name "*.dll" | wc -l)
+          echo "DLLs present: $DLL_COUNT"
           [ "$DLL_COUNT" -gt 5 ] || { echo "ERROR: too few DLLs"; exit 1; }
           cd "$GITHUB_WORKSPACE"
 
@@ -237,24 +241,20 @@ jobs:
         id: qet_version
         run: |
           set -euo pipefail
-
           GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
-
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)
           HEAD=$(( A + 473 ))
-
           VERSION=$(grep 'return QVersionNumber{' "$GITHUB_WORKSPACE/sources/qetversion.cpp" \
             | head -1 \
             | awk -F '{' '{ print $2 }' \
             | awk -F '}' '{ print $1 }' \
             | sed -e 's/,/./g' -e 's/ //g')
           [ -z "$VERSION" ] && VERSION="dev"
-
           FULL_VERSION="${VERSION}-r${HEAD}-${GITCOMMIT}_x86_64-win64"
-          echo "version=$FULL_VERSION"      >> "$GITHUB_OUTPUT"
-          echo "base_version=$VERSION"      >> "$GITHUB_OUTPUT"
-          echo "gitcommit=$GITCOMMIT"       >> "$GITHUB_OUTPUT"
-          echo "head=$HEAD"                 >> "$GITHUB_OUTPUT"
+          echo "version=$FULL_VERSION"         >> "$GITHUB_OUTPUT"
+          echo "base_version=$VERSION"        >> "$GITHUB_OUTPUT"
+          echo "gitcommit=$GITCOMMIT"          >> "$GITHUB_OUTPUT"
+          echo "head=$HEAD"                    >> "$GITHUB_OUTPUT"
           echo "VERSION    : $VERSION"
           echo "GITCOMMIT  : $GITCOMMIT"
           echo "HEAD (rev) : $HEAD"
@@ -268,9 +268,7 @@ jobs:
           NSI="$GITHUB_WORKSPACE/nsis_root/QET64.nsi"
           FILES_WIN=$(cygpath -w "$GITHUB_WORKSPACE/nsis_root/files")
           SCRIPT="$GITHUB_WORKSPACE/build-aux/windows/patch_nsi.py"
-
           python3 "$SCRIPT" "$NSI" "$VERSION" "$FILES_WIN"
-
           echo "=== Verification ==="
           grep 'SOFT_VERSION' "$NSI" | head -1
           grep -m2 'nsis_root' "$NSI" | head -2
@@ -304,6 +302,33 @@ jobs:
           echo "Moving: $INSTALLER -> dist/"
           mv "$INSTALLER" "$GITHUB_WORKSPACE/dist/"
 
+      # ----------------------------------------------------------------
+      # SignPath — sign the NSIS installer
+      # ----------------------------------------------------------------
+      - name: Install SignPath PowerShell module
+        shell: pwsh
+        run: |
+          Install-Module -Name SignPath -Force -Scope CurrentUser
+
+      - name: Sign NSIS installer with SignPath
+        shell: pwsh
+        run: |
+          $installer = Get-ChildItem "$env:GITHUB_WORKSPACE\dist\Installer_*.exe" | Select-Object -First 1
+          if (-not $installer) {
+            Write-Error "No Installer_*.exe found in dist/"
+            exit 1
+          }
+          Write-Host "Signing: $($installer.FullName)"
+          Submit-SigningRequest `
+            -InputArtifactPath $installer.FullName `
+            -ApiToken "${{ secrets.SIGNPATH_API_TOKEN }}" `
+            -OrganizationId "${{ secrets.SIGNPATH_ORGANIZATION_ID }}" `
+            -ProjectSlug "MSI" `
+            -SigningPolicySlug "test-signing" `
+            -OutputArtifactPath $installer.FullName `
+            -WaitForCompletion
+          Write-Host "Signing complete: $($installer.Name)"
+
       - name: Upload build logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -314,30 +339,11 @@ jobs:
             nsis_root/files/bin/
           if-no-files-found: warn
 
-      - name: Zip portable (readytouse)
-        id: zip_portable
-        shell: pwsh
-        run: |
-          $version = "${{ steps.qet_version.outputs.base_version }}"
-          $head    = "${{ steps.qet_version.outputs.head }}"
-          $zipName = "qelectrotech-${version}+git${head}-x86-win64-readytouse.zip"
-          $src     = "$env:GITHUB_WORKSPACE\nsis_root\files"
-          $dst     = "$env:GITHUB_WORKSPACE\dist\$zipName"
-          $7z      = "C:\Program Files\7-Zip\7z.exe"
-
-          New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE\dist" | Out-Null
-          & $7z a -tzip -mx=5 -mmt=on $dst "$src\*"
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-
-          $sizeMB = [math]::Round((Get-Item $dst).Length / 1MB, 1)
-          Write-Output "ZIP created: $zipName ($sizeMB MB)"
-          "zip_name=$zipName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-
       - name: Upload portable (files/ without installer)
         uses: actions/upload-artifact@v4
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
-          path: dist/${{ steps.zip_portable.outputs.zip_name }}
+          path: nsis_root/files/
           retention-days: 14
 
       - name: Upload NSIS installer
@@ -346,83 +352,3 @@ jobs:
           name: qelectrotech-windows-installer
           path: dist/Installer_*.exe
           retention-days: 14
-
-      - name: Upload portable (nom fixe pour le workflow MSI)
-        uses: actions/upload-artifact@v4
-        with:
-          name: qelectrotech-windows-portable
-          path: nsis_root/files/
-          retention-days: 14
-
-  # ---------------------------------------------------------------------------
-  # Job 2 : Publie une release nightly + page GitHub Pages
-  # Ne tourne que sur push master (pas sur les PRs)
-  # ---------------------------------------------------------------------------
-  deploy-pages:
-    needs: build-windows
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout master (for build-aux scripts)
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          path: source
-          sparse-checkout: build-aux/generate-page.py
-          sparse-checkout-cone-mode: false
-
-      - name: Download installer artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: qelectrotech-windows-installer
-          path: downloaded/installer/
-
-      - name: Download portable artifact
-        uses: actions/download-artifact@v4
-        with:
-          pattern: qelectrotech-*-readytouse
-          path: downloaded/portable/
-          merge-multiple: true
-
-      - name: Delete old nightly assets (.exe and .zip)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          # Fetch existing .exe and .zip asset names and delete them
-          gh release view nightly --repo "$REPO" --json assets \
-            --jq '.assets[] | select(.name | test("\\.(exe|zip)$")) | .name' \
-          | while read -r name; do
-              echo "Deleting old asset: $name"
-              gh release delete-asset nightly "$name" --repo "$REPO" --yes
-            done
-          echo "Old .exe and .zip assets deleted."
-
-      - name: Update nightly release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: nightly
-          name: "Nightly Build – Windows"
-          body: |
-            🔧 **Automated nightly build** — may be unstable.
-
-            | | |
-            |---|---|
-            | **Commit** | ${{ github.sha }} |
-            | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
-            | **Date** | ${{ github.event.head_commit.timestamp }} |
-
-            > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
-            > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
-          prerelease: true
-          make_latest: false
-          files: |
-            downloaded/installer/*.exe
-            downloaded/portable/*.zip
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      # GitHub Pages is generated and deployed by windows-msi.yml
-      # after the MSI upload, so that all 3 URLs (exe, zip, msi) are known.
