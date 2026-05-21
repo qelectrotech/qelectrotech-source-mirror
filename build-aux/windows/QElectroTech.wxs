@@ -37,20 +37,26 @@
 
     <!-- ============================================================
          All application files harvested in one pass from files\**
-    ============================================================ -->
+         (Lancer QET.bat has been removed from the artifact before
+          this build — see windows-msi.yml step "Remove Lancer QET.bat")
+         ============================================================ -->
     <ComponentGroup Id="CG_AllFiles" Directory="INSTALLDIR">
       <Files Include="$(var.FilesDir)\**" />
     </ComponentGroup>
 
     <!-- ============================================================
          Desktop + Start Menu shortcuts
-    ============================================================ -->
+         Point directly to qelectrotech.exe with all required arguments.
+         No .bat wrapper needed.
+         ============================================================ -->
     <ComponentGroup Id="CG_Shortcuts" Directory="INSTALLDIR">
+
       <Component Id="C_ShortcutDesktop" Guid="F1A2B3C4-D5E6-7890-5678-012345678901">
         <Shortcut Id="DesktopShortcut"
                   Directory="DesktopFolder"
                   Name="QElectroTech"
-                  Target="[INSTALLDIR]Lancer QET.bat"
+                  Target="[INSTALLDIR]bin\qelectrotech.exe"
+                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; -style windowsvista"
                   Icon="qet.ico"
                   WorkingDirectory="INSTALLDIR" />
         <RegistryValue Root="HKCU"
@@ -59,11 +65,13 @@
                        Type="integer" Value="1"
                        KeyPath="yes" />
       </Component>
+
       <Component Id="C_ShortcutStartMenu" Guid="A2B3C4D5-E6F7-8901-6789-123456789012">
         <Shortcut Id="StartMenuShortcut"
                   Directory="ProgramMenuFolder"
                   Name="QElectroTech"
-                  Target="[INSTALLDIR]Lancer QET.bat"
+                  Target="[INSTALLDIR]bin\qelectrotech.exe"
+                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; -style windowsvista"
                   Icon="qet.ico"
                   WorkingDirectory="INSTALLDIR" />
         <RegistryValue Root="HKCU"
@@ -72,11 +80,12 @@
                        Type="integer" Value="1"
                        KeyPath="yes" />
       </Component>
+
     </ComponentGroup>
 
     <!-- ============================================================
          .qet file association
-    ============================================================ -->
+         ============================================================ -->
     <ComponentGroup Id="CG_FileAssoc" Directory="INSTALLDIR">
       <Component Id="C_FileAssoc" Guid="B3C4D5E6-F7A8-9012-7890-234567890123">
         <RegistryValue Root="HKCR" Key=".qet" Type="string" Value="QElectroTech.Document" KeyPath="yes" />
@@ -90,12 +99,33 @@
 
     <!-- ============================================================
          Icon for shortcuts
-    ============================================================ -->
+         ============================================================ -->
     <Icon Id="qet.ico" SourceFile="$(var.FilesDir)\ico\qelectrotech.ico" />
 
     <!-- ============================================================
+         CustomAction: set elements\ subtree read-only after install
+         Runs an inline PowerShell script via WiX's QtExec pattern.
+         Executes after all files are committed to disk (afterInstallFinalize).
+         ============================================================ -->
+    <Property Id="SetElementsReadOnly"
+              Value="powershell.exe -NonInteractive -NoProfile -WindowStyle Hidden -Command &quot;Get-ChildItem -Path '[INSTALLDIR]elements' -Recurse -File | ForEach-Object { $_.IsReadOnly = $true }&quot;" />
+
+    <CustomAction Id="CA_SetElementsReadOnly"
+                  Property="SetElementsReadOnly"
+                  ExeCommand=""
+                  Execute="deferred"
+                  Impersonate="no"
+                  Return="ignore" />
+
+    <InstallExecuteSequence>
+      <Custom Action="CA_SetElementsReadOnly" After="InstallFiles">
+        NOT Installed AND NOT REMOVE
+      </Custom>
+    </InstallExecuteSequence>
+
+    <!-- ============================================================
          Main feature (everything included)
-    ============================================================ -->
+         ============================================================ -->
     <Feature Id="ProductFeature" Title="QElectroTech" Level="1">
       <ComponentGroupRef Id="CG_AllFiles" />
       <ComponentGroupRef Id="CG_Shortcuts" />
@@ -110,9 +140,9 @@
 
     <!-- Properties shown in Programs and Features -->
     <Property Id="ARPPRODUCTICON" Value="qet.ico" />
-    <Property Id="ARPHELPLINK" Value="https://qelectrotech.org" />
+    <Property Id="ARPHELPLINK"    Value="https://qelectrotech.org" />
     <Property Id="ARPURLINFOABOUT" Value="https://qelectrotech.org" />
-    <Property Id="ARPCOMMENTS" Value="Free electrical schematic editor" />
+    <Property Id="ARPCOMMENTS"   Value="Free electrical schematic editor" />
 
   </Package>
 </Wix>
