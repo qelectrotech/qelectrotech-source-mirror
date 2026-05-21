@@ -52,14 +52,15 @@ class Element : public QetGraphicsItem
 				(master, slave, report ect...)
 			*/
 		enum kind {
-			Simple = 1,
-			NextReport = 2,
-			PreviousReport = 4,
-			AllReport = 6,
-			Master = 8,
-			Slave = 16,
-			Terminale = 32,
-			Thumbnail = 64};
+            Simple = 1,
+            NextReport = 2,
+            PreviousReport = 4,
+            AllReport = 6,
+            Master = 8,
+            Slave = 16,
+            Terminale = 32,
+            Thumbnail = 64,
+            ConductorDefinition = 128};
 
 		Element(const ElementsLocation &location,
 			QGraphicsItem * = nullptr,
@@ -95,6 +96,8 @@ class Element : public QetGraphicsItem
 				DynamicElementTextItem *text,
 				ElementTextItemGroup *group);
 
+	public slots:
+		void updateConductorTexts();
 
 	public:
 		QList<Terminal *> terminals() const;

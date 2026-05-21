@@ -736,40 +736,62 @@ bool QETElementEditor::checkElement()
 	QList<QETWarning> warnings;
 	QList<QETWarning> errors;
 
-		// Warning #1: Element haven't got terminal
-		// (except for report, because report must have one terminal and this checking is do below)
+	// Warning #1: Element haven't got terminal
+	// (except for report and conductor definition, because they must have one terminal and this checking is done below)
 	if (!m_elmt_scene -> containsTerminals() &&
-		!(m_elmt_scene->elementData().m_type & ElementData::AllReport)) {
+		!(m_elmt_scene->elementData().m_type & ElementData::AllReport) &&
+		m_elmt_scene->elementData().m_type != ElementData::ConductorDefinition) {
 		warnings << qMakePair(
-						tr("Absence de borne", "warning title"),
-						tr(
-							"<br>En l'absence de borne, l'élément ne pourra être"
-			" relié à d'autres éléments par l'intermédiaire de conducteurs.",
-							"warning description"
-		)
-						);
-	}
+			tr("Absence de borne", "warning title"),
+							  tr(
+								  "<br>En l'absence de borne, l'élément ne pourra être"
+								  " relié à d'autres éléments par l'intermédiaire de conducteurs.",
+			"warning description"
+							  )
+		);
+		}
 
 		// Check folio report element
-	if (m_elmt_scene->elementData().m_type & ElementData::AllReport)
-	{
-		int terminal =0;
+		if (m_elmt_scene->elementData().m_type & ElementData::AllReport)
+		{
+			int terminal =0;
 
-		for(auto qgi : m_elmt_scene -> items()) {
-			if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
-				terminal ++;
+			for(auto qgi : m_elmt_scene -> items()) {
+				if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+					terminal ++;
+				}
+			}
+
+			//Error folio report must have only one terminal
+			if (terminal != 1) {
+				errors << qMakePair (tr("Absence de borne"),
+									 tr("<br><b>Erreur</b> :"
+									 "<br>Les reports de folio doivent posséder une seul borne."
+									 "<br><b>Solution</b> :"
+									 "<br>Verifier que l'élément ne possède qu'une seul borne"));
 			}
 		}
 
-			//Error folio report must have only one terminal
-		if (terminal != 1) {
-			errors << qMakePair (tr("Absence de borne"),
-								 tr("<br><b>Erreur</b> :"
-								"<br>Les reports de folio doivent posséder une seul borne."
-								"<br><b>Solution</b> :"
-								"<br>Verifier que l'élément ne possède qu'une seul borne"));
+		// Check conductor definition element
+		if (m_elmt_scene->elementData().m_type == ElementData::ConductorDefinition)
+		{
+			int terminal =0;
+
+			for(auto qgi : m_elmt_scene -> items()) {
+				if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+					terminal ++;
+				}
+			}
+
+			// Error: Conductor definition must have exactly one terminal
+			if (terminal != 1) {
+				errors << qMakePair (tr("Nombre de bornes incorrect"),
+									 tr("<br><b>Erreur</b> :"
+									 "<br>Les définitions de conducteur ne peuvent posséder qu'une seule borne."
+									 "<br><b>Solution</b> :"
+									 "<br>Vérifier que l'élément ne possède qu'une seule borne"));
+			}
 		}
-	}
 
 	if (!errors.count() && !warnings.count()) {
 		return(true);
