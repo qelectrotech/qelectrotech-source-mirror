@@ -28,6 +28,7 @@
     <!-- In-place upgrade: automatically uninstalls the previous version -->
     <MajorUpgrade
       DowngradeErrorMessage="A newer version of QElectroTech is already installed."
+      AllowSameVersionUpgrades="yes"
       Schedule="afterInstallInitialize" />
 
     <!-- Installation directory -->
