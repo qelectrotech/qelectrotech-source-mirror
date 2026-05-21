@@ -302,33 +302,6 @@ jobs:
           echo "Moving: $INSTALLER -> dist/"
           mv "$INSTALLER" "$GITHUB_WORKSPACE/dist/"
 
-      # ----------------------------------------------------------------
-      # SignPath — sign the NSIS installer
-      # ----------------------------------------------------------------
-      - name: Install SignPath PowerShell module
-        shell: pwsh
-        run: |
-          Install-Module -Name SignPath -Force -Scope CurrentUser
-
-      - name: Sign NSIS installer with SignPath
-        shell: pwsh
-        run: |
-          $installer = Get-ChildItem "$env:GITHUB_WORKSPACE\dist\Installer_*.exe" | Select-Object -First 1
-          if (-not $installer) {
-            Write-Error "No Installer_*.exe found in dist/"
-            exit 1
-          }
-          Write-Host "Signing: $($installer.FullName)"
-          Submit-SigningRequest `
-            -InputArtifactPath $installer.FullName `
-            -ApiToken "${{ secrets.SIGNPATH_API_TOKEN }}" `
-            -OrganizationId "${{ secrets.SIGNPATH_ORGANIZATION_ID }}" `
-            -ProjectSlug "MSI" `
-            -SigningPolicySlug "test-signing" `
-            -OutputArtifactPath $installer.FullName `
-            -Force `
-            -WaitForCompletion
-          Write-Host "Signing complete: $($installer.Name)"
 
       - name: Upload build logs on failure
         if: failure()
