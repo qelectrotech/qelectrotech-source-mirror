@@ -75,10 +75,20 @@ jobs:
           $count = git rev-list HEAD --count 2>$null
           $rev = [int]$count + 473
           $verDisplay = "${ver}-r${rev}-${sha}_x86_64-win64"
+          # Generate a unique ProductCode GUID from the commit SHA
+          # This ensures MajorUpgrade always triggers, even for same-version builds
+          $fullSha = git rev-parse HEAD 2>$null
+          if (-not $fullSha) { $fullSha = [System.Guid]::NewGuid().ToString() }
+          $bytes = [System.Text.Encoding]::UTF8.GetBytes($fullSha)
+          $md5 = [System.Security.Cryptography.MD5]::Create().ComputeHash($bytes)
+          $productGuid = [System.Guid]::new($md5[0..15]).ToString().ToUpper()
+
           echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
           echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
+          echo "PRODUCT_GUID=$productGuid"   >> $env:GITHUB_OUTPUT
           Write-Host "Version MSI     : $verMsi"
           Write-Host "Version display : $verDisplay"
+          Write-Host "Product GUID    : $productGuid"
 
       # ----------------------------------------------------------------
       # 4. Install WiX v7, accept EULA and install WixUI extension
@@ -202,10 +212,13 @@ jobs:
           Write-Host " LicenseRtf : $licRtf"
           Write-Host " Output     : dist\$outputName"
 
+          $productGuid = "${{ steps.version.outputs.PRODUCT_GUID }}"
+
           wix build $wxs `
             -arch x64 `
             -d "Version=$version" `
             -d "ProductVersion=$verDisplay" `
+            -d "ProductCode=$productGuid" `
             -d "FilesDir=$filesDir" `
             -d "LicenseRtf=$licRtf" `
             -ext WixToolset.UI.wixext `
