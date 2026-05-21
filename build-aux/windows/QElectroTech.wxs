@@ -130,8 +130,8 @@
                   Return="ignore" />
 
     <InstallExecuteSequence>
-      <Custom Action="CA_ResolveElementsPath" After="InstallFiles">NOT Installed AND NOT REMOVE</Custom>
-      <Custom Action="CA_SetElementsReadOnly" After="CA_ResolveElementsPath">NOT Installed AND NOT REMOVE</Custom>
+      <Custom Action="CA_ResolveElementsPath" After="InstallFiles" Condition="NOT Installed AND NOT REMOVE" />
+      <Custom Action="CA_SetElementsReadOnly" After="CA_ResolveElementsPath" Condition="NOT Installed AND NOT REMOVE" />
     </InstallExecuteSequence>
 
     <!-- ============================================================
