@@ -81,7 +81,8 @@ jobs:
           if (-not $fullSha) { $fullSha = [System.Guid]::NewGuid().ToString() }
           $bytes = [System.Text.Encoding]::UTF8.GetBytes($fullSha)
           $md5 = [System.Security.Cryptography.MD5]::Create().ComputeHash($bytes)
-          $productGuid = [System.Guid]::new($md5[0..15]).ToString().ToUpper()
+          $guidBytes = [byte[]]$md5[0..15]
+          $productGuid = [System.Guid]::new($guidBytes).ToString().ToUpper()
 
           echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
           echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
