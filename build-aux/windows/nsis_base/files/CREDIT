@@ -1,0 +1,300 @@
+[ca]
+Gràcies a Qt Software per la biblioteca Qt ( http://www.qtsoftware.com/ ), amb llicència GNU/GPL.
+Gràcies al projecte KDE ( http://www.kde.org/ ).
+Gràcies a Loic per les seves explicacions d'ordre matemàtic.
+Gràcies a Remi Collet pels paquets Fedora.
+Gràcies a Laurent Trinques pels paquets Debian.
+Gràcies a `trem' pels paquets Mandriva.
+Gràcies a TuxFamily ( http://tuxfamily.org/ ) per a l'allotjament del projecte.
+Gràcies a `Nishiki' pels seus elements i el seu suport suport.
+Gràcies a qtcentre.org per la seva classe SingleApplication.
+Gràcies a Alfredo Carreto per les seves traduccions i correccions al castellà ( http://electronicosmx.net )
+Gràcies a 'Dr.Slump' et Sivio pour leurs traductions a l'italià
+Gràcies a Jose Carlos Martins per les seves traduccions al portuguès
+Gràcies a Pavel Fric per les seves traduccions al txec
+Gràcies a Pawel Smiech per les seves traduccions al polonès
+Gràcies a Yuriy Litkevich per les seves traduccions al rus
+Gràcies a Youssef Ouamalkran i Antoni Mirabete per les seves traduccions al català
+Gràcies a Gabi Mandoc per les seves traduccions al romanès
+Gràcies a Markus Budde i Jonas Stein et Noah Braden per les seves traduccions a l'alemany
+Gràcies a Mohamed Souabni per les seves traduccions a l'àrab
+Gràcies a Uroš Platiše per les seves traduccions a l'eslovè
+Gràcies a Antun Marakovic per les seves traduccions al croat
+Gràcies a Nikos Papadopoylos && Yannis Gyftomitros per les seves traduccions al grec
+Gràcies a Markos Chandras pels paquets Gentoo
+Gràcies a David pels paquets Slackware
+Gràcies a Chipsterjulien pels paquets  Archlinux AUR
+Gràcies a Elbert de NL pels paquets  OS/2
+Gràcies a Zloidemon pels paquets  (port GCC)
+Gràcies a Mrbit per ebuild els paquets Gentoo
+
+[en]
+Thanks to Qt Software for their Qt library ( http://www.qtsoftware.com/ ), licensed under GNU/GPL.
+Thanks to the KDE project ( http://www.kde.org/ ).
+Thanks to Loic for his mathematics-related explanations.
+Thanks to Remi Collet for the Fedora packaging.
+Thanks to Laurent Trinques for the Debian packaging.
+Thanks to `trem' for the Mandriva packaging.
+Thanks to TuxFamily ( http://tuxfamily.org/ ) for hosting the project.
+Thanks to `Nishiki' for his elements and his support.
+Thanks to qtcentre.org for their SingleApplication class.
+Thanks to Alfredo Carreto for his Spanish translations and fixing Spanish translations ( http://electronicosmx.net )
+Thanks to 'Dr.Slump' and Sivio for their translations in Italian
+Thanks to Jose Carlos Martins for his translations in Portuguese
+Thanks to Pavel Fric for his translations in Czech
+Thanks to Pawel Smiech for His Polish translations
+Thanks to Yuriy Litkevich for his translations into Russian
+Thanks to Youssef Ouamalkran for his translations Catatan
+Thanks to Gabi Mandoc for his translations in Romanian
+Thanks to Markus Budde and Jonas Stein and Noah Braden for his translations into German
+Thanks to Mohamed Souabni for his translations into Arabic
+Thanks to Uroš Platiše for his translations into Slovenian
+Thanks to Antun Marakovic for his translations Croatian
+Thanks to Nikos Papadopoylos && Yannis Gyftomitros their Greek translations
+Thanks to Markos Chandras for Gentoo packaging
+Thanks to David for packaging Slackware
+Thanks to Chipsterjulien for packaging Archlinux AUR packages
+Thanks to Elbert from the NL for packaging OS/2
+Thanks to zloidemon from for packaging FreeBsd (port GCC)
+Thanks to Mrbit for ebuild Gentoo packaging.
+
+[fr]
+Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
+Merci au projet KDE ( http://www.kde.org/ ).
+Merci à Loic pour ses explications d'ordre mathématique.
+Merci à Remi Collet pour les paquets Fedora.
+Merci à Laurent Trinques pour les paquets Debian.
+Merci à `trem' pour les paquets Mandriva.
+Merci à TuxFamily ( http://tuxfamily.org/ ) pour l'hébergement du projet.
+Merci à `Nishiki' pour ses éléments et son soutien.
+Merci à qtcentre.org pour leur classe SingleApplication.
+Merci à Alfredo Carreto pour ses traductions et corrections en espagnol ( http://electronicosmx.net )
+Merci à 'Dr.Slump' et Sivio pour leurs traductions en italien
+Merci à Jose Carlos Martins pour ses traductions en portugais
+Merci à Pavel Fric pour ses traductions en Tchèque
+Merci à Pawel Smiech pour ses traductions en polonais
+Merci à Yuriy Litkevich pour ses traductions en russe
+Merci à Youssef Ouamalkran pour ses traductions en catatan
+Merci à Gabi Mandoc pour ses traductions en Roumain
+Merci à Markus Budde et Jonas Stein et Noah Braden pour ses traductions en allemand
+Merci à Mohamed Souabni pour ses traductions en arabe
+Merci à Uroš Platiše pour ses traductions en Slovene
+Merci à Antun Marakovic pour ses traductions Croate
+Merci à Nikos Papadopoylos && Yannis Gyftomitros pour leurs traductions en grec
+Merci à Markos Chandras pour les paquets Gentoo
+Merci à David les paquets Slackware
+Merci à Chipsterjulien les paquets  Archlinux AUR packages
+Merci à Elbert from the NL les paquets  OS/2
+Merci à Zloidemon from for les paquets  (port GCC)
+Merci à Mrbit for ebuild les paquets Gentoo
+
+[ru]
+Спасибо Qt Software за их библиотеку Qt ( http://www.qtsoftware.com/ ), лицензированную на условиях GNU/GPL.
+Спасибо проекту KDE ( http://www.kde.org/ ).
+Спасибо Loic за объяснения связанные с математикой.
+Спасибо Remi Collet за пакет для Fedora.
+Спасибо Laurent Trinques за пакет для Debian.
+Спасибо `trem' за пакет для Mandriva.
+Спасибо TuxFamily ( http://tuxfamily.org/ ) за хостинг для проекта.
+Спасибо `Nishiki' за элементы и поддержку.
+Спасибо qtcentre.org за их класс SingleApplication.
+Спасибо Alfredo Carreto за исправления и перевод на испанский ( http://electronicosmx.net )
+Спасибо 'Dr.Slump' за исправления и перевод
+
+[pt]
+Agradecimentos a Qt Software pela sua biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada de acordo com a GNU/GPL.
+Agradecimentos ao projecto KDE ( http://www.kde.org/ ).
+Agradecimentos a Loic pelas suas explicações relacionadas com problemas matemáticos.
+Agradecimentos a Remi Collet pela criação dos pacotes para Fedora.
+Agradecimentos a Laurent Trinques pela criação dos pacotes para Debian.
+Agradecimentos a "trem" pela criação dos pacotes para Mandriva.
+Agradecimentos a TuxFamily ( http://tuxfamily.org/ ) por albergarem este projecto.
+Agradecimentos a "Nishiki" pela criação de elementos e o seu suporte.
+Agradecimentos a qtcentre.org pela classe SingleApplication.
+Agradecimentos a Alfredo Carreto pela tradução para Espanhol e pela correcção de traduções em Espanhol ( http://electronicosmx.net ).
+Agradecimentos a 'Dr.Slump'pela tradução para italiano
+
+[es]
+Agradecimientos a Qt Software por su biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada bajo GNU/GPL.
+Agradecimientos al proyecto KDE ( http://www.kde.org/ ).
+Agradecimientos a Loic por sus explicaciones relacionadas con problemas matemáticos.
+Agradecimientos a Remi Collet por criación de paquetes para Fedora.
+Agradecimientos a Laurent Trinques por la creación de paquetes para Debian.
+Agradecimientos a "trem" por creación de paquetes para Mandriva.
+Agradecimientos a TuxFamily ( http://tuxfamily.org/ ) por el alojamiento de este proyecto.
+Agradecimientos a "Nishiki" por creación de elementos e de su suporte.
+Agradecimientos a qtcentre.org por classe SingleApplication.
+Agradecimientos a Alfredo Carreto por sus traducciones en español y correcciones de traducción en español ( http://electronicosmx.net)
+Agradecimientos a 'Dr.Slump' por sus traducciones en italiano
+
+[cs]
+Díky Qt Software za jejich knihovnu Qt ( http://www.qtsoftware.com/ ), pod licencí GNU/GPL.
+Díky projektu KDE ( http://www.kde.org/ ).
+Díky Loicovi za jeho vysvětlení vztahující se k matematice.
+Díky Remi Colletovi za balíček pro Fedoru.
+Díky Laurentu Trinquesovi za balíček pro Debian.
+Díky `trem' za balíček pro Mandrivu.
+Díky TuxFamily ( http://tuxfamily.org/ ) za poskytování hostingu pro projekt.
+Díky `Nishiki' za jeho prvky a jeho podporu.
+Díky qtcentre.org za jejich třídu SingleApplication.
+Poděkování Alfredovi Carretovi za jeho španělský překlad a opravy španělského překladu ( http://electronicosmx.net )
+Dìky 'Dr.Slump' za jeho italianský překlad 
+
+[pl]
+Podziękowania dla Qt Software, za biblioteki Qt (http://www.qtsoftware.com/) na licencji GNU / GPL.
+Podziękowania dla projektu KDE (http://www.kde.org/).
+Podziękowania dla Loic, za pomoc w rozwiązaniu problemów matematycznych.
+Podziękowania dla Remi Collet, za pakiety dla Fedory.
+Podziękowania dla Laurent Trinquesovi, za pakiety dla Debiana.
+Podziękowania dla "trem", za pakiety dla Mandrivy.
+Podziękowania dla TuxFamily (http://tuxfamily.org/), za organizację projektu.
+Podziękowanie dla "Nishiki", zajego elementy i poparcie.
+Podziękowania dla qtcentre.org, za klasę SingleApplication.
+Podziękowania dla Alfredo Carreto, za jego tłumaczenie na język hiszpański i korektę ( http://electronicosmx.net)
+
+[it]
+Grazie a Qt Software per le loro librerie Qt (http://www.qtsoftware.com/), licenzate sotto GNU/GPL.
+Grazie al progetto KDE (http://www.kde.org/).
+Grazie a Loic per le sue spiegazioni matematiche.
+Grazie a Remi Collet per i pacchetti per Fedora.
+Grazie a Laurent Trinques per i pacchetti per Debian.
+Grazie a `trem' per i pacchetti per Mandriva.
+Grazie a TuxFamily (http://tuxfamily.org/) per l'ospitalità al progetto.
+Grazie a `Nishiki' per i suoi elementi ed il supporto.
+Grazie a qtcentre.org per la loro classe SingleApplication.
+Grazie a Alfredo Carreto per le traduzioni e le correzioni in spagnolo (http://electronicosmx.net).
+Grazie a 'Dr.Slump' e 'Silvio' per la traduzione in italiano.
+Grazie a Jose Carlos Martins per la traduzione in portoghese.
+Grazie a Pavel Fric per la traduzione in ceco.
+Grazie a Pawel Smiech per la traduzione in polacco.
+Grazie a Yuriy Litkevich per la traduzione in russo .
+Grazie a Youssef Ouamalkran per la traduzione in catalano.
+Grazie a Gabi Mandoc per la traduzione in rumeno.
+Grazie a Markus Budde e Jonas Stein per la traduzione in tedesco.
+Grazie a Mohammed Souabni per la traduzione in arabo.
+Grazie a Uroš Platiše per la traduzione in sloveno.
+Grazie a Antun Marakovic per la traduzione in croato.
+Grazie a Nikos Papadopoylos e Yannis Gyftomitros per la traduzione in greco.
+Grazie a Markos Chandras per i pacchetti per Gentoo.
+
+[el]
+Ευχαριστίες στην Qt Software για την βιβλιοθήκη Qt ( http://www.qtsoftware.com/ ), αδειοδοτημένο ως GNU/GPL.
+Ευχαριστίες στο έργο KDE ( http://www.kde.org/ ).
+Ευχαριστίες στον Loic για τις εξηγήσεις σχετικές με μαθηματικά.
+Ευχαριστίες στον Remi Collet για τα πακέτα Fedora.
+Ευχαριστίες στον Laurent Trinques για τα πακέτα Debian.
+Ευχαριστίες στον `trem' για τα πακέτα Mandriva.
+Ευχαριστίες στο TuxFamily ( http://tuxfamily.org/ ) για τη φιλοξενία του έργου.
+Ευχαριστίες στον `Nishiki' για τα στοιχεία και την υποστήριξη του.
+Ευχαριστίες στο qtcentre.org για την κλάση SingleApplication.
+Ευχαριστίες στον Alfredo Carreto για τις μεταφράσεις του και για την επισκευή της Ισπανικής μετάφρασης ( http://electronicosmx.net )
+Ευχαριστίες στον 'Dr.Slump' και τον Sivio για τις μεταφράσεις τους στα Ιταλικά
+Ευχαριστίες στον Jose Carlos Martins για την μετάφραση στα Πορτογαλικά
+Ευχαριστίες στον Pavel Fric Για την μετάφραση στα Τσέχικα
+Ευχαριστίες στον Pawel Smiech για την Πολωνική μετάφραση
+Ευχαριστίες στον Yuriy Litkevich για τις μεταφράσεις του στα Ρώσικα
+Ευχαριστίες στον Youssef Ouamalkran για τις μεταφράσεις του στα Καταλανικά
+Ευχαριστίες στον Gabi Mandoc για τις μεταφράσεις του στα Ρουμανικά
+Ευχαριστίες στους Markus Budde  και Jonas Stein για τις μεταφράσεις τους στα Γερμανικά
+Ευχαριστίες στον Mohamed Souabni για τις μεταφράσεις του στα Αραβικά
+Ευχαριστίες στον Uroš Platiše για τις μεταφράσεις του στα Σλοβένικα
+Ευχαριστίες στον Antun Marakovic για τις μεταφράσεις του στα Κροατικά
+Ευχαριστίες στους Νίκο Παπαδόπουλο και Γιάννη Γυφτομήτρο για τις μεταφράσεις τους στα Ελληνικά
+Ευχαριστίες στον Markos Chandras για τα πακέτα Gentoo
+Ευχαριστίες στον David για τα πακέτα Slackware
+Ευχαριστίες στον Chipsterjulien για τα πακέτα Archlinux AUR
+Ευχαριστίες στον Elbert για τα πακέτα OS/2
+Ευχαριστίες στον zloidemon για τα πακέτα FreeBsd (port GCC)
+Ευχαριστίες στον Mrbit για τα πακέτα ebuild για Gentoo.
+
+[nl]
+Dank aan Qt Software voor hun Qt library ( http://www.qtsoftware.com/ ) , onder de GNU / GPL licentie .
+Dank aan het KDE-project ( http://www.kde.org/ ) .
+Dank aan Loic voor zijn wiskunde - gerelateerde verklaringen .
+Met dank aan Remi Collet voor de Fedora pakket.
+Met dank aan Laurent Trinques voor de Debian pakket.
+Dank aan ` tremolo ' voor de Mandriva pakket.
+Dank aan TuxFamily ( http://tuxfamily.org/ ) voor het hosten van het project .
+Dank aan ` Nishiki ' voor zijn elementen en zijn steun .
+Dank aan qtcentre.org voor hun SingleApplication klasse .
+Dank aan Alfredo Carreto voor zijn Spaanse vertalingen en tot vaststelling Spaanse vertalingen ( http://electronicosmx.net )
+Dank aan ' Dr.Slump ' en Sivio voor hun vertalingen in het Italiaans
+Met dank aan Jose Carlos Martins voor zijn vertalingen in het Portugees
+Met dank aan Pavel Fric voor zijn vertalingen in het Tsjechisch
+Dank aan Pawel miech voor zijn Poolse vertalingen
+Dank aan Yuriy Litkevich voor zijn vertalingen in het Russisch
+Dank aan Youssef Ouamalkran voor zijn vertalingen Catatan
+Met dank aan Gabi Mandoc voor zijn vertalingen in het Roemeens
+Dank aan Markus Budde en Jonas Stein en Noah Braden voor zijn vertalingen in het Duits
+Met dank aan Mohamed Souabni voor zijn vertalingen in het Arabisch
+Dank aan Uro ? Plati ? E voor zijn vertalingen in het Sloveens
+Dank aan Antun Marakovic voor zijn vertalingen Kroatisch
+Dank aan Nikos Papadopoylos && Yannis Gyftomitros hun Griekse vertalingen
+Dank aan Markos Chandras voor Gentoo pakket
+Met dank aan David voor het verpakken van Slackware
+Dank aan Chipsterjulien voor het verpakken van Archlinux AUR pakketten
+Dank aan Elbert uit de NL voor het pakket van OS/2
+Dank aan zloidemon voor het verpakken van FreeBSD ( poort GCC )
+Dank aan Mrbit voor ebuild Gentoo pakket.
+
+[be]
+Dank aan Qt Software bibliotheek voor Qt ( http://www.qtsoftware.com/ ), onder licentie van GNU/GPL.
+Dank aan project KDE ( http://www.kde.org/ ).
+Dank aan Loic voor zijn uitleg van de mathematische orde.
+Dank aan Remi Collet voor de pakketten Fedora.
+Dank aan Laurent Trinques voor de pakkette Debian.
+Dank aan `trem' voor de pakketten Mandriva.
+Dank aan TuxFamily ( http://tuxfamily.org/ ) voor het hosten van het project.
+Dank aan `Nishiki' voor zijn elementen en ondersteuning.
+Dank aan qtcentre.org voor hun SingleApplication klasse.
+Dank aan Alfredo Carreto voor zijn vertalingen en correcties in het Spaans ( http://electronicosmx.net )
+Dank aan 'Dr.Slump' en Sivio hun vertaling in het Italiaans
+Dank aan Jose Carlos Martins voor zijn vertalingen in het Portugees
+Dank aan Pavel Fric voor zijn vertalingen in het Tsjechisch
+Dank aan Pawel Smiech voor zijn vertaling in het Pools
+Dank aan Yuriy Litkevich voor zijn vertalingen in het Russisch
+Dank aan Youssef Ouamalkran voor zijn vertalingen Catatan
+Dank aan Gabi Mandoc voor zijn vertalingen in het Roemeens
+Dank aan Markus Budde en Jonas Stein et Noah Braden voor hun vertaling in het Duitse
+Dank aan Mohamed Souabni voor zijn vertalingen in het Arabisch
+Dank aan Uroš Platiše zijn onze vertalingen Sloveense
+Dank aan Antun Marakovic voor zijn vertalingen Kroatisch
+Dank aan Nikos Papadopoylos en Yannis Gyftomitros hun vertalingen in het Grieks
+Dank aan Markos Chandras voor de pakkette Gentoo
+Dank aan David voor de pakkette Slackware
+Dank aan Chipsterjulien voor de pakkette Archlinux AUR 
+Dank aan Elbert voor de pakkette  OS/2
+Dank aan Zloidemon fvoor de pakkette  (port GCC)
+Dank aan Mrbit van ebuild voor de pakkette Gentoo 
+
+[ko]
+Qt 라이브러리(Qt Software, http://www.qtsoftware.com/)를 제공해 주신 Qt Software에 감사드립니다. (GNU/GPL 라이선스)
+KDE 프로젝트 ( http://www.kde.org/ )에 감사드립니다.
+수학적인 설명을 제공해 주신 Loic에게 감사드립니다.
+Fedora 패키지를 제공해 주신 Remi Collet에게 감사드립니다.
+Debian 패키지를 제공해 주신 Laurent Trinques에게 감사드립니다.
+Mandriva 패키지를 제공해 주신 `trem`에게 감사드립니다.
+프로젝트 호스팅을 지원해 주신 TuxFamily ( http://tuxfamily.org/ )에 감사드립니다.
+요소 제공 및 지원을 해주신 `Nishiki`에게 감사드립니다.
+SingleApplication 클래스를 제공해 준 qtcentre.org에 감사드립니다.
+스페인어 번역 및 번역 수정에 기여해 주신 Alfredo Carreto ( http://electronicosmx.net )에게 감사드립니다.
+이탈리아어 번역에 기여해 주신 'Dr.Slump'와 Silvio에게 감사드립니다.
+포르투갈어 번역에 기여해 주신 Jose Carlos Martins에게 감사드립니다.
+체코어 번역에 기여해 주신 Pavel Fric에게 감사드립니다.
+폴란드어 번역에 기여해 주신 Pawel Smiech에게 감사드립니다.
+러시아어 번역에 기여해 주신 Yuriy Litkevich에게 감사드립니다.
+카탈로니아어 번역에 기여해 주신 Youssef Ouamalkran에게 감사드립니다.
+루마니아어 번역에 기여해 주신 Gabi Mandoc에게 감사드립니다.
+독일어 번역에 기여해 주신 Markus Budde, Jonas Stein, Noah Braden에게 감사드립니다.
+아랍어 번역에 기여해 주신 Mohamed Souabni에게 감사드립니다.
+슬로베니아어 번역에 기여해 주신 Uroš Platiše에게 감사드립니다.
+크로아티아어 번역에 기여해 주신 Antun Marakovic에게 감사드립니다.
+그리스어 번역에 기여해 주신 Nikos Papadopoylos와 Yannis Gyftomitros에게 감사드립니다.
+한국어 번역에 기여해 주신 정광호 님께 감사드립니다.
+Gentoo 패키지를 제공해 주신 Markos Chandras에게 감사드립니다.
+Slackware 패키지를 제공해 주신 David에게 감사드립니다.
+Arch Linux AUR 패키지를 제공해 주신 Chipsterjulien에게 감사드립니다.
+OS/2 패키지를 제공해 주신 Elbert에게 감사드립니다.
+FreeBSD(GCC 포트) 패키지를 제공해 주신 zloidemon에게 감사드립니다.
+Gentoo ebuild 패키지를 제공해 주신 Mrbit에게 감사드립니다.
+

@@ -25,6 +25,7 @@
 #include "element.h"
 #include "elementtextitemgroup.h"
 #include "qgraphicsitemutility.h"
+#include "terminal.h"
 
 //define the height of the header.
 static int header = 5;
@@ -627,6 +628,16 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 {
 	QString str = elementPositionText(elmt);
+
+	// Collect terminal names from the element definition (.elmt)
+	// e.g. name="13" and name="14" on each terminal
+	QStringList terminal_names;
+	for (Terminal *t : elmt->terminals()) {
+		const QString tname = t->name();
+		if (!tname.isEmpty())
+			terminal_names << tname;
+	}
+
 	int offset = m_drawed_contacts*10;
 	QRectF bounding_rect = QRectF(0, offset, 24, 10);
 	
@@ -643,15 +654,19 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 		painter.drawLine(0, offset+6, 8, offset+6);
 		painter.drawLine(16, offset+6, 24, offset+6);
 
-		///take example of this code for display the terminal text
-		/*QFont font = QETApp::diagramTextsFont(4);
-		font.setBold(true);
-		painter.setFont(font);
-		QRectF bt(0, offset, 24, 10);
-		int txt = 10 + m_drawed_contacts;
-		painter.drawText(bt, Qt::AlignLeft|Qt::AlignTop, QString::number(txt));
-		painter.drawText(bt, Qt::AlignRight|Qt::AlignTop, QString::number(txt));
-		painter.setFont(QETApp::diagramTextsFont(5));*/
+		// Draw terminal names on each side of the contact symbol
+		// terminal_names[0] on the left, terminal_names[1] on the right
+		if (!terminal_names.isEmpty()) {
+			QFont font = QETApp::diagramTextsFont(4);
+			font.setBold(true);
+			painter.setFont(font);
+			QRectF bt(0, offset, 24, 10);
+			if (terminal_names.size() >= 1)
+				painter.drawText(bt, Qt::AlignLeft|Qt::AlignTop, terminal_names[0]);
+			if (terminal_names.size() >= 2)
+				painter.drawText(bt, Qt::AlignRight|Qt::AlignTop, terminal_names[1]);
+			painter.setFont(QETApp::diagramTextsFont(5));
+		}
 
 		//draw open contact
 		if (flags &NO) {
@@ -767,6 +782,28 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 			QPointF(24, offset+11),
 		};
 		painter.drawPolyline(p2, 3);
+
+		// Draw terminal names for switch contact (3 terminals)
+		// terminal_names[0] = NO side (top left)
+		// terminal_names[1] = NC side (bottom left)
+		// terminal_names[2] = common side (right)
+		if (!terminal_names.isEmpty()) {
+			QFont font = QETApp::diagramTextsFont(4);
+			font.setBold(true);
+			painter.setFont(font);
+			// Sort order from parseTerminal (top->bottom, left->right):
+			// [0]=12 (NO, top-left), [1]=14 (common, top-center), [2]=13 (NC, bottom-center)
+			if (terminal_names.size() >= 1)
+				painter.drawText(QRectF(0, offset, 8, 8),
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]);   // 12 NO left
+			if (terminal_names.size() >= 2)
+				painter.drawText(QRectF(16, offset+4, 8, 6),
+						Qt::AlignRight|Qt::AlignTop, terminal_names[1]); // 14 common right
+			if (terminal_names.size() >= 3)
+				painter.drawText(QRectF(0, offset+9, 8, 6),
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[2]); // 13 NC left-bottom
+			painter.setFont(QETApp::diagramTextsFont(5));
+		}
 
 			//Draw the half ellipse off delay
 		if (flags &Delay)
