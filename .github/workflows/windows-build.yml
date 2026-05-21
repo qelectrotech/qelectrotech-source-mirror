@@ -326,6 +326,7 @@ jobs:
             -ProjectSlug "MSI" `
             -SigningPolicySlug "test-signing" `
             -OutputArtifactPath $installer.FullName `
+            -Force `
             -WaitForCompletion
           Write-Host "Signing complete: $($installer.Name)"
 
