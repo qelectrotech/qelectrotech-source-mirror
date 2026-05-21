@@ -92,6 +92,7 @@ jobs:
           echo $toolsPath >> $env:GITHUB_PATH
           wix eula accept wix7
           wix extension add WixToolset.UI.wixext/7.0.0
+          wix extension add WixToolset.Util.wixext/7.0.0
           Write-Host "WiX v7 installed, EULA accepted, UI extension added."
 
       # ----------------------------------------------------------------
@@ -208,6 +209,7 @@ jobs:
             -d "FilesDir=$filesDir" `
             -d "LicenseRtf=$licRtf" `
             -ext WixToolset.UI.wixext `
+            -ext WixToolset.Util.wixext `
             -o "dist\$outputName"
 
           if (-not (Test-Path "dist\$outputName")) {

@@ -104,23 +104,34 @@
 
     <!-- ============================================================
          CustomAction: set elements\ subtree read-only after install
-         Runs an inline PowerShell script via WiX's QtExec pattern.
-         Executes after all files are committed to disk (afterInstallFinalize).
-         ============================================================ -->
-    <Property Id="SetElementsReadOnly"
-              Value="powershell.exe -NonInteractive -NoProfile -WindowStyle Hidden -Command &quot;Get-ChildItem -Path '[INSTALLDIR]elements' -Recurse -File | ForEach-Object { $_.IsReadOnly = $true }&quot;" />
 
+         Pattern used: two-step SetProperty + Exec
+         1. CA_ResolveElementsPath (immediate, SetProperty):
+              copies the runtime value of INSTALLDIR into the property
+              ELEMENTS_READONLY_CMD, building the full powershell command.
+         2. CA_SetElementsReadOnly (deferred, Execute="deferred"):
+              runs the command stored in ELEMENTS_READONLY_CMD.
+
+         This is the correct WiX v4/v7 pattern for passing a
+         directory path (resolved at runtime) to a deferred CA.
+         ============================================================ -->
+
+    <!-- Step 1: build the powershell command with the resolved INSTALLDIR -->
+    <CustomAction Id="CA_ResolveElementsPath"
+                  Property="CA_SetElementsReadOnly"
+                  Value="powershell.exe -NonInteractive -NoProfile -WindowStyle Hidden -Command &quot;Get-ChildItem -LiteralPath '[INSTALLDIR]elements' -Recurse -File | ForEach-Object { `$_.IsReadOnly = `$true }&quot;" />
+
+    <!-- Step 2: deferred execution of the powershell command -->
     <CustomAction Id="CA_SetElementsReadOnly"
-                  Property="SetElementsReadOnly"
-                  ExeCommand=""
+                  BinaryRef="Wix4UtilCA_X86"
+                  DllEntry="WixQuietExec"
                   Execute="deferred"
                   Impersonate="no"
                   Return="ignore" />
 
     <InstallExecuteSequence>
-      <Custom Action="CA_SetElementsReadOnly" After="InstallFiles">
-        NOT Installed AND NOT REMOVE
-      </Custom>
+      <Custom Action="CA_ResolveElementsPath" After="InstallFiles">NOT Installed AND NOT REMOVE</Custom>
+      <Custom Action="CA_SetElementsReadOnly" After="CA_ResolveElementsPath">NOT Installed AND NOT REMOVE</Custom>
     </InstallExecuteSequence>
 
     <!-- ============================================================
