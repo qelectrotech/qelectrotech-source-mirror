@@ -36,6 +36,7 @@
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
+#include <QDebug>
 
 #include <QDomElement>
 #include <utility>
@@ -431,6 +432,11 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	m_data.fromXml(xml_def_elmt);
 	setToolTip(name());
 
+	QString my_type_str = xml_def_elmt.attribute(QStringLiteral("link_type"), QStringLiteral("simple"));
+	if (my_type_str == QLatin1String("conductor_definition")) {
+		m_link_type = Element::ConductorDefinition;
+	}
+
 		//load kind informations
 	m_kind_informations.fromXml(
 				xml_def_elmt.firstChildElement(QStringLiteral("kindInformations")),
@@ -626,6 +632,9 @@ Terminal *Element::parseTerminal(const QDomElement &dom_element)
 
 	Terminal *new_terminal = new Terminal(data, this);
 	m_terminals << new_terminal;
+
+	connect(new_terminal, &Terminal::conductorWasAdded,   this, &Element::updateConductorTexts);
+	connect(new_terminal, &Terminal::conductorWasRemoved, this, &Element::updateConductorTexts);
 
 		//Sort from top to bottom and left to right
 	std::sort(m_terminals.begin(),
@@ -1288,6 +1297,8 @@ QString Element::linkTypeToString() const
 			return QStringLiteral("Terminale");
 		case Thumbnail:
 			return QStringLiteral("Thumbnail");
+		case ConductorDefinition:
+			return QStringLiteral("ConductorDefinition");
 		default:
 			return QStringLiteral("Unknown");
 	}
@@ -1554,4 +1565,26 @@ QString Element::name() const {
 ElementsLocation Element::location() const
 {
 	return m_location;
+}
+
+/**
+ * @brief Element::updateConductorTexts
+ *Slot that is triggered when a cable is                           *
+ *connected to or disconnected from a terminal on this component.
+ */
+/**
+ * @brief Element::updateConductorTexts
+ */
+void Element::updateConductorTexts()
+{
+	if (m_link_type != Element::ConductorDefinition) {
+		return;
+	}
+
+	for (DynamicElementTextItem *deti : m_dynamic_text_list) {
+		if (deti) {
+			deti->setPotentialConductor();
+			deti->updateLabel();
+		}
+	}
 }

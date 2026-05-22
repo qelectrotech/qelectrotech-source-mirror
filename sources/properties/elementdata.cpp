@@ -45,14 +45,26 @@ QDomElement ElementData::toXml(QDomDocument &xml_element) const {
 bool ElementData::fromXml(const QDomElement &xml_element)
 {
 	if(xml_element.tagName() != QLatin1String("definition") ||
-	   xml_element.attribute(QStringLiteral("type")) != QLatin1String("element")) {
+		xml_element.attribute(QStringLiteral("type")) != QLatin1String("element")) {
 		return false;
-	}
+		}
 
-	m_type = typeFromString(xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple")));
+		// --- HIER STARTET UNSER DEBUG-BLOCK ---
+		// Wir holen den String aus der XML und speichern ihn kurz zwischen
+		QString raw_type_string = xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple"));
+
+	qDebug() << "\n=== NEUES BAUTEIL WIRD GELADEN ===";
+	qDebug() << "[XML Parser] Roher 'link_type' String aus der .elmt Datei:" << raw_type_string;
+
+	// Jetzt übergeben wir ihn an deine Übersetzungs-Funktion
+	m_type = typeFromString(raw_type_string);
+
+	qDebug() << "[XML Parser] Übersetzter ElementData-Typ:" << typeToString(m_type);
+	// --- HIER ENDET UNSER DEBUG-BLOCK ---
+
 	kindInfoFromXml(xml_element);
 	m_informations.fromXml(xml_element.firstChildElement(QStringLiteral("elementInformations")),
-							QStringLiteral("elementInformation"));
+						   QStringLiteral("elementInformation"));
 	m_names_list.fromXml(xml_element);
 
 	auto xml_draw_info = xml_element.firstChildElement(QStringLiteral("informations"));
@@ -323,6 +335,8 @@ QString ElementData::typeToString(ElementData::Type type)
 			return QStringLiteral("terminal");
 		case ElementData::Thumbnail:
 			return  QStringLiteral("thumbnail");
+		case ElementData::ConductorDefinition:
+			return QStringLiteral("conductor_definition");
 		default:
 			qDebug() << "ElementData::typeToString : type don't exist"
 					 << "return failsafe value 'simple'";
@@ -346,6 +360,8 @@ ElementData::Type ElementData::typeFromString(const QString &string)
 		return ElementData::Terminal;
 	} else if (string == QLatin1String("thumbnail")) {
 		return ElementData::Thumbnail;
+	} else if (string == QLatin1String("conductor_definition")) {
+		return ElementData::ConductorDefinition;
 	}
 
 		//Return simple if nothing match

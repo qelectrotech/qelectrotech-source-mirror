@@ -302,7 +302,8 @@ void DynamicElementTextItem::refreshLabelConnection()
 	if ((m_text_from == ElementInfo && m_info_name == "label") ||
 		(m_text_from == CompositeText && m_composite_text.contains("%{label}")))
 	{
-		if(m_parent_element.data()->linkType() & Element::AllReport)
+		if((m_parent_element.data()->linkType() & Element::AllReport) ||
+			m_parent_element.data()->linkType() == Element::ConductorDefinition)
 		{
 			updateReportFormulaConnection();
 			updateReportText();
@@ -418,7 +419,8 @@ void DynamicElementTextItem::setInfoName(const QString &info_name)
 		updateXref();
 	}
 
-	if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)) //special treatment for report
+	if (m_parent_element && ((m_parent_element.data()->linkType() & Element::AllReport) ||
+		m_parent_element.data()->linkType() == Element::ConductorDefinition)) //special treatment for report
 	{
 		if(old_info_name != info_name)
 		{
@@ -472,7 +474,8 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 		updateXref();
 	}
 
-	if (m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport)) //special treatment for report
+	if (m_parent_element && ((m_parent_element.data()->linkType() & Element::AllReport) ||
+		m_parent_element.data()->linkType() == Element::ConductorDefinition)) //special treatment for report
 	{
 			/*
 			 * May be in some case the old and new composite text both have the var %{label},
@@ -726,28 +729,29 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
 		}
-		else if(m_parent_element.data()->linkType() & Element::AllReport)
+		else if((m_parent_element.data()->linkType() & Element::AllReport) ||
+			m_parent_element.data()->linkType() == Element::ConductorDefinition)
 		{
-				//Get the report formula, and add connection to keep up to date the formula.
+			//Get the report formula, and add connection to keep up to date the formula.
 			if (m_parent_element.data()->diagram() && m_parent_element.data()->diagram()->project())
 			{
 				m_report_formula = m_parent_element.data()->diagram()->project()->defaultReportProperties();
 				m_report_formula_con = connect(m_parent_element.data()->diagram()->project(), &QETProject::reportPropertiesChanged, this, &DynamicElementTextItem::reportFormulaChanged);
 			}
-			
-				//Add connection to keep up to date the status of the element linked to the parent folio report of this text.
+
+			//Add connection to keep up to date the status of the element linked to the parent folio report of this text.
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::reportChanged);
-				//The parent is already linked, we call reportChanged for init the connection
+			//The parent is already linked, we call reportChanged for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				reportChanged();
-			
+
 			if(m_parent_element.data()->terminals().size())
 			{
-					//Add connection to keep up date the conductors added or removed to the parent folio report element
+				//Add connection to keep up date the conductors added or removed to the parent folio report element
 				connect(m_parent_element.data()->terminals().first(), &Terminal::conductorWasAdded, this, &DynamicElementTextItem::conductorWasAdded);
 				connect(m_parent_element.data()->terminals().first(), &Terminal::conductorWasRemoved, this, &DynamicElementTextItem::conductorWasRemoved);
 			}
-				//Get a conductor in the potential
+			//Get a conductor in the potential
 			setPotentialConductor();
 		}
 		else if(m_parent_element.data()->linkType() == Element::Master)
@@ -1027,7 +1031,8 @@ void DynamicElementTextItem::clearFormulaConnection()
 
 void DynamicElementTextItem::updateReportFormulaConnection()
 {
-	if(!(m_parent_element.data()->linkType() & Element::AllReport))
+	if(!(m_parent_element.data()->linkType() & Element::AllReport) &&
+		m_parent_element.data()->linkType() != Element::ConductorDefinition)
 		return;
 	
 	removeConnectionForReportFormula(m_report_formula);
@@ -1041,7 +1046,8 @@ void DynamicElementTextItem::updateReportFormulaConnection()
 */
 void DynamicElementTextItem::updateReportText()
 {
-	if(!(m_parent_element.data()->linkType() & Element::AllReport))
+	if(!(m_parent_element.data()->linkType() & Element::AllReport) &&
+		m_parent_element.data()->linkType() != Element::ConductorDefinition)
 		return;
 	
 	if (m_text_from == ElementInfo && m_info_name == "label")
@@ -1123,7 +1129,8 @@ void DynamicElementTextItem::conductorWasRemoved(Conductor *conductor)
 */
 void DynamicElementTextItem::setPotentialConductor()
 {
-	if(parentElement() && (parentElement()->linkType() & Element::AllReport))
+	if(parentElement() && ((parentElement()->linkType() & Element::AllReport) || (parentElement()->linkType() == Element::ConductorDefinition) ||
+		parentElement()->linkType() == Element::ConductorDefinition))
 	{
 		if(parentElement()->terminals().isEmpty())
 			return;
@@ -1156,6 +1163,7 @@ void DynamicElementTextItem::setPotentialConductor()
 				connect(m_watched_conductor.data(), &Conductor::propertiesChange, this, &DynamicElementTextItem::conductorPropertiesChanged);
 			}
 		}
+		conductorPropertiesChanged();
 	}
 	else //This text haven't got a parent element, then ther isn't a conductor in the potential
 	{
@@ -1172,7 +1180,8 @@ void DynamicElementTextItem::setPotentialConductor()
 */
 void DynamicElementTextItem::conductorPropertiesChanged()
 {
-	if(m_parent_element && (m_parent_element.data()->linkType() & Element::AllReport))
+	if(m_parent_element && ((m_parent_element.data()->linkType() & Element::AllReport) || (m_parent_element.data()->linkType() == Element::ConductorDefinition) ||
+		m_parent_element.data()->linkType() == Element::ConductorDefinition))
 	{
 		if(m_text_from == ElementInfo)
 		{
@@ -1200,8 +1209,9 @@ void DynamicElementTextItem::conductorPropertiesChanged()
 QString DynamicElementTextItem::reportReplacedCompositeText() const
 {
 	QString string;
-	
-	if(m_parent_element.data()->linkType() & Element::AllReport)
+
+	if((m_parent_element.data()->linkType() & Element::AllReport) || (m_parent_element.data()->linkType() == Element::ConductorDefinition) ||
+		m_parent_element.data()->linkType() == Element::ConductorDefinition)
 	{
 		string = m_composite_text;
 		

@@ -220,7 +220,7 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	QStringList strl;
 	auto type = elementEditor()->elementScene()->elementData().m_type;
 
-	if(type & ElementData::AllReport) {
+	if((type & ElementData::AllReport) || (type == ElementData::ConductorDefinition)) {
 		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
@@ -365,7 +365,8 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
 void DynamicTextFieldEditor::on_m_composite_text_pb_clicked()
 {
 	bool isReport = false;
-	if (elementEditor()->elementScene()->elementData().m_type & ElementData::AllReport) {
+	auto type = elementEditor()->elementScene()->elementData().m_type;
+	if ((type & ElementData::AllReport) || (type == ElementData::ConductorDefinition)) {
 		isReport = true;
 	}
 
