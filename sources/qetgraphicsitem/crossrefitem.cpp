@@ -560,7 +560,16 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 			if (is_power) {
 				std::sort(tnames.begin(), tnames.end(),
 					[](const QString &a, const QString &b){
-						return a.toInt() < b.toInt();
+						int i_a = a.size();
+						while (i_a > 0 && a[i_a-1].isDigit()) --i_a;
+						int i_b = b.size();
+						while (i_b > 0 && b[i_b-1].isDigit()) --i_b;
+						bool a_ok = false, b_ok = false;
+						int ai = a.mid(i_a).toInt(&a_ok);
+						int bi = b.mid(i_b).toInt(&b_ok);
+						if (a_ok && b_ok && a.left(i_a) == b.left(i_b))
+							return ai < bi;
+						return a < b;
 					});
 			}
 		}
@@ -741,9 +750,22 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 	}
 
 	if (is_power_ctc) {
+		// Sort terminals alphanumerically so names like "R1","R2"... or "1","2"...
+		// are ordered correctly. Extract trailing digits for numeric comparison;
+		// fall back to full string comparison when no digits are found.
 		std::sort(terminal_names.begin(), terminal_names.end(),
 			[](const QString &a, const QString &b){
-				return a.toInt() < b.toInt();
+				// Extract trailing numeric part
+				int i_a = a.size();
+				while (i_a > 0 && a[i_a-1].isDigit()) --i_a;
+				int i_b = b.size();
+				while (i_b > 0 && b[i_b-1].isDigit()) --i_b;
+				bool a_ok = false, b_ok = false;
+				int ai = a.mid(i_a).toInt(&a_ok);
+				int bi = b.mid(i_b).toInt(&b_ok);
+				if (a_ok && b_ok && a.left(i_a) == b.left(i_b))
+					return ai < bi;
+				return a < b;
 			});
 		// Pick the pair for this pole: pole 0 → [0,1], pole 1 → [2,3], etc.
 		int idx = pole_index * 2;
