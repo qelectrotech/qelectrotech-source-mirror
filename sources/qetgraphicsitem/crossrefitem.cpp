@@ -575,7 +575,7 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 		}
 
 		QString pos = elementPositionText(elmt, true);
-		if (!tnames.isEmpty())
+		if (!tnames.isEmpty() && m_properties.showTerminalName())
 			return QStringLiteral("[") + tnames.join("-") + QStringLiteral("] ") + pos;
 		return pos;
 	};
@@ -808,7 +808,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 
 		// Draw terminal names on each side of the contact symbol
 		// terminal_names[0] on the left, terminal_names[1] on the right
-		if (!terminal_names.isEmpty()) {
+		if (!terminal_names.isEmpty() && m_properties.showTerminalName()) {
 			QFont font = QETApp::diagramTextsFont(4);
 			font.setBold(true);
 			painter.setFont(font);
@@ -939,7 +939,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		// terminal_names[0] = NO side (top left)
 		// terminal_names[1] = NC side (bottom left)
 		// terminal_names[2] = common side (right)
-		if (!terminal_names.isEmpty()) {
+		if (!terminal_names.isEmpty() && m_properties.showTerminalName()) {
 			QFont font = QETApp::diagramTextsFont(4);
 			font.setBold(true);
 			painter.setFont(font);
@@ -1102,7 +1102,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 			}
 		}
 		QString terminal_label;
-		if (!tnames.isEmpty())
+		if (!tnames.isEmpty() && m_properties.showTerminalName())
 			terminal_label = QStringLiteral("[") + tnames.join("-") + QStringLiteral("]");
 
 		QString str = elementPositionText(elmt, true);
@@ -1184,7 +1184,7 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 			}
 		}
 		QString terminal_label;
-		if (!tnames_nc.isEmpty())
+		if (!tnames_nc.isEmpty() && m_properties.showTerminalName())
 			terminal_label = QStringLiteral("[") + tnames_nc.join("-") + QStringLiteral("]");
 
 		QString str = elementPositionText(elmt, true);

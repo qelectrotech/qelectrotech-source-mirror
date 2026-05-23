@@ -109,6 +109,13 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
+           <widget class="QCheckBox" name="m_show_terminal_name_cb">
+            <property name="text">
+             <string>Afficher les numéros de bornes dans les Xrefs</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QRadioButton" name="m_display_has_contacts_rb">
             <property name="text">
              <string>Affiche&amp;r en contacts</string>
@@ -283,6 +290,7 @@
   <tabstop>m_master_le</tabstop>
   <tabstop>m_slave_le</tabstop>
   <tabstop>m_show_power_cb</tabstop>
+  <tabstop>m_show_terminal_name_cb</tabstop>
   <tabstop>m_power_prefix_le</tabstop>
   <tabstop>m_delay_prefix_le</tabstop>
   <tabstop>m_switch_prefix_le</tabstop>
