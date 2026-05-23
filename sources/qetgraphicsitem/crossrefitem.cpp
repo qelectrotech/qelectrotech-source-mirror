@@ -222,6 +222,9 @@ void CrossRefItem::updateLabel()
 	prepareGeometryChange();
 	m_bounding_rect = QRectF();
 
+		//Reset QPicture so it doesn't accumulate commands across updates
+	m_drawing = QPicture();
+
 		//init the painter
 	QPainter qp;
 	qp.begin(&m_drawing);
@@ -585,9 +588,10 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 	QRectF no_bounding;
 	for (auto str : no_str)
 	{
-		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
-		no_bounding = no_bounding.united(bounding);
+		QRectF bounding = painter.boundingRect(QRectF(0, 0, 500, 20), Qt::AlignLeft, str);
 		no_bounding.setHeight(no_bounding.height() + bounding.height());
+		if (bounding.width() > no_bounding.width())
+			no_bounding.setWidth(bounding.width());
 	}
 	//Adjust according to the NO
 	if (no_bounding.height() > default_bounding.height() - header)
@@ -599,9 +603,10 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 	QRectF nc_bounding;
 	for (auto str : nc_str)
 	{
-		QRectF bounding = painter.boundingRect(QRectF (), Qt::AlignCenter, str);
-		nc_bounding = nc_bounding.united(bounding);
+		QRectF bounding = painter.boundingRect(QRectF(0, 0, 500, 20), Qt::AlignLeft, str);
 		nc_bounding.setHeight(nc_bounding.height() + bounding.height());
+		if (bounding.width() > nc_bounding.width())
+			nc_bounding.setWidth(bounding.width());
 	}
 	//Adjust according to the NC
 	if (nc_bounding.height() > default_bounding.height() - header)
@@ -625,6 +630,7 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 {
 	//calculate the size of the cross
 	setUpCrossBoundingRect(painter);
+	m_drawed_contacts = 0;
 	m_hovered_contacts_map.clear();
 
 	//Bounding rect is empty that mean there's no contact to draw
