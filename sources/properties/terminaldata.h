@@ -41,7 +41,10 @@ class TerminalData : public PropertiesInterface
 		enum Type {
 			Generic,
 			Inner,
-			Outer
+			Outer,
+			No,     ///< Normally Open terminal (for SW contacts)
+			Nc,     ///< Normally Closed terminal (for SW contacts)
+			Common  ///< Common terminal (for SW contacts)
 		};
 		Q_ENUM(Type)
 

@@ -61,7 +61,7 @@ void TerminalEditor::updateForm()
 	ui->m_y_dsb->setValue(m_part->property("y").toReal());
 	ui->m_orientation_cb->setCurrentIndex(ui->m_orientation_cb->findData(m_part->property("orientation")));
 	ui->m_name_le->setText(m_part->terminalName());
-	ui->m_type_cb->setCurrentIndex(ui->m_orientation_cb->findData(m_part->terminalType()));
+	ui->m_type_cb->setCurrentIndex(ui->m_type_cb->findData(m_part->terminalType()));
 
 	activeConnections(true);
 }
@@ -122,6 +122,9 @@ void TerminalEditor::init()
 	ui->m_type_cb->addItem(tr("Générique"),         TerminalData::Generic);
 	ui->m_type_cb->addItem(tr("Bornier intérieur"), TerminalData::Inner);
 	ui->m_type_cb->addItem(tr("Bornier extérieur"), TerminalData::Outer);
+	ui->m_type_cb->addItem(tr("NO (contact SW)"),   TerminalData::No);
+	ui->m_type_cb->addItem(tr("NC (contact SW)"),   TerminalData::Nc);
+	ui->m_type_cb->addItem(tr("Commun (contact SW)"), TerminalData::Common);
 }
 
 /**

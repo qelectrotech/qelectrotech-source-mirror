@@ -107,7 +107,7 @@ class CrossRefItem : public QGraphicsObject
 		void setUpCrossBoundingRect(QPainter &painter);
 		void drawAsCross(QPainter &painter);
 		void drawAsContacts(QPainter &painter);
-		QRectF drawContact(QPainter &painter, int flags, Element *elmt);
+		QRectF drawContact(QPainter &painter, int flags, Element *elmt, int pole_index = 0);
 		void fillCrossRef(QPainter &painter);
 		void AddExtraInfo(QPainter &painter, const QString&);
 		QList<Element *> NOElements() const;

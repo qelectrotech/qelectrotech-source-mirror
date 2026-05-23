@@ -754,6 +754,15 @@ QString Terminal::name() const
 }
 
 /**
+	@brief Terminal::terminalType
+	@return the type of this terminal (Generic, Inner, Outer, No, Nc, Common)
+*/
+TerminalData::Type Terminal::terminalType() const
+{
+	return d->m_type;
+}
+
+/**
 	@brief Conductor::relatedPotentialTerminal
 	Return terminal at the same potential from the same
 	parent element of terminal.

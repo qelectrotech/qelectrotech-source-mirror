@@ -493,11 +493,86 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 
 	QStringList no_str, nc_str;
 
+	// Helper lambda: build "[13-14] pos" string for an element.
+	// For power contacts (e.g. 3-pole contactor), all named terminals
+	// are collected (e.g. "[1-2-3-4-5-6] pos").
+	// For other contacts (NO/NC/SW), only the first 2 named terminals
+	// are used — users are expected to name and order their terminals
+	// in the element editor.
+	// Helper lambda: build "[13-14] pos" for an element.
+	// - Power: all terminals sorted numerically → "[1-2-3-4-5-6] pos"
+	// - SW with typed terminals: show relevant pair per column (handled below)
+	// - Others: first 2 named terminals
+	auto buildLabel = [this](Element *elmt, bool is_no_col) -> QString {
+		const bool is_power =
+			elmt->kindInformations()["type"].toString() == "power";
+		const bool is_sw =
+			elmt->kindInformations()["state"].toString() == "SW";
+
+		QStringList tnames;
+
+		if (is_sw) {
+			// Check if terminals have explicit No/Nc/Common types
+			bool has_typed = false;
+			for (Terminal *t : elmt->terminals()) {
+				if (!t) continue;
+				if (t->terminalType() == TerminalData::No ||
+					t->terminalType() == TerminalData::Nc ||
+					t->terminalType() == TerminalData::Common) {
+					has_typed = true; break;
+				}
+			}
+			if (has_typed) {
+				QString no_name, nc_name, common_name;
+				for (Terminal *t : elmt->terminals()) {
+					if (!t) continue;
+					if (!t->name().isEmpty()) {
+						if      (t->terminalType() == TerminalData::No)     no_name     = t->name();
+						else if (t->terminalType() == TerminalData::Nc)     nc_name     = t->name();
+						else if (t->terminalType() == TerminalData::Common) common_name = t->name();
+					}
+				}
+				// NO column: show NO+Common pair; NC column: show NC+Common pair
+				if (is_no_col)
+					tnames << no_name << common_name;
+				else
+					tnames << nc_name << common_name;
+			} else {
+				// Fallback: first 2 named terminals
+				for (Terminal *t : elmt->terminals()) {
+					if (!t) continue;
+					const QString tn = t->name();
+					if (!tn.isEmpty()) { tnames << tn; if (tnames.size() >= 2) break; }
+				}
+			}
+		} else {
+			for (Terminal *t : elmt->terminals()) {
+				if (!t) continue;
+				const QString tn = t->name();
+				if (!tn.isEmpty()) {
+					tnames << tn;
+					if (!is_power && tnames.size() >= 2) break;
+				}
+			}
+			if (is_power) {
+				std::sort(tnames.begin(), tnames.end(),
+					[](const QString &a, const QString &b){
+						return a.toInt() < b.toInt();
+					});
+			}
+		}
+
+		QString pos = elementPositionText(elmt, true);
+		if (!tnames.isEmpty())
+			return QStringLiteral("[") + tnames.join("-") + QStringLiteral("] ") + pos;
+		return pos;
+	};
+
 	for (auto elmt : NOElements()) {
-		no_str.append(elementPositionText(elmt, true));
+		no_str.append(buildLabel(elmt, true));
 	}
 	for (auto elmt : NCElements()) {
-		nc_str.append(elementPositionText(elmt, true));
+		nc_str.append(buildLabel(elmt, false));
 	}
 
 	//There is no string to display, we return now
@@ -606,7 +681,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 			else if (type == "delayOff") option += DelayOff;
 			else if (type == "delayOnOff") option += DelayOnOff;
 
-			QRectF br = drawContact(painter, option, elmt);
+			QRectF br = drawContact(painter, option, elmt, i);
 			bounding_rect = bounding_rect.united(br);
 		}
 	}
@@ -625,17 +700,66 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 	@param elmt : the element to display text (the position of the contact)
 	@return The bounding rect of the draw (contact + text)
 */
-QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
+QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, int pole_index)
 {
 	QString str = elementPositionText(elmt);
 
 	// Collect terminal names from the element definition (.elmt)
 	// e.g. name="13" and name="14" on each terminal
+	// For power contacts, sort numerically and pick the pair for pole_index.
+	// For SW contacts with typed terminals (No/Nc/Common), filter by role.
 	QStringList terminal_names;
+	const bool is_power_ctc =
+		elmt->kindInformations()["type"].toString() == "power";
+	const bool is_sw = (flags & SW) && !(flags & NOC);
+
+	// Check if SW terminals have explicit No/Nc/Common types
+	bool sw_has_typed_terminals = false;
+	if (is_sw) {
+		for (Terminal *t : elmt->terminals()) {
+			if (!t) continue;
+			if (t->terminalType() == TerminalData::No ||
+				t->terminalType() == TerminalData::Nc ||
+				t->terminalType() == TerminalData::Common) {
+				sw_has_typed_terminals = true;
+				break;
+			}
+		}
+	}
+
 	for (Terminal *t : elmt->terminals()) {
+		if (!t) continue;
 		const QString tname = t->name();
 		if (!tname.isEmpty())
 			terminal_names << tname;
+	}
+
+	if (is_power_ctc) {
+		std::sort(terminal_names.begin(), terminal_names.end(),
+			[](const QString &a, const QString &b){
+				return a.toInt() < b.toInt();
+			});
+		// Pick the pair for this pole: pole 0 → [0,1], pole 1 → [2,3], etc.
+		int idx = pole_index * 2;
+		if (idx + 1 < terminal_names.size())
+			terminal_names = QStringList() << terminal_names[idx] << terminal_names[idx+1];
+		else
+			terminal_names.clear();
+	} else if (is_sw && sw_has_typed_terminals) {
+		// Build [NO_name, Common_name, NC_name] from typed terminals
+		QString no_name, nc_name, common_name;
+		for (Terminal *t : elmt->terminals()) {
+			if (!t) continue;
+			if (!t->name().isEmpty()) {
+				if      (t->terminalType() == TerminalData::No)     no_name     = t->name();
+				else if (t->terminalType() == TerminalData::Nc)     nc_name     = t->name();
+				else if (t->terminalType() == TerminalData::Common) common_name = t->name();
+			}
+		}
+		// drawText expects: [0]=NC, [1]=NO, [2]=Common
+		// (drawText uses [1] for NO top-left, [0] for NC bottom-left, [2] for Common right)
+		terminal_names.clear();
+		terminal_names << nc_name << no_name << common_name;
 	}
 
 	int offset = m_drawed_contacts*10;
@@ -795,13 +919,13 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt)
 			// [0]=12 (NO, top-left), [1]=14 (common, top-center), [2]=13 (NC, bottom-center)
 			if (terminal_names.size() >= 1)
 				painter.drawText(QRectF(0, offset, 8, 8),
-						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]);   // 12 NO left
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // 12 NO left
 			if (terminal_names.size() >= 2)
 				painter.drawText(QRectF(16, offset+4, 8, 6),
-						Qt::AlignRight|Qt::AlignTop, terminal_names[1]); // 14 common right
+						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // 14 common right
 			if (terminal_names.size() >= 3)
 				painter.drawText(QRectF(0, offset+9, 8, 6),
-						Qt::AlignLeft|Qt::AlignTop, terminal_names[2]); // 13 NC left-bottom
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // 13 NC left-bottom
 			painter.setFont(QETApp::diagramTextsFont(5));
 		}
 
@@ -903,7 +1027,60 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 		m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
 		painter.setPen(pen);
 
+		// Collect terminal names for NO column.
+		// Power: all terminals sorted numerically.
+		// SW with typed terminals: NO+Common pair.
+		// Others: first 2 named terminals.
+		const bool is_power_no =
+			elmt->kindInformations()["type"].toString() == "power";
+		const bool is_sw_no =
+			elmt->kindInformations()["state"].toString() == "SW";
+		QStringList tnames;
+		if (is_sw_no) {
+			bool has_typed = false;
+			for (Terminal *t : elmt->terminals()) {
+				if (!t) continue;
+				if (t->terminalType() == TerminalData::No ||
+					t->terminalType() == TerminalData::Nc ||
+					t->terminalType() == TerminalData::Common) {
+					has_typed = true; break;
+				}
+			}
+			if (has_typed) {
+				QString no_name, common_name;
+				for (Terminal *t : elmt->terminals()) {
+					if (!t) continue;
+					if (!t->name().isEmpty()) {
+						if      (t->terminalType() == TerminalData::No)     no_name     = t->name();
+						else if (t->terminalType() == TerminalData::Common) common_name = t->name();
+					}
+				}
+				tnames << no_name << common_name;
+			} else {
+				for (Terminal *t : elmt->terminals()) {
+					if (!t) continue;
+					const QString tn = t->name();
+					if (!tn.isEmpty()) { tnames << tn; if (tnames.size() >= 2) break; }
+				}
+			}
+		} else {
+			for (Terminal *t : elmt->terminals()) {
+				if (!t) continue;
+				const QString tn = t->name();
+				if (!tn.isEmpty()) {
+					tnames << tn;
+					if (!is_power_no && tnames.size() >= 2) break;
+				}
+			}
+		}
+		QString terminal_label;
+		if (!tnames.isEmpty())
+			terminal_label = QStringLiteral("[") + tnames.join("-") + QStringLiteral("]");
+
 		QString str = elementPositionText(elmt, true);
+		if (!terminal_label.isEmpty())
+			str = terminal_label + QStringLiteral(" ") + str;
+
 		QRectF bounding = painter.boundingRect(
 					QRectF(no_top_left,
 					       QSize(middle_cross, 1)),
@@ -932,7 +1109,60 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 					  :pen.setColor(Qt::black);
 		painter.setPen(pen);
 
+		// Collect terminal names for NC column.
+		// Power: all terminals sorted numerically.
+		// SW with typed terminals: NC+Common pair.
+		// Others: first 2 named terminals.
+		const bool is_power_nc =
+			elmt->kindInformations()["type"].toString() == "power";
+		const bool is_sw_nc =
+			elmt->kindInformations()["state"].toString() == "SW";
+		QStringList tnames_nc;
+		if (is_sw_nc) {
+			bool has_typed = false;
+			for (Terminal *t : elmt->terminals()) {
+				if (!t) continue;
+				if (t->terminalType() == TerminalData::No ||
+					t->terminalType() == TerminalData::Nc ||
+					t->terminalType() == TerminalData::Common) {
+					has_typed = true; break;
+				}
+			}
+			if (has_typed) {
+				QString nc_name, common_name;
+				for (Terminal *t : elmt->terminals()) {
+					if (!t) continue;
+					if (!t->name().isEmpty()) {
+						if      (t->terminalType() == TerminalData::Nc)     nc_name     = t->name();
+						else if (t->terminalType() == TerminalData::Common) common_name = t->name();
+					}
+				}
+				tnames_nc << nc_name << common_name;
+			} else {
+				for (Terminal *t : elmt->terminals()) {
+					if (!t) continue;
+					const QString tn = t->name();
+					if (!tn.isEmpty()) { tnames_nc << tn; if (tnames_nc.size() >= 2) break; }
+				}
+			}
+		} else {
+			for (Terminal *t : elmt->terminals()) {
+				if (!t) continue;
+				const QString tn = t->name();
+				if (!tn.isEmpty()) {
+					tnames_nc << tn;
+					if (!is_power_nc && tnames_nc.size() >= 2) break;
+				}
+			}
+		}
+		QString terminal_label;
+		if (!tnames_nc.isEmpty())
+			terminal_label = QStringLiteral("[") + tnames_nc.join("-") + QStringLiteral("]");
+
 		QString str = elementPositionText(elmt, true);
+		if (!terminal_label.isEmpty())
+			str = terminal_label + QStringLiteral(" ") + str;
+
 		QRectF bounding = painter.boundingRect(
 					QRectF(nc_top_left,
 					       QSize(middle_cross, 1)),
