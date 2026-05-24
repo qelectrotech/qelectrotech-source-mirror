@@ -17,6 +17,8 @@
 */
 #include "crossrefitem.h"
 
+#include <QTimer>
+
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -222,12 +224,12 @@ void CrossRefItem::updateLabel()
 	prepareGeometryChange();
 	m_bounding_rect = QRectF();
 
-		//Reset QPicture so it doesn't accumulate commands across updates
-	m_drawing = QPicture();
-
-		//init the painter
-	QPainter qp;
-	qp.begin(&m_drawing);
+	// Build geometry and m_hovered_contacts_map using a QImage-backed
+	// painter so font metrics match the screen painter in paint().
+	// m_update_map=true allows the draw functions to populate the map;
+	// paint() calls them with m_update_map=false so the map is stable.
+	QImage dummy(1, 1, QImage::Format_ARGB32_Premultiplied);
+	QPainter qp(&dummy);
 	QPen pen_;
 	pen_.setWidthF(0.5);
 	qp.setPen(pen_);
@@ -236,17 +238,21 @@ void CrossRefItem::updateLabel()
 		//Draw cross or contact, only if master element is linked.
 	if (! m_element->linkedElements().isEmpty())
 	{
+		m_update_map = true;
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
 
 		if (dh == XRefProperties::Cross)
 			drawAsCross(qp);
 		else if (dh == XRefProperties::Contacts)
 			drawAsContacts(qp);
+		m_update_map = false;
 	}
-	qp.end();
 
 	autoPos();
 	update();
+	// Schedule a second update after the scene has finished laying out,
+	// so the initial render uses the correct bounding rect.
+	QTimer::singleShot(0, this, [this]{ update(); });
 }
 
 /**
@@ -314,7 +320,26 @@ void CrossRefItem::paint(
 {
 	Q_UNUSED(option)
 	Q_UNUSED(widget)
-	m_drawing.play(painter);
+	// Draw directly — no QPicture involved anywhere.
+	// QPicture::play() + nested drawPicture() (m_hdr_no_ctc/m_hdr_nc_ctc)
+	// caused a use-after-free crash (QRegion::begin, Qt5Gui+0x49af60)
+	// confirmed by analysis of 19+ coredumps.
+	// m_update_map=false: draw functions do not overwrite m_hovered_contacts_map.
+	if (m_element->linkedElements().isEmpty()) return;
+
+	QPen pen_;
+	pen_.setWidthF(0.5);
+	painter->save();
+	painter->setPen(pen_);
+	painter->setFont(QETApp::diagramTextsFont(5));
+
+	m_update_map = false;
+	XRefProperties::DisplayHas dh = m_properties.displayHas();
+	if (dh == XRefProperties::Cross)
+		drawAsCross(*painter);
+	else if (dh == XRefProperties::Contacts)
+		drawAsContacts(*painter);
+	painter->restore();
 }
 
 /**
@@ -324,7 +349,24 @@ void CrossRefItem::paint(
 void CrossRefItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
 	event->accept();
-	QetGraphicsItem::showItem(m_hovered_contact);
+
+	// Find the element under the click position directly from the map,
+	// rather than relying on m_hovered_contact which may have been reset
+	// by hoverMoveEvent between the two clicks of the double-click.
+	QPointF pos = event->pos();
+	Element *target = m_hovered_contact;
+
+	if (!target) {
+		for (auto it = m_hovered_contacts_map.begin();
+		     it != m_hovered_contacts_map.end(); ++it) {
+			if (it.value().contains(pos)) {
+				target = it.key();
+				break;
+			}
+		}
+	}
+
+	QetGraphicsItem::showItem(target);
 }
 
 /**
@@ -436,49 +478,41 @@ void CrossRefItem::linkedChanged()
 
 /**
 	@brief CrossRefItem::buildHeaderContact
-	Draw the QPicture of m_hdr_no_ctc and m_hdr_nc_ctc
+	Draw NO and NC contact symbols directly onto painter.
+	Previously used QPicture (m_hdr_no_ctc/m_hdr_nc_ctc) which caused
+	use-after-free crashes via nested QPicture::play() calls.
 */
-void CrossRefItem::buildHeaderContact()
+void CrossRefItem::buildHeaderContact(QPainter &painter, QPointF no_pos, QPointF nc_pos)
 {
-	if (!m_hdr_no_ctc.isNull() && !m_hdr_nc_ctc.isNull()) return;
-
-	//init the painter
-	QPainter qp;
 	QPen pen_;
 	pen_.setWidthF(0.2);
+	painter.save();
+	painter.setPen(pen_);
 
-	//draw the NO contact
-	if (m_hdr_no_ctc.isNull()) {
-		qp.begin(&m_hdr_no_ctc);
-		qp.setPen(pen_);
-		qp.drawLine(0, 3, 5, 3);
-		QPointF p1[3] = {
-			QPointF(5, 0),
-			QPointF(10, 3),
-			QPointF(15, 3),
-		};
-		qp.drawPolyline(p1,3);
-		qp.end();
-	}
+	//draw the NO contact header symbol
+	painter.drawLine(no_pos.x()+0, no_pos.y()+3, no_pos.x()+5, no_pos.y()+3);
+	QPointF p1[3] = {
+		QPointF(no_pos.x()+5,  no_pos.y()+0),
+		QPointF(no_pos.x()+10, no_pos.y()+3),
+		QPointF(no_pos.x()+15, no_pos.y()+3),
+	};
+	painter.drawPolyline(p1, 3);
 
-	//draw the NC contact
-	if (m_hdr_nc_ctc.isNull()) {
-		qp.begin(&m_hdr_nc_ctc);
-		qp.setPen(pen_);
-		QPointF p2[3] = {
-			QPointF(0, 3),
-			QPointF(5, 3),
-			QPointF(5, 0)
-		};
-		qp.drawPolyline(p2,3);
-		QPointF p3[3] = {
-			QPointF(4, 0),
-			QPointF(10, 3),
-			QPointF(15, 3),
-		};
-		qp.drawPolyline(p3,3);
-		qp.end();
-	}
+	//draw the NC contact header symbol
+	QPointF p2[3] = {
+		QPointF(nc_pos.x()+0, nc_pos.y()+3),
+		QPointF(nc_pos.x()+5, nc_pos.y()+3),
+		QPointF(nc_pos.x()+5, nc_pos.y()+0)
+	};
+	painter.drawPolyline(p2, 3);
+	QPointF p3[3] = {
+		QPointF(nc_pos.x()+4,  nc_pos.y()+0),
+		QPointF(nc_pos.x()+10, nc_pos.y()+3),
+		QPointF(nc_pos.x()+15, nc_pos.y()+3),
+	};
+	painter.drawPolyline(p3, 3);
+
+	painter.restore();
 }
 
 /**
@@ -640,7 +674,7 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 	//calculate the size of the cross
 	setUpCrossBoundingRect(painter);
 	m_drawed_contacts = 0;
-	m_hovered_contacts_map.clear();
+	if (m_update_map) m_hovered_contacts_map.clear();
 
 	//Bounding rect is empty that mean there's no contact to draw
 	if (boundingRect().isEmpty()) return;
@@ -650,12 +684,11 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 	painter.drawLine(br.width()/2, 0, br.width()/2, br.height());	//vertical line
 	painter.drawLine(0, header, br.width(), header);	//horizontal line
 
-	//Add the symbolic contacts
-	buildHeaderContact();
-	QPointF p((m_bounding_rect.width()/4) - (m_hdr_no_ctc.width()/2), 0);
-	painter.drawPicture (p, m_hdr_no_ctc);
-	p.setX((m_bounding_rect.width() * 3/4) - (m_hdr_nc_ctc.width()/2));
-	painter.drawPicture (p, m_hdr_nc_ctc);
+	//Add the symbolic contacts (drawn directly, no QPicture)
+	static const qreal hdr_symbol_width = 15.0;
+	QPointF no_pos((m_bounding_rect.width()/4) - (hdr_symbol_width/2), 0);
+	QPointF nc_pos((m_bounding_rect.width() * 3/4) - (hdr_symbol_width/2), 0);
+	buildHeaderContact(painter, no_pos, nc_pos);
 
 	//and fill it
 	fillCrossRef(painter);
@@ -672,7 +705,7 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 		return;
 
 	m_drawed_contacts = 0;
-	m_hovered_contacts_map.clear();
+	if (m_update_map) m_hovered_contacts_map.clear();
 	QRectF bounding_rect;
 
 	//Draw each linked contact
@@ -809,9 +842,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		// Draw terminal names on each side of the contact symbol
 		// terminal_names[0] on the left, terminal_names[1] on the right
 		if (!terminal_names.isEmpty() && m_properties.showTerminalName()) {
-			QFont font = QETApp::diagramTextsFont(4);
-			font.setBold(true);
-			painter.setFont(font);
+			painter.setFont(QETApp::diagramTextsFont(4));
 			QRectF bt(0, offset, 24, 10);
 			if (terminal_names.size() >= 1)
 				painter.drawText(bt, Qt::AlignLeft|Qt::AlignTop, terminal_names[0]);
@@ -896,14 +927,8 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 		bounding_rect = bounding_rect.united(text_rect);
 
-		if (m_hovered_contacts_map.contains(elmt))
-		{
+		if (m_update_map)
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
-		}
-		else
-		{
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
-		}
 
 		++m_drawed_contacts;
 	}
@@ -940,9 +965,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		// terminal_names[1] = NC side (bottom left)
 		// terminal_names[2] = common side (right)
 		if (!terminal_names.isEmpty() && m_properties.showTerminalName()) {
-			QFont font = QETApp::diagramTextsFont(4);
-			font.setBold(true);
-			painter.setFont(font);
+			painter.setFont(QETApp::diagramTextsFont(4));
 			// Sort order from parseTerminal (top->bottom, left->right):
 			// [0]=12 (NO, top-left), [1]=14 (common, top-center), [2]=13 (NC, bottom-center)
 			if (terminal_names.size() >= 1)
@@ -988,12 +1011,8 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 				 str);
 		bounding_rect = bounding_rect.united(text_rect);
 
-		if (m_hovered_contacts_map.contains(elmt)) {
+		if (m_update_map)
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
-		}
-		else {
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
-		}
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
@@ -1024,12 +1043,8 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 					str);
 		bounding_rect = bounding_rect.united(text_rect);
 
-		if (m_hovered_contacts_map.contains(elmt)) {
+		if (m_update_map)
 			m_hovered_contacts_map.insert(elmt, bounding_rect);
-		}
-		else {
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
-		}
 		++m_drawed_contacts;
 	}
 		return bounding_rect;
@@ -1116,13 +1131,11 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 					str);
 		painter.drawText(bounding, Qt::AlignLeft, str);
 
-		if (m_hovered_contacts_map.contains(elmt))
-		{
-			m_hovered_contacts_map.insert(elmt, bounding);
-		}
-		else
-		{
-			m_hovered_contacts_map.insert(elmt, bounding);
+		if (m_update_map) {
+			QString pos_str = elementPositionText(elmt, true);
+			QRectF pos_rect = painter.boundingRect(bounding, Qt::AlignRight, pos_str);
+			pos_rect.adjust(-2, -1, 2, 1); // extend hit area slightly
+			m_hovered_contacts_map.insert(elmt, pos_rect);
 		}
 
 		no_top_left.ry() += bounding.height();
@@ -1198,13 +1211,11 @@ void CrossRefItem::fillCrossRef(QPainter &painter)
 					str);
 		painter.drawText(bounding, Qt::AlignRight, str);
 
-		if (m_hovered_contacts_map.contains(elmt))
-		{
-			m_hovered_contacts_map.insert(elmt, bounding);
-		}
-		else
-		{
-			m_hovered_contacts_map.insert(elmt, bounding);
+		if (m_update_map) {
+			QString pos_str = elementPositionText(elmt, true);
+			QRectF pos_rect = painter.boundingRect(bounding, Qt::AlignRight, pos_str);
+			pos_rect.adjust(-2, -1, 2, 1); // extend hit area slightly
+			m_hovered_contacts_map.insert(elmt, pos_rect);
 		}
 
 		nc_top_left.ry() += bounding.height();

@@ -22,7 +22,6 @@
 
 #include <QGraphicsObject>
 #include <QMultiMap>
-#include <QPicture>
 
 class Element;
 class DynamicElementTextItem;
@@ -103,7 +102,7 @@ class CrossRefItem : public QGraphicsObject
 
 	private:
 		void linkedChanged();
-		void buildHeaderContact();
+		void buildHeaderContact(QPainter &painter, QPointF no_pos, QPointF nc_pos);
 		void setUpCrossBoundingRect(QPainter &painter);
 		void drawAsCross(QPainter &painter);
 		void drawAsContacts(QPainter &painter);
@@ -117,10 +116,10 @@ class CrossRefItem : public QGraphicsObject
 	private:
 		Element *m_element; //element to display the cross reference
 		QRectF m_bounding_rect;
-		QPicture m_drawing, m_hdr_no_ctc, m_hdr_nc_ctc;
 		QPainterPath m_shape_path;
 		XRefProperties m_properties;
 		int m_drawed_contacts;
+		bool m_update_map = false;
 		QMultiMap <Element *, QRectF> m_hovered_contacts_map;
 		Element *m_hovered_contact = nullptr;
 		DynamicElementTextItem *m_text = nullptr;
