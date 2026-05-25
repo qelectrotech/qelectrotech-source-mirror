@@ -158,7 +158,6 @@ void WiringListExport::toCsv()
         return;
     }
 
-    // --- SCHRITT 1: Namen der Aderdefinitions-Bauteile aus der Collection auslesen ---
     QSet<QString> conductorDefinitionTypes;
     QDomElement rootElem = doc.documentElement();
     QDomElement collection = rootElem.firstChildElement("collection");
@@ -178,7 +177,6 @@ void WiringListExport::toCsv()
         }
     }
 
-    // --- SCHRITT 2: Alle UUIDs dieser Bauteile im aktuellen Projekt ermitteln ---
     QSet<QString> conductorDefinitionUuids;
     QDomNodeList projectElements = rootElem.elementsByTagName("element");
     for (int i = 0; i < projectElements.size(); ++i) {
@@ -241,7 +239,6 @@ void WiringListExport::toCsv()
     for (int i = 0; i < conductors.size(); ++i) {
         ConductorData c = conductors[i];
 
-        // --- SCHRITT 3: Filter greift – Verbindung zu einer Aderdefinition? -> Überspringen! ---
         if (conductorDefinitionUuids.contains(c.el1_uuid) || conductorDefinitionUuids.contains(c.el2_uuid)) {
             continue;
         }
