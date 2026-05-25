@@ -335,7 +335,7 @@ void TextEditor::setUpWidget(QWidget *parent)
 
 	m_size_sb = new QSpinBox(parent);
 	m_size_sb->setObjectName(QString::fromUtf8("m_size_sb"));
-	m_size_sb->setMinimum(1);
+	m_size_sb->setMinimum(4);
 
 	gridLayout->addWidget(m_size_sb, 2, 1, 1, 1);
 
