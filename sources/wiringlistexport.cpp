@@ -158,6 +158,45 @@ void WiringListExport::toCsv()
         return;
     }
 
+    QSet<QString> conductorDefinitionTypes;
+    QDomElement rootElem = doc.documentElement();
+    QDomElement collection = rootElem.firstChildElement("collection");
+    if (!collection.isNull()) {
+        QDomNodeList defs = collection.elementsByTagName("definition");
+        for (int i = 0; i < defs.size(); ++i) {
+            QDomElement def = defs.at(i).toElement();
+            if (def.attribute("link_type") == "conductor_definition") {
+                QDomElement parentEl = def.parentNode().toElement();
+                if (parentEl.tagName().toLower() == "element") {
+                    QString name = parentEl.attribute("name");
+                    if (!name.isEmpty()) {
+                        conductorDefinitionTypes.insert(name);
+                    }
+                }
+            }
+        }
+    }
+
+    QSet<QString> conductorDefinitionUuids;
+    QDomNodeList projectElements = rootElem.elementsByTagName("element");
+    for (int i = 0; i < projectElements.size(); ++i) {
+        QDomElement el = projectElements.at(i).toElement();
+        QString typeVal = el.attribute("type");
+        bool isCondDef = false;
+        for (const QString &cType : conductorDefinitionTypes) {
+            if (typeVal.endsWith(cType)) {
+                isCondDef = true;
+                break;
+            }
+        }
+        if (isCondDef) {
+            QString uuid = normalizeUuid(el.attribute("uuid", el.attribute("id", "")));
+            if (!uuid.isEmpty()) {
+                conductorDefinitionUuids.insert(uuid);
+            }
+        }
+    }
+
     QFileDialog dialog(m_parent);
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setWindowTitle(tr("Exporter le plan de câblage"));
@@ -199,6 +238,10 @@ void WiringListExport::toCsv()
 
     for (int i = 0; i < conductors.size(); ++i) {
         ConductorData c = conductors[i];
+
+        if (conductorDefinitionUuids.contains(c.el1_uuid) || conductorDefinitionUuids.contains(c.el2_uuid)) {
+            continue;
+        }
 
         if (c.element1_label.isEmpty() && elementsInfo.contains(c.el1_uuid)) {
             c.element1_label = elementsInfo[c.el1_uuid].label;
