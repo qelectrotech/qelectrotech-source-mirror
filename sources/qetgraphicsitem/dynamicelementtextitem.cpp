@@ -26,7 +26,7 @@
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
-
+#include <QTimer>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QGraphicsSceneMouseEvent>
@@ -1104,7 +1104,10 @@ void DynamicElementTextItem::updateLabel()
 void DynamicElementTextItem::conductorWasAdded(Conductor *conductor)
 {
 	Q_UNUSED(conductor)
-	setPotentialConductor();
+	QTimer::singleShot(100, this, [this]() {
+		setPotentialConductor();
+		conductorPropertiesChanged();
+	});
 }
 
 /**
