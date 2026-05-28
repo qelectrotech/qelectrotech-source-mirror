@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfowidget.h"
-
+#include <QCheckBox>
 #include "../diagram.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/element.h"
@@ -161,6 +161,10 @@ void ElementInfoWidget::enableLiveEdit()
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
 		connect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
 	connect(ui->m_auto_num_locked_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+
+	if (m_potential_isolating_cb) {
+		connect(m_potential_isolating_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
 }
 
 /**
@@ -172,6 +176,10 @@ void ElementInfoWidget::disableLiveEdit()
 	for (ElementInfoPartWidget *eipw : m_eipw_list)
 		disconnect(eipw, &ElementInfoPartWidget::textChanged, this, &ElementInfoWidget::apply);
 	disconnect(ui->m_auto_num_locked_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+
+	if (m_potential_isolating_cb) {
+		disconnect(m_potential_isolating_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
 }
 
 /**
@@ -195,14 +203,25 @@ void ElementInfoWidget::buildInterface()
 	}
 
 	ui->scroll_vlayout->addStretch();
+
+	m_potential_isolating_cb = new QCheckBox(tr("Séparation de potentiel"), this);
+
+	m_potential_isolating_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
+
+	if (QVBoxLayout *mainLayout = qobject_cast<QVBoxLayout*>(this->layout())) {
+		mainLayout->insertWidget(1, m_potential_isolating_cb);
+	}
+
 	// Show checkbox only if the element is a terminal
+
 	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
 		ui->m_auto_num_locked_cb->setVisible(true);
+		m_potential_isolating_cb->setVisible(true);
 	} else {
 		ui->m_auto_num_locked_cb->setVisible(false);
+		m_potential_isolating_cb->setVisible(false);
 	}
 }
-
 /**
 	@brief ElementInfoWidget::infoPartWidgetForKey
 	@param key
@@ -243,6 +262,12 @@ void ElementInfoWidget::updateUi()
 	if (m_element->elementData().m_type == ElementData::Terminal) {
 		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
 		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
+
+		// English: Load the potential isolating status from the element information mapping
+		if (m_potential_isolating_cb) {
+			QString isolating_value = element_info.value(QStringLiteral("potential_isolating")).toString();
+			m_potential_isolating_cb->setChecked(isolating_value == QLatin1String("true"));
+		}
 	}
 
 	if (m_live_edit) {
@@ -275,6 +300,10 @@ DiagramContext ElementInfoWidget::currentInfo() const
 	// Save the auto numbering lock status
 	if (m_element->elementData().m_type == ElementData::Terminal) {
 		info_.addValue(QStringLiteral("auto_num_locked"), ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+
+		if (m_potential_isolating_cb) {
+			info_.addValue(QStringLiteral("potential_isolating"), m_potential_isolating_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+		}
 	}
 	return info_;
 }
