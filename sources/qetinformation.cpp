@@ -189,7 +189,8 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_MACHINE_MANUFACTURER_REF_AUX4,
 						 ELMT_SUPPLIER_AUX4,
 						 ELMT_QUANTITY_AUX4,
-						 ELMT_UNITY_AUX4, };
+						 ELMT_UNITY_AUX4,
+						 "exclude_from_bom" };
 	return list;
 }
 
