@@ -139,6 +139,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "right") xrp.setXrefPos(Qt::AlignRight);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "alignment") xrp.setXrefPos(Qt::AlignBaseline);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
+	xrp.setShowTerminalName(ui->m_show_terminal_name_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
@@ -190,6 +191,7 @@ void XRefPropertiesWidget::updateDisplay()
 	else if(xrp.getXrefPos() == Qt::AlignBaseline) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("alignment"));
 	else if(xrp.getXrefPos() == Qt::AlignBottom) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("bottom"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
+	ui->m_show_terminal_name_cb->setChecked(xrp.showTerminalName());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
 	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));
 	ui->m_switch_prefix_le->setText(xrp.prefix("switch"));

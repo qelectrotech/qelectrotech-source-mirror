@@ -1,0 +1,249 @@
+====== ChangeLog from 0.4 to 0.5 ======
+In the official collection, there are now  2625 elements, and 418 catégoris for a total of 3043 files.
+
+* Port to Qt 5 framework
+* New QSettings native format for config files.
+* In the diagram editor, the grid is not displayed by default outside the diagram, the minimum zoom is blocked. A button allows you to un-validate this operation.
+* It is now possible to put the tittle block on the right vertical mode.
+* The default tittle block can be defined for the next folios of the project.
+* The summary now takes the font set in the QElectroTech.conf
+* The floating dock is now operational, variables, actions are taken into account on the fly.
+* A transformation tool transforms quickly and finely each primitive by handles.
+* Add UUID tag for element XML.
+* The database enables faster loading a large number of managing symbols in tables changes pixmaps collections, it no longer compares the modification date of the files but their use UUID attributes to update the cache .
+* In terms of basic shapes, the transform tool works directly on vectors, it replaces the reduction tool / enlargement that has just been deleted as unnecessary.
+* Improve Undo command by QPropertyUndoCommand class.
+
+
+
+====== ChangeLog from 0.3 to 0.4 ======
+In the official collection, there are now 2298 elements, and 376 catégoris for a total of 2674 files.
+
+* We have removed the flag '-fno-ipa-sra "This settled the compilation problems on Mac OS X and FreeBSD clang.
+* The official collection has been redesigned, through the work of Nuri a new structure is in place.
+* A menu has been added, allowing you to change the application language.
+* we added a summary creation tool.
+* Added button "export the nomenclature" transforms data from diagrams to CSV file for spreadsheet.
+ Arun wrote a detailed manual in English.
+* New tools have been added, they can create mechanical connections and draw cabinets, desks, junction boxes, or areas on the schematic (line tool, rectangle, ellipse, polygon type: respect for style dashes).
+* An aid in positioning cross, drawing, was added.
+* The locked state images and basic forms (basic shapes) is now stored in the project.
+* The "control" during the movement of an element, text field disables snapping to the grid, for free positioning.
+It is now possible to choose the background folios in white or gray.
+* Add supports trackpad gestures (multitouch).
+The dates of the cartridges are now using the short system date and date format according to the language detected setting in the OS.
+We take advantage of the transition to standard C ++ 11, and a big cleanup in the code was done.
+* The undo action or redo the undo stack are now animated graphically.
+When the action save, save as, the status bar displays the name and path of the backup job.
+Qet is now able to come to load a style sheet (stylesheet) directly from the conf directory.
+* A DXF export has been added, the entire project folios can be exported in this format.
+* Added reports folio, Cross references.
+* Added a variable font size for text of conductors.
+* Added new properties to all conductors at the same potential, even through referrals.
+* When several conductors have the same value potential equalization, it is not useful to display on all conductors.
+* Added button to activates the automatic connection of the conductors of the element when moving it.
+* Numbering rules are now available for the entire project.
+Qet detects the Windows version and applies the appropriate graphic style, depending on the version of Windows.
+
+
+====== ChangeLog from 0.3 rc to 0.3 ======
+First, the collection of symbols has made a big step forward, with about 1560 new elements. 
+There are now symbols for pneumatics, hydraulics, process, solar, cold, etc. Considerable effort has been done to organize the collection in a better way. 
+We hope that the new organisation is clearer for all. We would like to thank all the contributors who send us symbols.
+
+=====-Element Editor: =====
+Considerable work has be done to replace the manual defining zone of the symbol, aka hotspot.And fix bugs, It is now automatic. You do not have to care about it anymore. 
+Primary colors have been added for the drawing shapes. 
+A contextual menu (right click) has been added. So, you can now work more quickly with symbols. It is also more user-friendly.
+
+====== ChangeLog from v0.3 rc ======
+
+=====-Element Editor: =====
+* Replacing checkboxes with lists of colors. 
+* Removed the manual hotspot, it is now automatic and you do not have to worry.
+Officially Collection: a large classification work on the structure was realized. It should be clear to everyone.
+The collection is enriched with 1711 items in 286 categories (ie 1997 files)
+
+=====-Schema Editor:=====
+* Added import image, image rotation, image resizing and saving the file in the project. 
+(Double click on the image called a widget and cursor that reduce or enlarge the selected image.) 
+NB: Following the "edit image" entry will also be added in the right click menu.
+* F5 keyboard shortcut can recharge symbol collections.
+Some bugs have been resolved, and the translation status continues to grow. 
+
+
+======ChangeLog from v0.3 beta ======
+Two more items for the changelog:
+* In the official collection, there are now 1672 elements and 256 categoris for a total of 1928 files. In version 0.3 alpha, there were 1465 elements and 233 categories, while version 0.22 had153 elements and 51 categories.
+
+*Progress in the translation (see http://qelectrotech.org/wiki/doc/translation/stats for current state)
+* Functions (edit element and find in panel) have been moved to the context
+Here is the changelog, for version 0.3 beta:
+* Functions (edit element and find in panel) have been moved to the context menu, that can be accessed with right click. This is more user friendly.
+* Refresh of categories when an element is moved.
+* DateNow button added in the "Diagram property" dialog.
+* Dotted lines can now been added between conductors.
+* Rich text can be added to the diagram text fields.
+[screenshot]
+* HTML WYSIWYG editor for rich text: bold, italic, underlined, font size from 6 to 72 pixels, font colour, etc.
+* You can change between the two modes(Selection mode <-> View mode) with the scroll button.
+* Symbol editor: focus on the new value for language, languages sorted in alphabetical order.
+* Added a widget that reflects the loading of a big project.
+* Automated numbering of conductors according to your rules. See note from Joshua http://qelectrotech.org/wiki/doc/autonum
+* Added a dialog to automatically rotate the text if the associated conductor is vertical or horizontal. Parameters are saved in qelectrotech.conf
+* Added basic colours on the tools for lines and for the filling of the primitives, and also for the style line and point in the element editor.
+* Added several protection to prevent from saving an element if one of its primitive is beyond the hotspot.
+
+
+====== ChangeLog from 0.22 to 0.3a ======
+
+===== Application =====
+
+Elements collection: QElectroTech now provides 1465 elements within 233 categories (0.22 provided 153 elements within 51 categories). Most elements are related to electricity though some relate to chillers, solar, hydraulic and pneumatic engineering.
+A new kind of collections appeared to store title block templates; as for elements, there is a distinction between common (system-wide) templates and custom (user-wide) templates.
+Translations:
+English, Spanish, French, Portuguese and Czech translations have been maintained.
+Russian translations have been removed because they are not maintained anymore.
+Polish, German, Italian, Arabic and Croatian translations have been added.
+Following translation to Arabic, some work was done to improve Right-To-Left languages support.
+Elements names are fully translated to English, French, Czech and Polish.
+Main windows: added a “What's this?” action.
+QElectroTech now handles *.titleblock files.
+
+===== Diagram editor =====
+
+It is now possible to move and rotate all texts on a diagram : element texts, conductor texts and independent texts.
+When moving a text related to an electrical element, this element is highlighted.
+Texts related to a conductor cannot be moved too far away from it.
+It is now possible to create diagrams with more than 100 rows/columns.
+Elements panel:
+During a drag and drop operation, the hovered item is now expanded after a short time not moving the mouse.
+Items are now expanded/collapsed by a double click.
+Common, custom and embedded collections of title block templates are displayed within the elements panel.
+Elements previews and names are now cached into a SQLite database stored in the user configuration directory, thus speeding up the elements panel (re)loading
+The elements panel now displays the folio index before each diagram title.
+UI consistency: renamed “Import element” to “Open an element file”, separated this action from those related to the current selection, and ensured elements-related actions are disabled when selecting a project/diagram/title block template.
+Freshly integrated elements are now highlighted in the elements panel – this behaviour can be disabled though.
+When clearing the search field, the panel state is restored to its previous state.
+Title blocks are now rendered using templates:
+For each diagram, users can choose the template to be used in the diagram properties.
+They may also drag and drop it from the elements panel to the diagram.
+Title block templates are always integrated within the parent project.
+Fixed a bug in the print preview dialog.
+Added a F2 shortcut for the widget “Edit the color of the given conductor”.
+As elements, diagrams now have a “version” attribute for compatibility purposes.
+Better handling of file opening for documents saved with newer versions of QElectroTech.
+Diagram loading: removed an optimization that could lead to conductors not being loaded when several terminals share the same coordinates.
+Users may now enter visualisation mode by pressing Ctrl and Shift.
+Printing: when printing diagrams with no title block, use the space left by the title block.
+Added a few status and “What's this?” tips.
+Got rid of the green icon used for projects, changed a few other icons.
+
+===== Element editor =====
+
+Both static and dynamic texts can now be rotated
+Added “dotted” line style
+Added white color for texts
+Newly added parts are placed above existing ones.
+
+===== Title block template editor =====
+
+A third kind of editor was implemented so users can create their own title block templates:
+
+It allows users to customize the layout and content of cells that constitute the title block.
+Cells can be merged and splitted.
+Their width can be fixed, relative to the total width or relative to the remaining widths.
+Their height is a simple fixed length.
+They contain either a logo (be it in SVG or a usual bitmap format) or some text.
+The text value is optionally preceded by a label.
+As other texts within QElectroTech, labels and texts can be translated to other languages.
+Texts and labels may contain variables (e.g. %company-name); these variables are replaced by real world values once the template is applied to a diagram.
+Those real-world values can be set among the diagram properties.
+
+
+====== Changelog 0.11 -> 0.2 ======
+À partir de la version 0.2, QElectroTech est disponible en français, anglais, mais aussi :
+  * en espagnol, grâce aux traductions de Youssef ;
+  * en russe, grâce aux traductions de Yuriy ;
+  * en portugais, grâce aux traductions de José.
+L'application utilise désormais le thème d'icônes Oxygen, réalisé par Nuno Pinheiro pour le projet KDE.
+
+===== Notion de fichier projet =====
+Un fichier .qet peut désormais contenir zéro, un ou plusieurs schémas électriques. Les éléments composant ces schémas sont embarqués dans le fichier projet au moment où ils sont posés sur un schéma. Le panel d'éléments affiche donc désormais :
+  * les projets ouverts, avec, sous chaque projet :
+    * les schémas de ce projet,
+    * la collection embarquée du projet (catégories et éléments utilisés dans les schémas)
+  * la collection commune fournie par QET,
+  * et la collection personnelle de l'utilisateur.
+
+===== Éditeur de schémas =====
+  * Il est désormais possible de déplacer et copier les catégories et éléments par simple glisser-déposer (drag'n drop) dans le panel d'éléments.
+  * La collection embarquée est manipulable au même titre que la collection utilisateur. Les éléments inutilisés dans le projet apparaissent sur fond rouge et un dialogue permet de les purger rapidement.
+  * Chaque projet embarque également (au niveau de ses propriétés) les paramétrages par défaut pour les nouveaux schémas, cartouches et conducteurs.
+  * Il est possible de changer l'ordre des schémas dans le projet en déplaçant les onglets qui les représente. Dans le champ "Folio" des cartouches, on peut se référer à la position du schéma courant ou au nombre total de schémas dans le projet en écrivant respectivement %id et %total.
+  * Lors du chargement d'un fichier .qet, si des éléments ne sont pas trouvés, ils sont remplacés par un élément "fantôme", ce qui évite de perdre certaines informations lors de l'enregistrement du fichier.
+  * Le rendu avec un zoom réduit a été amélioré.
+  * Enfin, le logiciel gère l'ouverture en lecture seule d'un fichier projet.
+
+==== Impression et export ====
+
+À partir de la version 0.2, QElectroTech :
+  * propose d'utiliser une imprimante réelle ou bien de générer un document PDF ou PostScript, et ce sous Windows comme sous X11.
+  * génère un aperçu avant l'impression d'un projet. Cet aperçu permet de choisir les options d'impression mais également les schémas à imprimer ou non.
+
+À noter toutefois une limitation pour les impressions PDF/PS sous Windows : le dialogue de mise en page, permettant de spécifier le format du papier ainsi que ses marges, n'est pas disponible.
+
+Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a également été refait dans l'optique d'un export simultané de tous les schémas du projet.
+
+===== Éditeur d'éléments =====
+
+  * Lorsque l'on dessine une ligne dans l'éditeur d'éléments, il est possible de choisir un embout différent pour chaque extrémité, comme par exemple une flèche, un cercle, un carré ou, tout simplement, un bout de ligne normal.
+  * La forme "Rectangle" a été ajoutée.
+  * On peut enregistrer un élément en désignant un fichier (= comportement en 0.11) ou bien en choisissant un élément cible dans une liste reprenant l'arborescence du panel d'éléments.
+  * Si l'on maintient la touche Shift lorsque l'on ajoute une partie (droite, cercle, texte, ...), l'outil en cours est conservé après le dessin. Sinon l'éditeur repasse sur l'outil de sélection.
+  * La grille a été améliorée : sa densité varie en fonction du zoom ; les points correspondant à ceux de la grille de l'éditeur de schémas sont mis en valeur.
+  * L'accrochage à la grille (aka "snap to grid", également connu sous le nom de grille magnétique ou encore grille aimantée) a été ajouté. Le dessin s'y accroche désormais avec une précision de 1px. On peut travailler en coordonnées libres en maintenant la touche Ctrl enfoncée durant le dessin.
+  * Le copier-coller a été implémenté : il est possible de coller :
+     * avec le bouton du milieu de la souris
+     * en choisissant une "zone de collage" sur l'élément (Ctrl+Shift+V)
+     * directement (Ctrl+V) : les parties collées sont placées à côté des parties copiées ; si on recolle les parties, elles sont collées encore un cran à côté, et ce de manière incrémentale.
+  * Des contrôles sont désormais effectués à l'enregistrement : présence de bornes, respect du cadre, etc.
+  * Uniformisation des menus par rapport à l'éditeur de schémas
+
+====== Changelog 0.1 -> 0.11 ======
+
+===== Fonctionnalités et interface =====
+
+  * L'application est désormais capable d'ouvrir un fichier élément passe en paramètre
+  * L'application se lance désormais une seule fois par utilisateur
+  * Lors de l'ouverture d'un fichier en dehors de l'application alors que QET est déjà démarré celui-ci essaye de s'afficher ou d'attirer l'attention de l'utilisateur.
+  * L'application vérifie que ce fichier n'est pas déjà ouvert dans tous les éditeurs de schémas / éléments.
+  * Ajout de fichiers permettant d'automatiser les associations de fichiers sous Windows (.bat et .reg) et X11 (.desktop et .xml)
+  * Ajout de menus "Récemment ouverts" pour accéder aux fichiers récents dans les éditeurs de schémas et éléments.
+  * Ajout d'un splash screen
+  * La hauteur du schéma est désormais gérée via un système de lignes, dont le nombre et la hauteur sont ajustables.
+  * Il est également possible d'afficher ou non les en-têtes des lignes et/ou des colonnes.
+  * Ajout d'une option --lang-dir
+  * Ajout d'une description dans le dialogue des options d'impression
+  * Ajout de pages de manuel Unix (`man') en anglais et en français
+
+===== Corrections de bugs =====
+
+  * Bug #12 : QET provoquait une erreur de segmentation dès son démarrage dans un environnement sans systray
+  * Bug #14 : il manquait un / dans le chemin proposé lors de l'impression vers un PDF
+  * Bug #15 : Mauvais positionnement des champs de texte sur le schéma
+  * Bug #16 : Mauvaise gestion des modifications du texte d'un conducteur
+  * La classe DiagramView écrivait sur la sortie d'erreur sans fin de ligne
+  * L'option --config-dir était mal prise en compte
+  * Après fermeture d'un schema, le menu Fenêtres n'était pas correctement mis à jour
+  * Les textes des éléments, des conducteurs, du cartouche ainsi que les textes indépendants utilisent désormais tous la même police.
+  * Remise à niveau de l'impression suite au passage à Qt 4.4
+
+===== Code et détails techniques =====
+
+  * Corrections pour que QET compile avec gcc-4.3
+  * Les classes Conductor et Element héritent désormais de QObject (dépendance sur Qt 4.4)
+  * Affinage du constructeur de la classe QETApp
+  * Moins d'avertissements à la compilation (testé avec gcc 4.3)
+  * Moins d'inclusions non pertinentes
+  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire

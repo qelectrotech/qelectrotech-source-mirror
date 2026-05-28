@@ -1,0 +1,112 @@
+name: Test Windows VS2026 migration
+
+# Ce workflow vérifie que le build QElectroTech fonctionne sur l'image
+# windows-2025-vs2026, avant la migration forcée du 8 juin 2026.
+# Il peut être supprimé une fois la migration confirmée OK.
+
+on:
+  workflow_dispatch:        # déclenchement manuel uniquement
+  schedule:
+    - cron: '0 4 * * 1'    # chaque lundi à 4h00 UTC (optionnel)
+
+jobs:
+  test-vs2026:
+    name: Build on windows-2025-vs2026
+    runs-on: windows-2025-vs2026   # <-- image avec VS 2026
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install MSYS2 + dependencies
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: false
+          install: >-
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-qt5-base
+            mingw-w64-ucrt-x86_64-qt5-svg
+            mingw-w64-ucrt-x86_64-qt5-tools
+            mingw-w64-ucrt-x86_64-qt5-translations
+            mingw-w64-ucrt-x86_64-sqlite3
+            mingw-w64-ucrt-x86_64-pkgconf
+            mingw-w64-ucrt-x86_64-extra-cmake-modules
+            mingw-w64-ucrt-x86_64-kwidgetsaddons-qt5
+            mingw-w64-ucrt-x86_64-kcoreaddons-qt5
+            mingw-w64-ucrt-x86_64-nsis
+            mingw-w64-ucrt-x86_64-ccache
+            mingw-w64-ucrt-x86_64-7zip
+            git
+
+      - name: Force Qt5 (remove Qt6 interference)
+        shell: msys2 {0}
+        run: |
+          rm -rf /ucrt64/lib/cmake/Qt6 || true
+          pacman -R --noconfirm mingw-w64-ucrt-x86_64-qt6-tools 2>/dev/null || true
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: C:\Users\runneradmin\AppData\Local\ccache
+          key: ccache-vs2026-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            ccache-vs2026-${{ runner.os }}-
+
+      - name: Configure (CMake)
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DQt5_DIR=/ucrt64/lib/cmake/Qt5 \
+            -DQT_VERSION_MAJOR=5 \
+            -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DBUILD_TESTING=OFF \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
+            -DSQLite3_INCLUDE_DIR=/ucrt64/include \
+            -DSQLite3_LIBRARY=/ucrt64/lib/libsqlite3.dll.a \
+
+      - name: Build
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          cmake --build build --parallel $(nproc)
+
+      - name: Verify executable
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          EXE=$(find build -name "qelectrotech.exe" | head -1)
+          if [ -z "$EXE" ]; then
+            echo "ERROR: qelectrotech.exe introuvable après le build"
+            exit 1
+          fi
+          SIZE=$(stat -c%s "$EXE")
+          echo "Executable trouvé : $EXE ($SIZE octets)"
+          if [ "$SIZE" -lt 100000 ]; then
+            echo "ERROR: exe trop petit ($SIZE octets), build probablement incomplet"
+            exit 1
+          fi
+          echo "BUILD VS2026 : OK ✓"
+
+      - name: Summary
+        if: always()
+        shell: msys2 {0}
+        run: |
+          echo "=== Résumé de compatibilité VS2026 ==="
+          gcc --version
+          cmake --version
+          ninja --version
+          echo "Image runner : windows-2025-vs2026"
+          echo "Date du test : $(date -u)"

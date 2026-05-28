@@ -133,6 +133,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_base_type_cb->addItem (tr("Renvoi de folio précédent"), ElementData::PreviousReport);
 	ui->m_base_type_cb->addItem (tr("Bornier"), ElementData::Terminal);
 	ui->m_base_type_cb->addItem (tr("Vignette"), ElementData::Thumbnail);
+	ui->m_base_type_cb->addItem (tr("Définition de conducteur"), ElementData::ConductorDefinition);
 
 		// Slave option
 	ui->m_state_cb->addItem(tr("Normalement ouvert"),       ElementData::NO);
@@ -186,6 +187,9 @@ void ElementPropertiesEditorWidget::updateTree()
 			ui->m_tree->setDisabled(true);
 			break;
 		case ElementData::PreviousReport:
+			ui->m_tree->setDisabled(true);
+			break;
+		case ElementData::ConductorDefinition:
 			ui->m_tree->setDisabled(true);
 			break;
 		case ElementData::Master:

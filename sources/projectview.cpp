@@ -364,11 +364,12 @@ QETResult ProjectView::noProjectResult() const
 }
 
 /**
-	@brief ProjectView::removeDiagram
-	Remove a diagram (folio) of the project
-	@param diagram_view : diagram view to remove
-*/
-void ProjectView::removeDiagram(DiagramView *diagram_view)
+ * @brief ProjectView::removeDiagram
+ * Remove a diagram (folio) of the project
+ * @param diagram_view : diagram view to remove
+ * @param silent : if true, bypasses the confirmation message box
+ */
+void ProjectView::removeDiagram(DiagramView *diagram_view, bool silent)
 {
 	if (!diagram_view)
 		return;
@@ -377,17 +378,18 @@ void ProjectView::removeDiagram(DiagramView *diagram_view)
 	if (!m_diagram_ids.values().contains(diagram_view))
 		return;
 
-
-	//Ask confirmation to user.
-	int answer = QET::QetMessageBox::question(
-		this,
-		tr("Supprimer le folio ?", "message box title"),
-		tr("Êtes-vous sûr  de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
-		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
-		QMessageBox::No
-	);
-	if (answer != QMessageBox::Yes) {
-		return;
+	if (!silent) {
+		//Ask confirmation to user.
+		int answer = QET::QetMessageBox::question(
+			this,
+			tr("Supprimer le folio ?", "message box title"),
+												  tr("Êtes-vous sûr de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
+												  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
+											QMessageBox::No
+		);
+		if (answer != QMessageBox::Yes) {
+			return;
+		}
 	}
 
 	//Remove the diagram view of the tabs widget
@@ -405,14 +407,15 @@ void ProjectView::removeDiagram(DiagramView *diagram_view)
 }
 
 /**
-	Enleve un schema du ProjectView
-	@param diagram Schema a enlever
-*/
-void ProjectView::removeDiagram(Diagram *diagram) {
+ * Enleve un schema du ProjectView
+ * @param diagram Schema a enlever
+ * @param silent  Si vrai, supprime sans demander confirmation
+ */
+void ProjectView::removeDiagram(Diagram *diagram, bool silent) {
 	if (!diagram) return;
 
 	if (DiagramView *diagram_view = findDiagram(diagram)) {
-		removeDiagram(diagram_view);
+		removeDiagram(diagram_view, silent);
 	}
 }
 
@@ -555,6 +558,56 @@ void ProjectView::moveDiagramUpx10(DiagramView *diagram_view) {
 */
 void ProjectView::moveDiagramUpx10(Diagram *diagram) {
 	moveDiagramUpx10(findDiagram(diagram));
+}
+
+/**
+ * @brief ProjectView::moveDiagramUpx100
+ * Moves the diagram_view up / left x100
+ * @param diagram_view View to move
+ */
+void ProjectView::moveDiagramUpx100(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
+	if (!diagram_view_position) {
+		// The diagram is the first of the project
+		return;
+	}
+	m_tab->tabBar()->moveTab(diagram_view_position, diagram_view_position - 100);
+}
+
+/**
+ * @brief ProjectView::moveDiagramUpx100
+ * Moves the diagram up / left x100
+ * @param diagram Diagram to move
+ */
+void ProjectView::moveDiagramUpx100(Diagram *diagram) {
+	moveDiagramUpx100(findDiagram(diagram));
+}
+
+/**
+ * @brief ProjectView::moveDiagramDownx100
+ * Moves the diagram_view down / right x100
+ * @param diagram_view View to move
+ */
+void ProjectView::moveDiagramDownx100(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+
+	int diagram_view_position = m_diagram_ids.key(diagram_view);
+	if (diagram_view_position + 1 == m_diagram_ids.count()) {
+		// The diagram is the last of the project
+		return;
+	}
+	m_tab->tabBar()->moveTab(diagram_view_position, diagram_view_position + 100);
+}
+
+/**
+ * @brief ProjectView::moveDiagramDownx100
+ * Moves the diagram down / right x100
+ * @param diagram Diagram to move
+ */
+void ProjectView::moveDiagramDownx100(Diagram *diagram) {
+	moveDiagramDownx100(findDiagram(diagram));
 }
 
 /**

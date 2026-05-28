@@ -12,7 +12,6 @@ class QWidget;
 class QDomElement;
 class QDomNode;
 
-// Internal data structures for parsing the XML graph
 struct ElementInfo {
     QString folio;
     QStringList links;
@@ -34,18 +33,11 @@ struct ConductorData {
     QString conductor_section;
     QString function;
     QString folio;
-
-    // Resolved endpoints
-    QString chosen_a_uuid;
-    QString chosen_a_label;
-    QString chosen_b_uuid;
-    QString chosen_b_label;
 };
 
 /**
  * @brief The WiringListExport class
- * Handles the export of the wiring list (Verdrahtungsplan) to a CSV file.
- * Automatically resolves links and placeholders to find physical endpoints.
+ * Exports the wiring diagram from QElectroTech as a CSV file.
  */
 class WiringListExport : public QObject
 {
@@ -64,8 +56,6 @@ private:
 
     QMap<QString, ElementInfo> collectElementsInfo(const QDomElement &root) const;
     QList<ConductorData> collectConductors(const QDomElement &root) const;
-
-    void resolveEndpoints(QList<ConductorData> &conductors, const QMap<QString, ElementInfo> &elementsInfo) const;
 };
 
 #endif // WIRINGLISTEXPORT_H

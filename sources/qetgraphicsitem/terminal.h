@@ -18,13 +18,14 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H
 #include "../qet.h"
+#include "../properties/terminaldata.h"
 
 #include <QtWidgets>
 #include <QtXml>
 class Conductor;
 class Diagram;
 class Element;
-class TerminalData;
+
 
 /**
 	@brief The Terminal class
@@ -75,6 +76,7 @@ class Terminal : public QGraphicsObject
 		Element  *parentElement       () const;
 		QUuid     uuid                () const;
 		QString   name                () const;
+		TerminalData::Type terminalType() const;
 
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;

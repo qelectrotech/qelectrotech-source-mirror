@@ -1,0 +1,366 @@
+name: Windows MSI (WiX v7)
+
+on:
+  # Triggered automatically after a successful Windows build on master
+  workflow_run:
+    workflows: ["Windows Build"]
+    types: [completed]
+    branches: [master]
+  # Manual trigger still available (e.g. for a specific run_id)
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Run ID of 'Windows Build' (leave empty for automatic)"
+        required: false
+        default: ""
+
+jobs:
+  build-msi:
+    name: Build MSI with WiX v7
+    runs-on: windows-latest
+
+    # Only runs if Windows Build succeeded (or triggered manually)
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+
+      # ----------------------------------------------------------------
+      # 1. Checkout (to retrieve QElectroTech.wxs and sources)
+      # ----------------------------------------------------------------
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ----------------------------------------------------------------
+      # 2. Download the portable artifact from the main build
+      # ----------------------------------------------------------------
+      - name: Download portable artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: qelectrotech-windows-portable
+          path: artifact\files
+          run-id: ${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+
+      # ----------------------------------------------------------------
+      # 3. Extract version from sources
+      # ----------------------------------------------------------------
+      - name: Extract version
+        id: version
+        shell: pwsh
+        run: |
+          $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
+          if ($src -match 'return QVersionNumber\{([^}]+)\}') {
+            $ver = $Matches[1] -replace '\s','' -replace ',','.'
+          } else {
+            $cmake = Get-Content "CMakeLists.txt" -Raw
+            if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
+              $ver = $Matches[1]
+            } else {
+              $ver = "0.0.0"
+            }
+          }
+          $verMsi = "$ver.0"
+          $sha = git rev-parse --short HEAD 2>$null
+          if (-not $sha) { $sha = "unknown" }
+          $count = git rev-list HEAD --count 2>$null
+          $rev = [int]$count + 473
+          $verDisplay = "${ver}-r${rev}-${sha}_x86_64-win64"
+          # Generate a unique ProductCode GUID from the commit SHA
+          # This ensures MajorUpgrade always triggers, even for same-version builds
+          $fullSha = git rev-parse HEAD 2>$null
+          if (-not $fullSha) { $fullSha = [System.Guid]::NewGuid().ToString() }
+          $bytes = [System.Text.Encoding]::UTF8.GetBytes($fullSha)
+          $md5 = [System.Security.Cryptography.MD5]::Create().ComputeHash($bytes)
+          $guidBytes = [byte[]]$md5[0..15]
+          $productGuid = [System.Guid]::new($guidBytes).ToString().ToUpper()
+
+          echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
+          echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
+          echo "PRODUCT_GUID=$productGuid"   >> $env:GITHUB_OUTPUT
+          Write-Host "Version MSI     : $verMsi"
+          Write-Host "Version display : $verDisplay"
+          Write-Host "Product GUID    : $productGuid"
+
+      # ----------------------------------------------------------------
+      # 4. Install WiX v7, accept EULA and install WixUI extension
+      # ----------------------------------------------------------------
+      - name: Install WiX v7
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 7.0.0
+          $toolsPath = [System.IO.Path]::Combine($env:USERPROFILE, '.dotnet', 'tools')
+          $env:PATH = "$toolsPath;$env:PATH"
+          echo $toolsPath >> $env:GITHUB_PATH
+          wix eula accept wix7
+          wix extension add WixToolset.UI.wixext/7.0.0
+          wix extension add WixToolset.Util.wixext/7.0.0
+          Write-Host "WiX v7 installed, EULA accepted, UI extension added."
+
+      # ----------------------------------------------------------------
+      # 5. Check that the WXS file exists in the repository
+      # ----------------------------------------------------------------
+      - name: Check WXS file
+        shell: pwsh
+        run: |
+          $wxs = "build-aux\windows\QElectroTech.wxs"
+          if (-not (Test-Path $wxs)) {
+            Write-Error "WXS file not found: $wxs"
+            exit 1
+          }
+          Write-Host "WXS found: $wxs"
+
+      # ----------------------------------------------------------------
+      # 6. Check the artifact structure and locate files/
+      # ----------------------------------------------------------------
+      - name: Check artifact structure
+        shell: pwsh
+        run: |
+          Write-Host "=== Contents of artifact\files (2 levels) ==="
+          Get-ChildItem -Path "artifact\files" -Depth 2 |
+            Select-Object FullName | Format-Table -AutoSize
+
+          $exe = Get-ChildItem -Path "artifact\files" -Filter "qelectrotech.exe" -Recurse | Select-Object -First 1
+          if (-not $exe) {
+            $exe = Get-ChildItem -Path "artifact\files" -Filter "QElectroTech.exe" -Recurse | Select-Object -First 1
+          }
+          if (-not $exe) {
+            Write-Error "qelectrotech.exe not found in artifact"
+            exit 1
+          }
+          Write-Host "Executable: $($exe.FullName) ($([math]::Round($exe.Length/1MB,1)) MB)"
+          $binDir   = $exe.Directory.FullName
+          $filesDir = Split-Path $binDir -Parent
+          echo "FILES_DIR=$filesDir" >> $env:GITHUB_ENV
+          Write-Host "FILES_DIR: $filesDir"
+
+      # ----------------------------------------------------------------
+      # 7. Convert LICENSE (GPL-2) to RTF for the WixUI licence screen
+      # ----------------------------------------------------------------
+      - name: Convert LICENSE to RTF
+        shell: pwsh
+        run: |
+          $licSrc = "LICENSE"
+          $licRtf = "$env:TEMP\License.rtf"
+          if (-not (Test-Path $licSrc)) {
+            Write-Error "LICENSE file not found in repository root"
+            exit 1
+          }
+          $lines = Get-Content $licSrc -Encoding UTF8
+          $rtf = New-Object System.Text.StringBuilder
+          [void]$rtf.AppendLine('{\rtf1\ansi\ansicpg1252\deff0')
+          [void]$rtf.AppendLine('{\fonttbl{\f0\fmodern\fprq1\fcharset0 Courier New;}}')
+          [void]$rtf.AppendLine('{\colortbl;\red0\green0\blue0;}')
+          [void]$rtf.AppendLine('\f0\fs18\cf1')
+          foreach ($line in $lines) {
+            $escaped = $line `
+              -replace '\\', '\\\\' `
+              -replace '\{', '\{' `
+              -replace '\}', '\}'
+            [void]$rtf.AppendLine("$escaped\par")
+          }
+          [void]$rtf.AppendLine('}')
+          [System.IO.File]::WriteAllText($licRtf, $rtf.ToString(), [System.Text.Encoding]::ASCII)
+          echo "LICENSE_RTF=$licRtf" >> $env:GITHUB_ENV
+          Write-Host "License.rtf generated: $licRtf ($([math]::Round((Get-Item $licRtf).Length/1KB,1)) KB)"
+
+      # ----------------------------------------------------------------
+      # 8. Remove Lancer QET.bat from the artifact
+      #    The MSI does not use the .bat: shortcuts point directly to
+      #    qelectrotech.exe, and elements\ is set read-only via a
+      #    CustomAction in QElectroTech.wxs.
+      #    The .bat is kept as-is in the ZIP portable build.
+      # ----------------------------------------------------------------
+      - name: Remove Lancer QET.bat from artifact
+        shell: pwsh
+        run: |
+          $bat = "$env:FILES_DIR\Lancer QET.bat"
+          if (Test-Path $bat) {
+            Remove-Item $bat -Force
+            Write-Host "Lancer QET.bat removed from artifact (MSI uses direct exe shortcut)."
+          } else {
+            Write-Host "Lancer QET.bat not found in artifact (already absent)."
+          }
+
+      # ----------------------------------------------------------------
+      # 9. Build the MSI
+      # ----------------------------------------------------------------
+      - name: Build MSI
+        shell: pwsh
+        run: |
+          $version    = "${{ steps.version.outputs.VERSION_MSI }}"
+          $verDisplay = "${{ steps.version.outputs.VERSION_DISPLAY }}"
+          $filesDir   = $env:FILES_DIR
+          $licRtf     = $env:LICENSE_RTF
+          $wxs        = "build-aux\windows\QElectroTech.wxs"
+          $outputName = "QElectroTech-${verDisplay}.msi"
+
+          New-Item -ItemType Directory -Force -Path "dist" | Out-Null
+
+          Write-Host "=== wix build ==="
+          Write-Host " WXS        : $wxs"
+          Write-Host " Version    : $version"
+          Write-Host " FilesDir   : $filesDir"
+          Write-Host " LicenseRtf : $licRtf"
+          Write-Host " Output     : dist\$outputName"
+
+          $productGuid = "${{ steps.version.outputs.PRODUCT_GUID }}"
+
+          wix build $wxs `
+            -arch x64 `
+            -d "Version=$version" `
+            -d "ProductVersion=$verDisplay" `
+            -d "ProductCode=$productGuid" `
+            -d "FilesDir=$filesDir" `
+            -d "LicenseRtf=$licRtf" `
+            -ext WixToolset.UI.wixext `
+            -ext WixToolset.Util.wixext `
+            -o "dist\$outputName"
+
+          if (-not (Test-Path "dist\$outputName")) {
+            Write-Error "MSI not generated: dist\$outputName"
+            exit 1
+          }
+          $size = [math]::Round((Get-Item "dist\$outputName").Length / 1MB, 1)
+          Write-Host "MSI generated: dist\$outputName ($size MB) ✓"
+          echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
+
+      # ----------------------------------------------------------------
+      # 10. Sign the MSI with SignPath
+      # ----------------------------------------------------------------
+      - name: Install SignPath PowerShell module
+        shell: pwsh
+        run: |
+          Install-Module -Name SignPath -Force -Scope CurrentUser
+
+      - name: Sign MSI with SignPath
+        shell: pwsh
+        run: |
+          $msi = Get-ChildItem "$env:GITHUB_WORKSPACE\dist\*.msi" | Select-Object -First 1
+          if (-not $msi) {
+            Write-Error "No .msi found in dist/"
+            exit 1
+          }
+          Write-Host "Signing: $($msi.FullName)"
+          Submit-SigningRequest `
+            -InputArtifactPath $msi.FullName `
+            -ApiToken "${{ secrets.SIGNPATH_API_TOKEN }}" `
+            -OrganizationId "${{ secrets.SIGNPATH_ORGANIZATION_ID }}" `
+            -ProjectSlug "MSI" `
+            -SigningPolicySlug "test-signing" `
+            -OutputArtifactPath $msi.FullName `
+            -Force `
+            -WaitForCompletion
+          Write-Host "Signing complete: $($msi.Name)"
+
+      # ----------------------------------------------------------------
+      # 11. Upload the MSI artifact
+      # ----------------------------------------------------------------
+      - name: Upload MSI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: qelectrotech-windows-msi
+          path: dist\*.msi
+          retention-days: 14
+          if-no-files-found: error
+
+      # ----------------------------------------------------------------
+      # 11. Delete old .msi asset then upload new MSI to nightly release
+      # ----------------------------------------------------------------
+      - name: Delete old nightly .msi asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          gh release view nightly --repo "$REPO" --json assets \
+            --jq '.assets[] | select(.name | test("\\.msi$")) | .name' \
+            | while read -r name; do
+              echo "Deleting old asset: $name"
+              gh release delete-asset nightly "$name" --repo "$REPO" --yes
+            done
+          echo "Old .msi assets deleted."
+        shell: bash
+
+      - name: Upload MSI to nightly release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: nightly
+          files: dist/*.msi
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ----------------------------------------------------------------
+      # 12. Summary
+      # ----------------------------------------------------------------
+      - name: Summary
+        if: always()
+        shell: pwsh
+        run: |
+          Write-Host "=== MSI build summary ==="
+          Write-Host "Version      : ${{ steps.version.outputs.VERSION_DISPLAY }}"
+          Write-Host "WiX          : v7.0.0"
+          Write-Host "Runner image : ${{ runner.os }} / ${{ runner.arch }}"
+          if (Test-Path "dist\$env:MSI_NAME") {
+            $size = [math]::Round((Get-Item "dist\$env:MSI_NAME").Length / 1MB, 1)
+            Write-Host "MSI          : $env:MSI_NAME ($size MB) ✓"
+          } else {
+            Write-Host "MSI          : FAILED ✗"
+          }
+
+      # ----------------------------------------------------------------
+      # 13. Generate and deploy the GitHub Pages download page
+      # ----------------------------------------------------------------
+      - name: Checkout (for generate-page.py)
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: source
+          sparse-checkout: build-aux/generate-page.py
+          sparse-checkout-cone-mode: false
+
+      - name: Generate download page (index.html)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+          ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
+          EXE_NAME=$(echo "$ASSETS" | grep '\.exe$'  | head -1)
+          ZIP_NAME=$(echo "$ASSETS" | grep '\.zip$'  | head -1)
+          MSI_NAME=$(echo "$ASSETS" | grep '\.msi$'  | head -1 || echo "")
+          BASE="https://github.com/$REPO/releases/download/nightly"
+          INSTALLER_URL="$BASE/$EXE_NAME"
+          PORTABLE_URL="$BASE/$ZIP_NAME"
+          MSI_URL=""
+          [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
+          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
+          SHORT="${SHA:0:7}"
+          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
+          RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          RUN_NUMBER="${{ github.run_number }}"
+          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
+          export INSTALLER_URL PORTABLE_URL MSI_URL
+          python3 source/build-aux/generate-page.py
+
+      - name: Add .nojekyll
+        shell: bash
+        run: touch gh-pages/.nojekyll
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: gh-pages/
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

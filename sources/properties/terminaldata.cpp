@@ -174,6 +174,12 @@ QString TerminalData::typeToString(TerminalData::Type type)
 			return QString("Inner");
 		case Outer :
 			return QString("Outer");
+		case No :
+			return QString("No");
+		case Nc :
+			return QString("Nc");
+		case Common :
+			return QString("Common");
 	}
 	return QString("Generic");
 }
@@ -193,6 +199,12 @@ TerminalData::Type TerminalData::typeFromString(const QString &string)
 		return TerminalData::Inner;
 	} else if (string == "Outer") {
 		return TerminalData::Outer;
+	} else if (string == "No") {
+		return TerminalData::No;
+	} else if (string == "Nc") {
+		return TerminalData::Nc;
+	} else if (string == "Common") {
+		return TerminalData::Common;
 	} else {
 		qDebug() << "TerminalData::typeFromString, argument string is invalid"
 					" failsafe type 'TerminalData::Generic' is returned";
