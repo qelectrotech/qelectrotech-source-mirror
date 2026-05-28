@@ -1923,9 +1923,14 @@ Let op: Deze opties  blokkeren NIET de Automatisch nummering, maar passen alleen
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.h" line="51"/>
+        <location filename="../sources/ui/elementinfowidget.h" line="52"/>
         <source>Informations</source>
         <translation>Informatie</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="207"/>
+        <source>Séparation de potentiel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -13610,12 +13615,12 @@ De overige velden worden niet gebruikt.</translation>
         <translation>X :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="344"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="345"/>
         <source>Entrer votre texte ici</source>
         <translation>Geef hier uw tekst in</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/texteditor.cpp" line="365"/>
+        <location filename="../sources/editor/ui/texteditor.cpp" line="366"/>
         <source>Couleur :</source>
         <translation>Kleur:</translation>
     </message>
@@ -14349,7 +14354,7 @@ Maximale lengte : %2px
     <name>WiringListExport</name>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="157"/>
-        <location filename="../sources/wiringlistexport.cpp" line="172"/>
+        <location filename="../sources/wiringlistexport.cpp" line="211"/>
         <source>Erreur</source>
         <translation type="unfinished">Fout</translation>
     </message>
@@ -14359,81 +14364,81 @@ Maximale lengte : %2px
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="163"/>
+        <location filename="../sources/wiringlistexport.cpp" line="202"/>
         <source>Exporter le plan de câblage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="165"/>
+        <location filename="../sources/wiringlistexport.cpp" line="204"/>
         <source>Fichiers CSV (*.csv)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="172"/>
+        <location filename="../sources/wiringlistexport.cpp" line="211"/>
         <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="314"/>
+        <location filename="../sources/wiringlistexport.cpp" line="357"/>
         <source>Page</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="315"/>
+        <location filename="../sources/wiringlistexport.cpp" line="358"/>
         <source>Composant 1</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="316"/>
+        <location filename="../sources/wiringlistexport.cpp" line="359"/>
         <source>Borne 1</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="317"/>
+        <location filename="../sources/wiringlistexport.cpp" line="360"/>
         <source>Composant 2</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="318"/>
+        <location filename="../sources/wiringlistexport.cpp" line="361"/>
         <source>Borne 2</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="319"/>
+        <location filename="../sources/wiringlistexport.cpp" line="362"/>
         <source>Tension / Protocole</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished">Spanning / regels</translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="320"/>
+        <location filename="../sources/wiringlistexport.cpp" line="363"/>
         <source>Couleur du fil</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished">Kleur geleider</translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="321"/>
+        <location filename="../sources/wiringlistexport.cpp" line="364"/>
         <source>Section du fil</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished">Sectie van de geleider</translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="322"/>
+        <location filename="../sources/wiringlistexport.cpp" line="365"/>
         <source>Fonction</source>
         <comment>Wiring list CSV header</comment>
         <translation type="unfinished">Functie</translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="337"/>
+        <location filename="../sources/wiringlistexport.cpp" line="380"/>
         <source>Export réussi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/wiringlistexport.cpp" line="337"/>
+        <location filename="../sources/wiringlistexport.cpp" line="380"/>
         <source>Le plan de câblage a été exporté avec succès !</source>
         <translation type="unfinished"></translation>
     </message>
