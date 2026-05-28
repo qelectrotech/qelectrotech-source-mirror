@@ -373,6 +373,11 @@ QString ElementQueryWidget::queryStr() const
 		where.clear();
 	}
 
+	QString exclude_condition = "(exclude_from_bom IS NULL OR exclude_from_bom != '1')";
+
+	filter_ += " AND " + exclude_condition;
+	// -------------------------------------------------------------
+
 	if (where.isEmpty() && !filter_.isEmpty()) {
 		filter_.remove(0, 4); //Remove the first " AND" of filter.
 		filter_.prepend( " WHERE");
@@ -456,7 +461,7 @@ void ElementQueryWidget::setUpItems()
 {
 	for(QString key : QETInformation::elementInfoKeys())
 	{
-		if (key == "formula")
+		if (key == "formula" || key == "exclude_from_bom")
 			continue;
 
 		auto item = new QListWidgetItem(QETInformation::translatedInfoKey(key), ui->m_var_list);

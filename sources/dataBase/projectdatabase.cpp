@@ -383,7 +383,7 @@ void projectDataBase::createElementNomenclatureView()
 						 "ei.supplier_auxiliary4 AS supplier_auxiliary4,"
 						 "ei.quantity_auxiliary4 AS quantity_auxiliary4,"
 						 "ei.unity_auxiliary4 AS unity_auxiliary4,"
-						 
+						 "ei.exclude_from_bom AS exclude_from_bom,"
 						
 						 "d.pos AS diagram_position,"
 						 "e.type AS element_type,"
@@ -392,7 +392,7 @@ void projectDataBase::createElementNomenclatureView()
 						 "di.folio AS folio,"
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
-						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid");
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {

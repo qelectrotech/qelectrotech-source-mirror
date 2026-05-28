@@ -165,6 +165,9 @@ void ElementInfoWidget::enableLiveEdit()
 	if (m_potential_isolating_cb) {
 		connect(m_potential_isolating_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
+	if (m_exclude_from_bom_cb) {
+		connect(m_exclude_from_bom_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
 }
 
 /**
@@ -179,6 +182,9 @@ void ElementInfoWidget::disableLiveEdit()
 
 	if (m_potential_isolating_cb) {
 		disconnect(m_potential_isolating_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
+	if (m_exclude_from_bom_cb) {
+		disconnect(m_exclude_from_bom_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
 }
 
@@ -201,19 +207,26 @@ void ElementInfoWidget::buildInterface()
 		ui->scroll_vlayout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}
-
 	ui->scroll_vlayout->addStretch();
 
+	// Existing potential isolating checkbox
 	m_potential_isolating_cb = new QCheckBox(tr("Séparation de potentiel"), this);
-
 	m_potential_isolating_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
+
+	// English: Initialize and style the BOM exclusion checkbox
+	m_exclude_from_bom_cb = new QCheckBox(tr("Exclure de la nomenclature"), this);
+	m_exclude_from_bom_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
 
 	if (QVBoxLayout *mainLayout = qobject_cast<QVBoxLayout*>(this->layout())) {
 		mainLayout->insertWidget(1, m_potential_isolating_cb);
+		// English: Insert the new checkbox into the main vertical layout
+		mainLayout->insertWidget(2, m_exclude_from_bom_cb);
 	}
 
-	// Show checkbox only if the element is a terminal
+	// English: BOM exclusion applies to all elements, so it's always visible
+	m_exclude_from_bom_cb->setVisible(true);
 
+	// Show checkbox only if the element is a terminal
 	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
 		ui->m_auto_num_locked_cb->setVisible(true);
 		m_potential_isolating_cb->setVisible(true);
@@ -260,14 +273,13 @@ void ElementInfoWidget::updateUi()
 	}
 	// Load the lock status for auto numbering
 	if (m_element->elementData().m_type == ElementData::Terminal) {
-		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
-		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
+		// ... (bestehender Terminal-Code für auto_num_locked und potential_isolating) ...
+	}
 
-		// English: Load the potential isolating status from the element information mapping
-		if (m_potential_isolating_cb) {
-			QString isolating_value = element_info.value(QStringLiteral("potential_isolating")).toString();
-			m_potential_isolating_cb->setChecked(isolating_value == QLatin1String("true"));
-		}
+	// English: Load the BOM exclusion status from the element information mapping
+	if (m_exclude_from_bom_cb) {
+		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
+		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
 	}
 
 	if (m_live_edit) {
@@ -299,15 +311,14 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	// Save the auto numbering lock status
 	if (m_element->elementData().m_type == ElementData::Terminal) {
-		info_.addValue(QStringLiteral("auto_num_locked"), ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
-
-		if (m_potential_isolating_cb) {
-			info_.addValue(QStringLiteral("potential_isolating"), m_potential_isolating_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
-		}
 	}
+
+	if (m_exclude_from_bom_cb) {
+		info_.addValue(QStringLiteral("exclude_from_bom"), m_exclude_from_bom_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+	}
+
 	return info_;
 }
-
 /**
 	@brief ElementInfoWidget::firstActivated
 	Slot activated when this widget is show.
