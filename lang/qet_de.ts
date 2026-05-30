@@ -779,13 +779,6 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     </message>
 </context>
 <context>
-    <name>ColumnResizerTestWidget</name>
-    <message>
-        <source>PushButton</source>
-        <translation type="obsolete">Taste</translation>
-    </message>
-</context>
-<context>
     <name>CompositeTextEditDialog</name>
     <message>
         <location filename="../sources/ui/compositetexteditdialog.ui" line="14"/>
@@ -3200,14 +3193,6 @@ In diesem Fall wird das Feld &quot;Inkrementierung&quot; ignoriert.
     </message>
 </context>
 <context>
-    <name>FontHelpers</name>
-    <message>
-        <source>%1</source>
-        <comment>@item Font name</comment>
-        <translation type="obsolete">%1% {1?}</translation>
-    </message>
-</context>
-<context>
     <name>FormulaAssistantDialog</name>
     <message>
         <location filename="../sources/ui/formulaassistantdialog.ui" line="14"/>
@@ -4298,6 +4283,9 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <source>Texte</source>
         <translation>Text</translation>
     </message>
+</context>
+<context>
+    <name>ImagePropertiesWidget</name>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="380"/>
@@ -4311,6 +4299,159 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <source>Cliquez ici pour annuler le formatage html</source>
         <translation>html Formatierung entfernen</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
+        <source>Déplacer un champ texte</source>
+        <translation>Textfeld verschieben</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="194"/>
+        <source>Pivoter un champ texte</source>
+        <translation>Textfeld drehen</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="198"/>
+        <source>Modifier un champ texte</source>
+        <translation>Textfeld ändern</translation>
+    </message>
+</context>
+<context>
+    <name>ImportElementDialog</name>
+    <message>
+        <location filename="../sources/ui/importelementdialog.ui" line="14"/>
+        <source>Intégration d&apos;un élément</source>
+        <translation>Bauteil einbetten</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementdialog.ui" line="20"/>
+        <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
+        <translation>Das Bauteil wurde bereits in das Projekt eingebettet. Es gibt aber vermutlich Versionsunterschiede. Wie möchten Sie vorgehen?</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementdialog.ui" line="27"/>
+        <source>Utiliser l&apos;élément déjà integré</source>
+        <translation>Bereits eingebettetes Bauteil verwenden</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementdialog.ui" line="34"/>
+        <source>Intégrer l&apos;élément déposé</source>
+        <translation>Das neu angelegte Bauteil einbetten</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementdialog.ui" line="52"/>
+        <source>Écraser l&apos;élément déjà intégé</source>
+        <translation>Das bereits eingebettete Bauteil überschreiben</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementdialog.ui" line="59"/>
+        <source>Faire cohabiter les deux éléments</source>
+        <translation>Beide Bauteile beibehalten</translation>
+    </message>
+</context>
+<context>
+    <name>ImportElementTextPatternDialog</name>
+    <message>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="20"/>
+        <source>TextLabel</source>
+        <translation>TextLabel</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/importelementtextpatterndialog.ui" line="30"/>
+        <source>Écraser les textes existants</source>
+        <translation>Bestehende Texte überschreiben</translation>
+    </message>
+</context>
+<context>
+    <name>IndiTextPropertiesWidget</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="20"/>
+        <source>X :</source>
+        <translation>x:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="30"/>
+        <source>Éditeur avancé</source>
+        <translation>Fortgeschrittener Editor</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="37"/>
+        <source>Taille :</source>
+        <translation>Größe:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="47"/>
+        <source>Angle :</source>
+        <translation>Winkel:</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="57"/>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="93"/>
+        <source>px</source>
+        <translation>px</translation>
+    </message>
+</context>
+<context>
+    <name>KCharSelectData</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
+        <source>°</source>
+        <translation>°</translation>
+    </message>
+</context>
+<context>
+    <name>KColumnResizerTestForms</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
+        <source>Y :</source>
+        <translation>y:</translation>
+    </message>
+</context>
+<context>
+    <name>KColumnResizerTestGridAndForms</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="132"/>
+        <source>Le contenu, la taille et la police du texte ne peuvent être modifié car formaté en html.
+Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
+        <translation>Inhalt, Größe und Schriftart vom Text können nur im fortgeschrittenen Editor geändert werden (wegen html Formatierung).</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="153"/>
+        <source>Texte</source>
+        <translation>Text</translation>
+    </message>
+</context>
+<context>
+    <name>KColumnResizerTestGrids</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="160"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="380"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="412"/>
+        <location filename="../sources/ui/inditextpropertieswidget.cpp" line="460"/>
+        <source>Police</source>
+        <translation>Schriftart</translation>
+    </message>
+</context>
+<context>
+    <name>KFontChooser</name>
+    <message>
+        <location filename="../sources/ui/inditextpropertieswidget.ui" line="146"/>
+        <source>Cliquez ici pour annuler le formatage html</source>
+        <translation>html Formatierung entfernen</translation>
+    </message>
+</context>
+<context>
+    <name>KFormat</name>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="184"/>
         <location filename="../sources/ui/inditextpropertieswidget.cpp" line="189"/>
@@ -4401,6 +4542,9 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <comment>dialog content</comment>
         <translation>Die neu angelegte Vorlage einbetten</translation>
     </message>
+</context>
+<context>
+    <name>KStandardGuiItem</name>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="188"/>
         <source>Écraser le modèle déjà intégré</source>
@@ -4412,124 +4556,6 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
         <translation>Beide Vorlagen beibehalten</translation>
-    </message>
-</context>
-<context>
-    <name>KCharSelectData</name>
-    <message>
-        <source>Other</source>
-        <comment>KCharSelect section name</comment>
-        <translation type="obsolete">Andere</translation>
-    </message>
-</context>
-<context>
-    <name>KColumnResizerTestForms</name>
-    <message>
-        <source>GroupBox</source>
-        <translation type="obsolete">Gruppierung</translation>
-    </message>
-</context>
-<context>
-    <name>KColumnResizerTestGridAndForms</name>
-    <message>
-        <source>GroupBox</source>
-        <translation type="obsolete">Gruppierung</translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation type="obsolete">Taste</translation>
-    </message>
-</context>
-<context>
-    <name>KColumnResizerTestGrids</name>
-    <message>
-        <source>GroupBox</source>
-        <translation type="obsolete">Gruppierung</translation>
-    </message>
-</context>
-<context>
-    <name>KFontChooser</name>
-    <message>
-        <source>%1</source>
-        <comment>@item Font style</comment>
-        <translation type="obsolete">%1% {1?}</translation>
-    </message>
-</context>
-<context>
-    <name>KFormat</name>
-    <message>
-        <source>y</source>
-        <comment>SI prefix for 10^⁻24</comment>
-        <translation type="obsolete">y</translation>
-    </message>
-    <message>
-        <source>T</source>
-        <comment>SI prefix for 10^12</comment>
-        <translation type="obsolete">T</translation>
-    </message>
-    <message>
-        <source>Y</source>
-        <comment>SI prefix for 10^24</comment>
-        <translation type="obsolete">Y</translation>
-    </message>
-    <message>
-        <source>%1 %2</source>
-        <comment>no Prefix</comment>
-        <extracomment>value without prefix, format &quot;&lt;val&gt; &lt;unit&gt;&quot;</extracomment>
-        <translation type="obsolete">%1 %2</translation>
-    </message>
-    <message>
-        <source>%1 %2%3</source>
-        <comment>MetricBinaryDialect</comment>
-        <extracomment>value with prefix, format &quot;&lt;val&gt; &lt;prefix&gt;&lt;unit&gt;&quot;</extracomment>
-        <translation type="obsolete">%1% {1 %2%3?}</translation>
-    </message>
-    <message>
-        <source>%1:%2.%3</source>
-        <extracomment>@item:intext Duration format minutes, seconds and milliseconds</extracomment>
-        <translation type="obsolete">%1% {1:%2.%3?}</translation>
-    </message>
-    <message>
-        <source>%1:%2</source>
-        <extracomment>@item:intext Duration format minutes and seconds
-----------
-@item:intext Duration format hours and minutes</extracomment>
-        <translation type="obsolete">%1% {1:%2?}</translation>
-    </message>
-    <message>
-        <source>%1:%2:%3.%4</source>
-        <extracomment>@item:intext Duration format hours, minutes, seconds, milliseconds</extracomment>
-        <translation type="obsolete">%1% {1:%2:%3.%4?}</translation>
-    </message>
-    <message>
-        <source>%1:%2:%3</source>
-        <extracomment>@item:intext Duration format hours, minutes, seconds</extracomment>
-        <translation type="obsolete">%1% {1:%2:%3?}</translation>
-    </message>
-</context>
-<context>
-    <name>KMessageBox</name>
-    <message>
-        <source>Information</source>
-        <translation type="obsolete">Information</translation>
-    </message>
-</context>
-<context>
-    <name>KMessageDialog</name>
-    <message>
-        <source>Information</source>
-        <translation type="obsolete">Information</translation>
-    </message>
-</context>
-<context>
-    <name>KStandardGuiItem</name>
-    <message>
-        <source>&amp;OK</source>
-        <translation type="obsolete">&amp;OK</translation>
-    </message>
-    <message>
-        <source>&amp;Cancel</source>
-        <translation type="obsolete">Abbre&amp;chen</translation>
     </message>
 </context>
 <context>
@@ -9553,15 +9579,15 @@ Möchten Sie sie ersetzen?</translation>
         <translation>Einfügen</translation>
     </message>
     <message>
-        <location filename="../sources/conductorproperties.cpp" line="826"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="401"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
-        <location filename="../sources/qetapp.cpp" line="2379"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
+        <location filename="../sources/conductorproperties.cpp" line="826"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="582"/>
+        <location filename="../sources/qetapp.cpp" line="2379"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="108"/>
         <source>this is an error in the code</source>
         <translation>dies ist ein Programmfehler</translation>
