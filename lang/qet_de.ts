@@ -2813,61 +2813,66 @@ Alle Bauteile und Unterordner von diesem Ordner werden ebenso gelöscht.</transl
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
+        <source>Copier et coller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Supprimer ce folio</source>
         <translation>Folie löschen</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce folio</source>
         <translation>Folie 1 Position nach oben verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Abaisser ce folio</source>
         <translation>Folie 1 Position nach unten verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Remonter ce folio x10</source>
         <translation>Folie 10 Positionen nach oben verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Remonter ce folio x100</source>
         <translation>Folie 100 Positionen nach oben verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Remonter ce folio au debut</source>
         <translation>Folie an den Anfang verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Abaisser ce folio x10</source>
         <translation>Folie 10 Positionen nach unten verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Abaisser ce folio x100</source>
         <translation>Folie 100 Positionen nach unten verschieben</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="90"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="91"/>
         <source>Filtrer</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Nouveau modèle</source>
         <translation>Neues Schriftfeld</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Éditer ce modèle</source>
         <translation>Schriftfeld bearbeiten</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Supprimer ce modèle</source>
         <translation>Schriftfeld löschen</translation>
     </message>
@@ -5620,44 +5625,44 @@ Folgende Variablen sind inkompatibel:
         <translation>Seite einrichten</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="68"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="79"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
         <translation>Druckoptionen</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="109"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="120"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>Projekt</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="140"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="151"/>
         <source>Imprimer</source>
         <translation>Drucken</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="146"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="157"/>
         <source>Exporter en pdf</source>
         <translation>Als PDF speichern</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="169"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="180"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
         <translation>Layout (unter Windows für den PDF-Export nicht verfügbar)</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="434"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="880"/>
         <source>Folio sans titre</source>
         <translation>Folie ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="673"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="1119"/>
         <source>Exporter sous : </source>
         <translation>Exportieren als: </translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="673"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="1119"/>
         <source>Fichier (*.pdf)</source>
         <translation>Datei (*.pdf)</translation>
     </message>

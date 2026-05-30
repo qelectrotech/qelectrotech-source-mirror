@@ -1927,8 +1927,13 @@ Note: These options DO NOT allow or block Auto Numberings, only their Update Pol
         <translation>情報</translation>
     </message>
     <message>
-        <location filename="../sources/ui/elementinfowidget.cpp" line="207"/>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="213"/>
         <source>Séparation de potentiel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="217"/>
+        <source>Exclure de la nomenclature</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2799,61 +2804,66 @@ Tout les éléments et les dossier contenus dans ce dossier seront supprimés.</
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
+        <source>Copier et coller</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Supprimer ce folio</source>
         <translation>このフォリオを削除</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce folio</source>
         <translation>このフォリオを上に移動</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Abaisser ce folio</source>
         <translation>このフォリオを下に移動</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Remonter ce folio x10</source>
         <translation>このフォリオを上に移動 x10</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Remonter ce folio x100</source>
         <translation type="unfinished">このフォリオを上に移動 x100</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Remonter ce folio au debut</source>
         <translation>このフォリオを最初に移動</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Abaisser ce folio x10</source>
         <translation>このフォリオを下に移動 x10</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Abaisser ce folio x100</source>
         <translation type="unfinished">このフォリオを下に移動 x100</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Nouveau modèle</source>
         <translation>新規テンプレート</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Éditer ce modèle</source>
         <translation>このテンプレートを編集</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Supprimer ce modèle</source>
         <translation>このテンプレートを削除</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="90"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="91"/>
         <source>Filtrer</source>
         <translation>フィルタ</translation>
     </message>
@@ -5600,44 +5610,44 @@ Les variables suivantes sont incompatibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="68"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="79"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
         <translation type="unfinished">印刷オプション</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="109"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="120"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation type="unfinished">プロジェクト</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="140"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="151"/>
         <source>Imprimer</source>
         <translation type="unfinished">印刷</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="146"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="157"/>
         <source>Exporter en pdf</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="169"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="180"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="434"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="880"/>
         <source>Folio sans titre</source>
         <translation type="unfinished">無題のフォリオ</translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="673"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="1119"/>
         <source>Exporter sous : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/print/projectprintwindow.cpp" line="673"/>
+        <location filename="../sources/print/projectprintwindow.cpp" line="1119"/>
         <source>Fichier (*.pdf)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8422,7 +8432,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddtext.cpp" line="65"/>
-        <location filename="../sources/qetinformation.cpp" line="270"/>
+        <location filename="../sources/qetinformation.cpp" line="271"/>
         <source>Texte</source>
         <translation>テキスト</translation>
     </message>
@@ -8592,12 +8602,12 @@ Voulez-vous la remplacer ?</source>
         <translation>概要を追加</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="240"/>
+        <location filename="../sources/qetinformation.cpp" line="241"/>
         <source>Position du folio</source>
         <translation>フォリオ位置</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="239"/>
+        <location filename="../sources/qetinformation.cpp" line="240"/>
         <source>Numéro de folio</source>
         <translation>フォリオ番号</translation>
     </message>
@@ -8756,369 +8766,369 @@ Voulez-vous la remplacer ?</source>
         <translation>端子</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="230"/>
+        <location filename="../sources/qetinformation.cpp" line="231"/>
         <source>Auteur</source>
         <translation>作成者</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="231"/>
+        <location filename="../sources/qetinformation.cpp" line="232"/>
         <source>Date</source>
         <translation>日付</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="232"/>
+        <location filename="../sources/qetinformation.cpp" line="233"/>
         <source>Titre</source>
         <translation>表題</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="233"/>
+        <location filename="../sources/qetinformation.cpp" line="234"/>
         <source>Fichier</source>
         <translation>ファイル</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="234"/>
+        <location filename="../sources/qetinformation.cpp" line="235"/>
         <source>Installation (=)</source>
         <translation>設備 (=)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="235"/>
-        <location filename="../sources/qetinformation.cpp" line="265"/>
+        <location filename="../sources/qetinformation.cpp" line="236"/>
+        <location filename="../sources/qetinformation.cpp" line="266"/>
         <source>Localisation (+)</source>
         <translation>場所 (+)</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="236"/>
+        <location filename="../sources/qetinformation.cpp" line="237"/>
         <source>Indice de révision</source>
         <translation>改訂番号</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="237"/>
+        <location filename="../sources/qetinformation.cpp" line="238"/>
         <source>Position</source>
         <translation type="unfinished">位置</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="238"/>
+        <location filename="../sources/qetinformation.cpp" line="239"/>
         <source>Version de QElectroTech</source>
         <translation>QElectroTech のバージョン</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="241"/>
+        <location filename="../sources/qetinformation.cpp" line="242"/>
         <source>Nombre de folio</source>
         <translation>フォリオ数</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="242"/>
+        <location filename="../sources/qetinformation.cpp" line="243"/>
         <source>Numéro du folio précédent</source>
         <translation>前のフォリオ番号</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="243"/>
+        <location filename="../sources/qetinformation.cpp" line="244"/>
         <source>Numéro du folio suivant</source>
         <translation>次のフォリオ番号</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="244"/>
+        <location filename="../sources/qetinformation.cpp" line="245"/>
         <source>Titre du projet</source>
         <translation>プロジェクト名</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="245"/>
+        <location filename="../sources/qetinformation.cpp" line="246"/>
         <source>Chemin du fichier du projet</source>
         <translation>プロジェクト・パス</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="246"/>
+        <location filename="../sources/qetinformation.cpp" line="247"/>
         <source>Nom du fichier</source>
         <translation>ファイル名</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="247"/>
+        <location filename="../sources/qetinformation.cpp" line="248"/>
         <source>Date d&apos;enregistrement du fichier format local</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="249"/>
+        <location filename="../sources/qetinformation.cpp" line="250"/>
         <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="253"/>
+        <location filename="../sources/qetinformation.cpp" line="254"/>
         <source>Formule du label</source>
         <translation type="unfinished">ラベルの式</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="254"/>
+        <location filename="../sources/qetinformation.cpp" line="255"/>
         <source>Label</source>
         <translation type="unfinished">ラベル</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="255"/>
+        <location filename="../sources/qetinformation.cpp" line="256"/>
         <source>Commentaire</source>
         <translation type="unfinished">コメント</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="256"/>
-        <location filename="../sources/qetinformation.cpp" line="266"/>
+        <location filename="../sources/qetinformation.cpp" line="257"/>
+        <location filename="../sources/qetinformation.cpp" line="267"/>
         <source>Fonction</source>
         <translation type="unfinished">機能</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="272"/>
+        <location filename="../sources/qetinformation.cpp" line="273"/>
         <source>Bloc auxiliaire 1</source>
         <translation type="unfinished">補助ブロック 1</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="273"/>
+        <location filename="../sources/qetinformation.cpp" line="274"/>
         <source>Description textuelle auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="274"/>
+        <location filename="../sources/qetinformation.cpp" line="275"/>
         <source>Numéro d&apos;article auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="275"/>
+        <location filename="../sources/qetinformation.cpp" line="276"/>
         <source>Fabricant auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="276"/>
+        <location filename="../sources/qetinformation.cpp" line="277"/>
         <source>Numéro de commande auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="277"/>
+        <location filename="../sources/qetinformation.cpp" line="278"/>
         <source>Numéro interne auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="278"/>
+        <location filename="../sources/qetinformation.cpp" line="279"/>
         <source>Fournisseur auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="279"/>
+        <location filename="../sources/qetinformation.cpp" line="280"/>
         <source>Quantité auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="280"/>
+        <location filename="../sources/qetinformation.cpp" line="281"/>
         <source>Unité auxiliaire 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="281"/>
+        <location filename="../sources/qetinformation.cpp" line="282"/>
         <source>Bloc auxiliaire 2</source>
         <translation type="unfinished">補助ブロック 2</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="282"/>
+        <location filename="../sources/qetinformation.cpp" line="283"/>
         <source>Description textuelle auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="283"/>
+        <location filename="../sources/qetinformation.cpp" line="284"/>
         <source>Numéro d&apos;article auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="284"/>
+        <location filename="../sources/qetinformation.cpp" line="285"/>
         <source>Fabricant auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="285"/>
+        <location filename="../sources/qetinformation.cpp" line="286"/>
         <source>Numéro de commande auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="286"/>
+        <location filename="../sources/qetinformation.cpp" line="287"/>
         <source>Numéro interne auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="287"/>
+        <location filename="../sources/qetinformation.cpp" line="288"/>
         <source>Fournisseur auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="288"/>
+        <location filename="../sources/qetinformation.cpp" line="289"/>
         <source>Quantité auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="289"/>
+        <location filename="../sources/qetinformation.cpp" line="290"/>
         <source>Unité auxiliaire 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="290"/>
+        <location filename="../sources/qetinformation.cpp" line="291"/>
         <source>Bloc auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="291"/>
+        <location filename="../sources/qetinformation.cpp" line="292"/>
         <source>Description textuelle auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="292"/>
+        <location filename="../sources/qetinformation.cpp" line="293"/>
         <source>Numéro d&apos;article auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="293"/>
+        <location filename="../sources/qetinformation.cpp" line="294"/>
         <source>Fabricant auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="294"/>
+        <location filename="../sources/qetinformation.cpp" line="295"/>
         <source>Numéro de commande auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="295"/>
+        <location filename="../sources/qetinformation.cpp" line="296"/>
         <source>Numéro interne auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="296"/>
+        <location filename="../sources/qetinformation.cpp" line="297"/>
         <source>Fournisseur auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="297"/>
+        <location filename="../sources/qetinformation.cpp" line="298"/>
         <source>Quantité auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="298"/>
+        <location filename="../sources/qetinformation.cpp" line="299"/>
         <source>Unité auxiliaire 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="299"/>
+        <location filename="../sources/qetinformation.cpp" line="300"/>
         <source>Bloc auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="300"/>
+        <location filename="../sources/qetinformation.cpp" line="301"/>
         <source>Description textuelle auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="301"/>
+        <location filename="../sources/qetinformation.cpp" line="302"/>
         <source>Numéro d&apos;article auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="302"/>
+        <location filename="../sources/qetinformation.cpp" line="303"/>
         <source>Fabricant auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="303"/>
+        <location filename="../sources/qetinformation.cpp" line="304"/>
         <source>Numéro de commande auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="304"/>
+        <location filename="../sources/qetinformation.cpp" line="305"/>
         <source>Numéro interne auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="305"/>
+        <location filename="../sources/qetinformation.cpp" line="306"/>
         <source>Fournisseur auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="306"/>
+        <location filename="../sources/qetinformation.cpp" line="307"/>
         <source>Quantité auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="307"/>
+        <location filename="../sources/qetinformation.cpp" line="308"/>
         <source>Unité auxiliaire 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="257"/>
+        <location filename="../sources/qetinformation.cpp" line="258"/>
         <source>Description textuelle</source>
         <translation type="unfinished">テキストによる記述</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="258"/>
+        <location filename="../sources/qetinformation.cpp" line="259"/>
         <source>Numéro d&apos;article</source>
         <translation type="unfinished">商品コード</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="259"/>
+        <location filename="../sources/qetinformation.cpp" line="260"/>
         <source>Fabricant</source>
         <translation type="unfinished">製造業者</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="260"/>
+        <location filename="../sources/qetinformation.cpp" line="261"/>
         <source>Numéro de commande</source>
         <translation type="unfinished">注文番号</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="261"/>
+        <location filename="../sources/qetinformation.cpp" line="262"/>
         <source>Numéro interne</source>
         <translation type="unfinished">内部番号</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="262"/>
+        <location filename="../sources/qetinformation.cpp" line="263"/>
         <source>Fournisseur</source>
         <translation type="unfinished">供給業者</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="263"/>
+        <location filename="../sources/qetinformation.cpp" line="264"/>
         <source>Quantité</source>
         <translation type="unfinished">数量</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="264"/>
+        <location filename="../sources/qetinformation.cpp" line="265"/>
         <source>Unité</source>
         <translation type="unfinished">単位</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="267"/>
+        <location filename="../sources/qetinformation.cpp" line="268"/>
         <source>Tension / Protocole</source>
         <translation type="unfinished">電圧 / プロトコル</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="268"/>
+        <location filename="../sources/qetinformation.cpp" line="269"/>
         <source>Couleur du fil</source>
         <translation type="unfinished">導体色</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="269"/>
+        <location filename="../sources/qetinformation.cpp" line="270"/>
         <source>Section du fil</source>
         <translation type="unfinished">導体部</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="271"/>
+        <location filename="../sources/qetinformation.cpp" line="272"/>
         <source>Formule du texte</source>
         <translation type="unfinished">テキストの式</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="248"/>
+        <location filename="../sources/qetinformation.cpp" line="249"/>
         <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="250"/>
+        <location filename="../sources/qetinformation.cpp" line="251"/>
         <source>Heure d&apos;enregistrement du fichier</source>
         <translation>ファイルの保存時刻</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="251"/>
+        <location filename="../sources/qetinformation.cpp" line="252"/>
         <source>Nom du fichier enregistré</source>
         <translation>保存されたファイル名</translation>
     </message>
     <message>
-        <location filename="../sources/qetinformation.cpp" line="252"/>
+        <location filename="../sources/qetinformation.cpp" line="253"/>
         <source>Chemin du fichier enregistré</source>
         <translation>保存されたファイル・パス</translation>
     </message>
