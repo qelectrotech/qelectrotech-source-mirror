@@ -928,7 +928,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_update_map)
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, text_rect);
 
 		++m_drawed_contacts;
 	}
@@ -1012,7 +1012,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_update_map)
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, text_rect);
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
@@ -1044,7 +1044,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_update_map)
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, text_rect);
 		++m_drawed_contacts;
 	}
 		return bounding_rect;

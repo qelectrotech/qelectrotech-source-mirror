@@ -86,6 +86,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		void fromXml(const QDomElement &dom_elmt) override;
 
 		Element *parentElement() const;
+		/// PDF export: slave cross-reference text item ("(folio-pos)") and its master target.
+		QGraphicsTextItem *slaveXrefItem() const { return m_slave_Xref_item; }
+		Element *masterElement() const { return m_master_element.data(); }
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();

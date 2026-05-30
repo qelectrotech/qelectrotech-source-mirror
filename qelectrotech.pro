@@ -230,7 +230,11 @@ RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/*.ts
 
 # Modules Qt utilises par l'application
-QT += xml svg network sql widgets printsupport concurrent KWidgetsAddons KCoreAddons
+QT += xml svg network sql widgets printsupport concurrent KWidgetsAddons KCoreAddons gui-private
+
+# Private Qt GUI headers (needed for QPdfEngine::drawHyperlink)
+# gui-private should add this automatically, but some distros need it explicit
+INCLUDEPATH += $$[QT_INSTALL_HEADERS]/QtGui/$$[QT_VERSION]/QtGui
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
 FORMS += $$files(sources/richtext/*.ui) \

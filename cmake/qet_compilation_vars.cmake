@@ -29,6 +29,7 @@ set(QET_COMPONENTS
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
   Qt::Gui
+  Qt::GuiPrivate   # Required for QPdfEngine::drawHyperlink (PDF internal links)
   Qt::Xml
   Qt::Svg
   Qt::Sql

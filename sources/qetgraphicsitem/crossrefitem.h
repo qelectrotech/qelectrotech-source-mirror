@@ -126,6 +126,12 @@ class CrossRefItem : public QGraphicsObject
 		ElementTextItemGroup *m_group = nullptr;
 		QList <QMetaObject::Connection> m_slave_connection;
 		QList <QMetaObject::Connection> m_update_connection;
+
+	public:
+		/// Returns the map of linked elements and their clickable rects (local coords).
+		/// Used by the PDF export to inject hyperlink annotations.
+		const QMultiMap<Element *, QRectF> &hoveredContactsMap() const
+		{ return m_hovered_contacts_map; }
 };
 
 #endif // CROSSREFITEM_H

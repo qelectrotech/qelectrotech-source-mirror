@@ -21,8 +21,15 @@
 #include "../qeticons.h"
 #include "../qetproject.h"
 #include "../qetversion.h"
+#include "../qetgraphicsitem/crossrefitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
 
 #include "ui_projectprintwindow.h"
+
+// Private Qt PDF engine for drawHyperlink() — not public API, stable since Qt4
+// Requires QT += gui-private in qelectrotech.pro
+#include <private/qpdf_p.h>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 #	include <QDesktopWidget>
@@ -37,6 +44,10 @@
 #include <QPrintDialog>
 #include <QPrintPreviewWidget>
 #include <QScreen>
+#include <QFile>
+#include <QRegularExpression>
+#include <QMap>
+#include <QVector>
 
 /**
  * @brief ProjectPrintWindow::ProjectPrintWindow
@@ -188,6 +199,241 @@ ProjectPrintWindow::~ProjectPrintWindow()
  * @brief ProjectPrintWindow::requestPaint
  * @param slot called when m_preview emit paintRequested
  */
+/**
+ * @brief ProjectPrintWindow::pdfConvertUriToGoTo
+ * Post-processes a Qt-generated PDF to replace URI link annotations
+ * (file:///path/to/file.pdf#page=N) with native PDF GoTo actions
+ * ([pageObj 0 R /Fit]).  This makes cross-reference links work in all
+ * PDF viewers regardless of where the file is stored.
+ *
+ * The function:
+ *   1. Reads the PDF as raw bytes.
+ *   2. Collects page object numbers in document order by scanning for
+ *      objects that contain "/Type /Page" (but not "/Type /Pages").
+ *   3. Replaces every annotation action block
+ *        /S /URI\n/URI (file://...#page=N)
+ *      with
+ *        /S /GoTo\n/D [<pageObj> 0 R /Fit]
+ *   4. Rebuilds the cross-reference table (offsets change because the
+ *      replacement strings have different lengths).
+ *   5. Writes the result back to the same file.
+ *
+ * The function is intentionally conservative: if any step fails (file
+ * not found, malformed PDF, no URI annotations) it returns silently
+ * without corrupting the file.
+ */
+static void pdfConvertUriToGoTo(const QString &pdfPath)
+{
+	// --- 1. Read raw bytes ---
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	QByteArray data = f.readAll();
+	f.close();
+
+	// --- 2. Collect page object numbers in document order ---
+	// Read them from the page tree (/Type /Pages -> /Kids [ N 0 R ... ]).
+	// This is reliable; scanning raw bytes for "/Type /Page" is NOT: that
+	// marker also occurs inside content streams, and a forward lookahead
+	// wrongly tags neighbouring objects (it found 280 "pages" for a 137-page
+	// document). Qt writes a single, flat /Kids array listing every page.
+	QVector<int> pageObjs;
+	{
+		int pagesPos = data.indexOf("/Type /Pages");
+		int kidsPos  = (pagesPos == -1) ? -1 : data.indexOf("/Kids", pagesPos);
+		int lb       = (kidsPos  == -1) ? -1 : data.indexOf('[', kidsPos);
+		int rb       = (lb       == -1) ? -1 : data.indexOf(']', lb);
+		if (lb != -1 && rb != -1 && rb > lb) {
+			const QString kids =
+				QString::fromLatin1(data.mid(lb + 1, rb - lb - 1));
+			QRegularExpression re(QStringLiteral("(\\d+)\\s+\\d+\\s+R"));
+			auto it = re.globalMatch(kids);
+			while (it.hasNext()) {
+				int objNum = it.next().captured(1).toInt();
+				if (objNum > 0) pageObjs.append(objNum);
+			}
+		}
+	}
+
+	if (pageObjs.isEmpty()) return;  // nothing to do
+
+	// --- 3. Replace URI annotations with GoTo ---
+	// Pattern (Qt always writes exactly this):
+	//   /S /URI\n/URI (file:///...<anything>#page=N)\n
+	// or (older patches without file://):
+	//   /S /URI\n/URI (page=N)\n
+	bool changed = false;
+	{
+		// We do a manual scan to handle variable-length replacements.
+		QByteArray out;
+		out.reserve(data.size());
+
+		const QByteArray sUri  = "/S /URI\n/URI (";
+		const QByteArray sGoTo = "/S /GoTo\n/D [";
+		int pos = 0;
+
+		while (pos < data.size()) {
+			int found = data.indexOf(sUri, pos);
+			if (found == -1) {
+				out.append(data.mid(pos));
+				break;
+			}
+
+			// Copy everything up to the match
+			out.append(data.mid(pos, found - pos));
+
+			// Find closing ')' of the URI value
+			int uriStart = found + sUri.size();
+			int closeParen = data.indexOf(')', uriStart);
+			if (closeParen == -1) {
+				// Malformed — copy rest verbatim
+				out.append(data.mid(found));
+				pos = data.size();
+				break;
+			}
+
+			QByteArray uriVal = data.mid(uriStart, closeParen - uriStart);
+
+			// Extract page number: look for #page=N or bare page=N
+			int pageNum = -1;
+			int hashPos = uriVal.lastIndexOf("#page=");
+			int digitStart = -1;
+			if (hashPos != -1) {
+				digitStart = hashPos + 6;
+			} else if (uriVal.startsWith("page=")) {
+				digitStart = 5;
+			}
+			if (digitStart != -1) {
+				// Take only the leading digits: the fragment may carry extra
+				// parameters after the page number (e.g. "22&fitr=15_489_..."),
+				// and QByteArray::toInt() would fail on the whole remainder.
+				int e = digitStart;
+				while (e < uriVal.size()
+				       && uriVal[e] >= '0' && uriVal[e] <= '9')
+					++e;
+				if (e > digitStart)
+					pageNum = uriVal.mid(digitStart, e - digitStart).toInt();
+			}
+
+			if (pageNum >= 1 && pageNum <= pageObjs.size()) {
+				// Valid page reference — emit GoTo action.
+				int pageObjNum = pageObjs[pageNum - 1];
+
+				// Optional precise destination: &fitr=Left_Bottom_Right_Top
+				// (integer PDF points). If present -> /FitR (frame the element);
+				// otherwise -> /Fit (whole page, top).
+				QByteArray dest = " /Fit]";
+				int fr = uriVal.indexOf("fitr=");
+				if (fr != -1) {
+					QByteArray rest = uriVal.mid(fr + 5);
+					// stop at first char that is not part of the number list
+					int end = 0;
+					while (end < rest.size()
+					       && ((rest[end] >= '0' && rest[end] <= '9')
+					           || rest[end] == '_' || rest[end] == '-'))
+						++end;
+					QList<QByteArray> parts = rest.left(end).split('_');
+					if (parts.size() == 4) {
+						dest = " /FitR " + parts[0] + " " + parts[1] + " "
+						       + parts[2] + " " + parts[3] + "]";
+					}
+				}
+
+				QByteArray goTo = sGoTo
+					+ QByteArray::number(pageObjNum)
+					+ " 0 R" + dest;
+				out.append(goTo);
+				changed = true;
+			} else {
+				// Unknown page — keep original URI
+				out.append(sUri);
+				out.append(uriVal);
+				out.append(')');
+			}
+
+			pos = closeParen + 1;  // skip past ')'
+		}
+
+		if (!changed) return;  // nothing was replaced
+		data = out;
+	}
+
+	// --- 4. Rebuild xref table ---
+	// Find start of existing xref (last occurrence)
+	int xrefStart = data.lastIndexOf("\nxref\n");
+	if (xrefStart == -1) xrefStart = data.lastIndexOf("\nxref ");
+	if (xrefStart == -1) return;  // malformed PDF
+	++xrefStart;  // skip the leading '\n'
+
+	QByteArray body = data.left(xrefStart);
+
+	// Collect all object offsets from the body
+	QMap<int, int> offsets;  // objNum -> byte offset
+	{
+		const QByteArray objMarker = " 0 obj";
+		int pos = 0;
+		while ((pos = body.indexOf(objMarker, pos)) != -1) {
+			int numStart = pos - 1;
+			while (numStart > 0 && body[numStart-1] != '\n' && body[numStart-1] != '\r')
+				--numStart;
+			QByteArray numStr = body.mid(numStart, pos - numStart).trimmed();
+			bool ok = false;
+			int objNum = numStr.toInt(&ok);
+			if (ok && objNum > 0)
+				offsets[objNum] = numStart;
+			++pos;
+		}
+	}
+
+	if (offsets.isEmpty()) return;
+
+	int maxObj = offsets.lastKey();
+
+	// Build xref table
+	QByteArray xref;
+	xref += "xref\n";
+	xref += "0 " + QByteArray::number(maxObj + 1) + "\n";
+	xref += "0000000000 65535 f \n";
+	for (int i = 1; i <= maxObj; ++i) {
+		if (offsets.contains(i)) {
+			xref += QByteArray::number(offsets[i]).rightJustified(10, '0')
+				+ " 00000 n \n";
+		} else {
+			xref += "0000000000 65535 f \n";
+		}
+	}
+
+	// Find trailer dict from the original xref section
+	int trailerPos = data.indexOf("trailer", xrefStart);
+	int trailerEnd = -1;
+	if (trailerPos != -1) {
+		trailerEnd = data.indexOf("%%EOF", trailerPos);
+		if (trailerEnd != -1) trailerEnd += 5;
+	}
+
+	QByteArray trailer;
+	if (trailerPos != -1 && trailerEnd != -1)
+		trailer = data.mid(trailerPos, trailerEnd - trailerPos);
+	else
+		trailer = "trailer\n<<>>\n%%EOF";
+
+	int newXrefOffset = body.size();
+
+	QByteArray result;
+	result.reserve(body.size() + xref.size() + trailer.size() + 30);
+	result += body;
+	result += xref;
+	result += trailer;
+	result += "\nstartxref\n";
+	result += QByteArray::number(newXrefOffset);
+	result += "\n%%EOF\n";
+
+	// --- 5. Write back ---
+	QFile out(pdfPath);
+	if (!out.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	out.write(result);
+	out.close();
+}
+
 void ProjectPrintWindow::requestPaint()
 {
 	#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
@@ -214,12 +460,47 @@ void ProjectPrintWindow::requestPaint()
 		return;
 	}
 
+	// Build diagram -> first physical PDF page number map (1-based)
+	// Must be done before the print loop since page numbers depend on order
+	QMap<Diagram*, int> diagramPageMap;
+	{
+		int pageNum = 1;
+		for (auto diagram : selectedDiagram()) {
+			diagramPageMap.insert(diagram, pageNum);
+			// Each diagram may span multiple pages if not fit_page
+			if (!ui->m_fit_in_page_cb->isChecked()) {
+				auto option = exportProperties();
+				bool full_page = m_printer->fullPage();
+				int h = horizontalPagesCount(diagram, option, full_page);
+				int v = verticalPagesCount(diagram, option, full_page);
+				pageNum += h * v;
+			} else {
+				pageNum += 1;
+			}
+		}
+	}
+
 	bool first = true;
 	QPainter painter(m_printer);
+
+	// A real PDF export uses the QPdfEngine; the on-screen preview uses a
+	// preview paint engine. We only post-process when actually writing a PDF.
+	const bool pdfExport =
+		(m_printer->outputFormat() == QPrinter::PdfFormat)
+		&& (dynamic_cast<QPdfEngine*>(painter.paintEngine()) != nullptr);
+
 	for (auto diagram : selectedDiagram())
 	{
 		first ? first = false : m_printer->newPage();
-		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer);
+		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap);
+	}
+
+	if (pdfExport) {
+		painter.end();   // flush & close the PDF file on disk
+		// Convert URI link annotations into native internal GoTo/FitR actions:
+		// cross-references then jump inside the document (no new viewer
+		// instance) and frame the target element.
+		pdfConvertUriToGoTo(m_printer->outputFileName());
 	}
 }
 
@@ -230,7 +511,7 @@ void ProjectPrintWindow::requestPaint()
  * @param fit_page
  * @param printer
  */
-void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer)
+void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap)
 {
 
 	////Prepare the print////
@@ -316,6 +597,171 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 				Qt::KeepAspectRatio);
 		}
 	}
+
+	////Inject PDF cross-reference links////
+	if (printer->outputFormat() == QPrinter::PdfFormat && fit_page) {
+		auto *pdfEngine = dynamic_cast<QPdfEngine*>(painter->paintEngine());
+		if (pdfEngine) {
+
+			// QGraphicsScene::render() fait save()/restore() : worldTransform()
+			// est revenu a l'identite ici. On reconstruit DONC explicitement la
+			// transform appliquee par :
+			//   diagram->render(painter, QRectF(), diagram_rect, KeepAspectRatio)
+			// cible vide => painter->viewport() ; source = diagram_rect ; centre.
+			const QRectF target = QRectF(painter->viewport());
+			const QRectF source = QRectF(diagram_rect); // meme source que render()
+
+			// render() ANCRE en haut-gauche (pas de centrage) :
+			//   translate(target.topLeft) . scale(s,s) . translate(-source.topLeft)
+			// On reproduit EXACTEMENT ca — surtout PAS de (target-source*s)/2.
+			const qreal s = qMin(target.width()  / source.width(),
+			                     target.height() / source.height());
+
+			QTransform fit;
+			fit.translate(target.x(), target.y());
+			fit.scale(s, s);
+			fit.translate(-source.x(), -source.y());   // scene -> pixels device
+
+			// IMPORTANT : QPdfEngine::drawHyperlink() applique lui-meme
+			// pageMatrix() (echelle 72/resolution + inversion de Y + marges).
+			// On lui passe donc le rectangle en PIXELS DEVICE, sans aucune
+			// conversion en points ni flip de notre cote.
+			const QRectF pageBounds(0, 0, target.width(), target.height());
+
+			// ---- Device-pixels -> PDF points, replicating QPdfEnginePrivate::pageMatrix()
+			// (same geometry for every page: same printer, page size and margins). ----
+			const qreal pt_scale = 72.0 / printer->resolution();
+			const qreal fullH_pt = printer->pageLayout().fullRectPoints().height();
+			const bool  fullPageMode =
+				(printer->pageLayout().mode() == QPageLayout::FullPageMode);
+			const QRect paintPx =
+				printer->pageLayout().paintRectPixels(printer->resolution());
+			auto devToPdf = [=](const QPointF &d) -> QPointF {
+				qreal dx = d.x(), dy = d.y();
+				if (!fullPageMode) { dx += paintPx.left(); dy += paintPx.top(); }
+				return QPointF(pt_scale * dx, fullH_pt - pt_scale * dy);
+			};
+
+			// Compute, in PDF points on its OWN page, the rectangle to frame for a
+			// target element (used as a /FitR destination so the link zooms onto it).
+			auto destRectPdf = [&](Element *tgt) -> QRectF {
+				Diagram *dg = tgt ? tgt->diagram() : nullptr;
+				if (!dg) return QRectF();
+				const QRectF srcT = QRectF(diagramRect(dg, exportProperties()));
+				if (srcT.width() <= 0.0 || srcT.height() <= 0.0) return QRectF();
+				const qreal sT = qMin(target.width()  / srcT.width(),
+				                      target.height() / srcT.height());
+				QTransform fitT;
+				fitT.translate(target.x(), target.y());
+				fitT.scale(sT, sT);
+				fitT.translate(-srcT.x(), -srcT.y());
+
+				QRectF elemScene = tgt->mapRectToScene(tgt->boundingRect());
+				// Frame the element with a little context, and enforce a minimum
+				// framed size so tiny contacts don't zoom in extremely.
+				const qreal pad = 25.0;
+				elemScene.adjust(-pad, -pad, pad, pad);
+				const qreal minSide = 160.0;
+				if (elemScene.width()  < minSide)
+					elemScene.adjust(-(minSide - elemScene.width())  / 2.0, 0,
+					                  (minSide - elemScene.width())  / 2.0, 0);
+				if (elemScene.height() < minSide)
+					elemScene.adjust(0, -(minSide - elemScene.height()) / 2.0,
+					                 0,  (minSide - elemScene.height()) / 2.0);
+
+				const QRectF devT = fitT.mapRect(elemScene);
+				const QPointF a = devToPdf(devT.topLeft());
+				const QPointF b = devToPdf(devT.bottomRight());
+				return QRectF(QPointF(qMin(a.x(), b.x()), qMin(a.y(), b.y())),
+				              QPointF(qMax(a.x(), b.x()), qMax(a.y(), b.y())));
+			};
+
+			auto injectLink = [&](const QRectF &sceneRect, Element *targetElmt) {
+				if (!targetElmt || !targetElmt->diagram()) return;
+				const int targetPage =
+					diagramPageMap.value(targetElmt->diagram(), -1);
+				if (targetPage < 1) return;
+				const QRectF devRect = fit.mapRect(sceneRect);
+				if (!devRect.isValid() || !pageBounds.intersects(devRect)) return;
+
+				QString frag = QString("page=%1").arg(targetPage);
+				const QRectF d = destRectPdf(targetElmt);   // /FitR L_B_R_T
+				if (d.isValid())
+					frag += QString("&fitr=%1_%2_%3_%4")
+						.arg(qRound(d.left())).arg(qRound(d.top()))
+						.arg(qRound(d.right())).arg(qRound(d.bottom()));
+
+				QUrl url = QUrl::fromLocalFile(printer->outputFileName());
+				url.setFragment(frag);
+				pdfEngine->drawHyperlink(devRect, url);
+			};
+
+			for (auto *item : diagram->items()) {
+
+				// --- CrossRefItem links ---
+				if (auto *xref = dynamic_cast<CrossRefItem*>(item)) {
+					for (auto it = xref->hoveredContactsMap().begin();
+					     it != xref->hoveredContactsMap().end(); ++it)
+					{
+						Element *targetElmt = it.key();
+						if (!targetElmt || !targetElmt->diagram()) continue;
+						// it.value() est en coords LOCALES du CrossRefItem -> scene
+						injectLink(xref->mapRectToScene(it.value()), targetElmt);
+					}
+					continue;
+				}
+
+				// --- Folio report links (DynamicElementTextItem) ---
+				if (auto *deti = dynamic_cast<DynamicElementTextItem*>(item)) {
+					Element *parent = deti->parentElement();
+					if (!parent) continue;
+
+					// (a) Report element : label -> linked report on another folio
+					if (parent->linkType() & Element::AllReport) {
+						if (parent->linkedElements().isEmpty()) continue;
+
+						bool showsLabel =
+							(deti->textFrom() == DynamicElementTextItem::ElementInfo
+							 && deti->infoName() == QLatin1String("label")) ||
+							(deti->textFrom() == DynamicElementTextItem::CompositeText
+							 && deti->compositeText().contains(QStringLiteral("%{label}")));
+						if (!showsLabel) continue;
+
+						Element *targetElmt = parent->linkedElements().first();
+						if (!targetElmt || !targetElmt->diagram()) continue;
+
+						injectLink(deti->mapRectToScene(deti->boundingRect()), targetElmt);
+						continue;
+					}
+
+					// (b) Slave element : the "(folio-pos)" text -> master element
+					if (parent->linkType() == Element::Slave) {
+						QGraphicsTextItem *sx = deti->slaveXrefItem();
+						Element *master = deti->masterElement();
+						if (sx && master && master->diagram()) {
+							injectLink(sx->mapRectToScene(sx->boundingRect()), master);
+						}
+						continue;
+					}
+					continue;
+				}
+
+				// --- Slave cross-reference carried by a grouped text ---
+				if (auto *grp = dynamic_cast<ElementTextItemGroup*>(item)) {
+					Element *parent = grp->parentElement();
+					if (!parent || parent->linkType() != Element::Slave) continue;
+					if (parent->linkedElements().isEmpty()) continue;
+					QGraphicsTextItem *sx = grp->slaveXrefItem();
+					if (!sx) continue;
+					Element *master = parent->linkedElements().first();
+					if (!master || !master->diagram()) continue;
+					injectLink(sx->mapRectToScene(sx->boundingRect()), master);
+					continue;
+				}
+			}
+		}
+	}
+	////PDF links end////
 
 	////Print is finished, restore diagram and graphics item properties
 	for (auto view : diagram->views()) {
