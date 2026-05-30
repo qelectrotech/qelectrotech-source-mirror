@@ -59,7 +59,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_close                = new QAction(QET::Icons::DocumentClose,          tr("Fermer ce projet"),                    this);
 	prj_edit_prop            = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du projet"),          this);
 	prj_prop_diagram         = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du folio"),       this);
-	prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,             tr("Ajouter un folio"),                this);
+	prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,              tr("Ajouter un folio"),                this);
+	prj_duplicate_diagram   = new QAction(QET::Icons::IC_CopyFile,              tr("Copier et coller"),               this);
 	prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Supprimer ce folio"),              this);
 	prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
 	prj_move_diagram_down    = new QAction(QET::Icons::GoDown,                 tr("Abaisser ce folio"),               this);
@@ -100,6 +101,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(prj_prop_diagram,      SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
 	connect(prj_add_diagram,       SIGNAL(triggered()), this,           SLOT(newDiagram()));
 	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
+	connect(prj_duplicate_diagram, SIGNAL(triggered()), this,           SLOT(duplicateDiagram()));
 	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
 	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
 	connect(prj_move_diagram_top,  SIGNAL(triggered()), this,           SLOT(moveDiagramUpTop()));
@@ -447,7 +449,8 @@ void ElementsPanelWidget::updateButtons()
 			}
 
 			prj_del_diagram           -> setEnabled(is_writable);
-			prj_move_diagram_up       -> setEnabled(is_writable && min_position > 0);
+			prj_duplicate_diagram     -> setEnabled(is_writable);
+			prj_move_diagram_up        -> setEnabled(is_writable && min_position > 0);
 			prj_move_diagram_down     -> setEnabled(is_writable && max_position < project_diagrams_count - 1);
 			prj_move_diagram_top      -> setEnabled(is_writable && min_position > 0);
 
@@ -501,6 +504,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 		case QET::Diagram:
 			context_menu -> addAction(prj_prop_diagram);
 			context_menu -> addAction(prj_del_diagram);
+			context_menu -> addAction(prj_duplicate_diagram);
 			context_menu -> addAction(prj_move_diagram_top);
 			context_menu -> addAction(prj_move_diagram_upx10);
 			context_menu -> addAction(prj_move_diagram_upx100);
@@ -592,4 +596,36 @@ void ElementsPanelWidget::keyPressEvent(QKeyEvent *e) {
 			QWidget::keyPressEvent(e);
 			break;
 	}
+}
+
+/**
+ * Duplicates the selected folios (pages) along with their content
+ * and properties, and cleanly resolves cross-references.
+ */
+void ElementsPanelWidget::duplicateDiagram()
+{
+	QList<Diagram *> diagrams_to_duplicate = elements_panel->selectedDiagrams();
+	if (diagrams_to_duplicate.isEmpty()) return;
+
+	QETProject *project = diagrams_to_duplicate.first()->project();
+	if (!project || project->isReadOnly()) return;
+
+	for (Diagram *source_diagram : diagrams_to_duplicate) {
+		Diagram *new_diagram = project->addNewDiagram();
+		if (!new_diagram) continue;
+
+		QString template_name = source_diagram->border_and_titleblock.titleBlockTemplateName();
+		new_diagram->setTitleBlockTemplate(template_name);
+
+		TitleBlockProperties tbp = source_diagram->border_and_titleblock.exportTitleBlock();
+		new_diagram->border_and_titleblock.importTitleBlock(tbp);
+
+		BorderProperties bp = source_diagram->border_and_titleblock.exportBorder();
+		new_diagram->border_and_titleblock.importBorder(bp);
+
+		QDomDocument doc = source_diagram->toXml();
+		QDomElement diagram_elmt = doc.documentElement();
+		new_diagram->fromXml(diagram_elmt, QPointF(0, 0), false, nullptr);
+	}
+	elements_panel->reload();
 }
