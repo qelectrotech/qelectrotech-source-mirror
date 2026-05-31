@@ -47,6 +47,7 @@
 #include <QFile>
 #include <QRegularExpression>
 #include <QMap>
+#include <QTimer>
 #include <QVector>
 
 /**
@@ -495,13 +496,12 @@ void ProjectPrintWindow::requestPaint()
 		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap);
 	}
 
-	if (pdfExport) {
-		painter.end();   // flush & close the PDF file on disk
-		// Convert URI link annotations into native internal GoTo/FitR actions:
-		// cross-references then jump inside the document (no new viewer
-		// instance) and frame the target element.
-		pdfConvertUriToGoTo(m_printer->outputFileName());
-	}
+	// Note: do NOT call painter.end() or pdfConvertUriToGoTo() here.
+	// We are inside the paintRequested slot: the QPrintPreviewWidget still
+	// owns the paint cycle.  On macOS arm64 (Metal/CALayer compositor),
+	// closing the QPainter manually inside this slot leaves the backing
+	// store in an undefined state, producing a black screen after export.
+	// pdfConvertUriToGoTo() is deferred to print() via QTimer::singleShot(0).
 }
 
 /**
@@ -1218,9 +1218,29 @@ void ProjectPrintWindow::on_m_uncheck_all_clicked()
 
 void ProjectPrintWindow::print()
 {
-	m_preview->print();
+	const bool isPdf = (m_printer->outputFormat() == QPrinter::PdfFormat);
+	const QString pdfFile = isPdf ? m_printer->outputFileName() : QString();
+
+	m_preview->print();   // triggers requestPaint() synchronously; painter
+	                      // is created/destroyed inside that call
+
 	savePageSetupForCurrentPrinter();
-	this->close();
+
+	if (isPdf && !pdfFile.isEmpty()) {
+		// Defer post-processing and window close to the next event-loop
+		// iteration.  This lets the macOS arm64 Metal compositor finish
+		// compositing the backing store before the window is destroyed,
+		// which prevents the black screen observed on Apple Silicon under
+		// macOS Sequoia (QPrintPreviewWidget + CALayer timing issue).
+		QTimer::singleShot(0, this, [this, pdfFile]() {
+			// Convert URI link annotations into native internal GoTo/FitR
+			// actions so cross-references jump inside the document.
+			pdfConvertUriToGoTo(pdfFile);
+			this->close();
+		});
+	} else {
+		this->close();
+	}
 }
 
 void ProjectPrintWindow::on_m_date_cb_userDateChanged(const QDate &date)
