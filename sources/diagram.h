@@ -142,10 +142,11 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
-		void correctTextPos(Element* elmt);
-		void restoreText(Element* elmt);
+
 	
 	public:
+		void correctTextPos(Element* elmt);
+		void restoreText(Element* elmt);
 		QUuid uuid();
 		void setEventInterface (DiagramEventInterface *event_interface);
 		void clearEventInterface();
