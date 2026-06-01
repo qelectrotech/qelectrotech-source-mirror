@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementspanelwidget.h"
-
 #include "diagram.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscategoryeditor.h"
@@ -26,6 +25,7 @@
 #include "titleblock/templatedeleter.h"
 #include <QFileInfo>
 #include <QMessageBox>
+#include "element.h"
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
@@ -611,6 +611,7 @@ void ElementsPanelWidget::duplicateDiagram()
 	if (!project || project->isReadOnly()) return;
 
 	for (Diagram *source_diagram : diagrams_to_duplicate) {
+
 		Diagram *new_diagram = project->addNewDiagram();
 		if (!new_diagram) continue;
 
@@ -623,9 +624,29 @@ void ElementsPanelWidget::duplicateDiagram()
 		BorderProperties bp = source_diagram->border_and_titleblock.exportBorder();
 		new_diagram->border_and_titleblock.importBorder(bp);
 
+		for (QGraphicsItem *item : source_diagram->items()) {
+			if (Element *elmt = dynamic_cast<Element *>(item)) {
+				source_diagram->correctTextPos(elmt);
+			}
+		}
+
 		QDomDocument doc = source_diagram->toXml();
 		QDomElement diagram_elmt = doc.documentElement();
+
+		for (QGraphicsItem *item : source_diagram->items()) {
+			if (Element *elmt = dynamic_cast<Element *>(item)) {
+				source_diagram->restoreText(elmt);
+			}
+		}
+
 		new_diagram->fromXml(diagram_elmt, QPointF(0, 0), false, nullptr);
+
+		for (QGraphicsItem *item : new_diagram->items()) {
+			if (Element *elmt = dynamic_cast<Element *>(item)) {
+				new_diagram->restoreText(elmt);
+			}
+		}
 	}
+
 	elements_panel->reload();
 }
