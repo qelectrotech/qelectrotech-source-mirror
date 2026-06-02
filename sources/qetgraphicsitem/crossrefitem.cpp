@@ -968,13 +968,13 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 			painter.setFont(QETApp::diagramTextsFont(4));
 			// Sort order from parseTerminal (top->bottom, left->right):
 			// [0]=12 (NO, top-left), [1]=14 (common, top-center), [2]=13 (NC, bottom-center)
-			if (terminal_names.size() >= 1)
+			if (terminal_names.size() >= 2)
 				painter.drawText(QRectF(0, offset, 8, 8),
 						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // 12 NO left
-			if (terminal_names.size() >= 2)
+			if (terminal_names.size() >= 3)
 				painter.drawText(QRectF(16, offset+4, 8, 6),
 						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // 14 common right
-			if (terminal_names.size() >= 3)
+			if (terminal_names.size() >= 1)
 				painter.drawText(QRectF(0, offset+9, 8, 6),
 						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // 13 NC left-bottom
 			painter.setFont(QETApp::diagramTextsFont(5));
