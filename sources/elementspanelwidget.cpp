@@ -25,7 +25,7 @@
 #include "titleblock/templatedeleter.h"
 #include <QFileInfo>
 #include <QMessageBox>
-#include "element.h"
+#include "qetgraphicsitem/element.h"
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
