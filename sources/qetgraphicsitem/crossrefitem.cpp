@@ -961,22 +961,21 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		painter.drawPolyline(p2, 3);
 
 		// Draw terminal names for switch contact (3 terminals)
-		// terminal_names[0] = NO side (top left)
-		// terminal_names[1] = NC side (bottom left)
-		// terminal_names[2] = common side (right)
+		// terminal_names[0] = NC  (bottom-left)
+		// terminal_names[1] = NO  (top-left)
+		// terminal_names[2] = Common (right)
 		if (!terminal_names.isEmpty() && m_properties.showTerminalName()) {
 			painter.setFont(QETApp::diagramTextsFont(4));
-			// Sort order from parseTerminal (top->bottom, left->right):
-			// [0]=12 (NO, top-left), [1]=14 (common, top-center), [2]=13 (NC, bottom-center)
+			// Storage order set above: [0]=NC, [1]=NO, [2]=Common
 			if (terminal_names.size() >= 2)
 				painter.drawText(QRectF(0, offset, 8, 8),
-						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // 12 NO left
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // NO  top-left
 			if (terminal_names.size() >= 3)
 				painter.drawText(QRectF(16, offset+4, 8, 6),
-						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // 14 common right
+						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // Common right
 			if (terminal_names.size() >= 1)
 				painter.drawText(QRectF(0, offset+9, 8, 6),
-						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // 13 NC left-bottom
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // NC  bottom-left
 			painter.setFont(QETApp::diagramTextsFont(5));
 		}
 
