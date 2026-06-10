@@ -15,12 +15,15 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "cli_export.h"
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
 #include "singleapplication.h"
 #include "utils/macosxopenevent.h"
 #include "utils/qetsettings.h"
+
+#include <QApplication>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
@@ -193,6 +196,19 @@ qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
 QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 #endif
 
+
+	// Headless command-line export: render a project to PDF/PNG/SVG without
+	// opening the GUI, then exit.  Must be handled before SingleApplication
+	// (which would forward the args to an already-running instance).
+	{
+		QStringList raw_args;
+		for (int i = 0; i < argc; ++i)
+			raw_args << QString::fromLocal8Bit(argv[i]);
+		if (CLIExport::isExportRequest(raw_args)) {
+			QApplication export_app(argc, argv);
+			return CLIExport::run(export_app.arguments());
+		}
+	}
 
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
