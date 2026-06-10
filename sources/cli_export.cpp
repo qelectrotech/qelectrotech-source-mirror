@@ -18,10 +18,13 @@
 #include "cli_export.h"
 
 #include "bordertitleblock.h"
+#include "conductornumexport.h"
 #include "diagram.h"
 #include "qetproject.h"
+#include "wiringlistexport.h"
 
 #include <QDir>
+#include <QFile>
 #include <QFileInfo>
 #include <QPainter>
 #include <QPdfWriter>
@@ -40,6 +43,8 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-pdf", "pdf"},
 		{"--export-png", "png"},
 		{"--export-svg", "svg"},
+		{"--export-cables", "cables"},
+		{"--export-wires", "wires"},
 	};
 	return flags;
 }
@@ -159,6 +164,33 @@ int exportImages(QETProject &project, const QString &format,
 	return 0;
 }
 
+int exportCsv(QETProject &project, const QString &format, const QString &output)
+{
+	QString csv;
+	if (format == "cables") {
+		WiringListExport wle(&project, nullptr);
+		csv = wle.toCsvString();
+	} else { // wires
+		ConductorNumExport cne(&project, nullptr);
+		csv = cne.wiresNum();
+	}
+	if (csv.isEmpty()) {
+		err << "Nothing to export (empty list).\n";
+		return 1;
+	}
+
+	QFile file(output);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	QTextStream fout(&file);
+	fout << csv;
+	file.close();
+	out << "Exported " << format << " list -> " << output << "\n";
+	return 0;
+}
+
 } // anonymous namespace
 
 namespace CLIExport {
@@ -205,6 +237,8 @@ int run(const QStringList &args)
 	const QString format = exportFlags().value(flag);
 	if (format == "pdf")
 		return exportPdf(project, output);
+	if (format == "cables" || format == "wires")
+		return exportCsv(project, format, output);
 	return exportImages(project, format, output);
 }
 

@@ -151,12 +151,38 @@ void WiringListExport::toCsv()
 {
     if (!m_project) return;
 
-    QDomDocument doc = m_project->toXml();
-
-    if (doc.isNull()) {
+    const QString csv = toCsvString();
+    if (csv.isEmpty()) {
         QMessageBox::warning(m_parent, tr("Erreur"), tr("Impossible de lire la structure en mémoire du projet."));
         return;
     }
+
+    QFileDialog dialog(m_parent);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setWindowTitle(tr("Exporter le plan de câblage"));
+    dialog.setDefaultSuffix("csv");
+    dialog.setNameFilter(tr("Fichiers CSV (*.csv)"));
+
+    if (dialog.exec() != QDialog::Accepted) return;
+    QString fileName = dialog.selectedFiles().first();
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(m_parent, tr("Erreur"), tr("Impossible d'ouvrir le fichier pour l'écriture."));
+        return;
+    }
+    QTextStream out(&file);
+    out << csv;
+    file.close();
+    QMessageBox::information(m_parent, tr("Export réussi"), tr("Le plan de câblage a été exporté avec succès !"));
+}
+
+QString WiringListExport::toCsvString() const
+{
+    if (!m_project) return QString();
+
+    QDomDocument doc = m_project->toXml();
+    if (doc.isNull()) return QString();
 
     QSet<QString> conductorDefinitionTypes;
     QDomElement rootElem = doc.documentElement();
@@ -195,21 +221,6 @@ void WiringListExport::toCsv()
                 conductorDefinitionUuids.insert(uuid);
             }
         }
-    }
-
-    QFileDialog dialog(m_parent);
-    dialog.setAcceptMode(QFileDialog::AcceptSave);
-    dialog.setWindowTitle(tr("Exporter le plan de câblage"));
-    dialog.setDefaultSuffix("csv");
-    dialog.setNameFilter(tr("Fichiers CSV (*.csv)"));
-
-    if (dialog.exec() != QDialog::Accepted) return;
-    QString fileName = dialog.selectedFiles().first();
-
-    QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(m_parent, tr("Erreur"), tr("Impossible d'ouvrir le fichier pour l'écriture."));
-        return;
     }
 
     QMap<QString, ElementInfo> elementsInfo = collectElementsInfo(doc.documentElement());
@@ -353,7 +364,8 @@ void WiringListExport::toCsv()
         return a.terminalname2 < b.terminalname2;
     });
 
-    QTextStream out(&file);
+    QString csv;
+    QTextStream out(&csv);
     out << tr("Page", "Wiring list CSV header") << ";"
     << tr("Composant 1", "Wiring list CSV header") << ";"
     << tr("Borne 1", "Wiring list CSV header") << ";"
@@ -376,6 +388,5 @@ void WiringListExport::toCsv()
         << c.function << "\n";
     }
 
-    file.close();
-    QMessageBox::information(m_parent, tr("Export réussi"), tr("Le plan de câblage a été exporté avec succès !"));
+    return csv;
 }

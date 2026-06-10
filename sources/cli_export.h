@@ -42,12 +42,16 @@ namespace CLIExport {
 		@return process exit code (0 on success).
 
 		Usage:
-		  qelectrotech --export-pdf  <project.qet> <output.pdf>
-		  qelectrotech --export-png  <project.qet> <output_dir>
-		  qelectrotech --export-svg  <project.qet> <output_dir>
+		  qelectrotech --export-pdf    <project.qet> <output.pdf>
+		  qelectrotech --export-png    <project.qet> <output_dir>
+		  qelectrotech --export-svg    <project.qet> <output_dir>
+		  qelectrotech --export-cables <project.qet> <output.csv>
+		  qelectrotech --export-wires  <project.qet> <output.csv>
 
 		PDF: one multi-page document (one diagram per page).
 		PNG/SVG: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
+		cables: wiring list (one row per conductor) as CSV.
+		wires: list of distinct wire numbers as CSV.
 	*/
 	int run(const QStringList &args);
 
