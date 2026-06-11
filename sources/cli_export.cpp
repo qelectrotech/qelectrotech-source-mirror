@@ -74,9 +74,13 @@ QString diagramStem(Diagram *diagram, int index)
 void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target)
 {
 	const QRect source = diagramRect(diagram);
-	const bool was_drawing_grid = false; // export without the editor grid
-	Q_UNUSED(was_drawing_grid)
+	// Export without the editor grid: drawBackground() only paints it when
+	// draw_grid_ is set (default true), so toggle it off around the render
+	// and restore it afterwards.
+	const bool was_drawing_grid = diagram->displayGrid();
+	diagram->setDisplayGrid(false);
 	diagram->render(&painter, target, source, Qt::KeepAspectRatio);
+	diagram->setDisplayGrid(was_drawing_grid);
 }
 
 int exportPdf(QETProject &project, const QString &output)
