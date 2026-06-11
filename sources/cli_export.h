@@ -42,16 +42,23 @@ namespace CLIExport {
 		@return process exit code (0 on success).
 
 		Usage:
-		  qelectrotech --export-pdf    <project.qet> <output.pdf>
-		  qelectrotech --export-png    <project.qet> <output_dir>
-		  qelectrotech --export-svg    <project.qet> <output_dir>
-		  qelectrotech --export-cables <project.qet> <output.csv>
-		  qelectrotech --export-wires  <project.qet> <output.csv>
+		  qelectrotech --export-pdf     <project.qet> <output.pdf>
+		  qelectrotech --export-png     <project.qet> <output_dir>
+		  qelectrotech --export-svg     <project.qet> <output_dir>
+		  qelectrotech --export-cables  <project.qet> <output.csv>
+		  qelectrotech --export-wires   <project.qet> <output.csv>
+		  qelectrotech --export-bom     <project.qet> <output.csv>
+		  qelectrotech --info           <project.qet> [output.json]
+		  qelectrotech --check-elements <element.elmt | directory>
 
 		PDF: one multi-page document (one diagram per page).
 		PNG/SVG: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
+		bom: bill of materials (one row per element) as CSV.
+		info: structural project summary as JSON (stdout, or a file) —
+		      per-page element / conductor counts and unconnected terminals.
+		check-elements: validate .elmt file(s) against the element schema.
 	*/
 	int run(const QStringList &args);
 
