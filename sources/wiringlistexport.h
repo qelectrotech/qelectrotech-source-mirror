@@ -45,6 +45,11 @@ class WiringListExport : public QObject
 public:
     explicit WiringListExport(QETProject *project, QWidget *parent = nullptr);
     void toCsv();
+    /**
+        Build the wiring-list CSV and return it as a string (no GUI).
+        Used by toCsv() and by the headless command-line export.
+    */
+    QString toCsvString() const;
 
 private:
     QETProject *m_project;
