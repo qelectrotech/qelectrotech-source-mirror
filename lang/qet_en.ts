@@ -1833,9 +1833,18 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>Name of the new template</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="127"/>
-        <source>Nom du nouvel élément</source>
-        <translation>New element name</translation>
+        <location filename="../sources/elementdialog.cpp" line="130"/>
+        <source>Nom de fichier de l'élément</source>
+        <comment>placeholder: the element's file name, not its display name</comment>
+        <translation>Element file name</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementdialog.cpp" line="134"/>
+        <source>Nom de fichier de l'élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l'élément se modifie séparément dans les propriétés de l'élément.</source>
+        <comment>tooltip for the element file-name field</comment>
+        <translation>The element's file name: digits, lowercase letters, '-', '_' and '.' only.
+The element's display name is edited separately in the element properties.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="238"/>
