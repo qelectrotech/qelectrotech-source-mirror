@@ -43,6 +43,13 @@
 
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
 
+bool QETProject::m_backup_enabled = true;
+
+void QETProject::setBackupEnabled(bool enabled)
+{
+	m_backup_enabled = enabled;
+}
+
 /**
 	@brief QETProject::QETProject
 	Create a empty project
@@ -1783,6 +1790,8 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 */
 void QETProject::writeBackup()
 {
+	if (!m_backup_enabled)
+		return;
 #ifdef BUILD_WITHOUT_KF5
 #else
 #	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove

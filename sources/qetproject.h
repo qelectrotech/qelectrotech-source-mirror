@@ -105,6 +105,12 @@ class QETProject : public QObject
 		QVersionNumber declaredQElectroTechVersion();
 		void setTitle(const QString &);
 
+		/// Enable/disable the asynchronous crash-recovery backup for all
+		/// projects.  Disabled by the headless CLI: the backup write runs on a
+		/// background thread referencing the project, and a short-lived CLI
+		/// process can destroy the project before the write finishes (crash).
+		static void setBackupEnabled(bool enabled);
+
 			///DEFAULT PROPERTIES
 		BorderProperties defaultBorderProperties() const;
 		void             setDefaultBorderProperties(const BorderProperties &);
@@ -241,6 +247,8 @@ class QETProject : public QObject
 
 	// attributes
 	private:
+			/// When false, writeBackup() is a no-op (set by the headless CLI)
+		static bool m_backup_enabled;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
