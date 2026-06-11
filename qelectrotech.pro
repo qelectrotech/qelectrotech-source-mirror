@@ -130,6 +130,7 @@ INCLUDEPATH += sources/ui
 
 # Fichiers sources
 HEADERS += $$files(sources/*.h) \
+           $$files(sources/cli_export.h \
            $$files(sources/project/*.h) \
            $$files(sources/ui/*.h) \
            $$files(sources/editor/*.h) \
@@ -174,6 +175,7 @@ HEADERS += $$files(sources/*.h) \
            $$files(sources/svg/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
+           $$files(sources/cli_export.cpp \
            $$files(sources/editor/*.cpp) \
            $$files(sources/project/*.cpp) \
            $$files(sources/titleblock/*.cpp) \
