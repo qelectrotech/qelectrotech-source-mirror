@@ -1228,7 +1228,21 @@ QString QETApp::languagesPath()
 	 * en l'absence d'option de compilation, on utilise le dossier lang,
 	 *  situe a cote du binaire executable
 	 */
-	return(QCoreApplication::applicationDirPath() + "/lang/");
+	{
+		const QString bin_dir = QCoreApplication::applicationDirPath();
+		const QString next_to_bin = bin_dir + "/lang/";
+		// Some packagings (notably the Windows installer) put the binary in a
+		// "bin" subfolder while "lang" sits beside it (../lang). Fall back to
+		// that layout when the folder next to the binary is absent, so the
+		// translations are found without a --lang-dir argument. See issue #86.
+		if (!QDir(next_to_bin).exists()) {
+			const QString sibling_of_bin =
+				QDir::cleanPath(bin_dir + "/../lang") + "/";
+			if (QDir(sibling_of_bin).exists())
+				return(sibling_of_bin);
+		}
+		return(next_to_bin);
+	}
 #else
 	#ifndef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
 		/* the compilation option represents
