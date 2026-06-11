@@ -1006,15 +1006,29 @@ QETResult QETProject::write()
 	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
 
-		// if the project was opened read-only
-		// and the file is still non-writable, do not save the project
-	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
-		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
+		// If the project was opened read-only, only refuse when the target
+		// really can't be written: an existing file that is not writable, or a
+		// new file (e.g. "Save As" to another location) whose directory is not
+		// writable.  A non-existent file reports isWritable() == false, so the
+		// old check wrongly blocked saving a read-only project elsewhere.
+	if (isReadOnly()) {
+		const QFileInfo file_info(m_file_path);
+		const bool can_write = file_info.exists()
+			? file_info.isWritable()
+			: QFileInfo(file_info.absolutePath()).isWritable();
+		if (!can_write)
+			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
+	}
 
 	QDomDocument xml_project(toXml());
 	QString error_message;
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
 		return(error_message);
+
+		// The project has just been written to a writable file (e.g. saved to
+		// a new location with "Save As"), so it is no longer read-only.
+	if (isReadOnly())
+		setReadOnly(false);
 
 		//title block variables should be updated after file save dialog is confirmed, before file is saved.
 	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
