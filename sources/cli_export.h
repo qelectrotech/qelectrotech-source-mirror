@@ -53,6 +53,7 @@ namespace CLIExport {
 		  qelectrotech --info           <project.qet> [output.json]
 		  qelectrotech --check-elements <element.elmt | directory>
 		  qelectrotech --resave         <project.qet> <output.qet>
+		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
 
 		PDF: one multi-page document (one diagram per page).
 		PNG/SVG: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
@@ -66,6 +67,10 @@ namespace CLIExport {
 		      per-page element / conductor counts and unconnected terminals.
 		check-elements: validate .elmt file(s) against the element schema.
 		resave: load and rewrite the project XML (round-trip integrity).
+		set-titleblock: stamp title-block fields onto every folio, then save.
+		      Keys: title, author, date (or date=today), plant, location,
+		      revision, version, filename; any other key becomes a custom
+		      field.  E.g. --set-titleblock in.qet out.qet revision=B date=today
 	*/
 	int run(const QStringList &args);
 

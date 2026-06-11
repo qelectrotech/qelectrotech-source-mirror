@@ -28,6 +28,7 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
+#include "titleblockproperties.h"
 #include "wiringlistexport.h"
 
 // Private Qt PDF engine for drawHyperlink() — see pdf_links / projectprintwindow.
@@ -36,6 +37,7 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QDomDocument>
+#include <QDate>
 #include <QFile>
 #include <QFileInfo>
 #include <QJsonArray>
@@ -43,6 +45,7 @@
 #include <QJsonObject>
 #include <QMap>
 #include <QPageLayout>
+#include <QPair>
 #include <QPainter>
 #include <QPdfWriter>
 #include <QSet>
@@ -72,6 +75,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--info", "info"},
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
+		{"--set-titleblock", "settb"},
 	};
 	return flags;
 }
@@ -652,6 +656,92 @@ int resaveProject(QETProject &project, const QString &output)
 	return 0;
 }
 
+/// Stamp title-block fields onto every folio (and the project default), then
+/// save.  Each assignment is "key=value".  Standard keys map to the documented
+/// title-block fields; "date=today" uses the current date; any other key is
+/// stored as a custom title-block field.  Aimed at CI/revision workflows
+/// (e.g. set revision + date before exporting a new revision).
+int setTitleBlock(QETProject &project, const QString &output,
+				  const QStringList &assignments)
+{
+	if (assignments.isEmpty()) {
+		err << "No field assignments given (expected key=value).\n";
+		return 2;
+	}
+
+	// Parse "key=value" assignments up front so a bad one fails before writing.
+	QList<QPair<QString, QString>> fields;
+	for (const QString &a : assignments) {
+		const int eq = a.indexOf('=');
+		if (eq <= 0) {
+			err << "Bad assignment '" << a << "' (expected key=value).\n";
+			return 2;
+		}
+		const QString key = a.left(eq);
+		const QString val = a.mid(eq + 1);
+		if (key.compare("date", Qt::CaseInsensitive) == 0
+			&& val.compare("today", Qt::CaseInsensitive) != 0
+			&& !QDate::fromString(val, Qt::ISODate).isValid()) {
+			err << "Bad date '" << val << "' (expected YYYY-MM-DD or 'today').\n";
+			return 2;
+		}
+		fields << qMakePair(key, val);
+	}
+
+	auto apply = [&](TitleBlockProperties &p) {
+		for (const auto &f : fields) {
+			const QString k = f.first.toLower();
+			const QString &v = f.second;
+			if      (k == "title")    p.title    = v;
+			else if (k == "author")   p.author   = v;
+			else if (k == "filename") p.filename = v;
+			else if (k == "plant")    p.plant    = v;
+			else if (k == "location") p.locmach  = v;
+			else if (k == "revision") p.indexrev = v;
+			else if (k == "version")  p.version  = v;
+			else if (k == "date") {
+				p.date = (v.compare("today", Qt::CaseInsensitive) == 0)
+						 ? QDate::currentDate()
+						 : QDate::fromString(v, Qt::ISODate);
+				// An explicit date is only honoured when the folio is in
+				// "use the date value" mode (not "now"/"null").
+				p.useDate = TitleBlockProperties::UseDateValue;
+			}
+			else // unknown key -> custom title-block field
+				p.context.addValue(f.first, v);
+		}
+	};
+
+	// Project default (the template applied to new folios).
+	TitleBlockProperties def = project.defaultTitleBlockProperties();
+	apply(def);
+	project.setDefaultTitleBlockProperties(def);
+
+	// Every existing folio's own title block.
+	int folios = 0;
+	const QList<Diagram *> diagrams = project.diagrams();
+	for (Diagram *diagram : diagrams) {
+		TitleBlockProperties p =
+			diagram->border_and_titleblock.exportTitleBlock();
+		apply(p);
+		diagram->border_and_titleblock.importTitleBlock(p);
+		++folios;
+	}
+
+	const QDomDocument doc = project.toXml();
+	QFile file(output);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	QTextStream fout(&file);
+	fout << doc.toString(4);
+	file.close();
+	out << "Stamped " << fields.size() << " field(s) on "
+		<< folios << " folio(s) -> " << output << "\n";
+	return 0;
+}
+
 } // anonymous namespace
 
 namespace CLIExport {
@@ -727,6 +817,8 @@ int run(const QStringList &args)
 		return exportLinks(project, output);
 	if (format == "resave")
 		return resaveProject(project, output);
+	if (format == "settb")
+		return setTitleBlock(project, output, rest.mid(2));
 	return exportImages(project, format, output);
 }
 
