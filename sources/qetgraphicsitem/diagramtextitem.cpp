@@ -483,12 +483,17 @@ void DiagramTextItem::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
 
 	m_mouse_hover = true;
 	QString str_ToolTip = toPlainText();
-	
-	// Add movement instruction for DynamicElementTextItem
+
+	// The text of an element moves the whole element by default; holding Shift
+	// while dragging moves the text on its own (relative to the element). This
+	// is not discoverable otherwise, so spell it out in the tooltip.
 	if (inherits("DynamicElementTextItem")) {
-		str_ToolTip += tr("\n<Shift> to move");
+		if (!str_ToolTip.isEmpty())
+			str_ToolTip += "\n";
+		str_ToolTip += tr("Hold Shift and drag to move this text independently "
+						  "of the element");
 	}
-	
+
 	setToolTip(str_ToolTip);
 	update();
 }

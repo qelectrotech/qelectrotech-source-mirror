@@ -1195,11 +1195,9 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <translation>Hold ctrl to free movement</translation>
     </message>
     <message>
-        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="489"/>
-        <source>
-&lt;Shift&gt; to move</source>
-        <translation>
-&lt;Shift&gt; to move</translation>
+        <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="493"/>
+        <source>Hold Shift and drag to move this text independently of the element</source>
+        <translation>Hold Shift and drag to move this text independently of the element</translation>
     </message>
 </context>
 <context>
