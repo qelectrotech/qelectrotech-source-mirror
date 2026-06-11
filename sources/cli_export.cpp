@@ -19,9 +19,11 @@
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
+#include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
 #include "diagramcontext.h"
+#include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
@@ -37,6 +39,7 @@
 #include <QJsonObject>
 #include <QPainter>
 #include <QPdfWriter>
+#include <QSet>
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSvgGenerator>
@@ -57,10 +60,20 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
 		{"--export-bom", "bom"},
+		{"--export-nets", "nets"},
+		{"--export-links", "links"},
 		{"--info", "info"},
 		{"--check-elements", "check"},
+		{"--resave", "resave"},
 	};
 	return flags;
+}
+
+/// Device tag of an element ("K1", "Q55"), falling back to its name.
+QString elementLabel(Element *element)
+{
+	const QString label = element->elementInformations()["label"].toString();
+	return label.isEmpty() ? element->name() : label;
 }
 
 /// Pixel rect of a diagram's border + title block (the printable page area).
@@ -426,6 +439,164 @@ int checkElements(const QString &path)
 	return failures > 0 ? 1 : 0;
 }
 
+/// Map every element in the project to its 1-based folio (page) position.
+QHash<Element *, int> folioIndex(QETProject &project)
+{
+	QHash<Element *, int> folio;
+	int index = 0;
+	const QList<Diagram *> diagrams = project.diagrams();
+	for (Diagram *diagram : diagrams) {
+		++index;
+		const QList<Element *> elements = diagram->elements();
+		for (Element *e : elements)
+			folio.insert(e, index);
+	}
+	return folio;
+}
+
+/// Electrical nets: groups of terminals joined into one potential.
+/// Walks QET's own potential graph, so each net is a connected component
+/// of terminals across all folios. The ground truth for connectivity.
+int exportNets(QETProject &project, const QString &output)
+{
+	const QHash<Element *, int> folio = folioIndex(project);
+
+	QList<Conductor *> all_conductors;
+	const QList<Diagram *> diagrams = project.diagrams();
+	for (Diagram *diagram : diagrams)
+		all_conductors << diagram->conductors();
+
+	QSet<Conductor *> visited;
+	QJsonArray nets;
+	int net_no = 0;
+	for (Conductor *c : all_conductors) {
+		if (visited.contains(c))
+			continue;
+
+		// The whole potential this conductor belongs to. relatedPotential-
+		// Conductors() also fills t_list with every terminal in the net
+		// (following folio reports and terminal blocks too).
+		QList<Terminal *> t_list;
+		QSet<Conductor *> group = c->relatedPotentialConductors(true, &t_list);
+		group.insert(c);
+		for (Conductor *g : group)
+			visited.insert(g);
+		if (c->terminal1) t_list << c->terminal1;
+		if (c->terminal2) t_list << c->terminal2;
+
+		// Wire number: smallest non-empty conductor text (deterministic).
+		QStringList wire_nos;
+		for (Conductor *g : group)
+			if (!g->properties().text.isEmpty())
+				wire_nos << g->properties().text;
+		wire_nos.sort();
+
+		++net_no;
+		QJsonArray terminals;
+		QSet<Terminal *> seen;
+		for (Terminal *t : t_list) {
+			if (!t || seen.contains(t))
+				continue;
+			seen.insert(t);
+			Element *pe = t->parentElement();
+			QJsonObject to;
+			to["element"]  = pe ? elementLabel(pe) : QString();
+			to["terminal"] = t->name();
+			to["folio"]    = pe ? folio.value(pe, 0) : 0;
+			terminals.append(to);
+		}
+		QJsonObject net;
+		net["net"]       = net_no;
+		net["wire_no"]   = wire_nos.value(0);
+		net["terminals"] = terminals;
+		nets.append(net);
+	}
+
+	QJsonObject root;
+	root["project"] = project.title();
+	root["nets"]    = nets.size();
+	root["list"]    = nets;
+
+	QFile file(output);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	file.write(QJsonDocument(root).toJson(QJsonDocument::Indented));
+	file.close();
+	out << "Exported " << nets.size() << " net(s) -> " << output << "\n";
+	return 0;
+}
+
+/// Cross-references: each linkable element (coil / contact / report) and the
+/// elements it links to, flagging masters/slaves with no link as unresolved.
+int exportLinks(QETProject &project, const QString &output)
+{
+	const QHash<Element *, int> folio = folioIndex(project);
+
+	QString csv("element;link_type;linked_to;folio;status\n");
+	int linkable = 0, unresolved = 0;
+
+	const QList<Diagram *> diagrams = project.diagrams();
+	for (Diagram *diagram : diagrams) {
+		const QList<Element *> elements = diagram->elements();
+		for (Element *e : elements) {
+			if (e->linkType() == Element::Simple)
+				continue;
+			++linkable;
+
+			const QList<Element *> linked = e->linkedElements();
+			QStringList names;
+			for (Element *le : linked)
+				names << elementLabel(le) % "(f"
+					   % QString::number(folio.value(le, 0)) % ")";
+
+			QString status = "linked";
+			if ((e->linkType() == Element::Master
+				 || e->linkType() == Element::Slave)
+				&& linked.isEmpty()) {
+				status = "UNRESOLVED";
+				++unresolved;
+			}
+
+			csv += csvField(elementLabel(e)) % ";"
+				 % e->linkTypeToString() % ";"
+				 % csvField(names.join(", ")) % ";"
+				 % QString::number(folio.value(e, 0)) % ";"
+				 % status % "\n";
+		}
+	}
+
+	QFile file(output);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	QTextStream fout(&file);
+	fout << csv;
+	file.close();
+	out << "Exported " << linkable << " linkable element(s), "
+		<< unresolved << " unresolved -> " << output << "\n";
+	return 0;
+}
+
+/// Round-trip: load the project and write its XML back out, so an external
+/// diff can reveal markup QET silently normalises (tolerated-but-invalid XML).
+int resaveProject(QETProject &project, const QString &output)
+{
+	const QDomDocument doc = project.toXml();
+	QFile file(output);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	QTextStream fout(&file);
+	fout << doc.toString(4);
+	file.close();
+	out << "Re-saved project -> " << output << "\n";
+	return 0;
+}
+
 } // anonymous namespace
 
 namespace CLIExport {
@@ -495,6 +666,12 @@ int run(const QStringList &args)
 		return exportCsv(project, format, output);
 	if (format == "bom")
 		return exportBom(project, output);
+	if (format == "nets")
+		return exportNets(project, output);
+	if (format == "links")
+		return exportLinks(project, output);
+	if (format == "resave")
+		return resaveProject(project, output);
 	return exportImages(project, format, output);
 }
 

@@ -48,17 +48,24 @@ namespace CLIExport {
 		  qelectrotech --export-cables  <project.qet> <output.csv>
 		  qelectrotech --export-wires   <project.qet> <output.csv>
 		  qelectrotech --export-bom     <project.qet> <output.csv>
+		  qelectrotech --export-nets    <project.qet> <output.json>
+		  qelectrotech --export-links   <project.qet> <output.csv>
 		  qelectrotech --info           <project.qet> [output.json]
 		  qelectrotech --check-elements <element.elmt | directory>
+		  qelectrotech --resave         <project.qet> <output.qet>
 
 		PDF: one multi-page document (one diagram per page).
 		PNG/SVG: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
 		bom: bill of materials (one row per element) as CSV.
+		nets: electrical nets (connected-terminal groups) as JSON.
+		links: element cross-references (coil/contact) as CSV, with
+		       unresolved links flagged.
 		info: structural project summary as JSON (stdout, or a file) —
 		      per-page element / conductor counts and unconnected terminals.
 		check-elements: validate .elmt file(s) against the element schema.
+		resave: load and rewrite the project XML (round-trip integrity).
 	*/
 	int run(const QStringList &args);
 
