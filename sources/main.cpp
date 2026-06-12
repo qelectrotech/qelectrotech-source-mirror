@@ -19,6 +19,7 @@
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "qetproject.h"
 #include "singleapplication.h"
 #include "utils/macosxopenevent.h"
 #include "utils/qetsettings.h"
@@ -206,6 +207,10 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			raw_args << QString::fromLocal8Bit(argv[i]);
 		if (CLIExport::isExportRequest(raw_args)) {
 			QApplication export_app(argc, argv);
+			// No crash-recovery backups in one-shot CLI mode: the backup write
+			// runs on a background thread referencing the project and races the
+			// process exit (intermittent segfault in QET::writeToFile).
+			QETProject::setBackupEnabled(false);
 			return CLIExport::run(export_app.arguments());
 		}
 	}
