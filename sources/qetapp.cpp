@@ -226,20 +226,20 @@ void QETApp::setLanguage(const QString &desired_language) {
 
 	// load translations for the QET application
 	// charge les traductions pour l'application QET
-	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
-		/* in case of failure,
-		 *  we fall back on the native channels for French
-		 * en cas d'echec,
-		 *  on retombe sur les chaines natives pour le francais
-		 */
-		if (desired_language != "fr") {
-			// use of the English version by default
-			// utilisation de la version anglaise par defaut
-			if(!qetTranslator.load("qet_en", languages_path))
-				qWarning() << "failed to load"
-						   << "qet_en" << languages_path << "(" << __FILE__
-						   << __LINE__ << __FUNCTION__ << ")";
-		}
+	// desired_language may be a full locale such as "pt_BR": try that exact
+	// translation, then the base language ("pt"), then fall back to English.
+	// French is the application's source language and needs no translation.
+	const QString base_language = desired_language.section('_', 0, 0);
+	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	if (!loaded && base_language != desired_language)
+		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+	if (!loaded && base_language != "fr") {
+		// use of the English version by default
+		// utilisation de la version anglaise par defaut
+		if(!qetTranslator.load("qet_en", languages_path))
+			qWarning() << "failed to load"
+					   << "qet_en" << languages_path << "(" << __FILE__
+					   << __LINE__ << __FUNCTION__ << ")";
 	}
 	qApp->installTranslator(&qetTranslator);
 
@@ -263,7 +263,11 @@ QString QETApp::langFromSetting()
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
 		if(system_language == "system") {
-			system_language = QLocale::system().name().left(2);
+			// Keep the full locale (e.g. "pt_BR"), not just the base language
+			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
+			// truncating here loaded the wrong one. setLanguage() falls back to
+			// the base language when no regional translation exists.
+			system_language = QLocale::system().name();
 		}
 		lang_is_set = true;
 	}
