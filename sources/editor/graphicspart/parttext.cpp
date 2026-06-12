@@ -313,6 +313,12 @@ void PartText::setPlainText(const QString &text) {
 void PartText::setFont(const QFont &font) {
 	if (font != this -> font()) {
 		QGraphicsTextItem::setFont(font);
+		// Re-anchor: the item's position transform is -margin(), and margin()
+		// depends on the font ascent. Without re-running this on a font change,
+		// the transform keeps the previous font's ascent — so the text renders
+		// at a different spot after save/reopen (the position recomputes from
+		// the saved font on load). See #158.
+		adjustItemPosition();
 		emit fontChanged(font);
 	}
 }
