@@ -22,6 +22,7 @@
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
 #include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
@@ -30,6 +31,7 @@
 #include "../qetgraphicsitem/qetshapeitem.h"
 #include "../ui/dynamicelementtextitemeditor.h"
 #include "../ui/elementpropertieswidget.h"
+#include "../ui/conductorpropertieseditorwidget.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
@@ -100,6 +102,21 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 
 	switch (type_)
 	{
+		case Conductor::Type: //1001
+		{
+			//Prototype (#500): single-conductor editing in the dock.
+			if (count_ > 1) {
+				return nullptr;
+			}
+			auto conductor = static_cast<Conductor*>(item);
+
+			if (class_name == ConductorPropertiesEditorWidget::staticMetaObject.className())
+			{
+				static_cast<ConductorPropertiesEditorWidget*>(editor)->setConductor(conductor);
+				return editor;
+			}
+			return new ConductorPropertiesEditorWidget(conductor, parent);
+		}
 		case Element::Type: //1000
 		{
 			if (count_ > 1) {
