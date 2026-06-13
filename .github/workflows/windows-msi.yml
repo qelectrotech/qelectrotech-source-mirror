@@ -275,8 +275,10 @@ jobs:
       # 9b. Upload unsigned MSI as artifact (required by SignPath)
       #     SignPath fetches artifacts directly from GitHub Actions,
       #     so the MSI must be uploaded before the signing request.
+      #     We capture the artifact-id output for use by SignPath.
       # ----------------------------------------------------------------
       - name: Upload unsigned MSI artifact (pre-signing)
+        id: upload_unsigned
         uses: actions/upload-artifact@v4
         with:
           name: qelectrotech-windows-msi-unsigned
@@ -302,7 +304,7 @@ jobs:
           project-slug: 'qelectrotech-source-mirror'
           signing-policy-slug: 'test-signing'
           artifact-configuration-slug: 'msi'
-          github-artifact-name: 'qelectrotech-windows-msi-unsigned'
+          github-artifact-id: ${{ steps.upload_unsigned.outputs.artifact-id }}
           wait-for-completion: true
           output-artifact-directory: 'dist\'
 
