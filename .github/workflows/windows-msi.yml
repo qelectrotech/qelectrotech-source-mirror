@@ -284,7 +284,7 @@ jobs:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ secrets.SIGNPATH_ORGANIZATION_ID }}
           project-slug: 'qelectrotech'
-          signing-policy-slug: 'release-signing'
+          signing-policy-slug: 'test-signing'
           artifact-configuration-slug: 'msi'
           github-artifact-name: 'qelectrotech-windows-msi-unsigned'
           wait-for-completion: true
