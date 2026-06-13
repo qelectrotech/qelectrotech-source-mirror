@@ -228,19 +228,31 @@ jobs:
           $wxs        = "build-aux\windows\QElectroTech.wxs"
           $outputName = "QElectroTech-${verDisplay}.msi"
 
+          # Deterministic ProductCode GUID (UUID v5) based on version.
+          # Same version => same GUID (required for MSI repair/uninstall).
+          # Different version => different GUID (triggers a proper upgrade).
+          $seed      = "qelectrotech-msi-$version"
+          $sha1      = [System.Security.Cryptography.SHA1]::Create()
+          $hash      = $sha1.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($seed))
+          $hash[6]   = ($hash[6] -band 0x0F) -bor 0x50   # UUID version 5
+          $hash[8]   = ($hash[8] -band 0x3F) -bor 0x80   # RFC4122 variant
+          $productCode = "{$([System.Guid]::new([byte[]]$hash[0..15]).ToString().ToUpper())}"
+
           New-Item -ItemType Directory -Force -Path "dist" | Out-Null
 
           Write-Host "=== wix build ==="
-          Write-Host " WXS        : $wxs"
-          Write-Host " Version    : $version"
-          Write-Host " FilesDir   : $filesDir"
-          Write-Host " LicenseRtf : $licRtf"
-          Write-Host " Output     : dist\$outputName"
+          Write-Host " WXS         : $wxs"
+          Write-Host " Version     : $version"
+          Write-Host " ProductCode : $productCode"
+          Write-Host " FilesDir    : $filesDir"
+          Write-Host " LicenseRtf  : $licRtf"
+          Write-Host " Output      : dist\$outputName"
 
           wix build $wxs `
             -arch x64 `
             -d "Version=$version" `
             -d "ProductVersion=$verDisplay" `
+            -d "ProductCode=$productCode" `
             -d "FilesDir=$filesDir" `
             -d "LicenseRtf=$licRtf" `
             -ext WixToolset.UI.wixext `
@@ -283,7 +295,7 @@ jobs:
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ secrets.SIGNPATH_ORGANIZATION_ID }}
-          project-slug: 'qelectrotech'
+          project-slug: 'qelectrotech-source-mirror'
           signing-policy-slug: 'test-signing'
           artifact-configuration-slug: 'msi'
           github-artifact-name: 'qelectrotech-windows-msi-unsigned'
