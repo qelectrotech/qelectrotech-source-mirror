@@ -22,6 +22,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "conductorpropertieswidget.h"
 
+#include <QScrollArea>
 #include <QVBoxLayout>
 
 /**
@@ -34,9 +35,19 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 	PropertiesEditorWidget(parent),
 	m_cpw(new ConductorPropertiesWidget(this))
 {
+	// The conductor widget is dialog-sized (min width ~600px), far too wide for
+	// a dock. Host it in a scroll area with a small minimum width so the dock
+	// can be dragged to any width (a scrollbar appears when narrower than the
+	// content). QET already persists dock geometry across restarts via
+	// QETDiagramEditor save/restoreState, so the chosen width is remembered.
+	auto *scroll = new QScrollArea(this);
+	scroll->setWidgetResizable(true);
+	scroll->setFrameShape(QFrame::NoFrame);
+	scroll->setWidget(m_cpw);
 	auto *layout = new QVBoxLayout(this);
 	layout->setContentsMargins(0, 0, 0, 0);
-	layout->addWidget(m_cpw);
+	layout->addWidget(scroll);
+	setMinimumWidth(120);
 	setDisabled(true);
 	setConductor(conductor);
 }

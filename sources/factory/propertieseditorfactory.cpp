@@ -37,6 +37,7 @@
 #include "../ui/shapegraphicsitempropertieswidget.h"
 
 #include <QGraphicsItem>
+#include <QSettings>
 
 /**
 	@brief PropertiesEditorFactory::propertiesEditor
@@ -104,6 +105,13 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 	{
 		case Conductor::Type: //1001
 		{
+			//Feature toggle (#500): when disabled in the View menu, selecting a
+			//conductor brings up nothing in the dock. Default enabled.
+			if (!QSettings().value(
+					QStringLiteral("diagrameditor/conductor_properties_panel"),
+					true).toBool()) {
+				return nullptr;
+			}
 			//Prototype (#500): single-conductor editing in the dock.
 			if (count_ > 1) {
 				return nullptr;
