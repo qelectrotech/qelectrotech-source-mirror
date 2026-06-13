@@ -303,7 +303,7 @@ jobs:
           organization-id: ${{ secrets.SIGNPATH_ORGANIZATION_ID }}
           project-slug: 'qelectrotech-source-mirror'
           signing-policy-slug: 'test-signing'
-          artifact-configuration-slug: 'msi'
+          artifact-configuration-slug: 'MSI'
           github-artifact-id: ${{ steps.upload_unsigned.outputs.artifact-id }}
           wait-for-completion: true
           output-artifact-directory: 'dist\'
