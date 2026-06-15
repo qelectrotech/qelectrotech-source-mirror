@@ -21,7 +21,9 @@
 #include "../diagramposition.h"
 #include "../elementprovider.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
 
@@ -87,6 +89,8 @@ void projectDataBase::updateDB()
 	populateDiagramInfoTable();
 	populateElementTable();
 	populateElementInfoTable();
+	populateTerminalTable();   //after element table (terminals reference elements)
+	populateConductorTable();
 	emit dataBaseUpdated();
 }
 
@@ -318,8 +322,37 @@ bool projectDataBase::createDataBase()
 		qDebug() << " element_info_table query : " << query_.lastError();
 	}
 
+	//Connectivity (discussion #503): terminal + conductor tables + a from-to
+	//wire list view. Rebuilt from the scene in updateDB() like every other
+	//table here - purely additive, no stored state.
+	//tid = element_uuid + '#' + terminal index in its element : unique per
+	//PLACED terminal. A terminal's own uuid is NOT a reliable key - it can be
+	//null or repeated across the terminals of an element - so we key by the
+	//element's (unique) uuid plus the terminal's position in element->terminals().
+	QString terminal_table("CREATE TABLE terminal ("
+						   "tid VARCHAR(110) PRIMARY KEY NOT NULL,"
+						   "element_uuid VARCHAR(50),"
+						   "diagram_uuid VARCHAR(50),"
+						   "name VARCHAR(50),"
+						   "FOREIGN KEY (element_uuid) REFERENCES element (uuid))");
+	if (!query_.exec(terminal_table)) {
+		qDebug() << "terminal_table query : " << query_.lastError();
+	}
+
+	QString conductor_table("CREATE TABLE conductor ("
+							"id INTEGER PRIMARY KEY,"
+							"diagram_uuid VARCHAR(50),"
+							"terminal1_tid VARCHAR(110),"
+							"terminal2_tid VARCHAR(110),"
+							"wire_num VARCHAR(50),"
+							"type VARCHAR(10))");
+	if (!query_.exec(conductor_table)) {
+		qDebug() << "conductor_table query : " << query_.lastError();
+	}
+
 	createElementNomenclatureView();
 	createSummaryView();
+	createWireListView();
 	prepareQuery();
 	updateDB();
 	return true;
@@ -428,6 +461,114 @@ void projectDataBase::createSummaryView()
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
 		qDebug() << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::createWireListView
+	From-to wire list (RSWire WIRELIST equivalent): each conductor resolved to
+	its two end points = element label + terminal name + folio position.
+*/
+void projectDataBase::createWireListView()
+{
+	QString create_view (
+		"CREATE VIEW wire_list_view AS SELECT "
+		"c.wire_num AS wire, "
+		"(COALESCE(ei1.label,'') || ':' || COALESCE(t1.name,'')) AS from_point, d1.pos AS from_folio, "
+		"(COALESCE(ei2.label,'') || ':' || COALESCE(t2.name,'')) AS to_point,   d2.pos AS to_folio "
+		"FROM conductor c "
+		"JOIN terminal t1 ON c.terminal1_tid = t1.tid "
+		"JOIN terminal t2 ON c.terminal2_tid = t2.tid "
+		"LEFT JOIN element_info ei1 ON t1.element_uuid = ei1.element_uuid "
+		"LEFT JOIN element_info ei2 ON t2.element_uuid = ei2.element_uuid "
+		"LEFT JOIN diagram d1 ON t1.diagram_uuid = d1.uuid "
+		"LEFT JOIN diagram d2 ON t2.diagram_uuid = d2.uuid");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << "wire_list_view query : " << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::populateTerminalTable
+	One row per terminal of every element, rebuilt from the scene.
+*/
+void projectDataBase::populateTerminalTable()
+{
+	m_terminal_tid.clear();
+	QSqlQuery del(m_data_base);
+	del.exec(QStringLiteral("DELETE FROM terminal"));
+
+	QSqlQuery q(m_data_base);
+	q.prepare(QStringLiteral("INSERT INTO terminal (tid, element_uuid, diagram_uuid, name) "
+							 "VALUES (:tid, :element_uuid, :diagram_uuid, :name)"));
+	for (auto *diagram : m_project->diagrams())
+	{
+		const ElementProvider ep(diagram);
+		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		for (const auto &elmt : elmt_vector)
+		{
+			const QString element_uuid = elmt->uuid().toString();
+			const auto terms = elmt->terminals();
+			for (int i = 0; i < terms.size(); ++i)
+			{
+				Terminal *t = terms.at(i);
+				if (!t) continue;
+				const QString tid = element_uuid + QStringLiteral("#") + QString::number(i);
+				m_terminal_tid.insert(t, tid);
+				q.bindValue(QStringLiteral(":tid"), tid);
+				q.bindValue(QStringLiteral(":element_uuid"), element_uuid);
+				q.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+				q.bindValue(QStringLiteral(":name"), t->name());
+				if (!q.exec()) {
+					qDebug() << "populateTerminalTable insert error : " << q.lastError();
+				}
+			}
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::terminalTid
+	The tid assigned to this placed terminal in populateTerminalTable (which runs
+	first in the same updateDB pass, on the same live Terminal objects). Looking
+	it up here - rather than recomputing element_uuid + index - guarantees the
+	conductor endpoint joins to the exact terminal row, independent of any
+	element->terminals() ordering differences between the two passes.
+*/
+QString projectDataBase::terminalTid(Terminal *t) const
+{
+	return m_terminal_tid.value(t);
+}
+
+/**
+	@brief projectDataBase::populateConductorTable
+	One row per drawn conductor (edge between two terminals), rebuilt from scene.
+*/
+void projectDataBase::populateConductorTable()
+{
+	QSqlQuery del(m_data_base);
+	del.exec(QStringLiteral("DELETE FROM conductor"));
+
+	QSqlQuery q(m_data_base);
+	q.prepare(QStringLiteral("INSERT INTO conductor (diagram_uuid, terminal1_tid, terminal2_tid, wire_num, type) "
+							 "VALUES (:diagram_uuid, :t1, :t2, :wire_num, :type)"));
+	for (auto *diagram : m_project->diagrams())
+	{
+		for (Conductor *c : diagram->conductors())
+		{
+			if (!c || !c->terminal1 || !c->terminal2) continue;
+			const ConductorProperties cp = c->properties();
+			q.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+			q.bindValue(QStringLiteral(":t1"), terminalTid(c->terminal1));
+			q.bindValue(QStringLiteral(":t2"), terminalTid(c->terminal2));
+			q.bindValue(QStringLiteral(":wire_num"), cp.text);
+			q.bindValue(QStringLiteral(":type"), cp.type == ConductorProperties::Single ? "Single" : "Multi");
+			if (!q.exec()) {
+				qDebug() << "populateConductorTable insert error : " << q.lastError();
+			}
+		}
 	}
 }
 
