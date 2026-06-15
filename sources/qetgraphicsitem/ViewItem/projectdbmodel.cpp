@@ -331,7 +331,7 @@ void ProjectDBModel::dataBaseUpdated()
 		auto row = m_record.size();
 		auto col = row ? m_record.first().count() : 1;
 		
-		emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+		emit dataChanged(this->index(0,0), this->index(row-1, col-1), {Qt::DisplayRole});
 	}
 }
 
