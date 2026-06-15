@@ -186,36 +186,17 @@ void MachineInfo::send_info_to_debug()
 	
 	int commomElementsDir = 0;
 	QDirIterator it1(QETApp::commonElementsDir().toLatin1(),nameFilters,  QDir::Files, QDirIterator::Subdirectories);
-			while (it1.hasNext())
-			{
-				if(it1.next() > 0 )
-				{
-				commomElementsDir ++;
-				}
-			}
+	while (it1.hasNext()) { it1.next(); commomElementsDir++; }
 	qInfo()<< " Common Elements count:"<< commomElementsDir << "Elements";
-	
-	
+
 	int customElementsDir = 0;
 	QDirIterator it2(QETApp::customElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
-			while (it2.hasNext())
-			{
-				if(it2.next() > 0 )
-				{
-				customElementsDir ++;
-				}
-			}
+	while (it2.hasNext()) { it2.next(); customElementsDir++; }
 	qInfo()<< " Custom Elements count:"<< customElementsDir << "Elements";
-	
+
 	int companyElementsDir = 0;
 	QDirIterator it3(QETApp::companyElementsDir().toLatin1(), nameFilters, QDir::Files, QDirIterator::Subdirectories);
-			while (it3.hasNext())
-			{
-				if(it3.next() > 0 )
-				{
-				companyElementsDir ++;
-				}
-			}
+	while (it3.hasNext()) { it3.next(); companyElementsDir++; }
 	qInfo()<< " Company Elements count:"<< companyElementsDir << "Elements";
 	
 	qInfo()<< "";

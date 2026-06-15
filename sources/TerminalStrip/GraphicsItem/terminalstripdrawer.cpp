@@ -18,6 +18,8 @@
 #include "terminalstripdrawer.h"
 
 #include <QPainter>
+#include <QHash>
+#include <QUuid>
 
 namespace TerminalStripDrawer {
 
@@ -271,7 +273,7 @@ void TerminalStripDrawer::paint(QPainter *painter)
 			auto pen_{painter->pen()};
 			pen_.setWidth(2);
 			painter->setPen(pen_);
-			painter->drawPolyline(QPolygonF{points_});
+			painter->drawPolyline(QPolygonF(points_));
 			painter->restore();
 		}
 	}

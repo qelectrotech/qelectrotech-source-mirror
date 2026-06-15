@@ -19,6 +19,7 @@
 #define TERMINALSTRIPDRAWER_H
 
 #include <QPointer>
+#include <QUuid>
 
 #include "properties/terminalstriplayoutpattern.h"
 
