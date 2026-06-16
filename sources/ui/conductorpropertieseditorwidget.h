@@ -21,6 +21,9 @@
 #include "../PropertiesEditor/propertieseditorwidget.h"
 #include "../conductorproperties.h"
 
+#include <QList>
+#include <QMetaObject>
+
 class Conductor;
 class ConductorPropertiesWidget;
 
@@ -48,11 +51,18 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 		void updateUi() override;
 		QUndoCommand *associatedUndo() const override;
 		QString title() const override;
+		bool setLiveEdit(bool live_edit) override;
+
+	private:
+		void connectChangeSignals();
+		void disconnectChangeSignals();
 
 	private:
 		ConductorPropertiesWidget *m_cpw = nullptr;
 		Conductor *m_conductor = nullptr;
 		ConductorProperties m_initial;
+		QList<QMetaObject::Connection> m_live_connections;
+		bool m_updating = false;
 };
 
 #endif // CONDUCTORPROPERTIESEDITORWIDGET_H

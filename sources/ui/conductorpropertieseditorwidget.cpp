@@ -21,8 +21,18 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "conductorpropertieswidget.h"
+#include "../qtextorientationspinboxwidget.h"
 
+#include <KColorButton>
+
+#include <QAbstractButton>
+#include <QAbstractSpinBox>
+#include <QComboBox>
+#include <QGroupBox>
+#include <QLineEdit>
 #include <QScrollArea>
+#include <QSizePolicy>
+#include <QSlider>
 #include <QVBoxLayout>
 
 /**
@@ -48,6 +58,11 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 	layout->setContentsMargins(0, 0, 0, 0);
 	layout->addWidget(scroll);
 	setMinimumWidth(120);
+	// Expand vertically to fill the dock like the other editors do (otherwise
+	// the panel sits at its small size hint with empty space below it, #500),
+	// while keeping a minimum height so it stays usable when the dock is short.
+	setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+	setMinimumHeight(200);
 	setDisabled(true);
 	setConductor(conductor);
 }
@@ -74,10 +89,91 @@ void ConductorPropertiesEditorWidget::setConductor(Conductor *conductor)
 */
 void ConductorPropertiesEditorWidget::apply()
 {
+	// Ignore the field-change signals emitted while the widget is being loaded
+	// programmatically (updateUi/reset): mid-load the widget holds a partial
+	// state that must not be committed onto the conductor.
+	if (m_updating) return;
 	if (!m_conductor || !m_conductor->diagram()) return;
 	if (QUndoCommand *undo = associatedUndo())
 		m_conductor->diagram()->undoStack().push(undo);
 	m_initial = m_conductor->properties();
+}
+
+/**
+	@brief ConductorPropertiesEditorWidget::setLiveEdit
+	In live-edit mode (how the dock uses every editor), each field change is
+	applied immediately instead of via an explicit apply() call. Without this
+	override the base class is a no-op and edits in the dock were never applied
+	(issue #500).
+	@param live_edit true to enable live edit
+	@return always true
+*/
+bool ConductorPropertiesEditorWidget::setLiveEdit(bool live_edit)
+{
+	if (m_live_edit == live_edit) return true;
+	m_live_edit = live_edit;
+
+	if (m_live_edit) connectChangeSignals();
+	else             disconnectChangeSignals();
+
+	return true;
+}
+
+/**
+	@brief ConductorPropertiesEditorWidget::connectChangeSignals
+	Wire every editable control of the hosted ConductorPropertiesWidget to
+	apply(). Commit-style signals (editingFinished / activated / toggled /
+	sliderReleased) are used rather than per-keystroke ones so each edit yields
+	a single, clean undo step. Loading the widget programmatically (updateUi)
+	also fires some of these, but apply() is a no-op then because
+	associatedUndo() returns nullptr when the properties are unchanged.
+*/
+void ConductorPropertiesEditorWidget::connectChangeSignals()
+{
+	if (!m_cpw) return;
+
+	const auto add = [this](QMetaObject::Connection c) {
+		m_live_connections << c;
+	};
+
+	for (auto *w : m_cpw->findChildren<QLineEdit *>())
+		add(connect(w, &QLineEdit::editingFinished,
+					this, &ConductorPropertiesEditorWidget::apply));
+	for (auto *w : m_cpw->findChildren<QAbstractSpinBox *>())
+		add(connect(w, &QAbstractSpinBox::editingFinished,
+					this, &ConductorPropertiesEditorWidget::apply));
+	for (auto *w : m_cpw->findChildren<QComboBox *>())
+		add(connect(w, QOverload<int>::of(&QComboBox::activated),
+					this, &ConductorPropertiesEditorWidget::apply));
+	for (auto *w : m_cpw->findChildren<QSlider *>())
+		add(connect(w, &QSlider::sliderReleased,
+					this, &ConductorPropertiesEditorWidget::apply));
+	for (auto *w : m_cpw->findChildren<KColorButton *>())
+		add(connect(w, &KColorButton::changed,
+					this, &ConductorPropertiesEditorWidget::apply));
+	for (auto *w : m_cpw->findChildren<QTextOrientationSpinBoxWidget *>())
+		add(connect(w, QOverload<>::of(&QTextOrientationSpinBoxWidget::editingFinished),
+					this, &ConductorPropertiesEditorWidget::apply));
+	// Checkboxes and the checkable group boxes (single/multi wire, bicolor…).
+	for (auto *w : m_cpw->findChildren<QAbstractButton *>())
+		if (w->isCheckable())
+			add(connect(w, &QAbstractButton::toggled,
+						this, &ConductorPropertiesEditorWidget::apply));
+	for (auto *w : m_cpw->findChildren<QGroupBox *>())
+		if (w->isCheckable())
+			add(connect(w, &QGroupBox::toggled,
+						this, &ConductorPropertiesEditorWidget::apply));
+}
+
+/**
+	@brief ConductorPropertiesEditorWidget::disconnectChangeSignals
+	Tear down the live-edit connections made by connectChangeSignals().
+*/
+void ConductorPropertiesEditorWidget::disconnectChangeSignals()
+{
+	for (const QMetaObject::Connection &c : m_live_connections)
+		disconnect(c);
+	m_live_connections.clear();
 }
 
 /**
@@ -87,7 +183,9 @@ void ConductorPropertiesEditorWidget::apply()
 void ConductorPropertiesEditorWidget::reset()
 {
 	if (!m_conductor) return;
+	m_updating = true;
 	m_cpw->setProperties(m_initial);
+	m_updating = false;
 }
 
 /**
@@ -97,8 +195,10 @@ void ConductorPropertiesEditorWidget::reset()
 void ConductorPropertiesEditorWidget::updateUi()
 {
 	if (!m_conductor) return;
+	m_updating = true;
 	m_initial = m_conductor->properties();
 	m_cpw->setProperties(m_initial);
+	m_updating = false;
 }
 
 /**

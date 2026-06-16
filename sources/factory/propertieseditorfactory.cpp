@@ -23,6 +23,7 @@
 #include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
 #include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
@@ -86,6 +87,17 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		return nullptr;
 	}
 	QGraphicsItem *item = items.first();
+
+		//Selecting a conductor's text label edits its parent conductor (#500),
+		//mirroring how double-clicking the label opens the conductor dialog.
+	if (count_ == 1) {
+		if (auto *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			if (Conductor *parent_cond = cti->parentConductor()) {
+				items = {parent_cond};
+				item = parent_cond;
+			}
+		}
+	}
 	const int type_ = item->type();
 
 		//The editor widget can only edit one item
