@@ -61,7 +61,7 @@ parts:
   qelectrotech:
     plugin: nil
     source: .
-    stage-packages: [git, sqlite3, xdg-user-dirs]
+    stage-packages: [git, sqlite3, xdg-user-dirs, libxcb-cursor0]
     build-packages:
       - git
       - cmake
