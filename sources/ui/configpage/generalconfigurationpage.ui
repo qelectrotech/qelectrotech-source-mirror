@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>955</width>
-    <height>556</height>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -54,6 +54,27 @@
        </item>
        <item>
         <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="grid_startup_cb">
+         <property name="text">
+          <string>Afficher la grille par défaut (appliqué au prochain lancement)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="guides_startup_cb">
+         <property name="text">
+          <string>Afficher les guides par défaut (appliqué au prochain lancement)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_5">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -911,30 +932,10 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
           <string>Affichage Grille</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="1">
-           <spacer name="horizontalSpacer_10">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>555</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="4">
-           <widget class="QLabel" name="label_18">
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_19">
             <property name="text">
-             <string>max:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="Label_Diagram_Grid_PointSize">
-            <property name="text">
-             <string>Taille des points de la grille de Diagram-Editor : 1 - 5</string>
+             <string>min:</string>
             </property>
            </widget>
           </item>
@@ -954,10 +955,39 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QLabel" name="label_19">
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>555</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="3">
+           <widget class="QSpinBox" name="ElementEditor_Grid_PointSize_min_sb">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>5</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="Label_Diagram_Grid_PointSize">
             <property name="text">
-             <string>min:</string>
+             <string>Taille des points de la grille de Diagram-Editor : 1 - 5</string>
             </property>
            </widget>
           </item>
@@ -974,13 +1004,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
             <property name="maximum">
              <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>Taille des points de la grille de l'éditeur d'éléments : 1 - 5</string>
             </property>
            </widget>
           </item>
@@ -1007,19 +1030,10 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </widget>
           </item>
-          <item row="1" column="3">
-           <widget class="QSpinBox" name="ElementEditor_Grid_PointSize_min_sb">
-            <property name="minimumSize">
-             <size>
-              <width>60</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>5</number>
+          <item row="0" column="4">
+           <widget class="QLabel" name="label_18">
+            <property name="text">
+             <string>max:</string>
             </property>
            </widget>
           </item>
@@ -1027,6 +1041,13 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
            <widget class="QLabel" name="label_22">
             <property name="text">
              <string>min:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Taille des points de la grille de l'éditeur d'éléments : 1 - 5</string>
             </property>
            </widget>
           </item>
@@ -1110,7 +1131,6 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
   </layout>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
   <tabstop>m_use_system_color_cb</tabstop>
   <tabstop>m_use_gesture_trackpad</tabstop>
   <tabstop>m_zoom_out_beyond_folio</tabstop>

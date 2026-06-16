@@ -24,7 +24,7 @@
 #include "../elementprovider.h"
 #include "../undocommand/linkelementcommand.h"
 #include "../qetinformation.h"
-
+#include "../qetproject.h"
 #include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>

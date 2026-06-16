@@ -16,7 +16,7 @@
  *	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "masterpropertieswidget.h"
-
+#include "../qetproject.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"

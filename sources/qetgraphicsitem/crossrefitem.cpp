@@ -18,7 +18,7 @@
 #include "crossrefitem.h"
 
 #include <QTimer>
-
+#include "../qetproject.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "../diagramposition.h"

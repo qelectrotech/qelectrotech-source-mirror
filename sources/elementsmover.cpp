@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementsmover.h"
-
+#include "qetproject.h"
 #include "conductorautonumerotation.h"
 #include "diagram.h"
 #include "qetgraphicsitem/conductor.h"
