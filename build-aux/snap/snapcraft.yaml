@@ -1,11 +1,11 @@
 name: qelectrotech
 title: QElectroTech
-base: core22
+base: core24
 adopt-info: qelectrotech
 license: GPL-2.0
 summary: Electrical diagram editor
 description: |
-  QElectroTech, or QET in short, is a libre and open source desktop application 
+  QElectroTech, or QET in short, is a libre and open source desktop application
   to create diagrams and schematics.
 
 grade: stable
@@ -17,32 +17,32 @@ architectures:
     build-for: amd64
   - build-on: arm64
     build-for: arm64
-    
+
 layout:
   /usr/local/share/qelectrotech:
     symlink: $SNAP/usr/local/share/qelectrotech
-  
+
 
 apps:
   qelectrotech:
     command: usr/local/bin/qelectrotech
     common-id: qelectrotech.desktop
-    extensions: 
-     - kde-neon
+    extensions:
+     - kde-neon-6
     plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control, wayland, x11]
     environment: &env
       TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
       HOME: $SNAP_USER_COMMON
-      PYTHONPATH: $SNAP:$SNAP/lib/python3.10/site-packages:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
+      PYTHONPATH: $SNAP:$SNAP/lib/python3.12/site-packages:$SNAP/usr/lib/python3.12:$SNAP/usr/lib/python3.12/lib-dynload
 
   qet-tb-generator:
     command: bin/qet_tb_generator
-    extensions: 
-     - kde-neon
+    extensions:
+     - kde-neon-6
     plugs: *plugs
     environment: *env
-      
-  
+
+
 parts:
   launchers:
     plugin: dump
@@ -53,32 +53,21 @@ parts:
   qet-tb-generator:
     plugin: python
     source: https://github.com/raulroda/qet_tb_generator-plugin.git
+    source-tag: v1.31
     python-packages: [PySimpleGUI]
-    stage-packages: 
+    stage-packages:
       - python3-lxml
       - python3-tk
       - libtk8.6
 
-  kde-sdk-setup:
-    plugin: nil
-    build-snaps:
-      - kf5-5-110-qt-5-15-11-core22-sdk
-    build-packages:
-      - g++
-      - mesa-common-dev
-      - libglvnd-dev
-      - rsync
-    override-build: |
-      rsync -a --ignore-existing /snap/kf5-5-110-qt-5-15-11-core22-sdk/current/ /
-
-  
   qelectrotech:
-    after: [kde-sdk-setup]
     plugin: nil
     source: .
-    stage-packages: [ git, sqlite3, xdg-user-dirs ]
+    stage-packages: [git, sqlite3, xdg-user-dirs]
     build-packages:
       - git
+      - cmake
+      - ninja-build
       - libsqlite3-dev
     override-build: |
       displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
@@ -86,22 +75,27 @@ parts:
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       craftctl set version="$snap_version"
-      qmake "$CRAFT_PART_SRC/qelectrotech.pro"
-      make -j${CRAFT_PARALLEL_BUILD_COUNT}
-      make install INSTALL_ROOT="$CRAFT_PART_INSTALL"
+      cmake -B "$CRAFT_PART_BUILD/build" -S "$CRAFT_PART_SRC" \
+        -GNinja \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+        -DBUILD_WITH_KF=ON \
+        -DBUILD_KF=OFF
+      cmake --build "$CRAFT_PART_BUILD/build" -j${CRAFT_PARALLEL_BUILD_COUNT}
+      DESTDIR="$CRAFT_PART_INSTALL" cmake --install "$CRAFT_PART_BUILD/build"
     override-stage: |
       craftctl default
       # patch desktop file with correct icon path
-      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
+      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g"
       $SED_CMD usr/local/share/applications/org.qelectrotech.qelectrotech.desktop
 
   cleanup:
     after: [qelectrotech, qet-tb-generator]
     plugin: nil
-    build-snaps: [kf5-5-110-qt-5-15-11-core22]
+    build-snaps: [kf6-core24]
     override-prime: |
       set -eux
-      for snap in "kf5-5-110-qt-5-15-11-core22"; do  # List all content-snaps you're using here
+      for snap in "kf6-core24"; do
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" "$CRAFT_PRIME/usr/{}" \;
       done
       for cruft in bug lintian man; do
