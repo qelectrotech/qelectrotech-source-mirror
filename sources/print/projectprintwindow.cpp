@@ -28,14 +28,14 @@
 
 #include "ui_projectprintwindow.h"
 
-// Private Qt PDF engine for drawHyperlink() — not public API.
-// Qt6: QPdfEngine::drawHyperlink() was kept in Qt6's private API, but verify
-// that <private/qpdf_p.h> resolves correctly against your Qt6 installation.
-// If this include fails, check that Qt::GuiPrivate is linked in CMakeLists.txt.
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-#  warning "Qt6 build: verify that QPdfEngine::drawHyperlink() is still available in <private/qpdf_p.h>"
+// QPdfEngine private API for hyperlink injection.
+// Only available when Qt private headers are present (QET_PDF_PRIVATE_HEADERS).
+#ifdef QET_PDF_PRIVATE_HEADERS
+#  if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#    warning "Qt6 build: verify that QPdfEngine::drawHyperlink() is still available in <private/qpdf_p.h>"
+#  endif
+#  include <private/qpdf_p.h>
 #endif
-#include <private/qpdf_p.h>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 #	include <QDesktopWidget>
@@ -259,7 +259,10 @@ void ProjectPrintWindow::requestPaint()
 	// preview paint engine. We only post-process when actually writing a PDF.
 	const bool pdfExport =
 		(m_printer->outputFormat() == QPrinter::PdfFormat)
-		&& (dynamic_cast<QPdfEngine*>(painter.paintEngine()) != nullptr);
+#ifdef QET_PDF_PRIVATE_HEADERS
+		&& (dynamic_cast<QPdfEngine*>(painter.paintEngine()) != nullptr)
+#endif
+		;
 
 	for (auto diagram : selectedDiagram())
 	{
@@ -370,6 +373,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 	}
 
 	////Inject PDF cross-reference links////
+#ifdef QET_PDF_PRIVATE_HEADERS
 	if (printer->outputFormat() == QPrinter::PdfFormat && fit_page) {
 		auto *pdfEngine = dynamic_cast<QPdfEngine*>(painter->paintEngine());
 		if (pdfEngine) {
@@ -426,6 +430,7 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 				printer->outputFileName());
 		}
 	}
+#endif // QET_PDF_PRIVATE_HEADERS
 	////PDF links end////
 
 	////Print is finished, restore diagram and graphics item properties

@@ -29,7 +29,6 @@ set(QET_COMPONENTS
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
   Qt::Gui
-  Qt::GuiPrivate   # Required for QPdfEngine::drawHyperlink (PDF internal links)
   Qt::Xml
   Qt::Svg
   Qt::Sql
@@ -37,6 +36,17 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Widgets
   Qt::Concurrent
   )
+
+# Qt::GuiPrivate (for QPdfEngine::drawHyperlink) requires Qt private headers.
+# These are present in full desktop Qt6 installs but absent in some SDK snaps.
+# Enable the feature only when the target actually exists.
+if(TARGET Qt::GuiPrivate)
+  list(APPEND QET_PRIVATE_LIBRARIES Qt::GuiPrivate)
+  add_compile_definitions(QET_PDF_PRIVATE_HEADERS=1)
+  message(STATUS "Qt::GuiPrivate found — PDF hyperlink injection enabled")
+else()
+  message(STATUS "Qt::GuiPrivate not found — PDF hyperlink injection disabled (no Qt private headers)")
+endif()
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
