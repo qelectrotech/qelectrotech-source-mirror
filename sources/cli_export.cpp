@@ -31,8 +31,11 @@
 #include "titleblockproperties.h"
 #include "wiringlistexport.h"
 
-// Private Qt PDF engine for drawHyperlink() — see pdf_links / projectprintwindow.
-#include <private/qpdf_p.h>
+// QPdfEngine is needed for dynamic_cast to inject PDF hyperlinks.
+// Only available when Qt private headers are present.
+#ifdef QET_PDF_PRIVATE_HEADERS
+#  include <private/qpdf_p.h>
+#endif
 
 #include <QDir>
 #include <QDirIterator>
@@ -167,6 +170,7 @@ int exportPdf(QETProject &project, const QString &output)
 		// page.  The geometry is rebuilt from the QPdfWriter (not a QPrinter):
 		// render() anchors the diagram top-left with KeepAspectRatio, and the
 		// page is sized to the diagram so the scale is ~1.
+#ifdef QET_PDF_PRIVATE_HEADERS
 		if (auto *engine = dynamic_cast<QPdfEngine *>(painter.paintEngine())) {
 			const QRectF source(r);
 			const qreal s = qMin(target.width()  / source.width(),
@@ -199,6 +203,7 @@ int exportPdf(QETProject &project, const QString &output)
 			};
 			PdfLinks::injectCrossRefLinks(engine, diagram, geom, pageMap, output);
 		}
+#endif // QET_PDF_PRIVATE_HEADERS
 	}
 	painter.end();
 
