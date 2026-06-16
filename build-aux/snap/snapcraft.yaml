@@ -80,7 +80,8 @@ parts:
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr/local \
         -DBUILD_WITH_KF=ON \
-        -DBUILD_KF=OFF
+        -DBUILD_KF=OFF \
+        -DPACKAGE_TESTS=OFF
       cmake --build "$CRAFT_PART_BUILD/build" -j${CRAFT_PARALLEL_BUILD_COUNT}
       DESTDIR="$CRAFT_PART_INSTALL" cmake --install "$CRAFT_PART_BUILD/build"
     override-stage: |
