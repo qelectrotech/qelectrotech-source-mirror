@@ -59,8 +59,11 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 	// off) sets it once. It is a child of this editor, not of m_cpw, so it is
 	// deliberately outside the live-edit signal wiring in connectChangeSignals()
 	// (toggling it must not push an edit, only change how the next edit applies).
+	// Reuse the modal dialog's exact wording for consistency (and so the
+	// existing translation applies).
 	m_apply_all_cb = new QCheckBox(
-		tr("Appliquer à tous les conducteurs du potentiel"), this);
+		tr("Appliquer les propriétés à l'ensemble des conducteurs de ce potentiel"),
+		this);
 	m_apply_all_cb->setChecked(QSettings().value(
 		QStringLiteral("diagrameditor/conductor_apply_all"), true).toBool());
 	connect(m_apply_all_cb, &QCheckBox::toggled, this, [](bool on) {
