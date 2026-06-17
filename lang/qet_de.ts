@@ -11851,7 +11851,8 @@ veuillez patienter durant l&apos;import...</source>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1361"/>
         <source>L&apos;enregistrement à échoué,
 les conditions requises ne sont pas valides</source>
-        <translation>Speichervorgang gescheitert\nDie erforderlichen Bedingungen wurden nicht erfüllt</translation>
+        <translation>Speichervorgang gescheitert!
+Die erforderlichen Bedingungen wurden nicht erfüllt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1334"/>

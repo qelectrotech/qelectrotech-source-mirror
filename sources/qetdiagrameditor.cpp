@@ -2489,7 +2489,6 @@ void QETDiagramEditor::generateTerminalBlock()
 	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator.exe")
 			<< (QDir::currentPath() + "/qet_tb_generator.exe")
 			<< QStandardPaths::findExecutable("qet_tb_generator.exe")
-			<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
 			<< "qet_tb_generator.exe"
 			<< "qet_tb_generator";    // from original code: missing ".exe" ???
 #elif  defined(Q_OS_MACOS)
