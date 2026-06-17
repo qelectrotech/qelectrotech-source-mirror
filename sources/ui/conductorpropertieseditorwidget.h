@@ -26,14 +26,15 @@
 
 class Conductor;
 class ConductorPropertiesWidget;
+class QCheckBox;
 
 /**
 	@brief The ConductorPropertiesEditorWidget class
 	Hosts the existing ConductorPropertiesWidget in the dockable selection-
 	properties panel, so a selected conductor can be edited in place like the
 	other item types, instead of only through the modal dialog (issue #500).
-	Prototype: single-conductor editing; applying to the whole potential is the
-	open design question (the modal dialog offers it via a prompt).
+	A pinned "apply to all conductors of the potential" checkbox (persisted)
+	mirrors the modal dialog's option to propagate edits to the whole potential.
 */
 class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 {
@@ -59,6 +60,7 @@ class ConductorPropertiesEditorWidget : public PropertiesEditorWidget
 
 	private:
 		ConductorPropertiesWidget *m_cpw = nullptr;
+		QCheckBox *m_apply_all_cb = nullptr;
 		Conductor *m_conductor = nullptr;
 		ConductorProperties m_initial;
 		QList<QMetaObject::Connection> m_live_connections;

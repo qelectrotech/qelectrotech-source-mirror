@@ -27,10 +27,12 @@
 
 #include <QAbstractButton>
 #include <QAbstractSpinBox>
+#include <QCheckBox>
 #include <QComboBox>
 #include <QGroupBox>
 #include <QLineEdit>
 #include <QScrollArea>
+#include <QSettings>
 #include <QSizePolicy>
 #include <QSlider>
 #include <QVBoxLayout>
@@ -50,12 +52,29 @@ ConductorPropertiesEditorWidget::ConductorPropertiesEditorWidget(
 	// can be dragged to any width (a scrollbar appears when narrower than the
 	// content). QET already persists dock geometry across restarts via
 	// QETDiagramEditor save/restoreState, so the chosen width is remembered.
+	// "Apply to all conductors of the potential": same semantics as the modal
+	// dialog's checkbox (ConductorPropertiesDialog::applyAll), pinned at the top
+	// of the panel so it stays visible above the scrolling tabs (#500). Unlike
+	// the dialog the choice is persisted, so a user who always wants it on (or
+	// off) sets it once. It is a child of this editor, not of m_cpw, so it is
+	// deliberately outside the live-edit signal wiring in connectChangeSignals()
+	// (toggling it must not push an edit, only change how the next edit applies).
+	m_apply_all_cb = new QCheckBox(
+		tr("Appliquer à tous les conducteurs du potentiel"), this);
+	m_apply_all_cb->setChecked(QSettings().value(
+		QStringLiteral("diagrameditor/conductor_apply_all"), true).toBool());
+	connect(m_apply_all_cb, &QCheckBox::toggled, this, [](bool on) {
+		QSettings().setValue(
+			QStringLiteral("diagrameditor/conductor_apply_all"), on);
+	});
+
 	auto *scroll = new QScrollArea(this);
 	scroll->setWidgetResizable(true);
 	scroll->setFrameShape(QFrame::NoFrame);
 	scroll->setWidget(m_cpw);
 	auto *layout = new QVBoxLayout(this);
 	layout->setContentsMargins(0, 0, 0, 0);
+	layout->addWidget(m_apply_all_cb);
 	layout->addWidget(scroll);
 	setMinimumWidth(120);
 	// Expand vertically to fill the dock like the other editors do (otherwise
@@ -205,10 +224,10 @@ void ConductorPropertiesEditorWidget::updateUi()
 	@brief ConductorPropertiesEditorWidget::associatedUndo
 	@return the edit as a QPropertyUndoCommand, or nullptr if unchanged.
 
-	Prototype note: applies only to the selected conductor. The modal dialog
-	additionally offers to propagate to every conductor on the same potential
-	(relatedPotentialConductors()); whether/how to expose that in the dock is
-	the open design decision for #500.
+	When "apply to all" is ticked, every conductor on the same potential is
+	updated in the same undo step (one undo reverts them all), exactly as the
+	modal dialog does (ConductorPropertiesDialog::PropertiesDialog). Otherwise
+	only the selected conductor is changed.
 */
 QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 {
@@ -224,6 +243,26 @@ QUndoCommand *ConductorPropertiesEditorWidget::associatedUndo() const
 	auto *undo = new QPropertyUndoCommand(
 		m_conductor, "properties", old_value, new_value);
 	undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
+
+	// Propagate to every conductor on the same potential, as the modal dialog
+	// does: each related conductor becomes a child command of the same undo
+	// step, set to the same target properties.
+	if (m_apply_all_cb && m_apply_all_cb->isChecked())
+	{
+		const auto potential = m_conductor->relatedPotentialConductors();
+		if (!potential.isEmpty())
+		{
+			undo->setText(tr("Modifier les propriétés de plusieurs conducteurs",
+							  "undo caption"));
+			for (Conductor *potential_conductor : potential)
+			{
+				QVariant old_v;
+				old_v.setValue(potential_conductor->properties());
+				new QPropertyUndoCommand(
+					potential_conductor, "properties", old_v, new_value, undo);
+			}
+		}
+	}
 	return undo;
 }
 
