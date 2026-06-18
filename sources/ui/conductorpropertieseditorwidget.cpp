@@ -100,7 +100,15 @@ ConductorPropertiesEditorWidget::~ConductorPropertiesEditorWidget()
 void ConductorPropertiesEditorWidget::setConductor(Conductor *conductor)
 {
 	if (!conductor) return;
+	if (m_conductor && m_conductor != conductor)
+		disconnect(m_conductor, &Conductor::propertiesChange,
+				   this, &ConductorPropertiesEditorWidget::updateUi);
 	m_conductor = conductor;
+		//Keep the dock in sync when the conductor is edited elsewhere (e.g. the
+		//modal "Edit conductor" dialog); otherwise a stale snapshot would be
+		//written back on the next apply() and overwrite that change (issue #500).
+	connect(m_conductor, &Conductor::propertiesChange,
+			this, &ConductorPropertiesEditorWidget::updateUi, Qt::UniqueConnection);
 	setEnabled(true);
 	updateUi();
 }
