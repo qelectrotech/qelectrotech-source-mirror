@@ -255,6 +255,9 @@ void ProjectPrintWindow::requestPaint()
 	const bool pdfExport =
 		(m_printer->outputFormat() == QPrinter::PdfFormat)
 		&& (dynamic_cast<QPdfEngine*>(painter.paintEngine()) != nullptr);
+// plc-user: added because of "Warning: unused variable 'pdfExport'":
+// should be fixed by original author by evaluating function-result!
+	(void)pdfExport;
 
 	for (auto diagram : selectedDiagram())
 	{
