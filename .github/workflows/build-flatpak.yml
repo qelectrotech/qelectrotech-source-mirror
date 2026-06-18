@@ -1,13 +1,10 @@
 name: Build Flatpak package
 
+# On-demand only: run manually from the Actions tab. This avoids spending
+# Actions minutes (arm64 is billed at a higher rate) on every push to master
+# for a build that publishes nothing. A release-tag publish step can be added
+# later once a distribution target is agreed.
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    paths:
-      - 'build-aux/flatpak/**'
-      - '.github/workflows/build-flatpak.yml'
   workflow_dispatch:
 
 jobs:
@@ -28,6 +25,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: 'recursive'
+          # The Flatpak build needs sources only, not the LFS-stored .qch docs.
+          # Keep this explicit so the workflow never draws on LFS bandwidth.
+          lfs: false
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: qelectrotech.flatpak
