@@ -35,6 +35,7 @@
 #endif
 
 #include <QHash>
+#include <QFuture>
 
 class Diagram;
 class ElementsLocation;
@@ -295,6 +296,7 @@ class QETProject : public QObject
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
+		QFuture<bool> m_backup_future;
 #ifdef BUILD_WITHOUT_KF5
 #else
 		KAutoSaveFile m_backup_file;

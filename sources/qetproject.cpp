@@ -137,6 +137,11 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 */
 QETProject::~QETProject()
 {
+		//Wait for any in-flight async crash-recovery backup to finish: the worker
+		//writes through &m_backup_file, a member that would otherwise be destroyed
+		//under it (issue #492).
+	m_backup_future.waitForFinished();
+
 		//We block database signal to avoid hundreds of unnecessary emitted signal
 		//due to deletion (diagram, item, etc...) and as much update made in the not yet deleted things.
 	m_data_base.blockSignals(true);
@@ -339,6 +344,8 @@ void QETProject::setFilePath(const QString &filepath)
 	}
 #ifdef BUILD_WITHOUT_KF5
 #else
+		//Don't close/re-point the backup file while a backup is still writing it.
+	m_backup_future.waitForFinished();
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
 	}
@@ -1809,8 +1816,12 @@ void QETProject::writeBackup()
 #ifdef BUILD_WITHOUT_KF5
 #else
 #	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+		//Don't launch a new backup while the previous one is still writing:
+		//both would write through &m_backup_file on different threads.
+	if (m_backup_future.isRunning())
+		return;
 	QDomDocument xml_project(toXml());
-	QtConcurrent::run(
+	m_backup_future = QtConcurrent::run(
 				QET::writeToFile,xml_project,&m_backup_file,nullptr);
 #	else
 #		if TODO_LIST
