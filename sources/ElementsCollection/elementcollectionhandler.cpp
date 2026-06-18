@@ -469,7 +469,7 @@ bool ElementCollectionHandler::setNames(ElementsLocation &location,
 			root.appendChild(name_list.toXml(document));
 			
 			QString filepath = location.fileSystemPath()
-					+ "/qet_directory";
+					% "/qet_directory";
 			if (!QET::writeXmlFile(document, filepath)) {
 				qDebug() << "ElementCollectionHandler::setNames : write qet-directory file failed";
 				return false;
