@@ -116,9 +116,12 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target)
 	// draw_grid_ is set (default true), so toggle it off around the render
 	// and restore it afterwards.
 	const bool was_drawing_grid = diagram->displayGrid();
+	const bool was_drawing_guides = diagram->displayGuides();
 	diagram->setDisplayGrid(false);
+	diagram->setDisplayGuides(false);
 	diagram->render(&painter, target, source, Qt::KeepAspectRatio);
 	diagram->setDisplayGrid(was_drawing_grid);
+	diagram->setDisplayGuides(was_drawing_guides);
 }
 
 int exportPdf(QETProject &project, const QString &output)

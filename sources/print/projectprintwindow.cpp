@@ -519,6 +519,7 @@ ExportProperties ProjectPrintWindow::exportProperties() const
 	exp.draw_terminals          = ui->m_draw_terminal_cb->isChecked();
 	exp.draw_colored_conductors = ui->m_keep_conductor_color_cb->isChecked();
 	exp.draw_grid = false;
+	exp.draw_guides = false;
 
 	return exp;
 }

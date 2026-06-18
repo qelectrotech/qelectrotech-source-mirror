@@ -9,24 +9,24 @@ class QTableWidget;
 class QPushButton;
 
 class GuidesPropertiesWidget : public QWidget {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit GuidesPropertiesWidget(QWidget *parent = nullptr);
-    ~GuidesPropertiesWidget() override;
+	explicit GuidesPropertiesWidget(QWidget *parent = nullptr);
+	~GuidesPropertiesWidget() override;
 
-    QList<Diagram::Guide> guides() const;
-    void setGuides(const QList<Diagram::Guide> &guides);
+	QList<Diagram::Guide> guides() const;
+	void setGuides(const QList<Diagram::Guide> &guides);
 
 private slots:
-    void addGuide();
-    void removeGuide();
+	void addGuide();
+	void removeGuide();
 
 private:
-    void setupUi();
+	void setupUi();
 
-    QTableWidget *m_table;
-    QPushButton *m_add_btn;
-    QPushButton *m_remove_btn;
+	QTableWidget *m_table;
+	QPushButton *m_add_btn;
+	QPushButton *m_remove_btn;
 };
 
 #endif // GUIDESPROPERTIESWIDGET_H

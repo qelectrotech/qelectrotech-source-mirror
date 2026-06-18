@@ -2315,6 +2315,7 @@ ExportProperties Diagram::applyProperties(
 	// exporte les options de rendu en cours
 	ExportProperties old_properties;
 	old_properties.draw_grid               = displayGrid();
+	old_properties.draw_guides             = displayGuides();
 	old_properties.draw_border = border_and_titleblock.borderIsDisplayed();
 	old_properties.draw_titleblock = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
@@ -2328,6 +2329,7 @@ ExportProperties Diagram::applyProperties(
 	setDrawTerminals         (new_properties.draw_terminals);
 	setDrawColoredConductors (new_properties.draw_colored_conductors);
 	setDisplayGrid           (new_properties.draw_grid);
+	setDisplayGuides         (new_properties.draw_guides);
 	border_and_titleblock.displayBorder(new_properties.draw_border);
 	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
 
