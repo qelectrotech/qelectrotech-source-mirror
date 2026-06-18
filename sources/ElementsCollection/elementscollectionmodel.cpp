@@ -538,6 +538,11 @@ QList<QETProject *> ElementsCollectionModel::project() const
 */
 void ElementsCollectionModel::highlightUnusedElement()
 {
+		//Reset the background of every item first, so elements that are no
+		//longer unused lose their previous red highlight (issue #159).
+	for (ElementCollectionItem *eci : items())
+		eci->setBackground(QBrush());
+
 	QList <ElementsLocation> unused;
 
 	foreach (QETProject *project, m_project_list)
