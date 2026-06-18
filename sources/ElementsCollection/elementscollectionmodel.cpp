@@ -538,10 +538,15 @@ QList<QETProject *> ElementsCollectionModel::project() const
 */
 void ElementsCollectionModel::highlightUnusedElement()
 {
-		//Reset the background of every item first, so elements that are no
-		//longer unused lose their previous red highlight (issue #159).
+		//Reset only the items currently highlighted in red, so elements that
+		//are no longer unused lose the highlight. Scoping to the red
+		//Dense4Pattern avoids touching other backgrounds (e.g. the amber
+		//"show this dir" highlight) and avoids needless updates on big
+		//collections (issue #159).
 	for (ElementCollectionItem *eci : items())
-		eci->setBackground(QBrush());
+		if (eci->background().style() == Qt::Dense4Pattern &&
+		    eci->background().color() == Qt::red)
+			eci->setBackground(QBrush());
 
 	QList <ElementsLocation> unused;
 
