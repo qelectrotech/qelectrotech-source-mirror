@@ -21,6 +21,7 @@
 
 #include <QDir>
 #include <QDirIterator>
+#include <QFile>
 #include <QFileInfo>
 #include <QTemporaryDir>
 
@@ -38,6 +39,29 @@ bool EdzArchive::extract(const QString &edz_path)
 	const QFileInfo fi(edz_path);
 	if (!fi.exists() || !fi.isFile()) {
 		m_error = QStringLiteral("File not found: %1").arg(edz_path);
+		return false;
+	}
+
+	// A .edz is a 7-Zip archive (magic "7z\xBC\xAF\x27\x1C"). Some EPLAN exports
+	// are instead zip-format ("PK\x03\x04"); the bundled reader only does 7z, so
+	// detect that up front and say so clearly rather than failing opaquely.
+	QFile probe(fi.absoluteFilePath());
+	if (!probe.open(QIODevice::ReadOnly)) {
+		m_error = QStringLiteral("Cannot read %1").arg(edz_path);
+		return false;
+	}
+	const QByteArray magic = probe.read(6);
+	probe.close();
+	static const QByteArray k7z("7z\xBC\xAF\x27\x1C", 6);
+	if (!magic.startsWith(k7z)) {
+		if (magic.startsWith(QByteArray("PK\x03\x04", 4))) {
+			m_error = QStringLiteral(
+				"This .edz is a zip-format package, which is not yet "
+				"supported (only 7-Zip .edz files can be imported).");
+		} else {
+			m_error = QStringLiteral(
+				"Not a valid .edz package (unrecognised archive format).");
+		}
 		return false;
 	}
 
