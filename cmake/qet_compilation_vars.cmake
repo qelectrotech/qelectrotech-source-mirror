@@ -109,6 +109,10 @@ set(QET_RES_FILES
 set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzarchive.cpp
   ${QET_DIR}/sources/import/edz/edzarchive.h
+  ${QET_DIR}/sources/import/edz/edzpart.cpp
+  ${QET_DIR}/sources/import/edz/edzpart.h
+  ${QET_DIR}/sources/import/edz/edzelementbuilder.cpp
+  ${QET_DIR}/sources/import/edz/edzelementbuilder.h
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
