@@ -19,6 +19,7 @@
 
 #include "../editor/ui/qetelementeditor.h"
 #include "../elementscategoryeditor.h"
+#include "../import/edz/edzimporter.h"
 #include "../newelementwizard.h"
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
@@ -33,6 +34,7 @@
 #include "xmlprojectelementcollectionitem.h"
 
 #include <QDesktopServices>
+#include <QFileDialog>
 #include <QMenu>
 #include <QTimer>
 #include <QUrl>
@@ -158,6 +160,8 @@ void ElementsCollectionWidget::setUpAction()
 					  tr("Nouveau dossier"), this);
 	m_new_element = new QAction(QET::Icons::ElementNew,
 					tr("Nouvel élément"), this);
+	m_import_edz = new QAction(QET::Icons::ElementNew,
+					tr("Importer une pièce EPLAN (.edz)…"), this);
 	m_show_this_dir = new QAction(QET::Icons::FolderOnlyThis,
 					  tr("Afficher uniquement ce dossier"),
 					  this);
@@ -247,6 +251,8 @@ void ElementsCollectionWidget::setUpConnection()
 		this, &ElementsCollectionWidget::newDirectory);
 	connect(m_new_element, &QAction::triggered,
 		this, &ElementsCollectionWidget::newElement);
+	connect(m_import_edz, &QAction::triggered,
+		this, &ElementsCollectionWidget::importEdz);
 	connect(m_show_this_dir, &QAction::triggered,
 		this, &ElementsCollectionWidget::showThisDir);
 	connect(m_show_all_dir, &QAction::triggered,
@@ -329,6 +335,7 @@ void ElementsCollectionWidget::customContextMenu(const QPoint &point)
 			{
 				if (!feci->isMacrosCollection()) {
 					m_context_menu->addAction(m_new_element);
+					m_context_menu->addAction(m_import_edz);
 				}
 				m_context_menu->addAction(m_new_directory);
 				if (!feci->isCollectionRoot())
@@ -597,6 +604,44 @@ void ElementsCollectionWidget::newElement()
 			&QETElementEditor::saveToLocation,
 			this,
 			&ElementsCollectionWidget::locationWasSaved);
+}
+
+/**
+	@brief ElementsCollectionWidget::importEdz
+	Import an EPLAN Data Portal part (.edz) as a QET element into the directory
+	pointed at by the context menu.
+*/
+void ElementsCollectionWidget::importEdz()
+{
+	ElementCollectionItem *eci = elementCollectionItemForIndex(
+				m_index_at_context_menu);
+
+	if (!eci || eci->type() != FileElementCollectionItem::Type) {
+		return;
+	}
+	FileElementCollectionItem *feci =
+			static_cast<FileElementCollectionItem*>(eci);
+	if (feci->isCommonCollection() || !feci->isDir()) {
+		return;
+	}
+
+	const QString edz_path = QFileDialog::getOpenFileName(
+		this, tr("Importer une pièce EPLAN"), QString(),
+		tr("Pièces EPLAN (*.edz)"));
+	if (edz_path.isEmpty()) {
+		return;
+	}
+
+	EdzImporter importer;
+	if (!importer.importToDirectory(edz_path, feci->fileSystemPath())) {
+		QET::QetMessageBox::critical(
+			this, tr("Import EPLAN"),
+			tr("Impossible d'importer cette pièce :\n%1")
+				.arg(importer.errorString()));
+		return;
+	}
+
+	reload();
 }
 
 /**
