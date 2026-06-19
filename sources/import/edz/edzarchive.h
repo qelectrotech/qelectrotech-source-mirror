@@ -30,10 +30,8 @@ class QTemporaryDir;
 	macro, a product image and metadata. EdzArchive unpacks it so the rest of the
 	import pipeline can read the (portable) part.xml.
 
-	The extraction backend sits behind a single private method so it can be
-	swapped without touching callers: this M0 spike shells out to a 7-Zip CLI via
-	QProcess; a later milestone replaces that with a bundled decompressor so no
-	external tool is required at runtime.
+	Extraction uses the bundled (public-domain) LZMA SDK 7-Zip reader, so no
+	external 7-Zip is required at runtime (see edzsevenzip).
 
 	The extracted tree lives in a QTemporaryDir owned by this object and is
 	removed when the EdzArchive is destroyed.
@@ -51,10 +49,6 @@ class EdzArchive
 		QString errorString() const;
 
 	private:
-		bool extractWithSevenZipCli(const QString &edz_path,
-					    const QString &dest);
-		static QString findSevenZip();
-
 		QScopedPointer<QTemporaryDir> m_dir;
 		QString m_error;
 };

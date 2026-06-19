@@ -115,6 +115,26 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/import/edz/edzelementbuilder.h
   ${QET_DIR}/sources/import/edz/edzimporter.cpp
   ${QET_DIR}/sources/import/edz/edzimporter.h
+  ${QET_DIR}/sources/import/edz/edzsevenzip.cpp
+  ${QET_DIR}/sources/import/edz/edzsevenzip.h
+  ${QET_DIR}/sources/import/edz/lzma/7zAlloc.c
+  ${QET_DIR}/sources/import/edz/lzma/7zArcIn.c
+  ${QET_DIR}/sources/import/edz/lzma/7zBuf.c
+  ${QET_DIR}/sources/import/edz/lzma/7zCrc.c
+  ${QET_DIR}/sources/import/edz/lzma/7zCrcOpt.c
+  ${QET_DIR}/sources/import/edz/lzma/7zDec.c
+  ${QET_DIR}/sources/import/edz/lzma/7zFile.c
+  ${QET_DIR}/sources/import/edz/lzma/7zStream.c
+  ${QET_DIR}/sources/import/edz/lzma/Bcj2.c
+  ${QET_DIR}/sources/import/edz/lzma/Bra.c
+  ${QET_DIR}/sources/import/edz/lzma/Bra86.c
+  ${QET_DIR}/sources/import/edz/lzma/BraIA64.c
+  ${QET_DIR}/sources/import/edz/lzma/CpuArch.c
+  ${QET_DIR}/sources/import/edz/lzma/Delta.c
+  ${QET_DIR}/sources/import/edz/lzma/Lzma2Dec.c
+  ${QET_DIR}/sources/import/edz/lzma/LzmaDec.c
+  ${QET_DIR}/sources/import/edz/lzma/Ppmd7.c
+  ${QET_DIR}/sources/import/edz/lzma/Ppmd7Dec.c
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
