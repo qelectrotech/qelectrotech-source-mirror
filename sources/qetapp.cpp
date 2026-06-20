@@ -889,12 +889,12 @@ QString QETApp::configDir()
 #endif
 	// C++11 static-local init runs exactly once across all threads — safe to
 	// call from QtConcurrent background threads (QStandardPaths is not).
-	static const QString cached = []() {
+	static const QString configdir = []() {
 		QString d = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 		while (d.endsWith('/')) d.chop(1);
 		return d;
 	}();
-	return cached;
+	return configdir;
 }
 
 /**
@@ -916,12 +916,12 @@ QString QETApp::dataDir()
 #endif
 	// C++11 static-local init runs exactly once across all threads — safe to
 	// call from QtConcurrent background threads (QStandardPaths is not).
-	static const QString cached = []() {
+	static const QString datadir = []() {
 		QString d = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
 		while (d.endsWith('/')) d.chop(1);
 		return d;
 	}();
-	return cached;
+	return datadir;
 }
 
 /**
