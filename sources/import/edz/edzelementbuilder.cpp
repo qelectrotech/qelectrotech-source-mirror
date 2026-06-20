@@ -73,12 +73,16 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 	const int pitch = 10;
 	const int group_gap = 5; // extra px inserted between designation groups
 
-	// Pins arrive sorted by designation (see EdzPart::parse).  Identify group
-	// boundaries and compute per-pin Y coordinates, inserting group_gap extra
-	// pixels before each new designation group so they read as distinct blocks.
+	// Pins arrive sorted by functional group then by designation within each
+	// group (see EdzPart::parse).  A group break occurs when the
+	// functiondefinition block changes; fall back to designation comparison for
+	// parts that carry no functiondefinition information.
+	auto groupKey = [](const EdzPin &p) {
+		return p.group.isEmpty() ? p.designation : p.group;
+	};
 	QVector<bool> is_group_break(n, false);
 	for (int i = 1; i < n; ++i)
-		is_group_break[i] = (pins.at(i).designation != pins.at(i - 1).designation);
+		is_group_break[i] = (groupKey(pins.at(i)) != groupKey(pins.at(i - 1)));
 
 	QVector<int> pin_y(n);
 	int cur_y = 0;

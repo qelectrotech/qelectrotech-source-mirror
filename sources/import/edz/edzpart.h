@@ -26,6 +26,7 @@
 struct EdzPin {
 	QString designation;   ///< terminal id, e.g. "1", "PE"
 	QString description;   ///< function label, e.g. "L+"
+	QString group;         ///< functiondefinition block, e.g. "FINP", "MOUT"
 };
 
 /**

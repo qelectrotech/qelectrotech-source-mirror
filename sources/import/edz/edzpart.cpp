@@ -204,13 +204,29 @@ bool EdzPart::parse(const QString &part_xml_path)
 		pin.designation = desig;
 		pin.description =
 			ft.attribute(QStringLiteral("connectiondescription")).trimmed();
+		// functiondefinition identifies the functional block (FINP, MOUT, …).
+		// It lives on <functiontemplate> directly in newer EPLAN versions, or on
+		// the parent <function> wrapper element in older ones.
+		pin.group = ft.attribute(QStringLiteral("functiondefinition")).trimmed();
+		if (pin.group.isEmpty())
+			pin.group = ft.parentNode().toElement()
+					.attribute(QStringLiteral("functiondefinition")).trimmed();
 		m_pins.append(pin);
 	}
 
-	// EPLAN lists pins in its own order (e.g. MFH200: 1,3,4,2); order them by
-	// pin number so they stack 1,2,3,4 on the symbol.
+	// Sort: preserve the XML order of functional groups (first-seen wins), and
+	// within each group sort by designation using natural sort so pins stack
+	// numerically (1, 2, 3 …) on the symbol.
+	QMap<QString, int> group_order;
+	for (const EdzPin &p : m_pins) {
+		if (!group_order.contains(p.group))
+			group_order.insert(p.group, group_order.size());
+	}
 	std::stable_sort(m_pins.begin(), m_pins.end(),
-			 [](const EdzPin &a, const EdzPin &b) {
+			 [&group_order](const EdzPin &a, const EdzPin &b) {
+				 const int ga = group_order.value(a.group, 0);
+				 const int gb = group_order.value(b.group, 0);
+				 if (ga != gb) return ga < gb;
 				 return natLess(a.designation, b.designation);
 			 });
 	return true;
