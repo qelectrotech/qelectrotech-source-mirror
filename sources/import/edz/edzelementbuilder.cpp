@@ -67,7 +67,7 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 {
 	QList<EdzPin> pins = part.pins();
 	if (pins.isEmpty()) {
-		pins.append(EdzPin{QStringLiteral("1"), QString()});
+		pins.append(EdzPin{QStringLiteral("1"), QString(), QString()});
 	}
 	const int n = pins.size();
 	const int pitch = 10;
