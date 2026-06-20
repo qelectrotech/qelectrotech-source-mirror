@@ -71,8 +71,26 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 	}
 	const int n = pins.size();
 	const int pitch = 10;
+	const int group_gap = 5; // extra px inserted between designation groups
+
+	// Pins arrive sorted by designation (see EdzPart::parse).  Identify group
+	// boundaries and compute per-pin Y coordinates, inserting group_gap extra
+	// pixels before each new designation group so they read as distinct blocks.
+	QVector<bool> is_group_break(n, false);
+	for (int i = 1; i < n; ++i)
+		is_group_break[i] = (pins.at(i).designation != pins.at(i - 1).designation);
+
+	QVector<int> pin_y(n);
+	int cur_y = 0;
+	for (int i = 0; i < n; ++i) {
+		if (is_group_break[i])
+			cur_y += group_gap;
+		pin_y[i] = cur_y;
+		cur_y += pitch;
+	}
+
 	const int body_left = 0, body_right = 90, body_top = -20;
-	const int body_bottom = (n - 1) * pitch + 10;
+	const int body_bottom = cur_y; // one pitch below the last pin
 
 	// Coordinate accumulators for the bounding box (origin always included).
 	QList<int> xs{0}, ys{0};
@@ -82,7 +100,7 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 	ys << (body_top + 7);           // title y
 	for (int i = 0; i < n; ++i) {
 		xs << 6 << 0;               // pin label x, terminal x
-		ys << (i * pitch + 2) << (i * pitch); // pin label y, terminal y
+		ys << (pin_y[i] + 2) << pin_y[i]; // pin label y, terminal y
 	}
 
 	const int pad = 10;
@@ -187,13 +205,30 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 							      : QStringLiteral("PART"));
 	desc.appendChild(makeText(doc, body_left + 6, body_top + 7, title, TITLE_FONT));
 
+	// Group separator lines — thin dashed line halfway through each inter-group
+	// gap so the eye can immediately see which terminals belong together.
+	const QString SEP_STYLE =
+		QStringLiteral("line-style:dashed;line-weight:thin;filling:none;color:black");
+	for (int i = 1; i < n; ++i) {
+		if (!is_group_break[i]) continue;
+		const int sep_y = (pin_y[i - 1] + pitch + pin_y[i]) / 2;
+		QDomElement sep = doc.createElement(QStringLiteral("line"));
+		sep.setAttribute(QStringLiteral("x1"), body_left + 2);
+		sep.setAttribute(QStringLiteral("y1"), sep_y);
+		sep.setAttribute(QStringLiteral("x2"), body_right - 2);
+		sep.setAttribute(QStringLiteral("y2"), sep_y);
+		sep.setAttribute(QStringLiteral("style"), SEP_STYLE);
+		sep.setAttribute(QStringLiteral("antialias"), QStringLiteral("false"));
+		desc.appendChild(sep);
+	}
+
 	// Per-pin labels.
 	for (int i = 0; i < n; ++i) {
 		QString label = pins.at(i).designation;
 		if (!pins.at(i).description.isEmpty()) {
 			label += QStringLiteral("  ") + pins.at(i).description;
 		}
-		desc.appendChild(makeText(doc, 6, i * pitch + 2, label, FONT));
+		desc.appendChild(makeText(doc, 6, pin_y[i] + 2, label, FONT));
 	}
 
 	// Device-tag label (per-instance, above the body).
@@ -281,7 +316,7 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 		t.setAttribute(QStringLiteral("uuid"), uuidStr());
 		t.setAttribute(QStringLiteral("name"), terminal_names[i]);
 		t.setAttribute(QStringLiteral("x"), 0);
-		t.setAttribute(QStringLiteral("y"), i * pitch);
+		t.setAttribute(QStringLiteral("y"), pin_y[i]);
 		t.setAttribute(QStringLiteral("orientation"), QStringLiteral("w"));
 		t.setAttribute(QStringLiteral("type"), QStringLiteral("Generic"));
 		desc.appendChild(t);
