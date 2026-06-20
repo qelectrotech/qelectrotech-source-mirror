@@ -311,6 +311,12 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
  */
 void ElementsCollectionModel::loadMacrosCollection()
 {
+	// Wait for any in-flight concurrent setUpData map to finish before
+	// modifying the model — appendRow() races with background threads
+	// that are still reading model internals via setUpData().
+	if (!m_future.isFinished())
+		m_future.waitForFinished();
+
 	m_items_list_to_setUp.clear();
 	addMacrosCollection(true);
 }

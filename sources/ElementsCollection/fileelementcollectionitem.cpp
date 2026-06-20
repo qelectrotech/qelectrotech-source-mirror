@@ -342,10 +342,14 @@ void FileElementCollectionItem::setUpData()
 		setToolTip(tooltip);
 	};
 
-	if (QStandardItemModel *m = model())
-		QMetaObject::invokeMethod(m, apply, Qt::BlockingQueuedConnection);
-	else
+	if (QStandardItemModel *m = model()) {
+		if (QThread::currentThread() == m->thread())
+			apply();
+		else
+			QMetaObject::invokeMethod(m, apply, Qt::BlockingQueuedConnection);
+	} else {
 		apply();
+	}
 }
 
 /**
