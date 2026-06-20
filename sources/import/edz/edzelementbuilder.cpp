@@ -209,23 +209,6 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 							      : QStringLiteral("PART"));
 	desc.appendChild(makeText(doc, body_left + 6, body_top + 7, title, TITLE_FONT));
 
-	// Group separator lines — thin dashed line halfway through each inter-group
-	// gap so the eye can immediately see which terminals belong together.
-	const QString SEP_STYLE =
-		QStringLiteral("line-style:dashed;line-weight:thin;filling:none;color:black");
-	for (int i = 1; i < n; ++i) {
-		if (!is_group_break[i]) continue;
-		const int sep_y = (pin_y[i - 1] + pitch + pin_y[i]) / 2;
-		QDomElement sep = doc.createElement(QStringLiteral("line"));
-		sep.setAttribute(QStringLiteral("x1"), body_left + 2);
-		sep.setAttribute(QStringLiteral("y1"), sep_y);
-		sep.setAttribute(QStringLiteral("x2"), body_right - 2);
-		sep.setAttribute(QStringLiteral("y2"), sep_y);
-		sep.setAttribute(QStringLiteral("style"), SEP_STYLE);
-		sep.setAttribute(QStringLiteral("antialias"), QStringLiteral("false"));
-		desc.appendChild(sep);
-	}
-
 	// Per-pin labels.
 	for (int i = 0; i < n; ++i) {
 		QString label = pins.at(i).designation;

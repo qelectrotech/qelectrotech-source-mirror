@@ -204,13 +204,17 @@ bool EdzPart::parse(const QString &part_xml_path)
 		pin.designation = desig;
 		pin.description =
 			ft.attribute(QStringLiteral("connectiondescription")).trimmed();
-		// functiondefinition identifies the functional block (FINP, MOUT, …).
-		// It lives on <functiontemplate> directly in newer EPLAN versions, or on
-		// the parent <function> wrapper element in older ones.
-		pin.group = ft.attribute(QStringLiteral("functiondefinition")).trimmed();
-		if (pin.group.isEmpty())
-			pin.group = ft.parentNode().toElement()
-					.attribute(QStringLiteral("functiondefinition")).trimmed();
+		// terminalNr identifies the physical connector socket (X01, X31, …) and
+		// is the preferred group key.  Older EPLAN formats may omit it and carry
+		// a text functiondefinition block name (FINP, MOUT, …) instead, either on
+		// the <functiontemplate> itself or on its parent wrapper element.
+		pin.group = ft.attribute(QStringLiteral("terminalNr")).trimmed();
+		if (pin.group.isEmpty()) {
+			pin.group = ft.attribute(QStringLiteral("functiondefinition")).trimmed();
+			if (pin.group.isEmpty())
+				pin.group = ft.parentNode().toElement()
+						.attribute(QStringLiteral("functiondefinition")).trimmed();
+		}
 		m_pins.append(pin);
 	}
 
