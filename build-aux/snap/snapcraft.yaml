@@ -66,6 +66,10 @@ parts:
       - git
       - sqlite3
       - xdg-user-dirs
+      # libxcb-cursor0 is a hard runtime dependency of Qt's xcb platform
+      # plugin since Qt 5.15.x / Qt 6.x; the kf6-core24 content snap does
+      # not bundle it.  Without this the plugin loads but immediately aborts.
+      - libxcb-cursor0
     build-packages:
       - git
       - cmake
