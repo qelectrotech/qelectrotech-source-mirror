@@ -1,5 +1,5 @@
 /*
-	Copyright 2006 The QElectroTech Team
+	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,7 +19,10 @@
 
 #include "edzpart.h"
 
+#include <QMap>
+#include <QSet>
 #include <QUuid>
+#include <QVector>
 #include <algorithm>
 #include <cmath>
 
@@ -213,11 +216,70 @@ QDomDocument EdzElementBuilder::build(const EdzPart &part)
 	dyn.appendChild(info_name);
 	desc.appendChild(dyn);
 
+	// Build unique terminal names.  QET requires every terminal in an element
+	// to have a distinct name for wiring and terminal-diagram generation to
+	// work.  EPLAN parts sometimes repeat the same connectionDesignation across
+	// multiple function templates (e.g. a drive with several connections named
+	// "1", "2", "3").  Resolve duplicates:
+	//   1. If a designation is unique, keep it as-is.
+	//   2. If duplicated, append "_" + sanitised description when that yields
+	//      a unique result (e.g. "1_L+_P" -> "1_L_P").
+	//   3. Fall back to appending "_2", "_3", … when descriptions are missing
+	//      or still collide.
+	auto sanitise = [](const QString &s) -> QString {
+		QString out;
+		for (const QChar c : s) {
+			out += (c.isLetterOrNumber() || c == QLatin1Char('-')) ? c
+				: QLatin1Char('_');
+		}
+		// Collapse consecutive underscores and strip trailing ones.
+		while (out.contains(QStringLiteral("__")))
+			out.replace(QStringLiteral("__"), QStringLiteral("_"));
+		while (out.endsWith(QLatin1Char('_')))
+			out.chop(1);
+		return out;
+	};
+
+	// Count occurrences of each raw designation.
+	QMap<QString, int> desig_count;
+	for (const EdzPin &p : pins)
+		desig_count[p.designation]++;
+
+	QSet<QString> used_names;
+	QVector<QString> terminal_names(n);
+	// Per-designation occurrence counter for the fallback suffix.
+	QMap<QString, int> desig_seen;
+
+	for (int i = 0; i < n; ++i) {
+		const EdzPin &pin = pins.at(i);
+		desig_seen[pin.designation]++;
+
+		if (desig_count[pin.designation] == 1) {
+			// Unique designation — use directly.
+			terminal_names[i] = pin.designation;
+		} else {
+			// Try designation + sanitised description first.
+			const QString candidate = pin.description.isEmpty()
+				? QString()
+				: pin.designation + QLatin1Char('_') + sanitise(pin.description);
+			if (!candidate.isEmpty() && !used_names.contains(candidate)) {
+				terminal_names[i] = candidate;
+			} else {
+				// Numeric suffix fallback: "1", "1_2", "1_3", …
+				const int occ = desig_seen[pin.designation];
+				terminal_names[i] = (occ == 1)
+					? pin.designation
+					: pin.designation + QLatin1Char('_') + QString::number(occ);
+			}
+		}
+		used_names.insert(terminal_names[i]);
+	}
+
 	// Terminals.
 	for (int i = 0; i < n; ++i) {
 		QDomElement t = doc.createElement(QStringLiteral("terminal"));
 		t.setAttribute(QStringLiteral("uuid"), uuidStr());
-		t.setAttribute(QStringLiteral("name"), pins.at(i).designation);
+		t.setAttribute(QStringLiteral("name"), terminal_names[i]);
 		t.setAttribute(QStringLiteral("x"), 0);
 		t.setAttribute(QStringLiteral("y"), i * pitch);
 		t.setAttribute(QStringLiteral("orientation"), QStringLiteral("w"));
