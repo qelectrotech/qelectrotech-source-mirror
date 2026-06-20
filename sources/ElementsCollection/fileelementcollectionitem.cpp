@@ -23,6 +23,8 @@
 #include "elementslocation.h"
 
 #include <QDir>
+#include <QMetaObject>
+#include <QStandardItemModel>
 
 /**
 	@brief FileElementCollectionItem::FileElementCollectionItem
@@ -110,6 +112,47 @@ bool FileElementCollectionItem::isElement() const
 }
 
 /**
+ * @brief FileElementCollectionItem::computeDisplayName
+ * Compute the display name without calling setText() — safe to call from
+ * any thread.  localName() and setUpData() both delegate to this.
+ */
+QString FileElementCollectionItem::computeDisplayName() const
+{
+	if (isCollectionRoot()) {
+		QString macrosPath = QETApp::userMacrosDir();
+		if (macrosPath.endsWith('/')) macrosPath.chop(1);
+
+		if (m_path == QETApp::commonElementsDirN())
+			return QObject::tr("Collection QET");
+		if (m_path == QETApp::companyElementsDirN())
+			return QObject::tr("Collection Company");
+		if (m_path == QETApp::customElementsDirN())
+			return QObject::tr("Collection utilisateur");
+		if (m_path == macrosPath)
+			return QObject::tr("Makros");
+		return QObject::tr("Collection inconnue");
+	}
+	if (isDir()) {
+		const QString str = fileSystemPath() % "/qet_directory";
+		pugi::xml_document docu;
+		if (docu.load_file(str.toStdString().c_str())) {
+			if (QString(docu.document_element().name()) == "qet-directory") {
+				NamesList nl;
+				nl.fromXml(docu.document_element());
+				return nl.name();
+			}
+		}
+		return {};
+	}
+	// Element
+	ElementsLocation loc(collectionPath());
+	QString name = loc.name();
+	if (name.endsWith(".qetmak"))
+		name.remove(".qetmak");
+	return name;
+}
+
+/**
  * @brief FileElementCollectionItem::localName
  * @return the located name of this item
  */
@@ -117,48 +160,7 @@ QString FileElementCollectionItem::localName()
 {
 	if (!text().isNull())
 		return text();
-
-	else if (isDir()) {
-		if (isCollectionRoot()) {
-			QString macrosPath = QETApp::userMacrosDir();
-			if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
-
-			if (m_path == QETApp::commonElementsDirN())
-				setText(QObject::tr("Collection QET"));
-			else if (m_path == QETApp::companyElementsDirN())
-				setText(QObject::tr("Collection Company"));
-			else if (m_path == QETApp::customElementsDirN())
-				setText(QObject::tr("Collection utilisateur"));
-			else if (m_path == macrosPath)
-				setText(QObject::tr("Makros"));
-			else
-				setText(QObject::tr("Collection inconnue"));
-		}
-		else
-		{
-			QString str(fileSystemPath() % "/qet_directory");
-			pugi::xml_document docu;
-			if(docu.load_file(str.toStdString().c_str()))
-			{
-				if (QString(docu.document_element().name())
-					== "qet-directory")
-				{
-					NamesList nl;
-					nl.fromXml(docu.document_element());
-					setText(nl.name());
-				}
-			}
-		}
-	}
-	else if (isElement()) {
-		ElementsLocation loc(collectionPath());
-		QString display_name = loc.name();
-		if (display_name.endsWith(".qetmak")) {
-			display_name.remove(".qetmak");
-		}
-		setText(display_name);
-	}
-
+	setText(computeDisplayName());
 	return text();
 }
 
@@ -174,14 +176,12 @@ QString FileElementCollectionItem::localName(const ElementsLocation &location)
 	if (!text().isNull())
 		return text();
 
-	else if (isDir()) {
-		localName();
-	}
-	else if (isElement()) {
+	if (isDir()) {
+		setText(computeDisplayName());
+	} else {
 		QString display_name = location.name();
-		if (display_name.endsWith(".qetmak")) {
+		if (display_name.endsWith(".qetmak"))
 			display_name.remove(".qetmak");
-		}
 		setText(display_name);
 	}
 
@@ -296,39 +296,56 @@ void FileElementCollectionItem::addChildAtPath(const QString &collection_name)
 
 /**
  *   @brief FileElementCollectionItem::setUpData
- *   SetUp the data of this item
+ *   SetUp the data of this item.
+ *
+ *   This method may be called from a QtConcurrent worker thread.  All
+ *   expensive I/O is done first on the calling thread; the QStandardItem
+ *   mutations (setText/setFlags/setData/setToolTip) are then dispatched
+ *   to the main (GUI) thread via a BlockingQueuedConnection so they never
+ *   race with the model's internal state or connected views.
  */
 void FileElementCollectionItem::setUpData()
 {
-	if (isDir())
-	{
-		localName();
-		setFlags(Qt::ItemIsSelectable
-		| Qt::ItemIsDragEnabled
-		| Qt::ItemIsDropEnabled
-		| Qt::ItemIsEnabled);
-	}
-	else
-	{
-		setFlags(Qt::ItemIsSelectable
-		| Qt::ItemIsDragEnabled
-		| Qt::ItemIsEnabled);
+	// ── Computation phase (any thread) ────────────────────────────────────
+	const Qt::ItemFlags flags = isDir()
+		? (Qt::ItemIsSelectable | Qt::ItemIsDragEnabled
+		   | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled)
+		: (Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
 
+	const QString display_name = computeDisplayName();
+	const QString tooltip      = collectionPath();
+	QString search_data;
+
+	if (!isDir()) {
 		if (m_path.endsWith(".qetmak")) {
-			setData(localName());
+			search_data = display_name;
 		} else {
-			// Parse standard element information for search
-			ElementsLocation loc(collectionPath());
+			ElementsLocation loc(tooltip);
 			DiagramContext context = loc.elementInformations();
-			QStringList search_list;
-			for (QString& key : context.keys())
-			{ search_list.append(context.value(key).toString()); }
-			search_list.append(localName(loc));
-			setData(search_list.join(" "));
+			QStringList sl;
+			for (const QString &key : context.keys())
+				sl.append(context.value(key).toString());
+			sl.append(display_name);
+			search_data = sl.join(' ');
 		}
 	}
 
-	setToolTip(collectionPath());
+	// ── Apply phase (main/GUI thread only) ────────────────────────────────
+	// setText/setFlags/setData/setToolTip on a QStandardItem that is in a
+	// model trigger dataChanged signals — not safe to emit from a background
+	// thread.  Route through the model (a QObject) with BlockingQueuedConnection
+	// so the future watcher marks each item done only after the update lands.
+	auto apply = [this, flags, display_name, search_data, tooltip]() {
+		setText(display_name);
+		setFlags(flags);
+		setData(search_data);
+		setToolTip(tooltip);
+	};
+
+	if (QStandardItemModel *m = model())
+		QMetaObject::invokeMethod(m, apply, Qt::BlockingQueuedConnection);
+	else
+		apply();
 }
 
 /**
