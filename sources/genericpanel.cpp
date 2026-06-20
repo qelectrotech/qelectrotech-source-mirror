@@ -321,9 +321,11 @@ QTreeWidgetItem *GenericPanel::getItemForDiagram(Diagram *diagram,
 		if (created) *created = false;
 		return(diagram_qtwi);
 	}
-	
+
+	if (!created) return(nullptr);
+
 	diagram_qtwi = makeItem(QET::Diagram);
-	if (created) *created = true;
+	*created = true;
 	return(diagram_qtwi);
 }
 
