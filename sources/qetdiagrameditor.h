@@ -80,6 +80,11 @@ class QETDiagramEditor : public QETMainWindow
 	  protected:
 		bool event(QEvent *) override;
 	private:
+		// Declared first so it is initialised before any member whose
+		// constructor may dispatch a Qt event calling event() (e.g. the
+		// QActionGroup members below trigger QObject::setParent events).
+		bool m_first_show = true;
+
 		QETDiagramEditor(const QETDiagramEditor &);
 		void setUpElementsPanel ();
 		void setUpElementsCollectionWidget();
@@ -253,7 +258,6 @@ class QETDiagramEditor : public QETMainWindow
 		QUndoGroup undo_group;
 		AutoNumberingDockWidget *m_autonumbering_dock;
 		int activeSubWindowIndex;
-		bool m_first_show = true;
 		SearchAndReplaceWidget m_search_and_replace_widget;
 };
 #endif
