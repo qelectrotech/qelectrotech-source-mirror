@@ -241,6 +241,11 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 
+	// Pre-initialise on the main (GUI) thread: the constructor calls
+	// qApp->screens() which is not thread-safe in Qt5 — calling instance()
+	// here guarantees the singleton is fully built before the worker runs.
+	MachineInfo::instance();
+
 	QtConcurrent::run([=]()
 	{
 		// for debugging
