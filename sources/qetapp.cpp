@@ -887,11 +887,14 @@ QString QETApp::configDir()
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (config_dir != QString()) return(config_dir);
 #endif
-	QString configdir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-	while (configdir.endsWith('/')) {
-		configdir.remove(configdir.length()-1, 1);
-	}
-	return configdir;
+	// C++11 static-local init runs exactly once across all threads — safe to
+	// call from QtConcurrent background threads (QStandardPaths is not).
+	static const QString cached = []() {
+		QString d = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+		while (d.endsWith('/')) d.chop(1);
+		return d;
+	}();
+	return cached;
 }
 
 /**
@@ -911,11 +914,14 @@ QString QETApp::dataDir()
 #ifdef QET_ALLOW_OVERRIDE_DD_OPTION
 	if (data_dir != QString()) return(data_dir);
 #endif
-	QString datadir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-	while (datadir.endsWith('/')) {
-		datadir.remove(datadir.length()-1, 1);
-	}
-	return datadir;
+	// C++11 static-local init runs exactly once across all threads — safe to
+	// call from QtConcurrent background threads (QStandardPaths is not).
+	static const QString cached = []() {
+		QString d = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+		while (d.endsWith('/')) d.chop(1);
+		return d;
+	}();
+	return cached;
 }
 
 /**
