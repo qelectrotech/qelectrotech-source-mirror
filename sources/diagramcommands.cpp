@@ -91,15 +91,22 @@ void PasteDiagramCommand::redo()
 				dc.addValue("comment", "");
 				dc.addValue("location", "");
 				e->setElementInformations(dc);
-				
-				//Reset the text of conductors
-				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
-				for (Conductor *c : conductors_list)
-				{
-					ConductorProperties cp = c -> properties();
-					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
-					c -> setProperties(cp);
-				}
+			}
+		}
+
+		// Reset conductor labels once, outside the per-element loop.
+		// Only reset conductors that already carry a label; conductors with no
+		// label (text == "") must stay unlabelled after paste — they should not
+		// silently gain the diagram default (typically "_") which would enrol
+		// them into autonumbering against the user's intent.
+		if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
+		{
+			for (Conductor *c : content.m_conductors_to_move)
+			{
+				ConductorProperties cp = c->properties();
+				if (!cp.text.isEmpty())
+					cp.text = diagram->defaultConductorProperties.text;
+				c->setProperties(cp);
 			}
 		}
 	}
