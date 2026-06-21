@@ -178,10 +178,9 @@ class QETApp : public QObject
 		static QTextOrientationSpinBoxWidget *createTextOrientationSpinBoxWidget();
 		static TitleBlockTemplate *defaultTitleBlockTemplate();
 	
-	protected:
-		
 #ifdef Q_OS_DARWIN
-	bool eventFiltrer(QObject *object, QEvent *);
+	public:
+		bool eventFilter(QObject *object, QEvent *) override;
 #endif
 	
 		// attributes

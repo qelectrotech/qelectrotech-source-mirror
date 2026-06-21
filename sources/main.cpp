@@ -21,7 +21,6 @@
 #include "qetapp.h"
 #include "qetproject.h"
 #include "singleapplication.h"
-#include "utils/macosxopenevent.h"
 #include "utils/qetsettings.h"
 
 #include <QApplication>
@@ -217,10 +216,6 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
-	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
-	//or drop these same files to the QET icon of the dock
-	MacOSXOpenEvent open_event;
-	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
 #endif
 
@@ -238,6 +233,13 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 
 	QETApp qetapp;
 	QETApp::instance()->installEventFilter(&qetapp);
+#ifdef Q_OS_MACOS
+	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
+	//or drop these same files to the QET icon of the dock.
+	//Installed here (after QETApp is fully constructed, before app.exec())
+	//so there is no race: no QFileOpenEvent can be delivered before this point.
+	app.installEventFilter(&qetapp);
+#endif
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 

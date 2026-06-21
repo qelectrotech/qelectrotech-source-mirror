@@ -2625,14 +2625,17 @@ void QETApp::fetchWindowStats(
 #ifdef Q_OS_DARWIN
 /**
 	Gere les evenements, en particulier l'evenement FileOpen sous MacOs.
+	Installe comme event filter sur QApplication dans main(), une fois
+	QETApp construite (voir main.cpp).
+	@param object Objet cible de l'evenement
 	@param e Evenement a gerer
 */
-bool QETApp::eventFiltrer(QObject *object, QEvent *e) {
+bool QETApp::eventFilter(QObject *object, QEvent *e) {
 	// gere l'ouverture de fichiers (sous MacOs)
 	if (e -> type() == QEvent::FileOpen) {
 	// nom du fichier a ouvrir
 	QString filename = static_cast<QFileOpenEvent *>(e) -> file();
-	openFiles(QStringList() << filename);
+	openFiles(QETArguments(QStringList() << filename));
 	return(true);
 	} else {
 	return QObject::eventFilter(object, e);
