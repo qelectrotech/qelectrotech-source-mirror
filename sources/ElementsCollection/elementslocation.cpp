@@ -523,7 +523,9 @@ bool ElementsLocation::isCompanyCollection() const
 */
 bool ElementsLocation::isCustomCollection() const
 {
-	return fileSystemPath().startsWith(QETApp::customElementsDirN());
+	const QString dir = QETApp::customElementsDirN();
+	const QString path = fileSystemPath();
+	return path == dir || path.startsWith(dir + QLatin1Char('/'));
 }
 
 /**
