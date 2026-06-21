@@ -20,6 +20,7 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../elementscene.h"
 
+#include <QApplication>
 #include <QRegularExpression>
 
 /**
@@ -35,6 +36,7 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor,
 	QGraphicsObject (parent),
 	CustomElementPart(editor),
 	m_hovered (false),
+	m_first_move (false),
 	_linestyle(NormalStyle),
 	_lineweight(NormalWeight),
 	_filling(NoneFilling),
@@ -1332,26 +1334,24 @@ void CustomElementGraphicPart::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void CustomElementGraphicPart::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-		//m_first_move is used to avoid an unwanted behavior
-		//when the properties dock widget is displayed :
-		//1 there is no selection
-		//2 the dock widget width is set to minimum
-		//3 select a part, the dock widget gain new widgets used to edit
-		//the current selected part and the width of the dock grow
-		//so the width of the QGraphicsView is reduced and cause a mouse move event.
-		//When this case occur the part is moved but they should not. This bool fix it.
-	if (Q_UNLIKELY(m_first_move)) {
+	if (m_first_move) {
+		// Suppress spurious move events fired when the properties dock
+		// widget expands on first selection of a new item type, causing
+		// the QGraphicsView to shrink and re-map coordinates.  Screen
+		// coordinates are stable across viewport changes; scene coords
+		// are not — so use screenPos() for the threshold check.
+		const QPointF d = event->screenPos() - event->buttonDownScreenPos(Qt::LeftButton);
+		if (d.manhattanLength() < QApplication::startDragDistance())
+			return;
 		m_first_move = false;
-		return;
 	}
 
-	if((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable))
-	{
+	if ((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
 		QPointF pos = event->scenePos() + (m_origin_pos - event->buttonDownScenePos(Qt::LeftButton));
 		event->modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene()->snapToGrid(pos));
-	}
-	else
+	} else {
 		QGraphicsObject::mouseMoveEvent(event);
+	}
 }
 
 void CustomElementGraphicPart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
