@@ -138,7 +138,7 @@ QString FileElementCollectionItem::localName()
 		{
 			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
-			if(docu.load_file(str.toStdString().c_str()))
+			if(docu.load_file(str.toStdWString().c_str()))
 			{
 				if (QString(docu.document_element().name())
 					== "qet-directory")

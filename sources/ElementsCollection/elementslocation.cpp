@@ -701,11 +701,11 @@ pugi::xml_document ElementsLocation::pugiXml() const
 	if (!m_project)
 	{
 #ifndef Q_OS_LINUX
-		if (docu.load_file(m_file_system_path.toStdString().c_str())) {
+		if (docu.load_file(m_file_system_path.toStdWString().c_str())) {
 			docu.save(m_string_stream);
 		}
 #else
-		docu.load_file(m_file_system_path.toStdString().c_str());
+		docu.load_file(m_file_system_path.toStdWString().c_str());
 #endif
 	}
 	else
