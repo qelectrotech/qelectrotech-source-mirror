@@ -273,9 +273,15 @@ void ElementInfoWidget::updateUi()
 	}
 	// Load the lock status for auto numbering
 	if (m_element->elementData().m_type == ElementData::Terminal) {
-		// ... (bestehender Terminal-Code für auto_num_locked und potential_isolating) ...
-	}
+		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
+		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
 
+		// English: Load the potential isolating status from the element information mapping
+		if (m_potential_isolating_cb) {
+			QString isolating_value = element_info.value(QStringLiteral("potential_isolating")).toString();
+			m_potential_isolating_cb->setChecked(isolating_value == QLatin1String("true"));
+		}
+	}
 	// English: Load the BOM exclusion status from the element information mapping
 	if (m_exclude_from_bom_cb) {
 		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
@@ -297,12 +303,11 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	for (const auto &eipw : qAsConst(m_eipw_list))
 	{
-
-			//add value only if they're something to store
+		//add value only if they're something to store
 		if (!eipw->text().isEmpty())
 		{
 			QString txt{eipw->text()};
-				//remove line feed and carriage return
+			//remove line feed and carriage return
 			txt.remove(QStringLiteral("\r"));
 			txt.remove(QStringLiteral("\n"));
 			info_.addValue(eipw->key(), txt);
@@ -311,12 +316,16 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	// Save the auto numbering lock status
 	if (m_element->elementData().m_type == ElementData::Terminal) {
+		info_.addValue(QStringLiteral("auto_num_locked"), ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+
+		if (m_potential_isolating_cb) {
+			info_.addValue(QStringLiteral("potential_isolating"), m_potential_isolating_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+		}
 	}
 
 	if (m_exclude_from_bom_cb) {
 		info_.addValue(QStringLiteral("exclude_from_bom"), m_exclude_from_bom_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
 	}
-
 	return info_;
 }
 /**

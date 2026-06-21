@@ -226,20 +226,20 @@ void QETApp::setLanguage(const QString &desired_language) {
 
 	// load translations for the QET application
 	// charge les traductions pour l'application QET
-	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
-		/* in case of failure,
-		 *  we fall back on the native channels for French
-		 * en cas d'echec,
-		 *  on retombe sur les chaines natives pour le francais
-		 */
-		if (desired_language != "fr") {
-			// use of the English version by default
-			// utilisation de la version anglaise par defaut
-			if(!qetTranslator.load("qet_en", languages_path))
-				qWarning() << "failed to load"
-						   << "qet_en" << languages_path << "(" << __FILE__
-						   << __LINE__ << __FUNCTION__ << ")";
-		}
+	// desired_language may be a full locale such as "pt_BR": try that exact
+	// translation, then the base language ("pt"), then fall back to English.
+	// French is the application's source language and needs no translation.
+	const QString base_language = desired_language.section('_', 0, 0);
+	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	if (!loaded && base_language != desired_language)
+		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+	if (!loaded && base_language != "fr") {
+		// use of the English version by default
+		// utilisation de la version anglaise par defaut
+		if(!qetTranslator.load("qet_en", languages_path))
+			qWarning() << "failed to load"
+					   << "qet_en" << languages_path << "(" << __FILE__
+					   << __LINE__ << __FUNCTION__ << ")";
 	}
 	qApp->installTranslator(&qetTranslator);
 
@@ -263,7 +263,11 @@ QString QETApp::langFromSetting()
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
 		if(system_language == "system") {
-			system_language = QLocale::system().name().left(2);
+			// Keep the full locale (e.g. "pt_BR"), not just the base language
+			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
+			// truncating here loaded the wrong one. setLanguage() falls back to
+			// the base language when no regional translation exists.
+			system_language = QLocale::system().name();
 		}
 		lang_is_set = true;
 	}
@@ -883,10 +887,13 @@ QString QETApp::configDir()
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (config_dir != QString()) return(config_dir);
 #endif
-	QString configdir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-	while (configdir.endsWith('/')) {
-		configdir.remove(configdir.length()-1, 1);
-	}
+	// C++11 static-local init runs exactly once across all threads — safe to
+	// call from QtConcurrent background threads (QStandardPaths is not).
+	static const QString configdir = []() {
+		QString d = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+		while (d.endsWith('/')) d.chop(1);
+		return d;
+	}();
 	return configdir;
 }
 
@@ -907,10 +914,13 @@ QString QETApp::dataDir()
 #ifdef QET_ALLOW_OVERRIDE_DD_OPTION
 	if (data_dir != QString()) return(data_dir);
 #endif
-	QString datadir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-	while (datadir.endsWith('/')) {
-		datadir.remove(datadir.length()-1, 1);
-	}
+	// C++11 static-local init runs exactly once across all threads — safe to
+	// call from QtConcurrent background threads (QStandardPaths is not).
+	static const QString datadir = []() {
+		QString d = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+		while (d.endsWith('/')) d.chop(1);
+		return d;
+	}();
 	return datadir;
 }
 
@@ -1228,7 +1238,21 @@ QString QETApp::languagesPath()
 	 * en l'absence d'option de compilation, on utilise le dossier lang,
 	 *  situe a cote du binaire executable
 	 */
-	return(QCoreApplication::applicationDirPath() + "/lang/");
+	{
+		const QString bin_dir = QCoreApplication::applicationDirPath();
+		const QString next_to_bin = bin_dir + "/lang/";
+		// Some packagings (notably the Windows installer) put the binary in a
+		// "bin" subfolder while "lang" sits beside it (../lang). Fall back to
+		// that layout when the folder next to the binary is absent, so the
+		// translations are found without a --lang-dir argument. See issue #86.
+		if (!QDir(next_to_bin).exists()) {
+			const QString sibling_of_bin =
+				QDir::cleanPath(bin_dir + "/../lang") + "/";
+			if (QDir(sibling_of_bin).exists())
+				return(sibling_of_bin);
+		}
+		return(next_to_bin);
+	}
 #else
 	#ifndef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
 		/* the compilation option represents

@@ -1756,6 +1756,10 @@ QString TitleBlockTemplate::interpreteVariables(
 QStringList TitleBlockTemplate::listOfVariables()
 {
 	QStringList list;
+	// Match every "%{name}" placeholder. The bare "%name" form can't be
+	// extracted reliably without the variable list, and templates use the
+	// braced form, so only that is collected here.
+	static const QRegularExpression rx(QStringLiteral("%\\{([^}]+)\\}"));
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
@@ -1763,14 +1767,15 @@ QStringList TitleBlockTemplate::listOfVariables()
 					|| cells_[i][j] -> cell_type
 					== TitleBlockCell::EmptyCell)
 				continue;
-#if TODO_LIST
-#pragma message("@TODO not works on all cases...")
-#endif
-			// TODO: not works on all cases...
-			list << cells_[i][j] -> value.name().replace("%","");
+			const QString cell_value = cells_[i][j] -> value.name();
+			auto it = rx.globalMatch(cell_value);
+			while (it.hasNext()) {
+				const QString name = it.next().captured(1);
+				if (!name.isEmpty() && !list.contains(name))
+					list << name;
+			}
 		}
 	}
-	qDebug() << list;
 	return list;
 }
 

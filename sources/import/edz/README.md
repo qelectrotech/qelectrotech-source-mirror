@@ -44,6 +44,24 @@ used:
 The non-UI classes are deliberately decoupled from the widget so they can be
 tested headless.
 
+## Terms of Use / Legal notice
+
+The `.edz` files themselves are downloaded from the **EPLAN Data Portal**
+(data.eplan.com), which is operated by EPLAN Software & Service GmbH & Co. KG.
+The Data Portal Terms of Use (§ 5.4 at time of writing) restrict use of
+downloaded data to EPLAN products.
+
+**QElectroTech does not endorse or encourage violation of those terms.**
+Whether use of an `.edz` outside EPLAN products is permitted under your
+specific licence depends on the agreement you have with EPLAN and the
+individual manufacturer. You are solely responsible for ensuring that your use
+of `.edz` data complies with the applicable Terms of Use and any applicable
+law. If in doubt, contact EPLAN or the part manufacturer directly.
+
+QET's `.edz` reader parses only the portable, factual part data
+(pin designations, order numbers, manufacturer names). It does not reproduce
+any EPLAN-proprietary geometry or symbol data.
+
 ## Bundled LZMA SDK
 
 `lzma/` contains the decode-only subset of Igor Pavlov's **LZMA SDK** (public

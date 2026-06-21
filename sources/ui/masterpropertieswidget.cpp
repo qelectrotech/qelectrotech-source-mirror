@@ -143,7 +143,7 @@ void MasterPropertiesWidget::setElement(Element *element)
 		disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
 				   this, SLOT(diagramWasdeletedFromProject()));
 
-		if(Q_LIKELY(element->diagram() && element->diagram()->project()))
+	if(Q_LIKELY(element->diagram() && element->diagram()->project()))
 		{
 			m_project = element->diagram()->project();
 			connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
@@ -157,7 +157,7 @@ void MasterPropertiesWidget::setElement(Element *element)
 		disconnect(m_element.data(), &Element::linkedElementChanged,
 				   this, &MasterPropertiesWidget::updateUi);
 
-		m_element = element;
+	m_element = element;
 	connect(m_element.data(), &Element::linkedElementChanged,
 			this, &MasterPropertiesWidget::updateUi);
 

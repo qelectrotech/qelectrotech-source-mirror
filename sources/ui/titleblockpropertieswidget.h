@@ -30,6 +30,7 @@ class NumerotationContext;
 class QETProject;
 class QMenu;
 class TitleBlockTemplatesCollection;
+class TitleBlockTemplate;
 
 namespace Ui {
 	class TitleBlockPropertiesWidget;
@@ -77,6 +78,8 @@ class TitleBlockPropertiesWidget : public QWidget
 		void initDialog(const bool &current_date, QETProject *project);
 		int getIndexFor (const QString &tbt_name,
 				 const QET::QetCollection collection) const;
+		TitleBlockTemplate *templateForIndex (int index) const;
+		void addTemplateVariables (DiagramContext &context, int index) const;
 
 	private slots:
 		void editCurrentTitleBlockTemplate();

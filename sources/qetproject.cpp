@@ -43,6 +43,13 @@
 
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
 
+bool QETProject::m_backup_enabled = true;
+
+void QETProject::setBackupEnabled(bool enabled)
+{
+	m_backup_enabled = enabled;
+}
+
 /**
 	@brief QETProject::QETProject
 	Create a empty project
@@ -130,6 +137,11 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 */
 QETProject::~QETProject()
 {
+		//Wait for any in-flight async crash-recovery backup to finish: the worker
+		//writes through &m_backup_file, a member that would otherwise be destroyed
+		//under it (issue #492).
+	m_backup_future.waitForFinished();
+
 		//We block database signal to avoid hundreds of unnecessary emitted signal
 		//due to deletion (diagram, item, etc...) and as much update made in the not yet deleted things.
 	m_data_base.blockSignals(true);
@@ -332,6 +344,8 @@ void QETProject::setFilePath(const QString &filepath)
 	}
 #ifdef BUILD_WITHOUT_KF5
 #else
+		//Don't close/re-point the backup file while a backup is still writing it.
+	m_backup_future.waitForFinished();
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
 	}
@@ -1006,15 +1020,29 @@ QETResult QETProject::write()
 	if (m_file_path.isEmpty())
 		return(QString("unable to save project to file: no filepath was specified"));
 
-		// if the project was opened read-only
-		// and the file is still non-writable, do not save the project
-	if (isReadOnly() && !QFileInfo(m_file_path).isWritable())
-		return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
+		// If the project was opened read-only, only refuse when the target
+		// really can't be written: an existing file that is not writable, or a
+		// new file (e.g. "Save As" to another location) whose directory is not
+		// writable.  A non-existent file reports isWritable() == false, so the
+		// old check wrongly blocked saving a read-only project elsewhere.
+	if (isReadOnly()) {
+		const QFileInfo file_info(m_file_path);
+		const bool can_write = file_info.exists()
+			? file_info.isWritable()
+			: QFileInfo(file_info.absolutePath()).isWritable();
+		if (!can_write)
+			return(QString("the file %1 was opened read-only and thus will not be written").arg(m_file_path));
+	}
 
 	QDomDocument xml_project(toXml());
 	QString error_message;
 	if (!QET::writeXmlFile(xml_project, m_file_path, &error_message))
 		return(error_message);
+
+		// The project has just been written to a writable file (e.g. saved to
+		// a new location with "Save As"), so it is no longer read-only.
+	if (isReadOnly())
+		setReadOnly(false);
 
 		//title block variables should be updated after file save dialog is confirmed, before file is saved.
 	m_project_properties.addValue("saveddate",     QLocale::system().toString(QDate::currentDate(), QLocale::ShortFormat));
@@ -1098,7 +1126,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 	//Get the path where the element must be imported
 	QString import_path;
 	if (location.isFileSystem()) {
-		import_path = "import/" + location.collectionPath(false);
+		import_path = "import/" % location.collectionPath(false);
 	}
 	else if (location.isProject()) {
 		if (location.project() == this) {
@@ -1363,7 +1391,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							   "\n qui est ultérieure à votre version !"
 							   " \n"
 							   "Vous utilisez actuellement QElectroTech en version %2")
-							.arg(root_elmt.attribute(QStringLiteral("version")), QetVersion::currentVersion().toString() +
+							.arg(root_elmt.attribute(QStringLiteral("version")), QetVersion::currentVersion().toString() %
 							tr(".\n Il est alors possible que l'ouverture de tout ou partie de ce "
 							   "document échoue.\n"
 							   "Que désirez vous faire ?"),
@@ -1387,7 +1415,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 							tr("Avertissement ", "message box title"),
 							tr("Le projet que vous tentez d'ouvrir est partiellement "
 							   "compatible avec votre version %1 de QElectroTech.\n")
-							.arg(QetVersion::currentVersion().toString()) +
+							.arg(QetVersion::currentVersion().toString()) %
 							tr("Afin de le rendre totalement compatible veuillez ouvrir ce même projet "
 							   "avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet "
 							   "et l'ouvrir à  nouveau avec cette version.\n"
@@ -1783,11 +1811,17 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 */
 void QETProject::writeBackup()
 {
+	if (!m_backup_enabled)
+		return;
 #ifdef BUILD_WITHOUT_KF5
 #else
 #	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+		//Don't launch a new backup while the previous one is still writing:
+		//both would write through &m_backup_file on different threads.
+	if (m_backup_future.isRunning())
+		return;
 	QDomDocument xml_project(toXml());
-	QtConcurrent::run(
+	m_backup_future = QtConcurrent::run(
 				QET::writeToFile,xml_project,&m_backup_file,nullptr);
 #	else
 #		if TODO_LIST

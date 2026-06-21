@@ -15,12 +15,16 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "cli_export.h"
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "qetproject.h"
 #include "singleapplication.h"
 #include "utils/macosxopenevent.h"
 #include "utils/qetsettings.h"
+
+#include <QApplication>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
@@ -194,6 +198,23 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 #endif
 
 
+	// Headless command-line export: render a project to PDF/PNG/SVG without
+	// opening the GUI, then exit.  Must be handled before SingleApplication
+	// (which would forward the args to an already-running instance).
+	{
+		QStringList raw_args;
+		for (int i = 0; i < argc; ++i)
+			raw_args << QString::fromLocal8Bit(argv[i]);
+		if (CLIExport::isExportRequest(raw_args)) {
+			QApplication export_app(argc, argv);
+			// No crash-recovery backups in one-shot CLI mode: the backup write
+			// runs on a background thread referencing the project and races the
+			// process exit (intermittent segfault in QET::writeToFile).
+			QETProject::setBackupEnabled(false);
+			return CLIExport::run(export_app.arguments());
+		}
+	}
+
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
@@ -219,6 +240,11 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	QETApp::instance()->installEventFilter(&qetapp);
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
+
+	// Pre-initialise on the main (GUI) thread: the constructor calls
+	// qApp->screens() which is not thread-safe in Qt5 — calling instance()
+	// here guarantees the singleton is fully built before the worker runs.
+	MachineInfo::instance();
 
 	QtConcurrent::run([=]()
 	{

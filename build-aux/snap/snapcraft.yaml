@@ -53,6 +53,7 @@ parts:
   qet-tb-generator:
     plugin: python
     source: https://github.com/raulroda/qet_tb_generator-plugin.git
+    source-tag: v1.31
     python-packages: [PySimpleGUI]
     stage-packages: 
       - python3-lxml
@@ -76,7 +77,16 @@ parts:
     after: [kde-sdk-setup]
     plugin: nil
     source: .
-    stage-packages: [ git, sqlite3, xdg-user-dirs ]
+    stage-packages:
+      - git
+      - sqlite3
+      - xdg-user-dirs
+      # libxcb-cursor0 was added as a hard dependency of the Qt5 xcb platform
+      # plugin in Qt 5.15.x.  The kf5-5-110-qt-5-15-11-core22 content snap does
+      # not bundle it, so dlopen() of libqxcb.so fails on Ubuntu 24.04 hosts
+      # with "found but could not load" (issue #373).  Staging the 22.04 build
+      # of this library satisfies the dep without changing base or Qt version.
+      - libxcb-cursor0
     build-packages:
       - git
       - libsqlite3-dev

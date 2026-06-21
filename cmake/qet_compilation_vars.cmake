@@ -107,6 +107,10 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.ui
   )
 set(QET_SRC_FILES
+  ${QET_DIR}/sources/cli_export.cpp
+  ${QET_DIR}/sources/cli_export.h
+  ${QET_DIR}/sources/pdf_links.cpp
+  ${QET_DIR}/sources/pdf_links.h
   ${QET_DIR}/sources/import/edz/edzarchive.cpp
   ${QET_DIR}/sources/import/edz/edzarchive.h
   ${QET_DIR}/sources/import/edz/edzpart.cpp
