@@ -28,6 +28,38 @@
 #include <QStyleFactory>
 #include <QtConcurrentRun>
 
+#ifdef Q_OS_MACOS
+#include <QFileOpenEvent>
+
+/**
+	@brief EarlyFileOpenCatcher
+	On macOS, a cold launch via Finder double-click can deliver the
+	QFileOpenEvent to QApplication before QETApp exists and before its
+	real eventFilter is installed (the event loop can start servicing
+	native/Cocoa events before our own code in main() reaches that
+	point). This tiny filter is installed immediately on `app` so no
+	QFileOpenEvent can slip through unseen; it just buffers the path.
+	Once QETApp is constructed, main() drains the buffer and installs
+	the real QETApp::eventFilter for any subsequent event.
+*/
+class EarlyFileOpenCatcher : public QObject
+{
+	public:
+		using QObject::QObject;
+		QStringList bufferedFiles;
+
+	protected:
+		bool eventFilter(QObject *object, QEvent *e) override
+		{
+			if (e->type() == QEvent::FileOpen) {
+				bufferedFiles << static_cast<QFileOpenEvent *>(e)->file();
+				return true;
+			}
+			return QObject::eventFilter(object, e);
+		}
+};
+#endif
+
 /**
 	@brief myMessageOutput
 	for debugging
@@ -217,6 +249,11 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 	app.setStyle(QStyleFactory::create("Fusion"));
+	// Installed as early as possible, before anything else can run an
+	// event loop, to catch a QFileOpenEvent that might be delivered
+	// during a cold launch before QETApp exists.
+	EarlyFileOpenCatcher early_catcher;
+	app.installEventFilter(&early_catcher);
 #endif
 
 	if (app.isSecondary())
@@ -236,9 +273,13 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 #ifdef Q_OS_MACOS
 	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
 	//or drop these same files to the QET icon of the dock.
-	//Installed here (after QETApp is fully constructed, before app.exec())
-	//so there is no race: no QFileOpenEvent can be delivered before this point.
+	//Swap the early catcher (installed right after `app` was constructed,
+	//see above) for the real filter, then drain anything it buffered
+	//during the cold-launch window before QETApp existed.
+	app.removeEventFilter(&early_catcher);
 	app.installEventFilter(&qetapp);
+	if (!early_catcher.bufferedFiles.isEmpty())
+		qetapp.openFiles(QETArguments(early_catcher.bufferedFiles));
 #endif
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
