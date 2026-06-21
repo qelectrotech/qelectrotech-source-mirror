@@ -268,7 +268,8 @@ void AddTableDialog::loadConfig()
 		case Qt::AlignLeft :
 			ui->m_header_alignment_cb->setCurrentIndex(0);
 			break;
-		case Qt::AlignCenter :
+		case Qt::AlignHCenter :
+		case Qt::AlignCenter :  // accept AlignCenter in case it was hand-edited by the user
 			ui->m_header_alignment_cb->setCurrentIndex(1);
 			break;
 		default:
@@ -284,7 +285,8 @@ void AddTableDialog::loadConfig()
 		case Qt::AlignLeft :
 			ui->m_table_alignment_cb->setCurrentIndex(0);
 			break;
-		case Qt::AlignCenter :
+		case Qt::AlignHCenter :
+		case Qt::AlignCenter :  // accept AlignCenter in case it was hand-edited by the user
 			ui->m_table_alignment_cb->setCurrentIndex(1);
 			break;
 		default:
