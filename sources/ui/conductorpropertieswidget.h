@@ -24,6 +24,7 @@
 class QTextOrientationSpinBoxWidget;
 class QComboBox;
 class QPushButton;
+class WireCatalogueDb;
 
 namespace Ui {
 	class ConductorPropertiesWidget;
@@ -55,6 +56,8 @@ class ConductorPropertiesWidget : public QWidget
 	private:
 		void initWidget();
 		void setConductorType(ConductorProperties::ConductorType type);
+		void initWireCatalogue();
+		void applyCatalogueWire(int index);
 
 	protected:
 		bool event(QEvent *event) override;
@@ -72,6 +75,8 @@ class ConductorPropertiesWidget : public QWidget
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
+		WireCatalogueDb *m_wire_db = nullptr;       // Custom: shared wire catalogue
+		QComboBox *m_wire_catalogue_cb = nullptr;   // Custom: catalogue picker
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H

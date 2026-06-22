@@ -27,6 +27,7 @@
 #include "diagramevent/diagrameventaddtext.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
+#include "custom/wirecatalogue/wirecatalogueui.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
@@ -104,6 +105,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
 
 	setUpElementsPanel();
+	setUpWireCatalogue();
 	setUpElementsCollectionWidget();
 	setUpUndoStack();
 	setUpSelectionPropertiesEditor();
@@ -184,6 +186,22 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, SIGNAL(requestForDiagramMoveDownx10		  (const QList<Diagram *> &)), this, SLOT(moveDiagramDownx10(const QList<Diagram *>&)));
 	connect(pa, SIGNAL(requestForDiagramMoveUpx100		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpx100(const QList<Diagram *>&)));
 	connect(pa, SIGNAL(requestForDiagramMoveDownx100	  (const QList<Diagram *> &)), this, SLOT(moveDiagramDownx100(const QList<Diagram *>&)));
+}
+
+/**
+	@brief QETDiagramEditor::setUpWireCatalogue
+	Custom feature (Trovo Tech): set up the wire / cable catalogue dock panel.
+*/
+void QETDiagramEditor::setUpWireCatalogue()
+{
+	m_wire_catalogue_dock = new WireCatalogueWidget(this);
+	m_wire_catalogue_dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_wire_catalogue_dock->setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
+	addDockWidget(Qt::RightDockWidgetArea, m_wire_catalogue_dock);
+	m_wire_catalogue_dock->hide(); // hidden by default; shown via the Display menu
 }
 
 /**
@@ -881,6 +899,15 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_grey_background);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
+
+	// Custom feature (Trovo Tech): show/hide the wire/cable catalogue panel
+	if (m_wire_catalogue_dock) {
+		QAction *wc_toggle = m_wire_catalogue_dock->toggleViewAction();
+		wc_toggle->setText(tr("Wire / cable catalogue"));
+		wc_toggle->setStatusTip(tr("Show or hide the wire / cable catalogue panel"));
+		menu_affichage->addSeparator();
+		menu_affichage->addAction(wc_toggle);
+	}
 
 	// menu Fenetres
 	slot_updateWindowsMenu();

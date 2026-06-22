@@ -16,9 +16,16 @@
 
 message(" - git_update_submodules")
 
+# Custom: allow skipping the (potentially slow) recursive submodule update.
+# The build only needs pugixml + SingleApplication; the large `elements`
+# symbol library is runtime content and not required to compile or launch.
+# Configure with -DQET_UPDATE_SUBMODULES=OFF to skip (ensure the two
+# build-critical submodules are already checked out).
+option(QET_UPDATE_SUBMODULES "Auto update git submodules during configure" ON)
+
 find_package(Git QUIET)
 
-if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+if(QET_UPDATE_SUBMODULES AND GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
   # updates all git submodules
   execute_process(
     COMMAND ${GIT_EXECUTABLE} submodule update --init --recursive

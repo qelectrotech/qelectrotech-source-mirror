@@ -22,6 +22,13 @@
 #include "../qtextorientationspinboxwidget.h"
 #include "ui_conductorpropertieswidget.h"
 
+#include "../custom/wirecatalogue/wirecataloguedb.h"
+#include "../custom/wirecatalogue/iec60757.h"
+
+#include <QComboBox>
+#include <QLabel>
+#include <QGridLayout>
+
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
 	Constructor
@@ -248,6 +255,81 @@ void ConductorPropertiesWidget::initWidget()
 	ui->m_cable_le->setDisabled(true);
 	ui->m_bus_le->setDisabled(true);
 #endif
+
+	initWireCatalogue();
+}
+
+/**
+	@brief ConductorPropertiesWidget::initWireCatalogue
+	Custom feature (Trovo Tech): add a "From wire catalogue" picker to the
+	Appearance tab. Choosing a catalogue wire sets the conductor colour from
+	that wire's primary IEC 60757 colour.
+*/
+void ConductorPropertiesWidget::initWireCatalogue()
+{
+	m_wire_db = new WireCatalogueDb(this);
+	if (!m_wire_db->open(WireCatalogueDb::defaultPath()))
+		return; // catalogue unavailable: silently skip the picker
+
+	m_wire_catalogue_cb = new QComboBox(this);
+	m_wire_catalogue_cb->setIconSize(QSize(14, 14));
+	m_wire_catalogue_cb->addItem(tr("(none)"));
+	const QVector<WireSpec> wires = m_wire_db->allWires();
+	for (const WireSpec &w : wires) {
+		const QString label = QStringLiteral("%1 — %2").arg(w.wireId, w.specLabel());
+		m_wire_catalogue_cb->addItem(Iec60757::icon(w.colorPrimary, 14), label, w.wireId);
+	}
+
+	auto *label = new QLabel(tr("From catalogue :"), this);
+	label->setToolTip(tr("Pick a wire from the catalogue to set its colour"));
+
+	// Append a row at the bottom of the Appearance tab grid.
+	auto *grid = ui->appearance->findChild<QGridLayout*>();
+	if (grid) {
+		const int row = grid->rowCount();
+		grid->addWidget(label, row, 0);
+		grid->addWidget(m_wire_catalogue_cb, row, 1);
+	}
+
+	connect(m_wire_catalogue_cb, QOverload<int>::of(&QComboBox::activated),
+			this, &ConductorPropertiesWidget::applyCatalogueWire);
+}
+
+/**
+	@brief ConductorPropertiesWidget::applyCatalogueWire
+	Apply the primary colour of the catalogue wire selected at @p index.
+*/
+void ConductorPropertiesWidget::applyCatalogueWire(int index)
+{
+	if (!m_wire_db || index <= 0) // 0 == "(none)"
+		return;
+
+	const QString wire_id = m_wire_catalogue_cb->itemData(index).toString();
+	const WireSpec w = m_wire_db->wire(wire_id);
+	if (!w.isValid())
+		return;
+
+	const QString section = QStringLiteral("%1mm²")
+			.arg(QString::number(w.crossSectionMm2));
+
+	// Drawing colour from the wire's primary colour.
+	const QColor c = Iec60757::colorForName(w.colorPrimary);
+	if (c.isValid())
+		ui->m_color_kpb->setColor(c);
+
+	// Dedicated wire metadata fields.
+	ui->m_wire_section_le->setText(section);
+	ui->m_wire_color_le->setText(w.colorPrimary);
+
+	// Put cross-section + colour on the conductor line (Wire ID is not shown
+	// on the line, only kept as catalogue metadata). The displayed text is
+	// driven by the formula (literal text shown verbatim); m_text_le is
+	// disabled while a formula is present.
+	ui->m_formula_le->setText(QStringLiteral("%1  %2")
+			.arg(section, w.colorPrimary));
+	ui->m_show_text_cb->setChecked(true);
+
+	updatePreview();
 }
 
 /**

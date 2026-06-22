@@ -545,6 +545,21 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/titleblock/templatevisualcell.cpp
   ${QET_DIR}/sources/titleblock/templatevisualcell.h
 
+  # --- Custom feature: Wire / Cable Catalogue (Trovo Tech) ---
+  ${QET_DIR}/sources/custom/wirecatalogue/wirespec.h
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecataloguedb.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecataloguedb.h
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecataloguemodel.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecataloguemodel.h
+  ${QET_DIR}/sources/custom/wirecatalogue/wirespecdialog.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/wirespecdialog.h
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecatalogueui.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecatalogueui.h
+  ${QET_DIR}/sources/custom/wirecatalogue/iec60757.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/iec60757.h
+  ${QET_DIR}/sources/custom/wirecatalogue/corecoloreditor.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/corecoloreditor.h
+
   ${QET_DIR}/sources/TerminalStrip/physicalterminal.cpp
   ${QET_DIR}/sources/TerminalStrip/physicalterminal.h
   ${QET_DIR}/sources/TerminalStrip/realterminal.cpp
