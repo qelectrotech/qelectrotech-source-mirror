@@ -36,12 +36,12 @@ CustomElementGraphicPart::CustomElementGraphicPart(QETElementEditor *editor,
 	QGraphicsObject (parent),
 	CustomElementPart(editor),
 	m_hovered (false),
-	m_first_move (false),
 	_linestyle(NormalStyle),
 	_lineweight(NormalWeight),
 	_filling(NoneFilling),
 	_color(BlackColor),
-	_antialiased(false)
+	_antialiased(false),
+	m_first_move (false)
 {
 	setFlags(QGraphicsItem::ItemIsSelectable
 		 | QGraphicsItem::ItemIsMovable
