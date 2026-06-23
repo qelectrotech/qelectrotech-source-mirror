@@ -18,6 +18,7 @@
 #include "parttext.h"
 
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include <QApplication>
 #include "../../qetapp.h"
 #include "../elementprimitivedecorator.h"
 #include "../elementscene.h"
@@ -324,11 +325,14 @@ void PartText::setFont(const QFont &font) {
 }
 
 void PartText::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-	if((event -> buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
-		QPointF pos = event -> scenePos() + (m_origin_pos - event -> buttonDownScenePos(Qt::LeftButton));
-		event -> modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene() -> snapToGrid(pos));
-	}
-	else {
+	if ((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
+		// Suppress spurious moves from the properties dock resizing the viewport.
+		const QPointF d = event->screenPos() - event->buttonDownScreenPos(Qt::LeftButton);
+		if (d.manhattanLength() < QApplication::startDragDistance())
+			return;
+		QPointF pos = event->scenePos() + (m_origin_pos - event->buttonDownScenePos(Qt::LeftButton));
+		event->modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene()->snapToGrid(pos));
+	} else {
 		QGraphicsObject::mouseMoveEvent(event);
 	}
 }
