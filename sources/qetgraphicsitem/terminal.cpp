@@ -86,6 +86,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
  */
 Terminal::~Terminal() {
 	qDeleteAll(m_conductors_list);
+	delete d;
 }
 
 /**
