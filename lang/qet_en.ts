@@ -835,6 +835,31 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     </message>
 </context>
 <context>
+    <name>ConductorPropertiesEditorWidget</name>
+    <message>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="65"/>
+        <source>Appliquer les propriétés à l&apos;ensemble des conducteurs de ce potentiel</source>
+        <translation>Apply properties to all conductors of this potential</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="248"/>
+        <source>Modifier les propriétés d&apos;un conducteur</source>
+        <comment>undo caption</comment>
+        <translation>Edit conductor properties</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="258"/>
+        <source>Modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
+        <translation>Edit the properties of several conductors</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/conductorpropertieseditorwidget.cpp" line="278"/>
+        <source>Conducteur</source>
+        <translation>Conductor</translation>
+    </message>
+</context>
+<context>
     <name>ConductorPropertiesWidget</name>
     <message>
         <location filename="../sources/ui/conductorpropertieswidget.ui" line="223"/>
@@ -6068,6 +6093,16 @@ Available options:
 </context>
 <context>
     <name>QETDiagramEditor</name>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="885"/>
+        <source>Propriétés du conducteur dans le panneau</source>
+        <translation>Conductor properties in the panel</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="887"/>
+        <source>Affiche ou non les propriétés d&apos;un conducteur sélectionné dans le panneau de sélection</source>
+        <translation>Show or hide the properties of a selected conductor in the selection panel</translation>
+    </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
         <source>Afficha&amp;ge</source>

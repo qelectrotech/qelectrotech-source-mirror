@@ -22,6 +22,8 @@
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/ViewItem/ui/graphicstablepropertieseditor.h"
 #include "../qetgraphicsitem/ViewItem/ui/projectdbmodelpropertieswidget.h"
+#include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/conductortextitem.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
@@ -30,11 +32,13 @@
 #include "../qetgraphicsitem/qetshapeitem.h"
 #include "../ui/dynamicelementtextitemeditor.h"
 #include "../ui/elementpropertieswidget.h"
+#include "../ui/conductorpropertieseditorwidget.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
 
 #include <QGraphicsItem>
+#include <QSettings>
 
 /**
 	@brief PropertiesEditorFactory::propertiesEditor
@@ -83,6 +87,17 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 		return nullptr;
 	}
 	QGraphicsItem *item = items.first();
+
+		//Selecting a conductor's text label edits its parent conductor (#500),
+		//mirroring how double-clicking the label opens the conductor dialog.
+	if (count_ == 1) {
+		if (auto *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			if (Conductor *parent_cond = cti->parentConductor()) {
+				items = {parent_cond};
+				item = parent_cond;
+			}
+		}
+	}
 	const int type_ = item->type();
 
 		//The editor widget can only edit one item
@@ -100,6 +115,28 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 
 	switch (type_)
 	{
+		case Conductor::Type: //1001
+		{
+			//Feature toggle (#500): when disabled in the View menu, selecting a
+			//conductor brings up nothing in the dock. Default enabled.
+			if (!QSettings().value(
+					QStringLiteral("diagrameditor/conductor_properties_panel"),
+					true).toBool()) {
+				return nullptr;
+			}
+			//Prototype (#500): single-conductor editing in the dock.
+			if (count_ > 1) {
+				return nullptr;
+			}
+			auto conductor = static_cast<Conductor*>(item);
+
+			if (class_name == ConductorPropertiesEditorWidget::staticMetaObject.className())
+			{
+				static_cast<ConductorPropertiesEditorWidget*>(editor)->setConductor(conductor);
+				return editor;
+			}
+			return new ConductorPropertiesEditorWidget(conductor, parent);
+		}
 		case Element::Type: //1000
 		{
 			if (count_ > 1) {

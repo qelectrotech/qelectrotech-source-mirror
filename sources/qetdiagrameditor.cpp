@@ -879,6 +879,23 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
 	menu_affichage -> addAction(m_grey_background);
+
+	// Toggle: show a selected conductor's properties in the selection-properties
+	// dock (#500). When off, selecting a conductor brings up nothing there.
+	QAction *cond_panel = menu_affichage -> addAction(tr("Propriétés du conducteur dans le panneau"));
+	cond_panel -> setCheckable(true);
+	cond_panel -> setStatusTip(tr("Affiche ou non les propriétés d'un conducteur sélectionné dans le panneau de sélection"));
+	{
+		QSettings settings;
+		cond_panel -> setChecked(settings.value(QStringLiteral("diagrameditor/conductor_properties_panel"), true).toBool());
+	}
+	connect(cond_panel, &QAction::toggled, this, [this](bool on) {
+		QSettings().setValue(QStringLiteral("diagrameditor/conductor_properties_panel"), on);
+		// Apply immediately to the current selection.
+		if (DiagramView *dv = currentDiagramView())
+			m_selection_properties_editor -> setDiagram(dv -> diagram());
+	});
+
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
 
