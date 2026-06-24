@@ -20,6 +20,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QVector>
 
 /**
 	@brief The WireSpec struct
@@ -49,7 +50,9 @@ struct WireSpec
 		double  outerDiaMm      = 0.0;  ///< Cable outer diameter, mm
 		double  insulationDiaMm = 0.0;  ///< Single-core insulation diameter, mm
 		int     numCores        = 1;    ///< 1 = single wire, >1 = multi-core cable
-		QStringList coreColors;         ///< One IEC 60757 colour name per core
+		/// Per-core colours. coreColors[i] holds that core's colours as
+		/// {base, tracer1, tracer2} — 1 to 3 IEC 60757 names (tracers optional).
+		QVector<QStringList> coreColors;
 		bool    hasShield       = false;
 		QString shieldType;             ///< "Braid" / "Foil" / "Both"
 		int     voltageRatingV  = 0;
@@ -60,6 +63,28 @@ struct WireSpec
 
 		bool isValid() const { return !wireId.isEmpty(); }
 		bool isCable() const { return numCores > 1; }
+
+		/// Flat list of every core colour (base + tracers), for swatch display.
+		QStringList allCoreColors() const
+		{
+			QStringList out;
+			for (const QStringList &core : coreColors)
+				out += core;
+			return out;
+		}
+
+		/// Best single colour to represent this wire: the explicit primary
+		/// colour if set, else the first core's base colour. Used for the
+		/// conductor colour and the catalogue picker swatch.
+		QString effectiveColor() const
+		{
+			if (!colorPrimary.isEmpty())
+				return colorPrimary;
+			for (const QStringList &core : coreColors)
+				if (!core.isEmpty())
+					return core.first();
+			return QString();
+		}
 
 		/**
 			@brief specLabel

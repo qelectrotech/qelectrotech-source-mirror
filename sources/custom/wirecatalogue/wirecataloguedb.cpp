@@ -35,22 +35,36 @@ namespace {
 		"num_cores, core_colors, shield, shield_type, voltage_rating_v, "
 		"temp_rating_c, flexible, color_primary, notes");
 
-	QString colorsToJson(const QStringList &colors)
+	// Stored as a JSON array of arrays: [["White","Blue"],["Brown"]] — one
+	// inner array per core (base + optional tracer colours).
+	QString coresToJson(const QVector<QStringList> &cores)
 	{
 		QJsonArray arr;
-		for (const QString &c : colors)
+		for (const QStringList &core : cores) {
+			QJsonArray c;
+			for (const QString &col : core)
+				c.append(col);
 			arr.append(c);
+		}
 		return QString::fromUtf8(QJsonDocument(arr).toJson(QJsonDocument::Compact));
 	}
 
-	QStringList colorsFromJson(const QString &json)
+	QVector<QStringList> coresFromJson(const QString &json)
 	{
-		QStringList out;
+		QVector<QStringList> out;
 		const QJsonDocument doc = QJsonDocument::fromJson(json.toUtf8());
-		if (doc.isArray()) {
-			const QJsonArray arr = doc.array();
-			for (const QJsonValue &v : arr)
-				out << v.toString();
+		if (!doc.isArray())
+			return out;
+		const QJsonArray arr = doc.array();
+		for (const QJsonValue &v : arr) {
+			if (v.isArray()) {                 // new nested format
+				QStringList core;
+				for (const QJsonValue &c : v.toArray())
+					core << c.toString();
+				out << core;
+			} else if (v.isString()) {         // legacy flat format: one colour/core
+				out << QStringList{v.toString()};
+			}
 		}
 		return out;
 	}
@@ -140,7 +154,7 @@ void WireCatalogueDb::bindSpec(QSqlQuery &q, const WireSpec &spec) const
 	q.addBindValue(spec.outerDiaMm);
 	q.addBindValue(spec.insulationDiaMm);
 	q.addBindValue(spec.numCores);
-	q.addBindValue(colorsToJson(spec.coreColors));
+	q.addBindValue(coresToJson(spec.coreColors));
 	q.addBindValue(spec.hasShield ? 1 : 0);
 	q.addBindValue(spec.shieldType);
 	q.addBindValue(spec.voltageRatingV);
@@ -162,7 +176,7 @@ WireSpec WireCatalogueDb::specFromQuery(const QSqlQuery &q)
 	s.outerDiaMm         = q.value(QStringLiteral("cable_outer_dia_mm")).toDouble();
 	s.insulationDiaMm    = q.value(QStringLiteral("insulation_dia_mm")).toDouble();
 	s.numCores           = q.value(QStringLiteral("num_cores")).toInt();
-	s.coreColors         = colorsFromJson(q.value(QStringLiteral("core_colors")).toString());
+	s.coreColors         = coresFromJson(q.value(QStringLiteral("core_colors")).toString());
 	s.hasShield          = q.value(QStringLiteral("shield")).toInt() != 0;
 	s.shieldType         = q.value(QStringLiteral("shield_type")).toString();
 	s.voltageRatingV     = q.value(QStringLiteral("voltage_rating_v")).toInt();

@@ -277,59 +277,136 @@ void ConductorPropertiesWidget::initWireCatalogue()
 	const QVector<WireSpec> wires = m_wire_db->allWires();
 	for (const WireSpec &w : wires) {
 		const QString label = QStringLiteral("%1 — %2").arg(w.wireId, w.specLabel());
-		m_wire_catalogue_cb->addItem(Iec60757::icon(w.colorPrimary, 14), label, w.wireId);
+		m_wire_catalogue_cb->addItem(Iec60757::icon(w.effectiveColor(), 14), label, w.wireId);
 	}
 
 	auto *label = new QLabel(tr("From catalogue :"), this);
-	label->setToolTip(tr("Pick a wire from the catalogue to set its colour"));
+	label->setToolTip(tr("Pick a wire or cable from the catalogue"));
 
-	// Append a row at the bottom of the Appearance tab grid.
+	// Core selector — only shown when the chosen catalogue entry is a
+	// multi-core cable. Lets the user assign this conductor to one cable core.
+	m_wire_core_label = new QLabel(tr("Cable core :"), this);
+	m_wire_core_cb = new QComboBox(this);
+	m_wire_core_cb->setIconSize(QSize(14, 14));
+	m_wire_core_label->setVisible(false);
+	m_wire_core_cb->setVisible(false);
+
+	// Append two rows at the bottom of the Appearance tab grid.
 	auto *grid = ui->appearance->findChild<QGridLayout*>();
 	if (grid) {
-		const int row = grid->rowCount();
+		int row = grid->rowCount();
 		grid->addWidget(label, row, 0);
 		grid->addWidget(m_wire_catalogue_cb, row, 1);
+		++row;
+		grid->addWidget(m_wire_core_label, row, 0);
+		grid->addWidget(m_wire_core_cb, row, 1);
 	}
 
 	connect(m_wire_catalogue_cb, QOverload<int>::of(&QComboBox::activated),
 			this, &ConductorPropertiesWidget::applyCatalogueWire);
+	connect(m_wire_core_cb, QOverload<int>::of(&QComboBox::activated),
+			this, &ConductorPropertiesWidget::applyCatalogueCore);
+}
+
+/**
+	@brief ConductorPropertiesWidget::applyWireAppearance
+	Shared helper: set conductor colour, wire metadata and the on-line label.
+	@param cableId : when non-empty, recorded as the conductor's cable so the
+		terminal strip / BOM treat the bundle as one cable.
+*/
+void ConductorPropertiesWidget::applyWireAppearance(const QString &section,
+													const QString &colour,
+													const QString &cableId,
+													const QString &lineLabel)
+{
+	const QColor c = Iec60757::colorForName(colour);
+	if (c.isValid())
+		ui->m_color_kpb->setColor(c);
+
+	ui->m_wire_section_le->setText(section);
+	ui->m_wire_color_le->setText(colour);
+	ui->m_cable_le->setText(cableId); // saved via properties().m_cable
+
+	// Displayed text driven by the formula (literal text shown verbatim);
+	// m_text_le is disabled while a formula is present.
+	ui->m_formula_le->setText(lineLabel);
+	ui->m_show_text_cb->setChecked(true);
+	updatePreview();
 }
 
 /**
 	@brief ConductorPropertiesWidget::applyCatalogueWire
-	Apply the primary colour of the catalogue wire selected at @p index.
+	React to a catalogue selection. Single wire: apply its colour directly.
+	Multi-core cable: reveal the core selector and apply the first core.
 */
 void ConductorPropertiesWidget::applyCatalogueWire(int index)
 {
-	if (!m_wire_db || index <= 0) // 0 == "(none)"
-		return;
+	const bool none = (!m_wire_db || index <= 0); // 0 == "(none)"
+	const WireSpec w = none ? WireSpec()
+		: m_wire_db->wire(m_wire_catalogue_cb->itemData(index).toString());
 
-	const QString wire_id = m_wire_catalogue_cb->itemData(index).toString();
-	const WireSpec w = m_wire_db->wire(wire_id);
-	if (!w.isValid())
+	if (none || !w.isValid()) {
+		m_wire_core_label->setVisible(false);
+		m_wire_core_cb->setVisible(false);
 		return;
+	}
 
 	const QString section = QStringLiteral("%1mm²")
 			.arg(QString::number(w.crossSectionMm2));
 
-	// Drawing colour from the wire's primary colour.
-	const QColor c = Iec60757::colorForName(w.colorPrimary);
-	if (c.isValid())
-		ui->m_color_kpb->setColor(c);
+	if (!w.isCable()) {
+		// Single wire: no core selector; colour from the wire's effective colour.
+		m_wire_core_label->setVisible(false);
+		m_wire_core_cb->setVisible(false);
+		const QString colour = w.effectiveColor();
+		applyWireAppearance(section, colour, QString(),
+							QStringLiteral("%1  %2").arg(section, colour));
+		return;
+	}
 
-	// Dedicated wire metadata fields.
-	ui->m_wire_section_le->setText(section);
-	ui->m_wire_color_le->setText(w.colorPrimary);
+	// Multi-core cable: populate the core selector (one entry per core).
+	m_wire_core_cb->blockSignals(true);
+	m_wire_core_cb->clear();
+	for (int i = 0; i < w.coreColors.size(); ++i) {
+		const QStringList core = w.coreColors.at(i);
+		const QString base = core.value(0);
+		const QString text = tr("Core %1 — %2").arg(i + 1)
+				.arg(core.isEmpty() ? tr("(no colour)") : core.join(QStringLiteral("/")));
+		m_wire_core_cb->addItem(Iec60757::icon(base, 14), text, i);
+	}
+	m_wire_core_cb->setCurrentIndex(0);
+	m_wire_core_cb->blockSignals(false);
+	m_wire_core_label->setVisible(true);
+	m_wire_core_cb->setVisible(true);
 
-	// Put cross-section + colour on the conductor line (Wire ID is not shown
-	// on the line, only kept as catalogue metadata). The displayed text is
-	// driven by the formula (literal text shown verbatim); m_text_le is
-	// disabled while a formula is present.
-	ui->m_formula_le->setText(QStringLiteral("%1  %2")
-			.arg(section, w.colorPrimary));
-	ui->m_show_text_cb->setChecked(true);
+	applyCatalogueCore(0); // apply the first core by default
+}
 
-	updatePreview();
+/**
+	@brief ConductorPropertiesWidget::applyCatalogueCore
+	Apply core @p core_index of the currently selected catalogue cable: sets the
+	conductor colour to that core, records the cable id, and labels the line
+	"<cable>:<core>  <section>  <colour>" (e.g. "W63:1  0.5mm²  Brown").
+*/
+void ConductorPropertiesWidget::applyCatalogueCore(int core_index)
+{
+	if (!m_wire_db || !m_wire_catalogue_cb)
+		return;
+	const QString wire_id = m_wire_catalogue_cb
+			->itemData(m_wire_catalogue_cb->currentIndex()).toString();
+	const WireSpec w = m_wire_db->wire(wire_id);
+	if (!w.isValid() || !w.isCable()
+		|| core_index < 0 || core_index >= w.coreColors.size())
+		return;
+
+	const QStringList core = w.coreColors.at(core_index);
+	const QString colour = core.value(0); // base colour of this core
+	const QString section = QStringLiteral("%1mm²")
+			.arg(QString::number(w.crossSectionMm2));
+	const QString core_ref = QStringLiteral("%1:%2").arg(wire_id).arg(core_index + 1);
+
+	applyWireAppearance(section, colour, wire_id,
+						QStringLiteral("%1  %2  %3").arg(core_ref, section, colour));
 }
 
 /**

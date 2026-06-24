@@ -40,6 +40,7 @@ class WireCatalogueModel : public QAbstractTableModel
 	public:
 		enum Column {
 			WireId = 0,
+			Type,          ///< "Wire" (1 core) or "Cable" (>1 core)
 			Manufacturer,
 			ManufacturerPartNo,
 			CrossSection,

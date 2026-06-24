@@ -18,8 +18,11 @@
 #include "wirespecdialog.h"
 #include "corecoloreditor.h"
 
+#include <QTabWidget>
 #include <QFormLayout>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGroupBox>
 #include <QLineEdit>
 #include <QDoubleSpinBox>
 #include <QSpinBox>
@@ -28,112 +31,163 @@
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
 #include <QLabel>
+#include <QPushButton>
 #include <QScrollArea>
 
 WireSpecDialog::WireSpecDialog(QWidget *parent) :
 	QDialog(parent)
 {
-	buildUi();
-}
-
-void WireSpecDialog::buildUi()
-{
 	setWindowTitle(tr("Wire / cable"));
+	resize(560, 540);
 
-	m_wire_id          = new QLineEdit(this);
-	m_manufacturer     = new QLineEdit(this);
-	m_mfr_part_no      = new QLineEdit(this);
-	m_supplier         = new QLineEdit(this);
-	m_supplier_part_no = new QLineEdit(this);
+	// Colourful header strip.
+	auto *header = new QLabel(tr("Wire / cable reference"), this);
+	header->setStyleSheet(QStringLiteral(
+		"QLabel { background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
+		" stop:0 #0066cc, stop:1 #00a651); color: white; font-weight: bold;"
+		" padding: 6px 10px; border-radius: 4px; }"));
 
-	m_cross_section = new QDoubleSpinBox(this);
-	m_cross_section->setRange(0.0, 1000.0);
-	m_cross_section->setDecimals(2);
-	m_cross_section->setSuffix(QStringLiteral(" mm²"));
-
-	m_outer_dia = new QDoubleSpinBox(this);
-	m_outer_dia->setRange(0.0, 1000.0);
-	m_outer_dia->setDecimals(2);
-	m_outer_dia->setSuffix(QStringLiteral(" mm"));
-
-	m_insulation_dia = new QDoubleSpinBox(this);
-	m_insulation_dia->setRange(0.0, 1000.0);
-	m_insulation_dia->setDecimals(2);
-	m_insulation_dia->setSuffix(QStringLiteral(" mm"));
-
-	m_num_cores = new QSpinBox(this);
-	m_num_cores->setRange(1, 256);
-
-	// Multi-core cable builder: one colour picker per core, kept in sync with
-	// the core count. Capped height with a scroll area for high core counts.
-	m_core_colors = new CoreColorEditor(this);
-	auto *core_scroll = new QScrollArea(this);
-	core_scroll->setWidgetResizable(true);
-	core_scroll->setFrameShape(QFrame::NoFrame);
-	core_scroll->setWidget(m_core_colors);
-	core_scroll->setMinimumHeight(40);
-	core_scroll->setMaximumHeight(150);
-	connect(m_num_cores, QOverload<int>::of(&QSpinBox::valueChanged),
-			m_core_colors, &CoreColorEditor::setCoreCount);
-
-	m_shield = new QCheckBox(tr("Shielded"), this);
-	m_shield_type = new QComboBox(this);
-	m_shield_type->addItems({tr("Braid"), tr("Foil"), tr("Both")});
-
-	m_voltage = new QSpinBox(this);
-	m_voltage->setRange(0, 100000);
-	m_voltage->setSuffix(QStringLiteral(" V"));
-
-	m_temp = new QSpinBox(this);
-	m_temp->setRange(-100, 1000);
-	m_temp->setSuffix(QStringLiteral(" °C"));
-
-	m_flexible = new QCheckBox(tr("Flexible"), this);
-
-	m_color_primary = new WireColorComboBox(this);
-
-	m_notes = new QPlainTextEdit(this);
-	m_notes->setMaximumHeight(60);
-
-	auto *form = new QFormLayout;
-	form->addRow(tr("Wire ID *"),          m_wire_id);
-	form->addRow(tr("Manufacturer"),       m_manufacturer);
-	form->addRow(tr("Mfr part no."),       m_mfr_part_no);
-	form->addRow(tr("Supplier"),           m_supplier);
-	form->addRow(tr("Supplier part no."),  m_supplier_part_no);
-	form->addRow(tr("Cross-section"),      m_cross_section);
-	form->addRow(tr("Outer diameter"),     m_outer_dia);
-	form->addRow(tr("Insulation diam."),   m_insulation_dia);
-	form->addRow(tr("Number of cores"),    m_num_cores);
-	form->addRow(tr("Core colours"),       core_scroll);
-	form->addRow(m_shield);
-	form->addRow(tr("Shield type"),        m_shield_type);
-	form->addRow(tr("Voltage rating"),     m_voltage);
-	form->addRow(tr("Temp. rating"),       m_temp);
-	form->addRow(m_flexible);
-	form->addRow(tr("Primary colour"),     m_color_primary);
-	form->addRow(tr("Notes"),              m_notes);
+	auto *tabs = new QTabWidget(this);
+	tabs->addTab(buildGeneralTab(), tr("General"));
+	tabs->addTab(buildCoresTab(),   tr("Cable cores"));
 
 	auto *buttons = new QDialogButtonBox(
 		QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 	connect(buttons, &QDialogButtonBox::accepted, this, &QDialog::accept);
 	connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
-	// Shield type only enabled when shielded.
-	connect(m_shield, &QCheckBox::toggled, m_shield_type, &QWidget::setEnabled);
-	m_shield_type->setEnabled(false);
-
-	// Colourful header strip.
-	auto *header = new QLabel(tr("Wire / cable specification"), this);
-	header->setStyleSheet(QStringLiteral(
-		"QLabel { background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-		" stop:0 #0066cc, stop:1 #00a651); color: white; font-weight: bold;"
-		" padding: 6px 10px; border-radius: 4px; }"));
-
 	auto *layout = new QVBoxLayout(this);
 	layout->addWidget(header);
-	layout->addLayout(form);
+	layout->addWidget(tabs, 1);
 	layout->addWidget(buttons);
+}
+
+QWidget *WireSpecDialog::buildGeneralTab()
+{
+	auto *tab = new QWidget(this);
+	auto *outer = new QVBoxLayout(tab);
+
+	// --- Identification ---
+	m_wire_id      = new QLineEdit(tab);
+	m_manufacturer = new QLineEdit(tab);
+	m_mfr_part_no  = new QLineEdit(tab);
+
+	auto *id_box = new QGroupBox(tr("Identification"), tab);
+	auto *id_form = new QFormLayout(id_box);
+	id_form->addRow(tr("Wire ID *"),   m_wire_id);
+	id_form->addRow(tr("Manufacturer"), m_manufacturer);
+	id_form->addRow(tr("Mfr part no."), m_mfr_part_no);
+
+	// --- Supplier ---
+	m_supplier         = new QLineEdit(tab);
+	m_supplier_part_no = new QLineEdit(tab);
+
+	auto *sup_box = new QGroupBox(tr("Supplier"), tab);
+	auto *sup_form = new QFormLayout(sup_box);
+	sup_form->addRow(tr("Supplier name"), m_supplier);
+	sup_form->addRow(tr("Stock number"),  m_supplier_part_no);
+
+	// --- Characteristics ---
+	m_cross_section = new QDoubleSpinBox(tab);
+	m_cross_section->setRange(0.0, 1000.0);
+	m_cross_section->setDecimals(2);
+	m_cross_section->setSuffix(QStringLiteral(" mm²"));
+
+	m_outer_dia = new QDoubleSpinBox(tab);
+	m_outer_dia->setRange(0.0, 1000.0);
+	m_outer_dia->setDecimals(2);
+	m_outer_dia->setSuffix(QStringLiteral(" mm"));
+
+	m_insulation_dia = new QDoubleSpinBox(tab);
+	m_insulation_dia->setRange(0.0, 1000.0);
+	m_insulation_dia->setDecimals(2);
+	m_insulation_dia->setSuffix(QStringLiteral(" mm"));
+
+	m_color_primary = new WireColorComboBox(tab);
+
+	m_shield = new QCheckBox(tr("Shielded"), tab);
+	m_shield_type = new QComboBox(tab);
+	m_shield_type->addItems({tr("Braid"), tr("Foil"), tr("Both")});
+	m_shield_type->setEnabled(false);
+	connect(m_shield, &QCheckBox::toggled, m_shield_type, &QWidget::setEnabled);
+
+	m_voltage = new QSpinBox(tab);
+	m_voltage->setRange(0, 100000);
+	m_voltage->setSuffix(QStringLiteral(" V"));
+
+	m_temp = new QSpinBox(tab);
+	m_temp->setRange(-100, 1000);
+	m_temp->setSuffix(QStringLiteral(" °C"));
+
+	m_flexible = new QCheckBox(tr("Flexible"), tab);
+
+	auto *ch_box = new QGroupBox(tr("Characteristics"), tab);
+	auto *ch_form = new QFormLayout(ch_box);
+	ch_form->addRow(tr("Cross-sectional area"), m_cross_section);
+	ch_form->addRow(tr("Cable outer diameter"), m_outer_dia);
+	ch_form->addRow(tr("Insulation diameter"),  m_insulation_dia);
+	ch_form->addRow(tr("Primary colour"),       m_color_primary);
+	ch_form->addRow(m_shield);
+	ch_form->addRow(tr("Shield type"),          m_shield_type);
+	ch_form->addRow(tr("Voltage rating"),       m_voltage);
+	ch_form->addRow(tr("Temperature rating"),   m_temp);
+	ch_form->addRow(m_flexible);
+
+	// --- Notes ---
+	m_notes = new QPlainTextEdit(tab);
+	m_notes->setMaximumHeight(60);
+	auto *notes_box = new QGroupBox(tr("Notes"), tab);
+	auto *notes_lay = new QVBoxLayout(notes_box);
+	notes_lay->addWidget(m_notes);
+
+	outer->addWidget(id_box);
+	outer->addWidget(sup_box);
+	outer->addWidget(ch_box);
+	outer->addWidget(notes_box);
+	outer->addStretch(1);
+	return tab;
+}
+
+QWidget *WireSpecDialog::buildCoresTab()
+{
+	auto *tab = new QWidget(this);
+	auto *layout = new QVBoxLayout(tab);
+
+	// Toolbar: Add / Remove core + live count.
+	m_cores = new CoreColorEditor(tab);
+
+	auto *bar = new QHBoxLayout;
+	auto *add_btn = new QPushButton(tr("Add core"), tab);
+	auto *del_btn = new QPushButton(tr("Remove core"), tab);
+	m_core_count_lbl = new QLabel(tab);
+	connect(add_btn, &QPushButton::clicked, m_cores, &CoreColorEditor::addCore);
+	connect(del_btn, &QPushButton::clicked, m_cores, &CoreColorEditor::removeSelectedCore);
+	connect(m_cores, &CoreColorEditor::coresChanged, this, &WireSpecDialog::updateCoreCountLabel);
+	bar->addWidget(add_btn);
+	bar->addWidget(del_btn);
+	bar->addStretch(1);
+	bar->addWidget(m_core_count_lbl);
+
+	// Cores list in a scroll area so many cores stay usable.
+	auto *scroll = new QScrollArea(tab);
+	scroll->setWidgetResizable(true);
+	scroll->setWidget(m_cores);
+
+	auto *hint = new QLabel(
+		tr("Each core: Colour 1 = base, Colours 2–3 = optional tracers."), tab);
+	hint->setStyleSheet(QStringLiteral("color: #666;"));
+
+	layout->addLayout(bar);
+	layout->addWidget(scroll, 1);
+	layout->addWidget(hint);
+	updateCoreCountLabel();
+	return tab;
+}
+
+void WireSpecDialog::updateCoreCountLabel()
+{
+	if (m_core_count_lbl && m_cores)
+		m_core_count_lbl->setText(tr("Cores: %1").arg(m_cores->coreCount()));
 }
 
 void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
@@ -147,8 +201,7 @@ void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
 	m_cross_section->setValue(spec.crossSectionMm2);
 	m_outer_dia->setValue(spec.outerDiaMm);
 	m_insulation_dia->setValue(spec.insulationDiaMm);
-	m_num_cores->setValue(spec.numCores);
-	m_core_colors->setColors(spec.coreColors);
+	m_color_primary->setColorName(spec.colorPrimary);
 	m_shield->setChecked(spec.hasShield);
 	m_shield_type->setEnabled(spec.hasShield);
 	if (!spec.shieldType.isEmpty()) {
@@ -159,8 +212,14 @@ void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
 	m_voltage->setValue(spec.voltageRatingV);
 	m_temp->setValue(spec.tempRatingC);
 	m_flexible->setChecked(spec.isFlexible);
-	m_color_primary->setColorName(spec.colorPrimary);
 	m_notes->setPlainText(spec.notes);
+
+	// Cores: fall back to numCores empty cores if none stored yet.
+	QVector<QStringList> cores = spec.coreColors;
+	if (cores.isEmpty())
+		cores = QVector<QStringList>(qMax(1, spec.numCores));
+	m_cores->setColors(cores);
+	updateCoreCountLabel();
 
 	setWindowTitle(editing ? tr("Edit wire / cable") : tr("New wire / cable"));
 }
@@ -176,15 +235,14 @@ WireSpec WireSpecDialog::wireSpec() const
 	s.crossSectionMm2    = m_cross_section->value();
 	s.outerDiaMm         = m_outer_dia->value();
 	s.insulationDiaMm    = m_insulation_dia->value();
-	s.numCores           = m_num_cores->value();
-	s.coreColors         = m_core_colors->colors();
-
-	s.hasShield      = m_shield->isChecked();
-	s.shieldType     = s.hasShield ? m_shield_type->currentText() : QString();
-	s.voltageRatingV = m_voltage->value();
-	s.tempRatingC    = m_temp->value();
-	s.isFlexible     = m_flexible->isChecked();
-	s.colorPrimary   = m_color_primary->colorName();
-	s.notes          = m_notes->toPlainText().trimmed();
+	s.coreColors         = m_cores->colors();
+	s.numCores           = m_cores->coreCount();
+	s.hasShield          = m_shield->isChecked();
+	s.shieldType         = s.hasShield ? m_shield_type->currentText() : QString();
+	s.voltageRatingV     = m_voltage->value();
+	s.tempRatingC        = m_temp->value();
+	s.isFlexible         = m_flexible->isChecked();
+	s.colorPrimary       = m_color_primary->colorName();
+	s.notes              = m_notes->toPlainText().trimmed();
 	return s;
 }

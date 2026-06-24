@@ -28,15 +28,18 @@ class QSpinBox;
 class QCheckBox;
 class QComboBox;
 class QPlainTextEdit;
+class QLabel;
 class CoreColorEditor;
 class WireColorComboBox;
 
 /**
 	@brief The WireSpecDialog class
-	Add / edit form for a single WireSpec. Core colours are entered as a
-	comma-separated list for now; the dedicated multi-core builder + colour
-	picker is Phase 3. When editing, the wire_id field is read-only (it is the
-	primary key).
+	Tabbed add / edit form for a wire / cable, modelled on the SolidWorks
+	Electrical "New cable reference" dialog:
+	  - General tab: identity, supplier and characteristics (grouped).
+	  - Cable cores tab: the per-core editor (each core = base + up to 2 tracer
+	    colours), with Add / Remove core buttons.
+	When editing, the wire_id field is read-only (it is the primary key).
 */
 class WireSpecDialog : public QDialog
 {
@@ -49,7 +52,9 @@ class WireSpecDialog : public QDialog
 		WireSpec wireSpec() const;
 
 	private:
-		void buildUi();
+		QWidget *buildGeneralTab();
+		QWidget *buildCoresTab();
+		void updateCoreCountLabel();
 
 	private:
 		QLineEdit      *m_wire_id          = nullptr;
@@ -60,15 +65,16 @@ class WireSpecDialog : public QDialog
 		QDoubleSpinBox *m_cross_section    = nullptr;
 		QDoubleSpinBox *m_outer_dia        = nullptr;
 		QDoubleSpinBox *m_insulation_dia   = nullptr;
-		QSpinBox        *m_num_cores       = nullptr;
-		CoreColorEditor *m_core_colors     = nullptr;
-		QCheckBox       *m_shield          = nullptr;
-		QComboBox       *m_shield_type     = nullptr;
-		QSpinBox        *m_voltage         = nullptr;
-		QSpinBox        *m_temp            = nullptr;
-		QCheckBox       *m_flexible        = nullptr;
+		QCheckBox      *m_shield           = nullptr;
+		QComboBox      *m_shield_type      = nullptr;
+		QSpinBox       *m_voltage          = nullptr;
+		QSpinBox       *m_temp             = nullptr;
+		QCheckBox      *m_flexible         = nullptr;
 		WireColorComboBox *m_color_primary = nullptr;
-		QPlainTextEdit  *m_notes           = nullptr;
+		QPlainTextEdit *m_notes            = nullptr;
+
+		CoreColorEditor *m_cores           = nullptr;
+		QLabel          *m_core_count_lbl  = nullptr;
 };
 
 #endif // WIRESPECDIALOG_H

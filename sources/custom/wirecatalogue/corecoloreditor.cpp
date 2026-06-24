@@ -18,9 +18,10 @@
 #include "corecoloreditor.h"
 #include "iec60757.h"
 
-#include <QVBoxLayout>
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QLabel>
+
+namespace { const QString kNoColor = QStringLiteral("<No color>"); }
 
 WireColorComboBox::WireColorComboBox(QWidget *parent) :
 	QComboBox(parent)
@@ -29,18 +30,24 @@ WireColorComboBox::WireColorComboBox(QWidget *parent) :
 	setInsertPolicy(QComboBox::NoInsert);
 	const int sz = 14;
 	setIconSize(QSize(sz, sz));
+	addItem(kNoColor);                       // index 0 == empty
 	for (const QString &name : Iec60757::standardNames())
 		addItem(Iec60757::icon(name, sz), name);
-	setCurrentIndex(-1);
+	setCurrentIndex(0);
 }
 
 QString WireColorComboBox::colorName() const
 {
-	return currentText().trimmed();
+	const QString t = currentText().trimmed();
+	return (t == kNoColor) ? QString() : t;
 }
 
 void WireColorComboBox::setColorName(const QString &name)
 {
+	if (name.isEmpty()) {
+		setCurrentIndex(0);
+		return;
+	}
 	const int idx = findText(name, Qt::MatchFixedString);
 	if (idx >= 0)
 		setCurrentIndex(idx);
@@ -51,60 +58,101 @@ void WireColorComboBox::setColorName(const QString &name)
 CoreColorEditor::CoreColorEditor(QWidget *parent) :
 	QWidget(parent)
 {
-	m_layout = new QVBoxLayout(this);
-	m_layout->setContentsMargins(0, 0, 0, 0);
-	m_layout->setSpacing(2);
-	setCoreCount(1);
+	// Outer vbox keeps the grid packed at the top (a trailing stretch absorbs
+	// extra height) instead of the grid spreading its rows apart.
+	auto *outer = new QVBoxLayout(this);
+	outer->setContentsMargins(0, 0, 0, 0);
+	m_grid = new QGridLayout;
+	m_grid->setContentsMargins(0, 0, 0, 0);
+	m_grid->setHorizontalSpacing(6);
+	m_grid->setVerticalSpacing(3);
+	outer->addLayout(m_grid);
+	outer->addStretch(1);
+
+	// Header row.
+	m_grid->addWidget(new QLabel(tr("Core"), this),     0, 0);
+	m_grid->addWidget(new QLabel(tr("Colour 1"), this), 0, 1);
+	m_grid->addWidget(new QLabel(tr("Colour 2"), this), 0, 2);
+	m_grid->addWidget(new QLabel(tr("Colour 3"), this), 0, 3);
+	m_grid->setColumnStretch(1, 1);
+	m_grid->setColumnStretch(2, 1);
+	m_grid->setColumnStretch(3, 1);
+
+	addCore(); // start with a single core
 }
 
-void CoreColorEditor::setCoreCount(int count)
+void CoreColorEditor::addCore()
 {
-	count = qMax(1, count);
-	if (count == m_combos.size())
+	const int r = m_rows.size() + 1; // +1 for header row in the grid
+
+	Row row;
+	row.number = new QLabel(QString::number(m_rows.size() + 1), this);
+	row.c1 = new WireColorComboBox(this);
+	row.c2 = new WireColorComboBox(this);
+	row.c3 = new WireColorComboBox(this);
+
+	for (WireColorComboBox *c : {row.c1, row.c2, row.c3})
+		connect(c, &QComboBox::currentTextChanged, this, &CoreColorEditor::coresChanged);
+
+	m_grid->addWidget(row.number, r, 0);
+	m_grid->addWidget(row.c1,     r, 1);
+	m_grid->addWidget(row.c2,     r, 2);
+	m_grid->addWidget(row.c3,     r, 3);
+
+	m_rows.append(row);
+	emit coresChanged();
+}
+
+void CoreColorEditor::removeSelectedCore()
+{
+	if (m_rows.size() <= 1) // always keep at least one core
 		return;
 
-	// Grow: append "Core N" rows.
-	while (m_combos.size() < count) {
-		const int n = m_combos.size() + 1;
-		auto *row = new QWidget(this);
-		auto *h = new QHBoxLayout(row);
-		h->setContentsMargins(0, 0, 0, 0);
-		auto *lbl = new QLabel(tr("Core %1").arg(n), row);
-		lbl->setMinimumWidth(48);
-		auto *combo = new WireColorComboBox(row);
-		connect(combo, &QComboBox::currentTextChanged,
-				this, &CoreColorEditor::colorsChanged);
-		h->addWidget(lbl);
-		h->addWidget(combo, 1);
-		m_layout->addWidget(row);
-		m_combos.append(combo);
+	Row row = m_rows.takeLast();
+	for (QWidget *w : {static_cast<QWidget*>(row.number),
+					   static_cast<QWidget*>(row.c1),
+					   static_cast<QWidget*>(row.c2),
+					   static_cast<QWidget*>(row.c3)}) {
+		m_grid->removeWidget(w);
+		w->deleteLater();
 	}
-
-	// Shrink: drop trailing rows (and their label container).
-	while (m_combos.size() > count) {
-		WireColorComboBox *combo = m_combos.takeLast();
-		QWidget *row = combo->parentWidget();
-		m_layout->removeWidget(row);
-		row->deleteLater();
-	}
-
-	emit colorsChanged();
+	renumber();
+	emit coresChanged();
 }
 
-QStringList CoreColorEditor::colors() const
+void CoreColorEditor::renumber()
 {
-	QStringList out;
-	for (WireColorComboBox *c : m_combos) {
-		const QString name = c->colorName();
-		if (!name.isEmpty())
-			out << name;
+	for (int i = 0; i < m_rows.size(); ++i)
+		m_rows.at(i).number->setText(QString::number(i + 1));
+}
+
+QVector<QStringList> CoreColorEditor::colors() const
+{
+	QVector<QStringList> out;
+	for (const Row &row : m_rows) {
+		QStringList core;
+		for (WireColorComboBox *c : {row.c1, row.c2, row.c3}) {
+			const QString name = c->colorName();
+			if (!name.isEmpty())
+				core << name;
+		}
+		out << core; // may be empty if no colour chosen for that core
 	}
 	return out;
 }
 
-void CoreColorEditor::setColors(const QStringList &colors)
+void CoreColorEditor::setColors(const QVector<QStringList> &cores)
 {
-	setCoreCount(qMax(1, colors.size()));
-	for (int i = 0; i < m_combos.size(); ++i)
-		m_combos.at(i)->setColorName(i < colors.size() ? colors.at(i) : QString());
+	const int target = qMax(1, cores.size());
+	while (m_rows.size() < target)
+		addCore();
+	while (m_rows.size() > target)
+		removeSelectedCore();
+
+	for (int i = 0; i < m_rows.size(); ++i) {
+		const QStringList core = (i < cores.size()) ? cores.at(i) : QStringList();
+		m_rows.at(i).c1->setColorName(core.value(0));
+		m_rows.at(i).c2->setColorName(core.value(1));
+		m_rows.at(i).c3->setColorName(core.value(2));
+	}
 }

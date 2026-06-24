@@ -21,12 +21,15 @@
 #include <QComboBox>
 #include <QWidget>
 #include <QVector>
+#include <QStringList>
 
-class QVBoxLayout;
+class QGridLayout;
+class QLabel;
 
 /**
 	@brief Editable combo box pre-filled with IEC 60757 colours + swatch icons.
-	Editable so a user can still type a non-standard colour name.
+	Includes a leading "<No color>" entry so a core's tracer slots can be empty.
+	Still editable so a user can type a non-standard colour name.
 */
 class WireColorComboBox : public QComboBox
 {
@@ -34,17 +37,17 @@ class WireColorComboBox : public QComboBox
 	public:
 		explicit WireColorComboBox(QWidget *parent = nullptr);
 
+		/// Empty string when "<No color>" is selected.
 		QString colorName() const;
 		void setColorName(const QString &name);
 };
 
 /**
-	@brief The CoreColorEditor — multi-core cable builder.
-	Shows one WireColorComboBox per core ("Core 1 … Core N"), so a multi-core
-	cable's per-core colours can be picked visually. The number of rows tracks
-	the core count set via setCoreCount(); existing selections are preserved
-	when the count grows or shrinks. Lives in a fixed-height scroll-friendly
-	column inside the wire dialog.
+	@brief The CoreColorEditor — the "Cable cores" tab content.
+	A table of cores (one row each) modelled on the SolidWorks Electrical cable
+	cores editor: each core has Colour 1 (base) + Colour 2/3 (optional tracers).
+	Cores are added/removed with the Add / Remove buttons; the row count is the
+	cable's core count.
 */
 class CoreColorEditor : public QWidget
 {
@@ -52,18 +55,31 @@ class CoreColorEditor : public QWidget
 	public:
 		explicit CoreColorEditor(QWidget *parent = nullptr);
 
-		void setCoreCount(int count);
-		int coreCount() const { return m_combos.size(); }
+		int coreCount() const { return m_rows.size(); }
 
-		QStringList colors() const;
-		void setColors(const QStringList &colors);
+		/// Per-core colours: each entry is {base, tracer1, tracer2} with empties
+		/// trimmed, so a single-colour core returns a 1-element list.
+		QVector<QStringList> colors() const;
+		void setColors(const QVector<QStringList> &cores);
 
 	signals:
-		void colorsChanged();
+		void coresChanged();
+
+	public slots:
+		void addCore();
+		void removeSelectedCore();
 
 	private:
-		QVBoxLayout *m_layout = nullptr;
-		QVector<WireColorComboBox*> m_combos;
+		struct Row {
+			QLabel *number;
+			WireColorComboBox *c1;
+			WireColorComboBox *c2;
+			WireColorComboBox *c3;
+		};
+		void renumber();
+
+		QGridLayout *m_grid = nullptr;
+		QVector<Row> m_rows;
 };
 
 #endif // CORECOLOREDITOR_H

@@ -50,11 +50,12 @@ QVariant WireCatalogueModel::data(const QModelIndex &index, int role) const
 	if (role == Qt::DisplayRole || role == Qt::EditRole) {
 		switch (index.column()) {
 			case WireId:             return w.wireId;
+			case Type:               return w.isCable() ? tr("Cable") : tr("Wire");
 			case Manufacturer:       return w.manufacturerName;
 			case ManufacturerPartNo: return w.manufacturerPartNo;
 			case CrossSection:       return w.crossSectionMm2;
 			case Cores:              return w.numCores;
-			case Colors:             return w.coreColors.join(QStringLiteral(", "));
+			case Colors:             return w.allCoreColors().join(QStringLiteral(", "));
 			case Shield:             return w.hasShield ? w.shieldType : QString();
 			case Voltage:            return w.voltageRatingV;
 			case Temp:               return w.tempRatingC;
@@ -66,7 +67,7 @@ QVariant WireCatalogueModel::data(const QModelIndex &index, int role) const
 		// Colour swatches live only in the Colours column (the Wire ID column
 		// is kept plain so every row looks consistent).
 		if (index.column() == Colors && !w.coreColors.isEmpty())
-			return Iec60757::swatchStrip(w.coreColors, 14);
+			return Iec60757::swatchStrip(w.allCoreColors(), 14);
 		return QVariant();
 	}
 
@@ -92,6 +93,7 @@ QVariant WireCatalogueModel::headerData(int section, Qt::Orientation orientation
 
 	switch (section) {
 		case WireId:             return tr("Wire ID");
+		case Type:               return tr("Type");
 		case Manufacturer:       return tr("Manufacturer");
 		case ManufacturerPartNo: return tr("Mfr part no.");
 		case CrossSection:       return tr("Cross-sectional area (mm²)");
