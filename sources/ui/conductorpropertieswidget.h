@@ -19,13 +19,17 @@
 #define CONDUCTORPROPERTIESWIDGET_H
 
 #include "../conductorproperties.h"
+#include "../custom/wirecatalogue/wirespec.h"
 
 #include <QWidget>
 class QTextOrientationSpinBoxWidget;
 class QComboBox;
 class QPushButton;
 class QLabel;
+class QTableView;
 class WireCatalogueDb;
+class WireCatalogueModel;
+class WireFilterProxyModel;
 
 namespace Ui {
 	class ConductorPropertiesWidget;
@@ -54,12 +58,17 @@ class ConductorPropertiesWidget : public QWidget
 		QComboBox *autonumComboBox() const;
 		QPushButton *editAutonumPushButton() const;
 
+	signals:
+		/// Emitted when a catalogue wire is assigned from the "Assign wires"
+		/// tab, so the dialog can scope the change to this conductor only.
+		void wireAssigned();
+
 	private:
 		void initWidget();
 		void setConductorType(ConductorProperties::ConductorType type);
-		void initWireCatalogue();
-		void applyCatalogueWire(int index);
-		void applyCatalogueCore(int core_index);
+		void initAssignWiresTab();
+		void populateFilters();
+		WireSpec selectedWire() const;
 		void applyWireAppearance(const QString &section,
 								 const QString &colour,
 								 const QString &cableId,
@@ -76,15 +85,24 @@ class ConductorPropertiesWidget : public QWidget
 		void on_m_earth_cb_toggled(bool checked);
 		void on_m_neutral_cb_toggled(bool checked);
 		void on_m_update_preview_pb_clicked();
+		void filtersChanged();
+		void wireSelectionChanged();
+		void assignSelectedWire();
 
 	private:
 		Ui::ConductorPropertiesWidget *ui;
 		ConductorProperties m_properties;
 		QTextOrientationSpinBoxWidget *m_verti_select, *m_horiz_select;
-		WireCatalogueDb *m_wire_db = nullptr;       // Custom: shared wire catalogue
-		QComboBox *m_wire_catalogue_cb = nullptr;   // Custom: catalogue picker
-		QComboBox *m_wire_core_cb = nullptr;        // Custom: cable core selector
-		QLabel    *m_wire_core_label = nullptr;     // Custom: "Core :" label
+		// Custom (Trovo Tech): "Assign wires" tab.
+		WireCatalogueDb      *m_wire_db       = nullptr;
+		WireCatalogueModel   *m_wire_model    = nullptr;
+		WireFilterProxyModel *m_wire_proxy    = nullptr;
+		QTableView           *m_wire_table    = nullptr;
+		QComboBox            *m_colour_filter = nullptr;
+		QComboBox            *m_section_filter= nullptr;
+		QComboBox            *m_core_cb       = nullptr;
+		QLabel               *m_core_label    = nullptr;
+		QPushButton          *m_assign_btn    = nullptr;
 };
 
 #endif // CONDUCTORPROPERTIESWIDGET_H

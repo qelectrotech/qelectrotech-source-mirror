@@ -559,6 +559,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/custom/wirecatalogue/iec60757.h
   ${QET_DIR}/sources/custom/wirecatalogue/corecoloreditor.cpp
   ${QET_DIR}/sources/custom/wirecatalogue/corecoloreditor.h
+  ${QET_DIR}/sources/custom/wirecatalogue/wirefilterproxymodel.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/wirefilterproxymodel.h
 
   ${QET_DIR}/sources/TerminalStrip/physicalterminal.cpp
   ${QET_DIR}/sources/TerminalStrip/physicalterminal.h
