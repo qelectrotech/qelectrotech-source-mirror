@@ -1993,7 +1993,10 @@ void QETApp::configureQET()
 	// cree le dialogue
 	ConfigDialog cd;
 	cd.setWindowTitle(tr("Configurer QElectroTech", "window title"));
-	cd.setWindowModality(Qt::WindowModal);
+	// ApplicationModal so no other window can dispatch events while the dialog
+	// holds raw pointers derived from the current project list.  Same class of
+	// bug as ProjectPropertiesDialog — see issue #527.
+	cd.setWindowModality(Qt::ApplicationModal);
 	cd.addPage(new GeneralConfigurationPage());
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());
