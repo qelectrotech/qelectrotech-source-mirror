@@ -62,11 +62,18 @@ class WireCatalogueDb : public QObject
 		QVector<WireSpec> search(const QString &text) const;
 		int count() const;
 
+		// --- CSV import / export ---
+		/// Write the whole catalogue to a CSV file. Returns rows written, -1 on error.
+		int exportCsv(const QString &filePath) const;
+		/// Import wires from CSV (INSERT OR REPLACE). Returns rows imported, -1 on error.
+		int importCsv(const QString &filePath);
+
 	signals:
 		void catalogueChanged();
 
 	private:
 		bool createSchema();
+		void seedIfEmpty();   ///< Populate common IEC wires/cables when empty.
 		static WireSpec specFromQuery(const class QSqlQuery &q);
 		void bindSpec(class QSqlQuery &q, const WireSpec &spec) const;
 		void setError(const QString &context, const class QSqlQuery &q);

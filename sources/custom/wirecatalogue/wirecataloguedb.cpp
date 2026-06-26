@@ -26,6 +26,8 @@
 #include <QVariant>
 #include <QStandardPaths>
 #include <QDir>
+#include <QFile>
+#include <QTextStream>
 
 namespace {
 	/// Ordered column list shared by the schema and the SELECT/INSERT helpers.
@@ -33,7 +35,7 @@ namespace {
 		"wire_id, manufacturer_name, manufacturer_part_no, supplier_name, "
 		"supplier_part_no, cross_section_mm2, cable_outer_dia_mm, insulation_dia_mm, "
 		"num_cores, core_colors, shield, shield_type, voltage_rating_v, "
-		"temp_rating_c, flexible, color_primary, notes");
+		"temp_rating_c, flexible, color_primary, notes, family_name, core_sections");
 
 	// Stored as a JSON array of arrays: [["White","Blue"],["Brown"]] — one
 	// inner array per core (base + optional tracer colours).
@@ -66,6 +68,24 @@ namespace {
 				out << QStringList{v.toString()};
 			}
 		}
+		return out;
+	}
+
+	QString sectionsToJson(const QVector<double> &sections)
+	{
+		QJsonArray arr;
+		for (double s : sections)
+			arr.append(s);
+		return QString::fromUtf8(QJsonDocument(arr).toJson(QJsonDocument::Compact));
+	}
+
+	QVector<double> sectionsFromJson(const QString &json)
+	{
+		QVector<double> out;
+		const QJsonDocument doc = QJsonDocument::fromJson(json.toUtf8());
+		if (doc.isArray())
+			for (const QJsonValue &v : doc.array())
+				out << v.toDouble();
 		return out;
 	}
 }
@@ -134,12 +154,22 @@ bool WireCatalogueDb::createSchema()
 		"  temp_rating_c        INTEGER DEFAULT 0,"
 		"  flexible             INTEGER DEFAULT 0,"
 		"  color_primary        TEXT,"
-		"  notes                TEXT"
+		"  notes                TEXT,"
+		"  family_name          TEXT,"
+		"  core_sections        TEXT"          // JSON array of per-core sections
 		")");
 	if (!q.exec(ddl)) {
 		setError(QStringLiteral("createSchema"), q);
 		return false;
 	}
+
+	// Migrate older databases that predate family_name / core_sections.
+	// ALTER TABLE ADD COLUMN is a no-op error if the column already exists.
+	QSqlQuery alter(m_db);
+	alter.exec(QStringLiteral("ALTER TABLE wire ADD COLUMN family_name TEXT"));
+	alter.exec(QStringLiteral("ALTER TABLE wire ADD COLUMN core_sections TEXT"));
+
+	seedIfEmpty();
 	return true;
 }
 
@@ -162,6 +192,8 @@ void WireCatalogueDb::bindSpec(QSqlQuery &q, const WireSpec &spec) const
 	q.addBindValue(spec.isFlexible ? 1 : 0);
 	q.addBindValue(spec.colorPrimary);
 	q.addBindValue(spec.notes);
+	q.addBindValue(spec.familyName);
+	q.addBindValue(sectionsToJson(spec.coreSections));
 }
 
 WireSpec WireCatalogueDb::specFromQuery(const QSqlQuery &q)
@@ -184,6 +216,8 @@ WireSpec WireCatalogueDb::specFromQuery(const QSqlQuery &q)
 	s.isFlexible         = q.value(QStringLiteral("flexible")).toInt() != 0;
 	s.colorPrimary       = q.value(QStringLiteral("color_primary")).toString();
 	s.notes              = q.value(QStringLiteral("notes")).toString();
+	s.familyName         = q.value(QStringLiteral("family_name")).toString();
+	s.coreSections       = sectionsFromJson(q.value(QStringLiteral("core_sections")).toString());
 	return s;
 }
 
@@ -195,7 +229,7 @@ bool WireCatalogueDb::addWire(const WireSpec &spec)
 	}
 	QSqlQuery q(m_db);
 	q.prepare(QStringLiteral("INSERT INTO wire (%1) VALUES "
-		"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)").arg(kColumns));
+		"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)").arg(kColumns));
 	bindSpec(q, spec);
 	if (!q.exec()) {
 		setError(QStringLiteral("addWire"), q);
@@ -213,7 +247,7 @@ bool WireCatalogueDb::upsertWire(const WireSpec &spec)
 	}
 	QSqlQuery q(m_db);
 	q.prepare(QStringLiteral("INSERT OR REPLACE INTO wire (%1) VALUES "
-		"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)").arg(kColumns));
+		"(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)").arg(kColumns));
 	bindSpec(q, spec);
 	if (!q.exec()) {
 		setError(QStringLiteral("upsertWire"), q);
@@ -309,4 +343,204 @@ int WireCatalogueDb::count() const
 void WireCatalogueDb::setError(const QString &context, const QSqlQuery &q)
 {
 	m_last_error = QStringLiteral("%1: %2").arg(context, q.lastError().text());
+}
+
+// --- Seed data ---------------------------------------------------------------
+
+void WireCatalogueDb::seedIfEmpty()
+{
+	if (count() > 0)
+		return;
+
+	// A small starter set of common IEC single wires (H07V-K) + example cables.
+	auto wire = [](const QString &id, const QString &colour, double mm2) {
+		WireSpec s;
+		s.wireId = id;
+		s.manufacturerName = QStringLiteral("Generic");
+		s.familyName = QStringLiteral("H07V-K");
+		s.numCores = 1;
+		s.crossSectionMm2 = mm2;
+		s.colorPrimary = colour;
+		s.coreColors = { QStringList{colour} };
+		s.coreSections = { mm2 };
+		s.voltageRatingV = 450;
+		s.tempRatingC = 70;
+		s.isFlexible = true;
+		return s;
+	};
+
+	addWire(wire(QStringLiteral("WS-BK-1.5"),   QStringLiteral("Black"),        1.5));
+	addWire(wire(QStringLiteral("WS-BU-1.5"),   QStringLiteral("Blue"),         1.5));
+	addWire(wire(QStringLiteral("WS-BN-2.5"),   QStringLiteral("Brown"),        2.5));
+	addWire(wire(QStringLiteral("WS-GNYE-2.5"), QStringLiteral("Green-Yellow"), 2.5));
+	addWire(wire(QStringLiteral("WS-BK-6"),     QStringLiteral("Black"),        6.0));
+
+	// Example 4-core control cable (ÖLFLEX-style), uniform 0.5 mm².
+	WireSpec cable;
+	cable.wireId = QStringLiteral("CS-4G0.5");
+	cable.manufacturerName = QStringLiteral("Generic");
+	cable.familyName = QStringLiteral("Control_Cable");
+	cable.numCores = 4;
+	cable.crossSectionMm2 = 0.5;
+	cable.coreColors = { {QStringLiteral("Brown")}, {QStringLiteral("Black")},
+						 {QStringLiteral("Grey")},  {QStringLiteral("Green-Yellow")} };
+	cable.coreSections = { 0.5, 0.5, 0.5, 0.5 };
+	cable.hasShield = true;
+	cable.shieldType = QStringLiteral("Braid");
+	cable.voltageRatingV = 300;
+	cable.tempRatingC = 80;
+	cable.isFlexible = true;
+	addWire(cable);
+}
+
+// --- CSV import / export -----------------------------------------------------
+
+namespace {
+	const QStringList kCsvHeader = {
+		QStringLiteral("wire_id"), QStringLiteral("manufacturer_name"),
+		QStringLiteral("manufacturer_part_no"), QStringLiteral("supplier_name"),
+		QStringLiteral("supplier_part_no"), QStringLiteral("family_name"),
+		QStringLiteral("cross_section_mm2"), QStringLiteral("cable_outer_dia_mm"),
+		QStringLiteral("insulation_dia_mm"), QStringLiteral("num_cores"),
+		QStringLiteral("core_colors"), QStringLiteral("core_sections"),
+		QStringLiteral("shield"), QStringLiteral("shield_type"),
+		QStringLiteral("voltage_rating_v"), QStringLiteral("temp_rating_c"),
+		QStringLiteral("flexible"), QStringLiteral("color_primary"),
+		QStringLiteral("notes") };
+
+	QString csvEscape(const QString &field)
+	{
+		QString f = field;
+		if (f.contains(QLatin1Char(',')) || f.contains(QLatin1Char('"'))
+			|| f.contains(QLatin1Char('\n'))) {
+			f.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+			return QLatin1Char('"') + f + QLatin1Char('"');
+		}
+		return f;
+	}
+
+	// Split one CSV line into fields, honouring "quoted, fields" with "" escapes.
+	QStringList csvSplit(const QString &line)
+	{
+		QStringList out;
+		QString cur;
+		bool in_quotes = false;
+		for (int i = 0; i < line.size(); ++i) {
+			const QChar c = line.at(i);
+			if (in_quotes) {
+				if (c == QLatin1Char('"')) {
+					if (i + 1 < line.size() && line.at(i + 1) == QLatin1Char('"')) {
+						cur += QLatin1Char('"'); ++i;
+					} else {
+						in_quotes = false;
+					}
+				} else {
+					cur += c;
+				}
+			} else if (c == QLatin1Char('"')) {
+				in_quotes = true;
+			} else if (c == QLatin1Char(',')) {
+				out << cur; cur.clear();
+			} else {
+				cur += c;
+			}
+		}
+		out << cur;
+		return out;
+	}
+}
+
+int WireCatalogueDb::exportCsv(const QString &filePath) const
+{
+	QFile file(filePath);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		const_cast<WireCatalogueDb*>(this)->m_last_error =
+			QStringLiteral("exportCsv: cannot write %1").arg(filePath);
+		return -1;
+	}
+	QTextStream ts(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	ts.setCodec("UTF-8");
+#endif
+
+	ts << kCsvHeader.join(QLatin1Char(',')) << '\n';
+	int n = 0;
+	for (const WireSpec &w : allWires()) {
+		QStringList row;
+		row << w.wireId << w.manufacturerName << w.manufacturerPartNo
+			<< w.supplierName << w.supplierPartNo << w.familyName
+			<< QString::number(w.crossSectionMm2) << QString::number(w.outerDiaMm)
+			<< QString::number(w.insulationDiaMm) << QString::number(w.numCores)
+			<< coresToJson(w.coreColors) << sectionsToJson(w.coreSections)
+			<< (w.hasShield ? QStringLiteral("1") : QStringLiteral("0"))
+			<< w.shieldType << QString::number(w.voltageRatingV)
+			<< QString::number(w.tempRatingC)
+			<< (w.isFlexible ? QStringLiteral("1") : QStringLiteral("0"))
+			<< w.colorPrimary << w.notes;
+		QStringList esc;
+		for (const QString &f : row)
+			esc << csvEscape(f);
+		ts << esc.join(QLatin1Char(',')) << '\n';
+		++n;
+	}
+	return n;
+}
+
+int WireCatalogueDb::importCsv(const QString &filePath)
+{
+	QFile file(filePath);
+	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+		m_last_error = QStringLiteral("importCsv: cannot read %1").arg(filePath);
+		return -1;
+	}
+	QTextStream ts(&file);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	ts.setCodec("UTF-8");
+#endif
+
+	QStringList header;
+	int n = 0;
+	bool first = true;
+	while (!ts.atEnd()) {
+		const QString line = ts.readLine();
+		if (line.isEmpty())
+			continue;
+		const QStringList fields = csvSplit(line);
+		if (first) {
+			header = fields;
+			first = false;
+			continue;
+		}
+		QHash<QString, QString> m;
+		for (int i = 0; i < header.size() && i < fields.size(); ++i)
+			m.insert(header.at(i).trimmed(), fields.at(i));
+
+		WireSpec s;
+		s.wireId             = m.value(QStringLiteral("wire_id")).trimmed();
+		if (s.wireId.isEmpty())
+			continue;
+		s.manufacturerName   = m.value(QStringLiteral("manufacturer_name"));
+		s.manufacturerPartNo = m.value(QStringLiteral("manufacturer_part_no"));
+		s.supplierName       = m.value(QStringLiteral("supplier_name"));
+		s.supplierPartNo     = m.value(QStringLiteral("supplier_part_no"));
+		s.familyName         = m.value(QStringLiteral("family_name"));
+		s.crossSectionMm2    = m.value(QStringLiteral("cross_section_mm2")).toDouble();
+		s.outerDiaMm         = m.value(QStringLiteral("cable_outer_dia_mm")).toDouble();
+		s.insulationDiaMm    = m.value(QStringLiteral("insulation_dia_mm")).toDouble();
+		s.numCores           = m.value(QStringLiteral("num_cores")).toInt();
+		s.coreColors         = coresFromJson(m.value(QStringLiteral("core_colors")));
+		s.coreSections       = sectionsFromJson(m.value(QStringLiteral("core_sections")));
+		s.hasShield          = m.value(QStringLiteral("shield")).trimmed() == QLatin1String("1");
+		s.shieldType         = m.value(QStringLiteral("shield_type"));
+		s.voltageRatingV     = m.value(QStringLiteral("voltage_rating_v")).toInt();
+		s.tempRatingC        = m.value(QStringLiteral("temp_rating_c")).toInt();
+		s.isFlexible         = m.value(QStringLiteral("flexible")).trimmed() == QLatin1String("1");
+		s.colorPrimary       = m.value(QStringLiteral("color_primary"));
+		s.notes              = m.value(QStringLiteral("notes"));
+		if (s.numCores < 1) s.numCores = qMax(1, s.coreColors.size());
+
+		if (upsertWire(s))
+			++n;
+	}
+	return n;
 }

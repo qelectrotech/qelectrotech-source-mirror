@@ -448,9 +448,12 @@ void ConductorPropertiesWidget::assignSelectedWire()
 	} else if (w.isCable()) {
 		const QStringList core = w.coreColors.value(sel);
 		const QString colour = core.value(0);
+		// Per-core section (falls back to the cable's nominal section).
+		const QString core_section = QStringLiteral("%1mm²")
+				.arg(QString::number(w.coreSection(sel)));
 		const QString core_ref = QStringLiteral("%1:%2").arg(w.wireId).arg(sel + 1);
-		applyWireAppearance(section, colour, w.wireId,
-							QStringLiteral("%1  %2  %3").arg(core_ref, section, colour));
+		applyWireAppearance(core_section, colour, w.wireId,
+							QStringLiteral("%1  %2  %3").arg(core_ref, core_section, colour));
 	} else {
 		const QString colour = w.effectiveColor();
 		applyWireAppearance(section, colour, QString(),

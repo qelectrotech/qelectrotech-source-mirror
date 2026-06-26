@@ -58,6 +58,7 @@ class WireSpecDialog : public QDialog
 
 	private:
 		QLineEdit      *m_wire_id          = nullptr;
+		QLineEdit      *m_family           = nullptr;
 		QLineEdit      *m_manufacturer     = nullptr;
 		QLineEdit      *m_mfr_part_no      = nullptr;
 		QLineEdit      *m_supplier         = nullptr;

@@ -20,6 +20,7 @@
 
 #include <QGridLayout>
 #include <QLabel>
+#include <QDoubleSpinBox>
 
 namespace { const QString kNoColor = QStringLiteral("<No color>"); }
 
@@ -70,10 +71,11 @@ CoreColorEditor::CoreColorEditor(QWidget *parent) :
 	outer->addStretch(1);
 
 	// Header row.
-	m_grid->addWidget(new QLabel(tr("Core"), this),     0, 0);
-	m_grid->addWidget(new QLabel(tr("Colour 1"), this), 0, 1);
-	m_grid->addWidget(new QLabel(tr("Colour 2"), this), 0, 2);
-	m_grid->addWidget(new QLabel(tr("Colour 3"), this), 0, 3);
+	m_grid->addWidget(new QLabel(tr("Core"), this),       0, 0);
+	m_grid->addWidget(new QLabel(tr("Colour 1"), this),   0, 1);
+	m_grid->addWidget(new QLabel(tr("Colour 2"), this),   0, 2);
+	m_grid->addWidget(new QLabel(tr("Colour 3"), this),   0, 3);
+	m_grid->addWidget(new QLabel(tr("Section (mm²)"), this), 0, 4);
 	m_grid->setColumnStretch(1, 1);
 	m_grid->setColumnStretch(2, 1);
 	m_grid->setColumnStretch(3, 1);
@@ -90,14 +92,21 @@ void CoreColorEditor::addCore()
 	row.c1 = new WireColorComboBox(this);
 	row.c2 = new WireColorComboBox(this);
 	row.c3 = new WireColorComboBox(this);
+	row.section = new QDoubleSpinBox(this);
+	row.section->setRange(0.0, 1000.0);
+	row.section->setDecimals(2);
+	row.section->setToolTip(tr("Core cross-section (0 = use cable default)"));
 
 	for (WireColorComboBox *c : {row.c1, row.c2, row.c3})
 		connect(c, &QComboBox::currentTextChanged, this, &CoreColorEditor::coresChanged);
+	connect(row.section, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
+			this, &CoreColorEditor::coresChanged);
 
-	m_grid->addWidget(row.number, r, 0);
-	m_grid->addWidget(row.c1,     r, 1);
-	m_grid->addWidget(row.c2,     r, 2);
-	m_grid->addWidget(row.c3,     r, 3);
+	m_grid->addWidget(row.number,  r, 0);
+	m_grid->addWidget(row.c1,      r, 1);
+	m_grid->addWidget(row.c2,      r, 2);
+	m_grid->addWidget(row.c3,      r, 3);
+	m_grid->addWidget(row.section, r, 4);
 
 	m_rows.append(row);
 	emit coresChanged();
@@ -112,7 +121,8 @@ void CoreColorEditor::removeSelectedCore()
 	for (QWidget *w : {static_cast<QWidget*>(row.number),
 					   static_cast<QWidget*>(row.c1),
 					   static_cast<QWidget*>(row.c2),
-					   static_cast<QWidget*>(row.c3)}) {
+					   static_cast<QWidget*>(row.c3),
+					   static_cast<QWidget*>(row.section)}) {
 		m_grid->removeWidget(w);
 		w->deleteLater();
 	}
@@ -141,7 +151,16 @@ QVector<QStringList> CoreColorEditor::colors() const
 	return out;
 }
 
-void CoreColorEditor::setColors(const QVector<QStringList> &cores)
+QVector<double> CoreColorEditor::sections() const
+{
+	QVector<double> out;
+	for (const Row &row : m_rows)
+		out << row.section->value();
+	return out;
+}
+
+void CoreColorEditor::setCores(const QVector<QStringList> &cores,
+							   const QVector<double> &sections)
 {
 	const int target = qMax(1, cores.size());
 	while (m_rows.size() < target)
@@ -154,5 +173,6 @@ void CoreColorEditor::setColors(const QVector<QStringList> &cores)
 		m_rows.at(i).c1->setColorName(core.value(0));
 		m_rows.at(i).c2->setColorName(core.value(1));
 		m_rows.at(i).c3->setColorName(core.value(2));
+		m_rows.at(i).section->setValue(i < sections.size() ? sections.at(i) : 0.0);
 	}
 }

@@ -29,6 +29,7 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 #include <QDir>
+#include <QFileDialog>
 
 WireCatalogueWidget::WireCatalogueWidget(QWidget *parent) :
 	QDockWidget(tr("Wire / cable catalogue"), parent)
@@ -74,10 +75,17 @@ void WireCatalogueWidget::buildUi()
 	m_edit_action   = new QAction(tr("Edit"),    this);
 	m_remove_action = new QAction(tr("Delete"),  this);
 	auto *refresh_action = new QAction(tr("Refresh"), this);
+	auto *import_action  = new QAction(tr("Import…"), this);
+	auto *export_action  = new QAction(tr("Export…"), this);
 	toolbar->addAction(m_add_action);
 	toolbar->addAction(m_edit_action);
 	toolbar->addAction(m_remove_action);
 	toolbar->addAction(refresh_action);
+	toolbar->addSeparator();
+	toolbar->addAction(import_action);
+	toolbar->addAction(export_action);
+	connect(import_action,   &QAction::triggered, this, &WireCatalogueWidget::importCsv);
+	connect(export_action,   &QAction::triggered, this, &WireCatalogueWidget::exportCsv);
 	connect(m_add_action,    &QAction::triggered, this, &WireCatalogueWidget::addWire);
 	connect(m_edit_action,   &QAction::triggered, this, &WireCatalogueWidget::editWire);
 	connect(m_remove_action, &QAction::triggered, this, &WireCatalogueWidget::removeWire);
@@ -195,4 +203,37 @@ void WireCatalogueWidget::removeWire()
 		return;
 	}
 	m_model->refresh();
+}
+
+void WireCatalogueWidget::exportCsv()
+{
+	const QString path = QFileDialog::getSaveFileName(this,
+		tr("Export wire catalogue"), QStringLiteral("wirecatalogue.csv"),
+		tr("CSV files (*.csv)"));
+	if (path.isEmpty())
+		return;
+
+	const int n = m_db->exportCsv(path);
+	if (n < 0)
+		QMessageBox::warning(this, tr("Export"), m_db->lastError());
+	else
+		QMessageBox::information(this, tr("Export"),
+			tr("Exported %1 wire(s) to:\n%2").arg(n).arg(path));
+}
+
+void WireCatalogueWidget::importCsv()
+{
+	const QString path = QFileDialog::getOpenFileName(this,
+		tr("Import wire catalogue"), QString(), tr("CSV files (*.csv)"));
+	if (path.isEmpty())
+		return;
+
+	const int n = m_db->importCsv(path);
+	if (n < 0) {
+		QMessageBox::warning(this, tr("Import"), m_db->lastError());
+		return;
+	}
+	m_model->refresh();
+	QMessageBox::information(this, tr("Import"),
+		tr("Imported %1 wire(s).").arg(n));
 }

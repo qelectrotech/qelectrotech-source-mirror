@@ -69,14 +69,17 @@ QWidget *WireSpecDialog::buildGeneralTab()
 
 	// --- Identification ---
 	m_wire_id      = new QLineEdit(tab);
+	m_family       = new QLineEdit(tab);
+	m_family->setPlaceholderText(tr("e.g. CAN_Cable, H07V-K"));
 	m_manufacturer = new QLineEdit(tab);
 	m_mfr_part_no  = new QLineEdit(tab);
 
 	auto *id_box = new QGroupBox(tr("Identification"), tab);
 	auto *id_form = new QFormLayout(id_box);
-	id_form->addRow(tr("Wire ID *"),   m_wire_id);
-	id_form->addRow(tr("Manufacturer"), m_manufacturer);
-	id_form->addRow(tr("Mfr part no."), m_mfr_part_no);
+	id_form->addRow(tr("Wire ID *"),     m_wire_id);
+	id_form->addRow(tr("Family / type"), m_family);
+	id_form->addRow(tr("Manufacturer"),  m_manufacturer);
+	id_form->addRow(tr("Mfr part no."),  m_mfr_part_no);
 
 	// --- Supplier ---
 	m_supplier         = new QLineEdit(tab);
@@ -194,6 +197,7 @@ void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
 {
 	m_wire_id->setText(spec.wireId);
 	m_wire_id->setReadOnly(editing); // wire_id is the primary key
+	m_family->setText(spec.familyName);
 	m_manufacturer->setText(spec.manufacturerName);
 	m_mfr_part_no->setText(spec.manufacturerPartNo);
 	m_supplier->setText(spec.supplierName);
@@ -218,7 +222,7 @@ void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
 	QVector<QStringList> cores = spec.coreColors;
 	if (cores.isEmpty())
 		cores = QVector<QStringList>(qMax(1, spec.numCores));
-	m_cores->setColors(cores);
+	m_cores->setCores(cores, spec.coreSections);
 	updateCoreCountLabel();
 
 	setWindowTitle(editing ? tr("Edit wire / cable") : tr("New wire / cable"));
@@ -228,6 +232,7 @@ WireSpec WireSpecDialog::wireSpec() const
 {
 	WireSpec s;
 	s.wireId             = m_wire_id->text().trimmed();
+	s.familyName         = m_family->text().trimmed();
 	s.manufacturerName   = m_manufacturer->text().trimmed();
 	s.manufacturerPartNo = m_mfr_part_no->text().trimmed();
 	s.supplierName       = m_supplier->text().trimmed();
@@ -236,6 +241,7 @@ WireSpec WireSpecDialog::wireSpec() const
 	s.outerDiaMm         = m_outer_dia->value();
 	s.insulationDiaMm    = m_insulation_dia->value();
 	s.coreColors         = m_cores->colors();
+	s.coreSections       = m_cores->sections();
 	s.numCores           = m_cores->coreCount();
 	s.hasShield          = m_shield->isChecked();
 	s.shieldType         = s.hasShield ? m_shield_type->currentText() : QString();

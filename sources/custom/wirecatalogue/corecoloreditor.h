@@ -25,6 +25,7 @@
 
 class QGridLayout;
 class QLabel;
+class QDoubleSpinBox;
 
 /**
 	@brief Editable combo box pre-filled with IEC 60757 colours + swatch icons.
@@ -60,7 +61,11 @@ class CoreColorEditor : public QWidget
 		/// Per-core colours: each entry is {base, tracer1, tracer2} with empties
 		/// trimmed, so a single-colour core returns a 1-element list.
 		QVector<QStringList> colors() const;
-		void setColors(const QVector<QStringList> &cores);
+		/// Per-core cross-sections (mm²), parallel to colors().
+		QVector<double> sections() const;
+		/// Set rows from colours + sections (sections may be shorter/empty).
+		void setCores(const QVector<QStringList> &cores,
+					  const QVector<double> &sections);
 
 	signals:
 		void coresChanged();
@@ -75,6 +80,7 @@ class CoreColorEditor : public QWidget
 			WireColorComboBox *c1;
 			WireColorComboBox *c2;
 			WireColorComboBox *c3;
+			QDoubleSpinBox *section;
 		};
 		void renumber();
 

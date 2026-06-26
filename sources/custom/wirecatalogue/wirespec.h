@@ -44,15 +44,20 @@ struct WireSpec
 		QString manufacturerPartNo;     ///< e.g. "ÖLFLEX 100 BK"
 		QString supplierName;           ///< e.g. "RS Components"
 		QString supplierPartNo;         ///< e.g. "724-1652"
+		QString familyName;             ///< Cable family/type, e.g. "CAN_Cable"
 
 		// --- Physical / electrical ---
-		double  crossSectionMm2 = 0.0;  ///< Conductor cross-section, mm²
+		double  crossSectionMm2 = 0.0;  ///< Nominal/default conductor section, mm²
 		double  outerDiaMm      = 0.0;  ///< Cable outer diameter, mm
 		double  insulationDiaMm = 0.0;  ///< Single-core insulation diameter, mm
 		int     numCores        = 1;    ///< 1 = single wire, >1 = multi-core cable
 		/// Per-core colours. coreColors[i] holds that core's colours as
 		/// {base, tracer1, tracer2} — 1 to 3 IEC 60757 names (tracers optional).
 		QVector<QStringList> coreColors;
+		/// Per-core cross-section, mm². coreSections[i] pairs with coreColors[i];
+		/// 0 means "use the nominal crossSectionMm2". Allows mixed cables
+		/// (e.g. power 4mm² + signal 0.5mm²).
+		QVector<double> coreSections;
 		bool    hasShield       = false;
 		QString shieldType;             ///< "Braid" / "Foil" / "Both"
 		int     voltageRatingV  = 0;
@@ -93,14 +98,24 @@ struct WireSpec
 			@param familyName : optional cable family prefix (e.g. "CAN_Cable").
 			When empty the primary colour is used as the prefix.
 		*/
-		QString specLabel(const QString &familyName = QString()) const
+		QString specLabel(const QString &family = QString()) const
 		{
-			const QString prefix = familyName.isEmpty() ? colorPrimary : familyName;
+			// Prefer an explicit override, then the stored family name, then
+			// the primary colour, then "Wire".
+			QString prefix = family;
+			if (prefix.isEmpty()) prefix = familyName;
+			if (prefix.isEmpty()) prefix = colorPrimary;
+			if (prefix.isEmpty()) prefix = QStringLiteral("Wire");
 			QString cs = QString::number(crossSectionMm2);
-			return QStringLiteral("%1_%2x%3mm²")
-					.arg(prefix.isEmpty() ? QStringLiteral("Wire") : prefix)
-					.arg(numCores)
-					.arg(cs);
+			return QStringLiteral("%1_%2x%3mm²").arg(prefix).arg(numCores).arg(cs);
+		}
+
+		/// Section of core @p i (mm²); falls back to the nominal section.
+		double coreSection(int i) const
+		{
+			if (i >= 0 && i < coreSections.size() && coreSections.at(i) > 0.0)
+				return coreSections.at(i);
+			return crossSectionMm2;
 		}
 
 		bool operator==(const WireSpec &o) const { return wireId == o.wireId; }

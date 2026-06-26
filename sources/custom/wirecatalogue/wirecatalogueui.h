@@ -48,6 +48,8 @@ class WireCatalogueWidget : public QDockWidget
 		void removeWire();
 		void filterChanged(const QString &text);
 		void selectionChanged();
+		void importCsv();
+		void exportCsv();
 
 	private:
 		void buildUi();
