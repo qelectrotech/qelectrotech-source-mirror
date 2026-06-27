@@ -21,6 +21,9 @@
 #include "../qetproject.h"
 #include "xmlelementcollection.h"
 
+#include <QMetaObject>
+#include <QStandardItemModel>
+
 /**
 	@brief XmlProjectElementCollectionItem::XmlProjectElementCollectionItem
 	Constructor
@@ -52,22 +55,26 @@ bool XmlProjectElementCollectionItem::isElement() const
 	@brief XmlProjectElementCollectionItem::localName
 	@return the located name of this item
 */
+/**
+ * @brief XmlProjectElementCollectionItem::computeDisplayName
+ * Compute the display name without calling setText() — safe from any thread.
+ */
+QString XmlProjectElementCollectionItem::computeDisplayName() const
+{
+	if (isCollectionRoot()) {
+		return m_project->title().isEmpty()
+			? QObject::tr("Projet sans titre")
+			: m_project->title();
+	}
+	ElementsLocation location(embeddedPath(), m_project);
+	return location.name();
+}
+
 QString XmlProjectElementCollectionItem::localName()
 {
 	if (!text().isNull())
 		return text();
-
-	if (isCollectionRoot()) {
-		if (m_project->title().isEmpty())
-			setText(QObject::tr("Projet sans titre"));
-		else
-			setText(m_project->title());
-	}
-	else {
-		ElementsLocation location (embeddedPath(), m_project);
-		setText(location.name());
-	}
-
+	setText(computeDisplayName());
 	return text();
 }
 
@@ -187,33 +194,50 @@ void XmlProjectElementCollectionItem::setProject(QETProject *project,
 
 /**
 	@brief XmlProjectElementCollectionItem::setUpData
-	SetUp the data of this item
+	SetUp the data of this item.
+
+	May be called from a QtConcurrent worker thread.  Expensive computation
+	runs on the calling thread; QStandardItem mutations are dispatched to the
+	main (GUI) thread via BlockingQueuedConnection.
 */
 void XmlProjectElementCollectionItem::setUpData()
 {
-		//Setup the displayed name
-	localName();
+	// ── Computation phase (any thread) ────────────────────────────────────
+	const Qt::ItemFlags flags = isDir()
+		? (Qt::ItemIsSelectable | Qt::ItemIsDragEnabled
+		   | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled)
+		: (Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
 
-	if (isDir()) {
-		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsDropEnabled | Qt::ItemIsEnabled);
-	}
-	else
-	{
-		setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
-			
-			//Set the local name and all informations of the element
-			//in the data Qt::UserRole+1, these data will be use for search.
+	const QString display_name = computeDisplayName();
+	const QString tooltip      = collectionPath();
+	QString search_data;
+
+	if (!isDir()) {
 		ElementsLocation location(embeddedPath(), m_project);
 		DiagramContext context = location.elementInformations();
-		QStringList search_list;
-		for (QString key : context.keys()) {
-			search_list.append(context.value(key).toString());
-		}
-		search_list.append(localName());
-		setData(search_list.join(" "));
+		QStringList sl;
+		for (const QString &key : context.keys())
+			sl.append(context.value(key).toString());
+		sl.append(display_name);
+		search_data = sl.join(' ');
 	}
 
-	setToolTip(collectionPath());
+	// ── Apply phase (main/GUI thread only) ────────────────────────────────
+	auto apply = [this, flags, display_name, search_data, tooltip]() {
+		setText(display_name);
+		setFlags(flags);
+		setData(search_data);
+		setToolTip(tooltip);
+	};
+
+	if (QStandardItemModel *m = model()) {
+		if (QThread::currentThread() == m->thread())
+			apply();
+		else
+			QMetaObject::invokeMethod(m, apply, Qt::BlockingQueuedConnection);
+	} else {
+		apply();
+	}
 }
 
 /**

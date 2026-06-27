@@ -61,6 +61,7 @@ class FileElementCollectionItem : public ElementCollectionItem
 				 bool set_data = true,
 				 bool hide_element = false);
 		void populate(bool set_data = true, bool hide_element = false);
+		QString computeDisplayName() const;
 
 	private:
 		QString m_path;

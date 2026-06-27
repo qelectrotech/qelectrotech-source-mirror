@@ -58,6 +58,7 @@ class XmlProjectElementCollectionItem : public ElementCollectionItem
 				   QETProject *project,
 				   bool set_data = true,
 				   bool hide_element = false);
+		QString computeDisplayName() const;
 
 	private:
 		QETProject *m_project = nullptr;

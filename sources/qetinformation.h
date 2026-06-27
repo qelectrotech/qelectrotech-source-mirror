@@ -33,96 +33,96 @@
 namespace QETInformation
 {
 	/** Default information related to element **/
-	static QString ELMT_LABEL                        = "label";
-	static QString ELMT_FORMULA                      = "formula";
-	static QString ELMT_COMMENT                      = "comment";
-	static QString ELMT_FUNCTION                     = "function";
-	static QString ELMT_DESCRIPTION                  = "description";
-	static QString ELMT_DESIGNATION                  = "designation";
-	static QString ELMT_MANUFACTURER                 = "manufacturer";
-	static QString ELMT_MANUFACTURER_REF             = "manufacturer_reference";
-	static QString ELMT_MACHINE_MANUFACTURER_REF     = "machine_manufacturer_reference";
-	static QString ELMT_SUPPLIER                     = "supplier";
-	static QString ELMT_QUANTITY                     = "quantity";
-	static QString ELMT_UNITY                        = "unity";
-	static QString ELMT_PLANT                        = "plant";
-	static QString ELMT_LOCATION                     = "location";
-	static QString ELMT_AUX1                         = "auxiliary1";
-	static QString ELMT_DESCRIPTION_AUX1                 = "description_auxiliary1";
-	static QString ELMT_DESIGNATION_AUX1                  = "designation_auxiliary1";
-	static QString ELMT_MANUFACTURER_AUX1                 = "manufacturer_auxiliary1";
-	static QString ELMT_MANUFACTURER_REF_AUX1             = "manufacturer_reference_auxiliary1";
-	static QString ELMT_MACHINE_MANUFACTURER_REF_AUX1     = "machine_manufacturer_reference_auxiliary1";
-	static QString ELMT_SUPPLIER_AUX1                     = "supplier_auxiliary1";
-	static QString ELMT_QUANTITY_AUX1                     = "quantity_auxiliary1";
-	static QString ELMT_UNITY_AUX1                        = "unity_auxiliary1";
-	static QString ELMT_AUX2                         = "auxiliary2";
-	static QString ELMT_DESCRIPTION_AUX2                 = "description_auxiliary2";
-	static QString ELMT_DESIGNATION_AUX2                  = "designation_auxiliary2";
-	static QString ELMT_MANUFACTURER_AUX2                 = "manufacturer_auxiliary2";
-	static QString ELMT_MANUFACTURER_REF_AUX2             = "manufacturer_reference_auxiliary2";
-	static QString ELMT_MACHINE_MANUFACTURER_REF_AUX2     = "machine_manufacturer_reference_auxiliary2";
-	static QString ELMT_SUPPLIER_AUX2                     = "supplier_auxiliary2";
-	static QString ELMT_QUANTITY_AUX2                     = "quantity_auxiliary2";
-	static QString ELMT_UNITY_AUX2                        = "unity_auxiliary2";
-	static QString ELMT_AUX3                         = "auxiliary3";
-	static QString ELMT_DESCRIPTION_AUX3                 = "description_auxiliary3";
-	static QString ELMT_DESIGNATION_AUX3                  = "designation_auxiliary3";
-	static QString ELMT_MANUFACTURER_AUX3                 = "manufacturer_auxiliary3";
-	static QString ELMT_MANUFACTURER_REF_AUX3             = "manufacturer_reference_auxiliary3";
-	static QString ELMT_MACHINE_MANUFACTURER_REF_AUX3     = "machine_manufacturer_reference_auxiliary3";
-	static QString ELMT_SUPPLIER_AUX3                     = "supplier_auxiliary3";
-	static QString ELMT_QUANTITY_AUX3                     = "quantity_auxiliary3";
-	static QString ELMT_UNITY_AUX3                        = "unity_auxiliary3";
-	static QString ELMT_AUX4                         = "auxiliary4";
-	static QString ELMT_DESCRIPTION_AUX4                 = "description_auxiliary4";
-	static QString ELMT_DESIGNATION_AUX4                  = "designation_auxiliary4";
-	static QString ELMT_MANUFACTURER_AUX4                 = "manufacturer_auxiliary4";
-	static QString ELMT_MANUFACTURER_REF_AUX4             = "manufacturer_reference_auxiliary4";
-	static QString ELMT_MACHINE_MANUFACTURER_REF_AUX4     = "machine_manufacturer_reference_auxiliary4";
-	static QString ELMT_SUPPLIER_AUX4                     = "supplier_auxiliary4";
-	static QString ELMT_QUANTITY_AUX4                     = "quantity_auxiliary4";
-	static QString ELMT_UNITY_AUX4                        = "unity_auxiliary4";
+	inline const QString ELMT_LABEL = QStringLiteral("label");
+	inline const QString ELMT_FORMULA = QStringLiteral("formula");
+	inline const QString ELMT_COMMENT = QStringLiteral("comment");
+	inline const QString ELMT_FUNCTION = QStringLiteral("function");
+	inline const QString ELMT_DESCRIPTION = QStringLiteral("description");
+	inline const QString ELMT_DESIGNATION = QStringLiteral("designation");
+	inline const QString ELMT_MANUFACTURER = QStringLiteral("manufacturer");
+	inline const QString ELMT_MANUFACTURER_REF = QStringLiteral("manufacturer_reference");
+	inline const QString ELMT_MACHINE_MANUFACTURER_REF = QStringLiteral("machine_manufacturer_reference");
+	inline const QString ELMT_SUPPLIER = QStringLiteral("supplier");
+	inline const QString ELMT_QUANTITY = QStringLiteral("quantity");
+	inline const QString ELMT_UNITY = QStringLiteral("unity");
+	inline const QString ELMT_PLANT = QStringLiteral("plant");
+	inline const QString ELMT_LOCATION = QStringLiteral("location");
+	inline const QString ELMT_AUX1 = QStringLiteral("auxiliary1");
+	inline const QString ELMT_DESCRIPTION_AUX1 = QStringLiteral("description_auxiliary1");
+	inline const QString ELMT_DESIGNATION_AUX1 = QStringLiteral("designation_auxiliary1");
+	inline const QString ELMT_MANUFACTURER_AUX1 = QStringLiteral("manufacturer_auxiliary1");
+	inline const QString ELMT_MANUFACTURER_REF_AUX1 = QStringLiteral("manufacturer_reference_auxiliary1");
+	inline const QString ELMT_MACHINE_MANUFACTURER_REF_AUX1 = QStringLiteral("machine_manufacturer_reference_auxiliary1");
+	inline const QString ELMT_SUPPLIER_AUX1 = QStringLiteral("supplier_auxiliary1");
+	inline const QString ELMT_QUANTITY_AUX1 = QStringLiteral("quantity_auxiliary1");
+	inline const QString ELMT_UNITY_AUX1 = QStringLiteral("unity_auxiliary1");
+	inline const QString ELMT_AUX2 = QStringLiteral("auxiliary2");
+	inline const QString ELMT_DESCRIPTION_AUX2 = QStringLiteral("description_auxiliary2");
+	inline const QString ELMT_DESIGNATION_AUX2 = QStringLiteral("designation_auxiliary2");
+	inline const QString ELMT_MANUFACTURER_AUX2 = QStringLiteral("manufacturer_auxiliary2");
+	inline const QString ELMT_MANUFACTURER_REF_AUX2 = QStringLiteral("manufacturer_reference_auxiliary2");
+	inline const QString ELMT_MACHINE_MANUFACTURER_REF_AUX2 = QStringLiteral("machine_manufacturer_reference_auxiliary2");
+	inline const QString ELMT_SUPPLIER_AUX2 = QStringLiteral("supplier_auxiliary2");
+	inline const QString ELMT_QUANTITY_AUX2 = QStringLiteral("quantity_auxiliary2");
+	inline const QString ELMT_UNITY_AUX2 = QStringLiteral("unity_auxiliary2");
+	inline const QString ELMT_AUX3 = QStringLiteral("auxiliary3");
+	inline const QString ELMT_DESCRIPTION_AUX3 = QStringLiteral("description_auxiliary3");
+	inline const QString ELMT_DESIGNATION_AUX3 = QStringLiteral("designation_auxiliary3");
+	inline const QString ELMT_MANUFACTURER_AUX3 = QStringLiteral("manufacturer_auxiliary3");
+	inline const QString ELMT_MANUFACTURER_REF_AUX3 = QStringLiteral("manufacturer_reference_auxiliary3");
+	inline const QString ELMT_MACHINE_MANUFACTURER_REF_AUX3 = QStringLiteral("machine_manufacturer_reference_auxiliary3");
+	inline const QString ELMT_SUPPLIER_AUX3 = QStringLiteral("supplier_auxiliary3");
+	inline const QString ELMT_QUANTITY_AUX3 = QStringLiteral("quantity_auxiliary3");
+	inline const QString ELMT_UNITY_AUX3 = QStringLiteral("unity_auxiliary3");
+	inline const QString ELMT_AUX4 = QStringLiteral("auxiliary4");
+	inline const QString ELMT_DESCRIPTION_AUX4 = QStringLiteral("description_auxiliary4");
+	inline const QString ELMT_DESIGNATION_AUX4 = QStringLiteral("designation_auxiliary4");
+	inline const QString ELMT_MANUFACTURER_AUX4 = QStringLiteral("manufacturer_auxiliary4");
+	inline const QString ELMT_MANUFACTURER_REF_AUX4 = QStringLiteral("manufacturer_reference_auxiliary4");
+	inline const QString ELMT_MACHINE_MANUFACTURER_REF_AUX4 = QStringLiteral("machine_manufacturer_reference_auxiliary4");
+	inline const QString ELMT_SUPPLIER_AUX4 = QStringLiteral("supplier_auxiliary4");
+	inline const QString ELMT_QUANTITY_AUX4 = QStringLiteral("quantity_auxiliary4");
+	inline const QString ELMT_UNITY_AUX4 = QStringLiteral("unity_auxiliary4");
 
 
 	/** Default information related to conductor **/
-	static QString COND_FUNCTION             = "function";
-	static QString COND_TENSION_PROTOCOL     = "tension_protocol";
-	static QString COND_COLOR                = "conductor_color";
-	static QString COND_SECTION              = "conductor_section";
-	static QString COND_FORMULA              = "formula";
-	static QString COND_TEXT                 = "text";
+	inline const QString COND_FUNCTION = QStringLiteral("function");
+	inline const QString COND_TENSION_PROTOCOL = QStringLiteral("tension_protocol");
+	inline const QString COND_COLOR = QStringLiteral("conductor_color");
+	inline const QString COND_SECTION = QStringLiteral("conductor_section");
+	inline const QString COND_FORMULA = QStringLiteral("formula");
+	inline const QString COND_TEXT = QStringLiteral("text");
 
 	/** Default information related to diagram **/
-	static QString DIA_AUTHOR             = "author";
-	static QString DIA_DATE               = "date";
-	static QString DIA_DISPLAY_FOLIO      = "display_folio";
-	static QString DIA_FILENAME           = "filename";
-	static QString DIA_FOLIO              = "folio";
-	static QString DIA_INDEX_REV          = "indexrev";
-	static QString DIA_LOCMACH            = "locmach";
-	static QString DIA_PLANT              = "plant";
-	static QString DIA_POS                = "pos";
-	static QString DIA_TITLE              = "title";
-	static QString DIA_FOLIO_ID           = "folio-id";
-	static QString DIA_PREVIOUS_FOLIO_NUM = "previous-folio-num";
-	static QString DIA_NEXT_FOLIO_NUM     = "next-folio-num";
+	inline const QString DIA_AUTHOR = QStringLiteral("author");
+	inline const QString DIA_DATE = QStringLiteral("date");
+	inline const QString DIA_DISPLAY_FOLIO = QStringLiteral("display_folio");
+	inline const QString DIA_FILENAME = QStringLiteral("filename");
+	inline const QString DIA_FOLIO = QStringLiteral("folio");
+	inline const QString DIA_INDEX_REV = QStringLiteral("indexrev");
+	inline const QString DIA_LOCMACH = QStringLiteral("locmach");
+	inline const QString DIA_PLANT = QStringLiteral("plant");
+	inline const QString DIA_POS = QStringLiteral("pos");
+	inline const QString DIA_TITLE = QStringLiteral("title");
+	inline const QString DIA_FOLIO_ID = QStringLiteral("folio-id");
+	inline const QString DIA_PREVIOUS_FOLIO_NUM = QStringLiteral("previous-folio-num");
+	inline const QString DIA_NEXT_FOLIO_NUM = QStringLiteral("next-folio-num");
 
 	/** Default information related to project **/
-	static QString PROJECT_FOLIO_TOTAL     = "folio-total";
-	static QString PROJECT_TITLE           = "projecttitle";
-	static QString PROJECT_PATH            = "projectpath";
-	static QString PROJECT_FILE_NAME       = "projectfilename";
-	static QString PROJECT_SAVE_DATE       = "saveddate";
-	static QString PROJECT_SAVE_DATE_EU    = "saveddate-eu";
-	static QString PROJECT_SAVE_DATE_US    = "saveddate-us";
-	static QString PROJECT_SAVE_TIME       = "savedtime";
-	static QString PROJECT_SAVED_FILE_NAME = "savedfilename";
-	static QString PROJECT_SAVED_FILE_PATH = "savedfilepath";
+	inline const QString PROJECT_FOLIO_TOTAL = QStringLiteral("folio-total");
+	inline const QString PROJECT_TITLE = QStringLiteral("projecttitle");
+	inline const QString PROJECT_PATH = QStringLiteral("projectpath");
+	inline const QString PROJECT_FILE_NAME = QStringLiteral("projectfilename");
+	inline const QString PROJECT_SAVE_DATE = QStringLiteral("saveddate");
+	inline const QString PROJECT_SAVE_DATE_EU = QStringLiteral("saveddate-eu");
+	inline const QString PROJECT_SAVE_DATE_US = QStringLiteral("saveddate-us");
+	inline const QString PROJECT_SAVE_TIME = QStringLiteral("savedtime");
+	inline const QString PROJECT_SAVED_FILE_NAME = QStringLiteral("savedfilename");
+	inline const QString PROJECT_SAVED_FILE_PATH = QStringLiteral("savedfilepath");
 
 
 	/** Default information related to QElectroTech **/
-	static QString QET_VERSION = "version";
+	inline const QString QET_VERSION = QStringLiteral("version");
 
 
 
