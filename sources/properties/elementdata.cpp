@@ -49,18 +49,18 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 		return false;
 		}
 
-		// --- HIER STARTET UNSER DEBUG-BLOCK ---
-		// Wir holen den String aus der XML und speichern ihn kurz zwischen
+		// --- OUR DEBUG BLOCK STARTS HERE ---
+		// We retrieve the string from the XML and store it temporarily
 		QString raw_type_string = xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple"));
 
-	qDebug() << "\n=== NEUES BAUTEIL WIRD GELADEN ===";
-	qDebug() << "[XML Parser] Roher 'link_type' String aus der .elmt Datei:" << raw_type_string;
+	qDebug() << "\n=== NEW COMPONENT IS LOADING ===";
+	qDebug() << "[XML Parser] Raw “link_type” string from the .elmt file:" << raw_type_string;
 
-	// Jetzt übergeben wir ihn an deine Übersetzungs-Funktion
+	// Now we’ll pass it on to your translation function
 	m_type = typeFromString(raw_type_string);
 
-	qDebug() << "[XML Parser] Übersetzter ElementData-Typ:" << typeToString(m_type);
-	// --- HIER ENDET UNSER DEBUG-BLOCK ---
+	qDebug() << "[XML Parser] Translated ElementData type:" << typeToString(m_type);
+	// --- THIS IS WHERE OUR DEBUG BLOCK ENDS ---
 
 	kindInfoFromXml(xml_element);
 	m_informations.fromXml(xml_element.firstChildElement(QStringLiteral("elementInformations")),
