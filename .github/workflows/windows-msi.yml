@@ -74,9 +74,6 @@ jobs:
             }
           }
 
-          # Numeric MSI version: 4 digits required (e.g. 0.100.1.0)
-          $verMsi = "$ver.0"
-
           # Short SHA for the display version
           $sha = git rev-parse --short HEAD 2>$null
           if (-not $sha) { $sha = "unknown" }
@@ -84,6 +81,13 @@ jobs:
           # Cumulative revision number (same calculation as windows-build.yml)
           $count = git rev-list HEAD --count 2>$null
           $rev = [int]$count + 473
+
+          # MSI Version only compares Major.Minor.Build (the 4th field is
+          # ignored by Windows Installer for upgrade detection), so we
+          # inject rev into Build to force a real increase between
+          # nightlies and trigger MajorUpgrade's automatic uninstall.
+          $verParts = $ver -split '\.'
+          $verMsi = "$($verParts[0]).$($verParts[1]).$($rev % 65535)"
 
           $verDisplay = "${ver}-r${rev}-${sha}_x86_64-win64"
 
