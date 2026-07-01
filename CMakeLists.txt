@@ -22,7 +22,7 @@ project(qelectrotech
         VERSION 0.100.1
         DESCRIPTION "QET is a CAD/CAE editor focusing on schematics drawing features."
         HOMEPAGE_URL "https://qelectrotech.org/"
-        LANGUAGES CXX)
+        LANGUAGES C CXX)
 
 include(cmake/copyright_message.cmake)
 

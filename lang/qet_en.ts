@@ -2560,6 +2560,33 @@ The element&apos;s display name is edited separately in the element properties.<
 <context>
     <name>ElementsCollectionWidget</name>
     <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="164"/>
+        <source>Importer une pièce EPLAN (.edz)…</source>
+        <translation>Import an EPLAN part (.edz)…</translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="629"/>
+        <source>Importer une pièce EPLAN</source>
+        <translation>Import an EPLAN part</translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="630"/>
+        <source>Pièces EPLAN (*.edz)</source>
+        <translation>EPLAN parts (*.edz)</translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="638"/>
+        <source>Import EPLAN</source>
+        <translation>Import EPLAN</translation>
+    </message>
+    <message>
+        <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="639"/>
+        <source>Impossible d&apos;importer cette pièce :
+%1</source>
+        <translation>Could not import this part:
+%1</translation>
+    </message>
+    <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="146"/>
         <source>Ouvrir le dossier correspondant</source>
         <translation>Open the underlying folder</translation>
