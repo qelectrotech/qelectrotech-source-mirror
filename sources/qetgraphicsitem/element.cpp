@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
-
+#include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/numerotationcontextcommands.h"
 #include "../diagram.h"

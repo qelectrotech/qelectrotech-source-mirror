@@ -685,6 +685,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.h
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.cpp
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.h
+  ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.cpp
+  ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h

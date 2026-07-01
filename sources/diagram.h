@@ -24,7 +24,6 @@
 #include "elementtextsmover.h"
 #include "exportproperties.h"
 #include "properties/xrefproperties.h"
-#include "qetproject.h"
 #include "qgimanager.h"
 
 #include <QHash>
@@ -39,12 +38,11 @@ class DiagramPosition;
 class DiagramTextItem;
 class Element;
 class ElementsLocation;
-class QETProject;
-class Terminal;
 class DiagramImageItem;
 class DiagramEventInterface;
 class DiagramFolioList;
 class QETProject;
+struct GuideProperties;
 
 /**
 	@brief The Diagram class
@@ -67,6 +65,13 @@ class Diagram : public QGraphicsScene
 	
 	// ATTRIBUTES
 	public:
+		struct Guide {
+			enum Orientation { Horizontal, Vertical };
+			Orientation orientation;
+			qreal position;
+			QColor color;
+		};
+
 		/**
 			@brief The BorderOptions enum
 			Represents available options when rendering a particular diagram:
@@ -119,6 +124,8 @@ class Diagram : public QGraphicsScene
 
 		bool draw_grid_;
 		bool use_border_;
+		bool draw_guides_;
+		QList<Diagram::Guide> m_guides_list;
 		bool draw_terminals_;
 		bool draw_colored_conductors_;
 
@@ -207,6 +214,9 @@ class Diagram : public QGraphicsScene
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
 		bool displayGrid();
+		void setDisplayGuides(bool);
+		bool displayGuides();
+		void updateProjectGuides(const QList<GuideProperties> &guides);
 		void setUseBorder(bool);
 		bool useBorder();
 		void setBorderOptions(BorderOptions);
@@ -341,6 +351,16 @@ inline bool Diagram::displayGrid() {
 	return(draw_grid_);
 }
 
+inline void Diagram::setDisplayGuides(bool dg) {
+	if (draw_guides_ != dg) {
+		draw_guides_ = dg;
+		update();
+	}
+}
+
+inline bool Diagram::displayGuides() {
+	return(draw_guides_);
+}
 /**
 	@brief Diagram::setUseBorder
 	Set whether the diagram border (including rows/columns headers and the title
@@ -387,14 +407,6 @@ inline Diagram::BorderOptions Diagram::borderOptions() {
 	if (border_and_titleblock.columnsAreDisplayed())
 		options = (BorderOptions)(options|Columns);
 	return(options);
-}
-
-/**
-	@brief Diagram::undoStack
-	@return the diagram undo stack
-*/
-inline QUndoStack &Diagram::undoStack() {
-	return *(project()->undoStack());
 }
 
 /**

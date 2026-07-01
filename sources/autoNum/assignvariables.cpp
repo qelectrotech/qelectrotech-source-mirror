@@ -23,7 +23,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetxml.h"
-
+#include "../qetproject.h"
 #include <QStringList>
 #include <QVariant>
 #include <utility>
