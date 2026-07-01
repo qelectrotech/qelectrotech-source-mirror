@@ -2,6 +2,8 @@
 .flatpak-builder
 # Qt build output
 *.user
+# CMake/Ninja local build tree (custom Trovo Tech dev build)
+/build/
 # doxygen Doxyfile output
 doc/*
 !doc/QElectroTech.qch
