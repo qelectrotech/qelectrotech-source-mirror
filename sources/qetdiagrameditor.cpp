@@ -446,6 +446,14 @@ void QETDiagramEditor::setUpActions()
 		}
 	});
 
+		//Add a from-to wiring list item (database-driven, from wire_list_view)
+	m_add_wiring_list = new QAction(QET::Icons::TableOfContent, tr("Ajouter une liste de câblage"), this);
+	connect(m_add_wiring_list, &QAction::triggered, this, [=]() {
+		if(this->currentDiagramView()) {
+			QetGraphicsTableFactory::createAndAddWiringList(this->currentDiagramView()->diagram());
+		}
+	});
+
 	m_terminal_strip_dialog = new QAction(QET::Icons::TerminalStrip, tr("Gestionnaire de borniers (DEV)"), this);
 	connect(m_terminal_strip_dialog, &QAction::triggered, this, [=]()
 	{
@@ -849,6 +857,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_add_summary);
 	menu_project -> addAction(m_add_nomenclature);
+	menu_project -> addAction(m_add_wiring_list);
 	menu_project -> addAction(m_csv_export);
 	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_terminal_strip_dialog);
@@ -1584,6 +1593,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_clean_project               -> setEnabled(editable_project);
 	m_add_summary                 -> setEnabled(editable_project);
 	m_add_nomenclature            -> setEnabled(editable_project);
+	m_add_wiring_list             -> setEnabled(editable_project);
 	m_csv_export                  -> setEnabled(editable_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);

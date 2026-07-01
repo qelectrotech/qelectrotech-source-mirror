@@ -32,6 +32,7 @@ class QetGraphicsTableFactory
 
 		static void createAndAddNomenclature(Diagram *diagram);
 		static void createAndAddSummary(Diagram *diagram);
+		static void createAndAddWiringList(Diagram *diagram);
 	private:
 		static void create(Diagram *diagram, AddTableDialog *dialog);
 		static QetGraphicsTableItem *newTable(
