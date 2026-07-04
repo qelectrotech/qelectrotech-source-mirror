@@ -454,8 +454,7 @@ QDomElement TitleBlockTemplatesFilesCollection::getTemplateXmlDescription(const 
 	}
 
 	QDomDocument *xml_document = new QDomDocument();
-	bool xml_parsing = xml_document -> setContent(&xml_file);
-	if (!xml_parsing) {
+	if (!xml_document->setContent(&xml_file)) {
 		delete xml_document;
 		return(QDomElement());
 	}
