@@ -724,6 +724,17 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
+if(NOT BUILD_WITH_KF5)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
+    ${QET_DIR}/sources/ui/nokde/kautosavefile.h
+    ${QET_DIR}/sources/ui/nokde/kcolorbutton.cpp
+    ${QET_DIR}/sources/ui/nokde/kcolorbutton.h
+    ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
+    ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
+  )
+endif()
+
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
   ${QET_DIR}/lang/qet_ca.ts

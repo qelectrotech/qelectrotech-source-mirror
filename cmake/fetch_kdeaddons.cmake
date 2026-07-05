@@ -16,7 +16,7 @@
 
 message(" - fetch_kdeaddons")
 
-if(DEFINED BUILD_WITH_KF5)
+if(BUILD_WITH_KF5)
   Include(FetchContent)
 
   option(BUILD_KF5 "Build KF5 libraries, use system ones otherwise" YES)

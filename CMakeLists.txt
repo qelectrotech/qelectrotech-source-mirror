@@ -148,6 +148,14 @@ target_include_directories(
     ${QET_DIR}/sources/svg
 )
 
+if(NOT BUILD_WITH_KF5)
+    target_include_directories(
+        ${PROJECT_NAME}
+        PRIVATE
+        ${QET_DIR}/sources/ui/nokde
+    )
+endif()
+
 install(TARGETS ${PROJECT_NAME})
 
 if (NOT MINGW)
