@@ -93,8 +93,6 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	init();
 }
 
-#ifdef BUILD_WITHOUT_KF5
-#else
 /**
 	@brief QETProject::QETProject
 	@param backup : backup file to open, QETProject take ownership of backup.
@@ -129,7 +127,6 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 
 	init();
 }
-#endif
 
 /**
 	@brief QETProject::~QETProject
@@ -342,15 +339,12 @@ void QETProject::setFilePath(const QString &filepath)
 	if (filepath == m_file_path) {
 		return;
 	}
-#ifdef BUILD_WITHOUT_KF5
-#else
 		//Don't close/re-point the backup file while a backup is still writing it.
 	m_backup_future.waitForFinished();
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
 	}
 	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
-#endif
 	m_file_path = filepath;
 
 	QFileInfo fi(m_file_path);
@@ -1813,8 +1807,6 @@ void QETProject::writeBackup()
 {
 	if (!m_backup_enabled)
 		return;
-#ifdef BUILD_WITHOUT_KF5
-#else
 #	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 		//Don't launch a new backup while the previous one is still writing:
 		//both would write through &m_backup_file on different threads.
@@ -1830,7 +1822,6 @@ void QETProject::writeBackup()
 	qDebug() << "Help code for QT 6 or later"
 			 << "QtConcurrent::run its backwards now...function, object, args";
 #	endif
-#endif
 }
 
 /**

@@ -47,6 +47,7 @@
 #include <QProcessEnvironment>
 #include <QRegularExpression>
 #ifdef BUILD_WITHOUT_KF5
+#	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -2500,9 +2501,6 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
-#ifdef BUILD_WITHOUT_KF5
-	return;
-#else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
 
 	//Remove from the list @stale_files, the stales file of opened project
@@ -2577,7 +2575,6 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
-#endif
 }
 
 /**
