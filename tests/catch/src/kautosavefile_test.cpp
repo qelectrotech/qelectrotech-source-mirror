@@ -11,6 +11,7 @@
 #include <memory>
 
 #ifdef Q_OS_UNIX
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -34,11 +35,16 @@ TEST_CASE("Qt-only KAutoSaveFile recovers stale files", "[nokde][autosave]")
 	REQUIRE(managed_file.write("<project/>\n") > 0);
 	managed_file.close();
 
+	int ready_pipe[2] = {-1, -1};
+	REQUIRE(pipe(ready_pipe) == 0);
+
 	const QByteArray payload("<project><diagram /></project>\n");
 	const auto child_pid = fork();
 	REQUIRE(child_pid >= 0);
 
 	if (child_pid == 0) {
+		close(ready_pipe[0]);
+
 		KAutoSaveFile backup(QUrl::fromLocalFile(managed_path));
 		if (!backup.open(QIODevice::WriteOnly
 					  | QIODevice::Truncate
@@ -52,13 +58,34 @@ TEST_CASE("Qt-only KAutoSaveFile recovers stale files", "[nokde][autosave]")
 			_exit(4);
 		}
 
-		_exit(0);
+		const char ready = '1';
+		if (write(ready_pipe[1], &ready, 1) != 1) {
+			_exit(5);
+		}
+		close(ready_pipe[1]);
+
+		for (;;) {
+			pause();
+		}
 	}
 
+	close(ready_pipe[1]);
+	char ready = 0;
+	REQUIRE(read(ready_pipe[0], &ready, 1) == 1);
+	close(ready_pipe[0]);
+	REQUIRE(ready == '1');
+
+	auto active_files = KAutoSaveFile::allStaleFiles();
+	CHECK(active_files.isEmpty());
+	for (auto *file : active_files) {
+		delete file;
+	}
+
+	REQUIRE(kill(child_pid, SIGKILL) == 0);
 	int status = 0;
 	REQUIRE(waitpid(child_pid, &status, 0) == child_pid);
-	REQUIRE(WIFEXITED(status));
-	REQUIRE(WEXITSTATUS(status) == 0);
+	REQUIRE(WIFSIGNALED(status));
+	REQUIRE(WTERMSIG(status) == SIGKILL);
 
 	auto stale_files = KAutoSaveFile::allStaleFiles();
 	REQUIRE(stale_files.size() == 1);

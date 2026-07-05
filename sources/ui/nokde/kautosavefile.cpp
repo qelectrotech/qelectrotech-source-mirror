@@ -48,6 +48,11 @@ QString metadataFileName(const QString &autosave_file_name)
 	return autosave_file_name + QStringLiteral(".path");
 }
 
+QString lockFileName(const QString &autosave_file_name)
+{
+	return autosave_file_name + QStringLiteral(".lock");
+}
+
 QUrl normalizeManagedFile(const QUrl &url)
 {
 	if (url.isEmpty()) {
@@ -165,6 +170,18 @@ QStringList findAllStaleFiles(const QString &application_name)
 	return files;
 }
 
+bool autosaveFileIsRecoverable(const QString &autosave_file_name)
+{
+	QLockFile lock(lockFileName(autosave_file_name));
+	lock.setStaleLockTime(60 * 1000);
+	if (!lock.tryLock()) {
+		return false;
+	}
+
+	lock.unlock();
+	return true;
+}
+
 } // namespace
 
 KAutoSaveFile::KAutoSaveFile(const QUrl &filename, QObject *parent) :
@@ -239,8 +256,7 @@ bool KAutoSaveFile::open(OpenMode openmode)
 	}
 
 	if (!m_lock) {
-		m_lock = std::make_unique<QLockFile>(
-			fileName() + QStringLiteral(".lock"));
+		m_lock = std::make_unique<QLockFile>(lockFileName(fileName()));
 		m_lock->setStaleLockTime(60 * 1000);
 	}
 
@@ -266,6 +282,9 @@ QList<KAutoSaveFile *> KAutoSaveFile::staleFiles(
 		}
 		if (!managed_file_filter.isEmpty()
 			&& managed_file != managed_file_filter) {
+			continue;
+		}
+		if (!autosaveFileIsRecoverable(file)) {
 			continue;
 		}
 
