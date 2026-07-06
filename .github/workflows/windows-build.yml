@@ -402,7 +402,7 @@ jobs:
           echo "Old .exe and .zip assets deleted."
 
       - name: Update nightly release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: nightly
           name: "Nightly Build – Windows"
