@@ -20,7 +20,7 @@
 #include "../qet.h"
 
 #include <QtWidgets>
-
+#include <QGraphicsLayoutItem>
 /**
 	This class implements a helper widget for cells that indicate the length of
 	columns and rows.
