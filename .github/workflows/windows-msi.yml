@@ -33,7 +33,7 @@ jobs:
       # 1. Checkout (to retrieve QElectroTech.wxs and sources)
       # ----------------------------------------------------------------
       - name: Checkout
-        uses: actions/checkout@v8
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -373,7 +373,7 @@ jobs:
       #     Toutes les URLs sont connues ici (exe, zip, msi).
       # ----------------------------------------------------------------
       - name: Checkout (for generate-page.py)
-        uses: actions/checkout@v8
+        uses: actions/checkout@v7
         with:
           ref: master
           path: source
