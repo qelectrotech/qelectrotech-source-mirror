@@ -6683,6 +6683,11 @@ Available options:
         <translation>Add a summary</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="451"/>
+        <source>Ajouter une liste de câblage</source>
+        <translation>Add a wiring list</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="654"/>
         <source>Zoom sur le contenu</source>
         <translation>Zoom content</translation>
@@ -9409,6 +9414,11 @@ Do you want to replace it ?</translation>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="48"/>
         <source>Ajouter une nomenclature</source>
         <translation>Add a nomenclature</translation>
+    </message>
+    <message>
+        <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="84"/>
+        <source>Liste de câblage</source>
+        <translation>Wiring list</translation>
     </message>
     <message>
         <location filename="../sources/factory/qetgraphicstablefactory.cpp" line="67"/>

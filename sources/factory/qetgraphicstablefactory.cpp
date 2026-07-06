@@ -71,6 +71,68 @@ void QetGraphicsTableFactory::createAndAddSummary(Diagram *diagram)
 	}
 }
 
+/**
+	@brief QetGraphicsTableFactory::createAndAddWiringList
+	Create a from-to wiring list table (built on the projectDataBase
+	wire_list_view) and add it to diagram. Unlike the nomenclature/summary
+	there is no column-picker dialog: the query is fixed. A long list spills
+	onto new folios, like the nomenclature does.
+	@param diagram
+*/
+void QetGraphicsTableFactory::createAndAddWiringList(Diagram *diagram)
+{
+	const QString base_name = QObject::tr("Liste de câblage");
+	const QString query = QStringLiteral(
+		"SELECT wire, from_point, from_folio, to_point, to_folio "
+		"FROM wire_list_view ORDER BY wire");
+
+	auto newWiringTable = [&query, &base_name](Diagram *diag, QetGraphicsTableItem *previous) {
+		auto table = new QetGraphicsTableItem();
+		table->setTableName(base_name);
+		if (!previous) {
+			auto model = new ProjectDBModel(diag->project(), diag->project());
+			model->setIdentifier(QStringLiteral("wiringlist"));
+			model->setQuery(query);
+			model->setData(model->index(0,0), int(Qt::AlignLeft | Qt::AlignVCenter), Qt::TextAlignmentRole);
+			table->setModel(model);
+		} else {
+			table->setPreviousTable(previous);
+		}
+		diag->addItem(table);
+		table->setPos(50, 50);
+		QetGraphicsTableItem::adjustTableToFolio(table);
+		return table;
+	};
+
+	auto table_ = newWiringTable(diagram, nullptr);
+
+		//Spill the remaining rows onto new folios, like the nomenclature does.
+	if (table_->displayNRow() > 0
+		&& table_->model()->rowCount() > table_->displayNRow())
+	{
+		auto already_displayed_rows = table_->displayNRow();
+		auto project_ = diagram->project();
+		auto actual_diagram = diagram;
+		auto previous_table = table_;
+
+		table_->setTableName(base_name + QStringLiteral(" 1"));
+		int table_number = 2;
+		while (already_displayed_rows < table_->model()->rowCount())
+		{
+			actual_diagram = project_->addNewDiagram(project_->folioIndex(actual_diagram)+1);
+				//Title the auto-created folio so it reads as a wiring list.
+			auto tbp = actual_diagram->border_and_titleblock.exportTitleBlock();
+			tbp.title = base_name;
+			actual_diagram->border_and_titleblock.importTitleBlock(tbp);
+			auto next_table = newWiringTable(actual_diagram, previous_table);
+			next_table->setTableName(base_name + QStringLiteral(" %1").arg(table_number));
+			already_displayed_rows += next_table->displayNRow();
+			previous_table = next_table;
+			++table_number;
+		}
+	}
+}
+
 void QetGraphicsTableFactory::create(Diagram *diagram, AddTableDialog *dialog)
 {
 	auto table_ = newTable(diagram, dialog);

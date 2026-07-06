@@ -27,6 +27,7 @@
 class Element;
 class QETProject;
 class Diagram;
+class Terminal;
 class sqlite3;
 
 /**
@@ -65,6 +66,10 @@ class projectDataBase : public QObject
 		bool createDataBase();
 		void createElementNomenclatureView();
 		void createSummaryView();
+		void createWireListView();
+		QString terminalTid(Terminal *t) const;
+		void populateTerminalTable();
+		void populateConductorTable();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
@@ -87,6 +92,10 @@ class projectDataBase : public QObject
 				  m_update_diagram_info_query,
 				  m_diagram_order_changed,
 				  m_diagram_info_order_changed;
+			//Terminal -> tid, assigned in populateTerminalTable and reused by
+			//populateConductorTable (same updateDB pass, same live objects) so
+			//conductor endpoints join to the exact terminal row.
+			QHash<Terminal *, QString> m_terminal_tid;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:
