@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
@@ -44,7 +44,7 @@ jobs:
             mingw-w64-ucrt-x86_64-angleproject
 
       - name: Cache ccache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: C:\Users\runneradmin\AppData\Local\ccache
           key: ccache-windows-${{ github.ref_name }}-${{ github.sha }}
@@ -306,7 +306,7 @@ jobs:
 
       - name: Upload build logs on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-logs
           path: |
@@ -334,21 +334,21 @@ jobs:
           "zip_name=$zipName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 
       - name: Upload portable (files/ without installer)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
           retention-days: 14
 
       - name: Upload NSIS installer
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-installer
           path: dist/Installer_*.exe
           retention-days: 14
 
       - name: Upload portable (nom fixe pour le workflow MSI)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-portable
           path: nsis_root/files/
@@ -367,7 +367,7 @@ jobs:
 
     steps:
       - name: Checkout master (for build-aux scripts)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: master
           path: source
@@ -375,13 +375,13 @@ jobs:
           sparse-checkout-cone-mode: false
 
       - name: Download installer artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: qelectrotech-windows-installer
           path: downloaded/installer/
 
       - name: Download portable artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: qelectrotech-*-readytouse
           path: downloaded/portable/

@@ -33,7 +33,7 @@ jobs:
       # 1. Checkout (to retrieve QElectroTech.wxs and sources)
       # ----------------------------------------------------------------
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v8
         with:
           fetch-depth: 0
 
@@ -43,7 +43,7 @@ jobs:
       #    "qelectrotech-windows-portable" (fixed name)
       # ----------------------------------------------------------------
       - name: Download portable artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: qelectrotech-windows-portable
           path: artifact\files
@@ -283,7 +283,7 @@ jobs:
       # ----------------------------------------------------------------
       - name: Upload unsigned MSI artifact (pre-signing)
         id: upload_unsigned
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-msi-unsigned
           path: dist\*.msi
@@ -316,7 +316,7 @@ jobs:
       # 10. Upload the signed MSI artifact
       # ----------------------------------------------------------------
       - name: Upload MSI artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-msi
           path: dist\*.msi
@@ -373,7 +373,7 @@ jobs:
       #     Toutes les URLs sont connues ici (exe, zip, msi).
       # ----------------------------------------------------------------
       - name: Checkout (for generate-page.py)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v8
         with:
           ref: master
           path: source
@@ -418,9 +418,9 @@ jobs:
         run: touch gh-pages/.nojekyll
 
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: gh-pages/
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
