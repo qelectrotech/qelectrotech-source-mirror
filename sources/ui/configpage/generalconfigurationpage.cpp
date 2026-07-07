@@ -22,7 +22,6 @@
 #include "ui_generalconfigurationpage.h"
 #include "../../utils/qetsettings.h"
 #include "../../qetmessagebox.h"
-
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QSettings>
@@ -66,6 +65,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 			break;
 	}
 #endif
+	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
+	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
@@ -240,6 +241,9 @@ void GeneralConfigurationPage::applyConf()
 	settings.setValue("diagrameditor/highlight-integrated-elements", ui->m_highlight_integrated_elements->isChecked());
 	settings.setValue("diagrameditor/zoom-out-beyond-of-folio", ui->m_zoom_out_beyond_folio->isChecked());
 	settings.setValue("diagrameditor/autosave-interval", ui->m_autosave_sb->value());
+
+	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
+	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());

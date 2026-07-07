@@ -43,6 +43,7 @@ class ExportProperties {
 	QDir destination_directory;     ///< Target directory for generated files
 	QString format;                 ///< Image format of generated files
 	bool draw_grid;                 ///< Whether to render the diagram grid
+	bool draw_guides;               ///< Whether to render the diagram guides
 	bool draw_border;               ///< Whether to render the border (along with rows/columns headers)
 	bool draw_titleblock;           ///< Whether to render the title block
 	bool draw_terminals;            ///< Whether to render terminals

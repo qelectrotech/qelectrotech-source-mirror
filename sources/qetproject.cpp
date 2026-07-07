@@ -56,15 +56,27 @@ void QETProject::setBackupEnabled(bool enabled)
 	@param parent
 */
 QETProject::QETProject(QObject *parent) :
-	QObject              (parent),
-	m_titleblocks_collection(this),
-	m_data_base(this, this),
-	m_project_properties_handler{this}
+QObject              (parent),
+m_titleblocks_collection(this),
+m_data_base(this, this),
+m_project_properties_handler{this}
 {
 	setDefaultTitleBlockProperties(TitleBlockProperties::defaultProperties());
 
 	m_elements_collection = new XmlElementCollection(this);
 	init();
+
+	QSettings settings;
+	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
+	for (int i = 0; i < size; ++i) {
+		settings.setArrayIndex(i);
+		GuideProperties g;
+		g.orientation = settings.value(QStringLiteral("orientation"), 0).toInt();
+		g.position = settings.value(QStringLiteral("position"), 0.0).toReal();
+		g.color = QColor(settings.value(QStringLiteral("color"), QStringLiteral("#ff0000")).toString());
+		m_default_guides.append(g);
+	}
+	settings.endArray();
 }
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
@@ -205,6 +217,7 @@ void QETProject::init()
 		});
 		m_autosave_timer.start();
 	}
+
 }
 
 /**
@@ -500,6 +513,23 @@ void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 TitleBlockProperties QETProject::defaultTitleBlockProperties() const
 {
 	return(default_titleblock_properties_);
+}
+
+QList<GuideProperties> QETProject::defaultGuides() const {
+	return m_default_guides;
+}
+
+void QETProject::setDefaultGuides(const QList<GuideProperties> &guides) {
+	if (m_default_guides != guides) {
+		m_default_guides = guides;
+		setModified(true);
+
+		for (Diagram *diagram : m_diagrams_list) {
+			if (diagram) {
+				diagram->updateProjectGuides(m_default_guides);
+			}
+		}
+	}
 }
 
 /**
@@ -1589,7 +1619,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, guides_elmt;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -1612,6 +1642,8 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			folio_autonums = child_elmt;
 		else if (child_elmt.tagName()== QLatin1String("element_autonums"))
 			element_autonums = child_elmt;
+		else if (child_elmt.tagName() == QLatin1String("guides"))
+			guides_elmt = child_elmt;
 	}
 
 		// size, titleblock, conductor, report, conductor autonum, folio autonum, element autonum
@@ -1657,6 +1689,18 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+		}
+	}
+	// Read guides from XML (if missing, e.g. in old projects, list stays empty)
+	m_default_guides.clear();
+
+	if (!guides_elmt.isNull()) {
+		for (auto elmt : QET::findInDomElement(guides_elmt, QStringLiteral("guide"))) {
+			GuideProperties g;
+			g.orientation = elmt.attribute(QStringLiteral("orientation"), QStringLiteral("0")).toInt();
+			g.position = elmt.attribute(QStringLiteral("position"), QStringLiteral("0.0")).toDouble();
+			g.color = QColor(elmt.attribute(QStringLiteral("color"), QStringLiteral("#ff0000")));
+			m_default_guides.append(g);
 		}
 	}
 }
@@ -1769,6 +1813,17 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		}
 	}
 	xml_element.appendChild(element_autonums);
+
+	// Export default guides
+	QDomElement guides_elmt = xml_document.createElement("guides");
+	for (const auto &g : m_default_guides) {
+		QDomElement guide_elmt = xml_document.createElement("guide");
+		guide_elmt.setAttribute("orientation", static_cast<int>(g.orientation));
+		guide_elmt.setAttribute("position", g.position);
+		guide_elmt.setAttribute("color", g.color.name());
+		guides_elmt.appendChild(guide_elmt);
+	}
+	xml_element.appendChild(guides_elmt);
 }
 
 /**
