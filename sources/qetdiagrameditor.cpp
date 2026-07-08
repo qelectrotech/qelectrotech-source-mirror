@@ -37,6 +37,7 @@
 #include "recentfiles.h"
 #include "ui/bomexportdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
+#include "ui/backupdialog.h"
 #include "ui/dialogwaiting.h"
 #include "undocommand/addelementtextcommand.h"
 #include "undocommand/rotateselectioncommand.h"
@@ -47,7 +48,9 @@
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
 #include "wiringlistexport.h"
 #include "ui/terminalnumberingdialog.h"
+#include <QDateTime>
 #include <QDebug>
+#include <QDir>
 #ifdef BUILD_WITHOUT_KF5
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -1187,6 +1190,16 @@ bool QETDiagramEditor::openAndAddProject(
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	addProject(project);
 	DialogWaiting::dropInstance();
+
+	BackupDialog backup_dialog(this);
+	if (backup_dialog.exec() == QDialog::Accepted)
+	{
+		QString backup_path = filepath_info.absolutePath() + QDir::separator() +
+			QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm") + "_" +
+			filepath_info.fileName();
+		QFile::copy(filepath, backup_path);
+	}
+
 	return true;
 }
 
