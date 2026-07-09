@@ -273,6 +273,43 @@ void Terminal::paint(
 		m_help_line_a -> setLine(line);
 	}
 
+	// Draw label if show_name is enabled
+	if (d->m_show_name && !d->m_name.isEmpty()) {
+		painter->setRenderHint(QPainter::Antialiasing, true);
+		painter->setRenderHint(QPainter::TextAntialiasing, true);
+		painter->setFont(d->m_label_font);
+		painter->setPen(d->m_label_color);
+
+		QPointF label_pos = d->m_label_pos;
+		QFontMetrics fm(d->m_label_font);
+		QSizeF text_size = fm.size(Qt::TextSingleLine, d->m_name);
+
+		if (!qFuzzyIsNull(d->m_label_rotation)) {
+			painter->save();
+			painter->translate(label_pos);
+			painter->rotate(d->m_label_rotation);
+			QRectF text_rect(-text_size.width()/2.0, -text_size.height()/2.0,
+							 text_size.width(), text_size.height());
+			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), d->m_name);
+			painter->restore();
+		} else {
+			qreal dx = 0, dy = 0;
+			if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
+			else if (d->m_label_halignment & Qt::AlignHCenter) dx = -text_size.width() / 2.0;
+			else if (d->m_label_halignment & Qt::AlignRight) dx = -text_size.width();
+
+			if (d->m_label_valignment & Qt::AlignTop) dy = 0;
+			else if (d->m_label_valignment & Qt::AlignVCenter) dy = -text_size.height() / 2.0;
+			else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
+
+			QRectF text_rect(label_pos + QPointF(dx, dy), text_size);
+			if (d->m_label_frame) {
+				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
+			}
+			painter->drawText(text_rect, static_cast<int>(Qt::AlignLeft | Qt::AlignTop), d->m_name);
+		}
+	}
+
 	painter -> restore();
 }
 
@@ -341,7 +378,27 @@ QLineF Terminal::HelpLine() const
 	@return Le rectangle (en precision flottante) delimitant la borne et ses alentours.
 */
 QRectF Terminal::boundingRect() const {
-	return m_br;
+	if (!d->m_show_name || d->m_name.isEmpty()) {
+		return m_br;
+	}
+
+	QFontMetrics fm(d->m_label_font);
+	QSizeF text_size = fm.size(Qt::TextSingleLine, d->m_name);
+	QPointF label_pos = d->m_label_pos;
+
+	qreal dx = 0, dy = 0;
+	if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
+	else if (d->m_label_halignment & Qt::AlignHCenter) dx = -text_size.width() / 2.0;
+	else if (d->m_label_halignment & Qt::AlignRight) dx = -text_size.width();
+
+	if (d->m_label_valignment & Qt::AlignTop) dy = 0;
+	else if (d->m_label_valignment & Qt::AlignVCenter) dy = -text_size.height() / 2.0;
+	else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
+
+	QRectF label_rect(label_pos + QPointF(dx, dy), text_size);
+	label_rect = label_rect.adjusted(-2, -2, 2, 2);
+
+	return m_br.united(label_rect);
 }
 
 /**

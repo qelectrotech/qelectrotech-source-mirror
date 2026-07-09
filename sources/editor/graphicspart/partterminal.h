@@ -34,6 +34,14 @@ class PartTerminal : public CustomElementGraphicPart
 	Q_PROPERTY(Qet::Orientation orientation READ orientation WRITE setOrientation)
 	Q_PROPERTY(QString terminal_name READ terminalName WRITE setTerminalName)
 	Q_PROPERTY(TerminalData::Type terminal_type READ terminalType WRITE setTerminalType)
+	Q_PROPERTY(bool show_name READ showName WRITE setShowName)
+	Q_PROPERTY(QPointF label_pos READ labelPos WRITE setLabelPos)
+	Q_PROPERTY(QFont label_font READ labelFont WRITE setLabelFont)
+	Q_PROPERTY(qreal label_rotation READ labelRotation WRITE setLabelRotation)
+	Q_PROPERTY(Qt::Alignment label_halignment READ labelHAlignment WRITE setLabelHAlignment)
+	Q_PROPERTY(Qt::Alignment label_valignment READ labelVAlignment WRITE setLabelVAlignment)
+	Q_PROPERTY(bool label_frame READ labelFrame WRITE setLabelFrame)
+	Q_PROPERTY(QColor label_color READ labelColor WRITE setLabelColor)
 
 	public:
 		// constructors, destructor
@@ -46,6 +54,14 @@ class PartTerminal : public CustomElementGraphicPart
 		void orientationChanged();
 		void nameChanged();
 		void terminalTypeChanged();
+		void showNameChanged();
+		void labelPosChanged();
+		void labelFontChanged();
+		void labelRotationChanged();
+		void labelHAlignmentChanged();
+		void labelVAlignmentChanged();
+		void labelFrameChanged();
+		void labelColorChanged();
 
 		// methods
 	public:
@@ -64,7 +80,7 @@ class PartTerminal : public CustomElementGraphicPart
 				QWidget *) override;
 
 		QPainterPath shape() const override;
-		QPainterPath shadowShape() const override {return shape();}
+		QPainterPath shadowShape() const override;
 		QRectF boundingRect() const override;
 		bool isUseless() const override;
 		QRectF sceneGeometricRect() const override;
@@ -90,7 +106,38 @@ class PartTerminal : public CustomElementGraphicPart
 		TerminalData::Type terminalType() const {return d->m_type;}
 		void setTerminalType(TerminalData::Type type);
 
+		bool showName() const { return d->m_show_name; }
+		void setShowName(bool show);
+
+		QPointF labelPos() const { return d->m_label_pos; }
+		void setLabelPos(QPointF pos);
+
+		QFont labelFont() const { return d->m_label_font; }
+		void setLabelFont(QFont font);
+
+		qreal labelRotation() const { return d->m_label_rotation; }
+		void setLabelRotation(qreal rotation);
+
+		Qt::Alignment labelHAlignment() const { return d->m_label_halignment; }
+		void setLabelHAlignment(Qt::Alignment align);
+
+		Qt::Alignment labelVAlignment() const { return d->m_label_valignment; }
+		void setLabelVAlignment(Qt::Alignment align);
+
+		bool labelFrame() const { return d->m_label_frame; }
+		void setLabelFrame(bool frame);
+
+		QColor labelColor() const { return d->m_label_color; }
+		void setLabelColor(QColor color);
+
 		void setNewUuid();
+
+		QRectF labelRect() const;
+
+	protected:
+		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
 	private:
 		void updateSecondPoint();
@@ -98,5 +145,7 @@ class PartTerminal : public CustomElementGraphicPart
 
 	private:
 		QPointF saved_position_;
+		bool m_dragging_label = false;
+		QPointF m_original_label_pos;
 };
 #endif

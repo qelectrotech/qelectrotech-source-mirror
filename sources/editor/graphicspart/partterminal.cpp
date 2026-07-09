@@ -17,6 +17,8 @@
 */
 #include "partterminal.h"
 
+#include "../elementscene.h"
+#include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../qetgraphicsitem/terminal.h"
 
 /**
@@ -100,6 +102,60 @@ void PartTerminal::paint(
 
 	if (m_hovered)
 		drawShadowShape(painter);
+
+	if (d->m_show_name && !d->m_name.isEmpty()) {
+		painter->save();
+		painter->setFont(d->m_label_font);
+		painter->setPen(d->m_label_color);
+		painter->setRenderHint(QPainter::Antialiasing, true);
+		painter->setRenderHint(QPainter::TextAntialiasing, true);
+
+		QPointF label_pos = d->m_label_pos;
+		QRectF text_rect;
+		QFontMetrics fm(d->m_label_font);
+		QSizeF text_size = fm.size(Qt::TextSingleLine, d->m_name);
+
+		auto compute_rect = [&]() {
+			qreal dx = 0, dy = 0;
+			if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
+			else if (d->m_label_halignment & Qt::AlignHCenter) dx = -text_size.width() / 2.0;
+			else if (d->m_label_halignment & Qt::AlignRight) dx = -text_size.width();
+			if (d->m_label_valignment & Qt::AlignTop) dy = 0;
+			else if (d->m_label_valignment & Qt::AlignVCenter) dy = -text_size.height() / 2.0;
+			else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
+			return QRectF(label_pos + QPointF(dx, dy), text_size);
+		};
+
+		if (d->m_label_rotation != 0.0) {
+			painter->translate(label_pos);
+			painter->rotate(d->m_label_rotation);
+			text_rect = QRectF(-text_size.width()/2.0, -text_size.height()/2.0,
+							   text_size.width(), text_size.height());
+			if (d->m_label_frame) {
+				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
+			}
+			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), d->m_name);
+		} else {
+			text_rect = compute_rect();
+			if (d->m_label_frame) {
+				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
+			}
+			painter->drawText(text_rect, static_cast<int>(Qt::AlignLeft | Qt::AlignTop), d->m_name);
+		}
+
+		if (isSelected() || m_hovered) {
+			QPen outline_pen(Qt::darkBlue, 0, Qt::DashLine);
+			painter->setPen(outline_pen);
+			painter->setBrush(Qt::NoBrush);
+			if (d->m_label_rotation != 0.0) {
+				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
+			} else {
+				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
+			}
+		}
+
+		painter->restore();
+	}
 }
 
 /**
@@ -114,7 +170,27 @@ QPainterPath PartTerminal::shape() const
 	QPainterPathStroker pps;
 	pps.setWidth(1);
 
-	return (pps.createStroke(shape));
+	QPainterPath path = pps.createStroke(shape);
+
+	if (d->m_show_name && !d->m_name.isEmpty()) {
+		path.addRect(labelRect());
+	}
+
+	return path;
+}
+
+/**
+	@brief PartTerminal::shadowShape
+	@return the hover outline shape (terminal line only, no label rect)
+*/
+QPainterPath PartTerminal::shadowShape() const
+{
+	QPainterPath shape;
+	shape.lineTo(d -> m_second_point);
+
+	QPainterPathStroker pps;
+	pps.setWidth(1);
+	return pps.createStroke(shape);
 }
 
 /**
@@ -128,7 +204,38 @@ QRectF PartTerminal::boundingRect() const
 
 	qreal adjust = (SHADOWS_HEIGHT + 1) / 2;
 	br.adjust(-adjust, -adjust, adjust, adjust);
+
+	if (d->m_show_name && !d->m_name.isEmpty()) {
+		br = br.united(labelRect());
+	}
+
 	return(br);
+}
+
+/**
+	@brief PartTerminal::labelRect
+	@return the rectangle of the label text (in item coordinates),
+	or an empty rect if the label is not shown
+*/
+QRectF PartTerminal::labelRect() const
+{
+	if (!d->m_show_name || d->m_name.isEmpty())
+		return QRectF();
+
+	QFontMetrics fm(d->m_label_font);
+	QSizeF text_size = fm.size(Qt::TextSingleLine, d->m_name);
+	QPointF label_pos = d->m_label_pos;
+
+	qreal dx = 0, dy = 0;
+	if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
+	else if (d->m_label_halignment & Qt::AlignHCenter) dx = -text_size.width() / 2.0;
+	else if (d->m_label_halignment & Qt::AlignRight) dx = -text_size.width();
+
+	if (d->m_label_valignment & Qt::AlignTop) dy = 0;
+	else if (d->m_label_valignment & Qt::AlignVCenter) dy = -text_size.height() / 2.0;
+	else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
+
+	return QRectF(label_pos + QPointF(dx, dy), text_size).adjusted(-3, -3, 3, 3);
 }
 
 
@@ -282,6 +389,77 @@ void PartTerminal::setNewUuid()
 	d -> m_uuid = QUuid::createUuid();
 }
 
+void PartTerminal::setShowName(bool show)
+{
+	if (d->m_show_name == show) return;
+	prepareGeometryChange();
+	d->m_show_name = show;
+	update();
+	emit showNameChanged();
+}
+
+void PartTerminal::setLabelPos(QPointF pos)
+{
+	if (d->m_label_pos == pos) return;
+	prepareGeometryChange();
+	d->m_label_pos = pos;
+	update();
+	emit labelPosChanged();
+}
+
+void PartTerminal::setLabelFont(QFont font)
+{
+	if (d->m_label_font == font) return;
+	prepareGeometryChange();
+	d->m_label_font = font;
+	update();
+	emit labelFontChanged();
+}
+
+void PartTerminal::setLabelRotation(qreal rotation)
+{
+	if (qFuzzyCompare(d->m_label_rotation, rotation)) return;
+	prepareGeometryChange();
+	d->m_label_rotation = rotation;
+	update();
+	emit labelRotationChanged();
+}
+
+void PartTerminal::setLabelHAlignment(Qt::Alignment align)
+{
+	if (d->m_label_halignment == align) return;
+	prepareGeometryChange();
+	d->m_label_halignment = align;
+	update();
+	emit labelHAlignmentChanged();
+}
+
+void PartTerminal::setLabelVAlignment(Qt::Alignment align)
+{
+	if (d->m_label_valignment == align) return;
+	prepareGeometryChange();
+	d->m_label_valignment = align;
+	update();
+	emit labelVAlignmentChanged();
+}
+
+void PartTerminal::setLabelFrame(bool frame)
+{
+	if (d->m_label_frame == frame) return;
+	prepareGeometryChange();
+	d->m_label_frame = frame;
+	update();
+	emit labelFrameChanged();
+}
+
+void PartTerminal::setLabelColor(QColor color)
+{
+	if (d->m_label_color == color) return;
+	d->m_label_color = color;
+	update();
+	emit labelColorChanged();
+}
+
 /**
 	Updates the position of the second point according to the position
 	and orientation of the terminal.
@@ -337,4 +515,54 @@ void PartTerminal::handleUserTransformation(const QRectF &initial_selection_rect
 	QPointF mapped_point = mapPoints(
 		initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_position_).first();
 	setPos(mapped_point);
+}
+
+void PartTerminal::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (event->button() == Qt::LeftButton && d->m_show_name && !d->m_name.isEmpty()) {
+		QPointF local_click = event->pos();
+		// Only start label drag when click is on label AND NOT on terminal line
+		if (!shadowShape().contains(local_click) && labelRect().contains(local_click)) {
+			m_dragging_label = true;
+			m_original_label_pos = d->m_label_pos;
+		}
+	}
+	CustomElementGraphicPart::mousePressEvent(event);
+}
+
+void PartTerminal::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_dragging_label) {
+		QPointF delta = event->pos() - event->buttonDownPos(Qt::LeftButton);
+		QPointF new_pos = m_original_label_pos + delta;
+		if (!(event->modifiers() & Qt::ControlModifier)) {
+			ElementScene *scene = elementScene();
+			if (scene) {
+				QPointF scene_pos = mapToScene(new_pos);
+				new_pos = mapFromScene(scene->snapToGrid(scene_pos));
+			}
+		}
+		setLabelPos(new_pos);
+		update();
+		event->accept();
+		return;
+	}
+	CustomElementGraphicPart::mouseMoveEvent(event);
+}
+
+void PartTerminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+	if (m_dragging_label) {
+		m_dragging_label = false;
+		if (m_original_label_pos != d->m_label_pos) {
+			auto undo = new QPropertyUndoCommand(this, "label_pos",
+				QVariant(m_original_label_pos), QVariant(d->m_label_pos));
+			undo->setText(tr("Déplacer le label d'une borne"));
+			undo->enableAnimation();
+			elementScene()->undoStack().push(undo);
+		}
+		event->accept();
+		return;
+	}
+	CustomElementGraphicPart::mouseReleaseEvent(event);
 }
