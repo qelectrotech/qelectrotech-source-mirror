@@ -280,7 +280,7 @@ void Terminal::paint(
 		painter->setFont(d->m_label_font);
 		painter->setPen(d->m_label_color);
 
-		QPointF label_pos = d->m_label_pos;
+		QPointF label_pos = d->m_pos + d->m_label_pos;
 		QFontMetrics fm(d->m_label_font);
 		QSizeF text_size = fm.size(Qt::TextSingleLine, d->m_name);
 
@@ -384,7 +384,7 @@ QRectF Terminal::boundingRect() const {
 
 	QFontMetrics fm(d->m_label_font);
 	QSizeF text_size = fm.size(Qt::TextSingleLine, d->m_name);
-	QPointF label_pos = d->m_label_pos;
+	QPointF label_pos = d->m_pos + d->m_label_pos;
 
 	qreal dx = 0, dy = 0;
 	if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
