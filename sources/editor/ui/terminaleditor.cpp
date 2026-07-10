@@ -26,6 +26,12 @@
 #include <QColorDialog>
 #include <QFontDialog>
 
+/**
+ * @brief TerminalEditor::TerminalEditor
+ * Default constructor
+ * @param editor : element editor of which this terminal editor belong
+ * @param parent : parent widget
+ */
 TerminalEditor::TerminalEditor(QETElementEditor *editor, QWidget *parent) :
 	ElementItemEditor(editor, parent),
 	ui(new Ui::TerminalEditor)
@@ -50,11 +56,20 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, QWidget *parent) :
 	init();
 }
 
+/**
+ * @brief TerminalEditor::~TerminalEditor
+ * Destructor
+ */
 TerminalEditor::~TerminalEditor()
 {
 	delete ui;
 }
 
+/**
+ * @brief TerminalEditor::updateForm
+ * Reimplemented from ElementItemEditor
+ * Update the content of this widget
+ */
 void TerminalEditor::updateForm()
 {
 	if (!m_part) {
@@ -89,6 +104,13 @@ void TerminalEditor::updateForm()
 	activeConnections(true);
 }
 
+/**
+ * @brief TerminalEditor::setPart
+ * Set the part to edit.
+ * The part must be a PartTerminal, in other case return false.
+ * @param new_part : the part to edit
+ * @return true if the part can be edited.
+ */
 bool TerminalEditor::setPart(CustomElementPart *new_part)
 {
 	if (m_part == new_part) {
@@ -113,11 +135,21 @@ bool TerminalEditor::setPart(CustomElementPart *new_part)
 	return(false);
 }
 
+/**
+ * @brief TerminalEditor::currentPart
+ * @return the current edited part
+ * or nullptr if there is no part or several part
+ * @see QList<CustomElementPart *> TerminalEditor::currentParts() const
+ */
 CustomElementPart *TerminalEditor::currentPart() const
 {
 	return m_part;
 }
 
+/**
+ * @brief TerminalEditor::init
+ * Some init about this class
+ */
 void TerminalEditor::init()
 {
 	ui->m_orientation_cb->addItem(QET::Icons::North, tr("Nord"),  Qet::North);
@@ -135,6 +167,9 @@ void TerminalEditor::init()
 	ui->m_text_props_gb->setEnabled(false);
 }
 
+/**
+ * @brief TerminalEditor::posEdited
+ */
 void TerminalEditor::posEdited()
 {
 	if (m_locked) {
@@ -156,6 +191,9 @@ void TerminalEditor::posEdited()
 	m_locked = false;
 }
 
+/**
+ * @brief TerminalEditor::orientationEdited
+ */
 void TerminalEditor::orientationEdited()
 {
 	if (m_locked) {
@@ -174,6 +212,9 @@ void TerminalEditor::orientationEdited()
 	m_locked = false;
 }
 
+/**
+ * @brief TerminalEditor::nameEdited
+ */
 void TerminalEditor::nameEdited()
 {
 	if (m_locked) {
@@ -192,6 +233,9 @@ void TerminalEditor::nameEdited()
 	m_locked=false;
 }
 
+/**
+ * @brief TerminalEditor::typeEdited
+ */
 void TerminalEditor::typeEdited()
 {
 	if (m_locked) {
@@ -207,6 +251,13 @@ void TerminalEditor::typeEdited()
 	}
 	m_locked = false;
 }
+
+/**
+ * @brief TerminalEditor::activeConnections
+ * Active connection between the widgets used in this editor
+ * and method of this class.
+ * @param active
+ */
 
 void TerminalEditor::showNameEdited()
 {
