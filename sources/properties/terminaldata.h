@@ -21,6 +21,8 @@
 #include "../qet.h"
 #include "propertiesinterface.h"
 
+#include <QColor>
+#include <QFont>
 #include <QPointF>
 #include <QUuid>
 
@@ -114,6 +116,23 @@ class TerminalData : public PropertiesInterface
 		QPointF m_pos;
 
 		TerminalData::Type m_type = TerminalData::Generic;
+
+		/// Whether to display the terminal name as a text label
+		bool m_show_name = false;
+		/// Position of the text label relative to the terminal
+		QPointF m_label_pos{0.0, 0.0};
+		/// Font used for the text label
+		QFont m_label_font;
+		/// Rotation of the text label in degrees
+		qreal m_label_rotation = 0.0;
+		/// Horizontal alignment of the text label
+		Qt::Alignment m_label_halignment = Qt::AlignHCenter;
+		/// Vertical alignment of the text label
+		Qt::Alignment m_label_valignment = Qt::AlignVCenter;
+		/// Whether to draw a frame around the text label
+		bool m_label_frame = false;
+		/// Color of the text label
+		QColor m_label_color = Qt::black;
 
 	private:
 		QGraphicsObject* q{nullptr};

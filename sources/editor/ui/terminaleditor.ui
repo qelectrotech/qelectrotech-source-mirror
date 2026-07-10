@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>511</width>
-    <height>236</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -78,18 +78,141 @@
    <item row="3" column="1">
     <widget class="QComboBox" name="m_type_cb"/>
    </item>
-   <item row="5" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="5" column="0" colspan="2">
+    <widget class="QGroupBox" name="m_label_gb">
+     <property name="title">
+      <string>Nom de la borne</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="m_show_name_cb">
+        <property name="text">
+         <string>Afficher le nom</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="m_text_props_gb">
+        <property name="title">
+         <string>Propriétés du texte</string>
+        </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="m_font_pb">
+             <property name="text">
+              <string>Police</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QSpinBox" name="m_label_size_sb">
+             <property name="minimum">
+              <number>4</number>
+             </property>
+             <property name="maximum">
+              <number>50</number>
+             </property>
+             <property name="value">
+              <number>9</number>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>X :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="m_label_x_dsb">
+             <property name="minimum">
+              <double>-5000.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>5000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Y :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QDoubleSpinBox" name="m_label_y_dsb">
+             <property name="minimum">
+              <double>-5000.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>5000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Rotation :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QDoubleSpinBox" name="m_label_rotation_sb">
+             <property name="wrapping">
+              <bool>true</bool>
+             </property>
+             <property name="suffix">
+              <string>°</string>
+             </property>
+             <property name="decimals">
+              <number>0</number>
+             </property>
+             <property name="minimum">
+              <double>0.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>359.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QPushButton" name="m_align_pb">
+             <property name="text">
+              <string>Alignement</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Couleur :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QWidget" name="m_color_widget" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>24</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QCheckBox" name="m_label_frame_cb">
+             <property name="text">
+              <string>Encadrer le texte</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>
