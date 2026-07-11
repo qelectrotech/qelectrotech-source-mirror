@@ -5241,6 +5241,14 @@ Geen toegang tot de bovenliggende categorie</translation>
     </message>
 </context>
 <context>
+    <name>PartTerminal</name>
+    <message>
+        <location filename="../sources/editor/graphicspart/partterminal.cpp" line="560"/>
+        <source>Déplacer le label d&apos;une borne</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PartText</name>
     <message>
         <location filename="../sources/editor/graphicspart/parttext.cpp" line="353"/>
@@ -8843,7 +8851,7 @@ Wat wil je doen?</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddterminal.cpp" line="65"/>
-        <location filename="../sources/editor/graphicspart/partterminal.h" line="88"/>
+        <location filename="../sources/editor/graphicspart/partterminal.h" line="104"/>
         <source>Borne</source>
         <translation>Klem</translation>
     </message>
@@ -13051,72 +13059,114 @@ De overige velden worden niet gebruikt.</translation>
 <context>
     <name>TerminalEditor</name>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="117"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="155"/>
         <source>Nord</source>
         <translation>Noord (N)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="118"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="156"/>
         <source>Est</source>
         <translation>Oost(E)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="119"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="157"/>
         <source>Sud</source>
         <translation>Zuid(S)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="120"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="158"/>
         <source>Ouest</source>
         <translation>West(O)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="122"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="160"/>
         <source>Générique</source>
         <translation>Algemeen</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="123"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="161"/>
         <source>Bornier intérieur</source>
         <translation>Interne klem</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="124"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="162"/>
         <source>Bornier extérieur</source>
         <translation>Externe klem</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="125"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="163"/>
         <source>NO (contact SW)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="126"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="164"/>
         <source>NC (contact SW)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="127"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="165"/>
         <source>Commun (contact SW)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="168"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="208"/>
         <source>Modifier l&apos;orientation d&apos;une borne</source>
         <translation>Verander de orientatie van een klem</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="209"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="249"/>
         <source>Modifier le type d&apos;une borne</source>
         <translation>Wijzig het type klem</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="146"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="270"/>
+        <source>Afficher/cacher le nom du terminal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="285"/>
+        <source>Modifier la position du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="305"/>
+        <source>Modifier la police du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="320"/>
+        <source>Modifier la taille de police du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="334"/>
+        <source>Modifier la rotation du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="352"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="358"/>
+        <source>Modifier l&apos;alignement du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="372"/>
+        <source>Afficher/cacher le cadre du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="387"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="394"/>
+        <source>Modifier la couleur du label</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="186"/>
         <source>Déplacer une borne</source>
         <translation>Verplaats een klem</translation>
     </message>
     <message>
-        <location filename="../sources/editor/ui/terminaleditor.cpp" line="190"/>
+        <location filename="../sources/editor/ui/terminaleditor.cpp" line="230"/>
         <source>Modifier le nom du terminal</source>
         <translation>Verander de naam van de klem</translation>
     </message>
@@ -13149,6 +13199,61 @@ De overige velden worden niet gebruikt.</translation>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="74"/>
         <source>Type :</source>
         <translation>Type:</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="84"/>
+        <source>Nom de la borne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="90"/>
+        <source>Afficher le nom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="97"/>
+        <source>Propriétés du texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="103"/>
+        <source>Police</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="123"/>
+        <source>X :</source>
+        <translation type="unfinished">X :</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="140"/>
+        <source>Y :</source>
+        <translation type="unfinished">Y :</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="157"/>
+        <source>Rotation :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="167"/>
+        <source>°</source>
+        <translation type="unfinished">°</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="183"/>
+        <source>Alignement</source>
+        <translation type="unfinished">Uitlijning</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="190"/>
+        <source>Couleur :</source>
+        <translation type="unfinished">Kleur:</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/ui/terminaleditor.ui" line="207"/>
+        <source>Encadrer le texte</source>
+        <translation type="unfinished">Zet kader rond de tekst</translation>
     </message>
 </context>
 <context>
