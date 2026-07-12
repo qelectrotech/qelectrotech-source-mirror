@@ -63,8 +63,7 @@ description:
       - Multi-sheet project management with configurable title blocks
       - DXF import/export (via dxf2elmt)
       - Bill of materials and terminal strip table generation
-      - Companion tools: QET-elementScaler (symbol scaling) and
-        qet_tb_generator (terminal block table generation)
+      - "Companion tools: QET-elementScaler (symbol scaling) and qet_tb_generator (terminal block table generation)"
       - Interface translated into 25 languages
       - Cross-platform: Windows, macOS, Linux, BSD
 
