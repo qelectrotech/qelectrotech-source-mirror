@@ -62,11 +62,30 @@ find_package(
     REQUIRED
 )
 
+# <private/qpdf_p.h> (QPdfEngine::drawHyperlink) needs Qt's private GUI module.
+# Qt >= 6.7 ships it as a proper find_package component, but some distro
+# packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
+# and only provide the implicit Qt6::GuiPrivate target created alongside
+# Qt6::Gui. Try the component quietly, then verify the target below so a
+# missing private-headers package fails here instead of at compile time.
+# Qt5 has no such component — its GuiPrivate target always exists once Gui is found.
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+    find_package(Qt6 QUIET COMPONENTS GuiPrivate)
+endif()
+
 find_package(
     Qt${QT_VERSION_MAJOR}
     COMPONENTS
     ${QET_COMPONENTS}
     REQUIRED)
+
+if(QT_VERSION_MAJOR GREATER_EQUAL 6 AND NOT TARGET Qt6::GuiPrivate)
+    message(FATAL_ERROR
+        "Qt6::GuiPrivate was not found. It is required for PDF hyperlink "
+        "support (<private/qpdf_p.h>). Install the Qt6 private headers "
+        "(e.g. 'qt6-base-private-dev' on Debian/Ubuntu) or use a Qt build "
+        "that provides the GuiPrivate component.")
+endif()
 
 find_package(SQLite3 REQUIRED)
 
