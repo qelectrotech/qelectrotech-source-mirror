@@ -289,7 +289,7 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	// here guarantees the singleton is fully built before the worker runs.
 	MachineInfo::instance();
 
-	QtConcurrent::run([=]()
+	[[maybe_unused]] auto startup_future = QtConcurrent::run([=]()
 	{
 		// for debugging
 		qInstallMessageHandler(myMessageOutput);
