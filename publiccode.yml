@@ -1,0 +1,120 @@
+# publiccode.yml — QElectroTech
+# Standard: https://yml.publiccode.tools/ (v0.7)
+# Place at the root of the main repository (qelectrotech-source-mirror)
+# Validate before submission: https://publiccode-editor.developers.italia.it/
+
+publiccodeYmlVersion: "0.4"
+
+name: QElectroTech
+applicationSuite: QElectroTech
+
+url: "https://github.com/qelectrotech/qelectrotech-source-mirror.git"
+landingURL: "https://qelectrotech.org/"
+
+releaseDate: "2026-01-25"
+softwareVersion: "0.100"
+
+developmentStatus: stable
+
+softwareType: standalone/desktop
+
+platforms:
+  - windows
+  - mac
+  - linux
+  - bsd
+
+# NB: check/adjust against the official category list
+# (https://yml.publiccode.tools/categories.html) before submission
+categories:
+  - cad
+  - it-development
+  - engineering
+
+description:
+  en:
+    shortDescription: >-
+      Free electrical diagram editor, also used for plumbing, hydraulics,
+      pneumatics, automotive wiring and photovoltaic schematics.
+    longDescription: >-
+      QElectroTech (QET) is a free and open source CAD/CAE application to
+      create complex industrial and domestic electrical diagrams. While
+      originally focused on electrical engineering, it is also widely used
+      for plumbing, geothermal, air-conditioning, layout, hydraulics,
+      pneumatics, home automation, automotive wiring, process diagrams
+      (P&ID), photovoltaic installations and many other technical domains.
+
+
+      The software ships with a community-maintained library of over 9000
+      standardized symbols. It runs identically on Windows, macOS, Linux
+      and BSD, and files created on one platform can be opened on another
+      without conversion.
+
+
+      QET has been developed since 2007 and community-maintained since
+      2013. It is notably used as a free alternative to commercial
+      software such as EPLAN or SEE Electrical, by hobbyists, teachers,
+      students, professional electricians and companies worldwide.
+    documentation: "https://qelectrotech.github.io/qelectrotech-doc/index.html"
+    apiDocumentation: ""
+    features:
+      - Multi-domain electrical and schematic diagram creation
+      - Library of over 9000 standardized symbols
+      - Multi-sheet project management with configurable title blocks
+      - DXF import/export (via dxf2elmt)
+      - Bill of materials and terminal strip table generation
+      - Companion tools: QET-elementScaler (symbol scaling) and
+        qet_tb_generator (terminal block table generation)
+      - Interface translated into 25 languages
+      - Cross-platform: Windows, macOS, Linux, BSD
+
+legal:
+  license: GPL-2.0-only
+  mainCopyrightOwner: QElectroTech community
+  repoOwner: QElectroTech community
+
+maintenance:
+  type: community
+  contacts:
+    - name: Laurent Trinques (scorpio810)
+      email: scorpio@qelectrotech.org
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - en
+    - fr
+    - ar
+    - ca
+    - cs
+    - da
+    - de
+    - el
+    - es
+    - hr
+    - hu
+    - it
+    - ja
+    - ko
+    - mn
+    - nb
+    - nl
+    - pl
+    - pt
+    - pt-BR
+    - ro
+    - ru
+    - sk
+    - sl
+    - sr
+    - sv
+    - tr
+    - uk
+    - zh
+
+dependsOn:
+  open:
+    - name: Qt
+      versionMin: "5.15"
+    - name: KF5 (KDE Frameworks)
+      optional: true
