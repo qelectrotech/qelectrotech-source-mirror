@@ -84,7 +84,7 @@ void TextEditor::setUpChangeConnection(QPointer<PartText> part)
 
 void TextEditor::disconnectChangeConnection()
 {
-	for (const auto &connection : qAsConst(m_change_connection)) {
+	for (const auto &connection : std::as_const(m_change_connection)) {
 		disconnect(connection);
 	}
 	m_change_connection.clear();

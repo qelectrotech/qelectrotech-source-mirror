@@ -466,7 +466,7 @@ QSharedPointer<RealTerminal> TerminalStrip::realTerminalForUuid(const QUuid &uui
 QVector<QSharedPointer<RealTerminal>> TerminalStrip::realTerminals() const
 {
 	QVector<QSharedPointer<RealTerminal>> vector_;
-	for (const auto &phy : qAsConst(m_physical_terminals)) {
+	for (const auto &phy : std::as_const(m_physical_terminals)) {
 		vector_.append(phy->realTerminals());
 	}
 	return vector_;
@@ -856,7 +856,7 @@ QSharedPointer<TerminalStripBridge> TerminalStrip::isBridged(const QSharedPointe
 {
 	if (real_terminal)
 	{
-		for (const auto &bridge_ : qAsConst(m_bridge)) {
+		for (const auto &bridge_ : std::as_const(m_bridge)) {
 			if (bridge_->realTerminals().contains(real_terminal))
 				return bridge_;
 		}
@@ -983,7 +983,7 @@ QDomElement TerminalStrip::toXml(QDomDocument &parent_document)
 	}
 	root_elmt.appendChild(xml_layout);
 
-	for (const auto &bridge_ : qAsConst(m_bridge)) {
+	for (const auto &bridge_ : std::as_const(m_bridge)) {
 		root_elmt.appendChild(bridge_->toXml(parent_document));
 	}
 
@@ -1024,7 +1024,7 @@ bool TerminalStrip::fromXml(QDomElement &xml_element)
 			for (auto &xml_real : QETXML::findInDomElement(xml_physical, RealTerminal::xmlTagName()))
 			{
 				const auto uuid_ = QUuid(xml_real.attribute(QStringLiteral("element_uuid")));
-				for (auto terminal_elmt : qAsConst(free_terminals))
+				for (auto terminal_elmt : std::as_const(free_terminals))
 				{
 					if (terminal_elmt->uuid() == uuid_)
 					{

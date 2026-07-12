@@ -68,7 +68,7 @@ void UnGroupTerminalsCommand::undo()
 			m_terminal_strip->groupTerminals(key, m_physical_real_H.value(key));
 		}
 			//Second, set level.
-		for (const auto &pair : qAsConst(m_real_t_level)) {
+		for (const auto &pair : std::as_const(m_real_t_level)) {
 			m_terminal_strip->setLevel(pair.first, pair.second);
 		}
 	}
@@ -78,7 +78,7 @@ void UnGroupTerminalsCommand::redo()
 {
 	if (m_terminal_strip)
 	{
-		for (const auto &value : qAsConst(m_physical_real_H)) {
+		for (const auto &value : std::as_const(m_physical_real_H)) {
 			m_terminal_strip->unGroupTerminals(value);
 		}
 	}
