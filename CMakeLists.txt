@@ -70,25 +70,26 @@ find_package(
     ${QET_COMPONENTS}
     REQUIRED)
 
-# Qt6 only creates the Qt::GuiPrivate target (used for QPdfEngine::drawHyperlink)
-# when the GuiPrivate component is explicitly requested. Qt5 has no such
-# component package and creates the target implicitly with Gui, so only
-# request it on Qt6 - requesting it on Qt5 fails the whole configure.
+# <private/qpdf_p.h> (QPdfEngine::drawHyperlink) needs Qt's private GUI module.
+# Qt >= 6.7 ships it as a proper find_package component, but some distro
+# packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
+# and only provide the implicit Qt6::GuiPrivate target created alongside
+# Qt6::Gui. Try the component quietly, then verify the target below so a
+# missing private-headers package fails here instead of at compile time.
+# Qt5 has no such component — its GuiPrivate target always exists once Gui is found.
 if(QT_VERSION_MAJOR GREATER_EQUAL 6)
-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+    find_package(Qt6 QUIET COMPONENTS GuiPrivate)
+endif()
+
+if(QT_VERSION_MAJOR GREATER_EQUAL 6 AND NOT TARGET Qt6::GuiPrivate)
+    message(FATAL_ERROR
+        "Qt6::GuiPrivate was not found. It is required for PDF hyperlink "
+        "support (<private/qpdf_p.h>). Install the Qt6 private headers "
+        "(e.g. 'qt6-base-private-dev' on Debian/Ubuntu) or use a Qt build "
+        "that provides the GuiPrivate component.")
 endif()
 
 find_package(SQLite3 REQUIRED)
-
-# CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
-# alias yet), while CMake >= 4.3's bundled FindSQLite3 creates SQLite3::SQLite3
-# and deprecates the old name. Add the missing alias ourselves so we can use
-# the modern target name everywhere regardless of the CMake version in use
-# (this project must keep building on CMake versions below 4.3, e.g. on most
-# current Linux distros).
-if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
-    add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
-endif()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 

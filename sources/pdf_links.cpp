@@ -23,8 +23,8 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 
-// Private Qt PDF engine for drawHyperlink() — not public API, stable since Qt4.
-// Requires QT += gui-private in qelectrotech.pro / gui-private in CMake.
+// Private Qt PDF engine for drawHyperlink() — not public API.
+// Availability of Qt::GuiPrivate is verified at configure time in CMakeLists.txt.
 #include <private/qpdf_p.h>
 
 #include <QByteArray>
