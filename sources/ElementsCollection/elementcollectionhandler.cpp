@@ -143,8 +143,12 @@ ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsL
 		//On windows when user drag and drop an element from the common elements collection
 		//to the custom elements collection, the element file stay in read only mode, and so
 		//user can't save the element
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+		QNtfsPermissionCheckGuard ntfs_guard;
+#else
 		extern Q_CORE_EXPORT int qt_ntfs_permission_lookup;
 		qt_ntfs_permission_lookup++;
+#endif
 		QFile file(destination.fileSystemPath() % "/" % new_elmt_name);
 		if (!file.isWritable()) {
 			if (!file.setPermissions(file.permissions() | QFileDevice::WriteUser)) {
@@ -152,7 +156,9 @@ ElementsLocation ECHSFileToFile::copyElement(ElementsLocation &source, ElementsL
 						 << " in ECHSFileToFile::copyElement";
 			}
 		}
+#if QT_VERSION < QT_VERSION_CHECK(6, 6, 0)
 		qt_ntfs_permission_lookup--;
+#endif
 #endif
 		return ElementsLocation (destination.fileSystemPath() % "/" % new_elmt_name);
 	}
