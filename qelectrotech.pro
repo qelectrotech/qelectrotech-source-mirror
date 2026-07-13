@@ -171,7 +171,8 @@ HEADERS += $$files(sources/*.h) \
            $$files(sources/xml/*.h) \
            $$files(sources/dxf/*.h) \
            $$files(sources/qet_elementscaler/*.h) \
-           $$files(sources/svg/*.h)
+           $$files(sources/svg/*.h) \
+           $$files(sources/custom/wirecatalogue/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -215,10 +216,12 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/xml/*.cpp) \
            $$files(sources/dxf/*.cpp) \
            $$files(sources/qet_elementscaler/*.cpp) \
-           $$files(sources/svg/*.cpp)
+           $$files(sources/svg/*.cpp) \
+           $$files(sources/custom/wirecatalogue/*.cpp)
 
 # Needed for use promote QTreeWidget in terminalstripeditor.ui
 INCLUDEPATH += sources/TerminalStrip/ui
+INCLUDEPATH += sources/custom/wirecatalogue
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc

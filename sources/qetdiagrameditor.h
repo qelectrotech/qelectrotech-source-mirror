@@ -42,6 +42,7 @@ class RecentFiles;
 class DiagramPropertiesEditorDockWidget;
 class ElementsCollectionWidget;
 class AutoNumberingDockWidget;
+class WireCatalogueWidget;
 class TerminalNumberingDialog;
 
 class KAutoSaveFile;
@@ -81,6 +82,7 @@ class QETDiagramEditor : public QETMainWindow
 
 		QETDiagramEditor(const QETDiagramEditor &);
 		void setUpElementsPanel ();
+		void setUpWireCatalogue ();
 		void setUpElementsCollectionWidget();
 		void setUpUndoStack     ();
 		void setUpSelectionPropertiesEditor();
@@ -235,6 +237,8 @@ class QETDiagramEditor : public QETMainWindow
 		*qdw_pa, /// Dock for the elements panel
 		*m_qdw_elmt_collection,
 		*qdw_undo; /// Dock for the undo list
+
+		WireCatalogueWidget *m_wire_catalogue_dock = nullptr; /// Custom: wire/cable catalogue panel
 
 		ElementsCollectionWidget *m_element_collection_widget;
 			
