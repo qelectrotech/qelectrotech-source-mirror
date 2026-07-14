@@ -1242,35 +1242,58 @@ QString QETApp::languagesPath()
 	{
 		const QString bin_dir = QCoreApplication::applicationDirPath();
 		const QString next_to_bin = bin_dir + "/lang/";
+		if (QDir(next_to_bin).exists())
+			return(next_to_bin);
+
 		// Some packagings (notably the Windows installer) put the binary in a
 		// "bin" subfolder while "lang" sits beside it (../lang). Fall back to
-		// that layout when the folder next to the binary is absent, so the
-		// translations are found without a --lang-dir argument. See issue #86.
-		if (!QDir(next_to_bin).exists()) {
-			const QString sibling_of_bin =
-				QDir::cleanPath(bin_dir + "/../lang") + "/";
-			if (QDir(sibling_of_bin).exists())
-				return(sibling_of_bin);
-		}
+		// that layout so the translations are found without a --lang-dir
+		// argument. See issue #86.
+		const QString sibling_of_bin =
+			QDir::cleanPath(bin_dir + "/../lang") + "/";
+		if (QDir(sibling_of_bin).exists())
+			return(sibling_of_bin);
+
+		// Running straight from a build directory: qt_add_translation emits the
+		// qet_*.qm right next to the binary (no "lang" subfolder). Use the
+		// binary's own folder when the compiled translations are found there,
+		// so a dev build runs localized without first assembling a lang/ folder.
+		if (QDir(bin_dir).exists(QStringLiteral("qet_en.qm")))
+			return(bin_dir + "/");
+
 		return(next_to_bin);
 	}
 #else
-	#ifndef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
-		/* the compilation option represents
-		 *  a classic absolute or relative path
-		 * l'option de compilation represente
-		 *  un chemin absolu ou relatif classique
-		 */
-		return(QUOTE(QET_LANG_PATH));
+	{
+		const QString bin_dir = QCoreApplication::applicationDirPath();
+	#ifdef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
+		// the compilation option represents a path relative to the folder
+		// containing the executable binary
+		const QString configured = bin_dir + "/" + QUOTE(QET_LANG_PATH);
 	#else
-		/* the compilation option represents a path relative
-		 *  to the folder containing the executable binary
-		 * l'option de compilation represente un chemin relatif
-		 *  au dossier contenant le binaire executable
-		 */
-		return(QCoreApplication::applicationDirPath()
-			   + "/" + QUOTE(QET_LANG_PATH));
+		// The compilation option is a classic absolute or relative path. A
+		// relative one (e.g. the Windows "./l10n/") would otherwise be resolved
+		// against the current working directory, so the binary fails to find
+		// its translations when launched from elsewhere. Anchor a relative path
+		// to the binary's directory; an absolute path (typical on Linux
+		// installs) is used unchanged.
+		const QString raw = QUOTE(QET_LANG_PATH);
+		const QString configured = QDir::isAbsolutePath(raw)
+				? raw
+				: bin_dir + "/" + raw;
 	#endif
+		if (QDir(configured).exists())
+			return(configured);
+
+		// Running straight from a build directory: qt_add_translation emits the
+		// qet_*.qm right next to the binary. Use the binary's own folder when
+		// the compiled translations are found there, so a dev build runs
+		// localized without first assembling an l10n/ folder.
+		if (QDir(bin_dir).exists(QStringLiteral("qet_en.qm")))
+			return(bin_dir + "/");
+
+		return(configured);
+	}
 #endif
 	}
 }
