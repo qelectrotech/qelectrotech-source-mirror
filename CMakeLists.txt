@@ -71,9 +71,21 @@ find_package(SQLite3 REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
-qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+# The default build only compiles the tracked .ts files to .qm (lrelease).
+# Refreshing the .ts from the sources (lupdate) is a developer action behind
+# the explicit "update_translations" target below: running lupdate on every
+# build rewrote tracked files as a side effect, and under high parallelism
+# lupdate rewriting a .ts while lrelease read the same file made the build
+# fail with "Premature end of document".
 set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
 qt5_add_translation(QM_FILES ${TS_FILES})
+
+add_custom_target(update_translations
+    COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
+    VERBATIM
+)
 
 # als laatse
 include(cmake/define_definitions.cmake)
