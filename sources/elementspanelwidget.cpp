@@ -643,6 +643,12 @@ void ElementsPanelWidget::duplicateDiagram()
 
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
+				// The XML round-trip kept the source elements' uuids. Give the
+				// copies their own identity (as PasteDiagramCommand::redo()
+				// does for on-diagram paste): element.uuid is the PRIMARY KEY
+				// of the project database, so duplicates fail to insert and
+				// silently vanish from nomenclature/summary tables.
+				elmt->newUuid();
 				new_diagram->restoreText(elmt);
 			}
 		}
