@@ -59,11 +59,11 @@ QVector <QPointer<Element>> ElementProvider::freeElement(ElementData::Types filt
 	QList<Element *> elmt_list;
 
 		//search in all diagram
-	for (const auto &diagram_ : qAsConst(m_diagram_list))
+	for (const auto &diagram_ : std::as_const(m_diagram_list))
 	{
 			//get all element in diagram d
 		elmt_list = diagram_->elements();
-		for (const auto &elmt_ : qAsConst(elmt_list))
+		for (const auto &elmt_ : std::as_const(elmt_list))
 		{
 			if (filter & elmt_->elementData().m_type &&
 				elmt_->isFree())
@@ -106,7 +106,7 @@ QList <Element *> ElementProvider::fromUuids(QList<QUuid> uuid_list) const
 QVector<QPointer<Element>> ElementProvider::find(ElementData::Types elmt_type) const
 {
 	QVector<QPointer<Element>> returned_vector;
-	for (const auto &diagram_ : qAsConst(m_diagram_list))
+	for (const auto &diagram_ : std::as_const(m_diagram_list))
 	{
 		const auto elmt_list = diagram_->elements();
 		for (const auto &elmt_ : elmt_list)
@@ -198,7 +198,7 @@ QVector<TerminalElement *> ElementProvider::freeTerminal() const
 {
 	QVector<TerminalElement *> vector_;
 
-	for (const auto &diagram : qAsConst(m_diagram_list))
+	for (const auto &diagram : std::as_const(m_diagram_list))
 	{
 		const auto elmt_list{diagram->elements()};
 

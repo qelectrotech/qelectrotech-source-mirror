@@ -85,7 +85,7 @@ void TerminalStripTreeDockWidget::reload()
 	m_uuid_terminal_H.clear();
 	m_uuid_strip_H.clear();
 
-	for (const auto &connection_ : qAsConst(m_strip_changed_connection)) {
+	for (const auto &connection_ : std::as_const(m_strip_changed_connection)) {
 		disconnect(connection_);
 	}
 	m_strip_changed_connection.clear();
@@ -250,7 +250,7 @@ void TerminalStripTreeDockWidget::buildTree()
 		return a->name() < b->name();
 	});
 
-	for (const auto &ts : qAsConst(ts_vector)) {
+	for (const auto &ts : std::as_const(ts_vector)) {
 		addTerminalStrip(ts);
 	}
 	addFreeTerminal();
@@ -352,7 +352,7 @@ void TerminalStripTreeDockWidget::addFreeTerminal()
 
 	auto free_terminal_item = ui->m_tree_view->topLevelItem(1);
 
-	for (const auto terminal : qAsConst(vector_))
+	for (const auto terminal : std::as_const(vector_))
 	{
 		QUuid uuid_ = terminal->uuid();
 		QStringList strl{terminal->actualLabel()};

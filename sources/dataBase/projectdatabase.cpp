@@ -253,9 +253,9 @@ bool projectDataBase::createDataBase()
 		return false;
 	}
 
-	m_data_base.exec("PRAGMA temp_store = MEMORY");
-	m_data_base.exec("PRAGMA journal_mode = MEMORY");
-	m_data_base.exec("PRAGMA synchronous = OFF");
+	QSqlQuery(m_data_base).exec("PRAGMA temp_store = MEMORY");
+	QSqlQuery(m_data_base).exec("PRAGMA journal_mode = MEMORY");
+	QSqlQuery(m_data_base).exec("PRAGMA synchronous = OFF");
 	
 	QSqlQuery query_(m_data_base);
 	bool first_ = true;

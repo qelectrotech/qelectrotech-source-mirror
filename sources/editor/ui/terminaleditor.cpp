@@ -428,7 +428,7 @@ void TerminalEditor::activeConnections(bool active)
 		m_editor_connections << connect(ui->m_label_frame_cb, &QCheckBox::toggled,
 										this, &TerminalEditor::labelFrameEdited);
 	} else {
-		for (auto const & con : qAsConst(m_editor_connections)) {
+		for (auto const & con : std::as_const(m_editor_connections)) {
 			QObject::disconnect(con);
 		}
 		m_editor_connections.clear();

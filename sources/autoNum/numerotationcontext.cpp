@@ -57,9 +57,9 @@ bool NumerotationContext::addValue(const QString &type,
 				   const QVariant &value,
 				   const int increase,
 				   const int initialvalue) {
-	if (!keyIsAcceptable(type) && !value.canConvert(QVariant::String))
+	if (!keyIsAcceptable(type) && !value.canConvert<QString>())
 		return false;
-	if (keyIsNumber(type) && !value.canConvert(QVariant::Int))
+	if (keyIsNumber(type) && !value.canConvert<int>())
 		return false;
 
 	QString valuestr = value.toString();

@@ -422,6 +422,14 @@ int checkOneElement(const QString &path)
 		return 2;
 	}
 	QDomDocument doc;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	if (const auto result = doc.setContent(&file); !result) {
+		file.close();
+		out << "FAIL  " << path << "  (XML error line "
+			<< result.errorLine << ": " << result.errorMessage << ")\n";
+		return 2;
+	}
+#else
 	QString error;
 	int line = 0;
 	if (!doc.setContent(&file, &error, &line)) {
@@ -430,6 +438,7 @@ int checkOneElement(const QString &path)
 			<< line << ": " << error << ")\n";
 		return 2;
 	}
+#endif
 	file.close();
 
 	const QDomElement root = doc.documentElement();

@@ -830,7 +830,7 @@ void ElementsCollectionWidget::search()
 	}
 
 		//start the search when text have at least 3 letters.
-	if (text.count() < 3) {
+	if (text.size() < 3) {
 		return;
 	}
 
