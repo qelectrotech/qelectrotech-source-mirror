@@ -1697,10 +1697,11 @@ void QETApp::useSystemPalette(bool use) {
 				);
 	} else {
 		QFile file(configDir() + "/style.css");
-		file.open(QFile::ReadOnly);
-		QString styleSheet = QLatin1String(file.readAll());
-		qApp->setStyleSheet(styleSheet);
-		file.close();
+		if (file.open(QFile::ReadOnly)) {
+			QString styleSheet = QLatin1String(file.readAll());
+			qApp->setStyleSheet(styleSheet);
+			file.close();
+		}
 	}
 }
 
