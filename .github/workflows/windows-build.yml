@@ -110,6 +110,7 @@ jobs:
             -DQT_VERSION_MAJOR=5 \
             -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON \
             -DBUILD_TESTING=OFF \
+            -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
