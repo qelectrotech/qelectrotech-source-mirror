@@ -74,9 +74,11 @@ void QGIManager::release(QGraphicsItem *qgi) {
 	Demande au QGIManager de gerer plusieurs QGI
 	@param qgis QGraphicsItems a gerer
 */
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
 	foreach(QGraphicsItem *qgi, qgis) manage(qgi);
 }
+#endif
 
 /**
 	Indique au QGIManager que pour chaque QGI fourni, une reference vers celui-ci
@@ -85,9 +87,11 @@ void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
 	sur la scene de ce QGIManager, alors il sera detruit.
 	@param qgis QGraphicsItems a ne plus gerer
 */
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 void QGIManager::release(const QList<QGraphicsItem *> &qgis) {
 	foreach(QGraphicsItem *qgi, qgis) release(qgi);
 }
+#endif
 
 void QGIManager::manage(const QVector<QGraphicsItem *> &items) {
 	for (const auto &qgi : items) {

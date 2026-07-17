@@ -45,10 +45,14 @@ class QGIManager {
 	public:
 	void manage(QGraphicsItem *);
 	void release(QGraphicsItem *);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	// In Qt6 QVector is an alias for QList, so these overloads would collide
+	// with the QVector ones below (same signature). Keep them on Qt5 only.
 	QT_DEPRECATED_X("Use QGIManager::manage(const QVector<QGraphicsItem *> &) instead")
 		void manage(const QList<QGraphicsItem *> &);
 	QT_DEPRECATED_X("Use QGIManager::release(const QVector<QGraphicsItem *> &) instead")
 		void release(const QList<QGraphicsItem *> &);
+#endif
 	void manage(const QVector<QGraphicsItem *> &items);
 	void release(const QVector<QGraphicsItem *> &items);
 	void setDestroyQGIOnDelete(bool);

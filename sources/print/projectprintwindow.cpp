@@ -208,10 +208,17 @@ void ProjectPrintWindow::requestPaint()
 			#ifdef QT_DEBUG
 			qDebug() << "--";
 			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
+			#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 			qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
 			#endif
+			#endif
 
+			// QApplication::desktop() was removed in Qt6; use QWidget::screen().
+			#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 			QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
+			#else
+			QScreen *srn = screen();
+			#endif
 			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
 			m_printer->setResolution(dotsPerInch);
 

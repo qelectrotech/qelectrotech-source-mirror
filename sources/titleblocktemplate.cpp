@@ -103,7 +103,9 @@ bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 
 	// parse its content as XML
 	QDomDocument xml_doc;
-	bool xml_parsing = xml_doc.setContent(&template_file);
+	// Qt6 QDomDocument::setContent() returns a ParseResult (explicit bool);
+	// static_cast keeps this working on both Qt5 (bool) and Qt6.
+	bool xml_parsing = static_cast<bool>(xml_doc.setContent(&template_file));
 	if (!xml_parsing) {
 		return(false);
 	}
