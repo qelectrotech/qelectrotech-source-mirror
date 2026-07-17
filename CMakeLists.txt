@@ -78,6 +78,14 @@ find_package(
     ${QET_COMPONENTS}
     REQUIRED)
 
+# Qt6 only creates the Qt::GuiPrivate target (used for QPdfEngine::drawHyperlink)
+# when the GuiPrivate component is explicitly requested. Qt5 has no such
+# component package and creates the target implicitly with Gui, so only
+# request it on Qt6 - requesting it on Qt5 fails the whole configure.
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
