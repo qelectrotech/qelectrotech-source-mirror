@@ -59,6 +59,13 @@ find_package(
  ${QET_COMPONENTS}
  REQUIRED)
 
+# Qt6-only: the tests link ${QET_PRIVATE_LIBRARIES}, which contains
+# Qt::GuiPrivate; Qt6 only creates that target when the component is
+# explicitly requested (Qt5 creates it implicitly and has no such package).
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+endif()
+
 Include(FetchContent)
 
 FetchContent_Declare(

@@ -16,6 +16,13 @@
 
 message(" - qet_compilation_vars")
 
+# Note: GuiPrivate is intentionally NOT in this list. Qt6's CMake config only
+# creates the Qt::GuiPrivate target when "GuiPrivate" is explicitly requested
+# as a component, but Qt5 has no Qt5GuiPrivate package at all (the target is
+# created implicitly with Gui), so requesting it as a component breaks the
+# whole Qt5 configure. It is requested separately, guarded by
+# QT_VERSION_MAJOR, after the main find_package.
+# (Needed for QPdfEngine::drawHyperlink, the PDF internal links.)
 set(QET_COMPONENTS
   LinguistTools
   PrintSupport
@@ -24,11 +31,7 @@ set(QET_COMPONENTS
   Sql
   Network
   Widgets
-  Concurrent
-  GuiPrivate) # Qt6 CMake config only creates the Qt::GuiPrivate target when
-              # "GuiPrivate" is explicitly requested as a component (unlike
-              # Qt5, which created it implicitly via Gui/PrintSupport/Widgets).
-              # Required for QPdfEngine::drawHyperlink (PDF internal links).
+  Concurrent)
 
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
