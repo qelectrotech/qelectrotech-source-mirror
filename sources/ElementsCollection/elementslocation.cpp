@@ -804,14 +804,15 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 
 			QString			   path_ = collectionPath(false);
 			QRegularExpression rx("^(.*)/(.*\\.elmt)$");
+			QRegularExpressionMatch match = rx.match(path_);
 
-			if (rx.exactMatch(path_))
+			if (match.hasMatch())
 			{
 				return project()
 					->embeddedElementCollection()
 					->addElementDefinition(
-						rx.cap(1),
-						rx.cap(2),
+						match.captured(1),
+						match.captured(2),
 						xml_document.documentElement());
 			}
 			else
