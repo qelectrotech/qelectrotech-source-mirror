@@ -134,6 +134,11 @@ class TerminalData : public PropertiesInterface
 		/// Color of the text label
 		QColor m_label_color = Qt::black;
 
+		/// Whether this terminal uses a label from the master's contact group
+		bool m_use_master_label = false;
+		/// Index into the master's contact group labels (T1=0, T2=1, ..., T20=19)
+		int m_master_label_index = 0;
+
 	private:
 		QGraphicsObject* q{nullptr};
 };

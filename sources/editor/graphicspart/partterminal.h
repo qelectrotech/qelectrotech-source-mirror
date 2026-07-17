@@ -42,6 +42,8 @@ class PartTerminal : public CustomElementGraphicPart
 	Q_PROPERTY(Qt::Alignment label_valignment READ labelVAlignment WRITE setLabelVAlignment)
 	Q_PROPERTY(bool label_frame READ labelFrame WRITE setLabelFrame)
 	Q_PROPERTY(QColor label_color READ labelColor WRITE setLabelColor)
+	Q_PROPERTY(bool use_master_label READ useMasterLabel WRITE setUseMasterLabel)
+	Q_PROPERTY(int master_label_index READ masterLabelIndex WRITE setMasterLabelIndex)
 
 	public:
 		// constructors, destructor
@@ -62,6 +64,8 @@ class PartTerminal : public CustomElementGraphicPart
 		void labelVAlignmentChanged();
 		void labelFrameChanged();
 		void labelColorChanged();
+		void useMasterLabelChanged();
+		void masterLabelIndexChanged();
 
 		// methods
 	public:
@@ -129,6 +133,12 @@ class PartTerminal : public CustomElementGraphicPart
 
 		QColor labelColor() const { return d->m_label_color; }
 		void setLabelColor(QColor color);
+
+		bool useMasterLabel() const { return d->m_use_master_label; }
+		void setUseMasterLabel(bool use);
+
+		int masterLabelIndex() const { return d->m_master_label_index; }
+		void setMasterLabelIndex(int index);
 
 		void setNewUuid();
 

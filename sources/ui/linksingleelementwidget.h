@@ -22,6 +22,8 @@
 #include "abstractelementpropertieseditorwidget.h"
 
 #include <QHash>
+#include <QDialog>
+#include <QComboBox>
 
 class QTreeWidgetItem;
 class Element;
@@ -100,6 +102,8 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 
 	Element *m_showed_element = nullptr,
 			*m_element_to_link = nullptr;
+
+	int m_pending_group_index = -1;
 
 	QMenu *m_context_menu{nullptr};
 	QAction *m_link_action{nullptr},

@@ -49,11 +49,15 @@ class ElementPropertiesEditorWidget : public QDialog
 		void setUpInterface();
 		void updateTree();
 		void populateTree();
+		void populateSlaveGroupsTable();
+		void readSlaveGroupsFromTable();
 
 		//SLOTS
 	private slots:
 		void on_m_buttonBox_accepted();
 		void on_m_base_type_cb_currentIndexChanged(int index);
+		void on_m_slave_groups_checkbox_toggled(bool checked);
+		void on_max_slaves_checkbox_toggled(bool checked);
 
 		//ATTRIBUTES
 	private:

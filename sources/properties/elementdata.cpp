@@ -49,18 +49,7 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 		return false;
 		}
 
-		// --- OUR DEBUG BLOCK STARTS HERE ---
-		// We retrieve the string from the XML and store it temporarily
-		QString raw_type_string = xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple"));
-
-	qDebug() << "\n=== NEW COMPONENT IS LOADING ===";
-	qDebug() << "[XML Parser] Raw “link_type” string from the .elmt file:" << raw_type_string;
-
-	// Now we’ll pass it on to your translation function
-	m_type = typeFromString(raw_type_string);
-
-	qDebug() << "[XML Parser] Translated ElementData type:" << typeToString(m_type);
-	// --- THIS IS WHERE OUR DEBUG BLOCK ENDS ---
+	m_type = typeFromString(xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple")));
 
 	kindInfoFromXml(xml_element);
 	m_informations.fromXml(xml_element.firstChildElement(QStringLiteral("elementInformations")),
@@ -97,6 +86,31 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 			xml_max_slaves.appendChild(max_slaves_txt);
 
 			returned_elmt.appendChild(xml_max_slaves);
+		}
+
+		// Save slave contact groups if enabled
+		if (m_slave_contact_groups_enabled) {
+			auto xml_groups = document.createElement(QStringLiteral("slaveContactGroups"));
+			for (const auto &group : m_slave_contact_groups) {
+				auto xml_group = document.createElement(QStringLiteral("group"));
+				xml_group.setAttribute(QStringLiteral("type"),
+					slaveStateToString(group.type));
+				xml_group.setAttribute(QStringLiteral("subtype"),
+					slaveTypeToString(group.subtype));
+				xml_group.setAttribute(QStringLiteral("contactCount"),
+					group.contactCount);
+				xml_group.setAttribute(QStringLiteral("terminalCount"),
+					group.terminalCount);
+
+				for (const auto &label : group.labels) {
+					auto xml_label = document.createElement(QStringLiteral("label"));
+					auto label_txt = document.createTextNode(label);
+					xml_label.appendChild(label_txt);
+					xml_group.appendChild(xml_label);
+				}
+				xml_groups.appendChild(xml_group);
+			}
+			returned_elmt.appendChild(xml_groups);
 		}
 	}
 	else if (m_type == ElementData::Slave)
@@ -245,6 +259,15 @@ bool ElementData::operator==(const ElementData &data) const
 
 	if (data.m_type == ElementData::Master) {
 		if(data.m_master_type != m_master_type) {
+			return false;
+		}
+		if (data.m_max_slaves != m_max_slaves) {
+			return false;
+		}
+		if (data.m_slave_contact_groups_enabled != m_slave_contact_groups_enabled) {
+			return false;
+		}
+		if (data.m_slave_contact_groups != m_slave_contact_groups) {
 			return false;
 		}
 	}
@@ -591,7 +614,7 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 					m_max_slaves = dom_elmt.text().toInt();
 				}
 			}
-			else if (m_type == ElementData::Slave ) {
+			else if (m_type == ElementData::Slave) {
 				if (name == QLatin1String("type")) {
 					m_slave_type = slaveTypeFromString(dom_elmt.text());
 				} else if (name == QLatin1String("state")) {
@@ -606,8 +629,71 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 				} else if (name == QLatin1String("function")) {
 					m_terminal_function = terminalFunctionFromString(dom_elmt.text());
 				}
-				
 			}
 		}
 	}
+
+	// Parse slave contact groups for Master elements
+	if (m_type == ElementData::Master) {
+		auto xml_kind = xml_element.firstChildElement(QStringLiteral("kindInformations"));
+		auto xml_groups = xml_kind.firstChildElement(QStringLiteral("slaveContactGroups"));
+		if (!xml_groups.isNull()) {
+			m_slave_contact_groups_enabled = true;
+			auto group_list = QETXML::findInDomElement(xml_groups, QStringLiteral("group"));
+			for (const auto &xml_group : group_list) {
+				SlaveContactGroup group;
+				group.type = slaveStateFromString(
+					xml_group.attribute(QStringLiteral("type"), QStringLiteral("NO")));
+				group.subtype = slaveTypeFromString(
+					xml_group.attribute(QStringLiteral("subtype"), QStringLiteral("simple")));
+				group.contactCount = xml_group.attribute(
+					QStringLiteral("contactCount"), QStringLiteral("1")).toInt();
+				group.terminalCount = xml_group.attribute(
+					QStringLiteral("terminalCount"), QStringLiteral("1")).toInt();
+
+				auto label_list = QETXML::findInDomElement(xml_group, QStringLiteral("label"));
+				for (const auto &xml_label : label_list) {
+					group.labels.append(xml_label.text());
+				}
+				m_slave_contact_groups.append(group);
+			}
+		}
+	}
+}
+
+/**
+ * @brief ElementData::slaveContactGroupTypeToString
+ * Convert a SlaveState to string for XML storage in slave contact groups.
+ * Maps: NO -> "NO", NC -> "NC", SW -> "SW", Other -> "Other"
+ */
+QString ElementData::slaveContactGroupTypeToString(ElementData::SlaveState type)
+{
+	return slaveStateToString(type);
+}
+
+/**
+ * @brief ElementData::slaveContactGroupTypeFromString
+ * Convert a string from XML to SlaveState for slave contact groups.
+ */
+ElementData::SlaveState ElementData::slaveContactGroupTypeFromString(const QString &string)
+{
+	return slaveStateFromString(string);
+}
+
+/**
+ * @brief ElementData::slaveContactGroupSubtypeToString
+ * Convert a SlaveType to string for XML storage in slave contact groups.
+ */
+QString ElementData::slaveContactGroupSubtypeToString(ElementData::SlaveType type)
+{
+	return slaveTypeToString(type);
+}
+
+/**
+ * @brief ElementData::slaveContactGroupSubtypeFromString
+ * Convert a string from XML to SlaveType for slave contact groups.
+ */
+ElementData::SlaveType ElementData::slaveContactGroupSubtypeFromString(const QString &string)
+{
+	return slaveTypeFromString(string);
 }

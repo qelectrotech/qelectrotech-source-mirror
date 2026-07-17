@@ -23,6 +23,11 @@
 #include "../../qetinformation.h"
 
 #include <QItemDelegate>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QSignalBlocker>
+#include <QTableWidgetItem>
+#include <QHeaderView>
 
 /**
 	@brief The EditorDelegate class
@@ -108,6 +113,13 @@ void ElementPropertiesEditorWidget::upDateInterface()
 			ui->max_slaves_spinbox->setEnabled(true);
 			ui->max_slaves_spinbox->setValue(m_data.m_max_slaves);
 		}
+
+		// Slave contact groups checkbox
+		ui->m_slave_groups_checkbox->setChecked(m_data.m_slave_contact_groups_enabled);
+		ui->m_slave_groups_table->setEnabled(m_data.m_slave_contact_groups_enabled);
+		if (m_data.m_slave_contact_groups_enabled) {
+			populateSlaveGroupsTable();
+		}
 	} else if (m_data.m_type == ElementData::Terminal) {
 		ui->m_terminal_type_cb->setCurrentIndex(
 					ui->m_terminal_type_cb->findData(
@@ -168,6 +180,11 @@ void ElementPropertiesEditorWidget::setUpInterface()
 
 	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
 	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
+	connect(ui->max_slaves_spinbox, QOverload<int>::of(&QSpinBox::valueChanged), [this](int) {
+		if (ui->m_slave_groups_checkbox->isChecked()) {
+			populateSlaveGroupsTable();
+		}
+	});
 
 	populateTree();
 }
@@ -241,7 +258,7 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_slave_type  = ui->m_type_cb->currentData().value<ElementData::SlaveType>();
 		m_data.m_contact_count = ui->m_number_ctc->value();
 	}
-	else if (m_data.m_type == ElementData::Master) {
+		else if (m_data.m_type == ElementData::Master) {
 		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
 
 		//If the checkbox is checked, save the number; otherwise, -1 (infinity)
@@ -250,6 +267,8 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		} else {
 			m_data.m_max_slaves = -1;
 		}
+
+		readSlaveGroupsFromTable();
 	}
 	else if (m_data.m_type == ElementData::Terminal)
 	{
@@ -298,4 +317,218 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 #endif
 
 	updateTree();
+}
+
+/**
+ * @brief ElementPropertiesEditorWidget::on_max_slaves_checkbox_toggled
+ * When max_slaves checkbox is unchecked, also uncheck slave groups checkbox
+ */
+void ElementPropertiesEditorWidget::on_max_slaves_checkbox_toggled(bool checked)
+{
+	if (!checked && ui->m_slave_groups_checkbox->isChecked()) {
+		ui->m_slave_groups_checkbox->setChecked(false);
+	}
+}
+
+/**
+ * @brief ElementPropertiesEditorWidget::on_m_slave_groups_checkbox_toggled
+ * When slave groups checkbox is toggled, enable/disable the table
+ * Also ensure max_slaves checkbox is checked when enabling groups
+ */
+void ElementPropertiesEditorWidget::on_m_slave_groups_checkbox_toggled(bool checked)
+{
+	ui->m_slave_groups_table->setEnabled(checked);
+
+	if (checked && !ui->max_slaves_checkbox->isChecked()) {
+		ui->max_slaves_checkbox->setChecked(true);
+	}
+
+	if (checked) {
+		populateSlaveGroupsTable();
+	}
+}
+
+/**
+ * @brief ElementPropertiesEditorWidget::populateSlaveGroupsTable
+ * Fill the slave contact groups table from m_data
+ */
+void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
+{
+	QSignalBlocker blocker_table(ui->m_slave_groups_table);
+	QSignalBlocker blocker_spinbox(ui->max_slaves_spinbox);
+	ui->m_slave_groups_table->setRowCount(0);
+
+	int row_count = ui->max_slaves_checkbox->isChecked()
+		? ui->max_slaves_spinbox->value() : 0;
+
+	// If we have existing groups, use their count (up to max_slaves)
+	int existing_groups = m_data.m_slave_contact_groups.size();
+
+	// Adjust the groups list to match the spinbox value
+	while (m_data.m_slave_contact_groups.size() < row_count) {
+		ElementData::SlaveContactGroup group;
+		group.type = ElementData::NO;
+		group.subtype = ElementData::SSimple;
+		group.contactCount = 1;
+		group.terminalCount = 2;
+		m_data.m_slave_contact_groups.append(group);
+	}
+	while (m_data.m_slave_contact_groups.size() > row_count) {
+		m_data.m_slave_contact_groups.removeLast();
+	}
+
+	// Find max terminal count across all groups to determine T columns
+	int max_tc = 0;
+	for (const auto &g : m_data.m_slave_contact_groups) {
+		max_tc = qMax(max_tc, g.terminalCount);
+	}
+	max_tc = qMax(max_tc, 2); // at least T1, T2
+
+	// Set up 4 fixed columns + max_tc label columns
+	int total_cols = 4 + max_tc;
+	ui->m_slave_groups_table->setColumnCount(total_cols);
+
+	// Set T column headers
+	for (int t = 0; t < max_tc; ++t) {
+		ui->m_slave_groups_table->setHorizontalHeaderItem(
+			4 + t, new QTableWidgetItem(tr("T%1").arg(t + 1)));
+	}
+
+	// Set column widths for readability
+	ui->m_slave_groups_table->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+	ui->m_slave_groups_table->horizontalHeader()->setMinimumSectionSize(60);
+	ui->m_slave_groups_table->setColumnWidth(0, 180); // Type
+	ui->m_slave_groups_table->setColumnWidth(1, 180); // Subtype
+	ui->m_slave_groups_table->setColumnWidth(2, 80);  // Contacts
+	ui->m_slave_groups_table->setColumnWidth(3, 80);  // Bornes
+
+	ui->m_slave_groups_table->setRowCount(m_data.m_slave_contact_groups.size());
+
+	for (int i = 0; i < m_data.m_slave_contact_groups.size(); ++i) {
+		auto &group = m_data.m_slave_contact_groups[i];
+
+		// Type column
+		auto *type_cb = new QComboBox(ui->m_slave_groups_table);
+		type_cb->addItem(tr("Normalement ouvert"), ElementData::NO);
+		type_cb->addItem(tr("Normalement fermé"), ElementData::NC);
+		type_cb->addItem(tr("Inverseur"), ElementData::SW);
+		type_cb->addItem(tr("Autre"), ElementData::Other);
+		type_cb->setCurrentIndex(type_cb->findData(group.type));
+		ui->m_slave_groups_table->setCellWidget(i, 0, type_cb);
+
+		// Subtype column
+		auto *subtype_cb = new QComboBox(ui->m_slave_groups_table);
+		subtype_cb->addItem(tr("Simple"), ElementData::SSimple);
+		subtype_cb->addItem(tr("Puissance"), ElementData::Power);
+		subtype_cb->addItem(tr("Temporisé travail"), ElementData::DelayOn);
+		subtype_cb->addItem(tr("Temporisé repos"), ElementData::DelayOff);
+		subtype_cb->addItem(tr("Temporisé travail & repos"), ElementData::delayOnOff);
+		subtype_cb->setCurrentIndex(subtype_cb->findData(group.subtype));
+		ui->m_slave_groups_table->setCellWidget(i, 1, subtype_cb);
+
+		// Contact count
+		auto *contact_ct = new QSpinBox(ui->m_slave_groups_table);
+		contact_ct->setMinimum(1);
+		contact_ct->setMaximum(20);
+		contact_ct->setValue(group.contactCount);
+		ui->m_slave_groups_table->setCellWidget(i, 2, contact_ct);
+
+		// Terminal count
+		auto *terminal_ct = new QSpinBox(ui->m_slave_groups_table);
+		terminal_ct->setMinimum(1);
+		terminal_ct->setMaximum(20);
+		terminal_ct->setValue(group.terminalCount);
+		ui->m_slave_groups_table->setCellWidget(i, 3, terminal_ct);
+
+		// When terminal count changes, rebuild the table to update T columns
+		connect(terminal_ct, QOverload<int>::of(&QSpinBox::valueChanged),
+			this, [this, terminal_ct, i](int val) {
+				if (i < m_data.m_slave_contact_groups.size()) {
+					m_data.m_slave_contact_groups[i].terminalCount = val;
+					readSlaveGroupsFromTable();
+					populateSlaveGroupsTable();
+				}
+			});
+
+		// Auto-generate labels if empty
+		QStringList labels = group.labels;
+		while (labels.size() < group.terminalCount) {
+			labels << tr("T%1").arg(labels.size() + 1);
+		}
+
+		// Fill T1..TN columns
+		for (int t = 0; t < max_tc; ++t) {
+			auto *item = new QTableWidgetItem(
+				t < labels.size() ? labels.at(t) : QString());
+			if (t >= group.terminalCount) {
+				item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+				item->setBackground(QBrush(QColor(240, 240, 240)));
+			}
+			ui->m_slave_groups_table->setItem(i, 4 + t, item);
+		}
+
+		// Store updated labels back
+		group.labels = labels;
+	}
+}
+
+/**
+ * @brief ElementPropertiesEditorWidget::readSlaveGroupsFromTable
+ * Read the slave contact groups from the table back into m_data
+ */
+void ElementPropertiesEditorWidget::readSlaveGroupsFromTable()
+{
+	m_data.m_slave_contact_groups.clear();
+
+	if (!ui->m_slave_groups_checkbox->isChecked()) {
+		m_data.m_slave_contact_groups_enabled = false;
+		return;
+	}
+
+	m_data.m_slave_contact_groups_enabled = true;
+
+	for (int i = 0; i < ui->m_slave_groups_table->rowCount(); ++i) {
+		ElementData::SlaveContactGroup group;
+
+		auto *type_cb = qobject_cast<QComboBox *>(
+			ui->m_slave_groups_table->cellWidget(i, 0));
+		if (type_cb) {
+			group.type = type_cb->currentData().value<ElementData::SlaveState>();
+		}
+
+		auto *subtype_cb = qobject_cast<QComboBox *>(
+			ui->m_slave_groups_table->cellWidget(i, 1));
+		if (subtype_cb) {
+			group.subtype = subtype_cb->currentData().value<ElementData::SlaveType>();
+		}
+
+		auto *contact_ct = qobject_cast<QSpinBox *>(
+			ui->m_slave_groups_table->cellWidget(i, 2));
+		if (contact_ct) {
+			group.contactCount = contact_ct->value();
+		}
+
+		auto *terminal_ct = qobject_cast<QSpinBox *>(
+			ui->m_slave_groups_table->cellWidget(i, 3));
+		if (terminal_ct) {
+			group.terminalCount = terminal_ct->value();
+		}
+
+		// Read labels from T1..TN columns
+		for (int t = 0; t < group.terminalCount; ++t) {
+			int col = 4 + t;
+			if (col < ui->m_slave_groups_table->columnCount()) {
+				auto *item = ui->m_slave_groups_table->item(i, col);
+				if (item && !item->text().isEmpty()) {
+					group.labels.append(item->text());
+				} else {
+					group.labels << tr("T%1").arg(t + 1);
+				}
+			} else {
+				group.labels << tr("T%1").arg(t + 1);
+			}
+		}
+
+		m_data.m_slave_contact_groups.append(group);
+	}
 }

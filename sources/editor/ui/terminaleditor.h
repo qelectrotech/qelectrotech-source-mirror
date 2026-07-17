@@ -49,6 +49,8 @@ class TerminalEditor : public ElementItemEditor
 		bool setPart(CustomElementPart *new_part) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart *> currentParts() const override {return QList<CustomElementPart *>();}
+	public slots:
+		void refreshMasterLabelVisibility();
 
 	private:
 		void init();
@@ -62,10 +64,13 @@ class TerminalEditor : public ElementItemEditor
 		void labelSizeEdited();
 		void labelRotationEdited();
 		void labelAlignClicked();
-		void labelFrameEdited();
-		void labelColorClicked();
-		void activeConnections(bool active);
-		void activeChangeConnections(bool active);
+	void labelFrameEdited();
+	void labelColorClicked();
+	void activeConnections(bool active);
+	void activeChangeConnections(bool active);
+	void useMasterLabelEdited();
+	void masterLabelIndexEdited();
+	bool updateMasterLabelVisibility();
 
 	private:
 		Ui::TerminalEditor *ui;

@@ -1192,6 +1192,12 @@ void QETElementEditor::initGui()
 	updateInformations();
 	fillPartsList();
 
+	// When the element type changes, update the terminal editor master label visibility
+	connect(m_elmt_scene, &ElementScene::elementTypeChanged, this, [this]() {
+		auto *te = static_cast<TerminalEditor *>(m_editors["terminal"]);
+		if (te) te->refreshMasterLabelVisibility();
+	});
+
 	statusBar()->showMessage(tr("Éditeur d'éléments", "status bar message"));
 }
 

@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QHash>
+#include <QMap>
 
 #include "abstractelementpropertieseditorwidget.h"
 
@@ -77,6 +78,7 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 	private:
 	Ui::MasterPropertiesWidget *ui;
 	QHash <QTreeWidgetItem *, Element *> m_qtwi_hash;
+	QMap <Element *, int> m_pending_group_indices;
 	QTreeWidgetItem *m_qtwi_at_context_menu = nullptr;
 	QPointer <Element> m_showed_element;
 	QETProject *m_project;

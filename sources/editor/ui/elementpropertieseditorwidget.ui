@@ -121,6 +121,55 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="m_slave_groups_checkbox">
+            <property name="text">
+             <string>Définir les éléments esclave</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QTableWidget" name="m_slave_groups_table">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="columnCount">
+             <number>4</number>
+            </property>
+            <column>
+             <property name="text">
+              <string>Type</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Contact</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Nb. contacts</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Nb. bornes</string>
+             </property>
+            </column>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
