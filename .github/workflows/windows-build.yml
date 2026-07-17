@@ -32,11 +32,11 @@ jobs:
             mingw-w64-ucrt-x86_64-cmake
             mingw-w64-ucrt-x86_64-ninja
             mingw-w64-ucrt-x86_64-qt5-base
+            mingw-w64-ucrt-x86_64-qt5-base-private
             mingw-w64-ucrt-x86_64-qt5-svg
             mingw-w64-ucrt-x86_64-qt5-tools
             mingw-w64-ucrt-x86_64-qt5-translations
             mingw-w64-ucrt-x86_64-qt5-pdf
-            mingw-w64-ucrt-x86_64-qt5-charts
             mingw-w64-ucrt-x86_64-sqlite3
             mingw-w64-ucrt-x86_64-pkg-config
             mingw-w64-ucrt-x86_64-kwidgetsaddons
