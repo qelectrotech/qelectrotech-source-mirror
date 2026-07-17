@@ -28,6 +28,26 @@ include(cmake/copyright_message.cmake)
 
 set(QET_DIR ${PROJECT_SOURCE_DIR})
 
+# QT_VERSION_MAJOR is chosen explicitly by whoever configures the build,
+# via -DQT_VERSION_MAJOR=5 or -DQT_VERSION_MAJOR=6.
+# Default to Qt5 (current stable) when not specified, so existing
+# CI/scripts that don't pass this option keep working unchanged.
+# This must happen BEFORE add_subdirectory(tests) and the fetch_*.cmake
+# includes below, so every subdirectory and every FetchContent dependency
+# sees a consistent, already-defined value.
+if(NOT DEFINED QT_VERSION_MAJOR)
+    set(QT_VERSION_MAJOR 5)
+endif()
+
+# Some third-party CMake projects we pull in via FetchContent (e.g.
+# SingleApplication) don't know about QET_VERSION_MAJOR: they follow Qt's
+# own "QT_DEFAULT_MAJOR_VERSION" convention instead, and silently default
+# to Qt5 if it isn't set. Propagate our choice so they stay in sync,
+# otherwise they can end up linked against a different Qt major version
+# than the rest of QET, which breaks AUTOMOC with an
+# INTERFACE_QT_MAJOR_VERSION mismatch at generate time.
+set(QT_DEFAULT_MAJOR_VERSION ${QT_VERSION_MAJOR} CACHE STRING "Qt version to use (5 or 6)" FORCE)
+
 # Add sub directories
 option(PACKAGE_TESTS "Build the tests" ON)
 if(PACKAGE_TESTS)
@@ -53,15 +73,6 @@ SET(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(
-    QT
-    NAMES
-    Qt5
-    COMPONENTS
-    ${QET_COMPONENTS}
-    REQUIRED
-)
-
-find_package(
     Qt${QT_VERSION_MAJOR}
     COMPONENTS
     ${QET_COMPONENTS}
@@ -78,7 +89,11 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 # lupdate rewriting a .ts while lrelease read the same file made the build
 # fail with "Premature end of document".
 set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
-qt5_add_translation(QM_FILES ${TS_FILES})
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt6_add_translation(QM_FILES ${TS_FILES})
+else()
+    qt5_add_translation(QM_FILES ${TS_FILES})
+endif()
 
 add_custom_target(update_translations
     COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}

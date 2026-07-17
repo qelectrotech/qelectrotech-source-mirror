@@ -24,7 +24,11 @@ set(QET_COMPONENTS
   Sql
   Network
   Widgets
-  Concurrent)
+  Concurrent
+  GuiPrivate) # Qt6 CMake config only creates the Qt::GuiPrivate target when
+              # "GuiPrivate" is explicitly requested as a component (unlike
+              # Qt5, which created it implicitly via Gui/PrintSupport/Widgets).
+              # Required for QPdfEngine::drawHyperlink (PDF internal links).
 
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
