@@ -25,12 +25,8 @@
 #include "xmlelementcollection.h"
 #include "xmlprojectelementcollectionitem.h"
 
-#include <QFutureWatcher>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+
 #include <QtConcurrentMap>
-#else
-#include <QtConcurrentRun>
-#endif
 
 /**
 	@brief ElementsCollectionModel::ElementsCollectionModel
@@ -297,11 +293,8 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 			this, &ElementsCollectionModel::loadingFinished);
 	connect(watcher, &QFutureWatcher<void>::finished, watcher, &QFutureWatcher<void>::deleteLater);
 
-	#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+
 	m_future = QtConcurrent::map(m_items_list_to_setUp, setUpData);
-	#else
-	qDebug() << "Help code for QT 6 or later";
-	#endif
 	watcher->setFuture(m_future);
 }
 
