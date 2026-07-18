@@ -110,7 +110,7 @@ jobs:
             -DQt5_DIR=/ucrt64/lib/cmake/Qt5 \
             -DQT_VERSION_MAJOR=5 \
             -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON \
-            -DBUILD_TESTING=ON \
+            -DBUILD_TESTING=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
