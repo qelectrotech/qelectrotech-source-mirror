@@ -460,6 +460,22 @@ void PartTerminal::setLabelColor(QColor color)
 	emit labelColorChanged();
 }
 
+void PartTerminal::setUseMasterLabel(bool use)
+{
+	if (d->m_use_master_label == use) return;
+	d->m_use_master_label = use;
+	update();
+	emit useMasterLabelChanged();
+}
+
+void PartTerminal::setMasterLabelIndex(int index)
+{
+	if (d->m_master_label_index == index) return;
+	d->m_master_label_index = index;
+	update();
+	emit masterLabelIndexChanged();
+}
+
 /**
 	Updates the position of the second point according to the position
 	and orientation of the terminal.

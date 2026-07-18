@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "linksingleelementwidget.h"
+#include "contactgroupselectiondialog.h"
 #include "../qetgraphicsitem/masterelement.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../diagram.h"
@@ -28,6 +29,7 @@
 #include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>
+
 
 /**
 	@brief LinkSingleElementWidget::LinkSingleElementWidget
@@ -175,6 +177,7 @@ void LinkSingleElementWidget::apply()
 	m_unlink = false;
 	m_element_to_link = nullptr;
 	m_pending_qtwi = nullptr;
+	m_pending_group_index = -1;
 }
 
 /**
@@ -188,8 +191,12 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 
 	if (m_element_to_link || m_unlink)
 	{
-		if (m_element_to_link)
+		if (m_element_to_link) {
 			undo->setLink(m_element_to_link);
+			if (m_pending_group_index >= 0) {
+				undo->setGroupIndex(m_pending_group_index);
+			}
+		}
 		else if (m_unlink)
 			undo->unlinkAll();
 
@@ -531,7 +538,36 @@ void LinkSingleElementWidget::linkTriggered()
 		return;
 	
 	m_element_to_link = m_qtwi_elmt_hash.value(m_qtwi_at_context_menu);
-	
+	m_pending_group_index = -1;
+
+	//If linking a slave to a master with contact groups, show group selection dialog
+	if (m_element->linkType() == Element::Slave
+		&& m_element_to_link
+		&& m_element_to_link->linkType() == Element::Master)
+	{
+		const auto &groups = m_element_to_link->elementData().m_slave_contact_groups;
+		if (!groups.isEmpty())
+		{
+			// Collect already-used group indices from the master
+			QSet<int> used_indices;
+			for (Element *linked : m_element_to_link->linkedElements()) {
+				int idx = m_element_to_link->groupIndexForElement(linked);
+				if (idx >= 0) {
+					used_indices.insert(idx);
+				}
+			}
+
+			ContactGroupSelectionDialog dlg(groups, used_indices,
+				m_element->elementData(), this);
+			if (dlg.exec() == QDialog::Accepted && dlg.selectedIndex() >= 0) {
+				m_pending_group_index = dlg.selectedIndex();
+			} else {
+				m_element_to_link = nullptr;
+				return;
+			}
+		}
+	}
+
 	if(m_live_edit)
 	{
 		apply();

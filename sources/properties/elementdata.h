@@ -22,6 +22,9 @@
 #include "../diagramcontext.h"
 #include "../NameList/nameslist.h"
 
+#include <QStringList>
+#include <QVector>
+
 /**
  * @brief The ElementData class
  * WARNING
@@ -86,6 +89,31 @@ class ElementData : public PropertiesInterface
 		};
 		Q_ENUM(TerminalFunction)
 
+		/**
+		 * @brief The SlaveContactGroup struct
+		 * Defines a contact group that a master element provides for slave elements.
+		 * Each group specifies the type, subtype, number of displayed contacts,
+		 * number of terminals, and the labels for each terminal (T1-T20).
+		 */
+		struct SlaveContactGroup {
+			SlaveState  type        = NO;      ///< Contact type (NO/NC/SW/Other)
+			SlaveType   subtype     = SSimple;  ///< Contact subtype (Simple/Power/Delay*)
+			int         contactCount  = 1;      ///< Number of displayed contacts
+			int         terminalCount = 1;      ///< Number of terminals (Anschlüsse)
+			QStringList labels;                 ///< Terminal labels (T1-T20), max 20 entries
+
+			bool operator==(const SlaveContactGroup &other) const {
+				return type == other.type
+					&& subtype == other.subtype
+					&& contactCount == other.contactCount
+					&& terminalCount == other.terminalCount
+					&& labels == other.labels;
+			}
+			bool operator!=(const SlaveContactGroup &other) const {
+				return !(*this == other);
+			}
+		};
+
 		ElementData() {}
 		~ElementData() override {}
 
@@ -130,12 +158,19 @@ class ElementData : public PropertiesInterface
 		static ElementData::TerminalFunction terminalFunctionFromString(const QString &string);
 		static QString translatedTerminalFunction(ElementData::TerminalFunction function);
 
+		static QString slaveContactGroupTypeToString(ElementData::SlaveState type);
+		static ElementData::SlaveState slaveContactGroupTypeFromString(const QString &string);
+		static QString slaveContactGroupSubtypeToString(ElementData::SlaveType type);
+		static ElementData::SlaveType slaveContactGroupSubtypeFromString(const QString &string);
+
 		// must be public, because this class is a private member
 		// of Element/ element editor and they must access this data
 		ElementData::Type       m_type = ElementData::Simple;
 
 		ElementData::MasterType m_master_type = ElementData::Coil;
 		int m_max_slaves{-1};
+		bool m_slave_contact_groups_enabled{false};  ///< Whether slave contact groups table is active
+		QVector<SlaveContactGroup> m_slave_contact_groups;  ///< Contact groups defined by master
 
 		ElementData::SlaveType  m_slave_type  = ElementData::SSimple;
 		ElementData::SlaveState m_slave_state = ElementData::NO;

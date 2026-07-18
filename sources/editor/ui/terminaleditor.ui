@@ -214,6 +214,32 @@
      </layout>
     </widget>
    </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QGroupBox" name="m_master_label_gb">
+     <property name="title">
+      <string>Étiquette du maître</string>
+     </property>
+     <property name="visible">
+      <bool>false</bool>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="m_use_master_label_cb">
+        <property name="text">
+         <string>Reprendre du maître</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="m_master_label_cb">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

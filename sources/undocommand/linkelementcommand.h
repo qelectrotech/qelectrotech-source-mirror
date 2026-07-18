@@ -19,6 +19,7 @@
 #define LINKELEMENTCOMMAND_H
 
 #include <QUndoCommand>
+#include <QMap>
 
 class Element;
 
@@ -42,6 +43,8 @@ class LinkElementCommand : public QUndoCommand
 		void setLink (Element *element_);
 		void unlink  (QList<Element *> element_list);
 		void unlinkAll ();
+		void setGroupIndex(int index) { m_group_index = index; }
+		void setGroupIndices(const QMap<Element*, int> &indices) { m_group_indices = indices; }
 
 		void undo() override;
 		void redo() override;
@@ -53,6 +56,8 @@ class LinkElementCommand : public QUndoCommand
 	private:
 		Element *m_element;
 		bool m_first_redo;
+		int m_group_index = -1;
+		QMap<Element*, int> m_group_indices;
 		QList<Element *> m_linked_before; //<Linked elements before this command, or when we call "undo"
 		QList<Element *> m_linked_after;  //<Linked elements after this command, or when we recall "redo"
 };

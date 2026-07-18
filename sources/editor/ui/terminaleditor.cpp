@@ -25,6 +25,8 @@
 
 #include <QColorDialog>
 #include <QFontDialog>
+#include "../elementscene.h"
+#include "qetelementeditor.h"
 
 /**
  * @brief TerminalEditor::TerminalEditor
@@ -101,6 +103,26 @@ void TerminalEditor::updateForm()
 
 	ui->m_text_props_gb->setEnabled(m_part->showName());
 
+	// Update master label fields
+	bool is_slave = updateMasterLabelVisibility();
+	if (is_slave) {
+		PartTerminal *pt = m_part;
+		if (pt) {
+			ui->m_use_master_label_cb->setChecked(pt->useMasterLabel());
+			ui->m_master_label_cb->setEnabled(pt->useMasterLabel());
+			ui->m_name_le->setEnabled(!pt->useMasterLabel());
+			int idx = ui->m_master_label_cb->findData(pt->masterLabelIndex());
+			if (idx >= 0) {
+				ui->m_master_label_cb->setCurrentIndex(idx);
+			}
+			// Show T-label in name field when master label is active
+			if (pt->useMasterLabel()) {
+				int label_idx = pt->masterLabelIndex();
+				ui->m_name_le->setText(tr("T%1").arg(label_idx + 1));
+			}
+		}
+	}
+
 	activeConnections(true);
 }
 
@@ -165,6 +187,14 @@ void TerminalEditor::init()
 	ui->m_type_cb->addItem(tr("Commun (contact SW)"), TerminalData::Common);
 
 	ui->m_text_props_gb->setEnabled(false);
+
+	// Populate master label dropdown (T1-T20)
+	for (int i = 1; i <= 20; ++i) {
+		ui->m_master_label_cb->addItem(tr("T%1").arg(i), i - 1);
+	}
+
+	// Check if parent element is a Slave to show/hide master label group
+	updateMasterLabelVisibility();
 }
 
 /**
@@ -427,6 +457,10 @@ void TerminalEditor::activeConnections(bool active)
 										this, &TerminalEditor::labelAlignClicked);
 		m_editor_connections << connect(ui->m_label_frame_cb, &QCheckBox::toggled,
 										this, &TerminalEditor::labelFrameEdited);
+		m_editor_connections << connect(ui->m_use_master_label_cb, &QCheckBox::toggled,
+										this, &TerminalEditor::useMasterLabelEdited);
+		m_editor_connections << connect(ui->m_master_label_cb, QOverload<int>::of(&QComboBox::activated),
+										this, &TerminalEditor::masterLabelIndexEdited);
 	} else {
 		for (auto const & con : std::as_const(m_editor_connections)) {
 			QObject::disconnect(con);
@@ -452,10 +486,104 @@ void TerminalEditor::activeChangeConnections(bool active)
 		m_change_connections << connect(m_part, &PartTerminal::labelVAlignmentChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::labelFrameChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::labelColorChanged, this, &TerminalEditor::updateForm);
+		m_change_connections << connect(m_part, &PartTerminal::useMasterLabelChanged, this, &TerminalEditor::updateForm);
+		m_change_connections << connect(m_part, &PartTerminal::masterLabelIndexChanged, this, &TerminalEditor::updateForm);
 	} else {
 		for (auto &con : m_change_connections) {
 			QObject::disconnect(con);
 		}
 		m_change_connections.clear();
+	}
+}
+
+void TerminalEditor::useMasterLabelEdited()
+{
+	if (m_locked) return;
+	m_locked = true;
+
+	bool use = ui->m_use_master_label_cb->isChecked();
+	ui->m_master_label_cb->setEnabled(use);
+
+	QSignalBlocker name_blocker(ui->m_name_le);
+
+	if (m_part->useMasterLabel() != use) {
+		auto undo = new QPropertyUndoCommand(m_part, "use_master_label",
+			m_part->useMasterLabel(), use);
+		undo->setText(tr("Modifier l'étiquette du maître"));
+		undoStack().push(undo);
+	}
+
+	if (use) {
+		int idx = ui->m_master_label_cb->currentData().toInt();
+		QString t_label = tr("T%1").arg(idx + 1);
+		ui->m_name_le->setText(t_label);
+		ui->m_name_le->setEnabled(false);
+		if (m_part->terminalName() != t_label) {
+			auto undo = new QPropertyUndoCommand(m_part, "terminal_name",
+				m_part->terminalName(), t_label);
+			undo->setText(tr("Modifier le nom de la borne"));
+			undoStack().push(undo);
+		}
+	} else {
+		ui->m_name_le->setEnabled(true);
+		if (!m_part->terminalName().isEmpty()) {
+			auto undo = new QPropertyUndoCommand(m_part, "terminal_name",
+				m_part->terminalName(), QString());
+			undo->setText(tr("Modifier le nom de la borne"));
+			undoStack().push(undo);
+		}
+		ui->m_name_le->clear();
+	}
+
+	m_locked = false;
+}
+
+void TerminalEditor::masterLabelIndexEdited()
+{
+	if (m_locked) return;
+	m_locked = true;
+
+	int idx = ui->m_master_label_cb->currentData().toInt();
+
+	if (m_part->masterLabelIndex() != idx) {
+		auto undo = new QPropertyUndoCommand(m_part, "master_label_index",
+			m_part->masterLabelIndex(), idx);
+		undo->setText(tr("Modifier l'index de l'étiquette du maître"));
+		undoStack().push(undo);
+	}
+
+	if (ui->m_use_master_label_cb->isChecked()) {
+		QString t_label = tr("T%1").arg(idx + 1);
+		ui->m_name_le->setText(t_label);
+		if (m_part->terminalName() != t_label) {
+			auto undo = new QPropertyUndoCommand(m_part, "terminal_name",
+				m_part->terminalName(), t_label);
+			undo->setText(tr("Modifier le nom de la borne"));
+			undoStack().push(undo);
+		}
+	}
+
+	m_locked = false;
+}
+
+bool TerminalEditor::updateMasterLabelVisibility()
+{
+	QETElementEditor *editor = elementEditor();
+	if (!editor || !editor->elementScene()) {
+		ui->m_master_label_gb->setVisible(false);
+		return false;
+	}
+
+	ElementData data = editor->elementScene()->elementData();
+	bool is_slave = (data.m_type == ElementData::Slave);
+	ui->m_master_label_gb->setVisible(is_slave);
+	return is_slave;
+}
+
+void TerminalEditor::refreshMasterLabelVisibility()
+{
+	updateMasterLabelVisibility();
+	if (m_part) {
+		updateForm();
 	}
 }

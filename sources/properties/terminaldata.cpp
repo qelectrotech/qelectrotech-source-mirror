@@ -125,6 +125,12 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 			xml_element.setAttribute("label_color", m_label_color.name());
 	}
 
+	// Save master label override settings
+	if (m_use_master_label) {
+		xml_element.setAttribute("use_master_label", "true");
+		xml_element.setAttribute("master_label_index", m_master_label_index);
+	}
+
 	return(xml_element);
 }
 
@@ -196,6 +202,10 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 		if (!color_str.isEmpty())
 			m_label_color = QColor(color_str);
 	}
+
+	// Read master label override settings
+	m_use_master_label = (xml_element.attribute("use_master_label") == QLatin1String("true"));
+	m_master_label_index = xml_element.attribute("master_label_index", "0").toInt();
 
 	return true;
 }

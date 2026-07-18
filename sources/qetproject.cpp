@@ -1179,6 +1179,22 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 			}
 			//Erase the existing element, and use the newer instead
 			else if (action == QET::Erase) {
+				// Warn if the new element introduces slave contact groups
+				QDomElement new_kind = location.xml().firstChildElement("kindInformations");
+				if (!new_kind.firstChildElement("slaveContactGroups").isNull()) {
+					QMessageBox::StandardButton answer = QMessageBox::warning(nullptr,
+						tr("Système de contacts modifié"),
+						tr("Le nouvel élément définit des groupes de contacts esclaves.\n"
+						   "Les éléments esclaves existants ne seront pas automatiquement "
+						   "assignés. Vous devrez relier manuellement les esclaves "
+						   "et assigner les groupes de contacts.\n\n"
+						   "Voulez-vous continuer ?"),
+						QMessageBox::Yes | QMessageBox::No,
+						QMessageBox::Yes);
+					if (answer == QMessageBox::No) {
+						return ElementsLocation();
+					}
+				}
 				ElementsLocation parent_loc = existing_location.parent();
 				return m_elements_collection->copy(location, parent_loc);
 			}

@@ -85,11 +85,14 @@ ElementData ElementScene::elementData() {
 void ElementScene::setElementData(ElementData data)
 {
 	bool emit_ = m_element_data.m_informations != data.m_informations;
+	bool type_changed = m_element_data.m_type != data.m_type;
 
 	m_element_data = data;
 
 	if (emit_)
 		emit elementInfoChanged();
+	if (type_changed)
+		emit elementTypeChanged();
 }
 
 /**

@@ -177,6 +177,8 @@ class ElementScene : public QGraphicsScene
 		/// Signal emitted when need zoomFit
 		void needZoomFit();
 		void elementInfoChanged();
+		/// Signal emitted when the element type changes
+		void elementTypeChanged();
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)

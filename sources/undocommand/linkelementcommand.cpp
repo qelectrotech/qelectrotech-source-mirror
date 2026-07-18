@@ -21,6 +21,7 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../ui/potentialselectordialog.h"
 
 /**
@@ -176,6 +177,54 @@ void LinkElementCommand::unlinkAll()
 void LinkElementCommand::undo()
 {
 	if(m_element->diagram()) m_element->diagram()->showMe();
+
+	//Clear group index for slave elements when undoing
+	if (m_element->linkType() == Element::Slave)
+	{
+		int group_idx = m_group_index;
+		if (m_group_indices.contains(m_element))
+			group_idx = m_group_indices.value(m_element);
+
+		if (group_idx >= 0)
+		{
+			// Reset master labels on slave terminals
+			QList<Terminal *> slave_terms = m_element->terminals();
+			for (Terminal *t : slave_terms)
+			{
+				t->setUseMasterLabel(false);
+				t->setMasterLabelIndex(0);
+			}
+
+			foreach(Element *elmt, m_element->linkedElements())
+			{
+				if (elmt->linkType() == Element::Master)
+				{
+					elmt->setGroupIndexForElement(m_element, -1);
+					break;
+				}
+			}
+		}
+	}
+	else if (m_element->linkType() == Element::Master)
+	{
+		for (auto it = m_group_indices.constBegin(); it != m_group_indices.constEnd(); ++it)
+		{
+			Element *slave = it.key();
+			if (m_element->linkedElements().contains(slave))
+			{
+				// Reset master labels on slave terminals
+				QList<Terminal *> slave_terms = slave->terminals();
+				for (Terminal *t : slave_terms)
+				{
+					t->setUseMasterLabel(false);
+					t->setMasterLabelIndex(0);
+				}
+
+				m_element->setGroupIndexForElement(slave, -1);
+			}
+		}
+	}
+
 	makeLink(m_linked_before);
 	QUndoCommand::undo();
 }
@@ -274,6 +323,83 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 		//We link all element from element_list
 	foreach(Element *elmt, element_list)
 		m_element->linkToElement(elmt);
+
+	//Set group index for slave-master links
+	if (m_element->linkType() == Element::Slave)
+	{
+		int group_idx = m_group_index;
+
+		//Check if we have a per-slave group index
+		if (m_group_indices.contains(m_element))
+			group_idx = m_group_indices.value(m_element);
+
+		if (group_idx >= 0)
+		{
+			foreach(Element *elmt, element_list)
+			{
+				if (elmt->linkType() == Element::Master)
+				{
+					elmt->setGroupIndexForElement(m_element, group_idx);
+
+					// Set master labels on slave terminals
+					const auto &groups = elmt->elementData().m_slave_contact_groups;
+					if (group_idx < groups.size())
+					{
+						const QStringList &labels = groups.at(group_idx).labels;
+						QList<Terminal *> slave_terms = m_element->terminals();
+						// Sort terminals by name (T1, T2, T3...) to match label order
+						std::sort(slave_terms.begin(), slave_terms.end(),
+							[](Terminal *a, Terminal *b) {
+								return a->name() < b->name();
+							});
+						for (int i = 0; i < slave_terms.size(); ++i)
+						{
+							if (i < labels.size())
+							{
+								slave_terms.at(i)->setUseMasterLabel(true);
+								slave_terms.at(i)->setMasterLabelIndex(i);
+							}
+						}
+					}
+					break;
+				}
+			}
+		}
+	}
+	else if (m_element->linkType() == Element::Master)
+	{
+		//For master linking to slaves, set group indices for each slave
+		for (auto it = m_group_indices.constBegin(); it != m_group_indices.constEnd(); ++it)
+		{
+			Element *slave = it.key();
+			int group_idx = it.value();
+			if (group_idx >= 0 && element_list.contains(slave))
+			{
+				m_element->setGroupIndexForElement(slave, group_idx);
+
+				// Set master labels on slave terminals
+				const auto &groups = m_element->elementData().m_slave_contact_groups;
+				if (group_idx < groups.size())
+				{
+					const QStringList &labels = groups.at(group_idx).labels;
+					QList<Terminal *> slave_terms = slave->terminals();
+					// Sort terminals by name (T1, T2, T3...) to match label order
+					std::sort(slave_terms.begin(), slave_terms.end(),
+						[](Terminal *a, Terminal *b) {
+							return a->name() < b->name();
+						});
+					for (int i = 0; i < slave_terms.size(); ++i)
+					{
+						if (i < labels.size())
+						{
+							slave_terms.at(i)->setUseMasterLabel(true);
+							slave_terms.at(i)->setMasterLabelIndex(i);
+						}
+					}
+				}
+			}
+		}
+	}
 
 	/* At this point there may be unwanted linked elements to m_element.
 	 * We must unlink it.

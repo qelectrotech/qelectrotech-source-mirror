@@ -741,7 +741,9 @@ bool Element::fromXml(QDomElement &e,
 														  QStringLiteral("links_uuids"),
 														  QStringLiteral("link_uuid"));
 	foreach (QDomElement qdo, uuid_list) {
-		tmp_uuids_link << QUuid(qdo.attribute(QStringLiteral("uuid")));
+		QUuid uuid(qdo.attribute(QStringLiteral("uuid")));
+		int group_index = qdo.attribute(QStringLiteral("group_index"), QStringLiteral("-1")).toInt();
+		tmp_uuids_link << LinkInfo(uuid, group_index);
 	}
 
 	//uuid of this element
@@ -932,6 +934,13 @@ QDomElement Element::toXml(
 			QDomElement link_uuid =
 					document.createElement(QStringLiteral("link_uuid"));
 			link_uuid.setAttribute(QStringLiteral("uuid"), elmt->uuid().toString());
+
+			// Save group index if assigned (for slave->master links)
+			int gi = m_group_index_map.value(elmt, -1);
+			if (gi >= 0) {
+				link_uuid.setAttribute(QStringLiteral("group_index"), gi);
+			}
+
 			links_uuids.appendChild(link_uuid);
 		}
 		element.appendChild(links_uuids);
@@ -1267,8 +1276,21 @@ void Element::initLink(QETProject *prj)
 	if (tmp_uuids_link.isEmpty()) return;
 
 	ElementProvider ep(prj);
-	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
-		elmt->linkToElement(this);
+	QList<QUuid> uuids;
+	for (const auto &linkInfo : tmp_uuids_link) {
+		uuids.append(linkInfo.uuid);
+	}
+	QList<Element *> elements = ep.fromUuids(uuids);
+	for (int i = 0; i < tmp_uuids_link.size(); ++i) {
+		for (Element *elmt : elements) {
+			if (elmt->uuid() == tmp_uuids_link[i].uuid) {
+				elmt->linkToElement(this);
+				if (tmp_uuids_link[i].group_index >= 0) {
+					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+				}
+				break;
+			}
+		}
 	}
 	tmp_uuids_link.clear();
 }
@@ -1301,6 +1323,34 @@ QString Element::linkTypeToString() const
 			return QStringLiteral("ConductorDefinition");
 		default:
 			return QStringLiteral("Unknown");
+	}
+}
+
+/**
+ * @brief Element::groupIndexForElement
+ * Returns the group index assigned to the given linked element.
+ * For slave elements, this indicates which contact group of the master
+ * this slave is assigned to.
+ * @param elmt the linked element to query
+ * @return group index, or -1 if not assigned
+ */
+int Element::groupIndexForElement(Element *elmt) const
+{
+	return m_group_index_map.value(elmt, -1);
+}
+
+/**
+ * @brief Element::setGroupIndexForElement
+ * Sets the group index for a linked element.
+ * @param elmt the linked element
+ * @param index the group index to assign
+ */
+void Element::setGroupIndexForElement(Element *elmt, int index)
+{
+	if (index >= 0) {
+		m_group_index_map[elmt] = index;
+	} else {
+		m_group_index_map.remove(elmt);
 	}
 }
 

@@ -16,6 +16,7 @@
  *	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "masterpropertieswidget.h"
+#include "contactgroupselectiondialog.h"
 #include "../qetproject.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -26,6 +27,7 @@
 
 #include <QListWidgetItem>
 #include <QMessageBox>
+
 
 /**
  *	@brief MasterPropertiesWidget::MasterPropertiesWidget
@@ -176,6 +178,8 @@ void MasterPropertiesWidget::apply()
 {
 	if (QUndoCommand *undo = associatedUndo())
 		m_element -> diagram() -> undoStack().push(undo);
+
+	m_pending_group_indices.clear();
 }
 
 /**
@@ -224,7 +228,22 @@ QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 	if (to_link.isEmpty())
 		undo->unlinkAll();
 	else
+	{
 		undo->setLink(to_link);
+
+		//Pass group indices for newly linked slaves
+		if (!m_pending_group_indices.isEmpty())
+		{
+			QMap<Element*, int> indices;
+			for (Element *slave : to_link)
+			{
+				if (m_pending_group_indices.contains(slave))
+					indices[slave] = m_pending_group_indices.value(slave);
+			}
+			if (!indices.isEmpty())
+				undo->setGroupIndices(indices);
+		}
+	}
 
 	return undo;
 }
@@ -375,6 +394,38 @@ void MasterPropertiesWidget::on_link_button_clicked()
 	QTreeWidgetItem *qtwi = ui->m_free_tree_widget->currentItem();
 	if (qtwi)
 	{
+		Element *slave_elmt = m_qtwi_hash.value(qtwi);
+
+		//If master has contact groups, show group selection dialog
+		const auto &groups = m_element->elementData().m_slave_contact_groups;
+		if (!groups.isEmpty() && slave_elmt)
+		{
+			// Collect already-used group indices from the master
+			QSet<int> used_indices;
+			for (Element *linked : m_element->linkedElements()) {
+				int idx = m_element->groupIndexForElement(linked);
+				if (idx >= 0) {
+					used_indices.insert(idx);
+				}
+			}
+
+			// Don't mark the current slave as used (it might be relinked)
+			if (slave_elmt->linkedElements().contains(m_element)) {
+				int current_idx = m_element->groupIndexForElement(slave_elmt);
+				if (current_idx >= 0) {
+					used_indices.remove(current_idx);
+				}
+			}
+
+			ContactGroupSelectionDialog dlg(groups, used_indices,
+				slave_elmt->elementData(), this);
+			if (dlg.exec() == QDialog::Accepted && dlg.selectedIndex() >= 0) {
+				m_pending_group_indices[slave_elmt] = dlg.selectedIndex();
+			} else {
+				return;
+			}
+		}
+
 		ui->m_free_tree_widget->takeTopLevelItem(
 			ui->m_free_tree_widget->indexOfTopLevelItem(qtwi));
 		ui->m_link_tree_widget->insertTopLevelItem(0, qtwi);
