@@ -16,17 +16,36 @@ on:
 
 jobs:
   build-msi:
-    name: Build MSI with WiX v7
+    name: Build MSI with WiX v7 (${{ matrix.flavor }})
     runs-on: windows-latest
     # Only runs if Windows Build succeeded (or triggered manually)
     if: >
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - flavor: qt5
+            portable_artifact: qelectrotech-windows-portable
+            version_source: qetversion   # parsed from sources/qetversion.cpp
+            label_suffix: ""
+            experimental: false
+          - flavor: qt6
+            portable_artifact: qelectrotech-windows-portable-qt6
+            version_source: hardcoded    # see note in "Extract version" step
+            label_suffix: "-qt6-EXPERIMENTAL"
+            experimental: true
+
     permissions:
       contents: write
       pages: write
       id-token: write  # Required by SignPath
+
+    outputs:
+      qt5_msi: ${{ steps.export.outputs.msi_name_qt5 }}
+      qt6_msi: ${{ steps.export.outputs.msi_name_qt6 }}
 
     steps:
       # ----------------------------------------------------------------
@@ -38,14 +57,12 @@ jobs:
           fetch-depth: 0
 
       # ----------------------------------------------------------------
-      # 2. Download the portable artifact from the main build
-      #    Requires windows-build.yml to upload an artifact named
-      #    "qelectrotech-windows-portable" (fixed name)
+      # 2. Download the portable artifact for this flavor
       # ----------------------------------------------------------------
       - name: Download portable artifact
         uses: actions/download-artifact@v8
         with:
-          name: qelectrotech-windows-portable
+          name: ${{ matrix.portable_artifact }}
           path: artifact\files
           # workflow_run => use the triggering run's ID
           # workflow_dispatch => use input run_id if provided, otherwise current run
@@ -54,23 +71,34 @@ jobs:
           repository: ${{ github.repository }}
 
       # ----------------------------------------------------------------
-      # 3. Extract version from sources
+      # 3. Extract version
+      #    Qt5: parsed from sources/qetversion.cpp (single source of truth
+      #         for the software's own reported version).
+      #    Qt6: hardcoded "0.200.1" here — deliberately NOT parsed from the
+      #         binary/source, since Qt-version self-detection inside the
+      #         compiled code proved unreliable (see commit e1aa65f). The CI
+      #         matrix entry already knows for certain which flavor it is
+      #         packaging, so the experimental-track label is set explicitly
+      #         at the packaging level instead.
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
         shell: pwsh
         run: |
-          # Version from qetversion.cpp (same logic as windows-build.yml)
-          $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
-          if ($src -match 'return QVersionNumber\{([^}]+)\}') {
-            $ver = $Matches[1] -replace '\s','' -replace ',','.'
+          if ("${{ matrix.version_source }}" -eq "hardcoded") {
+            $ver = "0.200.1"
           } else {
-            # Fallback: CMakeLists.txt
-            $cmake = Get-Content "CMakeLists.txt" -Raw
-            if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
-              $ver = $Matches[1]
+            $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
+            if ($src -match 'return QVersionNumber\{([^}]+)\}') {
+              $ver = $Matches[1] -replace '\s','' -replace ',','.'
             } else {
-              $ver = "0.0.0"
+              # Fallback: CMakeLists.txt
+              $cmake = Get-Content "CMakeLists.txt" -Raw
+              if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
+                $ver = $Matches[1]
+              } else {
+                $ver = "0.0.0"
+              }
             }
           }
 
@@ -89,39 +117,27 @@ jobs:
           $verParts = $ver -split '\.'
           $verMsi = "$($verParts[0]).$($verParts[1]).$($rev % 65535)"
 
-          $verDisplay = "${ver}-r${rev}-${sha}_x86_64-win64"
+          $flavorTag = "${{ matrix.label_suffix }}"
+          $verDisplay = "${ver}${flavorTag}-r${rev}-${sha}_x86_64-win64"
 
-          echo "VERSION_MSI=$verMsi"       >> $env:GITHUB_OUTPUT
+          echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
           echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
           Write-Host "Version MSI     : $verMsi"
           Write-Host "Version display : $verDisplay"
 
       # ----------------------------------------------------------------
       # 4. Install WiX v7, accept EULA and install WixUI extension
-      #    All done in one step: PATH is updated within the same step
-      #    so wix is immediately available for eula and extension commands
       # ----------------------------------------------------------------
       - name: Install WiX v7
         shell: pwsh
         run: |
           dotnet tool install --global wix --version 7.0.0
-
-          # Update PATH immediately for the rest of this step
           $toolsPath = [System.IO.Path]::Combine($env:USERPROFILE, '.dotnet', 'tools')
           $env:PATH = "$toolsPath;$env:PATH"
-
-          # Also export for subsequent steps
           echo $toolsPath >> $env:GITHUB_PATH
-
-          # Accept OSMF EULA (official CI/CD method: writes a sentinel file)
           wix eula accept wix7
-
-          # Install WixUI extension
           wix extension add WixToolset.UI.wixext/7.0.0
-
-          # Install WixUtil extension (required for custom actions: Binary:Wix4UtilCA_*)
           wix extension add WixToolset.Util.wixext/7.0.0
-
           Write-Host "WiX v7 installed, EULA accepted, UI + Util extensions added."
 
       # ----------------------------------------------------------------
@@ -133,8 +149,6 @@ jobs:
           $wxs = "build-aux\windows\QElectroTech.wxs"
           if (-not (Test-Path $wxs)) {
             Write-Error "WXS file not found: $wxs"
-            Write-Host "Contents of build-aux\windows\ :"
-            Get-ChildItem "build-aux\windows\" -ErrorAction SilentlyContinue
             exit 1
           }
           Write-Host "WXS found: $wxs"
@@ -145,14 +159,8 @@ jobs:
       - name: Check artifact structure
         shell: pwsh
         run: |
-          Write-Host "=== Contents of artifact\files (2 levels) ==="
-          Get-ChildItem -Path "artifact\files" -Depth 2 |
-            Select-Object FullName | Format-Table -AutoSize
-
-          # Search for qelectrotech.exe in the artifact
           $exe = Get-ChildItem -Path "artifact\files" -Filter "qelectrotech.exe" -Recurse | Select-Object -First 1
           if (-not $exe) {
-            # Also try QElectroTech.exe (capital Q)
             $exe = Get-ChildItem -Path "artifact\files" -Filter "QElectroTech.exe" -Recurse | Select-Object -First 1
           }
           if (-not $exe) {
@@ -160,8 +168,6 @@ jobs:
             exit 1
           }
           Write-Host "Executable: $($exe.FullName) ($([math]::Round($exe.Length/1MB,1)) MB)"
-
-          # FilesDir = folder containing bin\
           $binDir    = $exe.Directory.FullName
           $filesDir  = Split-Path $binDir -Parent
           echo "FILES_DIR=$filesDir" >> $env:GITHUB_ENV
@@ -169,31 +175,23 @@ jobs:
 
       # ----------------------------------------------------------------
       # 7. Convert LICENSE (GPL-2) to RTF for the WixUI licence screen
-      #    RTF is the only format accepted by Windows Installer.
-      #    The conversion wraps plain text lines in basic RTF markup.
       # ----------------------------------------------------------------
       - name: Convert LICENSE to RTF
         shell: pwsh
         run: |
           $licSrc = "LICENSE"
           $licRtf = "$env:TEMP\License.rtf"
-
           if (-not (Test-Path $licSrc)) {
             Write-Error "LICENSE file not found in repository root"
             exit 1
           }
-
           $lines = Get-Content $licSrc -Encoding UTF8
-
-          # RTF header — Courier New, 9pt, black
           $rtf = New-Object System.Text.StringBuilder
           [void]$rtf.AppendLine('{\rtf1\ansi\ansicpg1252\deff0')
           [void]$rtf.AppendLine('{\fonttbl{\f0\fmodern\fprq1\fcharset0 Courier New;}}')
           [void]$rtf.AppendLine('{\colortbl;\red0\green0\blue0;}')
           [void]$rtf.AppendLine('\f0\fs18\cf1')
-
           foreach ($line in $lines) {
-            # Escape RTF special characters
             $escaped = $line `
               -replace '\\', '\\\\' `
               -replace '\{', '\{' `
@@ -201,16 +199,12 @@ jobs:
             [void]$rtf.AppendLine("$escaped\par")
           }
           [void]$rtf.AppendLine('}')
-
           [System.IO.File]::WriteAllText($licRtf, $rtf.ToString(), [System.Text.Encoding]::ASCII)
           echo "LICENSE_RTF=$licRtf" >> $env:GITHUB_ENV
-          Write-Host "License.rtf generated: $licRtf ($([math]::Round((Get-Item $licRtf).Length/1KB,1)) KB)"
+          Write-Host "License.rtf generated: $licRtf"
 
       # ----------------------------------------------------------------
       # 8. Replace Lancer QET.bat with the MSI-specific version
-      #    The portable version uses relative paths suited for the zip.
-      #    The MSI version uses %~dp0 to resolve paths relative to
-      #    the installation directory in Program Files.
       # ----------------------------------------------------------------
       - name: Replace Lancer QET.bat for MSI
         shell: pwsh
@@ -219,11 +213,12 @@ jobs:
           $content = "@echo off`r`nstart `"`" `"%~dp0bin\qelectrotech.exe`" --common-elements-dir=`"%~dp0elements/`" --common-tbt-dir=`"%~dp0titleblocks/`" --lang-dir=`"%~dp0lang/`" -style windowsvista`r`n"
           [System.IO.File]::WriteAllText($bat, $content, [System.Text.Encoding]::ASCII)
           Write-Host "Lancer QET.bat replaced for MSI installation."
-          Write-Host "=== Content of new Lancer QET.bat ==="
-          Get-Content $bat
 
       # ----------------------------------------------------------------
       # 9. Build the MSI (unsigned)
+      #    Qt6 (experimental) uses a distinct ProductCode seed so it never
+      #    collides with / upgrades over the Qt5 MSI — they must be able to
+      #    coexist as clearly separate installs.
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -235,24 +230,18 @@ jobs:
           $wxs        = "build-aux\windows\QElectroTech.wxs"
           $outputName = "QElectroTech-${verDisplay}.msi"
 
-          # Deterministic ProductCode GUID (UUID v5) based on version.
-          # Same version => same GUID (required for MSI repair/uninstall).
-          # Different version => different GUID (triggers a proper upgrade).
-          $seed      = "qelectrotech-msi-$version"
+          $seed      = "qelectrotech-msi-${{ matrix.flavor }}-$version"
           $sha1      = [System.Security.Cryptography.SHA1]::Create()
           $hash      = $sha1.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($seed))
-          $hash[6]   = ($hash[6] -band 0x0F) -bor 0x50   # UUID version 5
-          $hash[8]   = ($hash[8] -band 0x3F) -bor 0x80   # RFC4122 variant
+          $hash[6]   = ($hash[6] -band 0x0F) -bor 0x50
+          $hash[8]   = ($hash[8] -band 0x3F) -bor 0x80
           $productCode = "{$([System.Guid]::new([byte[]]$hash[0..15]).ToString().ToUpper())}"
 
           New-Item -ItemType Directory -Force -Path "dist" | Out-Null
 
-          Write-Host "=== wix build ==="
-          Write-Host " WXS         : $wxs"
+          Write-Host "=== wix build (${{ matrix.flavor }}) ==="
           Write-Host " Version     : $version"
           Write-Host " ProductCode : $productCode"
-          Write-Host " FilesDir    : $filesDir"
-          Write-Host " LicenseRtf  : $licRtf"
           Write-Host " Output      : dist\$outputName"
 
           wix build $wxs `
@@ -272,34 +261,18 @@ jobs:
           }
 
           $size = [math]::Round((Get-Item "dist\$outputName").Length / 1MB, 1)
-          Write-Host "MSI generated: dist\$outputName ($size MB) ✓"
+          Write-Host "MSI generated: dist\$outputName ($size MB) OK"
           echo "MSI_NAME=$outputName" >> $env:GITHUB_ENV
 
-      # ----------------------------------------------------------------
-      # 9b. Upload unsigned MSI as artifact (required by SignPath)
-      #     SignPath fetches artifacts directly from GitHub Actions,
-      #     so the MSI must be uploaded before the signing request.
-      #     We capture the artifact-id output for use by SignPath.
-      # ----------------------------------------------------------------
       - name: Upload unsigned MSI artifact (pre-signing)
         id: upload_unsigned
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-msi-unsigned
+          name: qelectrotech-windows-msi-unsigned-${{ matrix.flavor }}
           path: dist\*.msi
           retention-days: 1
           if-no-files-found: error
 
-      # ----------------------------------------------------------------
-      # 9c. Submit signing request to SignPath (OSS organization)
-      #     Prerequisites:
-      #       - SIGNPATH_API_TOKEN    : CI user token from the OSS org
-      #       - SIGNPATH_ORGANIZATION_ID : Organization ID of the OSS org
-      #         (visible in app.signpath.io → Settings after accepting
-      #          the OSS invitation)
-      #     The action downloads the signed MSI and places it in
-      #     dist/ (overwriting the unsigned one).
-      # ----------------------------------------------------------------
       - name: Sign MSI via SignPath
         uses: signpath/github-action-submit-signing-request@v2
         with:
@@ -312,33 +285,27 @@ jobs:
           wait-for-completion: true
           output-artifact-directory: 'dist\'
 
-      # ----------------------------------------------------------------
-      # 10. Upload the signed MSI artifact
-      # ----------------------------------------------------------------
-      - name: Upload MSI artifact
+      - name: Upload signed MSI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-msi
+          name: qelectrotech-windows-msi-${{ matrix.flavor }}
           path: dist\*.msi
           retention-days: 14
           if-no-files-found: error
 
-      # ----------------------------------------------------------------
-      # 11. Delete old .msi asset then upload new MSI to nightly release
-      # ----------------------------------------------------------------
-      - name: Delete old nightly .msi asset
+      - name: Delete old nightly .msi asset for this flavor
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          gh release view nightly --repo "$REPO" --json assets \
-            --jq '.assets[] | select(.name | test("\\.msi$")) | .name' \
-            | while read -r name; do
-                echo "Deleting old asset: $name"
-                gh release delete-asset nightly "$name" --repo "$REPO" --yes
-              done
-          echo "Old .msi assets deleted."
-        shell: bash
+          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6-EXPERIMENTAL.*\.msi$" } else { "\.msi$" }
+          $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
+          foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
+            if ("${{ matrix.flavor }}" -eq "qt5" -and $name -match "-qt6-EXPERIMENTAL") { continue }
+            Write-Host "Deleting old asset: $name"
+            gh release delete-asset nightly $name --repo $env:REPO --yes
+          }
+        shell: pwsh
 
       - name: Upload MSI to nightly release
         uses: softprops/action-gh-release@v3
@@ -349,30 +316,40 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # ----------------------------------------------------------------
-      # 12. Summary
-      # ----------------------------------------------------------------
+      - name: Export MSI name for page generation
+        id: export
+        shell: pwsh
+        run: |
+          $name = "$env:MSI_NAME"
+          if ("${{ matrix.flavor }}" -eq "qt6") {
+            echo "msi_name_qt6=$name" >> $env:GITHUB_OUTPUT
+          } else {
+            echo "msi_name_qt5=$name" >> $env:GITHUB_OUTPUT
+          }
+
       - name: Summary
         if: always()
         shell: pwsh
         run: |
-          Write-Host "=== MSI build summary ==="
+          Write-Host "=== MSI build summary (${{ matrix.flavor }}) ==="
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
-          Write-Host "WiX     : v7.0.0"
-          Write-Host "Signing : SignPath OSS"
-          Write-Host "Runner  : ${{ runner.os }} / ${{ runner.arch }}"
-          if (Test-Path "dist\$env:MSI_NAME") {
-            $size = [math]::Round((Get-Item "dist\$env:MSI_NAME").Length / 1MB, 1)
-            Write-Host "MSI     : $env:MSI_NAME ($size MB) ✓"
-          } else {
-            Write-Host "MSI     : FAILED ✗"
-          }
+          Write-Host "Experimental : ${{ matrix.experimental }}"
 
-      # ----------------------------------------------------------------
-      # 13. Generate and deploy the GitHub Pages download page
-      #     Toutes les URLs sont connues ici (exe, zip, msi).
-      # ----------------------------------------------------------------
-      - name: Checkout (for generate-page.py)
+  # ---------------------------------------------------------------------------
+  # Job 2 : Génère et déploie la page GitHub Pages une fois les DEUX MSI
+  # (Qt5 + Qt6) publiés, pour que toutes les URLs soient connues.
+  # ---------------------------------------------------------------------------
+  deploy-pages:
+    needs: build-msi
+    runs-on: ubuntu-latest
+    if: always() && needs.build-msi.result == 'success'
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout master (for generate-page.py)
         uses: actions/checkout@v7
         with:
           ref: master
@@ -386,21 +363,30 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-
           REPO="${{ github.repository }}"
 
-          # Fetch asset names from the nightly release (source of truth)
           ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
 
-          EXE_NAME=$(echo "$ASSETS" | grep '\.exe$'  | head -1)
-          ZIP_NAME=$(echo "$ASSETS" | grep '\.zip$'  | head -1)
-          MSI_NAME=$(echo "$ASSETS" | grep '\.msi$'  | head -1 || echo "")
+          EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1)
+          ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1)
+          MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
+
+          EXE_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1 || echo "")
+          ZIP_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
+          MSI_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
 
           BASE="https://github.com/$REPO/releases/download/nightly"
           INSTALLER_URL="$BASE/$EXE_NAME"
           PORTABLE_URL="$BASE/$ZIP_NAME"
           MSI_URL=""
           [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
+
+          INSTALLER_QT6_URL=""
+          PORTABLE_QT6_URL=""
+          MSI_QT6_URL=""
+          [ -n "$EXE_QT6_NAME" ] && INSTALLER_QT6_URL="$BASE/$EXE_QT6_NAME"
+          [ -n "$ZIP_QT6_NAME" ] && PORTABLE_QT6_URL="$BASE/$ZIP_QT6_NAME"
+          [ -n "$MSI_QT6_NAME" ] && MSI_QT6_URL="$BASE/$MSI_QT6_NAME"
 
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           SHORT="${SHA:0:7}"
@@ -410,6 +396,7 @@ jobs:
 
           export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
           export INSTALLER_URL PORTABLE_URL MSI_URL
+          export INSTALLER_QT6_URL PORTABLE_QT6_URL MSI_QT6_URL
 
           python3 source/build-aux/generate-page.py
 
