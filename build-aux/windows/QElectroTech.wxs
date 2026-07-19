@@ -11,6 +11,9 @@
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?ifndef QtPlatformArgs ?>
+  <?define QtPlatformArgs="" ?>
+  <?endif?>
 
   <Package
     Name="QElectroTech"
@@ -58,7 +61,7 @@
                   Directory="DesktopFolder"
                   Name="QElectroTech"
                   Target="[INSTALLDIR]bin\qelectrotech.exe"
-                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; -style windowsvista"
+                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; $(var.QtPlatformArgs)"
                   Icon="qet.ico"
                   WorkingDirectory="INSTALLDIR" />
         <RegistryValue Root="HKCU"
@@ -73,7 +76,7 @@
                   Directory="ProgramMenuFolder"
                   Name="QElectroTech"
                   Target="[INSTALLDIR]bin\qelectrotech.exe"
-                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; -style windowsvista"
+                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; $(var.QtPlatformArgs)"
                   Icon="qet.ico"
                   WorkingDirectory="INSTALLDIR" />
         <RegistryValue Root="HKCU"

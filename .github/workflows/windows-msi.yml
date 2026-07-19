@@ -244,6 +244,14 @@ jobs:
           Write-Host " ProductCode : $productCode"
           Write-Host " Output      : dist\$outputName"
 
+       if ("${{ matrix.flavor }}" -eq "qt5") {
+          $qtArgs = "-platform windows:fontengine=freetype"
+           }
+          else {
+          $qtArgs = ""
+           }
+
+
           wix build $wxs `
             -arch x64 `
             -d "Version=$version" `
@@ -251,6 +259,7 @@ jobs:
             -d "ProductCode=$productCode" `
             -d "FilesDir=$filesDir" `
             -d "LicenseRtf=$licRtf" `
+            -d QtPlatformArgs="$qtArgs" `
             -ext WixToolset.UI.wixext `
             -ext WixToolset.Util.wixext `
             -o "dist\$outputName"
