@@ -88,6 +88,16 @@ endif()
 
 find_package(SQLite3 REQUIRED)
 
+# CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
+# alias yet), while CMake >= 4.3's bundled FindSQLite3 creates SQLite3::SQLite3
+# and deprecates the old name. Add the missing alias ourselves so we can use
+# the modern target name everywhere regardless of the CMake version in use
+# (this project must keep building on CMake versions below 4.3, e.g. on most
+# current Linux distros).
+if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
+    add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
+endif()
+
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
 # The default build only compiles the tracked .ts files to .qm (lrelease).
@@ -141,7 +151,7 @@ target_link_libraries(
     PRIVATE
     pugixml::pugixml
     SingleApplication::SingleApplication
-    SQLite::SQLite3
+    SQLite3::SQLite3
     ${KF5_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES}
 )
