@@ -244,7 +244,7 @@ jobs:
           Write-Host " ProductCode : $productCode"
           Write-Host " Output      : dist\$outputName"
 
-       if ("${{ matrix.flavor }}" -eq "qt5") {
+          if ("${{ matrix.flavor }}" -eq "qt5") {
           $qtArgs = "-platform windows:fontengine=freetype"
            }
           else {
