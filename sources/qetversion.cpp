@@ -23,11 +23,7 @@ namespace QetVersion
 
 	QVersionNumber currentVersion()
 	{
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-		return QVersionNumber{ 0, 200, 1 };
-#else
 		return QVersionNumber{ 0, 100, 1 };
-#endif
 	}
 
 	QString displayedVersion()
