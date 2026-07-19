@@ -552,8 +552,8 @@ jobs:
           cp -r "$GITHUB_WORKSPACE/build-aux/windows/nsis_base/." "$NSIS_ROOT/"
 
           curl -fsSL \
-            "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/misc/Lancer%20QET.bat" \
-            -o "$FILES/Lancer QET.bat"
+            "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/misc/Lancer%20QET_qt6.bat" \
+            -o "$FILES/Lancer QET_qt6.bat"
           cp -r "$GITHUB_WORKSPACE/elements"    "$FILES/elements"    || true
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
@@ -570,7 +570,7 @@ jobs:
 
           echo "=== Verification of key files in files/ ==="
           for f in LICENSE ChangeLog CREDIT README ELEMENTS.LICENSE \
-                   qet_uninstall_file_associations.reg register_filetypes.bat "Lancer QET.bat"; do
+                   qet_uninstall_file_associations.reg register_filetypes.bat "Lancer QET_qt6.bat"; do
             [ -f "$FILES/$f" ] \
               && echo "  OK      : $f" \
               || echo "  MISSING: $f"
