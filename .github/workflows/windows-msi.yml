@@ -125,6 +125,18 @@ jobs:
           Write-Host "Version MSI     : $verMsi"
           Write-Host "Version display : $verDisplay"
 
+          # Qt platform argument: only Qt5 needs the QTBUG-83161 font-rendering
+          # workaround (GDI backend). Qt6 uses DirectWrite by default and does
+          # not need it. Computed once here so both the bundled "Lancer QET.bat"
+          # and the MSI shortcuts (wix build -d QtPlatformArgs=...) stay in sync.
+          if ("${{ matrix.flavor }}" -eq "qt5") {
+            $qtArgs = "-platform windows:fontengine=freetype"
+          } else {
+            $qtArgs = ""
+          }
+          echo "QT_ARGS=$qtArgs" >> $env:GITHUB_OUTPUT
+          Write-Host "Qt platform args: '$qtArgs'"
+
       # ----------------------------------------------------------------
       # 4. Install WiX v7, accept EULA and install WixUI extension
       # ----------------------------------------------------------------
@@ -209,10 +221,11 @@ jobs:
       - name: Replace Lancer QET.bat for MSI
         shell: pwsh
         run: |
+          $qtArgs  = "${{ steps.version.outputs.QT_ARGS }}"
           $bat     = "$env:FILES_DIR\Lancer QET.bat"
-          $content = "@echo off`r`nstart `"`" `"%~dp0bin\qelectrotech.exe`" --common-elements-dir=`"%~dp0elements/`" --common-tbt-dir=`"%~dp0titleblocks/`" --lang-dir=`"%~dp0lang/`" -style windowsvista`r`n"
+          $content = "@echo off`r`nstart `"`" `"%~dp0bin\qelectrotech.exe`" --common-elements-dir=`"%~dp0elements/`" --common-tbt-dir=`"%~dp0titleblocks/`" --lang-dir=`"%~dp0lang/`" $qtArgs`r`n"
           [System.IO.File]::WriteAllText($bat, $content, [System.Text.Encoding]::ASCII)
-          Write-Host "Lancer QET.bat replaced for MSI installation."
+          Write-Host "Lancer QET.bat replaced for MSI installation (qtArgs: '$qtArgs')."
 
       # ----------------------------------------------------------------
       # 9. Build the MSI (unsigned)
@@ -244,13 +257,7 @@ jobs:
           Write-Host " ProductCode : $productCode"
           Write-Host " Output      : dist\$outputName"
 
-          if ("${{ matrix.flavor }}" -eq "qt5") {
-          $qtArgs = "-platform windows:fontengine=freetype"
-           }
-          else {
-          $qtArgs = ""
-           }
-
+          $qtArgs = "${{ steps.version.outputs.QT_ARGS }}"
 
           wix build $wxs `
             -arch x64 `
@@ -307,7 +314,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6-EXPERIMENTAL.*\.msi$" } else { "\.msi$" }
+          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6-EXPERIMENTAL.*\\.msi$" } else { "\\.msi$" }
           $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
           foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
             if ("${{ matrix.flavor }}" -eq "qt5" -and $name -match "-qt6-EXPERIMENTAL") { continue }
