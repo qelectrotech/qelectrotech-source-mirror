@@ -1,7 +1,7 @@
 name: Windows Build Qt6 (test)
 
 on:
-  workflow_dispatch:       # Déclenchement manuel uniquement, le temps de valider le build
+  workflow_dispatch:       # Manual trigger only, until the Qt6 build is validated
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -95,9 +95,8 @@ jobs:
             -DCMAKE_PREFIX_PATH=/ucrt64 \
             -DQt6_DIR=/ucrt64/lib/cmake/Qt6 \
             -DQT_VERSION_MAJOR=6 \
-            -DCMAKE_DISABLE_FIND_PACKAGE_Qt5=ON \
             -DBUILD_WITH_KF5=OFF \
-            -DBUILD_TESTING=OFF \
+            -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
@@ -232,9 +231,9 @@ jobs:
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)
           HEAD=$(( A + 473 ))
 
-          # qetversion.cpp contient désormais 2 "return QVersionNumber{" (Qt5/Qt6
-          # dans un #if/#else) : on cible explicitement la branche Qt6, sinon
-          # "grep | head -1" ne lirait que la première rencontrée dans le fichier.
+          # qetversion.cpp now contains 2 "return QVersionNumber{" lines (Qt5/Qt6
+          # in an #if/#else block): target the Qt6 branch explicitly, otherwise
+          # "grep | head -1" would only ever read the first one in the file.
           VERSION=$(awk '/QT_VERSION_CHECK\(6, 0, 0\)/{f=1;next} f && /return QVersionNumber/{print;exit}' \
               "$GITHUB_WORKSPACE/sources/qetversion.cpp" \
             | awk -F '{' '{ print $2 }' \
@@ -340,7 +339,7 @@ jobs:
           path: dist/Installer_*.exe
           retention-days: 14
 
-      - name: Upload portable (nom scopé qt6, pour un futur workflow MSI)
+      - name: Upload portable (qt6-scoped name, for a future MSI workflow)
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-portable-qt6
