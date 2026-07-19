@@ -110,6 +110,9 @@ ElementScene::~ElementScene()
 
 	if (m_decorator)
 		delete m_decorator;
+
+	if (m_paste_area && !m_paste_area->scene())
+		delete m_paste_area;
 }
 
 /**

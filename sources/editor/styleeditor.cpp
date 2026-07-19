@@ -386,7 +386,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 
 	outline_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
 	filling_color->setSizeAdjustPolicy(QComboBox::AdjustToContents);
-	auto grid_layout = new QGridLayout(this);
+	auto grid_layout = new QGridLayout();
 	grid_layout->addWidget(new QLabel(tr("Contour :")), 0,0, Qt::AlignRight);
 	grid_layout->addWidget(outline_color, 0, 1);
 	grid_layout->addWidget(new QLabel(tr("Remplissage :")), 1, 0, Qt::AlignRight);
