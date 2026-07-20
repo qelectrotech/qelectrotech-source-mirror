@@ -72,6 +72,7 @@ class ElementsCollectionWidget : public QWidget
 		void editDirectory();
 		void newDirectory();
 		void newElement();
+		bool confirmEdzImportTerms();
 		void importEdz();
 		void showThisDir();
 		void resetShowThisDir();

@@ -33,9 +33,14 @@
 #include "fileelementcollectionitem.h"
 #include "xmlprojectelementcollectionitem.h"
 
+#include <QCheckBox>
 #include <QDesktopServices>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <QFileDialog>
+#include <QLabel>
 #include <QMenu>
+#include <QPushButton>
 #include <QTimer>
 #include <QUrl>
 #include <QVBoxLayout>
@@ -607,6 +612,66 @@ void ElementsCollectionWidget::newElement()
 }
 
 /**
+	@brief ElementsCollectionWidget::confirmEdzImportTerms
+	Show the EPLAN (.edz) import warning dialog. The user must tick the
+	acknowledgement checkbox before the Import button is enabled.
+	@return true if the user accepted the terms, false otherwise.
+*/
+bool ElementsCollectionWidget::confirmEdzImportTerms()
+{
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("Avertissement — Importation d'un fichier EPLAN (.edz)"));
+
+	QLabel *text = new QLabel(
+		tr("Le format .edz peut provenir de deux sources différentes :\n"
+		   "\n"
+		   "• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis "
+		   "aux conditions d'utilisation de l'environnement EPLAN Cloud ;\n"
+		   "• Le site d'un fabricant de composants (ou d'un distributeur) "
+		   "qui met ses fichiers .edz à disposition directement, selon ses "
+		   "propres conditions.\n"
+		   "\n"
+		   "QElectroTech ne peut pas déterminer automatiquement l'origine "
+		   "du fichier que vous importez, ni les conditions qui s'y "
+		   "appliquent.\n"
+		   "\n"
+		   "En important ce fichier, vous confirmez que :\n"
+		   "\n"
+		   "• vous connaissez son origine et êtes autorisé à l'utiliser "
+		   "dans ce contexte, au regard des conditions applicables à cette "
+		   "source ;\n"
+		   "• cette importation est effectuée à vos propres risques et "
+		   "responsabilité ;\n"
+		   "• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne "
+		   "peuvent être tenus responsables d'une utilisation non conforme "
+		   "de ces données."),
+		&dialog);
+	text->setWordWrap(true);
+
+	QCheckBox *accept_box = new QCheckBox(
+		tr("J'ai lu et j'accepte ces conditions."), &dialog);
+
+	QDialogButtonBox *buttons = new QDialogButtonBox(
+		QDialogButtonBox::Cancel, &dialog);
+	QPushButton *import_button = buttons->addButton(
+		tr("Importer"), QDialogButtonBox::AcceptRole);
+	import_button->setDefault(true);
+	import_button->setEnabled(false);
+
+	connect(accept_box, &QCheckBox::toggled,
+		import_button, &QPushButton::setEnabled);
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+	QVBoxLayout *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(text);
+	layout->addWidget(accept_box);
+	layout->addWidget(buttons);
+
+	return dialog.exec() == QDialog::Accepted;
+}
+
+/**
 	@brief ElementsCollectionWidget::importEdz
 	Import an EPLAN Data Portal part (.edz) as a QET element into the directory
 	pointed at by the context menu.
@@ -622,6 +687,10 @@ void ElementsCollectionWidget::importEdz()
 	FileElementCollectionItem *feci =
 			static_cast<FileElementCollectionItem*>(eci);
 	if (feci->isCommonCollection() || !feci->isDir()) {
+		return;
+	}
+
+	if (!confirmEdzImportTerms()) {
 		return;
 	}
 
