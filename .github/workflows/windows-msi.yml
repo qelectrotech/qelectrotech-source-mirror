@@ -289,7 +289,12 @@ jobs:
           retention-days: 1
           if-no-files-found: error
 
+      # Qt6 stays on the unsigned/experimental track (no signing request for
+      # this flavor), and forks never have the SignPath secrets, so guard on
+      # both: only qt5, and only in the upstream repo.
+      # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
+        if: matrix.flavor == 'qt5' && github.repository == 'qelectrotech/qelectrotech-source-mirror'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
