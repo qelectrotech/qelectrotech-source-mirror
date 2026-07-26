@@ -18,6 +18,7 @@
 #ifndef EDZARCHIVE_H
 #define EDZARCHIVE_H
 
+#include <QCoreApplication>
 #include <QString>
 #include <QScopedPointer>
 
@@ -38,6 +39,8 @@ class QTemporaryDir;
 */
 class EdzArchive
 {
+	Q_DECLARE_TR_FUNCTIONS(EdzArchive)
+
 	public:
 		EdzArchive();
 		~EdzArchive();
