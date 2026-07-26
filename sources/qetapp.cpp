@@ -1690,11 +1690,15 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 void QETApp::useSystemPalette(bool use) {
 	if (use) {
 		qApp->setPalette(initial_palette_);
-		qApp->setStyleSheet(
-				"QAbstractScrollArea#mdiarea {"
-				"background-color -> setPalette(initial_palette_);"
-				"}"
-				);
+		// Drop any stylesheet previously loaded from style.css: with system
+		// colors requested, the palette set just above is what provides them.
+		//
+		// This used to install a one-rule stylesheet whose only declaration
+		// was invalid CSS ("background-color -> setPalette(initial_palette_);",
+		// a note-to-self committed in e6c32bc0, 2014). It styled nothing, but
+		// a non-empty application stylesheet still wraps every widget in
+		// QStyleSheetStyle, which overrides per-widget QWidget::setStyle().
+		qApp->setStyleSheet(QString());
 	} else {
 		QFile file(configDir() + "/style.css");
 		if (file.open(QFile::ReadOnly)) {
