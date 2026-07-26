@@ -238,7 +238,26 @@ RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/*.ts
 
 # Modules Qt utilises par l'application
-QT += xml svg network sql widgets printsupport concurrent KWidgetsAddons KCoreAddons gui-private
+QT += xml svg network sql widgets printsupport concurrent gui-private
+
+# KDE Frameworks 5 (KWidgetsAddons, KCoreAddons) are optional.
+#
+# Pass CONFIG+=no_kf5 to qmake to build against the Qt-only replacements in
+# sources/ui/nokde instead. This mirrors the CMake option BUILD_WITH_KF5=OFF
+# and is the easiest route on Windows/MinGW, where KF5 is awkward to obtain.
+#
+#     qmake CONFIG+=no_kf5 qelectrotech.pro
+#
+# sources/ui/nokde is only added to the include path in that configuration, so
+# a normal KF5 build is unaffected.
+no_kf5 {
+    DEFINES     += BUILD_WITHOUT_KF5
+    INCLUDEPATH += sources/ui/nokde
+    HEADERS     += $$files(sources/ui/nokde/*.h)
+    SOURCES     += $$files(sources/ui/nokde/*.cpp)
+} else {
+    QT += KWidgetsAddons KCoreAddons
+}
 
 # Private Qt GUI headers (needed for QPdfEngine::drawHyperlink)
 # gui-private should add this automatically, but some distros need it explicit
