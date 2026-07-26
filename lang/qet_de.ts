@@ -15343,4 +15343,37 @@ Maximale Länge: %2px
         <translation>Was:</translation>
     </message>
 </context>
+<context>
+    <name>EdzArchive</name>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="41"/>
+        <source>File not found: %1</source>
+        <translation>Datei nicht gefunden: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="50"/>
+        <source>Cannot read %1</source>
+        <translation>Kann %1 nicht lesen.</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="58"/>
+        <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+        <translation>Diese .edz-Datei ist ein Paket im ZIP-Format, das noch nicht unterstützt wird (es können nur .edz-Dateien im 7-Zip-Format importiert werden).</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="62"/>
+        <source>Not a valid .edz package (unrecognised archive format).</source>
+        <translation>Kein gültiges .edz-Paket (unbekanntes Archivformat).</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="70"/>
+        <source>Could not create a temporary directory: %1</source>
+        <translation>Temporäres Verzeichnis konnte nicht erstellt werden: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/import/edz/edzarchive.cpp" line="80"/>
+        <source>No *.part.xml found inside the .edz</source>
+        <translation>Keine *.part.xml in der .edz-Datei gefunden</translation>
+    </message>
+</context>
 </TS>

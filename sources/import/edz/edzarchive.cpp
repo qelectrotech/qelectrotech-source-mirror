@@ -38,7 +38,7 @@ bool EdzArchive::extract(const QString &edz_path)
 
 	const QFileInfo fi(edz_path);
 	if (!fi.exists() || !fi.isFile()) {
-		m_error = QStringLiteral("File not found: %1").arg(edz_path);
+		m_error = tr("File not found: %1").arg(edz_path);
 		return false;
 	}
 
@@ -47,7 +47,7 @@ bool EdzArchive::extract(const QString &edz_path)
 	// detect that up front and say so clearly rather than failing opaquely.
 	QFile probe(fi.absoluteFilePath());
 	if (!probe.open(QIODevice::ReadOnly)) {
-		m_error = QStringLiteral("Cannot read %1").arg(edz_path);
+		m_error = tr("Cannot read %1").arg(edz_path);
 		return false;
 	}
 	const QByteArray magic = probe.read(6);
@@ -55,11 +55,11 @@ bool EdzArchive::extract(const QString &edz_path)
 	static const QByteArray k7z("7z\xBC\xAF\x27\x1C", 6);
 	if (!magic.startsWith(k7z)) {
 		if (magic.startsWith(QByteArray("PK\x03\x04", 4))) {
-			m_error = QStringLiteral(
+			m_error = tr(
 				"This .edz is a zip-format package, which is not yet "
 				"supported (only 7-Zip .edz files can be imported).");
 		} else {
-			m_error = QStringLiteral(
+			m_error = tr(
 				"Not a valid .edz package (unrecognised archive format).");
 		}
 		return false;
@@ -67,7 +67,7 @@ bool EdzArchive::extract(const QString &edz_path)
 
 	m_dir.reset(new QTemporaryDir);
 	if (!m_dir->isValid()) {
-		m_error = QStringLiteral("Could not create a temporary directory: %1")
+		m_error = tr("Could not create a temporary directory: %1")
 				  .arg(m_dir->errorString());
 		return false;
 	}
@@ -77,7 +77,7 @@ bool EdzArchive::extract(const QString &edz_path)
 	}
 
 	if (partXmlPath().isEmpty()) {
-		m_error = QStringLiteral("No *.part.xml found inside the .edz");
+		m_error = tr("No *.part.xml found inside the .edz");
 		return false;
 	}
 	return true;
