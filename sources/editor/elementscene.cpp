@@ -31,6 +31,7 @@
 #include "graphicspart/partline.h"
 #include "graphicspart/partpolygon.h"
 #include "graphicspart/partrectangle.h"
+#include "graphicspart/partplctable.h"
 #include "graphicspart/partterminal.h"
 #include "graphicspart/parttext.h"
 #include "ui/qetelementeditor.h"
@@ -84,12 +85,12 @@ ElementData ElementScene::elementData() {
 
 void ElementScene::setElementData(ElementData data)
 {
-	bool emit_ = m_element_data.m_informations != data.m_informations;
+	bool emit_info = (m_element_data != data);
 	bool type_changed = m_element_data.m_type != data.m_type;
 
 	m_element_data = data;
 
-	if (emit_)
+	if (emit_info)
 		emit elementInfoChanged();
 	if (type_changed)
 		emit elementTypeChanged();
@@ -926,9 +927,41 @@ void  ElementScene::slot_editProperties()
 
 	if (m_element_data != epew.editedData())
 	{
+		ElementData new_data = epew.editedData();
+
+		// Check PLC state BEFORE pushing (push calls redo which changes m_element_data)
+		bool old_plc = (m_element_data.m_type == ElementData::Master &&
+						m_element_data.m_master_type == ElementData::PLC);
+		bool new_plc = (new_data.m_type == ElementData::Master &&
+						new_data.m_master_type == ElementData::PLC);
+
 		undoStack().push(new changeElementDataCommand(this,
 													  m_element_data,
-													  epew.editedData()));
+													  new_data));
+
+		if (new_plc && !old_plc) {
+			// Switched TO PLC: create table if not present
+			bool has_plc = false;
+			for (QGraphicsItem *item : items()) {
+				if (dynamic_cast<PartPlcTable *>(item)) {
+					has_plc = true;
+					break;
+				}
+			}
+			if (!has_plc) {
+				PartPlcTable *pt = new PartPlcTable(m_element_editor);
+				addItem(pt);
+			}
+		} else if (!new_plc && old_plc) {
+			// Switched FROM PLC: remove table
+			for (QGraphicsItem *item : items()) {
+				if (PartPlcTable *pt = dynamic_cast<PartPlcTable *>(item)) {
+					removeItem(pt);
+					delete pt;
+					break;
+				}
+			}
+		}
 	}
 }
 
@@ -1172,15 +1205,16 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				CustomElementPart *cep = nullptr;
 				PartDynamicTextField *pdtf = nullptr;
 
-				if      (qde.tagName() == "line")     cep = new PartLine     (m_element_editor);
-				else if (qde.tagName() == "rect")     cep = new PartRectangle(m_element_editor);
-				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (m_element_editor);
-				else if (qde.tagName() == "circle")   cep = new PartEllipse  (m_element_editor);
-				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (m_element_editor);
-				else if (qde.tagName() == "terminal") cep = new PartTerminal (m_element_editor);
-				else if (qde.tagName() == "text")     cep = new PartText     (m_element_editor);
-				else if (qde.tagName() == "arc")      cep = new PartArc      (m_element_editor);
+				if      (qde.tagName() == "line")       cep = new PartLine      (m_element_editor);
+				else if (qde.tagName() == "rect")       cep = new PartRectangle (m_element_editor);
+				else if (qde.tagName() == "ellipse")    cep = new PartEllipse   (m_element_editor);
+				else if (qde.tagName() == "circle")     cep = new PartEllipse   (m_element_editor);
+				else if (qde.tagName() == "polygon")    cep = new PartPolygon   (m_element_editor);
+				else if (qde.tagName() == "terminal")   cep = new PartTerminal  (m_element_editor);
+				else if (qde.tagName() == "text")       cep = new PartText      (m_element_editor);
+				else if (qde.tagName() == "arc")        cep = new PartArc       (m_element_editor);
 				else if (qde.tagName() == "dynamic_text") cep = new PartDynamicTextField (m_element_editor);
+				else if (qde.tagName() == "plc_table")  cep = new PartPlcTable  (m_element_editor);
 				//For the input (aka the old text field) we try to convert it to the new partDynamicTextField
 				else if (qde.tagName() == "input") cep = pdtf = new PartDynamicTextField(m_element_editor);
 				else continue;

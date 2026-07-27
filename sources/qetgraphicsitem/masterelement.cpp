@@ -18,8 +18,10 @@
 #include "masterelement.h"
 #include "../qetproject.h"
 #include "../diagram.h"
+#include "../qetinformation.h"
 #include "crossrefitem.h"
 #include "dynamicelementtextitem.h"
+#include "../properties/elementdata.h"
 
 #include <QRegularExpression>
 
@@ -61,9 +63,14 @@ void MasterElement::linkToElement(Element *elmt)
 		elmt->linkToElement(this);
 
 		XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
-		if (!m_Xref_item && xrp.snapTo() == XRefProperties::Bottom)
+		if (!m_Xref_item && (xrp.snapTo() == XRefProperties::Bottom ||
+			m_data.m_master_type == ElementData::PLC))
 			m_Xref_item = new CrossRefItem(this); //create cross ref item if not yet	
-		
+
+		// For PLC masters, connect slave position changes to trigger master repaint
+		if (m_data.m_master_type == ElementData::PLC)
+			connectSlavePositionUpdates(elmt);
+
 		emit linkedElementChanged();
 		aboutDeleteXref();
 	}
@@ -94,9 +101,27 @@ void MasterElement::unlinkElement(Element *elmt)
 		//Ensure elmt is linked to this element
 	if (connected_elements.contains(elmt))
 	{
+		// Clear PLC variables on slave before unlinking
+		if (m_data.m_master_type == ElementData::PLC)
+		{
+			DiagramContext ctx = elmt->elementInformations();
+			ctx.remove(QETInformation::ELMT_PLC_TYPE);
+			ctx.remove(QETInformation::ELMT_PLC_ADDRESS);
+			ctx.remove(QETInformation::ELMT_PLC_FUNCTION);
+			ctx.remove(QETInformation::ELMT_PLC_COMMENT);
+			ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
+			ctx.remove(QETInformation::ELMT_LABEL);
+			elmt->setElementInformations(ctx);
+
+			setGroupIndexForElement(elmt, -1);
+		}
+
 		connected_elements.removeOne(elmt);
 		elmt -> unlinkElement  (this);
 		elmt -> setHighlighted (false);
+
+		// Disconnect slave position updates for PLC masters
+		disconnectSlavePositionUpdates(elmt);
 
 		aboutDeleteXref();
 		emit linkedElementChanged();
@@ -141,12 +166,18 @@ void MasterElement::xrefPropertiesChanged()
 {
 	if(!diagram())
 		return;
-	
+
 	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
 	if(xrp.snapTo() == XRefProperties::Bottom)
 	{
 			//We create a Xref, and just after we call aboutDeleteXref,
 			//because the Xref may be useless.
+		if(!m_Xref_item)
+			m_Xref_item = new CrossRefItem(this);
+	}
+	// Always create Xref for PLC master elements (they show IO table even without linked slaves)
+	else if (m_data.m_master_type == ElementData::PLC)
+	{
 		if(!m_Xref_item)
 			m_Xref_item = new CrossRefItem(this);
 	}
@@ -167,7 +198,11 @@ void MasterElement::aboutDeleteXref()
 {
 	if(!m_Xref_item)
 		return;
-	
+
+	// Never delete Xref for PLC master elements - they always show the IO table
+	if (m_data.m_master_type == ElementData::PLC)
+		return;
+
 	XRefProperties xrp = diagram()->project()->defaultXRefProperties(kindInformations()["type"].toString());
 	if (xrp.snapTo() != XRefProperties::Bottom && m_Xref_item)
 	{
@@ -175,7 +210,7 @@ void MasterElement::aboutDeleteXref()
 		m_Xref_item = nullptr;
 		return;
 	}
-	
+
 	if (m_Xref_item->boundingRect().isNull())
 	{
 		delete m_Xref_item;
@@ -206,4 +241,37 @@ bool MasterElement::isFull() const
 
 	// Return true if current connected elements reached or exceeded the limit
 	return connected_elements.size() >= max_slaves;
+}
+
+/**
+	@brief MasterElement::connectSlavePositionUpdates
+	Connect slave xChanged/yChanged to master update() so the PLC table
+	repaints in real-time when a slave moves on the diagram.
+	@param slave the slave element
+*/
+void MasterElement::connectSlavePositionUpdates(Element *slave)
+{
+	if (!slave)
+		return;
+	m_slave_x_conn[slave] = connect(slave, &QGraphicsObject::xChanged,
+		[this]() { update(); });
+	m_slave_y_conn[slave] = connect(slave, &QGraphicsObject::yChanged,
+		[this]() { update(); });
+}
+
+/**
+	@brief MasterElement::disconnectSlavePositionUpdates
+	Disconnect slave position signals from master.
+	@param slave the slave element
+*/
+void MasterElement::disconnectSlavePositionUpdates(Element *slave)
+{
+	if (!slave)
+		return;
+	if (m_slave_x_conn.contains(slave)) {
+		disconnect(m_slave_x_conn.take(slave));
+	}
+	if (m_slave_y_conn.contains(slave)) {
+		disconnect(m_slave_y_conn.take(slave));
+	}
 }

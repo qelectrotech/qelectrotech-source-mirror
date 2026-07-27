@@ -31,6 +31,10 @@ class Diagram;
 class QTreeWidgetItem;
 class QMenu;
 class QAction;
+class QTableWidget;
+class QSpinBox;
+class QCheckBox;
+class QComboBox;
 
 namespace Ui {
 	class MasterPropertiesWidget;
@@ -75,6 +79,17 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 		void diagramWasdeletedFromProject();
 		void customContextMenu(const QPoint &pos, int i=0);
 
+		// PLC IO table slots
+		void plcPasteFromClipboard();
+		void setCellFromValue(int row, int col, const QString &val);
+		void plcAddRow();
+		void plcRemoveRow();
+		void plcMoveRowUp();
+		void plcMoveRowDown();
+		void plcIOCellChanged(int row, int column);
+		void plcUpdateDisplaySettings();
+		void plcShowTableContextMenu(const QPoint &pos);
+
 	private:
 	Ui::MasterPropertiesWidget *ui;
 	QHash <QTreeWidgetItem *, Element *> m_qtwi_hash;
@@ -88,6 +103,16 @@ class MasterPropertiesWidget : public AbstractElementPropertiesEditorWidget
 			*m_show_qtwi,
 			*m_show_element,
 			*m_save_header_state;
+
+		// PLC-specific members
+	QWidget *m_plc_widget = nullptr;
+	QTableWidget *m_plc_table = nullptr;
+	QCheckBox *m_plc_break_checkboxes[4] = {nullptr, nullptr, nullptr, nullptr};
+	QSpinBox *m_plc_break_spinboxes[4] = {nullptr, nullptr, nullptr, nullptr};
+	QSpinBox *m_plc_row_height_spinbox = nullptr;
+	QList<QCheckBox *> m_plc_col_visibility_checkboxes;
+	QList<QSpinBox *> m_plc_col_width_spinboxes;
+	bool m_plc_updating = false;  // Guard against recursive updates
 };
 
 #endif // MASTERPROPERTIESWIDGET_H

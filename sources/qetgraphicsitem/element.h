@@ -256,11 +256,14 @@ class Element : public QetGraphicsItem
 		bool m_freeze_label = false;
 		QString m_F_str;
 
-		ElementsLocation m_location;
-		QList <Terminal *> m_terminals;
-		const QPicture m_picture;
-		const QPicture m_low_zoom_picture;
-		ElementData m_data;
+	ElementsLocation m_location;
+	QList <Terminal *> m_terminals;
+	QPicture m_picture;
+	QPicture m_low_zoom_picture;
+	ElementData m_data;
+	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
+
+	void drawPlcTable(QPainter *painter);
 
 	private:
 		bool m_must_highlight = false;

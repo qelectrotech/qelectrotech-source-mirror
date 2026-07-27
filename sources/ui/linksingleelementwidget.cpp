@@ -29,6 +29,7 @@
 #include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>
+#include <QInputDialog>
 
 
 /**
@@ -393,17 +394,24 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 	
 	//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_vector.removeAll(m_element->linkedElements().first());
-	// Filter out all master elements from the list
+
+	// Filter out incompatible elements: PLC and non-PLC must not mix
+	const bool element_is_plc = (m_element->elementData().m_type == ElementData::Slave &&
+				     m_element->elementData().m_slave_type == ElementData::PLCSlave);
 	for (int i = elmt_vector.size() - 1; i >= 0; --i) {
 		Element *elmt = elmt_vector.at(i);
 
-		// If the item in the list is a master
 		if (elmt->linkType() == Element::Master) {
+			const bool master_is_plc = (elmt->elementData().m_master_type == ElementData::PLC);
 
-			// We convert the generic element pointer into a MasterElement pointer
-			MasterElement *master = static_cast<MasterElement*>(elmt);
+			// PLC slave can only link to PLC master, and vice versa
+			if (element_is_plc != master_is_plc) {
+				elmt_vector.removeAt(i);
+				continue;
+			}
 
 			// If the master is full, we'll remove it from the list!
+			MasterElement *master = static_cast<MasterElement*>(elmt);
 			if (master->isFull()) {
 				elmt_vector.removeAt(i);
 			}
@@ -536,7 +544,7 @@ void LinkSingleElementWidget::linkTriggered()
 {
 	if(!m_qtwi_at_context_menu)
 		return;
-	
+
 	m_element_to_link = m_qtwi_elmt_hash.value(m_qtwi_at_context_menu);
 	m_pending_group_index = -1;
 
@@ -545,25 +553,73 @@ void LinkSingleElementWidget::linkTriggered()
 		&& m_element_to_link
 		&& m_element_to_link->linkType() == Element::Master)
 	{
-		const auto &groups = m_element_to_link->elementData().m_slave_contact_groups;
-		if (!groups.isEmpty())
+		// Check if this is a PLC master
+		if (m_element_to_link->elementData().m_master_type == ElementData::PLC)
 		{
-			// Collect already-used group indices from the master
-			QSet<int> used_indices;
-			for (Element *linked : m_element_to_link->linkedElements()) {
-				int idx = m_element_to_link->groupIndexForElement(linked);
-				if (idx >= 0) {
-					used_indices.insert(idx);
+			// Show PLC IO selection dialog
+			const auto &plc_data = m_element_to_link->elementData().plcMasterData();
+			if (!plc_data.ios.isEmpty())
+			{
+				// Collect already-used IO indices from the master
+				QSet<int> used_indices;
+				for (Element *linked : m_element_to_link->linkedElements()) {
+					int idx = m_element_to_link->groupIndexForElement(linked);
+					if (idx >= 0) {
+						used_indices.insert(idx);
+					}
+				}
+
+				// Build selection dialog
+				QStringList items;
+				for (int i = 0; i < plc_data.ios.size(); ++i) {
+					const auto &io = plc_data.ios.at(i);
+					QString label = QString("[%1] %2 - %3")
+						.arg(i + 1)
+						.arg(io.address)
+						.arg(io.functionText);
+					if (used_indices.contains(i))
+						label += tr(" (déjà utilisé)");
+					items << label;
+				}
+
+				bool ok = false;
+				int selected = QInputDialog::getInt(
+					this,
+					tr("Sélectionner un IO PLC"),
+					tr("IO disponible:"),
+					0, 0, plc_data.ios.size() - 1, 1, &ok);
+
+				if (ok && selected >= 0) {
+					m_pending_group_index = selected;
+				} else {
+					m_element_to_link = nullptr;
+					return;
 				}
 			}
+		}
+		else
+		{
+			// Normal contact group selection for non-PLC masters
+			const auto &groups = m_element_to_link->elementData().m_slave_contact_groups;
+			if (!groups.isEmpty())
+			{
+				// Collect already-used group indices from the master
+				QSet<int> used_indices;
+				for (Element *linked : m_element_to_link->linkedElements()) {
+					int idx = m_element_to_link->groupIndexForElement(linked);
+					if (idx >= 0) {
+						used_indices.insert(idx);
+					}
+				}
 
-			ContactGroupSelectionDialog dlg(groups, used_indices,
-				m_element->elementData(), this);
-			if (dlg.exec() == QDialog::Accepted && dlg.selectedIndex() >= 0) {
-				m_pending_group_index = dlg.selectedIndex();
-			} else {
-				m_element_to_link = nullptr;
-				return;
+				ContactGroupSelectionDialog dlg(groups, used_indices,
+					m_element->elementData(), this);
+				if (dlg.exec() == QDialog::Accepted && dlg.selectedIndex() >= 0) {
+					m_pending_group_index = dlg.selectedIndex();
+				} else {
+					m_element_to_link = nullptr;
+					return;
+				}
 			}
 		}
 	}
@@ -588,7 +644,7 @@ void LinkSingleElementWidget::linkTriggered()
 								      Qt::NoBrush));
 			}
 		}
-		
+
 		for (int i=0 ; i<6 ; i++)
 		{
 			m_qtwi_at_context_menu->setBackground(i,
@@ -597,7 +653,7 @@ void LinkSingleElementWidget::linkTriggered()
 		}
 		m_pending_qtwi = m_qtwi_at_context_menu;
 	}
-	
+
 }
 
 /**

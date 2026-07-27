@@ -114,6 +114,11 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
 */
 void projectDataBase::addElement(Element *element)
 {
+	if (!element || !element->diagram()) {
+		qDebug() << "projectDataBase::addElement: null element or diagram";
+		return;
+	}
+
 	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
 	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
 	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());

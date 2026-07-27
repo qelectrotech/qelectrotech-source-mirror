@@ -24,6 +24,13 @@
 #include <QAbstractButton>
 #include <QDialog>
 
+class QTableWidget;
+class QSpinBox;
+class QCheckBox;
+class QGroupBox;
+class QPushButton;
+class QLineEdit;
+
 namespace Ui {
 	class ElementPropertiesEditorWidget;
 }
@@ -51,6 +58,9 @@ class ElementPropertiesEditorWidget : public QDialog
 		void populateTree();
 		void populateSlaveGroupsTable();
 		void readSlaveGroupsFromTable();
+		void createPlcConfigWidgets();
+		void populatePlcTable();
+		void readPlcTable();
 
 		//SLOTS
 	private slots:
@@ -58,11 +68,33 @@ class ElementPropertiesEditorWidget : public QDialog
 		void on_m_base_type_cb_currentIndexChanged(int index);
 		void on_m_slave_groups_checkbox_toggled(bool checked);
 		void on_max_slaves_checkbox_toggled(bool checked);
+		void plcAddRow();
+		void plcRemoveRow();
+		void plcPasteFromClipboard();
+		void plcTerminalCountChanged(int row, int count);
+		void plcSelectHeaderFont();
+		void plcSelectCellFont();
 
 		//ATTRIBUTES
 	private:
 		Ui::ElementPropertiesEditorWidget *ui;
 		ElementData m_data;
+
+		// PLC configuration widgets (created programmatically)
+		QGroupBox *m_plc_gb = nullptr;
+		QTableWidget *m_plc_table = nullptr;
+		QTableWidget *m_plc_terminal_table = nullptr;
+		QCheckBox *m_plc_break_checkboxes[4] = {nullptr, nullptr, nullptr, nullptr};
+		QSpinBox *m_plc_break_spinboxes[4] = {nullptr, nullptr, nullptr, nullptr};
+		QSpinBox *m_plc_row_height_spinbox = nullptr;
+		QPushButton *m_plc_header_font_btn = nullptr;
+		QPushButton *m_plc_cell_font_btn = nullptr;
+		QCheckBox   *m_plc_show_headers_cb = nullptr;
+		QFont m_plc_header_font;
+		QFont m_plc_cell_font;
+		QList<QCheckBox *> m_plc_col_visibility_checkboxes;
+		QList<QSpinBox *>  m_plc_col_width_spinboxes;
+		QList<QLineEdit *> m_plc_col_name_edits;
 };
 
 #endif // ELEMENTPROPERTIESEDITORWIDGET_H

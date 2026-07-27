@@ -101,6 +101,7 @@ class ElementPictureFactory
 		void parseArc    (const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parsePolygon(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseText   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
+		void parsePlcTable(const QDomElement &dom, const QDomElement &plc_data, QPainter &painter) const;
 		void setPainterStyle(const QDomElement &dom, QPainter &painter) const;
 		
 		QHash<QUuid, QPicture> m_pictures_H;
