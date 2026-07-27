@@ -54,7 +54,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 		return;
 	}
 
-	if(m_pictures_H.keys().contains(uuid))
+	if(m_pictures_H.contains(uuid))
 	{
 		picture = m_pictures_H.value(uuid);
 		low_picture = m_low_pictures_H.value(uuid);
