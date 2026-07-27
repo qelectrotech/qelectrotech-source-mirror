@@ -79,14 +79,10 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-		qDebug()<<"Help code for QT 6 or later";
-#endif
+		// setOptions() is the modern spelling of the Qt4-era
+		// setEnabledOptions() (removed in Qt 6): replace the enabled
+		// option set with just PrintShowPageSize, on Qt 5 and 6 alike.
+		print_dialog.setOptions(QAbstractPrintDialog::PrintShowPageSize);
 		if (print_dialog.exec() == QDialog::Rejected) {
 			delete  printer_;
 			return;
