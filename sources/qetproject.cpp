@@ -35,6 +35,7 @@
 #include "qetxml.h"
 #include "qetversion.h"
 
+#include <QElapsedTimer>
 #include <QHash>
 #include <QTimer>
 #include <QtConcurrentRun>
@@ -227,6 +228,9 @@ void QETProject::init()
 */
 QETProject::ProjectState QETProject::openFile(QFile *file)
 {
+	QElapsedTimer load_timer;
+	load_timer.start();
+
 	bool opened_here = file->isOpen() ? false : true;
 	if (!file->isOpen()
 			&& !file->open(QIODevice::ReadOnly
@@ -245,9 +249,18 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		}
 		return XmlParsingFailed;
 	}
+	const qint64 xml_parse_ms = load_timer.elapsed();
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
+
+	const qint64 total_ms = load_timer.elapsed();
+	qInfo().nospace().noquote()
+			<< "Project \"" << fi.fileName() << "\" ("
+			<< fi.size() / 1024 << " KiB) opened in "
+			<< total_ms / 1000.0 << " seconds (xml parsing "
+			<< xml_parse_ms / 1000.0 << ", content "
+			<< (total_ms - xml_parse_ms) / 1000.0 << ")";
 
 	if (!fi.isWritable()) {
 		setReadOnly(true);
@@ -1489,21 +1502,44 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//load the embedded titleblock templates
 	m_titleblocks_collection.fromXml(xml_project.documentElement());
 
+		/* Timings of the phases below are logged so the cost of opening a
+		 * project can be attributed. Reading the XML and building the objects
+		 * is mostly independent of the Qt version, while refreshing the
+		 * diagrams is graphics-scene work -- keeping them apart is what makes
+		 * the numbers comparable between builds.
+		 */
+	QElapsedTimer phase_timer;
+	phase_timer.start();
+
 		//Load the embedded elements collection
 	readElementsCollectionXml(xml_project);
+	const qint64 elements_ms = phase_timer.restart();
 
 		//Load the diagrams
 	readDiagramsXml(xml_project);
+	const qint64 diagrams_ms = phase_timer.restart();
 
 		//Load the terminal strip
 	readTerminalStripXml(xml_project);
+	const qint64 strips_ms = phase_timer.restart();
 
 		//Now that all are loaded we refresh content of the project.
 	refresh();
-
+	const qint64 refresh_ms = phase_timer.restart();
 
 	m_data_base.blockSignals(false);
 	m_data_base.updateDB();
+	const qint64 database_ms = phase_timer.elapsed();
+
+	qInfo().nospace()
+			<< "Project content built in "
+			<< (elements_ms + diagrams_ms + strips_ms
+				+ refresh_ms + database_ms) / 1000.0
+			<< " seconds (elements collection " << elements_ms / 1000.0
+			<< ", diagrams " << diagrams_ms / 1000.0
+			<< ", terminal strips " << strips_ms / 1000.0
+			<< ", refresh " << refresh_ms / 1000.0
+			<< ", database " << database_ms / 1000.0 << ")";
 
 	m_state = Ok;
 }
