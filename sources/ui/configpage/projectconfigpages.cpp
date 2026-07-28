@@ -419,7 +419,7 @@ void ProjectAutoNumConfigPage::saveContextElement()
 		m_saw_element->contextComboBox()->addItem(tr("Sans nom"));
 	}
 		// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> elementAutoNum().keys().contains( m_saw_element->contextComboBox()->currentText()))
+	else if ( !m_project -> elementAutoNum().contains( m_saw_element->contextComboBox()->currentText()))
 	{
 		m_project->addElementAutoNum(m_saw_element->contextComboBox()->currentText(), m_saw_element->toNumContext());
 		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
@@ -461,7 +461,7 @@ void ProjectAutoNumConfigPage::saveContextConductor()
 		m_saw_conductor->contextComboBox()-> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> conductorAutoNum().keys().contains( m_saw_conductor->contextComboBox()->currentText()))
+	else if ( !m_project -> conductorAutoNum().contains( m_saw_conductor->contextComboBox()->currentText()))
 	{
 		project()->addConductorAutoNum(m_saw_conductor->contextComboBox()->currentText(), m_saw_conductor->toNumContext());
 		project()->setCurrentConductorAutoNum(m_saw_conductor->contextComboBox()->currentText());
@@ -489,7 +489,7 @@ void ProjectAutoNumConfigPage::saveContextFolio()
 		m_saw_folio->contextComboBox() -> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> folioAutoNum().keys().contains( m_saw_folio->contextComboBox()->currentText())) {
+	else if ( !m_project -> folioAutoNum().contains( m_saw_folio->contextComboBox()->currentText())) {
 		project()->addFolioAutoNum(m_saw_folio->contextComboBox()->currentText(), m_saw_folio->toNumContext());
 		m_saw_folio->contextComboBox() -> addItem(m_saw_folio->contextComboBox()->currentText());
 	}

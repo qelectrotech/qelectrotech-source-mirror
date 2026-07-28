@@ -447,7 +447,7 @@ void AlignmentTextsGroupCommand::undo()
 		{
 			for(DynamicElementTextItem *deti : m_group.data()->texts())
 			{
-				if(m_texts_pos.keys().contains(deti))
+				if(m_texts_pos.contains(deti))
 					deti->setPos(m_texts_pos.value(deti));
 			}
 		}
