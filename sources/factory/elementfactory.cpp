@@ -42,10 +42,14 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 		return nullptr;
 	}
 
-	auto doc = location.pugiXml();
-	if (doc.document_element().attribute("link_type"))
+		//Read the link_type from the (cached) QDom definition instead of
+		//running a second, pugixml parse of the same definition: this
+		//dispatch runs once per element instance on project load, and the
+		//pugixml detour was ~4 % of the whole load time of a big project.
+	const QString link_type =
+		location.xml().attribute(QStringLiteral("link_type"));
+	if (!link_type.isEmpty())
 	{
-		QString link_type(doc.document_element().attribute("link_type").as_string());
 		if (link_type == QLatin1String("next_report") || link_type == QLatin1String("previous_report"))
 			return (new ReportElement(location, link_type, qgi, state));
 		if (link_type == QLatin1String("master"))
@@ -55,7 +59,7 @@ Element * ElementFactory::createElement(const ElementsLocation &location, QGraph
 		if (link_type == QLatin1String("terminal"))
 			return (new TerminalElement (location, qgi, state));
 	}
-	
+
 		//default if nothing match for link_type
 	return (new SimpleElement(location, qgi, state));
 }
