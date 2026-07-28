@@ -253,6 +253,14 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 		}
 	}
 
+	// Install the log-file message handler BEFORE the application starts:
+	// QETApp's constructor does the whole startup (collections, editor,
+	// opening the projects given on the command line), so installing the
+	// handler afterwards - as was done in the startup worker below - meant
+	// exactly the interesting lines (collection and project load timers)
+	// went to stderr, which is invisible in a Windows GUI session.
+	qInstallMessageHandler(myMessageOutput);
+
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
 	app.setStyle(QStyleFactory::create("Fusion"));
@@ -298,8 +306,6 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 
 	[[maybe_unused]] auto startup_future = QtConcurrent::run([=]()
 	{
-		// for debugging
-		qInstallMessageHandler(myMessageOutput);
 		qInfo("Start-up");
 		// delete old log files of max 7 days old.
 		delete_old_log_files(7);
