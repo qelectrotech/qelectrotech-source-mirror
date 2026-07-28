@@ -534,6 +534,22 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		//adjusts the offset by the margin of the text document
 	text_document.setDocumentMargin(0.0);
 
+		//Optional line alignment of multi-line texts (the anchor behaviour
+		//of the alignment is handled in the element editor; the saved x/y
+		//always stay the baseline-left of the text block). The document
+		//only honors the text option once a text width is set.
+	if (dom.hasAttribute("Halignment")) {
+		const QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+		const Qt::Alignment h_alignment = Qt::Alignment(
+			me.keyToValue(dom.attribute("Halignment").toStdString().data()));
+		if (h_alignment & (Qt::AlignHCenter | Qt::AlignRight)) {
+			QTextOption option = text_document.defaultTextOption();
+			option.setAlignment(h_alignment & Qt::AlignHorizontal_Mask);
+			text_document.setDefaultTextOption(option);
+			text_document.setTextWidth(text_document.idealWidth());
+		}
+	}
+
 	painter.translate(qpainter_offset);
 
 		// force the palette used to render the QTextDocument

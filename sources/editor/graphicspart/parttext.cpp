@@ -131,6 +131,20 @@ void PartText::fromXml(const QDomElement &xml_element) {
 
 	setDefaultTextColor(QColor(xml_element.attribute("color", "#000000")));
 	setPlainText(xml_element.attribute("text"));
+
+		// Optional alignment (absent = historical behaviour: top-left anchor,
+		// left-aligned lines), same attributes as the dynamic text fields.
+	Qt::Alignment alignment_ = Qt::AlignTop | Qt::AlignLeft;
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	if (xml_element.hasAttribute("Halignment"))
+		alignment_ = Qt::Alignment(
+			me.keyToValue(xml_element.attribute("Halignment").toStdString().data()));
+	if (xml_element.hasAttribute("Valignment"))
+		alignment_ = Qt::Alignment(
+			me.keyToValue(xml_element.attribute("Valignment").toStdString().data()))
+			| (alignment_ & Qt::AlignHorizontal_Mask);
+	setAlignment(alignment_);
+
 	setPos(xml_element.attribute("x").toDouble(),
 			xml_element.attribute("y").toDouble());
 	QGraphicsObject::setRotation(QET::correctAngle(xml_element.attribute("rotation", QString::number(0)).toDouble()));
@@ -154,6 +168,18 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("font", font().toString());
 	xml_element.setAttribute("rotation", QString::number(rot));
 	xml_element.setAttribute("color", defaultTextColor().name());
+
+		// Only written when different from the historical behaviour, so
+		// existing .elmt files round-trip byte-identical.
+	QMetaEnum me = QMetaEnum::fromType<Qt::Alignment>();
+	if (m_alignment & Qt::AlignRight)
+		xml_element.setAttribute("Halignment", me.valueToKey(Qt::AlignRight));
+	else if (m_alignment & Qt::AlignHCenter)
+		xml_element.setAttribute("Halignment", me.valueToKey(Qt::AlignHCenter));
+	if (m_alignment & Qt::AlignBottom)
+		xml_element.setAttribute("Valignment", me.valueToKey(Qt::AlignBottom));
+	else if (m_alignment & Qt::AlignVCenter)
+		xml_element.setAttribute("Valignment", me.valueToKey(Qt::AlignVCenter));
 
 	return(xml_element);
 }
@@ -306,14 +332,107 @@ void PartText::setDefaultTextColor(const QColor &color) {
 
 void PartText::setPlainText(const QString &text) {
 	if (text != this -> toPlainText()) {
+		prepareAlignment();
 		QGraphicsTextItem::setPlainText(text);
+		applyLineAlignment();
+		finishAlignment();
 		emit plainTextChanged(text);
 	}
 }
 
+/**
+	@brief PartText::setAlignment
+	Set how this text is anchored to its position: when the content later
+	changes, the given corner/center of the bounding rect keeps its place
+	(the historical behaviour, and the default, is top-left). The
+	horizontal part also aligns the lines of a multi-line text relative
+	to each other. Changing the alignment never moves the text itself.
+	@param alignment
+*/
+void PartText::setAlignment(const Qt::Alignment &alignment)
+{
+	if (alignment == m_alignment)
+		return;
+	m_alignment = alignment;
+	applyLineAlignment();
+	emit alignmentChanged(m_alignment);
+}
+
+/**
+	@brief PartText::applyLineAlignment
+	Align the lines of a multi-line text relative to each other according
+	to the horizontal part of the alignment property. QGraphicsTextItem
+	only honors the document text option when a text width is set, hence
+	the idealWidth() dance; -1 restores the free (historical) layout.
+*/
+void PartText::applyLineAlignment()
+{
+	QTextOption option = document()->defaultTextOption();
+	option.setAlignment(m_alignment & Qt::AlignHorizontal_Mask);
+	document()->setDefaultTextOption(option);
+
+	setTextWidth(-1);
+	if (m_alignment & (Qt::AlignHCenter | Qt::AlignRight))
+		setTextWidth(document()->idealWidth());
+}
+
+/**
+	@brief PartText::prepareAlignment
+	Call before a change of the bounding rect (see finishAlignment).
+*/
+void PartText::prepareAlignment()
+{
+	m_alignment_rect = boundingRect();
+}
+
+/**
+	@brief PartText::finishAlignment
+	Call after a change of the bounding rect: moves the text so that the
+	point selected by the alignment property stays where it was (same
+	logic as DiagramTextItem::finishAlignment).
+*/
+void PartText::finishAlignment()
+{
+	QTransform transform;
+	transform.rotate(rotation());
+	qreal x, xa, y, ya;
+	x = xa = 0;
+	y = ya = 0;
+
+	if (m_alignment & Qt::AlignRight)
+	{
+		x = m_alignment_rect.right();
+		xa = boundingRect().right();
+	}
+	else if (m_alignment & Qt::AlignHCenter)
+	{
+		x = m_alignment_rect.center().x();
+		xa = boundingRect().center().x();
+	}
+
+	if (m_alignment & Qt::AlignBottom)
+	{
+		y = m_alignment_rect.bottom();
+		ya = boundingRect().bottom();
+	}
+	else if (m_alignment & Qt::AlignVCenter)
+	{
+		y = m_alignment_rect.center().y();
+		ya = boundingRect().center().y();
+	}
+
+	QPointF p = transform.map(QPointF(x, y));
+	QPointF pa = transform.map(QPointF(xa, ya));
+
+	setPos(pos() - (pa - p));
+}
+
 void PartText::setFont(const QFont &font) {
 	if (font != this -> font()) {
+		prepareAlignment();
 		QGraphicsTextItem::setFont(font);
+		applyLineAlignment();
+		finishAlignment();
 		// Re-anchor: the item's position transform is -margin(), and margin()
 		// depends on the font ascent. Without re-running this on a font change,
 		// the transform keeps the previous font's ascent — so the text renders
@@ -397,6 +516,11 @@ void PartText::startEdition()
 {
 	// !previous_text.isNull() means the text is being edited
 	previous_text = toPlainText();
+
+	// Anchor the aligned point across the whole inline edition; free the
+	// text width so typing is not wrapped at the previous block width.
+	prepareAlignment();
+	setTextWidth(-1);
 }
 
 /**
@@ -405,7 +529,8 @@ void PartText::startEdition()
 */
 void PartText::endEdition()
 {
-	if (!previous_text.isNull()) {
+	const bool was_editing = !previous_text.isNull();
+	if (was_editing) {
 			// the text was being edited
 		QString new_text = toPlainText();
 		if (previous_text != new_text) {
@@ -422,4 +547,9 @@ void PartText::endEdition()
 	setTextCursor(qtc);
 
 	setEditable(false);
+
+	if (was_editing) {
+		applyLineAlignment();
+		finishAlignment();
+	}
 }
