@@ -480,15 +480,11 @@ void QETElementEditor::fillPartsList()
 					}
 				}
 				QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
-				QVariant v;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-				v.setValue<QGraphicsItem *>(qgi);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-				qDebug()<<"Help code for QT 6 or later";
-#endif
+					// Qt declares the QGraphicsItem* metatype itself, so this
+					// works on Qt 5 and Qt 6 alike. Without the stored pointer
+					// the parts list loses its item association and selecting
+					// a part no longer selects it on the canvas.
+				QVariant v = QVariant::fromValue(qgi);
 				qlwi -> setData(42, v);
 				m_parts_list -> addItem(qlwi);
 				qlwi -> setSelected(qgi -> isSelected());
