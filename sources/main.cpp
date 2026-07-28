@@ -24,6 +24,7 @@
 #include "utils/qetsettings.h"
 
 #include <QApplication>
+#include <QDomImplementation>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
@@ -207,6 +208,12 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
+
+	// Refuse invalid data when building QDom documents instead of
+	// serializing malformed XML (CVE-2026-15037). This is the default
+	// from Qt 6.12 on; opt in explicitly for older Qt 5/6.
+	QDomImplementation::setInvalidDataPolicy(
+		QDomImplementation::ReturnNullNode);
 	//Creation and execution of the application
 	//HighDPI
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
