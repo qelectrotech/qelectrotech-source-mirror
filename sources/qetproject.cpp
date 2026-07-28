@@ -1914,21 +1914,17 @@ void QETProject::writeBackup()
 {
 	if (!m_backup_enabled)
 		return;
-#	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 		//Don't launch a new backup while the previous one is still writing:
 		//both would write through &m_backup_file on different threads.
 	if (m_backup_future.isRunning())
 		return;
+		//Capture the document by value (implicitly shared, so cheap): the
+		//Qt5-style QtConcurrent::run(function, reference-args) call did not
+		//survive the Qt6 API change, a lambda behaves identically on both.
 	QDomDocument xml_project(toXml());
-	m_backup_future = QtConcurrent::run(
-				QET::writeToFile,xml_project,&m_backup_file,nullptr);
-#	else
-#		if TODO_LIST
-#			pragma message("@TODO remove code for QT 6 or later")
-#		endif
-	qDebug() << "Help code for QT 6 or later"
-			 << "QtConcurrent::run its backwards now...function, object, args";
-#	endif
+	m_backup_future = QtConcurrent::run([this, xml_project]() mutable {
+		return QET::writeToFile(xml_project, &m_backup_file, nullptr);
+	});
 }
 
 /**
