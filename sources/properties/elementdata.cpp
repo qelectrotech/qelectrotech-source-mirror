@@ -835,6 +835,8 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 			if (!xml_names.isNull()) {
 				for (const auto &xml_col : QETXML::findInDomElement(xml_names, QStringLiteral("column"))) {
 					int index = xml_col.attribute(QStringLiteral("index")).toInt();
+					if (index < 0 || index >= 5)
+						continue;
 					while (m_plc_master_data.columnNames.size() <= index)
 						m_plc_master_data.columnNames.append(QString());
 					m_plc_master_data.columnNames[index] = xml_col.text();
@@ -846,6 +848,8 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 			if (!xml_order.isNull()) {
 				QStringList parts = xml_order.text().split(',');
 				for (const auto &p : parts) {
+					if (m_plc_master_data.columnOrder.size() >= 5)
+						break;
 					bool ok;
 					int val = p.trimmed().toInt(&ok);
 					if (ok)
@@ -861,6 +865,8 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 			// Parse IO entries
 			auto xml_ios = xml_plc.firstChildElement(QStringLiteral("plcIOs"));
 			for (const auto &xml_io : QETXML::findInDomElement(xml_ios, QStringLiteral("plcIO"))) {
+				if (m_plc_master_data.ios.size() >= 128)
+					break;
 				PlcIO io;
 				io.type = plcIOTypeFromString(
 					xml_io.attribute(QStringLiteral("type"), QStringLiteral("entree_digitale")));
