@@ -1295,6 +1295,13 @@ QString QETApp::languagesPath()
 			if (QDir(sibling_of_bin).exists())
 				return(sibling_of_bin);
 		}
+		// Running straight from a build directory: the build emits the
+		// qet_*.qm right next to the binary (no "lang" subfolder). Use the
+		// binary's own folder when the compiled translations sit there, so
+		// a dev build runs localized without first assembling a lang/
+		// folder.
+		if (QDir(bin_dir).exists(QStringLiteral("qet_en.qm")))
+			return(bin_dir + "/");
 		return(next_to_bin);
 	}
 #else
@@ -1304,7 +1311,18 @@ QString QETApp::languagesPath()
 		 * l'option de compilation represente
 		 *  un chemin absolu ou relatif classique
 		 */
-		return(resolveConfiguredDataPath(QUOTE(QET_LANG_PATH)));
+	{
+		const QString configured =
+			resolveConfiguredDataPath(QUOTE(QET_LANG_PATH));
+		if (QDir(configured).exists())
+			return(configured);
+		// Same build-directory fallback as above: nothing configured
+		// exists, but the freshly compiled qet_*.qm sit beside the binary.
+		const QString bin_dir = QCoreApplication::applicationDirPath();
+		if (QDir(bin_dir).exists(QStringLiteral("qet_en.qm")))
+			return(bin_dir + "/");
+		return(configured);
+	}
 	#else
 		/* the compilation option represents a path relative
 		 *  to the folder containing the executable binary
