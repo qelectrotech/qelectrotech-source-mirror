@@ -221,12 +221,12 @@ void AddTableDialog::saveConfig()
 		header_object.insert("margins", QETUtils::marginsToString(this->headerMargins()));
 		auto me = QMetaEnum::fromType<Qt::Alignment>();
 		header_object.insert("alignment", me.valueToKey(int(this->headerAlignment())));
-		header_object.insert("font", this->headerFont().toString());
+		header_object.insert("font", QETUtils::fontToString(this->headerFont()));
 
 		QJsonObject table_object;
 		table_object.insert("margins", QETUtils::marginsToString(this->tableMargins()));
 		table_object.insert("alignment", me.valueToKey(int(this->tableAlignment())));
-		table_object.insert("font", this->tableFont().toString());
+		table_object.insert("font", QETUtils::fontToString(this->tableFont()));
 
 		QJsonObject config_object;
 		config_object.insert("header", header_object);

@@ -17,6 +17,8 @@
 */
 #include "terminaldata.h"
 
+#include "../utils/qetutils.h"
+
 #include <QGraphicsObject>
 
 #include <QDebug>
@@ -115,7 +117,7 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 		xml_element.setAttribute("show_name", "true");
 		xml_element.setAttribute("label_x", QString::number(m_label_pos.x()));
 		xml_element.setAttribute("label_y", QString::number(m_label_pos.y()));
-		xml_element.setAttribute("label_font", m_label_font.toString());
+		xml_element.setAttribute("label_font", QETUtils::fontToString(m_label_font));
 		xml_element.setAttribute("label_rotation", QString::number(m_label_rotation));
 		xml_element.setAttribute("label_halign", static_cast<int>(m_label_halignment));
 		xml_element.setAttribute("label_valign", static_cast<int>(m_label_valignment));

@@ -150,3 +150,59 @@ void QETUtils::pixelSizedFont(QFont &font)
     auto px = font.pointSizeF()/72 * QFontMetrics{font}.fontDpi();
     font.setPixelSize(qRound(px));
 }
+
+/**
+ * @brief QETUtils::fontToString
+ * Serialize a font to the 10/11 field description format written by Qt 5,
+ * to be used instead of QFont::toString() everywhere a font description is
+ * stored in a project, element or settings file.
+ * The format of QFont::toString() is not stable across Qt versions : Qt 6.11
+ * switched to a 19 field format carrying OpenType weights, which
+ * QFont::fromString() of Qt 5.x and Qt <= 6.10 rejects, leaving a broken font.
+ * The 10/11 field form is parsed correctly by every Qt version (they convert
+ * the legacy weight scale as needed), so composing it ourselves keeps files
+ * readable by every QET build in circulation.
+ * See @link https://github.com/qelectrotech/qelectrotech-source-mirror/issues/553 @endlink
+ * @param font
+ * @return the font description string
+ */
+QString QETUtils::fontToString(const QFont &font)
+{
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	return font.toString();
+#else
+		//Legacy (Qt 5) weight <- OpenType weight, closest match,
+		//same table Qt uses when parsing a 10/11 field string.
+	static const int weight_map[9][2] = {
+		{0, 100}, {12, 200}, {25, 300}, {50, 400}, {57, 500},
+		{63, 600}, {75, 700}, {81, 800}, {87, 900}
+	};
+	const int weight = font.weight();
+	int legacy_weight = weight_map[0][0];
+	int closest_diff = qAbs(weight - weight_map[0][1]);
+	for (int i = 1 ; i < 9 ; ++i)
+	{
+		const int diff = qAbs(weight - weight_map[i][1]);
+		if (diff < closest_diff) {
+			closest_diff = diff;
+			legacy_weight = weight_map[i][0];
+		}
+	}
+
+	const QChar comma(QLatin1Char(','));
+	QString description = font.family() + comma +
+		QString::number(font.pointSizeF()) + comma +
+		QString::number(font.pixelSize()) + comma +
+		QString::number(int(font.styleHint())) + comma +
+		QString::number(legacy_weight) + comma +
+		QString::number(int(font.style())) + comma +
+		QString::number(int(font.underline())) + comma +
+		QString::number(int(font.strikeOut())) + comma +
+		QString::number(int(font.fixedPitch())) + comma +
+		QString::number(0);
+	if (!font.styleName().isEmpty()) {
+		description += QChar(',') + font.styleName();
+	}
+	return description;
+#endif
+}

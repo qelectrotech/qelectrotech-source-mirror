@@ -21,6 +21,7 @@
 #include "../../qeticons.h"
 #include "ui_generalconfigurationpage.h"
 #include "../../utils/qetsettings.h"
+#include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
 #include <QFileDialog>
 #include <QFontDialog>
@@ -459,7 +460,7 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
-		settings.setValue("diagrameditor/dynamic_text_font", font.toString());
+		settings.setValue("diagrameditor/dynamic_text_font", QETUtils::fontToString(font));
 		QString fontInfos = font.family() + " " +
 							QString::number(font.pointSize()) + " (" +
 							font.styleName() + ")";
@@ -563,7 +564,7 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
-		settings.setValue("diagrameditor/independent_text_font", font.toString());
+		settings.setValue("diagrameditor/independent_text_font", QETUtils::fontToString(font));
 		QString fontInfos = font.family() + " " +
 							QString::number(font.pointSize()) + " (" +
 							font.styleName() + ")";

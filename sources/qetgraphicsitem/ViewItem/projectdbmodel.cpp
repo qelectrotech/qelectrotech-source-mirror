@@ -22,6 +22,7 @@
 #include "../../qetinformation.h"
 #include "../../qetproject.h"
 #include "../../qetxml.h"
+#include "../../utils/qetutils.h"
 
 #include <QSqlError>
 #include <QSqlRecord>
@@ -252,7 +253,7 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 	
 	//Add index 0,0 data
 	auto index_00 = document.createElement("index00");
-	index_00.setAttribute("font", m_index_0_0_data.value(Qt::FontRole).toString());
+	index_00.setAttribute("font", QETUtils::fontToString(m_index_0_0_data.value(Qt::FontRole).value<QFont>()));
 	auto me = QMetaEnum::fromType<Qt::Alignment>();
 	index_00.setAttribute("alignment", me.valueToKey(m_index_0_0_data.value(Qt::TextAlignmentRole).toInt()));
 	dom_element.appendChild(index_00);
