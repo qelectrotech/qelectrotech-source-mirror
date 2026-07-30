@@ -22,6 +22,7 @@
 #include "../autoNum/ui/folioautonumbering.h"
 #include "../autoNum/ui/formulaautonumberingw.h"
 #include "../autoNum/ui/selectautonumw.h"
+#include "../project/projectpropertieshandler.h"
 #include "../qeticons.h"
 #include "../qetproject.h"
 #include "../borderpropertieswidget.h"
@@ -161,6 +162,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		m_project -> setProjectProperties(new_properties);
 		modified_project = true;
 	}
+
+	ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
+	if (usage_tracker.isEnabled() != usage_enabled_cb_ -> isChecked()) {
+		usage_tracker.setEnabled(usage_enabled_cb_ -> isChecked());
+		modified_project = true;
+	}
+
 	if (modified_project) {
 		m_project -> setModified(true);
 	}
@@ -191,6 +199,12 @@ void ProjectMainConfigPage::initWidgets()
 	project_variables_label_ -> setWordWrap(true);
 	project_variables_ = new DiagramContextWidget();
 	project_variables_ -> setContext(DiagramContext());
+
+	usage_label_ = new QLabel(tr("Temps passé sur ce projet :", "label when configuring"));
+	usage_value_ = new QLabel();
+	usage_enabled_cb_ = new QCheckBox(tr("Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)", "checkbox label"));
+	usage_reset_pb_ = new QPushButton(tr("Réinitialiser", "button label"));
+	connect(usage_reset_pb_, &QPushButton::clicked, this, &ProjectMainConfigPage::resetUsageTracker);
 }
 
 /**
@@ -207,6 +221,16 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addSpacing(10);
 	main_layout0 -> addWidget(project_variables_label_);
 	main_layout0 -> addWidget(project_variables_);
+	main_layout0 -> addSpacing(10);
+
+	QHBoxLayout *usage_layout0 = new QHBoxLayout();
+	usage_layout0 -> addWidget(usage_label_);
+	usage_layout0 -> addWidget(usage_value_);
+	usage_layout0 -> addStretch();
+	usage_layout0 -> addWidget(usage_reset_pb_);
+	main_layout0 -> addLayout(usage_layout0);
+	main_layout0 -> addWidget(usage_enabled_cb_);
+
 	setLayout(main_layout0);
 	this -> setMinimumWidth(680);
 
@@ -219,6 +243,27 @@ void ProjectMainConfigPage::readValuesFromProject()
 {
 	title_value_ -> setText(m_project -> title());
 	project_variables_ -> setContext(m_project -> projectProperties());
+
+	const ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
+	const qint64 total_seconds = usage_tracker.secondsSpent();
+	usage_value_ -> setText(tr("%1 h %2 min", "hours and minutes of time spent on a project")
+							 .arg(total_seconds / 3600)
+							 .arg((total_seconds % 3600) / 60));
+	usage_enabled_cb_ -> setChecked(usage_tracker.isEnabled());
+}
+
+/**
+	@brief ProjectMainConfigPage::resetUsageTracker
+	Reset the accumulated "time spent on this project" counter to zero and
+	refresh its displayed value. Applies immediately (not staged behind
+	OK/Cancel like the other fields on this page), since it isn't
+	destructive to any actual project content.
+*/
+void ProjectMainConfigPage::resetUsageTracker()
+{
+	m_project -> projectPropertiesHandler().usageTracker().resetSecondsSpent();
+	m_project -> setModified(true);
+	usage_value_ -> setText(tr("%1 h %2 min", "hours and minutes of time spent on a project").arg(0).arg(0));
 }
 
 /**
@@ -229,6 +274,8 @@ void ProjectMainConfigPage::adjustReadOnly()
 {
 	bool is_read_only = m_project -> isReadOnly();
 	title_value_ -> setReadOnly(is_read_only);
+	usage_enabled_cb_ -> setDisabled(is_read_only);
+	usage_reset_pb_ -> setDisabled(is_read_only);
 }
 
 //######################################################################################//

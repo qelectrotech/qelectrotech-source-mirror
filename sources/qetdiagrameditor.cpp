@@ -29,6 +29,9 @@
 #include "elementspanelwidget.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
+#include "project/projectpropertieshandler.h"
+#include "projectview.h"
+#include "qetproject.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -2466,6 +2469,30 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 	slot_updateActions();
 	slot_updateWindowsMenu();
 	emit syncElementsPanel();
+	updateUsageTrackersActiveState();
+}
+
+/**
+	@brief QETDiagramEditor::updateUsageTrackersActiveState
+	Mark the currently active project's usage tracker (time spent on this
+	project) as active, and every other opened project's tracker as
+	inactive. Called whenever the current MDI subwindow changes.
+
+	Known limitation: this only accounts for tab switches within this
+	QETDiagramEditor window. If the same project were ever shown as the
+	active tab in two different windows at once, its tracked time could be
+	double-counted -- today QETApp only ever gives a project one ProjectView,
+	so this doesn't happen in practice.
+*/
+void QETDiagramEditor::updateUsageTrackersActiveState()
+{
+	QETProject *active_project = currentProject();
+	const QList<ProjectView *> project_views = openedProjects();
+	for (ProjectView *project_view : project_views) {
+		if (QETProject *project = project_view->project()) {
+			project->projectPropertiesHandler().usageTracker().setActive(project == active_project);
+		}
+	}
 }
 
 /**

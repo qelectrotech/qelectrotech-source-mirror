@@ -251,9 +251,11 @@ class QETProject : public QObject
 		void readProjectPropertiesXml(QDomDocument &xml_project);
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
 		void readTerminalStripXml(const QDomDocument &xml_project);
+		void readUsageXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
+		void writeUsageXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
 		void writeBackup();
 		void init();

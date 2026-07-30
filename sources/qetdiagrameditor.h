@@ -97,6 +97,7 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *findProject(QETProject *) const;
 		ProjectView *findProject(const QString &) const;
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
+		void updateUsageTrackersActiveState();
 
 	signals:
 		void syncElementsPanel();
