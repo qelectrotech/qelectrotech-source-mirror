@@ -163,7 +163,7 @@ void DynamicTextFieldEditor::updateForm()
 			}
 		}
 
-		on_m_text_from_cb_activated(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
+		updateTextFromWidgetsEnabled(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
 	}
 }
 
@@ -327,7 +327,16 @@ void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
+/**
+	@brief DynamicTextFieldEditor::updateTextFromWidgetsEnabled
+	Enable the widget matching @p index (the "text from" combo box's current
+	index) and disable the other two. Purely cosmetic: called both from the
+	real user-activated slot below and from updateForm() when the form is
+	(re)filled for a part/selection, so it must never touch m_parts's data —
+	see on_m_text_from_cb_activated() for the part-mutating counterpart.
+*/
+void DynamicTextFieldEditor::updateTextFromWidgetsEnabled(int index)
+{
 	ui -> m_user_text_le -> setDisabled(true);
 	ui -> m_elmt_info_cb -> setDisabled(true);
 	ui -> m_composite_text_pb -> setDisabled(true);
@@ -341,6 +350,10 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
 	else {
 		ui->m_composite_text_pb->setEnabled(true);
 	}
+}
+
+void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
+	updateTextFromWidgetsEnabled(index);
 
 	DynamicElementTextItem::TextFrom tf;
 	if(index == 0) {
