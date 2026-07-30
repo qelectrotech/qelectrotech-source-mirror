@@ -52,6 +52,7 @@ class DynamicTextFieldEditor : public ElementItemEditor {
 		void fillInfoComboBox();
 		void setUpConnections();
 		void disconnectConnections();
+			void updateTextFromWidgetsEnabled(int index);
 
 	private slots:
 		void on_m_x_sb_editingFinished();
