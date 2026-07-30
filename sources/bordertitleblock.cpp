@@ -898,9 +898,13 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 		const DiagramContext &initial_context) {
 	// Our final DiagramContext is the initial one (which is supposed to bring
 	// project-wide properties), overridden by the "additional fields" one...
+	// An empty page-level value means the variable was auto-added to the
+	// folio's Custom tab (#495) but never actually set by the user, so it
+	// must not shadow a real project-level value of the same name (#531).
 	DiagramContext context = initial_context;
 	foreach (QString key, additional_fields_.keys()) {
-		context.addValue(key, additional_fields_[key]);
+		if (!additional_fields_[key].toString().isEmpty())
+			context.addValue(key, additional_fields_[key]);
 	}
 
 	// ... overridden by the historical and/or dynamically generated fields
