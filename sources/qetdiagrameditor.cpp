@@ -653,6 +653,8 @@ void QETDiagramEditor::setUpActions()
 	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll,      tr("Tout sélectionner") );
 	QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
 	QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Inverser la sélection") );
+	QAction *select_all_conductors  = m_select_actions_group.addAction( QET::Icons::Conductor,      tr("Sélectionner tous les conducteurs") );
+	QAction *select_all_text_fields = m_select_actions_group.addAction( QET::Icons::PartTextField,  tr("Sélectionner tous les champs de texte") );
 
 	select_all    ->setShortcut(QKeySequence::SelectAll);
 	select_nothing->setShortcut(QKeySequence::Deselect);
@@ -661,10 +663,14 @@ void QETDiagramEditor::setUpActions()
 	select_all    ->setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip") );
 	select_nothing->setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip") );
 	select_invert ->setStatusTip( tr("Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés", "status bar tip") );
+	select_all_conductors ->setStatusTip( tr("Sélectionne tous les conducteurs du folio, désélectionne le reste", "status bar tip") );
+	select_all_text_fields->setStatusTip( tr("Sélectionne tous les champs de texte du folio, désélectionne le reste", "status bar tip") );
 
 	select_all    ->setData("select_all");
 	select_nothing->setData("deselect");
 	select_invert ->setData("invert_selection");
+	select_all_conductors ->setData("select_all_conductors");
+	select_all_text_fields->setData("select_all_text_fields");
 
 	connect(&m_select_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectGroupTriggered);
 
@@ -1444,6 +1450,10 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 		diagram->deselectAll();
 	else if (value == "invert_selection")
 		diagram->invertSelection();
+	else if (value == "select_all_conductors")
+		diagram->selectAllConductors();
+	else if (value == "select_all_text_fields")
+		diagram->selectAllTextFields();
 }
 
 /**
