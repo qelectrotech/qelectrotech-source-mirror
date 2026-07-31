@@ -40,7 +40,7 @@ class ConductorCreator
 		static void create(Diagram *d, const QPolygonF &polygon);
 		
 	private:
-		void setUpPropertieToUse();
+		bool setUpPropertieToUse();
 		QList<Conductor *> existingPotential();
 		Terminal *hubTerminal();
 		
