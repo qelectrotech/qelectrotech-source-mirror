@@ -188,8 +188,11 @@ class LinkReportPotentialSelector : public AbstractPotentialSelector
 //### END PRIVATE CLASS ###//
 
 
-ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorProperties> list, QWidget *widget)
+ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorProperties> list, QWidget *widget, bool *cancelled)
 {
+	if (cancelled)
+		*cancelled = false;
+
 	if (list.isEmpty()) {
 		return ConductorProperties() ;
 	} else if (list.size() == 1) {
@@ -222,11 +225,25 @@ ConductorProperties PotentialSelectorDialog::chosenProperties(QList<ConductorPro
 		layout.addWidget(b);
 		H.insert(b, cp);
 	}
-	QDialogButtonBox *button_box = new QDialogButtonBox(QDialogButtonBox::Ok, &dialog);
+
+	// Pre-select the first entry: without this, accepting the dialog without
+	// ever touching a radio button silently returned blank properties too,
+	// the same failure mode as the missing Cancel button below.
+	if (!H.isEmpty())
+		H.constBegin().key()->setChecked(true);
+
+	QDialogButtonBox *button_box = new QDialogButtonBox(
+				QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
 	layout.addWidget(button_box);
 	connect(button_box, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(button_box, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
 
-	dialog.exec();
+	if (dialog.exec() != QDialog::Accepted) {
+		if (cancelled)
+			*cancelled = true;
+		return ConductorProperties();
+	}
+
 	for (QRadioButton *b : H.keys()) {
 		if(b->isChecked()) {
 			return H.value(b);
