@@ -19,6 +19,7 @@
 #include "ui_qetelementeditor.h"
 #include "../elementscene.h"
 #include "../../qeticons.h"
+#include "../../shortcutmanager.h"
 #include "../elementview.h"
 #include "../../qetmessagebox.h"
 #include "../../qetapp.h"
@@ -978,32 +979,32 @@ void QETElementEditor::setupActions()
 	m_redo_action = m_elmt_scene -> undoStack().createRedoAction(this, tr("Refaire"));
 	m_undo_action -> setIcon(QET::Icons::EditUndo);
 	m_redo_action -> setIcon(QET::Icons::EditRedo);
-	m_undo_action -> setShortcuts(QKeySequence::Undo);
-	m_redo_action -> setShortcuts(QKeySequence::Redo);
+	ShortcutManager::instance().registerAction(m_undo_action, "elementeditor.undo", tr("Éditeur d'élément"), QKeySequence::Undo);
+	ShortcutManager::instance().registerAction(m_redo_action, "elementeditor.redo", tr("Éditeur d'élément"), QKeySequence::Redo);
 	ui->m_undo_toolbar->addAction(m_undo_action);
 	ui->m_undo_toolbar->addAction(m_redo_action);
 
-	ui->m_new_action              -> setShortcut(QKeySequence::New);
-	ui->m_open_action             -> setShortcut(QKeySequence::Open);
-	ui->m_open_from_file_action   -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
-	ui->m_save_action             -> setShortcut(QKeySequence::Save);
-	ui->m_save_as_file_action     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
-	ui->m_select_all_act          -> setShortcut(QKeySequence::SelectAll);
-	ui->m_deselect_all_action     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_A);
-	ui->m_revert_selection_action -> setShortcut(Qt::CTRL | Qt::Key_I);
-	ui->m_cut_action              -> setShortcut(QKeySequence::Cut);
-	ui->m_copy_action             -> setShortcut(QKeySequence::Copy);
-	ui->m_paste_action            -> setShortcut(QKeySequence::Paste);
-	ui->m_paste_in_area_action    -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_V);
-	ui->m_edit_names_action       -> setShortcut(Qt::CTRL | Qt::Key_E);
-	ui->m_edit_author_action      -> setShortcut(Qt::CTRL | Qt::Key_Y);
+	ShortcutManager::instance().registerAction(ui->m_new_action, "elementeditor.new", tr("Éditeur d'élément"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(ui->m_open_action, "elementeditor.open", tr("Éditeur d'élément"), QKeySequence::Open);
+	ShortcutManager::instance().registerAction(ui->m_open_from_file_action, "elementeditor.open_from_file", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	ShortcutManager::instance().registerAction(ui->m_save_action, "elementeditor.save", tr("Éditeur d'élément"), QKeySequence::Save);
+	ShortcutManager::instance().registerAction(ui->m_save_as_file_action, "elementeditor.save_as_file", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	ShortcutManager::instance().registerAction(ui->m_select_all_act, "elementeditor.select_all", tr("Éditeur d'élément"), QKeySequence::SelectAll);
+	ShortcutManager::instance().registerAction(ui->m_deselect_all_action, "elementeditor.deselect_all", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_A);
+	ShortcutManager::instance().registerAction(ui->m_revert_selection_action, "elementeditor.revert_selection", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_I);
+	ShortcutManager::instance().registerAction(ui->m_cut_action, "elementeditor.cut", tr("Éditeur d'élément"), QKeySequence::Cut);
+	ShortcutManager::instance().registerAction(ui->m_copy_action, "elementeditor.copy", tr("Éditeur d'élément"), QKeySequence::Copy);
+	ShortcutManager::instance().registerAction(ui->m_paste_action, "elementeditor.paste", tr("Éditeur d'élément"), QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(ui->m_paste_in_area_action, "elementeditor.paste_in_area", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+	ShortcutManager::instance().registerAction(ui->m_edit_names_action, "elementeditor.edit_names", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_E);
+	ShortcutManager::instance().registerAction(ui->m_edit_author_action, "elementeditor.edit_author", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Y);
 
 #ifdef Q_OS_MAC
-	ui->m_delete_action -> setShortcut(Qt::Key_Backspace);
-	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_W);
+	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Éditeur d'élément"), Qt::Key_Backspace);
+	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_W);
 #else
-	ui->m_delete_action -> setShortcut(Qt::Key_Delete);
-	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_Q);
+	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Éditeur d'élément"), Qt::Key_Delete);
+	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Q);
 #endif
 
 		//Depth action
@@ -1019,27 +1020,27 @@ void QETElementEditor::setupActions()
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
 		//Rotate action
-	ui->m_rotate_action -> setShortcut(Qt::Key_Space);
+	ShortcutManager::instance().registerAction(ui->m_rotate_action, "elementeditor.rotate", tr("Éditeur d'élément"), Qt::Key_Space);
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
 		//Rotate Fine action = rotate with smaller inkrement
-	ui->m_rotateFine_action -> setShortcut(Qt::CTRL | Qt::Key_Space);
+	ShortcutManager::instance().registerAction(ui->m_rotateFine_action, "elementeditor.rotate_fine", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Space);
 	connect(ui->m_rotateFine_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateFineElementsCommand(this->elementScene()));});
 
 		//Flip action
-	ui->m_flip_action -> setShortcut(Qt::Key_F);
+	ShortcutManager::instance().registerAction(ui->m_flip_action, "elementeditor.flip", tr("Éditeur d'élément"), Qt::Key_F);
 	connect(ui->m_flip_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new FlipElementsCommand(this->elementScene()));});
 
 		//Mirror action
-	ui->m_mirror_action -> setShortcut(Qt::Key_M);
+	ShortcutManager::instance().registerAction(ui->m_mirror_action, "elementeditor.mirror", tr("Éditeur d'élément"), Qt::Key_M);
 	connect(ui->m_mirror_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new MirrorElementsCommand(this->elementScene()));});
 
 
 		//Zoom action
-	ui->m_zoom_in_action       -> setShortcut(QKeySequence::ZoomIn);
-	ui->m_zoom_out_action      -> setShortcut(QKeySequence::ZoomOut);
-	ui->m_zoom_fit_best_action -> setShortcut(Qt::CTRL | Qt::Key_9);
-	ui->m_zoom_original_action -> setShortcut(Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(ui->m_zoom_in_action, "elementeditor.zoom_in", tr("Éditeur d'élément"), QKeySequence::ZoomIn);
+	ShortcutManager::instance().registerAction(ui->m_zoom_out_action, "elementeditor.zoom_out", tr("Éditeur d'élément"), QKeySequence::ZoomOut);
+	ShortcutManager::instance().registerAction(ui->m_zoom_fit_best_action, "elementeditor.zoom_fit_best", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_9);
+	ShortcutManager::instance().registerAction(ui->m_zoom_original_action, "elementeditor.zoom_original", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_0);
 
 		//Add primitive actions
 	m_add_part_action_grp = new QActionGroup(this);

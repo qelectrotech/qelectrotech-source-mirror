@@ -38,6 +38,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "recentfiles.h"
+#include "shortcutmanager.h"
 #include "ui/bomexportdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
 #include "ui/backupdialog.h"
@@ -275,7 +276,7 @@ void QETDiagramEditor::setUpActions()
 {
 		//Export to another file type (jpeg, dxf etc...)
 	m_export_to_images = new QAction(QET::Icons::DocumentExport,  tr("E&xporter"), this);
-	m_export_to_images->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_X);
+	ShortcutManager::instance().registerAction(m_export_to_images, "diagrameditor.export_to_images", tr("Éditeur de schémas"), Qt::CTRL | Qt::SHIFT | Qt::Key_X);
 	m_export_to_images->setStatusTip(tr("Exporte le folio courant dans un autre format", "status bar tip"));
 	connect(m_export_to_images, &QAction::triggered, [this]() {
 		ProjectView *current_project = currentProjectView();
@@ -286,7 +287,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Print
 	m_print = new QAction(QET::Icons::DocumentPrint,   tr("Imprimer"),  this);
-	m_print->setShortcut(QKeySequence::Print);
+	ShortcutManager::instance().registerAction(m_print, "diagrameditor.print", tr("Éditeur de schémas"), QKeySequence::Print);
 	m_print->setStatusTip(tr("Imprime un ou plusieurs folios du projet courant", "status bar tip"));
 	connect(m_print, &QAction::triggered, [this]() {
 		auto project = currentProject();
@@ -307,19 +308,19 @@ void QETDiagramEditor::setUpActions()
 
 		//Quit editor
 	m_quit_editor = new QAction(QET::Icons::ApplicationExit, tr("&Quitter"),  this);
-	m_quit_editor->setShortcut(Qt::CTRL | Qt::Key_Q);
+	ShortcutManager::instance().registerAction(m_quit_editor, "diagrameditor.quit", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Q);
 	m_quit_editor->setStatusTip(tr("Ferme l'application QElectroTech", "status bar tip"));
 	connect(m_quit_editor, &QAction::triggered, this, &QETDiagramEditor::close);
 
 		//Undo
 	undo = undo_group.createUndoAction(this, tr("Annuler"));
 	undo->setIcon(QET::Icons::EditUndo);
-	undo->setShortcut(QKeySequence::Undo);
+	ShortcutManager::instance().registerAction(undo, "diagrameditor.undo", tr("Éditeur de schémas"), QKeySequence::Undo);
 	undo->setStatusTip(tr("Annule l'action précédente", "status bar tip"));
 		//Redo
 	redo = undo_group.createRedoAction(this, tr("Refaire"));
 	redo->setIcon(QET::Icons::EditRedo);
-	redo->setShortcut(QKeySequence::Redo);
+	ShortcutManager::instance().registerAction(redo, "diagrameditor.redo", tr("Éditeur de schémas"), QKeySequence::Redo);
 	redo->setStatusTip(tr("Restaure l'action annulée", "status bar tip"));
 
 		//cut copy past
@@ -327,9 +328,9 @@ void QETDiagramEditor::setUpActions()
 	m_copy  = new QAction(QET::Icons::EditCopy,  tr("Cop&ier"), this);
 	m_paste = new QAction(QET::Icons::EditPaste, tr("C&oller"), this);
 
-	m_cut   -> setShortcut(QKeySequence::Cut);
-	m_copy  -> setShortcut(QKeySequence::Copy);
-	m_paste -> setShortcut(QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(m_cut, "diagrameditor.cut", tr("Éditeur de schémas"), QKeySequence::Cut);
+	ShortcutManager::instance().registerAction(m_copy, "diagrameditor.copy", tr("Éditeur de schémas"), QKeySequence::Copy);
+	ShortcutManager::instance().registerAction(m_paste, "diagrameditor.paste", tr("Éditeur de schémas"), QKeySequence::Paste);
 
 	m_cut   -> setStatusTip(tr("Transfère les éléments sélectionnés dans le presse-papier", "status bar tip"));
 	m_copy  -> setStatusTip(tr("Copie les éléments sélectionnés dans le presse-papier", "status bar tip"));
@@ -350,7 +351,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Reset conductor path
 	m_conductor_reset = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
-	m_conductor_reset->setShortcut(Qt::CTRL | Qt::Key_K);
+	ShortcutManager::instance().registerAction(m_conductor_reset, "diagrameditor.conductor_reset", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_K);
 	m_conductor_reset->setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	connect(m_conductor_reset, &QAction::triggered, [this]() {
 		if (DiagramView *dv = currentDiagramView())
@@ -404,7 +405,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Edit current diagram properties
 	m_edit_diagram_properties = new QAction(QET::Icons::DialogInformation, tr("Propriétés du folio"), this);
-	m_edit_diagram_properties->setShortcut(Qt::CTRL | Qt::Key_L);
+	ShortcutManager::instance().registerAction(m_edit_diagram_properties, "diagrameditor.edit_diagram_properties", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_L);
 	m_edit_diagram_properties     -> setStatusTip(tr("Édite les propriétés du folio (dimensions, informations du cartouche, propriétés des conducteurs...)", "status bar tip"));
 	connect(m_edit_diagram_properties, &QAction::triggered, [this]() {
 		if (ProjectView *project_view = currentProjectView())
@@ -422,7 +423,7 @@ void QETDiagramEditor::setUpActions()
 
 		//Add new folio to current project
 	m_project_add_diagram = new QAction(QET::Icons::DiagramAdd, tr("Ajouter un folio"), this);
-	m_project_add_diagram->setShortcut(Qt::CTRL | Qt::Key_T);
+	ShortcutManager::instance().registerAction(m_project_add_diagram, "diagrameditor.project_add_diagram", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_T);
 	connect(m_project_add_diagram, &QAction::triggered, [this]() {
 		if (ProjectView *current_project = currentProjectView()) {
 			current_project->project()->addNewDiagram();
@@ -566,12 +567,12 @@ void QETDiagramEditor::setUpActions()
 
 		//Navigate next/previous project
 	m_next_window = new QAction(tr("Projet suivant"), this);
-	m_next_window->setShortcut(QKeySequence::NextChild);
+	ShortcutManager::instance().registerAction(m_next_window, "diagrameditor.next_window", tr("Éditeur de schémas"), QKeySequence::NextChild);
 	m_next_window->setStatusTip(tr("Active le projet suivant", "status bar tip"));
 	connect(m_next_window, &QAction::triggered, &m_workspace, &QMdiArea::activateNextSubWindow);
 
 	m_previous_window = new QAction(tr("Projet précédent"), this);
-	m_previous_window->setShortcut(QKeySequence::PreviousChild);
+	ShortcutManager::instance().registerAction(m_previous_window, "diagrameditor.previous_window", tr("Éditeur de schémas"), QKeySequence::PreviousChild);
 	m_previous_window->setStatusTip(tr("Active le projet précédent", "status bar tip"));
 	connect(m_previous_window, &QAction::triggered, &m_workspace, &QMdiArea::activatePreviousSubWindow);
 
@@ -582,11 +583,11 @@ void QETDiagramEditor::setUpActions()
 	m_save_file_as     = m_file_actions_group.addAction(QET::Icons::DocumentSaveAs, tr("Enregistrer sous"));
 	m_close_file       = m_file_actions_group.addAction(QET::Icons::ProjectClose,   tr("&Fermer"));
 
-	new_file     ->setShortcut(QKeySequence::New);
-	open_file    ->setShortcut(QKeySequence::Open);
-	m_close_file ->setShortcut(QKeySequence::Close);
-	m_save_file    ->setShortcut(QKeySequence::Save);
-	m_save_file_as  ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	ShortcutManager::instance().registerAction(new_file, "diagrameditor.new_file", tr("Éditeur de schémas"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(open_file, "diagrameditor.open_file", tr("Éditeur de schémas"), QKeySequence::Open);
+	ShortcutManager::instance().registerAction(m_close_file, "diagrameditor.close_file", tr("Éditeur de schémas"), QKeySequence::Close);
+	ShortcutManager::instance().registerAction(m_save_file, "diagrameditor.save_file", tr("Éditeur de schémas"), QKeySequence::Save);
+	ShortcutManager::instance().registerAction(m_save_file_as, "diagrameditor.save_file_as", tr("Éditeur de schémas"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
 
 	new_file     ->setStatusTip( tr("Crée un nouveau projet", "status bar tip") );
 	open_file    ->setStatusTip( tr("Ouvre un projet existant", "status bar tip") );
@@ -630,10 +631,10 @@ void QETDiagramEditor::setUpActions()
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
 	m_group_selected_texts = m_selection_actions_group.addAction( QET::Icons::textGroup,         tr("Grouper les textes sélectionnés"));
 
-	m_delete_selection->setShortcut(Qt::Key_Delete);
-	m_rotate_selection->setShortcut(Qt::Key_Space);
-	m_rotate_texts    ->setShortcut(Qt::CTRL | Qt::Key_Space);
-	m_edit_selection  ->setShortcut(Qt::CTRL | Qt::Key_E);
+	ShortcutManager::instance().registerAction(m_delete_selection, "diagrameditor.delete_selection", tr("Éditeur de schémas"), Qt::Key_Delete);
+	ShortcutManager::instance().registerAction(m_rotate_selection, "diagrameditor.rotate_selection", tr("Éditeur de schémas"), Qt::Key_Space);
+	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
+	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
@@ -654,9 +655,9 @@ void QETDiagramEditor::setUpActions()
 	QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
 	QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Inverser la sélection") );
 
-	select_all    ->setShortcut(QKeySequence::SelectAll);
-	select_nothing->setShortcut(QKeySequence::Deselect);
-	select_invert ->setShortcut(Qt::CTRL | Qt::Key_I);
+	ShortcutManager::instance().registerAction(select_all, "diagrameditor.select_all", tr("Éditeur de schémas"), QKeySequence::SelectAll);
+	ShortcutManager::instance().registerAction(select_nothing, "diagrameditor.select_nothing", tr("Éditeur de schémas"), QKeySequence::Deselect);
+	ShortcutManager::instance().registerAction(select_invert, "diagrameditor.select_invert", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_I);
 
 	select_all    ->setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip") );
 	select_nothing->setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip") );
@@ -676,11 +677,11 @@ void QETDiagramEditor::setUpActions()
 	QAction *zoom_reset   = m_zoom_actions_group.addAction( QET::Icons::ZoomOriginal, tr("Pas de zoom"));
 	m_zoom_action_toolBar << zoom_content << zoom_fit << zoom_reset;
 
-	zoom_in     ->setShortcut(QKeySequence::ZoomIn);
-	zoom_out    ->setShortcut(QKeySequence::ZoomOut);
-	zoom_content->setShortcut(Qt::CTRL | Qt::Key_8);
-	zoom_fit    ->setShortcut(Qt::CTRL | Qt::Key_9);
-	zoom_reset  ->setShortcut(Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(zoom_in, "diagrameditor.zoom_in", tr("Éditeur de schémas"), QKeySequence::ZoomIn);
+	ShortcutManager::instance().registerAction(zoom_out, "diagrameditor.zoom_out", tr("Éditeur de schémas"), QKeySequence::ZoomOut);
+	ShortcutManager::instance().registerAction(zoom_content, "diagrameditor.zoom_content", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_8);
+	ShortcutManager::instance().registerAction(zoom_fit, "diagrameditor.zoom_fit", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_9);
+	ShortcutManager::instance().registerAction(zoom_reset, "diagrameditor.zoom_reset", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_0);
 
 	zoom_in     ->setStatusTip(tr("Agrandit le folio", "status bar tip"));
 	zoom_out    ->setStatusTip(tr("Rétrécit le folio", "status bar tip"));
@@ -738,7 +739,7 @@ void QETDiagramEditor::setUpActions()
 	});
 
 	m_find = new QAction(tr("Chercher/remplacer"), this);
-	m_find->setShortcut(QKeySequence::Find);
+	ShortcutManager::instance().registerAction(m_find, "diagrameditor.find", tr("Éditeur de schémas"), QKeySequence::Find);
 	connect(m_find, &QAction::triggered, [this]()
 	{
 		if (auto animator = m_search_and_replace_widget.findChild<QWidgetAnimation *>("search and replace animator")) {

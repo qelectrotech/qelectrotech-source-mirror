@@ -24,6 +24,7 @@
 
 #include "qetmainwindow.h"
 #include "qeticons.h"
+#include "shortcutmanager.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "projectview.h"
@@ -98,7 +99,7 @@ void QETMainWindow::initCommonActions()
 	QDesktopServices::openUrl(QUrl(link));
 	});
 
-	manual_online_ -> setShortcut(Qt::Key_F1);
+	ShortcutManager::instance().registerAction(manual_online_, "mainwindow.manual_online", tr("Général"), Qt::Key_F1);
 
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
@@ -220,7 +221,7 @@ void QETMainWindow::updateFullScreenAction()
 		fullscreen_action_ -> setIcon(QET::Icons::FullScreenEnter);
 		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode plein écran", "status bar tip"));
 	}
-	fullscreen_action_ -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_F);
+	ShortcutManager::instance().registerAction(fullscreen_action_, "mainwindow.fullscreen", tr("Général"), Qt::CTRL | Qt::SHIFT | Qt::Key_F);
 }
 
 /**

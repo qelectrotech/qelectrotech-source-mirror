@@ -22,6 +22,7 @@
 #include "qetapp.h"
 #include "qeticons.h"
 #include "qetproject.h"
+#include "shortcutmanager.h"
 #include "titleblock/templatedeleter.h"
 #include <QFileInfo>
 #include <QMessageBox>
@@ -74,14 +75,14 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce modèle"),              this);
 
 
-	prj_del_diagram -> setShortcut(QKeySequence(Qt::Key_Delete));
-	prj_move_diagram_up -> setShortcut(QKeySequence(Qt::Key_F3));
-	prj_move_diagram_down -> setShortcut(QKeySequence(Qt::Key_F4));
-	prj_move_diagram_top -> setShortcut(QKeySequence(Qt::Key_F5));
-	prj_move_diagram_downx10 -> setShortcut(QKeySequence(Qt::Key_F6));
-	prj_move_diagram_downx100 -> setShortcut(QKeySequence(Qt::Key_F7));
-	prj_move_diagram_upx10 -> setShortcut(QKeySequence(Qt::Key_F8));
-	prj_move_diagram_upx100 -> setShortcut(QKeySequence(Qt::Key_F9));
+	ShortcutManager::instance().registerAction(prj_del_diagram, "panel.delete_diagram", tr("Panneau des éléments"), QKeySequence(Qt::Key_Delete));
+	ShortcutManager::instance().registerAction(prj_move_diagram_up, "panel.move_diagram_up", tr("Panneau des éléments"), QKeySequence(Qt::Key_F3));
+	ShortcutManager::instance().registerAction(prj_move_diagram_down, "panel.move_diagram_down", tr("Panneau des éléments"), QKeySequence(Qt::Key_F4));
+	ShortcutManager::instance().registerAction(prj_move_diagram_top, "panel.move_diagram_top", tr("Panneau des éléments"), QKeySequence(Qt::Key_F5));
+	ShortcutManager::instance().registerAction(prj_move_diagram_downx10, "panel.move_diagram_downx10", tr("Panneau des éléments"), QKeySequence(Qt::Key_F6));
+	ShortcutManager::instance().registerAction(prj_move_diagram_downx100, "panel.move_diagram_downx100", tr("Panneau des éléments"), QKeySequence(Qt::Key_F7));
+	ShortcutManager::instance().registerAction(prj_move_diagram_upx10, "panel.move_diagram_upx10", tr("Panneau des éléments"), QKeySequence(Qt::Key_F8));
+	ShortcutManager::instance().registerAction(prj_move_diagram_upx100, "panel.move_diagram_upx100", tr("Panneau des éléments"), QKeySequence(Qt::Key_F9));
 
 
 
