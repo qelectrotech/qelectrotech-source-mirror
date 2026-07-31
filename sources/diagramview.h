@@ -80,6 +80,7 @@ class DiagramView : public QGraphicsView
 		void keyPressEvent(QKeyEvent *) override;
 		void keyReleaseEvent(QKeyEvent *) override;
 		bool event(QEvent *) override;
+		bool focusNextPrevChild(bool next) override;
 		void paintEvent(QPaintEvent *event) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
