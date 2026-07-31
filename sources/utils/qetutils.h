@@ -33,6 +33,7 @@ namespace QETUtils
 	qreal graphicsHandlerSize(QGraphicsItem *item);
     void pixelSizedFont (QFont &font);
     QString fontToString (const QFont &font);
+    bool fontFromString (QFont &font, const QString &description);
 
 	bool sortBeginIntString(const QString &str_a, const QString &str_b);
 

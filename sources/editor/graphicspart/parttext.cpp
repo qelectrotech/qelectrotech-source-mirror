@@ -126,7 +126,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	}
 	else if (xml_element.hasAttribute("font")) {
 		QFont font_;
-		font_.fromString(xml_element.attribute("font"));
+		QETUtils::fontFromString(font_, xml_element.attribute("font"));
 		setFont(font_);
 	}
 

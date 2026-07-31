@@ -275,7 +275,7 @@ void AddTableDialog::loadConfig()
 		default:
 			ui->m_header_alignment_cb->setCurrentIndex(2);
 	}
-	m_header_font.fromString(header_object.value("font").toString());
+	QETUtils::fontFromString(m_header_font, header_object.value("font").toString());
 	ui->m_header_font_pb->setText(m_header_font.family());
 
 		//Table
@@ -292,7 +292,7 @@ void AddTableDialog::loadConfig()
 		default:
 			ui->m_table_alignment_cb->setCurrentIndex(2);
 	}
-	m_table_font.fromString(table_object.value("font").toString());
+	QETUtils::fontFromString(m_table_font, table_object.value("font").toString());
 	ui->m_table_font_pb->setText(m_table_font.family());
 
 }

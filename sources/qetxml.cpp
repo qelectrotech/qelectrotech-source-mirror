@@ -544,7 +544,7 @@ void QETXML::modelHeaderDataFromXml(
 		else if (role_ == Qt::FontRole)
 		{
 			QFont font;
-			font.fromString(text_);
+			QETUtils::fontFromString(font, text_);
 			data_ = font;
 		}
 		else if (role_ == Qt::TextAlignmentRole)

@@ -188,7 +188,7 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 
 		QString font_str = xml_element.attribute("label_font");
 		if (!font_str.isEmpty())
-			m_label_font.fromString(font_str);
+			QETUtils::fontFromString(m_label_font, font_str);
 
 		m_label_rotation = xml_element.attribute("label_rotation", "0").toDouble();
 

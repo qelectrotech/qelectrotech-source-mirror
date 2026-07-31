@@ -21,6 +21,7 @@
 #include "../editor/graphicspart/partline.h"
 #include "../qetapp.h"
 #include "../qetversion.h"
+#include "../utils/qetutils.h"
 
 #include <QAbstractTextDocumentLayout>
 #include <QDomElement>
@@ -503,7 +504,7 @@ void ElementPictureFactory::parseText(const QDomElement &dom, QPainter &painter,
 		font_ = QETApp::diagramTextsFont(dom.attribute("size").toDouble());
 	}
 	else if (dom.hasAttribute("font")) {
-		font_.fromString(dom.attribute("font"));
+		QETUtils::fontFromString(font_, dom.attribute("font"));
 	}
 
 	QColor text_color(dom.attribute("color", "#000000"));

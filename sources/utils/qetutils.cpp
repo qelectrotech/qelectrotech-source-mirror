@@ -151,6 +151,32 @@ void QETUtils::pixelSizedFont(QFont &font)
     font.setPixelSize(qRound(px));
 }
 
+namespace
+{
+	/**
+	 * Legacy (Qt 5) weight <- OpenType weight, closest match,
+	 * same table Qt uses when parsing a 10/11 field string.
+	 */
+	int legacyFontWeight(const int opentype_weight)
+	{
+		static const int weight_map[9][2] = {
+			{0, 100}, {12, 200}, {25, 300}, {50, 400}, {57, 500},
+			{63, 600}, {75, 700}, {81, 800}, {87, 900}
+		};
+		int legacy_weight = weight_map[0][0];
+		int closest_diff = qAbs(opentype_weight - weight_map[0][1]);
+		for (int i = 1 ; i < 9 ; ++i)
+		{
+			const int diff = qAbs(opentype_weight - weight_map[i][1]);
+			if (diff < closest_diff) {
+				closest_diff = diff;
+				legacy_weight = weight_map[i][0];
+			}
+		}
+		return legacy_weight;
+	}
+}
+
 /**
  * @brief QETUtils::fontToString
  * Serialize a font to the 10/11 field description format written by Qt 5,
@@ -171,23 +197,7 @@ QString QETUtils::fontToString(const QFont &font)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	return font.toString();
 #else
-		//Legacy (Qt 5) weight <- OpenType weight, closest match,
-		//same table Qt uses when parsing a 10/11 field string.
-	static const int weight_map[9][2] = {
-		{0, 100}, {12, 200}, {25, 300}, {50, 400}, {57, 500},
-		{63, 600}, {75, 700}, {81, 800}, {87, 900}
-	};
-	const int weight = font.weight();
-	int legacy_weight = weight_map[0][0];
-	int closest_diff = qAbs(weight - weight_map[0][1]);
-	for (int i = 1 ; i < 9 ; ++i)
-	{
-		const int diff = qAbs(weight - weight_map[i][1]);
-		if (diff < closest_diff) {
-			closest_diff = diff;
-			legacy_weight = weight_map[i][0];
-		}
-	}
+	const int legacy_weight = legacyFontWeight(font.weight());
 
 	const QChar comma(QLatin1Char(','));
 	QString description = font.family() + comma +
@@ -205,4 +215,76 @@ QString QETUtils::fontToString(const QFont &font)
 	}
 	return description;
 #endif
+}
+
+/**
+ * @brief QETUtils::fontFromString
+ * Restore a font from a description string, tolerating descriptions written
+ * by any Qt version. QFont::fromString() of Qt 5.x and Qt <= 6.10 rejects the
+ * >= 19 field format QFont::toString() emits since Qt 6.11 (16 base fields
+ * plus style name, font-feature count and variable-axis count), leaving a
+ * broken font behind. When the native parser fails, salvage such a
+ * description by re-composing the 10/11 field form (OpenType weight mapped
+ * back to the legacy scale) and parsing that instead, so no font information
+ * stored in existing files is lost.
+ * See @link https://github.com/qelectrotech/qelectrotech-source-mirror/issues/553 @endlink
+ * @param font : font to restore into; left untouched on failure, so the
+ * caller's default keeps applying.
+ * @param description : font description string
+ * @return true if the description could be parsed
+ */
+bool QETUtils::fontFromString(QFont &font, const QString &description)
+{
+	QFont parsed(font);
+	if (parsed.fromString(description)) {
+		font = parsed;
+		return true;
+	}
+
+	const QStringList l = description.split(QLatin1Char(','));
+	const int count = l.size();
+	const QChar comma(QLatin1Char(','));
+
+		//16 base fields + style name + feature count + axis count; a family
+		//name containing commas adds leading fields. Descriptions actually
+		//using font features or variable axes append value groups whose
+		//layout we cannot anchor reliably, so only salvage the plain
+		//"...,0,0" case (the only one QET-edited files can contain).
+	if (count >= 19
+		&& l.at(count - 1).trimmed() == QLatin1String("0")
+		&& l.at(count - 2).trimmed() == QLatin1String("0"))
+	{
+		QString legacy = QStringList(l.mid(0, count - 18)).join(comma) + comma + // family
+			l.at(count - 18) + comma +                                       // pointSizeF
+			l.at(count - 17) + comma +                                       // pixelSize
+			l.at(count - 16) + comma +                                       // styleHint
+			QString::number(legacyFontWeight(l.at(count - 15).toInt())) + comma +
+			l.at(count - 14) + comma +                                       // style
+			l.at(count - 13) + comma +                                       // underline
+			l.at(count - 12) + comma +                                       // strikeOut
+			l.at(count - 11) + comma +                                       // fixedPitch
+			QString::number(0);
+		const QString style_name = l.at(count - 3);
+		if (!style_name.isEmpty()) {
+			legacy += comma + style_name;
+		}
+
+		if (parsed.fromString(legacy)) {
+			font = parsed;
+			return true;
+		}
+		return false;
+	}
+
+		//Some historical builds double-serialized fonts, embedding a complete
+		//legacy description as the family name of a second one (21 fields:
+		//"Caladea,9,-1,5,75,1,0,0,0,0,Bold Italic,9,-1,0,50,0,0,0,0,0,Regular").
+		//The embedded leading description carries the real font, and taking it
+		//matches what the lenient parser of Qt 6.11+ resolves such strings to.
+	if (count > 11
+		&& parsed.fromString(QStringList(l.mid(0, 11)).join(comma))) {
+		font = parsed;
+		return true;
+	}
+	return false;
 }

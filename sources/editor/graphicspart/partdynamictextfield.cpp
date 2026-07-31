@@ -215,7 +215,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 
 	if (dom_elmt.hasAttribute("font")) {
 		QFont font_;
-		font_.fromString(dom_elmt.attribute("font"));
+		QETUtils::fontFromString(font_, dom_elmt.attribute("font"));
 		setFont(font_);
 	}
 	else if (dom_elmt.hasAttribute("font_size")) {

@@ -101,7 +101,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if (settings.contains("diagrameditor/dynamic_text_font"))
 	{
 		QFont font;
-		font.fromString(settings.value("diagrameditor/dynamic_text_font").toString());
+		QETUtils::fontFromString(font, settings.value("diagrameditor/dynamic_text_font").toString());
 
 		QString fontInfos = font.family() + " " +
 				QString::number(font.pointSize()) + " (" +
@@ -114,7 +114,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	if (settings.contains("diagrameditor/independent_text_font"))
 	{
 		QFont font;
-		font.fromString(settings.value("diagrameditor/independent_text_font").toString());
+		QETUtils::fontFromString(font, settings.value("diagrameditor/independent_text_font").toString());
 
 		QString fontInfos = font.family() + " " +
 							QString::number(font.pointSize()) + " (" +
@@ -456,7 +456,7 @@ void GeneralConfigurationPage::on_m_dyn_text_font_pb_clicked()
 	bool ok;
 	QSettings settings;
 	QFont curFont;
-	curFont.fromString(settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
+	QETUtils::fontFromString(curFont, settings.value("diagrameditor/dynamic_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
 	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
@@ -560,7 +560,7 @@ void GeneralConfigurationPage::on_m_indi_text_font_pb_clicked()
 	bool ok;
 	QSettings settings;
 	QFont curFont;
-	curFont.fromString(settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
+	QETUtils::fontFromString(curFont, settings.value("diagrameditor/independent_text_font", "Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular").toString());
 	QFont font = QFontDialog::getFont(&ok, curFont, this);
 	if (ok)
 	{
