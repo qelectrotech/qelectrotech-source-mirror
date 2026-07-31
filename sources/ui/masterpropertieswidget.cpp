@@ -978,7 +978,7 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 	ElementData::PlcMasterData plc_data = ed.plcMasterData();
 	plc_data.ios.clear();
 
-	// Read IOs from table
+	// Read IOs from table, preserving terminal data from original IOs
 	for (int row = 0; row < m_plc_table->rowCount(); ++row) {
 		ElementData::PlcIO io;
 
@@ -1001,6 +1001,13 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 		auto *crossref_item = m_plc_table->item(row, 4);
 		if (crossref_item)
 			io.crossRef = crossref_item->text();
+
+		// Preserve terminal data from the original IO
+		if (row < ed.plcMasterData().ios.size()) {
+			const auto &orig_io = ed.plcMasterData().ios.at(row);
+			io.terminalCount = orig_io.terminalCount;
+			io.terminals = orig_io.terminals;
+		}
 
 		plc_data.ios.append(io);
 	}

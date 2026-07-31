@@ -289,8 +289,17 @@ void Terminal::paint(
 			painter->save();
 			painter->translate(label_pos);
 			painter->rotate(d->m_label_rotation);
-			QRectF text_rect(-text_size.width()/2.0, -text_size.height()/2.0,
-							 text_size.width(), text_size.height());
+
+			qreal rx = 0, ry = 0;
+			if (d->m_label_halignment & Qt::AlignLeft) rx = 0;
+			else if (d->m_label_halignment & Qt::AlignHCenter) rx = -text_size.width() / 2.0;
+			else if (d->m_label_halignment & Qt::AlignRight) rx = -text_size.width();
+
+			if (d->m_label_valignment & Qt::AlignTop) ry = 0;
+			else if (d->m_label_valignment & Qt::AlignVCenter) ry = -text_size.height() / 2.0;
+			else if (d->m_label_valignment & Qt::AlignBottom) ry = -text_size.height();
+
+			QRectF text_rect(QPointF(rx, ry), text_size);
 			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), display_name);
 			painter->restore();
 		} else {
@@ -307,7 +316,7 @@ void Terminal::paint(
 			if (d->m_label_frame) {
 				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
 			}
-			painter->drawText(text_rect, static_cast<int>(Qt::AlignLeft | Qt::AlignTop), display_name);
+			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), display_name);
 		}
 	}
 
@@ -816,12 +825,24 @@ QString Terminal::name() const
 			if (elmt->linkType() == Element::Master) {
 				int group_idx = elmt->groupIndexForElement(parent_element_);
 				if (group_idx >= 0) {
-					const auto &groups = elmt->elementData().m_slave_contact_groups;
-					if (group_idx < groups.size()) {
-						int label_idx = d->m_master_label_index;
-						const QStringList &labels = groups.at(group_idx).labels;
-						if (label_idx >= 0 && label_idx < labels.size()) {
-							return labels.at(label_idx);
+					// For PLC masters, use io.terminals as labels
+					if (elmt->elementData().m_master_type == ElementData::PLC) {
+						const auto &plc_data = elmt->elementData().plcMasterData();
+						if (group_idx < plc_data.ios.size()) {
+							int label_idx = d->m_master_label_index;
+							const QStringList &labels = plc_data.ios.at(group_idx).terminals;
+							if (label_idx >= 0 && label_idx < labels.size()) {
+								return labels.at(label_idx);
+							}
+						}
+					} else {
+						const auto &groups = elmt->elementData().m_slave_contact_groups;
+						if (group_idx < groups.size()) {
+							int label_idx = d->m_master_label_index;
+							const QStringList &labels = groups.at(group_idx).labels;
+							if (label_idx >= 0 && label_idx < labels.size()) {
+								return labels.at(label_idx);
+							}
 						}
 					}
 				}
@@ -829,6 +850,16 @@ QString Terminal::name() const
 			}
 		}
 	}
+	return d->m_name;
+}
+
+/**
+	@brief Terminal::baseName
+	Return the original terminal name (T1, T2...) without master label override.
+	Used for sorting when linking.
+*/
+QString Terminal::baseName() const
+{
 	return d->m_name;
 }
 

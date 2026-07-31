@@ -76,6 +76,7 @@ class Terminal : public QGraphicsObject
 		Element  *parentElement       () const;
 		QUuid     uuid                () const;
 		QString   name                () const;
+		QString   baseName            () const;
 		TerminalData::Type terminalType() const;
 		bool useMasterLabel() const { return d->m_use_master_label; }
 		void setUseMasterLabel(bool use);

@@ -1396,6 +1396,23 @@ void Element::setElementInformations(DiagramContext dc)
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
 	emit elementInfoChange(old_info, m_data.m_informations);
+
+	// Propagate label change to linked PLC slaves
+	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
+	{
+		if (!m_group_index_map.isEmpty()) {
+			const QString new_label = actualLabel();
+			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
+			{
+				Element *slave = it.key();
+				if (!slave)
+					continue;
+				DiagramContext ctx = slave->elementInformations();
+				ctx.addValue(QETInformation::ELMT_LABEL, new_label);
+				slave->setElementInformations(ctx);
+			}
+		}
+	}
 }
 
 /**
@@ -1433,7 +1450,9 @@ void Element::setElementData(ElementData data)
 	{
 		const auto &new_plc = m_data.plcMasterData();
 		bool plc_changed = (old_plc.ios != new_plc.ios);
-		if (plc_changed && !m_group_index_map.isEmpty())
+		bool label_changed = (old_info.value(QStringLiteral("label")) !=
+			m_data.m_informations.value(QStringLiteral("label")));
+		if (!m_group_index_map.isEmpty() && (plc_changed || label_changed))
 		{
 			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
 			{
@@ -1442,24 +1461,63 @@ void Element::setElementData(ElementData data)
 				if (!slave || io_idx < 0 || io_idx >= new_plc.ios.size())
 					continue;
 				const auto &io = new_plc.ios.at(io_idx);
-				DiagramContext ctx = slave->elementInformations();
-				ctx.addValue(QETInformation::ELMT_PLC_TYPE,
-					ElementData::translatedPlcIOType(io.type));
-				ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
-				ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
-				ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
-				ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
-					[&]() -> QString {
-						if (!diagram() || !diagram()->project())
-							return QString();
-						XRefProperties xrp = diagram()->project()
-							->defaultXRefProperties("plc");
-						autonum::sequentialNumbers seq;
-						return autonum::AssignVariables::formulaToLabel(
-							xrp.slaveLabel(), seq, diagram(), this);
-					}());
-				ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
-				slave->setElementInformations(ctx);
+
+				if (plc_changed)
+				{
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+						ElementData::translatedPlcIOType(io.type));
+					ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+					ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+					ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+					ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+						[&]() -> QString {
+							if (!diagram() || !diagram()->project())
+								return QString();
+							XRefProperties xrp = diagram()->project()
+								->defaultXRefProperties("plc");
+							autonum::sequentialNumbers seq;
+							return autonum::AssignVariables::formulaToLabel(
+								xrp.slaveLabel(), seq, diagram(), this);
+						}());
+					ctx.addValue(QETInformation::ELMT_PLC_TC,
+						QString::number(io.terminalCount));
+					for (int t = 0; t < io.terminalCount && t < 4; ++t)
+					{
+						QString val = (t < io.terminals.size())
+							? io.terminals.at(t) : QString();
+						ctx.addValue(
+							QStringList({
+								QETInformation::ELMT_PLC_T1,
+								QETInformation::ELMT_PLC_T2,
+								QETInformation::ELMT_PLC_T3,
+								QETInformation::ELMT_PLC_T4
+							}).at(t), val);
+					}
+					slave->setElementInformations(ctx);
+
+					// Update master labels on slave terminals
+					QList<Terminal *> slave_terms = slave->terminals();
+					for (int t = 0; t < slave_terms.size(); ++t)
+					{
+						if (t < io.terminals.size())
+						{
+							slave_terms.at(t)->setUseMasterLabel(true);
+							slave_terms.at(t)->setMasterLabelIndex(t);
+						}
+						else
+						{
+							slave_terms.at(t)->setUseMasterLabel(false);
+						}
+					}
+				}
+				else if (label_changed)
+				{
+					// Only label changed, update the label on the slave
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					slave->setElementInformations(ctx);
+				}
 			}
 		}
 	}
@@ -1900,7 +1958,7 @@ void Element::drawPlcTable(QPainter *painter)
 					}
 
 					QRectF text_rect = cr.adjusted(1, 0, -1, 0);
-					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextWordWrap, cell_text);
 
 					cx += col_widths[col];
 				}

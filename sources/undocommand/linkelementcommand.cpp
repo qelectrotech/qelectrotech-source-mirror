@@ -406,22 +406,46 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 					elmt->setGroupIndexForElement(m_element, group_idx);
 
 					// Set master labels on slave terminals
-					const auto &groups = elmt->elementData().m_slave_contact_groups;
-					if (group_idx < groups.size())
+					if (elmt->elementData().m_master_type == ElementData::PLC)
 					{
-						const QStringList &labels = groups.at(group_idx).labels;
-						QList<Terminal *> slave_terms = m_element->terminals();
-						// Sort terminals by name (T1, T2, T3...) to match label order
-						std::sort(slave_terms.begin(), slave_terms.end(),
-							[](Terminal *a, Terminal *b) {
-								return a->name() < b->name();
-							});
-						for (int i = 0; i < slave_terms.size(); ++i)
+						// For PLC masters, use io.terminals as labels
+						const auto &plc_data = elmt->elementData().plcMasterData();
+						if (group_idx < plc_data.ios.size())
 						{
-							if (i < labels.size())
+							const QStringList &labels = plc_data.ios.at(group_idx).terminals;
+							QList<Terminal *> slave_terms = m_element->terminals();
+							std::sort(slave_terms.begin(), slave_terms.end(),
+								[](Terminal *a, Terminal *b) {
+									return a->baseName() < b->baseName();
+								});
+							for (int i = 0; i < slave_terms.size(); ++i)
 							{
-								slave_terms.at(i)->setUseMasterLabel(true);
-								slave_terms.at(i)->setMasterLabelIndex(i);
+								if (i < labels.size())
+								{
+									slave_terms.at(i)->setUseMasterLabel(true);
+									slave_terms.at(i)->setMasterLabelIndex(i);
+								}
+							}
+						}
+					}
+					else
+					{
+						const auto &groups = elmt->elementData().m_slave_contact_groups;
+						if (group_idx < groups.size())
+						{
+							const QStringList &labels = groups.at(group_idx).labels;
+							QList<Terminal *> slave_terms = m_element->terminals();
+							std::sort(slave_terms.begin(), slave_terms.end(),
+								[](Terminal *a, Terminal *b) {
+									return a->baseName() < b->baseName();
+								});
+							for (int i = 0; i < slave_terms.size(); ++i)
+							{
+								if (i < labels.size())
+								{
+									slave_terms.at(i)->setUseMasterLabel(true);
+									slave_terms.at(i)->setMasterLabelIndex(i);
+								}
 							}
 						}
 					}
@@ -443,6 +467,20 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 							plcCrossRefText(elmt, m_element));
 						ctx.addValue(QETInformation::ELMT_LABEL,
 							elmt->actualLabel());
+						ctx.addValue(QETInformation::ELMT_PLC_TC,
+							QString::number(io.terminalCount));
+						for (int t = 0; t < io.terminalCount && t < 4; ++t)
+						{
+							QString val = (t < io.terminals.size())
+								? io.terminals.at(t) : QString();
+							ctx.addValue(
+								QStringList({
+									QETInformation::ELMT_PLC_T1,
+									QETInformation::ELMT_PLC_T2,
+									QETInformation::ELMT_PLC_T3,
+									QETInformation::ELMT_PLC_T4
+								}).at(t), val);
+						}
 						m_element->setElementInformations(ctx);
 						}
 					}

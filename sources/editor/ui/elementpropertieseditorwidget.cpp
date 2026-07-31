@@ -780,7 +780,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 
 		auto *sb = new QSpinBox(m_plc_gb);
 		sb->setMinimum(10);
-		sb->setMaximum(200);
+		sb->setMaximum(500);
 		sb->setValue(40);
 		sb->setSuffix(tr(" mm"));
 		m_plc_col_width_spinboxes.append(sb);
