@@ -23,6 +23,7 @@
 #include "../elementprimitivedecorator.h"
 #include "../elementscene.h"
 #include "../ui/texteditor.h"
+#include "../../utils/qetutils.h"
 
 /**
 	Constructeur
@@ -125,7 +126,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	}
 	else if (xml_element.hasAttribute("font")) {
 		QFont font_;
-		font_.fromString(xml_element.attribute("font"));
+		QETUtils::fontFromString(font_, xml_element.attribute("font"));
 		setFont(font_);
 	}
 
@@ -165,7 +166,7 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("x", QString::number(x));
 	xml_element.setAttribute("y", QString::number(y));
 	xml_element.setAttribute("text", toPlainText());
-	xml_element.setAttribute("font", font().toString());
+	xml_element.setAttribute("font", QETUtils::fontToString(font()));
 	xml_element.setAttribute("rotation", QString::number(rot));
 	xml_element.setAttribute("color", defaultTextColor().name());
 

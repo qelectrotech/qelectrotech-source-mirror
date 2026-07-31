@@ -23,6 +23,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
+#include "../utils/qetutils.h"
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
@@ -96,7 +97,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
-	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	
 	QMetaEnum me = textFromMetaEnum();
@@ -167,7 +168,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	if (dom_elmt.hasAttribute("font"))
 	{
 		QFont font;
-		font.fromString(dom_elmt.attribute("font"));
+		QETUtils::fontFromString(font, dom_elmt.attribute("font"));
 		setFont(font);
 	}
 	else	//Retrocompatibility during the 0.7 dev because the font property was added lately. TODO remove this part in futur

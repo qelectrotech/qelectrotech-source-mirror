@@ -21,6 +21,7 @@
 #include "../diagramcommands.h"
 #include "../qet.h"
 #include "../qetapp.h"
+#include "../utils/qetutils.h"
 
 #include <QDomElement>
 #include <QSettings>
@@ -64,7 +65,7 @@ void IndependentTextItem::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("font"))
 	{
 		QFont font;
-		font.fromString(e.attribute("font"));
+		QETUtils::fontFromString(font, e.attribute("font"));
 		setFont(font);
 	}
 }
@@ -80,7 +81,7 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toHtml());
 	result.setAttribute("rotation", QString::number(QET::correctAngle(rotation())));
-	result.setAttribute("font", font().toString());
+	result.setAttribute("font", QETUtils::fontToString(font()));
 	
 	return(result);
 }

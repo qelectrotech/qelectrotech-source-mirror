@@ -26,6 +26,7 @@
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
+#include "utils/qetutils.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -1425,7 +1426,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/dynamic_text_font")) {
-		font_.fromString(settings.value(
+		QETUtils::fontFromString(font_, settings.value(
 					 "diagrameditor/dynamic_text_font"
 						).toString());
 	}
@@ -1449,7 +1450,7 @@ QFont QETApp::indiTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/independent_text_font")) {
-		font_.fromString(settings.value(
+		QETUtils::fontFromString(font_, settings.value(
 					 "diagrameditor/independent_text_font"
 					 ).toString());
 	}

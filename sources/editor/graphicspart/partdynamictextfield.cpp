@@ -20,6 +20,7 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../qetapp.h"
 #include "../elementscene.h"
+#include "../../utils/qetutils.h"
 #include <QApplication>
 
 #include <QColor>
@@ -142,7 +143,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("y", QString::number(y));
 	root_element.setAttribute("z", QString::number(zValue()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rot)));
-	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
@@ -214,7 +215,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 
 	if (dom_elmt.hasAttribute("font")) {
 		QFont font_;
-		font_.fromString(dom_elmt.attribute("font"));
+		QETUtils::fontFromString(font_, dom_elmt.attribute("font"));
 		setFont(font_);
 	}
 	else if (dom_elmt.hasAttribute("font_size")) {
