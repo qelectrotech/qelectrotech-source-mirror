@@ -197,6 +197,10 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
+
+	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
+	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
+								 this, &DynamicTextFieldEditor::fillInfoComboBox);
 }
 
 void DynamicTextFieldEditor::disconnectConnections()
@@ -218,13 +222,34 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	ui -> m_elmt_info_cb -> clear();
 
 	QStringList strl;
-	auto type = elementEditor()->elementScene()->elementData().m_type;
+	auto ed = elementEditor()->elementScene()->elementData();
+	auto type = ed.m_type;
 
 	if((type & ElementData::AllReport) || (type == ElementData::ConductorDefinition)) {
 		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
 		strl = QETInformation::elementInfoKeys();
+
+		bool is_plc_slave = (type == ElementData::Slave
+							 && ed.m_slave_type == ElementData::PLCSlave);
+
+		if (is_plc_slave) {
+			QStringList plc_keys = {
+				QETInformation::ELMT_PLC_TYPE,
+				QETInformation::ELMT_PLC_ADDRESS,
+				QETInformation::ELMT_PLC_FUNCTION,
+				QETInformation::ELMT_PLC_COMMENT,
+				QETInformation::ELMT_PLC_CROSSREF
+			};
+			strl = plc_keys + strl;
+		} else {
+			strl.removeAll(QETInformation::ELMT_PLC_TYPE);
+			strl.removeAll(QETInformation::ELMT_PLC_ADDRESS);
+			strl.removeAll(QETInformation::ELMT_PLC_FUNCTION);
+			strl.removeAll(QETInformation::ELMT_PLC_COMMENT);
+			strl.removeAll(QETInformation::ELMT_PLC_CROSSREF);
+		}
 	}
 
 	for (int i=0; i<strl.size();++i) {

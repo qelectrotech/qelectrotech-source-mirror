@@ -112,6 +112,115 @@ QDomElement ElementData::kindInfoToXml(QDomDocument &document)
 			}
 			returned_elmt.appendChild(xml_groups);
 		}
+
+		// Save PLC master data if type is PLC
+		if (m_master_type == ElementData::PLC) {
+		auto xml_plc = document.createElement(QStringLiteral("plcMasterData"));
+		xml_plc.setAttribute(QStringLiteral("rowHeight"),
+			QString::number(m_plc_master_data.rowHeight, 'f', 2));
+
+		// Save break positions
+		{
+			auto xml_breaks = document.createElement(QStringLiteral("breakPositions"));
+			for (int bp : m_plc_master_data.breakPositions) {
+				auto xml_bp = document.createElement(QStringLiteral("break"));
+				xml_bp.appendChild(document.createTextNode(QString::number(bp)));
+				xml_breaks.appendChild(xml_bp);
+			}
+			xml_plc.appendChild(xml_breaks);
+		}
+
+			// Save column widths
+			auto xml_col_widths = document.createElement(QStringLiteral("columnWidths"));
+			for (auto it = m_plc_master_data.colWidths.constBegin();
+				 it != m_plc_master_data.colWidths.constEnd(); ++it) {
+				auto xml_col = document.createElement(QStringLiteral("column"));
+				xml_col.setAttribute(QStringLiteral("index"), it.key());
+				xml_col.setAttribute(QStringLiteral("width"), QString::number(it.value(), 'f', 2));
+				xml_col_widths.appendChild(xml_col);
+			}
+			xml_plc.appendChild(xml_col_widths);
+
+			// Save column visibility
+			auto xml_col_vis = document.createElement(QStringLiteral("columnVisibility"));
+			for (auto it = m_plc_master_data.colVisible.constBegin();
+				 it != m_plc_master_data.colVisible.constEnd(); ++it) {
+				auto xml_col = document.createElement(QStringLiteral("column"));
+				xml_col.setAttribute(QStringLiteral("index"), it.key());
+				xml_col.setAttribute(QStringLiteral("visible"), it.value() ? "true" : "false");
+				xml_col_vis.appendChild(xml_col);
+			}
+			xml_plc.appendChild(xml_col_vis);
+
+			// Save fonts
+			if (!m_plc_master_data.headerFont.family().isEmpty()) {
+				auto xml_hfont = document.createElement(QStringLiteral("headerFont"));
+				xml_hfont.setAttribute(QStringLiteral("family"), m_plc_master_data.headerFont.family());
+				xml_hfont.setAttribute(QStringLiteral("size"), m_plc_master_data.headerFont.pointSize());
+				xml_hfont.setAttribute(QStringLiteral("bold"), m_plc_master_data.headerFont.bold() ? "true" : "false");
+				xml_plc.appendChild(xml_hfont);
+			}
+			if (!m_plc_master_data.cellFont.family().isEmpty()) {
+				auto xml_cfont = document.createElement(QStringLiteral("cellFont"));
+				xml_cfont.setAttribute(QStringLiteral("family"), m_plc_master_data.cellFont.family());
+				xml_cfont.setAttribute(QStringLiteral("size"), m_plc_master_data.cellFont.pointSize());
+				xml_cfont.setAttribute(QStringLiteral("bold"), m_plc_master_data.cellFont.bold() ? "true" : "false");
+				xml_plc.appendChild(xml_cfont);
+			}
+
+			// Save custom column names
+			if (!m_plc_master_data.columnNames.isEmpty()) {
+				auto xml_names = document.createElement(QStringLiteral("columnNames"));
+				for (int i = 0; i < m_plc_master_data.columnNames.size(); ++i) {
+					auto xml_name = document.createElement(QStringLiteral("column"));
+					xml_name.setAttribute(QStringLiteral("index"), i);
+					xml_name.appendChild(document.createTextNode(m_plc_master_data.columnNames.at(i)));
+					xml_names.appendChild(xml_name);
+				}
+				xml_plc.appendChild(xml_names);
+			}
+
+			// Save column order
+			if (!m_plc_master_data.columnOrder.isEmpty()) {
+				auto xml_order = document.createElement(QStringLiteral("columnOrder"));
+				QString order_str;
+				for (int i = 0; i < m_plc_master_data.columnOrder.size(); ++i) {
+					if (i > 0) order_str += QStringLiteral(",");
+					order_str += QString::number(m_plc_master_data.columnOrder.at(i));
+				}
+				xml_order.appendChild(document.createTextNode(order_str));
+				xml_plc.appendChild(xml_order);
+			}
+
+			// Save showHeaders
+			{
+				auto xml_sh = document.createElement(QStringLiteral("showHeaders"));
+				xml_sh.appendChild(document.createTextNode(
+					m_plc_master_data.showHeaders ? QStringLiteral("1") : QStringLiteral("0")));
+				xml_plc.appendChild(xml_sh);
+			}
+
+			// Save IO entries
+			auto xml_ios = document.createElement(QStringLiteral("plcIOs"));
+			for (const auto &io : m_plc_master_data.ios) {
+			auto xml_io = document.createElement(QStringLiteral("plcIO"));
+			xml_io.setAttribute(QStringLiteral("type"), plcIOTypeToString(io.type));
+			xml_io.setAttribute(QStringLiteral("address"), io.address);
+			xml_io.setAttribute(QStringLiteral("functionText"), io.functionText);
+			xml_io.setAttribute(QStringLiteral("comment"), io.comment);
+			xml_io.setAttribute(QStringLiteral("crossRef"), io.crossRef);
+			xml_io.setAttribute(QStringLiteral("terminalCount"), io.terminalCount);
+			for (const auto &t : io.terminals) {
+				auto xml_term = document.createElement(QStringLiteral("terminal"));
+				xml_term.appendChild(document.createTextNode(t));
+				xml_io.appendChild(xml_term);
+			}
+			xml_ios.appendChild(xml_io);
+			}
+			xml_plc.appendChild(xml_ios);
+
+			returned_elmt.appendChild(xml_plc);
+		}
 	}
 	else if (m_type == ElementData::Slave)
 	{
@@ -270,6 +379,11 @@ bool ElementData::operator==(const ElementData &data) const
 		if (data.m_slave_contact_groups != m_slave_contact_groups) {
 			return false;
 		}
+		if (data.m_master_type == ElementData::PLC) {
+			if (data.m_plc_master_data != m_plc_master_data) {
+				return false;
+			}
+		}
 	}
 	else if (data.m_type == ElementData::Slave) {
 		if (data.m_slave_state   != m_slave_state ||
@@ -410,6 +524,8 @@ QString ElementData::masterTypeToString(ElementData::MasterType type)
 			return QStringLiteral("protection");
 		case ElementData::Commutator:
 			return QStringLiteral("commutator");
+		case ElementData::PLC:
+			return QStringLiteral("plc");
 	}
 	return QStringLiteral("coil");
 }
@@ -422,6 +538,8 @@ ElementData::MasterType ElementData::masterTypeFromString(const QString &string)
 		return  ElementData::Protection;
 	} else if (string == QLatin1String("commutator")) {
 		return ElementData::Commutator;
+	} else if (string == QLatin1String("plc")) {
+		return ElementData::PLC;
 	}
 
 	qDebug() << "ElementData::masterTypeFromString : string "
@@ -443,6 +561,8 @@ QString ElementData::slaveTypeToString(ElementData::SlaveType type)
 			return  QStringLiteral("delayOff");
 		case ElementData::delayOnOff:
 			return QStringLiteral("delayOnOff");
+		case ElementData::PLCSlave:
+			return QStringLiteral("plc");
 	}
 	return QStringLiteral("simple");
 }
@@ -459,6 +579,8 @@ ElementData::SlaveType ElementData::slaveTypeFromString(const QString &string)
 		return ElementData::DelayOff;
 	} else if (string == QLatin1String("delayOnOff")) {
 		return ElementData::delayOnOff;
+	} else if (string == QLatin1String("plc")) {
+		return ElementData::PLCSlave;
 	}
 
 	qDebug() << "ElementData::slaveTypeFromSting : string "
@@ -658,6 +780,108 @@ void ElementData::kindInfoFromXml(const QDomElement &xml_element)
 				m_slave_contact_groups.append(group);
 			}
 		}
+
+		// Parse PLC master data
+		auto xml_plc = xml_kind.firstChildElement(QStringLiteral("plcMasterData"));
+		if (!xml_plc.isNull()) {
+			m_plc_master_data.rowHeight = xml_plc.attribute(
+				QStringLiteral("rowHeight"), QStringLiteral("8.00")).toDouble();
+
+			// Parse break positions (new format: child elements)
+			auto xml_breaks = xml_plc.firstChildElement(QStringLiteral("breakPositions"));
+			if (!xml_breaks.isNull()) {
+				for (const auto &xml_bp : QETXML::findInDomElement(xml_breaks, QStringLiteral("break"))) {
+					m_plc_master_data.breakPositions.append(xml_bp.text().toInt());
+				}
+			} else {
+				// Backward compat: old format was breakAfter attribute
+				int old_break = xml_plc.attribute(
+					QStringLiteral("breakAfter"), QStringLiteral("0")).toInt();
+				m_plc_master_data.breakPositions.append(old_break > 0 ? old_break : 0);
+			}
+
+			// Parse column widths
+			auto xml_col_widths = xml_plc.firstChildElement(QStringLiteral("columnWidths"));
+			for (const auto &xml_col : QETXML::findInDomElement(xml_col_widths, QStringLiteral("column"))) {
+				int index = xml_col.attribute(QStringLiteral("index")).toInt();
+				qreal width = xml_col.attribute(QStringLiteral("width")).toDouble();
+				m_plc_master_data.colWidths[index] = width;
+			}
+
+			// Parse column visibility
+			auto xml_col_vis = xml_plc.firstChildElement(QStringLiteral("columnVisibility"));
+			for (const auto &xml_col : QETXML::findInDomElement(xml_col_vis, QStringLiteral("column"))) {
+				int index = xml_col.attribute(QStringLiteral("index")).toInt();
+				bool visible = xml_col.attribute(QStringLiteral("visible")) == QLatin1String("true");
+				m_plc_master_data.colVisible[index] = visible;
+			}
+
+			// Parse fonts
+			auto xml_hfont = xml_plc.firstChildElement(QStringLiteral("headerFont"));
+			if (!xml_hfont.isNull()) {
+				m_plc_master_data.headerFont.setFamily(xml_hfont.attribute(QStringLiteral("family")));
+				m_plc_master_data.headerFont.setPointSize(xml_hfont.attribute(QStringLiteral("size"), QStringLiteral("8")).toInt());
+				m_plc_master_data.headerFont.setBold(xml_hfont.attribute(QStringLiteral("bold")) == QLatin1String("true"));
+			}
+			auto xml_cfont = xml_plc.firstChildElement(QStringLiteral("cellFont"));
+			if (!xml_cfont.isNull()) {
+				m_plc_master_data.cellFont.setFamily(xml_cfont.attribute(QStringLiteral("family")));
+				m_plc_master_data.cellFont.setPointSize(xml_cfont.attribute(QStringLiteral("size"), QStringLiteral("8")).toInt());
+				m_plc_master_data.cellFont.setBold(xml_cfont.attribute(QStringLiteral("bold")) == QLatin1String("true"));
+			}
+
+			// Parse custom column names
+			auto xml_names = xml_plc.firstChildElement(QStringLiteral("columnNames"));
+			if (!xml_names.isNull()) {
+				for (const auto &xml_col : QETXML::findInDomElement(xml_names, QStringLiteral("column"))) {
+					int index = xml_col.attribute(QStringLiteral("index")).toInt();
+					if (index < 0 || index >= 5)
+						continue;
+					while (m_plc_master_data.columnNames.size() <= index)
+						m_plc_master_data.columnNames.append(QString());
+					m_plc_master_data.columnNames[index] = xml_col.text();
+				}
+			}
+
+			// Parse column order
+			auto xml_order = xml_plc.firstChildElement(QStringLiteral("columnOrder"));
+			if (!xml_order.isNull()) {
+				QStringList parts = xml_order.text().split(',');
+				for (const auto &p : parts) {
+					if (m_plc_master_data.columnOrder.size() >= 5)
+						break;
+					bool ok;
+					int val = p.trimmed().toInt(&ok);
+					if (ok)
+						m_plc_master_data.columnOrder.append(val);
+				}
+			}
+
+			// Parse showHeaders
+			auto xml_sh = xml_plc.firstChildElement(QStringLiteral("showHeaders"));
+			if (!xml_sh.isNull())
+				m_plc_master_data.showHeaders = (xml_sh.text().trimmed() != QStringLiteral("0"));
+
+			// Parse IO entries
+			auto xml_ios = xml_plc.firstChildElement(QStringLiteral("plcIOs"));
+			for (const auto &xml_io : QETXML::findInDomElement(xml_ios, QStringLiteral("plcIO"))) {
+				if (m_plc_master_data.ios.size() >= 128)
+					break;
+				PlcIO io;
+				io.type = plcIOTypeFromString(
+					xml_io.attribute(QStringLiteral("type"), QStringLiteral("entree_digitale")));
+				io.address = xml_io.attribute(QStringLiteral("address"));
+				io.functionText = xml_io.attribute(QStringLiteral("functionText"));
+				io.comment = xml_io.attribute(QStringLiteral("comment"));
+				io.crossRef = xml_io.attribute(QStringLiteral("crossRef"));
+				io.terminalCount = xml_io.attribute(
+					QStringLiteral("terminalCount"), QStringLiteral("0")).toInt();
+				for (const auto &xml_term : QETXML::findInDomElement(xml_io, QStringLiteral("terminal"))) {
+					io.terminals.append(xml_term.text());
+				}
+				m_plc_master_data.ios.append(io);
+			}
+		}
 	}
 }
 
@@ -696,4 +920,91 @@ QString ElementData::slaveContactGroupSubtypeToString(ElementData::SlaveType typ
 ElementData::SlaveType ElementData::slaveContactGroupSubtypeFromString(const QString &string)
 {
 	return slaveTypeFromString(string);
+}
+
+/**
+ * @brief ElementData::plcIOTypeToString
+ * Convert a PlcIOType to string for XML storage.
+ */
+QString ElementData::plcIOTypeToString(PlcIOType type)
+{
+	switch (type) {
+		case EntreeDigitale:
+			return QStringLiteral("entree_digitale");
+		case SortieDigitale:
+			return QStringLiteral("sortie_digitale");
+		case EntreeAnalogique:
+			return QStringLiteral("entree_analogique");
+		case SortieAnalogique:
+			return QStringLiteral("sortie_analogique");
+		case EntreeUniverselle:
+			return QStringLiteral("entree_universelle");
+		case SortieUniverselle:
+			return QStringLiteral("sortie_universelle");
+	}
+	return QStringLiteral("entree_digitale");
+}
+
+/**
+ * @brief ElementData::plcIOTypeFromString
+ * Convert a string from XML to PlcIOType.
+ */
+ElementData::PlcIOType ElementData::plcIOTypeFromString(const QString &string)
+{
+	if (string == QLatin1String("entree_digitale")) {
+		return ElementData::EntreeDigitale;
+	} else if (string == QLatin1String("sortie_digitale")) {
+		return ElementData::SortieDigitale;
+	} else if (string == QLatin1String("entree_analogique")) {
+		return ElementData::EntreeAnalogique;
+	} else if (string == QLatin1String("sortie_analogique")) {
+		return ElementData::SortieAnalogique;
+	} else if (string == QLatin1String("entree_universelle")) {
+		return ElementData::EntreeUniverselle;
+	} else if (string == QLatin1String("sortie_universelle")) {
+		return ElementData::SortieUniverselle;
+	}
+
+	qDebug() << "ElementData::plcIOTypeFromString : string "
+			 << string
+			 << " don't exist, return failsafe value 'entree_digitale'";
+	return ElementData::EntreeDigitale;
+}
+
+/**
+ * @brief ElementData::translatedPlcIOType
+ * Return translated string for PlcIOType.
+ */
+QString ElementData::translatedPlcIOType(PlcIOType type)
+{
+	switch (type) {
+		case EntreeDigitale:
+			return QObject::tr("Entrée digitale");
+		case SortieDigitale:
+			return QObject::tr("Sortie digitale");
+		case EntreeAnalogique:
+			return QObject::tr("Entrée analogique");
+		case SortieAnalogique:
+			return QObject::tr("Sortie analogique");
+		case EntreeUniverselle:
+			return QObject::tr("Entrée universelle");
+		case SortieUniverselle:
+			return QObject::tr("Sortie universelle");
+	}
+	return QObject::tr("Entrée digitale");
+}
+
+/**
+ * @brief ElementData::plcIOTypeList
+ * Return list of all translated PLC IO type strings (for combo boxes).
+ */
+QStringList ElementData::plcIOTypeList()
+{
+	return QStringList()
+		<< translatedPlcIOType(EntreeDigitale)
+		<< translatedPlcIOType(SortieDigitale)
+		<< translatedPlcIOType(EntreeAnalogique)
+		<< translatedPlcIOType(SortieAnalogique)
+		<< translatedPlcIOType(EntreeUniverselle)
+		<< translatedPlcIOType(SortieUniverselle);
 }

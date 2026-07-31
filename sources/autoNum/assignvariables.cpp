@@ -275,6 +275,12 @@ namespace autonum
 
 		str.replace("%{void}", QString());
 
+		str.replace("%{plc_type}", dc.value("plc_type").toString());
+		str.replace("%{plc_address}", dc.value("plc_address").toString());
+		str.replace("%{plc_function}", dc.value("plc_function").toString());
+		str.replace("%{plc_comment}", dc.value("plc_comment").toString());
+		str.replace("%{plc_crossref}", dc.value("plc_crossref").toString());
+
 		return str;
 	}
 

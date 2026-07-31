@@ -19,6 +19,7 @@
 
 #include "../ElementsCollection/elementslocation.h"
 #include "../editor/graphicspart/partline.h"
+#include "../properties/elementdata.h"
 #include "../qetapp.h"
 #include "../qetversion.h"
 
@@ -30,6 +31,7 @@
 #include <QRegularExpression>
 #include <QTextDocument>
 #include <iostream>
+#include <algorithm>
 
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
@@ -206,7 +208,25 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	tmp.setCosmetic(true);
 	low_painter.setPen(tmp);
 
-		//scroll of the Children of the Definition: Parts of the Drawing
+	//scroll of the Children of the Definition: Parts of the Drawing
+	// Extract PLC master data for rendering plc_table parts
+	QDomElement plc_master_data;
+	for (QDomNode node = dom.firstChild() ; !node.isNull() ; node = node.nextSibling())
+	{
+		QDomElement elmts = node.toElement();
+		if (elmts.isNull()) continue;
+		if (elmts.tagName() == "kindInformations") {
+			for (QDomNode ki = elmts.firstChild(); !ki.isNull(); ki = ki.nextSibling()) {
+				QDomElement ki_el = ki.toElement();
+				if (!ki_el.isNull() && ki_el.tagName() == "plcMasterData") {
+					plc_master_data = ki_el;
+					break;
+				}
+			}
+			break;
+		}
+	}
+
 	for (QDomNode node = dom.firstChild() ; !node.isNull() ; node = node.nextSibling())
 	{
 		QDomElement elmts = node.toElement();
@@ -223,9 +243,17 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 				if (qde.isNull()) {
 					continue;
 				}
-				parseElement(qde, painter, primitives_);
-				primitives fake_prim;
-				parseElement(qde, low_painter, fake_prim);
+				if (qde.tagName() == "plc_table") {
+					// Skip - PLC table is rendered at runtime by
+					// Element::drawPlcTable() from live ElementData.
+					// Rendering into the cached QPicture here causes
+					// intermittent crashes when drawPicture() replays
+					// complex font/text operations.
+				} else {
+					parseElement(qde, painter, primitives_);
+					primitives fake_prim;
+					parseElement(qde, low_painter, fake_prim);
+				}
 			}
 		}
 	}
@@ -1103,4 +1131,218 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 
 	painter.setPen(pen);
 	painter.setBrush(brush);
+}
+
+void ElementPictureFactory::parsePlcTable(const QDomElement &dom, const QDomElement &plc_data, QPainter &painter) const
+{
+	qreal pos_x = dom.attribute("x", "0").toDouble();
+	qreal pos_y = dom.attribute("y", "0").toDouble();
+
+	if (plc_data.isNull()) return;
+
+	const int COL_COUNT = 5;
+	const int COL_TYPE     = 0;
+	const int COL_ADDRESS  = 1;
+	const int COL_FUNCTION = 2;
+	const int COL_COMMENT  = 3;
+	const int COL_CROSSREF = 4;
+
+	qreal rowHeight = plc_data.attribute("rowHeight", "8.0").toDouble();
+
+	// Parse showHeaders
+	bool showHeaders = true;
+	auto xml_sh = plc_data.firstChildElement("showHeaders");
+	if (!xml_sh.isNull())
+		showHeaders = (xml_sh.text().trimmed() != "0");
+
+	qreal header_h = showHeaders ? (rowHeight + 2.0) : 0;
+
+	// Parse column widths
+	QMap<int, qreal> col_widths;
+	auto xml_cw = plc_data.firstChildElement("columnWidths");
+	for (auto xml_col = xml_cw.firstChildElement("column"); !xml_col.isNull();
+		 xml_col = xml_col.nextSiblingElement("column")) {
+		int idx = xml_col.attribute("index").toInt();
+		qreal w = xml_col.attribute("width").toDouble();
+		if (w > 0) col_widths[idx] = w;
+	}
+	if (col_widths.isEmpty()) {
+		col_widths[0] = 35; col_widths[1] = 25; col_widths[2] = 50;
+		col_widths[3] = 40; col_widths[4] = 30;
+	}
+
+	// Parse column visibility
+	QMap<int, bool> col_visible;
+	auto xml_cv = plc_data.firstChildElement("columnVisibility");
+	for (auto xml_c = xml_cv.firstChildElement("column"); !xml_c.isNull();
+		 xml_c = xml_c.nextSiblingElement("column")) {
+		int idx = xml_c.attribute("index").toInt();
+		QString vis = xml_c.attribute("visible", "true");
+		col_visible[idx] = (vis == "true");
+	}
+
+	// Parse column order
+	QList<int> column_order;
+	auto xml_ord = plc_data.firstChildElement("columnOrder");
+	if (!xml_ord.isNull()) {
+		QStringList parts = xml_ord.text().split(",", Qt::SkipEmptyParts);
+		for (const QString &s : parts) {
+			int idx = s.trimmed().toInt();
+			if (idx >= 0 && idx < COL_COUNT)
+				column_order.append(idx);
+		}
+	}
+
+	// Parse custom column names
+	QMap<int, QString> column_names;
+	auto xml_names = plc_data.firstChildElement("columnNames");
+	for (auto xml_n = xml_names.firstChildElement("column"); !xml_n.isNull();
+		 xml_n = xml_n.nextSiblingElement("column")) {
+		int idx = xml_n.attribute("index").toInt();
+		QString name = xml_n.text().trimmed();
+		if (!name.isEmpty())
+			column_names[idx] = name;
+	}
+
+	// Parse fonts
+	QFont header_font;
+	header_font.setPointSize(7);
+	header_font.setBold(true);
+	auto xml_hfont = plc_data.firstChildElement("headerFont");
+	if (!xml_hfont.isNull()) {
+		if (!xml_hfont.attribute("family").isEmpty())
+			header_font.setFamily(xml_hfont.attribute("family"));
+		if (xml_hfont.attribute("size").toInt() > 0)
+			header_font.setPointSize(xml_hfont.attribute("size").toInt());
+		header_font.setBold(xml_hfont.attribute("bold") == "true");
+	}
+
+	QFont cell_font;
+	cell_font.setPointSize(7);
+	auto xml_cfont = plc_data.firstChildElement("cellFont");
+	if (!xml_cfont.isNull()) {
+		if (!xml_cfont.attribute("family").isEmpty())
+			cell_font.setFamily(xml_cfont.attribute("family"));
+		if (xml_cfont.attribute("size").toInt() > 0)
+			cell_font.setPointSize(xml_cfont.attribute("size").toInt());
+		cell_font.setBold(xml_cfont.attribute("bold") == "true");
+	}
+
+	// Parse IOs
+	QVector<QMap<int, QString>> ios;
+	auto xml_ios = plc_data.firstChildElement("plcIOs");
+	for (auto xml_io = xml_ios.firstChildElement("plcIO"); !xml_io.isNull();
+		 xml_io = xml_io.nextSiblingElement("plcIO")) {
+		QMap<int, QString> io_data;
+		io_data[COL_TYPE]     = ElementData::translatedPlcIOType(
+			ElementData::plcIOTypeFromString(xml_io.attribute("type")));
+		io_data[COL_ADDRESS]  = xml_io.attribute("address");
+		io_data[COL_FUNCTION] = xml_io.attribute("functionText");
+		io_data[COL_COMMENT]  = xml_io.attribute("comment");
+		io_data[COL_CROSSREF] = xml_io.attribute("crossRef");
+		ios.append(io_data);
+	}
+
+	// Build visible columns (respect column order)
+	QList<int> visible_cols;
+	if (!column_order.isEmpty()) {
+		for (int logical : column_order) {
+			if (logical >= 0 && logical < COL_COUNT
+				&& col_visible.value(logical, true)
+				&& !visible_cols.contains(logical))
+				visible_cols.append(logical);
+		}
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (col_visible.value(i, true) && !visible_cols.contains(i))
+				visible_cols.append(i);
+		}
+	} else {
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (col_visible.value(i, true))
+				visible_cols.append(i);
+		}
+	}
+	if (visible_cols.isEmpty())
+		visible_cols << COL_TYPE << COL_ADDRESS << COL_FUNCTION;
+
+	// Build header labels
+	QMap<int, QString> headers;
+	headers[COL_TYPE]     = QObject::tr("Type");
+	headers[COL_ADDRESS]  = QObject::tr("Adresse");
+	headers[COL_FUNCTION] = QObject::tr("Fonction");
+	headers[COL_COMMENT]  = QObject::tr("Commentaire");
+	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+	for (auto it = column_names.constBegin(); it != column_names.constEnd(); ++it)
+		headers[it.key()] = it.value();
+
+	// Parse break positions
+	QList<int> breaks;
+	auto xml_breaks = plc_data.firstChildElement("breakPositions");
+	for (auto xml_bp = xml_breaks.firstChildElement("break"); !xml_bp.isNull();
+		 xml_bp = xml_bp.nextSiblingElement("break")) {
+		int bp = xml_bp.text().toInt();
+		if (bp > 0 && bp < ios.size() && !breaks.contains(bp))
+			breaks.append(bp);
+	}
+	std::sort(breaks.begin(), breaks.end());
+
+	QList<int> block_starts;
+	block_starts.append(0);
+	for (int bp : breaks)
+		block_starts.append(bp);
+	int block_count = block_starts.size();
+
+	qreal total_width = 0;
+	for (int col : visible_cols)
+		total_width += col_widths.value(col, 30);
+
+	QPen border_pen(Qt::black, 0.5);
+
+	int total_ios = ios.size();
+
+	for (int block = 0; block < block_count; ++block) {
+		qreal bx = pos_x + block * (total_width + 3);
+		qreal cx = bx;
+
+		// Draw headers
+		if (showHeaders) {
+			painter.fillRect(QRectF(cx, pos_y, total_width, header_h), QColor(220, 220, 220));
+			painter.setPen(border_pen);
+			painter.setBrush(Qt::NoBrush);
+			painter.setFont(header_font);
+			for (int col : visible_cols) {
+				QRectF hr(cx, pos_y, col_widths.value(col, 30), header_h);
+				painter.drawRect(hr);
+				QRectF text_rect = hr.adjusted(1, 0, -1, 0);
+				painter.drawText(text_rect, Qt::AlignCenter, headers.value(col, QString()));
+				cx += col_widths.value(col, 30);
+			}
+		}
+
+		// Draw IO rows
+		painter.setFont(cell_font);
+		int start_idx = block_starts.at(block);
+		int end_idx = (block + 1 < block_starts.size()) ? block_starts.at(block + 1) : total_ios;
+
+		for (int row = 0; row < (end_idx - start_idx); ++row) {
+			int io_idx = start_idx + row;
+			if (io_idx >= ios.size()) break;
+			const auto &io = ios.at(io_idx);
+			qreal ry = pos_y + header_h + row * rowHeight;
+			cx = bx;
+
+			for (int col : visible_cols) {
+				QRectF cr(cx, ry, col_widths.value(col, 30), rowHeight);
+				painter.setPen(border_pen);
+				painter.setBrush(Qt::NoBrush);
+				painter.drawRect(cr);
+
+				QString cell_text = io.value(col, QString());
+				QRectF text_rect = cr.adjusted(1, 0, -1, 0);
+				painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+
+				cx += col_widths.value(col, 30);
+			}
+		}
+	}
 }

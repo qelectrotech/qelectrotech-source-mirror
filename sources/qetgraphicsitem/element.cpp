@@ -18,6 +18,7 @@
 #include "element.h"
 #include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
+#include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontextcommands.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -26,6 +27,8 @@
 #include "../elementprovider.h"
 #include "../factory/elementpicturefactory.h"
 #include "../properties/terminaldata.h"
+#include "../properties/xrefproperties.h"
+#include "../qetinformation.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
@@ -229,12 +232,24 @@ void Element::paint(
 	painter->setBrush(brush);
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
-		painter->drawPicture(0, 0, m_low_zoom_picture);
+		if (!m_low_zoom_picture.isNull())
+			painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
-		painter->drawPicture(0, 0, m_picture);
+		if (!m_picture.isNull())
+			painter->drawPicture(0, 0, m_picture);
 	}
 
 	painter->restore(); //Restore the QPainter after use drawPicture
+
+	// Draw PLC table from in-memory data (overwrites the stale cached picture)
+	if (scene() && painter->isActive() &&
+		m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		const auto &plc_data = m_data.plcMasterData();
+		if (!plc_data.ios.isEmpty())
+			drawPlcTable(painter);
+	}
 
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
@@ -486,6 +501,13 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 				if (qde.isNull())
 					continue;
 
+				// Store plc_table positions for runtime rendering
+				if (qde.tagName() == QLatin1String("plc_table")) {
+					qreal x = qde.attribute("x", "0").toDouble();
+					qreal y = qde.attribute("y", "0").toDouble();
+					m_plc_table_positions.append(QPointF(x, y));
+				}
+
 				if (parseElement(qde)) {
 					++ parsed_elements_count;
 				}
@@ -502,8 +524,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 
 	ElementPictureFactory *epf = ElementPictureFactory::instance();
 	epf->getPictures(m_location,
-			 const_cast<QPicture&>(m_picture),
-			 const_cast<QPicture&>(m_low_zoom_picture));
+			 m_picture,
+			 m_low_zoom_picture);
 
 	if(!m_picture.isNull())
 		++ parsed_elements_count;
@@ -1394,6 +1416,8 @@ ElementData Element::elementData() const
 void Element::setElementData(ElementData data)
 {
 	auto old_info = m_data.m_informations;
+	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
+		? m_data.plcMasterData() : ElementData::PlcMasterData();
 	m_data = data;
 
 	if (old_info != m_data.m_informations) {
@@ -1402,6 +1426,42 @@ void Element::setElementData(ElementData data)
 			diagram()->project()->dataBase()->elementInfoChanged(this);
 		}
 		emit elementInfoChange(old_info, m_data.m_informations);
+	}
+
+	// Propagate PLC master data changes to linked slaves
+	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
+	{
+		const auto &new_plc = m_data.plcMasterData();
+		bool plc_changed = (old_plc.ios != new_plc.ios);
+		if (plc_changed && !m_group_index_map.isEmpty())
+		{
+			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
+			{
+				Element *slave = it.key();
+				int io_idx = it.value();
+				if (!slave || io_idx < 0 || io_idx >= new_plc.ios.size())
+					continue;
+				const auto &io = new_plc.ios.at(io_idx);
+				DiagramContext ctx = slave->elementInformations();
+				ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+					ElementData::translatedPlcIOType(io.type));
+				ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+				ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+				ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+				ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+					[&]() -> QString {
+						if (!diagram() || !diagram()->project())
+							return QString();
+						XRefProperties xrp = diagram()->project()
+							->defaultXRefProperties("plc");
+						autonum::sequentialNumbers seq;
+						return autonum::AssignVariables::formulaToLabel(
+							xrp.slaveLabel(), seq, diagram(), this);
+					}());
+				ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+				slave->setElementInformations(ctx);
+			}
+		}
 	}
 }
 
@@ -1635,6 +1695,216 @@ void Element::updateConductorTexts()
 		if (deti) {
 			deti->setPotentialConductor();
 			deti->updateLabel();
+		}
+	}
+}
+
+/**
+	@brief Element::drawPlcTable
+	Draw the PLC table directly from in-memory ElementData.
+	This overlays the stale picture from the .elmt file with current data.
+*/
+void Element::drawPlcTable(QPainter *painter)
+{
+	if (!painter || !painter->isActive() || !scene())
+		return;
+
+	if (m_data.m_type != ElementData::Master ||
+		m_data.m_master_type != ElementData::PLC)
+		return;
+
+	const auto &plc_data = m_data.plcMasterData();
+	if (plc_data.ios.isEmpty())
+		return;
+
+	// Use plc_table positions from the .elmt file, or default to (0,0)
+	QList<QPointF> positions = m_plc_table_positions;
+	if (positions.isEmpty())
+		positions.append(QPointF(0, 0));
+
+	const int COL_COUNT = 5;
+	const int COL_TYPE      = 0;
+	const int COL_ADDRESS   = 1;
+	const int COL_FUNCTION  = 2;
+	const int COL_COMMENT   = 3;
+	const int COL_CROSSREF  = 4;
+
+	// Build header labels
+	QMap<int, QString> headers;
+	headers[COL_TYPE]     = QObject::tr("Type");
+	headers[COL_ADDRESS]  = QObject::tr("Adresse");
+	headers[COL_FUNCTION] = QObject::tr("Fonction");
+	headers[COL_COMMENT]  = QObject::tr("Commentaire");
+	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+
+	// Override with custom column names
+	if (!plc_data.columnNames.isEmpty()) {
+		QList<int> all_cols;
+		all_cols << COL_TYPE << COL_ADDRESS << COL_FUNCTION << COL_COMMENT << COL_CROSSREF;
+		for (int i = 0; i < qMin(plc_data.columnNames.size(), all_cols.size()); ++i) {
+			if (!plc_data.columnNames.at(i).isEmpty())
+				headers[all_cols.at(i)] = plc_data.columnNames.at(i);
+		}
+	}
+
+	// Build visible columns
+	QList<int> visible_cols;
+	if (!plc_data.columnOrder.isEmpty()) {
+		for (int logical : plc_data.columnOrder) {
+			if (logical >= 0 && logical < COL_COUNT
+				&& plc_data.colVisible.value(logical, true)
+				&& !visible_cols.contains(logical))
+				visible_cols.append(logical);
+		}
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true) && !visible_cols.contains(i))
+				visible_cols.append(i);
+		}
+	} else {
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true))
+				visible_cols.append(i);
+		}
+	}
+	if (visible_cols.isEmpty())
+		return;
+
+	// Column widths
+	QMap<int, qreal> col_widths;
+	for (int col : visible_cols) {
+		if (plc_data.colWidths.contains(col) && plc_data.colWidths[col] > 0)
+			col_widths[col] = plc_data.colWidths[col];
+		else {
+			switch (col) {
+				case COL_TYPE:     col_widths[col] = 35; break;
+				case COL_ADDRESS:  col_widths[col] = 25; break;
+				case COL_FUNCTION: col_widths[col] = 50; break;
+				case COL_COMMENT:  col_widths[col] = 40; break;
+				case COL_CROSSREF: col_widths[col] = 30; break;
+				default:           col_widths[col] = 30; break;
+			}
+		}
+	}
+
+	qreal row_h = plc_data.rowHeight > 0 ? plc_data.rowHeight : 8.0;
+	qreal header_h = plc_data.showHeaders ? (row_h + 2.0) : 0;
+	int total_ios = plc_data.ios.size();
+
+	// Parse break positions
+	QList<int> breaks;
+	for (int bp : plc_data.breakPositions) {
+		if (bp > 0 && bp < total_ios && !breaks.contains(bp))
+			breaks.append(bp);
+	}
+	std::sort(breaks.begin(), breaks.end());
+
+	QList<int> block_starts;
+	block_starts.append(0);
+	for (int bp : breaks)
+		block_starts.append(bp);
+	int block_count = block_starts.size();
+
+	qreal total_width = 0;
+	for (int col : visible_cols)
+		total_width += col_widths[col];
+
+	QPen border_pen(Qt::black, 0.5);
+
+	// Fonts
+	QFont header_font = plc_data.headerFont;
+	if (header_font.family().isEmpty()) {
+		header_font = painter->font();
+		header_font.setBold(true);
+	}
+	QFont cell_font = plc_data.cellFont;
+	if (cell_font.family().isEmpty()) {
+		cell_font = painter->font();
+	}
+
+	for (const QPointF &pos : positions) {
+		for (int block = 0; block < block_count; ++block) {
+			qreal bx = pos.x() + block * (total_width + 3);
+			qreal cx = bx;
+
+			// Draw header background
+			if (plc_data.showHeaders) {
+				painter->save();
+				painter->setPen(Qt::NoPen);
+				painter->setBrush(QColor(220, 220, 220));
+				painter->drawRect(QRectF(cx, pos.y(), total_width, header_h));
+				painter->restore();
+
+				painter->setFont(header_font);
+				painter->setPen(border_pen);
+				painter->setBrush(Qt::NoBrush);
+
+				for (int col : visible_cols) {
+					QRectF hr(cx, pos.y(), col_widths[col], header_h);
+					painter->drawRect(hr);
+					QRectF text_rect = hr.adjusted(1, 0, -1, 0);
+					painter->drawText(text_rect, Qt::AlignCenter, headers.value(col, QString()));
+					cx += col_widths[col];
+				}
+			}
+
+			// Draw IO rows
+			painter->setFont(cell_font);
+			int start_idx = block_starts.at(block);
+			int end_idx = (block + 1 < block_starts.size())
+				? block_starts.at(block + 1) : total_ios;
+
+			for (int row = 0; row < (end_idx - start_idx); ++row) {
+				int io_idx = start_idx + row;
+				if (io_idx >= plc_data.ios.size()) break;
+				const auto &io = plc_data.ios.at(io_idx);
+				qreal ry = pos.y() + header_h + row * row_h;
+				cx = bx;
+
+				for (int col : visible_cols) {
+					QRectF cr(cx, ry, col_widths[col], row_h);
+					painter->setPen(border_pen);
+					painter->setBrush(Qt::NoBrush);
+					painter->drawRect(cr);
+
+					QString cell_text;
+					switch (col) {
+						case COL_TYPE:     cell_text = ElementData::translatedPlcIOType(io.type); break;
+						case COL_ADDRESS:  cell_text = io.address; break;
+						case COL_FUNCTION: cell_text = io.functionText; break;
+						case COL_COMMENT:  cell_text = io.comment; break;
+						case COL_CROSSREF:
+						{
+							cell_text = io.crossRef;
+							for (auto it = m_group_index_map.constBegin();
+								 it != m_group_index_map.constEnd(); ++it) {
+								if (it.value() == io_idx) {
+									Element *slave = it.key();
+									if (slave && slave->diagram() && diagram()
+										&& diagram()->project())
+									{
+										XRefProperties xrp = diagram()->project()
+											->defaultXRefProperties("plc");
+										autonum::sequentialNumbers seq;
+										cell_text = autonum::AssignVariables
+											::formulaToLabel(
+												xrp.masterLabel(),
+												seq,
+												slave->diagram(),
+												slave);
+									}
+									break;
+								}
+							}
+							break;
+						}
+					}
+
+					QRectF text_rect = cr.adjusted(1, 0, -1, 0);
+					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+
+					cx += col_widths[col];
+				}
+			}
 		}
 	}
 }

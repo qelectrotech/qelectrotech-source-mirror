@@ -19,6 +19,8 @@
 #define MASTERELEMENT_H
 
 #include "element.h"
+#include <QHash>
+#include <QMetaObject>
 
 class CrossRefItem;
 
@@ -55,10 +57,14 @@ class MasterElement : public Element
 	private:
 		void xrefPropertiesChanged();
 		void aboutDeleteXref ();
+		void connectSlavePositionUpdates(Element *slave);
+		void disconnectSlavePositionUpdates(Element *slave);
 
 	private:
 		CrossRefItem *m_Xref_item = nullptr;
 		bool m_first_scene_change = true;
+		QHash<Element*, QMetaObject::Connection> m_slave_x_conn;
+		QHash<Element*, QMetaObject::Connection> m_slave_y_conn;
 };
 
 #endif // MASTERELEMENT_H

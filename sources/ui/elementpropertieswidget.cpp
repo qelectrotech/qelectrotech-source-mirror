@@ -28,6 +28,7 @@
 #include "elementinfowidget.h"
 #include "linksingleelementwidget.h"
 #include "masterpropertieswidget.h"
+#include "plclinkwidget.h"
 
 #include <QLabel>
 #include <QUndoStack>
@@ -303,7 +304,10 @@ void ElementPropertiesWidget::updateUi()
 			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
 		case Element::Slave:
-			m_list_editor << new LinkSingleElementWidget(m_element, this);
+			if (m_element->elementData().m_slave_type == ElementData::PLCSlave)
+				m_list_editor << new PlcLinkWidget(m_element, this);
+			else
+				m_list_editor << new LinkSingleElementWidget(m_element, this);
 			break;
 		case Element::Terminale:
 			m_list_editor << new ElementInfoWidget(m_element, this);

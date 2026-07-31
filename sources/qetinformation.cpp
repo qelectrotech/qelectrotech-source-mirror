@@ -190,6 +190,11 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_SUPPLIER_AUX4,
 						 ELMT_QUANTITY_AUX4,
 						 ELMT_UNITY_AUX4,
+						 ELMT_PLC_TYPE,
+						 ELMT_PLC_ADDRESS,
+						 ELMT_PLC_FUNCTION,
+						 ELMT_PLC_COMMENT,
+						 ELMT_PLC_CROSSREF,
 						 "exclude_from_bom" };
 	return list;
 }
@@ -306,6 +311,11 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_SUPPLIER_AUX4)                    return QObject::tr("Fournisseur auxiliaire 4");
 	else if (info == ELMT_QUANTITY_AUX4)                    return QObject::tr("Quantité auxiliaire 4");
 	else if (info == ELMT_UNITY_AUX4)                       return QObject::tr("Unité auxiliaire 4");
+	else if (info == ELMT_PLC_TYPE)                          return QObject::tr("Type PLC");
+	else if (info == ELMT_PLC_ADDRESS)                       return QObject::tr("Adresse PLC");
+	else if (info == ELMT_PLC_FUNCTION)                      return QObject::tr("Fonction PLC");
+	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("Commentaire PLC");
+	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("Réf. croisée PLC");
 	else return QString();
 }
 
