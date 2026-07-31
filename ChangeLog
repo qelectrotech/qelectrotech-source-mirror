@@ -1,5 +1,810 @@
 # QElectroTech - CHANGELOG
 
+## Version 0.101 (Unreleased)
+
+_Compiled from commit history since 0.100._
+
+## Overview
+
+Since 0.100, development has centered on a new headless command-line workflow, terminal-strip and cross-reference improvements, a wave of crash and stability fixes, and continued packaging/CI modernization (Windows MSI, macOS, Snap). Translation coverage was extended again, notably with new Korean support.
+
+## Highlights / Key Features
+
+- **Headless CLI export**
+- New command-line export mode for PDF, PNG and SVG, letting QET projects be rendered without opening the GUI.
+- Added `--export-bom`, `--export-nets`, `--export-links`, `--check-elements`, `--info`, `--set-titleblock` and `--resave` CLI options for scripted/batch workflows.
+- The editor grid is now disabled in CLI-rendered output, and async crash-recovery backups are disabled in headless mode to avoid a segfault.
+- **PDF export improvements**
+- Cross-references are now clickable hyperlinks in exported PDFs, jumping directly to the linked element or terminal.
+- Wiring list and wire-number list can now be exported to CSV, both from the GUI and the CLI.
+- **Diagram duplication**
+- Diagrams/folios can now be duplicated along with all their metadata and embedded elements.
+- **BOM / Nomenclature**
+- Specific elements can now be excluded from the Bill of Materials (Nomenclature).
+- **Terminal & cross-reference (Xref) work**
+- Continued iteration on a `max_slaves` limit for Master elements (added, tuned, briefly reverted, then re-implemented with proper save/load handling).
+- New "potential isolation" option for terminals, and new No/Nc/Common contact types for switch (SW) terminals.
+- Cross-reference items gained an option to hide terminal names, fixed terminal-name sorting for power contacts, and fixed a couple of SIGSEGV crashes (including one when dropping a power NC contact on the diagram).
+- **Windows installer**
+- MSI nightlies now inject the Git revision count into the MSI version's Build field, fixing the long-standing regression where `MajorUpgrade` never triggered because the version string never changed — nightlies had to be uninstalled by hand before.
+- The old `Lancer QET.bat` wrapper was removed in favor of handling launch natively in `QElectroTech.wxs`.
+- NSIS installer updated to the 3.x line, with a bundled Fonts directory and corrected language tables.
+
+## Detailed Changes
+
+### Editor & UX
+
+- Element panel and context-menu/link-button logic refactored for clarity; `MasterElement::isFull` and related conditional checks simplified.
+- Font-size spin boxes in the text editor now enforce a 4pt minimum, fixing a SIGSEGV that occurred when the value reached 0.
+- Text position (`PartText`) now stays stable across save/reopen when the font changes.
+- Element editor: no more spurious warning on save for front-view elements without terminals; "Save As" field is now correctly labelled as a file name rather than an element name.
+
+### Bug Fixes
+
+- Fixed a Unicode-path bug in pugixml on Windows: collection or element paths containing accented characters (é, ü, ñ, …) silently failed to load because the narrow-char API was used instead of the wide-char one.
+- Fixed center-alignment not being restored when reloading a saved table configuration (config serialised `AlignHCenter`, but the loader compared against `AlignCenter`).
+- Fixed a `TerminalData` memory leak in the `Terminal` destructor (confirmed via ASan across several call sites).
+- Fixed several uninitialised-value bugs found with Valgrind, and a couple of thread-unsafe `QStandardPaths` calls in the data/config directory lookup.
+- Fixed a crash when destroying a `QETProject` before its asynchronous backup had finished.
+- Fixed regional system locale sometimes loading the wrong translation.
+- Fixed dynamic element text shifting/jumping when duplicating diagrams, and a wiring-list filter/timing issue.
+- Various smaller fixes: a first-click spurious element move right after selecting a tool, an -Wreorder compiler warning, and several translation corrections (German, French, Chinese).
+
+### macOS
+
+- Fixed the long-standing bug (open since 2022) where double-clicking a `.qet`, `.elmt` or `.titleblock` file launched the app without opening the file — the file-open event is now buffered during a cold launch, before `QETApp` exists, and routed correctly once the app is already running.
+- Continued work on the black-screen-after-PDF-export regression on Apple Silicon, tied to the Metal compositor's async timing.
+
+### Build, Packaging & CI
+
+- Windows nightly build pipeline continued its migration to GitHub Actions; test builds for the VS2026 toolchain were run against the same pipeline.
+- Snap package now stages `libxcb-cursor0`, fixing an xcb plugin load failure on Ubuntu 24.04.
+- CMake install rules for Linux-only targets are now correctly guarded against macOS.
+- `qet-tb-generator` in the Snap build is now pinned to a fixed upstream tag instead of floating.
+
+### Internationalization & Translations
+
+- Expanded Korean (ko) support: UI strings, comments, generic names, installer language strings, translator credits and a new Korean man page.
+- Additional updates to German, French, Chinese (zh), and other translation files, including strings related to the new duplicate-diagram and macro features.
+
+## Developer & Contributor Notes
+
+- Terminal strip and element data model continued to evolve incrementally (multiple passes on `max_slaves` handling, access modifiers, and storage), reflecting ongoing refinement of the terminal editor introduced in 0.100.
+- PDF link handling was factored out into a shared `pdf_links.{cpp,h}` helper, reused by both the interactive export and the new CLI export path.
+
+## Upgrade / Migration Notes
+
+- No project file format changes are expected to break compatibility with 0.100 projects.
+- Users relying on Windows nightlies should note that upgrades will now uninstall the previous nightly automatically, instead of requiring a manual uninstall first.
+
+## How to get help / report bugs
+
+- Use the project issue tracker to report regressions or new bugs, with detailed reproduction steps and example `.qet` files where possible.
+- Include the output of Help → About (application version and Git revision) when reporting build/packaging issues.
+
+
+
+## Version 0.100
+
+_Compiled from provided commit logs and contributor notes._
+
+## Overview
+
+This release (v0.100) collects a large set of new features, UI and editor improvements, element and symbol updates, build and packaging fixes, dependency upgrades, translations, and a broad set of bug fixes and stability improvements. It is intended as a stable, feature-rich stepping stone toward the next major workflows for symbol editing, terminal/strip handling and export improvements.
+
+## Highlights / Key Features
+
+- **Terminal Strip / Terminal Strip Editor**
+- New TerminalStripItem type and related editor workflow added.
+- Support for drawing and displaying terminal bridges and links in the editor.
+- Full editor support (layout preview, save/load into .qet files) and undo support for terminal strip operations.
+- **New Example Projects**
+- Several new example projects included, notably photovoltaic (PV) examples to help users getting started with PV designs.
+- **Improved Export / Print Handling**
+- Export limits adjusted and better handling of QPainter/printing boundaries to avoid export artefacts and out-of-range errors.
+- Export dialog updated to allow larger pixel limits where appropriate.
+- **Element & Symbol Additions**
+- New elements and symbols added (including vendor-specific elements and additional sensors/Arduino components).
+- Improvements to element import & metadata handling.
+- **Packaging & Multi-arch Support**
+- Updated packaging scripts for AppImage, Flatpak, Snap and macOS deployment. Improved aarch64/arm64 support.
+
+## Detailed Changes
+
+### Editor & UX
+
+- Better handling for **rotation, flip and mirror** operations in the element editor:
+- Primitives and text rotation behavior improved.
+- Finer rotation increments and predictable text orientation after flips/rotations.
+- **Wiring and conductor behavior**:
+- More robust creation and movement of wires and conductor bundles.
+- Improved text attachment and positioning for wires and improved stability while editing complex conductor networks.
+- **TerminalStrip editor**: see Highlights - includes drawing, preview, layout editing, persistent storage in the project file and undo support.
+- **Element Editor & Symbol Trim/Sort**:
+- Improved trimming/normalization of element metadata.
+- Better sorting and error handling for element imports (DXF and other formats).
+- Small UI improvements: About dialog updates, autosave spinbox ranges, improved tooltips and mouse-hover help for dynamic texts.
+
+### New & Updated Elements
+
+- New elements added for industrial and automation workflows (including Siemens-related elements, logic elements, sensors and Arduino components).
+- Symbol library additions and cleanup; improved defaults for newly added symbols.
+- Element meta-data cleanup: article numbers, descriptions, and manufacturer fields were normalized and trimmed on import.
+
+### Export / Printing / PDF
+
+- Adjusted internal export limits to avoid hitting QPainter size restrictions; users can now export larger, high-resolution images/prints in more cases.
+- Better handling of page sizes and printer-related geometry using QRectF improvements.
+- PDF export improvements to increase reliability of exported vector content.
+
+### Build, Dependencies, Packaging
+
+- Upgrades of core test and build dependencies:
+- Catch2 upgraded to v2.13.10.
+- googletest upgraded to v1.17.0.
+- CMake fixes and i18n handling corrected for nl_BE and other locales.
+- Packaging scripts updated across platforms (AppImage/Flatpak/Snap/macOS deploy) including fixes for aarch64/arm64.
+- Submodule updates (e.g., qelectrotech-elements, pugixml, SingleApplication) synchronized where needed.
+
+### Internationalization & Translations
+
+- Large translation updates across many languages: German (DE), French (FR), Dutch (NL, including nl_BE), Swedish (SV), Italian (IT), Polish (PL), Portuguese-BR (PT-BR), Serbian (SR), Chinese (Simplified) and others.
+- Fixes and corrections for many UI strings and localized resources.
+
+### Tests, QA & Logging
+
+- Improved logging and machine/config-path reporting; Git revision display refined to only show a revision when available.
+- Unit test updates and fixes to align with updated testing frameworks.
+
+## Bug Fixes (selected)
+
+- Fixed crashes and various null pointer access issues discovered by static and dynamic testing.
+- Resolved multiple reported bugs that caused build failures on some platforms (FTBFS fixes for macOS and others).
+- Fixed issues with automatic conductor/strand numbering in several edge cases (referenced Bug 293 in the commit logs).
+- Resolved text/summary headline issues in the German-language summary generator.
+- Fixes for a number of visually incorrect renderings and layout corner-cases during element transformation (rotate/flip/mirror).
+- Fixed issues that affected export sizes and caused export artifacts (referenced fixes for bug IDs around #329/#330 in commit notes).
+
+## Developer & Contributor Notes
+
+- Reworked parts of the codebase to use QRectF consistently for better compatibility with QPrinter and export pipelines.
+- Code-style cleanups and comment improvements applied throughout the project.
+- Expanded test coverage and dependency refresh to keep CI builds stable.
+
+## Contributors (selected)
+
+Thanks to the many contributors who made this release possible. Selected contributors mentioned in the commit logs include:
+
+- Laurent Trinques
+- joshua
+- plc-user
+- Achim
+- Pascal Sander
+- Andre Rummler
+- Magnus Hellströmer
+- Martin Marmsoler
+- Remi Collet
+
+(See the full commit history for the complete contributor list.)
+
+## Upgrade / Migration Notes
+
+- No database or project file format breaking changes were reported in the provided logs. As always, back up projects before opening them with a new version.
+- If you rely on custom element libraries or third-party submodules, verify submodule synchronization after upgrading.
+- If you are using custom packaging pipelines, review the updated packaging scripts for any changes required by new dependency versions, especially on aarch64/arm64.
+
+## Known Issues & Limitations
+
+- Some very large exports may still be limited by platform-specific rendering restrictions; the export dialog now allows larger pixel limits but extreme sizes may still hit system-level limits.
+- If you use niche element-import workflows (DXF → element import), occasionally metadata normalization may alter whitespace/trim rules - verify newly imported elements in the element editor.
+
+## How to get help / report bugs
+
+- Use the project issue tracker (see repository) to report regressions or new bugs with detailed reproduction steps and example .qet files where possible.
+- Include the output of Help → About (application version and Git revision) when reporting build/packaging issues.
+
+
+
+
+
+====== ChangeLog from 0.8 to 0.9 ======
+
+
+*Diagram editor :
+Improved QElectroTech speed (launch qet, open project, function)
+A drop-down list has been added to the toolbar to change the size of the resize handles.
+
+
+*Element Editor:
+The "keep visual rotation" property of element texts is editable from the element editor.
+Thanks to the work of antonioaja it is now possible to import a dxf directly from the element editor in a completely transparent way for the user.
+In the background QElectroTech uses the dxf2elmt software. https://qelectrotech.org/forum/viewtopic.php?id=2265 https://github.com/antonioaja/dxf2elmt
+Improved responsiveness when multiple shapes are selected or deleted, especially when working on a large converted DXF element.
+https://qelectrotech.org/forum/viewtopic.php?pid=16612#p16612
+
+*Other:
+Add a "side project" tab in the "about" window.
+In the general QElectroTech configuration, a drop down list allows to choose the scaling method for hdpi screens.
+Allow open polygons (i.e. polylines) when saving in dxf format.
+https://qelectrotech.org/forum/viewtopic.php?pid=16611#p16611
+
+Added 'Other' option for slave device contact type.
+https://github.com/qelectrotech/qelectrotech-source-mirror/pull/222
+https://qelectrotech.org/forum/viewtopic.php?id=2264
+
+*Logs:
+
+Added a QElapsedTimer to calculate the time used to reload the item collection.
+Improved QElapsedTimer to calculate the time used to reload the item collection in seconds instead of ms.
+Added Linux pc.gpu.RAM information, but requires mesa-utils dependency on the Linux OS.
+Added information about mounted disk volumes.
+Added CPU architecture for which Qt was compiled in the aboutqetdialog widget and in the logs.
+Added MSVC support to MachineInfo.
+Added RAM information on Windows of available RAM.
+Added QElectroTech version to the log file.
+
+
+
+* Elements collection :
+Improve collection 8274 elements in 1097 categories (i.e. 9371 files).
+
+
+
+* macOS :
+Fix sqlite3 database export on macOS, now I use macports with Digikam scripts instead off Homebrew Package Manager.
+See: https://invent.kde.org/graphics/digikam/-/tree/master/project/bundles/macports
+
+
+*Bug fix:
+see: https://git.tuxfamily.org/qet/qet.git/log/?h=0.8.1
+
+====== ChangeLog from 0.7 to 0.8 ======
+
+
+* Moving the main QET repository SVN trunk to GIT.
+* Add a mirror of the main QET repository, which is synced to hosted at tuxfamily.org to Github.
+* Doxyfile update add QCH file for doxygen-generated docs using qhelpgenerator and then import them into Qt Creator.
+* Improve portability of Doxyfile (Simon).
+* Fix deprecated warnings (Simon).
+* Wrap code for better readability (Simon, Damian).
+
+
+
+
+* Elements collection :
+Improve collection 7378 elements in 1092 categories
+Thanks Sebastien, Dinozzo, Simon,  Rafał, Arnaud, Bisku, Fernando, Riesermauf, Alexis, david, Plc-user, Christophe, Michele,  Galexis, Jevgenijs, Gabor,
+Benoit Michel, Franck, Ludovic, Cyrille, ossau2mation,  Mitzot,  Edgar, Nuri, Friskolon, Baboune41, Wiktor, shateks, Dik, Shateks,  Marcin
+
+
+* Diagram editor :
+
+* The export of the nomenclature to csv file has been completely rewritten :
+It is now possible to choose which information to export as well as the order in which it should be displayed.
+An option allows filtering by type of element: all, terminal block, button / switch.
+Another option allows to display or not the column headers in the csv file.
+With these options, it is possible to create a nomenclature, an order list, but also for printing labels: list of terminals and list of buttons / switches.
+It is possible to save / load a configuration easily.
+Finally, the work being done by an SQLite database, a text field allows the user to create his own SQL query.
+
+* Add Conductors numbering to csv file.
+
+* Add new summary table.
+
+* add BOM creation dialog :
+nomenclature is now integrated into the project (accompanied by several parameters in order to be customizable).
+Tables can have a name.
+Tables an be added to any folio.
+Font margin and alignment (right center left) separately adjustable for headers and table cells.
+Position size and number of lines is adjustable.
+Possibility of linking several tables together, especially when the entire nomenclature cannot be contained in a folio.
+Automatic adjustment of the size of the table in relation to the folio.
+Option to apply the geometry of an array to all the array linked to it, so that everything is homogeneous.
+Save / load table configuration and content to make creation faster.
+Option to automatically adjust the table to the folio.
+Option to automatically add new tables in new folios if the nomenclature cannot be contained in 1 to N folios / tables.
+
+* Table content:
+Fully customizable, you display what you want or want (info to display in the desired order, filter on type of element, filter on content of the info "contains, not contains, not empty etc ..." ).
+The content being generated from a sqlite database, you can write your own request.
+
+
+* Loading of element collections is now faster (thanks to the pugixml parser)
+* The loading of collections of elements no longer freezes QElectroTech.
+* The appearance and disappearance of the search / replace menu is animated.
+* Fix wrong position of slave xref after open a saved project
+
+* Add font color of the conductors (Simon).
+* Add section and color properties for wires.
+
+* config dialog :
+* Add QScrollArea to configdialog and resize to max_screen (Simon).
+* Add gui resize depending on screen size (Simon).
+* Add Screen info user (Simon).
+* Mod ScrollArea on demand (Simon).
+
+
+* Element editor:
+* Polygon editing widget, when you click on a point in the list, the corresponding point changes color in order to better visualize what you are doing.
+On this same list, a right click opens a contextual menu allowing to delete the selected point or inserted a point after the selected one.
+When holding the ctrl + directional arrow key, the selected parts move by 0.1 instead of 1 point.
+* with Ctrl key you can moving by keyboard primitives selected by 0.1 point instead by 1 points, added the same feature for moving the selected aera.
+* Added 140 web standard colors In Element editor (Arnaud).
+
+* Add multiedit feature (martin).
+* Add terminals uuid for next features (martin).
+
+
+* Windows :
+* Fix bad fonts rendering if Qt version >= 5.13.1.
+See : https://bugreports.qt.io/browse/QTBUG-83161
+* Fix backup file on windows
+For unknown reason KautoSaveFile don't write the file on Windows if file
+is open in another part of the code.
+No error is returned and use the method :
+qint64 QIODevice::write(const QByteArray &byteArray) return the good
+number of bytes written but the real file stay empty.
+Probably the problem don't come from KautoSaveFile but QFileDevice or
+QIODevice on windows.
+
+The fix consist to open the file just before write on it and close it
+just after.
+
+* writeToFile on a other Thread to improve this for windows performance (Simon).
+
+
+* macOS :
+* Add Fusion style and fix tilesets tab bar size
+* Enable mouse wheel on tilesets tab bar with command keyboard, thanks Giovanni.
+(removed by Qt upstream) https://codereview.qt-project.org/gitweb?p=qt/qtbase.git;a=commitdiff;h=ea47d152b35158ba07a55d009f57df0e4c2a048f;hp=08cc9b9991ae9ab51bed5b857b6257401401ff6f
+
+
+* Add Snap packages :
+* thanks Max for help.
+https://snapcraft.io/qelectrotech
+See: https://qelectrotech.org/forum/viewtopic.php?id=1426
+* Use kde-neon extension
+The kde-neon extension reduces our boilerplate in snapcraft.yaml
+and reduces the snap size considerably, as we do not need to ship
+any library that is already included in the kde-frameworks-5-core18
+snap itself.
+
+This limits qelectrotech builds to the architectures supported
+by kde-frameworks-5-core18, i.e. only amd64.
+
+https://git.tuxfamily.org/qet/qet.git/log/?qt=grep&q=snap
+
+
+
+* Add Flatpak packages :
+* thanks Mathieu for help.
+See: https://github.com/qelectrotech/qelectrotech-source-mirror/pull/18
+* remove the file name extension added
+automatically to the saved files even if the user sets an unknown file
+extension for the program.
+
+https://git.tuxfamily.org/qet/qet.git/log/?qt=grep&q=flatpak
+
+
+
+
+
+
+
+
+====== ChangeLog from 0.6 to 0.7 ======
+
+
+* Element editor :
+* Element informations (manufacturer, reference etc...) can be created directly from the element editor. For that go to the widget "Element Property"
+* It is no longer required to have a text field, for save the edited element.
+* Improve the behavior with the arrow keys (depending to the current selection  (nothing / one / several).
+* Context menu display only enabled actions.
+* Added new feature -> alignment.
+* Alignment of text field can be edited.
+* Added two new actions in context menu for insert or remove point of a selected polygon.
+* Rectangle can have rounded corner.
+* Polyline: finish the creation of polyline with the last point at the same position of the first point, close the polyline.
+
+
+* Diagram editor :
+* Conductors can now be drawn with two colors.
+* Improve High-DPI support on Windows and Linux plateform.
+* The code for the resize handles has been almost completely redesigned.
+* Dissociate fonts policy and size for independent text item and for summarry pages (foliolist), added a 2 button in config page for open Qfontdialog widget and choose policy for independent text item.
+* Add in config page a Qfontdialog widget for change dynamic text size, font family, orientation angle and text length, by default.
+* Basic shape add new CustomDashLine style with Dash Pattern (<< 10 << 10 );
+* It is now possible to add a text field to an element directly from the diagram.
+* Element text item with are now converted to dynamic element text item.
+* Element editor, part text can't be edited directly.
+* User can export / import the configuration of the texts and texts group of an element.
+* Context menu display only enabled actions.
+* Added new action in the context menu, multiple paste, check box for autonum the pasted element.
+* Multipaste -> improve the conductor autonum, conductors are numerated from top to bottom, and left to right.
+* Text of conductor can be placed at top/bottom/left/right of conductor, and text never overlaps the conductor.
+* Function for search conductor at the same potential.
+When the search function is searching in a terminal element, they search only for the first terminal found, no matter if the terminal element have more than two terminals.
+So the list of conductors at the same potential is missing some conductors.
+This commit fix it, now the search function search for every terminals of a terminal element.
+* When remove an element with several conductors connected to the same terminal, the electrical potential is partially or totally destroyed.
+This commit fix it : When element is removed one or several conductors are created (if needed) to conserve the electrical potential.
+
+* Added new feature -> alignment.
+* Alignment of text field can be edited.
+* Added new context menu action "group the selected texts".
+* Widget used to edit text item group can edit the pos of the group.
+* Element text item group can now be framed.
+* Added two new actions in context menu for insert or remove point of a selected polygon.
+* QETshapeItem rectangle can have rounded corner.
+* Add in config the possibility to start the numbering of the columns of titleblocks at 0.
+* Add new function Search and replace widget Crtl +F
+* Diagram properties, Element properties, Independent text item can be changed (and mass changed) through the search and replace widget.
+* Added 4 tools for edit the depth (Z value) of items.
+* Element panel : elements can be searched by their name but also with by all their informations.
+* New free selection style.
+* Diagram editor : dock used to edit the shape item, can now edit several items in the same time.
+* Dynamic element text item : The font of the dynamic texts can be individually be setted.
+
+* Adding or revoming diagram set project to modified
+* When user cleanning an project, set project to modified
+* Add a shortcut "Ctrl+Shift+P" to quickly open the dialog used for create the auto numbering rules.
+* Add missing StatusTip of some QAction
+
+* When user add a polygon, a message in statusBar show how to finish this shape
+* Polyline: finish the creation of polyline with the last point at the same position of the first point, close the polyline.
+
+
+
+* Plug-in : Add StatusTip instruction for install and launching DXF plugin depending on the operating system
+* when plugin qet-tb-generator"generate terminal blocks and connectors" isn't installed show an QMessageBox instruction now depending on the operating system for install it
+Add in QMessageBox url encoding/decoding for easy download packages
+
+* Elementspanelwidget: adds keyboard shortcuts to quickly move up, down,or move the targeted folio to the beginning of the project
+F3 MoveUp
+F4 MoveDown
+F5 MoveUpTop
+
+* Title block editor :
+Added new title block variables %projectpath, %projectfilename, %projecttitle, previous-folio-num and next-folio-num
+"%saveddate, %savedtime, %savedfilename and %savedfilepath" they variables should be updated after file save or save as dialog is confirmed,
+before file is saved.
+* NameList widget : add a combo box for easily paste texts, like the variables for title block.
+*  The font of the dynamic text field can be edited.
+* The font of the static text field can be edited.
+* The color of the static text field can be edited.
+
+
+
+* Improve for new qet_tb_generator plug-in : added the full path of the current project as
+an argument when calling the plug-in from QET if a project is open.
+If not a file dialog is showed to select the QET project.
+
+
+
+* QET create a backup file, use to restore the project when a crash occur.
+* Use KAutoSaveFile for the backup system, instead of home made function.
+* Use of QSAveFile instead a QFile.
+* User can enable and edit autosave timer.
+* let user define the file system path of the common,custom elements collections, and custom title blocks template.
+
+
+* QetGraphicsItem, remove the function applyRotation and rotateBy, and use instead the native function of QGraphicsItem : setRotation
+* Conductor is an herited class of QGraphicsObject, instead of QObject and QGraphicsPathItem
+* Clean (and reduce the size) the class QETDiagramEditor, mostly by replacing the connection syntax "signal -> slot" by "signal -> lambda".
+* Replace deprecated QMatrix by QTransform.
+
+
+* DXF export : fix some double items in dxf file.
+* DXF export : add some colors for basic shapes inside dxf.
+
+
+* Bug fix :
+* Fix compilation warning (clang and gcc).
+
+* Fix element text item alignment work well when text rotation != 0.
+* Fix crash when the properties of a element text item group
+* Fix crash occurred by the conductor and shape "ghost".
+* Fix element text alignment work also when font size change.
+* fix :
+1- When open a .qet by double click on it, QET ask user for open the backup file, of this .qet.
+2- On windows, if user open a project from the recent files menu, when close QET the file is deleted ￼  user lose her work.
+clear the element texts when paste an element with the option "Do not store the labels of items in the copy paste" enabled.
+* elements can't be moved up and left, when there rotation are different than 0.
+* minor fix : slave link dialog doesn't display the good label, when the label of master element is build from formula.
+* Fix : in some condition, dynamic text are not at the same position when open a project.
+* On windows when user drag and drop an element from the common elements collection to the custom elements collection,
+the element file stay in read only mode, and so user can't save the element
+* Improvement : minimize the unwanted gap of the top right folio of the view (see https://qelectrotech.org/forum/viewtopic.php?pid=9379#p9379)
+* Fix: bug 168
+* Fix : when create multiple conductors with the free hand selection, the checking of existing potentiel don't search trought a folio report.
+* Fix:  DXF export.
+* Minor fix : remove from the element information the html hexadecimal and decimal characters of line feed and carriage return.
+* fix : in the diagram editor, when we select several shapes at the same time, the properties widget only apply the change to one shape.
+* Bug fix : when user load a project which contains summary pages, project was marked modified (summary was created on the fly and moved from the end on second
+position), now the project is no longer marked as amended when user have one or multiples summary pages when loading this project.
+* Static text of element are now exported to dxf
+* Fix Static text size of element exported to dxf
+* Improvement : minimize the unwanted gap of the top right folio of the view
+* Fix : when create multiple conductors with the free hand selection, the checking of existing potentiel don't search trought a folio report.
+* Don't display gui when qet is launched with specific argument
+
+
+
+====== ChangeLog from 0.5 to 0.6 ======
+In the official collection, there are now 4106 elements, and 539 categoris for a total of 4645 files
+
+* Improved performance, added multithreading to speed up the loading of items when launching QET.
+* RAM consumption has been considerably reduced.
+* New "collections" panel.
+* Automatic numberings (autonum), Variables and prefix.
+* Folio generator
+* Management Policy
+* New thickness properties for conductors.
+* The thickness of the lines of all basic shapes (lines, rectangles, ellipses, polygons) can be changed from 0,2px to 50,0px.
+* The color of lines and fillings of basic shapes can be choosed from a color palette or set with a html color code.
+* Added Copy/paste from another project.
+* Online documentation and links to download the latest packages of the version under development for Windows and MacOS are available directly from the software.
+* Resetting the layout of the summary pages.
+* In the panel left split the view into ￼a several docks.
+* ￼High-DPI support (Qt 5.6.0)
+* new python plugin to generate terminal block.
+* Windows packages are now created on a Debian operating system using cross-compilation and targeted to make executable binary files for these operating systems.
+This technical evolution allows a significant time saving during the creation of the packages. And we can provide also in the same time Windows XP and Vista packages by cross-compil with Qt 5.7.1 environment
+* The Mac OS X executable binary files are created on a virtual environment, moved compiler to latest LLVM clan version, improved dmg packages with added Info.plist.
+* An annoying memory leak has been found and solved. Afters hours of use, some users noticed that the RAM consumption growed steadily, up to 10GB or more. This problem is now solved.
+
+
+
+====== ChangeLog from 0.4 to 0.5 ======
+In the official collection, there are now  2625 elements, and 418 catégoris for a total of 3043 files.
+
+* Port to Qt 5 framework
+* New QSettings native format for config files.
+* In the diagram editor, the grid is not displayed by default outside the diagram, the minimum zoom is blocked. A button allows you to un-validate this operation.
+* It is now possible to put the tittle block on the right vertical mode.
+* The default tittle block can be defined for the next folios of the project.
+* The summary now takes the font set in the QElectroTech.conf
+* The floating dock is now operational, variables, actions are taken into account on the fly.
+* A transformation tool transforms quickly and finely each primitive by handles.
+* Add UUID tag for element XML.
+* The database enables faster loading a large number of managing symbols in tables changes pixmaps collections, it no longer compares the modification date of the files but their use UUID attributes to update the cache .
+* In terms of basic shapes, the transform tool works directly on vectors, it replaces the reduction tool / enlargement that has just been deleted as unnecessary.
+* Improve Undo command by QPropertyUndoCommand class.
+
+
+
+====== ChangeLog from 0.3 to 0.4 ======
+In the official collection, there are now 2298 elements, and 376 catégoris for a total of 2674 files.
+
+* We have removed the flag '-fno-ipa-sra "This settled the compilation problems on Mac OS X and FreeBSD clang.
+* The official collection has been redesigned, through the work of Nuri a new structure is in place.
+* A menu has been added, allowing you to change the application language.
+* we added a summary creation tool.
+* Added button "export the nomenclature" transforms data from diagrams to CSV file for spreadsheet.
+ Arun wrote a detailed manual in English.
+* New tools have been added, they can create mechanical connections and draw cabinets, desks, junction boxes, or areas on the schematic (line tool, rectangle, ellipse, polygon type: respect for style dashes).
+* An aid in positioning cross, drawing, was added.
+* The locked state images and basic forms (basic shapes) is now stored in the project.
+* The "control" during the movement of an element, text field disables snapping to the grid, for free positioning.
+It is now possible to choose the background folios in white or gray.
+* Add supports trackpad gestures (multitouch).
+The dates of the cartridges are now using the short system date and date format according to the language detected setting in the OS.
+We take advantage of the transition to standard C ++ 11, and a big cleanup in the code was done.
+* The undo action or redo the undo stack are now animated graphically.
+When the action save, save as, the status bar displays the name and path of the backup job.
+Qet is now able to come to load a style sheet (stylesheet) directly from the conf directory.
+* A DXF export has been added, the entire project folios can be exported in this format.
+* Added reports folio, Cross references.
+* Added a variable font size for text of conductors.
+* Added new properties to all conductors at the same potential, even through referrals.
+* When several conductors have the same value potential equalization, it is not useful to display on all conductors.
+* Added button to activates the automatic connection of the conductors of the element when moving it.
+* Numbering rules are now available for the entire project.
+Qet detects the Windows version and applies the appropriate graphic style, depending on the version of Windows.
+
+
+====== ChangeLog from 0.3 rc to 0.3 ======
+First, the collection of symbols has made a big step forward, with about 1560 new elements.
+There are now symbols for pneumatics, hydraulics, process, solar, cold, etc. Considerable effort has been done to organize the collection in a better way.
+We hope that the new organisation is clearer for all. We would like to thank all the contributors who send us symbols.
+
+=====-Element Editor: =====
+Considerable work has be done to replace the manual defining zone of the symbol, aka hotspot.And fix bugs, It is now automatic. You do not have to care about it anymore.
+Primary colors have been added for the drawing shapes.
+A contextual menu (right click) has been added. So, you can now work more quickly with symbols. It is also more user-friendly.
+
+====== ChangeLog from v0.3 rc ======
+
+=====-Element Editor: =====
+* Replacing checkboxes with lists of colors.
+* Removed the manual hotspot, it is now automatic and you do not have to worry.
+Officially Collection: a large classification work on the structure was realized. It should be clear to everyone.
+The collection is enriched with 1711 items in 286 categories (ie 1997 files)
+
+=====-Schema Editor:=====
+* Added import image, image rotation, image resizing and saving the file in the project.
+(Double click on the image called a widget and cursor that reduce or enlarge the selected image.)
+NB: Following the "edit image" entry will also be added in the right click menu.
+* F5 keyboard shortcut can recharge symbol collections.
+Some bugs have been resolved, and the translation status continues to grow.
+
+
+======ChangeLog from v0.3 beta ======
+Two more items for the changelog:
+* In the official collection, there are now 1672 elements and 256 categoris for a total of 1928 files. In version 0.3 alpha, there were 1465 elements and 233 categories, while version 0.22 had153 elements and 51 categories.
+
+*Progress in the translation (see http://qelectrotech.org/wiki/doc/translation/stats for current state)
+* Functions (edit element and find in panel) have been moved to the context
+Here is the changelog, for version 0.3 beta:
+* Functions (edit element and find in panel) have been moved to the context menu, that can be accessed with right click. This is more user friendly.
+* Refresh of categories when an element is moved.
+* DateNow button added in the "Diagram property" dialog.
+* Dotted lines can now been added between conductors.
+* Rich text can be added to the diagram text fields.
+[screenshot]
+* HTML WYSIWYG editor for rich text: bold, italic, underlined, font size from 6 to 72 pixels, font colour, etc.
+* You can change between the two modes(Selection mode <-> View mode) with the scroll button.
+* Symbol editor: focus on the new value for language, languages sorted in alphabetical order.
+* Added a widget that reflects the loading of a big project.
+* Automated numbering of conductors according to your rules. See note from Joshua http://qelectrotech.org/wiki/doc/autonum
+* Added a dialog to automatically rotate the text if the associated conductor is vertical or horizontal. Parameters are saved in qelectrotech.conf
+* Added basic colours on the tools for lines and for the filling of the primitives, and also for the style line and point in the element editor.
+* Added several protection to prevent from saving an element if one of its primitive is beyond the hotspot.
+
+
+====== ChangeLog from 0.22 to 0.3a ======
+
+===== Application =====
+
+Elements collection: QElectroTech now provides 1465 elements within 233 categories (0.22 provided 153 elements within 51 categories). Most elements are related to electricity though some relate to chillers, solar, hydraulic and pneumatic engineering.
+A new kind of collections appeared to store title block templates; as for elements, there is a distinction between common (system-wide) templates and custom (user-wide) templates.
+Translations:
+English, Spanish, French, Portuguese and Czech translations have been maintained.
+Russian translations have been removed because they are not maintained anymore.
+Polish, German, Italian, Arabic and Croatian translations have been added.
+Following translation to Arabic, some work was done to improve Right-To-Left languages support.
+Elements names are fully translated to English, French, Czech and Polish.
+Main windows: added a “What's this?” action.
+QElectroTech now handles *.titleblock files.
+
+===== Diagram editor =====
+
+It is now possible to move and rotate all texts on a diagram : element texts, conductor texts and independent texts.
+When moving a text related to an electrical element, this element is highlighted.
+Texts related to a conductor cannot be moved too far away from it.
+It is now possible to create diagrams with more than 100 rows/columns.
+Elements panel:
+During a drag and drop operation, the hovered item is now expanded after a short time not moving the mouse.
+Items are now expanded/collapsed by a double click.
+Common, custom and embedded collections of title block templates are displayed within the elements panel.
+Elements previews and names are now cached into a SQLite database stored in the user configuration directory, thus speeding up the elements panel (re)loading
+The elements panel now displays the folio index before each diagram title.
+UI consistency: renamed “Import element” to “Open an element file”, separated this action from those related to the current selection, and ensured elements-related actions are disabled when selecting a project/diagram/title block template.
+Freshly integrated elements are now highlighted in the elements panel – this behaviour can be disabled though.
+When clearing the search field, the panel state is restored to its previous state.
+Title blocks are now rendered using templates:
+For each diagram, users can choose the template to be used in the diagram properties.
+They may also drag and drop it from the elements panel to the diagram.
+Title block templates are always integrated within the parent project.
+Fixed a bug in the print preview dialog.
+Added a F2 shortcut for the widget “Edit the color of the given conductor”.
+As elements, diagrams now have a “version” attribute for compatibility purposes.
+Better handling of file opening for documents saved with newer versions of QElectroTech.
+Diagram loading: removed an optimization that could lead to conductors not being loaded when several terminals share the same coordinates.
+Users may now enter visualisation mode by pressing Ctrl and Shift.
+Printing: when printing diagrams with no title block, use the space left by the title block.
+Added a few status and “What's this?” tips.
+Got rid of the green icon used for projects, changed a few other icons.
+
+===== Element editor =====
+
+Both static and dynamic texts can now be rotated
+Added “dotted” line style
+Added white color for texts
+Newly added parts are placed above existing ones.
+
+===== Title block template editor =====
+
+A third kind of editor was implemented so users can create their own title block templates:
+
+It allows users to customize the layout and content of cells that constitute the title block.
+Cells can be merged and splitted.
+Their width can be fixed, relative to the total width or relative to the remaining widths.
+Their height is a simple fixed length.
+They contain either a logo (be it in SVG or a usual bitmap format) or some text.
+The text value is optionally preceded by a label.
+As other texts within QElectroTech, labels and texts can be translated to other languages.
+Texts and labels may contain variables (e.g. %company-name); these variables are replaced by real world values once the template is applied to a diagram.
+Those real-world values can be set among the diagram properties.
+
+
+====== Changelog 0.11 -> 0.2 ======
+À partir de la version 0.2, QElectroTech est disponible en français, anglais, mais aussi :
+  * en espagnol, grâce aux traductions de Youssef ;
+  * en russe, grâce aux traductions de Yuriy ;
+  * en portugais, grâce aux traductions de José.
+L'application utilise désormais le thème d'icônes Oxygen, réalisé par Nuno Pinheiro pour le projet KDE.
+
+===== Notion de fichier projet =====
+Un fichier .qet peut désormais contenir zéro, un ou plusieurs schémas électriques. Les éléments composant ces schémas sont embarqués dans le fichier projet au moment où ils sont posés sur un schéma. Le panel d'éléments affiche donc désormais :
+  * les projets ouverts, avec, sous chaque projet :
+    * les schémas de ce projet,
+    * la collection embarquée du projet (catégories et éléments utilisés dans les schémas)
+  * la collection commune fournie par QET,
+  * et la collection personnelle de l'utilisateur.
+
+===== Éditeur de schémas =====
+  * Il est désormais possible de déplacer et copier les catégories et éléments par simple glisser-déposer (drag'n drop) dans le panel d'éléments.
+  * La collection embarquée est manipulable au même titre que la collection utilisateur. Les éléments inutilisés dans le projet apparaissent sur fond rouge et un dialogue permet de les purger rapidement.
+  * Chaque projet embarque également (au niveau de ses propriétés) les paramétrages par défaut pour les nouveaux schémas, cartouches et conducteurs.
+  * Il est possible de changer l'ordre des schémas dans le projet en déplaçant les onglets qui les représente. Dans le champ "Folio" des cartouches, on peut se référer à la position du schéma courant ou au nombre total de schémas dans le projet en écrivant respectivement %id et %total.
+  * Lors du chargement d'un fichier .qet, si des éléments ne sont pas trouvés, ils sont remplacés par un élément "fantôme", ce qui évite de perdre certaines informations lors de l'enregistrement du fichier.
+  * Le rendu avec un zoom réduit a été amélioré.
+  * Enfin, le logiciel gère l'ouverture en lecture seule d'un fichier projet.
+
+==== Impression et export ====
+
+À partir de la version 0.2, QElectroTech :
+  * propose d'utiliser une imprimante réelle ou bien de générer un document PDF ou PostScript, et ce sous Windows comme sous X11.
+  * génère un aperçu avant l'impression d'un projet. Cet aperçu permet de choisir les options d'impression mais également les schémas à imprimer ou non.
+
+À noter toutefois une limitation pour les impressions PDF/PS sous Windows : le dialogue de mise en page, permettant de spécifier le format du papier ainsi que ses marges, n'est pas disponible.
+
+Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a également été refait dans l'optique d'un export simultané de tous les schémas du projet.
+
+===== Éditeur d'éléments =====
+
+  * Lorsque l'on dessine une ligne dans l'éditeur d'éléments, il est possible de choisir un embout différent pour chaque extrémité, comme par exemple une flèche, un cercle, un carré ou, tout simplement, un bout de ligne normal.
+  * La forme "Rectangle" a été ajoutée.
+  * On peut enregistrer un élément en désignant un fichier (= comportement en 0.11) ou bien en choisissant un élément cible dans une liste reprenant l'arborescence du panel d'éléments.
+  * Si l'on maintient la touche Shift lorsque l'on ajoute une partie (droite, cercle, texte, ...), l'outil en cours est conservé après le dessin. Sinon l'éditeur repasse sur l'outil de sélection.
+  * La grille a été améliorée : sa densité varie en fonction du zoom ; les points correspondant à ceux de la grille de l'éditeur de schémas sont mis en valeur.
+  * L'accrochage à la grille (aka "snap to grid", également connu sous le nom de grille magnétique ou encore grille aimantée) a été ajouté. Le dessin s'y accroche désormais avec une précision de 1px. On peut travailler en coordonnées libres en maintenant la touche Ctrl enfoncée durant le dessin.
+  * Le copier-coller a été implémenté : il est possible de coller :
+     * avec le bouton du milieu de la souris
+     * en choisissant une "zone de collage" sur l'élément (Ctrl+Shift+V)
+     * directement (Ctrl+V) : les parties collées sont placées à côté des parties copiées ; si on recolle les parties, elles sont collées encore un cran à côté, et ce de manière incrémentale.
+  * Des contrôles sont désormais effectués à l'enregistrement : présence de bornes, respect du cadre, etc.
+  * Uniformisation des menus par rapport à l'éditeur de schémas
+
+====== Changelog 0.1 -> 0.11 ======
+
+===== Fonctionnalités et interface =====
+
+  * L'application est désormais capable d'ouvrir un fichier élément passe en paramètre
+  * L'application se lance désormais une seule fois par utilisateur
+  * Lors de l'ouverture d'un fichier en dehors de l'application alors que QET est déjà démarré celui-ci essaye de s'afficher ou d'attirer l'attention de l'utilisateur.
+  * L'application vérifie que ce fichier n'est pas déjà ouvert dans tous les éditeurs de schémas / éléments.
+  * Ajout de fichiers permettant d'automatiser les associations de fichiers sous Windows (.bat et .reg) et X11 (.desktop et .xml)
+  * Ajout de menus "Récemment ouverts" pour accéder aux fichiers récents dans les éditeurs de schémas et éléments.
+  * Ajout d'un splash screen
+  * La hauteur du schéma est désormais gérée via un système de lignes, dont le nombre et la hauteur sont ajustables.
+  * Il est également possible d'afficher ou non les en-têtes des lignes et/ou des colonnes.
+  * Ajout d'une option --lang-dir
+  * Ajout d'une description dans le dialogue des options d'impression
+  * Ajout de pages de manuel Unix (`man') en anglais et en français
+
+===== Corrections de bugs =====
+
+  * Bug #12 : QET provoquait une erreur de segmentation dès son démarrage dans un environnement sans systray
+  * Bug #14 : il manquait un / dans le chemin proposé lors de l'impression vers un PDF
+  * Bug #15 : Mauvais positionnement des champs de texte sur le schéma
+  * Bug #16 : Mauvaise gestion des modifications du texte d'un conducteur
+  * La classe DiagramView écrivait sur la sortie d'erreur sans fin de ligne
+  * L'option --config-dir était mal prise en compte
+  * Après fermeture d'un schema, le menu Fenêtres n'était pas correctement mis à jour
+  * Les textes des éléments, des conducteurs, du cartouche ainsi que les textes indépendants utilisent désormais tous la même police.
+  * Remise à niveau de l'impression suite au passage à Qt 4.4
+
+===== Code et détails techniques =====
+
+  * Corrections pour que QET compile avec gcc-4.3
+  * Les classes Conductor et Element héritent désormais de QObject (dépendance sur Qt 4.4)
+  * Affinage du constructeur de la classe QETApp
+  * Moins d'avertissements à la compilation (testé avec gcc 4.3)
+  * Moins d'inclusions non pertinentes
+
+
 ## Version 0.100
 
 _Compiled from provided commit logs and contributor notes._

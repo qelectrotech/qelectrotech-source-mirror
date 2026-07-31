@@ -16,7 +16,7 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductornumexport.h"
-
+#include "qetproject.h"
 #include "qetapp.h"
 #include "diagram.h"
 #include "diagramcontent.h"

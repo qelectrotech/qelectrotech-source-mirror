@@ -11,6 +11,9 @@
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <?ifndef QtPlatformArgs ?>
+  <?define QtPlatformArgs="" ?>
+  <?endif?>
 
   <Package
     Name="QElectroTech"
@@ -58,7 +61,7 @@
                   Directory="DesktopFolder"
                   Name="QElectroTech"
                   Target="[INSTALLDIR]bin\qelectrotech.exe"
-                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; -style windowsvista"
+                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; $(var.QtPlatformArgs)"
                   Icon="qet.ico"
                   WorkingDirectory="INSTALLDIR" />
         <RegistryValue Root="HKCU"
@@ -73,7 +76,7 @@
                   Directory="ProgramMenuFolder"
                   Name="QElectroTech"
                   Target="[INSTALLDIR]bin\qelectrotech.exe"
-                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; -style windowsvista"
+                  Arguments="--common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; $(var.QtPlatformArgs)"
                   Icon="qet.ico"
                   WorkingDirectory="INSTALLDIR" />
         <RegistryValue Root="HKCU"
@@ -94,8 +97,13 @@
         <RegistryValue Root="HKCR" Key="QElectroTech.Document" Type="string" Value="QElectroTech Project" />
         <RegistryValue Root="HKCR" Key="QElectroTech.Document\DefaultIcon" Type="string"
                        Value="[INSTALLDIR]ico\qelectrotech.ico" />
+        <!-- Pass the same arguments as the shortcuts above: opening a .qet from
+             Explorer sets the working directory to the document's folder, so a
+             bare command line leaves QET unable to locate its data. Without the
+             lang-dir argument the UI falls back to the source language, which
+             is French. See issue #554. -->
         <RegistryValue Root="HKCR" Key="QElectroTech.Document\shell\open\command" Type="string"
-                       Value="&quot;[INSTALLDIR]bin\qelectrotech.exe&quot; &quot;%1&quot;" />
+                       Value="&quot;[INSTALLDIR]bin\qelectrotech.exe&quot; --common-elements-dir=&quot;[INSTALLDIR]elements/&quot; --common-tbt-dir=&quot;[INSTALLDIR]titleblocks/&quot; --lang-dir=&quot;[INSTALLDIR]lang/&quot; $(var.QtPlatformArgs) &quot;%1&quot;" />
       </Component>
     </ComponentGroup>
 

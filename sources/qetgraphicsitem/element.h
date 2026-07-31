@@ -62,6 +62,20 @@ class Element : public QetGraphicsItem
             Thumbnail = 64,
             ConductorDefinition = 128};
 
+		/**
+		 * @brief The LinkInfo struct
+		 * Stores link data for element connections.
+		 * For slave elements, group_index indicates which contact group
+		 * of the master this slave is assigned to (-1 = no group assigned).
+		 */
+		struct LinkInfo {
+			QUuid uuid;
+			int group_index = -1;  ///< Index into master's slaveContactGroups, -1 = not assigned
+
+			LinkInfo() = default;
+			LinkInfo(const QUuid &u, int gi = -1) : uuid(u), group_index(gi) {}
+		};
+
 		Element(const ElementsLocation &location,
 			QGraphicsItem * = nullptr,
 			int *state = nullptr,
@@ -181,6 +195,9 @@ class Element : public QetGraphicsItem
 		virtual void initLink(QETProject *);
 		QList<Element *> linkedElements ();
 
+		int groupIndexForElement(Element *elmt) const;
+		void setGroupIndexForElement(Element *elmt, int index);
+
 		/**
 		 * @brief linkType
 		 * use elementData function instead
@@ -228,7 +245,8 @@ class Element : public QetGraphicsItem
 	protected:
 			//ATTRIBUTES related to linked element
 		QList <Element *> connected_elements;
-		QList <QUuid>     tmp_uuids_link;
+		QList <LinkInfo>  tmp_uuids_link;
+		QHash <Element *, int> m_group_index_map;  ///< Maps linked elements to their group index (for slave->master links)
 		QUuid             m_uuid;
 		kind              m_link_type = Element::Simple;
 
@@ -238,11 +256,14 @@ class Element : public QetGraphicsItem
 		bool m_freeze_label = false;
 		QString m_F_str;
 
-		ElementsLocation m_location;
-		QList <Terminal *> m_terminals;
-		const QPicture m_picture;
-		const QPicture m_low_zoom_picture;
-		ElementData m_data;
+	ElementsLocation m_location;
+	QList <Terminal *> m_terminals;
+	QPicture m_picture;
+	QPicture m_low_zoom_picture;
+	ElementData m_data;
+	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
+
+	void drawPlcTable(QPainter *painter);
 
 	private:
 		bool m_must_highlight = false;

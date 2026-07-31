@@ -1,3 +1,18 @@
+[Qt6 / CMake]
+Building the Qt6 line with CMake additionally requires the private
+development headers of QtGui. On Debian/Ubuntu these live in a separate
+package that is NOT pulled in by qt6-base-dev:
+
+    apt install qt6-base-private-dev
+
+(other distributions: install your Qt 6 "private headers" development
+package, e.g. qt6-qtbase-private-devel on Fedora)
+
+QET needs the private QtGui API (QPdfEngine) for clickable hyperlinks in
+the PDF export. Without the package, find_package(Qt6 ... GuiPrivate)
+succeeds but CMake later fails at generate time with:
+"Imported target Qt6::GuiPrivate includes non-existent path".
+
 [ca]
 Dependències:
 libQt5 (paquets libqt5*)

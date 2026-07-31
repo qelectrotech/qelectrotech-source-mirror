@@ -138,7 +138,7 @@ QString FileElementCollectionItem::localName()
 		{
 			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
-			if(docu.load_file(str.toStdString().c_str()))
+			if(docu.load_file(str.toStdWString().c_str()))
 			{
 				if (QString(docu.document_element().name())
 					== "qet-directory")
@@ -274,7 +274,9 @@ bool FileElementCollectionItem::isCompanyCollection() const
 */
 bool FileElementCollectionItem::isCustomCollection() const
 {
-	return fileSystemPath().startsWith(QETApp::customElementsDirN());
+	const QString dir = QETApp::customElementsDirN();
+	const QString path = fileSystemPath();
+	return path == dir || path.startsWith(dir + QLatin1Char('/'));
 }
 
 /**
@@ -325,6 +327,26 @@ void FileElementCollectionItem::setUpData()
 			{ search_list.append(context.value(key).toString()); }
 			search_list.append(localName(loc));
 			setData(search_list.join(" "));
+
+			// Tooltip: show what a truncated tree label can't - the full
+			// localized name and the descriptive element information.
+			// Reuses the location/context already parsed for the search
+			// index above; the collection path stays as the last line
+			// (it used to be the whole tooltip).
+			QStringList tip;
+			tip << localName(loc);
+			for (const auto &key : { QStringLiteral("description"),
+									 QStringLiteral("manufacturer"),
+									 QStringLiteral("manufacturer_reference") })
+			{
+				const QString value = context.value(key).toString();
+				if (!value.isEmpty())
+					tip << value;
+			}
+			tip << collectionPath();
+			tip.removeDuplicates();
+			setToolTip(tip.join(QLatin1Char('\n')));
+			return;
 		}
 	}
 

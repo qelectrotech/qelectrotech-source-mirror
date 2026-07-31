@@ -20,6 +20,8 @@
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../qetapp.h"
 #include "../elementscene.h"
+#include "../../utils/qetutils.h"
+#include <QApplication>
 
 #include <QColor>
 #include <QFont>
@@ -141,7 +143,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("y", QString::number(y));
 	root_element.setAttribute("z", QString::number(zValue()));
 	root_element.setAttribute("rotation", QString::number(QET::correctAngle(rot)));
-	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
@@ -213,7 +215,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 
 	if (dom_elmt.hasAttribute("font")) {
 		QFont font_;
-		font_.fromString(dom_elmt.attribute("font"));
+		QETUtils::fontFromString(font_, dom_elmt.attribute("font"));
 		setFont(font_);
 	}
 	else if (dom_elmt.hasAttribute("font_size")) {
@@ -495,12 +497,16 @@ bool PartDynamicTextField::keepVisualRotation() const {
 	@param event
 */
 void PartDynamicTextField::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-	if((event -> buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
-		QPointF pos = event -> scenePos() + (m_origin_pos - event -> buttonDownScenePos(Qt::LeftButton));
-		event -> modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene() -> snapToGrid(pos));
-	}
-	else
+	if ((event->buttons() & Qt::LeftButton) && (flags() & QGraphicsItem::ItemIsMovable)) {
+		// Suppress spurious moves from the properties dock resizing the viewport.
+		const QPointF d = event->screenPos() - event->buttonDownScreenPos(Qt::LeftButton);
+		if (d.manhattanLength() < QApplication::startDragDistance())
+			return;
+		QPointF pos = event->scenePos() + (m_origin_pos - event->buttonDownScenePos(Qt::LeftButton));
+		event->modifiers() == Qt::ControlModifier ? setPos(pos) : setPos(elementScene()->snapToGrid(pos));
+	} else {
 		QGraphicsObject::mouseMoveEvent(event);
+	}
 }
 
 /**

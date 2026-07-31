@@ -594,7 +594,7 @@ void QetShapeItem::addHandler()
 		{
 			m_handler_vector = QetGraphicsHandlerItem::handlerForPoint(mapToScene(points_vector), QETUtils::graphicsHandlerSize(this));
 
-			for(const auto handler : qAsConst(m_handler_vector))
+			for(const auto handler : std::as_const(m_handler_vector))
 			{
 				handler->setZValue(this->zValue()+1);
 				handler->setColor(Qt::blue);

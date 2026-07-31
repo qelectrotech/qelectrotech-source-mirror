@@ -1,0 +1,63 @@
+# Configuration for git-cliff, tuned to mimic github_changelog_generator's output style
+# Doc: https://git-cliff.org/docs/configuration
+
+[changelog]
+header = """
+# Changelog\n
+All notable changes to QElectroTech are documented here.\n
+"""
+
+# Format proche de github_changelog_generator : titre de version avec lien de comparaison + date
+body = """
+{% if version %}\
+    ## [{{ version }}]\
+    {%- if previous.version %}({{ previous.version }}...{{ version }}){% endif %} \
+    - {{ timestamp | date(format="%Y-%m-%d") }}
+{% else %}\
+    ## [Unreleased]
+{% endif %}\
+{% for group, commits in commits | group_by(attribute="group") %}
+    ### {{ group | upper_first }}
+    {% for commit in commits | unique(attribute="message") %}
+        - {{ commit.message | trim | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](../../commit/{{ commit.id }}))\
+    {% endfor %}
+{% endfor %}\n
+"""
+
+footer = ""
+trim = true
+
+[git]
+conventional_commits = false
+filter_unconventional = false
+split_commits = false
+protect_breaking_commits = false
+filter_commits = false
+tag_pattern = "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
+skip_tags = "nightly"
+ignore_tags = "nightly"
+topo_order = false
+sort_commits = "newest"
+
+# Ne garder que la première ligne du message (résumé), le corps détaillé
+# est retiré ici plutôt qu'au moment de l'affichage, pour que la
+# déduplication par message fonctionne correctement.
+commit_preprocessors = [
+  { pattern = "(?s)\n.*", replace = "" },
+]
+
+# Groupement par mots-clés (FR + EN), puisque l'historique QET
+# ne suit pas Conventional Commits strictement.
+commit_parsers = [
+  { message = "^[Mm]erge", skip = true },
+  { message = "^(?i)(fix|corrig|répar|bug)", group = "🐛 Bug Fixes" },
+  { message = "^(?i)(feat|ajout|add|nouvelle|nouveau)", group = "🚀 Features" },
+  { message = "^(?i)(doc|traduc|translation)", group = "📝 Documentation" },
+  { message = "^(?i)(refactor|clean|nettoy|optimi)", group = "♻️ Refactoring / Cleanup" },
+  { message = "^(?i)(element|librairie|library)", group = "📦 Elements / Libraries" },
+  { message = ".*", group = "🔧 Other Changes" },
+]
+
+[remote.github]
+owner = "qelectrotech"
+repo = "qelectrotech-source-mirror"

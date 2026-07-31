@@ -523,7 +523,9 @@ bool ElementsLocation::isCompanyCollection() const
 */
 bool ElementsLocation::isCustomCollection() const
 {
-	return fileSystemPath().startsWith(QETApp::customElementsDirN());
+	const QString dir = QETApp::customElementsDirN();
+	const QString path = fileSystemPath();
+	return path == dir || path.startsWith(dir + QLatin1Char('/'));
 }
 
 /**
@@ -701,11 +703,11 @@ pugi::xml_document ElementsLocation::pugiXml() const
 	if (!m_project)
 	{
 #ifndef Q_OS_LINUX
-		if (docu.load_file(m_file_system_path.toStdString().c_str())) {
+		if (docu.load_file(m_file_system_path.toStdWString().c_str())) {
 			docu.save(m_string_stream);
 		}
 #else
-		docu.load_file(m_file_system_path.toStdString().c_str());
+		docu.load_file(m_file_system_path.toStdWString().c_str());
 #endif
 	}
 	else
@@ -802,6 +804,7 @@ bool ElementsLocation::setXml(const QDomDocument &xml_document) const
 
 			QString			   path_ = collectionPath(false);
 			QRegularExpression rx("^(.*)/(.*\\.elmt)$");
+			QRegularExpressionMatch match = rx.match(path_);
 
 			if (auto regex_match = rx.match(path_); regex_match.hasMatch())
 			{

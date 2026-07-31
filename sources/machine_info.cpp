@@ -150,7 +150,11 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 	
 	qInfo()<< " OS System language:"<< QLocale::system().name();
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeTerritoryName();
+#else
 	qInfo()<< " OS System Native Country Name:"<< QLocale::system().nativeCountryName();
+#endif
 	qInfo()<< " OS System Native Language Name:"<< QLocale::system().nativeLanguageName();	
 	qInfo()<< "";
 	qInfo()<< " System language defined in QET configuration:"<< QString(QETApp::langFromSetting().toLatin1());

@@ -76,6 +76,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		QList<DynamicElementTextItem *> texts() const;
 		Diagram *diagram() const;
 		Element *parentElement() const;
+		/// PDF export: slave cross-reference text item of the group, if any.
+		QGraphicsTextItem *slaveXrefItem() const { return m_slave_Xref_item; }
 		
 		QDomElement toXml(QDomDocument &dom_document) const;
 		void fromXml(QDomElement &dom_element);

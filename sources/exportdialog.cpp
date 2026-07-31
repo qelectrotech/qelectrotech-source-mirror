@@ -112,6 +112,7 @@ ExportDialog::ExportDialog(
 */
 ExportDialog::~ExportDialog()
 {
+	qDeleteAll(diagram_lines_);
 }
 
 /**

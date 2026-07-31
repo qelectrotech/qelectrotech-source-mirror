@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Copyright 2006-2026 The QElectroTech Team
 	This file is part of QElectroTech.
 
@@ -475,7 +475,7 @@ void SearchAndReplaceWidget::setUpConenctions()
 
 	connect(ui->m_tree_widget, &QTreeWidget::customContextMenuRequested, [this](const QPoint &pos)
 	{
-		if (m_diagram_hash.keys().contains(ui->m_tree_widget->currentItem()))
+		if (m_diagram_hash.contains(ui->m_tree_widget->currentItem()))
 		{
 			QMenu *menu = new QMenu(ui->m_tree_widget);
 			menu->addAction(m_select_elements);
@@ -951,28 +951,28 @@ void SearchAndReplaceWidget::on_m_tree_widget_itemDoubleClicked(
 {
 	Q_UNUSED(column)
 
-	if (m_diagram_hash.keys().contains(item))
+	if (m_diagram_hash.contains(item))
 	{
 		QPointer<Diagram> diagram = m_diagram_hash.value(item);
 		if(diagram) {
 			diagram.data()->showMe();
 		}
 	}
-	else if (m_element_hash.keys().contains(item))
+	else if (m_element_hash.contains(item))
 	{
 		QPointer<Element> elmt = m_element_hash.value(item);
 		if (elmt && elmt->diagram()) {
 			elmt.data()->diagram()->showMe();
 		}
 	}
-	else if (m_text_hash.keys().contains(item))
+	else if (m_text_hash.contains(item))
 	{
 		QPointer<IndependentTextItem> text = m_text_hash.value(item);
 		if (text && text->diagram()) {
 			text.data()->diagram()->showMe();
 		}
 	}
-	else if (m_conductor_hash.keys().contains(item))
+	else if (m_conductor_hash.contains(item))
 	{
 		QPointer<Conductor> cond = m_conductor_hash.value(item);
 		if (cond && cond->diagram()) {
@@ -1013,7 +1013,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 		m_last_selected.data()->setSelected(false);
 	}
 
-	if (m_element_hash.keys().contains(current))
+	if (m_element_hash.contains(current))
 	{
 		QPointer<Element> elmt = m_element_hash.value(current);
 		if (elmt)
@@ -1022,7 +1022,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 			elmt.data()->setHighlighted(true);
 		}
 	}
-	else if (m_text_hash.keys().contains(current))
+	else if (m_text_hash.contains(current))
 	{
 		QPointer<IndependentTextItem> text = m_text_hash.value(current);
 		if (text)
@@ -1031,7 +1031,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 			m_last_selected = text;
 		}
 	}
-	else if (m_conductor_hash.keys().contains(current))
+	else if (m_conductor_hash.contains(current))
 	{
 		QPointer<Conductor> cond = m_conductor_hash.value(current);
 		if (cond)
@@ -1144,7 +1144,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			&& qtwi->checkState(0) == Qt::Checked)
 	{
 		if (ui->m_folio_pb->text().endsWith(tr(" [édité]")) &&
-			m_diagram_hash.keys().contains(qtwi))
+			m_diagram_hash.contains(qtwi))
 		{
 			QPointer<Diagram> d = m_diagram_hash.value(qtwi);
 			if (d) {
@@ -1152,7 +1152,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			}
 		}
 		else if (ui->m_element_pb->text().endsWith(tr(" [édité]")) &&
-				 m_element_hash.keys().contains(qtwi))
+				 m_element_hash.contains(qtwi))
 		{
 			QPointer<Element> e = m_element_hash.value(qtwi);
 			if (e) {
@@ -1160,7 +1160,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			}
 		}
 		else if (!ui->m_replace_le->text().isEmpty() &&
-				 m_text_hash.keys().contains(qtwi))
+				 m_text_hash.contains(qtwi))
 		{
 			m_worker.m_indi_text = ui->m_replace_le->text();
 			QPointer<IndependentTextItem> t =
@@ -1171,7 +1171,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 
 		}
 		else if (ui->m_conductor_pb->text().endsWith(tr(" [édité]")) &&
-				 m_conductor_hash.keys().contains(qtwi))
+				 m_conductor_hash.contains(qtwi))
 		{
 			QPointer<Conductor> c = m_conductor_hash.value(qtwi);
 			if (c) {
@@ -1187,7 +1187,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 			QList <IndependentTextItem *>tl;
 			QList <Conductor *>cl;
 
-			if (m_diagram_hash.keys().contains(qtwi))
+			if (m_diagram_hash.contains(qtwi))
 			{
 				QPointer<Diagram> d =
 						m_diagram_hash.value(qtwi);
@@ -1195,7 +1195,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 					dl.append(d.data());
 				}
 			}
-			else if (m_element_hash.keys().contains(qtwi))
+			else if (m_element_hash.contains(qtwi))
 			{
 				QPointer<Element> e =
 						m_element_hash.value(qtwi);
@@ -1203,7 +1203,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 					el.append(e.data());
 				}
 			}
-			else if (m_text_hash.keys().contains(qtwi))
+			else if (m_text_hash.contains(qtwi))
 			{
 				QPointer<IndependentTextItem> t =
 						m_text_hash.value(qtwi);
@@ -1211,7 +1211,7 @@ void SearchAndReplaceWidget::on_m_replace_pb_clicked()
 					tl.append(t.data());
 				}
 			}
-			else if (m_conductor_hash.keys().contains(qtwi))
+			else if (m_conductor_hash.contains(qtwi))
 			{
 				QPointer<Conductor> c =
 						m_conductor_hash.value(qtwi);

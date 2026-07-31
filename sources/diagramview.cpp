@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
-
+#include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddelement.h"

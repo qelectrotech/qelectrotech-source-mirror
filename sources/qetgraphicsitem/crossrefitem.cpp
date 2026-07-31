@@ -18,7 +18,7 @@
 #include "crossrefitem.h"
 
 #include <QTimer>
-
+#include "../qetproject.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -28,6 +28,7 @@
 #include "elementtextitemgroup.h"
 #include "qgraphicsitemutility.h"
 #include "terminal.h"
+#include "../properties/elementdata.h"
 
 //define the height of the header.
 static int header = 5;
@@ -235,8 +236,11 @@ void CrossRefItem::updateLabel()
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
-		//Draw cross or contact, only if master element is linked.
-	if (! m_element->linkedElements().isEmpty())
+	// PLC table is drawn by Element::drawPlcTable(), not by CrossRefItem
+	if (m_element->elementData().m_master_type == ElementData::PLC)
+		return;
+	//Draw cross or contact, only if master element is linked.
+	else if (! m_element->linkedElements().isEmpty())
 	{
 		m_update_map = true;
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
@@ -325,6 +329,11 @@ void CrossRefItem::paint(
 	// caused a use-after-free crash (QRegion::begin, Qt5Gui+0x49af60)
 	// confirmed by analysis of 19+ coredumps.
 	// m_update_map=false: draw functions do not overwrite m_hovered_contacts_map.
+
+	// PLC table is drawn by Element::drawPlcTable(), not by CrossRefItem
+	if (m_element->elementData().m_master_type == ElementData::PLC)
+		return;
+
 	if (m_element->linkedElements().isEmpty()) return;
 
 	QPen pen_;
@@ -928,7 +937,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_update_map)
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, text_rect);
 
 		++m_drawed_contacts;
 	}
@@ -961,22 +970,21 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		painter.drawPolyline(p2, 3);
 
 		// Draw terminal names for switch contact (3 terminals)
-		// terminal_names[0] = NO side (top left)
-		// terminal_names[1] = NC side (bottom left)
-		// terminal_names[2] = common side (right)
+		// terminal_names[0] = NC  (bottom-left)
+		// terminal_names[1] = NO  (top-left)
+		// terminal_names[2] = Common (right)
 		if (!terminal_names.isEmpty() && m_properties.showTerminalName()) {
 			painter.setFont(QETApp::diagramTextsFont(4));
-			// Sort order from parseTerminal (top->bottom, left->right):
-			// [0]=12 (NO, top-left), [1]=14 (common, top-center), [2]=13 (NC, bottom-center)
-			if (terminal_names.size() >= 1)
-				painter.drawText(QRectF(0, offset, 8, 8),
-						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // 12 NO left
+			// Storage order set above: [0]=NC, [1]=NO, [2]=Common
 			if (terminal_names.size() >= 2)
-				painter.drawText(QRectF(16, offset+4, 8, 6),
-						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // 14 common right
+				painter.drawText(QRectF(0, offset, 8, 8),
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[1]);   // NO  top-left
 			if (terminal_names.size() >= 3)
+				painter.drawText(QRectF(16, offset+4, 8, 6),
+						Qt::AlignRight|Qt::AlignTop, terminal_names[2]); // Common right
+			if (terminal_names.size() >= 1)
 				painter.drawText(QRectF(0, offset+9, 8, 6),
-						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // 13 NC left-bottom
+						Qt::AlignLeft|Qt::AlignTop, terminal_names[0]); // NC  bottom-left
 			painter.setFont(QETApp::diagramTextsFont(5));
 		}
 
@@ -1012,7 +1020,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_update_map)
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, text_rect);
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
@@ -1044,7 +1052,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		bounding_rect = bounding_rect.united(text_rect);
 
 		if (m_update_map)
-			m_hovered_contacts_map.insert(elmt, bounding_rect);
+			m_hovered_contacts_map.insert(elmt, text_rect);
 		++m_drawed_contacts;
 	}
 		return bounding_rect;
@@ -1336,4 +1344,212 @@ QList<Element *> CrossRefItem::NCElements() const
 	}
 
 	return nc_list;
+}
+
+/**
+ * @brief CrossRefItem::drawAsPlcTable
+ * Draw the PLC IO table for PLC master elements.
+ * The table shows columns: Type | Address | Function | Comment | CrossRef
+ * Columns and rows are configurable via PlcMasterData.
+ * @param painter painter to use
+ */
+void CrossRefItem::drawAsPlcTable(QPainter &painter)
+{
+	// Get PLC data from the element
+	ElementData ed = m_element->elementData();
+	if (ed.m_master_type != ElementData::PLC)
+		return;
+
+	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	if (plc_data.ios.isEmpty())
+		return;
+
+	// Define column indices
+	const int COL_TYPE      = 0;
+	const int COL_ADDRESS   = 1;
+	const int COL_FUNCTION  = 2;
+	const int COL_COMMENT   = 3;
+	const int COL_CROSSREF  = 4;
+	const int COL_COUNT     = 5;
+
+	// Column headers (French)
+	QMap<int, QString> headers;
+	headers[COL_TYPE]     = QObject::tr("Type");
+	headers[COL_ADDRESS]  = QObject::tr("Adresse");
+	headers[COL_FUNCTION] = QObject::tr("Fonction");
+	headers[COL_COMMENT]  = QObject::tr("Commentaire");
+	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+
+	// Build list of visible columns
+	QList<int> visible_cols;
+	for (int i = 0; i < COL_COUNT; ++i) {
+		if (plc_data.colVisible.value(i, true))
+			visible_cols.append(i);
+	}
+	if (visible_cols.isEmpty())
+		return;
+
+	// Default column widths if not set (in scene units, roughly mm * 2.835)
+	QMap<int, qreal> col_widths;
+	for (int col : visible_cols) {
+		if (plc_data.colWidths.contains(col) && plc_data.colWidths[col] > 0)
+			col_widths[col] = plc_data.colWidths[col];
+		else {
+			switch (col) {
+				case COL_TYPE:     col_widths[col] = 35; break;
+				case COL_ADDRESS:  col_widths[col] = 25; break;
+				case COL_FUNCTION: col_widths[col] = 50; break;
+				case COL_COMMENT:  col_widths[col] = 40; break;
+				case COL_CROSSREF: col_widths[col] = 30; break;
+				default:           col_widths[col] = 30; break;
+			}
+		}
+	}
+
+	qreal row_h = plc_data.rowHeight > 0 ? plc_data.rowHeight : 8.0;
+	qreal header_h = row_h + 2.0;
+
+	// Calculate total width
+	qreal total_width = 0;
+	for (int col : visible_cols)
+		total_width += col_widths[col];
+
+	// Calculate total height: header + all IO rows
+	int total_ios = plc_data.ios.size();
+
+	// Collect active break positions (sorted)
+	QList<int> breaks;
+	for (int bp : plc_data.breakPositions) {
+		if (bp > 0 && bp < total_ios && !breaks.contains(bp))
+			breaks.append(bp);
+	}
+	std::sort(breaks.begin(), breaks.end());
+
+	// Build block boundaries
+	QList<int> block_starts;
+	block_starts.append(0);
+	for (int bp : breaks)
+		block_starts.append(bp);
+
+	qreal total_height;
+	int block_count = block_starts.size();
+
+	if (block_count > 1) {
+		int max_rows = 0;
+		for (int b = 0; b < block_count; ++b) {
+			int start = block_starts.at(b);
+			int end = (b + 1 < block_starts.size()) ? block_starts.at(b + 1) : total_ios;
+			max_rows = qMax(max_rows, end - start);
+		}
+		total_height = header_h + max_rows * row_h;
+		total_width = total_width * block_count + (block_count - 1) * 3;
+	} else {
+		total_height = header_h + total_ios * row_h;
+	}
+
+	// Draw background rectangle
+	QRectF bg_rect(0, 0, total_width, total_height);
+	painter.fillRect(bg_rect, Qt::white);
+	QPen border_pen(Qt::black, 0.5);
+	painter.setPen(border_pen);
+	painter.drawRect(bg_rect);
+
+	// Draw header row
+	qreal x_offset = 0;
+
+	for (int block = 0; block < block_count; ++block) {
+		qreal block_x = block * (col_widths.value(visible_cols.first(), 30) * visible_cols.size() + 3);
+		qreal cx = block_x;
+
+		// Draw column headers
+		QFont header_font = painter.font();
+		header_font.setBold(true);
+		painter.setFont(header_font);
+
+		for (int col : visible_cols) {
+			QRectF header_rect(cx, 0, col_widths[col], header_h);
+			painter.fillRect(header_rect, QColor(220, 220, 220));
+			painter.drawRect(header_rect);
+			painter.drawText(header_rect, Qt::AlignCenter, headers[col]);
+			cx += col_widths[col];
+		}
+
+		painter.setFont(painter.font());
+
+		// Draw IO rows for this block
+		int start_idx = block_starts.at(block);
+		int end_idx = (block + 1 < block_starts.size()) ? block_starts.at(block + 1) : total_ios;
+
+		for (int row = 0; row < (end_idx - start_idx); ++row) {
+			int io_idx = start_idx + row;
+			const ElementData::PlcIO &io = plc_data.ios.at(io_idx);
+
+			qreal ry = header_h + row * row_h;
+			cx = block_x;
+
+			// Get linked slave element for this IO (via group index)
+			QString cross_ref_text = io.crossRef;
+			for (Element *slave : m_element->linkedElements()) {
+				if (m_element->groupIndexForElement(slave) == io_idx) {
+					cross_ref_text = elementPositionText(slave);
+					break;
+				}
+			}
+
+			for (int col : visible_cols) {
+				QRectF cell_rect(cx, ry, col_widths[col], row_h);
+				painter.drawRect(cell_rect);
+
+				QString cell_text;
+				switch (col) {
+					case COL_TYPE:
+						cell_text = ElementData::translatedPlcIOType(io.type);
+						break;
+					case COL_ADDRESS:
+						cell_text = io.address;
+						break;
+					case COL_FUNCTION:
+						cell_text = io.functionText;
+						break;
+					case COL_COMMENT:
+						cell_text = io.comment;
+						break;
+					case COL_CROSSREF:
+						cell_text = cross_ref_text;
+						break;
+				}
+
+				QRectF text_rect = cell_rect.adjusted(1, 0, -1, 0);
+				painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+
+				// If function text doesn't fit, try to show as much as possible
+				if (col == COL_FUNCTION && !io.functionText.isEmpty()) {
+					QFontMetrics fm(painter.font());
+					QString elided = fm.elidedText(io.functionText, Qt::ElideRight, text_rect.width());
+					// Clear and redraw with elided text
+					painter.save();
+					painter.setBrush(Qt::white);
+					painter.drawRect(text_rect);
+					painter.restore();
+					painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, elided);
+				}
+
+				// Store hover map for cross-reference cells
+				if (col == COL_CROSSREF && m_update_map && !cross_ref_text.isEmpty()) {
+					for (Element *slave : m_element->linkedElements()) {
+						if (m_element->groupIndexForElement(slave) == io_idx) {
+							m_hovered_contacts_map.insert(slave, cell_rect);
+							break;
+						}
+					}
+				}
+
+				cx += col_widths[col];
+			}
+		}
+	}
+
+	prepareGeometryChange();
+	m_bounding_rect = bg_rect;
+	m_shape_path.addRect(bg_rect);
 }

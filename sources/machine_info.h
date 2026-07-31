@@ -75,11 +75,11 @@ class MachineInfo
 	{
 		struct Screen
 		{
-			int32_t count;
-			int32_t width[10];
-			int32_t height[10];
-			int32_t Max_width;
-			int32_t Max_height;
+			int32_t count     = 0;
+			int32_t width[10] = {};
+			int32_t height[10]= {};
+			int32_t Max_width = 0;
+			int32_t Max_height= 0;
 		}screen;
 		struct Built
 		{

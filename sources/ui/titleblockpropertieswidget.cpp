@@ -24,6 +24,7 @@
 #include "ui_titleblockpropertieswidget.h"
 
 #include <QMenu>
+#include <QSet>
 #include <utility>
 
 /**
@@ -162,7 +163,11 @@ void TitleBlockPropertiesWidget::setProperties(
 	}
 	ui -> m_tbt_cb -> setCurrentIndex(index);
 
-	m_dcw -> setContext(properties.context);
+	// Show the saved custom values, plus any of the template's custom variables
+	// that aren't defined yet, so the user only fills in the missing ones (#271).
+	DiagramContext context = properties.context;
+	addTemplateVariables(context, index);
+	m_dcw -> setContext(context);
 }
 
 /**
@@ -435,12 +440,15 @@ void TitleBlockPropertiesWidget::updateTemplateList()
 }
 
 /**
-	@brief TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate
-	Load the additional field of title block "text"
+	@brief TitleBlockPropertiesWidget::templateForIndex
+	@param index : index in the collection-type map (= the template combo index)
+	@return the TitleBlockTemplate currently selected for that collection, or
+	nullptr.
 */
-void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
+TitleBlockTemplate *TitleBlockPropertiesWidget::templateForIndex(int index) const
 {
-	m_dcw -> clear();
+	if (index < 0 || index >= m_map_index_to_collection_type.count())
+		return nullptr;
 
 	QET::QetCollection qc = m_map_index_to_collection_type.at(index);
 	TitleBlockTemplatesCollection *collection = nullptr;
@@ -448,19 +456,53 @@ void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
 		if (c -> collection() == qc)
 			collection = c;
 
-	if (!collection) return;
+	if (!collection) return nullptr;
+	return collection -> getTemplate(ui -> m_tbt_cb -> currentText());
+}
 
-		// get template
-	TitleBlockTemplate *tpl = collection -> getTemplate(ui -> m_tbt_cb -> currentText());
-	if(tpl != nullptr) {
-			// get all template fields
-		QStringList fields = tpl -> listOfVariables();
-			// set fields to additional_fields_ widget
-		DiagramContext templateContext;
-		for(int i =0; i<fields.count(); i++)
-			templateContext.addValue(fields.at(i), "");
-		m_dcw -> setContext(templateContext);
+/**
+	@brief TitleBlockPropertiesWidget::addTemplateVariables
+	Add to @p context every CUSTOM variable used by the currently selected
+	template that is not already present, with an empty value — so the user
+	only has to fill in the values instead of declaring the variables (#271).
+	The standard fields (title, author, date, …) are handled by their own
+	widgets and are skipped. Existing values in @p context are preserved.
+*/
+void TitleBlockPropertiesWidget::addTemplateVariables(
+		DiagramContext &context, int index) const
+{
+	TitleBlockTemplate *tpl = templateForIndex(index);
+	if (!tpl) return;
+
+	// Variables rendered from the dedicated standard-field widgets; they must
+	// not appear in the "Custom" tab.
+	static const QSet<QString> reserved {
+		QStringLiteral("author"), QStringLiteral("date"),
+		QStringLiteral("title"), QStringLiteral("filename"),
+		QStringLiteral("plant"), QStringLiteral("locmach"),
+		QStringLiteral("indexrev"), QStringLiteral("version"),
+		QStringLiteral("folio"), QStringLiteral("folio-id"),
+		QStringLiteral("folio-total"), QStringLiteral("auto_page_num"),
+		QStringLiteral("previous-folio-num"), QStringLiteral("next-folio-num")
+	};
+
+	const QStringList variables = tpl -> listOfVariables();
+	for (const QString &name : variables) {
+		if (name.isEmpty() || reserved.contains(name)) continue;
+		if (!context.contains(name)) context.addValue(name, "");
 	}
+}
+
+/**
+	@brief TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate
+	When the user picks a template, append its missing custom variables to the
+	"Custom" tab while keeping the values already entered (#271).
+*/
+void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(int index)
+{
+	DiagramContext context = m_dcw -> context();
+	addTemplateVariables(context, index);
+	m_dcw -> setContext(context);
 }
 
 /**

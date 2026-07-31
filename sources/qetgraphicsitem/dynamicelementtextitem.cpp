@@ -16,13 +16,14 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
-
+#include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
+#include "../utils/qetutils.h"
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
@@ -96,7 +97,7 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("uuid", m_uuid.toString());
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
-	root_element.setAttribute("font", font().toString());
+	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
 	
 	QMetaEnum me = textFromMetaEnum();
@@ -167,7 +168,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	if (dom_elmt.hasAttribute("font"))
 	{
 		QFont font;
-		font.fromString(dom_elmt.attribute("font"));
+		QETUtils::fontFromString(font, dom_elmt.attribute("font"));
 		setFont(font);
 	}
 	else	//Retrocompatibility during the 0.7 dev because the font property was added lately. TODO remove this part in futur
@@ -280,6 +281,10 @@ Element *DynamicElementTextItem::elementUseForInfo() const
 			return elmt;
 		case Element::Slave:
 		{
+				//PLC slave stores its own PLC variables in elementInformations
+				//(populated from master on link). Return self so %{plc_*} vars resolve.
+			if (elmt->elementData().m_slave_type == ElementData::PLCSlave)
+				return elmt;
 			if(elmt->linkedElements().isEmpty())
 				return nullptr;
 			else
@@ -1347,18 +1352,20 @@ void DynamicElementTextItem::updateXref()
 				}
 			}
 		}
-		else if (m_parent_element.data()->linkType() == Element::Slave)
+		else if (m_parent_element.data()->linkType() == Element::Slave &&
+				!m_parent_element.data()->linkedElements().isEmpty())
 		{
-			if(m_master_element && !parentGroup() &&
+			Element *master_elmt = m_parent_element.data()->linkedElements().first();
+			if(master_elmt && !parentGroup() &&
 			   (
 				   (m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "label") ||
 				   (m_text_from == DynamicElementTextItem::CompositeText && m_composite_text.contains("%{label}"))
 			   )
 			  )
 			{
-				XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_master_element.data()->kindInformations()["type"].toString());
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
 				QString xref_label = xrp.slaveLabel();
-				xref_label = autonum::AssignVariables::formulaToLabel(xref_label, m_master_element.data()->rSequenceStruct(), m_master_element.data()->diagram(), m_master_element.data());
+				xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
 				
 				if(!m_slave_Xref_item)
 				{
@@ -1367,9 +1374,9 @@ void DynamicElementTextItem::updateXref()
 					m_slave_Xref_item->setDefaultTextColor(Qt::black);
 					m_slave_Xref_item->installSceneEventFilter(this);
 					
-					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(m_master_element.data(), &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+					m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
 					m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
 					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
 					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
@@ -1439,9 +1446,12 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 	}
 	else if (m_slave_Xref_item)
 	{
-
-		XRefProperties xrp = diagram()->project()->defaultXRefProperties(m_master_element.data()->kindInformations()["type"].toString());
-		setXref_item(xrp.getXrefPos());
+		Element *master_elmt = m_parent_element.data()->linkedElements().isEmpty()
+			? nullptr : m_parent_element.data()->linkedElements().first();
+		if (master_elmt) {
+			XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+			setXref_item(xrp.getXrefPos());
+		}
 	}
 }
 

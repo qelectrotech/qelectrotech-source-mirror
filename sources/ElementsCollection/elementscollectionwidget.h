@@ -72,6 +72,8 @@ class ElementsCollectionWidget : public QWidget
 		void editDirectory();
 		void newDirectory();
 		void newElement();
+		bool confirmEdzImportTerms();
+		void importEdz();
 		void showThisDir();
 		void resetShowThisDir();
 		void dirProperties();
@@ -112,6 +114,7 @@ class ElementsCollectionWidget : public QWidget
 				*m_edit_dir,
 				*m_new_directory,
 				*m_new_element,
+				*m_import_edz,
 				*m_show_this_dir,
 				*m_show_all_dir,
 				*m_dir_propertie;

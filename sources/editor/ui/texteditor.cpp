@@ -18,6 +18,7 @@
 #include "texteditor.h"
 
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../ui/alignmenttextdialog.h"
 #include "../graphicspart/parttext.h"
 
 #include <cassert>
@@ -84,7 +85,7 @@ void TextEditor::setUpChangeConnection(QPointer<PartText> part)
 
 void TextEditor::disconnectChangeConnection()
 {
-	for (const auto &connection : qAsConst(m_change_connection)) {
+	for (const auto &connection : std::as_const(m_change_connection)) {
 		disconnect(connection);
 	}
 	m_change_connection.clear();
@@ -371,8 +372,34 @@ void TextEditor::setUpWidget(QWidget *parent)
 
 	gridLayout->addWidget(m_font_pb, 2, 2, 1, 2);
 
+	QPushButton *alignment_pb = new QPushButton(tr("Alignement"), parent);
+	alignment_pb->setToolTip(tr("Point d'ancrage du texte et alignement"
+								" des lignes entre elles"));
+	connect(alignment_pb, &QPushButton::clicked, [this]() {
+		if (m_text.isNull()) {
+			return;
+		}
+		AlignmentTextDialog atd(m_text->alignment(), this);
+		if (atd.exec() != QDialog::Accepted) {
+			return;
+		}
+		for (int i = 0; i < m_parts.length(); i++) {
+			PartText *part_text = m_parts[i];
+			if (atd.alignment() != part_text->alignment()) {
+				QPropertyUndoCommand *undo = new QPropertyUndoCommand(
+					part_text, "alignment",
+					QVariant(part_text->alignment()),
+					QVariant(atd.alignment()));
+				undo->setText(tr("Modifier l'alignement d'un champ texte"));
+				undoStack().push(undo);
+			}
+		}
+	});
+
+	gridLayout->addWidget(alignment_pb, 3, 0, 1, 2);
+
 	QSpacerItem *verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-	gridLayout->addItem(verticalSpacer, 3, 2, 1, 1);
+	gridLayout->addItem(verticalSpacer, 4, 2, 1, 1);
 	setLayout(gridLayout);
 }

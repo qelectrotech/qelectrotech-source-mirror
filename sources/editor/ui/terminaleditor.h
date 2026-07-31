@@ -21,6 +21,12 @@
 #include <QWidget>
 #include "../elementitemeditor.h"
 
+#ifdef BUILD_WITHOUT_KF5
+#include <QPushButton>
+#else
+#include <KColorButton>
+#endif
+
 namespace Ui {
 	class TerminalEditor;
 }
@@ -43,6 +49,8 @@ class TerminalEditor : public ElementItemEditor
 		bool setPart(CustomElementPart *new_part) override;
 		CustomElementPart *currentPart() const override;
 		QList<CustomElementPart *> currentParts() const override {return QList<CustomElementPart *>();}
+	public slots:
+		void refreshMasterLabelVisibility();
 
 	private:
 		void init();
@@ -50,8 +58,19 @@ class TerminalEditor : public ElementItemEditor
 		void orientationEdited();
 		void nameEdited();
 		void typeEdited();
-		void activeConnections(bool active);
-		void activeChangeConnections(bool active);
+		void showNameEdited();
+		void labelPosEdited();
+		void labelFontClicked();
+		void labelSizeEdited();
+		void labelRotationEdited();
+		void labelAlignClicked();
+	void labelFrameEdited();
+	void labelColorClicked();
+	void activeConnections(bool active);
+	void activeChangeConnections(bool active);
+	void useMasterLabelEdited();
+	void masterLabelIndexEdited();
+	bool updateMasterLabelVisibility();
 
 	private:
 		Ui::TerminalEditor *ui;
@@ -59,6 +78,11 @@ class TerminalEditor : public ElementItemEditor
 										 m_change_connections;
 		PartTerminal *m_part = nullptr;
 		bool m_locked = false;
+#ifdef BUILD_WITHOUT_KF5
+		QPushButton *m_color_pb;
+#else
+		KColorButton *m_color_pb;
+#endif
 };
 
 #endif // TERMINALEDITOR_H

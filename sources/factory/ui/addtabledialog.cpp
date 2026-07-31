@@ -221,12 +221,12 @@ void AddTableDialog::saveConfig()
 		header_object.insert("margins", QETUtils::marginsToString(this->headerMargins()));
 		auto me = QMetaEnum::fromType<Qt::Alignment>();
 		header_object.insert("alignment", me.valueToKey(int(this->headerAlignment())));
-		header_object.insert("font", this->headerFont().toString());
+		header_object.insert("font", QETUtils::fontToString(this->headerFont()));
 
 		QJsonObject table_object;
 		table_object.insert("margins", QETUtils::marginsToString(this->tableMargins()));
 		table_object.insert("alignment", me.valueToKey(int(this->tableAlignment())));
-		table_object.insert("font", this->tableFont().toString());
+		table_object.insert("font", QETUtils::fontToString(this->tableFont()));
 
 		QJsonObject config_object;
 		config_object.insert("header", header_object);
@@ -268,13 +268,14 @@ void AddTableDialog::loadConfig()
 		case Qt::AlignLeft :
 			ui->m_header_alignment_cb->setCurrentIndex(0);
 			break;
-		case Qt::AlignCenter :
+		case Qt::AlignHCenter :
+		case Qt::AlignCenter :  // accept AlignCenter in case it was hand-edited by the user
 			ui->m_header_alignment_cb->setCurrentIndex(1);
 			break;
 		default:
 			ui->m_header_alignment_cb->setCurrentIndex(2);
 	}
-	m_header_font.fromString(header_object.value("font").toString());
+	QETUtils::fontFromString(m_header_font, header_object.value("font").toString());
 	ui->m_header_font_pb->setText(m_header_font.family());
 
 		//Table
@@ -284,13 +285,14 @@ void AddTableDialog::loadConfig()
 		case Qt::AlignLeft :
 			ui->m_table_alignment_cb->setCurrentIndex(0);
 			break;
-		case Qt::AlignCenter :
+		case Qt::AlignHCenter :
+		case Qt::AlignCenter :  // accept AlignCenter in case it was hand-edited by the user
 			ui->m_table_alignment_cb->setCurrentIndex(1);
 			break;
 		default:
 			ui->m_table_alignment_cb->setCurrentIndex(2);
 	}
-	m_table_font.fromString(table_object.value("font").toString());
+	QETUtils::fontFromString(m_table_font, table_object.value("font").toString());
 	ui->m_table_font_pb->setText(m_table_font.family());
 
 }

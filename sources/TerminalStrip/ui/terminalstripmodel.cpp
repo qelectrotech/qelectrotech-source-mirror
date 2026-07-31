@@ -535,7 +535,7 @@ modelRealTerminalData TerminalStripModel::dataAtRow(int row) const
 	else
 	{
 		auto current_row = 0;
-		for (const auto &physical_data : qAsConst(m_physical_data))
+		for (const auto &physical_data : std::as_const(m_physical_data))
 		{
 			for (const auto &real_data : physical_data.real_data)
 			{
@@ -567,7 +567,7 @@ void TerminalStripModel::replaceDataAtRow(modelRealTerminalData data, int row)
 		auto current_row = 0;
 		auto current_physical = 0;
 
-		for (const auto &physical_data : qAsConst(m_physical_data))
+		for (const auto &physical_data : std::as_const(m_physical_data))
 		{
 			auto current_real = 0;
 			for (int i=0 ; i<physical_data.real_data.count() ; ++i)
@@ -606,7 +606,7 @@ modelPhysicalTerminalData TerminalStripModel::physicalDataAtIndex(int index) con
 	int current_phy = -1;
 	bool match_ = false;
 
-	for (const auto &ptd_ : qAsConst(m_physical_data))
+	for (const auto &ptd_ : std::as_const(m_physical_data))
 	{
 		current_checked_index += ptd_.real_data.size();
 		++current_phy;
@@ -637,9 +637,9 @@ modelRealTerminalData TerminalStripModel::realDataAtIndex(int index) const
 
 	int current_checked_index = -1;
 
-	for (const auto & ptd_ : qAsConst(m_physical_data))
+	for (const auto & ptd_ : std::as_const(m_physical_data))
 	{
-		for (const auto & rtd_ : qAsConst(ptd_.real_data)) {
+		for (const auto & rtd_ : std::as_const(ptd_.real_data)) {
 			++current_checked_index;
 			if (current_checked_index == index) {
 				return rtd_;

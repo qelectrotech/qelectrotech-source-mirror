@@ -59,6 +59,13 @@ find_package(
  ${QET_COMPONENTS}
  REQUIRED)
 
+# Qt6-only: the tests link ${QET_PRIVATE_LIBRARIES}, which contains
+# Qt::GuiPrivate; Qt6 only creates that target when the component is
+# explicitly requested (Qt5 creates it implicitly and has no such package).
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+endif()
+
 Include(FetchContent)
 
 FetchContent_Declare(
@@ -82,6 +89,20 @@ add_executable(
     ${QET_DIR}/sources/borderproperties.cpp
     ${QET_DIR}/sources/borderproperties.h
     )
+
+if(NOT BUILD_WITH_KF5)
+    target_sources(
+        ${PROJECT_NAME}
+        PRIVATE
+        src/kautosavefile_test.cpp
+        ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
+        )
+    target_include_directories(
+        ${PROJECT_NAME}
+        PRIVATE
+        ${QET_DIR}/sources/ui/nokde
+        )
+endif()
 
 target_link_libraries(
     ${PROJECT_NAME}

@@ -27,6 +27,7 @@ class Element;
 class QUndoCommand;
 class ElementInfoPartWidget;
 class ChangeElementInformationCommand;
+class QCheckBox;
 
 namespace Ui {
 	class ElementInfoWidget;
@@ -71,6 +72,8 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 	private:
 		Ui::ElementInfoWidget           *ui;
 		QList <ElementInfoPartWidget *>  m_eipw_list;
+		QCheckBox                       *m_potential_isolating_cb = nullptr;
+		QCheckBox                        *m_exclude_from_bom_cb = nullptr;
 		bool m_first_activation;
 		bool m_ui_builded = false;
 };

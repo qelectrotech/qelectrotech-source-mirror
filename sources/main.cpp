@@ -15,15 +15,51 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "cli_export.h"
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "qetproject.h"
 #include "singleapplication.h"
-#include "utils/macosxopenevent.h"
 #include "utils/qetsettings.h"
+
+#include <QApplication>
+#include <QDomImplementation>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
+
+#ifdef Q_OS_MACOS
+#include <QFileOpenEvent>
+
+/**
+	@brief EarlyFileOpenCatcher
+	On macOS, a cold launch via Finder double-click can deliver the
+	QFileOpenEvent to QApplication before QETApp exists and before its
+	real eventFilter is installed (the event loop can start servicing
+	native/Cocoa events before our own code in main() reaches that
+	point). This tiny filter is installed immediately on `app` so no
+	QFileOpenEvent can slip through unseen; it just buffers the path.
+	Once QETApp is constructed, main() drains the buffer and installs
+	the real QETApp::eventFilter for any subsequent event.
+*/
+class EarlyFileOpenCatcher : public QObject
+{
+	public:
+		using QObject::QObject;
+		QStringList bufferedFiles;
+
+	protected:
+		bool eventFilter(QObject *object, QEvent *e) override
+		{
+			if (e->type() == QEvent::FileOpen) {
+				bufferedFiles << static_cast<QFileOpenEvent *>(e)->file();
+				return true;
+			}
+			return QObject::eventFilter(object, e);
+		}
+};
+#endif
 
 /**
 	@brief myMessageOutput
@@ -172,6 +208,12 @@ int main(int argc, char **argv)
 	QCoreApplication::setOrganizationName("QElectroTech");
 	QCoreApplication::setOrganizationDomain("qelectrotech.org");
 	QCoreApplication::setApplicationName("QElectroTech");
+
+	// Refuse invalid data when building QDom documents instead of
+	// serializing malformed XML (CVE-2026-15037). This is the default
+	// from Qt 6.12 on; opt in explicitly for older Qt 5/6.
+	QDomImplementation::setInvalidDataPolicy(
+		QDomImplementation::ReturnNullNode);
 	//Creation and execution of the application
 	//HighDPI
 
@@ -179,13 +221,39 @@ int main(int argc, char **argv)
 	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
 
+	// Headless command-line export: render a project to PDF/PNG/SVG without
+	// opening the GUI, then exit.  Must be handled before SingleApplication
+	// (which would forward the args to an already-running instance).
+	{
+		QStringList raw_args;
+		for (int i = 0; i < argc; ++i)
+			raw_args << QString::fromLocal8Bit(argv[i]);
+		if (CLIExport::isExportRequest(raw_args)) {
+			QApplication export_app(argc, argv);
+			// No crash-recovery backups in one-shot CLI mode: the backup write
+			// runs on a background thread referencing the project and races the
+			// process exit (intermittent segfault in QET::writeToFile).
+			QETProject::setBackupEnabled(false);
+			return CLIExport::run(export_app.arguments());
+		}
+	}
+
+	// Install the log-file message handler BEFORE the application starts:
+	// QETApp's constructor does the whole startup (collections, editor,
+	// opening the projects given on the command line), so installing the
+	// handler afterwards - as was done in the startup worker below - meant
+	// exactly the interesting lines (collection and project load timers)
+	// went to stderr, which is invisible in a Windows GUI session.
+	qInstallMessageHandler(myMessageOutput);
+
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
-	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
-	//or drop these same files to the QET icon of the dock
-	MacOSXOpenEvent open_event;
-	app.installEventFilter(&open_event);
 	app.setStyle(QStyleFactory::create("Fusion"));
+	// Installed as early as possible, before anything else can run an
+	// event loop, to catch a QFileOpenEvent that might be delivered
+	// during a cold launch before QETApp exists.
+	EarlyFileOpenCatcher early_catcher;
+	app.installEventFilter(&early_catcher);
 #endif
 
 	if (app.isSecondary())
@@ -202,13 +270,27 @@ int main(int argc, char **argv)
 
 	QETApp qetapp;
 	QETApp::instance()->installEventFilter(&qetapp);
+#ifdef Q_OS_MACOS
+	//Handle the opening of QET when user double click on a .qet .elmt .tbt file
+	//or drop these same files to the QET icon of the dock.
+	//Swap the early catcher (installed right after `app` was constructed,
+	//see above) for the real filter, then drain anything it buffered
+	//during the cold-launch window before QETApp existed.
+	app.removeEventFilter(&early_catcher);
+	app.installEventFilter(&qetapp);
+	if (!early_catcher.bufferedFiles.isEmpty())
+		qetapp.openFiles(QETArguments(early_catcher.bufferedFiles));
+#endif
 	QObject::connect(&app, &SingleApplication::receivedMessage,
 			 &qetapp, &QETApp::receiveMessage);
 
-	QtConcurrent::run([=]()
+	// Pre-initialise on the main (GUI) thread: the constructor calls
+	// qApp->screens() which is not thread-safe in Qt5 — calling instance()
+	// here guarantees the singleton is fully built before the worker runs.
+	MachineInfo::instance();
+
+	[[maybe_unused]] auto startup_future = QtConcurrent::run([=]()
 	{
-		// for debugging
-		qInstallMessageHandler(myMessageOutput);
 		qInfo("Start-up");
 		// delete old log files of max 7 days old.
 		delete_old_log_files(7);

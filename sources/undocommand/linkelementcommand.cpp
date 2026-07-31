@@ -19,9 +19,35 @@
 
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
+#include "../diagramposition.h"
+#include "../qetproject.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../ui/potentialselectordialog.h"
+#include "../qetinformation.h"
+#include "../properties/elementdata.h"
+#include "../properties/xrefproperties.h"
+#include "../autoNum/assignvariables.h"
+#include "../autoNum/numerotationcontextcommands.h"
+
+/**
+	@brief Get the cross-ref text for a slave element using XRefProperties formula
+	@param master the PLC master element
+	@param slave the slave element
+	@return formatted cross-ref string (e.g. "(1-C4)")
+*/
+static QString plcCrossRefText(Element *master, Element *slave)
+{
+	if (!master || !slave || !master->diagram()
+		|| !master->diagram()->project())
+		return QString();
+	XRefProperties xrp = master->diagram()->project()
+		->defaultXRefProperties("plc");
+	autonum::sequentialNumbers seq;
+	return autonum::AssignVariables::formulaToLabel(
+		xrp.slaveLabel(), seq, master->diagram(), master);
+}
 
 /**
 	@brief LinkElementCommand::LinkElementCommand
@@ -98,6 +124,14 @@ bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool
 		{
 			//Type isn't good
 		if (element_b->linkType() != Element::Slave) return false;
+
+			// PLC master can only link to PLC slave, and vice versa
+		{
+			const bool master_is_plc = (element_a->elementData().m_master_type == ElementData::PLC);
+			const bool slave_is_plc  = (element_b->elementData().m_slave_type == ElementData::PLCSlave);
+			if (master_is_plc != slave_is_plc) return false;
+		}
+
 			//element_b is free
 		if (element_b->isFree()) return true;
 			//element_b isn't free but already linked to element_a and already_linked is true
@@ -110,6 +144,14 @@ bool LinkElementCommand::isLinkable(Element *element_a, Element *element_b, bool
 		{
 				//Type isn't good
 			if (element_b->linkType() != Element::Master) return false;
+
+				// PLC master can only link to PLC slave, and vice versa
+			{
+				const bool slave_is_plc  = (element_a->elementData().m_slave_type == ElementData::PLCSlave);
+				const bool master_is_plc = (element_b->elementData().m_master_type == ElementData::PLC);
+				if (slave_is_plc != master_is_plc) return false;
+			}
+
 				//Element_a is free
 			if (element_a->isFree()) return true;
 				//element_a isn't free but already linked to element_b and already_linked is true;
@@ -176,6 +218,77 @@ void LinkElementCommand::unlinkAll()
 void LinkElementCommand::undo()
 {
 	if(m_element->diagram()) m_element->diagram()->showMe();
+
+	//Clear group index for slave elements when undoing
+	if (m_element->linkType() == Element::Slave)
+	{
+		int group_idx = m_group_index;
+		if (m_group_indices.contains(m_element))
+			group_idx = m_group_indices.value(m_element);
+
+		if (group_idx >= 0)
+		{
+			// Reset master labels on slave terminals
+			QList<Terminal *> slave_terms = m_element->terminals();
+			for (Terminal *t : slave_terms)
+			{
+				t->setUseMasterLabel(false);
+				t->setMasterLabelIndex(0);
+			}
+
+			// Clear PLC variables on slave when unlinking from PLC master
+			DiagramContext ctx = m_element->elementInformations();
+			ctx.remove(QETInformation::ELMT_PLC_TYPE);
+			ctx.remove(QETInformation::ELMT_PLC_ADDRESS);
+			ctx.remove(QETInformation::ELMT_PLC_FUNCTION);
+			ctx.remove(QETInformation::ELMT_PLC_COMMENT);
+			ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
+			ctx.remove(QETInformation::ELMT_LABEL);
+			m_element->setElementInformations(ctx);
+
+			foreach(Element *elmt, m_element->linkedElements())
+			{
+				if (elmt->linkType() == Element::Master)
+				{
+					elmt->setGroupIndexForElement(m_element, -1);
+					break;
+				}
+			}
+		}
+	}
+	else if (m_element->linkType() == Element::Master)
+	{
+		for (auto it = m_group_indices.constBegin(); it != m_group_indices.constEnd(); ++it)
+		{
+			Element *slave = it.key();
+			if (m_element->linkedElements().contains(slave))
+			{
+				// Reset master labels on slave terminals
+				QList<Terminal *> slave_terms = slave->terminals();
+				for (Terminal *t : slave_terms)
+				{
+					t->setUseMasterLabel(false);
+					t->setMasterLabelIndex(0);
+				}
+
+				// Clear PLC variables on slave when unlinking from PLC master
+				if (m_element->elementData().m_master_type == ElementData::PLC)
+				{
+					DiagramContext ctx = slave->elementInformations();
+					ctx.remove(QETInformation::ELMT_PLC_TYPE);
+					ctx.remove(QETInformation::ELMT_PLC_ADDRESS);
+					ctx.remove(QETInformation::ELMT_PLC_FUNCTION);
+					ctx.remove(QETInformation::ELMT_PLC_COMMENT);
+					ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
+					ctx.remove(QETInformation::ELMT_LABEL);
+					slave->setElementInformations(ctx);
+				}
+
+				m_element->setGroupIndexForElement(slave, -1);
+			}
+		}
+	}
+
 	makeLink(m_linked_before);
 	QUndoCommand::undo();
 }
@@ -275,6 +388,126 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 	foreach(Element *elmt, element_list)
 		m_element->linkToElement(elmt);
 
+	//Set group index for slave-master links
+	if (m_element->linkType() == Element::Slave)
+	{
+		int group_idx = m_group_index;
+
+		//Check if we have a per-slave group index
+		if (m_group_indices.contains(m_element))
+			group_idx = m_group_indices.value(m_element);
+
+		if (group_idx >= 0)
+		{
+			foreach(Element *elmt, element_list)
+			{
+				if (elmt->linkType() == Element::Master)
+				{
+					elmt->setGroupIndexForElement(m_element, group_idx);
+
+					// Set master labels on slave terminals
+					const auto &groups = elmt->elementData().m_slave_contact_groups;
+					if (group_idx < groups.size())
+					{
+						const QStringList &labels = groups.at(group_idx).labels;
+						QList<Terminal *> slave_terms = m_element->terminals();
+						// Sort terminals by name (T1, T2, T3...) to match label order
+						std::sort(slave_terms.begin(), slave_terms.end(),
+							[](Terminal *a, Terminal *b) {
+								return a->name() < b->name();
+							});
+						for (int i = 0; i < slave_terms.size(); ++i)
+						{
+							if (i < labels.size())
+							{
+								slave_terms.at(i)->setUseMasterLabel(true);
+								slave_terms.at(i)->setMasterLabelIndex(i);
+							}
+						}
+					}
+
+					// Populate PLC variables on the slave if master is PLC type
+					if (elmt->elementData().m_master_type == ElementData::PLC)
+					{
+						const auto &plc_data = elmt->elementData().plcMasterData();
+						if (group_idx < plc_data.ios.size())
+						{
+						const auto &io = plc_data.ios.at(group_idx);
+						DiagramContext ctx = m_element->elementInformations();
+						ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+							ElementData::translatedPlcIOType(io.type));
+						ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+						ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+						ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+						ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+							plcCrossRefText(elmt, m_element));
+						ctx.addValue(QETInformation::ELMT_LABEL,
+							elmt->actualLabel());
+						m_element->setElementInformations(ctx);
+						}
+					}
+
+					break;
+				}
+			}
+		}
+	}
+	else if (m_element->linkType() == Element::Master)
+	{
+		//For master linking to slaves, set group indices for each slave
+		for (auto it = m_group_indices.constBegin(); it != m_group_indices.constEnd(); ++it)
+		{
+			Element *slave = it.key();
+			int group_idx = it.value();
+			if (group_idx >= 0 && element_list.contains(slave))
+			{
+				m_element->setGroupIndexForElement(slave, group_idx);
+
+				// Set master labels on slave terminals
+				const auto &groups = m_element->elementData().m_slave_contact_groups;
+				if (group_idx < groups.size())
+				{
+					const QStringList &labels = groups.at(group_idx).labels;
+					QList<Terminal *> slave_terms = slave->terminals();
+					// Sort terminals by name (T1, T2, T3...) to match label order
+					std::sort(slave_terms.begin(), slave_terms.end(),
+						[](Terminal *a, Terminal *b) {
+							return a->name() < b->name();
+						});
+					for (int i = 0; i < slave_terms.size(); ++i)
+					{
+						if (i < labels.size())
+						{
+							slave_terms.at(i)->setUseMasterLabel(true);
+							slave_terms.at(i)->setMasterLabelIndex(i);
+						}
+					}
+				}
+
+				// Populate PLC variables on the slave if master is PLC type
+				if (m_element->elementData().m_master_type == ElementData::PLC)
+				{
+					const auto &plc_data = m_element->elementData().plcMasterData();
+					if (group_idx < plc_data.ios.size())
+					{
+						const auto &io = plc_data.ios.at(group_idx);
+						DiagramContext ctx = slave->elementInformations();
+						ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+							ElementData::translatedPlcIOType(io.type));
+						ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+						ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+						ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+						ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+							plcCrossRefText(m_element, slave));
+						ctx.addValue(QETInformation::ELMT_LABEL,
+							m_element->actualLabel());
+						slave->setElementInformations(ctx);
+					}
+				}
+			}
+		}
+	}
+
 	/* At this point there may be unwanted linked elements to m_element.
 	 * We must unlink it.
 	 * Elements from element_list are wanted so we compare element_list
@@ -289,6 +522,33 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 	{
 		foreach(Element *elmt, to_unlink)
 		{
+			// Clear PLC variables on the slave before unlinking
+			// The slave is either elmt (if m_element is master) or m_element (if m_element is slave)
+			Element *slave = nullptr;
+			if (m_element->elementData().m_master_type == ElementData::PLC)
+				slave = elmt;
+			else if (m_element->linkType() == Element::Slave)
+			{
+				for (Element *linked : m_element->linkedElements())
+				{
+					if (linked->elementData().m_master_type == ElementData::PLC)
+					{
+						slave = m_element;
+						break;
+					}
+				}
+			}
+			if (slave)
+			{
+				DiagramContext ctx = slave->elementInformations();
+				ctx.remove(QETInformation::ELMT_PLC_TYPE);
+				ctx.remove(QETInformation::ELMT_PLC_ADDRESS);
+				ctx.remove(QETInformation::ELMT_PLC_FUNCTION);
+				ctx.remove(QETInformation::ELMT_PLC_COMMENT);
+				ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
+				ctx.remove(QETInformation::ELMT_LABEL);
+				slave->setElementInformations(ctx);
+			}
 			m_element->unlinkElement(elmt);
 		}
 	}

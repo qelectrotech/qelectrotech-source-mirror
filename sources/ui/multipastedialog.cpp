@@ -17,7 +17,7 @@
 */
 
 #include "multipastedialog.h"
-
+#include "../qetproject.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"

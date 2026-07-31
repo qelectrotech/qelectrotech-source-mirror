@@ -47,6 +47,7 @@ class ElementsPanelWidget : public QWidget {
 		*prj_prop_diagram,
 		*prj_add_diagram,
 		*prj_del_diagram,
+		*prj_duplicate_diagram,
 		*prj_move_diagram_up,
 		*prj_move_diagram_top,
 		*prj_move_diagram_down,
@@ -88,6 +89,7 @@ class ElementsPanelWidget : public QWidget {
 	void editDiagramProperties();
 	void newDiagram();
 	void deleteDiagram();
+	void duplicateDiagram();
 	void moveDiagramUp();
 	void moveDiagramDown();
 	void moveDiagramUpTop();

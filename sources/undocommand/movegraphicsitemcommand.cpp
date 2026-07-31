@@ -172,7 +172,7 @@ void MoveGraphicsItemCommand::setupAnimation(QObject *target,
 void MoveGraphicsItemCommand::updateConductors(bool is_redo)
 {
 	//Recalculate the path of 'conductors_to_move'
-	for (const auto &conductor : qAsConst(m_content.m_conductors_to_move)) {
+	for (const auto &conductor : std::as_const(m_content.m_conductors_to_move)) {
 		conductor->updatePath();
 		if(conductor->textItem()->wasMovedByUser() == true){
 			if(is_redo)
@@ -184,7 +184,7 @@ void MoveGraphicsItemCommand::updateConductors(bool is_redo)
 	}
 
 	// Recalculate the path of 'conductors_to_update'
-	for (const auto &conductor : qAsConst(m_content.m_conductors_to_update)) {
+	for (const auto &conductor : std::as_const(m_content.m_conductors_to_update)) {
 		conductor->updatePath();
 	}
 }

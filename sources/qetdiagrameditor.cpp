@@ -29,6 +29,9 @@
 #include "elementspanelwidget.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
+#include "project/projectpropertieshandler.h"
+#include "projectview.h"
+#include "qetproject.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -37,6 +40,7 @@
 #include "recentfiles.h"
 #include "ui/bomexportdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
+#include "ui/backupdialog.h"
 #include "ui/dialogwaiting.h"
 #include "undocommand/addelementtextcommand.h"
 #include "undocommand/rotateselectioncommand.h"
@@ -47,11 +51,10 @@
 #include "TerminalStrip/ui/addterminalstripitemdialog.h"
 #include "wiringlistexport.h"
 #include "ui/terminalnumberingdialog.h"
+#include <QDateTime>
 #include <QDebug>
-#ifdef BUILD_WITHOUT_KF5
-#else
-#	include <KAutoSaveFile>
-#endif
+#include <QDir>
+#include <KAutoSaveFile>
 
 /**
 	@brief QETDiagramEditor::QETDiagramEditor
@@ -372,13 +375,26 @@ void QETDiagramEditor::setUpActions()
 		//Draw or not the background grid
 	m_draw_grid = new QAction ( QET::Icons::Grid, tr("Afficher la grille"), this);
 	m_draw_grid->setStatusTip(tr("Affiche ou masque la grille des folios"));
+	QSettings settings;
 	m_draw_grid->setCheckable(true);
-	m_draw_grid->setChecked(true);
+	m_draw_grid->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
 	connect(m_draw_grid, &QAction::triggered, [this](bool checked) {
 		foreach (ProjectView *prjv, this->openedProjects())
 			foreach (Diagram *d, prjv->project()->diagrams()) {
 				d->setDisplayGrid(checked);
 				d->update();
+			}
+	});
+
+	// Draw or not the custom guides
+	m_draw_guides = new QAction ( QIcon(":/ico/22x22/guides.png"), tr("Afficher les guides"), this);
+	m_draw_guides->setStatusTip(tr("Affiche ou masque les guides"));
+	m_draw_guides->setCheckable(true);
+	m_draw_guides->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
+	connect(m_draw_guides, &QAction::triggered, [this](bool checked) {
+		foreach (ProjectView *prjv, this->openedProjects())
+			foreach (Diagram *d, prjv->project()->diagrams()) {
+				d->setDisplayGuides(checked);
 			}
 	});
 
@@ -764,6 +780,7 @@ void QETDiagramEditor::setUpToolBar()
 	view_tool_bar -> addWidget(new DiagramEditorHandlerSizeWidget(this));
 	view_tool_bar -> addSeparator();
 	view_tool_bar -> addAction(m_draw_grid);
+	view_tool_bar -> addAction(m_draw_guides);
 	view_tool_bar -> addAction (m_grey_background);
 	view_tool_bar -> addSeparator();
 	view_tool_bar -> addActions(m_zoom_action_toolBar);
@@ -1172,6 +1189,16 @@ bool QETDiagramEditor::openAndAddProject(
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	addProject(project);
 	DialogWaiting::dropInstance();
+
+	BackupDialog backup_dialog(this);
+	if (backup_dialog.exec() == QDialog::Accepted)
+	{
+		QString backup_path = filepath_info.absolutePath() + QDir::separator() +
+			QDateTime::currentDateTime().toString("yyyy-MM-dd-hh-mm") + "_" +
+			filepath_info.fileName();
+		QFile::copy(filepath, backup_path);
+	}
+
 	return true;
 }
 
@@ -1576,6 +1603,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_row_column_actions_group.     setEnabled(editable_project);
 	m_grey_background->             setEnabled(opened_diagram);
 	m_draw_grid->                   setEnabled(opened_diagram);
+	m_draw_guides->                 setEnabled(opened_diagram);
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
@@ -1948,8 +1976,6 @@ bool QETDiagramEditor::drawGrid() const
 	return m_draw_grid->isChecked();
 }
 
-#ifdef BUILD_WITHOUT_KF5
-#else
 /**
 	@brief QETDiagramEditor::openBackupFiles
 	@param backup_files
@@ -1980,7 +2006,6 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 		DialogWaiting::dropInstance();
 	}
 }
-#endif
 /**
 	met a jour le menu "Fenetres"
 */
@@ -2440,6 +2465,30 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 	slot_updateActions();
 	slot_updateWindowsMenu();
 	emit syncElementsPanel();
+	updateUsageTrackersActiveState();
+}
+
+/**
+	@brief QETDiagramEditor::updateUsageTrackersActiveState
+	Mark the currently active project's usage tracker (time spent on this
+	project) as active, and every other opened project's tracker as
+	inactive. Called whenever the current MDI subwindow changes.
+
+	Known limitation: this only accounts for tab switches within this
+	QETDiagramEditor window. If the same project were ever shown as the
+	active tab in two different windows at once, its tracked time could be
+	double-counted -- today QETApp only ever gives a project one ProjectView,
+	so this doesn't happen in practice.
+*/
+void QETDiagramEditor::updateUsageTrackersActiveState()
+{
+	QETProject *active_project = currentProject();
+	const QList<ProjectView *> project_views = openedProjects();
+	for (ProjectView *project_view : project_views) {
+		if (QETProject *project = project_view->project()) {
+			project->projectPropertiesHandler().usageTracker().setActive(project == active_project);
+		}
+	}
 }
 
 /**
@@ -2474,7 +2523,6 @@ void QETDiagramEditor::generateTerminalBlock()
 	exeList << (QETApp::dataDir() + "/binary/qet_tb_generator.exe")
 			<< (QDir::currentPath() + "/qet_tb_generator.exe")
 			<< QStandardPaths::findExecutable("qet_tb_generator.exe")
-			<< (QDir::homePath() + "/Application Data/qet/qet_tb_generator.exe")
 			<< "qet_tb_generator.exe"
 			<< "qet_tb_generator";    // from original code: missing ".exe" ???
 #elif  defined(Q_OS_MACOS)

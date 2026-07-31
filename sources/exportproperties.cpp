@@ -30,6 +30,7 @@ ExportProperties::ExportProperties() :
 	destination_directory(QETApp::documentDir()),
 	format("PNG"),
 	draw_grid(false),
+	draw_guides(false),
 	draw_border(true),
 	draw_titleblock(true),
 	draw_terminals(false),
@@ -61,6 +62,8 @@ void ExportProperties::toSettings(QSettings &settings,
 			  format);
 	settings.setValue(prefix % "drawgrid",
 			  draw_grid);
+	settings.setValue(prefix % "drawguides",
+			  draw_guides);
 	settings.setValue(prefix % "drawborder",
 			  draw_border);
 	settings.setValue(prefix % "drawtitleblock",
@@ -93,6 +96,8 @@ void ExportProperties::fromSettings(QSettings &settings,
 	format = settings.value(prefix % "format").toString();
 
 	draw_grid = settings.value(prefix % "drawgrid",
+				   false).toBool();
+	draw_guides = settings.value(prefix % "drawguides",
 				   false).toBool();
 	draw_border = settings.value(prefix % "drawborder",
 				     true ).toBool();

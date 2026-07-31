@@ -124,6 +124,13 @@ namespace QETInformation
 	/** Default information related to QElectroTech **/
 	static QString QET_VERSION = "version";
 
+	/** PLC-specific information for slave elements **/
+	static QString ELMT_PLC_TYPE        = "plc_type";
+	static QString ELMT_PLC_ADDRESS     = "plc_address";
+	static QString ELMT_PLC_FUNCTION    = "plc_function";
+	static QString ELMT_PLC_COMMENT     = "plc_comment";
+	static QString ELMT_PLC_CROSSREF    = "plc_crossref";
+
 
 
 

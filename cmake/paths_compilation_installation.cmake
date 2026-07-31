@@ -58,7 +58,10 @@ if(WIN32)
   set(QET_BINARY_PATH             "./")
   set(QET_COMMON_COLLECTION_PATH  "elements/")
   set(QET_COMMON_TBT_PATH         "titleblocks/")
-  set(QET_LANG_PATH               "l10n/")
+  # "lang/" and not "l10n/": that is where every Windows packaging actually
+  # puts the .qm files (see build-aux/windows/QElectroTech.wxs and the
+  # windows-build workflow), and what the shortcuts pass as --lang-dir.
+  set(QET_LANG_PATH               "lang/")
   set(QET_LICENSE_PATH            "./")
   # Liste des ressources Windows
 #RC_FILE = qelectrotech.rc

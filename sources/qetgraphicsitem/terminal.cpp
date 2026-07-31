@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/terminal.h"
-
+#include "../qetproject.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
@@ -86,6 +86,7 @@ Terminal::Terminal(TerminalData* data, Element* e) :
  */
 Terminal::~Terminal() {
 	qDeleteAll(m_conductors_list);
+	delete d;
 }
 
 /**
@@ -272,6 +273,44 @@ void Terminal::paint(
 		m_help_line_a -> setLine(line);
 	}
 
+	// Draw label if show_name is enabled
+	const QString display_name = name();
+	if (d->m_show_name && !display_name.isEmpty()) {
+		painter->setRenderHint(QPainter::Antialiasing, true);
+		painter->setRenderHint(QPainter::TextAntialiasing, true);
+		painter->setFont(d->m_label_font);
+		painter->setPen(d->m_label_color);
+
+		QPointF label_pos = d->m_pos + d->m_label_pos;
+		QFontMetrics fm(d->m_label_font);
+		QSizeF text_size = fm.size(Qt::TextSingleLine, display_name);
+
+		if (!qFuzzyIsNull(d->m_label_rotation)) {
+			painter->save();
+			painter->translate(label_pos);
+			painter->rotate(d->m_label_rotation);
+			QRectF text_rect(-text_size.width()/2.0, -text_size.height()/2.0,
+							 text_size.width(), text_size.height());
+			painter->drawText(text_rect, static_cast<int>(d->m_label_halignment | d->m_label_valignment), display_name);
+			painter->restore();
+		} else {
+			qreal dx = 0, dy = 0;
+			if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
+			else if (d->m_label_halignment & Qt::AlignHCenter) dx = -text_size.width() / 2.0;
+			else if (d->m_label_halignment & Qt::AlignRight) dx = -text_size.width();
+
+			if (d->m_label_valignment & Qt::AlignTop) dy = 0;
+			else if (d->m_label_valignment & Qt::AlignVCenter) dy = -text_size.height() / 2.0;
+			else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
+
+			QRectF text_rect(label_pos + QPointF(dx, dy), text_size);
+			if (d->m_label_frame) {
+				painter->drawRect(text_rect.adjusted(-1, -1, 1, 1));
+			}
+			painter->drawText(text_rect, static_cast<int>(Qt::AlignLeft | Qt::AlignTop), display_name);
+		}
+	}
+
 	painter -> restore();
 }
 
@@ -340,7 +379,28 @@ QLineF Terminal::HelpLine() const
 	@return Le rectangle (en precision flottante) delimitant la borne et ses alentours.
 */
 QRectF Terminal::boundingRect() const {
-	return m_br;
+	const QString display_name = name();
+	if (!d->m_show_name || display_name.isEmpty()) {
+		return m_br;
+	}
+
+	QFontMetrics fm(d->m_label_font);
+	QSizeF text_size = fm.size(Qt::TextSingleLine, display_name);
+	QPointF label_pos = d->m_pos + d->m_label_pos;
+
+	qreal dx = 0, dy = 0;
+	if (d->m_label_halignment & Qt::AlignLeft) dx = 0;
+	else if (d->m_label_halignment & Qt::AlignHCenter) dx = -text_size.width() / 2.0;
+	else if (d->m_label_halignment & Qt::AlignRight) dx = -text_size.width();
+
+	if (d->m_label_valignment & Qt::AlignTop) dy = 0;
+	else if (d->m_label_valignment & Qt::AlignVCenter) dy = -text_size.height() / 2.0;
+	else if (d->m_label_valignment & Qt::AlignBottom) dy = -text_size.height();
+
+	QRectF label_rect(label_pos + QPointF(dx, dy), text_size);
+	label_rect = label_rect.adjusted(-2, -2, 2, 2);
+
+	return m_br.united(label_rect);
 }
 
 /**
@@ -750,6 +810,25 @@ QUuid Terminal::uuid() const
 
 QString Terminal::name() const
 {
+	if (d->m_use_master_label && parent_element_) {
+		// Find the master element in the slave's linked elements
+		for (Element *elmt : parent_element_->linkedElements()) {
+			if (elmt->linkType() == Element::Master) {
+				int group_idx = elmt->groupIndexForElement(parent_element_);
+				if (group_idx >= 0) {
+					const auto &groups = elmt->elementData().m_slave_contact_groups;
+					if (group_idx < groups.size()) {
+						int label_idx = d->m_master_label_index;
+						const QStringList &labels = groups.at(group_idx).labels;
+						if (label_idx >= 0 && label_idx < labels.size()) {
+							return labels.at(label_idx);
+						}
+					}
+				}
+				break;
+			}
+		}
+	}
 	return d->m_name;
 }
 
@@ -760,6 +839,28 @@ QString Terminal::name() const
 TerminalData::Type Terminal::terminalType() const
 {
 	return d->m_type;
+}
+
+/**
+	@brief Terminal::setUseMasterLabel
+	Set whether this terminal uses a label from the master's contact group
+	@param use true to use master label
+*/
+void Terminal::setUseMasterLabel(bool use)
+{
+	d->m_use_master_label = use;
+	update();
+}
+
+/**
+	@brief Terminal::setMasterLabelIndex
+	Set the index into the master's contact group labels
+	@param index the label index (0-based)
+*/
+void Terminal::setMasterLabelIndex(int index)
+{
+	d->m_master_label_index = index;
+	update();
 }
 
 /**
@@ -788,6 +889,12 @@ QList<Terminal *> relatedPotentialTerminal (
 	// If terminal parent element is a Terminal element.
 	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
 	{
+		// English: Check if the user activated the potential isolation checkbox for this terminal
+		if (terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true")) {
+			// English: Potential is isolated. Return an empty list so it does not propagate to the other side.
+			return QList<Terminal *>();
+		}
+
 		QList <Terminal *> terminals = terminal->parentElement()->terminals();
 		terminals.removeAll(const_cast<Terminal *>(terminal));
 		return terminals;

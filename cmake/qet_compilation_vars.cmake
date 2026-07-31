@@ -16,6 +16,13 @@
 
 message(" - qet_compilation_vars")
 
+# Note: GuiPrivate is intentionally NOT in this list. Qt6's CMake config only
+# creates the Qt::GuiPrivate target when "GuiPrivate" is explicitly requested
+# as a component, but Qt5 has no Qt5GuiPrivate package at all (the target is
+# created implicitly with Gui), so requesting it as a component breaks the
+# whole Qt5 configure. It is requested separately, guarded by
+# QT_VERSION_MAJOR, after the main find_package.
+# (Needed for QPdfEngine::drawHyperlink, the PDF internal links.)
 set(QET_COMPONENTS
   Core
   Gui
@@ -31,6 +38,7 @@ set(QET_COMPONENTS
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
   Qt::Gui
+  Qt::GuiPrivate   # Required for QPdfEngine::drawHyperlink (PDF internal links)
   Qt::Xml
   Qt::Svg
   Qt::Sql
@@ -108,6 +116,38 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.ui
   )
 set(QET_SRC_FILES
+  ${QET_DIR}/sources/cli_export.cpp
+  ${QET_DIR}/sources/cli_export.h
+  ${QET_DIR}/sources/pdf_links.cpp
+  ${QET_DIR}/sources/pdf_links.h
+  ${QET_DIR}/sources/import/edz/edzarchive.cpp
+  ${QET_DIR}/sources/import/edz/edzarchive.h
+  ${QET_DIR}/sources/import/edz/edzpart.cpp
+  ${QET_DIR}/sources/import/edz/edzpart.h
+  ${QET_DIR}/sources/import/edz/edzelementbuilder.cpp
+  ${QET_DIR}/sources/import/edz/edzelementbuilder.h
+  ${QET_DIR}/sources/import/edz/edzimporter.cpp
+  ${QET_DIR}/sources/import/edz/edzimporter.h
+  ${QET_DIR}/sources/import/edz/edzsevenzip.cpp
+  ${QET_DIR}/sources/import/edz/edzsevenzip.h
+  ${QET_DIR}/sources/import/edz/lzma/7zAlloc.c
+  ${QET_DIR}/sources/import/edz/lzma/7zArcIn.c
+  ${QET_DIR}/sources/import/edz/lzma/7zBuf.c
+  ${QET_DIR}/sources/import/edz/lzma/7zCrc.c
+  ${QET_DIR}/sources/import/edz/lzma/7zCrcOpt.c
+  ${QET_DIR}/sources/import/edz/lzma/7zDec.c
+  ${QET_DIR}/sources/import/edz/lzma/7zFile.c
+  ${QET_DIR}/sources/import/edz/lzma/7zStream.c
+  ${QET_DIR}/sources/import/edz/lzma/Bcj2.c
+  ${QET_DIR}/sources/import/edz/lzma/Bra.c
+  ${QET_DIR}/sources/import/edz/lzma/Bra86.c
+  ${QET_DIR}/sources/import/edz/lzma/BraIA64.c
+  ${QET_DIR}/sources/import/edz/lzma/CpuArch.c
+  ${QET_DIR}/sources/import/edz/lzma/Delta.c
+  ${QET_DIR}/sources/import/edz/lzma/Lzma2Dec.c
+  ${QET_DIR}/sources/import/edz/lzma/LzmaDec.c
+  ${QET_DIR}/sources/import/edz/lzma/Ppmd7.c
+  ${QET_DIR}/sources/import/edz/lzma/Ppmd7Dec.c
   ${QET_DIR}/sources/borderproperties.cpp
   ${QET_DIR}/sources/borderproperties.h
   ${QET_DIR}/sources/bordertitleblock.cpp
@@ -327,6 +367,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/editor/graphicspart/partpolygon.h
   ${QET_DIR}/sources/editor/graphicspart/partrectangle.cpp
   ${QET_DIR}/sources/editor/graphicspart/partrectangle.h
+  ${QET_DIR}/sources/editor/graphicspart/partplctable.cpp
+  ${QET_DIR}/sources/editor/graphicspart/partplctable.h
   ${QET_DIR}/sources/editor/graphicspart/partterminal.cpp
   ${QET_DIR}/sources/editor/graphicspart/partterminal.h
   ${QET_DIR}/sources/editor/graphicspart/parttext.cpp
@@ -406,6 +448,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/project/projectpropertieshandler.cpp
   ${QET_DIR}/sources/project/projectpropertieshandler.h
+  ${QET_DIR}/sources/project/projectusagetracker.cpp
+  ${QET_DIR}/sources/project/projectusagetracker.h
 
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
@@ -503,6 +547,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/SearchAndReplace/ui/replacefoliowidget.h
   ${QET_DIR}/sources/SearchAndReplace/ui/searchandreplacewidget.cpp
   ${QET_DIR}/sources/SearchAndReplace/ui/searchandreplacewidget.h
+  ${QET_DIR}/sources/svg/qetsvg.cpp
+  ${QET_DIR}/sources/svg/qetsvg.h
 
   ${QET_DIR}/sources/svg/qetsvg.cpp
   ${QET_DIR}/sources/svg/qetsvg.h
@@ -616,6 +662,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/borderpropertieswidget.h
   ${QET_DIR}/sources/ui/compositetexteditdialog.cpp
   ${QET_DIR}/sources/ui/compositetexteditdialog.h
+  ${QET_DIR}/sources/ui/contactgroupselectiondialog.cpp
+  ${QET_DIR}/sources/ui/contactgroupselectiondialog.h
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
@@ -632,6 +680,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
   ${QET_DIR}/sources/ui/diagramselection.cpp
   ${QET_DIR}/sources/ui/diagramselection.h
+  ${QET_DIR}/sources/ui/backupdialog.cpp
+  ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.cpp
@@ -662,6 +712,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/marginseditdialog.h
   ${QET_DIR}/sources/ui/masterpropertieswidget.cpp
   ${QET_DIR}/sources/ui/masterpropertieswidget.h
+  ${QET_DIR}/sources/ui/plclinkwidget.cpp
+  ${QET_DIR}/sources/ui/plclinkwidget.h
   ${QET_DIR}/sources/ui/multipastedialog.cpp
   ${QET_DIR}/sources/ui/multipastedialog.h
   ${QET_DIR}/sources/ui/potentialselectordialog.cpp
@@ -685,6 +737,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/generalconfigurationpage.h
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.cpp
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.h
+  ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.cpp
+  ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h

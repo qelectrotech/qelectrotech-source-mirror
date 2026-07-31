@@ -28,3 +28,8 @@ TerminalStripLayoutsHandler &ProjectPropertiesHandler::terminalStripLayoutHandle
 {
 	return m_terminal_strip_layout_handler;
 }
+
+ProjectUsageTracker &ProjectPropertiesHandler::usageTracker()
+{
+	return m_usage_tracker;
+}

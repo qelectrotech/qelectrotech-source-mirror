@@ -124,7 +124,17 @@ void ElementDialog::setUpWidget()
 		} else if (m_mode == SaveTemplate) {
 			m_text_field->setPlaceholderText(tr("Nom du nouveau template"));
 		} else {
-			m_text_field->setPlaceholderText(tr("Nom du nouvel élément"));
+			// This is the element's file name, not its display name: the field
+			// only accepts file-name characters (QFileNameEdit). The visible
+			// element name is edited separately in the element properties.
+			m_text_field->setPlaceholderText(
+				tr("Nom de fichier de l'élément",
+				   "placeholder: the element's file name, not its display name"));
+			m_text_field->setToolTip(
+				tr("Nom de fichier de l'élément : chiffres, minuscules, « - », "
+				   "« _ » et « . » uniquement.\nLe nom affiché de l'élément se "
+				   "modifie séparément dans les propriétés de l'élément.",
+				   "tooltip for the element file-name field"));
 		}
 
 		layout->addWidget(m_text_field);

@@ -2,13 +2,102 @@
 
 ## [Unreleased](https://github.com/qelectrotech/qelectrotech-source-mirror/tree/HEAD)
 
-[Full Changelog](https://github.com/qelectrotech/qelectrotech-source-mirror/compare/0.9...HEAD)
+[Full Changelog](https://github.com/qelectrotech/qelectrotech-source-mirror/compare/nightly...HEAD)
+
+**Closed issues:**
+
+- “Exclude from auto-numbering” and “Potential isolation” tick boxes fault [\#482](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/482)
+- Add ability to change appearance of multiple lines at once [\#476](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/476)
+- Save As dialog asks for "element name" but actually requires a file name [\#469](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/469)
+- Some icons are illegible with dark theme [\#466](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/466)
+- \[BUG\] Properties to all conductors [\#460](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/460)
+- Internal links in PDF export [\#417](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/417)
+- Apple silicon download is not working [\#400](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/400)
+- Add missing title block variables to 'folio properties' window [\#271](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/271)
+- Bug: Saving a read-only project doesn't clear the read-only state [\#217](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/217)
+
+**Merged pull requests:**
+
+- PartText: keep text position stable across save/reopen on font-size change \(\#158\) [\#501](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/501) ([ispyisail](https://github.com/ispyisail))
+- Clear read-only state when a project is saved to a writable file [\#497](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/497) ([ispyisail](https://github.com/ispyisail))
+- Fix regional system locale loading the wrong translation \(pt\_BR/nl\_BE/nl\_NL\) [\#496](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/496) ([ispyisail](https://github.com/ispyisail))
+- Folio properties: auto-add a title block's custom variables [\#495](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/495) ([ispyisail](https://github.com/ispyisail))
+- Element editor Save As: label the field as a file name, not 'element name' [\#494](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/494) ([ispyisail](https://github.com/ispyisail))
+- CLI: add --set-titleblock, and fix headless backup crash [\#493](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/493) ([ispyisail](https://github.com/ispyisail))
+- Update qet\_zh.ts [\#491](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/491) ([zi-mozhuang](https://github.com/zi-mozhuang))
+- CLI: clickable cross-reference hyperlinks in PDF export [\#490](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/490) ([ispyisail](https://github.com/ispyisail))
+- CLI: add verification & data-export tools \(info, BOM, nets, links, check-elements, resave\) [\#489](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/489) ([ispyisail](https://github.com/ispyisail))
+- Issues 482 [\#488](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/488) ([Kellermorph](https://github.com/Kellermorph))
+- Revert "Update-UI-Chinese-translation" [\#486](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/486) ([scorpio810](https://github.com/scorpio810))
+- CLI export: don't draw the editor grid in PDF/PNG/SVG output [\#485](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/485) ([ispyisail](https://github.com/ispyisail))
+- Update-UI-Chinese-translation [\#484](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/484) ([zi-mozhuang](https://github.com/zi-mozhuang))
+- Add headless command-line export \(PDF / PNG / SVG / cable-list / wire-list\) [\#483](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/483) ([ispyisail](https://github.com/ispyisail))
+- fix possible crashes in crossrefitem [\#479](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/479) ([ChuckNr11](https://github.com/ChuckNr11))
+- Fix: Dynamic element text shifting/jumping when duplicating diagrams [\#477](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/477) ([Kellermorph](https://github.com/Kellermorph))
+- Update German translations for duplicate diagram feature [\#475](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/475) ([Kellermorph](https://github.com/Kellermorph))
+- Feat: Add ability to duplicate diagrams/folios with all metadata and … [\#473](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/473) ([Kellermorph](https://github.com/Kellermorph))
+- Feature: Allow excluding specific elements from BOM \(Nomenclature\) [\#472](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/472) ([Kellermorph](https://github.com/Kellermorph))
+- Potential Isolation option for terminals [\#471](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/471) ([Kellermorph](https://github.com/Kellermorph))
+- Fix: Wiring list filter and dynamic text timing [\#470](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/470) ([Kellermorph](https://github.com/Kellermorph))
+- New element: Line definition [\#464](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/464) ([Kellermorph](https://github.com/Kellermorph))
+- Turkish Lang Update  [\#463](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/463) ([scorpio810](https://github.com/scorpio810))
+- follow up: wiring list [\#462](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/462) ([Kellermorph](https://github.com/Kellermorph))
+- Fix and Improve Multi-selection for Diagram Operations [\#459](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/459) ([Kellermorph](https://github.com/Kellermorph))
+
+## [nightly](https://github.com/qelectrotech/qelectrotech-source-mirror/tree/nightly) (2026-05-10)
+
+[Full Changelog](https://github.com/qelectrotech/qelectrotech-source-mirror/compare/0.100...nightly)
+
+**Closed issues:**
+
+- Flatpak runtimes outdated [\#446](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/446)
+- Move Flemish man pages from man/be/ to man/nl\_BE/ [\#439](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/439)
+- you could share an PR to fix it? [\#438](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/438)
+- Diacritics in some filenames can possibly lead to the problems during packaging [\#437](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/437)
+- שרטוט חשמל [\#435](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/435)
+- Feature request: add circuit simulation [\#432](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/432)
+- No usable sources archive for version 0.100 [\#418](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/418)
+- New release ? [\#411](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/411)
+- options moving when opening "file", "edition" menus [\#299](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/299)
+
+**Merged pull requests:**
+
+- Try to add Windows build CI workflow [\#457](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/457) ([scorpio810](https://github.com/scorpio810))
+- Fixed: Prevented the selection in the project tree from jumping to the last page when saving. [\#456](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/456) ([Kellermorph](https://github.com/Kellermorph))
+- Fix Thumbnail in Makrotree [\#455](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/455) ([Kellermorph](https://github.com/Kellermorph))
+- Update German translation for macro feature [\#454](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/454) ([Kellermorph](https://github.com/Kellermorph))
+- Fix losing Focus on moving diagram position with keyboard [\#452](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/452) ([ChuckNr11](https://github.com/ChuckNr11))
+- Draft: Feature - Introduce User Templates Collection and Dedicated UI Tab [\#451](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/451) ([Kellermorph](https://github.com/Kellermorph))
+- Update translation [\#450](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/450) ([Kellermorph](https://github.com/Kellermorph))
+- Automatic Terminal Numbering Tool [\#449](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/449) ([Kellermorph](https://github.com/Kellermorph))
+- Supplement to pull request \#444 by Kellermorph [\#448](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/448) ([ChuckNr11](https://github.com/ChuckNr11))
+- Add RAM-based wiring list export [\#447](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/447) ([Kellermorph](https://github.com/Kellermorph))
+- Follow-up: Address review comments for slave limit feature [\#444](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/444) ([Kellermorph](https://github.com/Kellermorph))
+- Feature: Auto-select active diagram in the elements panel tree [\#443](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/443) ([Kellermorph](https://github.com/Kellermorph))
+- Revert "Feature: Implement max\_slaves limit for Master elements" [\#442](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/442) ([scorpio810](https://github.com/scorpio810))
+- Feature: Implement max\_slaves limit for Master elements [\#441](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/441) ([Kellermorph](https://github.com/Kellermorph))
+- Update qet\_cs.ts [\#434](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/434) ([pafri](https://github.com/pafri))
+- Update QCH Help file [\#433](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/433) ([Int-Circuit](https://github.com/Int-Circuit))
+- Create Korean man page for QElectroTech [\#431](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/431) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Update ELEMENTS.LICENSE [\#430](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/430) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Update CREDIT [\#429](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/429) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Korean comments to QElectroTech XML file [\#428](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/428) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Spanish and Korean summaries to appdata [\#427](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/427) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Korean translations for comments and generic names [\#426](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/426) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Restore copyright and license information in QET64.nsi [\#425](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/425) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Korean language strings to lang\_extra.nsh [\#424](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/424) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Korean translation author to aboutqetdialog [\#423](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/423) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Korean language support in xml element collection [\#422](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/422) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+- Add Korean translation \(ko\) – translated by jkh [\#419](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/419) ([Kyle-Code-CA](https://github.com/Kyle-Code-CA))
+
+## [0.100](https://github.com/qelectrotech/qelectrotech-source-mirror/tree/0.100) (2026-01-25)
+
+[Full Changelog](https://github.com/qelectrotech/qelectrotech-source-mirror/compare/0.9...0.100)
 
 **Closed issues:**
 
 - error in doxygen action code [\#414](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/414)
 - "NoName" is automatically inserted into empty text cells in title block [\#407](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/407)
-- Apple silicon download is not working [\#400](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/400)
 - Apple silicon download is not working [\#394](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/394)
 - Differenciating connector for proper labeling [\#390](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/390)
 - Non-perpendicular connections [\#368](https://github.com/qelectrotech/qelectrotech-source-mirror/issues/368)

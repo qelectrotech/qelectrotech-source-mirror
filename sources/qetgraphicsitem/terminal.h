@@ -77,6 +77,10 @@ class Terminal : public QGraphicsObject
 		QUuid     uuid                () const;
 		QString   name                () const;
 		TerminalData::Type terminalType() const;
+		bool useMasterLabel() const { return d->m_use_master_label; }
+		void setUseMasterLabel(bool use);
+		int masterLabelIndex() const { return d->m_master_label_index; }
+		void setMasterLabelIndex(int index);
 
 		QList<Conductor *> conductors() const;
 		Qet::Orientation orientation() const;

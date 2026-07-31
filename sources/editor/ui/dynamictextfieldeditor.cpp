@@ -163,7 +163,7 @@ void DynamicTextFieldEditor::updateForm()
 			}
 		}
 
-		on_m_text_from_cb_activated(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
+		updateTextFromWidgetsEnabled(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
 	}
 }
 
@@ -197,6 +197,10 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
+
+	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
+	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
+								 this, &DynamicTextFieldEditor::fillInfoComboBox);
 }
 
 void DynamicTextFieldEditor::disconnectConnections()
@@ -218,13 +222,34 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	ui -> m_elmt_info_cb -> clear();
 
 	QStringList strl;
-	auto type = elementEditor()->elementScene()->elementData().m_type;
+	auto ed = elementEditor()->elementScene()->elementData();
+	auto type = ed.m_type;
 
 	if((type & ElementData::AllReport) || (type == ElementData::ConductorDefinition)) {
 		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
 		strl = QETInformation::elementInfoKeys();
+
+		bool is_plc_slave = (type == ElementData::Slave
+							 && ed.m_slave_type == ElementData::PLCSlave);
+
+		if (is_plc_slave) {
+			QStringList plc_keys = {
+				QETInformation::ELMT_PLC_TYPE,
+				QETInformation::ELMT_PLC_ADDRESS,
+				QETInformation::ELMT_PLC_FUNCTION,
+				QETInformation::ELMT_PLC_COMMENT,
+				QETInformation::ELMT_PLC_CROSSREF
+			};
+			strl = plc_keys + strl;
+		} else {
+			strl.removeAll(QETInformation::ELMT_PLC_TYPE);
+			strl.removeAll(QETInformation::ELMT_PLC_ADDRESS);
+			strl.removeAll(QETInformation::ELMT_PLC_FUNCTION);
+			strl.removeAll(QETInformation::ELMT_PLC_COMMENT);
+			strl.removeAll(QETInformation::ELMT_PLC_CROSSREF);
+		}
 	}
 
 	for (int i=0; i<strl.size();++i) {
@@ -327,7 +352,16 @@ void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
+/**
+	@brief DynamicTextFieldEditor::updateTextFromWidgetsEnabled
+	Enable the widget matching @p index (the "text from" combo box's current
+	index) and disable the other two. Purely cosmetic: called both from the
+	real user-activated slot below and from updateForm() when the form is
+	(re)filled for a part/selection, so it must never touch m_parts's data —
+	see on_m_text_from_cb_activated() for the part-mutating counterpart.
+*/
+void DynamicTextFieldEditor::updateTextFromWidgetsEnabled(int index)
+{
 	ui -> m_user_text_le -> setDisabled(true);
 	ui -> m_elmt_info_cb -> setDisabled(true);
 	ui -> m_composite_text_pb -> setDisabled(true);
@@ -341,6 +375,10 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
 	else {
 		ui->m_composite_text_pb->setEnabled(true);
 	}
+}
+
+void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
+	updateTextFromWidgetsEnabled(index);
 
 	DynamicElementTextItem::TextFrom tf;
 	if(index == 0) {

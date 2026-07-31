@@ -42,8 +42,10 @@ ConductorCreator::ConductorCreator(Diagram *d, QList<Terminal *> terminals_list)
 		return;
 	}
 	m_properties = m_terminals_list.first()->diagram()->defaultConductorProperties;
-	
-	setUpPropertieToUse();
+
+	if (!setUpPropertieToUse()) {
+		return;
+	}
 	Terminal *hub_terminal = hubTerminal();
 	
 	d->undoStack().beginMacro(QObject::tr("Création de conducteurs"));
@@ -95,12 +97,15 @@ void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 
 /**
 	@brief ConductorCreator::propertieToUse
-	@return the conductor properties to use for the new conductors.
+	@return true if the caller should proceed with conductor creation,
+	false if the user cancelled the potential-selection dialog (in which
+	case no properties were chosen and creation must be aborted rather
+	than proceeding with blank/default properties).
 */
-void ConductorCreator::setUpPropertieToUse()
+bool ConductorCreator::setUpPropertieToUse()
 {
 	QList<Conductor *> potentials = existingPotential();
-	
+
 		//There is an existing potential
 		//we get one of them
 	if (!potentials.isEmpty())
@@ -111,8 +116,12 @@ void ConductorCreator::setUpPropertieToUse()
 			for(Conductor *c : potentials) {
 				cp_list.append(c->properties());
 			}
-			
-			m_properties = PotentialSelectorDialog::chosenProperties(cp_list);
+
+			bool cancelled = false;
+			m_properties = PotentialSelectorDialog::chosenProperties(cp_list, nullptr, &cancelled);
+			if (cancelled) {
+				return false;
+			}
 			for (Conductor *c : potentials) {
 				if (c->properties() == m_properties) {
 					m_sequential_number = c->sequenceNum();
@@ -124,11 +133,12 @@ void ConductorCreator::setUpPropertieToUse()
 			m_properties = potentials.first()->properties();
 			m_sequential_number = potentials.first()->sequenceNum();
 		}
-		return;
+		return true;
 	}
-	
+
 		//get a new properties
 	ConductorAutoNumerotation::newProperties(m_terminals_list.first()->diagram(), m_properties, m_sequential_number);
+	return true;
 }
 
 /**

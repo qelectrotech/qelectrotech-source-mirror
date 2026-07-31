@@ -16,7 +16,7 @@
 	along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetgraphicstableitem.h"
-
+#include "../../qetproject.h"
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../../createdxf.h"
 #include "../../diagram.h"

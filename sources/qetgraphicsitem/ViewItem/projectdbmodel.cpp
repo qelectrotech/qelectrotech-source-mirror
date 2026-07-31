@@ -22,6 +22,7 @@
 #include "../../qetinformation.h"
 #include "../../qetproject.h"
 #include "../../qetxml.h"
+#include "../../utils/qetutils.h"
 
 #include <QSqlError>
 #include <QSqlRecord>
@@ -252,7 +253,7 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 	
 	//Add index 0,0 data
 	auto index_00 = document.createElement("index00");
-	index_00.setAttribute("font", m_index_0_0_data.value(Qt::FontRole).toString());
+	index_00.setAttribute("font", QETUtils::fontToString(m_index_0_0_data.value(Qt::FontRole).value<QFont>()));
 	auto me = QMetaEnum::fromType<Qt::Alignment>();
 	index_00.setAttribute("alignment", me.valueToKey(m_index_0_0_data.value(Qt::TextAlignmentRole).toInt()));
 	dom_element.appendChild(index_00);
@@ -290,7 +291,7 @@ void ProjectDBModel::fromXml(const QDomElement &element)
 	//Index 0,0
 	auto index_00 = element.firstChildElement("index00");
 	QFont font_;
-	font_.fromString(index_00.attribute("font"));
+	QETUtils::fontFromString(font_, index_00.attribute("font"));
 	m_index_0_0_data.insert(Qt::FontRole, font_);
 	auto me = QMetaEnum::fromType<Qt::Alignment>();
 	m_index_0_0_data.insert(Qt::TextAlignmentRole, me.keyToValue(index_00.attribute("alignment").toStdString().data()));

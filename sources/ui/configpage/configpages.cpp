@@ -30,7 +30,7 @@
 #include "../reportpropertiewidget.h"
 #include "../titleblockpropertieswidget.h"
 #include "../xrefpropertieswidget.h"
-
+#include "guidespropertieswidget.h"
 #include <QFont>
 #include <QFontDialog>
 #include <QSizePolicy>
@@ -73,6 +73,33 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	rpw = new ReportPropertieWidget(ReportProperties::defaultProperties());
 	// default properties of xref
 	xrefpw = new XRefPropertiesWidget(XRefProperties::defaultProperties(), this);
+	// default guides properties
+	m_gpw = new GuidesPropertiesWidget(this);
+
+	QSettings settings;
+	QList<Diagram::Guide> loaded_guides;
+	if (m_project) {
+		for (const auto &pg : m_project->defaultGuides()) {
+			Diagram::Guide g;
+			g.orientation = static_cast<Diagram::Guide::Orientation>(pg.orientation);
+			g.position = pg.position;
+			g.color = pg.color;
+			loaded_guides.append(g);
+		}
+	} else {
+		QSettings settings;
+		int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
+		for (int i = 0; i < size; ++i) {
+			settings.setArrayIndex(i);
+			Diagram::Guide g;
+			g.orientation = static_cast<Diagram::Guide::Orientation>(settings.value(QStringLiteral("orientation"), 0).toInt());
+			g.position = settings.value(QStringLiteral("position"), 0.0).toReal();
+			g.color = QColor(settings.value(QStringLiteral("color"), QStringLiteral("#ff0000")).toString());
+			loaded_guides.append(g);
+		}
+		settings.endArray();
+	}
+	m_gpw->setGuides(loaded_guides);
 
 	//If there is a project, we edit his properties
 	if (m_project) {
@@ -98,6 +125,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	tab_widget -> addTab (m_cpw,            tr("Conducteur"));
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
 	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
+	tab_widget -> addTab (m_gpw,          tr("Guides"));
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
@@ -155,6 +183,17 @@ void NewDiagramPage::applyConf()
 			modified_project = true;
 		}
 
+		QList<GuideProperties> proj_guides;
+		for (const auto &g : m_gpw->guides()) {
+			GuideProperties pg;
+			pg.orientation = static_cast<int>(g.orientation);
+			pg.position = g.position;
+			pg.color = g.color;
+			proj_guides.append(pg);
+		}
+		m_project->setDefaultGuides(proj_guides);
+		modified_project = true;
+
 		if (modified_project) {
 			m_project -> setModified(modified_project);
 		}
@@ -176,13 +215,18 @@ void NewDiagramPage::applyConf()
 
 		// default xref properties
 		QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
-		foreach (QString key, hash_xrp.keys()) {
-			XRefProperties xrp = hash_xrp[key];
-			QString str("diagrameditor/defaultxref");
-			xrp.toSettings(settings, str += key);
-		}
-	}
 
+		// Global in QSettings speichern
+		QList<Diagram::Guide> current_guides = m_gpw->guides();
+		settings.beginWriteArray(QStringLiteral("diagrameditor/defaultguides"));
+		for (int i = 0; i < current_guides.size(); ++i) {
+			settings.setArrayIndex(i);
+			settings.setValue(QStringLiteral("orientation"), static_cast<int>(current_guides[i].orientation));
+			settings.setValue(QStringLiteral("position"), current_guides[i].position);
+			settings.setValue(QStringLiteral("color"), current_guides[i].color.name());
+		}
+		settings.endArray();
+	}
 }
 
 /**

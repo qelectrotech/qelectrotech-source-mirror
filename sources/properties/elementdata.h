@@ -22,6 +22,10 @@
 #include "../diagramcontext.h"
 #include "../NameList/nameslist.h"
 
+#include <QStringList>
+#include <QVector>
+#include <QFont>
+
 /**
  * @brief The ElementData class
  * WARNING
@@ -49,7 +53,8 @@ class ElementData : public PropertiesInterface
 		enum MasterType {
 			Coil,
 			Protection,
-			Commutator
+			Commutator,
+			PLC
 		};
 		Q_ENUM(MasterType)
 
@@ -58,7 +63,8 @@ class ElementData : public PropertiesInterface
 			Power,
 			DelayOn,
 			DelayOff,
-			delayOnOff
+			delayOnOff,
+			PLCSlave
 		};
 		Q_ENUM(SlaveType)
 
@@ -69,6 +75,82 @@ class ElementData : public PropertiesInterface
 			Other
 		};
 		Q_ENUM(SlaveState)
+
+		enum PlcIOType {
+			EntreeDigitale,
+			SortieDigitale,
+			EntreeAnalogique,
+			SortieAnalogique,
+			EntreeUniverselle,
+			SortieUniverselle
+		};
+		Q_ENUM(PlcIOType)
+
+		/**
+		 * @brief The PlcIO struct
+		 * Represents a single IO entry in a PLC master element.
+		 */
+		struct PlcIO {
+			PlcIOType type = EntreeDigitale;
+			QString address;          ///< e.g. "1.0", "1.1"
+			QString functionText;     ///< e.g. "Motor K1"
+			QString comment;          ///< Optional comment
+			QString crossRef;         ///< Auto-filled: slave reference
+			int terminalCount = 1;    ///< Number of terminals for this IO (1-4)
+			QStringList terminals;    ///< Terminal values T1, T2, ... (size = terminalCount)
+
+			bool operator==(const PlcIO &other) const {
+				return type == other.type
+					&& address == other.address
+					&& functionText == other.functionText
+					&& comment == other.comment
+					&& crossRef == other.crossRef
+					&& terminalCount == other.terminalCount
+					&& terminals == other.terminals;
+			}
+			bool operator!=(const PlcIO &other) const {
+				return !(*this == other);
+			}
+		};
+
+		/**
+		 * @brief The PlcMasterData struct
+		 * Stores all PLC master configuration: IO table, display settings, column visibility.
+		 * All data is stored in the .elmt file for easy sharing between users.
+		 */
+		struct PlcMasterData {
+			QVector<PlcIO> ios;                     ///< All IO entries
+			QList<int> breakPositions;              ///< Up to 4 break positions (IO index after which to break, 0 = disabled)
+			QMap<int, qreal> colWidths;             ///< Column widths (key: column index)
+			qreal rowHeight = 8.0;                  ///< Row height in mm
+			QMap<int, bool> colVisible;             ///< Column visibility (key: column index)
+			QFont headerFont;                       ///< Font for column headers
+			QFont cellFont;                         ///< Font for cell content
+			QStringList columnNames;                ///< Custom column header names
+			QList<int> columnOrder;                 ///< Column display order (logical indices)
+			bool showHeaders = true;                ///< Show column headers on sheet
+
+			bool operator==(const PlcMasterData &other) const {
+				return ios == other.ios
+					&& breakPositions == other.breakPositions
+					&& colWidths == other.colWidths
+					&& qFuzzyCompare(rowHeight, other.rowHeight)
+					&& colVisible == other.colVisible
+					&& headerFont == other.headerFont
+					&& cellFont == other.cellFont
+					&& columnNames == other.columnNames
+					&& columnOrder == other.columnOrder
+					&& showHeaders == other.showHeaders;
+			}
+			bool operator!=(const PlcMasterData &other) const {
+				return !(*this == other);
+			}
+		};
+
+		static QString plcIOTypeToString(PlcIOType type);
+		static PlcIOType plcIOTypeFromString(const QString &string);
+		static QString translatedPlcIOType(PlcIOType type);
+		static QStringList plcIOTypeList();
 
 		enum TerminalType {
 			TTGeneric,
@@ -85,6 +167,31 @@ class ElementData : public PropertiesInterface
 			TFNeutral,
 		};
 		Q_ENUM(TerminalFunction)
+
+		/**
+		 * @brief The SlaveContactGroup struct
+		 * Defines a contact group that a master element provides for slave elements.
+		 * Each group specifies the type, subtype, number of displayed contacts,
+		 * number of terminals, and the labels for each terminal (T1-T20).
+		 */
+		struct SlaveContactGroup {
+			SlaveState  type        = NO;      ///< Contact type (NO/NC/SW/Other)
+			SlaveType   subtype     = SSimple;  ///< Contact subtype (Simple/Power/Delay*)
+			int         contactCount  = 1;      ///< Number of displayed contacts
+			int         terminalCount = 1;      ///< Number of terminals (Anschlüsse)
+			QStringList labels;                 ///< Terminal labels (T1-T20), max 20 entries
+
+			bool operator==(const SlaveContactGroup &other) const {
+				return type == other.type
+					&& subtype == other.subtype
+					&& contactCount == other.contactCount
+					&& terminalCount == other.terminalCount
+					&& labels == other.labels;
+			}
+			bool operator!=(const SlaveContactGroup &other) const {
+				return !(*this == other);
+			}
+		};
 
 		ElementData() {}
 		~ElementData() override {}
@@ -130,12 +237,23 @@ class ElementData : public PropertiesInterface
 		static ElementData::TerminalFunction terminalFunctionFromString(const QString &string);
 		static QString translatedTerminalFunction(ElementData::TerminalFunction function);
 
+		static QString slaveContactGroupTypeToString(ElementData::SlaveState type);
+		static ElementData::SlaveState slaveContactGroupTypeFromString(const QString &string);
+		static QString slaveContactGroupSubtypeToString(ElementData::SlaveType type);
+		static ElementData::SlaveType slaveContactGroupSubtypeFromString(const QString &string);
+
+		PlcMasterData plcMasterData() const { return m_plc_master_data; }
+		void setPlcMasterData(const PlcMasterData &data) { m_plc_master_data = data; }
+
 		// must be public, because this class is a private member
 		// of Element/ element editor and they must access this data
 		ElementData::Type       m_type = ElementData::Simple;
 
 		ElementData::MasterType m_master_type = ElementData::Coil;
 		int m_max_slaves{-1};
+		bool m_slave_contact_groups_enabled{false};  ///< Whether slave contact groups table is active
+		QVector<SlaveContactGroup> m_slave_contact_groups;  ///< Contact groups defined by master
+		PlcMasterData m_plc_master_data;              ///< PLC master IO table and display settings
 
 		ElementData::SlaveType  m_slave_type  = ElementData::SSimple;
 		ElementData::SlaveState m_slave_state = ElementData::NO;

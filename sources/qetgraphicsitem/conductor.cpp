@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
-
+#include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
 #include "../conductorautonumerotation.h"

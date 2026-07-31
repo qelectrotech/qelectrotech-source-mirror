@@ -26,6 +26,7 @@
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
+#include "utils/qetutils.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -46,10 +47,7 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
-#else
-#	include <KAutoSaveFile>
-#endif
+#include <KAutoSaveFile>
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::m_overrided_common_elements_dir = QString();
@@ -219,20 +217,20 @@ void QETApp::setLanguage(const QString &desired_language) {
 
 	// load translations for the QET application
 	// charge les traductions pour l'application QET
-	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
-		/* in case of failure,
-		 *  we fall back on the native channels for French
-		 * en cas d'echec,
-		 *  on retombe sur les chaines natives pour le francais
-		 */
-		if (desired_language != "fr") {
-			// use of the English version by default
-			// utilisation de la version anglaise par defaut
-			if(!qetTranslator.load("qet_en", languages_path))
-				qWarning() << "failed to load"
-						   << "qet_en" << languages_path << "(" << __FILE__
-						   << __LINE__ << __FUNCTION__ << ")";
-		}
+	// desired_language may be a full locale such as "pt_BR": try that exact
+	// translation, then the base language ("pt"), then fall back to English.
+	// French is the application's source language and needs no translation.
+	const QString base_language = desired_language.section('_', 0, 0);
+	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	if (!loaded && base_language != desired_language)
+		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+	if (!loaded && base_language != "fr") {
+		// use of the English version by default
+		// utilisation de la version anglaise par defaut
+		if(!qetTranslator.load("qet_en", languages_path))
+			qWarning() << "failed to load"
+					   << "qet_en" << languages_path << "(" << __FILE__
+					   << __LINE__ << __FUNCTION__ << ")";
 	}
 	qApp->installTranslator(&qetTranslator);
 
@@ -256,7 +254,11 @@ QString QETApp::langFromSetting()
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
 		if(system_language == "system") {
-			system_language = QLocale::system().name().left(2);
+			// Keep the full locale (e.g. "pt_BR"), not just the base language
+			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
+			// truncating here loaded the wrong one. setLanguage() falls back to
+			// the base language when no regional translation exists.
+			system_language = QLocale::system().name();
 		}
 		lang_is_set = true;
 	}
@@ -528,6 +530,48 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(
 }
 
 /**
+	@brief resolveConfiguredDataPath
+	Resolve a data directory baked in at compile time.
+
+	An absolute path is returned unchanged. A relative one used to be
+	interpreted against the process working directory, which is only correct
+	when QET is started from its own installation folder: opening a document
+	from a file manager sets the working directory to the document's folder,
+	so the data was not found there. Resolve it against the executable
+	instead, trying the folder next to the binary and then its parent -- some
+	packagings put the binary in a "bin" subfolder with the data beside it
+	(see issue #86).
+
+	The working-directory interpretation is still attempted first, so any
+	setup that relied on it keeps working.
+
+	\~French Resout un dossier de donnees fixe a la compilation.
+	@param configured : the compile-time path
+	@return an existing directory if one is found, @a configured otherwise
+*/
+static QString resolveConfiguredDataPath(const QString &configured)
+{
+	if (configured.isEmpty() || QDir::isAbsolutePath(configured)) {
+		return(configured);
+	}
+	if (QDir(configured).exists()) {
+		return(configured);
+	}
+
+	const QString bin_dir = QCoreApplication::applicationDirPath();
+	const QStringList candidates = {
+		QDir::cleanPath(bin_dir + "/" + configured) + "/",
+		QDir::cleanPath(bin_dir + "/../" + configured) + "/"
+	};
+	for (const QString &candidate : candidates) {
+		if (QDir(candidate).exists()) {
+			return(candidate);
+		}
+	}
+	return(configured);
+}
+
+/**
 	@brief QETApp::commonElementsDir
 	@return the dir path of the common elements collection.
 */
@@ -574,7 +618,8 @@ QString QETApp::commonElementsDir()
 		/* the compilation option represents a classic absolute
 		 *  or relative path
 		 */
-		m_common_element_dir = QUOTE(QET_COMMON_COLLECTION_PATH);
+		m_common_element_dir =
+				resolveConfiguredDataPath(QUOTE(QET_COMMON_COLLECTION_PATH));
 		return m_common_element_dir;
 #else
 		/* the compilation option represents a path
@@ -742,7 +787,7 @@ QString QETApp::commonTitleBlockTemplatesDir()
 	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
 		// the compile-time option represents a usual path
 		// (be it absolute or relative)
-		return(QUOTE(QET_COMMON_TBT_PATH));
+		return(resolveConfiguredDataPath(QUOTE(QET_COMMON_TBT_PATH)));
 	#else
 		/* the compile-time option represents a path relative
 		 * to the directory that contains the executable binary
@@ -876,10 +921,13 @@ QString QETApp::configDir()
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (config_dir != QString()) return(config_dir);
 #endif
-	QString configdir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
-	while (configdir.endsWith('/')) {
-		configdir.remove(configdir.length()-1, 1);
-	}
+	// C++11 static-local init runs exactly once across all threads — safe to
+	// call from QtConcurrent background threads (QStandardPaths is not).
+	static const QString configdir = []() {
+		QString d = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+		while (d.endsWith('/')) d.chop(1);
+		return d;
+	}();
 	return configdir;
 }
 
@@ -900,10 +948,13 @@ QString QETApp::dataDir()
 #ifdef QET_ALLOW_OVERRIDE_DD_OPTION
 	if (data_dir != QString()) return(data_dir);
 #endif
-	QString datadir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-	while (datadir.endsWith('/')) {
-		datadir.remove(datadir.length()-1, 1);
-	}
+	// C++11 static-local init runs exactly once across all threads — safe to
+	// call from QtConcurrent background threads (QStandardPaths is not).
+	static const QString datadir = []() {
+		QString d = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+		while (d.endsWith('/')) d.chop(1);
+		return d;
+	}();
 	return datadir;
 }
 
@@ -1221,7 +1272,21 @@ QString QETApp::languagesPath()
 	 * en l'absence d'option de compilation, on utilise le dossier lang,
 	 *  situe a cote du binaire executable
 	 */
-	return(QCoreApplication::applicationDirPath() + "/lang/");
+	{
+		const QString bin_dir = QCoreApplication::applicationDirPath();
+		const QString next_to_bin = bin_dir + "/lang/";
+		// Some packagings (notably the Windows installer) put the binary in a
+		// "bin" subfolder while "lang" sits beside it (../lang). Fall back to
+		// that layout when the folder next to the binary is absent, so the
+		// translations are found without a --lang-dir argument. See issue #86.
+		if (!QDir(next_to_bin).exists()) {
+			const QString sibling_of_bin =
+				QDir::cleanPath(bin_dir + "/../lang") + "/";
+			if (QDir(sibling_of_bin).exists())
+				return(sibling_of_bin);
+		}
+		return(next_to_bin);
+	}
 #else
 	#ifndef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
 		/* the compilation option represents
@@ -1229,7 +1294,7 @@ QString QETApp::languagesPath()
 		 * l'option de compilation represente
 		 *  un chemin absolu ou relatif classique
 		 */
-		return(QUOTE(QET_LANG_PATH));
+		return(resolveConfiguredDataPath(QUOTE(QET_LANG_PATH)));
 	#else
 		/* the compilation option represents a path relative
 		 *  to the folder containing the executable binary
@@ -1350,7 +1415,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/dynamic_text_font")) {
-		font_.fromString(settings.value(
+		QETUtils::fontFromString(font_, settings.value(
 					 "diagrameditor/dynamic_text_font"
 						).toString());
 	}
@@ -1374,7 +1439,7 @@ QFont QETApp::indiTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/independent_text_font")) {
-		font_.fromString(settings.value(
+		QETUtils::fontFromString(font_, settings.value(
 					 "diagrameditor/independent_text_font"
 					 ).toString());
 	}
@@ -1658,17 +1723,22 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 void QETApp::useSystemPalette(bool use) {
 	if (use) {
 		qApp->setPalette(initial_palette_);
-		qApp->setStyleSheet(
-				"QAbstractScrollArea#mdiarea {"
-				"background-color -> setPalette(initial_palette_);"
-				"}"
-				);
+		// Drop any stylesheet previously loaded from style.css: with system
+		// colors requested, the palette set just above is what provides them.
+		//
+		// This used to install a one-rule stylesheet whose only declaration
+		// was invalid CSS ("background-color -> setPalette(initial_palette_);",
+		// a note-to-self committed in e6c32bc0, 2014). It styled nothing, but
+		// a non-empty application stylesheet still wraps every widget in
+		// QStyleSheetStyle, which overrides per-widget QWidget::setStyle().
+		qApp->setStyleSheet(QString());
 	} else {
 		QFile file(configDir() + "/style.css");
-		file.open(QFile::ReadOnly);
-		QString styleSheet = QLatin1String(file.readAll());
-		qApp->setStyleSheet(styleSheet);
-		file.close();
+		if (file.open(QFile::ReadOnly)) {
+			QString styleSheet = QLatin1String(file.readAll());
+			qApp->setStyleSheet(styleSheet);
+			file.close();
+		}
 	}
 }
 
@@ -1962,7 +2032,10 @@ void QETApp::configureQET()
 	// cree le dialogue
 	ConfigDialog cd;
 	cd.setWindowTitle(tr("Configurer QElectroTech", "window title"));
-	cd.setWindowModality(Qt::WindowModal);
+	// ApplicationModal so no other window can dispatch events while the dialog
+	// holds raw pointers derived from the current project list.  Same class of
+	// bug as ProjectPropertiesDialog — see issue #527.
+	cd.setWindowModality(Qt::ApplicationModal);
 	cd.addPage(new GeneralConfigurationPage());
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());
@@ -2466,9 +2539,6 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
-#ifdef BUILD_WITHOUT_KF5
-	return;
-#else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
 
 	//Remove from the list @stale_files, the stales file of opened project
@@ -2543,7 +2613,6 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
-#endif
 }
 
 /**
@@ -2594,14 +2663,17 @@ void QETApp::fetchWindowStats(
 #ifdef Q_OS_DARWIN
 /**
 	Gere les evenements, en particulier l'evenement FileOpen sous MacOs.
+	Installe comme event filter sur QApplication dans main(), une fois
+	QETApp construite (voir main.cpp).
+	@param object Objet cible de l'evenement
 	@param e Evenement a gerer
 */
-bool QETApp::eventFiltrer(QObject *object, QEvent *e) {
+bool QETApp::eventFilter(QObject *object, QEvent *e) {
 	// gere l'ouverture de fichiers (sous MacOs)
 	if (e -> type() == QEvent::FileOpen) {
 	// nom du fichier a ouvrir
 	QString filename = static_cast<QFileOpenEvent *>(e) -> file();
-	openFiles(QStringList() << filename);
+	openFiles(QETArguments(QStringList() << filename));
 	return(true);
 	} else {
 	return QObject::eventFilter(object, e);

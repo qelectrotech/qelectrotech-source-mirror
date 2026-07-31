@@ -39,7 +39,7 @@
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
 #include "qetinformation.h"
-
+#include "qetproject.h"
 #include <cassert>
 #include <math.h>
 
@@ -65,7 +65,6 @@ QColor		Diagram::background_color = Qt::white;
 Diagram::Diagram(QETProject *project) :
 	QGraphicsScene           (project),
 	m_project                (project),
-	draw_grid_               (true),
 	use_border_              (true),
 	draw_terminals_          (true),
 	draw_colored_conductors_ (true),
@@ -73,6 +72,11 @@ Diagram::Diagram(QETProject *project) :
 	m_freeze_new_elements    (false),
 	m_freeze_new_conductors_ (false)
 {
+
+	QSettings settings;
+	draw_grid_ = settings.value(QStringLiteral("diagrameditor/grid_display_startup"), true).toBool();
+	draw_guides_ = settings.value(QStringLiteral("diagrameditor/guides_display_startup"), false).toBool();
+
 	setItemIndexMethod(QGraphicsScene::NoIndex);
 	/* Set to no index,
 	 * because they can be the source of the crash with conductor and shape ghost.
@@ -121,8 +125,30 @@ Diagram::Diagram(QETProject *project) :
 	connect(this, &Diagram::diagramActivated,
 		this, &Diagram::loadCndFolioSeq);
 	adjustSceneRect();
-}
 
+	m_guides_list.clear();
+	if (m_project) {
+		for (const auto &pg : m_project->defaultGuides()) {
+			Diagram::Guide g;
+			g.orientation = static_cast<Diagram::Guide::Orientation>(pg.orientation);
+			g.position = pg.position;
+			g.color = pg.color;
+			m_guides_list.append(g);
+		}
+	} else {
+		QSettings settings;
+		int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
+		for (int i = 0; i < size; ++i) {
+			settings.setArrayIndex(i);
+			Diagram::Guide g;
+			g.orientation = static_cast<Diagram::Guide::Orientation>(settings.value(QStringLiteral("orientation"), 0).toInt());
+			g.position = settings.value(QStringLiteral("position"), 0.0).toReal();
+			g.color = QColor(settings.value(QStringLiteral("color"), QStringLiteral("#ff0000")).toString());
+			m_guides_list.append(g);
+		}
+		settings.endArray();
+	}
+}
 /**
 	@brief Diagram::~Diagram
 	Destructor
@@ -152,7 +178,7 @@ Diagram::~Diagram()
 			continue;
 		deletable_items.append(qgi);
 	}
-	for (const auto &item : qAsConst(deletable_items))
+	for (const auto &item : std::as_const(deletable_items))
 	{
 		removeItem(item);
 		delete item;
@@ -186,6 +212,14 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setBrush(Diagram::background_color);
 	p -> drawRect(r);
 
+	QSettings settings;
+	QRectF rect = settings.value(
+				QStringLiteral("diagrameditor/zoom-out-beyond-of-folio"),
+				false).toBool() ? r
+						: border_and_titleblock
+						  .insideBorderRect()
+						  .intersected(r);
+
 	if (draw_grid_) {
 			/* Draw the points of the grid
 			 * if background color is black,
@@ -200,19 +234,10 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 
 		p -> setBrush(Qt::NoBrush);
 
-		// If user allow zoom out beyond of folio,
-		// we draw grid outside of border.
-		QSettings settings;
 		int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
 								   Diagram::xGrid).toInt();
 		int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
 								   Diagram::yGrid).toInt();
-		QRectF rect = settings.value(
-					QStringLiteral("diagrameditor/zoom-out-beyond-of-folio"),
-					false).toBool() ? r
-							: border_and_titleblock
-							  .insideBorderRect()
-							  .intersected(r);
 
 		qreal limit_x = rect.x() + rect.width();
 		qreal limit_y = rect.y() + rect.height();
@@ -252,7 +277,23 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 				p -> drawPoints(points);
 	}
 
-	if (use_border_) border_and_titleblock.draw(p);
+	if (draw_guides_) {
+		for (const Diagram::Guide &guide : m_guides_list) {
+			QPen guidePen(guide.color, 1, Qt::DashLine);
+			guidePen.setCosmetic(true);
+			p->setPen(guidePen);
+
+			if (guide.orientation == Diagram::Guide::Vertical) {
+				p->drawLine(guide.position, rect.top(), guide.position, rect.bottom());
+			} else {
+				p->drawLine(rect.left(), guide.position, rect.right(), guide.position);
+			}
+		}
+	}
+	if (use_border_) {
+		border_and_titleblock.draw(p);
+	}
+
 	p -> restore();
 }
 
@@ -1458,12 +1499,12 @@ bool Diagram::fromXml(QDomElement &document,
 	if (position != QPointF())
 	{
 		QVector <QGraphicsItem *> added_items;
-		for (auto element : qAsConst(added_elements   )) added_items << element;
-		for (auto shape   : qAsConst(added_shapes     )) added_items << shape;
-		for (auto text    : qAsConst(added_texts      )) added_items << text;
-		for (auto image   : qAsConst(added_images     )) added_items << image;
-		for (auto table   : qAsConst(added_tables     )) added_items << table;
-		for (const auto &strip : qAsConst(added_strips)) added_items << strip;
+		for (auto element : std::as_const(added_elements   )) added_items << element;
+		for (auto shape   : std::as_const(added_shapes     )) added_items << shape;
+		for (auto text    : std::as_const(added_texts      )) added_items << text;
+		for (auto image   : std::as_const(added_images     )) added_items << image;
+		for (auto table   : std::as_const(added_tables     )) added_items << table;
+		for (const auto &strip : std::as_const(added_strips)) added_items << strip;
 
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
@@ -1590,11 +1631,11 @@ void Diagram::refreshContents()
 		conductor->refreshText();
 	}
 
-	for (auto &table : qAsConst(dc_.m_tables)) {
+	for (auto &table : std::as_const(dc_.m_tables)) {
 		table->initLink();
 	}
 
-	for (auto &strip :qAsConst(dc_.m_terminal_strip)) {
+	for (auto &strip :std::as_const(dc_.m_terminal_strip)) {
 		strip->refreshPending();
 	}
 }
@@ -1779,7 +1820,7 @@ void Diagram::invertSelection()
 			item_list << item;
 		}
 	}
-	for (auto item : qAsConst(item_list)) {
+	for (auto item : std::as_const(item_list)) {
 		item -> setSelected(!item -> isSelected());
 	}
 
@@ -2265,6 +2306,7 @@ ExportProperties Diagram::applyProperties(
 	// exporte les options de rendu en cours
 	ExportProperties old_properties;
 	old_properties.draw_grid               = displayGrid();
+	old_properties.draw_guides             = displayGuides();
 	old_properties.draw_border = border_and_titleblock.borderIsDisplayed();
 	old_properties.draw_titleblock = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
@@ -2278,6 +2320,7 @@ ExportProperties Diagram::applyProperties(
 	setDrawTerminals         (new_properties.draw_terminals);
 	setDrawColoredConductors (new_properties.draw_colored_conductors);
 	setDisplayGrid           (new_properties.draw_grid);
+	setDisplayGuides         (new_properties.draw_guides);
 	border_and_titleblock.displayBorder(new_properties.draw_border);
 	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
 
@@ -2625,4 +2668,25 @@ void Diagram::restoreText(Element* elmt)
 			}
 		}
 	}
+}
+
+QUndoStack &Diagram::undoStack() {
+	return *(project()->undoStack());
+}
+
+/**
+ * @brief Diagram::updateProjectGuides
+ * Aktualisiert die internen Hilfslinien dieses Schaltplans
+ * basierend auf den Projekt-Einstellungen und erzwingt ein Neuzeichnen.
+ */
+void Diagram::updateProjectGuides(const QList<GuideProperties> &guides) {
+	m_guides_list.clear();
+	for (const GuideProperties &pg : guides) {
+		Diagram::Guide g;
+		g.orientation = static_cast<Diagram::Guide::Orientation>(pg.orientation);
+		g.position = pg.position;
+		g.color = pg.color;
+		m_guides_list.append(g);
+	}
+	update();
 }

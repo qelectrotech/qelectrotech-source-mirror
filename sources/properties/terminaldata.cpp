@@ -17,7 +17,10 @@
 */
 #include "terminaldata.h"
 
+#include "../utils/qetutils.h"
+
 #include <QGraphicsObject>
+
 #include <QDebug>
 
 TerminalData::TerminalData():
@@ -110,6 +113,26 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 
 	xml_element.setAttribute("type", typeToString(m_type));
 
+	if (m_show_name) {
+		xml_element.setAttribute("show_name", "true");
+		xml_element.setAttribute("label_x", QString::number(m_label_pos.x()));
+		xml_element.setAttribute("label_y", QString::number(m_label_pos.y()));
+		xml_element.setAttribute("label_font", QETUtils::fontToString(m_label_font));
+		xml_element.setAttribute("label_rotation", QString::number(m_label_rotation));
+		xml_element.setAttribute("label_halign", static_cast<int>(m_label_halignment));
+		xml_element.setAttribute("label_valign", static_cast<int>(m_label_valignment));
+		if (m_label_frame)
+			xml_element.setAttribute("label_frame", "true");
+		if (m_label_color != QColor(Qt::black))
+			xml_element.setAttribute("label_color", m_label_color.name());
+	}
+
+	// Save master label override settings
+	if (m_use_master_label) {
+		xml_element.setAttribute("use_master_label", "true");
+		xml_element.setAttribute("master_label_index", m_master_label_index);
+	}
+
 	return(xml_element);
 }
 
@@ -156,6 +179,35 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 				xml_element.attribute("orientation"));
 
 	m_type = typeFromString(xml_element.attribute("type"));
+
+	m_show_name = (xml_element.attribute("show_name") == QLatin1String("true"));
+	if (m_show_name) {
+		qreal lx = xml_element.attribute("label_x", "0").toDouble();
+		qreal ly = xml_element.attribute("label_y", "0").toDouble();
+		m_label_pos = QPointF(lx, ly);
+
+		QString font_str = xml_element.attribute("label_font");
+		if (!font_str.isEmpty())
+			QETUtils::fontFromString(m_label_font, font_str);
+
+		m_label_rotation = xml_element.attribute("label_rotation", "0").toDouble();
+
+		int ha = xml_element.attribute("label_halign", "0").toInt();
+		m_label_halignment = static_cast<Qt::Alignment>(ha);
+
+		int va = xml_element.attribute("label_valign", "0").toInt();
+		m_label_valignment = static_cast<Qt::Alignment>(va);
+
+		m_label_frame = (xml_element.attribute("label_frame") == QLatin1String("true"));
+
+		QString color_str = xml_element.attribute("label_color");
+		if (!color_str.isEmpty())
+			m_label_color = QColor(color_str);
+	}
+
+	// Read master label override settings
+	m_use_master_label = (xml_element.attribute("use_master_label") == QLatin1String("true"));
+	m_master_label_index = xml_element.attribute("master_label_index", "0").toInt();
 
 	return true;
 }
