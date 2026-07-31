@@ -996,6 +996,9 @@ QDomDocument QETProject::toXml()
 	writeProjectPropertiesXml(project_properties);
 	project_root.appendChild(project_properties);
 
+	// local, non-transmitted usage tracking (time spent on this project)
+	writeUsageXml(project_root);
+
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
 	writeDefaultPropertiesXml(new_diagrams_properties);
@@ -1496,6 +1499,9 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
 
+		//Load the local, non-transmitted usage tracking
+	readUsageXml(xml_project);
+
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
 
@@ -1650,6 +1656,17 @@ void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readUsageXml
+	Load the local, non-transmitted usage tracking (time spent on this
+	project) from the XML description of the project.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readUsageXml(QDomDocument &xml_project)
+{
+	m_project_properties_handler.usageTracker().fromXml(xml_project.documentElement());
+}
+
+/**
 	@brief QETProject::readDefaultPropertiesXml
 	load default properties for new diagram, found in the xml of this project
 	or by default find in the QElectroTech global conf
@@ -1782,6 +1799,15 @@ void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
 */
 void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 	m_project_properties.toXml(xml_element);
+}
+
+/**
+	@brief QETProject::writeUsageXml
+	Export the local, non-transmitted usage tracking (time spent on this
+	project) as a <usage> child of \a xml_element.
+*/
+void QETProject::writeUsageXml(QDomElement &xml_element) {
+	m_project_properties_handler.usageTracker().toXml(xml_element);
 }
 
 /**

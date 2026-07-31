@@ -21,6 +21,8 @@
 
 class QLabel;
 class QLineEdit;
+class QCheckBox;
+class QPushButton;
 class QETProject;
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
@@ -108,7 +110,10 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	void initLayout() override;
 	void readValuesFromProject() override;
 	void adjustReadOnly() override;
-	
+
+	private slots:
+	void resetUsageTracker();
+
 	// attributes
 	protected:
 	QLabel *title_label_;
@@ -116,6 +121,10 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	QLabel *title_information_;
 	QLabel *project_variables_label_;
 	DiagramContextWidget *project_variables_;
+	QLabel *usage_label_;
+	QLabel *usage_value_;
+	QCheckBox *usage_enabled_cb_;
+	QPushButton *usage_reset_pb_;
 };
 
 class ProjectAutoNumConfigPage : public ProjectConfigPage {
