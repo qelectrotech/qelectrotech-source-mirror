@@ -34,6 +34,7 @@
 #include "TerminalStrip/terminalstrip.h"
 #include "qetxml.h"
 #include "qetversion.h"
+#include "undocommand/adddiagramcommand.h"
 
 #include <QElapsedTimer>
 #include <QHash>
@@ -1348,6 +1349,8 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 /**
 	@brief QETProject::addNewDiagram
 	Add a new diagram in project at position pos.
+	This is pushed as an undoable AddDiagramCommand: use undoStack()->undo()
+	to remove it again.
 	@param pos
 	@return the new created diagram
 */
@@ -1363,14 +1366,15 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
 
-	addDiagram(diagram, pos);
-	emit diagramAdded(this, diagram);
+	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
 }
 
 /**
 	@brief QETProject::removeDiagram
-	Remove diagram from project
+	Remove diagram from project immediately (not undoable). UI code should
+	generally go through ProjectView::removeDiagram() instead, which pushes
+	an undoable RemoveDiagramCommand.
 	@param diagram
 */
 void QETProject::removeDiagram(Diagram *diagram)
@@ -1380,13 +1384,8 @@ void QETProject::removeDiagram(Diagram *diagram)
 		return;
 	}
 
-	if (m_diagrams_list.removeAll(diagram))
-	{
-		emit diagramRemoved(this, diagram);
-		diagram->deleteLater();
-	}
-
-	updateDiagramsFolioData();
+	detachDiagram(diagram);
+	diagram->deleteLater();
 }
 
 /**
@@ -1930,6 +1929,33 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	}
 
 	updateDiagramsFolioData();
+	emit diagramAdded(this, diagram);
+}
+
+/**
+	@brief QETProject::detachDiagram
+	Inverse of addDiagram(): removes \p diagram from this project's diagram
+	list and disconnects the signals set up by addDiagram(), without
+	destroying it. Used by RemoveDiagramCommand (and removeDiagram()) so a
+	removed diagram can be parked and later reinserted by undo.
+	@param diagram
+*/
+void QETProject::detachDiagram(Diagram *diagram)
+{
+	if (!diagram || !m_diagrams_list.contains(diagram)) {
+		return;
+	}
+
+	disconnect(&diagram->border_and_titleblock,
+		&BorderTitleBlock::needFolioData,
+		this,
+		&QETProject::updateDiagramsFolioData);
+	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
+		this, &QETProject::usedTitleBlockTemplateChanged);
+
+	m_diagrams_list.removeAll(diagram);
+	updateDiagramsFolioData();
+	emit diagramRemoved(this, diagram);
 }
 
 /**

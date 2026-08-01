@@ -33,6 +33,8 @@
 #include "ui/dialogwaiting.h"
 #include "ui/projectpropertiesdialog.h"
 #include "ui/titleblockpropertieswidget.h"
+#include "undocommand/movediagramcommand.h"
+#include "undocommand/removediagramcommand.h"
 
 /**
 	Constructeur
@@ -86,6 +88,10 @@ void ProjectView::setProject(QETProject *project)
 		connect(m_project, &QETProject::diagramAdded, [this](QETProject *project, Diagram *diagram) {
 			Q_UNUSED(project)
 			this->diagramAdded(diagram);
+		});
+		connect(m_project, &QETProject::diagramRemoved, [this](QETProject *project, Diagram *diagram) {
+			Q_UNUSED(project)
+			this->diagramRemoved(diagram);
 		});
 
 		adjustReadOnlyState();
@@ -383,7 +389,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view, bool silent)
 		int answer = QET::QetMessageBox::question(
 			this,
 			tr("Supprimer le folio ?", "message box title"),
-												  tr("Êtes-vous sûr de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
+												  tr("Êtes-vous sûr de vouloir supprimer ce folio du projet ?", "message box content"),
 												  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 											QMessageBox::No
 		);
@@ -392,16 +398,33 @@ void ProjectView::removeDiagram(DiagramView *diagram_view, bool silent)
 		}
 	}
 
-	//Remove the diagram view of the tabs widget
+	m_project->undoStack()->push(new RemoveDiagramCommand(m_project, diagram_view->diagram()));
+}
+
+/**
+	@brief ProjectView::diagramRemoved
+	Slot called when the project emits diagramRemoved (either from a direct,
+	non-undoable QETProject::removeDiagram() call, or -- the normal UI path
+	-- from a RemoveDiagramCommand's redo()/undo()). Tears down the tab and
+	DiagramView for the given diagram; the diagram itself is left untouched,
+	since by this point it has already been detached (and possibly parked
+	for undo) by the caller.
+	@param diagram
+*/
+void ProjectView::diagramRemoved(Diagram *diagram)
+{
+	DiagramView *diagram_view = findDiagram(diagram);
+	if (!diagram_view)
+		return;
+
 	int index_to_remove = m_diagram_ids.key(diagram_view);
 	m_tab->removeTab(index_to_remove);
 	m_diagram_view_list.removeAll(diagram_view);
 	rebuildDiagramsMap();
 
-	m_project -> removeDiagram(diagram_view -> diagram());
+	emit(diagramRemoved(diagram_view));
 	delete diagram_view;
 
-	emit(diagramRemoved(diagram_view));
 	updateAllTabsTitle();
 	m_project -> setModified(true);
 }
@@ -485,7 +508,7 @@ void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 1);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position - 1));
 }
 
 /**
@@ -506,7 +529,7 @@ void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 1);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position + 1));
 }
 
 /**
@@ -528,7 +551,7 @@ void ProjectView::moveDiagramUpTop(DiagramView *diagram_view)
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, 0);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), 0));
 }
 
 /*
@@ -550,7 +573,7 @@ void ProjectView::moveDiagramUpx10(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 10);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position - 10));
 }
 
 /**
@@ -573,7 +596,7 @@ void ProjectView::moveDiagramUpx100(DiagramView *diagram_view) {
 		// The diagram is the first of the project
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, diagram_view_position - 100);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position - 100));
 }
 
 /**
@@ -598,7 +621,7 @@ void ProjectView::moveDiagramDownx100(DiagramView *diagram_view) {
 		// The diagram is the last of the project
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, diagram_view_position + 100);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position + 100));
 }
 
 /**
@@ -621,7 +644,7 @@ void ProjectView::moveDiagramDownx10(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 10);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position + 10));
 }
 
 /**
@@ -1052,16 +1075,62 @@ void ProjectView::tabMoved(int from, int to)
 {
 	if (!m_project)
 		return;
-	
+
 	m_project->diagramOrderChanged(from, to);
 	rebuildDiagramsMap();
-	
+
 		//Rebuild the title of each diagram in range from - to
 	for (int i= qMin(from,to) ; i< qMax(from,to)+1 ; ++i)
 	{
 		DiagramView *dv = m_diagram_ids.value(i);
 		updateTabTitle(dv);
 	}
+}
+
+/**
+	@brief ProjectView::setDiagramPosition
+	Move \p diagram's tab to \p new_position (out-of-range values are
+	clamped by the underlying tab bar, same as a direct QTabBar::moveTab()
+	call). Used by MoveDiagramCommand for both redo and undo.
+
+	tabMoved() -- the slot that normally keeps the project's diagram list in
+	sync with the tab bar -- is connected with Qt::QueuedConnection (needed
+	so interactive drag-and-drop reordering settles before the model
+	updates). That queued call would run a second, redundant
+	diagramOrderChanged() after this method already performed it
+	synchronously, so that one connection is temporarily dropped around the
+	move (blocking all of the tab bar's signals instead would also suppress
+	QTabWidget's own internal tabMoved connection, which is what keeps its
+	page stack in the same order as the tab bar -- breaking the move
+	visually).
+	@param diagram
+	@param new_position
+*/
+void ProjectView::setDiagramPosition(Diagram *diagram, int new_position)
+{
+	if (!m_project)
+		return;
+
+	DiagramView *diagram_view = findDiagram(diagram);
+	if (!diagram_view)
+		return;
+
+	int current_position = m_diagram_ids.key(diagram_view, -1);
+	if (current_position < 0)
+		return;
+
+	disconnect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)));
+	m_tab->tabBar()->moveTab(current_position, new_position);
+	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
+
+	rebuildDiagramsMap();
+
+	int actual_new_position = m_tab->indexOf(diagram_view);
+	if (actual_new_position != current_position)
+		m_project->diagramOrderChanged(current_position, actual_new_position);
+
+	for (int i = qMin(current_position, actual_new_position); i <= qMax(current_position, actual_new_position); ++i)
+		updateTabTitle(m_diagram_ids.value(i));
 }
 
 /**

@@ -2249,16 +2249,25 @@ void QETDiagramEditor::removeDiagrams(const QList<Diagram *> &diagrams)
 	}
 
 	ProjectView *project_view = nullptr;
-	if (QETProject *diagram_project = diagrams.first()->project()) {
-		project_view = findProject(diagram_project);
+	QETProject *project = diagrams.first()->project();
+	if (project) {
+		project_view = findProject(project);
 	}
 
 	if (project_view) project_view->setUpdatesEnabled(false);
 	if (pa) pa->setUpdatesEnabled(false);
 
+	if (project) {
+		project->undoStack()->beginMacro(diagrams.count() == 1
+			? tr("Supprimer le folio")
+			: tr("Supprimer %1 folios").arg(diagrams.count()));
+	}
+
 	foreach (Diagram *diagram, diagrams) {
 		removeDiagramSilent(diagram);
 	}
+
+	if (project) project->undoStack()->endMacro();
 
 	if (pa) pa->setUpdatesEnabled(true);
 	if (project_view) project_view->setUpdatesEnabled(true);
@@ -2289,10 +2298,12 @@ void QETDiagramEditor::moveDiagramUp(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Forward loop for moving up
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = 0; i < safeDiagrams.size(); ++i) {
 					project_view->moveDiagramUp(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
@@ -2305,10 +2316,12 @@ void QETDiagramEditor::moveDiagramDown(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Backward loop for moving down
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
 					project_view->moveDiagramDown(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
@@ -2321,10 +2334,12 @@ void QETDiagramEditor::moveDiagramUpTop(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Backward loop to preserve relative order of the selected items when moving to top
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
 					project_view->moveDiagramUpTop(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
@@ -2337,10 +2352,12 @@ void QETDiagramEditor::moveDiagramUpx10(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Forward loop for moving up
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = 0; i < safeDiagrams.size(); ++i) {
 					project_view->moveDiagramUpx10(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
@@ -2353,10 +2370,12 @@ void QETDiagramEditor::moveDiagramDownx10(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Backward loop for moving down
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
 					project_view->moveDiagramDownx10(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
@@ -2369,10 +2388,12 @@ void QETDiagramEditor::moveDiagramUpx100(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Forward loop for moving up
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = 0; i < safeDiagrams.size(); ++i) {
 					project_view->moveDiagramUpx100(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
@@ -2385,10 +2406,12 @@ void QETDiagramEditor::moveDiagramDownx100(const QList<Diagram *> &diagrams) {
 		if (!diagram_project->isReadOnly()) {
 			if (ProjectView *project_view = findProject(diagram_project)) {
 				// Backward loop for moving down
+				diagram_project->undoStack()->beginMacro(tr("Déplacer les folios"));
 				for (int i = safeDiagrams.size() - 1; i >= 0; --i) {
 					project_view->moveDiagramDownx100(safeDiagrams.at(i));
 					QCoreApplication::processEvents(QEventLoop::ExcludeUserInputEvents);
 				}
+				diagram_project->undoStack()->endMacro();
 			}
 		}
 	}
