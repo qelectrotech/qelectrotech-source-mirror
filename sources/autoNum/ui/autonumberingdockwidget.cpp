@@ -26,6 +26,8 @@
 #include "../numerotationcontext.h"
 #include "ui_autonumberingdockwidget.h"
 
+#include <QComboBox>
+
 /**
 	@brief AutoNumberingDockWidget::AutoNumberingDockWidget
 	Constructor
@@ -337,5 +339,97 @@ void AutoNumberingDockWidget::on_m_configure_pb_clicked()
 		ProjectPropertiesDialog ppd (m_project, this);
 		ppd.setCurrentPage(ProjectPropertiesDialog::Autonum);
 		ppd.exec();
+	}
+}
+
+void AutoNumberingDockWidget::on_m_conductor_reset_start_pb_clicked()
+{
+	resetAutoNum(ui->m_conductor_cb, AutoNumCategory::Conductor, false);
+}
+
+void AutoNumberingDockWidget::on_m_conductor_reset_placeholder_pb_clicked()
+{
+	resetAutoNum(ui->m_conductor_cb, AutoNumCategory::Conductor, true);
+}
+
+void AutoNumberingDockWidget::on_m_element_reset_start_pb_clicked()
+{
+	resetAutoNum(ui->m_element_cb, AutoNumCategory::Element, false);
+}
+
+void AutoNumberingDockWidget::on_m_element_reset_placeholder_pb_clicked()
+{
+	resetAutoNum(ui->m_element_cb, AutoNumCategory::Element, true);
+}
+
+void AutoNumberingDockWidget::on_m_folio_reset_start_pb_clicked()
+{
+	resetAutoNum(ui->m_folio_cb, AutoNumCategory::Folio, false);
+}
+
+void AutoNumberingDockWidget::on_m_folio_reset_placeholder_pb_clicked()
+{
+	resetAutoNum(ui->m_folio_cb, AutoNumCategory::Folio, true);
+}
+
+/**
+	@brief AutoNumberingDockWidget::resetAutoNum
+	Reset the numerotation context currently selected in combo_box (for
+	category) either to a per-type starting value (to_placeholder = false)
+	or to the literal placeholder "?" on every part (to_placeholder =
+	true), then write it back so the existing refresh signals fire as
+	normal. Does nothing if no context is selected.
+
+	"Reset to start" only touches parts that actually represent a
+	progressing counter (numeric types, wrap, alpha): folio-anchored
+	numeric types go back to their own stored initialvalue, plain numeric
+	types and wrap go back to "1", alpha goes back to "a". Non-incrementing
+	types (string, plant, locmach, idfolio, folio, elementline,
+	elementcolumn, elementprefix) are left untouched -- there's no
+	meaningful "start" distinct from whatever the user configured for a
+	fixed/contextual value. "Reset to ?" applies to every part
+	unconditionally, since its purpose is marking the whole context as
+	needing manual attention.
+*/
+void AutoNumberingDockWidget::resetAutoNum(QComboBox *combo_box, AutoNumCategory category, bool to_placeholder)
+{
+	if (!m_project || combo_box->currentText().isEmpty())
+		return;
+
+	const QString key = combo_box->currentText();
+	NumerotationContext context;
+	switch (category) {
+		case AutoNumCategory::Conductor: context = m_project->conductorAutoNum(key); break;
+		case AutoNumCategory::Element:   context = m_project->elementAutoNum(key);   break;
+		case AutoNumCategory::Folio:     context = m_project->folioAutoNum(key);     break;
+	}
+
+	for (int i = 0; i < context.size(); ++i)
+	{
+		if (to_placeholder)
+		{
+			context.replaceValue(i, QStringLiteral("?"));
+			continue;
+		}
+
+		const QStringList item = context.itemAt(i);
+		const QString &type = item.at(0);
+		if (type == QLatin1String("unitfolio")
+				|| type == QLatin1String("tenfolio")
+				|| type == QLatin1String("hundredfolio"))
+			context.replaceValue(i, item.size() > 3 ? item.at(3) : QStringLiteral("1"));
+		else if (type == QLatin1String("unit")
+				|| type == QLatin1String("ten")
+				|| type == QLatin1String("hundred")
+				|| type == QLatin1String("wrap"))
+			context.replaceValue(i, QStringLiteral("1"));
+		else if (type == QLatin1String("alpha"))
+			context.replaceValue(i, QStringLiteral("a"));
+	}
+
+	switch (category) {
+		case AutoNumCategory::Conductor: m_project->addConductorAutoNum(key, context); break;
+		case AutoNumCategory::Element:   m_project->addElementAutoNum(key, context);   break;
+		case AutoNumCategory::Folio:     m_project->addFolioAutoNum(key, context);     break;
 	}
 }

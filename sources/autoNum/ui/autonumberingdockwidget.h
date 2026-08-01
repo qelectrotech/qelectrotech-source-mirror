@@ -23,6 +23,8 @@
 
 #include <QDockWidget>
 
+class QComboBox;
+
 namespace Ui {
 	class AutoNumberingDockWidget;
 }
@@ -53,11 +55,30 @@ class AutoNumberingDockWidget : public QDockWidget
 		void projectClosed();
 
 		void on_m_configure_pb_clicked();
-		
+
+		void on_m_conductor_reset_start_pb_clicked();
+		void on_m_conductor_reset_placeholder_pb_clicked();
+		void on_m_element_reset_start_pb_clicked();
+		void on_m_element_reset_placeholder_pb_clicked();
+		void on_m_folio_reset_start_pb_clicked();
+		void on_m_folio_reset_placeholder_pb_clicked();
+
 	signals:
 		void folioAutoNumChanged(QString);
 
 	private:
+		enum class AutoNumCategory { Conductor, Element, Folio };
+
+		/**
+			@brief resetAutoNum
+			Reset the numerotation context currently selected in combo_box
+			(for the given category) either to a per-type starting value
+			(to_placeholder = false) or to the literal placeholder "?" on
+			every part (to_placeholder = true). Does nothing if no context
+			is selected.
+		*/
+		void resetAutoNum(QComboBox *combo_box, AutoNumCategory category, bool to_placeholder);
+
 		Ui::AutoNumberingDockWidget *ui;
 		QETProject* m_project = nullptr;
 		ProjectView* m_project_view = nullptr;
