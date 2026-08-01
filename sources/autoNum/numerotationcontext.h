@@ -36,6 +36,7 @@ class NumerotationContext
 	bool addValue(const QString &,
 		      const QVariant & = QVariant(1),
 		      const int = 1,
+		      const int = 0,
 		      const int = 0);
 	QString operator[] (const int &) const;
 	void operator << (const NumerotationContext &);

@@ -49,6 +49,7 @@ class NumPartEditorW : public QWidget
 		enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
 				   string,idfolio,folio,plant,locmach,
 				   elementline,elementcolumn,elementprefix,
+				   wrap,
 				  };
 		NumerotationContext toNumContext();
 		bool isValid ();
@@ -63,6 +64,7 @@ class NumPartEditorW : public QWidget
 		void on_type_cb_activated(int);
 		void on_value_field_textEdited();
 		void on_increase_spinBox_valueChanged(int);
+		void on_modulus_spinBox_valueChanged(int);
 		void setType (NumPartEditorW::type t, bool=false);
 
 	signals:
