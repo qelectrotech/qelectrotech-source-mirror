@@ -27,6 +27,8 @@
 class Element;
 class QETProject;
 class Diagram;
+class Conductor;
+class Terminal;
 class sqlite3;
 
 /**
@@ -58,6 +60,9 @@ class projectDataBase : public QObject
 		void diagramInfoChanged (Diagram *diagram);
 		void diagramOrderChanged();
 
+		void addConductor       (Conductor *conductor);
+		void removeConductor    (Conductor *conductor);
+
 	signals:
 		void dataBaseUpdated();
 
@@ -69,6 +74,8 @@ class projectDataBase : public QObject
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
+		void populateConductorTable();
+		void insertTerminal(Terminal *terminal);
 		void prepareQuery();
 		static QHash<QString, QString> elementInfoToString(
 				Element *elmt);
@@ -86,7 +93,10 @@ class projectDataBase : public QObject
 				  m_insert_diagram_info_query,
 				  m_update_diagram_info_query,
 				  m_diagram_order_changed,
-				  m_diagram_info_order_changed;
+				  m_diagram_info_order_changed,
+				  m_insert_terminal_query,
+				  m_insert_conductor_query,
+				  m_remove_conductor_query;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

@@ -21,7 +21,9 @@
 #include "../diagramposition.h"
 #include "../elementprovider.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
 
@@ -87,6 +89,7 @@ void projectDataBase::updateDB()
 	populateDiagramInfoTable();
 	populateElementTable();
 	populateElementInfoTable();
+	populateConductorTable();
 	emit dataBaseUpdated();
 }
 
@@ -246,6 +249,57 @@ void projectDataBase::diagramOrderChanged()
 }
 
 /**
+	@brief projectDataBase::addConductor
+	@param conductor
+*/
+void projectDataBase::addConductor(Conductor *conductor)
+{
+	if (!conductor || !conductor->diagram()) {
+		qDebug() << "projectDataBase::addConductor: null conductor or diagram";
+		return;
+	}
+
+		//A conductor whose terminal(s) predate terminal uuids (legacy
+		//elements not yet re-saved by a uuid-aware element editor) can't
+		//be given a stable identity here -- omitted the same way
+		//element_nomenclature_view already omits exclude_from_bom elements,
+		//rather than fabricating one.
+	if (conductor->terminal1->uuid().isNull() || conductor->terminal2->uuid().isNull()) {
+		return;
+	}
+
+	insertTerminal(conductor->terminal1);
+	insertTerminal(conductor->terminal2);
+
+	m_insert_conductor_query.bindValue(":uuid", conductor->uuid().toString());
+	m_insert_conductor_query.bindValue(":diagram_uuid", conductor->diagram()->uuid().toString());
+	m_insert_conductor_query.bindValue(":terminal1_uuid", conductor->terminal1->uuid().toString());
+	m_insert_conductor_query.bindValue(":terminal1_element_uuid", conductor->terminal1->parentElement()->uuid().toString());
+	m_insert_conductor_query.bindValue(":terminal2_uuid", conductor->terminal2->uuid().toString());
+	m_insert_conductor_query.bindValue(":terminal2_element_uuid", conductor->terminal2->parentElement()->uuid().toString());
+	m_insert_conductor_query.bindValue(":text", conductor->properties().text);
+	if (!m_insert_conductor_query.exec()) {
+		qDebug() << "projectDataBase::addConductor insert error : " << m_insert_conductor_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
+	@brief projectDataBase::removeConductor
+	@param conductor
+*/
+void projectDataBase::removeConductor(Conductor *conductor)
+{
+	m_remove_conductor_query.bindValue(":uuid", conductor->uuid().toString());
+	if (!m_remove_conductor_query.exec()) {
+		qDebug() << "projectDataBase::removeConductor delete error : " << m_remove_conductor_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
 	@brief projectDataBase::createDataBase
 	Create the data base
 	@return : true if the data base was successfully created.
@@ -321,6 +375,42 @@ bool projectDataBase::createDataBase()
 
 	if (!query_.exec(element_info_table)) {
 		qDebug() << " element_info_table query : " << query_.lastError();
+	}
+
+	//Create the terminal table.
+	//Terminal::uuid() is the terminal-position id baked into the catalog
+	//.elmt definition (e.g. "the top terminal") -- identical across every
+	//placed instance of that catalog element, not a per-instance id. A
+	//terminal instance is only uniquely identified by (uuid, element_uuid)
+	//together, so that pair is the primary key here, not uuid alone.
+	QString terminal_table("CREATE TABLE terminal"
+						  "( "
+						  "uuid VARCHAR(50) NOT NULL, "
+						  "element_uuid VARCHAR(50) NOT NULL,"
+						  "name VARCHAR(50),"
+						  "PRIMARY KEY (uuid, element_uuid),"
+						  "FOREIGN KEY (element_uuid) REFERENCES element (uuid)"
+						  ")");
+	if (!query_.exec(terminal_table)) {
+		qDebug() << "terminal_table query : "<< query_.lastError();
+	}
+
+	//Create the conductor table
+	QString conductor_table("CREATE TABLE conductor"
+						  "( "
+						  "uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+						  "diagram_uuid VARCHAR(50) NOT NULL,"
+						  "terminal1_uuid VARCHAR(50) NOT NULL,"
+						  "terminal1_element_uuid VARCHAR(50) NOT NULL,"
+						  "terminal2_uuid VARCHAR(50) NOT NULL,"
+						  "terminal2_element_uuid VARCHAR(50) NOT NULL,"
+						  "text VARCHAR(100),"
+						  "FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid),"
+						  "FOREIGN KEY (terminal1_uuid, terminal1_element_uuid) REFERENCES terminal (uuid, element_uuid),"
+						  "FOREIGN KEY (terminal2_uuid, terminal2_element_uuid) REFERENCES terminal (uuid, element_uuid)"
+						  ")");
+	if (!query_.exec(conductor_table)) {
+		qDebug() << "conductor_table query : "<< query_.lastError();
 	}
 
 	createElementNomenclatureView();
@@ -534,6 +624,62 @@ void projectDataBase::populateDiagramInfoTable()
 	}
 }
 
+/**
+	@brief projectDataBase::populateConductorTable
+	Populate the terminal and conductor tables. Terminals only matter here
+	in the context of a conductor referencing them, so their population is
+	folded into this method rather than tracked independently.
+*/
+void projectDataBase::populateConductorTable()
+{
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("DELETE FROM conductor"));
+	query.exec(QStringLiteral("DELETE FROM terminal"));
+
+	for (auto *diagram : m_project->diagrams())
+	{
+		const auto conductor_list = diagram->conductors();
+		for (auto *conductor : conductor_list)
+		{
+				//See addConductor() for why terminals without a uuid
+				//(legacy elements) are omitted rather than fabricating one.
+			if (conductor->terminal1->uuid().isNull() || conductor->terminal2->uuid().isNull()) {
+				continue;
+			}
+
+			insertTerminal(conductor->terminal1);
+			insertTerminal(conductor->terminal2);
+
+			m_insert_conductor_query.bindValue(":uuid", conductor->uuid().toString());
+			m_insert_conductor_query.bindValue(":diagram_uuid", diagram->uuid().toString());
+			m_insert_conductor_query.bindValue(":terminal1_uuid", conductor->terminal1->uuid().toString());
+			m_insert_conductor_query.bindValue(":terminal1_element_uuid", conductor->terminal1->parentElement()->uuid().toString());
+			m_insert_conductor_query.bindValue(":terminal2_uuid", conductor->terminal2->uuid().toString());
+			m_insert_conductor_query.bindValue(":terminal2_element_uuid", conductor->terminal2->parentElement()->uuid().toString());
+			m_insert_conductor_query.bindValue(":text", conductor->properties().text);
+			if (!m_insert_conductor_query.exec()) {
+				qDebug() << "projectDataBase::populateConductorTable insert error : " << m_insert_conductor_query.lastError();
+			}
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::insertTerminal
+	Insert (or, if already present -- e.g. a junction shared by several
+	conductors -- silently keep) @terminal in the terminal table.
+	@param terminal
+*/
+void projectDataBase::insertTerminal(Terminal *terminal)
+{
+	m_insert_terminal_query.bindValue(":uuid", terminal->uuid().toString());
+	m_insert_terminal_query.bindValue(":element_uuid", terminal->parentElement()->uuid().toString());
+	m_insert_terminal_query.bindValue(":name", terminal->name());
+	if (!m_insert_terminal_query.exec()) {
+		qDebug() << "projectDataBase::insertTerminal insert error : " << m_insert_terminal_query.lastError();
+	}
+}
+
 void projectDataBase::prepareQuery()
 {
 		//INSERT DIAGRAM
@@ -606,6 +752,19 @@ void projectDataBase::prepareQuery()
 	update_str.append(" WHERE element_uuid = :uuid");
 	m_update_element_query = QSqlQuery(m_data_base);
 	m_update_element_query.prepare(update_str);
+
+		//INSERT TERMINAL
+	m_insert_terminal_query = QSqlQuery(m_data_base);
+	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name) VALUES (:uuid, :element_uuid, :name)");
+
+		//INSERT CONDUCTOR
+	m_insert_conductor_query = QSqlQuery(m_data_base);
+	m_insert_conductor_query.prepare("INSERT INTO conductor (uuid, diagram_uuid, terminal1_uuid, terminal1_element_uuid, terminal2_uuid, terminal2_element_uuid, text) "
+					  "VALUES (:uuid, :diagram_uuid, :terminal1_uuid, :terminal1_element_uuid, :terminal2_uuid, :terminal2_element_uuid, :text)");
+
+		//REMOVE CONDUCTOR
+	m_remove_conductor_query = QSqlQuery(m_data_base);
+	m_remove_conductor_query.prepare("DELETE FROM conductor WHERE uuid=:uuid");
 }
 
 /**
