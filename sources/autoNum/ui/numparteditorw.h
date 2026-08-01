@@ -47,6 +47,7 @@ class NumPartEditorW : public QWidget
 		~NumPartEditorW() override;
 
 		enum type {unit,unitfolio,ten,tenfolio, hundred, hundredfolio,
+				   alpha,
 				   string,idfolio,folio,plant,locmach,
 				   elementline,elementcolumn,elementprefix,
 				   wrap,
@@ -73,6 +74,7 @@ class NumPartEditorW : public QWidget
 	private:
 		Ui::NumPartEditorW *ui;
 		QValidator *intValidator;
+		QValidator *alphaValidator;
 		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio
 	
 

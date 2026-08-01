@@ -52,6 +52,7 @@ namespace autonum
 			QStringList ten_folio;
 			QStringList hundred;
 			QStringList hundred_folio;
+			QStringList alpha;
 	};
 
 	/**

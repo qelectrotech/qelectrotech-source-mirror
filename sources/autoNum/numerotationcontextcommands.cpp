@@ -204,6 +204,10 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 		strategy_ = new StringNum (diagram_);
 		return;
 	}
+	else if (str == "alpha") {
+		strategy_ = new AlphaNum (diagram_);
+		return;
+	}
 	else if (str == "idfolio") {
 		strategy_ = new IdFolioNum (diagram_);
 		return;
@@ -602,6 +606,120 @@ NumerotationContext StringNum::next (const NumerotationContext &nc, const int i)
 NumerotationContext StringNum::previous(const NumerotationContext &nc, const int i) const
 {
 	return (nextString(nc, i));
+}
+
+namespace
+{
+	/**
+	 * @brief incrementAlpha
+	 * Base-26 letter increment (a, b, ... z, aa, ab, ... az, ba, ...),
+	 * the same algorithm as incrementing a spreadsheet column name.
+	 * Carries right-to-left on 'z'/'Z' overflow; if the whole string
+	 * overflows, a new leading letter is prepended (lowercase 'a').
+	 * @param value : current alphabetic value; treated as "a" if empty.
+	 * @return the next value.
+	 */
+	QString incrementAlpha(QString value)
+	{
+		if (value.isEmpty()) {
+			return QStringLiteral("a");
+		}
+
+		int i = value.length() - 1;
+		while (i >= 0 && (value.at(i) == QLatin1Char('z') || value.at(i) == QLatin1Char('Z'))) {
+			value[i] = value.at(i).isUpper() ? QLatin1Char('A') : QLatin1Char('a');
+			--i;
+		}
+		if (i < 0) {
+			value.prepend(QLatin1Char('a'));
+		} else {
+			value[i] = QChar(value.at(i).unicode() + 1);
+		}
+		return value;
+	}
+
+	/**
+	 * @brief decrementAlpha
+	 * Inverse of incrementAlpha(): borrows right-to-left on 'a'/'A'
+	 * underflow. Symmetric shrink case (e.g. "aa" -> "z"): once every
+	 * position has borrowed, the leading letter is dropped rather than
+	 * left as an extra 'z'. A single-letter value already at "a"/"A" has
+	 * no representable predecessor and is left unchanged, the same way
+	 * the numeric parts don't clamp but a blank label would be worse
+	 * here than a value that stops decreasing.
+	 * @param value : current alphabetic value; treated as "a" if empty.
+	 * @return the previous value.
+	 */
+	QString decrementAlpha(QString value)
+	{
+		if (value.isEmpty()) {
+			return QStringLiteral("a");
+		}
+		if (value.length() == 1) {
+				//A single letter has no representable predecessor once it
+				//reaches "a"/"A" -- clamp rather than mutate, since the loop
+				//below would otherwise turn it into "z"/"Z" (borrowing past
+				//the only position there is).
+			if (value.at(0) == QLatin1Char('a') || value.at(0) == QLatin1Char('A')) {
+				return value;
+			}
+			return QChar(value.at(0).unicode() - 1);
+		}
+
+		int i = value.length() - 1;
+		while (i >= 0 && (value.at(i) == QLatin1Char('a') || value.at(i) == QLatin1Char('A'))) {
+			value[i] = value.at(i).isUpper() ? QLatin1Char('Z') : QLatin1Char('z');
+			--i;
+		}
+		if (i < 0) {
+				//Every position borrowed: the whole value was "a...a", whose
+				//predecessor is one fewer "z" (e.g. "aa" -> "z").
+			value.remove(0, 1);
+		} else {
+			value[i] = QChar(value.at(i).unicode() - 1);
+		}
+		return value;
+	}
+}
+
+/**
+	Constructor
+*/
+AlphaNum::AlphaNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+	@brief AlphaNum::toRepresentedString
+	@return the represented string of str
+*/
+QString AlphaNum::toRepresentedString(const QString str) const
+{
+	return (str);
+}
+
+/**
+	@brief AlphaNum::next
+	@return the next NumerotationContext nc at position i
+*/
+NumerotationContext AlphaNum::next (const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	newnc.addValue(strl.at(0), incrementAlpha(strl.at(1)), strl.at(2).toInt());
+	return (newnc);
+}
+
+/**
+	@brief AlphaNum::previous
+	@return the previous NumerotationContext nc at posiiton i
+*/
+NumerotationContext AlphaNum::previous(const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	newnc.addValue(strl.at(0), decrementAlpha(strl.at(1)), strl.at(2).toInt());
+	return (newnc);
 }
 
 /**
