@@ -216,6 +216,16 @@ void MasterPropertiesWidget::reset()
  */
 QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 {
+	// PLC masters manage their slave links via the IO table (setElementData),
+	// not via the link tree widget. The link tree is always empty for PLC
+	// masters, so we must not create an unlinkAll command.
+	if (m_element &&
+		m_element->elementData().m_type == ElementData::Master &&
+		m_element->elementData().m_master_type == ElementData::PLC)
+	{
+		return nullptr;
+	}
+
 	QList <Element *> to_link;
 	QList <Element *> linked_ = m_element->linkedElements();
 
@@ -880,6 +890,8 @@ void MasterPropertiesWidget::plcRemoveRow()
 	if (selected.isEmpty())
 		return;
 
+	m_plc_updating = true;
+
 	// Remove from bottom to top to preserve indices
 	std::sort(selected.begin(), selected.end(),
 		[](const QModelIndex &a, const QModelIndex &b) { return a.row() > b.row(); });
@@ -887,6 +899,9 @@ void MasterPropertiesWidget::plcRemoveRow()
 	for (const QModelIndex &idx : selected) {
 		m_plc_table->removeRow(idx.row());
 	}
+
+	m_plc_updating = false;
+	plcUpdateDisplaySettings();
 }
 
 /**
@@ -902,6 +917,8 @@ void MasterPropertiesWidget::plcMoveRowUp()
 	if (row <= 0)
 		return;
 
+	m_plc_updating = true;
+
 	// Swap with row above
 	for (int col = 0; col < m_plc_table->columnCount(); ++col) {
 		QWidget *w1 = m_plc_table->cellWidget(row, col);
@@ -916,6 +933,8 @@ void MasterPropertiesWidget::plcMoveRowUp()
 	}
 
 	m_plc_table->setCurrentCell(row - 1, m_plc_table->currentColumn());
+	m_plc_updating = false;
+	plcUpdateDisplaySettings();
 }
 
 /**
@@ -931,6 +950,8 @@ void MasterPropertiesWidget::plcMoveRowDown()
 	if (row < 0 || row >= m_plc_table->rowCount() - 1)
 		return;
 
+	m_plc_updating = true;
+
 	// Swap with row below
 	for (int col = 0; col < m_plc_table->columnCount(); ++col) {
 		QWidget *w1 = m_plc_table->cellWidget(row, col);
@@ -945,6 +966,8 @@ void MasterPropertiesWidget::plcMoveRowDown()
 	}
 
 	m_plc_table->setCurrentCell(row + 1, m_plc_table->currentColumn());
+	m_plc_updating = false;
+	plcUpdateDisplaySettings();
 }
 
 /**
@@ -978,6 +1001,13 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 	ElementData::PlcMasterData plc_data = ed.plcMasterData();
 	plc_data.ios.clear();
 
+	// Build address -> original IO lookup to correctly reattach terminal data
+	// after row reorder (move up/down) or row removal
+	QHash<QString, int> addr_to_orig_idx;
+	for (int i = 0; i < ed.plcMasterData().ios.size(); ++i) {
+		addr_to_orig_idx[ed.plcMasterData().ios.at(i).address] = i;
+	}
+
 	// Read IOs from table, preserving terminal data from original IOs
 	for (int row = 0; row < m_plc_table->rowCount(); ++row) {
 		ElementData::PlcIO io;
@@ -1002,9 +1032,9 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 		if (crossref_item)
 			io.crossRef = crossref_item->text();
 
-		// Preserve terminal data from the original IO
-		if (row < ed.plcMasterData().ios.size()) {
-			const auto &orig_io = ed.plcMasterData().ios.at(row);
+		// Preserve terminal data by looking up original IO via address
+		if (addr_to_orig_idx.contains(io.address)) {
+			const auto &orig_io = ed.plcMasterData().ios.at(addr_to_orig_idx.value(io.address));
 			io.terminalCount = orig_io.terminalCount;
 			io.terminals = orig_io.terminals;
 		}

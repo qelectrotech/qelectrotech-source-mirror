@@ -683,7 +683,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->horizontalHeader()->resizeSection(2, 150);
 	m_plc_table->horizontalHeader()->resizeSection(3, 150);
 	m_plc_table->horizontalHeader()->resizeSection(4, 100);
-	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 	m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_table->setMinimumHeight(200);
 	tables_splitter->addWidget(m_plc_table);
@@ -697,7 +697,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_terminal_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 	m_plc_terminal_table->horizontalHeader()->resizeSection(0, 50);
 	m_plc_terminal_table->horizontalHeader()->resizeSection(1, 80);
-	m_plc_terminal_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_plc_terminal_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 	m_plc_terminal_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_terminal_table->setMinimumHeight(200);
 	tables_splitter->addWidget(m_plc_terminal_table);
