@@ -1674,6 +1674,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
 			conductor->calculateTextItemPosition();
+			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
 		default: {break;}
@@ -1704,6 +1705,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
+			m_project->dataBase()->removeConductor(conductor);
 			break;
 		}
 		default: {break;}
