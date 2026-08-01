@@ -179,6 +179,8 @@ class ElementScene : public QGraphicsScene
 		void elementInfoChanged();
 		/// Signal emitted when the element type changes
 		void elementTypeChanged();
+		/// Signal emitted with the current cursor position (scene coordinates) on every mouse move
+		void mouseMoved(const QPointF &pos);
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)
