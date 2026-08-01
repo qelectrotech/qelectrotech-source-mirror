@@ -75,6 +75,9 @@
      <property name="wrapping">
       <bool>false</bool>
      </property>
+     <property name="toolTip">
+      <string>Mettre à 0 pour un chiffre qui n'avance que par le report d'un chiffre cyclique suivant (ex: le "0" de "0.7")</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -88,7 +91,38 @@
       <string/>
      </property>
      <property name="minimum">
-      <number>1</number>
+      <number>0</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSpinBox" name="modulus_spinBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="accelerated">
+      <bool>true</bool>
+     </property>
+     <property name="prefix">
+      <string>mod. </string>
+     </property>
+     <property name="minimum">
+      <number>0</number>
+     </property>
+     <property name="maximum">
+      <number>99999</number>
      </property>
     </widget>
    </item>

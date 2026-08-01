@@ -71,6 +71,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 			setType(NumPartEditorW::hundred, true);
 		else if (strl.at(0)=="hundredfolio")
 			setType(NumPartEditorW::hundredfolio, true);
+		else if (strl.at(0)=="wrap")
+			setType(NumPartEditorW::wrap, true);
 		else if (strl.at(0)=="string")
 			setType(NumPartEditorW::string);
 		else if (strl.at(0)=="idfolio")
@@ -89,6 +91,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 			setType(NumPartEditorW::elementprefix);
 		ui -> value_field -> setText(strl.at(1));
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
+		if (strl.at(0)=="wrap" && strl.size() > 4)
+			ui -> modulus_spinBox -> setValue(strl.at(4).toInt());
 	}
 }
 
@@ -110,6 +114,7 @@ void NumPartEditorW::setVisibleItems()
 		items	<< tr("Chiffre 1")
 			<< tr("Chiffre 01")
 			<< tr("Chiffre 001")
+			<< tr("Cyclique (modulo)")
 			<< tr("Texte");
 	}
 	else if (m_edited_type == 1)
@@ -120,6 +125,7 @@ void NumPartEditorW::setVisibleItems()
 			<< tr("Chiffre 01 - Folio")
 			<< tr("Chiffre 001")
 			<< tr("Chiffre 001 - Folio")
+			<< tr("Cyclique (modulo)")
 			<< tr("Texte")
 			<< tr("N° folio")
 			<< tr("Folio")
@@ -133,6 +139,7 @@ void NumPartEditorW::setVisibleItems()
 		      << tr("Chiffre 01 - Folio")
 		      << tr("Chiffre 001")
 		      << tr("Chiffre 001 - Folio")
+		      << tr("Cyclique (modulo)")
 		      << tr("Texte")
 		      << tr("N° folio")
 		      << tr("Folio")
@@ -195,6 +202,9 @@ NumerotationContext NumPartEditorW::toNumContext()
 		case elementprefix:
 			type_str = "elementprefix";
 			break;
+		case wrap:
+			type_str = "wrap";
+			break;
 	}
 	if (type_str == "unitfolio"
 			|| type_str == "tenfolio"
@@ -203,6 +213,12 @@ NumerotationContext NumPartEditorW::toNumContext()
 			    ui -> value_field -> displayText(),
 			    ui -> increase_spinBox -> value(),
 			    ui->value_field->displayText().toInt());
+	else if (type_str == "wrap")
+		nc.addValue(type_str,
+			    ui -> value_field -> displayText(),
+			    ui -> increase_spinBox -> value(),
+			    0,
+			    ui -> modulus_spinBox -> value());
 	else
 	nc.addValue(type_str,
 		    ui -> value_field -> displayText(),
@@ -260,6 +276,8 @@ void NumPartEditorW::on_type_cb_activated(int) {
 		setType(elementcolumn);
 	else if (ui->type_cb->currentText() == tr("Element Prefix"))
 		setType(elementprefix);
+	else if (ui->type_cb->currentText() == tr("Cyclique (modulo)"))
+		setType(wrap);
 	emit changed();
 }
 
@@ -277,6 +295,14 @@ void NumPartEditorW::on_value_field_textEdited()
 	emit changed when increase_spinBox value changed
 */
 void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
+	if (!ui -> value_field -> text().isEmpty()) emit changed();
+}
+
+/**
+	@brief NumPartEditorW::on_modulus_spinBox_valueChanged
+	emit changed when modulus_spinBox value changed
+*/
+void NumPartEditorW::on_modulus_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
 
@@ -299,6 +325,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 				 || t==tenfolio
 				 || t==hundred
 				 || t==hundredfolio
+				 || t==wrap
 				 )
 				&& (type_==string
 				    || type_==folio
@@ -317,6 +344,8 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> value_field -> setValidator(intValidator);
 		ui -> increase_spinBox -> setEnabled(true);
 		ui -> increase_spinBox -> setValue(1);
+		if (t == wrap)
+			ui -> modulus_spinBox -> setValue(8);
 	}
 	//@t isn't a numeric type
 	else if (t == string
@@ -362,6 +391,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			ui -> increase_spinBox -> setDisabled(true);
 		}
 	}
+	ui -> modulus_spinBox -> setEnabled(t == wrap);
 	type_= t;
 }
 
@@ -400,5 +430,7 @@ void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 		i = ui->type_cb->findText(tr("Element Column"));
 	else if (t == elementprefix)
 		i = ui->type_cb->findText(tr("Element Prefix"));
+	else if (t == wrap)
+		i = ui->type_cb->findText(tr("Cyclique (modulo)"));
 	ui->type_cb->setCurrentIndex(i);
 }

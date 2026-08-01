@@ -48,6 +48,15 @@ NumerotationContext NumerotationContextCommands::next()
 		QStringList str = context_.itemAt(i);
 		setNumStrategy(str.at(0));
 		contextnum << strategy_ -> next(context_, i);
+
+			//Wrap-and-carry: str still holds the pre-increment value, so
+			//this checks the same condition WrapNum::next() used to decide
+			//whether to wrap its own value back to 0.
+		if (str.at(0) == "wrap" && str.size() > 4) {
+			int modulus = str.at(4).toInt();
+			if (modulus > 0 && (str.at(1).toInt() + str.at(2).toInt()) >= modulus)
+				carry(contextnum, i - 1);
+		}
 	}
 	return contextnum;
 }
@@ -64,8 +73,78 @@ NumerotationContext NumerotationContextCommands::previous()
 		QStringList str = context_.itemAt(i);
 		setNumStrategy(str.at(0));
 		contextnum << strategy_ -> previous(context_, i);
+
+		if (str.at(0) == "wrap" && str.size() > 4) {
+			int modulus = str.at(4).toInt();
+			if (modulus > 0 && (str.at(1).toInt() - str.at(2).toInt()) < 0)
+				borrow(contextnum, i - 1);
+		}
 	}
 	return contextnum;
+}
+
+/**
+	@brief NumerotationContextCommands::carry
+	Add one unit to the nearest numeric part at or before from_index in
+	contextnum, skipping non-numeric parts (e.g. a "." string separator)
+	along the way. If that part is itself a wrap part and this pushes it
+	to (or past) its own modulus, it wraps back to 0 and the carry
+	cascades further back -- so wrap parts can be chained (e.g. seconds
+	wrapping into minutes wrapping into hours).
+	@param contextnum the context being built by next(); already contains
+	entries for every index <= from_index
+	@param from_index index to start looking from, going backwards
+*/
+void NumerotationContextCommands::carry(NumerotationContext &contextnum, int from_index)
+{
+	for (int j = from_index; j >= 0; --j) {
+		QStringList strl = contextnum.itemAt(j);
+		if (!contextnum.keyIsNumber(strl.at(0)))
+			continue;
+
+		int value = strl.at(1).toInt() + 1;
+		if (strl.at(0) == "wrap" && strl.size() > 4) {
+			int modulus = strl.at(4).toInt();
+			if (modulus > 0 && value >= modulus) {
+				contextnum.replaceValue(j, QString::number(value - modulus));
+				carry(contextnum, j - 1);
+				return;
+			}
+		}
+		contextnum.replaceValue(j, QString::number(value));
+		return;
+	}
+		//No preceding numeric part: the carry has nowhere to go and is dropped,
+		//same as any other counter in this engine has no overflow tracking
+		//beyond the parts the user actually configured.
+}
+
+/**
+	@brief NumerotationContextCommands::borrow
+	Inverse of carry(): subtract one unit from the nearest numeric part at
+	or before from_index. If that part is itself a wrap part and this
+	takes it below 0, it wraps to (modulus - 1) and the borrow cascades
+	further back.
+*/
+void NumerotationContextCommands::borrow(NumerotationContext &contextnum, int from_index)
+{
+	for (int j = from_index; j >= 0; --j) {
+		QStringList strl = contextnum.itemAt(j);
+		if (!contextnum.keyIsNumber(strl.at(0)))
+			continue;
+
+		int value = strl.at(1).toInt() - 1;
+		if (strl.at(0) == "wrap" && strl.size() > 4) {
+			int modulus = strl.at(4).toInt();
+			if (modulus > 0 && value < 0) {
+				contextnum.replaceValue(j, QString::number(value + modulus));
+				borrow(contextnum, j - 1);
+				return;
+			}
+		}
+		contextnum.replaceValue(j, QString::number(value));
+		return;
+	}
 }
 
 /**
@@ -115,6 +194,10 @@ void NumerotationContextCommands::setNumStrategy(const QString &str) {
 	}
 	else if (str == "hundredfolio") {
 		strategy_ = new HundredFNum (diagram_);
+		return;
+	}
+	else if (str == "wrap") {
+		strategy_ = new WrapNum (diagram_);
 		return;
 	}
 	else if (str == "string") {
@@ -429,6 +512,62 @@ NumerotationContext HundredFNum::next (const NumerotationContext &nc, const int 
 NumerotationContext HundredFNum::previous(const NumerotationContext &nc, const int i) const
 {
 	return (previousNumber(nc, i));
+}
+
+/**
+	Constructor
+*/
+WrapNum::WrapNum (Diagram *d):
+	NumStrategy (d)
+{}
+
+/**
+	@brief WrapNum::toRepresentedString
+	@return the represented string of num
+*/
+QString WrapNum::toRepresentedString(const QString num) const
+{
+	return (num);
+}
+
+/**
+	@brief WrapNum::next
+	Wraps this part's own value back to 0 every `modulus` values (carrying
+	into the adjacent part is handled by NumerotationContextCommands::next(),
+	which has visibility into the other parts).
+	@return the next NumerotationContext nc at position i
+*/
+NumerotationContext WrapNum::next (const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	int increase = strl.at(2).toInt();
+	int modulus = strl.size() > 4 ? strl.at(4).toInt() : 0;
+	int new_value = strl.at(1).toInt() + increase;
+	if (modulus > 0)
+		new_value %= modulus;
+	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus);
+	return (newnc);
+}
+
+/**
+	@brief WrapNum::previous
+	@return the previous NumerotationContext nc at posiiton i
+*/
+NumerotationContext WrapNum::previous(const NumerotationContext &nc, const int i) const
+{
+	QStringList strl = nc.itemAt(i);
+	NumerotationContext newnc;
+	int increase = strl.at(2).toInt();
+	int modulus = strl.size() > 4 ? strl.at(4).toInt() : 0;
+	int new_value = strl.at(1).toInt() - increase;
+	if (modulus > 0) {
+		new_value %= modulus;
+		if (new_value < 0)
+			new_value += modulus;
+	}
+	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus);
+	return (newnc);
 }
 
 /**
