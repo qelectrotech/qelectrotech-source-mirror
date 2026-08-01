@@ -683,7 +683,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->horizontalHeader()->resizeSection(2, 150);
 	m_plc_table->horizontalHeader()->resizeSection(3, 150);
 	m_plc_table->horizontalHeader()->resizeSection(4, 100);
-	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 	m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_table->setMinimumHeight(200);
 	tables_splitter->addWidget(m_plc_table);
@@ -697,7 +697,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_terminal_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Interactive);
 	m_plc_terminal_table->horizontalHeader()->resizeSection(0, 50);
 	m_plc_terminal_table->horizontalHeader()->resizeSection(1, 80);
-	m_plc_terminal_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_plc_terminal_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 	m_plc_terminal_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_terminal_table->setMinimumHeight(200);
 	tables_splitter->addWidget(m_plc_terminal_table);
@@ -780,7 +780,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 
 		auto *sb = new QSpinBox(m_plc_gb);
 		sb->setMinimum(10);
-		sb->setMaximum(200);
+		sb->setMaximum(500);
 		sb->setValue(40);
 		sb->setSuffix(tr(" mm"));
 		m_plc_col_width_spinboxes.append(sb);

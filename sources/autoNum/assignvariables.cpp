@@ -292,6 +292,11 @@ namespace autonum
 		str.replace("%{plc_function}", dc.value("plc_function").toString());
 		str.replace("%{plc_comment}", dc.value("plc_comment").toString());
 		str.replace("%{plc_crossref}", dc.value("plc_crossref").toString());
+		str.replace("%{plc_tc}", dc.value("plc_tc").toString());
+		str.replace("%{plc_t1}", dc.value("plc_t1").toString());
+		str.replace("%{plc_t2}", dc.value("plc_t2").toString());
+		str.replace("%{plc_t3}", dc.value("plc_t3").toString());
+		str.replace("%{plc_t4}", dc.value("plc_t4").toString());
 
 		return str;
 	}

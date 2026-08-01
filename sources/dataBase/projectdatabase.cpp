@@ -388,9 +388,15 @@ void projectDataBase::createElementNomenclatureView()
 						 "ei.supplier_auxiliary4 AS supplier_auxiliary4,"
 						 "ei.quantity_auxiliary4 AS quantity_auxiliary4,"
 						 "ei.unity_auxiliary4 AS unity_auxiliary4,"
-						 "ei.exclude_from_bom AS exclude_from_bom,"
-						
-						 "d.pos AS diagram_position,"
+					 "ei.exclude_from_bom AS exclude_from_bom,"
+					 
+					 "ei.plc_type AS plc_type,"
+					 "ei.plc_address AS plc_address,"
+					 "ei.plc_function AS plc_function,"
+					 "ei.plc_comment AS plc_comment,"
+					 "ei.plc_crossref AS plc_crossref,"
+					
+					 "d.pos AS diagram_position,"
 						 "e.type AS element_type,"
 						 "e.sub_type AS element_sub_type,"
 						 "di.title AS title,"

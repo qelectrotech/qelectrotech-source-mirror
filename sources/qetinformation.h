@@ -130,6 +130,11 @@ namespace QETInformation
 	static QString ELMT_PLC_FUNCTION    = "plc_function";
 	static QString ELMT_PLC_COMMENT     = "plc_comment";
 	static QString ELMT_PLC_CROSSREF    = "plc_crossref";
+	static QString ELMT_PLC_TC          = "plc_tc";
+	static QString ELMT_PLC_T1          = "plc_t1";
+	static QString ELMT_PLC_T2          = "plc_t2";
+	static QString ELMT_PLC_T3          = "plc_t3";
+	static QString ELMT_PLC_T4          = "plc_t4";
 
 
 

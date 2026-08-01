@@ -240,7 +240,12 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 				QETInformation::ELMT_PLC_ADDRESS,
 				QETInformation::ELMT_PLC_FUNCTION,
 				QETInformation::ELMT_PLC_COMMENT,
-				QETInformation::ELMT_PLC_CROSSREF
+				QETInformation::ELMT_PLC_CROSSREF,
+				QETInformation::ELMT_PLC_TC,
+				QETInformation::ELMT_PLC_T1,
+				QETInformation::ELMT_PLC_T2,
+				QETInformation::ELMT_PLC_T3,
+				QETInformation::ELMT_PLC_T4
 			};
 			strl = plc_keys + strl;
 		} else {
@@ -249,6 +254,11 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 			strl.removeAll(QETInformation::ELMT_PLC_FUNCTION);
 			strl.removeAll(QETInformation::ELMT_PLC_COMMENT);
 			strl.removeAll(QETInformation::ELMT_PLC_CROSSREF);
+			strl.removeAll(QETInformation::ELMT_PLC_TC);
+			strl.removeAll(QETInformation::ELMT_PLC_T1);
+			strl.removeAll(QETInformation::ELMT_PLC_T2);
+			strl.removeAll(QETInformation::ELMT_PLC_T3);
+			strl.removeAll(QETInformation::ELMT_PLC_T4);
 		}
 	}
 
