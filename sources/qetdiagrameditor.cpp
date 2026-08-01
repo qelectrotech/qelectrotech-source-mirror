@@ -1171,8 +1171,10 @@ bool QETDiagramEditor::openAndAddProject(
 
 		//Per-project window for the font counters reported below; the folios
 		//(and with them the stored font descriptions) are built between here
-		//and the end of addProject().
-	QETUtils::resetFontRestorationCounters();
+		//and the end of addProject(). RAII, because DialogWaiting pumps the
+		//event loop during the load: a nested openAndAddProject() gets its
+		//own window and this one resumes unharmed.
+	QETUtils::FontRestorationScope font_scope;
 
 	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok)
@@ -1203,8 +1205,8 @@ bool QETDiagramEditor::openAndAddProject(
 		//Report font descriptions which could not be read as-is (written by
 		//an incompatible Qt version or corrupted), so the user learns about
 		//it from somewhere else than the console. See issue #553.
-	const int salvaged_fonts = QETUtils::salvagedFontCount();
-	const int unreadable_fonts = QETUtils::unreadableFontCount();
+	const int salvaged_fonts = font_scope.salvaged();
+	const int unreadable_fonts = font_scope.unreadable();
 	if (salvaged_fonts || unreadable_fonts)
 	{
 		qInfo().nospace() << "Project font descriptions: "

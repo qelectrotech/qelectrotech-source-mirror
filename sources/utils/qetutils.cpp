@@ -304,33 +304,42 @@ bool QETUtils::fontFromString(QFont &font, const QString &description)
 }
 
 /**
- * @brief QETUtils::resetFontRestorationCounters
- * Reset the counters incremented by fontFromString(), to be called before
- * loading a project so the numbers reported afterwards are per-project.
+ * @brief QETUtils::FontRestorationScope::FontRestorationScope
+ * Open a fresh counting window: the enclosing window's counts are kept
+ * aside and restored by the destructor, so a project load nested inside
+ * another one (through the event loop) reports its own numbers only.
  */
-void QETUtils::resetFontRestorationCounters()
+QETUtils::FontRestorationScope::FontRestorationScope() :
+	m_outer_salvaged(salvaged_font_count),
+	m_outer_unreadable(unreadable_font_count)
 {
 	salvaged_font_count = 0;
 	unreadable_font_count = 0;
 }
 
+QETUtils::FontRestorationScope::~FontRestorationScope()
+{
+	salvaged_font_count = m_outer_salvaged;
+	unreadable_font_count = m_outer_unreadable;
+}
+
 /**
- * @brief QETUtils::salvagedFontCount
+ * @brief QETUtils::FontRestorationScope::salvaged
  * @return How many font descriptions fontFromString() restored from a
- * foreign or corrupt format since the counters were last reset. Such
- * descriptions are rewritten in the stable format on the next save.
+ * foreign or corrupt format since this window was opened. Such descriptions
+ * are rewritten in the stable format on the next save.
  */
-int QETUtils::salvagedFontCount()
+int QETUtils::FontRestorationScope::salvaged() const
 {
 	return salvaged_font_count;
 }
 
 /**
- * @brief QETUtils::unreadableFontCount
+ * @brief QETUtils::FontRestorationScope::unreadable
  * @return How many font descriptions fontFromString() could not restore at
- * all since the counters were last reset (the caller's default font applies).
+ * all since this window was opened (the caller's default font applies).
  */
-int QETUtils::unreadableFontCount()
+int QETUtils::FontRestorationScope::unreadable() const
 {
 	return unreadable_font_count;
 }
