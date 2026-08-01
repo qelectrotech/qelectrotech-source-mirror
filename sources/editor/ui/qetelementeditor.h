@@ -161,6 +161,8 @@ class QETElementEditor : public QMainWindow
 
 		QLabel *m_default_informations = nullptr;
 
+		QLabel *m_position_label = nullptr;
+
 };
 
 #endif // QETELEMENTEDITOR_H

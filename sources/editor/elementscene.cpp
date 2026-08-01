@@ -124,6 +124,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
+			emit mouseMoved(e -> scenePos());
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
@@ -135,6 +136,8 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	QPointF event_pos = e -> scenePos();
 	if (!(e -> modifiers() & Qt::ControlModifier))
 		event_pos = snapToGrid(event_pos);
+
+	emit mouseMoved(event_pos);
 
 	if (m_behavior == PasteArea) {
 		QRectF current_rect(m_paste_area -> rect());
