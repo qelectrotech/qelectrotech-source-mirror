@@ -102,6 +102,7 @@ class ProjectView : public QWidget
 		void changeTabDown();
 		void changeFirstTab();
 		void changeLastTab();
+		void setDiagramPosition(Diagram *diagram, int new_position);
 
 	public slots:
 		void removeDiagram(DiagramView *diagram_view, bool silent = false);
@@ -168,6 +169,7 @@ class ProjectView : public QWidget
 		void setDisplayFallbackWidget(bool);
 		void adjustReadOnlyState();
 		void diagramAdded(Diagram *diagram);
+		void diagramRemoved(Diagram *diagram);
 
 		// attributes
 	private:

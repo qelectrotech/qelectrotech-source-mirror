@@ -75,6 +75,8 @@ struct GuideProperties {
 */
 class QETProject : public QObject
 {
+		friend class AddDiagramCommand;
+		friend class RemoveDiagramCommand;
 		Q_OBJECT
 	public :
 		//This enum lists possible states for a particular project.
@@ -257,6 +259,7 @@ class QETProject : public QObject
 		void writeDefaultPropertiesXml(QDomElement &);
 		void writeUsageXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
+		void detachDiagram(Diagram *diagram);
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);

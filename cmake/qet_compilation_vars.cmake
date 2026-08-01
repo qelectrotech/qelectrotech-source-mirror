@@ -735,6 +735,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h
+  ${QET_DIR}/sources/undocommand/adddiagramcommand.cpp
+  ${QET_DIR}/sources/undocommand/adddiagramcommand.h
   ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.cpp
   ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.h
   ${QET_DIR}/sources/undocommand/changeelementdatacommand.cpp
@@ -749,6 +751,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/itemmodelcommand.h
   ${QET_DIR}/sources/undocommand/linkelementcommand.cpp
   ${QET_DIR}/sources/undocommand/linkelementcommand.h
+  ${QET_DIR}/sources/undocommand/movediagramcommand.cpp
+  ${QET_DIR}/sources/undocommand/movediagramcommand.h
+  ${QET_DIR}/sources/undocommand/removediagramcommand.cpp
+  ${QET_DIR}/sources/undocommand/removediagramcommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
   ${QET_DIR}/sources/undocommand/rotatetextscommand.cpp
