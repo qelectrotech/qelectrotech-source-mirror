@@ -45,6 +45,7 @@
 #include "ui/backupdialog.h"
 #include "ui/dialogwaiting.h"
 #include "undocommand/addelementtextcommand.h"
+#include "utils/qetutils.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
 #include "diagram.h"
@@ -1184,6 +1185,13 @@ bool QETDiagramEditor::openAndAddProject(
 	//Create the project
 	DialogWaiting::instance(this);
 
+		//Per-project window for the font counters reported below; the folios
+		//(and with them the stored font descriptions) are built between here
+		//and the end of addProject(). RAII, because DialogWaiting pumps the
+		//event loop during the load: a nested openAndAddProject() gets its
+		//own window and this one resumes unharmed.
+	QETUtils::FontRestorationScope font_scope;
+
 	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok)
 	{
@@ -1209,6 +1217,42 @@ bool QETDiagramEditor::openAndAddProject(
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	addProject(project);
 	DialogWaiting::dropInstance();
+
+		//Report font descriptions which could not be read as-is (written by
+		//an incompatible Qt version or corrupted), so the user learns about
+		//it from somewhere else than the console. See issue #553.
+	const int salvaged_fonts = font_scope.salvaged();
+	const int unreadable_fonts = font_scope.unreadable();
+	if (salvaged_fonts || unreadable_fonts)
+	{
+		qInfo().nospace() << "Project font descriptions: "
+				  << salvaged_fonts << " salvaged from a foreign format, "
+				  << unreadable_fonts << " unreadable (default font applies)";
+	}
+	if (interactive && (salvaged_fonts || unreadable_fonts))
+	{
+		QStringList details;
+		if (salvaged_fonts) {
+			details << tr("%n description(s) de police écrite(s) dans un "
+					  "format étranger ou corrompu ont été restaurée(s). "
+					  "Elles seront réécrites dans un format stable au "
+					  "prochain enregistrement du projet.",
+					  "message box content",
+					  salvaged_fonts);
+		}
+		if (unreadable_fonts) {
+			details << tr("%n description(s) de police n'ont pas pu être "
+					  "lue(s) ; la police par défaut sera utilisée pour "
+					  "ces textes.",
+					  "message box content",
+					  unreadable_fonts);
+		}
+		QET::QetMessageBox::information(
+			this,
+			tr("Polices du projet", "message box title"),
+			details.join("\n\n")
+		);
+	}
 
 	BackupDialog backup_dialog(this);
 	if (backup_dialog.exec() == QDialog::Accepted)
