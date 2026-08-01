@@ -136,18 +136,26 @@ QString FileElementCollectionItem::localName()
 		}
 		else
 		{
+			// Fall back to the raw directory name (m_path) whenever the
+			// translated name can't be obtained -- qet_directory missing,
+			// unreadable (e.g. a Windows path-encoding issue with special
+			// characters, see bugtracker #332), malformed, or present but
+			// without a usable name entry -- rather than leaving the item
+			// blank.
+			QString display_name;
 			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
-			if(docu.load_file(str.toStdWString().c_str()))
+			if (docu.load_file(str.toStdWString().c_str()))
 			{
 				if (QString(docu.document_element().name())
 					== "qet-directory")
 				{
 					NamesList nl;
 					nl.fromXml(docu.document_element());
-					setText(nl.name());
+					display_name = nl.name(m_path);
 				}
 			}
+			setText(display_name.isEmpty() ? m_path : display_name);
 		}
 	}
 	else if (isElement()) {
