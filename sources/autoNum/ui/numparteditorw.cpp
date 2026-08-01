@@ -18,6 +18,8 @@
 #include "numparteditorw.h"
 #include "ui_numparteditorw.h"
 
+#include <QRegularExpressionValidator>
+
 /**
 	@brief NumPartEditorW::NumPartEditorW
 	Constructor
@@ -28,6 +30,7 @@ NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
 	intValidator (new QIntValidator(0,99999,this)),
+	alphaValidator (new QRegularExpressionValidator(QRegularExpression("[A-Za-z]+"), this)),
 	m_edited_type(type)
 {
 	ui -> setupUi(this);
@@ -51,6 +54,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
 	intValidator (new QIntValidator(0,99999,this)),
+	alphaValidator (new QRegularExpressionValidator(QRegularExpression("[A-Za-z]+"), this)),
 	m_edited_type(type)
 {
 	ui -> setupUi(this);
@@ -73,6 +77,8 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 			setType(NumPartEditorW::hundredfolio, true);
 		else if (strl.at(0)=="wrap")
 			setType(NumPartEditorW::wrap, true);
+		else if (strl.at(0)=="alpha")
+			setType(NumPartEditorW::alpha);
 		else if (strl.at(0)=="string")
 			setType(NumPartEditorW::string);
 		else if (strl.at(0)=="idfolio")
@@ -102,6 +108,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 NumPartEditorW::~NumPartEditorW()
 {
 	delete intValidator;
+	delete alphaValidator;
 	delete ui;
 }
 
@@ -115,6 +122,7 @@ void NumPartEditorW::setVisibleItems()
 			<< tr("Chiffre 01")
 			<< tr("Chiffre 001")
 			<< tr("Cyclique (modulo)")
+			<< tr("Alphabétique")
 			<< tr("Texte");
 	}
 	else if (m_edited_type == 1)
@@ -126,6 +134,7 @@ void NumPartEditorW::setVisibleItems()
 			<< tr("Chiffre 001")
 			<< tr("Chiffre 001 - Folio")
 			<< tr("Cyclique (modulo)")
+			<< tr("Alphabétique")
 			<< tr("Texte")
 			<< tr("N° folio")
 			<< tr("Folio")
@@ -140,6 +149,7 @@ void NumPartEditorW::setVisibleItems()
 		      << tr("Chiffre 001")
 		      << tr("Chiffre 001 - Folio")
 		      << tr("Cyclique (modulo)")
+		      << tr("Alphabétique")
 		      << tr("Texte")
 		      << tr("N° folio")
 		      << tr("Folio")
@@ -204,6 +214,9 @@ NumerotationContext NumPartEditorW::toNumContext()
 			break;
 		case wrap:
 			type_str = "wrap";
+			break;
+		case alpha:
+			type_str = "alpha";
 			break;
 	}
 	if (type_str == "unitfolio"
@@ -278,6 +291,8 @@ void NumPartEditorW::on_type_cb_activated(int) {
 		setType(elementprefix);
 	else if (ui->type_cb->currentText() == tr("Cyclique (modulo)"))
 		setType(wrap);
+	else if (ui->type_cb->currentText() == tr("Alphabétique"))
+		setType(alpha);
 	emit changed();
 }
 
@@ -349,6 +364,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	}
 	//@t isn't a numeric type
 	else if (t == string
+		 || t == alpha
 		 || t == folio
 		 || t == idfolio
 		 || t == elementline
@@ -360,6 +376,13 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {
 			ui -> value_field -> setValidator(nullptr);
+			ui -> value_field -> setEnabled(true);
+		}
+		else if (t==alpha) {
+				//Alphabetic step is always exactly one letter (a, b, ...);
+				//there is no numeric "increase" to configure, unlike the
+				//digit-based part types.
+			ui -> value_field -> setValidator(alphaValidator);
 			ui -> value_field -> setEnabled(true);
 		}
 		else if (t==folio) {
@@ -414,6 +437,8 @@ void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 		i = ui->type_cb->findText(tr("Chiffre 001"));
 	else if (t == hundredfolio)
 		i = ui->type_cb->findText(tr("Chiffre 001 - Folio"));
+	else if (t == alpha)
+		i = ui->type_cb->findText(tr("Alphabétique"));
 	else if (t == string)
 		i = ui->type_cb->findText(tr("Texte"));
 	else if (t == idfolio)

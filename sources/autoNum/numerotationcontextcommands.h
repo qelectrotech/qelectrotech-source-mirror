@@ -144,6 +144,23 @@ class StringNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
+/**
+	@brief The AlphaNum class
+	Alphabetic auto-numbering (a, b, ... z, aa, ab, ...). Unlike StringNum
+	(a fixed, non-incrementing text segment), this is a real base-26
+	counter: next()/previous() carry/borrow entirely within this part's
+	own value, the same self-contained shape every other incrementing
+	NumStrategy already has.
+*/
+class AlphaNum: public NumStrategy
+{
+	public:
+	AlphaNum (Diagram *);
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
+};
+
 class IdFolioNum: public NumStrategy
 {
 	public:

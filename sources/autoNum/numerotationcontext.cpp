@@ -129,7 +129,7 @@ QStringList NumerotationContext::itemAt(const int i) const
 */
 QString NumerotationContext::validRegExpNum () const
 {
-	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio|wrap|string|idfolio|folio|plant|locmach|elementline|elementcolumn|elementprefix");
+	return ("unit|unitfolio|ten|tenfolio|hundred|hundredfolio|wrap|alpha|string|idfolio|folio|plant|locmach|elementline|elementcolumn|elementprefix");
 }
 
 /**
