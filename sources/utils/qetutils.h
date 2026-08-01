@@ -34,6 +34,9 @@ namespace QETUtils
     void pixelSizedFont (QFont &font);
     QString fontToString (const QFont &font);
     bool fontFromString (QFont &font, const QString &description);
+    void resetFontRestorationCounters ();
+    int salvagedFontCount ();
+    int unreadableFontCount ();
 
 	bool sortBeginIntString(const QString &str_a, const QString &str_b);
 
