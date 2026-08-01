@@ -40,6 +40,7 @@
 #include "recentfiles.h"
 #include "shortcutmanager.h"
 #include "ui/bomexportdialog.h"
+#include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
 #include "ui/backupdialog.h"
 #include "ui/dialogwaiting.h"
@@ -748,6 +749,19 @@ void QETDiagramEditor::setUpActions()
 			this->m_search_and_replace_widget.setHidden(!m_search_and_replace_widget.isHidden());
 		}
 	});
+
+	m_jump_to_element = new QAction(tr("Atteindre un élément"), this);
+	m_jump_to_element->setShortcut(Qt::CTRL | Qt::Key_G);
+	m_jump_to_element->setStatusTip(tr("Recherche et sélectionne rapidement un élément du folio", "status bar tip"));
+	connect(m_jump_to_element, &QAction::triggered, [this]()
+	{
+		DiagramView *diagram_view = this->currentDiagramView();
+		if (!diagram_view || !diagram_view->diagram()) {
+			return;
+		}
+		JumpToElementDialog dialog(diagram_view->diagram(), this);
+		dialog.exec();
+	});
 }
 
 /**
@@ -862,6 +876,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addActions(m_depth_action_group->actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(m_find);
+	menu_edition -> addAction(m_jump_to_element);
 
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
