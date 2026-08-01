@@ -19,6 +19,7 @@
 
 #include "../qetapp.h"
 #include "../qeticons.h"
+#include "../shortcutmanager.h"
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
 #include "templatecellwidget.h"
@@ -390,25 +391,25 @@ void QETTitleBlockTemplateEditor::initActions()
 	undo_ -> setIcon(QET::Icons::EditUndo);
 	redo_ -> setIcon(QET::Icons::EditRedo);
 
-	new_              -> setShortcut(QKeySequence::New);
-	open_             -> setShortcut(QKeySequence::Open);
-	open_from_file_   -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
-	save_             -> setShortcut(QKeySequence::Save);
-	save_as_file_     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
-	quit_             -> setShortcut(Qt::CTRL | Qt::Key_Q);
-	undo_             -> setShortcut(QKeySequence::Undo);
-	redo_             -> setShortcut(QKeySequence::Redo);
-	cut_              -> setShortcut(QKeySequence::Cut);
-	copy_             -> setShortcut(QKeySequence::Copy);
-	paste_            -> setShortcut(QKeySequence::Paste);
-	edit_logos_       -> setShortcut(Qt::CTRL | Qt::Key_T);
-	edit_info_        -> setShortcut(Qt::CTRL | Qt::Key_Y);
-	merge_cells_      -> setShortcut(Qt::CTRL | Qt::Key_J);
-	split_cell_       -> setShortcut(Qt::CTRL | Qt::Key_K);
-	zoom_in_          -> setShortcut(QKeySequence::ZoomIn);
-	zoom_out_         -> setShortcut(QKeySequence::ZoomOut);
-	zoom_fit_         -> setShortcut(Qt::CTRL | Qt::Key_9);
-	zoom_reset_       -> setShortcut(Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(new_, "titleblockeditor.new", tr("Éditeur de cartouche"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(open_, "titleblockeditor.open", tr("Éditeur de cartouche"), QKeySequence::Open);
+	ShortcutManager::instance().registerAction(open_from_file_, "titleblockeditor.open_from_file", tr("Éditeur de cartouche"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	ShortcutManager::instance().registerAction(save_, "titleblockeditor.save", tr("Éditeur de cartouche"), QKeySequence::Save);
+	ShortcutManager::instance().registerAction(save_as_file_, "titleblockeditor.save_as_file", tr("Éditeur de cartouche"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	ShortcutManager::instance().registerAction(quit_, "titleblockeditor.quit", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_Q);
+	ShortcutManager::instance().registerAction(undo_, "titleblockeditor.undo", tr("Éditeur de cartouche"), QKeySequence::Undo);
+	ShortcutManager::instance().registerAction(redo_, "titleblockeditor.redo", tr("Éditeur de cartouche"), QKeySequence::Redo);
+	ShortcutManager::instance().registerAction(cut_, "titleblockeditor.cut", tr("Éditeur de cartouche"), QKeySequence::Cut);
+	ShortcutManager::instance().registerAction(copy_, "titleblockeditor.copy", tr("Éditeur de cartouche"), QKeySequence::Copy);
+	ShortcutManager::instance().registerAction(paste_, "titleblockeditor.paste", tr("Éditeur de cartouche"), QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(edit_logos_, "titleblockeditor.edit_logos", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_T);
+	ShortcutManager::instance().registerAction(edit_info_, "titleblockeditor.edit_info", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_Y);
+	ShortcutManager::instance().registerAction(merge_cells_, "titleblockeditor.merge_cells", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_J);
+	ShortcutManager::instance().registerAction(split_cell_, "titleblockeditor.split_cell", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_K);
+	ShortcutManager::instance().registerAction(zoom_in_, "titleblockeditor.zoom_in", tr("Éditeur de cartouche"), QKeySequence::ZoomIn);
+	ShortcutManager::instance().registerAction(zoom_out_, "titleblockeditor.zoom_out", tr("Éditeur de cartouche"), QKeySequence::ZoomOut);
+	ShortcutManager::instance().registerAction(zoom_fit_, "titleblockeditor.zoom_fit", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_9);
+	ShortcutManager::instance().registerAction(zoom_reset_, "titleblockeditor.zoom_reset", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_0);
 
 	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
 	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));

@@ -17,6 +17,7 @@
 */
 #include "qet.h"
 #include "qeticons.h"
+#include "shortcutmanager.h"
 
 #include <limits>
 #include <QGraphicsSceneContextMenuEvent>
@@ -785,10 +786,10 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
 	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
 
-	edit_raise   ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
-	edit_lower   ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
-	edit_backward->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_End);
-	edit_forward ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
+	ShortcutManager::instance().registerAction(edit_raise, "depth.raise", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
+	ShortcutManager::instance().registerAction(edit_lower, "depth.lower", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
+	ShortcutManager::instance().registerAction(edit_backward, "depth.backward", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_End);
+	ShortcutManager::instance().registerAction(edit_forward, "depth.forward", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
 
 	edit_forward ->setData(QET::BringForward);
 	edit_raise   ->setData(QET::Raise);

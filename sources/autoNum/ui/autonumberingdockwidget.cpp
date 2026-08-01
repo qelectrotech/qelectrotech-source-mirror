@@ -20,6 +20,7 @@
 #include "../../diagram.h"
 #include "../../diagramview.h"
 #include "../../qetapp.h"
+#include "../../shortcutmanager.h"
 #include "../../titleblockproperties.h"
 #include "../../ui/projectpropertiesdialog.h"
 #include "../numerotationcontext.h"
@@ -151,7 +152,8 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		//Set Combobox Context
 	setContext();
 	
-	ui->m_configure_pb->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_P);
+	ShortcutManager::instance().registerAction(ui->m_configure_pb, "autonum.configure",
+						    tr("Autonumérotation"), Qt::CTRL | Qt::SHIFT | Qt::Key_P);
 }
 
 /**
