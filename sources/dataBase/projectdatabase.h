@@ -92,6 +92,8 @@ class projectDataBase : public QObject
 		static QHash<QString, QString> elementInfoToString(
 				Element *elmt);
 		void bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram);
+		static void bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram);
+		static void bindElementInfoValues(QSqlQuery &query, Element *element);
 
 	private:
 		QPointer<QETProject> m_project;
