@@ -40,6 +40,9 @@
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
+#ifdef QET_SPACEMOUSE_SUPPORT
+#	include "spacemouse/spacemouselistener.h"
+#endif
 
 #include <cstdlib>
 #include <iostream>
@@ -156,6 +159,14 @@ QETApp::QETApp() :
 	}
 
 	checkBackupFiles();
+
+#ifdef QET_SPACEMOUSE_SUPPORT
+		//Always safe to construct: it silently does nothing when spacenavd
+		//isn't running or no device is attached, which is the common case
+		//even in a build with this feature compiled in. See
+		//SpaceMouseListener's class comment.
+	m_space_mouse_listener = new SpaceMouseListener(this);
+#endif
 }
 
 /**

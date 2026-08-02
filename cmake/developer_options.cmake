@@ -33,3 +33,8 @@ add_definitions(-DQT_MESSAGELOGCONTEXT)
 
 # Build with KF5
 option(BUILD_WITH_KF5 "Build with KF5" ON)
+
+# Phase 1 (Linux, libspnav) of discussion #599: 3Dconnexion SpaceMouse/
+# SpacePilot pan/zoom support. Off by default -- see cmake/find_spacemouse.cmake
+# for what happens when it is on but libspnav isn't found.
+option(QET_ENABLE_SPACEMOUSE "Build with 3Dconnexion/libspnav 3D mouse support for pan/zoom (Linux, requires libspnav-dev and spacenavd)" OFF)

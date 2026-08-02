@@ -794,6 +794,13 @@ if(NOT BUILD_WITH_KF5)
   )
 endif()
 
+if(QET_SPACEMOUSE_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spacemouselistener.cpp
+    ${QET_DIR}/sources/spacemouse/spacemouselistener.h
+  )
+endif()
+
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
   ${QET_DIR}/lang/qet_ca.ts
