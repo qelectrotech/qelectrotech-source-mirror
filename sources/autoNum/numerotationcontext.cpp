@@ -52,13 +52,18 @@ void NumerotationContext::clear ()
 	@param increase the increase number of value
 	@param initialvalue
 	@param modulus wrap-and-carry modulus (0 means "not a wrapping part")
+	@param format zero-padding mask, spreadsheet style: "00" pads to two
+	digits, "000" to three. Empty keeps the part type's natural width, so
+	an absent format reproduces exactly the behaviour of every context
+	written before this field existed.
 	@return true if value is append
 */
 bool NumerotationContext::addValue(const QString &type,
 				   const QVariant &value,
 				   const int increase,
 				   const int initialvalue,
-				   const int modulus) {
+				   const int modulus,
+				   const QString &format) {
 	if (!keyIsAcceptable(type) && !value.canConvert<QString>())
 		return false;
 	if (keyIsNumber(type) && !value.canConvert<int>())
@@ -74,7 +79,9 @@ bool NumerotationContext::addValue(const QString &type,
 		    + "|"
 		    + QString::number(initialvalue)
 		    + "|"
-		    + QString::number(modulus);
+		    + QString::number(modulus)
+		    + "|"
+		    + QString(format).remove("|");
 	return true;
 }
 
@@ -179,6 +186,9 @@ QDomElement NumerotationContext::toXml(QDomDocument &d, const QString& str) {
 		if (strl.at(0) == ("wrap") && strl.size() > 4) {
 			part.setAttribute("modulus", strl.at(4));
 		}
+		if (strl.size() > 5 && !strl.at(5).isEmpty()) {
+			part.setAttribute("format", strl.at(5));
+		}
 		num_auto.appendChild(part);
 	}
 	return num_auto;
@@ -190,7 +200,7 @@ QDomElement NumerotationContext::toXml(QDomDocument &d, const QString& str) {
 */
 void NumerotationContext::fromXml(QDomElement &e) {
 	clear();
-	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt(), qde.attribute("initialvalue").toInt(), qde.attribute("modulus").toInt());
+	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt(), qde.attribute("initialvalue").toInt(), qde.attribute("modulus").toInt(), qde.attribute("format"));
 }
 
 /**
@@ -206,5 +216,17 @@ void NumerotationContext::replaceValue(int index, QString content) {
 	QString increase = strl.at(2);
 	QString initvalue = strl.at(3);
 	QString modulus = strl.size() > 4 ? strl.at(4) : QStringLiteral("0");
-	content_[index] = type + "|" + value + "|" + increase + "|" + initvalue + "|" + modulus;
+	QString format  = strl.size() > 5 ? strl.at(5) : QString();
+	content_[index] = type + "|" + value + "|" + increase + "|" + initvalue + "|" + modulus + "|" + format;
+}
+
+/**
+	@brief NumerotationContext::formatOf
+	@param item : a context item as returned by itemAt()
+	@return the part's zero-padding mask, or an empty string when it has
+	none -- which every context written before the field existed will be.
+*/
+QString NumerotationContext::formatOf(const QStringList &item)
+{
+	return item.size() > 5 ? item.at(5) : QString();
 }

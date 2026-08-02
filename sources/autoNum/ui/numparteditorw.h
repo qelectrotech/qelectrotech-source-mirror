@@ -66,6 +66,7 @@ class NumPartEditorW : public QWidget
 		void on_value_field_textEdited();
 		void on_increase_spinBox_valueChanged(int);
 		void on_modulus_spinBox_valueChanged(int);
+		void on_format_le_textEdited(const QString &);
 		void setType (NumPartEditorW::type t, bool=false);
 
 	signals:

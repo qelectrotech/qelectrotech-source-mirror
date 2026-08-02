@@ -259,7 +259,7 @@ NumerotationContext NumStrategy::nextString (const NumerotationContext &nc,
 {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
-	newnc.addValue(strl.at(0), strl.at(1), strl.at(2).toInt());
+	newnc.addValue(strl.at(0), strl.at(1), strl.at(2).toInt(), 0, 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -273,7 +273,7 @@ NumerotationContext NumStrategy::nextNumber (const NumerotationContext &nc,
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) + (strl.at(2).toInt()) );
-	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt());
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt(), 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -287,7 +287,7 @@ NumerotationContext NumStrategy::previousNumber(const NumerotationContext &nc,
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
 	QString value = QString::number( (strl.at(1).toInt()) - (strl.at(2).toInt()) );
-	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt());
+	newnc.addValue(strl.at(0), value, strl.at(2).toInt(), strl.at(3).toInt(), 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -550,7 +550,7 @@ NumerotationContext WrapNum::next (const NumerotationContext &nc, const int i) c
 	int new_value = strl.at(1).toInt() + increase;
 	if (modulus > 0)
 		new_value %= modulus;
-	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus);
+	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -570,7 +570,7 @@ NumerotationContext WrapNum::previous(const NumerotationContext &nc, const int i
 		if (new_value < 0)
 			new_value += modulus;
 	}
-	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus);
+	newnc.addValue(strl.at(0), QString::number(new_value), increase, strl.at(3).toInt(), modulus, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -706,7 +706,7 @@ NumerotationContext AlphaNum::next (const NumerotationContext &nc, const int i) 
 {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
-	newnc.addValue(strl.at(0), incrementAlpha(strl.at(1)), strl.at(2).toInt());
+	newnc.addValue(strl.at(0), incrementAlpha(strl.at(1)), strl.at(2).toInt(), 0, 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
@@ -718,7 +718,7 @@ NumerotationContext AlphaNum::previous(const NumerotationContext &nc, const int 
 {
 	QStringList strl = nc.itemAt(i);
 	NumerotationContext newnc;
-	newnc.addValue(strl.at(0), decrementAlpha(strl.at(1)), strl.at(2).toInt());
+	newnc.addValue(strl.at(0), decrementAlpha(strl.at(1)), strl.at(2).toInt(), 0, 0, NumerotationContext::formatOf(strl));
 	return (newnc);
 }
 
