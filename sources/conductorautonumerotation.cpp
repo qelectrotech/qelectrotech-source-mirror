@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorautonumerotation.h"
+#include "conductorcolorrule.h"
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "autoNum/assignvariables.h"
@@ -71,10 +72,35 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 {
 	if (!m_conductor) return;
 
+		//Discussion #606: if t exactly matches a configured color rule --
+		//e.g. the numbering context resolved to the literal "L1" or "PE" --
+		//color follows text the same way text itself is set below, for
+		//m_conductor and for every conductor in conductor_list. Looked up
+		//once here rather than per-conductor since it does not depend on
+		//which conductor is being updated, only on the resolved label.
+	bool has_color_rule = false;
+	ConductorColorRule color_rule;
+	if (m_diagram && m_diagram->project())
+	{
+		const auto rules = m_diagram->project()->conductorColorRules();
+		auto it = rules.constFind(t);
+		if (it != rules.constEnd())
+		{
+			color_rule = it.value();
+			has_color_rule = true;
+		}
+	}
+
 	QVariant old_value, new_value;
 	ConductorProperties cp = m_conductor -> properties();
 	old_value.setValue(cp);
 	cp.text = t;
+	if (has_color_rule)
+	{
+		cp.color     = color_rule.color;
+		cp.m_color_2 = color_rule.color_2;
+		cp.m_bicolor = color_rule.m_bicolor;
+	}
 	new_value.setValue(cp);
 
 	QUndoCommand *undo = nullptr;
@@ -117,6 +143,12 @@ void ConductorAutoNumerotation::applyText(const QString& t)
 			ConductorProperties cp2 = cond -> properties();
 			old_value.setValue(cp2);
 			cp2.text = t;
+			if (has_color_rule)
+			{
+				cp2.color     = color_rule.color;
+				cp2.m_color_2 = color_rule.color_2;
+				cp2.m_bicolor = color_rule.m_bicolor;
+			}
 			new_value.setValue(cp2);
 			new QPropertyUndoCommand(
 						cond,

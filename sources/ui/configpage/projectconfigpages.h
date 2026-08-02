@@ -33,6 +33,7 @@ class SelectAutonumW;
 class FolioAutonumberingW;
 class FormulaAutonumberingW;
 class AutoNumberingManagementW;
+class ConductorColorRulesW;
 
 /**
 	@brief The ProjectConfigPage class
@@ -173,6 +174,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_element;
 		FolioAutonumberingW   *m_faw;
 		AutoNumberingManagementW *m_amw;
+		ConductorColorRulesW  *m_ccrw;
 
 };
 
