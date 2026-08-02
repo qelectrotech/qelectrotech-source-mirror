@@ -126,6 +126,28 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QLineEdit" name="format_le">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>70</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Format d'affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</string>
+     </property>
+     <property name="placeholderText">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

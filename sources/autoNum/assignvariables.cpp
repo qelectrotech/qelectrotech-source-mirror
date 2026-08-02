@@ -497,15 +497,26 @@ namespace autonum
 		{
 			if (context.itemAt(i).at(0) == type)
 			{
+				const QStringList item = context.itemAt(i);
+					//A zero-padding mask, spreadsheet style: its length is the
+					//minimum number of digits. It overrides the width implied
+					//by the part type, so "Chiffre 01" with a mask of "0000"
+					//pads to four. An absent mask -- which is every context
+					//written before the field existed -- falls through to the
+					//type's own width, so nothing about existing projects
+					//changes.
+				const QString mask = NumerotationContext::formatOf(item);
 				QString number;
-				if (type == "ten" || type == "tenfolio")
-					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
-				else if (type == "hundred" || type == "hundredfolio")
-					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-				else if (type == "alpha")
+				if (type == "alpha")
 						//Alphabetic value, not an integer -- used as-is.
-					number = context.itemAt(i).at(1);
-				else number = QString::number(context.itemAt(i).at(1).toInt());
+					number = item.at(1);
+				else if (!mask.isEmpty())
+					number = QString("%1").arg(item.at(1).toInt(), mask.length(), 10, QChar('0'));
+				else if (type == "ten" || type == "tenfolio")
+					number = QString("%1").arg(item.at(1).toInt(), 2, 10, QChar('0'));
+				else if (type == "hundred" || type == "hundredfolio")
+					number = QString("%1").arg(item.at(1).toInt(), 3, 10, QChar('0'));
+				else number = QString::number(item.at(1).toInt());
 					list.append(number);
 			}
 		}

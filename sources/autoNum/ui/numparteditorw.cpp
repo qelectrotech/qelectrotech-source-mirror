@@ -18,6 +18,8 @@
 #include "numparteditorw.h"
 #include "ui_numparteditorw.h"
 
+#include "../numerotationcontext.h"
+
 #include <QRegularExpressionValidator>
 
 /**
@@ -35,6 +37,9 @@ NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 {
 	ui -> setupUi(this);
 	setVisibleItems();
+		//The mask is a run of zeros and nothing else, so it cannot be typed
+		//into a state the renderer would have to reject.
+	ui -> format_le -> setValidator(new QRegularExpressionValidator(QRegularExpression("0*"), this));
 	setType(NumPartEditorW::unit, true);
 }
 
@@ -99,6 +104,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
 		if (strl.at(0)=="wrap" && strl.size() > 4)
 			ui -> modulus_spinBox -> setValue(strl.at(4).toInt());
+		ui -> format_le -> setText(NumerotationContext::formatOf(strl));
 	}
 }
 
@@ -219,23 +225,30 @@ NumerotationContext NumPartEditorW::toNumContext()
 			type_str = "alpha";
 			break;
 	}
+	const QString number_format = ui -> format_le -> text();
 	if (type_str == "unitfolio"
 			|| type_str == "tenfolio"
 			|| type_str == "hundredfolio")
 		nc.addValue(type_str,
 			    ui -> value_field -> displayText(),
 			    ui -> increase_spinBox -> value(),
-			    ui->value_field->displayText().toInt());
+			    ui->value_field->displayText().toInt(),
+			    0,
+			    number_format);
 	else if (type_str == "wrap")
 		nc.addValue(type_str,
 			    ui -> value_field -> displayText(),
 			    ui -> increase_spinBox -> value(),
 			    0,
-			    ui -> modulus_spinBox -> value());
+			    ui -> modulus_spinBox -> value(),
+			    number_format);
 	else
 	nc.addValue(type_str,
 		    ui -> value_field -> displayText(),
-		    ui -> increase_spinBox -> value());
+		    ui -> increase_spinBox -> value(),
+		    0,
+		    0,
+		    number_format);
 	return nc;
 }
 
@@ -317,6 +330,14 @@ void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
 	@brief NumPartEditorW::on_modulus_spinBox_valueChanged
 	emit changed when modulus_spinBox value changed
 */
+/**
+	@brief NumPartEditorW::on_format_le_textEdited
+	emit changed when the display format is edited
+*/
+void NumPartEditorW::on_format_le_textEdited(const QString &) {
+	emit changed();
+}
+
 void NumPartEditorW::on_modulus_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
@@ -423,6 +444,13 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	if (t == wrap && ui -> modulus_spinBox -> value() <= 0)
 		ui -> modulus_spinBox -> setValue(8);
 	ui -> modulus_spinBox -> setEnabled(t == wrap);
+		//A padding mask only means anything for a part rendered as a number.
+	const bool numeric = (t == unit || t == unitfolio || t == ten
+			      || t == tenfolio || t == hundred || t == hundredfolio
+			      || t == wrap);
+	ui -> format_le -> setEnabled(numeric);
+	if (!numeric)
+		ui -> format_le -> clear();
 	type_= t;
 }
 
