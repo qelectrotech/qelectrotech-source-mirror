@@ -796,8 +796,16 @@ endif()
 
 if(QET_SPACEMOUSE_ENABLED)
   list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spacemousebackend.h
     ${QET_DIR}/sources/spacemouse/spacemouselistener.cpp
     ${QET_DIR}/sources/spacemouse/spacemouselistener.h
+  )
+endif()
+
+if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spnavbackend.cpp
+    ${QET_DIR}/sources/spacemouse/spnavbackend.h
   )
 endif()
 

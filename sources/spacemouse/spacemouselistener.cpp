@@ -17,24 +17,27 @@
 */
 #include "spacemouselistener.h"
 
+#include "spacemousebackend.h"
+#ifdef QET_SPACEMOUSE_BACKEND_SPNAV
+#	include "spnavbackend.h"
+#endif
+
 #include "../diagramview.h"
 #include "../projectview.h"
 #include "../qetdiagrameditor.h"
 
 #include <QApplication>
 #include <QScrollBar>
-#include <QSocketNotifier>
-
-#include <spnav.h>
 
 namespace {
-		//A spnav motion delta is an integer on roughly the same order of
+		//A device motion delta is an integer on roughly the same order of
 		//magnitude as a QWheelEvent::angleDelta() tick (about +-120 per
 		//detent, more under a hard push/twist -- exact range depends on the
-		//user's spacenavd sensitivity setting, which is configured once
-		//outside QET and out of scope here). DiagramView::wheelEvent()
-		//already turns such a tick into a small per-event zoom step via
-		//zoom(1 + value/1000); reused as a starting point.
+		//backend and the user's own driver-level sensitivity setting, which
+		//is configured outside QET and out of scope here).
+		//DiagramView::wheelEvent() already turns such a tick into a small
+		//per-event zoom step via zoom(1 + value/1000); reused as a starting
+		//point.
 		//
 		//Neither this divisor nor PAN_SCALE below has been calibrated
 		//against real hardware -- there is none in the environment this was
@@ -46,38 +49,40 @@ namespace {
 
 /**
 	@brief SpaceMouseListener::SpaceMouseListener
-	Try to connect to spacenavd. Failure -- no daemon running, no device
-	attached -- is left silent: it is the expected state for most users and
-	must never surface as an error dialog or a log warning on every
-	ordinary startup.
+	Construct whichever backend is available for this platform and connect
+	its motion() signal. If none is compiled in, or the one that is can't
+	reach a device, isAvailable() simply stays false -- see the class
+	comment.
 	@param parent
 */
 SpaceMouseListener::SpaceMouseListener(QObject *parent) :
 	QObject(parent)
 {
-	if (spnav_open() == -1) {
-		return;
-	}
+#ifdef QET_SPACEMOUSE_BACKEND_SPNAV
+	m_backend = new SpnavBackend(this);
+#endif
+		//A future Windows/macOS backend (3Dconnexion's proprietary 3DxWare
+		//SDK) slots in here behind its own QET_SPACEMOUSE_BACKEND_3DXWARE
+		//guard, without changing anything below this constructor.
 
-	m_available = true;
-	m_notifier = new QSocketNotifier(spnav_fd(), QSocketNotifier::Read, this);
-	connect(m_notifier, &QSocketNotifier::activated,
-		this, &SpaceMouseListener::readEvents);
+	if (m_backend) {
+		connect(m_backend, &SpaceMouseBackend::motion,
+			this, &SpaceMouseListener::applyMotion);
+	}
 }
 
 /**
-	@brief SpaceMouseListener::~SpaceMouseListener
+	@brief SpaceMouseListener::isAvailable
+	@return whether the platform backend has a live device connection
 */
-SpaceMouseListener::~SpaceMouseListener()
+bool SpaceMouseListener::isAvailable() const
 {
-	if (m_available) {
-		spnav_close();
-	}
+	return m_backend && m_backend->isAvailable();
 }
 
 /**
 	@brief SpaceMouseListener::zoomFactorForZAxis
-	@param z : raw Z-axis (push/pull) delta from a spnav motion event
+	@param z : raw Z-axis (push/pull) delta from a device motion sample
 	@return the multiplicative factor DiagramView::zoom() expects
 */
 qreal SpaceMouseListener::zoomFactorForZAxis(int z)
@@ -86,45 +91,22 @@ qreal SpaceMouseListener::zoomFactorForZAxis(int z)
 }
 
 /**
-	@brief SpaceMouseListener::readEvents
-	Called when the spacenavd socket has data available. Drains every event
-	currently queued -- spnav_poll_event() returns 0 once the queue is
-	empty -- rather than handling just one per activation, so events cannot
-	silently back up if several arrive between two Qt event loop turns.
-*/
-void SpaceMouseListener::readEvents()
-{
-	spnav_event event;
-	while (spnav_poll_event(&event))
-	{
-		if (event.type == SPNAV_EVENT_MOTION) {
-			dispatchMotion(event.motion);
-		}
-			//Button events (SPNAV_EVENT_BUTTON) are deliberately not
-			//handled: mapping device buttons to QET actions is the "Related,
-			//not proposed here" follow-up in discussion #599, not this
-			//phase.
-	}
-}
-
-/**
-	@brief SpaceMouseListener::dispatchMotion
-	Apply one motion event to whichever DiagramView is currently active.
+	@brief SpaceMouseListener::applyMotion
+	Apply one motion sample to whichever DiagramView is currently active.
 	X/Y translation pans it, Z translation zooms it -- the same two
 	primitives (scrollbars, DiagramView::zoom()) DiagramView::wheelEvent()
 	already drives from a physical wheel, so there is no new navigation
 	logic here, only a new input source feeding the existing one.
 
-	A 6-DOF device also reports rotation (rx, ry, rz); QET's view has
-	nothing rotation maps to, so those three axes are read by nothing here.
-
-	Which of the three translation axes is "left/right" vs "forward/back"
-	vs "up/down" on the physical device, and their sign, is a hardware
-	convention this could not be checked against real hardware while
-	writing it -- see the PR description.
-	@param motion
+	Which of a device's three translation axes is "left/right" vs
+	"forward/back" vs "up/down", and their sign, is a hardware convention
+	this could not be checked against real hardware while writing it -- see
+	the PR description.
+	@param dx
+	@param dy
+	@param dz
 */
-void SpaceMouseListener::dispatchMotion(const spnav_event_motion &motion)
+void SpaceMouseListener::applyMotion(int dx, int dy, int dz)
 {
 	auto *editor = qobject_cast<QETDiagramEditor *>(qApp->activeWindow());
 	if (!editor) {
@@ -141,15 +123,15 @@ void SpaceMouseListener::dispatchMotion(const spnav_event_motion &motion)
 		return;
 	}
 
-	if (motion.x || motion.y)
+	if (dx || dy)
 	{
 		view->horizontalScrollBar()->setValue(
-			view->horizontalScrollBar()->value() - qRound(motion.x * PAN_SCALE));
+			view->horizontalScrollBar()->value() - qRound(dx * PAN_SCALE));
 		view->verticalScrollBar()->setValue(
-			view->verticalScrollBar()->value() - qRound(motion.y * PAN_SCALE));
+			view->verticalScrollBar()->value() - qRound(dy * PAN_SCALE));
 	}
 
-	if (motion.z) {
-		view->zoom(zoomFactorForZAxis(motion.z));
+	if (dz) {
+		view->zoom(zoomFactorForZAxis(dz));
 	}
 }

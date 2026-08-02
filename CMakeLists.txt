@@ -146,9 +146,11 @@ else()
     )
 endif()
 
-if(QET_SPACEMOUSE_ENABLED)
-    set(QET_SPACEMOUSE_LIBRARIES PkgConfig::SPNAV)
+if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
+    list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::SPNAV)
 endif()
+# A future Windows/macOS (3DxWare) backend would list.APPEND its own SDK
+# libraries here, behind its own *_ENABLED guard, alongside this one.
 
 target_link_libraries(
     ${PROJECT_NAME}
