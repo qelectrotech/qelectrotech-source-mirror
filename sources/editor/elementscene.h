@@ -92,6 +92,8 @@ class ElementScene : public QGraphicsScene
 		QPointer<CustomElementGraphicPart> m_single_selected_item;
 
 		bool m_hotspot_visible = true;
+		bool m_background_frame_visible = false;
+		QSizeF m_background_frame_size;
 	
 		// methods
 	public:
@@ -142,6 +144,11 @@ class ElementScene : public QGraphicsScene
 			/// not part of the drawn symbol.
 		void setHotspotVisible(bool visible) {m_hotspot_visible = visible;}
 		bool hotspotVisible() const {return m_hotspot_visible;}
+
+		bool backgroundFrameVisible() const {return m_background_frame_visible;}
+		void setBackgroundFrameVisible(bool visible);
+		QSizeF backgroundFrameSize() const {return m_background_frame_size;}
+		void setBackgroundFrameSize(const QSizeF &size);
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;
