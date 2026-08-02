@@ -376,6 +376,7 @@ QString ElementQueryWidget::queryStr() const
 	if (ui->m_plc_cb->isChecked()) {
 		if (b) where +=" OR";
 		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::PLC) += "'";
+		b = true;
 	}
 	where.append(")");
 
