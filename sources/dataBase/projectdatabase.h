@@ -49,6 +49,8 @@ class projectDataBase : public QObject
 		void updateDB();
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
+		QSqlDatabase database() const {return m_data_base;}
+		int excludedConductorCount() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
