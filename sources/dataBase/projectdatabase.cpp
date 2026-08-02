@@ -611,7 +611,15 @@ void projectDataBase::createElementNomenclatureView()
 						 "e.sub_type AS element_sub_type,"
 						 "di.title AS title,"
 						 "di.folio AS folio,"
-						 "e.pos AS position "
+						 "e.pos AS position,"
+							//Counted with DISTINCT over the conductor uuid, not over the two
+							//endpoint columns: a conductor with both ends on the same element
+							//is one wire touching it, not two. Conductors whose terminals have
+							//no uuid are absent from the conductor table, so an element wired
+							//only by those reads 0 -- see excludedConductorCount().
+						 "(SELECT COUNT(DISTINCT c.uuid) FROM conductor c"
+						 " WHERE c.terminal1_element_uuid = e.uuid"
+						 " OR c.terminal2_element_uuid = e.uuid) AS wire_count "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
 						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')"
 							//The element table holds every element of the project; which
