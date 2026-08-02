@@ -620,7 +620,13 @@ void projectDataBase::createElementNomenclatureView()
 						 "di.folio AS folio,"
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
-						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')");
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')"
+							//The element table holds every element of the project; which
+							//kinds belong in a nomenclature is this view's business, not
+							//the table's. Kept identical to the mask populateElementTable()
+							//used to apply, so what this view returns does not change --
+							//a slave element (a relay contact) is still not a line item.
+						 " AND e.type IN ('simple', 'terminal', 'master', 'thumbnail')");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
@@ -733,6 +739,30 @@ void projectDataBase::populateDiagramTable()
 }
 
 /**
+	@brief allElementTypes
+	Every ElementData::Type, i.e. no filtering at all.
+
+	The element table used to be populated with only
+	Simple|Terminal|Master|Thumbnail, which quietly made it "the elements a
+	nomenclature cares about" rather than "the elements of the project".
+	Anything else reading the table -- the wiring list, and terminal plans
+	later -- then could not see slave elements (relay contacts) or report
+	elements, which are ordinary conductor endpoints. The filter now lives in
+	element_nomenclature_view, where it belongs; see createElementNomenclatureView().
+*/
+static ElementData::Types allElementTypes()
+{
+	return ElementData::Simple
+		   | ElementData::NextReport
+		   | ElementData::PreviousReport
+		   | ElementData::Master
+		   | ElementData::Slave
+		   | ElementData::Terminal
+		   | ElementData::Thumbnail
+		   | ElementData::ConductorDefinition;
+}
+
+/**
 	@brief projectDataBase::populateElementTable
 	Populate the element table
 */
@@ -744,7 +774,7 @@ void projectDataBase::populateElementTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(allElementTypes());
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
@@ -773,7 +803,7 @@ void projectDataBase::populateElementInfoTable()
 	for (const auto &diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(allElementTypes());
 
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
