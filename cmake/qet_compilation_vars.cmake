@@ -683,6 +683,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.h
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.cpp
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfopartwidget.cpp
   ${QET_DIR}/sources/ui/elementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
