@@ -270,6 +270,16 @@ class QETApp : public QObject
 		void openTitleBlockTemplate(const QString &);
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
+			/// Discussion #610: write every key of the live QSettings out to a
+			/// user-chosen .conf file, so it can be handed to another machine
+			/// or kept as a named profile to reload later.
+		void exportConfiguration();
+			/// Discussion #610: replace the live QSettings with the contents
+			/// of a user-chosen .conf file, then restart QET so every
+			/// consumer of QSettings (shortcuts, docks, autosave interval...)
+			/// picks up the change -- QET has no settings-changed signal
+			/// wired through all of those, so a live reload isn't attempted.
+		void importConfiguration();
 		void aboutQET();
 		void receiveMessage(int instanceId, QByteArray message);
 	

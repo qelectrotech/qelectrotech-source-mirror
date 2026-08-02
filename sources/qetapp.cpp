@@ -45,9 +45,12 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QFileDialog>
 #include <QFontDatabase>
+#include <QProcess>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QSettings>
 #ifdef BUILD_WITHOUT_KF5
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -2068,6 +2071,122 @@ void QETApp::configureQET()
 	// affiche le dialogue puis evite de le lier a un quelconque widget parent
 	cd.exec();
 	cd.setParent(nullptr, cd.windowFlags());
+}
+
+/**
+	@brief QETApp::exportConfiguration
+	Write every key of the live QSettings (organization/application
+	"QElectroTech", set in main.cpp -- the platform-native store: an ini
+	file on Linux, the registry on Windows, a plist on macOS) out to a
+	user-chosen .conf file, read back and written with
+	QSettings::IniFormat regardless of the live platform, so the exported
+	file has the same, plain key=value shape everywhere. That shared
+	format is what makes the resulting file portable between platforms,
+	and what lets exportConfiguration()/importConfiguration() share one
+	plain copy loop instead of needing per-platform code.
+*/
+void QETApp::exportConfiguration()
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	QString path = QFileDialog::getSaveFileName(
+				parent_widget,
+				tr("Enregistrer la configuration sous...", "dialog title"),
+				QString(),
+				tr("Fichiers de configuration QElectroTech (*.conf)", "file dialog filter"));
+	if (path.isEmpty()) {
+		return;
+	}
+	if (!path.endsWith(QLatin1String(".conf"), Qt::CaseInsensitive)) {
+		path += QLatin1String(".conf");
+	}
+
+	QSettings live_settings;
+	QSettings file_settings(path, QSettings::IniFormat);
+	file_settings.clear();
+	const QStringList keys = live_settings.allKeys();
+	for (const QString &key : keys) {
+		file_settings.setValue(key, live_settings.value(key));
+	}
+	file_settings.sync();
+
+	if (file_settings.status() != QSettings::NoError) {
+		QET::QetMessageBox::critical(
+					parent_widget,
+					tr("Erreur", "message box title"),
+					tr("Impossible d'enregistrer la configuration dans « %1 ».").arg(path));
+	}
+}
+
+/**
+	@brief QETApp::importConfiguration
+	Replace every key of the live QSettings with the contents of a
+	user-chosen .conf file (see exportConfiguration()), then restart QET.
+
+	The live settings are cleared before copying the file's keys in, not
+	merged: a key present in the current configuration but absent from the
+	loaded file must not survive the switch, or loading a profile that
+	never mentions a given key would silently keep whatever the previous
+	profile set for it -- the opposite of what "switch profiles" means.
+
+	Restarting rather than reloading in place is a deliberate scope
+	decision (see discussion #610): QET has no settings-changed signal
+	reaching every consumer (shortcuts, autosave interval, docks...), so
+	faking a live reload would risk parts of the UI silently running on
+	stale settings. QET's SingleApplication is constructed with
+	allowSecondary=true (main.cpp), so a second instance can be started
+	before this one quits without racing a single-instance lock.
+*/
+void QETApp::importConfiguration()
+{
+	QWidget *parent_widget = qApp->activeWindow();
+
+	QString path = QFileDialog::getOpenFileName(
+				parent_widget,
+				tr("Charger une configuration...", "dialog title"),
+				QString(),
+				tr("Fichiers de configuration QElectroTech (*.conf)", "file dialog filter"));
+	if (path.isEmpty()) {
+		return;
+	}
+
+	QSettings file_settings(path, QSettings::IniFormat);
+	if (file_settings.status() != QSettings::NoError || file_settings.allKeys().isEmpty()) {
+		QET::QetMessageBox::critical(
+					parent_widget,
+					tr("Erreur", "message box title"),
+					tr("« %1 » n'est pas un fichier de configuration valide.").arg(path));
+		return;
+	}
+
+	QMessageBox::StandardButton answer = QET::QetMessageBox::question(
+				parent_widget,
+				tr("Charger une configuration", "message box title"),
+				tr("QElectroTech doit redémarrer pour appliquer cette configuration.\n"
+				   "Voulez-vous continuer ?"),
+				QMessageBox::Yes | QMessageBox::No,
+				QMessageBox::No);
+	if (answer != QMessageBox::Yes) {
+		return;
+	}
+
+		//closeEveryEditor() prompts to save any unsaved project, the same
+		//way quitQET() already does; a cancelled save must abort the whole
+		//operation, since the settings have not been touched yet at this point.
+	if (!QETApp::instance()->closeEveryEditor()) {
+		return;
+	}
+
+	QSettings live_settings;
+	live_settings.clear();
+	const QStringList keys = file_settings.allKeys();
+	for (const QString &key : keys) {
+		live_settings.setValue(key, file_settings.value(key));
+	}
+	live_settings.sync();
+
+	QProcess::startDetached(qApp->applicationFilePath(), QStringList());
+	qApp->quit();
 }
 
 /**
