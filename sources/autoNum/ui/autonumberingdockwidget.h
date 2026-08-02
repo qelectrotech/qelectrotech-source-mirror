@@ -24,6 +24,7 @@
 #include <QDockWidget>
 
 class QComboBox;
+class QLineEdit;
 
 namespace Ui {
 	class AutoNumberingDockWidget;
@@ -57,11 +58,12 @@ class AutoNumberingDockWidget : public QDockWidget
 		void on_m_configure_pb_clicked();
 
 		void on_m_conductor_reset_start_pb_clicked();
-		void on_m_conductor_reset_placeholder_pb_clicked();
 		void on_m_element_reset_start_pb_clicked();
-		void on_m_element_reset_placeholder_pb_clicked();
 		void on_m_folio_reset_start_pb_clicked();
-		void on_m_folio_reset_placeholder_pb_clicked();
+
+		void on_m_conductor_value_le_editingFinished();
+		void on_m_element_value_le_editingFinished();
+		void on_m_folio_value_le_editingFinished();
 
 	signals:
 		void folioAutoNumChanged(QString);
@@ -72,12 +74,23 @@ class AutoNumberingDockWidget : public QDockWidget
 		/**
 			@brief resetAutoNum
 			Reset the numerotation context currently selected in combo_box
-			(for the given category) either to a per-type starting value
-			(to_placeholder = false) or to the literal placeholder "?" on
-			every part (to_placeholder = true). Does nothing if no context
-			is selected.
+			(for the given category) to a per-type starting value. Does
+			nothing if no context is selected.
 		*/
-		void resetAutoNum(QComboBox *combo_box, AutoNumCategory category, bool to_placeholder);
+		void resetAutoNum(QComboBox *combo_box, AutoNumCategory category);
+
+			/// Read/write the numerotation context named in combo_box.
+		NumerotationContext contextFor(QComboBox *combo_box, AutoNumCategory category) const;
+		void storeContext(QComboBox *combo_box, AutoNumCategory category, const NumerotationContext &context);
+
+			/// Index of the counter the value field shows and edits: the last
+			/// part that actually progresses. Returns -1 when the context has
+			/// no such part (e.g. it is only fixed text).
+		static int counterIndex(const NumerotationContext &context);
+
+			/// Refresh a value field from its context, and apply a typed value.
+		void refreshValueField(QComboBox *combo_box, QLineEdit *line_edit, AutoNumCategory category);
+		void applyValueField(QComboBox *combo_box, QLineEdit *line_edit, AutoNumCategory category);
 
 		Ui::AutoNumberingDockWidget *ui;
 		QETProject* m_project = nullptr;

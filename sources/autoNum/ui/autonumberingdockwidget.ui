@@ -49,18 +49,15 @@
      </widget>
     </item>
     <item row="2" column="3">
-     <widget class="QPushButton" name="m_conductor_reset_placeholder_pb">
+     <widget class="QLineEdit" name="m_conductor_value_le">
       <property name="maximumSize">
        <size>
-        <width>24</width>
+        <width>70</width>
         <height>16777215</height>
        </size>
       </property>
       <property name="toolTip">
-       <string>Réinitialiser à « ? » (à numéroter manuellement)</string>
-      </property>
-      <property name="text">
-       <string>?</string>
+       <string>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</string>
       </property>
      </widget>
     </item>
@@ -99,18 +96,15 @@
      </widget>
     </item>
     <item row="3" column="3">
-     <widget class="QPushButton" name="m_element_reset_placeholder_pb">
+     <widget class="QLineEdit" name="m_element_value_le">
       <property name="maximumSize">
        <size>
-        <width>24</width>
+        <width>70</width>
         <height>16777215</height>
        </size>
       </property>
       <property name="toolTip">
-       <string>Réinitialiser à « ? » (à numéroter manuellement)</string>
-      </property>
-      <property name="text">
-       <string>?</string>
+       <string>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</string>
       </property>
      </widget>
     </item>
@@ -138,18 +132,15 @@
      </widget>
     </item>
     <item row="4" column="3">
-     <widget class="QPushButton" name="m_folio_reset_placeholder_pb">
+     <widget class="QLineEdit" name="m_folio_value_le">
       <property name="maximumSize">
        <size>
-        <width>24</width>
+        <width>70</width>
         <height>16777215</height>
        </size>
       </property>
       <property name="toolTip">
-       <string>Réinitialiser à « ? » (à numéroter manuellement)</string>
-      </property>
-      <property name="text">
-       <string>?</string>
+       <string>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</string>
       </property>
      </widget>
     </item>

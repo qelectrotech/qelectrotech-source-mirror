@@ -27,6 +27,7 @@
 #include "ui_autonumberingdockwidget.h"
 
 #include <QComboBox>
+#include <QLineEdit>
 
 /**
 	@brief AutoNumberingDockWidget::AutoNumberingDockWidget
@@ -60,6 +61,9 @@ void AutoNumberingDockWidget::clear()
 	ui->m_conductor_cb->clear();
 	ui->m_element_cb->clear();
 	ui->m_folio_cb->clear();
+	ui->m_conductor_value_le->clear();
+	ui->m_element_value_le->clear();
+	ui->m_folio_value_le->clear();
 }
 
 void AutoNumberingDockWidget::projectClosed()
@@ -191,6 +195,12 @@ void AutoNumberingDockWidget::setContext()
 		{ ui->m_folio_cb -> addItem(str);}
 	}
 
+		//The combo boxes have just been repopulated, so the value fields next
+		//to them are showing whatever the previous project left there.
+	refreshValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
+	refreshValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
+	refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
+
 	this->setActive();
 }
 
@@ -265,6 +275,7 @@ void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
 	m_project->setCurrentConductorAutoNum(current_autonum);
 	m_project_view->currentDiagram()->diagram()->setConductorsAutonumName(current_autonum);
 	m_project_view->currentDiagram()->diagram()->loadCndFolioSeq();
+	refreshValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
 }
 
 /**
@@ -293,6 +304,7 @@ void AutoNumberingDockWidget::on_m_element_cb_activated(int)
 {
 	m_project->setCurrrentElementAutonum(ui->m_element_cb->currentText());
 	m_project_view->currentDiagram()->diagram()->loadElmtFolioSeq();
+	refreshValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
 }
 
 /**
@@ -330,6 +342,7 @@ void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {
 		m_project->setDefaultTitleBlockProperties(ip);
 	}
 		emit(folioAutoNumChanged(current_autonum));
+	refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
 }
 
 void AutoNumberingDockWidget::on_m_configure_pb_clicked()
@@ -344,74 +357,162 @@ void AutoNumberingDockWidget::on_m_configure_pb_clicked()
 
 void AutoNumberingDockWidget::on_m_conductor_reset_start_pb_clicked()
 {
-	resetAutoNum(ui->m_conductor_cb, AutoNumCategory::Conductor, false);
-}
-
-void AutoNumberingDockWidget::on_m_conductor_reset_placeholder_pb_clicked()
-{
-	resetAutoNum(ui->m_conductor_cb, AutoNumCategory::Conductor, true);
+	resetAutoNum(ui->m_conductor_cb, AutoNumCategory::Conductor);
 }
 
 void AutoNumberingDockWidget::on_m_element_reset_start_pb_clicked()
 {
-	resetAutoNum(ui->m_element_cb, AutoNumCategory::Element, false);
-}
-
-void AutoNumberingDockWidget::on_m_element_reset_placeholder_pb_clicked()
-{
-	resetAutoNum(ui->m_element_cb, AutoNumCategory::Element, true);
+	resetAutoNum(ui->m_element_cb, AutoNumCategory::Element);
 }
 
 void AutoNumberingDockWidget::on_m_folio_reset_start_pb_clicked()
 {
-	resetAutoNum(ui->m_folio_cb, AutoNumCategory::Folio, false);
+	resetAutoNum(ui->m_folio_cb, AutoNumCategory::Folio);
 }
 
-void AutoNumberingDockWidget::on_m_folio_reset_placeholder_pb_clicked()
+void AutoNumberingDockWidget::on_m_conductor_value_le_editingFinished()
 {
-	resetAutoNum(ui->m_folio_cb, AutoNumCategory::Folio, true);
+	applyValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
+}
+
+void AutoNumberingDockWidget::on_m_element_value_le_editingFinished()
+{
+	applyValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
+}
+
+void AutoNumberingDockWidget::on_m_folio_value_le_editingFinished()
+{
+	applyValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
 }
 
 /**
-	@brief AutoNumberingDockWidget::resetAutoNum
-	Reset the numerotation context currently selected in combo_box (for
-	category) either to a per-type starting value (to_placeholder = false)
-	or to the literal placeholder "?" on every part (to_placeholder =
-	true), then write it back so the existing refresh signals fire as
-	normal. Does nothing if no context is selected.
-
-	"Reset to start" only touches parts that actually represent a
-	progressing counter (numeric types, wrap, alpha): folio-anchored
-	numeric types go back to their own stored initialvalue, plain numeric
-	types and wrap go back to "1", alpha goes back to "a". Non-incrementing
-	types (string, plant, locmach, idfolio, folio, elementline,
-	elementcolumn, elementprefix) are left untouched -- there's no
-	meaningful "start" distinct from whatever the user configured for a
-	fixed/contextual value. "Reset to ?" applies to every part
-	unconditionally, since its purpose is marking the whole context as
-	needing manual attention.
+	@brief AutoNumberingDockWidget::contextFor
+	@return the numerotation context named by combo_box, for category
 */
-void AutoNumberingDockWidget::resetAutoNum(QComboBox *combo_box, AutoNumCategory category, bool to_placeholder)
+NumerotationContext AutoNumberingDockWidget::contextFor(QComboBox *combo_box, AutoNumCategory category) const
+{
+	const QString key = combo_box->currentText();
+	switch (category) {
+		case AutoNumCategory::Conductor: return m_project->conductorAutoNum(key);
+		case AutoNumCategory::Element:   return m_project->elementAutoNum(key);
+		case AutoNumCategory::Folio:     return m_project->folioAutoNum(key);
+	}
+	return NumerotationContext();
+}
+
+/**
+	@brief AutoNumberingDockWidget::storeContext
+	Write context back under the name selected in combo_box and flag the
+	project as modified -- without that last step the change is not saved
+	and the user is never asked to save it on close.
+*/
+void AutoNumberingDockWidget::storeContext(QComboBox *combo_box, AutoNumCategory category, const NumerotationContext &context)
+{
+	const QString key = combo_box->currentText();
+	switch (category) {
+		case AutoNumCategory::Conductor: m_project->addConductorAutoNum(key, context); break;
+		case AutoNumCategory::Element:   m_project->addElementAutoNum(key, context);   break;
+		case AutoNumCategory::Folio:     m_project->addFolioAutoNum(key, context);     break;
+	}
+	m_project->setModified(true);
+}
+
+/**
+	@brief AutoNumberingDockWidget::counterIndex
+	@return the index of the part the value field shows: the last one that
+	actually progresses, i.e. the least significant digit of the number.
+	-1 when the context has no progressing part at all.
+*/
+int AutoNumberingDockWidget::counterIndex(const NumerotationContext &context)
+{
+	for (int i = context.size() - 1 ; i >= 0 ; --i)
+	{
+		const QString type = context.itemAt(i).at(0);
+		if (type == QLatin1String("unit")
+				|| type == QLatin1String("ten")
+				|| type == QLatin1String("hundred")
+				|| type == QLatin1String("unitfolio")
+				|| type == QLatin1String("tenfolio")
+				|| type == QLatin1String("hundredfolio")
+				|| type == QLatin1String("wrap")
+				|| type == QLatin1String("alpha"))
+			return i;
+	}
+	return -1;
+}
+
+/**
+	@brief AutoNumberingDockWidget::refreshValueField
+	Show the current value of the selected context's counter, so the field
+	always reflects where the numbering has actually got to.
+*/
+void AutoNumberingDockWidget::refreshValueField(QComboBox *combo_box, QLineEdit *line_edit, AutoNumCategory category)
+{
+	if (!m_project || combo_box->currentText().isEmpty())
+	{
+		line_edit->clear();
+		line_edit->setEnabled(false);
+		return;
+	}
+
+	const NumerotationContext context = contextFor(combo_box, category);
+	const int index = counterIndex(context);
+	line_edit->setEnabled(index >= 0);
+	line_edit->setText(index >= 0 ? context.itemAt(index).at(1) : QString());
+}
+
+/**
+	@brief AutoNumberingDockWidget::applyValueField
+	Write the value typed in line_edit to the counter it displays. An empty
+	field is treated as "no change" rather than as an empty value, so
+	clearing the box by accident cannot wipe the counter.
+*/
+void AutoNumberingDockWidget::applyValueField(QComboBox *combo_box, QLineEdit *line_edit, AutoNumCategory category)
 {
 	if (!m_project || combo_box->currentText().isEmpty())
 		return;
 
-	const QString key = combo_box->currentText();
-	NumerotationContext context;
-	switch (category) {
-		case AutoNumCategory::Conductor: context = m_project->conductorAutoNum(key); break;
-		case AutoNumCategory::Element:   context = m_project->elementAutoNum(key);   break;
-		case AutoNumCategory::Folio:     context = m_project->folioAutoNum(key);     break;
+	NumerotationContext context = contextFor(combo_box, category);
+	const int index = counterIndex(context);
+	if (index < 0)
+		return;
+
+	const QString typed = line_edit->text();
+	if (typed.isEmpty() || typed == context.itemAt(index).at(1))
+	{
+		refreshValueField(combo_box, line_edit, category);
+		return;
 	}
 
-	for (int i = 0; i < context.size(); ++i)
-	{
-		if (to_placeholder)
-		{
-			context.replaceValue(i, QStringLiteral("?"));
-			continue;
-		}
+	context.replaceValue(index, typed);
+	storeContext(combo_box, category, context);
+	refreshValueField(combo_box, line_edit, category);
+}
 
+/**
+	@brief AutoNumberingDockWidget::resetAutoNum
+	Reset the numerotation context currently selected in combo_box back to
+	a per-type starting value, then write it back. Does nothing if no
+	context is selected.
+
+	Only parts that actually progress are touched: folio-anchored numeric
+	types go back to their own stored initialvalue, plain numeric types go
+	back to "1", a wrap part goes back to "0" because a modulo counter
+	cycles over [0, modulus) -- a PLC card addressed %IX0.0..%IX0.31 starts
+	at 0, not 1 -- and alpha goes back to "a". Non-incrementing types
+	(string, plant, locmach, idfolio, folio, elementline, elementcolumn,
+	elementprefix) are left alone: there is no "start" for them distinct
+	from the fixed or contextual value the user configured.
+*/
+void AutoNumberingDockWidget::resetAutoNum(QComboBox *combo_box, AutoNumCategory category)
+{
+	if (!m_project || combo_box->currentText().isEmpty())
+		return;
+
+	NumerotationContext context = contextFor(combo_box, category);
+
+	for (int i = 0 ; i < context.size() ; ++i)
+	{
 		const QStringList item = context.itemAt(i);
 		const QString &type = item.at(0);
 		if (type == QLatin1String("unitfolio")
@@ -420,16 +521,19 @@ void AutoNumberingDockWidget::resetAutoNum(QComboBox *combo_box, AutoNumCategory
 			context.replaceValue(i, item.size() > 3 ? item.at(3) : QStringLiteral("1"));
 		else if (type == QLatin1String("unit")
 				|| type == QLatin1String("ten")
-				|| type == QLatin1String("hundred")
-				|| type == QLatin1String("wrap"))
+				|| type == QLatin1String("hundred"))
 			context.replaceValue(i, QStringLiteral("1"));
+		else if (type == QLatin1String("wrap"))
+			context.replaceValue(i, QStringLiteral("0"));
 		else if (type == QLatin1String("alpha"))
 			context.replaceValue(i, QStringLiteral("a"));
 	}
 
+	storeContext(combo_box, category, context);
+
 	switch (category) {
-		case AutoNumCategory::Conductor: m_project->addConductorAutoNum(key, context); break;
-		case AutoNumCategory::Element:   m_project->addElementAutoNum(key, context);   break;
-		case AutoNumCategory::Folio:     m_project->addFolioAutoNum(key, context);     break;
+		case AutoNumCategory::Conductor: refreshValueField(combo_box, ui->m_conductor_value_le, category); break;
+		case AutoNumCategory::Element:   refreshValueField(combo_box, ui->m_element_value_le, category);   break;
+		case AutoNumCategory::Folio:     refreshValueField(combo_box, ui->m_folio_value_le, category);     break;
 	}
 }
