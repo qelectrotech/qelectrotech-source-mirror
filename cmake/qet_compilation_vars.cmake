@@ -155,6 +155,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/conductorcolorrule.cpp
+  ${QET_DIR}/sources/conductorcolorrule.h
   ${QET_DIR}/sources/conductornumexport.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
@@ -269,6 +271,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.cpp
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.h
+  ${QET_DIR}/sources/autoNum/ui/conductorcolorrulesw.cpp
+  ${QET_DIR}/sources/autoNum/ui/conductorcolorrulesw.h
   ${QET_DIR}/sources/autoNum/ui/folioautonumbering.cpp
   ${QET_DIR}/sources/autoNum/ui/folioautonumbering.h
   ${QET_DIR}/sources/autoNum/ui/formulaautonumberingw.cpp

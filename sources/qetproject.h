@@ -22,6 +22,7 @@
 #include "NameList/nameslist.h"
 #include "project/projectpropertieshandler.h"
 #include "borderproperties.h"
+#include "conductorcolorrule.h"
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "properties/reportproperties.h"
@@ -143,6 +144,18 @@ class QETProject : public QObject
 
 		XRefProperties					defaultXRefProperties (const QString &type) const {return m_default_xref_properties[type];}
 		QHash <QString, XRefProperties> defaultXRefProperties() const					  {return m_default_xref_properties;}
+
+			/// Discussion #606: value (resolved conductor auto-numbering
+			/// label text) -> color mapping. Consulted in
+			/// ConductorAutoNumerotation::applyText(), the single place an
+			/// auto-numbered conductor's resolved label is set.
+		QHash <QString, ConductorColorRule> conductorColorRules() const {return m_conductor_color_rules;}
+			/// Does not itself flag the project modified -- matches
+			/// setDefaultXRefProperties()'s own shape; the caller (the
+			/// configuration page) calls setModified(true) once after
+			/// applying the whole edited table, the same way that page
+			/// already does for its other tabs.
+		void setConductorColorRules(const QHash <QString, ConductorColorRule> &rules) {m_conductor_color_rules = rules;}
 		void setDefaultXRefProperties(const QString& type, const XRefProperties &properties);
 		void setDefaultXRefProperties(QHash <QString, XRefProperties> hash);
 
@@ -303,6 +316,9 @@ class QETProject : public QObject
 		QString m_default_report_properties = ReportProperties::defaultProperties();
 			/// Default xref properties
 		QHash <QString, XRefProperties> m_default_xref_properties = XRefProperties::defaultProperties();
+			/// Discussion #606: resolved conductor auto-numbering label
+			/// text -> color rule
+		QHash <QString, ConductorColorRule> m_conductor_color_rules = ConductorColorRule::defaultRules();
 			/// Embedded title block templates collection
 		TitleBlockTemplatesProjectCollection m_titleblocks_collection;
 			/// project-wide variables that will be made available to child diagrams
