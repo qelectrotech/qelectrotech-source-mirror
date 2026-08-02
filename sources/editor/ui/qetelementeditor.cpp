@@ -1397,10 +1397,20 @@ bool QETElementEditor::on_m_save_as_file_action_triggered()
 */
 bool QETElementEditor::on_m_export_svg_action_triggered()
 {
+		//Suggest the element's own filename (without its .elmt extension) as
+		//the default export name, per plc-user's review on #637 -- the
+		//directory-only default below is unchanged for an element that has
+		//never been saved, since there is no filename to derive one from.
+	QString suggested_path = QETApp::customElementsDir();
+	if (!m_file_name.isEmpty()) {
+		QFileInfo file_info(m_file_name);
+		suggested_path = QDir(file_info.absolutePath()).filePath(file_info.completeBaseName());
+	}
+
 	QString fn = QFileDialog::getSaveFileName(
 			this,
 			tr("Exporter en SVG", "dialog title"),
-			m_file_name.isEmpty() ? QETApp::customElementsDir() : QDir(m_file_name).absolutePath(),
+			suggested_path,
 			tr("Image SVG (*.svg)", "filetypes allowed when exporting an element to SVG"));
 
 	if (fn.isEmpty()) {
