@@ -66,6 +66,15 @@ class SpaceMouseBackend : public QObject
 			/// scale/divisor constants are what turn them into pixels and a
 			/// zoom factor, not this signal.
 		void motion(int dx, int dy, int dz);
+
+			/// One device button was pressed. \a button is whatever index
+			/// the backend's own driver numbers it as -- there is no
+			/// portable numbering across device models, which is exactly
+			/// why the binding from a button to a QET action
+			/// (SpaceMouseButtonMap) is user-configurable rather than
+			/// hardcoded. Emitted on press only; release is not reported,
+			/// since nothing here has a use for it.
+		void buttonPressed(int button);
 };
 
 #endif // SPACEMOUSEBACKEND_H

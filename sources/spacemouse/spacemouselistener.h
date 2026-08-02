@@ -28,13 +28,18 @@ class SpaceMouseBackend;
 	bridges a 3Dconnexion SpaceMouse/SpacePilot 6-DOF device to
 	DiagramView's existing pan/zoom primitives (the same
 	horizontalScrollBar()/verticalScrollBar()/zoom() calls
-	DiagramView::wheelEvent() already uses for a physical wheel).
+	DiagramView::wheelEvent() already uses for a physical wheel), and its
+	buttons to named QET actions via ShortcutManager -- the same registry
+	keyboard shortcuts already use, so a device button can trigger anything
+	in that registry (undo, redo, rotate selection, ...) without QET having
+	a second, device-specific action list.
 
 	Everything here is platform-independent: which DiagramView to apply
-	motion to, the pan/zoom calls, and the Z-to-zoom-factor mapping.
-	Talking to the actual device driver is a SpaceMouseBackend's job (see
-	its class comment) -- this class owns one and applies whatever it
-	reports, without knowing or caring which platform it came from.
+	motion to, the pan/zoom calls, the Z-to-zoom-factor mapping, and button
+	dispatch via SpaceMouseButtonMap + ShortcutManager. Talking to the
+	actual device driver is a SpaceMouseBackend's job (see its class
+	comment) -- this class owns one and applies whatever it reports,
+	without knowing or caring which platform it came from.
 
 	Only compiled in when QET_SPACEMOUSE_SUPPORT is defined. Even then,
 	constructing one is always safe: if no backend is available for this
@@ -70,6 +75,12 @@ class SpaceMouseListener : public QObject
 			/// Apply one motion sample -- from whichever backend is in use
 			/// -- to whichever DiagramView is currently active.
 		void applyMotion(int dx, int dy, int dz);
+
+			/// Look up which action id, if any, SpaceMouseButtonMap binds
+			/// \a button to, and trigger it via ShortcutManager. Does
+			/// nothing for an unbound button -- see SpaceMouseButtonMap's
+			/// class comment on the "unbound by default" contract.
+		void applyButton(int button);
 
 	private:
 		SpaceMouseBackend *m_backend = nullptr;

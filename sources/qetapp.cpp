@@ -42,6 +42,7 @@
 #include "qetversion.h"
 #ifdef QET_SPACEMOUSE_SUPPORT
 #	include "spacemouse/spacemouselistener.h"
+#	include "ui/configpage/spacemouseconfigpage.h"
 #endif
 
 #include <cstdlib>
@@ -2064,6 +2065,9 @@ void QETApp::configureQET()
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
 	cd.addPage(new ShortcutsConfigPage());
+#ifdef QET_SPACEMOUSE_SUPPORT
+	cd.addPage(new SpaceMouseConfigPage());
+#endif
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent

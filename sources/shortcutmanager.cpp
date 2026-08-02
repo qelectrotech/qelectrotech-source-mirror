@@ -17,6 +17,8 @@
 */
 #include "shortcutmanager.h"
 
+#include <QAbstractButton>
+#include <QAction>
 #include <QObject>
 #include <QSettings>
 #include <QVariant>
@@ -164,4 +166,33 @@ void ShortcutManager::resetAllToDefaults()
 	for (const QString &id : m_order) {
 		resetToDefault(id);
 	}
+}
+
+/**
+	@brief ShortcutManager::trigger
+	@param id
+	@return see the declaration's doc comment
+*/
+bool ShortcutManager::trigger(const QString &id) const
+{
+	auto it = m_entries.find(id);
+	if (it == m_entries.end()) {
+		return false;
+	}
+
+	for (const QPointer<QObject> &target : qAsConst(it->targets))
+	{
+		if (!target) {
+			continue;
+		}
+		if (auto *action = qobject_cast<QAction *>(target.data())) {
+			action->trigger();
+			return true;
+		}
+		if (auto *button = qobject_cast<QAbstractButton *>(target.data())) {
+			button->click();
+			return true;
+		}
+	}
+	return false;
 }

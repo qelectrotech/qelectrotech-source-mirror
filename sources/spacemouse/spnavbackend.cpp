@@ -70,9 +70,11 @@ void SpnavBackend::readEvents()
 				//read by nothing here.
 			emit motion(event.motion.x, event.motion.y, event.motion.z);
 		}
-			//Button events (SPNAV_EVENT_BUTTON) are deliberately not
-			//handled: mapping device buttons to QET actions is the "Related,
-			//not proposed here" follow-up in discussion #599, not this
-			//phase.
+		else if (event.type == SPNAV_EVENT_BUTTON && event.button.press) {
+				//Release (press == 0) is not reported -- SpaceMouseListener
+				//triggers a QET action on press, the same way a keyboard
+				//shortcut triggers on key-down, and has no use for release.
+			emit buttonPressed(event.button.bnum);
+		}
 	}
 }

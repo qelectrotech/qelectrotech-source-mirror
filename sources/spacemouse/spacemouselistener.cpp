@@ -18,6 +18,7 @@
 #include "spacemouselistener.h"
 
 #include "spacemousebackend.h"
+#include "spacemousebuttonmap.h"
 #ifdef QET_SPACEMOUSE_BACKEND_SPNAV
 #	include "spnavbackend.h"
 #endif
@@ -25,6 +26,7 @@
 #include "../diagramview.h"
 #include "../projectview.h"
 #include "../qetdiagrameditor.h"
+#include "../shortcutmanager.h"
 
 #include <QApplication>
 #include <QScrollBar>
@@ -68,6 +70,8 @@ SpaceMouseListener::SpaceMouseListener(QObject *parent) :
 	if (m_backend) {
 		connect(m_backend, &SpaceMouseBackend::motion,
 			this, &SpaceMouseListener::applyMotion);
+		connect(m_backend, &SpaceMouseBackend::buttonPressed,
+			this, &SpaceMouseListener::applyButton);
 	}
 }
 
@@ -133,5 +137,17 @@ void SpaceMouseListener::applyMotion(int dx, int dy, int dz)
 
 	if (dz) {
 		view->zoom(zoomFactorForZAxis(dz));
+	}
+}
+
+/**
+	@brief SpaceMouseListener::applyButton
+	@param button
+*/
+void SpaceMouseListener::applyButton(int button)
+{
+	const QString action_id = SpaceMouseButtonMap::actionId(button);
+	if (!action_id.isEmpty()) {
+		ShortcutManager::instance().trigger(action_id);
 	}
 }
