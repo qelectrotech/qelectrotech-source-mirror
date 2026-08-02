@@ -112,6 +112,42 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
 }
 
 /**
+	@brief projectDataBase::excludedConductorCount
+	@return how many conductors of the project are deliberately absent from
+	the conductor table because at least one of their terminals has no uuid.
+
+	Counted from the live scene rather than from the database, precisely
+	because the database is where these conductors are *not*. See
+	addConductor() for why they are omitted: a terminal uuid comes from the
+	catalog .elmt definition, so an element whose definition predates that
+	field yields terminals with no stable identity to key on.
+
+	This is what lets a caller tell the user "N wires are missing and here
+	is why", instead of silently presenting a short list as if it were
+	complete.
+*/
+int projectDataBase::excludedConductorCount() const
+{
+	if (!m_project) {
+		return 0;
+	}
+
+	int count = 0;
+	for (auto *diagram : m_project->diagrams())
+	{
+		const auto conductor_list = diagram->conductors();
+		for (auto *conductor : conductor_list)
+		{
+			if (conductor->terminal1->uuid().isNull()
+				|| conductor->terminal2->uuid().isNull()) {
+				++count;
+			}
+		}
+	}
+	return count;
+}
+
+/**
 	@brief projectDataBase::addElement
 	@param element
 */
