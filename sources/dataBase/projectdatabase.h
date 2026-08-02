@@ -70,6 +70,7 @@ class projectDataBase : public QObject
 		bool createDataBase();
 		void createElementNomenclatureView();
 		void createSummaryView();
+		void createWiringListView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
