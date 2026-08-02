@@ -87,6 +87,7 @@ class QETElementEditor : public QMainWindow
 		void on_m_open_action_triggered();
 		void on_m_open_from_file_action_triggered();
 		bool on_m_save_as_file_action_triggered();
+		bool on_m_export_svg_action_triggered();
 		void on_m_reload_action_triggered();
 		void on_m_quit_action_triggered();
 		void on_m_deselect_all_action_triggered();

@@ -53,6 +53,8 @@
 
 #include <QSettings>
 #include <QActionGroup>
+#include <QFileDialog>
+#include <QSvgGenerator>
 
 /**
  * @brief QETElementEditor::QETElementEditor
@@ -1375,6 +1377,84 @@ bool QETElementEditor::on_m_save_as_file_action_triggered()
 	}
 	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
 	return false;
+}
+
+/**
+	@brief QETElementEditor::on_m_export_svg_action_triggered
+	Export the element currently open in this editor to a standalone SVG
+	file.
+
+	Renders the live ElementScene directly, the same way
+	ExportDialog::generateSvg() renders the live Diagram for the diagram
+	editor's own SVG export -- not ElementPictureFactory's cached picture.
+	That cache is keyed by the element's saved-to-disk uuid and is never
+	invalidated on edit (nothing in this editor ever tells it to), so it
+	would silently export stale content for any element already previewed
+	once in the elements panel, and nothing at all for one that has never
+	been saved. Rendering the scene directly has neither problem and
+	always reflects exactly what is currently on screen, saved or not.
+	@return true if the file was written
+*/
+bool QETElementEditor::on_m_export_svg_action_triggered()
+{
+	QString fn = QFileDialog::getSaveFileName(
+			this,
+			tr("Exporter en SVG", "dialog title"),
+			m_file_name.isEmpty() ? QETApp::customElementsDir() : QDir(m_file_name).absolutePath(),
+			tr("Image SVG (*.svg)", "filetypes allowed when exporting an element to SVG"));
+
+	if (fn.isEmpty()) {
+		return false;
+	}
+	if (!fn.endsWith(".svg", Qt::CaseInsensitive)) {
+		fn += ".svg";
+	}
+
+	QFile file(fn);
+	if (!file.open(QIODevice::WriteOnly)) {
+		QMessageBox::critical(this, tr("Échec de l'export"),
+				      tr("Impossible d'écrire dans le fichier « %1 ».").arg(fn));
+		return false;
+	}
+
+		//Margin-less bounding rect of the element's own drawn content
+		//(lines, rects, terminals, text...), excluding the origin cross
+		//and other editor-only decoration -- see
+		//ElementScene::elementSceneGeometricRect()'s own doc comment.
+		//Falls back to itemsBoundingRect() for the rare element made up
+		//only of item types that helper deliberately excludes.
+	QRectF source_rect = m_elmt_scene->elementSceneGeometricRect();
+	if (source_rect.isEmpty()) {
+		source_rect = m_elmt_scene->itemsBoundingRect();
+	}
+	constexpr qreal margin = 5.0;
+	source_rect.adjust(-margin, -margin, margin, margin);
+
+	QSize target_size = source_rect.size().toSize();
+	if (target_size.isEmpty()) {
+		target_size = QSize(1, 1);
+	}
+
+	QSvgGenerator svg_engine;
+	svg_engine.setSize(target_size);
+	svg_engine.setViewBox(QRect(QPoint(0, 0), target_size));
+	svg_engine.setOutputDevice(&file);
+
+	QPainter svg_painter(&svg_engine);
+	svg_painter.setRenderHint(QPainter::Antialiasing, true);
+	svg_painter.setRenderHint(QPainter::TextAntialiasing, true);
+
+		//The hotspot cross is ElementScene::drawForeground()'s editing aid,
+		//drawn unconditionally on every render() call including this one
+		//unless told not to -- it is not part of the element being
+		//exported.
+	m_elmt_scene->setHotspotVisible(false);
+	m_elmt_scene->render(&svg_painter, QRectF(QPointF(0, 0), target_size), source_rect);
+	m_elmt_scene->setHotspotVisible(true);
+
+	svg_painter.end();
+
+	return true;
 }
 
 void QETElementEditor::on_m_reload_action_triggered()
