@@ -149,8 +149,11 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
+		bool event(QEvent *event) override;
 
-	
+	private:
+		void selectNextItem(bool forward);
+
 	public:
 		void correctTextPos(Element* elmt);
 		void restoreText(Element* elmt);
@@ -284,6 +287,8 @@ class Diagram : public QGraphicsScene
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
+		void selectAllConductors();
+		void selectAllTextFields();
 
 	signals:
 		void showDiagram (Diagram *);
