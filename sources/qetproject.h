@@ -234,6 +234,12 @@ class QETProject : public QObject
 		void conductorAutoNumAdded();
 		void conductorAutoNumRemoved();
 		void folioAutoNumAdded();
+			/// A numerotation context's *values* changed -- as happens every
+			/// time an element or conductor consumes the next number, not
+			/// only when a rule is added or removed. Deliberately separate
+			/// from the *Added/*Removed signals above, which make listeners
+			/// rebuild their rule lists; this one just says "re-read me".
+		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
 		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();

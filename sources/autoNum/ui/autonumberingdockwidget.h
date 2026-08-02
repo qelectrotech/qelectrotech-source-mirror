@@ -54,6 +54,7 @@ class AutoNumberingDockWidget : public QDockWidget
 		void folioAutoNumChanged();
 		void clear();
 		void projectClosed();
+		void refreshValueFields();
 
 		void on_m_configure_pb_clicked();
 

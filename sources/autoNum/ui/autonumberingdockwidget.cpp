@@ -115,6 +115,8 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 			   this,SLOT(setActive()));
 	
 			//Conductor, Element and Folio Signals
+		disconnect(m_project, &QETProject::autoNumContextUpdated,
+			   this, &AutoNumberingDockWidget::refreshValueFields);
 		disconnect(m_project, &QETProject::destroyed,
 			   this, &AutoNumberingDockWidget::projectClosed);
 	}
@@ -152,6 +154,8 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		this,SLOT(setActive()));
 
 		//Conductor, Element and Folio Signals
+	connect(m_project, &QETProject::autoNumContextUpdated,
+		this, &AutoNumberingDockWidget::refreshValueFields);
 	connect(m_project, &QETProject::destroyed,
 		this, &AutoNumberingDockWidget::projectClosed);
 
@@ -439,6 +443,29 @@ int AutoNumberingDockWidget::counterIndex(const NumerotationContext &context)
 			return i;
 	}
 	return -1;
+}
+
+/**
+	@brief AutoNumberingDockWidget::refreshValueFields
+	Re-read all three value fields from the project. Called whenever a
+	numerotation context's values change, which includes every element or
+	conductor that consumes the next number -- without this the field only
+	caught up when the user re-picked a rule from the combo box, because
+	the combo's activated() signal fires on user interaction alone.
+*/
+void AutoNumberingDockWidget::refreshValueFields()
+{
+		//Leave alone a field the user is typing in: numbering an element
+		//refreshes all three, and overwriting a half-typed value under the
+		//cursor is worse than showing it a moment out of date. Only this
+		//automatic path skips; an explicit refresh after a reset or an edit
+		//still writes, so the field always ends up canonical.
+	if (!ui->m_conductor_value_le->hasFocus())
+		refreshValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
+	if (!ui->m_element_value_le->hasFocus())
+		refreshValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
+	if (!ui->m_folio_value_le->hasFocus())
+		refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
 }
 
 /**
