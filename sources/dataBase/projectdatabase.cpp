@@ -158,24 +158,12 @@ void projectDataBase::addElement(Element *element)
 		return;
 	}
 
-	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
-	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
-	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());
-	m_insert_elements_query.bindValue(":type", element->elementData().typeToString());
-	m_insert_elements_query.bindValue(":sub_type", element->kindInformations()["type"].toString());
+	bindElementValues(m_insert_elements_query, element, element->diagram());
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
 
-	m_insert_element_info_query.bindValue(":uuid", element->uuid().toString());
-	auto hash = elementInfoToString(element);
-	for (auto key : hash.keys())
-	{
-		QString value = hash.value(key);
-		QString bind = key.prepend(":");
-		m_insert_element_info_query.bindValue(bind, value);
-	}
-
+	bindElementInfoValues(m_insert_element_info_query, element);
 	if (!m_insert_element_info_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element info error : " << m_insert_element_info_query.lastError();
 	} else {
@@ -680,12 +668,7 @@ void projectDataBase::populateElementTable()
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
-			const auto elmt_data = elmt->elementData();
-			m_insert_elements_query.bindValue(":uuid", elmt->uuid().toString());
-			m_insert_elements_query.bindValue(":diagram_uuid", diagram->uuid().toString());
-			m_insert_elements_query.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
-			m_insert_elements_query.bindValue(":type", elmt_data.typeToString());
-			m_insert_elements_query.bindValue(":sub_type", elmt_data.masterTypeToString());
+			bindElementValues(m_insert_elements_query, elmt, diagram);
 			if (!m_insert_elements_query.exec()) {
 				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 			}
@@ -710,15 +693,7 @@ void projectDataBase::populateElementInfoTable()
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
-			m_insert_element_info_query.bindValue(QStringLiteral(":uuid"), elmt->uuid().toString());
-			const auto hash = elementInfoToString(elmt);
-			for (const auto &key : hash.keys())
-			{
-				QString value = hash.value(key);
-				QString bind = QStringLiteral(":") + key;
-				m_insert_element_info_query.bindValue(bind, value);
-			}
-
+			bindElementInfoValues(m_insert_element_info_query, elmt);
 			if (!m_insert_element_info_query.exec()) {
 				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
 			}
@@ -903,6 +878,52 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	}
 
 	return hash;
+}
+
+/**
+	@brief projectDataBase::bindElementValues
+	Bind one element's row for the element table.
+
+	Shared by addElement() (a single element added to a live diagram) and
+	populateElementTable() (a full rebuild), because those two used to bind
+	the same row differently: the incremental path wrote
+	kindInformations()["type"] into sub_type while the bulk path wrote
+	elementData().masterTypeToString(). The element table therefore held
+	different values depending on whether the project had been reloaded
+	since the element was placed. One binder means live and reloaded agree
+	by construction rather than by coincidence.
+
+	The bulk path's values are the ones kept: they are what every already
+	saved project contains, so nothing a reload produces changes.
+	@param query : prepared insert query to bind into
+	@param element : element to bind
+	@param diagram : diagram holding @element
+*/
+void projectDataBase::bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram)
+{
+	const auto element_data = element->elementData();
+	query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	query.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+	query.bindValue(QStringLiteral(":pos"), diagram->convertPosition(element->scenePos()).toString());
+	query.bindValue(QStringLiteral(":type"), element_data.typeToString());
+	query.bindValue(QStringLiteral(":sub_type"), element_data.masterTypeToString());
+}
+
+/**
+	@brief projectDataBase::bindElementInfoValues
+	Bind one element's row for the element info table.
+	Shared by addElement() and populateElementInfoTable() for the same
+	reason as bindElementValues().
+	@param query : prepared insert query to bind into
+	@param element : element to bind
+*/
+void projectDataBase::bindElementInfoValues(QSqlQuery &query, Element *element)
+{
+	query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	const auto hash = elementInfoToString(element);
+	for (const auto &key : hash.keys()) {
+		query.bindValue(QStringLiteral(":") + key, hash.value(key));
+	}
 }
 
 void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
