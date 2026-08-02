@@ -598,6 +598,19 @@ void ElementView::drawBackground(QPainter *p, const QRectF &r) {
 			}
 		}
 	}
+
+	if (m_scene->backgroundFrameVisible()) {
+		const QSizeF frame_size = m_scene->backgroundFrameSize();
+		const QRectF frame_rect(-frame_size.width() / 2.0, -frame_size.height() / 2.0,
+					 frame_size.width(), frame_size.height());
+		QPen frame_pen(Qt::blue);
+		frame_pen.setCosmetic(true);
+		frame_pen.setStyle(Qt::DashLine);
+		p -> setPen(frame_pen);
+		p -> setBrush(Qt::NoBrush);
+		p -> drawRect(frame_rect);
+	}
+
 	p -> restore();
 }
 
