@@ -359,8 +359,6 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> value_field -> setValidator(intValidator);
 		ui -> increase_spinBox -> setEnabled(true);
 		ui -> increase_spinBox -> setValue(1);
-		if (t == wrap)
-			ui -> modulus_spinBox -> setValue(8);
 	}
 	//@t isn't a numeric type
 	else if (t == string
@@ -414,6 +412,16 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			ui -> increase_spinBox -> setDisabled(true);
 		}
 	}
+		//A modulus of 0 means "no cycle", which makes a Cyclique part behave
+		//exactly like a plain digit. Defaulting it used to live in the numeric
+		//behavior block above, which is skipped when the previous type was
+		//itself numeric -- so the ordinary path of turning the default
+		//"Chiffre 1" into a "Cyclique (modulo)" left the modulus at 0 and
+		//produced a wrap part that never wrapped. Kept out of that block so it
+		//applies whatever the part was before, and only when the current value
+		//is unusable, so a modulus the user chose on purpose is not clobbered.
+	if (t == wrap && ui -> modulus_spinBox -> value() <= 0)
+		ui -> modulus_spinBox -> setValue(8);
 	ui -> modulus_spinBox -> setEnabled(t == wrap);
 	type_= t;
 }
