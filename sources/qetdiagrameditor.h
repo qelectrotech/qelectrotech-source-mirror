@@ -191,6 +191,7 @@ class QETDiagramEditor : public QETMainWindow
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
+		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*conductor_default,		///< Show a dialog to edit default conductor properties
 		*m_grey_background,		///< Switch the background color in white or grey
 		*m_draw_grid,			///< Switch the background grid display or not
