@@ -53,6 +53,10 @@
 
 #include <QSettings>
 #include <QActionGroup>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <QDoubleSpinBox>
+#include <QFormLayout>
 
 /**
  * @brief QETElementEditor::QETElementEditor
@@ -1076,6 +1080,46 @@ void QETElementEditor::setupActions()
 	parts_toolbar -> setObjectName("parts");
 	parts_toolbar -> addActions(m_add_part_action_grp -> actions());
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
+
+		//Background frame action: a visual-only reference rectangle, never
+		//written to the saved .elmt file, to help proportion the drawing
+		//against a representative folio surface.
+	auto *toggle_background_frame_action = new QAction(tr("Afficher le cadre de fond"), this);
+	toggle_background_frame_action -> setCheckable(true);
+	toggle_background_frame_action -> setChecked(m_elmt_scene -> backgroundFrameVisible());
+	connect(toggle_background_frame_action, &QAction::toggled, m_elmt_scene, &ElementScene::setBackgroundFrameVisible);
+	ShortcutManager::instance().registerAction(toggle_background_frame_action, "elementeditor.toggle_background_frame", tr("Éditeur d'élément"), QKeySequence());
+	ui->m_display_menu->addAction(toggle_background_frame_action);
+	ui->m_view_toolbar->addAction(toggle_background_frame_action);
+
+	auto *configure_background_frame_action = new QAction(tr("Taille du cadre de fond..."), this);
+	connect(configure_background_frame_action, &QAction::triggered, this, [this]() {
+		QDialog dialog(this);
+		dialog.setWindowTitle(tr("Taille du cadre de fond"));
+		auto *layout = new QFormLayout(&dialog);
+
+		auto *width_spin = new QDoubleSpinBox(&dialog);
+		width_spin -> setRange(1.0, 100000.0);
+		width_spin -> setSuffix(tr(" px"));
+		width_spin -> setValue(m_elmt_scene -> backgroundFrameSize().width());
+		layout -> addRow(tr("Largeur"), width_spin);
+
+		auto *height_spin = new QDoubleSpinBox(&dialog);
+		height_spin -> setRange(1.0, 100000.0);
+		height_spin -> setSuffix(tr(" px"));
+		height_spin -> setValue(m_elmt_scene -> backgroundFrameSize().height());
+		layout -> addRow(tr("Hauteur"), height_spin);
+
+		auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+		connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+		connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+		layout -> addRow(buttons);
+
+		if (dialog.exec() == QDialog::Accepted) {
+			m_elmt_scene -> setBackgroundFrameSize(QSizeF(width_spin -> value(), height_spin -> value()));
+		}
+	});
+	ui->m_display_menu->addAction(configure_background_frame_action);
 }
 
 /**

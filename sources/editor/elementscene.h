@@ -90,6 +90,9 @@ class ElementScene : public QGraphicsScene
 		    m_y_grid;
 
 		QPointer<CustomElementGraphicPart> m_single_selected_item;
+
+		bool m_background_frame_visible = false;
+		QSizeF m_background_frame_size;
 	
 		// methods
 	public:
@@ -132,6 +135,11 @@ class ElementScene : public QGraphicsScene
 		QETElementEditor* editor() const;
 		void addItems(QVector<QGraphicsItem *> items);
 		void removeItems(QVector<QGraphicsItem *> items);
+
+		bool backgroundFrameVisible() const {return m_background_frame_visible;}
+		void setBackgroundFrameVisible(bool visible);
+		QSizeF backgroundFrameSize() const {return m_background_frame_size;}
+		void setBackgroundFrameSize(const QSizeF &size);
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;
