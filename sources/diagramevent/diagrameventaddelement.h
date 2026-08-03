@@ -47,6 +47,7 @@ class DiagramEventAddElement : public DiagramEventInterface
 	private:
 		bool buildElement();
 		void addElement();
+		void applyInheritedTextConfiguration(Element *new_element) const;
 
 	private:
 		ElementsLocation m_location;

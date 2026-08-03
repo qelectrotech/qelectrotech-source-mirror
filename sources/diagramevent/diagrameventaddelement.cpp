@@ -25,6 +25,8 @@
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement
@@ -269,9 +271,90 @@ void DiagramEventAddElement::addElement()
 			conductor->setFreezeLabel(true);
 		}
 	}
+
+		//m_element (the placement preview/ghost) is temporarily out of the
+		//scene here, so Diagram::elements() below can't match against it --
+		//only real, previously placed instances are candidates.
+	applyInheritedTextConfiguration(element);
 	m_diagram->addItem(m_element);
 
 	m_diagram -> undoStack().push(undo_object);
 	element->setUpFormula();
 	element->freezeNewAddedElement();
+}
+
+/**
+	@brief DiagramEventAddElement::applyInheritedTextConfiguration
+	If another instance of the same catalog element already exists on the
+	diagram, copy its dynamic-text layout (group position/alignment/frame,
+	per-text font) onto @new_element instead of leaving it at the catalog
+	template's defaults. Matching is done via ElementsLocation::uuid() (the
+	catalog item's own identity), not Element::uuid() (assigned fresh on
+	every placement). Groups are matched by name and texts within a group
+	by their ordinal position, since a freshly placed instance's own
+	dynamic texts get brand new uuids that can't be cross-referenced
+	against another instance's.
+
+	Many catalog elements (e.g. a simple auxiliary contact) don't wrap
+	their dynamic text in a group at all -- textGroups() is empty and the
+	text sits directly under the element. Those are handled separately
+	below, matched by their ordinal position among the element's own
+	ungrouped texts.
+	@param new_element : the just-placed element to update
+*/
+void DiagramEventAddElement::applyInheritedTextConfiguration(Element *new_element) const
+{
+	Element *source = nullptr;
+	for (Element *elmt : m_diagram->elements())
+	{
+		if (elmt != new_element &&
+			elmt->location().uuid() == new_element->location().uuid())
+		{
+			source = elmt;
+			break;
+		}
+	}
+	if (!source) {
+		return;
+	}
+
+	for (ElementTextItemGroup *source_group : source->textGroups())
+	{
+		ElementTextItemGroup *target_group = new_element->textGroup(source_group->name());
+		if (!target_group) {
+			continue;
+		}
+
+		target_group->setPos(source_group->pos());
+		target_group->setRotation(source_group->rotation());
+		target_group->setAlignment(source_group->alignment());
+		target_group->setVerticalAdjustment(source_group->verticalAdjustment());
+		target_group->setFrame(source_group->frame());
+		target_group->setHoldToBottomPage(source_group->holdToBottomPage());
+
+		const QList<DynamicElementTextItem *> source_texts = source_group->texts();
+		const QList<DynamicElementTextItem *> target_texts = target_group->texts();
+		for (int i = 0; i < source_texts.size() && i < target_texts.size(); ++i) {
+			target_texts.at(i)->setFont(source_texts.at(i)->font());
+		}
+	}
+
+	QList<DynamicElementTextItem *> source_ungrouped;
+	for (DynamicElementTextItem *deti : source->dynamicTextItems()) {
+		if (!deti->parentGroup()) {
+			source_ungrouped << deti;
+		}
+	}
+	QList<DynamicElementTextItem *> target_ungrouped;
+	for (DynamicElementTextItem *deti : new_element->dynamicTextItems()) {
+		if (!deti->parentGroup()) {
+			target_ungrouped << deti;
+		}
+	}
+	for (int i = 0; i < source_ungrouped.size() && i < target_ungrouped.size(); ++i) {
+		target_ungrouped.at(i)->setPos(source_ungrouped.at(i)->pos());
+		target_ungrouped.at(i)->setRotation(source_ungrouped.at(i)->rotation());
+		target_ungrouped.at(i)->setFont(source_ungrouped.at(i)->font());
+		target_ungrouped.at(i)->setFrame(source_ungrouped.at(i)->frame());
+	}
 }
