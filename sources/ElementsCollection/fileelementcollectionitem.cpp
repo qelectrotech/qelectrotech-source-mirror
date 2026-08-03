@@ -22,7 +22,39 @@
 #include "../qeticons.h"
 #include "elementslocation.h"
 
+#include <QApplication>
 #include <QDir>
+#include <QPainter>
+#include <QPixmap>
+#include <QStyle>
+
+namespace {
+	/**
+		@return the folder icon overlaid with a small warning badge in the
+		bottom-right corner. Used for a directory whose qet_directory could
+		not be read (@see FileElementCollectionItem::m_qet_directory_unreadable),
+		so the problem is visible in the tree itself and not only on hover
+		via the tooltip. Built once: same folder icon, same badge, every time.
+	*/
+	const QIcon &unreadableFolderIcon()
+	{
+		static const QIcon icon = []() {
+			QPixmap pixmap = QET::Icons::Folder.pixmap(16, 16);
+			const QPixmap badge = QApplication::style()
+				->standardIcon(QStyle::SP_MessageBoxWarning)
+				.pixmap(9, 9);
+
+			QPainter painter(&pixmap);
+			painter.drawPixmap(pixmap.width() - badge.width(),
+					    pixmap.height() - badge.height(),
+					    badge);
+			painter.end();
+
+			return QIcon(pixmap);
+		}();
+		return icon;
+	}
+}
 
 /**
 	@brief FileElementCollectionItem::FileElementCollectionItem
@@ -398,7 +430,13 @@ void FileElementCollectionItem::setUpData()
  */
 void FileElementCollectionItem::setUpIcon()
 {
-	if (!icon().isNull())
+		// Directories are cheap to (re-)decide: no early return for them.
+		// setUpData() -- which resolves m_qet_directory_unreadable via
+		// localName() -- runs asynchronously (QtConcurrent::map), so this can
+		// be called for a directory before that result is known; without
+		// this, the plain folder icon would get cached by the guard below
+		// and the warning badge would never appear for that item.
+	if (!isDir() && !icon().isNull())
 		return;
 
 	if (isCollectionRoot()) {
@@ -417,7 +455,8 @@ void FileElementCollectionItem::setUpIcon()
 	else
 	{
 		if (isDir()) {
-			setIcon(QET::Icons::Folder);
+			setIcon(m_qet_directory_unreadable ? unreadableFolderIcon()
+							    : QET::Icons::Folder);
 		} else {
 			if (m_path.endsWith(".qetmak")) {
 				setIcon(QIcon());
