@@ -210,11 +210,15 @@ namespace autonum
 		title block installation (=) / location (+) fields (IEC 81346)
 		when the element's own value is empty, so a project can set
 		these once at the folio level instead of on every element.
+		%{structure_id} is the resulting =plant+location-label designation,
+		reduced by dropping any =/+ segment that matches the diagram's own
+		title block (IEC 81346's allowance for a designation implied by
+		context); %{structure_id_full} is the same but never reduced.
 		@param formula
 		@param dc
 		@param elmt the element the formula belongs to, if any;
 		used to resolve the diagram fallback above and the
-		%{prefix}/%{structure_id} tokens. May be null.
+		%{prefix}/%{structure_id}/%{structure_id_full} tokens. May be null.
 		@return
 	*/
 	QString AssignVariables::replaceVariable(const QString &formula,
@@ -236,12 +240,29 @@ namespace autonum
 		QString prefix_value = elmt ? elmt->getPrefix() : QString();
 		QString label_value = dc.value("label").toString();
 
-			//Composite IEC 81346 reference designation (=plant+location-label),
+		QString diagram_plant = diagram ? diagram->border_and_titleblock.plant() : QString();
+		QString diagram_location = diagram ? diagram->border_and_titleblock.locmach() : QString();
+
+			//Full IEC 81346 reference designation (=plant+location-label),
 			//each segment omitted when its underlying value is empty.
-		QString structure_id;
+		QString structure_id_full;
 		if (!plant_value.isEmpty())
-			structure_id += "=" + plant_value;
+			structure_id_full += "=" + plant_value;
 		if (!location_value.isEmpty())
+			structure_id_full += "+" + location_value;
+		if (!label_value.isEmpty())
+			structure_id_full += "-" + label_value;
+
+			//Reduced form relative to the page (IEC 81346's own allowance for
+			//dropping higher-level parts already implied by context): the =/+
+			//segments are also omitted when they match the diagram's own title
+			//block, since #648's fallback already makes "no override" resolve
+			//to that value -- so this is the default for any device that
+			//doesn't explicitly belong to a different plant/location.
+		QString structure_id;
+		if (!plant_value.isEmpty() && plant_value != diagram_plant)
+			structure_id += "=" + plant_value;
+		if (!location_value.isEmpty() && location_value != diagram_location)
 			structure_id += "+" + location_value;
 		if (!label_value.isEmpty())
 			structure_id += "-" + label_value;
@@ -251,6 +272,7 @@ namespace autonum
 		str.replace("%{location}", location_value);
 		str.replace("%{prefix}", prefix_value);
 		str.replace("%{structure_id}", structure_id);
+		str.replace("%{structure_id_full}", structure_id_full);
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());

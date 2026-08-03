@@ -80,6 +80,7 @@ void CompositeTextEditDialog::setUpComboBox(bool is_report)
 	{
 		ui -> m_info_cb -> addItem(tr("Préfixe (-)"), QStringLiteral("%{prefix}"));
 		ui -> m_info_cb -> addItem(tr("Désignation IEC 81346 (=+-)"), QStringLiteral("%{structure_id}"));
+		ui -> m_info_cb -> addItem(tr("Désignation IEC 81346 complète (=+-)"), QStringLiteral("%{structure_id_full}"));
 	}
 }
 
