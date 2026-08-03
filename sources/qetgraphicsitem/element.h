@@ -35,6 +35,7 @@ class Terminal;
 class Conductor;
 class DynamicElementTextItem;
 class ElementTextItemGroup;
+class QUndoCommand;
 
 /**
 	This is the base class for electrical elements.
@@ -142,7 +143,7 @@ class Element : public QetGraphicsItem
 		{return m_autoNum_seq;}
 		autonum::sequentialNumbers& rSequenceStruct()
 		{return m_autoNum_seq;}
-		void setUpFormula(bool code_letter = true);
+		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
