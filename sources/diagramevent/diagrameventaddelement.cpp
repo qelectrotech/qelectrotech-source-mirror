@@ -361,22 +361,27 @@ void DiagramEventAddElement::addElement()
 			if (all_matches.isEmpty())
 				continue;
 
-				//Find the best match (closest connect_to endpoint).
-			const ConductorMatch &best = *std::min_element(all_matches.constBegin(), all_matches.constEnd(),
-				[&](const ConductorMatch &a, const ConductorMatch &b) {
-					return QLineF(t_dock, a.connect_to->dockConductor()).length()
-					     < QLineF(t_dock, b.connect_to->dockConductor()).length();
-				});
-
-				//Only break conductors that share the same "other" endpoint as the best match.
-				//This prevents bridging independent nets: if two unrelated conductors
-				//cross at a dock point, only the one belonging to the same circuit
-				//(same other endpoint) gets broken. The other is left untouched.
-			QList<ConductorMatch> matches;
+				//Group matches by their "other" endpoint and find the largest group.
+				//This ensures that when multiple independent circuits cross at the
+				//same dock point, the group with the most conductors gets priority,
+				//not whichever happens to have the nearest connect_to endpoint.
+			QMap<Terminal *, QList<ConductorMatch>> groups;
 			for (const auto &m : all_matches) {
-				if (m.other == best.other)
-					matches.append(m);
+				groups[m.other].append(m);
 			}
+			Terminal *best_other = nullptr;
+			int best_count = 0;
+			for (auto it = groups.constBegin(); it != groups.constEnd(); ++it) {
+				if (it.value().size() > best_count) {
+					best_count = it.value().size();
+					best_other = it.key();
+				}
+			}
+
+				//Only break conductors in the largest group (same "other" endpoint).
+				//This prevents bridging independent nets: if two unrelated conductors
+				//cross at a dock point, only the larger group gets broken.
+			const QList<ConductorMatch> &matches = groups[best_other];
 
 				//Mark terminal as used
 			used_terminals.insert(t);
@@ -406,7 +411,7 @@ void DiagramEventAddElement::addElement()
 
 				//Connect the shared "other" endpoint to the nearest free terminal
 				//with matching orientation.
-			QPointF other_dock = best.other->dockConductor();
+			QPointF other_dock = best_other->dockConductor();
 			Terminal *other_terminal = nullptr;
 			qreal best_dist = std::numeric_limits<qreal>::max();
 			foreach (Terminal *ot, element->terminals())
@@ -435,14 +440,14 @@ void DiagramEventAddElement::addElement()
 			}
 
 			if (other_terminal) {
-				Conductor *new_c2 = new Conductor(best.other, other_terminal);
+				Conductor *new_c2 = new Conductor(best_other, other_terminal);
 				new AddGraphicsObjectCommand(new_c2, m_diagram, QPointF(), undo_object);
 				ConductorAutoNumerotation can2(new_c2, m_diagram, undo_object);
 				can2.numerate();
 				if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())
 					new_c2->setFreezeLabel(true);
 
-				broken_endpoints.insert(best.other);
+				broken_endpoints.insert(best_other);
 				used_terminals.insert(other_terminal);
 			}
 		}
