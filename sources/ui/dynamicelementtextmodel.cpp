@@ -203,7 +203,7 @@ QList<QStandardItem *> DynamicElementTextModel::itemsForText(
 	QStandardItem *compositea = new QStandardItem(deti->compositeText().isEmpty()
 						      ? tr("Mon texte composé")
 						      : autonum::AssignVariables::replaceVariable(
-								deti->compositeText(), dc));
+								deti->compositeText(), dc, deti->elementUseForInfo()));
 	compositea->setFlags(Qt::ItemIsSelectable
 			     | Qt::ItemIsEnabled
 			     | Qt::ItemIsEditable);
@@ -1327,7 +1327,7 @@ void DynamicElementTextModel::itemDataChanged(QStandardItem *qsi)
 			{
 				enableSourceText(deti, DynamicElementTextItem::CompositeText);
 				QString compo = text_qsi->child(compo_txt_row,1)->data(Qt::UserRole+2).toString();
-				text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, dc), Qt::DisplayRole);
+				text_qsi->setData(autonum::AssignVariables::replaceVariable(compo, dc, deti->elementUseForInfo()), Qt::DisplayRole);
 			}
 			
 			
@@ -1832,7 +1832,7 @@ void DynamicTextItemDelegate::setModelData(
 						DiagramContext dc;
 						if(deti->elementUseForInfo())
 							dc = deti->elementUseForInfo()->elementInformations();
-						assigned_text = autonum::AssignVariables::replaceVariable(edited_text, dc);
+						assigned_text = autonum::AssignVariables::replaceVariable(edited_text, dc, deti->elementUseForInfo());
 					}
 					
 					qsi->setData(assigned_text, Qt::DisplayRole);
