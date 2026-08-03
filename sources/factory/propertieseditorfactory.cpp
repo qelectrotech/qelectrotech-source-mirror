@@ -28,11 +28,13 @@
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../qetgraphicsitem/structureboxitem.h"
 #include "../ui/dynamicelementtextitemeditor.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/inditextpropertieswidget.h"
 #include "../ui/shapegraphicsitempropertieswidget.h"
+#include "../ui/structureboxpropertieswidget.h"
 
 #include <QGraphicsItem>
 
@@ -152,6 +154,17 @@ PropertiesEditorWidget *PropertiesEditorFactory::propertiesEditor(
 			}
 
 			return new ShapeGraphicsItemPropertiesWidget(shapes_list, parent);
+		}
+		case StructureBoxItem::Type: //1012
+		{
+				//A structure box is a QetShapeItem subclass, but the useful
+				//thing to edit is its plant/location/prefix identity rather
+				//than its pen and brush -- so it gets its own editor instead
+				//of falling into the shape case above.
+			if (count_ > 1) {
+				return nullptr;
+			}
+			return new StructureBoxPropertiesWidget(static_cast<StructureBoxItem *>(item), parent);
 		}
 		case DynamicElementTextItem::Type: //1010
 		{

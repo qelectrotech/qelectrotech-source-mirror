@@ -43,6 +43,11 @@ class DiagramEventAddShape : public DiagramEventInterface
 		void updateHelpCross (const QPointF &p);
 
 	protected:
+		//Factory hook so a subclass can create a different QetShapeItem
+		//subclass (e.g. StructureBoxItem) while reusing all the mouse
+		//handling below unchanged.
+		virtual QetShapeItem *createShapeItem(QPointF p1, QPointF p2, QetShapeItem::ShapeType shape_type);
+
 		QetShapeItem::ShapeType  m_shape_type;
 		QetShapeItem            *m_shape_item;
 		QGraphicsLineItem       *m_help_horiz, *m_help_verti;

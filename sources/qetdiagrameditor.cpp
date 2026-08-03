@@ -24,6 +24,7 @@
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddimage.h"
 #include "diagramevent/diagrameventaddshape.h"
+#include "diagramevent/diagrameventaddstructurebox.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
@@ -707,6 +708,7 @@ void QETDiagramEditor::setUpActions()
 	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
 	QAction *add_polyline  = m_add_item_actions_group.addAction(QET::Icons::PartPolygon,   tr("Ajouter une polyligne"));
 	QAction *add_terminal_strip = m_add_item_actions_group.addAction(QET::Icons::TerminalStrip, tr("Ajouter un plan de bornes"));
+	QAction *add_structure_box = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Ajouter un cadre de repérage"));
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
 	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
@@ -715,6 +717,7 @@ void QETDiagramEditor::setUpActions()
 	add_ellipse  ->setStatusTip(tr("Ajoute une ellipse sur le folio actuel"));
 	add_polyline ->setStatusTip(tr("Ajoute une polyligne sur le folio actuel"));
 	add_terminal_strip->setStatusTip(tr("Ajoute un plan de bornier sur le folio actuel"));
+	add_structure_box->setStatusTip(tr("Ajoute un cadre de repérage (installation/localisation/préfixe) sur le folio actuel"));
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
@@ -723,12 +726,14 @@ void QETDiagramEditor::setUpActions()
 	add_ellipse  ->setData(QStringLiteral("ellipse"));
 	add_polyline ->setData(QStringLiteral("polyline"));
 	add_terminal_strip->setData(QStringLiteral("terminal_strip"));
+	add_structure_box->setData(QStringLiteral("structure_box"));
 
 	add_text->setCheckable(true);
 	add_line->setCheckable(true);
 	add_rectangle->setCheckable(true);
 	add_ellipse->setCheckable(true);
 	add_polyline->setCheckable(true);
+	add_structure_box->setCheckable(true);
 
 	connect(&m_add_item_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::addItemGroupTriggered);
 
@@ -1527,6 +1532,8 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Rectangle);
 	else if (value == "ellipse")
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Ellipse);
+	else if (value == "structure_box")
+		diagram_event = new DiagramEventAddStructureBox (d);
 	else if (value == "polyline")
 	{
 		diagram_event = new DiagramEventAddShape (d, QetShapeItem::Polygon);
