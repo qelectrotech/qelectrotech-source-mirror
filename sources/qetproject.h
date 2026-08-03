@@ -38,6 +38,8 @@
 #include <QHash>
 #include <QFuture>
 
+#include <array>
+
 class Diagram;
 class ElementsLocation;
 class QETResult;
@@ -124,6 +126,9 @@ class QETProject : public QObject
 		/// background thread referencing the project, and a short-lived CLI
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
+
+		/// Number of rotating crash-recovery snapshots kept per project.
+		static constexpr int BackupGenerations = 3;
 
 			///DEFAULT PROPERTIES
 		BorderProperties defaultBorderProperties() const;
@@ -324,7 +329,11 @@ class QETProject : public QObject
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		QFuture<bool> m_backup_future;
-		KAutoSaveFile m_backup_file;
+			/// Rotating crash-recovery snapshots, written round-robin by
+			/// writeBackup() so a corrupt-on-write tick doesn't clobber the
+			/// only recovery copy.
+		std::array<KAutoSaveFile, BackupGenerations> m_backup_files;
+		int m_next_backup_slot = 0;
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;
