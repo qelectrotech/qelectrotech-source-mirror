@@ -18,6 +18,7 @@
 #include "diagrameventaddshape.h"
 
 #include "../diagram.h"
+#include "../lastusedstyle.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 
 /**
@@ -77,6 +78,14 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		if (!m_shape_item)
 		{
 			m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
+				//Start from whatever pen/brush was last applied this
+				//session, rather than always the hardcoded default.
+			if (LastUsedStyle::hasShapePen()) {
+				m_shape_item->setPen(LastUsedStyle::shapePen());
+			}
+			if (LastUsedStyle::hasShapeBrush()) {
+				m_shape_item->setBrush(LastUsedStyle::shapeBrush());
+			}
 			m_diagram->addItem (m_shape_item);
 			event->setAccepted(true);
 			return;
