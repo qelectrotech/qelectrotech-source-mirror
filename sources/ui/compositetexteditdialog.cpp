@@ -89,7 +89,8 @@ void CompositeTextEditDialog::setUpComboBox(bool is_report)
 	if (!is_report)
 	{
 		ui -> m_info_cb -> addItem(tr("Prefix (-)"), QStringLiteral("%{prefix}"));
-		ui -> m_info_cb -> addItem(tr("Reference designation, IEC 81346 (=+-)"), QStringLiteral("%{structure_id}"));
+		ui -> m_info_cb -> addItem(tr("Reference designation, IEC 81346 (=+-), short on its own page"), QStringLiteral("%{structure_id}"));
+		ui -> m_info_cb -> addItem(tr("Full reference designation, IEC 81346 (=+-)"), QStringLiteral("%{structure_id_full}"));
 	}
 }
 
