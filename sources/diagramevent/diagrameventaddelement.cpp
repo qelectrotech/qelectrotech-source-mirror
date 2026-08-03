@@ -275,7 +275,19 @@ void DiagramEventAddElement::addElement()
 
 		foreach (Terminal *t, element->terminals())
 		{
+				//Skip terminals already used by a previous break+reconnect (other_terminal)
+			if (used_terminals.contains(t))
+				continue;
+
 			QPointF t_dock = t->dockConductor();
+
+				//Collect all conductors that pass through this dock point.
+			struct ConductorMatch {
+				Conductor *conductor;
+				Terminal *connect_to;  //endpoint "before" the dock point (based on orientation)
+				Terminal *other;       //endpoint "after" the dock point
+			};
+			QList<ConductorMatch> all_matches;
 
 			foreach (Conductor *c, m_diagram->conductors())
 			{
@@ -286,8 +298,6 @@ void DiagramEventAddElement::addElement()
 					continue;
 
 					//Check if dock point lies on the conductor path.
-					//Convert dock_point to the conductor's local coordinate system,
-					//because c->path() is in local coordinates (generated via mapFromScene).
 				QPointF local_dock = c->mapFromScene(t_dock);
 				bool point_on_conductor = false;
 				QPainterPath path = c->path();
@@ -311,23 +321,11 @@ void DiagramEventAddElement::addElement()
 				if (!point_on_conductor)
 					continue;
 
-					//The terminal lies on this conductor.
-					//Break it: delete old conductor, create one new conductor from the
-					//aligned endpoint to the new terminal. The other endpoint is left
-					//for auto-connect to handle (e.g. connecting to the opposite terminal
-					//of the new element).
 				Terminal *c1 = c->terminal1;
 				Terminal *c2 = c->terminal2;
-
-				conductors_handled.append(c);
-
-					//Get scene positions for endpoint selection
 				QPointF c1_dock = c1->dockConductor();
 				QPointF c2_dock = c2->dockConductor();
 
-					//Determine which endpoint to connect based on terminal orientation.
-					//Terminal::orientation() already accounts for element rotation,
-					//so a North terminal rotated 90° returns East, etc.
 				Terminal *connect_to = nullptr;
 				Terminal *other = nullptr;
 
@@ -350,7 +348,6 @@ void DiagramEventAddElement::addElement()
 						break;
 				}
 
-					//Fallback: use nearest endpoint
 				if (!connect_to) {
 					qreal d1 = QLineF(t_dock, c1_dock).length();
 					qreal d2 = QLineF(t_dock, c2_dock).length();
@@ -358,27 +355,58 @@ void DiagramEventAddElement::addElement()
 					else { connect_to = c2; other = c1; }
 				}
 
-				//Delete the old conductor
+				all_matches.append({c, connect_to, other});
+			}
+
+			if (all_matches.isEmpty())
+				continue;
+
+				//Find the best match (closest connect_to endpoint).
+			const ConductorMatch &best = *std::min_element(all_matches.constBegin(), all_matches.constEnd(),
+				[&](const ConductorMatch &a, const ConductorMatch &b) {
+					return QLineF(t_dock, a.connect_to->dockConductor()).length()
+					     < QLineF(t_dock, b.connect_to->dockConductor()).length();
+				});
+
+				//Only break conductors that share the same "other" endpoint as the best match.
+				//This prevents bridging independent nets: if two unrelated conductors
+				//cross at a dock point, only the one belonging to the same circuit
+				//(same other endpoint) gets broken. The other is left untouched.
+			QList<ConductorMatch> matches;
+			for (const auto &m : all_matches) {
+				if (m.other == best.other)
+					matches.append(m);
+			}
+
+				//Mark terminal as used
+			used_terminals.insert(t);
+
+				//Delete all matched conductors in one batch
 			DiagramContent content;
-			content.m_other_conductors.append(c);
+			for (const auto &m : matches) {
+				content.m_other_conductors.append(m.conductor);
+				conductors_handled.append(m.conductor);
+			}
 			new DeleteQGraphicsItemCommand(m_diagram, content, undo_object);
 
-				//Create new conductor from the aligned endpoint to the new terminal
-			Conductor *new_c = new Conductor(connect_to, t);
-			new AddGraphicsObjectCommand(new_c, m_diagram, QPointF(), undo_object);
+				//Create new conductors from each connect_to endpoint to this terminal.
+				//This creates junctions at the terminal when multiple conductors
+				//from the same circuit pass through the dock point (e.g. left and
+				//right conductors going to the same terminal strip terminal).
+			for (const auto &m : matches) {
+				Conductor *new_c = new Conductor(m.connect_to, t);
+				new AddGraphicsObjectCommand(new_c, m_diagram, QPointF(), undo_object);
 				ConductorAutoNumerotation can(new_c, m_diagram, undo_object);
 				can.numerate();
 				if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())
 					new_c->setFreezeLabel(true);
 
-			broken_endpoints.insert(connect_to);
-			used_terminals.insert(t);
+				broken_endpoints.insert(m.connect_to);
+			}
 
-				//Also connect the 'other' endpoint to preserve bent conductor segments.
-				//For L-shaped conductors (e.g. horizontal + vertical), the 'other' endpoint
-				//may be far from the new element. Find the nearest free terminal of the new
-				//element and create a conductor to it.
-			QPointF other_dock = other->dockConductor();
+				//Connect the shared "other" endpoint to the nearest free terminal
+				//with matching orientation.
+			QPointF other_dock = best.other->dockConductor();
 			Terminal *other_terminal = nullptr;
 			qreal best_dist = std::numeric_limits<qreal>::max();
 			foreach (Terminal *ot, element->terminals())
@@ -386,7 +414,20 @@ void DiagramEventAddElement::addElement()
 				if (used_terminals.contains(ot))
 					continue;
 
-				qreal dist = QLineF(ot->dockConductor(), other_dock).length();
+					//Check that the other_dock approaches from the correct direction
+					//relative to the candidate terminal's orientation.
+				QPointF ot_dock = ot->dockConductor();
+				bool orientation_ok = false;
+				switch (ot->orientation()) {
+					case Qet::North: orientation_ok = other_dock.y() < ot_dock.y(); break;
+					case Qet::South: orientation_ok = other_dock.y() > ot_dock.y(); break;
+					case Qet::East:  orientation_ok = other_dock.x() > ot_dock.x(); break;
+					case Qet::West:  orientation_ok = other_dock.x() < ot_dock.x(); break;
+				}
+				if (!orientation_ok)
+					continue;
+
+				qreal dist = QLineF(ot_dock, other_dock).length();
 				if (dist < best_dist) {
 					best_dist = dist;
 					other_terminal = ot;
@@ -394,16 +435,15 @@ void DiagramEventAddElement::addElement()
 			}
 
 			if (other_terminal) {
-				Conductor *new_c2 = new Conductor(other, other_terminal);
+				Conductor *new_c2 = new Conductor(best.other, other_terminal);
 				new AddGraphicsObjectCommand(new_c2, m_diagram, QPointF(), undo_object);
 				ConductorAutoNumerotation can2(new_c2, m_diagram, undo_object);
 				can2.numerate();
 				if (m_diagram->freezeNewConductors() || m_diagram->project()->isFreezeNewConductors())
 					new_c2->setFreezeLabel(true);
 
-				broken_endpoints.insert(other);
+				broken_endpoints.insert(best.other);
 				used_terminals.insert(other_terminal);
-			}
 			}
 		}
 	}
