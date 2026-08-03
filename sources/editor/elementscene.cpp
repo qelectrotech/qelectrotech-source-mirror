@@ -317,6 +317,10 @@ void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 */
 void ElementScene::drawForeground(QPainter *p, const QRectF &)
 {
+	if (!m_hotspot_visible) {
+		return;
+	}
+
 	p -> save();
 
 	// desactive tout antialiasing, sauf pour le texte

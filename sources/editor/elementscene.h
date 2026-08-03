@@ -90,6 +90,8 @@ class ElementScene : public QGraphicsScene
 		    m_y_grid;
 
 		QPointer<CustomElementGraphicPart> m_single_selected_item;
+
+		bool m_hotspot_visible = true;
 	
 		// methods
 	public:
@@ -132,6 +134,14 @@ class ElementScene : public QGraphicsScene
 		QETElementEditor* editor() const;
 		void addItems(QVector<QGraphicsItem *> items);
 		void removeItems(QVector<QGraphicsItem *> items);
+
+			/// Whether drawForeground() draws the red hotspot cross. On by
+			/// default (the normal editing view); turned off around a
+			/// render() call meant to capture the element's actual content
+			/// only, e.g. exporting to SVG -- the cross is an editing aid,
+			/// not part of the drawn symbol.
+		void setHotspotVisible(bool visible) {m_hotspot_visible = visible;}
+		bool hotspotVisible() const {return m_hotspot_visible;}
 	
 	protected:
 		void mouseMoveEvent         (QGraphicsSceneMouseEvent *) override;
