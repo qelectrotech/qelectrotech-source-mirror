@@ -152,6 +152,12 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	// went to stderr, which is invisible in a Windows GUI session.
 	QetLogger::instance().init();
 	qInstallMessageHandler(qetLogMessageHandler);
+	// Step 4 (discussion #644): flush the ring to a crash-dump file if
+	// the process dies from here on. Installed right after the ring
+	// exists (init() just constructed it) and as early as reasonably
+	// possible, so it also covers whatever runs between here and
+	// QETApp's own construction below.
+	QetLogger::instance().installCrashHandler();
 
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS

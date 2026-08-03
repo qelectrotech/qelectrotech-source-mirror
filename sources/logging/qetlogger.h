@@ -48,11 +48,22 @@
 	- Step 3: every formatted line is also appended to an in-memory
 	  LogRing (see logring.h) -- always on, fixed capacity, allocation-
 	  free on the hot path.
+	- Step 4: installCrashHandler() wires the ring up to CrashHandler
+	  (see crashhandler.h), so a SIGSEGV/SIGABRT/SIGBUS/SIGFPE/SIGILL (or,
+	  on Windows, an unhandled structured exception) flushes the ring to
+	  a fixed crash-dump file before the process dies.
+	- Step 5: hasPendingCrashDump()/pendingCrashDumpContents()/
+	  clearPendingCrashDump() let startup code (see QETApp::checkBackupFiles())
+	  notice and offer an unretrieved crash dump from the *previous* run;
+	  buildDiagnosticsReport() is the equivalent for a manual "save a
+	  report right now" action on the *current*, still-running session.
+	  Both go through redact() before ever reaching the user, since both
+	  are destined for a public bug tracker.
 
-	Deliberately NOT included in this step (see discussion #644): no
-	signal handler / crash-flush (step 4), no diagnostics export UI
-	(step 5), no log categories, no session header, no repeat collapsing
-	or rate limiting. Those are independent, separately-scoped follow-ups.
+	Deliberately NOT included: log categories, a full session header
+	beyond what the crash dump/report already carry, repeat collapsing,
+	rate limiting. Those are listed in discussion #644 under "best
+	practices worth building in", not part of the numbered steps.
 
 	Escape hatch: if QET_LOG_DISABLE=1 is set in the environment at
 	init() time, this class does nothing beyond a minimal, independent
@@ -73,6 +84,11 @@ class QetLogger
 		/// session's log filename, and opens the file.
 		void init();
 
+		/// Step 4: installs the crash handler (see crashhandler.h). Must
+		/// be called after init() (the ring and the dump path must exist
+		/// first) and, like init(), only once.
+		void installCrashHandler();
+
 		/// The function installed via qInstallMessageHandler() forwards here.
 		void handleMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
 
@@ -81,9 +97,36 @@ class QetLogger
 		/// file names.
 		void pruneOldLogFiles(int days);
 
-		/// Snapshot of the in-memory ring, oldest first. For future use
-		/// (e.g. a diagnostics export action) -- not wired to any UI here.
+		/// Snapshot of the in-memory ring, oldest first.
 		QVector<QByteArray> ringSnapshot() const {return m_ring.snapshot();}
+
+		// --- Step 5: getting the data back out -------------------------
+
+		/// True if a previous run's crash handler left an unretrieved
+		/// dump behind.
+		bool hasPendingCrashDump() const;
+
+		/// Raw contents of the pending crash dump, or an empty array if
+		/// there isn't one. Does not delete it -- call
+		/// clearPendingCrashDump() once it has been offered to the user.
+		QByteArray pendingCrashDumpContents() const;
+
+		/// Deletes the pending crash dump file. Call after the user has
+		/// been offered it (whether they chose to save it or not) so it
+		/// is never offered a second time.
+		void clearPendingCrashDump();
+
+		/// Builds a redacted diagnostics bundle from the *current* session
+		/// (header + this session's log file so far) for the manual
+		/// "Save report" action -- as opposed to pendingCrashDumpContents(),
+		/// which is about a *previous*, already-terminated session.
+		QByteArray buildDiagnosticsReport() const;
+
+		/// Replaces occurrences of the user's home directory with "~".
+		/// Applied to both the crash dump and buildDiagnosticsReport()
+		/// before they are ever shown to the user, since both are
+		/// destined for a public bug tracker.
+		static QByteArray redact(const QByteArray &input);
 
 	private:
 		QetLogger() = default;
@@ -93,6 +136,8 @@ class QetLogger
 		void rotateLocked();
 		void writeToFile(const QByteArray &line, QtMsgType type);
 		QString rotatedPath(int index) const;
+		QString crashDumpPath() const;
+		QString currentLogFilePath() const;
 
 		static QByteArray sanitize(const QByteArray &input);
 		static QByteArray truncateMessage(const QByteArray &input, int max_bytes);

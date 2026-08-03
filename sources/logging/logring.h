@@ -19,31 +19,33 @@
 #define LOGRING_H
 
 #include <QByteArray>
-#include <QMutex>
 #include <QVector>
+#include <atomic>
 #include <vector>
 
 /**
 	@brief The LogRing class
 	Fixed-capacity, always-on in-memory ring of the most recent log
-	lines. Discussion #644 (step 3): the ring exists as forward-compatible
-	infrastructure for a future crash-flush (step 4, not implemented
-	here) as well as an on-demand "what just happened" snapshot, so its
-	entries are stored pre-formatted as plain bytes in storage
-	preallocated once at construction -- append() never allocates.
+	lines, preallocated once at construction -- append() never
+	allocates.
 
-	Entries are fixed-size slots rather than a byte-packed ring: with
-	kCapacityEntries * kEntryBytes chosen to land exactly on the 2 MiB
-	budget, this keeps wraparound trivial (whole-slot overwrite, so a
-	slot is always either fully the old entry or fully the new one --
-	no torn entries) at the cost of truncating any single line to
-	kEntryBytes, independently of the logger's own (larger) per-message
-	truncation.
+	Lock-free by construction, not just "thread-safe": step 4 (see
+	crashhandler.h) reads this ring from inside a POSIX signal handler,
+	where taking any lock is unsafe -- if the crashing thread happens to
+	be the one that already holds it (or any other thread does and never
+	gets scheduled again), the handler hangs forever, and you lose both
+	the ring dump *and* the core dump. So there is no mutex here at all:
+	append() claims a slot with a single atomic fetch-add, and
+	dumpToFd()/snapshot() read the preallocated entries directly.
 
-	Thread-safe via a plain QMutex. This is *not* the lock-free design
-	discussion #644 specifies for a signal-handler crash path (step 4)
-	-- no signal handler is installed by this code, so nothing calls
-	into the ring from inside a signal context.
+	Accepted tradeoff: if dumpToFd() runs while another thread is
+	mid-append into the exact slot being read (only possible in the
+	crash-handler case, and only for at most one slot), that one entry
+	may be read torn -- part old content, part new. Every other entry is
+	unaffected. This is deliberate: the alternative (a seqlock or similar
+	to detect and retry torn reads) adds real complexity for a window
+	that, per discussion #644, is not worth trading "the handler must
+	never block" against.
 */
 class LogRing
 {
@@ -54,24 +56,30 @@ class LogRing
 		LogRing();
 
 		/// Append one already-formatted, already-truncated log line.
-		/// Bytes beyond kEntryBytes - 1 are dropped with a truncation marker.
-		void append(const QByteArray &line);
+		/// Bytes beyond kEntryBytes are dropped with a truncation marker.
+		/// Never allocates, never blocks. Safe to call from any normal
+		/// (non-signal) thread concurrently.
+		void append(const QByteArray &line) noexcept;
 
-		/// Snapshot of the entries currently held, oldest first.
+		/// Snapshot of the entries currently held, oldest first. Normal
+		/// (non-signal) context only.
 		QVector<QByteArray> snapshot() const;
+
+		/// Async-signal-safe: writes every entry currently held to fd via
+		/// write(2) only -- no allocation, no Qt, no locks. May write a
+		/// torn entry under the rare race described above; never blocks.
+		void dumpToFd(int fd) const noexcept;
 
 		void clear();
 
 	private:
 		struct Entry {
-			char data[kEntryBytes] = {};
-			int length = 0;
+			char data[kEntryBytes];
+			std::atomic<int> length{0}; // 0 = not yet written this lap
 		};
 
-		mutable QMutex m_mutex;
 		std::vector<Entry> m_entries; // preallocated once, capacity fixed
-		int m_next_index = 0;
-		int m_count = 0;
+		std::atomic<quint64> m_write_cursor{0}; // monotonically increasing
 };
 
 #endif // LOGRING_H
