@@ -529,6 +529,7 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		//Set the conductor style
 	final_conductor_pen.setColor(final_conductor_color);
 	final_conductor_pen.setStyle(m_properties.style);
+	final_conductor_pen.setCapStyle(m_properties.cap_style);
 	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // better rendering with dot
 
 		//Use a cosmetic line, below a certain zoom

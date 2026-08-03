@@ -250,7 +250,8 @@ ConductorProperties::ConductorProperties() :
 	horiz_rotate_text(0),
 	m_show_text(true),
 	m_one_text_per_folio(false),
-	style(Qt::SolidLine)
+	style(Qt::SolidLine),
+	cap_style(Qt::SquareCap)
 {}
 
 /**
@@ -772,6 +773,7 @@ bool ConductorProperties::operator==(const ConductorProperties &other) const
 		other.m_color_2 == m_color_2 &&\
 		other.m_dash_size == m_dash_size &&\
 		other.style == style &&\
+		other.cap_style == cap_style &&\
 		other.text == text &&\
 		other.text_color == text_color &&\
 		other.m_formula == m_formula &&\
@@ -807,6 +809,7 @@ bool ConductorProperties::operator!=(const ConductorProperties &other) const{
 */
 void ConductorProperties::readStyle(const QString &style_string) {
 	style = Qt::SolidLine; // style par defaut
+	cap_style = Qt::SquareCap; // style d'extremite par defaut
 
 	if (style_string.isEmpty()) return;
 
@@ -846,6 +849,14 @@ void ConductorProperties::readStyle(const QString &style_string) {
 					qWarning()<<"style_value not known"
 						 <<style_value;
 				}
+			} else if (style_name == "cap-style") {
+				if (style_value == "round") cap_style = Qt::RoundCap;
+				else if (style_value == "flat") cap_style = Qt::FlatCap;
+				else if (style_value == "square") cap_style = Qt::SquareCap;
+				else {
+					qWarning()<<"style_value not known"
+						 <<style_value;
+				}
 			}
 		}
 	}
@@ -857,13 +868,23 @@ void ConductorProperties::readStyle(const QString &style_string) {
 */
 QString ConductorProperties::writeStyle() const
 {
+	QStringList parts;
+
 	if (style == Qt::DashLine) {
-		return("line-style: dashed;");
+		parts << "line-style: dashed";
 	} else if (style == Qt::DashDotLine) {
-		return("line-style: dashdotted");
-	} else {
-		return(QString());
+		parts << "line-style: dashdotted";
 	}
+
+	if (cap_style == Qt::RoundCap) {
+		parts << "cap-style: round";
+	} else if (cap_style == Qt::FlatCap) {
+		parts << "cap-style: flat";
+	}
+
+	if (parts.isEmpty())
+		return(QString());
+	return(parts.join("; ") + ";");
 }
 
 /**
