@@ -185,6 +185,7 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, SIGNAL(requestForNewDiagram               (QETProject *)), this, SLOT(addDiagramToProject(QETProject *)));
+	connect(pa, SIGNAL(requestForNewDiagramAt             (QETProject *, int)), this, SLOT(addDiagramToProjectAt(QETProject *, int)));
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramsDeletion         (const QList<Diagram *> &)), this, SLOT(removeDiagrams(const QList<Diagram *> &)));
 	connect(pa, SIGNAL(requestForDiagramMoveUp			  (const QList<Diagram *> &)), this, SLOT(moveDiagramUp(const QList<Diagram *>&)));
@@ -2272,6 +2273,25 @@ void QETDiagramEditor::addDiagramToProject(QETProject *project)
 	{
 		activateProject(project);
 		project_view->project()->addNewDiagram();
+	}
+}
+
+/**
+	@brief QETDiagramEditor::addDiagramToProjectAt
+	Add a diagram to project, inserted at a specific position.
+	@param project
+	@param pos
+*/
+void QETDiagramEditor::addDiagramToProjectAt(QETProject *project, int pos)
+{
+	if (!project) {
+		return;
+	}
+
+	if (ProjectView *project_view = findProject(project))
+	{
+		activateProject(project);
+		project_view->project()->addNewDiagram(pos);
 	}
 }
 /**
