@@ -31,6 +31,34 @@
 #include <QPainterPath>
 #include <limits>
 
+namespace {
+	/**
+		@brief distanceToSegment
+		@param point : point to measure from
+		@param segment : the finite segment (not the infinite line through it)
+		@return the distance from @a point to the closest point actually on
+		@a segment. Unlike QET::orthogonalProjection(), which reports a hit
+		for any point on the segment's infinite extension, this clamps the
+		projection to the segment itself: a point collinear with a wire but
+		past its actual drawn end is correctly reported as far away, not "on"
+		the wire.
+	*/
+	qreal distanceToSegment(const QPointF &point, const QLineF &segment)
+	{
+		const QPointF a = segment.p1();
+		const QPointF b = segment.p2();
+		const QPointF ab = b - a;
+		const qreal len2 = QPointF::dotProduct(ab, ab);
+
+		if (len2 <= 0.0)
+			return QLineF(point, a).length();
+
+		qreal t = QPointF::dotProduct(point - a, ab) / len2;
+		t = qBound(0.0, t, 1.0);
+		return QLineF(point, a + t * ab).length();
+	}
+}
+
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement
 	Defaut constructor
@@ -297,7 +325,9 @@ void DiagramEventAddElement::addElement()
 				    c->terminal2->parentElement() == element)
 					continue;
 
-					//Check if dock point lies on the conductor path.
+					//Check if dock point lies on the conductor path. Distance is
+					//measured to the segment itself (clamped), not the infinite
+					//line through it -- see distanceToSegment().
 				QPointF local_dock = c->mapFromScene(t_dock);
 				bool point_on_conductor = false;
 				QPainterPath path = c->path();
@@ -306,15 +336,10 @@ void DiagramEventAddElement::addElement()
 					const QPainterPath::Element &e1 = path.elementAt(i);
 					const QPainterPath::Element &e2 = path.elementAt(i + 1);
 					QLineF segment(QPointF(e1.x, e1.y), QPointF(e2.x, e2.y));
-					QPointF projection;
-					if (QET::orthogonalProjection(local_dock, segment, &projection))
+					if (distanceToSegment(local_dock, segment) < 5.0)
 					{
-						qreal dist = QLineF(local_dock, projection).length();
-						if (dist < 5.0)
-						{
-							point_on_conductor = true;
-							break;
-						}
+						point_on_conductor = true;
+						break;
 					}
 				}
 
