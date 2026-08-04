@@ -642,16 +642,32 @@ void ElementsPanelWidget::duplicateDiagram()
 
 		new_diagram->fromXml(diagram_elmt, QPointF(0, 0), false, nullptr);
 
+		QList<Element *> new_elements;
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
-				// The XML round-trip kept the source elements' uuids. Give the
-				// copies their own identity (as PasteDiagramCommand::redo()
-				// does for on-diagram paste): element.uuid is the PRIMARY KEY
-				// of the project database, so duplicates fail to insert and
-				// silently vanish from nomenclature/summary tables.
-				elmt->newUuid();
-				new_diagram->restoreText(elmt);
+				new_elements << elmt;
 			}
+		}
+
+			// Resolve master/slave links within the duplicated batch before
+			// any uuid gets renewed below, for the same reason
+			// PasteDiagramCommand::redo() does: each element's
+			// tmp_uuids_link still holds its source's original partner
+			// uuid at this point, matching the not-yet-renewed uuid of
+			// that partner's own copy in new_elements. See
+			// Element::initLink(const QList<Element *> &).
+		for (Element *elmt : new_elements) {
+			elmt->initLink(new_elements);
+		}
+
+		for (Element *elmt : new_elements) {
+			// The XML round-trip kept the source elements' uuids. Give the
+			// copies their own identity (as PasteDiagramCommand::redo()
+			// does for on-diagram paste): element.uuid is the PRIMARY KEY
+			// of the project database, so duplicates fail to insert and
+			// silently vanish from nomenclature/summary tables.
+			elmt->newUuid();
+			new_diagram->restoreText(elmt);
 		}
 	}
 
