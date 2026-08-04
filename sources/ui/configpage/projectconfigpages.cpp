@@ -396,17 +396,17 @@ void ProjectAutoNumConfigPage::buildConnections()
 		//Conductor Tab
 	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
 	connect(m_saw_conductor, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextConductor);
-	connect(m_saw_conductor->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextConductor(QString)));
+	connect(m_saw_conductor->contextComboBox(), &QComboBox::currentTextChanged, this, &ProjectAutoNumConfigPage::updateContextConductor);
 
 		//Element Tab
 	connect(m_saw_element, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextElement);
 	connect(m_saw_element, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextElement);
-	connect(m_saw_element->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextElement(QString)));
+	connect(m_saw_element->contextComboBox(), &QComboBox::currentTextChanged, this, &ProjectAutoNumConfigPage::updateContextElement);
 
 		//Folio Tab
 	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
-	connect(m_saw_folio->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextFolio(QString)));
+	connect(m_saw_folio->contextComboBox(), &QComboBox::currentTextChanged, this, &ProjectAutoNumConfigPage::updateContextFolio);
 
 		//	Auto Folio Numbering
 	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
