@@ -430,13 +430,20 @@ void FileElementCollectionItem::setUpData()
  */
 void FileElementCollectionItem::setUpIcon()
 {
-		// Directories are cheap to (re-)decide: no early return for them.
-		// setUpData() -- which resolves m_qet_directory_unreadable via
-		// localName() -- runs asynchronously (QtConcurrent::map), so this can
-		// be called for a directory before that result is known; without
-		// this, the plain folder icon would get cached by the guard below
-		// and the warning badge would never appear for that item.
-	if (!isDir() && !icon().isNull())
+		// Must return unconditionally once an icon is set: setIcon() calls
+		// setData(), which emits dataChanged() regardless of whether the new
+		// icon differs from the old one (QIcon has no meaningful equality).
+		// QTreeView responds to dataChanged() by recomputing the row's size
+		// hint, which re-enters data() for this same index -- so without this
+		// guard, any repeated setIcon() here recurses until the stack
+		// overflows. Confirmed by crash report on PR #633.
+		//
+		// This item's m_qet_directory_unreadable is already final by the time
+		// this can run at all: ElementsCollectionModel only attaches itself
+		// to the tree view (making data() reachable) from loadingFinished(),
+		// which fires after the QtConcurrent::map over every item -- this one
+		// included -- has completed. So there is no race to work around here.
+	if (!icon().isNull())
 		return;
 
 	if (isCollectionRoot()) {
