@@ -29,21 +29,37 @@
 #include "../qetgraphicsitem/independenttextitem.h"
 
 #include <QGraphicsItem>
+#include <QtMath>
 
-RotateSelectionCommand::RotateSelectionCommand(Diagram *diagram, qreal angle, QUndoCommand *parent) :
+RotateSelectionCommand::RotateSelectionCommand(Diagram *diagram, qreal angle, QUndoCommand *parent, bool rotate_as_group) :
 QUndoCommand(parent),
 m_diagram(diagram)
 {
-	setText(QObject::tr("Pivoter la selection"));
-	
+	setText(rotate_as_group ? QObject::tr("Pivoter le groupe") : QObject::tr("Pivoter la selection"));
+
 	if(!m_diagram->isReadOnly())
 	{
+			//Shared pivot for group rotation: the bounding-box center of
+			//everything selected, computed once up front from the
+			//selection as a whole (not just the items that end up being
+			//individually repositioned below).
+		QPointF pivot;
+		if (rotate_as_group)
+		{
+			QRectF bounding_rect;
+			for (QGraphicsItem *item : m_diagram->selectedItems())
+				bounding_rect |= item->sceneBoundingRect();
+			pivot = bounding_rect.center();
+		}
+
 		for (QGraphicsItem *item : m_diagram->selectedItems())
 		{
 			switch (item->type())
 			{
 				case Element::Type:
 					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+					if (rotate_as_group)
+						addGroupPositionUndo(item, pivot, angle);
 					break;
 				case ConductorTextItem::Type:
 				{
@@ -53,9 +69,19 @@ m_diagram(diagram)
 					break;
 				case IndependentTextItem::Type:
 					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+					if (rotate_as_group)
+						addGroupPositionUndo(item, pivot, angle);
 					break;
 				case DynamicElementTextItem::Type:
 				{
+						//No pos() undo here even in group mode: this item is
+						//only rotated in place when its parent Element isn't
+						//also selected (guard below), and its pos() is
+						//parent-local, not scene coordinates -- when the
+						//parent Element *is* selected and gets its own pos()
+						//rotated around the shared pivot above, this child
+						//text item is carried along for free by Qt's normal
+						//parent/child transform propagation.
 					if(item->parentItem() && !item->parentItem()->isSelected())
 						m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
 				}
@@ -69,15 +95,42 @@ m_diagram(diagram)
 					break;
 				case DiagramImageItem::Type:
 					m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "rotation", QVariant(item->rotation()), QVariant(item->rotation()+angle), this);
+					if (rotate_as_group)
+						addGroupPositionUndo(item, pivot, angle);
 					break;
 				default:
 					break;
 			}
 		}
-		
+
 		for (QPropertyUndoCommand *undo : m_undo)
 			undo->setAnimated(true, false);
 	}
+}
+
+/**
+	@brief RotateSelectionCommand::addGroupPositionUndo
+	Queue a "pos" QPropertyUndoCommand that rotates @a item's position
+	around @a pivot by @a angle degrees (Qt's clockwise-positive
+	convention, matching QGraphicsItem::setRotation() so a group
+	rotation turns the same direction as each item's own spin).
+	Only meaningful for items whose pos() is in scene coordinates
+	(Element, IndependentTextItem, DiagramImageItem) -- never call this
+	for a child item positioned relative to its own parent.
+	@param item : item to reposition, its own rotation undo already queued
+	@param pivot : shared pivot point, in scene coordinates
+	@param angle : rotation angle in degrees
+*/
+void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle)
+{
+	const QPointF old_pos = item->pos();
+	const qreal radians = qDegreesToRadians(angle);
+	const QPointF delta = old_pos - pivot;
+	const QPointF new_pos(
+		pivot.x() + delta.x() * qCos(radians) - delta.y() * qSin(radians),
+		pivot.y() + delta.x() * qSin(radians) + delta.y() * qCos(radians)
+	);
+	m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "pos", QVariant(old_pos), QVariant(new_pos), this);
 }
 
 /**
