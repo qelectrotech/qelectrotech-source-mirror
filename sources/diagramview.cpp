@@ -99,7 +99,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	}
 
 	connect(m_diagram, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
-	connect(m_diagram, SIGNAL(sceneRectChanged(QRectF)), this, SLOT(adjustSceneRect()));
+	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
 	connect(&(m_diagram -> border_and_titleblock), &BorderTitleBlock::informationChanged, this, &DiagramView::updateWindowTitle);
 	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
 

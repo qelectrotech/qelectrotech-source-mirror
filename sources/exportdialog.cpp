@@ -99,9 +99,9 @@ ExportDialog::ExportDialog(
 	
 	// connexions signaux/slots
 	connect(epw,     SIGNAL(formatChanged()),       this, SLOT(slot_changeFilesExtension()));
-	connect(epw,     SIGNAL(exportedAreaChanged()), this, SLOT(slot_changeUseBorder()));
-	connect(buttons, SIGNAL(accepted()),            this, SLOT(slot_export()));
-	connect(buttons, SIGNAL(rejected()),            this, SLOT(reject()));
+	connect(epw, &ExportPropertiesWidget::exportedAreaChanged, this, &ExportDialog::slot_changeUseBorder);
+	connect(buttons, &QDialogButtonBox::accepted, this, &ExportDialog::slot_export);
+	connect(buttons, &QDialogButtonBox::rejected, this, &ExportDialog::reject);
 	
 	// ajustement des extensions des fichiers
 	slot_changeFilesExtension(true);
@@ -140,21 +140,21 @@ QWidget *ExportDialog::initDiagramsListPart()
 	reset_mapper_     = new QSignalMapper(this);
 	clipboard_mapper_ = new QSignalMapper(this);
 	
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-	connect(preview_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_previewDiagram);
-	connect(width_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctHeight);
-	connect(height_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctWidth);
-	connect(ratio_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_keepRatioChanged);
-	connect(reset_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_resetSize);
-	connect(clipboard_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_exportToClipBoard);
-	#else // TODO Qt6 only: remove, mappedInt() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedInt() always available
 	connect(preview_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
 	connect(width_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
 	connect(height_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
 	connect(ratio_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
 	connect(reset_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
 	connect(clipboard_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_exportToClipBoard(int)));
-	#endif
+#else
+	connect(preview_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_previewDiagram);
+	connect(width_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctHeight);
+	connect(height_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctWidth);
+	connect(ratio_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_keepRatioChanged);
+	connect(reset_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_resetSize);
+	connect(clipboard_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_exportToClipBoard);
+#endif
 	
 	diagrams_list_layout_ = new QGridLayout();
 	
@@ -174,7 +174,7 @@ QWidget *ExportDialog::initDiagramsListPart()
 		diagrams_list_layout_ -> addLayout(diagram_line -> sizeLayout(),   line_count, 3);
 		
 		// si on decoche tous les schemas, on desactive le bouton "Exporter"
-		connect(diagram_line -> must_export, SIGNAL(toggled(bool)), this, SLOT(slot_checkDiagramsCount()));
+		connect(diagram_line -> must_export, &QCheckBox::toggled, this, &ExportDialog::slot_checkDiagramsCount);
 		
 		// mappings et signaux pour la gestion des dimensions du schema
 		width_mapper_  -> setMapping(diagram_line -> width,      line_count);
@@ -939,7 +939,7 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	QGraphicsView *preview_view = new QGraphicsView(preview_scene);
 	preview_view -> setDragMode(QGraphicsView::ScrollHandDrag);
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok);
-	connect(buttons, SIGNAL(accepted()), &preview_dialog, SLOT(accept()));
+	connect(buttons, &QDialogButtonBox::accepted, &preview_dialog, &QDialog::accept);
 	
 	QVBoxLayout *vboxlayout1 = new QVBoxLayout();
 	vboxlayout1 -> addWidget(preview_view);

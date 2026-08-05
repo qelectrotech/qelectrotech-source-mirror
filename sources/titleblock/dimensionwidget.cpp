@@ -150,8 +150,8 @@ void TitleBlockDimensionWidget::initWidgets()
 	
 	// buttons, for the user to validate its input
 	buttons_ = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	connect(buttons_, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(buttons_, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(buttons_, &QDialogButtonBox::accepted, this, &TitleBlockDimensionWidget::accept);
+	connect(buttons_, &QDialogButtonBox::rejected, this, &TitleBlockDimensionWidget::reject);
 }
 
 /**

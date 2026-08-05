@@ -117,7 +117,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(filter_textfield,      SIGNAL(textChanged(const QString &)), this,             SLOT(filterEdited(const QString &)));
 
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
-	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
+	connect(elements_panel, &ElementsPanel::customContextMenuRequested, this, &ElementsPanelWidget::handleContextMenu);
 	connect(
 		elements_panel,
 		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),

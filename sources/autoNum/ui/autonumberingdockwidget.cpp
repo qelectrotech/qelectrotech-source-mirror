@@ -86,29 +86,21 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		//Disconnect previous project
 	if (m_project && m_project_view)
 	{
-			//Conductor Signals
-		disconnect(m_project, SIGNAL(conductorAutoNumChanged()),
-			   this,SLOT(conductorAutoNumChanged()));
-		disconnect (m_project,SIGNAL(conductorAutoNumRemoved()),
-			    this,SLOT(conductorAutoNumChanged()));
-		disconnect (m_project,SIGNAL(conductorAutoNumAdded()),
-			    this,SLOT(conductorAutoNumChanged()));
-		disconnect(m_project_view,SIGNAL(diagramActivated(DiagramView*)),
-			   this,SLOT(setConductorActive(DiagramView*)));
-	
-			//Element Signals
-		disconnect (m_project,SIGNAL(elementAutoNumRemoved(QString)),
-			    this,SLOT(elementAutoNumChanged()));
-		disconnect (m_project,SIGNAL(elementAutoNumAdded(QString)),
-			    this,SLOT(elementAutoNumChanged()));
+		disconnect(m_project, &QETProject::conductorAutoNumChanged, this, &AutoNumberingDockWidget::conductorAutoNumChanged);
+		disconnect(m_project, &QETProject::conductorAutoNumRemoved, this, &AutoNumberingDockWidget::conductorAutoNumChanged);
+		disconnect(m_project, &QETProject::conductorAutoNumAdded, this, &AutoNumberingDockWidget::conductorAutoNumChanged);
+		disconnect(m_project_view, &ProjectView::diagramActivated, this, &AutoNumberingDockWidget::setConductorActive);
+
+		//Element Signals
+		disconnect(m_project, &QETProject::elementAutoNumRemoved, this, &AutoNumberingDockWidget::elementAutoNumChanged);
+		disconnect(m_project, &QETProject::elementAutoNumAdded, this, &AutoNumberingDockWidget::elementAutoNumChanged);
 	
 			//Folio Signals
 		disconnect (m_project,SIGNAL(folioAutoNumRemoved()),
 			    this,SLOT(folioAutoNumChanged()));
 		disconnect (m_project,SIGNAL(folioAutoNumAdded()),
 			    this,SLOT(folioAutoNumChanged()));
-		disconnect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),
-			   this,SLOT(setActive()));
+		disconnect(m_project, &QETProject::defaultTitleBlockPropertiesChanged, this, &AutoNumberingDockWidget::setActive);
 	
 			//Conductor, Element and Folio Signals
 		disconnect(m_project, &QETProject::autoNumContextUpdated,
@@ -121,29 +113,21 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 	m_project_view = projectview;
 	this->setEnabled(true);
 
-		//Conductor Signals
-	connect(m_project, SIGNAL(conductorAutoNumChanged()),
-		this,SLOT(conductorAutoNumChanged()));
-	connect(m_project,SIGNAL(conductorAutoNumRemoved()),
-		this,SLOT(conductorAutoNumChanged()));
-	connect(m_project,SIGNAL(conductorAutoNumAdded()),
-		this,SLOT(conductorAutoNumChanged()));
-	connect(m_project_view,SIGNAL(diagramActivated(DiagramView*)),
-		this,SLOT(setConductorActive(DiagramView*)));
+	connect(m_project, &QETProject::conductorAutoNumChanged, this, &AutoNumberingDockWidget::conductorAutoNumChanged);
+	connect(m_project, &QETProject::conductorAutoNumRemoved, this, &AutoNumberingDockWidget::conductorAutoNumChanged);
+	connect(m_project, &QETProject::conductorAutoNumAdded, this, &AutoNumberingDockWidget::conductorAutoNumChanged);
+	connect(m_project_view, &ProjectView::diagramActivated, this, &AutoNumberingDockWidget::setConductorActive);
 
-		//Element Signals
-	connect (m_project,SIGNAL(elementAutoNumRemoved(QString)),
-		 this,SLOT(elementAutoNumChanged()));
-	connect (m_project,SIGNAL(elementAutoNumAdded(QString)),
-		 this,SLOT(elementAutoNumChanged()));
+	//Element Signals
+	connect(m_project, &QETProject::elementAutoNumRemoved, this, &AutoNumberingDockWidget::elementAutoNumChanged);
+	connect(m_project, &QETProject::elementAutoNumAdded, this, &AutoNumberingDockWidget::elementAutoNumChanged);
 
 		//Folio Signals
 	connect (m_project,SIGNAL(folioAutoNumRemoved()),
 		 this,SLOT(folioAutoNumChanged()));
 	connect (m_project,SIGNAL(folioAutoNumAdded()),
 		 this,SLOT(folioAutoNumChanged()));
-	connect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),
-		this,SLOT(setActive()));
+	connect(m_project, &QETProject::defaultTitleBlockPropertiesChanged, this, &AutoNumberingDockWidget::setActive);
 
 		//Conductor, Element and Folio Signals
 	connect(m_project, &QETProject::autoNumContextUpdated,

@@ -62,7 +62,7 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 		titleblock_infos = new TitleBlockPropertiesWidget(titleblock, false, diagram->project(), this);
 
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
-	connect(titleblock_infos,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(editAutoFolioNum()));
+	connect(titleblock_infos, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &DiagramPropertiesDialog::editAutoFolioNum);
 	//titleblock_infos->setMinimumSize(590,480); //Minimum Size needed for correct display
 
 		//Conductor widget
@@ -77,8 +77,8 @@ DiagramPropertiesDialog::DiagramPropertiesDialog(Diagram *diagram, QWidget *pare
 
 		// Buttons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	connect(&boutons, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(&boutons, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(&boutons, &QDialogButtonBox::accepted, this, &DiagramPropertiesDialog::accept);
+	connect(&boutons, &QDialogButtonBox::rejected, this, &DiagramPropertiesDialog::reject);
 
 	QGridLayout *glayout = new QGridLayout;
 	glayout->addWidget(border_infos,0,0);

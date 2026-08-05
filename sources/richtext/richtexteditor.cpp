@@ -540,8 +540,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	addSeparator();
 
 	// Text color button
-	connect(m_color_action, SIGNAL(colorChanged(QColor)),
-			this, SLOT(colorChanged(QColor)));
+	connect(m_color_action, &ColorAction::colorChanged, this, &RichTextEditorToolBar::colorChanged);
 	addAction(m_color_action);
 
 
@@ -550,8 +549,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 				QIcon(":/ico/32x32/simplifyrichtext.png"),
 				tr("Simplify Rich Text"), editor, SLOT(setSimplifyRichText(bool)),this);
 	m_simplify_richtext_action->setChecked(editor->simplifyRichText());
-	connect(m_editor, SIGNAL(simplifyRichTextChanged(bool)),
-			m_simplify_richtext_action, SLOT(setChecked(bool)));
+	connect(m_editor, &RichTextEditor::simplifyRichTextChanged, m_simplify_richtext_action, &QAction::setChecked);
 	addAction(m_simplify_richtext_action);
 
 	connect(editor, SIGNAL(textChanged()), this, SLOT(updateActions()));
@@ -779,7 +777,7 @@ RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
 	m_text_edit->setAcceptRichText(false);
 
 	connect(m_editor, SIGNAL(textChanged()), this, SLOT(richTextChanged()));
-	connect(m_editor, SIGNAL(simplifyRichTextChanged(bool)), this, SLOT(richTextChanged()));
+	connect(m_editor, &RichTextEditor::simplifyRichTextChanged, this, &RichTextEditorDialog::richTextChanged);
 	connect(m_text_edit, SIGNAL(textChanged()), this, SLOT(sourceChanged()));
 
 	// The toolbar needs to be created after the RichTextEditor
@@ -798,16 +796,15 @@ RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
 	m_tab_widget->setTabPosition(QTabWidget::South);
 	m_tab_widget->addTab(rich_edit, tr("Rich Text"));
 	m_tab_widget->addTab(plain_edit, tr("Source"));
-	connect(m_tab_widget, SIGNAL(currentChanged(int)),
-			SLOT(tabIndexChanged(int)));
+	connect(m_tab_widget, &QTabWidget::currentChanged, this, &RichTextEditorDialog::tabIndexChanged);
 
 	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, Qt::Horizontal);
 	QPushButton *ok_button = buttonBox->button(QDialogButtonBox::Ok);
 	ok_button->setText(tr("&OK"));
 	ok_button->setDefault(true);
 	buttonBox->button(QDialogButtonBox::Cancel)->setText(tr("&Cancel"));
-	connect(buttonBox, SIGNAL(accepted()), this, SLOT(on_buttonBox_accepted()));
-	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &RichTextEditorDialog::on_buttonBox_accepted);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &RichTextEditorDialog::reject);
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	layout->addWidget(m_tab_widget);

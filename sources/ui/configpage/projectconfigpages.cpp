@@ -391,37 +391,37 @@ void ProjectAutoNumConfigPage::adjustReadOnly()
 void ProjectAutoNumConfigPage::buildConnections()
 {
 		//Management Tab
-	connect (m_amw, SIGNAL(applyPressed()), this, SLOT(applyManagement()));
+	connect(m_amw, &AutoNumberingManagementW::applyPressed, this, &ProjectAutoNumConfigPage::applyManagement);
 
 		//Conductor Tab
 	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
 	connect(m_saw_conductor, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextConductor);
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-	connect(m_saw_conductor->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextConductor);
-	#else // TODO Qt6 only: remove, textActivated() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // TODO Qt6 only: remove, textActivated() always available
 	connect(m_saw_conductor->contextComboBox(), SIGNAL(activated(QString)), this, SLOT(updateContextConductor(QString)));
-	#endif
+#else
+	connect(m_saw_conductor->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextConductor);
+#endif
 
 		//Element Tab
 	connect(m_saw_element, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextElement);
 	connect(m_saw_element, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextElement);
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-	connect(m_saw_element->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextElement);
-	#else // TODO Qt6 only: remove, textActivated() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // TODO Qt6 only: remove, textActivated() always available
 	connect(m_saw_element->contextComboBox(), SIGNAL(activated(QString)), this, SLOT(updateContextElement(QString)));
-	#endif
+#else
+	connect(m_saw_element->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextElement);
+#endif
 
 		//Folio Tab
 	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-	connect(m_saw_folio->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextFolio);
-	#else // TODO Qt6 only: remove, textActivated() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // TODO Qt6 only: remove, textActivated() always available
 	connect(m_saw_folio->contextComboBox(), SIGNAL(activated(QString)), this, SLOT(updateContextFolio(QString)));
-	#endif
+#else
+	connect(m_saw_folio->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextFolio);
+#endif
 
 		//	Auto Folio Numbering
-	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
+	connect(m_faw, &FolioAutonumberingW::applyPressed, this, &ProjectAutoNumConfigPage::applyAutoNum);
 }
 
 /**

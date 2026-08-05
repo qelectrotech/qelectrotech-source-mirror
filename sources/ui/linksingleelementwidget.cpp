@@ -717,8 +717,7 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(
 	
 	if (m_showed_element)
 	{
-		disconnect(m_showed_element, SIGNAL(destroyed()),
-			   this, SLOT(showedElementWasDeleted()));
+		disconnect(m_showed_element, &QObject::destroyed, this, &LinkSingleElementWidget::showedElementWasDeleted);
 		m_showed_element->setHighlighted(false);
 	}
 	
@@ -726,8 +725,7 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(
 	elmt->diagram()->showMe();
 	elmt->setHighlighted(true);
 	m_showed_element = elmt;
-	connect(m_showed_element, SIGNAL(destroyed()),
-		this, SLOT(showedElementWasDeleted()));
+	connect(m_showed_element, &QObject::destroyed, this, &LinkSingleElementWidget::showedElementWasDeleted);
 	
 }
 

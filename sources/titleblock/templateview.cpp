@@ -597,7 +597,7 @@ void TitleBlockTemplateView::init()
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setBackgroundBrush(QBrush(QColor(248, 255, 160)));
 
-	connect(scene(), SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+	connect(scene(), &QGraphicsScene::selectionChanged, this, &TitleBlockTemplateView::selectionChanged);
 }
 
 /**
@@ -626,7 +626,7 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 			animation -> setStartValue(QVariant(tbgrid_ -> columnMinimumWidth(COL_OFFSET + i)));
 			animation -> setEndValue(QVariant(1.0 * applied_width));
 			animation -> setDuration(500);
-			connect(animation, SIGNAL(finished()), this, SLOT(updateColumnsHelperCells()));
+			connect(animation, &GridLayoutAnimation::finished, this, &TitleBlockTemplateView::updateColumnsHelperCells);
 			animation -> start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		total_applied_width += applied_width;
@@ -747,10 +747,8 @@ void TitleBlockTemplateView::addCells()
 	updateTotalWidthLabel();
 	total_width_helper_cell_ -> orientation = Qt::Horizontal;
 	total_width_helper_cell_ -> setActions(QList<QAction *>() << change_preview_width_);
-	connect(total_width_helper_cell_, SIGNAL(contextMenuTriggered(HelperCell *)),
-		this, SLOT(updateLastContextMenuCell(HelperCell *)));
-	connect(total_width_helper_cell_, SIGNAL(doubleClicked(HelperCell*)),
-		this, SLOT(changePreviewWidth()));
+	connect(total_width_helper_cell_, &HelperCell::contextMenuTriggered, this, &TitleBlockTemplateView::updateLastContextMenuCell);
+	connect(total_width_helper_cell_, &HelperCell::doubleClicked, this, &TitleBlockTemplateView::changePreviewWidth);
 	tbgrid_ -> addItem(total_width_helper_cell_, 0, COL_OFFSET, 1, col_count);
 
 	// we also initialize an extra helper cells that shows the preview width is
@@ -767,10 +765,8 @@ void TitleBlockTemplateView::addCells()
 		current_col_cell -> setActions(columnsActions());
 		current_col_cell -> orientation = Qt::Horizontal;
 		current_col_cell -> index = i;
-		connect(current_col_cell, SIGNAL(contextMenuTriggered(HelperCell *)),
-			this, SLOT(updateLastContextMenuCell(HelperCell *)));
-		connect(current_col_cell, SIGNAL(doubleClicked(HelperCell*)),
-			this, SLOT(editColumn(HelperCell *)));
+		connect(current_col_cell, &HelperCell::contextMenuTriggered, this, &TitleBlockTemplateView::updateLastContextMenuCell);
+		connect(current_col_cell, &HelperCell::doubleClicked, this, &TitleBlockTemplateView::editColumn);
 		tbgrid_ -> addItem(current_col_cell, 1, COL_OFFSET + i, 1, 1);
 	}
 
@@ -783,10 +779,8 @@ void TitleBlockTemplateView::addCells()
 		current_row_cell -> orientation = Qt::Vertical;
 		current_row_cell -> index = i;
 		current_row_cell -> setActions(rowsActions());
-		connect(current_row_cell, SIGNAL(contextMenuTriggered(HelperCell *)),
-			this, SLOT(updateLastContextMenuCell(HelperCell *)));
-		connect(current_row_cell, SIGNAL(doubleClicked(HelperCell*)),
-			this, SLOT(editRow(HelperCell *)));
+		connect(current_row_cell, &HelperCell::contextMenuTriggered, this, &TitleBlockTemplateView::updateLastContextMenuCell);
+		connect(current_row_cell, &HelperCell::doubleClicked, this, &TitleBlockTemplateView::editRow);
 		tbgrid_ -> addItem(current_row_cell, ROW_OFFSET + i, 0, 1, 1);
 	}
 

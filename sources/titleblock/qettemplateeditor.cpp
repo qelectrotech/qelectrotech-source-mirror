@@ -342,7 +342,7 @@ void QETTitleBlockTemplateEditor::editLogos()
 		QDialog d(this);
 		d.setWindowTitle(logo_manager_ -> windowTitle());
 		d.setLayout(vlayout0);
-		connect(buttons, SIGNAL(rejected()), &d, SLOT(reject()));
+		connect(buttons, &QDialogButtonBox::rejected, &d, &QDialog::reject);
 		d.exec();
 
 		// prevent the logo manager from being deleted along with the dialog
@@ -553,35 +553,37 @@ void QETTitleBlockTemplateEditor::initWidgets()
 	template_cell_editor_widget_ -> setVisible(false);
 
 	connect(
-		template_edition_area_view_,
-		SIGNAL(selectedCellsChanged(QList<TitleBlockCell *>)),
-		this,
-		SLOT(selectedCellsChanged(QList<TitleBlockCell *>))
+		template_edition_area_view_, 
+		&TitleBlockTemplateView::selectedCellsChanged,
+		this, 
+		&QETTitleBlockTemplateEditor::selectedCellsChanged
 	);
-	connect(template_cell_editor_widget_, SIGNAL(logoEditionRequested()),
-		this, SLOT(editLogos()));
+	connect(
+		template_cell_editor_widget_, 
+		&TitleBlockTemplateCellWidget::logoEditionRequested,
+		this, 
+		&QETTitleBlockTemplateEditor::editLogos
+	);
 	connect(
 		template_cell_editor_widget_,
-		SIGNAL(cellModified(ModifyTitleBlockCellCommand *)),
+		&TitleBlockTemplateCellWidget::cellModified,
 		this,
-		SLOT(pushCellUndoCommand(ModifyTitleBlockCellCommand *))
+		&QETTitleBlockTemplateEditor::pushCellUndoCommand
 	);
 	connect(
 		template_edition_area_view_,
-		SIGNAL(gridModificationRequested(TitleBlockTemplateCommand *)),
+		&TitleBlockTemplateView::gridModificationRequested,
 		this,
-		SLOT(pushGridUndoCommand(TitleBlockTemplateCommand *))
+		&QETTitleBlockTemplateEditor::pushGridUndoCommand
 	);
 	connect(
 		template_edition_area_view_,
-		SIGNAL(previewWidthChanged(int,int)),
+		&TitleBlockTemplateView::previewWidthChanged,
 		this,
-		SLOT(savePreviewWidthToApplicationSettings(int, int))
+		&QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings
 	);
-	connect(undo_stack_, SIGNAL(cleanChanged(bool)),
-		this, SLOT(updateEditorTitle()));
-	connect(QApplication::clipboard(), SIGNAL(dataChanged()),
-		this, SLOT(updateActions()));
+	connect(undo_stack_, &QUndoStack::cleanChanged, this, &QETTitleBlockTemplateEditor::updateEditorTitle);
+	connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &QETTitleBlockTemplateEditor::updateActions);
 }
 
 /**
@@ -960,8 +962,8 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 	dialog.setWindowTitle(title);
 	dialog.setLayout(dialog_layout);
 
-	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
 
 	if (dialog.exec() == QDialog::Accepted) {
 		return(widget -> location());
@@ -1027,10 +1029,8 @@ void QETTitleBlockTemplateEditor::editTemplateInformation()
 				: QDialogButtonBox::Ok
 				  | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),
-		&dialog_author, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),
-		&dialog_author, SLOT(reject()));
+	connect(dialog_buttons, &QDialogButtonBox::accepted, &dialog_author, &QDialog::accept);
+	connect(dialog_buttons, &QDialogButtonBox::rejected, &dialog_author, &QDialog::reject);
 
 	// run the dialog
 	if (dialog_author.exec() == QDialog::Accepted && !read_only_) {

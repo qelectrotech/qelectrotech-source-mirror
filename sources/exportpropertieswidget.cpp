@@ -230,7 +230,7 @@ void ExportPropertiesWidget::build()
 	setTabOrder(draw_colored_conductors, draw_bg_transparent);
 	
 	// connexion du bouton permettant le choix du repertoire
-	connect(button_browse, SIGNAL(released()), this, SLOT(slot_chooseADirectory()));
+	connect(button_browse, &QPushButton::released, this, &ExportPropertiesWidget::slot_chooseADirectory);	
 	
 	// emission de signaux lors du changement de format et lors du changement de zone exportee
 	connect(format,                   SIGNAL(currentIndexChanged(int)),         this, SIGNAL(formatChanged()));

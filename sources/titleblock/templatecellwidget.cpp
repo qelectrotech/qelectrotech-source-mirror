@@ -150,10 +150,10 @@ void TitleBlockTemplateCellWidget::initWidgets()
 	// handle cell modifications
 	connect(cell_type_input_,   SIGNAL(activated(int)),           this, SLOT(updateFormType(int)));
 	connect(cell_type_input_,   SIGNAL(activated(int)),           this, SLOT(editType()));
-	connect(name_input_,        SIGNAL(editingFinished()),        this, SLOT(editName()));
+	connect(name_input_, &QLineEdit::editingFinished, this, &TitleBlockTemplateCellWidget::editName);
 	connect(label_checkbox_,    SIGNAL(clicked(bool)),            this, SLOT(editLabelDisplayed()));
-	connect(label_edit_,        SIGNAL(released()),               this, SLOT(editLabel()));
-	connect(value_edit_,        SIGNAL(released()),               this, SLOT(editValue()));
+	connect(label_edit_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::editLabel);
+	connect(value_edit_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::editValue);
 	connect(horiz_align_input_, SIGNAL(activated(int)),           this, SLOT(editAlignment()));
 	connect(vert_align_input_,  SIGNAL(activated(int)),           this, SLOT(editAlignment()));
 	connect(font_size_input_,   SIGNAL(valueChanged(int)),        this, SLOT(editFontSize()));

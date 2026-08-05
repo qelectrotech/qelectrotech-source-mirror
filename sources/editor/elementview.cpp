@@ -37,8 +37,8 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	zoomReset();
-	connect(m_scene, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
-	connect(m_scene, SIGNAL(needZoomFit()), this, SLOT(zoomFit()));
+	connect(m_scene, &ElementScene::pasteAreaDefined, this, &ElementView::pasteAreaDefined);
+	connect(m_scene, &ElementScene::needZoomFit, this, &ElementView::zoomFit);	
 }
 
 /// Destructeur

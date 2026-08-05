@@ -122,11 +122,11 @@ QETApp::QETApp() :
 	initSplashScreen();
 	initSystemTray();
 
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
-	#else // TODO Qt6 only: remove, mappedObject() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedObject() always available
 	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
-	#endif
+#else
+	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
+#endif
 	qApp->setQuitOnLastWindowClosed(false);
 	connect(qApp, &QApplication::lastWindowClosed,
 		this, &QETApp::checkRemainingWindows);

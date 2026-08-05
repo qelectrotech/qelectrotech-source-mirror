@@ -129,10 +129,10 @@ void TitleBlockTemplateLogoManager::initWidgets()
 		this,
 		SLOT(updateLogoInformations(QListWidgetItem *, QListWidgetItem *))
 	);
-	connect(add_button_, SIGNAL(released()), this, SLOT(addLogo()));
-	connect(export_button_, SIGNAL(released()), this, SLOT(exportLogo()));
-	connect(delete_button_, SIGNAL(released()), this, SLOT(removeLogo()));
-	connect(rename_button_, SIGNAL(released()), this, SLOT(renameLogo()));
+	connect(add_button_, &QPushButton::released, this, &TitleBlockTemplateLogoManager::addLogo);
+	connect(export_button_, &QPushButton::released, this, &TitleBlockTemplateLogoManager::exportLogo);
+	connect(delete_button_, &QPushButton::released, this, &TitleBlockTemplateLogoManager::removeLogo);
+	connect(rename_button_, &QPushButton::released, this, &TitleBlockTemplateLogoManager::renameLogo);
 }
 
 /**
@@ -217,11 +217,12 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 			connect(replace_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
 			connect(rename_button,  SIGNAL(clicked()), signal_mapper, SLOT(map()));
 			connect(cancel_button,  SIGNAL(clicked()), signal_mapper, SLOT(map()));
-			#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-			connect(signal_mapper, &QSignalMapper::mappedInt, rename_dialog, &QDialog::done);
-			#else // TOD Qt6 only: remove, mappedInt() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedInt() always available
 			connect(signal_mapper, SIGNAL(mapped(int)), rename_dialog, SLOT(done(int)));
-			#endif
+
+#else
+			connect(signal_mapper, &QSignalMapper::mappedInt, rename_dialog, &QDialog::done);
+#endif
 		}
 		rd_label -> setText(
 			QString(tr(

@@ -110,7 +110,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		xrefpw -> setProperties (m_project -> defaultXRefProperties());
 	}
 
-	connect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
+	connect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
 
 	// main tab widget
 	QTabWidget *tab_widget      = new QTabWidget(this);
@@ -138,7 +138,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 */
 NewDiagramPage::~NewDiagramPage()
 {
-	disconnect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
+	disconnect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
 }
 
 /**

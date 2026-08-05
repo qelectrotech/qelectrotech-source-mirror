@@ -45,8 +45,8 @@ ProjectPropertiesDialog::ProjectPropertiesDialog(QETProject *project, QWidget *p
 	m_properties_dialog->addPage(new TerminalStripProjectConfigPage { project, parent });
 
 	connect(projectAutoNumConfigPage,SIGNAL(setAutoNum(QString)),newDiagramPage,SLOT(setFolioAutonum(QString)));
-	connect(projectAutoNumConfigPage,SIGNAL(saveCurrentTbp()),newDiagramPage,SLOT(saveCurrentTbp()));
-	connect(projectAutoNumConfigPage,SIGNAL(loadSavedTbp()),newDiagramPage,SLOT(loadSavedTbp()));
+	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::saveCurrentTbp, newDiagramPage, &NewDiagramPage::saveCurrentTbp);
+	connect(projectAutoNumConfigPage, &ProjectAutoNumConfigPage::loadSavedTbp, newDiagramPage, &NewDiagramPage::loadSavedTbp);
 }
 
 /**

@@ -146,7 +146,7 @@ void QETMainWindow::initCommonMenus()
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"), this);
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
-	connect(settings_menu_, SIGNAL(aboutToShow()), this, SLOT(checkToolbarsmenu()));
+	connect(settings_menu_, &QMenu::aboutToShow, this, &QETMainWindow::checkToolbarsmenu);
 
 	help_menu_ = new QMenu(tr("&Aide", "window menu"), this);
 	help_menu_ -> addAction(whatsthis_action_);

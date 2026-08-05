@@ -107,11 +107,11 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	m_workspace.setTabsClosable(true);
 
 		//Set the signal mapper
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-	connect(&windowMapper, &QSignalMapper::mappedObject, this, [this](QObject *object) { activateWidget(qobject_cast<QWidget *>(object)); });
-	#else // TODO Qt6 only: remove, mappedObject() always available
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedObject() always available
 	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));
-	#endif
+#else
+	connect(&windowMapper, &QSignalMapper::mappedObject, this, [this](QObject *object) { activateWidget(qobject_cast<QWidget *>(object)); });
+#endif
 
 	setWindowTitle(tr("QElectroTech", "window title"));
 	setWindowIcon(QET::Icons::QETLogo);
@@ -133,14 +133,8 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setMinimumSize(QSize(500, 350));
 	setWindowState(Qt::WindowMaximized);
 
-	connect (&m_workspace,
-		 SIGNAL(subWindowActivated(QMdiSubWindow *)),
-		 this,
-		 SLOT(subWindowActivated(QMdiSubWindow*)));
-	connect (QApplication::clipboard(),
-		 SIGNAL(dataChanged()),
-		 this,
-		 SLOT(slot_updatePasteAction()));
+	connect(&m_workspace, &QMdiArea::subWindowActivated, this, &QETDiagramEditor::subWindowActivated);
+	connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &QETDiagramEditor::slot_updatePasteAction);
 
 	readSettings();
 	show();
@@ -188,16 +182,16 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, SIGNAL(requestForProject                  (QETProject *)), this, SLOT(activateProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
-	connect(pa, SIGNAL(requestForNewDiagram               (QETProject *)), this, SLOT(addDiagramToProject(QETProject *)));
+	connect(pa, &ElementsPanelWidget::requestForNewDiagram, this, &QETDiagramEditor::addDiagramToProject);
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
-	connect(pa, SIGNAL(requestForDiagramsDeletion         (const QList<Diagram *> &)), this, SLOT(removeDiagrams(const QList<Diagram *> &)));
-	connect(pa, SIGNAL(requestForDiagramMoveUp			  (const QList<Diagram *> &)), this, SLOT(moveDiagramUp(const QList<Diagram *>&)));
-	connect(pa, SIGNAL(requestForDiagramMoveDown		  (const QList<Diagram *> &)), this, SLOT(moveDiagramDown(const QList<Diagram *>&)));
-	connect(pa, SIGNAL(requestForDiagramMoveUpTop		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpTop(const QList<Diagram *>&)));
-	connect(pa, SIGNAL(requestForDiagramMoveUpx10		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpx10(const QList<Diagram *>&)));
-	connect(pa, SIGNAL(requestForDiagramMoveDownx10		  (const QList<Diagram *> &)), this, SLOT(moveDiagramDownx10(const QList<Diagram *>&)));
-	connect(pa, SIGNAL(requestForDiagramMoveUpx100		  (const QList<Diagram *> &)), this, SLOT(moveDiagramUpx100(const QList<Diagram *>&)));
-	connect(pa, SIGNAL(requestForDiagramMoveDownx100	  (const QList<Diagram *> &)), this, SLOT(moveDiagramDownx100(const QList<Diagram *>&)));
+	connect(pa, &ElementsPanelWidget::requestForDiagramsDeletion, this, &QETDiagramEditor::removeDiagrams);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveUp, this, &QETDiagramEditor::moveDiagramUp);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveDown, this, &QETDiagramEditor::moveDiagramDown);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveUpTop, this, &QETDiagramEditor::moveDiagramUpTop);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveUpx10, this, &QETDiagramEditor::moveDiagramUpx10);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveDownx10, this, &QETDiagramEditor::moveDiagramDownx10);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveUpx100, this, &QETDiagramEditor::moveDiagramUpx100);
+	connect(pa, &ElementsPanelWidget::requestForDiagramMoveDownx100, this, &QETDiagramEditor::moveDiagramDownx100);
 }
 
 /**
@@ -850,8 +844,7 @@ void QETDiagramEditor::setUpMenu()
 	// File menu
 	QMenu *recentfile = menu_fichier -> addMenu(QET::Icons::DocumentOpenRecent, tr("&Récemment ouverts"));
 	recentfile->addActions(QETApp::projectsRecentFiles()->menu()->actions());
-	connect(QETApp::projectsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)),
-		this, SLOT(openRecentFile(const QString &)));
+	connect(QETApp::projectsRecentFiles(), &RecentFiles::fileOpeningRequested, this, &QETDiagramEditor::openRecentFile);
 	menu_fichier -> addActions(m_file_actions_group.actions());
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
@@ -1928,15 +1921,12 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		diagramWasAdded(dv);
 
 	//Manage the close event of project
-	connect(project_view, SIGNAL(projectClosed(ProjectView*)),
-		this, SLOT(projectWasClosed(ProjectView *)));
+	connect(project_view, &ProjectView::projectClosed, this, &QETDiagramEditor::projectWasClosed);
 	//Manage the adding  of diagram
-	connect(project_view, SIGNAL(diagramAdded(DiagramView *)),
-		this, SLOT(diagramWasAdded(DiagramView *)));
+	connect(project_view, &ProjectView::diagramAdded, this, &QETDiagramEditor::diagramWasAdded);
 
 	if (QETProject *project = project_view -> project())
-		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)),
-			this, SLOT(slot_updateActions()));
+		connect(project, &QETProject::readOnlyChanged, this, &QETDiagramEditor::slot_updateActions);
 
 	//Manage request for edit or find element and titleblock
 	connect (project_view, &ProjectView::findElementRequired,
@@ -2510,10 +2500,7 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv)
 		this,
 		&QETDiagramEditor::selectionChanged,
 		Qt::DirectConnection);
-	connect(dv,
-		SIGNAL(modeChanged()),
-		this,
-		SLOT(slot_updateModeActions()));
+	connect(dv, &DiagramView::modeChanged, this, &QETDiagramEditor::slot_updateModeActions);
 }
 
 /**
