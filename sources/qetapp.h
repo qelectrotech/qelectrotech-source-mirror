@@ -47,6 +47,9 @@ class QETProject;
 class QETTitleBlockTemplateEditor;
 class QTextOrientationSpinBoxWidget;
 class RecentFiles;
+#ifdef QET_SPACEMOUSE_SUPPORT
+class SpaceMouseListener;
+#endif
 
 /**
 	@brief The QETApp class
@@ -225,6 +228,13 @@ class QETApp : public QObject
 		static TitleBlockTemplatesFilesCollection *m_company_tbt_collection;
 		static TitleBlockTemplatesFilesCollection *m_custom_tbt_collection;
 		static ElementsCollectionCache *collections_cache_;
+#ifdef QET_SPACEMOUSE_SUPPORT
+			/// One per application, not per window: a physical 6-DOF device
+			/// is a single ambient input source, and motion is applied to
+			/// whichever DiagramView is currently active. See
+			/// SpaceMouseListener's class comment.
+		SpaceMouseListener *m_space_mouse_listener = nullptr;
+#endif
 		static QMap<uint, QETProject *> registered_projects_;
 		static uint next_project_id;
 		static RecentFiles *m_projects_recent_files;

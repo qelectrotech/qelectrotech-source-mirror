@@ -794,6 +794,25 @@ if(NOT BUILD_WITH_KF5)
   )
 endif()
 
+if(QET_SPACEMOUSE_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spacemousebackend.h
+    ${QET_DIR}/sources/spacemouse/spacemousebuttonmap.cpp
+    ${QET_DIR}/sources/spacemouse/spacemousebuttonmap.h
+    ${QET_DIR}/sources/spacemouse/spacemouselistener.cpp
+    ${QET_DIR}/sources/spacemouse/spacemouselistener.h
+    ${QET_DIR}/sources/ui/configpage/spacemouseconfigpage.cpp
+    ${QET_DIR}/sources/ui/configpage/spacemouseconfigpage.h
+  )
+endif()
+
+if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/spnavbackend.cpp
+    ${QET_DIR}/sources/spacemouse/spnavbackend.h
+  )
+endif()
+
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
   ${QET_DIR}/lang/qet_ca.ts
