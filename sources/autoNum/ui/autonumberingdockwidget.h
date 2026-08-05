@@ -66,8 +66,6 @@ class AutoNumberingDockWidget : public QDockWidget
 		void on_m_element_value_le_editingFinished();
 		void on_m_folio_value_le_editingFinished();
 
-	signals:
-		void folioAutoNumChanged(QString);
 
 	private:
 		enum class AutoNumCategory { Conductor, Element, Folio };

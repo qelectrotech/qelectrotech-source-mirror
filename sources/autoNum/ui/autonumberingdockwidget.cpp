@@ -107,10 +107,6 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 			    this,SLOT(folioAutoNumChanged()));
 		disconnect (m_project,SIGNAL(folioAutoNumAdded()),
 			    this,SLOT(folioAutoNumChanged()));
-		disconnect (this,
-			    SIGNAL(folioAutoNumChanged(QString)),
-			    &m_project_view->currentDiagram()->diagram()->border_and_titleblock,
-			    SLOT (slot_setAutoPageNum(QString)));
 		disconnect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),
 			   this,SLOT(setActive()));
 	
@@ -146,10 +142,6 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		 this,SLOT(folioAutoNumChanged()));
 	connect (m_project,SIGNAL(folioAutoNumAdded()),
 		 this,SLOT(folioAutoNumChanged()));
-	connect (this,
-		 SIGNAL(folioAutoNumChanged(QString)),
-		 &m_project_view->currentDiagram()->diagram()->border_and_titleblock,
-		 SLOT (slot_setAutoPageNum(QString)));
 	connect(m_project, SIGNAL(defaultTitleBlockPropertiesChanged()),
 		this,SLOT(setActive()));
 
@@ -345,7 +337,9 @@ void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {
 		ip.folio = "%id/%total";
 		m_project->setDefaultTitleBlockProperties(ip);
 	}
-		emit(folioAutoNumChanged(current_autonum));
+	if (m_project_view && m_project_view->currentDiagram()) {
+		m_project_view->currentDiagram()->diagram()->border_and_titleblock.importTitleBlock(ip);
+	}
 	refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
 }
 
