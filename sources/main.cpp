@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "logging/eventloopwatchdog.h"
 #include "logging/qetlogger.h"
 #include "machine_info.h"
 #include "qet.h"
@@ -209,6 +210,13 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 		QetLogger::instance().pruneOldLogFiles(7);
 		MachineInfo::instance()->send_info_to_debug();
 	});
+
+	// Constructed here rather than earlier: start() measures ticks against
+	// the event loop app.exec() is about to run, so there is no point
+	// (and no accurate baseline) before this line.
+	EventLoopWatchdog watchdog;
+	watchdog.start();
+
 	return app.exec();
 }
 
