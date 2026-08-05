@@ -80,6 +80,7 @@ class projectDataBase : public QObject
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
 				  m_remove_element_query,
+				  m_remove_element_info_query,
 				  m_update_element_query,
 				  m_insert_diagram_query,
 				  m_remove_diagram_query,
