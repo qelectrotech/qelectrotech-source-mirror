@@ -140,12 +140,21 @@ QWidget *ExportDialog::initDiagramsListPart()
 	reset_mapper_     = new QSignalMapper(this);
 	clipboard_mapper_ = new QSignalMapper(this);
 	
-	connect(preview_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
-	connect(width_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
-	connect(height_mapper_,    SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
-	connect(ratio_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
-	connect(reset_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
+	#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+	connect(preview_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_previewDiagram);
+	connect(width_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctHeight);
+	connect(height_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctWidth);
+	connect(ratio_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_keepRatioChanged);
+	connect(reset_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_resetSize);
+	connect(clipboard_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_exportToClipBoard);
+	#else // TODO Qt6 only: remove, mappedInt() always available
+	connect(preview_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
+	connect(width_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
+	connect(height_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
+	connect(ratio_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
+	connect(reset_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
 	connect(clipboard_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_exportToClipBoard(int)));
+	#endif
 	
 	diagrams_list_layout_ = new QGridLayout();
 	
