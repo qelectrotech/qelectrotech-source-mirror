@@ -60,8 +60,9 @@ class QETMainWindow : public QMainWindow {
 	QAction *youtube_;                       ///< Launch browser on QElectroTech Youtube channel
 	QAction *upgrade_;                       ///< Launch browser on QElectroTech Windows Nightly builds
 	QAction *upgrade_M;                      ///< Launch browser on QElectroTech MAC_OS_X builds
-	QAction *donate_;                        ///< Launch browser to donate link 
+	QAction *donate_;                        ///< Launch browser to donate link
 	QAction *about_qt_;                      ///< launch the "About Qt" dialog
+	QAction *diagnostics_action_;            ///< Open the diagnostics report dialog (discussion #644, step 5)
 	QMenu *settings_menu_;                   ///< Settings menu
 	QMenu *help_menu_;                       ///< Help menu
 	QMenu *display_toolbars_;                ///< Show/hide toolbars/docks

@@ -40,6 +40,8 @@
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
+#include "logging/qetlogger.h"
+#include "logging/ui/diagnosticsreportdialog.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -2575,6 +2577,10 @@ void QETApp::checkBackupFiles()
 	}
 
 	if (stale_files.isEmpty()) {
+		// Only offer an unretrieved crash dump when there's no project
+		// to recover this run -- discussion #644 step 5 is explicit
+		// that the two prompts must never both show at once.
+		checkCrashDump();
 		return;
 	}
 
@@ -2626,6 +2632,53 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
+}
+
+/**
+	@brief QETApp::checkCrashDump
+	Discussion #644, step 5: if the crash handler (step 4) left an
+	unretrieved dump from a previous run, offer it to the user. Only
+	called from checkBackupFiles() when there was no stale project file
+	to recover this run, so the two prompts never both show at once.
+*/
+void QETApp::checkCrashDump()
+{
+	QetLogger &logger = QetLogger::instance();
+	if (!logger.hasPendingCrashDump()) {
+		return;
+	}
+
+	const QByteArray content = logger.pendingCrashDumpContents();
+
+	DiagnosticsReportDialog dialog(
+			tr("Rapport de plantage"),
+			tr("QElectroTech ne s'est pas fermé correctement lors de sa dernière exécution.\n"
+			   "Voici les derniers messages enregistrés avant l'arrêt -- vous pouvez les "
+			   "enregistrer pour les joindre à un rapport de bug."),
+			content);
+	dialog.exec();
+
+	// Offered once, then marked retrieved -- regardless of whether the
+	// user chose to save it -- so it is never offered a second time.
+	logger.clearPendingCrashDump();
+}
+
+/**
+	@brief QETApp::showDiagnosticsReport
+	Discussion #644, step 5: the manual "Help > Diagnostics > Save
+	report" action. Unlike checkCrashDump(), this is about the *current*,
+	still-running session, not a previous one.
+*/
+void QETApp::showDiagnosticsReport()
+{
+	const QByteArray content = QetLogger::instance().buildDiagnosticsReport();
+
+	DiagnosticsReportDialog dialog(
+			tr("Rapport de diagnostic"),
+			tr("Ceci contient les derniers messages de journalisation de cette session. "
+			   "Vérifiez le contenu avant de le joindre à un rapport de bug public."),
+			content);
+	dialog.exec();
 }
 
 /**

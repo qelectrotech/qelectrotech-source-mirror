@@ -116,10 +116,14 @@ set(QET_RES_FILES
 set(QET_SRC_FILES
   ${QET_DIR}/sources/cli_export.cpp
   ${QET_DIR}/sources/cli_export.h
+  ${QET_DIR}/sources/logging/crashhandler.cpp
+  ${QET_DIR}/sources/logging/crashhandler.h
   ${QET_DIR}/sources/logging/logring.cpp
   ${QET_DIR}/sources/logging/logring.h
   ${QET_DIR}/sources/logging/qetlogger.cpp
   ${QET_DIR}/sources/logging/qetlogger.h
+  ${QET_DIR}/sources/logging/ui/diagnosticsreportdialog.cpp
+  ${QET_DIR}/sources/logging/ui/diagnosticsreportdialog.h
   ${QET_DIR}/sources/pdf_links.cpp
   ${QET_DIR}/sources/pdf_links.h
   ${QET_DIR}/sources/import/edz/edzarchive.cpp

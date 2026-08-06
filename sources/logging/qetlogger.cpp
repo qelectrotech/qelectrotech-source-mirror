@@ -17,11 +17,14 @@
 */
 #include "qetlogger.h"
 
+#include "crashhandler.h"
 #include "../qetapp.h"
+#include "../qetversion.h"
 
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
+#include <QSysInfo>
 #include <cstdio>
 
 namespace {
@@ -96,6 +99,24 @@ void QetLogger::init()
 	m_file_output_ok = ensureFileOpenLocked();
 }
 
+void QetLogger::installCrashHandler()
+{
+	if (m_disabled) {
+		return;
+	}
+	CrashHandler::install(&m_ring, crashDumpPath());
+}
+
+QString QetLogger::crashDumpPath() const
+{
+	return m_log_dir % QStringLiteral("/crash_dump.log");
+}
+
+QString QetLogger::currentLogFilePath() const
+{
+	return m_log_dir % QStringLiteral("/") % m_base_name % QStringLiteral(".log");
+}
+
 /**
 	@brief QetLogger::ensureFileOpenLocked
 	Caller must hold m_file_mutex. Opens the current session's log file
@@ -110,7 +131,7 @@ bool QetLogger::ensureFileOpenLocked()
 
 	QDir().mkpath(m_log_dir);
 
-	const QString path = m_log_dir % QStringLiteral("/") % m_base_name % QStringLiteral(".log");
+	const QString path = currentLogFilePath();
 
 	const QFileInfo info(path);
 	if (info.exists() && info.isSymLink()) {
@@ -143,7 +164,7 @@ void QetLogger::rotateLocked()
 {
 	m_file.close();
 
-	const QString base_path = m_log_dir % QStringLiteral("/") % m_base_name % QStringLiteral(".log");
+	const QString base_path = currentLogFilePath();
 
 	for (int i = kRotationKeep; i >= 1; --i) {
 		const QString from = (i == 1) ? base_path : rotatedPath(i - 1);
@@ -332,4 +353,79 @@ void QetLogger::pruneOldLogFiles(int days)
 			QFile::remove(file_info.absoluteFilePath());
 		}
 	}
+}
+
+// --- Step 5: getting the data back out ----------------------------------
+
+bool QetLogger::hasPendingCrashDump() const
+{
+	if (m_disabled) {
+		return false;
+	}
+	const QFileInfo info(crashDumpPath());
+	return info.exists() && info.isFile() && info.size() > 0;
+}
+
+QByteArray QetLogger::pendingCrashDumpContents() const
+{
+	QFile file(crashDumpPath());
+	if (!file.open(QIODevice::ReadOnly)) {
+		return QByteArray();
+	}
+	return redact(file.readAll());
+}
+
+void QetLogger::clearPendingCrashDump()
+{
+	QFile::remove(crashDumpPath());
+}
+
+QByteArray QetLogger::buildDiagnosticsReport() const
+{
+	QByteArray header;
+	header += "QElectroTech diagnostics report\n";
+	header += "Generated: " % QDateTime::currentDateTime().toString(Qt::ISODate) % "\n";
+	header += "Version: " % QetVersion::displayedVersion() % "\n";
+	header += "Git: " GIT_COMMIT_SHA "\n";
+	header += "OS: " % QSysInfo::prettyProductName() % " (" % QSysInfo::currentCpuArchitecture() % ")\n";
+	header += "Qt: " QT_VERSION_STR "\n";
+	header += "---\n";
+
+	QByteArray body;
+	QFile file(currentLogFilePath());
+	if (file.open(QIODevice::ReadOnly)) {
+		body = file.readAll();
+	} else {
+		// Fall back to the in-memory ring if the file itself can't be
+		// read (e.g. file output already failed this session).
+		for (const QByteArray &line : m_ring.snapshot()) {
+			body += line;
+		}
+	}
+
+	return redact(header + body);
+}
+
+/**
+	@brief QetLogger::redact
+	Replaces the user's home directory with "~" wherever it appears.
+	Applied before a crash dump or a diagnostics report is ever shown to
+	the user: both are destined to be attached to a public bug tracker,
+	and an absolute path under the home directory leaks the account name
+	(discussion #644's privacy section: "/home/laurent/... leaks a
+	username"). This is the one redaction implemented here; the
+	discussion's fancier "optionally redact project filenames too" is
+	not attempted -- reliably telling a project path apart from
+	arbitrary log text is a much fuzzier problem than a literal prefix
+	match against a known directory.
+*/
+QByteArray QetLogger::redact(const QByteArray &input)
+{
+	const QByteArray home = QDir::homePath().toUtf8();
+	if (home.isEmpty()) {
+		return input;
+	}
+	QByteArray out = input;
+	out.replace(home, QByteArrayLiteral("~"));
+	return out;
 }
