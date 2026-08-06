@@ -183,6 +183,16 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QCheckBox" name="m_draw_terminal_names_cb">
+         <property name="text">
+          <string>Dessiner les noms des bornes</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>

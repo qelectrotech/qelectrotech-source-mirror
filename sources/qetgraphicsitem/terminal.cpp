@@ -275,9 +275,10 @@ void Terminal::paint(
 		m_help_line_a -> setLine(line);
 	}
 
-	// Draw label if show_name is enabled
+	// Draw label if show_name is enabled and terminal names are allowed
 	const QString display_name = name();
-	if (d->m_show_name && !display_name.isEmpty()) {
+	if (d->m_show_name && !display_name.isEmpty()
+		&& (!diagram() || diagram()->drawTerminalNames())) {
 		painter->setRenderHint(QPainter::Antialiasing, true);
 		painter->setRenderHint(QPainter::TextAntialiasing, true);
 		painter->setFont(d->m_label_font);

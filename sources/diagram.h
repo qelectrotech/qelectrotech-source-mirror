@@ -126,8 +126,9 @@ class Diagram : public QGraphicsScene
 		bool use_border_;
 		bool draw_guides_;
 		QList<Diagram::Guide> m_guides_list;
-		bool draw_terminals_;
-		bool draw_colored_conductors_;
+	bool draw_terminals_;
+	bool draw_terminal_names_;
+	bool draw_colored_conductors_;
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
@@ -226,6 +227,8 @@ class Diagram : public QGraphicsScene
 	
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);
+		bool drawTerminalNames() const;
+		void setDrawTerminalNames(bool);
 		bool drawColoredConductors() const;
 		void setDrawColoredConductors(bool);
 	
@@ -424,6 +427,15 @@ inline QGIManager &Diagram::qgiManager() {
 inline bool Diagram::drawTerminals() const
 {
 	return(draw_terminals_);
+}
+
+/**
+	@brief Diagram::drawTerminalNames
+	@return true if terminal names are rendered, false otherwise
+*/
+inline bool Diagram::drawTerminalNames() const
+{
+	return(draw_terminal_names_);
 }
 
 /**

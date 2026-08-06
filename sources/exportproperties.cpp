@@ -34,6 +34,7 @@ ExportProperties::ExportProperties() :
 	draw_border(true),
 	draw_titleblock(true),
 	draw_terminals(false),
+	draw_terminal_names(true),
 	draw_bg_transparent(false),
 	draw_colored_conductors(true),
 	exported_area(QET::BorderArea)
@@ -70,6 +71,8 @@ void ExportProperties::toSettings(QSettings &settings,
 			  draw_titleblock);
 	settings.setValue(prefix % "drawterminals",
 			  draw_terminals);
+	settings.setValue(prefix % "drawterminalnames",
+			  draw_terminal_names);
 	settings.setValue(prefix % "drawbgtransparent",
 			  draw_bg_transparent);
 	settings.setValue(prefix % "drawcoloredconductors",
@@ -105,6 +108,8 @@ void ExportProperties::fromSettings(QSettings &settings,
 					 true ).toBool();
 	draw_terminals = settings.value(prefix % "drawterminals",
 					false).toBool();
+	draw_terminal_names = settings.value(prefix % "drawterminalnames",
+					true).toBool();
 	draw_bg_transparent = settings.value(prefix % "drawbgtransparent",
 					false).toBool();
 	draw_colored_conductors = settings.value(
