@@ -32,6 +32,30 @@
 #include <QDomElement>
 #include <QGraphicsSceneMouseEvent>
 
+namespace {
+	/**
+		@brief displayLabelFor
+		Purely presentational: when @element has no numbering formula and
+		no manually-set label yet, show its qet_labels.xml classification
+		prefix (Element::getPrefix(), already resolved at construction time
+		via autonum::elementPrefixForLocation()) as a "K?"-style placeholder,
+		so the folio reads as intentionally-unnumbered rather than blank.
+		Deliberately NOT part of Element::actualLabel(): that value gets
+		written back into the element's stored information in several
+		places (e.g. Element::setElementInformations()), and a placeholder
+		saved as if it were a real label would be a correctness bug, not a
+		display nicety.
+	*/
+	QString displayLabelFor(Element *element)
+	{
+		const QString label = element->actualLabel();
+		if (!label.isEmpty())
+			return label;
+		const QString prefix = element->getPrefix();
+		return prefix.isEmpty() ? QString() : prefix + QStringLiteral("?");
+	}
+}
+
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
 	Constructor
@@ -821,7 +845,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = element->actualLabel();
+				final_text = displayLabelFor(element);
 			}
 		}
 		else {
@@ -1093,7 +1117,7 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			setPlainText(displayLabelFor(element));
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
