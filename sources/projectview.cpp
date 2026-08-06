@@ -842,7 +842,7 @@ void ProjectView::initWidgets()
 	QHBoxLayout *TopRightCorner_Layout = new QHBoxLayout();
 	TopRightCorner_Layout->setContentsMargins(0,0,0,0);
 	// some place left to the 'next_right_view_button' button
-	TopRightCorner_Layout->insertSpacing(1,10);
+	TopRightCorner_Layout->addSpacing(10);
 
 	QHBoxLayout *TopLeftCorner_Layout = new QHBoxLayout();
 	TopLeftCorner_Layout->setContentsMargins(0,0,0,0);
