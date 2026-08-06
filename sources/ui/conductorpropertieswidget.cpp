@@ -80,6 +80,9 @@ void ConductorPropertiesWidget::setProperties(
 	int index = ui -> m_line_style_cb -> findData(QPen(m_properties.style));
 	if (index != -1) ui -> m_line_style_cb -> setCurrentIndex(index);
 
+	int cap_index = ui -> m_cap_style_cb -> findData(QVariant::fromValue(m_properties.cap_style));
+	if (cap_index != -1) ui -> m_cap_style_cb -> setCurrentIndex(cap_index);
+
 	ui->m_color_2_gb            -> setChecked  (m_properties.m_bicolor);
 	ui->m_dash_size_sb          -> setValue    (m_properties.m_dash_size);
 	ui->m_formula_le            -> setText    (m_properties.m_formula);
@@ -127,6 +130,7 @@ ConductorProperties ConductorPropertiesWidget::properties() const
 	properties_.m_color_2               = ui->m_color_2_kpb->color();
 	properties_.m_dash_size             = ui->m_dash_size_sb->value();
 	properties_.style                   = ui -> m_line_style_cb->itemData(ui->m_line_style_cb->currentIndex()).value<QPen>().style();
+	properties_.cap_style               = ui -> m_cap_style_cb->itemData(ui->m_cap_style_cb->currentIndex()).value<Qt::PenCapStyle>();
 	properties_.m_formula               = ui->m_formula_le->text();
 	properties_.text                    = ui -> m_text_le -> text();
 	properties_.text_color              = ui -> m_text_color_kpb->color();
@@ -234,6 +238,10 @@ void ConductorPropertiesWidget::initWidget()
 	ui -> m_line_style_cb -> addItem(tr("Trait plein", "conductor style: solid line"), QPen(Qt::SolidLine));
 	ui -> m_line_style_cb -> addItem(tr("Trait en pointillés", "conductor style: dashed line"), QPen(Qt::DashLine));
 	ui -> m_line_style_cb -> addItem(tr("Traits et points", "conductor style: dashed and dotted line"), QPen(Qt::DashDotLine));
+
+	ui -> m_cap_style_cb -> addItem(tr("Carré", "conductor cap style: square"), QVariant::fromValue(Qt::SquareCap));
+	ui -> m_cap_style_cb -> addItem(tr("Rond", "conductor cap style: round"), QVariant::fromValue(Qt::RoundCap));
+	ui -> m_cap_style_cb -> addItem(tr("Plat", "conductor cap style: flat"), QVariant::fromValue(Qt::FlatCap));
 
 	ui -> m_update_preview_pb -> setHidden(true);
 

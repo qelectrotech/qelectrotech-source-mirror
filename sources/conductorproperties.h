@@ -116,6 +116,7 @@ class ConductorProperties
 		m_vertical_alignment = Qt::AlignRight;
 
 		Qt::PenStyle style;
+		Qt::PenCapStyle cap_style;
 
 		SingleLineProperties singleLineProperties;
 
