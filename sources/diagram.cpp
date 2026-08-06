@@ -2397,9 +2397,10 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	\~French true pour afficher les bornes, false sinon
 */
 void Diagram::setDrawTerminals(bool dt) {
+	draw_terminals_ = dt;
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
-			t -> setVisible(dt);
+			t -> update();
 		}
 	}
 }
