@@ -75,9 +75,9 @@ void CompositeTextEditDialog::setUpComboBox(bool is_report)
 	}
 }
 
-void CompositeTextEditDialog::on_m_info_cb_activated(const QString &arg1)
+void CompositeTextEditDialog::on_m_info_cb_activated(int index)
 {
-	Q_UNUSED(arg1)
+	Q_UNUSED(index)
 	ui->m_plain_text_edit->insertPlainText(ui->m_info_cb->currentData().toString());
 }
 
