@@ -26,7 +26,6 @@
 
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
-#include <limits>
 /**
 	@brief TitleBlockTemplate::TitleBlockTemplate
 	Constructor
@@ -980,11 +979,10 @@ int TitleBlockTemplate::minimumWidth()
 	if (denominator <= 0.0) {
 		// The relative-to-total-length columns alone already consume
 		// 100% (or more) of the available width, so the formula above
-		// would divide by zero (or go negative). If there are no
-		// absolute-width columns, there is no meaningful minimum width
-		// to enforce; if there are, the template is asking for more
-		// than 100% of its own width, which cannot be satisfied.
-		return abs_total > 0 ? std::numeric_limits<int>::max() : 0;
+		// would divide by zero (or go negative). There is no finite
+		// minimum width this formula can determine. Report "no
+		// constraint", the same convention maximumWidth() uses.
+	return -1;
 	}
 
 	return(qRound(abs_total / denominator));

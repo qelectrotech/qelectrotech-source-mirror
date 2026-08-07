@@ -999,20 +999,34 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 	int max_width = tbtemplate_ -> maximumWidth();
 
 	QString min_max_width_sentence;
-	if (max_width != -1) {
+	if (min_width != -1 && max_width != -1) {
 		min_max_width_sentence = QString(
 			tr(
 				"Longueur minimale : %1px\nLongueur maximale : %2px\n",
 				"tooltip showing the minimum and/or maximum width of the edited template"
 			)
 		).arg(min_width).arg(max_width);
-	} else {
+	} else if (min_width != -1) {
 		min_max_width_sentence = QString(
 			tr(
 				"Longueur minimale : %1px\n",
 				"tooltip showing the minimum width of the edited template"
 			)
 		).arg(min_width);
+	} else if (max_width != -1) {
+		min_max_width_sentence = QString(
+			tr(
+				"Longueur maximale : %1px\n",
+				"tooltip showing the maximum width of the edited template"
+			)
+		).arg(max_width);
+	} else {
+		min_max_width_sentence = QString(
+			tr(
+				"Longueur non contrainte.\n",
+				"tooltip shown when the edited template has neither a minimum nor a maximum width constraint"
+			)
+		);
 	}
 
 	// the tooltip may also display the split label for readability purpose
