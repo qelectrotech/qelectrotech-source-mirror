@@ -27,6 +27,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "TerminalStrip/GraphicsItem/terminalstripitem.h"
 
@@ -89,6 +90,11 @@ DiagramContent::DiagramContent(Diagram *diagram, bool selected) :
 			}
 			case DiagramImageItem::Type:       { m_images        << qgraphicsitem_cast<DiagramImageItem *>(item);       break;}
 			case QetShapeItem::Type:           { m_shapes        << qgraphicsitem_cast<QetShapeItem *>(item);           break;}
+				//StructureBoxItem is a QetShapeItem subclass but reports its own
+				//type(), so it needs its own case here -- otherwise it falls
+				//through into no bucket and becomes impossible to cut, copy,
+				//paste or delete.
+			case StructureBoxItem::Type:       { m_shapes        << static_cast<QetShapeItem *>(item);                break;}
 			case DynamicElementTextItem::Type: { m_element_texts << qgraphicsitem_cast<DynamicElementTextItem *>(item); break;}
 			case QGraphicsItemGroup::Type: {
 				if (auto *group = dynamic_cast<ElementTextItemGroup *>(item)) {
@@ -208,6 +214,7 @@ bool DiagramContent::hasDeletableItems() const
 			|| qgi->type() == Conductor::Type
 			|| qgi->type() == IndependentTextItem::Type
 			|| qgi->type() == QetShapeItem::Type
+			|| qgi->type() == StructureBoxItem::Type
 			|| qgi->type() == DiagramImageItem::Type
 			|| qgi->type() == DynamicElementTextItem::Type
 			|| qgi->type() == QetGraphicsTableItem::Type

@@ -22,11 +22,49 @@
 #include "../qetapp.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/structureboxitem.h"
 #include "../qetxml.h"
 #include "../qetproject.h"
 #include <QStringList>
 #include <QVariant>
 #include <utility>
+
+namespace {
+	/**
+		@brief enclosingStructureBox
+		@param elmt an element, possibly null
+		@return the smallest StructureBoxItem on elmt's diagram whose
+		geometry visually contains it, or nullptr if elmt is null, has no
+		diagram, or isn't inside any such box. When boxes are nested, the
+		smallest (most specific) one wins.
+	*/
+	const StructureBoxItem *enclosingStructureBox(const Element *elmt)
+	{
+		if (!elmt)
+			return nullptr;
+		Diagram *diagram = elmt->diagram();
+		if (!diagram)
+			return nullptr;
+
+		const StructureBoxItem *best = nullptr;
+		qreal best_area = -1;
+		const QPointF pos = elmt->sceneBoundingRect().center();
+		const auto items = diagram->items(pos);
+		for (QGraphicsItem *item : items)
+		{
+			if (item->type() != StructureBoxItem::Type)
+				continue;
+			auto box = static_cast<const StructureBoxItem *>(item);
+			const QRectF r = box->mapRectToScene(box->rect().normalized());
+			const qreal area = r.width() * r.height();
+			if (!best || area < best_area) {
+				best = box;
+				best_area = area;
+			}
+		}
+		return best;
+	}
+}
 
 namespace autonum
 {
@@ -231,17 +269,74 @@ namespace autonum
 	/**
 		@brief AssignVariables::replaceVariable
 		Replace the variables in formula in form %{my-var}
-		to the corresponding value stored in dc
+		to the corresponding value stored in dc.
+		%{plant} and %{location} fall back to a reference point's
+		installation (=) / location (+) fields (IEC 81346) when the
+		element's own value is empty, so a project can set these once
+		instead of on every element. The reference point is the nearest
+		enclosing StructureBoxItem the element is visually inside, or
+		the containing diagram's own title block if it's inside none
+		(discussion #649).
+		%{structure_id} is the resulting =plant+location-label designation,
+		reduced by dropping any =/+ segment that matches the reference
+		point (IEC 81346's allowance for a designation implied by
+		context); %{structure_id_full} is the same but never reduced.
 		@param formula
 		@param dc
+		@param elmt the element the formula belongs to, if any;
+		used to resolve the reference-point fallback above and the
+		%{prefix}/%{structure_id}/%{structure_id_full} tokens. May be null.
 		@return
 	*/
 	QString AssignVariables::replaceVariable(const QString &formula,
-						 const DiagramContext &dc)
+						 const DiagramContext &dc,
+						 const Element *elmt)
 	{
 		QString str = formula;
-		str.replace("%{label}", dc.value("label").toString());
-		str.replace("%{plant}", dc.value("plant").toString());
+
+		Diagram *diagram = elmt ? elmt->diagram() : nullptr;
+
+		QString reference_plant, reference_location;
+		if (diagram) {
+			reference_plant = diagram->border_and_titleblock.plant();
+			reference_location = diagram->border_and_titleblock.locmach();
+		}
+		if (const StructureBoxItem *box = enclosingStructureBox(elmt)) {
+			reference_plant = box->plant();
+			reference_location = box->location();
+		}
+
+		QString plant_value = dc.value("plant").toString();
+		if (plant_value.isEmpty())
+			plant_value = reference_plant;
+
+		QString location_value = dc.value("location").toString();
+		if (location_value.isEmpty())
+			location_value = reference_location;
+
+		QString prefix_value = elmt ? elmt->getPrefix() : QString();
+		QString label_value = dc.value("label").toString();
+
+			//Full IEC 81346 reference designation (=plant+location-label).
+		QString structure_id_full = buildStructureId(plant_value, location_value, label_value);
+
+			//Reduced form relative to the reference point (IEC 81346's own
+			//allowance for dropping higher-level parts already implied by
+			//context): the =/+ segments are also omitted when they match it,
+			//since the fallback above already makes "no override" resolve to
+			//that value -- so this is the default for any device that doesn't
+			//explicitly belong to a different plant/location.
+		QString structure_id = buildStructureId(
+			plant_value != reference_plant ? plant_value : QString(),
+			location_value != reference_location ? location_value : QString(),
+			label_value);
+
+		str.replace("%{label}", label_value);
+		str.replace("%{plant}", plant_value);
+		str.replace("%{location}", location_value);
+		str.replace("%{prefix}", prefix_value);
+		str.replace("%{structure_id}", structure_id);
+		str.replace("%{structure_id_full}", structure_id_full);
 		str.replace("%{comment}", dc.value("comment").toString());
 		str.replace("%{description}", dc.value("description").toString());
 		str.replace("%{designation}", dc.value("designation").toString());
@@ -293,7 +388,6 @@ namespace autonum
 		
 		str.replace("%{machine_manufacturer_reference}", dc.value("machine_manufacturer_reference").toString());
 
-		str.replace("%{location}", dc.value("location").toString());
 		str.replace("%{function}", dc.value("function").toString());
 		str.replace("%{tension_protocol}", dc.value("tension_protocol").toString());
 		str.replace("%{conductor_section}", dc.value("conductor_section").toString());
@@ -407,6 +501,27 @@ namespace autonum
 			assignProjectVar();
 			assignSequence();
 		}
+	}
+
+	/**
+		@brief AssignVariables::buildStructureId
+		Assemble an IEC 81346 reference designation from its three aspects,
+		omitting any segment whose value is empty.
+		@param plant the "=" installation aspect
+		@param location the "+" location aspect
+		@param suffix the "-" product/component aspect
+		@return the assembled designation, e.g. "=E1+A2-K3"
+	*/
+	QString AssignVariables::buildStructureId(const QString &plant, const QString &location, const QString &suffix)
+	{
+		QString id;
+		if (!plant.isEmpty())
+			id += "=" + plant;
+		if (!location.isEmpty())
+			id += "+" + location;
+		if (!suffix.isEmpty())
+			id += "-" + suffix;
+		return id;
 	}
 
 	void AssignVariables::assignTitleBlockVar()

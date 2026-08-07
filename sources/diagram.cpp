@@ -35,6 +35,7 @@
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qetgraphicsitem/qetshapeitem.h"
+#include "qetgraphicsitem/structureboxitem.h"
 #include "qetgraphicsitem/terminal.h"
 #include "qetxml.h"
 #include "undocommand/addelementtextcommand.h"
@@ -946,6 +947,7 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	QVector<DiagramTextItem *> list_texts;
 	QVector<DiagramImageItem *> list_images;
 	QVector<QetShapeItem *> list_shapes;
+	QVector<StructureBoxItem *> list_structure_boxes;
 	QVector<QetGraphicsTableItem *> table_vector;
 	QVector<TerminalStripItem *> strip_vector;
 
@@ -995,6 +997,12 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 				auto shape = static_cast<QetShapeItem *>(qgi);
 				if (whole_content || shape->isSelected())
 					list_shapes << shape;
+				break;
+			}
+			case StructureBoxItem::Type: {
+				auto box = static_cast<StructureBoxItem *>(qgi);
+				if (whole_content || box->isSelected())
+					list_structure_boxes << box;
 				break;
 			}
 			case QetGraphicsTableItem::Type: {
@@ -1060,6 +1068,14 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			dom_shapes.appendChild(dii -> toXml(document));
 		}
 		dom_root.appendChild(dom_shapes);
+	}
+
+	if (!list_structure_boxes.isEmpty()) {
+		auto dom_structure_boxes = document.createElement(QStringLiteral("structureBoxes"));
+		for (auto box : list_structure_boxes) {
+			dom_structure_boxes.appendChild(box -> toXml(document));
+		}
+		dom_root.appendChild(dom_structure_boxes);
 	}
 
 	if (table_vector.size()) {
@@ -1480,6 +1496,17 @@ bool Diagram::fromXml(QDomElement &document,
 		added_shapes << dii;
 	}
 
+		// Load structure box
+	QList<StructureBoxItem *> added_structure_boxes;
+	for (auto box_xml : QET::findInDomElement(root,
+												QStringLiteral("structureBoxes"),
+												StructureBoxItem::xmlTagName())) {
+		StructureBoxItem *box = new StructureBoxItem (QPointF(0,0));
+		box -> fromXml(box_xml);
+		addItem(box);
+		added_structure_boxes << box;
+	}
+
 		//Load tables
 	QVector<QetGraphicsTableItem *> added_tables;
 	for (const auto &dom_table : QETXML::subChild(root,
@@ -1501,6 +1528,7 @@ bool Diagram::fromXml(QDomElement &document,
 		QVector <QGraphicsItem *> added_items;
 		for (auto element : std::as_const(added_elements   )) added_items << element;
 		for (auto shape   : std::as_const(added_shapes     )) added_items << shape;
+		for (auto box     : std::as_const(added_structure_boxes)) added_items << box;
 		for (auto text    : std::as_const(added_texts      )) added_items << text;
 		for (auto image   : std::as_const(added_images     )) added_items << image;
 		for (auto table   : std::as_const(added_tables     )) added_items << table;

@@ -302,6 +302,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddstructurebox.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddstructurebox.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -502,6 +504,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/structureboxitem.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/structureboxitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.h
   ${QET_DIR}/sources/qetgraphicsitem/reportelement.cpp
@@ -731,6 +735,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/reportpropertiewidget.h
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.cpp
   ${QET_DIR}/sources/ui/shapegraphicsitempropertieswidget.h
+  ${QET_DIR}/sources/ui/structureboxpropertieswidget.cpp
+  ${QET_DIR}/sources/ui/structureboxpropertieswidget.h
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.cpp
   ${QET_DIR}/sources/ui/thirdpartybinaryinstalldialog.h
   ${QET_DIR}/sources/ui/titleblockpropertieswidget.cpp
