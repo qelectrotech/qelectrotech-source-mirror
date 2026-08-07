@@ -192,7 +192,6 @@ class QETDiagramEditor : public QETMainWindow
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
-		*conductor_default,		///< Show a dialog to edit default conductor properties
 		*m_grey_background,		///< Switch the background color in white or grey
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
@@ -200,7 +199,6 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items
-		*m_project_folio_list,		///< Sommaire des schemas
 		*m_csv_export,			///< generate nomenclature
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item
