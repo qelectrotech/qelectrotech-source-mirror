@@ -116,6 +116,16 @@ set(QET_RES_FILES
 set(QET_SRC_FILES
   ${QET_DIR}/sources/cli_export.cpp
   ${QET_DIR}/sources/cli_export.h
+  ${QET_DIR}/sources/logging/crashhandler.cpp
+  ${QET_DIR}/sources/logging/crashhandler.h
+  ${QET_DIR}/sources/logging/eventloopwatchdog.cpp
+  ${QET_DIR}/sources/logging/eventloopwatchdog.h
+  ${QET_DIR}/sources/logging/logring.cpp
+  ${QET_DIR}/sources/logging/logring.h
+  ${QET_DIR}/sources/logging/qetlogger.cpp
+  ${QET_DIR}/sources/logging/qetlogger.h
+  ${QET_DIR}/sources/logging/ui/diagnosticsreportdialog.cpp
+  ${QET_DIR}/sources/logging/ui/diagnosticsreportdialog.h
   ${QET_DIR}/sources/pdf_links.cpp
   ${QET_DIR}/sources/pdf_links.h
   ${QET_DIR}/sources/import/edz/edzarchive.cpp
@@ -530,7 +540,6 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/richtext/richtexteditor.cpp
   ${QET_DIR}/sources/richtext/richtexteditor_p.h
-  ${QET_DIR}/sources/richtext/ui_addlinkdialog.h
 
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.cpp
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.h
@@ -683,6 +692,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.h
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.cpp
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfopartwidget.cpp
   ${QET_DIR}/sources/ui/elementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
@@ -761,6 +772,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/movediagramcommand.h
   ${QET_DIR}/sources/undocommand/removediagramcommand.cpp
   ${QET_DIR}/sources/undocommand/removediagramcommand.h
+  ${QET_DIR}/sources/undocommand/setautonumcontextcommand.cpp
+  ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
   ${QET_DIR}/sources/undocommand/rotatetextscommand.cpp

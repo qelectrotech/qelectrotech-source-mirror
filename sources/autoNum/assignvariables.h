@@ -47,6 +47,8 @@ namespace autonum
 			void clear();
 
 			QStringList unit;
+				/// Values of the cyclic (modulo) parts, referenced by %seqw_N.
+			QStringList wrap;
 			QStringList unit_folio;
 			QStringList ten;
 			QStringList ten_folio;

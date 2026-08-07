@@ -185,6 +185,7 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, SIGNAL(requestForNewDiagram               (QETProject *)), this, SLOT(addDiagramToProject(QETProject *)));
+	connect(pa, SIGNAL(requestForNewDiagramAt             (QETProject *, int)), this, SLOT(addDiagramToProjectAt(QETProject *, int)));
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
 	connect(pa, SIGNAL(requestForDiagramsDeletion         (const QList<Diagram *> &)), this, SLOT(removeDiagrams(const QList<Diagram *> &)));
 	connect(pa, SIGNAL(requestForDiagramMoveUp			  (const QList<Diagram *> &)), this, SLOT(moveDiagramUp(const QList<Diagram *>&)));
@@ -897,6 +898,8 @@ void QETDiagramEditor::setUpMenu()
 
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
+	menu_project -> addAction(m_auto_conductor);
+	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
 	menu_project -> addAction(m_clean_project);
@@ -932,6 +935,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addAction(m_grey_background);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -2293,6 +2297,25 @@ void QETDiagramEditor::addDiagramToProject(QETProject *project)
 	{
 		activateProject(project);
 		project_view->project()->addNewDiagram();
+	}
+}
+
+/**
+	@brief QETDiagramEditor::addDiagramToProjectAt
+	Add a diagram to project, inserted at a specific position.
+	@param project
+	@param pos
+*/
+void QETDiagramEditor::addDiagramToProjectAt(QETProject *project, int pos)
+{
+	if (!project) {
+		return;
+	}
+
+	if (ProjectView *project_view = findProject(project))
+	{
+		activateProject(project);
+		project_view->project()->addNewDiagram(pos);
 	}
 }
 /**

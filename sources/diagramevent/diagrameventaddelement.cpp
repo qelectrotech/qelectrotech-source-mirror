@@ -501,7 +501,12 @@ void DiagramEventAddElement::addElement()
 	}
 	m_diagram->addItem(m_element);
 
+		//Autonum the new element before pushing undo_object, so the counter
+		//change it triggers is part of the same undo macro as the element's
+		//own placement (one Ctrl+Z reverts both, instead of silently
+		//leaving the counter advanced).
+	element->setUpFormula(true, undo_object);
+
 	m_diagram -> undoStack().push(undo_object);
-	element->setUpFormula();
 	element->freezeNewAddedElement();
 }

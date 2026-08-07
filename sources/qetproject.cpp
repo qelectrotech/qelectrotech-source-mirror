@@ -730,6 +730,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 */
 void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
 	m_conductor_autonum.insert(key, context);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -743,6 +744,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 {
 	m_element_autonum.insert(key, context);
 	emit elementAutoNumAdded(key);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -754,6 +756,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 */
 void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
 	m_folio_autonum.insert(key, context);
+	emit autoNumContextUpdated();
 }
 
 /**

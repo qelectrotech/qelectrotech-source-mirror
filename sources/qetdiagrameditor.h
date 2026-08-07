@@ -137,6 +137,7 @@ class QETDiagramEditor : public QETMainWindow
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
+		void addDiagramToProjectAt(QETProject *, int);
 		void removeDiagram(Diagram *);
 		void removeDiagrams(const QList<Diagram *> &diagrams);
 		void removeDiagramFromProject();
@@ -200,7 +201,6 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items
-		*m_project_folio_list,		///< Sommaire des schemas
 		*m_csv_export,			///< generate nomenclature
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item

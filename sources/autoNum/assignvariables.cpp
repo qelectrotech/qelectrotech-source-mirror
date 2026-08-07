@@ -39,6 +39,7 @@ namespace autonum
 	sequentialNumbers::sequentialNumbers(const sequentialNumbers &other)
 	{
 		unit          = other.unit;
+		wrap          = other.wrap;
 		unit_folio    = other.unit_folio;
 		ten           = other.ten;
 		ten_folio     = other.ten_folio;
@@ -57,6 +58,7 @@ namespace autonum
 			return (*this);
 
 		unit          = other.unit;
+		wrap          = other.wrap;
 		unit_folio    = other.unit_folio;
 		ten           = other.ten;
 		ten_folio     = other.ten_folio;
@@ -70,6 +72,7 @@ namespace autonum
 	bool sequentialNumbers::operator==(const sequentialNumbers &other) const
 	{
 		if (unit          == other.unit && \
+			wrap          == other.wrap && \
 			unit_folio    == other.unit_folio && \
 			ten           == other.ten && \
 			ten_folio     == other.ten_folio && \
@@ -107,6 +110,11 @@ namespace autonum
 						    document,
 						    "unit",
 						    unit.join(";")));
+		if (!wrap.isEmpty())
+			element.appendChild(QETXML::textToDomElement(
+						    document,
+						    "wrap",
+						    wrap.join(";")));
 		if (!unit_folio.isEmpty())
 			element.appendChild(QETXML::textToDomElement(
 						    document,
@@ -156,6 +164,11 @@ namespace autonum
 		from = element.firstChildElement("unit");
 		unit = from.text().split(";");
 
+			//Absent from files written before cyclic parts could be
+			//rendered; an empty list is the correct reading of that.
+		from = element.firstChildElement("wrap");
+		wrap = from.text().split(";");
+
 		from = element.firstChildElement("unitFolio");
 		unit_folio = from.text().split(";");
 
@@ -179,6 +192,7 @@ namespace autonum
 	void sequentialNumbers::clear()
 	{
 		unit.clear();
+		wrap.clear();
 		unit_folio.clear();
 		ten.clear();
 		ten_folio.clear();
@@ -434,13 +448,17 @@ namespace autonum
 						qMax(
 							qMax(m_seq_struct.hundred.size(),
 								 m_seq_struct.ten.size()),
-							m_seq_struct.alpha.size())
+							qMax(m_seq_struct.alpha.size(),
+								 m_seq_struct.wrap.size()))
 					);
 
 		for (int i=1; i<=max ; i++)
 		{
 			if (m_assigned_label.contains("%sequ_" + QString::number(i)) && m_seq_struct.unit.size() >= i) {
 				m_assigned_label.replace("%sequ_" + QString::number(i),m_seq_struct.unit.at(i-1));
+			}
+			if (m_assigned_label.contains("%seqw_" + QString::number(i)) && m_seq_struct.wrap.size() >= i) {
+				m_assigned_label.replace("%seqw_" + QString::number(i),m_seq_struct.wrap.at(i-1));
 			}
 			if (m_assigned_label.contains("%seqt_" + QString::number(i)) && m_seq_struct.ten.size() >= i) {
 				m_assigned_label.replace("%seqt_" + QString::number(i),m_seq_struct.ten.at(i-1));
@@ -479,15 +497,26 @@ namespace autonum
 		{
 			if (context.itemAt(i).at(0) == type)
 			{
+				const QStringList item = context.itemAt(i);
+					//A zero-padding mask, spreadsheet style: its length is the
+					//minimum number of digits. It overrides the width implied
+					//by the part type, so "Chiffre 01" with a mask of "0000"
+					//pads to four. An absent mask -- which is every context
+					//written before the field existed -- falls through to the
+					//type's own width, so nothing about existing projects
+					//changes.
+				const QString mask = NumerotationContext::formatOf(item);
 				QString number;
-				if (type == "ten" || type == "tenfolio")
-					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 2, 10, QChar('0'));
-				else if (type == "hundred" || type == "hundredfolio")
-					number = QString("%1").arg(context.itemAt(i).at(1).toInt(), 3, 10, QChar('0'));
-				else if (type == "alpha")
+				if (type == "alpha")
 						//Alphabetic value, not an integer -- used as-is.
-					number = context.itemAt(i).at(1);
-				else number = QString::number(context.itemAt(i).at(1).toInt());
+					number = item.at(1);
+				else if (!mask.isEmpty())
+					number = QString("%1").arg(item.at(1).toInt(), mask.length(), 10, QChar('0'));
+				else if (type == "ten" || type == "tenfolio")
+					number = QString("%1").arg(item.at(1).toInt(), 2, 10, QChar('0'));
+				else if (type == "hundred" || type == "hundredfolio")
+					number = QString("%1").arg(item.at(1).toInt(), 3, 10, QChar('0'));
+				else number = QString::number(item.at(1).toInt());
 					list.append(number);
 			}
 		}
@@ -553,6 +582,10 @@ namespace autonum
 			{
 				autonum::setSequentialToList(seqStruct.unit, context,"unit");
 			}
+			if (label.contains("%seqw_"))
+			{
+				autonum::setSequentialToList(seqStruct.wrap, context,"wrap");
+			}
 			if (label.contains("%sequf_"))
 			{
 				autonum::setSequentialToList(seqStruct.unit_folio, context,"unitfolio");
@@ -594,6 +627,7 @@ namespace autonum
 		QString value;
 		QString formula;
 		int count_unit = 0;
+		int count_wrap = 0;
 		int count_unitf = 0;
 		int count_ten = 0;
 		int count_tenf = 0;
@@ -635,6 +669,10 @@ namespace autonum
 			else if (type == "unit") {
 				count_unit++;
 				formula.append("%sequ_" + QString::number(count_unit));
+			}
+			else if (type == "wrap") {
+				count_wrap++;
+				formula.append("%seqw_" + QString::number(count_wrap));
 			}
 			else if (type == "unitfolio") {
 				count_unitf++;

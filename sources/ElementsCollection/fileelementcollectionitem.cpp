@@ -22,7 +22,39 @@
 #include "../qeticons.h"
 #include "elementslocation.h"
 
+#include <QApplication>
 #include <QDir>
+#include <QPainter>
+#include <QPixmap>
+#include <QStyle>
+
+namespace {
+	/**
+		@return the folder icon overlaid with a small warning badge in the
+		bottom-right corner. Used for a directory whose qet_directory could
+		not be read (@see FileElementCollectionItem::m_qet_directory_unreadable),
+		so the problem is visible in the tree itself and not only on hover
+		via the tooltip. Built once: same folder icon, same badge, every time.
+	*/
+	const QIcon &unreadableFolderIcon()
+	{
+		static const QIcon icon = []() {
+			QPixmap pixmap = QET::Icons::Folder.pixmap(16, 16);
+			const QPixmap badge = QApplication::style()
+				->standardIcon(QStyle::SP_MessageBoxWarning)
+				.pixmap(9, 9);
+
+			QPainter painter(&pixmap);
+			painter.drawPixmap(pixmap.width() - badge.width(),
+					    pixmap.height() - badge.height(),
+					    badge);
+			painter.end();
+
+			return QIcon(pixmap);
+		}();
+		return icon;
+	}
+}
 
 /**
 	@brief FileElementCollectionItem::FileElementCollectionItem
@@ -136,18 +168,41 @@ QString FileElementCollectionItem::localName()
 		}
 		else
 		{
+			// Fall back to the raw directory name (m_path) whenever the
+			// translated name can't be obtained -- qet_directory missing,
+			// unreadable (e.g. a Windows path-encoding issue with special
+			// characters, see bugtracker #332), malformed, or present but
+			// without a usable name entry -- rather than leaving the item
+			// blank.
+			QString display_name;
+			bool readable = false;
 			QString str(fileSystemPath() % "/qet_directory");
 			pugi::xml_document docu;
-			if(docu.load_file(str.toStdWString().c_str()))
+			if (docu.load_file(str.toStdWString().c_str()))
 			{
 				if (QString(docu.document_element().name())
 					== "qet-directory")
 				{
+					readable = true;
 					NamesList nl;
 					nl.fromXml(docu.document_element());
-					setText(nl.name());
+						// Deliberately no fallback argument: a non-empty one
+						// is returned *before* NamesList::name() reaches its
+						// "first available translation" step, so passing
+						// m_path here would replace a perfectly good name in
+						// some other language with the raw directory name.
+						// The fallback belongs after the chain, not inside it.
+					display_name = nl.name();
 				}
 			}
+			setText(display_name.isEmpty() ? m_path : display_name);
+
+				// Only a file-level failure counts: a readable qet-directory
+				// with no entry for the current language is not an error,
+				// NamesList::name() resolves that on its own. Recorded here
+				// and reported by setUpData(), which sets the tooltip after
+				// this runs.
+			m_qet_directory_unreadable = !readable;
 		}
 	}
 	else if (isElement()) {
@@ -350,7 +405,21 @@ void FileElementCollectionItem::setUpData()
 		}
 	}
 
-	setToolTip(collectionPath());
+		// Falling back to the raw directory name keeps the folder usable, but
+		// on its own it hides the fact that a file is broken: the user sees a
+		// plausible name and never learns there is anything to repair. Say so
+		// above the collection path, which stays as the last line the way the
+		// element tooltip above builds it.
+	QStringList tip;
+	if (isDir() && m_qet_directory_unreadable)
+	{
+		tip << QObject::tr("Le fichier « %1 » est absent ou illisible : "
+				   "le nom traduit de ce dossier n'a pas pu être lu, "
+				   "son nom de dossier est affiché à la place.")
+		       .arg(fileSystemPath() % "/qet_directory");
+	}
+	tip << collectionPath();
+	setToolTip(tip.join(QLatin1Char('\n')));
 }
 
 /**
@@ -361,6 +430,19 @@ void FileElementCollectionItem::setUpData()
  */
 void FileElementCollectionItem::setUpIcon()
 {
+		// Must return unconditionally once an icon is set: setIcon() calls
+		// setData(), which emits dataChanged() regardless of whether the new
+		// icon differs from the old one (QIcon has no meaningful equality).
+		// QTreeView responds to dataChanged() by recomputing the row's size
+		// hint, which re-enters data() for this same index -- so without this
+		// guard, any repeated setIcon() here recurses until the stack
+		// overflows. Confirmed by crash report on PR #633.
+		//
+		// This item's m_qet_directory_unreadable is already final by the time
+		// this can run at all: ElementsCollectionModel only attaches itself
+		// to the tree view (making data() reachable) from loadingFinished(),
+		// which fires after the QtConcurrent::map over every item -- this one
+		// included -- has completed. So there is no race to work around here.
 	if (!icon().isNull())
 		return;
 
@@ -380,7 +462,8 @@ void FileElementCollectionItem::setUpIcon()
 	else
 	{
 		if (isDir()) {
-			setIcon(QET::Icons::Folder);
+			setIcon(m_qet_directory_unreadable ? unreadableFolderIcon()
+							    : QET::Icons::Folder);
 		} else {
 			if (m_path.endsWith(".qetmak")) {
 				setIcon(QIcon());
