@@ -149,7 +149,8 @@ void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPo
 		 * A quadrant is just an axis swap, which is exact. */
 	QPointF offset;
 	const int quadrant = qRound(angle / 90.0);
-	if (qFuzzyCompare(angle, quadrant * 90.0))
+	bool exact_quadrant = qFuzzyCompare(angle, quadrant * 90.0);
+	if (exact_quadrant)
 	{
 		switch (((quadrant % 4) + 4) % 4)
 		{
@@ -167,7 +168,40 @@ void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPo
 			delta.x() * qSin(radians) + delta.y() * qCos(radians));
 	}
 
-	m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "pos", QVariant(old_pos), QVariant(pivot + offset), this);
+	QPointF new_pos = pivot + offset;
+	if (exact_quadrant)
+	{
+			/* Swapping X/Y deltas for a 90/270 turn only stays on the
+			 * user's configured grid if xGrid == yGrid. With an
+			 * asymmetric grid (both independently configurable, 1-30 px,
+			 * in Settings) a delta that was a clean multiple of xGrid
+			 * lands on the Y axis after the swap, where the grid unit is
+			 * yGrid -- and 10 is not a multiple of 7. Verified this
+			 * drifts a grid-aligned point off-grid without this snap
+			 * (e.g. xGrid=10/yGrid=7: (100,210) rotates to (225,295),
+			 * x%10==5), and that adding it corrects exactly that case on
+			 * a real build (same inputs land on x%10==0, y%7==0).
+			 *
+			 * For xGrid == yGrid, snapping an already-on-grid point is a
+			 * no-op, so this leaves that case's arithmetic unchanged.
+			 * It does NOT, on its own, guarantee that four consecutive
+			 * 90-degree turns return a selection to its exact starting
+			 * position even on a symmetric grid: each RotateSelectionCommand
+			 * recomputes the pivot fresh from the selection's CURRENT
+			 * sceneBoundingRect(), and an item whose bounding box isn't
+			 * rotationally symmetric (e.g. a wide text label) reports a
+			 * different box, and therefore a different box centre, at 0
+			 * and 90 degrees. That drift is pre-existing -- verified
+			 * identical with and without this change -- and a separate
+			 * problem from the one this fixes: staying on-grid after
+			 * every individual turn is the property that matters day to
+			 * day; bit-exact round-tripping through several consecutive
+			 * rotations is a different, harder guarantee this change
+			 * does not attempt. */
+		new_pos = Diagram::snapToGrid(new_pos);
+	}
+
+	m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "pos", QVariant(old_pos), QVariant(new_pos), this);
 }
 
 /**
