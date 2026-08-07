@@ -370,21 +370,6 @@ void QETDiagramEditor::setUpActions()
 			pv->project()->setAutoConductor(ac);
 	});
 
-		//AutoBreakConductor
-	m_auto_break_conductor = new QAction   (QET::Icons::Conductor, tr("Coupure automatique de conducteur(s)","Tool tip of auto break conductor"), this);
-	m_auto_break_conductor->setStatusTip (tr("Couper automatiquement les conducteurs existants lors du placement d'un élément", "Status tip of auto break conductor"));
-	m_auto_break_conductor->setCheckable (true);
-	{
-		QSettings settings;
-		m_auto_break_conductor->setChecked(settings.value("diagrameditor/auto_break_conductor", false).toBool());
-	}
-	connect(m_auto_break_conductor, &QAction::triggered, [this](bool abc) {
-		QSettings settings;
-		settings.setValue("diagrameditor/auto_break_conductor", abc);
-		if (ProjectView *pv = currentProjectView())
-			pv->project()->setAutoBreakConductor(abc);
-	});
-
 		//Switch background color
 	m_grey_background = new QAction   (QET::Icons::DiagramBg, tr("Couleur de fond blanc/gris","Tool tip of white/grey background button"), this);
 	m_grey_background -> setStatusTip (tr("Affiche la couleur de fond du folio en blanc ou en gris", "Status tip of white/grey background button"));
@@ -824,7 +809,6 @@ void QETDiagramEditor::setUpToolBar()
 	diagram_tool_bar -> addAction (m_edit_diagram_properties);
 	diagram_tool_bar -> addAction (m_conductor_reset);
 	diagram_tool_bar -> addAction (m_auto_conductor);
-	diagram_tool_bar -> addAction (m_auto_break_conductor);
 
 	m_add_item_tool_bar = new QToolBar(tr("Ajouter"), this);
 	m_add_item_tool_bar->setObjectName("adding");
@@ -1912,14 +1896,9 @@ void QETDiagramEditor::slot_updateModeActions()
 	{
 		m_auto_conductor -> setEnabled (true);
 		m_auto_conductor -> setChecked (pv -> project() -> autoConductor());
-		m_auto_break_conductor -> setEnabled (true);
-		m_auto_break_conductor -> setChecked (pv -> project() -> autoBreakConductor());
 	}
 	else
-	{
 		m_auto_conductor -> setDisabled(true);
-		m_auto_break_conductor -> setDisabled(true);
-	}
 }
 
 /**
