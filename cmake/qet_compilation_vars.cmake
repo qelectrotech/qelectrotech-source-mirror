@@ -540,7 +540,6 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/richtext/richtexteditor.cpp
   ${QET_DIR}/sources/richtext/richtexteditor_p.h
-  ${QET_DIR}/sources/richtext/ui_addlinkdialog.h
 
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.cpp
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.h
