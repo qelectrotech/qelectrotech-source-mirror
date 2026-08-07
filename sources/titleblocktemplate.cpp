@@ -26,6 +26,7 @@
 
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <limits>
 /**
 	@brief TitleBlockTemplate::TitleBlockTemplate
 	Constructor
@@ -973,14 +974,20 @@ int TitleBlockTemplate::minimumWidth()
 	// => (1 - (sum(REL)/100))TOT >= sum(ABS)
 	// => TOT >= sum(ABS) / (1 - (sum(REL)/100))
 	// => TOT >= sum(ABS) / ((100 - sum(REL))/100))
-	return(
-		qRound(
-			columnTypeTotal(QET::Absolute)
-			/
-			((100.0 - columnTypeTotal(QET::RelativeToTotalLength))
-			 / 100.0)
-		)
-	);
+	int abs_total = columnTypeTotal(QET::Absolute);
+	qreal denominator = (100.0 - columnTypeTotal(QET::RelativeToTotalLength)) / 100.0;
+
+	if (denominator <= 0.0) {
+		// The relative-to-total-length columns alone already consume
+		// 100% (or more) of the available width, so the formula above
+		// would divide by zero (or go negative). If there are no
+		// absolute-width columns, there is no meaningful minimum width
+		// to enforce; if there are, the template is asking for more
+		// than 100% of its own width, which cannot be satisfied.
+		return abs_total > 0 ? std::numeric_limits<int>::max() : 0;
+	}
+
+	return(qRound(abs_total / denominator));
 }
 
 /**
