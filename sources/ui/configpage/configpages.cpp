@@ -214,7 +214,11 @@ void NewDiagramPage::applyConf()
 		rpw->toSettings(settings, "diagrameditor/defaultreport");
 
 		// default xref properties
-		QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
+		const QHash<QString, XRefProperties> hash_xrp = xrefpw->properties();
+		for (auto it = hash_xrp.constBegin() ; it != hash_xrp.constEnd() ; ++it) {
+			it.value().toSettings(settings,
+						  QStringLiteral("diagrameditor/defaultxref") % it.key());
+		}
 
 		// Global in QSettings speichern
 		QList<Diagram::Guide> current_guides = m_gpw->guides();
