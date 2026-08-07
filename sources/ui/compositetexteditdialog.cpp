@@ -73,6 +73,14 @@ void CompositeTextEditDialog::setUpComboBox(bool is_report)
 		ui -> m_info_cb -> addItem(QETInformation::translatedInfoKey(qstrl[i]),
 								   is_report ? QETInformation::folioReportInfoToVar(qstrl[i]) : QETInformation::elementInfoToVar(qstrl[i]));
 	}
+
+		//Synthetic tokens computed by AssignVariables::replaceVariable() rather
+		//than stored directly in the element's info; not part of elementInfoKeys().
+	if (!is_report)
+	{
+		ui -> m_info_cb -> addItem(tr("Préfixe (-)"), QStringLiteral("%{prefix}"));
+		ui -> m_info_cb -> addItem(tr("Désignation IEC 81346 (=+-)"), QStringLiteral("%{structure_id}"));
+	}
 }
 
 void CompositeTextEditDialog::on_m_info_cb_activated(const QString &arg1)
