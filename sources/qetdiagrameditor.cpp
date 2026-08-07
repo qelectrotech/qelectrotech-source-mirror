@@ -629,6 +629,7 @@ void QETDiagramEditor::setUpActions()
 		//Selections Actions (related to a selected item)
 	m_delete_selection     = m_selection_actions_group.addAction( QET::Icons::EditDelete,        tr("Supprimer")                 );
 	m_rotate_selection     = m_selection_actions_group.addAction( QET::Icons::TransformRotate,   tr("Pivoter")                   );
+	m_rotate_group_selection = m_selection_actions_group.addAction( QET::Icons::TransformRotate, tr("Pivoter le groupe")         );
 	m_rotate_texts         = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, tr("Orienter les textes")       );
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          tr("Retrouver dans le panel")   );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       tr("Éditer l'item sélectionné") );
@@ -636,16 +637,19 @@ void QETDiagramEditor::setUpActions()
 
 	ShortcutManager::instance().registerAction(m_delete_selection, "diagrameditor.delete_selection", tr("Éditeur de schémas"), Qt::Key_Delete);
 	ShortcutManager::instance().registerAction(m_rotate_selection, "diagrameditor.rotate_selection", tr("Éditeur de schémas"), Qt::Key_Space);
+	ShortcutManager::instance().registerAction(m_rotate_group_selection, "diagrameditor.rotate_group_selection", tr("Éditeur de schémas"), Qt::SHIFT | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
+	m_rotate_group_selection->setStatusTip( tr("Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place", "status bar tip"));
 	m_rotate_texts    ->setStatusTip( tr("Pivote les textes sélectionnés à un angle précis", "status bar tip"));
 	m_find_element    ->setStatusTip( tr("Retrouve l'élément sélectionné dans le panel", "status bar tip"));
 
 	m_delete_selection    ->setData("delete_selection");
 	m_rotate_selection    ->setData("rotate_selection");
+	m_rotate_group_selection->setData("rotate_group_selection");
 	m_rotate_texts        ->setData("rotate_selected_text");
 	m_find_element        ->setData("find_selected_element");
 	m_edit_selection      ->setData("edit_selected_element");
@@ -1605,6 +1609,12 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 		if(c->isValid())
 			diagram->undoStack().push(c);
 	}
+	else if (value == "rotate_group_selection")
+	{
+		RotateSelectionCommand *c = new RotateSelectionCommand(diagram, 90, nullptr, true);
+		if(c->isValid())
+			diagram->undoStack().push(c);
+	}
 	else if (value == "rotate_selected_text")
 		diagram->undoStack().push(new RotateTextsCommand(diagram));
 	else if (value == "find_selected_element" && currentElement())
@@ -1739,6 +1749,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_copy
 			    << m_delete_selection
 			    << m_rotate_selection
+			    << m_rotate_group_selection
 			    << m_edit_selection
 			    << m_group_selected_texts;
 		for(QAction *action : action_list)
@@ -1767,6 +1778,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	m_copy             -> setEnabled(copiable_items);
 	m_delete_selection -> setEnabled(!ro && deletable_items);
 	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
+	m_rotate_group_selection -> setEnabled(!ro && diagram_->canRotateSelection());
 
 		//Action that need selected texts or texts group
 	QList<DiagramTextItem *> texts = DiagramContent(diagram_).selectedTexts();
