@@ -39,17 +39,32 @@ m_diagram(diagram)
 
 	if(!m_diagram->isReadOnly())
 	{
-			//Shared pivot for group rotation: the bounding-box center of
-			//everything selected, computed once up front from the
-			//selection as a whole (not just the items that end up being
-			//individually repositioned below).
+			/* Shared pivot for group rotation: the bounding-box centre of
+			 * the whole selection, computed once up front (not just from
+			 * the items that end up being individually repositioned
+			 * below), then snapped to the grid.
+			 *
+			 * The snap is not cosmetic. sceneBoundingRect() is derived
+			 * from font metrics and pen widths, so the raw centre is
+			 * almost never a round number, and rotating a grid-aligned
+			 * element around a fractional pivot moves it off the grid for
+			 * good -- an element at x=100 lands at x=133.78, and no
+			 * further rotation brings it back. Positions are saved with
+			 * QString::number() (%.6g), which hides the floating-point
+			 * noise but preserves the offset, so the diagram is left
+			 * subtly misaligned with no way to repair it from the UI.
+			 * Reported by plc-user from the same problem in the Element
+			 * Editor, discussion #618.
+			 *
+			 * snapToGrid() follows the user's configured X/Y grid rather
+			 * than assuming the 10 px default. */
 		QPointF pivot;
 		if (rotate_as_group)
 		{
 			QRectF bounding_rect;
 			for (QGraphicsItem *item : m_diagram->selectedItems())
 				bounding_rect |= item->sceneBoundingRect();
-			pivot = bounding_rect.center();
+			pivot = Diagram::snapToGrid(bounding_rect.center());
 		}
 
 		for (QGraphicsItem *item : m_diagram->selectedItems())
@@ -124,13 +139,35 @@ m_diagram(diagram)
 void RotateSelectionCommand::addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle)
 {
 	const QPointF old_pos = item->pos();
-	const qreal radians = qDegreesToRadians(angle);
 	const QPointF delta = old_pos - pivot;
-	const QPointF new_pos(
-		pivot.x() + delta.x() * qCos(radians) - delta.y() * qSin(radians),
-		pivot.y() + delta.x() * qSin(radians) + delta.y() * qCos(radians)
-	);
-	m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "pos", QVariant(old_pos), QVariant(new_pos), this);
+
+		/* Exact arithmetic for the right angles instead of qCos()/qSin().
+		 * The rotate actions only ever pass multiples of 90 degrees, and
+		 * at 90 qCos() returns 6.12e-17 rather than 0, so the generic trig
+		 * path introduces error for no benefit: rotating a point through
+		 * four 90 degree steps would not return it to where it started.
+		 * A quadrant is just an axis swap, which is exact. */
+	QPointF offset;
+	const int quadrant = qRound(angle / 90.0);
+	if (qFuzzyCompare(angle, quadrant * 90.0))
+	{
+		switch (((quadrant % 4) + 4) % 4)
+		{
+			case 1:  offset = QPointF(-delta.y(),  delta.x()); break;
+			case 2:  offset = QPointF(-delta.x(), -delta.y()); break;
+			case 3:  offset = QPointF( delta.y(), -delta.x()); break;
+			default: offset = delta;                           break;
+		}
+	}
+	else
+	{
+		const qreal radians = qDegreesToRadians(angle);
+		offset = QPointF(
+			delta.x() * qCos(radians) - delta.y() * qSin(radians),
+			delta.x() * qSin(radians) + delta.y() * qCos(radians));
+	}
+
+	m_undo << new QPropertyUndoCommand(item->toGraphicsObject(), "pos", QVariant(old_pos), QVariant(pivot + offset), this);
 }
 
 /**
