@@ -145,6 +145,34 @@ else()
     )
 endif()
 
+# Optional precompiled headers -- see QET_ENABLE_PCH in
+# cmake/developer_options.cmake for what this trades away.
+#
+# target_precompile_headers() needs CMake 3.16; the project still declares a
+# 3.5 minimum, so guard rather than raise it for an opt-in developer feature.
+#
+# The generator expressions are load-bearing, not decoration: this target also
+# compiles the 18 C files of the bundled LZMA decoder
+# (sources/import/edz/lzma/*.c), and an unguarded list applies to every
+# language in the target, so the Qt headers would reach the C compiler and fail
+# with "unknown type name 'namespace'". $<ANGLE-R> is required because a
+# literal '>' would terminate the generator expression.
+if(QET_ENABLE_PCH)
+    if(CMAKE_VERSION VERSION_LESS 3.16)
+        message(WARNING
+            "QET_ENABLE_PCH needs CMake 3.16 or newer (found ${CMAKE_VERSION}); "
+            "building without precompiled headers.")
+    else()
+        target_precompile_headers(${PROJECT_NAME} PRIVATE
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtCore/QtCore$<ANGLE-R>>"
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtGui/QtGui$<ANGLE-R>>"
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtWidgets/QtWidgets$<ANGLE-R>>"
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtXml/QtXml$<ANGLE-R>>"
+        )
+        message(STATUS "QET_ENABLE_PCH: precompiled headers enabled")
+    endif()
+endif()
+
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
