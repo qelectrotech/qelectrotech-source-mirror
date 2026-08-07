@@ -126,9 +126,9 @@ class Diagram : public QGraphicsScene
 		bool use_border_;
 		bool draw_guides_;
 		QList<Diagram::Guide> m_guides_list;
-	bool draw_terminals_;
-	bool draw_terminal_names_;
-	bool draw_colored_conductors_;
+		bool draw_terminals_;
+		bool draw_terminal_names_;
+		bool draw_colored_conductors_;
 
 		QString m_conductors_autonum_name;
 		DiagramEventInterface *m_event_interface;
