@@ -512,14 +512,14 @@
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="87"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="123"/>
         <source>Réinitialiser à la valeur de départ</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset to the default value</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="60"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="107"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="143"/>
         <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Current meter reading. Enter a new value and press ‘Confirm’ to change it.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="67"/>
@@ -1278,27 +1278,27 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="55"/>
         <source>Enregistrer...</source>
-        <translation type="unfinished"></translation>
+        <translation>Save...</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="72"/>
         <source>Enregistrer le rapport de diagnostic</source>
-        <translation type="unfinished"></translation>
+        <translation>Save the diagnostic report</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="74"/>
         <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Text files (*.txt);;All files (*)</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="84"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="85"/>
         <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to write to the file « %1 ».</translation>
     </message>
 </context>
 <context>
@@ -1993,7 +1993,7 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1690"/>
         <source>Numéroter automatiquement un élément</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatically number an element</translation>
     </message>
 </context>
 <context>
@@ -2563,7 +2563,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="866"/>
         <source>Coller depuis le presse-papiers</source>
-        <translation type="unfinished">Paste from the clipboard</translation>
+        <translation>Paste from the clipboard</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="958"/>
@@ -2815,7 +2815,7 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="318"/>
         <source>Automates (MAE/SPS)</source>
-        <translation type="unfinished"></translation>
+        <translation>PLCs (MAE/SPS)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="341"/>
@@ -3334,12 +3334,12 @@ By importing this file, you confirm that:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Insérer un folio au-dessus</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert a folio number above</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Insérer un folio en dessous</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert a folio number below</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -4976,12 +4976,12 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="38"/>
         <source>Atteindre un élément</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Navigate to an element</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="41"/>
         <source>Nom, label ou information de l&apos;élément…</source>
-        <translation type="unfinished"></translation>
+        <translation>Name, label or information about the element…</translation>
     </message>
 </context>
 <context>
@@ -5612,27 +5612,27 @@ Please use the advanced editor for this.</translation>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="79"/>
         <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le &quot;0&quot; de &quot;0.7&quot;)</source>
-        <translation type="unfinished"></translation>
+        <translation>Set to 0 for a number that only increases by carrying over the next digit in the cycle (e.g. the ‘0’ in ‘0.7’)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="110"/>
         <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
-        <translation type="unfinished"></translation>
+        <translation>The value at which this figure returns to 0 when the previous figure is incremented (0 = no cycle)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
         <source>mod. </source>
-        <translation type="unfinished"></translation>
+        <translation>mod. </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
         <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Display format: a sequence of zeros specifies the minimum number of digits (00 = 07, 000 = 007). Blank = the natural width of the type.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="144"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="127"/>
@@ -5668,7 +5668,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="305"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="495"/>
         <source>Cyclique (modulo)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cyclic (modulo)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="131"/>
@@ -5677,7 +5677,7 @@ Please use the advanced editor for this.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="307"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="477"/>
         <source>Alphabétique</source>
-        <translation type="unfinished"></translation>
+        <translation>Alphabetical</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="132"/>
@@ -6712,23 +6712,24 @@ Do you want to save changes?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="2654"/>
         <source>Rapport de plantage</source>
-        <translation type="unfinished"></translation>
+        <translation>Crash report</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2655"/>
         <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
 Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech did not close correctly the last time it was run.
+Here are the last messages logged before it closed — you can save them to include them in a bug report.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2677"/>
         <source>Rapport de diagnostic</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagnostic report</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2678"/>
         <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
-        <translation type="unfinished"></translation>
+        <translation>This contains the latest log entries for this session. Please check the contents before attaching it to a public bug report.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2758"/>
@@ -7685,13 +7686,13 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="755"/>
         <source>Atteindre un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigate to an element</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="757"/>
         <source>Recherche et sélectionne rapidement un élément du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Quickly search for and select an element in the folio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="813"/>
@@ -7725,25 +7726,25 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="1237"/>
         <source>%n description(s) de police écrite(s) dans un format étranger ou corrompu ont été restaurée(s). Elles seront réécrites dans un format stable au prochain enregistrement du projet.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n font description written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</numerusform>
+            <numerusform>%n font descriptions written in a foreign or corrupted format have been restored. They will be rewritten in a stable format the next time the project is saved.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1245"/>
         <source>%n description(s) de police n&apos;ont pas pu être lue(s) ; la police par défaut sera utilisée pour ces textes.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n font description could not be read; the default font will be used for these texts.</numerusform>
+            <numerusform>%n font descriptions could not be read; the default font will be used for these texts.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1253"/>
         <source>Polices du projet</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Project fonts</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1534"/>
@@ -7950,7 +7951,7 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="272"/>
         <source>Exporter en SVG</source>
-        <translation type="unfinished"></translation>
+        <translation>Export as SVG</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="290"/>
@@ -8430,23 +8431,23 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1412"/>
         <source>Exporter en SVG</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Export as SVG</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1414"/>
         <source>Image SVG (*.svg)</source>
         <comment>filetypes allowed when exporting an element to SVG</comment>
-        <translation type="unfinished"></translation>
+        <translation>SVG image (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1425"/>
         <source>Échec de l&apos;export</source>
-        <translation type="unfinished"></translation>
+        <translation>Export failed</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1426"/>
         <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to write to the file « %1 ».</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1610"/>
@@ -8684,13 +8685,13 @@ the conditions are not valid</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="140"/>
         <source>Enregistrer un rapport de diagnostic...</source>
-        <translation type="unfinished"></translation>
+        <translation>Save a diagnostic report...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="141"/>
         <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Generates a report containing the latest log entries, to be included in a bug report</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="152"/>
@@ -9817,7 +9818,7 @@ What do you wish to do ?</translation>
         <location filename="../sources/conductorautonumerotation.cpp" line="270"/>
         <source>Numéroter automatiquement un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Automatically number a conductor</translation>
     </message>
     <message>
         <location filename="../sources/elementtextsmover.cpp" line="143"/>
