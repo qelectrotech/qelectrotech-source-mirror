@@ -21,6 +21,7 @@
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "qetmessagebox.h"
 #include "qetproject.h"
 #include "singleapplication.h"
 #include "utils/qetsettings.h"
@@ -136,6 +137,11 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			// runs on a background thread referencing the project and races the
 			// process exit (intermittent segfault in QET::writeToFile).
 			QETProject::setBackupEnabled(false);
+			// Answer message boxes instead of showing them: opening a project
+			// saved by an older QElectroTech raises a warning from
+			// QETProject::readProjectXml(), and with nobody able to dismiss it
+			// QDialog::exec() would spin its event loop forever.
+			QET::QetMessageBox::setNonInteractive(true);
 			return CLIExport::run(export_app.arguments());
 		}
 	}
