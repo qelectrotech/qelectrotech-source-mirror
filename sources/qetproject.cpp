@@ -247,7 +247,8 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 
 		//Extract the content of the xml
 	QDomDocument xml_project;
-	if (!xml_project.setContent(file))
+	const QByteArray xml_bytes = file->readAll();
+	if (!QET::isWellFormedXmlByteStream(xml_bytes) || !xml_project.setContent(xml_bytes))
 	{
 		if(opened_here) {
 			file->close();
