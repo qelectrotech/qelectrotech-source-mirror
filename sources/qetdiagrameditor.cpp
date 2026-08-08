@@ -18,6 +18,7 @@
 #include "qetdiagrameditor.h"
 #include <QCoreApplication>
 #include "ElementsCollection/elementscollectionwidget.h"
+#include "ElementsCollection/elementpickerpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "conductornumexport.h"
@@ -665,6 +666,22 @@ void QETDiagramEditor::setUpActions()
 	connect(m_insert_last_element, &QAction::triggered,
 		this, &QETDiagramEditor::insertLastElement);
 	addAction(m_insert_last_element);
+
+		//Cursor-anchored picker. Insert is unbound anywhere in the tree and
+		//reads correctly for the action, which keeps A free for the far more
+		//frequent "place the same symbol again".
+	m_show_element_picker = new QAction(QET::Icons::ElementNew,
+					    tr("Insérer un élément…"), this);
+	m_show_element_picker->setStatusTip(
+		tr("Ouvre le sélecteur d'éléments à la position du curseur",
+		   "status bar tip"));
+	m_show_element_picker->setData("show_element_picker");
+	ShortcutManager::instance().registerAction(
+		m_show_element_picker, "diagrameditor.show_element_picker",
+		tr("Éditeur de schémas"), Qt::Key_Insert);
+	connect(m_show_element_picker, &QAction::triggered,
+		this, &QETDiagramEditor::showElementPicker);
+	addAction(m_show_element_picker);
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
@@ -1700,6 +1717,17 @@ void QETDiagramEditor::slot_updateActions()
 	m_draw_grid->                   setEnabled(opened_diagram);
 	m_draw_guides->                 setEnabled(opened_diagram);
 
+		//Placement needs somewhere to place onto. Both were doing nothing
+		//silently with no folio open, which reads as a broken shortcut rather
+		//than an unavailable one.
+	if (m_show_element_picker) {
+		m_show_element_picker->setEnabled(editable_project && opened_diagram);
+	}
+	if (m_insert_last_element) {
+		m_insert_last_element->setEnabled(editable_project && opened_diagram
+						  && m_last_inserted_element.isElement());
+	}
+
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
@@ -2682,6 +2710,29 @@ void QETDiagramEditor::insertLastElement()
 		return;
 	}
 	insertElementFromCollection(m_last_inserted_element);
+}
+
+/**
+	@brief QETDiagramEditor::showElementPicker
+	Open the element picker where the mouse is.
+
+	Built lazily: most sessions of the diagram editor never open it, and it
+	holds a list view and a model of its own.
+*/
+void QETDiagramEditor::showElementPicker()
+{
+	if (!currentDiagramView()) {
+		return;
+	}
+
+	if (!m_element_picker)
+	{
+		m_element_picker = new ElementPickerPopup(m_element_collection_widget,
+							  this);
+		connect(m_element_picker, &ElementPickerPopup::elementChosen,
+			this, &QETDiagramEditor::insertElementFromCollection);
+	}
+	m_element_picker->popUpAt(QCursor::pos());
 }
 
 /**

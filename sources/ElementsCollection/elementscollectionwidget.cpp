@@ -1081,6 +1081,80 @@ void ElementsCollectionWidget::search()
 }
 
 /**
+	@brief ElementsCollectionWidget::rankedSearch
+	Run the collection search for @a text and return the hits already ordered.
+
+	Shared with the picker popup, which needs the same results but cannot hold
+	model indexes -- its list is not backed by the collection model. Keeping
+	the query here also means the popup does not build a second
+	ElementsCollectionModel, which would double an already slow startup.
+	@param text : search text, "+" separating terms as in the dock
+	@return ranked hits, best first
+*/
+QVector<ElementSearchHit> ElementsCollectionWidget::rankedSearch(const QString &text)
+{
+	QVector<ElementSearchHit> out;
+	if (!m_model || text.size() < 3) {
+		return out;
+	}
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
+	const QStringList terms = text.split("+", QString::SkipEmptyParts);
+#else
+	const QStringList terms = text.split("+", Qt::SkipEmptyParts);
+#endif
+	QModelIndexList matches;
+	for (const QString &t : terms) {
+		matches << m_model->match(m_model->index(0, 0),
+					  Qt::UserRole + 1,
+					  QVariant(t),
+					  -1,
+					  Qt::MatchContains | Qt::MatchRecursive);
+	}
+
+	const QString needle = terms.value(0).toLower();
+	QVector<QPair<int, ElementSearchHit>> scored;
+	QSet<QString> seen;
+
+	for (const QModelIndex &index : matches)
+	{
+		ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+		if (!(eci && eci->isElement())) {
+			continue;
+		}
+		const QString path = eci->collectionPath();
+		if (path.isEmpty() || seen.contains(path)) {
+			continue;
+		}
+		seen.insert(path);
+
+		ElementSearchHit hit;
+		hit.path = path;
+		hit.name = index.data(Qt::DisplayRole).toString();
+		hit.icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
+		QStringList parts;
+		for (QModelIndex p = index.parent(); p.isValid(); p = p.parent()) {
+			parts.prepend(p.data(Qt::DisplayRole).toString());
+		}
+		hit.folder = parts.join(QStringLiteral(" / "));
+
+		const QString hay = index.data(Qt::UserRole + 1).toString().toLower();
+		scored.append({rankMatch(needle, hit.name, hay), hit});
+	}
+
+	std::stable_sort(scored.begin(), scored.end(),
+			 [](const QPair<int, ElementSearchHit> &a,
+			    const QPair<int, ElementSearchHit> &b) {
+				 return a.first > b.first;
+			 });
+	out.reserve(scored.size());
+	for (const auto &p : scored) {
+		out.append(p.second);
+	}
+	return out;
+}
+
+/**
 	@brief ElementsCollectionWidget::rankMatch
 	Score a hit so the list can be ordered by how well it matches.
 

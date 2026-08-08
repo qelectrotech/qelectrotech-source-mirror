@@ -46,6 +46,20 @@ class ElementsTreeView;
 class QListView;
 class QStandardItemModel;
 
+/**
+	@brief One ranked hit from a collection search.
+	Carries everything a result row needs, so a consumer does not have to hold
+	a model index -- which matters for the picker popup, whose list is not
+	backed by the collection model.
+*/
+struct ElementSearchHit
+{
+	QString path;    ///< collection path, enough to build an ElementsLocation
+	QString name;    ///< display name
+	QString folder;  ///< where it lives, for disambiguation
+	QIcon icon;
+};
+
 class ElementsCollectionWidget : public QWidget
 {
 	Q_OBJECT
@@ -59,6 +73,7 @@ class ElementsCollectionWidget : public QWidget
 		void removeProject (QETProject *project);
 		void highlightUnusedElement();
 		void setCurrentLocation(const ElementsLocation &location);
+		QVector<ElementSearchHit> rankedSearch(const QString &text);
 
 	protected:
 		void leaveEvent(QEvent *event) override;
