@@ -99,7 +99,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
-	
+	root_element.setAttribute("rotation_point_center", m_rotation_point_center ? "true" : "false");
+
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
@@ -164,6 +165,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
+	setRotationPointCenter(dom_elmt.attribute("rotation_point_center", "false") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font"))
 	{
@@ -1311,6 +1313,7 @@ void DynamicElementTextItem::parentElementRotationChanged()
 			//We temporally disconnect for not change m_visual_rotation value.
 			//We don't use block signal, because rotationChanged signal is used in other place.
 		disconnect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
+		setTransformOriginPoint(m_rotation_point_center ? boundingRect().center() : QPointF(0, 0));
 		this->setRotation(QET::correctAngle(m_visual_rotation_ref - m_parent_element->rotation(), true));
 		connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
 	}
@@ -1526,3 +1529,13 @@ bool DynamicElementTextItem::keepVisualRotation() const {
 	return m_keep_visual_rotation;
 }
 
+void DynamicElementTextItem::setRotationPointCenter(bool center)
+{
+	if (m_rotation_point_center == center) return;
+	m_rotation_point_center = center;
+	emit rotationPointCenterChanged(center);
+}
+
+bool DynamicElementTextItem::rotationPointCenter() const {
+	return m_rotation_point_center;
+}

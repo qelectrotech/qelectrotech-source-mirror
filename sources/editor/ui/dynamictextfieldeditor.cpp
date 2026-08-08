@@ -140,6 +140,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
+		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
 #ifdef BUILD_WITHOUT_KF5
 #else
 		m_color_kpb -> setColor(m_text_field.data() -> color());
@@ -197,6 +198,7 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [=](){this -> updateForm();});
 
 	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
 	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
@@ -347,8 +349,8 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	}
 }
 
-void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
-	Q_UNUSED(arg1)
+void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(int index) {
+	Q_UNUSED(index)
 
 	QString info = ui -> m_elmt_info_cb -> currentData().toString();
 	for (int i = 0; i < m_parts.length(); i++) {
@@ -485,6 +487,19 @@ void DynamicTextFieldEditor::on_m_keep_visual_rotation_cb_clicked()
 		if(keep != m_parts[i] -> keepVisualRotation()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "keepVisualRotation", m_parts[i] -> frame(), keep);
 			undo -> setText(tr("Modifier la conservation de l'angle"));
+			undoStack().push(undo);
+		}
+	}
+}
+
+void DynamicTextFieldEditor::on_m_rotation_point_center_cb_clicked()
+{
+	bool center = ui->m_rotation_point_center_cb->isChecked();
+
+	for (int i = 0; i < m_parts.length(); i++) {
+		if (center != m_parts[i]->rotationPointCenter()) {
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "rotationPointCenter", m_parts[i]->rotationPointCenter(), center);
+			undo->setText(tr("Modifier le point de rotation d'un champ texte"));
 			undoStack().push(undo);
 		}
 	}
