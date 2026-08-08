@@ -1923,7 +1923,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 	//Manage the close event of project
 	connect(project_view, &ProjectView::projectClosed, this, &QETDiagramEditor::projectWasClosed);
 	//Manage the adding  of diagram
-	connect(project_view, &ProjectView::diagramAdded, this, &QETDiagramEditor::diagramWasAdded);
+	connect(project_view, qOverload<DiagramView*>(&ProjectView::diagramAdded), this, &QETDiagramEditor::diagramWasAdded);
 
 	if (QETProject *project = project_view -> project())
 		connect(project, &QETProject::readOnlyChanged, this, &QETDiagramEditor::slot_updateActions);
