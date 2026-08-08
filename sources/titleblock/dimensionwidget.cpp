@@ -143,7 +143,7 @@ void TitleBlockDimensionWidget::initWidgets()
 		dimension_type_ -> addButton(relative_button_,  QET::RelativeToTotalLength);
 		dimension_type_ -> addButton(remaining_button_, QET::RelativeToRemainingLength);
 		absolute_button_ -> setChecked(true);
-		connect(dimension_type_, SIGNAL(buttonClicked(int)), this, SLOT(updateSpinBoxSuffix()));
+		connect(dimension_type_, qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked), this, &TitleBlockDimensionWidget::updateSpinBoxSuffix);
 	}
 	
 	updateSpinBoxSuffix();
