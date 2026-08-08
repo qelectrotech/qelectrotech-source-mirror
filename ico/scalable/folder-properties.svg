@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-  <polyline points="2.0,14.0 2.0,4.0 8.0,4.0 9.0,6.0 16.0,6.0 16.0,14.0 2.0,14.0" fill="none" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt" stroke-linejoin="miter"/>
-  <rect x="9" y="11" width="12" height="3" rx="0" fill="#fcfcfc"/>
-  <line x1="10.0" y1="12.5" x2="20.0" y2="12.5" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt"/>
-  <circle cx="17" cy="12.5" r="2.4" fill="#4d4d4d"/>
-  <rect x="9" y="16" width="12" height="3" rx="0" fill="#fcfcfc"/>
-  <line x1="10.0" y1="17.5" x2="20.0" y2="17.5" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt"/>
-  <circle cx="13" cy="17.5" r="2.4" fill="#4d4d4d"/>
+  <polyline points="2.0,19.0 2.0,4.0 8.0,4.0 9.0,6.0 20.0,6.0 20.0,19.0 2.0,19.0" fill="none" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="6.0" y1="12.0" x2="16.0" y2="12.0" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt"/>
+  <circle cx="12.8" cy="12" r="2.1" fill="#3daee9"/>
+  <line x1="6.0" y1="16.5" x2="16.0" y2="16.5" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt"/>
+  <circle cx="9.0" cy="16.5" r="2.1" fill="#3daee9"/>
 </svg>
