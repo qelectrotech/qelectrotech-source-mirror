@@ -584,15 +584,15 @@ void TitleBlockTemplateView::init()
 	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Supprimer cette ligne",                    "context menu"), this);
 	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aperçu",     "context menu"), this);
 
-	connect(add_column_before_,    SIGNAL(triggered()), this, SLOT(addColumnBefore()));
-	connect(add_row_before_,       SIGNAL(triggered()), this, SLOT(addRowBefore()));
-	connect(add_column_after_,     SIGNAL(triggered()), this, SLOT(addColumnAfter()));
-	connect(add_row_after_,        SIGNAL(triggered()), this, SLOT(addRowAfter()));
-	connect(edit_column_dim_,      SIGNAL(triggered()), this, SLOT(editColumn()));
-	connect(edit_row_dim_,         SIGNAL(triggered()), this, SLOT(editRow()));
-	connect(delete_column_,        SIGNAL(triggered()), this, SLOT(deleteColumn()));
-	connect(delete_row_,           SIGNAL(triggered()), this, SLOT(deleteRow()));
-	connect(change_preview_width_, SIGNAL(triggered()), this, SLOT(changePreviewWidth()));
+	connect(add_column_before_, &QAction::triggered, this, &TitleBlockTemplateView::addColumnBefore);
+	connect(add_row_before_, &QAction::triggered, this, &TitleBlockTemplateView::addRowBefore);
+	connect(add_column_after_, &QAction::triggered, this, &TitleBlockTemplateView::addColumnAfter);
+	connect(add_row_after_, &QAction::triggered, this, &TitleBlockTemplateView::addRowAfter);
+	connect(edit_column_dim_, &QAction::triggered, this, [this]() { editColumn(); });
+	connect(edit_row_dim_, &QAction::triggered, this, [this]() { editRow(); });
+	connect(delete_column_, &QAction::triggered, this, &TitleBlockTemplateView::deleteColumn);
+	connect(delete_row_, &QAction::triggered, this, &TitleBlockTemplateView::deleteRow);
+	connect(change_preview_width_, &QAction::triggered, this, &TitleBlockTemplateView::changePreviewWidth);
 
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setBackgroundBrush(QBrush(QColor(248, 255, 160)));
@@ -691,7 +691,7 @@ void TitleBlockTemplateView::applyRowsHeights(bool animate) {
 			animation -> setStartValue(QVariant(tbgrid_ -> rowMinimumHeight(ROW_OFFSET + i)));
 			animation -> setEndValue(QVariant(1.0 * heights.at(i)));
 			animation -> setDuration(500);
-			connect(animation, SIGNAL(finished()), this, SLOT(updateRowsHelperCells()));
+			connect(animation, &GridLayoutAnimation::finished, this, &TitleBlockTemplateView::updateRowsHelperCells);
 			animation -> start(QAbstractAnimation::DeleteWhenStopped);
 		}
 

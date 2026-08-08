@@ -411,26 +411,26 @@ void QETTitleBlockTemplateEditor::initActions()
 	ShortcutManager::instance().registerAction(zoom_fit_, "titleblockeditor.zoom_fit", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_9);
 	ShortcutManager::instance().registerAction(zoom_reset_, "titleblockeditor.zoom_reset", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_0);
 
-	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
-	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));
-	connect(open_from_file_,  SIGNAL(triggered()), this,     SLOT(openFromFile()));
-	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
-	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
-	connect(save_as_file_,    SIGNAL(triggered()), this,     SLOT(saveAsFile()));
-	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
-	connect(cut_,             SIGNAL(triggered()), template_edition_area_view_, SLOT(cut()));
-	connect(copy_,            SIGNAL(triggered()), template_edition_area_view_, SLOT(copy()));
-	connect(paste_,           SIGNAL(triggered()), template_edition_area_view_, SLOT(paste()));
-	connect(zoom_in_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomIn()));
-	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
-	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
-	connect(zoom_reset_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomReset()));
-	connect(edit_logos_,      SIGNAL(triggered()), this, SLOT(editLogos()));
-	connect(edit_info_,       SIGNAL(triggered()), this, SLOT(editTemplateInformation()));
-	connect(add_row_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addRowAtEnd()));
-	connect(add_col_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addColumnAtEnd()));
-	connect(merge_cells_,     SIGNAL(triggered()), template_edition_area_view_, SLOT(mergeSelectedCells()));
-	connect(split_cell_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(splitSelectedCell()));
+	connect(new_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::newTemplate);
+	connect(open_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::open);
+	connect(open_from_file_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::openFromFile);
+	connect(save_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::save);
+	connect(save_as_, &QAction::triggered, this, qOverload<>(&QETTitleBlockTemplateEditor::saveAs));
+	connect(save_as_file_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::saveAsFile);
+	connect(quit_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::quit);
+	connect(cut_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::cut);
+	connect(copy_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::copy);
+	connect(paste_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::paste);
+	connect(zoom_in_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomIn);
+	connect(zoom_out_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomOut);
+	connect(zoom_fit_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomFit);
+	connect(zoom_reset_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomReset);
+	connect(edit_logos_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::editLogos);
+	connect(edit_info_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::editTemplateInformation);
+	connect(add_row_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::addRowAtEnd);
+	connect(add_col_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::addColumnAtEnd);
+	connect(merge_cells_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::mergeSelectedCells);
+	connect(split_cell_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::splitSelectedCell);
 }
 
 /**
@@ -595,9 +595,9 @@ void QETTitleBlockTemplateEditor::initLogoManager()
 	logo_manager_ -> setReadOnly(read_only_);
 	connect(
 		logo_manager_,
-		SIGNAL(logosChanged(const TitleBlockTemplate *)),
+		&TitleBlockTemplateLogoManager::logosChanged,
 		template_cell_editor_widget_,
-		SLOT(updateLogosComboBox(const TitleBlockTemplate *))
+		&TitleBlockTemplateCellWidget::updateLogosComboBox
 	);
 }
 

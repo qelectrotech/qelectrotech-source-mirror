@@ -128,9 +128,9 @@ void QTextOrientationSpinBoxWidget::build()
 	
 	// cliquer sur un des carres du QTextOrientationWidget revient a finir une saisie dans le SpinBox
 	connect(orientation_widget_,
-		SIGNAL(orientationChanged(double)),
+		&QTextOrientationWidget::orientationChanged,
 		spin_box_,
-		SIGNAL(editingFinished()));
+		&QDoubleSpinBox::editingFinished);
 	
 	// lorsque l'utilisateur a change l'orientation,
 	// on emet un signal avec la valeur de la nouvelle orientation

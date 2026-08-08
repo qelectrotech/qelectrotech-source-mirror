@@ -79,7 +79,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_diagram->loadCndFolioSeq();
 
 	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
-	connect(m_paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
+	connect(m_paste_here, &QAction::triggered, this, &DiagramView::pasteHere);
 
 	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Collage multiple"), this);
 	connect(m_multi_paste, &QAction::triggered, [this]() {
@@ -89,7 +89,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 
 	// Setup the action to create a template
 	m_create_template = new QAction(tr("Créer un template", "context menu action"), this);
-	connect(m_create_template, SIGNAL(triggered()), this, SLOT(createTemplateFromSelection()));
+	connect(m_create_template, &QAction::triggered, this, &DiagramView::createTemplateFromSelection);
 
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
@@ -98,10 +98,10 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		m_separators.last()->setSeparator(true);
 	}
 
-	connect(m_diagram, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
+	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
 	connect(&(m_diagram -> border_and_titleblock), &BorderTitleBlock::informationChanged, this, &DiagramView::updateWindowTitle);
-	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
+	connect(diagram, &Diagram::findElementRequired, this, &DiagramView::findElementRequired);
 
 	QShortcut *edit_conductor_color_shortcut = new QShortcut(QKeySequence(Qt::Key_F2), this);
 	connect(edit_conductor_color_shortcut, &QShortcut::activated, [this]()

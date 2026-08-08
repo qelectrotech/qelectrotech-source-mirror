@@ -353,13 +353,13 @@ void TitleBlockPropertiesWidget::initDialog(
 				      this);
 
 	connect(m_tbt_edit,
-		SIGNAL(triggered()),
+		&QAction::triggered,
 		this,
-		SLOT(editCurrentTitleBlockTemplate()));
+		&TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate);
 	connect(m_tbt_duplicate,
-		SIGNAL(triggered()),
+		&QAction::triggered,
 		this,
-		SLOT(duplicateCurrentTitleBlockTemplate()));
+		&TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate);
 
 	m_tbt_menu = new QMenu(tr("Title block templates actions"), ui->m_tbt_pb);
 	m_tbt_menu -> addAction(m_tbt_edit);

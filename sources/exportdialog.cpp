@@ -87,8 +87,8 @@ ExportDialog::ExportDialog(
 	deSelectAll -> setText(tr("Tout décocher"));
 	hLayout -> addWidget(selectAll);
 	hLayout -> addWidget(deSelectAll);
-	connect(selectAll,   SIGNAL(clicked()),            this, SLOT(slot_selectAllClicked()));
-	connect(deSelectAll, SIGNAL(clicked()),            this, SLOT(slot_deSelectAllClicked()));
+	connect(selectAll, &QPushButton::clicked, this, &ExportDialog::slot_selectAllClicked);
+	connect(deSelectAll, &QPushButton::clicked, this, &ExportDialog::slot_deSelectAllClicked);
 
 
 	QVBoxLayout *layout = new QVBoxLayout(this);

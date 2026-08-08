@@ -83,13 +83,13 @@ void QETMainWindow::initCommonActions()
 
 	fullscreen_action_ = new QAction(this);
 	updateFullScreenAction();
-	connect(fullscreen_action_, SIGNAL(triggered()), this, SLOT(toggleFullScreen()));
+	connect(fullscreen_action_, &QAction::triggered, this, &QETMainWindow::toggleFullScreen);
 
 	whatsthis_action_ = QWhatsThis::createAction(this);
 
 	about_qet_ = new QAction(QET::Icons::QETLogo, tr("À &propos de QElectroTech"), this);
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
-	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
+	connect(about_qet_, &QAction::triggered, qet_app, &QETApp::aboutQET);
 
 	manual_online_ = new QAction(QET::Icons::QETManual, tr("Manuel en ligne"), this);
 	manual_online_ -> setStatusTip(tr("Lance le navigateur par défaut vers le manuel en ligne de QElectroTech", "status bar tip"));
@@ -135,7 +135,7 @@ void QETMainWindow::initCommonActions()
 
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
-	connect(about_qt_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+	connect(about_qt_, &QAction::triggered, qApp, &QApplication::aboutQt);
 
 	diagnostics_action_ = new QAction(QET::Icons::DialogInformation, tr("Enregistrer un rapport de diagnostic..."), this);
 	diagnostics_action_ -> setStatusTip(tr("Génère un rapport avec les derniers messages de journalisation, pour l'inclure dans un rapport de bug", "status bar tip"));

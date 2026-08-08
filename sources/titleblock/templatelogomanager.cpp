@@ -123,11 +123,10 @@ void TitleBlockTemplateLogoManager::initWidgets()
 	vlayout0_ -> addWidget(logo_box_);
 	setLayout(vlayout0_);
 
-	connect(
-		logos_view_,
-		SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
+	connect(logos_view_,
+		&QListWidget::currentItemChanged,
 		this,
-		SLOT(updateLogoInformations(QListWidgetItem *, QListWidgetItem *))
+		&TitleBlockTemplateLogoManager::updateLogoInformations
 	);
 	connect(add_button_, &QPushButton::released, this, &TitleBlockTemplateLogoManager::addLogo);
 	connect(export_button_, &QPushButton::released, this, &TitleBlockTemplateLogoManager::exportLogo);
@@ -214,9 +213,9 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 			signal_mapper -> setMapping(replace_button, QDialogButtonBox::YesRole);
 			signal_mapper -> setMapping(rename_button,  QDialogButtonBox::NoRole);
 			signal_mapper -> setMapping(cancel_button,  QDialogButtonBox::RejectRole);
-			connect(replace_button, SIGNAL(clicked()), signal_mapper, SLOT(map()));
-			connect(rename_button,  SIGNAL(clicked()), signal_mapper, SLOT(map()));
-			connect(cancel_button,  SIGNAL(clicked()), signal_mapper, SLOT(map()));
+			connect(replace_button, &QPushButton::clicked, signal_mapper, qOverload<>(&QSignalMapper::map));
+			connect(rename_button, &QPushButton::clicked, signal_mapper, qOverload<>(&QSignalMapper::map));
+			connect(cancel_button, &QPushButton::clicked, signal_mapper, qOverload<>(&QSignalMapper::map));
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedInt() always available
 			connect(signal_mapper, SIGNAL(mapped(int)), rename_dialog, SLOT(done(int)));
 
