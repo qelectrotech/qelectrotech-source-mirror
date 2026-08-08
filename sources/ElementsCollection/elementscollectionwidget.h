@@ -43,6 +43,9 @@ class ElementsTreeView;
 	and all action needed to use this widget.
 	This is the element collection widget used in the diagram editor.
 */
+class QListView;
+class QStandardItemModel;
+
 class ElementsCollectionWidget : public QWidget
 {
 	Q_OBJECT
@@ -101,6 +104,10 @@ class ElementsCollectionWidget : public QWidget
 	private:
 		void locationWasSaved(const ElementsLocation& location);
 		void activateIndex(const QModelIndex &index);
+		void showFlatResults(const QModelIndexList &matches, const QString &needle);
+		void clearFlatResults();
+		static int rankMatch(const QString &needle, const QString &name,
+				     const QString &haystack);
 
 
 	private:
@@ -112,6 +119,9 @@ class ElementsCollectionWidget : public QWidget
 		ElementsTreeView *m_tree_view;
 		ElementsTreeView *m_macros_tree_view = nullptr;
 		QTabWidget *m_tab_widget = nullptr;
+			/// Flat ranked results, shown in place of the tree while searching
+		QListView *m_search_results = nullptr;
+		QStandardItemModel *m_search_model = nullptr;
 		QVBoxLayout *m_main_vlayout;
 		QMenu *m_context_menu;
 		QModelIndex m_index_at_context_menu;
