@@ -120,9 +120,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(elements_panel, &ElementsPanel::customContextMenuRequested, this, &ElementsPanelWidget::handleContextMenu);
 	connect(
 		elements_panel,
-		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),
+		&ElementsPanel::requestForTitleBlockTemplate,
 		QETApp::instance(),
-		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
+		[app = QETApp::instance()](const TitleBlockTemplateLocation &location) { app->openTitleBlockTemplate(location); }
 	);
 
 		// manage double click on TreeWidgetItem
