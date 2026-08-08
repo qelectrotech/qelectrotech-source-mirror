@@ -999,34 +999,47 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 	int max_width = tbtemplate_ -> maximumWidth();
 
 	QString min_max_width_sentence;
-	if (min_width != -1 && max_width != -1) {
-		min_max_width_sentence = QString(
-			tr(
-				"Longueur minimale : %1px\nLongueur maximale : %2px\n",
-				"tooltip showing the minimum and/or maximum width of the edited template"
-			)
-		).arg(min_width).arg(max_width);
-	} else if (min_width != -1) {
-		min_max_width_sentence = QString(
-			tr(
-				"Longueur minimale : %1px\n",
-				"tooltip showing the minimum width of the edited template"
-			)
-		).arg(min_width);
-	} else if (max_width != -1) {
-		min_max_width_sentence = QString(
-			tr(
-				"Longueur maximale : %1px\n",
-				"tooltip showing the maximum width of the edited template"
-			)
-		).arg(max_width);
-	} else {
-		min_max_width_sentence = QString(
-			tr(
-				"Longueur non contrainte.\n",
-				"tooltip shown when the edited template has neither a minimum nor a maximum width constraint"
-			)
-		);
+
+	switch (static_cast<TitleBlockTemplate::WidthConstraintCase>(min_width)) {
+		case TitleBlockTemplate::WidthConstraintCase::RelativeWidthExceeds100Percent:
+			// minimumWidth() and maximumWidth() both check infeasibility
+			// first, identically, so max_width reports the same case
+			// here -- no need to check it separately.
+			min_max_width_sentence = tr(
+				"Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.\n",
+				"tooltip warning shown when a template's relative-to-total-length columns alone already exceed 100%% of the total width"
+			);
+			break;
+		case TitleBlockTemplate::WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth:
+			min_max_width_sentence = tr(
+				"Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.\n",
+				"tooltip warning shown when a template's relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns"
+			);
+			break;
+		default:
+			if (min_width != static_cast<int>(TitleBlockTemplate::WidthConstraintCase::Unconstrained)) {
+				min_max_width_sentence += QString(
+					tr(
+						"Longueur minimale : %1px\n",
+						"tooltip showing the minimum width of the edited template"
+					)
+				).arg(min_width);
+			}
+			if (max_width != static_cast<int>(TitleBlockTemplate::WidthConstraintCase::Unconstrained)) {
+				min_max_width_sentence += QString(
+					tr(
+						"Longueur maximale : %1px\n",
+						"tooltip showing the maximum width of the edited template"
+					)
+				).arg(max_width);
+			}
+			if (min_max_width_sentence.isEmpty()) {
+				min_max_width_sentence = tr(
+					"Longueur non contrainte.\n",
+					"tooltip shown when the edited template has neither a minimum nor a maximum width constraint"
+				);
+			}
+			break;
 	}
 
 	// the tooltip may also display the split label for readability purpose
