@@ -22,6 +22,7 @@
 #include "conductorproperties.h"
 #include "dataBase/projectdatabase.h"
 #include "diagram.h"
+#include "diagramcontent.h"
 #include "diagramcontext.h"
 #include "pdf_links.h"
 #include "qetgraphicsitem/conductor.h"
@@ -29,6 +30,8 @@
 #include "qetgraphicsitem/terminal.h"
 #include "qetproject.h"
 #include "titleblockproperties.h"
+#include "undocommand/deleteqgraphicsitemcommand.h"
+#include "undocommand/rotateselectioncommand.h"
 #include "wiringlistexport.h"
 
 // Private Qt PDF engine for drawHyperlink() — see pdf_links / projectprintwindow.
@@ -76,6 +79,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--check-elements", "check"},
 		{"--resave", "resave"},
 		{"--set-titleblock", "settb"},
+		{"--test-ops", "testops"},
 	};
 	return flags;
 }
@@ -668,6 +672,127 @@ int resaveProject(QETProject &project, const QString &output)
 	return 0;
 }
 
+/// Resolve a "select" op's uuid list against @p diagram's elements, clearing
+/// and rebuilding the selection. Unknown uuids are reported, not fatal --
+/// a partially-matched selection is still meaningful to the caller.
+void applySelect(Diagram *diagram, const QJsonArray &uuids)
+{
+	diagram->clearSelection();
+	const QList<Element *> elements = diagram->elements();
+	for (const QJsonValue &v : uuids) {
+		const QUuid target(v.toString());
+		bool found = false;
+		for (Element *e : elements) {
+			if (e->uuid() == target) {
+				e->setSelected(true);
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			err << "test-ops: select -- uuid not found in diagram: "
+				<< v.toString() << "\n";
+		}
+	}
+}
+
+/// Headless, scripted editing for automated regression testing. See
+/// cli_export.h for the op vocabulary and the JSON summary this prints.
+int applyTestOps(QETProject &project, const QString &opsPath, const QString &output)
+{
+	QFile ops_file(opsPath);
+	if (!ops_file.open(QIODevice::ReadOnly)) {
+		err << "Cannot open ops file: " << opsPath << "\n";
+		return 2;
+	}
+	QJsonParseError parse_error;
+	const QJsonDocument ops_doc = QJsonDocument::fromJson(ops_file.readAll(), &parse_error);
+	ops_file.close();
+	if (parse_error.error != QJsonParseError::NoError || !ops_doc.isArray()) {
+		err << "Malformed ops file (expected a JSON array): "
+			<< parse_error.errorString() << "\n";
+		return 2;
+	}
+
+	if (project.diagrams().isEmpty()) {
+		err << "test-ops: project has no diagrams.\n";
+		return 1;
+	}
+	Diagram *diagram = project.diagrams().first();
+
+	int applied = 0;
+	for (const QJsonValue &v : ops_doc.array()) {
+		if (!v.isObject()) {
+			err << "test-ops: skipping non-object op at index " << applied << "\n";
+			continue;
+		}
+		const QJsonObject op = v.toObject();
+		const QString kind = op.value("op").toString();
+
+		if (kind == "select") {
+			applySelect(diagram, op.value("uuids").toArray());
+		}
+		else if (kind == "delete") {
+			DiagramContent dc(diagram);
+			if (DeleteQGraphicsItemCommand::hasNonDeletableTerminal(dc)) {
+				err << "test-ops: delete -- selection has a non-deletable "
+					   "(bridged/multi-level) terminal, refusing.\n";
+				return 1;
+			}
+			diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, dc));
+		}
+		else if (kind == "rotate") {
+			// NOTE: master's RotateSelectionCommand does not yet have the
+			// "rotate as a whole group" mode -- that is PR #660, not
+			// merged at the time this was written. An "as_group" op
+			// argument is deliberately not accepted here rather than
+			// silently ignored, so a caller relying on it fails loudly
+			// instead of getting single-item rotation without noticing.
+			if (op.contains("as_group")) {
+				err << "test-ops: rotate -- \"as_group\" is not supported on this "
+					   "build (needs PR #660, not merged yet).\n";
+				return 2;
+			}
+			const qreal angle = op.contains("angle") ? op.value("angle").toDouble() : 90.0;
+			auto *c = new RotateSelectionCommand(diagram, angle, nullptr);
+			if (c->isValid()) {
+				diagram->undoStack().push(c);
+			} else {
+				err << "test-ops: rotate -- nothing selected, no-op.\n";
+				delete c;
+			}
+		}
+		else if (kind == "undo") {
+			diagram->undoStack().undo();
+		}
+		else if (kind == "redo") {
+			diagram->undoStack().redo();
+		}
+		else {
+			err << "test-ops: unknown op \"" << kind << "\" at index " << applied << "\n";
+			return 2;
+		}
+		++applied;
+	}
+
+	const int save_result = resaveProject(project, output);
+	if (save_result != 0) return save_result;
+
+	int element_count = -1, element_info_count = -1;
+	QSqlQuery ec = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM element"));
+	if (ec.next()) element_count = ec.value(0).toInt();
+	QSqlQuery eic = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM element_info"));
+	if (eic.next()) element_info_count = eic.value(0).toInt();
+
+	QJsonObject summary;
+	summary["ops_applied"] = applied;
+	summary["element_count"] = element_count;
+	summary["element_info_count"] = element_info_count;
+	out << QJsonDocument(summary).toJson(QJsonDocument::Compact) << "\n";
+
+	return 0;
+}
+
 /// Stamp title-block fields onto every folio (and the project default), then
 /// save.  Each assignment is "key=value".  Standard keys map to the documented
 /// title-block fields; "date=today" uses the current date; any other key is
@@ -810,6 +935,19 @@ int run(const QStringList &args)
 	// --info writes JSON to stdout, or to an optional output file.
 	if (format == "info")
 		return exportInfo(project, rest.value(1));
+
+	// --test-ops takes three positional args (project, ops file, output)
+	// rather than the (project, output) shape everything else below
+	// shares, so it must be handled before the generic `output` slot.
+	if (format == "testops") {
+		const QString ops_path = rest.value(1);
+		const QString testops_output = rest.value(2);
+		if (ops_path.isEmpty() || testops_output.isEmpty()) {
+			err << "Usage: qelectrotech --test-ops <project.qet> <ops.json> <output.qet>\n";
+			return 2;
+		}
+		return applyTestOps(project, ops_path, testops_output);
+	}
 
 	const QString output = rest.value(1);
 	if (output.isEmpty()) {
