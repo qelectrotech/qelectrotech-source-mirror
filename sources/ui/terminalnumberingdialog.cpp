@@ -4,6 +4,7 @@
 #include "../diagram.h"
 #include "../qetgraphicsitem/element.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../qet.h"
 #include <QUndoCommand>
 #include <algorithm>
 
@@ -17,6 +18,7 @@ QDialog(parent),
 ui(new Ui::TerminalNumberingDialog)
 {
     ui->setupUi(this);
+    QET::trackDialogGeometry(this);
 }
 
 /**

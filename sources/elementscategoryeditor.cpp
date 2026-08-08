@@ -41,6 +41,7 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &location,
 	m_location(location)
 {
 	setUpWidget();
+	QET::trackDialogGeometry(this);
 
 	if (m_location.isElement()) {
 		QET::QetMessageBox::warning(this,

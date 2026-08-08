@@ -18,6 +18,8 @@
 #ifndef PROPERTIESEDITORDIALOG_H
 #define PROPERTIESEDITORDIALOG_H
 
+#include "../qet.h"
+
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
@@ -61,6 +63,14 @@ class PropertiesEditorDialog : public QDialog
 						| QDialogButtonBox::Reset,
 						this);
 			vlayout->addWidget(button_box);
+
+				// Keyed on the wrapped editor's own class, not this
+				// dialog's -- every instantiation of this constructor
+				// template is the same PropertiesEditorDialog class,
+				// so using its class name here would have every kind
+				// of wrapped editor (conductor properties, element
+				// properties, ...) fight over one saved size.
+			QET::trackDialogGeometry(this, editor->metaObject()->className());
 
 			//Setup connection between button box and the editor
 			connect(button_box,

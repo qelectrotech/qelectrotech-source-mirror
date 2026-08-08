@@ -18,6 +18,7 @@
 #include "thirdpartybinaryinstalldialog.h"
 #include "ui_thirdpartybinaryinstalldialog.h"
 
+#include "../qet.h"
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QDesktopServices>
@@ -32,6 +33,7 @@ ThirdPartyBinaryInstallDialog::ThirdPartyBinaryInstallDialog(const QString &text
 	ui{new Ui::ThirdPartyBinaryInstallDialog}
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	ui->m_label->setText(text);
 
 	connect(ui->m_download_pb, &QPushButton::clicked, [downloadLink](){

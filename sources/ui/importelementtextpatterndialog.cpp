@@ -18,10 +18,12 @@
 #include "importelementtextpatterndialog.h"
 #include "ui_importelementtextpatterndialog.h"
 
+#include "../qet.h"
 ImportElementTextPatternDialog::ImportElementTextPatternDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::ImportElementTextPatternDialog) {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 }
 
 ImportElementTextPatternDialog::~ImportElementTextPatternDialog()

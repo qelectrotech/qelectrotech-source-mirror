@@ -34,6 +34,7 @@ AboutQETDialog::AboutQETDialog(QWidget *parent) :
 	ui(new Ui::AboutQETDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	setAbout();
 	setAuthors();
 	setTranslators();

@@ -19,6 +19,7 @@
 #include "potentialselectordialog.h"
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../qet.h"
 #include "../autoNum/assignvariables.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/conductor.h"
@@ -270,6 +271,7 @@ PotentialSelectorDialog::PotentialSelectorDialog(Conductor *conductor,
 	m_parent_undo(parent_undo)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	m_potential_selector = new NewConductorPotentialSelector(conductor);
 	buildWidget();
 }
@@ -292,6 +294,7 @@ PotentialSelectorDialog::PotentialSelectorDialog(Element *report,
 	m_parent_undo(parent_undo)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	m_potential_selector = new LinkReportPotentialSelector(report);
 	buildWidget();
 }

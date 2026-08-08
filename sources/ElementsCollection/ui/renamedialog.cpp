@@ -20,12 +20,14 @@
 #include <QDate>
 #include "ui_renamedialog.h"
 
+#include "../../qet.h"
 RenameDialog::RenameDialog(QString path, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::RenameDialog),
 	m_path(std::move(path))
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	m_name = m_path.split("/").last();
 	if (m_name.endsWith(".elmt")) m_name.remove(".elmt");
 	ui->m_label->setText(tr("L'élément « %1 » existe déjà. Que souhaitez-vous faire ?").arg(m_path));

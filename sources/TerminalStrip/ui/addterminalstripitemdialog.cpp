@@ -23,6 +23,7 @@
 #include "../GraphicsItem/terminalstripitem.h"
 #include "../../diagram.h"
 
+#include "../../qet.h"
 void AddTerminalStripItemDialog::openDialog(Diagram *diagram, QWidget *parent)
 {
 	AddTerminalStripItemDialog d(diagram->project(), parent);
@@ -46,6 +47,7 @@ AddTerminalStripItemDialog::AddTerminalStripItemDialog(QETProject *project, QWid
 	ui{new Ui::AddTerminalStripItemDialog}
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	fillComboBox();
 }
 
