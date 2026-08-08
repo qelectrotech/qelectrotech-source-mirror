@@ -179,8 +179,8 @@ void QETDiagramEditor::setUpElementsPanel()
 
 	addDockWidget(Qt::LeftDockWidgetArea, qdw_pa);
 
-	connect(pa, SIGNAL(requestForProject                  (QETProject *)), this, SLOT(activateProject(QETProject *)));
-	connect(pa, SIGNAL(requestForProjectClosing           (QETProject *)), this, SLOT(closeProject(QETProject *)));
+	connect(pa, &ElementsPanelWidget::requestForProject, this, qOverload<QETProject*>(&QETDiagramEditor::activateProject));
+	connect(pa, &ElementsPanelWidget::requestForProjectClosing, this, qOverload<QETProject*>(&QETDiagramEditor::closeProject));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, &ElementsPanelWidget::requestForNewDiagram, this, &QETDiagramEditor::addDiagramToProject);
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
@@ -1933,8 +1933,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view)
 		 this, &QETDiagramEditor::findElementInPanel);
 
 	// display error messages sent by the project view
-	connect(project_view, SIGNAL(errorEncountered(QString)),
-		this, SLOT(showError(const QString &)));
+	connect(project_view, &ProjectView::errorEncountered, this, qOverload<const QString&>(&QETDiagramEditor::showError));
 
 	//Highlight the current page
 	connect(project_view, &ProjectView::diagramActivated, this, [this](DiagramView *dv) {
