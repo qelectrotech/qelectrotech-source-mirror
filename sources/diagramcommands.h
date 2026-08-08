@@ -53,6 +53,8 @@ class PasteDiagramCommand : public QUndoCommand {
 	int filter;
 	/// prevent the first call to redo()
 	bool first_redo;
+	/// auto-break conductor sub-commands (created on first redo)
+	QUndoCommand *m_break_cmd = nullptr;
 };
 
 /**
