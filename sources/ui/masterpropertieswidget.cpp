@@ -572,7 +572,6 @@ void MasterPropertiesWidget::updateUi()
 			// Type combo (read-only — type is defined in the editor)
 			auto *type_cb = new QComboBox(m_plc_table);
 			type_cb->setEnabled(false);
-			type_cb->setStyleSheet("QComboBox { background-color: #f0f0f0; }");
 			QStringList plc_types = ElementData::plcIOTypeList();
 			for (int t = 0; t < plc_types.size(); ++t) {
 				type_cb->addItem(plc_types.at(t), t);

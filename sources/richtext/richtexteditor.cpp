@@ -48,6 +48,7 @@
 #include "richtexteditor_p.h"
 #include "ui_addlinkdialog.h"
 #include "../shortcutmanager.h"
+#include "../qet.h"
 
 //#include <QtDesigner/QDesignerFormEditorInterface>
 
@@ -233,6 +234,7 @@ AddLinkDialog::AddLinkDialog(RichTextEditor *editor, QWidget *parent) :
 	m_ui(new Ui::AddLinkDialog)
 {
 	m_ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
@@ -815,6 +817,7 @@ RichTextEditorDialog::RichTextEditorDialog(QWidget *parent)  :
 
 	m_editor->setFocus();
 
+	QET::trackDialogGeometry(this);
 }
 
 RichTextEditorDialog::~RichTextEditorDialog()

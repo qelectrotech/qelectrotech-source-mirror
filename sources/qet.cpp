@@ -22,8 +22,10 @@
 #include <limits>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
+#include <QDialog>
 #include <QFileInfo>
 #include <QSaveFile>
+#include <QSettings>
 #include <QTextStream>
 #include <QRegularExpression>
 #include <QActionGroup>
@@ -250,6 +252,27 @@ bool QET::attributeIsAReal(
 	if (!ok) return(false);
 	if (reel != nullptr) *reel = tmp;
 	return(true);
+}
+
+/**
+	@brief QET::trackDialogGeometry
+	@see the declaration in qet.h for the rationale.
+*/
+void QET::trackDialogGeometry(QDialog *dialog, const QString &key)
+{
+	const QString settings_key = QStringLiteral("dialoggeometry/%1").arg(
+		key.isEmpty() ? QString::fromLatin1(dialog->metaObject()->className()) : key);
+
+	QSettings settings;
+	const QVariant geometry = settings.value(settings_key);
+	if (geometry.isValid()) {
+		dialog->restoreGeometry(geometry.toByteArray());
+	}
+
+	QObject::connect(dialog, &QDialog::finished, dialog, [dialog, settings_key]() {
+		QSettings settings;
+		settings.setValue(settings_key, dialog->saveGeometry());
+	});
 }
 
 /**

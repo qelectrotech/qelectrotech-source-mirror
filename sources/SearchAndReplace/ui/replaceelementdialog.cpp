@@ -24,6 +24,7 @@
 #include "replaceelementdialog.h"
 #include "ui_replaceelementdialog.h"
 
+#include "../../qet.h"
 #include <QAbstractButton>
 
 ReplaceElementDialog::ReplaceElementDialog(DiagramContext context, QWidget *parent) :
@@ -31,6 +32,7 @@ ReplaceElementDialog::ReplaceElementDialog(DiagramContext context, QWidget *pare
 	ui(new Ui::ReplaceElementDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	buildWidget();
 	setContext(context);
 }

@@ -21,6 +21,7 @@
 #include "createdxf.h"
 #include "exportpropertieswidget.h"
 #include "factory/elementpicturefactory.h"
+#include "qet.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
@@ -105,6 +106,8 @@ ExportDialog::ExportDialog(
 	
 	// ajustement des extensions des fichiers
 	slot_changeFilesExtension(true);
+
+	QET::trackDialogGeometry(this);
 }
 
 /**

@@ -17,6 +17,7 @@
 */
 #include "diagnosticsreportdialog.h"
 
+#include "../../qet.h"
 #include "../../qetmessagebox.h"
 
 #include <QDialogButtonBox>
@@ -63,6 +64,8 @@ DiagnosticsReportDialog::DiagnosticsReportDialog(
 	// holds a QString copy but we save the original UTF-8 bytes to avoid
 	// any round-trip surprises.
 	setProperty("qet_report_content", content);
+
+	QET::trackDialogGeometry(this);
 }
 
 void DiagnosticsReportDialog::saveToFile()

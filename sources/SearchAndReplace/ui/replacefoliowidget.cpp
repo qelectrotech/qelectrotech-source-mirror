@@ -18,6 +18,7 @@
 #include "replacefoliowidget.h"
 
 #include "../../ui/diagramcontextwidget.h"
+#include "../../qet.h"
 #include "../searchandreplaceworker.h"
 #include "ui_replacefoliowidget.h"
 
@@ -132,6 +133,8 @@ ReplaceFolioDialog::ReplaceFolioDialog(QWidget *parent) :
 	{
 		this->done(m_button_box->buttonRole(button_));
 	});
+
+	QET::trackDialogGeometry(this);
 }
 
 ReplaceFolioDialog::~ReplaceFolioDialog()

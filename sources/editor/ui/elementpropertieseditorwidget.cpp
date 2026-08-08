@@ -22,6 +22,7 @@
 #include "ui_elementpropertieseditorwidget.h"
 #include "../../qetinformation.h"
 
+#include "../../qet.h"
 #include <QItemDelegate>
 #include <QComboBox>
 #include <QSpinBox>
@@ -83,6 +84,7 @@ ElementPropertiesEditorWidget::ElementPropertiesEditorWidget(ElementData data, Q
 	m_data(data)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	setUpInterface();
 	upDateInterface();
 }

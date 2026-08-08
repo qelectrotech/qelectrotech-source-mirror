@@ -19,6 +19,7 @@
 #include "configdialog.h"
 #include "ui/configpage/configpages.h"
 #include "qetapp.h"
+#include "qet.h"
 
 #include "machine_info.h"
 
@@ -90,6 +91,8 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 		setWindowFlags(Qt::Sheet);
 	}
 #endif
+
+	QET::trackDialogGeometry(this);
 }
 
 /// Destructeur

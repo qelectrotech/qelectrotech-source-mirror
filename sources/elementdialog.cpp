@@ -19,6 +19,7 @@
 
 #include "ElementsCollection/elementcollectionitem.h"
 #include "ElementsCollection/elementscollectionmodel.h"
+#include "qet.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
 #include "qfilenameedit.h"
@@ -40,6 +41,7 @@ ElementDialog::ElementDialog(uint mode, QWidget *parent) :
 {
 	setUpWidget();
 	setUpConnection();
+	QET::trackDialogGeometry(this);
 }
 
 /**
