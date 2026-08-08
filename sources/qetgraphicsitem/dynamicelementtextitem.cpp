@@ -1516,6 +1516,7 @@ void DynamicElementTextItem::setKeepVisualRotation(bool set)
 	emit keepVisualRotationChanged(set);
 	if (set) {
 		m_visual_rotation_ref = this->rotation() + m_parent_element->rotation();
+		setTransformOriginPoint(m_rotation_point_center ? boundingRect().center() : QPointF(0,0));
 		connect(m_parent_element, &Element::rotationChanged, this, &DynamicElementTextItem::parentElementRotationChanged);
 		connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
 	}
@@ -1533,6 +1534,8 @@ void DynamicElementTextItem::setRotationPointCenter(bool center)
 {
 	if (m_rotation_point_center == center) return;
 	m_rotation_point_center = center;
+	if (m_keep_visual_rotation)
+		setTransformOriginPoint(center ? boundingRect().center() : QPointF(0,0));
 	emit rotationPointCenterChanged(center);
 }
 
