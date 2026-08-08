@@ -25,6 +25,7 @@
 
 class QComboBox;
 class QLineEdit;
+class QSpinBox;
 
 namespace Ui {
 	class AutoNumberingDockWidget;
@@ -66,9 +67,27 @@ class AutoNumberingDockWidget : public QDockWidget
 		void on_m_element_value_le_editingFinished();
 		void on_m_folio_value_le_editingFinished();
 
+		void on_m_conductor_increase_sb_valueChanged(int);
+		void on_m_element_increase_sb_valueChanged(int);
+		void on_m_folio_increase_sb_valueChanged(int);
+
+	signals:
+		void folioAutoNumChanged(QString);
 
 	private:
 		enum class AutoNumCategory { Conductor, Element, Folio };
+
+			/// The four widgets that make up one category's row, bundled so
+			/// refreshRow() can be called with just a category instead of
+			/// four pointers that must always be passed in matching sets.
+		struct Row
+		{
+			QComboBox *combo;
+			QLineEdit *value;
+			QSpinBox  *increase;
+			QLineEdit *next;
+		};
+		Row rowFor(AutoNumCategory category) const;
 
 		/**
 			@brief resetAutoNum
@@ -90,6 +109,23 @@ class AutoNumberingDockWidget : public QDockWidget
 			/// Refresh a value field from its context, and apply a typed value.
 		void refreshValueField(QComboBox *combo_box, QLineEdit *line_edit, AutoNumCategory category);
 		void applyValueField(QComboBox *combo_box, QLineEdit *line_edit, AutoNumCategory category);
+
+			/// Refresh/apply the increment spin box the same way.
+		void refreshIncreaseField(QComboBox *combo_box, QSpinBox *increase_sb, AutoNumCategory category);
+		void applyIncreaseField(QComboBox *combo_box, QSpinBox *increase_sb, AutoNumCategory category);
+
+			/// Show what the counter will read after one more step, using
+			/// the same NumerotationContextCommands engine the Suivant
+			/// button in the full configuration dialog already advances
+			/// the whole context with -- so the preview can never disagree
+			/// with what actually happens when the number is next consumed.
+		void refreshNextField(QComboBox *combo_box, QLineEdit *next_edit, AutoNumCategory category);
+
+			/// Refresh a whole row -- value, increment and next-value
+			/// preview -- in one call. Every refresh call site needs the
+			/// increment and preview kept in step with the value now, so
+			/// this replaces refreshValueField() at each of them.
+		void refreshRow(AutoNumCategory category);
 
 		Ui::AutoNumberingDockWidget *ui;
 		QETProject* m_project = nullptr;

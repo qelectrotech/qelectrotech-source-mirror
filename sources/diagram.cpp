@@ -67,6 +67,7 @@ Diagram::Diagram(QETProject *project) :
 	m_project                (project),
 	use_border_              (true),
 	draw_terminals_          (true),
+	draw_terminal_names_     (true),
 	draw_colored_conductors_ (true),
 	m_event_interface        (nullptr),
 	m_freeze_new_elements    (false),
@@ -2319,6 +2320,7 @@ ExportProperties Diagram::applyProperties(
 	old_properties.draw_border = border_and_titleblock.borderIsDisplayed();
 	old_properties.draw_titleblock = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
+	old_properties.draw_terminal_names     = drawTerminalNames();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area = useBorder() ? QET::BorderArea
 						   : QET::ElementsArea;
@@ -2327,6 +2329,7 @@ ExportProperties Diagram::applyProperties(
 	// applique les nouvelles options de rendu
 	setUseBorder             (new_properties.exported_area == QET::BorderArea);
 	setDrawTerminals         (new_properties.draw_terminals);
+	setDrawTerminalNames     (new_properties.draw_terminal_names);
 	setDrawColoredConductors (new_properties.draw_colored_conductors);
 	setDisplayGrid           (new_properties.draw_grid);
 	setDisplayGuides         (new_properties.draw_guides);
@@ -2397,9 +2400,24 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	\~French true pour afficher les bornes, false sinon
 */
 void Diagram::setDrawTerminals(bool dt) {
+	draw_terminals_ = dt;
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
-			t -> setVisible(dt);
+			t -> update();
+		}
+	}
+}
+
+/**
+	@brief Diagram::setDrawTerminalNames
+	Defines whether or not to display the terminal names/labels
+	@param dt : true to display the terminal names, false otherwise
+*/
+void Diagram::setDrawTerminalNames(bool dt) {
+	draw_terminal_names_ = dt;
+	foreach(QGraphicsItem *qgi, items()) {
+		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
+			t -> update();
 		}
 	}
 }

@@ -136,6 +136,12 @@ void QETMainWindow::initCommonActions()
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
 	connect(about_qt_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+
+	diagnostics_action_ = new QAction(QET::Icons::DialogInformation, tr("Enregistrer un rapport de diagnostic..."), this);
+	diagnostics_action_ -> setStatusTip(tr("Génère un rapport avec les derniers messages de journalisation, pour l'inclure dans un rapport de bug", "status bar tip"));
+	connect(diagnostics_action_, &QAction::triggered, this, []() {
+		QETApp::instance()->showDiagnosticsReport();
+	});
 }
 
 /**
@@ -158,6 +164,8 @@ void QETMainWindow::initCommonMenus()
 	help_menu_ -> addAction(donate_);
 	help_menu_ -> addAction(about_qt_);
 	help_menu_ -> addAction(about_qet_);
+	help_menu_ -> addSeparator();
+	help_menu_ -> addAction(diagnostics_action_);
 
 #ifdef Q_OS_WIN32
 upgrade_ -> setVisible(true);

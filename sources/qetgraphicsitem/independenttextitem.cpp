@@ -19,6 +19,7 @@
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../lastusedstyle.h"
 #include "../qet.h"
 #include "../qetapp.h"
 #include "../utils/qetutils.h"
@@ -33,7 +34,10 @@
 IndependentTextItem::IndependentTextItem() :
 	DiagramTextItem(nullptr)
 {
-	setFont(QETApp::indiTextsItemFont());
+		//Start from the font last applied to a text item this session,
+		//falling back to the app-wide Preferences default otherwise.
+	setFont(LastUsedStyle::hasTextFont() ? LastUsedStyle::textFont()
+					      : QETApp::indiTextsItemFont());
 	QSettings settings;
 	setRotation(settings.value("diagrameditor/independent_text_rotation", 0).toInt());
 }

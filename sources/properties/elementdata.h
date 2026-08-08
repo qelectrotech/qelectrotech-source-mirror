@@ -130,6 +130,11 @@ class ElementData : public PropertiesInterface
 			QList<int> columnOrder;                 ///< Column display order (logical indices)
 			bool showHeaders = true;                ///< Show column headers on sheet
 
+			PlcMasterData() {
+				headerFont.setFamily(QString());
+				cellFont.setFamily(QString());
+			}
+
 			bool operator==(const PlcMasterData &other) const {
 				return ios == other.ios
 					&& breakPositions == other.breakPositions
@@ -201,6 +206,8 @@ class ElementData : public PropertiesInterface
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 		QDomElement kindInfoToXml(QDomDocument &document);
+	QDomElement plcMasterDataToXml(QDomDocument &document) const;
+	void plcMasterDataFromXml(const QDomElement &xml_plc);
 
 		void setTerminalType(ElementData::TerminalType t_type);
 		ElementData::TerminalType terminalType() const;

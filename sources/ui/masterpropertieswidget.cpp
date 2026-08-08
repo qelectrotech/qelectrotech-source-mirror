@@ -531,7 +531,7 @@ void MasterPropertiesWidget::updateUi()
 				tr("Commentaire"), tr("Réf. croisée")
 			});
 			m_plc_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-			m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+			m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 			m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 			m_plc_table->setMinimumHeight(200);
 

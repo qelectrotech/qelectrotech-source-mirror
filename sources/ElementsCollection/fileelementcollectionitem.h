@@ -64,6 +64,11 @@ class FileElementCollectionItem : public ElementCollectionItem
 
 	private:
 		QString m_path;
+			/// True when this directory's qet_directory file is missing or
+			/// unreadable, so setUpData() can say so in the tooltip. Recorded
+			/// rather than acted on in localName(), because setUpData() resets
+			/// the tooltip afterwards and would otherwise discard it.
+		bool m_qet_directory_unreadable = false;
 };
 
 #endif // FILEELEMENTCOLLECTIONITEM2_H

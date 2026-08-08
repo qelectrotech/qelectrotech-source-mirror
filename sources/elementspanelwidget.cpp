@@ -61,6 +61,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_edit_prop            = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du projet"),          this);
 	prj_prop_diagram         = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du folio"),       this);
 	prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,              tr("Ajouter un folio"),                this);
+	prj_insert_diagram_above = new QAction(QET::Icons::DiagramAdd,              tr("Insérer un folio au-dessus"),      this);
+	prj_insert_diagram_below = new QAction(QET::Icons::DiagramAdd,              tr("Insérer un folio en dessous"),     this);
 	prj_duplicate_diagram   = new QAction(QET::Icons::IC_CopyFile,              tr("Copier et coller"),               this);
 	prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Supprimer ce folio"),              this);
 	prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
@@ -101,6 +103,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
 	connect(prj_prop_diagram,      SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
 	connect(prj_add_diagram,       SIGNAL(triggered()), this,           SLOT(newDiagram()));
+	connect(prj_insert_diagram_above, SIGNAL(triggered()), this,        SLOT(insertDiagramAbove()));
+	connect(prj_insert_diagram_below, SIGNAL(triggered()), this,        SLOT(insertDiagramBelow()));
 	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
 	connect(prj_duplicate_diagram, SIGNAL(triggered()), this,           SLOT(duplicateDiagram()));
 	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
@@ -242,6 +246,32 @@ void ElementsPanelWidget::newDiagram()
 {
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForNewDiagram(selected_project));
+	}
+}
+
+/**
+	@brief ElementsPanelWidget::insertDiagramAbove
+	Emit requestForNewDiagramAt with the position of the currently
+	selected diagram, inserting the new folio right before it.
+*/
+void ElementsPanelWidget::insertDiagramAbove()
+{
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		QETProject *project = selected_diagram->project();
+		emit(requestForNewDiagramAt(project, project->folioIndex(selected_diagram)));
+	}
+}
+
+/**
+	@brief ElementsPanelWidget::insertDiagramBelow
+	Emit requestForNewDiagramAt with the position right after the
+	currently selected diagram, inserting the new folio right after it.
+*/
+void ElementsPanelWidget::insertDiagramBelow()
+{
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		QETProject *project = selected_diagram->project();
+		emit(requestForNewDiagramAt(project, project->folioIndex(selected_diagram) + 1));
 	}
 }
 
@@ -451,6 +481,8 @@ void ElementsPanelWidget::updateButtons()
 
 			prj_del_diagram           -> setEnabled(is_writable);
 			prj_duplicate_diagram     -> setEnabled(is_writable);
+			prj_insert_diagram_above -> setEnabled(is_writable);
+			prj_insert_diagram_below -> setEnabled(is_writable);
 			prj_move_diagram_up        -> setEnabled(is_writable && min_position > 0);
 			prj_move_diagram_down     -> setEnabled(is_writable && max_position < project_diagrams_count - 1);
 			prj_move_diagram_top      -> setEnabled(is_writable && min_position > 0);
@@ -504,6 +536,8 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			break;
 		case QET::Diagram:
 			context_menu -> addAction(prj_prop_diagram);
+			context_menu -> addAction(prj_insert_diagram_above);
+			context_menu -> addAction(prj_insert_diagram_below);
 			context_menu -> addAction(prj_del_diagram);
 			context_menu -> addAction(prj_duplicate_diagram);
 			context_menu -> addAction(prj_move_diagram_top);

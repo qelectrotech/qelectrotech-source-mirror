@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "logging/eventloopwatchdog.h"
+#include "logging/qetlogger.h"
 #include "machine_info.h"
 #include "qet.h"
 #include "qetapp.h"
@@ -62,131 +64,16 @@ class EarlyFileOpenCatcher : public QObject
 #endif
 
 /**
-	@brief myMessageOutput
-	for debugging
-	@param type : the messages that can be sent to a message handler
-	@param context : were? wat?
-	@param msg : Message
+	@brief qetLogMessageHandler
+	Installed via qInstallMessageHandler(); forwards to QetLogger, which
+	holds all the actual formatting/ring/rotation state. See
+	logging/qetlogger.h for the rationale (discussion #644).
 */
-void myMessageOutput(QtMsgType type,
+void qetLogMessageHandler(QtMsgType type,
 			 const QMessageLogContext &context,
 			 const QString &msg)
 {
-
-	QString txt=QTime::currentTime().toString("hh:mm:ss.zzz");
-	QByteArray dbs =txt.toLocal8Bit();
-	QByteArray localMsg = msg.toLocal8Bit();
-	const char *file = context.file ? context.file : "";
-	const char *function = context.function ? context.function : "";
-
-	switch (type) {
-	case QtDebugMsg:
-		fprintf(stderr,
-			"%s Debug: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Debug: ";
-		break;
-	case QtInfoMsg:
-		fprintf(stderr,
-			"%s Info: %s \n",
-			dbs.constData(),
-			localMsg.constData());
-		txt+=" Info: ";
-		break;
-	case QtWarningMsg:
-		fprintf(stderr,
-			"%s Warning: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file, context.line,
-			function);
-		txt+=" Warning: ";
-		break;
-	case QtCriticalMsg:
-		fprintf(stderr,
-			"%s Critical: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Critical: ";
-		break;
-	case QtFatalMsg:
-		fprintf(stderr,
-			"%s Fatal: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Fatal: ";
-		break;
-	default:
-		fprintf(stderr,
-			"%s Unknown: %s (%s:%u, %s)\n",
-			dbs.constData(),
-			localMsg.constData(),
-			file,
-			context.line,
-			function);
-		txt+=" Unknown: ";
-	}
-	txt+= msg;
-	if(type==QtInfoMsg){
-		txt+=" \n";
-	} else {
-		txt+= " (";
-		txt+= context.file ? context.file : "";
-		txt+= ":";
-		txt+=QString::number(context.line ? context.line :0);
-		txt+= ", ";
-		txt+= context.function ? context.function : "";
-		txt+=")\n";
-	}
-	QFile outFile(QETApp::dataDir()
-			  +"/"
-			  +QDate::currentDate().toString("yyyyMMdd")
-			  +".log");
-	if(outFile.open(QIODevice::WriteOnly | QIODevice::Append))
-	{
-		QTextStream ts(&outFile);
-		ts << txt;
-	}
-	outFile.close();
-}
-
-/**
-	@brief delete_old_log_files
-	delete old log files
-	@param days : max days old
-*/
-void delete_old_log_files(int days)
-{
-	const QDate today = QDate::currentDate();
-	const QString path = QETApp::dataDir() % "/";
-
-	QString filter("%1%1%1%1%1%1%1%1.log"); // pattern
-	filter = filter.arg("[0123456789]"); // valid characters
-
-	Q_FOREACH (auto fileInfo,
-		   QDir(path).entryInfoList(
-			   QStringList(filter),
-			   QDir::Files))
-	{
-		if (fileInfo.lastRead().date().daysTo(today) > days)
-		{
-			QString filepath = fileInfo.absoluteFilePath();
-			QDir deletefile;
-			deletefile.setPath(filepath);
-			deletefile.remove(filepath);
-			qDebug() << "File " % filepath % " is deleted!";
-		}
-	}
+	QetLogger::instance().handleMessage(type, context, msg);
 }
 
 /**
@@ -253,13 +140,25 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 		}
 	}
 
+	// Resolve the logger's state (log directory, session filename, open
+	// file handle) explicitly here, immediately before installing the
+	// handler -- not implicitly on whichever thread happens to log
+	// first. See QetLogger::init().
+	//
 	// Install the log-file message handler BEFORE the application starts:
 	// QETApp's constructor does the whole startup (collections, editor,
 	// opening the projects given on the command line), so installing the
 	// handler afterwards - as was done in the startup worker below - meant
 	// exactly the interesting lines (collection and project load timers)
 	// went to stderr, which is invisible in a Windows GUI session.
-	qInstallMessageHandler(myMessageOutput);
+	QetLogger::instance().init();
+	qInstallMessageHandler(qetLogMessageHandler);
+	// Step 4 (discussion #644): flush the ring to a crash-dump file if
+	// the process dies from here on. Installed right after the ring
+	// exists (init() just constructed it) and as early as reasonably
+	// possible, so it also covers whatever runs between here and
+	// QETApp's own construction below.
+	QetLogger::instance().installCrashHandler();
 
 	SingleApplication app(argc, argv, true);
 #ifdef Q_OS_MACOS
@@ -308,9 +207,16 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 	{
 		qInfo("Start-up");
 		// delete old log files of max 7 days old.
-		delete_old_log_files(7);
+		QetLogger::instance().pruneOldLogFiles(7);
 		MachineInfo::instance()->send_info_to_debug();
 	});
+
+	// Constructed here rather than earlier: start() measures ticks against
+	// the event loop app.exec() is about to run, so there is no point
+	// (and no accurate baseline) before this line.
+	EventLoopWatchdog watchdog;
+	watchdog.start();
+
 	return app.exec();
 }
 
