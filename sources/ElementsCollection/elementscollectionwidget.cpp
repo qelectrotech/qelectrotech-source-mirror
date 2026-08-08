@@ -35,6 +35,12 @@
 
 #include <QCheckBox>
 #include <QDesktopServices>
+#include <QSettings>
+#include <QShortcut>
+#include <QListView>
+#include <QStandardItemModel>
+#include <QSet>
+#include <algorithm>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFileDialog>
@@ -217,8 +223,25 @@ void ElementsCollectionWidget::setUpWidget()
 	m_tab_widget->addTab(m_tree_view, tr("Collections"));
 	m_tab_widget->addTab(m_macros_tree_view, tr("Modèles"));
 
+		//Flat ranked search results.
+		//The tree search hides non-matching rows, so hits stay scattered
+		//through five levels of expanded folders -- searching "diode" leaves
+		//you scrolling a tree to find them. This shows the same matches as a
+		//ranked list instead, and takes the tab widget's place while a search
+		//is active.
+	m_search_model = new QStandardItemModel(this);
+	m_search_results = new QListView(this);
+	m_search_results->setModel(m_search_model);
+	m_search_results->setIconSize(QSize(50, 50));
+	m_search_results->setUniformItemSizes(false);
+	m_search_results->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+	m_search_results->setContextMenuPolicy(Qt::CustomContextMenu);
+	m_search_results->setMouseTracking(true);
+	m_search_results->hide();
+
 	m_main_vlayout->addWidget(m_search_field);
 	m_main_vlayout->addWidget(m_tab_widget);
+	m_main_vlayout->addWidget(m_search_results);
 
 	m_progress_bar = new QProgressBar(this);
 	m_progress_bar->setFormat(QObject::tr("chargement %p% (%v sur %m)"));
@@ -266,15 +289,7 @@ void ElementsCollectionWidget::setUpConnection()
 		this, &ElementsCollectionWidget::dirProperties);
 
 	connect(m_tree_view, &QTreeView::doubleClicked,
-			[this](const QModelIndex &index)
-			{
-				this->m_index_at_context_menu = index ;
-				ElementCollectionItem *eci = elementCollectionItemForIndex(index);
-				if (eci && eci->collectionPath().endsWith(".qetmak")) {
-					return; // Do nothing on double click for macros
-				}
-				this->editElement();
-			});
+			[this](const QModelIndex &index) { this->activateIndex(index); });
 
 	connect(m_tree_view, &QTreeView::entered,
 		[this] (const QModelIndex &index) {
@@ -284,19 +299,58 @@ void ElementsCollectionWidget::setUpConnection()
 			qde->statusBar()->showMessage(eci->localName());
 	});
 
+		//Enter on the highlighted item does the same as a double click, so a
+		//run of elements can be placed without leaving the keyboard. Bound as
+		//a shortcut on the view rather than by reimplementing keyPressEvent,
+		//which would mean subclassing ElementsTreeView for one key.
+	for (const auto key : {Qt::Key_Return, Qt::Key_Enter}) {
+		auto *sc = new QShortcut(QKeySequence(key), m_tree_view);
+		sc->setContext(Qt::WidgetShortcut);
+		connect(sc, &QShortcut::activated, this, [this]() {
+			this->activateIndex(m_tree_view->currentIndex());
+		});
+	}
+
+		//The flat results list carries the collection path directly, so it
+		//does not go through activateIndex() -- there is no tree index behind
+		//a row to look an ElementCollectionItem up from.
+	auto place_from_results = [this](const QModelIndex &index) {
+		const QString path = index.data(Qt::UserRole + 2).toString();
+		if (path.isEmpty()) {
+			return;
+		}
+		ElementsLocation location(path);
+		if (location.exist()) {
+			emit insertElementRequested(location);
+		}
+	};
+	connect(m_search_results, &QListView::doubleClicked, this, place_from_results);
+	for (const auto key : {Qt::Key_Return, Qt::Key_Enter}) {
+		auto *sc = new QShortcut(QKeySequence(key), m_search_results);
+		sc->setContext(Qt::WidgetShortcut);
+		connect(sc, &QShortcut::activated, this, [this, place_from_results]() {
+			place_from_results(m_search_results->currentIndex());
+		});
+	}
+		//Down from the search field moves into the results, so the whole
+		//type-then-place run happens without touching the mouse.
+	auto *to_results = new QShortcut(QKeySequence(Qt::Key_Down), m_search_field);
+	to_results->setContext(Qt::WidgetShortcut);
+	connect(to_results, &QShortcut::activated, this, [this]() {
+		if (!m_search_results->isVisible() || !m_search_model->rowCount()) {
+			return;
+		}
+		m_search_results->setFocus();
+		if (!m_search_results->currentIndex().isValid()) {
+			m_search_results->setCurrentIndex(m_search_model->index(0, 0));
+		}
+	});
+
 	connect(m_macros_tree_view, &QTreeView::customContextMenuRequested,
 			this, &ElementsCollectionWidget::customContextMenu);
 
 	connect(m_macros_tree_view, &QTreeView::doubleClicked,
-			[this](const QModelIndex &index)
-			{
-				this->m_index_at_context_menu = index ;
-				ElementCollectionItem *eci = elementCollectionItemForIndex(index);
-				if (eci && eci->collectionPath().endsWith(".qetmak")) {
-					return; // Do nothing on double click for macros
-				}
-				this->editElement();
-			});
+			[this](const QModelIndex &index) { this->activateIndex(index); });
 
 	connect(m_macros_tree_view, &QTreeView::entered,
 		[this] (const QModelIndex &index) {
@@ -403,6 +457,60 @@ void ElementsCollectionWidget::openDir()
 		QDesktopServices::openUrl(QUrl("file:///" + static_cast<XmlProjectElementCollectionItem*>(eci)->project()->currentDir()));
 #endif
 
+}
+
+/**
+	@brief ElementsCollectionWidget::activateIndex
+	What a double click (or Enter) on @a index does.
+
+	Historically this opened the element editor, which is the slowest action
+	available on a symbol you are most likely about to place. Placing is now
+	the default and editing has moved to the context menu, where it already
+	was. The old behaviour is preserved behind a preference for anyone who
+	relies on it.
+	@param index
+*/
+void ElementsCollectionWidget::activateIndex(const QModelIndex &index)
+{
+	m_index_at_context_menu = index;
+
+	ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+	if (!eci) {
+		return;
+	}
+	//Macros are placed, never edited, and were already skipped here.
+	const bool is_macro = eci->collectionPath().endsWith(".qetmak");
+
+	QSettings settings;
+	const bool insert = settings.value(
+		QStringLiteral("elementscollection/double-click-inserts"), true).toBool();
+
+	if (insert) {
+		insertCurrentElement();
+		return;
+	}
+	if (!is_macro) {
+		editElement();
+	}
+}
+
+/**
+	@brief ElementsCollectionWidget::insertCurrentElement
+	Ask for the current item to be placed on the folio.
+*/
+void ElementsCollectionWidget::insertCurrentElement()
+{
+	ElementCollectionItem *eci =
+		elementCollectionItemForIndex(m_index_at_context_menu);
+	if (!(eci && eci->isElement())) {
+		return;
+	}
+
+	ElementsLocation location(eci->collectionPath());
+	if (!location.exist()) {
+		return;
+	}
+	emit insertElementRequested(location);
 }
 
 /**
@@ -922,6 +1030,7 @@ void ElementsCollectionWidget::search()
 		//Reset the search
 	if (text.isEmpty())
 	{
+		clearFlatResults();
 		QModelIndex current_index = m_tree_view->currentIndex();
 		m_tree_view->reset();
 
@@ -948,7 +1057,6 @@ void ElementsCollectionWidget::search()
 		return;
 	}
 
-	hideCollection(true);
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
 	const QStringList text_list = text.split("+", QString::SkipEmptyParts);
 #else
@@ -969,8 +1077,188 @@ void ElementsCollectionWidget::search()
 						  | Qt::MatchRecursive);
 	}
 
-	for(QModelIndex index : match_index)
-		showAndExpandItem(index);
+	showFlatResults(match_index, text_list.value(0));
+}
+
+/**
+	@brief ElementsCollectionWidget::rankedSearch
+	Run the collection search for @a text and return the hits already ordered.
+
+	Shared with the picker popup, which needs the same results but cannot hold
+	model indexes -- its list is not backed by the collection model. Keeping
+	the query here also means the popup does not build a second
+	ElementsCollectionModel, which would double an already slow startup.
+	@param text : search text, "+" separating terms as in the dock
+	@return ranked hits, best first
+*/
+QVector<ElementSearchHit> ElementsCollectionWidget::rankedSearch(const QString &text)
+{
+	QVector<ElementSearchHit> out;
+	if (!m_model || text.size() < 3) {
+		return out;
+	}
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
+	const QStringList terms = text.split("+", QString::SkipEmptyParts);
+#else
+	const QStringList terms = text.split("+", Qt::SkipEmptyParts);
+#endif
+	QModelIndexList matches;
+	for (const QString &t : terms) {
+		matches << m_model->match(m_model->index(0, 0),
+					  Qt::UserRole + 1,
+					  QVariant(t),
+					  -1,
+					  Qt::MatchContains | Qt::MatchRecursive);
+	}
+
+	const QString needle = terms.value(0).toLower();
+	QVector<QPair<int, ElementSearchHit>> scored;
+	QSet<QString> seen;
+
+	for (const QModelIndex &index : matches)
+	{
+		ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+		if (!(eci && eci->isElement())) {
+			continue;
+		}
+		const QString path = eci->collectionPath();
+		if (path.isEmpty() || seen.contains(path)) {
+			continue;
+		}
+		seen.insert(path);
+
+		ElementSearchHit hit;
+		hit.path = path;
+		hit.name = index.data(Qt::DisplayRole).toString();
+		hit.icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
+		QStringList parts;
+		for (QModelIndex p = index.parent(); p.isValid(); p = p.parent()) {
+			parts.prepend(p.data(Qt::DisplayRole).toString());
+		}
+		hit.folder = parts.join(QStringLiteral(" / "));
+
+		const QString hay = index.data(Qt::UserRole + 1).toString().toLower();
+		scored.append({rankMatch(needle, hit.name, hay), hit});
+	}
+
+	std::stable_sort(scored.begin(), scored.end(),
+			 [](const QPair<int, ElementSearchHit> &a,
+			    const QPair<int, ElementSearchHit> &b) {
+				 return a.first > b.first;
+			 });
+	out.reserve(scored.size());
+	for (const auto &p : scored) {
+		out.append(p.second);
+	}
+	return out;
+}
+
+/**
+	@brief ElementsCollectionWidget::rankMatch
+	Score a hit so the list can be ordered by how well it matches.
+
+	The tree search treats every hit equally, which is fine when they stay in
+	place but useless in a ranked list: typing "diode" should not put an
+	element whose *description* mentions diodes above one actually called
+	"Diode". Name beats element-info field, earlier beats later, shorter beats
+	longer.
+	@param needle : lower-cased search text
+	@param name : the element's display name
+	@param haystack : the full indexed string (name + every info field)
+	@return a score, higher is better
+*/
+int ElementsCollectionWidget::rankMatch(const QString &needle,
+					const QString &name,
+					const QString &haystack)
+{
+	const QString n = name.toLower();
+	int score = 0;
+
+	if (n == needle) {
+		score = 1000;
+	} else if (n.startsWith(needle)) {
+		score = 800;
+	} else if (n.contains(needle)) {
+		score = 600 - qMin(n.indexOf(needle), 99);
+	} else if (haystack.contains(needle)) {
+			//Matched only on an info field -- manufacturer, reference,
+			//description. Still a real hit, just a weaker one.
+		score = 300;
+	}
+		//Among equally-placed hits prefer the shorter name: "Diode" over
+		//"Diode Zener bidirectional".
+	return score - qMin(n.size(), 99);
+}
+
+/**
+	@brief ElementsCollectionWidget::showFlatResults
+	Replace the tree with a ranked flat list of @a matches.
+	@param matches : indexes returned by the model search
+	@param needle : the search text, for ranking
+*/
+void ElementsCollectionWidget::showFlatResults(const QModelIndexList &matches,
+					       const QString &needle)
+{
+	m_search_model->clear();
+
+	const QString lower = needle.toLower();
+	QVector<QPair<int, QStandardItem *>> scored;
+	QSet<QString> seen;
+
+	for (const QModelIndex &index : matches)
+	{
+		ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+		if (!(eci && eci->isElement())) {
+			continue;
+		}
+		const QString path = eci->collectionPath();
+			//match() is run once per "+"-separated term, so the same element
+			//can arrive several times.
+		if (path.isEmpty() || seen.contains(path)) {
+			continue;
+		}
+		seen.insert(path);
+
+		const QString name = index.data(Qt::DisplayRole).toString();
+		const QString hay = index.data(Qt::UserRole + 1).toString().toLower();
+
+		auto *item = new QStandardItem(name);
+		item->setIcon(qvariant_cast<QIcon>(index.data(Qt::DecorationRole)));
+		item->setEditable(false);
+			//Where it lives, so two similarly-named symbols are tellable apart
+		QStringList parts;
+		for (QModelIndex p = index.parent(); p.isValid(); p = p.parent()) {
+			parts.prepend(p.data(Qt::DisplayRole).toString());
+		}
+		item->setToolTip(parts.join(QStringLiteral(" / ")));
+		item->setData(path, Qt::UserRole + 2);
+
+		scored.append({rankMatch(lower, name, hay), item});
+	}
+
+	std::stable_sort(scored.begin(), scored.end(),
+			 [](const QPair<int, QStandardItem *> &a,
+			    const QPair<int, QStandardItem *> &b) {
+				 return a.first > b.first;
+			 });
+	for (const auto &p : scored) {
+		m_search_model->appendRow(p.second);
+	}
+
+	m_tab_widget->hide();
+	m_search_results->show();
+}
+
+/**
+	@brief ElementsCollectionWidget::clearFlatResults
+	Put the tree back when the search field is emptied.
+*/
+void ElementsCollectionWidget::clearFlatResults()
+{
+	m_search_model->clear();
+	m_search_results->hide();
+	m_tab_widget->show();
 }
 
 /**

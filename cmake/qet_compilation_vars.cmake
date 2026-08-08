@@ -411,6 +411,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementcollectionitem.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.h
+  ${QET_DIR}/sources/ElementsCollection/elementpickerpopup.cpp
+  ${QET_DIR}/sources/ElementsCollection/elementpickerpopup.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.h
   ${QET_DIR}/sources/ElementsCollection/elementslocation.cpp
