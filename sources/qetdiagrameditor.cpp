@@ -183,7 +183,7 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, &ElementsPanelWidget::requestForProjectClosing, this, qOverload<QETProject*>(&QETDiagramEditor::closeProject));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition (QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, &ElementsPanelWidget::requestForNewDiagram, this, &QETDiagramEditor::addDiagramToProject);
-	connect(pa, &ElementsPanelWidget::requestForNewDiagram, this, &QETDiagramEditor::addDiagramToProjectAt);
+	connect(pa, &ElementsPanelWidget::requestForNewDiagramAt, this, &QETDiagramEditor::addDiagramToProjectAt);
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition (Diagram *)), this, SLOT(editDiagramProperties(Diagram *)));
 	connect(pa, &ElementsPanelWidget::requestForDiagramsDeletion, this, &QETDiagramEditor::removeDiagrams);
 	connect(pa, &ElementsPanelWidget::requestForDiagramMoveUp, this, &QETDiagramEditor::moveDiagramUp);
