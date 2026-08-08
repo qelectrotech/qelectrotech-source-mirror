@@ -19,6 +19,7 @@
 
 #include "ElementsCollection/elementcollectionitem.h"
 #include "ElementsCollection/elementscollectionmodel.h"
+#include "ElementsCollection/elementstreeview.h"
 #include "NameList/ui/namelistwidget.h"
 #include "editor/ui/qetelementeditor.h"
 #include "qetmessagebox.h"
@@ -85,7 +86,7 @@ QWizardPage *NewElementWizard::buildStep1()
 	page -> setSubTitle(tr("Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 
-	m_tree_view = new QTreeView(this);
+	m_tree_view = new ElementsTreeView(this);
 
 	m_model = new ElementsCollectionModel(m_tree_view);
 	m_model->hideElement();
