@@ -55,9 +55,9 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 		this, 
 		&PartText::adjustItemPosition);
 	connect(document(),
-		SIGNAL(contentsChanged()),
+		&QTextDocument::contentsChanged,
 		this,
-		SLOT(adjustItemPosition()));
+		[this]() { adjustItemPosition(); });
 }
 
 /// Destructeur

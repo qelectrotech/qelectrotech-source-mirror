@@ -98,7 +98,7 @@ ExportDialog::ExportDialog(
 	layout -> addWidget(buttons);
 	
 	// connexions signaux/slots
-	connect(epw,     SIGNAL(formatChanged()),       this, SLOT(slot_changeFilesExtension()));
+	connect(epw, &ExportPropertiesWidget::formatChanged, this, [this]() { slot_changeFilesExtension(); });
 	connect(epw, &ExportPropertiesWidget::exportedAreaChanged, this, &ExportDialog::slot_changeUseBorder);
 	connect(buttons, &QDialogButtonBox::accepted, this, &ExportDialog::slot_export);
 	connect(buttons, &QDialogButtonBox::rejected, this, &ExportDialog::reject);
