@@ -1303,6 +1303,12 @@ bool QETDiagramEditor::addProject(QETProject *project, bool update_panel)
 
 	undo_group.addStack(project -> undoStack());
 
+	connect(project, &QETProject::projectModified, this, [this](QETProject *modified_project, bool) {
+		if (modified_project == currentProject()) {
+			updateWindowModifiedState();
+		}
+	});
+
 	m_element_collection_widget->addProject(project);
 
 	// met a jour le panel d'elements
@@ -2597,6 +2603,7 @@ void QETDiagramEditor::subWindowActivated(QMdiSubWindow *subWindows)
 	slot_updateWindowsMenu();
 	emit syncElementsPanel();
 	updateUsageTrackersActiveState();
+	updateWindowModifiedState();
 }
 
 /**
@@ -2619,6 +2626,32 @@ void QETDiagramEditor::updateUsageTrackersActiveState()
 		if (QETProject *project = project_view->project()) {
 			project->projectPropertiesHandler().usageTracker().setActive(project == active_project);
 		}
+	}
+}
+
+/**
+	@brief QETDiagramEditor::updateWindowModifiedState
+	Reflect the currently active project's unsaved-changes state in the
+	main window's title and native "document modified" indicator (e.g.
+	the dot in the close button on macOS). Called whenever the active
+	project changes, or whenever the active project's own modified state
+	changes.
+
+	The window title's "[*]" placeholder is Qt's own convention: combined
+	with setWindowModified(), it lets each platform render the modified
+	indicator its own way (or not at all, on platforms without one)
+	without QET having to draw anything itself.
+*/
+void QETDiagramEditor::updateWindowModifiedState()
+{
+	if (QETProject *project = currentProject()) {
+		setWindowTitle(QString("%1[*] - %2").arg(
+			project->pathNameTitle(),
+			tr("QElectroTech", "window title")));
+		setWindowModified(project->projectOptionsWereModified());
+	} else {
+		setWindowTitle(tr("QElectroTech", "window title"));
+		setWindowModified(false);
 	}
 }
 
