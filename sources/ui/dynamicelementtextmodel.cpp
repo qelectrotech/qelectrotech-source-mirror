@@ -1686,9 +1686,37 @@ QWidget *DynamicTextItemDelegate::createEditor(
 		}
 		case DynamicElementTextModel::color:
 		{
-			QColorDialog *cd = new QColorDialog(index.data(Qt::EditRole).value<QColor>(), parent);
-			cd->setObjectName("color_dialog");
-			return cd;
+				/* Like the font case above: run the dialog synchronously via
+				 * its static convenience function and stash the result on a
+				 * plain placeholder widget, rather than handing back the
+				 * QColorDialog itself as the item view's "editor".
+				 *
+				 * The item view's own Enter/Escape handling (the base
+				 * QStyledItemDelegate::eventFilter(), since "color_dialog"
+				 * isn't one of the objectNames special-cased in this
+				 * delegate's own eventFilter() above) treats whatever
+				 * createEditor() returned as a small inline editor it
+				 * commits and destroys directly on a key press. A QColorDialog
+				 * is not that: on Windows it can hand off to the native
+				 * color picker, whose own accept/close path then races the
+				 * view's -- pressing Enter fired both, one tearing down an
+				 * object the other was still using (case #323 on the bug
+				 * tracker: "QObject::installEventFilter(): Cannot filter
+				 * events for objects in a different thread" immediately
+				 * followed by a segfault; clicking the dialog's own OK
+				 * button with the mouse didn't reach the view's key
+				 * handling, so it didn't crash). Resolving the dialog
+				 * before returning removes the second, competing teardown
+				 * path entirely. */
+			QColor color = QColorDialog::getColor(index.data(Qt::EditRole).value<QColor>(), parent);
+			QWidget *w = new QWidget(parent);
+			if (color.isValid())
+			{
+				w->setProperty("color", color);
+				w->setProperty("ok", true);
+			}
+			w->setObjectName("color_dialog");
+			return w;
 		}
 		case DynamicElementTextModel::pos:
 		{
@@ -1788,15 +1816,15 @@ void DynamicTextItemDelegate::setModelData(
 			{
 				if(QStandardItem *qsi = qsim->itemFromIndex(index))
 				{
-					QColorDialog *cd = static_cast<QColorDialog *> (editor);
-					if (cd->result() == QDialog::Accepted)
+					if (editor->property("ok").toBool() == true)
 					{
-						qsi->setData(cd->selectedColor(), Qt::EditRole);
-						qsi->setData(cd->selectedColor(), Qt::ForegroundRole);
+						QColor color = editor->property("color").value<QColor>();
+						qsi->setData(color, Qt::EditRole);
+						qsi->setData(color, Qt::ForegroundRole);
 					}
 					return;
 				}
-				
+
 			}
 		}
 		else if (editor->objectName() == "info_text")
