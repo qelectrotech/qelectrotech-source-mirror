@@ -199,19 +199,21 @@ void Terminal::paint(
 
 	// dessin de la borne en rouge
 	// draw the terminal in red
-	t.setColor(Qt::red);
-	painter -> setPen(t);
-	painter -> drawLine(c, e);
+	if (!diagram() || diagram()->drawTerminals()) {
+		t.setColor(Qt::red);
+		painter -> setPen(t);
+		painter -> drawLine(c, e);
 
-	// dessin du point d'amarrage au conducteur en bleu
-	// draw the docking point to the conductor in blue
-	t.setColor(m_hovered_color);
-	painter -> setPen(t);
-	painter -> setBrush(m_hovered_color);
-	if (m_hovered) {
-		painter -> setRenderHint(QPainter::Antialiasing, true);
-		painter -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
-	} else painter -> drawPoint(c);
+		// dessin du point d'amarrage au conducteur en bleu
+		// draw the docking point to the conductor in blue
+		t.setColor(m_hovered_color);
+		painter -> setPen(t);
+		painter -> setBrush(m_hovered_color);
+		if (m_hovered) {
+			painter -> setRenderHint(QPainter::Antialiasing, true);
+			painter -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
+		} else painter -> drawPoint(c);
+	}
 
 	//Draw help line if needed,
 	if (diagram() && m_draw_help_line)
@@ -273,9 +275,10 @@ void Terminal::paint(
 		m_help_line_a -> setLine(line);
 	}
 
-	// Draw label if show_name is enabled
+	// Draw label if show_name is enabled and terminal names are allowed
 	const QString display_name = name();
-	if (d->m_show_name && !display_name.isEmpty()) {
+	if (d->m_show_name && !display_name.isEmpty()
+		&& (!diagram() || diagram()->drawTerminalNames())) {
 		painter->setRenderHint(QPainter::Antialiasing, true);
 		painter->setRenderHint(QPainter::TextAntialiasing, true);
 		painter->setFont(d->m_label_font);
