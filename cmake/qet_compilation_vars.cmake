@@ -686,6 +686,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagramselection.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
+  ${QET_DIR}/sources/ui/backuprestoredialog.cpp
+  ${QET_DIR}/sources/ui/backuprestoredialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.cpp

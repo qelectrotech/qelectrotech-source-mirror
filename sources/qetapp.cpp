@@ -47,14 +47,19 @@
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
+#include <QDateTime>
+#include <QFileInfo>
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+
+#include <algorithm>
 #ifdef BUILD_WITHOUT_KF5
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
 #endif
+#include "ui/backuprestoredialog.h"
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::m_overrided_common_elements_dir = QString();
@@ -2549,8 +2554,10 @@ void QETApp::buildSystemTrayMenu()
 
 /**
 	@brief QETApp::checkBackupFiles
-	Check for backup files.
-	If backup was found, open a dialog and ask user what to do.
+	Check for backup files. Several may belong to the same crashed project
+	(@see QETProject::writeBackup's rotating generations); group them by the
+	project they recover and let the user pick a generation per project,
+	defaulting to the most recent one.
 */
 void QETApp::checkBackupFiles()
 {
@@ -2584,43 +2591,43 @@ void QETApp::checkBackupFiles()
 		return;
 	}
 
-	QString text;
-	if(stale_files.size() == 1) {
-		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
-					   "Voulez-vous l'ouvrir ?</b><br>"));
-	} else {
-		text.append(tr("<b>Les fichiers de restauration suivant on été trouvé,<br>"
-					   "Voulez-vous les ouvrir ?</b><br>"));
+		//Group the recovery generations by the project they belong to,
+		//newest generation first.
+	QHash<QString, QList<KAutoSaveFile *>> groups;
+	for (KAutoSaveFile *kasf : stale_files) {
+		groups[kasf->managedFile().path()].append(kasf);
 	}
-	for(const KAutoSaveFile *kasf : stale_files)
-	{
-#	ifdef Q_OS_WIN
-	//Remove the first character '/' before the name of the drive
-	text.append("<br>" + kasf->managedFile().path().remove(0,1));
-#	else
-	text.append("<br>" + kasf->managedFile().path());
-#	endif
+	for (auto &generations : groups) {
+		std::sort(generations.begin(), generations.end(),
+			[](KAutoSaveFile *a, KAutoSaveFile *b) {
+				return QFileInfo(*a).lastModified()
+					 > QFileInfo(*b).lastModified();
+			});
 	}
 
-	//Open backup file
-	if (QET::QetMessageBox::question(nullptr,
-					 tr("Fichier de restauration"),
-					 text,
-					 QMessageBox::Ok
-					 |QMessageBox::Cancel
-					 )
-			== QMessageBox::Ok)
+	BackupRestoreDialog dialog(groups, nullptr);
+	if (dialog.exec() == QDialog::Accepted)
 	{
+		const QList<KAutoSaveFile *> to_open = dialog.selectedFiles();
+		const QList<KAutoSaveFile *> to_discard = dialog.discardedFiles();
+
+			//The generations not picked for restore are no longer needed.
+		for (KAutoSaveFile *discarded : to_discard)
+		{
+			discarded->open(QIODevice::ReadWrite);
+			delete discarded;
+		}
+
 		//If there are open editors, find those that are visible
 		if (diagramEditors().count())
 		{
 			diagramEditors().first()->setVisible(true);
-			diagramEditors().first()->openBackupFiles(stale_files);
+			diagramEditors().first()->openBackupFiles(to_open);
 		}
 		else
 		{
 			QETDiagramEditor *editor = new QETDiagramEditor();
-			editor->openBackupFiles(stale_files);
+			editor->openBackupFiles(to_open);
 		}
 	}
 	else //Clear backup file
