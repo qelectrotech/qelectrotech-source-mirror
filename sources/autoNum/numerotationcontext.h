@@ -54,6 +54,11 @@ class NumerotationContext
 	QDomElement toXml(QDomDocument &, const QString&);
 	void fromXml(QDomElement &);
 	void replaceValue(int, QString);
+	void replaceIncrease(int, int);
+		/// Zero-pad a part's value the same way the real numbering engine
+		/// does (autonum::setSequentialToList in assignvariables.cpp), so a
+		/// UI preview of a part's value matches what actually gets rendered.
+	static QString formatValue(const QStringList &item);
 
 	private:
 	QStringList content_;
