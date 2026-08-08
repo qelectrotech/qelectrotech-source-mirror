@@ -348,10 +348,10 @@ void TitleBlockPropertiesWidget::initDialog(
 	m_tbt_menu -> addAction(m_tbt_duplicate);
 	ui -> m_tbt_pb -> setMenu(m_tbt_menu);
 
-	connect(ui->m_tbt_cb,
-		SIGNAL(currentIndexChanged(int)),
-		this,
-		SLOT(changeCurrentTitleBlockTemplate(int)));
+	connect(ui->m_tbt_cb, 
+		qOverload<int>(&QComboBox::currentIndexChanged), 
+		this, 
+		&TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate);
 
 	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();
