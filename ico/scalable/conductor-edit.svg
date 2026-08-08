@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+<g class="nrm" transform="translate(0.20,-0.55)">
   <polyline points="3.0,4.0 3.0,11.0 10.0,11.0" fill="none" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt" stroke-linejoin="miter"/>
   <line x1="3.0" y1="3.0" x2="3.0" y2="6.0" stroke="#da4453" stroke-width="2.0" stroke-linecap="butt"/>
-  <line x1="12.55" y1="17.45" x2="19.00" y2="11.00" stroke="#4d4d4d" stroke-width="3.0" stroke-linecap="butt"/>
-  <line x1="10.00" y1="20.00" x2="12.55" y2="17.45" stroke="#f67400" stroke-width="3.0" stroke-linecap="butt"/>
+  <line x1="12.40" y1="16.60" x2="18.50" y2="10.50" stroke="#4d4d4d" stroke-width="3.0" stroke-linecap="butt"/>
+  <line x1="10.00" y1="19.00" x2="12.40" y2="16.60" stroke="#f67400" stroke-width="3.0" stroke-linecap="butt"/>
+</g>
 </svg>

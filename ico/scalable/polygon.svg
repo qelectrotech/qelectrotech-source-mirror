@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+<g class="nrm" transform="translate(0.00,0.75)">
   <polygon points="11,4 18,9 15,17 7,17 4,9" fill="none" stroke="#4d4d4d" stroke-width="2.0" stroke-linejoin="miter"/>
   <rect x="9.5" y="2.5" width="3" height="3" rx="0" fill="#3daee9"/>
+</g>
 </svg>

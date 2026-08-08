@@ -3,6 +3,6 @@
   <rect x="2.0" y="2.0" width="13" height="15" rx="0" fill="#fcfcfc" stroke="#4d4d4d" stroke-width="2.0"/>
   <line x1="4.5" y1="6.5" x2="13.5" y2="6.5" stroke="#797979" stroke-width="1.0" stroke-linecap="butt"/>
   <line x1="4.5" y1="9.5" x2="13.5" y2="9.5" stroke="#797979" stroke-width="1.0" stroke-linecap="butt"/>
-  <line x1="13.0" y1="17.0" x2="21.0" y2="17.0" stroke="#27ae60" stroke-width="2.0" stroke-linecap="butt"/>
-  <line x1="17.0" y1="13.0" x2="17.0" y2="21.0" stroke="#27ae60" stroke-width="2.0" stroke-linecap="butt"/>
+  <line x1="13.5" y1="17.0" x2="20.5" y2="17.0" stroke="#27ae60" stroke-width="2.0" stroke-linecap="butt"/>
+  <line x1="17.0" y1="13.5" x2="17.0" y2="20.5" stroke="#27ae60" stroke-width="2.0" stroke-linecap="butt"/>
 </svg>

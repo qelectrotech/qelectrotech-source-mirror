@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+<g class="nrm" transform="translate(1.00,1.00)">
   <rect x="3.0" y="3.0" width="9" height="9" rx="0" fill="#fcfcfc" stroke="#797979" stroke-width="2.0"/>
   <rect x="8.0" y="8.0" width="9" height="9" rx="0" fill="#fcfcfc" stroke="#4d4d4d" stroke-width="2.0"/>
+</g>
 </svg>
