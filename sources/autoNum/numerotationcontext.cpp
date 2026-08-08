@@ -221,6 +221,24 @@ void NumerotationContext::replaceValue(int index, QString content) {
 }
 
 /**
+	@brief NumerotationContext::replaceIncrease
+	Change how much this part advances per step, leaving its current value,
+	initial value, modulus and format untouched. Sibling to replaceValue(),
+	which deliberately never touches this field.
+	@param index of NC item
+	@param increase new increase for that item
+*/
+void NumerotationContext::replaceIncrease(int index, int increase) {
+	QStringList strl = content_[index].split("|");
+	QString type = strl.at(0);
+	QString value = strl.at(1);
+	QString initvalue = strl.at(3);
+	QString modulus = strl.size() > 4 ? strl.at(4) : QStringLiteral("0");
+	QString format  = strl.size() > 5 ? strl.at(5) : QString();
+	content_[index] = type + "|" + value + "|" + QString::number(increase) + "|" + initvalue + "|" + modulus + "|" + format;
+}
+
+/**
 	@brief NumerotationContext::formatOf
 	@param item : a context item as returned by itemAt()
 	@return the part's zero-padding mask, or an empty string when it has
@@ -229,4 +247,31 @@ void NumerotationContext::replaceValue(int index, QString content) {
 QString NumerotationContext::formatOf(const QStringList &item)
 {
 	return item.size() > 5 ? item.at(5) : QString();
+}
+
+/**
+	@brief NumerotationContext::formatValue
+	@param item : a context item as returned by itemAt()
+	@return the part's value, zero-padded exactly as
+	autonum::setSequentialToList() pads it when composing a real label: an
+	explicit format mask wins, then "ten"/"hundred" parts get their
+	implicit 2/3-digit width, "alpha" is used as-is, everything else is a
+	plain number. Kept in step with that function by hand since the two
+	cannot share code without exposing an assignvariables.cpp-local helper.
+*/
+QString NumerotationContext::formatValue(const QStringList &item)
+{
+	const QString &type = item.at(0);
+	const QString &value = item.at(1);
+	if (type == QLatin1String("alpha"))
+		return value;
+
+	const QString mask = formatOf(item);
+	if (!mask.isEmpty())
+		return QString("%1").arg(value.toInt(), mask.length(), 10, QChar('0'));
+	if (type == QLatin1String("ten") || type == QLatin1String("tenfolio"))
+		return QString("%1").arg(value.toInt(), 2, 10, QChar('0'));
+	if (type == QLatin1String("hundred") || type == QLatin1String("hundredfolio"))
+		return QString("%1").arg(value.toInt(), 3, 10, QChar('0'));
+	return QString::number(value.toInt());
 }
