@@ -19,6 +19,7 @@
 #include "ui_namelistdialog.h"
 #include "namelistwidget.h"
 
+#include "../../qet.h"
 #include <QPushButton>
 #include <QMessageBox>
 
@@ -27,6 +28,7 @@ NameListDialog::NameListDialog(QWidget *parent) :
 	ui(new Ui::NameListDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 
 	m_namelist_widget = new NameListWidget(this);
 	ui->m_main_layout->insertWidget(1, m_namelist_widget);

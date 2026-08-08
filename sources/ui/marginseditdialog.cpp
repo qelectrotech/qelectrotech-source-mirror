@@ -18,6 +18,7 @@
 #include "marginseditdialog.h"
 #include "ui_marginseditdialog.h"
 
+#include "../qet.h"
 #include <QScopedPointer>
 
 MarginsEditDialog::MarginsEditDialog(QMargins margins, QWidget *parent) :
@@ -25,6 +26,7 @@ MarginsEditDialog::MarginsEditDialog(QMargins margins, QWidget *parent) :
 	ui(new Ui::MarginsEditDialog)
 {
 	ui->setupUi(this);
+	QET::trackDialogGeometry(this);
 	ui->m_top_sb->setValue(margins.top());
 	ui->m_left_sb->setValue(margins.left());
 	ui->m_right_sb->setValue(margins.right());

@@ -17,6 +17,8 @@
 */
 #include "dimensionwidget.h"
 
+#include "../qet.h"
+
 /**
 	Constructor
 	@param complete True for this dialog to show the radio buttons that allow
@@ -31,6 +33,7 @@ TitleBlockDimensionWidget::TitleBlockDimensionWidget(bool complete, QWidget *par
 {
 	initWidgets();
 	initLayouts();
+	QET::trackDialogGeometry(this);
 }
 
 /**
