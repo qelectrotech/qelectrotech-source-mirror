@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <polyline points="3.0,4.0 3.0,10.0 11.0,10.0" fill="none" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt" stroke-linejoin="miter"/>
+  <line x1="3.0" y1="3.0" x2="3.0" y2="6.0" stroke="#da4453" stroke-width="2.0" stroke-linecap="butt"/>
+  <path d="M11.29,8.30 A5,5 0 1 0 17.70,11.29" fill="none" stroke="#f67400" stroke-width="2.0" stroke-linecap="butt"/>
+  <polygon points="16.60,8.28 20.10,10.41 15.29,12.17" fill="#f67400"/>
+</svg>

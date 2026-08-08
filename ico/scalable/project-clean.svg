@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <rect x="2.0" y="3.0" width="11" height="14" rx="0" fill="#fcfcfc" stroke="#4d4d4d" stroke-width="2.0"/>
+  <line x1="4.5" y1="7.5" x2="10.5" y2="7.5" stroke="#797979" stroke-width="1.0" stroke-linecap="butt"/>
+  <line x1="4.5" y1="10.5" x2="10.5" y2="10.5" stroke="#797979" stroke-width="1.0" stroke-linecap="butt"/>
+  <line x1="19.00" y1="5.00" x2="14.50" y2="12.00" stroke="#4d4d4d" stroke-width="2.5" stroke-linecap="butt"/>
+  <polygon points="16.5,10.5 12.5,13.5 15,18 19.5,15.5" fill="#f67400"/>
+  <line x1="14.0" y1="15.5" x2="18.5" y2="13.0" stroke="#fcfcfc" stroke-width="1.0" stroke-linecap="butt"/>
+</svg>
