@@ -148,17 +148,17 @@ void TitleBlockTemplateCellWidget::initWidgets()
 	connect(add_logo_input_, SIGNAL(released()), this, SIGNAL(logoEditionRequested()));
 	
 	// handle cell modifications
-	connect(cell_type_input_,   SIGNAL(activated(int)),           this, SLOT(updateFormType(int)));
-	connect(cell_type_input_,   SIGNAL(activated(int)),           this, SLOT(editType()));
+	connect(cell_type_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::updateFormType);
+	connect(cell_type_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editType);
 	connect(name_input_, &QLineEdit::editingFinished, this, &TitleBlockTemplateCellWidget::editName);
 	connect(label_checkbox_,    SIGNAL(clicked(bool)),            this, SLOT(editLabelDisplayed()));
 	connect(label_edit_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::editLabel);
 	connect(value_edit_, &QPushButton::released, this, &TitleBlockTemplateCellWidget::editValue);
-	connect(horiz_align_input_, SIGNAL(activated(int)),           this, SLOT(editAlignment()));
-	connect(vert_align_input_,  SIGNAL(activated(int)),           this, SLOT(editAlignment()));
-	connect(font_size_input_,   SIGNAL(valueChanged(int)),        this, SLOT(editFontSize()));
+	connect(horiz_align_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editAlignment);
+	connect(vert_align_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editAlignment);
+	connect(font_size_input_, qOverload<int>(&QSpinBox::valueChanged), this, &TitleBlockTemplateCellWidget::editFontSize);
 	connect(font_adjust_input_, SIGNAL(clicked(bool)),            this, SLOT(editAdjust()));
-	connect(logo_input_,        SIGNAL(activated(int)),           this, SLOT(editLogo()));
+	connect(logo_input_, qOverload<int>(&QComboBox::activated), this, &TitleBlockTemplateCellWidget::editLogo);
 	
 	updateFormType(TitleBlockCell::TextCell);
 }

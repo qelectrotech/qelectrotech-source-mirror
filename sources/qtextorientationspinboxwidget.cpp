@@ -117,10 +117,10 @@ void QTextOrientationSpinBoxWidget::build()
 	spin_box_ -> setSuffix("°");
 	
 	// met en place les relations entre le SpinBox et le QTextOrientationWidget
-	connect(spin_box_,
-		SIGNAL(valueChanged(double)),
+	connect(spin_box_, 
+		qOverload<double>(&QDoubleSpinBox::valueChanged),
 		orientation_widget_,
-		SLOT(setOrientation(double)));
+		&QTextOrientationWidget::setOrientation);
 	connect(orientation_widget_,
 		&QTextOrientationWidget::orientationChanged,
 		spin_box_,

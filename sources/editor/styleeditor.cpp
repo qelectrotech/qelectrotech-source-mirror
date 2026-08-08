@@ -582,17 +582,25 @@ bool StyleEditor::isStyleEditable(QList<CustomElementPart *> cep_list)
 */
 void StyleEditor::activeConnections(bool active) {
 	if (active) {
-		connect (outline_color, SIGNAL(activated(int)),    this, SLOT(updatePartColor()));
-		connect(line_style,     SIGNAL(activated(int)),    this, SLOT(updatePartLineStyle()));
-		connect(size_weight,    SIGNAL(activated(int)),    this, SLOT(updatePartLineWeight()));
-		connect(filling_color,  SIGNAL(activated(int)),    this, SLOT(updatePartFilling()));
-		connect(antialiasing,   SIGNAL(stateChanged(int)), this, SLOT(updatePartAntialiasing()));
+		connect(outline_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartColor);
+		connect(line_style, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineStyle);
+		connect(size_weight, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineWeight);
+		connect(filling_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartFilling);
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0) // TODO Qt 6.7: remove, checkStateChanged() always available
+		connect(antialiasing, &QCheckBox::stateChanged, this, &StyleEditor::updatePartAntialiasing);
+#else
+		connect(antialiasing, &QCheckBox::checkStateChanged, this, &StyleEditor::updatePartAntialiasing);
+#endif
 	} else {
-		disconnect(outline_color, SIGNAL(activated(int)),    this, SLOT(updatePartColor()));
-		disconnect(line_style,    SIGNAL(activated(int)),    this, SLOT(updatePartLineStyle()));
-		disconnect(size_weight,   SIGNAL(activated(int)),    this, SLOT(updatePartLineWeight()));
-		disconnect(filling_color, SIGNAL(activated(int)),    this, SLOT(updatePartFilling()));
-		disconnect(antialiasing,  SIGNAL(stateChanged(int)), this, SLOT(updatePartAntialiasing()));
+		disconnect(outline_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartColor);
+		disconnect(line_style, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineStyle);
+		disconnect(size_weight, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartLineWeight);
+		disconnect(filling_color, qOverload<int>(&QComboBox::activated), this, &StyleEditor::updatePartFilling);
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0) // TODO Qt 6.7: remove, checkStateChanged() always available
+		disconnect(antialiasing, &QCheckBox::stateChanged, this, &StyleEditor::updatePartAntialiasing);
+#else
+		disconnect(antialiasing, &QCheckBox::checkStateChanged, this, &StyleEditor::updatePartAntialiasing);
+#endif
 	}
 }
 
