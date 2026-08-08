@@ -547,7 +547,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
 	// Simplify rich text
 	m_simplify_richtext_action = createCheckableAction(
-				QIcon(":/ico/32x32/simplifyrichtext.png"),
+				QIcon(":/ico/scalable/simplifyrichtext.svg"),
 				tr("Simplify Rich Text"), editor, SLOT(setSimplifyRichText(bool)),this);
 	m_simplify_richtext_action->setChecked(editor->simplifyRichText());
 	connect(m_editor, SIGNAL(simplifyRichTextChanged(bool)),

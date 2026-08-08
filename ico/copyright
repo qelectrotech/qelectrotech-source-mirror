@@ -87,6 +87,15 @@ License: public-domain
  If you find these icons useful, share-them!
  Contact: webmaster@strangeplanet.fr
 
+Files: ico/scalable/*
+Copyright: 2026, QElectroTech contributors
+License: GPL-2+
+ Drawn for QElectroTech as SVG geometry against the spec in
+ tools/icon-audit/iconspec.py of the qelectrotech-docker harness. These
+ cover concepts with no equivalent in a general icon theme: conductors,
+ terminals, folios, terminal orientation, conductor end styles.
+ Not derived from Breeze artwork.
+
 Files: ico/16x16/*
 Files: ico/22x22/*
 Files: ico/32x32/*
