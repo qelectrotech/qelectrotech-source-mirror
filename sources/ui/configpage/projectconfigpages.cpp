@@ -396,17 +396,29 @@ void ProjectAutoNumConfigPage::buildConnections()
 		//Conductor Tab
 	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
 	connect(m_saw_conductor, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextConductor);
-	connect(m_saw_conductor->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextConductor(QString)));
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // TODO Qt6 only: remove, textActivated() always available
+	connect(m_saw_conductor->contextComboBox(), SIGNAL(activated(QString)), this, SLOT(updateContextConductor(QString)));
+#else
+	connect(m_saw_conductor->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextConductor);
+#endif
 
 		//Element Tab
 	connect(m_saw_element, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextElement);
 	connect(m_saw_element, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextElement);
-	connect(m_saw_element->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextElement(QString)));
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // TODO Qt6 only: remove, textActivated() always available
+	connect(m_saw_element->contextComboBox(), SIGNAL(activated(QString)), this, SLOT(updateContextElement(QString)));
+#else
+	connect(m_saw_element->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextElement);
+#endif
 
 		//Folio Tab
 	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
-	connect(m_saw_folio->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextFolio(QString)));
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0) // TODO Qt6 only: remove, textActivated() always available
+	connect(m_saw_folio->contextComboBox(), SIGNAL(activated(QString)), this, SLOT(updateContextFolio(QString)));
+#else
+	connect(m_saw_folio->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextFolio);
+#endif
 
 		//	Auto Folio Numbering
 	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
@@ -491,6 +503,10 @@ void ProjectAutoNumConfigPage::removeContextElement()
 		return;
 	m_project->removeElementAutoNum (m_saw_element->contextComboBox()->currentText());
 	m_saw_element->contextComboBox()->removeItem (m_saw_element->contextComboBox()->currentIndex());
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextElement(m_saw_element->contextComboBox()->currentText());
 }
 
 /**
@@ -678,6 +694,10 @@ void ProjectAutoNumConfigPage::removeContextConductor()
 	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText() );
 	m_saw_conductor->contextComboBox()-> removeItem (m_saw_conductor->contextComboBox()-> currentIndex() );
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextConductor(m_saw_conductor->contextComboBox()->currentText());
 	project()->conductorAutoNumRemoved();
 }
 
@@ -691,6 +711,10 @@ void ProjectAutoNumConfigPage::removeContextFolio()
 	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeFolioAutoNum (m_saw_folio->contextComboBox() -> currentText() );
 	m_saw_folio->contextComboBox() -> removeItem (m_saw_folio->contextComboBox() -> currentIndex() );
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextFolio(m_saw_folio->contextComboBox()->currentText());
 	project()->folioAutoNumRemoved();
 }
 

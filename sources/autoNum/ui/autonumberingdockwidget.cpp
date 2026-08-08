@@ -26,6 +26,7 @@
 #include "../numerotationcontext.h"
 #include "../numerotationcontextcommands.h"
 #include "ui_autonumberingdockwidget.h"
+#include "../../undocommand/changetitleblockcommand.h"
 
 #include <QComboBox>
 #include <QLineEdit>
@@ -371,7 +372,17 @@ void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {
 		ip.folio = "%id/%total";
 		m_project->setDefaultTitleBlockProperties(ip);
 	}
-		emit(folioAutoNumChanged(current_autonum));
+
+	if (m_project_view && m_project_view->currentDiagram()) {
+		Diagram *diagram = m_project_view->currentDiagram()->diagram();
+		TitleBlockProperties old_properties = diagram->border_and_titleblock.exportTitleBlock();
+		TitleBlockProperties new_properties = old_properties;
+		new_properties.auto_page_num = ip.auto_page_num;
+		new_properties.folio = ip.folio;
+		if (new_properties != old_properties)
+			diagram->undoStack().push(new ChangeTitleBlockCommand(diagram, old_properties, new_properties));
+	}
+	emit(folioAutoNumChanged(current_autonum));
 	refreshRow(AutoNumCategory::Folio);
 }
 
