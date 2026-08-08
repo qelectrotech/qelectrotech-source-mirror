@@ -39,7 +39,14 @@ class ReportElement : public Element
 		void linkToElement(Element *) override;
 		void unlinkAllElements() override;
 		void unlinkElement(Element *elmt) override;
-		
+
+	protected:
+		void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *) override;
+		void paint(
+				QPainter *,
+				const QStyleOptionGraphicsItem *,
+				QWidget *) override;
+
 	private:
 		int m_inverse_report;
 };

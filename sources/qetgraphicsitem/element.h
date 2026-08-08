@@ -217,11 +217,11 @@ class Element : public QetGraphicsItem
 	protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 		void setSize(int, int);
-
-	private:
 		void drawHighlight(
 				QPainter *,
 				const QStyleOptionGraphicsItem *);
+
+	private:
 		bool buildFromXml(const QDomElement &, int * = nullptr);
 		bool parseElement(const QDomElement &dom);
 		bool parseInput(const QDomElement &dom_element);
