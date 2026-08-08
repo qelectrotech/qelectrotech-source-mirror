@@ -26,7 +26,9 @@
 #include "titleblock/templatedeleter.h"
 #include <QFileInfo>
 #include <QMessageBox>
+#include <QSettings>
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/conductor.h"
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
@@ -676,15 +678,68 @@ void ElementsPanelWidget::duplicateDiagram()
 
 		new_diagram->fromXml(diagram_elmt, QPointF(0, 0), false, nullptr);
 
+		QList<Element *> new_elements;
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
-				// The XML round-trip kept the source elements' uuids. Give the
-				// copies their own identity (as PasteDiagramCommand::redo()
-				// does for on-diagram paste): element.uuid is the PRIMARY KEY
-				// of the project database, so duplicates fail to insert and
-				// silently vanish from nomenclature/summary tables.
-				elmt->newUuid();
-				new_diagram->restoreText(elmt);
+				new_elements << elmt;
+			}
+		}
+
+			// Resolve master/slave links within the duplicated batch before
+			// any uuid gets renewed below, for the same reason
+			// PasteDiagramCommand::redo() does: each element's
+			// tmp_uuids_link still holds its source's original partner
+			// uuid at this point, matching the not-yet-renewed uuid of
+			// that partner's own copy in new_elements. See
+			// Element::initLink(const QList<Element *> &).
+		for (Element *elmt : new_elements) {
+			elmt->initLink(new_elements);
+		}
+
+			// Honour the same preference on-diagram paste honours
+			// (Configuration -> "Ne pas conserver les labels des éléments
+			// lors des copier coller"). Duplication ignored it, so a
+			// duplicated folio always kept the source designations -- and
+			// with links now preserved that produced two identically
+			// designated linked groups, which is a genuinely ambiguous
+			// drawing. Paste never had that problem because it clears the
+			// labels by default; duplication simply never asked.
+		QSettings settings;
+		const bool erase_label = settings.value(
+			QStringLiteral("diagramcommands/erase-label-on-copy"),
+			true).toBool();
+
+		for (Element *elmt : new_elements) {
+			// The XML round-trip kept the source elements' uuids. Give the
+			// copies their own identity (as PasteDiagramCommand::redo()
+			// does for on-diagram paste): element.uuid is the PRIMARY KEY
+			// of the project database, so duplicates fail to insert and
+			// silently vanish from nomenclature/summary tables.
+			elmt->newUuid();
+
+			if (erase_label) {
+					// Same four fields PasteDiagramCommand::redo() clears.
+				DiagramContext dc = elmt->elementInformations();
+				dc.addValue("formula", "");
+				dc.addValue("label", "");
+				dc.addValue("comment", "");
+				dc.addValue("location", "");
+				elmt->setElementInformations(dc);
+			}
+
+			new_diagram->restoreText(elmt);
+		}
+
+		if (erase_label) {
+				// Conductor texts too, as paste does -- a duplicated folio
+				// keeping conductor numbers has the same duplicate-
+				// designation problem the element labels had.
+			for (QGraphicsItem *item : new_diagram->items()) {
+				if (Conductor *c = dynamic_cast<Conductor *>(item)) {
+					ConductorProperties cp = c->properties();
+					cp.text = new_diagram->defaultConductorProperties.text;
+					c->setProperties(cp);
+				}
 			}
 		}
 	}

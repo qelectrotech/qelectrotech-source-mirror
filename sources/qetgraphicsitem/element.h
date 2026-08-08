@@ -194,6 +194,7 @@ class Element : public QetGraphicsItem
 		virtual void unlinkAllElements() {}
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
+		void initLink(const QList<Element *> &candidates);
 		QList<Element *> linkedElements ();
 
 		int groupIndexForElement(Element *elmt) const;
