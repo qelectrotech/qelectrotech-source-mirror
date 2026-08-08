@@ -86,9 +86,21 @@ class ElementsCollectionWidget : public QWidget
 	public slots:
 		void reload();
 		void loadingFinished();
+		void insertCurrentElement();
+
+	signals:
+		/**
+			Emitted when the user asks for an element to be placed on the
+			current folio. Whoever hosts this widget decides which view
+			receives it -- the dock is inside a diagram editor, but the
+			picker popup is not, so the widget must not reach for an
+			ancestor editor itself.
+		*/
+		void insertElementRequested(const ElementsLocation &location);
 
 	private:
 		void locationWasSaved(const ElementsLocation& location);
+		void activateIndex(const QModelIndex &index);
 
 
 	private:

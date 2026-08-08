@@ -35,6 +35,8 @@
 
 #include <QCheckBox>
 #include <QDesktopServices>
+#include <QSettings>
+#include <QShortcut>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFileDialog>
@@ -266,15 +268,7 @@ void ElementsCollectionWidget::setUpConnection()
 		this, &ElementsCollectionWidget::dirProperties);
 
 	connect(m_tree_view, &QTreeView::doubleClicked,
-			[this](const QModelIndex &index)
-			{
-				this->m_index_at_context_menu = index ;
-				ElementCollectionItem *eci = elementCollectionItemForIndex(index);
-				if (eci && eci->collectionPath().endsWith(".qetmak")) {
-					return; // Do nothing on double click for macros
-				}
-				this->editElement();
-			});
+			[this](const QModelIndex &index) { this->activateIndex(index); });
 
 	connect(m_tree_view, &QTreeView::entered,
 		[this] (const QModelIndex &index) {
@@ -284,19 +278,23 @@ void ElementsCollectionWidget::setUpConnection()
 			qde->statusBar()->showMessage(eci->localName());
 	});
 
+		//Enter on the highlighted item does the same as a double click, so a
+		//run of elements can be placed without leaving the keyboard. Bound as
+		//a shortcut on the view rather than by reimplementing keyPressEvent,
+		//which would mean subclassing ElementsTreeView for one key.
+	for (const auto key : {Qt::Key_Return, Qt::Key_Enter}) {
+		auto *sc = new QShortcut(QKeySequence(key), m_tree_view);
+		sc->setContext(Qt::WidgetShortcut);
+		connect(sc, &QShortcut::activated, this, [this]() {
+			this->activateIndex(m_tree_view->currentIndex());
+		});
+	}
+
 	connect(m_macros_tree_view, &QTreeView::customContextMenuRequested,
 			this, &ElementsCollectionWidget::customContextMenu);
 
 	connect(m_macros_tree_view, &QTreeView::doubleClicked,
-			[this](const QModelIndex &index)
-			{
-				this->m_index_at_context_menu = index ;
-				ElementCollectionItem *eci = elementCollectionItemForIndex(index);
-				if (eci && eci->collectionPath().endsWith(".qetmak")) {
-					return; // Do nothing on double click for macros
-				}
-				this->editElement();
-			});
+			[this](const QModelIndex &index) { this->activateIndex(index); });
 
 	connect(m_macros_tree_view, &QTreeView::entered,
 		[this] (const QModelIndex &index) {
@@ -403,6 +401,60 @@ void ElementsCollectionWidget::openDir()
 		QDesktopServices::openUrl(QUrl("file:///" + static_cast<XmlProjectElementCollectionItem*>(eci)->project()->currentDir()));
 #endif
 
+}
+
+/**
+	@brief ElementsCollectionWidget::activateIndex
+	What a double click (or Enter) on @a index does.
+
+	Historically this opened the element editor, which is the slowest action
+	available on a symbol you are most likely about to place. Placing is now
+	the default and editing has moved to the context menu, where it already
+	was. The old behaviour is preserved behind a preference for anyone who
+	relies on it.
+	@param index
+*/
+void ElementsCollectionWidget::activateIndex(const QModelIndex &index)
+{
+	m_index_at_context_menu = index;
+
+	ElementCollectionItem *eci = elementCollectionItemForIndex(index);
+	if (!eci) {
+		return;
+	}
+	//Macros are placed, never edited, and were already skipped here.
+	const bool is_macro = eci->collectionPath().endsWith(".qetmak");
+
+	QSettings settings;
+	const bool insert = settings.value(
+		QStringLiteral("elementscollection/double-click-inserts"), true).toBool();
+
+	if (insert) {
+		insertCurrentElement();
+		return;
+	}
+	if (!is_macro) {
+		editElement();
+	}
+}
+
+/**
+	@brief ElementsCollectionWidget::insertCurrentElement
+	Ask for the current item to be placed on the folio.
+*/
+void ElementsCollectionWidget::insertCurrentElement()
+{
+	ElementCollectionItem *eci =
+		elementCollectionItemForIndex(m_index_at_context_menu);
+	if (!(eci && eci->isElement())) {
+		return;
+	}
+
+	ElementsLocation location(eci->collectionPath());
+	if (!location.exist()) {
+		return;
+	}
+	emit insertElementRequested(location);
 }
 
 /**
