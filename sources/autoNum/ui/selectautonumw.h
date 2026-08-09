@@ -27,6 +27,7 @@ class NumPartEditorW;
 class QAbstractButton;
 class FormulaAutonumberingW;
 class QComboBox;
+class QLineEdit;
 
 namespace Ui {
 	class SelectAutonumW;
@@ -71,11 +72,18 @@ class SelectAutonumW : public QWidget
 		void on_m_remove_pb_clicked();
 		
 	private:
+		void setupPrefixSuffixEditor();
+
 		Ui::SelectAutonumW *ui;
 		QList <NumPartEditorW *> num_part_list_;
 		NumerotationContext m_context;
 		FormulaAutonumberingW *m_feaw;
 		FormulaAutonumberingW *m_fcaw;
+			///< Renvois (type 3) only: literal text glued before/after the
+			///< generated counter, stored as leading/trailing "string" parts
+			///< of the NumerotationContext rather than a visible +/- row.
+		QLineEdit *m_prefix_le = nullptr;
+		QLineEdit *m_suffix_le = nullptr;
 		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio : 3 == report
 };
 

@@ -24,6 +24,10 @@
 #include "ui_formulaautonumberingw.h"
 #include "ui_selectautonumw.h"
 
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QLineEdit>
 #include <QMessageBox>
 
 /**
@@ -50,6 +54,10 @@ SelectAutonumW::SelectAutonumW(int type, QWidget *parent) :
 		m_fcaw = new FormulaAutonumberingW();
 		m_fcaw->ui->label->setHidden(true);
 		ui->m_widget->layout()->addWidget(m_fcaw);
+	}
+	else if (m_edited_type == 3)
+	{
+		setupPrefixSuffixEditor();
 	}
 	setContext(NumerotationContext());
 }
@@ -81,6 +89,8 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context,
 		ui->m_widget->layout()->addWidget(m_fcaw);
 	}
 	ui->setupUi(this);
+	if (m_edited_type == 3)
+		setupPrefixSuffixEditor();
 	setContext(context);
 }
 
@@ -91,6 +101,29 @@ SelectAutonumW::SelectAutonumW(const NumerotationContext &context,
 SelectAutonumW::~SelectAutonumW()
 {
 	delete ui;
+}
+
+/**
+	@brief SelectAutonumW::setupPrefixSuffixEditor
+	Renvois (type 3) only: add dedicated Préfixe/Suffixe fields above the
+	generic +/- part editor, so a user can get e.g. "R1-A, R2-A..." without
+	having to understand multi-part numerotation contexts. They are backed
+	by plain leading/trailing "string" parts (see toNumContext()/setContext()).
+*/
+void SelectAutonumW::setupPrefixSuffixEditor()
+{
+	QGroupBox *group = new QGroupBox(tr("Préfixe et suffixe"), this);
+	QHBoxLayout *layout = new QHBoxLayout(group);
+	layout->addWidget(new QLabel(tr("Préfixe :"), group));
+	m_prefix_le = new QLineEdit(group);
+	layout->addWidget(m_prefix_le);
+	layout->addWidget(new QLabel(tr("Suffixe :"), group));
+	m_suffix_le = new QLineEdit(group);
+	layout->addWidget(m_suffix_le);
+	ui->m_widget->layout()->addWidget(group);
+
+	connect(m_prefix_le, &QLineEdit::textChanged, this, [this](const QString &) { applyEnable(true); });
+	connect(m_suffix_le, &QLineEdit::textChanged, this, [this](const QString &) { applyEnable(true); });
 }
 
 /**
@@ -106,12 +139,41 @@ void SelectAutonumW::setContext(const NumerotationContext &context)
 	qDeleteAll(num_part_list_);
 	num_part_list_.clear();
 
-	if (m_context.size() == 0) { //@context contain nothing, build a default numPartEditor
+	NumerotationContext middle_context = context;
+	if (m_edited_type == 3 && m_prefix_le && m_suffix_le) {
+		//Renvois: a leading/trailing "string" part is the Préfixe/Suffixe
+		//field's own doing (see toNumContext()), so pull it back out here
+		//instead of showing it as a normal +/- row.
+		QString prefix_text, suffix_text;
+		int first = 0;
+		int last = middle_context.size() - 1;
+		if (last >= first && middle_context.itemAt(first).at(0) == "string") {
+			prefix_text = middle_context.itemAt(first).at(1);
+			++first;
+		}
+		if (last >= first && middle_context.itemAt(last).at(0) == "string") {
+			suffix_text = middle_context.itemAt(last).at(1);
+			--last;
+		}
+		NumerotationContext rebuilt;
+		for (int i = first; i <= last; ++i) {
+			QStringList item = middle_context.itemAt(i);
+			rebuilt.addValue(item.at(0), item.at(1), item.at(2).toInt(),
+					  item.at(3).toInt(),
+					  item.size() > 4 ? item.at(4).toInt() : 0,
+					  item.size() > 5 ? item.at(5) : QString());
+		}
+		middle_context = rebuilt;
+		m_prefix_le->setText(prefix_text);
+		m_suffix_le->setText(suffix_text);
+	}
+
+	if (middle_context.size() == 0) { //@context contain nothing, build a default numPartEditor
 		on_add_button_clicked();
 	}
 	else {
-		for (int i=0; i<m_context.size(); ++i) { //build with the content of @context
-			NumPartEditorW *part= new NumPartEditorW(m_context, i, m_edited_type, this);
+		for (int i=0; i<middle_context.size(); ++i) { //build with the content of @context
+			NumPartEditorW *part= new NumPartEditorW(middle_context, i, m_edited_type, this);
 			connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 			num_part_list_ << part;
 			ui -> editor_layout -> addWidget(part);
@@ -132,8 +194,12 @@ void SelectAutonumW::setContext(const NumerotationContext &context)
 NumerotationContext SelectAutonumW::toNumContext() const
 {
 	NumerotationContext nc;
+	if (m_prefix_le && !m_prefix_le->text().isEmpty())
+		nc.addValue("string", m_prefix_le->text());
 	foreach (NumPartEditorW *npew, num_part_list_)
 		nc << npew -> toNumContext();
+	if (m_suffix_le && !m_suffix_le->text().isEmpty())
+		nc.addValue("string", m_suffix_le->text());
 	return nc;
 }
 
@@ -221,7 +287,9 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
 							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
 
-							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
+							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n"
+
+							   "\n-Les champs \"Préfixe\" et \"Suffixe\" ajoutent un texte fixe respectivement avant et après le compteur généré, sans passer par les variables de numérotation ci-dessus.",
 							   "help dialog about the report link autonumerotation"
 							   ));
 				break;
