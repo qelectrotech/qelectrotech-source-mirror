@@ -427,7 +427,7 @@ void MasterPropertiesWidget::diagramWasdeletedFromProject()
 	// contains slave element linked to the edited element
 	// we must wait for this elements be unlinked,
 	// or else the linked list provides deleted elements.
-	QTimer::singleShot(10, this, SLOT(updateUi()));
+	QTimer::singleShot(10, this, &MasterPropertiesWidget::updateUi);
 }
 
 /**

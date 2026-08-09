@@ -528,7 +528,7 @@ void LinkSingleElementWidget::diagramWasRemovedFromProject()
 	// contains the master element linked to the edited element
 	// we must wait for this elements to be unlinked,
 	// or else the list of available master isn't up to date
-	QTimer::singleShot(10, this, SLOT(updateUi()));
+	QTimer::singleShot(10, this, &LinkSingleElementWidget::updateUi);
 }
 
 void LinkSingleElementWidget::showedElementWasDeleted()

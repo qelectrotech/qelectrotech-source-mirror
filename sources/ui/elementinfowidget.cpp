@@ -148,7 +148,7 @@ bool ElementInfoWidget::event(QEvent *event)
 	{
 		if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
 		{
-			QTimer::singleShot(250, this, SLOT(firstActivated()));
+			QTimer::singleShot(250, this, &ElementInfoWidget::firstActivated);
 			m_first_activation = false;
 		}
 	}

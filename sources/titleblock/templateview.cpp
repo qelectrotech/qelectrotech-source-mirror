@@ -863,7 +863,7 @@ void TitleBlockTemplateView::fillWithEmptyCells()
 */
 bool TitleBlockTemplateView::event(QEvent *event) {
 	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
-		QTimer::singleShot(250, this, SLOT(zoomFit()));
+		QTimer::singleShot(250, this, &TitleBlockTemplateView::zoomFit);
 		first_activation_ = false;
 	}
 	return(QGraphicsView::event(event));

@@ -983,7 +983,7 @@ bool QETDiagramEditor::event(QEvent *e)
 	if (m_first_show && e->type() == QEvent::WindowActivate)
 	{
 		m_first_show = false;
-		QTimer::singleShot(250, m_element_collection_widget, SLOT(reload()));
+		QTimer::singleShot(250, m_element_collection_widget, &ElementsCollectionWidget::reload);
 	}
 	return(QETMainWindow::event(e));
 }

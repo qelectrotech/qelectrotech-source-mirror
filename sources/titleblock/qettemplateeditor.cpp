@@ -142,7 +142,7 @@ void QETTitleBlockTemplateEditor::firstActivation(QEvent *event)
 	Q_UNUSED(event)
 	if (duplicate_ && !opened_from_file_ && location_.parentCollection()) {
 		// this editor is supposed to duplicate its current location
-		QTimer::singleShot(250, this, SLOT(duplicateCurrentLocation()));
+		QTimer::singleShot(250, this, &QETTitleBlockTemplateEditor::duplicateCurrentLocation);
 	}
 }
 
