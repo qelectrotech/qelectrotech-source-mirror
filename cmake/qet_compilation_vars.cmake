@@ -215,6 +215,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/exportpropertieswidget.h
   ${QET_DIR}/sources/genericpanel.cpp
   ${QET_DIR}/sources/genericpanel.h
+  ${QET_DIR}/sources/lastusedstyle.cpp
+  ${QET_DIR}/sources/lastusedstyle.h
   ${QET_DIR}/sources/machine_info.cpp
   ${QET_DIR}/sources/machine_info.h
   ${QET_DIR}/sources/main.cpp

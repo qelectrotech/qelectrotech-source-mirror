@@ -20,6 +20,7 @@
 
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
+#include "../lastusedstyle.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
 #include "../ui_shapegraphicsitempropertieswidget.h"
 
@@ -180,6 +181,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			{
 				undo = new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen);
 				undo->setText(tr("Modifier le trait d'une forme"));
+				LastUsedStyle::setShapePen(new_pen);
 			}
 
 			QBrush old_brush = m_shape->brush();
@@ -196,6 +198,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 					undo = new QPropertyUndoCommand(m_shape, "brush", old_brush, new_brush);
 					undo->setText(tr("Modifier le remplissage d'une forme"));
 				}
+				LastUsedStyle::setShapeBrush(new_brush);
 			}
 
 			if (ui->m_close_polygon->isChecked() != m_shape->isClosed())
@@ -321,6 +324,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 
 		if (new_pen != old_pen) {
 			new QPropertyUndoCommand(m_shape, "pen", old_pen, new_pen, undo);
+			LastUsedStyle::setShapePen(new_pen);
 		}
 
 		QBrush old_brush = m_shape->brush();
@@ -330,6 +334,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 
 		if (new_brush != old_brush) {
 			new QPropertyUndoCommand(m_shape, "brush", old_brush, new_brush, undo);
+			LastUsedStyle::setShapeBrush(new_brush);
 		}
 
 		if (ui->m_close_polygon->isChecked() != m_shape->isClosed()) {

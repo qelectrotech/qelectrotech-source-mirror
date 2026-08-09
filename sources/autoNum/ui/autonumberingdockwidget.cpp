@@ -24,10 +24,14 @@
 #include "../../titleblockproperties.h"
 #include "../../ui/projectpropertiesdialog.h"
 #include "../numerotationcontext.h"
+#include "../numerotationcontextcommands.h"
 #include "ui_autonumberingdockwidget.h"
+#include "../../undocommand/changetitleblockcommand.h"
 
 #include <QComboBox>
 #include <QLineEdit>
+#include <QSignalBlocker>
+#include <QSpinBox>
 
 /**
 	@brief AutoNumberingDockWidget::AutoNumberingDockWidget
@@ -64,6 +68,29 @@ void AutoNumberingDockWidget::clear()
 	ui->m_conductor_value_le->clear();
 	ui->m_element_value_le->clear();
 	ui->m_folio_value_le->clear();
+	ui->m_conductor_next_le->clear();
+	ui->m_element_next_le->clear();
+	ui->m_folio_next_le->clear();
+}
+
+/**
+	@brief AutoNumberingDockWidget::rowFor
+	@return the combo/value/increase/next widgets that make up category's row.
+*/
+AutoNumberingDockWidget::Row AutoNumberingDockWidget::rowFor(AutoNumCategory category) const
+{
+	switch (category) {
+		case AutoNumCategory::Conductor:
+			return {ui->m_conductor_cb, ui->m_conductor_value_le,
+				ui->m_conductor_increase_sb, ui->m_conductor_next_le};
+		case AutoNumCategory::Element:
+			return {ui->m_element_cb, ui->m_element_value_le,
+				ui->m_element_increase_sb, ui->m_element_next_le};
+		case AutoNumCategory::Folio:
+			return {ui->m_folio_cb, ui->m_folio_value_le,
+				ui->m_folio_increase_sb, ui->m_folio_next_le};
+	}
+	return {nullptr, nullptr, nullptr, nullptr};
 }
 
 void AutoNumberingDockWidget::projectClosed()
@@ -201,9 +228,9 @@ void AutoNumberingDockWidget::setContext()
 
 		//The combo boxes have just been repopulated, so the value fields next
 		//to them are showing whatever the previous project left there.
-	refreshValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
-	refreshValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
-	refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
+	refreshRow(AutoNumCategory::Conductor);
+	refreshRow(AutoNumCategory::Element);
+	refreshRow(AutoNumCategory::Folio);
 
 	this->setActive();
 }
@@ -279,7 +306,7 @@ void AutoNumberingDockWidget::on_m_conductor_cb_activated(int)
 	m_project->setCurrentConductorAutoNum(current_autonum);
 	m_project_view->currentDiagram()->diagram()->setConductorsAutonumName(current_autonum);
 	m_project_view->currentDiagram()->diagram()->loadCndFolioSeq();
-	refreshValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
+	refreshRow(AutoNumCategory::Conductor);
 }
 
 /**
@@ -308,7 +335,7 @@ void AutoNumberingDockWidget::on_m_element_cb_activated(int)
 {
 	m_project->setCurrrentElementAutonum(ui->m_element_cb->currentText());
 	m_project_view->currentDiagram()->diagram()->loadElmtFolioSeq();
-	refreshValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
+	refreshRow(AutoNumCategory::Element);
 }
 
 /**
@@ -345,8 +372,18 @@ void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {
 		ip.folio = "%id/%total";
 		m_project->setDefaultTitleBlockProperties(ip);
 	}
-		emit(folioAutoNumChanged(current_autonum));
-	refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
+
+	if (m_project_view && m_project_view->currentDiagram()) {
+		Diagram *diagram = m_project_view->currentDiagram()->diagram();
+		TitleBlockProperties old_properties = diagram->border_and_titleblock.exportTitleBlock();
+		TitleBlockProperties new_properties = old_properties;
+		new_properties.auto_page_num = ip.auto_page_num;
+		new_properties.folio = ip.folio;
+		if (new_properties != old_properties)
+			diagram->undoStack().push(new ChangeTitleBlockCommand(diagram, old_properties, new_properties));
+	}
+	emit(folioAutoNumChanged(current_autonum));
+	refreshRow(AutoNumCategory::Folio);
 }
 
 void AutoNumberingDockWidget::on_m_configure_pb_clicked()
@@ -387,6 +424,21 @@ void AutoNumberingDockWidget::on_m_element_value_le_editingFinished()
 void AutoNumberingDockWidget::on_m_folio_value_le_editingFinished()
 {
 	applyValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
+}
+
+void AutoNumberingDockWidget::on_m_conductor_increase_sb_valueChanged(int)
+{
+	applyIncreaseField(ui->m_conductor_cb, ui->m_conductor_increase_sb, AutoNumCategory::Conductor);
+}
+
+void AutoNumberingDockWidget::on_m_element_increase_sb_valueChanged(int)
+{
+	applyIncreaseField(ui->m_element_cb, ui->m_element_increase_sb, AutoNumCategory::Element);
+}
+
+void AutoNumberingDockWidget::on_m_folio_increase_sb_valueChanged(int)
+{
+	applyIncreaseField(ui->m_folio_cb, ui->m_folio_increase_sb, AutoNumCategory::Folio);
 }
 
 /**
@@ -455,17 +507,21 @@ int AutoNumberingDockWidget::counterIndex(const NumerotationContext &context)
 */
 void AutoNumberingDockWidget::refreshValueFields()
 {
-		//Leave alone a field the user is typing in: numbering an element
-		//refreshes all three, and overwriting a half-typed value under the
-		//cursor is worse than showing it a moment out of date. Only this
-		//automatic path skips; an explicit refresh after a reset or an edit
-		//still writes, so the field always ends up canonical.
-	if (!ui->m_conductor_value_le->hasFocus())
-		refreshValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
-	if (!ui->m_element_value_le->hasFocus())
-		refreshValueField(ui->m_element_cb, ui->m_element_value_le, AutoNumCategory::Element);
-	if (!ui->m_folio_value_le->hasFocus())
-		refreshValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
+		//Leave alone a row the user is typing in: numbering an element
+		//refreshes all three rows, and overwriting a half-typed value or
+		//increment under the cursor is worse than showing it a moment out
+		//of date. Only this automatic path skips; an explicit refresh after
+		//a reset or an edit still writes, so the row always ends up
+		//canonical. The next-value preview has no such guard: it is
+		//read-only, so there is nothing a refresh could clobber.
+	for (AutoNumCategory category : {AutoNumCategory::Conductor,
+					 AutoNumCategory::Element,
+					 AutoNumCategory::Folio})
+	{
+		const Row row = rowFor(category);
+		if (!row.value->hasFocus() && !row.increase->hasFocus())
+			refreshRow(category);
+	}
 }
 
 /**
@@ -507,13 +563,114 @@ void AutoNumberingDockWidget::applyValueField(QComboBox *combo_box, QLineEdit *l
 	const QString typed = line_edit->text();
 	if (typed.isEmpty() || typed == context.itemAt(index).at(1))
 	{
-		refreshValueField(combo_box, line_edit, category);
+		refreshRow(category);
 		return;
 	}
 
 	context.replaceValue(index, typed);
 	storeContext(combo_box, category, context);
-	refreshValueField(combo_box, line_edit, category);
+	refreshRow(category);
+}
+
+/**
+	@brief AutoNumberingDockWidget::refreshIncreaseField
+	Show the counter's current step size (bug #331: previously only
+	reachable from the full configuration dialog, via "Configurer").
+*/
+void AutoNumberingDockWidget::refreshIncreaseField(QComboBox *combo_box, QSpinBox *increase_sb, AutoNumCategory category)
+{
+		//QSpinBox::setValue() emits valueChanged() even when called
+		//programmatically. Without blocking it, this refresh would
+		//immediately re-trigger on_..._increase_sb_valueChanged() ->
+		//applyIncreaseField() -> storeContext() -> the project's
+		//autoNumContextUpdated signal -> refreshValueFields() -> back here.
+	const QSignalBlocker blocker(increase_sb);
+	if (!m_project || combo_box->currentText().isEmpty())
+	{
+		increase_sb->setEnabled(false);
+		increase_sb->setValue(increase_sb->minimum());
+		return;
+	}
+
+	const NumerotationContext context = contextFor(combo_box, category);
+	const int index = counterIndex(context);
+	increase_sb->setEnabled(index >= 0);
+	increase_sb->setValue(index >= 0 ? context.itemAt(index).at(2).toInt()
+					 : increase_sb->minimum());
+}
+
+/**
+	@brief AutoNumberingDockWidget::applyIncreaseField
+	Write the spin box's step size to the counter it displays (bug #331).
+*/
+void AutoNumberingDockWidget::applyIncreaseField(QComboBox *combo_box, QSpinBox *increase_sb, AutoNumCategory category)
+{
+	if (!m_project || combo_box->currentText().isEmpty())
+		return;
+
+	NumerotationContext context = contextFor(combo_box, category);
+	const int index = counterIndex(context);
+	if (index < 0)
+		return;
+
+	if (increase_sb->value() == context.itemAt(index).at(2).toInt())
+		return;
+
+	context.replaceIncrease(index, increase_sb->value());
+	storeContext(combo_box, category, context);
+	refreshRow(category);
+}
+
+/**
+	@brief AutoNumberingDockWidget::refreshNextField
+	Show what this counter will read after one more step (bug #331: "visualiser
+	la prochaine numérotation qui sera appliquée"). Advances a copy of the
+	whole context through NumerotationContextCommands -- the same engine the
+	Suivant button in the full configuration dialog uses to step a context --
+	so wrap-and-carry into this part from a following part, or out of it into
+	a preceding one, comes out identical to what will actually happen when the
+	number is next consumed.
+*/
+void AutoNumberingDockWidget::refreshNextField(QComboBox *combo_box, QLineEdit *next_edit, AutoNumCategory category)
+{
+	if (!m_project || combo_box->currentText().isEmpty())
+	{
+		next_edit->clear();
+		next_edit->setEnabled(false);
+		return;
+	}
+
+	const NumerotationContext context = contextFor(combo_box, category);
+	const int index = counterIndex(context);
+	if (index < 0)
+	{
+		next_edit->clear();
+		next_edit->setEnabled(false);
+		return;
+	}
+
+	Diagram *diagram = (m_project_view && m_project_view->currentDiagram())
+				    ? m_project_view->currentDiagram()->diagram()
+				    : nullptr;
+	NumerotationContextCommands ncc(context, diagram);
+	const NumerotationContext next_context = ncc.next();
+
+	next_edit->setEnabled(true);
+	next_edit->setText(NumerotationContext::formatValue(next_context.itemAt(index)));
+}
+
+/**
+	@brief AutoNumberingDockWidget::refreshRow
+	Refresh a category's value, increment and next-value preview together --
+	every call site that used to refresh just the value field needs the
+	other two kept in step with it as well.
+*/
+void AutoNumberingDockWidget::refreshRow(AutoNumCategory category)
+{
+	const Row row = rowFor(category);
+	refreshValueField(row.combo, row.value, category);
+	refreshIncreaseField(row.combo, row.increase, category);
+	refreshNextField(row.combo, row.next, category);
 }
 
 /**
@@ -557,10 +714,5 @@ void AutoNumberingDockWidget::resetAutoNum(QComboBox *combo_box, AutoNumCategory
 	}
 
 	storeContext(combo_box, category, context);
-
-	switch (category) {
-		case AutoNumCategory::Conductor: refreshValueField(combo_box, ui->m_conductor_value_le, category); break;
-		case AutoNumCategory::Element:   refreshValueField(combo_box, ui->m_element_value_le, category);   break;
-		case AutoNumCategory::Folio:     refreshValueField(combo_box, ui->m_folio_value_le, category);     break;
-	}
+	refreshRow(category);
 }
