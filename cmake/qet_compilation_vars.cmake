@@ -298,6 +298,9 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.h
 
+  ${QET_DIR}/sources/autobreakconductor.cpp
+  ${QET_DIR}/sources/autobreakconductor.h
+
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.cpp
