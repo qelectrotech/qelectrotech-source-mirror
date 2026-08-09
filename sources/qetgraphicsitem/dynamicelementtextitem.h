@@ -51,7 +51,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
-
+	Q_PROPERTY(bool rotationPointCenter READ rotationPointCenter WRITE setRotationPointCenter NOTIFY rotationPointCenterChanged)
 	public:
 
 		enum TextFrom {
@@ -72,6 +72,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void plainTextChanged();
 		void textWidthChanged(qreal width);
 		void keepVisualRotationChanged(bool keep);
+		void rotationPointCenterChanged(bool center);
 
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -112,6 +113,9 @@ class DynamicElementTextItem : public DiagramTextItem
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;
+
+		void setRotationPointCenter(bool set);
+		bool rotationPointCenter() const;
 
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -172,6 +176,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		qreal m_text_width = -1;
 		QPointF m_initial_position;
 		bool m_keep_visual_rotation = true;
+		bool m_rotation_point_center = false;
 		qreal m_visual_rotation_ref = 0;
 		bool m_move_parent = true;
 };
