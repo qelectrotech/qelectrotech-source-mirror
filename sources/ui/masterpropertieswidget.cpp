@@ -1034,7 +1034,7 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 
 		// Preserve terminal data by looking up original IO via address
 		if (addr_to_orig_idx.contains(io.address)) {
-			const auto &orig_io = ed.plcMasterData().ios.at(addr_to_orig_idx.value(io.address));
+			const auto orig_io = ed.plcMasterData().ios.at(addr_to_orig_idx.value(io.address));
 			io.terminalCount = orig_io.terminalCount;
 			io.terminals = orig_io.terminals;
 		}
