@@ -503,6 +503,10 @@ void ProjectAutoNumConfigPage::removeContextElement()
 		return;
 	m_project->removeElementAutoNum (m_saw_element->contextComboBox()->currentText());
 	m_saw_element->contextComboBox()->removeItem (m_saw_element->contextComboBox()->currentIndex());
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextElement(m_saw_element->contextComboBox()->currentText());
 }
 
 /**
@@ -690,6 +694,10 @@ void ProjectAutoNumConfigPage::removeContextConductor()
 	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText() );
 	m_saw_conductor->contextComboBox()-> removeItem (m_saw_conductor->contextComboBox()-> currentIndex() );
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextConductor(m_saw_conductor->contextComboBox()->currentText());
 	project()->conductorAutoNumRemoved();
 }
 
@@ -703,6 +711,10 @@ void ProjectAutoNumConfigPage::removeContextFolio()
 	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeFolioAutoNum (m_saw_folio->contextComboBox() -> currentText() );
 	m_saw_folio->contextComboBox() -> removeItem (m_saw_folio->contextComboBox() -> currentIndex() );
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextFolio(m_saw_folio->contextComboBox()->currentText());
 	project()->folioAutoNumRemoved();
 }
 
