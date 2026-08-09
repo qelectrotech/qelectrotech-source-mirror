@@ -1938,6 +1938,10 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
         <translation>Ausrichtung eines Textfelds ändern</translation>
     </message>
+    <message>
+        <source>Tourner autour de son propre centre</source>
+        <translation>Um eigenen Mittelpunkt drehen</translation>
+    </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>

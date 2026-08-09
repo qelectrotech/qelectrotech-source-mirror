@@ -1935,6 +1935,10 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
         <translation>Modify the alignment of a text field</translation>
     </message>
+    <message>
+        <source>Tourner autour de son propre centre</source>
+        <translation>Rotate about its own centre</translation>
+    </message>
 </context>
 <context>
     <name>DynamicTextItemDelegate</name>
