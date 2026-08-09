@@ -75,7 +75,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	
 		// we handle double click on items ourselves
 	connect(this, &ElementsPanel::itemDoubleClicked, this, &ElementsPanel::slot_doubleClick);
-	connect(this, &GenericPanel::firstActivated, [this]() {QTimer::singleShot(250, this, SLOT(reload()));});
+	connect(this, &GenericPanel::firstActivated, [this]() {QTimer::singleShot(250, this, &ElementsPanel::reload);});
 	connect(this, &ElementsPanel::panelContentChanged, this, &ElementsPanel::panelContentChange);
 
 		// manage signal itemClicked

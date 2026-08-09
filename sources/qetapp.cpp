@@ -1796,7 +1796,7 @@ void QETApp::checkRemainingWindows()
 	*/
 	static bool sleep = true;
 	if (sleep) {
-		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
+		QTimer::singleShot(500, this, &QETApp::checkRemainingWindows);
 	} else {
 		if (!diagramEditors().count() && !elementEditors().count()) {
 			qApp->quit();

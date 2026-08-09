@@ -123,10 +123,8 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		disconnect(m_project, &QETProject::elementAutoNumAdded, this, &AutoNumberingDockWidget::elementAutoNumChanged);
 	
 			//Folio Signals
-		disconnect (m_project,SIGNAL(folioAutoNumRemoved()),
-			    this,SLOT(folioAutoNumChanged()));
-		disconnect (m_project,SIGNAL(folioAutoNumAdded()),
-			    this,SLOT(folioAutoNumChanged()));
+		disconnect(m_project, &QETProject::folioAutoNumRemoved, this, qOverload<>(&AutoNumberingDockWidget::folioAutoNumChanged));
+		disconnect(m_project, &QETProject::folioAutoNumAdded, this, qOverload<>(&AutoNumberingDockWidget::folioAutoNumChanged));
 		disconnect(m_project, &QETProject::defaultTitleBlockPropertiesChanged, this, &AutoNumberingDockWidget::setActive);
 	
 			//Conductor, Element and Folio Signals
@@ -150,10 +148,8 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 	connect(m_project, &QETProject::elementAutoNumAdded, this, &AutoNumberingDockWidget::elementAutoNumChanged);
 
 		//Folio Signals
-	connect (m_project,SIGNAL(folioAutoNumRemoved()),
-		 this,SLOT(folioAutoNumChanged()));
-	connect (m_project,SIGNAL(folioAutoNumAdded()),
-		 this,SLOT(folioAutoNumChanged()));
+	connect(m_project, &QETProject::folioAutoNumRemoved, this, qOverload<>(&AutoNumberingDockWidget::folioAutoNumChanged));
+	connect(m_project, &QETProject::folioAutoNumAdded, this, qOverload<>(&AutoNumberingDockWidget::folioAutoNumChanged));
 	connect(m_project, &QETProject::defaultTitleBlockPropertiesChanged, this, &AutoNumberingDockWidget::setActive);
 
 		//Conductor, Element and Folio Signals
@@ -358,7 +354,6 @@ void AutoNumberingDockWidget::on_m_folio_cb_activated(int) {
 		if (new_properties != old_properties)
 			diagram->undoStack().push(new ChangeTitleBlockCommand(diagram, old_properties, new_properties));
 	}
-	emit(folioAutoNumChanged(current_autonum));
 	refreshRow(AutoNumCategory::Folio);
 }
 
