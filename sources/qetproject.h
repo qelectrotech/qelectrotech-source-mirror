@@ -244,7 +244,6 @@ class QETProject : public QObject
 			/// rebuild their rule lists; this one just says "re-read me".
 		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
-		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
 
