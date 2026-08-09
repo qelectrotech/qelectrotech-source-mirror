@@ -3355,12 +3355,12 @@ Mit dem Import dieser Datei bestätigen Sie, dass:
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Insérer un folio au-dessus</source>
-        <translation>Eine Seite oben einfügen</translation>
+        <translation>Eine Seite oberhalb einfügen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Insérer un folio en dessous</source>
-        <translation>Eine Seite darunter einfügen</translation>
+        <translation>Eine Seite unterhalb einfügen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -3665,7 +3665,7 @@ Mit dem Import dieser Datei bestätigen Sie, dass:
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="212"/>
         <source>Dessiner les noms des bornes</source>
-        <translation>Die Klemmenbezeichnungen einzeichnen</translation>
+        <translation>Klemmenbezeichnungen einzeichnen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="216"/>
@@ -6357,7 +6357,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="189"/>
         <source>Dessiner les noms des bornes</source>
-        <translation>Die Bezeichnungen der Klemmen einzeichnen</translation>
+        <translation>Klemmenbezeichnungen einzeichnen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="202"/>
