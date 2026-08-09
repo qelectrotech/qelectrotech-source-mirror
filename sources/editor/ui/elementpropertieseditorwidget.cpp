@@ -474,9 +474,6 @@ void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
 	int row_count = ui->max_slaves_checkbox->isChecked()
 		? ui->max_slaves_spinbox->value() : 0;
 
-	// If we have existing groups, use their count (up to max_slaves)
-	int existing_groups = m_data.m_slave_contact_groups.size();
-
 	// Adjust the groups list to match the spinbox value
 	while (m_data.m_slave_contact_groups.size() < row_count) {
 		ElementData::SlaveContactGroup group;
@@ -1160,6 +1157,7 @@ void ElementPropertiesEditorWidget::plcAddRow()
 void ElementPropertiesEditorWidget::plcTerminalCountChanged(int row, int count)
 {
 	Q_UNUSED(row)
+	Q_UNUSED(count)
 	if (!m_plc_terminal_table)
 		return;
 
