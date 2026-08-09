@@ -58,14 +58,14 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &location,
 	
 	if (m_edit_mode) {
 		setWindowTitle(tr("Éditer une catégorie", "window title"));
-		connect(m_buttons, SIGNAL(accepted()), this, SLOT(acceptUpdate()));
+		connect(m_buttons, &QDialogButtonBox::accepted, this, &ElementsCategoryEditor::acceptUpdate);
 		
 		m_names_list -> setNames(m_location.nameList());
 		m_file_line_edit -> setText(m_location.fileSystemPath());
 		m_file_line_edit -> setReadOnly(true);
 	} else {
 		setWindowTitle(tr("Créer une nouvelle catégorie", "window title"));
-		connect(m_buttons, SIGNAL(accepted()), this, SLOT(acceptCreation()));
+		connect(m_buttons, &QDialogButtonBox::accepted, this, &ElementsCategoryEditor::acceptCreation);
 		
 		NamesList cat_names;
 		cat_names.addName(QLocale::system().name().left(2), tr("Nom de la nouvelle catégorie", "default name when creating a new category"));
@@ -114,7 +114,7 @@ void ElementsCategoryEditor::setUpWidget()
 	m_file_line_edit = new QFileNameEdit();
 	
 	m_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	connect(m_buttons, SIGNAL(rejected()), this, SLOT(reject()));
+	connect(m_buttons, &QDialogButtonBox::rejected, this, &ElementsCategoryEditor::reject);
 	
 	QHBoxLayout *internal_name_layout = new QHBoxLayout();
 	internal_name_layout -> addWidget(m_file_name);

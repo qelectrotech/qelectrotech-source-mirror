@@ -154,14 +154,12 @@ void MasterPropertiesWidget::setElement(Element *element)
 		m_element->setHighlighted(false);
 
 	if (m_project)
-		disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
-				   this, SLOT(diagramWasdeletedFromProject()));
+		disconnect(m_project, &QETProject::diagramRemoved, this, &MasterPropertiesWidget::diagramWasdeletedFromProject);
 
 	if(Q_LIKELY(element->diagram() && element->diagram()->project()))
 		{
 			m_project = element->diagram()->project();
-			connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
-					this, SLOT(diagramWasdeletedFromProject()));
+			connect(m_project, &QETProject::diagramRemoved, this, &MasterPropertiesWidget::diagramWasdeletedFromProject);
 		}
 		else
 			m_project = nullptr;
@@ -397,8 +395,7 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	Q_UNUSED(column);
 	if (m_showed_element)
 	{
-		disconnect(m_showed_element, SIGNAL(destroyed()),
-				   this, SLOT(showedElementWasDeleted()));
+		disconnect(m_showed_element, &QObject::destroyed, this, &MasterPropertiesWidget::showedElementWasDeleted);
 		m_showed_element -> setHighlighted(false);
 	}
 	if (m_element)
@@ -407,8 +404,7 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	m_showed_element = m_qtwi_hash[qtwi];
 	m_showed_element->diagram()->showMe();
 	m_showed_element->setHighlighted(true);
-	connect(m_showed_element, SIGNAL(destroyed()),
-			this, SLOT(showedElementWasDeleted()));
+	connect(m_showed_element, &QObject::destroyed, this, &MasterPropertiesWidget::showedElementWasDeleted);
 }
 
 /**
@@ -431,7 +427,7 @@ void MasterPropertiesWidget::diagramWasdeletedFromProject()
 	// contains slave element linked to the edited element
 	// we must wait for this elements be unlinked,
 	// or else the linked list provides deleted elements.
-	QTimer::singleShot(10, this, SLOT(updateUi()));
+	QTimer::singleShot(10, this, &MasterPropertiesWidget::updateUi);
 }
 
 /**

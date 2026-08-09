@@ -1796,7 +1796,7 @@ void QETApp::checkRemainingWindows()
 	*/
 	static bool sleep = true;
 	if (sleep) {
-		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
+		QTimer::singleShot(500, this, &QETApp::checkRemainingWindows);
 	} else {
 		if (!diagramEditors().count() && !elementEditors().count()) {
 			qApp->quit();
@@ -2405,24 +2405,23 @@ void QETApp::initSystemTray()
 	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
 	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
 
-	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
-	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
-	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
-	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
-	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
-	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
-	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
-	connect(reduce_templates, SIGNAL(triggered()), this, SLOT(reduceTitleBlockTemplateEditors()));
-	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
-	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
-	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+	connect(quitter_qet, &QAction::triggered, this, &QETApp::quitQET);
+	connect(reduce_appli, &QAction::triggered, this, &QETApp::reduceEveryEditor);
+	connect(restore_appli, &QAction::triggered, this, &QETApp::restoreEveryEditor);
+	connect(reduce_diagrams, &QAction::triggered, this, &QETApp::reduceDiagramEditors);
+	connect(restore_diagrams, &QAction::triggered, this, &QETApp::restoreDiagramEditors);
+	connect(reduce_elements, &QAction::triggered, this, &QETApp::reduceElementEditors);
+	connect(restore_elements, &QAction::triggered, this, &QETApp::restoreElementEditors);
+	connect(reduce_templates, &QAction::triggered, this, &QETApp::reduceTitleBlockTemplateEditors);
+	connect(restore_templates, &QAction::triggered, this, &QETApp::restoreTitleBlockTemplateEditors);
+	connect(new_diagram, &QAction::triggered, this, &QETApp::newDiagramEditor);
+	connect(new_element, &QAction::triggered, this, &QETApp::newElementEditor);
 
 	// initialization of the systray icon
 	// initialisation de l'icone du systray
 	m_qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	m_qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
-	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-		this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	connect(m_qsti, &QSystemTrayIcon::activated, this, &QETApp::systray);
 	m_qsti -> setContextMenu(menu_systray);
 	m_qsti -> show();
 }
@@ -2442,7 +2441,7 @@ template <class T> void QETApp::addWindowsListToMenu(
 		QAction *current_menu = menu -> addAction(window -> windowTitle());
 		current_menu -> setCheckable(true);
 		current_menu -> setChecked(window -> isVisible());
-		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		connect(current_menu, &QAction::triggered, &signal_map, qOverload<>(&QSignalMapper::map));
 		signal_map.setMapping(current_menu, window);
 	}
 }

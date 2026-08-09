@@ -87,8 +87,8 @@ ExportDialog::ExportDialog(
 	deSelectAll -> setText(tr("Tout décocher"));
 	hLayout -> addWidget(selectAll);
 	hLayout -> addWidget(deSelectAll);
-	connect(selectAll,   SIGNAL(clicked()),            this, SLOT(slot_selectAllClicked()));
-	connect(deSelectAll, SIGNAL(clicked()),            this, SLOT(slot_deSelectAllClicked()));
+	connect(selectAll, &QPushButton::clicked, this, &ExportDialog::slot_selectAllClicked);
+	connect(deSelectAll, &QPushButton::clicked, this, &ExportDialog::slot_deSelectAllClicked);
 
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
@@ -98,10 +98,10 @@ ExportDialog::ExportDialog(
 	layout -> addWidget(buttons);
 	
 	// connexions signaux/slots
-	connect(epw,     SIGNAL(formatChanged()),       this, SLOT(slot_changeFilesExtension()));
-	connect(epw,     SIGNAL(exportedAreaChanged()), this, SLOT(slot_changeUseBorder()));
-	connect(buttons, SIGNAL(accepted()),            this, SLOT(slot_export()));
-	connect(buttons, SIGNAL(rejected()),            this, SLOT(reject()));
+	connect(epw, &ExportPropertiesWidget::formatChanged, this, [this]() { slot_changeFilesExtension(); });
+	connect(epw, &ExportPropertiesWidget::exportedAreaChanged, this, &ExportDialog::slot_changeUseBorder);
+	connect(buttons, &QDialogButtonBox::accepted, this, &ExportDialog::slot_export);
+	connect(buttons, &QDialogButtonBox::rejected, this, &ExportDialog::reject);
 	
 	// ajustement des extensions des fichiers
 	slot_changeFilesExtension(true);
@@ -174,25 +174,25 @@ QWidget *ExportDialog::initDiagramsListPart()
 		diagrams_list_layout_ -> addLayout(diagram_line -> sizeLayout(),   line_count, 3);
 		
 		// si on decoche tous les schemas, on desactive le bouton "Exporter"
-		connect(diagram_line -> must_export, SIGNAL(toggled(bool)), this, SLOT(slot_checkDiagramsCount()));
+		connect(diagram_line -> must_export, &QCheckBox::toggled, this, &ExportDialog::slot_checkDiagramsCount);
 		
 		// mappings et signaux pour la gestion des dimensions du schema
 		width_mapper_  -> setMapping(diagram_line -> width,      line_count);
 		height_mapper_ -> setMapping(diagram_line -> height,     line_count);
 		ratio_mapper_  -> setMapping(diagram_line -> keep_ratio, line_count);
 		reset_mapper_  -> setMapping(diagram_line -> reset_size, line_count);
-		connect(diagram_line -> width,      SIGNAL(valueChanged(int)), width_mapper_,  SLOT(map()));
-		connect(diagram_line -> height,     SIGNAL(valueChanged(int)), height_mapper_, SLOT(map()));
-		connect(diagram_line -> keep_ratio, SIGNAL(toggled(bool)),     ratio_mapper_,  SLOT(map()));
-		connect(diagram_line -> reset_size, SIGNAL(clicked(bool)),     reset_mapper_,  SLOT(map()));
+		connect(diagram_line -> width, qOverload<int>(&QSpinBox::valueChanged), width_mapper_, qOverload<>(&QSignalMapper::map));
+		connect(diagram_line -> height, qOverload<int>(&QSpinBox::valueChanged), height_mapper_, qOverload<>(&QSignalMapper::map));
+		connect(diagram_line -> keep_ratio, &QPushButton::toggled, ratio_mapper_, qOverload<>(&QSignalMapper::map));
+		connect(diagram_line -> reset_size, &QPushButton::clicked, reset_mapper_, qOverload<>(&QSignalMapper::map));
 		
 		// mappings et signaux pour l'apercu du schema
 		preview_mapper_ -> setMapping(diagram_line -> preview, line_count);
-		connect(diagram_line -> preview, SIGNAL(clicked(bool)), preview_mapper_, SLOT(map()));
+		connect(diagram_line -> preview, &QPushButton::clicked, preview_mapper_, qOverload<>(&QSignalMapper::map));
 		
 		// mappings et signaux pour l'export du schema vers le presse-papier
 		clipboard_mapper_ -> setMapping(diagram_line -> clipboard, line_count);
-		connect(diagram_line -> clipboard, SIGNAL(clicked(bool)), clipboard_mapper_, SLOT(map()));
+		connect(diagram_line -> clipboard, &QPushButton::clicked, clipboard_mapper_, qOverload<>(&QSignalMapper::map));
 	}
 	
 	QWidget *widget_diagrams_list = new QWidget();
@@ -939,7 +939,7 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	QGraphicsView *preview_view = new QGraphicsView(preview_scene);
 	preview_view -> setDragMode(QGraphicsView::ScrollHandDrag);
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok);
-	connect(buttons, SIGNAL(accepted()), &preview_dialog, SLOT(accept()));
+	connect(buttons, &QDialogButtonBox::accepted, &preview_dialog, &QDialog::accept);
 	
 	QVBoxLayout *vboxlayout1 = new QVBoxLayout();
 	vboxlayout1 -> addWidget(preview_view);

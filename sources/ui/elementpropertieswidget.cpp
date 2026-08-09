@@ -403,9 +403,9 @@ QWidget *ElementPropertiesWidget::generalWidget()
 
 		//button widget
 	QPushButton *find_in_panel = new QPushButton(QET::Icons::ZoomDraw, tr("Retrouver dans le panel"), general_widget);
-	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
+	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
-	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
+	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
 	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);

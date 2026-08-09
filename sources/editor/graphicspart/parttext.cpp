@@ -50,14 +50,14 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
+	connect(document(), 
+		&QTextDocument::blockCountChanged, 
+		this, 
+		&PartText::adjustItemPosition);
 	connect(document(),
-		SIGNAL(blockCountChanged(int)),
+		&QTextDocument::contentsChanged,
 		this,
-		SLOT(adjustItemPosition(int)));
-	connect(document(),
-		SIGNAL(contentsChanged()),
-		this,
-		SLOT(adjustItemPosition()));
+		[this]() { adjustItemPosition(); });
 }
 
 /// Destructeur

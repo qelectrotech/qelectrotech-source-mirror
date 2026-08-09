@@ -353,23 +353,23 @@ void TitleBlockPropertiesWidget::initDialog(
 				      this);
 
 	connect(m_tbt_edit,
-		SIGNAL(triggered()),
+		&QAction::triggered,
 		this,
-		SLOT(editCurrentTitleBlockTemplate()));
+		&TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate);
 	connect(m_tbt_duplicate,
-		SIGNAL(triggered()),
+		&QAction::triggered,
 		this,
-		SLOT(duplicateCurrentTitleBlockTemplate()));
+		&TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate);
 
 	m_tbt_menu = new QMenu(tr("Title block templates actions"), ui->m_tbt_pb);
 	m_tbt_menu -> addAction(m_tbt_edit);
 	m_tbt_menu -> addAction(m_tbt_duplicate);
 	ui -> m_tbt_pb -> setMenu(m_tbt_menu);
 
-	connect(ui->m_tbt_cb,
-		SIGNAL(currentIndexChanged(int)),
-		this,
-		SLOT(changeCurrentTitleBlockTemplate(int)));
+	connect(ui->m_tbt_cb, 
+		qOverload<int>(&QComboBox::currentIndexChanged), 
+		this, 
+		&TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate);
 
 	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();

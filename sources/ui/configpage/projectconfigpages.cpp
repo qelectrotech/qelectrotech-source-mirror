@@ -391,7 +391,7 @@ void ProjectAutoNumConfigPage::adjustReadOnly()
 void ProjectAutoNumConfigPage::buildConnections()
 {
 		//Management Tab
-	connect (m_amw, SIGNAL(applyPressed()), this, SLOT(applyManagement()));
+	connect(m_amw, &AutoNumberingManagementW::applyPressed, this, &ProjectAutoNumConfigPage::applyManagement);
 
 		//Conductor Tab
 	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
@@ -421,7 +421,7 @@ void ProjectAutoNumConfigPage::buildConnections()
 #endif
 
 		//	Auto Folio Numbering
-	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
+	connect(m_faw, &FolioAutonumberingW::applyPressed, this, &ProjectAutoNumConfigPage::applyAutoNum);
 }
 
 /**

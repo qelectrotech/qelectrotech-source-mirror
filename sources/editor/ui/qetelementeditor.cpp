@@ -848,7 +848,7 @@ bool QETElementEditor::event(QEvent *event)
 {
 	if (m_first_activation && event->type() == QEvent::WindowActivate) {
 		m_first_activation = false;
-		QTimer::singleShot(250, m_view, SLOT(zoomFit()));
+		QTimer::singleShot(250, m_view, &ElementView::zoomFit);
 	}
 
 	return QMainWindow::event(event);

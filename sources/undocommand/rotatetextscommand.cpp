@@ -120,8 +120,8 @@ void RotateTextsCommand::openDialog()
 	ori_widget->spinBox()->selectAll();
 	
 	QDialogButtonBox buttons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	QObject::connect(&buttons, SIGNAL(accepted()), &ori_text_dialog, SLOT(accept()));
-	QObject::connect(&buttons, SIGNAL(rejected()), &ori_text_dialog, SLOT(reject()));
+	QObject::connect(&buttons, &QDialogButtonBox::accepted, &ori_text_dialog, &QDialog::accept);
+	QObject::connect(&buttons, &QDialogButtonBox::rejected, &ori_text_dialog, &QDialog::reject);
 	
 	QVBoxLayout layout_v(&ori_text_dialog);
 	layout_v.setSizeConstraint(QLayout::SetFixedSize);

@@ -763,8 +763,8 @@ int ProjectView::cleanProject()
 	clean_dialog_layout -> addWidget(buttons);
 	clean_dialog.setLayout(clean_dialog_layout);
 
-	connect(buttons, SIGNAL(accepted()), &clean_dialog, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), &clean_dialog, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::accepted, &clean_dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &clean_dialog, &QDialog::reject);
 
 	int clean_count = 0;
 	if (clean_dialog.exec() == QDialog::Accepted)
@@ -888,9 +888,9 @@ void ProjectView::initWidgets()
 	m_tab -> setCornerWidget(tabwidgetLeft, Qt::TopLeftCorner);
 
 		// manage signals
-	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
-	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
+	connect(m_tab, &QTabWidget::currentChanged, this, &ProjectView::tabChanged);
+	connect(m_tab, &QTabWidget::tabBarDoubleClicked, this, &ProjectView::tabDoubleClicked);
+	connect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved, Qt::QueuedConnection);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
@@ -1119,9 +1119,9 @@ void ProjectView::setDiagramPosition(Diagram *diagram, int new_position)
 	if (current_position < 0)
 		return;
 
-	disconnect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)));
+	disconnect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved);
 	m_tab->tabBar()->moveTab(current_position, new_position);
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
+	connect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved, Qt::QueuedConnection);
 
 	rebuildDiagramsMap();
 

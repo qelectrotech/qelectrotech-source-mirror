@@ -226,7 +226,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
 
 	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
-	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
+	connect(ui->max_slaves_checkbox, &QCheckBox::toggled, ui->max_slaves_spinbox, &QWidget::setEnabled);
 	connect(ui->max_slaves_spinbox, QOverload<int>::of(&QSpinBox::valueChanged), [this](int) {
 		if (ui->m_slave_groups_checkbox->isChecked()) {
 			populateSlaveGroupsTable();

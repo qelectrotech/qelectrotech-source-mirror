@@ -37,9 +37,9 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 {
 	ui->setupUi(this);
 	buildUi();
-	connect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
-	connect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
-	connect(ui->m_snap_to_cb, SIGNAL(currentIndexChanged(int)), this, SLOT(enableOffsetSB(int)));
+	connect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
+	connect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
+	connect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);
 	updateDisplay();
 }
 
@@ -49,9 +49,9 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 */
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
-	disconnect(ui->m_display_has_cross_rb, SIGNAL(toggled(bool)),            ui->m_cross_properties_gb, SLOT(setEnabled(bool)));
-	disconnect(ui->m_type_cb,              SIGNAL(currentIndexChanged(int)), this,                      SLOT(typeChanged()));
-	disconnect(ui->m_snap_to_cb,           SIGNAL(currentIndexChanged(int)), this,                      SLOT(enableOffsetSB(int)));
+	disconnect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
+	disconnect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
+	disconnect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);	
 	delete ui;
 }
 
