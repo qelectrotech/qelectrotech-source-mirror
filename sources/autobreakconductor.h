@@ -19,10 +19,12 @@
 #define AUTOBREAKCONDUCTOR_H
 
 #include <QSet>
+#include <QList>
 
 class Diagram;
 class Element;
 class Terminal;
+class Conductor;
 class QUndoCommand;
 
 /**
@@ -32,17 +34,24 @@ class QUndoCommand;
 	element's terminal.  Broken conductors from the same circuit (sharing the
 	same far-end endpoint) are broken together; independent crossing
 	conductors are left untouched.
-	@param diagram  the diagram containing the conductors
-	@param element  the element whose terminals trigger breaks
-	@param parent   undo command under which break/reconnect sub-commands
-	                are created (may be nullptr, in which case no undo is
-	                recorded)
+	@param diagram            the diagram containing the conductors
+	@param element            the element whose terminals trigger breaks
+	@param parent             undo command under which break/reconnect
+	                          sub-commands are created
+	@param conductors_handled shared list of conductors already claimed by
+	                          a previous call in the same batch (prevents
+	                          double-processing when multiple elements are
+	                          broken in one pass)
+	@param used_terminals     shared set of terminals already used as
+	                          connect_to or other_terminal in the same batch
 	@return set of terminals that were connected to a broken conductor's
 	        far-end (useful for preventing duplicate auto-connect)
 */
 QSet<Terminal *> autoBreakConductors(
 	Diagram *diagram,
 	Element *element,
-	QUndoCommand *parent);
+	QUndoCommand *parent,
+	QList<Conductor *> &conductors_handled,
+	QSet<Terminal *> &used_terminals);
 
 #endif // AUTOBREAKCONDUCTOR_H

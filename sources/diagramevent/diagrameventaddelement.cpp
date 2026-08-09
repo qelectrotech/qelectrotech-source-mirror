@@ -265,7 +265,10 @@ void DiagramEventAddElement::addElement()
 		//Auto break conductor: if a terminal of the new element lies on an existing
 		//conductor, break the conductor and reconnect through the new element's terminal.
 		//Track the endpoints of broken conductors so auto-connect doesn't create duplicates.
-	QSet<Terminal *> broken_endpoints = autoBreakConductors(m_diagram, element, undo_object);
+	QList<Conductor *> conductors_handled;
+	QSet<Terminal *> used_terminals;
+	QSet<Terminal *> broken_endpoints = autoBreakConductors(m_diagram, element, undo_object,
+							    conductors_handled, used_terminals);
 
 		//Auto-connect: collect all aligned pairs first, then filter and process.
 	QList<QPair<Terminal *, Terminal *>> aligned_pairs;

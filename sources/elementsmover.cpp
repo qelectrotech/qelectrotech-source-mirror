@@ -184,8 +184,11 @@ void ElementsMover::endMovement()
 		//the element.  The element is already at its final position on screen.
 	if (m_diagram->project()->autoBreakConductor())
 	{
+		QList<Conductor *> conductors_handled;
+		QSet<Terminal *> used_terminals;
 		for (Element *e : m_moved_content.m_elements) {
-			autoBreakConductors(m_diagram, e, undo_object);
+			autoBreakConductors(m_diagram, e, undo_object,
+					    conductors_handled, used_terminals);
 		}
 	}
 

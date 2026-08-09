@@ -71,15 +71,14 @@ qreal distanceToSegment(const QPointF &point, const QLineF &segment)
 QSet<Terminal *> autoBreakConductors(
 	Diagram *diagram,
 	Element *element,
-	QUndoCommand *parent)
+	QUndoCommand *parent,
+	QList<Conductor *> &conductors_handled,
+	QSet<Terminal *> &used_terminals)
 {
 	QSet<Terminal *> broken_endpoints;
 
 	if (!diagram->project()->autoBreakConductor())
 		return broken_endpoints;
-
-	QList<Conductor *> conductors_handled;
-	QSet<Terminal *> used_terminals;
 
 	foreach (Terminal *t, element->terminals())
 	{

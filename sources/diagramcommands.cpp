@@ -115,8 +115,11 @@ void PasteDiagramCommand::redo()
 		if (diagram->project()->autoBreakConductor())
 		{
 			m_break_cmd = new QUndoCommand();
+			QList<Conductor *> conductors_handled;
+			QSet<Terminal *> used_terminals;
 			for (Element *e : content.m_elements) {
-				autoBreakConductors(diagram, e, m_break_cmd);
+				autoBreakConductors(diagram, e, m_break_cmd,
+						    conductors_handled, used_terminals);
 			}
 			if (m_break_cmd->childCount() == 0) {
 				delete m_break_cmd;
