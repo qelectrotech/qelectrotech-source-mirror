@@ -311,7 +311,7 @@ jobs:
         with:
           name: qelectrotech-windows-msi-${{ matrix.flavor }}
           path: dist\*.msi
-          retention-days: 14
+          retention-days: 40
           if-no-files-found: error
 
       - name: Delete old nightly .msi asset for this flavor

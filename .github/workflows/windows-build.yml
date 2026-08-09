@@ -2,7 +2,7 @@ name: Windows Build
 
 on:
   schedule:
-    - cron: '0 2 * * 1'   # Every Monday at 2:00 UTC
+    - cron: '0 2 1 * *' #
   workflow_dispatch:       # Manual trigger available at any time
 
 concurrency:
@@ -343,21 +343,21 @@ jobs:
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload NSIS installer
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-installer
           path: dist/Installer_*.exe
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload portable (nom fixe pour le workflow MSI)
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-portable
           path: nsis_root/files/
-          retention-days: 14
+          retention-days: 40
 
   # =============================================================================
   # Job 2: Qt6 build (EXPERIMENTAL track)
@@ -687,21 +687,21 @@ jobs:
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload NSIS installer
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-installer-qt6
           path: dist/Installer_*.exe
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload portable (nom fixe pour le workflow MSI)
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-portable-qt6
           path: nsis_root/files/
-          retention-days: 14
+          retention-days: 40
 
   # ---------------------------------------------------------------------------
   # Job 3 : Publie les assets nightly (exe + zip, Qt5 et Qt6) sur la release

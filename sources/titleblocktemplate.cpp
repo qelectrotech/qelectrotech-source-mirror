@@ -960,42 +960,130 @@ int TitleBlockTemplate::columnTypeTotal(QET::TitleBlockColumnLength type) {
 }
 
 /**
-	@return the minimum width for this template
+	@brief TitleBlockTemplate::classifyWidthConstraint
+	Classifies this template's absolute-width (ABS) and
+	relative-to-total-length (RTT) columns, independently of whether a
+	minimum or a maximum width is being computed.
+
+	The classification is derived from the same inequality
+	minimumWidth() solves for a minimum width:
+	@code
+	TOT >= ((sum(RTT)/100)*TOT) + sum(ABS)
+	@endcode
+	Regardless of TOT, the RTT term above scales linearly with TOT. If
+	sum(RTT) alone already accounts for 100% or more of TOT, no choice
+	of TOT -- however large -- can make room for it (and for any ABS
+	columns on top of it): making the template wider grows the RTT
+	columns' pixel footprint by the same proportion, so the shortfall
+	never resolves. This function exists so both minimumWidth() and
+	maximumWidth() report that consistently, instead of maximumWidth()
+	incorrectly treating a misconfigured template as "no upper bound".
+
+	@param[out] abs_total set to columnTypeTotal(QET::Absolute).
+	@param[out] remaining_width_fraction set to the fraction of the
+	total template width left over once the RTT columns have taken
+	their share: (100.0 - sum(RTT)) / 100.0. Zero means the RTT
+	columns claim the entire width, leaving nothing for ABS columns;
+	negative means they claim more than the entire width, which is
+	unsatisfiable regardless of any ABS columns. Only meaningful when
+	this function returns std::nullopt.
+	@return WidthConstraintCase::RelativeWidthExceeds100Percent if
+	sum(RTT) exceeds 100% (unsatisfiable at any width, with or without
+	ABS columns), WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth
+	if sum(RTT) equals exactly 100% and at least one ABS column is also
+	present (unsatisfiable at any width, since the RTT columns leave no
+	room for it), WidthConstraintCase::Unconstrained if sum(RTT) equals
+	exactly 100% with no ABS columns (every term vanishes, any width
+	holds -- an ordinary, valid template), or std::nullopt if this
+	template's columns admit a genuine finite width.
+*/
+std::optional<TitleBlockTemplate::WidthConstraintCase> TitleBlockTemplate::classifyWidthConstraint(int &abs_total, qreal &remaining_width_fraction)
+{
+	abs_total = columnTypeTotal(QET::Absolute);
+	remaining_width_fraction = (100.0 - columnTypeTotal(QET::RelativeToTotalLength)) / 100.0;
+
+	if (remaining_width_fraction < 0.0) {
+		return WidthConstraintCase::RelativeWidthExceeds100Percent;
+	}
+	if (remaining_width_fraction == 0.0) {
+		return abs_total == 0
+			? WidthConstraintCase::Unconstrained
+			: WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth;
+	}
+	return std::nullopt; // a finite width exists: remaining_width_fraction > 0
+}
+
+/**
+	@brief TitleBlockTemplate::minimumWidth
+	@return the minimum width, in pixels, required for this template's
+	absolute-width (ABS) and relative-to-total-length (RTT) columns to
+	all fit.
+
+	Derivation: writing TOT for the (variable) total template width,
+	the minimum size enforced by the ABS and RTT columns is:
+	@code
+	TOT >= ((sum(RTT)/100)*TOT) + sum(ABS)
+	=> (1 - (sum(RTT)/100))*TOT >= sum(ABS)
+	=> TOT >= sum(ABS) / (1 - (sum(RTT)/100))
+	=> TOT >= sum(ABS) / ((100 - sum(RTT))/100)
+	@endcode
+	relative-to-remaining-length (RTR) columns do not constrain the
+	minimum width, since by definition they only ever claim a share of
+	whatever space is left over after the ABS and RTT columns are laid
+	out.
+
+	If no finite minimum width applies, returns one of
+	WidthConstraintCase::Unconstrained,
+	WidthConstraintCase::RelativeWidthExceeds100Percent, or
+	WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth (cast to
+	int) instead -- see classifyWidthConstraint() and that enum's
+	documentation for when each case applies.
 */
 int TitleBlockTemplate::minimumWidth()
 {
-	// Abbreviations: ABS: absolute, RTT: relative to total, RTR:
-	// relative to remaining,
-	// TOT: total diagram/TBT width (variable).
-
-	// Minimum size may be enforced by ABS and RTT widths:
-	// TOT >= ((sum(REL)/100)*TOT)+sum(ABS)
-	// => (1 - (sum(REL)/100))TOT >= sum(ABS)
-	// => TOT >= sum(ABS) / (1 - (sum(REL)/100))
-	// => TOT >= sum(ABS) / ((100 - sum(REL))/100))
-	return(
-		qRound(
-			columnTypeTotal(QET::Absolute)
-			/
-			((100.0 - columnTypeTotal(QET::RelativeToTotalLength))
-			 / 100.0)
-		)
-	);
+	int abs_total;
+	qreal remaining_width_fraction;
+	if (auto width_case = classifyWidthConstraint(abs_total, remaining_width_fraction)) {
+		return static_cast<int>(*width_case);
+	}
+	return qRound(abs_total / remaining_width_fraction);
 }
 
 /**
 	@brief TitleBlockTemplate::maximumWidth
-	@return the maximum width for this template,
-	or -1 if it does not have any.
+	@return the maximum width, in pixels, this template may be
+	rendered at.
+
+	If this template is composed entirely of absolute-width (ABS)
+	columns, the maximum is fixed: the template cannot extend beyond
+	their sum, since nothing in it scales with the template's total
+	width. Otherwise, at least one column scales with the total width
+	(relative-to-total-length or relative-to-remaining-length), so
+	there is ordinarily no upper bound: returns
+	WidthConstraintCase::Unconstrained (cast to int) -- the common case
+	for most templates.
+
+	The exception is when this template's columns cannot be satisfied
+	by any width at all (see classifyWidthConstraint()) -- in that case
+	there is no width, however large, that works, and this returns
+	WidthConstraintCase::RelativeWidthExceeds100Percent or
+	WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth (cast to
+	int) instead of Unconstrained, matching minimumWidth()'s handling
+	of the same cases.
 */
 int TitleBlockTemplate::maximumWidth()
 {
+	int abs_total;
+	qreal remaining_width_fraction;
+	if (auto width_case = classifyWidthConstraint(abs_total, remaining_width_fraction)) {
+		return static_cast<int>(*width_case);
+	}
 	if (columnTypeCount(QET::Absolute) == columns_width_.count()) {
 		// The template is composed of absolute widths only,
 		// therefore it may not extend beyond their sum.
-		return(columnTypeTotal(QET::Absolute));
+		return abs_total; // already computed by classifyWidthConstraint()
 	}
-	return(-1);
+	return static_cast<int>(WidthConstraintCase::Unconstrained);
 }
 
 /**
