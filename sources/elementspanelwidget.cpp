@@ -119,6 +119,13 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(tbt_remove, &QAction::triggered, this, &ElementsPanelWidget::removeTitleBlockTemplate);
 	connect(filter_textfield, &QLineEdit::textChanged, this, &ElementsPanelWidget::filterEdited);
 	connect(elements_panel, &ElementsPanel::currentItemChanged, this, &ElementsPanelWidget::updateButtons);
+	connect(elements_panel, &ElementsPanel::customContextMenuRequested, this, &ElementsPanelWidget::handleContextMenu);
+	connect(
+		elements_panel,
+		&ElementsPanel::requestForTitleBlockTemplate,
+		QETApp::instance(),
+		[app = QETApp::instance()](const TitleBlockTemplateLocation &location) { app->openTitleBlockTemplate(location); }
+	);	
 	
 		// manage double click on TreeWidgetItem
 	connect(elements_panel, &ElementsPanel::requestForProjectPropertiesEdition, this, &ElementsPanelWidget::editProjectProperties);

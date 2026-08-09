@@ -246,6 +246,7 @@ void ExportPropertiesWidget::build()
 	connect(draw_border, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_titleblock, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_terminals, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_terminal_names, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_bg_transparent, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_colored_conductors, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
 #else
@@ -253,6 +254,7 @@ void ExportPropertiesWidget::build()
 	connect(draw_border, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_titleblock, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_terminals, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_terminal_names, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_bg_transparent, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 	connect(draw_colored_conductors, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
 #endif
