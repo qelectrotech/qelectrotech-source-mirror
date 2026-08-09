@@ -50,9 +50,11 @@ class AutoNumberingDockWidget : public QDockWidget
 		void on_m_conductor_cb_activated(int);
 		void on_m_element_cb_activated(int);
 		void on_m_folio_cb_activated(int);
+		void on_m_report_cb_activated(int);
 		void conductorAutoNumChanged();
 		void elementAutoNumChanged();
 		void folioAutoNumChanged();
+		void reportAutoNumChanged();
 		void clear();
 		void projectClosed();
 		void refreshValueFields();
@@ -62,20 +64,23 @@ class AutoNumberingDockWidget : public QDockWidget
 		void on_m_conductor_reset_start_pb_clicked();
 		void on_m_element_reset_start_pb_clicked();
 		void on_m_folio_reset_start_pb_clicked();
+		void on_m_report_reset_start_pb_clicked();
 
 		void on_m_conductor_value_le_editingFinished();
 		void on_m_element_value_le_editingFinished();
 		void on_m_folio_value_le_editingFinished();
+		void on_m_report_value_le_editingFinished();
 
 		void on_m_conductor_increase_sb_valueChanged(int);
 		void on_m_element_increase_sb_valueChanged(int);
 		void on_m_folio_increase_sb_valueChanged(int);
+		void on_m_report_increase_sb_valueChanged(int);
 
 	signals:
 		void folioAutoNumChanged(QString);
 
 	private:
-		enum class AutoNumCategory { Conductor, Element, Folio };
+		enum class AutoNumCategory { Conductor, Element, Folio, Report };
 
 			/// The four widgets that make up one category's row, bundled so
 			/// refreshRow() can be called with just a category instead of

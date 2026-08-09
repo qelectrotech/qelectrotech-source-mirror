@@ -76,7 +76,7 @@ class NumPartEditorW : public QWidget
 		Ui::NumPartEditorW *ui;
 		QValidator *intValidator;
 		QValidator *alphaValidator;
-		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio
+		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio : 3 == report
 	
 
 

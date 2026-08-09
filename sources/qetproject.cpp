@@ -683,6 +683,55 @@ void QETProject::setCurrrentElementAutonum(QString autoNum) {
 }
 
 /**
+	@brief QETProject::reportAutoNum
+	@return All value of report (folio-reference arrow) autonum stored in project
+*/
+QHash <QString, NumerotationContext> QETProject::reportAutoNum() const
+{
+	return m_report_autonum;
+}
+
+/**
+	@brief QETProject::reportAutoNumFormula
+	@param key : autonum title
+	@return Formula of report autonum stored in report autonum
+*/
+QString QETProject::reportAutoNumFormula (const QString& key) const
+{
+	if (m_report_autonum.contains(key)) {
+		return autonum::numerotationContextToFormula(m_report_autonum[key]);
+	}
+
+	return QString();
+}
+
+/**
+	@brief QETProject::reportAutoNumCurrentFormula
+	@return current formula being used by project for report (folio-reference) numbering
+*/
+QString QETProject::reportAutoNumCurrentFormula() const
+{
+	return reportAutoNumFormula(m_current_report_autonum);
+}
+
+/**
+	@brief QETProject::reportCurrentAutoNum
+	@return current report autonum title
+*/
+QString QETProject::reportCurrentAutoNum () const
+{
+	return m_current_report_autonum;
+}
+
+/**
+	@brief QETProject::setCurrentReportAutoNum
+	@param autoNum : set the current report autonum to autonum
+*/
+void QETProject::setCurrentReportAutoNum(QString autoNum) {
+	m_current_report_autonum = std::move(autoNum);
+}
+
+/**
 	@brief QETProject::conductorAutoNumFormula
 	@param key : autonum title
 	@return Formula of element autonum stored in conductor autonum
@@ -760,6 +809,20 @@ void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& 
 }
 
 /**
+	@brief QETProject::addReportAutoNum
+	Add a new report (folio-reference arrow) numerotation context. If key
+	already exist, replace old context with the new context
+	@param key
+	@param context
+*/
+void QETProject::addReportAutoNum(const QString& key, const NumerotationContext& context)
+{
+	m_report_autonum.insert(key, context);
+	emit reportAutoNumAdded(key);
+	emit autoNumContextUpdated();
+}
+
+/**
 	@brief QETProject::removeConductorAutoNum
 	Remove Conductor Numerotation Context stored with key
 	@param key
@@ -786,6 +849,17 @@ void QETProject::removeElementAutoNum(const QString& key)
 */
 void QETProject::removeFolioAutoNum(const QString& key) {
 	m_folio_autonum.remove(key);
+}
+
+/**
+	@brief QETProject::removeReportAutoNum
+	Remove report (folio-reference arrow) Numerotation Context stored with key
+	@param key
+*/
+void QETProject::removeReportAutoNum(const QString& key)
+{
+	m_report_autonum.remove(key);
+	emit reportAutoNumRemoved(key);
 }
 
 /**
@@ -820,6 +894,18 @@ NumerotationContext QETProject::elementAutoNum (const QString &key) {
 NumerotationContext QETProject::folioAutoNum (const QString &key) const
 {
 	if (m_folio_autonum.contains(key)) return m_folio_autonum[key];
+	else return NumerotationContext();
+}
+
+/**
+	@brief QETProject::reportAutoNum
+	Return report (folio-reference arrow) numerotation context stored with key.
+	If key is not found, return an empty numerotation context
+	@param key
+*/
+NumerotationContext QETProject::reportAutoNum (const QString &key) const
+{
+	if (m_report_autonum.contains(key)) return m_report_autonum[key];
 	else return NumerotationContext();
 }
 
@@ -1716,7 +1802,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, guides_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, report_autonums, guides_elmt;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -1739,6 +1825,8 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			folio_autonums = child_elmt;
 		else if (child_elmt.tagName()== QLatin1String("element_autonums"))
 			element_autonums = child_elmt;
+		else if (child_elmt.tagName()== QLatin1String("report_autonums"))
+			report_autonums = child_elmt;
 		else if (child_elmt.tagName() == QLatin1String("guides"))
 			guides_elmt = child_elmt;
 	}
@@ -1787,6 +1875,16 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+		}
+	}
+	if (!report_autonums.isNull())
+	{
+		m_current_report_autonum = report_autonums.attribute(QStringLiteral("current_autonum"));
+		for (auto elmt : QET::findInDomElement(report_autonums, QStringLiteral("report_autonum")))
+		{
+			NumerotationContext nc;
+			nc.fromXml(elmt);
+			m_report_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
 		}
 	}
 	// Read guides from XML (if missing, e.g. in old projects, list stays empty)
@@ -1921,6 +2019,18 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		}
 	}
 	xml_element.appendChild(element_autonums);
+
+	QDomElement report_autonums = xml_document.createElement("report_autonums");
+	report_autonums.setAttribute("current_autonum", m_current_report_autonum);
+	foreach (QString key, reportAutoNum().keys()) {
+	QDomElement report_autonum = reportAutoNum(key).toXml(xml_document, "report_autonum");
+		if (key != "" && reportAutoNumFormula(key) != "") {
+			report_autonum.setAttribute("title", key);
+			report_autonum.setAttribute("formula", reportAutoNumFormula(key));
+			report_autonums.appendChild(report_autonum);
+		}
+	}
+	xml_element.appendChild(report_autonums);
 
 	// Export default guides
 	QDomElement guides_elmt = xml_document.createElement("guides");

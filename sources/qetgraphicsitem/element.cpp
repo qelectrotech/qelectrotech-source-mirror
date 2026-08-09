@@ -1650,23 +1650,27 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
-	if (linkType() == Element::Slave || linkType() & Element::AllReport)
+	if (linkType() == Element::Slave)
 		return;
+
+	const bool is_report = linkType() & Element::AllReport;
 
 	if (diagram())
 	{
-		QString formula = diagram()
-				->project()
-				->elementAutoNumCurrentFormula();
+		QETProject *project = diagram()->project();
+
+		QString formula = is_report
+				? project->reportAutoNumCurrentFormula()
+				: project->elementAutoNumCurrentFormula();
 
 		m_data.m_informations.addValue(QStringLiteral("formula"), formula);
 
-		QString element_currentAutoNum = diagram()
-				->project()
-				->elementCurrentAutoNum();
-		NumerotationContext nc = diagram()
-				->project()
-				->elementAutoNum(element_currentAutoNum);
+		QString current_autonum = is_report
+				? project->reportCurrentAutoNum()
+				: project->elementCurrentAutoNum();
+		NumerotationContext nc = is_report
+				? project->reportAutoNum(current_autonum)
+				: project->elementAutoNum(current_autonum);
 		NumerotationContextCommands ncc (nc);
 
 		m_autoNum_seq.clear();
@@ -1674,20 +1678,25 @@ void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 					   m_autoNum_seq,
 					   nc,
 					   diagram(),
-					   element_currentAutoNum);
+					   current_autonum);
 
 		NumerotationContext new_context = ncc.next();
-		QETProject *project = diagram()->project();
-		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);};
+		auto setter = is_report
+				? std::function<void(const QString &, const NumerotationContext &)>(
+					  [project](const QString &k, const NumerotationContext &c) {project->addReportAutoNum(k, c);})
+				: std::function<void(const QString &, const NumerotationContext &)>(
+					  [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);});
 
 		if (parent_undo)
 		{
-			new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context, parent_undo);
+			new SetAutoNumContextCommand(setter, current_autonum, nc, new_context, parent_undo);
 		}
 		else
 		{
-			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
-			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			auto *undo = new SetAutoNumContextCommand(setter, current_autonum, nc, new_context);
+			undo->setText(is_report
+					? tr("Numéroter automatiquement un renvoi de folio", "undo caption")
+					: tr("Numéroter automatiquement un élément", "undo caption"));
 			diagram()->undoStack().push(undo);
 		}
 

@@ -344,7 +344,11 @@ void ProjectAutoNumConfigPage::initWidgets()
 		//Folio Tab
 	m_saw_folio = new SelectAutonumW(2);
 	tab_widget->addTab(m_saw_folio, tr("Folios"));
-	
+
+		//Report (folio-reference arrow) Tab
+	m_saw_report = new SelectAutonumW(3);
+	tab_widget->addTab(m_saw_report, tr("Renvois"));
+
 		//AutoNumbering Tab
 	m_faw = new FolioAutonumberingW(project());
 	tab_widget->addTab(m_faw, tr("Numérotation auto des folios"));
@@ -371,7 +375,11 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 		//Folio Tab
 	const QStringList strlf(m_project->folioAutoNum().keys());
 	m_saw_folio->contextComboBox()->addItems(strlf);
-	
+
+		//Report (folio-reference arrow) Tab
+	const QStringList strlr(m_project->reportAutoNum().keys());
+	m_saw_report->contextComboBox()->addItems(strlr);
+
 		//Folio AutoNumbering Tab
 	m_faw->setContext(m_project->folioAutoNum().keys());
 }
@@ -407,6 +415,11 @@ void ProjectAutoNumConfigPage::buildConnections()
 	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
 	connect(m_saw_folio->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextFolio(QString)));
+
+		//Report (folio-reference arrow) Tab
+	connect(m_saw_report, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextReport);
+	connect(m_saw_report, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextReport);
+	connect(m_saw_report->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextReport(QString)));
 
 		//	Auto Folio Numbering
 	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
@@ -491,6 +504,67 @@ void ProjectAutoNumConfigPage::removeContextElement()
 		return;
 	m_project->removeElementAutoNum (m_saw_element->contextComboBox()->currentText());
 	m_saw_element->contextComboBox()->removeItem (m_saw_element->contextComboBox()->currentIndex());
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::updateContextReport
+	Display the current selected context for report (folio-reference arrows)
+	@param str : key of context stored in project
+*/
+void ProjectAutoNumConfigPage::updateContextReport(const QString& str)
+{
+	if (str == tr("Nom de la nouvelle numérotation"))
+	{
+		m_saw_report->setContext(NumerotationContext());
+	}
+	else
+	{
+		m_saw_report->setContext(m_project->reportAutoNum(str));
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::saveContextReport
+	Save the current displayed report (folio-reference arrow) formula in project
+*/
+void ProjectAutoNumConfigPage::saveContextReport()
+{
+		// If the text is the default text "Name of new numerotation" save the edited context
+		// With the the name "No name"
+	if (m_saw_report->contextComboBox()->currentText() == tr("Nom de la nouvelle numérotation"))
+	{
+		QString title(tr("Sans nom"));
+
+		m_project->addReportAutoNum (title, m_saw_report -> toNumContext());
+		m_project->setCurrentReportAutoNum(title);
+		m_saw_report->contextComboBox()->addItem(tr("Sans nom"));
+	}
+		// If the text isn't yet to the autonum of the project, add this new item to the combo box.
+	else if ( !m_project -> reportAutoNum().contains( m_saw_report->contextComboBox()->currentText()))
+	{
+		m_project->addReportAutoNum(m_saw_report->contextComboBox()->currentText(), m_saw_report->toNumContext());
+		m_project->setCurrentReportAutoNum(m_saw_report->contextComboBox()->currentText());
+		m_saw_report->contextComboBox()->addItem(m_saw_report->contextComboBox()->currentText());
+	}
+		// Else, the text already exist in the autonum of the project, just update the context
+	else
+	{
+		m_project->addReportAutoNum (m_saw_report->contextComboBox() -> currentText(), m_saw_report -> toNumContext());
+		m_project->setCurrentReportAutoNum(m_saw_report->contextComboBox()->currentText());
+	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::removeContextReport
+	Remove from project the current report (folio-reference arrow) numerotation context
+*/
+void ProjectAutoNumConfigPage::removeContextReport()
+{
+		//if default text, return
+	if (m_saw_report->contextComboBox()->currentText() == tr("Nom de la nouvelle numérotation"))
+		return;
+	m_project->removeReportAutoNum (m_saw_report->contextComboBox()->currentText());
+	m_saw_report->contextComboBox()->removeItem (m_saw_report->contextComboBox()->currentIndex());
 }
 
 /**

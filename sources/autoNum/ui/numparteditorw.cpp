@@ -122,8 +122,14 @@ void NumPartEditorW::setVisibleItems()
 {
 	ui->type_cb->setInsertPolicy(QComboBox::InsertAtBottom);
 	QStringList items;
-	if (m_edited_type == 2)
+	if (m_edited_type == 2 || m_edited_type == 3)
 	{
+			//Report links deliberately get the same minimal set as folios:
+			//no folio-number/element-location tokens, since baking the
+			//*destination*'s folio into the link's own ID is exactly the
+			//staleness bug (numbers going wrong after pages are reordered)
+			//this numbering exists to avoid -- that information belongs in
+			//the link-picker dialog, computed live, not in the ID itself.
 		items	<< tr("Chiffre 1")
 			<< tr("Chiffre 01")
 			<< tr("Chiffre 001")

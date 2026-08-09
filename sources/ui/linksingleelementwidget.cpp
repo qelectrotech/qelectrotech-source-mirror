@@ -19,6 +19,7 @@
 #include "contactgroupselectiondialog.h"
 #include "../qetgraphicsitem/masterelement.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../qetgraphicsitem/element.h"
@@ -303,7 +304,25 @@ void LinkSingleElementWidget::buildTree()
 		{
 			QStringList search_list;
 			QStringList str_list;
-			
+
+				//Which device this candidate's own wire actually leads to --
+				//computed fresh every time the list is built, so unlike an
+				//ID baked in at creation time it can never go stale when
+				//folios are reordered.
+			QString connected_label;
+			if (!elmt->conductors().isEmpty() && !elmt->terminals().isEmpty())
+			{
+				Conductor *cond = elmt->conductors().first();
+				Terminal *own_terminal = elmt->terminals().first();
+				Terminal *other_terminal = (cond->terminal1 == own_terminal)
+						? cond->terminal2 : cond->terminal1;
+				if (other_terminal && other_terminal->parentElement())
+					connected_label = other_terminal->parentElement()->actualLabel();
+			}
+			str_list << connected_label;
+			if (!connected_label.isEmpty())
+				search_list << connected_label;
+
 			if (!elmt->conductors().isEmpty())
 			{
 				ConductorProperties cp = elmt->conductors().first()->properties();
@@ -489,6 +508,12 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 	
 	if (elmt_type & ElementData::AllReport)
 	{
+			//Which device this arrow's own wire actually leads to -- the
+			//clue that used to be baked into the link's ID itself (and
+			//went stale whenever pages were reordered). Computed live
+			//every time this list is built, so it can't go stale.
+		list << tr("Élément connecté");
+
 		if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 		{
 			list << tr("N° de fil")

@@ -156,6 +156,9 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void updateContextElement(const QString&);//element
 		void saveContextElement();
 		void removeContextElement();
+		void updateContextReport(const QString&);//report (folio-reference arrows)
+		void saveContextReport();
+		void removeContextReport();
 
 		void applyAutoNum();
 		void applyManagement();
@@ -171,6 +174,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_conductor;
 		SelectAutonumW        *m_saw_folio;
 		SelectAutonumW        *m_saw_element;
+		SelectAutonumW        *m_saw_report;
 		FolioAutonumberingW   *m_faw;
 		AutoNumberingManagementW *m_amw;
 

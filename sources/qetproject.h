@@ -150,15 +150,19 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> conductorAutoNum() const;
 		QHash <QString, NumerotationContext> elementAutoNum() const;
 		QHash <QString, NumerotationContext> folioAutoNum() const;
+		QHash <QString, NumerotationContext> reportAutoNum() const;
 		void addConductorAutoNum (const QString& key, const NumerotationContext& context);
 		void addElementAutoNum (const QString& key, const NumerotationContext& context);
 		void addFolioAutoNum     (const QString& key, const NumerotationContext& context);
+		void addReportAutoNum    (const QString& key, const NumerotationContext& context);
 		void removeConductorAutoNum (const QString& key);
 		void removeElementAutoNum (const QString& key);
 		void removeFolioAutoNum (const QString& key);
+		void removeReportAutoNum (const QString& key);
 		NumerotationContext conductorAutoNum(const QString &key) const;
 		NumerotationContext folioAutoNum(const QString &key)     const;
 		NumerotationContext elementAutoNum(const QString &key);
+		NumerotationContext reportAutoNum(const QString &key)    const;
 
 		QString conductorAutoNumFormula(const QString& key) const; //returns Formula
 		QString conductorCurrentAutoNum() const;
@@ -168,6 +172,11 @@ class QETProject : public QObject
 		QString elementAutoNumCurrentFormula() const;
 		QString elementCurrentAutoNum() const;
 		void setCurrrentElementAutonum(QString autoNum);
+
+		QString reportAutoNumFormula(const QString& key) const;
+		QString reportAutoNumCurrentFormula() const;
+		QString reportCurrentAutoNum() const;
+		void setCurrentReportAutoNum(QString autoNum);
 
 			//Element
 		void freezeExistentElementLabel(bool freeze, int from, int to);
@@ -234,6 +243,8 @@ class QETProject : public QObject
 		void addAutoNumDiagram();
 		void elementAutoNumAdded(QString name);
 		void elementAutoNumRemoved(QString name);
+		void reportAutoNumAdded(QString name);
+		void reportAutoNumRemoved(QString name);
 		void conductorAutoNumAdded();
 		void conductorAutoNumRemoved();
 		void folioAutoNumAdded();
@@ -320,6 +331,9 @@ class QETProject : public QObject
 			/// Element Auto Numbering
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
+			/// Folio-reference (report arrow) Auto Numbering
+		QHash <QString, NumerotationContext> m_report_autonum; //Title and NumContext hash
+		QString m_current_report_autonum;
 		bool m_auto_conductor = true;
 	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;

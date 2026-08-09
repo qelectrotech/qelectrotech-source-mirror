@@ -64,12 +64,15 @@ void AutoNumberingDockWidget::clear()
 	ui->m_conductor_cb->clear();
 	ui->m_element_cb->clear();
 	ui->m_folio_cb->clear();
+	ui->m_report_cb->clear();
 	ui->m_conductor_value_le->clear();
 	ui->m_element_value_le->clear();
 	ui->m_folio_value_le->clear();
+	ui->m_report_value_le->clear();
 	ui->m_conductor_next_le->clear();
 	ui->m_element_next_le->clear();
 	ui->m_folio_next_le->clear();
+	ui->m_report_next_le->clear();
 }
 
 /**
@@ -88,6 +91,9 @@ AutoNumberingDockWidget::Row AutoNumberingDockWidget::rowFor(AutoNumCategory cat
 		case AutoNumCategory::Folio:
 			return {ui->m_folio_cb, ui->m_folio_value_le,
 				ui->m_folio_increase_sb, ui->m_folio_next_le};
+		case AutoNumCategory::Report:
+			return {ui->m_report_cb, ui->m_report_value_le,
+				ui->m_report_increase_sb, ui->m_report_next_le};
 	}
 	return {nullptr, nullptr, nullptr, nullptr};
 }
@@ -127,7 +133,13 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 			    this,SLOT(elementAutoNumChanged()));
 		disconnect (m_project,SIGNAL(elementAutoNumAdded(QString)),
 			    this,SLOT(elementAutoNumChanged()));
-	
+
+			//Report Signals
+		disconnect (m_project,SIGNAL(reportAutoNumRemoved(QString)),
+			    this,SLOT(reportAutoNumChanged()));
+		disconnect (m_project,SIGNAL(reportAutoNumAdded(QString)),
+			    this,SLOT(reportAutoNumChanged()));
+
 			//Folio Signals
 		disconnect (m_project,SIGNAL(folioAutoNumRemoved()),
 			    this,SLOT(folioAutoNumChanged()));
@@ -166,6 +178,12 @@ void AutoNumberingDockWidget::setProject(QETProject *project,
 		 this,SLOT(elementAutoNumChanged()));
 	connect (m_project,SIGNAL(elementAutoNumAdded(QString)),
 		 this,SLOT(elementAutoNumChanged()));
+
+		//Report Signals
+	connect (m_project,SIGNAL(reportAutoNumRemoved(QString)),
+		 this,SLOT(reportAutoNumChanged()));
+	connect (m_project,SIGNAL(reportAutoNumAdded(QString)),
+		 this,SLOT(reportAutoNumChanged()));
 
 		//Folio Signals
 	connect (m_project,SIGNAL(folioAutoNumRemoved()),
@@ -225,11 +243,20 @@ void AutoNumberingDockWidget::setContext()
 		{ ui->m_folio_cb -> addItem(str);}
 	}
 
+	//Report Combobox
+	ui->m_report_cb->addItem("");
+	QList <QString> keys_report = m_project->reportAutoNum().keys();
+	if (!keys_report.isEmpty()) {
+		foreach (QString str, keys_report)
+		{ ui->m_report_cb -> addItem(str);}
+	}
+
 		//The combo boxes have just been repopulated, so the value fields next
 		//to them are showing whatever the previous project left there.
 	refreshRow(AutoNumCategory::Conductor);
 	refreshRow(AutoNumCategory::Element);
 	refreshRow(AutoNumCategory::Folio);
+	refreshRow(AutoNumCategory::Report);
 
 	this->setActive();
 }
@@ -266,6 +293,11 @@ void AutoNumberingDockWidget::setActive()
 		QString active_element_autonum = m_project->elementCurrentAutoNum();
 		int el_index = ui->m_element_cb->findText(active_element_autonum);
 		ui->m_element_cb->setCurrentIndex(el_index);
+
+			//Report
+		QString active_report_autonum = m_project->reportCurrentAutoNum();
+		int report_index = ui->m_report_cb->findText(active_report_autonum);
+		ui->m_report_cb->setCurrentIndex(report_index);
 
 			//Folio
 		if (m_project->defaultTitleBlockProperties().folio == "%autonum") {
@@ -338,6 +370,33 @@ void AutoNumberingDockWidget::on_m_element_cb_activated(int)
 }
 
 /**
+	@brief AutoNumberingDockWidget::reportAutoNumChanged
+	Add new or remove report (folio-reference arrow) auto num from combobox
+*/
+void AutoNumberingDockWidget::reportAutoNumChanged()
+{
+	ui->m_report_cb->clear();
+
+	//Report Combobox
+	ui->m_report_cb->addItem("");
+	QList <QString> keys_report = m_project->reportAutoNum().keys();
+	if (!keys_report.isEmpty()) {
+		foreach (QString str, keys_report) {ui->m_report_cb -> addItem(str);}
+	}
+	setActive();
+}
+
+/**
+	@brief AutoNumberingDockWidget::on_m_report_cb_activated
+	Set new report (folio-reference arrow) AutoNum
+*/
+void AutoNumberingDockWidget::on_m_report_cb_activated(int)
+{
+	m_project->setCurrentReportAutoNum(ui->m_report_cb->currentText());
+	refreshRow(AutoNumCategory::Report);
+}
+
+/**
 	@brief AutoNumberingDockWidget::folioAutoNumChanged
 	Add new or remove folio auto num from combobox
 */
@@ -400,6 +459,11 @@ void AutoNumberingDockWidget::on_m_folio_reset_start_pb_clicked()
 	resetAutoNum(ui->m_folio_cb, AutoNumCategory::Folio);
 }
 
+void AutoNumberingDockWidget::on_m_report_reset_start_pb_clicked()
+{
+	resetAutoNum(ui->m_report_cb, AutoNumCategory::Report);
+}
+
 void AutoNumberingDockWidget::on_m_conductor_value_le_editingFinished()
 {
 	applyValueField(ui->m_conductor_cb, ui->m_conductor_value_le, AutoNumCategory::Conductor);
@@ -413,6 +477,11 @@ void AutoNumberingDockWidget::on_m_element_value_le_editingFinished()
 void AutoNumberingDockWidget::on_m_folio_value_le_editingFinished()
 {
 	applyValueField(ui->m_folio_cb, ui->m_folio_value_le, AutoNumCategory::Folio);
+}
+
+void AutoNumberingDockWidget::on_m_report_value_le_editingFinished()
+{
+	applyValueField(ui->m_report_cb, ui->m_report_value_le, AutoNumCategory::Report);
 }
 
 void AutoNumberingDockWidget::on_m_conductor_increase_sb_valueChanged(int)
@@ -430,6 +499,11 @@ void AutoNumberingDockWidget::on_m_folio_increase_sb_valueChanged(int)
 	applyIncreaseField(ui->m_folio_cb, ui->m_folio_increase_sb, AutoNumCategory::Folio);
 }
 
+void AutoNumberingDockWidget::on_m_report_increase_sb_valueChanged(int)
+{
+	applyIncreaseField(ui->m_report_cb, ui->m_report_increase_sb, AutoNumCategory::Report);
+}
+
 /**
 	@brief AutoNumberingDockWidget::contextFor
 	@return the numerotation context named by combo_box, for category
@@ -441,6 +515,7 @@ NumerotationContext AutoNumberingDockWidget::contextFor(QComboBox *combo_box, Au
 		case AutoNumCategory::Conductor: return m_project->conductorAutoNum(key);
 		case AutoNumCategory::Element:   return m_project->elementAutoNum(key);
 		case AutoNumCategory::Folio:     return m_project->folioAutoNum(key);
+		case AutoNumCategory::Report:    return m_project->reportAutoNum(key);
 	}
 	return NumerotationContext();
 }
@@ -458,6 +533,7 @@ void AutoNumberingDockWidget::storeContext(QComboBox *combo_box, AutoNumCategory
 		case AutoNumCategory::Conductor: m_project->addConductorAutoNum(key, context); break;
 		case AutoNumCategory::Element:   m_project->addElementAutoNum(key, context);   break;
 		case AutoNumCategory::Folio:     m_project->addFolioAutoNum(key, context);     break;
+		case AutoNumCategory::Report:    m_project->addReportAutoNum(key, context);    break;
 	}
 	m_project->setModified(true);
 }
@@ -505,7 +581,8 @@ void AutoNumberingDockWidget::refreshValueFields()
 		//read-only, so there is nothing a refresh could clobber.
 	for (AutoNumCategory category : {AutoNumCategory::Conductor,
 					 AutoNumCategory::Element,
-					 AutoNumCategory::Folio})
+					 AutoNumCategory::Folio,
+					 AutoNumCategory::Report})
 	{
 		const Row row = rowFor(category);
 		if (!row.value->hasFocus() && !row.increase->hasFocus())

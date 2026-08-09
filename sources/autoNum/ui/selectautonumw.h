@@ -76,7 +76,7 @@ class SelectAutonumW : public QWidget
 		NumerotationContext m_context;
 		FormulaAutonumberingW *m_feaw;
 		FormulaAutonumberingW *m_fcaw;
-		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio
+		int m_edited_type = -1; ///<0 == element : 1 == conductor : 2 == folio : 3 == report
 };
 
 #endif // SELECTAUTONUMW_H

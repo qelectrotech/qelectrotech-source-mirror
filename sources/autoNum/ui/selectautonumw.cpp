@@ -204,7 +204,29 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button)
 			break;
 			//help dialog
 		case QDialogButtonBox::HelpRole:
-			if (m_edited_type == 2)
+			if (m_edited_type == 3)
+			{
+				QMessageBox::information (
+							this,
+							tr("Renvoi de folio Autonumérotation",
+							   "title window"),
+							tr("C'est ici que vous pouvez définir la manière dont seront numérotés les nouveaux renvois de folio (flèches d'entrée/sortie).\n"
+							   "-Une numérotation est composée d'une variable minimum.\n"
+							   "-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.\n"
+							   "-Une variable de numérotation comprend : un type, une valeur et une incrémentation.\n"
+
+							   "\n-les types \"Chiffre 1\", \"Chiffre 01\" et \"Chiffre 001\", représentent un type numérique défini dans le champ \"Valeur\", "
+							   "qui s'incrémente à chaque nouveau renvoi de la valeur du champ \"Incrémentation\".\n"
+							   "-\"Chiffre 01\" et \"Chiffre 001\", sont respectivement représentés sur le schéma par deux et trois digits minimum.\n"
+							   "Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,"
+							   "celui-ci sera précédé par un ou deux 0 afin de respecter son type.\n"
+
+							   "\n-Le type \"Texte\", représente un texte fixe.\nLe champ \"Incrémentation\" n'est pas utilisé.\n",
+							   "help dialog about the report link autonumerotation"
+							   ));
+				break;
+			}
+			else if (m_edited_type == 2)
 			{
 				QMessageBox::information (
 							this,
