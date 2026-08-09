@@ -310,8 +310,14 @@ void DynamicElementTextItem::refreshLabelConnection()
 		if((m_parent_element.data()->linkType() & Element::AllReport) ||
 			m_parent_element.data()->linkType() == Element::ConductorDefinition)
 		{
-			updateReportFormulaConnection();
-			updateReportText();
+				//updateReportFormulaConnection() alone is not enough here: it
+				//only re-applies m_report_formula's connections, it never
+				//refreshes m_other_report from linkedElements(). For a text
+				//item that just loaded from a file (still m_other_report ==
+				//null, per reportChanged()'s own comment below), that leaves
+				//every connect() a no-op and the label stuck blank. reportChanged()
+				//is the one that actually re-reads linkedElements().
+			reportChanged();
 		}
 		else
 		{
@@ -896,21 +902,21 @@ void DynamicElementTextItem::reportChanged()
 	}
 	
 	bool text_have_label = false;
-	
+
 	if((textFrom() == ElementInfo && m_info_name == "label") ||
 	   (textFrom() == CompositeText && m_composite_text.contains("%{label}")))
 		text_have_label = true;
-	
+
 	if(text_have_label)
 		removeConnectionForReportFormula(m_report_formula);
-	
+
 	m_other_report.clear();
 	if(!m_parent_element.data()->linkedElements().isEmpty())
 		m_other_report = m_parent_element.data()->linkedElements().first();
-		
+
 		//Because linked report was changed, we ensure there is a conductor watched
 	setPotentialConductor();
-	
+
 	if(text_have_label)
 	{
 		setConnectionForReportFormula(m_report_formula);
@@ -952,6 +958,7 @@ void DynamicElementTextItem::setConnectionForReportFormula(const QString &formul
 	{
 		connect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
 		connect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+		connect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
 	}
 	if (string.contains("%l"))
 		connect(other_elmt, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
@@ -977,7 +984,11 @@ void DynamicElementTextItem::removeConnectionForReportFormula(const QString &for
 	}
 	
 	if (other_diagram && (string.contains("%f") || string.contains("%id")))
+	{
 		disconnect(other_diagram->project(), &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramRemoved, this, &DynamicElementTextItem::updateReportText);
+		disconnect(other_diagram->project(), &QETProject::diagramAdded, this, &DynamicElementTextItem::updateReportText);
+	}
 	if (string.contains("%l"))
 		disconnect(other_element, &Element::yChanged, this, &DynamicElementTextItem::updateReportText);
 	if (string.contains("%c"))

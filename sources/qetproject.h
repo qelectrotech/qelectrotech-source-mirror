@@ -108,6 +108,7 @@ class QETProject : public QObject
 		projectDataBase *dataBase();
 		QUuid uuid() const;
 		ProjectState state() const;
+		void refresh();
 		QList<Diagram *> diagrams() const;
 		int folioIndex(const Diagram *) const;
 		XmlElementCollection *embeddedElementCollection()const;
@@ -283,7 +284,6 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
-		void refresh();
 
 	// attributes
 	private:

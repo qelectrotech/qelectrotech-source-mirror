@@ -1236,6 +1236,7 @@ bool QETDiagramEditor::openAndAddProject(
 
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	addProject(project);
+	project->refresh();
 	DialogWaiting::dropInstance();
 
 		//Report font descriptions which could not be read as-is (written by
