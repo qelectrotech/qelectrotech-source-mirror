@@ -39,6 +39,22 @@ ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 }
 
 /**
+	@brief ElementsCollectionModel::~ElementsCollectionModel
+	loadCollections() kicks off QtConcurrent::map() over this model's own
+	item tree without ever cancelling/waiting for it. If the model (and the
+	items it owns) get destroyed while that background pass is still
+	running -- e.g. the "Open Element" dialog is cancelled before loading
+	finishes -- worker threads keep dereferencing the freed items. Cancel
+	and wait here so no worker thread can still be touching an item once
+	QStandardItemModel's own destructor starts tearing down the tree.
+*/
+ElementsCollectionModel::~ElementsCollectionModel()
+{
+	m_future.cancel();
+	m_future.waitForFinished();
+}
+
+/**
 	@brief ElementsCollectionModel::data
 	Reimplemented from QStandardItemModel
 	@param index
