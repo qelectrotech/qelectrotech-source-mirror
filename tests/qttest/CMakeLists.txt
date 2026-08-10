@@ -74,6 +74,6 @@ target_link_libraries(
   ${PROJECT_NAME}
   PRIVATE
   Qt::Test
-  ${KF5_PRIVATE_LIBRARIES}
+  ${KF_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES})
 

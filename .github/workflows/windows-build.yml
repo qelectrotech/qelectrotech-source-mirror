@@ -456,7 +456,7 @@ jobs:
             -DCMAKE_PREFIX_PATH=/ucrt64 \
             -DQt6_DIR=/ucrt64/lib/cmake/Qt6 \
             -DQT_VERSION_MAJOR=6 \
-            -DBUILD_WITH_KF5=OFF \
+            -DBUILD_WITH_KF=OFF \
             -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \

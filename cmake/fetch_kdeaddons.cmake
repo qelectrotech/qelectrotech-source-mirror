@@ -16,17 +16,24 @@
 
 message(" - fetch_kdeaddons")
 
-if(BUILD_WITH_KF5)
+# TODO remove path as soon as Qt5 gets retired
+if(BUILD_WITH_KF)
   Include(FetchContent)
 
-  option(BUILD_KF5 "Build KF5 libraries, use system ones otherwise" YES)
+  option(BUILD_KF "Build KF5 libraries, use system ones otherwise" YES)
 
-  if(BUILD_KF5)
+  if(BUILD_KF)
 
-    if(NOT DEFINED KF5_GIT_TAG)
+  if(KF_MAJOR_VERSION EQUAL 5)
+    if(NOT DEFINED KF_GIT_TAG)
       #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
-      set(KF5_GIT_TAG v5.77.0)
+      set(KF_GIT_TAG v5.77.0)
     endif()
+  else()
+    if(NOT DEFINED KF_GIT_TAG)
+      set(KF_GIT_TAG v6.10.0)
+    endif()
+  endif()
 
     # Fix stop the run autotests of kcoreaddons
     # see
@@ -38,30 +45,40 @@ if(BUILD_WITH_KF5)
     # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
     set(KDE_SKIP_TEST_SETTINGS "TRUE")
     set(BUILD_TESTING "0")
+    
+    # QElectroTech is a plain QtWidgets application with no QML anywhere in
+    # it; these disable optional features of the fetched KF modules that
+    # would otherwise pull in extra Qt6 components (e.g. Qt6Qml) we don't
+    # have and don't need.
+    set(BUILD_DESIGNERPLUGIN OFF)
+    set(KCOREADDONS_USE_QML OFF)
+    set(BUILD_QCH OFF)
+    set(BUILD_SHARED_LIBS OFF)
+
     FetchContent_Declare(
       ecm
       GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
-      GIT_TAG        ${KF5_GIT_TAG})
+      GIT_TAG        ${KF_GIT_TAG})
     FetchContent_MakeAvailable(ecm)
 
     FetchContent_Declare(
       kcoreaddons
       GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-      GIT_TAG        ${KF5_GIT_TAG})
+      GIT_TAG        ${KF_GIT_TAG})
     FetchContent_MakeAvailable(kcoreaddons)
 
     FetchContent_Declare(
       kwidgetsaddons
       GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-      GIT_TAG        ${KF5_GIT_TAG})
+      GIT_TAG        ${KF_GIT_TAG})
     FetchContent_MakeAvailable(kwidgetsaddons)
   else()
-    find_package(KF5CoreAddons REQUIRED)
-    find_package(KF5WidgetsAddons REQUIRED)
+    find_package(KF${KF_MAJOR_VERSION}CoreAddons REQUIRED)
+    find_package(KF${KF_MAJOR_VERSION}WidgetsAddons REQUIRED)
   endif()
 
-  set(KF5_PRIVATE_LIBRARIES
-    KF5::WidgetsAddons
-    KF5::CoreAddons
+  set(KF_PRIVATE_LIBRARIES
+    KF${KF_MAJOR_VERSION}::WidgetsAddons
+    KF${KF_MAJOR_VERSION}::CoreAddons
     )
 endif()

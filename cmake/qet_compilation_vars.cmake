@@ -801,7 +801,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
   list(APPEND QET_SRC_FILES
     ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
     ${QET_DIR}/sources/ui/nokde/kautosavefile.h

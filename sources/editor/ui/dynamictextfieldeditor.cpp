@@ -141,7 +141,7 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
 		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 		m_color_kpb -> setColor(m_text_field.data() -> color());
 #endif
@@ -170,7 +170,7 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));

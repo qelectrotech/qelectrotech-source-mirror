@@ -57,7 +57,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>

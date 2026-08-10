@@ -48,19 +48,11 @@ endif()
 # INTERFACE_QT_MAJOR_VERSION mismatch at generate time.
 set(QT_DEFAULT_MAJOR_VERSION ${QT_VERSION_MAJOR} CACHE STRING "Qt version to use (5 or 6)" FORCE)
 
-# Add sub directories
-option(PACKAGE_TESTS "Build the tests" ON)
-if(PACKAGE_TESTS)
-    message("Add sub directory tests")
-    add_subdirectory(tests)
-endif()
-
 include(cmake/paths_compilation_installation.cmake)
 include(cmake/start_options.cmake)
 include(cmake/developer_options.cmake)
 include(cmake/git_update_submodules.cmake)
 include(cmake/git_last_commit_sha.cmake)
-include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
 include(cmake/qet_compilation_vars.cmake)
@@ -100,25 +92,19 @@ endif()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
-# The default build only compiles the tracked .ts files to .qm (lrelease).
-# Refreshing the .ts from the sources (lupdate) is a developer action behind
-# the explicit "update_translations" target below: running lupdate on every
-# build rewrote tracked files as a side effect, and under high parallelism
-# lupdate rewriting a .ts while lrelease read the same file made the build
-# fail with "Premature end of document".
-set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt6_add_translation(QM_FILES ${TS_FILES})
+    set(KF_MAJOR_VERSION 6)
 else()
-    qt5_add_translation(QM_FILES ${TS_FILES})
+    set(KF_MAJOR_VERSION 5)
 endif()
+include(cmake/fetch_kdeaddons.cmake)
 
-add_custom_target(update_translations
-    COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
-    VERBATIM
-)
+# Add sub directories
+option(PACKAGE_TESTS "Build the tests" ON)
+if(PACKAGE_TESTS)
+    message("Add sub directory tests")
+    add_subdirectory(tests)
+endif()
 
 # als laatse
 include(cmake/define_definitions.cmake)
@@ -142,6 +128,36 @@ else()
         ${QET_SRC_FILES}
         ${QM_FILES}
         ${QET_DIR}/qelectrotech.qrc
+    )
+endif()
+
+# The default build only compiles the tracked .ts files to .qm (lrelease).
+# Refreshing the .ts from the sources (lupdate) is a developer action behind
+# the explicit "update_translations" target below: running lupdate on every
+# build rewrote tracked files as a side effect, and under high parallelism
+# lupdate rewriting a .ts while lrelease read the same file made the build
+# fail with "Premature end of document".
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_add_lrelease(
+    	TARGETS ${PROJECT_NAME} 
+    	TS_FILES ${TS_FILES}
+    	QM_OUTPUT_DIRECTORY "${QET_DIR}/lang"
+    	QM_FILES_OUTPUT_VARIABLE QM_FILES 
+    )
+    qt_add_lupdate(
+    	TS_FILES  ${TS_FILES}
+    	SOURCE_TARGETS ${PROJECT_NAME}
+    	LUPDATE_TARGET update_translations
+        COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
+    )
+else()
+    qt5_add_translation(QM_FILES ${TS_FILES})
+    set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
+    add_custom_target(update_translations
+        COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
+        VERBATIM
     )
 endif()
 
@@ -180,7 +196,7 @@ target_link_libraries(
     pugixml::pugixml
     SingleApplication::SingleApplication
     SQLite3::SQLite3
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES}
 )
 
@@ -221,7 +237,7 @@ target_include_directories(
     ${QET_DIR}/sources/svg
 )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
     target_include_directories(
         ${PROJECT_NAME}
         PRIVATE
