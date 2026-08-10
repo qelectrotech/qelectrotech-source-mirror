@@ -155,6 +155,21 @@ class DynamicTextItemDelegate : public QStyledItemDelegate
 
 	private:
 	QStringList availableInfo(DynamicElementTextItem *deti) const;
+		/**
+			@brief commitAndCloseDeferred
+			Schedule commitData()/closeEditor() for @a editor on the next
+			event loop iteration. For editors resolved synchronously inside
+			createEditor() (font/color, both run their picker dialog before
+			returning) there is no user interaction left to drive the base
+			QStyledItemDelegate::eventFilter()'s usual Enter/focus-out commit
+			path, so without this the value sits picked-but-uncommitted
+			until something unrelated (e.g. clicking elsewhere) happens to
+			trigger it. Deferred rather than called immediately: the view
+			only registers the widget createEditor() returns as "the active
+			editor" *after* createEditor() itself returns, so emitting here
+			would target an editor the view doesn't know about yet.
+		*/
+	void commitAndCloseDeferred(QWidget *editor) const;
 };
 
 #endif // DYNAMICELEMENTTEXTMODEL_H
