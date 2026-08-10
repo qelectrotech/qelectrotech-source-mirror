@@ -1,4 +1,4 @@
-; this file is part of installer for QElectroTech
+﻿; this file is part of installer for QElectroTech
 ; Copyright (C)2015 QElectroTech Team <scorpio@qelectrotech.org>
 ;
 ; This program is free software; you can redistribute it and/or
@@ -34,6 +34,13 @@
 ;--------------------------------
 ; NSIS 3 requires SetCompressor BEFORE any Section or Function
 SetCompressor /FINAL /SOLID lzma
+
+; This script is saved as UTF-8 with a BOM. Without an explicit BOM, NSIS
+; falls back to interpreting non-ASCII literals (e.g. the accented registry
+; strings below) using the system ANSI codepage instead of UTF-8, which
+; double-encodes them into mojibake (bug #307). Unicode is NSIS 3's default,
+; but is declared here explicitly so this doesn't silently regress.
+Unicode true
 
 ;--------------------------------
 ; Includes
@@ -315,7 +322,7 @@ Section ""
     WriteRegStr   HKEY_CLASSES_ROOT "Applications\qelectrotech.exe\shell\open\command" "" \
         '"$final_qet_exe" "%1"'
     WriteRegStr   HKEY_CLASSES_ROOT ".qet"                                              "" "qet_diagram_file"
-    WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file"                                  "" "Diagram QET"
+    WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file"                                  "" "Schéma QET"
     WriteRegDWORD HKEY_CLASSES_ROOT "qet_diagram_file"                                  "EditFlags"    0x00000000
     WriteRegDWORD HKEY_CLASSES_ROOT "qet_diagram_file"                                  "BrowserFlags" 0x00000008
     WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\DefaultIcon"                      "" "$final_project_ico"
@@ -323,7 +330,7 @@ Section ""
 
     ; File associations - .elmt
     WriteRegStr   HKEY_CLASSES_ROOT ".elmt"                                             "" "qet_element_file"
-    WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                  "" "Element QET"
+    WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                  "" "Élément QET"
     WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                  "EditFlags"    0x00000000
     WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                  "BrowserFlags" 0x00000008
     WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\DefaultIcon"                      "" "$final_element_ico"
