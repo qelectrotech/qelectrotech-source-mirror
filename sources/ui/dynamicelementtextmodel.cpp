@@ -36,6 +36,7 @@
 #include <QHash>
 #include <QModelIndex>
 #include <QStandardItem>
+#include <QTimer>
 #include <QUndoCommand>
 
 static int src_txt_row   = 0;
@@ -1595,6 +1596,15 @@ DynamicTextItemDelegate::DynamicTextItemDelegate(QObject *parent) :
 	QStyledItemDelegate(parent)
 {}
 
+void DynamicTextItemDelegate::commitAndCloseDeferred(QWidget *editor) const
+{
+	auto *self = const_cast<DynamicTextItemDelegate *>(this);
+	QTimer::singleShot(0, self, [self, editor]() {
+		emit self->commitData(editor);
+		emit self->closeEditor(editor);
+	});
+}
+
 QWidget *DynamicTextItemDelegate::createEditor(
 		QWidget *parent,
 		const QStyleOptionViewItem &option,
@@ -1682,6 +1692,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				w->setProperty("ok", ok);
 			}
 			w->setObjectName("font_dialog");
+			commitAndCloseDeferred(w);
 			return w;
 		}
 		case DynamicElementTextModel::color:
@@ -1716,6 +1727,7 @@ QWidget *DynamicTextItemDelegate::createEditor(
 				w->setProperty("ok", true);
 			}
 			w->setObjectName("color_dialog");
+			commitAndCloseDeferred(w);
 			return w;
 		}
 		case DynamicElementTextModel::pos:
