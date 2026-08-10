@@ -63,7 +63,7 @@ message("QET_DIR                   :" ${QET_DIR})
 message("GIT_COMMIT_SHA            :" ${GIT_COMMIT_SHA})
 
 if(BUILD_WITH_KF)
-  message("KF_GIT_TAG               :" ${KF5_GIT_TAG})
+  message("KF_GIT_TAG               :" ${KF_GIT_TAG})
 else()
   add_definitions(-DBUILD_WITHOUT_KF)
 endif()
