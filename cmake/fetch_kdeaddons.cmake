@@ -35,8 +35,8 @@ if(BUILD_WITH_KF)
         set(KF_GIT_TAG v6.10.0)
       endif()
     endif()
-    // using a function in order to limit the scope of the variables
-    // with CMake >=3.25 we could use a block()
+    # using a function in order to limit the scope of the variables
+    # with CMake >=3.25 we could use a block()
     function(qet_make_kf_available)
       # Fix stop the run autotests of kcoreaddons
       # see
