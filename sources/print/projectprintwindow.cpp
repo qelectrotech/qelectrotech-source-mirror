@@ -28,7 +28,7 @@
 
 #include "ui_projectprintwindow.h"
 
-// Private Qt PDF engine for drawHyperlink() — not public API.
+// Private Qt PDF engine for drawHyperlink() is not a public API.
 // Availability of Qt::GuiPrivate is verified at configure time in CMakeLists.txt.
 #include <private/qpdf_p.h>
 
