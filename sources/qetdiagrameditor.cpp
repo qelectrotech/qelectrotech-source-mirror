@@ -108,7 +108,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 
 		//Set the signal mapper
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedObject() always available
-	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));
+	connect(&windowMapper, qOverload<QWidget*>(&QSignalMapper::mapped), this, [this](QObject *object) { activateWidget(qobject_cast<QWidget *>(object)); });
 #else
 	connect(&windowMapper, &QSignalMapper::mappedObject, this, [this](QObject *object) { activateWidget(qobject_cast<QWidget *>(object)); });
 #endif

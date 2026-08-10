@@ -125,7 +125,7 @@ QETApp::QETApp() :
 	initSystemTray();
 
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedObject() always available
-	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
+	connect(&signal_map, qOverload<QWidget*>(&QSignalMapper::mapped), this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
 #else
 	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
 #endif
