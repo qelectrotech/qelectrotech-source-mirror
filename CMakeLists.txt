@@ -162,8 +162,8 @@ if(QT_VERSION_MAJOR EQUAL 6)
         COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
     )
 else()
-    qt5_add_translation(QM_FILES ${TS_FILES})
     set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
+    qt5_add_translation(QM_FILES ${TS_FILES})
     add_custom_target(update_translations
         COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
