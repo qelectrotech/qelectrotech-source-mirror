@@ -45,7 +45,7 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	ui->label_->setText(translated_key);
 	ui->m_erase_text->setVisible(false);
 
-	if (key == QETInformation::ELMT_WIDTH || key == QETInformation::ELMT_HEIGHT || key == QETInformation::ELMT_DEPTH)
+	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
 	{
 		auto *validator = new QRegularExpressionValidator(
 			QRegularExpression(QStringLiteral(R"(^[0-9]*\.?[0-9]{0,4}$)")), ui->line_edit);
