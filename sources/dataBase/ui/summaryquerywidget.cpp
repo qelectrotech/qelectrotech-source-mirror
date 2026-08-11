@@ -63,7 +63,6 @@ QString SummaryQueryWidget::queryStr() const
 	QStringList keys = selectedKeys();
 
 	QString select ="SELECT ";
-	QString order_by = " ORDER BY ";
 
 	QString column;
 	bool first = true;
@@ -72,11 +71,24 @@ QString SummaryQueryWidget::queryStr() const
 			first = false;
 		} else {
 			column += ", ";
-			order_by +=", ";
 		}
 		column += key;
-		order_by += key;
 	}
+
+		// Always sort by folio position first, regardless of which columns
+		// the user chose to display (and regardless of where "pos" falls
+		// among them, if at all): the summary/table of contents should
+		// follow the actual folio order by default. Previously the ORDER
+		// BY clause only ever contained the user's chosen display columns
+		// in their chosen order, so a report was left completely unsorted
+		// by position unless the user happened to both add "Position" as
+		// a column AND place it first (bugtracker #238).
+	QStringList order_by_terms;
+	order_by_terms << "pos";
+	for (auto key: keys) {
+		if (key != "pos") order_by_terms << key;
+	}
+	QString order_by = " ORDER BY " + order_by_terms.join(", ");
 
 	QString from = " FROM project_summary_view";
 
