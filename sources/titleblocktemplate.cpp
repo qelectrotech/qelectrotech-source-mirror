@@ -1846,10 +1846,13 @@ QString TitleBlockTemplate::interpreteVariables(
 QStringList TitleBlockTemplate::listOfVariables()
 {
 	QStringList list;
-	// Match every "%{name}" placeholder. The bare "%name" form can't be
-	// extracted reliably without the variable list, and templates use the
-	// braced form, so only that is collected here.
-	static const QRegularExpression rx(QStringLiteral("%\\{([^}]+)\\}"));
+	// Match both the braced "%{name}" form and the bare "%name" form
+	// (bugtracker #245): a bare name is taken as the longest run of
+	// identifier characters right after the '%', which correctly stops at
+	// whitespace -- so "%name2 " and "%name2 %name3" are both detected,
+	// matching what previously only worked for the braced form.
+	static const QRegularExpression rx(
+		QStringLiteral("%\\{([^}]+)\\}|%([A-Za-z0-9_-]+)"));
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
@@ -1860,7 +1863,9 @@ QStringList TitleBlockTemplate::listOfVariables()
 			const QString cell_value = cells_[i][j] -> value.name();
 			auto it = rx.globalMatch(cell_value);
 			while (it.hasNext()) {
-				const QString name = it.next().captured(1);
+				const QRegularExpressionMatch m = it.next();
+				const QString name = m.captured(1).isEmpty()
+						? m.captured(2) : m.captured(1);
 				if (!name.isEmpty() && !list.contains(name))
 					list << name;
 			}
