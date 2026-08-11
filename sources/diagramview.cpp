@@ -38,7 +38,11 @@
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
+#include "qetgraphicsitem/element.h"
+#include "qetinformation.h"
 #include <QDropEvent>
+#include <QSet>
+#include <QUuid>
 
 /**
 	Constructeur
@@ -90,6 +94,10 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	// Setup the action to create a template
 	m_create_template = new QAction(tr("Créer un template", "context menu action"), this);
 	connect(m_create_template, &QAction::triggered, this, &DiagramView::createTemplateFromSelection);
+
+	// Setup the action to generate cabinet placement thumbnails
+	m_generate_cabinet_thumbnail = new QAction(tr("Générer une vignette d'armoire", "context menu action"), this);
+	connect(m_generate_cabinet_thumbnail, SIGNAL(triggered()), this, SLOT(generateCabinetThumbnails()));
 
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
@@ -1210,6 +1218,24 @@ QList<QAction *> DiagramView::contextMenuActions() const
 			list << m_multi_paste;
 			list << m_separators.at(0);
 			list << m_create_template; // Add the create template action
+
+			bool has_cabinet_candidate = false;
+			for (QGraphicsItem *qgi : m_diagram->selectedItems())
+			{
+				if (Element *element = qgraphicsitem_cast<Element *>(qgi))
+				{
+					const DiagramContext infos = element->elementInformations();
+					if (!infos[QETInformation::ELMT_MANUFACTURER].toString().trimmed().isEmpty() &&
+						!infos[QETInformation::ELMT_MANUFACTURER_REF].toString().trimmed().isEmpty())
+					{
+						has_cabinet_candidate = true;
+						break;
+					}
+				}
+			}
+			m_generate_cabinet_thumbnail->setEnabled(has_cabinet_candidate);
+			list << m_generate_cabinet_thumbnail;
+
 			list << qde->m_conductor_reset;
 			list << m_separators.at(1);
 			list << qde->m_selection_actions_group.actions();
@@ -1367,6 +1393,144 @@ void DiagramView::createTemplateFromSelection()
 	} else {
 		qDebug() << "Error: Could not open file for writing:" << full_path;
 		QMessageBox::critical(this, tr("Erreur"), tr("Le fichier n'a pas pu être écrit."));
+	}
+}
+
+/**
+	@brief DiagramView::generateCabinetThumbnails
+	Triggered from the context menu. For every selected element that has both
+	a manufacturer and a manufacturer reference filled in, synthesize a small
+	Thumbnail-type element definition showing that manufacturer/reference via
+	dynamic text, and file it in a dedicated "Cabinet thumbnails" folder of
+	this project's embedded collection so it can be dragged onto a diagram
+	like any other element. Skips a manufacturer/reference pair that already
+	has a thumbnail on file, so placing the same device several times doesn't
+	pile up redundant thumbnails.
+*/
+void DiagramView::generateCabinetThumbnails()
+{
+	QETProject *project = m_diagram->project();
+	if (!project) {
+		return;
+	}
+
+	XmlElementCollection *collection = project->embeddedElementCollection();
+	if (!collection) {
+		return;
+	}
+
+	static const QString thumbnail_dir_name = QStringLiteral("Cabinet thumbnails");
+	const QString thumbnail_dir_path = QStringLiteral("import/") + thumbnail_dir_name;
+
+	if (!collection->exist(thumbnail_dir_path)) {
+		NamesList dir_names;
+		dir_names.addName("en", thumbnail_dir_name);
+		dir_names.addName("fr", tr("Vignettes d'armoire"));
+		if (!collection->createDir("import", thumbnail_dir_name, dir_names)) {
+			return;
+		}
+	}
+
+	QSet<QString> existing_thumbnails;
+	for (const QString &name : collection->elementsNames(collection->directory(thumbnail_dir_path))) {
+		existing_thumbnails.insert(name);
+	}
+
+	int created_count = 0;
+	for (QGraphicsItem *qgi : m_diagram->selectedItems())
+	{
+		Element *element = qgraphicsitem_cast<Element *>(qgi);
+		if (!element) {
+			continue;
+		}
+
+		const DiagramContext infos = element->elementInformations();
+		const QString manufacturer = infos[QETInformation::ELMT_MANUFACTURER].toString().trimmed();
+		const QString reference = infos[QETInformation::ELMT_MANUFACTURER_REF].toString().trimmed();
+		if (manufacturer.isEmpty() || reference.isEmpty()) {
+			continue;
+		}
+
+		const QString elmt_name = manufacturer + " " + reference;
+		if (existing_thumbnails.contains(elmt_name + ".elmt")) {
+			continue;
+		}
+
+		QDomDocument doc;
+		QDomElement definition = doc.createElement("definition");
+		definition.setAttribute("version", "0.100.0");
+		definition.setAttribute("type", "element");
+		definition.setAttribute("link_type", "thumbnail");
+		definition.setAttribute("width", 60);
+		definition.setAttribute("height", 30);
+		definition.setAttribute("hotspot_x", 30);
+		definition.setAttribute("hotspot_y", 15);
+		doc.appendChild(definition);
+
+		QDomElement uuid_elmt = doc.createElement("uuid");
+		uuid_elmt.setAttribute("uuid", QUuid::createUuid().toString());
+		definition.appendChild(uuid_elmt);
+
+		QDomElement names = doc.createElement("names");
+		QDomElement name_en = doc.createElement("name");
+		name_en.setAttribute("lang", "en");
+		name_en.appendChild(doc.createTextNode(elmt_name));
+		names.appendChild(name_en);
+		definition.appendChild(names);
+
+		QDomElement informations_elmt = doc.createElement("elementInformations");
+		DiagramContext thumbnail_infos;
+		thumbnail_infos.addValue(QETInformation::ELMT_MANUFACTURER, manufacturer);
+		thumbnail_infos.addValue(QETInformation::ELMT_MANUFACTURER_REF, reference);
+		thumbnail_infos.toXml(informations_elmt, "elementInformation");
+		definition.appendChild(informations_elmt);
+
+		QDomElement description = doc.createElement("description");
+
+		QDomElement rect = doc.createElement("rect");
+		rect.setAttribute("x", 0);
+		rect.setAttribute("y", 0);
+		rect.setAttribute("width", 60);
+		rect.setAttribute("height", 30);
+		rect.setAttribute("rx", 0);
+		rect.setAttribute("ry", 0);
+		rect.setAttribute("style", "line-style:normal;line-weight:normal;filling:none;color:black");
+		rect.setAttribute("antialias", "false");
+		description.appendChild(rect);
+
+		QDomElement text = doc.createElement("dynamic_text");
+		text.setAttribute("x", 3);
+		text.setAttribute("y", 3);
+		text.setAttribute("z", 1);
+		text.setAttribute("text_width", 54);
+		text.setAttribute("Halignment", "AlignLeft");
+		text.setAttribute("Valignment", "AlignTop");
+		text.setAttribute("frame", "false");
+		text.setAttribute("rotation", 0);
+		text.setAttribute("keep_visual_rotation", "false");
+		text.setAttribute("text_from", "CompositeText");
+		text.setAttribute("uuid", QUuid::createUuid().toString());
+		text.setAttribute("font", "Liberation Sans,7,-1,5,50,0,0,0,0,0,Regular");
+
+		QDomElement text_cache = doc.createElement("text");
+		text_cache.appendChild(doc.createTextNode(manufacturer + "\n" + reference));
+		text.appendChild(text_cache);
+
+		QDomElement composite_text = doc.createElement("composite_text");
+		composite_text.appendChild(doc.createTextNode("%{manufacturer}\n%{manufacturer_reference}"));
+		text.appendChild(composite_text);
+
+		description.appendChild(text);
+		definition.appendChild(description);
+
+		if (collection->addElementDefinition(thumbnail_dir_path, elmt_name, definition)) {
+			existing_thumbnails.insert(elmt_name + ".elmt");
+			++created_count;
+		}
+	}
+
+	if (created_count > 0) {
+		project->setModified(true);
 	}
 }
 
