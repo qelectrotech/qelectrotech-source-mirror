@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <line x1="3.0" y1="11.0" x2="13.0" y2="11.0" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt"/>
+  <polyline points="13.0,7.0 18.0,11.0 13.0,15.0" fill="none" stroke="#4d4d4d" stroke-width="2.0" stroke-linecap="butt" stroke-linejoin="miter"/>
+</svg>
