@@ -217,14 +217,71 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 	drop_pos = event->position();
 	#endif
 
+	startElementPlacement(location, drop_pos);
+}
+
+/**
+	@brief DiagramView::startElementPlacement
+	Enter the interactive placement mode for @a location, with the pending
+	element starting at @a scene_pos.
+
+	This is the mode where the element follows the cursor on the grid, a left
+	click drops a copy, Space rotates it and the element stays loaded so a run
+	of identical symbols can be placed with successive clicks.
+
+	Split out of handleElementDrop() so that placement is reachable without a
+	drag: the mode itself was always general, it simply had no caller other
+	than the end of a drop.
+	@param location : the element or macro to place
+	@param scene_pos : where the pending element first appears, in scene
+	coordinates
+	@return true if the placement mode was entered
+*/
+bool DiagramView::startElementPlacement(const ElementsLocation &location,
+					const QPointF &scene_pos)
+{
+	if (!diagram() || !(location.isElement() && location.exist())) {
+		return false;
+	}
+	if (diagram()->isReadOnly()) {
+		return false;
+	}
+
 	if (location.path().endsWith(".qetmak")) {
-		diagram()->setEventInterface(new DiagramEventAddMacro(location, diagram(), drop_pos));
+		diagram()->setEventInterface(
+			new DiagramEventAddMacro(location, diagram(), scene_pos));
 	} else {
-		diagram()->setEventInterface(new DiagramEventAddElement(location, diagram(), drop_pos));
+			//DiagramEventAddElement takes a non-const reference, so it needs
+			//an lvalue it may modify. Copying keeps the caller's location
+			//untouched -- QETDiagramEditor stores the same one for
+			//"insert last element".
+		ElementsLocation loc(location);
+		diagram()->setEventInterface(
+			new DiagramEventAddElement(loc, diagram(), scene_pos));
 	}
 
 	//Set focus to the view to get event
 	this->setFocus();
+	return true;
+}
+
+/**
+	@brief DiagramView::defaultPlacementPos
+	@return where a pending element should appear when placement was not
+	started by a drop, so there is no cursor position to use.
+
+	The cursor is used when it is over the view -- picking up a placement where
+	the user is already looking -- and the centre of the visible area
+	otherwise.
+*/
+QPointF DiagramView::defaultPlacementPos() const
+{
+	const QPoint local = mapFromGlobal(QCursor::pos());
+	if (viewport() && viewport()->rect().contains(local)) {
+		return mapToScene(local);
+	}
+	return mapToScene(viewport() ? viewport()->rect().center()
+				     : rect().center());
 }
 
 /**

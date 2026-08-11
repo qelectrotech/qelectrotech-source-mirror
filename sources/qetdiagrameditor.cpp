@@ -18,6 +18,7 @@
 #include "qetdiagrameditor.h"
 #include <QCoreApplication>
 #include "ElementsCollection/elementscollectionwidget.h"
+#include "ElementsCollection/elementpickerpopup.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "conductornumexport.h"
@@ -212,6 +213,13 @@ void QETDiagramEditor::setUpElementsCollectionWidget()
 	m_element_collection_widget = new ElementsCollectionWidget(m_qdw_elmt_collection);
 	m_qdw_elmt_collection->setWidget(m_element_collection_widget);
 	m_element_collection_widget->expandFirstItems();
+
+		//The widget does not know which view should receive the element -- it
+		//is also used by the picker popup, which has no editor ancestor -- so
+		//the host decides.
+	connect(m_element_collection_widget,
+		&ElementsCollectionWidget::insertElementRequested,
+		this, &QETDiagramEditor::insertElementFromCollection);
 
 	addDockWidget(Qt::RightDockWidgetArea, m_qdw_elmt_collection);
 }
@@ -653,6 +661,42 @@ void QETDiagramEditor::setUpActions()
 	ShortcutManager::instance().registerAction(m_rotate_group_selection, "diagrameditor.rotate_group_selection", tr("Éditeur de schémas"), Qt::SHIFT | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
+
+		//Re-enter placement mode with the element placed last. Bare A rather
+		//than Space: Space already rotates the pending element *inside*
+		//placement mode (diagrameventaddelement.cpp), and is taken three times
+		//over in this editor besides. A matches KiCad's add-symbol key and
+		//reads correctly in the source language ("Ajouter"). ShortcutManager
+		//makes it a default, not a commitment -- it appears in the Shortcuts
+		//preference page like every other binding.
+	m_insert_last_element = new QAction(QET::Icons::ElementNew,
+					    tr("Insérer le dernier élément"), this);
+	m_insert_last_element->setStatusTip(
+		tr("Replace le dernier élément inséré", "status bar tip"));
+	m_insert_last_element->setData("insert_last_element");
+	m_insert_last_element->setEnabled(false);
+	ShortcutManager::instance().registerAction(
+		m_insert_last_element, "diagrameditor.insert_last_element",
+		tr("Éditeur de schémas"), Qt::Key_A);
+	connect(m_insert_last_element, &QAction::triggered,
+		this, &QETDiagramEditor::insertLastElement);
+	addAction(m_insert_last_element);
+
+		//Cursor-anchored picker. Insert is unbound anywhere in the tree and
+		//reads correctly for the action, which keeps A free for the far more
+		//frequent "place the same symbol again".
+	m_show_element_picker = new QAction(QET::Icons::ElementNew,
+					    tr("Insérer un élément…"), this);
+	m_show_element_picker->setStatusTip(
+		tr("Ouvre le sélecteur d'éléments à la position du curseur",
+		   "status bar tip"));
+	m_show_element_picker->setData("show_element_picker");
+	ShortcutManager::instance().registerAction(
+		m_show_element_picker, "diagrameditor.show_element_picker",
+		tr("Éditeur de schémas"), Qt::Key_Insert);
+	connect(m_show_element_picker, &QAction::triggered,
+		this, &QETDiagramEditor::showElementPicker);
+	addAction(m_show_element_picker);
 
 	m_delete_selection->setStatusTip( tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
@@ -1702,6 +1746,17 @@ void QETDiagramEditor::slot_updateActions()
 	m_draw_grid->                   setEnabled(opened_diagram);
 	m_draw_guides->                 setEnabled(opened_diagram);
 
+		//Placement needs somewhere to place onto. Both were doing nothing
+		//silently with no folio open, which reads as a broken shortcut rather
+		//than an unavailable one.
+	if (m_show_element_picker) {
+		m_show_element_picker->setEnabled(editable_project && opened_diagram);
+	}
+	if (m_insert_last_element) {
+		m_insert_last_element->setEnabled(editable_project && opened_diagram
+						  && m_last_inserted_element.isElement());
+	}
+
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
 	m_project_add_diagram         -> setEnabled(editable_project);
@@ -2670,6 +2725,71 @@ void QETDiagramEditor::selectionChanged()
 		m_selection_properties_editor->setDiagram(dv->diagram());
 }
 
+
+/**
+	@brief QETDiagramEditor::insertElementFromCollection
+	Place @a location on the current folio using the interactive placement
+	mode -- the same mode a drag and drop ends in, entered without the drag.
+	@param location
+*/
+void QETDiagramEditor::insertElementFromCollection(const ElementsLocation &location)
+{
+	DiagramView *dv = currentDiagramView();
+	if (!dv) {
+		return;
+	}
+
+	if (!dv->startElementPlacement(location, dv->defaultPlacementPos())) {
+		return;
+	}
+
+		//Remembered for "insert last element". Macros are excluded: the
+		//placement mode for them is a different class and re-entering it from
+		//a shortcut has not been thought through.
+	if (!location.path().endsWith(QLatin1String(".qetmak"))) {
+		m_last_inserted_element = location;
+		if (m_insert_last_element) {
+			m_insert_last_element->setEnabled(true);
+		}
+	}
+}
+
+/**
+	@brief QETDiagramEditor::insertLastElement
+	Re-enter placement mode with the element placed most recently, so a run of
+	the same symbol can be dropped without returning to the collection.
+*/
+void QETDiagramEditor::insertLastElement()
+{
+	if (!m_last_inserted_element.isElement()
+	    || !m_last_inserted_element.exist()) {
+		return;
+	}
+	insertElementFromCollection(m_last_inserted_element);
+}
+
+/**
+	@brief QETDiagramEditor::showElementPicker
+	Open the element picker where the mouse is.
+
+	Built lazily: most sessions of the diagram editor never open it, and it
+	holds a list view and a model of its own.
+*/
+void QETDiagramEditor::showElementPicker()
+{
+	if (!currentDiagramView()) {
+		return;
+	}
+
+	if (!m_element_picker)
+	{
+		m_element_picker = new ElementPickerPopup(m_element_collection_widget,
+							  this);
+		connect(m_element_picker, &ElementPickerPopup::elementChosen,
+			this, &QETDiagramEditor::insertElementFromCollection);
+	}
+	m_element_picker->popUpAt(QCursor::pos());
+}
 
 /**
 	@brief QETDiagramEditor::generateTerminalBlock

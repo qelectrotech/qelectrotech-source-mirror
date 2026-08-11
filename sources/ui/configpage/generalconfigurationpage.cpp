@@ -68,6 +68,9 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 #endif
 	ui->grid_startup_cb->setChecked(settings.value("diagrameditor/grid_display_startup", true).toBool());
 	ui->guides_startup_cb->setChecked(settings.value("diagrameditor/guides_display_startup", false).toBool());
+		//Stored as "inserts" but presented as "edits", so the default (insert)
+		//is the unchecked state -- a preference reads better as an opt-out.
+	ui->m_collection_dblclick_edits->setChecked(!settings.value("elementscollection/double-click-inserts", true).toBool());
 	ui->DiagramEditor_xGrid_sb->setValue(settings.value("diagrameditor/Xgrid", 10).toInt());
 	ui->DiagramEditor_yGrid_sb->setValue(settings.value("diagrameditor/Ygrid", 10).toInt());
 	ui->DiagramEditor_xKeyGrid_sb->setValue(settings.value("diagrameditor/key_Xgrid", 10).toInt());
@@ -245,6 +248,7 @@ void GeneralConfigurationPage::applyConf()
 
 	settings.setValue("diagrameditor/grid_display_startup", ui->grid_startup_cb->isChecked());
 	settings.setValue("diagrameditor/guides_display_startup", ui->guides_startup_cb->isChecked());
+	settings.setValue("elementscollection/double-click-inserts", !ui->m_collection_dblclick_edits->isChecked());
 		//Grid step and key navigation
 	settings.setValue("diagrameditor/Xgrid", ui->DiagramEditor_xGrid_sb->value());
 	settings.setValue("diagrameditor/Ygrid", ui->DiagramEditor_yGrid_sb->value());

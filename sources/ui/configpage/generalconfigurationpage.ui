@@ -67,6 +67,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_collection_dblclick_edits">
+         <property name="toolTip">
+          <string>Par défaut, un double-clic insère l'élément sur le folio ; l'édition reste accessible par le menu contextuel.</string>
+         </property>
+         <property name="text">
+          <string>Double-cliquer dans la collection ouvre l'éditeur d'élément au lieu de l'insérer</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCheckBox" name="guides_startup_cb">
          <property name="text">
           <string>Afficher les guides par défaut (appliqué au prochain lancement)</string>
