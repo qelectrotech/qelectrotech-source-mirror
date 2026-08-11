@@ -130,15 +130,15 @@ void ConductorNumExport::fillHash()
 				continue;
 			}
 
-			//We must define if the connected terminal is a folio report, if it is the case
-			//we don't add the num to the hash because the terminal doesn't represent a real terminal.
-			if(!(c->terminal1->parentElement()->linkType() & Element::AllReport))
-			{
-				int value = m_hash.value(num, 0);
-				++value;
-				m_hash.insert(num, value);
-			}
-			if(!(c->terminal2->parentElement()->linkType() & Element::AllReport))
+			//We must define if the connected terminals are folio reports, if
+			//both are the case we don't add the num to the hash because
+			//neither terminal represents a real terminal. Otherwise the
+			//conductor counts once, regardless of how many of its two ends
+			//are real -- counting per terminal instead of per conductor
+			//doubled every ordinary two-real-terminal conductor's tally.
+			bool terminal1_is_report = c->terminal1->parentElement()->linkType() & Element::AllReport;
+			bool terminal2_is_report = c->terminal2->parentElement()->linkType() & Element::AllReport;
+			if (!(terminal1_is_report && terminal2_is_report))
 			{
 				int value = m_hash.value(num, 0);
 				++value;
