@@ -45,6 +45,9 @@ namespace QETInformation
 	static QString ELMT_SUPPLIER                     = "supplier";
 	static QString ELMT_QUANTITY                     = "quantity";
 	static QString ELMT_UNITY                        = "unity";
+	static QString ELMT_WIDTH						 = "width";
+	static QString ELMT_HEIGHT                       = "height";
+	static QString ELMT_DEPTH                        = "depth";
 	static QString ELMT_PLANT                        = "plant";
 	static QString ELMT_LOCATION                     = "location";
 	static QString ELMT_AUX1                         = "auxiliary1";

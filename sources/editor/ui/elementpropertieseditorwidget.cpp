@@ -64,9 +64,22 @@ class EditorDelegate : public QItemDelegate
 	{
 		if(index.column() == 1)
 		{
-			return QItemDelegate::createEditor(parent,
-							   option,
-							   index);
+			const QString key = index.sibling(index.row(), 0)
+									.data(Qt::UserRole).toString();
+
+			if (key == QETInformation::ELMT_WIDTH ||
+				key == QETInformation::ELMT_HEIGHT ||
+				key == QETInformation::ELMT_DEPTH)
+			{
+				auto *line_edit = new QLineEdit(parent);
+				auto *validator = new QDoubleValidator(0.0, 100000.0, 4, line_edit);
+				validator->setNotation(QDoubleValidator::StandardNotation);
+				validator->setLocale(QLocale::c());
+				line_edit->setValidator(validator);
+				return line_edit;
+			}
+
+			return QItemDelegate::createEditor(parent, option, index);
 		}
 		return nullptr;
 	}

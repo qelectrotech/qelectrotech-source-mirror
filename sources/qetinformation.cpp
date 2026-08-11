@@ -153,7 +153,10 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_MACHINE_MANUFACTURER_REF,
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
-						 ELMT_UNITY, 
+						 ELMT_UNITY,
+						 ELMT_WIDTH,
+						 ELMT_HEIGHT,
+						 ELMT_DEPTH,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,
@@ -268,6 +271,9 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_SUPPLIER)                    return QObject::tr("Fournisseur");
 	else if (info == ELMT_QUANTITY)                    return QObject::tr("Quantité");
 	else if (info == ELMT_UNITY)                       return QObject::tr("Unité");
+	else if (info == ELMT_WIDTH)					   return QObject::tr("Largeur [mm]");
+	else if (info == ELMT_HEIGHT)                      return QObject::tr("Hauteur [mm]");
+	else if (info == ELMT_DEPTH)                       return QObject::tr("Profondeur [mm]");
 	else if (info == ELMT_LOCATION)                    return QObject::tr("Localisation (+)");
 	else if (info == COND_FUNCTION)                    return QObject::tr("Fonction");
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Tension / Protocole");
@@ -334,6 +340,9 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
 						 ELMT_UNITY,
+						 ELMT_WIDTH,
+						 ELMT_HEIGHT,
+						 ELMT_DEPTH,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,
