@@ -31,6 +31,7 @@
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <algorithm>
+#include <utility>
 
 /**
 	@brief ShortcutsConfigPage::ShortcutsConfigPage
@@ -198,7 +199,7 @@ void ShortcutsConfigPage::resetRow(int row_index)
 
 void ShortcutsConfigPage::resetAllRows()
 {
-	for (const Row &row : qAsConst(m_rows)) {
+	for (const Row &row : std::as_const(m_rows)) {
 		row.edit->setKeySequence(row.default_sequence);
 	}
 	checkConflicts();
@@ -211,7 +212,7 @@ void ShortcutsConfigPage::resetAllRows()
 */
 void ShortcutsConfigPage::applyConf()
 {
-	for (const Row &row : qAsConst(m_rows)) {
+	for (const Row &row : std::as_const(m_rows)) {
 		ShortcutManager::instance().setSequence(row.id, row.edit->keySequence());
 	}
 }
