@@ -108,7 +108,7 @@ QString ProjectPrintWindow::docName(QETProject *project)
 {
 	QString doc_name;
 	if (!project->filePath().isEmpty()) {
-		doc_name = QFileInfo(project->filePath()).baseName();
+		doc_name = QFileInfo(project->filePath()).completeBaseName();
 	} else if (!project->title().isEmpty()) {
 		doc_name = project->title();
 		doc_name = QET::stringToFileName(doc_name);
