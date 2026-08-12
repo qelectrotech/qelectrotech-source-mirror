@@ -217,6 +217,18 @@ QString QETInformation::elementInfoToVar(const QString &info)
 }
 
 /**
+ * @brief QETInformation::numericInfoPattern
+ * @return the pattern used to validate numeric elementInformation
+ * fields (currently width/height/depth): digits with an optional "."
+ * as decimal separator, requiring at least one digit overall so a
+ * lone "." can never be a complete, acceptable value on its own.
+ */
+QRegularExpression QETInformation::numericInfoPattern()
+{
+	return QRegularExpression(QStringLiteral(R"(^[0-9]+\.?[0-9]{0,2}$|^[0-9]*\.[0-9]{1,2}$)"));
+}
+
+/**
  * @brief QETInformation::infoToVar
  * @param info
  * @return return the string @info prepended by %{ ans appended by }

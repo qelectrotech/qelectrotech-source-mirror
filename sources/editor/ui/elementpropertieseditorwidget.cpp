@@ -70,7 +70,7 @@ class EditorDelegate : public QItemDelegate
 			{
 				auto *line_edit = new QLineEdit(parent);
 				auto *validator = new QRegularExpressionValidator(
-					QRegularExpression(QStringLiteral(R"(^[0-9]*\.?[0-9]{0,4}$)")), line_edit);
+					QETInformation::numericInfoPattern(), line_edit);
 				line_edit->setValidator(validator);
 				line_edit->setPlaceholderText(tr("ex. 80.5"));
 				line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));

@@ -48,7 +48,7 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
 	{
 		auto *validator = new QRegularExpressionValidator(
-			QRegularExpression(QStringLiteral(R"(^[0-9]*\.?[0-9]{0,4}$)")), ui->line_edit);
+			QETInformation::numericInfoPattern(), ui->line_edit);
 		ui->line_edit->setValidator(validator);
 		ui->line_edit->setPlaceholderText(tr("ex. 80.5"));
 		ui->line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
