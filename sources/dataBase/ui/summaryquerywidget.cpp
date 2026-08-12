@@ -60,28 +60,18 @@ QString SummaryQueryWidget::queryStr() const
 	}
 
 		//Made a string list with the columns (keys) choosen by the user
-	QStringList keys = selectedKeys();
+	const QString column = selectedKeys().join(QStringLiteral(", "));
 
-	QString select ="SELECT ";
-	QString order_by = " ORDER BY ";
-
-	QString column;
-	bool first = true;
-	for (auto key: keys) {
-		if (first) {
-			first = false;
-		} else {
-			column += ", ";
-			order_by +=", ";
-		}
-		column += key;
-		order_by += key;
-	}
-
-	QString from = " FROM project_summary_view";
-
-	QString q(select + column + from + order_by);
-	return q;
+		//Order by the folio's position in the project, never by the displayed
+		//columns. This is a summary -- a table of contents -- so its rows have
+		//to follow the page order. The ORDER BY used to be built from the same
+		//loop as the column list, so the folios came out sorted by whichever
+		//column happened to be first in the list (the title, normally), and
+		//"pos" only took part at all if the user had added the Position column
+		//to the display. There is no sort control in this widget, so that
+		//coupling was not something the user could correct.
+	return QStringLiteral("SELECT ") + column
+			+ QStringLiteral(" FROM project_summary_view ORDER BY pos");
 }
 
 /**
