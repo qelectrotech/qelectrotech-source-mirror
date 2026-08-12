@@ -94,6 +94,9 @@ class BorderTitleBlock : public QObject
 
 		QRectF titleBlockRect () const;
 
+                // @return the edge where title block is docked
+                Qt::Edge titleBlockEdge() const { return(m_edge); }
+
 		DiagramContext titleblockInformation() const;
 	private:
 		QRectF titleBlockRectForQPainter () const;
