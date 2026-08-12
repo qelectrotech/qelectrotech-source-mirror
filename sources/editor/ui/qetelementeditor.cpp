@@ -1088,28 +1088,38 @@ void QETElementEditor::updateAction()
 {
 		//Action disabled if read only
 	auto ro_list = m_add_part_action_grp->actions();
-	ro_list << ui->m_select_all_act
-			<< ui->m_revert_selection_action
-			<< ui->m_paste_from_file_action
+	ro_list << ui->m_paste_from_file_action
 			<< ui->m_paste_from_element_action;
 	for (auto action : std::as_const(ro_list)) {
 		action->setDisabled(m_read_only);
 	}
 
+		//Changing what is selected does not change the element, so these stay
+		//available when it is read only -- otherwise there is no way to pick
+		//out the primitive you want to copy out of it.
+	ui->m_select_all_act->setEnabled(true);
+	ui->m_revert_selection_action->setEnabled(true);
+
 		//Action enabled if a primitive is selected
 	auto select_list = m_depth_action_group->actions();
-	select_list << ui->m_deselect_all_action
-				<< ui->m_cut_action
-				<< ui->m_copy_action
+	select_list << ui->m_cut_action
 				<< ui->m_delete_action
 				<< ui->m_rotate_action
 				<< ui->m_rotateFine_action
 				<< ui->m_flip_action
 				<< ui->m_mirror_action;
-	auto items_selected = !m_read_only && m_elmt_scene->selectedItems().count();
+	const bool has_selection = m_elmt_scene->selectedItems().count() > 0;
+	auto items_selected = !m_read_only && has_selection;
 	for (auto action : std::as_const(select_list)) {
 		action->setEnabled(items_selected);
 	}
+
+		//Copying only reads the element -- ElementScene::copy() serialises the
+		//selection to the clipboard and touches nothing else -- so it is
+		//allowed on a read-only element too. Cut, paste and delete above stay
+		//disabled, so the element itself is still protected.
+	ui->m_copy_action->setEnabled(has_selection);
+	ui->m_deselect_all_action->setEnabled(has_selection);
 
 		//Action about clipboard
 	auto clipboard_contain_elmt = !m_read_only && ElementScene::clipboardMayContainElement();
