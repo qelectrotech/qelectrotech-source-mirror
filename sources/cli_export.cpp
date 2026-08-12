@@ -117,11 +117,22 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target)
 	// and restore it afterwards.
 	const bool was_drawing_grid = diagram->displayGrid();
 	const bool was_drawing_guides = diagram->displayGuides();
+	// Terminal markers (red stroke + blue docking dot) and terminal names
+	// are editor UI: Terminal::paint() draws them whenever the diagram's
+	// drawTerminals()/drawTerminalNames() flags are set (default true).
+	// The GUI export path clears them via Diagram::applyProperties();
+	// do the same here so headless exports match.
+	const bool was_drawing_terminals = diagram->drawTerminals();
+	const bool was_drawing_terminal_names = diagram->drawTerminalNames();
 	diagram->setDisplayGrid(false);
 	diagram->setDisplayGuides(false);
+	diagram->setDrawTerminals(false);
+	diagram->setDrawTerminalNames(false);
 	diagram->render(&painter, target, source, Qt::KeepAspectRatio);
 	diagram->setDisplayGrid(was_drawing_grid);
 	diagram->setDisplayGuides(was_drawing_guides);
+	diagram->setDrawTerminals(was_drawing_terminals);
+	diagram->setDrawTerminalNames(was_drawing_terminal_names);
 }
 
 int exportPdf(QETProject &project, const QString &output)
