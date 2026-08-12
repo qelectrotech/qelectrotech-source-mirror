@@ -544,23 +544,51 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 	@return La liste des sous-chaines, sans echappement.
 */
 QStringList QET::splitWithSpaces(const QString &string) {
-	// les chaines sont separees par des espaces non echappes
-	// = avec un nombre nul ou pair de backslashes devant
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
-	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-						   QString
-#else
-						   Qt
-#endif
-						   ::SkipEmptyParts);
-
+		// Substrings are separated by unescaped spaces; spaces belonging to a
+		// substring are escaped by joinWithSpaces()/escapeSpaces(), which also
+		// escapes the backslash itself. Scanning explicitly rather than
+		// splitting on a regular expression: the previous pattern,
+		// "[^\\]?(?:\\\\)* ", contained an unterminated character class
+		// ("[^\\]" escapes the closing bracket), so QRegularExpression
+		// rejected it as invalid and QString::split() returned an empty list
+		// for *every* input -- silently discarding the file names it was
+		// given.
 	QStringList returned_list;
-	foreach(QString escaped_string, escaped_strings) {
-		returned_list << QET::unescapeSpaces(escaped_string);
+	QString current;
+	bool in_token = false;
+	bool escaped = false;
+
+	for (const QChar &c : string) {
+		if (escaped) {
+				//Whatever follows a backslash is taken literally, so an
+				//escaped space stays inside the current substring.
+			current += c;
+			in_token = true;
+			escaped = false;
+		} else if (c == QLatin1Char('\\')) {
+			escaped = true;
+		} else if (c == QLatin1Char(' ')) {
+			if (in_token) {
+				returned_list << current;
+				current.clear();
+				in_token = false;
+			}
+		} else {
+			current += c;
+			in_token = true;
+		}
 	}
+
+		//A lone trailing backslash is not a valid escape: keep it verbatim
+		//rather than dropping a character.
+	if (escaped) {
+		current += QLatin1Char('\\');
+		in_token = true;
+	}
+	if (in_token) {
+		returned_list << current;
+	}
+
 	return(returned_list);
 }
 
