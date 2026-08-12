@@ -148,26 +148,80 @@ endif()
 # build rewrote tracked files as a side effect, and under high parallelism
 # lupdate rewriting a .ts while lrelease read the same file made the build
 # fail with "Premature end of document".
+set_source_files_properties(
+    ${TS_FILES}
+    PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang"
+)
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_add_lrelease(
-    	TARGETS ${PROJECT_NAME} 
-    	TS_FILES ${TS_FILES}
-    	QM_OUTPUT_DIRECTORY "${QET_DIR}/lang"
-    	QM_FILES_OUTPUT_VARIABLE QM_FILES 
-    )
-    qt_add_lupdate(
-    	TS_FILES  ${TS_FILES}
-    	SOURCE_TARGETS ${PROJECT_NAME}
-    	LUPDATE_TARGET update_translations
-        COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
-    )
+    if(Qt6_VERSION VERSION_LESS "6.2")
+        # Qt 6.0–6.1
+        qt6_add_translation(QM_FILES ${TS_FILES})
+
+        # qt6_add_translation() only creates custom commands. Something must
+        # depend on their outputs for them to run during the default build.
+        add_custom_target(${PROJECT_NAME}_lrelease ALL
+            DEPENDS ${QM_FILES}
+        )
+
+        add_custom_target(update_translations
+            COMMAND
+                $<TARGET_FILE:Qt6::lupdate>
+                "${CMAKE_SOURCE_DIR}/sources"
+                -ts ${TS_FILES}
+            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+            COMMENT
+                "Updating .ts files from sources/ (lupdate) - developer target"
+            VERBATIM
+        )
+
+    elseif(Qt6_VERSION VERSION_LESS "6.7")
+        # Qt 6.2–6.6: old target-based signature
+        qt_add_lrelease(
+            ${PROJECT_NAME}
+            TS_FILES ${TS_FILES}
+            QM_FILES_OUTPUT_VARIABLE QM_FILES
+        )
+
+        # Automatically creates the update_translations umbrella target.
+        qt_add_lupdate(
+            ${PROJECT_NAME}
+            TS_FILES ${TS_FILES}
+        )
+
+    else()
+        # Qt 6.7+: new signature
+        qt_add_lrelease(
+            TS_FILES ${TS_FILES}
+            LRELEASE_TARGET ${PROJECT_NAME}_lrelease
+            QM_FILES_OUTPUT_VARIABLE QM_FILES
+        )
+
+        qt_add_lupdate(
+            SOURCE_TARGETS ${PROJECT_NAME}
+            TS_FILES ${TS_FILES}
+            LUPDATE_TARGET update_translations
+            NO_GLOBAL_TARGET
+        )
+    endif()
+
 else()
-    set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
+    # Qt 5
     qt5_add_translation(QM_FILES ${TS_FILES})
+
+    # Likewise, qt5_add_translation() needs a target depending on its outputs,
+    # unless QM_FILES are already consumed elsewhere.
+    add_custom_target(${PROJECT_NAME}_lrelease ALL
+        DEPENDS ${QM_FILES}
+    )
+
     add_custom_target(update_translations
-        COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
+        COMMAND
+            $<TARGET_FILE:Qt5::lupdate>
+            "${CMAKE_SOURCE_DIR}/sources"
+            -ts ${TS_FILES}
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        COMMENT
+            "Updating .ts files from sources/ (lupdate) - developer target"
         VERBATIM
     )
 endif()
