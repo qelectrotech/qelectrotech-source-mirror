@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapp.h"
+#include <QTimer>
 
 #include "configdialog.h"
 #include "ui/configpage/configpages.h"
@@ -160,7 +161,16 @@ QETApp::QETApp() :
 		m_splash_screen -> hide();
 	}
 
-	checkBackupFiles();
+		//Deferred so this constructor returns before the prompts appear.
+		//checkBackupFiles() opens modal dialogs, and main() still has work to
+		//do once we return -- in particular connecting
+		//SingleApplication::receivedMessage to receiveMessage(). While those
+		//prompts were up that connection did not exist yet, so a file handed
+		//to the already-running instance during start-up was accepted by the
+		//socket and then dropped on the floor.
+	QMetaObject::invokeMethod(this, [this]() {
+		checkBackupFiles();
+	}, Qt::QueuedConnection);
 }
 
 /**
@@ -1634,8 +1644,19 @@ void QETApp::receiveMessage(int instanceId, QByteArray message)
 	if (str.startsWith("launched-with-args: "))
 	{
 		QString my_message(str.mid(20));
-		QStringList args_list = QET::splitWithSpaces(my_message);
-		openFiles(QETArguments(args_list));
+		const QStringList args_list = QET::splitWithSpaces(my_message);
+
+			//Deferred on purpose. This slot is invoked straight from the
+			//QLocalSocket readyRead handler that carried the message, and
+			//opening a project spins nested event loops of its own (the
+			//"please wait" dialog, then the backup prompt). Doing that work
+			//here means unwinding back into Qt's socket code long after it
+			//expected us to return, which crashes in
+			//QIODevice::channelReadyRead(). Hand the files to the event loop
+			//instead, so the socket handler completes first.
+		QTimer::singleShot(0, this, [this, args_list]() {
+			openFiles(QETArguments(args_list));
+		});
 	}
 }
 
