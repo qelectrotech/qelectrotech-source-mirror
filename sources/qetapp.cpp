@@ -161,7 +161,16 @@ QETApp::QETApp() :
 		m_splash_screen -> hide();
 	}
 
-	checkBackupFiles();
+		//Deferred so this constructor returns before the prompts appear.
+		//checkBackupFiles() opens modal dialogs, and main() still has work to
+		//do once we return -- in particular connecting
+		//SingleApplication::receivedMessage to receiveMessage(). While those
+		//prompts were up that connection did not exist yet, so a file handed
+		//to the already-running instance during start-up was accepted by the
+		//socket and then dropped on the floor.
+	QMetaObject::invokeMethod(this, [this]() {
+		checkBackupFiles();
+	}, Qt::QueuedConnection);
 }
 
 /**
