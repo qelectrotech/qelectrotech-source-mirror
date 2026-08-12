@@ -109,7 +109,16 @@ QString diagramStem(Diagram *diagram, int index)
 }
 
 /// Render @p diagram into @p painter, fitting @p target to the page rect.
-void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target)
+/// @p showTerminals: paint terminal markers (red stroke + blue docking
+/// dot) and terminal names, as the interactive editor does. Off by
+/// default — Terminal::paint() draws them whenever the diagram's
+/// drawTerminals()/drawTerminalNames() flags are set (default true, so
+/// headless export used to ship them as editor UI); the GUI export
+/// dialog already defaults to clearing them via
+/// Diagram::applyProperties(). Pass true (--show-terminals) to keep
+/// them, e.g. to visually debug an unconnected pin.
+void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target,
+					bool showTerminals = false)
 {
 	const QRect source = diagramRect(diagram);
 	// Export without the editor grid: drawBackground() only paints it when
@@ -117,17 +126,12 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target)
 	// and restore it afterwards.
 	const bool was_drawing_grid = diagram->displayGrid();
 	const bool was_drawing_guides = diagram->displayGuides();
-	// Terminal markers (red stroke + blue docking dot) and terminal names
-	// are editor UI: Terminal::paint() draws them whenever the diagram's
-	// drawTerminals()/drawTerminalNames() flags are set (default true).
-	// The GUI export path clears them via Diagram::applyProperties();
-	// do the same here so headless exports match.
 	const bool was_drawing_terminals = diagram->drawTerminals();
 	const bool was_drawing_terminal_names = diagram->drawTerminalNames();
 	diagram->setDisplayGrid(false);
 	diagram->setDisplayGuides(false);
-	diagram->setDrawTerminals(false);
-	diagram->setDrawTerminalNames(false);
+	diagram->setDrawTerminals(showTerminals);
+	diagram->setDrawTerminalNames(showTerminals);
 	diagram->render(&painter, target, source, Qt::KeepAspectRatio);
 	diagram->setDisplayGrid(was_drawing_grid);
 	diagram->setDisplayGuides(was_drawing_guides);
@@ -135,7 +139,8 @@ void renderDiagram(Diagram *diagram, QPainter &painter, const QRectF &target)
 	diagram->setDrawTerminalNames(was_drawing_terminal_names);
 }
 
-int exportPdf(QETProject &project, const QString &output)
+int exportPdf(QETProject &project, const QString &output,
+			 bool showTerminals = false)
 {
 	const QList<Diagram *> diagrams = project.diagrams();
 	if (diagrams.isEmpty()) {
@@ -175,7 +180,7 @@ int exportPdf(QETProject &project, const QString &output)
 		}
 		const QRectF target(0, 0,
 							writer.width(), writer.height());
-		renderDiagram(diagram, painter, target);
+		renderDiagram(diagram, painter, target, showTerminals);
 
 		// Inject clickable cross-reference / folio-report hyperlinks for this
 		// page.  The geometry is rebuilt from the QPdfWriter (not a QPrinter):
@@ -225,7 +230,7 @@ int exportPdf(QETProject &project, const QString &output)
 }
 
 int exportImages(QETProject &project, const QString &format,
-				 const QString &out_dir)
+				 const QString &out_dir, bool showTerminals = false)
 {
 	const QList<Diagram *> diagrams = project.diagrams();
 	if (diagrams.isEmpty()) {
@@ -248,14 +253,16 @@ int exportImages(QETProject &project, const QString &format,
 			gen.setViewBox(QRect(0, 0, r.width(), r.height()));
 			gen.setTitle(diagram->title());
 			QPainter painter(&gen);
-			renderDiagram(diagram, painter, QRectF(QPointF(0, 0), r.size()));
+			renderDiagram(diagram, painter, QRectF(QPointF(0, 0), r.size()),
+						 showTerminals);
 			painter.end();
 		} else { // png
 			QImage image(r.size(), QImage::Format_ARGB32);
 			image.fill(Qt::white);
 			QPainter painter(&image);
 			painter.setRenderHint(QPainter::Antialiasing, true);
-			renderDiagram(diagram, painter, QRectF(QPointF(0, 0), r.size()));
+			renderDiagram(diagram, painter, QRectF(QPointF(0, 0), r.size()),
+						 showTerminals);
 			painter.end();
 			if (!image.save(path)) {
 				err << "Failed to write '" << path << "'.\n";
@@ -779,13 +786,19 @@ bool isExportRequest(const QStringList &args)
 
 int run(const QStringList &args)
 {
+	// --show-terminals is a standalone switch (not tied to a position),
+	// so pull it out before the positional project/output arguments are
+	// collected below.
+	QStringList filtered = args;
+	const bool showTerminals = filtered.removeAll("--show-terminals") > 0;
+
 	QString flag;
 	QStringList rest;
-	for (int i = 0; i < args.size(); ++i) {
-		if (exportFlags().contains(args.at(i))) {
-			flag = args.at(i);
-			for (int j = i + 1; j < args.size(); ++j)
-				rest << args.at(j);
+	for (int i = 0; i < filtered.size(); ++i) {
+		if (exportFlags().contains(filtered.at(i))) {
+			flag = filtered.at(i);
+			for (int j = i + 1; j < filtered.size(); ++j)
+				rest << filtered.at(j);
 			break;
 		}
 	}
@@ -829,7 +842,7 @@ int run(const QStringList &args)
 		return 2;
 	}
 	if (format == "pdf")
-		return exportPdf(project, output);
+		return exportPdf(project, output, showTerminals);
 	if (format == "cables" || format == "wires")
 		return exportCsv(project, format, output);
 	if (format == "bom")
@@ -842,7 +855,7 @@ int run(const QStringList &args)
 		return resaveProject(project, output);
 	if (format == "settb")
 		return setTitleBlock(project, output, rest.mid(2));
-	return exportImages(project, format, output);
+	return exportImages(project, format, output, showTerminals);
 }
 
 } // namespace CLIExport
