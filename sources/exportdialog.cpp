@@ -472,6 +472,10 @@ void ExportDialog::generateDxf(
 	QList<Conductor *> list_conductors;
 	QList<DiagramTextItem *> list_texts;
 	QList<DiagramImageItem *> list_images;
+		//Slave cross-reference labels. They hang off a DynamicElementTextItem
+		//as plain QGraphicsTextItem children, so neither cast below picks them
+		//up and they were missing from the DXF entirely.
+	QList<QGraphicsTextItem *> list_xref_texts;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
@@ -493,6 +497,9 @@ void ExportDialog::generateDxf(
 			list_shapes << dii;
 		} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
 			list_texts << deti;
+			if (QGraphicsTextItem *xref = deti->slaveXrefItem()) {
+				list_xref_texts << xref;
+			}
 		} else if (QetGraphicsTableItem *gti = qgraphicsitem_cast<QetGraphicsTableItem *>(qgi)) {
 			list_tables << gti;
 		}
@@ -683,6 +690,42 @@ void ExportDialog::generateDxf(
 		foreach (QString line, lines) {
 			if (line.size() > 0 && line != "_" )
 				Createdxf::drawText(file_path, line, QPointF(x, y), fontSize, 360-angle, Createdxf::dxfColor(dti->color()), 0.72 );
+			x += offset * xdir;
+			y -= offset * ydir;
+		}
+	}
+
+	//Draw the slave cross-reference labels
+	for (QGraphicsTextItem *xref : std::as_const(list_xref_texts))
+	{
+		qreal fontSize = xref->font().pointSizeF();
+		if (fontSize < 0)
+			fontSize = xref->font().pixelSize();
+
+		qreal angle = xref->rotation();
+		QGraphicsItem *parent = xref->parentItem();
+		while (parent) {
+			angle += parent->rotation();
+			parent = parent->parentItem();
+		}
+
+		qreal angler = angle * M_PI/180;
+		int xdir = -sin(angler);
+		int ydir = -cos(angler);
+		qreal x = xref->scenePos().x()
+				+ xdir * fontSize * 1.8
+				- ydir * fontSize;
+		qreal y = xref->scenePos().y()
+				- ydir * fontSize * 1.8
+				- xdir * fontSize * 0.9;
+
+		const QStringList lines = xref->toPlainText().split('\n');
+		const qreal offset = fontSize * 1.6;
+		for (const QString &line : lines) {
+			if (line.size() > 0 && line != QLatin1String("_")) {
+				Createdxf::drawText(file_path, line, QPointF(x, y), fontSize,
+									360-angle, Createdxf::dxfColor(xref->defaultTextColor()), 0.72);
+			}
 			x += offset * xdir;
 			y -= offset * ydir;
 		}
