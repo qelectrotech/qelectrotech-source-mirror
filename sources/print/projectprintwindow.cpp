@@ -28,8 +28,8 @@
 
 #include "ui_projectprintwindow.h"
 
-// Private Qt PDF engine for drawHyperlink() — not public API, stable since Qt4
-// Requires QT += gui-private in qelectrotech.pro
+// Private Qt PDF engine for drawHyperlink() is not a public API.
+// Availability of Qt::GuiPrivate is verified at configure time in CMakeLists.txt.
 #include <private/qpdf_p.h>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
@@ -79,10 +79,14 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
-		// setOptions() is the modern spelling of the Qt4-era
-		// setEnabledOptions() (removed in Qt 6): replace the enabled
-		// option set with just PrintShowPageSize, on Qt 5 and 6 alike.
-		print_dialog.setOptions(QAbstractPrintDialog::PrintShowPageSize);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+		qDebug()<<"Help code for QT 6 or later";
+#endif
 		if (print_dialog.exec() == QDialog::Rejected) {
 			delete  printer_;
 			return;

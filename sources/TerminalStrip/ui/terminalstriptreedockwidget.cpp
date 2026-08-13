@@ -28,6 +28,8 @@
 #include "../terminalstrip.h"
 #include "../../qetinformation.h"
 
+#include <QUuid>
+
 TerminalStripTreeDockWidget::TerminalStripTreeDockWidget(QETProject *project, QWidget *parent) :
 	QDockWidget(parent),
     ui(new Ui::TerminalStripTreeDockWidget)
