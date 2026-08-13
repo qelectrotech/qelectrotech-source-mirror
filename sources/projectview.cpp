@@ -345,11 +345,19 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
 
-	// if the name does not end with the .qet extension and we're _not_ using xdg-desktop-portal, append it
-	bool usesPortal = 
-		qEnvironmentVariableIsSet("FLATPAK_ID") || 
-		qEnvironmentVariableIsSet("SNAP_NAME");
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive) && !usesPortal) filepath += ".qet";
+	// Ensure the path ends with exactly one .qet extension, regardless of
+	// whether the active file dialog already appended one. Whether it does
+	// depends on which backend actually shows the dialog (Qt's own vs. the
+	// xdg-desktop-portal used by sandboxed Snap/Flatpak builds), and that
+	// isn't reliably predictable from environment variables alone -- an
+	// earlier attempt at that (only appending when *not* Snap/Flatpak,
+	// assuming the portal always appends it) left Snap saves with no
+	// extension at all whenever the portal didn't (bugtracker #270).
+	// Stripping any existing suffix first and re-appending it once is
+	// correct either way.
+	if (filepath.endsWith(".qet", Qt::CaseInsensitive))
+		filepath.chop(4);
+	filepath += ".qet";
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project

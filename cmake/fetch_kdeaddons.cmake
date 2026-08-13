@@ -16,52 +16,74 @@
 
 message(" - fetch_kdeaddons")
 
-if(BUILD_WITH_KF5)
+# TODO remove path as soon as Qt5 gets retired
+if(BUILD_WITH_KF)
   Include(FetchContent)
 
-  option(BUILD_KF5 "Build KF5 libraries, use system ones otherwise" YES)
+  option(BUILD_KF "Build KF libraries, use system ones otherwise" YES)
 
-  if(BUILD_KF5)
+  if(BUILD_KF)
 
-    if(NOT DEFINED KF5_GIT_TAG)
-      #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
-      set(KF5_GIT_TAG v5.77.0)
+    if(KF_MAJOR_VERSION EQUAL 5)
+      if(NOT DEFINED KF_GIT_TAG)
+        #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
+        set(KF_GIT_TAG v5.77.0)
+      endif()
+    else()
+      if(NOT DEFINED KF_GIT_TAG)
+        # this is a more or less random version, taken as an conservative approach
+        set(KF_GIT_TAG v6.10.0)
+      endif()
     endif()
+    # using a function in order to limit the scope of the variables
+    # with CMake >=3.25 we could use a block()
+    function(qet_make_kf_available)
+      # Fix stop the run autotests of kcoreaddons
+      # see
+      # https://invent.kde.org/frameworks/kcoreaddons/-/blob/master/CMakeLists.txt#L98
+      # issue:
+      # CMake Error at /usr/share/ECM/modules/ECMAddTests.cmake:89 (add_executable):
+      # Cannot find source file:
+      # see
+      # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
+      set(KDE_SKIP_TEST_SETTINGS ON)
+      set(BUILD_TESTING OFF)
+    
+      # QElectroTech is a plain QtWidgets application with no QML anywhere in
+      # it; these disable optional features of the fetched KF modules that
+      # would otherwise pull in extra Qt6 components (e.g. Qt6Qml) we don't
+      # have and don't need.
+      set(BUILD_DESIGNERPLUGIN OFF)
+      set(KCOREADDONS_USE_QML OFF)
+      set(BUILD_QCH OFF)
+      set(BUILD_SHARED_LIBS OFF)
 
-    # Fix stop the run autotests of kcoreaddons
-    # see
-    # https://invent.kde.org/frameworks/kcoreaddons/-/blob/master/CMakeLists.txt#L98
-    # issue:
-    # CMake Error at /usr/share/ECM/modules/ECMAddTests.cmake:89 (add_executable):
-    # Cannot find source file:
-    # see
-    # https://qelectrotech.org/forum/viewtopic.php?pid=13929#p13929
-    set(KDE_SKIP_TEST_SETTINGS "TRUE")
-    set(BUILD_TESTING "0")
-    FetchContent_Declare(
-      ecm
-      GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
-      GIT_TAG        ${KF5_GIT_TAG})
-    FetchContent_MakeAvailable(ecm)
+      FetchContent_Declare(
+        ecm
+        GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
+        GIT_TAG        ${KF_GIT_TAG})
+      FetchContent_MakeAvailable(ecm)
 
-    FetchContent_Declare(
-      kcoreaddons
-      GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
-      GIT_TAG        ${KF5_GIT_TAG})
-    FetchContent_MakeAvailable(kcoreaddons)
+      FetchContent_Declare(
+        kcoreaddons
+        GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
+        GIT_TAG        ${KF_GIT_TAG})
+      FetchContent_MakeAvailable(kcoreaddons)
 
-    FetchContent_Declare(
-      kwidgetsaddons
-      GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
-      GIT_TAG        ${KF5_GIT_TAG})
-    FetchContent_MakeAvailable(kwidgetsaddons)
+      FetchContent_Declare(
+        kwidgetsaddons
+        GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
+        GIT_TAG        ${KF_GIT_TAG})
+      FetchContent_MakeAvailable(kwidgetsaddons)
+    endfunction()
+    qet_make_kf_available()
   else()
-    find_package(KF5CoreAddons REQUIRED)
-    find_package(KF5WidgetsAddons REQUIRED)
+    find_package(KF${KF_MAJOR_VERSION}CoreAddons REQUIRED)
+    find_package(KF${KF_MAJOR_VERSION}WidgetsAddons REQUIRED)
   endif()
 
-  set(KF5_PRIVATE_LIBRARIES
-    KF5::WidgetsAddons
-    KF5::CoreAddons
+  set(KF_PRIVATE_LIBRARIES
+    KF${KF_MAJOR_VERSION}::WidgetsAddons
+    KF${KF_MAJOR_VERSION}::CoreAddons
     )
 endif()

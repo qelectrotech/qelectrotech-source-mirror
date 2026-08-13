@@ -21,6 +21,7 @@
 #include <QSettings>
 #include <QVariant>
 #include <algorithm>
+#include <utility>
 
 namespace {
 	const QString SETTINGS_GROUP = QStringLiteral("shortcuts/");
@@ -143,7 +144,7 @@ void ShortcutManager::setSequence(const QString &id, const QKeySequence &sequenc
 		settings.setValue(key, sequence.toString());
 	}
 
-	for (const QPointer<QObject> &target : qAsConst(it->targets)) {
+	for (const QPointer<QObject> &target : std::as_const(it->targets)) {
 		if (target) {
 			target->setProperty("shortcut", QVariant::fromValue(sequence));
 		}
