@@ -32,6 +32,7 @@
 #include <QGraphicsTextItem>
 #include <QList>
 #include <QRegularExpression>
+#include <QTextCodec>
 #include <QUrl>
 #include <QVector>
 
@@ -238,6 +239,15 @@ void convertUriToGoTo(const QString &pdfPath)
 
 			QByteArray uriVal = data.mid(uriStart, closeParen - uriStart);
 
+			// Skip component-info annotations — handled by
+			// convertComponentInfoAnnotations() in a separate pass.
+			if (uriVal.startsWith("componentinfo://")
+				|| uriVal.startsWith("http://componentinfo.local/")) {
+				out.append(data.mid(found, closeParen + 1 - found));
+				pos = closeParen + 1;
+				continue;
+			}
+
 			// Extract page number: look for #page=N or bare page=N
 			int pageNum = -1;
 			int hashPos = uriVal.lastIndexOf("#page=");
@@ -377,6 +387,202 @@ void convertUriToGoTo(const QString &pdfPath)
 	if (!out.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 	out.write(result);
 	out.close();
+}
+
+void convertComponentInfoAnnotations(const QString &pdfPath,
+									const QList<ComponentInfo> &annotations)
+{
+	if (annotations.isEmpty()) return;
+
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	QByteArray data = f.readAll();
+	f.close();
+
+	const QByteArray marker("http://componentinfo.local/");
+	if (!data.contains(marker)) return;
+
+	int xrefStart = data.lastIndexOf("\nxref\n");
+	if (xrefStart == -1) xrefStart = data.lastIndexOf("\nxref ");
+	if (xrefStart == -1) return;
+	++xrefStart;
+	QByteArray body = data.left(xrefStart);
+
+	// Pre-scan body for highest object number
+	int maxObjNum = 0;
+	{
+		const QByteArray objMarker(" 0 obj");
+		int p = 0;
+		while ((p = body.indexOf(objMarker, p)) != -1) {
+			int numStart = p - 1;
+			while (numStart > 0 && body[numStart - 1] != '\n' && body[numStart - 1] != '\r')
+				--numStart;
+			QByteArray numStr = body.mid(numStart, p - numStart).trimmed();
+			bool ok = false;
+			int num = numStr.toInt(&ok);
+			if (ok && num > maxObjNum)
+				maxObjNum = num;
+			++p;
+		}
+	}
+	// Empty Form XObject used as invisible appearance for all annotations.
+	// All annotations reference this single object.
+	int emptyXObjNum = maxObjNum + 1;
+
+	QByteArray out;
+	out.reserve(data.size());
+
+	int pos = 0;
+	int annotIdx = 0;
+
+	while (pos < body.size()) {
+		int markerPos = body.indexOf(marker, pos);
+		if (markerPos == -1) {
+			out.append(body.mid(pos));
+			break;
+		}
+
+		int uriOpen = body.lastIndexOf("/URI (", markerPos);
+		int closeParen = (uriOpen != -1) ? body.indexOf(')', markerPos) : -1;
+		if (uriOpen == -1 || closeParen == -1 || uriOpen < pos) {
+			out.append(body.mid(pos, markerPos + marker.size() - pos));
+			pos = markerPos + marker.size();
+			continue;
+		}
+
+		// Find /S /URI before /URI (
+		int sUriPos = body.lastIndexOf("/S /URI", uriOpen);
+
+		// Find the /A << that opens the action dict containing /S /URI.
+		// Qt always writes: /A <<\n/S /URI\n/URI (...)\n>>\n>>
+		// We need /Contents at the annotation level, NOT inside /A <<.
+		int aDictOpen = body.lastIndexOf("/A <<", (sUriPos != -1) ? sUriPos : uriOpen);
+		int copyEnd = (aDictOpen != -1 && aDictOpen >= pos) ? aDictOpen
+					: (sUriPos != -1 && sUriPos >= pos) ? sUriPos
+					: uriOpen;
+		out.append(body.mid(pos, copyEnd - pos));
+
+		// Get text from annotations list (matched by order)
+		if (annotIdx >= annotations.size()) {
+			// Keep original action dict intact
+			out.append(body.mid(copyEnd, closeParen + 1 - copyEnd));
+			pos = closeParen + 1;
+			continue;
+		}
+
+		QByteArray contents = annotations[annotIdx].contents.toUtf8();
+		++annotIdx;
+
+		// Replace /Subtype /Link with /Subtype /Text
+		int subTypePos = out.lastIndexOf("/Subtype /Link");
+		if (subTypePos != -1) {
+			out.replace(subTypePos, 14, "/Subtype /Text");
+		}
+
+		// Encode as UTF-16BE hex with BOM for proper Unicode support (Umlauten etc.).
+		// PDF spec: hex strings starting with FE FF are interpreted as UTF-16BE.
+		QTextCodec *codec = QTextCodec::codecForName("UTF-16BE");
+		QByteArray utf16be;
+		utf16be.append('\xfe');
+		utf16be.append('\xff');
+		if (codec) {
+			utf16be += codec->fromUnicode(QString::fromUtf8(contents));
+		} else {
+			// Fallback: manual UTF-16BE encoding
+			QString str = QString::fromUtf8(contents);
+			for (int i = 0; i < str.size(); ++i) {
+				ushort cp = str.at(i).unicode();
+				utf16be.append(static_cast<char>((cp >> 8) & 0xFF));
+				utf16be.append(static_cast<char>(cp & 0xFF));
+			}
+		}
+
+		out += "/Contents <";
+		out += utf16be.toHex();
+		out += ">\n/AP << /N " + QByteArray::number(emptyXObjNum) + " 0 R >>\n";
+
+		// Skip the entire /A << ... >> action dict.
+		// After closeParen ')' we have: \n>>  (closes /A dict)  \n>>  (closes annot dict)
+		int actionDictClose = body.indexOf(">>", closeParen + 1);
+		if (actionDictClose != -1) {
+			pos = actionDictClose + 2;  // skip past >> that closes /A dict
+		} else {
+			pos = closeParen + 1;
+		}
+	}
+
+	if (annotIdx == 0) return;
+
+	// Append empty Form XObject (shared by all annotations for invisible appearance)
+	QByteArray emptyXObj;
+	emptyXObj += QByteArray::number(emptyXObjNum) + " 0 obj\n";
+	emptyXObj += "<< /Type /XObject /Subtype /Form /BBox [0 0 0 0] /Length 0 >>\n";
+	emptyXObj += "stream\nendstream\n";
+	emptyXObj += "endobj\n";
+	out += emptyXObj;
+
+	// Rebuild xref table
+	QMap<int, int> offsets;
+	{
+		const QByteArray objMarker(" 0 obj");
+		int p = 0;
+		while ((p = out.indexOf(objMarker, p)) != -1) {
+			int numStart = p - 1;
+			while (numStart > 0 && out[numStart - 1] != '\n' && out[numStart - 1] != '\r')
+				--numStart;
+			QByteArray numStr = out.mid(numStart, p - numStart).trimmed();
+			bool ok = false;
+			int objNum = numStr.toInt(&ok);
+			if (ok && objNum > 0)
+				offsets[objNum] = numStart;
+			++p;
+		}
+	}
+
+	if (offsets.isEmpty()) return;
+
+	int maxObj = offsets.lastKey();
+
+	QByteArray xref;
+	xref += "xref\n";
+	xref += "0 " + QByteArray::number(maxObj + 1) + "\n";
+	xref += "0000000000 65535 f \n";
+	for (int i = 1; i <= maxObj; ++i) {
+		if (offsets.contains(i)) {
+			xref += QByteArray::number(offsets[i]).rightJustified(10, '0')
+				+ " 00000 n \n";
+		} else {
+			xref += "0000000000 65535 f \n";
+		}
+	}
+
+	QByteArray trailer;
+	{
+		int tPos = data.indexOf("trailer", xrefStart);
+		if (tPos != -1) {
+			int tEnd = data.indexOf("%%EOF", tPos);
+			if (tEnd != -1) tEnd += 5;
+			if (tEnd != -1)
+				trailer = data.mid(tPos, tEnd - tPos);
+		}
+	}
+	if (trailer.isEmpty())
+		trailer = "trailer\n<<>>\n%%EOF";
+
+	QByteArray result;
+	result.reserve(out.size() + xref.size() + trailer.size() + 64);
+	result += out;
+	int newXrefOffset = out.size();
+	result += xref;
+	result += trailer;
+	result += "\nstartxref\n";
+	result += QByteArray::number(newXrefOffset);
+	result += "\n%%EOF\n";
+
+	QFile outF(pdfPath);
+	if (!outF.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	outF.write(result);
+	outF.close();
 }
 
 } // namespace PdfLinks

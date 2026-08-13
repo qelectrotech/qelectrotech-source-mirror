@@ -66,13 +66,20 @@ namespace PdfLinks {
 							 const QMap<Diagram *, int> &pageMap,
 							 const QString &outputFileName);
 
-	/**
-		Post-process a Qt-generated PDF file: rewrite every "/S /URI" link
-		annotation into a native internal "/S /GoTo" action (page + /FitR or
-		/Fit destination) and rebuild the xref table.  No-op if the file has no
-		such annotations.
-	*/
-	void convertUriToGoTo(const QString &pdfPath);
+/**
+	Post-process a Qt-generated PDF file: rewrite every "/S /URI" link
+	annotation into a native internal "/S /GoTo" action (page + /FitR or
+	/Fit destination) and rebuild the xref table.  No-op if the file has no
+	such annotations.
+*/
+void convertUriToGoTo(const QString &pdfPath);
+
+struct ComponentInfo {
+	QString contents;
+};
+
+void convertComponentInfoAnnotations(const QString &pdfPath,
+									const QList<ComponentInfo> &annotations);
 
 }
 
