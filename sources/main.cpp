@@ -249,6 +249,10 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			// runs on a background thread referencing the project and races the
 			// process exit (intermittent segfault in QET::writeToFile).
 			QETProject::setBackupEnabled(false);
+			// No blocking prompts either: readProjectXml() asks the user what
+			// to do about version-incompatible projects, and with nobody to
+			// answer, the modal hangs the process instead of exporting.
+			QETProject::setInteractive(false);
 			return CLIExport::run(export_app.arguments());
 		}
 	}

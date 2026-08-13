@@ -46,10 +46,16 @@
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
 
 bool QETProject::m_backup_enabled = true;
+bool QETProject::m_interactive = true;
 
 void QETProject::setBackupEnabled(bool enabled)
 {
 	m_backup_enabled = enabled;
+}
+
+void QETProject::setInteractive(bool interactive)
+{
+	m_interactive = interactive;
 }
 
 /**
@@ -1439,7 +1445,19 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		m_project_qet_version = QetVersion::fromXmlAttribute(root_elmt);
 		if (!m_project_qet_version.isNull())
 		{
-			if (QetVersion::currentVersion() < m_project_qet_version)
+			if (QetVersion::currentVersion() < m_project_qet_version
+				&& !m_interactive)
+			{
+					//Nobody can answer a modal in a headless run: report the
+					//mismatch and carry on as if the user had chosen Open.
+				qWarning().noquote()
+					<< QStringLiteral("Warning: '%1' was saved with QElectroTech %2, "
+									  "newer than this build (%3); opening it anyway.")
+					   .arg(m_file_path,
+							root_elmt.attribute(QStringLiteral("version")),
+							QetVersion::currentVersion().toString());
+			}
+			else if (QetVersion::currentVersion() < m_project_qet_version)
 			{
 				int ret = QET::QetMessageBox::warning(
 							nullptr,
@@ -1466,7 +1484,17 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 
 				//Since QElectrotech 0.9 the compatibility with project made with
 				//Qet 0.6 or lower is break;
-			if (m_project_qet_version <= QetVersion::versionZeroDotSix())
+			if (m_project_qet_version <= QetVersion::versionZeroDotSix()
+				&& !m_interactive)
+			{
+				qWarning().noquote()
+					<< QStringLiteral("Warning: '%1' was saved with QElectroTech %2 and is only "
+									  "partially compatible with this build (%3); opening it anyway.")
+					   .arg(m_file_path,
+							m_project_qet_version.toString(),
+							QetVersion::currentVersion().toString());
+			}
+			else if (m_project_qet_version <= QetVersion::versionZeroDotSix())
 			{
 				auto ret = QET::QetMessageBox::warning(
 							nullptr,

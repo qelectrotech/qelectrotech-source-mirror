@@ -125,6 +125,12 @@ class QETProject : public QObject
 		/// process can destroy the project before the write finishes (crash).
 		static void setBackupEnabled(bool enabled);
 
+		/// Enable/disable blocking user prompts raised while a project is being
+		/// read.  Disabled by the headless CLI: readProjectXml() asks the user
+		/// what to do about version-incompatible projects, and with no one to
+		/// answer, the modal blocks the process forever instead of exporting.
+		static void setInteractive(bool interactive);
+
 			///DEFAULT PROPERTIES
 		BorderProperties defaultBorderProperties() const;
 		void             setDefaultBorderProperties(const BorderProperties &);
@@ -275,6 +281,7 @@ class QETProject : public QObject
 	private:
 			/// When false, writeBackup() is a no-op (set by the headless CLI)
 		static bool m_backup_enabled;
+		static bool m_interactive;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
