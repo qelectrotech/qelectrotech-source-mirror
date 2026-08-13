@@ -64,11 +64,8 @@ bool TerminalStripData::fromXml(const QDomElement &xml_element)
 					"due to wrong tag name. Expected " << this->xmlTagName() << " used " << xml_element.tagName();
 		return false;
 	}
-#if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
+
 	m_uuid = QUuid::fromString(xml_element.attribute(QStringLiteral("uuid")));
-#else
-	m_uuid = QUuid(xml_element.attribute(QStringLiteral("uuid")));
-#endif
 
 	for (auto &xml_info :
 		 QETXML::findInDomElement(xml_element.firstChildElement(QStringLiteral("informations")),
