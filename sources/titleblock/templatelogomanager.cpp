@@ -216,11 +216,7 @@ QString TitleBlockTemplateLogoManager::confirmLogoName(const QString &initial_na
 			connect(replace_button, &QPushButton::clicked, signal_mapper, qOverload<>(&QSignalMapper::map));
 			connect(rename_button, &QPushButton::clicked, signal_mapper, qOverload<>(&QSignalMapper::map));
 			connect(cancel_button, &QPushButton::clicked, signal_mapper, qOverload<>(&QSignalMapper::map));
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedInt() always available
-			connect(signal_mapper, qOverload<int>(&QSignalMapper::mapped), rename_dialog, &QDialog::done);
-#else
 			connect(signal_mapper, &QSignalMapper::mappedInt, rename_dialog, &QDialog::done);
-#endif
 		}
 		rd_label -> setText(
 			QString(tr(
