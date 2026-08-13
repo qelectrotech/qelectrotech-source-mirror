@@ -292,7 +292,7 @@ void ElementPropertiesEditorWidget::updateTree()
 			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Slave:
-			ui->m_tree->setDisabled(true);
+			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Terminal:
 			ui->m_tree->setEnabled(true);
@@ -426,7 +426,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 #if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
-								  type_ == ElementData::Master));
+								  type_ == ElementData::Master ||
+								  type_ == ElementData::Slave ||
+								  type_ == ElementData::Terminal));
 #endif
 
 	updateTree();
