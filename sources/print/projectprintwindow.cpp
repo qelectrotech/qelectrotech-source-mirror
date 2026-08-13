@@ -454,8 +454,11 @@ QRect ProjectPrintWindow::diagramRect(Diagram *diagram, const ExportProperties &
 {
 	auto diagram_rect = diagram->border_and_titleblock.borderAndTitleBlockRect();
 	if (!option.draw_titleblock) {
-		auto titleblock_height = diagram->border_and_titleblock.titleBlockRect().height();
-		diagram_rect.setHeight(diagram_rect.height() - titleblock_height);
+		auto titleblock_rect = diagram->border_and_titleblock.titleBlockRect();
+		if (diagram->border_and_titleblock.titleBlockEdge() == Qt::BottomEdge)
+			diagram_rect.setHeight(diagram_rect.height() - titleblock_rect.height());
+		else
+			diagram_rect.setWidth(diagram_rect.width() - titleblock_rect.width());
 	}
 
 		//Adjust the border of diagram to 1px (width of the line)
