@@ -177,6 +177,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/configdialog.h
   ${QET_DIR}/sources/createdxf.cpp
   ${QET_DIR}/sources/createdxf.h
+  ${QET_DIR}/sources/dxfpaintdevice.cpp
+  ${QET_DIR}/sources/dxfpaintdevice.h
   ${QET_DIR}/sources/diagramcommands.cpp
   ${QET_DIR}/sources/diagramcommands.h
   ${QET_DIR}/sources/diagramcontent.cpp
