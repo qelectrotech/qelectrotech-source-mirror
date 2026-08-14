@@ -452,6 +452,9 @@ void ElementPropertiesEditorWidget::on_m_slave_groups_checkbox_toggled(bool chec
 
 	if (checked && !ui->max_slaves_checkbox->isChecked()) {
 		ui->max_slaves_checkbox->setChecked(true);
+		if (!m_data.m_slave_contact_groups.isEmpty()) {
+			ui->max_slaves_spinbox->setValue(m_data.m_slave_contact_groups.size());
+		}
 	}
 
 	if (checked) {
