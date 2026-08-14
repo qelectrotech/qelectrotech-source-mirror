@@ -21,7 +21,7 @@ class TerminalNumberingDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit TerminalNumberingDialog(QWidget *parent, QETProject *project);
+    explicit TerminalNumberingDialog(QWidget *parent = nullptr, QETProject *project = nullptr);
     ~TerminalNumberingDialog();
 
     // Getters for the user's choices
@@ -34,7 +34,6 @@ public:
 
 private:
     Ui::TerminalNumberingDialog *ui;
-    QETProject *m_project;
     QMap<QString, QCheckBox*> m_stripCheckboxes;
 };
 

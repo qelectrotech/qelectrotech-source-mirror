@@ -18,8 +18,7 @@
  */
 TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *project) :
     QDialog(parent),
-    ui(new Ui::TerminalNumberingDialog),
-    m_project(project)
+    ui(new Ui::TerminalNumberingDialog)
 {
     ui->setupUi(this);
 
@@ -27,19 +26,30 @@ TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *pr
     connect(ui->rb_type_alpha, &QRadioButton::toggled, ui->cb_also_alpha, &QCheckBox::setEnabled);
 
     // Collect all unique terminal strip prefixes from the project
-    if (m_project) {
+    if (project) {
         QSet<QString> prefixes;
-        foreach (Diagram *diagram, m_project->diagrams()) {
+        foreach (Diagram *diagram, project->diagrams()) {
             foreach (QGraphicsItem *qgi, diagram->items()) {
                 if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
                     if (elmt->elementData().m_type == ElementData::Terminal) {
+                        // Ignore locked terminals
+                        DiagramContext info = elmt->elementInformations();
+                        if (info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true")) {
+                            continue;
+                        }
+
                         QString label = elmt->actualLabel();
                         if (label.isEmpty()) continue;
+
+                        // Handle labels with and without colon
                         int colonIndex = label.lastIndexOf(':');
+                        QString prefix;
                         if (colonIndex != -1) {
-                            QString prefix = label.left(colonIndex);
-                            prefixes.insert(prefix);
+                            prefix = label.left(colonIndex);
+                        } else {
+                            prefix = label;
                         }
+                        prefixes.insert(prefix);
                     }
                 }
             }
@@ -224,9 +234,12 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
             // If it was a number (e.g., "1") or empty, update it with the new counter
             newLabel = ti.prefix + ":" + QString::number(newNum);
         } else {
-            // If it was alphabetical (e.g., "N", "PE"), keep the original text
-            // If "also number letters" is enabled, append the counter
-            if (alsoAlpha) {
+            // Only append to purely alphabetic suffixes (N, PE), so re-running is a
+            // no-op and already-numbered suffixes (L1, L2, L3) keep their meaning.
+            const bool allLetters = !ti.suffix.isEmpty()
+                    && std::all_of(ti.suffix.cbegin(), ti.suffix.cend(),
+                                   [](QChar c){ return c.isLetter(); });
+            if (alsoAlpha && allLetters) {
                 newLabel = ti.prefix + ":" + ti.suffix + QString::number(newNum);
             } else {
                 newLabel = ti.prefix + ":" + ti.suffix;
