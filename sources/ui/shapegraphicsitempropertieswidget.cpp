@@ -216,7 +216,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 			if (m_shape->shapeType() == QetShapeItem::Rectangle
 				|| m_shape->shapeType() == QetShapeItem::Ellipse)
 			{
-				QRectF old_rect = m_shape->rect();
+				QRectF old_rect = m_shape->rect().normalized();
 				QRectF new_rect(old_rect.topLeft(),
 								 QSizeF(ui->m_width_dsb->value(), ui->m_height_dsb->value()));
 
@@ -329,7 +329,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				if (qsi->shapeType() != QetShapeItem::Rectangle && qsi->shapeType() != QetShapeItem::Ellipse)
 					continue;
 
-				QRectF r = qsi->rect();
+				QRectF r = qsi->rect().normalized();
 				if (!qFuzzyCompare(ui->m_width_dsb->value(), r.width())
 					|| !qFuzzyCompare(ui->m_height_dsb->value(), r.height()))
 				{
@@ -343,7 +343,7 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 				if (!parent_undo) {
 					parent_undo = new QUndoCommand(tr("Modifier une forme simple"));
 				}
-				new QPropertyUndoCommand(qsi, "rect", qsi->rect(), rect_H.value(qsi), parent_undo);
+				new QPropertyUndoCommand(qsi, "rect", qsi->rect().normalized(), rect_H.value(qsi), parent_undo);
 			}
 
 			return parent_undo;
@@ -382,13 +382,13 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 		}
 
 		if (ui->m_close_polygon->isChecked() != m_shape->isClosed()) {
-			QPropertyUndoCommand(m_shape, "close", m_shape->isClosed(), ui->m_close_polygon->isChecked(), undo);
+			new QPropertyUndoCommand(m_shape, "close", m_shape->isClosed(), ui->m_close_polygon->isChecked(), undo);
 		}
 
 		if (m_shape->shapeType() == QetShapeItem::Rectangle
 			|| m_shape->shapeType() == QetShapeItem::Ellipse)
 		{
-			QRectF old_rect = m_shape->rect();
+			QRectF old_rect = m_shape->rect().normalized();
 			QRectF new_rect(old_rect.topLeft(),
 							 QSizeF(ui->m_width_dsb->value(), ui->m_height_dsb->value()));
 
@@ -443,8 +443,8 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 									  || m_shape->shapeType() == QetShapeItem::Ellipse);
 		ui->m_dimensions_gb->setVisible(has_dimensions);
 		if (has_dimensions) {
-			ui->m_width_dsb ->setValue(m_shape->rect().width());
-			ui->m_height_dsb->setValue(m_shape->rect().height());
+			ui->m_width_dsb ->setValue(m_shape->rect().normalized().width());
+			ui->m_height_dsb->setValue(m_shape->rect().normalized().height());
 		}
 	}
 	else if (m_shapes_list.size() >= 2)
@@ -516,9 +516,9 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 		if (all_have_dimensions)
 		{
 			same = true;
-			qreal w = m_shapes_list.first()->rect().width();
+			qreal w = m_shapes_list.first()->rect().normalized().width();
 			for (QetShapeItem *qsi : m_shapes_list) {
-				if (qsi->rect().width() != w) {
+				if (qsi->rect().normalized().width() != w) {
 					same = false;
 					break;
 				}
@@ -526,9 +526,9 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 			ui->m_width_dsb->setValue(same ? w : 0);
 
 			same = true;
-			qreal h = m_shapes_list.first()->rect().height();
+			qreal h = m_shapes_list.first()->rect().normalized().height();
 			for (QetShapeItem *qsi : m_shapes_list) {
-				if (qsi->rect().height() != h) {
+				if (qsi->rect().normalized().height() != h) {
 					same = false;
 					break;
 				}
