@@ -24,6 +24,9 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetxml.h"
 #include "../qetproject.h"
+#include <QDir>
+#include <QDomDocument>
+#include <QFile>
 #include <QStringList>
 #include <QVariant>
 #include <utility>
@@ -704,6 +707,54 @@ namespace autonum
 	}
 
 	/**
+		@brief labelsPrefixFor
+		Look up @a dir_segments (outermost category first) in the
+		qet_labels.xml at @a file_path.
+		A category without a <prefix> of its own inherits the nearest
+		ancestor that has one, as documented in that file.
+		@return the prefix that applies, or a null QString if the file
+			cannot be read or nothing along the path carries one.
+	*/
+	static QString labelsPrefixFor(
+			const QString &file_path, const QStringList &dir_segments)
+	{
+		QFile file(file_path);
+		if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+			return QString();
+
+		QDomDocument document;
+		if (!document.setContent(&file))
+			return QString();
+
+		QDomElement node = document.documentElement();
+		if (node.isNull())
+			return QString();
+
+		QString prefix;
+		for (const QString &segment : dir_segments)
+		{
+			QDomElement child =
+					node.firstChildElement(QStringLiteral("category"));
+			while (!child.isNull()
+				   && child.attribute(QStringLiteral("name")) != segment) {
+				child = child.nextSiblingElement(
+							QStringLiteral("category"));
+			}
+				//Deepest category this file describes: keep whatever an
+				//ancestor already provided rather than losing it.
+			if (child.isNull())
+				break;
+
+			node = child;
+			const QString own = node.firstChildElement(
+						QStringLiteral("prefix")).text().trimmed();
+			if (!own.isEmpty())
+				prefix = own;
+		}
+		return prefix;
+	}
+
+	/**
 		@brief elementPrefixForLocation
 		@param location
 		@return the prefix for an element represented by location,
@@ -716,115 +767,66 @@ namespace autonum
 		if (!location.isProject())
 			return QString();
 
-		QXmlStreamReader rxml;
-		QString path[10];
-		int i = -1;
-		ElementsLocation current_location = location;
-		int dirLevel = -1;
-
-			//Add location name to path array
-		while((current_location.parent() != current_location) && (current_location.parent().fileName() != "import"))
+			/* An embedded element is stored at
+			 * "embed://import/<root>/<dirs...>/<file>.elmt": collect
+			 * everything below "import", outermost first. */
+		QStringList segments;
+		ElementsLocation current = location;
+		while (current.parent() != current
+			   && current.parent().fileName() != "import")
 		{
-			i++;
-			path[i]=current_location.fileName();
-			current_location = current_location.parent();
-			dirLevel++;
+			segments.prepend(current.fileName());
+			current = current.parent();
 		}
-			//User Element without folder treatment
-		if (i == -1)
-		{
-			i = 0;
-			path[i]=current_location.fileName();
-			current_location = current_location.parent();
-			dirLevel = 0;
-		}
-
-		// Create Custom labels if qet_labels.xml exits in customElementsDir
-		if (current_location.fileName() != "10_electric"){
-		QString custom_labels = "qet_labels.xml";
-		QString customfilepath = QETApp::customElementsDir().append(custom_labels);
-		
-		QFile file(customfilepath);
-		file.isReadable();
-		if (!file.open(QFile::ReadOnly | QFile::Text))
+			//Element sitting directly in the collection root:
+			//it belongs to no category, so no prefix can apply.
+		if (segments.isEmpty())
 			return QString();
-				rxml.setDevice(&file);
-				rxml.readNext();
 
-		while(!rxml.atEnd())
-		{
-			if (rxml.attributes().value("name").toString() == path[i])
-			{
-				rxml.readNext();
-				i=i-1;
-					//reached element directory
-				if (i==0)
-				{
-					for (int j=i; j<= dirLevel; j = j +1)
-					{
-							//if there is a prefix available apply prefix
-						if(rxml.name().toString()=="prefix")
-						{
-							return rxml.readElementText();
-						}
-							//if there isn't a prefix available, find parent prefix in parent folder
-						else
-						{
-							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
-							{
-								rxml.skipCurrentElement();
-								rxml.readNext();
-							}
-						}
-					}
-				}
-			}
-			rxml.readNext();
-			}
-		}
-		else
-		{
-		QString qet_labels = "10_electric/qet_labels.xml";
-		QString filepath = QETApp::commonElementsDir().append(qet_labels);
-		QFile file(filepath);
-		file.isReadable();
-		if (!file.open(QFile::ReadOnly | QFile::Text))
-			return QString();
-			
-		rxml.setDevice(&file);
-		rxml.readNext();
+		const QString collection_root = current.fileName();
+			//The element file itself names no category.
+		segments.removeLast();
 
-		while(!rxml.atEnd())
+			/* Which collection this element came from is not recoverable:
+			 * XmlElementCollection::addElement() builds the embedded path
+			 * from collectionPath(false), which strips the common:// /
+			 * custom:// / company:// protocol. So try each collection's
+			 * labels file and keep the first that describes this path.
+			 *
+			 * Categories in a qet_labels.xml are relative to the directory
+			 * holding it, and that differs per collection: the common one
+			 * ships inside its top-level tree
+			 * (elements/10_electric/qet_labels.xml), so that tree's own
+			 * name is not part of the category path, while a custom or
+			 * company file sits at the collection root and so includes it.
+			 * Custom files written against the common layout are still
+			 * accepted, rather than silently breaking them. */
+		const QStringList from_root = QStringList{collection_root} + segments;
+
+		QVector<QPair<QString, QStringList>> candidates;
+		candidates << qMakePair(
+						  QDir(QDir(QETApp::commonElementsDir())
+							   .filePath(collection_root))
+						  .filePath(QStringLiteral("qet_labels.xml")),
+						  segments);
+		const QStringList other_collections{QETApp::customElementsDir(),
+											QETApp::companyElementsDir()};
+		for (const QString &dir : other_collections)
 		{
-			if (rxml.attributes().value("name").toString() == path[i])
-			{
-				rxml.readNext();
-				i=i-1;
-					//reached element directory
-				if (i==0)
-				{
-					for (int j=i; j<= dirLevel; j = j +1)
-					{
-							//if there is a prefix available apply prefix
-						if(rxml.name().toString()=="prefix")
-						{
-							return rxml.readElementText();
-						}
-							//if there isn't a prefix available, find parent prefix in parent folder
-						else
-						{
-							while (rxml.readNextStartElement() && rxml.name().toString()!="prefix")
-							{
-								rxml.skipCurrentElement();
-								rxml.readNext();
-							}
-						}
-					}
-				}
-			}
-			rxml.readNext();
+			const QString file = QDir(dir).filePath(
+						QStringLiteral("qet_labels.xml"));
+			candidates << qMakePair(file, from_root);
+			candidates << qMakePair(file, segments);
 		}
+
+		for (const auto &candidate : std::as_const(candidates))
+		{
+			const QString prefix =
+					labelsPrefixFor(candidate.first, candidate.second);
+			if (!prefix.isEmpty())
+				return prefix;
 		}
+
 		return QString();
 	}
 }
