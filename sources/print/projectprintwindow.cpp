@@ -432,8 +432,9 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 
 			////Collect component info for popup annotations////
 			if (ui->m_component_info_cb->isChecked()) {
+				int annotIndex = 0;
 				for (auto *item : diagram->items()) {
-					auto *el = dynamic_cast<Element*>(item);
+					auto *el = qgraphicsitem_cast<Element*>(item);
 					if (!el) continue;
 
 					// Skip reports and slaves
@@ -444,32 +445,32 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 					auto info = el->elementInformations();
 					if (info.count() == 0) continue;
 
-				// Build info text
-				QStringList lines;
-				for (const QString &key : {"label", "manufacturer", "designation", "description"}) {
-					if (info.contains(key) && !info.value(key).toString().isEmpty())
-						lines << QETInformation::translatedInfoKey(key) + ": " + info.value(key).toString();
-				}
-				for (const QString &key : info.keys()) {
-					if (key == "formula") continue;
-					QString translated = QETInformation::translatedInfoKey(key);
-					if (lines.contains(translated + ": " + info.value(key).toString())) continue;
-					if (info.value(key).toString().isEmpty()) continue;
-					lines << translated + ": " + info.value(key).toString();
-				}
+					// Build info text
+					QStringList lines;
+					for (const QString &key : {"label", "manufacturer", "designation", "description"}) {
+						if (info.contains(key) && !info.value(key).toString().isEmpty())
+							lines << QETInformation::translatedInfoKey(key) + ": " + info.value(key).toString();
+					}
+					for (const QString &key : info.keys()) {
+						if (key == "formula") continue;
+						QString translated = QETInformation::translatedInfoKey(key);
+						if (lines.contains(translated + ": " + info.value(key).toString())) continue;
+						if (info.value(key).toString().isEmpty()) continue;
+						lines << translated + ": " + info.value(key).toString();
+					}
 					if (lines.isEmpty()) continue;
 
-				// Compute element rect in device pixels
-				QRectF elemScene = el->mapRectToScene(el->boundingRect());
-				QRectF devRect = fit.mapRect(elemScene);
+					// Compute element rect in device pixels
+					QRectF elemScene = el->mapRectToScene(el->boundingRect());
+					QRectF devRect = fit.mapRect(elemScene);
 
-				PdfLinks::ComponentInfo ci;
-				ci.contents = lines.join("\n");
-				m_componentInfoList.append(ci);
+					PdfLinks::ComponentInfo ci;
+					ci.contents = lines.join("\n");
+					m_componentInfoList.append(ci);
 
-				// Create a link annotation as placeholder — post-processing
-				// will convert it to an invisible text annotation with the actual content
-					pdfEngine->drawHyperlink(devRect, QUrl("http://componentinfo.local/"));
+					// Create a link annotation as placeholder — post-processing
+					// will convert it to an invisible text annotation with the actual content
+					pdfEngine->drawHyperlink(devRect, QUrl(QString("http://componentinfo.local/%1").arg(annotIndex++)));
 				}
 			}
 			////Component info end////

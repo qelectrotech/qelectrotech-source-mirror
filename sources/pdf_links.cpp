@@ -32,7 +32,6 @@
 #include <QGraphicsTextItem>
 #include <QList>
 #include <QRegularExpression>
-#include <QTextCodec>
 #include <QUrl>
 #include <QVector>
 
@@ -399,8 +398,8 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 	QByteArray data = f.readAll();
 	f.close();
 
-	const QByteArray marker("http://componentinfo.local/");
-	if (!data.contains(marker)) return;
+	const QByteArray markerPrefix("http://componentinfo.local/");
+	if (!data.contains(markerPrefix)) return;
 
 	int xrefStart = data.lastIndexOf("\nxref\n");
 	if (xrefStart == -1) xrefStart = data.lastIndexOf("\nxref ");
@@ -433,20 +432,34 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 	out.reserve(data.size());
 
 	int pos = 0;
-	int annotIdx = 0;
+	bool anyConverted = false;
 
 	while (pos < body.size()) {
-		int markerPos = body.indexOf(marker, pos);
+		// Find next indexed marker: http://componentinfo.local/<N>
+		int markerPos = body.indexOf(markerPrefix, pos);
 		if (markerPos == -1) {
 			out.append(body.mid(pos));
 			break;
 		}
 
+		// Extract index from marker URL
+		int idxStart = markerPos + markerPrefix.size();
+		int idxEnd = idxStart;
+		while (idxEnd < body.size() && body[idxEnd] >= '0' && body[idxEnd] <= '9')
+			++idxEnd;
+		if (idxEnd == idxStart) {
+			// No index — skip malformed marker
+			out.append(body.mid(pos, markerPos + markerPrefix.size() - pos));
+			pos = markerPos + markerPrefix.size();
+			continue;
+		}
+		int annotIndex = body.mid(idxStart, idxEnd - idxStart).toInt();
+
 		int uriOpen = body.lastIndexOf("/URI (", markerPos);
 		int closeParen = (uriOpen != -1) ? body.indexOf(')', markerPos) : -1;
 		if (uriOpen == -1 || closeParen == -1 || uriOpen < pos) {
-			out.append(body.mid(pos, markerPos + marker.size() - pos));
-			pos = markerPos + marker.size();
+			out.append(body.mid(pos, idxEnd - pos));
+			pos = idxEnd;
 			continue;
 		}
 
@@ -455,43 +468,63 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 
 		// Find the /A << that opens the action dict containing /S /URI.
 		// Qt always writes: /A <<\n/S /URI\n/URI (...)\n>>\n>>
-		// We need /Contents at the annotation level, NOT inside /A <<.
-		int aDictOpen = body.lastIndexOf("/A <<", (sUriPos != -1) ? sUriPos : uriOpen);
-		int copyEnd = (aDictOpen != -1 && aDictOpen >= pos) ? aDictOpen
-					: (sUriPos != -1 && sUriPos >= pos) ? sUriPos
-					: uriOpen;
-		out.append(body.mid(pos, copyEnd - pos));
+		int aDictOpen = (sUriPos != -1)
+			? body.lastIndexOf("/A <<", sUriPos)
+			: -1;
 
-		// Get text from annotations list (matched by order)
-		if (annotIdx >= annotations.size()) {
-			// Keep original action dict intact
-			out.append(body.mid(copyEnd, closeParen + 1 - copyEnd));
+		// If /A << is not found, leave this annotation untouched
+		if (aDictOpen == -1 || aDictOpen < pos) {
+			out.append(body.mid(pos, closeParen + 1 - pos));
 			pos = closeParen + 1;
 			continue;
 		}
 
-		QByteArray contents = annotations[annotIdx].contents.toUtf8();
-		++annotIdx;
+		// Validate index
+		if (annotIndex < 0 || annotIndex >= annotations.size()) {
+			// Index out of range — keep original annotation intact
+			out.append(body.mid(pos, closeParen + 1 - pos));
+			pos = closeParen + 1;
+			continue;
+		}
 
-		// Replace /Subtype /Link with /Subtype /Text
-		int subTypePos = out.lastIndexOf("/Subtype /Link");
+		// Copy annotation dict header up to /A <<
+		out.append(body.mid(pos, aDictOpen - pos));
+
+		QByteArray contents = annotations[annotIndex].contents.toUtf8();
+
+		// Replace /Subtype /Link with /Subtype /Text, bounded to current object.
+		// Search only the bytes we just appended (the current annotation header).
+		int searchStart = out.size() - (aDictOpen - pos);
+		int subTypePos = out.indexOf("/Subtype /Link", searchStart);
 		if (subTypePos != -1) {
 			out.replace(subTypePos, 14, "/Subtype /Text");
 		}
 
 		// Encode as UTF-16BE hex with BOM for proper Unicode support (Umlauten etc.).
 		// PDF spec: hex strings starting with FE FF are interpreted as UTF-16BE.
-		QTextCodec *codec = QTextCodec::codecForName("UTF-16BE");
 		QByteArray utf16be;
 		utf16be.append('\xfe');
 		utf16be.append('\xff');
-		if (codec) {
-			utf16be += codec->fromUnicode(QString::fromUtf8(contents));
-		} else {
-			// Fallback: manual UTF-16BE encoding
-			QString str = QString::fromUtf8(contents);
-			for (int i = 0; i < str.size(); ++i) {
-				ushort cp = str.at(i).unicode();
+		{
+			for (int i = 0; i < contents.size(); ) {
+				ushort cp = 0;
+				uchar c = static_cast<uchar>(contents.at(i));
+				if (c < 0x80) {
+					cp = c;
+					++i;
+				} else if ((c & 0xE0) == 0xC0 && i + 1 < contents.size()) {
+					cp = ((c & 0x1F) << 6)
+					   | (static_cast<uchar>(contents.at(i + 1)) & 0x3F);
+					i += 2;
+				} else if ((c & 0xF0) == 0xE0 && i + 2 < contents.size()) {
+					cp = ((c & 0x0F) << 12)
+					   | ((static_cast<uchar>(contents.at(i + 1)) & 0x3F) << 6)
+					   | (static_cast<uchar>(contents.at(i + 2)) & 0x3F);
+					i += 3;
+				} else {
+					cp = 0xFFFD; // replacement character
+					++i;
+				}
 				utf16be.append(static_cast<char>((cp >> 8) & 0xFF));
 				utf16be.append(static_cast<char>(cp & 0xFF));
 			}
@@ -509,9 +542,10 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 		} else {
 			pos = closeParen + 1;
 		}
+		anyConverted = true;
 	}
 
-	if (annotIdx == 0) return;
+	if (!anyConverted) return;
 
 	// Append empty Form XObject (shared by all annotations for invisible appearance)
 	QByteArray emptyXObj;
@@ -556,6 +590,7 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 		}
 	}
 
+	// Copy trailer and bump /Size to account for the new XObject
 	QByteArray trailer;
 	{
 		int tPos = data.indexOf("trailer", xrefStart);
@@ -568,6 +603,31 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 	}
 	if (trailer.isEmpty())
 		trailer = "trailer\n<<>>\n%%EOF";
+
+	// Bump /Size: original was maxObjNum+1, now it's emptyXObjNum+1
+	{
+		int sizePos = trailer.indexOf("/Size ");
+		if (sizePos != -1) {
+			int numStart = sizePos + 6;
+			int numEnd = numStart;
+			while (numEnd < trailer.size() && trailer[numEnd] >= '0' && trailer[numEnd] <= '9')
+				++numEnd;
+			if (numEnd > numStart) {
+				trailer.replace(numStart, numEnd - numStart,
+								QByteArray::number(emptyXObjNum + 1));
+			}
+		}
+	}
+
+	// Remove duplicate startxref if present in copied trailer
+	{
+		int stPos = trailer.indexOf("\nstartxref\n");
+		if (stPos != -1)
+			trailer = trailer.left(stPos);
+		// Ensure trailer ends with %%EOF
+		if (!trailer.endsWith("%%EOF\n"))
+			trailer += "\n%%EOF\n";
+	}
 
 	QByteArray result;
 	result.reserve(out.size() + xref.size() + trailer.size() + 64);
