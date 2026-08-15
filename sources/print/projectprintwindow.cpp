@@ -256,6 +256,7 @@ void ProjectPrintWindow::requestPaint()
 
 	bool first = true;
 	QPainter painter(m_printer);
+	int annotIndex = 0;
 
 	// A real PDF export uses the QPdfEngine; the on-screen preview uses a
 	// preview paint engine. We only post-process when actually writing a PDF.
@@ -269,7 +270,7 @@ void ProjectPrintWindow::requestPaint()
 	for (auto diagram : selectedDiagram())
 	{
 		first ? first = false : m_printer->newPage();
-		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap);
+		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap, annotIndex);
 	}
 
 	// Note: do NOT call painter.end() or pdfConvertUriToGoTo() here.
@@ -287,7 +288,7 @@ void ProjectPrintWindow::requestPaint()
  * @param fit_page
  * @param printer
  */
-void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap)
+void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap, int &annotIndex)
 {
 
 	////Prepare the print////
@@ -432,7 +433,6 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 
 			////Collect component info for popup annotations////
 			if (ui->m_component_info_cb->isChecked()) {
-				int annotIndex = 0;
 				for (auto *item : diagram->items()) {
 					auto *el = qgraphicsitem_cast<Element*>(item);
 					if (!el) continue;

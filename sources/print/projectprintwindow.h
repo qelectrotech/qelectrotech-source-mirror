@@ -83,7 +83,7 @@ class ProjectPrintWindow : public QMainWindow
 
 	private:
 		void requestPaint();
-		void printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap = {});
+		void printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap, int &annotIndex);
 		QRect diagramRect(Diagram *diagram, const ExportProperties &option) const;
 		int horizontalPagesCount(Diagram *diagram, const ExportProperties &option, bool full_page) const;
 		int verticalPagesCount(Diagram *diagram, const ExportProperties &option, bool full_page) const;
