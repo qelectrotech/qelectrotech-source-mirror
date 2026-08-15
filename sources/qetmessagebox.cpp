@@ -17,6 +17,36 @@
 */
 #include "qetmessagebox.h"
 
+#include <QDebug>
+
+#include "qet.h"
+
+namespace {
+	/**
+		Answer a message box without a user.
+
+		In a headless run (QET::isInteractive() == false) there is nobody to
+		click a button, so opening the dialog would block the process forever.
+		Report the question on stderr instead and hand back @p defaultButton.
+
+		A call site that has not specified a default gets QMessageBox::NoButton,
+		which is deliberate: almost every caller is written as "if the user
+		chose the abort option, abort", so NoButton means the operation carries
+		on unchanged. Pass an explicit default wherever a specific unattended
+		answer is wanted.
+	*/
+	QMessageBox::StandardButton answerWithoutUser(
+			const char *level,
+			const QString &title,
+			const QString &text,
+			QMessageBox::StandardButton defaultButton)
+	{
+		qWarning().noquote() << QStringLiteral("%1 (headless, no user to ask): %2 -- %3")
+								.arg(QString::fromLatin1(level), title, text);
+		return defaultButton;
+	}
+}
+
 /**
 	@see Documentation Qt pour QMessageBox::critical
 */
@@ -27,6 +57,9 @@ QMessageBox::StandardButton QET::QetMessageBox::critical (
 		QMessageBox::StandardButtons buttons,
 		QMessageBox::StandardButton defaultButton)
 {
+	if (!QET::isInteractive())
+		return answerWithoutUser("critical", title, text, defaultButton);
+
 #ifdef Q_OS_MACOS
 	QMessageBox message_box(
 				QMessageBox::Critical,
@@ -59,6 +92,9 @@ QMessageBox::StandardButton QET::QetMessageBox::information(
 		QMessageBox::StandardButtons buttons,
 		QMessageBox::StandardButton defaultButton)
 {
+	if (!QET::isInteractive())
+		return answerWithoutUser("information", title, text, defaultButton);
+
 #ifdef Q_OS_MACOS
 	QMessageBox message_box(
 				QMessageBox::Information,
@@ -91,6 +127,9 @@ QMessageBox::StandardButton QET::QetMessageBox::question (
 		QMessageBox::StandardButtons buttons,
 		QMessageBox::StandardButton defaultButton)
 {
+	if (!QET::isInteractive())
+		return answerWithoutUser("question", title, text, defaultButton);
+
 #ifdef Q_OS_MACOS
 	QMessageBox message_box(
 				QMessageBox::Question,
@@ -123,6 +162,9 @@ QMessageBox::StandardButton QET::QetMessageBox::warning (
 		QMessageBox::StandardButtons buttons,
 		QMessageBox::StandardButton defaultButton)
 {
+	if (!QET::isInteractive())
+		return answerWithoutUser("warning", title, text, defaultButton);
+
 #ifdef Q_OS_MACOS
 	QMessageBox message_box(
 				QMessageBox::Warning,

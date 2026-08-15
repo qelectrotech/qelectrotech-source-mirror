@@ -713,6 +713,30 @@ bool QET::eachStrIsEqual(const QStringList &qsl) {
 	@param c QetCollection value to convert
 	@return The QetCollection enum value converted to a QString
 */
+namespace {
+		/// @see QET::setInteractive
+	bool interactive_mode = true;
+}
+
+/**
+	@brief QET::setInteractive
+	@param interactive : false to suppress every blocking user prompt.
+	Set once, early, from the headless command-line path.
+*/
+void QET::setInteractive(bool interactive)
+{
+	interactive_mode = interactive;
+}
+
+/**
+	@brief QET::isInteractive
+	@return true when there is a user available to answer a prompt.
+*/
+bool QET::isInteractive()
+{
+	return interactive_mode;
+}
+
 QString QET::qetCollectionToString(const QET::QetCollection &c)
 {
 	switch (c)

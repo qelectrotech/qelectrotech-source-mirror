@@ -127,6 +127,11 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			// runs on a background thread referencing the project and races the
 			// process exit (intermittent segfault in QET::writeToFile).
 			QETProject::setBackupEnabled(false);
+			// Nobody is watching a headless run, so a modal prompt has no way
+			// to be answered and blocks the process forever. Suppress them:
+			// QET::QetMessageBox reports the question on stderr and returns
+			// the caller's default instead of opening a dialog.
+			QET::setInteractive(false);
 			return CLIExport::run(export_app.arguments());
 		}
 	}

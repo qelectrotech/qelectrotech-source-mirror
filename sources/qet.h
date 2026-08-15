@@ -155,7 +155,21 @@ namespace QET {
 
 	QString qetCollectionToString (const QetCollection &c);
 	QetCollection qetCollectionFromString (const QString &str);
-	
+
+		/**
+			Interactive mode. True by default; set false for headless runs
+			(the command-line export path in main.cpp).
+
+			When false, the QET::QetMessageBox helpers do not open a dialog:
+			they report the question on stderr and return immediately. There
+			is nobody to answer a modal in a headless run, so any that opens
+			blocks the process forever -- a whole class of "the CLI hangs"
+			bugs. Query it before any other blocking prompt you add.
+		*/
+	void setInteractive(bool interactive);
+	bool isInteractive();
+
+
 	bool lineContainsPoint(const QLineF &, const QPointF &);
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
 	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
