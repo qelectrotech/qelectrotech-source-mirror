@@ -89,6 +89,9 @@ class DynamicElementTextItem : public DiagramTextItem
 		Element *parentElement() const;
 		/// PDF export: slave cross-reference text item ("(folio-pos)") and its master target.
 		QGraphicsTextItem *slaveXrefItem() const { return m_slave_Xref_item; }
+		/// DXF export: the master-side cross-reference item (the table/cross
+		/// drawn next to a report/master element), if this text item has one.
+		CrossRefItem *masterXrefItem() const { return m_Xref_item; }
 		Element *masterElement() const { return m_master_element.data(); }
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
