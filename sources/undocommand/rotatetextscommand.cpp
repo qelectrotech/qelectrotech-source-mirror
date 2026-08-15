@@ -26,14 +26,33 @@
 #include "../qtextorientationspinboxwidget.h"
 
 /**
+	@brief RotateTextsCommand::hasSelectedTexts
+	@param diagram
+	@return true if @p diagram has at least one selected text or text group.
+	Lets a caller decide whether to ask the user for an angle at all, keeping
+	the previous behaviour where no dialog appeared for an empty selection.
+*/
+bool RotateTextsCommand::hasSelectedTexts(Diagram *diagram)
+{
+	if(!diagram)
+		return false;
+
+	DiagramContent dc(diagram);
+	return (!dc.selectedTexts().isEmpty() || !dc.selectedTextsGroup().isEmpty());
+}
+
+/**
 	@brief RotateTextsCommand::RotateTextsCommand
 	@param diagram : Apply the rotation to the selected texts and group of texts
-	of diagram at construction time. 
+	of diagram at construction time.
+	@param rotation : the angle to apply, in degrees. Obtain it from
+	askRotation() for interactive use; pass it directly from a test or script.
 	@param parent : undo parent
 */
-RotateTextsCommand::RotateTextsCommand(Diagram *diagram, QUndoCommand *parent) :
+RotateTextsCommand::RotateTextsCommand(Diagram *diagram, qreal rotation, QUndoCommand *parent) :
 QUndoCommand(parent),
-m_diagram(diagram)
+m_diagram(diagram),
+m_rotation(rotation)
 {
 	DiagramContent dc(m_diagram);
 	QList <DiagramTextItem *> texts_list;
@@ -53,8 +72,6 @@ m_diagram(diagram)
 	
 	if(texts_list.count() || groups_list.count())
 	{
-		openDialog();
-		
 		QString text;
 		if(texts_list.count())
 			text.append(QObject::tr("Pivoter %1 textes").arg(texts_list.count()));
@@ -85,9 +102,15 @@ void RotateTextsCommand::undo()
 	if(m_diagram)
 		m_diagram.data()->showMe();
 	
+		//Nothing was selected at construction time: there is no animation to
+		//run. QUndoStack::push() calls redo() before it discards an obsolete
+		//command, so this has to be survivable rather than assumed away.
+	if(!m_anim_group)
+		return;
+
 	m_anim_group->setDirection(QAnimationGroup::Backward);
 	m_anim_group->start();
-	
+
 	for(ConductorTextItem *cti : m_cond_texts.keys())
 		cti->forceRotateByUser(m_cond_texts.value(cti));
 }
@@ -97,14 +120,28 @@ void RotateTextsCommand::redo()
 	if(m_diagram)
 		m_diagram.data()->showMe();
 	
+	if(!m_anim_group)
+		return;
+
 	m_anim_group->setDirection(QAnimationGroup::Forward);
 	m_anim_group->start();
-	
+
 	for(ConductorTextItem *cti : m_cond_texts.keys())
 		cti->forceRotateByUser(true);
 }
 
-void RotateTextsCommand::openDialog()
+/**
+	@brief RotateTextsCommand::askRotation
+	Ask the user for an orientation.
+	@param rotation : set to the chosen angle when the dialog is accepted,
+	left untouched otherwise.
+	@return true if the user accepted, false if they cancelled.
+
+	Deliberately static and separate from the command: a QUndoCommand that
+	blocks on a modal in its constructor cannot be built by a test, a script,
+	or any headless caller.
+*/
+bool RotateTextsCommand::askRotation(qreal &rotation)
 {
 		//Open the dialog
 	QDialog ori_text_dialog;
@@ -129,10 +166,11 @@ void RotateTextsCommand::openDialog()
 	layout_v.addStretch();
 	layout_v.addWidget(&buttons);
 	
-	if (ori_text_dialog.exec() == QDialog::Accepted)
-		m_rotation = ori_widget->orientation();
-	else
-		setObsolete(true);
+	if (ori_text_dialog.exec() != QDialog::Accepted)
+		return false;
+
+	rotation = ori_widget->orientation();
+	return true;
 }
 
 void RotateTextsCommand::setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end)

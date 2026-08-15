@@ -1631,7 +1631,18 @@ void QETDiagramEditor::selectionGroupTriggered(QAction *action)
 			diagram->undoStack().push(c);
 	}
 	else if (value == "rotate_selected_text")
-		diagram->undoStack().push(new RotateTextsCommand(diagram));
+	{
+			//Ask for the angle first, then build the command: the command
+			//itself no longer opens a dialog. Guarding on the selection keeps
+			//the previous behaviour of showing no dialog when there is
+			//nothing to rotate.
+		if (RotateTextsCommand::hasSelectedTexts(diagram))
+		{
+			qreal rotation = 0;
+			if (RotateTextsCommand::askRotation(rotation))
+				diagram->undoStack().push(new RotateTextsCommand(diagram, rotation));
+		}
+	}
 	else if (value == "find_selected_element" && currentElement())
 		findElementInPanel(currentElement()->location());
 	else if (value == "edit_selected_element")
