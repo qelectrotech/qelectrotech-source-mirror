@@ -1202,7 +1202,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 				// Warn if the new element introduces slave contact groups
 				QDomElement new_kind = location.xml().firstChildElement("kindInformations");
 				if (!new_kind.firstChildElement("slaveContactGroups").isNull()) {
-					QMessageBox::StandardButton answer = QMessageBox::warning(nullptr,
+					QMessageBox::StandardButton answer = QET::QetMessageBox::warning(nullptr,
 						tr("Système de contacts modifié"),
 						tr("Le nouvel élément définit des groupes de contacts esclaves.\n"
 						   "Les éléments esclaves existants ne seront pas automatiquement "
