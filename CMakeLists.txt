@@ -150,7 +150,7 @@ endif()
 # fail with "Premature end of document".
 set_source_files_properties(
     ${TS_FILES}
-    PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang"
+    PROPERTIES OUTPUT_LOCATION "lang"
 )
 if(QT_VERSION_MAJOR EQUAL 6)
     if(Qt6_VERSION VERSION_LESS "6.2")
