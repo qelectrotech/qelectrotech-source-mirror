@@ -44,8 +44,7 @@
       "post-install": [
         "mv ${FLATPAK_DEST}/share/mime/packages/qelectrotech.xml ${FLATPAK_DEST}/share/mime/packages/org.qelectrotech.QElectroTech.xml"
       
-          ]
-        }
+         
       ]
     }
   ]
