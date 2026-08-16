@@ -63,18 +63,22 @@ if(BUILD_WITH_KF)
         GIT_REPOSITORY https://invent.kde.org/frameworks/extra-cmake-modules.git
         GIT_TAG        ${KF_GIT_TAG})
       FetchContent_MakeAvailable(ecm)
+      
+      list(APPEND CMAKE_PREFIX_PATH "${ecm_BINARY_DIR}" "${ecm_SOURCE_DIR}")
 
       FetchContent_Declare(
         kcoreaddons
         GIT_REPOSITORY https://invent.kde.org/frameworks/kcoreaddons.git
         GIT_TAG        ${KF_GIT_TAG})
       FetchContent_MakeAvailable(kcoreaddons)
+      
 
       FetchContent_Declare(
         kwidgetsaddons
         GIT_REPOSITORY https://invent.kde.org/frameworks/kwidgetsaddons.git
         GIT_TAG        ${KF_GIT_TAG})
       FetchContent_MakeAvailable(kwidgetsaddons)
+      
     endfunction()
     qet_make_kf_available()
   else()
