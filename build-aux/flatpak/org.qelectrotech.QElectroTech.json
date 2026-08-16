@@ -39,7 +39,9 @@
         "-DBUILD_WITH_KF=ON",
         "-DBUILD_KF=OFF",
         "-DPACKAGE_TESTS=OFF",
-        "-DBUILD_PUGIXML=OFF",
+        "-DBUILD_PUGIXML=ON",
+        "-DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+        "-DFETCHCONTENT_SOURCE_DIR_PUGIXML=/run/build/qelectrotech/pugixml",
         "-DQET_EXPORT_PROJECT_DB=ON"
       ],
       "post-install": [
