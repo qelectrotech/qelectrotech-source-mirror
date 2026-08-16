@@ -34,6 +34,7 @@
       "//sqlite-driver-note": "libqt6sql6-sqlite / libsqlite3-dev have no Flatpak build-depends equivalent either. QET_EXPORT_PROJECT_DB=ON assumes the KDE runtime ships the Qt6 SQLite plugin (libqsqlite.so) already built into QtSql — verified at Debian packaging time this needed an explicit runtime dep there (see debian/control). Test the in-app database export after building; if it silently fails, the runtime's QtSql plugin set needs checking, not a package to add here.",
       "buildsystem": "cmake",
       "config-opts": [
+        "-DCMAKE_INSTALL_PREFIX=/app",
         "-DQT_VERSION_MAJOR=6",
         "-DBUILD_WITH_KF=ON",
         "-DBUILD_KF=OFF",
