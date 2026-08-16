@@ -149,8 +149,7 @@ cp "$SOURCE_DIR/ico/breeze-icons/256x256/apps/"*.png \
   "$APPDIR/usr/share/icons/hicolor/256x256/apps/" 2>/dev/null || \
   echo "WARNING: no icons found under ico/breeze-icons/256x256/apps/" >&2
 
-mkdir -p "$APPDIR/usr/share"
-for dir in elements examples titleblocks lang; do
+for dir in elements examples titleblocks; do
   src="$SOURCE_DIR/$dir"
   if [ -d "$src" ]; then
     cp -r "$src" "$APPDIR/usr/share/"
@@ -158,6 +157,13 @@ for dir in elements examples titleblocks lang; do
     echo "WARNING: expected $src, not found -- skipping" >&2
   fi
 done
+
+mkdir -p "$APPDIR/usr/share/lang"
+if [ -d "$SOURCE_DIR/lang" ]; then
+  find "$SOURCE_DIR/lang" -maxdepth 1 -name "*.qm" -exec cp {} "$APPDIR/usr/share/lang/" \;
+else
+  echo "WARNING: expected $SOURCE_DIR/lang, not found -- skipping" >&2
+fi
 
 # ---------------------------------------------------------------------------
 # Deploy Qt dependencies via linuxdeploy + its Qt plugin
