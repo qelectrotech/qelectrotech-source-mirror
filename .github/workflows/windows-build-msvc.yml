@@ -1,0 +1,57 @@
+name: MSVC
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows-qt6:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          path: source
+
+      - name: Set up MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install Qt (MSVC)
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.10.0'
+          arch: 'win64_msvc2022_64'
+          
+      # 2.5 SQLite3         
+      - name: Install SQLite3 via vcpkg
+        run: vcpkg install sqlite3:x64-windows
+        
+      # 3. Configure and Build using Native CMake Steps
+      - name: Configure and build
+        shell: pwsh
+        run: |
+          $sourceDir = "${{ github.workspace }}\source"
+          $buildDir = "${{ github.workspace }}\build"
+
+          $cmakeArgs = @(
+            "-S", $sourceDir,
+            "-B", $buildDir,
+            "-G", "Ninja",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DQT_VERSION_MAJOR=6",
+            "-DBUILD_WITH_KF=OFF",
+            "-DBUILD_TESTING=OFF",
+            "-DCMAKE_POLICY_DEFAULT_CMP0077=NEW",
+            "-DCMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake",
+            "-DVCPKG_TARGET_TRIPLET=x64-windows"
+          )
+          cmake @cmakeArgs
+          cmake --build $buildDir
+
