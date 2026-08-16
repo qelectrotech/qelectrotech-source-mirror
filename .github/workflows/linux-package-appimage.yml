@@ -22,9 +22,9 @@ jobs:
       matrix:
         include:
           - arch: x86_64
-            os: ubuntu-22.04
+            os: ubuntu-24.04
           - arch: aarch64
-            os: ubuntu-22.04-arm
+            os: ubuntu-24.04-arm
     env:
       # linuxdeploy and its Qt plugin ship as AppImages themselves, which
       # normally need FUSE to mount and run directly -- GitHub-hosted
