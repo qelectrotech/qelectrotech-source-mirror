@@ -158,11 +158,20 @@ bool EdzPart::parse(const QString &part_xml_path)
 		return false;
 	}
 	QDomDocument doc;
+#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0) // TODO Qt 6.5: remove
 	QString parse_err;
 	int line = 0, col = 0;
 	if (!doc.setContent(&file, &parse_err, &line, &col)) {
 		m_error = QStringLiteral("Malformed part.xml (line %1): %2")
 				  .arg(line).arg(parse_err);
+#else
+	const auto result = doc.setContent(&file);
+	if (!result) {
+		m_error = QStringLiteral("Malformed part.xml (line %1, column %2): %3")
+				  .arg(result.errorLine)
+				  .arg(result.errorColumn)
+				  .arg(result.errorMessage);
+#endif
 		return false;
 	}
 	file.close();
