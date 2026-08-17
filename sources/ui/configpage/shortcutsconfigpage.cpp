@@ -33,6 +33,15 @@
 #include <algorithm>
 #include <utility>
 
+namespace {
+/// Key a shortcut for conflict detection: two actions collide only when they
+/// share a sequence *within the same category*. See FINDINGS / upstream #757.
+QString conflictKey(const QString &category, const QString &sequence)
+{
+	return category + QLatin1Char('\x1f') + sequence;
+}
+}
+
 /**
 	@brief ShortcutsConfigPage::ShortcutsConfigPage
 	@param parent
@@ -124,7 +133,7 @@ void ShortcutsConfigPage::populateTable()
 		connect(reset_button, &QToolButton::clicked, this, [this, row]() { resetRow(row); });
 		m_table->setCellWidget(row, 3, reset_button);
 
-		m_rows << Row{info.id, info.default_sequence, edit};
+		m_rows << Row{info.id, info.category, info.default_sequence, edit};
 	}
 
 	checkConflicts();
@@ -152,18 +161,27 @@ void ShortcutsConfigPage::filterRows(const QString &filter_text)
 */
 void ShortcutsConfigPage::checkConflicts()
 {
+	// Scope the comparison to the category, not the whole registry.
+	// QElectroTech deliberately registers one key per editor window --
+	// Undo/Redo/New/Open/Save and Ctrl+Shift+S each exist three times, once
+	// for the diagram, element and titleblock editors -- and those are not
+	// collisions: they act on different windows. Comparing globally flagged
+	// 60 of the 95 shipped defaults as conflicts, which made the indicator
+	// meaningless. The category is the registry's existing per-window
+	// grouping, so it is the scope key.
 	QHash<QString, QList<int>> sequence_to_rows;
 	for (int row = 0; row < m_rows.size(); ++row) {
 		const QString sequence_text = m_rows.at(row).edit->keySequence().toString();
 		if (!sequence_text.isEmpty()) {
-			sequence_to_rows[sequence_text] << row;
+			sequence_to_rows[conflictKey(m_rows.at(row).category, sequence_text)] << row;
 		}
 	}
 
 	for (int row = 0; row < m_rows.size(); ++row) {
 		const Row &current_row = m_rows.at(row);
 		const QString sequence_text = current_row.edit->keySequence().toString();
-		const QList<int> &conflicting_rows = sequence_to_rows.value(sequence_text);
+		const QList<int> &conflicting_rows =
+				sequence_to_rows.value(conflictKey(current_row.category, sequence_text));
 		const bool conflicted = !sequence_text.isEmpty() && conflicting_rows.size() > 1;
 
 		QTableWidgetItem *description_item = m_table->item(row, 1);
