@@ -25,6 +25,9 @@ add_definitions(-DQET_ALLOW_OVERRIDE_CTBTD_OPTION)
 # Comment the line below to deactivate the --config-dir option
 add_definitions(-DQET_ALLOW_OVERRIDE_CD_OPTION)
 
+# Comment the line below to deactivate the --data-dir option
+add_definitions(-DQET_ALLOW_OVERRIDE_DD_OPTION)
+
 # Enable project database export when requested by the build system.
 option(QET_EXPORT_PROJECT_DB "Enable project database export" OFF)
 
