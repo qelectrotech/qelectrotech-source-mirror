@@ -53,6 +53,7 @@ class ShortcutsConfigPage : public ConfigPage
 	private:
 		struct Row {
 			QString id;
+			QString category;
 			QKeySequence default_sequence;
 			QKeySequenceEdit *edit;
 		};
