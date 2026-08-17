@@ -20,8 +20,8 @@ message(" - paths_compilation_installation")
 
 if(UNIX AND NOT APPLE)
   # for Linux, BSD, Solaris, Minix
-  set(COMPIL_PREFIX               "/usr/local/")
-  set(INSTALL_PREFIX              "/usr/local/")
+  set(COMPIL_PREFIX               "${CMAKE_INSTALL_PREFIX}/")
+  set(INSTALL_PREFIX              "${CMAKE_INSTALL_PREFIX}/")
   set(QET_BINARY_PATH             "bin/")
   set(QET_COMMON_COLLECTION_PATH  "share/qelectrotech/elements/")
   set(QET_COMMON_TBT_PATH         "share/qelectrotech/titleblocks/")
