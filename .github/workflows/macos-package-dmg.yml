@@ -1,4 +1,4 @@
-name: macOS Package
+name: Package macOs DMG
 
 on:
   workflow_call:

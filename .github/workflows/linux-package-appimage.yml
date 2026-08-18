@@ -1,4 +1,4 @@
-name: AppImage Package
+name: Package AppImage
 
 on:
   workflow_call:
@@ -60,7 +60,7 @@ jobs:
         with:
           name: qelectrotech-appimage-${{ matrix.arch }}
           path: |
-            *.AppImage
-            *.AppImage-SHA256.txt
+            source/*.AppImage
+            source/*.AppImage-SHA256.txt
           retention-days: 40
           if-no-files-found: error

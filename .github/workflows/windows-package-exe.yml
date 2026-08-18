@@ -1,4 +1,4 @@
-name: Windows Build
+name: Package Windows Exe and Portable
 
 on:
   workflow_call:
@@ -15,6 +15,7 @@ jobs:
   # Job 1: Qt5 build (stable track)
   # =============================================================================
   build-windows:
+    name: Package Exe and Portable with WiX v7 (Qt5)
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -371,6 +372,7 @@ jobs:
   # QetVersion::currentVersion() or making the binary self-detect its Qt build.
   # =============================================================================
   build-windows-qt6:
+    name: Package Exe and Portable with WiX v7 (Qt5)  
     runs-on: windows-latest
     steps:
       - name: Checkout code

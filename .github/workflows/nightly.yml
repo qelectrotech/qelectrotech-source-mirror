@@ -11,22 +11,28 @@ on:
 
 jobs:
   build-macos:
+    name: Build MacOS DMG
     uses: ./.github/workflows/macos-package-dmg.yml
     secrets: inherit
 
   build-appimage:
+    name: Build Linux AppImage
     uses: ./.github/workflows/linux-package-appimage.yml
     secrets: inherit
     
   build-windows-exe:
+    name: Build Windows Exe/Portable
     uses: ./.github/workflows/windows-package-exe.yml
     secrets: inherit
     
   build-windows-msi:
+    name: Build Windows MSI
+    needs: build-windows-exe    
     uses: ./.github/workflows/windows-package-msi.yml
     secrets: inherit
 
   publish-nightly:
+    name: Upload all nightly builds to github page and update HTML
     needs: [build-macos, build-appimage, build-windows-exe, build-windows-msi]
     runs-on: ubuntu-latest
     # Ne tourne que sur push master (pas sur les PRs)

@@ -1,4 +1,4 @@
-name: Windows MSI (WiX v7)
+name: Package Windows MSI (WiX v7)
 
 on:
   # Triggered automatically after a successful Windows build on master
@@ -14,18 +14,19 @@ on:
         description: "Run ID of 'Windows Build' (leave empty for automatic)"
         required: false
         default: ""
+        
 concurrency:
   group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
   
 jobs:
   build-msi:
-    name: Build MSI with WiX v7 (${{ matrix.flavor }})
+    name: Package MSI with WiX v7 (${{ matrix.flavor }})
     runs-on: windows-latest
     # Only runs if Windows Build succeeded (or triggered manually)
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
+    # if: >
+    #  github.event_name == 'workflow_dispatch' ||
+    #  github.event.workflow_run.conclusion == 'success'
 
     strategy:
       fail-fast: false
