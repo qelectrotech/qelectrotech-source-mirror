@@ -19,7 +19,6 @@
 
 #include <QPainter>
 #include <QHash>
-#include <QUuid>
 
 namespace TerminalStripDrawer {
 

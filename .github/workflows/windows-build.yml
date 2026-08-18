@@ -116,7 +116,7 @@ jobs:
             -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DQET_EXPORT_PROJECT_DB=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
@@ -464,7 +464,7 @@ jobs:
             -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DQET_EXPORT_PROJECT_DB=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \

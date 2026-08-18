@@ -22,8 +22,10 @@
 #include "exportpropertieswidget.h"
 #include "factory/elementpicturefactory.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "dxfpaintdevice.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/crossrefitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -467,6 +469,12 @@ void ExportDialog::generateDxf(
 		//as plain QGraphicsTextItem children, so neither cast below picks them
 		//up and they were missing from the DXF entirely.
 	QList<QGraphicsTextItem *> list_xref_texts;
+		//Master-side cross-reference item (the table/cross drawn next to a
+		//report/master element). It paints itself with hand-written
+		//QPainter code across three modes (drawAsCross/drawAsContacts/
+		//drawAsPlcTable), so instead of hand-porting each one it's replayed
+		//through DxfPaintEngine, which reuses paint() unmodified.
+	QList<CrossRefItem *> list_master_xrefs;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
@@ -493,6 +501,8 @@ void ExportDialog::generateDxf(
 			}
 		} else if (QetGraphicsTableItem *gti = qgraphicsitem_cast<QetGraphicsTableItem *>(qgi)) {
 			list_tables << gti;
+		} else if (CrossRefItem *xref = qgraphicsitem_cast<CrossRefItem *>(qgi)) {
+			list_master_xrefs << xref;
 		}
 	}
 
@@ -720,6 +730,18 @@ void ExportDialog::generateDxf(
 			x += offset * xdir;
 			y -= offset * ydir;
 		}
+	}
+
+	//Draw the master-side cross-reference items (table/cross), replaying
+	//their existing paint() unmodified through DxfPaintEngine instead of
+	//hand-porting drawAsCross()/drawAsContacts()/drawAsPlcTable().
+	for (CrossRefItem *xref : std::as_const(list_master_xrefs))
+	{
+		DxfPaintDevice dxf_device(file_path);
+		QPainter painter(&dxf_device);
+		painter.setWorldTransform(xref->sceneTransform());
+		xref->paintForExport(&painter);
+		painter.end();
 	}
 
 	Createdxf::dxfEnd(file_path);
