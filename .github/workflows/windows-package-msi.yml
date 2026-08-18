@@ -14,7 +14,10 @@ on:
         description: "Run ID of 'Windows Build' (leave empty for automatic)"
         required: false
         default: ""
-
+concurrency:
+  group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
 jobs:
   build-msi:
     name: Build MSI with WiX v7 (${{ matrix.flavor }})

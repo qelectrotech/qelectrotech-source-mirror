@@ -33,6 +33,8 @@ jobs:
     if: github.event_name != 'pull_request'    
     permissions:
       contents: write
+      pages: write
+      id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -51,14 +53,6 @@ jobs:
           prerelease: true
           files: artifacts/*    
 
-  deploy-pages:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-
-    steps:
       - name: Checkout master (for generate-page.py)
         uses: actions/checkout@v7
         with:
