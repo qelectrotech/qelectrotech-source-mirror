@@ -1,12 +1,13 @@
 name: macOS Package
 
 on:
+  workflow_call:
   workflow_dispatch:
   # Temporarily also on push/PR while this is actively being iterated on --
   # dial back to workflow_dispatch + a nightly schedule once it's proven.
-  pull_request:
-  push:
-    branches: [master]
+  # pull_request:
+  # push:
+  #  branches: [master]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

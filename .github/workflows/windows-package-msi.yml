@@ -2,10 +2,11 @@ name: Windows MSI (WiX v7)
 
 on:
   # Triggered automatically after a successful Windows build on master
-  workflow_run:
-    workflows: ["Windows Build"]
-    types: [completed]
-    branches: [master]
+  workflow_call:  
+  # workflow_run:
+  #  workflows: ["Windows Build"]
+  #  types: [completed]
+  #  branches: [master]
   # Manual trigger still available (e.g. for a specific run_id)
   workflow_dispatch:
     inputs:
