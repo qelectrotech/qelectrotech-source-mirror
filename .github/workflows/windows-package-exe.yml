@@ -6,15 +6,14 @@ on:
   #  - cron: '0 2 1 * *' #
   #workflow_dispatch:       # Manual trigger available at any time
 
-concurrency:
-  group: windows-package-exe-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   # =============================================================================
   # Job 1: Qt5 build (stable track)
   # =============================================================================
   build-windows:
+    concurrency:
+      group: windows-package-exe-qt5-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true  
     name: Package Exe and Portable with WiX v7 (Qt5)
     runs-on: windows-latest
     steps:
@@ -372,7 +371,10 @@ jobs:
   # QetVersion::currentVersion() or making the binary self-detect its Qt build.
   # =============================================================================
   build-windows-qt6:
-    name: Package Exe and Portable with WiX v7 (Qt5)  
+    concurrency:
+      group: windows-package-exe-qt6-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true    
+    name: Package Exe and Portable with WiX v7 (Qt6)  
     runs-on: windows-latest
     steps:
       - name: Checkout code

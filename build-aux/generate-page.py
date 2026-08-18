@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
 """
 generate-page.py — Generates gh-pages/index.html for QElectroTech nightly builds.
-Called from windows-msi.yml deploy-pages job.
+
+Called from nightly.yml
+
 Environment variables required:
   DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER,
   INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
+
 Optional (Qt6 experimental track — omitted entirely if empty):
   INSTALLER_QT6_URL, PORTABLE_QT6_URL, MSI_QT6_URL
+
+Optional (macOS — Qt5 and Qt6 tracks, each omitted entirely if empty):
+  DMG_ARM64_URL, DMG_X8664_URL
+  DMG_ARM64_QT6_URL, DMG_X8664_QT6_URL
+
+Optional (Linux AppImage — Qt6 only, no Qt5 track exists):
+  APPIMAGE_X8664_QT6_URL, APPIMAGE_AARCH64_QT6_URL
 """
 import os
 
@@ -16,13 +26,23 @@ repo         = os.environ.get("REPO", "")
 sha          = os.environ.get("SHA", "")
 run_url      = os.environ.get("RUN_URL", "")
 run_number   = os.environ.get("RUN_NUMBER", "")
+
 installer_url = os.environ.get("INSTALLER_URL", "")
 portable_url  = os.environ.get("PORTABLE_URL", "")
 msi_url       = os.environ.get("MSI_URL", "")
 
+dmg_arm64_url  = os.environ.get("DMG_ARM64_URL", "")
+dmg_x8664_url  = os.environ.get("DMG_X8664_URL", "")
+
 installer_qt6_url = os.environ.get("INSTALLER_QT6_URL", "")
 portable_qt6_url  = os.environ.get("PORTABLE_QT6_URL", "")
 msi_qt6_url       = os.environ.get("MSI_QT6_URL", "")
+
+appimage_aarch64_qt6_url = os.environ.get("APPIMAGE_AARCH64_QT6_URL", "")
+appimage_x8664_qt6_url   = os.environ.get("APPIMAGE_X8664_QT6_URL", "")
+
+dmg_arm64_qt6_url  = os.environ.get("DMG_ARM64_QT6_URL", "")
+dmg_x8664_qt6_url  = os.environ.get("DMG_X8664_QT6_URL", "")
 
 msi_block = ""
 if msi_url:
@@ -42,6 +62,7 @@ if installer_qt6_url or portable_qt6_url or msi_qt6_url:
 <span class="btn-icon">&#11015;</span>
 <span class="btn-text">Windows Installer .msi (Qt6)<small>.msi &mdash; experimental, for enterprise / GPO deployment</small></span>
 </a>"""
+
     qt6_installer_btn = ""
     if installer_qt6_url:
         qt6_installer_btn = f"""
@@ -49,6 +70,7 @@ if installer_qt6_url or portable_qt6_url or msi_qt6_url:
 <span class="btn-icon">&#11015;</span>
 <span class="btn-text">Windows Installer (Qt6)<small>.exe &mdash; experimental, includes all dependencies</small></span>
 </a>"""
+
     qt6_portable_btn = ""
     if portable_qt6_url:
         qt6_portable_btn = f"""
@@ -69,6 +91,100 @@ edges; please report issues and mention &quot;Qt6&quot; explicitly.
 {qt6_installer_btn}
 {qt6_msi_btn}
 {qt6_portable_btn}
+</div>
+</div>"""
+
+# --- macOS Qt5 (stable track) -------------------------------------------
+macos_arm64_btn = ""
+if dmg_arm64_url:
+    macos_arm64_btn = f"""
+<a class="btn btn-primary" href="{dmg_arm64_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">macOS Apple Silicon (arm64)<small>.dmg &mdash; for M1/M2/M3/M4 Macs</small></span>
+</a>"""
+
+macos_x8664_btn = ""
+if dmg_x8664_url:
+    macos_x8664_btn = f"""
+<a class="btn btn-secondary" href="{dmg_x8664_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">macOS Intel (x86_64)<small>.dmg &mdash; for Intel-based Macs</small></span>
+</a>"""
+
+macos_block = ""
+if dmg_arm64_url or dmg_x8664_url:
+    macos_block = f"""
+<div class="card">
+<h2>&#127838; macOS &mdash; Qt5 track</h2>
+<div class="downloads">
+{macos_arm64_btn}
+{macos_x8664_btn}
+</div>
+</div>"""
+
+# --- macOS Qt6 (experimental track) --------------------------------------
+macos_qt6_arm64_btn = ""
+if dmg_arm64_qt6_url:
+    macos_qt6_arm64_btn = f"""
+<a class="btn btn-primary" href="{dmg_arm64_qt6_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">macOS Apple Silicon (arm64), Qt6<small>.dmg &mdash; experimental, for M1/M2/M3/M4 Macs</small></span>
+</a>"""
+
+macos_qt6_x8664_btn = ""
+if dmg_x8664_qt6_url:
+    macos_qt6_x8664_btn = f"""
+<a class="btn btn-secondary" href="{dmg_x8664_qt6_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">macOS Intel (x86_64), Qt6<small>.dmg &mdash; experimental, for Intel-based Macs</small></span>
+</a>"""
+
+macos_qt6_block = ""
+if dmg_arm64_qt6_url or dmg_x8664_qt6_url:
+    macos_qt6_block = f"""
+<div class="card">
+<h2>&#127838; macOS &mdash; Qt6 track</h2>
+<div class="warning">
+&#9888;&#65039; <strong>Experimental.</strong> These Qt6-based DMGs are new and not as
+thoroughly tested as the Qt5 track above. Expect rough edges; please report issues
+and mention &quot;Qt6&quot; explicitly.
+</div>
+<div class="downloads">
+{macos_qt6_arm64_btn}
+{macos_qt6_x8664_btn}
+</div>
+</div>"""
+
+# --- AppImage (Linux, Qt6 only -- no stable/Qt5 track exists) -----------
+appimage_x8664_btn = ""
+if appimage_x8664_qt6_url:
+    appimage_x8664_btn = f"""
+<a class="btn btn-primary" href="{appimage_x8664_qt6_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux x86_64 AppImage<small>.AppImage &mdash; chmod +x and run, no installation required</small></span>
+</a>"""
+
+appimage_aarch64_btn = ""
+if appimage_aarch64_qt6_url:
+    appimage_aarch64_btn = f"""
+<a class="btn btn-secondary" href="{appimage_aarch64_qt6_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux aarch64 AppImage<small>.AppImage &mdash; chmod +x and run, no installation required</small></span>
+</a>"""
+
+appimage_block = ""
+if appimage_x8664_qt6_url or appimage_aarch64_qt6_url:
+    appimage_block = f"""
+<div class="card">
+<h2>&#128039; Linux &mdash; AppImage (Qt6)</h2>
+<div class="warning">
+&#9888;&#65039; <strong>Experimental.</strong> QElectroTech's AppImage builds are Qt6-only
+and newer than the Windows/macOS Qt5 tracks. Expect rough edges; please report issues
+and mention &quot;AppImage&quot; explicitly.
+</div>
+<div class="downloads">
+{appimage_x8664_btn}
+{appimage_aarch64_btn}
 </div>
 </div>"""
 
@@ -108,7 +224,7 @@ footer a{{color:#718096;text-decoration:none}}
 <body>
 <header>
 <h1>&#9889; QElectroTech</h1>
-<p>Nightly Windows Builds</p>
+<p>Nightly Builds</p>
 </header>
 <main>
 <div class="card">
@@ -144,6 +260,9 @@ For production use, download a <a href="https://github.com/{repo}/releases">stab
 </div>
 </div>
 {qt6_block}
+{macos_block}
+{macos_qt6_block}
+{appimage_block}
 </main>
 <footer>
 Auto-generated by GitHub Actions &nbsp;&middot;&nbsp;
@@ -156,4 +275,5 @@ Auto-generated by GitHub Actions &nbsp;&middot;&nbsp;
 os.makedirs("gh-pages", exist_ok=True)
 with open("gh-pages/index.html", "w", encoding="utf-8") as f:
     f.write(html)
+
 print("index.html written OK")

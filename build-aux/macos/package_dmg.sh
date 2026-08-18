@@ -82,7 +82,7 @@ VERSION="$(cat "$SOURCE_DIR/sources/qetversion.cpp" | grep "return QVersionNumbe
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
 
 
-DMG_NAME="${APPNAME}-${VERSION}-r${HEAD}-${ARCH}.dmg"
+DMG_NAME="${APPNAME}-${VERSION}-r${HEAD}-${ARCH}$([ "$QT_VERSION_MAJOR" = "6" ] && echo "-qt6").dmg"
 
 echo "=== Packaging $APPNAME $VERSION r$HEAD ($ARCH, Qt$QT_VERSION_MAJOR) ==="
 echo "    sign=$DO_SIGN  notarize=$DO_NOTARIZE  non-interactive=$NON_INTERACTIVE"

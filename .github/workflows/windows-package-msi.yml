@@ -15,10 +15,6 @@ on:
         required: false
         default: ""
         
-concurrency:
-  group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-  
 jobs:
   build-msi:
     name: Package MSI with WiX v7 (${{ matrix.flavor }})
@@ -37,11 +33,17 @@ jobs:
             version_source: qetversion   # parsed from sources/qetversion.cpp
             label_suffix: ""
             experimental: false
+            concurrency:
+              group: windows-package-msi-qt5-${{ github.workflow }}-${{ github.ref }}
+              cancel-in-progress: true  
           - flavor: qt6
             portable_artifact: qelectrotech-windows-portable-qt6
             version_source: hardcoded    # see note in "Extract version" step
             label_suffix: "-qt6-EXPERIMENTAL"
             experimental: true
+            concurrency:
+              group: windows-package-msi-qt6-${{ github.workflow }}-${{ github.ref }}
+              cancel-in-progress: true  
 
     permissions:
       contents: write
