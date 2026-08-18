@@ -48,10 +48,6 @@ jobs:
       pages: write
       id-token: write  # Required by SignPath
 
-    outputs:
-      qt5_msi: ${{ steps.export.outputs.msi_name_qt5 }}
-      qt6_msi: ${{ steps.export.outputs.msi_name_qt6 }}
-
     steps:
       # ----------------------------------------------------------------
       # 1. Checkout (to retrieve QElectroTech.wxs and sources)
@@ -318,20 +314,6 @@ jobs:
           path: dist\*.msi
           retention-days: 40
           if-no-files-found: error
-
-      - name: Delete old nightly .msi asset for this flavor
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6-EXPERIMENTAL.*\\.msi$" } else { "\\.msi$" }
-          $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
-          foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
-            if ("${{ matrix.flavor }}" -eq "qt5" -and $name -match "-qt6-EXPERIMENTAL") { continue }
-            Write-Host "Deleting old asset: $name"
-            gh release delete-asset nightly $name --repo $env:REPO --yes
-          }
-        shell: pwsh
 
       - name: Summary
         if: always()
