@@ -81,8 +81,12 @@ APPNAME="QElectroTech"
 VERSION="$(cat "$SOURCE_DIR/sources/qetversion.cpp" | grep "return QVersionNumber{" | head -n 1 | awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')"
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
 
+QT_SUFFIX=""
+if [ "$QT_VERSION_MAJOR" = "6" ]; then
+  QT_SUFFIX="-qt6"
+fi
 
-DMG_NAME="${APPNAME}-${VERSION}-r${HEAD}-${ARCH}$([ "$QT_VERSION_MAJOR" = "6" ] && echo "-qt6").dmg"
+DMG_NAME="${APPNAME}-${VERSION}-r${HEAD}-${ARCH}${QT_SUFFIX}.dmg"
 
 echo "=== Packaging $APPNAME $VERSION r$HEAD ($ARCH, Qt$QT_VERSION_MAJOR) ==="
 echo "    sign=$DO_SIGN  notarize=$DO_NOTARIZE  non-interactive=$NON_INTERACTIVE"
