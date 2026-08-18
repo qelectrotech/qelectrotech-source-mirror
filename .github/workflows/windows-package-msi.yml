@@ -328,26 +328,6 @@ jobs:
           }
         shell: pwsh
 
-      - name: Upload MSI to nightly release
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: nightly
-          files: dist/*.msi
-          fail_on_unmatched_files: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Export MSI name for page generation
-        id: export
-        shell: pwsh
-        run: |
-          $name = "$env:MSI_NAME"
-          if ("${{ matrix.flavor }}" -eq "qt6") {
-            echo "msi_name_qt6=$name" >> $env:GITHUB_OUTPUT
-          } else {
-            echo "msi_name_qt5=$name" >> $env:GITHUB_OUTPUT
-          }
-
       - name: Summary
         if: always()
         shell: pwsh
@@ -356,79 +336,4 @@ jobs:
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
           Write-Host "Experimental : ${{ matrix.experimental }}"
 
-  # ---------------------------------------------------------------------------
-  # Job 2 : Génère et déploie la page GitHub Pages une fois les DEUX MSI
-  # (Qt5 + Qt6) publiés, pour que toutes les URLs soient connues.
-  # ---------------------------------------------------------------------------
-  deploy-pages:
-    needs: build-msi
-    runs-on: ubuntu-latest
-    if: always() && needs.build-msi.result == 'success'
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
 
-    steps:
-      - name: Checkout master (for generate-page.py)
-        uses: actions/checkout@v7
-        with:
-          ref: master
-          path: source
-          sparse-checkout: build-aux/generate-page.py
-          sparse-checkout-cone-mode: false
-
-      - name: Generate download page (index.html)
-        shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          REPO="${{ github.repository }}"
-
-          ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
-
-          EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1)
-          ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1)
-          MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
-
-          EXE_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1 || echo "")
-          ZIP_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
-          MSI_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
-
-          BASE="https://github.com/$REPO/releases/download/nightly"
-          INSTALLER_URL="$BASE/$EXE_NAME"
-          PORTABLE_URL="$BASE/$ZIP_NAME"
-          MSI_URL=""
-          [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
-
-          INSTALLER_QT6_URL=""
-          PORTABLE_QT6_URL=""
-          MSI_QT6_URL=""
-          [ -n "$EXE_QT6_NAME" ] && INSTALLER_QT6_URL="$BASE/$EXE_QT6_NAME"
-          [ -n "$ZIP_QT6_NAME" ] && PORTABLE_QT6_URL="$BASE/$ZIP_QT6_NAME"
-          [ -n "$MSI_QT6_NAME" ] && MSI_QT6_URL="$BASE/$MSI_QT6_NAME"
-
-          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
-          SHORT="${SHA:0:7}"
-          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
-          RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
-          RUN_NUMBER="${{ github.run_number }}"
-
-          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
-          export INSTALLER_URL PORTABLE_URL MSI_URL
-          export INSTALLER_QT6_URL PORTABLE_QT6_URL MSI_QT6_URL
-
-          python3 source/build-aux/generate-page.py
-
-      - name: Add .nojekyll
-        shell: bash
-        run: touch gh-pages/.nojekyll
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: gh-pages/
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4

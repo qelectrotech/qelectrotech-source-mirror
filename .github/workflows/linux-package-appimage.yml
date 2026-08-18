@@ -55,10 +55,11 @@ jobs:
           ./build-aux/appimage/package_appimage.sh --arch=${{ matrix.arch }}
 
       - name: Upload AppImage artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-appimage-${{ matrix.arch }}
           path: |
-            source/*.AppImage
-            source/*.AppImage-SHA256.txt
+            *.AppImage
+            *.AppImage-SHA256.txt
+          retention-days: 40
           if-no-files-found: error

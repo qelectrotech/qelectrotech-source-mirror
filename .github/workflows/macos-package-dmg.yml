@@ -71,8 +71,11 @@ jobs:
           ./build-aux/macos/package_dmg.sh $ARGS          
 
       - name: Upload DMG artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-macos-${{ matrix.arch }}-qt${{ matrix.qt_version }}
           path: "*.dmg"
           if-no-files-found: error
+          retention-days: 40
+          
+
