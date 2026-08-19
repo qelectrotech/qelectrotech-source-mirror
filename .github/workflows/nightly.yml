@@ -74,10 +74,9 @@ jobs:
             > 🧪 **Qt6 builds are experimental.** Files tagged `-qt6-` are built against Qt6 and are not yet
             > as tested as the Qt5 track. Expect rough edges; report issues clearly labelled "Qt6".
 
-      - name: Checkout master (for generate-page.py)
+      - name: Checkout code (for generate-page.py)
         uses: actions/checkout@v7
         with:
-          ref: master
           path: source
           sparse-checkout: build-aux/generate-page.py
           sparse-checkout-cone-mode: false
