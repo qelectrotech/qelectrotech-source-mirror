@@ -324,17 +324,20 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 
 			//Dimensions
 			QHash <QetShapeItem *, QRectF> rect_H;
-			for (QPointer<QetShapeItem> qsi : m_shapes_list)
+			if (ui->m_width_dsb->value() > 0 && ui->m_height_dsb->value() > 0)
 			{
-				if (qsi->shapeType() != QetShapeItem::Rectangle && qsi->shapeType() != QetShapeItem::Ellipse)
-					continue;
-
-				QRectF r = qsi->rect().normalized();
-				if (!qFuzzyCompare(ui->m_width_dsb->value(), r.width())
-					|| !qFuzzyCompare(ui->m_height_dsb->value(), r.height()))
+				for (QPointer<QetShapeItem> qsi : m_shapes_list)
 				{
-					rect_H.insert(qsi, QRectF(r.topLeft(),
-											   QSizeF(ui->m_width_dsb->value(), ui->m_height_dsb->value())));
+					if (qsi->shapeType() != QetShapeItem::Rectangle && qsi->shapeType() != QetShapeItem::Ellipse)
+						continue;
+
+					QRectF r = qsi->rect().normalized();
+					if (!qFuzzyCompare(ui->m_width_dsb->value(), r.width())
+						|| !qFuzzyCompare(ui->m_height_dsb->value(), r.height()))
+					{
+						rect_H.insert(qsi, QRectF(r.topLeft(),
+												   QSizeF(ui->m_width_dsb->value(), ui->m_height_dsb->value())));
+					}
 				}
 			}
 
