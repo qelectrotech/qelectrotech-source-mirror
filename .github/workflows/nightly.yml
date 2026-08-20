@@ -10,22 +10,69 @@ on:
 
 
 jobs:
+  verify-version:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify tag matches VERSION and VERSION_TYPE
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME#v}"
+          FILE_VERSION="$(tr -d '[:space:]' < VERSION)"
+          FILE_TYPE="$(tr -d '[:space:]' < VERSION_TYPE)"
+
+          if [[ "$TAG" == *-* ]]; then
+            TAG_VERSION="${TAG%%-*}"
+            TAG_TYPE="${TAG#*-}"
+          else
+            TAG_VERSION="$TAG"
+            TAG_TYPE="stable"
+          fi
+
+          if [ "$TAG_VERSION" != "$FILE_VERSION" ]; then
+            echo "::error::Tag version ($TAG_VERSION) does not match VERSION file ($FILE_VERSION)"
+            exit 1
+          fi
+          if [ "$TAG_TYPE" != "$FILE_TYPE" ]; then
+            echo "::error::Tag type ($TAG_TYPE) does not match VERSION_TYPE file ($FILE_TYPE)"
+            exit 1
+          fi
+          if [ "$FILE_TYPE" = "dev" ]; then
+            echo "::error::VERSION_TYPE is still 'dev' -- bump it before tagging a release"
+            exit 1
+          fi
+      - name: Determine prerelease status
+        id: release_type
+        run: |
+          TYPE="$(tr -d '[:space:]' < VERSION_TYPE)"
+          echo "prerelease=$([ "$TYPE" != "stable" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "tag_name=v$(tr -d '[:space:]' < VERSION)$([ "$TYPE" != "stable" ] && echo "-$TYPE")" >> "$GITHUB_OUTPUT"
+          
   build-macos:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')  
     name: Build MacOS DMG
     uses: ./.github/workflows/macos-package-dmg.yml
     secrets: inherit
 
   build-appimage:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')  
     name: Build Linux AppImage
     uses: ./.github/workflows/linux-package-appimage.yml
     secrets: inherit
     
   build-windows-exe:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')  
     name: Build Windows Exe/Portable
     uses: ./.github/workflows/windows-package-exe.yml
     secrets: inherit
     
   build-windows-msi:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
     name: Build Windows MSI
     needs: build-windows-exe    
     uses: ./.github/workflows/windows-package-msi.yml
@@ -159,3 +206,28 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v5
+  reset-version-type:
+    needs: [verify-version, publish-release]   # after the release actually succeeded
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: master
+
+      - name: Reset VERSION_TYPE to dev
+        run: |
+          set -euo pipefail
+          CURRENT="$(tr -d '[:space:]' < RELEASE)"
+          if [ "$CURRENT" = "dev" ]; then
+            echo "Already dev, nothing to do."
+            exit 0
+          fi
+          echo "dev" > RELEASE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add RELEASE
+          git commit -m "Reset VERSION_TYPE to dev after ${{ github.ref_name }} release"
+          git push origin master

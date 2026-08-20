@@ -11,19 +11,17 @@ grade: stable
 confinement: strict
 compression: lzo
 
-architectures:
-  - build-on: amd64
-    build-for: amd64
-  - build-on: arm64
-    build-for: arm64
+platforms:
+  amd64:
+  arm64:
 
 layout:
-  /usr/local/share/qelectrotech:
-    symlink: $SNAP/usr/local/share/qelectrotech
+  /usr/share/qelectrotech:
+    symlink: $SNAP/usr/share/qelectrotech
 
 apps:
   qelectrotech:
-    command: usr/local/bin/qelectrotech
+    command: usr/bin/qelectrotech
     common-id: qelectrotech.desktop
     extensions:
       - kde-neon-6
@@ -81,7 +79,7 @@ parts:
       - xdg-user-dirs
       # runtime pugixml — nom de paquet à vérifier sur core24/noble,
       # nécessaire car BUILD_PUGIXML=OFF lie contre la lib système
-      - libpugixml1v5
+      # - libpugixml1v5
       # libxcb-cursor0 workaround was needed against the Qt5/KF5 core22 content
       # snap (issue #373). Not yet re-verified against kf6-core24 — remove this
       # if the Qt6 xcb platform plugin loads cleanly without it.
@@ -96,11 +94,11 @@ parts:
       - qt6-base-private-dev
       - pkgconf
     override-build: |
+      set -eux
       displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
-      snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
-      modified_displayed_version="${snap_version}.snap"
+      modified_displayed_version="${displayed_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
-      craftctl set version="$snap_version"
+      craftctl set version="$displayed_version"
       cmake -G Ninja -B build -S "$CRAFT_PART_SRC" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
@@ -108,15 +106,15 @@ parts:
         -DBUILD_WITH_KF=ON \
         -DBUILD_KF=OFF \
         -DPACKAGE_TESTS=OFF \
-        -DBUILD_PUGIXML=OFF \
+        -DBUILD_PUGIXML=ON \
         -DQET_EXPORT_PROJECT_DB=ON
       ninja -C build -j${CRAFT_PARALLEL_BUILD_COUNT}
       DESTDIR="$CRAFT_PART_INSTALL" ninja -C build install
     override-stage: |
       craftctl default
       # patch desktop file with correct icon path
-      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g"
-      $SED_CMD usr/local/share/applications/org.qelectrotech.qelectrotech.desktop
+      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/share/icons/hicolor/128x128/apps/\1.png|g"
+      $SED_CMD usr/share/applications/org.qelectrotech.qelectrotech.desktop
 
   cleanup:
     after: [qelectrotech, qet-tb-generator]

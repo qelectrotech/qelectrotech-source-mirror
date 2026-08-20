@@ -19,11 +19,11 @@
 
 namespace QetVersion
 {
-	QetVersion::VersionType VERSION_TYPE = QetVersion::dev;
+	QetVersion::VersionType VERSION_TYPE = QetVersion::@QET_VERSION_TYPE@;
 
 	QVersionNumber currentVersion()
 	{
-		return QVersionNumber{ 0, 200, 1 };
+		return QVersionNumber{@PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@};
 	}
 
 	QString displayedVersion()

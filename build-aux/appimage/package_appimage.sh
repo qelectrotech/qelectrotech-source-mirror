@@ -64,9 +64,27 @@ APPDIR="$SOURCE_DIR/AppDir-$ARCH"
 TOOLS_DIR="$SOURCE_DIR/appimage-tools-$ARCH"
 APPNAME="QElectroTech"
 
-VERSION="$(cat "$SOURCE_DIR/sources/qetversion.cpp" | grep "return QVersionNumber{" | head -n 1 | awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')"
+VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/VERSION")"
+RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/RELEASE")"
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
-APPIMAGE_NAME="${APPNAME}-${VERSION}-r${HEAD}-${ARCH}.AppImage"
+
+case "$RELEASE" in
+  dev)
+    SUFFIX="-r${HEAD}"
+    ;;
+  alpha1|alpha2|alpha3)
+    SUFFIX="-${RELEASE}"
+    ;;
+  stable)
+    SUFFIX=""
+    ;;
+  *)
+    echo "ERROR: unrecognized RELEASE value '$RELEASE' (expected dev, alpha1, alpha2, alpha3, or stable)" >&2
+    exit 1
+    ;;
+esac
+
+APPIMAGE_NAME="${APPNAME}-${VERSION}${SUFFIX}-${ARCH}.AppImage"
 
 echo "=== Packaging $APPNAME $VERSION r$HEAD ($ARCH) ==="
 

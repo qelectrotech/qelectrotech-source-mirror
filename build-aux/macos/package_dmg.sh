@@ -74,19 +74,31 @@ BUILD_DIR="$SOURCE_DIR/build-macos-$ARCH"
 INSTALL_DIR="$SOURCE_DIR/install-macos-$ARCH"
 APPNAME="QElectroTech"
 
-# Matches the extraction logic Laurent's original script used --
-# sources/qetversion.cpp is the one place this project's version number is
-# actually defined at build time (see the discussion around merging this
-# with CMakeLists.txt's project() version, tracked separately).
-VERSION="$(cat "$SOURCE_DIR/sources/qetversion.cpp" | grep "return QVersionNumber{" | head -n 1 | awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')"
+QT_SUFFIX=""
+if [ "$QT_VERSION_MAJOR" = "5" ]; then
+  QT_SUFFIX="-qt5"
+fi
+VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/VERSION")"
+RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/RELEASE")"
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
 
-QT_SUFFIX=""
-if [ "$QT_VERSION_MAJOR" = "6" ]; then
-  QT_SUFFIX="-qt6"
-fi
+case "$RELEASE" in
+  dev)
+    SUFFIX="-r${HEAD}"
+    ;;
+  alpha1|alpha2|alpha3)
+    SUFFIX="-${RELEASE}"
+    ;;
+  stable)
+    SUFFIX=""
+    ;;
+  *)
+    echo "ERROR: unrecognized RELEASE value '$RELEASE' (expected dev, alpha1, alpha2, alpha3, or stable)" >&2
+    exit 1
+    ;;
+esac
 
-DMG_NAME="${APPNAME}-${VERSION}-r${HEAD}-${ARCH}${QT_SUFFIX}.dmg"
+DMG_NAME="${APPNAME}-${VERSION}${SUFFIX}-${ARCH}${QT_SUFFIX}.dmg"
 
 echo "=== Packaging $APPNAME $VERSION r$HEAD ($ARCH, Qt$QT_VERSION_MAJOR) ==="
 echo "    sign=$DO_SIGN  notarize=$DO_NOTARIZE  non-interactive=$NON_INTERACTIVE"

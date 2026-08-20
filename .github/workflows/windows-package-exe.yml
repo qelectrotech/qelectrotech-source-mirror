@@ -208,9 +208,7 @@ jobs:
           cp "$GITHUB_WORKSPACE/build-aux/windows/lang_extra_missing.nsh" "$NSIS_ROOT/"
           cp -r "$GITHUB_WORKSPACE/build-aux/windows/nsis_base/." "$NSIS_ROOT/"
 
-          curl -fsSL \
-            "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/misc/Lancer%20QET.bat" \
-            -o "$FILES/Lancer QET.bat"
+          cp "$GITHUB_WORKSPACE/misc/Lancer QET.bat" "$FILES/Lancer QET.bat"
           cp -r "$GITHUB_WORKSPACE/elements"    "$FILES/elements"    || true
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
@@ -238,30 +236,51 @@ jobs:
               || echo "  MISSING: $d/"
           done
 
-      - name: Extract version for installer name
+      - name: Extract version
         shell: msys2 {0}
         id: qet_version
         run: |
           set -euo pipefail
 
-          GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
+          VERSION=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/VERSION")
+          RELEASE=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/RELEASE")
 
+          GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)
           HEAD=$(( A + 473 ))
 
-          VERSION=$(grep 'return QVersionNumber{' "$GITHUB_WORKSPACE/sources/qetversion.cpp" \
-            | head -1 \
-            | awk -F '{' '{ print $2 }' \
-            | awk -F '}' '{ print $1 }' \
-            | sed -e 's/,/./g' -e 's/ //g')
-          [ -z "$VERSION" ] && VERSION="dev"
+          # dev        -> -r<rev>-<sha>  (nightly, no fixed tag exists)
+          # alpha1/2/3 -> -alpha1/2/3    (tagged, no hash needed)
+          # stable     -> nothing        (tagged, final release)
+          case "$RELEASE" in
+            dev)
+              SUFFIX="-r${HEAD}-${GITCOMMIT}"
+              VCS_TAG="+git${HEAD}"
+              ;;
+            alpha1|alpha2|alpha3)
+              SUFFIX="-${RELEASE}"
+              VCS_TAG=""
+              ;;
+            stable)
+              SUFFIX=""
+              VCS_TAG=""
+              ;;
+            *)
+              echo "ERROR: unrecognized RELEASE value '$RELEASE' (expected dev, alpha1, alpha2, alpha3, or stable)" >&2
+              exit 1
+              ;;
+          esac
 
-          FULL_VERSION="${VERSION}-r${HEAD}-${GITCOMMIT}_x86_64-win64"
+          FULL_VERSION="${VERSION}-qt5${SUFFIX}_x86_64-win64"
+          BASE_VERSION="${VERSION}-qt5"
+
           echo "version=$FULL_VERSION"      >> "$GITHUB_OUTPUT"
-          echo "base_version=$VERSION"      >> "$GITHUB_OUTPUT"
+          echo "base_version=$BASE_VERSION" >> "$GITHUB_OUTPUT"
+          echo "vcs_tag=$VCS_TAG"           >> "$GITHUB_OUTPUT"
           echo "gitcommit=$GITCOMMIT"       >> "$GITHUB_OUTPUT"
           echo "head=$HEAD"                 >> "$GITHUB_OUTPUT"
           echo "VERSION    : $VERSION"
+          echo "RELEASE    : $RELEASE"
           echo "GITCOMMIT  : $GITCOMMIT"
           echo "HEAD (rev) : $HEAD"
           echo "FULL       : $FULL_VERSION"
@@ -325,8 +344,8 @@ jobs:
         shell: pwsh
         run: |
           $version = "${{ steps.qet_version.outputs.base_version }}"
-          $head    = "${{ steps.qet_version.outputs.head }}"
-          $zipName = "qelectrotech-${version}+git${head}-x86-win64-readytouse.zip"
+          $vcsTag  = "${{ steps.qet_version.outputs.vcs_tag }}"
+          $zipName = "qelectrotech-${version}${vcsTag}-x86-win64-readytouse.zip"          
           $src     = "$env:GITHUB_WORKSPACE\nsis_root\files"
           $dst     = "$env:GITHUB_WORKSPACE\dist\$zipName"
           $7z      = "C:\Program Files\7-Zip\7z.exe"
@@ -342,7 +361,7 @@ jobs:
       - name: Upload portable (files/ without installer)
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
+          name: qelectrotech-${{ steps.qet_version.outputs.base_version }}${{ steps.qet_version.outputs.vcs_tag }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
           retention-days: 40
 
@@ -560,9 +579,7 @@ jobs:
           cp "$GITHUB_WORKSPACE/build-aux/windows/lang_extra_missing.nsh" "$NSIS_ROOT/"
           cp -r "$GITHUB_WORKSPACE/build-aux/windows/nsis_base/." "$NSIS_ROOT/"
 
-          curl -fsSL \
-            "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/misc/Lancer%20QET_qt6.bat" \
-            -o "$FILES/Lancer QET_qt6.bat"
+          cp "$GITHUB_WORKSPACE/misc/Lancer QET_qt6.bat" "$FILES/Lancer QET_qt6.bat"
           cp -r "$GITHUB_WORKSPACE/elements"    "$FILES/elements"    || true
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
@@ -590,30 +607,48 @@ jobs:
               || echo "  MISSING: $d/"
           done
 
-      - name: Extract version for installer name (Qt6 — labelled 0.200.1)
+      - name: Extract version
         shell: msys2 {0}
         id: qet_version
         run: |
           set -euo pipefail
 
-          GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
+          VERSION=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/VERSION")
+          RELEASE=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/RELEASE")
 
+          GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)
           HEAD=$(( A + 473 ))
 
-          # Deliberately NOT parsed from sources/qetversion.cpp: the CI job
-          # already knows for certain it configured Qt6 (-DQT_VERSION_MAJOR=6),
-          # so the "0.200.1" experimental-track label is set here explicitly
-          # rather than relying on in-binary Qt version detection.
-          VERSION="0.200.1"
+          case "$RELEASE" in
+            dev)
+              SUFFIX="-r${HEAD}-${GITCOMMIT}"
+              VCS_TAG="+git${HEAD}"
+              ;;
+            alpha1|alpha2|alpha3)
+              SUFFIX="-${RELEASE}"
+              VCS_TAG=""
+              ;;
+            stable)
+              SUFFIX=""
+              VCS_TAG=""
+              ;;
+            *)
+              echo "ERROR: unrecognized RELEASE value '$RELEASE' (expected dev, alpha1, alpha2, alpha3, or stable)" >&2
+              exit 1
+              ;;
+          esac
 
-          FULL_VERSION="${VERSION}-qt6-r${HEAD}-${GITCOMMIT}_x86_64-win64"
-          BASE_VERSION="${VERSION}-qt6"
+          FULL_VERSION="${VERSION}{SUFFIX}_x86_64-win64"
+          BASE_VERSION="${VERSION}
+
           echo "version=$FULL_VERSION"      >> "$GITHUB_OUTPUT"
           echo "base_version=$BASE_VERSION" >> "$GITHUB_OUTPUT"
+          echo "vcs_tag=$VCS_TAG"           >> "$GITHUB_OUTPUT"
           echo "gitcommit=$GITCOMMIT"       >> "$GITHUB_OUTPUT"
           echo "head=$HEAD"                 >> "$GITHUB_OUTPUT"
           echo "VERSION    : $VERSION"
+          echo "RELEASE    : $RELEASE"
           echo "GITCOMMIT  : $GITCOMMIT"
           echo "HEAD (rev) : $HEAD"
           echo "FULL       : $FULL_VERSION"
@@ -677,8 +712,8 @@ jobs:
         shell: pwsh
         run: |
           $version = "${{ steps.qet_version.outputs.base_version }}"
-          $head    = "${{ steps.qet_version.outputs.head }}"
-          $zipName = "qelectrotech-${version}+git${head}-x86-win64-readytouse.zip"
+          $vcsTag  = "${{ steps.qet_version.outputs.vcs_tag }}"
+          $zipName = "qelectrotech-${version}${vcsTag}-x86-win64-readytouse.zip"
           $src     = "$env:GITHUB_WORKSPACE\nsis_root\files"
           $dst     = "$env:GITHUB_WORKSPACE\dist\$zipName"
           $7z      = "C:\Program Files\7-Zip\7z.exe"
@@ -694,7 +729,7 @@ jobs:
       - name: Upload portable (files/ without installer)
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
+          name: qelectrotech-${{ steps.qet_version.outputs.base_version }}${{ steps.qet_version.outputs.vcs_tag }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
           retention-days: 40
 

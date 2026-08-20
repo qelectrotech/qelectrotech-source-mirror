@@ -30,17 +30,13 @@ jobs:
         include:
           - flavor: qt5
             portable_artifact: qelectrotech-windows-portable
-            version_source: qetversion   # parsed from sources/qetversion.cpp
-            label_suffix: ""
-            experimental: false
+            label_suffix: "-qt5"
             concurrency:
               group: windows-package-msi-qt5-${{ github.workflow }}-${{ github.ref }}
               cancel-in-progress: true  
           - flavor: qt6
             portable_artifact: qelectrotech-windows-portable-qt6
-            version_source: hardcoded    # see note in "Extract version" step
-            label_suffix: "-qt6-EXPERIMENTAL"
-            experimental: true
+            label_suffix: ""
             concurrency:
               group: windows-package-msi-qt6-${{ github.workflow }}-${{ github.ref }}
               cancel-in-progress: true  
@@ -75,53 +71,51 @@ jobs:
 
       # ----------------------------------------------------------------
       # 3. Extract version
-      #    Qt5: parsed from sources/qetversion.cpp (single source of truth
-      #         for the software's own reported version).
-      #    Qt6: hardcoded "0.200.1" here — deliberately NOT parsed from the
-      #         binary/source, since Qt-version self-detection inside the
-      #         compiled code proved unreliable (see commit e1aa65f). The CI
-      #         matrix entry already knows for certain which flavor it is
-      #         packaging, so the experimental-track label is set explicitly
-      #         at the packaging level instead.
+      #    Both flavors now read the shared VERSION/RELEASE files at the
+      #    repo root (single source of truth) -- the Qt6 hardcoded-version
+      #    hack is retired; Qt6 reports its real version, with the track
+      #    distinguished only via matrix.label_suffix.
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
         shell: pwsh
         run: |
-          if ("${{ matrix.version_source }}" -eq "hardcoded") {
-            $ver = "0.200.1"
-          } else {
-            $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
-            if ($src -match 'return QVersionNumber\{([^}]+)\}') {
-              $ver = $Matches[1] -replace '\s','' -replace ',','.'
-            } else {
-              # Fallback: CMakeLists.txt
-              $cmake = Get-Content "CMakeLists.txt" -Raw
-              if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
-                $ver = $Matches[1]
-              } else {
-                $ver = "0.0.0"
-              }
-            }
-          }
+          $ver = (Get-Content "VERSION" -Raw).Trim()
+          $release = (Get-Content "RELEASE" -Raw).Trim()
 
-          # Short SHA for the display version
+          # Short SHA and cumulative revision count -- still computed
+          # unconditionally, since VERSION_MSI's monotonic numeric
+          # requirement is independent of RELEASE stage.
           $sha = git rev-parse --short HEAD 2>$null
           if (-not $sha) { $sha = "unknown" }
-
-          # Cumulative revision number (same calculation as windows-build.yml)
           $count = git rev-list HEAD --count 2>$null
           $rev = [int]$count + 473
 
           # MSI Version only compares Major.Minor.Build (the 4th field is
           # ignored by Windows Installer for upgrade detection), so we
-          # inject rev into Build to force a real increase between
-          # nightlies and trigger MajorUpgrade's automatic uninstall.
+          # inject rev into Build to force a real increase between builds
+          # and trigger MajorUpgrade's automatic uninstall.
           $verParts = $ver -split '\.'
           $verMsi = "$($verParts[0]).$($verParts[1]).$($rev % 65535)"
 
+          # Human-readable suffix depends on RELEASE:
+          #   dev            -> -r<rev>-<sha>  (nightly, no fixed tag exists)
+          #   alpha1/2/3     -> -alpha1/2/3    (tagged, no hash needed)
+          #   stable         -> nothing        (tagged, final release)
+          switch ($release) {
+            "dev"    { $suffix = "-r${rev}-${sha}" }
+            "alpha1" { $suffix = "-alpha1" }
+            "alpha2" { $suffix = "-alpha2" }
+            "alpha3" { $suffix = "-alpha3" }
+            "stable" { $suffix = "" }
+            default {
+              Write-Error "Unrecognized RELEASE value '$release' (expected dev, alpha1, alpha2, alpha3, or stable)"
+              exit 1
+            }
+          }
+
           $flavorTag = "${{ matrix.label_suffix }}"
-          $verDisplay = "${ver}${flavorTag}-r${rev}-${sha}_x86_64-win64"
+          $verDisplay = "${ver}${flavorTag}${suffix}_x86_64-win64"
 
           echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
           echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
@@ -297,7 +291,7 @@ jobs:
       # both: only qt5, and only in the upstream repo.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
-        if: matrix.flavor == 'qt5' && github.repository == 'qelectrotech/qelectrotech-source-mirror'
+        if: github.repository == 'qelectrotech/qelectrotech-source-mirror'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}

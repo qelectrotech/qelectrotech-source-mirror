@@ -18,11 +18,28 @@ include(cmake/hoto_update_cmake_message.cmake)
 
 cmake_minimum_required(VERSION 3.5...4.2)
 
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" QET_VERSION_STRING LIMIT_COUNT 1)
+string(STRIP "${QET_VERSION_STRING}" QET_VERSION_STRING)
+
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/RELEASE" QET_VERSION_TYPE LIMIT_COUNT 1)
+string(STRIP "${QET_VERSION_TYPE}" QET_VERSION_TYPE)
+
+set(_qet_valid_version_types dev alpha1 alpha2 alpha3 stable)
+if(NOT QET_VERSION_TYPE IN_LIST _qet_valid_version_types)
+  message(FATAL_ERROR "VERSION_TYPE file contains '${QET_VERSION_TYPE}', must be one of: ${_qet_valid_version_types}")
+endif()
+
 project(qelectrotech
-        VERSION 0.100.1
+        VERSION ${QET_VERSION_STRING}
         DESCRIPTION "QET is a CAD/CAE editor focusing on schematics drawing features."
         HOMEPAGE_URL "https://qelectrotech.org/"
         LANGUAGES C CXX)
+        
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/sources/qetversion.cpp.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/generated/qetversion.cpp"
+  @ONLY
+)
 
 include(cmake/copyright_message.cmake)
 
@@ -281,6 +298,7 @@ target_link_libraries(
 target_include_directories(
     ${PROJECT_NAME}
     PRIVATE
+    ${QET_DIR}/sources
     ${QET_DIR}/sources/titleblock
     ${QET_DIR}/sources/ui
     ${QET_DIR}/sources/qetgraphicsitem
