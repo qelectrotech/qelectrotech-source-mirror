@@ -271,7 +271,7 @@ jobs:
               ;;
           esac
 
-          FULL_VERSION="${VERSION}-qt5${SUFFIX}_x86_64-win64"
+          FULL_VERSION="${VERSION}-qt5$-{SUFFIX}_x86_64-win64"
           BASE_VERSION="${VERSION}-qt5"
 
           echo "version=$FULL_VERSION"      >> "$GITHUB_OUTPUT"
@@ -639,8 +639,8 @@ jobs:
               ;;
           esac
 
-          FULL_VERSION="${VERSION}{SUFFIX}_x86_64-win64"
-          BASE_VERSION="${VERSION}
+          FULL_VERSION="${VERSION}${SUFFIX}_x86_64-win64"
+          BASE_VERSION="${VERSION}"
 
           echo "version=$FULL_VERSION"      >> "$GITHUB_OUTPUT"
           echo "base_version=$BASE_VERSION" >> "$GITHUB_OUTPUT"
