@@ -502,7 +502,11 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 		int subTypePos = (subTypeInBody != -1 && subTypeInBody < aDictOpen)
 			? out.size() - (aDictOpen - subTypeInBody) : -1;
 		if (subTypePos != -1)
-			out.replace(subTypePos, 14, "/Subtype /Text");
+			// Acrobat draws its own sticky-note icon for /Subtype /Text
+			// whatever /AP says (verified on Reader 5.0). /Square with no
+			// /C and no /IC draws nothing anywhere, and is still a markup
+			// annotation, so the /Contents popup is unaffected.
+			out.replace(subTypePos, 14, "/Subtype /Square");
 
 		// Encode as UTF-16BE hex with BOM for proper Unicode support (Umlauten etc.).
 		// PDF spec: hex strings starting with FE FF are interpreted as UTF-16BE.
