@@ -64,8 +64,8 @@ APPDIR="$SOURCE_DIR/AppDir-$ARCH"
 TOOLS_DIR="$SOURCE_DIR/appimage-tools-$ARCH"
 APPNAME="QElectroTech"
 
-VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/VERSION")"
-RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/RELEASE")"
+VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/QET_VERSION")"
+RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/QET_RELEASE")"
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
 
 case "$RELEASE" in

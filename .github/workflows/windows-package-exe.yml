@@ -242,8 +242,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          VERSION=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/VERSION")
-          RELEASE=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/RELEASE")
+          VERSION=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/QET_VERSION")
+          RELEASE=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/QET_RELEASE")
 
           GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)
@@ -613,8 +613,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          VERSION=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/VERSION")
-          RELEASE=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/RELEASE")
+          VERSION=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/QET_VERSION")
+          RELEASE=$(tr -d '[:space:]' < "$GITHUB_WORKSPACE/QET_RELEASE")
 
           GITCOMMIT=$(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)

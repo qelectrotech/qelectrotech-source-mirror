@@ -80,8 +80,8 @@ jobs:
         id: version
         shell: pwsh
         run: |
-          $ver = (Get-Content "VERSION" -Raw).Trim()
-          $release = (Get-Content "RELEASE" -Raw).Trim()
+          $ver = (Get-Content "QET_VERSION" -Raw).Trim()
+          $release = (Get-Content "QET_RELEASE" -Raw).Trim()
 
           # Short SHA and cumulative revision count -- still computed
           # unconditionally, since VERSION_MSI's monotonic numeric

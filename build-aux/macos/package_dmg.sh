@@ -78,8 +78,8 @@ QT_SUFFIX=""
 if [ "$QT_VERSION_MAJOR" = "5" ]; then
   QT_SUFFIX="-qt5"
 fi
-VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/VERSION")"
-RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/RELEASE")"
+VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/QET_VERSION")"
+RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/QET_RELEASE")"
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
 
 case "$RELEASE" in

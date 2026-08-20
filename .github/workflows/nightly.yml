@@ -19,8 +19,8 @@ jobs:
         run: |
           set -euo pipefail
           TAG="${GITHUB_REF_NAME#v}"
-          FILE_VERSION="$(tr -d '[:space:]' < VERSION)"
-          FILE_TYPE="$(tr -d '[:space:]' < VERSION_TYPE)"
+          FILE_VERSION="$(tr -d '[:space:]' < QET_VERSION)"
+          FILE_TYPE="$(tr -d '[:space:]' < QET_RELEASE)"
 
           if [[ "$TAG" == *-* ]]; then
             TAG_VERSION="${TAG%%-*}"
@@ -31,11 +31,11 @@ jobs:
           fi
 
           if [ "$TAG_VERSION" != "$FILE_VERSION" ]; then
-            echo "::error::Tag version ($TAG_VERSION) does not match VERSION file ($FILE_VERSION)"
+            echo "::error::Tag version ($TAG_VERSION) does not match QET_VERSION file ($FILE_VERSION)"
             exit 1
           fi
           if [ "$TAG_TYPE" != "$FILE_TYPE" ]; then
-            echo "::error::Tag type ($TAG_TYPE) does not match VERSION_TYPE file ($FILE_TYPE)"
+            echo "::error::Tag type ($TAG_TYPE) does not match QET_RELEASE file ($FILE_TYPE)"
             exit 1
           fi
           if [ "$FILE_TYPE" = "dev" ]; then
@@ -228,5 +228,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add RELEASE
-          git commit -m "Reset VERSION_TYPE to dev after ${{ github.ref_name }} release"
+          git commit -m "Reset QET_RELEASE to dev after ${{ github.ref_name }} release"
           git push origin master
