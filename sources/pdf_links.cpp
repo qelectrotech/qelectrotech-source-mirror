@@ -492,13 +492,17 @@ void convertComponentInfoAnnotations(const QString &pdfPath,
 
 		QByteArray contents = annotations[annotIndex].contents.toUtf8();
 
-		// Replace /Subtype /Link with /Subtype /Text, bounded to current object.
-		// Search only the bytes we just appended (the current annotation header).
-		int searchStart = out.size() - (aDictOpen - pos);
-		int subTypePos = out.indexOf("/Subtype /Link", searchStart);
-		if (subTypePos != -1) {
+		// Replace /Subtype /Link with /Subtype /Text, bounded to the enclosing
+		// PDF object.  Anchoring to " 0 obj" prevents hitting /Subtype /Link
+		// from a cross-ref annotation that sits between the previous marker
+		// and the current annotation on the same page.
+		int objStart = body.lastIndexOf(" 0 obj", aDictOpen);
+		int subTypeInBody = (objStart != -1)
+			? body.indexOf("/Subtype /Link", objStart) : -1;
+		int subTypePos = (subTypeInBody != -1 && subTypeInBody < aDictOpen)
+			? out.size() - (aDictOpen - subTypeInBody) : -1;
+		if (subTypePos != -1)
 			out.replace(subTypePos, 14, "/Subtype /Text");
-		}
 
 		// Encode as UTF-16BE hex with BOM for proper Unicode support (Umlauten etc.).
 		// PDF spec: hex strings starting with FE FF are interpreted as UTF-16BE.
