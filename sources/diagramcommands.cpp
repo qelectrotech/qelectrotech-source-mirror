@@ -84,6 +84,20 @@ void PasteDiagramCommand::redo()
 
 		//this is the first paste, we do some actions for the new element
 		const QList <Element *> elmts_list = content.m_elements;
+
+			//Resolve master/slave links within the pasted batch before any
+			//uuid gets renewed below: each element's tmp_uuids_link still
+			//holds its source's original partner uuid at this point, which
+			//still equals the not-yet-renewed uuid of that partner's own
+			//pasted copy, if it was pasted too. Scoping the search to
+			//elmts_list (rather than the whole project) is what keeps this
+			//from matching an original element left elsewhere in the
+			//project that happens to share that same soon-to-be-replaced
+			//uuid. See Element::initLink(const QList<Element *> &).
+		for (Element *e : elmts_list) {
+			e->initLink(elmts_list);
+		}
+
 		for (Element *e : elmts_list)
 		{
 			//make new uuid, because old uuid are the uuid of the copied element

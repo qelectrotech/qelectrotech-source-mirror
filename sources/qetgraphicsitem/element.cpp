@@ -1338,6 +1338,49 @@ void Element::initLink(QETProject *prj)
 }
 
 /**
+	@brief Element::initLink
+	Resolve pending links against a specific, caller-supplied list of
+	elements instead of a project-wide ElementProvider search.
+
+	This overload exists for the case where several elements are being
+	introduced together (e.g. paste, or whole-diagram duplication) via
+	an XML round-trip: right after the round-trip and before any of the
+	batch's uuids have been renewed, each element's tmp_uuids_link still
+	holds its *source*'s original partner uuid, which at that exact
+	moment still equals the not-yet-renewed uuid of the corresponding
+	element within this same batch. Searching only within @a candidates
+	-- rather than the whole project via initLink(QETProject *) -- is
+	what keeps a linked pair being pasted/duplicated together from
+	matching against an original element left elsewhere in the project
+	that happens to share that same (soon-to-be-replaced) uuid.
+
+	As with the QETProject overload, this can only usefully run once:
+	tmp_uuids_link is cleared unconditionally at the end, whether or not
+	each pending entry found a match in @a candidates. If only one half
+	of a linked group is present in @a candidates, its unmatched entry
+	is simply dropped -- the same "leave it unlinked" outcome as today.
+	@param candidates
+*/
+void Element::initLink(const QList<Element *> &candidates)
+{
+	if (tmp_uuids_link.isEmpty()) return;
+
+	for (int i = 0; i < tmp_uuids_link.size(); ++i) {
+		for (Element *elmt : candidates) {
+			if (elmt == this) continue;
+			if (elmt->uuid() == tmp_uuids_link[i].uuid) {
+				elmt->linkToElement(this);
+				if (tmp_uuids_link[i].group_index >= 0) {
+					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+				}
+				break;
+			}
+		}
+	}
+	tmp_uuids_link.clear();
+}
+
+/**
  * @brief Element::linkTypeToString
  * \deprecated use instead ElementData::typeToString
  * \todo remove this function
