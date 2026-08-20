@@ -71,15 +71,14 @@ jobs:
     secrets: inherit
     
   build-windows-msi:
-    needs: verify-version
+    needs: build-windows-exe
     if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
     name: Build Windows MSI
-    needs: build-windows-exe    
     uses: ./.github/workflows/windows-package-msi.yml
     secrets: inherit
 
-  publish-nightly:
-    name: Upload all nightly builds to github page and update HTML
+  publish-release:
+    name: Upload all builds to github page and update HTML
     needs: [build-macos, build-appimage, build-windows-exe, build-windows-msi]
     runs-on: ubuntu-latest
     # Ne tourne que sur push master (pas sur les PRs)
