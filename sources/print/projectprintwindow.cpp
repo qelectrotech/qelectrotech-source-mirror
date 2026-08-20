@@ -20,10 +20,12 @@
 #include "../diagram.h"
 #include "../pdf_links.h"
 #include "../qeticons.h"
+#include "../qetinformation.h"
 #include "../qetproject.h"
 #include "../qetversion.h"
 #include "../qetgraphicsitem/crossrefitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 
 #include "ui_projectprintwindow.h"
@@ -153,6 +155,7 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 		ui->m_button_box->addButton(pdf_button, QDialogButtonBox::ActionRole);
 		connect(pdf_button, &QPushButton::clicked, this, &ProjectPrintWindow::exportToPDF);
 	}
+	ui->m_component_info_cb->setVisible(m_printer->outputFormat() == QPrinter::PdfFormat);
 
 	auto exp = ExportProperties::defaultPrintProperties();
 	ui->m_draw_border_cb->setChecked(exp.draw_border);
@@ -248,6 +251,7 @@ void ProjectPrintWindow::requestPaint()
 
 	bool first = true;
 	QPainter painter(m_printer);
+	int annotIndex = 0;
 
 	// A real PDF export uses the QPdfEngine; the on-screen preview uses a
 	// preview paint engine. We only post-process when actually writing a PDF.
@@ -261,7 +265,7 @@ void ProjectPrintWindow::requestPaint()
 	for (auto diagram : selectedDiagram())
 	{
 		first ? first = false : m_printer->newPage();
-		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap);
+		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap, annotIndex);
 	}
 
 	// Note: do NOT call painter.end() or pdfConvertUriToGoTo() here.
@@ -279,7 +283,7 @@ void ProjectPrintWindow::requestPaint()
  * @param fit_page
  * @param printer
  */
-void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap)
+void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap, int &annotIndex)
 {
 
 	////Prepare the print////
@@ -415,6 +419,50 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			PdfLinks::injectCrossRefLinks(
 				pdfEngine, diagram, geom, diagramPageMap,
 				printer->outputFileName());
+
+			////Collect component info for popup annotations////
+			if (ui->m_component_info_cb->isChecked()) {
+				for (auto *item : diagram->items()) {
+					auto *el = qgraphicsitem_cast<Element*>(item);
+					if (!el) continue;
+
+					// Skip reports and slaves
+					auto lt = el->linkType();
+					if (lt & Element::AllReport) continue;
+					if (lt == Element::Slave) continue;
+
+					auto info = el->elementInformations();
+					if (info.count() == 0) continue;
+
+					// Build info text
+					QStringList lines;
+					for (const QString &key : {"label", "manufacturer", "designation", "description"}) {
+						if (info.contains(key) && !info.value(key).toString().isEmpty())
+							lines << QETInformation::translatedInfoKey(key) + ": " + info.value(key).toString();
+					}
+					for (const QString &key : info.keys()) {
+						if (key == "formula") continue;
+						QString translated = QETInformation::translatedInfoKey(key);
+						if (lines.contains(translated + ": " + info.value(key).toString())) continue;
+						if (info.value(key).toString().isEmpty()) continue;
+						lines << translated + ": " + info.value(key).toString();
+					}
+					if (lines.isEmpty()) continue;
+
+					// Compute element rect in device pixels
+					QRectF elemScene = el->mapRectToScene(el->boundingRect());
+					QRectF devRect = fit.mapRect(elemScene);
+
+					PdfLinks::ComponentInfo ci;
+					ci.contents = lines.join("\n");
+					m_componentInfoList.append(ci);
+
+					// Create a link annotation as placeholder — post-processing
+					// will convert it to an invisible text annotation with the actual content
+					pdfEngine->drawHyperlink(devRect, QUrl(QString("http://componentinfo.local/%1").arg(annotIndex++)));
+				}
+			}
+			////Component info end////
 		}
 	}
 	////PDF links end////
@@ -715,6 +763,7 @@ void ProjectPrintWindow::on_m_draw_titleblock_cb_clicked()      { m_preview->upd
 void ProjectPrintWindow::on_m_keep_conductor_color_cb_clicked() { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_draw_terminal_cb_clicked()        { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_draw_terminal_names_cb_clicked()  { m_preview->updatePreview(); }
+void ProjectPrintWindow::on_m_component_info_cb_clicked()       { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_fit_in_page_cb_clicked()          { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_use_full_page_cb_clicked()
 {
@@ -819,9 +868,16 @@ void ProjectPrintWindow::print()
 		// which prevents the black screen observed on Apple Silicon under
 		// macOS Sequoia (QPrintPreviewWidget + CALayer timing issue).
 		QTimer::singleShot(0, this, [this, pdfFile]() {
+			// Convert component-info link annotations into invisible text annotations
+			if (ui->m_component_info_cb->isChecked() && !m_componentInfoList.isEmpty()) {
+				PdfLinks::convertComponentInfoAnnotations(pdfFile, m_componentInfoList);
+				m_componentInfoList.clear();
+			}
+
 			// Convert URI link annotations into native internal GoTo/FitR
 			// actions so cross-references jump inside the document.
 			PdfLinks::convertUriToGoTo(pdfFile);
+
 			this->close();
 		});
 	} else {
