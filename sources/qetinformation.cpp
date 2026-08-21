@@ -225,7 +225,7 @@ QString QETInformation::elementInfoToVar(const QString &info)
  */
 QRegularExpression QETInformation::numericInfoPattern()
 {
-	return QRegularExpression(QStringLiteral(R"(^[0-9]+\.?[0-9]{0,2}$|^[0-9]*\.[0-9]{1,2}$)"));
+	return QRegularExpression(QStringLiteral(R"(^[0-9]+$|^[0-9]*\.[0-9]{1,2}$)"));
 }
 
 /**
