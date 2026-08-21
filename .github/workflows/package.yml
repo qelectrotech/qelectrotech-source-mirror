@@ -1,4 +1,4 @@
-name: Nightly
+name: Package and upload
 
 on:
   workflow_dispatch:
@@ -80,6 +80,12 @@ jobs:
   publish-release:
     name: Upload all builds to github page and update HTML
     needs: [build-macos, build-appimage, build-windows-exe, build-windows-msi]
+    if: |
+      always() &&
+      needs.build-macos.result == 'success' &&
+      needs.build-appimage.result == 'success' &&
+      needs.build-windows-exe.result == 'success' &&
+      needs.build-windows-msi.result == 'success'    
     runs-on: ubuntu-latest
     # Ne tourne que sur push master (pas sur les PRs)
     # if: github.event_name != 'pull_request'    
