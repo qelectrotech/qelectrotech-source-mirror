@@ -20,6 +20,7 @@
 #include "../../qeticons.h"
 #include "../../shortcutmanager.h"
 
+#include <QComboBox>
 #include <QFrame>
 #include <QHBoxLayout>
 #include <QHeaderView>
@@ -27,11 +28,33 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QTableWidget>
+#include <QRegularExpression>
 #include <QToolButton>
+#include <QTreeWidget>
+#include <QTreeWidgetItem>
 #include <QVBoxLayout>
 #include <algorithm>
 #include <utility>
+
+/**
+	@brief normalizedForSearch
+	Decompose \a text and strip every non-spacing combining mark, then fold the
+	case. Both the query terms and the row's searchable text are run through
+	this, so "general" matches "Général" and "Ctrl+S" matches "ctrl+s"
+	regardless of the keyboard layout the query was typed on.
+*/
+static QString normalizedForSearch(const QString &text)
+{
+	const QString decomposed = text.normalized(QString::NormalizationForm_D);
+	QString stripped;
+	stripped.reserve(decomposed.size());
+	for (const QChar &c : decomposed) {
+		if (c.category() != QChar::Mark_NonSpacing) {
+			stripped.append(c);
+		}
+	}
+	return stripped.toCaseFolded();
+}
 
 /**
 	@brief ShortcutsConfigPage::ShortcutsConfigPage
@@ -52,18 +75,33 @@ ShortcutsConfigPage::ShortcutsConfigPage(QWidget *parent) :
 	m_filter_edit = new QLineEdit(this);
 	m_filter_edit->setPlaceholderText(tr("Filtrer les raccourcis…"));
 	connect(m_filter_edit, &QLineEdit::textChanged, this, &ShortcutsConfigPage::filterRows);
-	vlayout->addWidget(m_filter_edit);
 
-	m_table = new QTableWidget(0, 4, this);
-	m_table->setHorizontalHeaderLabels({tr("Catégorie"), tr("Action"), tr("Raccourci"), QString()});
-	m_table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-	m_table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-	m_table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
-	m_table->horizontalHeader()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
-	m_table->verticalHeader()->setVisible(false);
-	m_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-	m_table->setSelectionMode(QAbstractItemView::NoSelection);
-	vlayout->addWidget(m_table);
+	m_quick_filter = new QComboBox(this);
+	m_quick_filter->setObjectName(QStringLiteral("quickFilterCombo"));
+	m_quick_filter->addItem(tr("Tous"));
+	m_quick_filter->addItem(tr("Attribués uniquement"));
+	m_quick_filter->addItem(tr("Non attribués uniquement"));
+	m_quick_filter->addItem(tr("Conflits uniquement"));
+	connect(m_quick_filter, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, &ShortcutsConfigPage::quickFilterChanged);
+
+	m_count_label = new QLabel(this);
+	m_count_label->setObjectName(QStringLiteral("shortcutCountLabel"));
+
+	auto *filter_layout = new QHBoxLayout();
+	filter_layout->addWidget(m_filter_edit, 1);
+	filter_layout->addWidget(m_quick_filter);
+	filter_layout->addWidget(m_count_label);
+	vlayout->addLayout(filter_layout);
+
+	m_tree = new QTreeWidget(this);
+	m_tree->setHeaderLabels({tr("Action"), tr("Raccourci"), QString()});
+	m_tree->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+	m_tree->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+	m_tree->header()->setSectionResizeMode(2, QHeaderView::ResizeToContents);
+	m_tree->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	m_tree->setSelectionMode(QAbstractItemView::NoSelection);
+	vlayout->addWidget(m_tree);
 
 	auto *reset_all_button = new QPushButton(tr("Tout réinitialiser"), this);
 	connect(reset_all_button, &QPushButton::clicked, this, &ShortcutsConfigPage::resetAllRows);
@@ -76,6 +114,7 @@ ShortcutsConfigPage::ShortcutsConfigPage(QWidget *parent) :
 	setLayout(vlayout);
 
 	populateTable();
+	applyFilter();
 }
 
 ShortcutsConfigPage::~ShortcutsConfigPage()
@@ -84,8 +123,8 @@ ShortcutsConfigPage::~ShortcutsConfigPage()
 
 /**
 	@brief ShortcutsConfigPage::populateTable
-	Fill the table with one row per shortcut known to ShortcutManager, sorted
-	by category then action name.
+	Fill the tree with one collapsible top-level node per category and one child
+	per shortcut known to ShortcutManager, sorted by category then action name.
 */
 void ShortcutsConfigPage::populateTable()
 {
@@ -98,33 +137,38 @@ void ShortcutsConfigPage::populateTable()
 			return a.description < b.description;
 		  });
 
-	m_table->setRowCount(shortcuts.size());
+	m_tree->clear();
 	m_rows.clear();
 	m_rows.reserve(shortcuts.size());
 
-	for (int row = 0; row < shortcuts.size(); ++row) {
-		const ShortcutManager::ShortcutInfo &info = shortcuts.at(row);
+	QHash<QString, QTreeWidgetItem *> category_nodes;
 
-		auto *category_item = new QTableWidgetItem(info.category);
-		category_item->setFlags(category_item->flags() & ~Qt::ItemIsEditable);
-		m_table->setItem(row, 0, category_item);
+	for (const ShortcutManager::ShortcutInfo &info : shortcuts) {
+		QTreeWidgetItem *category_item = category_nodes.value(info.category, nullptr);
+		if (!category_item) {
+			category_item = new QTreeWidgetItem(m_tree);
+			category_item->setText(0, info.category);
+			category_item->setFlags(category_item->flags() & ~Qt::ItemIsEditable);
+			category_nodes.insert(info.category, category_item);
+		}
 
-		auto *description_item = new QTableWidgetItem(info.description);
-		description_item->setFlags(description_item->flags() & ~Qt::ItemIsEditable);
-		m_table->setItem(row, 1, description_item);
+		auto *child = new QTreeWidgetItem(category_item);
+		child->setText(0, info.description);
+		child->setFlags(child->flags() & ~Qt::ItemIsEditable);
 
-		auto *edit = new QKeySequenceEdit(info.current_sequence, m_table);
+		auto *edit = new QKeySequenceEdit(info.current_sequence, m_tree);
 		connect(edit, &QKeySequenceEdit::editingFinished, this, &ShortcutsConfigPage::checkConflicts);
-		m_table->setCellWidget(row, 2, edit);
+		m_tree->setItemWidget(child, 1, edit);
 
-		auto *reset_button = new QToolButton(m_table);
+		auto *reset_button = new QToolButton(m_tree);
 		reset_button->setIcon(QET::Icons::EditUndo);
 		reset_button->setToolTip(tr("Réinitialiser ce raccourci"));
 		reset_button->setAutoRaise(true);
-		connect(reset_button, &QToolButton::clicked, this, [this, row]() { resetRow(row); });
-		m_table->setCellWidget(row, 3, reset_button);
+		const int row_index = m_rows.size();
+		connect(reset_button, &QToolButton::clicked, this, [this, row_index]() { resetRow(row_index); });
+		m_tree->setItemWidget(child, 2, reset_button);
 
-		m_rows << Row{info.id, info.default_sequence, edit};
+		m_rows << Row{info.id, info.category, info.description, info.default_sequence, edit, child, false};
 	}
 
 	checkConflicts();
@@ -132,17 +176,97 @@ void ShortcutsConfigPage::populateTable()
 
 /**
 	@brief ShortcutsConfigPage::filterRows
-	Hide every row whose category or action name doesn't contain \a filter_text.
+	Re-run the combined text + quick filter whenever the search box changes.
 */
 void ShortcutsConfigPage::filterRows(const QString &filter_text)
 {
-	const QString needle = filter_text.trimmed();
-	for (int row = 0; row < m_table->rowCount(); ++row) {
-		const bool matches = needle.isEmpty()
-				|| m_table->item(row, 0)->text().contains(needle, Qt::CaseInsensitive)
-				|| m_table->item(row, 1)->text().contains(needle, Qt::CaseInsensitive);
-		m_table->setRowHidden(row, !matches);
+	Q_UNUSED(filter_text)
+	applyFilter();
+}
+
+/**
+	@brief ShortcutsConfigPage::quickFilterChanged
+	Re-run the combined text + quick filter whenever the quick filter changes.
+*/
+void ShortcutsConfigPage::quickFilterChanged(int index)
+{
+	Q_UNUSED(index)
+	applyFilter();
+}
+
+/**
+	@brief ShortcutsConfigPage::applyFilter
+	Hide every row that doesn't match both the search box and the quick filter.
+	The text query is split on whitespace and every term must match the category,
+	action name or current sequence (accent- and case-insensitively). Matching
+	category nodes are expanded so hits are not hidden inside collapsed groups,
+	and the "N actions" label tracks how many actions remain visible.
+*/
+void ShortcutsConfigPage::applyFilter()
+{
+	const QString needle = m_filter_edit->text().trimmed();
+	const QStringList terms = needle.isEmpty()
+			? QStringList()
+			: needle.split(QRegularExpression(QStringLiteral("\\s+")), Qt::SkipEmptyParts);
+
+	const int quick_filter = m_quick_filter->currentIndex();
+
+	int visible_actions = 0;
+	for (const Row &row : qAsConst(m_rows)) {
+		// Text is matched by substring, but the key sequence is matched exactly:
+		// a substring match would let "Ctrl+S" also hit "Ctrl+Shift+F" (the "S"
+		// of "Shift"), which is precisely the kind of false positive that hides
+		// the one binding the user is looking for.
+		const QString text_haystack = normalizedForSearch(
+				row.category + QLatin1Char(' ') + row.description);
+		const QString sequence_text = normalizedForSearch(row.edit->keySequence().toString());
+
+		bool matches = true;
+		for (const QString &term : terms) {
+			const QString t = normalizedForSearch(term);
+			if (!text_haystack.contains(t) && sequence_text != t) {
+				matches = false;
+				break;
+			}
+		}
+
+		if (matches) {
+			switch (quick_filter) {
+			case BoundOnly:
+				matches = !row.edit->keySequence().isEmpty();
+				break;
+			case UnboundOnly:
+				matches = row.edit->keySequence().isEmpty();
+				break;
+			case ConflictsOnly:
+				matches = row.conflicted;
+				break;
+			default:
+				break;
+			}
+		}
+
+		row.item->setHidden(!matches);
+		if (matches) {
+			++visible_actions;
+		}
 	}
+
+	const bool filtering = !needle.isEmpty() || quick_filter != ShowAll;
+	for (int i = 0; i < m_tree->topLevelItemCount(); ++i) {
+		QTreeWidgetItem *top = m_tree->topLevelItem(i);
+		bool any_visible = false;
+		for (int j = 0; j < top->childCount(); ++j) {
+			if (!top->child(j)->isHidden()) {
+				any_visible = true;
+				break;
+			}
+		}
+		top->setHidden(!any_visible);
+		top->setExpanded(filtering && any_visible);
+	}
+
+	m_count_label->setText(tr("%n action(s)", nullptr, visible_actions));
 }
 
 /**
@@ -161,26 +285,36 @@ void ShortcutsConfigPage::checkConflicts()
 	}
 
 	for (int row = 0; row < m_rows.size(); ++row) {
-		const Row &current_row = m_rows.at(row);
+		Row &current_row = m_rows[row];
 		const QString sequence_text = current_row.edit->keySequence().toString();
 		const QList<int> &conflicting_rows = sequence_to_rows.value(sequence_text);
 		const bool conflicted = !sequence_text.isEmpty() && conflicting_rows.size() > 1;
 
-		QTableWidgetItem *description_item = m_table->item(row, 1);
+		current_row.conflicted = conflicted;
+
 		if (conflicted) {
 			QStringList other_descriptions;
 			for (int other_row : conflicting_rows) {
 				if (other_row != row) {
-					other_descriptions << m_table->item(other_row, 1)->text();
+					other_descriptions << m_rows.at(other_row).description;
 				}
 			}
-			description_item->setBackground(QColor(255, 205, 205));
+			current_row.item->setBackground(0, QColor(255, 205, 205));
 			current_row.edit->setToolTip(
 				tr("Ce raccourci est aussi utilisé par : %1").arg(other_descriptions.join(QStringLiteral(", "))));
 		} else {
-			description_item->setBackground(Qt::NoBrush);
+			current_row.item->setBackground(0, QBrush());
 			current_row.edit->setToolTip(QString());
 		}
+	}
+
+	// A sequence edit can change while a filter is active (search-by-key or the
+	// conflicts-only quick filter); refresh the visible set so the list doesn't
+	// show stale results.
+	const bool filtering = !m_filter_edit->text().trimmed().isEmpty()
+			|| m_quick_filter->currentIndex() != ShowAll;
+	if (filtering) {
+		applyFilter();
 	}
 }
 
