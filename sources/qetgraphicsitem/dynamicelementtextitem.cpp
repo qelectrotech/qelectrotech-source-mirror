@@ -553,7 +553,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
 		if(m_slave_Xref_item)
-			m_slave_Xref_item->setDefaultTextColor(Qt::black);
+			m_slave_Xref_item->setDefaultTextColor(color());
 	}
 
 	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
@@ -792,7 +792,7 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneHoverLeave) {
-		m_slave_Xref_item->setDefaultTextColor(Qt::black);
+		m_slave_Xref_item->setDefaultTextColor(color());
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneMouseDoubleClick) {
@@ -1374,7 +1374,12 @@ void DynamicElementTextItem::updateXref()
 				{
 					m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
 					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
-					m_slave_Xref_item->setDefaultTextColor(Qt::black);
+						// Match the parent text's user-configurable color
+						// instead of hardcoding black, which renders
+						// invisible under dark themes/stylesheets that
+						// don't affect this sub-item the same way they do
+						// the parent (bugtracker #247).
+					m_slave_Xref_item->setDefaultTextColor(color());
 					m_slave_Xref_item->installSceneEventFilter(this);
 					
 					m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
