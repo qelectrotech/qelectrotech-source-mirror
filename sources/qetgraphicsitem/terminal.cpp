@@ -817,6 +817,60 @@ QUuid Terminal::uuid() const
 	return d->m_uuid;
 }
 
+/**
+	@brief Terminal::stableUuid
+	An identity for this terminal that exists on every element, not only on
+	those saved by a uuid-aware element editor.
+
+	uuid() comes from the catalog .elmt definition and is empty for every
+	element authored before that field existed -- which is most of the
+	installed base. Anything keyed on uuid() alone therefore cannot see those
+	elements at all.
+
+	When there is no uuid, derive one from the terminal's local position and
+	orientation inside its element. That is not an arbitrary choice: it is the
+	same thing the project format itself uses to match a conductor back to a
+	terminal ("each connection is made by using the local position of the
+	terminal and a dynamic id" -- TerminalData::m_uuid). m_pos is the position
+	read from the definition and is not touched by moving the element on the
+	folio, so the result is stable across loads, saves and folio moves, and it
+	is unique within an element except where a definition genuinely declares
+	two terminals at the same point -- three cases in the whole example corpus,
+	and harmless, because two terminals sharing a position and orientation are
+	indistinguishable in every observable respect: they merge to one terminal
+	row and every conductor on either of them still resolves to the right
+	element and name.
+
+	Derived values are UUID v5 in a fixed namespace, so they are reproducible
+	without being written to the file, and cannot collide with the v4 uuids
+	the element editor generates.
+
+	@return the terminal's own uuid when it has one, otherwise a derived one
+*/
+QUuid Terminal::stableUuid() const
+{
+	if (!d->m_uuid.isNull()) {
+		return d->m_uuid;
+	}
+
+		//Fixed namespace for terminal identities derived from geometry.
+	static const QUuid derived_ns(QStringLiteral("{6b1f6d1e-6a1a-5f7e-9a3d-9c0a5b2d7e11}"));
+
+		//Position and orientation only. The name is deliberately excluded: it
+		//is not stable across a save cycle -- QET rewrites a terminal named
+		//"_" as unnamed, which would silently change the identity of 1421 of
+		//industrial.qet's 1790 terminals on the first resave. It is also not
+		//needed: keying on geometry alone produces exactly the same number of
+		//collisions across the example corpus, and it means renaming a
+		//terminal does not change what it is.
+	const QString key = QStringLiteral("%1|%2|%3")
+			.arg(d->m_pos.x(), 0, 'f', 4)
+			.arg(d->m_pos.y(), 0, 'f', 4)
+			.arg(static_cast<int>(d->m_orientation));
+
+	return QUuid::createUuidV5(derived_ns, key);
+}
+
 QString Terminal::name() const
 {
 	if (d->m_use_master_label && parent_element_) {

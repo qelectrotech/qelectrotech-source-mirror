@@ -259,12 +259,13 @@ void projectDataBase::addConductor(Conductor *conductor)
 		return;
 	}
 
-		//A conductor whose terminal(s) predate terminal uuids (legacy
-		//elements not yet re-saved by a uuid-aware element editor) can't
-		//be given a stable identity here -- omitted the same way
-		//element_nomenclature_view already omits exclude_from_bom elements,
-		//rather than fabricating one.
-	if (conductor->terminal1->uuid().isNull() || conductor->terminal2->uuid().isNull()) {
+		//Both endpoints must belong to an element: the terminal table is keyed
+		//on (terminal, element) and a terminal with no parent has no identity
+		//to key on. Terminals whose *definition* predates terminal uuids are
+		//fine -- Terminal::stableUuid() derives one from the terminal's local
+		//position, which is what the project format itself matches on.
+	if (!conductor->terminal1->parentElement()
+		|| !conductor->terminal2->parentElement()) {
 		return;
 	}
 
@@ -366,9 +367,9 @@ void projectDataBase::bindConductorValues(QSqlQuery &query, Conductor *conductor
 {
 	query.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
 	query.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
-	query.bindValue(QStringLiteral(":terminal1_uuid"), conductor->terminal1->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal1_uuid"), conductor->terminal1->stableUuid().toString());
 	query.bindValue(QStringLiteral(":terminal1_element_uuid"), conductor->terminal1->parentElement()->uuid().toString());
-	query.bindValue(QStringLiteral(":terminal2_uuid"), conductor->terminal2->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal2_uuid"), conductor->terminal2->stableUuid().toString());
 	query.bindValue(QStringLiteral(":terminal2_element_uuid"), conductor->terminal2->parentElement()->uuid().toString());
 	query.bindValue(QStringLiteral(":text"), conductor->properties().text);
 }
@@ -730,9 +731,10 @@ void projectDataBase::populateConductorTable()
 		const auto conductor_list = diagram->conductors();
 		for (auto *conductor : conductor_list)
 		{
-				//See addConductor() for why terminals without a uuid
-				//(legacy elements) are omitted rather than fabricating one.
-			if (conductor->terminal1->uuid().isNull() || conductor->terminal2->uuid().isNull()) {
+				//See addConductor(): only a terminal with no parent element is
+				//skipped. A missing terminal uuid is handled by stableUuid().
+			if (!conductor->terminal1->parentElement()
+				|| !conductor->terminal2->parentElement()) {
 				continue;
 			}
 
@@ -756,7 +758,7 @@ void projectDataBase::populateConductorTable()
 */
 void projectDataBase::insertTerminal(Terminal *terminal)
 {
-	m_insert_terminal_query.bindValue(":uuid", terminal->uuid().toString());
+	m_insert_terminal_query.bindValue(":uuid", terminal->stableUuid().toString());
 	m_insert_terminal_query.bindValue(":element_uuid", terminal->parentElement()->uuid().toString());
 	m_insert_terminal_query.bindValue(":name", terminal->name());
 	if (!m_insert_terminal_query.exec()) {
