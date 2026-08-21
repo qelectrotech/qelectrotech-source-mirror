@@ -44,6 +44,7 @@
 #include <QSplitter>
 #include <QShortcut>
 #include <QMenu>
+#include <QRegularExpressionValidator>
 
 /**
 	@brief The EditorDelegate class
@@ -69,8 +70,7 @@ class EditorDelegate : public QItemDelegate
 			if (key == QETInformation::ELMT_WIDTH || key == QETInformation::ELMT_HEIGHT || key == QETInformation::ELMT_DEPTH)
 			{
 				auto *line_edit = new QLineEdit(parent);
-				auto *validator = new QRegularExpressionValidator(
-					QETInformation::numericInfoPattern(), line_edit);
+				auto *validator = new QETInformation::NumericInfoValidator(line_edit);
 				line_edit->setValidator(validator);
 				line_edit->setPlaceholderText(tr("ex. 80.5"));
 				line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));

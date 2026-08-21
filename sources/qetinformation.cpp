@@ -229,6 +229,33 @@ QRegularExpression QETInformation::numericInfoPattern()
 }
 
 /**
+	@brief QETInformation::NumericInfoValidator::NumericInfoValidator
+	@param parent
+*/
+QETInformation::NumericInfoValidator::NumericInfoValidator(QObject *parent) :
+	QRegularExpressionValidator(numericInfoPattern(), parent)
+{
+}
+
+/**
+	@brief QETInformation::NumericInfoValidator::validate
+	Rewrites any "," in @a input to "." in place, then delegates to
+	the base class for the actual numericInfoPattern() check. @a pos
+	is left untouched by the rewrite itself -- replacing "," with "."
+	never changes the string's length, so the cursor position the
+	caller already tracked stays correct.
+	@param input the text being validated; may be rewritten
+	@param pos the cursor position within @a input
+	@return the resulting validation state
+*/
+QValidator::State QETInformation::NumericInfoValidator::validate(QString &input, int &pos) const
+{
+	if (input.contains(QLatin1Char(',')))
+		input.replace(QLatin1Char(','), QLatin1Char('.'));
+	return QRegularExpressionValidator::validate(input, pos);
+}
+
+/**
  * @brief QETInformation::infoToVar
  * @param info
  * @return return the string @info prepended by %{ ans appended by }

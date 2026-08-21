@@ -20,6 +20,7 @@
 
 #include <QHash>
 #include <QRegularExpression>
+#include <QRegularExpressionValidator>
 #include <QStringList>
 
 /**
@@ -27,10 +28,12 @@
  * element, conductor and diagram.
  * Each information have 3 values :
  * #1 the info key = the key of an information as a QString used in the code
- * (example : label) #2 the info key to variable = the key in form of a
- * variable. This is used by the user to replace a variable by the string of
- * this variable (example : %{label}) #3 the info key translated to the current
- * local (example label in dutch = Betriebsmittelkennzeichen)
+ * (example : label)
+ * #2 the info key to variable = the key in form of a variable. This is used
+ * by the user to replace a variable by the string of this variable
+ * (example : %{label})
+ * #3 the info key translated to the current local (example label in dutch =
+ * Betriebsmittelkennzeichen)
  */
 namespace QETInformation
 {
@@ -161,6 +164,12 @@ namespace QETInformation
 	QString elementInfoToVar(const QString &info);
 
 	QRegularExpression numericInfoPattern();
+	class NumericInfoValidator : public QRegularExpressionValidator
+	{
+	public:
+		explicit NumericInfoValidator(QObject *parent = nullptr);
+		State validate(QString &input, int &pos) const override;
+	};
 
 	QStringList terminalElementInfoKeys();
 

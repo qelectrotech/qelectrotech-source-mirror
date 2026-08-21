@@ -47,8 +47,7 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 
 	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
 	{
-		auto *validator = new QRegularExpressionValidator(
-			QETInformation::numericInfoPattern(), ui->line_edit);
+		auto *validator = new QETInformation::NumericInfoValidator(ui->line_edit);
 		ui->line_edit->setValidator(validator);
 		ui->line_edit->setPlaceholderText(tr("ex. 80.5"));
 		ui->line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
@@ -76,6 +75,15 @@ ElementInfoPartWidget::~ElementInfoPartWidget()
 QString ElementInfoPartWidget::text() const
 {
 	return (ui->line_edit->text());
+}
+
+/**
+	@brief ElementInfoPartWidget::hasAcceptableInput
+	@return whether the line edit's current text satisfies its validator
+*/
+bool ElementInfoPartWidget::hasAcceptableInput() const
+{
+	return ui->line_edit->hasAcceptableInput();
 }
 
 /**
