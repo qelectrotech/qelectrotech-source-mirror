@@ -643,10 +643,18 @@ void projectDataBase::createSummaryView()
 	  back with an empty label rather than vanishing. Losing a wire from a
 	  wiring list is a worse failure than showing one with a blank end.
 
+	- diagram is LEFT joined for the same reason. It should
+	  always match, since QETProject::diagramAdded is wired to addDiagram()
+	  and a conductor cannot exist before its folio -- but an inner join here
+	  would make that an assumption the view silently enforces, and a wire
+	  missing from a wiring list is the one failure this view must not have.
+
 	The result is that this view returns exactly as many rows as the
 	conductor table holds -- what is already excluded upstream (conductors
 	on legacy terminals without uuids) stays excluded, and nothing new is
-	dropped here.
+	dropped here. Only the terminal joins are inner, and both are guaranteed
+	by insertTerminal() running for each endpoint before the conductor row
+	is written.
 */
 void projectDataBase::createWiringListView()
 {
@@ -665,7 +673,7 @@ void projectDataBase::createWiringListView()
 						 " JOIN terminal t2 ON c.terminal2_uuid = t2.uuid AND c.terminal2_element_uuid = t2.element_uuid"
 						 " LEFT JOIN element_info ei1 ON t1.element_uuid = ei1.element_uuid"
 						 " LEFT JOIN element_info ei2 ON t2.element_uuid = ei2.element_uuid"
-						 " JOIN diagram d ON c.diagram_uuid = d.uuid");
+						 " LEFT JOIN diagram d ON c.diagram_uuid = d.uuid");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
