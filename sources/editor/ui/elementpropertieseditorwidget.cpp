@@ -410,13 +410,21 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 
 	if (m_data.m_type == ElementData::Terminal)
 	{
-		m_data.m_informations.addValue(QStringLiteral("auto_num_locked"),
-			ui->m_auto_num_locked_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
-		m_data.m_informations.addValue(QStringLiteral("potential_isolating"),
-			ui->m_potential_isolating_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+		if (ui->m_auto_num_locked_cb->isChecked())
+			m_data.m_informations.addValue(QStringLiteral("auto_num_locked"), QStringLiteral("true"));
+		else
+			m_data.m_informations.remove(QStringLiteral("auto_num_locked"));
+
+		if (ui->m_potential_isolating_cb->isChecked())
+			m_data.m_informations.addValue(QStringLiteral("potential_isolating"), QStringLiteral("true"));
+		else
+			m_data.m_informations.remove(QStringLiteral("potential_isolating"));
 	}
-	m_data.m_informations.addValue(QStringLiteral("exclude_from_bom"),
-		ui->m_exclude_from_bom_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+
+	if (ui->m_exclude_from_bom_cb->isChecked())
+		m_data.m_informations.addValue(QStringLiteral("exclude_from_bom"), QStringLiteral("true"));
+	else
+		m_data.m_informations.remove(QStringLiteral("exclude_from_bom"));
 
 	this->close();
 }
