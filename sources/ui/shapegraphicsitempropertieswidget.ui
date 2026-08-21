@@ -142,6 +142,9 @@
         <property name="accelerated">
          <bool>true</bool>
         </property>
+        <property name="minimum">
+         <double>0.010000000000000</double>
+        </property>
         <property name="maximum">
          <double>99999.000000000000000</double>
         </property>
@@ -167,6 +170,9 @@
         </property>
         <property name="accelerated">
          <bool>true</bool>
+        </property>
+        <property name="minimum">
+         <double>0.010000000000000</double>
         </property>
         <property name="maximum">
          <double>99999.000000000000000</double>
