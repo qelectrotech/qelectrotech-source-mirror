@@ -41,6 +41,12 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 
 	auto *layout = new QVBoxLayout(this);
 
+		//The wiring list reads the database rather than the diagrams, and a
+		//conductor's row is only as fresh as the last thing that touched it.
+		//Refresh before querying so the dialog cannot show a wire number that
+		//was edited earlier in the session.
+	m_project->dataBase()->updateDB();
+
 	auto *model = new QSqlQueryModel(this);
 	model->setQuery(QStringLiteral(
 				"SELECT wire_number, from_element_label, from_terminal,"
@@ -57,6 +63,14 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 	model->setHeaderData(5, Qt::Horizontal, tr("Folio", "column title"));
 
 	const int excluded = m_project->dataBase()->excludedConductorCount();
+
+		//QSqlQueryModel fetches lazily, so rowCount() straight after
+		//setQuery() reports the first batch (256) rather than the query's
+		//size. Draining it first is what makes the count below true for a
+		//project with more wires than that.
+	while (model->canFetchMore()) {
+		model->fetchMore();
+	}
 	const int listed = model->rowCount();
 
 	auto *summary = new QLabel(this);
