@@ -54,6 +54,7 @@ namespace CLIExport {
 		  qelectrotech --check-elements <element.elmt | directory>
 		  qelectrotech --resave         <project.qet> <output.qet>
 		  qelectrotech --set-titleblock <project.qet> <output.qet> key=value...
+		  qelectrotech --test-ops       <project.qet> <ops.json> <output.qet>
 
 		PDF: one multi-page document (one diagram per page).
 		PNG/SVG: one file per diagram, named <output_dir>/<NN>_<title>.<ext>.
@@ -71,6 +72,35 @@ namespace CLIExport {
 		      Keys: title, author, date (or date=today), plant, location,
 		      revision, version, filename; any other key becomes a custom
 		      field.  E.g. --set-titleblock in.qet out.qet revision=B date=today
+		test-ops: headless, scripted editing for automated regression
+		      testing (not an end-user feature). Applies a JSON array of
+		      operations to the FIRST diagram's selection state, in the
+		      same code path the GUI uses (DeleteQGraphicsItemCommand,
+		      RotateSelectionCommand, QUndoStack::undo/redo), then saves.
+		      Ops (each a JSON object with an "op" key):
+		        {"op": "select", "uuids": ["{...}", ...]}
+		            Clears the diagram's selection, then selects every
+		            element whose uuid is listed. Unknown uuids are
+		            reported on stderr and otherwise ignored.
+		        {"op": "delete"}
+		            Deletes the current selection (same command the GUI's
+		            "Delete" action pushes).
+		        {"op": "rotate", "angle": 90}
+		            Rotates the current selection in place ("angle"
+		            defaults to 90). Rotating as a single rigid group
+		            (the GUI's "Pivoter le groupe") is not available
+		            here yet -- it needs PR #660, not merged as of this
+		            writing; an "as_group" key is rejected rather than
+		            silently ignored.
+		        {"op": "undo"} / {"op": "redo"}
+		            One step on the diagram's QUndoStack.
+		      On completion, prints a one-line JSON summary to stdout:
+		      {"ops_applied": N, "element_count": N, "element_info_count": N}
+		      -- the last two are row counts from the in-memory project
+		      database (SELECT COUNT(*) FROM element / element_info), the
+		      same table PR #664 found leaking orphan rows on delete+undo.
+		      A mismatch between them is exactly that bug class,
+		      independent of which specific operation caused it.
 	*/
 	int run(const QStringList &args);
 

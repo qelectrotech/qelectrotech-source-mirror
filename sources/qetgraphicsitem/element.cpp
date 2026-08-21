@@ -689,12 +689,14 @@ bool Element::valideXml(QDomElement &e)
 		return(false);
 	}
 
-	bool conv_ok;
-	e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
-	e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+		// QET::attributeIsAReal() also rejects non-finite values
+		// (nan/inf), unlike a raw QString::toDouble(&ok) check -- see
+		// its definition in qet.cpp for why that distinction matters
+		// here specifically.
+	if (!QET::attributeIsAReal(e, QStringLiteral("x")) ||
+		!QET::attributeIsAReal(e, QStringLiteral("y"))) {
+		return(false);
+	}
 
 	return(true);
 }
