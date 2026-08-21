@@ -1010,7 +1010,13 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		//generate one on load, same treatment terminal uuids got when
 		//that field was introduced (see terminal1/terminal2 handling in
 		//toXml() below).
-	m_uuid = QUuid(dom_element.attribute("uuid", QUuid::createUuid().toString()));
+	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid")));
+	if (m_uuid.isNull()) {
+			//Absent, empty or malformed: mint one. A null uuid is not a usable
+			//identity -- every conductor carrying one would collide with every
+			//other on the conductor table's primary key.
+		m_uuid = QUuid::createUuid();
+	}
 
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
