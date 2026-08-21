@@ -617,6 +617,9 @@ void projectDataBase::createElementNomenclatureView()
 							//is one wire touching it, not two. Conductors whose terminals have
 							//no uuid are absent from the conductor table, so an element wired
 							//only by those reads 0 -- see excludedConductorCount().
+							//This is a correlated subquery, run once per element row, so it
+							//leans on the idx_conductor_terminal{1,2}_element indexes created
+							//with the table; without them each row full-scans conductor.
 						 "(SELECT COUNT(DISTINCT c.uuid) FROM conductor c"
 						 " WHERE c.terminal1_element_uuid = e.uuid"
 						 " OR c.terminal2_element_uuid = e.uuid) AS wire_count "
