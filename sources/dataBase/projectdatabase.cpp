@@ -113,14 +113,17 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
 
 /**
 	@brief projectDataBase::excludedConductorCount
-	@return how many conductors of the project are deliberately absent from
-	the conductor table because at least one of their terminals has no uuid.
+	@return how many conductors of the project are absent from the conductor
+	table because an endpoint has no parent element to key on.
 
 	Counted from the live scene rather than from the database, precisely
-	because the database is where these conductors are *not*. See
-	addConductor() for why they are omitted: a terminal uuid comes from the
-	catalog .elmt definition, so an element whose definition predates that
-	field yields terminals with no stable identity to key on.
+	because the database is where these conductors are *not*.
+
+	This used to count conductors whose terminals had no uuid, which was most
+	of them on most projects. Terminal::stableUuid() now derives an identity
+	from the terminal's geometry when the definition provides no uuid, so that
+	is no longer a reason to exclude anything, and this counts only the case
+	that remains genuinely unkeyable.
 
 	This is what lets a caller tell the user "N wires are missing and here
 	is why", instead of silently presenting a short list as if it were
@@ -138,8 +141,10 @@ int projectDataBase::excludedConductorCount() const
 		const auto conductor_list = diagram->conductors();
 		for (auto *conductor : conductor_list)
 		{
-			if (conductor->terminal1->uuid().isNull()
-				|| conductor->terminal2->uuid().isNull()) {
+				//Must match addConductor()'s guard exactly, or this reports
+				//wires as missing that the list is in fact showing.
+			if (!conductor->terminal1->parentElement()
+				|| !conductor->terminal2->parentElement()) {
 				++count;
 			}
 		}

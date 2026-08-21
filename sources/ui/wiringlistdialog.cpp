@@ -77,14 +77,14 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 	summary->setWordWrap(true);
 	if (excluded > 0)
 	{
-			//The count matters more than it looks: a project whose elements
-			//all predate terminal uuids yields an entirely empty list, and
-			//without this line that is indistinguishable from a project with
-			//no wires in it.
+			//Rare now that Terminal::stableUuid() gives every terminal an
+			//identity: what is left is a conductor whose endpoint has no
+			//parent element at all. Still worth saying out loud rather than
+			//presenting a short list as if it were complete.
 		summary->setText(tr("%n conducteur(s) listé(s).", "wiring list summary", listed)
 				 % QStringLiteral(" ")
-				 % tr("%n conducteur(s) exclu(s) : leurs éléments ne définissent pas"
-				      " d'identifiant de borne (définition d'élément trop ancienne).",
+				 % tr("%n conducteur(s) exclu(s) : une extrémité n'est rattachée"
+				      " à aucun élément.",
 				      "wiring list exclusion warning", excluded));
 	}
 	else {
