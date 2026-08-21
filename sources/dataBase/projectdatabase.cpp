@@ -271,13 +271,8 @@ void projectDataBase::addConductor(Conductor *conductor)
 	insertTerminal(conductor->terminal1);
 	insertTerminal(conductor->terminal2);
 
-	m_insert_conductor_query.bindValue(":uuid", conductor->uuid().toString());
-	m_insert_conductor_query.bindValue(":diagram_uuid", conductor->diagram()->uuid().toString());
-	m_insert_conductor_query.bindValue(":terminal1_uuid", conductor->terminal1->uuid().toString());
-	m_insert_conductor_query.bindValue(":terminal1_element_uuid", conductor->terminal1->parentElement()->uuid().toString());
-	m_insert_conductor_query.bindValue(":terminal2_uuid", conductor->terminal2->uuid().toString());
-	m_insert_conductor_query.bindValue(":terminal2_element_uuid", conductor->terminal2->parentElement()->uuid().toString());
-	m_insert_conductor_query.bindValue(":text", conductor->properties().text);
+	watchConductor(conductor);
+	bindConductorValues(m_insert_conductor_query, conductor, conductor->diagram());
 	if (!m_insert_conductor_query.exec()) {
 		qDebug() << "projectDataBase::addConductor insert error : " << m_insert_conductor_query.lastError();
 	} else {
@@ -297,6 +292,85 @@ void projectDataBase::removeConductor(Conductor *conductor)
 	} else {
 		emit dataBaseUpdated();
 	}
+}
+
+/**
+	@brief projectDataBase::updateConductor
+	Refresh the mutable columns of an already-inserted conductor.
+
+	Only the text (the wire number) can change without the conductor being
+	removed and re-added: its endpoints are fixed for its lifetime. Without
+	this, renaming a wire left the database holding the old number and the
+	wiring list showed a stale value until the next full repopulate.
+	@param conductor
+*/
+void projectDataBase::updateConductor(Conductor *conductor)
+{
+	if (!conductor) {
+		return;
+	}
+
+	m_update_conductor_query.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
+	m_update_conductor_query.bindValue(QStringLiteral(":text"), conductor->properties().text);
+	if (!m_update_conductor_query.exec()) {
+		qDebug() << "projectDataBase::updateConductor update error : " << m_update_conductor_query.lastError();
+	}
+
+		//Deliberately no dataBaseUpdated() here, unlike add/remove. The only
+		//column this touches is the wire text, which no view watched by
+		//ProjectDBModel displays -- the nomenclature shows elements, and its
+		//wire_count changes when a conductor appears or disappears, not when
+		//it is renamed. Emitting would make every ProjectDBModel re-run its
+		//query, and auto-numbering renames every conductor in the project in
+		//one pass.
+}
+
+/**
+	@brief projectDataBase::watchConductor
+	Keep this conductor's row in step with its properties.
+
+	Conductor::setProperties() has a dozen call sites (auto-numbering, the
+	properties dialog, element moves, deletion re-links...), so listening to
+	the signal it already emits is the only way to catch them all -- and the
+	only way to catch the ones added later. Qt::UniqueConnection makes a
+	repeated insert or a full repopulate harmless.
+	@param conductor
+*/
+void projectDataBase::watchConductor(Conductor *conductor)
+{
+	connect(conductor, &Conductor::propertiesChange,
+			this, &projectDataBase::conductorPropertiesChanged,
+			Qt::UniqueConnection);
+}
+
+/**
+	@brief projectDataBase::conductorPropertiesChanged
+*/
+void projectDataBase::conductorPropertiesChanged()
+{
+	if (auto *conductor = qobject_cast<Conductor *>(sender())) {
+		updateConductor(conductor);
+	}
+}
+
+/**
+	@brief projectDataBase::bindConductorValues
+	One binder for both insert paths, so a conductor added to a live diagram
+	and one read from a file can never drift apart -- the same reason
+	bindElementValues() exists for elements.
+	@param query
+	@param conductor
+	@param diagram : the diagram the conductor belongs to
+*/
+void projectDataBase::bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram)
+{
+	query.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
+	query.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal1_uuid"), conductor->terminal1->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal1_element_uuid"), conductor->terminal1->parentElement()->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal2_uuid"), conductor->terminal2->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal2_element_uuid"), conductor->terminal2->parentElement()->uuid().toString());
+	query.bindValue(QStringLiteral(":text"), conductor->properties().text);
 }
 
 /**
@@ -411,6 +485,21 @@ bool projectDataBase::createDataBase()
 						  ")");
 	if (!query_.exec(conductor_table)) {
 		qDebug() << "conductor_table query : "<< query_.lastError();
+	}
+
+		//The element-facing columns are looked up per element row, not per
+		//conductor row: element_nomenclature_view carries a correlated
+		//subquery counting the wires touching each element. Without these
+		//indexes each element row full-scans the conductor table, which grows
+		//as elements x conductors.
+	for (const QString &index_ : {
+			QStringLiteral("CREATE INDEX idx_conductor_terminal1_element ON conductor (terminal1_element_uuid)"),
+			QStringLiteral("CREATE INDEX idx_conductor_terminal2_element ON conductor (terminal2_element_uuid)"),
+			QStringLiteral("CREATE INDEX idx_conductor_diagram ON conductor (diagram_uuid)") })
+	{
+		if (!query_.exec(index_)) {
+			qDebug() << "conductor index query : " << query_.lastError();
+		}
 	}
 
 	createElementNomenclatureView();
@@ -650,13 +739,8 @@ void projectDataBase::populateConductorTable()
 			insertTerminal(conductor->terminal1);
 			insertTerminal(conductor->terminal2);
 
-			m_insert_conductor_query.bindValue(":uuid", conductor->uuid().toString());
-			m_insert_conductor_query.bindValue(":diagram_uuid", diagram->uuid().toString());
-			m_insert_conductor_query.bindValue(":terminal1_uuid", conductor->terminal1->uuid().toString());
-			m_insert_conductor_query.bindValue(":terminal1_element_uuid", conductor->terminal1->parentElement()->uuid().toString());
-			m_insert_conductor_query.bindValue(":terminal2_uuid", conductor->terminal2->uuid().toString());
-			m_insert_conductor_query.bindValue(":terminal2_element_uuid", conductor->terminal2->parentElement()->uuid().toString());
-			m_insert_conductor_query.bindValue(":text", conductor->properties().text);
+			watchConductor(conductor);
+			bindConductorValues(m_insert_conductor_query, conductor, diagram);
 			if (!m_insert_conductor_query.exec()) {
 				qDebug() << "projectDataBase::populateConductorTable insert error : " << m_insert_conductor_query.lastError();
 			}
@@ -761,6 +845,10 @@ void projectDataBase::prepareQuery()
 	m_insert_conductor_query = QSqlQuery(m_data_base);
 	m_insert_conductor_query.prepare("INSERT INTO conductor (uuid, diagram_uuid, terminal1_uuid, terminal1_element_uuid, terminal2_uuid, terminal2_element_uuid, text) "
 					  "VALUES (:uuid, :diagram_uuid, :terminal1_uuid, :terminal1_element_uuid, :terminal2_uuid, :terminal2_element_uuid, :text)");
+
+		//UPDATE CONDUCTOR
+	m_update_conductor_query = QSqlQuery(m_data_base);
+	m_update_conductor_query.prepare(QStringLiteral("UPDATE conductor SET text = :text WHERE uuid = :uuid"));
 
 		//REMOVE CONDUCTOR
 	m_remove_conductor_query = QSqlQuery(m_data_base);
