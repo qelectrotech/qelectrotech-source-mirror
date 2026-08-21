@@ -48,6 +48,7 @@ namespace CLIExport {
 		  qelectrotech --export-cables  <project.qet> <output.csv>
 		  qelectrotech --export-wires   <project.qet> <output.csv>
 		  qelectrotech --export-bom     <project.qet> <output.csv>
+		  qelectrotech --export-wiring  <project.qet> <output.csv>
 		  qelectrotech --export-nets    <project.qet> <output.json>
 		  qelectrotech --export-links   <project.qet> <output.csv>
 		  qelectrotech --info           <project.qet> [output.json]
@@ -60,6 +61,11 @@ namespace CLIExport {
 		cables: wiring list (one row per conductor) as CSV.
 		wires: list of distinct wire numbers as CSV.
 		bom: bill of materials (one row per element) as CSV.
+		wiring: from-to wiring list (one row per conductor) as CSV, read from
+		        the project database. Same logical list as `cables`, which
+		        reads the document XML instead; the two are meant to agree,
+		        so diffing them checks that the database still describes the
+		        project.
 		nets: electrical nets (connected-terminal groups) as JSON.
 		links: element cross-references (coil/contact) as CSV, with
 		       unresolved links flagged.
