@@ -2795,11 +2795,11 @@ void QETDiagramEditor::generateTerminalBlock()
  * Opens the dialog for automatic terminal numbering and applies the generated undo command.
  */
 void QETDiagramEditor::slot_terminalNumbering() {
-	TerminalNumberingDialog dialog(this);
-	if (dialog.exec() == QDialog::Accepted) {
-		QETProject *project = currentProject();
-		if (!project) return;
+	QETProject *project = currentProject();
+	if (!project) return;
 
+	TerminalNumberingDialog dialog(this, project);
+	if (dialog.exec() == QDialog::Accepted) {
 		// Fetch the generated undo command from the dialog logic
 		QUndoCommand *macro = dialog.getUndoCommand(project);
 

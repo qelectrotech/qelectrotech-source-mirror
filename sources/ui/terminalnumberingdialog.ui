@@ -6,8 +6,8 @@
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>400</width>
-                <height>300</height>
+                <width>500</width>
+                <height>450</height>
             </rect>
         </property>
         <property name="windowTitle">
@@ -25,56 +25,123 @@
                 </widget>
             </item>
             <item>
-                <widget class="QGroupBox" name="groupBox_axis">
-                    <property name="title">
-                        <string>Priorité des axes</string>
-                    </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_2">
-                        <item>
-                            <widget class="QRadioButton" name="rb_priority_x">
-                                <property name="text">
-                                    <string>Priorité à l'axe X (horizontal)</string>
-                                </property>
-                                <property name="checked">
-                                    <bool>true</bool>
-                                </property>
-                            </widget>
-                        </item>
-                        <item>
-                            <widget class="QRadioButton" name="rb_priority_y">
-                                <property name="text">
-                                    <string>Priorité à l'axe Y (vertical)</string>
-                                </property>
-                            </widget>
-                        </item>
-                    </layout>
-                </widget>
-            </item>
-            <item>
-                <widget class="QGroupBox" name="groupBox_type">
-                    <property name="title">
-                        <string>Type de numérotation</string>
-                    </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_3">
-                        <item>
-                            <widget class="QRadioButton" name="rb_type_num">
-                                <property name="text">
-                                    <string>Numérique uniquement (1, 2, 3...)</string>
-                                </property>
-                                <property name="checked">
-                                    <bool>true</bool>
-                                </property>
-                            </widget>
-                        </item>
-                        <item>
-                            <widget class="QRadioButton" name="rb_type_alpha">
-                                <property name="text">
-                                    <string>Alphanumérique (A, B, C... 1, 2...)</string>
-                                </property>
-                            </widget>
-                        </item>
-                    </layout>
-                </widget>
+                <layout class="QHBoxLayout" name="horizontalLayout_main">
+                    <item>
+                        <layout class="QVBoxLayout" name="verticalLayout_left">
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_axis">
+                                    <property name="title">
+                                        <string>Priorité des axes</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_2">
+                                        <item>
+                                            <widget class="QRadioButton" name="rb_priority_x">
+                                                <property name="text">
+                                                    <string>Priorité à l'axe X (horizontal)</string>
+                                                </property>
+                                                <property name="checked">
+                                                    <bool>true</bool>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QRadioButton" name="rb_priority_y">
+                                                <property name="text">
+                                                    <string>Priorité à l'axe Y (vertical)</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QGroupBox" name="groupBox_type">
+                                    <property name="title">
+                                        <string>Type de numérotation</string>
+                                    </property>
+                                    <layout class="QVBoxLayout" name="verticalLayout_3">
+                                        <item>
+                                            <widget class="QRadioButton" name="rb_type_num">
+                                                <property name="text">
+                                                    <string>Numérique uniquement (1, 2, 3...)</string>
+                                                </property>
+                                                <property name="checked">
+                                                    <bool>true</bool>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <widget class="QRadioButton" name="rb_type_alpha">
+                                                <property name="text">
+                                                    <string>Alphanumérique (A, B, C... 1, 2...)</string>
+                                                </property>
+                                            </widget>
+                                        </item>
+                                        <item>
+                                            <layout class="QHBoxLayout" name="horizontalLayout_also_alpha">
+                                                <item>
+                                                    <spacer name="spacer_also_alpha">
+                                                        <property name="orientation">
+                                                            <enum>Qt::Horizontal</enum>
+                                                        </property>
+                                                        <property name="sizeType">
+                                                            <enum>QSizePolicy::Fixed</enum>
+                                                        </property>
+                                                        <property name="sizeHint" stdset="0">
+                                                            <size>
+                                                                <width>20</width>
+                                                                <height>0</height>
+                                                            </size>
+                                                        </property>
+                                                    </spacer>
+                                                </item>
+                                                <item>
+                                                    <widget class="QCheckBox" name="cb_also_alpha">
+                                                        <property name="text">
+                                                            <string>Numéroter également les lettres</string>
+                                                        </property>
+                                                        <property name="enabled">
+                                                            <bool>false</bool>
+                                                        </property>
+                                                    </widget>
+                                                </item>
+                                            </layout>
+                                        </item>
+                                    </layout>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <widget class="QGroupBox" name="groupBox_strips">
+                            <property name="title">
+                                <string>Borniers</string>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_strips">
+                                <item>
+                                    <widget class="QLabel" name="label_strips_description">
+                                        <property name="text">
+                                            <string>Décochez les borniers dont la numérotation doit être exclue</string>
+                                        </property>
+                                        <property name="wordWrap">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="QScrollArea" name="scrollArea_strips">
+                                        <property name="widgetResizable">
+                                            <bool>true</bool>
+                                        </property>
+                                        <widget class="QWidget" name="scrollAreaWidgetContents_strips">
+                                            <layout class="QVBoxLayout" name="verticalLayout_strips_content"/>
+                                        </widget>
+                                    </widget>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+                </layout>
             </item>
             <item>
                 <spacer name="verticalSpacer">
