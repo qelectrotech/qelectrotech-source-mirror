@@ -82,6 +82,13 @@ void PasteDiagramCommand::redo()
 	{
 		first_redo = false;
 
+		//make new uuid for every pasted conductor, because old uuid are
+		//the uuid of the copied conductor
+		const QList <Conductor *> all_pasted_conductors = content.conductors();
+		for (Conductor *c : all_pasted_conductors) {
+			c -> newUuid();
+		}
+
 		//this is the first paste, we do some actions for the new element
 		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list)
