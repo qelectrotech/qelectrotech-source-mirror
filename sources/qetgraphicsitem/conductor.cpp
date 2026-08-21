@@ -91,6 +91,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	m_previous_z_value = zValue();
+	m_uuid = QUuid::createUuid();
 
 		//Add this conductor to the list of conductors of each of the two terminals
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -1005,6 +1006,18 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
+		//Older project files have no conductor uuid attribute at all --
+		//generate one on load, same treatment terminal uuids got when
+		//that field was introduced (see terminal1/terminal2 handling in
+		//toXml() below).
+	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid")));
+	if (m_uuid.isNull()) {
+			//Absent, empty or malformed: mint one. A null uuid is not a usable
+			//identity -- every conductor carrying one would collide with every
+			//other on the conductor table's primary key.
+		m_uuid = QUuid::createUuid();
+	}
+
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
 
@@ -1043,6 +1056,7 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 
+	dom_element.setAttribute("uuid", m_uuid.toString());
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 	

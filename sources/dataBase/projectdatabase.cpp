@@ -21,7 +21,9 @@
 #include "../diagramposition.h"
 #include "../elementprovider.h"
 #include "../qetapp.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
+#include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
 
@@ -87,6 +89,7 @@ void projectDataBase::updateDB()
 	populateDiagramInfoTable();
 	populateElementTable();
 	populateElementInfoTable();
+	populateConductorTable();
 	emit dataBaseUpdated();
 }
 
@@ -246,6 +249,132 @@ void projectDataBase::diagramOrderChanged()
 }
 
 /**
+	@brief projectDataBase::addConductor
+	@param conductor
+*/
+void projectDataBase::addConductor(Conductor *conductor)
+{
+	if (!conductor || !conductor->diagram()) {
+		qDebug() << "projectDataBase::addConductor: null conductor or diagram";
+		return;
+	}
+
+		//Both endpoints must belong to an element: the terminal table is keyed
+		//on (terminal, element) and a terminal with no parent has no identity
+		//to key on. Terminals whose *definition* predates terminal uuids are
+		//fine -- Terminal::stableUuid() derives one from the terminal's local
+		//position, which is what the project format itself matches on.
+	if (!conductor->terminal1->parentElement()
+		|| !conductor->terminal2->parentElement()) {
+		return;
+	}
+
+	insertTerminal(conductor->terminal1);
+	insertTerminal(conductor->terminal2);
+
+	watchConductor(conductor);
+	bindConductorValues(m_insert_conductor_query, conductor, conductor->diagram());
+	if (!m_insert_conductor_query.exec()) {
+		qDebug() << "projectDataBase::addConductor insert error : " << m_insert_conductor_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
+	@brief projectDataBase::removeConductor
+	@param conductor
+*/
+void projectDataBase::removeConductor(Conductor *conductor)
+{
+	m_remove_conductor_query.bindValue(":uuid", conductor->uuid().toString());
+	if (!m_remove_conductor_query.exec()) {
+		qDebug() << "projectDataBase::removeConductor delete error : " << m_remove_conductor_query.lastError();
+	} else {
+		emit dataBaseUpdated();
+	}
+}
+
+/**
+	@brief projectDataBase::updateConductor
+	Refresh the mutable columns of an already-inserted conductor.
+
+	Only the text (the wire number) can change without the conductor being
+	removed and re-added: its endpoints are fixed for its lifetime. Without
+	this, renaming a wire left the database holding the old number and the
+	wiring list showed a stale value until the next full repopulate.
+	@param conductor
+*/
+void projectDataBase::updateConductor(Conductor *conductor)
+{
+	if (!conductor) {
+		return;
+	}
+
+	m_update_conductor_query.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
+	m_update_conductor_query.bindValue(QStringLiteral(":text"), conductor->properties().text);
+	if (!m_update_conductor_query.exec()) {
+		qDebug() << "projectDataBase::updateConductor update error : " << m_update_conductor_query.lastError();
+	}
+
+		//Deliberately no dataBaseUpdated() here, unlike add/remove. The only
+		//column this touches is the wire text, which no view watched by
+		//ProjectDBModel displays -- the nomenclature shows elements, and its
+		//wire_count changes when a conductor appears or disappears, not when
+		//it is renamed. Emitting would make every ProjectDBModel re-run its
+		//query, and auto-numbering renames every conductor in the project in
+		//one pass.
+}
+
+/**
+	@brief projectDataBase::watchConductor
+	Keep this conductor's row in step with its properties.
+
+	Conductor::setProperties() has a dozen call sites (auto-numbering, the
+	properties dialog, element moves, deletion re-links...), so listening to
+	the signal it already emits is the only way to catch them all -- and the
+	only way to catch the ones added later. Qt::UniqueConnection makes a
+	repeated insert or a full repopulate harmless.
+	@param conductor
+*/
+void projectDataBase::watchConductor(Conductor *conductor)
+{
+	connect(conductor, &Conductor::propertiesChange,
+			this, &projectDataBase::conductorPropertiesChanged,
+			Qt::UniqueConnection);
+}
+
+/**
+	@brief projectDataBase::conductorPropertiesChanged
+*/
+void projectDataBase::conductorPropertiesChanged()
+{
+	if (auto *conductor = qobject_cast<Conductor *>(sender())) {
+		updateConductor(conductor);
+	}
+}
+
+/**
+	@brief projectDataBase::bindConductorValues
+	One binder for both insert paths, so a conductor added to a live diagram
+	and one read from a file can never drift apart -- the same reason
+	bindElementValues() exists for elements.
+	@param query
+	@param conductor
+	@param diagram : the diagram the conductor belongs to
+*/
+void projectDataBase::bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram)
+{
+	query.bindValue(QStringLiteral(":uuid"), conductor->uuid().toString());
+	query.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal1_uuid"), conductor->terminal1->stableUuid().toString());
+	query.bindValue(QStringLiteral(":terminal1_element_uuid"), conductor->terminal1->parentElement()->uuid().toString());
+	query.bindValue(QStringLiteral(":terminal2_uuid"), conductor->terminal2->stableUuid().toString());
+	query.bindValue(QStringLiteral(":terminal2_element_uuid"), conductor->terminal2->parentElement()->uuid().toString());
+	query.bindValue(QStringLiteral(":text"), conductor->properties().text);
+}
+
+/**
 	@brief projectDataBase::createDataBase
 	Create the data base
 	@return : true if the data base was successfully created.
@@ -323,8 +452,60 @@ bool projectDataBase::createDataBase()
 		qDebug() << " element_info_table query : " << query_.lastError();
 	}
 
+	//Create the terminal table.
+	//Terminal::uuid() is the terminal-position id baked into the catalog
+	//.elmt definition (e.g. "the top terminal") -- identical across every
+	//placed instance of that catalog element, not a per-instance id. A
+	//terminal instance is only uniquely identified by (uuid, element_uuid)
+	//together, so that pair is the primary key here, not uuid alone.
+	QString terminal_table("CREATE TABLE terminal"
+						  "( "
+						  "uuid VARCHAR(50) NOT NULL, "
+						  "element_uuid VARCHAR(50) NOT NULL,"
+						  "name VARCHAR(50),"
+						  "PRIMARY KEY (uuid, element_uuid),"
+						  "FOREIGN KEY (element_uuid) REFERENCES element (uuid)"
+						  ")");
+	if (!query_.exec(terminal_table)) {
+		qDebug() << "terminal_table query : "<< query_.lastError();
+	}
+
+	//Create the conductor table
+	QString conductor_table("CREATE TABLE conductor"
+						  "( "
+						  "uuid VARCHAR(50) PRIMARY KEY NOT NULL, "
+						  "diagram_uuid VARCHAR(50) NOT NULL,"
+						  "terminal1_uuid VARCHAR(50) NOT NULL,"
+						  "terminal1_element_uuid VARCHAR(50) NOT NULL,"
+						  "terminal2_uuid VARCHAR(50) NOT NULL,"
+						  "terminal2_element_uuid VARCHAR(50) NOT NULL,"
+						  "text VARCHAR(100),"
+						  "FOREIGN KEY (diagram_uuid) REFERENCES diagram (uuid),"
+						  "FOREIGN KEY (terminal1_uuid, terminal1_element_uuid) REFERENCES terminal (uuid, element_uuid),"
+						  "FOREIGN KEY (terminal2_uuid, terminal2_element_uuid) REFERENCES terminal (uuid, element_uuid)"
+						  ")");
+	if (!query_.exec(conductor_table)) {
+		qDebug() << "conductor_table query : "<< query_.lastError();
+	}
+
+		//The element-facing columns are looked up per element row, not per
+		//conductor row: element_nomenclature_view carries a correlated
+		//subquery counting the wires touching each element. Without these
+		//indexes each element row full-scans the conductor table, which grows
+		//as elements x conductors.
+	for (const QString &index_ : {
+			QStringLiteral("CREATE INDEX idx_conductor_terminal1_element ON conductor (terminal1_element_uuid)"),
+			QStringLiteral("CREATE INDEX idx_conductor_terminal2_element ON conductor (terminal2_element_uuid)"),
+			QStringLiteral("CREATE INDEX idx_conductor_diagram ON conductor (diagram_uuid)") })
+	{
+		if (!query_.exec(index_)) {
+			qDebug() << "conductor index query : " << query_.lastError();
+		}
+	}
+
 	createElementNomenclatureView();
 	createSummaryView();
+	createWiringListView();
 	prepareQuery();
 	updateDB();
 	return true;
@@ -442,6 +623,64 @@ void projectDataBase::createSummaryView()
 	}
 }
 
+/**
+	@brief projectDataBase::createWiringListView
+	A from-to wiring list: one row per conductor, each endpoint resolved to
+	its element label and terminal name.
+
+	Two deliberate differences from an ordinary inner-join view like
+	element_nomenclature_view:
+
+	- No join to the element table. A terminal row already carries its
+	  element_uuid, so joining element back just to read the same uuid adds
+	  nothing -- and would actively drop rows, because populateElementTable()
+	  only inserts elements matching Simple|Terminal|Master|Thumbnail. Slave
+	  elements (relay contacts and the like, extremely common at the end of a
+	  wire) and report elements are absent from that table after a project
+	  load, so an inner join through it silently loses their conductors.
+	- element_info is LEFT joined for the same reason. A wire whose endpoint
+	  element carries no info row still belongs in a wiring list; it comes
+	  back with an empty label rather than vanishing. Losing a wire from a
+	  wiring list is a worse failure than showing one with a blank end.
+
+	- diagram is LEFT joined for the same reason. It should
+	  always match, since QETProject::diagramAdded is wired to addDiagram()
+	  and a conductor cannot exist before its folio -- but an inner join here
+	  would make that an assumption the view silently enforces, and a wire
+	  missing from a wiring list is the one failure this view must not have.
+
+	The result is that this view returns exactly as many rows as the
+	conductor table holds -- what is already excluded upstream (conductors
+	on legacy terminals without uuids) stays excluded, and nothing new is
+	dropped here. Only the terminal joins are inner, and both are guaranteed
+	by insertTerminal() running for each endpoint before the conductor row
+	is written.
+*/
+void projectDataBase::createWiringListView()
+{
+	QString create_view ("CREATE VIEW wiring_list_view AS SELECT "
+						 "c.uuid AS conductor_uuid,"
+						 "c.text AS wire_number,"
+						 "t1.element_uuid AS from_element_uuid,"
+						 "ei1.label AS from_element_label,"
+						 "t1.name AS from_terminal,"
+						 "t2.element_uuid AS to_element_uuid,"
+						 "ei2.label AS to_element_label,"
+						 "t2.name AS to_terminal,"
+						 "d.pos AS diagram_position"
+						 " FROM conductor c"
+						 " JOIN terminal t1 ON c.terminal1_uuid = t1.uuid AND c.terminal1_element_uuid = t1.element_uuid"
+						 " JOIN terminal t2 ON c.terminal2_uuid = t2.uuid AND c.terminal2_element_uuid = t2.element_uuid"
+						 " LEFT JOIN element_info ei1 ON t1.element_uuid = ei1.element_uuid"
+						 " LEFT JOIN element_info ei2 ON t2.element_uuid = ei2.element_uuid"
+						 " LEFT JOIN diagram d ON c.diagram_uuid = d.uuid");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
+}
+
 void projectDataBase::populateDiagramTable()
 {
 	QSqlQuery query_(m_data_base);
@@ -534,6 +773,58 @@ void projectDataBase::populateDiagramInfoTable()
 	}
 }
 
+/**
+	@brief projectDataBase::populateConductorTable
+	Populate the terminal and conductor tables. Terminals only matter here
+	in the context of a conductor referencing them, so their population is
+	folded into this method rather than tracked independently.
+*/
+void projectDataBase::populateConductorTable()
+{
+	QSqlQuery query(m_data_base);
+	query.exec(QStringLiteral("DELETE FROM conductor"));
+	query.exec(QStringLiteral("DELETE FROM terminal"));
+
+	for (auto *diagram : m_project->diagrams())
+	{
+		const auto conductor_list = diagram->conductors();
+		for (auto *conductor : conductor_list)
+		{
+				//See addConductor(): only a terminal with no parent element is
+				//skipped. A missing terminal uuid is handled by stableUuid().
+			if (!conductor->terminal1->parentElement()
+				|| !conductor->terminal2->parentElement()) {
+				continue;
+			}
+
+			insertTerminal(conductor->terminal1);
+			insertTerminal(conductor->terminal2);
+
+			watchConductor(conductor);
+			bindConductorValues(m_insert_conductor_query, conductor, diagram);
+			if (!m_insert_conductor_query.exec()) {
+				qDebug() << "projectDataBase::populateConductorTable insert error : " << m_insert_conductor_query.lastError();
+			}
+		}
+	}
+}
+
+/**
+	@brief projectDataBase::insertTerminal
+	Insert (or, if already present -- e.g. a junction shared by several
+	conductors -- silently keep) @terminal in the terminal table.
+	@param terminal
+*/
+void projectDataBase::insertTerminal(Terminal *terminal)
+{
+	m_insert_terminal_query.bindValue(":uuid", terminal->stableUuid().toString());
+	m_insert_terminal_query.bindValue(":element_uuid", terminal->parentElement()->uuid().toString());
+	m_insert_terminal_query.bindValue(":name", terminal->name());
+	if (!m_insert_terminal_query.exec()) {
+		qDebug() << "projectDataBase::insertTerminal insert error : " << m_insert_terminal_query.lastError();
+	}
+}
+
 void projectDataBase::prepareQuery()
 {
 		//INSERT DIAGRAM
@@ -606,6 +897,23 @@ void projectDataBase::prepareQuery()
 	update_str.append(" WHERE element_uuid = :uuid");
 	m_update_element_query = QSqlQuery(m_data_base);
 	m_update_element_query.prepare(update_str);
+
+		//INSERT TERMINAL
+	m_insert_terminal_query = QSqlQuery(m_data_base);
+	m_insert_terminal_query.prepare("INSERT OR IGNORE INTO terminal (uuid, element_uuid, name) VALUES (:uuid, :element_uuid, :name)");
+
+		//INSERT CONDUCTOR
+	m_insert_conductor_query = QSqlQuery(m_data_base);
+	m_insert_conductor_query.prepare("INSERT INTO conductor (uuid, diagram_uuid, terminal1_uuid, terminal1_element_uuid, terminal2_uuid, terminal2_element_uuid, text) "
+					  "VALUES (:uuid, :diagram_uuid, :terminal1_uuid, :terminal1_element_uuid, :terminal2_uuid, :terminal2_element_uuid, :text)");
+
+		//UPDATE CONDUCTOR
+	m_update_conductor_query = QSqlQuery(m_data_base);
+	m_update_conductor_query.prepare(QStringLiteral("UPDATE conductor SET text = :text WHERE uuid = :uuid"));
+
+		//REMOVE CONDUCTOR
+	m_remove_conductor_query = QSqlQuery(m_data_base);
+	m_remove_conductor_query.prepare("DELETE FROM conductor WHERE uuid=:uuid");
 }
 
 /**
