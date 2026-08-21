@@ -525,10 +525,10 @@ void MasterPropertiesWidget::updateUi()
 
 			// Table
 			m_plc_table = new QTableWidget(m_plc_widget);
-			m_plc_table->setColumnCount(5);
+			m_plc_table->setColumnCount(6);
 			m_plc_table->setHorizontalHeaderLabels({
 				tr("Type"), tr("Adresse"), tr("Fonction"),
-				tr("Commentaire"), tr("Réf. croisée")
+				tr("Commentaire"), tr("Réf. croisée"), tr("Bornes")
 			});
 			m_plc_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 			m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
@@ -592,6 +592,11 @@ void MasterPropertiesWidget::updateUi()
 			auto *crossref_item = new QTableWidgetItem(io.crossRef);
 			crossref_item->setFlags(crossref_item->flags() & ~Qt::ItemIsEditable);
 			m_plc_table->setItem(row, 4, crossref_item);
+
+			// Anschlüsse (read-only)
+			auto *terminals_item = new QTableWidgetItem(io.terminals.join(QStringLiteral(", ")));
+			terminals_item->setFlags(terminals_item->flags() & ~Qt::ItemIsEditable);
+			m_plc_table->setItem(row, 5, terminals_item);
 		}
 
 		m_plc_table->blockSignals(false);
@@ -806,23 +811,7 @@ void MasterPropertiesWidget::setCellFromValue(int row, int col, const QString &v
 		}
 	}
 	else if (col == 5) {
-		// Terminal count spinbox
-		auto *tc_sb = qobject_cast<QSpinBox*>(m_plc_table->cellWidget(row, col));
-		if (!tc_sb) {
-			tc_sb = new QSpinBox(m_plc_table);
-			tc_sb->setMinimum(1);
-			tc_sb->setMaximum(4);
-			m_plc_table->setCellWidget(row, col, tc_sb);
-			connect(tc_sb, QOverload<int>::of(&QSpinBox::valueChanged),
-				this, [this, row](int) { plcIOCellChanged(row, 5); });
-		}
-		bool ok;
-		int v = val.toInt(&ok);
-		if (ok && v >= 1 && v <= 4)
-			tc_sb->setValue(v);
-	}
-	else if (col == 6) {
-		// CrossRef - read-only
+		// Anschlüsse (read-only)
 		auto *item = new QTableWidgetItem(val);
 		item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 		m_plc_table->setItem(row, col, item);
@@ -860,17 +849,10 @@ void MasterPropertiesWidget::plcAddRow()
 	m_plc_table->setItem(row, 3, new QTableWidgetItem());
 	m_plc_table->setItem(row, 4, new QTableWidgetItem());
 
-	auto *tc_sb = new QSpinBox(m_plc_table);
-	tc_sb->setMinimum(1);
-	tc_sb->setMaximum(4);
-	tc_sb->setValue(1);
-	m_plc_table->setCellWidget(row, 5, tc_sb);
-	connect(tc_sb, QOverload<int>::of(&QSpinBox::valueChanged),
-		this, [this, row](int) { plcIOCellChanged(row, 5); });
-
-	auto *crossref_item = new QTableWidgetItem();
-	crossref_item->setFlags(crossref_item->flags() & ~Qt::ItemIsEditable);
-	m_plc_table->setItem(row, 6, crossref_item);
+	// Anschlüsse (read-only)
+	auto *terminals_item = new QTableWidgetItem();
+	terminals_item->setFlags(terminals_item->flags() & ~Qt::ItemIsEditable);
+	m_plc_table->setItem(row, 5, terminals_item);
 }
 
 /**

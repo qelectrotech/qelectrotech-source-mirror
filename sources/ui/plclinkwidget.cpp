@@ -65,7 +65,7 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 	m_tree_widget = new QTreeWidget(this);
 	m_tree_widget->setHeaderLabels({
 		tr("Label"), tr("Type"), tr("Adresse"),
-		tr("Fonction"), tr("Commentaire"), tr("Anschlüsse")
+		tr("Fonction"), tr("Commentaire"), tr("Bornes")
 	});
 	m_tree_widget->setRootIsDecorated(true);
 	m_tree_widget->setIndentation(20);
@@ -225,8 +225,8 @@ void PlcLinkWidget::buildPlcTree()
 			child_item->setText(3, io.functionText);
 			child_item->setText(4, io.comment);
 
-			// Terminal count
-			child_item->setText(5, QString::number(io.terminalCount));
+			// Terminal names
+			child_item->setText(5, io.terminals.join(QStringLiteral(", ")));
 
 			PlcIoEntry entry;
 			entry.master = elmt;
