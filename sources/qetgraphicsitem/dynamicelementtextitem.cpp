@@ -1387,7 +1387,7 @@ void DynamicElementTextItem::updateXref()
 				}
 				else
 					m_slave_Xref_item->setPlainText(xref_label);
-				setXref_item(xrp.getXrefPos());
+				setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
 				return;
 			}
 		}
@@ -1453,7 +1453,7 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 			? nullptr : m_parent_element.data()->linkedElements().first();
 		if (master_elmt) {
 			XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-			setXref_item(xrp.getXrefPos());
+			setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
 		}
 	}
 }
@@ -1465,44 +1465,44 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	emit textWidthChanged(width);
 }
 
-void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
+void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)
 {
 	QRectF r = boundingRect();
 	QPointF pos;
 	//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
 	if (m_exHrefPos == Qt::AlignBottom)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignTop)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignLeft)  //
 	{
-		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignRight)  //
 	{
-		pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignBaseline)  //
 	{
 		if(this->alignment() &Qt::AlignBottom)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignTop)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignLeft)
 		{
-			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 		else if(this->alignment() &Qt::AlignRight)
 		{
-			pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 	}
 	m_slave_Xref_item->setPos(pos);

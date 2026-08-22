@@ -147,6 +147,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	xrp.setMasterLabel(ui->m_master_le->text());
 	xrp.setSlaveLabel(ui->m_slave_le->text());
 	xrp.setOffset(ui->m_offset_sb->value());
+	xrp.setSlaveOffset(ui->m_slave_offset_sb->value());
 
 	m_properties.insert(type, xrp);
 }
@@ -176,6 +177,9 @@ void XRefPropertiesWidget::updateDisplay()
 
 	int offset = xrp.offset();
 	ui->m_offset_sb->setValue(offset);
+
+	int slave_offset = xrp.slaveOffset();
+	ui->m_slave_offset_sb->setValue(slave_offset);
 
 	if (xrp.snapTo() == XRefProperties::Bottom){
 		 ui->m_snap_to_cb->setCurrentIndex(ui->m_snap_to_cb->findData("bottom"));
