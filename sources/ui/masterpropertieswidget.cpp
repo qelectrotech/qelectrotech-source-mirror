@@ -976,7 +976,8 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 
 	// Preserve existing display settings
 	ElementData ed = m_element->elementData();
-	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	const auto orig_plc = ed.plcMasterData();
+	ElementData::PlcMasterData plc_data = orig_plc;
 	plc_data.ios.clear();
 
 	// Read IOs from table, preserving terminal data from original IOs by row index
@@ -1007,8 +1008,8 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 		// This avoids address-based lookup which fails when all addresses
 		// are empty (common in PLC masters) — a hash collision would cause
 		// only the last IO's terminals to be used for all rows.
-		if (row < ed.plcMasterData().ios.size()) {
-			const auto &orig_io = ed.plcMasterData().ios.at(row);
+		if (row < orig_plc.ios.size()) {
+			const auto &orig_io = orig_plc.ios.at(row);
 			io.terminalCount = orig_io.terminalCount;
 			io.terminals = orig_io.terminals;
 		}
