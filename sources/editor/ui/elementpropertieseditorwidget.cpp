@@ -425,7 +425,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
-								  type_ == ElementData::Master));
+								  type_ == ElementData::Master ||
+								  type_ == ElementData::Terminal ||
+								  type_ == ElementData::Thumbnail));
 
 	updateTree();
 }
