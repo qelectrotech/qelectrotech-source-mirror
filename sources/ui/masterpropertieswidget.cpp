@@ -999,9 +999,10 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 
 	// Build address -> original IO lookup to correctly reattach terminal data
 	// after row reorder (move up/down) or row removal
+	const auto orig_plc = ed.plcMasterData();
 	QHash<QString, int> addr_to_orig_idx;
-	for (int i = 0; i < ed.plcMasterData().ios.size(); ++i) {
-		addr_to_orig_idx[ed.plcMasterData().ios.at(i).address] = i;
+	for (int i = 0; i < orig_plc.ios.size(); ++i) {
+		addr_to_orig_idx[orig_plc.ios.at(i).address] = i;
 	}
 
 	// Read IOs from table, preserving terminal data from original IOs
@@ -1030,7 +1031,7 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 
 		// Preserve terminal data by looking up original IO via address
 		if (addr_to_orig_idx.contains(io.address)) {
-			const auto orig_io = ed.plcMasterData().ios.at(addr_to_orig_idx.value(io.address));
+			const auto &orig_io = orig_plc.ios.at(addr_to_orig_idx.value(io.address));
 			io.terminalCount = orig_io.terminalCount;
 			io.terminals = orig_io.terminals;
 		}
