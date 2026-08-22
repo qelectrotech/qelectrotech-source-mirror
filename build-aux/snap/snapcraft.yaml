@@ -77,9 +77,6 @@ parts:
       - git
       - sqlite3
       - xdg-user-dirs
-      # runtime pugixml — nom de paquet à vérifier sur core24/noble,
-      # nécessaire car BUILD_PUGIXML=OFF lie contre la lib système
-      - libpugixml1v5
       # libxcb-cursor0 workaround was needed against the Qt5/KF5 core22 content
       # snap (issue #373). Not yet re-verified against kf6-core24 — remove this
       # if the Qt6 xcb platform plugin loads cleanly without it.
@@ -89,7 +86,6 @@ parts:
       - cmake
       - ninja-build
       - libsqlite3-dev
-      - libpugixml-dev
       - qt6-tools-dev
       - qt6-base-private-dev
       - pkgconf
@@ -106,7 +102,7 @@ parts:
         -DBUILD_WITH_KF=ON \
         -DBUILD_KF=OFF \
         -DPACKAGE_TESTS=OFF \
-        -DBUILD_PUGIXML=OFF \
+        -DBUILD_PUGIXML=ON \
         -DQET_EXPORT_PROJECT_DB=ON
       ninja -C build -j${CRAFT_PARALLEL_BUILD_COUNT}
       DESTDIR="$CRAFT_PART_INSTALL" ninja -C build install
