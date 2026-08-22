@@ -810,7 +810,7 @@ void ElementTextItemGroup::updateXref()
 					else
 						m_slave_Xref_item->setPlainText(xref_label);
 					
-					adjustSlaveXrefPos();
+					adjustSlaveXrefPos(xrp.slaveOffset());
 					return;
 				}
 			}
@@ -833,11 +833,11 @@ void ElementTextItemGroup::updateXref()
 	}
 }
 
-void ElementTextItemGroup::adjustSlaveXrefPos()
+void ElementTextItemGroup::adjustSlaveXrefPos(int slave_offset)
 {
 	QRectF r = boundingRect();
 	QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,
-				r.bottom());
+				r.bottom() + slave_offset);
 	m_slave_Xref_item->setPos(pos);
 }
 
