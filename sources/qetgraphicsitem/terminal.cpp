@@ -823,17 +823,15 @@ QUuid Terminal::uuid() const
 QString Terminal::name() const
 {
 	if (d->m_use_master_label && parent_element_) {
-		// Find the master element in the slave's linked elements
 		for (Element *elmt : parent_element_->linkedElements()) {
 			if (elmt->linkType() == Element::Master) {
 				int group_idx = elmt->groupIndexForElement(parent_element_);
 				if (group_idx >= 0) {
-					// For PLC masters, use io.terminals as labels
 					if (elmt->elementData().m_master_type == ElementData::PLC) {
 						const auto &plc_data = elmt->elementData().plcMasterData();
 						if (group_idx < plc_data.ios.size()) {
 							int label_idx = d->m_master_label_index;
-							const QStringList &labels = plc_data.ios.at(group_idx).terminals;
+							const QStringList labels = plc_data.ios.at(group_idx).effectiveTerminals();
 							if (label_idx >= 0 && label_idx < labels.size()) {
 								return labels.at(label_idx);
 							}

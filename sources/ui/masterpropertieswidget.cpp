@@ -979,14 +979,7 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 	ElementData::PlcMasterData plc_data = ed.plcMasterData();
 	plc_data.ios.clear();
 
-	// Build address -> original IO lookup to correctly reattach terminal data
-	// after row reorder (move up/down) or row removal
-	QHash<QString, int> addr_to_orig_idx;
-	for (int i = 0; i < ed.plcMasterData().ios.size(); ++i) {
-		addr_to_orig_idx[ed.plcMasterData().ios.at(i).address] = i;
-	}
-
-	// Read IOs from table, preserving terminal data from original IOs
+	// Read IOs from table, preserving terminal data from original IOs by row index
 	for (int row = 0; row < m_plc_table->rowCount(); ++row) {
 		ElementData::PlcIO io;
 
@@ -1010,9 +1003,12 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 		if (crossref_item)
 			io.crossRef = crossref_item->text();
 
-		// Preserve terminal data by looking up original IO via address
-		if (addr_to_orig_idx.contains(io.address)) {
-			const auto orig_io = ed.plcMasterData().ios.at(addr_to_orig_idx.value(io.address));
+		// Preserve terminal data by matching row index directly.
+		// This avoids address-based lookup which fails when all addresses
+		// are empty (common in PLC masters) — a hash collision would cause
+		// only the last IO's terminals to be used for all rows.
+		if (row < ed.plcMasterData().ios.size()) {
+			const auto &orig_io = ed.plcMasterData().ios.at(row);
 			io.terminalCount = orig_io.terminalCount;
 			io.terminals = orig_io.terminals;
 		}
