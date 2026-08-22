@@ -5,7 +5,7 @@ generate-page.py — Generates gh-pages/index.html for QElectroTech nightly buil
 Called from nightly.yml
 
 Environment variables required:
-  DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER,
+  DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER, RELEASE_TAG,
   INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
 
 Optional (Qt6 experimental track — omitted entirely if empty):
@@ -26,6 +26,7 @@ repo         = os.environ.get("REPO", "")
 sha          = os.environ.get("SHA", "")
 run_url      = os.environ.get("RUN_URL", "")
 run_number   = os.environ.get("RUN_NUMBER", "")
+release_tag  = os.environ.get("RELEASE_TAG", "")
 
 installer_url = os.environ.get("INSTALLER_URL", "")
 portable_url  = os.environ.get("PORTABLE_URL", "")
@@ -253,7 +254,7 @@ For production use, download a <a href="https://github.com/{repo}/releases">stab
 <span class="btn-icon">&#128230;</span>
 <span class="btn-text">Windows Portable<small>.zip &mdash; no installation required, extract and run &quot;Lancer QET.bat&quot;</small></span>
 </a>
-<a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/nightly">
+<a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/{release_tag}">
 <span class="btn-icon">&#128230;</span>
 <span class="btn-text">All nightly files on GitHub<small>Release page with checksums</small></span>
 </a>

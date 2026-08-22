@@ -354,8 +354,9 @@ jobs:
           DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
           RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
           RUN_NUMBER="${{ github.run_number }}"
+          RELEASE_TAG="${{ steps.target.outputs.tag_name }}"
 
-          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
+          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER RELEASE_TAG
           export INSTALLER_URL PORTABLE_URL MSI_URL
           export INSTALLER_QT6_URL PORTABLE_QT6_URL MSI_QT6_URL
 
