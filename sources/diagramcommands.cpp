@@ -106,12 +106,18 @@ void PasteDiagramCommand::redo()
 				dc.addValue("location", "");
 				e->setElementInformations(dc);
 				
-				//Reset the text of conductors
+				//Reset the text of conductors, the same way the label/comment/
+				//location above are reset to "" rather than to some other
+				//value - "erase on copy" means erase, not "replace with the
+				//project's default new-conductor text" (which happens to
+				//default to a literal "_" character, unrelated to whether the
+				//user wanted this copy's old label kept or cleared; see
+				//issue #413).
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
 				for (Conductor *c : conductors_list)
 				{
 					ConductorProperties cp = c -> properties();
-					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
+					cp.text = "";
 					c -> setProperties(cp);
 				}
 			}
