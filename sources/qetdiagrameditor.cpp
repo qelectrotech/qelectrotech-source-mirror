@@ -23,6 +23,7 @@
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddimage.h"
+#include "diagramevent/diagrameventaddpdf.h"
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "diagramview.h"
@@ -716,6 +717,7 @@ void QETDiagramEditor::setUpActions()
 		//Adding action (add text, image, shape...)
 	QAction *add_text      = m_add_item_actions_group.addAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"));
 	QAction *add_image	   = m_add_item_actions_group.addAction(QET::Icons::adding_image,  tr("Ajouter une image"));
+	QAction *add_pdf	   = m_add_item_actions_group.addAction(QET::Icons::adding_pdf,   tr("Ajouter un PDF"));
 	QAction *add_line	   = m_add_item_actions_group.addAction(QET::Icons::PartLine,      tr("Ajouter une ligne", "Draw line"));
 	QAction *add_rectangle = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"));
 	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
@@ -724,6 +726,7 @@ void QETDiagramEditor::setUpActions()
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
 	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
+	add_pdf      ->setStatusTip(tr("Ajoute une page PDF sur le folio actuel"));
 	add_line     ->setStatusTip(tr("Ajoute une ligne sur le folio actuel"));
 	add_rectangle->setStatusTip(tr("Ajoute un rectangle sur le folio actuel"));
 	add_ellipse  ->setStatusTip(tr("Ajoute une ellipse sur le folio actuel"));
@@ -732,6 +735,7 @@ void QETDiagramEditor::setUpActions()
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
+	add_pdf      ->setData(QStringLiteral("pdf"));
 	add_line     ->setData(QStringLiteral("line"));
 	add_rectangle->setData(QStringLiteral("rectangle"));
 	add_ellipse  ->setData(QStringLiteral("ellipse"));
@@ -1568,6 +1572,17 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		}
 		else
 			diagram_event = deai;
+	}
+	else if (value == "pdf")
+	{
+		DiagramEventAddPdf *deap = new DiagramEventAddPdf(d);
+		if (deap->isNull())
+		{
+			delete deap;
+			return;
+		}
+		else
+			diagram_event = deap;
 	}
 	else if (value == "text")
 	{
