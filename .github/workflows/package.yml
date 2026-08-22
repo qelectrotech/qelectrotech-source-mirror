@@ -147,14 +147,14 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - name: Determine release target (tag vs nightly)
+      - name: Determine release target (tag vs development)
         id: target
         run: |
           set -euo pipefail
           if [[ "${{ github.ref }}" == refs/tags/* ]]; then
             echo "is_tag=true" >> "$GITHUB_OUTPUT"
-            echo "tag_name=${{ needs.verify-version.outputs.tag_name }}" >> "$GITHUB_OUTPUT"
-            echo "release_name=QElectroTech ${{ needs.verify-version.outputs.tag_name }}" >> "$GITHUB_OUTPUT"
+            echo "tag_name=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            echo "release_name=QElectroTech ${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
             echo "prerelease=${{ needs.verify-version.outputs.prerelease }}" >> "$GITHUB_OUTPUT"
           else
             # A unique tag per run (never reused) so GitHub's auto-generated
@@ -162,11 +162,11 @@ jobs:
             # per-tag cache -- a fresh tag has never been cached before.
             # generate-page.py's stable download page is what users actually
             # bookmark, so a rotating tag name underneath it is invisible to them.
-            NIGHTLY_TAG="nightly-$(date -u +%Y%m%d-%H%M)-${{ github.run_number }}"
-            NIGHTLY_NAME="Nightly release - $(date -u '+%Y-%m-%d %H:%M')"
+            DEVELOPMENT_TAG="development-$(date -u +%Y%m%d-%H%M)-${{ github.run_number }}"
+            DEVELOPMENT_NAME="Development release - $(date -u '+%Y-%m-%d %H:%M')"
             echo "is_tag=false" >> "$GITHUB_OUTPUT"
-            echo "tag_name=$NIGHTLY_TAG" >> "$GITHUB_OUTPUT"
-            echo "release_name=$NIGHTLY_NAME" >> "$GITHUB_OUTPUT"
+            echo "tag_name=$DEVELOPMENT_TAG" >> "$GITHUB_OUTPUT"
+            echo "release_name=$DEVELOPMENT_NAME" >> "$GITHUB_OUTPUT"
             echo "prerelease=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -220,7 +220,7 @@ jobs:
           pattern: qelectrotech-source-package
           merge-multiple: true
 
-      - name: Delete previous nightly releases
+      - name: Delete previous development releases
         if: steps.target.outputs.is_tag == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -228,9 +228,9 @@ jobs:
           set -euo pipefail
           REPO="${{ github.repository }}"
           gh release list --repo "$REPO" --limit 100 --json tagName \
-            --jq '.[] | select(.tagName == "nightly" or (.tagName | startswith("nightly-"))) | .tagName' \
+            --jq '.[] | select(.tagName == "development" or (.tagName | startswith("development-"))) | .tagName' \
           | while IFS= read -r OLD_TAG; do
-              echo "Deleting old nightly release: $OLD_TAG"
+              echo "Deleting old development release: $OLD_TAG"
               gh release delete "$OLD_TAG" --repo "$REPO" --yes --cleanup-tag || true
             done
 
@@ -253,7 +253,7 @@ jobs:
           )"
           else
             BODY="$(cat <<'EOF'
-          🔧 **Automated nightly build** — may be unstable.
+          🔧 **Automated development build** — may be unstable.
 
           | | |
           |---|---|

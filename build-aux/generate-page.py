@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
 """
-generate-page.py — Generates gh-pages/index.html for QElectroTech nightly builds.
+generate-page.py — Generates gh-pages/index.html for QElectroTech development builds.
 
-Called from nightly.yml
+Called from package.yml
 
 Environment variables required:
-  DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER, RELEASE_TAG,
-  INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
+  DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER, RELEASE_TAG
 
-Optional (Qt6 experimental track — omitted entirely if empty):
-  INSTALLER_QT6_URL, PORTABLE_QT6_URL, MSI_QT6_URL
+Optional (Windows - Qt5 and Qt6 tracks, each omitted entirely if empty):
+    INSTALLER_URL, PORTABLE_URL, MSI_URL, INSTALLER_QT6_URL, PORTABLE_QT6_URL, MSI_QT6_URL
 
-Optional (macOS — Qt5 and Qt6 tracks, each omitted entirely if empty):
+Optional (macOS - Qt5 and Qt6 tracks, each omitted entirely if empty):
   DMG_ARM64_URL, DMG_X8664_URL
   DMG_ARM64_QT6_URL, DMG_X8664_QT6_URL
 
-Optional (Linux AppImage — Qt6 only, no Qt5 track exists):
+Optional (Linux AppImage - Qt6 only, no Qt5 track exists):
   APPIMAGE_X8664_QT6_URL, APPIMAGE_AARCH64_QT6_URL
 """
 import os
@@ -52,6 +51,37 @@ if msi_url:
 <span class="btn-icon">&#11015;</span>
 <span class="btn-text">Windows Installer .msi<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
+
+# Windows Qt5 (stable track) -- each button independently optional, and the
+# whole card omitted if none of the three are present, matching the same
+# pattern already used for macOS and the Qt6 track below.
+windows_installer_btn = ""
+if installer_url:
+    windows_installer_btn = f"""
+<a class="btn btn-primary" href="{installer_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Windows Installer<small>.exe &mdash; recommended, includes all dependencies</small></span>
+</a>"""
+
+windows_portable_btn = ""
+if portable_url:
+    windows_portable_btn = f"""
+<a class="btn btn-secondary" href="{portable_url}">
+<span class="btn-icon">&#128230;</span>
+<span class="btn-text">Windows Portable<small>.zip &mdash; no installation required, extract and run &quot;Lancer QET.bat&quot;</small></span>
+</a>"""
+
+windows_block = ""
+if installer_url or portable_url or msi_url:
+    windows_block = f"""
+<div class="card">
+<h2>&#127993; Windows &mdash; x86_64 &mdash; Qt5 track</h2>
+<div class="downloads">
+{windows_installer_btn}
+{msi_block}
+{windows_portable_btn}
+</div>
+</div>"""
 
 # Qt6 experimental section — only rendered if at least one Qt6 asset exists.
 qt6_block = ""
@@ -194,7 +224,7 @@ html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QElectroTech &ndash; Nightly Builds</title>
+<title>QElectroTech &ndash; Development Builds</title>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f0f4f8;color:#2d3748;min-height:100vh}}
@@ -225,7 +255,7 @@ footer a{{color:#718096;text-decoration:none}}
 <body>
 <header>
 <h1>&#9889; QElectroTech</h1>
-<p>Nightly Builds</p>
+<p>Development Builds</p>
 </header>
 <main>
 <div class="card">
@@ -234,32 +264,19 @@ footer a{{color:#718096;text-decoration:none}}
 &#128197; &nbsp;<strong>{date}</strong><br>
 &#128256; &nbsp;Commit <a href="https://github.com/{repo}/commit/{sha}"><code>{short}</code></a><br>
 &#128295; &nbsp;<a href="{run_url}">CI Run #{run_number}</a>
-<span class="badge">nightly</span>
+<span class="badge">development</span>
 </div>
 <div class="warning">
 &#9888;&#65039; This is a development version; it introduces new features you want,
 but may cause bugs that have not yet been identified yet in <code>master</code>.
 For production use, download a <a href="https://github.com/{repo}/releases">stable release</a>.
 </div>
-</div>
-<div class="card">
-<h2>&#127993; Windows &mdash; x86_64 &mdash; Qt5 track</h2>
-<div class="downloads">
-<a class="btn btn-primary" href="{installer_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer<small>.exe &mdash; recommended, includes all dependencies</small></span>
-</a>
-{msi_block}
-<a class="btn btn-secondary" href="{portable_url}">
-<span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable<small>.zip &mdash; no installation required, extract and run &quot;Lancer QET.bat&quot;</small></span>
-</a>
 <a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/{release_tag}">
 <span class="btn-icon">&#128230;</span>
-<span class="btn-text">All nightly files on GitHub<small>Release page with checksums</small></span>
+<span class="btn-text">All development version binaries on GitHub<small>Every platform &mdash; release page with checksums</small></span>
 </a>
 </div>
-</div>
+{windows_block}
 {qt6_block}
 {macos_block}
 {macos_qt6_block}
