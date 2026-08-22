@@ -49,7 +49,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            qt6-base-dev qt6-base-private-dev libqt6svg6-dev libqt6sql6-sqlite qt6-tools-dev qt6-tools-dev-tools qt6-l10n-tools qt6-base-private-dev libqt6pdf6 \
+            qt6-base-dev qt6-base-private-dev libqt6svg6-dev libqt6sql6-sqlite qt6-tools-dev qt6-tools-dev-tools qt6-l10n-tools qt6-base-private-dev libqt6pdf6 qt6-pdf-dev \
             libsqlite3-dev cmake ninja-build ccache pkg-config g++
             
           # Install OpenGL fix for Ubuntu 22.04
