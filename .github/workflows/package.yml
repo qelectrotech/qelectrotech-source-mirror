@@ -119,14 +119,14 @@ jobs:
         run: |
           set -euo pipefail
           NAME="${{ steps.srcver.outputs.name }}"
-          mkdir -p dist
-          tar --exclude-vcs -czf "dist/${NAME}.tar.gz" --transform "s,^\.,${NAME}," .
+          mkdir -p "${{ runner.temp }}/dist"
+          tar --exclude-vcs -czf "${{ runner.temp }}/dist/${NAME}.tar.gz" --transform "s,^\.,${NAME}," .
 
       - name: Upload source package artifact
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-source-package
-          path: dist/*.tar.gz
+          path: ${{ runner.temp }}/dist/*.tar.gz
           retention-days: 40
           if-no-files-found: error
 
