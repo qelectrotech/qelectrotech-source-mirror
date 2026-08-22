@@ -33,6 +33,11 @@ set(QET_COMPONENTS
   Widgets
   Concurrent)
 
+# Qt6-only: QPdfDocument for PDF page import
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_COMPONENTS Pdf)
+endif()
+
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
   Qt::Gui
@@ -44,6 +49,11 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Widgets
   Qt::Concurrent
   )
+
+# Qt6-only: QPdfDocument for PDF page import
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_PRIVATE_LIBRARIES Qt::Pdf)
+endif()
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
@@ -811,6 +821,16 @@ if(NOT BUILD_WITH_KF)
     ${QET_DIR}/sources/ui/nokde/kcolorbutton.h
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
+  )
+endif()
+
+# Qt6-only: PDF page import files
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
+    ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
+    ${QET_DIR}/sources/ui/pdfpagesdialog.h
   )
 endif()
 

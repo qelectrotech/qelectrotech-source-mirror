@@ -15,10 +15,6 @@ platforms:
   amd64:
   arm64:
 
-layout:
-  /usr/share/qelectrotech:
-    symlink: $SNAP/usr/share/qelectrotech
-
 apps:
   qelectrotech:
     command: usr/bin/qelectrotech
@@ -77,9 +73,6 @@ parts:
       - git
       - sqlite3
       - xdg-user-dirs
-      # runtime pugixml — nom de paquet à vérifier sur core24/noble,
-      # nécessaire car BUILD_PUGIXML=OFF lie contre la lib système
-      # - libpugixml1v5
       # libxcb-cursor0 workaround was needed against the Qt5/KF5 core22 content
       # snap (issue #373). Not yet re-verified against kf6-core24 — remove this
       # if the Qt6 xcb platform plugin loads cleanly without it.
@@ -89,16 +82,15 @@ parts:
       - cmake
       - ninja-build
       - libsqlite3-dev
-      - libpugixml-dev
       - qt6-tools-dev
       - qt6-base-private-dev
       - pkgconf
     override-build: |
-      set -eux
       displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
-      modified_displayed_version="${displayed_version}.snap"
+      snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
+      modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
-      craftctl set version="$displayed_version"
+      craftctl set version="$snap_version"
       cmake -G Ninja -B build -S "$CRAFT_PART_SRC" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
