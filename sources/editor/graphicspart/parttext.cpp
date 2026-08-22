@@ -440,6 +440,14 @@ void PartText::setFont(const QFont &font) {
 		// at a different spot after save/reopen (the position recomputes from
 		// the saved font on load). See #158.
 		adjustItemPosition();
+		// Keep real_font_size_ in sync with the actual font. It's the base
+		// size startUserTransformation()/handleUserTransformation() scale
+		// from when the user drags a resize handle, and flip() also reads it
+		// to reposition the item. Left stale here, either one computes from
+		// whatever size the item had when it was first created, ignoring any
+		// size set since (toolbar, property editor, or loaded from XML) -
+		// found investigating #158.
+		real_font_size_ = font.pointSize();
 		emit fontChanged(font);
 	}
 }
