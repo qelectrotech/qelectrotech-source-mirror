@@ -15,13 +15,9 @@ platforms:
   amd64:
   arm64:
 
-layout:
-  /usr/local/share/qelectrotech:
-    symlink: $SNAP/usr/local/share/qelectrotech
-
 apps:
   qelectrotech:
-    command: usr/local/bin/qelectrotech
+    command: usr/bin/qelectrotech
     common-id: qelectrotech.desktop
     extensions:
       - kde-neon-6
@@ -109,8 +105,8 @@ parts:
     override-stage: |
       craftctl default
       # patch desktop file with correct icon path
-      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g"
-      $SED_CMD usr/local/share/applications/org.qelectrotech.qelectrotech.desktop
+      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/share/icons/hicolor/128x128/apps/\1.png|g"
+      $SED_CMD usr/share/applications/org.qelectrotech.qelectrotech.desktop
 
   cleanup:
     after: [qelectrotech, qet-tb-generator]
