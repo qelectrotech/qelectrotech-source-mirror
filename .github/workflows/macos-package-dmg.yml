@@ -1,0 +1,82 @@
+name: Package macOs DMG
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  # Temporarily also on push/PR while this is actively being iterated on --
+  # dial back to workflow_dispatch + a nightly schedule once it's proven.
+  # pull_request:
+  # push:
+  #  branches: [master]
+
+concurrency:
+  group: macos-package-dmg-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package-macos:
+    name: Package DMG (Qt${{ matrix.qt_version }}, ${{ matrix.arch }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - qt_version: 6
+            arch: arm64
+            runner: macos-latest
+          - qt_version: 6
+            arch: x86_64
+            runner: macos-26-intel
+          - qt_version: 5
+            arch: arm64
+            runner: macos-latest
+          - qt_version: 5
+            arch: x86_64
+            runner: macos-26-intel
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install Qt5 dependencies
+        if: matrix.qt_version == 5
+        run: brew install qt@5 cmake ninja pkg-config sqlite
+
+      - name: Install Qt6 dependencies
+        if: matrix.qt_version == 6
+        run: |
+          brew install qt cmake ninja pkg-config sqlite
+          vtool -show-build "$(brew --prefix qt)/lib/QtCore.framework/Versions/A/QtCore" | grep -A3 "LC_BUILD_VERSION"
+        
+      - name: Package DMG
+        env:
+          MACOS_CERTIFICATE_P12_BASE64: ${{ secrets.MACOS_CERTIFICATE_P12_BASE64 }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          NOTARY_API_KEY_BASE64: ${{ secrets.NOTARY_API_KEY_BASE64 }}
+          NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
+          NOTARY_ISSUER_ID: ${{ secrets.NOTARY_ISSUER_ID }}
+        run: |
+          set -euo pipefail
+          # Only request signing/notarization if the certificate secret
+          # actually exists -- lets this workflow run (unsigned) before
+          # Laurent's certificate is ever added to secrets. 
+          ARGS="--arch=${{ matrix.arch }} --qt-version=${{ matrix.qt_version }} --non-interactive"
+          if [ -n "${MACOS_CERTIFICATE_P12_BASE64:-}" ]; then
+            ARGS="$ARGS --sign"
+          fi
+          if [ -n "${NOTARY_API_KEY_BASE64:-}" ]; then
+            ARGS="$ARGS --notarize"
+          fi
+          ./build-aux/macos/package_dmg.sh $ARGS          
+
+      - name: Upload DMG artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: qelectrotech-macos-${{ matrix.arch }}-qt${{ matrix.qt_version }}
+          path: "*.dmg"
+          if-no-files-found: error
+          retention-days: 40
+          
+

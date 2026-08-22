@@ -1,19 +1,20 @@
-name: Windows Build
+name: Package Windows Exe and Portable
 
 on:
-  schedule:
-    - cron: '0 2 1 * *' #
-  workflow_dispatch:       # Manual trigger available at any time
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  workflow_call:
+  #schedule:
+  #  - cron: '0 2 1 * *' #
+  #workflow_dispatch:       # Manual trigger available at any time
 
 jobs:
   # =============================================================================
   # Job 1: Qt5 build (stable track)
   # =============================================================================
   build-windows:
+    concurrency:
+      group: windows-package-exe-qt5-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true  
+    name: Package Exe and Portable with WiX v7 (Qt5)
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -370,6 +371,10 @@ jobs:
   # QetVersion::currentVersion() or making the binary self-detect its Qt build.
   # =============================================================================
   build-windows-qt6:
+    concurrency:
+      group: windows-package-exe-qt6-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true    
+    name: Package Exe and Portable with WiX v7 (Qt6)  
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -707,70 +712,4 @@ jobs:
           path: nsis_root/files/
           retention-days: 40
 
-  # ---------------------------------------------------------------------------
-  # Job 3 : Publie les assets nightly (exe + zip, Qt5 et Qt6) sur la release
-  # Ne tourne que sur push master (pas sur les PRs)
-  # ---------------------------------------------------------------------------
-  publish-nightly-assets:
-    needs: [build-windows, build-windows-qt6]
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    permissions:
-      contents: write
 
-    steps:
-      - name: Download installer artifacts (Qt5 + Qt6)
-        uses: actions/download-artifact@v8
-        with:
-          pattern: qelectrotech-windows-installer*
-          path: downloaded/installer/
-          merge-multiple: true
-
-      - name: Download portable artifacts (Qt5 + Qt6)
-        uses: actions/download-artifact@v8
-        with:
-          pattern: qelectrotech-*-readytouse
-          path: downloaded/portable/
-          merge-multiple: true
-
-      - name: Delete old nightly assets (.exe and .zip)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          gh release view nightly --repo "$REPO" --json assets \
-            --jq '.assets[] | select(.name | test("\\.(exe|zip)$")) | .name' \
-          | while read -r name; do
-              echo "Deleting old asset: $name"
-              gh release delete-asset nightly "$name" --repo "$REPO" --yes
-            done
-          echo "Old .exe and .zip assets deleted."
-
-      - name: Update nightly release
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: nightly
-          name: "Nightly Build – Windows"
-          body: |
-            🔧 **Automated nightly build** — may be unstable.
-
-            | | |
-            |---|---|
-            | **Commit** | ${{ github.sha }} |
-            | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
-            | **Date** | ${{ github.event.head_commit.timestamp }} |
-
-            > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
-            > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
-
-            > 🧪 **Qt6 builds are experimental.** Files tagged `-qt6-` are built against Qt6 and are not yet
-            > as tested as the Qt5 track. Expect rough edges; report issues clearly labelled "Qt6".
-          prerelease: true
-          make_latest: false
-          files: |
-            downloaded/installer/*.exe
-            downloaded/portable/*.zip
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      # GitHub Pages is generated and deployed by windows-msi.yml
-      # after the MSI upload, so that all URLs (exe/zip/msi, Qt5+Qt6) are known.

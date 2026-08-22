@@ -1,0 +1,66 @@
+name: Package AppImage
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  # Temporarily also on push/PR while this is actively being iterated on --
+  # dial back to workflow_dispatch + a nightly schedule once it's proven,
+  # same as macos-package.yml.
+  # pull_request:
+  # push:
+  #   branches: [master]
+
+concurrency:
+  group: linux-package-appimage-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package-appimage:
+    name: Package AppImage (${{ matrix.arch }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64
+            os: ubuntu-24.04
+          - arch: aarch64
+            os: ubuntu-24.04-arm
+    env:
+      # linuxdeploy and its Qt plugin ship as AppImages themselves, which
+      # normally need FUSE to mount and run directly -- GitHub-hosted
+      # runners don't reliably have that configured. This tells any
+      # AppImage-format binary to extract itself and run from disk
+      # instead, sidestepping the FUSE requirement entirely. Harmless to
+      # set even in environments where FUSE *is* available.
+      APPIMAGE_EXTRACT_AND_RUN: "1"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          path: source
+
+      - name: Install Qt6 dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            qt6-base-dev qt6-base-private-dev libqt6svg6-dev libqt6sql6-sqlite qt6-tools-dev qt6-tools-dev-tools qt6-l10n-tools qt6-translations-l10n \
+            libsqlite3-dev cmake ninja-build pkg-config g++ wget libgl1-mesa-dev libegl1-mesa-dev qt6-documentation-tools
+
+      - name: Package AppImage
+        run: |
+          set -euo pipefail
+          cd source
+          ./build-aux/appimage/package_appimage.sh --arch=${{ matrix.arch }}
+
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: qelectrotech-appimage-${{ matrix.arch }}
+          path: |
+            source/*.AppImage
+            source/*.AppImage-SHA256.txt
+          retention-days: 40
+          if-no-files-found: error
