@@ -154,10 +154,19 @@ jobs:
           if [[ "${{ github.ref }}" == refs/tags/* ]]; then
             echo "is_tag=true" >> "$GITHUB_OUTPUT"
             echo "tag_name=${{ needs.verify-version.outputs.tag_name }}" >> "$GITHUB_OUTPUT"
+            echo "release_name=QElectroTech ${{ needs.verify-version.outputs.tag_name }}" >> "$GITHUB_OUTPUT"
             echo "prerelease=${{ needs.verify-version.outputs.prerelease }}" >> "$GITHUB_OUTPUT"
           else
+            # A unique tag per run (never reused) so GitHub's auto-generated
+            # "Source code" archive can never be served stale from codeload's
+            # per-tag cache -- a fresh tag has never been cached before.
+            # generate-page.py's stable download page is what users actually
+            # bookmark, so a rotating tag name underneath it is invisible to them.
+            NIGHTLY_TAG="nightly-$(date -u +%Y%m%d-%H%M)-${{ github.run_number }}"
+            NIGHTLY_NAME="Nightly release - $(date -u '+%Y-%m-%d %H:%M')"
             echo "is_tag=false" >> "$GITHUB_OUTPUT"
-            echo "tag_name=nightly" >> "$GITHUB_OUTPUT"
+            echo "tag_name=$NIGHTLY_TAG" >> "$GITHUB_OUTPUT"
+            echo "release_name=$NIGHTLY_NAME" >> "$GITHUB_OUTPUT"
             echo "prerelease=true" >> "$GITHUB_OUTPUT"
           fi
 
@@ -211,11 +220,19 @@ jobs:
           pattern: qelectrotech-source-package
           merge-multiple: true
 
-      - name: Delete previous nightly release
+      - name: Delete previous nightly releases
         if: steps.target.outputs.is_tag == 'false'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release delete nightly --repo "${{ github.repository }}" --yes --cleanup-tag || true
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+          gh release list --repo "$REPO" --limit 100 --json tagName \
+            --jq '.[] | select(.tagName | startswith("nightly-")) | .tagName' \
+          | while IFS= read -r OLD_TAG; do
+              echo "Deleting old nightly release: $OLD_TAG"
+              gh release delete "$OLD_TAG" --repo "$REPO" --yes --cleanup-tag || true
+            done
 
       - name: Build release body
         id: body
@@ -262,7 +279,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.target.outputs.tag_name }}
-          name: ${{ steps.target.outputs.is_tag == 'true' && format('QElectroTech {0}', steps.target.outputs.tag_name) || 'Nightly build' }}
+          name: ${{ steps.target.outputs.release_name }}
           prerelease: ${{ steps.target.outputs.prerelease }}
           files: artifacts/*
           body: ${{ env.text }}
@@ -284,7 +301,7 @@ jobs:
           set -euo pipefail
           REPO="${{ github.repository }}"
 
-          ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
+          ASSETS=$(gh release view "${{ steps.target.outputs.tag_name }}" --repo "$REPO" --json assets --jq '.assets[].name')
 
           EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1)
           ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1)
@@ -294,7 +311,7 @@ jobs:
           ZIP_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
           MSI_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
 
-          BASE="https://github.com/$REPO/releases/download/nightly"
+          BASE="https://github.com/$REPO/releases/download/${{ steps.target.outputs.tag_name }}"
           INSTALLER_URL="$BASE/$EXE_NAME"
           PORTABLE_URL="$BASE/$ZIP_NAME"
           MSI_URL=""
