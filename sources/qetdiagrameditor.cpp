@@ -23,6 +23,9 @@
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddimage.h"
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include "diagramevent/diagrameventaddpdf.h"
+#endif
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddtext.h"
 #include "diagramview.h"
@@ -716,6 +719,9 @@ void QETDiagramEditor::setUpActions()
 		//Adding action (add text, image, shape...)
 	QAction *add_text      = m_add_item_actions_group.addAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"));
 	QAction *add_image	   = m_add_item_actions_group.addAction(QET::Icons::adding_image,  tr("Ajouter une image"));
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	QAction *add_pdf	   = m_add_item_actions_group.addAction(QET::Icons::adding_pdf,   tr("Ajouter un PDF"));
+#endif
 	QAction *add_line	   = m_add_item_actions_group.addAction(QET::Icons::PartLine,      tr("Ajouter une ligne", "Draw line"));
 	QAction *add_rectangle = m_add_item_actions_group.addAction(QET::Icons::PartRectangle, tr("Ajouter un rectangle"));
 	QAction *add_ellipse   = m_add_item_actions_group.addAction(QET::Icons::PartEllipse,   tr("Ajouter une ellipse"));
@@ -724,6 +730,9 @@ void QETDiagramEditor::setUpActions()
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
 	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	add_pdf      ->setStatusTip(tr("Ajoute une page PDF sur le folio actuel"));
+#endif
 	add_line     ->setStatusTip(tr("Ajoute une ligne sur le folio actuel"));
 	add_rectangle->setStatusTip(tr("Ajoute un rectangle sur le folio actuel"));
 	add_ellipse  ->setStatusTip(tr("Ajoute une ellipse sur le folio actuel"));
@@ -732,6 +741,9 @@ void QETDiagramEditor::setUpActions()
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	add_pdf      ->setData(QStringLiteral("pdf"));
+#endif
 	add_line     ->setData(QStringLiteral("line"));
 	add_rectangle->setData(QStringLiteral("rectangle"));
 	add_ellipse  ->setData(QStringLiteral("ellipse"));
@@ -1569,6 +1581,19 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		else
 			diagram_event = deai;
 	}
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+	else if (value == "pdf")
+	{
+		DiagramEventAddPdf *deap = new DiagramEventAddPdf(d);
+		if (deap->isNull())
+		{
+			delete deap;
+			return;
+		}
+		else
+			diagram_event = deap;
+	}
+#endif
 	else if (value == "text")
 	{
 		diagram_event = new DiagramEventAddText(d);
