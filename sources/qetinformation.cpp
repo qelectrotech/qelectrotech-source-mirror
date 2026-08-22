@@ -153,7 +153,10 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_MACHINE_MANUFACTURER_REF,
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
-						 ELMT_UNITY, 
+						 ELMT_UNITY,
+						 ELMT_WIDTH,
+						 ELMT_HEIGHT,
+						 ELMT_DEPTH,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,
@@ -214,6 +217,45 @@ QString QETInformation::elementInfoToVar(const QString &info)
 }
 
 /**
+ * @brief QETInformation::numericInfoPattern
+ * @return the pattern used to validate numeric elementInformation
+ * fields (currently width/height/depth): digits with an optional "."
+ * as decimal separator, requiring at least one digit overall so a
+ * lone "." can never be a complete, acceptable value on its own.
+ */
+QRegularExpression QETInformation::numericInfoPattern()
+{
+	return QRegularExpression(QStringLiteral(R"(^[0-9]+$|^[0-9]*\.[0-9]{1,2}$)"));
+}
+
+/**
+	@brief QETInformation::NumericInfoValidator::NumericInfoValidator
+	@param parent
+*/
+QETInformation::NumericInfoValidator::NumericInfoValidator(QObject *parent) :
+	QRegularExpressionValidator(numericInfoPattern(), parent)
+{
+}
+
+/**
+	@brief QETInformation::NumericInfoValidator::validate
+	Rewrites any "," in @a input to "." in place, then delegates to
+	the base class for the actual numericInfoPattern() check. @a pos
+	is left untouched by the rewrite itself -- replacing "," with "."
+	never changes the string's length, so the cursor position the
+	caller already tracked stays correct.
+	@param input the text being validated; may be rewritten
+	@param pos the cursor position within @a input
+	@return the resulting validation state
+*/
+QValidator::State QETInformation::NumericInfoValidator::validate(QString &input, int &pos) const
+{
+	if (input.contains(QLatin1Char(',')))
+		input.replace(QLatin1Char(','), QLatin1Char('.'));
+	return QRegularExpressionValidator::validate(input, pos);
+}
+
+/**
  * @brief QETInformation::infoToVar
  * @param info
  * @return return the string @info prepended by %{ ans appended by }
@@ -268,6 +310,9 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_SUPPLIER)                    return QObject::tr("Fournisseur");
 	else if (info == ELMT_QUANTITY)                    return QObject::tr("Quantité");
 	else if (info == ELMT_UNITY)                       return QObject::tr("Unité");
+	else if (info == ELMT_WIDTH)					   return QObject::tr("Largeur [mm]");
+	else if (info == ELMT_HEIGHT)                      return QObject::tr("Hauteur [mm]");
+	else if (info == ELMT_DEPTH)                       return QObject::tr("Profondeur [mm]");
 	else if (info == ELMT_LOCATION)                    return QObject::tr("Localisation (+)");
 	else if (info == COND_FUNCTION)                    return QObject::tr("Fonction");
 	else if (info == COND_TENSION_PROTOCOL)            return QObject::tr("Tension / Protocole");
@@ -334,6 +379,9 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
 						 ELMT_UNITY,
+						 ELMT_WIDTH,
+						 ELMT_HEIGHT,
+						 ELMT_DEPTH,
 						 ELMT_AUX1,
 						 ELMT_DESCRIPTION_AUX1,
 						 ELMT_DESIGNATION_AUX1,
