@@ -38,6 +38,15 @@
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
@@ -1511,13 +1520,7 @@ void Element::setElementData(ElementData data)
 					{
 						QString val = (t < io.terminals.size())
 							? io.terminals.at(t) : QString();
-						ctx.addValue(
-							QStringList({
-								QETInformation::ELMT_PLC_T1,
-								QETInformation::ELMT_PLC_T2,
-								QETInformation::ELMT_PLC_T3,
-								QETInformation::ELMT_PLC_T4
-							}).at(t), val);
+						ctx.addValue(plcTerminalKeys[t], val);
 					}
 					slave->setElementInformations(ctx);
 
