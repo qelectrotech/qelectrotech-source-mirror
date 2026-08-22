@@ -228,7 +228,7 @@ jobs:
           set -euo pipefail
           REPO="${{ github.repository }}"
           gh release list --repo "$REPO" --limit 100 --json tagName \
-            --jq '.[] | select(.tagName | startswith("nightly-")) | .tagName' \
+            --jq '.[] | select(.tagName == "nightly" or (.tagName | startswith("nightly-"))) | .tagName' \
           | while IFS= read -r OLD_TAG; do
               echo "Deleting old nightly release: $OLD_TAG"
               gh release delete "$OLD_TAG" --repo "$REPO" --yes --cleanup-tag || true
@@ -279,6 +279,7 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.target.outputs.tag_name }}
+          target_commitish: ${{ github.sha }}
           name: ${{ steps.target.outputs.release_name }}
           prerelease: ${{ steps.target.outputs.prerelease }}
           files: artifacts/*
