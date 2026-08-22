@@ -101,8 +101,6 @@ namespace qdesigner_internal {
 			QXmlStreamAttributes *atts,
 			bool *paragraphAlignmentFound)
 	{
-		typedef QXmlStreamAttributes::iterator AttributeIt;
-
 		if (atts->isEmpty())
 			return;
 

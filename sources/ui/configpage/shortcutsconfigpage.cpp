@@ -212,7 +212,7 @@ void ShortcutsConfigPage::applyFilter()
 	const int quick_filter = m_quick_filter->currentIndex();
 
 	int visible_actions = 0;
-	for (const Row &row : qAsConst(m_rows)) {
+	for (const Row &row : std::as_const(m_rows)) {
 		// Text is matched by substring, but the key sequence is matched exactly:
 		// a substring match would let "Ctrl+S" also hit "Ctrl+Shift+F" (the "S"
 		// of "Shift"), which is precisely the kind of false positive that hides
