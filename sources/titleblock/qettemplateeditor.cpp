@@ -648,7 +648,15 @@ void QETTitleBlockTemplateEditor::readSettings()
 
 	// window state (toolbars, docks...)
 	QVariant state = settings.value("titleblocktemplateeditor/state");
-	if (state.isValid()) restoreState(state.toByteArray());
+	if (state.isValid()) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("titleblocktemplateeditor/state");
+		}
+#else
+		restoreState(state.toByteArray());
+#endif
+	}
 }
 
 /**

@@ -953,7 +953,13 @@ void QETElementEditor::readSettings()
 
 	QVariant state = settings.value("elementeditor/state");
 	if (state.isValid()) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("elementeditor/state");
+		}
+#else
 		restoreState(state.toByteArray());
+#endif
 	}
 
 	auto data = m_elmt_scene->elementData();
