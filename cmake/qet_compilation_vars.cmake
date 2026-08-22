@@ -26,7 +26,6 @@ message(" - qet_compilation_vars")
 set(QET_COMPONENTS
   LinguistTools
   PrintSupport
-  Pdf
   Xml
   Svg
   Sql
@@ -34,9 +33,13 @@ set(QET_COMPONENTS
   Widgets
   Concurrent)
 
+# Qt6-only: QPdfDocument for PDF page import
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_COMPONENTS Pdf)
+endif()
+
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
-  Qt::Pdf
   Qt::Gui
   Qt::GuiPrivate   # Required for QPdfEngine::drawHyperlink (PDF internal links)
   Qt::Xml
@@ -46,6 +49,11 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Widgets
   Qt::Concurrent
   )
+
+# Qt6-only: QPdfDocument for PDF page import
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_PRIVATE_LIBRARIES Qt::Pdf)
+endif()
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
@@ -309,8 +317,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
-  ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
-  ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
@@ -717,8 +723,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/formulaassistantdialog.h
   ${QET_DIR}/sources/ui/imagepropertieswidget.cpp
   ${QET_DIR}/sources/ui/imagepropertieswidget.h
-  ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
-  ${QET_DIR}/sources/ui/pdfpagesdialog.h
   ${QET_DIR}/sources/ui/importelementdialog.cpp
   ${QET_DIR}/sources/ui/importelementdialog.h
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.cpp
@@ -817,6 +821,16 @@ if(NOT BUILD_WITH_KF)
     ${QET_DIR}/sources/ui/nokde/kcolorbutton.h
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
+  )
+endif()
+
+# Qt6-only: PDF page import files
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
+    ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
+    ${QET_DIR}/sources/ui/pdfpagesdialog.h
   )
 endif()
 

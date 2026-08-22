@@ -28,11 +28,6 @@
 #include <QMessageBox>
 #include <QPainter>
 
-// Target rendering DPI for PDF pages.
-// 150 DPI provides good quality for screen display and printing
-// while keeping file size reasonable.
-static const int PDF_RENDER_DPI = 150;
-
 /**
 	@brief DiagramEventAddPdf::DiagramEventAddPdf
 	Constructor
@@ -160,8 +155,8 @@ bool DiagramEventAddPdf::isNull() const
 /**
 	@brief DiagramEventAddPdf::openDialog
 	Opens a file dialog to select a PDF file, then opens a page selection
-	dialog. The selected page is rendered to a QImage at 150 DPI and
-	converted to a DiagramImageItem.
+	dialog with DPI options. The selected page is rendered to a QImage at
+	the chosen DPI and converted to a DiagramImageItem.
 */
 void DiagramEventAddPdf::openDialog()
 {
@@ -203,21 +198,18 @@ void DiagramEventAddPdf::openDialog()
 		return;
 	}
 
-	// If only one page, import directly without showing dialog
-	int pageIndex = 0;
-	if (pageCount > 1)
-	{
-		PdfPagesDialog dialog(document,
-			m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first());
-		if (dialog.exec() != QDialog::Accepted) return;
-		pageIndex = dialog.selectedPage() - 1; // Convert to 0-based index
-	}
+	// Always show the dialog so the user can choose page and DPI
+	PdfPagesDialog dialog(document,
+		m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first());
+	if (dialog.exec() != QDialog::Accepted) return;
+	int pageIndex = dialog.selectedPage() - 1; // Convert to 0-based index
+	int dpi = dialog.selectedDpi();
 
-	// Calculate pixel size from PDF points at target DPI
+	// Calculate pixel size from PDF points at the user-selected DPI
 	// PDF point = 1/72 inch
 	QSizeF pageSize = document.pagePointSize(pageIndex);
-	int pixelWidth  = qRound((pageSize.width()  / 72.0) * PDF_RENDER_DPI);
-	int pixelHeight = qRound((pageSize.height() / 72.0) * PDF_RENDER_DPI);
+	int pixelWidth  = qRound((pageSize.width()  / 72.0) * dpi);
+	int pixelHeight = qRound((pageSize.height() / 72.0) * dpi);
 
 	if (pixelWidth <= 0 || pixelHeight <= 0)
 	{

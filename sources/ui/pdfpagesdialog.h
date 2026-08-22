@@ -21,6 +21,7 @@
 #include <QDialog>
 
 class QSpinBox;
+class QComboBox;
 class QLabel;
 class QPdfDocument;
 
@@ -28,7 +29,7 @@ class QPdfDocument;
 	@brief The PdfPagesDialog class
 	Dialog for selecting a page from a PDF document.
 	Displays the total page count, a live preview of the selected page,
-	and allows the user to choose which page to import.
+ DPI options (150/300/600), and allows the user to choose which page to import.
 */
 class PdfPagesDialog : public QDialog
 {
@@ -37,6 +38,7 @@ class PdfPagesDialog : public QDialog
 	public:
 		explicit PdfPagesDialog(QPdfDocument &document, QWidget *parent = nullptr);
 		int selectedPage() const;
+		int selectedDpi() const;
 
 	private slots:
 		void updatePreview();
@@ -46,6 +48,7 @@ class PdfPagesDialog : public QDialog
 		QLabel *m_info_label;
 		QLabel *m_preview_label;
 		QSpinBox *m_page_spinbox;
+		QComboBox *m_dpi_combo;
 };
 
 #endif // PDFPAGESDIALOG_H

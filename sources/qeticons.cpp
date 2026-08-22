@@ -454,7 +454,7 @@ void QET::Icons::initIcons()
 	EditClear           .addFile(":/ico/22x22/edit-clear.png");
 	EditText            .addFile(":/ico/22x22/names.png");
 	adding_image        .addFile(":/ico/22x22/insert-image.png");
-	adding_pdf          .addFile(":/ico/22x22/document-import.png");
+	adding_pdf          .addFile(":/ico/22x22/pdf-import.png");
 	
 	if (rtl) {
 		EditClearLocationBar.addPixmap(QPixmap(":/ico/16x16/edit-clear-locationbar-ltr.png").transformed(reverse));

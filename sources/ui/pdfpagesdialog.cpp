@@ -21,6 +21,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QSpinBox>
+#include <QComboBox>
 #include <QPushButton>
 #include <QDialogButtonBox>
 #include <QPdfDocument>
@@ -28,8 +29,10 @@
 #include <QPainter>
 
 // Preview rendering DPI for the thumbnail in the dialog.
-// Lower than the final render DPI to keep the dialog fast and compact.
+// Fixed at 96 DPI to keep the preview fast and compact regardless
+// of the final render DPI selected by the user.
 static const int PREVIEW_DPI = 96;
+static const int PREVIEW_WIDTH = 400;
 
 /**
 	@brief PdfPagesDialog::PdfPagesDialog
@@ -43,7 +46,7 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 {
 	setWindowTitle(tr("Sélectionner une page"));
 	setMinimumWidth(500);
-	setMinimumHeight(400);
+	setMinimumHeight(500);
 
 	int pageCount = document.pageCount();
 
@@ -70,6 +73,19 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 	m_page_spinbox->setMaximum(pageCount);
 	m_page_spinbox->setValue(1);
 	page_layout->addWidget(m_page_spinbox);
+
+	page_layout->addStretch();
+
+	// DPI selection
+	QLabel *dpi_label = new QLabel(tr("Résolution :"), this);
+	page_layout->addWidget(dpi_label);
+
+	m_dpi_combo = new QComboBox(this);
+	m_dpi_combo->addItem(tr("150 DPI (écran)"), 150);
+	m_dpi_combo->addItem(tr("300 DPI (impression)"), 300);
+	m_dpi_combo->addItem(tr("600 DPI (haute qualité)"), 600);
+	m_dpi_combo->setCurrentIndex(0);
+	page_layout->addWidget(m_dpi_combo);
 
 	main_layout->addLayout(page_layout);
 
@@ -98,8 +114,10 @@ PdfPagesDialog::PdfPagesDialog(QPdfDocument &document, QWidget *parent)
 	connect(button_box, &QDialogButtonBox::rejected, this, &QDialog::reject);
 	main_layout->addWidget(button_box);
 
-	// Update preview when spinbox value changes
+	// Update preview when spinbox or DPI changes
 	connect(m_page_spinbox, QOverload<int>::of(&QSpinBox::valueChanged),
+		this, &PdfPagesDialog::updatePreview);
+	connect(m_dpi_combo, QOverload<int>::of(&QComboBox::currentIndexChanged),
 		this, &PdfPagesDialog::updatePreview);
 
 	// Render initial preview
@@ -116,10 +134,19 @@ int PdfPagesDialog::selectedPage() const
 }
 
 /**
+	@brief PdfPagesDialog::selectedDpi
+	@return the selected DPI value (150, 300, or 600)
+*/
+int PdfPagesDialog::selectedDpi() const
+{
+	return m_dpi_combo->currentData().toInt();
+}
+
+/**
 	@brief PdfPagesDialog::updatePreview
 	Renders the currently selected page as a thumbnail and displays it
-	in the preview label. Uses a fixed preview width of 400 pixels
-	while preserving the page aspect ratio.
+	in the preview label. The preview size scales with the selected DPI
+	to give a visual hint of the output quality.
 */
 void PdfPagesDialog::updatePreview()
 {
@@ -129,12 +156,11 @@ void PdfPagesDialog::updatePreview()
 	QSizeF pageSize = m_document.pagePointSize(pageIndex);
 	if (pageSize.isEmpty()) return;
 
-	const int previewWidth = 400;
 	qreal ratio = pageSize.height() / pageSize.width();
-	int previewHeight = qRound(previewWidth * ratio);
+	int previewHeight = qRound(PREVIEW_WIDTH * ratio);
 
-	// Render the page to QImage
-	QImage preview = m_document.render(pageIndex, QSize(previewWidth, previewHeight));
+	// Render the page to QImage at preview DPI
+	QImage preview = m_document.render(pageIndex, QSize(PREVIEW_WIDTH, previewHeight));
 	if (preview.isNull()) return;
 
 	// Fill white background to handle transparent PDFs
@@ -145,6 +171,6 @@ void PdfPagesDialog::updatePreview()
 	painter.end();
 
 	m_preview_label->setPixmap(QPixmap::fromImage(background).scaled(
-		previewWidth, previewHeight,
+		PREVIEW_WIDTH, previewHeight,
 		Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
