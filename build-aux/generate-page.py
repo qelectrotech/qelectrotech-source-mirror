@@ -114,9 +114,9 @@ if installer_qt6_url or portable_qt6_url or msi_qt6_url:
 <div class="card">
 <h2>&#129514; Windows &mdash; x86_64 &mdash; Qt6 track</h2>
 <div class="warning">
-&#9888;&#65039; <strong>Experimental.</strong> These Qt6-based installer, portable and MSI
-builds are new and not as thoroughly tested as the Qt5 track above. Expect rough
-edges; please report issues and mention &quot;Qt6&quot; explicitly.
+&#129514; <strong>Try Qt6 &mdash; soon the only track.</strong> The Qt5 builds above
+will be removed from Windows CI soon; Qt6 is becoming the sole supported track.
+Please switch and test it now &mdash; report any issue and mention &quot;Qt6&quot; explicitly.
 </div>
 <div class="downloads">
 {qt6_installer_btn}

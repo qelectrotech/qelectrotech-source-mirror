@@ -18,6 +18,10 @@
 #ifndef DIAGRAMEVENTADDPDF_H
 #define DIAGRAMEVENTADDPDF_H
 
+// PDF page import needs the QtPdf module (QET_HAS_QTPDF, set by CMake
+// only when QtPdf is present AND Qt >= 6.4, for QPdfDocument::pagePointSize()).
+#ifdef QET_HAS_QTPDF
+
 #include "diagrameventinterface.h"
 
 class Diagram;
@@ -51,5 +55,7 @@ class DiagramEventAddPdf : public DiagramEventInterface
 		DiagramImageItem *m_image;
 		bool m_is_added;
 };
+
+#endif // QET_HAS_QTPDF
 
 #endif // DIAGRAMEVENTADDPDF_H

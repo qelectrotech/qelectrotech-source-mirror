@@ -17,6 +17,9 @@
 */
 #include "diagrameventaddpdf.h"
 
+// Whole file is a no-op unless QtPdf is available (see diagrameventaddpdf.h).
+#ifdef QET_HAS_QTPDF
+
 #include "../qetapp.h"
 #include "../diagram.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
@@ -163,11 +166,11 @@ void DiagramEventAddPdf::openDialog()
 	if (m_diagram->isReadOnly()) return;
 
 	// Open file dialog to select a PDF file
-	QString pathPictures = QETApp::pictureDir();
+	QString pathPDFs = QETApp::documentDir();
 	QString fileName = QFileDialog::getOpenFileName(
 		m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
 		QObject::tr("Sélectionner un fichier PDF..."),
-		pathPictures,
+		pathPDFs,
 		QObject::tr("Fichiers PDF (*.pdf)")
 	);
 
@@ -243,3 +246,5 @@ void DiagramEventAddPdf::openDialog()
 	m_image = new DiagramImageItem(QPixmap::fromImage(background));
 	m_running = true;
 }
+
+#endif // QET_HAS_QTPDF

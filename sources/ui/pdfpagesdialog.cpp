@@ -17,6 +17,9 @@
 */
 #include "pdfpagesdialog.h"
 
+// Whole file is a no-op unless QtPdf is available (see pdfpagesdialog.h).
+#ifdef QET_HAS_QTPDF
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -174,3 +177,5 @@ void PdfPagesDialog::updatePreview()
 		PREVIEW_WIDTH, previewHeight,
 		Qt::KeepAspectRatio, Qt::SmoothTransformation));
 }
+
+#endif // QET_HAS_QTPDF

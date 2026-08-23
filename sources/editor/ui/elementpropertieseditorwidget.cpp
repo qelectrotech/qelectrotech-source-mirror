@@ -690,7 +690,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->horizontalHeader()->resizeSection(2, 150);
 	m_plc_table->horizontalHeader()->resizeSection(3, 150);
 	m_plc_table->horizontalHeader()->resizeSection(4, 100);
-	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
+	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_table->setMinimumHeight(200);
 	m_plc_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
