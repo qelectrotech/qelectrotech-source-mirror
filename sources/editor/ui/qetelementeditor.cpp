@@ -967,11 +967,9 @@ void QETElementEditor::readSettingsState()
 
 	QVariant state = settings.value("elementeditor/state");
 	if (state.isValid()) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-		restoreState(state.toByteArray());
-#else
-		restoreState(state.toByteArray());
-#endif
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("elementeditor/state");
+		}
 	}
 }
 

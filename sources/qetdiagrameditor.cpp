@@ -2224,13 +2224,9 @@ void QETDiagramEditor::readSettingsState()
 	// etat de la fenetre (barres d'outils, docks...)
 	QVariant state = settings.value("diagrameditor/state");
 	if (state.isValid()) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 		if (!restoreState(state.toByteArray())) {
 			settings.remove("diagrameditor/state");
 		}
-#else
-		restoreState(state.toByteArray());
-#endif
 	}
 }
 
