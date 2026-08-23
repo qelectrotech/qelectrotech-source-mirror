@@ -1,4 +1,4 @@
-name: Linux Build Check
+name: Linux Build Check with GCC on Ubuntu
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-linux:
-    name: Qt ${{ matrix.qt_version }} on ${{ matrix.os }}
+    name: GCC build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -22,7 +22,6 @@ jobs:
           - ubuntu-22.04-arm
           - ubuntu-24.04
           - ubuntu-26.04
-        qt_version: [5, 6]
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -31,21 +30,7 @@ jobs:
           fetch-depth: 0
           path: source
 
-      - name: Install Qt5 dependencies
-        if: matrix.qt_version == 5
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            qt5-qmake qtbase5-dev qtbase5-private-dev qttools5-dev qttools5-dev-tools libqt5svg5-dev libqt5sql5-sqlite qttranslations5-l10n \
-            libsqlite3-dev cmake ninja-build ccache pkg-config g++
-            
-          # Install OpenGL fix for Ubuntu 22.04
-          if [[ "${{ matrix.os }}" == "ubuntu-22.04" || "${{ matrix.os }}" == "ubuntu-22.04-arm" ]]; then
-            sudo apt-get install -y libgl1-mesa-dev libegl1-mesa-dev
-          fi
-
       - name: Install Qt6 dependencies
-        if: matrix.qt_version == 6
         run: |
           sudo apt-get update
           sudo apt-get install -y \
@@ -57,15 +42,6 @@ jobs:
             sudo apt-get install -y libgl1-mesa-dev libegl1-mesa-dev
           fi
 
-#      - name: Cache ccache
-#        uses: actions/cache@v5
-#        with:
-#          path: ~/.ccache
-#          key: ccache-linux-qt${{ matrix.qt_version }}-${{ github.ref_name }}-${{ github.sha }}
-#          restore-keys: |
-#            ccache-linux-qt${{ matrix.qt_version }}-${{ github.ref_name }}-
-#            ccache-linux-qt${{ matrix.qt_version }}-
-
       - name: Configure, build, install
         run: |
           set -euo pipefail
@@ -75,13 +51,11 @@ jobs:
 
           cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
-            -DQT_VERSION_MAJOR=${{ matrix.qt_version }} \
+            -DQT_VERSION_MAJOR=6 \
             -DBUILD_WITH_KF=OFF \
             -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
-            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
 
-          cmake --build "$BUILD_DIR" -j"$(nproc)"
+          cmake --build "$BUILD_DIR"
           cmake --install "$BUILD_DIR" --prefix "$INSTALL_DIR"
