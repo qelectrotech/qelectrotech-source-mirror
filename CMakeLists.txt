@@ -89,6 +89,26 @@ if(QT_VERSION_MAJOR GREATER_EQUAL 6 AND NOT TARGET Qt6::GuiPrivate)
         "that provides the GuiPrivate component.")
 endif()
 
+# PDF page import (toolbar "Ajouter un PDF") needs the QtPdf module and,
+# specifically, QPdfDocument::pagePointSize() which only exists since Qt 6.4.
+# Unlike GuiPrivate above, a missing QtPdf module is NOT fatal here: some
+# Qt6 distributions (e.g. the Flatpak org.kde.Platform runtime) don't ship
+# it at all, since it lives in the qtwebengine source tree rather than Qt6
+# core. When it's missing, or too old, the feature is silently disabled -
+# see the QT_VERSION_CHECK / QET_HAS_QTPDF guards in diagrameventaddpdf.*
+# and pdfpagesdialog.*.
+set(QET_HAS_QTPDF FALSE)
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+    find_package(Qt6 QUIET COMPONENTS Pdf)
+    if(TARGET Qt6::Pdf AND NOT Qt6_VERSION VERSION_LESS 6.4.0)
+        set(QET_HAS_QTPDF TRUE)
+        list(APPEND QET_PRIVATE_LIBRARIES Qt::Pdf)
+        add_compile_definitions(QET_HAS_QTPDF)
+    else()
+        message(STATUS "QtPdf module not available (or Qt < 6.4): PDF page import feature disabled")
+    endif()
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3

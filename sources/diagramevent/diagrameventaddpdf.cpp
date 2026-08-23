@@ -17,6 +17,9 @@
 */
 #include "diagrameventaddpdf.h"
 
+// Whole file is a no-op unless QtPdf is available (see diagrameventaddpdf.h).
+#ifdef QET_HAS_QTPDF
+
 #include "../qetapp.h"
 #include "../diagram.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
@@ -243,3 +246,5 @@ void DiagramEventAddPdf::openDialog()
 	m_image = new DiagramImageItem(QPixmap::fromImage(background));
 	m_running = true;
 }
+
+#endif // QET_HAS_QTPDF

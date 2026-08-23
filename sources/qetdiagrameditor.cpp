@@ -23,7 +23,7 @@
 #include "conductornumexport.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddimage.h"
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef QET_HAS_QTPDF
 #include "diagramevent/diagrameventaddpdf.h"
 #endif
 #include "diagramevent/diagrameventaddshape.h"
@@ -719,7 +719,7 @@ void QETDiagramEditor::setUpActions()
 		//Adding action (add text, image, shape...)
 	QAction *add_text      = m_add_item_actions_group.addAction(QET::Icons::PartTextField, tr("Ajouter un champ de texte"));
 	QAction *add_image	   = m_add_item_actions_group.addAction(QET::Icons::adding_image,  tr("Ajouter une image"));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef QET_HAS_QTPDF
 	QAction *add_pdf	   = m_add_item_actions_group.addAction(QET::Icons::adding_pdf,   tr("Ajouter un PDF"));
 #endif
 	QAction *add_line	   = m_add_item_actions_group.addAction(QET::Icons::PartLine,      tr("Ajouter une ligne", "Draw line"));
@@ -730,7 +730,7 @@ void QETDiagramEditor::setUpActions()
 
 	add_text     ->setStatusTip(tr("Ajoute un champ de texte sur le folio actuel"));
 	add_image    ->setStatusTip(tr("Ajoute une image sur le folio actuel"));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef QET_HAS_QTPDF
 	add_pdf      ->setStatusTip(tr("Ajoute une page PDF sur le folio actuel"));
 #endif
 	add_line     ->setStatusTip(tr("Ajoute une ligne sur le folio actuel"));
@@ -741,7 +741,7 @@ void QETDiagramEditor::setUpActions()
 
 	add_text     ->setData(QStringLiteral("text"));
 	add_image    ->setData(QStringLiteral("image"));
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef QET_HAS_QTPDF
 	add_pdf      ->setData(QStringLiteral("pdf"));
 #endif
 	add_line     ->setData(QStringLiteral("line"));
@@ -1581,7 +1581,7 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		else
 			diagram_event = deai;
 	}
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#ifdef QET_HAS_QTPDF
 	else if (value == "pdf")
 	{
 		DiagramEventAddPdf *deap = new DiagramEventAddPdf(d);

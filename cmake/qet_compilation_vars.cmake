@@ -33,10 +33,12 @@ set(QET_COMPONENTS
   Widgets
   Concurrent)
 
-# Qt6-only: QPdfDocument for PDF page import
-if(QT_VERSION_MAJOR GREATER_EQUAL 6)
-  list(APPEND QET_COMPONENTS Pdf)
-endif()
+# Note: Pdf is intentionally NOT in this list. Some Qt6 distributions
+# (notably the Flatpak org.kde.Platform runtime) don't ship the QtPdf
+# module at all - it lives in the qtwebengine source tree, not Qt6 core.
+# Requesting it here as a REQUIRED component would fail the whole
+# configure on those setups. It is probed separately, QUIET and
+# non-fatal, right after the main find_package() call below.
 
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
@@ -50,10 +52,8 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Concurrent
   )
 
-# Qt6-only: QPdfDocument for PDF page import
-if(QT_VERSION_MAJOR GREATER_EQUAL 6)
-  list(APPEND QET_PRIVATE_LIBRARIES Qt::Pdf)
-endif()
+# Qt::Pdf is appended conditionally in CMakeLists.txt, once we know
+# whether the module was actually found (see QET_HAS_QTPDF).
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
