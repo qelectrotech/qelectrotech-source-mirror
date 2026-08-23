@@ -116,6 +116,7 @@ class QETElementEditor : public QMainWindow
 	private:
 		bool canClose();
 		void readSettings();
+		void readSettingsState();
 		void writeSettings() const;
 		void setupActions();
 		void updateAction();

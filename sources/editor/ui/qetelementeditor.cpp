@@ -77,8 +77,9 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	//ui->m_display_menu->insertMenu(ui->m_zoom_in_action, menu);
 
 	setWindowState(Qt::WindowMaximized);
-	readSettings();
+	readSettings();  // restoreGeometry before show()
 	show();
+	readSettingsState();  // restoreState() must be called after show() in Qt6
 }
 
 /**
@@ -950,20 +951,28 @@ void QETElementEditor::readSettings()
 		restoreGeometry(geometry.toByteArray());
 	}
 
+	auto data = m_elmt_scene->elementData();
+	data.m_drawing_information = settings.value("elementeditor/default-informations", "").toString();
+	m_elmt_scene->setElementData(data);
+}
+
+/**
+ * @brief QETElementEditor::readSettingsState
+ * Restore the window state (docks, toolbars).
+ * Must be called AFTER show() in Qt6 for restoreState() to work correctly.
+ */
+void QETElementEditor::readSettingsState()
+{
+	QSettings settings;
+
 	QVariant state = settings.value("elementeditor/state");
 	if (state.isValid()) {
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-		if (!restoreState(state.toByteArray())) {
-			settings.remove("elementeditor/state");
-		}
+		restoreState(state.toByteArray());
 #else
 		restoreState(state.toByteArray());
 #endif
 	}
-
-	auto data = m_elmt_scene->elementData();
-	data.m_drawing_information = settings.value("elementeditor/default-informations", "").toString();
-	m_elmt_scene->setElementData(data);
 }
 
 /**
