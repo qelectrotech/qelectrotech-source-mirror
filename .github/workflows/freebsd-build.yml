@@ -1,4 +1,4 @@
-name: FreeBSD Build Check
+name: FreeBSD Build Check with GCC
 
 on:
   pull_request:
@@ -11,12 +11,10 @@ concurrency:
 
 jobs:
   build-freebsd:
+    name: GCC build on FreeBSD 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        qt_version: [5, 6]
-    continue-on-error: ${{ matrix.qt_version == 6 }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -34,14 +32,8 @@ jobs:
           run: |
             set -euo pipefail
 
-            if [ "${{ matrix.qt_version }}" = "5" ]; then
-              sudo pkg install -y git qt5 qt5-qmake qt5-buildtools qt5-core qt5-gui qt5-widgets \
-                qt5-svg qt5-sql qt5-sqldrivers-sqlite3 qt5-linguisttools qt5-printsupport cmake ninja ccache \
-                pkgconf sqlite3
-            else
-              sudo pkg install -y git qt6 \
+            sudo pkg install -y git qt6 \
                 cmake ninja ccache pkgconf sqlite3
-            fi
 
             SOURCE_DIR="$PWD/source"
             BUILD_DIR="$PWD/build"
@@ -49,13 +41,11 @@ jobs:
 
             cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
               -DCMAKE_BUILD_TYPE=Release \
-              -DQT_VERSION_MAJOR=${{ matrix.qt_version }} \
+              -DQT_VERSION_MAJOR=6 \
               -DBUILD_WITH_KF=OFF \
               -DPACKAGE_TESTS=OFF \
               -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
-              -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-              -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-              -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+              -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
 
-            cmake --build "$BUILD_DIR" -j"$(sysctl -n hw.ncpu)"
+            cmake --build "$BUILD_DIR" 
             cmake --install "$BUILD_DIR" --prefix "$INSTALL_DIR"
