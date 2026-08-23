@@ -166,11 +166,11 @@ void DiagramEventAddPdf::openDialog()
 	if (m_diagram->isReadOnly()) return;
 
 	// Open file dialog to select a PDF file
-	QString pathPictures = QETApp::documentDir();
+	QString pathPDFs = QETApp::documentDir();
 	QString fileName = QFileDialog::getOpenFileName(
 		m_diagram->views().isEmpty() ? nullptr : m_diagram->views().first(),
 		QObject::tr("Sélectionner un fichier PDF..."),
-		pathPictures,
+		pathPDFs,
 		QObject::tr("Fichiers PDF (*.pdf)")
 	);
 
