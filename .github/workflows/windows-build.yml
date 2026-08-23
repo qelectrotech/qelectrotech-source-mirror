@@ -763,8 +763,9 @@ jobs:
             > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
             > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
 
-            > 🧪 **Qt6 builds are experimental.** Files tagged `-qt6-` are built against Qt6 and are not yet
-            > as tested as the Qt5 track. Expect rough edges; report issues clearly labelled "Qt6".
+            > 🧪 **Try Qt6 — soon the only track.** Files tagged `-qt6-` are built against Qt6. The Qt5
+            > builds above will be removed from Windows CI soon; please switch and test Qt6 now — report
+            > any issue clearly labelled "Qt6".
           prerelease: true
           make_latest: false
           files: |
