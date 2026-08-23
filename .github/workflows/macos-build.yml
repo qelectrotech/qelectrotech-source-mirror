@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-macos:
-    name: Qt ${{ matrix.qt_version }} on ${{ matrix.os }}
+    name: Clang build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -19,8 +19,6 @@ jobs:
       matrix:
         os:
           - macos-latest
-        qt_version: [5, 6]
-    continue-on-error: ${{ matrix.qt_version == 6 }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -29,24 +27,9 @@ jobs:
           fetch-depth: 0
           path: source
 
-      - name: Install Qt5 dependencies
-        if: matrix.qt_version == 5
-        run: |
-          brew install qt@5 cmake ninja ccache pkg-config sqlite
-
       - name: Install Qt6 dependencies
-        if: matrix.qt_version == 6
         run: |
           brew install qt cmake ninja ccache pkg-config sqlite
-
-#      - name: Cache ccache
-#        uses: actions/cache@v5
-#        with:
-#          path: ~/Library/Caches/ccache
-#          key: ccache-macos-qt${{ matrix.qt_version }}-${{ github.ref_name }}-${{ github.sha }}
-#          restore-keys: |
-#            ccache-macos-qt${{ matrix.qt_version }}-${{ github.ref_name }}-
-#            ccache-macos-qt${{ matrix.qt_version }}-
 
       - name: Configure, build, install
         run: |
@@ -59,13 +42,11 @@ jobs:
           cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_PREFIX_PATH="$QT_PREFIX" \
-            -DQT_VERSION_MAJOR=${{ matrix.qt_version }} \
+            -DQT_VERSION_MAJOR=6 \
             -DBUILD_WITH_KF=OFF \
             -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
-            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
 
-          cmake --build "$BUILD_DIR" -j"$(sysctl -n hw.ncpu)"
+          cmake --build "$BUILD_DIR"
           cmake --install "$BUILD_DIR" --prefix "$INSTALL_DIR"
