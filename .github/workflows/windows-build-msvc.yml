@@ -29,12 +29,15 @@ jobs:
           python-version: '3.12'
 
 
-      - name: Install Qt (MSVC)
+      - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.10.0'
+          aqtversion: '==3.3.*'
+          version: '6.10.3'
+          host: 'windows'
+          target: 'desktop'
           arch: 'win64_msvc2022_64'
-          modules: 'extensions.qtpdf.6100.win64_msvc2022_64'      
+          modules: 'extensions.qtpdf.6103.win64_msvc2022_64'      
   
       - name: Install SQLite3 via vcpkg
         run: vcpkg install sqlite3:x64-windows
