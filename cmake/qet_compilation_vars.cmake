@@ -101,7 +101,6 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
   ${QET_DIR}/sources/ui/diagramcontextwidget.ui
   ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.ui
-  ${QET_DIR}/sources/ui/diagramselection.ui
   ${QET_DIR}/sources/ui/dialogwaiting.ui
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
   ${QET_DIR}/sources/ui/elementinfopartwidget.ui
@@ -699,8 +698,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertiesdialog.h
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.cpp
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
-  ${QET_DIR}/sources/ui/diagramselection.cpp
-  ${QET_DIR}/sources/ui/diagramselection.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
