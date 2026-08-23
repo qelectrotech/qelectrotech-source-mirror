@@ -263,7 +263,16 @@ void ElementTextItemGroup::updateAlignment()
 	if(m_Xref_item)
 		m_Xref_item->autoPos();
 	if(m_slave_Xref_item)
-		adjustSlaveXrefPos();
+	{
+		int slave_offset = 0;
+		Element *master_elmt = m_parent_element->linkedElements().isEmpty()
+			? nullptr : m_parent_element->linkedElements().first();
+		if (master_elmt && m_parent_element->diagram()) {
+			XRefProperties xrp = m_parent_element->diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+			slave_offset = xrp.slaveOffset();
+		}
+		adjustSlaveXrefPos(slave_offset);
+	}
 	if(m_hold_to_bottom_of_page)
 		autoPos();
 }
