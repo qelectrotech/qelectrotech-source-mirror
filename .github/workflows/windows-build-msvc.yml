@@ -37,7 +37,7 @@ jobs:
           host: 'windows'
           target: 'desktop'
           arch: 'win64_msvc2022_64'
-          modules: 'extensions.qtpdf.6103.win64_msvc2022_64'      
+          modules: 'qtpdf'
   
       - name: Install SQLite3 via vcpkg
         run: vcpkg install sqlite3:x64-windows
