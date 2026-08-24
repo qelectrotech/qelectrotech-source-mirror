@@ -1011,10 +1011,14 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		//that field was introduced (see terminal1/terminal2 handling in
 		//toXml() below).
 	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid")));
+	m_persist_uuid = !m_uuid.isNull();
 	if (m_uuid.isNull()) {
 			//Absent, empty or malformed: mint one. A null uuid is not a usable
 			//identity -- every conductor carrying one would collide with every
-			//other on the conductor table's primary key.
+			//other on the conductor table's primary key. It's runtime-only,
+			//though: toXml() must not write it back out, or a legacy file
+			//with no conductor uuids gets a freshly different one on every
+			//single load-and-resave (see #754).
 		m_uuid = QUuid::createUuid();
 	}
 
@@ -1056,7 +1060,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 
-	dom_element.setAttribute("uuid", m_uuid.toString());
+	if (m_persist_uuid)
+		dom_element.setAttribute("uuid", m_uuid.toString());
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 	
