@@ -366,18 +366,18 @@ void ElementInfoWidget::updateUi()
 	// Load the lock status for auto numbering
 	if (m_element->elementData().m_type == ElementData::Terminal) {
 		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
-		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
+		ui->m_auto_num_locked_cb->setChecked(QETInformation::isInfoFlagTrue(lock_value));
 
 		// English: Load the potential isolating status from the element information mapping
 		if (m_potential_isolating_cb) {
 			QString isolating_value = element_info.value(QStringLiteral("potential_isolating")).toString();
-			m_potential_isolating_cb->setChecked(isolating_value == QLatin1String("true"));
+			m_potential_isolating_cb->setChecked(QETInformation::isInfoFlagTrue(isolating_value));
 		}
 	}
 	// English: Load the BOM exclusion status from the element information mapping
 	if (m_exclude_from_bom_cb) {
 		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
-		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
+		m_exclude_from_bom_cb->setChecked(QETInformation::isInfoFlagTrue(exclude_bom_value));
 	}
 
 	if (m_live_edit) {

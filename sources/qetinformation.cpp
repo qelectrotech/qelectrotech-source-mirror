@@ -385,3 +385,13 @@ QStringList QETInformation::terminalElementInfoKeys()
 						 ELMT_SUPPLIER };
 	return list;
 }
+
+/**
+ * @brief QETInformation::isInfoFlagTrue
+ * @param value
+ * @return see header for the rationale.
+ */
+bool QETInformation::isInfoFlagTrue(const QString &value)
+{
+	return value.compare(QLatin1String("true"), Qt::CaseInsensitive) == 0;
+}

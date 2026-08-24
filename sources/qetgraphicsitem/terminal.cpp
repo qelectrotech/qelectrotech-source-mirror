@@ -24,6 +24,7 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
+#include "../qetinformation.h"
 
 #include <utility>
 
@@ -976,7 +977,7 @@ QList<Terminal *> relatedPotentialTerminal (
 	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
 	{
 		// English: Check if the user activated the potential isolation checkbox for this terminal
-		if (terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true")) {
+		if (QETInformation::isInfoFlagTrue(terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString())) {
 			// English: Potential is isolated. Return an empty list so it does not propagate to the other side.
 			return QList<Terminal *>();
 		}
