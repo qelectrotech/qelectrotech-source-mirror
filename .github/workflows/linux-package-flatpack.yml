@@ -1,16 +1,13 @@
 name: Build Flatpak package
 
-# On-demand only: run manually from the Actions tab. This avoids spending
-# Actions minutes (arm64 is billed at a higher rate) on every push to master
-# for a build that publishes nothing. A release-tag publish step can be added
-# later once a distribution target is agreed.
 on:
+  workflow_call:
   workflow_dispatch:
 
 jobs:
   flatpak:
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-5.15-25.08
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
       options: --privileged
     strategy:
       fail-fast: false

@@ -88,6 +88,13 @@ jobs:
     name: Build Linux snap
     uses: ./.github/workflows/linux-package-snap.yml
     secrets: inherit
+    
+  build-linux-flatpack:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Linux flatpack
+    uses: ./.github/workflows/linux-package-flatpack.yml
+    secrets: inherit
 
   publish-release:
     name: Upload all builds to github page and update HTML
@@ -99,7 +106,8 @@ jobs:
       needs.build-appimage.result == 'success' &&
       needs.build-windows-exe.result == 'success' &&
       needs.build-windows-msi.result == 'success' &&
-      needs.build-linux-snap.result == 'success'
+      needs.build-linux-snap.result == 'success' &&
+      needs.build-linux-flatpack.result == 'success'      
     runs-on: ubuntu-latest
     permissions:
       contents: write
