@@ -174,6 +174,30 @@ QETProject::~QETProject()
 		delete  diagram;
 		m_diagrams_list.removeOne(diagram);
 	}
+
+		//A diagram can be detached from this project (detachDiagram(), used by
+		//both removeDiagram() and RemoveDiagramCommand::redo()) and scheduled
+		//for deferred deletion via deleteLater(), without that deletion having
+		//actually run yet -- deleteLater() only fires on the next event-loop
+		//iteration, and nothing guarantees one runs before this destructor
+		//does. Such a diagram is no longer in m_diagrams_list (so the loop
+		//above never touches it) but is still a QObject child of this project
+		//(Diagram's constructor passes `project` straight to QGraphicsScene's
+		//parent argument). Left alone, it is destroyed later by QObject's own
+		//automatic child cleanup in ~QObject(), which runs AFTER m_data_base
+		//(a plain value member, destroyed by ordinary C++ member teardown)
+		//has already been destroyed -- and Diagram's destructor calls back
+		//into dataBase()->removeElement() for each of its elements, so that
+		//ordering is a use-after-free (confirmed by crash: SIGSEGV in
+		//QSqlResult::exec(), called from Diagram::~Diagram() by way of
+		//Diagram::removeItem(), by way of QObjectPrivate::deleteChildren()).
+		//Delete any such stragglers now, synchronously, while m_data_base is
+		//still alive. The deleteLater() event, if it is ever processed
+		//afterward, is a safe no-op on an already-deleted QObject.
+	const auto orphaned_diagrams = findChildren<Diagram *>(QString(), Qt::FindDirectChildrenOnly);
+	for (Diagram *diagram : orphaned_diagrams) {
+		delete diagram;
+	}
 }
 
 /**
