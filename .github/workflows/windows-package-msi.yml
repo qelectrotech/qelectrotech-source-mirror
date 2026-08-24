@@ -14,7 +14,7 @@ on:
         description: "Run ID of 'Windows Build' (leave empty for automatic)"
         required: false
         default: ""
-        
+       
 jobs:
   build-msi:
     name: Package MSI with WiX v7
@@ -209,6 +209,9 @@ jobs:
 
       # ----------------------------------------------------------------
       # 9. Build the MSI (unsigned)
+      #    Qt6 (experimental) uses a distinct ProductCode seed so it never
+      #    collides with / upgrades over the Qt5 MSI — they must be able to
+      #    coexist as clearly separate installs.
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
