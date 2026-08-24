@@ -28,6 +28,8 @@
 #include <QSignalBlocker>
 #include <QTableWidgetItem>
 #include <QHeaderView>
+#include <QScrollBar>
+#include <QWheelEvent>
 #include <QTableWidget>
 #include <QCheckBox>
 #include <QGroupBox>
@@ -41,6 +43,8 @@
 #include <QFont>
 #include <QLineEdit>
 #include <QSplitter>
+#include <QShortcut>
+#include <QMenu>
 
 /**
 	@brief The EditorDelegate class
@@ -222,7 +226,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
 
 	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
-	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
+	connect(ui->max_slaves_checkbox, &QCheckBox::toggled, ui->max_slaves_spinbox, &QWidget::setEnabled);
 	connect(ui->max_slaves_spinbox, QOverload<int>::of(&QSpinBox::valueChanged), [this](int) {
 		if (ui->m_slave_groups_checkbox->isChecked()) {
 			populateSlaveGroupsTable();
@@ -419,11 +423,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
 								  type_ == ElementData::Master));
-#endif
 
 	updateTree();
 }
@@ -450,6 +452,9 @@ void ElementPropertiesEditorWidget::on_m_slave_groups_checkbox_toggled(bool chec
 
 	if (checked && !ui->max_slaves_checkbox->isChecked()) {
 		ui->max_slaves_checkbox->setChecked(true);
+		if (!m_data.m_slave_contact_groups.isEmpty()) {
+			ui->max_slaves_spinbox->setValue(m_data.m_slave_contact_groups.size());
+		}
 	}
 
 	if (checked) {
@@ -469,9 +474,6 @@ void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
 
 	int row_count = ui->max_slaves_checkbox->isChecked()
 		? ui->max_slaves_spinbox->value() : 0;
-
-	// If we have existing groups, use their count (up to max_slaves)
-	int existing_groups = m_data.m_slave_contact_groups.size();
 
 	// Adjust the groups list to match the spinbox value
 	while (m_data.m_slave_contact_groups.size() < row_count) {
@@ -666,10 +668,15 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	plc_layout->addLayout(toolbar);
 
 	// Tables side by side: IO table (left) + Terminal table (right)
-	auto *tables_splitter = new QSplitter(Qt::Horizontal, m_plc_gb);
+	// Both share a single vertical scrollbar on the right
+	auto *tables_container = new QWidget(m_plc_gb);
+	auto *tables_layout = new QHBoxLayout(tables_container);
+	tables_layout->setContentsMargins(0, 0, 0, 0);
+
+	auto *splitter = new QSplitter(Qt::Horizontal, tables_container);
 
 	// IO Table
-	m_plc_table = new QTableWidget(tables_splitter);
+	m_plc_table = new QTableWidget(splitter);
 	m_plc_table->setColumnCount(5);
 	m_plc_table->setHorizontalHeaderLabels({
 		tr("Type"), tr("Adresse"), tr("Fonction"),
@@ -683,13 +690,13 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->horizontalHeader()->resizeSection(2, 150);
 	m_plc_table->horizontalHeader()->resizeSection(3, 150);
 	m_plc_table->horizontalHeader()->resizeSection(4, 100);
-	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
+	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_table->setMinimumHeight(200);
-	tables_splitter->addWidget(m_plc_table);
+	m_plc_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	// Terminal table (per IO: Nb + T1-T4)
-	m_plc_terminal_table = new QTableWidget(tables_splitter);
+	m_plc_terminal_table = new QTableWidget(splitter);
 	m_plc_terminal_table->setColumnCount(2);
 	m_plc_terminal_table->setHorizontalHeaderLabels({
 		tr("Nb."), tr("T1")
@@ -700,13 +707,61 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_terminal_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 	m_plc_terminal_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_terminal_table->setMinimumHeight(200);
-	tables_splitter->addWidget(m_plc_terminal_table);
+	m_plc_terminal_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-	tables_splitter->setStretchFactor(0, 3);
-	tables_splitter->setStretchFactor(1, 1);
-	tables_splitter->setSizes({500, 150});
+	// Shared vertical scrollbar
+	m_plc_shared_scrollbar = new QScrollBar(Qt::Vertical, tables_container);
+	m_plc_shared_scrollbar->setMinimum(0);
 
-	plc_layout->addWidget(tables_splitter);
+	splitter->addWidget(m_plc_table);
+	splitter->addWidget(m_plc_terminal_table);
+	splitter->setStretchFactor(0, 3);
+	splitter->setStretchFactor(1, 1);
+
+	tables_layout->addWidget(splitter);
+	tables_layout->addWidget(m_plc_shared_scrollbar);
+
+	// Bidirectional sync between tables and shared scrollbar
+	// Use flag to prevent infinite loops
+	connect(m_plc_shared_scrollbar, &QScrollBar::valueChanged,
+		this, [this](int value) {
+			if (m_plc_scroll_sync) return;
+			m_plc_scroll_sync = true;
+			m_plc_table->verticalScrollBar()->setValue(value);
+			m_plc_terminal_table->verticalScrollBar()->setValue(value);
+			m_plc_scroll_sync = false;
+		});
+	connect(m_plc_table->verticalScrollBar(), &QScrollBar::valueChanged,
+		this, [this](int value) {
+			if (m_plc_scroll_sync) return;
+			m_plc_scroll_sync = true;
+			m_plc_shared_scrollbar->setValue(value);
+			m_plc_terminal_table->verticalScrollBar()->setValue(value);
+			m_plc_scroll_sync = false;
+		});
+	connect(m_plc_terminal_table->verticalScrollBar(), &QScrollBar::valueChanged,
+		this, [this](int value) {
+			if (m_plc_scroll_sync) return;
+			m_plc_scroll_sync = true;
+			m_plc_shared_scrollbar->setValue(value);
+			m_plc_table->verticalScrollBar()->setValue(value);
+			m_plc_scroll_sync = false;
+		});
+
+	// Update shared scrollbar range from both tables
+	auto syncRange = [this]() {
+		int max = qMax(m_plc_table->verticalScrollBar()->maximum(),
+				   m_plc_terminal_table->verticalScrollBar()->maximum());
+		m_plc_shared_scrollbar->blockSignals(true);
+		m_plc_shared_scrollbar->setMaximum(max);
+		m_plc_shared_scrollbar->blockSignals(false);
+	};
+	connect(m_plc_table->verticalScrollBar(), &QScrollBar::rangeChanged,
+		this, syncRange);
+	connect(m_plc_terminal_table->verticalScrollBar(), &QScrollBar::rangeChanged,
+		this, syncRange);
+
+	plc_layout->addWidget(tables_container);
 
 	// Font settings
 	auto *font_layout = new QHBoxLayout();
@@ -790,12 +845,25 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	}
 	plc_layout->addLayout(col_layout);
 
-	// Add to master group box
-	ui->m_master_gb->layout()->addWidget(m_plc_gb);
+	// Add to master group box - row 4, full width
+	auto *gl = qobject_cast<QGridLayout*>(ui->m_master_gb->layout());
+	gl->addWidget(m_plc_gb, 4, 0, 1, 2);
 
 	// Connect signals
 	connect(add_btn, &QPushButton::clicked, this, &ElementPropertiesEditorWidget::plcAddRow);
 	connect(remove_btn, &QPushButton::clicked, this, &ElementPropertiesEditorWidget::plcRemoveRow);
+
+	// Ctrl+V shortcut for paste
+	auto *paste_shortcut = new QShortcut(QKeySequence::Paste, m_plc_table);
+	connect(paste_shortcut, &QShortcut::activated, this, &ElementPropertiesEditorWidget::plcPasteFromClipboard);
+
+	// Context menu for the PLC table
+	m_plc_table->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_plc_table, &QTableWidget::customContextMenuRequested, this, [this](const QPoint &pos) {
+		QMenu menu;
+		menu.addAction(tr("Coller depuis le presse-papiers"), this, &ElementPropertiesEditorWidget::plcPasteFromClipboard);
+		menu.exec(m_plc_table->mapToGlobal(pos));
+	});
 }
 
 /**
@@ -877,12 +945,12 @@ void ElementPropertiesEditorWidget::populatePlcTable()
 	m_plc_header_font = plc_data.headerFont;
 	m_plc_cell_font = plc_data.cellFont;
 	if (m_plc_header_font.family().isEmpty()) {
-		m_plc_header_font = QFont(m_plc_table->font());
+		m_plc_header_font = QETApp::diagramTextsFont();
 		m_plc_header_font.setBold(true);
 		m_plc_header_font.setPointSize(8);
 	}
 	if (m_plc_cell_font.family().isEmpty()) {
-		m_plc_cell_font = QFont(m_plc_table->font());
+		m_plc_cell_font = QETApp::diagramTextsFont();
 		m_plc_cell_font.setPointSize(8);
 	}
 	m_plc_header_font_btn->setText(tr("Police des en-têtes: %1 %2pt")
@@ -919,6 +987,21 @@ void ElementPropertiesEditorWidget::populatePlcTable()
 			if (hdr->visualIndex(logical) != visual)
 				hdr->moveSection(hdr->visualIndex(logical), visual);
 		}
+	}
+
+	// Ensure scrollbars stay hidden and sync shared scrollbar range
+	if (m_plc_table) {
+		m_plc_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		m_plc_table->verticalScrollBar()->setVisible(false);
+	}
+	if (m_plc_terminal_table) {
+		m_plc_terminal_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		m_plc_terminal_table->verticalScrollBar()->setVisible(false);
+	}
+	if (m_plc_shared_scrollbar && m_plc_table) {
+		int max = qMax(m_plc_table->verticalScrollBar()->maximum(),
+				   m_plc_terminal_table->verticalScrollBar()->maximum());
+		m_plc_shared_scrollbar->setMaximum(max);
 	}
 }
 
@@ -1075,6 +1158,7 @@ void ElementPropertiesEditorWidget::plcAddRow()
 void ElementPropertiesEditorWidget::plcTerminalCountChanged(int row, int count)
 {
 	Q_UNUSED(row)
+	Q_UNUSED(count)
 	if (!m_plc_terminal_table)
 		return;
 
@@ -1158,53 +1242,80 @@ void ElementPropertiesEditorWidget::plcPasteFromClipboard()
 		return;
 
 	QStringList lines = clipboard_text.split('\n', Qt::SkipEmptyParts);
+	if (lines.isEmpty())
+		return;
 
-	int start_row = m_plc_table->rowCount();
-	m_plc_table->setRowCount(start_row + lines.size());
-
-	for (int i = 0; i < lines.size(); ++i) {
-		QStringList cells = lines.at(i).split('\t');
-		int row = start_row + i;
-
-		// Type combo
-		auto *type_cb = new QComboBox(m_plc_table);
-		QStringList plc_types = ElementData::plcIOTypeList();
-		for (int t = 0; t < plc_types.size(); ++t) {
-			type_cb->addItem(plc_types.at(t), t);
+	bool has_tabs = false;
+	for (const QString &line : lines) {
+		if (line.contains('\t')) {
+			has_tabs = true;
+			break;
 		}
+	}
 
-		// Try to match type from clipboard
-		if (!cells.isEmpty()) {
-			QString type_str = cells.at(0).trimmed();
-			int type_idx = -1;
+	if (!has_tabs) {
+		// Vertical paste: values go down the same column
+		int target_col = m_plc_table->currentColumn();
+		if (target_col < 0) target_col = 0;
+		int target_row = m_plc_table->currentRow();
+		if (target_row < 0) target_row = 0;
+		int max_rows = m_plc_table->rowCount();
+
+		for (int i = 0; i < lines.size(); ++i) {
+			int row = target_row + i;
+			if (row >= max_rows) break;
+			plcSetCellFromValue(row, target_col, lines.at(i).trimmed());
+		}
+	} else {
+		// Horizontal paste: each line is a separate IO row
+		int target_row = m_plc_table->currentRow();
+		if (target_row < 0) target_row = 0;
+		int max_rows = m_plc_table->rowCount();
+
+		for (int i = 0; i < lines.size(); ++i) {
+			int row = target_row + i;
+			if (row >= max_rows) break;
+			QStringList cells = lines.at(i).split('\t');
+			for (int c = 0; c < cells.size(); ++c) {
+				if (c > 4) break;
+				plcSetCellFromValue(row, c, cells.at(c).trimmed());
+			}
+		}
+	}
+}
+
+/**
+ * @brief ElementPropertiesEditorWidget::plcSetCellFromValue
+ * Set a single table cell value, respecting the column widget type.
+ */
+void ElementPropertiesEditorWidget::plcSetCellFromValue(int row, int col, const QString &val)
+{
+	if (!m_plc_table || row < 0 || col < 0 || col > 4)
+		return;
+
+	if (col == 0) {
+		auto *type_cb = qobject_cast<QComboBox*>(m_plc_table->cellWidget(row, col));
+		if (!type_cb)
+			return;
+		if (!val.isEmpty()) {
+			QStringList plc_types = ElementData::plcIOTypeList();
 			for (int t = 0; t < plc_types.size(); ++t) {
-				if (plc_types.at(t).compare(type_str, Qt::CaseInsensitive) == 0) {
-					type_idx = t;
-					break;
+				if (plc_types.at(t).compare(val, Qt::CaseInsensitive) == 0) {
+					type_cb->setCurrentIndex(t);
+					return;
 				}
 			}
-			if (type_idx >= 0)
-				type_cb->setCurrentIndex(type_idx);
 		}
-		m_plc_table->setCellWidget(row, 0, type_cb);
-
-		// Address
-		m_plc_table->setItem(row, 1, new QTableWidgetItem(
-			cells.size() > 1 ? cells.at(1).trimmed() : QString()));
-
-		// Function text
-		m_plc_table->setItem(row, 2, new QTableWidgetItem(
-			cells.size() > 2 ? cells.at(2).trimmed() : QString()));
-
-		// Comment
-		m_plc_table->setItem(row, 3, new QTableWidgetItem(
-			cells.size() > 3 ? cells.at(3).trimmed() : QString()));
-
-		// CrossRef (read-only)
-		auto *crossref_item = new QTableWidgetItem(
-			cells.size() > 4 ? cells.at(4).trimmed() : QString());
-		crossref_item->setFlags(crossref_item->flags() & ~Qt::ItemIsEditable);
-		m_plc_table->setItem(row, 4, crossref_item);
+	}
+	else if (col == 4) {
+		// CrossRef - read-only
+		auto *item = new QTableWidgetItem(val);
+		item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+		m_plc_table->setItem(row, col, item);
+	}
+	else {
+		// Text columns: Address, Function, Comment
+		m_plc_table->setItem(row, col, new QTableWidgetItem(val));
 	}
 }
 

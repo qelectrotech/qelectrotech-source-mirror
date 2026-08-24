@@ -67,6 +67,7 @@ Diagram::Diagram(QETProject *project) :
 	m_project                (project),
 	use_border_              (true),
 	draw_terminals_          (true),
+	draw_terminal_names_     (true),
 	draw_colored_conductors_ (true),
 	m_event_interface        (nullptr),
 	m_freeze_new_elements    (false),
@@ -1555,14 +1556,6 @@ bool Diagram::fromXml(QDomElement &document,
 	if (content_ptr) {
 		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-		content_ptr -> m_text_fields        = added_texts.toSet();
-		content_ptr -> m_images			    = added_images.toSet();
-		content_ptr -> m_shapes			    = added_shapes.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
 					added_texts.begin(),
 					added_texts.end());
@@ -1573,7 +1566,6 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.begin(),
 					added_shapes.end());
 		content_ptr->m_terminal_strip.swap(added_strips);
-#endif
 		content_ptr->m_tables.swap(added_tables);
 	}
 
@@ -1674,6 +1666,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
 			conductor->calculateTextItemPosition();
+			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
 		default: {break;}
@@ -1704,6 +1697,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
+			m_project->dataBase()->removeConductor(conductor);
 			break;
 		}
 		default: {break;}
@@ -2319,6 +2313,7 @@ ExportProperties Diagram::applyProperties(
 	old_properties.draw_border = border_and_titleblock.borderIsDisplayed();
 	old_properties.draw_titleblock = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
+	old_properties.draw_terminal_names     = drawTerminalNames();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area = useBorder() ? QET::BorderArea
 						   : QET::ElementsArea;
@@ -2327,6 +2322,7 @@ ExportProperties Diagram::applyProperties(
 	// applique les nouvelles options de rendu
 	setUseBorder             (new_properties.exported_area == QET::BorderArea);
 	setDrawTerminals         (new_properties.draw_terminals);
+	setDrawTerminalNames     (new_properties.draw_terminal_names);
 	setDrawColoredConductors (new_properties.draw_colored_conductors);
 	setDisplayGrid           (new_properties.draw_grid);
 	setDisplayGuides         (new_properties.draw_guides);
@@ -2397,9 +2393,24 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	\~French true pour afficher les bornes, false sinon
 */
 void Diagram::setDrawTerminals(bool dt) {
+	draw_terminals_ = dt;
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
-			t -> setVisible(dt);
+			t -> update();
+		}
+	}
+}
+
+/**
+	@brief Diagram::setDrawTerminalNames
+	Defines whether or not to display the terminal names/labels
+	@param dt : true to display the terminal names, false otherwise
+*/
+void Diagram::setDrawTerminalNames(bool dt) {
+	draw_terminal_names_ = dt;
+	foreach(QGraphicsItem *qgi, items()) {
+		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
+			t -> update();
 		}
 	}
 }

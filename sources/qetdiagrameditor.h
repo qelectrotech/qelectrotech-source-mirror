@@ -101,6 +101,7 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *findProject(const QString &) const;
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
 		void updateUsageTrackersActiveState();
+		void updateWindowModifiedState();
 
 	signals:
 		void syncElementsPanel();
@@ -140,6 +141,7 @@ class QETDiagramEditor : public QETMainWindow
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
+		void addDiagramToProjectAt(QETProject *, int);
 		void removeDiagram(Diagram *);
 		void removeDiagrams(const QList<Diagram *> &diagrams);
 		void removeDiagramFromProject();

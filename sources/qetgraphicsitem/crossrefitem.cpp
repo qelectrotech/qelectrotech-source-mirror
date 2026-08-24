@@ -113,10 +113,8 @@ void CrossRefItem::setUpConnection()
 		set=true;
 	else if(m_properties.snapTo() == XRefProperties::Bottom && !m_text && !m_group) //Snap to bottom of element and parent is the element itself
 	{
-		m_update_connection << connect(m_element, SIGNAL(yChanged()),
-					       this, SLOT(autoPos()));
-		m_update_connection << connect(m_element, SIGNAL(rotationChanged()),
-					       this, SLOT(autoPos()));
+		m_update_connection << connect(m_element, &Element::yChanged, this, &CrossRefItem::autoPos);
+		m_update_connection << connect(m_element, &Element::rotationChanged, this, &CrossRefItem::autoPos);
 		set=true;
 	}
 
@@ -1455,7 +1453,6 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 	painter.drawRect(bg_rect);
 
 	// Draw header row
-	qreal x_offset = 0;
 
 	for (int block = 0; block < block_count; ++block) {
 		qreal block_x = block * (col_widths.value(visible_cols.first(), 30) * visible_cols.size() + 3);

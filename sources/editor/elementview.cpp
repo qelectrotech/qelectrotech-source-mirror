@@ -37,8 +37,8 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	zoomReset();
-	connect(m_scene, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
-	connect(m_scene, SIGNAL(needZoomFit()), this, SLOT(zoomFit()));
+	connect(m_scene, &ElementScene::pasteAreaDefined, this, &ElementView::pasteAreaDefined);
+	connect(m_scene, &ElementScene::needZoomFit, this, &ElementView::zoomFit);	
 }
 
 /// Destructeur
@@ -372,14 +372,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 */
 void ElementView::mousePressEvent(QMouseEvent* e)
 {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (e->button() == Qt::MidButton)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (e->button() == Qt::MiddleButton)
-#endif
 	{
 		setCursor( (Qt::ClosedHandCursor));
 		reference_view_ = e->pos();
@@ -394,14 +387,7 @@ void ElementView::mousePressEvent(QMouseEvent* e)
 */
 void ElementView::mouseMoveEvent(QMouseEvent* e)
 {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (e->buttons() == Qt::MidButton)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (e->buttons() == Qt::MiddleButton)
-#endif
 	{
 		QScrollBar *h = horizontalScrollBar();
 		QScrollBar *v = verticalScrollBar();
@@ -420,14 +406,7 @@ void ElementView::mouseMoveEvent(QMouseEvent* e)
 */
 void ElementView::mouseReleaseEvent(QMouseEvent* e)
 {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (e->button() == Qt::MidButton)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (e->button() == Qt::MiddleButton)
-#endif
 	{
 		setCursor(Qt::ArrowCursor);
 		adjustSceneRect();

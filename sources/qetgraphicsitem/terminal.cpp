@@ -199,19 +199,21 @@ void Terminal::paint(
 
 	// dessin de la borne en rouge
 	// draw the terminal in red
-	t.setColor(Qt::red);
-	painter -> setPen(t);
-	painter -> drawLine(c, e);
+	if (!diagram() || diagram()->drawTerminals()) {
+		t.setColor(Qt::red);
+		painter -> setPen(t);
+		painter -> drawLine(c, e);
 
-	// dessin du point d'amarrage au conducteur en bleu
-	// draw the docking point to the conductor in blue
-	t.setColor(m_hovered_color);
-	painter -> setPen(t);
-	painter -> setBrush(m_hovered_color);
-	if (m_hovered) {
-		painter -> setRenderHint(QPainter::Antialiasing, true);
-		painter -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
-	} else painter -> drawPoint(c);
+		// dessin du point d'amarrage au conducteur en bleu
+		// draw the docking point to the conductor in blue
+		t.setColor(m_hovered_color);
+		painter -> setPen(t);
+		painter -> setBrush(m_hovered_color);
+		if (m_hovered) {
+			painter -> setRenderHint(QPainter::Antialiasing, true);
+			painter -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
+		} else painter -> drawPoint(c);
+	}
 
 	//Draw help line if needed,
 	if (diagram() && m_draw_help_line)
@@ -273,9 +275,10 @@ void Terminal::paint(
 		m_help_line_a -> setLine(line);
 	}
 
-	// Draw label if show_name is enabled
+	// Draw label if show_name is enabled and terminal names are allowed
 	const QString display_name = name();
-	if (d->m_show_name && !display_name.isEmpty()) {
+	if (d->m_show_name && !display_name.isEmpty()
+		&& (!diagram() || diagram()->drawTerminalNames())) {
 		painter->setRenderHint(QPainter::Antialiasing, true);
 		painter->setRenderHint(QPainter::TextAntialiasing, true);
 		painter->setFont(d->m_label_font);
@@ -817,20 +820,72 @@ QUuid Terminal::uuid() const
 	return d->m_uuid;
 }
 
+/**
+	@brief Terminal::stableUuid
+	An identity for this terminal that exists on every element, not only on
+	those saved by a uuid-aware element editor.
+
+	uuid() comes from the catalog .elmt definition and is empty for every
+	element authored before that field existed -- which is most of the
+	installed base. Anything keyed on uuid() alone therefore cannot see those
+	elements at all.
+
+	When there is no uuid, derive one from the terminal's local position and
+	orientation inside its element. That is not an arbitrary choice: it is the
+	same thing the project format itself uses to match a conductor back to a
+	terminal ("each connection is made by using the local position of the
+	terminal and a dynamic id" -- TerminalData::m_uuid). m_pos is the position
+	read from the definition and is not touched by moving the element on the
+	folio, so the result is stable across loads, saves and folio moves, and it
+	is unique within an element except where a definition genuinely declares
+	two terminals at the same point -- three cases in the whole example corpus,
+	and harmless, because two terminals sharing a position and orientation are
+	indistinguishable in every observable respect: they merge to one terminal
+	row and every conductor on either of them still resolves to the right
+	element and name.
+
+	Derived values are UUID v5 in a fixed namespace, so they are reproducible
+	without being written to the file, and cannot collide with the v4 uuids
+	the element editor generates.
+
+	@return the terminal's own uuid when it has one, otherwise a derived one
+*/
+QUuid Terminal::stableUuid() const
+{
+	if (!d->m_uuid.isNull()) {
+		return d->m_uuid;
+	}
+
+		//Fixed namespace for terminal identities derived from geometry.
+	static const QUuid derived_ns(QStringLiteral("{6b1f6d1e-6a1a-5f7e-9a3d-9c0a5b2d7e11}"));
+
+		//Position and orientation only. The name is deliberately excluded: it
+		//is not stable across a save cycle -- QET rewrites a terminal named
+		//"_" as unnamed, which would silently change the identity of 1421 of
+		//industrial.qet's 1790 terminals on the first resave. It is also not
+		//needed: keying on geometry alone produces exactly the same number of
+		//collisions across the example corpus, and it means renaming a
+		//terminal does not change what it is.
+	const QString key = QStringLiteral("%1|%2|%3")
+			.arg(d->m_pos.x(), 0, 'f', 4)
+			.arg(d->m_pos.y(), 0, 'f', 4)
+			.arg(static_cast<int>(d->m_orientation));
+
+	return QUuid::createUuidV5(derived_ns, key);
+}
+
 QString Terminal::name() const
 {
 	if (d->m_use_master_label && parent_element_) {
-		// Find the master element in the slave's linked elements
 		for (Element *elmt : parent_element_->linkedElements()) {
 			if (elmt->linkType() == Element::Master) {
 				int group_idx = elmt->groupIndexForElement(parent_element_);
 				if (group_idx >= 0) {
-					// For PLC masters, use io.terminals as labels
 					if (elmt->elementData().m_master_type == ElementData::PLC) {
 						const auto &plc_data = elmt->elementData().plcMasterData();
 						if (group_idx < plc_data.ios.size()) {
 							int label_idx = d->m_master_label_index;
-							const QStringList &labels = plc_data.ios.at(group_idx).terminals;
+							const QStringList labels = plc_data.ios.at(group_idx).effectiveTerminals();
 							if (label_idx >= 0 && label_idx < labels.size()) {
 								return labels.at(label_idx);
 							}

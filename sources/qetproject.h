@@ -29,7 +29,7 @@
 #include "titleblock/templatescollection.h"
 #include "titleblockproperties.h"
 #include "diagram.h"
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
@@ -90,6 +90,7 @@ class QETProject : public QObject
 		};
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
+	Q_PROPERTY(bool autoBreakConductor READ autoBreakConductor WRITE setAutoBreakConductor)
 
 		// constructors, destructor
 	public:
@@ -181,9 +182,11 @@ class QETProject : public QObject
 		void setFreezeNewConductors(bool);
 
 		bool autoConductor () const;
+		bool autoBreakConductor () const;
 		bool autoElement () const;
 		bool autoFolio () const;
 		void setAutoConductor (bool ac);
+		void setAutoBreakConductor (bool abc);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
@@ -241,7 +244,6 @@ class QETProject : public QObject
 			/// rebuild their rule lists; this one just says "re-read me".
 		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
-		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
 
@@ -318,6 +320,7 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
 		bool m_auto_conductor = true;
+	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;
 		bool m_freeze_new_elements = false;
 		bool m_freeze_new_conductors = false;

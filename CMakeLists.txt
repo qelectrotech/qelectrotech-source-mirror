@@ -48,19 +48,11 @@ endif()
 # INTERFACE_QT_MAJOR_VERSION mismatch at generate time.
 set(QT_DEFAULT_MAJOR_VERSION ${QT_VERSION_MAJOR} CACHE STRING "Qt version to use (5 or 6)" FORCE)
 
-# Add sub directories
-option(PACKAGE_TESTS "Build the tests" ON)
-if(PACKAGE_TESTS)
-    message("Add sub directory tests")
-    add_subdirectory(tests)
-endif()
-
 include(cmake/paths_compilation_installation.cmake)
 include(cmake/start_options.cmake)
 include(cmake/developer_options.cmake)
 include(cmake/git_update_submodules.cmake)
 include(cmake/git_last_commit_sha.cmake)
-include(cmake/fetch_kdeaddons.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
 include(cmake/qet_compilation_vars.cmake)
@@ -78,12 +70,43 @@ find_package(
     ${QET_COMPONENTS}
     REQUIRED)
 
-# Qt6 only creates the Qt::GuiPrivate target (used for QPdfEngine::drawHyperlink)
-# when the GuiPrivate component is explicitly requested. Qt5 has no such
-# component package and creates the target implicitly with Gui, so only
-# request it on Qt6 - requesting it on Qt5 fails the whole configure.
+# <private/qpdf_p.h> (QPdfEngine::drawHyperlink) needs Qt's private GUI module.
+# Qt >= 6.7 ships it as a proper find_package component, but some distro
+# packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
+# and only provide the implicit Qt6::GuiPrivate target created alongside
+# Qt6::Gui. Try the component quietly, then verify the target below so a
+# missing private-headers package fails here instead of at compile time.
+# Qt5 has no such component as its GuiPrivate target always exists once Gui is found.
 if(QT_VERSION_MAJOR GREATER_EQUAL 6)
-    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS GuiPrivate)
+    find_package(Qt6 QUIET COMPONENTS GuiPrivate)
+endif()
+
+if(QT_VERSION_MAJOR GREATER_EQUAL 6 AND NOT TARGET Qt6::GuiPrivate)
+    message(FATAL_ERROR
+        "Qt6::GuiPrivate was not found. It is required for PDF hyperlink "
+        "support (<private/qpdf_p.h>). Install the Qt6 private headers "
+        "(e.g. 'qt6-base-private-dev' on Debian/Ubuntu) or use a Qt build "
+        "that provides the GuiPrivate component.")
+endif()
+
+# PDF page import (toolbar "Ajouter un PDF") needs the QtPdf module and,
+# specifically, QPdfDocument::pagePointSize() which only exists since Qt 6.4.
+# Unlike GuiPrivate above, a missing QtPdf module is NOT fatal here: some
+# Qt6 distributions (e.g. the Flatpak org.kde.Platform runtime) don't ship
+# it at all, since it lives in the qtwebengine source tree rather than Qt6
+# core. When it's missing, or too old, the feature is silently disabled -
+# see the QT_VERSION_CHECK / QET_HAS_QTPDF guards in diagrameventaddpdf.*
+# and pdfpagesdialog.*.
+set(QET_HAS_QTPDF FALSE)
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+    find_package(Qt6 QUIET COMPONENTS Pdf)
+    if(TARGET Qt6::Pdf AND NOT Qt6_VERSION VERSION_LESS 6.4.0)
+        set(QET_HAS_QTPDF TRUE)
+        list(APPEND QET_PRIVATE_LIBRARIES Qt::Pdf)
+        add_compile_definitions(QET_HAS_QTPDF)
+    else()
+        message(STATUS "QtPdf module not available (or Qt < 6.4): PDF page import feature disabled")
+    endif()
 endif()
 
 find_package(SQLite3 REQUIRED)
@@ -100,25 +123,19 @@ endif()
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
-# The default build only compiles the tracked .ts files to .qm (lrelease).
-# Refreshing the .ts from the sources (lupdate) is a developer action behind
-# the explicit "update_translations" target below: running lupdate on every
-# build rewrote tracked files as a side effect, and under high parallelism
-# lupdate rewriting a .ts while lrelease read the same file made the build
-# fail with "Premature end of document".
-set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang")
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt6_add_translation(QM_FILES ${TS_FILES})
+    set(KF_MAJOR_VERSION 6)
 else()
-    qt5_add_translation(QM_FILES ${TS_FILES})
+    set(KF_MAJOR_VERSION 5)
 endif()
+include(cmake/fetch_kdeaddons.cmake)
 
-add_custom_target(update_translations
-    COMMAND $<TARGET_FILE:Qt${QT_VERSION_MAJOR}::lupdate> ${CMAKE_SOURCE_DIR}/sources -ts ${TS_FILES}
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Updating .ts files from sources/ (lupdate) - developer target, run explicitly"
-    VERBATIM
-)
+# Add sub directories
+option(PACKAGE_TESTS "Build the tests" ON)
+if(PACKAGE_TESTS)
+    message("Add sub directory tests")
+    add_subdirectory(tests)
+endif()
 
 # als laatse
 include(cmake/define_definitions.cmake)
@@ -145,6 +162,118 @@ else()
     )
 endif()
 
+# The default build only compiles the tracked .ts files to .qm (lrelease).
+# Refreshing the .ts from the sources (lupdate) is a developer action behind
+# the explicit "update_translations" target below: running lupdate on every
+# build rewrote tracked files as a side effect, and under high parallelism
+# lupdate rewriting a .ts while lrelease read the same file made the build
+# fail with "Premature end of document".
+set_source_files_properties(
+    ${TS_FILES}
+    PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang"
+)
+if(QT_VERSION_MAJOR EQUAL 6)
+    if(Qt6_VERSION VERSION_LESS "6.2")
+        # Qt 6.0–6.1
+        qt6_add_translation(QM_FILES ${TS_FILES})
+
+        # qt6_add_translation() only creates custom commands. Something must
+        # depend on their outputs for them to run during the default build.
+        add_custom_target(${PROJECT_NAME}_lrelease ALL
+            DEPENDS ${QM_FILES}
+        )
+
+        add_custom_target(update_translations
+            COMMAND
+                $<TARGET_FILE:Qt6::lupdate>
+                "${CMAKE_SOURCE_DIR}/sources"
+                -ts ${TS_FILES}
+            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+            COMMENT
+                "Updating .ts files from sources/ (lupdate) - developer target"
+            VERBATIM
+        )
+
+    elseif(Qt6_VERSION VERSION_LESS "6.7")
+        # Qt 6.2–6.6: old target-based signature
+        qt_add_lrelease(
+            ${PROJECT_NAME}
+            TS_FILES ${TS_FILES}
+            QM_FILES_OUTPUT_VARIABLE QM_FILES
+        )
+
+        # Automatically creates the update_translations umbrella target.
+        qt_add_lupdate(
+            ${PROJECT_NAME}
+            TS_FILES ${TS_FILES}
+        )
+
+    else()
+        # Qt 6.7+: new signature
+        qt_add_lrelease(
+            TS_FILES ${TS_FILES}
+            LRELEASE_TARGET ${PROJECT_NAME}_lrelease
+            QM_FILES_OUTPUT_VARIABLE QM_FILES
+        )
+
+        qt_add_lupdate(
+            SOURCE_TARGETS ${PROJECT_NAME}
+            TS_FILES ${TS_FILES}
+            LUPDATE_TARGET update_translations
+            NO_GLOBAL_TARGET
+        )
+    endif()
+
+else()
+    # Qt 5
+    qt5_add_translation(QM_FILES ${TS_FILES})
+
+    # Likewise, qt5_add_translation() needs a target depending on its outputs,
+    # unless QM_FILES are already consumed elsewhere.
+    add_custom_target(${PROJECT_NAME}_lrelease ALL
+        DEPENDS ${QM_FILES}
+    )
+
+    add_custom_target(update_translations
+        COMMAND
+            $<TARGET_FILE:Qt5::lupdate>
+            "${CMAKE_SOURCE_DIR}/sources"
+            -ts ${TS_FILES}
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        COMMENT
+            "Updating .ts files from sources/ (lupdate) - developer target"
+        VERBATIM
+    )
+endif()
+
+# Optional precompiled headers -- see QET_ENABLE_PCH in
+# cmake/developer_options.cmake for what this trades away.
+#
+# target_precompile_headers() needs CMake 3.16; the project still declares a
+# 3.5 minimum, so guard rather than raise it for an opt-in developer feature.
+#
+# The generator expressions are load-bearing, not decoration: this target also
+# compiles the 18 C files of the bundled LZMA decoder
+# (sources/import/edz/lzma/*.c), and an unguarded list applies to every
+# language in the target, so the Qt headers would reach the C compiler and fail
+# with "unknown type name 'namespace'". $<ANGLE-R> is required because a
+# literal '>' would terminate the generator expression.
+if(QET_ENABLE_PCH)
+    if(CMAKE_VERSION VERSION_LESS 3.16)
+        message(WARNING
+            "QET_ENABLE_PCH needs CMake 3.16 or newer (found ${CMAKE_VERSION}); "
+            "building without precompiled headers.")
+    else()
+        target_precompile_headers(${PROJECT_NAME} PRIVATE
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtCore/QtCore$<ANGLE-R>>"
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtGui/QtGui$<ANGLE-R>>"
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtWidgets/QtWidgets$<ANGLE-R>>"
+            "$<$<COMPILE_LANGUAGE:CXX>:<QtXml/QtXml$<ANGLE-R>>"
+        )
+        message(STATUS "QET_ENABLE_PCH: precompiled headers enabled")
+    endif()
+endif()
+
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
@@ -152,7 +281,7 @@ target_link_libraries(
     pugixml::pugixml
     SingleApplication::SingleApplication
     SQLite3::SQLite3
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES}
 )
 
@@ -193,7 +322,7 @@ target_include_directories(
     ${QET_DIR}/sources/svg
 )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
     target_include_directories(
         ${PROJECT_NAME}
         PRIVATE

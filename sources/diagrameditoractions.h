@@ -74,6 +74,7 @@ class DiagramEditorActions
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
+		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*conductor_default,		///< Show a dialog to edit default conductor properties
 		*m_grey_background,		///< Switch the background color in white or grey
 		*m_draw_grid,			///< Switch the background grid display or not
@@ -99,6 +100,7 @@ class DiagramEditorActions
 		*m_edit_selection,		///< To edit selected item
 		*m_delete_selection,		///< Delete selection
 		*m_rotate_selection,		///< Rotate selected elements and text items by 90 degrees
+		*m_rotate_group_selection = nullptr, ///< Rotate the selection as a whole around its shared center, instead of each item in place
 		*m_rotate_texts,		///< Direct selected text items to a specific angle
 		*m_find_element,		///< Find the selected element in the panel
 		*m_group_selected_texts = nullptr,

@@ -83,13 +83,13 @@ void QETMainWindow::initCommonActions()
 
 	fullscreen_action_ = new QAction(this);
 	updateFullScreenAction();
-	connect(fullscreen_action_, SIGNAL(triggered()), this, SLOT(toggleFullScreen()));
+	connect(fullscreen_action_, &QAction::triggered, this, &QETMainWindow::toggleFullScreen);
 
 	whatsthis_action_ = QWhatsThis::createAction(this);
 
 	about_qet_ = new QAction(QET::Icons::QETLogo, tr("À &propos de QElectroTech"), this);
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
-	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
+	connect(about_qet_, &QAction::triggered, qet_app, &QETApp::aboutQET);
 
 	manual_online_ = new QAction(QET::Icons::QETManual, tr("Manuel en ligne"), this);
 	manual_online_ -> setStatusTip(tr("Lance le navigateur par défaut vers le manuel en ligne de QElectroTech", "status bar tip"));
@@ -135,7 +135,13 @@ void QETMainWindow::initCommonActions()
 
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
-	connect(about_qt_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+	connect(about_qt_, &QAction::triggered, qApp, &QApplication::aboutQt);
+
+	diagnostics_action_ = new QAction(QET::Icons::DialogInformation, tr("Enregistrer un rapport de diagnostic..."), this);
+	diagnostics_action_ -> setStatusTip(tr("Génère un rapport avec les derniers messages de journalisation, pour l'inclure dans un rapport de bug", "status bar tip"));
+	connect(diagnostics_action_, &QAction::triggered, this, []() {
+		QETApp::instance()->showDiagnosticsReport();
+	});
 }
 
 /**
@@ -146,9 +152,11 @@ void QETMainWindow::initCommonMenus()
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"), this);
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
-	connect(settings_menu_, SIGNAL(aboutToShow()), this, SLOT(checkToolbarsmenu()));
+	connect(settings_menu_, &QMenu::aboutToShow, this, &QETMainWindow::checkToolbarsmenu);
 
 	help_menu_ = new QMenu(tr("&Aide", "window menu"), this);
+	help_menu_ -> addAction(diagnostics_action_);
+	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(whatsthis_action_);
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(manual_online_);

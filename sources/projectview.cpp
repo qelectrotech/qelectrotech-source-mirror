@@ -345,11 +345,19 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
 
-	// if the name does not end with the .qet extension and we're _not_ using xdg-desktop-portal, append it
-	bool usesPortal = 
-		qEnvironmentVariableIsSet("FLATPAK_ID") || 
-		qEnvironmentVariableIsSet("SNAP_NAME");
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive) && !usesPortal) filepath += ".qet";
+	// Ensure the path ends with exactly one .qet extension, regardless of
+	// whether the active file dialog already appended one. Whether it does
+	// depends on which backend actually shows the dialog (Qt's own vs. the
+	// xdg-desktop-portal used by sandboxed Snap/Flatpak builds), and that
+	// isn't reliably predictable from environment variables alone -- an
+	// earlier attempt at that (only appending when *not* Snap/Flatpak,
+	// assuming the portal always appends it) left Snap saves with no
+	// extension at all whenever the portal didn't (bugtracker #270).
+	// Stripping any existing suffix first and re-appending it once is
+	// correct either way.
+	if (filepath.endsWith(".qet", Qt::CaseInsensitive))
+		filepath.chop(4);
+	filepath += ".qet";
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project
@@ -763,8 +771,8 @@ int ProjectView::cleanProject()
 	clean_dialog_layout -> addWidget(buttons);
 	clean_dialog.setLayout(clean_dialog_layout);
 
-	connect(buttons, SIGNAL(accepted()), &clean_dialog, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), &clean_dialog, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::accepted, &clean_dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &clean_dialog, &QDialog::reject);
 
 	int clean_count = 0;
 	if (clean_dialog.exec() == QDialog::Accepted)
@@ -842,7 +850,7 @@ void ProjectView::initWidgets()
 	QHBoxLayout *TopRightCorner_Layout = new QHBoxLayout();
 	TopRightCorner_Layout->setContentsMargins(0,0,0,0);
 	// some place left to the 'next_right_view_button' button
-	TopRightCorner_Layout->insertSpacing(1,10);
+	TopRightCorner_Layout->addSpacing(10);
 
 	QHBoxLayout *TopLeftCorner_Layout = new QHBoxLayout();
 	TopLeftCorner_Layout->setContentsMargins(0,0,0,0);
@@ -888,9 +896,9 @@ void ProjectView::initWidgets()
 	m_tab -> setCornerWidget(tabwidgetLeft, Qt::TopLeftCorner);
 
 		// manage signals
-	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
-	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
+	connect(m_tab, &QTabWidget::currentChanged, this, &ProjectView::tabChanged);
+	connect(m_tab, &QTabWidget::tabBarDoubleClicked, this, &ProjectView::tabDoubleClicked);
+	connect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved, Qt::QueuedConnection);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
@@ -1119,9 +1127,9 @@ void ProjectView::setDiagramPosition(Diagram *diagram, int new_position)
 	if (current_position < 0)
 		return;
 
-	disconnect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)));
+	disconnect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved);
 	m_tab->tabBar()->moveTab(current_position, new_position);
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
+	connect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved, Qt::QueuedConnection);
 
 	rebuildDiagramsMap();
 

@@ -146,7 +146,7 @@ bool ProjectDBModel::setData(const QModelIndex &index, const QVariant &value, in
 		return false;
 	}
 	m_index_0_0_data.insert(role, value);
-	emit dataChanged(index, index, QVector<int>(role));
+	emit dataChanged(index, index, {role});
 	return true;
 }
 
@@ -332,7 +332,7 @@ void ProjectDBModel::dataBaseUpdated()
 		auto row = m_record.size();
 		auto col = row ? m_record.first().count() : 1;
 		
-		emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+		emit dataChanged(this->index(0,0), this->index(row-1, col-1), {Qt::DisplayRole});
 	}
 }
 

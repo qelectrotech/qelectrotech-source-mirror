@@ -39,6 +39,20 @@ ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 }
 
 /**
+	@brief ElementsCollectionModel::~ElementsCollectionModel
+	Destructor. loadCollections() may still have background threads
+	(via QtConcurrent::map()) running setUpData() on this model's items
+	when the model is destroyed (e.g. the user cancels the dialog before
+	loading finishes). Wait for them here so QStandardItemModel's
+	destructor doesn't free items out from under them, which used to
+	crash the whole application (bugtracker #291).
+*/
+ElementsCollectionModel::~ElementsCollectionModel()
+{
+	m_future.waitForFinished();
+}
+
+/**
 	@brief ElementsCollectionModel::data
 	Reimplemented from QStandardItemModel
 	@param index

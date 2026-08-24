@@ -92,7 +92,13 @@ void TitleBlockTemplateLocation::setName(const QString &name) {
 */
 bool TitleBlockTemplateLocation::isValid() const
 {
-	return(!name_.isEmpty());
+	// The name becomes (part of) a filename on disk (see
+	// TitleBlockTemplatesFilesCollection::toFileName()). A name containing
+	// a path separator or another filesystem-reserved character silently
+	// fails to save instead of erroring, because it turns into an
+	// unintended subpath rather than a plain filename (bugtracker #251).
+	static const QRegularExpression invalid_chars_re(QStringLiteral("[\\\\/:*?\"<>|]"));
+	return(!name_.isEmpty() && !name_.contains(invalid_chars_re));
 }
 
 /**

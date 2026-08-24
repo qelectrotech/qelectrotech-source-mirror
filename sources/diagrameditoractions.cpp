@@ -149,6 +149,21 @@ DiagramEditorActions::DiagramEditorActions(QETDiagramEditor *editor) :
 			pv->project()->setAutoConductor(ac);
 	});
 
+		//AutoBreakConductor
+	m_auto_break_conductor = new QAction   (QET::Icons::Conductor, editor->tr("Coupure automatique de conducteur(s)","Tool tip of auto break conductor"), editor);
+	m_auto_break_conductor->setStatusTip (editor->tr("Couper automatiquement les conducteurs existants lors du placement d'un élément", "Status tip of auto break conductor"));
+	m_auto_break_conductor->setCheckable (true);
+	{
+		QSettings settings;
+		m_auto_break_conductor->setChecked(settings.value("diagrameditor/auto_break_conductor", false).toBool());
+	}
+	QObject::connect(m_auto_break_conductor, &QAction::triggered, [editor](bool abc) {
+		QSettings settings;
+		settings.setValue("diagrameditor/auto_break_conductor", abc);
+		if (ProjectView *pv = editor->currentProjectView())
+			pv->project()->setAutoBreakConductor(abc);
+	});
+
 		//Switch background color
 	m_grey_background = new QAction   (QET::Icons::DiagramBg, editor->tr("Couleur de fond blanc/gris","Tool tip of white/grey background button"), editor);
 	m_grey_background -> setStatusTip (editor->tr("Affiche la couleur de fond du folio en blanc ou en gris", "Status tip of white/grey background button"));
@@ -408,6 +423,7 @@ DiagramEditorActions::DiagramEditorActions(QETDiagramEditor *editor) :
 		//Selections Actions (related to a selected item)
 	m_delete_selection     = m_selection_actions_group.addAction( QET::Icons::EditDelete,        editor->tr("Supprimer")                 );
 	m_rotate_selection     = m_selection_actions_group.addAction( QET::Icons::TransformRotate,   editor->tr("Pivoter")                   );
+	m_rotate_group_selection = m_selection_actions_group.addAction( QET::Icons::TransformRotate, editor->tr("Pivoter le groupe")         );
 	m_rotate_texts         = m_selection_actions_group.addAction( QET::Icons::ObjectRotateRight, editor->tr("Orienter les textes")       );
 	m_find_element         = m_selection_actions_group.addAction( QET::Icons::ZoomDraw,          editor->tr("Retrouver dans le panel")   );
 	m_edit_selection       = m_selection_actions_group.addAction( QET::Icons::ElementEdit,       editor->tr("Éditer l'item sélectionné") );
@@ -415,16 +431,19 @@ DiagramEditorActions::DiagramEditorActions(QETDiagramEditor *editor) :
 
 	ShortcutManager::instance().registerAction(m_delete_selection, "diagrameditor.delete_selection", editor->tr("Éditeur de schémas"), Qt::Key_Delete);
 	ShortcutManager::instance().registerAction(m_rotate_selection, "diagrameditor.rotate_selection", editor->tr("Éditeur de schémas"), Qt::Key_Space);
+	ShortcutManager::instance().registerAction(m_rotate_group_selection, "diagrameditor.rotate_group_selection", editor->tr("Éditeur de schémas"), Qt::SHIFT | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_rotate_texts, "diagrameditor.rotate_texts", editor->tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_Space);
 	ShortcutManager::instance().registerAction(m_edit_selection, "diagrameditor.edit_selection", editor->tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_E);
 
 	m_delete_selection->setStatusTip( editor->tr("Enlève les éléments sélectionnés du folio", "status bar tip"));
 	m_rotate_selection->setStatusTip( editor->tr("Pivote les éléments et textes sélectionnés", "status bar tip"));
+	m_rotate_group_selection->setStatusTip( editor->tr("Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place", "status bar tip"));
 	m_rotate_texts    ->setStatusTip( editor->tr("Pivote les textes sélectionnés à un angle précis", "status bar tip"));
 	m_find_element    ->setStatusTip( editor->tr("Retrouve l'élément sélectionné dans le panel", "status bar tip"));
 
 	m_delete_selection    ->setData("delete_selection");
 	m_rotate_selection    ->setData("rotate_selection");
+	m_rotate_group_selection->setData("rotate_group_selection");
 	m_rotate_texts        ->setData("rotate_selected_text");
 	m_find_element        ->setData("find_selected_element");
 	m_edit_selection      ->setData("edit_selected_element");

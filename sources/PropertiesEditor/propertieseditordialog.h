@@ -46,6 +46,18 @@ class PropertiesEditorDialog : public QDialog
 		PropertiesEditorDialog(T editor, QWidget *parent = nullptr) :
 		QDialog (parent)
 		{
+			// Without this, a QWidget-modal QDialog with a parent falls
+			// back to macOS's automatic sheet presentation, which some
+			// Qt/Cocoa versions render stuck centered on screen and
+			// non-draggable rather than as a proper attached sheet
+			// (bugtracker #275). Other dialogs in this codebase already
+			// opt in explicitly (see ElementDialog, DiagramPropertiesDialog)
+			// -- this one was missing it.
+			setWindowModality(Qt::WindowModal);
+#ifdef Q_OS_MACOS
+			setWindowFlags(Qt::Sheet);
+#endif
+
 			//Set dialog title
 			setWindowTitle(editor->title());
 			// Reparent the editor,

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
+#include "../qetapp.h"
 #include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
@@ -33,9 +34,19 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/setautonumcontextcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
@@ -860,6 +871,15 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
+		//Load PLC master data override from diagram XML
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = e.firstChildElement(QStringLiteral("plcMasterData"));
+		if (!xml_plc.isNull())
+			m_data.plcMasterDataFromXml(xml_plc);
+	}
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -991,6 +1011,15 @@ QDomElement Element::toXml(
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
 	}
 
 	//Dynamic texts
@@ -1491,13 +1520,7 @@ void Element::setElementData(ElementData data)
 					{
 						QString val = (t < io.terminals.size())
 							? io.terminals.at(t) : QString();
-						ctx.addValue(
-							QStringList({
-								QETInformation::ELMT_PLC_T1,
-								QETInformation::ELMT_PLC_T2,
-								QETInformation::ELMT_PLC_T3,
-								QETInformation::ELMT_PLC_T4
-							}).at(t), val);
+						ctx.addValue(plcTerminalKeys[t], val);
 					}
 					slave->setElementInformations(ctx);
 
@@ -1626,7 +1649,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 	(ex K for coil) with condition :
 	formula is empty, text tagged "label" is emptty or "_";
 */
-void Element::setUpFormula(bool code_letter)
+void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
@@ -1655,8 +1678,21 @@ void Element::setUpFormula(bool code_letter)
 					   nc,
 					   diagram(),
 					   element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum,
-							ncc.next());
+
+		NumerotationContext new_context = ncc.next();
+		QETProject *project = diagram()->project();
+		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);};
+
+		if (parent_undo)
+		{
+			new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context, parent_undo);
+		}
+		else
+		{
+			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
+			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			diagram()->undoStack().push(undo);
+		}
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
@@ -1876,12 +1912,12 @@ void Element::drawPlcTable(QPainter *painter)
 	// Fonts
 	QFont header_font = plc_data.headerFont;
 	if (header_font.family().isEmpty()) {
-		header_font = painter->font();
+		header_font = QETApp::diagramTextsFont();
 		header_font.setBold(true);
 	}
 	QFont cell_font = plc_data.cellFont;
 	if (cell_font.family().isEmpty()) {
-		cell_font = painter->font();
+		cell_font = QETApp::diagramTextsFont();
 	}
 
 	for (const QPointF &pos : positions) {

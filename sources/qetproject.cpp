@@ -69,6 +69,10 @@ m_project_properties_handler{this}
 	init();
 
 	QSettings settings;
+
+		//Read auto break conductor default from global settings
+	m_auto_break_conductor = settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool();
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
@@ -199,7 +203,7 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
 	m_undo_stack = new QUndoStack(this);
-	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
@@ -925,6 +929,28 @@ void QETProject::setAutoConductor(bool ac)
 {
 	if (ac != m_auto_conductor)
 		m_auto_conductor = ac;
+}
+
+/**
+	@brief QETProject::autoBreakConductor
+	@return true if use of auto break conductor is authorized.
+	See also Q_PROPERTY autoBreakConductor
+*/
+bool QETProject::autoBreakConductor() const
+{
+	return m_auto_break_conductor;
+}
+
+/**
+	@brief QETProject::setAutoBreakConductor
+	@param abc
+	Enable the use of auto break conductor if true
+	See also Q_PROPERTY autoBreakConductor
+*/
+void QETProject::setAutoBreakConductor(bool abc)
+{
+	if (abc != m_auto_break_conductor)
+		m_auto_break_conductor = abc;
 }
 
 /**
@@ -1735,6 +1761,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_conductor_autonum = conds_autonums.attribute(QStringLiteral("current_autonum"));
 		m_freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
+		m_auto_break_conductor = conds_autonums.attribute(QStringLiteral("auto_break_conductors")) == QLatin1String("true");
 		for (auto elmt : QET::findInDomElement(conds_autonums, QStringLiteral("conductor_autonum")))
 		{
 			NumerotationContext nc;
@@ -1861,6 +1888,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
+	conductor_autonums.setAttribute("auto_break_conductors", m_auto_break_conductor ? "true" : "false");
 	foreach (QString key, conductorAutoNum().keys()) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {

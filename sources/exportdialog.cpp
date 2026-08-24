@@ -22,8 +22,10 @@
 #include "exportpropertieswidget.h"
 #include "factory/elementpicturefactory.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "dxfpaintdevice.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/crossrefitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -87,8 +89,8 @@ ExportDialog::ExportDialog(
 	deSelectAll -> setText(tr("Tout décocher"));
 	hLayout -> addWidget(selectAll);
 	hLayout -> addWidget(deSelectAll);
-	connect(selectAll,   SIGNAL(clicked()),            this, SLOT(slot_selectAllClicked()));
-	connect(deSelectAll, SIGNAL(clicked()),            this, SLOT(slot_deSelectAllClicked()));
+	connect(selectAll, &QPushButton::clicked, this, &ExportDialog::slot_selectAllClicked);
+	connect(deSelectAll, &QPushButton::clicked, this, &ExportDialog::slot_deSelectAllClicked);
 
 
 	QVBoxLayout *layout = new QVBoxLayout(this);
@@ -98,10 +100,10 @@ ExportDialog::ExportDialog(
 	layout -> addWidget(buttons);
 	
 	// connexions signaux/slots
-	connect(epw,     SIGNAL(formatChanged()),       this, SLOT(slot_changeFilesExtension()));
-	connect(epw,     SIGNAL(exportedAreaChanged()), this, SLOT(slot_changeUseBorder()));
-	connect(buttons, SIGNAL(accepted()),            this, SLOT(slot_export()));
-	connect(buttons, SIGNAL(rejected()),            this, SLOT(reject()));
+	connect(epw, &ExportPropertiesWidget::formatChanged, this, [this]() { slot_changeFilesExtension(); });
+	connect(epw, &ExportPropertiesWidget::exportedAreaChanged, this, &ExportDialog::slot_changeUseBorder);
+	connect(buttons, &QDialogButtonBox::accepted, this, &ExportDialog::slot_export);
+	connect(buttons, &QDialogButtonBox::rejected, this, &ExportDialog::reject);
 	
 	// ajustement des extensions des fichiers
 	slot_changeFilesExtension(true);
@@ -140,12 +142,12 @@ QWidget *ExportDialog::initDiagramsListPart()
 	reset_mapper_     = new QSignalMapper(this);
 	clipboard_mapper_ = new QSignalMapper(this);
 	
-	connect(preview_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
-	connect(width_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
-	connect(height_mapper_,    SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
-	connect(ratio_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
-	connect(reset_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
-	connect(clipboard_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_exportToClipBoard(int)));
+	connect(preview_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_previewDiagram);
+	connect(width_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctHeight);
+	connect(height_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctWidth);
+	connect(ratio_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_keepRatioChanged);
+	connect(reset_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_resetSize);
+	connect(clipboard_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_exportToClipBoard);
 	
 	diagrams_list_layout_ = new QGridLayout();
 	
@@ -165,25 +167,25 @@ QWidget *ExportDialog::initDiagramsListPart()
 		diagrams_list_layout_ -> addLayout(diagram_line -> sizeLayout(),   line_count, 3);
 		
 		// si on decoche tous les schemas, on desactive le bouton "Exporter"
-		connect(diagram_line -> must_export, SIGNAL(toggled(bool)), this, SLOT(slot_checkDiagramsCount()));
+		connect(diagram_line -> must_export, &QCheckBox::toggled, this, &ExportDialog::slot_checkDiagramsCount);
 		
 		// mappings et signaux pour la gestion des dimensions du schema
 		width_mapper_  -> setMapping(diagram_line -> width,      line_count);
 		height_mapper_ -> setMapping(diagram_line -> height,     line_count);
 		ratio_mapper_  -> setMapping(diagram_line -> keep_ratio, line_count);
 		reset_mapper_  -> setMapping(diagram_line -> reset_size, line_count);
-		connect(diagram_line -> width,      SIGNAL(valueChanged(int)), width_mapper_,  SLOT(map()));
-		connect(diagram_line -> height,     SIGNAL(valueChanged(int)), height_mapper_, SLOT(map()));
-		connect(diagram_line -> keep_ratio, SIGNAL(toggled(bool)),     ratio_mapper_,  SLOT(map()));
-		connect(diagram_line -> reset_size, SIGNAL(clicked(bool)),     reset_mapper_,  SLOT(map()));
+		connect(diagram_line -> width, qOverload<int>(&QSpinBox::valueChanged), width_mapper_, qOverload<>(&QSignalMapper::map));
+		connect(diagram_line -> height, qOverload<int>(&QSpinBox::valueChanged), height_mapper_, qOverload<>(&QSignalMapper::map));
+		connect(diagram_line -> keep_ratio, &QPushButton::toggled, ratio_mapper_, qOverload<>(&QSignalMapper::map));
+		connect(diagram_line -> reset_size, &QPushButton::clicked, reset_mapper_, qOverload<>(&QSignalMapper::map));
 		
 		// mappings et signaux pour l'apercu du schema
 		preview_mapper_ -> setMapping(diagram_line -> preview, line_count);
-		connect(diagram_line -> preview, SIGNAL(clicked(bool)), preview_mapper_, SLOT(map()));
+		connect(diagram_line -> preview, &QPushButton::clicked, preview_mapper_, qOverload<>(&QSignalMapper::map));
 		
 		// mappings et signaux pour l'export du schema vers le presse-papier
 		clipboard_mapper_ -> setMapping(diagram_line -> clipboard, line_count);
-		connect(diagram_line -> clipboard, SIGNAL(clicked(bool)), clipboard_mapper_, SLOT(map()));
+		connect(diagram_line -> clipboard, &QPushButton::clicked, clipboard_mapper_, qOverload<>(&QSignalMapper::map));
 	}
 	
 	QWidget *widget_diagrams_list = new QWidget();
@@ -463,6 +465,16 @@ void ExportDialog::generateDxf(
 	QList<Conductor *> list_conductors;
 	QList<DiagramTextItem *> list_texts;
 	QList<DiagramImageItem *> list_images;
+		//Slave cross-reference labels. They hang off a DynamicElementTextItem
+		//as plain QGraphicsTextItem children, so neither cast below picks them
+		//up and they were missing from the DXF entirely.
+	QList<QGraphicsTextItem *> list_xref_texts;
+		//Master-side cross-reference item (the table/cross drawn next to a
+		//report/master element). It paints itself with hand-written
+		//QPainter code across three modes (drawAsCross/drawAsContacts/
+		//drawAsPlcTable), so instead of hand-porting each one it's replayed
+		//through DxfPaintEngine, which reuses paint() unmodified.
+	QList<CrossRefItem *> list_master_xrefs;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
@@ -484,8 +496,13 @@ void ExportDialog::generateDxf(
 			list_shapes << dii;
 		} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
 			list_texts << deti;
+			if (QGraphicsTextItem *xref = deti->slaveXrefItem()) {
+				list_xref_texts << xref;
+			}
 		} else if (QetGraphicsTableItem *gti = qgraphicsitem_cast<QetGraphicsTableItem *>(qgi)) {
 			list_tables << gti;
+		} else if (CrossRefItem *xref = qgraphicsitem_cast<CrossRefItem *>(qgi)) {
+			list_master_xrefs << xref;
 		}
 	}
 
@@ -677,6 +694,54 @@ void ExportDialog::generateDxf(
 			x += offset * xdir;
 			y -= offset * ydir;
 		}
+	}
+
+	//Draw the slave cross-reference labels
+	for (QGraphicsTextItem *xref : std::as_const(list_xref_texts))
+	{
+		qreal fontSize = xref->font().pointSizeF();
+		if (fontSize < 0)
+			fontSize = xref->font().pixelSize();
+
+		qreal angle = xref->rotation();
+		QGraphicsItem *parent = xref->parentItem();
+		while (parent) {
+			angle += parent->rotation();
+			parent = parent->parentItem();
+		}
+
+		qreal angler = angle * M_PI/180;
+		int xdir = -sin(angler);
+		int ydir = -cos(angler);
+		qreal x = xref->scenePos().x()
+				+ xdir * fontSize * 1.8
+				- ydir * fontSize;
+		qreal y = xref->scenePos().y()
+				- ydir * fontSize * 1.8
+				- xdir * fontSize * 0.9;
+
+		const QStringList lines = xref->toPlainText().split('\n');
+		const qreal offset = fontSize * 1.6;
+		for (const QString &line : lines) {
+			if (line.size() > 0 && line != QLatin1String("_")) {
+				Createdxf::drawText(file_path, line, QPointF(x, y), fontSize,
+									360-angle, Createdxf::dxfColor(xref->defaultTextColor()), 0.72);
+			}
+			x += offset * xdir;
+			y -= offset * ydir;
+		}
+	}
+
+	//Draw the master-side cross-reference items (table/cross), replaying
+	//their existing paint() unmodified through DxfPaintEngine instead of
+	//hand-porting drawAsCross()/drawAsContacts()/drawAsPlcTable().
+	for (CrossRefItem *xref : std::as_const(list_master_xrefs))
+	{
+		DxfPaintDevice dxf_device(file_path);
+		QPainter painter(&dxf_device);
+		painter.setWorldTransform(xref->sceneTransform());
+		xref->paintForExport(&painter);
+		painter.end();
 	}
 
 	Createdxf::dxfEnd(file_path);
@@ -930,7 +995,7 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	QGraphicsView *preview_view = new QGraphicsView(preview_scene);
 	preview_view -> setDragMode(QGraphicsView::ScrollHandDrag);
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok);
-	connect(buttons, SIGNAL(accepted()), &preview_dialog, SLOT(accept()));
+	connect(buttons, &QDialogButtonBox::accepted, &preview_dialog, &QDialog::accept);
 	
 	QVBoxLayout *vboxlayout1 = new QVBoxLayout();
 	vboxlayout1 -> addWidget(preview_view);

@@ -17,6 +17,7 @@
 */
 #include "elementspanelwidget.h"
 #include "diagram.h"
+#include "qetgraphicsitem/conductor.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"
@@ -61,6 +62,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_edit_prop            = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du projet"),          this);
 	prj_prop_diagram         = new QAction(QET::Icons::DialogInformation,      tr("Propriétés du folio"),       this);
 	prj_add_diagram          = new QAction(QET::Icons::DiagramAdd,              tr("Ajouter un folio"),                this);
+	prj_insert_diagram_above = new QAction(QET::Icons::DiagramAdd,              tr("Insérer un folio au-dessus"),      this);
+	prj_insert_diagram_below = new QAction(QET::Icons::DiagramAdd,              tr("Insérer un folio en dessous"),     this);
 	prj_duplicate_diagram   = new QAction(QET::Icons::IC_CopyFile,              tr("Copier et coller"),               this);
 	prj_del_diagram          = new QAction(QET::Icons::DiagramDelete,          tr("Supprimer ce folio"),              this);
 	prj_move_diagram_up      = new QAction(QET::Icons::GoUp,                   tr("Remonter ce folio"),               this);
@@ -94,42 +97,42 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 
 	context_menu = new QMenu(this);
 
-	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
-	connect(copy_path,             SIGNAL(triggered()), this,           SLOT(copyPathForSelectedItem()));
-	connect(prj_activate,          SIGNAL(triggered()), this,           SLOT(activateProject()));
-	connect(prj_close,             SIGNAL(triggered()), this,           SLOT(closeProject()));
-	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
-	connect(prj_prop_diagram,      SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
-	connect(prj_add_diagram,       SIGNAL(triggered()), this,           SLOT(newDiagram()));
-	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
-	connect(prj_duplicate_diagram, SIGNAL(triggered()), this,           SLOT(duplicateDiagram()));
-	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
-	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
-	connect(prj_move_diagram_top,  SIGNAL(triggered()), this,           SLOT(moveDiagramUpTop()));
-	connect(prj_move_diagram_upx10,   SIGNAL(triggered()), this,        SLOT(moveDiagramUpx10()));
-	connect(prj_move_diagram_upx100,  SIGNAL(triggered()), this,        SLOT(moveDiagramUpx100()));
-	connect(prj_move_diagram_downx10, SIGNAL(triggered()), this,        SLOT(moveDiagramDownx10()));
-	connect(prj_move_diagram_downx100,SIGNAL(triggered()), this,        SLOT(moveDiagramDownx100()));
-	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
-	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
-	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
-
-	connect(filter_textfield,      SIGNAL(textChanged(const QString &)), this,             SLOT(filterEdited(const QString &)));
-
-	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
-	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
+	connect(open_directory, &QAction::triggered, this, &ElementsPanelWidget::openDirectoryForSelectedItem);
+	connect(copy_path, &QAction::triggered, this, &ElementsPanelWidget::copyPathForSelectedItem);
+	connect(prj_activate, &QAction::triggered, this, &ElementsPanelWidget::activateProject);
+	connect(prj_close, &QAction::triggered, this, &ElementsPanelWidget::closeProject);
+	connect(prj_edit_prop, &QAction::triggered, this, &ElementsPanelWidget::editProjectProperties);
+	connect(prj_prop_diagram, &QAction::triggered, this, &ElementsPanelWidget::editDiagramProperties);
+	connect(prj_add_diagram, &QAction::triggered, this, &ElementsPanelWidget::newDiagram);
+	connect(prj_insert_diagram_above, &QAction::triggered, this, &ElementsPanelWidget::insertDiagramAbove);
+	connect(prj_insert_diagram_below, &QAction::triggered, this, &ElementsPanelWidget::insertDiagramBelow);
+	connect(prj_del_diagram, &QAction::triggered, this, &ElementsPanelWidget::deleteDiagram);
+	connect(prj_duplicate_diagram, &QAction::triggered, this, &ElementsPanelWidget::duplicateDiagram);
+	connect(prj_move_diagram_up, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramUp);
+	connect(prj_move_diagram_down, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramDown);
+	connect(prj_move_diagram_top, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramUpTop);
+	connect(prj_move_diagram_upx10, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramUpx10);
+	connect(prj_move_diagram_upx100, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramUpx100);
+	connect(prj_move_diagram_downx10, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramDownx10);
+	connect(prj_move_diagram_downx100, &QAction::triggered, this, &ElementsPanelWidget::moveDiagramDownx100);
+	connect(tbt_add, &QAction::triggered, this, &ElementsPanelWidget::addTitleBlockTemplate);
+	connect(tbt_edit, &QAction::triggered, this, &ElementsPanelWidget::editTitleBlockTemplate);
+	connect(tbt_remove, &QAction::triggered, this, &ElementsPanelWidget::removeTitleBlockTemplate);
+	connect(filter_textfield, &QLineEdit::textChanged, this, &ElementsPanelWidget::filterEdited);
+	connect(elements_panel, &ElementsPanel::currentItemChanged, this, &ElementsPanelWidget::updateButtons);
+	connect(elements_panel, &ElementsPanel::customContextMenuRequested, this, &ElementsPanelWidget::handleContextMenu);
 	connect(
 		elements_panel,
-		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),
+		&ElementsPanel::requestForTitleBlockTemplate,
 		QETApp::instance(),
-		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
-	);
-
+		[app = QETApp::instance()](const TitleBlockTemplateLocation &location) { app->openTitleBlockTemplate(location); }
+	);	
+	
 		// manage double click on TreeWidgetItem
-	connect(elements_panel, SIGNAL(requestForProjectPropertiesEdition()), this, SLOT(editProjectProperties()) );
-	connect(elements_panel, SIGNAL(requestForDiagramPropertiesEdition()), this, SLOT(editDiagramProperties()) );
-		// manage project activation
-	connect(elements_panel, SIGNAL(requestForProject(QETProject*)), this, SIGNAL(requestForProject(QETProject*)));
+	connect(elements_panel, &ElementsPanel::requestForProjectPropertiesEdition, this, &ElementsPanelWidget::editProjectProperties);
+	connect(elements_panel, &ElementsPanel::requestForDiagramPropertiesEdition, this, &ElementsPanelWidget::editDiagramProperties);
+		// manage project activation	
+	connect(elements_panel, &ElementsPanel::requestForProject, this, &ElementsPanelWidget::requestForProject);	
 
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
@@ -242,6 +245,32 @@ void ElementsPanelWidget::newDiagram()
 {
 	if (QETProject *selected_project = elements_panel -> selectedProject()) {
 		emit(requestForNewDiagram(selected_project));
+	}
+}
+
+/**
+	@brief ElementsPanelWidget::insertDiagramAbove
+	Emit requestForNewDiagramAt with the position of the currently
+	selected diagram, inserting the new folio right before it.
+*/
+void ElementsPanelWidget::insertDiagramAbove()
+{
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		QETProject *project = selected_diagram->project();
+		emit(requestForNewDiagramAt(project, project->folioIndex(selected_diagram)));
+	}
+}
+
+/**
+	@brief ElementsPanelWidget::insertDiagramBelow
+	Emit requestForNewDiagramAt with the position right after the
+	currently selected diagram, inserting the new folio right after it.
+*/
+void ElementsPanelWidget::insertDiagramBelow()
+{
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		QETProject *project = selected_diagram->project();
+		emit(requestForNewDiagramAt(project, project->folioIndex(selected_diagram) + 1));
 	}
 }
 
@@ -451,6 +480,8 @@ void ElementsPanelWidget::updateButtons()
 
 			prj_del_diagram           -> setEnabled(is_writable);
 			prj_duplicate_diagram     -> setEnabled(is_writable);
+			prj_insert_diagram_above -> setEnabled(is_writable);
+			prj_insert_diagram_below -> setEnabled(is_writable);
 			prj_move_diagram_up        -> setEnabled(is_writable && min_position > 0);
 			prj_move_diagram_down     -> setEnabled(is_writable && max_position < project_diagrams_count - 1);
 			prj_move_diagram_top      -> setEnabled(is_writable && min_position > 0);
@@ -504,6 +535,8 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			break;
 		case QET::Diagram:
 			context_menu -> addAction(prj_prop_diagram);
+			context_menu -> addAction(prj_insert_diagram_above);
+			context_menu -> addAction(prj_insert_diagram_below);
 			context_menu -> addAction(prj_del_diagram);
 			context_menu -> addAction(prj_duplicate_diagram);
 			context_menu -> addAction(prj_move_diagram_top);
@@ -651,6 +684,13 @@ void ElementsPanelWidget::duplicateDiagram()
 				// silently vanish from nomenclature/summary tables.
 				elmt->newUuid();
 				new_diagram->restoreText(elmt);
+			}
+			else if (Conductor *cond = dynamic_cast<Conductor *>(item)) {
+				// Same reasoning for conductors: conductor.uuid is the PRIMARY
+				// KEY of the conductor table, and its insert is a plain INSERT,
+				// so a duplicated uuid fails and the wire silently disappears
+				// from the wiring list and the per-element wire count.
+				cond->newUuid();
 			}
 		}
 	}

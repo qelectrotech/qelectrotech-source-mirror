@@ -74,6 +74,18 @@ namespace PdfLinks {
 	*/
 	void convertUriToGoTo(const QString &pdfPath);
 
+	struct ComponentInfo {
+		QString contents;
+	};
+
+	/**
+		Post-process a Qt-generated PDF file: convert component-info placeholder
+		link annotations (http://componentinfo.local/<N>) into invisible text
+		annotations with the actual component info as /Contents.
+	*/
+	void convertComponentInfoAnnotations(const QString &pdfPath,
+										const QList<ComponentInfo> &annotations);
+
 }
 
 #endif // PDF_LINKS_H
