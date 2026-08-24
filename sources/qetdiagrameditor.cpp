@@ -778,7 +778,7 @@ void QETDiagramEditor::setUpActions()
 	});
 
 	m_jump_to_element = new QAction(tr("Atteindre un élément"), this);
-	m_jump_to_element->setShortcut(Qt::CTRL | Qt::Key_G);
+	ShortcutManager::instance().registerAction(m_jump_to_element, "diagrameditor.jump_to_element", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_G);
 	m_jump_to_element->setStatusTip(tr("Recherche et sélectionne rapidement un élément du folio", "status bar tip"));
 	connect(m_jump_to_element, &QAction::triggered, [this]()
 	{
