@@ -24,11 +24,10 @@ jobs:
     #  github.event_name == 'workflow_dispatch' ||
     #  github.event.workflow_run.conclusion == 'success'
 
-    strategy:
-      fail-fast: false
-      concurrency:
-        group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
-        cancel-in-progress: true  
+    fail-fast: false
+    concurrency:
+      group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true  
 
     permissions:
       contents: write
