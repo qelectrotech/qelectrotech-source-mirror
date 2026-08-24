@@ -21,10 +21,12 @@
 #include <QUndoCommand>
 #include <QPointer>
 #include <QHash>
+#include <QPointF>
 
 class Diagram;
 class ConductorTextItem;
 class QPropertyUndoCommand;
+class QGraphicsItem;
 
 /**
 	@brief The RotateSelectionCommand class
@@ -33,13 +35,15 @@ class QPropertyUndoCommand;
 class RotateSelectionCommand : public QUndoCommand
 {
 	public:
-		RotateSelectionCommand(Diagram *diagram, qreal angle=90, QUndoCommand *parent=nullptr);
+		RotateSelectionCommand(Diagram *diagram, qreal angle=90, QUndoCommand *parent=nullptr, bool rotate_as_group=false);
 		void undo() override;
 		void redo() override;
 
 		bool isValid();
 
 	private:
+		void addGroupPositionUndo(QGraphicsItem *item, const QPointF &pivot, qreal angle);
+
 		Diagram *m_diagram =nullptr;
 
 		QList<QPointer<ConductorTextItem>> m_cond_text;

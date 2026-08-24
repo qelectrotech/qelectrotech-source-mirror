@@ -1033,7 +1033,7 @@ bool GenericPanel::event(QEvent *event) {
 	if (first_activation_) {
 		if (event -> type() == QEvent::WindowActivate
 				|| event -> type() == QEvent::Show) {
-			QTimer::singleShot(250, this, SLOT(emitFirstActivated()));
+			QTimer::singleShot(250, this, &GenericPanel::emitFirstActivated);
 			first_activation_ = false;
 		}
 	}

@@ -2,7 +2,7 @@ name: Windows Build
 
 on:
   schedule:
-    - cron: '0 2 * * 1'   # Every Monday at 2:00 UTC
+    - cron: '0 2 1 * *' #
   workflow_dispatch:       # Manual trigger available at any time
 
 concurrency:
@@ -113,10 +113,10 @@ jobs:
             -DQt5_DIR=/ucrt64/lib/cmake/Qt5 \
             -DQT_VERSION_MAJOR=5 \
             -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON \
-            -DBUILD_TESTING=OFF \
+            -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DQET_EXPORT_PROJECT_DB=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
@@ -343,21 +343,21 @@ jobs:
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload NSIS installer
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-installer
           path: dist/Installer_*.exe
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload portable (nom fixe pour le workflow MSI)
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-portable
           path: nsis_root/files/
-          retention-days: 14
+          retention-days: 40
 
   # =============================================================================
   # Job 2: Qt6 build (EXPERIMENTAL track)
@@ -397,6 +397,9 @@ jobs:
             mingw-w64-ucrt-x86_64-qt6-pdf
             mingw-w64-ucrt-x86_64-sqlite3
             mingw-w64-ucrt-x86_64-pkg-config
+            mingw-w64-ucrt-x86_64-kwidgetsaddons
+            mingw-w64-ucrt-x86_64-kcoreaddons
+            mingw-w64-ucrt-x86_64-extra-cmake-modules
             mingw-w64-ucrt-x86_64-nsis
             mingw-w64-ucrt-x86_64-angleproject
 
@@ -456,11 +459,12 @@ jobs:
             -DCMAKE_PREFIX_PATH=/ucrt64 \
             -DQt6_DIR=/ucrt64/lib/cmake/Qt6 \
             -DQT_VERSION_MAJOR=6 \
-            -DBUILD_WITH_KF5=OFF \
+            -DBUILD_WITH_KF=ON \
+            -DBUILD_KF=OFF \
             -DPACKAGE_TESTS=OFF \
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DQET_EXPORT_PROJECT_DB=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
@@ -687,21 +691,21 @@ jobs:
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload NSIS installer
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-installer-qt6
           path: dist/Installer_*.exe
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload portable (nom fixe pour le workflow MSI)
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-portable-qt6
           path: nsis_root/files/
-          retention-days: 14
+          retention-days: 40
 
   # ---------------------------------------------------------------------------
   # Job 3 : Publie les assets nightly (exe + zip, Qt5 et Qt6) sur la release
@@ -759,8 +763,9 @@ jobs:
             > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
             > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
 
-            > 🧪 **Qt6 builds are experimental.** Files tagged `-qt6-` are built against Qt6 and are not yet
-            > as tested as the Qt5 track. Expect rough edges; report issues clearly labelled "Qt6".
+            > 🧪 **Try Qt6 — soon the only track.** Files tagged `-qt6-` are built against Qt6. The Qt5
+            > builds above will be removed from Windows CI soon; please switch and test Qt6 now — report
+            > any issue clearly labelled "Qt6".
           prerelease: true
           make_latest: false
           files: |

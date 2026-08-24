@@ -276,14 +276,7 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 	for (int i = my_items_list.count() - 2 ; i >= 0 ; -- i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i +1] -> isSelected()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
-				my_items_list.swap(i, i + 1);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.13 or later")
-#endif
 				my_items_list.swapItemsAt(i, i + 1);
-#endif
 			}
 		}
 	}
@@ -301,14 +294,7 @@ void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 	for (int i = 1 ; i < my_items_list.count() ; ++ i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i - 1] -> isSelected()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
-				my_items_list.swap(i, i - 1);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.13 or later")
-#endif
 				my_items_list.swapItemsAt(i, i - 1);
-#endif
 			}
 		}
 	}

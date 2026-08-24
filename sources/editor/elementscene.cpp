@@ -69,10 +69,8 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	initPasteArea();
 	m_undo_stack.setClean();
 	m_decorator_lock = new QMutex();
-	connect(&m_undo_stack, SIGNAL(indexChanged(int)),
-		this, SLOT(managePrimitivesGroups()));
-	connect(this, SIGNAL(selectionChanged()),
-			this, SLOT(managePrimitivesGroups()));
+	connect(&m_undo_stack, &QUndoStack::indexChanged, this, &ElementScene::managePrimitivesGroups);
+	connect(this, &ElementScene::selectionChanged, this, &ElementScene::managePrimitivesGroups);
 }
 
 /**
@@ -102,8 +100,7 @@ void ElementScene::setElementData(ElementData data)
 ElementScene::~ElementScene()
 {
 	//Disconnect to avoid crash, see bug report N° 122.
-	disconnect(&m_undo_stack, SIGNAL(indexChanged(int)),
-		   this, SLOT(managePrimitivesGroups()));
+	disconnect(&m_undo_stack, &QUndoStack::indexChanged, this, &ElementScene::managePrimitivesGroups);
 	delete m_decorator_lock;
 
 	if (m_event_interface)
@@ -124,7 +121,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
-			emit mouseMoved(e -> scenePos());
+			emit mouseMoved(snapToGrid(e->scenePos()));
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
@@ -907,8 +904,8 @@ void ElementScene::slot_editAuthorInformations()
 						   QDialogButtonBox::Ok
 						   | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),&dialog_author, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),&dialog_author, SLOT(reject()));
+	connect(dialog_buttons, &QDialogButtonBox::accepted, &dialog_author, &QDialog::accept);
+	connect(dialog_buttons, &QDialogButtonBox::rejected, &dialog_author, &QDialog::reject);
 
 	// start the dialogue
 	// lance le dialogue
@@ -1399,9 +1396,7 @@ void ElementScene::managePrimitivesGroups()
 	if (!m_decorator)
 	{
 		m_decorator = new ElementPrimitiveDecorator();
-		connect(m_decorator,
-			SIGNAL(actionFinished(ElementEditionCommand*)),
-			this, SLOT(stackAction(ElementEditionCommand *)));
+		connect(m_decorator, &ElementPrimitiveDecorator::actionFinished, this, &ElementScene::stackAction);
 		addItem(m_decorator);
 		m_decorator -> hide();
 	}

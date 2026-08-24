@@ -20,6 +20,7 @@
 
 #include <QDockWidget>
 #include <QPointer>
+#include <QHash>
 
 class QETProject;
 class QTreeWidgetItem;

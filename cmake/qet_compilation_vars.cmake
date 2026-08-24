@@ -33,6 +33,13 @@ set(QET_COMPONENTS
   Widgets
   Concurrent)
 
+# Note: Pdf is intentionally NOT in this list. Some Qt6 distributions
+# (notably the Flatpak org.kde.Platform runtime) don't ship the QtPdf
+# module at all - it lives in the qtwebengine source tree, not Qt6 core.
+# Requesting it here as a REQUIRED component would fail the whole
+# configure on those setups. It is probed separately, QUIET and
+# non-fatal, right after the main find_package() call below.
+
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
   Qt::Gui
@@ -44,6 +51,9 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Widgets
   Qt::Concurrent
   )
+
+# Qt::Pdf is appended conditionally in CMakeLists.txt, once we know
+# whether the module was actually found (see QET_HAS_QTPDF).
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
@@ -91,7 +101,6 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
   ${QET_DIR}/sources/ui/diagramcontextwidget.ui
   ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.ui
-  ${QET_DIR}/sources/ui/diagramselection.ui
   ${QET_DIR}/sources/ui/dialogwaiting.ui
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
   ${QET_DIR}/sources/ui/elementinfopartwidget.ui
@@ -177,6 +186,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/configdialog.h
   ${QET_DIR}/sources/createdxf.cpp
   ${QET_DIR}/sources/createdxf.h
+  ${QET_DIR}/sources/dxfpaintdevice.cpp
+  ${QET_DIR}/sources/dxfpaintdevice.h
   ${QET_DIR}/sources/diagramcommands.cpp
   ${QET_DIR}/sources/diagramcommands.h
   ${QET_DIR}/sources/diagramcontent.cpp
@@ -215,6 +226,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/exportpropertieswidget.h
   ${QET_DIR}/sources/genericpanel.cpp
   ${QET_DIR}/sources/genericpanel.h
+  ${QET_DIR}/sources/lastusedstyle.cpp
+  ${QET_DIR}/sources/lastusedstyle.h
   ${QET_DIR}/sources/machine_info.cpp
   ${QET_DIR}/sources/machine_info.h
   ${QET_DIR}/sources/main.cpp
@@ -295,6 +308,9 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.h
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.h
+
+  ${QET_DIR}/sources/autobreakconductor.cpp
+  ${QET_DIR}/sources/autobreakconductor.h
 
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h
@@ -540,7 +556,6 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/richtext/richtexteditor.cpp
   ${QET_DIR}/sources/richtext/richtexteditor_p.h
-  ${QET_DIR}/sources/richtext/ui_addlinkdialog.h
 
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.cpp
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.h
@@ -683,8 +698,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertiesdialog.h
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.cpp
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
-  ${QET_DIR}/sources/ui/diagramselection.cpp
-  ${QET_DIR}/sources/ui/diagramselection.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
@@ -693,6 +706,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.h
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.cpp
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfopartwidget.cpp
   ${QET_DIR}/sources/ui/elementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
@@ -795,7 +810,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
   list(APPEND QET_SRC_FILES
     ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
     ${QET_DIR}/sources/ui/nokde/kautosavefile.h
@@ -803,6 +818,16 @@ if(NOT BUILD_WITH_KF5)
     ${QET_DIR}/sources/ui/nokde/kcolorbutton.h
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
+  )
+endif()
+
+# Qt6-only: PDF page import files
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
+    ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
+    ${QET_DIR}/sources/ui/pdfpagesdialog.h
   )
 endif()
 

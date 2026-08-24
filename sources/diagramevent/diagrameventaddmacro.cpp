@@ -43,11 +43,7 @@ m_preview_item(nullptr)
 					QString file_name = (last_slash != -1) ? path.mid(last_slash + 1) : path;
 
 					if (!dir_path.isEmpty()) {
-						#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-						QStringList parts = dir_path.split('/', QString::SkipEmptyParts);
-						#else
 						QStringList parts = dir_path.split('/', Qt::SkipEmptyParts);
-						#endif
 						QString current_path = "";
 						for (const QString &part : parts) {
 							QString parent_path = current_path;
@@ -202,11 +198,7 @@ bool DiagramEventAddMacro::loadMacro()
 				QString file_name = (last_slash != -1) ? path.mid(last_slash + 1) : path;
 
 				if (!dir_path.isEmpty()) {
-					#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-					QStringList parts = dir_path.split('/', QString::SkipEmptyParts);
-					#else
 					QStringList parts = dir_path.split('/', Qt::SkipEmptyParts);
-					#endif
 					QString current_path = "";
 					for (const QString &part : parts) {
 						QString parent_path = current_path;

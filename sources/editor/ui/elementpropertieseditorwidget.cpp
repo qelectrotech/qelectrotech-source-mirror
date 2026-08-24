@@ -226,7 +226,7 @@ void ElementPropertiesEditorWidget::setUpInterface()
 	ui->m_tree->setItemDelegate(new EditorDelegate(this));
 
 	// NEU: Checkbox mit der Zahlenbox verbinden (Aktivieren/Deaktivieren)
-	connect(ui->max_slaves_checkbox, SIGNAL(toggled(bool)), ui->max_slaves_spinbox, SLOT(setEnabled(bool)));
+	connect(ui->max_slaves_checkbox, &QCheckBox::toggled, ui->max_slaves_spinbox, &QWidget::setEnabled);
 	connect(ui->max_slaves_spinbox, QOverload<int>::of(&QSpinBox::valueChanged), [this](int) {
 		if (ui->m_slave_groups_checkbox->isChecked()) {
 			populateSlaveGroupsTable();
@@ -423,11 +423,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
 								  type_ == ElementData::Master));
-#endif
 
 	updateTree();
 }
@@ -454,6 +452,9 @@ void ElementPropertiesEditorWidget::on_m_slave_groups_checkbox_toggled(bool chec
 
 	if (checked && !ui->max_slaves_checkbox->isChecked()) {
 		ui->max_slaves_checkbox->setChecked(true);
+		if (!m_data.m_slave_contact_groups.isEmpty()) {
+			ui->max_slaves_spinbox->setValue(m_data.m_slave_contact_groups.size());
+		}
 	}
 
 	if (checked) {
@@ -473,9 +474,6 @@ void ElementPropertiesEditorWidget::populateSlaveGroupsTable()
 
 	int row_count = ui->max_slaves_checkbox->isChecked()
 		? ui->max_slaves_spinbox->value() : 0;
-
-	// If we have existing groups, use their count (up to max_slaves)
-	int existing_groups = m_data.m_slave_contact_groups.size();
 
 	// Adjust the groups list to match the spinbox value
 	while (m_data.m_slave_contact_groups.size() < row_count) {
@@ -692,7 +690,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->horizontalHeader()->resizeSection(2, 150);
 	m_plc_table->horizontalHeader()->resizeSection(3, 150);
 	m_plc_table->horizontalHeader()->resizeSection(4, 100);
-	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
+	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_table->setMinimumHeight(200);
 	m_plc_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -1160,6 +1158,7 @@ void ElementPropertiesEditorWidget::plcAddRow()
 void ElementPropertiesEditorWidget::plcTerminalCountChanged(int row, int count)
 {
 	Q_UNUSED(row)
+	Q_UNUSED(count)
 	if (!m_plc_terminal_table)
 		return;
 

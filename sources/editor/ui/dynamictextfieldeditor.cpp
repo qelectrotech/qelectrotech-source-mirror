@@ -31,6 +31,7 @@
 #include <QColorDialog>
 #include <QGraphicsItem>
 #include <QPointer>
+#include <QSignalBlocker>
 
 DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
 											   PartDynamicTextField *text_field,
@@ -140,9 +141,21 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
-#ifdef BUILD_WITHOUT_KF5
+		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
+#ifdef BUILD_WITHOUT_KF
 #else
-		m_color_kpb -> setColor(m_text_field.data() -> color());
+			//Block signals while loading the colour into the button.
+			//KColorButton::changed fires on a programmatic setColor() as well
+			//as on user interaction, and m_color_kpb_changed() applies the new
+			//colour to *every* selected part -- so merely showing the first
+			//part's colour would overwrite the colour of all the others.
+			//The other widgets above are immune because they are wired to
+			//user-only signals (editingFinished, clicked), which setValue()
+			//and setChecked() do not emit.
+		{
+			const QSignalBlocker blocker(m_color_kpb);
+			m_color_kpb -> setColor(m_text_field.data() -> color());
+		}
 #endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
@@ -169,7 +182,7 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
@@ -197,6 +210,7 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [=](){this -> updateForm();});
 
 	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
 	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
@@ -347,8 +361,8 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	}
 }
 
-void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
-	Q_UNUSED(arg1)
+void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(int index) {
+	Q_UNUSED(index)
 
 	QString info = ui -> m_elmt_info_cb -> currentData().toString();
 	for (int i = 0; i < m_parts.length(); i++) {
@@ -485,6 +499,19 @@ void DynamicTextFieldEditor::on_m_keep_visual_rotation_cb_clicked()
 		if(keep != m_parts[i] -> keepVisualRotation()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "keepVisualRotation", m_parts[i] -> frame(), keep);
 			undo -> setText(tr("Modifier la conservation de l'angle"));
+			undoStack().push(undo);
+		}
+	}
+}
+
+void DynamicTextFieldEditor::on_m_rotation_point_center_cb_clicked()
+{
+	bool center = ui->m_rotation_point_center_cb->isChecked();
+
+	for (int i = 0; i < m_parts.length(); i++) {
+		if (center != m_parts[i]->rotationPointCenter()) {
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "rotationPointCenter", m_parts[i]->rotationPointCenter(), center);
+			undo->setText(tr("Modifier le point de rotation d'un champ texte"));
 			undoStack().push(undo);
 		}
 	}

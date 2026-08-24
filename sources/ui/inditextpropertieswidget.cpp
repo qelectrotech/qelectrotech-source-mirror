@@ -20,6 +20,7 @@
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
+#include "../lastusedstyle.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../ui_inditextpropertieswidget.h"
 
@@ -455,6 +456,7 @@ void IndiTextPropertiesWidget::on_m_font_pb_clicked()
 		m_font_is_selected = true;
 		ui->m_font_pb->setText(font.family());
 		ui->m_size_sb->setValue(font.pointSize());
+		LastUsedStyle::setTextFont(m_selected_font);
 		apply();
 	} else {
 		ui->m_font_pb->setText(tr("Police"));

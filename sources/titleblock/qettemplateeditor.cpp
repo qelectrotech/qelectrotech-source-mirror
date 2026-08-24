@@ -142,7 +142,7 @@ void QETTitleBlockTemplateEditor::firstActivation(QEvent *event)
 	Q_UNUSED(event)
 	if (duplicate_ && !opened_from_file_ && location_.parentCollection()) {
 		// this editor is supposed to duplicate its current location
-		QTimer::singleShot(250, this, SLOT(duplicateCurrentLocation()));
+		QTimer::singleShot(250, this, &QETTitleBlockTemplateEditor::duplicateCurrentLocation);
 	}
 }
 
@@ -342,7 +342,7 @@ void QETTitleBlockTemplateEditor::editLogos()
 		QDialog d(this);
 		d.setWindowTitle(logo_manager_ -> windowTitle());
 		d.setLayout(vlayout0);
-		connect(buttons, SIGNAL(rejected()), &d, SLOT(reject()));
+		connect(buttons, &QDialogButtonBox::rejected, &d, &QDialog::reject);
 		d.exec();
 
 		// prevent the logo manager from being deleted along with the dialog
@@ -411,26 +411,26 @@ void QETTitleBlockTemplateEditor::initActions()
 	ShortcutManager::instance().registerAction(zoom_fit_, "titleblockeditor.zoom_fit", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_9);
 	ShortcutManager::instance().registerAction(zoom_reset_, "titleblockeditor.zoom_reset", tr("Éditeur de cartouche"), Qt::CTRL | Qt::Key_0);
 
-	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
-	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));
-	connect(open_from_file_,  SIGNAL(triggered()), this,     SLOT(openFromFile()));
-	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
-	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
-	connect(save_as_file_,    SIGNAL(triggered()), this,     SLOT(saveAsFile()));
-	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
-	connect(cut_,             SIGNAL(triggered()), template_edition_area_view_, SLOT(cut()));
-	connect(copy_,            SIGNAL(triggered()), template_edition_area_view_, SLOT(copy()));
-	connect(paste_,           SIGNAL(triggered()), template_edition_area_view_, SLOT(paste()));
-	connect(zoom_in_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomIn()));
-	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
-	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
-	connect(zoom_reset_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomReset()));
-	connect(edit_logos_,      SIGNAL(triggered()), this, SLOT(editLogos()));
-	connect(edit_info_,       SIGNAL(triggered()), this, SLOT(editTemplateInformation()));
-	connect(add_row_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addRowAtEnd()));
-	connect(add_col_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addColumnAtEnd()));
-	connect(merge_cells_,     SIGNAL(triggered()), template_edition_area_view_, SLOT(mergeSelectedCells()));
-	connect(split_cell_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(splitSelectedCell()));
+	connect(new_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::newTemplate);
+	connect(open_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::open);
+	connect(open_from_file_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::openFromFile);
+	connect(save_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::save);
+	connect(save_as_, &QAction::triggered, this, qOverload<>(&QETTitleBlockTemplateEditor::saveAs));
+	connect(save_as_file_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::saveAsFile);
+	connect(quit_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::quit);
+	connect(cut_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::cut);
+	connect(copy_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::copy);
+	connect(paste_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::paste);
+	connect(zoom_in_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomIn);
+	connect(zoom_out_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomOut);
+	connect(zoom_fit_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomFit);
+	connect(zoom_reset_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::zoomReset);
+	connect(edit_logos_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::editLogos);
+	connect(edit_info_, &QAction::triggered, this, &QETTitleBlockTemplateEditor::editTemplateInformation);
+	connect(add_row_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::addRowAtEnd);
+	connect(add_col_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::addColumnAtEnd);
+	connect(merge_cells_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::mergeSelectedCells);
+	connect(split_cell_, &QAction::triggered, template_edition_area_view_, &TitleBlockTemplateView::splitSelectedCell);
 }
 
 /**
@@ -553,35 +553,37 @@ void QETTitleBlockTemplateEditor::initWidgets()
 	template_cell_editor_widget_ -> setVisible(false);
 
 	connect(
-		template_edition_area_view_,
-		SIGNAL(selectedCellsChanged(QList<TitleBlockCell *>)),
-		this,
-		SLOT(selectedCellsChanged(QList<TitleBlockCell *>))
+		template_edition_area_view_, 
+		&TitleBlockTemplateView::selectedCellsChanged,
+		this, 
+		&QETTitleBlockTemplateEditor::selectedCellsChanged
 	);
-	connect(template_cell_editor_widget_, SIGNAL(logoEditionRequested()),
-		this, SLOT(editLogos()));
+	connect(
+		template_cell_editor_widget_, 
+		&TitleBlockTemplateCellWidget::logoEditionRequested,
+		this, 
+		&QETTitleBlockTemplateEditor::editLogos
+	);
 	connect(
 		template_cell_editor_widget_,
-		SIGNAL(cellModified(ModifyTitleBlockCellCommand *)),
+		&TitleBlockTemplateCellWidget::cellModified,
 		this,
-		SLOT(pushCellUndoCommand(ModifyTitleBlockCellCommand *))
+		&QETTitleBlockTemplateEditor::pushCellUndoCommand
 	);
 	connect(
 		template_edition_area_view_,
-		SIGNAL(gridModificationRequested(TitleBlockTemplateCommand *)),
+		&TitleBlockTemplateView::gridModificationRequested,
 		this,
-		SLOT(pushGridUndoCommand(TitleBlockTemplateCommand *))
+		&QETTitleBlockTemplateEditor::pushGridUndoCommand
 	);
 	connect(
 		template_edition_area_view_,
-		SIGNAL(previewWidthChanged(int,int)),
+		&TitleBlockTemplateView::previewWidthChanged,
 		this,
-		SLOT(savePreviewWidthToApplicationSettings(int, int))
+		&QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings
 	);
-	connect(undo_stack_, SIGNAL(cleanChanged(bool)),
-		this, SLOT(updateEditorTitle()));
-	connect(QApplication::clipboard(), SIGNAL(dataChanged()),
-		this, SLOT(updateActions()));
+	connect(undo_stack_, &QUndoStack::cleanChanged, this, &QETTitleBlockTemplateEditor::updateEditorTitle);
+	connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &QETTitleBlockTemplateEditor::updateActions);
 }
 
 /**
@@ -593,9 +595,9 @@ void QETTitleBlockTemplateEditor::initLogoManager()
 	logo_manager_ -> setReadOnly(read_only_);
 	connect(
 		logo_manager_,
-		SIGNAL(logosChanged(const TitleBlockTemplate *)),
+		&TitleBlockTemplateLogoManager::logosChanged,
 		template_cell_editor_widget_,
-		SLOT(updateLogosComboBox(const TitleBlockTemplate *))
+		&TitleBlockTemplateCellWidget::updateLogosComboBox
 	);
 }
 
@@ -774,7 +776,20 @@ bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 	elmt.setAttribute("name", location.name());
 	doc.appendChild(elmt);
 
-	collection -> setTemplateXmlDescription(location.name(), elmt);
+	if (!collection -> setTemplateXmlDescription(location.name(), elmt)) {
+			// Report the failure instead of marking the template "saved"
+			// regardless (bugtracker #251) -- this return value used to
+			// be discarded here.
+		QET::QetMessageBox::critical(
+			this,
+			tr("Erreur", "message box title"),
+			tr(
+				"Impossible d'enregistrer le modèle « %1 ».",
+				"message box content - %1 is a title block template name"
+			).arg(location.name())
+		);
+		return(false);
+	}
 
 	opened_from_file_ = false;
 	location_ = location;
@@ -878,6 +893,21 @@ bool QETTitleBlockTemplateEditor::saveAs()
 	if (location.isValid()) {
 		return(saveAs(location));
 	}
+	if (!location.name().isEmpty()) {
+			// The name was rejected (e.g. contains a path separator or
+			// other filesystem-reserved character) rather than the user
+			// cancelling the dialog -- say so instead of silently doing
+			// nothing (bugtracker #251).
+		QET::QetMessageBox::critical(
+			this,
+			tr("Erreur", "message box title"),
+			tr(
+				"Le nom « %1 » n'est pas valide : il ne doit pas contenir "
+				"les caractères suivants : \\ / : * ? \" < > |",
+				"message box content - %1 is the rejected template name"
+			).arg(location.name())
+		);
+	}
 	return(false);
 }
 
@@ -960,8 +990,8 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 	dialog.setWindowTitle(title);
 	dialog.setLayout(dialog_layout);
 
-	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
 
 	if (dialog.exec() == QDialog::Accepted) {
 		return(widget -> location());
@@ -1027,10 +1057,8 @@ void QETTitleBlockTemplateEditor::editTemplateInformation()
 				: QDialogButtonBox::Ok
 				  | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),
-		&dialog_author, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),
-		&dialog_author, SLOT(reject()));
+	connect(dialog_buttons, &QDialogButtonBox::accepted, &dialog_author, &QDialog::accept);
+	connect(dialog_buttons, &QDialogButtonBox::rejected, &dialog_author, &QDialog::reject);
 
 	// run the dialog
 	if (dialog_author.exec() == QDialog::Accepted && !read_only_) {
