@@ -1,4 +1,4 @@
-name: MSVC
+name: Windows build with MSVC
 on:
   pull_request:
   push:

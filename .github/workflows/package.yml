@@ -82,54 +82,6 @@ jobs:
     uses: ./.github/workflows/windows-package-msi.yml
     secrets: inherit
 
-  build-source-package:
-    needs: verify-version
-    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
-    name: Build Source Package
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-        with:
-          submodules: recursive
-          fetch-depth: 0
-
-      - name: Determine source package name
-        id: srcver
-        run: |
-          set -euo pipefail
-          VERSION="$(tr -d '[:space:]' < QET_VERSION)"
-          RELEASE="$(tr -d '[:space:]' < QET_RELEASE)"
-          GITCOMMIT="$(git rev-parse --short HEAD)"
-          case "$RELEASE" in
-            dev)                   SUFFIX="-dev-${GITCOMMIT}" ;;
-            alpha1|alpha2|alpha3)  SUFFIX="-${RELEASE}" ;;
-            stable)                SUFFIX="" ;;
-            *)
-              echo "::error::Unrecognized QET_RELEASE value '$RELEASE'"
-              exit 1
-              ;;
-          esac
-          echo "name=qelectrotech-${VERSION}${SUFFIX}-src" >> "$GITHUB_OUTPUT"
-
-      # Plain `git archive` doesn't pull in submodule content, and QET has
-      # submodules -- so instead we tar the already-checked-out working tree
-      # (with submodules populated) and just strip VCS metadata.
-      - name: Build source tarball
-        run: |
-          set -euo pipefail
-          NAME="${{ steps.srcver.outputs.name }}"
-          mkdir -p "${{ runner.temp }}/dist"
-          tar --exclude-vcs -czf "${{ runner.temp }}/dist/${NAME}.tar.gz" --transform "s,^\.,${NAME}," .
-
-      - name: Upload source package artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: qelectrotech-source-package
-          path: ${{ runner.temp }}/dist/*.tar.gz
-          retention-days: 40
-          if-no-files-found: error
-
   publish-release:
     name: Upload all builds to github page and update HTML
     needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-source-package]
@@ -247,8 +199,6 @@ jobs:
           | **Commit** | ${{ github.sha }} |
           | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
 
-          > 🧪 **Qt6 builds are experimental.** Files not tagged explicitly `-qt5-` are built against Qt6 and are not yet
-          > as tested as the Qt5 track. Expect rough edges; report issues clearly labelled "Qt6".
           EOF
           )"
           else
@@ -261,11 +211,9 @@ jobs:
           | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
           | **Date** | ${{ github.event.head_commit.timestamp }} |
 
-          > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
+          > ⚠️ This is a development version; it introduces new features you might want to test, but may have bugs that have not yet been identified yet.
           > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
 
-          > 🧪 **Qt6 builds are experimental.** Files not tagged explicitly `-qt5-` are built against Qt6 and are not yet
-          > as tested as the Qt5 track. Expect rough edges; report issues clearly labelled "Qt6".
           EOF
           )"
           fi
@@ -303,52 +251,39 @@ jobs:
           REPO="${{ github.repository }}"
 
           ASSETS=$(gh release view "${{ steps.target.outputs.tag_name }}" --repo "$REPO" --json assets --jq '.assets[].name')
-
-          EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1)
-          ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1)
-          MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
-
-          EXE_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1 || echo "")
-          ZIP_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
-          MSI_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
-
           BASE="https://github.com/$REPO/releases/download/${{ steps.target.outputs.tag_name }}"
-          INSTALLER_URL="$BASE/$EXE_NAME"
-          PORTABLE_URL="$BASE/$ZIP_NAME"
+
+          EXE_NAME=$(echo "$ASSETS" | grep '\.exe$' | head -1)
+          ZIP_NAME=$(echo "$ASSETS" | grep '\.zip$' | head -1)
+          MSI_NAME=$(echo "$ASSETS" | grep '\.msi$' | head -1 || echo "")
+
+          INSTALLER_URL=""
+          PORTABLE_URL=""
           MSI_URL=""
+          [ -n "$EXE_NAME" ] && EXE_URL="$BASE/$EXE_NAME"
+          [ -n "$ZIP_NAME" ] && ZIP_URL="$BASE/$ZIP_NAME"
           [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
 
-          INSTALLER_QT6_URL=""
-          PORTABLE_QT6_URL=""
-          MSI_QT6_URL=""
-          DMG_ARM64_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep 'arm64' | grep '\.dmg$' | head -1 || echo "")
-          DMG_X8664_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep 'x86_64' | grep '\.dmg$' | head -1 || echo "")
-          DMG_ARM64_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep 'arm64' | grep '\.dmg$' | head -1 || echo "")
-          DMG_X8664_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep 'x86_64' | grep '\.dmg$' | head -1 || echo "")
+          DMG_ARM64_NAME=$(echo "$ASSETS"  | grep 'arm64' | grep '\.dmg$' | head -1 || echo "")
+          DMG_X8664_NAME=$(echo "$ASSETS"  | grep 'x86_64' | grep '\.dmg$' | head -1 || echo "")
+          
+          DMG_ARM64_URL=""
+          DMG_X8664_URL=""
+          [ -n "$DMG_ARM64_NAME" ] && DMG_ARM64_URL="$BASE/$DMG_ARM64_NAME"
+          [ -n "$DMG_X8664_NAME" ] && DMG_X8664_URL="$BASE/$DMG_X8664_NAME"
 
           APPIMAGE_X8664_NAME=$(echo "$ASSETS" | grep -v 'aarch64' | grep '\.AppImage$' | head -1 || echo "")
           APPIMAGE_AARCH64_NAME=$(echo "$ASSETS" | grep 'aarch64' | grep '\.AppImage$' | head -1 || echo "")
 
-          DMG_ARM64_URL=""
-          DMG_X8664_URL=""
-          DMG_ARM64_QT6_URL=""
-          DMG_X8664_QT6_URL=""
-          APPIMAGE_X8664_QT6_URL=""
-          APPIMAGE_AARCH64_QT6_URL=""
-          [ -n "$DMG_ARM64_NAME" ] && DMG_ARM64_URL="$BASE/$DMG_ARM64_NAME"
-          [ -n "$DMG_X8664_NAME" ] && DMG_X8664_URL="$BASE/$DMG_X8664_NAME"
-          [ -n "$DMG_ARM64_QT6_NAME" ] && DMG_ARM64_QT6_URL="$BASE/$DMG_ARM64_QT6_NAME"
-          [ -n "$DMG_X8664_QT6_NAME" ] && DMG_X8664_QT6_URL="$BASE/$DMG_X8664_QT6_NAME"
-          [ -n "$APPIMAGE_X8664_NAME" ] && APPIMAGE_X8664_QT6_URL="$BASE/$APPIMAGE_X8664_NAME"
-          [ -n "$APPIMAGE_AARCH64_NAME" ] && APPIMAGE_AARCH64_QT6_URL="$BASE/$APPIMAGE_AARCH64_NAME"
+          APPIMAGE_X8664_URL=""
+          APPIMAGE_AARCH64_URL=""
+          [ -n "$APPIMAGE_X8664_NAME" ] && APPIMAGE_X8664_URL="$BASE/$APPIMAGE_X8664_NAME"
+          [ -n "$APPIMAGE_AARCH64_NAME" ] && APPIMAGE_AARCH64_URL="$BASE/$APPIMAGE_AARCH64_NAME"
 
-          export DMG_ARM64_URL DMG_X8664_URL DMG_ARM64_QT6_URL DMG_X8664_QT6_URL
-          export APPIMAGE_X8664_QT6_URL APPIMAGE_AARCH64_QT6_URL
+          export INSTALLER_URL PORTABLE_URL MSI_URL
+          export DMG_ARM64_URL DMG_X8664_URL 
+          export APPIMAGE_X8664_URL APPIMAGE_AARCH64_URL
                     
-          [ -n "$EXE_QT6_NAME" ] && INSTALLER_QT6_URL="$BASE/$EXE_QT6_NAME"
-          [ -n "$ZIP_QT6_NAME" ] && PORTABLE_QT6_URL="$BASE/$ZIP_QT6_NAME"
-          [ -n "$MSI_QT6_NAME" ] && MSI_QT6_URL="$BASE/$MSI_QT6_NAME"
-
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           SHORT="${SHA:0:7}"
           DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
@@ -357,8 +292,6 @@ jobs:
           RELEASE_TAG="${{ steps.target.outputs.tag_name }}"
 
           export DATE SHORT REPO SHA RUN_URL RUN_NUMBER RELEASE_TAG
-          export INSTALLER_URL PORTABLE_URL MSI_URL
-          export INSTALLER_QT6_URL PORTABLE_QT6_URL MSI_QT6_URL
 
           python3 source/build-aux/generate-page.py
 

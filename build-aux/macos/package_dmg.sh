@@ -12,7 +12,7 @@
 # in this same directory, which pulls first and then calls this script.
 #
 # Usage:
-#   ./package_dmg.sh [--arch=arm64|x86_64] [--qt-version=5|6] \
+#   ./package_dmg.sh [--arch=arm64|x86_64]  \
 #                     [--sign] [--notarize] [--non-interactive]
 #
 # Examples:
@@ -40,7 +40,6 @@ NON_INTERACTIVE=false
 for arg in "$@"; do
   case "$arg" in
     --arch=*)          ARCH="${arg#*=}" ;;
-    --qt-version=*)     QT_VERSION_MAJOR="${arg#*=}" ;;
     --sign)              DO_SIGN=true ;;
     --notarize)          DO_NOTARIZE=true ;;
     --non-interactive)   NON_INTERACTIVE=true ;;
@@ -74,10 +73,6 @@ BUILD_DIR="$SOURCE_DIR/build-macos-$ARCH"
 INSTALL_DIR="$SOURCE_DIR/install-macos-$ARCH"
 APPNAME="QElectroTech"
 
-QT_SUFFIX=""
-if [ "$QT_VERSION_MAJOR" = "5" ]; then
-  QT_SUFFIX="-qt5"
-fi
 VERSION="$(tr -d '[:space:]' < "$SOURCE_DIR/QET_VERSION")"
 RELEASE="$(tr -d '[:space:]' < "$SOURCE_DIR/QET_RELEASE")"
 HEAD="$(git -C "$SOURCE_DIR" rev-parse --short HEAD)"
@@ -98,7 +93,7 @@ case "$RELEASE" in
     ;;
 esac
 
-DMG_NAME="${APPNAME}-${VERSION}${SUFFIX}-${ARCH}${QT_SUFFIX}.dmg"
+DMG_NAME="${APPNAME}-${VERSION}${SUFFIX}-${ARCH}.dmg"
 
 echo "=== Packaging $APPNAME $VERSION r$HEAD ($ARCH, Qt$QT_VERSION_MAJOR) ==="
 echo "    sign=$DO_SIGN  notarize=$DO_NOTARIZE  non-interactive=$NON_INTERACTIVE"
@@ -106,11 +101,9 @@ echo "    sign=$DO_SIGN  notarize=$DO_NOTARIZE  non-interactive=$NON_INTERACTIVE
 # ---------------------------------------------------------------------------
 # Locate Qt (via Homebrew, matching macos-build.yml's own convention)
 # ---------------------------------------------------------------------------
-if [ "$QT_VERSION_MAJOR" = "5" ]; then
-  QT_PREFIX="$(brew --prefix qt@5)"
-else
-  QT_PREFIX="$(brew --prefix qt)"
-fi
+
+QT_PREFIX="$(brew --prefix qt)"
+
 MACDEPLOYQT="$QT_PREFIX/bin/macdeployqt"
 
 if [ ! -x "$MACDEPLOYQT" ]; then
@@ -149,15 +142,7 @@ VTOOL_OUTPUT="$(vtool -show-build "$QTCORE_BINARY" 2>&1)" || {
 echo "=== vtool output ==="
 echo "$VTOOL_OUTPUT"
 
-# old style still included for Qt5; can be safely removed in favor of commented line when Qt5 gets retired
-# MACOS_DEPLOYMENT_TARGET="$(echo "$VTOOL_OUTPUT" | grep "minos" | awk '{print $2}' | sort -V | tail -1)"
-MACOS_DEPLOYMENT_TARGET="$(echo "$VTOOL_OUTPUT" | awk '
-  /^Load command/ { in_verminmacosx=0; in_buildversion=0 }
-  /cmd LC_VERSION_MIN_MACOSX/ { in_verminmacosx=1 }
-  /cmd LC_BUILD_VERSION/ { in_buildversion=1 }
-  in_verminmacosx && /^[[:space:]]*version[[:space:]]/ { print $2; in_verminmacosx=0 }
-  in_buildversion && /^[[:space:]]*minos[[:space:]]/ { print $2 }
-' | sort -V | tail -1 || true)"
+MACOS_DEPLOYMENT_TARGET="$(echo "$VTOOL_OUTPUT" | grep "minos" | awk '{print $2}' | sort -V | tail -1)"
 
 if [ -z "$MACOS_DEPLOYMENT_TARGET" ]; then
   echo "ERROR: could not determine minimum macOS version from $QTCORE_BINARY" >&2

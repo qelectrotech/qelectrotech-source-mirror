@@ -11,7 +11,7 @@ Two scripts, one purpose each:
 ## Prerequisites
 
 - Xcode command line tools
-- Homebrew, with `qt@5` and/or `qt` (Qt6) installed, plus `cmake`, `ninja`
+- Homebrew, with `qt` (Qt6) installed, plus `cmake`, `ninja`
 - A git checkout of this repository
 
 ## Quick local test (unsigned)
@@ -27,7 +27,7 @@ checking the app builds and launches; not something to distribute.
 
 `package_dmg.sh` does five things, in order:
 
-1. **Locates Qt** via Homebrew (`qt@5` or `qt`, depending on `--qt-version`).
+1. **Locates Qt** via Homebrew
 2. **Detects the real minimum macOS version directly from Qt itself**,
    rather than a hardcoded guess. `QtCore`'s own build-version load command
    records the actual floor the installed Qt build requires — this is the
@@ -135,7 +135,7 @@ mechanism are fully testable this way.
 import; not yet confirmed end-to-end against a real Developer ID
 certificate.** Every unsigned-path run (version detection, bundle
 structure, DMG creation) is confirmed working across the full
-arm64/x86_64 × Qt5/Qt6 matrix. The signing path was debugged extensively
+arm64/x86_64 × Qt6 matrix. The signing path was debugged extensively
 with a self-signed test certificate — working through several real
 certificate-format compatibility issues (see below) — but was not carried
 through to a final confirmed `security import` + `codesign` success before

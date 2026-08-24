@@ -17,7 +17,7 @@ on:
         
 jobs:
   build-msi:
-    name: Package MSI with WiX v7 (${{ matrix.flavor }})
+    name: Package MSI with WiX v7
     runs-on: windows-latest
     # Only runs if Windows Build succeeded (or triggered manually)
     # if: >
@@ -28,14 +28,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - flavor: qt5
-            portable_artifact: qelectrotech-windows-portable
-            label_suffix: "-qt5"
-            concurrency:
-              group: windows-package-msi-qt5-${{ github.workflow }}-${{ github.ref }}
-              cancel-in-progress: true  
-          - flavor: qt6
-            portable_artifact: qelectrotech-windows-portable-qt6
+          - portable_artifact: qelectrotech-windows-portable-qt6
             label_suffix: ""
             concurrency:
               group: windows-package-msi-qt6-${{ github.workflow }}-${{ github.ref }}
@@ -56,7 +49,7 @@ jobs:
           fetch-depth: 0
 
       # ----------------------------------------------------------------
-      # 2. Download the portable artifact for this flavor
+      # 2. Download the portable artifact
       # ----------------------------------------------------------------
       - name: Download portable artifact
         uses: actions/download-artifact@v8
@@ -71,10 +64,8 @@ jobs:
 
       # ----------------------------------------------------------------
       # 3. Extract version
-      #    Both flavors now read the shared VERSION/RELEASE files at the
-      #    repo root (single source of truth) -- the Qt6 hardcoded-version
-      #    hack is retired; Qt6 reports its real version, with the track
-      #    distinguished only via matrix.label_suffix.
+      #    VERSION/RELEASE files at the repo root (single source of truth)
+      #    are read.
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
@@ -114,23 +105,15 @@ jobs:
             }
           }
 
-          $flavorTag = "${{ matrix.label_suffix }}"
-          $verDisplay = "${ver}${flavorTag}${suffix}_x86_64-win64"
+          $verDisplay = "${ver}${suffix}_x86_64-win64"
 
           echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
           echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
           Write-Host "Version MSI     : $verMsi"
           Write-Host "Version display : $verDisplay"
 
-          # Qt platform argument: only Qt5 needs the QTBUG-83161 font-rendering
-          # workaround (GDI backend). Qt6 uses DirectWrite by default and does
-          # not need it. Computed once here so both the bundled "Lancer QET.bat"
-          # and the MSI shortcuts (wix build -d QtPlatformArgs=...) stay in sync.
-          if ("${{ matrix.flavor }}" -eq "qt5") {
-            $qtArgs = "-platform windows:fontengine=freetype"
-          } else {
-            $qtArgs = ""
-          }
+          $qtArgs = ""
+
           echo "QT_ARGS=$qtArgs" >> $env:GITHUB_OUTPUT
           Write-Host "Qt platform args: '$qtArgs'"
 
@@ -226,9 +209,6 @@ jobs:
 
       # ----------------------------------------------------------------
       # 9. Build the MSI (unsigned)
-      #    Qt6 (experimental) uses a distinct ProductCode seed so it never
-      #    collides with / upgrades over the Qt5 MSI — they must be able to
-      #    coexist as clearly separate installs.
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -240,7 +220,7 @@ jobs:
           $wxs        = "build-aux\windows\QElectroTech.wxs"
           $outputName = "QElectroTech-${verDisplay}.msi"
 
-          $seed      = "qelectrotech-msi-${{ matrix.flavor }}-$version"
+          $seed      = "qelectrotech-msi-$version"
           $sha1      = [System.Security.Cryptography.SHA1]::Create()
           $hash      = $sha1.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($seed))
           $hash[6]   = ($hash[6] -band 0x0F) -bor 0x50
@@ -249,7 +229,7 @@ jobs:
 
           New-Item -ItemType Directory -Force -Path "dist" | Out-Null
 
-          Write-Host "=== wix build (${{ matrix.flavor }}) ==="
+          Write-Host "=== wix build ==="
           Write-Host " Version     : $version"
           Write-Host " ProductCode : $productCode"
           Write-Host " Output      : dist\$outputName"
@@ -281,14 +261,12 @@ jobs:
         id: upload_unsigned
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-msi-unsigned-${{ matrix.flavor }}
+          name: qelectrotech-windows-msi-unsigned
           path: dist\*.msi
           retention-days: 1
           if-no-files-found: error
 
-      # Qt6 stays on the unsigned/experimental track (no signing request for
-      # this flavor), and forks never have the SignPath secrets, so guard on
-      # both: only qt5, and only in the upstream repo.
+      # Forks do not have the SignPath secrets, so guard on them.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
         if: github.repository == 'qelectrotech/qelectrotech-source-mirror'
@@ -306,7 +284,7 @@ jobs:
       - name: Upload signed MSI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-msi-${{ matrix.flavor }}
+          name: qelectrotech-windows-msi
           path: dist\*.msi
           retention-days: 40
           if-no-files-found: error
@@ -315,8 +293,6 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          Write-Host "=== MSI build summary (${{ matrix.flavor }}) ==="
+          Write-Host "=== MSI build summary  ==="
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
-          Write-Host "Experimental : ${{ matrix.experimental }}"
-
 

@@ -7,15 +7,14 @@ Called from package.yml
 Environment variables required:
   DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER, RELEASE_TAG
 
-Optional (Windows - Qt5 and Qt6 tracks, each omitted entirely if empty):
-    INSTALLER_URL, PORTABLE_URL, MSI_URL, INSTALLER_QT6_URL, PORTABLE_QT6_URL, MSI_QT6_URL
+Optional (Windows - omitted entirely if empty):
+    INSTALLER_URL, PORTABLE_URL, MSI_URL
 
-Optional (macOS - Qt5 and Qt6 tracks, each omitted entirely if empty):
+Optional (macOS - omitted entirely if empty):
   DMG_ARM64_URL, DMG_X8664_URL
-  DMG_ARM64_QT6_URL, DMG_X8664_QT6_URL
 
-Optional (Linux AppImage - Qt6 only, no Qt5 track exists):
-  APPIMAGE_X8664_QT6_URL, APPIMAGE_AARCH64_QT6_URL
+Optional (Linux AppImage - omitted entirely if empty):
+  APPIMAGE_X8664_URL, APPIMAGE_AARCH64_URL
 """
 import os
 
@@ -31,18 +30,11 @@ installer_url = os.environ.get("INSTALLER_URL", "")
 portable_url  = os.environ.get("PORTABLE_URL", "")
 msi_url       = os.environ.get("MSI_URL", "")
 
+appimage_aarch64_url = os.environ.get("APPIMAGE_AARCH64_URL", "")
+appimage_x8664_url   = os.environ.get("APPIMAGE_X8664_URL", "")
+
 dmg_arm64_url  = os.environ.get("DMG_ARM64_URL", "")
 dmg_x8664_url  = os.environ.get("DMG_X8664_URL", "")
-
-installer_qt6_url = os.environ.get("INSTALLER_QT6_URL", "")
-portable_qt6_url  = os.environ.get("PORTABLE_QT6_URL", "")
-msi_qt6_url       = os.environ.get("MSI_QT6_URL", "")
-
-appimage_aarch64_qt6_url = os.environ.get("APPIMAGE_AARCH64_QT6_URL", "")
-appimage_x8664_qt6_url   = os.environ.get("APPIMAGE_X8664_QT6_URL", "")
-
-dmg_arm64_qt6_url  = os.environ.get("DMG_ARM64_QT6_URL", "")
-dmg_x8664_qt6_url  = os.environ.get("DMG_X8664_QT6_URL", "")
 
 msi_block = ""
 if msi_url:
@@ -52,9 +44,9 @@ if msi_url:
 <span class="btn-text">Windows Installer .msi<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
 
-# Windows Qt5 (stable track) -- each button independently optional, and the
-# whole card omitted if none of the three are present, matching the same
-# pattern already used for macOS and the Qt6 track below.
+# --- Windows ----------------------------------------------------------------------
+# each button is independently optional, and the
+# whole card omitted if none of the three are present
 windows_installer_btn = ""
 if installer_url:
     windows_installer_btn = f"""
@@ -83,49 +75,9 @@ if installer_url or portable_url or msi_url:
 </div>
 </div>"""
 
-# Qt6 experimental section — only rendered if at least one Qt6 asset exists.
-qt6_block = ""
-if installer_qt6_url or portable_qt6_url or msi_qt6_url:
-    qt6_msi_btn = ""
-    if msi_qt6_url:
-        qt6_msi_btn = f"""
-<a class="btn btn-msi" href="{msi_qt6_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer .msi (Qt6)<small>.msi &mdash; experimental, for enterprise / GPO deployment</small></span>
-</a>"""
-
-    qt6_installer_btn = ""
-    if installer_qt6_url:
-        qt6_installer_btn = f"""
-<a class="btn btn-primary" href="{installer_qt6_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer (Qt6)<small>.exe &mdash; experimental, includes all dependencies</small></span>
-</a>"""
-
-    qt6_portable_btn = ""
-    if portable_qt6_url:
-        qt6_portable_btn = f"""
-<a class="btn btn-secondary" href="{portable_qt6_url}">
-<span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable (Qt6)<small>.zip &mdash; experimental, no installation required</small></span>
-</a>"""
-
-    qt6_block = f"""
-<div class="card">
-<h2>&#129514; Windows &mdash; x86_64 &mdash; Qt6 track</h2>
-<div class="warning">
-&#129514; <strong>Try Qt6 &mdash; soon the only track.</strong> The Qt5 builds above
-will be removed from Windows CI soon; Qt6 is becoming the sole supported track.
-Please switch and test it now &mdash; report any issue and mention &quot;Qt6&quot; explicitly.
-</div>
-<div class="downloads">
-{qt6_installer_btn}
-{qt6_msi_btn}
-{qt6_portable_btn}
-</div>
-</div>"""
-
-# --- macOS Qt5 (stable track) -------------------------------------------
+# --- macOS  -------------------------------------------
+# each button is independently optional, and the
+# whole card omitted if none of the three are present
 macos_arm64_btn = ""
 if dmg_arm64_url:
     macos_arm64_btn = f"""
@@ -153,66 +105,30 @@ if dmg_arm64_url or dmg_x8664_url:
 </div>
 </div>"""
 
-# --- macOS Qt6 (experimental track) --------------------------------------
-macos_qt6_arm64_btn = ""
-if dmg_arm64_qt6_url:
-    macos_qt6_arm64_btn = f"""
-<a class="btn btn-primary" href="{dmg_arm64_qt6_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">macOS Apple Silicon (arm64), Qt6<small>.dmg &mdash; experimental, for M1/M2/M3/M4 Macs</small></span>
-</a>"""
-
-macos_qt6_x8664_btn = ""
-if dmg_x8664_qt6_url:
-    macos_qt6_x8664_btn = f"""
-<a class="btn btn-secondary" href="{dmg_x8664_qt6_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">macOS Intel (x86_64), Qt6<small>.dmg &mdash; experimental, for Intel-based Macs</small></span>
-</a>"""
-
-macos_qt6_block = ""
-if dmg_arm64_qt6_url or dmg_x8664_qt6_url:
-    macos_qt6_block = f"""
-<div class="card">
-<h2>&#127838; macOS &mdash; Qt6 track</h2>
-<div class="warning">
-&#9888;&#65039; <strong>Experimental.</strong> These Qt6-based DMGs are new and not as
-thoroughly tested as the Qt5 track above. Expect rough edges; please report issues
-and mention &quot;Qt6&quot; explicitly.
-</div>
-<div class="downloads">
-{macos_qt6_arm64_btn}
-{macos_qt6_x8664_btn}
-</div>
-</div>"""
-
-# --- AppImage (Linux, Qt6 only -- no stable/Qt5 track exists) -----------
+# --- Linux / AppImage  -----------
+# each button is independently optional, and the
+# whole card omitted if none of the three are present
 appimage_x8664_btn = ""
-if appimage_x8664_qt6_url:
+if appimage_x8664_url:
     appimage_x8664_btn = f"""
-<a class="btn btn-primary" href="{appimage_x8664_qt6_url}">
+<a class="btn btn-primary" href="{appimage_x8664_url}">
 <span class="btn-icon">&#11015;</span>
 <span class="btn-text">Linux x86_64 AppImage<small>.AppImage &mdash; chmod +x and run, no installation required</small></span>
 </a>"""
 
 appimage_aarch64_btn = ""
-if appimage_aarch64_qt6_url:
+if appimage_aarch64_url:
     appimage_aarch64_btn = f"""
-<a class="btn btn-secondary" href="{appimage_aarch64_qt6_url}">
+<a class="btn btn-secondary" href="{appimage_aarch64_url}">
 <span class="btn-icon">&#11015;</span>
 <span class="btn-text">Linux aarch64 AppImage<small>.AppImage &mdash; chmod +x and run, no installation required</small></span>
 </a>"""
 
 appimage_block = ""
-if appimage_x8664_qt6_url or appimage_aarch64_qt6_url:
+if appimage_x8664_url or appimage_aarch64_url:
     appimage_block = f"""
 <div class="card">
-<h2>&#128039; Linux &mdash; AppImage (Qt6)</h2>
-<div class="warning">
-&#9888;&#65039; <strong>Experimental.</strong> QElectroTech's AppImage builds are Qt6-only
-and newer than the Windows/macOS Qt5 tracks. Expect rough edges; please report issues
-and mention &quot;AppImage&quot; explicitly.
-</div>
+<h2>&#128039; Linux &mdash; AppImage </h2>
 <div class="downloads">
 {appimage_x8664_btn}
 {appimage_aarch64_btn}
@@ -267,8 +183,7 @@ footer a{{color:#718096;text-decoration:none}}
 <span class="badge">development</span>
 </div>
 <div class="warning">
-&#9888;&#65039; This is a development version; it introduces new features you want,
-but may cause bugs that have not yet been identified yet in <code>master</code>.
+&#9888;&#65039; This is a development version generated automatically from the newest commit on the master branch, It might introduce new features which you might want, but it may also exhibit new bugs that have not yet been identified yet.
 For production use, download a <a href="https://github.com/{repo}/releases">stable release</a>.
 </div>
 <a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/{release_tag}">
@@ -277,9 +192,7 @@ For production use, download a <a href="https://github.com/{repo}/releases">stab
 </a>
 </div>
 {windows_block}
-{qt6_block}
 {macos_block}
-{macos_qt6_block}
 {appimage_block}
 </main>
 <footer>
