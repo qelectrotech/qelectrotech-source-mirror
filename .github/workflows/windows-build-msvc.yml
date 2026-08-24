@@ -10,6 +10,7 @@ concurrency:
 
 jobs:
   build-windows-qt6:
+    name: Build with MSVC/Qt6
     runs-on: windows-latest
 
     steps:

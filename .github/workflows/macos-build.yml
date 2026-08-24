@@ -37,7 +37,7 @@ jobs:
           SOURCE_DIR="${{ github.workspace }}/source"
           BUILD_DIR="${{ github.workspace }}/build"
           INSTALL_DIR="${{ github.workspace }}/install"
-          QT_PREFIX="$(brew --prefix qt@${{ matrix.qt_version }})"
+          QT_PREFIX="$(brew --prefix qt@6)"
 
           cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
