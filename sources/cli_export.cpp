@@ -779,15 +779,25 @@ int applyTestOps(QETProject &project, const QString &opsPath, const QString &out
 	if (save_result != 0) return save_result;
 
 	int element_count = -1, element_info_count = -1;
+	int conductor_count = -1, conductor_distinct = -1, terminal_count = -1;
 	QSqlQuery ec = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM element"));
 	if (ec.next()) element_count = ec.value(0).toInt();
 	QSqlQuery eic = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM element_info"));
 	if (eic.next()) element_info_count = eic.value(0).toInt();
+	QSqlQuery cc = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM conductor"));
+	if (cc.next()) conductor_count = cc.value(0).toInt();
+	QSqlQuery cd = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(DISTINCT uuid) FROM conductor"));
+	if (cd.next()) conductor_distinct = cd.value(0).toInt();
+	QSqlQuery tc = project.dataBase()->newQuery(QStringLiteral("SELECT COUNT(*) FROM terminal"));
+	if (tc.next()) terminal_count = tc.value(0).toInt();
 
 	QJsonObject summary;
 	summary["ops_applied"] = applied;
 	summary["element_count"] = element_count;
 	summary["element_info_count"] = element_info_count;
+	summary["conductor_count"] = conductor_count;
+	summary["conductor_distinct"] = conductor_distinct;
+	summary["terminal_count"] = terminal_count;
 	out << QJsonDocument(summary).toJson(QJsonDocument::Compact) << "\n";
 
 	return 0;
