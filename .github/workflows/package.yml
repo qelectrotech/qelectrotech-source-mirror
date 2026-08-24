@@ -81,10 +81,17 @@ jobs:
     name: Build Windows MSI
     uses: ./.github/workflows/windows-package-msi.yml
     secrets: inherit
+    
+  build-linux-snap:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Linux snap
+    uses: ./.github/workflows/linux-package-snap.yml
+    secrets: inherit
 
   publish-release:
     name: Upload all builds to github page and update HTML
-    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-source-package]
+    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-linux-snap]
     if: |
       always() &&
       (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped') &&
@@ -92,7 +99,7 @@ jobs:
       needs.build-appimage.result == 'success' &&
       needs.build-windows-exe.result == 'success' &&
       needs.build-windows-msi.result == 'success' &&
-      needs.build-source-package.result == 'success'
+      needs.build-linux-snap.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -163,13 +170,6 @@ jobs:
         with:
           path: artifacts
           pattern: qelectrotech-windows-msi-qt*
-          merge-multiple: true
-
-      - name: Download source package artifact
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-          pattern: qelectrotech-source-package
           merge-multiple: true
 
       - name: Delete previous development releases
