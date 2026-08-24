@@ -46,7 +46,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="508"/>
         <source>Licenses</source>
-        <translation type="unfinished">Licenças</translation>
+        <translation>Licenças</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.ui" line="532"/>
@@ -214,7 +214,7 @@
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="134"/>
         <source>Traduction en coréen</source>
-        <translation type="unfinished">Tradução em coreano</translation>
+        <translation>Tradução em coreano</translation>
     </message>
     <message>
         <location filename="../sources/ui/aboutqetdialog.cpp" line="135"/>
@@ -507,45 +507,45 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="21"/>
         <source>Valeur</source>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="31"/>
         <source>Incrément</source>
-        <translation type="unfinished"></translation>
+        <translation>Incremento</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="41"/>
         <source>Suivant</source>
-        <translation type="unfinished">Próxima</translation>
+        <translation>Próximo</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="70"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="158"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="235"/>
         <source>Réinitialiser à la valeur de départ</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir para o valor inicial</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="90"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="178"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="255"/>
         <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor atual do contador. Digite um novo valor e confirme para alterá-lo.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="103"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="191"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="268"/>
         <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Incremento: valor somado ao contador a cada nova numeração</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="125"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="213"/>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="290"/>
         <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
-        <translation type="unfinished"></translation>
+        <translation>Próximo valor que será aplicado com este incremento</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.ui" line="138"/>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../sources/autoNum/ui/autonumberingdockwidget.cpp" line="165"/>
         <source>Autonumérotation</source>
-        <translation type="unfinished">Autonumeração</translation>
+        <translation>Autonumeração</translation>
     </message>
 </context>
 <context>
@@ -784,25 +784,25 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/ui/backupdialog.cpp" line="33"/>
         <source>Créer une copie de sauvegarde ?</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Criar uma cópia de segurança?</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="39"/>
         <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
         <comment>dialog message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Deseja criar uma cópia de segurança?</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="49"/>
         <source>Oui</source>
         <comment>yes button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sim</translation>
     </message>
     <message>
         <location filename="../sources/ui/backupdialog.cpp" line="50"/>
         <source>Non</source>
         <comment>no button</comment>
-        <translation type="unfinished"></translation>
+        <translation>Não</translation>
     </message>
 </context>
 <context>
@@ -1172,124 +1172,124 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="36"/>
         <source>Sélectionner un groupe de contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar um grupo de contatos</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="41"/>
         <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecione o grupo de contatos a atribuir a este elemento escravo:</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="53"/>
         <source>#</source>
-        <translation type="unfinished"></translation>
+        <translation>#</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="54"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="55"/>
         <source>Sous-type</source>
-        <translation type="unfinished"></translation>
+        <translation>Subtipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="56"/>
         <source>Contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Contatos</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="57"/>
         <source>Bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminais</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="59"/>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="98"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="117"/>
         <source>(déjà assigné)</source>
-        <translation type="unfinished"></translation>
+        <translation>(já atribuído)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="122"/>
         <source>(état ne correspond pas)</source>
-        <translation type="unfinished"></translation>
+        <translation>(estado não corresponde)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="125"/>
         <source>(sous-type ne correspond pas)</source>
-        <translation type="unfinished"></translation>
+        <translation>(subtipo não corresponde)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="128"/>
         <source>(nombre de contacts ne correspond pas)</source>
-        <translation type="unfinished"></translation>
+        <translation>(número de contatos não corresponde)</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="187"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="190"/>
         <source>Annuler</source>
-        <translation type="unfinished">Desfazer</translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="220"/>
         <source>Normalement ouvert</source>
-        <translation type="unfinished">Normalmente aberto</translation>
+        <translation>Normalmente aberto</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="221"/>
         <source>Normalement fermé</source>
-        <translation type="unfinished">Normalmente fechado</translation>
+        <translation>Normalmente fechado</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="222"/>
         <source>Inverseur</source>
-        <translation type="unfinished">Inversor</translation>
+        <translation>Inversor</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="223"/>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation>Outro</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="224"/>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="236"/>
         <source>Inconnu</source>
-        <translation type="unfinished"></translation>
+        <translation>Desconhecido</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="231"/>
         <source>Simple</source>
-        <translation type="unfinished">Simples</translation>
+        <translation>Simples</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="232"/>
         <source>Puissance</source>
-        <translation type="unfinished">Contato de Potência</translation>
+        <translation>Potência</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="233"/>
         <source>Temporisé travail</source>
-        <translation type="unfinished">Temporizado ao trabalho</translation>
+        <translation>Temporizado ao trabalho</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="234"/>
         <source>Temporisé repos</source>
-        <translation type="unfinished">Temporizado ao repouso</translation>
+        <translation>Temporizado ao repouso</translation>
     </message>
     <message>
         <location filename="../sources/ui/contactgroupselectiondialog.cpp" line="235"/>
         <source>Temporisé travail &amp; repos</source>
-        <translation type="unfinished">Temporizado ao trabalho</translation>
+        <translation>Temporizado ao trabalho e ao repouso</translation>
     </message>
 </context>
 <context>
@@ -1305,17 +1305,17 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="43"/>
         <source>nom_de_la_propriete</source>
-        <translation type="unfinished"></translation>
+        <translation>nome_da_propriedade</translation>
     </message>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="44"/>
         <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Somente letras minúsculas, números, hífen e sublinhado</translation>
     </message>
     <message>
         <location filename="../sources/ui/customelementinfopartwidget.cpp" line="48"/>
         <source>Supprimer cette propriété</source>
-        <translation type="unfinished"></translation>
+        <translation>Excluir esta propriedade</translation>
     </message>
 </context>
 <context>
@@ -1323,27 +1323,27 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="55"/>
         <source>Enregistrer...</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvar...</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="72"/>
         <source>Enregistrer le rapport de diagnostic</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvar o relatório de diagnóstico</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="74"/>
         <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos de texto (*.txt);;Todos os arquivos (*)</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="84"/>
         <source>Erreur</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../sources/logging/ui/diagnosticsreportdialog.cpp" line="85"/>
         <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível gravar no arquivo « %1 ».</translation>
     </message>
 </context>
 <context>
@@ -1442,7 +1442,8 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/qetgraphicsitem/diagramtextitem.cpp" line="530"/>
         <source>
 &lt;Shift&gt; to move</source>
-        <translation type="unfinished"></translation>
+        <translation>
+&lt;Shift&gt; para mover</translation>
     </message>
 </context>
 <context>
@@ -1468,7 +1469,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/diagramview.cpp" line="91"/>
         <source>Créer un template</source>
         <comment>context menu action</comment>
-        <translation type="unfinished">Criar um modelo</translation>
+        <translation>Criar um modelo</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="507"/>
@@ -1489,13 +1490,14 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/diagramview.cpp" line="1344"/>
         <source>Modèle enregistré</source>
-        <translation type="unfinished">Modelo salvo</translation>
+        <translation>Modelo salvo</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1345"/>
         <source>Le modèle a été enregistré avec succès sous :
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>O modelo foi salvo com sucesso em:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1348"/>
@@ -1505,7 +1507,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/diagramview.cpp" line="1348"/>
         <source>Le fichier n&apos;a pas pu être écrit.</source>
-        <translation type="unfinished">Não foi possível gravar o arquivo.</translation>
+        <translation>Não foi possível gravar o arquivo.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="125"/>
@@ -1894,7 +1896,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="79"/>
         <source>Tourner autour de son propre centre</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar em torno do próprio centro</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.ui" line="122"/>
@@ -1946,7 +1948,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="514"/>
         <source>Modifier le point de rotation d&apos;un champ texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o ponto de rotação de um campo de texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/dynamictextfieldeditor.cpp" line="345"/>
@@ -2012,32 +2014,32 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="41"/>
         <source>File not found: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivo não encontrado: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="50"/>
         <source>Cannot read %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Não é possível ler %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="58"/>
         <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
-        <translation type="unfinished"></translation>
+        <translation>Este .edz é um pacote no formato zip, que ainda não é suportado (somente arquivos .edz em 7-Zip podem ser importados).</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="62"/>
         <source>Not a valid .edz package (unrecognised archive format).</source>
-        <translation type="unfinished"></translation>
+        <translation>Pacote .edz inválido (formato de arquivo não reconhecido).</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="70"/>
         <source>Could not create a temporary directory: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível criar um diretório temporário: %1</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="80"/>
         <source>No *.part.xml found inside the .edz</source>
-        <translation type="unfinished"></translation>
+        <translation>Nenhum *.part.xml encontrado dentro do .edz</translation>
     </message>
 </context>
 <context>
@@ -2046,7 +2048,7 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1693"/>
         <source>Numéroter automatiquement un élément</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numerar automaticamente um elemento</translation>
     </message>
 </context>
 <context>
@@ -2098,13 +2100,13 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/elementdialog.cpp" line="79"/>
         <source>Enregistrer un template</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Salvar um modelo</translation>
+        <translation>Salvar um modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="80"/>
         <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Escolha o local onde deseja salvar o modelo.</translation>
+        <translation>Escolha o local onde deseja salvar o modelo.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="83"/>
@@ -2124,19 +2126,19 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
     <message>
         <location filename="../sources/elementdialog.cpp" line="126"/>
         <source>Nom du nouveau template</source>
-        <translation type="unfinished">Nome do novo modelo</translation>
+        <translation>Nome do novo modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="249"/>
         <source>Écraser le template ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Sobrescrever o modelo?</translation>
+        <translation>Sobrescrever o modelo?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="250"/>
         <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished">O modelo já existe. Deseja sobrescrevê-lo?</translation>
+        <translation>O modelo já existe. Deseja sobrescrevê-lo?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="265"/>
@@ -2154,14 +2156,15 @@ Nota: Estas opções NÃO permitem ou bloqueiam a autonumeração, apenas a sua 
         <location filename="../sources/elementdialog.cpp" line="132"/>
         <source>Nom de fichier de l&apos;élément</source>
         <comment>placeholder: the element&apos;s file name, not its display name</comment>
-        <translation type="unfinished">Nome do arquivo do elemento</translation>
+        <translation>Nome do arquivo do elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="135"/>
         <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
 Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
         <comment>tooltip for the element file-name field</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nome do arquivo do elemento: somente números, letras minúsculas, « - », « _ » e « . ».
+O nome exibido do elemento é alterado separadamente nas propriedades do elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="230"/>
@@ -2223,7 +2226,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementinfowidget.ui" line="35"/>
         <source>Exclure de la numérotation auto</source>
-        <translation type="unfinished">Excluir da numeração automática</translation>
+        <translation>Excluir da numeração automática</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.h" line="54"/>
@@ -2233,17 +2236,17 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="222"/>
         <source>Ajouter une propriété personnalisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar uma propriedade personalizada</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="229"/>
         <source>Séparation de potentiel</source>
-        <translation type="unfinished">Separação de potencial</translation>
+        <translation>Separação de potencial</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementinfowidget.cpp" line="233"/>
         <source>Exclure de la nomenclature</source>
-        <translation type="unfinished">Excluir da nomenclatura</translation>
+        <translation>Excluir da nomenclatura</translation>
     </message>
 </context>
 <context>
@@ -2300,27 +2303,27 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="140"/>
         <source>Définir le nombre maximal d&apos;esclaves</source>
-        <translation type="unfinished">Definir o número máximo de escravos</translation>
+        <translation>Definir o número máximo de escravos</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="157"/>
         <source>Définir les éléments esclave</source>
-        <translation type="unfinished"></translation>
+        <translation>Definir os elementos escravos</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="188"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Contato</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="193"/>
         <source>Nb. contacts</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº contatos</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="198"/>
         <source>Nb. bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº terminais</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="209"/>
@@ -2389,7 +2392,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="192"/>
         <source>Définition de conducteur</source>
-        <translation type="unfinished">Definição de condutor</translation>
+        <translation>Definição de condutor</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="195"/>
@@ -2417,7 +2420,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="199"/>
         <source>Esclave PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Escravo CLP</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="201"/>
@@ -2461,7 +2464,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="210"/>
         <source>Module PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Módulo CLP</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="214"/>
@@ -2501,148 +2504,148 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="639"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1182"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="526"/>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation>Outro</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="654"/>
         <source>Configuration PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuração do CLP</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="659"/>
         <source>+</source>
-        <translation type="unfinished"></translation>
+        <translation>+</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="660"/>
         <source>-</source>
-        <translation type="unfinished"></translation>
+        <translation>-</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="682"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="819"/>
         <source>Adresse</source>
-        <translation type="unfinished"></translation>
+        <translation>Endereço</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="683"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="820"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentário</translation>
+        <translation>Comentário</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="683"/>
         <source>Réf. croisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref. cruzada</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="702"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1180"/>
         <source>Nb.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="702"/>
         <source>T1</source>
-        <translation type="unfinished"></translation>
+        <translation>T1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="769"/>
         <source>Police des en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte dos cabeçalhos</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="770"/>
         <source>Configurer la police des en-têtes de colonnes</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurar a fonte dos cabeçalhos de colunas</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="774"/>
         <source>Police du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte do texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="775"/>
         <source>Configurer la police du texte dans les cellules</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurar a fonte do texto nas células</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="779"/>
         <source>Afficher les en-têtes sur la feuille</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir os cabeçalhos na folha</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="780"/>
         <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir ou ocultar os cabeçalhos de colunas da tabela CLP na folha</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="792"/>
         <source>Saut %1 après:</source>
-        <translation type="unfinished"></translation>
+        <translation>Quebra %1 após:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="798"/>
         <source>Aucun</source>
-        <translation type="unfinished">Nenhum</translation>
+        <translation>Nenhum</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="806"/>
         <source>H. ligne:</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt. linha:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="811"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="840"/>
         <source> mm</source>
-        <translation type="unfinished"></translation>
+        <translation> mm</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="820"/>
         <source>Réf.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="827"/>
         <source>Nom personnalisé de la colonne (vide = par défaut)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome personalizado da coluna (vazio = padrão)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="831"/>
         <source>Visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Visível</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="864"/>
         <source>Coller depuis le presse-papiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar da área de transferência</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="956"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1333"/>
         <source>Police des en-têtes: %1 %2pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte dos cabeçalhos: %1 %2pt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="958"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1349"/>
         <source>Police du texte: %1 %2pt</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte do texto: %1 %2pt</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1330"/>
         <source>Police des en-têtes de colonnes</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte dos cabeçalhos de colunas</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="1346"/>
         <source>Police du texte des cellules</source>
-        <translation type="unfinished"></translation>
+        <translation>Fonte do texto das células</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.cpp" line="218"/>
@@ -2724,13 +2727,15 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="383"/>
         <source>Nombre maximum de contacts esclaves définis : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Número máximo de contatos escravos definidos: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="384"/>
         <source>Nombre de contacts esclaves utilisés : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Número de contatos escravos utilizados: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="386"/>
@@ -2870,7 +2875,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="318"/>
         <source>Automates (MAE/SPS)</source>
-        <translation type="unfinished"></translation>
+        <translation>CLPs (MAE/SPS)</translation>
     </message>
     <message>
         <location filename="../sources/dataBase/ui/elementquerywidget.ui" line="341"/>
@@ -3096,7 +3101,7 @@ Le nom affiché de l&apos;élément se modifie séparément dans les propriété
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="169"/>
         <source>Importer une pièce EPLAN (.edz)…</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar uma peça EPLAN (.edz)…</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="171"/>
@@ -3168,7 +3173,7 @@ Todos os elementos e as sub pastas contidas nesta pasta serão excluídos.</tran
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="623"/>
         <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Aviso — Importação de um arquivo EPLAN (.edz)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="626"/>
@@ -3184,38 +3189,50 @@ En important ce fichier, vous confirmez que :
 • vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
 • cette importation est effectuée à vos propres risques et responsabilité ;
 • ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
-        <translation type="unfinished"></translation>
+        <translation>O formato .edz pode ter duas origens diferentes:
+
+• O portal EPLAN Data Portal (dataportal.eplan.com), sujeito às condições de uso do ambiente EPLAN Cloud;
+• O site de um fabricante de componentes (ou de um distribuidor) que disponibiliza seus arquivos .edz diretamente, segundo suas próprias condições.
+
+O QElectroTech não tem como determinar automaticamente a origem do arquivo que você está importando, nem as condições que se aplicam a ele.
+
+Ao importar este arquivo, você confirma que:
+
+• conhece sua origem e está autorizado a utilizá-lo neste contexto, conforme as condições aplicáveis a essa fonte;
+• esta importação é feita por sua própria conta e risco;
+• nem o QElectroTech, nem seus mantenedores, nem seus colaboradores podem ser responsabilizados por um uso indevido destes dados.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="652"/>
         <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Li e aceito estas condições.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="657"/>
         <source>Importer</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="698"/>
         <source>Importer une pièce EPLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar uma peça EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="699"/>
         <source>Pièces EPLAN (*.edz)</source>
-        <translation type="unfinished"></translation>
+        <translation>Peças EPLAN (*.edz)</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="707"/>
         <source>Import EPLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>Importação EPLAN</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="708"/>
         <source>Impossible d&apos;importer cette pièce :
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível importar esta peça:
+%1</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="784"/>
@@ -3251,7 +3268,7 @@ En important ce fichier, vous confirmez que :
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="190"/>
         <source>Rechercher...</source>
-        <translation type="unfinished">Pesquisar...</translation>
+        <translation>Pesquisar...</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="217"/>
@@ -3261,7 +3278,7 @@ En important ce fichier, vous confirmez que :
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="218"/>
         <source>Modèles</source>
-        <translation type="unfinished">Modelos</translation>
+        <translation>Modelos</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/elementscollectionwidget.cpp" line="794"/>
@@ -3371,17 +3388,17 @@ En important ce fichier, vous confirmez que :
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Insérer un folio au-dessus</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserir uma página acima</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Insérer un folio en dessous</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserir uma página abaixo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Copier et coller</source>
-        <translation type="unfinished">Copiar e colar</translation>
+        <translation>Copiar e colar</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
@@ -3448,7 +3465,7 @@ En important ce fichier, vous confirmez que :
         <location filename="../sources/elementspanelwidget.cpp" line="87"/>
         <location filename="../sources/elementspanelwidget.cpp" line="88"/>
         <source>Panneau des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Painel de elementos</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="95"/>
@@ -3681,7 +3698,7 @@ En important ce fichier, vous confirmez que :
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="212"/>
         <source>Dessiner les noms des bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenhar os nomes dos terminais</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="216"/>
@@ -4126,12 +4143,12 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="65"/>
         <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir a grade por padrão (aplicado na próxima inicialização)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="72"/>
         <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir as guias por padrão (aplicado na próxima inicialização)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="86"/>
@@ -4161,7 +4178,7 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="334"/>
         <source>Répertoire des Macros utilisateur</source>
-        <translation type="unfinished">Diretório de macros do usuário</translation>
+        <translation>Diretório de macros do usuário</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="444"/>
@@ -4250,29 +4267,29 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="932"/>
         <source>Affichage Grille</source>
-        <translation type="unfinished">Exibição da grade</translation>
+        <translation>Exibição da grade</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1029"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1036"/>
         <source>max:</source>
-        <translation type="unfinished">máx:</translation>
+        <translation>máx:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="990"/>
         <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
-        <translation type="unfinished">Tamanho dos pontos da grade do editor de diagrama: 1 - 5</translation>
+        <translation>Tamanho dos pontos da grade do editor de diagrama: 1 - 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="938"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1043"/>
         <source>min:</source>
-        <translation type="unfinished">mín:</translation>
+        <translation>mín:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1050"/>
         <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
-        <translation type="unfinished">Tamanho dos pontos da grade do editor de elementos: 1 - 5</translation>
+        <translation>Tamanho dos pontos da grade do editor de elementos: 1 - 5</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="1074"/>
@@ -4388,7 +4405,7 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="391"/>
         <source>Coréen</source>
-        <translation type="unfinished">Coreano</translation>
+        <translation>Coreano</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="392"/>
@@ -4458,7 +4475,7 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="405"/>
         <source>Suédois</source>
-        <translation type="unfinished">Sueco</translation>
+        <translation>Sueco</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="487"/>
@@ -4478,7 +4495,7 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="543"/>
         <source>Chemin des macros utilisateur</source>
-        <translation type="unfinished">Caminho de macros do usuário</translation>
+        <translation>Caminho das macros do usuário</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="573"/>
@@ -4488,7 +4505,7 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="608"/>
         <source>Fonctionnalité expérimental</source>
-        <translation type="unfinished">Funcionalidade experimental</translation>
+        <translation>Funcionalidade experimental</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.cpp" line="609"/>
@@ -4498,7 +4515,12 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
 1 - la valeur sélectionnée 
 2 - du dpi de l&apos;écran 
 3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
-        <translation type="unfinished"></translation>
+        <translation>AVISO:
+Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na renderização do projeto, dependendo de:
+
+1 - o valor selecionado 
+2 - o dpi da tela 
+3 - editar o projeto em outro computador e/ou tela que não tenha as mesmas configurações dos itens 1 e 2.</translation>
     </message>
 </context>
 <context>
@@ -4743,38 +4765,38 @@ Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu 
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
         <source>Orientation</source>
-        <translation type="unfinished">Orientação</translation>
+        <translation>Orientação</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
         <source>Position</source>
-        <translation type="unfinished">Posição</translation>
+        <translation>Posição</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="23"/>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="93"/>
         <source>Couleur</source>
-        <translation type="unfinished">Cor</translation>
+        <translation>Cor</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="27"/>
         <source>Ajouter</source>
-        <translation type="unfinished">Adicionar</translation>
+        <translation>Adicionar</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="28"/>
         <source>Supprimer</source>
-        <translation type="unfinished">Excluir</translation>
+        <translation>Excluir</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="84"/>
         <source>Horizontal</source>
-        <translation type="unfinished">Horizontal</translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/guidespropertieswidget.cpp" line="84"/>
         <source>Vertical</source>
-        <translation type="unfinished">Vertical</translation>
+        <translation>Vertical</translation>
     </message>
 </context>
 <context>
@@ -5033,12 +5055,12 @@ Por favor, use o editor avançado para isso.</translation>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="38"/>
         <source>Atteindre un élément</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ir para um elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/jumptoelementdialog.cpp" line="41"/>
         <source>Nom, label ou information de l&apos;élément…</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome, legenda ou informação do elemento…</translation>
     </message>
 </context>
 <context>
@@ -5146,7 +5168,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="71"/>
         <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
-        <translation type="unfinished">Observação: elementos mestre que atingiram o número máximo de escravos estão ocultos.</translation>
+        <translation>Observação: elementos mestre que atingiram o número máximo de escravos estão ocultos.</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.ui" line="42"/>
@@ -5266,17 +5288,17 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="581"/>
         <source> (déjà utilisé)</source>
-        <translation type="unfinished"></translation>
+        <translation> (já utilizado)</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="588"/>
         <source>Sélectionner un IO PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar uma E/S do CLP</translation>
     </message>
     <message>
         <location filename="../sources/ui/linksingleelementwidget.cpp" line="589"/>
         <source>IO disponible:</source>
-        <translation type="unfinished"></translation>
+        <translation>E/S disponível:</translation>
     </message>
 </context>
 <context>
@@ -5390,47 +5412,47 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="316"/>
         <source>Nombre maximal d&apos;esclaves atteint.</source>
-        <translation type="unfinished">Número máximo de escravos atingido.</translation>
+        <translation>Número máximo de escravos atingido.</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="317"/>
         <source>Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).</source>
-        <translation type="unfinished">Este elemento mestre não pode mais aceitar novos contatos escravos. O limite definido foi atingido (Limite: %1).</translation>
+        <translation>Este elemento mestre não pode mais aceitar novos contatos escravos. O limite definido foi atingido (Limite: %1).</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="530"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="530"/>
         <source>Adresse</source>
-        <translation type="unfinished"></translation>
+        <translation>Endereço</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="530"/>
         <source>Fonction</source>
-        <translation type="unfinished">Função</translation>
+        <translation>Função</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="531"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentário</translation>
+        <translation>Comentário</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="531"/>
         <source>Réf. croisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref. cruzada</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="531"/>
         <source>Bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminais</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="1041"/>
         <source>Coller depuis le presse-papiers</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar da área de transferência</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.h" line="67"/>
@@ -5558,7 +5580,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="128"/>
         <source>Guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Guias</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/configpages.cpp" line="252"/>
@@ -5674,27 +5696,27 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="79"/>
         <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le &quot;0&quot; de &quot;0.7&quot;)</source>
-        <translation type="unfinished"></translation>
+        <translation>Defina como 0 para um dígito que só avança pelo transporte de um dígito cíclico seguinte (ex.: o "0" de "0.7")</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="110"/>
         <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor no qual este dígito retorna a 0 incrementando o dígito anterior (0 = sem ciclo)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
         <source>mod. </source>
-        <translation type="unfinished"></translation>
+        <translation>mod. </translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
         <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Formato de exibição: uma sequência de zeros define o número mínimo de dígitos (00 = 07, 000 = 007). Vazio = largura natural do tipo.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="144"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
+        <translation>0</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="127"/>
@@ -5730,7 +5752,7 @@ Por favor, use o editor avançado para isso.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="305"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="495"/>
         <source>Cyclique (modulo)</source>
-        <translation type="unfinished"></translation>
+        <translation>Cíclico (módulo)</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="131"/>
@@ -5739,7 +5761,7 @@ Por favor, use o editor avançado para isso.</translation>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="307"/>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="477"/>
         <source>Alphabétique</source>
-        <translation type="unfinished"></translation>
+        <translation>Alfabético</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.cpp" line="132"/>
@@ -5902,7 +5924,7 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partterminal.cpp" line="576"/>
         <source>Déplacer le label d&apos;une borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover a legenda de um terminal</translation>
     </message>
 </context>
 <context>
@@ -5923,45 +5945,45 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="50"/>
         <source>Sélectionner une page</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar uma página</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="61"/>
         <source>Ce document PDF contient %n page(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Este documento PDF contém %n página</numerusform>
+            <numerusform>Este documento PDF contém %n páginas</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="70"/>
         <source>Page à importer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Página a importar:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="83"/>
         <source>Résolution :</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolução:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="87"/>
         <source>150 DPI (écran)</source>
-        <translation type="unfinished"></translation>
+        <translation>150 DPI (tela)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="88"/>
         <source>300 DPI (impression)</source>
-        <translation type="unfinished"></translation>
+        <translation>300 DPI (impressão)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="89"/>
         <source>600 DPI (haute qualité)</source>
-        <translation type="unfinished"></translation>
+        <translation>600 DPI (alta qualidade)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="96"/>
         <source>Aperçu :</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualização:</translation>
     </message>
 </context>
 <context>
@@ -5969,72 +5991,72 @@ Por favor, use o editor avançado para isso.</translation>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="51"/>
         <source>Cet élément est déjà lié</source>
-        <translation type="unfinished">Este elemento já está conectado</translation>
+        <translation>Este elemento já está vinculado</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="52"/>
         <source>Délier</source>
-        <translation type="unfinished">Desvincular</translation>
+        <translation>Desvincular</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="53"/>
         <source>Voir cet élément</source>
-        <translation type="unfinished">Visualizar este elemento</translation>
+        <translation>Visualizar este elemento</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="61"/>
         <source>Recherche</source>
-        <translation type="unfinished">Pesquisa</translation>
+        <translation>Pesquisa</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
         <source>Label</source>
-        <translation type="unfinished">Legenda</translation>
+        <translation>Legenda</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="67"/>
         <source>Adresse</source>
-        <translation type="unfinished"></translation>
+        <translation>Endereço</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
         <source>Fonction</source>
-        <translation type="unfinished">Função</translation>
+        <translation>Função</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
         <source>Commentaire</source>
-        <translation type="unfinished">Comentário</translation>
+        <translation>Comentário</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
         <source>Bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Terminais</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="85"/>
         <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
-        <translation type="unfinished">Observação: elementos mestre que atingiram o número máximo de escravos estão ocultos.</translation>
+        <translation>Observação: elementos mestre que atingiram o número máximo de escravos estão ocultos.</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="144"/>
         <source>Automate (PLC)</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlador Lógico Programável (CLP)</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="255"/>
         <source>Lié à: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vinculado a: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="342"/>
         <source>Connecter</source>
-        <translation type="unfinished"></translation>
+        <translation>Conectar</translation>
     </message>
 </context>
 <context>
@@ -6333,26 +6355,26 @@ As seguintes variáveis ​​são incompatíveis:
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="203"/>
         <source>Temps passé sur ce projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tempo gasto neste projeto:</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="205"/>
         <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
         <comment>checkbox label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Registrar o tempo gasto neste projeto (salvo apenas localmente neste arquivo)</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="206"/>
         <source>Réinitialiser</source>
         <comment>button label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="249"/>
         <location filename="../sources/ui/configpage/projectconfigpages.cpp" line="266"/>
         <source>%1 h %2 min</source>
         <comment>hours and minutes of time spent on a project</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 h %2 min</translation>
     </message>
 </context>
 <context>
@@ -6420,12 +6442,12 @@ As seguintes variáveis ​​são incompatíveis:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="189"/>
         <source>Dessiner les noms des bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenhar os nomes dos terminais</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="199"/>
         <source>Inscrire les informations des composants</source>
-        <translation type="unfinished"></translation>
+        <translation>Incluir as informações dos componentes</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="212"/>
@@ -6612,7 +6634,7 @@ Você deseja salvar as alterações?</translation>
         <location filename="../sources/projectview.cpp" line="400"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tem certeza de que deseja excluir esta página do projeto?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="745"/>
@@ -6665,12 +6687,12 @@ Você deseja salvar as alterações?</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="810"/>
         <source>go one page left</source>
-        <translation type="unfinished">Ir uma página para a esquerda</translation>
+        <translation>Ir uma página para a esquerda</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="814"/>
         <source>go one page right</source>
-        <translation type="unfinished">Ir uma página para a direita</translation>
+        <translation>Ir uma página para a direita</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="829"/>
@@ -6909,23 +6931,24 @@ Você deseja salvar as alterações?</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="2653"/>
         <source>Rapport de plantage</source>
-        <translation type="unfinished"></translation>
+        <translation>Relatório de falha</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2654"/>
         <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
 Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
-        <translation type="unfinished"></translation>
+        <translation>O QElectroTech não foi encerrado corretamente na última execução.
+Estas são as últimas mensagens registradas antes da parada -- você pode salvá-las para anexar a um relatório de bug.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2676"/>
         <source>Rapport de diagnostic</source>
-        <translation type="unfinished"></translation>
+        <translation>Relatório de diagnóstico</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2677"/>
         <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
-        <translation type="unfinished"></translation>
+        <translation>Contém as últimas mensagens de registro desta sessão. Verifique o conteúdo antes de anexá-lo a um relatório de bug público.</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2757"/>
@@ -6983,7 +7006,8 @@ Opções disponíveis:
         <location filename="../sources/qetapp.cpp" line="2775"/>
         <source>  --data-dir=DIR                Definir le dossier de data
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --data-dir=DIR                Define a pasta de dados
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="2777"/>
@@ -7243,7 +7267,7 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="703"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
         <source>Éditeur de schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de esquemas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
@@ -7260,23 +7284,23 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="371"/>
         <source>Coupure automatique de conducteur(s)</source>
         <comment>Tool tip of auto break conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Corte automático de condutor(es)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="372"/>
         <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
         <comment>Status tip of auto break conductor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cortar automaticamente os condutores existentes ao posicionar um elemento</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="410"/>
         <source>Afficher les guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir as guias</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="411"/>
         <source>Affiche ou masque les guides</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibe ou oculta as guias</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
@@ -7301,12 +7325,12 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="509"/>
         <source>Exporter le plan de câblage</source>
-        <translation type="unfinished">Exportar o plano de fiação</translation>
+        <translation>Exportar o plano de fiação</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="520"/>
         <source>Numérotation automatique des bornes</source>
-        <translation type="unfinished">Numeração automática dos terminais</translation>
+        <translation>Numeração automática dos terminais</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
@@ -7442,7 +7466,7 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="644"/>
         <source>Pivoter le groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar o grupo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="645"/>
@@ -7475,7 +7499,7 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="658"/>
         <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gira a seleção como um grupo em torno do seu centro, em vez de cada elemento no próprio lugar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="659"/>
@@ -7589,7 +7613,7 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
         <source>Ajouter un PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>Adicionar um PDF</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
@@ -7718,7 +7742,7 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="734"/>
         <source>Ajoute une page PDF sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Adiciona uma página do PDF na página atual</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="736"/>
@@ -7753,13 +7777,13 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
         <source>Atteindre un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Ir para um elemento</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="782"/>
         <source>Recherche et sélectionne rapidement un élément du folio</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Localiza e seleciona rapidamente um elemento da página</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="799"/>
@@ -7908,25 +7932,25 @@ Opções disponíveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="1265"/>
         <source>%n description(s) de police écrite(s) dans un format étranger ou corrompu ont été restaurée(s). Elles seront réécrites dans un format stable au prochain enregistrement du projet.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n descrição de fonte gravada em formato estrangeiro ou corrompido foi restaurada. Ela será regravada em um formato estável no próximo salvamento do projeto.</numerusform>
+            <numerusform>%n descrições de fonte gravadas em formato estrangeiro ou corrompido foram restauradas. Elas serão regravadas em um formato estável no próximo salvamento do projeto.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qetdiagrameditor.cpp" line="1273"/>
         <source>%n description(s) de police n&apos;ont pas pu être lue(s) ; la police par défaut sera utilisée pour ces textes.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n descrição de fonte não pôde ser lida; a fonte padrão será usada para esses textos.</numerusform>
+            <numerusform>%n descrições de fonte não puderam ser lidas; a fonte padrão será usada para esses textos.</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1281"/>
         <source>Polices du projet</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fontes do projeto</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1568"/>
@@ -7936,13 +7960,14 @@ Opções disponíveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1635"/>
         <source>Suppression de borne impossible</source>
-        <translation type="unfinished">Não é possível excluir o terminal</translation>
+        <translation>Não é possível excluir o terminal</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1636"/>
         <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
 Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
-        <translation type="unfinished"></translation>
+        <translation>A exclusão não pode ser realizada porque a seleção contém um ou mais terminais em ponte e/ou pertencentes a um terminal de múltiplos níveis.
+Remova as pontes e/ou exclua os níveis dos terminais envolvidos para poder excluí-los</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1670"/>
@@ -7993,22 +8018,22 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2376"/>
         <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
-        <translation type="unfinished">Tem certeza de que deseja excluir esta página?</translation>
+        <translation>Tem certeza de que deseja excluir esta página?</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2381"/>
         <source>Supprimer les folios</source>
-        <translation type="unfinished">Excluir páginas</translation>
+        <translation>Excluir páginas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2382"/>
         <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
-        <translation type="unfinished">Tem certeza de que deseja excluir as %1 páginas selecionadas?</translation>
+        <translation>Tem certeza de que deseja excluir as %1 páginas selecionadas?</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2399"/>
         <source>Supprimer %1 folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Excluir %1 páginas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2437"/>
@@ -8019,7 +8044,7 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/qetdiagrameditor.cpp" line="2527"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="2545"/>
         <source>Déplacer les folios</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover as páginas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="2613"/>
@@ -8118,7 +8143,7 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="272"/>
         <source>Exporter en SVG</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar em SVG</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="290"/>
@@ -8223,17 +8248,17 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="515"/>
         <source>Fine-Rotation</source>
-        <translation type="unfinished">Rotação fina</translation>
+        <translation>Rotação fina</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="524"/>
         <source>Mirror</source>
-        <translation type="unfinished">Espelhar</translation>
+        <translation>Espelhar</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="533"/>
         <source>Flip</source>
-        <translation type="unfinished">Inverter</translation>
+        <translation>Inverter</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.ui" line="542"/>
@@ -8536,17 +8561,17 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="499"/>
         <source>Trop de primitives, liste non générée: %1</source>
-        <translation type="unfinished">Primitivas em excesso, lista não gerada: %1</translation>
+        <translation>Primitivas em excesso, lista não gerada: %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="790"/>
         <source>Nombre de bornes incorrect</source>
-        <translation type="unfinished">Número de terminais incorreto</translation>
+        <translation>Número de terminais incorreto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="791"/>
         <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
-        <translation type="unfinished">&lt;br&gt;&lt;b&gt;Erro&lt;/b&gt;:&lt;br&gt;As definições de condutor podem ter apenas um terminal.&lt;br&gt;&lt;b&gt;Solução&lt;/b&gt;:&lt;br&gt;Verifique se o elemento possui apenas um terminal.</translation>
+        <translation>&lt;br&gt;&lt;b&gt;Erro&lt;/b&gt;:&lt;br&gt;As definições de condutor podem ter apenas um terminal.&lt;br&gt;&lt;b&gt;Solução&lt;/b&gt;:&lt;br&gt;Verifique se o elemento possui apenas um terminal.</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="985"/>
@@ -8578,7 +8603,7 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1045"/>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1046"/>
         <source>Éditeur d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1074"/>
@@ -8593,29 +8618,29 @@ Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les s
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1217"/>
         <source>X: %1  Y: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>X: %1  Y: %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1424"/>
         <source>Exporter en SVG</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportar em SVG</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1426"/>
         <source>Image SVG (*.svg)</source>
         <comment>filetypes allowed when exporting an element to SVG</comment>
-        <translation type="unfinished"></translation>
+        <translation>Imagem SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1437"/>
         <source>Échec de l&apos;export</source>
-        <translation type="unfinished"></translation>
+        <translation>Falha na exportação</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1438"/>
         <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível gravar no arquivo « %1 ».</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/qetelementeditor.cpp" line="1622"/>
@@ -8797,7 +8822,7 @@ as condições não são válidas</translation>
         <location filename="../sources/qetmainwindow.cpp" line="102"/>
         <location filename="../sources/qetmainwindow.cpp" line="232"/>
         <source>Général</source>
-        <translation type="unfinished">Geral</translation>
+        <translation>Geral</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="105"/>
@@ -8837,13 +8862,13 @@ as condições não são válidas</translation>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="140"/>
         <source>Enregistrer un rapport de diagnostic...</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvar um relatório de diagnóstico...</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="141"/>
         <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gera um relatório com as últimas mensagens de registro, para incluir em um relatório de bug</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="152"/>
@@ -8921,7 +8946,7 @@ as condições não são válidas</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="1232"/>
         <source>Système de contacts modifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistema de contatos modificado</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1233"/>
@@ -8929,7 +8954,10 @@ as condições não são válidas</translation>
 Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
 
 Voulez-vous continuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>O novo elemento define grupos de contatos escravos.
+Os elementos escravos existentes não serão atribuídos automaticamente. Você terá de vincular os escravos manualmente e atribuir os grupos de contatos.
+
+Deseja continuar?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1321"/>
@@ -9165,7 +9193,7 @@ O que você deseja fazer?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="411"/>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="412"/>
         <source>Éditeur de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de blocos de legenda</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="441"/>
@@ -9256,13 +9284,13 @@ O que você deseja fazer?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="903"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="786"/>
         <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
         <comment>message box content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível salvar o modelo « %1 ».</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="824"/>
@@ -9292,7 +9320,7 @@ O que você deseja fazer?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="904"/>
         <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content - %1 is the rejected template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>O nome « %1 » não é válido: não deve conter os seguintes caracteres: \ / : * ? " &lt; &gt; |</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="927"/>
@@ -9354,7 +9382,7 @@ O que você deseja fazer?</translation>
         <location filename="../sources/conductorautonumerotation.cpp" line="270"/>
         <source>Numéroter automatiquement un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Numerar automaticamente um condutor</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/addgraphicsobjectcommand.cpp" line="88"/>
@@ -9553,13 +9581,13 @@ O que você deseja fazer?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="670"/>
         <source>Miroir de sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Espelhar seleção</translation>
+        <translation>Espelhar seleção</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="718"/>
         <source>Retourner la sélection</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Inverter seleção</translation>
+        <translation>Inverter seleção</translation>
     </message>
     <message>
         <location filename="../sources/editor/esevent/eseventaddarc.cpp" line="72"/>
@@ -9872,7 +9900,7 @@ O que você deseja fazer?</translation>
         <location filename="../sources/qet.cpp" line="775"/>
         <location filename="../sources/qet.cpp" line="776"/>
         <source>Profondeur</source>
-        <translation type="unfinished">Profundidade</translation>
+        <translation>Profundidade</translation>
     </message>
     <message>
         <location filename="../sources/factory/elementpicturefactory.cpp" line="172"/>
@@ -10070,7 +10098,7 @@ O que você deseja fazer?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="165"/>
         <source>Makros</source>
-        <translation type="unfinished">Macros</translation>
+        <translation>Macros</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="167"/>
@@ -10080,7 +10108,7 @@ O que você deseja fazer?</translation>
     <message>
         <location filename="../sources/ElementsCollection/fileelementcollectionitem.cpp" line="416"/>
         <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
-        <translation type="unfinished"></translation>
+        <translation>O arquivo « %1 » está ausente ou ilegível: não foi possível ler o nome traduzido desta pasta, o nome da pasta é exibido no lugar.</translation>
     </message>
     <message>
         <location filename="../sources/ElementsCollection/xmlprojectelementcollectionitem.cpp" line="62"/>
@@ -10150,7 +10178,7 @@ O que você deseja fazer?</translation>
     <message>
         <location filename="../sources/undocommand/rotateselectioncommand.cpp" line="38"/>
         <source>Pivoter le groupe</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar o grupo</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/rotatetextscommand.cpp" line="60"/>
@@ -10336,12 +10364,12 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="189"/>
         <source>Table PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabela CLP</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="197"/>
         <source>Table PLC (vide)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabela CLP (vazia)</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="209"/>
@@ -10349,7 +10377,7 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1375"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1833"/>
         <source>Type</source>
-        <translation type="unfinished">Tipo</translation>
+        <translation>Tipo</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="210"/>
@@ -10357,7 +10385,7 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1376"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1834"/>
         <source>Adresse</source>
-        <translation type="unfinished"></translation>
+        <translation>Endereço</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="212"/>
@@ -10374,7 +10402,7 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/qetgraphicsitem/crossrefitem.cpp" line="1379"/>
         <location filename="../sources/qetgraphicsitem/element.cpp" line="1837"/>
         <source>Réf. croisée</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref. cruzada</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.cpp" line="211"/>
@@ -10569,27 +10597,27 @@ Deseja substituí-lo?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="314"/>
         <source>Type PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo CLP</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="315"/>
         <source>Adresse PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Endereço CLP</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="316"/>
         <source>Fonction PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Função CLP</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="317"/>
         <source>Commentaire PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentário CLP</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="318"/>
         <source>Réf. croisée PLC</source>
-        <translation type="unfinished"></translation>
+        <translation>Ref. cruzada CLP</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="263"/>
@@ -10897,32 +10925,32 @@ Deseja substituí-lo?</translation>
         <location filename="../sources/properties/elementdata.cpp" line="1187"/>
         <location filename="../sources/properties/elementdata.cpp" line="1199"/>
         <source>Entrée digitale</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrada digital</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1189"/>
         <source>Sortie digitale</source>
-        <translation type="unfinished"></translation>
+        <translation>Saída digital</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1191"/>
         <source>Entrée analogique</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrada analógica</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1193"/>
         <source>Sortie analogique</source>
-        <translation type="unfinished"></translation>
+        <translation>Saída analógica</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1195"/>
         <source>Entrée universelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Entrada universal</translation>
     </message>
     <message>
         <location filename="../sources/properties/elementdata.cpp" line="1197"/>
         <source>Sortie universelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Saída universal</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/changeelementdatacommand.cpp" line="27"/>
@@ -11042,61 +11070,61 @@ Faça o download seguindo o link abaixo e descompacte-o na pasta de instalação
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.cpp" line="220"/>
         <source>Automatic terminal numbering</source>
-        <translation type="unfinished">Numeração automática de terminais</translation>
+        <translation>Numeração automática de terminais</translation>
     </message>
     <message>
         <location filename="../sources/editor/graphicspart/partplctable.h" line="46"/>
         <source>table PLC</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation>tabela CLP</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/adddiagramcommand.cpp" line="36"/>
         <source>Ajouter un folio</source>
         <comment>undo command text</comment>
-        <translation type="unfinished">Acrescentar uma página</translation>
+        <translation>Adicionar uma página</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/movediagramcommand.cpp" line="39"/>
         <source>Déplacer un folio</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mover uma página</translation>
     </message>
     <message>
         <location filename="../sources/undocommand/removediagramcommand.cpp" line="35"/>
         <source>Supprimer un folio</source>
         <comment>undo command text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Excluir uma página</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="172"/>
         <source>Sélectionner un fichier PDF...</source>
-        <translation type="unfinished"></translation>
+        <translation>Selecionar um arquivo PDF...</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="174"/>
         <source>Fichiers PDF (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>Arquivos PDF (*.pdf)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="188"/>
         <source>Impossible de charger le fichier PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível carregar o arquivo PDF.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="199"/>
         <source>Le fichier PDF ne contient aucune page.</source>
-        <translation type="unfinished"></translation>
+        <translation>O arquivo PDF não contém nenhuma página.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="222"/>
         <source>Impossible de déterminer la taille de la page PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível determinar o tamanho da página PDF.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="234"/>
         <source>Impossible de rendre la page PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>Não foi possível renderizar a página PDF.</translation>
     </message>
 </context>
 <context>
@@ -12306,66 +12334,66 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="76"/>
         <source>Filtrer les raccourcis…</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar os atalhos…</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="81"/>
         <source>Tous</source>
-        <translation type="unfinished">Todos</translation>
+        <translation>Todos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="82"/>
         <source>Attribués uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Somente atribuídos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="83"/>
         <source>Non attribués uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Somente não atribuídos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="84"/>
         <source>Conflits uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Somente conflitos</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="98"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Ação</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="98"/>
         <source>Raccourci</source>
-        <translation type="unfinished"></translation>
+        <translation>Atalho</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="106"/>
         <source>Tout réinitialiser</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir tudo</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="165"/>
         <source>Réinitialiser ce raccourci</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir este atalho</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="269"/>
         <source>%n action(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n ação</numerusform>
+            <numerusform>%n ações</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="304"/>
         <source>Ce raccourci est aussi utilisé par : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Este atalho também é utilizado por: %1</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="356"/>
         <source>Raccourcis</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Atalhos</translation>
     </message>
 </context>
 <context>
@@ -14428,7 +14456,7 @@ Os outros campos não são usados.</translation>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="518"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="556"/>
         <source>T%1</source>
-        <translation type="unfinished"></translation>
+        <translation>T%1</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="182"/>
@@ -14448,17 +14476,17 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="185"/>
         <source>NO (contact SW)</source>
-        <translation type="unfinished">NA (contato SW)</translation>
+        <translation>NA (contato SW)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="186"/>
         <source>NC (contact SW)</source>
-        <translation type="unfinished">NF (contato SW)</translation>
+        <translation>NF (contato SW)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="187"/>
         <source>Commun (contact SW)</source>
-        <translation type="unfinished">Comum (contato SW)</translation>
+        <translation>Comum (contato SW)</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="260"/>
@@ -14473,61 +14501,61 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="300"/>
         <source>Afficher/cacher le nom du terminal</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir/ocultar o nome do terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="315"/>
         <source>Modifier la position du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a posição da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="335"/>
         <source>Modifier la police du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a fonte da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="350"/>
         <source>Modifier la taille de police du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o tamanho da fonte da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="364"/>
         <source>Modifier la rotation du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a rotação da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="382"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="388"/>
         <source>Modifier l&apos;alignement du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o alinhamento da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="402"/>
         <source>Afficher/cacher le cadre du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir/ocultar o quadro da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="417"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="424"/>
         <source>Modifier la couleur du label</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a cor da legenda</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="512"/>
         <source>Modifier l&apos;étiquette du maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar a etiqueta do mestre</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="524"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="532"/>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="561"/>
         <source>Modifier le nom de la borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o nome do terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.cpp" line="551"/>
         <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Alterar o índice da etiqueta do mestre</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="14"/>
@@ -14562,67 +14590,67 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="84"/>
         <source>Nom de la borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Nome do terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="90"/>
         <source>Afficher le nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Exibir o nome</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="97"/>
         <source>Propriétés du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriedades do texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="103"/>
         <source>Police</source>
-        <translation type="unfinished">Fonte</translation>
+        <translation>Fonte</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="123"/>
         <source>X :</source>
-        <translation type="unfinished">X:</translation>
+        <translation>X:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="140"/>
         <source>Y :</source>
-        <translation type="unfinished">Y:</translation>
+        <translation>Y:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="157"/>
         <source>Rotation :</source>
-        <translation type="unfinished">Rotação:</translation>
+        <translation>Rotação:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="167"/>
         <source>°</source>
-        <translation type="unfinished">º</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="183"/>
         <source>Alignement</source>
-        <translation type="unfinished">Alinhamento</translation>
+        <translation>Alinhamento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="190"/>
         <source>Couleur :</source>
-        <translation type="unfinished">Cor:</translation>
+        <translation>Cor:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="207"/>
         <source>Encadrer le texte</source>
-        <translation type="unfinished">Enquadrar o texto</translation>
+        <translation>Enquadrar o texto</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="220"/>
         <source>Étiquette du maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta do mestre</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/terminaleditor.ui" line="229"/>
         <source>Reprendre du maître</source>
-        <translation type="unfinished"></translation>
+        <translation>Herdar do mestre</translation>
     </message>
 </context>
 <context>
@@ -14630,57 +14658,57 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="14"/>
         <source>Numérotation automatique des bornes</source>
-        <translation type="unfinished">Numeração automática dos terminais</translation>
+        <translation>Numeração automática dos terminais</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="20"/>
         <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres.&quot;</source>
-        <translation type="unfinished">Esta função numera os terminais do projeto de acordo com sua posição. Terminais vazios ou bloqueados são ignorados. A marcação dos terminais deve ser configurada previamente como: &apos;-X:AB&apos;. A parte antes dos dois pontos (a régua) pode ter qualquer nome. &apos;AB&apos; pode ser composto por dígitos ou letras.</translation>
+        <translation>Esta função numera os terminais do projeto de acordo com sua posição. Terminais vazios ou bloqueados são ignorados. A marcação dos terminais deve ser configurada previamente como: '-X:AB'. A parte antes dos dois pontos (a régua de terminais) pode ter qualquer nome. 'AB' pode ser composto por dígitos ou letras.</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="34"/>
         <source>Priorité des axes</source>
-        <translation type="unfinished">Prioridade dos eixos</translation>
+        <translation>Prioridade dos eixos</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="40"/>
         <source>Priorité à l&apos;axe X (horizontal)</source>
-        <translation type="unfinished">Prioridade ao eixo X (horizontal)</translation>
+        <translation>Prioridade ao eixo X (horizontal)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="50"/>
         <source>Priorité à l&apos;axe Y (vertical)</source>
-        <translation type="unfinished">Prioridade ao eixo Y (vertical)</translation>
+        <translation>Prioridade ao eixo Y (vertical)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="60"/>
         <source>Type de numérotation</source>
-        <translation type="unfinished">Tipo de numeração</translation>
+        <translation>Tipo de numeração</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="66"/>
         <source>Numérique uniquement (1, 2, 3...)</source>
-        <translation type="unfinished">Somente numérico (1, 2, 3...)</translation>
+        <translation>Somente numérico (1, 2, 3...)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="76"/>
         <source>Alphanumérique (A, B, C... 1, 2...)</source>
-        <translation type="unfinished">Alfanumérico (A, B, C... 1, 2...)</translation>
+        <translation>Alfanumérico (A, B, C... 1, 2...)</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="101"/>
         <source>Numéroter également les lettres</source>
-        <translation type="unfinished"></translation>
+        <translation>Numerar também as letras</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="118"/>
         <source>Borniers</source>
-        <translation type="unfinished">Bornes</translation>
+        <translation>Réguas de terminais</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="124"/>
         <source>Décochez les borniers dont la numérotation doit être exclue</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarque as réguas de terminais que devem ser excluídas da numeração</translation>
     </message>
 </context>
 <context>
@@ -14966,7 +14994,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="252"/>
         <source>Orientation</source>
-        <translation type="unfinished">Orientação</translation>
+        <translation>Orientação</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="259"/>
@@ -14986,27 +15014,27 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="321"/>
         <source>Texte d&apos;en tête</source>
-        <translation type="unfinished">Texto do cabeçalho</translation>
+        <translation>Texto do cabeçalho</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="331"/>
         <source>Origine vertical</source>
-        <translation type="unfinished">Origem vertical</translation>
+        <translation>Origem vertical</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="338"/>
         <source>Longueur maximal</source>
-        <translation type="unfinished">Comprimento máximo</translation>
+        <translation>Comprimento máximo</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="395"/>
         <source>Texte borne</source>
-        <translation type="unfinished">Texto do terminal</translation>
+        <translation>Texto do terminal</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="405"/>
         <source>Référence croisée</source>
-        <translation type="unfinished">Referência cruzada</translation>
+        <translation>Referência cruzada</translation>
     </message>
     <message>
         <location filename="../sources/TerminalStrip/ui/terminalstriplayouteditor.ui" line="524"/>
@@ -15225,17 +15253,17 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="375"/>
         <source>Alignement</source>
-        <translation type="unfinished">Alinhamento</translation>
+        <translation>Alinhamento</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="376"/>
         <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
-        <translation type="unfinished"></translation>
+        <translation>Ponto de ancoragem do texto e alinhamento das linhas entre si</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="393"/>
         <source>Modifier l&apos;alignement d&apos;un champ texte</source>
-        <translation type="unfinished">Alterar o alinhamento de um campo de texto</translation>
+        <translation>Alterar o alinhamento de um campo de texto</translation>
     </message>
 </context>
 <context>
@@ -15929,14 +15957,16 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
         <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Atenção: a soma das larguras relativas ultrapassa 100%% da largura total; este modelo de bloco de legenda não pode ser satisfeito por nenhuma largura.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1008"/>
         <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</comment>
-        <translation type="unfinished"></translation>
+        <translation>Atenção: as colunas de largura fixa não cabem na largura restante; este modelo de bloco de legenda não pode ser satisfeito por nenhuma largura.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1016"/>
@@ -15951,14 +15981,16 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
         <source>Longueur maximale : %1px
 </source>
         <comment>tooltip showing the maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento máximo: %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1031"/>
         <source>Longueur non contrainte.
 </source>
         <comment>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</comment>
-        <translation type="unfinished"></translation>
+        <translation>Comprimento sem restrição.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1088"/>
@@ -15993,58 +16025,58 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="156"/>
         <source>Impossible de lire la structure en mémoire du projet.</source>
-        <translation type="unfinished">Não foi possível ler a estrutura do projeto na memória.</translation>
+        <translation>Não foi possível ler a estrutura do projeto na memória.</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="162"/>
         <source>Exporter le plan de câblage</source>
-        <translation type="unfinished">Exportar o plano de fiação</translation>
+        <translation>Exportar o plano de fiação</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="164"/>
         <source>Fichiers CSV (*.csv)</source>
-        <translation type="unfinished">Arquivos CSV (*.csv)</translation>
+        <translation>Arquivos CSV (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="171"/>
         <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
-        <translation type="unfinished">Não foi possível abrir o arquivo para gravação.</translation>
+        <translation>Não foi possível abrir o arquivo para gravação.</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="369"/>
         <source>Page</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Página</translation>
+        <translation>Página</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="370"/>
         <source>Composant 1</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Componente 1</translation>
+        <translation>Componente 1</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="371"/>
         <source>Borne 1</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Terminal 1</translation>
+        <translation>Terminal 1</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="372"/>
         <source>Composant 2</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Componente 2</translation>
+        <translation>Componente 2</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="373"/>
         <source>Borne 2</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Terminal 2</translation>
+        <translation>Terminal 2</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="374"/>
         <source>Tension / Protocole</source>
         <comment>Wiring list CSV header</comment>
-        <translation type="unfinished">Tensão / Protocolo</translation>
+        <translation>Tensão / Protocolo</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="375"/>
@@ -16067,12 +16099,12 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="177"/>
         <source>Export réussi</source>
-        <translation type="unfinished">Exportação concluída</translation>
+        <translation>Exportação concluída</translation>
     </message>
     <message>
         <location filename="../sources/wiringlistexport.cpp" line="177"/>
         <source>Le plan de câblage a été exporté avec succès !</source>
-        <translation type="unfinished">O plano de fiação foi exportado com sucesso!</translation>
+        <translation>O plano de fiação foi exportado com sucesso!</translation>
     </message>
 </context>
 <context>
@@ -16125,7 +16157,7 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="114"/>
         <source>Afficher les numéros de bornes dans les Xrefs</source>
-        <translation type="unfinished">Exibir números dos terminais nas referências cruzadas</translation>
+        <translation>Exibir números dos terminais nas referências cruzadas</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="121"/>
@@ -16222,7 +16254,7 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="104"/>
         <source>Automate (PLC)</source>
-        <translation type="unfinished"></translation>
+        <translation>Controlador Lógico Programável (CLP)</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="106"/>
@@ -16329,7 +16361,7 @@ associar o nome &quot;variável_personalizada&quot; e o valor &quot;1745&quot; v
         <location filename="../sources/richtext/richtexteditor.cpp" line="525"/>
         <location filename="../sources/richtext/richtexteditor.cpp" line="531"/>
         <source>Éditeur de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Editor de texto</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="524"/>
