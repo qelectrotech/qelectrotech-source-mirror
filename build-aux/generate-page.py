@@ -5,7 +5,7 @@ Called from windows-msi.yml deploy-pages job.
 Environment variables required:
   DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER,
   INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
-Optional (Qt6 experimental track — omitted entirely if empty):
+Optional (Qt6 track — omitted entirely if empty):
   INSTALLER_QT6_URL, PORTABLE_QT6_URL, MSI_QT6_URL
 """
 import os
@@ -32,7 +32,7 @@ if msi_url:
 <span class="btn-text">Windows Installer .msi<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
 
-# Qt6 experimental section — only rendered if at least one Qt6 asset exists.
+# Qt6 section — only rendered if at least one Qt6 asset exists.
 qt6_block = ""
 if installer_qt6_url or portable_qt6_url or msi_qt6_url:
     qt6_msi_btn = ""
@@ -40,21 +40,21 @@ if installer_qt6_url or portable_qt6_url or msi_qt6_url:
         qt6_msi_btn = f"""
 <a class="btn btn-msi" href="{msi_qt6_url}">
 <span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer .msi (Qt6)<small>.msi &mdash; experimental, for enterprise / GPO deployment</small></span>
+<span class="btn-text">Windows Installer .msi (Qt6)<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
     qt6_installer_btn = ""
     if installer_qt6_url:
         qt6_installer_btn = f"""
 <a class="btn btn-primary" href="{installer_qt6_url}">
 <span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer (Qt6)<small>.exe &mdash; experimental, includes all dependencies</small></span>
+<span class="btn-text">Windows Installer (Qt6)<small>.exe &mdash; includes all dependencies</small></span>
 </a>"""
     qt6_portable_btn = ""
     if portable_qt6_url:
         qt6_portable_btn = f"""
 <a class="btn btn-secondary" href="{portable_qt6_url}">
 <span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable (Qt6)<small>.zip &mdash; experimental, no installation required</small></span>
+<span class="btn-text">Windows Portable (Qt6)<small>.zip &mdash; no installation required</small></span>
 </a>"""
 
     qt6_block = f"""

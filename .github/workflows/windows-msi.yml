@@ -35,7 +35,7 @@ jobs:
           - flavor: qt6
             portable_artifact: qelectrotech-windows-portable-qt6
             version_source: hardcoded    # see note in "Extract version" step
-            label_suffix: "-qt6-EXPERIMENTAL"
+            label_suffix: "-qt6"
             experimental: true
 
     permissions:
@@ -319,10 +319,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6-EXPERIMENTAL.*\\.msi$" } else { "\\.msi$" }
+          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6.*\\.msi$" } else { "\\.msi$" }
           $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
           foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
-            if ("${{ matrix.flavor }}" -eq "qt5" -and $name -match "-qt6-EXPERIMENTAL") { continue }
+            if ("${{ matrix.flavor }}" -eq "qt5" -and $name -match "-qt6") { continue }
             Write-Host "Deleting old asset: $name"
             gh release delete-asset nightly $name --repo $env:REPO --yes
           }
