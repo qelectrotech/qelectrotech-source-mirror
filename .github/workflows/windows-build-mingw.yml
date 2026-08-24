@@ -11,6 +11,7 @@ concurrency:
 
 jobs:
   build-windows-qt6:
+    name: Windows build with Mingw
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -48,12 +49,15 @@ jobs:
         shell: msys2 {0}
         run: |
           set -euo pipefail
-          $sourceDir = "${{ github.workspace }}\source"
-          $buildDir = "${{ github.workspace }}\build"
+          
+          WORKSPACE_PATH=$(cygpath -m "${{ github.workspace }}")
+
+          sourceDir="${WORKSPACE_PATH}"
+          buildDir="${WORKSPACE_PATH}/build"
 
           cmake -G Ninja \
-            -S $sourceDir \
-            -B $buildDir \
+            -S "$sourceDir" \
+            -B "$buildDir" \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_PREFIX_PATH=/ucrt64 \
             -DQt6_DIR=/ucrt64/lib/cmake/Qt6 \
@@ -66,6 +70,6 @@ jobs:
             -DQET_EXPORT_PROJECT_DB=ON \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
             -DSQLite3_LIBRARY=/ucrt64/lib/libsqlite3.dll.a 
-          cmake --build $buildDir
+          cmake --build "$buildDir"
 
 

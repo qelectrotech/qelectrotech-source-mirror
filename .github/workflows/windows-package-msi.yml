@@ -26,13 +26,9 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - portable_artifact: qelectrotech-windows-portable-qt6
-            label_suffix: ""
-            concurrency:
-              group: windows-package-msi-qt6-${{ github.workflow }}-${{ github.ref }}
-              cancel-in-progress: true  
+      concurrency:
+        group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
+        cancel-in-progress: true  
 
     permissions:
       contents: write
@@ -54,7 +50,7 @@ jobs:
       - name: Download portable artifact
         uses: actions/download-artifact@v8
         with:
-          name: ${{ matrix.portable_artifact }}
+          name: qelectrotech-windows-portable
           path: artifact\files
           # workflow_run => use the triggering run's ID
           # workflow_dispatch => use input run_id if provided, otherwise current run
@@ -209,9 +205,6 @@ jobs:
 
       # ----------------------------------------------------------------
       # 9. Build the MSI (unsigned)
-      #    Qt6 (experimental) uses a distinct ProductCode seed so it never
-      #    collides with / upgrades over the Qt5 MSI — they must be able to
-      #    coexist as clearly separate installs.
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh

@@ -7,11 +7,11 @@ on:
   #workflow_dispatch:       # Manual trigger available at any time
 
 jobs:
-  build-windows-qt6:
+  build-windows:
     concurrency:
-      group: windows-package-exe-qt6-${{ github.workflow }}-${{ github.ref }}
+      group: windows-package-exe-${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true    
-    name: Package Exe and Portable with WiX v7 (Qt6)  
+    name: Package Exe and Portable with WiX v7
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -49,10 +49,10 @@ jobs:
         uses: actions/cache@v5
         with:
           path: C:\Users\runneradmin\AppData\Local\ccache
-          key: ccache-windows-qt6-${{ github.ref_name }}-${{ github.sha }}
+          key: ccache-windows-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: |
-            ccache-windows-qt6-${{ github.ref_name }}-
-            ccache-windows-qt6-
+            ccache-windows-${{ github.ref_name }}-
+            ccache-windows-
 
       - name: Configure ccache
         shell: msys2 {0}
@@ -319,7 +319,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v7
         with:
-          name: build-logs-qt6
+          name: build-logs
           path: |
             build/CMakeFiles/*.log
             nsis_root/files/bin/
@@ -354,14 +354,14 @@ jobs:
       - name: Upload NSIS installer
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-installer-qt6
+          name: qelectrotech-windows-installer
           path: dist/Installer_*.exe
           retention-days: 40
 
       - name: Upload portable (nom fixe pour le workflow MSI)
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-portable-qt6
+          name: qelectrotech-windows-portable
           path: nsis_root/files/
           retention-days: 40
 
