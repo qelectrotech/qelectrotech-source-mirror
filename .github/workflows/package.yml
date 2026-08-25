@@ -179,6 +179,20 @@ jobs:
           path: artifacts
           pattern: qelectrotech-windows-msi*
           merge-multiple: true
+          
+      - name: Download Snap artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-snap-*
+          merge-multiple: true
+
+      - name: Download Flatpak artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-flatpak-*
+          merge-multiple: true
 
       - name: Delete previous development releases
         if: steps.target.outputs.is_tag == 'false'
@@ -287,10 +301,28 @@ jobs:
           APPIMAGE_AARCH64_URL=""
           [ -n "$APPIMAGE_X8664_NAME" ] && APPIMAGE_X8664_URL="$BASE/$APPIMAGE_X8664_NAME"
           [ -n "$APPIMAGE_AARCH64_NAME" ] && APPIMAGE_AARCH64_URL="$BASE/$APPIMAGE_AARCH64_NAME"
+          
+          SNAP_AMD64_NAME=$(echo "$ASSETS" | grep 'amd64' | grep '\.snap$' | head -1 || echo "")
+          SNAP_ARM64_NAME=$(echo "$ASSETS" | grep 'arm64' | grep '\.snap$' | head -1 || echo "")
+
+          SNAP_AMD64_URL=""
+          SNAP_ARM64_URL=""
+          [ -n "$SNAP_AMD64_NAME" ] && SNAP_AMD64_URL="$BASE/$SNAP_AMD64_NAME"
+          [ -n "$SNAP_ARM64_NAME" ] && SNAP_ARM64_URL="$BASE/$SNAP_ARM64_NAME"
+
+          FLATPAK_X8664_NAME=$(echo "$ASSETS" | grep -v 'aarch64' | grep '\.flatpak$' | head -1 || echo "")
+          FLATPAK_AARCH64_NAME=$(echo "$ASSETS" | grep 'aarch64' | grep '\.flatpak$' | head -1 || echo "")
+
+          FLATPAK_X8664_URL=""
+          FLATPAK_AARCH64_URL=""
+          [ -n "$FLATPAK_X8664_NAME" ] && FLATPAK_X8664_URL="$BASE/$FLATPAK_X8664_NAME"
+          [ -n "$FLATPAK_AARCH64_NAME" ] && FLATPAK_AARCH64_URL="$BASE/$FLATPAK_AARCH64_NAME"
 
           export INSTALLER_URL PORTABLE_URL MSI_URL
           export DMG_ARM64_URL DMG_X8664_URL 
           export APPIMAGE_X8664_URL APPIMAGE_AARCH64_URL
+          export SNAP_AMD64_URL SNAP_ARM64_URL
+          export FLATPAK_X8664_URL FLATPAK_AARCH64_URL
                     
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           SHORT="${SHA:0:7}"
