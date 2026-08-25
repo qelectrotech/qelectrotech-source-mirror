@@ -1,18 +1,18 @@
 name: Auto-build doxygen docs
 on:
-  push:
-    tags:
-       - '**'
-   
-  
-  
-jobs:  
+  workflow_dispatch:
+  workflow_call:
+    outputs:
+      artifact-name:
+        value: doxygen-html
+
+jobs:
   doxygen:
     permissions:
-       contents: write    
+       contents: write
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
       with:
         submodules: 'recursive'
         show-progress: ''
@@ -21,7 +21,7 @@ jobs:
     - name: Set up Git LFS
       run: |
           git lfs install
-          git lfs track "*.qch"  
+          git lfs track "*.qch"
     - name: Run doxygen
       run: doxygen Doxyfile
     - name: Create Pull Request
@@ -37,31 +37,15 @@ jobs:
 
          [1]: https://github.com/peter-evans/create-pull-request
         branch: update-qch
-        labels: | 
+        labels: |
           qch
           cicd
         delete-branch: true
         add-paths: doc/*.qch
-    - uses: actions/upload-pages-artifact@v3
-      with: 
-       path: ${{ github.workspace }}/doc/html/
-  deploy:
-    # Add a dependency to the build job
-    needs: doxygen
 
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Specify runner + deployment step
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+    - name: Upload HTML docs artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: doxygen-html
+        path: doc/html/
+        retention-days: 40

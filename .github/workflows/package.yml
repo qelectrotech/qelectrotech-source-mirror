@@ -95,6 +95,13 @@ jobs:
     name: Build Linux flatpack
     uses: ./.github/workflows/linux-package-flatpack.yml
     secrets: inherit
+    
+  build-docs:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Doxygen HTML docs
+    uses: ./.github/workflows/auto-doxygen.yml
+    secrets: inherit
 
   publish-release:
     name: Upload all builds to github page and update HTML
@@ -193,6 +200,12 @@ jobs:
           path: artifacts
           pattern: qelectrotech-flatpak-*
           merge-multiple: true
+          
+      - name: Download Doxygen HTML docs
+        uses: actions/download-artifact@v4
+        with:
+          name: doxygen-html
+          path: gh-pages/docs
 
       - name: Delete previous development releases
         if: steps.target.outputs.is_tag == 'false'
