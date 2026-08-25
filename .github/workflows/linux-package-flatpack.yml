@@ -1,9 +1,3 @@
-name: Build Flatpak package
-
-on:
-  workflow_call:
-  workflow_dispatch:
-
 jobs:
   flatpak:
     container:
@@ -19,15 +13,41 @@ jobs:
             runner: ubuntu-24.04-arm
     runs-on: ${{ matrix.variant.runner }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: 'recursive'
-          # The Flatpak build needs sources only, not the LFS-stored .qch docs.
-          # Keep this explicit so the workflow never draws on LFS bandwidth.
+          fetch-depth: 0
           lfs: false
+
+      - name: Extract version
+        id: qet_version
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < QET_VERSION)"
+          RELEASE="$(tr -d '[:space:]' < QET_RELEASE)"
+
+          case "$RELEASE" in
+            dev)
+              SUFFIX="-r$(git rev-list HEAD --count)-$(git rev-parse --short HEAD)"
+              ;;
+            alpha1|alpha2|alpha3)
+              SUFFIX="-${RELEASE}"
+              ;;
+            stable)
+              SUFFIX=""
+              ;;
+            *)
+              echo "ERROR: unrecognized QET_RELEASE value '$RELEASE'" >&2
+              exit 1
+              ;;
+          esac
+
+          echo "version=${VERSION}${SUFFIX}" >> "$GITHUB_OUTPUT"
+
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-          bundle: qelectrotech.flatpak
+          bundle: qelectrotech-${{ steps.qet_version.outputs.version }}-${{ matrix.variant.arch }}.flatpak
+          artifact-name: qelectrotech-flatpak-${{ matrix.variant.arch }}
           manifest-path: build-aux/flatpak/org.qelectrotech.QElectroTech.json
           cache-key: flatpak-builder-${{ matrix.variant.arch }}-${{ github.sha }}
           arch: ${{ matrix.variant.arch }}
