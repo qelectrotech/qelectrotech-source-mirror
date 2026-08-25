@@ -25,6 +25,7 @@ jobs:
     - name: Run doxygen
       run: doxygen Doxyfile
     - name: Create Pull Request
+      if: startsWith(github.ref, 'refs/tags/')
       uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.MR_TOKEN }}

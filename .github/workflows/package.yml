@@ -105,7 +105,7 @@ jobs:
 
   publish-release:
     name: Upload all builds to github page and update HTML
-    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-linux-snap, build-linux-flatpack]
+    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-linux-snap, build-linux-flatpack, build-docs]
     if: |
       always() &&
       (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped') &&
@@ -114,7 +114,8 @@ jobs:
       needs.build-windows-exe.result == 'success' &&
       needs.build-windows-msi.result == 'success' &&
       needs.build-linux-snap.result == 'success' &&
-      needs.build-linux-flatpack.result == 'success'      
+      needs.build-linux-flatpack.result == 'success'  &&
+      needs.build-docs.result == 'success'
     runs-on: ubuntu-latest
     permissions:
       contents: write
