@@ -87,7 +87,25 @@ parts:
       - pkgconf
     override-build: |
       displayed_version=$(cat QET_VERSION)
-      snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
+      release=$(cat QET_RELEASE)
+
+      case "$release" in
+        dev)
+          suffix="-g$(git rev-parse --short=8 HEAD)"
+          ;;
+        alpha1|alpha2|alpha3)
+          suffix="-${release}"
+          ;;
+        stable)
+          suffix=""
+          ;;
+        *)
+          echo "ERROR: unrecognized QET_RELEASE value '$release'" >&2
+          exit 1
+          ;;
+      esac
+
+      snap_version="${displayed_version}${suffix}"
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       craftctl set version="$snap_version"

@@ -48,6 +48,17 @@ jobs:
       # actually exists -- same pattern as macos-package-dmg.yml's signing
       # gate, so this workflow runs fine (build + artifact only) before
       # anyone's decided to wire up real Snap Store publishing at all.
+      - name: Determine snap channel
+        id: channel
+        run: |
+          set -euo pipefail
+          case "$(tr -d '[:space:]' < QET_RELEASE)" in
+            dev) echo "channel=edge" >> "$GITHUB_OUTPUT" ;;
+            alpha1|alpha2) echo "channel=beta" >> "$GITHUB_OUTPUT" ;;
+            alpha3) echo "channel=candidate" >> "$GITHUB_OUTPUT" ;;
+            stable) echo "channel=stable" >> "$GITHUB_OUTPUT" ;;
+          esac
+
       - name: Publish to Snap Store
         if: ${{ env.SNAPCRAFT_STORE_CREDENTIALS != '' }}
         uses: snapcore/action-publish@v1
@@ -55,4 +66,5 @@ jobs:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
         with:
           snap: ${{ steps.snapcraft.outputs.snap }}
-          release: edge
+          release: ${{ steps.channel.outputs.channel }}
+
