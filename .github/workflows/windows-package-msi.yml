@@ -263,7 +263,7 @@ jobs:
       # Forks do not have the SignPath secrets, so guard on them.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
-        if: github.repository == 'qelectrotech/qelectrotech-source-mirror'
+        if: github.repository == 'qelectrotech/qelectrotech-source-mirror' && env.SIGNPATH_API_TOKEN != ''
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -289,4 +289,5 @@ jobs:
         run: |
           Write-Host "=== MSI build summary  ==="
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
+          Write-Host "Signed  : $(if ('${{ env.SIGNPATH_API_TOKEN }}' -ne '') { 'yes' } else { 'no (SignPath not configured, or fork)' })"
 
