@@ -1,3 +1,9 @@
+name: Build Flatpak package
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  
 jobs:
   flatpak:
     container:
