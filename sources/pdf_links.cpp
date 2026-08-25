@@ -228,7 +228,7 @@ void convertUriToGoTo(const QString &pdfPath)
 
 			// Find closing ')' of the URI value
 			int uriStart = found + sUri.size();
-			int closeParen = data.indexOf(')', uriStart);
+			int closeParen = data.indexOf(")\n", uriStart);
 			if (closeParen == -1) {
 				// Malformed — copy rest verbatim
 				out.append(data.mid(found));
