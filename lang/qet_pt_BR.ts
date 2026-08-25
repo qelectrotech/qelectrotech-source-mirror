@@ -4206,7 +4206,7 @@ Aqui você pode especificar o valor padrão deste campo para os elementos que vo
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="530"/>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="593"/>
         <source>°</source>
-        <translation>º</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="540"/>
@@ -4914,7 +4914,7 @@ Qualquer valor diferente de ‘Sem arredondamento’ pode causar erros na render
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="109"/>
         <source>°</source>
-        <translation>º</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/ui/inditextpropertieswidget.ui" line="122"/>
@@ -11417,7 +11417,7 @@ Adicione uma nova tabela ou ajuste a tabela existente para exibir todas as infor
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="121"/>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="195"/>
         <source>°</source>
-        <translation>º</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/SearchAndReplace/ui/replaceconductordialog.ui" line="312"/>
@@ -12086,10 +12086,10 @@ Se o dígito definido no campo Valor tiver menos dígitos que o tipo escolhido, 
 -O tipo &quot;Texto&quot; representa um texto fixo.
 O campo &quot;Incremento&quot; não é usado.
 
--O tipo &quot;N ° página&quot; representa o n ° da página atual.
+-O tipo &quot;N° página&quot; representa o n° da página atual.
 Os outros campos não são utilizados.
 
--O tipo Página&quot; representa o nome da página atual.
+-O tipo &quot;Página&quot; representa o nome da página atual.
 Os outros campos não são utilizados.</translation>
     </message>
     <message>
@@ -12131,7 +12131,7 @@ Se o número definido no campo Valor tiver menos dígitos que o tipo escolhido, 
 -O tipo “Texto” representa um texto fixo.
 O campo &quot;Incremento&quot; não é utilizado.
 
--O tipo “Número da página representa o número da página atual.
+-O tipo “Número da página” representa o número da página atual.
 Os outros campos não são usados.
 
 -O tipo “Página” representa o nome da Página atual.
@@ -15228,7 +15228,7 @@ Os outros campos não são usados.</translation>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="316"/>
         <source>°</source>
-        <translation>º</translation>
+        <translation>°</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/texteditor.cpp" line="322"/>
