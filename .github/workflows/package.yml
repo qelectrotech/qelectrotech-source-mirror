@@ -98,7 +98,7 @@ jobs:
 
   publish-release:
     name: Upload all builds to github page and update HTML
-    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-linux-snap]
+    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-linux-snap, build-linux-flatpack]
     if: |
       always() &&
       (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped') &&
@@ -177,7 +177,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-          pattern: qelectrotech-windows-msi-qt*
+          pattern: qelectrotech-windows-msi*
           merge-multiple: true
 
       - name: Delete previous development releases

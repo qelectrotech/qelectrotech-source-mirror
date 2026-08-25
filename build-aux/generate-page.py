@@ -67,7 +67,7 @@ windows_block = ""
 if installer_url or portable_url or msi_url:
     windows_block = f"""
 <div class="card">
-<h2>&#127993; Windows &mdash; x86_64 &mdash; Qt5 track</h2>
+<h2>&#127993; Windows &mdash; x86_64 </h2>
 <div class="downloads">
 {windows_installer_btn}
 {msi_block}
@@ -98,7 +98,7 @@ macos_block = ""
 if dmg_arm64_url or dmg_x8664_url:
     macos_block = f"""
 <div class="card">
-<h2>&#127838; macOS &mdash; Qt5 track</h2>
+<h2>&#127838; macOS </h2>
 <div class="downloads">
 {macos_arm64_btn}
 {macos_x8664_btn}
