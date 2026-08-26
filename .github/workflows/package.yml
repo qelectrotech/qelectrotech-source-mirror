@@ -374,6 +374,20 @@ jobs:
         with:
           ref: master
 
+      - name: Check release type
+        id: check
+        run: echo "release=$(tr -d '[:space:]' < QET_RELEASE)" >> "$GITHUB_OUTPUT"
+
+      - name: Update publiccode.yml for stable releases
+        if: steps.check.outputs.release == 'stable'
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < QET_VERSION)"
+          TODAY="$(date -u +%Y-%m-%d)"
+          sed -i "s|^softwareVersion:.*|softwareVersion: \"${VERSION}\"|" publiccode.yml
+          sed -i "s|^releaseDate:.*|releaseDate: \"${TODAY}\"|" publiccode.yml
+          echo "Updated publiccode.yml: softwareVersion=${VERSION}, releaseDate=${TODAY}"
+
       - name: Reset VERSION_TYPE to dev
         run: |
           set -euo pipefail
@@ -383,8 +397,17 @@ jobs:
             exit 0
           fi
           echo "dev" > QET_RELEASE
+          
+      - name: Commit and push
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add QET_RELEASE
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add QET_RELEASE publiccode.yml
           git commit -m "Reset QET_RELEASE to dev after ${{ github.ref_name }} release"
           git push origin master
+

@@ -48,7 +48,14 @@ PROJECT_NAME           = QElectroTech
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = " 0.100.0-dev"
+# PROJECT_NUMBER intentionally left as a placeholder here -- CI injects the
+# real version dynamically from QET_VERSION/QET_RELEASE at build time (see
+# .github/workflows/auto-doxygen.yml). To get an accurate version number in
+# a local build, run:
+#   (cat Doxyfile; echo "PROJECT_NUMBER = \"$(cat QET_VERSION)\"") | doxygen -
+# instead of plain `doxygen Doxyfile`.
+
+PROJECT_NUMBER         = "(local build -- see QET_VERSION at repo root)"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -2711,7 +2718,7 @@ DIR_GRAPH_MAX_DEPTH    = 1
 # The default value is: png.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-DOT_IMAGE_FORMAT       = png
+DOT_IMAGE_FORMAT       = svg
 
 # If DOT_IMAGE_FORMAT is set to svg, then this option can be set to YES to
 # enable generation of interactive SVG images that allow zooming and panning.
