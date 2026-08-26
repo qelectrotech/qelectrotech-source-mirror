@@ -5708,7 +5708,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
         <source>mod. </source>
-        <translation></translation>
+        <translation>mod.</translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
@@ -7700,7 +7700,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="734"/>
         <source>Ajoute une page PDF sur le folio actuel</source>
-        <translation>Fügt eine PDF-Seite zum aktuellen Seite hinzu</translation>
+        <translation>Fügt eine PDF-Seite zur aktuellen Seite hinzu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="736"/>
@@ -9317,7 +9317,7 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="904"/>
         <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content - %1 is the rejected template name</comment>
-        <translation>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</translation>
+        <translation>Der Name „%1“ ist ungültig: Er darf die folgenden Zeichen nicht enthalten: \ / : * ? &quot; &lt; &gt; |</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="927"/>
@@ -11122,7 +11122,7 @@ Bitte laden Sie diese über den Link herunter und entpacken Sie sie in den Insta
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="234"/>
         <source>Impossible de rendre la page PDF.</source>
-        <translation>Die Seite kann nicht als PDF gerendert werden.</translation>
+        <translation>Die PDF-Seite kann nicht dargestellt werden.</translation>
     </message>
 </context>
 <context>
