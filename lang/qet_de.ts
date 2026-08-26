@@ -3852,7 +3852,7 @@ that you create. Text and number inputs are
  - %l: Zeilennummer
  - %c: Spaltennummer
  - %F: Seitennummer
- - %f oder %id: Seitennummer der Seite
+ - %f oder %id: Seitenposition
  - %total: Anzahl der Seiten im Projekt
 Sie können auch beliebige Variablen verwenden,
 die Sie im Schriftfeld erstellt haben.
@@ -4036,7 +4036,7 @@ Texte und Zahlen sind ebenso erlaubt.</translation>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="169"/>
         <source>Utiliser les numéros de folio à la place de leur position dans le projet</source>
-        <translation>Seitennummern anstelle von Seitennummern für Projektanzeigen verwenden</translation>
+        <translation>Seitennummern anstelle von Seitenposition für Projektanzeigen verwenden</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/generalconfigurationpage.ui" line="238"/>
@@ -5449,7 +5449,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="531"/>
         <source>Bornes</source>
-        <translation type="unfinished">Anschlüsse</translation>
+        <translation>Anschlüsse</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="1041"/>
@@ -5708,7 +5708,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="119"/>
         <source>mod. </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/autoNum/ui/numparteditorw.ui" line="141"/>
@@ -5947,45 +5947,45 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="50"/>
         <source>Sélectionner une page</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Seite auswählen</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="61"/>
         <source>Ce document PDF contient %n page(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Dieses PDF-Dokument umfasst %n Seite</numerusform>
+            <numerusform>Dieses PDF-Dokument umfasst %n Seiten</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="70"/>
         <source>Page à importer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zu importierende Seite:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="83"/>
         <source>Résolution :</source>
-        <translation type="unfinished"></translation>
+        <translation>Auflösung:</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="87"/>
         <source>150 DPI (écran)</source>
-        <translation type="unfinished"></translation>
+        <translation>150 DPI (Bildschirm)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="88"/>
         <source>300 DPI (impression)</source>
-        <translation type="unfinished"></translation>
+        <translation>300 DPI (Druck)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="89"/>
         <source>600 DPI (haute qualité)</source>
-        <translation type="unfinished"></translation>
+        <translation>600 DPI (hohe Qualität)</translation>
     </message>
     <message>
         <location filename="../sources/ui/pdfpagesdialog.cpp" line="96"/>
         <source>Aperçu :</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersicht:</translation>
     </message>
 </context>
 <context>
@@ -6038,7 +6038,7 @@ Veuillez utiliser l&apos;éditeur avancé pour cela.</source>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="68"/>
         <source>Bornes</source>
-        <translation type="unfinished">Anschlüsse</translation>
+        <translation>Anschlüsse</translation>
     </message>
     <message>
         <location filename="../sources/ui/plclinkwidget.cpp" line="85"/>
@@ -6448,7 +6448,7 @@ Folgende Variablen sind inkompatibel:
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="199"/>
         <source>Inscrire les informations des composants</source>
-        <translation type="unfinished"></translation>
+        <translation>Angaben zu den Komponenten eintragen</translation>
     </message>
     <message>
         <location filename="../sources/print/projectprintwindow.ui" line="212"/>
@@ -7680,7 +7680,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="723"/>
         <source>Ajouter un PDF</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF hinzufügen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="729"/>
@@ -7700,7 +7700,7 @@ Verfügbare Optionen:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="734"/>
         <source>Ajoute une page PDF sur le folio actuel</source>
-        <translation type="unfinished"></translation>
+        <translation>Fügt eine PDF-Seite zum aktuellen Seite hinzu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="736"/>
@@ -9281,13 +9281,13 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="903"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="786"/>
         <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
         <comment>message box content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Vorlage „%1“ kann nicht gespeichert werden.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="824"/>
@@ -9317,7 +9317,7 @@ Was möchten Sie tun?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="904"/>
         <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content - %1 is the rejected template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? &quot; &lt; &gt; |</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="927"/>
@@ -10070,7 +10070,7 @@ Was möchten Sie tun?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="246"/>
         <source>Position du folio</source>
-        <translation>Seitennummer der Seite</translation>
+        <translation>Seitenposition</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="245"/>
@@ -11097,32 +11097,32 @@ Bitte laden Sie diese über den Link herunter und entpacken Sie sie in den Insta
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="172"/>
         <source>Sélectionner un fichier PDF...</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie eine PDF-Datei aus...</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="174"/>
         <source>Fichiers PDF (*.pdf)</source>
-        <translation type="unfinished"></translation>
+        <translation>PDF-Dateien (*.pdf)</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="188"/>
         <source>Impossible de charger le fichier PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die PDF-Datei konnte nicht geladen werden.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="199"/>
         <source>Le fichier PDF ne contient aucune page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die PDF-Datei enthält keine Seiten.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="222"/>
         <source>Impossible de déterminer la taille de la page PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Größe der PDF-Seite kann nicht ermittelt werden.</translation>
     </message>
     <message>
         <location filename="../sources/diagramevent/diagrameventaddpdf.cpp" line="234"/>
         <source>Impossible de rendre la page PDF.</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Seite kann nicht als PDF gerendert werden.</translation>
     </message>
 </context>
 <context>
@@ -11726,7 +11726,7 @@ Créer votre propre texte en vous aidant des variables suivantes :
 %c : le numéro de colonne</source>
         <translation>Sie können eigene Querverweistexte definieren.
 Folgende Variablen sind verfügbar:
-%f: Seitennummer der Seite
+%f: Seitenposition
 %F: Seitennummer
 %M: Anlage
 %LM: Ort
@@ -12335,22 +12335,22 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="81"/>
         <source>Tous</source>
-        <translation type="unfinished">Alle</translation>
+        <translation>Alle</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="82"/>
         <source>Attribués uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausschließlich vergeben</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="83"/>
         <source>Non attribués uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur nicht zugewiesene</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="84"/>
         <source>Conflits uniquement</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur Konflikte</translation>
     </message>
     <message>
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="98"/>
@@ -12375,9 +12375,9 @@ Andere Felder werden nicht verwendet.</translation>
     <message numerus="yes">
         <location filename="../sources/ui/configpage/shortcutsconfigpage.cpp" line="269"/>
         <source>%n action(s)</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n Aktion</numerusform>
+            <numerusform>%n Aktionen</numerusform>
         </translation>
     </message>
     <message>
@@ -14695,17 +14695,17 @@ Andere Felder werden nicht verwendet.</translation>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="101"/>
         <source>Numéroter également les lettres</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Buchstaben ebenfalls nummerieren</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="118"/>
         <source>Borniers</source>
-        <translation type="unfinished">Klemmleisten</translation>
+        <translation>Klemmleisten</translation>
     </message>
     <message>
         <location filename="../sources/ui/terminalnumberingdialog.ui" line="124"/>
         <source>Décochez les borniers dont la numérotation doit être exclue</source>
-        <translation type="unfinished"></translation>
+        <translation>Entfernen Sie die Markierung bei den Klemmen, deren Nummerierung ausgeschlossen werden soll</translation>
     </message>
 </context>
 <context>
@@ -15953,14 +15953,16 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Achtung: Die Summe der relativen Breiten übersteigt 100 % der Gesamtbreite; dieses Kartuschenmodell kann durch keine Breite erfüllt werden.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1008"/>
         <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
 </source>
         <comment>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</comment>
-        <translation type="unfinished"></translation>
+        <translation>Achtung: Spalten mit fester Breite passen nicht in die verbleibende Breite; dieses Kartuschenmodell lässt sich bei keiner Breite umsetzen.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1016"/>
@@ -15975,14 +15977,16 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
         <source>Longueur maximale : %1px
 </source>
         <comment>tooltip showing the maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Maximale Länge: %1px
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1031"/>
         <source>Longueur non contrainte.
 </source>
         <comment>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</comment>
-        <translation type="unfinished"></translation>
+        <translation>Länge ohne Einschränkung.
+</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="1088"/>
@@ -16196,7 +16200,7 @@ die Variable &quot;volta&quot; kombiniert mit dem Wert &quot;1745&quot; lässt i
 %M: Installation 
 %LM: Localisation </source>
         <translation>Folgende Variablen sind verfügbar:
-%f: Seitennummer der Seite
+%f: Seitenposition
 %F: Seitennummer
 %l: Zeilennummer
 %c: Spaltennummer
