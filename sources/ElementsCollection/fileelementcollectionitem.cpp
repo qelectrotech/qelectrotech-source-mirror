@@ -430,7 +430,7 @@ void FileElementCollectionItem::setUpData()
  */
 void FileElementCollectionItem::setUpIcon()
 {
-		// Must return unconditionally once an icon is set: setIcon() calls
+		// Must return unconditionally once setUpIcon has run: setIcon() calls
 		// setData(), which emits dataChanged() regardless of whether the new
 		// icon differs from the old one (QIcon has no meaningful equality).
 		// QTreeView responds to dataChanged() by recomputing the row's size
@@ -438,13 +438,18 @@ void FileElementCollectionItem::setUpIcon()
 		// guard, any repeated setIcon() here recurses until the stack
 		// overflows. Confirmed by crash report on PR #633.
 		//
+		// We use a dedicated bool instead of icon().isNull() because
+		// some items intentionally keep a null icon (e.g. .qetmak),
+		// which would bypass a null-based guard and still recurse.
+		//
 		// This item's m_qet_directory_unreadable is already final by the time
 		// this can run at all: ElementsCollectionModel only attaches itself
 		// to the tree view (making data() reachable) from loadingFinished(),
 		// which fires after the QtConcurrent::map over every item -- this one
 		// included -- has completed. So there is no race to work around here.
-	if (!icon().isNull())
+	if (m_icon_initialized)
 		return;
+	m_icon_initialized = true;
 
 	if (isCollectionRoot()) {
 		QString macrosPath = QETApp::userMacrosDir();
