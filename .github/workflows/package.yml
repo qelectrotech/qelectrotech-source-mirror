@@ -2,9 +2,6 @@ name: Package and upload
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 3 * * *'
-  pull_request:
   push:
     branches: [master]
     tags: ['*']
