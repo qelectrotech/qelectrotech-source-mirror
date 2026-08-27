@@ -2021,7 +2021,7 @@ Bemerkung: diese Optionen verhindern NICHT das automatische Nummerieren.</transl
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="50"/>
         <source>Cannot read %1</source>
-        <translation>Kann %1 nicht lesen.</translation>
+        <translation>Kann %1 nicht lesen</translation>
     </message>
     <message>
         <location filename="../sources/import/edz/edzarchive.cpp" line="58"/>
@@ -7582,6 +7582,7 @@ Verfügbare Optionen:
         <location filename="../sources/qetdiagrameditor.cpp" line="702"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="703"/>
         <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
         <source>Éditeur de schémas</source>
         <translation>Diagramm-Editor</translation>
     </message>
@@ -8913,42 +8914,42 @@ Die erforderlichen Bedingungen wurden nicht erfüllt</translation>
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="434"/>
+        <location filename="../sources/qetproject.cpp" line="458"/>
         <source>Projet « %1 : %2»</source>
         <comment>displayed title for a ProjectView - %1 is the project title, -%2 is the project path</comment>
         <translation>Projekt &quot;%1: %2&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="441"/>
+        <location filename="../sources/qetproject.cpp" line="465"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Projekt %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="448"/>
+        <location filename="../sources/qetproject.cpp" line="472"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Projekt ohne Titel</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="457"/>
+        <location filename="../sources/qetproject.cpp" line="481"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [schreibgeschützt]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="465"/>
+        <location filename="../sources/qetproject.cpp" line="489"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation>%1 [geändert]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1232"/>
+        <location filename="../sources/qetproject.cpp" line="1256"/>
         <source>Système de contacts modifié</source>
         <translation>Modifiziertes Kontaktsystem</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1233"/>
+        <location filename="../sources/qetproject.cpp" line="1257"/>
         <source>Le nouvel élément définit des groupes de contacts esclaves.
 Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
 
@@ -8959,19 +8960,19 @@ Bestehende Slave-Elemente werden nicht automatisch zugeordnet. Sie müssen die S
 Möchten Sie fortfahren?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1321"/>
+        <location filename="../sources/qetproject.cpp" line="1345"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Ein Fehler ist beim Einfügen der Vorlage aufgetreten.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1472"/>
+        <location filename="../sources/qetproject.cpp" line="1496"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Warnung</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1474"/>
+        <location filename="../sources/qetproject.cpp" line="1498"/>
         <source>Ce document semble avoir été enregistré avec une version %1
  qui est ultérieure à votre version ! 
 Vous utilisez actuellement QElectroTech en version %2</source>
@@ -8979,7 +8980,7 @@ Vous utilisez actuellement QElectroTech en version %2</source>
 Sie verwenden derzeit QElectroTech Version %2</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1479"/>
+        <location filename="../sources/qetproject.cpp" line="1503"/>
         <source>.
  Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
@@ -8987,32 +8988,32 @@ Que désirez vous faire ?</source>
 Was möchten Sie tun?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1499"/>
+        <location filename="../sources/qetproject.cpp" line="1523"/>
         <source>Avertissement </source>
         <comment>message box title</comment>
         <translation>Warnung </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1500"/>
+        <location filename="../sources/qetproject.cpp" line="1524"/>
         <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
 </source>
         <translation>Das Projekt, das Sie zu öffnen versuchen, ist teilweise mit Ihrer Version %1 von QElectroTech kompatibel.
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1503"/>
+        <location filename="../sources/qetproject.cpp" line="1527"/>
         <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
 Que désirez vous faire ?</source>
         <translation>Um es vollständig kompatibel zu machen, öffnen Sie bitte das gleiche Projekt mit der QElectroTech-Version 0.8 oder 0.80, speichern Sie das Projekt und öffnen Sie es erneut mit dieser Version.
 Was möchten Sie tun?</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1600"/>
+        <location filename="../sources/qetproject.cpp" line="1624"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Création des folios&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Öffnen des Projekts...&lt;/b&gt;&lt;br/&gt;Seiten werden erstellt&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1642"/>
+        <location filename="../sources/qetproject.cpp" line="1666"/>
         <source>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;&lt;br/&gt;Mise en place des références croisées&lt;/p&gt;</source>
         <translation>&lt;p align=&quot;center&quot;&gt;&lt;b&gt;Öffnen des Projekts...&lt;/b&gt;&lt;br/&gt;Querverweise werden eingelesen&lt;/p&gt;</translation>
     </message>
@@ -10738,15 +10739,15 @@ Möchten Sie sie ersetzen?</translation>
         <translation>Einfügen</translation>
     </message>
     <message>
+        <location filename="../sources/conductorproperties.cpp" line="819"/>
         <location filename="../sources/ElementsCollection/elementslocation.cpp" line="401"/>
+        <location filename="../sources/factory/elementpicturefactory.cpp" line="627"/>
+        <location filename="../sources/qetapp.cpp" line="2459"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="351"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="474"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="509"/>
         <location filename="../sources/SearchAndReplace/searchandreplaceworker.cpp" line="538"/>
         <location filename="../sources/SearchAndReplace/ui/searchandreplacewidget.cpp" line="425"/>
-        <location filename="../sources/conductorproperties.cpp" line="819"/>
-        <location filename="../sources/factory/elementpicturefactory.cpp" line="627"/>
-        <location filename="../sources/qetapp.cpp" line="2459"/>
         <location filename="../sources/titleblock/templatelocation.cpp" line="114"/>
         <source>this is an error in the code</source>
         <translation>dies ist ein Programmfehler</translation>
