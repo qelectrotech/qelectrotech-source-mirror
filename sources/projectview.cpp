@@ -210,10 +210,14 @@ void ProjectView::changeFirstTab()
 }
 
 /**
-	@return first folio of current project
+	@return first folio of current project, or nullptr if the project
+	has no diagram.
 */
 DiagramView *ProjectView::firstDiagram()
 {
+	if (m_diagram_ids.isEmpty()) {
+		return(nullptr);
+	}
 	return(m_diagram_ids.first());
 }
 
