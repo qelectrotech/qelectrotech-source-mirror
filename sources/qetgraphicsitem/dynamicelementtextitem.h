@@ -92,7 +92,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		/// DXF export: the master-side cross-reference item (the table/cross
 		/// drawn next to a report/master element), if this text item has one.
 		CrossRefItem *masterXrefItem() const { return m_Xref_item; }
-		Element *masterElement() const { return m_master_element.data(); }
+		Element *masterElement() const;
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
