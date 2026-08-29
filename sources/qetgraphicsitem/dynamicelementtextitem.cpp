@@ -253,6 +253,29 @@ ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 }
 
 /**
+	@brief DynamicElementTextItem::masterElement
+	@return the master element for slave elements, or the parent element for others.
+	For PLC slaves, returns the actual master from linkedElements() instead of
+	m_master_element (which points to self because elementUseForInfo() returns
+	self for PLC slaves to resolve %{plc_*} variables).
+*/
+Element *DynamicElementTextItem::masterElement() const
+{
+	Element *elmt = parentElement();
+	if (!elmt)
+		return m_master_element.data();
+
+	if (elmt->linkType() == Element::Slave &&
+		elmt->elementData().m_slave_type == ElementData::PLCSlave &&
+		!elmt->linkedElements().isEmpty())
+	{
+		return elmt->linkedElements().first();
+	}
+
+	return m_master_element.data();
+}
+
+/**
 	@brief DynamicElementTextItem::elementUseForInfo
 	@return a pointer to the element we must use for the variable information.
 	If this text is owned by a simple element, the simple element is returned, this is the same element returned by the function parentElement().

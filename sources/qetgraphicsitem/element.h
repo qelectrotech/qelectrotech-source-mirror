@@ -266,6 +266,10 @@ class Element : public QetGraphicsItem
 
 	void drawPlcTable(QPainter *painter);
 
+	public:
+		/// Positions where the PLC IO table is drawn (from the .elmt file).
+		QList<QPointF> plcTablePositions() const { return m_plc_table_positions; }
+
 	private:
 		bool m_must_highlight = false;
 		QSize   dimensions;
