@@ -334,7 +334,9 @@ if(NOT BUILD_WITH_KF)
     )
 endif()
 
-install(TARGETS ${PROJECT_NAME})
+install(TARGETS ${PROJECT_NAME}
+    BUNDLE DESTINATION .
+)
 
 if (NOT MINGW)
     install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
