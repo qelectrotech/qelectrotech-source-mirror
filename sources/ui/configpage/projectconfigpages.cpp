@@ -19,6 +19,7 @@
 
 #include "../autoNum/numerotationcontext.h"
 #include "../autoNum/ui/autonumberingmanagementw.h"
+#include "../autoNum/ui/conductorcolorrulesw.h"
 #include "../autoNum/ui/folioautonumbering.h"
 #include "../autoNum/ui/formulaautonumberingw.h"
 #include "../autoNum/ui/selectautonumw.h"
@@ -336,7 +337,11 @@ void ProjectAutoNumConfigPage::initWidgets()
 		//Conductor tab
 	m_saw_conductor = new SelectAutonumW(1);
 	tab_widget->addTab(m_saw_conductor, tr("Conducteurs"));
-	
+
+		//Conductor color rules tab (discussion #606)
+	m_ccrw = new ConductorColorRulesW(project());
+	tab_widget->addTab(m_ccrw, tr("Couleurs des conducteurs"));
+
 		//Element tab
 	m_saw_element = new SelectAutonumW(0);
 	tab_widget->addTab(m_saw_element, tr("Eléments"));

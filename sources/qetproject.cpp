@@ -1740,7 +1740,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, guides_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, conductor_colors_elmt, folio_autonums, element_autonums, guides_elmt;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -1759,6 +1759,8 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			xref_elmt = child_elmt;
 		else if (child_elmt.tagName() == QLatin1String("conductors_autonums"))
 			conds_autonums = child_elmt;
+		else if (child_elmt.tagName() == QLatin1String("conductor_autonum_colors"))
+			conductor_colors_elmt = child_elmt;
 		else if (child_elmt.tagName()== QLatin1String("folio_autonums"))
 			folio_autonums = child_elmt;
 		else if (child_elmt.tagName()== QLatin1String("element_autonums"))
@@ -1791,6 +1793,23 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_conductor_autonum.insert(elmt.attribute("title"), nc);
+		}
+	}
+		//Absent entirely in a project saved before discussion #606 --
+		//leave m_conductor_color_rules at its in-class default
+		//(ConductorColorRule::defaultRules()) rather than clearing it, so
+		//an old project still gets sensible starting colors rather than
+		//none at all. Present-but-empty (the user deleted every rule and
+		//saved) is different and is honoured: the loop below still runs
+		//and m_conductor_color_rules ends up genuinely empty.
+	if (!conductor_colors_elmt.isNull())
+	{
+		m_conductor_color_rules.clear();
+		for (auto elmt : QET::findInDomElement(conductor_colors_elmt, QStringLiteral("color_rule")))
+		{
+			ConductorColorRule rule;
+			rule.fromXml(elmt);
+			m_conductor_color_rules.insert(elmt.attribute(QStringLiteral("text")), rule);
 		}
 	}
 	if (!folio_autonums.isNull())
@@ -1922,6 +1941,16 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		}
 	}
 	xml_element.appendChild(conductor_autonums);
+
+	//Export conductor auto-numbering color rules (discussion #606)
+	QDomElement conductor_colors_elmt = xml_document.createElement("conductor_autonum_colors");
+	for (auto it = m_conductor_color_rules.constBegin(); it != m_conductor_color_rules.constEnd(); ++it)
+	{
+		QDomElement rule_elmt = it.value().toXml(xml_document);
+		rule_elmt.setAttribute("text", it.key());
+		conductor_colors_elmt.appendChild(rule_elmt);
+	}
+	xml_element.appendChild(conductor_colors_elmt);
 
 	//Export Folio Autonums
 	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
