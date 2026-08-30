@@ -38,6 +38,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	m_export_info.insert("title", tr("Titre du folio"));
 	m_export_info.insert("diagram_position", tr("Position du folio"));
 	m_export_info.insert("folio", tr("Numéro du folio"));
+	m_export_info.insert("wire_count", tr("Nombre de fils"));
 
 	m_button_group.setExclusive(false);
 	m_button_group.addButton(ui->m_all_cb, 0);
