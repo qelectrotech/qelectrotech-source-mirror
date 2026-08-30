@@ -397,8 +397,8 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 			updateLabel();
 		}
 		else
-			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
-		
+			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations(), elementUseForInfo()));
+
 		if(old_text_from == UserText)
 			connect(elementUseForInfo(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 	}
@@ -531,9 +531,9 @@ void DynamicElementTextItem::setCompositeText(const QString &text)
 		DiagramContext dc;
 		if(elementUseForInfo())
 			dc = elementUseForInfo()->elementInformations();
-		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+		setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc, elementUseForInfo()));
 	}
-	
+
 	emit compositeTextChanged(m_composite_text);
 }
 
@@ -860,7 +860,7 @@ void DynamicElementTextItem::elementInfoChanged()
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
 		
-		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
+		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc, element);
 	}
 	else if (m_text_from  == UserText)
 		final_text = m_text;
@@ -1121,7 +1121,7 @@ void DynamicElementTextItem::updateLabel()
 			setPlainText(element->actualLabel());
 		}
 		else if (m_text_from == CompositeText) {
-			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
+			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc, element));
 		}
 	}
 }
