@@ -505,6 +505,7 @@ bool projectDataBase::createDataBase()
 
 	createElementNomenclatureView();
 	createSummaryView();
+	createWiringListView();
 	prepareQuery();
 	updateDB();
 	return true;
@@ -615,6 +616,64 @@ void projectDataBase::createSummaryView()
 						 "d.pos AS pos"
 						 " FROM diagram_info di, diagram d"
 						 " WHERE di.diagram_uuid = d.uuid");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
+}
+
+/**
+	@brief projectDataBase::createWiringListView
+	A from-to wiring list: one row per conductor, each endpoint resolved to
+	its element label and terminal name.
+
+	Two deliberate differences from an ordinary inner-join view like
+	element_nomenclature_view:
+
+	- No join to the element table. A terminal row already carries its
+	  element_uuid, so joining element back just to read the same uuid adds
+	  nothing -- and would actively drop rows, because populateElementTable()
+	  only inserts elements matching Simple|Terminal|Master|Thumbnail. Slave
+	  elements (relay contacts and the like, extremely common at the end of a
+	  wire) and report elements are absent from that table after a project
+	  load, so an inner join through it silently loses their conductors.
+	- element_info is LEFT joined for the same reason. A wire whose endpoint
+	  element carries no info row still belongs in a wiring list; it comes
+	  back with an empty label rather than vanishing. Losing a wire from a
+	  wiring list is a worse failure than showing one with a blank end.
+
+	- diagram is LEFT joined for the same reason. It should
+	  always match, since QETProject::diagramAdded is wired to addDiagram()
+	  and a conductor cannot exist before its folio -- but an inner join here
+	  would make that an assumption the view silently enforces, and a wire
+	  missing from a wiring list is the one failure this view must not have.
+
+	The result is that this view returns exactly as many rows as the
+	conductor table holds -- what is already excluded upstream (conductors
+	on legacy terminals without uuids) stays excluded, and nothing new is
+	dropped here. Only the terminal joins are inner, and both are guaranteed
+	by insertTerminal() running for each endpoint before the conductor row
+	is written.
+*/
+void projectDataBase::createWiringListView()
+{
+	QString create_view ("CREATE VIEW wiring_list_view AS SELECT "
+						 "c.uuid AS conductor_uuid,"
+						 "c.text AS wire_number,"
+						 "t1.element_uuid AS from_element_uuid,"
+						 "ei1.label AS from_element_label,"
+						 "t1.name AS from_terminal,"
+						 "t2.element_uuid AS to_element_uuid,"
+						 "ei2.label AS to_element_label,"
+						 "t2.name AS to_terminal,"
+						 "d.pos AS diagram_position"
+						 " FROM conductor c"
+						 " JOIN terminal t1 ON c.terminal1_uuid = t1.uuid AND c.terminal1_element_uuid = t1.element_uuid"
+						 " JOIN terminal t2 ON c.terminal2_uuid = t2.uuid AND c.terminal2_element_uuid = t2.element_uuid"
+						 " LEFT JOIN element_info ei1 ON t1.element_uuid = ei1.element_uuid"
+						 " LEFT JOIN element_info ei2 ON t2.element_uuid = ei2.element_uuid"
+						 " LEFT JOIN diagram d ON c.diagram_uuid = d.uuid");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
