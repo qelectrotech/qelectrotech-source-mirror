@@ -135,10 +135,6 @@ if [ ! -d "$BUNDLE" ] ; then
     exit 1
 fi
 
-cp -R ${current_dir}/misc/Info.plist $BUNDLE/Contents/
-cp -R ${current_dir}/ico/mac_icon/*.icns $BUNDLE/Contents/Resources/
-/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
-
 ### copy over frameworks ############################################
 echo
 echo "______________________________________________________________"
@@ -150,6 +146,23 @@ if [ ! -d $BUNDLE ] ; then
 fi
 
 macdeployqt $BUNDLE
+
+### install Info.plist and app icon #################################
+# NOTE: this must run AFTER macdeployqt, not before. macdeployqt
+# rewrites/regenerates parts of Contents/Resources, and files copied
+# there beforehand (e.g. the .icns icons) do not reliably survive it
+# and end up missing from the final bundle, causing the app to show
+# the generic placeholder icon instead of the real one. Info.plist
+# itself lives directly in Contents/ and happens to survive either
+# way, but keep it here too so this whole "final metadata" step stays
+# in one place, after macdeployqt is done touching the bundle.
+echo
+echo "______________________________________________________________"
+echo "Install Info.plist and app icon:"
+
+cp -R ${current_dir}/misc/Info.plist $BUNDLE/Contents/
+cp -R ${current_dir}/ico/mac_icon/*.icns $BUNDLE/Contents/Resources/
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION r$HEAD" "$BUNDLE/Contents/Info.plist"
 
 ### add missing files ###############################################
 echo
