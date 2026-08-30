@@ -740,15 +740,16 @@ bool Terminal::valideXml(QDomElement &terminal)
 	if (!terminal.hasAttribute("y")) return(false);
 	if (!terminal.hasAttribute("orientation")) return(false);
 
+		// QET::attributeIsAReal() also rejects non-finite values
+		// (nan/inf), unlike a raw QString::toDouble(&ok) check -- see
+		// its definition in qet.cpp for why that distinction matters
+		// here specifically.
+	if (!QET::attributeIsAReal(terminal, QStringLiteral("x")) ||
+		!QET::attributeIsAReal(terminal, QStringLiteral("y"))) {
+		return(false);
+	}
+
 	bool conv_ok;
-	// parse l'abscisse
-	terminal.attribute("x").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
-	// parse l'ordonnee
-	terminal.attribute("y").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
-
 	// parse l'id
 	terminal.attribute("id").toInt(&conv_ok);
 	if (!conv_ok) return(false);
