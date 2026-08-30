@@ -394,6 +394,34 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 }
 
 /**
+	@brief Diagram::event
+	QGraphicsScene has its own Tab/Shift+Tab item-focus-chain traversal
+	(mirroring QWidget's), checked before keyPressEvent() is ever reached:
+	by default it would silently consume Tab/Backtab to move focus among
+	the scene's own focusable items. Intercepting the key press here,
+	ahead of that, is the only way to reliably override it: unlike
+	QWidget::focusNextPrevChild(), QGraphicsScene::focusNextPrevChild() is
+	only virtual starting in Qt 6 (guarded by the QT6_VIRTUAL macro), so a
+	Diagram:: override of it would silently do nothing on a Qt 5 build.
+	@param event
+*/
+bool Diagram::event(QEvent *event)
+{
+	if (event->type() == QEvent::KeyPress) {
+		auto *key_event = static_cast<QKeyEvent *>(event);
+		if ((key_event->key() == Qt::Key_Tab || key_event->key() == Qt::Key_Backtab)
+				&& !isReadOnly() && !focusItem()) {
+			bool forward = key_event->key() == Qt::Key_Tab
+					&& !(key_event->modifiers() & Qt::ShiftModifier);
+			selectNextItem(forward);
+			event->accept();
+			return true;
+		}
+	}
+	return QGraphicsScene::event(event);
+}
+
+/**
 	@brief Diagram::keyPressEvent
 	This event is managed by diagram event interface if any.
 	Else move selected elements
@@ -1829,6 +1857,85 @@ void Diagram::invertSelection()
 
 	blockSignals(false);
 	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::selectAllConductors
+	Select every conductor on this diagram, deselecting anything else.
+*/
+void Diagram::selectAllConductors()
+{
+	if (items().isEmpty()) return;
+
+	blockSignals(true);
+	for (auto item : items()) {
+		item -> setSelected(dynamic_cast<Conductor *>(item) != nullptr);
+	}
+	blockSignals(false);
+	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::selectAllTextFields
+	Select every text field on this diagram (independent/static text,
+	conductor labels, and dynamic element texts), deselecting anything else.
+*/
+void Diagram::selectAllTextFields()
+{
+	if (items().isEmpty()) return;
+
+	blockSignals(true);
+	for (auto item : items()) {
+		item -> setSelected(dynamic_cast<DiagramTextItem *>(item) != nullptr);
+	}
+	blockSignals(false);
+	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::selectNextItem
+	Select the next (or, if @a forward is false, the previous) selectable
+	item on this diagram, cycling through items() (z-order) and wrapping
+	around at either end. If nothing is currently selected, selects the
+	first (or last) item. Uses the same "what counts as a real selectable
+	diagram item" filter as invertSelection(), so the candidate list and
+	its order always match what the user could reach by clicking.
+	@param forward true to select the next item, false for the previous one
+*/
+void Diagram::selectNextItem(bool forward)
+{
+	QList<QGraphicsItem *> candidates;
+	for (auto item : items()) {
+		if (dynamic_cast<QetGraphicsItem *>(item) ||
+			dynamic_cast<DiagramTextItem *>(item) ||
+			dynamic_cast<Conductor *>(item)) {
+			candidates << item;
+		}
+	}
+	if (candidates.isEmpty())
+		return;
+
+	int current_index = -1;
+	for (int i = 0; i < candidates.size(); ++i) {
+		if (candidates.at(i) -> isSelected()) {
+			current_index = i;
+			break;
+		}
+	}
+
+	int next_index;
+	if (current_index == -1) {
+		next_index = forward ? 0 : candidates.size() - 1;
+	} else {
+		next_index = forward
+				? (current_index + 1) % candidates.size()
+				: (current_index - 1 + candidates.size()) % candidates.size();
+	}
+
+	clearSelection();
+	QGraphicsItem *next_item = candidates.at(next_index);
+	next_item -> setSelected(true);
+	next_item -> ensureVisible();
 }
 
 /**
