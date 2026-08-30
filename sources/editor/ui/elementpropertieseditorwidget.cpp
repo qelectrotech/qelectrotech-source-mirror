@@ -171,7 +171,16 @@ void ElementPropertiesEditorWidget::upDateInterface()
 		ui->m_terminal_func_cb->setCurrentIndex(
 					ui->m_terminal_func_cb->findData(
 						m_data.m_terminal_function));
+
+		const DiagramContext &info = m_data.m_informations;
+		ui->m_auto_num_locked_cb->setChecked(
+			info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true"));
+		ui->m_potential_isolating_cb->setChecked(
+			info.value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true"));
 	}
+
+	ui->m_exclude_from_bom_cb->setChecked(
+		m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString() == QLatin1String("true"));
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
 }
@@ -366,8 +375,8 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 			m_data.m_slave_type  = ui->m_type_cb->currentData().value<ElementData::SlaveType>();
 		}
 		m_data.m_contact_count = ui->m_number_ctc->value();
-	}
-		else if (m_data.m_type == ElementData::Master) {
+	} else if (m_data.m_type == ElementData::Master)
+	{
 		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
 
 		//If the checkbox is checked, save the number; otherwise, -1 (infinity)
@@ -382,13 +391,12 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		} else {
 			readSlaveGroupsFromTable();
 		}
-	}
-	else if (m_data.m_type == ElementData::Terminal)
+	} else if (m_data.m_type == ElementData::Terminal)
 	{
 		m_data.m_terminal_type = ui->m_terminal_type_cb->currentData().value<ElementData::TerminalType>();
 		m_data.m_terminal_function = ui->m_terminal_func_cb->currentData().value<ElementData::TerminalFunction>();
 	}
-	
+
 	for (QTreeWidgetItem *qtwi : ui->m_tree->invisibleRootItem()->takeChildren())
 	{
 		QString txt = qtwi->text(1);
@@ -399,7 +407,25 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
 									   txt);
 	}
-	
+
+	if (m_data.m_type == ElementData::Terminal)
+	{
+		if (ui->m_auto_num_locked_cb->isChecked())
+			m_data.m_informations.addValue(QStringLiteral("auto_num_locked"), QStringLiteral("true"));
+		else
+			m_data.m_informations.remove(QStringLiteral("auto_num_locked"));
+
+		if (ui->m_potential_isolating_cb->isChecked())
+			m_data.m_informations.addValue(QStringLiteral("potential_isolating"), QStringLiteral("true"));
+		else
+			m_data.m_informations.remove(QStringLiteral("potential_isolating"));
+	}
+
+	if (ui->m_exclude_from_bom_cb->isChecked())
+		m_data.m_informations.addValue(QStringLiteral("exclude_from_bom"), QStringLiteral("true"));
+	else
+		m_data.m_informations.remove(QStringLiteral("exclude_from_bom"));
+
 	this->close();
 }
 
