@@ -115,6 +115,13 @@ Element::Element(
 			return;
 		}
 	}
+	// Must run before buildFromXml(): that call constructs this element's
+	// DynamicElementTextItem children, which read m_prefix (via
+	// getPrefix()) on their very first render. Setting it after would mean
+	// every element's first paint sees an empty prefix, with nothing ever
+	// triggering a repaint to pick up the real value afterward.
+	setPrefix(autonum::elementPrefixForLocation(location));
+
 	int elmt_state;
 	buildFromXml(location.xml(), &elmt_state);
 	if (state) {
@@ -126,8 +133,6 @@ Element::Element(
 	if (state) {
 		*state = 0;
 	}
-
-	setPrefix(autonum::elementPrefixForLocation(location));
 	m_uuid = QUuid::createUuid();
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable

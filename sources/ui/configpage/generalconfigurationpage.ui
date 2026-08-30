@@ -74,6 +74,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_show_classification_placeholder">
+         <property name="toolTip">
+          <string>Les éléments dont la catégorie ne porte aucune lettre de classification restent inchangés.</string>
+         </property>
+         <property name="text">
+          <string>Afficher le repère de classification (ex. « K? ») sur les éléments non numérotés</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="Line" name="line_5">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>

@@ -31,6 +31,47 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include <QGraphicsSceneMouseEvent>
+#include <QSettings>
+
+namespace {
+	/**
+		@brief displayLabelFor
+		Purely presentational: when @element has no numbering formula and
+		no manually-set label yet, show its qet_labels.xml classification
+		prefix (Element::getPrefix(), already resolved at construction time
+		via autonum::elementPrefixForLocation()) as a "K?"-style placeholder,
+		so the folio reads as intentionally-unnumbered rather than blank.
+		Deliberately NOT part of Element::actualLabel(): that value gets
+		written back into the element's stored information in several
+		places (e.g. Element::setElementInformations()), and a placeholder
+		saved as if it were a real label would be a correctness bug, not a
+		display nicety.
+
+		Suppressed entirely by the "diagrameditor/show-classification-
+		placeholder" preference. That setting is a *display* choice, not a
+		statement about which elements are devices: an element whose
+		category carries no classification letter has an empty prefix and
+		is already left blank regardless, so non-device symbols (graphics,
+		folio references, annotations) never show a placeholder either way.
+		The preference exists for users who do not want the hint at all, or
+		who follow a designation scheme other than IEC 81346-2.
+	*/
+	QString displayLabelFor(Element *element)
+	{
+		const QString label = element->actualLabel();
+		if (!label.isEmpty())
+			return label;
+
+		QSettings settings;
+		if (!settings.value(
+			    QStringLiteral("diagrameditor/show-classification-placeholder"),
+			    true).toBool())
+			return QString();
+
+		const QString prefix = element->getPrefix();
+		return prefix.isEmpty() ? QString() : prefix + QStringLiteral("?");
+	}
+}
 
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
@@ -846,7 +887,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = element->actualLabel();
+				final_text = displayLabelFor(element);
 			}
 		}
 		else {
@@ -1118,7 +1159,7 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			setPlainText(displayLabelFor(element));
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
