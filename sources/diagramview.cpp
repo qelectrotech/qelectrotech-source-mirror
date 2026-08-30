@@ -18,6 +18,7 @@
 #include "diagramview.h"
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
+#include "diagrameditoractions.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddelement.h"
 #include "diagramevent/diagrameventaddmacro.h"
@@ -1179,21 +1180,21 @@ QList<QAction *> DiagramView::contextMenuActions() const
 		{
 			list << m_paste_here;
 			list << m_separators.at(0);
-			list << qde->m_edit_diagram_properties;
-			list << qde->m_row_column_actions_group.actions();
+			list << qde->actions()->m_edit_diagram_properties;
+			list << qde->actions()->m_row_column_actions_group.actions();
 		}
 		else
 		{
-			list << qde->m_cut;
-			list << qde->m_copy;
+			list << qde->actions()->m_cut;
+			list << qde->actions()->m_copy;
 			list << m_multi_paste;
 			list << m_separators.at(0);
 			list << m_create_template; // Add the create template action
-			list << qde->m_conductor_reset;
+			list << qde->actions()->m_conductor_reset;
 			list << m_separators.at(1);
-			list << qde->m_selection_actions_group.actions();
+			list << qde->actions()->m_selection_actions_group.actions();
 			list << m_separators.at(2);
-			list << qde->m_depth_action_group->actions();
+			list << qde->actions()->m_depth_action_group->actions();
 		}
 
 			//Remove from the context menu the actions which are disabled.

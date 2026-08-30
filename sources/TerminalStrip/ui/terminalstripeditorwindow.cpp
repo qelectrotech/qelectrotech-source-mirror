@@ -20,6 +20,7 @@
 #include "../UndoCommand/addterminalstripcommand.h"
 #include "freeterminaleditor.h"
 #include "../../qetapp.h"
+#include "../../diagrameditoractions.h"
 #include "../../qetdiagrameditor.h"
 #include "../../qetproject.h"
 #include "../realterminal.h"
@@ -57,8 +58,8 @@ TerminalStripEditorWindow::TerminalStripEditorWindow(QETProject *project, QWidge
 	ui->setupUi(this);
     if (auto diagram_editor = QETApp::diagramEditor(project)) {
         ui->m_tool_bar->addSeparator();
-        ui->m_tool_bar->addAction(diagram_editor->undo);
-        ui->m_tool_bar->addAction(diagram_editor->redo);
+        ui->m_tool_bar->addAction(diagram_editor->actions()->undo);
+        ui->m_tool_bar->addAction(diagram_editor->actions()->redo);
     }
 	ui->m_remove_terminal->setDisabled(true);
 	addTreeDockWidget();
