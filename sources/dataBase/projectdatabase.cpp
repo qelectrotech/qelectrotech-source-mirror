@@ -153,10 +153,30 @@ void projectDataBase::addElement(Element *element)
 */
 void projectDataBase::removeElement(Element *element)
 {
+	bool changed = false;
+
 	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
-	if(!m_remove_element_query.exec()) {
-		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	if (m_remove_element_query.exec()) {
+		changed = true;
 	} else {
+		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	}
+
+		// element_info has no ON DELETE CASCADE (foreign keys aren't enforced
+		// by this connection), so it must be cleared explicitly here. Without
+		// this, the row is orphaned under the removed element's uuid, and
+		// re-adding an element with that same uuid later (undo of this same
+		// removal, or a redo replaying it) hits element_info's PRIMARY KEY
+		// constraint on element_uuid: the element re-add itself succeeds, but
+		// its element_info insert silently fails and is lost.
+	m_remove_element_info_query.bindValue(":uuid", element->uuid().toString());
+	if (m_remove_element_info_query.exec()) {
+		changed = true;
+	} else {
+		qDebug() << "projectDataBase::removeElement remove element_info error : " << m_remove_element_info_query.lastError();
+	}
+
+	if (changed) {
 		emit dataBaseUpdated();
 	}
 }
@@ -828,6 +848,11 @@ void projectDataBase::prepareQuery()
 	QString remove_element("DELETE FROM element WHERE uuid=:uuid");
 	m_remove_element_query = QSqlQuery(m_data_base);
 	m_remove_element_query.prepare(remove_element);
+
+		//REMOVE ELEMENT INFO
+	QString remove_element_info("DELETE FROM element_info WHERE element_uuid=:uuid");
+	m_remove_element_info_query = QSqlQuery(m_data_base);
+	m_remove_element_info_query.prepare(remove_element_info);
 
 		//UPDATE ELEMENT INFO
 	QString update_str("UPDATE element_info SET ");
