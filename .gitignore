@@ -7,3 +7,4 @@ doc/*
 !doc/QElectroTech.qch
 QElectroTech.tag
 !doc/doc-utils
+ui_*.h

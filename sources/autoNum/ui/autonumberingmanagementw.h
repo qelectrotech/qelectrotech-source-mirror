@@ -50,6 +50,7 @@ class AutoNumberingManagementW : public QWidget
 		void on_m_from_folios_cb_currentIndexChanged(int);
 		void on_m_to_folios_cb_currentIndexChanged(int);
 		void on_m_status_cb_currentIndexChanged(int);
+		void on_m_renumber_elements_pb_clicked();
 		void on_m_apply_folios_rb_clicked();
 		void on_m_apply_project_rb_clicked();
 		void on_buttonBox_clicked(QAbstractButton *);

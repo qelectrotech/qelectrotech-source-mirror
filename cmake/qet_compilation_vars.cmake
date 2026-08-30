@@ -288,6 +288,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontextcommands.h
   ${QET_DIR}/sources/autoNum/numerotationcontext.cpp
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
+  ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp
+  ${QET_DIR}/sources/autoNum/renumberelementscommand.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.cpp
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.cpp
@@ -298,6 +300,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/formulaautonumberingw.h
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.cpp
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.h
+  ${QET_DIR}/sources/autoNum/ui/renumberelementsdialog.cpp
+  ${QET_DIR}/sources/autoNum/ui/renumberelementsdialog.h
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.cpp
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.h
 
