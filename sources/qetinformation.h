@@ -159,6 +159,22 @@ namespace QETInformation
 
 	QString infoToVar(const QString &info);
 	QString translatedInfoKey(const QString &info);
+
+	/**
+	 * @brief isInfoFlagTrue
+	 * @param value : an elementInformation value read for a boolean-style
+	 * flag (auto_num_locked, potential_isolating, exclude_from_bom).
+	 * @return true if @value spells "true" case-insensitively.
+	 *
+	 * These three keys are stored as plain text, and the only writer
+	 * (the checkbox in ElementInfoWidget / ElementPropertiesEditorWidget)
+	 * always writes lowercase "true"/"false" -- but the value can also come
+	 * from a hand-authored .elmt/.qet file, where "True", "TRUE" or "1" read
+	 * as plausible spellings of yes and silently do nothing, because every
+	 * comparison site up to now has been a case-sensitive `== "true"`. Route
+	 * every read through here instead of repeating the comparison.
+	 */
+	bool isInfoFlagTrue(const QString &value);
 }
 
 #endif // QETINFORMATION_H

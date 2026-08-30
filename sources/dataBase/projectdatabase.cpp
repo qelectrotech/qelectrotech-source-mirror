@@ -583,7 +583,10 @@ void projectDataBase::createElementNomenclatureView()
 						 "di.folio AS folio,"
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
-						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')");
+						 // COLLATE NOCASE: the writer always stores lowercase "true"/"false",
+						 // but a hand-authored file can spell it "True"/"TRUE" -- those used
+						 // to compare unequal to 'true' and stay in the BOM silently.
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom COLLATE NOCASE IS NOT 'true')");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
