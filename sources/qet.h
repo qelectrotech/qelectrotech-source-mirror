@@ -160,6 +160,7 @@ namespace QET {
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
 	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
 	bool attributeIsAReal(const QDomElement &, const QString& , qreal * = nullptr);
+	bool isWellFormedXmlByteStream(const QByteArray &);
 	QString ElementsAndConductorsSentence(int elements=0,
 										  int conductors=0,
 										  int indi_texts=0,

@@ -19,6 +19,7 @@
 #include "qeticons.h"
 #include "shortcutmanager.h"
 
+#include <cmath>
 #include <limits>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
@@ -240,7 +241,58 @@ bool QET::attributeIsAReal(
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
+		// QString::toDouble() parses "nan"/"inf"/"-inf" successfully (ok
+		// stays true), so a non-finite value would otherwise sail through
+		// every geometry attribute this function gates -- including an
+		// element's own x/y in Element::fromXml(). A non-finite position
+		// there propagates into QPainterPathStroker via a conductor's
+		// shape() during diagram load and spins forever (confirmed with
+		// gdb: 100% CPU inside QPainterPathStroker::createStroke(), not a
+		// blocked wait). Reject it here, at the shared parsing point,
+		// rather than downstream in every geometry consumer.
+	if (!std::isfinite(tmp)) return(false);
 	if (reel != nullptr) *reel = tmp;
+	return(true);
+}
+
+/**
+	@brief QET::isWellFormedXmlByteStream
+	Check a raw byte stream for control characters the XML 1.0 spec does
+	not permit, before handing it to a QDomDocument.
+
+	Per the XML spec's Char production, the only C0 control characters
+	allowed anywhere in an XML document are tab (0x09), line feed (0x0A)
+	and carriage return (0x0D); every other byte in the 0x00-0x1F range
+	(and 0x7F) is illegal. QDomDocument::setContent() does not reject
+	these cleanly -- it crashes inside libQt5Xml's own DOM parser
+	(confirmed with gdb: identical SIGSEGV several frames deep in
+	QDomDocument::setContent(), never reaching any QET code, for a NUL
+	byte, an 0x0E, and an 0x19, each found independently by fuzzing --
+	so this is a class of input, not one specific byte value). A single
+	corrupted byte -- one bit flip -- is enough to trigger it.
+
+	Only checked here, at the one call site (QETProject::openFile())
+	this was found and reproduced against. The same setContent() pattern
+	appears at roughly twenty other call sites across the codebase
+	(element loading, title block templates, EDZ import, clipboard
+	paste, translations, ...) which likely share this same crash and are
+	not covered by this check -- deliberately left for a follow-up
+	rather than folded into this fix.
+
+	Multi-byte UTF-8 sequences are unaffected: a control-character byte
+	value (< 0x20) never appears as a lead or continuation byte of a
+	multi-byte UTF-8 encoding, so a plain byte-level scan is sufficient
+	and does not need to decode the stream first.
+	@param bytes raw file content, not yet parsed
+	@return false if a disallowed control character is present
+*/
+bool QET::isWellFormedXmlByteStream(const QByteArray &bytes)
+{
+	for (const char c : bytes) {
+		const auto uc = static_cast<unsigned char>(c);
+		if (uc < 0x20 && uc != 0x09 && uc != 0x0A && uc != 0x0D) return(false);
+		if (uc == 0x7F) return(false);
+	}
 	return(true);
 }
 
