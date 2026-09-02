@@ -481,6 +481,7 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 
 	if (type_ == ElementData::Simple ||
 		type_ == ElementData::Master ||
+		type_ == ElementData::Slave ||
 		type_ == ElementData::Terminal ||
 		type_ == ElementData::Thumbnail)
 	{

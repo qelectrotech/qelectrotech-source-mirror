@@ -33,6 +33,21 @@
 #include <QSqlDriver>
 #include <sqlite3.h>
 
+namespace {
+
+QString elementSubTypeToString(const ElementData &data)
+{
+	if (data.m_type == ElementData::Master) {
+		return data.masterTypeToString();
+	}
+	if (data.m_type == ElementData::Slave) {
+		return ElementData::slaveTypeToString(data.m_slave_type);
+	}
+	return QString();
+} // namespace
+
+}
+
 
 /**
 	@brief projectDataBase::projectDataBase
@@ -125,8 +140,9 @@ void projectDataBase::addElement(Element *element)
 	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
 	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
 	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());
-	m_insert_elements_query.bindValue(":type", element->elementData().typeToString());
-	m_insert_elements_query.bindValue(":sub_type", element->kindInformations()["type"].toString());
+	const auto element_data = element->elementData();
+	m_insert_elements_query.bindValue(":type", element_data.typeToString());
+	m_insert_elements_query.bindValue(":sub_type", elementSubTypeToString(element_data));
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
@@ -649,7 +665,11 @@ void projectDataBase::populateElementTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(ElementData::Simple |
+									 ElementData::Terminal |
+									 ElementData::Master |
+									 ElementData::Slave |
+									 ElementData::Thumbnail);
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
@@ -658,7 +678,7 @@ void projectDataBase::populateElementTable()
 			m_insert_elements_query.bindValue(":diagram_uuid", diagram->uuid().toString());
 			m_insert_elements_query.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
 			m_insert_elements_query.bindValue(":type", elmt_data.typeToString());
-			m_insert_elements_query.bindValue(":sub_type", elmt_data.masterTypeToString());
+			m_insert_elements_query.bindValue(":sub_type", elementSubTypeToString(elmt_data));
 			if (!m_insert_elements_query.exec()) {
 				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 			}
@@ -678,7 +698,11 @@ void projectDataBase::populateElementInfoTable()
 	for (const auto &diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(ElementData::Simple |
+									 ElementData::Terminal |
+									 ElementData::Master |
+									 ElementData::Slave |
+									 ElementData::Thumbnail);
 
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)

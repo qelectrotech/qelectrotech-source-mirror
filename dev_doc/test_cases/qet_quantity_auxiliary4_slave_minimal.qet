@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project title="Minimal quantity_auxiliary4 Slave reproduction" version="0.200.1">
+    <properties />
+    <newdiagrams>
+        <border rowsize="80" rows="8" displaycols="true" cols="17" colsize="60" displayrows="true" />
+        <inset author="" auto_page_num="" date="" displayAt="bottom" filename="" folio="%id/%total" indexrev="" locmach="" plant="" title="" version="" />
+        <conductors type="multi" num="" formula="" displaytext="0" numsize="9" condsize="1" bicolor="false" color2="#000000" text_color="#000000" />
+        <report label="%f-%l%c" />
+        <xrefs />
+        <conductors_autonums freeze_new_conductors="false" current_autonum="" />
+        <folio_autonums />
+        <element_autonums freeze_new_elements="false" current_autonum="" />
+    </newdiagrams>
+    <diagram author="" auto_page_num="" cols="17" colsize="60" date="" displayAt="bottom" displaycols="true" displayrows="true" filename="" folio="%id/%total" freezeNewConductor="false" freezeNewElement="false" height="660" indexrev="" locmach="" order="1" plant="" rows="8" rowsize="80" title="quantity_auxiliary4 minimal reproduction" version="0.200.1-dev">
+        <defaultconductor type="multi" num="" formula="" displaytext="0" numsize="9" condsize="1" bicolor="false" color2="#000000" text_color="#000000" />
+        <elements>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://generic/single-channel-slave.elmt" uuid="{6be0d5b9-a786-579f-a6c0-5b18cc52df7e}" x="260" y="260" z="10">
+                <terminals>
+                    <terminal id="0" orientation="2" x="0" y="-4" />
+                    <terminal id="1" orientation="2" x="20" y="-4" />
+                    <terminal id="2" orientation="2" x="40" y="-4" />
+                    <terminal id="3" orientation="2" x="60" y="-4" />
+                </terminals>
+                <inputs />
+                <elementInformations>
+                    <elementInformation name="quantity_auxiliary4" show="1">this is quantity_auxiliary4</elementInformation>
+                </elementInformations>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="true" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="UserText" text_width="-1" uuid="{e954d1f9-aa22-5695-a10f-aa4ec2f24992}" x="-5" y="-115">
+                        <text>WITH XML FIELD</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="true" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{6c17fe7c-7758-5f0f-b9fe-8f759730e88f}" x="-5" y="-95">
+                        <info_name>quantity_auxiliary4</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+            <element freezeLabel="false" is_movable="1" orientation="0" prefix="" type="embed://generic/single-channel-slave.elmt" uuid="{77ecdd83-8a40-5feb-bb2c-d0024bfb69da}" x="560" y="260" z="10">
+                <terminals>
+                    <terminal id="4" orientation="2" x="0" y="-4" />
+                    <terminal id="5" orientation="2" x="20" y="-4" />
+                    <terminal id="6" orientation="2" x="40" y="-4" />
+                    <terminal id="7" orientation="2" x="60" y="-4" />
+                </terminals>
+                <inputs />
+                <elementInformations />
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="true" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="UserText" text_width="-1" uuid="{6aa27a94-4361-56d6-afb6-bf68d109e6d8}" x="-5" y="-115">
+                        <text>WITHOUT XML FIELD</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,5,50,0,0,0,0,0,Regular" frame="true" keep_visual_rotation="false" rotation="0" rotation_point_center="false" text_from="ElementInfo" text_width="-1" uuid="{e3e7d4a5-1f86-5cea-bff4-81826da5ea08}" x="-5" y="-95">
+                        <text />
+                        <info_name>quantity_auxiliary4</info_name>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups />
+            </element>
+        </elements>
+        <conductors />
+        <inputs />
+        <shapes />
+        <images />
+    </diagram>
+    <collection>
+        <category name="generic">
+            <names>
+                <name lang="en">Generic</name>
+            </names>
+            <element name="single-channel-slave.elmt">
+                <definition height="90" hotspot_x="10" hotspot_y="84" link_type="slave" type="element" version="0.200.1" width="90">
+                    <uuid uuid="{01558f72-0d06-50bd-828f-680c98b7601d}" />
+                    <names>
+                        <name lang="en">Generic PLC single-channel Slave</name>
+                    </names>
+                    <kindInformations>
+                        <kindInformation name="type">plc</kindInformation>
+                        <kindInformation name="state">Other</kindInformation>
+                        <kindInformation name="number">1</kindInformation>
+                    </kindInformations>
+                    <description>
+                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,7,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="UserText" text_width="-1" uuid="{5a71a440-cc68-50ac-8399-f68ab03f2b07}" x="58" y="-17" z="1">
+                            <text>13</text>
+                        </dynamic_text>
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" y1="-30" y2="-3" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="40" x2="40" y1="-30" y2="-3" />
+                        <text color="#000000" font="Liberation Sans,5,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="Ic+" x="42" y="-15" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="43" x2="47" y1="-33" y2="-33" />
+                        <circle antialias="false" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="4" y="-51" />
+                        <text color="#000000" font="Liberation Sans,5,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="Ic-" x="62" y="-15" />
+                        <text color="#000000" font="Liberation Sans,5,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="M-" x="22" y="-15" />
+                        <text color="#000000" font="Liberation Sans,5,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="M+" x="2" y="-15" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="60" x2="60" y1="-30" y2="-3" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="20" x2="20" y1="-30" y2="-3" />
+                        <rect antialias="false" height="7.8" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="7.8" x="26" y="-67" />
+                        <text color="#000000" font="Liberation Sans,6,-1,0,50,0,0,0,0,0,Regular" rotation="270" text="Logic" x="55" y="-45" />
+                        <circle antialias="false" diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="58.5" y="-2.5" />
+                        <circle antialias="false" diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="38.5" y="-2.5" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="32.6" x2="26" y1="-67" y2="-60.4" />
+                        <circle antialias="false" diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="18.5" y="-2.5" />
+                        <circle antialias="false" diameter="3" style="line-style:normal;line-weight:normal;filling:none;color:black" x="-1.5" y="-2.5" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="27.2" x2="33.8" y1="-59.2" y2="-65.8" />
+                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,9,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="ElementInfo" text_width="-1" uuid="{2aee6f97-ec3f-5800-bf26-8b9cd9378322}" x="-7" y="-85" z="22">
+                            <text />
+                            <info_name>label</info_name>
+                        </dynamic_text>
+                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,7,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="UserText" text_width="-1" uuid="{b4ffd762-4e14-51c3-9295-2cb5a45ce7e2}" x="38" y="-17" z="23">
+                            <text>9</text>
+                        </dynamic_text>
+                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,7,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="UserText" text_width="-1" uuid="{7a682416-b407-5c6e-bc8c-a0eed69629b2}" x="-2" y="-17" z="24">
+                            <text>1</text>
+                        </dynamic_text>
+                        <rect antialias="false" height="10" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="64" x="-2" y="-40" />
+                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,7,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="UserText" text_width="-1" uuid="{582db34d-fa45-5511-92fd-04cd7f87de6b}" x="47" y="-83" z="25">
+                            <text>1</text>
+                        </dynamic_text>
+                        <dynamic_text Halignment="AlignLeft" Valignment="AlignTop" font="Liberation Sans,7,-1,0,50,0,0,0,0,0,Regular" frame="false" keep_visual_rotation="false" rotation="0" text_from="UserText" text_width="-1" uuid="{483ad320-61aa-550b-b756-dcad92081a13}" x="18" y="-17" z="26">
+                            <text>5</text>
+                        </dynamic_text>
+                        <text color="#000000" font="Liberation Sans,7,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="CH" x="37" y="-70" />
+                        <text color="#000000" font="Liberation Sans,6,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="MUX" x="11" y="-32" />
+                        <rect antialias="false" height="13" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="13" x="-3" y="-67" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="8" x2="-3" y1="-67" y2="-56" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-1" x2="10" y1="-54" y2="-65" />
+                        <circle antialias="false" diameter="6" style="line-style:normal;line-weight:normal;filling:none;color:black" x="8" y="-51" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="2" x2="2" y1="-48" y2="-54" />
+                        <rect antialias="false" height="11" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="20" x="20" y="-55" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="31" x2="35" y1="-33" y2="-33" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="35" x2="44" y1="-33" y2="-37" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" x2="30" y1="-44" y2="-40" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="4" x2="2" y1="-48" y2="-48" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="14" x2="20" y1="-48" y2="-48" />
+                        <text color="#000000" font="Liberation Sans,6,-1,0,50,0,0,0,0,0,Regular" rotation="0" text="ADC" x="22" y="-47" />
+                        <rect antialias="false" height="23" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="14" x="46" y="-66" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="34" x2="46" y1="-62" y2="-62" />
+                        <rect antialias="false" height="80" rx="0" ry="0" style="line-style:normal;line-weight:normal;filling:none;color:black" width="80" x="-5" y="-80" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="30" x2="30" y1="-59" y2="-55" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="10" x2="17" y1="-57" y2="-57" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="17" x2="17" y1="-57" y2="-62" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="19" x2="15" y1="-62" y2="-62" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="15" x2="17" y1="-62" y2="-67" />
+                        <line antialias="false" end1="none" end2="none" length1="1.5" length2="1.5" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="19" x2="17" y1="-62" y2="-67" />
+                        <terminal name="" orientation="s" type="Generic" uuid="{d595235b-4e7d-51a1-b5f2-b23c3b525fb9}" x="0" y="0" />
+                        <terminal name="" orientation="s" type="Generic" uuid="{624b2ee4-724a-5e86-860b-3c8fb9edfef0}" x="20" y="0" />
+                        <terminal name="" orientation="s" type="Generic" uuid="{006b4ef0-2c99-57d5-bc98-5e3aa1302a03}" x="40" y="0" />
+                        <terminal name="" orientation="s" type="Generic" uuid="{431d9124-33f5-5942-aff6-fdd49aa4f5b1}" x="60" y="0" />
+                    </description>
+                </definition>
+            </element>
+        </category>
+    </collection>
+</project>
