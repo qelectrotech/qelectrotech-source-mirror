@@ -730,11 +730,24 @@ void GenericPanel::projectInformationsChanged(QETProject *project) {
 /**
 	@brief GenericPanel::diagramAdded
 	@param project
-	@param diagram (unused)
+	@param diagram the newly added diagram to select in the tree
 */
 void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
-	Q_UNUSED(diagram)
 	addProject(project, nullptr, GenericPanel::AddChildDiagrams);
+	if (diagram) {
+		QTreeWidgetItem *projectItem = itemForProject(project);
+		if (projectItem) {
+			for (int i = projectItem->childCount() - 1; i >= 0; --i) {
+				QTreeWidgetItem *child = projectItem->child(i);
+				if (child && child->type() == QET::Diagram) {
+					clearSelection();
+					setCurrentItem(child);
+					child->setSelected(true);
+					break;
+				}
+			}
+		}
+	}
 	emit(panelContentChanged());
 }
 
