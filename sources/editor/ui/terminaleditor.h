@@ -58,19 +58,20 @@ class TerminalEditor : public ElementItemEditor
 		void orientationEdited();
 		void nameEdited();
 		void typeEdited();
+		void potentialEdited();
 		void showNameEdited();
 		void labelPosEdited();
 		void labelFontClicked();
 		void labelSizeEdited();
 		void labelRotationEdited();
 		void labelAlignClicked();
-	void labelFrameEdited();
-	void labelColorClicked();
-	void activeConnections(bool active);
-	void activeChangeConnections(bool active);
-	void useMasterLabelEdited();
-	void masterLabelIndexEdited();
-	bool updateMasterLabelVisibility();
+		void labelFrameEdited();
+		void labelColorClicked();
+		void activeConnections(bool active);
+		void activeChangeConnections(bool active);
+		void useMasterLabelEdited();
+		void masterLabelIndexEdited();
+		bool updateMasterLabelVisibility();
 
 	private:
 		Ui::TerminalEditor *ui;

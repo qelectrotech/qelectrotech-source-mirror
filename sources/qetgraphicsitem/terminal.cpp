@@ -928,6 +928,18 @@ TerminalData::Type Terminal::terminalType() const
 }
 
 /**
+	@brief Terminal::potential
+	@return this terminal's own potential-group identifier (@see
+	TerminalData::m_potential).
+	An author-chosen grouping used only
+	within a single multi-terminal element.
+*/
+QString Terminal::potential() const
+{
+	return d->m_potential;
+}
+
+/**
 	@brief Terminal::setUseMasterLabel
 	Set whether this terminal uses a label from the master's contact group
 	@param use true to use master label
@@ -977,8 +989,22 @@ QList<Terminal *> relatedPotentialTerminal (
 	{
 		// English: Check if the user activated the potential isolation checkbox for this terminal
 		if (terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true")) {
-			// English: Potential is isolated. Return an empty list so it does not propagate to the other side.
-			return QList<Terminal *>();
+			// English: Potential is isolated -- but terminals sharing this
+			// terminal's own, non-empty potential-group identifier
+			// (@see TerminalData::m_potential, set per-terminal in the
+			// element editor) still belong to the same physical terminal
+			// and stay linked to each other. An empty/unset potential on
+			// every terminal reproduces the previous, fully-isolated
+			// behavior exactly, so existing elements are unaffected.
+			const QString this_potential = terminal->potential();
+			QList<Terminal *> same_potential;
+			if (!this_potential.isEmpty()) {
+				for (Terminal *t : terminal->parentElement()->terminals()) {
+					if (t != terminal && t->potential() == this_potential)
+						same_potential << t;
+				}
+			}
+			return same_potential;
 		}
 
 		QList <Terminal *> terminals = terminal->parentElement()->terminals();
