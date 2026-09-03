@@ -54,7 +54,7 @@ could not be queried reliably from the internal project database.
   Slave instances, and preserves their Slave subtype across incremental and
   full rebuild paths.
 - BOM inclusion remains independently controllable through
-  `exclude_from_bom`.
+  `exclude_from_bom`, with Slave elements excluded by default.
 
 ## Implementation
 
@@ -66,6 +66,8 @@ could not be queried reliably from the internal project database.
 - Add `ElementData::Slave` to both internal-database population masks.
 - Use one basetype-aware subtype conversion for incremental insertion and full
   database rebuilds.
+- Normalize a missing, null, or empty `exclude_from_bom` to `true` for Slave
+  definitions and placed instances while preserving an explicit `false`.
 
 ## Compatibility and behavior change
 
@@ -74,9 +76,10 @@ information, so no project format migration is required.
 
 Because `element_nomenclature_view` reads all rows from the internal `element`
 and `element_info` tables except rows marked `exclude_from_bom = 'true'`, Slave
-elements now become visible to unfiltered nomenclature and BOM queries. Projects
-that use Slave elements only as subordinate contacts can mark them
-`exclude_from_bom` when they should not be listed separately.
+elements are excluded from unfiltered nomenclature and BOM queries by default.
+This also applies to legacy Slave XML where the key is missing or empty. An
+explicit `exclude_from_bom=false` remains the opt-in for listing a Slave as a
+separate BOM item.
 
 ## Test fixture
 

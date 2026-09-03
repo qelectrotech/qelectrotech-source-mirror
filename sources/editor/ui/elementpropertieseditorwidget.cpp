@@ -399,6 +399,7 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
 									   txt);
 	}
+	ElementData::applyInformationDefaults(m_data.m_type, m_data.m_informations);
 	
 	this->close();
 }

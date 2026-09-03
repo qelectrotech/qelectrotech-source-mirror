@@ -849,6 +849,7 @@ bool Element::fromXml(QDomElement &e,
 	DiagramContext dc;
 	dc.fromXml(e.firstChildElement(QStringLiteral("elementInformations")),
 			   QStringLiteral("elementInformation"));
+	ElementData::applyInformationDefaults(m_data.m_type, dc);
 
 		//Load override properties (For now, only used when the element is a terminal)
 	if (m_data.m_type == ElementData::Terminal)
