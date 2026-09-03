@@ -737,9 +737,10 @@ void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 	if (diagram) {
 		QTreeWidgetItem *projectItem = itemForProject(project);
 		if (projectItem) {
-			for (int i = projectItem->childCount() - 1; i >= 0; --i) {
+			for (int i = 0; i < projectItem->childCount(); ++i) {
 				QTreeWidgetItem *child = projectItem->child(i);
-				if (child && child->type() == QET::Diagram) {
+				if (child && child->type() == QET::Diagram
+				    && valueForItem<Diagram *>(child) == diagram) {
 					clearSelection();
 					setCurrentItem(child);
 					child->setSelected(true);
