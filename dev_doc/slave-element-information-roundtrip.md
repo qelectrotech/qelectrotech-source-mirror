@@ -10,6 +10,8 @@ Slave instance.
 The remaining write and database paths were inconsistent:
 
 - the element editor hid and disabled the Informations tree for Slave elements;
+- the diagram/folio element-properties dialog omitted its Informations tab for
+  Slave instances;
 - `ElementScene::toXml()` omitted `<elementInformations>` when saving a Slave
   element definition;
 - full internal-database rebuilds excluded Slave elements from both `element`
@@ -44,6 +46,8 @@ could not be queried reliably from the internal project database.
 
 - Slave information can be edited in the same Informations tree used by other
   supported basetypes.
+- Placed Slave instances expose an Informations tab in the diagram/folio
+  element-properties dialog without replacing their PLC/link tab.
 - Saving and reopening a Slave `.elmt` definition preserves non-empty
   `<elementInformation>` entries.
 - The internal database represents every supported placed element, including
@@ -55,6 +59,8 @@ could not be queried reliably from the internal project database.
 ## Implementation
 
 - Enable and show the Informations tree for `ElementData::Slave`.
+- Add `ElementInfoWidget` to the diagram/folio properties tabs for
+  `Element::Slave`.
 - Add `ElementData::Slave` to the `ElementScene::toXml()` information write
   condition.
 - Add `ElementData::Slave` to both internal-database population masks.
