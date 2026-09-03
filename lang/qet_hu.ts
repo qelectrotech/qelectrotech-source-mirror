@@ -16163,6 +16163,16 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <translation>Kereszthivatkozás címkéje</translation>
     </message>
     <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="214"/>
+        <source>Hériter le label par défaut</source>
+        <translation>Címke öröklése alapértelmezés szerint</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="228"/>
+        <source>Séparateur du label hérité</source>
+        <translation>Örökölt címke elválasztója</translation>
+    </message>
+    <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="161"/>
         <source>Maitre</source>
         <translation>Mester</translation>

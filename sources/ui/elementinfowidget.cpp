@@ -393,8 +393,7 @@ void ElementInfoWidget::updateUi()
 		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
 	}
 	if (m_inherit_label_cb) {
-		const QString inherit_value = element_info.value(QStringLiteral("inherit_label")).toString();
-		m_inherit_label_cb->setChecked(inherit_value == QLatin1String("true"));
+		m_inherit_label_cb->setChecked(m_element->inheritsLabel());
 	}
 
 	if (m_live_edit) {

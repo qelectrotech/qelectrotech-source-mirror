@@ -56,8 +56,10 @@ could not be queried reliably from the internal project database.
 - BOM inclusion remains independently controllable through
   `exclude_from_bom`, with Slave elements excluded by default.
 - Slave label inheritance is enabled by default and can be disabled per placed
-  Slave. An inherited label combines the Master and local Slave labels with a
-  hyphen, for example `K1-A1` or `PLC1-CH3`.
+  Slave. Each project cross-reference profile (`coil`, `protection`,
+  `commutator`, and `plc`) controls its default and separator. An inherited
+  label therefore combines the Master and local Slave labels as `K1-A1` or,
+  with a custom separator, for example `K1:A1`.
 
 ## Implementation
 
@@ -71,9 +73,12 @@ could not be queried reliably from the internal project database.
   database rebuilds.
 - Normalize a missing, null, or empty `exclude_from_bom` to `true` for Slave
   definitions and placed instances while preserving an explicit `false`.
-- Normalize a missing, null, or empty `inherit_label` to `true`, expose it as a
-  Slave-only checkbox, and calculate the displayed label without overwriting
-  the Slave's own XML `label` value.
+- Resolve a missing, null, or empty `inherit_label` from the linked Master's
+  project cross-reference profile (whose backward-compatible default is
+  `true`), expose it as a Slave-only checkbox, and calculate the displayed
+  label without overwriting the Slave's own XML `label` value.
+- Persist the inheritance default and separator in both application settings
+  and project `<xref>` XML for all four Master types.
 - Migrate a legacy PLC Slave label that exactly duplicates its linked Master's
   label to an empty local suffix, avoiding duplicated or stale labels after a
   Master rename.
@@ -90,10 +95,11 @@ This also applies to legacy Slave XML where the key is missing or empty. An
 explicit `exclude_from_bom=false` remains the opt-in for listing a Slave as a
 separate BOM item.
 
-Legacy Slave XML without `inherit_label` defaults to inheritance. Explicit
-`inherit_label=false` preserves a standalone Slave label. PLC link data remains
-Master-driven, but the channel's own label is no longer destroyed by linking or
-unlinking.
+Legacy Slave XML without `inherit_label` follows its project profile; legacy
+profiles have the compatible defaults `inherit_label=true` and
+`label_separator="-"`. Explicit `inherit_label=false` preserves a standalone
+Slave label. PLC link data remains Master-driven, but the channel's own label
+is no longer destroyed by linking or unlinking.
 
 ## Test fixture
 

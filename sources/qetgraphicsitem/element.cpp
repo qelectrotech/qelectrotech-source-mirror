@@ -1738,12 +1738,11 @@ QString Element::actualLabel()
 				this);
 	}
 
-	if (m_data.m_type != ElementData::Slave ||
-		m_data.m_informations.value(QStringLiteral("inherit_label")).toString() != QLatin1String("true"))
+	if (m_data.m_type != ElementData::Slave || !inheritsLabel())
 		return own_label;
 
 	Element *master = nullptr;
-	for (Element *linked : linkedElements()) {
+	for (Element *linked : std::as_const(connected_elements)) {
 		if (linked && linked->linkType() == Element::Master) {
 			master = linked;
 			break;
@@ -1757,7 +1756,54 @@ QString Element::actualLabel()
 		return own_label;
 	if (own_label.isEmpty())
 		return master_label;
-	return master_label + QStringLiteral("-") + own_label;
+	return master_label + labelInheritanceSeparator() + own_label;
+}
+
+/**
+ * @brief Element::inheritsLabel
+ * Return the explicit per-Slave choice, or the linked Master's project XRef
+ * default when the element has no explicit override.
+ */
+bool Element::inheritsLabel() const
+{
+	if (m_data.m_type != ElementData::Slave)
+		return false;
+
+	const QVariant explicit_value = m_data.m_informations.value(QStringLiteral("inherit_label"));
+	if (m_data.m_informations.contains(QStringLiteral("inherit_label")) &&
+		!explicit_value.isNull() && !explicit_value.toString().trimmed().isEmpty())
+	{
+		return explicit_value.toString() == QLatin1String("true");
+	}
+
+	QString type = m_data.m_slave_type == ElementData::PLCSlave
+		? QStringLiteral("plc") : QStringLiteral("coil");
+	for (Element *linked : connected_elements) {
+		if (linked && linked->linkType() == Element::Master) {
+			type = linked->kindInformations().value(QStringLiteral("type")).toString();
+			break;
+		}
+	}
+	return !diagram() || !diagram()->project()
+		? true : diagram()->project()->defaultXRefProperties(type).inheritLabelByDefault();
+}
+
+/**
+ * @brief Element::labelInheritanceSeparator
+ * Return the separator configured for the linked Master's XRef type.
+ */
+QString Element::labelInheritanceSeparator() const
+{
+	QString type = m_data.m_slave_type == ElementData::PLCSlave
+		? QStringLiteral("plc") : QStringLiteral("coil");
+	for (Element *linked : connected_elements) {
+		if (linked && linked->linkType() == Element::Master) {
+			type = linked->kindInformations().value(QStringLiteral("type")).toString();
+			break;
+		}
+	}
+	return !diagram() || !diagram()->project()
+		? QStringLiteral("-") : diagram()->project()->defaultXRefProperties(type).labelSeparator();
 }
 
 /**

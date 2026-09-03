@@ -75,7 +75,7 @@ void MasterElement::linkToElement(Element *elmt)
 			// a stale suffix (for example PLC2-PLC1), so migrate only the exact
 			// duplicate to an empty local label when the link is established.
 			DiagramContext ctx = elmt->elementInformations();
-			if (ctx.value(QStringLiteral("inherit_label")).toString() == QLatin1String("true") &&
+			if (elmt->inheritsLabel() &&
 				ctx.value(QETInformation::ELMT_LABEL).toString() == actualLabel())
 			{
 				ctx.remove(QETInformation::ELMT_LABEL);

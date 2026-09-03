@@ -208,6 +208,37 @@
             </layout>
            </item>
            <item>
+            <widget class="QCheckBox" name="m_inherit_label_cb">
+             <property name="text">
+              <string>Hériter le label par défaut</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_inherit_separator">
+             <item>
+              <widget class="QLabel" name="label_inherit_separator">
+               <property name="text">
+                <string>Séparateur du label hérité</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="m_label_separator_le">
+               <property name="text">
+                <string>-</string>
+               </property>
+               <property name="maxLength">
+                <number>1</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
               <string>Créer votre propre texte en vous aidant des variables suivantes :

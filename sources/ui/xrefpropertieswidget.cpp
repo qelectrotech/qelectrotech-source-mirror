@@ -146,6 +146,8 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
 	xrp.setMasterLabel(ui->m_master_le->text());
 	xrp.setSlaveLabel(ui->m_slave_le->text());
+	xrp.setInheritLabelByDefault(ui->m_inherit_label_cb->isChecked());
+	xrp.setLabelSeparator(ui->m_label_separator_le->text());
 	xrp.setOffset(ui->m_offset_sb->value());
 
 	m_properties.insert(type, xrp);
@@ -173,6 +175,8 @@ void XRefPropertiesWidget::updateDisplay()
 
 	QString slave = xrp.slaveLabel();
 	ui->m_slave_le->setText(slave);
+	ui->m_inherit_label_cb->setChecked(xrp.inheritLabelByDefault());
+	ui->m_label_separator_le->setText(xrp.labelSeparator());
 
 	int offset = xrp.offset();
 	ui->m_offset_sb->setValue(offset);

@@ -762,6 +762,12 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			connect(m_parent_element.data(), &Element::elementInfoChange,
 				this, &DynamicElementTextItem::elementInfoChanged,
 				Qt::UniqueConnection);
+			if (m_parent_element.data()->diagram() && m_parent_element.data()->diagram()->project())
+			{
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged,
+					this, &DynamicElementTextItem::updateLabel,
+					Qt::UniqueConnection);
+			}
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();

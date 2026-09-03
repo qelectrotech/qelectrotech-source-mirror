@@ -80,8 +80,7 @@ void ElementData::applyInformationDefaults(
 		return;
 
 	const QStringList default_true_keys = {
-		QStringLiteral("exclude_from_bom"),
-		QStringLiteral("inherit_label")
+		QStringLiteral("exclude_from_bom")
 	};
 	for (const QString &key : default_true_keys)
 	{
