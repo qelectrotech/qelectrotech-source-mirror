@@ -759,6 +759,9 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		if(m_parent_element.data()->linkType() == Element::Slave)
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
+			connect(m_parent_element.data(), &Element::elementInfoChange,
+				this, &DynamicElementTextItem::elementInfoChanged,
+				Qt::UniqueConnection);
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -895,9 +898,22 @@ void DynamicElementTextItem::masterChanged()
 		updateXref();
 	}
 	
-	if(elementUseForInfo())
+	Element *linked_master = nullptr;
+	if (parentElement() && parentElement()->linkType() == Element::Slave)
 	{
-		m_master_element = elementUseForInfo();
+		for (Element *linked : parentElement()->linkedElements())
+		{
+			if (linked && linked->linkType() == Element::Master)
+			{
+				linked_master = linked;
+				break;
+			}
+		}
+	}
+
+	if(linked_master)
+	{
+		m_master_element = linked_master;
 		if(m_text_from == ElementInfo || m_text_from == CompositeText)
 			connect(m_master_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 		
