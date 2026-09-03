@@ -20,6 +20,7 @@ All notable changes to QElectroTech are documented here.
 
 ### 🐛 Bug Fixes
 
+- Open filesystem element definitions before parsing them as XML, restoring drag-and-drop insertion from file-backed collections.
 - Keep Slave element information editable and persistent in element-source XML, and include Slave rows and metadata in the internal project database.
 - Fix #798: clamp element-editor and diagram-view zoom to prevent view-transform overflow crash on scroll-wheel zoom ([3ca5d4a](../../commit/3ca5d4ab2))
 - Fix(windows-msi): inject rev into MSI Version Build field ([e19f523](../../commit/e19f5232277efb37435cb65a83563d73333d62ec))
@@ -1085,4 +1086,3 @@ All notable changes to QElectroTech are documented here.
 - Added element-descriptions and elements ([337a2a4](../../commit/337a2a45b441cab77ca96ab3618cf6aaa658792a))
 - Added/fixed translations and added elements ([fcab774](../../commit/fcab77420d44edb545e21888b958d4b2c18b9741))
 - Add a push button to automatically reorder the terminal strip ([1699ad9](../../commit/1699ad9dd884d07aef7a0dc93508c52a20421724))
-

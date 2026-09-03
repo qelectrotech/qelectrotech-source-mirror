@@ -80,3 +80,11 @@ with two identical PLC Slave instances. Both contain a dynamic text bound to
 `quantity_auxiliary4`; only one instance contains the corresponding XML value.
 It can be used to verify rendering, project round-trip, and internal-database
 population without project-specific tags or manufacturer data.
+
+## Related UI test failure
+
+Dragging an element from a file-backed collection could emit
+`QDomDocument called with unopened QIODevice` and fail to create the object.
+This was not a `/tmp` or company-collection permission problem:
+`ElementsLocation::xml()` passed its `QFile` to `QDomDocument::setContent()`
+without opening it. The file is now opened read-only before XML parsing.
