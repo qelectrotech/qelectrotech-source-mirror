@@ -704,8 +704,11 @@ void CrossRefItem::setUpCrossBoundingRect(QPainter &painter)
 */
 void CrossRefItem::drawAsCross(QPainter &painter)
 {
-	//calculate the size of the cross
-	setUpCrossBoundingRect(painter);
+	// Geometry is calculated by updateLabel() with m_update_map enabled.
+	// Calling prepareGeometryChange() from paint() continuously invalidates the
+	// scene and creates an idle repaint loop as soon as a linked coil is shown.
+	if (m_update_map)
+		setUpCrossBoundingRect(painter);
 	m_drawed_contacts = 0;
 	if (m_update_map) m_hovered_contacts_map.clear();
 
@@ -767,10 +770,13 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 		}
 	}
 
-	bounding_rect.adjust(-30, -4, 4, 4);
-	prepareGeometryChange();
-	m_bounding_rect = bounding_rect;
-	m_shape_path.addRect(bounding_rect);
+	if (m_update_map)
+	{
+		bounding_rect.adjust(-30, -4, 4, 4);
+		prepareGeometryChange();
+		m_bounding_rect = bounding_rect;
+		m_shape_path.addRect(bounding_rect);
+	}
 }
 
 /**

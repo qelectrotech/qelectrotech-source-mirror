@@ -52,6 +52,11 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 - Fixed a crash when destroying a `QETProject` before its asynchronous backup had finished.
 - Fixed regional system locale sometimes loading the wrong translation.
 - Fixed dynamic element text shifting/jumping when duplicating diagrams, and a wiring-list filter/timing issue.
+- Fixed an idle repaint loop caused by linked coil cross-reference geometry
+  being invalidated from its paint path.
+- Reusing an element UUID from an external collection now places an identical
+  embedded definition directly; a changed definition with the same UUID uses
+  the existing overwrite/ignore/rename dialog.
 - Various smaller fixes: a first-click spurious element move right after selecting a tool, an -Wreorder compiler warning, and several translation corrections (German, French, Chinese).
 
 ### macOS

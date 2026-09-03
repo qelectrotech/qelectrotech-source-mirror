@@ -117,3 +117,17 @@ Dragging an element from a file-backed collection could emit
 This was not a `/tmp` or company-collection permission problem:
 `ElementsLocation::xml()` passed its `QFile` to `QDomDocument::setContent()`
 without opening it. The file is now opened read-only before XML parsing.
+
+The follow-up duplicate-import regression was UUID-related. Import now searches
+the embedded project collection by UUID independently of the external
+collection path. If the stored and dragged XML definitions are equivalent, the
+stored definition is reused and another instance can be placed. If their XML
+differs, the existing overwrite/ignore/rename dialog is shown.
+
+## Cross-reference idle CPU regression
+
+The cross-reference paint functions recalculated their bounding geometry and
+called `prepareGeometryChange()` during every paint. A visible linked coil could
+therefore continuously invalidate the scene and keep the GUI repainting while
+idle. Geometry is now updated only from `CrossRefItem::updateLabel()`; ordinary
+paint calls use the cached bounding rectangle and shape.
