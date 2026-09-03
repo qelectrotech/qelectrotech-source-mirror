@@ -448,8 +448,6 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 							ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
 							ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
 								plcCrossRefText(elmt, m_element));
-							ctx.addValue(QETInformation::ELMT_LABEL,
-								elmt->actualLabel());
 							ctx.addValue(QETInformation::ELMT_PLC_TC,
 								QString::number(io.terminalCount));
 							const QStringList eff_terms = io.effectiveTerminals();
@@ -565,8 +563,6 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 						ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
 						ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
 							plcCrossRefText(m_element, slave));
-						ctx.addValue(QETInformation::ELMT_LABEL,
-							m_element->actualLabel());
 						ctx.addValue(QETInformation::ELMT_PLC_TC,
 							QString::number(io.terminalCount));
 						const QStringList eff_terms = io.effectiveTerminals();

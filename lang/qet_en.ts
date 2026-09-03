@@ -2247,6 +2247,11 @@ The element&apos;s display name is edited separately in the element properties.<
         <source>Exclure de la nomenclature</source>
         <translation>Exclude from the bill of materials</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="243"/>
+        <source>Hériter le label</source>
+        <translation>Inherit label</translation>
+    </message>
 </context>
 <context>
     <name>ElementPropertiesEditorWidget</name>

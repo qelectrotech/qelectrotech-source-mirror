@@ -68,22 +68,30 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 /**
  * @brief ElementData::applyInformationDefaults
  * Apply basetype-specific defaults without overriding an explicit value.
- * Legacy Slave definitions and instances did not store exclude_from_bom;
- * treat a missing, null, or empty value as excluded while preserving an
+ * Legacy Slave definitions and instances did not store these boolean fields.
+ * Treat a missing, null, or empty value as enabled while preserving an
  * explicit false opt-in.
  */
 void ElementData::applyInformationDefaults(
 		ElementData::Type type,
 		DiagramContext &informations)
 {
-	const QString key = QStringLiteral("exclude_from_bom");
-	const QVariant value = informations.value(key);
-	if (type == ElementData::Slave
-		&& (!informations.contains(key)
-			|| value.isNull()
-			|| value.toString().trimmed().isEmpty()))
+	if (type != ElementData::Slave)
+		return;
+
+	const QStringList default_true_keys = {
+		QStringLiteral("exclude_from_bom"),
+		QStringLiteral("inherit_label")
+	};
+	for (const QString &key : default_true_keys)
 	{
-		informations.addValue(key, QStringLiteral("true"));
+		const QVariant value = informations.value(key);
+		if (!informations.contains(key)
+			|| value.isNull()
+			|| value.toString().trimmed().isEmpty())
+		{
+			informations.addValue(key, QStringLiteral("true"));
+		}
 	}
 }
 

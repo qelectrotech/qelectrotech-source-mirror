@@ -382,6 +382,8 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		{
 			setupFormulaConnection();
 			updateLabel();
+			if (old_text_from == UserText && parentElement() != elementUseForInfo())
+				connect(parentElement(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 		}
 		else
 			setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
@@ -395,6 +397,8 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		{
 			setupFormulaConnection();
 			updateLabel();
+			if (old_text_from == UserText && parentElement() != elementUseForInfo())
+				connect(parentElement(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 		}
 		else
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
@@ -846,7 +850,9 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = element->actualLabel();
+				Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+					? parentElement() : element;
+				final_text = label_element->actualLabel();
 			}
 		}
 		else {
@@ -860,6 +866,11 @@ void DynamicElementTextItem::elementInfoChanged()
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
 		
+		if (element && m_composite_text.contains(QStringLiteral("%{label}"))) {
+			Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+				? parentElement() : element;
+			dc.addValue(QStringLiteral("label"), label_element->actualLabel());
+		}
 		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
 	}
 	else if (m_text_from  == UserText)
@@ -1118,9 +1129,16 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+				? parentElement() : element;
+			setPlainText(label_element->actualLabel());
 		}
 		else if (m_text_from == CompositeText) {
+			if (element) {
+				Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+					? parentElement() : element;
+				dc.addValue(QStringLiteral("label"), label_element->actualLabel());
+			}
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}

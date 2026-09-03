@@ -195,7 +195,8 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_PLC_FUNCTION,
 						 ELMT_PLC_COMMENT,
 						 ELMT_PLC_CROSSREF,
-						 "exclude_from_bom" };
+						 "exclude_from_bom",
+						 "inherit_label" };
 	return list;
 }
 

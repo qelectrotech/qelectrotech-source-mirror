@@ -2255,6 +2255,11 @@ Az elem megjelenítési nevét külön lehet szerkeszteni az elem tulajdonságok
         <source>Exclure de la nomenclature</source>
         <translation>Kizárás az anyagjegyzékből</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="243"/>
+        <source>Hériter le label</source>
+        <translation>Címke öröklése</translation>
+    </message>
 </context>
 <context>
     <name>ElementPropertiesEditorWidget</name>

@@ -55,6 +55,9 @@ could not be queried reliably from the internal project database.
   full rebuild paths.
 - BOM inclusion remains independently controllable through
   `exclude_from_bom`, with Slave elements excluded by default.
+- Slave label inheritance is enabled by default and can be disabled per placed
+  Slave. An inherited label combines the Master and local Slave labels with a
+  hyphen, for example `K1-A1` or `PLC1-CH3`.
 
 ## Implementation
 
@@ -68,6 +71,12 @@ could not be queried reliably from the internal project database.
   database rebuilds.
 - Normalize a missing, null, or empty `exclude_from_bom` to `true` for Slave
   definitions and placed instances while preserving an explicit `false`.
+- Normalize a missing, null, or empty `inherit_label` to `true`, expose it as a
+  Slave-only checkbox, and calculate the displayed label without overwriting
+  the Slave's own XML `label` value.
+- Migrate a legacy PLC Slave label that exactly duplicates its linked Master's
+  label to an empty local suffix, avoiding duplicated or stale labels after a
+  Master rename.
 
 ## Compatibility and behavior change
 
@@ -80,6 +89,11 @@ elements are excluded from unfiltered nomenclature and BOM queries by default.
 This also applies to legacy Slave XML where the key is missing or empty. An
 explicit `exclude_from_bom=false` remains the opt-in for listing a Slave as a
 separate BOM item.
+
+Legacy Slave XML without `inherit_label` defaults to inheritance. Explicit
+`inherit_label=false` preserves a standalone Slave label. PLC link data remains
+Master-driven, but the channel's own label is no longer destroyed by linking or
+unlinking.
 
 ## Test fixture
 

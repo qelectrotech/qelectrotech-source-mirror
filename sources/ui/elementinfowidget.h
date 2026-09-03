@@ -81,6 +81,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		QPushButton                     *m_add_custom_property_btn = nullptr;
 		QCheckBox                       *m_potential_isolating_cb = nullptr;
 		QCheckBox                        *m_exclude_from_bom_cb = nullptr;
+		QCheckBox                        *m_inherit_label_cb = nullptr;
 		bool m_first_activation;
 		bool m_ui_builded = false;
 };
