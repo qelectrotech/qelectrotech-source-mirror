@@ -63,6 +63,7 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 {
 	if (role == Qt::DecorationRole) {
 		QStandardItem *item = itemFromIndex(index);
+		if (!item) return QStandardItemModel::data(index, role);
 
 		if (item->type() == FileElementCollectionItem::Type)
 			static_cast<FileElementCollectionItem*>(item)->setUpIcon();
@@ -330,7 +331,6 @@ void ElementsCollectionModel::loadMacrosCollection()
 void ElementsCollectionModel::addMacrosCollection(bool set_data)
 {
 	QString macrosPath = QETApp::userMacrosDir();
-	qDebug() << "=== MAKRO PFAD CHECK ===" << macrosPath;
 	if (macrosPath.endsWith("/")) {
 		macrosPath.remove(macrosPath.length() - 1, 1);
 	}

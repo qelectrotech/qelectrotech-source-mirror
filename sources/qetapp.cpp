@@ -1975,6 +1975,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1986,6 +1987,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**

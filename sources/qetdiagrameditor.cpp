@@ -135,8 +135,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	connect(&m_workspace, &QMdiArea::subWindowActivated, this, &QETDiagramEditor::subWindowActivated);
 	connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &QETDiagramEditor::slot_updatePasteAction);
 
-	readSettings();
+	readSettings();  // restoreGeometry before show()
 	show();
+	readSettingsState();  // restoreState() must be called after show() in Qt6
 
 		//If valid file path is given as arguments
 	uint opened_projects = 0;
@@ -2227,16 +2228,30 @@ void QETDiagramEditor::readSettings()
 	QVariant geometry = settings.value("diagrameditor/geometry");
 	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
 
-	// etat de la fenetre (barres d'outils, docks...)
-	QVariant state = settings.value("diagrameditor/state");
-	if (state.isValid()) restoreState(state.toByteArray());
-
 	// gestion des projets (onglets ou fenetres)
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if (tabbed) {
 		setTabbedMode();
 	} else {
 		setWindowedMode();
+	}
+}
+
+/**
+	@brief QETDiagramEditor::readSettingsState
+	Restore the window state (docks, toolbars).
+	Must be called AFTER show() in Qt6 for restoreState() to work correctly.
+*/
+void QETDiagramEditor::readSettingsState()
+{
+	QSettings settings;
+
+	// etat de la fenetre (barres d'outils, docks...)
+	QVariant state = settings.value("diagrameditor/state");
+	if (state.isValid()) {
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("diagrameditor/state");
+		}
 	}
 }
 

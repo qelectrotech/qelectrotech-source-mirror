@@ -101,12 +101,29 @@ void ElementView::setSelectionMode()
 }
 
 /**
+	Applique un facteur d'echelle a la vue en bornant l'echelle resultante
+	entre m_min_zoom et m_max_zoom. Sans cette borne, un zoom repete (molette)
+	finit par faire deborder la transformation de la vue et fait planter
+	l'editeur (issue #798).
+	@param factor facteur d'echelle a appliquer
+*/
+void ElementView::scaleClamped(qreal factor)
+{
+	const qreal current = transform().m11();
+	const qreal target = current * factor;
+	if (target < m_min_zoom || target > m_max_zoom) {
+		return;
+	}
+	scale(factor, factor);
+}
+
+/**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
 void ElementView::zoomIn()
 {
 	adjustSceneRect();
-	scale(4.0/3.0, 4.0/3.0);
+	scaleClamped(4.0/3.0);
 }
 
 /**
@@ -115,7 +132,7 @@ void ElementView::zoomIn()
 void ElementView::zoomOut()
 {
 	adjustSceneRect();
-	scale(0.75, 0.75);
+	scaleClamped(0.75);
 }
 
 /**
@@ -123,7 +140,7 @@ void ElementView::zoomOut()
 */
 void ElementView::zoomInSlowly()
 {
-	scale(1.02, 1.02);
+	scaleClamped(1.02);
 }
 
 /**
@@ -131,7 +148,7 @@ void ElementView::zoomInSlowly()
 */
 void ElementView::zoomOutSlowly()
 {
-	scale(0.98, 0.98);
+	scaleClamped(0.98);
 }
 
 /**

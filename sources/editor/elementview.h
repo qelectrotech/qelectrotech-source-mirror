@@ -53,6 +53,13 @@ class ElementView : public QGraphicsView {
 	
 	private:
 	QRectF applyMovement(const QRectF &, const QPointF &);
+	void scaleClamped(qreal factor);
+
+	/// Lowest and highest allowed value of the view transform scale (m11).
+	/// Prevents the wheel-zoom from driving the transform to overflow, which
+	/// crashes the editor (bugtracker / GitHub issue #798).
+	static constexpr qreal m_min_zoom = 0.1;
+	static constexpr qreal m_max_zoom = 200.0;
 	
 	public slots:
 	void setVisualisationMode();
