@@ -25,18 +25,17 @@ jobs:
 
     strategy:
       fail-fast: false
+      # Single-entry matrix kept on purpose (rather than flattening the job):
+      # matrix.flavor is used as part of the MSI ProductCode seed, so changing
+      # it would generate a new ProductCode and break upgrade detection for
+      # existing installs. Keeping "qt6" here preserves continuity.
       matrix:
         include:
-          - flavor: qt5
-            portable_artifact: qelectrotech-windows-portable
-            version_source: qetversion   # parsed from sources/qetversion.cpp
-            label_suffix: ""
-            experimental: false
           - flavor: qt6
             portable_artifact: qelectrotech-windows-portable-qt6
             version_source: hardcoded    # see note in "Extract version" step
             label_suffix: "-qt6"
-            experimental: true
+            experimental: false
 
     permissions:
       contents: write
@@ -44,7 +43,6 @@ jobs:
       id-token: write  # Required by SignPath
 
     outputs:
-      qt5_msi: ${{ steps.export.outputs.msi_name_qt5 }}
       qt6_msi: ${{ steps.export.outputs.msi_name_qt6 }}
 
     steps:
@@ -72,14 +70,12 @@ jobs:
 
       # ----------------------------------------------------------------
       # 3. Extract version
-      #    Qt5: parsed from sources/qetversion.cpp (single source of truth
-      #         for the software's own reported version).
       #    Qt6: hardcoded "0.200.1" here — deliberately NOT parsed from the
       #         binary/source, since Qt-version self-detection inside the
       #         compiled code proved unreliable (see commit e1aa65f). The CI
       #         matrix entry already knows for certain which flavor it is
-      #         packaging, so the experimental-track label is set explicitly
-      #         at the packaging level instead.
+      #         packaging, so the version label is set explicitly at the
+      #         packaging level instead.
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
@@ -125,10 +121,9 @@ jobs:
           Write-Host "Version MSI     : $verMsi"
           Write-Host "Version display : $verDisplay"
 
-          # Qt platform argument: only Qt5 needs the QTBUG-83161 font-rendering
-          # workaround (GDI backend). Qt6 uses DirectWrite by default and does
-          # not need it. Computed once here so both the bundled "Lancer QET.bat"
-          # and the MSI shortcuts (wix build -d QtPlatformArgs=...) stay in sync.
+          # Qt platform argument: kept from the Qt5 era (QTBUG-83161
+          # font-rendering workaround, GDI backend). Qt6 uses DirectWrite by
+          # default and does not need it, so this always resolves empty now.
           if ("${{ matrix.flavor }}" -eq "qt5") {
             $qtArgs = "-platform windows:fontengine=freetype"
           } else {
@@ -228,10 +223,10 @@ jobs:
           Write-Host "Lancer QET.bat replaced for MSI installation (qtArgs: '$qtArgs')."
 
       # ----------------------------------------------------------------
-      # 9. Build the MSI (unsigned)
-      #    Qt6 (experimental) uses a distinct ProductCode seed so it never
-      #    collides with / upgrades over the Qt5 MSI — they must be able to
-      #    coexist as clearly separate installs.
+      # 9. Build the MSI (unsigned at this stage — signing happens below)
+      #    Qt6 keeps its own ProductCode seed (distinct from the retired Qt5
+      #    MSI), so a machine that still has the old Qt5 MSI installed gets a
+      #    separate, coexisting install rather than an unexpected upgrade.
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -289,12 +284,13 @@ jobs:
           retention-days: 1
           if-no-files-found: error
 
-      # Qt6 stays on the unsigned/experimental track (no signing request for
-      # this flavor), and forks never have the SignPath secrets, so guard on
-      # both: only qt5, and only in the upstream repo.
+      # Qt6 is now signed too (previously excluded while Qt5 was the stable
+      # track and Qt6 was experimental-only). The remaining guard is the fork
+      # check: forks never have the SignPath secrets, and a fork-originated
+      # PR/run must never attempt a signing request.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
-        if: matrix.flavor == 'qt5' && github.repository == 'qelectrotech/qelectrotech-source-mirror'
+        if: github.repository == 'qelectrotech/qelectrotech-source-mirror'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -314,15 +310,14 @@ jobs:
           retention-days: 40
           if-no-files-found: error
 
-      - name: Delete old nightly .msi asset for this flavor
+      - name: Delete old nightly .msi asset
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          $pattern = if ("${{ matrix.flavor }}" -eq "qt6") { "-qt6.*\\.msi$" } else { "\\.msi$" }
+          $pattern = "-qt6.*\\.msi$"
           $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
           foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
-            if ("${{ matrix.flavor }}" -eq "qt5" -and $name -match "-qt6") { continue }
             Write-Host "Deleting old asset: $name"
             gh release delete-asset nightly $name --repo $env:REPO --yes
           }
@@ -342,11 +337,7 @@ jobs:
         shell: pwsh
         run: |
           $name = "$env:MSI_NAME"
-          if ("${{ matrix.flavor }}" -eq "qt6") {
-            echo "msi_name_qt6=$name" >> $env:GITHUB_OUTPUT
-          } else {
-            echo "msi_name_qt5=$name" >> $env:GITHUB_OUTPUT
-          }
+          echo "msi_name_qt6=$name" >> $env:GITHUB_OUTPUT
 
       - name: Summary
         if: always()
@@ -354,11 +345,11 @@ jobs:
         run: |
           Write-Host "=== MSI build summary (${{ matrix.flavor }}) ==="
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
-          Write-Host "Experimental : ${{ matrix.experimental }}"
+          Write-Host "Signed  : true"
 
   # ---------------------------------------------------------------------------
-  # Job 2 : Génère et déploie la page GitHub Pages une fois les DEUX MSI
-  # (Qt5 + Qt6) publiés, pour que toutes les URLs soient connues.
+  # Job 2 : Génère et déploie la page GitHub Pages une fois le MSI publié,
+  # pour que toutes les URLs soient connues.
   # ---------------------------------------------------------------------------
   deploy-pages:
     needs: build-msi
@@ -388,13 +379,17 @@ jobs:
 
           ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
 
-          EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1)
-          ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1)
-          MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
+          EXE_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1)
+          ZIP_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1)
+          MSI_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
 
-          EXE_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1 || echo "")
-          ZIP_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1 || echo "")
-          MSI_QT6_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
+          # Legacy Qt5 assets (no "qt6" in the name): last ever published,
+          # frozen — windows-build.yml/windows-msi.yml no longer delete or
+          # replace these, so they keep pointing at the same files release
+          # after release. Rendered as a separate "legacy" section if present.
+          LEGACY_EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1 || echo "")
+          LEGACY_ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1 || echo "")
+          LEGACY_MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
 
           BASE="https://github.com/$REPO/releases/download/nightly"
           INSTALLER_URL="$BASE/$EXE_NAME"
@@ -402,12 +397,12 @@ jobs:
           MSI_URL=""
           [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
 
-          INSTALLER_QT6_URL=""
-          PORTABLE_QT6_URL=""
-          MSI_QT6_URL=""
-          [ -n "$EXE_QT6_NAME" ] && INSTALLER_QT6_URL="$BASE/$EXE_QT6_NAME"
-          [ -n "$ZIP_QT6_NAME" ] && PORTABLE_QT6_URL="$BASE/$ZIP_QT6_NAME"
-          [ -n "$MSI_QT6_NAME" ] && MSI_QT6_URL="$BASE/$MSI_QT6_NAME"
+          LEGACY_INSTALLER_URL=""
+          LEGACY_PORTABLE_URL=""
+          LEGACY_MSI_URL=""
+          [ -n "$LEGACY_EXE_NAME" ] && LEGACY_INSTALLER_URL="$BASE/$LEGACY_EXE_NAME"
+          [ -n "$LEGACY_ZIP_NAME" ] && LEGACY_PORTABLE_URL="$BASE/$LEGACY_ZIP_NAME"
+          [ -n "$LEGACY_MSI_NAME" ] && LEGACY_MSI_URL="$BASE/$LEGACY_MSI_NAME"
 
           SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
           SHORT="${SHA:0:7}"
@@ -417,7 +412,7 @@ jobs:
 
           export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
           export INSTALLER_URL PORTABLE_URL MSI_URL
-          export INSTALLER_QT6_URL PORTABLE_QT6_URL MSI_QT6_URL
+          export LEGACY_INSTALLER_URL LEGACY_PORTABLE_URL LEGACY_MSI_URL
 
           python3 source/build-aux/generate-page.py
 

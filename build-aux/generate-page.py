@@ -2,11 +2,19 @@
 """
 generate-page.py — Generates gh-pages/index.html for QElectroTech nightly builds.
 Called from windows-msi.yml deploy-pages job.
+
 Environment variables required:
   DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER,
   INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
-Optional (Qt6 track — omitted entirely if empty):
-  INSTALLER_QT6_URL, PORTABLE_QT6_URL, MSI_QT6_URL
+
+Optional (frozen Qt5 legacy build — omitted entirely if empty):
+  LEGACY_INSTALLER_URL, LEGACY_PORTABLE_URL, LEGACY_MSI_URL
+
+NOTE: Windows Qt5 CI build removed (Qt6 is now the sole track built and
+signed going forward). INSTALLER_URL / PORTABLE_URL / MSI_URL point to the
+Qt6 build artifacts. The LEGACY_* variables, when set, point to the last
+Qt5 nightly assets that were ever published — kept downloadable but frozen
+(windows-build.yml no longer regenerates or deletes them).
 """
 import os
 
@@ -20,9 +28,9 @@ installer_url = os.environ.get("INSTALLER_URL", "")
 portable_url  = os.environ.get("PORTABLE_URL", "")
 msi_url       = os.environ.get("MSI_URL", "")
 
-installer_qt6_url = os.environ.get("INSTALLER_QT6_URL", "")
-portable_qt6_url  = os.environ.get("PORTABLE_QT6_URL", "")
-msi_qt6_url       = os.environ.get("MSI_QT6_URL", "")
+legacy_installer_url = os.environ.get("LEGACY_INSTALLER_URL", "")
+legacy_portable_url  = os.environ.get("LEGACY_PORTABLE_URL", "")
+legacy_msi_url       = os.environ.get("LEGACY_MSI_URL", "")
 
 msi_block = ""
 if msi_url:
@@ -32,43 +40,44 @@ if msi_url:
 <span class="btn-text">Windows Installer .msi<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
 
-# Qt6 section — only rendered if at least one Qt6 asset exists.
-qt6_block = ""
-if installer_qt6_url or portable_qt6_url or msi_qt6_url:
-    qt6_msi_btn = ""
-    if msi_qt6_url:
-        qt6_msi_btn = f"""
-<a class="btn btn-msi" href="{msi_qt6_url}">
+# Legacy Qt5 section — only rendered if at least one legacy asset exists.
+legacy_block = ""
+if legacy_installer_url or legacy_portable_url or legacy_msi_url:
+    legacy_installer_btn = ""
+    if legacy_installer_url:
+        legacy_installer_btn = f"""
+<a class="btn btn-secondary" href="{legacy_installer_url}">
 <span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer .msi (Qt6)<small>.msi &mdash; for enterprise / GPO deployment</small></span>
+<span class="btn-text">Windows Installer (Qt5, legacy)<small>.exe &mdash; frozen, no longer updated</small></span>
 </a>"""
-    qt6_installer_btn = ""
-    if installer_qt6_url:
-        qt6_installer_btn = f"""
-<a class="btn btn-primary" href="{installer_qt6_url}">
+    legacy_msi_btn = ""
+    if legacy_msi_url:
+        legacy_msi_btn = f"""
+<a class="btn btn-secondary" href="{legacy_msi_url}">
 <span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer (Qt6)<small>.exe &mdash; includes all dependencies</small></span>
+<span class="btn-text">Windows Installer .msi (Qt5, legacy)<small>.msi &mdash; frozen, no longer updated</small></span>
 </a>"""
-    qt6_portable_btn = ""
-    if portable_qt6_url:
-        qt6_portable_btn = f"""
-<a class="btn btn-secondary" href="{portable_qt6_url}">
+    legacy_portable_btn = ""
+    if legacy_portable_url:
+        legacy_portable_btn = f"""
+<a class="btn btn-secondary" href="{legacy_portable_url}">
 <span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable (Qt6)<small>.zip &mdash; no installation required</small></span>
+<span class="btn-text">Windows Portable (Qt5, legacy)<small>.zip &mdash; frozen, no longer updated</small></span>
 </a>"""
 
-    qt6_block = f"""
+    legacy_block = f"""
 <div class="card">
-<h2>&#129514; Windows &mdash; x86_64 &mdash; Qt6 track</h2>
+<h2>&#128451; Windows &mdash; x86_64 &mdash; Qt5 (legacy, unmaintained)</h2>
 <div class="warning">
-&#129514; <strong>Try Qt6 &mdash; soon the only track.</strong> The Qt5 builds above
-will be removed from Windows CI soon; Qt6 is becoming the sole supported track.
-Please switch and test it now &mdash; report any issue and mention &quot;Qt6&quot; explicitly.
+&#128451; <strong>Legacy build &mdash; frozen, no longer updated.</strong> This is the
+last Qt5 build published before Windows CI switched to Qt6 only. Kept available for
+anyone who still needs it, but it will not receive further fixes or security updates.
+Please migrate to the Qt6 build above when you can.
 </div>
 <div class="downloads">
-{qt6_installer_btn}
-{qt6_msi_btn}
-{qt6_portable_btn}
+{legacy_installer_btn}
+{legacy_msi_btn}
+{legacy_portable_btn}
 </div>
 </div>"""
 
@@ -126,7 +135,7 @@ For production use, download a <a href="https://github.com/{repo}/releases">stab
 </div>
 </div>
 <div class="card">
-<h2>&#127993; Windows &mdash; x86_64 &mdash; Qt5 track</h2>
+<h2>&#127993; Windows &mdash; x86_64</h2>
 <div class="downloads">
 <a class="btn btn-primary" href="{installer_url}">
 <span class="btn-icon">&#11015;</span>
@@ -143,7 +152,7 @@ For production use, download a <a href="https://github.com/{repo}/releases">stab
 </a>
 </div>
 </div>
-{qt6_block}
+{legacy_block}
 </main>
 <footer>
 Auto-generated by GitHub Actions &nbsp;&middot;&nbsp;
