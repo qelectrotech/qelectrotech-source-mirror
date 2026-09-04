@@ -28,19 +28,38 @@ class QParallelAnimationGroup;
 
 /**
 	@brief The RotateTextsCommand class
-	Open a dialog for edit the rotation of the current selected texts and texts group in diagram.
-	Just instantiate this undo command and push it in a QUndoStack.
+	Apply @p rotation to the currently selected texts and texts group of a
+	diagram. Just instantiate this undo command and push it in a QUndoStack.
+
+	This command does not ask the user for anything: obtaining the angle is the
+	caller's job, via the askRotation() helper below. Keeping the dialog out of
+	the constructor is what makes the command usable outside an interactive
+	session — from a test harness, a regression sweep, or a script — and stops
+	a headless caller from blocking forever on a modal nobody can answer.
+
+	Typical interactive use:
+	@code
+	if (RotateTextsCommand::hasSelectedTexts(diagram)) {
+		qreal rotation = 0;
+		if (RotateTextsCommand::askRotation(rotation))
+			diagram->undoStack().push(new RotateTextsCommand(diagram, rotation));
+	}
+	@endcode
 */
 class RotateTextsCommand : public QUndoCommand
 {
 	public:
-		RotateTextsCommand(Diagram *diagram, QUndoCommand *parent=nullptr);
+		RotateTextsCommand(Diagram *diagram, qreal rotation, QUndoCommand *parent=nullptr);
+
+			/// @return true if @p diagram has at least one selected text or text group to rotate.
+		static bool hasSelectedTexts(Diagram *diagram);
+			/// Open the orientation dialog. @return true and set @p rotation if accepted, false if cancelled.
+		static bool askRotation(qreal &rotation);
 
 		void undo() override;
 		void redo() override;
 
 	private:
-		void openDialog();
 		void setupAnimation(QObject *target, const QByteArray &propertyName, const QVariant& start, const QVariant& end);
 
 	private:
