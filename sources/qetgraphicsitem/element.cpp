@@ -53,6 +53,7 @@ static const QString plcTerminalKeys[] = {
 #include <QDebug>
 
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <utility>
 
 class ElementXmlRetroCompatibility
@@ -699,11 +700,16 @@ bool Element::valideXml(QDomElement &e)
 	}
 
 	bool conv_ok;
-	e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" and reports a
+		//successful conversion for them, so conv_ok alone doesn't reject a
+		//non-finite coordinate. A NaN position reaching the scene can hang
+		//QGraphicsScene::addItem() forever inside Qt's own polygon-clipping
+		//code when an existing conductor's collision test runs against it.
+	double x = e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(x)) return(false);
 
-	e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+	double y = e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(y)) return(false);
 
 	return(true);
 }
