@@ -267,7 +267,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
