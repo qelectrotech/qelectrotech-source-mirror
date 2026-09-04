@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          sudo pkg install -y git devel/qt6 \
+          sudo pkg install -y git qt6-base qt6-pdf \
               cmake ninja ccache pkgconf sqlite3
 
           SOURCE_DIR="$PWD/source"
