@@ -1,0 +1,410 @@
+name: Package and upload
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    tags: ['*']
+
+
+jobs:
+  verify-version:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    outputs:
+      prerelease: ${{ steps.release_type.outputs.prerelease }}
+      tag_name: ${{ steps.release_type.outputs.tag_name }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify tag matches VERSION and VERSION_TYPE
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME#v}"
+          FILE_VERSION="$(tr -d '[:space:]' < QET_VERSION)"
+          FILE_TYPE="$(tr -d '[:space:]' < QET_RELEASE)"
+
+          if [[ "$TAG" == *-* ]]; then
+            TAG_VERSION="${TAG%%-*}"
+            TAG_TYPE="${TAG#*-}"
+          else
+            TAG_VERSION="$TAG"
+            TAG_TYPE="stable"
+          fi
+
+          if [ "$TAG_VERSION" != "$FILE_VERSION" ]; then
+            echo "::error::Tag version ($TAG_VERSION) does not match QET_VERSION file ($FILE_VERSION)"
+            exit 1
+          fi
+          if [ "$TAG_TYPE" != "$FILE_TYPE" ]; then
+            echo "::error::Tag type ($TAG_TYPE) does not match QET_RELEASE file ($FILE_TYPE)"
+            exit 1
+          fi
+          if [ "$FILE_TYPE" = "dev" ]; then
+            echo "::error::VERSION_TYPE is still 'dev' -- bump it before tagging a release"
+            exit 1
+          fi
+      - name: Determine prerelease status
+        id: release_type
+        run: |
+          set -euo pipefail
+          TYPE="$(tr -d '[:space:]' < QET_RELEASE)"
+          echo "prerelease=$([ "$TYPE" != "stable" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+          echo "tag_name=v$(tr -d '[:space:]' < QET_VERSION)$([ "$TYPE" != "stable" ] && echo "-$TYPE")" >> "$GITHUB_OUTPUT"
+          
+  build-macos:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')  
+    name: Build MacOS DMG
+    uses: ./.github/workflows/macos-package-dmg.yml
+    secrets: inherit
+
+  build-appimage:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')  
+    name: Build Linux AppImage
+    uses: ./.github/workflows/linux-package-appimage.yml
+    secrets: inherit
+    
+  build-windows-exe:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')  
+    name: Build Windows Exe/Portable
+    uses: ./.github/workflows/windows-package-exe.yml
+    secrets: inherit
+    
+  build-windows-msi:
+    needs: build-windows-exe
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Windows MSI
+    uses: ./.github/workflows/windows-package-msi.yml
+    secrets: inherit
+    
+  build-linux-snap:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Linux snap
+    uses: ./.github/workflows/linux-package-snap.yml
+    secrets: inherit
+    
+  build-linux-flatpack:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Linux flatpack
+    uses: ./.github/workflows/linux-package-flatpack.yml
+    secrets: inherit
+    
+  build-docs:
+    needs: verify-version
+    if: always() && (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped')
+    name: Build Doxygen HTML docs
+    uses: ./.github/workflows/auto-doxygen.yml
+    secrets: inherit
+
+  publish-release:
+    name: Upload all builds to github page and update HTML
+    needs: [verify-version, build-macos, build-appimage, build-windows-exe, build-windows-msi, build-linux-snap, build-linux-flatpack, build-docs]
+    if: |
+      always() &&
+      (needs.verify-version.result == 'success' || needs.verify-version.result == 'skipped') &&
+      needs.build-macos.result == 'success' &&
+      needs.build-appimage.result == 'success' &&
+      needs.build-windows-exe.result == 'success' &&
+      needs.build-windows-msi.result == 'success' &&
+      needs.build-linux-snap.result == 'success' &&
+      needs.build-linux-flatpack.result == 'success'  &&
+      needs.build-docs.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - name: Determine release target (tag vs development)
+        id: target
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            echo "is_tag=true" >> "$GITHUB_OUTPUT"
+            echo "tag_name=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            echo "release_name=QElectroTech ${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            echo "prerelease=${{ needs.verify-version.outputs.prerelease }}" >> "$GITHUB_OUTPUT"
+          else
+            # A unique tag per run (never reused) so GitHub's auto-generated
+            # "Source code" archive can never be served stale from codeload's
+            # per-tag cache -- a fresh tag has never been cached before.
+            # generate-page.py's stable download page is what users actually
+            # bookmark, so a rotating tag name underneath it is invisible to them.
+            DEVELOPMENT_TAG="development-$(date -u +%Y%m%d-%H%M)-${{ github.run_number }}"
+            DEVELOPMENT_NAME="Development release - $(date -u '+%Y-%m-%d %H:%M')"
+            echo "is_tag=false" >> "$GITHUB_OUTPUT"
+            echo "tag_name=$DEVELOPMENT_TAG" >> "$GITHUB_OUTPUT"
+            echo "release_name=$DEVELOPMENT_NAME" >> "$GITHUB_OUTPUT"
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Only the artifacts actually meant to be released end up in artifacts/.
+      # A plain, unfiltered `download-artifact` here would also sweep up
+      # internal/intermediate artifacts that other jobs produce purely to pass
+      # data between themselves within the same run -- namely the raw
+      # `nsis_root/files/` tree (qelectrotech-windows-portable[-qt6], an
+      # uncompressed folder used only as input to the MSI job) and the
+      # pre-signing `qelectrotech-windows-msi-unsigned-*` artifact. Both would
+      # otherwise show up as hundreds of loose files on the release.
+      - name: Download macOS DMG artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-macos-*
+          merge-multiple: true
+
+      - name: Download Linux AppImage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-appimage-*
+          merge-multiple: true
+
+      - name: Download Windows installer artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-windows-installer*
+          merge-multiple: true
+
+      - name: Download Windows portable zip artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-*-readytouse
+          merge-multiple: true
+
+      - name: Download Windows MSI artifacts (signed only)
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-windows-msi*
+          merge-multiple: true
+          
+      - name: Download Snap artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-snap-*
+          merge-multiple: true
+
+      - name: Download Flatpak artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: qelectrotech-flatpak-*
+          merge-multiple: true
+          
+      - name: Download Doxygen HTML docs
+        uses: actions/download-artifact@v4
+        with:
+          name: doxygen-html
+          path: gh-pages/docs
+
+      - name: Delete previous development releases
+        if: steps.target.outputs.is_tag == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+          gh release list --repo "$REPO" --limit 100 --json tagName \
+            --jq '.[] | select(.tagName == "development" or (.tagName | startswith("development-"))) | .tagName' \
+          | while IFS= read -r OLD_TAG; do
+              echo "Deleting old development release: $OLD_TAG"
+              gh release delete "$OLD_TAG" --repo "$REPO" --yes --cleanup-tag || true
+            done
+
+      - name: Build release body
+        id: body
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.target.outputs.is_tag }}" = "true" ]; then
+            BODY="$(cat <<'EOF'
+          ## QElectroTech ${{ steps.target.outputs.tag_name }}
+
+          | | |
+          |---|---|
+          | **Commit** | ${{ github.sha }} |
+          | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+
+          EOF
+          )"
+          else
+            BODY="$(cat <<'EOF'
+          🔧 **Automated development build** — may be unstable.
+
+          | | |
+          |---|---|
+          | **Commit** | ${{ github.sha }} |
+          | **Run** | https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+          | **Date** | ${{ github.event.head_commit.timestamp }} |
+
+          > ⚠️ This is a development version; it introduces new features you might want to test, but may have bugs that have not yet been identified yet.
+          > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
+
+          EOF
+          )"
+          fi
+          {
+            echo "text<<RELEASE_BODY_EOF"
+            echo "$BODY"
+            echo "RELEASE_BODY_EOF"
+          } >> "$GITHUB_ENV"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ steps.target.outputs.tag_name }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ steps.target.outputs.release_name }}
+          prerelease: ${{ steps.target.outputs.prerelease }}
+          files: artifacts/*
+          body: ${{ env.text }}
+
+      - name: Checkout code (for generate-page.py)
+        if: steps.target.outputs.is_tag == 'false'
+        uses: actions/checkout@v7
+        with:
+          path: source
+          sparse-checkout: build-aux/generate-page.py
+          sparse-checkout-cone-mode: false
+
+      - name: Generate download page (index.html)
+        if: steps.target.outputs.is_tag == 'false'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          REPO="${{ github.repository }}"
+
+          ASSETS=$(gh release view "${{ steps.target.outputs.tag_name }}" --repo "$REPO" --json assets --jq '.assets[].name')
+          BASE="https://github.com/$REPO/releases/download/${{ steps.target.outputs.tag_name }}"
+
+          EXE_NAME=$(echo "$ASSETS" | grep '\.exe$' | head -1)
+          ZIP_NAME=$(echo "$ASSETS" | grep '\.zip$' | head -1)
+          MSI_NAME=$(echo "$ASSETS" | grep '\.msi$' | head -1 || echo "")
+
+          INSTALLER_URL=""
+          PORTABLE_URL=""
+          MSI_URL=""
+          [ -n "$EXE_NAME" ] && EXE_URL="$BASE/$EXE_NAME"
+          [ -n "$ZIP_NAME" ] && ZIP_URL="$BASE/$ZIP_NAME"
+          [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
+
+          DMG_ARM64_NAME=$(echo "$ASSETS"  | grep 'arm64' | grep '\.dmg$' | head -1 || echo "")
+          DMG_X8664_NAME=$(echo "$ASSETS"  | grep 'x86_64' | grep '\.dmg$' | head -1 || echo "")
+          
+          DMG_ARM64_URL=""
+          DMG_X8664_URL=""
+          [ -n "$DMG_ARM64_NAME" ] && DMG_ARM64_URL="$BASE/$DMG_ARM64_NAME"
+          [ -n "$DMG_X8664_NAME" ] && DMG_X8664_URL="$BASE/$DMG_X8664_NAME"
+
+          APPIMAGE_X8664_NAME=$(echo "$ASSETS" | grep -v 'aarch64' | grep '\.AppImage$' | head -1 || echo "")
+          APPIMAGE_AARCH64_NAME=$(echo "$ASSETS" | grep 'aarch64' | grep '\.AppImage$' | head -1 || echo "")
+
+          APPIMAGE_X8664_URL=""
+          APPIMAGE_AARCH64_URL=""
+          [ -n "$APPIMAGE_X8664_NAME" ] && APPIMAGE_X8664_URL="$BASE/$APPIMAGE_X8664_NAME"
+          [ -n "$APPIMAGE_AARCH64_NAME" ] && APPIMAGE_AARCH64_URL="$BASE/$APPIMAGE_AARCH64_NAME"
+          
+          SNAP_AMD64_NAME=$(echo "$ASSETS" | grep 'amd64' | grep '\.snap$' | head -1 || echo "")
+          SNAP_ARM64_NAME=$(echo "$ASSETS" | grep 'arm64' | grep '\.snap$' | head -1 || echo "")
+
+          SNAP_AMD64_URL=""
+          SNAP_ARM64_URL=""
+          [ -n "$SNAP_AMD64_NAME" ] && SNAP_AMD64_URL="$BASE/$SNAP_AMD64_NAME"
+          [ -n "$SNAP_ARM64_NAME" ] && SNAP_ARM64_URL="$BASE/$SNAP_ARM64_NAME"
+
+          FLATPAK_X8664_NAME=$(echo "$ASSETS" | grep -v 'aarch64' | grep '\.flatpak$' | head -1 || echo "")
+          FLATPAK_AARCH64_NAME=$(echo "$ASSETS" | grep 'aarch64' | grep '\.flatpak$' | head -1 || echo "")
+
+          FLATPAK_X8664_URL=""
+          FLATPAK_AARCH64_URL=""
+          [ -n "$FLATPAK_X8664_NAME" ] && FLATPAK_X8664_URL="$BASE/$FLATPAK_X8664_NAME"
+          [ -n "$FLATPAK_AARCH64_NAME" ] && FLATPAK_AARCH64_URL="$BASE/$FLATPAK_AARCH64_NAME"
+
+          export INSTALLER_URL PORTABLE_URL MSI_URL
+          export DMG_ARM64_URL DMG_X8664_URL 
+          export APPIMAGE_X8664_URL APPIMAGE_AARCH64_URL
+          export SNAP_AMD64_URL SNAP_ARM64_URL
+          export FLATPAK_X8664_URL FLATPAK_AARCH64_URL
+                    
+          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
+          SHORT="${SHA:0:7}"
+          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
+          RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
+          RUN_NUMBER="${{ github.run_number }}"
+          RELEASE_TAG="${{ steps.target.outputs.tag_name }}"
+
+          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER RELEASE_TAG
+
+          python3 source/build-aux/generate-page.py
+
+      - name: Add .nojekyll
+        if: steps.target.outputs.is_tag == 'false'
+        shell: bash
+        run: touch gh-pages/.nojekyll
+
+      - name: Upload GitHub Pages artifact
+        if: steps.target.outputs.is_tag == 'false'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: gh-pages/
+
+      - name: Deploy to GitHub Pages
+        if: steps.target.outputs.is_tag == 'false'
+        uses: actions/deploy-pages@v5
+  reset-version-type:
+    needs: [verify-version, publish-release]   # after the release actually succeeded
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: master
+
+      - name: Check release type
+        id: check
+        run: echo "release=$(tr -d '[:space:]' < QET_RELEASE)" >> "$GITHUB_OUTPUT"
+
+      - name: Update publiccode.yml for stable releases
+        if: steps.check.outputs.release == 'stable'
+        run: |
+          set -euo pipefail
+          VERSION="$(tr -d '[:space:]' < QET_VERSION)"
+          TODAY="$(date -u +%Y-%m-%d)"
+          sed -i "s|^softwareVersion:.*|softwareVersion: \"${VERSION}\"|" publiccode.yml
+          sed -i "s|^releaseDate:.*|releaseDate: \"${TODAY}\"|" publiccode.yml
+          echo "Updated publiccode.yml: softwareVersion=${VERSION}, releaseDate=${TODAY}"
+
+      - name: Reset VERSION_TYPE to dev
+        run: |
+          set -euo pipefail
+          CURRENT="$(tr -d '[:space:]' < QET_RELEASE)"
+          if [ "$CURRENT" = "dev" ]; then
+            echo "Already dev, nothing to do."
+            exit 0
+          fi
+          echo "dev" > QET_RELEASE
+          
+      - name: Commit and push
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git add QET_RELEASE publiccode.yml
+          git commit -m "Reset QET_RELEASE to dev after ${{ github.ref_name }} release"
+          git push origin master
+

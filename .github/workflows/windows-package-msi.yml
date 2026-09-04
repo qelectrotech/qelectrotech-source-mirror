@@ -1,11 +1,12 @@
-name: Windows MSI (WiX v7)
+name: Package Windows MSI (WiX v7)
 
 on:
   # Triggered automatically after a successful Windows build on master
-  workflow_run:
-    workflows: ["Windows Build"]
-    types: [completed]
-    branches: [master]
+  workflow_call:  
+  # workflow_run:
+  #  workflows: ["Windows Build"]
+  #  types: [completed]
+  #  branches: [master]
   # Manual trigger still available (e.g. for a specific run_id)
   workflow_dispatch:
     inputs:
@@ -13,37 +14,24 @@ on:
         description: "Run ID of 'Windows Build' (leave empty for automatic)"
         required: false
         default: ""
-
+       
 jobs:
   build-msi:
-    name: Build MSI with WiX v7 (${{ matrix.flavor }})
+    name: Package MSI with WiX v7
     runs-on: windows-latest
     # Only runs if Windows Build succeeded (or triggered manually)
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
+    # if: >
+    #  github.event_name == 'workflow_dispatch' ||
+    #  github.event.workflow_run.conclusion == 'success'
 
-    strategy:
-      fail-fast: false
-      # Single-entry matrix kept on purpose (rather than flattening the job):
-      # matrix.flavor is used as part of the MSI ProductCode seed, so changing
-      # it would generate a new ProductCode and break upgrade detection for
-      # existing installs. Keeping "qt6" here preserves continuity.
-      matrix:
-        include:
-          - flavor: qt6
-            portable_artifact: qelectrotech-windows-portable-qt6
-            version_source: hardcoded    # see note in "Extract version" step
-            label_suffix: "-qt6"
-            experimental: false
+    concurrency:
+      group: windows-package-msi-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true  
 
     permissions:
       contents: write
       pages: write
       id-token: write  # Required by SignPath
-
-    outputs:
-      qt6_msi: ${{ steps.export.outputs.msi_name_qt6 }}
 
     steps:
       # ----------------------------------------------------------------
@@ -55,12 +43,12 @@ jobs:
           fetch-depth: 0
 
       # ----------------------------------------------------------------
-      # 2. Download the portable artifact for this flavor
+      # 2. Download the portable artifact
       # ----------------------------------------------------------------
       - name: Download portable artifact
         uses: actions/download-artifact@v8
         with:
-          name: ${{ matrix.portable_artifact }}
+          name: qelectrotech-windows-portable
           path: artifact\files
           # workflow_run => use the triggering run's ID
           # workflow_dispatch => use input run_id if provided, otherwise current run
@@ -70,65 +58,56 @@ jobs:
 
       # ----------------------------------------------------------------
       # 3. Extract version
-      #    Qt6: hardcoded "0.200.1" here — deliberately NOT parsed from the
-      #         binary/source, since Qt-version self-detection inside the
-      #         compiled code proved unreliable (see commit e1aa65f). The CI
-      #         matrix entry already knows for certain which flavor it is
-      #         packaging, so the version label is set explicitly at the
-      #         packaging level instead.
+      #    VERSION/RELEASE files at the repo root (single source of truth)
+      #    are read.
       # ----------------------------------------------------------------
       - name: Extract version
         id: version
         shell: pwsh
         run: |
-          if ("${{ matrix.version_source }}" -eq "hardcoded") {
-            $ver = "0.200.1"
-          } else {
-            $src = Get-Content "sources\qetversion.cpp" -Raw -ErrorAction SilentlyContinue
-            if ($src -match 'return QVersionNumber\{([^}]+)\}') {
-              $ver = $Matches[1] -replace '\s','' -replace ',','.'
-            } else {
-              # Fallback: CMakeLists.txt
-              $cmake = Get-Content "CMakeLists.txt" -Raw
-              if ($cmake -match 'project\s*\([^)]*VERSION\s+([\d]+\.[\d]+\.[\d]+)') {
-                $ver = $Matches[1]
-              } else {
-                $ver = "0.0.0"
-              }
-            }
-          }
+          $ver = (Get-Content "QET_VERSION" -Raw).Trim()
+          $release = (Get-Content "QET_RELEASE" -Raw).Trim()
 
-          # Short SHA for the display version
+          # Short SHA and cumulative revision count -- still computed
+          # unconditionally, since VERSION_MSI's monotonic numeric
+          # requirement is independent of RELEASE stage.
           $sha = git rev-parse --short HEAD 2>$null
           if (-not $sha) { $sha = "unknown" }
-
-          # Cumulative revision number (same calculation as windows-build.yml)
           $count = git rev-list HEAD --count 2>$null
           $rev = [int]$count + 473
 
           # MSI Version only compares Major.Minor.Build (the 4th field is
           # ignored by Windows Installer for upgrade detection), so we
-          # inject rev into Build to force a real increase between
-          # nightlies and trigger MajorUpgrade's automatic uninstall.
+          # inject rev into Build to force a real increase between builds
+          # and trigger MajorUpgrade's automatic uninstall.
           $verParts = $ver -split '\.'
           $verMsi = "$($verParts[0]).$($verParts[1]).$($rev % 65535)"
 
-          $flavorTag = "${{ matrix.label_suffix }}"
-          $verDisplay = "${ver}${flavorTag}-r${rev}-${sha}_x86_64-win64"
+          # Human-readable suffix depends on RELEASE:
+          #   dev            -> -r<rev>-<sha>  (nightly, no fixed tag exists)
+          #   alpha1/2/3     -> -alpha1/2/3    (tagged, no hash needed)
+          #   stable         -> nothing        (tagged, final release)
+          switch ($release) {
+            "dev"    { $suffix = "-r${rev}-${sha}" }
+            "alpha1" { $suffix = "-alpha1" }
+            "alpha2" { $suffix = "-alpha2" }
+            "alpha3" { $suffix = "-alpha3" }
+            "stable" { $suffix = "" }
+            default {
+              Write-Error "Unrecognized RELEASE value '$release' (expected dev, alpha1, alpha2, alpha3, or stable)"
+              exit 1
+            }
+          }
+
+          $verDisplay = "${ver}${suffix}_x86_64-win64"
 
           echo "VERSION_MSI=$verMsi"         >> $env:GITHUB_OUTPUT
           echo "VERSION_DISPLAY=$verDisplay" >> $env:GITHUB_OUTPUT
           Write-Host "Version MSI     : $verMsi"
           Write-Host "Version display : $verDisplay"
 
-          # Qt platform argument: kept from the Qt5 era (QTBUG-83161
-          # font-rendering workaround, GDI backend). Qt6 uses DirectWrite by
-          # default and does not need it, so this always resolves empty now.
-          if ("${{ matrix.flavor }}" -eq "qt5") {
-            $qtArgs = "-platform windows:fontengine=freetype"
-          } else {
-            $qtArgs = ""
-          }
+          $qtArgs = ""
+
           echo "QT_ARGS=$qtArgs" >> $env:GITHUB_OUTPUT
           Write-Host "Qt platform args: '$qtArgs'"
 
@@ -223,10 +202,7 @@ jobs:
           Write-Host "Lancer QET.bat replaced for MSI installation (qtArgs: '$qtArgs')."
 
       # ----------------------------------------------------------------
-      # 9. Build the MSI (unsigned at this stage — signing happens below)
-      #    Qt6 keeps its own ProductCode seed (distinct from the retired Qt5
-      #    MSI), so a machine that still has the old Qt5 MSI installed gets a
-      #    separate, coexisting install rather than an unexpected upgrade.
+      # 9. Build the MSI (unsigned)
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -238,7 +214,7 @@ jobs:
           $wxs        = "build-aux\windows\QElectroTech.wxs"
           $outputName = "QElectroTech-${verDisplay}.msi"
 
-          $seed      = "qelectrotech-msi-${{ matrix.flavor }}-$version"
+          $seed      = "qelectrotech-msi-$version"
           $sha1      = [System.Security.Cryptography.SHA1]::Create()
           $hash      = $sha1.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($seed))
           $hash[6]   = ($hash[6] -band 0x0F) -bor 0x50
@@ -247,7 +223,7 @@ jobs:
 
           New-Item -ItemType Directory -Force -Path "dist" | Out-Null
 
-          Write-Host "=== wix build (${{ matrix.flavor }}) ==="
+          Write-Host "=== wix build ==="
           Write-Host " Version     : $version"
           Write-Host " ProductCode : $productCode"
           Write-Host " Output      : dist\$outputName"
@@ -279,18 +255,15 @@ jobs:
         id: upload_unsigned
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-msi-unsigned-${{ matrix.flavor }}
+          name: qelectrotech-windows-msi-unsigned
           path: dist\*.msi
           retention-days: 1
           if-no-files-found: error
 
-      # Qt6 is now signed too (previously excluded while Qt5 was the stable
-      # track and Qt6 was experimental-only). The remaining guard is the fork
-      # check: forks never have the SignPath secrets, and a fork-originated
-      # PR/run must never attempt a signing request.
+      # Forks do not have the SignPath secrets, so guard on them.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
-        if: github.repository == 'qelectrotech/qelectrotech-source-mirror'
+        if: github.repository == 'qelectrotech/qelectrotech-source-mirror' && env.SIGNPATH_API_TOKEN != ''
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -305,125 +278,16 @@ jobs:
       - name: Upload signed MSI artifact
         uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-msi-${{ matrix.flavor }}
+          name: qelectrotech-windows-msi
           path: dist\*.msi
           retention-days: 40
           if-no-files-found: error
-
-      - name: Delete old nightly .msi asset
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          $pattern = "-qt6.*\\.msi$"
-          $names = gh release view nightly --repo $env:REPO --json assets --jq ".assets[] | select(.name | test(`"$pattern`")) | .name"
-          foreach ($name in ($names -split "`n" | Where-Object { $_ })) {
-            Write-Host "Deleting old asset: $name"
-            gh release delete-asset nightly $name --repo $env:REPO --yes
-          }
-        shell: pwsh
-
-      - name: Upload MSI to nightly release
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: nightly
-          files: dist/*.msi
-          fail_on_unmatched_files: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Export MSI name for page generation
-        id: export
-        shell: pwsh
-        run: |
-          $name = "$env:MSI_NAME"
-          echo "msi_name_qt6=$name" >> $env:GITHUB_OUTPUT
 
       - name: Summary
         if: always()
         shell: pwsh
         run: |
-          Write-Host "=== MSI build summary (${{ matrix.flavor }}) ==="
+          Write-Host "=== MSI build summary  ==="
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
-          Write-Host "Signed  : true"
+          Write-Host "Signed  : $(if ('${{ env.SIGNPATH_API_TOKEN }}' -ne '') { 'yes' } else { 'no (SignPath not configured, or fork)' })"
 
-  # ---------------------------------------------------------------------------
-  # Job 2 : Génère et déploie la page GitHub Pages une fois le MSI publié,
-  # pour que toutes les URLs soient connues.
-  # ---------------------------------------------------------------------------
-  deploy-pages:
-    needs: build-msi
-    runs-on: ubuntu-latest
-    if: always() && needs.build-msi.result == 'success'
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-
-    steps:
-      - name: Checkout master (for generate-page.py)
-        uses: actions/checkout@v7
-        with:
-          ref: master
-          path: source
-          sparse-checkout: build-aux/generate-page.py
-          sparse-checkout-cone-mode: false
-
-      - name: Generate download page (index.html)
-        shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          REPO="${{ github.repository }}"
-
-          ASSETS=$(gh release view nightly --repo "$REPO" --json assets --jq '.assets[].name')
-
-          EXE_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.exe$' | head -1)
-          ZIP_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.zip$' | head -1)
-          MSI_NAME=$(echo "$ASSETS" | grep 'qt6' | grep '\.msi$' | head -1 || echo "")
-
-          # Legacy Qt5 assets (no "qt6" in the name): last ever published,
-          # frozen — windows-build.yml/windows-msi.yml no longer delete or
-          # replace these, so they keep pointing at the same files release
-          # after release. Rendered as a separate "legacy" section if present.
-          LEGACY_EXE_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.exe$' | head -1 || echo "")
-          LEGACY_ZIP_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.zip$' | head -1 || echo "")
-          LEGACY_MSI_NAME=$(echo "$ASSETS" | grep -v 'qt6' | grep '\.msi$' | head -1 || echo "")
-
-          BASE="https://github.com/$REPO/releases/download/nightly"
-          INSTALLER_URL="$BASE/$EXE_NAME"
-          PORTABLE_URL="$BASE/$ZIP_NAME"
-          MSI_URL=""
-          [ -n "$MSI_NAME" ] && MSI_URL="$BASE/$MSI_NAME"
-
-          LEGACY_INSTALLER_URL=""
-          LEGACY_PORTABLE_URL=""
-          LEGACY_MSI_URL=""
-          [ -n "$LEGACY_EXE_NAME" ] && LEGACY_INSTALLER_URL="$BASE/$LEGACY_EXE_NAME"
-          [ -n "$LEGACY_ZIP_NAME" ] && LEGACY_PORTABLE_URL="$BASE/$LEGACY_ZIP_NAME"
-          [ -n "$LEGACY_MSI_NAME" ] && LEGACY_MSI_URL="$BASE/$LEGACY_MSI_NAME"
-
-          SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
-          SHORT="${SHA:0:7}"
-          DATE=$(date -u '+%Y-%m-%d %H:%M UTC')
-          RUN_URL="https://github.com/$REPO/actions/runs/${{ github.run_id }}"
-          RUN_NUMBER="${{ github.run_number }}"
-
-          export DATE SHORT REPO SHA RUN_URL RUN_NUMBER
-          export INSTALLER_URL PORTABLE_URL MSI_URL
-          export LEGACY_INSTALLER_URL LEGACY_PORTABLE_URL LEGACY_MSI_URL
-
-          python3 source/build-aux/generate-page.py
-
-      - name: Add .nojekyll
-        shell: bash
-        run: touch gh-pages/.nojekyll
-
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: gh-pages/
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4

@@ -49,6 +49,8 @@ if(APPLE)
   set(QET_ICONS_PATH              "share/icons/hicolor/")
   set(QET_MAN_PATH                "man/")
   set(ICON                        "ico/mac_icon/qelectrotech.icns")
+  set(QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH TRUE)
+  set(QET_LANG_PATH_RELATIVE_TO_BINARY_PATH TRUE)
 endif()
 
 if(WIN32)

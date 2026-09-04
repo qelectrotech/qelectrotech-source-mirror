@@ -1,20 +1,26 @@
 #!/usr/bin/env python3
 """
-generate-page.py — Generates gh-pages/index.html for QElectroTech nightly builds.
-Called from windows-msi.yml deploy-pages job.
+generate-page.py — Generates gh-pages/index.html for QElectroTech development builds.
+
+Called from package.yml
 
 Environment variables required:
-  DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER,
-  INSTALLER_URL, PORTABLE_URL, MSI_URL (optional)
+  DATE, SHORT, REPO, SHA, RUN_URL, RUN_NUMBER, RELEASE_TAG
 
-Optional (frozen Qt5 legacy build — omitted entirely if empty):
-  LEGACY_INSTALLER_URL, LEGACY_PORTABLE_URL, LEGACY_MSI_URL
+Optional (Windows - omitted entirely if empty):
+    INSTALLER_URL, PORTABLE_URL, MSI_URL
 
-NOTE: Windows Qt5 CI build removed (Qt6 is now the sole track built and
-signed going forward). INSTALLER_URL / PORTABLE_URL / MSI_URL point to the
-Qt6 build artifacts. The LEGACY_* variables, when set, point to the last
-Qt5 nightly assets that were ever published — kept downloadable but frozen
-(windows-build.yml no longer regenerates or deletes them).
+Optional (macOS - omitted entirely if empty):
+  DMG_ARM64_URL, DMG_X8664_URL
+
+Optional (Linux AppImage - omitted entirely if empty):
+  APPIMAGE_X8664_URL, APPIMAGE_AARCH64_URL
+
+Optional (Linux Snap - omitted entirely if empty):
+  SNAP_AMD64_URL, SNAP_ARM64_URL
+
+Optional (Linux Flatpak - omitted entirely if empty):
+  FLATPAK_X8664_URL, FLATPAK_AARCH64_URL
 """
 import os
 
@@ -24,13 +30,23 @@ repo         = os.environ.get("REPO", "")
 sha          = os.environ.get("SHA", "")
 run_url      = os.environ.get("RUN_URL", "")
 run_number   = os.environ.get("RUN_NUMBER", "")
+release_tag  = os.environ.get("RELEASE_TAG", "")
+
 installer_url = os.environ.get("INSTALLER_URL", "")
 portable_url  = os.environ.get("PORTABLE_URL", "")
 msi_url       = os.environ.get("MSI_URL", "")
 
-legacy_installer_url = os.environ.get("LEGACY_INSTALLER_URL", "")
-legacy_portable_url  = os.environ.get("LEGACY_PORTABLE_URL", "")
-legacy_msi_url       = os.environ.get("LEGACY_MSI_URL", "")
+appimage_aarch64_url = os.environ.get("APPIMAGE_AARCH64_URL", "")
+appimage_x8664_url   = os.environ.get("APPIMAGE_X8664_URL", "")
+
+dmg_arm64_url  = os.environ.get("DMG_ARM64_URL", "")
+dmg_x8664_url  = os.environ.get("DMG_X8664_URL", "")
+
+snap_amd64_url = os.environ.get("SNAP_AMD64_URL", "")
+snap_arm64_url = os.environ.get("SNAP_ARM64_URL", "")
+
+flatpak_x8664_url   = os.environ.get("FLATPAK_X8664_URL", "")
+flatpak_aarch64_url = os.environ.get("FLATPAK_AARCH64_URL", "")
 
 msi_block = ""
 if msi_url:
@@ -40,44 +56,153 @@ if msi_url:
 <span class="btn-text">Windows Installer .msi<small>.msi &mdash; for enterprise / GPO deployment</small></span>
 </a>"""
 
-# Legacy Qt5 section — only rendered if at least one legacy asset exists.
-legacy_block = ""
-if legacy_installer_url or legacy_portable_url or legacy_msi_url:
-    legacy_installer_btn = ""
-    if legacy_installer_url:
-        legacy_installer_btn = f"""
-<a class="btn btn-secondary" href="{legacy_installer_url}">
+# --- Windows ----------------------------------------------------------------------
+windows_installer_btn = ""
+if installer_url:
+    windows_installer_btn = f"""
+<a class="btn btn-primary" href="{installer_url}">
 <span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer (Qt5, legacy)<small>.exe &mdash; frozen, no longer updated</small></span>
-</a>"""
-    legacy_msi_btn = ""
-    if legacy_msi_url:
-        legacy_msi_btn = f"""
-<a class="btn btn-secondary" href="{legacy_msi_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer .msi (Qt5, legacy)<small>.msi &mdash; frozen, no longer updated</small></span>
-</a>"""
-    legacy_portable_btn = ""
-    if legacy_portable_url:
-        legacy_portable_btn = f"""
-<a class="btn btn-secondary" href="{legacy_portable_url}">
-<span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable (Qt5, legacy)<small>.zip &mdash; frozen, no longer updated</small></span>
+<span class="btn-text">Windows Installer<small>.exe &mdash; recommended, includes all dependencies</small></span>
 </a>"""
 
-    legacy_block = f"""
+windows_portable_btn = ""
+if portable_url:
+    windows_portable_btn = f"""
+<a class="btn btn-secondary" href="{portable_url}">
+<span class="btn-icon">&#128230;</span>
+<span class="btn-text">Windows Portable<small>.zip &mdash; no installation required, extract and run &quot;Lancer QET.bat&quot;</small></span>
+</a>"""
+
+windows_block = ""
+if installer_url or portable_url or msi_url:
+    windows_block = f"""
 <div class="card">
-<h2>&#128451; Windows &mdash; x86_64 &mdash; Qt5 (legacy, unmaintained)</h2>
+<h2>&#127993; Windows &mdash; x86_64 </h2>
+<div class="downloads">
+{windows_installer_btn}
+{msi_block}
+{windows_portable_btn}
+</div>
+</div>"""
+
+# --- macOS  -------------------------------------------
+macos_arm64_btn = ""
+if dmg_arm64_url:
+    macos_arm64_btn = f"""
+<a class="btn btn-primary" href="{dmg_arm64_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">macOS Apple Silicon (arm64)<small>.dmg &mdash; for M1/M2/M3/M4 Macs</small></span>
+</a>"""
+
+macos_x8664_btn = ""
+if dmg_x8664_url:
+    macos_x8664_btn = f"""
+<a class="btn btn-secondary" href="{dmg_x8664_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">macOS Intel (x86_64)<small>.dmg &mdash; for Intel-based Macs</small></span>
+</a>"""
+
+macos_block = ""
+if dmg_arm64_url or dmg_x8664_url:
+    macos_block = f"""
+<div class="card">
+<h2>&#127838; macOS </h2>
+<div class="downloads">
+{macos_arm64_btn}
+{macos_x8664_btn}
+</div>
+</div>"""
+
+# --- Linux / AppImage  -----------
+appimage_x8664_btn = ""
+if appimage_x8664_url:
+    appimage_x8664_btn = f"""
+<a class="btn btn-primary" href="{appimage_x8664_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux x86_64 AppImage<small>.AppImage &mdash; chmod +x and run, no installation required</small></span>
+</a>"""
+
+appimage_aarch64_btn = ""
+if appimage_aarch64_url:
+    appimage_aarch64_btn = f"""
+<a class="btn btn-secondary" href="{appimage_aarch64_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux aarch64 AppImage<small>.AppImage &mdash; chmod +x and run, no installation required</small></span>
+</a>"""
+
+appimage_block = ""
+if appimage_x8664_url or appimage_aarch64_url:
+    appimage_block = f"""
+<div class="card">
+<h2>&#128039; Linux &mdash; AppImage </h2>
+<div class="downloads">
+{appimage_x8664_btn}
+{appimage_aarch64_btn}
+</div>
+</div>"""
+
+# --- Linux / Snap -----------
+# not yet published to the Snap Store -- these are raw, unsigned bundles,
+# which need --dangerous to install manually.
+snap_amd64_btn = ""
+if snap_amd64_url:
+    snap_amd64_btn = f"""
+<a class="btn btn-primary" href="{snap_amd64_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux amd64 Snap<small>.snap &mdash; sudo snap install --dangerous ./&lt;file&gt;.snap</small></span>
+</a>"""
+
+snap_arm64_btn = ""
+if snap_arm64_url:
+    snap_arm64_btn = f"""
+<a class="btn btn-secondary" href="{snap_arm64_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux arm64 Snap<small>.snap &mdash; sudo snap install --dangerous ./&lt;file&gt;.snap</small></span>
+</a>"""
+
+snap_block = ""
+if snap_amd64_url or snap_arm64_url:
+    snap_block = f"""
+<div class="card">
+<h2>&#128230; Linux &mdash; Snap</h2>
 <div class="warning">
-&#128451; <strong>Legacy build &mdash; frozen, no longer updated.</strong> This is the
-last Qt5 build published before Windows CI switched to Qt6 only. Kept available for
-anyone who still needs it, but it will not receive further fixes or security updates.
-Please migrate to the Qt6 build above when you can.
+&#9888;&#65039; Not yet published to the Snap Store &mdash; this is a raw, unsigned
+bundle. Requires the <code>--dangerous</code> flag to install manually, since
+it isn't signed by the Store.
 </div>
 <div class="downloads">
-{legacy_installer_btn}
-{legacy_msi_btn}
-{legacy_portable_btn}
+{snap_amd64_btn}
+{snap_arm64_btn}
+</div>
+</div>"""
+
+# --- Linux / Flatpak -----------
+# a raw .flatpak bundle is a normal, supported distribution format -- no
+# special flags or caveats needed to install one.
+flatpak_x8664_btn = ""
+if flatpak_x8664_url:
+    flatpak_x8664_btn = f"""
+<a class="btn btn-primary" href="{flatpak_x8664_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux x86_64 Flatpak<small>.flatpak &mdash; flatpak install ./&lt;file&gt;.flatpak</small></span>
+</a>"""
+
+flatpak_aarch64_btn = ""
+if flatpak_aarch64_url:
+    flatpak_aarch64_btn = f"""
+<a class="btn btn-secondary" href="{flatpak_aarch64_url}">
+<span class="btn-icon">&#11015;</span>
+<span class="btn-text">Linux aarch64 Flatpak<small>.flatpak &mdash; flatpak install ./&lt;file&gt;.flatpak</small></span>
+</a>"""
+
+flatpak_block = ""
+if flatpak_x8664_url or flatpak_aarch64_url:
+    flatpak_block = f"""
+<div class="card">
+<h2>&#128230; Linux &mdash; Flatpak</h2>
+<div class="downloads">
+{flatpak_x8664_btn}
+{flatpak_aarch64_btn}
 </div>
 </div>"""
 
@@ -86,7 +211,7 @@ html = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QElectroTech &ndash; Nightly Builds</title>
+<title>QElectroTech &ndash; Development Builds</title>
 <style>
 *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
 body{{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f0f4f8;color:#2d3748;min-height:100vh}}
@@ -117,7 +242,7 @@ footer a{{color:#718096;text-decoration:none}}
 <body>
 <header>
 <h1>&#9889; QElectroTech</h1>
-<p>Nightly Windows Builds</p>
+<p>Development Builds</p>
 </header>
 <main>
 <div class="card">
@@ -126,38 +251,28 @@ footer a{{color:#718096;text-decoration:none}}
 &#128197; &nbsp;<strong>{date}</strong><br>
 &#128256; &nbsp;Commit <a href="https://github.com/{repo}/commit/{sha}"><code>{short}</code></a><br>
 &#128295; &nbsp;<a href="{run_url}">CI Run #{run_number}</a>
-<span class="badge">nightly</span>
+<span class="badge">development</span>
 </div>
 <div class="warning">
-&#9888;&#65039; This is a development version; it introduces new features you want,
-but may cause bugs that have not yet been identified yet in <code>master</code>.
+&#9888;&#65039; This is a development version generated automatically from the newest commit on the master branch, It might introduce new features which you might want, but it may also exhibit new bugs that have not yet been identified yet.
 For production use, download a <a href="https://github.com/{repo}/releases">stable release</a>.
 </div>
-</div>
-<div class="card">
-<h2>&#127993; Windows &mdash; x86_64</h2>
-<div class="downloads">
-<a class="btn btn-primary" href="{installer_url}">
-<span class="btn-icon">&#11015;</span>
-<span class="btn-text">Windows Installer<small>.exe &mdash; recommended, includes all dependencies</small></span>
-</a>
-{msi_block}
-<a class="btn btn-secondary" href="{portable_url}">
+<a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/{release_tag}">
 <span class="btn-icon">&#128230;</span>
-<span class="btn-text">Windows Portable<small>.zip &mdash; no installation required, extract and run &quot;Lancer QET.bat&quot;</small></span>
-</a>
-<a class="btn btn-secondary" href="https://github.com/{repo}/releases/tag/nightly">
-<span class="btn-icon">&#128230;</span>
-<span class="btn-text">All nightly files on GitHub<small>Release page with checksums</small></span>
+<span class="btn-text">All development version binaries on GitHub<small>Every platform &mdash; release page with checksums</small></span>
 </a>
 </div>
-</div>
-{legacy_block}
+{windows_block}
+{macos_block}
+{appimage_block}
+{snap_block}
+{flatpak_block}
 </main>
 <footer>
 Auto-generated by GitHub Actions &nbsp;&middot;&nbsp;
 <a href="https://github.com/{repo}">Source on GitHub</a> &nbsp;&middot;&nbsp;
-<a href="https://qelectrotech.org">qelectrotech.org</a>
+<a href="https://qelectrotech.org">qelectrotech.org</a> &nbsp;&middot;&nbsp;
+<a href="docs/">API documentation</a>
 </footer>
 </body>
 </html>"""
@@ -165,4 +280,5 @@ Auto-generated by GitHub Actions &nbsp;&middot;&nbsp;
 os.makedirs("gh-pages", exist_ok=True)
 with open("gh-pages/index.html", "w", encoding="utf-8") as f:
     f.write(html)
+
 print("index.html written OK")
