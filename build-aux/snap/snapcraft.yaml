@@ -1,48 +1,39 @@
 name: qelectrotech
 title: QElectroTech
-base: core22
+base: core24
 adopt-info: qelectrotech
 license: GPL-2.0
 summary: Electrical diagram editor
 description: |
-  QElectroTech, or QET in short, is a libre and open source desktop application 
+  QElectroTech, or QET in short, is a libre and open source desktop application
   to create diagrams and schematics.
-
 grade: stable
 confinement: strict
 compression: lzo
 
-architectures:
-  - build-on: amd64
-    build-for: amd64
-  - build-on: arm64
-    build-for: arm64
-    
-layout:
-  /usr/local/share/qelectrotech:
-    symlink: $SNAP/usr/local/share/qelectrotech
-  
+platforms:
+  amd64:
+  arm64:
 
 apps:
   qelectrotech:
-    command: usr/local/bin/qelectrotech
+    command: usr/bin/qelectrotech
     common-id: qelectrotech.desktop
-    extensions: 
-     - kde-neon
+    extensions:
+      - kde-neon-6
     plugs: &plugs [opengl, unity7, home, removable-media, gsettings, network, cups-control, wayland, x11]
     environment: &env
       TCL_LIBRARY: $SNAP/usr/share/tcltk/tcl8.6
       HOME: $SNAP_USER_COMMON
-      PYTHONPATH: $SNAP:$SNAP/lib/python3.10/site-packages:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
+      PYTHONPATH: $SNAP:$SNAP/lib/python3.12/site-packages:$SNAP/usr/lib/python3.12:$SNAP/usr/lib/python3.12/lib-dynload
 
   qet-tb-generator:
     command: bin/qet_tb_generator
-    extensions: 
-     - kde-neon
+    extensions:
+      - kde-neon-6
     plugs: *plugs
     environment: *env
-      
-  
+
 parts:
   launchers:
     plugin: dump
@@ -55,7 +46,7 @@ parts:
     source: https://github.com/raulroda/qet_tb_generator-plugin.git
     source-tag: v1.31
     python-packages: [PySimpleGUI]
-    stage-packages: 
+    stage-packages:
       - python3-lxml
       - python3-tk
       - libtk8.6
@@ -63,16 +54,17 @@ parts:
   kde-sdk-setup:
     plugin: nil
     build-snaps:
-      - kf5-5-110-qt-5-15-11-core22-sdk
+      - kf6-core24-sdk
+      - kde-qt6-core24-sdk
     build-packages:
       - g++
       - mesa-common-dev
       - libglvnd-dev
       - rsync
     override-build: |
-      rsync -a --ignore-existing /snap/kf5-5-110-qt-5-15-11-core22-sdk/current/ /
+      rsync -a --ignore-existing /snap/kf6-core24-sdk/current/ /
+      rsync -a --ignore-existing /snap/kde-qt6-core24-sdk/current/ /
 
-  
   qelectrotech:
     after: [kde-sdk-setup]
     plugin: nil
@@ -81,37 +73,48 @@ parts:
       - git
       - sqlite3
       - xdg-user-dirs
-      # libxcb-cursor0 was added as a hard dependency of the Qt5 xcb platform
-      # plugin in Qt 5.15.x.  The kf5-5-110-qt-5-15-11-core22 content snap does
-      # not bundle it, so dlopen() of libqxcb.so fails on Ubuntu 24.04 hosts
-      # with "found but could not load" (issue #373).  Staging the 22.04 build
-      # of this library satisfies the dep without changing base or Qt version.
+      # libxcb-cursor0 workaround was needed against the Qt5/KF5 core22 content
+      # snap (issue #373). Not yet re-verified against kf6-core24 — remove this
+      # if the Qt6 xcb platform plugin loads cleanly without it.
       - libxcb-cursor0
     build-packages:
       - git
+      - cmake
+      - ninja-build
       - libsqlite3-dev
+      - qt6-tools-dev
+      - qt6-base-private-dev
+      - pkgconf
     override-build: |
       displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
       snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"
       modified_displayed_version="${snap_version}.snap"
       sed -i -E "s|const QString displayedVersion =.*|const QString displayedVersion =\"$modified_displayed_version\";|" sources/qet.h
       craftctl set version="$snap_version"
-      qmake "$CRAFT_PART_SRC/qelectrotech.pro"
-      make -j${CRAFT_PARALLEL_BUILD_COUNT}
-      make install INSTALL_ROOT="$CRAFT_PART_INSTALL"
+      cmake -G Ninja -B build -S "$CRAFT_PART_SRC" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DQT_VERSION_MAJOR=6 \
+        -DBUILD_WITH_KF=ON \
+        -DBUILD_KF=OFF \
+        -DPACKAGE_TESTS=OFF \
+        -DBUILD_PUGIXML=ON \
+        -DQET_EXPORT_PROJECT_DB=ON
+      ninja -C build -j${CRAFT_PARALLEL_BUILD_COUNT}
+      DESTDIR="$CRAFT_PART_INSTALL" ninja -C build install
     override-stage: |
       craftctl default
       # patch desktop file with correct icon path
-      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/local/share/icons/hicolor/128x128/apps/\1.png|g" 
-      $SED_CMD usr/local/share/applications/org.qelectrotech.qelectrotech.desktop
+      SED_CMD="sed -i -E s|^Icon=(.*)|Icon=\${SNAP}/usr/share/icons/hicolor/128x128/apps/\1.png|g"
+      $SED_CMD usr/share/applications/org.qelectrotech.qelectrotech.desktop
 
   cleanup:
     after: [qelectrotech, qet-tb-generator]
     plugin: nil
-    build-snaps: [kf5-5-110-qt-5-15-11-core22]
+    build-snaps: [kf6-core24]
     override-prime: |
       set -eux
-      for snap in "kf5-5-110-qt-5-15-11-core22"; do  # List all content-snaps you're using here
+      for snap in "kf6-core24"; do # List all content-snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" "$CRAFT_PRIME/usr/{}" \;
       done
       for cruft in bug lintian man; do

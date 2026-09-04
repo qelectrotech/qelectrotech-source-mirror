@@ -38,6 +38,15 @@
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
@@ -797,6 +806,7 @@ bool Element::fromXml(QDomElement &e,
 	setZValue(e.attribute(QStringLiteral("z"), QString::number(this->zValue())).toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable
 		 | QGraphicsItem::ItemIsSelectable);
+	is_movable_ = e.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt();
 
 	// orientation
 	bool conv_ok;
@@ -928,6 +938,7 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("y"), QString::number(pos().y()));
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 
 	/* get the first id to use for the bounds of this element
 	 * recupere le premier id a utiliser pour les bornes de cet element */
@@ -1511,13 +1522,7 @@ void Element::setElementData(ElementData data)
 					{
 						QString val = (t < io.terminals.size())
 							? io.terminals.at(t) : QString();
-						ctx.addValue(
-							QStringList({
-								QETInformation::ELMT_PLC_T1,
-								QETInformation::ELMT_PLC_T2,
-								QETInformation::ELMT_PLC_T3,
-								QETInformation::ELMT_PLC_T4
-							}).at(t), val);
+						ctx.addValue(plcTerminalKeys[t], val);
 					}
 					slave->setElementInformations(ctx);
 

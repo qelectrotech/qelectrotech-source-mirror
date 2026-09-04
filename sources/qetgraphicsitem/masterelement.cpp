@@ -158,6 +158,14 @@ QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, con
 	{
 		m_first_scene_change = false;
 		connect(diagram()->project(), &QETProject::XRefPropertiesChanged, this, &MasterElement::xrefPropertiesChanged);
+
+		// For PLC masters, create the CrossRefItem immediately so the
+		// IO table is visible even without linked slaves.
+		if (m_data.m_master_type == ElementData::PLC && !m_Xref_item)
+		{
+			m_Xref_item = new CrossRefItem(this);
+			m_Xref_item->updateLabel();
+		}
 	}
 	return Element::itemChange(change, value);
 }

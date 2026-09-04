@@ -63,7 +63,7 @@ void TextEditor::updateForm()
 	m_rotation_sb -> setValue(m_text -> rotation());
 	m_size_sb -> setValue(m_text -> font().pointSize());
 	m_font_pb -> setText(m_text -> font().family());
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 	m_color_pb -> setColor(m_text -> defaultTextColor());
 #endif
@@ -346,7 +346,7 @@ void TextEditor::setUpWidget(QWidget *parent)
 	m_line_edit->setPlaceholderText(tr("Entrer votre texte ici"));
 
 	gridLayout->addWidget(m_line_edit, 0, 0, 1, 6);
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 	m_color_pb = new KColorButton(parent);
 	m_color_pb->setObjectName(QString::fromUtf8("m_color_pb"));

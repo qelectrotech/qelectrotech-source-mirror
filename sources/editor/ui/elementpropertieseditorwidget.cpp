@@ -423,13 +423,11 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
 
-#if QT_VERSION >= QT_VERSION_CHECK(5,15,0)
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
 								  type_ == ElementData::Master ||
 								  type_ == ElementData::Slave ||
 								  type_ == ElementData::Terminal));
-#endif
 
 	updateTree();
 }
@@ -456,6 +454,9 @@ void ElementPropertiesEditorWidget::on_m_slave_groups_checkbox_toggled(bool chec
 
 	if (checked && !ui->max_slaves_checkbox->isChecked()) {
 		ui->max_slaves_checkbox->setChecked(true);
+		if (!m_data.m_slave_contact_groups.isEmpty()) {
+			ui->max_slaves_spinbox->setValue(m_data.m_slave_contact_groups.size());
+		}
 	}
 
 	if (checked) {
@@ -691,7 +692,7 @@ void ElementPropertiesEditorWidget::createPlcConfigWidgets()
 	m_plc_table->horizontalHeader()->resizeSection(2, 150);
 	m_plc_table->horizontalHeader()->resizeSection(3, 150);
 	m_plc_table->horizontalHeader()->resizeSection(4, 100);
-	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
+	m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_plc_table->setMinimumHeight(200);
 	m_plc_table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

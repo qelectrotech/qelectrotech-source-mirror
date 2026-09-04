@@ -35,6 +35,7 @@ class ElementsCollectionModel : public QStandardItemModel
 
 	public:
 		ElementsCollectionModel(QObject *parent = Q_NULLPTR);
+		~ElementsCollectionModel() override;
 
 		QVariant data(const QModelIndex &index, int role) const override;
 		QMimeData *mimeData(const QModelIndexList &indexes) const override;

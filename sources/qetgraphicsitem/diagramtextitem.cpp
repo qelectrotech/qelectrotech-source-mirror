@@ -221,6 +221,21 @@ void DiagramTextItem::setHtml(const QString &text)
 {
 	QGraphicsTextItem::setHtml(text);
 	m_is_html = true;
+
+	m_non_left_alignment = false;
+	QTextBlock block = document()->begin();
+	while (block.isValid()) {
+		Qt::Alignment a = block.blockFormat().alignment();
+		if (a & Qt::AlignHCenter || a & Qt::AlignRight || a & Qt::AlignJustify) {
+			m_non_left_alignment = true;
+			break;
+		}
+		block = block.next();
+	}
+
+	if (m_non_left_alignment) {
+		document()->setTextWidth(document()->idealWidth() + 40.0);
+	}
 }
 
 void DiagramTextItem::setPlainText(const QString &text)
@@ -245,6 +260,7 @@ bool DiagramTextItem::isHtml() const
 void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	painter -> setRenderHint(QPainter::Antialiasing, false);
+
 	QGraphicsTextItem::paint(painter, option, widget);
 
 	if (m_mouse_hover && !isSelected())
@@ -466,9 +482,34 @@ void DiagramTextItem::edit()
 		parent = scene()->views().first();
 
 	qdesigner_internal::RichTextEditorDialog editor(parent);
-	connect(&editor, &qdesigner_internal::RichTextEditorDialog::applyEditText, [this](QString text) {this->setHtml(text);});
 	editor.setText(toHtml());
+
+	QVector<Qt::Alignment> alignments;
+	connect(&editor, &qdesigner_internal::RichTextEditorDialog::applyEditText,
+			this, [this, &editor, &alignments](const QString &text) {
+		alignments = editor.blockAlignments();
+		this->setHtml(text);
+	});
 	editor.exec();
+
+	if (!alignments.isEmpty()) {
+		QTextCursor cursor(document());
+		cursor.beginEditBlock();
+		QTextBlock block = document()->begin();
+		int i = 0;
+		while (block.isValid() && i < alignments.size()) {
+			Qt::Alignment align = alignments.at(i);
+			if (align != Qt::AlignLeft && align != Qt::Alignment()) {
+				QTextBlockFormat fmt;
+				fmt.setAlignment(align);
+				cursor.setPosition(block.position());
+				cursor.setBlockFormat(fmt);
+			}
+			block = block.next();
+			i++;
+		}
+		cursor.endEditBlock();
+	}
 }
 
 

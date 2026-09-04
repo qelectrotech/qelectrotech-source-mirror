@@ -5,18 +5,67 @@
 #include "../qetgraphicsitem/element.h"
 #include "../undocommand/changeelementinformationcommand.h"
 #include <QUndoCommand>
+#include <QCheckBox>
+#include <QVBoxLayout>
+#include <QSet>
 #include <algorithm>
 
 /**
  * @brief TerminalNumberingDialog::TerminalNumberingDialog
  * Constructor
  * @param parent
+ * @param project Pointer to the current project (used to populate terminal strips)
  */
-TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent) :
-QDialog(parent),
-ui(new Ui::TerminalNumberingDialog)
+TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *project) :
+    QDialog(parent),
+    ui(new Ui::TerminalNumberingDialog)
 {
     ui->setupUi(this);
+
+    // Connect radio button to enable/disable the "also number letters" checkbox
+    connect(ui->rb_type_alpha, &QRadioButton::toggled, ui->cb_also_alpha, &QCheckBox::setEnabled);
+
+    // Collect all unique terminal strip prefixes from the project
+    if (project) {
+        QSet<QString> prefixes;
+        foreach (Diagram *diagram, project->diagrams()) {
+            foreach (QGraphicsItem *qgi, diagram->items()) {
+                if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
+                    if (elmt->elementData().m_type == ElementData::Terminal) {
+                        // Ignore locked terminals
+                        DiagramContext info = elmt->elementInformations();
+                        if (info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true")) {
+                            continue;
+                        }
+
+                        QString label = elmt->actualLabel();
+                        if (label.isEmpty()) continue;
+
+                        // Handle labels with and without colon
+                        int colonIndex = label.lastIndexOf(':');
+                        QString prefix;
+                        if (colonIndex != -1) {
+                            prefix = label.left(colonIndex);
+                        } else {
+                            prefix = label;
+                        }
+                        prefixes.insert(prefix);
+                    }
+                }
+            }
+        }
+
+        // Sort prefixes alphabetically and create checkboxes
+        QStringList sortedPrefixes = prefixes.values();
+        sortedPrefixes.sort(Qt::CaseInsensitive);
+
+        foreach (const QString &prefix, sortedPrefixes) {
+            QCheckBox *cb = new QCheckBox(prefix);
+            cb->setChecked(true);
+            ui->verticalLayout_strips_content->addWidget(cb);
+            m_stripCheckboxes.insert(prefix, cb);
+        }
+    }
 }
 
 /**
@@ -47,10 +96,36 @@ bool TerminalNumberingDialog::isAlphanumeric() const
 }
 
 /**
+ * @brief TerminalNumberingDialog::alsoNumberLetters
+ * @return true if the "also number letters" checkbox is checked
+ */
+bool TerminalNumberingDialog::alsoNumberLetters() const
+{
+    return ui->cb_also_alpha->isChecked();
+}
+
+/**
+ * @brief TerminalNumberingDialog::excludedStrips
+ * @return List of terminal strip prefixes that should be excluded from numbering
+ */
+QStringList TerminalNumberingDialog::excludedStrips() const
+{
+    QStringList excluded;
+    QMapIterator<QString, QCheckBox*> it(m_stripCheckboxes);
+    while (it.hasNext()) {
+        it.next();
+        if (!it.value()->isChecked()) {
+            excluded.append(it.key());
+        }
+    }
+    return excluded;
+}
+
+/**
  * @brief TerminalNumberingDialog::getUndoCommand
  * Scans the given project for terminals, sorts them according to user preferences
  * (X/Y axis, alphanumeric rules), and generates an undo command containing all label changes.
- * * @param project Pointer to the current QETProject
+ * @param project Pointer to the current QETProject
  * @return QUndoCommand* containing the modifications, or nullptr if no changes are needed.
  */
 QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const {
@@ -58,6 +133,8 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
 
     bool axisX = isXAxisPriority();
     bool alpha = isAlphanumeric();
+    bool alsoAlpha = alsoNumberLetters();
+    QStringList excluded = excludedStrips();
 
     // 1. Helper structure to store and sort terminal data
     struct TermInfo {
@@ -96,6 +173,9 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
                         prefix = label.left(colonIndex);
                         suffix = label.mid(colonIndex + 1);
                     }
+
+                    // Skip excluded terminal strips
+                    if (excluded.contains(prefix)) continue;
 
                     // If user chose purely numeric, skip terminals with alphabetical suffixes
                     if (!alpha && !suffix.isEmpty()) {
@@ -154,8 +234,16 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
             // If it was a number (e.g., "1") or empty, update it with the new counter
             newLabel = ti.prefix + ":" + QString::number(newNum);
         } else {
-            // If it was alphabetical (e.g., "N", "PE"), keep the original text but consume the count!
-            newLabel = ti.prefix + ":" + ti.suffix;
+            // Only append to purely alphabetic suffixes (N, PE), so re-running is a
+            // no-op and already-numbered suffixes (L1, L2, L3) keep their meaning.
+            const bool allLetters = !ti.suffix.isEmpty()
+                    && std::all_of(ti.suffix.cbegin(), ti.suffix.cend(),
+                                   [](QChar c){ return c.isLetter(); });
+            if (alsoAlpha && allLetters) {
+                newLabel = ti.prefix + ":" + ti.suffix + QString::number(newNum);
+            } else {
+                newLabel = ti.prefix + ":" + ti.suffix;
+            }
         }
 
         DiagramContext oldInfo = ti.elmt->elementInformations();

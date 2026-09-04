@@ -45,11 +45,11 @@ QList<QPair<QString, QString>> langDict(const QString &value)
 	for (int i = 0; i < marks.size(); ++i) {
 		const QRegularExpressionMatch &m = marks.at(i);
 		const QString code = value.mid(m.capturedStart(),
-					       m.capturedLength() - 1); // drop '@'
+						   m.capturedLength() - 1); // drop '@'
 		const int text_start = m.capturedEnd();
 		const int text_end = (i + 1 < marks.size())
-				     ? marks.at(i + 1).capturedStart()
-				     : value.size();
+					 ? marks.at(i + 1).capturedStart()
+					 : value.size();
 		QString text = value.mid(text_start, text_end - text_start);
 		while (!text.isEmpty() && text.back().isSpace()) {
 			text.chop(1);
@@ -77,7 +77,7 @@ QString pickLang(const QString &value)
 		return value.trimmed();
 	}
 	for (const QString &code : {QStringLiteral("en_EN"), QStringLiteral("en_US"),
-				    QStringLiteral("en_GB")}) {
+					QStringLiteral("en_GB")}) {
 		for (const auto &p : d) {
 			if (p.first == code && !p.second.isEmpty()) {
 				return p.second;
@@ -158,11 +158,20 @@ bool EdzPart::parse(const QString &part_xml_path)
 		return false;
 	}
 	QDomDocument doc;
+#if QT_VERSION < QT_VERSION_CHECK(6, 5, 0) // TODO Qt 6.5: remove
 	QString parse_err;
 	int line = 0, col = 0;
 	if (!doc.setContent(&file, &parse_err, &line, &col)) {
 		m_error = QStringLiteral("Malformed part.xml (line %1): %2")
 				  .arg(line).arg(parse_err);
+#else
+	const auto result = doc.setContent(&file);
+	if (!result) {
+		m_error = QStringLiteral("Malformed part.xml (line %1, column %2): %3")
+				  .arg(result.errorLine)
+				  .arg(result.errorColumn)
+				  .arg(result.errorMessage);
+#endif
 		return false;
 	}
 	file.close();

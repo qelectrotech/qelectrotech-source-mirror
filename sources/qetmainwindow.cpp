@@ -155,6 +155,8 @@ void QETMainWindow::initCommonMenus()
 	connect(settings_menu_, &QMenu::aboutToShow, this, &QETMainWindow::checkToolbarsmenu);
 
 	help_menu_ = new QMenu(tr("&Aide", "window menu"), this);
+	help_menu_ -> addAction(diagnostics_action_);
+	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(whatsthis_action_);
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(manual_online_);
@@ -164,8 +166,6 @@ void QETMainWindow::initCommonMenus()
 	help_menu_ -> addAction(donate_);
 	help_menu_ -> addAction(about_qt_);
 	help_menu_ -> addAction(about_qet_);
-	help_menu_ -> addSeparator();
-	help_menu_ -> addAction(diagnostics_action_);
 
 #ifdef Q_OS_WIN32
 upgrade_ -> setVisible(true);

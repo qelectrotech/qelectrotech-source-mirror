@@ -48,14 +48,8 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	m_button_group.addButton(ui->m_protection_cb, 5);
 	m_button_group.addButton(ui->m_thumbnail_cb, 6);
 	m_button_group.addButton(ui->m_plc_cb, 7);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.15 or later")
-#endif
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
-#endif
+
 	{
 		auto check_box = static_cast<QCheckBox *>(m_button_group.button(0));
 		if (id == 0)
@@ -384,10 +378,10 @@ QString ElementQueryWidget::queryStr() const
 		where.clear();
 	}
 
-	QString exclude_condition = "(exclude_from_bom IS NULL OR exclude_from_bom != '1')";
-
-	filter_ += " AND " + exclude_condition;
-	// -------------------------------------------------------------
+	// exclude_from_bom is already filtered by element_nomenclature_view
+	// (see createElementNomenclatureView() in projectdatabase.cpp); this
+	// widget's query reads FROM that view, so a flagged element never
+	// reaches this point in the first place.
 
 	if (where.isEmpty() && !filter_.isEmpty()) {
 		filter_.remove(0, 4); //Remove the first " AND" of filter.

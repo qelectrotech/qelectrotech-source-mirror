@@ -90,7 +90,7 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
-	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos").toString()).toStdString().data()));
+	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos", "AlignBottom").toString()).toStdString().data()));
 
 	for (QString key : m_prefix_keys) {
 		m_prefix.insert(key, settings.value(prefix + key % "prefix").toString());

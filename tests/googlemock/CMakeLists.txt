@@ -85,6 +85,6 @@ target_link_libraries(
     PUBLIC
     gmock gmock_main
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 

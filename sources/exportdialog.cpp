@@ -22,8 +22,10 @@
 #include "exportpropertieswidget.h"
 #include "factory/elementpicturefactory.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
+#include "dxfpaintdevice.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/crossrefitem.h"
 #include "qetgraphicsitem/diagramimageitem.h"
 #include "qetgraphicsitem/diagramtextitem.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
@@ -140,21 +142,12 @@ QWidget *ExportDialog::initDiagramsListPart()
 	reset_mapper_     = new QSignalMapper(this);
 	clipboard_mapper_ = new QSignalMapper(this);
 	
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedInt() always available
-	connect(preview_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
-	connect(width_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
-	connect(height_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
-	connect(ratio_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
-	connect(reset_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
-	connect(clipboard_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_exportToClipBoard(int)));
-#else
 	connect(preview_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_previewDiagram);
 	connect(width_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctHeight);
 	connect(height_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_correctWidth);
 	connect(ratio_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_keepRatioChanged);
 	connect(reset_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_resetSize);
 	connect(clipboard_mapper_, &QSignalMapper::mappedInt, this, &ExportDialog::slot_exportToClipBoard);
-#endif
 	
 	diagrams_list_layout_ = new QGridLayout();
 	
@@ -472,6 +465,16 @@ void ExportDialog::generateDxf(
 	QList<Conductor *> list_conductors;
 	QList<DiagramTextItem *> list_texts;
 	QList<DiagramImageItem *> list_images;
+		//Slave cross-reference labels. They hang off a DynamicElementTextItem
+		//as plain QGraphicsTextItem children, so neither cast below picks them
+		//up and they were missing from the DXF entirely.
+	QList<QGraphicsTextItem *> list_xref_texts;
+		//Master-side cross-reference item (the table/cross drawn next to a
+		//report/master element). It paints itself with hand-written
+		//QPainter code across three modes (drawAsCross/drawAsContacts/
+		//drawAsPlcTable), so instead of hand-porting each one it's replayed
+		//through DxfPaintEngine, which reuses paint() unmodified.
+	QList<CrossRefItem *> list_master_xrefs;
 	QList<QLineF *> list_lines;
 	QList<QRectF *> list_rectangles;
 	//QList<QRectF *> list_ellipses;
@@ -493,8 +496,13 @@ void ExportDialog::generateDxf(
 			list_shapes << dii;
 		} else if (DynamicElementTextItem *deti = qgraphicsitem_cast<DynamicElementTextItem *>(qgi)) {
 			list_texts << deti;
+			if (QGraphicsTextItem *xref = deti->slaveXrefItem()) {
+				list_xref_texts << xref;
+			}
 		} else if (QetGraphicsTableItem *gti = qgraphicsitem_cast<QetGraphicsTableItem *>(qgi)) {
 			list_tables << gti;
+		} else if (CrossRefItem *xref = qgraphicsitem_cast<CrossRefItem *>(qgi)) {
+			list_master_xrefs << xref;
 		}
 	}
 
@@ -686,6 +694,54 @@ void ExportDialog::generateDxf(
 			x += offset * xdir;
 			y -= offset * ydir;
 		}
+	}
+
+	//Draw the slave cross-reference labels
+	for (QGraphicsTextItem *xref : std::as_const(list_xref_texts))
+	{
+		qreal fontSize = xref->font().pointSizeF();
+		if (fontSize < 0)
+			fontSize = xref->font().pixelSize();
+
+		qreal angle = xref->rotation();
+		QGraphicsItem *parent = xref->parentItem();
+		while (parent) {
+			angle += parent->rotation();
+			parent = parent->parentItem();
+		}
+
+		qreal angler = angle * M_PI/180;
+		int xdir = -sin(angler);
+		int ydir = -cos(angler);
+		qreal x = xref->scenePos().x()
+				+ xdir * fontSize * 1.8
+				- ydir * fontSize;
+		qreal y = xref->scenePos().y()
+				- ydir * fontSize * 1.8
+				- xdir * fontSize * 0.9;
+
+		const QStringList lines = xref->toPlainText().split('\n');
+		const qreal offset = fontSize * 1.6;
+		for (const QString &line : lines) {
+			if (line.size() > 0 && line != QLatin1String("_")) {
+				Createdxf::drawText(file_path, line, QPointF(x, y), fontSize,
+									360-angle, Createdxf::dxfColor(xref->defaultTextColor()), 0.72);
+			}
+			x += offset * xdir;
+			y -= offset * ydir;
+		}
+	}
+
+	//Draw the master-side cross-reference items (table/cross), replaying
+	//their existing paint() unmodified through DxfPaintEngine instead of
+	//hand-porting drawAsCross()/drawAsContacts()/drawAsPlcTable().
+	for (CrossRefItem *xref : std::as_const(list_master_xrefs))
+	{
+		DxfPaintDevice dxf_device(file_path);
+		QPainter painter(&dxf_device);
+		painter.setWorldTransform(xref->sceneTransform());
+		xref->paintForExport(&painter);
+		painter.end();
 	}
 
 	Createdxf::dxfEnd(file_path);

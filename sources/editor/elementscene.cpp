@@ -121,7 +121,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
-			emit mouseMoved(e -> scenePos());
+			emit mouseMoved(snapToGrid(e->scenePos()));
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;

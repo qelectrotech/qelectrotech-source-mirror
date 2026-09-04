@@ -22,6 +22,7 @@
 
 #include <QGraphicsObject>
 #include <QMultiMap>
+#include <QStyleOptionGraphicsItem>
 
 class Element;
 class DynamicElementTextItem;
@@ -88,6 +89,19 @@ class CrossRefItem : public QGraphicsObject
 		void updateProperties();
 		void updateLabel();
 		void autoPos();
+
+	public:
+		/// DXF export: replay this item's paint() on an arbitrary QPainter
+		/// (e.g. one targeting DxfPaintDevice). paint() itself stays
+		/// protected, as it should for the normal
+		/// QGraphicsScene/QGraphicsView paint contract - this is a
+		/// deliberate, narrow escape hatch for exporters, not a general
+		/// relaxation of that contract.
+		void paintForExport(QPainter *painter)
+		{
+			QStyleOptionGraphicsItem option;
+			paint(painter, &option, nullptr);
+		}
 
 	protected:
 		bool sceneEvent(QEvent *event) override;

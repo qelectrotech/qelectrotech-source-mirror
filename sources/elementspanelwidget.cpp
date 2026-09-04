@@ -17,6 +17,7 @@
 */
 #include "elementspanelwidget.h"
 #include "diagram.h"
+#include "qetgraphicsitem/conductor.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"
@@ -683,6 +684,13 @@ void ElementsPanelWidget::duplicateDiagram()
 				// silently vanish from nomenclature/summary tables.
 				elmt->newUuid();
 				new_diagram->restoreText(elmt);
+			}
+			else if (Conductor *cond = dynamic_cast<Conductor *>(item)) {
+				// Same reasoning for conductors: conductor.uuid is the PRIMARY
+				// KEY of the conductor table, and its insert is a plain INSERT,
+				// so a duplicated uuid fails and the wire silently disappears
+				// from the wiring list and the per-element wire count.
+				cond->newUuid();
 			}
 		}
 	}
