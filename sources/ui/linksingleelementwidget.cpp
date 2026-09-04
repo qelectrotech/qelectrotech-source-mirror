@@ -298,12 +298,37 @@ void LinkSingleElementWidget::buildTree()
 	}
 	
 	else if (m_element->elementData().m_type & ElementData::AllReport)
-	{	
+	{
 		for(const auto &elmt : elmt_vector)
 		{
 			QStringList search_list;
 			QStringList str_list;
-			
+
+				//Identifying columns first: a candidate with no conductor
+				//attached yet (the normal state for a freshly placed report
+				//arrow) would otherwise render as an all-blank row, since
+				//every conductor-property column below can legitimately be
+				//empty. Folio number/position/title never are.
+			if (Diagram *diag = elmt->diagram())
+			{
+				if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
+				{
+					autonum::sequentialNumbers seq;
+					QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
+					str_list << F;
+				}
+				else
+				{
+					str_list << QString::number(diag->folioIndex() + 1);
+				}
+				str_list << diag->convertPosition(elmt->scenePos()).toString();
+				str_list << diag->title();
+			}
+			else
+			{
+				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provided element must be in a diagram";
+			}
+
 			if (!elmt->conductors().isEmpty())
 			{
 				ConductorProperties cp = elmt->conductors().first()->properties();
@@ -325,32 +350,12 @@ void LinkSingleElementWidget::buildTree()
 			}
 			else
 				str_list << "" << "" << "" << "" << "";
-			
-			if (Diagram *diag = elmt->diagram())
-			{
-				if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
-				{
-					autonum::sequentialNumbers seq;
-					QString F =autonum::AssignVariables::formulaToLabel(diag->border_and_titleblock.folio(), seq, diag, elmt);
-					str_list << F;
-				}
-				else
-				{
-					str_list << QString::number(diag->folioIndex() + 1);
-				}
-				str_list << diag->convertPosition(elmt->scenePos()).toString();
-				str_list << diag->title();
-			}
-			else
-			{
-				qDebug() << "In method void LinkSingleElementWidget::updateUi(), provided element must be in a diagram";
-			}
-			
+
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
 		}
-		
+
 		QSettings settings;
 		QVariant v = settings.value(QStringLiteral("link-element-widget/report-state"));
 		if(!v.isNull())
@@ -491,25 +496,25 @@ void LinkSingleElementWidget::setUpHeaderLabels()
 	{
 		if (settings.value(QStringLiteral("genericpanel/folio"), false).toBool())
 		{
-			list << tr("N° de fil")
+			list << tr("Label de folio")
+			     << tr("Position")
+			     << tr("Titre de folio")
+			     << tr("N° de fil")
 			     << tr("Fonction")
 			     << tr("Tension / Protocole")
 			     << tr("Couleur du conducteur")
-			     << tr("Section du conducteur")
-			     << tr("Label de folio")
-			     << tr("Position")
-			     << tr("Titre de folio");
+			     << tr("Section du conducteur");
 		}
 		else
 		{
-			list << tr("N° de fil")
+			list << tr("N° de folio")
+			     << tr("Position")
+			     << tr("Titre de folio")
+			     << tr("N° de fil")
 			     << tr("Fonction")
 			     << tr("Tension / Protocole")
 			     << tr("Couleur du conducteur")
-			     << tr("Section du conducteur")
-			     << tr("N° de folio")
-			     << tr("Position")
-			     << tr("Titre de folio");
+			     << tr("Section du conducteur");
 		}
 	}
 	
