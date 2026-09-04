@@ -1,0 +1,51 @@
+name: FreeBSD Build Check with GCC
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-freebsd:
+    name: GCC build on FreeBSD 
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          path: source
+
+      - name: Build on FreeBSD (via VM)
+        uses: cross-platform-actions/action@v1.4.0
+        with:
+          operating_system: freebsd
+          version: '15.1'
+          shell: bash
+          run: |
+            set -euo pipefail
+
+            sudo pkg install -y git qt6 \
+                cmake ninja ccache pkgconf sqlite3
+
+            SOURCE_DIR="$PWD/source"
+            BUILD_DIR="$PWD/build"
+            INSTALL_DIR="$PWD/install"
+
+            cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
+              -DCMAKE_BUILD_TYPE=Release \
+              -DQT_VERSION_MAJOR=6 \
+              -DBUILD_WITH_KF=OFF \
+              -DPACKAGE_TESTS=OFF \
+              -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
+              -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
+
+            cmake --build "$BUILD_DIR" 
+            cmake --install "$BUILD_DIR" --prefix "$INSTALL_DIR"

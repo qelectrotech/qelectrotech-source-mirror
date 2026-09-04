@@ -1,0 +1,52 @@
+name: macOS Build Check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-macos:
+    name: Clang build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          path: source
+
+      - name: Install Qt6 dependencies
+        run: |
+          brew install qt cmake ninja ccache pkg-config sqlite
+
+      - name: Configure, build, install
+        run: |
+          set -euo pipefail
+          SOURCE_DIR="${{ github.workspace }}/source"
+          BUILD_DIR="${{ github.workspace }}/build"
+          INSTALL_DIR="${{ github.workspace }}/install"
+          QT_PREFIX="$(brew --prefix qt@6)"
+
+          cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_PREFIX_PATH="$QT_PREFIX" \
+            -DQT_VERSION_MAJOR=6 \
+            -DBUILD_WITH_KF=OFF \
+            -DPACKAGE_TESTS=OFF \
+            -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
+
+          cmake --build "$BUILD_DIR"
+          cmake --install "$BUILD_DIR" --prefix "$INSTALL_DIR"
