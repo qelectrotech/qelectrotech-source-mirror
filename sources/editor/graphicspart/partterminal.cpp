@@ -479,9 +479,7 @@ void PartTerminal::setMasterLabelIndex(int index)
 void PartTerminal::setPotential(const QString &potential)
 {
 	if (d->m_potential == potential) return;
-	prepareGeometryChange();
 	d->m_potential = potential;
-	update();
 	emit potentialChanged();
 }
 
