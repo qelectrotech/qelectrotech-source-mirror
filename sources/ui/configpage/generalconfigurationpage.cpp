@@ -36,7 +36,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui(new Ui::GeneralConfigurationPage)
 {
 	ui->setupUi(this);
-	
+
+	// Pin the default tab in code: Qt Designer rewrites the .ui file's
+	// currentIndex to whatever tab was open in the editor on last save,
+	// so relying on that value alone lets it silently drift (see #468).
+	ui->tabWidget->setCurrentIndex(0);
+
 	QSettings settings;
 	
 		//Appearance tab
