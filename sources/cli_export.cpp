@@ -70,6 +70,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
 		{"--export-bom", "bom"},
+		{"--export-wiring", "wiring"},
 		{"--export-nets", "nets"},
 		{"--export-links", "links"},
 		{"--info", "info"},
@@ -525,6 +526,54 @@ QHash<Element *, int> folioIndex(QETProject &project)
 	return folio;
 }
 
+/// From-to wiring list: one row per conductor, each endpoint resolved to its
+/// element label and terminal name.
+///
+/// Reads wiring_list_view out of the project database. --export-cables produces
+/// the same logical list from the document XML instead, and the two are meant
+/// to agree: running both and diffing them is a direct check that the database
+/// still describes the project, which is otherwise only observable through the
+/// GUI.
+int exportWiring(QETProject &project, const QString &output)
+{
+	// The project database is built lazily; force a (re)build before querying.
+	project.dataBase()->updateDB();
+
+	static const QStringList columns {
+		"wire_number", "from_element_label", "from_terminal",
+		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid"
+	};
+
+	QSqlQuery query = project.dataBase()->newQuery(
+		"SELECT " % columns.join(", ") %
+		" FROM wiring_list_view ORDER BY diagram_position, wire_number");
+	if (!query.exec()) {
+		err << "Wiring list query failed: " << query.lastError().text() << "\n";
+		return 1;
+	}
+
+	QString csv = columns.join(";") % "\n";
+	int rows = 0;
+	while (query.next()) {
+		QStringList values;
+		for (int i = 0; i < columns.size(); ++i)
+			values << csvField(query.value(i).toString());
+		csv += values.join(";") % "\n";
+		++rows;
+	}
+
+	QFile file(output);
+	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	QTextStream fout(&file);
+	fout << csv;
+	file.close();
+	out << "Exported " << rows << " conductor(s) -> " << output << "\n";
+	return 0;
+}
+
 /// Electrical nets: groups of terminals joined into one potential.
 /// Walks QET's own potential graph, so each net is a connected component
 /// of terminals across all folios. The ground truth for connectivity.
@@ -823,6 +872,8 @@ int run(const QStringList &args)
 		return exportCsv(project, format, output);
 	if (format == "bom")
 		return exportBom(project, output);
+	if (format == "wiring")
+		return exportWiring(project, output);
 	if (format == "nets")
 		return exportNets(project, output);
 	if (format == "links")
