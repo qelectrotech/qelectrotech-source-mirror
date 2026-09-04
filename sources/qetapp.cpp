@@ -1423,7 +1423,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
