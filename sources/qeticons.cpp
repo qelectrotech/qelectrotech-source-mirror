@@ -128,6 +128,7 @@ namespace QET {
 		QIcon ObjectUnlocked;
 		QIcon Orientations;
 		QIcon PartArc;
+		QIcon PartBezier;
 		QIcon PartCircle;
 		QIcon PartEllipse;
 		QIcon PartLine;
@@ -570,6 +571,7 @@ void QET::Icons::initIcons()
 	ObjectUnlocked      .addFile(":/ico/22x22/object-unlocked.png");
 	Orientations        .addFile(":/ico/16x16/orientations.png");
 	PartArc             .addFile(":/ico/22x22/arc.png");
+	PartBezier          .addFile(":/ico/breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg");
 	PartCircle          .addFile(":/ico/16x16/circle.png");
 	PartEllipse         .addFile(":/ico/22x22/ellipse.png");
 	PartLine            .addFile(":/ico/22x22/line.png");
