@@ -111,6 +111,7 @@ void XRefPropertiesWidget::buildUi()
 	ui -> m_xrefpos_cb -> addItem(tr("Left"),"left");
 	ui -> m_xrefpos_cb -> addItem(tr("Right"),"right");
 	ui -> m_xrefpos_cb -> addItem(tr("Text alignment"),"alignment");
+	ui -> m_xrefpos_cb -> addItem(tr("Champ de texte"),"text_field");
 	m_previous_type_index = ui -> m_type_cb -> currentIndex();
 }
 
@@ -139,6 +140,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "left") xrp.setXrefPos(Qt::AlignLeft);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "right") xrp.setXrefPos(Qt::AlignRight);
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "alignment") xrp.setXrefPos(Qt::AlignBaseline);
+	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "text_field") xrp.setXrefPos(Qt::AlignHCenter);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	xrp.setShowTerminalName(ui->m_show_terminal_name_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
@@ -195,6 +197,7 @@ void XRefPropertiesWidget::updateDisplay()
 	else if(xrp.getXrefPos() == Qt::AlignRight) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("right"));
 	else if(xrp.getXrefPos() == Qt::AlignBaseline) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("alignment"));
 	else if(xrp.getXrefPos() == Qt::AlignBottom) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("bottom"));
+	else if(xrp.getXrefPos() == Qt::AlignHCenter) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("text_field"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
 	ui->m_show_terminal_name_cb->setChecked(xrp.showTerminalName());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
