@@ -1,0 +1,37 @@
+name: Build Flatpak package
+
+# On-demand only: run manually from the Actions tab. This avoids spending
+# Actions minutes (arm64 is billed at a higher rate) on every push to master
+# for a build that publishes nothing. A release-tag publish step can be added
+# later once a distribution target is agreed.
+on:
+  workflow_dispatch:
+
+jobs:
+  flatpak:
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-5.15-25.08
+      options: --privileged
+    strategy:
+      fail-fast: false
+      matrix:
+        variant:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.variant.runner }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          # The Flatpak build needs sources only, not the LFS-stored .qch docs.
+          # Keep this explicit so the workflow never draws on LFS bandwidth.
+          lfs: false
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: qelectrotech.flatpak
+          manifest-path: build-aux/flatpak/org.qelectrotech.QElectroTech.json
+          cache-key: flatpak-builder-${{ matrix.variant.arch }}-${{ github.sha }}
+          arch: ${{ matrix.variant.arch }}
+          verbose: true
