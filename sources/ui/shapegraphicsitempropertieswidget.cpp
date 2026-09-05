@@ -73,7 +73,8 @@ void ShapeGraphicsItemPropertiesWidget::setItem(QetShapeItem *shape)
 	}
 
 	m_shape = shape;
-	ui->m_close_polygon->setVisible(m_shape->shapeType() == QetShapeItem::Polygon);
+	ui->m_close_polygon->setVisible(m_shape->shapeType() == QetShapeItem::Polygon
+			|| m_shape->shapeType() == QetShapeItem::Path);
 	ui->m_filling_gb->setHidden(m_shape->shapeType() == QetShapeItem::Line);
 
 	updateUi();
@@ -163,6 +164,58 @@ QUndoCommand* ShapeGraphicsItemPropertiesWidget::associatedUndo() const
 		if (m_shapes_list.isEmpty())
 		{
 			QPropertyUndoCommand *undo = nullptr;
+
+			//Geometry
+			const bool hasGeometry = (m_shape->shapeType() == QetShapeItem::Line
+					|| m_shape->shapeType() == QetShapeItem::Rectangle
+					|| m_shape->shapeType() == QetShapeItem::Ellipse);
+			if (hasGeometry)
+			{
+				if (m_shape->shapeType() == QetShapeItem::Line)
+				{
+					const QLineF old_line = m_shape->line();
+					QLineF new_line = old_line;
+					new_line.setLength(ui->m_geom_dim1_dsb->value());
+
+					if (new_line != old_line)
+					{
+						undo = new QPropertyUndoCommand(m_shape, "line", old_line, new_line);
+						undo->setText(tr("Modifier la longueur d'une ligne"));
+					}
+				}
+				else
+				{
+					const QRectF old_rect = m_shape->rect().normalized();
+					const bool isEllipse = (m_shape->shapeType() == QetShapeItem::Ellipse);
+					const qreal new_width  = isEllipse ? ui->m_geom_dim1_dsb->value() * 2.0 : ui->m_geom_dim1_dsb->value();
+					const qreal new_height = isEllipse ? ui->m_geom_dim2_dsb->value() * 2.0 : ui->m_geom_dim2_dsb->value();
+					// Anchored on the shape's own current top-left, not
+					// re-centered -- matches how the resize handle itself
+					// behaves (the opposite corner stays put while the
+					// dragged one moves), so typing a width/height here
+					// and dragging a handle agree on what "resizing" means.
+					const QRectF new_rect(old_rect.topLeft(), QSizeF(new_width, new_height));
+
+					if (new_rect != old_rect)
+					{
+						undo = new QPropertyUndoCommand(m_shape, "rect", old_rect, new_rect);
+						undo->setText(tr("Modifier la taille d'une forme"));
+					}
+				}
+
+				const qreal old_angle = m_shape->rotation();
+				const qreal new_angle = ui->m_geom_angle_dsb->value();
+				if (qAbs(old_angle - new_angle) > 0.05)
+				{
+					if (undo)
+						new QPropertyUndoCommand(m_shape, "rotation", old_angle, new_angle, undo);
+					else
+					{
+						undo = new QPropertyUndoCommand(m_shape, "rotation", old_angle, new_angle);
+						undo->setText(tr("Modifier l'angle d'une forme"));
+					}
+				}
+			}
 
 			QPen old_pen = m_shape->pen();
 			QPen new_pen = old_pen;
@@ -366,6 +419,35 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 
 	if (m_shape)
 	{
+		//Geometry
+		const bool hasGeometry = (m_shape->shapeType() == QetShapeItem::Line
+				|| m_shape->shapeType() == QetShapeItem::Rectangle
+				|| m_shape->shapeType() == QetShapeItem::Ellipse);
+		ui->m_geometry_gb->setVisible(hasGeometry);
+		if (hasGeometry)
+		{
+			ui->m_geom_angle_dsb->setValue(m_shape->rotation());
+
+			if (m_shape->shapeType() == QetShapeItem::Line)
+			{
+				ui->m_geom_dim1_label->setText(tr("Longueur"));
+				ui->m_geom_dim1_dsb->setValue(m_shape->line().length());
+				ui->m_geom_dim2_label->setVisible(false);
+				ui->m_geom_dim2_dsb->setVisible(false);
+			}
+			else
+			{
+				const QRectF r = m_shape->rect().normalized();
+				const bool isEllipse = (m_shape->shapeType() == QetShapeItem::Ellipse);
+				ui->m_geom_dim1_label->setText(isEllipse ? tr("Rayon X") : tr("Largeur"));
+				ui->m_geom_dim2_label->setText(isEllipse ? tr("Rayon Y") : tr("Hauteur"));
+				ui->m_geom_dim1_dsb->setValue(isEllipse ? r.width() / 2.0 : r.width());
+				ui->m_geom_dim2_dsb->setValue(isEllipse ? r.height() / 2.0 : r.height());
+				ui->m_geom_dim2_label->setVisible(true);
+				ui->m_geom_dim2_dsb->setVisible(true);
+			}
+		}
+
 		//Pen
 		ui->m_style_cb->setCurrentIndex(static_cast<int>(m_shape->pen().style()) - 1);
 		ui->m_size_dsb ->setValue(m_shape->pen().widthF());
@@ -373,7 +455,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 		ui->m_color_kpb->setColor(m_shape->pen().color());
 
 		//Brush
-		if (m_shape->shapeType() == QetShapeItem::Polygon)
+		if (m_shape->shapeType() == QetShapeItem::Polygon || m_shape->shapeType() == QetShapeItem::Path)
 			ui->m_filling_gb->setVisible(m_shape->isClosed());
 
 		ui->m_brush_style_cb->setCurrentIndex(static_cast<int>(m_shape->brush().style()));
@@ -384,6 +466,7 @@ void ShapeGraphicsItemPropertiesWidget::updateUi()
 	}
 	else if (m_shapes_list.size() >= 2)
 	{
+		ui->m_geometry_gb->setVisible(false);
 		ui->m_close_polygon->setHidden(true);
 		bool same = true;
 			//Pen
@@ -477,6 +560,15 @@ void ShapeGraphicsItemPropertiesWidget::setUpEditConnection()
 
 	if (m_shape || !m_shapes_list.isEmpty())
 	{
+		m_edit_connection << connect (ui->m_geom_dim1_dsb, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
+									  this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+		m_edit_connection << connect (ui->m_geom_dim2_dsb, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
+									  this, &ShapeGraphicsItemPropertiesWidget::apply);
+
+		m_edit_connection << connect (ui->m_geom_angle_dsb, QOverload<double>::of(&QDoubleSpinBox::valueChanged),
+									  this, &ShapeGraphicsItemPropertiesWidget::apply);
+
 		m_edit_connection << connect (ui->m_style_cb, QOverload<int>::of(&QComboBox::activated),
 									  this, &ShapeGraphicsItemPropertiesWidget::apply);
 
@@ -495,14 +587,23 @@ void ShapeGraphicsItemPropertiesWidget::setUpEditConnection()
 		m_edit_connection << connect (ui->m_close_polygon, &QCheckBox::clicked,
 									  this, &ShapeGraphicsItemPropertiesWidget::apply);
 
-		m_edit_connection << connect (m_shape, &QetShapeItem::penChanged,
-									  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		if (m_shape)
+		{
+			m_edit_connection << connect (m_shape, &QetShapeItem::penChanged,
+										  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
-		m_edit_connection << connect (m_shape, &QetShapeItem::closeChanged,
-									  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+			m_edit_connection << connect (m_shape, &QetShapeItem::closeChanged,
+										  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
 
-		m_edit_connection << connect (m_shape, &QetShapeItem::brushChanged,
-									  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+			m_edit_connection << connect (m_shape, &QetShapeItem::brushChanged,
+										  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+
+			m_edit_connection << connect (m_shape, &QetShapeItem::geometryChanged,
+										  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+
+			m_edit_connection << connect (m_shape, &QetShapeItem::transformChanged,
+										  this, &ShapeGraphicsItemPropertiesWidget::updateUi);
+		}
 
 	}
 }
