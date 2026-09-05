@@ -225,7 +225,40 @@ void projectDataBase::addDiagram(Diagram *diagram)
 
 void projectDataBase::removeDiagram(Diagram *diagram)
 {
-	m_remove_diagram_query.bindValue(":uuid", diagram->uuid().toString());
+	const QString uuid_str = diagram->uuid().toString();
+
+		//Order matters: element_info and terminal are scoped through a
+		//subquery on element, so they must run before element itself is
+		//deleted below. Without this, a removed diagram left its rows
+		//behind in every one of these tables until the next full
+		//updateDB() rebuild -- invisible day to day, since nothing reads
+		//them meanwhile, but a real inconsistency between the live scene
+		//and the database in between.
+	m_cascade_remove_element_info_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_element_info_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram element_info cascade error : "
+				 << m_cascade_remove_element_info_query.lastError();
+	}
+
+	m_cascade_remove_terminal_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_terminal_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram terminal cascade error : "
+				 << m_cascade_remove_terminal_query.lastError();
+	}
+
+	m_cascade_remove_conductor_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_conductor_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram conductor cascade error : "
+				 << m_cascade_remove_conductor_query.lastError();
+	}
+
+	m_cascade_remove_element_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_element_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram element cascade error : "
+				 << m_cascade_remove_element_query.lastError();
+	}
+
+	m_remove_diagram_query.bindValue(":uuid", uuid_str);
 	if (!m_remove_diagram_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram delete error : " << m_remove_diagram_query.lastError();
 	} else {
@@ -772,7 +805,27 @@ void projectDataBase::prepareQuery()
 	m_insert_diagram_query = QSqlQuery(m_data_base);
 	m_insert_diagram_query.prepare("INSERT INTO diagram (uuid, pos) VALUES (:uuid, :pos)");
 
-		//REMOVE DIAGRAM
+		//REMOVE DIAGRAM (cascade first: element_info and terminal have no
+		//diagram_uuid column of their own, so both are scoped through
+		//element while the element rows for this diagram still exist).
+	m_cascade_remove_element_info_query = QSqlQuery(m_data_base);
+	m_cascade_remove_element_info_query.prepare(
+		"DELETE FROM element_info WHERE element_uuid IN "
+		"(SELECT uuid FROM element WHERE diagram_uuid = :uuid)");
+
+	m_cascade_remove_terminal_query = QSqlQuery(m_data_base);
+	m_cascade_remove_terminal_query.prepare(
+		"DELETE FROM terminal WHERE element_uuid IN "
+		"(SELECT uuid FROM element WHERE diagram_uuid = :uuid)");
+
+	m_cascade_remove_conductor_query = QSqlQuery(m_data_base);
+	m_cascade_remove_conductor_query.prepare(
+		"DELETE FROM conductor WHERE diagram_uuid = :uuid");
+
+	m_cascade_remove_element_query = QSqlQuery(m_data_base);
+	m_cascade_remove_element_query.prepare(
+		"DELETE FROM element WHERE diagram_uuid = :uuid");
+
 	m_remove_diagram_query = QSqlQuery(m_data_base);
 	m_remove_diagram_query.prepare("DELETE FROM diagram WHERE uuid=:uuid");
 
