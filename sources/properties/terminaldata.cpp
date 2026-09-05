@@ -129,6 +129,9 @@ QDomElement TerminalData::toXml(QDomDocument &xml_document) const
 			xml_element.setAttribute("label_color", m_label_color.name());
 	}
 
+	if (!m_potential.isEmpty())
+		xml_element.setAttribute("potential", m_potential);
+
 	// Save master label override settings
 	if (m_use_master_label) {
 		xml_element.setAttribute("use_master_label", "true");
@@ -206,6 +209,8 @@ bool TerminalData::fromXml (const QDomElement &xml_element)
 		if (!color_str.isEmpty())
 			m_label_color = QColor(color_str);
 	}
+
+	m_potential = xml_element.attribute("potential");
 
 	// Read master label override settings
 	m_use_master_label = (xml_element.attribute("use_master_label") == QLatin1String("true"));

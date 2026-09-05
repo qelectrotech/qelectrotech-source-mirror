@@ -44,6 +44,7 @@ class PartTerminal : public CustomElementGraphicPart
 	Q_PROPERTY(QColor label_color READ labelColor WRITE setLabelColor)
 	Q_PROPERTY(bool use_master_label READ useMasterLabel WRITE setUseMasterLabel)
 	Q_PROPERTY(int master_label_index READ masterLabelIndex WRITE setMasterLabelIndex)
+	Q_PROPERTY(QString potential READ potential WRITE setPotential)
 
 	public:
 		// constructors, destructor
@@ -56,6 +57,7 @@ class PartTerminal : public CustomElementGraphicPart
 		void orientationChanged();
 		void nameChanged();
 		void terminalTypeChanged();
+		void potentialChanged();
 		void showNameChanged();
 		void labelPosChanged();
 		void labelFontChanged();
@@ -139,6 +141,9 @@ class PartTerminal : public CustomElementGraphicPart
 
 		int masterLabelIndex() const { return d->m_master_label_index; }
 		void setMasterLabelIndex(int index);
+
+		QString potential() const { return d->m_potential; }
+		void setPotential(const QString &potential);
 
 		void setNewUuid();
 
