@@ -245,7 +245,8 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	else {
 		strl = QETInformation::elementInfoKeys();
 
-		bool is_plc_slave = (type == ElementData::Slave
+		bool is_slave = (type == ElementData::Slave);
+		bool is_plc_slave = (is_slave
 							 && ed.m_slave_type == ElementData::PLCSlave);
 
 		if (is_plc_slave) {
@@ -273,6 +274,10 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 			strl.removeAll(QETInformation::ELMT_PLC_T2);
 			strl.removeAll(QETInformation::ELMT_PLC_T3);
 			strl.removeAll(QETInformation::ELMT_PLC_T4);
+		}
+
+		if (is_slave) {
+			strl.prepend(QETInformation::ELMT_XREF);
 		}
 	}
 
