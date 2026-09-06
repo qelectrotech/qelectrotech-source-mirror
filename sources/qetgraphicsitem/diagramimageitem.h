@@ -24,6 +24,7 @@
 
 #include <QColor>
 #include <QList>
+#include <QStyleOptionGraphicsItem>
 #include <QVector>
 
 class QDomElement;
@@ -95,6 +96,19 @@ class DiagramImageItem : public QetGraphicsItem {
 	QPixmap pixmap() const { return pixmap_; }
 	QRectF boundingRect() const override;
 	QString name() const override;
+
+	/// DXF export: replay this item's paint() on an arbitrary QPainter
+	/// (e.g. one targeting DxfPaintDevice). paint() itself stays
+	/// protected, as it should for the normal
+	/// QGraphicsScene/QGraphicsView paint contract - this is a
+	/// deliberate, narrow escape hatch for exporters, not a general
+	/// relaxation of that contract. Matches CrossRefItem::paintForExport()
+	/// exactly, for the identical reason.
+	void paintForExport(QPainter *painter)
+	{
+		QStyleOptionGraphicsItem option;
+		paint(painter, &option, nullptr);
+	}
 
 	qreal scaleFactorX() const { return m_transform.scaleX; }
 	qreal scaleFactorY() const { return m_transform.scaleY; }
