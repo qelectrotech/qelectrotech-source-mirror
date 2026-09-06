@@ -106,8 +106,8 @@ class PartDynamicTextField : public QGraphicsTextItem, public CustomElementPart
 		bool rotationPointCenter() const;
 
 		void setRotation(qreal angle);
-		void mirror();
-		void flip();
+		void mirror(qreal axis_x = 0);
+		void flip(qreal axis_y = 0);
 
 
 	protected:
