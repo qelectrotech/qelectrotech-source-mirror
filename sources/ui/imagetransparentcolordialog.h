@@ -142,11 +142,13 @@ class ImageTransparentColorDialog : public QDialog
 		void removeColor(int index);
 		void rebuildSwatches();
 		void updatePreview();
+		void updateOkEnabled();
 		static QPixmap onCheckerboard(const QImage &image);
 
 		QImage              m_sourceImage;
 		QImage              m_previewSourceImage;   // downsampled -- see ClickableImageLabel::displayImage()'s comment for why
 		QList<PickedColor>  m_pickedColors;
+		bool                m_startedWithColors = false;   // whether existingColors was non-empty -- see updateOkEnabled()'s comment for why this matters
 		int                 m_lastToleranceUsed = 10;   // seeds a newly-picked colour's own tolerance, so successive picks in one session feel consistent rather than each resetting to some fixed default
 
 		ClickableImageLabel *m_sourceLabel;

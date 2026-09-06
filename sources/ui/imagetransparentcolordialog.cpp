@@ -112,7 +112,8 @@ ImageTransparentColorDialog::ImageTransparentColorDialog(const QPixmap &basePixm
 
 	auto *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 	m_okButton = buttons->button(QDialogButtonBox::Ok);
-	m_okButton->setEnabled(!m_pickedColors.isEmpty());   // nothing to apply until at least one colour has been picked
+	m_startedWithColors = !m_pickedColors.isEmpty();
+	updateOkEnabled();
 
 	auto *grid = new QGridLayout;
 	grid->addWidget(new QLabel(tr("Image source")), 0, 0);
@@ -159,7 +160,7 @@ void ImageTransparentColorDialog::onColorPicked(const QColor &color)
 			return;
 
 	m_pickedColors.append({color, m_lastToleranceUsed});
-	m_okButton->setEnabled(true);
+	updateOkEnabled();
 	rebuildSwatches();
 	updatePreview();
 }
@@ -184,6 +185,22 @@ void ImageTransparentColorDialog::setToleranceForIndex(int index, int value)
 }
 
 /**
+	@brief ImageTransparentColorDialog::updateOkEnabled
+	OK is disabled only for the one case where accepting would genuinely
+	do nothing: a dialog that started with no colours and still has
+	none. Removing every colour from a dialog that DID start with some
+	is a different, meaningful action -- clearing all transparency back
+	to a plain, opaque image -- and has to stay confirmable, not silently
+	blocked the same way. Re-run after every add or remove, since either
+	can cross the "any colours at all, ever" threshold in either
+	direction.
+*/
+void ImageTransparentColorDialog::updateOkEnabled()
+{
+	m_okButton->setEnabled(!m_pickedColors.isEmpty() || m_startedWithColors);
+}
+
+/**
 	@brief ImageTransparentColorDialog::removeColor
 	Removes one colour from the set -- the counterpart onColorPicked()
 	was missing entirely before: picking the wrong pixel by mistake had
@@ -196,7 +213,7 @@ void ImageTransparentColorDialog::removeColor(int index)
 		return;
 
 	m_pickedColors.removeAt(index);
-	m_okButton->setEnabled(!m_pickedColors.isEmpty());
+	updateOkEnabled();
 	rebuildSwatches();
 	updatePreview();
 }
