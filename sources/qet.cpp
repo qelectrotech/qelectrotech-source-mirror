@@ -297,11 +297,19 @@ QString QET::ElementsAndConductorsSentence(
 
 	if (images_count) {
 		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n image(s)",
-			"part of a sentence listing the content of a diagram",
-			images_count
-		);
+		// Qt's %n only selects a grammatical singular/plural form (the
+		// "(s)" convention used by every other count here) -- it never
+		// spells the number out as a word, so getting "une image"
+		// instead of the literal "1 image" for the single-item case
+		// means handling that count outside %n entirely, with its own
+		// fixed string.
+		text += images_count == 1
+				? QObject::tr("une image", "part of a sentence listing the content of a diagram")
+				: QObject::tr(
+					"%n images",
+					"part of a sentence listing the content of a diagram",
+					images_count
+				);
 	}
 
 	if (shapes_count) {

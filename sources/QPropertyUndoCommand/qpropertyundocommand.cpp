@@ -128,6 +128,18 @@ bool QPropertyUndoCommand::mergeWith(const QUndoCommand *other)
 	QPropertyUndoCommand const *undo = static_cast<const QPropertyUndoCommand *>(other);
 	if (m_object != undo->m_object
 			|| m_property_name != undo->m_property_name) return false;
+	// Same object and property name alone isn't enough: two entirely
+	// separate, deliberate actions (say, cropping an image and then
+	// mirroring it) both go through the same "pixmap" property and
+	// would otherwise silently coalesce into one undo entry, carrying
+	// only the first action's label -- the second vanishes from the
+	// undo list with no way to undo just it. Legitimate merging (a
+	// slider or spinbox pushing one command per tick while being
+	// dragged, e.g. ArcEditor's angle editors) always reuses the exact
+	// same text() across the whole sequence, so requiring a match here
+	// keeps that working unchanged while refusing to merge anything
+	// that isn't actually a continuation of the same action.
+	if (text() != other->text()) return false;
 	m_new_value = undo->m_new_value;
 	return true;
 }

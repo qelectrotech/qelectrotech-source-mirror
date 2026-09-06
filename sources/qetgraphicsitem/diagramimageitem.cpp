@@ -815,11 +815,16 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 					else
 						undo = new QPropertyUndoCommand(this, "scaleFactorY", m_original_transform.scaleY, m_transform.scaleY);
 				}
+				if (undo)
+					undo->setText(tr("Redimensionner une image"));
 				break;
 
 			case HandleRole::Rotate:
 				if (!qFuzzyCompare(m_transform.rotation, m_original_transform.rotation))
+				{
 					undo = new QPropertyUndoCommand(this, "rotationAngle", m_original_transform.rotation, m_transform.rotation);
+					undo->setText(tr("Faire pivoter une image"));
+				}
 				break;
 
 			case HandleRole::SkewEdge:
@@ -827,6 +832,8 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 					undo = new QPropertyUndoCommand(this, "skewX", m_original_transform.skewX, m_transform.skewX);
 				else if (!qFuzzyCompare(m_transform.skewY, m_original_transform.skewY))
 					undo = new QPropertyUndoCommand(this, "skewY", m_original_transform.skewY, m_transform.skewY);
+				if (undo)
+					undo->setText(tr("Incliner une image"));
 				break;
 
 			case HandleRole::Pivot:
@@ -841,8 +848,28 @@ void DiagramImageItem::handlerMouseReleaseEvent(int index)
 
 		if (undo)
 		{
+			// Defensive fallback only -- every role above now sets its
+			// own, distinct label directly (Resize/Rotate/SkewEdge used
+			// to all fall through to this same generic text, making the
+			// undo list unable to tell three completely different edits
+			// apart); this only still matters if some future role is
+			// ever added without setting one of its own.
 			if (undo->text().isEmpty())
 				undo->setText(tr("Modifier une image"));
+
+			// Every push here is one complete, finished gesture (press,
+			// drag, release) -- never a continuation of an earlier one.
+			// QPropertyUndoCommand::mergeWith() already treats any
+			// command with children as never mergeable; a dummy child
+			// guarantees that here regardless of which role produced
+			// undo. Without this, a single-property change (Rotate and
+			// SkewEdge always are; Resize sometimes is, when only one
+			// axis actually changed) would silently coalesce into
+			// whatever identically-labelled edit came right before it
+			// -- even after a deselect/reselect proved they were two
+			// separate actions, since the shared label alone is
+			// otherwise indistinguishable from a genuine continuation.
+			new QUndoCommand(undo);
 			diagram()->undoStack().push(undo);
 		}
 	}
@@ -1635,6 +1662,15 @@ void DiagramImageItem::replaceImage()
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(tr("Remplacer une image"));
+	// Every call here is a separate, deliberate menu action with no
+	// compound child of its own (unlike crop(), which always chains a
+	// pos/rawPivot change and is naturally immune) -- two of them in a
+	// row would carry the exact same object, property, and text, which
+	// is indistinguishable from a legitimate merge to
+	// QPropertyUndoCommand::mergeWith(). A dummy child (already treated
+	// as "never merge" by that check) keeps each one its own, separate
+	// undo step regardless.
+	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
@@ -1678,6 +1714,11 @@ void DiagramImageItem::mirror(bool horizontal)
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(horizontal ? tr("Miroir horizontal d'une image") : tr("Miroir vertical d'une image"));
+	// See replaceImage()'s identical comment: a separate, deliberate
+	// action with no compound child of its own, so a dummy one is
+	// needed to stop two consecutive same-direction mirrors (identical
+	// object, property, and text) from silently merging into one.
+	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 
@@ -1727,6 +1768,11 @@ void DiagramImageItem::setTransparentColor()
 
 	auto *undo = new QPropertyUndoCommand(this, "pixmap", oldPixmap, newPixmap);
 	undo->setText(tr("Définir une couleur transparente"));
+	// See replaceImage()'s identical comment: a separate, deliberate
+	// action with no compound child of its own, so a dummy one is
+	// needed to stop two consecutive transparency edits (identical
+	// object, property, and text) from silently merging into one.
+	new QUndoCommand(undo);
 	diagram()->undoStack().push(undo);
 }
 

@@ -2477,6 +2477,8 @@ void QetShapeItem::handlerMousePressEvent(int handlerIndex)
 	m_old_polygon = m_polygon;
 	m_old_xRadius = m_xRadius;
 	m_old_yRadius = m_yRadius;
+	m_old_startAngle = m_startAngle;
+	m_old_endAngle = m_endAngle;
 	m_old_transform = m_transform;
 	m_old_pos = pos();
 	m_old_nodes = m_nodes;
@@ -2555,11 +2557,16 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 			{
 				undo = new QPropertyUndoCommand(this, "rect", QRectF(m_old_P1, m_old_P2), QRectF(m_P1, m_P2).normalized());
 			}
+			if (undo)
+				undo->setText(tr("Redimensionner %1").arg(name()));
 			break;
 
 		case HandleRole::Rotate:
 			if (!qFuzzyCompare(m_transform.rotation, m_old_transform.rotation))
+			{
 				undo = new QPropertyUndoCommand(this, "rotation", m_old_transform.rotation, m_transform.rotation);
+				undo->setText(tr("Faire pivoter %1").arg(name()));
+			}
 			break;
 
 		case HandleRole::SkewEdge:
@@ -2567,6 +2574,8 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				undo = new QPropertyUndoCommand(this, "skewX", m_old_transform.skewX, m_transform.skewX);
 			else if (!qFuzzyCompare(m_transform.skewY, m_old_transform.skewY))
 				undo = new QPropertyUndoCommand(this, "skewY", m_old_transform.skewY, m_transform.skewY);
+			if (undo)
+				undo->setText(tr("Incliner %1").arg(name()));
 			break;
 
 		case HandleRole::Pivot:
@@ -2583,20 +2592,37 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 			{
 				undo = new QPropertyUndoCommand(this, "xRadius", m_old_xRadius, m_xRadius);
 				new QPropertyUndoCommand(this, "yRadius", m_old_yRadius, m_yRadius, undo);
+				undo->setText(tr("Arrondir les coins d'%1").arg(name()));
 			}
 			break;
 
 		case HandleRole::ArcEndpoint:
-			// startAngle/endAngle changes are cosmetic-cost enough (and
-			// re-derived from each other on snap-to-full-ellipse) that
-			// they are intentionally not wrapped in undo here yet -- flag
-			// for a follow-up once ArcEndpoint dragging ships in the UI.
+			// The snap-to-full-ellipse behaviour in setStartAngle()/
+			// setEndAngle() (see anglesGeometricallyAdjacent()) can
+			// reset BOTH angles at once even though only one endpoint
+			// was actually dragged, so both are checked here regardless
+			// of which handle (slot 0 or 1) triggered this -- the same
+			// reasoning as CornerRadius checking both xRadius and
+			// yRadius above.
+			if (!qFuzzyCompare(m_startAngle, m_old_startAngle))
+			{
+				undo = new QPropertyUndoCommand(this, "startAngle", m_old_startAngle, m_startAngle);
+				if (!qFuzzyCompare(m_endAngle, m_old_endAngle))
+					new QPropertyUndoCommand(this, "endAngle", m_old_endAngle, m_endAngle, undo);
+			}
+			else if (!qFuzzyCompare(m_endAngle, m_old_endAngle))
+			{
+				undo = new QPropertyUndoCommand(this, "endAngle", m_old_endAngle, m_endAngle);
+			}
+			if (undo)
+				undo->setText(tr("Modifier l'angle d'un arc"));
 			break;
 
 		case HandleRole::PathAnchor:
 			if (m_shapeType == Polygon && m_polygon != m_old_polygon)
 			{
 				undo = new QPropertyUndoCommand(this, "polygon", m_old_polygon, m_polygon);
+				undo->setText(tr("Modifier la forme d'%1").arg(name()));
 			}
 			else if (m_shapeType == Path && m_nodes != m_old_nodes)
 			{
@@ -2611,6 +2637,7 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				m_nodes = after;
 				const QDomElement afterXml = snapshotXml();
 				undo = new PromoteShapeCommand(this, before, afterXml);
+				undo->setText(tr("Modifier la forme d'%1").arg(name()));
 			}
 			break;
 
@@ -2624,14 +2651,38 @@ void QetShapeItem::handlerMouseReleaseEvent(int handlerIndex)
 				m_nodes = after;
 				const QDomElement afterXml = snapshotXml();
 				undo = new PromoteShapeCommand(this, before, afterXml);
+				undo->setText(tr("Modifier la courbure d'%1").arg(name()));
 			}
 			break;
 	}
 
 	if (undo)
 	{
+		// Defensive fallback only -- every role above now sets its own,
+		// distinct label directly (Resize/Rotate/SkewEdge/CornerRadius/
+		// PathAnchor/PathControlIn/PathControlOut used to all fall
+		// through to this same generic text, making the undo list
+		// unable to tell completely different edits apart); this only
+		// still matters if some future role is ever added without
+		// setting one of its own.
 		if (undo->text().isEmpty())
 			undo->setText(tr("Modifier %1").arg(name()));
+
+		// Every push here is one complete, finished gesture (press,
+		// drag, release) -- never a continuation of an earlier one, the
+		// way ArcEditor's slider deliberately pushes many commands
+		// during a single ongoing drag and wants them to merge.
+		// QPropertyUndoCommand::mergeWith() already treats any command
+		// with children as never mergeable; a dummy child guarantees
+		// that here regardless of which role produced undo. Without
+		// this, a single-property change (Rotate and SkewEdge always
+		// are; Resize and ArcEndpoint sometimes are, when only one of
+		// their two properties actually changed) would silently
+		// coalesce into whatever identically-labelled edit came right
+		// before it -- even after a deselect/reselect proved they were
+		// two separate actions, since the shared label is otherwise
+		// indistinguishable from a genuine continuation.
+		new QUndoCommand(undo);
 		diagram()->undoStack().push(undo);
 	}
 }

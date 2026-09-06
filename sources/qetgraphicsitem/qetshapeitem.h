@@ -312,7 +312,9 @@ class QetShapeItem : public QetGraphicsItem
 		qreal		 m_xRadius = 0,
 				 m_yRadius = 0,
 				 m_old_xRadius,
-				 m_old_yRadius;
+				 m_old_yRadius,
+				 m_old_startAngle,
+				 m_old_endAngle;
 
 		ShapeTransform   m_transform;
 		ShapeTransform   m_old_transform;
