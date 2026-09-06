@@ -72,6 +72,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
 	m_new_value     = other->m_new_value;
 	m_animate       = other->m_animate;
 	m_first_time    = other->m_first_time;
+	m_undo_first_time = other->m_undo_first_time;
 	setText(other->text());
 }
 
@@ -99,11 +100,20 @@ void QPropertyUndoCommand::enableAnimation (bool animate) {
 	@param first_time = if true,
 	the first animation is done at the first call of redo if false,
 	the first animation is done at the second call of redo.
+	The same rule applies to undo, tracked independently: redo() always
+	runs before the first undo() (QUndoStack::push() calls redo()
+	immediately), so by the time undo() can run at all, redo()'s own
+	m_first_time has already flipped true. Sharing that flag would leave
+	undo() with no instant path ever reachable in practice -- reusing it
+	is not actually symmetric, it just looks like it is. m_undo_first_time
+	gives undo() the same one-time grace period redo() has, on its own
+	first call instead of redo's.
 */
 void QPropertyUndoCommand::setAnimated(bool animate, bool first_time)
 {
 	m_animate = animate;
 	m_first_time = first_time;
+	m_undo_first_time = first_time;
 }
 
 /**
@@ -155,7 +165,7 @@ void QPropertyUndoCommand::undo()
 {
 	if (m_object->property(m_property_name) != m_old_value)
 	{
-		if (m_animate)
+		if (m_animate && m_undo_first_time)
 		{
 			QPropertyAnimation *animation = new QPropertyAnimation(m_object, m_property_name);
 			animation->setStartValue(m_new_value);
@@ -163,7 +173,10 @@ void QPropertyUndoCommand::undo()
 			animation->start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		else
+		{
 			m_object->setProperty(m_property_name, m_old_value);
+			m_undo_first_time = true;
+		}
 	}
 
 	QUndoCommand::undo();
