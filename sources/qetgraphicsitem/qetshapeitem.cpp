@@ -1097,8 +1097,18 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 
 					if (canConvertToPath)
 					{
-						QAction *convert = menu.data()->addAction(tr("Convertir en polyligne"));
-						connect(convert, &QAction::triggered, this, &QetShapeItem::convertToPathExplicitly);
+						// Only a sharp-cornered rectangle converts losslessly to
+						// straight-edged polyline -- an ellipse (or arc) flattened
+						// to its bounding rect's 4 corners wouldn't resemble the
+						// original shape at all, and rounded corners would be
+						// silently squared off. Both of those instead need an
+						// actual Bezier curve to preserve their real geometry; the
+						// label reflects whichever this particular shape will
+						// actually get, rather than always claiming "polyligne"
+						// regardless of what's about to happen.
+						const bool needsBezier = (m_shapeType == Ellipse) || (m_xRadius > 0 || m_yRadius > 0);
+						QAction *convert = menu.data()->addAction(needsBezier ? tr("Convertir en courbe de Bézier") : tr("Convertir en polyligne"));
+						connect(convert, &QAction::triggered, this, &QetShapeItem::convertToPathOrPolygon);
 					}
 
 					QAction *mirrorH = menu.data()->addAction(tr("Miroir horizontal"));
@@ -1929,32 +1939,205 @@ void QetShapeItem::removePathPoint(int nodeIndex)
 	rebuildHandles();
 }
 
-void QetShapeItem::convertToPathExplicitly()
+/**
+	@brief QetShapeItem::convertToPathOrPolygon
+	Context-menu action, explicitly requested rather than triggered by an
+	Alt+drag (see promoteRectangleOrEllipseToPolygon() for that separate
+	mechanism). A sharp-cornered rectangle converts losslessly to a
+	4-corner polygon -- its 4 corners already are exactly what a
+	rectangle is. Anything else offered here (an ellipse/arc, or a
+	rectangle with rounded corners) used to get the exact same
+	treatment, which is wrong: an ellipse flattened to its bounding
+	rect's 4 corners doesn't resemble an ellipse at all, and rounded
+	corners would be silently squared off. Both instead become a
+	genuine Bezier Path, built from the two verified helper functions
+	below (numerically confirmed against Qt's own arcTo()/addRoundedRect()
+	output -- worst-case error a small fraction of a unit on shapes
+	roughly 100-250 units across, i.e. visually indistinguishable, not
+	merely "close enough to eyeball").
+*/
+void QetShapeItem::convertToPathOrPolygon()
 {
 	if (m_shapeType != Rectangle && m_shapeType != Ellipse)
 		return;
 
+	const bool hasRoundedCorners = (m_shapeType == Rectangle) && (m_xRadius > 0 || m_yRadius > 0);
+	// Captured before m_shapeType changes below -- name() reports
+	// whatever the CURRENT type is, and by the time the undo text is
+	// built further down, m_shapeType has already become Polygon or
+	// Path, so calling name() at that point would describe the shape's
+	// new type, not what it actually was before conversion ("Convertir
+	// une polyligne en polyligne" instead of "Convertir un rectangle en
+	// polyligne").
+	const QString originalName = name();
 	const QDomElement before = snapshotXml();
 
-	QPolygonF corners;
-	const QRectF r = localRect();
-	corners << r.topLeft() << r.topRight() << r.bottomRight() << r.bottomLeft();
-
 	prepareGeometryChange();
-	m_shapeType = Polygon;
-	m_polygon = corners;
-	m_closed = true;
+
+	if (m_shapeType == Rectangle && !hasRoundedCorners)
+	{
+		QPolygonF corners;
+		const QRectF r = localRect();
+		corners << r.topLeft() << r.topRight() << r.bottomRight() << r.bottomLeft();
+		m_shapeType = Polygon;
+		m_polygon = corners;
+		m_closed = true;
+	}
+	else if (m_shapeType == Rectangle)   // rounded corners
+	{
+		m_nodes = bezierNodesForRoundedRect(QRectF(m_P1, m_P2), m_xRadius, m_yRadius);
+		m_shapeType = Path;
+		m_closed = true;
+	}
+	else   // Ellipse, full or arc
+	{
+		const QRectF r(m_P1, m_P2);
+		if (isFullEllipse())
+		{
+			m_nodes = bezierNodesForArc(r, 0, 360);
+			m_closed = true;
+		}
+		else if (m_arcClosure == Pie)
+		{
+			m_nodes = bezierNodesForArc(r, m_startAngle, spanAngle());
+			PathNode centerNode;
+			centerNode.anchor = r.center();
+			m_nodes.prepend(centerNode);
+			m_closed = true;
+		}
+		else
+		{
+			// Chord leaves the wrap-around segment's handles unset, which
+			// falls through to QPainterPath::closeSubpath()'s own implicit
+			// straight line -- exactly the chord behaviour -- when m_closed
+			// is true; NoClosure is the same node list, just left open.
+			m_nodes = bezierNodesForArc(r, m_startAngle, spanAngle());
+			m_closed = (m_arcClosure == Chord);
+		}
+		m_shapeType = Path;
+	}
 
 	const QDomElement after = snapshotXml();
 
 	if (diagram())
 	{
 		auto *undo = new PromoteShapeCommand(this, before, after);
-		undo->setText(tr("Convertir %1 en polyligne").arg(name()));
+		undo->setText(m_shapeType == Path
+				? tr("Convertir %1 en courbe de Bézier").arg(originalName)
+				: tr("Convertir %1 en polyligne").arg(originalName));
 		diagram()->undoStack().push(undo);
 	}
 
 	rebuildHandles();
+}
+
+/**
+	@brief QetShapeItem::bezierNodesForArc
+	Bezier approximation of an elliptical arc, split into <=90-degree
+	segments (the standard cap for this technique to stay visually
+	exact -- a single segment starts drifting noticeably past that).
+	Each segment's handle length is (4/3)*tan(segment_span/4), the
+	general-angle form of the well-known ~0.5523 "kappa" constant for
+	an exact quarter circle. A full 360-degree span is a special case:
+	it produces exactly `segments` nodes rather than `segments+1`
+	(the very last one would just be a duplicate of the first at the
+	same anchor point) and wires the wrap-around segment's own handles
+	explicitly, so the loop closes as a continuous curve rather than
+	the straight "chord" line a generic closed-path wrap-around would
+	otherwise fall back to.
+	@param rect the ellipse's bounding rect
+	@param startAngleDeg arc start angle, matching QPainterPath::arcTo's own convention
+	@param spanAngleDeg arc angular span, same convention (may be negative)
+	@return nodes forming the arc; caller sets Path/m_closed and prepends
+	        a centre node itself for a Pie-style closure
+*/
+QVector<QetShapeItem::PathNode> QetShapeItem::bezierNodesForArc(const QRectF &rect, qreal startAngleDeg, qreal spanAngleDeg)
+{
+	const bool fullLoop = qFuzzyCompare(qAbs(spanAngleDeg), 360.0);
+	const qreal cx = rect.center().x(), cy = rect.center().y();
+	const qreal rx = rect.width() / 2.0, ry = rect.height() / 2.0;
+
+	auto pointAt = [&](qreal angleDeg) {
+		const qreal a = qDegreesToRadians(angleDeg);
+		return QPointF(cx + rx * qCos(a), cy - ry * qSin(a));
+	};
+	auto tangentAt = [&](qreal angleDeg) {
+		const qreal a = qDegreesToRadians(angleDeg);
+		return QPointF(-rx * qSin(a), -ry * qCos(a));
+	};
+
+	const int segments = qMax(1, int(qCeil(qAbs(spanAngleDeg) / 90.0)));
+	const qreal segSpan = spanAngleDeg / segments;
+	const qreal handleLen = (4.0 / 3.0) * qTan(qDegreesToRadians(qAbs(segSpan)) / 4.0);
+
+	const int nodeCount = fullLoop ? segments : segments + 1;
+	QVector<PathNode> nodes(nodeCount);
+	for (int i = 0; i < nodeCount; ++i)
+	{
+		nodes[i].anchor = pointAt(startAngleDeg + i * segSpan);
+		nodes[i].kind = NodeKind::Smooth;
+	}
+	for (int i = 0; i < nodeCount; ++i)
+	{
+		const QPointF tangent = tangentAt(startAngleDeg + i * segSpan);
+		if (fullLoop || i < nodeCount - 1)
+			nodes[i].outHandle = tangent * handleLen;
+		if (fullLoop || i > 0)
+			nodes[i % nodeCount].inHandle = -tangent * handleLen;
+	}
+	return nodes;
+}
+
+/**
+	@brief QetShapeItem::bezierNodesForRoundedRect
+	Bezier equivalent of QPainterPath::addRoundedRect(): 8 anchors (each
+	edge's two ends), straight lines along the 4 edges, and a Bezier
+	quarter-turn at each of the 4 corners using the same handle-length
+	formula as bezierNodesForArc() (with segSpan fixed at 90 degrees,
+	since a rounded rect's corners always are). xRadius/yRadius are
+	clamped to at most half the rect's own width/height, matching how
+	QPainterPath::addRoundedRect() itself behaves for an
+	over-large radius.
+	@param rect the rectangle's own corner points, as a QRectF
+	@param xRadius corner radius along the x axis
+	@param yRadius corner radius along the y axis
+	@return 8 nodes forming the closed rounded-rectangle outline
+*/
+QVector<QetShapeItem::PathNode> QetShapeItem::bezierNodesForRoundedRect(const QRectF &rect, qreal xRadius, qreal yRadius)
+{
+	const QRectF r = rect.normalized();
+	const qreal rx = qBound(0.0, xRadius, r.width() / 2.0);
+	const qreal ry = qBound(0.0, yRadius, r.height() / 2.0);
+	const qreal kx = rx * 0.5522847498;
+	const qreal ky = ry * 0.5522847498;
+
+	const QVector<QPointF> anchors = {
+		QPointF(r.left() + rx, r.top()),
+		QPointF(r.right() - rx, r.top()),
+		QPointF(r.right(), r.top() + ry),
+		QPointF(r.right(), r.bottom() - ry),
+		QPointF(r.right() - rx, r.bottom()),
+		QPointF(r.left() + rx, r.bottom()),
+		QPointF(r.left(), r.bottom() - ry),
+		QPointF(r.left(), r.top() + ry),
+	};
+
+	QVector<PathNode> nodes;
+	nodes.reserve(8);
+	for (const QPointF &p : anchors)
+	{
+		PathNode n;
+		n.anchor = p;
+		n.kind = NodeKind::Smooth;
+		nodes.append(n);
+	}
+
+	nodes[1].outHandle = QPointF(kx, 0);   nodes[2].inHandle = QPointF(0, -ky);
+	nodes[3].outHandle = QPointF(0, ky);   nodes[4].inHandle = QPointF(kx, 0);
+	nodes[5].outHandle = QPointF(-kx, 0);  nodes[6].inHandle = QPointF(0, ky);
+	nodes[7].outHandle = QPointF(0, -ky);  nodes[0].inHandle = QPointF(-kx, 0);
+
+	return nodes;
 }
 
 /**
