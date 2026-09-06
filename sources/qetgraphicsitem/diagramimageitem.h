@@ -143,6 +143,10 @@ class DiagramImageItem : public QetGraphicsItem {
 	void setTransparentColor();
 	void crop();
 	void restoreAspectRatio();
+	void saveImageAs();
+	void saveOriginalImageAs();
+	void saveImagePixmapAs(const QPixmap &pixmap, const QString &dialogTitle, bool hasTransparency);
+	static bool writeRasterAsSvg(const QPixmap &pixmap, const QString &path);
 	static QPixmap computeDisplayPixmap(const QPixmap &base, const QRect &cropRect, const QList<ImageTransparentColorDialog::PickedColor> &colors);
 
 	void toggleHandleMode();
