@@ -1108,17 +1108,28 @@ void QetShapeItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 						// regardless of what's about to happen.
 						const bool needsBezier = (m_shapeType == Ellipse) || (m_xRadius > 0 || m_yRadius > 0);
 						QAction *convert = menu.data()->addAction(needsBezier ? tr("Convertir en courbe de Bézier") : tr("Convertir en polyligne"));
+						if(needsBezier && m_shapeType == Rectangle) {
+							convert->setIcon(QET::Icons::RectToBezier);
+						}
+						else if(needsBezier && m_shapeType == Ellipse) {
+							convert->setIcon(QET::Icons::EllipseToBezier);
+						}
+						else {
+							convert->setIcon(QET::Icons::RectToPolyline);
+						}
 						connect(convert, &QAction::triggered, this, &QetShapeItem::convertToPathOrPolygon);
 					}
 
 					QAction *mirrorH = menu.data()->addAction(tr("Miroir horizontal"));
+					mirrorH->setIcon(QET::Icons::ImageFlipHorizontal);
 					QAction *mirrorV = menu.data()->addAction(tr("Miroir vertical"));
+					mirrorV->setIcon(QET::Icons::ImageFlipVertical);
 					connect(mirrorH, &QAction::triggered, this, [this]() { mirror(true); });
 					connect(mirrorV, &QAction::triggered, this, [this]() { mirror(false); });
 
-					menu.data()->addSeparator();
-					QAction *properties = menu.data()->addAction(tr("Propriétés..."));
-					connect(properties, &QAction::triggered, this, &QetShapeItem::editProperty);
+					//menu.data()->addSeparator();
+					//QAction *properties = menu.data()->addAction(tr("Propriétés..."));
+					//connect(properties, &QAction::triggered, this, &QetShapeItem::editProperty);
 
 					menu.data()->addSeparator();
 					menu.data()->addActions(d_view->contextMenuActions());

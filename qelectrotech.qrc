@@ -549,6 +549,13 @@
         <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-project.svgz</file>
         <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-titleblock.svgz</file>
         <file>ico/breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/transform-crop.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>        
+        <file>ico/generated/rect-to-polyline.svg</file>
+        <file>ico/generated/rect-to-bezier.svg</file>
+        <file>ico/generated/ellipse-to-bezier.svg</file>                
         <file>ico/16x16/object-group.png</file>
         <file>ico/mac_icon/elmt.icns</file>
         <file>ico/mac_icon/qelectrotech.icns</file>

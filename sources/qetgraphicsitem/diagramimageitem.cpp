@@ -24,6 +24,7 @@
 #include "../qet.h"
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
+#include "../qeticons.h"
 #include "../ui/imagepropertieswidget.h"
 #include "../ui/imagecropdialog.h"
 #include "../ui/imagetransparentcolordialog.h"
@@ -1591,22 +1592,26 @@ void DiagramImageItem::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 			connect(saveOriginalAs, &QAction::triggered, this, &DiagramImageItem::saveOriginalImageAs);
 
 			QAction *transparentColor = menu.data()->addAction(tr("Couleur transparente..."));
+			transparentColor->setIcon(QET::Icons::EditOpacity);
 			connect(transparentColor, &QAction::triggered, this, &DiagramImageItem::setTransparentColor);
 
 			QAction *cropAction = menu.data()->addAction(tr("Rogner..."));
+			cropAction->setIcon(QET::Icons::TransformCrop);
 			connect(cropAction, &QAction::triggered, this, &DiagramImageItem::crop);
 
 			QAction *mirrorH = menu.data()->addAction(tr("Miroir horizontal"));
+			mirrorH->setIcon(QET::Icons::ImageFlipHorizontal);
 			QAction *mirrorV = menu.data()->addAction(tr("Miroir vertical"));
+			mirrorV->setIcon(QET::Icons::ImageFlipVertical);
 			connect(mirrorH, &QAction::triggered, this, [this]() { mirror(true); });
 			connect(mirrorV, &QAction::triggered, this, [this]() { mirror(false); });
 
 			QAction *restoreRatio = menu.data()->addAction(tr("Restaurer les proportions"));
 			connect(restoreRatio, &QAction::triggered, this, &DiagramImageItem::restoreAspectRatio);
 
-			menu.data()->addSeparator();
-			QAction *properties = menu.data()->addAction(tr("Propriétés..."));
-			connect(properties, &QAction::triggered, this, &DiagramImageItem::editProperty);
+			// menu.data()->addSeparator();
+			// QAction *properties = menu.data()->addAction(tr("Propriétés..."));
+			// connect(properties, &QAction::triggered, this, &DiagramImageItem::editProperty);
 
 			menu.data()->addSeparator();
 			menu.data()->addActions(d_view->contextMenuActions());
