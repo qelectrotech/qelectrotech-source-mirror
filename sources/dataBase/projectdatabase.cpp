@@ -229,41 +229,53 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 
 		//Order matters: element_info and terminal are scoped through a
 		//subquery on element, so they must run before element itself is
-		//deleted below. Without this, a removed diagram left its rows
-		//behind in every one of these tables until the next full
-		//updateDB() rebuild -- invisible day to day, since nothing reads
-		//them meanwhile, but a real inconsistency between the live scene
-		//and the database in between.
+		//deleted below. The whole cascade runs in one transaction and is
+		//rolled back on the first error, so a mid-cascade failure (e.g. a
+		//locked DB) can't leave the diagram row deleted while its
+		//element/terminal/element_info/conductor rows survive.
+	m_data_base.transaction();
+
 	m_cascade_remove_element_info_query.bindValue(":uuid", uuid_str);
 	if (!m_cascade_remove_element_info_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram element_info cascade error : "
 				 << m_cascade_remove_element_info_query.lastError();
+		m_data_base.rollback();
+		return;
 	}
 
 	m_cascade_remove_terminal_query.bindValue(":uuid", uuid_str);
 	if (!m_cascade_remove_terminal_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram terminal cascade error : "
 				 << m_cascade_remove_terminal_query.lastError();
+		m_data_base.rollback();
+		return;
 	}
 
 	m_cascade_remove_conductor_query.bindValue(":uuid", uuid_str);
 	if (!m_cascade_remove_conductor_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram conductor cascade error : "
 				 << m_cascade_remove_conductor_query.lastError();
+		m_data_base.rollback();
+		return;
 	}
 
 	m_cascade_remove_element_query.bindValue(":uuid", uuid_str);
 	if (!m_cascade_remove_element_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram element cascade error : "
 				 << m_cascade_remove_element_query.lastError();
+		m_data_base.rollback();
+		return;
 	}
 
 	m_remove_diagram_query.bindValue(":uuid", uuid_str);
 	if (!m_remove_diagram_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram delete error : " << m_remove_diagram_query.lastError();
-	} else {
-		emit dataBaseUpdated();
+		m_data_base.rollback();
+		return;
 	}
+
+	m_data_base.commit();
+	emit dataBaseUpdated();
 }
 
 void projectDataBase::diagramInfoChanged(Diagram *diagram)
