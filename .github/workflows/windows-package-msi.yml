@@ -14,7 +14,7 @@ on:
         description: "Run ID of 'Windows Build' (leave empty for automatic)"
         required: false
         default: ""
-       
+
 jobs:
   build-msi:
     name: Package MSI with WiX v7
@@ -202,7 +202,10 @@ jobs:
           Write-Host "Lancer QET.bat replaced for MSI installation (qtArgs: '$qtArgs')."
 
       # ----------------------------------------------------------------
-      # 9. Build the MSI (unsigned)
+      # 9. Build the MSI (unsigned at this stage — signing happens below)
+      #    Qt6 keeps its own ProductCode seed (distinct from the retired Qt5
+      #    MSI), so a machine that still has the old Qt5 MSI installed gets a
+      #    separate, coexisting install rather than an unexpected upgrade.
       # ----------------------------------------------------------------
       - name: Build MSI
         shell: pwsh
@@ -214,7 +217,7 @@ jobs:
           $wxs        = "build-aux\windows\QElectroTech.wxs"
           $outputName = "QElectroTech-${verDisplay}.msi"
 
-          $seed      = "qelectrotech-msi-$version"
+          $seed      = "qelectrotech-msi-qt6-$version"
           $sha1      = [System.Security.Cryptography.SHA1]::Create()
           $hash      = $sha1.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($seed))
           $hash[6]   = ($hash[6] -band 0x0F) -bor 0x50

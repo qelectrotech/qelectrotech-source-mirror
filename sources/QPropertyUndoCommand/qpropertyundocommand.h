@@ -58,7 +58,8 @@ class QPropertyUndoCommand : public QUndoCommand
 		const char *m_property_name;
 		QVariant m_old_value, m_new_value;
 		bool m_animate = false,
-			 m_first_time = true;
+			 m_first_time = true,
+			 m_undo_first_time = true;
 };
 
 #endif // QPROPERTYUNDOCOMMAND_H

@@ -267,7 +267,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
@@ -1423,7 +1423,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
@@ -1975,6 +1975,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1986,6 +1987,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**

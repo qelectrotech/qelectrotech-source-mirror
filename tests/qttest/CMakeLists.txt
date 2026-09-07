@@ -77,3 +77,11 @@ target_link_libraries(
   ${KF_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES})
 
+# diagramsortkeys.h is a header-only helper (no QET link deps needed
+# beyond Qt itself), so this test builds independently of the rest of
+# the QET sources.
+add_executable(tst_diagramsortkeys tst_diagramsortkeys.cpp)
+add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
+target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
+

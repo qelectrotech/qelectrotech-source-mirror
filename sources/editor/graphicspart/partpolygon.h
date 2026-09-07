@@ -89,8 +89,8 @@ class PartPolygon : public CustomElementGraphicPart
 
 		void  setRotation (qreal angle);
 		qreal rotation () const;
-		void  flip();
-		void  mirror();
+		void  flip(qreal axis_y = 0);
+		void  mirror(qreal axis_x = 0);
 
 		void addHandler() override;
 		void removeHandler() override;

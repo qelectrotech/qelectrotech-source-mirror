@@ -106,7 +106,11 @@ class projectDataBase : public QObject
 				  m_insert_terminal_query,
 				  m_insert_conductor_query,
 				  m_update_conductor_query,
-				  m_remove_conductor_query;
+				  m_remove_conductor_query,
+				  m_cascade_remove_element_info_query,
+				  m_cascade_remove_terminal_query,
+				  m_cascade_remove_conductor_query,
+				  m_cascade_remove_element_query;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

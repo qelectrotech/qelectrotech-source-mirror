@@ -30,6 +30,7 @@
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
 
+#include <QCheckBox>
 #include <QLabel>
 #include <QUndoStack>
 #include <QVBoxLayout>
@@ -395,6 +396,18 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	label->setWordWrap(true);
 	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
+
+		//checkbox to lock the element position on the diagram
+		//(same mechanism already used by images and drawn shapes)
+	QCheckBox *lock_pos_cb = new QCheckBox(tr("Verrouiller la position"), general_widget);
+	lock_pos_cb->setChecked(!m_element->isMovable());
+	QPointer<Element> element = m_element;
+	connect(lock_pos_cb, &QCheckBox::clicked, this, [element](bool checked) {
+		if (element) {
+			element->setMovable(!checked);
+		}
+	});
+	vlayout_->addWidget(lock_pos_cb);
 
 		//widget for the pixmap
 	QLabel *pix = new QLabel(general_widget);
