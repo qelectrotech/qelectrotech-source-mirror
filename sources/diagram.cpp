@@ -40,30 +40,13 @@
 #include "undocommand/addelementtextcommand.h"
 #include "qetinformation.h"
 #include "qetproject.h"
+#include "diagramsortkeys.h"
 #include <algorithm>
 #include <cassert>
 #include <math.h>
 
 namespace {
-	/// Format a coordinate as a string that sorts the same way the number
-	/// does. Plain fixed-precision formatting ("%.4f") does NOT do this --
-	/// e.g. "15.0000" sorts before "5.0000" as text even though 15 > 5 --
-	/// so shift into a non-negative range and zero-pad to a fixed width
-	/// before comparing.
-	QString coordinateKey(double v)
-	{
-			//Diagram coordinates are nowhere near this range; the offset and
-			//width just need to be big enough that shifted values are always
-			//non-negative and always the same digit count.
-		constexpr double offset = 1e9;
-		qint64 scaled = qint64(qRound64((v + offset) * 10000.0));
-		return QStringLiteral("%1").arg(scaled, 20, 10, QLatin1Char('0'));
-	}
-
-	QString positionKey(const QPointF &pos)
-	{
-		return coordinateKey(pos.x()) + QLatin1Char('|') + coordinateKey(pos.y());
-	}
+	using DiagramSortKeys::positionKey;
 
 	/// Sort key for Diagram::toXml()'s <elements> block: the element's own
 	/// diagram-local position, exactly what it's already saved as (x/y),
