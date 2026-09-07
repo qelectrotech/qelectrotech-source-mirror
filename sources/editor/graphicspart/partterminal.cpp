@@ -476,13 +476,6 @@ void PartTerminal::setMasterLabelIndex(int index)
 	emit masterLabelIndexChanged();
 }
 
-void PartTerminal::setPotential(const QString &potential)
-{
-	if (d->m_potential == potential) return;
-	d->m_potential = potential;
-	emit potentialChanged();
-}
-
 /**
 	Updates the position of the second point according to the position
 	and orientation of the terminal.
