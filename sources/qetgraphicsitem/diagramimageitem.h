@@ -24,6 +24,7 @@
 
 #include <QColor>
 #include <QList>
+#include <QStyleOptionGraphicsItem>
 #include <QVector>
 
 class QDomElement;
@@ -96,6 +97,19 @@ class DiagramImageItem : public QetGraphicsItem {
 	QRectF boundingRect() const override;
 	QString name() const override;
 
+	/// DXF export: replay this item's paint() on an arbitrary QPainter
+	/// (e.g. one targeting DxfPaintDevice). paint() itself stays
+	/// protected, as it should for the normal
+	/// QGraphicsScene/QGraphicsView paint contract - this is a
+	/// deliberate, narrow escape hatch for exporters, not a general
+	/// relaxation of that contract. Matches CrossRefItem::paintForExport()
+	/// exactly, for the identical reason.
+	void paintForExport(QPainter *painter)
+	{
+		QStyleOptionGraphicsItem option;
+		paint(painter, &option, nullptr);
+	}
+
 	qreal scaleFactorX() const { return m_transform.scaleX; }
 	qreal scaleFactorY() const { return m_transform.scaleY; }
 	void setScaleFactorX(qreal factor);
@@ -129,6 +143,10 @@ class DiagramImageItem : public QetGraphicsItem {
 	void setTransparentColor();
 	void crop();
 	void restoreAspectRatio();
+	void saveImageAs();
+	void saveOriginalImageAs();
+	void saveImagePixmapAs(const QPixmap &pixmap, const QString &dialogTitle, bool hasTransparency);
+	static bool writeRasterAsSvg(const QPixmap &pixmap, const QString &path);
 	static QPixmap computeDisplayPixmap(const QPixmap &base, const QRect &cropRect, const QList<ImageTransparentColorDialog::PickedColor> &colors);
 
 	void toggleHandleMode();
