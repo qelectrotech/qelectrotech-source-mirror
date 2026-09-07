@@ -79,6 +79,7 @@ class Terminal : public QGraphicsObject
 		QString   name                () const;
 		QString   baseName            () const;
 		TerminalData::Type terminalType() const;
+		QString potential() const;
 		bool useMasterLabel() const { return d->m_use_master_label; }
 		void setUseMasterLabel(bool use);
 		int masterLabelIndex() const { return d->m_master_label_index; }

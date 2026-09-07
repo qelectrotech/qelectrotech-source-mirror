@@ -84,6 +84,7 @@ void TerminalEditor::updateForm()
 	ui->m_orientation_cb->setCurrentIndex(ui->m_orientation_cb->findData(m_part->property("orientation")));
 	ui->m_name_le->setText(m_part->terminalName());
 	ui->m_type_cb->setCurrentIndex(ui->m_type_cb->findData(m_part->terminalType()));
+	ui->m_potential_le->setText(m_part->potential());
 
 	ui->m_show_name_cb->setChecked(m_part->showName());
 	ui->m_label_x_dsb->setValue(m_part->labelPos().x());
@@ -261,6 +262,24 @@ void TerminalEditor::nameEdited()
 		undoStack().push(undo);
 	}
 	m_locked=false;
+}
+
+void TerminalEditor::potentialEdited()
+{
+	if (m_locked) {
+		return;
+	}
+
+	m_locked = true;
+	QString potential_(ui->m_potential_le->text());
+
+	if (m_part->potential() != potential_)
+	{
+		auto undo = new QPropertyUndoCommand(m_part, "potential", m_part->property("potential"), potential_);
+		undo->setText(tr("Modifier le potentiel d'une borne"));
+		undoStack().push(undo);
+	}
+	m_locked = false;
 }
 
 /**
@@ -457,6 +476,8 @@ void TerminalEditor::activeConnections(bool active)
 										this, &TerminalEditor::labelAlignClicked);
 		m_editor_connections << connect(ui->m_label_frame_cb, &QCheckBox::toggled,
 										this, &TerminalEditor::labelFrameEdited);
+		m_editor_connections << connect(ui->m_potential_le, &QLineEdit::editingFinished,
+								this, &TerminalEditor::potentialEdited);
 		m_editor_connections << connect(ui->m_use_master_label_cb, &QCheckBox::toggled,
 										this, &TerminalEditor::useMasterLabelEdited);
 		m_editor_connections << connect(ui->m_master_label_cb, QOverload<int>::of(&QComboBox::activated),
@@ -486,6 +507,7 @@ void TerminalEditor::activeChangeConnections(bool active)
 		m_change_connections << connect(m_part, &PartTerminal::labelVAlignmentChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::labelFrameChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::labelColorChanged, this, &TerminalEditor::updateForm);
+		m_change_connections << connect(m_part, &PartTerminal::potentialChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::useMasterLabelChanged, this, &TerminalEditor::updateForm);
 		m_change_connections << connect(m_part, &PartTerminal::masterLabelIndexChanged, this, &TerminalEditor::updateForm);
 	} else {
