@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductortextitem.h"
+#include "../qetxml.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -70,12 +71,12 @@ Conductor *ConductorTextItem::parentConductor() const
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("userx")) {
-		setPos(e.attribute("userx").toDouble(),
-			   e.attribute("usery").toDouble());
+		setPos(QETXML::finiteAttribute(e, "userx"),
+			   QETXML::finiteAttribute(e, "usery"));
 		moved_by_user_ = true;
 	}
 	if (e.hasAttribute("rotation")) {
-		setRotation(e.attribute("rotation").toDouble());
+		setRotation(QETXML::finiteAttribute(e, "rotation"));
 		rotate_by_user_ = true;
 	}
 }

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementtextitemgroup.h"
+#include "../qetxml.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
@@ -472,10 +473,10 @@ void ElementTextItemGroup::fromXml(QDomElement &dom_element)
 					)
 				);
 
-	setPos(dom_element.attribute("x", QString::number(0)).toDouble(),
-		   dom_element.attribute("y", QString::number(0)).toDouble());
+	setPos(QETXML::finiteAttribute(dom_element, "x"),
+		   QETXML::finiteAttribute(dom_element, "y"));
 	
-	setRotation(dom_element.attribute("rotation", QString::number(0)).toDouble());
+	setRotation(QETXML::finiteAttribute(dom_element, "rotation"));
 	setVerticalAdjustment(dom_element.attribute("vertical_adjustment").toInt());
 	setFrame(dom_element.attribute("frame", "false") == "true"? true : false);
 	

@@ -239,7 +239,7 @@ bool QET::attributeIsAReal(
 	// verifie la validite de l'attribut
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
-	if (!ok) return(false);
+	if (!ok || !qIsFinite(tmp)) return(false);
 	if (reel != nullptr) *reel = tmp;
 	return(true);
 }

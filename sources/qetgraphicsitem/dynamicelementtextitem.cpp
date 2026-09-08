@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "dynamicelementtextitem.h"
+#include "../qetxml.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../diagram.h"
@@ -163,7 +164,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		return;
 	}
 	
-	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
+	QGraphicsTextItem::setRotation(QETXML::finiteAttribute(dom_elmt, "rotation"));
 	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
 	setRotationPointCenter(dom_elmt.attribute("rotation_point_center", "false") == "true"? true : false);
 
@@ -183,7 +184,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 
 	m_uuid = QUuid(dom_elmt.attribute("uuid", QUuid::createUuid().toString()));
 	setFrame(dom_elmt.attribute("frame", "false") == "true"? true : false);
-	setTextWidth(dom_elmt.attribute("text_width", QString::number(-1)).toDouble());
+	setTextWidth(QETXML::finiteAttribute(dom_elmt, "text_width", -1));
 	
 		//Text from
 	QMetaEnum me = textFromMetaEnum();
@@ -221,8 +222,8 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		//Force the update of the displayed text
 	setTextFrom(m_text_from);
 	
-	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
-							  dom_elmt.attribute("y", QString::number(0)).toDouble());
+	QGraphicsTextItem::setPos(QETXML::finiteAttribute(dom_elmt, "x"),
+							  QETXML::finiteAttribute(dom_elmt, "y"));
 }
 
 /**

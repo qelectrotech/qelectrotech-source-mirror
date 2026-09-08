@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetxml.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
@@ -1022,8 +1023,8 @@ bool Conductor::fromXml(QDomElement &dom_element)
 		m_uuid = QUuid::createUuid();
 	}
 
-	setPos(dom_element.attribute("x", nullptr).toDouble(),
-		   dom_element.attribute("y", nullptr).toDouble());
+	setPos(QETXML::finiteAttribute(dom_element, "x"),
+		   QETXML::finiteAttribute(dom_element, "y"));
 
 	bool retval = pathFromXml(dom_element);
 
@@ -1152,7 +1153,7 @@ bool Conductor::pathFromXml(const QDomElement &e) {
 		// cette longueur doit etre un reel
 		bool ok;
 		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
-		if (!ok) continue;
+		if (!ok || !qIsFinite(segment_length)) continue;
 
 		if (current_segment.attribute("orientation") == "horizontal") {
 			segments_x << segment_length;

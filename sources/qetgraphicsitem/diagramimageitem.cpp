@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramimageitem.h"
+#include "../qetxml.h"
 
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
@@ -1409,8 +1410,8 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	// <transform> element (independent scaleX/scaleY, and/or a custom
 	// pivot), the same two-tier fallback QetShapeItem's own fromXml()
 	// already uses for its identical <transform> element.
-	m_transform.rotation = e.attribute("rotation").toDouble();
-	m_transform.scaleX = e.attribute("size").toDouble();
+	m_transform.rotation = QETXML::finiteAttribute(e, "rotation");
+	m_transform.scaleX = QETXML::finiteAttribute(e, "size", 1);
 	m_transform.scaleY = m_transform.scaleX;
 	m_transform.pivot = boundingRect().center();
 	m_pivotIsCustom = false;
@@ -1418,20 +1419,20 @@ bool DiagramImageItem::fromXml(const QDomElement &e)
 	const QDomElement transformElement = e.firstChildElement("transform");
 	if (!transformElement.isNull())
 	{
-		m_transform.rotation = transformElement.attribute("rotation", "0").toDouble();
-		m_transform.skewX    = transformElement.attribute("skewX", "0").toDouble();
-		m_transform.skewY    = transformElement.attribute("skewY", "0").toDouble();
-		m_transform.scaleX   = transformElement.attribute("scaleX", "1").toDouble();
-		m_transform.scaleY   = transformElement.attribute("scaleY", "1").toDouble();
-		m_transform.pivot    = QPointF(transformElement.attribute("pivotX", "0").toDouble(),
-		                                transformElement.attribute("pivotY", "0").toDouble());
+		m_transform.rotation = QETXML::finiteAttribute(transformElement, "rotation");
+		m_transform.skewX    = QETXML::finiteAttribute(transformElement, "skewX");
+		m_transform.skewY    = QETXML::finiteAttribute(transformElement, "skewY");
+		m_transform.scaleX   = QETXML::finiteAttribute(transformElement, "scaleX", 1);
+		m_transform.scaleY   = QETXML::finiteAttribute(transformElement, "scaleY", 1);
+		m_transform.pivot    = QPointF(QETXML::finiteAttribute(transformElement, "pivotX"),
+		                                QETXML::finiteAttribute(transformElement, "pivotY"));
 		m_pivotIsCustom = true;
 	}
 	setTransform(m_transform.toMatrix());
 
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
-	QGraphicsObject::setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
+	QGraphicsObject::setPos(QETXML::finiteAttribute(e, "x"), QETXML::finiteAttribute(e, "y"));
+	setZValue(QETXML::finiteAttribute(e, QStringLiteral("z"), this->zValue()));
 	is_movable_ = (e.attribute("is_movable").toInt());
 
 	return (true);

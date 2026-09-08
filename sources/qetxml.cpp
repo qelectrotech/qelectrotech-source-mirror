@@ -21,9 +21,27 @@
 #include "utils/qetutils.h"
 
 #include <QDir>
+#include <QDebug>
 #include <QFont>
 #include <QGraphicsItem>
 #include <QPen>
+
+double QETXML::finiteAttribute(const QDomElement &element, const QString &name,
+							  double default_value)
+{
+	if (!element.hasAttribute(name))
+		return default_value;
+
+	bool ok = false;
+	const QString text = element.attribute(name);
+	const double value = text.toDouble(&ok);
+	if (ok && qIsFinite(value))
+		return value;
+
+	qWarning() << "Invalid numeric XML attribute" << element.tagName()
+			   << name << text << "- using" << default_value;
+	return default_value;
+}
 
 /**
 	@brief QETXML::penToXml
@@ -85,7 +103,7 @@ QPen QETXML::penFromXml(const QDomElement &element)
 	else                                pen.setStyle(Qt::DashLine);
 
 	pen.setColor(QColor(element.attribute("color", "#000000")));
-	pen.setWidthF(element.attribute("widthF", "1").toDouble());
+	pen.setWidthF(finiteAttribute(element, QStringLiteral("widthF"), 1.0));
 	return pen;
 }
 
@@ -945,8 +963,8 @@ bool qGraphicsItemPosFromXml(QGraphicsItem *item, const QDomElement &xml_elmt)
 {
 	if (xml_elmt.tagName() == QLatin1String("pos"))
 	{
-		item->setX(xml_elmt.attribute(QStringLiteral("x"), QStringLiteral("0")).toDouble());
-		item->setY(xml_elmt.attribute(QStringLiteral("y"), QStringLiteral("0")).toDouble());
+		item->setX(finiteAttribute(xml_elmt, QStringLiteral("x")));
+		item->setY(finiteAttribute(xml_elmt, QStringLiteral("y")));
 		item->setZValue(xml_elmt.attribute(QStringLiteral("z"), QStringLiteral("0")).toInt());
 
 		return true;

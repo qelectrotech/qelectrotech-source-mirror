@@ -626,12 +626,8 @@ void QetGraphicsTableItem::fromXml(const QDomElement &dom_element)
 	}
 
 	this->setPos(
-				dom_element.attribute(
-					"x",
-					QString::number(10)).toDouble(),
-				dom_element.attribute(
-					"y",
-					QString::number(10)).toDouble());
+				QETXML::finiteAttribute(dom_element, "x", 10),
+				QETXML::finiteAttribute(dom_element, "y", 10));
 	//Size is not set now because will change during the whole process of opening a project from the xml
 	m_pending_size = QSize(
 				dom_element.attribute(

@@ -2910,15 +2910,15 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 
 	if (m_shapeType != Polygon && m_shapeType != Path)
 	{
-		m_P1.setX(e.attribute("x1", nullptr).toDouble());
-		m_P1.setY(e.attribute("y1", nullptr).toDouble());
-		m_P2.setX(e.attribute("x2", nullptr).toDouble());
-		m_P2.setY(e.attribute("y2", nullptr).toDouble());
+		m_P1.setX(QETXML::finiteAttribute(e, "x1"));
+		m_P1.setY(QETXML::finiteAttribute(e, "y1"));
+		m_P2.setX(QETXML::finiteAttribute(e, "x2"));
+		m_P2.setY(QETXML::finiteAttribute(e, "y2"));
 
 		if (m_shapeType == Rectangle)
 		{
-			setXRadius(e.attribute("rx", "0").toDouble());
-			setYRadius(e.attribute("ry", "0").toDouble());
+			setXRadius(QETXML::finiteAttribute(e, "rx"));
+			setYRadius(QETXML::finiteAttribute(e, "ry"));
 		}
 	}
 	if (m_shapeType == Polygon)
@@ -2933,7 +2933,7 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		// edit.
 		m_polygon.clear();
 		for(const QDomElement& de : QET::findInDomElement(e, "points", "point")) {
-			m_polygon << QPointF(de.attribute("x", nullptr).toDouble(), de.attribute("y", nullptr).toDouble());
+			m_polygon << QPointF(QETXML::finiteAttribute(de, "x"), QETXML::finiteAttribute(de, "y"));
 		}
 	}
 	else if (m_shapeType == Path)
@@ -2942,17 +2942,17 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 		for (const QDomElement &nodeElement : QET::findInDomElement(e, "nodes", "node"))
 		{
 			PathNode node;
-			node.anchor = QPointF(nodeElement.attribute("x").toDouble(), nodeElement.attribute("y").toDouble());
+			node.anchor = QPointF(QETXML::finiteAttribute(nodeElement, "x"), QETXML::finiteAttribute(nodeElement, "y"));
 			const QString kind = nodeElement.attribute("kind", "corner");
 			node.kind = (kind == "smooth") ? NodeKind::Smooth
 			          : (kind == "symmetric") ? NodeKind::Symmetric
 			          : NodeKind::Corner;
 			QDomElement in = nodeElement.firstChildElement("in");
 			if (!in.isNull())
-				node.inHandle = QPointF(in.attribute("dx").toDouble(), in.attribute("dy").toDouble());
+				node.inHandle = QPointF(QETXML::finiteAttribute(in, "dx"), QETXML::finiteAttribute(in, "dy"));
 			QDomElement out = nodeElement.firstChildElement("out");
 			if (!out.isNull())
-				node.outHandle = QPointF(out.attribute("dx").toDouble(), out.attribute("dy").toDouble());
+				node.outHandle = QPointF(QETXML::finiteAttribute(out, "dx"), QETXML::finiteAttribute(out, "dy"));
 			m_nodes << node;
 		}
 	}
@@ -2960,13 +2960,13 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	QDomElement transformElement = e.firstChildElement("transform");
 	if (!transformElement.isNull())
 	{
-		m_transform.rotation = transformElement.attribute("rotation", "0").toDouble();
-		m_transform.skewX    = transformElement.attribute("skewX", "0").toDouble();
-		m_transform.skewY    = transformElement.attribute("skewY", "0").toDouble();
-		m_transform.scaleX   = transformElement.attribute("scaleX", "1").toDouble();
-		m_transform.scaleY   = transformElement.attribute("scaleY", "1").toDouble();
-		m_transform.pivot    = QPointF(transformElement.attribute("pivotX", "0").toDouble(),
-		                                transformElement.attribute("pivotY", "0").toDouble());
+		m_transform.rotation = QETXML::finiteAttribute(transformElement, "rotation");
+		m_transform.skewX    = QETXML::finiteAttribute(transformElement, "skewX");
+		m_transform.skewY    = QETXML::finiteAttribute(transformElement, "skewY");
+		m_transform.scaleX   = QETXML::finiteAttribute(transformElement, "scaleX", 1);
+		m_transform.scaleY   = QETXML::finiteAttribute(transformElement, "scaleY", 1);
+		m_transform.pivot    = QPointF(QETXML::finiteAttribute(transformElement, "pivotX"),
+		                                QETXML::finiteAttribute(transformElement, "pivotY"));
 		m_pivotIsCustom = true;
 	}
 	else
@@ -2980,19 +2980,19 @@ bool QetShapeItem::fromXml(const QDomElement &e)
 	QDomElement arcElement = e.firstChildElement("arc");
 	if (!arcElement.isNull() && m_shapeType == Ellipse)
 	{
-		m_startAngle = arcElement.attribute("startAngle", "0").toDouble();
-		m_endAngle   = m_startAngle + arcElement.attribute("spanAngle", "360").toDouble();
+		m_startAngle = QETXML::finiteAttribute(arcElement, "startAngle");
+		m_endAngle   = m_startAngle + QETXML::finiteAttribute(arcElement, "spanAngle", 360);
 		const QString closure = arcElement.attribute("closure", "none");
 		m_arcClosure = (closure == "chord") ? Chord : (closure == "pie") ? Pie : NoClosure;
 	}
 
 	if (e.hasAttribute("posX") || e.hasAttribute("posY"))
 	{
-		QGraphicsItem::setPos(e.attribute("posX", "0").toDouble(),
-		                      e.attribute("posY", "0").toDouble());
+		QGraphicsItem::setPos(QETXML::finiteAttribute(e, "posX"),
+		                      QETXML::finiteAttribute(e, "posY"));
 	}
 
-	setZValue(e.attribute("z", QString::number(this->zValue())).toDouble());
+	setZValue(QETXML::finiteAttribute(e, QStringLiteral("z"), this->zValue()));
 
 	// fromXml() can change anything about the shape -- geometry, node
 	// count, even shapeType() itself (undoing a Rectangle->Polygon

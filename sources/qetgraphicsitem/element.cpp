@@ -514,8 +514,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 
 				// Store plc_table positions for runtime rendering
 				if (qde.tagName() == QLatin1String("plc_table")) {
-					qreal x = qde.attribute("x", "0").toDouble();
-					qreal y = qde.attribute("y", "0").toDouble();
+					qreal x = QETXML::finiteAttribute(qde, "x");
+					qreal y = QETXML::finiteAttribute(qde, "y");
 					m_plc_table_positions.append(QPointF(x, y));
 				}
 
@@ -595,8 +595,7 @@ bool Element::parseInput(const QDomElement &dom_element)
 		font.setPointSize(dom_element.attribute(QStringLiteral("size"),
 							QString::number(9)).toInt());
 		deti->setFont(font);
-		deti->setRotation(dom_element.attribute(QStringLiteral("rotation"),
-							QString::number(0)).toDouble());
+		deti->setRotation(QETXML::finiteAttribute(dom_element, QStringLiteral("rotation")));
 
 		if(dom_element.attribute(QStringLiteral("tagg"), QStringLiteral("none")) != QLatin1String("none"))
 		{
@@ -609,17 +608,14 @@ bool Element::parseInput(const QDomElement &dom_element)
 			//We need to use a QTransform to find the pos of this text from the saved pos of text item
 		QTransform transform;
 			//First make the rotation
-		transform.rotate(dom_element.attribute(QStringLiteral("rotation"),
-											   QStringLiteral("0")).toDouble());
+		transform.rotate(QETXML::finiteAttribute(dom_element, QStringLiteral("rotation")));
 		QPointF pos = transform.map(
 						  QPointF(0,
 								  -deti->boundingRect().height()/2));
 		transform.reset();
 			//Second translate to the pos
-		QPointF p(dom_element.attribute(QStringLiteral("x"),
-										QString::number(0)).toDouble(),
-				  dom_element.attribute(QStringLiteral("y"),
-										QString::number(0)).toDouble());
+		QPointF p(QETXML::finiteAttribute(dom_element, QStringLiteral("x")),
+				  QETXML::finiteAttribute(dom_element, QStringLiteral("y")));
 		transform.translate(p.x(), p.y());
 		deti->setPos(transform.map(pos));
 		m_dynamic_text_list.append(deti);
@@ -801,9 +797,9 @@ bool Element::fromXml(QDomElement &e,
 
 		//Position and selection.
 		//We directly call setPos from QGraphicsObject, because QetGraphicsItem will snap to grid
-	QGraphicsObject::setPos(e.attribute(QStringLiteral("x")).toDouble(),
-							e.attribute(QStringLiteral("y")).toDouble());
-	setZValue(e.attribute(QStringLiteral("z"), QString::number(this->zValue())).toDouble());
+	QGraphicsObject::setPos(QETXML::finiteAttribute(e, QStringLiteral("x")),
+							QETXML::finiteAttribute(e, QStringLiteral("y")));
+	setZValue(QETXML::finiteAttribute(e, QStringLiteral("z"), this->zValue()));
 	setFlags(QGraphicsItem::ItemIsMovable
 		 | QGraphicsItem::ItemIsSelectable);
 	is_movable_ = e.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt();

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "independenttextitem.h"
+#include "../qetxml.h"
 
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -63,9 +64,9 @@ IndependentTextItem::~IndependentTextItem()
 	@param e L'element XML representant le champ de texte
 */
 void IndependentTextItem::fromXml(const QDomElement &e) {
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	setPos(QETXML::finiteAttribute(e, "x"), QETXML::finiteAttribute(e, "y"));
 	setHtml(e.attribute("text"));
-	setRotation(e.attribute("rotation").toDouble());
+	setRotation(QETXML::finiteAttribute(e, "rotation"));
 	if (e.hasAttribute("font"))
 	{
 		QFont font;

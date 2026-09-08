@@ -33,6 +33,10 @@ class QGraphicsItem;
 */
 namespace QETXML
 {
+	// Read geometry without allowing NaN/Inf to reach Qt's path algorithms.
+	double finiteAttribute(const QDomElement &element, const QString &name,
+						   double default_value = 0.0);
+
 	QDomElement penToXml(QDomDocument &parent_document, const QPen& pen);
 	QPen penFromXml (const QDomElement &element);
 
