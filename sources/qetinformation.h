@@ -83,6 +83,7 @@ namespace QETInformation
 	static QString ELMT_SUPPLIER_AUX4                     = "supplier_auxiliary4";
 	static QString ELMT_QUANTITY_AUX4                     = "quantity_auxiliary4";
 	static QString ELMT_UNITY_AUX4                        = "unity_auxiliary4";
+	static QString ELMT_XREF                         = "xref";
 
 
 	/** Default information related to conductor **/
