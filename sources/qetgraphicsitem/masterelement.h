@@ -49,6 +49,7 @@ class MasterElement : public Element
 		QRectF XrefBoundingRect() const;
 
 		ContactUsage contactUsage() const;
+		ContactUsage contactCapacity() const;
 		bool isFull() const; // Check Slave-Limit
 		
 	protected:
