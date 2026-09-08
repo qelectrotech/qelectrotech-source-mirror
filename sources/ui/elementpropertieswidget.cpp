@@ -390,18 +390,16 @@ QWidget *ElementPropertiesWidget::generalWidget()
 				? QString(tr("Nombre maximum de contacts esclaves définis : non défini\n"))
 				: QString(tr("Nombre maximum de contacts esclaves définis : %1\n")).arg(max_slaves);
 
-			//Counted in contacts rather than in linked elements, so that a
-			//slave standing for several contacts is reported as the number
-			//of contacts it actually uses.
+			//Left as a count of linked elements: the line above is a number
+			//of slots, and a slave fills one slot however many contacts it
+			//carries, so the two stay in the same unit.
+		description_string += QString(tr("Nombre de contacts esclaves utilisés : %1\n")).arg(m_element->linkedElements().count());
+
+			//The breakdown below is in contacts, not slots: it answers how
+			//many contacts an auxiliary block must provide.
 		const MasterElement *master =
 				static_cast<const MasterElement *>(m_element.data());
-		const ContactUsage usage = master->contactUsage();
-
-		description_string += QString(tr("Nombre de contacts esclaves utilisés : %1\n")).arg(usage.total());
-
-			//The breakdown is what tells you which auxiliary block would
-			//satisfy this coil, so it is only worth printing once there is
-			//something to break down.
+		const ContactUsage usage    = master->contactUsage();
 		const ContactUsage capacity = master->contactCapacity();
 
 		if (capacity.total() > 0)
@@ -410,7 +408,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 				//only what has been used but what it has to offer. A type
 				//used beyond what is declared shows as e.g. "1/0", which
 				//is the point: it says this contact does not fit the part.
-			description_string += QString(tr("    NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8\n"))
+			description_string += QString(tr("    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8\n"))
 					.arg(usage.no).arg(capacity.no)
 					.arg(usage.nc).arg(capacity.nc)
 					.arg(usage.sw).arg(capacity.sw)
@@ -419,7 +417,7 @@ QWidget *ElementPropertiesWidget::generalWidget()
 		else if (usage.total() > 0)
 		{
 				//No declared groups, so a plain count of what is in use.
-			description_string += QString(tr("    NO : %1, NC : %2, inverseurs : %3, autres : %4\n"))
+			description_string += QString(tr("    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4\n"))
 					.arg(usage.no)
 					.arg(usage.nc)
 					.arg(usage.sw)
