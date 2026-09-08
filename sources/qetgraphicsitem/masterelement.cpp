@@ -228,6 +228,41 @@ void MasterElement::aboutDeleteXref()
 }
 
 /**
+ * @brief MasterElement::contactUsage
+ * Count the slave contacts currently linked to this master, by type.
+ * This is the single place where that count is worked out: the cross ref
+ * item, the properties dialog and the link widgets all read it from here,
+ * so they cannot disagree with each other.
+ * @return the per type usage
+ */
+ContactUsage MasterElement::contactUsage() const
+{
+	ContactUsage usage;
+
+	for (Element *elmt : connected_elements)
+	{
+		if (!elmt) {
+			continue;
+		}
+
+		const ElementData &data = elmt->elementData();
+
+		ContactUsage::Type type = ContactUsage::Other;
+		switch (data.m_slave_state)
+		{
+			case ElementData::NO:    type = ContactUsage::NO;    break;
+			case ElementData::NC:    type = ContactUsage::NC;    break;
+			case ElementData::SW:    type = ContactUsage::SW;    break;
+			case ElementData::Other: type = ContactUsage::Other; break;
+		}
+
+		usage.addSlave(type, data.m_contact_count);
+	}
+
+	return usage;
+}
+
+/**
  * @brief MasterElement::isFull
  * @return true if the master has reached its maximum number of slaves
  */
@@ -247,8 +282,8 @@ bool MasterElement::isFull() const
 		return false;
 	}
 
-	// Return true if current connected elements reached or exceeded the limit
-	return connected_elements.size() >= max_slaves;
+	// Return true if the contacts already used reached or exceeded the limit
+	return contactUsage().total() >= max_slaves;
 }
 
 /**
