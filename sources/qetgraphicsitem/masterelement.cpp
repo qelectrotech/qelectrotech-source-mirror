@@ -282,8 +282,11 @@ bool MasterElement::isFull() const
 		return false;
 	}
 
-	// Return true if the contacts already used reached or exceeded the limit
-	return contactUsage().total() >= max_slaves;
+		// max_slaves is a number of slots, not of contacts: it sizes the
+		// element's contact group table, and a slave occupies exactly one
+		// group however many contacts that group stands for. So the slots
+		// in use are the linked elements, not the contacts they carry.
+	return connected_elements.size() >= max_slaves;
 }
 
 /**
