@@ -256,7 +256,7 @@ QT += xml svg network sql widgets printsupport concurrent gui-private
 # sources/ui/nokde is only added to the include path in that configuration, so
 # a normal KF5 build is unaffected.
 no_kf5 {
-    DEFINES     += BUILD_WITHOUT_KF5
+    DEFINES     += BUILD_WITHOUT_KF BUILD_WITHOUT_KF5
     INCLUDEPATH += sources/ui/nokde
     HEADERS     += $$files(sources/ui/nokde/*.h)
     SOURCES     += $$files(sources/ui/nokde/*.cpp)
