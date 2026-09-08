@@ -29,6 +29,12 @@
 	rules can be unit tested on their own. MasterElement::contactUsage()
 	is the thin wrapper that feeds it the linked elements.
 
+	This counts contacts, which is what tells you how many contacts an
+	auxiliary block must provide. It is deliberately not the count that
+	MasterElement::isFull() uses: a master's max_slaves is a number of
+	slots, and a slave fills exactly one slot however many contacts it
+	carries.
+
 	Two rules are easy to get wrong, and both live here so that every
 	caller gets them right:
 	 - a slave stands for as many contacts as its "number" kind
