@@ -160,35 +160,31 @@ include(cmake/define_definitions.cmake)
 # On Windows, WIN32 sets /SUBSYSTEM:WINDOWS to suppress the console window.
 # Qt automatically links qtmain.lib which provides the WinMain entry point,
 # so no source code change is needed.
+add_executable(
+    ${PROJECT_NAME}
+    ${QET_RES_FILES}
+    ${QET_SRC_FILES}
+    ${QM_FILES}
+    ${QET_DIR}/qelectrotech.qrc
+)
 if(WIN32)
-    add_executable(
-        ${PROJECT_NAME}
-        WIN32
-        ${QET_RES_FILES}
-        ${QET_SRC_FILES}
-        ${QM_FILES}
-        ${QET_DIR}/qelectrotech.qrc
-    )
+    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32 TRUE)
 elseif(APPLE)
-    add_executable(
-        ${PROJECT_NAME}
-        MACOSX_BUNDLE
-        ${QET_RES_FILES}
-        ${QET_SRC_FILES}
-        ${QM_FILES}
-        ${QET_DIR}/qelectrotech.qrc
-    )
+    # CFBundleIdentifier must not be empty. CMake's default Info.plist
+    # template fills it from MACOSX_BUNDLE_GUI_IDENTIFIER; with that unset
+    # the bundle ships an empty identifier, LaunchServices never registers
+    # the .app, and AppKit's open/save panel service (which is keyed on the
+    # client's bundle id) silently presents nothing -- every
+    # QFileDialog::getOpenFileName()/getSaveFileName() call returns an empty
+    # string without a panel ever appearing, so File > Open and File > Save
+    # as do nothing at all.
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        MACOSX_BUNDLE_INFO_PLIST "${QET_DIR}/build-aux/macos/Info.plist"
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.qelectrotech.QElectroTech"
         MACOSX_BUNDLE_BUNDLE_NAME "QElectroTech"
-    )
-else()
-    add_executable(
-        ${PROJECT_NAME}
-        ${QET_RES_FILES}
-        ${QET_SRC_FILES}
-        ${QM_FILES}
-        ${QET_DIR}/qelectrotech.qrc
+        MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_COPYRIGHT "Copyright 2006-2026 The QElectroTech Team"
     )
 endif()
 
