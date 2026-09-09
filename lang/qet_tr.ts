@@ -7686,6 +7686,34 @@ Mevcut seçenekler:
         <translation type="unfinished">CSV formatında export et</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
+        <source>Exporter la nomenclature des appareils au format CSV</source>
+        <translation>Cihaz malzeme listesini CSV olarak dışa aktar</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
+        <source>Fichiers CSV (*.csv)</source>
+        <translation>CSV dosyaları (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
+        <source>Exporter la nomenclature</source>
+        <translation>Malzeme listesini dışa aktar</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
+        <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+        <translation>Malzeme listesi %1 konumuna kaydedilemedi.
+%2</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Nomenclature exportée dans %1</source>
+        <translation>Malzeme listesi %1 konumuna aktarıldı</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
         <source>Gestionnaire de borniers (DEV)</source>
         <translation type="unfinished">Klemens yöneticisi (DEV)</translation>
@@ -10966,6 +10994,31 @@ Değiştirmek ister misiniz?</translation>
         <location filename="../sources/qetinformation.cpp" line="263"/>
         <source>Description textuelle</source>
         <translation type="unfinished">Metin açıklaması</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="241"/>
+        <source>Modèle</source>
+        <translation>Model</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="242"/>
+        <source>Catégorie</source>
+        <translation>Kategori</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="243"/>
+        <source>Tension nominale</source>
+        <translation>Anma gerilimi</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="244"/>
+        <source>Courant nominal</source>
+        <translation>Anma akımı</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="245"/>
+        <source>Notes</source>
+        <translation>Notlar</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="264"/>

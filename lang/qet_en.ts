@@ -7569,6 +7569,34 @@ Available options:
         <translation>Export to CSV</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="474"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="484"/>
+        <source>Exporter la nomenclature des appareils au format CSV</source>
+        <translation>Export device BOM as CSV</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="486"/>
+        <source>Fichiers CSV (*.csv)</source>
+        <translation>CSV files (*.csv)</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="494"/>
+        <source>Exporter la nomenclature</source>
+        <translation>Export BOM</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="495"/>
+        <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+        <translation>Could not save the BOM to %1.
+%2</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
+        <source>Nomenclature exportée dans %1</source>
+        <translation>BOM exported to %1</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="488"/>
         <source>Gestionnaire de borniers (DEV)</source>
         <translation>Terminal block manager (DEV)</translation>
@@ -10966,6 +10994,31 @@ Do you want to replace it ?</translation>
         <location filename="../sources/qetinformation.cpp" line="263"/>
         <source>Description textuelle</source>
         <translation>Textual description</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="241"/>
+        <source>Modèle</source>
+        <translation>Model</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="242"/>
+        <source>Catégorie</source>
+        <translation>Category</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="243"/>
+        <source>Tension nominale</source>
+        <translation>Voltage rating</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="244"/>
+        <source>Courant nominal</source>
+        <translation>Current rating</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetinformation.cpp" line="245"/>
+        <source>Notes</source>
+        <translation>Notes</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="264"/>

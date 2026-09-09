@@ -203,6 +203,7 @@ class QETDiagramEditor : public QETMainWindow
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items
 		*m_csv_export,			///< generate nomenclature
+		*m_device_bom_export,	///< Export an ungrouped device BOM
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item
 		*m_terminal_strip_dialog = nullptr, ///<Launch terminal strip dialog
