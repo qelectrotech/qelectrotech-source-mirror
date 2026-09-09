@@ -18,11 +18,28 @@ include(cmake/hoto_update_cmake_message.cmake)
 
 cmake_minimum_required(VERSION 3.5...4.2)
 
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/QET_VERSION" QET_VERSION_STRING LIMIT_COUNT 1)
+string(STRIP "${QET_VERSION_STRING}" QET_VERSION_STRING)
+
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/QET_RELEASE" QET_VERSION_TYPE LIMIT_COUNT 1)
+string(STRIP "${QET_VERSION_TYPE}" QET_VERSION_TYPE)
+
+set(_qet_valid_version_types dev alpha1 alpha2 alpha3 stable)
+if(NOT QET_VERSION_TYPE IN_LIST _qet_valid_version_types)
+  message(FATAL_ERROR "VERSION_TYPE file contains '${QET_VERSION_TYPE}', must be one of: ${_qet_valid_version_types}")
+endif()
+
 project(qelectrotech
-        VERSION 0.100.1
+        VERSION ${QET_VERSION_STRING}
         DESCRIPTION "QET is a CAD/CAE editor focusing on schematics drawing features."
         HOMEPAGE_URL "https://qelectrotech.org/"
         LANGUAGES C CXX)
+        
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/sources/qetversion.cpp.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/generated/qetversion.cpp"
+  @ONLY
+)
 
 include(cmake/copyright_message.cmake)
 
@@ -143,27 +160,32 @@ include(cmake/define_definitions.cmake)
 # On Windows, WIN32 sets /SUBSYSTEM:WINDOWS to suppress the console window.
 # Qt automatically links qtmain.lib which provides the WinMain entry point,
 # so no source code change is needed.
+add_executable(
+    ${PROJECT_NAME}
+    ${QET_RES_FILES}
+    ${QET_SRC_FILES}
+    ${QM_FILES}
+    ${QET_DIR}/qelectrotech.qrc
+)
 if(WIN32)
-    add_executable(
-        ${PROJECT_NAME}
-        WIN32
-        ${QET_RES_FILES}
-        ${QET_SRC_FILES}
-        ${QM_FILES}
-        ${QET_DIR}/qelectrotech.qrc
+    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32 TRUE)
+elseif(APPLE)
+    # CFBundleIdentifier must not be empty. CMake's default Info.plist
+    # template fills it from MACOSX_BUNDLE_GUI_IDENTIFIER; with that unset
+    # the bundle ships an empty identifier, LaunchServices never registers
+    # the .app, and AppKit's open/save panel service (which is keyed on the
+    # client's bundle id) silently presents nothing -- every
+    # QFileDialog::getOpenFileName()/getSaveFileName() call returns an empty
+    # string without a panel ever appearing, so File > Open and File > Save
+    # as do nothing at all.
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.qelectrotech.QElectroTech"
+        MACOSX_BUNDLE_BUNDLE_NAME "QElectroTech"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_COPYRIGHT "Copyright 2006-2026 The QElectroTech Team"
     )
-else()
-    add_executable(
-        ${PROJECT_NAME}
-        ${QET_RES_FILES}
-        ${QET_SRC_FILES}
-        ${QM_FILES}
-        ${QET_DIR}/qelectrotech.qrc
-    )
-endif()
-
-if(APPLE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
 endif()
 
 # The default build only compiles the tracked .ts files to .qm (lrelease).
@@ -292,6 +314,7 @@ target_link_libraries(
 target_include_directories(
     ${PROJECT_NAME}
     PRIVATE
+    ${QET_DIR}/sources
     ${QET_DIR}/sources/titleblock
     ${QET_DIR}/sources/ui
     ${QET_DIR}/sources/qetgraphicsitem
@@ -335,10 +358,11 @@ if(NOT BUILD_WITH_KF)
 endif()
 
 install(TARGETS ${PROJECT_NAME}
-    BUNDLE DESTINATION .
+  BUNDLE DESTINATION .
+  RUNTIME DESTINATION ${QET_BINARY_PATH}
 )
 
-if (NOT MINGW)
+if ((NOT MINGW) AND (NOT WIN32))
     install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})
     install(DIRECTORY ico/breeze-icons/22x22   DESTINATION ${QET_ICONS_PATH})
     install(DIRECTORY ico/breeze-icons/32x32   DESTINATION ${QET_ICONS_PATH})
@@ -351,9 +375,9 @@ if (NOT MINGW)
     install(DIRECTORY titleblocks DESTINATION share/qelectrotech)
     install(FILES LICENSE ELEMENTS.LICENSE CREDIT README ChangeLog DESTINATION share/doc/qelectrotech)
     if(UNIX AND NOT APPLE)
-        install(FILES misc/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
-        install(FILES misc/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
-        install(FILES misc/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
+        install(FILES build-aux/linux/org.qelectrotech.qelectrotech.desktop DESTINATION share/applications)
+        install(FILES build-aux/linux/qelectrotech.xml    DESTINATION ${QET_MIME_PACKAGE_PATH})
+        install(FILES build-aux/linux/qelectrotech.appdata.xml DESTINATION ${QET_APPDATA_PATH})
     endif()
     install(FILES ${QM_FILES} DESTINATION ${QET_LANG_PATH})
 endif()

@@ -1,0 +1,61 @@
+name: Linux Build Check with GCC on Ubuntu
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-linux:
+    name: GCC build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - ubuntu-22.04-arm
+          - ubuntu-24.04
+          - ubuntu-26.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          path: source
+
+      - name: Install Qt6 dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            qt6-base-dev qt6-base-private-dev libqt6svg6-dev libqt6sql6-sqlite qt6-tools-dev qt6-tools-dev-tools qt6-l10n-tools qt6-base-private-dev libqt6pdf6 qt6-pdf-dev \
+            libsqlite3-dev cmake ninja-build ccache pkg-config g++
+            
+          # Install OpenGL fix for Ubuntu 22.04
+          if [[ "${{ matrix.os }}" == "ubuntu-22.04" || "${{ matrix.os }}" == "ubuntu-22.04-arm" ]]; then
+            sudo apt-get install -y libgl1-mesa-dev libegl1-mesa-dev
+          fi
+
+      - name: Configure, build, install
+        run: |
+          set -euo pipefail
+          SOURCE_DIR="${{ github.workspace }}/source"
+          BUILD_DIR="${{ github.workspace }}/build"
+          INSTALL_DIR="${{ github.workspace }}/install"
+
+          cmake -S "$SOURCE_DIR" -B "$BUILD_DIR" -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DQT_VERSION_MAJOR=6 \
+            -DBUILD_WITH_KF=OFF \
+            -DPACKAGE_TESTS=OFF \
+            -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
+
+          cmake --build "$BUILD_DIR"
+          cmake --install "$BUILD_DIR" --prefix "$INSTALL_DIR"

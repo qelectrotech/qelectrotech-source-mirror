@@ -1,0 +1,75 @@
+name: Windows build with Mingw
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-windows-qt6:
+    name: Windows build with Mingw
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          cache: true
+          install: >-
+            git
+            mingw-w64-ucrt-x86_64-ccache
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-qt6-base
+            mingw-w64-ucrt-x86_64-qt6-svg
+            mingw-w64-ucrt-x86_64-qt6-tools
+            mingw-w64-ucrt-x86_64-qt6-translations
+            mingw-w64-ucrt-x86_64-qt6-pdf
+            mingw-w64-ucrt-x86_64-sqlite3
+            mingw-w64-ucrt-x86_64-pkg-config
+            mingw-w64-ucrt-x86_64-kwidgetsaddons
+            mingw-w64-ucrt-x86_64-kcoreaddons
+            mingw-w64-ucrt-x86_64-extra-cmake-modules
+            mingw-w64-ucrt-x86_64-nsis
+            mingw-w64-ucrt-x86_64-angleproject
+
+      - name: Configure and build
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          
+          WORKSPACE_PATH=$(cygpath -m "${{ github.workspace }}")
+
+          sourceDir="${WORKSPACE_PATH}"
+          buildDir="${WORKSPACE_PATH}/build"
+
+          cmake -G Ninja \
+            -S "$sourceDir" \
+            -B "$buildDir" \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_PREFIX_PATH=/ucrt64 \
+            -DQt6_DIR=/ucrt64/lib/cmake/Qt6 \
+            -DQT_VERSION_MAJOR=6 \
+            -DBUILD_WITH_KF=ON \
+            -DBUILD_KF=OFF \
+            -DPACKAGE_TESTS=OFF \
+            -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DQET_EXPORT_PROJECT_DB=ON \
+            -DSQLite3_INCLUDE_DIR=/ucrt64/include \
+            -DSQLite3_LIBRARY=/ucrt64/lib/libsqlite3.dll.a 
+          cmake --build "$buildDir"
+
+
