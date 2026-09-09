@@ -228,6 +228,41 @@ void MasterElement::aboutDeleteXref()
 }
 
 /**
+ * @brief MasterElement::contactUsage
+ * Count the slave contacts currently linked to this master, by type.
+ * This is the single place where that count is worked out: the cross ref
+ * item, the properties dialog and the link widgets all read it from here,
+ * so they cannot disagree with each other.
+ * @return the per type usage
+ */
+ContactUsage MasterElement::contactUsage() const
+{
+	ContactUsage usage;
+
+	for (Element *elmt : connected_elements)
+	{
+		if (!elmt) {
+			continue;
+		}
+
+		const ElementData &data = elmt->elementData();
+
+		ContactUsage::Type type = ContactUsage::Other;
+		switch (data.m_slave_state)
+		{
+			case ElementData::NO:    type = ContactUsage::NO;    break;
+			case ElementData::NC:    type = ContactUsage::NC;    break;
+			case ElementData::SW:    type = ContactUsage::SW;    break;
+			case ElementData::Other: type = ContactUsage::Other; break;
+		}
+
+		usage.addSlave(type, data.m_contact_count);
+	}
+
+	return usage;
+}
+
+/**
  * @brief MasterElement::isFull
  * @return true if the master has reached its maximum number of slaves
  */
@@ -247,7 +282,10 @@ bool MasterElement::isFull() const
 		return false;
 	}
 
-	// Return true if current connected elements reached or exceeded the limit
+		// max_slaves is a number of slots, not of contacts: it sizes the
+		// element's contact group table, and a slave occupies exactly one
+		// group however many contacts that group stands for. So the slots
+		// in use are the linked elements, not the contacts they carry.
 	return connected_elements.size() >= max_slaves;
 }
 

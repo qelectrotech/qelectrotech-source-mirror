@@ -65,7 +65,14 @@ ClickableImageLabel::ClickableImageLabel(const QImage &sourceImage, QWidget *par
 */
 void ClickableImageLabel::mousePressEvent(QMouseEvent *event)
 {
-	if (event->button() != Qt::LeftButton || pixmap().isNull())
+		// QLabel::pixmap() returns a pointer in Qt5 and a value in Qt6.
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+	const QPixmap label_pixmap = pixmap() ? *pixmap() : QPixmap();
+#else
+	const QPixmap label_pixmap = pixmap();
+#endif
+
+	if (event->button() != Qt::LeftButton || label_pixmap.isNull())
 		return;
 
 	// The label may be larger than its pixmap (layout stretching); the
@@ -73,9 +80,9 @@ void ClickableImageLabel::mousePressEvent(QMouseEvent *event)
 	// so the click has to be re-based against the pixmap's own rect
 	// within the label, not the label's own top-left.
 	const QRect pixmapRect(
-			(width() - pixmap().width()) / 2,
-			(height() - pixmap().height()) / 2,
-			pixmap().width(), pixmap().height());
+			(width() - label_pixmap.width()) / 2,
+			(height() - label_pixmap.height()) / 2,
+			label_pixmap.width(), label_pixmap.height());
 	if (!pixmapRect.contains(event->pos()))
 		return;
 
