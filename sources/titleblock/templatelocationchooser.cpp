@@ -98,8 +98,7 @@ void TitleBlockTemplateLocationChooser::init()
 	templates_ = new QComboBox();
 	
 	updateCollections();
-	connect(collections_, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(updateTemplates()));
+	connect(collections_, qOverload<int>(&QComboBox::currentIndexChanged), this, &TitleBlockTemplateLocationChooser::updateTemplates);
 	
 	form_layout_ = new QFormLayout();
 	form_layout_ -> addRow(

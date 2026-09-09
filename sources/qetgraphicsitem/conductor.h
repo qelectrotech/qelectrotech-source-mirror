@@ -21,6 +21,7 @@
 #include "../conductorproperties.h"
 
 #include <QGraphicsPathItem>
+#include <QUuid>
 
 class ConductorProfile;
 class ConductorSegmentProfile;
@@ -77,6 +78,8 @@ class Conductor : public QGraphicsObject
 		int type() const override { return Type; }
 		Diagram *diagram() const;
 		ConductorTextItem *textItem() const;
+		QUuid uuid() const {return m_uuid;}
+		void newUuid() {m_uuid = QUuid::createUuid(); m_persist_uuid = true;}	//create new uuid for this conductor
 		void updatePath(const QRectF & = QRectF());
 
 		//This method do nothing, it's only made to be used with Q_PROPERTY
@@ -205,6 +208,11 @@ class Conductor : public QGraphicsObject
 		Highlight must_highlight_;
 		bool m_valid;
 		bool m_freeze_label = false;
+		QUuid m_uuid;
+			/// false when m_uuid was synthesized by fromXml() because the
+			/// file had none -- toXml() must not persist that value, or
+			/// every reload mints and saves a new random one (see #754).
+		bool m_persist_uuid = true;
 
 			/// QPen et QBrush objects used to draw conductors
 		static QPen conductor_pen;

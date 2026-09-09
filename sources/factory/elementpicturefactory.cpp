@@ -99,7 +99,14 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		int hsy = qMin(doc.document_element().attribute("hotspot_y").as_int(), h);
 
 		QPixmap pix(w, h);
-		pix.fill(QColor(255, 255, 255, 0));
+			//Element definitions almost always draw with a hardcoded black
+			//stroke color, on the assumption of the white diagram sheet they
+			//are normally placed on. A transparent background here makes
+			//that stroke disappear against a dark widget/tree-view background
+			//(bugtracker #335). Give it an opaque white background instead -
+			//exactly what the element already assumes visually, in every
+			//context this pixmap is used (tree icons, drag icon, previews).
+		pix.fill(Qt::white);
 
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
@@ -612,14 +619,7 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 	pen.setCapStyle(Qt::SquareCap);
 
 		//Get the couples style/value
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	const QStringList styles = dom.attribute("style").split(";", QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
-#endif
 
 	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$");
 	if (!rx.isValid())

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
+#include "../qetapp.h"
 #include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
@@ -33,9 +34,19 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/setautonumcontextcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
@@ -795,6 +806,7 @@ bool Element::fromXml(QDomElement &e,
 	setZValue(e.attribute(QStringLiteral("z"), QString::number(this->zValue())).toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable
 		 | QGraphicsItem::ItemIsSelectable);
+	is_movable_ = e.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt();
 
 	// orientation
 	bool conv_ok;
@@ -860,6 +872,15 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
+		//Load PLC master data override from diagram XML
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = e.firstChildElement(QStringLiteral("plcMasterData"));
+		if (!xml_plc.isNull())
+			m_data.plcMasterDataFromXml(xml_plc);
+	}
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -917,6 +938,7 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("y"), QString::number(pos().y()));
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 
 	/* get the first id to use for the bounds of this element
 	 * recupere le premier id a utiliser pour les bornes de cet element */
@@ -991,6 +1013,15 @@ QDomElement Element::toXml(
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
 	}
 
 	//Dynamic texts
@@ -1396,6 +1427,27 @@ void Element::setElementInformations(DiagramContext dc)
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
 	emit elementInfoChange(old_info, m_data.m_informations);
+
+	// Propagate label change to linked PLC slaves (label is changed via
+	// setElementInformations through the undo stack, not via setElementData)
+	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
+	{
+		if (!m_group_index_map.isEmpty())
+		{
+			const QString new_label = actualLabel();
+			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
+			{
+				Element *slave = it.key();
+				if (!slave)
+					continue;
+				if (slave->elementInformations().value(QETInformation::ELMT_LABEL).toString() == new_label)
+					continue;
+				DiagramContext ctx = slave->elementInformations();
+				ctx.addValue(QETInformation::ELMT_LABEL, new_label);
+				slave->setElementInformations(ctx);
+			}
+		}
+	}
 }
 
 /**
@@ -1433,7 +1485,9 @@ void Element::setElementData(ElementData data)
 	{
 		const auto &new_plc = m_data.plcMasterData();
 		bool plc_changed = (old_plc.ios != new_plc.ios);
-		if (plc_changed && !m_group_index_map.isEmpty())
+		bool label_changed = (old_info.value(QStringLiteral("label")) !=
+			m_data.m_informations.value(QStringLiteral("label")));
+		if (!m_group_index_map.isEmpty() && (plc_changed || label_changed))
 		{
 			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
 			{
@@ -1442,24 +1496,58 @@ void Element::setElementData(ElementData data)
 				if (!slave || io_idx < 0 || io_idx >= new_plc.ios.size())
 					continue;
 				const auto &io = new_plc.ios.at(io_idx);
-				DiagramContext ctx = slave->elementInformations();
-				ctx.addValue(QETInformation::ELMT_PLC_TYPE,
-					ElementData::translatedPlcIOType(io.type));
-				ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
-				ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
-				ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
-				ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
-					[&]() -> QString {
-						if (!diagram() || !diagram()->project())
-							return QString();
-						XRefProperties xrp = diagram()->project()
-							->defaultXRefProperties("plc");
-						autonum::sequentialNumbers seq;
-						return autonum::AssignVariables::formulaToLabel(
-							xrp.slaveLabel(), seq, diagram(), this);
-					}());
-				ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
-				slave->setElementInformations(ctx);
+
+				if (plc_changed)
+				{
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+						ElementData::translatedPlcIOType(io.type));
+					ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+					ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+					ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+					ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+						[&]() -> QString {
+							if (!diagram() || !diagram()->project())
+								return QString();
+							XRefProperties xrp = diagram()->project()
+								->defaultXRefProperties("plc");
+							autonum::sequentialNumbers seq;
+							return autonum::AssignVariables::formulaToLabel(
+								xrp.slaveLabel(), seq, diagram(), this);
+						}());
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					ctx.addValue(QETInformation::ELMT_PLC_TC,
+						QString::number(io.terminalCount));
+					for (int t = 0; t < io.terminalCount && t < 4; ++t)
+					{
+						QString val = (t < io.terminals.size())
+							? io.terminals.at(t) : QString();
+						ctx.addValue(plcTerminalKeys[t], val);
+					}
+					slave->setElementInformations(ctx);
+
+					// Update master labels on slave terminals
+					QList<Terminal *> slave_terms = slave->terminals();
+					for (int t = 0; t < slave_terms.size(); ++t)
+					{
+						if (t < io.terminals.size())
+						{
+							slave_terms.at(t)->setUseMasterLabel(true);
+							slave_terms.at(t)->setMasterLabelIndex(t);
+						}
+						else
+						{
+							slave_terms.at(t)->setUseMasterLabel(false);
+						}
+					}
+				}
+				if (label_changed)
+				{
+					// Only label changed, update the label on the slave
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					slave->setElementInformations(ctx);
+				}
 			}
 		}
 	}
@@ -1563,7 +1651,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 	(ex K for coil) with condition :
 	formula is empty, text tagged "label" is emptty or "_";
 */
-void Element::setUpFormula(bool code_letter)
+void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
@@ -1592,8 +1680,21 @@ void Element::setUpFormula(bool code_letter)
 					   nc,
 					   diagram(),
 					   element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum,
-							ncc.next());
+
+		NumerotationContext new_context = ncc.next();
+		QETProject *project = diagram()->project();
+		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);};
+
+		if (parent_undo)
+		{
+			new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context, parent_undo);
+		}
+		else
+		{
+			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
+			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			diagram()->undoStack().push(undo);
+		}
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
@@ -1813,12 +1914,12 @@ void Element::drawPlcTable(QPainter *painter)
 	// Fonts
 	QFont header_font = plc_data.headerFont;
 	if (header_font.family().isEmpty()) {
-		header_font = painter->font();
+		header_font = QETApp::diagramTextsFont();
 		header_font.setBold(true);
 	}
 	QFont cell_font = plc_data.cellFont;
 	if (cell_font.family().isEmpty()) {
-		cell_font = painter->font();
+		cell_font = QETApp::diagramTextsFont();
 	}
 
 	for (const QPointF &pos : positions) {
@@ -1900,7 +2001,10 @@ void Element::drawPlcTable(QPainter *painter)
 					}
 
 					QRectF text_rect = cr.adjusted(1, 0, -1, 0);
-					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+					painter->save();
+					painter->setClipRect(text_rect, Qt::IntersectClip);
+					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextWordWrap, cell_text);
+					painter->restore();
 
 					cx += col_widths[col];
 				}

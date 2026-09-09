@@ -17,12 +17,14 @@
 */
 #include "elementinfowidget.h"
 #include <QCheckBox>
+#include <QPushButton>
 #include "../diagram.h"
 #include "../qetapp.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetinformation.h"
 #include "../ui_elementinfowidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "customelementinfopartwidget.h"
 #include "elementinfopartwidget.h"
 
 /**
@@ -47,6 +49,7 @@ ElementInfoWidget::ElementInfoWidget(Element *elmt, QWidget *parent) :
 ElementInfoWidget::~ElementInfoWidget()
 {
 	qDeleteAll(m_eipw_list);
+	qDeleteAll(m_custom_eipw_list);
 	delete ui;
 }
 
@@ -145,7 +148,7 @@ bool ElementInfoWidget::event(QEvent *event)
 	{
 		if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show)
 		{
-			QTimer::singleShot(250, this, SLOT(firstActivated()));
+			QTimer::singleShot(250, this, &ElementInfoWidget::firstActivated);
 			m_first_activation = false;
 		}
 	}
@@ -201,12 +204,25 @@ void ElementInfoWidget::buildInterface()
 		keys = QETInformation::elementInfoKeys();
 	}
 
+		//"exclude_from_bom" is part of elementInfoKeys() because the project
+		//database builds the element_info table from that list, but it is not
+		//a free-text property: it already has its own check box below. Without
+		//this it also gets a generic edit row, and since translatedInfoKey()
+		//has no entry for it that row carries no label at all - an anonymous
+		//line that currentInfo() then fills with "true"/"false".
+	keys.removeAll(QStringLiteral("exclude_from_bom"));
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
 		ui->scroll_vlayout->addWidget(eipw);
 		m_eipw_list << eipw;
 	}
+
+	m_add_custom_property_btn = new QPushButton(tr("Ajouter une propriété personnalisée"), this);
+	connect(m_add_custom_property_btn, &QPushButton::clicked, this, [this]() { addCustomProperty(); });
+	ui->scroll_vlayout->addWidget(m_add_custom_property_btn);
+
 	ui->scroll_vlayout->addStretch();
 
 	// Existing potential isolating checkbox
@@ -235,6 +251,67 @@ void ElementInfoWidget::buildInterface()
 		m_potential_isolating_cb->setVisible(false);
 	}
 }
+/**
+	@brief ElementInfoWidget::predefinedKeys
+	@return every key this widget already exposes a dedicated row for,
+	whether through ElementInfoPartWidget (the ~40 ELMT_* keys) or one
+	of the standalone checkboxes. Anything present in the element's
+	informations but absent from this list is a user-defined custom
+	property.
+*/
+QStringList ElementInfoWidget::predefinedKeys() const
+{
+	QStringList keys = (m_element.data()->elementData().m_type == ElementData::Terminal)
+			? QETInformation::terminalElementInfoKeys()
+			: QETInformation::elementInfoKeys();
+
+	keys << QStringLiteral("auto_num_locked")
+		 << QStringLiteral("potential_isolating")
+		 << QStringLiteral("exclude_from_bom");
+
+	return keys;
+}
+
+/**
+	@brief ElementInfoWidget::addCustomProperty
+	Append a new user-defined key/value row to the widget.
+	@param key initial key, left empty for a freshly added row
+	@param value initial value
+*/
+void ElementInfoWidget::addCustomProperty(const QString &key, const QString &value)
+{
+	auto *widget = new CustomElementInfoPartWidget(key, value, this);
+
+	const int insert_index = ui->scroll_vlayout->indexOf(m_add_custom_property_btn);
+	ui->scroll_vlayout->insertWidget(insert_index >= 0 ? insert_index : ui->scroll_vlayout->count(), widget);
+	m_custom_eipw_list << widget;
+
+	connect(widget, &CustomElementInfoPartWidget::removeRequested, this, &ElementInfoWidget::removeCustomProperty);
+	connect(widget, &CustomElementInfoPartWidget::changed, this, [this]() {
+		if (m_live_edit) apply();
+	});
+
+	if (key.isEmpty()) {
+		widget->setFocus();
+	}
+}
+
+/**
+	@brief ElementInfoWidget::removeCustomProperty
+	Remove a user-defined key/value row.
+	@param widget the row to remove
+*/
+void ElementInfoWidget::removeCustomProperty(CustomElementInfoPartWidget *widget)
+{
+	if (!m_custom_eipw_list.removeOne(widget))
+		return;
+
+	ui->scroll_vlayout->removeWidget(widget);
+	widget->deleteLater();
+
+	if (m_live_edit) apply();
+}
+
 /**
 	@brief ElementInfoWidget::infoPartWidgetForKey
 	@param key
@@ -271,6 +348,21 @@ void ElementInfoWidget::updateUi()
 	for (ElementInfoPartWidget *eipw : m_eipw_list) {
 		eipw -> setText (element_info[eipw->key()].toString());
 	}
+
+	// Rebuild the custom-property rows to match whatever
+	// user-defined keys this element currently carries.
+	while (!m_custom_eipw_list.isEmpty()) {
+		CustomElementInfoPartWidget *w = m_custom_eipw_list.takeLast();
+		ui->scroll_vlayout->removeWidget(w);
+		delete w;
+	}
+	const auto known_keys = predefinedKeys();
+	for (const QString &key : element_info.keys()) {
+		if (!known_keys.contains(key)) {
+			addCustomProperty(key, element_info[key].toString());
+		}
+	}
+
 	// Load the lock status for auto numbering
 	if (m_element->elementData().m_type == ElementData::Terminal) {
 		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
@@ -311,6 +403,17 @@ DiagramContext ElementInfoWidget::currentInfo() const
 			txt.remove(QStringLiteral("\r"));
 			txt.remove(QStringLiteral("\n"));
 			info_.addValue(eipw->key(), txt);
+		}
+	}
+
+	for (const auto &custom : std::as_const(m_custom_eipw_list))
+	{
+		if (custom->hasValidKey() && !custom->value().isEmpty())
+		{
+			QString txt{custom->value()};
+			txt.remove(QStringLiteral("\r"));
+			txt.remove(QStringLiteral("\n"));
+			info_.addValue(custom->key(), txt);
 		}
 	}
 

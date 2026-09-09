@@ -24,6 +24,7 @@
 #include "qet.h"
 #include "qetdiagrameditor.h"
 #include "ui/potentialselectordialog.h"
+#include "undocommand/setautonumcontextcommand.h"
 
 /**
 	@brief ConductorAutoNumerotation::ConductorAutoNumerotation
@@ -156,7 +157,16 @@ void ConductorAutoNumerotation::newProperties(
 	autonum::setSequential(formula, seq, context, diagram, autoNum_name);
 
 	NumerotationContextCommands ncc (context, diagram);
-	diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
+	NumerotationContext new_context = ncc.next();
+
+	QETProject *project = diagram->project();
+	auto *undo = new SetAutoNumContextCommand(
+			[project](const QString &k, const NumerotationContext &c) {project->addConductorAutoNum(k, c);},
+			autoNum_name,
+			context,
+			new_context);
+	undo->setText(QObject::tr("Numéroter automatiquement un conducteur", "undo caption"));
+	diagram->undoStack().push(undo);
 }
 
 /**
@@ -245,7 +255,21 @@ void ConductorAutoNumerotation::numerateNewConductor()
 							   autoNum_name);
 
 		NumerotationContextCommands ncc (context, m_diagram);
-		m_diagram->project()->addConductorAutoNum(autoNum_name, ncc.next());
+		NumerotationContext new_context = ncc.next();
+
+		QETProject *project = m_diagram->project();
+		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addConductorAutoNum(k, c);};
+
+		if (m_parent_undo)
+		{
+			new SetAutoNumContextCommand(setter, autoNum_name, context, new_context, m_parent_undo);
+		}
+		else
+		{
+			auto *undo = new SetAutoNumContextCommand(setter, autoNum_name, context, new_context);
+			undo->setText(QObject::tr("Numéroter automatiquement un conducteur", "undo caption"));
+			m_diagram->undoStack().push(undo);
+		}
 	}
 
 	applyText(autonum::AssignVariables::formulaToLabel(

@@ -40,7 +40,7 @@
 	<key>CFBundleExecutable</key>
 	<string>qelectrotech</string>
 	<key>CFBundleIconFile</key>
-	<string>qelectrotech.icns</string>
+	<string>qelectrotech</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.qelectrotech</string>
 	<key>CFBundleInfoDictionaryVersion</key>

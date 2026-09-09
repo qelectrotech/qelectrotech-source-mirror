@@ -43,6 +43,14 @@ ElementsTreeView::ElementsTreeView(QWidget *parent) :
 {
 	// force du noir sur une alternance de blanc (comme le schema) et de gris
 	// clair, avec du blanc sur bleu pas trop fonce pour la selection
+	//
+	// Element icons are rendered with colors read directly from each .elmt
+	// file (almost always black linework, matching printed-schematic
+	// convention) onto a transparent background -- so this view must keep
+	// a light background regardless of the OS/desktop theme, or the icons
+	// become invisible on dark themes. QAbstractItemView paints its rows
+	// using the viewport's palette, not the view's own, so the palette
+	// must be applied to both to actually take effect under every style.
 	QPalette qp = palette();
 	qp.setColor(QPalette::Text,            Qt::black);
 	qp.setColor(QPalette::Base,            Qt::white);
@@ -50,6 +58,7 @@ ElementsTreeView::ElementsTreeView(QWidget *parent) :
 	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
 	qp.setColor(QPalette::HighlightedText, Qt::black);
 	setPalette(qp);
+	viewport()->setPalette(qp);
 }
 
 /**
@@ -134,11 +143,7 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 								QString file_name = (last_slash != -1) ? path.mid(last_slash + 1) : path;
 
 								if (!dir_path.isEmpty()) {
-									#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-									QStringList parts = dir_path.split('/', QString::SkipEmptyParts);
-									#else
 									QStringList parts = dir_path.split('/', Qt::SkipEmptyParts);
-									#endif
 									QString current_path = "";
 									for (const QString &part : parts) {
 										QString parent_path = current_path;

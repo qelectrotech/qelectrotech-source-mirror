@@ -74,19 +74,19 @@ void PartDynamicTextField::setRotation(qreal angle) {
 	setPos(QTransform().rotate(diffAngle).map(pos()));
 }
 
-void PartDynamicTextField::mirror() {
+void PartDynamicTextField::mirror(qreal axis_x) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle(360-rotation(), true));
 	// then see, where we need to re-position depending on the angle!
 	qreal rot = qRound(QET::correctAngle(rotation(), true));
 	qreal c = qCos(qDegreesToRadians(rot));
 	qreal s = qSin(qDegreesToRadians(rot));
-	qreal x = (-1) * pos().x() - c * boundingRect().width();
+	qreal x = 2 * axis_x - pos().x() - c * boundingRect().width();
 	qreal y = pos().y() - s * boundingRect().width();
 	setPos(x, y);
 }
 
-void PartDynamicTextField::flip() {
+void PartDynamicTextField::flip(qreal axis_y) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle(360-rotation(), true));
 	// then see, where we need to re-position depending on the angle!
@@ -94,7 +94,7 @@ void PartDynamicTextField::flip() {
 	qreal c = qCos(qDegreesToRadians(rot));
 	qreal s = qSin(qDegreesToRadians(rot));
 	qreal x = pos().x() + s * boundingRect().height();
-	qreal y = (-1) * pos().y() - c * boundingRect().height();
+	qreal y = 2 * axis_y - pos().y() - c * boundingRect().height();
 	setPos(x, y);
 }
 
@@ -148,6 +148,7 @@ const QDomElement PartDynamicTextField::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("frame", m_frame? "true" : "false");
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
+	root_element.setAttribute("rotation_point_center", m_rotation_point_center ? "true" : "false");
 
 	QMetaEnum me = DynamicElementTextItem::textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
@@ -212,6 +213,7 @@ void PartDynamicTextField::fromXml(const QDomElement &dom_elmt) {
 	setZValue(dom_elmt.attribute("z", QString::number(zValue())).toDouble());
 	QGraphicsObject::setRotation(QET::correctAngle(dom_elmt.attribute("rotation", QString::number(0)).toDouble()));
 	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
+	setRotationPointCenter(dom_elmt.attribute("rotation_point_center", "false") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font")) {
 		QFont font_;
@@ -490,6 +492,20 @@ void PartDynamicTextField::setKeepVisualRotation(const bool &keep)
 
 bool PartDynamicTextField::keepVisualRotation() const {
 	return m_keep_visual_rotation;
+}
+
+void PartDynamicTextField::setRotationPointCenter(const bool &center)
+{
+	if (center == this->m_rotation_point_center) {
+		return;
+	}
+
+	m_rotation_point_center = center;
+	emit rotationPointCenterChanged(center);
+}
+
+bool PartDynamicTextField::rotationPointCenter() const {
+	return m_rotation_point_center;
 }
 
 /**

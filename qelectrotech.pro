@@ -173,7 +173,9 @@ HEADERS += $$files(sources/*.h) \
            $$files(sources/qet_elementscaler/*.h) \
            $$files(sources/svg/*.h) \
            $$files(sources/import/edz/*.h) \
-           $$files(sources/import/edz/lzma/*.h)
+           $$files(sources/import/edz/lzma/*.h) \
+           $$files(sources/logging/*.h) \
+           $$files(sources/logging/ui/*.h)
 
 SOURCES += $$files(sources/*.cpp) \
            $$files(sources/editor/*.cpp) \
@@ -219,7 +221,10 @@ SOURCES += $$files(sources/*.cpp) \
            $$files(sources/qet_elementscaler/*.cpp) \
            $$files(sources/svg/*.cpp) \
            $$files(sources/import/edz/*.cpp) \
-           $$files(sources/import/edz/lzma/*.c)
+           $$files(sources/import/edz/lzma/*.c) \
+           $$files(sources/logging/*.cpp) \
+           $$files(sources/logging/ui/*.cpp)
+
 
 # Needed for use promote QTreeWidget in terminalstripeditor.ui
 INCLUDEPATH += sources/TerminalStrip/ui

@@ -271,6 +271,7 @@ class QETApp : public QObject
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
 		void aboutQET();
+		void showDiagnosticsReport();
 		void receiveMessage(int instanceId, QByteArray message);
 	
 	private:
@@ -287,6 +288,7 @@ class QETApp : public QObject
 		void initSystemTray();
 		void buildSystemTrayMenu();
 		void checkBackupFiles();
+		void checkCrashDump();
 		void fetchWindowStats(
 			const QList<QETDiagramEditor *> &,
 			const QList<QETElementEditor *> &,

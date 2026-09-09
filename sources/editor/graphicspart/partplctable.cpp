@@ -18,6 +18,7 @@
 #include "partplctable.h"
 
 #include "../../QPropertyUndoCommand/qpropertyundocommand.h"
+#include "../../qetapp.h"
 #include "../../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "../../QetGraphicsItemModeler/qetgraphicshandlerutility.h"
 #include "../../properties/elementdata.h"
@@ -302,7 +303,7 @@ void PartPlcTable::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
 		// Draw column headers
 		QFont header_font = plc_data.headerFont.family().isEmpty()
-			? painter->font() : plc_data.headerFont;
+			? QETApp::diagramTextsFont() : plc_data.headerFont;
 		header_font.setBold(true);
 		painter->setFont(header_font);
 
@@ -318,7 +319,7 @@ void PartPlcTable::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
 		// Draw IO rows
 		QFont cell_font = plc_data.cellFont.family().isEmpty()
-			? painter->font() : plc_data.cellFont;
+			? QETApp::diagramTextsFont() : plc_data.cellFont;
 		painter->setFont(cell_font);
 		int start_idx = block_starts.at(block);
 		int end_idx = (block + 1 < block_starts.size())

@@ -63,6 +63,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const
 	export_properties.draw_border             = draw_border    -> isChecked();
 	export_properties.draw_titleblock         = draw_titleblock     -> isChecked();
 	export_properties.draw_terminals          = draw_terminals -> isChecked();
+	export_properties.draw_terminal_names     = draw_terminal_names -> isChecked();
 	export_properties.draw_bg_transparent     = draw_bg_transparent -> isChecked();
 	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
 	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
@@ -85,6 +86,7 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	draw_border             -> setChecked(export_properties.draw_border);
 	draw_titleblock         -> setChecked(export_properties.draw_titleblock);
 	draw_terminals          -> setChecked(export_properties.draw_terminals);
+	draw_terminal_names     -> setChecked(export_properties.draw_terminal_names);
 	draw_bg_transparent     -> setChecked(export_properties.draw_bg_transparent);
 	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	
@@ -206,13 +208,17 @@ void ExportPropertiesWidget::build()
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
 	optionshlayout -> addWidget(draw_terminals, 2, 1);
 	
+	// dessiner les noms des bornes
+	draw_terminal_names = new QCheckBox(tr("Dessiner les noms des bornes"), groupbox_options);
+	optionshlayout -> addWidget(draw_terminal_names, 3, 0);
+	
 	// conserver les couleurs des conducteurs
 	draw_colored_conductors = new QCheckBox(tr("Conserver les couleurs des conducteurs"), groupbox_options);
-	optionshlayout -> addWidget(draw_colored_conductors, 3, 0);
+	optionshlayout -> addWidget(draw_colored_conductors, 3, 1);
 	
 	// use transparent background for SVG-Export
 	draw_bg_transparent = new QCheckBox(tr("SVG: fond transparent"), groupbox_options);
-	optionshlayout -> addWidget(draw_bg_transparent, 3, 1);
+	optionshlayout -> addWidget(draw_bg_transparent, 4, 0);
 	
 	vboxLayout -> addWidget(groupbox_options);
 	
@@ -230,15 +236,26 @@ void ExportPropertiesWidget::build()
 	setTabOrder(draw_colored_conductors, draw_bg_transparent);
 	
 	// connexion du bouton permettant le choix du repertoire
-	connect(button_browse, SIGNAL(released()), this, SLOT(slot_chooseADirectory()));
+	connect(button_browse, &QPushButton::released, this, &ExportPropertiesWidget::slot_chooseADirectory);	
 	
 	// emission de signaux lors du changement de format et lors du changement de zone exportee
-	connect(format,                   SIGNAL(currentIndexChanged(int)),         this, SIGNAL(formatChanged()));
-	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(exportedAreaChanged()));
-	connect(draw_grid,                SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_border,              SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_titleblock,          SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_terminals,           SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_bg_transparent,      SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_colored_conductors,  SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(format, qOverload<int>(&QComboBox::currentIndexChanged), this, &ExportPropertiesWidget::formatChanged);
+	connect(exported_content_choices, qOverload<QAbstractButton*>(&QButtonGroup::buttonClicked), this, &ExportPropertiesWidget::exportedAreaChanged);
+#if QT_VERSION < QT_VERSION_CHECK(6, 7, 0) // TODO Qt 6.7: remove, checkStateChanged() always available
+	connect(draw_grid, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_border, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_titleblock, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_terminals, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_terminal_names, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_bg_transparent, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_colored_conductors, &QCheckBox::stateChanged, this, &ExportPropertiesWidget::optionChanged);
+#else
+	connect(draw_grid, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_border, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_titleblock, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_terminals, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_terminal_names, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_bg_transparent, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+	connect(draw_colored_conductors, &QCheckBox::checkStateChanged, this, &ExportPropertiesWidget::optionChanged);
+#endif
 }

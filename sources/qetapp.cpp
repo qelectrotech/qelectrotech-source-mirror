@@ -36,9 +36,12 @@
 #include "titleblocktemplate.h"
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
+#include "ui/configpage/shortcutsconfigpage.h"
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
+#include "logging/qetlogger.h"
+#include "logging/ui/diagnosticsreportdialog.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -47,7 +50,7 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
@@ -121,8 +124,8 @@ QETApp::QETApp() :
 	initSplashScreen();
 	initSystemTray();
 
-	connect(&signal_map, SIGNAL(mapped(QWidget *)),
-		this, SLOT(invertMainWindowVisibility(QWidget *)));
+	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
+
 	qApp->setQuitOnLastWindowClosed(false);
 	connect(qApp, &QApplication::lastWindowClosed,
 		this, &QETApp::checkRemainingWindows);
@@ -264,7 +267,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
@@ -1420,7 +1423,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
@@ -1790,7 +1793,7 @@ void QETApp::checkRemainingWindows()
 	*/
 	static bool sleep = true;
 	if (sleep) {
-		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
+		QTimer::singleShot(500, this, &QETApp::checkRemainingWindows);
 	} else {
 		if (!diagramEditors().count() && !elementEditors().count()) {
 			qApp->quit();
@@ -1972,6 +1975,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1983,6 +1987,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -2051,6 +2056,7 @@ void QETApp::configureQET()
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
+	cd.addPage(new ShortcutsConfigPage());
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent
@@ -2398,24 +2404,23 @@ void QETApp::initSystemTray()
 	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
 	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
 
-	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
-	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
-	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
-	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
-	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
-	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
-	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
-	connect(reduce_templates, SIGNAL(triggered()), this, SLOT(reduceTitleBlockTemplateEditors()));
-	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
-	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
-	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+	connect(quitter_qet, &QAction::triggered, this, &QETApp::quitQET);
+	connect(reduce_appli, &QAction::triggered, this, &QETApp::reduceEveryEditor);
+	connect(restore_appli, &QAction::triggered, this, &QETApp::restoreEveryEditor);
+	connect(reduce_diagrams, &QAction::triggered, this, &QETApp::reduceDiagramEditors);
+	connect(restore_diagrams, &QAction::triggered, this, &QETApp::restoreDiagramEditors);
+	connect(reduce_elements, &QAction::triggered, this, &QETApp::reduceElementEditors);
+	connect(restore_elements, &QAction::triggered, this, &QETApp::restoreElementEditors);
+	connect(reduce_templates, &QAction::triggered, this, &QETApp::reduceTitleBlockTemplateEditors);
+	connect(restore_templates, &QAction::triggered, this, &QETApp::restoreTitleBlockTemplateEditors);
+	connect(new_diagram, &QAction::triggered, this, &QETApp::newDiagramEditor);
+	connect(new_element, &QAction::triggered, this, &QETApp::newElementEditor);
 
 	// initialization of the systray icon
 	// initialisation de l'icone du systray
 	m_qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	m_qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
-	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-		this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	connect(m_qsti, &QSystemTrayIcon::activated, this, &QETApp::systray);
 	m_qsti -> setContextMenu(menu_systray);
 	m_qsti -> show();
 }
@@ -2435,7 +2440,7 @@ template <class T> void QETApp::addWindowsListToMenu(
 		QAction *current_menu = menu -> addAction(window -> windowTitle());
 		current_menu -> setCheckable(true);
 		current_menu -> setChecked(window -> isVisible());
-		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		connect(current_menu, &QAction::triggered, &signal_map, qOverload<>(&QSignalMapper::map));
 		signal_map.setMapping(current_menu, window);
 	}
 }
@@ -2573,6 +2578,10 @@ void QETApp::checkBackupFiles()
 	}
 
 	if (stale_files.isEmpty()) {
+		// Only offer an unretrieved crash dump when there's no project
+		// to recover this run -- discussion #644 step 5 is explicit
+		// that the two prompts must never both show at once.
+		checkCrashDump();
 		return;
 	}
 
@@ -2624,6 +2633,53 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
+}
+
+/**
+	@brief QETApp::checkCrashDump
+	Discussion #644, step 5: if the crash handler (step 4) left an
+	unretrieved dump from a previous run, offer it to the user. Only
+	called from checkBackupFiles() when there was no stale project file
+	to recover this run, so the two prompts never both show at once.
+*/
+void QETApp::checkCrashDump()
+{
+	QetLogger &logger = QetLogger::instance();
+	if (!logger.hasPendingCrashDump()) {
+		return;
+	}
+
+	const QByteArray content = logger.pendingCrashDumpContents();
+
+	DiagnosticsReportDialog dialog(
+			tr("Rapport de plantage"),
+			tr("QElectroTech ne s'est pas fermé correctement lors de sa dernière exécution.\n"
+			   "Voici les derniers messages enregistrés avant l'arrêt -- vous pouvez les "
+			   "enregistrer pour les joindre à un rapport de bug."),
+			content);
+	dialog.exec();
+
+	// Offered once, then marked retrieved -- regardless of whether the
+	// user chose to save it -- so it is never offered a second time.
+	logger.clearPendingCrashDump();
+}
+
+/**
+	@brief QETApp::showDiagnosticsReport
+	Discussion #644, step 5: the manual "Help > Diagnostics > Save
+	report" action. Unlike checkCrashDump(), this is about the *current*,
+	still-running session, not a previous one.
+*/
+void QETApp::showDiagnosticsReport()
+{
+	const QByteArray content = QetLogger::instance().buildDiagnosticsReport();
+
+	DiagnosticsReportDialog dialog(
+			tr("Rapport de diagnostic"),
+			tr("Ceci contient les derniers messages de journalisation de cette session. "
+			   "Vérifiez le contenu avant de le joindre à un rapport de bug public."),
+			content);
+	dialog.exec();
 }
 
 /**

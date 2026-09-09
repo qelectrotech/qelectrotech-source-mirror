@@ -45,19 +45,15 @@ void DiagramPropertiesEditorDockWidget::setDiagram(Diagram *diagram)
 
 	if (m_diagram)
 	{
-		disconnect(m_diagram, SIGNAL(selectionChanged()),
-			   this, SLOT(selectionChanged()));
-		disconnect(m_diagram, SIGNAL(destroyed()),
-			   this, SLOT(diagramWasDeleted()));
+		disconnect(m_diagram, &Diagram::selectionChanged, this, &DiagramPropertiesEditorDockWidget::selectionChanged);
+		disconnect(m_diagram, &QObject::destroyed, this, &DiagramPropertiesEditorDockWidget::diagramWasDeleted);
 	}
 
 	if (diagram)
 	{
 		m_diagram = diagram;
-		connect(m_diagram, SIGNAL(selectionChanged()),
-			this, SLOT(selectionChanged()), Qt::QueuedConnection);
-		connect(m_diagram, SIGNAL(destroyed()),
-			this, SLOT(diagramWasDeleted()));
+		connect(m_diagram, &Diagram::selectionChanged, this, &DiagramPropertiesEditorDockWidget::selectionChanged, Qt::QueuedConnection);
+		connect(m_diagram, &QObject::destroyed, this, &DiagramPropertiesEditorDockWidget::diagramWasDeleted);
 		selectionChanged();
 	}
 	else

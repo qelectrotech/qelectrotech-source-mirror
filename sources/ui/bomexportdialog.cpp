@@ -83,14 +83,7 @@ int BOMExportDialog::exec()
 			if (file.open(QIODevice::WriteOnly | QIODevice::Text))
 			{
 				QTextStream stream(&file);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-				stream << getBom() << endl;
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.15 or later")
-#endif
 				stream << getBom() << &Qt::endl(stream);
-#endif
 			}
 		}
 	}

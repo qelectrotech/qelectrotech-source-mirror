@@ -33,6 +33,8 @@
 #include "ui/dialogwaiting.h"
 #include "ui/projectpropertiesdialog.h"
 #include "ui/titleblockpropertieswidget.h"
+#include "undocommand/movediagramcommand.h"
+#include "undocommand/removediagramcommand.h"
 
 /**
 	Constructeur
@@ -86,6 +88,10 @@ void ProjectView::setProject(QETProject *project)
 		connect(m_project, &QETProject::diagramAdded, [this](QETProject *project, Diagram *diagram) {
 			Q_UNUSED(project)
 			this->diagramAdded(diagram);
+		});
+		connect(m_project, &QETProject::diagramRemoved, [this](QETProject *project, Diagram *diagram) {
+			Q_UNUSED(project)
+			this->diagramRemoved(diagram);
 		});
 
 		adjustReadOnlyState();
@@ -204,10 +210,14 @@ void ProjectView::changeFirstTab()
 }
 
 /**
-	@return first folio of current project
+	@return first folio of current project, or nullptr if the project
+	has no diagram.
 */
 DiagramView *ProjectView::firstDiagram()
 {
+	if (m_diagram_ids.isEmpty()) {
+		return(nullptr);
+	}
 	return(m_diagram_ids.first());
 }
 
@@ -339,11 +349,19 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	// if no filepath is provided, return an empty string
 	if (filepath.isEmpty()) return(filepath);
 
-	// if the name does not end with the .qet extension and we're _not_ using xdg-desktop-portal, append it
-	bool usesPortal = 
-		qEnvironmentVariableIsSet("FLATPAK_ID") || 
-		qEnvironmentVariableIsSet("SNAP_NAME");
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive) && !usesPortal) filepath += ".qet";
+	// Ensure the path ends with exactly one .qet extension, regardless of
+	// whether the active file dialog already appended one. Whether it does
+	// depends on which backend actually shows the dialog (Qt's own vs. the
+	// xdg-desktop-portal used by sandboxed Snap/Flatpak builds), and that
+	// isn't reliably predictable from environment variables alone -- an
+	// earlier attempt at that (only appending when *not* Snap/Flatpak,
+	// assuming the portal always appends it) left Snap saves with no
+	// extension at all whenever the portal didn't (bugtracker #270).
+	// Stripping any existing suffix first and re-appending it once is
+	// correct either way.
+	if (filepath.endsWith(".qet", Qt::CaseInsensitive))
+		filepath.chop(4);
+	filepath += ".qet";
 
 	if (assign) {
 		// assign the provided filepath to the currently edited project
@@ -383,7 +401,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view, bool silent)
 		int answer = QET::QetMessageBox::question(
 			this,
 			tr("Supprimer le folio ?", "message box title"),
-												  tr("Êtes-vous sûr de vouloir supprimer ce folio du projet ? Ce changement est irréversible.", "message box content"),
+												  tr("Êtes-vous sûr de vouloir supprimer ce folio du projet ?", "message box content"),
 												  QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 											QMessageBox::No
 		);
@@ -392,16 +410,33 @@ void ProjectView::removeDiagram(DiagramView *diagram_view, bool silent)
 		}
 	}
 
-	//Remove the diagram view of the tabs widget
+	m_project->undoStack()->push(new RemoveDiagramCommand(m_project, diagram_view->diagram()));
+}
+
+/**
+	@brief ProjectView::diagramRemoved
+	Slot called when the project emits diagramRemoved (either from a direct,
+	non-undoable QETProject::removeDiagram() call, or -- the normal UI path
+	-- from a RemoveDiagramCommand's redo()/undo()). Tears down the tab and
+	DiagramView for the given diagram; the diagram itself is left untouched,
+	since by this point it has already been detached (and possibly parked
+	for undo) by the caller.
+	@param diagram
+*/
+void ProjectView::diagramRemoved(Diagram *diagram)
+{
+	DiagramView *diagram_view = findDiagram(diagram);
+	if (!diagram_view)
+		return;
+
 	int index_to_remove = m_diagram_ids.key(diagram_view);
 	m_tab->removeTab(index_to_remove);
 	m_diagram_view_list.removeAll(diagram_view);
 	rebuildDiagramsMap();
 
-	m_project -> removeDiagram(diagram_view -> diagram());
+	emit(diagramRemoved(diagram_view));
 	delete diagram_view;
 
-	emit(diagramRemoved(diagram_view));
 	updateAllTabsTitle();
 	m_project -> setModified(true);
 }
@@ -485,7 +520,7 @@ void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 1);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position - 1));
 }
 
 /**
@@ -506,7 +541,7 @@ void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 1);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position + 1));
 }
 
 /**
@@ -528,7 +563,7 @@ void ProjectView::moveDiagramUpTop(DiagramView *diagram_view)
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, 0);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), 0));
 }
 
 /*
@@ -550,7 +585,7 @@ void ProjectView::moveDiagramUpx10(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 10);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position - 10));
 }
 
 /**
@@ -573,7 +608,7 @@ void ProjectView::moveDiagramUpx100(DiagramView *diagram_view) {
 		// The diagram is the first of the project
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, diagram_view_position - 100);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position - 100));
 }
 
 /**
@@ -598,7 +633,7 @@ void ProjectView::moveDiagramDownx100(DiagramView *diagram_view) {
 		// The diagram is the last of the project
 		return;
 	}
-	m_tab->tabBar()->moveTab(diagram_view_position, diagram_view_position + 100);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position + 100));
 }
 
 /**
@@ -621,7 +656,7 @@ void ProjectView::moveDiagramDownx10(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	m_tab -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 10);
+	m_project->undoStack()->push(new MoveDiagramCommand(this, diagram_view->diagram(), diagram_view_position + 10));
 }
 
 /**
@@ -740,8 +775,8 @@ int ProjectView::cleanProject()
 	clean_dialog_layout -> addWidget(buttons);
 	clean_dialog.setLayout(clean_dialog_layout);
 
-	connect(buttons, SIGNAL(accepted()), &clean_dialog, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), &clean_dialog, SLOT(reject()));
+	connect(buttons, &QDialogButtonBox::accepted, &clean_dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &clean_dialog, &QDialog::reject);
 
 	int clean_count = 0;
 	if (clean_dialog.exec() == QDialog::Accepted)
@@ -819,7 +854,7 @@ void ProjectView::initWidgets()
 	QHBoxLayout *TopRightCorner_Layout = new QHBoxLayout();
 	TopRightCorner_Layout->setContentsMargins(0,0,0,0);
 	// some place left to the 'next_right_view_button' button
-	TopRightCorner_Layout->insertSpacing(1,10);
+	TopRightCorner_Layout->addSpacing(10);
 
 	QHBoxLayout *TopLeftCorner_Layout = new QHBoxLayout();
 	TopLeftCorner_Layout->setContentsMargins(0,0,0,0);
@@ -865,9 +900,9 @@ void ProjectView::initWidgets()
 	m_tab -> setCornerWidget(tabwidgetLeft, Qt::TopLeftCorner);
 
 		// manage signals
-	connect(m_tab, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
-	connect(m_tab, SIGNAL(tabBarDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(m_tab->tabBar(), SIGNAL(tabMoved(int,int)), this, SLOT(tabMoved(int,int)), Qt::QueuedConnection);
+	connect(m_tab, &QTabWidget::currentChanged, this, &ProjectView::tabChanged);
+	connect(m_tab, &QTabWidget::tabBarDoubleClicked, this, &ProjectView::tabDoubleClicked);
+	connect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved, Qt::QueuedConnection);
 
 	fallback_widget_ -> setVisible(false);
 	m_tab -> setVisible(false);
@@ -1052,16 +1087,62 @@ void ProjectView::tabMoved(int from, int to)
 {
 	if (!m_project)
 		return;
-	
+
 	m_project->diagramOrderChanged(from, to);
 	rebuildDiagramsMap();
-	
+
 		//Rebuild the title of each diagram in range from - to
 	for (int i= qMin(from,to) ; i< qMax(from,to)+1 ; ++i)
 	{
 		DiagramView *dv = m_diagram_ids.value(i);
 		updateTabTitle(dv);
 	}
+}
+
+/**
+	@brief ProjectView::setDiagramPosition
+	Move \p diagram's tab to \p new_position (out-of-range values are
+	clamped by the underlying tab bar, same as a direct QTabBar::moveTab()
+	call). Used by MoveDiagramCommand for both redo and undo.
+
+	tabMoved() -- the slot that normally keeps the project's diagram list in
+	sync with the tab bar -- is connected with Qt::QueuedConnection (needed
+	so interactive drag-and-drop reordering settles before the model
+	updates). That queued call would run a second, redundant
+	diagramOrderChanged() after this method already performed it
+	synchronously, so that one connection is temporarily dropped around the
+	move (blocking all of the tab bar's signals instead would also suppress
+	QTabWidget's own internal tabMoved connection, which is what keeps its
+	page stack in the same order as the tab bar -- breaking the move
+	visually).
+	@param diagram
+	@param new_position
+*/
+void ProjectView::setDiagramPosition(Diagram *diagram, int new_position)
+{
+	if (!m_project)
+		return;
+
+	DiagramView *diagram_view = findDiagram(diagram);
+	if (!diagram_view)
+		return;
+
+	int current_position = m_diagram_ids.key(diagram_view, -1);
+	if (current_position < 0)
+		return;
+
+	disconnect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved);
+	m_tab->tabBar()->moveTab(current_position, new_position);
+	connect(m_tab->tabBar(), &QTabBar::tabMoved, this, &ProjectView::tabMoved, Qt::QueuedConnection);
+
+	rebuildDiagramsMap();
+
+	int actual_new_position = m_tab->indexOf(diagram_view);
+	if (actual_new_position != current_position)
+		m_project->diagramOrderChanged(current_position, actual_new_position);
+
+	for (int i = qMin(current_position, actual_new_position); i <= qMax(current_position, actual_new_position); ++i)
+		updateTabTitle(m_diagram_ids.value(i));
 }
 
 /**

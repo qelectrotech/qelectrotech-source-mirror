@@ -26,8 +26,10 @@
 class Element;
 class QUndoCommand;
 class ElementInfoPartWidget;
+class CustomElementInfoPartWidget;
 class ChangeElementInformationCommand;
 class QCheckBox;
+class QPushButton;
 
 namespace Ui {
 	class ElementInfoWidget;
@@ -63,15 +65,20 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 	private:
 		void buildInterface();
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
+		QStringList predefinedKeys() const;
 
 	private slots:
 		void firstActivated();
 		void elementInfoChange();
+		void addCustomProperty(const QString &key = QString(), const QString &value = QString());
+		void removeCustomProperty(CustomElementInfoPartWidget *widget);
 
 		//ATTRIBUTES
 	private:
 		Ui::ElementInfoWidget           *ui;
 		QList <ElementInfoPartWidget *>  m_eipw_list;
+		QList <CustomElementInfoPartWidget *> m_custom_eipw_list;
+		QPushButton                     *m_add_custom_property_btn = nullptr;
 		QCheckBox                       *m_potential_isolating_cb = nullptr;
 		QCheckBox                        *m_exclude_from_bom_cb = nullptr;
 		bool m_first_activation;

@@ -98,6 +98,7 @@ class QETDiagramEditor : public QETMainWindow
 		ProjectView *findProject(const QString &) const;
 		QMdiSubWindow *subWindowForWidget(QWidget *) const;
 		void updateUsageTrackersActiveState();
+		void updateWindowModifiedState();
 
 	signals:
 		void syncElementsPanel();
@@ -126,6 +127,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setWindowedMode();
 		void setTabbedMode();
 		void readSettings();
+		void readSettingsState();
 		void writeSettings();
 		void activateProject(QETProject *);
 		void activateProject(ProjectView *);
@@ -137,6 +139,7 @@ class QETDiagramEditor : public QETMainWindow
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
+		void addDiagramToProjectAt(QETProject *, int);
 		void removeDiagram(Diagram *);
 		void removeDiagrams(const QList<Diagram *> &diagrams);
 		void removeDiagramFromProject();
@@ -191,7 +194,7 @@ class QETDiagramEditor : public QETMainWindow
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
-		*conductor_default,		///< Show a dialog to edit default conductor properties
+		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_grey_background,		///< Switch the background color in white or grey
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
@@ -199,7 +202,6 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_add_diagram,		///< Add a diagram to the current project.
 		*m_remove_diagram_from_project,	///< Delete a diagram from the current project
 		*m_clean_project,		///< Clean the content of the current project by removing useless items
-		*m_project_folio_list,		///< Sommaire des schemas
 		*m_csv_export,			///< generate nomenclature
 		*m_add_nomenclature,		///< Add nomenclature graphics item;
 		*m_add_summary,			///<Add summary graphics item
@@ -216,13 +218,15 @@ class QETDiagramEditor : public QETMainWindow
 		*m_edit_selection,		///< To edit selected item
 		*m_delete_selection,		///< Delete selection
 		*m_rotate_selection,		///< Rotate selected elements and text items by 90 degrees
+		*m_rotate_group_selection = nullptr, ///< Rotate the selection as a whole around its shared center, instead of each item in place
 		*m_rotate_texts,		///< Direct selected text items to a specific angle
 		*m_find_element,		///< Find the selected element in the panel
 		*m_group_selected_texts = nullptr,
 		*m_close_file,			///< Close current project file
 		*m_save_file,			///< Save current project
 		*m_save_file_as,		///< Save current project as a specific file
-		*m_find = nullptr;
+		*m_find = nullptr,
+		*m_jump_to_element = nullptr;	///< Open the "jump to element" quick-open popup
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

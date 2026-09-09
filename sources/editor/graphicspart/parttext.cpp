@@ -50,14 +50,14 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent) :
 
 	adjustItemPosition(1);
 	// adjust textfield position after line additions/deletions
+	connect(document(), 
+		&QTextDocument::blockCountChanged, 
+		this, 
+		&PartText::adjustItemPosition);
 	connect(document(),
-		SIGNAL(blockCountChanged(int)),
+		&QTextDocument::contentsChanged,
 		this,
-		SLOT(adjustItemPosition(int)));
-	connect(document(),
-		SIGNAL(contentsChanged()),
-		this,
-		SLOT(adjustItemPosition()));
+		[this]() { adjustItemPosition(); });
 }
 
 /// Destructeur
@@ -75,7 +75,7 @@ void PartText::setRotation(qreal angle) {
 	setPos(QTransform().rotate(diffAngle).map(pos()));
 }
 
-void PartText::mirror() {
+void PartText::mirror(qreal axis_x) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle((360-rotation()), true));
 	// then see, where we need to re-position depending on text, font ...
@@ -86,12 +86,12 @@ void PartText::mirror() {
 	qreal c = qCos(qDegreesToRadians(rot));
 	qreal s = qSin(qDegreesToRadians(rot));
 	// Now: Move!
-	qreal x = (-1) * pos().x() - c * (textwidth);
+	qreal x = 2 * axis_x - pos().x() - c * (textwidth);
 	qreal y = pos().y() - s * (textwidth);
 	setPos(x, y);
 }
 
-void PartText::flip() {
+void PartText::flip(qreal axis_y) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle((360-rotation()), true));
 	// then see, where we need to re-position depending on text, font ...
@@ -103,7 +103,7 @@ void PartText::flip() {
 	qreal s = qSin(qDegreesToRadians(rot));
 	// Now: Move!
 	qreal x = pos().x() - s * (textheight);
-	qreal y = (-1) * pos().y() + c * (textheight);
+	qreal y = 2 * axis_y - pos().y() + c * (textheight);
 	setPos(x, y);
 }
 
@@ -440,6 +440,14 @@ void PartText::setFont(const QFont &font) {
 		// at a different spot after save/reopen (the position recomputes from
 		// the saved font on load). See #158.
 		adjustItemPosition();
+		// Keep real_font_size_ in sync with the actual font. It's the base
+		// size startUserTransformation()/handleUserTransformation() scale
+		// from when the user drags a resize handle, and flip() also reads it
+		// to reposition the item. Left stale here, either one computes from
+		// whatever size the item had when it was first created, ignoring any
+		// size set since (toolbar, property editor, or loaded from XML) -
+		// found investigating #158.
+		real_font_size_ = font.pointSize();
 		emit fontChanged(font);
 	}
 }

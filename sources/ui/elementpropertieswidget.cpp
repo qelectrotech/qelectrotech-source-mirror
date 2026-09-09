@@ -30,6 +30,7 @@
 #include "masterpropertieswidget.h"
 #include "plclinkwidget.h"
 
+#include <QCheckBox>
 #include <QLabel>
 #include <QUndoStack>
 #include <QVBoxLayout>
@@ -396,6 +397,18 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	label->setTextInteractionFlags(Qt::TextEditorInteraction);
 	vlayout_->addWidget(label);
 
+		//checkbox to lock the element position on the diagram
+		//(same mechanism already used by images and drawn shapes)
+	QCheckBox *lock_pos_cb = new QCheckBox(tr("Verrouiller la position"), general_widget);
+	lock_pos_cb->setChecked(!m_element->isMovable());
+	QPointer<Element> element = m_element;
+	connect(lock_pos_cb, &QCheckBox::clicked, this, [element](bool checked) {
+		if (element) {
+			element->setMovable(!checked);
+		}
+	});
+	vlayout_->addWidget(lock_pos_cb);
+
 		//widget for the pixmap
 	QLabel *pix = new QLabel(general_widget);
 	vlayout_->addWidget(pix, 0, Qt::AlignHCenter);
@@ -403,9 +416,9 @@ QWidget *ElementPropertiesWidget::generalWidget()
 
 		//button widget
 	QPushButton *find_in_panel = new QPushButton(QET::Icons::ZoomDraw, tr("Retrouver dans le panel"), general_widget);
-	connect(find_in_panel, SIGNAL(clicked()), this, SLOT(findInPanel()));
+	connect(find_in_panel, &QPushButton::clicked, this, &ElementPropertiesWidget::findInPanel);
 	QPushButton *edit_element = new QPushButton(QET::Icons::ElementEdit, tr("Éditer l'élément"), general_widget);
-	connect(edit_element, SIGNAL(clicked()), this, SLOT(editElement()));
+	connect(edit_element, &QPushButton::clicked, this, &ElementPropertiesWidget::editElement);
 	QHBoxLayout *hlayout_ = new QHBoxLayout;
 	hlayout_->addWidget(find_in_panel);
 	hlayout_->addWidget(edit_element);

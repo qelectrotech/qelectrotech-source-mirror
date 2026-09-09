@@ -154,14 +154,12 @@ void MasterPropertiesWidget::setElement(Element *element)
 		m_element->setHighlighted(false);
 
 	if (m_project)
-		disconnect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
-				   this, SLOT(diagramWasdeletedFromProject()));
+		disconnect(m_project, &QETProject::diagramRemoved, this, &MasterPropertiesWidget::diagramWasdeletedFromProject);
 
 	if(Q_LIKELY(element->diagram() && element->diagram()->project()))
 		{
 			m_project = element->diagram()->project();
-			connect(m_project, SIGNAL(diagramRemoved(QETProject*,Diagram*)),
-					this, SLOT(diagramWasdeletedFromProject()));
+			connect(m_project, &QETProject::diagramRemoved, this, &MasterPropertiesWidget::diagramWasdeletedFromProject);
 		}
 		else
 			m_project = nullptr;
@@ -216,6 +214,16 @@ void MasterPropertiesWidget::reset()
  */
 QUndoCommand* MasterPropertiesWidget::associatedUndo() const
 {
+	// PLC masters manage their slave links via the IO table (setElementData),
+	// not via the link tree widget. The link tree is always empty for PLC
+	// masters, so we must not create an unlinkAll command.
+	if (m_element &&
+		m_element->elementData().m_type == ElementData::Master &&
+		m_element->elementData().m_master_type == ElementData::PLC)
+	{
+		return nullptr;
+	}
+
 	QList <Element *> to_link;
 	QList <Element *> linked_ = m_element->linkedElements();
 
@@ -387,8 +395,7 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	Q_UNUSED(column);
 	if (m_showed_element)
 	{
-		disconnect(m_showed_element, SIGNAL(destroyed()),
-				   this, SLOT(showedElementWasDeleted()));
+		disconnect(m_showed_element, &QObject::destroyed, this, &MasterPropertiesWidget::showedElementWasDeleted);
 		m_showed_element -> setHighlighted(false);
 	}
 	if (m_element)
@@ -397,8 +404,7 @@ void MasterPropertiesWidget::showElementFromTWI(QTreeWidgetItem *qtwi, int colum
 	m_showed_element = m_qtwi_hash[qtwi];
 	m_showed_element->diagram()->showMe();
 	m_showed_element->setHighlighted(true);
-	connect(m_showed_element, SIGNAL(destroyed()),
-			this, SLOT(showedElementWasDeleted()));
+	connect(m_showed_element, &QObject::destroyed, this, &MasterPropertiesWidget::showedElementWasDeleted);
 }
 
 /**
@@ -421,7 +427,7 @@ void MasterPropertiesWidget::diagramWasdeletedFromProject()
 	// contains slave element linked to the edited element
 	// we must wait for this elements be unlinked,
 	// or else the linked list provides deleted elements.
-	QTimer::singleShot(10, this, SLOT(updateUi()));
+	QTimer::singleShot(10, this, &MasterPropertiesWidget::updateUi);
 }
 
 /**
@@ -519,13 +525,13 @@ void MasterPropertiesWidget::updateUi()
 
 			// Table
 			m_plc_table = new QTableWidget(m_plc_widget);
-			m_plc_table->setColumnCount(5);
+			m_plc_table->setColumnCount(6);
 			m_plc_table->setHorizontalHeaderLabels({
 				tr("Type"), tr("Adresse"), tr("Fonction"),
-				tr("Commentaire"), tr("Réf. croisée")
+				tr("Commentaire"), tr("Réf. croisée"), tr("Bornes")
 			});
 			m_plc_table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-			m_plc_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+			m_plc_table->setSelectionBehavior(QAbstractItemView::SelectItems);
 			m_plc_table->setSelectionMode(QAbstractItemView::ExtendedSelection);
 			m_plc_table->setMinimumHeight(200);
 
@@ -586,6 +592,11 @@ void MasterPropertiesWidget::updateUi()
 			auto *crossref_item = new QTableWidgetItem(io.crossRef);
 			crossref_item->setFlags(crossref_item->flags() & ~Qt::ItemIsEditable);
 			m_plc_table->setItem(row, 4, crossref_item);
+
+			// Anschlüsse (read-only)
+			auto *terminals_item = new QTableWidgetItem(io.terminals.join(QStringLiteral(", ")));
+			terminals_item->setFlags(terminals_item->flags() & ~Qt::ItemIsEditable);
+			m_plc_table->setItem(row, 5, terminals_item);
 		}
 
 		m_plc_table->blockSignals(false);
@@ -800,23 +811,7 @@ void MasterPropertiesWidget::setCellFromValue(int row, int col, const QString &v
 		}
 	}
 	else if (col == 5) {
-		// Terminal count spinbox
-		auto *tc_sb = qobject_cast<QSpinBox*>(m_plc_table->cellWidget(row, col));
-		if (!tc_sb) {
-			tc_sb = new QSpinBox(m_plc_table);
-			tc_sb->setMinimum(1);
-			tc_sb->setMaximum(4);
-			m_plc_table->setCellWidget(row, col, tc_sb);
-			connect(tc_sb, QOverload<int>::of(&QSpinBox::valueChanged),
-				this, [this, row](int) { plcIOCellChanged(row, 5); });
-		}
-		bool ok;
-		int v = val.toInt(&ok);
-		if (ok && v >= 1 && v <= 4)
-			tc_sb->setValue(v);
-	}
-	else if (col == 6) {
-		// CrossRef - read-only
+		// Anschlüsse (read-only)
 		auto *item = new QTableWidgetItem(val);
 		item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 		m_plc_table->setItem(row, col, item);
@@ -854,17 +849,10 @@ void MasterPropertiesWidget::plcAddRow()
 	m_plc_table->setItem(row, 3, new QTableWidgetItem());
 	m_plc_table->setItem(row, 4, new QTableWidgetItem());
 
-	auto *tc_sb = new QSpinBox(m_plc_table);
-	tc_sb->setMinimum(1);
-	tc_sb->setMaximum(4);
-	tc_sb->setValue(1);
-	m_plc_table->setCellWidget(row, 5, tc_sb);
-	connect(tc_sb, QOverload<int>::of(&QSpinBox::valueChanged),
-		this, [this, row](int) { plcIOCellChanged(row, 5); });
-
-	auto *crossref_item = new QTableWidgetItem();
-	crossref_item->setFlags(crossref_item->flags() & ~Qt::ItemIsEditable);
-	m_plc_table->setItem(row, 6, crossref_item);
+	// Anschlüsse (read-only)
+	auto *terminals_item = new QTableWidgetItem();
+	terminals_item->setFlags(terminals_item->flags() & ~Qt::ItemIsEditable);
+	m_plc_table->setItem(row, 5, terminals_item);
 }
 
 /**
@@ -880,6 +868,8 @@ void MasterPropertiesWidget::plcRemoveRow()
 	if (selected.isEmpty())
 		return;
 
+	m_plc_updating = true;
+
 	// Remove from bottom to top to preserve indices
 	std::sort(selected.begin(), selected.end(),
 		[](const QModelIndex &a, const QModelIndex &b) { return a.row() > b.row(); });
@@ -887,6 +877,9 @@ void MasterPropertiesWidget::plcRemoveRow()
 	for (const QModelIndex &idx : selected) {
 		m_plc_table->removeRow(idx.row());
 	}
+
+	m_plc_updating = false;
+	plcUpdateDisplaySettings();
 }
 
 /**
@@ -902,6 +895,8 @@ void MasterPropertiesWidget::plcMoveRowUp()
 	if (row <= 0)
 		return;
 
+	m_plc_updating = true;
+
 	// Swap with row above
 	for (int col = 0; col < m_plc_table->columnCount(); ++col) {
 		QWidget *w1 = m_plc_table->cellWidget(row, col);
@@ -916,6 +911,8 @@ void MasterPropertiesWidget::plcMoveRowUp()
 	}
 
 	m_plc_table->setCurrentCell(row - 1, m_plc_table->currentColumn());
+	m_plc_updating = false;
+	plcUpdateDisplaySettings();
 }
 
 /**
@@ -931,6 +928,8 @@ void MasterPropertiesWidget::plcMoveRowDown()
 	if (row < 0 || row >= m_plc_table->rowCount() - 1)
 		return;
 
+	m_plc_updating = true;
+
 	// Swap with row below
 	for (int col = 0; col < m_plc_table->columnCount(); ++col) {
 		QWidget *w1 = m_plc_table->cellWidget(row, col);
@@ -945,6 +944,8 @@ void MasterPropertiesWidget::plcMoveRowDown()
 	}
 
 	m_plc_table->setCurrentCell(row + 1, m_plc_table->currentColumn());
+	m_plc_updating = false;
+	plcUpdateDisplaySettings();
 }
 
 /**
@@ -975,10 +976,11 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 
 	// Preserve existing display settings
 	ElementData ed = m_element->elementData();
-	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	const auto orig_plc = ed.plcMasterData();
+	ElementData::PlcMasterData plc_data = orig_plc;
 	plc_data.ios.clear();
 
-	// Read IOs from table
+	// Read IOs from table, preserving terminal data from original IOs by row index
 	for (int row = 0; row < m_plc_table->rowCount(); ++row) {
 		ElementData::PlcIO io;
 
@@ -1001,6 +1003,16 @@ void MasterPropertiesWidget::plcUpdateDisplaySettings()
 		auto *crossref_item = m_plc_table->item(row, 4);
 		if (crossref_item)
 			io.crossRef = crossref_item->text();
+
+		// Preserve terminal data by matching row index directly.
+		// This avoids address-based lookup which fails when all addresses
+		// are empty (common in PLC masters) — a hash collision would cause
+		// only the last IO's terminals to be used for all rows.
+		if (row < orig_plc.ios.size()) {
+			const auto &orig_io = orig_plc.ios.at(row);
+			io.terminalCount = orig_io.terminalCount;
+			io.terminals = orig_io.terminals;
+		}
 
 		plc_data.ios.append(io);
 	}

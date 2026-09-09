@@ -117,25 +117,24 @@ void QTextOrientationSpinBoxWidget::build()
 	spin_box_ -> setSuffix("°");
 	
 	// met en place les relations entre le SpinBox et le QTextOrientationWidget
-	connect(spin_box_,
-		SIGNAL(valueChanged(double)),
+	connect(spin_box_, 
+		qOverload<double>(&QDoubleSpinBox::valueChanged),
 		orientation_widget_,
-		SLOT(setOrientation(double)));
+		&QTextOrientationWidget::setOrientation);
 	connect(orientation_widget_,
-		SIGNAL(orientationChanged(double)),
+		&QTextOrientationWidget::orientationChanged,
 		spin_box_,
-		SLOT(setValue(double)));
+		&QDoubleSpinBox::setValue);
 	
 	// cliquer sur un des carres du QTextOrientationWidget revient a finir une saisie dans le SpinBox
 	connect(orientation_widget_,
-		SIGNAL(orientationChanged(double)),
+		&QTextOrientationWidget::orientationChanged,
 		spin_box_,
-		SIGNAL(editingFinished()));
+		&QDoubleSpinBox::editingFinished);
 	
 	// lorsque l'utilisateur a change l'orientation,
 	// on emet un signal avec la valeur de la nouvelle orientation
-	connect(spin_box_, SIGNAL(editingFinished()),
-		this, SLOT(emitChangeSignals()));
+	connect(spin_box_, &QDoubleSpinBox::editingFinished, this, &QTextOrientationSpinBoxWidget::emitChangeSignals);
 	
 	// dispose les widgets : le QTextOrientationWidget a gauche, le SpinBox a droite
 	QHBoxLayout *main_layout = new QHBoxLayout();

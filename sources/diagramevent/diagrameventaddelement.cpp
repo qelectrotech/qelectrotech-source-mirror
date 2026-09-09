@@ -20,11 +20,17 @@
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
+#include "../undocommand/deleteqgraphicsitemcommand.h"
 #include "../factory/elementfactory.h"
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qet.h"
+#include "../autobreakconductor.h"
+#include <QPainterPath>
+#include <limits>
 
 /**
 	@brief DiagramEventAddElement::DiagramEventAddElement
@@ -248,16 +254,32 @@ void DiagramEventAddElement::addElement()
 	QUndoCommand *undo_object = new QUndoCommand(tr("Ajouter %1").arg(element->name()));
 	new AddGraphicsObjectCommand(element, m_diagram, m_element -> pos(), undo_object);
 
-		//When we search for free aligned terminal we temporally remove m_element to
-		//avoid any interaction with the function Element::AlignedFreeTerminals
-		//This is useful when an element has two (or more) terminals on opposite sides,
-		//because m_element is exactly at the same pos of the new element
-		//added to the scene so new conductor are created between terminal of the new element
-		//and the opposite terminal of m_element.
+	//When we search for free aligned terminal we temporally remove m_element to
+	//avoid any interaction with the function Element::AlignedFreeTerminals
+	//This is useful when an element has two (or more) terminals on opposite sides,
+	//because m_element is exactly at the same pos of the new element
+	//added to the scene so new conductor are created between terminal of the new element
+	//and the opposite terminal of m_element.
 	m_diagram->removeItem(m_element);
-	while (!element -> AlignedFreeTerminals().isEmpty() && m_diagram -> project() -> autoConductor())
+
+		//Auto break conductor: if a terminal of the new element lies on an existing
+		//conductor, break the conductor and reconnect through the new element's terminal.
+		//Track the endpoints of broken conductors so auto-connect doesn't create duplicates.
+	QList<Conductor *> conductors_handled;
+	QSet<Terminal *> used_terminals;
+	QSet<Terminal *> broken_endpoints = autoBreakConductors(m_diagram, element, undo_object,
+							    conductors_handled, used_terminals);
+
+		//Auto-connect: collect all aligned pairs first, then filter and process.
+	QList<QPair<Terminal *, Terminal *>> aligned_pairs;
+	if (m_diagram->project()->autoConductor())
+		aligned_pairs = element->AlignedFreeTerminals();
+
+	for (const QPair<Terminal *, Terminal *> &pair : aligned_pairs)
 	{
-		QPair <Terminal *, Terminal *> pair = element -> AlignedFreeTerminals().takeFirst();
+			//Skip if the other terminal was an endpoint of a broken conductor
+		if (broken_endpoints.contains(pair.second))
+			continue;
 
 		Conductor *conductor = new Conductor(pair.first, pair.second);
 		new AddGraphicsObjectCommand(conductor, m_diagram, QPointF(), undo_object);
@@ -271,7 +293,12 @@ void DiagramEventAddElement::addElement()
 	}
 	m_diagram->addItem(m_element);
 
+		//Autonum the new element before pushing undo_object, so the counter
+		//change it triggers is part of the same undo macro as the element's
+		//own placement (one Ctrl+Z reverts both, instead of silently
+		//leaving the counter advanced).
+	element->setUpFormula(true, undo_object);
+
 	m_diagram -> undoStack().push(undo_object);
-	element->setUpFormula();
 	element->freezeNewAddedElement();
 }

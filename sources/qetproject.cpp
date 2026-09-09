@@ -34,6 +34,7 @@
 #include "TerminalStrip/terminalstrip.h"
 #include "qetxml.h"
 #include "qetversion.h"
+#include "undocommand/adddiagramcommand.h"
 
 #include <QElapsedTimer>
 #include <QHash>
@@ -68,6 +69,10 @@ m_project_properties_handler{this}
 	init();
 
 	QSettings settings;
+
+		//Read auto break conductor default from global settings
+	m_auto_break_conductor = settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool();
+
 	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
 	for (int i = 0; i < size; ++i) {
 		settings.setArrayIndex(i);
@@ -169,6 +174,30 @@ QETProject::~QETProject()
 		delete  diagram;
 		m_diagrams_list.removeOne(diagram);
 	}
+
+		//A diagram can be detached from this project (detachDiagram(), used by
+		//both removeDiagram() and RemoveDiagramCommand::redo()) and scheduled
+		//for deferred deletion via deleteLater(), without that deletion having
+		//actually run yet -- deleteLater() only fires on the next event-loop
+		//iteration, and nothing guarantees one runs before this destructor
+		//does. Such a diagram is no longer in m_diagrams_list (so the loop
+		//above never touches it) but is still a QObject child of this project
+		//(Diagram's constructor passes `project` straight to QGraphicsScene's
+		//parent argument). Left alone, it is destroyed later by QObject's own
+		//automatic child cleanup in ~QObject(), which runs AFTER m_data_base
+		//(a plain value member, destroyed by ordinary C++ member teardown)
+		//has already been destroyed -- and Diagram's destructor calls back
+		//into dataBase()->removeElement() for each of its elements, so that
+		//ordering is a use-after-free (confirmed by crash: SIGSEGV in
+		//QSqlResult::exec(), called from Diagram::~Diagram() by way of
+		//Diagram::removeItem(), by way of QObjectPrivate::deleteChildren()).
+		//Delete any such stragglers now, synchronously, while m_data_base is
+		//still alive. The deleteLater() event, if it is ever processed
+		//afterward, is a safe no-op on an already-deleted QObject.
+	const auto orphaned_diagrams = findChildren<Diagram *>(QString(), Qt::FindDirectChildrenOnly);
+	for (Diagram *diagram : orphaned_diagrams) {
+		delete diagram;
+	}
 }
 
 /**
@@ -198,7 +227,7 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
 	m_undo_stack = new QUndoStack(this);
-	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
@@ -725,6 +754,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 */
 void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
 	m_conductor_autonum.insert(key, context);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -738,6 +768,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 {
 	m_element_autonum.insert(key, context);
 	emit elementAutoNumAdded(key);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -749,6 +780,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 */
 void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
 	m_folio_autonum.insert(key, context);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -921,6 +953,28 @@ void QETProject::setAutoConductor(bool ac)
 {
 	if (ac != m_auto_conductor)
 		m_auto_conductor = ac;
+}
+
+/**
+	@brief QETProject::autoBreakConductor
+	@return true if use of auto break conductor is authorized.
+	See also Q_PROPERTY autoBreakConductor
+*/
+bool QETProject::autoBreakConductor() const
+{
+	return m_auto_break_conductor;
+}
+
+/**
+	@brief QETProject::setAutoBreakConductor
+	@param abc
+	Enable the use of auto break conductor if true
+	See also Q_PROPERTY autoBreakConductor
+*/
+void QETProject::setAutoBreakConductor(bool abc)
+{
+	if (abc != m_auto_break_conductor)
+		m_auto_break_conductor = abc;
 }
 
 /**
@@ -1348,6 +1402,8 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 /**
 	@brief QETProject::addNewDiagram
 	Add a new diagram in project at position pos.
+	This is pushed as an undoable AddDiagramCommand: use undoStack()->undo()
+	to remove it again.
 	@param pos
 	@return the new created diagram
 */
@@ -1363,14 +1419,15 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
 
-	addDiagram(diagram, pos);
-	emit diagramAdded(this, diagram);
+	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
 }
 
 /**
 	@brief QETProject::removeDiagram
-	Remove diagram from project
+	Remove diagram from project immediately (not undoable). UI code should
+	generally go through ProjectView::removeDiagram() instead, which pushes
+	an undoable RemoveDiagramCommand.
 	@param diagram
 */
 void QETProject::removeDiagram(Diagram *diagram)
@@ -1380,13 +1437,8 @@ void QETProject::removeDiagram(Diagram *diagram)
 		return;
 	}
 
-	if (m_diagrams_list.removeAll(diagram))
-	{
-		emit diagramRemoved(this, diagram);
-		diagram->deleteLater();
-	}
-
-	updateDiagramsFolioData();
+	detachDiagram(diagram);
+	diagram->deleteLater();
 }
 
 /**
@@ -1733,6 +1785,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_conductor_autonum = conds_autonums.attribute(QStringLiteral("current_autonum"));
 		m_freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
+		m_auto_break_conductor = conds_autonums.attribute(QStringLiteral("auto_break_conductors")) == QLatin1String("true");
 		for (auto elmt : QET::findInDomElement(conds_autonums, QStringLiteral("conductor_autonum")))
 		{
 			NumerotationContext nc;
@@ -1859,6 +1912,7 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
+	conductor_autonums.setAttribute("auto_break_conductors", m_auto_break_conductor ? "true" : "false");
 	foreach (QString key, conductorAutoNum().keys()) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {
@@ -1930,6 +1984,33 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	}
 
 	updateDiagramsFolioData();
+	emit diagramAdded(this, diagram);
+}
+
+/**
+	@brief QETProject::detachDiagram
+	Inverse of addDiagram(): removes \p diagram from this project's diagram
+	list and disconnects the signals set up by addDiagram(), without
+	destroying it. Used by RemoveDiagramCommand (and removeDiagram()) so a
+	removed diagram can be parked and later reinserted by undo.
+	@param diagram
+*/
+void QETProject::detachDiagram(Diagram *diagram)
+{
+	if (!diagram || !m_diagrams_list.contains(diagram)) {
+		return;
+	}
+
+	disconnect(&diagram->border_and_titleblock,
+		&BorderTitleBlock::needFolioData,
+		this,
+		&QETProject::updateDiagramsFolioData);
+	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
+		this, &QETProject::usedTitleBlockTemplateChanged);
+
+	m_diagrams_list.removeAll(diagram);
+	updateDiagramsFolioData();
+	emit diagramRemoved(this, diagram);
 }
 
 /**

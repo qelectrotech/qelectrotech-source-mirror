@@ -74,10 +74,9 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	setLayout(dialog_layout);
 
 	// connexion signaux / slots
-	connect(buttons, SIGNAL(accepted()), this, SLOT(applyConf()));
-	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
-	connect(pages_list, SIGNAL(currentRowChanged(int)),
-		pages_widget, SLOT(setCurrentIndex(int)));
+	connect(buttons, &QDialogButtonBox::accepted, this, &ConfigDialog::applyConf);
+	connect(buttons, &QDialogButtonBox::rejected, this, &ConfigDialog::reject);
+	connect(pages_list, &QListWidget::currentRowChanged, pages_widget, &QStackedWidget::setCurrentIndex);
 
 	// set maximum a bit smaller than available size = (screen-size - Task-Bar):
 	setMaximumSize((int)(0.94 * MachineInfo::instance()->i_max_available_width()),

@@ -47,14 +47,9 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 	m_button_group.addButton(ui->m_coil_cb, 4);
 	m_button_group.addButton(ui->m_protection_cb, 5);
 	m_button_group.addButton(ui->m_thumbnail_cb, 6);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), [this](int id)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.15 or later")
-#endif
+	m_button_group.addButton(ui->m_plc_cb, 7);
 	connect(&m_button_group, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), [this](int id)
-#endif
+
 	{
 		auto check_box = static_cast<QCheckBox *>(m_button_group.button(0));
 		if (id == 0)
@@ -76,7 +71,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 		else
 		{
 			int checked = 0;
-			for (int i=1 ; i<7 ; ++i) {
+			for (int i=1 ; i<8 ; ++i) {
 				if (m_button_group.button(i)->isChecked()) {++checked;}
 			}
 
@@ -85,7 +80,7 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 				case 0 :
 					check_box->setCheckState(Qt::Unchecked);
 					break;
-				case 6:
+				case 7:
 					check_box->setCheckState(Qt::Checked);
 					break;
 				default:
@@ -187,12 +182,16 @@ void ElementQueryWidget::setQuery(const QString &query)
 				if (ui->m_protection_cb) {
 					++c;
 				}
-				ui->m_thumbnail_cb->setChecked  (str_type.contains(ElementData::typeToString(ElementData::Thumbnail)) ? true : false);
-				if (ui->m_thumbnail_cb->isChecked()) {
-					++c;
-				}
+			ui->m_thumbnail_cb->setChecked  (str_type.contains(ElementData::typeToString(ElementData::Thumbnail)) ? true : false);
+			if (ui->m_thumbnail_cb->isChecked()) {
+				++c;
+			}
+			ui->m_plc_cb->setChecked       (str_type.contains(ElementData::masterTypeToString(ElementData::PLC)) ? true : false);
+			if (ui->m_plc_cb->isChecked()) {
+				++c;
+			}
 
-				if (c == 6) {
+			if (c == 7) {
 					ui->m_all_cb->setCheckState(Qt::Checked);
 				} else if (c > 0) {
 					ui->m_all_cb->setCheckState(Qt::PartiallyChecked);
@@ -366,6 +365,12 @@ QString ElementQueryWidget::queryStr() const
 	if (ui->m_protection_cb->isChecked()) {
 		if (b) where +=" OR";
 		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::Protection) += "'";
+		b = true;
+	}
+	if (ui->m_plc_cb->isChecked()) {
+		if (b) where +=" OR";
+		where +=  QStringLiteral(" element_sub_type = '") += ElementData::masterTypeToString(ElementData::PLC) += "'";
+		b = true;
 	}
 	where.append(")");
 
@@ -373,10 +378,10 @@ QString ElementQueryWidget::queryStr() const
 		where.clear();
 	}
 
-	QString exclude_condition = "(exclude_from_bom IS NULL OR exclude_from_bom != '1')";
-
-	filter_ += " AND " + exclude_condition;
-	// -------------------------------------------------------------
+	// exclude_from_bom is already filtered by element_nomenclature_view
+	// (see createElementNomenclatureView() in projectdatabase.cpp); this
+	// widget's query reads FROM that view, so a flagged element never
+	// reaches this point in the first place.
 
 	if (where.isEmpty() && !filter_.isEmpty()) {
 		filter_.remove(0, 4); //Remove the first " AND" of filter.

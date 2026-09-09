@@ -33,6 +33,13 @@ set(QET_COMPONENTS
   Widgets
   Concurrent)
 
+# Note: Pdf is intentionally NOT in this list. Some Qt6 distributions
+# (notably the Flatpak org.kde.Platform runtime) don't ship the QtPdf
+# module at all - it lives in the qtwebengine source tree, not Qt6 core.
+# Requesting it here as a REQUIRED component would fail the whole
+# configure on those setups. It is probed separately, QUIET and
+# non-fatal, right after the main find_package() call below.
+
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
   Qt::Gui
@@ -44,6 +51,9 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Widgets
   Qt::Concurrent
   )
+
+# Qt::Pdf is appended conditionally in CMakeLists.txt, once we know
+# whether the module was actually found (see QET_HAS_QTPDF).
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
@@ -91,7 +101,6 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
   ${QET_DIR}/sources/ui/diagramcontextwidget.ui
   ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.ui
-  ${QET_DIR}/sources/ui/diagramselection.ui
   ${QET_DIR}/sources/ui/dialogwaiting.ui
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
   ${QET_DIR}/sources/ui/elementinfopartwidget.ui
@@ -116,6 +125,16 @@ set(QET_RES_FILES
 set(QET_SRC_FILES
   ${QET_DIR}/sources/cli_export.cpp
   ${QET_DIR}/sources/cli_export.h
+  ${QET_DIR}/sources/logging/crashhandler.cpp
+  ${QET_DIR}/sources/logging/crashhandler.h
+  ${QET_DIR}/sources/logging/eventloopwatchdog.cpp
+  ${QET_DIR}/sources/logging/eventloopwatchdog.h
+  ${QET_DIR}/sources/logging/logring.cpp
+  ${QET_DIR}/sources/logging/logring.h
+  ${QET_DIR}/sources/logging/qetlogger.cpp
+  ${QET_DIR}/sources/logging/qetlogger.h
+  ${QET_DIR}/sources/logging/ui/diagnosticsreportdialog.cpp
+  ${QET_DIR}/sources/logging/ui/diagnosticsreportdialog.h
   ${QET_DIR}/sources/pdf_links.cpp
   ${QET_DIR}/sources/pdf_links.h
   ${QET_DIR}/sources/import/edz/edzarchive.cpp
@@ -167,6 +186,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/configdialog.h
   ${QET_DIR}/sources/createdxf.cpp
   ${QET_DIR}/sources/createdxf.h
+  ${QET_DIR}/sources/dxfpaintdevice.cpp
+  ${QET_DIR}/sources/dxfpaintdevice.h
   ${QET_DIR}/sources/diagramcommands.cpp
   ${QET_DIR}/sources/diagramcommands.h
   ${QET_DIR}/sources/diagramcontent.cpp
@@ -205,6 +226,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/exportpropertieswidget.h
   ${QET_DIR}/sources/genericpanel.cpp
   ${QET_DIR}/sources/genericpanel.h
+  ${QET_DIR}/sources/lastusedstyle.cpp
+  ${QET_DIR}/sources/lastusedstyle.h
   ${QET_DIR}/sources/machine_info.cpp
   ${QET_DIR}/sources/machine_info.h
   ${QET_DIR}/sources/main.cpp
@@ -248,6 +271,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qtextorientationwidget.h
   ${QET_DIR}/sources/recentfiles.cpp
   ${QET_DIR}/sources/recentfiles.h
+  ${QET_DIR}/sources/shortcutmanager.cpp
+  ${QET_DIR}/sources/shortcutmanager.h
   ${QET_DIR}/sources/titleblockcell.cpp
   ${QET_DIR}/sources/titleblockcell.h
   ${QET_DIR}/sources/titleblockproperties.cpp
@@ -284,12 +309,17 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/summaryquerywidget.h
 
+  ${QET_DIR}/sources/autobreakconductor.cpp
+  ${QET_DIR}/sources/autobreakconductor.h
+
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddelement.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -490,6 +520,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/shapetransform.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/shapetransform.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.h
   ${QET_DIR}/sources/qetgraphicsitem/reportelement.cpp
@@ -528,7 +560,6 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/richtext/richtexteditor.cpp
   ${QET_DIR}/sources/richtext/richtexteditor_p.h
-  ${QET_DIR}/sources/richtext/ui_addlinkdialog.h
 
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.cpp
   ${QET_DIR}/sources/SearchAndReplace/searchandreplaceworker.h
@@ -671,8 +702,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertiesdialog.h
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.cpp
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
-  ${QET_DIR}/sources/ui/diagramselection.cpp
-  ${QET_DIR}/sources/ui/diagramselection.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
@@ -681,6 +710,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.h
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.cpp
+  ${QET_DIR}/sources/ui/customelementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfopartwidget.cpp
   ${QET_DIR}/sources/ui/elementinfopartwidget.h
   ${QET_DIR}/sources/ui/elementinfowidget.cpp
@@ -691,12 +722,18 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/elementpropertieswidget.h
   ${QET_DIR}/sources/ui/formulaassistantdialog.cpp
   ${QET_DIR}/sources/ui/formulaassistantdialog.h
+  ${QET_DIR}/sources/ui/imagecropdialog.cpp
+  ${QET_DIR}/sources/ui/imagecropdialog.h
   ${QET_DIR}/sources/ui/imagepropertieswidget.cpp
   ${QET_DIR}/sources/ui/imagepropertieswidget.h
+  ${QET_DIR}/sources/ui/imagetransparentcolordialog.cpp
+  ${QET_DIR}/sources/ui/imagetransparentcolordialog.h
   ${QET_DIR}/sources/ui/importelementdialog.cpp
   ${QET_DIR}/sources/ui/importelementdialog.h
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.cpp
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.h
+  ${QET_DIR}/sources/ui/jumptoelementdialog.cpp
+  ${QET_DIR}/sources/ui/jumptoelementdialog.h
   ${QET_DIR}/sources/ui/inditextpropertieswidget.cpp
   ${QET_DIR}/sources/ui/inditextpropertieswidget.h
   ${QET_DIR}/sources/ui/linksingleelementwidget.cpp
@@ -732,9 +769,13 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/configpage/projectconfigpages.h
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.cpp
   ${QET_DIR}/sources/ui/configpage/guidespropertieswidget.h
+  ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.cpp
+  ${QET_DIR}/sources/ui/configpage/shortcutsconfigpage.h
 
   ${QET_DIR}/sources/undocommand/addelementtextcommand.cpp
   ${QET_DIR}/sources/undocommand/addelementtextcommand.h
+  ${QET_DIR}/sources/undocommand/adddiagramcommand.cpp
+  ${QET_DIR}/sources/undocommand/adddiagramcommand.h
   ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.cpp
   ${QET_DIR}/sources/undocommand/addgraphicsobjectcommand.h
   ${QET_DIR}/sources/undocommand/changeelementdatacommand.cpp
@@ -749,8 +790,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/itemmodelcommand.h
   ${QET_DIR}/sources/undocommand/linkelementcommand.cpp
   ${QET_DIR}/sources/undocommand/linkelementcommand.h
+  ${QET_DIR}/sources/undocommand/movediagramcommand.cpp
+  ${QET_DIR}/sources/undocommand/movediagramcommand.h
+  ${QET_DIR}/sources/undocommand/removediagramcommand.cpp
+  ${QET_DIR}/sources/undocommand/removediagramcommand.h
+  ${QET_DIR}/sources/undocommand/setautonumcontextcommand.cpp
+  ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
+  ${QET_DIR}/sources/undocommand/promoteshapecommand.cpp
+  ${QET_DIR}/sources/undocommand/promoteshapecommand.h
   ${QET_DIR}/sources/undocommand/rotatetextscommand.cpp
   ${QET_DIR}/sources/undocommand/rotatetextscommand.h
   ${QET_DIR}/sources/undocommand/movegraphicsitemcommand.cpp
@@ -771,7 +820,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
   list(APPEND QET_SRC_FILES
     ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
     ${QET_DIR}/sources/ui/nokde/kautosavefile.h
@@ -779,6 +828,16 @@ if(NOT BUILD_WITH_KF5)
     ${QET_DIR}/sources/ui/nokde/kcolorbutton.h
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.cpp
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
+  )
+endif()
+
+# Qt6-only: PDF page import files
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
+    ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
+    ${QET_DIR}/sources/ui/pdfpagesdialog.h
   )
 endif()
 

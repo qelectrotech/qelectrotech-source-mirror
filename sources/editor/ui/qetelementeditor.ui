@@ -40,6 +40,7 @@
     <addaction name="m_save_action"/>
     <addaction name="m_save_as_action"/>
     <addaction name="m_save_as_file_action"/>
+    <addaction name="m_export_svg_action"/>
     <addaction name="separator"/>
     <addaction name="m_reload_action"/>
     <addaction name="separator"/>
@@ -260,6 +261,15 @@
    </property>
    <property name="text">
     <string>Enregistrer dans un fichier</string>
+   </property>
+  </action>
+  <action name="m_export_svg_action">
+   <property name="icon">
+    <iconset resource="../../../qelectrotech.qrc">
+     <normaloff>:/ico/22x22/document-export.png</normaloff>:/ico/22x22/document-export.png</iconset>
+   </property>
+   <property name="text">
+    <string>Exporter en SVG</string>
    </property>
   </action>
   <action name="m_reload_action">

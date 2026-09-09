@@ -84,6 +84,6 @@ target_link_libraries(
     PUBLIC
     gtest gtest_main
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 

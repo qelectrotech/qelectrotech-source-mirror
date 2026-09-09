@@ -153,6 +153,12 @@ void QETUtils::pixelSizedFont(QFont &font)
 
 namespace
 {
+	/* Counters for fontFromString(), reset per project load so the editor
+	 * can report how many stored font descriptions needed salvaging or were
+	 * unreadable. Font parsing only happens on the main thread. */
+	int salvaged_font_count = 0;
+	int unreadable_font_count = 0;
+
 	/**
 	 * Legacy (Qt 5) weight <- OpenType weight, closest match,
 	 * same table Qt uses when parsing a 10/11 field string.
@@ -235,6 +241,10 @@ QString QETUtils::fontToString(const QFont &font)
  */
 bool QETUtils::fontFromString(QFont &font, const QString &description)
 {
+	if (description.trimmed().isEmpty()) {
+		return false;
+	}
+
 	QFont parsed(font);
 	if (parsed.fromString(description)) {
 		font = parsed;
@@ -271,8 +281,10 @@ bool QETUtils::fontFromString(QFont &font, const QString &description)
 
 		if (parsed.fromString(legacy)) {
 			font = parsed;
+			++salvaged_font_count;
 			return true;
 		}
+		++unreadable_font_count;
 		return false;
 	}
 
@@ -284,7 +296,50 @@ bool QETUtils::fontFromString(QFont &font, const QString &description)
 	if (count > 11
 		&& parsed.fromString(QStringList(l.mid(0, 11)).join(comma))) {
 		font = parsed;
+		++salvaged_font_count;
 		return true;
 	}
+	++unreadable_font_count;
 	return false;
+}
+
+/**
+ * @brief QETUtils::FontRestorationScope::FontRestorationScope
+ * Open a fresh counting window: the enclosing window's counts are kept
+ * aside and restored by the destructor, so a project load nested inside
+ * another one (through the event loop) reports its own numbers only.
+ */
+QETUtils::FontRestorationScope::FontRestorationScope() :
+	m_outer_salvaged(salvaged_font_count),
+	m_outer_unreadable(unreadable_font_count)
+{
+	salvaged_font_count = 0;
+	unreadable_font_count = 0;
+}
+
+QETUtils::FontRestorationScope::~FontRestorationScope()
+{
+	salvaged_font_count = m_outer_salvaged;
+	unreadable_font_count = m_outer_unreadable;
+}
+
+/**
+ * @brief QETUtils::FontRestorationScope::salvaged
+ * @return How many font descriptions fontFromString() restored from a
+ * foreign or corrupt format since this window was opened. Such descriptions
+ * are rewritten in the stable format on the next save.
+ */
+int QETUtils::FontRestorationScope::salvaged() const
+{
+	return salvaged_font_count;
+}
+
+/**
+ * @brief QETUtils::FontRestorationScope::unreadable
+ * @return How many font descriptions fontFromString() could not restore at
+ * all since this window was opened (the caller's default font applies).
+ */
+int QETUtils::FontRestorationScope::unreadable() const
+{
+	return unreadable_font_count;
 }
