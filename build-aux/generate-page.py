@@ -235,8 +235,8 @@ main{{max-width:680px;margin:40px auto;padding:0 20px 60px}}
 .btn-secondary{{background:#edf2f7;color:#2d3748}}
 .btn-icon{{font-size:1.3em}}
 .btn-text small{{display:block;font-weight:400;font-size:.8em;opacity:.75;margin-top:1px}}
-footer{{text-align:center;font-size:.8em;color:#a0aec0;padding:32px 0 0}}
-footer a{{color:#718096;text-decoration:none}}
+footer{{text-align:center;font-size:.8em;color:#4a5568;padding:32px 0 0}}
+footer a{{color:#2d3748;text-decoration:none}}
 </style>
 </head>
 <body>
