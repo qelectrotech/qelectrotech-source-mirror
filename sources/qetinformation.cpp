@@ -194,8 +194,9 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_PLC_ADDRESS,
 						 ELMT_PLC_FUNCTION,
 						 ELMT_PLC_COMMENT,
-						 ELMT_PLC_CROSSREF,
-						 "exclude_from_bom" };
+					 ELMT_PLC_CROSSREF,
+					 ELMT_XREF,
+					 "exclude_from_bom" };
 	return list;
 }
 
@@ -316,6 +317,7 @@ QString QETInformation::translatedInfoKey(const QString &info)
 	else if (info == ELMT_PLC_FUNCTION)                      return QObject::tr("Fonction PLC");
 	else if (info == ELMT_PLC_COMMENT)                       return QObject::tr("Commentaire PLC");
 	else if (info == ELMT_PLC_CROSSREF)                      return QObject::tr("Réf. croisée PLC");
+	else if (info == ELMT_XREF)                          return QObject::tr("Réf. croisée");
 	else return QString();
 }
 

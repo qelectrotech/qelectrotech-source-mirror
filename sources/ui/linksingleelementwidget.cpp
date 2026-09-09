@@ -353,8 +353,16 @@ void LinkSingleElementWidget::buildTree()
 		
 		QSettings settings;
 		QVariant v = settings.value(QStringLiteral("link-element-widget/report-state"));
-		if(!v.isNull())
-			ui->m_tree_widget->header()->restoreState(v.toByteArray());
+		auto *header = ui->m_tree_widget->header();
+		if (v.isNull() || !header->restoreState(v.toByteArray()))
+		{
+			// Keep logical column IDs stable for saved layouts, but show the
+			// folio identity first even when the candidate has no conductor.
+			for (int column = 5; column < 8; ++column)
+				header->moveSection(header->visualIndex(column), column - 5);
+			ui->m_tree_widget->resizeColumnToContents(5);
+			ui->m_tree_widget->resizeColumnToContents(6);
+		}
 	}
 	
 	setUpCompleter();
