@@ -163,7 +163,22 @@ else()
 endif()
 
 if(APPLE)
-    set_target_properties(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE TRUE)
+    # CFBundleIdentifier must not be empty. CMake's default Info.plist
+    # template fills it from MACOSX_BUNDLE_GUI_IDENTIFIER; with that unset
+    # the bundle ships an empty identifier, LaunchServices never registers
+    # the .app, and AppKit's open/save panel service (which is keyed on the
+    # client's bundle id) silently presents nothing -- every
+    # QFileDialog::getOpenFileName()/getSaveFileName() call returns an empty
+    # string without a panel ever appearing, so File > Open and File > Save
+    # as do nothing at all.
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.qelectrotech.QElectroTech"
+        MACOSX_BUNDLE_BUNDLE_NAME "QElectroTech"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_COPYRIGHT "Copyright 2006-2026 The QElectroTech Team"
+    )
 endif()
 
 # The default build only compiles the tracked .ts files to .qm (lrelease).
