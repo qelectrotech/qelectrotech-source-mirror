@@ -222,10 +222,11 @@ rm -rf "$SHARE_QET" 2>/dev/null || true
 
 # Patch the real version into Info.plist -- CFBundleShortVersionString ships
 # empty in the source tree's Info.plist, filled in here at build time.
-/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" \
-  "$BUNDLE/Contents/Info.plist"
-/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion $MACOS_DEPLOYMENT_TARGET" \
-  "$BUNDLE/Contents/Info.plist"
+# commented when going from hard coded plist file to cmake generated plist file
+#/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" \
+#  "$BUNDLE/Contents/Info.plist"
+#/usr/libexec/PlistBuddy -c "Set :LSMinimumSystemVersion $MACOS_DEPLOYMENT_TARGET" \
+#  "$BUNDLE/Contents/Info.plist"
   
   
 # ---------------------------------------------------------------------------
