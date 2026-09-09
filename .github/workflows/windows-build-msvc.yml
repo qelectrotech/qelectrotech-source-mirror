@@ -23,6 +23,8 @@ jobs:
 
       - name: Set up MSVC environment
         uses: TheMrMilchmann/setup-msvc-dev@v4
+        with:
+          arch: x64
         
       - name: Set up Python
         uses: actions/setup-python@v7
