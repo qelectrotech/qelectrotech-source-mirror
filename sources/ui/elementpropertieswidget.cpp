@@ -395,14 +395,28 @@ QWidget *ElementPropertiesWidget::generalWidget()
 			//carries, so the two stay in the same unit.
 		description_string += QString(tr("Nombre de contacts esclaves utilisés : %1\n")).arg(m_element->linkedElements().count());
 
-		const ContactUsage usage =
-				static_cast<MasterElement *>(m_element.data())->contactUsage();
+			//The breakdown below is in contacts, not slots: it answers how
+			//many contacts an auxiliary block must provide.
+		const MasterElement *master =
+				static_cast<const MasterElement *>(m_element.data());
+		const ContactUsage usage    = master->contactUsage();
+		const ContactUsage capacity = master->contactCapacity();
 
-			//The breakdown is what tells you which auxiliary block would
-			//satisfy this coil, so it is only worth printing once there is
-			//something to break down.
-		if (usage.total() > 0)
+		if (capacity.total() > 0)
 		{
+				//The element declares contact groups, so it can say not
+				//only what has been used but what it has to offer. A type
+				//used beyond what is declared shows as e.g. "1/0", which
+				//is the point: it says this contact does not fit the part.
+			description_string += QString(tr("    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8\n"))
+					.arg(usage.no).arg(capacity.no)
+					.arg(usage.nc).arg(capacity.nc)
+					.arg(usage.sw).arg(capacity.sw)
+					.arg(usage.other).arg(capacity.other);
+		}
+		else if (usage.total() > 0)
+		{
+				//No declared groups, so a plain count of what is in use.
 			description_string += QString(tr("    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4\n"))
 					.arg(usage.no)
 					.arg(usage.nc)

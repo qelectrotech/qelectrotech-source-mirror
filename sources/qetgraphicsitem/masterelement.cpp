@@ -235,6 +235,28 @@ void MasterElement::aboutDeleteXref()
  * so they cannot disagree with each other.
  * @return the per type usage
  */
+namespace {
+
+	/**
+		Map the element data's contact type onto the tally's own, so that
+		the used count and the declared capacity cannot classify the same
+		contact type differently.
+	*/
+	ContactUsage::Type contactType(ElementData::SlaveState state)
+	{
+		switch (state)
+		{
+			case ElementData::NO:    return ContactUsage::NO;
+			case ElementData::NC:    return ContactUsage::NC;
+			case ElementData::SW:    return ContactUsage::SW;
+			case ElementData::Other: break;
+		}
+
+		return ContactUsage::Other;
+	}
+
+}
+
 ContactUsage MasterElement::contactUsage() const
 {
 	ContactUsage usage;
@@ -246,20 +268,30 @@ ContactUsage MasterElement::contactUsage() const
 		}
 
 		const ElementData &data = elmt->elementData();
-
-		ContactUsage::Type type = ContactUsage::Other;
-		switch (data.m_slave_state)
-		{
-			case ElementData::NO:    type = ContactUsage::NO;    break;
-			case ElementData::NC:    type = ContactUsage::NC;    break;
-			case ElementData::SW:    type = ContactUsage::SW;    break;
-			case ElementData::Other: type = ContactUsage::Other; break;
-		}
-
-		usage.addSlave(type, data.m_contact_count);
+		usage.addSlave(contactType(data.m_slave_state), data.m_contact_count);
 	}
 
 	return usage;
+}
+
+/**
+ * @brief MasterElement::contactCapacity
+ * The contacts this master declares it provides, by type, summed over its
+ * contact groups. A group stands for contactCount contacts of its type.
+ * Returns an empty tally when the element declares no groups, which is the
+ * case for every element in the standard collection today -- callers use
+ * that to decide whether a capacity is worth showing at all.
+ * @return the per type capacity
+ */
+ContactUsage MasterElement::contactCapacity() const
+{
+	ContactUsage capacity;
+
+	for (const auto &group : m_data.m_slave_contact_groups) {
+		capacity.addSlave(contactType(group.type), group.contactCount);
+	}
+
+	return capacity;
 }
 
 /**

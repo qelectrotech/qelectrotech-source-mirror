@@ -101,6 +101,20 @@ private slots:
 		QCOMPARE(usage.total(), 1);
 	}
 
+	// A declared capacity is summed across groups, so two NO groups of two
+	// contacts each declare four NO contacts, not two groups.
+	void capacitySumsAcrossGroups()
+	{
+		ContactUsage capacity;
+		capacity.addSlave(ContactUsage::NO, 2);
+		capacity.addSlave(ContactUsage::NO, 2);
+		capacity.addSlave(ContactUsage::NC, 1);
+
+		QCOMPARE(capacity.no, 4);
+		QCOMPARE(capacity.nc, 1);
+		QCOMPARE(capacity.total(), 5);
+	}
+
 	// The mix a coil would actually carry: two single NO, one 4 pole NO,
 	// one NC and one changeover.
 	void tallysARealisticMix()
