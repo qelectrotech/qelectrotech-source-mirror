@@ -175,7 +175,6 @@ QET_LANG_DIR="${current_dir}/lang/"
 QET_EXAMPLES_DIR="${current_dir}/examples/"
 QET_FONTS_DIR="${current_dir}/fonts/"
 QET_LICENSES_DIR="${current_dir}/licenses/"
-LANG_DIR="${current_dir}/lang1/"
 
 if [ -d "${QET_ELMT_DIR}" ]; then
     cp -R ${QET_ELMT_DIR} $BUNDLE/Contents/Resources/elements
@@ -186,9 +185,6 @@ fi
 if [ -d "${QET_LANG_DIR}" ]; then
     mkdir $BUNDLE/Contents/Resources/lang
     cp ${current_dir}/lang/*.qm $BUNDLE/Contents/Resources/lang
-fi
-if [ -d "${LANG_DIR}" ]; then
-    cp ${current_dir}/lang1/*.qm $BUNDLE/Contents/Resources/lang
 fi
 if [ -d "${QET_EXAMPLES_DIR}" ]; then
     mkdir $BUNDLE/Contents/Resources/examples
