@@ -475,6 +475,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/project/projectusagetracker.cpp
   ${QET_DIR}/sources/project/projectusagetracker.h
 
+  ${QET_DIR}/sources/properties/deviceinformation.cpp
+  ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
