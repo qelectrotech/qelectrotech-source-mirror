@@ -23,6 +23,7 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
+#include "../qetgraphicsitem/masterelement.h"
 #include "../qeticons.h"
 #include "dynamicelementtextitemeditor.h"
 #include "elementinfowidget.h"
@@ -380,9 +381,34 @@ QWidget *ElementPropertiesWidget::generalWidget()
 	description_string += QString(tr("Rotation : %1°\n")).arg(m_element.data()->rotation());
 	description_string += QString(tr("Dimensions : %1*%2\n")).arg(m_element -> size().width()).arg(m_element -> size().height());
 	description_string += QString(tr("Bornes : %1\n")).arg(m_element -> terminals().count());
-	if (m_element->linkType() == Element::Master){
-	description_string += QString(tr("Nombre maximum de contacts esclaves définis : %1\n")).arg(m_element -> elementData().m_max_slaves);
-	description_string += QString(tr("Nombre de contacts esclaves utilisés : %1\n")).arg(m_element ->linkedElements().count());
+	if (m_element->linkType() == Element::Master)
+	{
+			//The declared limit is optional: -1 means the element sets no
+			//limit at all, which is worth saying rather than printing "-1".
+		const int max_slaves = m_element->elementData().m_max_slaves;
+		description_string += max_slaves == -1
+				? QString(tr("Nombre maximum de contacts esclaves définis : non défini\n"))
+				: QString(tr("Nombre maximum de contacts esclaves définis : %1\n")).arg(max_slaves);
+
+			//Left as a count of linked elements: the line above is a number
+			//of slots, and a slave fills one slot however many contacts it
+			//carries, so the two stay in the same unit.
+		description_string += QString(tr("Nombre de contacts esclaves utilisés : %1\n")).arg(m_element->linkedElements().count());
+
+		const ContactUsage usage =
+				static_cast<MasterElement *>(m_element.data())->contactUsage();
+
+			//The breakdown is what tells you which auxiliary block would
+			//satisfy this coil, so it is only worth printing once there is
+			//something to break down.
+		if (usage.total() > 0)
+		{
+			description_string += QString(tr("    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4\n"))
+					.arg(usage.no)
+					.arg(usage.nc)
+					.arg(usage.sw)
+					.arg(usage.other);
+		}
 	}
 	description_string += QString(tr("Emplacement : %1\n")).arg(m_element.data()->location().toString());
 
