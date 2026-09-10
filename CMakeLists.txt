@@ -36,7 +36,7 @@ set(QET_DIR ${PROJECT_SOURCE_DIR})
 # includes below, so every subdirectory and every FetchContent dependency
 # sees a consistent, already-defined value.
 if(NOT DEFINED QT_VERSION_MAJOR)
-    set(QT_VERSION_MAJOR 5)
+    set(QT_VERSION_MAJOR 6)
 endif()
 
 # Some third-party CMake projects we pull in via FetchContent (e.g.
