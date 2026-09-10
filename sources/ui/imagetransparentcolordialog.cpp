@@ -66,8 +66,11 @@ ClickableImageLabel::ClickableImageLabel(const QImage &sourceImage, QWidget *par
 void ClickableImageLabel::mousePressEvent(QMouseEvent *event)
 {
 		// QLabel::pixmap() returns a pointer in Qt5 and a value in Qt6.
+		// Qt 5.15 offers the by-value form behind Qt::ReturnByValue; the
+		// pointer overload is deprecated there, so take the by-value one
+		// on both and the difference reduces to the argument.
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	const QPixmap label_pixmap = pixmap() ? *pixmap() : QPixmap();
+	const QPixmap label_pixmap = pixmap(Qt::ReturnByValue);
 #else
 	const QPixmap label_pixmap = pixmap();
 #endif
