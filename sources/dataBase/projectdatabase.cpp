@@ -112,6 +112,47 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
 }
 
 /**
+	@brief projectDataBase::excludedConductorCount
+	@return how many conductors of the project are absent from the conductor
+	table because an endpoint has no parent element to key on.
+
+	Counted from the live scene rather than from the database, precisely
+	because the database is where these conductors are *not*.
+
+	This used to count conductors whose terminals had no uuid, which was most
+	of them on most projects. Terminal::stableUuid() now derives an identity
+	from the terminal's geometry when the definition provides no uuid, so that
+	is no longer a reason to exclude anything, and this counts only the case
+	that remains genuinely unkeyable.
+
+	This is what lets a caller tell the user "N wires are missing and here
+	is why", instead of silently presenting a short list as if it were
+	complete.
+*/
+int projectDataBase::excludedConductorCount() const
+{
+	if (!m_project) {
+		return 0;
+	}
+
+	int count = 0;
+	for (auto *diagram : m_project->diagrams())
+	{
+		const auto conductor_list = diagram->conductors();
+		for (auto *conductor : conductor_list)
+		{
+				//Must match addConductor()'s guard exactly, or this reports
+				//wires as missing that the list is in fact showing.
+			if (!conductor->terminal1->parentElement()
+				|| !conductor->terminal2->parentElement()) {
+				++count;
+			}
+		}
+	}
+	return count;
+}
+
+/**
 	@brief projectDataBase::addElement
 	@param element
 */
@@ -122,24 +163,12 @@ void projectDataBase::addElement(Element *element)
 		return;
 	}
 
-	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
-	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
-	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());
-	m_insert_elements_query.bindValue(":type", element->elementData().typeToString());
-	m_insert_elements_query.bindValue(":sub_type", element->kindInformations()["type"].toString());
+	bindElementValues(m_insert_elements_query, element, element->diagram());
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
 
-	m_insert_element_info_query.bindValue(":uuid", element->uuid().toString());
-	auto hash = elementInfoToString(element);
-	for (auto key : hash.keys())
-	{
-		QString value = hash.value(key);
-		QString bind = key.prepend(":");
-		m_insert_element_info_query.bindValue(bind, value);
-	}
-
+	bindElementInfoValues(m_insert_element_info_query, element);
 	if (!m_insert_element_info_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element info error : " << m_insert_element_info_query.lastError();
 	} else {
@@ -629,7 +658,13 @@ void projectDataBase::createElementNomenclatureView()
 						 "di.folio AS folio,"
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
-						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')");
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')"
+							//The element table holds every element of the project; which
+							//kinds belong in a nomenclature is this view's business, not
+							//the table's. Kept identical to the mask populateElementTable()
+							//used to apply, so what this view returns does not change --
+							//a slave element (a relay contact) is still not a line item.
+						 " AND e.type IN ('simple', 'terminal', 'master', 'thumbnail')");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
@@ -742,6 +777,30 @@ void projectDataBase::populateDiagramTable()
 }
 
 /**
+	@brief allElementTypes
+	Every ElementData::Type, i.e. no filtering at all.
+
+	The element table used to be populated with only
+	Simple|Terminal|Master|Thumbnail, which quietly made it "the elements a
+	nomenclature cares about" rather than "the elements of the project".
+	Anything else reading the table -- the wiring list, and terminal plans
+	later -- then could not see slave elements (relay contacts) or report
+	elements, which are ordinary conductor endpoints. The filter now lives in
+	element_nomenclature_view, where it belongs; see createElementNomenclatureView().
+*/
+static ElementData::Types allElementTypes()
+{
+	return ElementData::Simple
+		   | ElementData::NextReport
+		   | ElementData::PreviousReport
+		   | ElementData::Master
+		   | ElementData::Slave
+		   | ElementData::Terminal
+		   | ElementData::Thumbnail
+		   | ElementData::ConductorDefinition;
+}
+
+/**
 	@brief projectDataBase::populateElementTable
 	Populate the element table
 */
@@ -753,16 +812,11 @@ void projectDataBase::populateElementTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(allElementTypes());
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
-			const auto elmt_data = elmt->elementData();
-			m_insert_elements_query.bindValue(":uuid", elmt->uuid().toString());
-			m_insert_elements_query.bindValue(":diagram_uuid", diagram->uuid().toString());
-			m_insert_elements_query.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
-			m_insert_elements_query.bindValue(":type", elmt_data.typeToString());
-			m_insert_elements_query.bindValue(":sub_type", elmt_data.masterTypeToString());
+			bindElementValues(m_insert_elements_query, elmt, diagram);
 			if (!m_insert_elements_query.exec()) {
 				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 			}
@@ -782,20 +836,12 @@ void projectDataBase::populateElementInfoTable()
 	for (const auto &diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(allElementTypes());
 
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
-			m_insert_element_info_query.bindValue(QStringLiteral(":uuid"), elmt->uuid().toString());
-			const auto hash = elementInfoToString(elmt);
-			for (const auto &key : hash.keys())
-			{
-				QString value = hash.value(key);
-				QString bind = QStringLiteral(":") + key;
-				m_insert_element_info_query.bindValue(bind, value);
-			}
-
+			bindElementInfoValues(m_insert_element_info_query, elmt);
 			if (!m_insert_element_info_query.exec()) {
 				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
 			}
@@ -1000,6 +1046,52 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	}
 
 	return hash;
+}
+
+/**
+	@brief projectDataBase::bindElementValues
+	Bind one element's row for the element table.
+
+	Shared by addElement() (a single element added to a live diagram) and
+	populateElementTable() (a full rebuild), because those two used to bind
+	the same row differently: the incremental path wrote
+	kindInformations()["type"] into sub_type while the bulk path wrote
+	elementData().masterTypeToString(). The element table therefore held
+	different values depending on whether the project had been reloaded
+	since the element was placed. One binder means live and reloaded agree
+	by construction rather than by coincidence.
+
+	The bulk path's values are the ones kept: they are what every already
+	saved project contains, so nothing a reload produces changes.
+	@param query : prepared insert query to bind into
+	@param element : element to bind
+	@param diagram : diagram holding @element
+*/
+void projectDataBase::bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram)
+{
+	const auto element_data = element->elementData();
+	query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	query.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+	query.bindValue(QStringLiteral(":pos"), diagram->convertPosition(element->scenePos()).toString());
+	query.bindValue(QStringLiteral(":type"), element_data.typeToString());
+	query.bindValue(QStringLiteral(":sub_type"), element_data.masterTypeToString());
+}
+
+/**
+	@brief projectDataBase::bindElementInfoValues
+	Bind one element's row for the element info table.
+	Shared by addElement() and populateElementInfoTable() for the same
+	reason as bindElementValues().
+	@param query : prepared insert query to bind into
+	@param element : element to bind
+*/
+void projectDataBase::bindElementInfoValues(QSqlQuery &query, Element *element)
+{
+	query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	const auto hash = elementInfoToString(element);
+	for (const auto &key : hash.keys()) {
+		query.bindValue(QStringLiteral(":") + key, hash.value(key));
+	}
 }
 
 void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
