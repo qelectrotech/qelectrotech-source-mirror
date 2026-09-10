@@ -57,7 +57,7 @@ m_diagram(diagram)
 		
 		QString text;
 		if(texts_list.count())
-			text.append(QObject::tr("Pivoter %1 textes").arg(texts_list.count()));
+			text.append(QObject::tr("Pivoter %n texte(s)").arg(texts_list.count()));
 		if(groups_list.count())
 		{
 			if(text.isEmpty())
@@ -65,7 +65,7 @@ m_diagram(diagram)
 			else
 				text.append(QObject::tr(" et"));
 			
-			text.append(QObject::tr(" %1 groupes de textes").arg(groups_list.count()));
+			text.append(QObject::tr(" %n groupe(s) de textes").arg(groups_list.count()));
 		}
 		if(!text.isNull())
 			setText(text);

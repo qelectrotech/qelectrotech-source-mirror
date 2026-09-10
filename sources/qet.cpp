@@ -271,84 +271,88 @@ QString QET::ElementsAndConductorsSentence(
 		int tables_count,
 		int terminal_strip_count)
 {
-	QString text;
+	QStringList parts;
 	if (elements_count) {
-		text += QObject::tr(
-			"%n élément(s)",
-			"part of a sentence listing the content of a diagram",
-			elements_count
+		parts.append(
+			QObject::tr(
+				"%n élément(s)",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				elements_count
+			)
 		);
 	}
 
 	if (conductors_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n conducteur(s)",
-			"part of a sentence listing the content of a diagram",
-			conductors_count
+		parts.append(
+			QObject::tr(
+				"%n conducteur(s)",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				conductors_count
+			)
 		);
 	}
 
 	if (texts_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n champ(s) de texte",
-			"part of a sentence listing the content of a diagram",
-			texts_count
+		parts.append(
+			QObject::tr(
+				"%n champ(s) de texte",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				texts_count
+			)
 		);
 	}
 
 	if (images_count) {
-		if (!text.isEmpty()) text += ", ";
-		// Qt's %n only selects a grammatical singular/plural form (the
-		// "(s)" convention used by every other count here) -- it never
-		// spells the number out as a word, so getting "une image"
-		// instead of the literal "1 image" for the single-item case
-		// means handling that count outside %n entirely, with its own
-		// fixed string.
-		text += images_count == 1
-				? QObject::tr("une image", "part of a sentence listing the content of a diagram")
-				: QObject::tr(
-					"%n images",
-					"part of a sentence listing the content of a diagram",
-					images_count
-				);
+		parts.append(
+			QObject::tr(
+				"%n images",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				images_count
+			)
+		);
 	}
 
 	if (shapes_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n forme(s)",
-			"part of a sentence listing the content of a diagram",
-			shapes_count
+		parts.append(
+			QObject::tr(
+				"%n forme(s)",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				shapes_count
+			)
 		);
 	}
 
 	if (element_text_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n texte(s) d'élément",
-					"part of a sentence listing the content of a diagram",
-					element_text_count);
+		parts.append(
+			QObject::tr(
+				"%n texte(s) d'élément",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				element_text_count
+			)
+		);
 	}
 
 	if (tables_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n tableau(s)",
-					"part of a sentence listing the content of diagram",
-					tables_count);
+		parts.append(
+			QObject::tr(
+				"%n tableau(s)",
+				"part of a enumerative partial sentence listing the content of diagram",
+				tables_count
+			)
+		);
 	}
 
 	if (terminal_strip_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n plan de bornes",
-					"part of a sentence listing the content of a diagram",
-					terminal_strip_count);
+		parts.append(
+			QObject::tr(
+				"%n plan(s) de bornes",
+				"part of a enumerative partial sentence listing the content of a diagram",
+				terminal_strip_count
+			)
+		);
 	}
 
-	return(text);
+	return QLocale().createSeparatedList(parts);
 }
 
 /**
