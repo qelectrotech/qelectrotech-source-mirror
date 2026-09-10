@@ -17,7 +17,6 @@
 */
 #include "linksingleelementwidget.h"
 #include "contactgroupselectiondialog.h"
-#include "../qetgraphicsitem/masterelement.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -418,11 +417,12 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 				continue;
 			}
 
-			// If the master is full, we'll remove it from the list!
-			MasterElement *master = static_cast<MasterElement*>(elmt);
-			if (master->isFull()) {
-				elmt_vector.removeAt(i);
-			}
+				// A master at its declared limit stays in the list. Removing
+				// it made a full master indistinguishable from one that does
+				// not exist: the candidate simply was not there, with nothing
+				// to say why. The limit is advisory -- see the prompt in
+				// MasterPropertiesWidget::on_link_button_clicked() -- so the
+				// user decides, rather than the list deciding for them.
 		}
 	}
 	return elmt_vector;
