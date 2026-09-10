@@ -21,7 +21,6 @@
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "conductornumexport.h"
-#include "devicebomexport.h"
 #include "diagramcommands.h"
 #include "diagramevent/diagrameventaddimage.h"
 #ifdef QET_HAS_QTPDF
@@ -469,34 +468,6 @@ void QETDiagramEditor::setUpActions()
 	connect(m_csv_export, &QAction::triggered, [this]() {
 		BOMExportDialog bom(currentProjectView()->project(), this);
 		bom.exec();
-	});
-
-	m_device_bom_export = new QAction(QET::Icons::DocumentSpreadsheet,
-			tr("Exporter la nomenclature des appareils au format CSV"), this);
-	m_device_bom_export->setObjectName(QStringLiteral("export_device_bom_csv"));
-	connect(m_device_bom_export, &QAction::triggered, this, [this]() {
-		auto *view = currentProjectView();
-		if (!view) return;
-		QPointer<QETProject> project = view->project();
-		QString dir = project->currentDir();
-		if (dir.isEmpty()) dir = QETApp::documentDir();
-		QFileDialog dialog(
-				this,
-				tr("Exporter la nomenclature des appareils au format CSV"),
-				QDir(dir).filePath(QStringLiteral("bom.csv")),
-				tr("Fichiers CSV (*.csv)"));
-		dialog.setAcceptMode(QFileDialog::AcceptSave);
-		dialog.setDefaultSuffix(QStringLiteral("csv"));
-		if (dialog.exec() != QDialog::Accepted || !project) return;
-		const QString path = dialog.selectedFiles().value(0);
-		if (path.isEmpty()) return;
-		QString error;
-		if (!DeviceBomExport::writeCsv(*project, path, &error)) {
-			QMessageBox::critical(this, tr("Exporter la nomenclature"),
-					tr("Impossible d'enregistrer la nomenclature dans %1.\n%2").arg(path, error));
-		} else {
-			statusBar()->showMessage(tr("Nomenclature exportée dans %1").arg(path), 5000);
-		}
 	});
 
 		//Add a nomenclature item
@@ -977,7 +948,6 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_add_summary);
 	menu_project -> addAction(m_add_nomenclature);
 	menu_project -> addAction(m_csv_export);
-	menu_project -> addAction(m_device_bom_export);
 	menu_project -> addAction(m_project_export_conductor_num);
 	menu_project -> addAction(m_terminal_strip_dialog);
 	menu_project -> addAction(m_project_terminalBloc);
@@ -1829,7 +1799,6 @@ void QETDiagramEditor::slot_updateActions()
 	m_add_summary                 -> setEnabled(editable_project);
 	m_add_nomenclature            -> setEnabled(editable_project);
 	m_csv_export                  -> setEnabled(editable_project);
-	m_device_bom_export           -> setEnabled(opened_project);
 	m_project_export_conductor_num-> setEnabled(opened_project);
 	m_terminal_strip_dialog       -> setEnabled(editable_project);
 	m_project_export_wiring_list  -> setEnabled(opened_project);

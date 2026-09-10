@@ -663,7 +663,8 @@ void projectDataBase::createElementNomenclatureView()
 						 "di.folio AS folio,"
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
-						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')"
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid"
+						 " AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on')"
 							//The element table holds every element of the project; which
 							//kinds belong in a nomenclature is this view's business, not
 							//the table's. Kept identical to the mask populateElementTable()

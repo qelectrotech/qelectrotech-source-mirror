@@ -91,3 +91,12 @@ add_executable(tst_contactusage tst_contactusage.cpp)
 add_test(NAME tst_contactusage COMMAND tst_contactusage)
 target_include_directories(tst_contactusage PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_contactusage PRIVATE Qt::Test)
+
+add_executable(
+  tst_smart_device
+  tst_smart_device.cpp
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h)
+add_test(NAME tst_smart_device COMMAND tst_smart_device)
+target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)

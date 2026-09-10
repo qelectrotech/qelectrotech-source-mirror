@@ -15,29 +15,23 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef DEVICEBOMEXPORT_H
-#define DEVICEBOMEXPORT_H
-
-#include "properties/deviceinformation.h"
+#ifndef BOMEXPORT_H
+#define BOMEXPORT_H
 
 #include <QByteArray>
-#include <QList>
 #include <QString>
+#include <QStringList>
 
-class QETProject;
+class QSqlQuery;
 
-class DeviceBomExport
+namespace BomExport
 {
-	public:
-		struct Row {
-			DeviceInformation m_device;
-			QString m_page;
-		};
+	QStringList defaultColumns();
+	QString defaultQuery();
+	QByteArray toCsv(QSqlQuery &query, const QStringList &headers,
+					 bool include_headers = true, int *row_count = nullptr);
+	bool writeCsv(const QString &file_path, const QByteArray &csv,
+				  QString *error = nullptr);
+}
 
-		static QList<Row> collect(const QETProject &project);
-		static QByteArray toCsv(const QList<Row> &rows);
-		static bool writeCsv(const QETProject &project, const QString &file_path,
-							 QString *error = nullptr);
-};
-
-#endif // DEVICEBOMEXPORT_H
+#endif // BOMEXPORT_H

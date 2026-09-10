@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "bomexport.h"
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
@@ -304,59 +305,38 @@ int exportCsv(QETProject &project, const QString &format, const QString &output)
 	return 0;
 }
 
-/// Quote a field for CSV output (RFC-4180 style, ';' delimiter).
-QString csvField(const QString &value)
-{
-	if (value.contains(';') || value.contains('"')
-		|| value.contains('\n') || value.contains('\r')) {
-		QString v = value;
-		v.replace('"', "\"\"");
-		return '"' % v % '"';
-	}
-	return value;
-}
-
-/// Bill of materials: one row per element, key component-data fields.
-/// Pulls from QET's own project database (the same source as the GUI BOM
-/// export), so the output matches what the editor produces.
+/// Bill of materials from the same project database and default query as the
+/// GUI nomenclature export.
 int exportBom(QETProject &project, const QString &output)
 {
-	// The project database is built lazily; force a (re)build before querying.
 	project.dataBase()->updateDB();
-
-	static const QStringList columns {
-		"label", "designation", "manufacturer", "manufacturer_reference",
-		"quantity", "location", "function", "title", "folio"
-	};
-
-	QSqlQuery query = project.dataBase()->newQuery(
-		"SELECT " % columns.join(", ") %
-		" FROM element_nomenclature_view ORDER BY label");
+	QSqlQuery query = project.dataBase()->newQuery(BomExport::defaultQuery());
 	if (!query.exec()) {
 		err << "BOM query failed: " << query.lastError().text() << "\n";
 		return 1;
 	}
-
-	QString csv = columns.join(";") % "\n";
 	int rows = 0;
-	while (query.next()) {
-		QStringList values;
-		for (int i = 0; i < columns.size(); ++i)
-			values << csvField(query.value(i).toString());
-		csv += values.join(";") % "\n";
-		++rows;
-	}
-
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
+	const auto csv = BomExport::toCsv(
+			query, BomExport::defaultColumns(), true, &rows);
+	QString error;
+	if (!BomExport::writeCsv(output, csv, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << csv;
-	file.close();
 	out << "Exported " << rows << " component(s) -> " << output << "\n";
 	return 0;
+}
+
+QString csvField(const QString &value)
+{
+	if (value.contains(QLatin1Char(';')) || value.contains(QLatin1Char('"'))
+			|| value.contains(QLatin1Char('\n')) || value.contains(QLatin1Char('\r')))
+	{
+		QString escaped = value;
+		escaped.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+		return QLatin1Char('"') % escaped % QLatin1Char('"');
+	}
+	return value;
 }
 
 /// Count terminals on @p element that no conductor connects to.

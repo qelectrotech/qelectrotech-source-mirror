@@ -134,6 +134,7 @@ include(cmake/fetch_kdeaddons.cmake)
 option(PACKAGE_TESTS "Build the tests" ON)
 if(PACKAGE_TESTS)
     message("Add sub directory tests")
+    enable_testing()
     add_subdirectory(tests)
 endif()
 
