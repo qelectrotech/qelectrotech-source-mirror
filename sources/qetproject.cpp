@@ -1910,7 +1910,14 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 		// export default XRef properties
 	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
-	for (QString key : defaultXRefProperties().keys())
+		//Sorted, because defaultXRefProperties() is a QHash and its key order
+		//is randomised per process. Writing it unsorted made two saves of an
+		//unchanged project differ only in the order of these <xref> children,
+		//so a save was not reproducible and diffing two saved files showed
+		//spurious changes.
+	QStringList xref_keys = defaultXRefProperties().keys();
+	xref_keys.sort();
+	for (QString &key : xref_keys)
 	{
 		auto xrp = defaultXRefProperties(key);
 		xrp.setKey(key);
