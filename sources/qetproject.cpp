@@ -22,7 +22,9 @@
 #include "autoNum/assignvariables.h"
 #include "autoNum/numerotationcontext.h"
 #include "autoNum/numerotationcontextcommands.h"
+#include "autoNum/renumberelementscommand.h"
 #include "diagram.h"
+#include "qetgraphicsitem/element.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
 #include "qetresult.h"
@@ -40,7 +42,30 @@
 #include <QHash>
 #include <QTimer>
 #include <QtConcurrentRun>
+
+namespace {
+
+/**
+ * @brief Reset numeric fields of a NumerotationContext so renumbering starts at 1.
+ * Keeps non-numeric parts (string/idfolio/folio/plant/locmach/elementline/elementcolumn/elementprefix) unchanged.
+ */
+NumerotationContext resetContextForRenumber(const NumerotationContext &tmpl)
+{
+	NumerotationContext out = tmpl;
+	for (int i = 0; i < out.size(); ++i) {
+		const QStringList parts = out.itemAt(i);
+		if (parts.isEmpty()) continue;
+		const QString type = parts.at(0);
+		if (out.keyIsNumber(type)) {
+			out.replaceValue(i, QStringLiteral("1"));
+		}
+	}
+	return out;
+}
+
+} // namespace
 #include <QtDebug>
+#include <algorithm>
 #include <utility>
 
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
@@ -704,6 +729,109 @@ QString QETProject::elementCurrentAutoNum () const
 */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
 	m_current_element_autonum = std::move(autoNum);
+}
+
+/**
+	@brief QETProject::renumberElementsBySchemeTitle
+	Renumber existing elements by element autonumbering scheme title.
+
+	Elements do not store the scheme title; they store a "formula" (elementInformations["formula"]).
+	This method matches elements to schemes by comparing the stored formula with the formula derived
+	from each scheme's NumerotationContext.
+
+	If scheme_title is empty, all schemes are renumbered. Otherwise only that scheme is renumbered.
+	The operation is undoable.
+*/
+void QETProject::renumberElementsBySchemeTitle(const QString &scheme_title)
+{
+	if (!m_undo_stack) return;
+	if (isReadOnly()) return;
+
+	// Build map: scheme title -> canonical formula
+	QHash<QString, QString> scheme_formula;
+	for (const QString &k : m_element_autonum.keys()) {
+		if (!scheme_title.isEmpty() && k != scheme_title) continue;
+		scheme_formula.insert(k, autonum::numerotationContextToFormula(m_element_autonum.value(k)));
+	}
+	if (scheme_formula.isEmpty()) return;
+
+	// Collect elements per scheme by formula match
+	QHash<QString, QVector<Element*>> by_key;
+	for (Diagram *d : diagrams()) {
+		if (!d) continue;
+		const auto items = d->items();
+		for (QGraphicsItem *it : items) {
+			auto *el = qgraphicsitem_cast<Element*>(it);
+			if (!el) continue;
+			if (el->linkType() == Element::Slave || (el->linkType() & Element::AllReport))
+				continue;
+
+			const QString el_formula = el->elementInformations().value(QStringLiteral("formula")).toString();
+			if (el_formula.isEmpty()) continue;
+
+			QString matched_key;
+			for (auto itf = scheme_formula.constBegin(); itf != scheme_formula.constEnd(); ++itf) {
+				if (itf.value() == el_formula) { matched_key = itf.key(); break; }
+			}
+			if (matched_key.isEmpty()) continue;
+			by_key[matched_key].append(el);
+		}
+	}
+	if (by_key.isEmpty()) return;
+
+	QVector<RenumberElementsCommand::ElementChange> changes;
+	QHash<QString, NumerotationContext> old_ctx;
+	QHash<QString, NumerotationContext> new_ctx;
+
+	for (auto it = by_key.constBegin(); it != by_key.constEnd(); ++it) {
+		old_ctx.insert(it.key(), m_element_autonum.value(it.key()));
+	}
+
+	for (auto it = by_key.begin(); it != by_key.end(); ++it) {
+		const QString key = it.key();
+		auto &elements = it.value();
+		std::sort(elements.begin(), elements.end(), [](Element *a, Element *b){ return comparPos(a, b); });
+
+		NumerotationContext base_tmpl = m_element_autonum.value(key);
+		NumerotationContext nc = resetContextForRenumber(base_tmpl);
+		NumerotationContextCommands ncc(nc);
+
+		for (Element *el : elements) {
+			RenumberElementsCommand::ElementChange ch;
+			ch.element = el;
+			ch.old_infos = el->elementInformations();
+			ch.old_seq = el->sequenceStruct();
+			ch.old_frozen = el->isFreezeLabel();
+			ch.new_frozen = ch.old_frozen; // preserve frozen state
+
+			const QString formula = ch.old_infos.value(QStringLiteral("formula")).toString();
+			autonum::sequentialNumbers new_seq;
+			new_seq.clear();
+			autonum::setSequential(formula, new_seq, nc, el->diagram(), key);
+
+			DiagramContext new_infos = ch.old_infos;
+			new_infos.addValue(QStringLiteral("label"), autonum::AssignVariables::formulaToLabel(formula, new_seq, el->diagram(), el, nullptr));
+			ch.new_infos = new_infos;
+			ch.new_seq = new_seq;
+			changes.append(ch);
+
+			// advance
+			nc = ncc.next();
+			ncc = NumerotationContextCommands(nc);
+		}
+
+		new_ctx.insert(key, nc);
+	}
+
+	if (changes.isEmpty()) return;
+
+	auto *cmd = new RenumberElementsCommand(
+			this,
+			changes,
+			old_ctx,
+			new_ctx,
+			scheme_title.isEmpty() ? tr("Renumber elements") : tr("Renumber elements (%1)").arg(scheme_title));
+	m_undo_stack->push(cmd);
 }
 
 /**
