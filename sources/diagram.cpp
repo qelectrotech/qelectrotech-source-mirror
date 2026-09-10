@@ -56,7 +56,20 @@ namespace {
 	/// non-deterministic across process runs for any legacy file.
 	QString elementSortKey(Element *elmt)
 	{
-		return positionKey(elmt->pos());
+			//Position alone is not a total order: two elements can sit at the
+			//same x/y (lmdg.qet has a pair of text elements both at 780,350).
+			//With equal keys std::stable_sort falls back to the order the
+			//scene handed us, which varies per run, so those two swapped
+			//places on every save. The uuid breaks the tie.
+			//
+			//For an element with a persisted uuid attribute this is fully
+			//deterministic. For a legacy element without one, fromXml()
+			//invents a fresh uuid per load, so a collision between two such
+			//elements is no better ordered than before -- but no worse
+			//either, and the tiebreaker is only consulted when the positions
+			//are equal.
+		return positionKey(elmt->pos())
+				+ QLatin1Char(':') + elmt->uuid().toString();
 	}
 
 	/// Sort key for a terminal: its parent element's position, then the
