@@ -564,7 +564,14 @@ int exportWiring(QETProject &project, const QString &output)
 
 	QSqlQuery query = project.dataBase()->newQuery(
 		"SELECT " % columns.join(", ") %
-		" FROM wiring_list_view ORDER BY diagram_position, wire_number");
+		" FROM wiring_list_view"
+		//Wire numbers are text, so a plain sort puts "10" before "9".
+		//Numeric ones first, ordered by value; anything non-numeric after,
+		//ordered as text. The trailing wire_number keeps ties stable.
+		" ORDER BY diagram_position,"
+		" CASE WHEN wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END,"
+		" CAST(wire_number AS INTEGER),"
+		" wire_number");
 	if (!query.exec()) {
 		err << "Wiring list query failed: " << query.lastError().text() << "\n";
 		return 1;
