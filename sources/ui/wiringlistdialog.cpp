@@ -52,7 +52,14 @@ WiringListDialog::WiringListDialog(QETProject *project, QWidget *parent) :
 				"SELECT wire_number, from_element_label, from_terminal,"
 				" to_element_label, to_terminal, diagram_position"
 				" FROM wiring_list_view"
-				" ORDER BY diagram_position, wire_number"),
+				//Wire numbers are text, so a plain sort puts "10" before "9".
+				//Numeric ones first, ordered by value; anything non-numeric
+				//after, ordered as text. The trailing wire_number keeps ties
+				//stable.
+				" ORDER BY diagram_position,"
+				" CASE WHEN wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END,"
+				" CAST(wire_number AS INTEGER),"
+				" wire_number"),
 			m_project->dataBase()->database());
 
 	model->setHeaderData(0, Qt::Horizontal, tr("Fil", "column title"));

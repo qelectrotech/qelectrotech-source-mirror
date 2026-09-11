@@ -39,6 +39,7 @@
 #include <QDomDocument>
 #include <QDate>
 #include <QFile>
+#include <QSaveFile>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -564,7 +565,14 @@ int exportWiring(QETProject &project, const QString &output)
 
 	QSqlQuery query = project.dataBase()->newQuery(
 		"SELECT " % columns.join(", ") %
-		" FROM wiring_list_view ORDER BY diagram_position, wire_number");
+		" FROM wiring_list_view"
+		//Wire numbers are text, so a plain sort puts "10" before "9".
+		//Numeric ones first, ordered by value; anything non-numeric after,
+		//ordered as text. The trailing wire_number keeps ties stable.
+		" ORDER BY diagram_position,"
+		" CASE WHEN wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END,"
+		" CAST(wire_number AS INTEGER),"
+		" wire_number");
 	if (!query.exec()) {
 		err << "Wiring list query failed: " << query.lastError().text() << "\n";
 		return 1;
@@ -580,14 +588,23 @@ int exportWiring(QETProject &project, const QString &output)
 		++rows;
 	}
 
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		//Written through QSaveFile so a failure part-way leaves the previous
+		//file intact rather than a truncated one, and with a UTF-8 byte order
+		//mark: without it Excel opens a .csv as the local 8-bit codepage and
+		//mangles any accented element label. Qt writes UTF-8 by default, so
+		//the bytes were already right -- the mark is what tells Excel so.
+	QSaveFile file(output);
+	if (!file.open(QIODevice::WriteOnly)) {
 		err << "Cannot open '" << output << "' for writing.\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << csv;
-	file.close();
+	static const char utf8_bom[] = "\xEF\xBB\xBF";
+	file.write(utf8_bom, 3);
+	file.write(csv.toUtf8());
+	if (!file.commit()) {
+		err << "Cannot write '" << output << "': " << file.errorString() << "\n";
+		return 1;
+	}
 	out << "Exported " << rows << " conductor(s) -> " << output << "\n";
 	return 0;
 }
