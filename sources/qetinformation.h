@@ -44,6 +44,11 @@ namespace QETInformation
 	static QString ELMT_MACHINE_MANUFACTURER_REF     = "machine_manufacturer_reference";
 	static QString ELMT_SUPPLIER                     = "supplier";
 	static QString ELMT_QUANTITY                     = "quantity";
+	static QString ELMT_MODEL                        = "model";
+	static QString ELMT_CATEGORY                     = "category";
+	static QString ELMT_VOLTAGE_RATING               = "voltage_rating";
+	static QString ELMT_CURRENT_RATING               = "current_rating";
+	static QString ELMT_NOTES                        = "notes";
 	static QString ELMT_UNITY                        = "unity";
 	static QString ELMT_PLANT                        = "plant";
 	static QString ELMT_LOCATION                     = "location";
