@@ -226,12 +226,15 @@ jobs:
           QM_SRC="$GITHUB_WORKSPACE/build/lang"
           TS_COUNT=$(find "$GITHUB_WORKSPACE/lang" -maxdepth 1 -name 'qet_*.ts' | wc -l)
           mkdir -p "$FILES/lang"
-          if ! compgen -G "$QM_SRC/qet_*.qm" > /dev/null; then
+          # find only, no shell glob: $GITHUB_WORKSPACE is a Windows path
+          # (D:\a\...) and its backslashes break glob-based tests (compgen -G).
+          QM_FOUND=$(find "$QM_SRC" -maxdepth 1 -name 'qet_*.qm' 2>/dev/null | wc -l)
+          if [ "$QM_FOUND" -eq 0 ]; then
             echo "ERROR: no .qm file in $QM_SRC (did lrelease run?)"
             find "$GITHUB_WORKSPACE/build" -name '*.qm' || true
             exit 1
           fi
-          cp "$QM_SRC"/qet_*.qm "$FILES/lang/"
+          find "$QM_SRC" -maxdepth 1 -name 'qet_*.qm' -exec cp {} "$FILES/lang/" \;
           QM_COUNT=$(find "$FILES/lang" -maxdepth 1 -name 'qet_*.qm' | wc -l)
           echo "=== $QM_COUNT .qm files copied to files/lang/ (expected: $TS_COUNT) ==="
           if [ "$QM_COUNT" -ne "$TS_COUNT" ]; then
