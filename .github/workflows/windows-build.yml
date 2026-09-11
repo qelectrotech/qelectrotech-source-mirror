@@ -217,10 +217,27 @@ jobs:
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
           cp -r "$GITHUB_WORKSPACE/fonts"       "$FILES/fonts"       || true
 
-          cp -r "$GITHUB_WORKSPACE/lang"        "$FILES/lang"        || true
-          find "$GITHUB_WORKSPACE/build" -name "*.qm" -exec cp {} "$FILES/lang/" \; 2>/dev/null || true
-          echo "=== .qm files in files/lang/ ==="
-          ls "$FILES/lang/"*.qm 2>/dev/null | wc -l || echo "0 .qm files"
+          # --- Translations ---
+          # Since PR #751 the .qm files are no longer tracked in git: lrelease
+          # generates them in build/lang/ (OUTPUT_LOCATION "lang", relative to
+          # the build dir). The source lang/ dir is no longer copied, as it now
+          # only holds the .ts files (useless at runtime). Any missing .qm makes
+          # the job fail instead of silently shipping an untranslated build.
+          QM_SRC="$GITHUB_WORKSPACE/build/lang"
+          TS_COUNT=$(find "$GITHUB_WORKSPACE/lang" -maxdepth 1 -name 'qet_*.ts' | wc -l)
+          mkdir -p "$FILES/lang"
+          if ! compgen -G "$QM_SRC/qet_*.qm" > /dev/null; then
+            echo "ERROR: no .qm file in $QM_SRC (did lrelease run?)"
+            find "$GITHUB_WORKSPACE/build" -name '*.qm' || true
+            exit 1
+          fi
+          cp "$QM_SRC"/qet_*.qm "$FILES/lang/"
+          QM_COUNT=$(find "$FILES/lang" -maxdepth 1 -name 'qet_*.qm' | wc -l)
+          echo "=== $QM_COUNT .qm files copied to files/lang/ (expected: $TS_COUNT) ==="
+          if [ "$QM_COUNT" -ne "$TS_COUNT" ]; then
+            echo "ERROR: missing translations ($QM_COUNT .qm for $TS_COUNT .ts)"
+            exit 1
+          fi
 
           for f in LICENSE ChangeLog CREDIT README ELEMENTS.LICENSE; do
             cp "$GITHUB_WORKSPACE/$f" "$FILES/$f" 2>/dev/null || true
