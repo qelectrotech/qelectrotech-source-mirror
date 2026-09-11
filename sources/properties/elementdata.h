@@ -218,6 +218,9 @@ class ElementData : public PropertiesInterface
 		void fromSettings(const QSettings &settings,  const QString prefix = QString()) override;
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
+		static void applyInformationDefaults(
+				ElementData::Type type,
+				DiagramContext &informations);
 		QDomElement kindInfoToXml(QDomDocument &document);
 	QDomElement plcMasterDataToXml(QDomDocument &document) const;
 	void plcMasterDataFromXml(const QDomElement &xml_plc);

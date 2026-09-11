@@ -310,6 +310,7 @@ void ElementPropertiesWidget::updateUi()
 				m_list_editor << new PlcLinkWidget(m_element, this);
 			else
 				m_list_editor << new LinkSingleElementWidget(m_element, this);
+			m_list_editor << new ElementInfoWidget(m_element, this);
 			break;
 		case Element::Terminale:
 			m_list_editor << new ElementInfoWidget(m_element, this);

@@ -150,6 +150,8 @@ class Element : public QetGraphicsItem
 		bool isFreezeLabel() const {return m_freeze_label;}
 		void freezeNewAddedElement();
 		QString actualLabel();
+		bool inheritsLabel() const;
+		QString labelInheritanceSeparator() const;
 
 		QString name() const override;
 		ElementsLocation location() const;

@@ -45,6 +45,62 @@
 
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
 
+namespace {
+
+bool equivalentElementXml(const QDomNode &left, const QDomNode &right)
+{
+	if (left.nodeType() != right.nodeType())
+		return false;
+
+	if (left.isElement())
+	{
+		const QDomElement left_element = left.toElement();
+		const QDomElement right_element = right.toElement();
+		if (left_element.tagName() != right_element.tagName())
+			return false;
+
+		const QDomNamedNodeMap left_attributes = left_element.attributes();
+		const QDomNamedNodeMap right_attributes = right_element.attributes();
+		if (left_attributes.count() != right_attributes.count())
+			return false;
+		for (int i = 0; i < left_attributes.count(); ++i)
+		{
+			const QDomAttr attribute = left_attributes.item(i).toAttr();
+			if (!right_element.hasAttribute(attribute.name()) ||
+				right_element.attribute(attribute.name()) != attribute.value())
+				return false;
+		}
+	}
+	else if (left.isText())
+	{
+		return left.nodeValue() == right.nodeValue();
+	}
+
+	auto meaningfulChildren = [](const QDomNode &node) {
+		QList<QDomNode> children;
+		for (QDomNode child = node.firstChild(); !child.isNull(); child = child.nextSibling())
+		{
+			if (child.isComment() || (child.isText() && child.nodeValue().trimmed().isEmpty()))
+				continue;
+			children << child;
+		}
+		return children;
+	};
+
+	const QList<QDomNode> left_children = meaningfulChildren(left);
+	const QList<QDomNode> right_children = meaningfulChildren(right);
+	if (left_children.size() != right_children.size())
+		return false;
+	for (int i = 0; i < left_children.size(); ++i)
+	{
+		if (!equivalentElementXml(left_children.at(i), right_children.at(i)))
+			return false;
+	}
+	return true;
+}
+
+}
+
 bool QETProject::m_backup_enabled = true;
 
 void QETProject::setBackupEnabled(bool enabled)
@@ -1219,6 +1275,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 
 	//Get the path where the element must be imported
 	QString import_path;
+	bool changed_definition_with_same_uuid = false;
 	if (location.isFileSystem()) {
 		import_path = "import/" % location.collectionPath(false);
 	}
@@ -1230,12 +1287,32 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 		import_path = location.collectionPath(false);
 	}
 
+	// An element definition is identified by its UUID, not by the collection
+	// path it was dragged from. Reuse an identical embedded definition from any
+	// path. If the external definition changed while retaining its UUID, route
+	// through the existing overwrite/ignore/rename dialog below.
+	const QUuid source_uuid = location.uuid();
+	if (!source_uuid.isNull())
+	{
+		for (const ElementsLocation &candidate : m_elements_collection->elementsLocation())
+		{
+			if (candidate.uuid() != source_uuid)
+				continue;
+			if (equivalentElementXml(candidate.xml(), location.xml()))
+				return candidate;
+			import_path = candidate.collectionPath(false);
+			changed_definition_with_same_uuid = true;
+			break;
+		}
+	}
+
 	//Element already exist in the embedded collection, we ask what to do to user
 	if (m_elements_collection->exist(import_path)) {
 		ElementsLocation existing_location(import_path, this);
 
 		//existing_location and location have the same uuid, so it is the same element
-		if (existing_location.uuid() == location.uuid()) {
+		if (existing_location.uuid() == location.uuid() &&
+			!changed_definition_with_same_uuid) {
 			return existing_location;
 		}
 
@@ -1266,7 +1343,8 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 					}
 				}
 				ElementsLocation parent_loc = existing_location.parent();
-				return m_elements_collection->copy(location, parent_loc);
+				return m_elements_collection->copy(
+					location, parent_loc, existing_location.fileName());
 			}
 			//Add the new element with an other name.
 			else if (action == QET::Rename) {

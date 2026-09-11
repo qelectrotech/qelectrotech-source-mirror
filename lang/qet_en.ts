@@ -2459,6 +2459,11 @@ The element&apos;s display name is edited separately in the element properties.<
         <source>Exclure de la nomenclature</source>
         <translation>Exclude from the bill of materials</translation>
     </message>
+    <message>
+        <location filename="../sources/ui/elementinfowidget.cpp" line="243"/>
+        <source>Hériter le label</source>
+        <translation>Inherit label</translation>
+    </message>
 </context>
 <context>
     <name>ElementPropertiesEditorWidget</name>
@@ -16825,6 +16830,16 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="141"/>
         <source>Label des références croisées</source>
         <translation>Label cross reference</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="214"/>
+        <source>Hériter le label par défaut</source>
+        <translation>Inherit label by default</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/xrefpropertieswidget.ui" line="228"/>
+        <source>Séparateur du label hérité</source>
+        <translation>Inherited label separator</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="161"/>

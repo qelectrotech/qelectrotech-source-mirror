@@ -69,7 +69,20 @@ void MasterElement::linkToElement(Element *elmt)
 
 		// For PLC masters, connect slave position changes to trigger master repaint
 		if (m_data.m_master_type == ElementData::PLC)
+		{
+			// Older PLC projects stored the master's label directly in the
+			// Slave label. With real inheritance that value would later become
+			// a stale suffix (for example PLC2-PLC1), so migrate only the exact
+			// duplicate to an empty local label when the link is established.
+			DiagramContext ctx = elmt->elementInformations();
+			if (elmt->inheritsLabel() &&
+				ctx.value(QETInformation::ELMT_LABEL).toString() == actualLabel())
+			{
+				ctx.remove(QETInformation::ELMT_LABEL);
+				elmt->setElementInformations(ctx);
+			}
 			connectSlavePositionUpdates(elmt);
+		}
 
 		emit linkedElementChanged();
 		aboutDeleteXref();
@@ -110,7 +123,6 @@ void MasterElement::unlinkElement(Element *elmt)
 			ctx.remove(QETInformation::ELMT_PLC_FUNCTION);
 			ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 			ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
-			ctx.remove(QETInformation::ELMT_LABEL);
 			elmt->setElementInformations(ctx);
 
 			setGroupIndexForElement(elmt, -1);

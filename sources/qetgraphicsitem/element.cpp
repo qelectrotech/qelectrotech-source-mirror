@@ -849,6 +849,7 @@ bool Element::fromXml(QDomElement &e,
 	DiagramContext dc;
 	dc.fromXml(e.firstChildElement(QStringLiteral("elementInformations")),
 			   QStringLiteral("elementInformation"));
+	ElementData::applyInformationDefaults(m_data.m_type, dc);
 
 		//Load override properties (For now, only used when the element is a terminal)
 	if (m_data.m_type == ElementData::Terminal)
@@ -1423,31 +1424,12 @@ void Element::setElementInformations(DiagramContext dc)
 	m_data.m_informations = dc;
 
 	const auto actual_label{actualLabel()};
-	if (!actual_label.isEmpty()) {
+	if (m_data.m_type != ElementData::Slave &&
+		!m_data.m_informations.value(QStringLiteral("formula")).toString().isEmpty() &&
+		!actual_label.isEmpty()) {
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
 	emit elementInfoChange(old_info, m_data.m_informations);
-
-	// Propagate label change to linked PLC slaves (label is changed via
-	// setElementInformations through the undo stack, not via setElementData)
-	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
-	{
-		if (!m_group_index_map.isEmpty())
-		{
-			const QString new_label = actualLabel();
-			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
-			{
-				Element *slave = it.key();
-				if (!slave)
-					continue;
-				if (slave->elementInformations().value(QETInformation::ELMT_LABEL).toString() == new_label)
-					continue;
-				DiagramContext ctx = slave->elementInformations();
-				ctx.addValue(QETInformation::ELMT_LABEL, new_label);
-				slave->setElementInformations(ctx);
-			}
-		}
-	}
 }
 
 /**
@@ -1473,7 +1455,8 @@ void Element::setElementData(ElementData data)
 	m_data = data;
 
 	if (old_info != m_data.m_informations) {
-		m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
+		if (m_data.m_type != ElementData::Slave)
+			m_data.m_informations.addValue(QStringLiteral("label"), actualLabel()); //Update the label if there is a formula
 		if (diagram()) {
 			diagram()->project()->dataBase()->elementInfoChanged(this);
 		}
@@ -1485,9 +1468,7 @@ void Element::setElementData(ElementData data)
 	{
 		const auto &new_plc = m_data.plcMasterData();
 		bool plc_changed = (old_plc.ios != new_plc.ios);
-		bool label_changed = (old_info.value(QStringLiteral("label")) !=
-			m_data.m_informations.value(QStringLiteral("label")));
-		if (!m_group_index_map.isEmpty() && (plc_changed || label_changed))
+		if (!m_group_index_map.isEmpty() && plc_changed)
 		{
 			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
 			{
@@ -1515,7 +1496,6 @@ void Element::setElementData(ElementData data)
 							return autonum::AssignVariables::formulaToLabel(
 								xrp.slaveLabel(), seq, diagram(), this);
 						}());
-					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
 					ctx.addValue(QETInformation::ELMT_PLC_TC,
 						QString::number(io.terminalCount));
 					for (int t = 0; t < io.terminalCount && t < 4; ++t)
@@ -1540,13 +1520,6 @@ void Element::setElementData(ElementData data)
 							slave_terms.at(t)->setUseMasterLabel(false);
 						}
 					}
-				}
-				if (label_changed)
-				{
-					// Only label changed, update the label on the slave
-					DiagramContext ctx = slave->elementInformations();
-					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
-					slave->setElementInformations(ctx);
 				}
 			}
 		}
@@ -1753,16 +1726,84 @@ void Element::freezeNewAddedElement()
 */
 QString Element::actualLabel()
 {
+	QString own_label;
 	if (m_data.m_informations.value(QStringLiteral("formula")).toString().isEmpty()) {
-		return m_data.m_informations.value(QStringLiteral("label")).toString();
+		own_label = m_data.m_informations.value(QStringLiteral("label")).toString();
 	} else {
-	return autonum::AssignVariables::formulaToLabel(
+		own_label = autonum::AssignVariables::formulaToLabel(
 				m_data.m_informations.value(
 					QStringLiteral("formula")).toString(),
 				m_autoNum_seq,
 				diagram(),
 				this);
 	}
+
+	if (m_data.m_type != ElementData::Slave || !inheritsLabel())
+		return own_label;
+
+	Element *master = nullptr;
+	for (Element *linked : std::as_const(connected_elements)) {
+		if (linked && linked->linkType() == Element::Master) {
+			master = linked;
+			break;
+		}
+	}
+	if (!master)
+		return own_label;
+
+	const QString master_label = master->actualLabel();
+	if (master_label.isEmpty() || master_label == own_label)
+		return own_label;
+	if (own_label.isEmpty())
+		return master_label;
+	return master_label + labelInheritanceSeparator() + own_label;
+}
+
+/**
+ * @brief Element::inheritsLabel
+ * Return the explicit per-Slave choice, or the linked Master's project XRef
+ * default when the element has no explicit override.
+ */
+bool Element::inheritsLabel() const
+{
+	if (m_data.m_type != ElementData::Slave)
+		return false;
+
+	const QVariant explicit_value = m_data.m_informations.value(QStringLiteral("inherit_label"));
+	if (m_data.m_informations.contains(QStringLiteral("inherit_label")) &&
+		!explicit_value.isNull() && !explicit_value.toString().trimmed().isEmpty())
+	{
+		return explicit_value.toString() == QLatin1String("true");
+	}
+
+	QString type = m_data.m_slave_type == ElementData::PLCSlave
+		? QStringLiteral("plc") : QStringLiteral("coil");
+	for (Element *linked : connected_elements) {
+		if (linked && linked->linkType() == Element::Master) {
+			type = linked->kindInformations().value(QStringLiteral("type")).toString();
+			break;
+		}
+	}
+	return !diagram() || !diagram()->project()
+		? true : diagram()->project()->defaultXRefProperties(type).inheritLabelByDefault();
+}
+
+/**
+ * @brief Element::labelInheritanceSeparator
+ * Return the separator configured for the linked Master's XRef type.
+ */
+QString Element::labelInheritanceSeparator() const
+{
+	QString type = m_data.m_slave_type == ElementData::PLCSlave
+		? QStringLiteral("plc") : QStringLiteral("coil");
+	for (Element *linked : connected_elements) {
+		if (linked && linked->linkType() == Element::Master) {
+			type = linked->kindInformations().value(QStringLiteral("type")).toString();
+			break;
+		}
+	}
+	return !diagram() || !diagram()->project()
+		? QStringLiteral("-") : diagram()->project()->defaultXRefProperties(type).labelSeparator();
 }
 
 /**

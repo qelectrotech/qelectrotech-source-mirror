@@ -194,9 +194,10 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_PLC_ADDRESS,
 						 ELMT_PLC_FUNCTION,
 						 ELMT_PLC_COMMENT,
-					 ELMT_PLC_CROSSREF,
-					 ELMT_XREF,
-					 "exclude_from_bom" };
+						 ELMT_PLC_CROSSREF,
+						 ELMT_XREF,
+						 "exclude_from_bom",
+						 "inherit_label" };
 	return list;
 }
 

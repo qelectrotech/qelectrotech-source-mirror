@@ -77,6 +77,12 @@ class XRefProperties : public PropertiesInterface
 	void setSlaveLabel(const QString slave) {m_slave_label = slave;}
 	QString slaveLabel () const				{return m_slave_label;}
 
+	void setInheritLabelByDefault(bool inherit) {m_inherit_label_by_default = inherit;}
+	bool inheritLabelByDefault() const {return m_inherit_label_by_default;}
+
+	void setLabelSeparator(const QString &separator) {m_label_separator = separator;}
+	QString labelSeparator() const {return m_label_separator;}
+
 	void setOffset(const int offset) {m_offset = offset;}
 	int offset() const				 {return m_offset;}
 
@@ -95,6 +101,8 @@ class XRefProperties : public PropertiesInterface
 	QStringList m_prefix_keys;
 	QString m_master_label;
 	QString m_slave_label;
+	bool m_inherit_label_by_default;
+	QString m_label_separator;
 	int     m_offset;
 	int     m_slave_offset;
 	QString m_key;

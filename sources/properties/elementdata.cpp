@@ -54,6 +54,7 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 	kindInfoFromXml(xml_element);
 	m_informations.fromXml(xml_element.firstChildElement(QStringLiteral("elementInformations")),
 						   QStringLiteral("elementInformation"));
+	applyInformationDefaults(m_type, m_informations);
 	m_names_list.fromXml(xml_element);
 
 	auto xml_draw_info = xml_element.firstChildElement(QStringLiteral("informations"));
@@ -62,6 +63,35 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 	}
 
 	return true;
+}
+
+/**
+ * @brief ElementData::applyInformationDefaults
+ * Apply basetype-specific defaults without overriding an explicit value.
+ * Legacy Slave definitions and instances did not store these boolean fields.
+ * Treat a missing, null, or empty value as enabled while preserving an
+ * explicit false opt-in.
+ */
+void ElementData::applyInformationDefaults(
+		ElementData::Type type,
+		DiagramContext &informations)
+{
+	if (type != ElementData::Slave)
+		return;
+
+	const QStringList default_true_keys = {
+		QStringLiteral("exclude_from_bom")
+	};
+	for (const QString &key : default_true_keys)
+	{
+		const QVariant value = informations.value(key);
+		if (!informations.contains(key)
+			|| value.isNull()
+			|| value.toString().trimmed().isEmpty())
+		{
+			informations.addValue(key, QStringLiteral("true"));
+		}
+	}
 }
 
 QDomElement ElementData::kindInfoToXml(QDomDocument &document)

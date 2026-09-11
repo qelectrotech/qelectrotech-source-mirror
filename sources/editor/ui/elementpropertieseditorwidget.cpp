@@ -292,7 +292,7 @@ void ElementPropertiesEditorWidget::updateTree()
 			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Slave:
-			ui->m_tree->setDisabled(true);
+			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Terminal:
 			ui->m_tree->setEnabled(true);
@@ -399,6 +399,7 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_informations.addValue(qtwi->data(0, Qt::UserRole).toString(),
 									   txt);
 	}
+	ElementData::applyInformationDefaults(m_data.m_type, m_data.m_informations);
 	
 	this->close();
 }
@@ -425,7 +426,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
-								  type_ == ElementData::Master));
+								  type_ == ElementData::Master ||
+								  type_ == ElementData::Slave ||
+								  type_ == ElementData::Terminal));
 
 	updateTree();
 }

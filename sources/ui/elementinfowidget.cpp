@@ -171,6 +171,9 @@ void ElementInfoWidget::enableLiveEdit()
 	if (m_exclude_from_bom_cb) {
 		connect(m_exclude_from_bom_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
+	if (m_inherit_label_cb) {
+		connect(m_inherit_label_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
 }
 
 /**
@@ -188,6 +191,9 @@ void ElementInfoWidget::disableLiveEdit()
 	}
 	if (m_exclude_from_bom_cb) {
 		disconnect(m_exclude_from_bom_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
+	}
+	if (m_inherit_label_cb) {
+		disconnect(m_inherit_label_cb, &QCheckBox::clicked, this, &ElementInfoWidget::apply);
 	}
 }
 
@@ -211,6 +217,7 @@ void ElementInfoWidget::buildInterface()
 		//has no entry for it that row carries no label at all - an anonymous
 		//line that currentInfo() then fills with "true"/"false".
 	keys.removeAll(QStringLiteral("exclude_from_bom"));
+	keys.removeAll(QStringLiteral("inherit_label"));
 
 	for (auto str : keys)
 	{
@@ -232,15 +239,20 @@ void ElementInfoWidget::buildInterface()
 	// English: Initialize and style the BOM exclusion checkbox
 	m_exclude_from_bom_cb = new QCheckBox(tr("Exclure de la nomenclature"), this);
 	m_exclude_from_bom_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
+	m_inherit_label_cb = new QCheckBox(tr("Hériter le label"), this);
+	m_inherit_label_cb->setStyleSheet(QStringLiteral("margin: 5px; font-weight: bold;"));
 
 	if (QVBoxLayout *mainLayout = qobject_cast<QVBoxLayout*>(this->layout())) {
 		mainLayout->insertWidget(1, m_potential_isolating_cb);
 		// English: Insert the new checkbox into the main vertical layout
 		mainLayout->insertWidget(2, m_exclude_from_bom_cb);
+		mainLayout->insertWidget(3, m_inherit_label_cb);
 	}
 
 	// English: BOM exclusion applies to all elements, so it's always visible
 	m_exclude_from_bom_cb->setVisible(true);
+	m_inherit_label_cb->setVisible(
+		m_element.data()->elementData().m_type == ElementData::Slave);
 
 	// Show checkbox only if the element is a terminal
 	if (m_element.data()->elementData().m_type == ElementData::Terminal) {
@@ -267,7 +279,8 @@ QStringList ElementInfoWidget::predefinedKeys() const
 
 	keys << QStringLiteral("auto_num_locked")
 		 << QStringLiteral("potential_isolating")
-		 << QStringLiteral("exclude_from_bom");
+		 << QStringLiteral("exclude_from_bom")
+		 << QStringLiteral("inherit_label");
 
 	return keys;
 }
@@ -379,6 +392,9 @@ void ElementInfoWidget::updateUi()
 		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
 		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
 	}
+	if (m_inherit_label_cb) {
+		m_inherit_label_cb->setChecked(m_element->inheritsLabel());
+	}
 
 	if (m_live_edit) {
 		enableLiveEdit();
@@ -428,6 +444,10 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	if (m_exclude_from_bom_cb) {
 		info_.addValue(QStringLiteral("exclude_from_bom"), m_exclude_from_bom_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
+	}
+	if (m_inherit_label_cb &&
+		m_element->elementData().m_type == ElementData::Slave) {
+		info_.addValue(QStringLiteral("inherit_label"), m_inherit_label_cb->isChecked() ? QStringLiteral("true") : QStringLiteral("false"));
 	}
 	return info_;
 }

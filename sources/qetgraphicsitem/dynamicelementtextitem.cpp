@@ -382,6 +382,8 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		{
 			setupFormulaConnection();
 			updateLabel();
+			if (old_text_from == UserText && parentElement() != elementUseForInfo())
+				connect(parentElement(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 		}
 		else
 			setPlainText(elementUseForInfo()->elementInformations().value(m_info_name).toString());
@@ -395,6 +397,8 @@ void DynamicElementTextItem::setTextFrom(DynamicElementTextItem::TextFrom text_f
 		{
 			setupFormulaConnection();
 			updateLabel();
+			if (old_text_from == UserText && parentElement() != elementUseForInfo())
+				connect(parentElement(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 		}
 		else
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, elementUseForInfo()->elementInformations()));
@@ -755,6 +759,15 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		if(m_parent_element.data()->linkType() == Element::Slave)
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
+			connect(m_parent_element.data(), &Element::elementInfoChange,
+				this, &DynamicElementTextItem::elementInfoChanged,
+				Qt::UniqueConnection);
+			if (m_parent_element.data()->diagram() && m_parent_element.data()->diagram()->project())
+			{
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged,
+					this, &DynamicElementTextItem::updateLabel,
+					Qt::UniqueConnection);
+			}
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -846,7 +859,9 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = element->actualLabel();
+				Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+					? parentElement() : element;
+				final_text = label_element->actualLabel();
 			}
 		}
 		else {
@@ -860,6 +875,11 @@ void DynamicElementTextItem::elementInfoChanged()
 		if (m_composite_text.contains("%{label}"))
 			setupFormulaConnection();
 		
+		if (element && m_composite_text.contains(QStringLiteral("%{label}"))) {
+			Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+				? parentElement() : element;
+			dc.addValue(QStringLiteral("label"), label_element->actualLabel());
+		}
 		final_text = autonum::AssignVariables::replaceVariable(m_composite_text, dc);
 	}
 	else if (m_text_from  == UserText)
@@ -884,9 +904,22 @@ void DynamicElementTextItem::masterChanged()
 		updateXref();
 	}
 	
-	if(elementUseForInfo())
+	Element *linked_master = nullptr;
+	if (parentElement() && parentElement()->linkType() == Element::Slave)
 	{
-		m_master_element = elementUseForInfo();
+		for (Element *linked : parentElement()->linkedElements())
+		{
+			if (linked && linked->linkType() == Element::Master)
+			{
+				linked_master = linked;
+				break;
+			}
+		}
+	}
+
+	if(linked_master)
+	{
+		m_master_element = linked_master;
 		if(m_text_from == ElementInfo || m_text_from == CompositeText)
 			connect(m_master_element.data(), &Element::elementInfoChange, this, &DynamicElementTextItem::elementInfoChanged);
 		
@@ -1118,9 +1151,16 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+				? parentElement() : element;
+			setPlainText(label_element->actualLabel());
 		}
 		else if (m_text_from == CompositeText) {
+			if (element) {
+				Element *label_element = parentElement() && parentElement()->linkType() == Element::Slave
+					? parentElement() : element;
+				dc.addValue(QStringLiteral("label"), label_element->actualLabel());
+			}
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}

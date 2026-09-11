@@ -21,6 +21,10 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 - Diagrams/folios can now be duplicated along with all their metadata and embedded elements.
 - **BOM / Nomenclature**
 - Specific elements can now be excluded from the Bill of Materials (Nomenclature).
+- Slave labels can inherit their linked Master's label while retaining a local
+  suffix (for example `K1-A1` or `PLC1-CH3`). Each cross-reference type defines
+  whether inheritance is enabled by default and which separator is used; a
+  placed Slave can still override inheritance in its Informations tab.
 - **Terminal & cross-reference (Xref) work**
 - Continued iteration on a `max_slaves` limit for Master elements (added, tuned, briefly reverted, then re-implemented with proper save/load handling).
 - New "potential isolation" option for terminals, and new No/Nc/Common contact types for switch (SW) terminals.
@@ -48,6 +52,11 @@ Since 0.100, development has centered on a new headless command-line workflow, t
 - Fixed a crash when destroying a `QETProject` before its asynchronous backup had finished.
 - Fixed regional system locale sometimes loading the wrong translation.
 - Fixed dynamic element text shifting/jumping when duplicating diagrams, and a wiring-list filter/timing issue.
+- Fixed an idle repaint loop caused by linked coil cross-reference geometry
+  being invalidated from its paint path.
+- Reusing an element UUID from an external collection now places an identical
+  embedded definition directly; a changed definition with the same UUID uses
+  the existing overwrite/ignore/rename dialog.
 - Various smaller fixes: a first-click spurious element move right after selecting a tool, an -Wreorder compiler warning, and several translation corrections (German, French, Chinese).
 
 ### macOS

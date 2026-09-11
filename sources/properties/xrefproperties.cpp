@@ -35,6 +35,8 @@ XRefProperties::XRefProperties()
 	m_prefix_keys << "power" << "delay" << "switch";
 	m_master_label = "%f-%l%c";
 	m_slave_label = "(%f-%l%c)";
+	m_inherit_label_by_default = true;
+	m_label_separator = QStringLiteral("-");
 	m_offset = 0;
 	m_slave_offset = 0;
 	m_xref_pos = Qt::AlignBottom;
@@ -63,6 +65,8 @@ void XRefProperties::toSettings(QSettings &settings,
 	settings.setValue(prefix % "master_label", master_label);
 	QString slave_label = m_slave_label;
 	settings.setValue(prefix % "slave_label", slave_label);
+	settings.setValue(prefix % "inherit_label", m_inherit_label_by_default);
+	settings.setValue(prefix % "label_separator", m_label_separator);
 
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
@@ -92,6 +96,8 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	m_slave_offset = settings.value(prefix % "slave_offset", "0").toInt();
 	m_master_label = settings.value(prefix % "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
+	m_inherit_label_by_default = settings.value(prefix % "inherit_label", true).toBool();
+	m_label_separator = settings.value(prefix % "label_separator", QStringLiteral("-")).toString();
 
 	QMetaEnum var = QMetaEnum::fromType<Qt::Alignment>();
 	m_xref_pos = Qt::AlignmentFlag(var.keyToValue((settings.value(prefix % "xrefpos", "AlignBottom").toString()).toStdString().data()));
@@ -132,6 +138,8 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;
 	xml_element.setAttribute("slave_label", slave_label);
+	xml_element.setAttribute("inherit_label", m_inherit_label_by_default ? "true" : "false");
+	xml_element.setAttribute("label_separator", m_label_separator);
 	foreach (QString key, m_prefix.keys()) {
 		xml_element.setAttribute(key % "prefix", m_prefix.value(key));
 	}
@@ -165,6 +173,8 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 	m_slave_offset = xml_element.attribute("slave_offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
+	m_inherit_label_by_default = xml_element.attribute("inherit_label", "true") == QLatin1String("true");
+	m_label_separator = xml_element.attribute("label_separator", QStringLiteral("-"));
 	foreach (QString key, m_prefix_keys) {
 		m_prefix.insert(key, xml_element.attribute(key % "prefix"));
 	}
@@ -207,12 +217,13 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 			&& m_offset      == xrp.m_offset
 			&& m_slave_offset== xrp.m_slave_offset
 			&& m_xref_pos    == xrp.m_xref_pos
-			&& m_slave_label == xrp.m_slave_label);
+			&& m_slave_label == xrp.m_slave_label
+			&& m_inherit_label_by_default == xrp.m_inherit_label_by_default
+			&& m_label_separator == xrp.m_label_separator);
 }
 
 bool XRefProperties::operator !=(const XRefProperties &xrp) const
 {
 	return (! (*this == xrp));
 }
-
 
