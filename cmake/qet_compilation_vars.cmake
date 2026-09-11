@@ -858,6 +858,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_hu.ts
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_ko.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts
