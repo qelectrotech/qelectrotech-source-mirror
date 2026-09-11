@@ -25,6 +25,7 @@
 #include "../qetxml.h"
 #include "../qetproject.h"
 #include <QDir>
+#include <QDomDocument>
 #include <QStringList>
 #include <QVariant>
 #include <utility>
@@ -706,65 +707,70 @@ namespace autonum
 
 	/**
 		@brief prefixFromLabelFile
-		Look up a prefix for @a path (path[i] outermost, path[1] the
-		deepest directory) in the qet_labels.xml at @a filepath.
-		@return the prefix, or a null QString if the file cannot be read
-			or holds no matching entry.
+		Look up a prefix for @a path (path[dirLevel] outermost, path[1] the
+		deepest directory; path[0], the element's own file name, is never
+		matched) in the qet_labels.xml at @a filepath.
+
+		Descends through nested \<category name="..."\> elements matching
+		path[dirLevel], path[dirLevel-1], ..., path[1] in turn, considering
+		only *direct* children at each step -- unlike a flat token scan,
+		this cannot be fooled by a same-named category living elsewhere in
+		the document at the wrong nesting depth (bugtracker #671 item 5).
+
+		At each matched level, that category's own \<prefix\> child -- even
+		an empty one -- overrides whatever a shallower ancestor already
+		provided, so an explicit empty \<prefix/\> cancels inheritance
+		rather than silently falling back to it (the behaviour requested in
+		PR #686 review). A category with no \<prefix\> child at all leaves
+		the inherited value untouched, which is how a directory with no
+		prefix of its own comes to inherit its parent's, as the file's own
+		header comment documents.
+
+		@return the prefix that applies, or a null QString if the file
+			cannot be read, is not well-formed, or does not describe this
+			path at all (as opposed to describing it with no prefix
+			anywhere along it, which is a non-null empty string).
 	*/
-	static QString prefixFromLabelFile(const QString &filepath, const QStringList &path, int i, int dirLevel)
+	static QString prefixFromLabelFile(const QString &filepath, const QStringList &path, int dirLevel)
 	{
 		QFile file(filepath);
 		if (!file.open(QFile::ReadOnly | QFile::Text))
 			return QString();
 
-		QXmlStreamReader rxml;
-		rxml.setDevice(&file);
-		rxml.readNext();
+		QDomDocument document;
+		if (!document.setContent(&file))
+			return QString();
 
-		while (!rxml.atEnd()) {
-			if (rxml.attributes().value("name").toString() == path[i]) {
-				rxml.readNext();
-				i = i - 1;
+		QDomElement node = document.documentElement();
+		if (node.isNull())
+			return QString();
 
-				if (i == 0) {
-					for (int j = i ; j <= dirLevel ; ++j) {
-
-						if (rxml.name().toString() == "prefix") {
-								//An empty <prefix/> is a deliberate override
-								//(cancel a company prefix from the custom
-								//collection) and must stop the search here.
-								//readElementText() returns a null QString for
-								//an empty element, not an empty one, so a
-								//null-vs-empty check is needed to tell "found,
-								//empty" apart from "not found" -- the caller
-								//treats isNull() as "keep looking".
-							const QString text = rxml.readElementText();
-							return text.isNull() ? QString("") : text;
-						} else {
-							while (rxml.readNextStartElement() && rxml.name().toString() != "prefix") {
-								rxml.skipCurrentElement();
-								rxml.readNext();
-							}
-						}
-					}
-				}
-					//The readNext() above already advanced past the token
-					//that matched path[i] (or, when i reached 0, past
-					//whatever the search for <prefix> left current on).
-					//Falling through to the unconditional readNext() below
-					//as well would advance a *second* time per match, which
-					//only happens to land back on the right token because a
-					//pretty-printed file inserts a whitespace-only
-					//Characters token between adjacent elements for it to
-					//consume. A minified qet_labels.xml has no such token,
-					//so that second advance skips clean over the very
-					//element the next loop iteration needs to see, and the
-					//lookup silently finds nothing. Skip it here instead.
-				continue;
+		QString prefix;
+		for (int i = dirLevel ; i >= 1 ; --i) {
+			QDomElement child = node.firstChildElement(QStringLiteral("category"));
+			while (!child.isNull()
+				   && child.attribute(QStringLiteral("name")) != path[i]) {
+				child = child.nextSiblingElement(QStringLiteral("category"));
 			}
-			rxml.readNext();
+			if (child.isNull())
+				return QString();
+			node = child;
+
+			const QDomElement own = node.firstChildElement(QStringLiteral("prefix"));
+			if (!own.isNull()) {
+					//readElementText()'s null-vs-empty distinction that PR
+					//#686 needed for the old QXmlStreamReader-based lookup
+					//has a QDomElement equivalent: text() on an empty
+					//element can itself come back null depending on how the
+					//XML was written, so the same explicit fallback applies
+					//-- an empty QString here means "found, deliberately
+					//blank", not "not found".
+				prefix = own.text();
+				if (prefix.isNull())
+					prefix = QString("");
+			}
 		}
-		return QString();
+		return prefix;
 	}
 
 	/**
@@ -784,11 +790,11 @@ namespace autonum
 			//collection root, outermost last -- path[dirLevel] is the
 			//top-level category, path[1] the element's immediate parent
 			//directory, path[0] the element's own file name (never matched
-			//against a category: the search below stops descending once it
-			//has matched path[1], the deepest real directory). An
-			//unbounded QStringList rather than a fixed-size array, because
-			//a custom collection can nest deeper than the shipped one --
-			//see bugtracker #671 item 3.
+			//against a category: the search stops descending once it has
+			//matched path[1], the deepest real directory). An unbounded
+			//QStringList rather than a fixed-size array, because a custom
+			//collection can nest deeper than the shipped one -- see
+			//bugtracker #671 item 3.
 		QStringList path;
 		ElementsLocation current_location = location;
 		while ((current_location.parent() != current_location)
@@ -803,24 +809,48 @@ namespace autonum
 			current_location = current_location.parent();
 		}
 		const int dirLevel = path.size() - 1;
+			//Name of the top-level tree the element's path was found
+			//under, e.g. "10_electric" -- or, for a custom/company
+			//collection not organised that way, whatever its top-level
+			//folder happens to be called.
+		const QString collection_root = current_location.fileName();
 
-		if (current_location.fileName() == "10_electric") {
-				//commonElementsDir() -- unlike customElementsDir(), which
-				//normalises this itself -- returns whatever path the user
-				//configured verbatim, with no guaranteed trailing
-				//separator. Concatenating a suffix onto it directly used
-				//to silently mangle the path (and so the prefix lookup)
-				//for any install relocated to a directory without a
-				//trailing slash; QDir::filePath() joins them correctly
-				//either way.
-			return prefixFromLabelFile(
-				QDir(QETApp::commonElementsDir()).filePath(
-					QStringLiteral("10_electric/qet_labels.xml")),
-				path, dirLevel, dirLevel);
+			//Every top-level common-collection tree (10_electric,
+			//20_logic, 30_hydraulic, ...) may carry its own
+			//qet_labels.xml, with categories relative to that tree, the
+			//same way 10_electric/qet_labels.xml already does -- not just
+			//10_electric, which is all the hardcoded check this replaces
+			//used to allow (bugtracker #671 item 2). commonElementsDir()
+			//-- unlike customElementsDir(), which normalises this itself
+			//-- returns whatever path the user configured verbatim, with
+			//no guaranteed trailing separator; concatenating a suffix onto
+			//it directly used to silently mangle the path (and so the
+			//prefix lookup) for any install relocated to a directory
+			//without a trailing slash (#671 item 1). QDir::filePath()
+			//joins correctly either way.
+		{
+			const QString common_file = QDir(QETApp::commonElementsDir())
+					.filePath(collection_root + QStringLiteral("/qet_labels.xml"));
+			const QString prefix = prefixFromLabelFile(common_file, path, dirLevel);
+			if (!prefix.isNull()) {
+				return prefix;
+			}
 		}
 
-		//Look in the custom collection first, then in the company
-		//collection, so a user override wins over the shared one.
+			/* Which collection an element actually came from is not
+			 * recoverable post-import (addElement() strips the protocol),
+			 * so custom and company labels files are tried against two
+			 * possible layouts: with the collection's top-level tree name
+			 * folded into the path (a custom/company file organised as a
+			 * mirror of the common collection, tree name included) and
+			 * without it (a file scoped to just this one tree, matching
+			 * how the common collection's own files are written). Custom
+			 * is tried before company, so a user override wins over a
+			 * shared one.
+			 */
+		QStringList path_from_root = path;
+		path_from_root << collection_root;
+
 		const QStringList candidate_dirs = {
 			QETApp::customElementsDir(),
 			QETApp::companyElementsDir()
@@ -828,10 +858,12 @@ namespace autonum
 		for (const QString &dir : candidate_dirs) {
 			const QString candidate =
 					QDir(dir).filePath(QStringLiteral("qet_labels.xml"));
-			const QString prefix =
-					prefixFromLabelFile(candidate, path, dirLevel, dirLevel);
-			if (!prefix.isNull()) {
-				return prefix;
+			for (const QStringList &segments : {path_from_root, path}) {
+				const QString prefix = prefixFromLabelFile(
+							candidate, segments, segments.size() - 1);
+				if (!prefix.isNull()) {
+					return prefix;
+				}
 			}
 		}
 		return QString();
