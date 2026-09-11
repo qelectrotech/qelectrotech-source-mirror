@@ -148,26 +148,42 @@ fi
 
 macdeployqt $BUNDLE
 
-### fix @rpath dependencies macdeployqt could not resolve ###########
+### fix Homebrew dependencies macdeployqt could not handle ##########
 # Recent Homebrew bottles (brotli, webp, sharpyuv...) reference their own
 # dependencies as @rpath/libX.dylib. macdeployqt only resolves @rpath in
-# Contents/lib and in Qt's lib dir (-libpath does not help), so it prints
-# "Cannot resolve rpath" and leaves them out. Copy them from
-# /opt/homebrew/lib into Contents/Frameworks: the executable's LC_RPATH
-# (@executable_path/../Frameworks) lets dyld find them there. They are
-# signed below with everything else in Frameworks/.
+# Contents/lib and in Qt's lib dir (-libpath does not help): it prints
+# "Cannot resolve rpath" and leaves some references untouched, either
+# absolute /opt/homebrew paths or @rpath libs missing from the bundle.
+# Fix both here: every /opt/homebrew reference is rewritten to
+# @rpath/libX.dylib (install ids too), and every @rpath/libX.dylib is
+# copied into Contents/Frameworks, where the executable's LC_RPATH
+# (@executable_path/../Frameworks) lets dyld find it. Everything is signed
+# below with the rest of Frameworks/.
 echo
 echo "______________________________________________________________"
-echo "Fix unresolved @rpath dependencies:"
+echo "Fix Homebrew dependencies left by macdeployqt:"
 
 FW="$BUNDLE/Contents/Frameworks"
+chmod -R u+w "$BUNDLE/Contents/MacOS" "$FW" "$BUNDLE/Contents/PlugIns" 2>/dev/null
 
-# List the @rpath/libX.dylib names referenced by every Mach-O in the bundle
-list_rpath_libs() {
+# Every Mach-O candidate of the bundle (otool silently ignores the others)
+list_macho() {
     find "$BUNDLE/Contents/MacOS" "$FW" "$BUNDLE/Contents/PlugIns" -type f \
-        \( -name '*.dylib' -o -perm -u+x \) 2>/dev/null | while read bin; do
-        otool -L "$bin" 2>/dev/null \
-            | awk 'NR>1 && $1 ~ /^@rpath\/[^\/]+\.dylib$/ { sub("^@rpath/", "", $1); print $1 }'
+        \( -name '*.dylib' -o -perm -u+x \) 2>/dev/null
+}
+
+# Dependencies of one binary, without its own install id (dylibs only)
+list_deps() {
+    _id=$(otool -D "$1" 2>/dev/null | sed -n 2p)
+    otool -L "$1" 2>/dev/null | awk 'NR>1 { print $1 }' | while read _dep; do
+        [ "$_dep" = "$_id" ] || echo "$_dep"
+    done
+}
+
+# The @rpath/libX.dylib names referenced anywhere in the bundle
+list_rpath_libs() {
+    list_macho | while read bin; do
+        list_deps "$bin" | sed -n 's#^@rpath/\([^/]*\.dylib\)$#\1#p'
     done | LC_ALL=C sort -u
 }
 
@@ -176,29 +192,53 @@ if ! otool -l "$BUNDLE/Contents/MacOS/$APPNAME" | grep -q "@executable_path/../F
     echo "  Added LC_RPATH @executable_path/../Frameworks to $APPNAME"
 fi
 
+# 3 passes, since each copied library can bring its own dependencies:
+#  a. rewrite absolute /opt/homebrew references (install ids included),
+#     copying the referenced library into Frameworks/ if needed
+#  b. copy the @rpath/libX.dylib still missing from Frameworks/
 for PASS in 1 2 3; do
+    list_macho | while read bin; do
+        _id=$(otool -D "$bin" 2>/dev/null | sed -n 2p)
+        case "$_id" in
+            /opt/homebrew/*)
+                install_name_tool -id "@rpath/$(basename "$_id")" "$bin" 2>/dev/null
+                echo "  Fixed id  (pass $PASS): $(basename "$bin")"
+                ;;
+        esac
+        list_deps "$bin" | grep '^/opt/homebrew/' | while read ref; do
+            name=$(basename "$ref")
+            if [ ! -e "$FW/$name" ]; then
+                cp -L "$ref" "$FW/$name" && chmod u+w "$FW/$name"
+                echo "  Copied    (pass $PASS): $name"
+            fi
+            install_name_tool -change "$ref" "@rpath/$name" "$bin" 2>/dev/null
+            echo "  Fixed ref (pass $PASS): $(basename "$bin") -> @rpath/$name"
+        done
+    done
     list_rpath_libs | while read lib; do
         if [ ! -e "$FW/$lib" ] && [ -e "/opt/homebrew/lib/$lib" ]; then
-            cp -L "/opt/homebrew/lib/$lib" "$FW/$lib"
-            chmod u+w "$FW/$lib"
-            echo "  Copied (pass $PASS): $lib"
+            cp -L "/opt/homebrew/lib/$lib" "$FW/$lib" && chmod u+w "$FW/$lib"
+            echo "  Copied    (pass $PASS): $lib"
         fi
     done
 done
 
+# 3. Checks
 UNRESOLVED=$(list_rpath_libs | while read lib; do [ -e "$FW/$lib" ] || echo "$lib"; done)
 if [ -n "$UNRESOLVED" ]; then
     echo "ERROR: @rpath libraries still missing from Frameworks/:" $UNRESOLVED
     exit 1
 fi
-HOMEBREW_REFS=$(find "$BUNDLE/Contents/MacOS" "$FW" "$BUNDLE/Contents/PlugIns" -type f \
-    \( -name '*.dylib' -o -perm -u+x \) -exec otool -L {} \; 2>/dev/null | grep "/opt/homebrew/" || true)
+HOMEBREW_REFS=$(list_macho | while read bin; do
+    otool -L "$bin" 2>/dev/null | awk 'NR>1 { print $1 }' | grep '^/opt/homebrew/' \
+        | sed "s#^#  $(basename "$bin") -> #"
+done)
 if [ -n "$HOMEBREW_REFS" ]; then
     echo "ERROR: bundle still references Homebrew paths:"
     echo "$HOMEBREW_REFS"
     exit 1
 fi
-echo "All @rpath dependencies resolved inside the bundle."
+echo "All dependencies resolved inside the bundle."
 
 ### install Info.plist and app icon #################################
 # NOTE: this must run AFTER macdeployqt, not before. macdeployqt
