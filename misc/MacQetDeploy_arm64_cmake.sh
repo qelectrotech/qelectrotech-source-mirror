@@ -308,9 +308,10 @@ echo "$(wc -l < "$QM_TMP/built" | tr -d ' ') .qm files copied to Contents/Resour
 # on y depose donc chaque qtbase_XX.qm sous le nom qt_XX.qm. qtbase_XX.qm est
 # autonome, contrairement aux qt_XX.qm de Qt qui dependent de tous les modules.
 # Premier dossier contenant des qtbase_*.qm : celui annonce par qtpaths, puis
-# la formule Homebrew separee qttranslations (non liee dans /opt/homebrew/share,
-# d'ou l'absence des qtbase_*.qm dans le dossier annonce par qtpaths), puis
-# les autres emplacements Homebrew possibles.
+# la formule Homebrew separee qttranslations, puis les autres emplacements
+# Homebrew possibles. Homebrew fait de ces dossiers des liens symboliques
+# (-> Cellar/qttranslations/...) : find doit donc les suivre (-L), sinon il
+# ne voit que le lien lui-meme et ne trouve aucun fichier dedans.
 QT_TR_DIR=""
 for d in "$("$QT_PREFIX/bin/qtpaths" --query QT_INSTALL_TRANSLATIONS 2>/dev/null)" \
          "$(brew --prefix qttranslations 2>/dev/null)/share/qt/translations" \
@@ -323,7 +324,7 @@ for d in "$("$QT_PREFIX/bin/qtpaths" --query QT_INSTALL_TRANSLATIONS 2>/dev/null
     fi
 done
 LANG_DST="$BUNDLE/Contents/Resources/lang"
-find "$QT_TR_DIR" -maxdepth 1 -name 'qtbase_*.qm' 2>/dev/null | while read f; do
+find -L "$QT_TR_DIR" -maxdepth 1 -name 'qtbase_*.qm' 2>/dev/null | while read f; do
     l=$(basename "$f" .qm | sed 's/^qtbase_//')
     cp "$f" "$LANG_DST/qt_$l.qm"
 done
@@ -336,7 +337,7 @@ sed 's/^qet_//' "$QM_TMP/listed" | while read l; do
         if [ -e "$main" ]; then
             alt="$main"
         else
-            alt=$(find "$QT_TR_DIR" -maxdepth 1 -name "qtbase_${l}_*.qm" 2>/dev/null | LC_ALL=C sort | head -1)
+            alt=$(find -L "$QT_TR_DIR" -maxdepth 1 -name "qtbase_${l}_*.qm" 2>/dev/null | LC_ALL=C sort | head -1)
         fi
         [ -n "$alt" ] && cp "$alt" "$LANG_DST/qt_$l.qm"
     fi
