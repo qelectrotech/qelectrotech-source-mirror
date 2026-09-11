@@ -126,7 +126,8 @@ ELAPSED_TIME=$(($SECONDS - $START_TIME))
 echo
 echo "The time of compilation is $(($ELAPSED_TIME/60)) min $(($ELAPSED_TIME%60)) sec"
 
-# TODO: confirmer le chemin exact de sortie du .app selon CMakeLists.txt
+# Le .app sort a la racine de $BUILD_DIR : add_executable(... MACOSX_BUNDLE)
+# sans RUNTIME_OUTPUT_DIRECTORY dans CMakeLists.txt.
 echo "Copying built bundle into place..."
 cp -R "$BUILD_DIR/qelectrotech.app" "./$BUNDLE"
 
@@ -182,9 +183,27 @@ fi
 if [ -d "${QET_TBT_DIR}" ]; then
     cp -R ${QET_TBT_DIR} $BUNDLE/Contents/Resources/titleblocks
 fi
-if [ -d "${QET_LANG_DIR}" ]; then
-    mkdir $BUNDLE/Contents/Resources/lang
-    cp ${current_dir}/lang/*.qm $BUNDLE/Contents/Resources/lang
+# Translations: since PR No. 751, .qm files are no longer versioned in
+# lang/ (which now contains only .ts files). lrelease generates them during
+# compilation in $BUILD_DIR/lang/ (OUTPUT_LOCATION “lang”, relative to the build).
+# The bundle does not automatically include them (no MACOSX_PACKAGE_LOCATION),
+# hence the manual copy to Contents/Resources/lang (= QET_LANG_PATH
+# “../Resources/lang/” on APPLE). A missing .qm file stops the script rather than
+# producing a signed and notarised DMG without translations.
+QM_SRC="${current_dir}/${BUILD_DIR}/lang"
+TS_COUNT=$(find "${QET_LANG_DIR}" -maxdepth 1 -name 'qet_*.ts' | wc -l | tr -d ' ')
+if ! ls "${QM_SRC}"/qet_*.qm >/dev/null 2>&1; then
+    echo "ERROR: no .qm file in ${QM_SRC} (did lrelease run?)"
+    find "${current_dir}/${BUILD_DIR}" -name '*.qm'
+    exit 1
+fi
+mkdir -p $BUNDLE/Contents/Resources/lang
+cp "${QM_SRC}"/qet_*.qm $BUNDLE/Contents/Resources/lang/
+QM_COUNT=$(find $BUNDLE/Contents/Resources/lang -maxdepth 1 -name 'qet_*.qm' | wc -l | tr -d ' ')
+echo "${QM_COUNT} .qm files copied to Contents/Resources/lang (expected: ${TS_COUNT})"
+if [ "${QM_COUNT}" -ne "${TS_COUNT}" ]; then
+    echo "ERROR: missing translations (${QM_COUNT} .qm for ${TS_COUNT} .ts)"
+    exit 1
 fi
 if [ -d "${QET_EXAMPLES_DIR}" ]; then
     mkdir $BUNDLE/Contents/Resources/examples
