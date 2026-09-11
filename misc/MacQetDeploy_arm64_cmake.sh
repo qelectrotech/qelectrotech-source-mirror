@@ -300,6 +300,41 @@ find "${QM_SRC}" -maxdepth 1 -name 'qet_*.qm' -exec cp {} $BUNDLE/Contents/Resou
 find $BUNDLE/Contents/Resources/lang -maxdepth 1 -name 'qet_*.qm' -exec basename {} .qm \; | LC_ALL=C sort > "$QM_TMP/built"
 MISSING=$(LC_ALL=C comm -23 "$QM_TMP/listed" "$QM_TMP/built")
 echo "$(wc -l < "$QM_TMP/built" | tr -d ' ') .qm files copied to Contents/Resources/lang (expected: $(wc -l < "$QM_TMP/listed" | tr -d ' '))"
+
+# Traductions de Qt lui-meme (boutons OK/Annuler, dialogues standard...) :
+# elles viennent de qtbase_XX.qm, pas des .ts de QET, et macdeployqt ne les
+# deploie pas. QETApp::setLanguage() charge "qt_XX" depuis le chemin de
+# traductions de Qt (absent du bundle), puis depuis le dossier lang/ de QET :
+# on y depose donc chaque qtbase_XX.qm sous le nom qt_XX.qm. qtbase_XX.qm est
+# autonome, contrairement aux qt_XX.qm de Qt qui dependent de tous les modules.
+QT_TR_DIR=$("$QT_PREFIX/bin/qtpaths" --query QT_INSTALL_TRANSLATIONS 2>/dev/null)
+[ -d "$QT_TR_DIR" ] || QT_TR_DIR="$QT_PREFIX/share/qt/translations"
+LANG_DST="$BUNDLE/Contents/Resources/lang"
+find "$QT_TR_DIR" -maxdepth 1 -name 'qtbase_*.qm' 2>/dev/null | while read f; do
+    l=$(basename "$f" .qm | sed 's/^qtbase_//')
+    cp "$f" "$LANG_DST/qt_$l.qm"
+done
+# Langues QET sans equivalent Qt exact (pt -> pt_PT, zh -> zh_CN...) :
+# QTranslator ne sait que raccourcir le code (fr_FR -> fr), pas l'allonger.
+# On prefere la variante "principale" (pt_PT), sinon la premiere trouvee.
+sed 's/^qet_//' "$QM_TMP/listed" | while read l; do
+    if [ ! -e "$LANG_DST/qt_$l.qm" ]; then
+        main="$QT_TR_DIR/qtbase_${l}_$(echo "$l" | tr 'a-z' 'A-Z').qm"
+        if [ -e "$main" ]; then
+            alt="$main"
+        else
+            alt=$(find "$QT_TR_DIR" -maxdepth 1 -name "qtbase_${l}_*.qm" 2>/dev/null | LC_ALL=C sort | head -1)
+        fi
+        [ -n "$alt" ] && cp "$alt" "$LANG_DST/qt_$l.qm"
+    fi
+done
+QT_QM_COUNT=$(find "$LANG_DST" -maxdepth 1 -name 'qt_*.qm' | wc -l | tr -d ' ')
+echo "${QT_QM_COUNT} Qt translation files (qt_*.qm) copied from ${QT_TR_DIR}"
+if [ "${QT_QM_COUNT}" -eq 0 ]; then
+    echo "ERROR: no qtbase_*.qm found in ${QT_TR_DIR}"
+    rm -rf "$QM_TMP"
+    exit 1
+fi
 rm -rf "$QM_TMP"
 if [ -n "$MISSING" ]; then
     echo "ERROR: missing translations:" $MISSING
