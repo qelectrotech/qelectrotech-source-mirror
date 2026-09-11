@@ -39,6 +39,7 @@
 #include <QDomDocument>
 #include <QDate>
 #include <QFile>
+#include <QSaveFile>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -587,14 +588,23 @@ int exportWiring(QETProject &project, const QString &output)
 		++rows;
 	}
 
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		//Written through QSaveFile so a failure part-way leaves the previous
+		//file intact rather than a truncated one, and with a UTF-8 byte order
+		//mark: without it Excel opens a .csv as the local 8-bit codepage and
+		//mangles any accented element label. Qt writes UTF-8 by default, so
+		//the bytes were already right -- the mark is what tells Excel so.
+	QSaveFile file(output);
+	if (!file.open(QIODevice::WriteOnly)) {
 		err << "Cannot open '" << output << "' for writing.\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << csv;
-	file.close();
+	static const char utf8_bom[] = "\xEF\xBB\xBF";
+	file.write(utf8_bom, 3);
+	file.write(csv.toUtf8());
+	if (!file.commit()) {
+		err << "Cannot write '" << output << "': " << file.errorString() << "\n";
+		return 1;
+	}
 	out << "Exported " << rows << " conductor(s) -> " << output << "\n";
 	return 0;
 }
