@@ -146,7 +146,11 @@ if [ ! -d $BUNDLE ] ; then
     exit 1
 fi
 
-macdeployqt $BUNDLE
+macdeployqt $BUNDLE -libpath=/opt/homebrew/lib 2>&1 | tee /tmp/macdeployqt.log
+if grep -q "Cannot resolve rpath" /tmp/macdeployqt.log ; then
+    echo "ERROR: macdeployqt could not bundle some dependencies, aborting."
+    exit 1
+fi
 
 ### install Info.plist and app icon #################################
 # NOTE: this must run AFTER macdeployqt, not before. macdeployqt
