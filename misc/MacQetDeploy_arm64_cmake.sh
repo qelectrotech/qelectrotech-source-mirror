@@ -146,11 +146,59 @@ if [ ! -d $BUNDLE ] ; then
     exit 1
 fi
 
-macdeployqt $BUNDLE -libpath=/opt/homebrew/lib 2>&1 | tee /tmp/macdeployqt.log
-if grep -q "Cannot resolve rpath" /tmp/macdeployqt.log ; then
-    echo "ERROR: macdeployqt could not bundle some dependencies, aborting."
+macdeployqt $BUNDLE
+
+### fix @rpath dependencies macdeployqt could not resolve ###########
+# Recent Homebrew bottles (brotli, webp, sharpyuv...) reference their own
+# dependencies as @rpath/libX.dylib. macdeployqt only resolves @rpath in
+# Contents/lib and in Qt's lib dir (-libpath does not help), so it prints
+# "Cannot resolve rpath" and leaves them out. Copy them from
+# /opt/homebrew/lib into Contents/Frameworks: the executable's LC_RPATH
+# (@executable_path/../Frameworks) lets dyld find them there. They are
+# signed below with everything else in Frameworks/.
+echo
+echo "______________________________________________________________"
+echo "Fix unresolved @rpath dependencies:"
+
+FW="$BUNDLE/Contents/Frameworks"
+
+# List the @rpath/libX.dylib names referenced by every Mach-O in the bundle
+list_rpath_libs() {
+    find "$BUNDLE/Contents/MacOS" "$FW" "$BUNDLE/Contents/PlugIns" -type f \
+        \( -name '*.dylib' -o -perm -u+x \) 2>/dev/null | while read bin; do
+        otool -L "$bin" 2>/dev/null \
+            | awk 'NR>1 && $1 ~ /^@rpath\/[^\/]+\.dylib$/ { sub("^@rpath/", "", $1); print $1 }'
+    done | LC_ALL=C sort -u
+}
+
+if ! otool -l "$BUNDLE/Contents/MacOS/$APPNAME" | grep -q "@executable_path/../Frameworks" ; then
+    install_name_tool -add_rpath "@executable_path/../Frameworks" "$BUNDLE/Contents/MacOS/$APPNAME"
+    echo "  Added LC_RPATH @executable_path/../Frameworks to $APPNAME"
+fi
+
+for PASS in 1 2 3; do
+    list_rpath_libs | while read lib; do
+        if [ ! -e "$FW/$lib" ] && [ -e "/opt/homebrew/lib/$lib" ]; then
+            cp -L "/opt/homebrew/lib/$lib" "$FW/$lib"
+            chmod u+w "$FW/$lib"
+            echo "  Copied (pass $PASS): $lib"
+        fi
+    done
+done
+
+UNRESOLVED=$(list_rpath_libs | while read lib; do [ -e "$FW/$lib" ] || echo "$lib"; done)
+if [ -n "$UNRESOLVED" ]; then
+    echo "ERROR: @rpath libraries still missing from Frameworks/:" $UNRESOLVED
     exit 1
 fi
+HOMEBREW_REFS=$(find "$BUNDLE/Contents/MacOS" "$FW" "$BUNDLE/Contents/PlugIns" -type f \
+    \( -name '*.dylib' -o -perm -u+x \) -exec otool -L {} \; 2>/dev/null | grep "/opt/homebrew/" || true)
+if [ -n "$HOMEBREW_REFS" ]; then
+    echo "ERROR: bundle still references Homebrew paths:"
+    echo "$HOMEBREW_REFS"
+    exit 1
+fi
+echo "All @rpath dependencies resolved inside the bundle."
 
 ### install Info.plist and app icon #################################
 # NOTE: this must run AFTER macdeployqt, not before. macdeployqt
@@ -187,26 +235,34 @@ fi
 if [ -d "${QET_TBT_DIR}" ]; then
     cp -R ${QET_TBT_DIR} $BUNDLE/Contents/Resources/titleblocks
 fi
-# Translations: since PR No. 751, .qm files are no longer versioned in
-# lang/ (which now contains only .ts files). lrelease generates them during
-# compilation in $BUILD_DIR/lang/ (OUTPUT_LOCATION “lang”, relative to the build).
-# The bundle does not automatically include them (no MACOSX_PACKAGE_LOCATION),
-# hence the manual copy to Contents/Resources/lang (= QET_LANG_PATH
-# “../Resources/lang/” on APPLE). A missing .qm file stops the script rather than
-# producing a signed and notarised DMG without translations.
+# Traductions : depuis la PR #751, les .qm ne sont plus versionnes ; lrelease
+# les genere dans $BUILD_DIR/lang/. Jeu attendu = les .ts listes dans TS_FILES
+# (cmake/qet_compilation_vars.cmake) : un .qm manquant arrete le script, un
+# .ts present dans lang/ mais absent de TS_FILES donne seulement un WARNING.
+# Fichiers temporaires plutot que <(...) : /bin/sh de macOS (bash 3.2 en mode
+# POSIX) n'a pas la substitution de processus.
 QM_SRC="${current_dir}/${BUILD_DIR}/lang"
-TS_COUNT=$(find "${QET_LANG_DIR}" -maxdepth 1 -name 'qet_*.ts' | wc -l | tr -d ' ')
-if ! ls "${QM_SRC}"/qet_*.qm >/dev/null 2>&1; then
-    echo "ERROR: no .qm file in ${QM_SRC} (did lrelease run?)"
-    find "${current_dir}/${BUILD_DIR}" -name '*.qm'
+QM_TMP=$(mktemp -d /tmp/qet_qm.XXXXXX)
+grep -o 'lang/qet_[A-Za-z_]*\.ts' "${current_dir}/cmake/qet_compilation_vars.cmake" \
+    | sed -e 's#^lang/##' -e 's#\.ts$##' | LC_ALL=C sort -u > "$QM_TMP/listed"
+if [ ! -s "$QM_TMP/listed" ]; then
+    echo "ERROR: cannot read TS_FILES from cmake/qet_compilation_vars.cmake"
+    rm -rf "$QM_TMP"
     exit 1
 fi
+find "${QET_LANG_DIR}" -maxdepth 1 -name 'qet_*.ts' -exec basename {} .ts \; | LC_ALL=C sort > "$QM_TMP/present"
+UNLISTED=$(LC_ALL=C comm -13 "$QM_TMP/listed" "$QM_TMP/present")
+if [ -n "$UNLISTED" ]; then
+    echo "WARNING: .ts files not in TS_FILES, no .qm built:" $UNLISTED
+fi
 mkdir -p $BUNDLE/Contents/Resources/lang
-cp "${QM_SRC}"/qet_*.qm $BUNDLE/Contents/Resources/lang/
-QM_COUNT=$(find $BUNDLE/Contents/Resources/lang -maxdepth 1 -name 'qet_*.qm' | wc -l | tr -d ' ')
-echo "${QM_COUNT} .qm files copied to Contents/Resources/lang (expected: ${TS_COUNT})"
-if [ "${QM_COUNT}" -ne "${TS_COUNT}" ]; then
-    echo "ERROR: missing translations (${QM_COUNT} .qm for ${TS_COUNT} .ts)"
+find "${QM_SRC}" -maxdepth 1 -name 'qet_*.qm' -exec cp {} $BUNDLE/Contents/Resources/lang/ \; 2>/dev/null
+find $BUNDLE/Contents/Resources/lang -maxdepth 1 -name 'qet_*.qm' -exec basename {} .qm \; | LC_ALL=C sort > "$QM_TMP/built"
+MISSING=$(LC_ALL=C comm -23 "$QM_TMP/listed" "$QM_TMP/built")
+echo "$(wc -l < "$QM_TMP/built" | tr -d ' ') .qm files copied to Contents/Resources/lang (expected: $(wc -l < "$QM_TMP/listed" | tr -d ' '))"
+rm -rf "$QM_TMP"
+if [ -n "$MISSING" ]; then
+    echo "ERROR: missing translations:" $MISSING
     exit 1
 fi
 if [ -d "${QET_EXAMPLES_DIR}" ]; then

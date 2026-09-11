@@ -220,25 +220,31 @@ jobs:
           # --- Translations ---
           # Since PR #751 the .qm files are no longer tracked in git: lrelease
           # generates them in build/lang/ (OUTPUT_LOCATION "lang", relative to
-          # the build dir). The source lang/ dir is no longer copied, as it now
-          # only holds the .ts files (useless at runtime). Any missing .qm makes
-          # the job fail instead of silently shipping an untranslated build.
+          # the build dir). Expected set = the .ts listed in TS_FILES
+          # (cmake/qet_compilation_vars.cmake): a missing .qm fails the job
+          # instead of silently shipping an untranslated build; a .ts present
+          # in lang/ but not listed in TS_FILES only raises a warning.
+          # find/grep only, no shell glob: $GITHUB_WORKSPACE is a Windows path
+          # (D:\a\...) and its backslashes break glob patterns.
           QM_SRC="$GITHUB_WORKSPACE/build/lang"
-          TS_COUNT=$(find "$GITHUB_WORKSPACE/lang" -maxdepth 1 -name 'qet_*.ts' | wc -l)
           mkdir -p "$FILES/lang"
-          # find only, no shell glob: $GITHUB_WORKSPACE is a Windows path
-          # (D:\a\...) and its backslashes break glob-based tests (compgen -G).
-          QM_FOUND=$(find "$QM_SRC" -maxdepth 1 -name 'qet_*.qm' 2>/dev/null | wc -l)
-          if [ "$QM_FOUND" -eq 0 ]; then
-            echo "ERROR: no .qm file in $QM_SRC (did lrelease run?)"
-            find "$GITHUB_WORKSPACE/build" -name '*.qm' || true
-            exit 1
+          TS_LISTED=$(grep -o 'lang/qet_[A-Za-z_]*\.ts' "$GITHUB_WORKSPACE/cmake/qet_compilation_vars.cmake" \
+                        | sed -e 's#^lang/##' -e 's#\.ts$##' | LC_ALL=C sort -u || true)
+          [ -n "$TS_LISTED" ] || { echo "ERROR: cannot read TS_FILES from cmake/qet_compilation_vars.cmake"; exit 1; }
+          TS_PRESENT=$(find "$GITHUB_WORKSPACE/lang" -maxdepth 1 -name 'qet_*.ts' -exec basename {} .ts \; | LC_ALL=C sort)
+          UNLISTED=$(LC_ALL=C comm -13 <(echo "$TS_LISTED") <(echo "$TS_PRESENT"))
+          if [ -n "$UNLISTED" ]; then
+            echo "::warning::.ts files not in TS_FILES, no .qm built:" $UNLISTED
           fi
-          find "$QM_SRC" -maxdepth 1 -name 'qet_*.qm' -exec cp {} "$FILES/lang/" \;
-          QM_COUNT=$(find "$FILES/lang" -maxdepth 1 -name 'qet_*.qm' | wc -l)
+          find "$QM_SRC" -maxdepth 1 -name 'qet_*.qm' -exec cp {} "$FILES/lang/" \; 2>/dev/null || true
+          QM_PRESENT=$(find "$FILES/lang" -maxdepth 1 -name 'qet_*.qm' -exec basename {} .qm \; | LC_ALL=C sort)
+          MISSING=$(LC_ALL=C comm -23 <(echo "$TS_LISTED") <(echo "$QM_PRESENT"))
+          QM_COUNT=$(printf '%s\n' "$QM_PRESENT" | grep -c . || true)
+          TS_COUNT=$(printf '%s\n' "$TS_LISTED" | grep -c .)
           echo "=== $QM_COUNT .qm files copied to files/lang/ (expected: $TS_COUNT) ==="
-          if [ "$QM_COUNT" -ne "$TS_COUNT" ]; then
-            echo "ERROR: missing translations ($QM_COUNT .qm for $TS_COUNT .ts)"
+          if [ -n "$MISSING" ]; then
+            echo "ERROR: missing translations:" $MISSING
+            find "$GITHUB_WORKSPACE/build" -name '*.qm' || true
             exit 1
           fi
 
