@@ -307,8 +307,21 @@ echo "$(wc -l < "$QM_TMP/built" | tr -d ' ') .qm files copied to Contents/Resour
 # traductions de Qt (absent du bundle), puis depuis le dossier lang/ de QET :
 # on y depose donc chaque qtbase_XX.qm sous le nom qt_XX.qm. qtbase_XX.qm est
 # autonome, contrairement aux qt_XX.qm de Qt qui dependent de tous les modules.
-QT_TR_DIR=$("$QT_PREFIX/bin/qtpaths" --query QT_INSTALL_TRANSLATIONS 2>/dev/null)
-[ -d "$QT_TR_DIR" ] || QT_TR_DIR="$QT_PREFIX/share/qt/translations"
+# Premier dossier contenant des qtbase_*.qm : celui annonce par qtpaths, puis
+# la formule Homebrew separee qttranslations (non liee dans /opt/homebrew/share,
+# d'ou l'absence des qtbase_*.qm dans le dossier annonce par qtpaths), puis
+# les autres emplacements Homebrew possibles.
+QT_TR_DIR=""
+for d in "$("$QT_PREFIX/bin/qtpaths" --query QT_INSTALL_TRANSLATIONS 2>/dev/null)" \
+         "$(brew --prefix qttranslations 2>/dev/null)/share/qt/translations" \
+         "$QT_PREFIX/share/qt/translations" \
+         /opt/homebrew/share/qt/translations \
+         /opt/homebrew/opt/*/share/qt/translations ; do
+    if ls "$d"/qtbase_*.qm >/dev/null 2>&1 ; then
+        QT_TR_DIR="$d"
+        break
+    fi
+done
 LANG_DST="$BUNDLE/Contents/Resources/lang"
 find "$QT_TR_DIR" -maxdepth 1 -name 'qtbase_*.qm' 2>/dev/null | while read f; do
     l=$(basename "$f" .qm | sed 's/^qtbase_//')
@@ -329,9 +342,10 @@ sed 's/^qet_//' "$QM_TMP/listed" | while read l; do
     fi
 done
 QT_QM_COUNT=$(find "$LANG_DST" -maxdepth 1 -name 'qt_*.qm' | wc -l | tr -d ' ')
-echo "${QT_QM_COUNT} Qt translation files (qt_*.qm) copied from ${QT_TR_DIR}"
+echo "${QT_QM_COUNT} Qt translation files (qt_*.qm) copied from ${QT_TR_DIR:-<not found>}"
 if [ "${QT_QM_COUNT}" -eq 0 ]; then
-    echo "ERROR: no qtbase_*.qm found in ${QT_TR_DIR}"
+    echo "ERROR: no qtbase_*.qm found (Qt translations not installed?)."
+    echo "       Check with: find /opt/homebrew -name 'qtbase_fr.qm'"
     rm -rf "$QM_TMP"
     exit 1
 fi
