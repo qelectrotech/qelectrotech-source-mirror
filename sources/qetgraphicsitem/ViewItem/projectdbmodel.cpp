@@ -17,6 +17,8 @@
 */
 #include "projectdbmodel.h"
 
+#include <algorithm>
+
 #include "../../dataBase/projectdatabase.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
@@ -266,7 +268,13 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 		//We save all data except the display role, because he was generated in the fly
 		auto list = m_header_data.value(key).keys();
 		list.removeAll(Qt::DisplayRole);
-		
+			//Sorted: m_header_data's inner container is a QHash too, so its
+			//key order is randomised per process. modelHeaderDataToXml()
+			//writes the roles of a section in the order given here, so an
+			//unsorted list reordered the <data> children of that section on
+			//every save and kept the save irreproducible.
+		std::sort(list.begin(), list.end());
+
 		horizontal_.insert(key, list);
 	}
 	
