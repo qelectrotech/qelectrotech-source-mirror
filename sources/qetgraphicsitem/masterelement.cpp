@@ -300,6 +300,22 @@ ContactUsage MasterElement::contactCapacity() const
  */
 bool MasterElement::isFull() const
 {
+		//When the element declares contact groups, those groups are the
+		//slots: a slave occupies exactly one, and ContactGroupSelectionDialog
+		//offers exactly these. So the group count is the limit, and it is the
+		//one the user can actually see.
+		//
+		//max_slaves is the fallback for elements which declare no groups. The
+		//element editor keeps the two in step -- max_slaves sizes the group
+		//table -- but nothing reconciles them on load, so a hand written or
+		//generated file can carry five groups and max_slaves=2. Taking
+		//max_slaves there capped linking at two while the dialog still
+		//offered all five, which the user could only read as the dialog
+		//being broken.
+	if (!m_data.m_slave_contact_groups.isEmpty()) {
+		return connected_elements.size() >= m_data.m_slave_contact_groups.size();
+	}
+
 	// Set default value to -1 (unlimited slaves)
 	int max_slaves = -1;
 	QVariant max_slaves_variant = kindInformations().value("max_slaves");
