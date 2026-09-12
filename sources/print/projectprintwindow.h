@@ -19,6 +19,7 @@
 #define PROJECTPRINTWINDOW_H
 
 #include "../exportproperties.h"
+#include "../pdf_links.h"
 
 #include <QMainWindow>
 #include <QMap>
@@ -56,6 +57,7 @@ class ProjectPrintWindow : public QMainWindow
 		void on_m_keep_conductor_color_cb_clicked();
 		void on_m_draw_terminal_cb_clicked();
 		void on_m_draw_terminal_names_cb_clicked();
+		void on_m_component_info_cb_clicked();
 		void on_m_fit_in_page_cb_clicked();
 		void on_m_use_full_page_cb_clicked();
 		void on_m_zoom_out_action_triggered();
@@ -81,7 +83,7 @@ class ProjectPrintWindow : public QMainWindow
 
 	private:
 		void requestPaint();
-		void printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap = {});
+		void printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap, int &annotIndex);
 		QRect diagramRect(Diagram *diagram, const ExportProperties &option) const;
 		int horizontalPagesCount(Diagram *diagram, const ExportProperties &option, bool full_page) const;
 		int verticalPagesCount(Diagram *diagram, const ExportProperties &option, bool full_page) const;
@@ -102,6 +104,7 @@ class ProjectPrintWindow : public QMainWindow
 		QPrintPreviewWidget *m_preview=nullptr;
 		QColor m_backup_diagram_background_color;
 		QHash<Diagram *, QCheckBox *> m_diagram_list_hash;
+		QList<PdfLinks::ComponentInfo> m_componentInfoList;
 };
 
 #endif // PROJECTPRINTWINDOW_H

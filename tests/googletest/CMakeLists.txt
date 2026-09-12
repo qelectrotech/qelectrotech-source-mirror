@@ -65,7 +65,7 @@ FetchContent_Declare(
   GTest
   GIT_REPOSITORY https://github.com/google/googletest.git
   GIT_TAG        v1.17.0)
-
+set(INSTALL_GTEST OFF CACHE INTERNAL "")
 FetchContent_MakeAvailable(GTest)
 
 include(../../cmake/fetch_kdeaddons.cmake)
@@ -84,6 +84,6 @@ target_link_libraries(
     PUBLIC
     gtest gtest_main
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 

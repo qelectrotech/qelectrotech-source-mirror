@@ -55,6 +55,7 @@
 #include <QActionGroup>
 #include <QFileDialog>
 #include <QSvgGenerator>
+#include <QHBoxLayout>
 
 /**
  * @brief QETElementEditor::QETElementEditor
@@ -77,8 +78,9 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	//ui->m_display_menu->insertMenu(ui->m_zoom_in_action, menu);
 
 	setWindowState(Qt::WindowMaximized);
-	readSettings();
+	readSettings();  // restoreGeometry before show()
 	show();
+	readSettingsState();  // restoreState() must be called after show() in Qt6
 }
 
 /**
@@ -950,14 +952,26 @@ void QETElementEditor::readSettings()
 		restoreGeometry(geometry.toByteArray());
 	}
 
-	QVariant state = settings.value("elementeditor/state");
-	if (state.isValid()) {
-		restoreState(state.toByteArray());
-	}
-
 	auto data = m_elmt_scene->elementData();
 	data.m_drawing_information = settings.value("elementeditor/default-informations", "").toString();
 	m_elmt_scene->setElementData(data);
+}
+
+/**
+ * @brief QETElementEditor::readSettingsState
+ * Restore the window state (docks, toolbars).
+ * Must be called AFTER show() in Qt6 for restoreState() to work correctly.
+ */
+void QETElementEditor::readSettingsState()
+{
+	QSettings settings;
+
+	QVariant state = settings.value("elementeditor/state");
+	if (state.isValid()) {
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("elementeditor/state");
+		}
+	}
 }
 
 /**
@@ -1200,7 +1214,18 @@ void QETElementEditor::initGui()
 		//Live cursor position readout, in the same scene coordinates as the parts' X/Y properties
 	m_position_label = new QLabel(this);
 	m_position_label->setMinimumWidth(120);
-	statusBar()->addPermanentWidget(m_position_label);
+	
+	// Layout
+	QHBoxLayout *coordDisplayLayout = new QHBoxLayout();
+	coordDisplayLayout->setContentsMargins(0, 0, 0, 0);
+	coordDisplayLayout->addWidget(m_position_label);
+	coordDisplayLayout->addStretch();
+	// Widget
+	QWidget *coordDisplay = new QWidget;
+	coordDisplay->setLayout(coordDisplayLayout);
+	
+	statusBar()->addPermanentWidget(coordDisplay);
+	
 	connect(m_elmt_scene, &ElementScene::mouseMoved, this, [this](const QPointF &pos) {
 		m_position_label->setText(tr("X: %1  Y: %2")
 			.arg(pos.x(), 0, 'f', 1)

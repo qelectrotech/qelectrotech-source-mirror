@@ -108,6 +108,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 
 	public slots:
 	void readSettings();
+	void readSettingsState();
 	void writeSettings();
 	void selectedCellsChanged(const QList<TitleBlockCell *>&);
 	void duplicateCurrentLocation();
