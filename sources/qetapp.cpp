@@ -198,6 +198,26 @@ QETApp *QETApp::instance()
 }
 
 /**
+	@brief QETApp::loadedQetTranslationFile
+	@return path of the QET .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQetTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qetTranslator.filePath() : QString();
+}
+
+/**
+	@brief QETApp::loadedQtTranslationFile
+	@return path of the Qt .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQtTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qtTranslator.filePath() : QString();
+}
+
+/**
 	@brief QETApp::setLanguage
 	Change the language used by the application.
 	\~French Change le langage utilise par l'application.
@@ -234,14 +254,21 @@ void QETApp::setLanguage(const QString &desired_language) {
 	// desired_language may be a full locale such as "pt_BR": try that exact
 	// translation, then the base language ("pt"), then fall back to English.
 	// French is the application's source language and needs no translation.
+	// A .qm compiled from an untranslated .ts (0% done) loads "successfully"
+	// but is empty: treat it as missing, so the user falls back to English
+	// instead of silently getting the French source strings.
 	const QString base_language = desired_language.section('_', 0, 0);
-	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	auto loadQet = [this, &languages_path](const QString &name) {
+		return qetTranslator.load(name, languages_path)
+			&& !qetTranslator.isEmpty();
+	};
+	bool loaded = loadQet("qet_" + desired_language);
 	if (!loaded && base_language != desired_language)
-		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+		loaded = loadQet("qet_" + base_language);
 	if (!loaded && base_language != "fr") {
 		// use of the English version by default
 		// utilisation de la version anglaise par defaut
-		if(!qetTranslator.load("qet_en", languages_path))
+		if(!loadQet("qet_en"))
 			qWarning() << "failed to load"
 					   << "qet_en" << languages_path << "(" << __FILE__
 					   << __LINE__ << __FUNCTION__ << ")";
@@ -267,7 +294,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
@@ -1423,7 +1450,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
@@ -1975,6 +2002,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1986,6 +2014,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**

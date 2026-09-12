@@ -20,6 +20,8 @@
 
 #include "diagrameventinterface.h"
 
+#include <QPointF>
+
 class Diagram;
 class DiagramImageItem;
 
@@ -37,15 +39,20 @@ class DiagramEventAddImage : public DiagramEventInterface
 
 		void mousePressEvent       (QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent        (QGraphicsSceneMouseEvent *event) override;
+		void mouseReleaseEvent     (QGraphicsSceneMouseEvent *event) override;
 		void mouseDoubleClickEvent (QGraphicsSceneMouseEvent *event) override;
 		void wheelEvent            (QGraphicsSceneWheelEvent *event) override;
 
 		 bool isNull () const;
 	private:
 		void openDialog();
+		void showHint() const;
 
 		DiagramImageItem *m_image;
 		bool m_is_added;
+		bool m_pressed = false;    // left button held: dragging out a size, not just positioning
+		bool m_resize_engaged = false;   // latched once the drag threshold is crossed, matching the pen tool's own curve-drag threshold convention -- so dragging out and back near the start point doesn't "snap back" to original size before release
+		QPointF m_press_pos;       // scene position of the left-button press, the resize anchor
 };
 
 #endif // DIAGRAMEVENTADDIMAGE_H

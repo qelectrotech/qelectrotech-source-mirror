@@ -18,6 +18,10 @@
 #ifndef PDFPAGESDIALOG_H
 #define PDFPAGESDIALOG_H
 
+// Needs the QtPdf module (QET_HAS_QTPDF, set by CMake only when QtPdf
+// is present AND Qt >= 6.4, for QPdfDocument::pagePointSize()).
+#ifdef QET_HAS_QTPDF
+
 #include <QDialog>
 
 class QSpinBox;
@@ -50,5 +54,7 @@ class PdfPagesDialog : public QDialog
 		QSpinBox *m_page_spinbox;
 		QComboBox *m_dpi_combo;
 };
+
+#endif // QET_HAS_QTPDF
 
 #endif // PDFPAGESDIALOG_H

@@ -290,9 +290,14 @@ ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project,
 						    QWidget *parent) :
 	ProjectConfigPage(project, parent)
 {
-	initWidgets();
-	buildConnections();
-	readValuesFromProject();
+	// Follow the same contract ProjectMainConfigPage's constructor does --
+	// init() is documented to be the thing a subclass constructor calls
+	// (see ProjectConfigPage::init()'s doc comment). Calling the pieces
+	// individually here used to skip both initLayout() and adjustReadOnly(),
+	// and called readValuesFromProject() even when m_project was null.
+	// buildConnections() itself is invoked from the end of initWidgets()
+	// below, in the same relative position it held here.
+	init();
 }
 
 /**
@@ -352,6 +357,8 @@ void ProjectAutoNumConfigPage::initWidgets()
 	QHBoxLayout *main_layout = new QHBoxLayout();
 	main_layout->addWidget(tab_widget);
 	setLayout(main_layout);
+
+	buildConnections();
 }
 
 /**
