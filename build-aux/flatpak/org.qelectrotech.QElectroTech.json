@@ -3,6 +3,8 @@
   "runtime": "org.kde.Platform",
   "runtime-version": "6.11",
   "sdk": "org.kde.Sdk",
+  "base": "io.qt.qtwebengine.BaseApp",
+  "base-version": "6.11",
   "command": "qelectrotech",
   "rename-desktop-file": "org.qelectrotech.qelectrotech.desktop",
   "rename-appdata-file": "qelectrotech.appdata.xml",
@@ -25,13 +27,14 @@
       "*.la",
       "*.a"
   ],
+  "cleanup-commands": [
+    "/app/cleanup-BaseApp.sh"
+  ],
   "modules": [
     "tkinter.json",
     "pypi-dependencies.json",
     {
       "name": "qelectrotech",
-      "//qt6-private-headers-note": "qt6-base-private-dev has no Flatpak build-depends equivalent — private Qt6 headers ship inside org.kde.Sdk itself. If the cmake build fails looking for QtCore/private/*.h, the SDK/runtime branch is mismatched with the source tree, not a missing package.",
-      "//sqlite-driver-note": "libqt6sql6-sqlite / libsqlite3-dev have no Flatpak build-depends equivalent either. QET_EXPORT_PROJECT_DB=ON assumes the KDE runtime ships the Qt6 SQLite plugin (libqsqlite.so) already built into QtSql — verified at Debian packaging time this needed an explicit runtime dep there (see debian/control). Test the in-app database export after building; if it silently fails, the runtime's QtSql plugin set needs checking, not a package to add here.",
       "buildsystem": "cmake",
       "config-opts": [
         "-DCMAKE_INSTALL_PREFIX=/app",

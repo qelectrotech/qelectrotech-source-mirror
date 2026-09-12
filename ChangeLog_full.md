@@ -20,6 +20,7 @@ All notable changes to QElectroTech are documented here.
 
 ### 🐛 Bug Fixes
 
+- Fix #798: clamp element-editor and diagram-view zoom to prevent view-transform overflow crash on scroll-wheel zoom ([3ca5d4a](../../commit/3ca5d4ab2))
 - Fix(windows-msi): inject rev into MSI Version Build field ([e19f523](../../commit/e19f5232277efb37435cb65a83563d73333d62ec))
 - Fix #391: use wide-char path for pugixml on Windows to handle Unicode paths ([31edf30](../../commit/31edf30c619213368e9b592b51be6ca8190db831))
 - Fix(#283): restore center alignment when loading table config ([f55ba56](../../commit/f55ba568f68293e06436899bcc831431e9d27295))

@@ -307,15 +307,24 @@ void MasterPropertiesWidget::on_link_button_clicked()
 		int max_slaves = max_slaves_variant.toInt();
 		int current_slaves = ui->m_link_tree_widget->topLevelItemCount();
 
-		// If a limit is set and reached
+			// If a limit is set and reached, say so but let the user decide.
+			// The limit records how many contacts the part is expected to
+			// carry; it is not a rule the drawing has to obey, and refusing
+			// the link obstructs drawing a schematic before the hardware has
+			// been chosen.
 		if (max_slaves != -1 && current_slaves >= max_slaves) {
 
-
 			// Show a message box with the actual window as parent to ensure it's on top
-			QMessageBox::warning(this->window(),
-								 tr("Nombre maximal d'esclaves atteint."),
-								 tr("Cet élément maître ne peut plus accepter aucun nouveau contact esclave, la limite fixée a été atteinte (Limite: %1).").arg(max_slaves));
-			return;
+			const auto answer = QMessageBox::warning(
+						this->window(),
+						tr("Nombre maximal d'esclaves atteint."),
+						tr("La limite fixée pour cet élément maître est atteinte (Limite: %1).\n\n"
+						   "Voulez-vous tout de même lier ce contact esclave ?").arg(max_slaves),
+						QMessageBox::Yes | QMessageBox::No,
+						QMessageBox::Yes);
+			if (answer != QMessageBox::Yes) {
+				return;
+			}
 		}
 	}
 

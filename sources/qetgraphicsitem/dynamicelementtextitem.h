@@ -92,7 +92,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		/// DXF export: the master-side cross-reference item (the table/cross
 		/// drawn next to a report/master element), if this text item has one.
 		CrossRefItem *masterXrefItem() const { return m_Xref_item; }
-		Element *masterElement() const { return m_master_element.data(); }
+		Element *masterElement() const;
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
@@ -112,7 +112,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
-		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
+		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;

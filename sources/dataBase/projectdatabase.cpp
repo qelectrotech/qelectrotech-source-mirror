@@ -53,6 +53,7 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	});
 	connect(m_project, &QETProject::projectDiagramsOrderChanged, [this]()
 	{
+		m_content_changed = true;
 		for (auto diagram : m_project->diagrams())
 		{
 			m_diagram_order_changed.bindValue(":pos", m_project->folioIndex(diagram)+1);
@@ -85,12 +86,40 @@ projectDataBase::~projectDataBase()
 */
 void projectDataBase::updateDB()
 {
+		//A bulk operation is in progress and updates the database itself once
+		//it is done : rebuilding now would only be thrown away by that final
+		//rebuild. @see setUpdateBlocked().
+	if (m_update_blocked) {
+		return;
+	}
+
+		//Nothing in the project has changed since the last rebuild, so
+		//repopulating would insert exactly the rows that are already there.
+		//The signal is still emitted : callers and models rely on it to
+		//refresh, and what they read back is unchanged either way.
+	if (!m_content_changed)
+	{
+		emit dataBaseUpdated();
+		return;
+	}
+
 	populateDiagramTable();
 	populateDiagramInfoTable();
 	populateElementTable();
 	populateElementInfoTable();
 	populateConductorTable();
+	m_content_changed = false;
+
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::setUpdateBlocked
+	@param blocked : whether updateDB() should skip the full rebuild
+*/
+void projectDataBase::setUpdateBlocked(bool blocked)
+{
+	m_update_blocked = blocked;
 }
 
 /**
@@ -112,34 +141,64 @@ QSqlQuery projectDataBase::newQuery(const QString &query) {
 }
 
 /**
+	@brief projectDataBase::excludedConductorCount
+	@return how many conductors of the project are absent from the conductor
+	table because an endpoint has no parent element to key on.
+
+	Counted from the live scene rather than from the database, precisely
+	because the database is where these conductors are *not*.
+
+	This used to count conductors whose terminals had no uuid, which was most
+	of them on most projects. Terminal::stableUuid() now derives an identity
+	from the terminal's geometry when the definition provides no uuid, so that
+	is no longer a reason to exclude anything, and this counts only the case
+	that remains genuinely unkeyable.
+
+	This is what lets a caller tell the user "N wires are missing and here
+	is why", instead of silently presenting a short list as if it were
+	complete.
+*/
+int projectDataBase::excludedConductorCount() const
+{
+	if (!m_project) {
+		return 0;
+	}
+
+	int count = 0;
+	for (auto *diagram : m_project->diagrams())
+	{
+		const auto conductor_list = diagram->conductors();
+		for (auto *conductor : conductor_list)
+		{
+				//Must match addConductor()'s guard exactly, or this reports
+				//wires as missing that the list is in fact showing.
+			if (!conductor->terminal1->parentElement()
+				|| !conductor->terminal2->parentElement()) {
+				++count;
+			}
+		}
+	}
+	return count;
+}
+
+/**
 	@brief projectDataBase::addElement
 	@param element
 */
 void projectDataBase::addElement(Element *element)
 {
+	m_content_changed = true;
 	if (!element || !element->diagram()) {
 		qDebug() << "projectDataBase::addElement: null element or diagram";
 		return;
 	}
 
-	m_insert_elements_query.bindValue(":uuid", element->uuid().toString());
-	m_insert_elements_query.bindValue(":diagram_uuid", element->diagram()->uuid().toString());
-	m_insert_elements_query.bindValue(":pos", element->diagram()->convertPosition(element->scenePos()).toString());
-	m_insert_elements_query.bindValue(":type", element->elementData().typeToString());
-	m_insert_elements_query.bindValue(":sub_type", element->kindInformations()["type"].toString());
+	bindElementValues(m_insert_elements_query, element, element->diagram());
 	if (!m_insert_elements_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element error : " << m_insert_elements_query.lastError();
 	}
 
-	m_insert_element_info_query.bindValue(":uuid", element->uuid().toString());
-	auto hash = elementInfoToString(element);
-	for (auto key : hash.keys())
-	{
-		QString value = hash.value(key);
-		QString bind = key.prepend(":");
-		m_insert_element_info_query.bindValue(bind, value);
-	}
-
+	bindElementInfoValues(m_insert_element_info_query, element);
 	if (!m_insert_element_info_query.exec()) {
 		qDebug() << "projectDataBase::addElement insert element info error : " << m_insert_element_info_query.lastError();
 	} else {
@@ -153,6 +212,7 @@ void projectDataBase::addElement(Element *element)
 */
 void projectDataBase::removeElement(Element *element)
 {
+	m_content_changed = true;
 	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
 	if(!m_remove_element_query.exec()) {
 		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
@@ -167,6 +227,7 @@ void projectDataBase::removeElement(Element *element)
 */
 void projectDataBase::elementInfoChanged(Element *element)
 {
+	m_content_changed = true;
 	auto hash = elementInfoToString(element);
 	for (auto str : QETInformation::elementInfoKeys()) {
 		m_update_element_query.bindValue(":" + str, hash.value(str));
@@ -181,6 +242,7 @@ void projectDataBase::elementInfoChanged(Element *element)
 
 void projectDataBase::elementInfoChanged(QList<Element *> elements)
 {
+	m_content_changed = true;
 	this->blockSignals(true);
 		//Block signal for not emit dataBaseUpdated at
 		//each call of the method elementInfoChanged(Element *element)
@@ -197,6 +259,7 @@ void projectDataBase::elementInfoChanged(QList<Element *> elements)
 
 void projectDataBase::addDiagram(Diagram *diagram)
 {
+	m_content_changed = true;
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
 	if(!m_insert_diagram_query.exec()) {
@@ -225,16 +288,63 @@ void projectDataBase::addDiagram(Diagram *diagram)
 
 void projectDataBase::removeDiagram(Diagram *diagram)
 {
-	m_remove_diagram_query.bindValue(":uuid", diagram->uuid().toString());
+	m_content_changed = true;
+	const QString uuid_str = diagram->uuid().toString();
+
+		//Order matters: element_info and terminal are scoped through a
+		//subquery on element, so they must run before element itself is
+		//deleted below. The whole cascade runs in one transaction and is
+		//rolled back on the first error, so a mid-cascade failure (e.g. a
+		//locked DB) can't leave the diagram row deleted while its
+		//element/terminal/element_info/conductor rows survive.
+	m_data_base.transaction();
+
+	m_cascade_remove_element_info_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_element_info_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram element_info cascade error : "
+				 << m_cascade_remove_element_info_query.lastError();
+		m_data_base.rollback();
+		return;
+	}
+
+	m_cascade_remove_terminal_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_terminal_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram terminal cascade error : "
+				 << m_cascade_remove_terminal_query.lastError();
+		m_data_base.rollback();
+		return;
+	}
+
+	m_cascade_remove_conductor_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_conductor_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram conductor cascade error : "
+				 << m_cascade_remove_conductor_query.lastError();
+		m_data_base.rollback();
+		return;
+	}
+
+	m_cascade_remove_element_query.bindValue(":uuid", uuid_str);
+	if (!m_cascade_remove_element_query.exec()) {
+		qDebug() << "projectDataBase::removeDiagram element cascade error : "
+				 << m_cascade_remove_element_query.lastError();
+		m_data_base.rollback();
+		return;
+	}
+
+	m_remove_diagram_query.bindValue(":uuid", uuid_str);
 	if (!m_remove_diagram_query.exec()) {
 		qDebug() << "projectDataBase::removeDiagram delete error : " << m_remove_diagram_query.lastError();
-	} else {
-		emit dataBaseUpdated();
+		m_data_base.rollback();
+		return;
 	}
+
+	m_data_base.commit();
+	emit dataBaseUpdated();
 }
 
 void projectDataBase::diagramInfoChanged(Diagram *diagram)
 {
+	m_content_changed = true;
 	bindDiagramInfoValues(m_update_diagram_info_query, diagram);
 
 	if (!m_update_diagram_info_query.exec()) {
@@ -246,6 +356,7 @@ void projectDataBase::diagramInfoChanged(Diagram *diagram)
 
 void projectDataBase::diagramOrderChanged()
 {
+	m_content_changed = true;
 }
 
 /**
@@ -254,6 +365,7 @@ void projectDataBase::diagramOrderChanged()
 */
 void projectDataBase::addConductor(Conductor *conductor)
 {
+	m_content_changed = true;
 	if (!conductor || !conductor->diagram()) {
 		qDebug() << "projectDataBase::addConductor: null conductor or diagram";
 		return;
@@ -287,6 +399,7 @@ void projectDataBase::addConductor(Conductor *conductor)
 */
 void projectDataBase::removeConductor(Conductor *conductor)
 {
+	m_content_changed = true;
 	m_remove_conductor_query.bindValue(":uuid", conductor->uuid().toString());
 	if (!m_remove_conductor_query.exec()) {
 		qDebug() << "projectDataBase::removeConductor delete error : " << m_remove_conductor_query.lastError();
@@ -307,6 +420,7 @@ void projectDataBase::removeConductor(Conductor *conductor)
 */
 void projectDataBase::updateConductor(Conductor *conductor)
 {
+	m_content_changed = true;
 	if (!conductor) {
 		return;
 	}
@@ -349,6 +463,7 @@ void projectDataBase::watchConductor(Conductor *conductor)
 */
 void projectDataBase::conductorPropertiesChanged()
 {
+	m_content_changed = true;
 	if (auto *conductor = qobject_cast<Conductor *>(sender())) {
 		updateConductor(conductor);
 	}
@@ -505,6 +620,7 @@ bool projectDataBase::createDataBase()
 
 	createElementNomenclatureView();
 	createSummaryView();
+	createWiringListView();
 	prepareQuery();
 	updateDB();
 	return true;
@@ -525,6 +641,11 @@ void projectDataBase::createElementNomenclatureView()
 						 "ei.designation AS designation,"
 						 "ei.manufacturer AS manufacturer,"
 						 "ei.manufacturer_reference AS manufacturer_reference,"
+						 "ei.model AS model,"
+						 "ei.category AS category,"
+						 "ei.voltage_rating AS voltage_rating,"
+						 "ei.current_rating AS current_rating,"
+						 "ei.notes AS notes,"
 						 "ei.machine_manufacturer_reference AS machine_manufacturer_reference,"
 						 "ei.supplier AS supplier,"
 						 "ei.quantity AS quantity,"
@@ -583,7 +704,14 @@ void projectDataBase::createElementNomenclatureView()
 						 "di.folio AS folio,"
 						 "e.pos AS position "
 						 " FROM element_info ei, diagram_info di, element e, diagram d"
-						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid AND (ei.exclude_from_bom IS NOT 'true')");
+						 " WHERE ei.element_uuid = e.uuid AND e.diagram_uuid = d.uuid AND di.diagram_uuid = d.uuid"
+						 " AND COALESCE(LOWER(TRIM(ei.exclude_from_bom)), '') NOT IN ('true', '1', 'yes', 'on')"
+							//The element table holds every element of the project; which
+							//kinds belong in a nomenclature is this view's business, not
+							//the table's. Kept identical to the mask populateElementTable()
+							//used to apply, so what this view returns does not change --
+							//a slave element (a relay contact) is still not a line item.
+						 " AND e.type IN ('simple', 'terminal', 'master', 'thumbnail')");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
@@ -622,6 +750,64 @@ void projectDataBase::createSummaryView()
 	}
 }
 
+/**
+	@brief projectDataBase::createWiringListView
+	A from-to wiring list: one row per conductor, each endpoint resolved to
+	its element label and terminal name.
+
+	Two deliberate differences from an ordinary inner-join view like
+	element_nomenclature_view:
+
+	- No join to the element table. A terminal row already carries its
+	  element_uuid, so joining element back just to read the same uuid adds
+	  nothing -- and would actively drop rows, because populateElementTable()
+	  only inserts elements matching Simple|Terminal|Master|Thumbnail. Slave
+	  elements (relay contacts and the like, extremely common at the end of a
+	  wire) and report elements are absent from that table after a project
+	  load, so an inner join through it silently loses their conductors.
+	- element_info is LEFT joined for the same reason. A wire whose endpoint
+	  element carries no info row still belongs in a wiring list; it comes
+	  back with an empty label rather than vanishing. Losing a wire from a
+	  wiring list is a worse failure than showing one with a blank end.
+
+	- diagram is LEFT joined for the same reason. It should
+	  always match, since QETProject::diagramAdded is wired to addDiagram()
+	  and a conductor cannot exist before its folio -- but an inner join here
+	  would make that an assumption the view silently enforces, and a wire
+	  missing from a wiring list is the one failure this view must not have.
+
+	The result is that this view returns exactly as many rows as the
+	conductor table holds -- what is already excluded upstream (conductors
+	on legacy terminals without uuids) stays excluded, and nothing new is
+	dropped here. Only the terminal joins are inner, and both are guaranteed
+	by insertTerminal() running for each endpoint before the conductor row
+	is written.
+*/
+void projectDataBase::createWiringListView()
+{
+	QString create_view ("CREATE VIEW wiring_list_view AS SELECT "
+						 "c.uuid AS conductor_uuid,"
+						 "c.text AS wire_number,"
+						 "t1.element_uuid AS from_element_uuid,"
+						 "ei1.label AS from_element_label,"
+						 "t1.name AS from_terminal,"
+						 "t2.element_uuid AS to_element_uuid,"
+						 "ei2.label AS to_element_label,"
+						 "t2.name AS to_terminal,"
+						 "d.pos AS diagram_position"
+						 " FROM conductor c"
+						 " JOIN terminal t1 ON c.terminal1_uuid = t1.uuid AND c.terminal1_element_uuid = t1.element_uuid"
+						 " JOIN terminal t2 ON c.terminal2_uuid = t2.uuid AND c.terminal2_element_uuid = t2.element_uuid"
+						 " LEFT JOIN element_info ei1 ON t1.element_uuid = ei1.element_uuid"
+						 " LEFT JOIN element_info ei2 ON t2.element_uuid = ei2.element_uuid"
+						 " LEFT JOIN diagram d ON c.diagram_uuid = d.uuid");
+
+	QSqlQuery query(m_data_base);
+	if (!query.exec(create_view)) {
+		qDebug() << query.lastError();
+	}
+}
+
 void projectDataBase::populateDiagramTable()
 {
 	QSqlQuery query_(m_data_base);
@@ -638,6 +824,30 @@ void projectDataBase::populateDiagramTable()
 }
 
 /**
+	@brief allElementTypes
+	Every ElementData::Type, i.e. no filtering at all.
+
+	The element table used to be populated with only
+	Simple|Terminal|Master|Thumbnail, which quietly made it "the elements a
+	nomenclature cares about" rather than "the elements of the project".
+	Anything else reading the table -- the wiring list, and terminal plans
+	later -- then could not see slave elements (relay contacts) or report
+	elements, which are ordinary conductor endpoints. The filter now lives in
+	element_nomenclature_view, where it belongs; see createElementNomenclatureView().
+*/
+static ElementData::Types allElementTypes()
+{
+	return ElementData::Simple
+		   | ElementData::NextReport
+		   | ElementData::PreviousReport
+		   | ElementData::Master
+		   | ElementData::Slave
+		   | ElementData::Terminal
+		   | ElementData::Thumbnail
+		   | ElementData::ConductorDefinition;
+}
+
+/**
 	@brief projectDataBase::populateElementTable
 	Populate the element table
 */
@@ -649,16 +859,11 @@ void projectDataBase::populateElementTable()
 	for (auto diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(allElementTypes());
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
-			const auto elmt_data = elmt->elementData();
-			m_insert_elements_query.bindValue(":uuid", elmt->uuid().toString());
-			m_insert_elements_query.bindValue(":diagram_uuid", diagram->uuid().toString());
-			m_insert_elements_query.bindValue(":pos", diagram->convertPosition(elmt->scenePos()).toString());
-			m_insert_elements_query.bindValue(":type", elmt_data.typeToString());
-			m_insert_elements_query.bindValue(":sub_type", elmt_data.masterTypeToString());
+			bindElementValues(m_insert_elements_query, elmt, diagram);
 			if (!m_insert_elements_query.exec()) {
 				qDebug() << "projectDataBase::populateElementTable insert error : " << m_insert_elements_query.lastError();
 			}
@@ -678,20 +883,12 @@ void projectDataBase::populateElementInfoTable()
 	for (const auto &diagram : m_project->diagrams())
 	{
 		const ElementProvider ep(diagram);
-		const auto elmt_vector = ep.find(ElementData::Simple | ElementData::Terminal | ElementData::Master | ElementData::Thumbnail);
+		const auto elmt_vector = ep.find(allElementTypes());
 
 			//Insert all values into the database
 		for (const auto &elmt : elmt_vector)
 		{
-			m_insert_element_info_query.bindValue(QStringLiteral(":uuid"), elmt->uuid().toString());
-			const auto hash = elementInfoToString(elmt);
-			for (const auto &key : hash.keys())
-			{
-				QString value = hash.value(key);
-				QString bind = QStringLiteral(":") + key;
-				m_insert_element_info_query.bindValue(bind, value);
-			}
-
+			bindElementInfoValues(m_insert_element_info_query, elmt);
 			if (!m_insert_element_info_query.exec()) {
 				qDebug() << "projectDataBase::populateElementInfoTable insert error : " << m_insert_element_info_query.lastError();
 			}
@@ -772,7 +969,27 @@ void projectDataBase::prepareQuery()
 	m_insert_diagram_query = QSqlQuery(m_data_base);
 	m_insert_diagram_query.prepare("INSERT INTO diagram (uuid, pos) VALUES (:uuid, :pos)");
 
-		//REMOVE DIAGRAM
+		//REMOVE DIAGRAM (cascade first: element_info and terminal have no
+		//diagram_uuid column of their own, so both are scoped through
+		//element while the element rows for this diagram still exist).
+	m_cascade_remove_element_info_query = QSqlQuery(m_data_base);
+	m_cascade_remove_element_info_query.prepare(
+		"DELETE FROM element_info WHERE element_uuid IN "
+		"(SELECT uuid FROM element WHERE diagram_uuid = :uuid)");
+
+	m_cascade_remove_terminal_query = QSqlQuery(m_data_base);
+	m_cascade_remove_terminal_query.prepare(
+		"DELETE FROM terminal WHERE element_uuid IN "
+		"(SELECT uuid FROM element WHERE diagram_uuid = :uuid)");
+
+	m_cascade_remove_conductor_query = QSqlQuery(m_data_base);
+	m_cascade_remove_conductor_query.prepare(
+		"DELETE FROM conductor WHERE diagram_uuid = :uuid");
+
+	m_cascade_remove_element_query = QSqlQuery(m_data_base);
+	m_cascade_remove_element_query.prepare(
+		"DELETE FROM element WHERE diagram_uuid = :uuid");
+
 	m_remove_diagram_query = QSqlQuery(m_data_base);
 	m_remove_diagram_query.prepare("DELETE FROM diagram WHERE uuid=:uuid");
 
@@ -876,6 +1093,52 @@ QHash<QString, QString> projectDataBase::elementInfoToString(Element *elmt)
 	}
 
 	return hash;
+}
+
+/**
+	@brief projectDataBase::bindElementValues
+	Bind one element's row for the element table.
+
+	Shared by addElement() (a single element added to a live diagram) and
+	populateElementTable() (a full rebuild), because those two used to bind
+	the same row differently: the incremental path wrote
+	kindInformations()["type"] into sub_type while the bulk path wrote
+	elementData().masterTypeToString(). The element table therefore held
+	different values depending on whether the project had been reloaded
+	since the element was placed. One binder means live and reloaded agree
+	by construction rather than by coincidence.
+
+	The bulk path's values are the ones kept: they are what every already
+	saved project contains, so nothing a reload produces changes.
+	@param query : prepared insert query to bind into
+	@param element : element to bind
+	@param diagram : diagram holding @element
+*/
+void projectDataBase::bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram)
+{
+	const auto element_data = element->elementData();
+	query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	query.bindValue(QStringLiteral(":diagram_uuid"), diagram->uuid().toString());
+	query.bindValue(QStringLiteral(":pos"), diagram->convertPosition(element->scenePos()).toString());
+	query.bindValue(QStringLiteral(":type"), element_data.typeToString());
+	query.bindValue(QStringLiteral(":sub_type"), element_data.masterTypeToString());
+}
+
+/**
+	@brief projectDataBase::bindElementInfoValues
+	Bind one element's row for the element info table.
+	Shared by addElement() and populateElementInfoTable() for the same
+	reason as bindElementValues().
+	@param query : prepared insert query to bind into
+	@param element : element to bind
+*/
+void projectDataBase::bindElementInfoValues(QSqlQuery &query, Element *element)
+{
+	query.bindValue(QStringLiteral(":uuid"), element->uuid().toString());
+	const auto hash = elementInfoToString(element);
+	for (const auto &key : hash.keys()) {
+		query.bindValue(QStringLiteral(":") + key, hash.value(key));
+	}
 }
 
 void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)

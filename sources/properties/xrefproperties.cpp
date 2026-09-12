@@ -36,6 +36,7 @@ XRefProperties::XRefProperties()
 	m_master_label = "%f-%l%c";
 	m_slave_label = "(%f-%l%c)";
 	m_offset = 0;
+	m_slave_offset = 0;
 	m_xref_pos = Qt::AlignBottom;
 }
 
@@ -56,6 +57,8 @@ void XRefProperties::toSettings(QSettings &settings,
 	settings.setValue(prefix % "snapto", snap);
 	int offset = m_offset;
 	settings.setValue(prefix % "offset", offset);
+	int slave_offset = m_slave_offset;
+	settings.setValue(prefix % "slave_offset", slave_offset);
 	QString master_label = m_master_label;
 	settings.setValue(prefix % "master_label", master_label);
 	QString slave_label = m_slave_label;
@@ -86,6 +89,7 @@ void XRefProperties::fromSettings(const QSettings &settings,
 	QString snap = settings.value(prefix % "snapto", "label").toString();
 	snap == "bottom"? m_snap_to = Bottom : m_snap_to = Label;
 	m_offset = settings.value(prefix % "offset", "0").toInt();
+	m_slave_offset = settings.value(prefix % "slave_offset", "0").toInt();
 	m_master_label = settings.value(prefix % "master_label", "%f-%l%c").toString();
 	m_slave_label = settings.value(prefix % "slave_label", "(%f-%l%c)").toString();
 
@@ -123,6 +127,7 @@ QDomElement XRefProperties::toXml(QDomDocument &xml_document) const
 
 	int offset = m_offset;
 	xml_element.setAttribute("offset", QString::number(offset));
+	xml_element.setAttribute("slave_offset", QString::number(m_slave_offset));
 	QString master_label = m_master_label;
 	xml_element.setAttribute("master_label", master_label);
 	QString slave_label = m_slave_label;
@@ -157,6 +162,7 @@ bool XRefProperties::fromXml(const QDomElement &xml_element) {
 		m_xref_pos = Qt::AlignBottom;
 
 	m_offset = xml_element.attribute("offset", "0").toInt();
+	m_slave_offset = xml_element.attribute("slave_offset", "0").toInt();
 	m_master_label = xml_element.attribute("master_label", "%f-%l%c");
 	m_slave_label = xml_element.attribute("slave_label","(%f-%l%c)");
 	foreach (QString key, m_prefix_keys) {
@@ -199,6 +205,7 @@ bool XRefProperties::operator ==(const XRefProperties &xrp) const{
 			&& m_prefix      == xrp.m_prefix
 			&& m_master_label== xrp.m_master_label
 			&& m_offset      == xrp.m_offset
+			&& m_slave_offset== xrp.m_slave_offset
 			&& m_xref_pos    == xrp.m_xref_pos
 			&& m_slave_label == xrp.m_slave_label);
 }

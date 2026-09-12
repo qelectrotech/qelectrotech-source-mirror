@@ -334,6 +334,13 @@ void DiagramView::setSelectionMode()
 */
 void DiagramView::zoom(const qreal zoom_factor)
 {
+	// clamp the resulting scale so a repeated wheel-zoom cannot drive the view
+	// transform to floating-point overflow and crash the editor (issue #798)
+	const qreal target = transform().m11() * zoom_factor;
+	if (target < m_min_zoom || target > m_max_zoom) {
+		return;
+	}
+
 	if (zoom_factor >= 1){
 		scale(zoom_factor, zoom_factor);
 	}

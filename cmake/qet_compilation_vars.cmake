@@ -174,7 +174,11 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/ui/wiringlistdialog.h
+  ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
@@ -318,6 +322,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
@@ -471,6 +477,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/project/projectusagetracker.cpp
   ${QET_DIR}/sources/project/projectusagetracker.h
 
+  ${QET_DIR}/sources/properties/deviceinformation.cpp
+  ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
@@ -518,6 +526,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/shapetransform.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/shapetransform.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.h
   ${QET_DIR}/sources/qetgraphicsitem/reportelement.cpp
@@ -718,8 +728,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/elementpropertieswidget.h
   ${QET_DIR}/sources/ui/formulaassistantdialog.cpp
   ${QET_DIR}/sources/ui/formulaassistantdialog.h
+  ${QET_DIR}/sources/ui/imagecropdialog.cpp
+  ${QET_DIR}/sources/ui/imagecropdialog.h
   ${QET_DIR}/sources/ui/imagepropertieswidget.cpp
   ${QET_DIR}/sources/ui/imagepropertieswidget.h
+  ${QET_DIR}/sources/ui/imagetransparentcolordialog.cpp
+  ${QET_DIR}/sources/ui/imagetransparentcolordialog.h
   ${QET_DIR}/sources/ui/importelementdialog.cpp
   ${QET_DIR}/sources/ui/importelementdialog.h
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.cpp
@@ -790,6 +804,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
+  ${QET_DIR}/sources/undocommand/promoteshapecommand.cpp
+  ${QET_DIR}/sources/undocommand/promoteshapecommand.h
   ${QET_DIR}/sources/undocommand/rotatetextscommand.cpp
   ${QET_DIR}/sources/undocommand/rotatetextscommand.h
   ${QET_DIR}/sources/undocommand/movegraphicsitemcommand.cpp
@@ -846,6 +862,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_hu.ts
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_ko.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts
