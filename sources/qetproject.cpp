@@ -160,6 +160,11 @@ QETProject::~QETProject()
 		//We block database signal to avoid hundreds of unnecessary emitted signal
 		//due to deletion (diagram, item, etc...) and as much update made in the not yet deleted things.
 	m_data_base.blockSignals(true);
+		//Same reasoning for the rebuild itself : destroying a table relinks
+		//the tables that were chained to it, which re-queries the database,
+		//which rebuilds it completely -- for a project that is on its way out.
+		//Nothing can observe the result : the database is destroyed with it.
+	m_data_base.setUpdateBlocked(true);
 
 		//Each time a diagram is deleted we also remove it from m_diagram_list
 		//because a lot of thing append during the destructor of a diagram class
@@ -173,6 +178,30 @@ QETProject::~QETProject()
 	{
 		delete  diagram;
 		m_diagrams_list.removeOne(diagram);
+	}
+
+		//A diagram can be detached from this project (detachDiagram(), used by
+		//both removeDiagram() and RemoveDiagramCommand::redo()) and scheduled
+		//for deferred deletion via deleteLater(), without that deletion having
+		//actually run yet -- deleteLater() only fires on the next event-loop
+		//iteration, and nothing guarantees one runs before this destructor
+		//does. Such a diagram is no longer in m_diagrams_list (so the loop
+		//above never touches it) but is still a QObject child of this project
+		//(Diagram's constructor passes `project` straight to QGraphicsScene's
+		//parent argument). Left alone, it is destroyed later by QObject's own
+		//automatic child cleanup in ~QObject(), which runs AFTER m_data_base
+		//(a plain value member, destroyed by ordinary C++ member teardown)
+		//has already been destroyed -- and Diagram's destructor calls back
+		//into dataBase()->removeElement() for each of its elements, so that
+		//ordering is a use-after-free (confirmed by crash: SIGSEGV in
+		//QSqlResult::exec(), called from Diagram::~Diagram() by way of
+		//Diagram::removeItem(), by way of QObjectPrivate::deleteChildren()).
+		//Delete any such stragglers now, synchronously, while m_data_base is
+		//still alive. The deleteLater() event, if it is ever processed
+		//afterward, is a safe no-op on an already-deleted QObject.
+	const auto orphaned_diagrams = findChildren<Diagram *>(QString(), Qt::FindDirectChildrenOnly);
+	for (Diagram *diagram : orphaned_diagrams) {
+		delete diagram;
 	}
 }
 
@@ -1228,7 +1257,7 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 				// Warn if the new element introduces slave contact groups
 				QDomElement new_kind = location.xml().firstChildElement("kindInformations");
 				if (!new_kind.firstChildElement("slaveContactGroups").isNull()) {
-					QMessageBox::StandardButton answer = QMessageBox::warning(nullptr,
+					QMessageBox::StandardButton answer = QET::QetMessageBox::warning(nullptr,
 						tr("Système de contacts modifié"),
 						tr("Le nouvel élément définit des groupes de contacts esclaves.\n"
 						   "Les éléments esclaves existants ne seront pas automatiquement "
@@ -1523,6 +1552,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 	m_data_base.blockSignals(true);
+		//Blocking the signals is not enough : every table model built below
+		//re-queries the database, and each of those queries used to trigger a
+		//complete rebuild of it. The content being loaded is the same for all
+		//of them, so a single rebuild once everything is in place is enough.
+	m_data_base.setUpdateBlocked(true);
 
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
@@ -1562,6 +1596,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	const qint64 refresh_ms = phase_timer.restart();
 
 	m_data_base.blockSignals(false);
+	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB();
 	const qint64 database_ms = phase_timer.elapsed();
 
@@ -1875,7 +1910,14 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 		// export default XRef properties
 	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
-	for (QString key : defaultXRefProperties().keys())
+		//Sorted, because defaultXRefProperties() is a QHash and its key order
+		//is randomised per process. Writing it unsorted made two saves of an
+		//unchanged project differ only in the order of these <xref> children,
+		//so a save was not reproducible and diffing two saved files showed
+		//spurious changes.
+	QStringList xref_keys = defaultXRefProperties().keys();
+	xref_keys.sort();
+	for (QString &key : xref_keys)
 	{
 		auto xrp = defaultXRefProperties(key);
 		xrp.setKey(key);
@@ -1889,7 +1931,12 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
 	conductor_autonums.setAttribute("auto_break_conductors", m_auto_break_conductor ? "true" : "false");
-	foreach (QString key, conductorAutoNum().keys()) {
+		//Sorted for the same reason as the xrefs above: these three
+		//collections are QHash, whose key order is randomised per process,
+		//so an unsorted write reorders these children on every save.
+	QStringList conductor_autonum_keys = conductorAutoNum().keys();
+	conductor_autonum_keys.sort();
+	for (const QString &key : std::as_const(conductor_autonum_keys)) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {
 			conductor_autonum.setAttribute("title", key);
@@ -1901,7 +1948,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 	//Export Folio Autonums
 	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
-	foreach (QString key, folioAutoNum().keys()) {
+	QStringList folio_autonum_keys = folioAutoNum().keys();
+	folio_autonum_keys.sort();
+	for (const QString &key : std::as_const(folio_autonum_keys)) {
 	QDomElement folio_autonum = folioAutoNum(key).toXml(xml_document, "folio_autonum");
 		folio_autonum.setAttribute("title", key);
 		folio_autonums.appendChild(folio_autonum);
@@ -1912,7 +1961,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
 	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
 	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
-	foreach (QString key, elementAutoNum().keys()) {
+	QStringList element_autonum_keys = elementAutoNum().keys();
+	element_autonum_keys.sort();
+	for (const QString &key : std::as_const(element_autonum_keys)) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
 		if (key != "" && elementAutoNumFormula(key) != "") {
 			element_autonum.setAttribute("title", key);

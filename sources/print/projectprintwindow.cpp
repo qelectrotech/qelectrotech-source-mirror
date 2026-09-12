@@ -436,7 +436,10 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 
 					// Build info text
 					QStringList lines;
-					for (const QString &key : {"label", "manufacturer", "designation", "description"}) {
+					for (const auto &key : {QStringLiteral("label"),
+											 QStringLiteral("manufacturer"),
+											 QStringLiteral("designation"),
+											 QStringLiteral("description")}) {
 						if (info.contains(key) && !info.value(key).toString().isEmpty())
 							lines << QETInformation::translatedInfoKey(key) + ": " + info.value(key).toString();
 					}

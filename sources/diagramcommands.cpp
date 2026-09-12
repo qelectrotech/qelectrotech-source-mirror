@@ -17,9 +17,7 @@
 */
 #include "diagramcommands.h"
 
-#include "autobreakconductor.h"
 #include "diagram.h"
-#include "qetproject.h"
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
@@ -50,7 +48,6 @@ PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c,
 PasteDiagramCommand::~PasteDiagramCommand()
 {
 	diagram -> qgiManager().release(content.items(filter));
-	delete m_break_cmd;
 }
 
 /**
@@ -60,10 +57,6 @@ PasteDiagramCommand::~PasteDiagramCommand()
 void PasteDiagramCommand::undo()
 {
 	diagram -> showMe();
-
-		//Undo auto-break before removing items, so terminals are still on scene
-	if (m_break_cmd)
-		m_break_cmd->undo();
 
 	foreach(QGraphicsItem *item, content.items(filter))
 		diagram->removeItem(item);
@@ -106,35 +99,20 @@ void PasteDiagramCommand::redo()
 				dc.addValue("location", "");
 				e->setElementInformations(dc);
 				
-				//Reset the text of conductors
+				//Reset the text of conductors, the same way the label/comment/
+				//location above are reset to "" rather than to some other
+				//value - "erase on copy" means erase, not "replace with the
+				//project's default new-conductor text" (which happens to
+				//default to a literal "_" character, unrelated to whether the
+				//user wanted this copy's old label kept or cleared; see
+				//issue #413).
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
 				for (Conductor *c : conductors_list)
 				{
 					ConductorProperties cp = c -> properties();
-					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
+					cp.text = "";
 					c -> setProperties(cp);
 				}
-			}
-		}
-
-			//Auto-break conductors on first paste. Items are already on the
-			//scene at this point (added before this command was created).
-		if (diagram->project()->autoBreakConductor())
-		{
-			m_break_cmd = new QUndoCommand();
-			QList<Conductor *> conductors_handled;
-			QSet<Terminal *> used_terminals;
-			for (Element *e : content.m_elements) {
-				autoBreakConductors(diagram, e, m_break_cmd,
-						    conductors_handled, used_terminals);
-			}
-			if (m_break_cmd->childCount() == 0) {
-				delete m_break_cmd;
-				m_break_cmd = nullptr;
-			}
-			else
-			{
-				m_break_cmd->redo();
 			}
 		}
 	}
@@ -144,10 +122,6 @@ void PasteDiagramCommand::redo()
 		for (QGraphicsItem *item : qgis_list) {
 			diagram->addItem(item);
 		}
-
-			//Re-execute the stored break commands (items are back on scene)
-		if (m_break_cmd)
-			m_break_cmd->redo();
 	}
 
 	const QList<QGraphicsItem *> qgis_list = content.items();

@@ -40,8 +40,65 @@
 #include "undocommand/addelementtextcommand.h"
 #include "qetinformation.h"
 #include "qetproject.h"
+#include "diagramsortkeys.h"
+#include <algorithm>
 #include <cassert>
 #include <math.h>
+
+namespace {
+	using DiagramSortKeys::positionKey;
+
+	/// Sort key for Diagram::toXml()'s <elements> block: the element's own
+	/// diagram-local position, exactly what it's already saved as (x/y),
+	/// never invented or regenerated. uuid() is deliberately NOT used here:
+	/// for an element with no persisted uuid attribute, fromXml() invents a
+	/// fresh random one on every load, so sorting by uuid would still be
+	/// non-deterministic across process runs for any legacy file.
+	QString elementSortKey(Element *elmt)
+	{
+			//Position alone is not a total order: two elements can sit at the
+			//same x/y (lmdg.qet has a pair of text elements both at 780,350).
+			//With equal keys std::stable_sort falls back to the order the
+			//scene handed us, which varies per run, so those two swapped
+			//places on every save. The uuid breaks the tie.
+			//
+			//For an element with a persisted uuid attribute this is fully
+			//deterministic. For a legacy element without one, fromXml()
+			//invents a fresh uuid per load, so a collision between two such
+			//elements is no better ordered than before -- but no worse
+			//either, and the tiebreaker is only consulted when the positions
+			//are equal.
+		return positionKey(elmt->pos())
+				+ QLatin1Char(':') + elmt->uuid().toString();
+	}
+
+	/// Sort key for a terminal: its parent element's position, then the
+	/// terminal's own position local to that element (from the .elmt
+	/// definition, fixed regardless of where the element is placed).
+	QString terminalSortKey(Terminal *terminal)
+	{
+		if (!terminal)
+			return QString();
+		Element *parent = terminal->parentElement();
+		return (parent ? positionKey(parent->pos()) : QStringLiteral("?"))
+				+ QLatin1Char(':') + positionKey(terminal->pos());
+	}
+
+	/// Sort key for Diagram::toXml()'s <conductors> block. Built from both
+	/// endpoints' terminalSortKey(), not Conductor::uuid(): in every example
+	/// project checked, conductors have no persisted uuid attribute at all,
+	/// so uuid() is a freshly-minted random value on every load -- exactly
+	/// as unusable for cross-run determinism as the element case above, just
+	/// with no persisted fallback to reach for instead. Canonicalised
+	/// (smaller key first) since a conductor's two ends are unordered for
+	/// this purpose.
+	QString conductorSortKey(Conductor *cond)
+	{
+		QString a = terminalSortKey(cond->terminal1);
+		QString b = terminalSortKey(cond->terminal2);
+		return (a <= b) ? (a + QLatin1Char('>') + b) : (b + QLatin1Char('>') + a);
+	}
+}
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
@@ -1013,6 +1070,20 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			}
 		}
 	}
+
+		// items() returns items in stacking order, which is not guaranteed
+		// reproducible across processes (ties between same-Z items follow
+		// the scene's internal index, not any content-derived order) -- so
+		// without this, saving an unmodified project produces a different
+		// byte stream on every run. Elements and conductors are the two
+		// blocks observed to actually churn across the example corpus;
+		// sort them into a deterministic, content-derived order before
+		// serializing. This also fixes the legacy terminal-id churn below,
+		// since those ids are assigned sequentially in element order.
+	std::stable_sort(list_elements.begin(), list_elements.end(),
+			  [](Element *a, Element *b) { return elementSortKey(a) < elementSortKey(b); });
+	std::stable_sort(list_conductors.begin(), list_conductors.end(),
+			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
 
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids

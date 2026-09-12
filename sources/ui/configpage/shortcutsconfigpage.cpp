@@ -212,7 +212,7 @@ void ShortcutsConfigPage::applyFilter()
 	const int quick_filter = m_quick_filter->currentIndex();
 
 	int visible_actions = 0;
-	for (const Row &row : qAsConst(m_rows)) {
+	for (const Row &row : std::as_const(m_rows)) {
 		// Text is matched by substring, but the key sequence is matched exactly:
 		// a substring match would let "Ctrl+S" also hit "Ctrl+Shift+F" (the "S"
 		// of "Shift"), which is precisely the kind of false positive that hides
@@ -269,6 +269,25 @@ void ShortcutsConfigPage::applyFilter()
 	m_count_label->setText(tr("%n action(s)", nullptr, visible_actions));
 }
 
+// IDs use stable context prefixes; translated display categories are not scopes.
+// Main-window actions are shared by the editors, and depth actions by the
+// diagram and element editors. Panel-specific shortcuts retain their own scope.
+static bool shortcutScopesOverlap(const QString &first_id, const QString &second_id)
+{
+	const QString first = first_id.section(QLatin1Char('.'), 0, 0);
+	const QString second = second_id.section(QLatin1Char('.'), 0, 0);
+	if (first == second || first == QLatin1String("mainwindow")
+			|| second == QLatin1String("mainwindow"))
+		return true;
+
+	const auto has_depth = [](const QString &scope) {
+		return scope == QLatin1String("diagrameditor")
+				|| scope == QLatin1String("elementeditor");
+	};
+	return (first == QLatin1String("depth") && has_depth(second))
+			|| (second == QLatin1String("depth") && has_depth(first));
+}
+
 /**
 	@brief ShortcutsConfigPage::checkConflicts
 	Highlight every row whose currently-edited sequence is shared, non-empty,
@@ -287,8 +306,12 @@ void ShortcutsConfigPage::checkConflicts()
 	for (int row = 0; row < m_rows.size(); ++row) {
 		Row &current_row = m_rows[row];
 		const QString sequence_text = current_row.edit->keySequence().toString();
-		const QList<int> &conflicting_rows = sequence_to_rows.value(sequence_text);
-		const bool conflicted = !sequence_text.isEmpty() && conflicting_rows.size() > 1;
+		QList<int> conflicting_rows;
+		for (int other : sequence_to_rows.value(sequence_text)) {
+			if (other != row && shortcutScopesOverlap(current_row.id, m_rows.at(other).id))
+				conflicting_rows << other;
+		}
+		const bool conflicted = !conflicting_rows.isEmpty();
 
 		current_row.conflicted = conflicted;
 
