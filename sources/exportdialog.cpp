@@ -744,6 +744,25 @@ void ExportDialog::generateDxf(
 		painter.end();
 	}
 
+	//Draw images -- collected above (list_images) but never actually
+	//drawn until now, an existing gap this reuses the same paint()
+	//-replay approach to fix: DiagramImageItem::paint() has no
+	//viewport-dependent logic (unlike CrossRefItem, which needs its own
+	//paintForExport() for that reason), so it's called directly with a
+	//default QStyleOptionGraphicsItem rather than needing an export-
+	//specific variant of its own. DxfPaintEngine::drawPixmap() is what
+	//actually turns the drawPixmap() call inside paint() into a
+	//placeholder outline, since this DXF dialect has no raster image
+	//entity to draw instead.
+	for (DiagramImageItem *image : std::as_const(list_images))
+	{
+		DxfPaintDevice dxf_device(file_path);
+		QPainter painter(&dxf_device);
+		painter.setWorldTransform(image->sceneTransform());
+		image->paintForExport(&painter);
+		painter.end();
+	}
+
 	Createdxf::dxfEnd(file_path);
 
 	saveReloadDiagramParameters(diagram, false);
@@ -816,6 +835,42 @@ void ExportDialog::slot_export()
 			QMessageBox::Ok
 		);
 		return;
+	}
+	
+	// Warn once, up front, rather than per-diagram: this DXF dialect
+	// (AC1006, AutoCAD R10) has no raster image representation at all
+	// (IMAGE/IMAGEDEF wasn't introduced until R2000, over a decade
+	// later, and even there the picture is never embedded, only
+	// referenced by external file path) -- so any image ends up as a
+	// placeholder rectangle outline instead (see DxfPaintEngine::
+	// drawPixmap()), with its position/size/rotation/skew preserved but
+	// not its actual content.
+	if (epw -> exportProperties().format.compare(QLatin1String("dxf"), Qt::CaseInsensitive) == 0)
+	{
+		bool any_images = false;
+		for (ExportDiagramLine *diagram_line : std::as_const(diagrams_to_export))
+		{
+			for (QGraphicsItem *item : diagram_line->diagram->items())
+			{
+				if (qgraphicsitem_cast<DiagramImageItem *>(item)) {
+					any_images = true;
+					break;
+				}
+			}
+			if (any_images) break;
+		}
+
+		if (any_images)
+		{
+			QET::QetMessageBox::warning(
+				this,
+				tr("Images non incluses dans l'export DXF", "message box title"),
+				tr("Le format DXF utilisé ici (AC1006) ne permet pas d'inclure d'image. "
+				   "Les images seront représentées uniquement par un rectangle de contour "
+				   "(position, taille, rotation et inclinaison conservées), sans le contenu de l'image.",
+				   "message box content")
+			);
+		}
 	}
 	
 	// exporte chaque schema a exporter

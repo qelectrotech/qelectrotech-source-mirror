@@ -292,7 +292,7 @@ void ElementPropertiesEditorWidget::updateTree()
 			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Slave:
-			ui->m_tree->setDisabled(true);
+			ui->m_tree->setEnabled(true);
 			break;
 		case ElementData::Terminal:
 			ui->m_tree->setEnabled(true);
@@ -371,7 +371,7 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_master_type = ui->m_master_type_cb->currentData().value<ElementData::MasterType>();
 
 		//If the checkbox is checked, save the number; otherwise, -1 (infinity)
-		if (ui->max_slaves_checkbox->isVisible() && ui->max_slaves_checkbox->isChecked()) {
+		if ((m_data.m_master_type == ElementData::Coil || m_data.m_master_type == ElementData::Protection || m_data.m_master_type == ElementData::Commutator) && ui->max_slaves_checkbox->isChecked()) {
 			m_data.m_max_slaves = ui->max_slaves_spinbox->value();
 		} else {
 			m_data.m_max_slaves = -1;
@@ -425,7 +425,9 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
-								  type_ == ElementData::Master));
+								  type_ == ElementData::Master ||
+								  type_ == ElementData::Slave ||
+								  type_ == ElementData::Terminal));
 
 	updateTree();
 }

@@ -19,7 +19,7 @@ include(cmake/hoto_update_cmake_message.cmake)
 cmake_minimum_required(VERSION 3.5...4.2)
 
 project(qelectrotech
-        VERSION 0.100.1
+        VERSION 0.200.1
         DESCRIPTION "QET is a CAD/CAE editor focusing on schematics drawing features."
         HOMEPAGE_URL "https://qelectrotech.org/"
         LANGUAGES C CXX)
@@ -36,7 +36,7 @@ set(QET_DIR ${PROJECT_SOURCE_DIR})
 # includes below, so every subdirectory and every FetchContent dependency
 # sees a consistent, already-defined value.
 if(NOT DEFINED QT_VERSION_MAJOR)
-    set(QT_VERSION_MAJOR 5)
+    set(QT_VERSION_MAJOR 6)
 endif()
 
 # Some third-party CMake projects we pull in via FetchContent (e.g.
@@ -134,6 +134,7 @@ include(cmake/fetch_kdeaddons.cmake)
 option(PACKAGE_TESTS "Build the tests" ON)
 if(PACKAGE_TESTS)
     message("Add sub directory tests")
+    enable_testing()
     add_subdirectory(tests)
 endif()
 
@@ -162,6 +163,25 @@ else()
     )
 endif()
 
+if(APPLE)
+    # CFBundleIdentifier must not be empty. CMake's default Info.plist
+    # template fills it from MACOSX_BUNDLE_GUI_IDENTIFIER; with that unset
+    # the bundle ships an empty identifier, LaunchServices never registers
+    # the .app, and AppKit's open/save panel service (which is keyed on the
+    # client's bundle id) silently presents nothing -- every
+    # QFileDialog::getOpenFileName()/getSaveFileName() call returns an empty
+    # string without a panel ever appearing, so File > Open and File > Save
+    # as do nothing at all.
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.qelectrotech.QElectroTech"
+        MACOSX_BUNDLE_BUNDLE_NAME "QElectroTech"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_COPYRIGHT "Copyright 2006-2026 The QElectroTech Team"
+    )
+endif()
+
 # The default build only compiles the tracked .ts files to .qm (lrelease).
 # Refreshing the .ts from the sources (lupdate) is a developer action behind
 # the explicit "update_translations" target below: running lupdate on every
@@ -170,7 +190,7 @@ endif()
 # fail with "Premature end of document".
 set_source_files_properties(
     ${TS_FILES}
-    PROPERTIES OUTPUT_LOCATION "${QET_DIR}/lang"
+    PROPERTIES OUTPUT_LOCATION "lang"
 )
 if(QT_VERSION_MAJOR EQUAL 6)
     if(Qt6_VERSION VERSION_LESS "6.2")
@@ -330,7 +350,9 @@ if(NOT BUILD_WITH_KF)
     )
 endif()
 
-install(TARGETS ${PROJECT_NAME})
+install(TARGETS ${PROJECT_NAME}
+    BUNDLE DESTINATION .
+)
 
 if (NOT MINGW)
     install(DIRECTORY ico/breeze-icons/16x16   DESTINATION ${QET_ICONS_PATH})

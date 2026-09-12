@@ -479,8 +479,13 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
 
+		//Slave is in this list because the element editor offers the
+		//Informations tab for it, including the PLC-specific rows
+		//populateTree() adds for a PLC slave. Without it the editor would
+		//accept that data and silently drop it on save.
 	if (type_ == ElementData::Simple ||
 		type_ == ElementData::Master ||
+		type_ == ElementData::Slave ||
 		type_ == ElementData::Terminal ||
 		type_ == ElementData::Thumbnail)
 	{
