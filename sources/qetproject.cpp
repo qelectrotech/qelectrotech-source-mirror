@@ -1043,7 +1043,14 @@ QDomDocument QETProject::toXml()
 	// titleblock templates, if any
 	if (m_titleblocks_collection.templates().count()) {
 		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
-		foreach (QString template_name, m_titleblocks_collection.templates()) {
+			//Sorted, because templates() returns QHash::keys() and Qt
+			//randomises hash order per process. Writing them unsorted put the
+			//<titleblocktemplate> children in a different order on every save,
+			//which is what made a project holding more than one template save
+			//irreproducibly.
+		QStringList template_names = m_titleblocks_collection.templates();
+		template_names.sort();
+		for (const QString &template_name : std::as_const(template_names)) {
 			QDomElement e = m_titleblocks_collection.getTemplateXmlDescription(template_name);
 			titleblocktemplates_elmt.appendChild(xml_doc.importNode(e, true));
 		}
