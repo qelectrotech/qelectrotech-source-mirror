@@ -2191,6 +2191,7 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 			}
 			delete project;
 			DialogWaiting::dropInstance();
+			continue;
 		}
 		addProject(project);
 		DialogWaiting::dropInstance();
