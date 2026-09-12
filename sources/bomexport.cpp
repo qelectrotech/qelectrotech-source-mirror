@@ -20,6 +20,7 @@
 #include <QSaveFile>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QVariant>
 
 namespace {
 QString csvField(QString value)
