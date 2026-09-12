@@ -428,7 +428,9 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	rel_col_size_format.setPattern("^([rt])([0-9]+)%$");
 	rel_col_size_format.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() <<"is QRegularExpression ok?";
+#endif
 
 	QStringList cols_descriptions =
 			cols_string.split(QChar(';'), Qt::SkipEmptyParts);
