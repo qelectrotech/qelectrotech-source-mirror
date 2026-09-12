@@ -15,6 +15,78 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QGroupBox" name="m_geometry_gb">
+     <property name="title">
+      <string>Géométrie</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_geom_dim1_label">
+        <property name="text">
+         <string>Largeur</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QDoubleSpinBox" name="m_geom_dim1_dsb">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="minimum">
+         <double>0.010000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>100000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_geom_dim2_label">
+        <property name="text">
+         <string>Hauteur</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="m_geom_dim2_dsb">
+        <property name="decimals">
+         <number>2</number>
+        </property>
+        <property name="minimum">
+         <double>0.010000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>100000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="m_geom_angle_label">
+        <property name="text">
+         <string>Angle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="m_geom_angle_dsb">
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>-360.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>360.000000000000000</double>
+        </property>
+        <property name="suffix">
+         <string> °</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Trait</string>
@@ -230,7 +302,7 @@
    <item>
     <widget class="QCheckBox" name="m_close_polygon">
      <property name="text">
-      <string>Polygone fermé</string>
+      <string>Forme fermée</string>
      </property>
     </widget>
    </item>
@@ -257,6 +329,9 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>m_geom_dim1_dsb</tabstop>
+  <tabstop>m_geom_dim2_dsb</tabstop>
+  <tabstop>m_geom_angle_dsb</tabstop>
   <tabstop>m_style_cb</tabstop>
   <tabstop>m_size_dsb</tabstop>
   <tabstop>m_color_kpb</tabstop>

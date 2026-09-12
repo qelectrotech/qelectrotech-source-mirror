@@ -23,6 +23,14 @@ set(QAPPLICATION_CLASS QApplication)
 
 Include(FetchContent)
 
+if(EXISTS "${CMAKE_SOURCE_DIR}/SingleApplication/CMakeLists.txt")
+  # Submodule deja present dans l'arbre source (clone --recursive, tarball
+  # de distro deja peuple via "git submodule update", etc.) : on l'utilise
+  # tel quel, sans acces reseau. Necessaire pour les builds hors-ligne
+  # (pbuilder/sbuild avec FETCHCONTENT_FULLY_DISCONNECTED=ON, Launchpad PPA...).
+  set(FETCHCONTENT_SOURCE_DIR_SINGLEAPPLICATION "${CMAKE_SOURCE_DIR}/SingleApplication")
+endif()
+
 FetchContent_Declare(
   SingleApplication
   GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git

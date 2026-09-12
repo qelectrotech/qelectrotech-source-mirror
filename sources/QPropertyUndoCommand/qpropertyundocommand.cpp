@@ -72,6 +72,7 @@ QPropertyUndoCommand::QPropertyUndoCommand(const QPropertyUndoCommand *other)
 	m_new_value     = other->m_new_value;
 	m_animate       = other->m_animate;
 	m_first_time    = other->m_first_time;
+	m_undo_first_time = other->m_undo_first_time;
 	setText(other->text());
 }
 
@@ -99,11 +100,20 @@ void QPropertyUndoCommand::enableAnimation (bool animate) {
 	@param first_time = if true,
 	the first animation is done at the first call of redo if false,
 	the first animation is done at the second call of redo.
+	The same rule applies to undo, tracked independently: redo() always
+	runs before the first undo() (QUndoStack::push() calls redo()
+	immediately), so by the time undo() can run at all, redo()'s own
+	m_first_time has already flipped true. Sharing that flag would leave
+	undo() with no instant path ever reachable in practice -- reusing it
+	is not actually symmetric, it just looks like it is. m_undo_first_time
+	gives undo() the same one-time grace period redo() has, on its own
+	first call instead of redo's.
 */
 void QPropertyUndoCommand::setAnimated(bool animate, bool first_time)
 {
 	m_animate = animate;
 	m_first_time = first_time;
+	m_undo_first_time = first_time;
 }
 
 /**
@@ -118,6 +128,18 @@ bool QPropertyUndoCommand::mergeWith(const QUndoCommand *other)
 	QPropertyUndoCommand const *undo = static_cast<const QPropertyUndoCommand *>(other);
 	if (m_object != undo->m_object
 			|| m_property_name != undo->m_property_name) return false;
+	// Same object and property name alone isn't enough: two entirely
+	// separate, deliberate actions (say, cropping an image and then
+	// mirroring it) both go through the same "pixmap" property and
+	// would otherwise silently coalesce into one undo entry, carrying
+	// only the first action's label -- the second vanishes from the
+	// undo list with no way to undo just it. Legitimate merging (a
+	// slider or spinbox pushing one command per tick while being
+	// dragged, e.g. ArcEditor's angle editors) always reuses the exact
+	// same text() across the whole sequence, so requiring a match here
+	// keeps that working unchanged while refusing to merge anything
+	// that isn't actually a continuation of the same action.
+	if (text() != other->text()) return false;
 	m_new_value = undo->m_new_value;
 	return true;
 }
@@ -155,7 +177,7 @@ void QPropertyUndoCommand::undo()
 {
 	if (m_object->property(m_property_name) != m_old_value)
 	{
-		if (m_animate)
+		if (m_animate && m_undo_first_time)
 		{
 			QPropertyAnimation *animation = new QPropertyAnimation(m_object, m_property_name);
 			animation->setStartValue(m_new_value);
@@ -163,7 +185,10 @@ void QPropertyUndoCommand::undo()
 			animation->start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		else
+		{
 			m_object->setProperty(m_property_name, m_old_value);
+			m_undo_first_time = true;
+		}
 	}
 
 	QUndoCommand::undo();

@@ -90,7 +90,7 @@ add_executable(
     ${QET_DIR}/sources/borderproperties.h
     )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
     target_sources(
         ${PROJECT_NAME}
         PRIVATE
@@ -109,7 +109,7 @@ target_link_libraries(
     PUBLIC
     Catch2::Catch2
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})

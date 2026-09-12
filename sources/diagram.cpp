@@ -40,8 +40,52 @@
 #include "undocommand/addelementtextcommand.h"
 #include "qetinformation.h"
 #include "qetproject.h"
+#include "diagramsortkeys.h"
+#include <algorithm>
 #include <cassert>
 #include <math.h>
+
+namespace {
+	using DiagramSortKeys::positionKey;
+
+	/// Sort key for Diagram::toXml()'s <elements> block: the element's own
+	/// diagram-local position, exactly what it's already saved as (x/y),
+	/// never invented or regenerated. uuid() is deliberately NOT used here:
+	/// for an element with no persisted uuid attribute, fromXml() invents a
+	/// fresh random one on every load, so sorting by uuid would still be
+	/// non-deterministic across process runs for any legacy file.
+	QString elementSortKey(Element *elmt)
+	{
+		return positionKey(elmt->pos());
+	}
+
+	/// Sort key for a terminal: its parent element's position, then the
+	/// terminal's own position local to that element (from the .elmt
+	/// definition, fixed regardless of where the element is placed).
+	QString terminalSortKey(Terminal *terminal)
+	{
+		if (!terminal)
+			return QString();
+		Element *parent = terminal->parentElement();
+		return (parent ? positionKey(parent->pos()) : QStringLiteral("?"))
+				+ QLatin1Char(':') + positionKey(terminal->pos());
+	}
+
+	/// Sort key for Diagram::toXml()'s <conductors> block. Built from both
+	/// endpoints' terminalSortKey(), not Conductor::uuid(): in every example
+	/// project checked, conductors have no persisted uuid attribute at all,
+	/// so uuid() is a freshly-minted random value on every load -- exactly
+	/// as unusable for cross-run determinism as the element case above, just
+	/// with no persisted fallback to reach for instead. Canonicalised
+	/// (smaller key first) since a conductor's two ends are unordered for
+	/// this purpose.
+	QString conductorSortKey(Conductor *cond)
+	{
+		QString a = terminalSortKey(cond->terminal1);
+		QString b = terminalSortKey(cond->terminal2);
+		return (a <= b) ? (a + QLatin1Char('>') + b) : (b + QLatin1Char('>') + a);
+	}
+}
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
@@ -1014,6 +1058,20 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 		}
 	}
 
+		// items() returns items in stacking order, which is not guaranteed
+		// reproducible across processes (ties between same-Z items follow
+		// the scene's internal index, not any content-derived order) -- so
+		// without this, saving an unmodified project produces a different
+		// byte stream on every run. Elements and conductors are the two
+		// blocks observed to actually churn across the example corpus;
+		// sort them into a deterministic, content-derived order before
+		// serializing. This also fixes the legacy terminal-id churn below,
+		// since those ids are assigned sequentially in element order.
+	std::stable_sort(list_elements.begin(), list_elements.end(),
+			  [](Element *a, Element *b) { return elementSortKey(a) < elementSortKey(b); });
+	std::stable_sort(list_conductors.begin(), list_conductors.end(),
+			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
+
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
@@ -1556,14 +1614,6 @@ bool Diagram::fromXml(QDomElement &document,
 	if (content_ptr) {
 		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-		content_ptr -> m_text_fields        = added_texts.toSet();
-		content_ptr -> m_images			    = added_images.toSet();
-		content_ptr -> m_shapes			    = added_shapes.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
 					added_texts.begin(),
 					added_texts.end());
@@ -1574,7 +1624,6 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.begin(),
 					added_shapes.end());
 		content_ptr->m_terminal_strip.swap(added_strips);
-#endif
 		content_ptr->m_tables.swap(added_tables);
 	}
 
@@ -1675,6 +1724,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
 			conductor->calculateTextItemPosition();
+			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
 		default: {break;}
@@ -1705,6 +1755,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
+			m_project->dataBase()->removeConductor(conductor);
 			break;
 		}
 		default: {break;}
