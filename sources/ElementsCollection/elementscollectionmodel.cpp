@@ -39,6 +39,20 @@ ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 }
 
 /**
+	@brief ElementsCollectionModel::~ElementsCollectionModel
+	Destructor. loadCollections() may still have background threads
+	(via QtConcurrent::map()) running setUpData() on this model's items
+	when the model is destroyed (e.g. the user cancels the dialog before
+	loading finishes). Wait for them here so QStandardItemModel's
+	destructor doesn't free items out from under them, which used to
+	crash the whole application (bugtracker #291).
+*/
+ElementsCollectionModel::~ElementsCollectionModel()
+{
+	m_future.waitForFinished();
+}
+
+/**
 	@brief ElementsCollectionModel::data
 	Reimplemented from QStandardItemModel
 	@param index
@@ -49,6 +63,7 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 {
 	if (role == Qt::DecorationRole) {
 		QStandardItem *item = itemFromIndex(index);
+		if (!item) return QStandardItemModel::data(index, role);
 
 		if (item->type() == FileElementCollectionItem::Type)
 			static_cast<FileElementCollectionItem*>(item)->setUpIcon();
@@ -316,7 +331,6 @@ void ElementsCollectionModel::loadMacrosCollection()
 void ElementsCollectionModel::addMacrosCollection(bool set_data)
 {
 	QString macrosPath = QETApp::userMacrosDir();
-	qDebug() << "=== MAKRO PFAD CHECK ===" << macrosPath;
 	if (macrosPath.endsWith("/")) {
 		macrosPath.remove(macrosPath.length() - 1, 1);
 	}

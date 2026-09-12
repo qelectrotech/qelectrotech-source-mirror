@@ -27,6 +27,8 @@
 class Element;
 class QETProject;
 class Diagram;
+class Conductor;
+class Terminal;
 class sqlite3;
 
 /**
@@ -45,8 +47,21 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+			/**
+				Suppress the full rebuild performed by updateDB().
+
+				While blocked, updateDB() returns immediately instead of
+				repopulating every table. Meant for bulk operations -- notably
+				loading a project, where each table model re-queries the
+				database as it is built and would otherwise trigger one
+				complete rebuild of it. The caller unblocks and calls
+				updateDB() once when done; @see QETProject::readProjectXml().
+			*/
+		void setUpdateBlocked(bool blocked);
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
+		QSqlDatabase database() const {return m_data_base;}
+		int excludedConductorCount() const;
 
 		void addElement         (Element *element);
 		void removeElement      (Element *element);
@@ -58,6 +73,16 @@ class projectDataBase : public QObject
 		void diagramInfoChanged (Diagram *diagram);
 		void diagramOrderChanged();
 
+		void addConductor       (Conductor *conductor);
+		void removeConductor    (Conductor *conductor);
+		void updateConductor    (Conductor *conductor);
+
+	private slots:
+			//Refresh the sender()'s row after Conductor::setProperties().
+		void conductorPropertiesChanged();
+
+	public:
+
 	signals:
 		void dataBaseUpdated();
 
@@ -65,17 +90,30 @@ class projectDataBase : public QObject
 		bool createDataBase();
 		void createElementNomenclatureView();
 		void createSummaryView();
+		void createWiringListView();
 		void populateDiagramTable();
 		void populateElementTable();
 		void populateElementInfoTable();
 		void populateDiagramInfoTable();
+		void populateConductorTable();
+		void bindConductorValues(QSqlQuery &query, Conductor *conductor, Diagram *diagram);
+		void watchConductor(Conductor *conductor);
+		void insertTerminal(Terminal *terminal);
 		void prepareQuery();
 		static QHash<QString, QString> elementInfoToString(
 				Element *elmt);
 		void bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram);
+		static void bindElementValues(QSqlQuery &query, Element *element, Diagram *diagram);
+		static void bindElementInfoValues(QSqlQuery &query, Element *element);
 
 	private:
 		QPointer<QETProject> m_project;
+		bool m_update_blocked = false;
+			//Starts true : the database is empty until the first rebuild.
+			//Set by every method of this class that writes rows, cleared by
+			//updateDB(). Callers reach the database from outside only through
+			//newQuery(), and every such call site reads.
+		bool m_content_changed = true;
 		QSqlDatabase m_data_base;
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
@@ -86,7 +124,15 @@ class projectDataBase : public QObject
 				  m_insert_diagram_info_query,
 				  m_update_diagram_info_query,
 				  m_diagram_order_changed,
-				  m_diagram_info_order_changed;
+				  m_diagram_info_order_changed,
+				  m_insert_terminal_query,
+				  m_insert_conductor_query,
+				  m_update_conductor_query,
+				  m_remove_conductor_query,
+				  m_cascade_remove_element_info_query,
+				  m_cascade_remove_terminal_query,
+				  m_cascade_remove_conductor_query,
+				  m_cascade_remove_element_query;
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:

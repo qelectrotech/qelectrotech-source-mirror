@@ -204,6 +204,14 @@ void ElementInfoWidget::buildInterface()
 		keys = QETInformation::elementInfoKeys();
 	}
 
+		//"exclude_from_bom" is part of elementInfoKeys() because the project
+		//database builds the element_info table from that list, but it is not
+		//a free-text property: it already has its own check box below. Without
+		//this it also gets a generic edit row, and since translatedInfoKey()
+		//has no entry for it that row carries no label at all - an anonymous
+		//line that currentInfo() then fills with "true"/"false".
+	keys.removeAll(QStringLiteral("exclude_from_bom"));
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);

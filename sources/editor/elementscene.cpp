@@ -121,7 +121,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
-			emit mouseMoved(e -> scenePos());
+			emit mouseMoved(snapToGrid(e->scenePos()));
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
@@ -479,8 +479,13 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
 
+		//Slave is in this list because the element editor offers the
+		//Informations tab for it, including the PLC-specific rows
+		//populateTree() adds for a PLC slave. Without it the editor would
+		//accept that data and silently drop it on save.
 	if (type_ == ElementData::Simple ||
 		type_ == ElementData::Master ||
+		type_ == ElementData::Slave ||
 		type_ == ElementData::Terminal ||
 		type_ == ElementData::Thumbnail)
 	{

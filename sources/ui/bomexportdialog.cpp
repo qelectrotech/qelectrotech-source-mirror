@@ -18,6 +18,7 @@
 #include "bomexportdialog.h"
 
 #include "../dataBase/ui/elementquerywidget.h"
+#include "../bomexport.h"
 #include "../qetapp.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
@@ -41,8 +42,8 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 
 	m_query_widget = new ElementQueryWidget(this);
 	ui->m_main_layout->insertWidget(0, m_query_widget);
-		//By default format as bom is clicked
-	on_m_format_as_bom_clicked(true);
+	m_query_widget->setQuery(BomExport::defaultQuery());
+	on_m_format_as_bom_clicked(false);
 }
 
 /**
@@ -67,97 +68,58 @@ int BOMExportDialog::exec()
 		if (dir.isEmpty()) dir = QETApp::documentDir();
 		QString file_name = dir % "/" % tr("nomenclature_") % QString(m_project ->title() % ".csv");
 		QString file_path = QFileDialog::getSaveFileName(this, tr("Enregister sous... "), file_name, tr("Fichiers csv (*.csv)"));
-		QFile file(file_path);
 		if (!file_path.isEmpty())
 		{
-			if (QFile::exists(file_path ))
-			{
-				// if file already exist -> delete it
-				if (!QFile::remove(file_path) )
-				{
-					QMessageBox::critical(this, tr("Erreur"),
-										  tr("Impossible de remplacer le fichier!\n\n")+
-										  "Destination : "+file_path+"\n");
-				}
-			}
-			if (file.open(QIODevice::WriteOnly | QIODevice::Text))
-			{
-				QTextStream stream(&file);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)	// ### Qt 6: remove
-				stream << getBom() << endl;
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.15 or later")
-#endif
-				stream << getBom() << &Qt::endl(stream);
-#endif
+			QString error;
+			const auto csv = getBom(&error);
+			if (!error.isEmpty() || !BomExport::writeCsv(file_path, csv, &error)) {
+				QMessageBox::critical(
+						this, tr("Erreur"),
+						tr("Impossible d'enregistrer la nomenclature dans %1.\n%2")
+								.arg(file_path, error));
 			}
 		}
 	}
 	return r;
 }
 
-QString BOMExportDialog::getBom()
+QByteArray BOMExportDialog::getBom(QString *error)
 {
+	if (error) {
+		error->clear();
+	}
 	m_project->dataBase()->updateDB();
 	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr());
-	QString return_string;
 
 	if (!query_.exec()) {
 		qDebug() << "BOMExportDialog::getBom : query errir : " << query_.lastError();
+		if (error) {
+			*error = query_.lastError().text();
+		}
+		return {};
 	}
-	else
+
+	QStringList header_names;
+	if (ui->m_include_headers->isChecked())
 	{
-			//HEADERS
-		if (ui->m_include_headers)
+		const auto record_ = query_.record();
+		for (int i = 0; i < record_.count(); ++i)
 		{
-			auto record_ = query_.record();
-			QStringList header_name;
-			for (auto i=0 ; i<record_.count() ; ++i)
-			{
-				auto field_name = record_.fieldName(i);
-
-				qDebug() << "field name = " << field_name;
-				if (field_name == "position") {
-					header_name << tr("Position");
-				} else if (field_name == "diagram_position") {
-					header_name << tr("Position du folio");
-				} else if (field_name == "designation_qty") {
-					header_name << tr("Quantité numéro d'article", "Special field with name : designation quantity");
-				} else {
-					header_name << QETInformation::translatedInfoKey(field_name);
-					if (header_name.isEmpty()) {
-						header_name << field_name;
-					}
-				}
-
+			const auto field_name = record_.fieldName(i);
+			if (field_name == QLatin1String("position")) {
+				header_names << tr("Position");
+			} else if (field_name == QLatin1String("diagram_position")) {
+				header_names << tr("Position du folio");
+			} else if (field_name == QLatin1String("designation_qty")) {
+				header_names << tr("Quantité numéro d'article", "Special field with name : designation quantity");
+			} else {
+				const auto translated = QETInformation::translatedInfoKey(field_name);
+				header_names << (translated.isEmpty() ? field_name : translated);
 			}
-			return_string = header_name.join(";") % "\n";
-		}
-
-			//ROWS
-		while (query_.next())
-		{
-			auto i=0;
-			QStringList values;
-			while (query_.value(i).isValid())
-			{
-				auto date = query_.value(i).toDate();
-				if (!date.isNull()) {
-					values << QLocale::system().toString(query_.value(i).toDate(), QLocale::ShortFormat);
-				} else {
-					values << query_.value(i).toString();
-				}
-				++i;
-			}
-
-			return_string += values.join(";") % "\n";
-			values.clear();
 		}
 	}
-
-	qDebug() << return_string;
-	return return_string;
+	return BomExport::toCsv(
+			query_, header_names, ui->m_include_headers->isChecked());
 }
 
 /**
