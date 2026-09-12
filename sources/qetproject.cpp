@@ -1931,7 +1931,12 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
 	conductor_autonums.setAttribute("auto_break_conductors", m_auto_break_conductor ? "true" : "false");
-	foreach (QString key, conductorAutoNum().keys()) {
+		//Sorted for the same reason as the xrefs above: these three
+		//collections are QHash, whose key order is randomised per process,
+		//so an unsorted write reorders these children on every save.
+	QStringList conductor_autonum_keys = conductorAutoNum().keys();
+	conductor_autonum_keys.sort();
+	for (const QString &key : std::as_const(conductor_autonum_keys)) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {
 			conductor_autonum.setAttribute("title", key);
@@ -1943,7 +1948,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 	//Export Folio Autonums
 	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
-	foreach (QString key, folioAutoNum().keys()) {
+	QStringList folio_autonum_keys = folioAutoNum().keys();
+	folio_autonum_keys.sort();
+	for (const QString &key : std::as_const(folio_autonum_keys)) {
 	QDomElement folio_autonum = folioAutoNum(key).toXml(xml_document, "folio_autonum");
 		folio_autonum.setAttribute("title", key);
 		folio_autonums.appendChild(folio_autonum);
@@ -1954,7 +1961,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
 	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
 	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
-	foreach (QString key, elementAutoNum().keys()) {
+	QStringList element_autonum_keys = elementAutoNum().keys();
+	element_autonum_keys.sort();
+	for (const QString &key : std::as_const(element_autonum_keys)) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
 		if (key != "" && elementAutoNumFormula(key) != "") {
 			element_autonum.setAttribute("title", key);
