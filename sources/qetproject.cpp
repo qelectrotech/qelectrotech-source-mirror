@@ -160,6 +160,11 @@ QETProject::~QETProject()
 		//We block database signal to avoid hundreds of unnecessary emitted signal
 		//due to deletion (diagram, item, etc...) and as much update made in the not yet deleted things.
 	m_data_base.blockSignals(true);
+		//Same reasoning for the rebuild itself : destroying a table relinks
+		//the tables that were chained to it, which re-queries the database,
+		//which rebuilds it completely -- for a project that is on its way out.
+		//Nothing can observe the result : the database is destroyed with it.
+	m_data_base.setUpdateBlocked(true);
 
 		//Each time a diagram is deleted we also remove it from m_diagram_list
 		//because a lot of thing append during the destructor of a diagram class
@@ -1547,6 +1552,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 	m_data_base.blockSignals(true);
+		//Blocking the signals is not enough : every table model built below
+		//re-queries the database, and each of those queries used to trigger a
+		//complete rebuild of it. The content being loaded is the same for all
+		//of them, so a single rebuild once everything is in place is enough.
+	m_data_base.setUpdateBlocked(true);
 
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
@@ -1586,6 +1596,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	const qint64 refresh_ms = phase_timer.restart();
 
 	m_data_base.blockSignals(false);
+	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB();
 	const qint64 database_ms = phase_timer.elapsed();
 

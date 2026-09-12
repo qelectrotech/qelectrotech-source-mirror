@@ -47,6 +47,17 @@ class projectDataBase : public QObject
 		virtual ~projectDataBase() override;
 
 		void updateDB();
+			/**
+				Suppress the full rebuild performed by updateDB().
+
+				While blocked, updateDB() returns immediately instead of
+				repopulating every table. Meant for bulk operations -- notably
+				loading a project, where each table model re-queries the
+				database as it is built and would otherwise trigger one
+				complete rebuild of it. The caller unblocks and calls
+				updateDB() once when done; @see QETProject::readProjectXml().
+			*/
+		void setUpdateBlocked(bool blocked);
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString());
 		QSqlDatabase database() const {return m_data_base;}
@@ -97,6 +108,12 @@ class projectDataBase : public QObject
 
 	private:
 		QPointer<QETProject> m_project;
+		bool m_update_blocked = false;
+			//Starts true : the database is empty until the first rebuild.
+			//Set by every method of this class that writes rows, cleared by
+			//updateDB(). Callers reach the database from outside only through
+			//newQuery(), and every such call site reads.
+		bool m_content_changed = true;
 		QSqlDatabase m_data_base;
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
