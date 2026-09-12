@@ -73,8 +73,8 @@ class PartRectangle : public CustomElementGraphicPart
 		void   setYRadius(qreal Y);
 		void   setRotation(qreal angle);
 		qreal  rotation() const;
-		void   flip();
-		void   mirror();
+		void   flip(qreal axis_y = 0);
+		void   mirror(qreal axis_x = 0);
 
 		QRectF  sceneGeometricRect() const override;
 		virtual QPointF sceneTopLeft() const;

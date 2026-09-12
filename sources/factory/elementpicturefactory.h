@@ -92,6 +92,7 @@ class ElementPictureFactory
 		ElementPictureFactory operator= (const ElementPictureFactory &);
 		~ElementPictureFactory();
 		
+		static QUuid cacheKey(const ElementsLocation &location);
 		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr);
 		void parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseLine   (const QDomElement &dom, QPainter &painter, primitives &prim) const;

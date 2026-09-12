@@ -23,7 +23,7 @@ namespace QetVersion
 
 	QVersionNumber currentVersion()
 	{
-		return QVersionNumber{ 0, 100, 1 };
+		return QVersionNumber{ 0, 200, 1 };
 	}
 
 	QString displayedVersion()

@@ -103,6 +103,12 @@ class DiagramView : public QGraphicsView
 		bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 		bool gestures() const;
 
+		/// Lowest and highest allowed value of the view transform scale (m11).
+		/// Prevents wheel-zoom from driving the transform to overflow, which
+		/// crashes the editor (see GitHub issue #798, same class of bug).
+		static constexpr qreal m_min_zoom = 0.01;
+		static constexpr qreal m_max_zoom = 200.0;
+
 	signals:
 			/// Signal emitted after the selection mode changed
 		void modeChanged();

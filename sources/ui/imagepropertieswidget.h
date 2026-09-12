@@ -48,14 +48,33 @@ class ImagePropertiesWidget : public PropertiesEditorWidget
 		void updateUi() override;
 
 	private slots:
-		void on_m_scale_slider_valueChanged(int value);
+		void on_m_width_sb_valueChanged(double value);
+		void on_m_height_sb_valueChanged(double value);
+		void on_m_angle_sb_valueChanged(double value);
+		void on_m_skew_x_sb_valueChanged(double value);
+		void on_m_skew_y_sb_valueChanged(double value);
+		void on_m_lock_ratio_tb_toggled(bool checked);
+		void on_m_restore_ratio_pb_clicked();
 		void on_m_lock_pos_cb_clicked();
 
 	private:
 		Ui::ImagePropertiesWidget *ui;
 		DiagramImageItem *m_image;
 		bool m_movable;
-		qreal m_scale;
+		// All tracked independently -- the image may already be
+		// non-uniformly scaled, rotated, and/or skewed via the resize/
+		// rotate/skew handles before this dialog is even opened, and
+		// undo/reset have to restore each to whatever it actually was.
+		qreal m_scaleX;
+		qreal m_scaleY;
+		qreal m_rotation;
+		qreal m_skewX;
+		qreal m_skewY;
+		// Guards the width/height spinboxes' mutual updates when
+		// "Conserver les proportions" is checked, so setting one
+		// programmatically in response to the other doesn't re-trigger
+		// its own valueChanged and recurse.
+		bool m_updating_ratio = false;
 };
 
 #endif // IMAGEPROPERTIESWIDGET_H
