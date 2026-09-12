@@ -18,7 +18,9 @@
 #include "elementinfopartwidget.h"
 
 #include "../SearchAndReplace/searchandreplaceworker.h"
+#include "../qetinformation.h"
 #include "ui_elementinfopartwidget.h"
+#include <QRegularExpressionValidator>
 
 #include <utility>
 
@@ -43,6 +45,14 @@ ElementInfoPartWidget::ElementInfoPartWidget(
 	ui->label_->setText(translated_key);
 	ui->m_erase_text->setVisible(false);
 
+	if (key_ == QETInformation::ELMT_WIDTH || key_ == QETInformation::ELMT_HEIGHT || key_ == QETInformation::ELMT_DEPTH)
+	{
+		auto *validator = new QETInformation::NumericInfoValidator(ui->line_edit);
+		ui->line_edit->setValidator(validator);
+		ui->line_edit->setPlaceholderText(tr("ex. 80.5"));
+		ui->line_edit->setToolTip(tr("Nombre décimal avec un point comme séparateur (ex. 80.5)"));
+	}
+
 	connect(ui->line_edit, &QLineEdit::textEdited,
 		this, &ElementInfoPartWidget::textEdited);
 	connect(ui->line_edit, &QLineEdit::textChanged,
@@ -65,6 +75,15 @@ ElementInfoPartWidget::~ElementInfoPartWidget()
 QString ElementInfoPartWidget::text() const
 {
 	return (ui->line_edit->text());
+}
+
+/**
+	@brief ElementInfoPartWidget::hasAcceptableInput
+	@return whether the line edit's current text satisfies its validator
+*/
+bool ElementInfoPartWidget::hasAcceptableInput() const
+{
+	return ui->line_edit->hasAcceptableInput();
 }
 
 /**
