@@ -423,11 +423,16 @@ void ElementPropertiesEditorWidget::on_m_base_type_cb_currentIndexChanged(int in
 	ui->m_master_gb->setVisible(master);
 	ui->m_terminal_gb->setVisible(terminal);
 
+		//Every base type whose tree updateTree() enables and whose data
+		//ElementScene::toXml() writes. These three checks were never
+		//reconciled, which is how Terminal and Thumbnail ended up with a
+		//working tree and write path behind a hidden tab.
 	ui->tabWidget->setTabVisible(1,
 								 (type_ == ElementData::Simple ||
 								  type_ == ElementData::Master ||
 								  type_ == ElementData::Slave ||
-								  type_ == ElementData::Terminal));
+								  type_ == ElementData::Terminal ||
+								  type_ == ElementData::Thumbnail));
 
 	updateTree();
 }
