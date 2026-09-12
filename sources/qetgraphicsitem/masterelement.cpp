@@ -228,6 +228,73 @@ void MasterElement::aboutDeleteXref()
 }
 
 /**
+ * @brief MasterElement::contactUsage
+ * Count the slave contacts currently linked to this master, by type.
+ * This is the single place where that count is worked out: the cross ref
+ * item, the properties dialog and the link widgets all read it from here,
+ * so they cannot disagree with each other.
+ * @return the per type usage
+ */
+namespace {
+
+	/**
+		Map the element data's contact type onto the tally's own, so that
+		the used count and the declared capacity cannot classify the same
+		contact type differently.
+	*/
+	ContactUsage::Type contactType(ElementData::SlaveState state)
+	{
+		switch (state)
+		{
+			case ElementData::NO:    return ContactUsage::NO;
+			case ElementData::NC:    return ContactUsage::NC;
+			case ElementData::SW:    return ContactUsage::SW;
+			case ElementData::Other: break;
+		}
+
+		return ContactUsage::Other;
+	}
+
+}
+
+ContactUsage MasterElement::contactUsage() const
+{
+	ContactUsage usage;
+
+	for (Element *elmt : connected_elements)
+	{
+		if (!elmt) {
+			continue;
+		}
+
+		const ElementData &data = elmt->elementData();
+		usage.addSlave(contactType(data.m_slave_state), data.m_contact_count);
+	}
+
+	return usage;
+}
+
+/**
+ * @brief MasterElement::contactCapacity
+ * The contacts this master declares it provides, by type, summed over its
+ * contact groups. A group stands for contactCount contacts of its type.
+ * Returns an empty tally when the element declares no groups, which is the
+ * case for every element in the standard collection today -- callers use
+ * that to decide whether a capacity is worth showing at all.
+ * @return the per type capacity
+ */
+ContactUsage MasterElement::contactCapacity() const
+{
+	ContactUsage capacity;
+
+	for (const auto &group : m_data.m_slave_contact_groups) {
+		capacity.addSlave(contactType(group.type), group.contactCount);
+	}
+
+	return capacity;
+}
+
+/**
  * @brief MasterElement::isFull
  * @return true if the master has reached its maximum number of slaves
  */
@@ -263,7 +330,10 @@ bool MasterElement::isFull() const
 		return false;
 	}
 
-	// Return true if current connected elements reached or exceeded the limit
+		// max_slaves is a number of slots, not of contacts: it sizes the
+		// element's contact group table, and a slave occupies exactly one
+		// group however many contacts that group stands for. So the slots
+		// in use are the linked elements, not the contacts they carry.
 	return connected_elements.size() >= max_slaves;
 }
 

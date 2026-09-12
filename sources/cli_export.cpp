@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#include "bomexport.h"
 
 #include "bordertitleblock.h"
 #include "conductornumexport.h"
@@ -39,6 +40,7 @@
 #include <QDomDocument>
 #include <QDate>
 #include <QFile>
+#include <QSaveFile>
 #include <QFileInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -70,6 +72,7 @@ const QHash<QString, QString> &exportFlags()
 		{"--export-cables", "cables"},
 		{"--export-wires", "wires"},
 		{"--export-bom", "bom"},
+		{"--export-wiring", "wiring"},
 		{"--export-nets", "nets"},
 		{"--export-links", "links"},
 		{"--info", "info"},
@@ -302,59 +305,38 @@ int exportCsv(QETProject &project, const QString &format, const QString &output)
 	return 0;
 }
 
-/// Quote a field for CSV output (RFC-4180 style, ';' delimiter).
-QString csvField(const QString &value)
-{
-	if (value.contains(';') || value.contains('"')
-		|| value.contains('\n') || value.contains('\r')) {
-		QString v = value;
-		v.replace('"', "\"\"");
-		return '"' % v % '"';
-	}
-	return value;
-}
-
-/// Bill of materials: one row per element, key component-data fields.
-/// Pulls from QET's own project database (the same source as the GUI BOM
-/// export), so the output matches what the editor produces.
+/// Bill of materials from the same project database and default query as the
+/// GUI nomenclature export.
 int exportBom(QETProject &project, const QString &output)
 {
-	// The project database is built lazily; force a (re)build before querying.
 	project.dataBase()->updateDB();
-
-	static const QStringList columns {
-		"label", "designation", "manufacturer", "manufacturer_reference",
-		"quantity", "location", "function", "title", "folio"
-	};
-
-	QSqlQuery query = project.dataBase()->newQuery(
-		"SELECT " % columns.join(", ") %
-		" FROM element_nomenclature_view ORDER BY label");
+	QSqlQuery query = project.dataBase()->newQuery(BomExport::defaultQuery());
 	if (!query.exec()) {
 		err << "BOM query failed: " << query.lastError().text() << "\n";
 		return 1;
 	}
-
-	QString csv = columns.join(";") % "\n";
 	int rows = 0;
-	while (query.next()) {
-		QStringList values;
-		for (int i = 0; i < columns.size(); ++i)
-			values << csvField(query.value(i).toString());
-		csv += values.join(";") % "\n";
-		++rows;
-	}
-
-	QFile file(output);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		err << "Cannot open '" << output << "' for writing.\n";
+	const auto csv = BomExport::toCsv(
+			query, BomExport::defaultColumns(), true, &rows);
+	QString error;
+	if (!BomExport::writeCsv(output, csv, &error)) {
+		err << "Cannot write '" << output << "': " << error << "\n";
 		return 1;
 	}
-	QTextStream fout(&file);
-	fout << csv;
-	file.close();
 	out << "Exported " << rows << " component(s) -> " << output << "\n";
 	return 0;
+}
+
+QString csvField(const QString &value)
+{
+	if (value.contains(QLatin1Char(';')) || value.contains(QLatin1Char('"'))
+			|| value.contains(QLatin1Char('\n')) || value.contains(QLatin1Char('\r')))
+	{
+		QString escaped = value;
+		escaped.replace(QLatin1Char('"'), QStringLiteral("\"\""));
+		return QLatin1Char('"') % escaped % QLatin1Char('"');
+	}
+	return value;
 }
 
 /// Count terminals on @p element that no conductor connects to.
@@ -541,6 +523,70 @@ QHash<Element *, int> folioIndex(QETProject &project)
 			folio.insert(e, index);
 	}
 	return folio;
+}
+
+/// From-to wiring list: one row per conductor, each endpoint resolved to its
+/// element label and terminal name.
+///
+/// Reads wiring_list_view out of the project database. --export-cables produces
+/// the same logical list from the document XML instead, and the two are meant
+/// to agree: running both and diffing them is a direct check that the database
+/// still describes the project, which is otherwise only observable through the
+/// GUI.
+int exportWiring(QETProject &project, const QString &output)
+{
+	// The project database is built lazily; force a (re)build before querying.
+	project.dataBase()->updateDB();
+
+	static const QStringList columns {
+		"wire_number", "from_element_label", "from_terminal",
+		"to_element_label", "to_terminal", "diagram_position", "conductor_uuid"
+	};
+
+	QSqlQuery query = project.dataBase()->newQuery(
+		"SELECT " % columns.join(", ") %
+		" FROM wiring_list_view"
+		//Wire numbers are text, so a plain sort puts "10" before "9".
+		//Numeric ones first, ordered by value; anything non-numeric after,
+		//ordered as text. The trailing wire_number keeps ties stable.
+		" ORDER BY diagram_position,"
+		" CASE WHEN wire_number GLOB '[0-9]*' THEN 0 ELSE 1 END,"
+		" CAST(wire_number AS INTEGER),"
+		" wire_number");
+	if (!query.exec()) {
+		err << "Wiring list query failed: " << query.lastError().text() << "\n";
+		return 1;
+	}
+
+	QString csv = columns.join(";") % "\n";
+	int rows = 0;
+	while (query.next()) {
+		QStringList values;
+		for (int i = 0; i < columns.size(); ++i)
+			values << csvField(query.value(i).toString());
+		csv += values.join(";") % "\n";
+		++rows;
+	}
+
+		//Written through QSaveFile so a failure part-way leaves the previous
+		//file intact rather than a truncated one, and with a UTF-8 byte order
+		//mark: without it Excel opens a .csv as the local 8-bit codepage and
+		//mangles any accented element label. Qt writes UTF-8 by default, so
+		//the bytes were already right -- the mark is what tells Excel so.
+	QSaveFile file(output);
+	if (!file.open(QIODevice::WriteOnly)) {
+		err << "Cannot open '" << output << "' for writing.\n";
+		return 1;
+	}
+	static const char utf8_bom[] = "\xEF\xBB\xBF";
+	file.write(utf8_bom, 3);
+	file.write(csv.toUtf8());
+	if (!file.commit()) {
+		err << "Cannot write '" << output << "': " << file.errorString() << "\n";
+		return 1;
+	}
+	out << "Exported " << rows << " conductor(s) -> " << output << "\n";
+	return 0;
 }
 
 /// Electrical nets: groups of terminals joined into one potential.
@@ -847,6 +893,8 @@ int run(const QStringList &args)
 		return exportCsv(project, format, output);
 	if (format == "bom")
 		return exportBom(project, output);
+	if (format == "wiring")
+		return exportWiring(project, output);
 	if (format == "nets")
 		return exportNets(project, output);
 	if (format == "links")

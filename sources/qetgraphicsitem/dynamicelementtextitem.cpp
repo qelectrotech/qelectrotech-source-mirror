@@ -30,6 +30,7 @@
 #include <QTimer>
 #include <QDomDocument>
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
 
 /**
@@ -221,8 +222,16 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		//Force the update of the displayed text
 	setTextFrom(m_text_from);
 	
-	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
-							  dom_elmt.attribute("y", QString::number(0)).toDouble());
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" as a successful
+		//conversion, so a corrupted or hand-edited file can hand this a
+		//non-finite position -- fall back to 0 the same way a missing
+		//attribute already does, rather than letting it reach the scene
+		//(see the matching comment in Element::valideXml(), the fromXml()
+		//gate a plain element's position goes through; this text item has
+		//no such gate to reject the whole item at, so it clamps instead).
+	double x = dom_elmt.attribute("x", QString::number(0)).toDouble();
+	double y = dom_elmt.attribute("y", QString::number(0)).toDouble();
+	QGraphicsTextItem::setPos(qIsFinite(x) ? x : 0, qIsFinite(y) ? y : 0);
 }
 
 /**
@@ -576,7 +585,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
 		if(m_slave_Xref_item)
-			m_slave_Xref_item->setDefaultTextColor(Qt::black);
+			m_slave_Xref_item->setDefaultTextColor(color());
 	}
 
 	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
@@ -815,7 +824,7 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneHoverLeave) {
-		m_slave_Xref_item->setDefaultTextColor(Qt::black);
+		m_slave_Xref_item->setDefaultTextColor(color());
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneMouseDoubleClick) {
@@ -1428,7 +1437,11 @@ void DynamicElementTextItem::updateXref()
 					{
 						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
 						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
-						m_slave_Xref_item->setDefaultTextColor(Qt::black);
+							// Match the parent text's user-configurable color instead of
+							// hardcoding black, which renders invisible under dark themes
+							// or stylesheets that do not affect this sub-item the same way
+							// they affect the parent (bugtracker #247).
+						m_slave_Xref_item->setDefaultTextColor(color());
 						m_slave_Xref_item->installSceneEventFilter(this);
 						
 						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);

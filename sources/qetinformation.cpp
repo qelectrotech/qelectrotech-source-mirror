@@ -150,6 +150,11 @@ QStringList QETInformation::elementInfoKeys()
 						 ELMT_DESIGNATION,
 						 ELMT_MANUFACTURER,
 						 ELMT_MANUFACTURER_REF,
+						 ELMT_MODEL,
+						 ELMT_CATEGORY,
+						 ELMT_VOLTAGE_RATING,
+						 ELMT_CURRENT_RATING,
+						 ELMT_NOTES,
 						 ELMT_MACHINE_MANUFACTURER_REF,
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,
@@ -234,7 +239,12 @@ QString QETInformation::infoToVar(const QString &info)
  */
 QString QETInformation::translatedInfoKey(const QString &info)
 {
-	if      (info == DIA_AUTHOR)                       return QObject::tr("Auteur");
+	if      (info == ELMT_MODEL)                       return QObject::tr("Modèle");
+	else if (info == ELMT_CATEGORY)                    return QObject::tr("Catégorie");
+	else if (info == ELMT_VOLTAGE_RATING)              return QObject::tr("Tension nominale");
+	else if (info == ELMT_CURRENT_RATING)              return QObject::tr("Courant nominal");
+	else if (info == ELMT_NOTES)                       return QObject::tr("Notes");
+	else if (info == DIA_AUTHOR)                       return QObject::tr("Auteur");
 	else if (info == DIA_DATE)                         return QObject::tr("Date");
 	else if (info == DIA_TITLE)                        return QObject::tr("Titre");
 	else if (info == DIA_FILENAME)                     return QObject::tr("Fichier");
@@ -332,6 +342,11 @@ QStringList QETInformation::elementEditorElementInfoKeys()
 						 ELMT_DESIGNATION,
 						 ELMT_MANUFACTURER,
 						 ELMT_MANUFACTURER_REF,
+						 ELMT_MODEL,
+						 ELMT_CATEGORY,
+						 ELMT_VOLTAGE_RATING,
+						 ELMT_CURRENT_RATING,
+						 ELMT_NOTES,
 						 ELMT_MACHINE_MANUFACTURER_REF,
 						 ELMT_SUPPLIER,
 						 ELMT_QUANTITY,

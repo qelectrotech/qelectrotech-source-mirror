@@ -85,6 +85,11 @@ parts:
       - qt6-tools-dev
       - qt6-base-private-dev
       - pkgconf
+      # Qt6 PrintSupport records Cups::Cups as a third-party dependency
+      # (qprint_p.h includes <cups/ppd.h>), so find_package(Qt6 PrintSupport)
+      # runs FindCups at configure time and fails without the CUPS headers.
+      # Build-time only: nothing from it is staged into the snap.
+      - libcups2-dev
     override-build: |
       displayed_version=$(cat sources/qetversion.cpp | grep "return QVersionNumber{"| head -n 1| awk -F "{" '{ print $2 }' | awk -F "}" '{ print $1 }' | sed -e 's/,/./g' -e 's/ //g')
       snap_version="${displayed_version}-g$(git rev-parse --short=8 HEAD)"

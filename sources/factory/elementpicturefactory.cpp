@@ -37,6 +37,33 @@
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
 /**
+	@brief ElementPictureFactory::cacheKey
+	@param location
+	@return the key under which the drawing of the element at location is
+	cached.
+
+	An element definition normally carries its own uuid, and that is used
+	directly. Definitions saved before uuids were written do not have one --
+	a good share of the shipped example projects are still in that state --
+	and they all presented the same null uuid as a key. The drawing of such
+	an element was therefore either rebuilt for every instance placed, or
+	stored under a key it shared with every other element lacking a uuid.
+	Derive a stable key from the location for those instead:
+	ElementsLocation::toString() qualifies an embedded path with the id of
+	the project that owns it, and project ids come from an ever-increasing
+	counter and are never reused, so the derived key cannot collide with an
+	element of another project.
+*/
+QUuid ElementPictureFactory::cacheKey(const ElementsLocation &location)
+{
+	const QUuid uuid = location.uuid();
+	if (!uuid.isNull()) {
+		return uuid;
+	}
+	return QUuid::createUuidV5(QUuid(), location.toString().toUtf8());
+}
+
+/**
 	@brief ElementPictureFactory::getPictures
 	Set the picture of the element at location.
 	Note, picture can be null
@@ -50,12 +77,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 		return;
 	}
 
-	QUuid uuid = location.uuid();
-	if(Q_UNLIKELY(uuid.isNull()))
-	{
-		build(location, &picture, &low_picture);
-		return;
-	}
+	const QUuid uuid = cacheKey(location);
 
 	if(m_pictures_H.contains(uuid))
 	{
@@ -80,7 +102,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 */
 QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 {
-	QUuid uuid = location.uuid();
+	const QUuid uuid = cacheKey(location);
 
 	if (m_pixmap_H.contains(uuid)) {
 		return m_pixmap_H.value(uuid);
@@ -114,9 +136,7 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
 
-		if (!uuid.isNull()) {
-			m_pixmap_H.insert(uuid, pix);
-		}
+		m_pixmap_H.insert(uuid, pix);
 		return pix;
 	}
 
@@ -132,10 +152,11 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
 		const ElementsLocation &location)
 {
-	if(!m_primitives_H.contains(location.uuid()))
+	const QUuid uuid = cacheKey(location);
+	if(!m_primitives_H.contains(uuid))
 		build(location);
 
-	return m_primitives_H.value(location.uuid());
+	return m_primitives_H.value(uuid);
 }
 
 ElementPictureFactory::~ElementPictureFactory()
@@ -270,7 +291,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	painter.end();
 	low_painter.end();
 
-	const auto uuid_ = location.uuid();
+	const auto uuid_ = cacheKey(location);
 	if (!picture) {
 		m_pictures_H.insert(uuid_, pic);
 		m_primitives_H.insert(uuid_, primitives_);
@@ -621,7 +642,11 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 		//Get the couples style/value
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
 
-	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$");
+		//Built once : this runs for every primitive of every element
+		//instance a project places, and recompiling the pattern each time
+		//was the single largest cost of opening a project.
+	static const QRegularExpression rx(
+				QStringLiteral("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$"));
 	if (!rx.isValid())
 	{
 		qWarning() <<QObject::tr("this is an error in the code")

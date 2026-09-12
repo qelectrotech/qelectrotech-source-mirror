@@ -174,7 +174,11 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/ui/wiringlistdialog.h
+  ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
@@ -473,6 +477,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/project/projectusagetracker.cpp
   ${QET_DIR}/sources/project/projectusagetracker.h
 
+  ${QET_DIR}/sources/properties/deviceinformation.cpp
+  ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
@@ -856,6 +862,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_hu.ts
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_ko.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts
