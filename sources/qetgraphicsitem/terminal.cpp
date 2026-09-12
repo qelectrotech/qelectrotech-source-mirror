@@ -25,6 +25,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "conductortextitem.h"
 
+#include <QtCore/qnumeric.h>
 #include <utility>
 
 QColor Terminal::neutralColor      = QColor(Qt::blue);
@@ -741,13 +742,17 @@ bool Terminal::valideXml(QDomElement &terminal)
 	if (!terminal.hasAttribute("orientation")) return(false);
 
 	bool conv_ok;
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" and reports a
+		//successful conversion for them, so conv_ok alone doesn't reject a
+		//non-finite coordinate -- see the matching comment in
+		//Element::valideXml().
 	// parse l'abscisse
-	terminal.attribute("x").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+	double x = terminal.attribute("x").toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(x)) return(false);
 
 	// parse l'ordonnee
-	terminal.attribute("y").toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+	double y = terminal.attribute("y").toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(y)) return(false);
 
 	// parse l'id
 	terminal.attribute("id").toInt(&conv_ok);
