@@ -711,7 +711,14 @@ void projectDataBase::createElementNomenclatureView()
 							//the table's. Kept identical to the mask populateElementTable()
 							//used to apply, so what this view returns does not change --
 							//a slave element (a relay contact) is still not a line item.
-						 " AND e.type IN ('simple', 'terminal', 'master', 'thumbnail')");
+							 //Slave is here because an auxiliary contact block is
+							 //separately orderable hardware with its own part
+							 //number, even though it shares its master's BMK.
+							 //Anything that should not be ordered -- a relay's
+							 //own auxiliary contact, say -- is kept out by
+							 //exclude_from_bom above, not by its base type.
+							 //See discussion #847.
+						 " AND e.type IN ('simple', 'terminal', 'master', 'slave', 'thumbnail')");
 
 	QSqlQuery query(m_data_base);
 	if (!query.exec(create_view)) {
