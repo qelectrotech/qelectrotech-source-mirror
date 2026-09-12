@@ -53,6 +53,7 @@ projectDataBase::projectDataBase(QETProject *project, QObject *parent) :
 	});
 	connect(m_project, &QETProject::projectDiagramsOrderChanged, [this]()
 	{
+		m_content_changed = true;
 		for (auto diagram : m_project->diagrams())
 		{
 			m_diagram_order_changed.bindValue(":pos", m_project->folioIndex(diagram)+1);
@@ -85,12 +86,40 @@ projectDataBase::~projectDataBase()
 */
 void projectDataBase::updateDB()
 {
+		//A bulk operation is in progress and updates the database itself once
+		//it is done : rebuilding now would only be thrown away by that final
+		//rebuild. @see setUpdateBlocked().
+	if (m_update_blocked) {
+		return;
+	}
+
+		//Nothing in the project has changed since the last rebuild, so
+		//repopulating would insert exactly the rows that are already there.
+		//The signal is still emitted : callers and models rely on it to
+		//refresh, and what they read back is unchanged either way.
+	if (!m_content_changed)
+	{
+		emit dataBaseUpdated();
+		return;
+	}
+
 	populateDiagramTable();
 	populateDiagramInfoTable();
 	populateElementTable();
 	populateElementInfoTable();
 	populateConductorTable();
+	m_content_changed = false;
+
 	emit dataBaseUpdated();
+}
+
+/**
+	@brief projectDataBase::setUpdateBlocked
+	@param blocked : whether updateDB() should skip the full rebuild
+*/
+void projectDataBase::setUpdateBlocked(bool blocked)
+{
+	m_update_blocked = blocked;
 }
 
 /**
@@ -158,6 +187,7 @@ int projectDataBase::excludedConductorCount() const
 */
 void projectDataBase::addElement(Element *element)
 {
+	m_content_changed = true;
 	if (!element || !element->diagram()) {
 		qDebug() << "projectDataBase::addElement: null element or diagram";
 		return;
@@ -182,6 +212,7 @@ void projectDataBase::addElement(Element *element)
 */
 void projectDataBase::removeElement(Element *element)
 {
+	m_content_changed = true;
 	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
 	if(!m_remove_element_query.exec()) {
 		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
@@ -196,6 +227,7 @@ void projectDataBase::removeElement(Element *element)
 */
 void projectDataBase::elementInfoChanged(Element *element)
 {
+	m_content_changed = true;
 	auto hash = elementInfoToString(element);
 	for (auto str : QETInformation::elementInfoKeys()) {
 		m_update_element_query.bindValue(":" + str, hash.value(str));
@@ -210,6 +242,7 @@ void projectDataBase::elementInfoChanged(Element *element)
 
 void projectDataBase::elementInfoChanged(QList<Element *> elements)
 {
+	m_content_changed = true;
 	this->blockSignals(true);
 		//Block signal for not emit dataBaseUpdated at
 		//each call of the method elementInfoChanged(Element *element)
@@ -226,6 +259,7 @@ void projectDataBase::elementInfoChanged(QList<Element *> elements)
 
 void projectDataBase::addDiagram(Diagram *diagram)
 {
+	m_content_changed = true;
 	m_insert_diagram_query.bindValue(":uuid", diagram->uuid().toString());
 	m_insert_diagram_query.bindValue(":pos", m_project->folioIndex(diagram)+1);
 	if(!m_insert_diagram_query.exec()) {
@@ -254,6 +288,7 @@ void projectDataBase::addDiagram(Diagram *diagram)
 
 void projectDataBase::removeDiagram(Diagram *diagram)
 {
+	m_content_changed = true;
 	const QString uuid_str = diagram->uuid().toString();
 
 		//Order matters: element_info and terminal are scoped through a
@@ -309,6 +344,7 @@ void projectDataBase::removeDiagram(Diagram *diagram)
 
 void projectDataBase::diagramInfoChanged(Diagram *diagram)
 {
+	m_content_changed = true;
 	bindDiagramInfoValues(m_update_diagram_info_query, diagram);
 
 	if (!m_update_diagram_info_query.exec()) {
@@ -320,6 +356,7 @@ void projectDataBase::diagramInfoChanged(Diagram *diagram)
 
 void projectDataBase::diagramOrderChanged()
 {
+	m_content_changed = true;
 }
 
 /**
@@ -328,6 +365,7 @@ void projectDataBase::diagramOrderChanged()
 */
 void projectDataBase::addConductor(Conductor *conductor)
 {
+	m_content_changed = true;
 	if (!conductor || !conductor->diagram()) {
 		qDebug() << "projectDataBase::addConductor: null conductor or diagram";
 		return;
@@ -361,6 +399,7 @@ void projectDataBase::addConductor(Conductor *conductor)
 */
 void projectDataBase::removeConductor(Conductor *conductor)
 {
+	m_content_changed = true;
 	m_remove_conductor_query.bindValue(":uuid", conductor->uuid().toString());
 	if (!m_remove_conductor_query.exec()) {
 		qDebug() << "projectDataBase::removeConductor delete error : " << m_remove_conductor_query.lastError();
@@ -381,6 +420,7 @@ void projectDataBase::removeConductor(Conductor *conductor)
 */
 void projectDataBase::updateConductor(Conductor *conductor)
 {
+	m_content_changed = true;
 	if (!conductor) {
 		return;
 	}
@@ -423,6 +463,7 @@ void projectDataBase::watchConductor(Conductor *conductor)
 */
 void projectDataBase::conductorPropertiesChanged()
 {
+	m_content_changed = true;
 	if (auto *conductor = qobject_cast<Conductor *>(sender())) {
 		updateConductor(conductor);
 	}

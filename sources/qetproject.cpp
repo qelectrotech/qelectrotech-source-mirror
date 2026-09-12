@@ -1547,6 +1547,11 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 	m_data_base.blockSignals(true);
+		//Blocking the signals is not enough : every table model built below
+		//re-queries the database, and each of those queries used to trigger a
+		//complete rebuild of it. The content being loaded is the same for all
+		//of them, so a single rebuild once everything is in place is enough.
+	m_data_base.setUpdateBlocked(true);
 
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
@@ -1586,6 +1591,7 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	const qint64 refresh_ms = phase_timer.restart();
 
 	m_data_base.blockSignals(false);
+	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB();
 	const qint64 database_ms = phase_timer.elapsed();
 
