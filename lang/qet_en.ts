@@ -755,7 +755,8 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/ui/bomexportdialog.cpp" line="78"/>
         <source>Impossible d&apos;enregistrer la nomenclature dans %1.
 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to save the parts list to %1.
+%2</translation>
     </message>
     <message>
         <location filename="../sources/ui/bomexportdialog.cpp" line="110"/>
@@ -1532,17 +1533,17 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="820"/>
         <source>Redimensionner une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Resize an image</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="827"/>
         <source>Faire pivoter une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotate an image</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="837"/>
         <source>Incliner une image</source>
-        <translation type="unfinished"></translation>
+        <translation>Skew an image</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="843"/>
@@ -1563,58 +1564,58 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1073"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1588"/>
         <source>Enregistrer l&apos;image sous...</source>
-        <translation type="unfinished"></translation>
+        <translation>Save image as...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1087"/>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1591"/>
         <source>Enregistrer l&apos;image d&apos;origine sous...</source>
-        <translation type="unfinished"></translation>
+        <translation>Save original image as...</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1116"/>
         <source>Image PNG (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG image (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1117"/>
         <source>Image JPEG (*.jpg *.jpeg)</source>
-        <translation type="unfinished"></translation>
+        <translation>JPEG image (*.jpg *.jpeg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1118"/>
         <source>Image BMP (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>BMP image (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1126"/>
         <source>Image SVG (*.svg)</source>
-        <translation type="unfinished">SVG image (*.svg)</translation>
+        <translation>SVG image (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1131"/>
         <source>Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>All files (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1178"/>
         <source>Transparence non conservée</source>
-        <translation type="unfinished"></translation>
+        <translation>Transparency not preserved</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1179"/>
         <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>This format does not support transparency: the image will be saved as it was before the transparent colour was applied. Continue?</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1196"/>
         <source>Échec de l&apos;enregistrement</source>
-        <translation type="unfinished"></translation>
+        <translation>Saving failed</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1197"/>
         <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to save the image to this location.</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/diagramimageitem.cpp" line="1312"/>
@@ -2550,12 +2551,12 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="245"/>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="255"/>
         <source>margin: 5px; font-weight: bold;</source>
-        <translation type="unfinished"></translation>
+        <translation>margin: 5px; font-weight: bold;</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="63"/>
         <source>Exclure de la nomenclature</source>
-        <translation type="unfinished">Exclude from the bill of materials</translation>
+        <translation>Exclude from the bill of materials</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="70"/>
@@ -2627,12 +2628,12 @@ The element&apos;s display name is edited separately in the element properties.<
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="248"/>
         <source>Verrouiller la numérotation automatique</source>
-        <translation type="unfinished"></translation>
+        <translation>Lock automatic numbering</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="258"/>
         <source>Séparation de potentiel</source>
-        <translation type="unfinished">Potential separation</translation>
+        <translation>Potential separation</translation>
     </message>
     <message>
         <location filename="../sources/editor/ui/elementpropertieseditorwidget.ui" line="269"/>
@@ -3024,7 +3025,8 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="390"/>
         <source>Nombre maximum de contacts esclaves définis : non défini
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Maximum number of slave contacts defined:  not defined
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="391"/>
@@ -3044,13 +3046,15 @@ The element&apos;s display name is edited separately in the element properties.<
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="411"/>
         <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
 </source>
-        <translation type="unfinished"></translation>
+        <translation>    Contacts : NO : %1/%2, NC : %3/%4, changeover : %5/%6, other : %7/%8
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="420"/>
         <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
 </source>
-        <translation type="unfinished"></translation>
+        <translation>    Contacts : NO : %1, NC : %2, changeover : %3, other : %4
+</translation>
     </message>
     <message>
         <location filename="../sources/ui/elementpropertieswidget.cpp" line="427"/>
@@ -3924,13 +3928,13 @@ By importing this file, you confirm that:
         <location filename="../sources/exportdialog.cpp" line="867"/>
         <source>Images non incluses dans l&apos;export DXF</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Images not included in the DXF export</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="868"/>
         <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>The DXF format used here (AC1006) cannot embed images. Images will only be represented by an outline rectangle (position, size, rotation and skew are preserved), without the image content.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="913"/>
@@ -5872,7 +5876,9 @@ Please use the advanced editor for this.</translation>
         <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
 
 Voulez-vous tout de même lier ce contact esclave ?</source>
-        <translation type="unfinished"></translation>
+        <translation>The limit set for this master element has been reached (Limit: %1).
+
+Do you still want to link this slave contact?</translation>
     </message>
     <message>
         <location filename="../sources/ui/masterpropertieswidget.cpp" line="539"/>
@@ -8245,7 +8251,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="524"/>
         <source>Liste de câblage (base de données)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wiring list (database)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="547"/>
@@ -10072,15 +10078,15 @@ What do you wish to do ?</translation>
         <location filename="../sources/qet.cpp" line="307"/>
         <source>une image</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">image</translation>
+        <translation>an image</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="308"/>
         <source>%n images</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n image</numerusform>
+            <numerusform>%n images</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -11100,27 +11106,27 @@ Do you want to replace it ?</translation>
     <message>
         <location filename="../sources/qetinformation.cpp" line="242"/>
         <source>Modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Model</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="243"/>
         <source>Catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Category</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="244"/>
         <source>Tension nominale</source>
-        <translation type="unfinished"></translation>
+        <translation>Rated voltage</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="245"/>
         <source>Courant nominal</source>
-        <translation type="unfinished"></translation>
+        <translation>Rated current</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="246"/>
         <source>Notes</source>
-        <translation type="unfinished"></translation>
+        <translation>Notes</translation>
     </message>
     <message>
         <location filename="../sources/qetinformation.cpp" line="275"/>
@@ -11733,7 +11739,7 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1110"/>
         <source>Convertir en courbe de Bézier</source>
-        <translation type="unfinished"></translation>
+        <translation>Convert to Bézier curve</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="1123"/>
@@ -11918,7 +11924,7 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2037"/>
         <source>Convertir %1 en courbe de Bézier</source>
-        <translation type="unfinished"></translation>
+        <translation>Convert %1 to a Bézier curve</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2038"/>
@@ -11948,17 +11954,17 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2755"/>
         <source>Redimensionner %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Resize %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2762"/>
         <source>Faire pivoter %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotate %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2772"/>
         <source>Incliner %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Skew %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2778"/>
@@ -11968,23 +11974,23 @@ Please add a new table or adjust the existing table to display all information.<
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2789"/>
         <source>Arrondir les coins d&apos;%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Round the corners of %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2812"/>
         <source>Modifier l&apos;angle d&apos;un arc</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the angle of an arc</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2819"/>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2834"/>
         <source>Modifier la forme d&apos;%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the shape of %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2848"/>
         <source>Modifier la courbure d&apos;%1</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the curvature of %1</translation>
     </message>
     <message>
         <location filename="../sources/qetgraphicsitem/qetshapeitem.cpp" line="2863"/>
@@ -16868,61 +16874,61 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/ui/wiringlistdialog.cpp" line="39"/>
         <source>Liste de câblage</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wiring list</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="65"/>
         <source>Fil</source>
         <comment>column title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wire</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="66"/>
         <source>Composant 1</source>
         <comment>column title</comment>
-        <translation type="unfinished">Composant 1</translation>
+        <translation>Component 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="67"/>
         <source>Borne 1</source>
         <comment>column title</comment>
-        <translation type="unfinished">Terminal 1</translation>
+        <translation>Terminal 1</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="68"/>
         <source>Composant 2</source>
         <comment>column title</comment>
-        <translation type="unfinished">Composant 2</translation>
+        <translation>Component 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="69"/>
         <source>Borne 2</source>
         <comment>column title</comment>
-        <translation type="unfinished">Terminal 2</translation>
+        <translation>Terminal 2</translation>
     </message>
     <message>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="70"/>
         <source>Folio</source>
         <comment>column title</comment>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="91"/>
         <location filename="../sources/ui/wiringlistdialog.cpp" line="98"/>
         <source>%n conducteur(s) listé(s).</source>
         <comment>wiring list summary</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n conductor listed.</numerusform>
+            <numerusform>%n conductors listed.</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/ui/wiringlistdialog.cpp" line="93"/>
         <source>%n conducteur(s) exclu(s) : une extrémité n&apos;est rattachée à aucun élément.</source>
         <comment>wiring list exclusion warning</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>%n conductor excluded: one end is not attached to any element.</numerusform>
+            <numerusform>%n conductors excluded: one end is not attached to any element.</numerusform>
         </translation>
     </message>
 </context>
@@ -17069,12 +17075,12 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="112"/>
         <source>Distance label - slave :</source>
-        <translation type="unfinished"></translation>
+        <translation>Distance label - slave :</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="119"/>
         <source>Distance in pixels between the label and the slave cross reference</source>
-        <translation type="unfinished"></translation>
+        <translation>Distance in pixels between the label and the slave cross reference</translation>
     </message>
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.ui" line="150"/>
@@ -17216,7 +17222,7 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
     <message>
         <location filename="../sources/ui/xrefpropertieswidget.cpp" line="114"/>
         <source>Champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Text field</translation>
     </message>
 </context>
 <context>
