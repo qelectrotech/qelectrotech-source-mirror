@@ -621,7 +621,11 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 		//Get the couples style/value
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
 
-	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$");
+		//Built once : this runs for every primitive of every element
+		//instance a project places, and recompiling the pattern each time
+		//was the single largest cost of opening a project.
+	static const QRegularExpression rx(
+				QStringLiteral("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$"));
 	if (!rx.isValid())
 	{
 		qWarning() <<QObject::tr("this is an error in the code")
