@@ -112,7 +112,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
-		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
+		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;
