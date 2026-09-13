@@ -21,6 +21,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetinformation.h"
 #include "qgimanager.h"
 
 /**
@@ -97,6 +98,27 @@ void PasteDiagramCommand::redo()
 				dc.addValue("label", "");
 				dc.addValue("comment", "");
 				dc.addValue("location", "");
+
+				// PLC slaves store master data (type, address, comment,
+				// cross-ref, etc.) in their own elementInformations.
+				// Remove them the same way MasterElement::unlinkElement()
+				// does, so pasted PLC slaves start clean like regular
+				// slaves.
+				if (e->linkType() == Element::Slave) {
+					dc.remove(QETInformation::ELMT_PLC_TYPE);
+					dc.remove(QETInformation::ELMT_PLC_ADDRESS);
+					dc.remove(QETInformation::ELMT_PLC_FUNCTION);
+					dc.remove(QETInformation::ELMT_PLC_COMMENT);
+					dc.remove(QETInformation::ELMT_PLC_CROSSREF);
+					dc.remove(QETInformation::ELMT_LABEL);
+					dc.remove(QETInformation::ELMT_PLC_TC);
+					dc.remove(QETInformation::ELMT_PLC_T1);
+					dc.remove(QETInformation::ELMT_PLC_T2);
+					dc.remove(QETInformation::ELMT_PLC_T3);
+					dc.remove(QETInformation::ELMT_PLC_T4);
+					dc.remove(QStringLiteral("xref"));
+				}
+
 				e->setElementInformations(dc);
 				
 				//Reset the text of conductors, the same way the label/comment/
