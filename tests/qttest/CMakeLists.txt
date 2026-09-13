@@ -93,6 +93,15 @@ target_include_directories(tst_contactusage PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_contactusage PRIVATE Qt::Test)
 
 add_executable(
+  tst_qetpalette
+  tst_qetpalette.cpp
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetpalette.h)
+add_test(NAME tst_qetpalette COMMAND tst_qetpalette)
+target_include_directories(tst_qetpalette PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_qetpalette PRIVATE Qt::Test Qt::Widgets)
+
+add_executable(
   tst_smart_device
   tst_smart_device.cpp
   ${QET_DIR}/sources/bomexport.cpp

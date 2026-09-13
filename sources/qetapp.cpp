@@ -26,6 +26,7 @@
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
+#include "qetpalette.h"
 #include "utils/qetutils.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
@@ -50,6 +51,7 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QStyleHints>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
@@ -1786,8 +1788,10 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	false pour utiliser celles du theme en cours
 */
 void QETApp::useSystemPalette(bool use) {
+	// The base palette is always initial_palette_ (see initStyle()); the
+	// setting only decides whether the user's style.css is layered on top.
+	qApp->setPalette(initial_palette_);
 	if (use) {
-		qApp->setPalette(initial_palette_);
 		// Drop any stylesheet previously loaded from style.css: with system
 		// colors requested, the palette set just above is what provides them.
 		//
@@ -2341,9 +2345,44 @@ void QETApp::initStyle()
 {
 	initial_palette_ = qApp->palette();
 
+#ifdef Q_OS_MACOS
+	// main.cpp forces the Fusion style on macOS, but the palette Qt hands
+	// us there is the one its platform theme builds for the native style:
+	// Window, Button and Base share one color, and in dark mode the
+	// Inactive ButtonText is black. Fusion draws its frames, gradients and
+	// combo box text from those roles, so controls lose their edges and
+	// combo text goes black once the window loses focus. Replace it with a
+	// palette laid out the way Fusion expects (see qetpalette.h).
+	//
+	// macOS only: on Linux, Fusion is Qt's default style on desktops
+	// without a platform theme, and the palette there carries the user's
+	// desktop colors, which must stay in effect. Making Fusion and this
+	// palette the default everywhere is discussed in #870.
+	if (QET::Palette::styleIsFusion(qApp->style()))
+		initial_palette_ = QET::Palette::forFusion(initial_palette_);
+#endif
+
 	//Apply or not the system style
 	QSettings settings;
 	useSystemPalette(settings.value("usesystemcolors", true).toBool());
+
+#if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	// Setting an application palette stops Qt from following the OS
+	// light/dark switch on its own, so follow it here. The platform accent
+	// color is not reachable any more at this point; the palette's own
+	// selection blue is used instead.
+	connect(qApp->styleHints(), &QStyleHints::colorSchemeChanged, this,
+	        [this](Qt::ColorScheme scheme)
+	{
+		if (!QET::Palette::styleIsFusion(qApp->style()))
+			return;
+		initial_palette_ = scheme == Qt::ColorScheme::Dark
+		                   ? QET::Palette::fusionDark()
+		                   : QET::Palette::fusionLight();
+		QSettings settings;
+		useSystemPalette(settings.value("usesystemcolors", true).toBool());
+	});
+#endif
 }
 
 /**
