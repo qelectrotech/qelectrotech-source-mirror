@@ -86,7 +86,12 @@ Terminal::Terminal(TerminalData* data, Element* e) :
  * Destruction of the terminal, and also docked conductor
  */
 Terminal::~Terminal() {
-	qDeleteAll(m_conductors_list);
+	// Each conductor's destructor calls removeConductor() on both its
+	// terminals, which mutates m_conductors_list while qDeleteAll() is
+	// still iterating it. Delete from a snapshot so the live list can
+	// change underneath without affecting the iteration.
+	const QList<Conductor *> conductors_to_delete = m_conductors_list;
+	qDeleteAll(conductors_to_delete);
 	delete d;
 }
 
