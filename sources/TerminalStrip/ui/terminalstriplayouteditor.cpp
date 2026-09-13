@@ -29,6 +29,9 @@ TerminalStripLayoutEditor::TerminalStripLayoutEditor(QSharedPointer<TerminalStri
 {
 	ui->setupUi(this);
 	ui->m_graphics_view->setScene(new QGraphicsScene{ this });
+	// The preview is printed output: black ink on a white page, whatever
+	// the application palette.
+	ui->m_graphics_view->setBackgroundBrush(Qt::white);
 	ui->m_graphics_view->scene()->addItem(&m_preview_strip_item);
 	updateUi();
 }
