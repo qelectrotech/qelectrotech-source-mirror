@@ -175,6 +175,7 @@ void PlcLinkWidget::buildPlcTree()
 {
 	m_tree_widget->clear();
 	m_io_entry_hash.clear();
+	m_linked_children.clear();
 
 	if (!m_element || !m_element->diagram() || !m_element->diagram()->project())
 		return;
@@ -248,6 +249,7 @@ void PlcLinkWidget::buildPlcTree()
 
 			// If this IO is already linked to a slave
 			if (used_io_indices.contains(i)) {
+				m_linked_children.insert(child_item);
 				if (m_hide_linked_cb->isChecked()) {
 					child_item->setHidden(true);
 				} else {
@@ -288,6 +290,11 @@ void PlcLinkWidget::buildPlcTree()
 	}
 }
 
+bool PlcLinkWidget::isChildLinked(QTreeWidgetItem *child) const
+{
+	return m_linked_children.contains(child);
+}
+
 void PlcLinkWidget::hideButtons()
 {
 	m_label->hide();
@@ -321,15 +328,21 @@ void PlcLinkWidget::on_m_search_field_textEdited(const QString &text)
 					}
 				}
 			}
-			child->setHidden(!match);
-			if (match) any_child_visible = true;
+			bool hidden = m_hide_linked_cb->isChecked() && isChildLinked(child);
+			child->setHidden(!match || hidden);
+			if (match && !hidden) any_child_visible = true;
 		}
 
 		// Also check if parent label matches
 		if (!text.isEmpty() && parent->text(0).contains(text, Qt::CaseInsensitive)) {
-			any_child_visible = true;
-			for (int j = 0; j < parent->childCount(); ++j)
-				parent->child(j)->setHidden(false);
+			for (int j = 0; j < parent->childCount(); ++j) {
+				QTreeWidgetItem *child = parent->child(j);
+				bool hidden = m_hide_linked_cb->isChecked() && isChildLinked(child);
+				if (!hidden) {
+					any_child_visible = true;
+					child->setHidden(false);
+				}
+			}
 		}
 
 		parent->setHidden(!any_child_visible);

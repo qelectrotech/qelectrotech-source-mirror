@@ -59,6 +59,7 @@ class PlcLinkWidget : public AbstractElementPropertiesEditorWidget
 		void buildPlcTree();
 		void hideButtons();
 		void showButtons();
+		bool isChildLinked(QTreeWidgetItem *child) const;
 
 	private slots:
 		void on_m_search_field_textEdited(const QString &text);
@@ -82,6 +83,7 @@ class PlcLinkWidget : public AbstractElementPropertiesEditorWidget
 			int ioIndex = -1;
 		};
 		QHash<QTreeWidgetItem*, PlcIoEntry> m_io_entry_hash;
+		QSet<QTreeWidgetItem*> m_linked_children;
 
 		Element *m_element_to_link = nullptr;
 		int m_pending_io_index = -1;
