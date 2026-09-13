@@ -23,6 +23,7 @@
 #include "../autoNum/ui/formulaautonumberingw.h"
 #include "../autoNum/ui/selectautonumw.h"
 #include "../project/projectpropertieshandler.h"
+#include "../qet.h"
 #include "../qeticons.h"
 #include "../qetproject.h"
 #include "../borderpropertieswidget.h"
@@ -354,8 +355,19 @@ void ProjectAutoNumConfigPage::initWidgets()
 	m_faw = new FolioAutonumberingW(project());
 	tab_widget->addTab(m_faw, tr("Numérotation auto des folios"));
 	
-	QHBoxLayout *main_layout = new QHBoxLayout();
+	m_import_pb = new QPushButton(
+				tr("Importer depuis un autre projet..."), this);
+	m_import_pb->setToolTip(
+				tr("Reprendre les numérotations automatiques "
+				   "enregistrées dans un autre projet"));
+
+	QHBoxLayout *button_layout = new QHBoxLayout();
+	button_layout->addStretch();
+	button_layout->addWidget(m_import_pb);
+
+	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout->addWidget(tab_widget);
+	main_layout->addLayout(button_layout);
 	setLayout(main_layout);
 
 	buildConnections();
@@ -367,6 +379,12 @@ void ProjectAutoNumConfigPage::initWidgets()
 */
 void ProjectAutoNumConfigPage::readValuesFromProject()
 {
+		// This is called again after an import, so start from an empty
+		// combo box instead of appending a second copy of every name.
+	m_saw_conductor->contextComboBox()->clear();
+	m_saw_element->contextComboBox()->clear();
+	m_saw_folio->contextComboBox()->clear();
+
 		//Conductor Tab
 	const QStringList strlc(m_project->conductorAutoNum().keys());
 	m_saw_conductor->contextComboBox()->addItems(strlc);
@@ -389,6 +407,9 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 */
 void ProjectAutoNumConfigPage::adjustReadOnly()
 {
+	if (m_import_pb && m_project) {
+		m_import_pb->setDisabled(m_project->isReadOnly());
+	}
 }
 
 /**
@@ -417,6 +438,9 @@ void ProjectAutoNumConfigPage::buildConnections()
 
 		//	Auto Folio Numbering
 	connect(m_faw, &FolioAutonumberingW::applyPressed, this, &ProjectAutoNumConfigPage::applyAutoNum);
+
+		//Import from another project
+	connect(m_import_pb, &QPushButton::clicked, this, &ProjectAutoNumConfigPage::importFromProject);
 }
 
 /**
@@ -485,6 +509,198 @@ void ProjectAutoNumConfigPage::saveContextElement()
 		m_project->addElementAutoNum (m_saw_element->contextComboBox() -> currentText(), m_saw_element -> toNumContext());
 		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
 	}
+}
+
+/**
+	@brief ProjectAutoNumConfigPage::importFromProject
+	Read the automatic numbering rules stored in another .qet project and
+	copy the ones the user selects into this project.
+
+	The source file is parsed as plain XML rather than opened as a
+	QETProject: opening it would run the whole load path, including the
+	modal dialog raised when the file was written by a different version
+	of QElectroTech.
+*/
+void ProjectAutoNumConfigPage::importFromProject()
+{
+	if (!m_project || m_project->isReadOnly()) {
+		return;
+	}
+
+	const QString path = QFileDialog::getOpenFileName(
+				this,
+				tr("Importer les numérotations d'un projet"),
+				m_project->currentDir(),
+				tr("Projet QElectroTech (*.qet)"));
+	if (path.isEmpty()) {
+		return;
+	}
+
+	QFile file(path);
+	if (!file.open(QIODevice::ReadOnly)) {
+		QMessageBox::warning(this, tr("Import impossible"),
+					 tr("Impossible d'ouvrir %1").arg(path));
+		return;
+	}
+
+	QDomDocument doc;
+	if (!doc.setContent(&file)) {
+		QMessageBox::warning(this, tr("Import impossible"),
+					 tr("%1 n'est pas un projet QElectroTech valide.")
+					 .arg(QFileInfo(path).fileName()));
+		return;
+	}
+	file.close();
+
+	const QDomNodeList newdiagrams =
+			doc.elementsByTagName(QStringLiteral("newdiagrams"));
+	if (newdiagrams.isEmpty()) {
+		QMessageBox::information(this, tr("Aucune numérotation"),
+					 tr("Ce projet ne contient aucune numérotation automatique."));
+		return;
+	}
+	const QDomElement root = newdiagrams.at(0).toElement();
+
+		// tag of the group, tag of one entry, label shown to the user
+	struct Category {
+		QString group_tag;
+		QString item_tag;
+		QString label;
+	};
+	const QList<Category> categories {
+		{QStringLiteral("conductors_autonums"),
+		 QStringLiteral("conductor_autonum"), tr("Conducteurs")},
+		{QStringLiteral("element_autonums"),
+		 QStringLiteral("element_autonum"), tr("Eléments")},
+		{QStringLiteral("folio_autonums"),
+		 QStringLiteral("folio_autonum"), tr("Folios")}
+	};
+
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("Numérotations à importer"));
+	QVBoxLayout *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(new QLabel(
+				  tr("Numérotations trouvées dans %1 :")
+				  .arg(QFileInfo(path).fileName()), &dialog));
+
+	QListWidget *list = new QListWidget(&dialog);
+	layout->addWidget(list);
+
+		// NumerotationContext is not a QVariant type, so the list item
+		// carries an index into this instead of the context itself.
+	QList<NumerotationContext> contexts;
+	for (int i = 0 ; i < categories.count() ; ++i)
+	{
+		const Category &category = categories.at(i);
+		QDomElement group;
+		for (QDomNode n = root.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+			if (n.toElement().tagName() == category.group_tag) {
+				group = n.toElement();
+				break;
+			}
+		}
+		if (group.isNull()) {
+			continue;
+		}
+
+		for (QDomElement entry : QET::findInDomElement(group, category.item_tag))
+		{
+			const QString title = entry.attribute(QStringLiteral("title"));
+			if (title.isEmpty()) {
+				continue;
+			}
+
+			bool exists = false;
+			switch (i) {
+				case 0: exists = m_project->conductorAutoNum().contains(title); break;
+				case 1: exists = m_project->elementAutoNum().contains(title); break;
+				default: exists = m_project->folioAutoNum().contains(title); break;
+			}
+
+			QListWidgetItem *item = new QListWidgetItem(
+						exists ? tr("%1 : %2 (existe déjà)")
+							 .arg(category.label, title)
+					       : QStringLiteral("%1 : %2")
+							 .arg(category.label, title),
+						list);
+			item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+			item->setCheckState(exists ? Qt::Unchecked : Qt::Checked);
+			item->setData(Qt::UserRole, i);
+			item->setData(Qt::UserRole + 1, title);
+
+			NumerotationContext nc;
+			nc.fromXml(entry);
+			item->setData(Qt::UserRole + 2, contexts.count());
+			contexts << nc;
+		}
+	}
+
+	if (contexts.isEmpty()) {
+		QMessageBox::information(this, tr("Aucune numérotation"),
+					 tr("Ce projet ne contient aucune numérotation automatique."));
+		return;
+	}
+
+	QCheckBox *overwrite_cb = new QCheckBox(
+				tr("Remplacer les numérotations de même nom"), &dialog);
+	layout->addWidget(overwrite_cb);
+
+	QDialogButtonBox *buttons = new QDialogButtonBox(
+				QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+	layout->addWidget(buttons);
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+	if (dialog.exec() != QDialog::Accepted) {
+		return;
+	}
+
+	int imported = 0, skipped = 0, conductors = 0;
+	for (int row = 0 ; row < list->count() ; ++row)
+	{
+		QListWidgetItem *item = list->item(row);
+		if (item->checkState() != Qt::Checked) {
+			continue;
+		}
+
+		const int category = item->data(Qt::UserRole).toInt();
+		const QString title = item->data(Qt::UserRole + 1).toString();
+
+		bool exists = false;
+		switch (category) {
+			case 0: exists = m_project->conductorAutoNum().contains(title); break;
+			case 1: exists = m_project->elementAutoNum().contains(title); break;
+			default: exists = m_project->folioAutoNum().contains(title); break;
+		}
+		if (exists && !overwrite_cb->isChecked()) {
+			++skipped;
+			continue;
+		}
+
+		const NumerotationContext &nc =
+				contexts.at(item->data(Qt::UserRole + 2).toInt());
+		switch (category) {
+			case 0:
+				m_project->addConductorAutoNum(title, nc);
+				++conductors;
+				break;
+			case 1: m_project->addElementAutoNum(title, nc); break;
+			default: m_project->addFolioAutoNum(title, nc); break;
+		}
+		++imported;
+	}
+
+	readValuesFromProject();
+	if (conductors) {
+		m_project->conductorAutoNumAdded();
+	}
+
+	QMessageBox::information(
+				this, tr("Import terminé"),
+				skipped ? tr("%1 numérotation(s) importée(s), "
+						 "%2 conservée(s) telles quelles.")
+					  .arg(imported).arg(skipped)
+					: tr("%1 numérotation(s) importée(s).").arg(imported));
 }
 
 /**

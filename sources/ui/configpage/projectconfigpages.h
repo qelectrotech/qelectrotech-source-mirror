@@ -156,6 +156,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		void updateContextElement(const QString&);//element
 		void saveContextElement();
 		void removeContextElement();
+		void importFromProject();
 
 		void applyAutoNum();
 		void applyManagement();
@@ -173,6 +174,7 @@ class ProjectAutoNumConfigPage : public ProjectConfigPage {
 		SelectAutonumW        *m_saw_element;
 		FolioAutonumberingW   *m_faw;
 		AutoNumberingManagementW *m_amw;
+		QPushButton           *m_import_pb = nullptr;
 
 };
 
