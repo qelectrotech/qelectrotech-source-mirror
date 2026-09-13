@@ -92,9 +92,17 @@ void SmartDeviceTest::defaultQueryAndCsv()
 					QStringLiteral("日本電機")));
 		QVERIFY(add(QStringLiteral("-K1"), QStringLiteral("master"), 1, 2,
 					QStringLiteral("Müller")));
+		//A slave and a terminal are both separately orderable hardware -- an
+		//auxiliary contact block has its own order code, and so does a
+		//terminal block -- so both belong in the bill of materials. See
+		//discussion #847. Anything that should not be ordered is kept out by
+		//exclude_from_bom rather than by its base type.
 		QVERIFY(add(QStringLiteral("-K1.1"), QStringLiteral("slave"), 1, 3,
-					QStringLiteral("Must not be exported")));
+					QStringLiteral("Aux contact block")));
 		QVERIFY(add(QStringLiteral("X1"), QStringLiteral("terminal"), 1, 4,
+					QStringLiteral("Terminal block")));
+		//Still filtered out: a folio report arrow is not hardware.
+		QVERIFY(add(QStringLiteral(">1"), QStringLiteral("next_report"), 1, 5,
 					QStringLiteral("Must not be exported")));
 
 		QSqlQuery query(db);
@@ -103,11 +111,13 @@ void SmartDeviceTest::defaultQueryAndCsv()
 		int rows = 0;
 		const auto csv = BomExport::toCsv(
 				query, BomExport::defaultColumns(), true, &rows);
-		QCOMPARE(rows, 2);
+		QCOMPARE(rows, 4);
 		QVERIFY(csv.startsWith("\xEF\xBB\xBF\"label\";\"designation\";"));
 		QVERIFY(csv.contains(QStringLiteral("Müller").toUtf8()));
 		QVERIFY(csv.contains(QStringLiteral("日本電機").toUtf8()));
 		QVERIFY(csv.contains("\"Quoted \"\"note\"\"\nnext line\""));
+		QVERIFY(csv.contains("Aux contact block"));
+		QVERIFY(csv.contains("Terminal block"));
 		QVERIFY(!csv.contains("Must not be exported"));
 		QVERIFY(csv.indexOf("-K1") < csv.indexOf("-K2"));
 	}

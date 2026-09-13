@@ -59,8 +59,27 @@ QStringList BomExport::defaultColumns()
 
 QString BomExport::defaultQuery()
 {
+		//Slaves and terminals are included because both are routinely
+		//separately orderable hardware. A circuit breaker can carry ten or
+		//twenty auxiliary blocks, each with its own order code, and a
+		//terminal block is a purchased part in its own right. Neither shares
+		//a line with its master: the query is ungrouped, one row per element,
+		//so each appears as the distinct item it is.
+		//
+		//Anything that should not be ordered is kept out by setting
+		//exclude_from_bom on the element, which the view already honours --
+		//a relay's own auxiliary contact, say.
+		//
+		//Thumbnails are deliberately left out for now even though ten of
+		//them in the shipped examples carry manufacturer and reference data
+		//(the assembly-plan mounting-plate symbols), because that has not
+		//been asked for and is a separate question. The folio report arrows
+		//and the conductor definition stay out because they are not hardware.
+		//
+		//See discussion #847.
 	return QStringLiteral("SELECT %1 FROM element_nomenclature_view "
-						  "WHERE ( element_type = 'simple' OR element_type = 'master') "
+						  "WHERE element_type IN "
+						  "('simple', 'master', 'slave', 'terminal') "
 						  "ORDER BY diagram_position, position, label")
 			.arg(defaultColumns().join(QStringLiteral(", ")));
 }
