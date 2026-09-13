@@ -29,6 +29,7 @@ class QTreeWidget;
 class QLineEdit;
 class QPushButton;
 class QLabel;
+class QCheckBox;
 class Element;
 
 /**
@@ -64,11 +65,13 @@ class PlcLinkWidget : public AbstractElementPropertiesEditorWidget
 		void on_m_tree_widget_customContextMenuRequested(const QPoint &pos);
 		void on_m_unlink_pb_clicked();
 		void on_m_show_this_pb_clicked();
+		void on_m_hide_linked_cb_toggled(bool checked);
 
 	private:
 		QLabel *m_label{nullptr};
 		QPushButton *m_unlink_pb{nullptr};
 		QPushButton *m_show_this_pb{nullptr};
+		QCheckBox *m_hide_linked_cb{nullptr};
 		QLineEdit *m_search_field{nullptr};
 		QTreeWidget *m_tree_widget{nullptr};
 		QLabel *m_hidden_masters_label{nullptr};

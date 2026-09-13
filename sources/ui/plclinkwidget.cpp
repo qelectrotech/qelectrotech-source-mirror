@@ -29,6 +29,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
+#include <QCheckBox>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -36,6 +37,7 @@
 #include <QAction>
 #include <QFont>
 #include <QTimer>
+#include <QSettings>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -56,12 +58,16 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 	main_layout->addWidget(m_unlink_pb, 0, 1);
 	main_layout->addWidget(m_show_this_pb, 0, 2);
 
-	// Row 1: Search field
+	// Row 1: Hide linked elements checkbox
+	m_hide_linked_cb = new QCheckBox(tr("Masquer les éléments connectés"), this);
+	main_layout->addWidget(m_hide_linked_cb, 1, 0, 1, 3);
+
+	// Row 2: Search field
 	m_search_field = new QLineEdit(this);
 	m_search_field->setPlaceholderText(tr("Recherche"));
-	main_layout->addWidget(m_search_field, 1, 0, 1, 3);
+	main_layout->addWidget(m_search_field, 2, 0, 1, 3);
 
-	// Row 2: Tree widget
+	// Row 3: Tree widget
 	m_tree_widget = new QTreeWidget(this);
 	m_tree_widget->setHeaderLabels({
 		tr("Label"), tr("Type"), tr("Adresse"),
@@ -78,9 +84,9 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 	m_tree_widget->header()->setSectionResizeMode(3, QHeaderView::ResizeToContents);
 	m_tree_widget->header()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
 	m_tree_widget->header()->setSectionResizeMode(5, QHeaderView::ResizeToContents);
-	main_layout->addWidget(m_tree_widget, 2, 0, 1, 3);
+	main_layout->addWidget(m_tree_widget, 3, 0, 1, 3);
 
-	// Row 3: Hidden masters note
+	// Row 4: Hidden masters note
 	m_hidden_masters_label = new QLabel(
 		tr("Remarque : les éléments maîtres ayant atteint leur nombre maximal "
 		   "d'esclaves sont masqués."), this);
@@ -89,9 +95,9 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 	italic_font.setItalic(true);
 	m_hidden_masters_label->setFont(italic_font);
 	m_hidden_masters_label->hide();
-	main_layout->addWidget(m_hidden_masters_label, 3, 0, 1, 3);
+	main_layout->addWidget(m_hidden_masters_label, 4, 0, 1, 3);
 
-	main_layout->setRowStretch(2, 1);
+	main_layout->setRowStretch(3, 1);
 
 	setMinimumWidth(500);
 
@@ -104,6 +110,12 @@ PlcLinkWidget::PlcLinkWidget(Element *elmt, QWidget *parent)
 		this, &PlcLinkWidget::on_m_search_field_textEdited);
 	connect(m_tree_widget, &QTreeWidget::customContextMenuRequested,
 		this, &PlcLinkWidget::on_m_tree_widget_customContextMenuRequested);
+	connect(m_hide_linked_cb, &QCheckBox::toggled,
+		this, &PlcLinkWidget::on_m_hide_linked_cb_toggled);
+
+	QSettings settings;
+	m_hide_linked_cb->setChecked(
+		settings.value(QStringLiteral("plclinkwidget/hideLinked"), false).toBool());
 
 	if (elmt)
 		setElement(elmt);
@@ -216,6 +228,7 @@ void PlcLinkWidget::buildPlcTree()
 		parent_item->setExpanded(false);
 
 		// Add child items for each IO entry
+		bool all_children_hidden = true;
 		for (int i = 0; i < plc_data.ios.size(); ++i) {
 			const auto &io = plc_data.ios.at(i);
 			auto *child_item = new QTreeWidgetItem(parent_item);
@@ -233,32 +246,44 @@ void PlcLinkWidget::buildPlcTree()
 			entry.ioIndex = i;
 			m_io_entry_hash.insert(child_item, entry);
 
-			// If this IO is already linked to a slave, grey it out and strike through
+			// If this IO is already linked to a slave
 			if (used_io_indices.contains(i)) {
-				QFont strike_font = child_item->font(0);
-				strike_font.setStrikeOut(true);
-				child_item->setFont(0, strike_font);
-				child_item->setFont(1, strike_font);
-				child_item->setFont(2, strike_font);
-				child_item->setFont(3, strike_font);
-				child_item->setFont(4, strike_font);
-				child_item->setFont(5, strike_font);
+				if (m_hide_linked_cb->isChecked()) {
+					child_item->setHidden(true);
+				} else {
+					all_children_hidden = false;
+					QFont strike_font = child_item->font(0);
+					strike_font.setStrikeOut(true);
+					child_item->setFont(0, strike_font);
+					child_item->setFont(1, strike_font);
+					child_item->setFont(2, strike_font);
+					child_item->setFont(3, strike_font);
+					child_item->setFont(4, strike_font);
+					child_item->setFont(5, strike_font);
 
-				QBrush grey_brush(Qt::gray);
-				for (int col = 0; col < 6; ++col)
-					child_item->setForeground(col, grey_brush);
+					QBrush grey_brush(Qt::gray);
+					for (int col = 0; col < 6; ++col)
+						child_item->setForeground(col, grey_brush);
 
-				// Show which slave is linked
-				for (Element *linked : elmt->linkedElements()) {
-					if (elmt->groupIndexForElement(linked) == i) {
-						child_item->setToolTip(0,
-							tr("Lié à: %1").arg(linked->actualLabel()));
-						break;
+					// Show which slave is linked
+					for (Element *linked : elmt->linkedElements()) {
+						if (elmt->groupIndexForElement(linked) == i) {
+							child_item->setToolTip(0,
+								tr("Lié à: %1").arg(linked->actualLabel()));
+							break;
+						}
 					}
-				}
 
-				child_item->setFlags(child_item->flags() & ~Qt::ItemIsSelectable);
+					child_item->setFlags(child_item->flags() & ~Qt::ItemIsSelectable);
+				}
+			} else {
+				all_children_hidden = false;
 			}
+		}
+
+		// If checkbox is on and every child is linked (hidden), hide the master too
+		if (m_hide_linked_cb->isChecked() && all_children_hidden) {
+			parent_item->setHidden(true);
 		}
 	}
 }
@@ -368,4 +393,11 @@ void PlcLinkWidget::on_m_show_this_pb_clicked()
 
 	m_element->diagram()->showMe();
 	m_element->setHighlighted(true);
+}
+
+void PlcLinkWidget::on_m_hide_linked_cb_toggled(bool checked)
+{
+	QSettings settings;
+	settings.setValue(QStringLiteral("plclinkwidget/hideLinked"), checked);
+	buildPlcTree();
 }
