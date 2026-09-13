@@ -17,6 +17,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QStatusBar>
 #include <QPainter>
+#include <QSettings>
 
 DiagramEventAddMacro::DiagramEventAddMacro(const ElementsLocation &location, Diagram *diagram, QPointF pos) :
 DiagramEventInterface(diagram),
@@ -63,6 +64,7 @@ m_preview_item(nullptr)
 		QDomElement diagram_node = root.firstChildElement("diagram_content").firstChildElement("diagram");
 
 		if (!diagram_node.isNull()) {
+			dummy_diagram->setDisplayGrid(false);
 			dummy_diagram->fromXml(diagram_node, QPointF(0, 0), false, nullptr);
 
 			QRectF scene_rect = dummy_diagram->itemsBoundingRect();
@@ -237,13 +239,16 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 	if (!diagram_node.isNull()) {
 		QDomElement cloned_node = diagram_node.cloneNode(true).toElement();
 
-		QPointF target_pos = final_pos;
-
 		DiagramContent pasted_content;
 
-		m_diagram->fromXml(cloned_node, target_pos, false, &pasted_content);
+		m_diagram->fromXml(cloned_node, final_pos, false, &pasted_content);
 		m_diagram->refreshContents();
 
+			// Prevent PasteDiagramCommand from erasing labels (BMK)
+		QSettings settings;
+		bool saved_erase = settings.value("diagramcommands/erase-label-on-copy", true).toBool();
+		settings.setValue("diagramcommands/erase-label-on-copy", false);
 		m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted_content));
+		settings.setValue("diagramcommands/erase-label-on-copy", saved_erase);
 	}
 }
