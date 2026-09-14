@@ -59,6 +59,11 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 		&Element::linkedElementChanged,
 		this,
 		&ElementTextItemGroup::updateXref);
+	if(parent->diagram())
+		connect(parent->diagram()->project(),
+			&QETProject::XRefPropertiesChanged,
+			this,
+			&ElementTextItemGroup::updateXref);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()
@@ -895,6 +900,25 @@ void ElementTextItemGroup::updateXref()
 						m_parent_element->setElementInformations(dc);
 					}
 				}
+			}
+		}
+	}
+
+	//Remove stale "xref" from elementInformations when no longer needed
+	if(m_parent_element->linkType() == Element::Slave &&
+	   m_parent_element->diagram())
+	{
+		for(DynamicElementTextItem *deti : texts())
+		{
+			if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "xref")
+			{
+				DiagramContext dc = m_parent_element->elementInformations();
+				if(!dc.value("xref").toString().isEmpty())
+				{
+					dc.remove("xref");
+					m_parent_element->setElementInformations(dc);
+				}
+				break;
 			}
 		}
 	}

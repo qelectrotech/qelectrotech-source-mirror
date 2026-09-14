@@ -111,6 +111,7 @@ void MasterElement::unlinkElement(Element *elmt)
 			ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 			ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 			ctx.remove(QETInformation::ELMT_LABEL);
+			ctx.remove(QStringLiteral("xref"));
 			elmt->setElementInformations(ctx);
 
 			setGroupIndexForElement(elmt, -1);
