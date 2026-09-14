@@ -935,6 +935,15 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addSeparator();
+		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
+		//which left them unreachable for anyone working without a mouse: a
+		//toolbar button has no key, so text fields, images and every drawing
+		//shape simply could not be added. m_depth_action_group below has
+		//always been in both places; this brings these into line with it.
+	QMenu *menu_add_item = menu_edition -> addMenu(tr("A&jouter"));
+	menu_add_item -> setIcon(QET::Icons::Add);
+	menu_add_item -> addActions(m_add_item_actions_group.actions());
+	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_selection_actions_group.actions());
@@ -952,6 +961,9 @@ void QETDiagramEditor::setUpMenu()
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
 	menu_project -> addAction(m_auto_conductor);
+		//Sits beside m_auto_conductor, the setting it pairs with. It was
+		//toolbar-only and so had no keyboard route at all.
+	menu_project -> addAction(m_auto_break_conductor);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
