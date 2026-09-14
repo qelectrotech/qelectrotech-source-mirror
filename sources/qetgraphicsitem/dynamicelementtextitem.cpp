@@ -1470,11 +1470,12 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+	m_update_slave_Xref_connection.clear();
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
-		m_update_slave_Xref_connection.clear();
 
 		//If position changed to Champ de texte, store xref in element info
 		if(m_parent_element->linkType() == Element::Slave &&
