@@ -81,6 +81,8 @@ class DiagramView : public QGraphicsView
 		void keyReleaseEvent(QKeyEvent *) override;
 		bool event(QEvent *) override;
 		bool focusNextPrevChild(bool next) override;
+		///Set for one call only, by the Escape handler, to let focus leave the view.
+		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;

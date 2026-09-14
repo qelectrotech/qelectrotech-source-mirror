@@ -715,7 +715,11 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 */
 bool DiagramView::focusNextPrevChild(bool next)
 {
-	Q_UNUSED(next)
+		//Escape asked for focus to leave; allow exactly this one traversal.
+	if (m_releasing_focus) {
+		m_releasing_focus = false;
+		return QGraphicsView::focusNextPrevChild(next);
+	}
 	return false;
 }
 
@@ -734,6 +738,19 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
 	{
+		case Qt::Key_Escape:
+				//Tab cycles the folio's items rather than moving focus (see
+				//focusNextPrevChild above), so without this there would be no
+				//way off the canvas for someone working without a mouse.
+				//Escape steps back out: first it drops the selection, then it
+				//hands focus to the next widget.
+			if (m_diagram && !m_diagram->selectedItems().isEmpty()) {
+				m_diagram->clearSelection();
+			} else {
+				m_releasing_focus = true;
+				focusNextChild();
+			}
+			return;
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
 			return;
