@@ -546,12 +546,40 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 QStringList QET::splitWithSpaces(const QString &string) {
 	// les chaines sont separees par des espaces non echappes
 	// = avec un nombre nul ou pair de backslashes devant
-
-	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),Qt::SkipEmptyParts);
-
+	//
+	// This was a QRegularExpression("[^\\]?(?:\\\\)* ") split, which never
+	// worked: "[^\]" opens a character class whose "\]" is an escaped
+	// bracket, so the class is never closed and the pattern is invalid.
+	// QRegularExpression::isValid() was false, QString::split() warned
+	// "invalid QRegularExpression object" and returned an EMPTY list for
+	// every input -- so a second instance's file arguments were always
+	// dropped (bugtracker #248), not just ones containing spaces.
+	//
+	// A correct pattern is not expressible here either: the separator is a
+	// space preceded by an even-length run of backslashes, and PCRE2 has no
+	// variable-length lookbehind. Scanning explicitly is both correct and
+	// easier to read than the alternatives.
 	QStringList returned_list;
-	foreach(QString escaped_string, escaped_strings) {
-		returned_list << QET::unescapeSpaces(escaped_string);
+	QString current;
+	int backslashes = 0;
+	for (const QChar &c : string) {
+		if (c == QLatin1Char('\\')) {
+			++backslashes;
+			current += c;
+			continue;
+		}
+		if (c == QLatin1Char(' ') && backslashes % 2 == 0) {
+			if (!current.isEmpty()) {
+				returned_list << QET::unescapeSpaces(current);
+			}
+			current.clear();
+		} else {
+			current += c;
+		}
+		backslashes = 0;
+	}
+	if (!current.isEmpty()) {
+		returned_list << QET::unescapeSpaces(current);
 	}
 	return(returned_list);
 }
