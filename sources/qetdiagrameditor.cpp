@@ -903,8 +903,20 @@ void QETDiagramEditor::setUpMenu()
 	insertMenu(help_menu_, windows_menu);
 
 	// File menu
-	QMenu *recentfile = menu_fichier -> addMenu(QET::Icons::DocumentOpenRecent, tr("&Récemment ouverts"));
-	recentfile->addActions(QETApp::projectsRecentFiles()->menu()->actions());
+		// Add the RecentFiles menu itself, not a copy of the actions it
+		// happened to hold at construction time. RecentFiles::buildMenu()
+		// clears that menu and creates fresh QActions every time a file is
+		// opened, so a snapshot taken here never gained an entry again and
+		// the list only looked right after a restart (bugtracker #97).
+		//
+		// The menu is an application-wide singleton and several editor
+		// windows may exist. QMenu::addMenu() adds the submenu's menuAction()
+		// rather than reparenting it, so every window shows the same live
+		// menu, which is the intent.
+	QMenu *recentfile = QETApp::projectsRecentFiles()->menu();
+	recentfile->setTitle(tr("&Récemment ouverts"));
+	recentfile->setIcon(QET::Icons::DocumentOpenRecent);
+	menu_fichier->addMenu(recentfile);
 	connect(QETApp::projectsRecentFiles(), &RecentFiles::fileOpeningRequested, this, &QETDiagramEditor::openRecentFile);
 	menu_fichier -> addActions(m_file_actions_group.actions());
 	menu_fichier -> addSeparator();
