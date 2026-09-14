@@ -574,8 +574,23 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		painter -> setPen(final_conductor_pen);
 		painter -> setBrush(junction_brush);
 		painter -> setRenderHint(QPainter::Antialiasing, true);
+			// The junction dot has to read as a dot on top of the conductor
+			// that carries it, so it scales with the conductor width instead
+			// of being a fixed 3.0 across: on a wide conductor a 3.0 dot is
+			// narrower than the line and simply disappears (bugtracker #108).
+			//
+			// Floored at the historic 3.0 so nothing changes for the default
+			// width of 1.0 or anything thinner -- only the wide conductors
+			// the report is about are affected. m_properties.cond_size is
+			// used rather than the pen, whose width is inflated by 4 while
+			// the mouse is over the conductor.
+		const qreal junction_diameter = qMax(3.0, 3.0 * m_properties.cond_size);
+		const qreal junction_radius = junction_diameter / 2.0;
 		foreach(QPointF point, junctions_list) {
-			painter -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
+			painter -> drawEllipse(QRectF(point.x() - junction_radius,
+						      point.y() - junction_radius,
+						      junction_diameter,
+						      junction_diameter));
 		}
 	}
 
