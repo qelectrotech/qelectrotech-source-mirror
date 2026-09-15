@@ -104,10 +104,6 @@ int main(int argc, char **argv)
 		QDomImplementation::ReturnNullNode);
 	//Creation and execution of the application
 	//HighDPI
-
-
-
-
 	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
 	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
