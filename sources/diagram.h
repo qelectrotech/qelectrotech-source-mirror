@@ -136,6 +136,9 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+
+		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
+		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
 	
 	// METHODS
 	protected:
