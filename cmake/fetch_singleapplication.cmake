@@ -35,5 +35,5 @@ FetchContent_Declare(
   SingleApplication
   GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
   GIT_TAG        v3.2.0)
-
+set(QT_DEFAULT_MAJOR_VERSION 6)
 FetchContent_MakeAvailable(SingleApplication)

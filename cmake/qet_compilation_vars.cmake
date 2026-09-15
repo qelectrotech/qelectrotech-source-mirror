@@ -16,12 +16,11 @@
 
 message(" - qet_compilation_vars")
 
-# Note: GuiPrivate is intentionally NOT in this list. Qt6's CMake config only
-# creates the Qt::GuiPrivate target when "GuiPrivate" is explicitly requested
-# as a component, but Qt5 has no Qt5GuiPrivate package at all (the target is
-# created implicitly with Gui), so requesting it as a component breaks the
-# whole Qt5 configure. It is requested separately, guarded by
-# QT_VERSION_MAJOR, after the main find_package.
+# Note: GuiPrivate is intentionally NOT in this list. 
+# Qt >= 6.7 ships it as a proper find_package component, but some distro
+# packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
+# and only provide the implicit Qt6::GuiPrivate target created alongside
+# Qt6::Gui. Checks are done in the main CMakeLists.txt
 # (Needed for QPdfEngine::drawHyperlink, the PDF internal links.)
 set(QET_COMPONENTS
   LinguistTools
@@ -839,15 +838,12 @@ if(NOT BUILD_WITH_KF)
   )
 endif()
 
-# Qt6-only: PDF page import files
-if(QT_VERSION_MAJOR GREATER_EQUAL 6)
-  list(APPEND QET_SRC_FILES
+list(APPEND QET_SRC_FILES
     ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
     ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
     ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
     ${QET_DIR}/sources/ui/pdfpagesdialog.h
-  )
-endif()
+)
 
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts

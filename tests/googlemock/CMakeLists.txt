@@ -40,21 +40,9 @@ if(NOT DEFINED QET_COMPONENTS)
   message(".. QET_COMPONENTS is not set !!! I set them up !!!")
   include(../../cmake/qet_compilation_vars.cmake)
 endif()
-if(NOT DEFINED QT_VERSION_MAJOR)
-  find_package(
-    QT
-   NAMES
-    Qt6
-    Qt5
-   COMPONENTS
-    ${QET_COMPONENTS}
-   REQUIRED
-   )
-endif()
-message(".. QT_VERSION_MAJOR          :" ${QT_VERSION_MAJOR})
 
 find_package(
-  Qt${QT_VERSION_MAJOR}
+ Qt6
  COMPONENTS
  ${QET_COMPONENTS}
  REQUIRED)
