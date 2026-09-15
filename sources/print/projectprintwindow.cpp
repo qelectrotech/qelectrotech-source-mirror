@@ -67,14 +67,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-		qDebug()<<"Help code for QT 6 or later";
-#endif
+		print_dialog.setOption(QAbstractPrintDialog::PrintShowPageSize, true);
 		if (print_dialog.exec() == QDialog::Rejected) {
 			delete  printer_;
 			return;
@@ -197,12 +190,10 @@ void ProjectPrintWindow::requestPaint()
 			#ifdef QT_DEBUG
 			qDebug() << "--";
 			qDebug() << "DiagramPrintDialog::print  printer_->resolution() before " << m_printer->resolution();
-			#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-			qDebug() << "DiagramPrintDialog::print  screennumber " << QApplication::desktop()->screenNumber();
-			#endif
+			qDebug() << "DiagramPrintDialog::print  screen " << screen()->name();
 			#endif
 
-			// QApplication::desktop() was removed in Qt6; use QWidget::screen().
+			QScreen *srn = screen();
 			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
 			m_printer->setResolution(dotsPerInch);
 
