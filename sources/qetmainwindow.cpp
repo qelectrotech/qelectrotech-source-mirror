@@ -264,11 +264,18 @@ void QETMainWindow::checkToolbarsmenu()
 	@brief QETMainWindow::activateMenuBar
 	Open the first usable menu, as pressing Alt and a menu's letter would.
 
-	Qt implements F10 for this on Windows but not on X11, so on Linux the key
-	did nothing and the press fell through to whichever widget had focus. F10
-	is the usual way to reach the menus without a mouse, and it matters here
-	because one menu cannot be reached by its own letter at all: "&Édition"
-	takes É, which is not on a UK or US keyboard.
+	F10 is what most applications use for this, and QMenuBar does not handle
+	it: given the key directly it leaves it unaccepted, and sent to the window
+	it never reaches the menu bar at all, because a key press goes to the
+	focused child widget. So the press fell through to whichever widget had
+	focus and looked like nothing happening.
+
+	This is convenience, not access. Qt already provides two keyboard routes
+	into the menus and both work: a bare Alt tap focuses the bar, and Alt with
+	a menu's letter opens it. This adds the key people reach for out of habit.
+
+	A shortcut rather than a keyPressEvent() override, for the reason above --
+	the window never sees the key while a child holds focus.
 */
 void QETMainWindow::activateMenuBar() {
 	QMenuBar *bar = menuBar();
