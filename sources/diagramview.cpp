@@ -1218,30 +1218,70 @@ QList<QAction *> DiagramView::contextMenuActions() const
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
-	QGraphicsView::contextMenuEvent(e);
-	if(e->isAccepted())
-	return;
+	QPoint menu_pos = e->pos();
+	QPoint menu_global_pos = e->globalPos();
 
+		//A context menu raised from the keyboard (the Menu key, or
+		//Shift+F10) carries no useful position: Qt does not aim it at the
+		//selection. Two things then went wrong. QGraphicsView handed the
+		//event to whichever item held focus, which answered with its own
+		//generic Undo/Cut/Copy menu and accepted it, so the folio's real
+		//menu was never built; and had it got past that, itemAt() below
+		//would have looked up an unrelated point.
+		//
+		//So a keyboard-raised menu is built here directly rather than being
+		//offered to the items first, and aimed at the selection when there
+		//is one. The keyboard then gets the folio's menu, which is what a
+		//right-click gets.
+	const bool from_keyboard = e->reason() == QContextMenuEvent::Keyboard;
 
-	if (auto qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
+	if (from_keyboard)
 	{
-		if (!qgi->isSelected()) {
-			m_diagram->clearSelection();
+			//Aim at the selection when there is one, so the menu appears
+			//beside what it acts on. With nothing selected there is nothing
+			//to aim at, so use the middle of the view -- the folio's own
+			//menu is still the right menu to show.
+		const auto selection = m_diagram->selectedItems();
+		if (!selection.isEmpty())
+		{
+			QRectF selection_rect;
+			for (auto *item : selection) {
+				selection_rect |= item->sceneBoundingRect();
+			}
+			menu_pos = mapFromScene(selection_rect.center());
 		}
+		else
+		{
+			menu_pos = viewport()->rect().center();
+		}
+		menu_global_pos = viewport()->mapToGlobal(menu_pos);
+	}
+	else
+	{
+		QGraphicsView::contextMenuEvent(e);
+		if(e->isAccepted())
+		return;
 
-			// At this step qgi can be deleted for example if qgi is a QetGraphicsHandlerItem.
-			// When we call clearSelection the parent item of the handler
-			// is deselected and so delete all handlers, in this case,
-			// qgi become a dangling pointer.
-			// we need to call again itemAt.
-		if (auto item_ = m_diagram->itemAt(mapToScene(e->pos()), transform())) {
-			item_->setSelected(true);
+		if (auto qgi = m_diagram->itemAt(mapToScene(menu_pos), transform()))
+		{
+			if (!qgi->isSelected()) {
+				m_diagram->clearSelection();
+			}
+
+				// At this step qgi can be deleted for example if qgi is a QetGraphicsHandlerItem.
+				// When we call clearSelection the parent item of the handler
+				// is deselected and so delete all handlers, in this case,
+				// qgi become a dangling pointer.
+				// we need to call again itemAt.
+			if (auto item_ = m_diagram->itemAt(mapToScene(menu_pos), transform())) {
+				item_->setSelected(true);
+			}
 		}
 	}
 
 	if (m_diagram->selectedItems().isEmpty())
 	{
-		m_paste_here_pos = e->pos();
+		m_paste_here_pos = menu_pos;
 		m_paste_here->setEnabled(Diagram::clipboardMayContainDiagram());
 	}
 
@@ -1250,7 +1290,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	{
 		QMenu *context_menu = new QMenu(this);
 		context_menu->addActions(list);
-		context_menu->popup(e->globalPos());
+		context_menu->popup(menu_global_pos);
 		e->accept();
 	}
 }
