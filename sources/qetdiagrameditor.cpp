@@ -29,6 +29,7 @@
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddtext.h"
+#include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
 #include "factory/qetgraphicstablefactory.h"
@@ -349,8 +350,21 @@ void QETDiagramEditor::setUpActions()
 			currentDiagramView()->copy();
 	});
 	connect(m_paste, &QAction::triggered, [this]() {
-		if(currentDiagramView())
-			currentDiagramView()->paste();
+		auto *dv = currentDiagramView();
+		if (!dv || !dv->diagram()) return;
+
+			//Paste as a placement rather than dropping the items straight
+			//down. Pasting in place put the copy exactly on top of the
+			//original, where it was easy to miss entirely; now it appears
+			//under the cursor and follows it until a click, Return, or Escape
+			//to cancel -- the same interaction as placing a new element.
+		const QPoint view_pos = dv->viewport()->mapFromGlobal(QCursor::pos());
+		const QPointF start_pos = dv->viewport()->rect().contains(view_pos)
+				? dv->mapToScene(view_pos)
+				: dv->mapToScene(dv->viewport()->rect().center());
+
+		dv->diagram()->setEventInterface(
+					new DiagramEventAddPaste(dv->diagram(), start_pos));
 	});
 
 		//Reset conductor path
