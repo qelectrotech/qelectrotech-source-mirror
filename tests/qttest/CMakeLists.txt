@@ -113,3 +113,10 @@ add_executable(
 add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+
+add_executable(
+  tst_menubarkeyboard
+  tst_menubarkeyboard.cpp)
+add_test(NAME tst_menubarkeyboard COMMAND tst_menubarkeyboard)
+target_include_directories(tst_menubarkeyboard PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_menubarkeyboard PRIVATE Qt::Test Qt::Widgets)
