@@ -106,13 +106,10 @@ int main(int argc, char **argv)
 	//HighDPI
 
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
 
 
-qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
-QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
+	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
 
 	// Headless command-line export: render a project to PDF/PNG/SVG without

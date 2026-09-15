@@ -34,13 +34,6 @@
 // Availability of Qt::GuiPrivate is verified at configure time in CMakeLists.txt.
 #include <private/qpdf_p.h>
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-#	include <QDesktopWidget>
-#else
-#	if TODO_LIST
-#		pragma message("@TODO remove code for QT 6 or later")
-#	endif
-#endif
 #include <QMarginsF>
 #include <QPageSetupDialog>
 #include <QPainter>
@@ -210,11 +203,6 @@ void ProjectPrintWindow::requestPaint()
 			#endif
 
 			// QApplication::desktop() was removed in Qt6; use QWidget::screen().
-			#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-			QScreen *srn = QApplication::screens().at(QApplication::desktop()->screenNumber());
-			#else
-			QScreen *srn = screen();
-			#endif
 			qreal dotsPerInch = (qreal)srn->logicalDotsPerInch();
 			m_printer->setResolution(dotsPerInch);
 
