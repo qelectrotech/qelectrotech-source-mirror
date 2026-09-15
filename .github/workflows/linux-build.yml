@@ -1,0 +1,78 @@
+# Linux build, unit tests, and the IPC open-forwarding regression gate.
+#
+# The existing workflows build Windows and generate documentation; nothing
+# builds QElectroTech on Linux or runs tests/ in CI. This does both.
+#
+# It runs inside an ubuntu:26.04 container rather than directly on the runner
+# because the IPC gate below needs Qt 6.10.2. The ubuntu-latest image ships
+# Qt 6.4, and whether the crash that gate covers reproduces on 6.4 has never
+# been checked -- a gate that cannot go red is worse than no gate.
+name: Linux build and tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  linux:
+    name: Build and test (Qt 6, Debug)
+    runs-on: ubuntu-latest
+    container: ubuntu:26.04
+
+    steps:
+      - name: Install build and test dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ca-certificates build-essential cmake ninja-build git pkg-config \
+            qt6-base-dev qt6-base-private-dev qt6-tools-dev qt6-tools-dev-tools \
+            libqt6svg6-dev libqt6sql6-sqlite libsqlite3-dev libcups2-dev \
+            libxkbcommon-x11-0 \
+            xvfb openbox xdotool x11-utils
+          # extra-cmake-modules and the KF6 libraries are installed rather than
+          # left to FetchContent: without them CMake builds extra-cmake-modules
+          # from source, and its Qt Help documentation target then demands
+          # Qt6{Core,Gui,Widgets,DBus}Tools, failing the configure with an error
+          # that appears to be about QElectroTech and is not.
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            extra-cmake-modules libkf6coreaddons-dev libkf6widgetsaddons-dev
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure
+        # Debug, not Release. Whether a use-after-free faults depends on what
+        # the allocator does with the freed block: the commit before #868
+        # crashes every time built Debug and survives every time built
+        # -O3 -DNDEBUG, so a Release job would never catch a regression here.
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          cmake -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DQT_VERSION_MAJOR=6
+
+      - name: Build
+        run: cmake --build build --parallel $(nproc)
+
+      - name: Unit tests
+        run: xvfb-run -a ctest --test-dir build --output-on-failure
+
+      - name: IPC open-forwarding regression (#868)
+        # Fails the job only on an actual crash. An inconclusive run means the
+        # crash path was not exercised -- it proves nothing, which is not the
+        # same as a regression, and failing on it would make this job flaky
+        # rather than informative.
+        run: |
+          set +e
+          tests/ipc-regression/run.sh --binary build/qelectrotech
+          status=$?
+          set -e
+          case $status in
+            0) echo "::notice::IPC gate passed" ;;
+            2) echo "::warning::IPC gate inconclusive -- the crash path was not exercised, nothing was proven" ;;
+            *) echo "::error::IPC gate failed -- forwarded files are being opened inside the socket handler again"
+               exit 1 ;;
+          esac
