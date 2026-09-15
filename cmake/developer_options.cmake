@@ -31,10 +31,7 @@ add_definitions(-DQT_MESSAGELOGCONTEXT)
 # In order to do so, uncomment the following line.
 #add_definitions(-DTODO_LIST)
 
-# Build with KDE Frameworks. The major version (KF5/KF6) is derived
-# automatically from QT_VERSION_MAJOR -- KDE Frameworks deliberately
-# mirrors Qt's own major version numbering, so there is no independent
-# choice to make here. See cmake/fetch_kdeaddons.cmake.
+# Build with KDE Frameworks. 
 option(BUILD_WITH_KF "Build with KDE Frameworks" ON)
 
 # Precompiled headers for the Qt umbrella headers.
