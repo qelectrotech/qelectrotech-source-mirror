@@ -25,10 +25,13 @@
 #include "../undocommand/linkelementcommand.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
+#include "../qetgraphicsitem/masterelement.h"
 #include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>
 #include <QInputDialog>
+#include <QCheckBox>
+#include <QSettings>
 
 
 /**
@@ -52,6 +55,32 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
 	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
 	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
+
+	// Add "hide full masters" checkbox for slave elements only
+	if (elmt && elmt->elementData().m_type == ElementData::Slave) {
+		m_hide_full_masters_cb = new QCheckBox(
+			tr("Masquer les éléments maîtres pleins"), this);
+		ui->gridLayout->addWidget(m_hide_full_masters_cb, 2, 0, 1, 3);
+
+		// Shift existing widgets down: search -> row 3, tree -> row 4
+		ui->gridLayout->removeWidget(ui->m_search_field);
+		ui->gridLayout->addWidget(ui->m_search_field, 3, 0, 1, 3);
+		ui->gridLayout->removeWidget(ui->m_tree_widget);
+		ui->gridLayout->addWidget(ui->m_tree_widget, 4, 0, 1, 3);
+
+		// Remove the hidden masters label (no longer needed)
+		ui->m_hidden_masters_label->hide();
+		ui->gridLayout->removeWidget(ui->m_hidden_masters_label);
+		delete ui->m_hidden_masters_label;
+		ui->m_hidden_masters_label = nullptr;
+
+		connect(m_hide_full_masters_cb, &QCheckBox::toggled,
+			this, &LinkSingleElementWidget::on_m_hide_full_masters_cb_toggled);
+
+		QSettings settings;
+		m_hide_full_masters_cb->setChecked(
+			settings.value(QStringLiteral("link-element-widget/hideFullMasters"), false).toBool());
+	}
 	
 	connect(m_show_qtwi, &QAction::triggered, this, [=]()
 	{
@@ -249,6 +278,7 @@ void LinkSingleElementWidget::buildTree()
 
 	if (m_element->elementData().m_type == ElementData::Slave)
 	{
+		m_full_masters.clear();
 		
 		for(const auto &elmt : elmt_vector)
 		{
@@ -288,6 +318,16 @@ void LinkSingleElementWidget::buildTree()
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
+
+			// Check if this master is full
+			if (elmt->linkType() == Element::Master) {
+				MasterElement *me = qobject_cast<MasterElement*>(elmt);
+				if (me && me->isFull()) {
+					m_full_masters.insert(qtwi);
+					if (m_hide_full_masters_cb && m_hide_full_masters_cb->isChecked())
+						qtwi->setHidden(true);
+				}
+			}
 		}
 		
 		
@@ -787,7 +827,12 @@ void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 {
 	//Show all items if arg1 is empty, if not hide all items
 	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
-		qtwi->setHidden(!arg1.isEmpty());
+	{
+		bool full_hidden = m_hide_full_masters_cb
+			&& m_hide_full_masters_cb->isChecked()
+			&& m_full_masters.contains(qtwi);
+		qtwi->setHidden(!arg1.isEmpty() || full_hidden);
+	}
 	
 	QList <QTreeWidgetItem *> qtwi_list;
 	
@@ -803,7 +848,25 @@ void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
 		}
 	}
 	
-	//Show items which match with arg1
+	//Show items which match with arg1 (but not full masters if checkbox is on)
 	foreach(QTreeWidgetItem *qtwi, qtwi_list)
-		qtwi->setHidden(false);
+	{
+		bool full_hidden = m_hide_full_masters_cb
+			&& m_hide_full_masters_cb->isChecked()
+			&& m_full_masters.contains(qtwi);
+		if (!full_hidden)
+			qtwi->setHidden(false);
+	}
+}
+
+bool LinkSingleElementWidget::isMasterFull(QTreeWidgetItem *item) const
+{
+	return m_full_masters.contains(item);
+}
+
+void LinkSingleElementWidget::on_m_hide_full_masters_cb_toggled(bool checked)
+{
+	QSettings settings;
+	settings.setValue(QStringLiteral("link-element-widget/hideFullMasters"), checked);
+	buildTree();
 }
