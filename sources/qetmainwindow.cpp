@@ -19,6 +19,7 @@
 #include <QWhatsThis>
 #include <QMenu>
 #include <QMenuBar>
+#include <QShortcut>
 #include <QDragEnterEvent>
 #include <QDesktopServices>
 
@@ -41,6 +42,14 @@ QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 	initCommonMenus();
 
 	setAcceptDrops(true);
+		//A shortcut rather than a key handler: a key press goes to the
+		//focused child widget, so a keyPressEvent() here would never see F10
+		//while the canvas or a panel holds focus.
+	QShortcut *menu_bar_shortcut = new QShortcut(QKeySequence(Qt::Key_F10), this);
+	menu_bar_shortcut -> setContext(Qt::WindowShortcut);
+	connect(menu_bar_shortcut, &QShortcut::activated,
+		this, &QETMainWindow::activateMenuBar);
+
 }
 
 /**
@@ -251,6 +260,28 @@ void QETMainWindow::checkToolbarsmenu()
 /**
 	Handle the \a e event.
 */
+/**
+	@brief QETMainWindow::activateMenuBar
+	Open the first usable menu, as pressing Alt and a menu's letter would.
+
+	Qt implements F10 for this on Windows but not on X11, so on Linux the key
+	did nothing and the press fell through to whichever widget had focus. F10
+	is the usual way to reach the menus without a mouse, and it matters here
+	because one menu cannot be reached by its own letter at all: "&Édition"
+	takes É, which is not on a UK or US keyboard.
+*/
+void QETMainWindow::activateMenuBar() {
+	QMenuBar *bar = menuBar();
+	if (!bar) return;
+
+	for (QAction *action : bar -> actions()) {
+		if (action -> isVisible() && action -> isEnabled() && action -> menu()) {
+			bar -> setActiveAction(action);
+			return;
+		}
+	}
+}
+
 bool QETMainWindow::event(QEvent *e) {
 	if (e -> type() == QEvent::WindowStateChange) {
 		updateFullScreenAction();
