@@ -703,6 +703,27 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 }
 
 /**
+	@brief DiagramView::focusNextPrevChild
+	By default, QWidget intercepts Tab/Shift+Tab to move keyboard focus to
+	the next/previous widget before a key press event is ever generated,
+	which would silently swallow the diagram's Tab-based item-selection
+	cycling (see Diagram::event()). Returning false here disables that
+	automatic focus-chain traversal for this view, so Tab/Shift+Tab reach
+	keyPressEvent() (and from there, the scene) as ordinary key presses
+	instead.
+	@return always false
+*/
+bool DiagramView::focusNextPrevChild(bool next)
+{
+		//Escape asked for focus to leave; allow exactly this one traversal.
+	if (m_releasing_focus) {
+		m_releasing_focus = false;
+		return QGraphicsView::focusNextPrevChild(next);
+	}
+	return false;
+}
+
+/**
 	@brief DiagramView::keyPressEvent
 	Handles "key press" events. Reimplemented here to switch to visualisation
 	mode if needed.
@@ -717,6 +738,19 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
 	{
+		case Qt::Key_Escape:
+				//Tab cycles the folio's items rather than moving focus (see
+				//focusNextPrevChild above), so without this there would be no
+				//way off the canvas for someone working without a mouse.
+				//Escape steps back out: first it drops the selection, then it
+				//hands focus to the next widget.
+			if (m_diagram && !m_diagram->selectedItems().isEmpty()) {
+				m_diagram->clearSelection();
+			} else {
+				m_releasing_focus = true;
+				focusNextChild();
+			}
+			return;
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
 			return;

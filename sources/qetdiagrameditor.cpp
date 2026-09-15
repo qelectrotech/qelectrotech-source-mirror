@@ -702,18 +702,28 @@ void QETDiagramEditor::setUpActions()
 	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll,      tr("Tout sélectionner") );
 	QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
 	QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Inverser la sélection") );
+	QAction *select_all_conductors  = m_select_actions_group.addAction( QET::Icons::Conductor,      tr("Sélectionner tous les conducteurs") );
+	QAction *select_all_text_fields = m_select_actions_group.addAction( QET::Icons::PartTextField,  tr("Sélectionner tous les champs de texte") );
 
 	ShortcutManager::instance().registerAction(select_all, "diagrameditor.select_all", tr("Éditeur de schémas"), QKeySequence::SelectAll);
 	ShortcutManager::instance().registerAction(select_nothing, "diagrameditor.select_nothing", tr("Éditeur de schémas"), QKeySequence::Deselect);
 	ShortcutManager::instance().registerAction(select_invert, "diagrameditor.select_invert", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_I);
+		//No default sequence for these two: they are menu actions, and the
+		//point of registering them is so a user can bind one if they want.
+	ShortcutManager::instance().registerAction(select_all_conductors, "diagrameditor.select_all_conductors", tr("Éditeur de schémas"), QKeySequence());
+	ShortcutManager::instance().registerAction(select_all_text_fields, "diagrameditor.select_all_text_fields", tr("Éditeur de schémas"), QKeySequence());
 
 	select_all    ->setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip") );
 	select_nothing->setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip") );
 	select_invert ->setStatusTip( tr("Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés", "status bar tip") );
+	select_all_conductors ->setStatusTip( tr("Sélectionne tous les conducteurs du folio, désélectionne le reste", "status bar tip") );
+	select_all_text_fields->setStatusTip( tr("Sélectionne tous les champs de texte du folio, désélectionne le reste", "status bar tip") );
 
 	select_all    ->setData("select_all");
 	select_nothing->setData("deselect");
 	select_invert ->setData("invert_selection");
+	select_all_conductors ->setData("select_all_conductors");
+	select_all_text_fields->setData("select_all_text_fields");
 
 	connect(&m_select_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectGroupTriggered);
 
@@ -1610,6 +1620,10 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 		diagram->deselectAll();
 	else if (value == "invert_selection")
 		diagram->invertSelection();
+	else if (value == "select_all_conductors")
+		diagram->selectAllConductors();
+	else if (value == "select_all_text_fields")
+		diagram->selectAllTextFields();
 }
 
 /**
