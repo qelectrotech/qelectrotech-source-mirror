@@ -764,6 +764,8 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		if(m_parent_element.data()->linkType() == Element::Slave)
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
+			if(m_parent_element.data()->diagram())
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -1468,11 +1470,12 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+	m_update_slave_Xref_connection.clear();
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
-		m_update_slave_Xref_connection.clear();
 
 		//If position changed to Champ de texte, store xref in element info
 		if(m_parent_element->linkType() == Element::Slave &&
@@ -1495,6 +1498,18 @@ void DynamicElementTextItem::updateXref()
 					}
 				}
 			}
+		}
+	}
+
+	//Remove stale "xref" from elementInformations when no longer needed
+	if(m_parent_element->linkType() == Element::Slave &&
+	   m_text_from == ElementInfo && m_info_name == "xref")
+	{
+		DiagramContext dc = m_parent_element->elementInformations();
+		if(!dc.value("xref").toString().isEmpty())
+		{
+			dc.remove("xref");
+			m_parent_element->setElementInformations(dc);
 		}
 	}
 }

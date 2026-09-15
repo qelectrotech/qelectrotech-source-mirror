@@ -254,6 +254,7 @@ void LinkElementCommand::undo()
 			ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 			ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 			ctx.remove(QETInformation::ELMT_LABEL);
+			ctx.remove(QStringLiteral("xref"));
 			m_element->setElementInformations(ctx);
 
 			foreach(Element *elmt, m_element->linkedElements())
@@ -291,6 +292,7 @@ void LinkElementCommand::undo()
 					ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 					ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 					ctx.remove(QETInformation::ELMT_LABEL);
+					ctx.remove(QStringLiteral("xref"));
 					slave->setElementInformations(ctx);
 				}
 
@@ -622,6 +624,7 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 				ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 				ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 				ctx.remove(QETInformation::ELMT_LABEL);
+				ctx.remove(QStringLiteral("xref"));
 				slave->setElementInformations(ctx);
 			}
 			m_element->unlinkElement(elmt);

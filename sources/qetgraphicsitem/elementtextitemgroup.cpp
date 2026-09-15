@@ -59,6 +59,11 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 		&Element::linkedElementChanged,
 		this,
 		&ElementTextItemGroup::updateXref);
+	if(parent->diagram())
+		connect(parent->diagram()->project(),
+			&QETProject::XRefPropertiesChanged,
+			this,
+			&ElementTextItemGroup::updateXref);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()
@@ -868,11 +873,12 @@ void ElementTextItemGroup::updateXref()
 		delete m_Xref_item;
 		m_Xref_item = nullptr;	
 	}
+	m_update_slave_Xref_connection.clear();
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
-		m_update_slave_Xref_connection.clear();
 
 		//If position changed to Champ de texte, store xref in element info
 		if(m_parent_element->linkType() == Element::Slave &&
@@ -895,6 +901,25 @@ void ElementTextItemGroup::updateXref()
 						m_parent_element->setElementInformations(dc);
 					}
 				}
+			}
+		}
+	}
+
+	//Remove stale "xref" from elementInformations when no longer needed
+	if(m_parent_element->linkType() == Element::Slave &&
+	   m_parent_element->diagram())
+	{
+		for(DynamicElementTextItem *deti : texts())
+		{
+			if(deti->textFrom() == DynamicElementTextItem::ElementInfo && deti->infoName() == "xref")
+			{
+				DiagramContext dc = m_parent_element->elementInformations();
+				if(!dc.value("xref").toString().isEmpty())
+				{
+					dc.remove("xref");
+					m_parent_element->setElementInformations(dc);
+				}
+				break;
 			}
 		}
 	}
