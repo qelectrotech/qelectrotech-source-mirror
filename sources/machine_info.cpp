@@ -55,43 +55,6 @@ void MachineInfo::send_info_to_debug()
 		<< QLibraryInfo::isDebugBuild();
 	qInfo()<< "Qt library version:"
 		<< QLibraryInfo::version();
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	qInfo()<< "Qt library location default prefix:"
-		<< QLibraryInfo::location(QLibraryInfo::PrefixPath);
-	qInfo()<< "Qt library location documentation:"
-		<< QLibraryInfo::location(QLibraryInfo::DocumentationPath);
-	qInfo()<< "Qt library location headers:"
-		<< QLibraryInfo::location(QLibraryInfo::HeadersPath);
-	qInfo()<< "Qt library location libraries:"
-		<< QLibraryInfo::location(QLibraryInfo::LibrariesPath);
-	qInfo()<< "Qt library location executables:"
-		<< QLibraryInfo::location(QLibraryInfo::LibraryExecutablesPath);
-	qInfo()<< "Qt library location Qt binaries:"
-		<< QLibraryInfo::location(QLibraryInfo::BinariesPath);
-	qInfo()<< "Qt library location Qt plugins:"
-		<< QLibraryInfo::location(QLibraryInfo::PluginsPath);
-	qInfo()<< "Qt library location installed QML extensions:"
-		<< QLibraryInfo::location(QLibraryInfo::ImportsPath);
-	qInfo()<< "Qt library location installed QML extensions:"
-		<< QLibraryInfo::location(QLibraryInfo::Qml2ImportsPath);
-	qInfo()<< "Qt library location dependent Qt data:"
-		<< QLibraryInfo::location(QLibraryInfo::ArchDataPath);
-	qInfo()<< "Qt library location independent Qt data:"
-		<< QLibraryInfo::location(QLibraryInfo::DataPath);
-	qInfo()<< "Qt library location translation:"
-		<< QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-	qInfo()<< "Qt library location examples:"
-		<< QLibraryInfo::location(QLibraryInfo::ExamplesPath);
-	qInfo()<< "Qt library location Qt testcases:"
-		<< QLibraryInfo::location(QLibraryInfo::TestsPath);
-#ifndef Q_OS_WIN
-	qInfo()<< "Qt library location Qt settings:"
-		<< QLibraryInfo::location(QLibraryInfo::SettingsPath);
-#endif
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	qInfo()<< "Qt library path default prefix:"
 		<< QLibraryInfo::path(QLibraryInfo::PrefixPath);
 	qInfo()<< "Qt library path documentation:"
@@ -123,7 +86,6 @@ void MachineInfo::send_info_to_debug()
 #ifndef Q_OS_WIN
 	qInfo()<< "Qt library path Qt settings:"
 		<< QLibraryInfo::path(QLibraryInfo::SettingsPath);
-#endif
 #endif
 	if (strlen(GIT_COMMIT_SHA)) {
 		qInfo() << "GitRevision " + QString(GIT_COMMIT_SHA);
