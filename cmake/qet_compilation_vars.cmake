@@ -851,6 +851,20 @@ if(QT_VERSION_MAJOR GREATER_EQUAL 6)
   )
 endif()
 
+# JavaScript scripting (bugtracker #162). Unconditionally in the source
+# list, like the QtPdf files above: this file is included before the
+# QET_HAS_SCRIPTING probe runs in the top-level CMakeLists.txt, so the
+# variable isn't set yet here. Same pattern as QtPdf: always compiled, the
+# actual Qt::Qml dependent code is behind #ifdef QET_HAS_SCRIPTING inside
+# qetscripting.cpp/qetscriptapi.cpp themselves, compiling to a harmless
+# stub when the module wasn't found.
+list(APPEND QET_SRC_FILES
+  ${QET_DIR}/sources/scripting/qetscriptapi.cpp
+  ${QET_DIR}/sources/scripting/qetscriptapi.h
+  ${QET_DIR}/sources/scripting/qetscripting.cpp
+  ${QET_DIR}/sources/scripting/qetscripting.h
+)
+
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
   ${QET_DIR}/lang/qet_ca.ts
