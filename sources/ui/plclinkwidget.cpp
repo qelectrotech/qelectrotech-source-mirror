@@ -356,8 +356,8 @@ void PlcLinkWidget::on_m_unlink_pb_clicked()
 
 	LinkElementCommand *undo = new LinkElementCommand(m_element);
 
-		// Store the current group index so makeLink() can
-		// restore PLC variables and terminal labels on undo.
+	// Store the current group index so makeLink() can
+	// restore PLC variables and terminal labels on undo.
 	for (Element *elmt : m_element->linkedElements())
 	{
 		if (elmt->linkType() == Element::Master)

@@ -1503,7 +1503,8 @@ void DynamicElementTextItem::updateXref()
 
 	//Remove stale "xref" from elementInformations when no longer needed
 	if(m_parent_element->linkType() == Element::Slave &&
-	   m_text_from == ElementInfo && m_info_name == "xref")
+	   m_text_from == ElementInfo && m_info_name == "xref" &&
+	   !parentGroup())
 	{
 		DiagramContext dc = m_parent_element->elementInformations();
 		if(!dc.value("xref").toString().isEmpty())
