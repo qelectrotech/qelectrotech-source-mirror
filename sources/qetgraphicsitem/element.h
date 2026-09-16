@@ -83,6 +83,7 @@ class Element : public QetGraphicsItem
 			Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
+		bool definitionGeometryMatches(const QDomElement &definition) const;
 		Element(const Element &);
 
 		// attributes
@@ -153,6 +154,13 @@ class Element : public QetGraphicsItem
 
 		QString name() const override;
 		ElementsLocation location() const;
+		/// Result of Element::reloadPicture()
+		enum class ReloadPictureResult {
+			Reloaded,          ///< drawing replaced by the current definition
+			Unavailable,       ///< definition missing or unreadable, old drawing kept
+			GeometryChanged    ///< size, hotspot or terminals changed, old drawing kept
+		};
+		ReloadPictureResult reloadPicture();
 		virtual void setHighlighted(bool);
 		void displayHelpLine(bool b = true);
 		QSize size() const;
