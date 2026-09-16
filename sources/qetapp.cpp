@@ -120,6 +120,7 @@ QETApp::QETApp() :
 	}
 	initConfiguration();
 	initLanguage();
+	initIconTheme();
 	QET::Icons::initIcons();
 	initFonts();
 	initStyle();
@@ -2328,6 +2329,22 @@ void QETApp::initFonts()
 			qWarning() << "Failed to load font:" << font;
 		}
 	}
+}
+
+/**
+	@brief QETApp::initIconTheme
+	Register QET's icon theme "qet" (see misc/make_icon_themes.py and
+	ico/icon-themes.qrc) and make it the current theme, so
+	QIcon::fromTheme("name") resolves to QET's own icons on every
+	platform. Must run before QET::Icons::initIcons(), which looks icons
+	up by name.
+*/
+void QETApp::initIconTheme()
+{
+	QStringList paths = QIcon::themeSearchPaths();
+	paths.prepend(QStringLiteral(":/ico/themes"));
+	QIcon::setThemeSearchPaths(paths);
+	QIcon::setThemeName(QStringLiteral("qet"));
 }
 
 /**

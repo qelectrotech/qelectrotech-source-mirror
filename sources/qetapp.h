@@ -286,6 +286,7 @@ class QETApp : public QObject
 		void setSplashScreenStep(const QString & = QString());
 		void initLanguage();
 		void initFonts();
+		void initIconTheme();
 		void initStyle();
 		void initConfiguration();
 		void initSystemTray();
