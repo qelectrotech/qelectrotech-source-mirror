@@ -23,6 +23,8 @@ QBrush LastUsedStyle::m_shape_brush;
 bool  LastUsedStyle::m_has_shape_brush = false;
 QFont LastUsedStyle::m_text_font;
 bool  LastUsedStyle::m_has_text_font = false;
+QColor LastUsedStyle::m_conductor_color;
+bool  LastUsedStyle::m_has_conductor_color = false;
 
 /**
 	@return true if a shape pen was set this session
@@ -103,4 +105,31 @@ void LastUsedStyle::setTextFont(const QFont &font)
 {
 	m_text_font = font;
 	m_has_text_font = true;
+}
+
+/**
+	@return true if a conductor color was set this session
+*/
+bool LastUsedStyle::hasConductorColor()
+{
+	return m_has_conductor_color;
+}
+
+/**
+	@return the last color applied to a conductor this session
+*/
+QColor LastUsedStyle::conductorColor()
+{
+	return m_conductor_color;
+}
+
+/**
+	@brief LastUsedStyle::setConductorColor
+	Record @a color as the last-used conductor color for this session
+	@param color
+*/
+void LastUsedStyle::setConductorColor(const QColor &color)
+{
+	m_conductor_color = color;
+	m_has_conductor_color = true;
 }

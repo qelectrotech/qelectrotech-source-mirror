@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../lastusedstyle.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
@@ -127,11 +128,17 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	m_text_item = new ConductorTextItem(m_properties.text, this);
 	connect(m_text_item, &ConductorTextItem::textEdited, this, &Conductor::displayedTextChanged);
 
-		//Set the default conductor properties.
-	if (p1->diagram())
-		setProperties(p1->diagram()->defaultConductorProperties);
-	else if (p2->diagram())
-		setProperties(p2->diagram()->defaultConductorProperties);
+		//Set the default conductor properties. The color, specifically, is
+		//overridden by the last one applied via the F2 color editor this
+		//session (#879), the same way LastUsedStyle already does for shapes.
+	Diagram *dia = p1->diagram() ? p1->diagram() : p2->diagram();
+	if (dia)
+	{
+		ConductorProperties properties = dia->defaultConductorProperties;
+		if (LastUsedStyle::hasConductorColor())
+			properties.color = LastUsedStyle::conductorColor();
+		setProperties(properties);
+	}
 }
 
 /**
