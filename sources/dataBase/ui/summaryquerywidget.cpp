@@ -109,6 +109,7 @@ void SummaryQueryWidget::setQuery(const QString &query)
 	if (query.startsWith("SELECT"))
 	{
 		reset();
+		ui->m_edit_sql_query_cb->setChecked(false);
 		ui->m_user_query_le->setText(query);
 
 		QString select = query;
@@ -129,6 +130,17 @@ void SummaryQueryWidget::setQuery(const QString &query)
 				}
 			}
 		}
+
+			//If the query this widget would build from the columns just
+			//parsed above does not match the query as loaded byte-for-byte,
+			//the user wrote it by hand (a join, a subquery, a different
+			//view) and accepting the dialog unmodified must not silently
+			//replace it with a generated one (bugtracker #885).
+		const bool custom_query = query != queryStr();
+		m_custom_query = custom_query ? query : QString();
+		ui->m_edit_sql_query_cb->setChecked(custom_query);
+		ui->m_user_query_le->setEnabled(custom_query);
+		ui->m_info_widget->setDisabled(custom_query);
 	}
 }
 
