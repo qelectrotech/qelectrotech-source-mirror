@@ -109,6 +109,22 @@ if(QT_VERSION_MAJOR GREATER_EQUAL 6)
     endif()
 endif()
 
+# JavaScript scripting (bugtracker #162: `--run script.js`, and later a
+# "Run Script..." menu action) needs QJSEngine, in the Qml module. As with
+# QtPdf above, this is not fatal when missing: some minimal Qt6 packagings
+# may not ship it, and scripting is optional functionality nothing else in
+# the application depends on. When it's missing the feature is silently
+# disabled - see the QET_HAS_SCRIPTING guard in qetscripting.*.
+set(QET_HAS_SCRIPTING FALSE)
+find_package(Qt${QT_VERSION_MAJOR} QUIET COMPONENTS Qml)
+if(TARGET Qt${QT_VERSION_MAJOR}::Qml)
+    set(QET_HAS_SCRIPTING TRUE)
+    list(APPEND QET_PRIVATE_LIBRARIES Qt::Qml)
+    add_compile_definitions(QET_HAS_SCRIPTING)
+else()
+    message(STATUS "Qt Qml module not available: JavaScript scripting (--run) disabled")
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3

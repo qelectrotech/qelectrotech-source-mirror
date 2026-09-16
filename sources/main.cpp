@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#ifdef QET_HAS_SCRIPTING
+#include "scripting/qetscripting.h"
+#endif
 #include "logging/eventloopwatchdog.h"
 #include "logging/qetlogger.h"
 #include "machine_info.h"
@@ -135,6 +138,17 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			QET::QetMessageBox::setNonInteractive(true);
 			return CLIExport::run(export_app.arguments());
 		}
+#ifdef QET_HAS_SCRIPTING
+		// Headless scripting: --run <script.js> <project.qet> (bugtracker
+		// #162). Same reasoning as the export branch above for running
+		// before SingleApplication and answering message boxes headlessly.
+		if (QetScripting::isRunRequest(raw_args)) {
+			QApplication script_app(argc, argv);
+			QETProject::setBackupEnabled(false);
+			QET::QetMessageBox::setNonInteractive(true);
+			return QetScripting::run(script_app.arguments());
+		}
+#endif
 	}
 
 	// Resolve the logger's state (log directory, session filename, open

@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetdiagrameditor.h"
+#ifdef QET_HAS_SCRIPTING
+#include "scripting/qetscripting.h"
+#endif
 #include <QCoreApplication>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
@@ -549,6 +552,15 @@ void QETDiagramEditor::setUpActions()
 	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
 	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
 
+#ifdef QET_HAS_SCRIPTING
+	// Run a JavaScript macro against the current project (bugtracker #162).
+	m_run_script = new QAction(tr("Exécuter un script..."), this);
+	m_run_script->setStatusTip(
+		tr("Exécute un script JavaScript sur le projet courant (voir qet.*"
+		   " dans le script pour l'API disponible)"));
+	connect(m_run_script, &QAction::triggered, this, &QETDiagramEditor::slot_runScript);
+#endif
+
 	#ifdef QET_EXPORT_PROJECT_DB
 		m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
 		connect(m_export_project_db, &QAction::triggered, [this]() {
@@ -1002,6 +1014,9 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_terminal_numbering);
+#ifdef QET_HAS_SCRIPTING
+	menu_project -> addAction(m_run_script);
+#endif
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
@@ -1856,6 +1871,9 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_wiring_list  -> setEnabled(opened_project);
 	m_project_wiring_list_view    -> setEnabled(opened_project);
 	m_terminal_numbering          -> setEnabled(editable_project);
+#ifdef QET_HAS_SCRIPTING
+	m_run_script                  -> setEnabled(opened_project);
+#endif
 #ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
 #endif
@@ -2970,3 +2988,29 @@ void QETDiagramEditor::slot_terminalNumbering() {
 		}
 	}
 }
+
+#ifdef QET_HAS_SCRIPTING
+/**
+	@brief QETDiagramEditor::slot_runScript
+	Run a JavaScript macro against the current project (bugtracker #162).
+	See QetScriptApi for what a script can do -- read-mostly: folio/element/
+	conductor counts and the same export operations the --export-* CLI
+	flags provide. Export/save calls inside the script act on this
+	project's file on disk, so unsaved edits in the open editor are not
+	visible to the script; save first if that matters.
+*/
+void QETDiagramEditor::slot_runScript() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	const QString script_path = QFileDialog::getOpenFileName(
+		this,
+		tr("Exécuter un script"),
+		QString(),
+		tr("Scripts JavaScript (*.js);;Tous les fichiers (*)")
+	);
+	if (script_path.isEmpty()) return;
+
+	QetScripting::runOnProject(script_path, project);
+}
+#endif
