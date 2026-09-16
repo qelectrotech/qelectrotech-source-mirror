@@ -22,6 +22,7 @@
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
+#include "diagramcontent.h"
 #include "diagramevent/diagrameventaddimage.h"
 #ifdef QET_HAS_QTPDF
 #include "diagramevent/diagrameventaddpdf.h"
@@ -32,6 +33,7 @@
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
+#include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
@@ -549,6 +551,13 @@ void QETDiagramEditor::setUpActions()
 	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
 	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
 
+	// Reload element drawings from their current definition (bugtracker #802)
+	m_reload_element_drawings = new QAction(QET::Icons::ViewRefresh, tr("Recharger les dessins des éléments"), this);
+	m_reload_element_drawings->setStatusTip(
+		tr("Redessine chaque élément placé d'après sa définition actuelle,"
+		   " sans avoir à fermer et rouvrir le projet"));
+	connect(m_reload_element_drawings, &QAction::triggered, this, &QETDiagramEditor::slot_reloadElementDrawings);
+
 	#ifdef QET_EXPORT_PROJECT_DB
 		m_export_project_db = new QAction(QET::Icons::DocumentSpreadsheet, tr("Exporter la base de donnée interne du projet"), this);
 		connect(m_export_project_db, &QAction::triggered, [this]() {
@@ -1002,6 +1011,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_terminal_numbering);
+	menu_project -> addAction(m_reload_element_drawings);
 #ifdef QET_EXPORT_PROJECT_DB
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_export_project_db);
@@ -1856,6 +1866,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_wiring_list  -> setEnabled(opened_project);
 	m_project_wiring_list_view    -> setEnabled(opened_project);
 	m_terminal_numbering          -> setEnabled(editable_project);
+	m_reload_element_drawings     -> setEnabled(opened_project);
 #ifdef QET_EXPORT_PROJECT_DB
 	m_export_project_db           -> setEnabled(editable_project);
 #endif
@@ -2969,4 +2980,47 @@ void QETDiagramEditor::slot_terminalNumbering() {
 			undo_group.activeStack()->push(macro);
 		}
 	}
+}
+
+/**
+	@brief QETDiagramEditor::slot_reloadElementDrawings
+	Redraw every placed element of the current project from its current
+	definition (bugtracker #802): a symbol edited and saved after being
+	placed keeps showing its old drawing otherwise, until the whole project
+	is closed and reopened.
+
+	Purely visual and not undoable, the way pressing a "refresh" button
+	would be: it does not touch position, rotation, links, elementInformations,
+	labels or dynamic texts, and does not detect or handle a definition whose
+	terminals moved -- those still need the usual remove-and-reinsert.
+*/
+void QETDiagramEditor::slot_reloadElementDrawings() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	QList<Element *> elements;
+	QSet<QString> dropped_locations;
+	for (Diagram *diagram : project->diagrams())
+	{
+		DiagramContent content(diagram, false);
+		for (Element *elmt : content.m_elements)
+		{
+			elements << elmt;
+			const QString key = elmt->location().toString();
+			if (!dropped_locations.contains(key))
+			{
+				ElementPictureFactory::instance()->dropCache(elmt->location());
+				dropped_locations.insert(key);
+			}
+		}
+	}
+
+	for (Element *elmt : elements) {
+		elmt->reloadPicture();
+	}
+
+	QET::QetMessageBox::information(
+		this,
+		tr("Recharger les dessins des éléments"),
+		tr("%n élément(s) redessiné(s).", "", elements.size()));
 }

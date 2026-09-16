@@ -1785,6 +1785,34 @@ ElementsLocation Element::location() const
 }
 
 /**
+	@brief Element::reloadPicture
+	Re-fetch this element's drawing from its location and repaint.
+
+	A placed element is drawn once from its definition, at construction
+	(buildFromXml()), and nothing afterwards ever makes it look again --
+	editing and saving the definition leaves every already-placed instance
+	showing the old drawing until the project is closed and reopened
+	(bugtracker #802). This is the per-instance half of the fix: the caller
+	is expected to have already dropped the shared ElementPictureFactory
+	cache for this location, or the fresh fetch below just returns the same
+	cached picture unchanged.
+
+	Deliberately limited to the drawing: terminals and dynamic texts are
+	live objects carrying state a reload cannot safely fabricate --
+	terminal positions are what conductors are attached to, and dynamic
+	texts carry per-instance overrides (position, visibility) a rebuild
+	would have to invent a default for. A definition whose terminals moved
+	still needs the element removed and re-inserted, same as today.
+*/
+void Element::reloadPicture()
+{
+	m_picture = QPicture();
+	m_low_zoom_picture = QPicture();
+	ElementPictureFactory::instance()->getPictures(m_location, m_picture, m_low_zoom_picture);
+	update();
+}
+
+/**
  * @brief Element::updateConductorTexts
  *Slot that is triggered when a cable is                           *
  *connected to or disconnected from a terminal on this component.

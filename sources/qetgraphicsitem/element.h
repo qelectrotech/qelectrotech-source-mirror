@@ -153,6 +153,7 @@ class Element : public QetGraphicsItem
 
 		QString name() const override;
 		ElementsLocation location() const;
+		void reloadPicture();
 		virtual void setHighlighted(bool);
 		void displayHelpLine(bool b = true);
 		QSize size() const;
