@@ -129,3 +129,20 @@ add_executable(
 add_test(NAME tst_menubarkeyboard COMMAND tst_menubarkeyboard)
 target_include_directories(tst_menubarkeyboard PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_menubarkeyboard PRIVATE Qt::Test Qt::Widgets)
+
+# Bugtracker #734 regression: exports fixtures/qet_bug_repro_resaved.qet
+# (the report's own canonical reproduction) via the built qelectrotech
+# binary's --export-svg and checks no conductor path is self-retracing.
+# Runs the real binary rather than linking conductor.cpp directly, since
+# Conductor::generateConductorPath() pulls in the full graphics-item
+# dependency graph (Diagram, Element, Terminal...) that the other,
+# deliberately header-only tests above avoid.
+add_executable(
+  tst_conductorselfretrace
+  tst_conductorselfretrace.cpp)
+add_test(NAME tst_conductorselfretrace COMMAND tst_conductorselfretrace)
+add_dependencies(tst_conductorselfretrace qelectrotech)
+target_include_directories(tst_conductorselfretrace PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
+target_compile_definitions(tst_conductorselfretrace PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")

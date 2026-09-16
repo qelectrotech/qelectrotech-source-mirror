@@ -407,20 +407,48 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 
 	// commence le vrai trajet
 	// starts the real path
+	//
+	// Each cas "3"/"4" below inserts a two-point bridge along one axis, at a
+	// coordinate on the OTHER axis computed as a midpoint and then snapped
+	// to the grid by a loop that walks it strictly downward until it
+	// divides evenly. Whenever depart and arrivee already agree on the axis
+	// the bridge would run along, that bridge is unneeded -- the midpoint
+	// starts on the correct value already, but the snap can still walk it
+	// off, or, if it happens to already be on-grid, the two bridge points
+	// just duplicate depart and arrivee outright. Either way the result is
+	// a short out-and-back excursion, or a longer looping detour, at a join
+	// that needed no bridge in the first place (bugtracker #734). Skip the
+	// bridge in exactly that case; depart and arrivee already form the
+	// direct run. Which axis each cas guards on is noted at each site below
+	// -- descendant and montant are not mirror images of each other here.
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
 		if ((ori_depart == Qet::North && (ori_arrivee == Qet::South || ori_arrivee == Qet::West)) || (ori_depart == Qet::East && ori_arrivee == Qet::West)) {
-			// cas "3"
-			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
-			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
-			points << QPointF(ligne_inter_x, depart.y());
-			points << QPointF(ligne_inter_x, arrivee.y());
+			// cas "3": bridge is vertical, at a shared x between depart.y()
+			// and arrivee.y() -- unnecessary exactly when depart and
+			// arrivee already share an x. Compared qRound()ed, the same
+			// rounding the bridge coordinate itself is computed with below:
+			// an exact != would miss a pair that's already grid-equal after
+			// rounding but off by a sub-pixel remainder, and still route a
+			// degenerate bridge for it.
+			if (qRound(depart.x()) != qRound(arrivee.x())) {
+				int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
+				while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
+				points << QPointF(ligne_inter_x, depart.y());
+				points << QPointF(ligne_inter_x, arrivee.y());
+			}
 		} else if ((ori_depart == Qet::South && (ori_arrivee == Qet::North || ori_arrivee == Qet::East)) || (ori_depart == Qet::West && ori_arrivee == Qet::East)) {
-			// cas "4"
-			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
-			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
-			points << QPointF(depart.x(), ligne_inter_y);
-			points << QPointF(arrivee.x(), ligne_inter_y);
+			// cas "4": bridge is horizontal, at a shared y between
+			// depart.x() and arrivee.x() -- unnecessary exactly when depart
+			// and arrivee already share a y. (Always true in this branch,
+			// since "descendant" requires depart.y() < arrivee.y() strictly
+			// -- kept for symmetry with the "montant" branch below.)
+			if (qRound(depart.y()) != qRound(arrivee.y())) {
+				int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
+				while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
+				points << QPointF(depart.x(), ligne_inter_y);
+				points << QPointF(arrivee.x(), ligne_inter_y);
+			}
 		} else if ((ori_depart == Qet::North || ori_depart == Qet::East) && (ori_arrivee == Qet::North || ori_arrivee == Qet::East)) {
 			points << QPointF(arrivee.x(), depart.y()); // cas "2"
 		} else {
@@ -429,17 +457,28 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 	} else {
 		// trajet montant
 		if ((ori_depart == Qet::West && (ori_arrivee == Qet::East || ori_arrivee == Qet::South)) || (ori_depart == Qet::North && ori_arrivee == Qet::South)) {
-			// cas "3"
-			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
-			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
-			points << QPointF(depart.x(), ligne_inter_y);
-			points << QPointF(arrivee.x(), ligne_inter_y);
+			// cas "3": bridge is horizontal, at a shared y between
+			// depart.x() and arrivee.x() -- unnecessary exactly when depart
+			// and arrivee already share a y (the West->East case
+			// diagnosed for #734: two stubs extended onto the same y run
+			// straight into each other, no bridge needed). Compared
+			// qRound()ed, same as the other three guards.
+			if (qRound(depart.y()) != qRound(arrivee.y())) {
+				int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
+				while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
+				points << QPointF(depart.x(), ligne_inter_y);
+				points << QPointF(arrivee.x(), ligne_inter_y);
+			}
 		} else if ((ori_depart == Qet::East && (ori_arrivee == Qet::West || ori_arrivee == Qet::North)) || (ori_depart == Qet::South && ori_arrivee == Qet::North)) {
-			// cas "4"
-			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
-			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
-			points << QPointF(ligne_inter_x, depart.y());
-			points << QPointF(ligne_inter_x, arrivee.y());
+			// cas "4": bridge is vertical, at a shared x between depart.y()
+			// and arrivee.y() -- unnecessary exactly when depart and
+			// arrivee already share an x.
+			if (qRound(depart.x()) != qRound(arrivee.x())) {
+				int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
+				while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
+				points << QPointF(ligne_inter_x, depart.y());
+				points << QPointF(ligne_inter_x, arrivee.y());
+			}
 		} else if ((ori_depart == Qet::West || ori_depart == Qet::North) && (ori_arrivee == Qet::West || ori_arrivee == Qet::North)) {
 			points << QPointF(depart.x(), arrivee.y()); // cas "2"
 		} else {
