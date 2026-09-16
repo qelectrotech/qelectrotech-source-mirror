@@ -41,15 +41,9 @@ class TitleBlockTemplateRenderer : public QObject
 		int height() const;
 		void render(QPainter *, int);
 		void renderDxf(QRectF &, int, QString &, int);
-		void invalidateRenderedTemplate();
-	
-	private:
-		void renderToQPicture(int);
 	
 	private:
 		const TitleBlockTemplate *m_titleblock_template;
-		QPicture m_rendered_template;
 		DiagramContext m_context;
-		int m_last_known_titleblock_width;
 };
 #endif

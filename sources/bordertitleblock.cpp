@@ -404,12 +404,10 @@ QString BorderTitleBlock::titleBlockTemplateName() const
 	@brief BorderTitleBlock::titleBlockTemplateChanged
 	This slot may be used to inform this class that the given title block
 	template has changed.
-	The title block-dedicated rendering cache will thus be flushed.
 	@param template_name : Name of the title block template that has changed
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
-	m_titleblock_template_renderer -> invalidateRenderedTemplate();
 }
 
 /**
