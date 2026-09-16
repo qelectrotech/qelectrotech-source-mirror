@@ -23,37 +23,73 @@
 #include <QStringList>
 
 class QETProject;
+class DiagramView;
+class Element;
 
 /**
 	@brief The QetScriptApi class
-	The object a script sees as `qet` (bugtracker #162): a small,
-	deliberately read-mostly surface over an open project, for scripted
-	batch/CI work and human-written macros.
+	The object a script sees as `qet` (bugtracker #162): batch/CI work and
+	human-written macros against an open project.
 
-	@b Scope, on purpose: this reads the model (folio count, titles, element
-	and conductor counts -- the same data the `--info` CLI export already
-	reports) and can trigger the same export/save operations the `--export-*`
-	CLI flags already do. It does not create or edit diagram geometry, does
-	not touch the undo stack, and does not drive the GUI. Those are all
-	explicitly out of scope for this first version; see the discussion on
-	bugtracker #162.
+	@b Scope. Three groups of capability, each added at a different point in
+	the discussion and each drawing its own line:
 
-	Export/save methods are thin wrappers around CLIExport::run() -- the
-	exact same, already-tested code path the `--export-*` flags use -- built
-	from the project's own file path, not the live in-memory instance. That
-	keeps this file free of any dependency on cli_export.cpp's internals,
-	at the cost of re-opening the project from disk for each call: fine for
-	the batch/CI use case this targets, and for the headless `--run` entry
-	point it's exactly what a second `--export-*` invocation would have
-	done anyway. A macro acting on unsaved GUI edits should call save()
-	first.
+	- @b Reading the model and @b exporting: folio/element/conductor counts,
+	  and the same export operations the `--export-*` CLI flags provide.
+	  Every export method is a thin wrapper around CLIExport::run() -- the
+	  same, already-tested code path those flags use -- built from the
+	  project's own file path rather than the live instance. That keeps this
+	  file free of any dependency on cli_export.cpp's internals, at the cost
+	  of re-opening the project from disk per call, which means @b none of
+	  them ever see edits this script made with the methods below: only
+	  save() writes the live instance. A script that edits then exports
+	  @b must call save() first, or the export reflects the file as it was
+	  before the script ran. Verified the hard way: an early version of this
+	  file had save() go through the same reopen-from-disk path as the
+	  exports, so it silently wrote back the unmodified original -- an
+	  addElement() call counted correctly in memory and then vanished from
+	  the saved file.
+	- @b Editing geometry, through the same undo commands the GUI itself
+	  uses (AddGraphicsObjectCommand for placement, QPropertyUndoCommand on
+	  the standard `pos` property for moves, DeleteQGraphicsItemCommand for
+	  removal) -- Ctrl+Z undoes a script's edits exactly as it would the
+	  equivalent manual ones, because they are, mechanically, the same
+	  commands on the same stack. One consequence worth knowing, not a bug:
+	  QPropertyUndoCommand merges consecutive commands on the same
+	  object+property when their text() also matches
+	  (QPropertyUndoCommand::mergeWith(), pre-existing), and
+	  setElementPosition()/moveElement() always use the same text for a
+	  given element -- so several position changes to the same element in a
+	  row collapse into one undo step, the same way dragging an element
+	  does, not one step per call. Verified against exactly that: two
+	  consecutive calls on one element, then undo/undo/redo/redo, land
+	  where a merge predicts, not where two independent steps would.
+	- @b Navigating and @b messaging: select an element, zoom the active
+	  view, and show the user a message. Deliberately narrow: selection and
+	  messaging work with no view at all (headless `--run`); zoom is a no-op
+	  returning false without one, since there is nothing to zoom.
+
+	Explicitly @b not in scope: driving arbitrary GUI actions or dialogs. A
+	script that could invoke any QAction by name could just as easily
+	trigger one that opens a modal QDialog::exec() with nobody there to
+	dismiss it -- exactly the hang class investigated for bugtracker #882.
+	Every method here is either non-blocking by construction or, for
+	messages, safe under QET::QetMessageBox's existing non-interactive mode
+	(already active for headless runs). Nothing here opens a dialog the
+	caller has to wait on.
 */
 class QetScriptApi : public QObject
 {
 	Q_OBJECT
 
 	public:
-		explicit QetScriptApi(QETProject *project, QObject *parent = nullptr);
+		/**
+			@param project the project this API acts on
+			@param view the active DiagramView, when run interactively via
+			"Run Script..."; nullptr for the headless --run entry point.
+			Only the zoom methods use it -- everything else works either way.
+		*/
+		explicit QetScriptApi(QETProject *project, DiagramView *view = nullptr, QObject *parent = nullptr);
 
 		// -- read the model --
 		Q_INVOKABLE QString projectTitle() const;
@@ -77,13 +113,33 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setTitleBlock(const QString &output, const QStringList &assignments);
 		Q_INVOKABLE bool save(const QString &output);
 
+		// -- edit geometry, through the real undo commands --
+		Q_INVOKABLE QString addElement(int folioIndex, const QString &locationPath, double x, double y);
+		Q_INVOKABLE bool setElementPosition(int folioIndex, const QString &elementUuid, double x, double y);
+		Q_INVOKABLE bool moveElement(int folioIndex, const QString &elementUuid, double dx, double dy);
+		Q_INVOKABLE bool deleteElement(int folioIndex, const QString &elementUuid);
+		Q_INVOKABLE bool undo();
+		Q_INVOKABLE bool redo();
+		Q_INVOKABLE bool canUndo() const;
+		Q_INVOKABLE bool canRedo() const;
+
+		// -- navigate and message --
+		Q_INVOKABLE bool selectElement(const QString &elementUuid);
+		Q_INVOKABLE void deselectAll(int folioIndex);
+		Q_INVOKABLE bool zoomFit();
+		Q_INVOKABLE bool zoomToContent();
+		Q_INVOKABLE bool zoomReset();
+		Q_INVOKABLE void showMessage(const QString &text);
+
 		// -- logging: a script has no console of its own --
 		Q_INVOKABLE void log(const QString &message);
 
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
+		Element *findElement(int folioIndex, const QString &elementUuid) const;
 
 		QETProject *m_project;
+		DiagramView *m_view;
 };
 
 #endif // QET_SCRIPT_API_H

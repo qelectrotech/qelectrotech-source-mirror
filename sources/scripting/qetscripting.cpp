@@ -67,10 +67,10 @@ int run(const QStringList &args)
 		return 1;
 	}
 
-	return runOnProject(script_path, &project) ? 0 : 1;
+	return runOnProject(script_path, &project, nullptr) ? 0 : 1;
 }
 
-bool runOnProject(const QString &scriptPath, QETProject *project)
+bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view)
 {
 	QFile file(scriptPath);
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -81,7 +81,7 @@ bool runOnProject(const QString &scriptPath, QETProject *project)
 	file.close();
 
 	QJSEngine engine;
-	auto *api = new QetScriptApi(project, &engine);
+	auto *api = new QetScriptApi(project, view, &engine);
 	QJSValue qet_value = engine.newQObject(api);
 	// newQObject() takes ownership by default (QJSEngine::JavaScriptOwnership),
 	// which would delete api as soon as the engine's GC decides to -- api's
@@ -114,7 +114,7 @@ int run(const QStringList &)
 	return 1;
 }
 
-bool runOnProject(const QString &, QETProject *)
+bool runOnProject(const QString &, QETProject *, DiagramView *)
 {
 	err << "This build of QElectroTech was compiled without the Qt Qml "
 		   "module, so JavaScript scripting is not available.\n";

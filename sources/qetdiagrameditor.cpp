@@ -3011,6 +3011,6 @@ void QETDiagramEditor::slot_runScript() {
 	);
 	if (script_path.isEmpty()) return;
 
-	QetScripting::runOnProject(script_path, project);
+	QetScripting::runOnProject(script_path, project, currentDiagramView());
 }
 #endif

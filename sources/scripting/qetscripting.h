@@ -21,15 +21,16 @@
 #include <QStringList>
 
 class QETProject;
+class DiagramView;
 
 /**
 	@brief JavaScript scripting entry points (bugtracker #162).
 
-	A script sees a single global, `qet` (see QetScriptApi), exposing a
-	deliberately small, mostly read-only surface: folio/element/conductor
-	counts and the same export operations the `--export-*` CLI flags
-	provide. See QetScriptApi's class comment for what is and is not in
-	scope for this first version.
+	A script sees a single global, `qet` (see QetScriptApi): reading the
+	model, exporting, editing geometry through the real undo commands, and
+	a narrow set of navigation/messaging calls. See QetScriptApi's class
+	comment for the exact scope and why each group of capability stops
+	where it does.
 */
 namespace QetScripting {
 
@@ -52,9 +53,12 @@ namespace QetScripting {
 		@brief Run @p scriptPath against an already-open @p project (the
 		"Run Script..." GUI macro path). Errors go to stderr; there is no
 		modal reporting in this first version.
+		@param view the active DiagramView, so the script's zoom methods
+		have something to act on; nullptr from the headless entry point,
+		where they become no-ops (see QetScriptApi).
 		@return true if the script ran without throwing.
 	*/
-	bool runOnProject(const QString &scriptPath, QETProject *project);
+	bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view = nullptr);
 
 }
 
