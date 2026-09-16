@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
+#include "lastusedstyle.h"
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
@@ -143,6 +144,10 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
 				undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 				m_diagram->undoStack().push(undo);
+
+					// remember it for the next conductor drawn this session,
+					// the way LastUsedStyle already does for shapes (#879)
+				LastUsedStyle::setConductorColor(new_color);
 			}
 		}
 	});

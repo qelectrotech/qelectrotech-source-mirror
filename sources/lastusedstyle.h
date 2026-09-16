@@ -19,20 +19,23 @@
 #define LAST_USED_STYLE_H
 
 #include <QBrush>
+#include <QColor>
 #include <QFont>
 #include <QPen>
 
 /**
 	@brief The LastUsedStyle class
-	Session-scoped "last used" style for new shapes and free text created
-	on the diagram canvas: whatever pen/brush/font was last applied through
-	the properties editors becomes the starting point for the next new
-	item of that type, the way most drawing tools behave.
+	Session-scoped "last used" style for new shapes, free text and
+	conductors created on the diagram canvas: whatever pen/brush/font/color
+	was last applied through the properties editors becomes the starting
+	point for the next new item of that type, the way most drawing tools
+	behave.
 
 	Deliberately in-memory only, not QSettings-backed: this is a live
 	"what did I just use" value for the current editing session, not an
 	app-wide default (that's already covered by the Preferences dialog's
-	font setting, read as the fallback when nothing has been set yet).
+	font setting, read as the fallback when nothing has been set yet, and
+	by the project's default conductor color, read the same way).
 */
 class LastUsedStyle
 {
@@ -49,6 +52,10 @@ class LastUsedStyle
 		static QFont textFont();
 		static void setTextFont(const QFont &font);
 
+		static bool hasConductorColor();
+		static QColor conductorColor();
+		static void setConductorColor(const QColor &color);
+
 	private:
 		LastUsedStyle() = delete;
 
@@ -58,6 +65,8 @@ class LastUsedStyle
 		static bool m_has_shape_brush;
 		static QFont m_text_font;
 		static bool m_has_text_font;
+		static QColor m_conductor_color;
+		static bool m_has_conductor_color;
 };
 
 #endif // LAST_USED_STYLE_H
