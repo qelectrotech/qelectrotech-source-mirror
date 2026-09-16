@@ -256,6 +256,38 @@ void QETProject::init()
 }
 
 /**
+	@brief QETProject::derivedUuid
+	Name-based (version 5) uuid for a project file that has no uuid yet,
+	because it was written before the uuid was persisted.
+
+	A random uuid would do as an identity, but it would make saving an
+	unmodified legacy project non-reproducible : every load would invent a
+	different one and write it out (see #754). The uuid is therefore derived
+	from the content of the file, so the same file always yields the same
+	uuid, while two different projects practically never share one.
+	Carriage returns are dropped first, so that a checkout with CRLF line
+	endings (Windows, git autocrlf) gives the same uuid as one with LF.
+
+	It is computed once, when the file is loaded, and saved from then on :
+	editing, renaming or moving the project later does not change it.
+	@param content : the raw content of the project file
+	@return the derived uuid
+*/
+QUuid QETProject::derivedUuid(const QByteArray &content)
+{
+		//Fixed namespace for QElectroTech project uuids, never change it :
+		//doing so would change the uuid given to every legacy project.
+	static const QUuid project_namespace(
+				QStringLiteral("{c8c75719-0fea-4b1c-9f4b-2dd179fb2f0c}"));
+
+	QByteArray normalized(content);
+	normalized.replace('\r', QByteArray());
+	return QUuid::createUuidV5(project_namespace,
+							   QByteArrayLiteral("qet-project-legacy\n")
+							   + normalized);
+}
+
+/**
 	@brief QETProject::openFile
 	@param file
 	@return
@@ -274,9 +306,11 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	QFileInfo fi(*file);
 	setFilePath(fi.absoluteFilePath());
 
-		//Extract the content of the xml
+		//Extract the content of the xml. The raw bytes are kept : a project
+		//file without a persisted uuid derives its uuid from them.
+	const QByteArray content = file->readAll();
 	QDomDocument xml_project;
-	if (!xml_project.setContent(file))
+	if (!xml_project.setContent(content))
 	{
 		if(opened_here) {
 			file->close();
@@ -284,6 +318,17 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		return XmlParsingFailed;
 	}
 	const qint64 xml_parse_ms = load_timer.elapsed();
+
+		//Restore the persisted project uuid before anything else is built
+		//from the file. The project database already got its connection name
+		//from the uuid created at construction, it does not depend on this.
+	const QDomElement root_elmt = xml_project.documentElement();
+	if (root_elmt.tagName() == QLatin1String("project"))
+	{
+		const QUuid persisted_uuid(root_elmt.attribute(QStringLiteral("uuid")));
+		m_uuid = persisted_uuid.isNull() ? derivedUuid(content)
+										 : persisted_uuid;
+	}
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
@@ -1038,6 +1083,11 @@ QDomDocument QETProject::toXml()
 		setTitle(QFileInfo(m_file_path).completeBaseName());
 	}
 	project_root.setAttribute("title", project_title_);
+		//Persist the project identity, so that the project keeps the same
+		//uuid across save/load. Without it every load invents a new one, and
+		//nothing outside the running instance (version control, a cloud or
+		//key-value store, a lock...) can tell which project a file belongs to.
+	project_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	xml_doc.appendChild(project_root);
 
 	// titleblock templates, if any

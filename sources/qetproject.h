@@ -271,6 +271,7 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
+		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();
 
 	// attributes
