@@ -29,6 +29,7 @@
 #include "diagramevent/diagrameventaddshape.h"
 #include "diagramevent/diagrameventaddpath.h"
 #include "diagramevent/diagrameventaddtext.h"
+#include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
 #include "factory/qetgraphicstablefactory.h"
@@ -349,8 +350,21 @@ void QETDiagramEditor::setUpActions()
 			currentDiagramView()->copy();
 	});
 	connect(m_paste, &QAction::triggered, [this]() {
-		if(currentDiagramView())
-			currentDiagramView()->paste();
+		auto *dv = currentDiagramView();
+		if (!dv || !dv->diagram()) return;
+
+			//Paste as a placement rather than dropping the items straight
+			//down. Pasting in place put the copy exactly on top of the
+			//original, where it was easy to miss entirely; now it appears
+			//under the cursor and follows it until a click, Return, or Escape
+			//to cancel -- the same interaction as placing a new element.
+		const QPoint view_pos = dv->viewport()->mapFromGlobal(QCursor::pos());
+		const QPointF start_pos = dv->viewport()->rect().contains(view_pos)
+				? dv->mapToScene(view_pos)
+				: dv->mapToScene(dv->viewport()->rect().center());
+
+		dv->diagram()->setEventInterface(
+					new DiagramEventAddPaste(dv->diagram(), start_pos));
 	});
 
 		//Reset conductor path
@@ -688,18 +702,28 @@ void QETDiagramEditor::setUpActions()
 	QAction *select_all     = m_select_actions_group.addAction( QET::Icons::EditSelectAll,      tr("Tout sélectionner") );
 	QAction *select_nothing = m_select_actions_group.addAction( QET::Icons::EditSelectNone,     tr("Désélectionner tout") );
 	QAction *select_invert  = m_select_actions_group.addAction( QET::Icons::EditSelectInvert,   tr("Inverser la sélection") );
+	QAction *select_all_conductors  = m_select_actions_group.addAction( QET::Icons::Conductor,      tr("Sélectionner tous les conducteurs") );
+	QAction *select_all_text_fields = m_select_actions_group.addAction( QET::Icons::PartTextField,  tr("Sélectionner tous les champs de texte") );
 
 	ShortcutManager::instance().registerAction(select_all, "diagrameditor.select_all", tr("Éditeur de schémas"), QKeySequence::SelectAll);
 	ShortcutManager::instance().registerAction(select_nothing, "diagrameditor.select_nothing", tr("Éditeur de schémas"), QKeySequence::Deselect);
 	ShortcutManager::instance().registerAction(select_invert, "diagrameditor.select_invert", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_I);
+		//No default sequence for these two: they are menu actions, and the
+		//point of registering them is so a user can bind one if they want.
+	ShortcutManager::instance().registerAction(select_all_conductors, "diagrameditor.select_all_conductors", tr("Éditeur de schémas"), QKeySequence());
+	ShortcutManager::instance().registerAction(select_all_text_fields, "diagrameditor.select_all_text_fields", tr("Éditeur de schémas"), QKeySequence());
 
 	select_all    ->setStatusTip( tr("Sélectionne tous les éléments du folio", "status bar tip") );
 	select_nothing->setStatusTip( tr("Désélectionne tous les éléments du folio", "status bar tip") );
 	select_invert ->setStatusTip( tr("Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés", "status bar tip") );
+	select_all_conductors ->setStatusTip( tr("Sélectionne tous les conducteurs du folio, désélectionne le reste", "status bar tip") );
+	select_all_text_fields->setStatusTip( tr("Sélectionne tous les champs de texte du folio, désélectionne le reste", "status bar tip") );
 
 	select_all    ->setData("select_all");
 	select_nothing->setData("deselect");
 	select_invert ->setData("invert_selection");
+	select_all_conductors ->setData("select_all_conductors");
+	select_all_text_fields->setData("select_all_text_fields");
 
 	connect(&m_select_actions_group, &QActionGroup::triggered, this, &QETDiagramEditor::selectGroupTriggered);
 
@@ -935,6 +959,15 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
 	menu_edition -> addSeparator();
+		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
+		//which left them unreachable for anyone working without a mouse: a
+		//toolbar button has no key, so text fields, images and every drawing
+		//shape simply could not be added. m_depth_action_group below has
+		//always been in both places; this brings these into line with it.
+	QMenu *menu_add_item = menu_edition -> addMenu(tr("A&jouter"));
+	menu_add_item -> setIcon(QET::Icons::Add);
+	menu_add_item -> addActions(m_add_item_actions_group.actions());
+	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_select_actions_group.actions());
 	menu_edition -> addSeparator();
 	menu_edition -> addActions(m_selection_actions_group.actions());
@@ -952,6 +985,9 @@ void QETDiagramEditor::setUpMenu()
 	// menu Projet
 	menu_project -> addAction(m_project_edit_properties);
 	menu_project -> addAction(m_auto_conductor);
+		//Sits beside m_auto_conductor, the setting it pairs with. It was
+		//toolbar-only and so had no keyboard route at all.
+	menu_project -> addAction(m_auto_break_conductor);
 	menu_project -> addSeparator();
 	menu_project -> addAction(m_project_add_diagram);
 	menu_project -> addAction(m_remove_diagram_from_project);
@@ -1584,6 +1620,10 @@ void QETDiagramEditor::selectGroupTriggered(QAction *action)
 		diagram->deselectAll();
 	else if (value == "invert_selection")
 		diagram->invertSelection();
+	else if (value == "select_all_conductors")
+		diagram->selectAllConductors();
+	else if (value == "select_all_text_fields")
+		diagram->selectAllTextFields();
 }
 
 /**

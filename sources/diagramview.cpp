@@ -703,6 +703,27 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 }
 
 /**
+	@brief DiagramView::focusNextPrevChild
+	By default, QWidget intercepts Tab/Shift+Tab to move keyboard focus to
+	the next/previous widget before a key press event is ever generated,
+	which would silently swallow the diagram's Tab-based item-selection
+	cycling (see Diagram::event()). Returning false here disables that
+	automatic focus-chain traversal for this view, so Tab/Shift+Tab reach
+	keyPressEvent() (and from there, the scene) as ordinary key presses
+	instead.
+	@return always false
+*/
+bool DiagramView::focusNextPrevChild(bool next)
+{
+		//Escape asked for focus to leave; allow exactly this one traversal.
+	if (m_releasing_focus) {
+		m_releasing_focus = false;
+		return QGraphicsView::focusNextPrevChild(next);
+	}
+	return false;
+}
+
+/**
 	@brief DiagramView::keyPressEvent
 	Handles "key press" events. Reimplemented here to switch to visualisation
 	mode if needed.
@@ -717,6 +738,19 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
 	{
+		case Qt::Key_Escape:
+				//Tab cycles the folio's items rather than moving focus (see
+				//focusNextPrevChild above), so without this there would be no
+				//way off the canvas for someone working without a mouse.
+				//Escape steps back out: first it drops the selection, then it
+				//hands focus to the next widget.
+			if (m_diagram && !m_diagram->selectedItems().isEmpty()) {
+				m_diagram->clearSelection();
+			} else {
+				m_releasing_focus = true;
+				focusNextChild();
+			}
+			return;
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
 			return;
@@ -1218,30 +1252,70 @@ QList<QAction *> DiagramView::contextMenuActions() const
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
-	QGraphicsView::contextMenuEvent(e);
-	if(e->isAccepted())
-	return;
+	QPoint menu_pos = e->pos();
+	QPoint menu_global_pos = e->globalPos();
 
+		//A context menu raised from the keyboard (the Menu key, or
+		//Shift+F10) carries no useful position: Qt does not aim it at the
+		//selection. Two things then went wrong. QGraphicsView handed the
+		//event to whichever item held focus, which answered with its own
+		//generic Undo/Cut/Copy menu and accepted it, so the folio's real
+		//menu was never built; and had it got past that, itemAt() below
+		//would have looked up an unrelated point.
+		//
+		//So a keyboard-raised menu is built here directly rather than being
+		//offered to the items first, and aimed at the selection when there
+		//is one. The keyboard then gets the folio's menu, which is what a
+		//right-click gets.
+	const bool from_keyboard = e->reason() == QContextMenuEvent::Keyboard;
 
-	if (auto qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
+	if (from_keyboard)
 	{
-		if (!qgi->isSelected()) {
-			m_diagram->clearSelection();
+			//Aim at the selection when there is one, so the menu appears
+			//beside what it acts on. With nothing selected there is nothing
+			//to aim at, so use the middle of the view -- the folio's own
+			//menu is still the right menu to show.
+		const auto selection = m_diagram->selectedItems();
+		if (!selection.isEmpty())
+		{
+			QRectF selection_rect;
+			for (auto *item : selection) {
+				selection_rect |= item->sceneBoundingRect();
+			}
+			menu_pos = mapFromScene(selection_rect.center());
 		}
+		else
+		{
+			menu_pos = viewport()->rect().center();
+		}
+		menu_global_pos = viewport()->mapToGlobal(menu_pos);
+	}
+	else
+	{
+		QGraphicsView::contextMenuEvent(e);
+		if(e->isAccepted())
+		return;
 
-			// At this step qgi can be deleted for example if qgi is a QetGraphicsHandlerItem.
-			// When we call clearSelection the parent item of the handler
-			// is deselected and so delete all handlers, in this case,
-			// qgi become a dangling pointer.
-			// we need to call again itemAt.
-		if (auto item_ = m_diagram->itemAt(mapToScene(e->pos()), transform())) {
-			item_->setSelected(true);
+		if (auto qgi = m_diagram->itemAt(mapToScene(menu_pos), transform()))
+		{
+			if (!qgi->isSelected()) {
+				m_diagram->clearSelection();
+			}
+
+				// At this step qgi can be deleted for example if qgi is a QetGraphicsHandlerItem.
+				// When we call clearSelection the parent item of the handler
+				// is deselected and so delete all handlers, in this case,
+				// qgi become a dangling pointer.
+				// we need to call again itemAt.
+			if (auto item_ = m_diagram->itemAt(mapToScene(menu_pos), transform())) {
+				item_->setSelected(true);
+			}
 		}
 	}
 
 	if (m_diagram->selectedItems().isEmpty())
 	{
-		m_paste_here_pos = e->pos();
+		m_paste_here_pos = menu_pos;
 		m_paste_here->setEnabled(Diagram::clipboardMayContainDiagram());
 	}
 
@@ -1250,7 +1324,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	{
 		QMenu *context_menu = new QMenu(this);
 		context_menu->addActions(list);
-		context_menu->popup(e->globalPos());
+		context_menu->popup(menu_global_pos);
 		e->accept();
 	}
 }

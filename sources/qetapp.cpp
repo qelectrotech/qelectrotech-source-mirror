@@ -1659,7 +1659,31 @@ void QETApp::receiveMessage(int instanceId, QByteArray message)
 	{
 		QString my_message(str.mid(20));
 		QStringList args_list = QET::splitWithSpaces(my_message);
-		openFiles(QETArguments(args_list));
+
+		// Deferred, not called directly.
+		//
+		// This slot runs inside SingleApplication's readyRead handling:
+		// SingleApplicationPrivate::slotDataAvailable() emits
+		// receivedMessage() synchronously from the socket's readyRead
+		// lambda. openFiles() then loads a project -- seconds of work on
+		// a large one -- and openAndAddProject() puts up a modal
+		// BackupDialog, whose exec() runs a nested event loop while the
+		// socket handler is still on the stack.
+		//
+		// During that nested loop the secondary instance exits, the
+		// connection closes and the QLocalSocket is deleted. When the
+		// dialog is dismissed and the stack unwinds, QMetaObject::
+		// activate() continues emitting on the freed sender and the
+		// process dies. Reported with a backtrace on PR #861;
+		// reproduced on Qt 6.10.2 by dismissing the dialog, which is the
+		// step that makes it fail -- leaving it open never unwinds.
+		//
+		// A zero-timer returns to the event loop first, so the socket
+		// stack is fully unwound before any of this runs.
+		const QETArguments deferred_args{args_list};
+		QTimer::singleShot(0, this, [this, deferred_args]() {
+			openFiles(deferred_args);
+		});
 	}
 }
 

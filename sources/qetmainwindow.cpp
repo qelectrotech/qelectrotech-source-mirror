@@ -19,6 +19,7 @@
 #include <QWhatsThis>
 #include <QMenu>
 #include <QMenuBar>
+#include <QShortcut>
 #include <QDragEnterEvent>
 #include <QDesktopServices>
 
@@ -41,6 +42,14 @@ QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 	initCommonMenus();
 
 	setAcceptDrops(true);
+		//A shortcut rather than a key handler: a key press goes to the
+		//focused child widget, so a keyPressEvent() here would never see F10
+		//while the canvas or a panel holds focus.
+	QShortcut *menu_bar_shortcut = new QShortcut(QKeySequence(Qt::Key_F10), this);
+	menu_bar_shortcut -> setContext(Qt::WindowShortcut);
+	connect(menu_bar_shortcut, &QShortcut::activated,
+		this, &QETMainWindow::activateMenuBar);
+
 }
 
 /**
@@ -251,6 +260,35 @@ void QETMainWindow::checkToolbarsmenu()
 /**
 	Handle the \a e event.
 */
+/**
+	@brief QETMainWindow::activateMenuBar
+	Open the first usable menu, as pressing Alt and a menu's letter would.
+
+	F10 is what most applications use for this, and QMenuBar does not handle
+	it: given the key directly it leaves it unaccepted, and sent to the window
+	it never reaches the menu bar at all, because a key press goes to the
+	focused child widget. So the press fell through to whichever widget had
+	focus and looked like nothing happening.
+
+	This is convenience, not access. Qt already provides two keyboard routes
+	into the menus and both work: a bare Alt tap focuses the bar, and Alt with
+	a menu's letter opens it. This adds the key people reach for out of habit.
+
+	A shortcut rather than a keyPressEvent() override, for the reason above --
+	the window never sees the key while a child holds focus.
+*/
+void QETMainWindow::activateMenuBar() {
+	QMenuBar *bar = menuBar();
+	if (!bar) return;
+
+	for (QAction *action : bar -> actions()) {
+		if (action -> isVisible() && action -> isEnabled() && action -> menu()) {
+			bar -> setActiveAction(action);
+			return;
+		}
+	}
+}
+
 bool QETMainWindow::event(QEvent *e) {
 	if (e -> type() == QEvent::WindowStateChange) {
 		updateFullScreenAction();

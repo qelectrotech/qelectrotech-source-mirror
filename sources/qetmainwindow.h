@@ -39,6 +39,7 @@ class QETMainWindow : public QMainWindow {
 	QAction *actionForMenu(QMenu *);
 	
 	protected:
+	void activateMenuBar();
 	bool event(QEvent *) override;
 	void dragEnterEvent(QDragEnterEvent *e) override;
 	void dropEvent(QDropEvent *e) override;

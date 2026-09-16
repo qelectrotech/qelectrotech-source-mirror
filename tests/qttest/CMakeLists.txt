@@ -100,3 +100,23 @@ add_executable(
 add_test(NAME tst_smart_device COMMAND tst_smart_device)
 target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)
+
+# qet.cpp carries the SingleApplication argument wire format
+# (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
+# so those are compiled alongside rather than linking the whole application.
+add_executable(
+  tst_qetstrings
+  tst_qetstrings.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
+target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+
+add_executable(
+  tst_menubarkeyboard
+  tst_menubarkeyboard.cpp)
+add_test(NAME tst_menubarkeyboard COMMAND tst_menubarkeyboard)
+target_include_directories(tst_menubarkeyboard PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_menubarkeyboard PRIVATE Qt::Test Qt::Widgets)
