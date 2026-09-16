@@ -555,7 +555,7 @@ void QETDiagramEditor::setUpActions()
 	m_reload_element_drawings = new QAction(QET::Icons::ViewRefresh, tr("Recharger les dessins des éléments"), this);
 	m_reload_element_drawings->setStatusTip(
 		tr("Redessine chaque élément placé d'après sa définition actuelle,"
-		   " sans avoir à fermer et rouvrir le projet"));
+		   " sans avoir à fermer et rouvrir le projet (action non annulable)"));
 	connect(m_reload_element_drawings, &QAction::triggered, this, &QETDiagramEditor::slot_reloadElementDrawings);
 
 	#ifdef QET_EXPORT_PROJECT_DB
@@ -2990,9 +2990,10 @@ void QETDiagramEditor::slot_terminalNumbering() {
 	is closed and reopened.
 
 	Purely visual and not undoable, the way pressing a "refresh" button
-	would be: it does not touch position, rotation, links, elementInformations,
-	labels or dynamic texts, and does not detect or handle a definition whose
-	terminals moved -- those still need the usual remove-and-reinsert.
+	would be: nothing is pushed on the undo stack and the project is not
+	marked as modified. Elements whose size, hotspot or terminals changed
+	are skipped and listed: they must be removed and re-inserted, which
+	deletes the conductors already connected to them.
 */
 void QETDiagramEditor::slot_reloadElementDrawings() {
 	QETProject *project = currentProject();
@@ -3015,12 +3016,62 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 		}
 	}
 
-	for (Element *elmt : elements) {
-		elmt->reloadPicture();
+	int reloaded = 0;
+	int unavailable = 0;
+	QStringList geometry_changed;
+	for (Element *elmt : elements)
+	{
+		switch (elmt->reloadPicture())
+		{
+			case Element::ReloadPictureResult::Reloaded:
+				++reloaded;
+				break;
+			case Element::ReloadPictureResult::Unavailable:
+				++unavailable;
+				break;
+			case Element::ReloadPictureResult::GeometryChanged:
+			{
+				const Diagram *diagram = elmt->diagram();
+				const QString folio = diagram
+						? tr("folio %1").arg(project->folioIndex(diagram) + 1)
+						: QString();
+				geometry_changed << QStringLiteral("%1 (%2)").arg(elmt->name(), folio);
+				break;
+			}
+		}
 	}
 
-	QET::QetMessageBox::information(
-		this,
-		tr("Recharger les dessins des éléments"),
-		tr("%n élément(s) redessiné(s).", "", elements.size()));
+	QString message = tr("%n élément(s) redessiné(s).", "", reloaded);
+
+	if (unavailable) {
+		message += QStringLiteral("\n\n")
+				% tr("%n élément(s) dont la définition est introuvable ou illisible :"
+					  " leur dessin actuel a été conservé.", "", unavailable);
+	}
+
+	if (geometry_changed.isEmpty())
+	{
+		QET::QetMessageBox::information(
+			this, tr("Recharger les dessins des éléments"), message);
+		return;
+	}
+
+	message += QStringLiteral("\n\n")
+			% tr("%n élément(s) non redessiné(s) : leur taille, leur point de saisie"
+				  " ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).",
+				  "", geometry_changed.size())
+			% QStringLiteral("\n\n")
+			% tr("Pour les mettre à jour, il faut les supprimer puis les réinsérer."
+				  " Attention : cette opération supprime les conducteurs déjà reliés"
+				  " à ces éléments, qu'il faudra retracer.");
+
+		//The full list goes in the expandable, scrollable details area
+		//so the dialog stays readable on large projects.
+	QMessageBox box(QMessageBox::Warning,
+					tr("Recharger les dessins des éléments"),
+					message,
+					QMessageBox::Ok,
+					this);
+	box.setDetailedText(geometry_changed.join(QLatin1Char('\n')));
+	box.exec();
 }
