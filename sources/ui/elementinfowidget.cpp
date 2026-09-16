@@ -395,6 +395,9 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	for (const auto &eipw : std::as_const(m_eipw_list))
 	{
+		if (!eipw->hasAcceptableInput())
+			continue;
+
 		//add value only if they're something to store
 		if (!eipw->text().isEmpty())
 		{
