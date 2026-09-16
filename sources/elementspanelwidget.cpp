@@ -658,20 +658,13 @@ void ElementsPanelWidget::duplicateDiagram()
 		BorderProperties bp = source_diagram->border_and_titleblock.exportBorder();
 		new_diagram->border_and_titleblock.importBorder(bp);
 
-		for (QGraphicsItem *item : source_diagram->items()) {
-			if (Element *elmt = dynamic_cast<Element *>(item)) {
-				source_diagram->correctTextPos(elmt);
-			}
-		}
-
-		QDomDocument doc = source_diagram->toXml();
+		// Serialize the whole diagram with is_copy_command=true.
+		// This is the same mechanism as Ctrl+C: toXml(true, true)
+		// internally calls correctTextPos/restoreText for Slave and
+		// Report elements only — producing correct text positions
+		// in the XML. No manual correctTextPos/restoreText needed.
+		QDomDocument doc = source_diagram->toXml(true, true);
 		QDomElement diagram_elmt = doc.documentElement();
-
-		for (QGraphicsItem *item : source_diagram->items()) {
-			if (Element *elmt = dynamic_cast<Element *>(item)) {
-				source_diagram->restoreText(elmt);
-			}
-		}
 
 		new_diagram->fromXml(diagram_elmt, QPointF(0, 0), false, nullptr);
 
@@ -683,7 +676,18 @@ void ElementsPanelWidget::duplicateDiagram()
 				// of the project database, so duplicates fail to insert and
 				// silently vanish from nomenclature/summary tables.
 				elmt->newUuid();
-				new_diagram->restoreText(elmt);
+
+				// toXml(true, true) applied correctTextPos to Slave and
+				// Report elements, which shifted their text positions to
+				// match the stripped composite text.  restoreText()
+				// recalculates the position for the actual resolved text.
+				// Only Slave and Report need this — other element types
+				// were not affected by correctTextPos.
+				if (elmt->linkType() == Element::Slave ||
+					elmt->linkType() & Element::AllReport)
+				{
+					new_diagram->restoreText(elmt);
+				}
 			}
 			else if (Conductor *cond = dynamic_cast<Conductor *>(item)) {
 				// Same reasoning for conductors: conductor.uuid is the PRIMARY

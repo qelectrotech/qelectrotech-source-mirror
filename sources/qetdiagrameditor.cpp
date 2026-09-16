@@ -25,6 +25,7 @@
 #include "autoNum/ui/autonumberingdockwidget.h"
 #include "conductornumexport.h"
 #include "diagramcommands.h"
+#include "diagramcontent.h"
 #include "diagramevent/diagrameventaddimage.h"
 #ifdef QET_HAS_QTPDF
 #include "diagramevent/diagrameventaddpdf.h"
@@ -35,6 +36,7 @@
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
+#include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
 #include "project/projectpropertieshandler.h"
@@ -552,6 +554,13 @@ void QETDiagramEditor::setUpActions()
 	m_terminal_numbering = new QAction(QET::Icons::TerminalStrip, tr("Numérotation automatique des bornes"), this);
 	connect(m_terminal_numbering, &QAction::triggered, this, &QETDiagramEditor::slot_terminalNumbering);
 
+	// Reload element drawings from their current definition (bugtracker #802)
+	m_reload_element_drawings = new QAction(QET::Icons::ViewRefresh, tr("Recharger les dessins des éléments"), this);
+	m_reload_element_drawings->setStatusTip(
+		tr("Redessine chaque élément placé d'après sa définition actuelle,"
+		   " sans avoir à fermer et rouvrir le projet (action non annulable)"));
+	connect(m_reload_element_drawings, &QAction::triggered, this, &QETDiagramEditor::slot_reloadElementDrawings);
+
 #ifdef QET_HAS_SCRIPTING
 	// Run a JavaScript macro against the current project (bugtracker #162).
 	m_run_script = new QAction(tr("Exécuter un script..."), this);
@@ -1014,6 +1023,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_project -> addAction(m_project_export_wiring_list);
 	menu_project -> addAction(m_project_wiring_list_view);
 	menu_project -> addAction(m_terminal_numbering);
+	menu_project -> addAction(m_reload_element_drawings);
 #ifdef QET_HAS_SCRIPTING
 	menu_project -> addAction(m_run_script);
 #endif
@@ -1871,6 +1881,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_project_export_wiring_list  -> setEnabled(opened_project);
 	m_project_wiring_list_view    -> setEnabled(opened_project);
 	m_terminal_numbering          -> setEnabled(editable_project);
+	m_reload_element_drawings     -> setEnabled(opened_project);
 #ifdef QET_HAS_SCRIPTING
 	m_run_script                  -> setEnabled(opened_project);
 #endif
@@ -2987,6 +2998,100 @@ void QETDiagramEditor::slot_terminalNumbering() {
 			undo_group.activeStack()->push(macro);
 		}
 	}
+}
+
+/**
+	@brief QETDiagramEditor::slot_reloadElementDrawings
+	Redraw every placed element of the current project from its current
+	definition (bugtracker #802): a symbol edited and saved after being
+	placed keeps showing its old drawing otherwise, until the whole project
+	is closed and reopened.
+
+	Purely visual and not undoable, the way pressing a "refresh" button
+	would be: nothing is pushed on the undo stack and the project is not
+	marked as modified. Elements whose size, hotspot or terminals changed
+	are skipped and listed: they must be removed and re-inserted, which
+	deletes the conductors already connected to them.
+*/
+void QETDiagramEditor::slot_reloadElementDrawings() {
+	QETProject *project = currentProject();
+	if (!project) return;
+
+	QList<Element *> elements;
+	QSet<QString> dropped_locations;
+	for (Diagram *diagram : project->diagrams())
+	{
+		DiagramContent content(diagram, false);
+		for (Element *elmt : content.m_elements)
+		{
+			elements << elmt;
+			const QString key = elmt->location().toString();
+			if (!dropped_locations.contains(key))
+			{
+				ElementPictureFactory::instance()->dropCache(elmt->location());
+				dropped_locations.insert(key);
+			}
+		}
+	}
+
+	int reloaded = 0;
+	int unavailable = 0;
+	QStringList geometry_changed;
+	for (Element *elmt : elements)
+	{
+		switch (elmt->reloadPicture())
+		{
+			case Element::ReloadPictureResult::Reloaded:
+				++reloaded;
+				break;
+			case Element::ReloadPictureResult::Unavailable:
+				++unavailable;
+				break;
+			case Element::ReloadPictureResult::GeometryChanged:
+			{
+				const Diagram *diagram = elmt->diagram();
+				const QString folio = diagram
+						? tr("folio %1").arg(project->folioIndex(diagram) + 1)
+						: QString();
+				geometry_changed << QStringLiteral("%1 (%2)").arg(elmt->name(), folio);
+				break;
+			}
+		}
+	}
+
+	QString message = tr("%n élément(s) redessiné(s).", "", reloaded);
+
+	if (unavailable) {
+		message += QStringLiteral("\n\n")
+				% tr("%n élément(s) dont la définition est introuvable ou illisible :"
+					  " leur dessin actuel a été conservé.", "", unavailable);
+	}
+
+	if (geometry_changed.isEmpty())
+	{
+		QET::QetMessageBox::information(
+			this, tr("Recharger les dessins des éléments"), message);
+		return;
+	}
+
+	message += QStringLiteral("\n\n")
+			% tr("%n élément(s) non redessiné(s) : leur taille, leur point de saisie"
+				  " ou leurs bornes ont changé (borne ajoutée, supprimée ou déplacée).",
+				  "", geometry_changed.size())
+			% QStringLiteral("\n\n")
+			% tr("Pour les mettre à jour, il faut les supprimer puis les réinsérer."
+				  " Attention : cette opération supprime les conducteurs déjà reliés"
+				  " à ces éléments, qu'il faudra retracer.");
+
+		//The full list goes in the expandable, scrollable details area
+		//so the dialog stays readable on large projects.
+	QMessageBox box(QMessageBox::Warning,
+					tr("Recharger les dessins des éléments"),
+					message,
+					QMessageBox::Ok,
+					this);
+	box.setDetailedText(geometry_changed.join(QLatin1Char('\n')));
+	box.exec();
 }
 
 #ifdef QET_HAS_SCRIPTING
