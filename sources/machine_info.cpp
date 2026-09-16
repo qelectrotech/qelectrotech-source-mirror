@@ -159,6 +159,8 @@ void MachineInfo::send_info_to_debug()
 	qInfo()<< "";
 	qInfo()<< " System language defined in QET configuration:"<< QString(QETApp::langFromSetting().toLatin1());
 	qInfo()<< " language Path:"<< QString(QETApp::languagesPath().toLatin1());
+	qInfo()<< " Loaded QET translation:"<< QETApp::loadedQetTranslationFile();
+	qInfo()<< " Loaded Qt translation:"<< QETApp::loadedQtTranslationFile();
 	qInfo()<< " Common Elements Dir:"<< QString(QETApp::commonElementsDir().toLatin1());
 	qInfo()<< " Common TitleBlock Templates Dir:"<< QString(QETApp::commonTitleBlockTemplatesDir().toLatin1());
 	qInfo()<< " Custom Elements Dir:"<< QString(QETApp::customElementsDir().toLatin1());

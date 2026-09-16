@@ -102,6 +102,8 @@ class QETApp : public QObject
 		static QString documentDir();
 		static QString pictureDir();
 		static QString languagesPath();
+		static QString loadedQetTranslationFile();
+		static QString loadedQtTranslationFile();
 		static QString realPath(const QString &);
 		static QString symbolicPath(const QString &);
 		static QStringList handledFileExtensions();

@@ -1020,6 +1020,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 		{
 			m_highlighted_element = elmt;
 			elmt.data()->setHighlighted(true);
+			elmt.data()->ensureVisible();
 		}
 	}
 	else if (m_text_hash.contains(current))
@@ -1029,6 +1030,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 		{
 			text.data()->setSelected(true);
 			m_last_selected = text;
+			text.data()->ensureVisible();
 		}
 	}
 	else if (m_conductor_hash.contains(current))
@@ -1038,6 +1040,7 @@ void SearchAndReplaceWidget::on_m_tree_widget_currentItemChanged(
 		{
 			cond.data()->setSelected(true);
 			m_last_selected = cond;
+			cond.data()->ensureVisible();
 		}
 	}
 

@@ -590,11 +590,11 @@ qreal PartLine::rotation() const {
 	return qRound(m_rot * 100.0) / 100.0;
 }
 
-void PartLine::flip() {
+void PartLine::flip(qreal axis_y) {
 	auto p1 = mapToScene(m_line.p1());
 	auto p2 = mapToScene(m_line.p2());
-	p1 = QPointF(p1.x(), (-1) * p1.y());
-	p2 = QPointF(p2.x(), (-1) * p2.y());
+	p1 = QPointF(p1.x(), 2 * axis_y - p1.y());
+	p2 = QPointF(p2.x(), 2 * axis_y - p2.y());
 	m_line.setP1(mapFromScene(p1));
 	m_line.setP2(mapFromScene(p2));
 	setLine(m_line);
@@ -603,11 +603,11 @@ void PartLine::flip() {
 	emit lineChanged();
 }
 
-void PartLine::mirror() {
+void PartLine::mirror(qreal axis_x) {
 	auto p1 = mapToScene(m_line.p1());
 	auto p2 = mapToScene(m_line.p2());
-	p1 = QPointF((-1) * p1.x(), p1.y());
-	p2 = QPointF((-1) * p2.x(), p2.y());
+	p1 = QPointF(2 * axis_x - p1.x(), p1.y());
+	p2 = QPointF(2 * axis_x - p2.x(), p2.y());
 	m_line.setP1(mapFromScene(p1));
 	m_line.setP2(mapFromScene(p2));
 	setLine(m_line);

@@ -50,7 +50,7 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
@@ -124,8 +124,8 @@ QETApp::QETApp() :
 	initSplashScreen();
 	initSystemTray();
 
-	connect(&signal_map, SIGNAL(mapped(QWidget *)),
-		this, SLOT(invertMainWindowVisibility(QWidget *)));
+	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
+
 	qApp->setQuitOnLastWindowClosed(false);
 	connect(qApp, &QApplication::lastWindowClosed,
 		this, &QETApp::checkRemainingWindows);
@@ -198,6 +198,26 @@ QETApp *QETApp::instance()
 }
 
 /**
+	@brief QETApp::loadedQetTranslationFile
+	@return path of the QET .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQetTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qetTranslator.filePath() : QString();
+}
+
+/**
+	@brief QETApp::loadedQtTranslationFile
+	@return path of the Qt .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQtTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qtTranslator.filePath() : QString();
+}
+
+/**
 	@brief QETApp::setLanguage
 	Change the language used by the application.
 	\~French Change le langage utilise par l'application.
@@ -234,14 +254,21 @@ void QETApp::setLanguage(const QString &desired_language) {
 	// desired_language may be a full locale such as "pt_BR": try that exact
 	// translation, then the base language ("pt"), then fall back to English.
 	// French is the application's source language and needs no translation.
+	// A .qm compiled from an untranslated .ts (0% done) loads "successfully"
+	// but is empty: treat it as missing, so the user falls back to English
+	// instead of silently getting the French source strings.
 	const QString base_language = desired_language.section('_', 0, 0);
-	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	auto loadQet = [this, &languages_path](const QString &name) {
+		return qetTranslator.load(name, languages_path)
+			&& !qetTranslator.isEmpty();
+	};
+	bool loaded = loadQet("qet_" + desired_language);
 	if (!loaded && base_language != desired_language)
-		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+		loaded = loadQet("qet_" + base_language);
 	if (!loaded && base_language != "fr") {
 		// use of the English version by default
 		// utilisation de la version anglaise par defaut
-		if(!qetTranslator.load("qet_en", languages_path))
+		if(!loadQet("qet_en"))
 			qWarning() << "failed to load"
 					   << "qet_en" << languages_path << "(" << __FILE__
 					   << __LINE__ << __FUNCTION__ << ")";
@@ -267,7 +294,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
@@ -1423,7 +1450,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
@@ -1632,7 +1659,31 @@ void QETApp::receiveMessage(int instanceId, QByteArray message)
 	{
 		QString my_message(str.mid(20));
 		QStringList args_list = QET::splitWithSpaces(my_message);
-		openFiles(QETArguments(args_list));
+
+		// Deferred, not called directly.
+		//
+		// This slot runs inside SingleApplication's readyRead handling:
+		// SingleApplicationPrivate::slotDataAvailable() emits
+		// receivedMessage() synchronously from the socket's readyRead
+		// lambda. openFiles() then loads a project -- seconds of work on
+		// a large one -- and openAndAddProject() puts up a modal
+		// BackupDialog, whose exec() runs a nested event loop while the
+		// socket handler is still on the stack.
+		//
+		// During that nested loop the secondary instance exits, the
+		// connection closes and the QLocalSocket is deleted. When the
+		// dialog is dismissed and the stack unwinds, QMetaObject::
+		// activate() continues emitting on the freed sender and the
+		// process dies. Reported with a backtrace on PR #861;
+		// reproduced on Qt 6.10.2 by dismissing the dialog, which is the
+		// step that makes it fail -- leaving it open never unwinds.
+		//
+		// A zero-timer returns to the event loop first, so the socket
+		// stack is fully unwound before any of this runs.
+		const QETArguments deferred_args{args_list};
+		QTimer::singleShot(0, this, [this, deferred_args]() {
+			openFiles(deferred_args);
+		});
 	}
 }
 
@@ -1793,7 +1844,7 @@ void QETApp::checkRemainingWindows()
 	*/
 	static bool sleep = true;
 	if (sleep) {
-		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
+		QTimer::singleShot(500, this, &QETApp::checkRemainingWindows);
 	} else {
 		if (!diagramEditors().count() && !elementEditors().count()) {
 			qApp->quit();
@@ -1975,6 +2026,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1986,6 +2038,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -2402,24 +2455,23 @@ void QETApp::initSystemTray()
 	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
 	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
 
-	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
-	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
-	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
-	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
-	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
-	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
-	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
-	connect(reduce_templates, SIGNAL(triggered()), this, SLOT(reduceTitleBlockTemplateEditors()));
-	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
-	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
-	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+	connect(quitter_qet, &QAction::triggered, this, &QETApp::quitQET);
+	connect(reduce_appli, &QAction::triggered, this, &QETApp::reduceEveryEditor);
+	connect(restore_appli, &QAction::triggered, this, &QETApp::restoreEveryEditor);
+	connect(reduce_diagrams, &QAction::triggered, this, &QETApp::reduceDiagramEditors);
+	connect(restore_diagrams, &QAction::triggered, this, &QETApp::restoreDiagramEditors);
+	connect(reduce_elements, &QAction::triggered, this, &QETApp::reduceElementEditors);
+	connect(restore_elements, &QAction::triggered, this, &QETApp::restoreElementEditors);
+	connect(reduce_templates, &QAction::triggered, this, &QETApp::reduceTitleBlockTemplateEditors);
+	connect(restore_templates, &QAction::triggered, this, &QETApp::restoreTitleBlockTemplateEditors);
+	connect(new_diagram, &QAction::triggered, this, &QETApp::newDiagramEditor);
+	connect(new_element, &QAction::triggered, this, &QETApp::newElementEditor);
 
 	// initialization of the systray icon
 	// initialisation de l'icone du systray
 	m_qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	m_qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
-	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-		this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	connect(m_qsti, &QSystemTrayIcon::activated, this, &QETApp::systray);
 	m_qsti -> setContextMenu(menu_systray);
 	m_qsti -> show();
 }
@@ -2439,7 +2491,7 @@ template <class T> void QETApp::addWindowsListToMenu(
 		QAction *current_menu = menu -> addAction(window -> windowTitle());
 		current_menu -> setCheckable(true);
 		current_menu -> setChecked(window -> isVisible());
-		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		connect(current_menu, &QAction::triggered, &signal_map, qOverload<>(&QSignalMapper::map));
 		signal_map.setMapping(current_menu, window);
 	}
 }

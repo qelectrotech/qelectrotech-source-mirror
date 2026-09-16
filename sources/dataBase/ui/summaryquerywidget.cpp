@@ -63,7 +63,6 @@ QString SummaryQueryWidget::queryStr() const
 	QStringList keys = selectedKeys();
 
 	QString select ="SELECT ";
-	QString order_by = " ORDER BY ";
 
 	QString column;
 	bool first = true;
@@ -72,13 +71,28 @@ QString SummaryQueryWidget::queryStr() const
 			first = false;
 		} else {
 			column += ", ";
-			order_by +=", ";
 		}
 		column += key;
-		order_by += key;
 	}
 
 	QString from = " FROM project_summary_view";
+
+		//Always ordered by the folio's own position, never by the columns
+		//the user happened to choose to display. This is a table of
+		//contents: it lists the folios of the project and its order is the
+		//project's order. Ordering by the displayed columns instead meant
+		//that choosing, say, Title as the first column silently sorted the
+		//summary alphabetically (bugtracker #238).
+		//
+		//project_summary_view exposes the position as "pos", from
+		//diagram.pos, which is an INTEGER -- so this sorts numerically and
+		//folio 10 does not land between folio 1 and folio 2. One row per
+		//folio means pos fully determines the order and no secondary key is
+		//needed.
+		//
+		//A user who wants a different order can still write the query by
+		//hand; that path returns above, untouched.
+	QString order_by = " ORDER BY pos";
 
 	QString q(select + column + from + order_by);
 	return q;
@@ -95,6 +109,7 @@ void SummaryQueryWidget::setQuery(const QString &query)
 	if (query.startsWith("SELECT"))
 	{
 		reset();
+		ui->m_edit_sql_query_cb->setChecked(false);
 		ui->m_user_query_le->setText(query);
 
 		QString select = query;
@@ -115,6 +130,17 @@ void SummaryQueryWidget::setQuery(const QString &query)
 				}
 			}
 		}
+
+			//If the query this widget would build from the columns just
+			//parsed above does not match the query as loaded byte-for-byte,
+			//the user wrote it by hand (a join, a subquery, a different
+			//view) and accepting the dialog unmodified must not silently
+			//replace it with a generated one (bugtracker #885).
+		const bool custom_query = query != queryStr();
+		m_custom_query = custom_query ? query : QString();
+		ui->m_edit_sql_query_cb->setChecked(custom_query);
+		ui->m_user_query_le->setEnabled(custom_query);
+		ui->m_info_widget->setDisabled(custom_query);
 	}
 }
 

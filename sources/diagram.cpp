@@ -40,8 +40,65 @@
 #include "undocommand/addelementtextcommand.h"
 #include "qetinformation.h"
 #include "qetproject.h"
+#include "diagramsortkeys.h"
+#include <algorithm>
 #include <cassert>
 #include <math.h>
+
+namespace {
+	using DiagramSortKeys::positionKey;
+
+	/// Sort key for Diagram::toXml()'s <elements> block: the element's own
+	/// diagram-local position, exactly what it's already saved as (x/y),
+	/// never invented or regenerated. uuid() is deliberately NOT used here:
+	/// for an element with no persisted uuid attribute, fromXml() invents a
+	/// fresh random one on every load, so sorting by uuid would still be
+	/// non-deterministic across process runs for any legacy file.
+	QString elementSortKey(Element *elmt)
+	{
+			//Position alone is not a total order: two elements can sit at the
+			//same x/y (lmdg.qet has a pair of text elements both at 780,350).
+			//With equal keys std::stable_sort falls back to the order the
+			//scene handed us, which varies per run, so those two swapped
+			//places on every save. The uuid breaks the tie.
+			//
+			//For an element with a persisted uuid attribute this is fully
+			//deterministic. For a legacy element without one, fromXml()
+			//invents a fresh uuid per load, so a collision between two such
+			//elements is no better ordered than before -- but no worse
+			//either, and the tiebreaker is only consulted when the positions
+			//are equal.
+		return positionKey(elmt->pos())
+				+ QLatin1Char(':') + elmt->uuid().toString();
+	}
+
+	/// Sort key for a terminal: its parent element's position, then the
+	/// terminal's own position local to that element (from the .elmt
+	/// definition, fixed regardless of where the element is placed).
+	QString terminalSortKey(Terminal *terminal)
+	{
+		if (!terminal)
+			return QString();
+		Element *parent = terminal->parentElement();
+		return (parent ? positionKey(parent->pos()) : QStringLiteral("?"))
+				+ QLatin1Char(':') + positionKey(terminal->pos());
+	}
+
+	/// Sort key for Diagram::toXml()'s <conductors> block. Built from both
+	/// endpoints' terminalSortKey(), not Conductor::uuid(): in every example
+	/// project checked, conductors have no persisted uuid attribute at all,
+	/// so uuid() is a freshly-minted random value on every load -- exactly
+	/// as unusable for cross-run determinism as the element case above, just
+	/// with no persisted fallback to reach for instead. Canonicalised
+	/// (smaller key first) since a conductor's two ends are unordered for
+	/// this purpose.
+	QString conductorSortKey(Conductor *cond)
+	{
+		QString a = terminalSortKey(cond->terminal1);
+		QString b = terminalSortKey(cond->terminal2);
+		return (a <= b) ? (a + QLatin1Char('>') + b) : (b + QLatin1Char('>') + a);
+	}
+}
 
 int Diagram::xGrid  = 10;
 int Diagram::yGrid  = 10;
@@ -67,6 +124,7 @@ Diagram::Diagram(QETProject *project) :
 	m_project                (project),
 	use_border_              (true),
 	draw_terminals_          (true),
+	draw_terminal_names_     (true),
 	draw_colored_conductors_ (true),
 	m_event_interface        (nullptr),
 	m_freeze_new_elements    (false),
@@ -393,6 +451,34 @@ void Diagram::wheelEvent(QGraphicsSceneWheelEvent *event)
 }
 
 /**
+	@brief Diagram::event
+	QGraphicsScene has its own Tab/Shift+Tab item-focus-chain traversal
+	(mirroring QWidget's), checked before keyPressEvent() is ever reached:
+	by default it would silently consume Tab/Backtab to move focus among
+	the scene's own focusable items. Intercepting the key press here,
+	ahead of that, is the only way to reliably override it: unlike
+	QWidget::focusNextPrevChild(), QGraphicsScene::focusNextPrevChild() is
+	only virtual starting in Qt 6 (guarded by the QT6_VIRTUAL macro), so a
+	Diagram:: override of it would silently do nothing on a Qt 5 build.
+	@param event
+*/
+bool Diagram::event(QEvent *event)
+{
+	if (event->type() == QEvent::KeyPress) {
+		auto *key_event = static_cast<QKeyEvent *>(event);
+		if ((key_event->key() == Qt::Key_Tab || key_event->key() == Qt::Key_Backtab)
+				&& !isReadOnly() && !focusItem()) {
+			bool forward = key_event->key() == Qt::Key_Tab
+					&& !(key_event->modifiers() & Qt::ShiftModifier);
+			selectNextItem(forward);
+			event->accept();
+			return true;
+		}
+	}
+	return QGraphicsScene::event(event);
+}
+
+/**
 	@brief Diagram::keyPressEvent
 	This event is managed by diagram event interface if any.
 	Else move selected elements
@@ -603,6 +689,79 @@ void Diagram::keyReleaseEvent(QKeyEvent *e)
 QUuid Diagram::uuid()
 {
 	return m_uuid;
+}
+
+/**
+	@brief Diagram::uuidUsedByOtherDiagram
+	A hand-edited or merged project file can contain two folios with the same
+	uuid. The uuid is used as a key (e.g. in the project database), so the
+	second one must get another one.
+	@param uuid
+	@return true if another diagram of the parent project already uses @p uuid
+*/
+bool Diagram::uuidUsedByOtherDiagram(const QUuid &uuid) const
+{
+	if (!m_project) {
+		return false;
+	}
+	const auto diagrams = m_project->diagrams();
+	for (const Diagram *diagram : diagrams) {
+		if (diagram != this && diagram->m_uuid == uuid) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+	@brief Diagram::derivedUuid
+	Name-based (version 5) uuid for a folio that has no usable uuid in the
+	file it is loaded from : either the file predates the uuid attribute, or
+	the uuid it carries is already taken by another folio of the project.
+
+	A random uuid would do as an identity, but it would make saving an
+	unmodified legacy project non-reproducible : every load would invent a
+	different one and write it out (see #754). The name is therefore built
+	only from data read from the file itself -- the project title, the
+	position of the folio in the file and its title -- so the same input file
+	always yields the same uuid. It is computed once, when the folio is
+	loaded, and saved from then on : renaming or moving the folio later does
+	not change it.
+
+	@param root : the <diagram> element being loaded
+	@param reason : distinguishes the two cases above, so that they can not
+	produce the same name
+	@return a uuid not used by any other diagram of the project
+*/
+QUuid Diagram::derivedUuid(const QDomElement &root, const QString &reason) const
+{
+		//Fixed namespace for QElectroTech folio uuids, never change it :
+		//doing so would change the uuid given to every legacy folio.
+	static const QUuid folio_namespace(
+				QStringLiteral("{d5951240-154d-44d6-8277-0092a31d1920}"));
+
+	const int index = m_project
+			? m_project->diagrams().indexOf(const_cast<Diagram *>(this))
+			: -1;
+	const QString project_title = root.ownerDocument()
+			.documentElement()
+			.attribute(QStringLiteral("title"));
+
+	const QString base = QStringLiteral("qet-folio\n%1\n%2\n%3\n%4")
+			.arg(reason,
+				 project_title,
+				 QString::number(index),
+				 root.attribute(QStringLiteral("title")));
+
+		//A clash is only possible with a hand-crafted file, but the uuid is a
+		//key : salt the name until it is free. Still deterministic.
+	QUuid uuid = QUuid::createUuidV5(folio_namespace, base);
+	for (int salt = 1 ; uuidUsedByOtherDiagram(uuid) ; ++salt) {
+		uuid = QUuid::createUuidV5(folio_namespace,
+								   base + QStringLiteral("\n")
+								   + QString::number(salt));
+	}
+	return uuid;
 }
 
 /**
@@ -820,6 +979,11 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 	// schema properties
 	// proprietes du schema
 	if (whole_content) {
+			//Persist the folio identity, so that a folio keeps the same uuid
+			//across save/load. Without it every load invents a new one, and
+			//nothing outside the running instance (version control, a lock,
+			//a diff tool...) can tell which folio is which.
+		dom_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 		border_and_titleblock.titleBlockToXml(dom_root);
 		border_and_titleblock.borderToXml(dom_root);
 
@@ -1012,6 +1176,20 @@ QDomDocument Diagram::toXml(bool whole_content, bool is_copy_command) {
 			}
 		}
 	}
+
+		// items() returns items in stacking order, which is not guaranteed
+		// reproducible across processes (ties between same-Z items follow
+		// the scene's internal index, not any content-derived order) -- so
+		// without this, saving an unmodified project produces a different
+		// byte stream on every run. Elements and conductors are the two
+		// blocks observed to actually churn across the example corpus;
+		// sort them into a deterministic, content-derived order before
+		// serializing. This also fixes the legacy terminal-id churn below,
+		// since those ids are assigned sequentially in element order.
+	std::stable_sort(list_elements.begin(), list_elements.end(),
+			  [](Element *a, Element *b) { return elementSortKey(a) < elementSortKey(b); });
+	std::stable_sort(list_conductors.begin(), list_conductors.end(),
+			  [](Conductor *a, Conductor *b) { return conductorSortKey(a) < conductorSortKey(b); });
 
 	// correspondence table between the addresses of the terminals and their ids
 	// table de correspondance entre les adresses des bornes et leurs ids
@@ -1306,6 +1484,21 @@ bool Diagram::fromXml(QDomElement &document,
 		// Read attributes of this diagram
 	if (consider_informations)
 	{
+			// Restore the persisted folio uuid. Done first, before any item is
+			// loaded, so that everything created below sees the final uuid.
+			// A folio without a usable one (file written before the uuid was
+			// persisted, or uuid already taken by another folio) gets a
+			// deterministic one instead, see derivedUuid().
+		const QUuid persisted_uuid(root.attribute(QStringLiteral("uuid")));
+		if (persisted_uuid.isNull()) {
+			m_uuid = derivedUuid(root, QStringLiteral("legacy"));
+		} else if (uuidUsedByOtherDiagram(persisted_uuid)) {
+			m_uuid = derivedUuid(root, QStringLiteral("duplicate ")
+								 + persisted_uuid.toString());
+		} else {
+			m_uuid = persisted_uuid;
+		}
+
 		// Load border and titleblock
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
@@ -1555,14 +1748,6 @@ bool Diagram::fromXml(QDomElement &document,
 	if (content_ptr) {
 		content_ptr -> m_elements           = added_elements;
 		content_ptr -> m_conductors_to_move = added_conductors;
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-		content_ptr -> m_text_fields        = added_texts.toSet();
-		content_ptr -> m_images			    = added_images.toSet();
-		content_ptr -> m_shapes			    = added_shapes.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 		content_ptr -> m_text_fields	= QSet<IndependentTextItem *>(
 					added_texts.begin(),
 					added_texts.end());
@@ -1573,7 +1758,6 @@ bool Diagram::fromXml(QDomElement &document,
 					added_shapes.begin(),
 					added_shapes.end());
 		content_ptr->m_terminal_strip.swap(added_strips);
-#endif
 		content_ptr->m_tables.swap(added_tables);
 	}
 
@@ -1674,6 +1858,7 @@ void Diagram::addItem(QGraphicsItem *item)
 			conductor->terminal1->addConductor(conductor);
 			conductor->terminal2->addConductor(conductor);
 			conductor->calculateTextItemPosition();
+			m_project->dataBase()->addConductor(conductor);
 			break;
 		}
 		default: {break;}
@@ -1704,6 +1889,7 @@ void Diagram::removeItem(QGraphicsItem *item)
 			Conductor *conductor = static_cast<Conductor *>(item);
 			conductor->terminal1->removeConductor(conductor);
 			conductor->terminal2->removeConductor(conductor);
+			m_project->dataBase()->removeConductor(conductor);
 			break;
 		}
 		default: {break;}
@@ -1835,6 +2021,85 @@ void Diagram::invertSelection()
 
 	blockSignals(false);
 	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::selectAllConductors
+	Select every conductor on this diagram, deselecting anything else.
+*/
+void Diagram::selectAllConductors()
+{
+	if (items().isEmpty()) return;
+
+	blockSignals(true);
+	for (auto item : items()) {
+		item -> setSelected(dynamic_cast<Conductor *>(item) != nullptr);
+	}
+	blockSignals(false);
+	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::selectAllTextFields
+	Select every text field on this diagram (independent/static text,
+	conductor labels, and dynamic element texts), deselecting anything else.
+*/
+void Diagram::selectAllTextFields()
+{
+	if (items().isEmpty()) return;
+
+	blockSignals(true);
+	for (auto item : items()) {
+		item -> setSelected(dynamic_cast<DiagramTextItem *>(item) != nullptr);
+	}
+	blockSignals(false);
+	emit selectionChanged();
+}
+
+/**
+	@brief Diagram::selectNextItem
+	Select the next (or, if @a forward is false, the previous) selectable
+	item on this diagram, cycling through items() (z-order) and wrapping
+	around at either end. If nothing is currently selected, selects the
+	first (or last) item. Uses the same "what counts as a real selectable
+	diagram item" filter as invertSelection(), so the candidate list and
+	its order always match what the user could reach by clicking.
+	@param forward true to select the next item, false for the previous one
+*/
+void Diagram::selectNextItem(bool forward)
+{
+	QList<QGraphicsItem *> candidates;
+	for (auto item : items()) {
+		if (dynamic_cast<QetGraphicsItem *>(item) ||
+			dynamic_cast<DiagramTextItem *>(item) ||
+			dynamic_cast<Conductor *>(item)) {
+			candidates << item;
+		}
+	}
+	if (candidates.isEmpty())
+		return;
+
+	int current_index = -1;
+	for (int i = 0; i < candidates.size(); ++i) {
+		if (candidates.at(i) -> isSelected()) {
+			current_index = i;
+			break;
+		}
+	}
+
+	int next_index;
+	if (current_index == -1) {
+		next_index = forward ? 0 : candidates.size() - 1;
+	} else {
+		next_index = forward
+				? (current_index + 1) % candidates.size()
+				: (current_index - 1 + candidates.size()) % candidates.size();
+	}
+
+	clearSelection();
+	QGraphicsItem *next_item = candidates.at(next_index);
+	next_item -> setSelected(true);
+	next_item -> ensureVisible();
 }
 
 /**
@@ -2319,6 +2584,7 @@ ExportProperties Diagram::applyProperties(
 	old_properties.draw_border = border_and_titleblock.borderIsDisplayed();
 	old_properties.draw_titleblock = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
+	old_properties.draw_terminal_names     = drawTerminalNames();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area = useBorder() ? QET::BorderArea
 						   : QET::ElementsArea;
@@ -2327,6 +2593,7 @@ ExportProperties Diagram::applyProperties(
 	// applique les nouvelles options de rendu
 	setUseBorder             (new_properties.exported_area == QET::BorderArea);
 	setDrawTerminals         (new_properties.draw_terminals);
+	setDrawTerminalNames     (new_properties.draw_terminal_names);
 	setDrawColoredConductors (new_properties.draw_colored_conductors);
 	setDisplayGrid           (new_properties.draw_grid);
 	setDisplayGuides         (new_properties.draw_guides);
@@ -2397,9 +2664,24 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	\~French true pour afficher les bornes, false sinon
 */
 void Diagram::setDrawTerminals(bool dt) {
+	draw_terminals_ = dt;
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
-			t -> setVisible(dt);
+			t -> update();
+		}
+	}
+}
+
+/**
+	@brief Diagram::setDrawTerminalNames
+	Defines whether or not to display the terminal names/labels
+	@param dt : true to display the terminal names, false otherwise
+*/
+void Diagram::setDrawTerminalNames(bool dt) {
+	draw_terminal_names_ = dt;
+	foreach(QGraphicsItem *qgi, items()) {
+		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
+			t -> update();
 		}
 	}
 }

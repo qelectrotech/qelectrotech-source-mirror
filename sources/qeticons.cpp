@@ -65,6 +65,7 @@ namespace QET {
 		QIcon EditCopy;
 		QIcon EditCut;
 		QIcon EditDelete;
+		QIcon EditOpacity;		
 		QIcon EditPaste;
 		QIcon EditRedo;
 		QIcon EditRename;
@@ -86,6 +87,7 @@ namespace QET {
 		QIcon ElementEdit;
 		QIcon ElementNew;
 		QIcon ElementSmall;
+		QIcon EllipseToBezier;
 		QIcon EndLineCircle;
 		QIcon EndLineDiamond;
 		QIcon EndLineNone;
@@ -115,6 +117,8 @@ namespace QET {
 		QIcon Hide;
 		QIcon Home;
 		QIcon HotSpot;
+		QIcon ImageFlipHorizontal;
+		QIcon ImageFlipVertical;
 		QIcon InsertImage;
 		QIcon Lower;
 		QIcon IC_MoveFile;
@@ -128,6 +132,7 @@ namespace QET {
 		QIcon ObjectUnlocked;
 		QIcon Orientations;
 		QIcon PartArc;
+		QIcon PartBezier;
 		QIcon PartCircle;
 		QIcon PartEllipse;
 		QIcon PartLine;
@@ -155,6 +160,8 @@ namespace QET {
 		QIcon QETOxygenLogo;
 		QIcon QtLogo;
 		QIcon Raise;
+		QIcon RectToBezier;
+		QIcon RectToPolyline;
 		QIcon Remove;
 		QIcon Restore;
 		QIcon RunDxf;
@@ -168,6 +175,7 @@ namespace QET {
 		QIcon TitleBlock;
 		QIcon TitleBlockBottom;
 		QIcon TitleBlockRight;
+		QIcon TransformCrop;
 		QIcon TransformRotate;
 		QIcon UserInformations;
 		QIcon ViewFitWidth;
@@ -183,6 +191,7 @@ namespace QET {
 		QIcon ZoomOriginal;
 		QIcon ZoomOut;
 		QIcon adding_image;
+		QIcon adding_pdf;
 		QIcon resize_image;
 		QIcon sa;
 		QIcon br;
@@ -453,6 +462,7 @@ void QET::Icons::initIcons()
 	EditClear           .addFile(":/ico/22x22/edit-clear.png");
 	EditText            .addFile(":/ico/22x22/names.png");
 	adding_image        .addFile(":/ico/22x22/insert-image.png");
+	adding_pdf          .addFile(":/ico/22x22/pdf-import.png");
 	
 	if (rtl) {
 		EditClearLocationBar.addPixmap(QPixmap(":/ico/16x16/edit-clear-locationbar-ltr.png").transformed(reverse));
@@ -467,6 +477,7 @@ void QET::Icons::initIcons()
 	EditCut             .addFile(":/ico/22x22/edit-cut.png");
 	EditDelete          .addFile(":/ico/16x16/edit-delete.png");
 	EditDelete          .addFile(":/ico/22x22/edit-delete.png");
+	EditOpacity         .addFile(":/ico/breeze-icons/scalable/apps/hidef/edit-opacity.svg");
 	EditPaste           .addFile(":/ico/22x22/edit-paste.png");
 	EditPaste           .addFile(":/ico/16x16/edit-paste.png");
 	if (rtl) {
@@ -515,6 +526,7 @@ void QET::Icons::initIcons()
 	ElementNew          .addFile(":/ico/16x16/element-new.png");
 	ElementNew          .addFile(":/ico/22x22/element-new.png");
 	ElementSmall        .addFile(":/ico/16x16/element.png");
+	EllipseToBezier     .addFile(":/ico/generated/ellipse-to-bezier.svg");
 	EndLineCircle       .addFile(":/ico/16x16/endline-circle.png");
 	EndLineDiamond      .addFile(":/ico/16x16/endline-diamond.png");
 	EndLineNone         .addFile(":/ico/16x16/endline-none.png");
@@ -554,6 +566,8 @@ void QET::Icons::initIcons()
 	Home                .addFile(":/ico/16x16/go-home.png");
 	Home                .addFile(":/ico/22x22/go-home.png");
 	HotSpot             .addFile(":/ico/22x22/hotspot.png");
+	ImageFlipHorizontal .addFile(":/ico/breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg");
+	ImageFlipVertical   .addFile(":/ico/breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg");
 	InsertImage         .addFile(":/ico/22x22/insert-image.png");
 	Lower               .addFile(":/ico/22x22/lower.png");
 	IC_MoveFile         .addFile(":/ico/16x16/item-move.png");
@@ -568,6 +582,7 @@ void QET::Icons::initIcons()
 	ObjectUnlocked      .addFile(":/ico/22x22/object-unlocked.png");
 	Orientations        .addFile(":/ico/16x16/orientations.png");
 	PartArc             .addFile(":/ico/22x22/arc.png");
+	PartBezier          .addFile(":/ico/breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg");
 	PartCircle          .addFile(":/ico/16x16/circle.png");
 	PartEllipse         .addFile(":/ico/22x22/ellipse.png");
 	PartLine            .addFile(":/ico/22x22/line.png");
@@ -611,6 +626,8 @@ void QET::Icons::initIcons()
 	QETVideo            .addFile(":/ico/16x16/kdenlive-show-video.png");
 	QtLogo              .addFile(":/ico/16x16/qt.png");
 	Raise               .addFile(":/ico/22x22/raise.png");
+	RectToBezier        .addFile(":/ico/generated/rect-to-bezier.svg");
+	RectToPolyline      .addFile(":/ico/generated/rect-to-polyline.svg");
 	Remove              .addFile(":/ico/16x16/list-remove.png");
 	Remove              .addFile(":/ico/22x22/list-remove.png");
 	resize_image        .addFile(":/ico/22x22/transform-scale.png");
@@ -629,6 +646,7 @@ void QET::Icons::initIcons()
 	TitleBlock          .addFile(":/ico/22x22/label.png");
 	TitleBlockBottom    .addFile(":/ico/22x22/titleblock-bottom.png");
 	TitleBlockRight     .addFile(":/ico/22x22/titleblock-right.png");
+	TransformCrop       .addFile(":/ico/breeze-icons/scalable/apps/hidef/transform-crop.svg");
 	TransformRotate     .addFile(":/ico/16x16/transform-rotate.png");
 	UserInformations    .addFile(":/ico/16x16/preferences-desktop-user.png");
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");

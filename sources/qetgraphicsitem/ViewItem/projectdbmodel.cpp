@@ -17,6 +17,8 @@
 */
 #include "projectdbmodel.h"
 
+#include <algorithm>
+
 #include "../../dataBase/projectdatabase.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
@@ -146,7 +148,7 @@ bool ProjectDBModel::setData(const QModelIndex &index, const QVariant &value, in
 		return false;
 	}
 	m_index_0_0_data.insert(role, value);
-	emit dataChanged(index, index, QVector<int>(role));
+	emit dataChanged(index, index, {role});
 	return true;
 }
 
@@ -266,7 +268,13 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 		//We save all data except the display role, because he was generated in the fly
 		auto list = m_header_data.value(key).keys();
 		list.removeAll(Qt::DisplayRole);
-		
+			//Sorted: m_header_data's inner container is a QHash too, so its
+			//key order is randomised per process. modelHeaderDataToXml()
+			//writes the roles of a section in the order given here, so an
+			//unsorted list reordered the <data> children of that section on
+			//every save and kept the save irreproducible.
+		std::sort(list.begin(), list.end());
+
 		horizontal_.insert(key, list);
 	}
 	
@@ -332,7 +340,7 @@ void ProjectDBModel::dataBaseUpdated()
 		auto row = m_record.size();
 		auto col = row ? m_record.first().count() : 1;
 		
-		emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+		emit dataChanged(this->index(0,0), this->index(row-1, col-1), {Qt::DisplayRole});
 	}
 }
 

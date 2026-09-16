@@ -74,6 +74,49 @@ target_link_libraries(
   ${PROJECT_NAME}
   PRIVATE
   Qt::Test
-  ${KF5_PRIVATE_LIBRARIES}
+  ${KF_PRIVATE_LIBRARIES}
   ${QET_PRIVATE_LIBRARIES})
 
+# diagramsortkeys.h is a header-only helper (no QET link deps needed
+# beyond Qt itself), so this test builds independently of the rest of
+# the QET sources.
+add_executable(tst_diagramsortkeys tst_diagramsortkeys.cpp)
+add_test(NAME tst_diagramsortkeys COMMAND tst_diagramsortkeys)
+target_include_directories(tst_diagramsortkeys PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_diagramsortkeys PRIVATE Qt::Test)
+
+# contactusage.h is a header-only helper holding the contact counting
+# rules, so this test builds independently of the rest of the QET sources.
+add_executable(tst_contactusage tst_contactusage.cpp)
+add_test(NAME tst_contactusage COMMAND tst_contactusage)
+target_include_directories(tst_contactusage PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_contactusage PRIVATE Qt::Test)
+
+add_executable(
+  tst_smart_device
+  tst_smart_device.cpp
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h)
+add_test(NAME tst_smart_device COMMAND tst_smart_device)
+target_include_directories(tst_smart_device PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_smart_device PRIVATE Qt::Test Qt::Sql)
+
+# qet.cpp carries the SingleApplication argument wire format
+# (joinWithSpaces/splitWithSpaces); it pulls in qeticons and shortcutmanager,
+# so those are compiled alongside rather than linking the whole application.
+add_executable(
+  tst_qetstrings
+  tst_qetstrings.cpp
+  ${QET_DIR}/sources/qet.cpp
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/shortcutmanager.cpp)
+add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
+target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+
+add_executable(
+  tst_menubarkeyboard
+  tst_menubarkeyboard.cpp)
+add_test(NAME tst_menubarkeyboard COMMAND tst_menubarkeyboard)
+target_include_directories(tst_menubarkeyboard PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_menubarkeyboard PRIVATE Qt::Test Qt::Widgets)

@@ -584,20 +584,20 @@ void TitleBlockTemplateView::init()
 	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Supprimer cette ligne",                    "context menu"), this);
 	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aperçu",     "context menu"), this);
 
-	connect(add_column_before_,    SIGNAL(triggered()), this, SLOT(addColumnBefore()));
-	connect(add_row_before_,       SIGNAL(triggered()), this, SLOT(addRowBefore()));
-	connect(add_column_after_,     SIGNAL(triggered()), this, SLOT(addColumnAfter()));
-	connect(add_row_after_,        SIGNAL(triggered()), this, SLOT(addRowAfter()));
-	connect(edit_column_dim_,      SIGNAL(triggered()), this, SLOT(editColumn()));
-	connect(edit_row_dim_,         SIGNAL(triggered()), this, SLOT(editRow()));
-	connect(delete_column_,        SIGNAL(triggered()), this, SLOT(deleteColumn()));
-	connect(delete_row_,           SIGNAL(triggered()), this, SLOT(deleteRow()));
-	connect(change_preview_width_, SIGNAL(triggered()), this, SLOT(changePreviewWidth()));
+	connect(add_column_before_, &QAction::triggered, this, &TitleBlockTemplateView::addColumnBefore);
+	connect(add_row_before_, &QAction::triggered, this, &TitleBlockTemplateView::addRowBefore);
+	connect(add_column_after_, &QAction::triggered, this, &TitleBlockTemplateView::addColumnAfter);
+	connect(add_row_after_, &QAction::triggered, this, &TitleBlockTemplateView::addRowAfter);
+	connect(edit_column_dim_, &QAction::triggered, this, [this]() { editColumn(); });
+	connect(edit_row_dim_, &QAction::triggered, this, [this]() { editRow(); });
+	connect(delete_column_, &QAction::triggered, this, &TitleBlockTemplateView::deleteColumn);
+	connect(delete_row_, &QAction::triggered, this, &TitleBlockTemplateView::deleteRow);
+	connect(change_preview_width_, &QAction::triggered, this, &TitleBlockTemplateView::changePreviewWidth);
 
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setBackgroundBrush(QBrush(QColor(248, 255, 160)));
 
-	connect(scene(), SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
+	connect(scene(), &QGraphicsScene::selectionChanged, this, &TitleBlockTemplateView::selectionChanged);
 }
 
 /**
@@ -626,7 +626,7 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 			animation -> setStartValue(QVariant(tbgrid_ -> columnMinimumWidth(COL_OFFSET + i)));
 			animation -> setEndValue(QVariant(1.0 * applied_width));
 			animation -> setDuration(500);
-			connect(animation, SIGNAL(finished()), this, SLOT(updateColumnsHelperCells()));
+			connect(animation, &GridLayoutAnimation::finished, this, &TitleBlockTemplateView::updateColumnsHelperCells);
 			animation -> start(QAbstractAnimation::DeleteWhenStopped);
 		}
 		total_applied_width += applied_width;
@@ -691,7 +691,7 @@ void TitleBlockTemplateView::applyRowsHeights(bool animate) {
 			animation -> setStartValue(QVariant(tbgrid_ -> rowMinimumHeight(ROW_OFFSET + i)));
 			animation -> setEndValue(QVariant(1.0 * heights.at(i)));
 			animation -> setDuration(500);
-			connect(animation, SIGNAL(finished()), this, SLOT(updateRowsHelperCells()));
+			connect(animation, &GridLayoutAnimation::finished, this, &TitleBlockTemplateView::updateRowsHelperCells);
 			animation -> start(QAbstractAnimation::DeleteWhenStopped);
 		}
 
@@ -747,10 +747,8 @@ void TitleBlockTemplateView::addCells()
 	updateTotalWidthLabel();
 	total_width_helper_cell_ -> orientation = Qt::Horizontal;
 	total_width_helper_cell_ -> setActions(QList<QAction *>() << change_preview_width_);
-	connect(total_width_helper_cell_, SIGNAL(contextMenuTriggered(HelperCell *)),
-		this, SLOT(updateLastContextMenuCell(HelperCell *)));
-	connect(total_width_helper_cell_, SIGNAL(doubleClicked(HelperCell*)),
-		this, SLOT(changePreviewWidth()));
+	connect(total_width_helper_cell_, &HelperCell::contextMenuTriggered, this, &TitleBlockTemplateView::updateLastContextMenuCell);
+	connect(total_width_helper_cell_, &HelperCell::doubleClicked, this, &TitleBlockTemplateView::changePreviewWidth);
 	tbgrid_ -> addItem(total_width_helper_cell_, 0, COL_OFFSET, 1, col_count);
 
 	// we also initialize an extra helper cells that shows the preview width is
@@ -767,10 +765,8 @@ void TitleBlockTemplateView::addCells()
 		current_col_cell -> setActions(columnsActions());
 		current_col_cell -> orientation = Qt::Horizontal;
 		current_col_cell -> index = i;
-		connect(current_col_cell, SIGNAL(contextMenuTriggered(HelperCell *)),
-			this, SLOT(updateLastContextMenuCell(HelperCell *)));
-		connect(current_col_cell, SIGNAL(doubleClicked(HelperCell*)),
-			this, SLOT(editColumn(HelperCell *)));
+		connect(current_col_cell, &HelperCell::contextMenuTriggered, this, &TitleBlockTemplateView::updateLastContextMenuCell);
+		connect(current_col_cell, &HelperCell::doubleClicked, this, &TitleBlockTemplateView::editColumn);
 		tbgrid_ -> addItem(current_col_cell, 1, COL_OFFSET + i, 1, 1);
 	}
 
@@ -783,10 +779,8 @@ void TitleBlockTemplateView::addCells()
 		current_row_cell -> orientation = Qt::Vertical;
 		current_row_cell -> index = i;
 		current_row_cell -> setActions(rowsActions());
-		connect(current_row_cell, SIGNAL(contextMenuTriggered(HelperCell *)),
-			this, SLOT(updateLastContextMenuCell(HelperCell *)));
-		connect(current_row_cell, SIGNAL(doubleClicked(HelperCell*)),
-			this, SLOT(editRow(HelperCell *)));
+		connect(current_row_cell, &HelperCell::contextMenuTriggered, this, &TitleBlockTemplateView::updateLastContextMenuCell);
+		connect(current_row_cell, &HelperCell::doubleClicked, this, &TitleBlockTemplateView::editRow);
 		tbgrid_ -> addItem(current_row_cell, ROW_OFFSET + i, 0, 1, 1);
 	}
 
@@ -869,7 +863,7 @@ void TitleBlockTemplateView::fillWithEmptyCells()
 */
 bool TitleBlockTemplateView::event(QEvent *event) {
 	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
-		QTimer::singleShot(250, this, SLOT(zoomFit()));
+		QTimer::singleShot(250, this, &TitleBlockTemplateView::zoomFit);
 		first_activation_ = false;
 	}
 	return(QGraphicsView::event(event));
@@ -999,20 +993,47 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth()
 	int max_width = tbtemplate_ -> maximumWidth();
 
 	QString min_max_width_sentence;
-	if (max_width != -1) {
-		min_max_width_sentence = QString(
-			tr(
-				"Longueur minimale : %1px\nLongueur maximale : %2px\n",
-				"tooltip showing the minimum and/or maximum width of the edited template"
-			)
-		).arg(min_width).arg(max_width);
-	} else {
-		min_max_width_sentence = QString(
-			tr(
-				"Longueur minimale : %1px\n",
-				"tooltip showing the minimum width of the edited template"
-			)
-		).arg(min_width);
+
+	switch (static_cast<TitleBlockTemplate::WidthConstraintCase>(min_width)) {
+		case TitleBlockTemplate::WidthConstraintCase::RelativeWidthExceeds100Percent:
+			// minimumWidth() and maximumWidth() both check infeasibility
+			// first, identically, so max_width reports the same case
+			// here -- no need to check it separately.
+			min_max_width_sentence = tr(
+				"Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.\n",
+				"tooltip warning shown when a template's relative-to-total-length columns alone already exceed 100%% of the total width"
+			);
+			break;
+		case TitleBlockTemplate::WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth:
+			min_max_width_sentence = tr(
+				"Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.\n",
+				"tooltip warning shown when a template's relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns"
+			);
+			break;
+		default:
+			if (min_width != static_cast<int>(TitleBlockTemplate::WidthConstraintCase::Unconstrained)) {
+				min_max_width_sentence += QString(
+					tr(
+						"Longueur minimale : %1px\n",
+						"tooltip showing the minimum width of the edited template"
+					)
+				).arg(min_width);
+			}
+			if (max_width != static_cast<int>(TitleBlockTemplate::WidthConstraintCase::Unconstrained)) {
+				min_max_width_sentence += QString(
+					tr(
+						"Longueur maximale : %1px\n",
+						"tooltip showing the maximum width of the edited template"
+					)
+				).arg(max_width);
+			}
+			if (min_max_width_sentence.isEmpty()) {
+				min_max_width_sentence = tr(
+					"Longueur non contrainte.\n",
+					"tooltip shown when the edited template has neither a minimum nor a maximum width constraint"
+				);
+			}
+			break;
 	}
 
 	// the tooltip may also display the split label for readability purpose

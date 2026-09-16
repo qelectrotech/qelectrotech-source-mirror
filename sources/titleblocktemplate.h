@@ -24,6 +24,7 @@
 
 #include <QtSvg>
 #include <QtXml>
+#include <optional>
 
 /**
 	@brief The TitleBlockTemplate class
@@ -36,9 +37,73 @@
 */
 class TitleBlockTemplate : public QObject {
 	Q_OBJECT
+
+	public:
+		/**
+		@brief The TitleBlockTemplate::WidthConstraintCase enum Distinguishes 
+		the possible outcomes of minimumWidth() or maximumWidth() for a 
+		template's column layout: either a genuine finite pixel width, or one 
+		of the cases below where no single finite width applies -- some of which are
+		perfectly ordinary (Unconstrained), and some of which indicate the 
+		template's columns cannot be laid out at any width.
+
+		Both functions return one of the non-Bounded* cases below,
+		cast to int, in place of a genuine width whenever no finite
+		width applies. (*minimumWidth()/maximumWidth() never return
+		a literal "Bounded" value -- when a finite width exists,
+		they return that width directly. Bounded only appears as a
+		concept in classifyWidthConstraint()'s std::nullopt return.)
+		The int-based encoding exists because this project
+		currently targets C++17.
+
+		@todo Once this project's minimum supported C++ standard
+		reaches C++23, migrate minimumWidth() and maximumWidth() to
+		return std::expected<int, WidthConstraintCase> instead of
+		encoding these cases as negative int sentinels. That removes
+		the possibility of a caller silently misinterpreting a
+		sentinel as a real pixel width -- something the current
+		int-based encoding cannot prevent at compile time.
+		*/
+		enum class WidthConstraintCase : int {
+			/**
+				There is no finite width constraint in this direction:
+				any width is valid. This is a perfectly ordinary case,
+				not a problem with the template -- for minimumWidth(),
+				it happens when the relative-to-total-length (RTT)
+				columns account for exactly 100% of the total width and
+				there are no absolute-width (ABS) columns competing for
+				space -- every term in the minimum-width inequality
+				vanishes (0 >= 0), which holds for any width. For
+				maximumWidth(), it happens whenever at least one column
+				scales with the total width, so nothing caps how wide
+				the template may grow -- the common case for most
+				templates.
+			*/
+			Unconstrained = -1,
+
+			/**
+				The RTT columns alone already exceed 100% of the total
+				width (sum(RTT) > 100), independently of whether any ABS
+				columns exist. The minimum-width inequality then only
+				holds for a non-positive width, which cannot represent a
+				real template: this indicates a genuinely misconfigured
+				template that cannot be laid out at any width.
+			*/
+			RelativeWidthExceeds100Percent = -2,
+
+			/**
+				The RTT columns account for exactly 100% of the total
+				width, but at least one ABS column also needs a nonzero,
+				fixed amount of space on top of that. The minimum-width
+				inequality reduces to "0 >= (a positive number)", which
+				never holds: this also indicates a genuinely
+				misconfigured template that cannot be laid out at any
+				width.
+			*/
+			AbsoluteColumnsExceedRemainingWidth = -3
+		};
 	
 	// constructors, destructor
-	public:
 	TitleBlockTemplate(QObject * = nullptr);
 	~TitleBlockTemplate() override;
 	private:
@@ -146,6 +211,20 @@ class TitleBlockTemplate : public QObject {
 	bool checkCell(const QDomElement &, TitleBlockCell ** = nullptr);
 	void flushCells();
 	void initCells();
+	/**
+	@brief TitleBlockTemplate::classifyWidthConstraint Classifies this template's absolute-width (ABS) and
+	relative-to-total-length (RTT) columns, independently of whether a minimum or a maximum width is being computed -- see
+	minimumWidth() for the derivation this is based on.
+	@param[out] abs_total set to columnTypeTotal(QET::Absolute).
+	@param[out] remaining_width_fraction set to the fraction of the	total template width left over once the RTT columns have taken
+	their share: (100.0 - sum(RTT)) / 100.0. Zero means the RTT columns claim the entire width, leaving nothing for ABS
+	columns; negative means they claim more than the entire width, which is unsatisfiable regardless of any ABS columns. Only
+	meaningful when this function returns std::nullopt.
+	@return WidthConstraintCase::RelativeWidthExceeds100Percent, WidthConstraintCase::AbsoluteColumnsExceedRemainingWidth, or
+	WidthConstraintCase::Unconstrained if no finite width exists for this template's columns, or std::nullopt if a finite width
+	does exist (computable as qRound(abs_total / remaining_width_fraction)).
+	*/
+	std::optional<WidthConstraintCase> classifyWidthConstraint(int &abs_total, qreal &remaining_width_fraction);
 	int lengthRange(int, int, const QList<int> &) const;
 	QString finalTextForCell(
 			const TitleBlockCell &,

@@ -20,16 +20,18 @@
 #include "../diagram.h"
 #include "../pdf_links.h"
 #include "../qeticons.h"
+#include "../qetinformation.h"
 #include "../qetproject.h"
 #include "../qetversion.h"
 #include "../qetgraphicsitem/crossrefitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
+#include "../qetgraphicsitem/element.h"
 #include "../qetgraphicsitem/elementtextitemgroup.h"
 
 #include "ui_projectprintwindow.h"
 
-// Private Qt PDF engine for drawHyperlink() — not public API, stable since Qt4
-// Requires QT += gui-private in qelectrotech.pro
+// Private Qt PDF engine for drawHyperlink() is not a public API.
+// Availability of Qt::GuiPrivate is verified at configure time in CMakeLists.txt.
 #include <private/qpdf_p.h>
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
@@ -63,14 +65,7 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 	auto printer_ = new QPrinter();
 	QPrinter printer(QPrinter::HighResolution);
 	printer_->setDocName(ProjectPrintWindow::docName(project));
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	printer_->setOrientation(QPrinter::Landscape);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
 	printer_->setPageOrientation(QPageLayout::Landscape);
-#endif
 
 	if (format == QPrinter::NativeFormat) //To physical printer
 	{
@@ -79,10 +74,14 @@ void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputForma
 		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
-		// setOptions() is the modern spelling of the Qt4-era
-		// setEnabledOptions() (removed in Qt 6): replace the enabled
-		// option set with just PrintShowPageSize, on Qt 5 and 6 alike.
-		print_dialog.setOptions(QAbstractPrintDialog::PrintShowPageSize);
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
+		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
+#else
+#if TODO_LIST
+#pragma message("@TODO remove code for QT 6 or later")
+#endif
+		qDebug()<<"Help code for QT 6 or later";
+#endif
 		if (print_dialog.exec() == QDialog::Rejected) {
 			delete  printer_;
 			return;
@@ -108,7 +107,7 @@ QString ProjectPrintWindow::docName(QETProject *project)
 {
 	QString doc_name;
 	if (!project->filePath().isEmpty()) {
-		doc_name = QFileInfo(project->filePath()).baseName();
+		doc_name = QFileInfo(project->filePath()).completeBaseName();
 	} else if (!project->title().isEmpty()) {
 		doc_name = project->title();
 		doc_name = QET::stringToFileName(doc_name);
@@ -156,11 +155,13 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 		ui->m_button_box->addButton(pdf_button, QDialogButtonBox::ActionRole);
 		connect(pdf_button, &QPushButton::clicked, this, &ProjectPrintWindow::exportToPDF);
 	}
+	ui->m_component_info_cb->setVisible(m_printer->outputFormat() == QPrinter::PdfFormat);
 
 	auto exp = ExportProperties::defaultPrintProperties();
 	ui->m_draw_border_cb->setChecked(exp.draw_border);
 	ui->m_draw_titleblock_cb->setChecked(exp.draw_titleblock);
 	ui->m_draw_terminal_cb->setChecked(exp.draw_terminals);
+	ui->m_draw_terminal_names_cb->setChecked(exp.draw_terminal_names);
 	ui->m_keep_conductor_color_cb->setChecked(exp.draw_colored_conductors);
 
 	ui->m_date_cb->blockSignals(true);
@@ -199,7 +200,6 @@ ProjectPrintWindow::~ProjectPrintWindow()
  */
 void ProjectPrintWindow::requestPaint()
 {
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
 		#ifdef Q_OS_WIN
 			#ifdef QT_DEBUG
 			qDebug() << "--";
@@ -224,7 +224,6 @@ void ProjectPrintWindow::requestPaint()
 			qDebug() << "--";
 			#endif
 		#endif
-	#endif
 
 	if (!m_project->diagrams().count()) {
 		return;
@@ -252,6 +251,7 @@ void ProjectPrintWindow::requestPaint()
 
 	bool first = true;
 	QPainter painter(m_printer);
+	int annotIndex = 0;
 
 	// A real PDF export uses the QPdfEngine; the on-screen preview uses a
 	// preview paint engine. We only post-process when actually writing a PDF.
@@ -265,7 +265,7 @@ void ProjectPrintWindow::requestPaint()
 	for (auto diagram : selectedDiagram())
 	{
 		first ? first = false : m_printer->newPage();
-		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap);
+		printDiagram(diagram, ui->m_fit_in_page_cb->isChecked(), &painter, m_printer, diagramPageMap, annotIndex);
 	}
 
 	// Note: do NOT call painter.end() or pdfConvertUriToGoTo() here.
@@ -283,7 +283,7 @@ void ProjectPrintWindow::requestPaint()
  * @param fit_page
  * @param printer
  */
-void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap)
+void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter *painter, QPrinter *printer, const QMap<Diagram*, int> &diagramPageMap, int &annotIndex)
 {
 
 	////Prepare the print////
@@ -312,16 +312,10 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 		diagram->render(painter, QRectF(), diagram_rect, Qt::KeepAspectRatio);
 	} else {
 		// Print on one or several pages
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-		auto printed_rect = full_page ? printer->paperRect() : printer->pageRect();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-	qDebug()<<"Help code for QT 6 or later";
+
 	auto printed_rect = full_page ? printer->paperRect(QPrinter::Millimeter) :
 									printer->pageRect(QPrinter::Millimeter);
-#endif
+
 		auto used_width  = printed_rect.width();
 		auto used_height = printed_rect.height();
 		auto h_pages_count = horizontalPagesCount(diagram, option, full_page);
@@ -425,6 +419,53 @@ void ProjectPrintWindow::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			PdfLinks::injectCrossRefLinks(
 				pdfEngine, diagram, geom, diagramPageMap,
 				printer->outputFileName());
+
+			////Collect component info for popup annotations////
+			if (ui->m_component_info_cb->isChecked()) {
+				for (auto *item : diagram->items()) {
+					auto *el = qgraphicsitem_cast<Element*>(item);
+					if (!el) continue;
+
+					// Skip reports and slaves
+					auto lt = el->linkType();
+					if (lt & Element::AllReport) continue;
+					if (lt == Element::Slave) continue;
+
+					auto info = el->elementInformations();
+					if (info.count() == 0) continue;
+
+					// Build info text
+					QStringList lines;
+					for (const auto &key : {QStringLiteral("label"),
+											 QStringLiteral("manufacturer"),
+											 QStringLiteral("designation"),
+											 QStringLiteral("description")}) {
+						if (info.contains(key) && !info.value(key).toString().isEmpty())
+							lines << QETInformation::translatedInfoKey(key) + ": " + info.value(key).toString();
+					}
+					for (const QString &key : info.keys()) {
+						if (key == "formula") continue;
+						QString translated = QETInformation::translatedInfoKey(key);
+						if (lines.contains(translated + ": " + info.value(key).toString())) continue;
+						if (info.value(key).toString().isEmpty()) continue;
+						lines << translated + ": " + info.value(key).toString();
+					}
+					if (lines.isEmpty()) continue;
+
+					// Compute element rect in device pixels
+					QRectF elemScene = el->mapRectToScene(el->boundingRect());
+					QRectF devRect = fit.mapRect(elemScene);
+
+					PdfLinks::ComponentInfo ci;
+					ci.contents = lines.join("\n");
+					m_componentInfoList.append(ci);
+
+					// Create a link annotation as placeholder — post-processing
+					// will convert it to an invisible text annotation with the actual content
+					pdfEngine->drawHyperlink(devRect, QUrl(QString("http://componentinfo.local/%1").arg(annotIndex++)));
+				}
+			}
+			////Component info end////
 		}
 	}
 	////PDF links end////
@@ -449,8 +490,11 @@ QRect ProjectPrintWindow::diagramRect(Diagram *diagram, const ExportProperties &
 {
 	auto diagram_rect = diagram->border_and_titleblock.borderAndTitleBlockRect();
 	if (!option.draw_titleblock) {
-		auto titleblock_height = diagram->border_and_titleblock.titleBlockRect().height();
-		diagram_rect.setHeight(diagram_rect.height() - titleblock_height);
+		auto titleblock_rect = diagram->border_and_titleblock.titleBlockRect();
+		if (diagram->border_and_titleblock.titleBlockEdge() == Qt::BottomEdge)
+			diagram_rect.setHeight(diagram_rect.height() - titleblock_rect.height());
+		else
+			diagram_rect.setWidth(diagram_rect.width() - titleblock_rect.width());
 	}
 
 		//Adjust the border of diagram to 1px (width of the line)
@@ -471,17 +515,12 @@ int ProjectPrintWindow::horizontalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	printable_area = full_page ? m_printer->paperRect() : m_printer->pageRect();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
+
 	printable_area =
 		full_page ?
 			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
 			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
-#endif
+
 	QRect diagram_rect = diagramRect(diagram, option);
 
 	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
@@ -500,17 +539,12 @@ int ProjectPrintWindow::verticalPagesCount(
 		Diagram *diagram, const ExportProperties &option, bool full_page) const
 {
 	QRect printable_area;
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	printable_area = full_page ? m_printer->paperRect() : m_printer->pageRect();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
+
 	printable_area =
 		full_page ?
 			m_printer->pageLayout().fullRectPixels(m_printer->resolution()) :
 			m_printer->pageLayout().paintRectPixels(m_printer->resolution());
-#endif
+
 	QRect diagram_rect = diagramRect(diagram, option);
 
 	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
@@ -523,6 +557,7 @@ ExportProperties ProjectPrintWindow::exportProperties() const
 	exp.draw_border             = ui->m_draw_border_cb->isChecked();
 	exp.draw_titleblock         = ui->m_draw_titleblock_cb->isChecked();
 	exp.draw_terminals          = ui->m_draw_terminal_cb->isChecked();
+	exp.draw_terminal_names     = ui->m_draw_terminal_names_cb->isChecked();
 	exp.draw_colored_conductors = ui->m_keep_conductor_color_cb->isChecked();
 	exp.draw_grid = false;
 	exp.draw_guides = false;
@@ -582,43 +617,7 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 	}
 
 	settings.beginGroup(printer_section);
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (settings.contains("orientation")) {
-		QString value = settings.value("orientation", "landscape").toString();
-		m_printer -> setOrientation(value == "landscape" ? QPrinter::Landscape : QPrinter::Portrait);
-	}
-	if (settings.contains("papersize")) {
-		int value = settings.value("papersize", QPrinter::A4).toInt();
-		if (value == QPrinter::Custom) {
-			bool w_ok, h_ok;
-			int w = settings.value("customwidthmm", -1).toInt(&w_ok);
-			int h = settings.value("customheightmm", -1).toInt(&h_ok);
-			if (w_ok && h_ok && w != -1 && h != -1) {
-				m_printer -> setPaperSize(QSizeF(w, h), QPrinter::Millimeter);
-			}
-		} else if (value < QPrinter::Custom) {
-			m_printer -> setPaperSize(static_cast<QPrinter::PaperSize>(value));
-		}
-	}
 
-	qreal margins[4];
-	m_printer -> getPageMargins(&margins[0], &margins[1], &margins[2], &margins[3], QPrinter::Millimeter);
-	QStringList margins_names(QStringList() << "left" << "top" << "right" << "bottom");
-	for (int i = 0 ; i < 4 ; ++ i) {
-		bool conv_ok;
-		qreal value = settings.value("margin" + margins_names.at(i), -1.0).toReal(&conv_ok);
-		if (conv_ok && value != -1.0) margins[i] = value;
-	}
-	m_printer->setPageMargins(
-		margins[0],
-		margins[1],
-		margins[2],
-		margins[3],
-		QPrinter::Millimeter);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#	endif
 	if (settings.contains("orientation"))
 	{
 		QString value = settings.value("orientation", "landscape").toString();
@@ -671,7 +670,7 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 	m_printer->setPageMargins(
 		QMarginsF(margins[0], margins[1], margins[2], margins[3]),
 		QPageLayout::Millimeter);
-#endif
+
 	m_printer->setFullPage(
 		settings.value("fullpage", "false").toString() == "true");
 
@@ -687,35 +686,6 @@ void ProjectPrintWindow::savePageSetupForCurrentPrinter()
 	while (!settings.group().isEmpty()) settings.endGroup();
 	settings.beginGroup("printers");
 	settings.beginGroup(printer_section);
-
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	settings.setValue("orientation", m_printer -> orientation() == QPrinter::Portrait ? "portrait" : "landscape");
-	settings.setValue("papersize", int(m_printer -> paperSize()));
-	if (m_printer -> paperSize() == QPrinter::Custom) {
-		QSizeF size = m_printer -> paperSize(QPrinter::Millimeter);
-		settings.setValue("customwidthmm", size.width());
-		settings.setValue("customheightmm", size.height());
-	} else {
-		settings.remove("customwidthmm");
-		settings.remove("customheightmm");
-	}
-	qreal left, top, right, bottom;
-	m_printer
-		->getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
-	settings.setValue("marginleft", left);
-	settings.setValue("margintop", top);
-	settings.setValue("marginright", right);
-	settings.setValue("marginbottom", bottom);
-	settings.setValue("fullpage", m_printer->fullPage() ? "true" : "false");
-	settings.endGroup();
-	settings.endGroup();
-	settings.sync();
-
-#else
-#	if TODO_LIST
-#		pragma message("@TODO remove code for QT 6 or later")
-#	endif
-	qDebug() << "Help code for QT 6 or later";
 
 	settings.setValue(
 		"orientation",
@@ -747,7 +717,6 @@ void ProjectPrintWindow::savePageSetupForCurrentPrinter()
 	settings.endGroup();
 	settings.endGroup();
 	settings.sync();
-#endif
 }
 
 /**
@@ -796,6 +765,8 @@ void ProjectPrintWindow::on_m_draw_border_cb_clicked()          { m_preview->upd
 void ProjectPrintWindow::on_m_draw_titleblock_cb_clicked()      { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_keep_conductor_color_cb_clicked() { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_draw_terminal_cb_clicked()        { m_preview->updatePreview(); }
+void ProjectPrintWindow::on_m_draw_terminal_names_cb_clicked()  { m_preview->updatePreview(); }
+void ProjectPrintWindow::on_m_component_info_cb_clicked()       { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_fit_in_page_cb_clicked()          { m_preview->updatePreview(); }
 void ProjectPrintWindow::on_m_use_full_page_cb_clicked()
 {
@@ -900,9 +871,16 @@ void ProjectPrintWindow::print()
 		// which prevents the black screen observed on Apple Silicon under
 		// macOS Sequoia (QPrintPreviewWidget + CALayer timing issue).
 		QTimer::singleShot(0, this, [this, pdfFile]() {
+			// Convert component-info link annotations into invisible text annotations
+			if (ui->m_component_info_cb->isChecked() && !m_componentInfoList.isEmpty()) {
+				PdfLinks::convertComponentInfoAnnotations(pdfFile, m_componentInfoList);
+				m_componentInfoList.clear();
+			}
+
 			// Convert URI link annotations into native internal GoTo/FitR
 			// actions so cross-references jump inside the document.
 			PdfLinks::convertUriToGoTo(pdfFile);
+
 			this->close();
 		});
 	} else {

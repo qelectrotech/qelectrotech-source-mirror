@@ -21,6 +21,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetinformation.h"
 #include "qgimanager.h"
 
 /**
@@ -75,6 +76,13 @@ void PasteDiagramCommand::redo()
 	{
 		first_redo = false;
 
+		//make new uuid for every pasted conductor, because old uuid are
+		//the uuid of the copied conductor
+		const QList <Conductor *> all_pasted_conductors = content.conductors();
+		for (Conductor *c : all_pasted_conductors) {
+			c -> newUuid();
+		}
+
 		//this is the first paste, we do some actions for the new element
 		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list)
@@ -90,14 +98,41 @@ void PasteDiagramCommand::redo()
 				dc.addValue("label", "");
 				dc.addValue("comment", "");
 				dc.addValue("location", "");
+
+				// PLC slaves store master data (type, address, comment,
+				// cross-ref, etc.) in their own elementInformations.
+				// Remove them the same way MasterElement::unlinkElement()
+				// does, so pasted PLC slaves start clean like regular
+				// slaves.
+				if (e->linkType() == Element::Slave) {
+					dc.remove(QETInformation::ELMT_PLC_TYPE);
+					dc.remove(QETInformation::ELMT_PLC_ADDRESS);
+					dc.remove(QETInformation::ELMT_PLC_FUNCTION);
+					dc.remove(QETInformation::ELMT_PLC_COMMENT);
+					dc.remove(QETInformation::ELMT_PLC_CROSSREF);
+					dc.remove(QETInformation::ELMT_LABEL);
+					dc.remove(QETInformation::ELMT_PLC_TC);
+					dc.remove(QETInformation::ELMT_PLC_T1);
+					dc.remove(QETInformation::ELMT_PLC_T2);
+					dc.remove(QETInformation::ELMT_PLC_T3);
+					dc.remove(QETInformation::ELMT_PLC_T4);
+					dc.remove(QStringLiteral("xref"));
+				}
+
 				e->setElementInformations(dc);
 				
-				//Reset the text of conductors
+				//Reset the text of conductors, the same way the label/comment/
+				//location above are reset to "" rather than to some other
+				//value - "erase on copy" means erase, not "replace with the
+				//project's default new-conductor text" (which happens to
+				//default to a literal "_" character, unrelated to whether the
+				//user wanted this copy's old label kept or cleared; see
+				//issue #413).
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
 				for (Conductor *c : conductors_list)
 				{
 					ConductorProperties cp = c -> properties();
-					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
+					cp.text = "";
 					c -> setProperties(cp);
 				}
 			}

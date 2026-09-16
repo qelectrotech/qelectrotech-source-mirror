@@ -99,6 +99,19 @@ class ElementData : public PropertiesInterface
 			int terminalCount = 1;    ///< Number of terminals for this IO (1-4)
 			QStringList terminals;    ///< Terminal values T1, T2, ... (size = terminalCount)
 
+			/**
+			 * @brief Return terminal labels, generating defaults (T1, T2...) if empty
+			 */
+			QStringList effectiveTerminals() const {
+				if (!terminals.isEmpty())
+					return terminals;
+				int count = qMax(terminalCount, 1);
+				QStringList defaults;
+				for (int i = 0; i < count && i < 4; ++i)
+					defaults << QStringLiteral("T%1").arg(i + 1);
+				return defaults;
+			}
+
 			bool operator==(const PlcIO &other) const {
 				return type == other.type
 					&& address == other.address

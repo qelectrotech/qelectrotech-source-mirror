@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../lastusedstyle.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
@@ -91,6 +92,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	m_previous_z_value = zValue();
+	m_uuid = QUuid::createUuid();
 
 		//Add this conductor to the list of conductors of each of the two terminals
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -126,11 +128,17 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	m_text_item = new ConductorTextItem(m_properties.text, this);
 	connect(m_text_item, &ConductorTextItem::textEdited, this, &Conductor::displayedTextChanged);
 
-		//Set the default conductor properties.
-	if (p1->diagram())
-		setProperties(p1->diagram()->defaultConductorProperties);
-	else if (p2->diagram())
-		setProperties(p2->diagram()->defaultConductorProperties);
+		//Set the default conductor properties. The color, specifically, is
+		//overridden by the last one applied via the F2 color editor this
+		//session (#879), the same way LastUsedStyle already does for shapes.
+	Diagram *dia = p1->diagram() ? p1->diagram() : p2->diagram();
+	if (dia)
+	{
+		ConductorProperties properties = dia->defaultConductorProperties;
+		if (LastUsedStyle::hasConductorColor())
+			properties.color = LastUsedStyle::conductorColor();
+		setProperties(properties);
+	}
 }
 
 /**
@@ -573,8 +581,23 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		painter -> setPen(final_conductor_pen);
 		painter -> setBrush(junction_brush);
 		painter -> setRenderHint(QPainter::Antialiasing, true);
+			// The junction dot has to read as a dot on top of the conductor
+			// that carries it, so it scales with the conductor width instead
+			// of being a fixed 3.0 across: on a wide conductor a 3.0 dot is
+			// narrower than the line and simply disappears (bugtracker #108).
+			//
+			// Floored at the historic 3.0 so nothing changes for the default
+			// width of 1.0 or anything thinner -- only the wide conductors
+			// the report is about are affected. m_properties.cond_size is
+			// used rather than the pen, whose width is inflated by 4 while
+			// the mouse is over the conductor.
+		const qreal junction_diameter = qMax(3.0, 3.0 * m_properties.cond_size);
+		const qreal junction_radius = junction_diameter / 2.0;
 		foreach(QPointF point, junctions_list) {
-			painter -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
+			painter -> drawEllipse(QRectF(point.x() - junction_radius,
+						      point.y() - junction_radius,
+						      junction_diameter,
+						      junction_diameter));
 		}
 	}
 
@@ -1005,6 +1028,22 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
+		//Older project files have no conductor uuid attribute at all --
+		//generate one on load, same treatment terminal uuids got when
+		//that field was introduced (see terminal1/terminal2 handling in
+		//toXml() below).
+	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid")));
+	m_persist_uuid = !m_uuid.isNull();
+	if (m_uuid.isNull()) {
+			//Absent, empty or malformed: mint one. A null uuid is not a usable
+			//identity -- every conductor carrying one would collide with every
+			//other on the conductor table's primary key. It's runtime-only,
+			//though: toXml() must not write it back out, or a legacy file
+			//with no conductor uuids gets a freshly different one on every
+			//single load-and-resave (see #754).
+		m_uuid = QUuid::createUuid();
+	}
+
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
 
@@ -1043,6 +1082,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 
+	if (m_persist_uuid)
+		dom_element.setAttribute("uuid", m_uuid.toString());
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 	
@@ -1725,14 +1766,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 			for (Conductor *c : other_conductors_list_t) {
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list);
 			}
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-			other_conductors += other_conductors_list_t.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
+
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());
-#endif
 		}
 	}
 

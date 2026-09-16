@@ -17,6 +17,8 @@
 */
 #include "qetxml.h"
 
+#include <algorithm>
+
 #include "NameList/nameslist.h"
 #include "utils/qetutils.h"
 
@@ -454,7 +456,14 @@ QDomElement QETXML::modelHeaderDataToXml(
 		//Iterate twice, first for horizontal header and second to vertical header
 	while (true)
 	{
-		for (auto section : data_hash.keys())
+			//Sorted: data_hash is a QHash, whose key order is randomised per
+			//process, so writing the sections in hash order reordered these
+			//<data> children on every save and made the save irreproducible.
+			//The roles within a section keep their given order, which is a
+			//QList and therefore already stable.
+		QList<int> sections = data_hash.keys();
+		std::sort(sections.begin(), sections.end());
+		for (auto section : std::as_const(sections))
 		{
 			for (auto role : data_hash.value(section))
 			{
