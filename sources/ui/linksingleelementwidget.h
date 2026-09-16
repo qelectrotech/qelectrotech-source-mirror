@@ -72,7 +72,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void setUpCompleter();
 		void clearTreeWidget();
 		void setUpHeaderLabels();
-		bool isMasterFull(QTreeWidgetItem *item) const;
+		void updateItemsVisibility();
 
 	private slots:
 		void diagramWasRemovedFromProject();
@@ -89,7 +89,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void on_m_show_this_pb_clicked();
 
 		void on_m_search_field_textEdited(const QString &arg1);
-		void on_m_hide_full_masters_cb_toggled(bool checked);
+		void hideFullMastersToggled(bool checked);
 
 	private:
 	Ui::LinkSingleElementWidget *ui;
@@ -106,7 +106,6 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 	Element *m_showed_element = nullptr,
 			*m_element_to_link = nullptr;
 
-	QCheckBox *m_hide_full_masters_cb{nullptr};
 	QSet<QTreeWidgetItem*> m_full_masters;
 
 	int m_pending_group_index = -1;
