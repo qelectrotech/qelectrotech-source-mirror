@@ -42,15 +42,12 @@ class TitleBlockTemplateRenderer : public QObject
 		void render(QPainter *, int);
 		void renderDxf(QRectF &, int, QString &, int);
 		void invalidateRenderedTemplate();
-		void setUseCache(bool);
-		bool useCache() const;
 	
 	private:
 		void renderToQPicture(int);
 	
 	private:
 		const TitleBlockTemplate *m_titleblock_template;
-		bool m_use_cache;
 		QPicture m_rendered_template;
 		DiagramContext m_context;
 		int m_last_known_titleblock_width;

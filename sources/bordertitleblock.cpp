@@ -432,8 +432,6 @@ void BorderTitleBlock::titleBlockTemplateRemoved(
 	} else {
 		setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 	}
-	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
-	m_titleblock_template_renderer -> setUseCache(false);
 }
 
 /**
