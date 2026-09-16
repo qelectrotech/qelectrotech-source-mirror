@@ -54,7 +54,14 @@ class Element;
 	  the standard `pos` property for moves, DeleteQGraphicsItemCommand for
 	  removal) -- Ctrl+Z undoes a script's edits exactly as it would the
 	  equivalent manual ones, because they are, mechanically, the same
-	  commands on the same stack. One consequence worth knowing, not a bug:
+	  commands on the same stack. All four refuse on a read-only project,
+		  same as their GUI equivalents check Diagram::isReadOnly() before
+		  editing. addElement() also imports the element into the project's
+		  own embedded collection first (QETProject::importElement()), same
+		  as the drag-from-collection-panel path -- without it, the saved
+		  file referenced a definition outside the project and went missing
+		  on a machine without that same collection installed. One
+		  consequence worth knowing, not a bug:
 	  QPropertyUndoCommand merges consecutive commands on the same
 	  object+property when their text() also matches
 	  (QPropertyUndoCommand::mergeWith(), pre-existing), and
@@ -76,7 +83,11 @@ class Element;
 	Every method here is either non-blocking by construction or, for
 	messages, safe under QET::QetMessageBox's existing non-interactive mode
 	(already active for headless runs). Nothing here opens a dialog the
-	caller has to wait on.
+	caller has to wait on -- including addElement(), which detects an
+	import-collision case that would otherwise reach
+	QETProject::importElement()'s own ImportElementDialog::exec() and
+	refuses instead, rather than let a plain QDialog (not routed through
+	QetMessageBox) block a script the same way.
 */
 class QetScriptApi : public QObject
 {

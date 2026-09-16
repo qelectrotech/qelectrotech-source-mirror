@@ -18,14 +18,20 @@
 #include "qetscripting.h"
 
 #include "qetscriptapi.h"
+#include "../qetmessagebox.h"
 #include "../qetproject.h"
 
 #include <QFile>
 #include <QFileInfo>
+#include <QObject>
 #include <QTextStream>
 
 #ifdef QET_HAS_SCRIPTING
 #include <QJSEngine>
+#include <chrono>
+#include <condition_variable>
+#include <mutex>
+#include <thread>
 #endif
 
 namespace {
@@ -70,6 +76,16 @@ int run(const QStringList &args)
 	return runOnProject(script_path, &project, nullptr) ? 0 : 1;
 }
 
+namespace {
+	// A runaway script (an infinite loop, or just a very slow one) would
+	// otherwise freeze the GUI forever, or hang a CI job running --run with
+	// no way out. QJSEngine::setInterrupted() is documented callable from
+	// another thread; the engine polls it during evaluation and returns an
+	// error QJSValue, which the normal error-reporting path below already
+	// handles.
+	constexpr int kScriptTimeoutMs = 30000;
+}
+
 bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view)
 {
 	QFile file(scriptPath);
@@ -90,11 +106,43 @@ bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *v
 	engine.setObjectOwnership(api, QJSEngine::CppOwnership);
 	engine.globalObject().setProperty(QStringLiteral("qet"), qet_value);
 
+	// wait_for(), not sleep_for(): a script that finishes well inside the
+	// timeout must let the watchdog thread wake immediately, not force
+	// every run -- including a fast, successful one -- to block on join()
+	// for the full budget. Caught by testing this against a one-line
+	// script: it took the full 30 seconds to exit before this fix.
+	bool finished = false;
+	std::mutex mtx;
+	std::condition_variable cv;
+	std::thread watchdog([&]() {
+		std::unique_lock<std::mutex> lock(mtx);
+		cv.wait_for(lock, std::chrono::milliseconds(kScriptTimeoutMs), [&finished]{ return finished; });
+		if (!finished) {
+			engine.setInterrupted(true);
+		}
+	});
+
 	QJSValue result = engine.evaluate(source, scriptPath);
+	{
+		std::lock_guard<std::mutex> lock(mtx);
+		finished = true;
+	}
+	cv.notify_one();
+	watchdog.join();
+
 	if (result.isError()) {
-		err << "Script error: " << scriptPath << ":"
-			<< result.property(QStringLiteral("lineNumber")).toInt() << ": "
-			<< result.toString() << "\n";
+		const QString message = QStringLiteral("Script error: %1:%2: %3")
+				.arg(scriptPath)
+				.arg(result.property(QStringLiteral("lineNumber")).toInt())
+				.arg(result.toString());
+		err << message << "\n";
+		// Interactive "Run Script...": stderr is invisible to a user who
+		// launched the GUI normally (nowhere on Windows, easy to miss
+		// everywhere else). Headless --run has no GUI to show this in, and
+		// no session for it to block.
+		if (view) {
+			QET::QetMessageBox::critical(nullptr, QObject::tr("Script"), message);
+		}
 		return false;
 	}
 	return true;

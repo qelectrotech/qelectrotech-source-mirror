@@ -24,13 +24,14 @@
 #include "../diagramcontent.h"
 #include "../diagramview.h"
 #include "../factory/elementfactory.h"
+#include "../qet.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
+#include "../qetresult.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
 #include "../undocommand/deleteqgraphicsitemcommand.h"
 
-#include <QFile>
 #include <QTextStream>
 #include <QUndoCommand>
 
@@ -104,6 +105,26 @@ bool QetScriptApi::runFlag(const QString &flag, const QStringList &args)
 	}
 	QStringList full_args;
 	full_args << flag << path << args;
+
+	if (m_view)
+	{
+		// Interactive "Run Script...": CLIExport::run() opens a second,
+		// temporary QETProject on the same file the GUI already has open.
+		// Backups are only disabled on the headless --run path (main.cpp);
+		// here that second, short-lived project would otherwise manage its
+		// own KAutoSaveFile for the same path as the user's real, already
+		// open project, racing it and risking a stale-restore prompt next
+		// launch. Disable backups for just this one export and restore
+		// them right after -- the headless path must never see this
+		// change, since it depends on backups staying off for the whole
+		// run (see the crash note next to the other setBackupEnabled(false)
+		// call in main.cpp).
+		QETProject::setBackupEnabled(false);
+		const int result = CLIExport::run(full_args);
+		QETProject::setBackupEnabled(true);
+		return result == 0;
+	}
+
 	return CLIExport::run(full_args) == 0;
 }
 
@@ -181,26 +202,44 @@ bool QetScriptApi::setTitleBlock(const QString &output, const QStringList &assig
 	called save(): the element counted correctly in memory but the saved
 	file didn't have it, since the old implementation opened an unrelated,
 	unmodified second copy of the project to write.
+
+	With no output path, this goes through QETProject::write() -- the same
+	path "Enregistrer" uses -- so it honours read-only mode the same way,
+	updates saveddate/savedtime, and clears the modified flag. A plain
+	QFile write used to skip all of that and could tear the file on an
+	interruption, where write() goes through QET::writeXmlFile()'s
+	QSaveFile. With an explicit output path this is a save to a different
+	file, so it goes through QET::writeXmlFile() directly without touching
+	the project's own filePath() or read-only state, the same way "Save As"
+	targeting a writable location is allowed even for a project opened
+	read-only.
 	@param output path to write to; the project's own file path if empty
-	@return false if there is no output path to use, or the file could not
-	be opened for writing
+	@return false if there is no output path to use, or the write failed
 */
 bool QetScriptApi::save(const QString &output)
 {
 	if (!m_project) return false;
-	const QString path = output.isEmpty() ? m_project->filePath() : output;
-	if (path.isEmpty()) {
-		log(QStringLiteral("qet.save: no output path given and the project has none of its own -- pass one"));
+
+	if (output.isEmpty())
+	{
+		if (m_project->filePath().isEmpty()) {
+			log(QStringLiteral("qet.save: no output path given and the project has none of its own -- pass one"));
+			return false;
+		}
+		const QETResult result = m_project->write();
+		if (!result.isOk()) {
+			log(QStringLiteral("qet.save: %1").arg(result.errorMessage()));
+			return false;
+		}
+		return true;
+	}
+
+	QDomDocument xml_doc(m_project->toXml());
+	QString error_message;
+	if (!QET::writeXmlFile(xml_doc, output, &error_message)) {
+		log(QStringLiteral("qet.save: %1").arg(error_message));
 		return false;
 	}
-	QFile file(path);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		log(QStringLiteral("qet.save: cannot open '%1' for writing").arg(path));
-		return false;
-	}
-	QTextStream file_out(&file);
-	file_out << m_project->toXml().toString(4);
-	file.close();
 	return true;
 }
 
@@ -235,23 +274,76 @@ Element *QetScriptApi::findElement(int folioIndex, const QString &elementUuid) c
 	the interactive drag-from-collection-panel path uses (see
 	DiagramEventAddElement::addElement()) -- so Ctrl+Z undoes it exactly as
 	it would a manually dropped element.
+
+	Like that path, the element is first imported into the project's own
+	embedded collection (QETProject::importElement()): building straight
+	from a common://custom:// location without embedding it left the saved
+	.qet referencing a definition outside the project, missing on any
+	machine that doesn't have that same collection installed.
+
+	importElement() can, on a name collision with a different, already
+	embedded element, pop a modal dialog asking the user to choose -- with
+	nobody there to answer it in a script, headless or interactive, that is
+	exactly the hang class this whole API is built to avoid (see the class
+	comment). Detected and refused before it can happen, rather than risked.
+
 	@param folioIndex
 	@param locationPath an element collection path, e.g.
 	"embed://some/path.elmt" or "common://10_electric/...elmt"
 	@param x @param y target position, in the diagram's own coordinates
-	@return the new element's uuid (empty string on failure -- bad folio
-	index, or the location could not be resolved/built)
+	@return the new element's uuid (empty string on failure -- read-only
+	project, bad folio index, an import collision, or the location could
+	not be resolved/built)
 */
 QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, double x, double y)
 {
 	if (!m_project) return QString();
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addElement: project is read-only"));
+		return QString();
+	}
 	const QList<Diagram *> diagrams = m_project->diagrams();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
 	Diagram *diagram = diagrams.at(folioIndex);
 
-	ElementsLocation location(locationPath, m_project);
+	// ElementsLocation::setPath() forces ANY path to embed:// as soon as a
+	// non-null project is given, common://custom:// included -- passing
+	// m_project unconditionally here (as the pre-fix code did) silently
+	// turned every non-embed:: locationPath into a lookup for an embedded
+	// element that was never there. Caught by actually running this
+	// against a common:// path: "does not resolve to an element" even
+	// though the file plainly exists.
+	ElementsLocation location = locationPath.startsWith(QStringLiteral("embed://"))
+			? ElementsLocation(locationPath, m_project)
+			: ElementsLocation(locationPath);
+	if (!location.isElement() || !location.exist()) {
+		log(QStringLiteral("qet.addElement: '%1' does not resolve to an element").arg(locationPath));
+		return QString();
+	}
+
+	ElementsLocation import_location = location;
+	if (!(location.isProject() && location.project() == m_project))
+	{
+		const QString import_path = location.isFileSystem()
+				? QStringLiteral("import/") + location.collectionPath(false)
+				: location.collectionPath(false);
+		const ElementsLocation existing(import_path, m_project);
+		if (existing.exist() && existing.uuid() != location.uuid()) {
+			log(QStringLiteral("qet.addElement: '%1' would collide with a different element "
+								"already embedded under the same name -- refusing rather than "
+								"risk the interactive import-conflict dialog").arg(locationPath));
+			return QString();
+		}
+
+		import_location = m_project->importElement(location);
+		if (!import_location.exist()) {
+			log(QStringLiteral("qet.addElement: could not import '%1' into the project").arg(locationPath));
+			return QString();
+		}
+	}
+
 	int state = 0;
-	Element *element = ElementFactory::Instance()->createElement(location, nullptr, &state);
+	Element *element = ElementFactory::Instance()->createElement(import_location, nullptr, &state);
 	if (state) {
 		delete element;
 		log(QStringLiteral("qet.addElement: could not build element from '%1'").arg(locationPath));
@@ -271,6 +363,10 @@ QString QetScriptApi::addElement(int folioIndex, const QString &locationPath, do
 
 bool QetScriptApi::setElementPosition(int folioIndex, const QString &elementUuid, double x, double y)
 {
+	if (m_project && m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setElementPosition: project is read-only"));
+		return false;
+	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
 
@@ -301,6 +397,10 @@ bool QetScriptApi::moveElement(int folioIndex, const QString &elementUuid, doubl
 bool QetScriptApi::deleteElement(int folioIndex, const QString &elementUuid)
 {
 	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.deleteElement: project is read-only"));
+		return false;
+	}
 	Element *element = findElement(folioIndex, elementUuid);
 	if (!element) return false;
 	Diagram *diagram = m_project->diagrams().at(folioIndex);
