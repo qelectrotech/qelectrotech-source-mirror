@@ -426,8 +426,12 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 		if ((ori_depart == Qet::North && (ori_arrivee == Qet::South || ori_arrivee == Qet::West)) || (ori_depart == Qet::East && ori_arrivee == Qet::West)) {
 			// cas "3": bridge is vertical, at a shared x between depart.y()
 			// and arrivee.y() -- unnecessary exactly when depart and
-			// arrivee already share an x.
-			if (depart.x() != arrivee.x()) {
+			// arrivee already share an x. Compared qRound()ed, the same
+			// rounding the bridge coordinate itself is computed with below:
+			// an exact != would miss a pair that's already grid-equal after
+			// rounding but off by a sub-pixel remainder, and still route a
+			// degenerate bridge for it.
+			if (qRound(depart.x()) != qRound(arrivee.x())) {
 				int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
 				while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 				points << QPointF(ligne_inter_x, depart.y());
@@ -439,7 +443,7 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 			// and arrivee already share a y. (Always true in this branch,
 			// since "descendant" requires depart.y() < arrivee.y() strictly
 			// -- kept for symmetry with the "montant" branch below.)
-			if (depart.y() != arrivee.y()) {
+			if (qRound(depart.y()) != qRound(arrivee.y())) {
 				int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
 				while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 				points << QPointF(depart.x(), ligne_inter_y);
@@ -457,8 +461,9 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 			// depart.x() and arrivee.x() -- unnecessary exactly when depart
 			// and arrivee already share a y (the West->East case
 			// diagnosed for #734: two stubs extended onto the same y run
-			// straight into each other, no bridge needed).
-			if (depart.y() != arrivee.y()) {
+			// straight into each other, no bridge needed). Compared
+			// qRound()ed, same as the other three guards.
+			if (qRound(depart.y()) != qRound(arrivee.y())) {
 				int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
 				while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 				points << QPointF(depart.x(), ligne_inter_y);
@@ -468,7 +473,7 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 			// cas "4": bridge is vertical, at a shared x between depart.y()
 			// and arrivee.y() -- unnecessary exactly when depart and
 			// arrivee already share an x.
-			if (depart.x() != arrivee.x()) {
+			if (qRound(depart.x()) != qRound(arrivee.x())) {
 				int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
 				while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 				points << QPointF(ligne_inter_x, depart.y());
