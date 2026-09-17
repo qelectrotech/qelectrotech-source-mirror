@@ -38,7 +38,7 @@ jobs:
           # that appears to be about QElectroTech and is not.
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             extra-cmake-modules libkf6coreaddons-dev libkf6widgetsaddons-dev \
-            breeze-icon-theme
+            qt6-svg-plugins
 
       - uses: actions/checkout@v4
         with:
