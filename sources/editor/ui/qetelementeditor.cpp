@@ -619,6 +619,8 @@ void QETElementEditor::updateInformations()
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -652,6 +654,8 @@ void QETElementEditor::updateInformations()
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -678,6 +682,8 @@ void QETElementEditor::updateInformations()
 			}
 			else {
 				qDebug() << "Editor refused part.";
+				clearToolsDock();
+				m_tools_dock_stack->setCurrentIndex(0);
 			}
 		}
 	}
