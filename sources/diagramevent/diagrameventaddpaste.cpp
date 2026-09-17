@@ -58,22 +58,30 @@
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
 	if (movable.isEmpty()) return;
 
-		//Compute the bounding rect centre — this is where the cursor
-		//will start.  Items stay at their original XML positions;
+		//Compute the top-left of all items' positions (not bounding
+		//rects) and snap to grid — used only for the initial cursor
+		//warp.  Items stay at their original XML positions;
 		//moveTo() handles grid-snapped movement via deltas.
-	QRectF group_rect;
+	QPointF top_left;
+	bool first = true;
 	for (auto *item : movable) {
-		group_rect = group_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
+		const QPointF p = item->pos();
+		if (first) {
+			top_left = p;
+			first = false;
+		} else {
+			if (p.x() < top_left.x()) top_left.setX(p.x());
+			if (p.y() < top_left.y()) top_left.setY(p.y());
+		}
 	}
-
 	QSettings settings;
 	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
 					  Diagram::xGrid).toInt();
 	const int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
 					  Diagram::yGrid).toInt();
 	const QPointF grid_origin(
-		qRound(group_rect.topLeft().x() / xGrid) * xGrid,
-		qRound(group_rect.topLeft().y() / yGrid) * yGrid);
+		qRound(top_left.x() / xGrid) * xGrid,
+		qRound(top_left.y() / yGrid) * yGrid);
 
 		//Store each item's position.  moveTo() applies a grid-snapped
 		//delta from the baseline, so items preserve their layout and
