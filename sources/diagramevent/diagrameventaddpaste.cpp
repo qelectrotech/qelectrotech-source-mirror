@@ -87,12 +87,12 @@ DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &star
 */
 DiagramEventAddPaste::~DiagramEventAddPaste()
 {
-	if (!m_finished && m_diagram) {
-		cancel();
+	if (!m_finished) {
+		removeItems();
+		m_finished = true;
+		m_running = false;
 	}
-	if (m_status_bar) {
-		m_status_bar->clearMessage();
-	}
+	if (m_status_bar) m_status_bar->clearMessage();
 }
 
 /**
@@ -138,6 +138,10 @@ void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 		if (it.key()) {
 			it.key()->setPos(anchor + it.value());
 		}
+	}
+	const auto conductors = m_content.conductors();  // AnyConductor by default
+	for (auto *cond : conductors) {
+		cond->updatePath();
 	}
 }
 
@@ -216,13 +220,14 @@ void DiagramEventAddPaste::commit()
 void DiagramEventAddPaste::cancel()
 {
 	if (m_finished || !m_diagram) return;
+	removeItems();
 	m_finished = true;
 	m_running = false;
+	emit finish();  // only the user-driven path signals
+}
 
-		//Conductors first: they hold pointers to the terminals of the
-		//elements below, so removing an element out from under one would
-		//leave it pointing at freed memory for as long as it is still in the
-		//scene.
+void DiagramEventAddPaste::removeItems()
+{
 	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
 	for (auto *conductor : conductors) {
 		m_diagram->removeItem(conductor);
@@ -237,5 +242,4 @@ void DiagramEventAddPaste::cancel()
 
 	m_content.clear();
 	m_relative_pos.clear();
-	emit finish();
 }

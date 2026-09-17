@@ -73,6 +73,7 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		void commit();
 		void cancel();
 		void showHint();
+		void removeItems();
 
 		DiagramContent m_content;
 			///Each movable item's position relative to the group's top left,
