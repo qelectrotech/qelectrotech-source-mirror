@@ -87,12 +87,14 @@ DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &star
 */
 DiagramEventAddPaste::~DiagramEventAddPaste()
 {
-	if (!m_finished) {
+	if (!m_finished && m_diagram) {
 		removeItems();
 		m_finished = true;
 		m_running = false;
 	}
-	if (m_status_bar) m_status_bar->clearMessage();
+	if (m_status_bar) {
+		m_status_bar->clearMessage();
+	}
 }
 
 /**
@@ -164,13 +166,13 @@ void DiagramEventAddPaste::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (!m_running) return;
 
+	event->setAccepted(true);
 	if (event->button() == Qt::LeftButton) {
 		moveTo(event->scenePos());
 		commit();
 	} else if (event->button() == Qt::RightButton) {
 		cancel();
 	}
-	event->setAccepted(true);
 }
 
 void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
@@ -179,15 +181,15 @@ void DiagramEventAddPaste::keyPressEvent(QKeyEvent *event)
 
 	switch (event->key()) {
 		case Qt::Key_Escape:
-			cancel();
 			event->setAccepted(true);
+			cancel();
 			break;
 			//Return and Enter drop the paste where it stands, so the whole
 			//operation can be completed without a mouse.
 		case Qt::Key_Return:
 		case Qt::Key_Enter:
-			commit();
 			event->setAccepted(true);
+			commit();
 			break;
 		default:
 			break;

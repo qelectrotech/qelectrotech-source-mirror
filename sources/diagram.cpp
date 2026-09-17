@@ -801,6 +801,11 @@ void Diagram::clearEventInterface()
 	}
 }
 
+bool Diagram::eventInterfaceIsRunning() const
+{
+	return m_event_interface && m_event_interface->isRunning();
+}
+
 /**
 	@brief Diagram::conductorsAutonumName
 	@return the name of autonum to use.
