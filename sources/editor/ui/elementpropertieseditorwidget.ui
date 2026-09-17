@@ -55,6 +55,43 @@
        </layout>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="designationLetterLayout">
+         <item>
+          <widget class="QLabel" name="m_designation_letter_label">
+           <property name="text">
+            <string>Lettre de désignation :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="m_designation_letter_le">
+           <property name="maximumWidth">
+            <number>60</number>
+           </property>
+           <property name="maxLength">
+            <number>4</number>
+           </property>
+           <property name="toolTip">
+            <string>Lettre de désignation IEC 81346 pour cet élément (ex. K, RB). Laisser vide pour utiliser la lettre déduite de la catégorie.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="designationLetterSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QCheckBox" name="m_exclude_from_bom_cb">
          <property name="styleSheet">
           <string>margin: 5px; font-weight: bold;</string>

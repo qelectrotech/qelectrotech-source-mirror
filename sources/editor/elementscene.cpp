@@ -462,6 +462,9 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 
 	QetVersion::toXmlAttribute(root);
 	root.setAttribute("link_type", m_element_data.typeToString(m_element_data.m_type));
+	if (!m_element_data.m_designation_letter.isEmpty()) {
+		root.setAttribute("designation_letter", m_element_data.m_designation_letter);
+	}
 
 	//Uuid used to compare two elements
 	QDomElement uuid = xml_document.createElement("uuid");

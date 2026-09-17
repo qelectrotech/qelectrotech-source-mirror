@@ -193,6 +193,8 @@ void ElementPropertiesEditorWidget::upDateInterface()
 	ui->m_exclude_from_bom_cb->setChecked(
 		m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString() == QLatin1String("true"));
 
+	ui->m_designation_letter_le->setText(m_data.m_designation_letter);
+
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
 }
 
@@ -436,6 +438,8 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 		m_data.m_informations.addValue(QStringLiteral("exclude_from_bom"), QStringLiteral("true"));
 	else
 		m_data.m_informations.remove(QStringLiteral("exclude_from_bom"));
+
+	m_data.m_designation_letter = ui->m_designation_letter_le->text().trimmed();
 
 	this->close();
 }

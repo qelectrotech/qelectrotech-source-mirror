@@ -151,6 +151,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void zoomToLinkedElement();
 		void parentElementRotationChanged();
 		void thisRotationChanged();
+		static QString labelOrPrefixPlaceholder(Element *element, const QString &actual_label);
 
 	private:
 		QPointer <Element>
