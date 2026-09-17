@@ -733,7 +733,7 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 				//way off the canvas for someone working without a mouse.
 				//Escape steps back out: first it drops the selection, then it
 				//hands focus to the next widget.
-			if (m_diagram && m_diagram->hasEventInterface()) {
+			if (m_diagram && m_diagram->eventInterfaceIsRunning()) {
 				QGraphicsView::keyPressEvent(e);  // let the active tool see it
 				return;
 			}
