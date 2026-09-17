@@ -21,6 +21,7 @@
 #include "../qetapp.h"
 #include "../qetversion.h"
 
+#include <QCoreApplication>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
@@ -104,12 +105,81 @@ void QetLogger::installCrashHandler()
 	if (m_disabled) {
 		return;
 	}
-	CrashHandler::install(&m_ring, crashDumpPath());
+		//Fixed for the life of the process: the handler copies it into a
+		//preallocated buffer, and pendingCrashDumpFiles() needs to know
+		//which file is this run's own so it doesn't offer it back.
+	m_crash_dump_path = buildCrashDumpPath();
+	CrashHandler::install(&m_ring, m_crash_dump_path);
 }
 
-QString QetLogger::crashDumpPath() const
+/**
+	@brief QetLogger::crashDumpDir
+	@return the directory holding crash dumps, created if missing.
+
+	A directory rather than a single file, because dumps are per-run and
+	several can be waiting at once.
+*/
+QString QetLogger::crashDumpDir() const
 {
-	return m_log_dir % QStringLiteral("/crash_dump.log");
+	const QString dir = m_log_dir % QStringLiteral("/crashes");
+	QDir().mkpath(dir);
+	return dir;
+}
+
+/**
+	@brief QetLogger::buildCrashDumpPath
+	@return where this run would write a crash dump.
+
+	One file per run, rather than a single fixed crash_dump.log. That old
+	scheme opened one path with O_TRUNC, so a second crash overwrote the
+	first: someone who crashed ten times still ended up with exactly one
+	dump, the most recent. Reported on #898 -- "the report appeared only
+	once despite there being 10 or more crashes" -- where losing the
+	earlier dumps mattered as much as never being shown them.
+
+	Built here in normal context and handed to CrashHandler::install(),
+	which copies it into a preallocated buffer, so the handler still
+	writes to one fixed path and its no-allocation invariant is untouched.
+*/
+QString QetLogger::buildCrashDumpPath() const
+{
+	return crashDumpDir()
+		% QStringLiteral("/crash_")
+		% QDateTime::currentDateTime().toString(QStringLiteral("yyyyMMdd-hhmmss"))
+		% QStringLiteral("_")
+		% QString::number(QCoreApplication::applicationPid())
+		% QStringLiteral(".log");
+}
+
+/**
+	@brief QetLogger::pendingCrashDumpFiles
+	@return dumps left by previous runs, newest first.
+
+	This run's own path is excluded: it does not exist yet unless this run
+	is itself crashing, and a handler mid-crash is in no position to be
+	offered a dialog.
+*/
+QStringList QetLogger::pendingCrashDumpFiles() const
+{
+	QDir dir(crashDumpDir());
+	dir.setNameFilters({QStringLiteral("crash_*.log")});
+	dir.setFilter(QDir::Files);
+	dir.setSorting(QDir::Time);
+
+	QStringList files;
+	const QFileInfoList entries = dir.entryInfoList();
+	for (const QFileInfo &info : entries)
+	{
+		if (info.size() <= 0) {
+			continue;
+		}
+		if (!m_crash_dump_path.isEmpty()
+				&& info.absoluteFilePath() == QFileInfo(m_crash_dump_path).absoluteFilePath()) {
+			continue;
+		}
+		files << info.absoluteFilePath();
+	}
+	return files;
 }
 
 QString QetLogger::currentLogFilePath() const
@@ -362,22 +432,62 @@ bool QetLogger::hasPendingCrashDump() const
 	if (m_disabled) {
 		return false;
 	}
-	const QFileInfo info(crashDumpPath());
-	return info.exists() && info.isFile() && info.size() > 0;
+	return !pendingCrashDumpFiles().isEmpty();
 }
 
+/**
+	@brief QetLogger::pendingCrashDumpContents
+	@return every pending dump, newest first, concatenated.
+
+	All of them rather than only the latest: a crash that repeats is the
+	case where the earlier dumps are most worth having, since the
+	difference between them is the evidence. They are separated by a
+	banner so a reader can tell where one ends and the next begins, and
+	the whole thing is redacted as a single pass.
+*/
 QByteArray QetLogger::pendingCrashDumpContents() const
 {
-	QFile file(crashDumpPath());
-	if (!file.open(QIODevice::ReadOnly)) {
+	const QStringList files = pendingCrashDumpFiles();
+	if (files.isEmpty()) {
 		return QByteArray();
 	}
-	return redact(file.readAll());
+
+	QByteArray all;
+	if (files.size() > 1) {
+		all += QByteArray("QET: ") + QByteArray::number(files.size())
+			+ " crash dumps pending, newest first.\n\n";
+	}
+
+	for (const QString &path : files)
+	{
+		QFile file(path);
+		if (!file.open(QIODevice::ReadOnly)) {
+			continue;
+		}
+		all += "===== " + QFileInfo(path).fileName().toUtf8() + " =====\n";
+		all += file.readAll();
+		if (!all.endsWith('\n')) {
+			all += '\n';
+		}
+		all += '\n';
+	}
+
+	return redact(all);
 }
 
+/**
+	@brief QetLogger::clearPendingCrashDump
+	Drop the dumps that have just been offered.
+
+	Only those: a dump written by a run that crashed after this list was
+	taken would otherwise be deleted without ever being seen.
+*/
 void QetLogger::clearPendingCrashDump()
 {
-	QFile::remove(crashDumpPath());
+	const QStringList files = pendingCrashDumpFiles();
+	for (const QString &path : files) {
+		QFile::remove(path);
+	}
 }
 
 QByteArray QetLogger::buildDiagnosticsReport() const

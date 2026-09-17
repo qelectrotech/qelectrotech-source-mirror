@@ -136,7 +136,9 @@ class QetLogger
 		void rotateLocked();
 		void writeToFile(const QByteArray &line, QtMsgType type);
 		QString rotatedPath(int index) const;
-		QString crashDumpPath() const;
+		QString crashDumpDir() const;
+		QString buildCrashDumpPath() const;
+		QStringList pendingCrashDumpFiles() const;
 		QString currentLogFilePath() const;
 
 		static QByteArray sanitize(const QByteArray &input);
@@ -147,6 +149,10 @@ class QetLogger
 
 		QString m_log_dir;
 		QString m_base_name; // e.g. "20260803", resolved once in init()
+			/// This run's own dump path, fixed at installCrashHandler():
+			/// the handler writes here, and it is excluded when collecting
+			/// dumps left by previous runs.
+		QString m_crash_dump_path;
 
 		QMutex m_file_mutex;
 		QFile m_file;

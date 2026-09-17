@@ -36,6 +36,10 @@
 #include <csignal>
 #include <fcntl.h>
 #include <unistd.h>
+#if __has_include(<execinfo.h>)
+#include <execinfo.h>
+#define QET_CRASH_BACKTRACE 1
+#endif
 #endif
 
 namespace {
@@ -64,6 +68,39 @@ char g_altstack[65536];
 
 const int kHandledSignals[] = {SIGSEGV, SIGABRT, SIGBUS, SIGFPE, SIGILL};
 
+#ifdef QET_CRASH_BACKTRACE
+// Preallocated here for the same reason as everything else in this block:
+// backtrace() fills a caller-supplied array, so it needs no heap of its
+// own, and backtrace_symbols_fd() writes straight to the fd (unlike
+// backtrace_symbols(), which mallocs and is therefore unusable here).
+void *g_backtrace_frames[64];
+#endif
+
+// Async-signal-safe decimal formatting: write() takes a buffer, and there
+// is no snprintf on the POSIX async-signal-safe list. Writes into a
+// caller-owned buffer (stack, not heap) and returns the length used.
+int formatInt(char *buffer, int size, int value)
+{
+	if (size <= 0) return 0;
+	if (value == 0) {
+		buffer[0] = '0';
+		return 1;
+	}
+	char scratch[16];
+	int n = 0;
+	bool negative = value < 0;
+	unsigned int v = negative ? static_cast<unsigned int>(-(value + 1)) + 1u
+				  : static_cast<unsigned int>(value);
+	while (v > 0 && n < static_cast<int>(sizeof(scratch))) {
+		scratch[n++] = static_cast<char>('0' + (v % 10));
+		v /= 10;
+	}
+	int len = 0;
+	if (negative && len < size) buffer[len++] = '-';
+	while (n > 0 && len < size) buffer[len++] = scratch[--n];
+	return len;
+}
+
 void restoreDefaultAndReraise(int sig)
 {
 	struct sigaction sa {};
@@ -85,13 +122,46 @@ void signalHandler(int sig)
 		return;
 	}
 
-	// open/write/close are all on the POSIX async-signal-safe function
-	// list; nothing else is called here.
+	// open/write/close, and backtrace_symbols_fd, are all on the POSIX
+	// async-signal-safe function list; nothing else is called here.
 	const int fd = ::open(g_dump_path, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	if (fd >= 0) {
 		if (g_header_len > 0) {
 			::write(fd, g_header, static_cast<size_t>(g_header_len));
 		}
+
+		// Which signal killed it. The header is built once at install()
+		// and is therefore identical for every crash, so without this the
+		// dump never said what actually happened -- SIGSEGV and SIGABRT
+		// point at very different bugs.
+		char line[64];
+		int len = 0;
+		const char kSignalLabel[] = "Signal: ";
+		for (unsigned i = 0 ; i < sizeof(kSignalLabel) - 1 ; ++i) {
+			line[len++] = kSignalLabel[i];
+		}
+		len += formatInt(line + len, static_cast<int>(sizeof(line)) - len - 1, sig);
+		line[len++] = '\n';
+		::write(fd, line, static_cast<size_t>(len));
+
+#ifdef QET_CRASH_BACKTRACE
+		// The log ring says what the program was doing; this says where it
+		// was when it died. backtrace() is warmed in install() so its
+		// first-call lazy resolution cannot allocate here, and
+		// backtrace_symbols_fd() writes to the fd without allocating --
+		// unlike backtrace_symbols(), which mallocs and must not be used.
+		const char kBacktraceLabel[] = "--- backtrace ---\n";
+		::write(fd, kBacktraceLabel, sizeof(kBacktraceLabel) - 1);
+		const int frames = ::backtrace(g_backtrace_frames,
+					       static_cast<int>(sizeof(g_backtrace_frames)
+								/ sizeof(g_backtrace_frames[0])));
+		if (frames > 0) {
+			::backtrace_symbols_fd(g_backtrace_frames, frames, fd);
+		}
+		const char kRingLabel[] = "--- log ---\n";
+		::write(fd, kRingLabel, sizeof(kRingLabel) - 1);
+#endif
+
 		if (g_ring) {
 			g_ring->dumpToFd(fd);
 		}
@@ -158,6 +228,15 @@ void CrashHandler::install(const LogRing *ring, const QString &dump_path)
 	ss.ss_size = sizeof(g_altstack);
 	ss.ss_flags = 0;
 	sigaltstack(&ss, nullptr);
+
+#ifdef QET_CRASH_BACKTRACE
+	// Warm the unwinder. backtrace()'s *first* call resolves dynamic
+	// linker state and may allocate; every call after that does not. Doing
+	// it here, in normal context, is what lets the handler call it without
+	// breaking invariant 2. The result is deliberately discarded.
+	void *warmup[4];
+	(void) ::backtrace(warmup, 4);
+#endif
 
 	struct sigaction sa {};
 	sa.sa_handler = signalHandler;
