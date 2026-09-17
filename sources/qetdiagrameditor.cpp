@@ -1754,6 +1754,10 @@ void QETDiagramEditor::addItemGroupTriggered(QAction *action)
 		// here makes the button's appearance match its actual state
 		// regardless of whether Qt's own change notification fired
 		// correctly.
+		
+		if (DiagramView *dv = currentDiagramView())
+			dv->setFocus();  // so the view (and the active tool) actually receives Escape etc
+
 		if (QWidget *button = m_add_item_tool_bar->widgetForAction(action))
 			button->update();
 	}

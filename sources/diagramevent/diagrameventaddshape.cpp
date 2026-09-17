@@ -317,10 +317,16 @@ void DiagramEventAddShape::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 	did anything. Re-running the last known mouse position through
 	applyPosition() here makes the key press or release itself the
 	trigger, giving immediate feedback instead of waiting on chance.
+	Any other key falls back to standard handling, e.g. pressing ESC aborts the operation.
 */
 void DiagramEventAddShape::keyPressEvent(QKeyEvent *event)
 {
-	reapplyLastPosition(event);
+	if (event->key() == Qt::Key_Shift || event->key() == Qt::Key_Control) {
+		reapplyLastPosition(event);
+		event->setAccepted(true);
+	} else {
+		DiagramEventInterface::keyPressEvent(event);
+	}
 }
 
 void DiagramEventAddShape::keyReleaseEvent(QKeyEvent *event)
