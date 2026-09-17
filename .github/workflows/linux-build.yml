@@ -37,7 +37,8 @@ jobs:
           # Qt6{Core,Gui,Widgets,DBus}Tools, failing the configure with an error
           # that appears to be about QElectroTech and is not.
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            extra-cmake-modules libkf6coreaddons-dev libkf6widgetsaddons-dev
+            extra-cmake-modules libkf6coreaddons-dev libkf6widgetsaddons-dev \
+            breeze-icon-theme
 
       - uses: actions/checkout@v4
         with:
