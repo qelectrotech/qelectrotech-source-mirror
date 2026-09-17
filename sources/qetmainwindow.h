@@ -30,6 +30,8 @@ class QETMainWindow : public QMainWindow {
 	public:
 	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = Qt::Widget);
 	~QETMainWindow() override;
+
+	static bool refuseCloseWhileModal(QEvent *e);
 	
 	// methods
 	protected:

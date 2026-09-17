@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QAction>
+#include <QApplication>
 #include <QWhatsThis>
 #include <QMenu>
 #include <QMenuBar>
@@ -290,6 +291,9 @@ void QETMainWindow::activateMenuBar() {
 }
 
 bool QETMainWindow::event(QEvent *e) {
+	if (e -> type() == QEvent::Close && refuseCloseWhileModal(e)) {
+		return(true);
+	}
 	if (e -> type() == QEvent::WindowStateChange) {
 		updateFullScreenAction();
 	} else if (first_activation_ && e -> type() == QEvent::WindowActivate) {
@@ -297,6 +301,44 @@ bool QETMainWindow::event(QEvent *e) {
 		first_activation_ = false;
 	}
 	return(QMainWindow::event(e));
+}
+
+/**
+	@brief QETMainWindow::refuseCloseWhileModal
+	Refuse to close an editor window while any modal dialog is running.
+
+	A modal dialog's exec() runs a nested event loop. If a window is closed
+	during it, the window's WA_DeleteOnClose turns into a deleteLater() that
+	the *nested* loop processes: the window is destroyed while code that
+	belongs to it -- often the very function that opened the dialog -- is
+	still on the stack. Most of QET's dialogs are stack objects parented to
+	the window (BackupDialog, and every QET::QetMessageBox), so ~QWidget()
+	then deletes a stack object and the process aborts (issue #904). Even a
+	dialog without a parent would only trade that abort for a silent
+	use-after-free in the caller.
+
+	Qt already ignores window-manager close requests for a window blocked by
+	a modal, so this is only reachable through close() called directly: the
+	File > Quit action, which macOS moves into the application menu where it
+	stays usable during a modal, and QETApp::quitQET() from the system tray.
+
+	Handled in event(), before closeEvent() runs, because the editors'
+	closeEvent() starts closing projects before it decides whether to accept.
+	The dialog is raised so a refused quit is not silent.
+
+	@param e : the QEvent::Close being delivered
+	@return true if the close was refused and must not be processed further
+*/
+bool QETMainWindow::refuseCloseWhileModal(QEvent *e)
+{
+	QWidget *modal = QApplication::activeModalWidget();
+	if (!modal) {
+		return(false);
+	}
+	modal -> raise();
+	modal -> activateWindow();
+	e -> ignore();
+	return(true);
 }
 
 /**
