@@ -83,21 +83,6 @@ for tool in Xvfb openbox xdotool; do
     command -v "$tool" >/dev/null || { echo "missing required tool: $tool" >&2; exit 2; }
 done
 
-# Qt 5 cannot prove anything here. An unfixed Qt 5 build of master survives
-# this scenario every time -- measured, not assumed -- so a Qt 5 run reports
-# PASS whether or not the bug is present. Refusing is the only honest answer:
-# a green that cannot go red is worse than no test.
-#
-# Reproduced on Qt 6.10.2, which is also the version in the original report.
-# Whether older Qt 6 reproduces it is UNVERIFIED -- if you run this on Qt 6.2
-# or 6.4 and it passes, confirm against a deliberately unfixed build before
-# believing it.
-if ldd "$BINARY" 2>/dev/null | grep -q "libQt5Core"; then
-    echo "INCONCLUSIVE: $BINARY links Qt 5." >&2
-    echo "      This crash only reproduces on Qt 6; an unfixed Qt 5 build" >&2
-    echo "      survives every attempt. Build against Qt 6 to use this gate." >&2
-    exit 2
-fi
 
 SANDBOX="$(mktemp -d /tmp/qet-ipc-regression.XXXXXX)"
 LOG_DIR="$SANDBOX/logs"; mkdir -p "$LOG_DIR"

@@ -16,7 +16,6 @@
 
 message(" - fetch_kdeaddons")
 
-# TODO remove path as soon as Qt5 gets retired
 if(BUILD_WITH_KF)
   Include(FetchContent)
 
@@ -24,16 +23,9 @@ if(BUILD_WITH_KF)
 
   if(BUILD_KF)
 
-    if(KF_MAJOR_VERSION EQUAL 5)
-      if(NOT DEFINED KF_GIT_TAG)
-        #https://qelectrotech.org/forum/viewtopic.php?pid=13924#p13924
-        set(KF_GIT_TAG v5.77.0)
-      endif()
-    else()
-      if(NOT DEFINED KF_GIT_TAG)
-        # this is a more or less random version, taken as an conservative approach
-        set(KF_GIT_TAG v6.10.0)
-      endif()
+    if(NOT DEFINED KF_GIT_TAG)
+      # this is a more or less random version, taken as an conservative approach
+      set(KF_GIT_TAG v6.10.0)
     endif()
     # using a function in order to limit the scope of the variables
     # with CMake >=3.25 we could use a block()
@@ -78,12 +70,12 @@ if(BUILD_WITH_KF)
     endfunction()
     qet_make_kf_available()
   else()
-    find_package(KF${KF_MAJOR_VERSION}CoreAddons REQUIRED)
-    find_package(KF${KF_MAJOR_VERSION}WidgetsAddons REQUIRED)
+    find_package(KF6CoreAddons REQUIRED)
+    find_package(KF6WidgetsAddons REQUIRED)
   endif()
 
   set(KF_PRIVATE_LIBRARIES
-    KF${KF_MAJOR_VERSION}::WidgetsAddons
-    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF6::WidgetsAddons
+    KF6::CoreAddons
     )
 endif()

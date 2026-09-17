@@ -216,11 +216,7 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 	}
 
 	QPointF drop_pos;
-	#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	drop_pos = mapToScene(event->pos());
-	#else
 	drop_pos = mapToScene(event->position().toPoint());
-	#endif
 
 	if (location.path().endsWith(".qetmak")) {
 		diagram()->setEventInterface(new DiagramEventAddMacro(location, diagram(), drop_pos));
@@ -295,13 +291,8 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 		iti -> setHtml (e -> mimeData() -> text());
 	}
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
-									iti, m_diagram, mapToScene(e->pos())));
-#else
 	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
 									iti, m_diagram, mapToScene(e->position().toPoint())));
-#endif
 }
 
 /**
@@ -611,14 +602,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 			QMenu *menu = new QMenu(this);
 			menu->addAction(act);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-			menu->popup(e->globalPos());
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-			menu->popup(e->pos());
-#endif
+			menu->popup(e->globalPosition().toPoint());
 		}
 
 		m_free_rubberbanding = false;
@@ -1416,9 +1400,6 @@ void DiagramView::createTemplateFromSelection()
 	QFile file(full_path);
 	if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		out.setCodec("UTF-8");	// Qt6 QTextStream defaults to UTF-8
-#endif
 		out << macro_doc.toString(4);
 		file.close();
 		qDebug() << "Template successfully saved to:" << full_path;
