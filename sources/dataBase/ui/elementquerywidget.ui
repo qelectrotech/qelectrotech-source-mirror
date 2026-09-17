@@ -388,6 +388,26 @@
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="m_import_reports_pb">
+        <property name="toolTip">
+         <string>Importer des rapports depuis un fichier</string>
+        </property>
+        <property name="text">
+         <string>Importer...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="m_export_reports_pb">
+        <property name="toolTip">
+         <string>Exporter tous les rapports enregistrés vers un fichier</string>
+        </property>
+        <property name="text">
+         <string>Exporter...</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -428,6 +448,19 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_query_warning_label">
+     <property name="styleSheet">
+      <string notr="true">color: red;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

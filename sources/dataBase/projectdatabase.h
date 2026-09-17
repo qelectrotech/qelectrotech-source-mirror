@@ -59,7 +59,8 @@ class projectDataBase : public QObject
 			*/
 		void setUpdateBlocked(bool blocked);
 		QETProject *project() const;
-		QSqlQuery newQuery(const QString &query = QString());
+		QSqlQuery newQuery(const QString &query = QString(), QString *error = nullptr);
+		static bool isReadOnlySelect(const QString &query, QString *error = nullptr);
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
