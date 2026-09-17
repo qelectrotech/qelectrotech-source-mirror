@@ -56,7 +56,6 @@
 void ProjectPrintWindow::launchDialog(QETProject *project, QPrinter::OutputFormat format, QWidget *parent)
 {
 	auto printer_ = new QPrinter();
-	QPrinter printer(QPrinter::HighResolution);
 	printer_->setDocName(ProjectPrintWindow::docName(project));
 	printer_->setPageOrientation(QPageLayout::Landscape);
 
@@ -149,6 +148,11 @@ ProjectPrintWindow::ProjectPrintWindow(QETProject *project, QPrinter *printer, Q
 	ui->m_draw_terminal_cb->setChecked(exp.draw_terminals);
 	ui->m_draw_terminal_names_cb->setChecked(exp.draw_terminal_names);
 	ui->m_keep_conductor_color_cb->setChecked(exp.draw_colored_conductors);
+
+	QSettings settings;
+	ui->m_component_info_cb->setChecked(settings.value("print/default/componentinfo", false).toBool());
+	ui->m_fit_in_page_cb->setChecked(settings.value("print/default/fitinpage", true).toBool());
+	ui->m_use_full_page_cb->setChecked(settings.value("print/default/fullpage", false).toBool());
 
 	ui->m_date_cb->blockSignals(true);
 	ui->m_date_cb->setDate(QDate::currentDate());
@@ -657,6 +661,16 @@ void ProjectPrintWindow::loadPageSetupForCurrentPrinter()
 	settings.endGroup();
 }
 
+void ProjectPrintWindow::savePrintProperties()
+{
+	QSettings settings;
+	exportProperties().toSettings(settings, "print/default");
+	settings.setValue("print/default/componentinfo", ui->m_component_info_cb->isChecked());
+	settings.setValue("print/default/fitinpage", ui->m_fit_in_page_cb->isChecked());
+	settings.setValue("print/default/fullpage", ui->m_use_full_page_cb->isChecked());
+	settings.sync();
+}
+
 void ProjectPrintWindow::savePageSetupForCurrentPrinter()
 {
 	QSettings settings;
@@ -842,6 +856,7 @@ void ProjectPrintWindow::print()
 	                      // is created/destroyed inside that call
 
 	savePageSetupForCurrentPrinter();
+	savePrintProperties();
 
 	if (isPdf && !pdfFile.isEmpty()) {
 		// Defer post-processing and window close to the next event-loop
