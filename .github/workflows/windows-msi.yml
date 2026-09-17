@@ -42,6 +42,9 @@ jobs:
       pages: write
       id-token: write  # Required by SignPath
 
+    env:
+      SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+
     outputs:
       qt6_msi: ${{ steps.export.outputs.msi_name_qt6 }}
 
@@ -290,7 +293,8 @@ jobs:
       # PR/run must never attempt a signing request.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
       - name: Sign MSI via SignPath
-        if: github.repository == 'qelectrotech/qelectrotech-source-mirror'
+        id: sign
+        if: github.repository == 'qelectrotech/qelectrotech-source-mirror' && env.SIGNPATH_API_TOKEN != ''
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -345,7 +349,7 @@ jobs:
         run: |
           Write-Host "=== MSI build summary (${{ matrix.flavor }}) ==="
           Write-Host "Version : ${{ steps.version.outputs.VERSION_DISPLAY }}"
-          Write-Host "Signed  : true"
+          Write-Host "Signed  : ${{ steps.sign.outcome == 'success' }}"
 
   # ---------------------------------------------------------------------------
   # Job 2 : Génère et déploie la page GitHub Pages une fois le MSI publié,
