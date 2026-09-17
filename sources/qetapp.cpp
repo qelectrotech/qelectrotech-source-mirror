@@ -2660,14 +2660,28 @@ void QETApp::checkBackupFiles()
 		}
 	}
 
-	if (stale_files.isEmpty()) {
-		// Only offer an unretrieved crash dump when there's no project
-		// to recover this run -- discussion #644 step 5 is explicit
-		// that the two prompts must never both show at once.
-		checkCrashDump();
-		return;
+	if (!stale_files.isEmpty()) {
+		offerBackupFiles(stale_files);
 	}
 
+	// Discussion #644 step 5 asks that the recovery prompt and the crash
+	// report never show at the same time -- not that the report be dropped
+	// whenever there is something to recover. Offering it here, once the
+	// recovery prompt has been answered, keeps the two sequential without
+	// losing the report after the most common crash there is: one with a
+	// project open, which always leaves a stale file behind, so the report
+	// was unreachable in exactly the case it is most wanted (issue #901).
+	checkCrashDump();
+}
+
+/**
+	@brief QETApp::offerBackupFiles
+	Ask whether to reopen the recovery files left by a previous run, and
+	open or discard them accordingly.
+	@param stale_files : the recovery files to offer
+*/
+void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
+{
 	QString text;
 	if(stale_files.size() == 1) {
 		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
