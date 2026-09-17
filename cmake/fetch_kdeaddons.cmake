@@ -25,7 +25,7 @@ if(BUILD_WITH_KF)
 
     if(NOT DEFINED KF_GIT_TAG)
       # this is a more or less random version, taken as an conservative approach
-      set(KF_GIT_TAG v6.10.0)
+      set(KF_GIT_TAG v6.28.0)
     endif()
     # using a function in order to limit the scope of the variables
     # with CMake >=3.25 we could use a block()
