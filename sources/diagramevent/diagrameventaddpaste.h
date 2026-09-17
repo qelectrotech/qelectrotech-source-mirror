@@ -75,12 +75,20 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		void showHint();
 		void removeItems();
 
-		DiagramContent m_content;
-			///Each movable item's position relative to the group's top left,
-			///taken once so repeated moves cannot accumulate rounding drift.
-		QHash<QGraphicsItem *, QPointF> m_relative_pos;
-		QPointer<QStatusBar> m_status_bar;
-		bool m_finished{false};
+	DiagramContent m_content;
+		///Each movable item's position relative to the group's top left,
+		///taken once so repeated moves cannot accumulate rounding drift.
+	QHash<QGraphicsItem *, QPointF> m_relative_pos;
+		///Top-left corner of the bounding rect of all movable items,
+		///in scene coordinates, captured when the paste starts.
+	QPointF m_group_origin;
+		///Cursor position (scene coords) at the moment the paste starts,
+		///so delta-based movement can compute offsets from the initial point.
+	QPointF m_initial_cursor;
+		///Set to true once the first moveTo() captures the real cursor position.
+	bool m_baseline_captured{false};
+	QPointer<QStatusBar> m_status_bar;
+	bool m_finished{false};
 };
 
 #endif // DIAGRAMEVENTADDPASTE_H
