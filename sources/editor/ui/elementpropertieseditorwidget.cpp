@@ -44,6 +44,7 @@
 #include <QSplitter>
 #include <QShortcut>
 #include <QMenu>
+#include <QRegularExpression>
 #include <QRegularExpressionValidator>
 
 /**
@@ -287,6 +288,27 @@ void ElementPropertiesEditorWidget::setUpInterface()
 		}
 	});
 
+		// Designation letter. Every letter this project actually uses is
+		// uppercase ASCII -- the single letters in qet_labels.xml and the
+		// compound codes RB, KF, YB, EH alike -- so reject anything else
+		// outright, and uppercase while the user types rather than
+		// silently rewriting the field when the dialog is accepted.
+	ui->m_designation_letter_le->setValidator(
+				new QRegularExpressionValidator(
+					QRegularExpression(QStringLiteral("[A-Za-z]{0,4}")),
+					ui->m_designation_letter_le));
+	connect(ui->m_designation_letter_le, &QLineEdit::textEdited,
+		this, [this](const QString &text)
+	{
+		const QString upper = text.toUpper();
+		if (upper != text)
+		{
+			const int position = ui->m_designation_letter_le->cursorPosition();
+			ui->m_designation_letter_le->setText(upper);
+			ui->m_designation_letter_le->setCursorPosition(position);
+		}
+	});
+
 	populateTree();
 }
 
@@ -439,7 +461,10 @@ void ElementPropertiesEditorWidget::on_m_buttonBox_accepted()
 	else
 		m_data.m_informations.remove(QStringLiteral("exclude_from_bom"));
 
-	m_data.m_designation_letter = ui->m_designation_letter_le->text().trimmed();
+		//Upper-cased here as well as on edit, so a lowercase value that
+		//came from an existing .elmt and was never touched is normalised
+		//too, not just what the user typed in this session.
+	m_data.m_designation_letter = ui->m_designation_letter_le->text().trimmed().toUpper();
 
 	this->close();
 }
