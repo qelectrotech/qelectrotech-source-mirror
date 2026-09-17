@@ -120,6 +120,11 @@ class Element : public QetGraphicsItem
 		QList<Conductor *> conductors() const;
 		QList<QPair<Terminal *,Terminal *>> AlignedFreeTerminals() const;
 
+		void clearPendingLinks() {
+			tmp_uuids_link.clear();
+			m_group_index_map.clear();
+		}
+
 			//METHODS related to information
 		DiagramContext elementInformations()const
 		{return m_data.m_informations;}
