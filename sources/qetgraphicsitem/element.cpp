@@ -803,7 +803,20 @@ bool Element::fromXml(QDomElement &e,
 	m_uuid = QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString()));
 
 		//load prefix
-	m_prefix = e.attribute(QStringLiteral("prefix"));
+		//Only when the saved project actually carries one. An absent or
+		//empty attribute means nothing resolved when that project was
+		//saved, not that the user cleared it -- setPrefix() has no UI
+		//path, so a prefix is always derived, never hand-edited. Letting
+		//an empty value through would overwrite what buildFromXml() just
+		//resolved, so an element that has since gained a
+		//designation_letter (or whose category has since gained a prefix)
+		//would stay blank forever in any project that predates it.
+		//A non-empty saved prefix still wins, so existing drawings keep
+		//the designation they were saved with.
+	const QString saved_prefix = e.attribute(QStringLiteral("prefix"));
+	if (!saved_prefix.isEmpty()) {
+		m_prefix = saved_prefix;
+	}
 
 	QString fl = e.attribute(QStringLiteral("freezeLabel"), QStringLiteral("false"));
 	m_freeze_label = fl == QLatin1String("false") ? false : true;
