@@ -1,0 +1,36 @@
+KDE Frameworks components bundled with QElectroTech
+=====================================================
+
+QElectroTech includes a minimal subset of the following KDE Frameworks
+libraries when the bundled minimal KF build is selected:
+
+  - KCoreAddons
+  - KWidgetsAddons
+
+The KDE-derived source files retain their original copyright and licensing
+notices. Unless a file states otherwise, those files are licensed under the
+GNU Library General Public License, version 2, or any later version
+(LGPL-2.0-or-later). The complete license text is provided in
+licenses/KDE-Frameworks.LICENSE.
+
+The bundled code is derived from KDE Frameworks, an independent project:
+
+  https://kde.org/
+  https://invent.kde.org/frameworks/kcoreaddons
+  https://invent.kde.org/frameworks/kwidgetsaddons
+
+The component-specific source provenance and file lists are documented in:
+
+  thirdparty/kcoreaddons/KDE-Frameworks.PROVENANCE
+  thirdparty/kwidgetsaddons/KDE-Frameworks.PROVENANCE
+
+Not all files in the thirdparty/kcoreaddons and thirdparty/kwidgetsaddons
+directories are part of KDE Frameworks. Files carrying a QElectroTech
+copyright/license header, including local build files, wrapper headers, and
+replacement support headers, were added by QElectroTech and are not KDE
+Frameworks library files. Those files are licensed under the QElectroTech
+license stated in the files and in the top-level LICENSE file.
+
+QElectroTech's use of this KDE-derived code does not imply that QElectroTech
+is endorsed by, affiliated with, or distributed by KDE e.V. or the KDE
+project.
