@@ -52,14 +52,25 @@ DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &star
 	m_diagram->fromXml(document_xml, Diagram::snapToGrid(start_pos), false, &m_content);
 	if (!m_content.count()) return;
 
-		//Remember where each item sits relative to the group's top left, so a
-		//move is one assignment per item rather than an accumulated delta.
-	QRectF group_rect;
+	//Remember where each item sits relative to the group's top left, so a
+	//move is one assignment per item rather than an accumulated delta.
+	//Built from pos(), not boundingRect(): the visual bounding box's
+	//corner is generally not a grid point even when every item's own
+	//pos() is, which would offset the whole paste off the grid by that
+	//fractional remainder once anchor gets snapped in moveTo().
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
+	QPointF top_left;
+	bool first = true;
 	for (auto *item : movable) {
-		group_rect = group_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
+		const QPointF p = item->pos();
+		if (first) {
+			top_left = p;
+			first = false;
+		} else {
+			if (p.x() < top_left.x()) top_left.setX(p.x());
+			if (p.y() < top_left.y()) top_left.setY(p.y());
+		}
 	}
-	const QPointF top_left = group_rect.topLeft();
 	for (auto *item : movable) {
 		m_relative_pos.insert(item, item->pos() - top_left);
 	}
