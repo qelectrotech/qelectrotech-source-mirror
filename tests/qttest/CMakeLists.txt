@@ -48,6 +48,18 @@ find_package(
  Test
  REQUIRED)
 
+# tst_crashhandler compiles crashhandler.cpp, which on a non-Windows build
+# may pull in backtrace(). Resolved the same way as in the top-level
+# CMakeLists so this directory also configures standalone -- on FreeBSD the
+# symbol lives in libexecinfo, not libc.
+if(NOT DEFINED Backtrace_FOUND)
+  find_package(Backtrace QUIET)
+  if(Backtrace_FOUND)
+    include_directories(${Backtrace_INCLUDE_DIRS})
+    add_compile_definitions(QET_CRASH_BACKTRACE)
+  endif()
+endif()
+
 include(../../cmake/fetch_kdeaddons.cmake)
 include(../../cmake/fetch_singleapplication.cmake)
 include(../../cmake/fetch_pugixml.cmake)
@@ -125,6 +137,41 @@ add_executable(
 add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+
+# CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
+# signal handler uses for the "Signal: N" line of a crash dump. Compiles
+# crashhandler.cpp and logring.cpp alongside; the handler deliberately
+# depends on nothing heavier than QByteArray.
+add_executable(
+  tst_crashhandler
+  tst_crashhandler.cpp
+  ${QET_DIR}/sources/logging/crashhandler.cpp
+  ${QET_DIR}/sources/logging/logring.cpp
+  ${QET_DIR}/sources/qetversion.cpp)
+add_test(NAME tst_crashhandler COMMAND tst_crashhandler)
+target_include_directories(tst_crashhandler PRIVATE ${QET_DIR}/sources)
+# Qt::Xml because crashhandler.cpp includes qetversion.h for the header it
+# builds at install() time, and that pulls in QDomElement.
+target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml ${Backtrace_LIBRARIES})
+
+# The crash-dump bookkeeping from #905: which dumps get listed, offered and
+# deleted, and what redact() masks. qetlogger.cpp needs exactly one symbol
+# from the application (QETApp::dataDir()), which the test supplies itself,
+# so this links the logging sources rather than the whole program.
+add_executable(
+  tst_crashdumps
+  tst_crashdumps.cpp
+  ${QET_DIR}/sources/logging/qetlogger.cpp
+  ${QET_DIR}/sources/logging/crashhandler.cpp
+  ${QET_DIR}/sources/logging/logring.cpp
+  ${QET_DIR}/sources/qetversion.cpp)
+add_test(NAME tst_crashdumps COMMAND tst_crashdumps)
+target_include_directories(tst_crashdumps PRIVATE
+  ${QET_DIR}
+  ${QET_DIR}/sources
+  ${QET_DIR}/sources/NameList
+  ${QET_DIR}/pugixml/src)
+target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml ${Backtrace_LIBRARIES})
 
 add_executable(
   tst_menubarkeyboard

@@ -101,6 +101,21 @@ else()
     message(STATUS "Qt Qml module not available: JavaScript scripting (--run) disabled")
 endif()
 
+# The crash handler writes a backtrace into the dump. Detecting this with
+# __has_include(<execinfo.h>) is not enough: the header is present on FreeBSD
+# too, but backtrace() lives in a separate libexecinfo there, so the compile
+# succeeds and the link fails. FindBacktrace resolves both the header and
+# whichever library actually provides the symbol, so gate on it instead - see
+# the QET_CRASH_BACKTRACE guard in sources/logging/crashhandler.cpp.
+find_package(Backtrace QUIET)
+if(Backtrace_FOUND)
+    list(APPEND QET_PRIVATE_LIBRARIES ${Backtrace_LIBRARIES})
+    include_directories(${Backtrace_INCLUDE_DIRS})
+    add_compile_definitions(QET_CRASH_BACKTRACE)
+else()
+    message(STATUS "backtrace() not available: crash dumps will carry the log ring without a backtrace")
+endif()
+
 find_package(SQLite3 REQUIRED)
 
 # CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
