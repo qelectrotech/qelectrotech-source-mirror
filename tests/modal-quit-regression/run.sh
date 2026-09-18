@@ -3,6 +3,12 @@
 # Quit-during-modal regression gate -- issue #904.
 #
 #   tests/modal-quit-regression/run.sh --binary build/qelectrotech
+#   tests/modal-quit-regression/run.sh --binary build/qelectrotech \
+#                                      --project read-only.elmt
+#
+# --project also picks the editor under test: QElectroTech chooses it from the
+# extension, so a .qet exercises QETDiagramEditor and a read-only .elmt
+# exercises QETElementEditor (which opens a message box of its own).
 #
 # WHAT IT GUARDS
 #
@@ -39,9 +45,13 @@
 # needed -- only gdb with Python.
 #
 # RESULT
-#   exit 0  PASS   quitQET() ran inside the modal loop and the process survived
-#   exit 1  FAIL   the process died of a signal after quitQET()
-#   exit 2  ERROR  the scenario never happened (no dialog, gdb problem, ...)
+#   exit 0   PASS   quitQET() ran inside the modal loop and the process survived
+#   exit 1   FAIL   the process died of a signal after quitQET()
+#   exit 2   ERROR  the scenario never happened (no dialog, gdb problem, ...)
+#   exit 77  SKIP   cannot run here: no gdb, a gdb without Python, or a
+#                   stripped binary. 77 is CTest's SKIP_RETURN_CODE, so a
+#                   build this test cannot drive is reported as skipped
+#                   rather than failed.
 #
 set -uo pipefail
 
@@ -68,9 +78,30 @@ if [ -z "$PROJECT" ]; then
 fi
 [ -f "$PROJECT" ] || { echo "no project found; pass --project" >&2; exit 2; }
 
-command -v gdb >/dev/null || { echo "missing required tool: gdb" >&2; exit 2; }
+skip() { echo "SKIP: $1"; exit 77; }
+
+command -v gdb >/dev/null || skip "gdb is not installed"
 gdb -batch -ex 'python import gdb' >/dev/null 2>&1 \
-    || { echo "gdb has no Python support" >&2; exit 2; }
+    || skip "this gdb has no Python support"
+
+# The scenario is driven by calling QETApp::instance() and QETApp::quitQET()
+# through gdb, so their symbols have to survive into the binary. A stripped
+# release build cannot be driven at all -- that is a property of the build,
+# not a failure of the code under test, so report it as skipped.
+#
+# Read nm's output once into a variable rather than piping it into grep -q:
+# grep -q exits at the first match, nm dies of SIGPIPE, and under `set -o
+# pipefail` the pipeline reports failure even though the symbol was found --
+# which would skip this test on every build that can actually run it.
+if command -v nm >/dev/null; then
+    SYMBOLS="$(nm -C "$BINARY" 2>/dev/null || true)"
+    for sym in "QETApp::instance()" "QETApp::quitQET()"; do
+        case "$SYMBOLS" in
+            *"$sym"*) ;;
+            *) skip "binary has no symbol for $sym (stripped build?)" ;;
+        esac
+    done
+fi
 
 SANDBOX="$(mktemp -d /tmp/qet-modal-quit.XXXXXX)"
 cleanup() { [ "${KEEP_LOGS:-0}" = "1" ] || rm -rf "$SANDBOX"; }
@@ -82,7 +113,12 @@ trap cleanup EXIT
 TEST_BINARY="$SANDBOX/qelectrotech-modalquit"
 cp "$BINARY" "$TEST_BINARY" || { echo "could not copy binary" >&2; exit 2; }
 
-cp "$PROJECT" "$SANDBOX/project.qet" || { echo "could not copy project" >&2; exit 2; }
+# Keep the original file name. QElectroTech decides what to open from the
+# extension, so copying a .elmt to "project.qet" would quietly turn an
+# element-editor run into a failed project load -- and the scenario would
+# still "work", against the wrong window.
+SANDBOX_PROJECT="$SANDBOX/$(basename "$PROJECT")"
+cp "$PROJECT" "$SANDBOX_PROJECT" || { echo "could not copy input file" >&2; exit 2; }
 
 export HOME="$SANDBOX/home"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -119,7 +155,7 @@ bt 20
 kill
 EOF
 
-gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX/project.qet" \
+gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
     > "$SANDBOX/gdb.log" 2>&1 &
 GDB_PID=$!
 ( sleep 120; kill -9 "$GDB_PID" 2>/dev/null ) &

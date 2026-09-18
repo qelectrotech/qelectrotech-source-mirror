@@ -18,7 +18,17 @@ tests/modal-quit-regression/run.sh --binary build/qelectrotech
 Needs `gdb` with Python. It runs on the offscreen platform, so no X server or
 window manager is required. Takes about ten seconds.
 
-Exit codes: `0` survived, `1` crashed, `2` the scenario did not happen.
+It is also registered with CTest on Linux (`ctest -R modal_quit_regression`).
+
+Exit codes: `0` survived, `1` crashed, `2` the scenario did not happen,
+`77` it could not run here.
+
+That last one matters for a release build. The scenario is driven by calling
+`QETApp::instance()` and `QETApp::quitQET()` through gdb, so those symbols have
+to survive into the binary: against a **stripped** build there is nothing to
+call, and the same applies without gdb or with a gdb built without Python. All
+three report 77, which is CTest's `SKIP_RETURN_CODE`, so a build this test
+cannot drive is skipped rather than failed.
 
 ## How it works, and why this way
 
@@ -38,5 +48,24 @@ the dialog's loop is running. The test does the same thing through gdb:
 It matches no window titles and no window ids. Titles are translated, and
 `tests/ipc-regression` once shipped a pass that could not fail because of that.
 
-Checked both ways before being committed: it fails on a build without the fix
-(signal 6, `free(): invalid size`) and passes with it.
+## Covering the element editor too
+
+`--project` decides which editor is under test, because QElectroTech picks the
+editor from the file extension. Pass a `.qet` and the run exercises
+`QETDiagramEditor`; pass a **read-only `.elmt`** and it exercises
+`QETElementEditor`, which shows a "file is read-only" message box on open and so
+reaches the same nested loop by a different route:
+
+```bash
+chmod -w some.elmt
+tests/modal-quit-regression/run.sh --binary build/qelectrotech --project some.elmt
+```
+
+That distinction is why the file name is preserved when it is copied into the
+sandbox. Renaming a `.elmt` to `project.qet` would make the run silently test
+the diagram editor again, and still report PASS.
+
+Checked both ways, in both editors, before being committed: without the fix the
+diagram-editor run aborts with signal 6 under `~QETDiagramEditor()` and the
+element-editor run with `double free or corruption` under
+`~QETElementEditor()`; with the fix both survive.

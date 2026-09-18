@@ -14,22 +14,17 @@
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech. If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 3.5)
-
-message(".____________________________________________________________________")
-project(unittests LANGUAGES CXX)
-
-message(". PROJECT_NAME              :" ${PROJECT_NAME})
-message(". PROJECT_SOURCE_DIR        :" ${PROJECT_SOURCE_DIR})
-
-# Add sub directories
-message(". Add sub directory catch")
-add_subdirectory(catch)
-message(". Add sub directory googletest")
-add_subdirectory(googletest)
-message(". Add sub directory googlemock")
-add_subdirectory(googlemock)
-message(". Add sub directory modal-quit-regression")
-add_subdirectory(modal-quit-regression)
-message(". Add sub directory qttest")
-add_subdirectory(qttest)
+# Issue #904 -- see run.sh for what this guards and how.
+#
+# Driven by gdb, so it is registered on Linux only. It reports 77 (SKIP)
+# rather than failing when it cannot run at all: no gdb, a gdb without
+# Python, or a stripped binary whose symbols it cannot call.
+if(UNIX AND NOT APPLE)
+  message(". Add test modal_quit_regression")
+  add_test(
+    NAME modal_quit_regression
+    COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/run.sh --binary $<TARGET_FILE:qelectrotech>)
+  set_tests_properties(modal_quit_regression PROPERTIES
+    SKIP_RETURN_CODE 77
+    TIMEOUT 180)
+endif()
