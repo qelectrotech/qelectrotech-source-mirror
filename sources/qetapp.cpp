@@ -2728,11 +2728,16 @@ void QETApp::checkBackupFiles()
 void QETApp::checkCrashDump()
 {
 	QetLogger &logger = QetLogger::instance();
-	if (!logger.hasPendingCrashDump()) {
+
+	// Listed once, then used both to build the contents and to delete
+	// below. Re-listing after the dialog closes would delete a dump
+	// written while it was open, unseen -- see clearPendingCrashDump().
+	const QStringList offered = logger.pendingCrashDumpFiles();
+	if (offered.isEmpty()) {
 		return;
 	}
 
-	const QByteArray content = logger.pendingCrashDumpContents();
+	const QByteArray content = logger.pendingCrashDumpContents(offered);
 
 	DiagnosticsReportDialog dialog(
 			tr("Rapport de plantage"),
@@ -2744,7 +2749,7 @@ void QETApp::checkCrashDump()
 
 	// Offered once, then marked retrieved -- regardless of whether the
 	// user chose to save it -- so it is never offered a second time.
-	logger.clearPendingCrashDump();
+	logger.clearPendingCrashDump(offered);
 }
 
 /**

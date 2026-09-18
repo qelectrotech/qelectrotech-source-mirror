@@ -36,9 +36,12 @@
 #include <csignal>
 #include <fcntl.h>
 #include <unistd.h>
-#if __has_include(<execinfo.h>)
+	// QET_CRASH_BACKTRACE is defined by CMake, via find_package(Backtrace),
+	// not by probing for the header here. <execinfo.h> exists on FreeBSD as
+	// well, but backtrace() is in a separate libexecinfo there, so a header
+	// probe compiles and then fails to link.
+#ifdef QET_CRASH_BACKTRACE
 #include <execinfo.h>
-#define QET_CRASH_BACKTRACE 1
 #endif
 #endif
 
@@ -76,31 +79,6 @@ const int kHandledSignals[] = {SIGSEGV, SIGABRT, SIGBUS, SIGFPE, SIGILL};
 void *g_backtrace_frames[64];
 #endif
 
-// Async-signal-safe decimal formatting: write() takes a buffer, and there
-// is no snprintf on the POSIX async-signal-safe list. Writes into a
-// caller-owned buffer (stack, not heap) and returns the length used.
-int formatInt(char *buffer, int size, int value)
-{
-	if (size <= 0) return 0;
-	if (value == 0) {
-		buffer[0] = '0';
-		return 1;
-	}
-	char scratch[16];
-	int n = 0;
-	bool negative = value < 0;
-	unsigned int v = negative ? static_cast<unsigned int>(-(value + 1)) + 1u
-				  : static_cast<unsigned int>(value);
-	while (v > 0 && n < static_cast<int>(sizeof(scratch))) {
-		scratch[n++] = static_cast<char>('0' + (v % 10));
-		v /= 10;
-	}
-	int len = 0;
-	if (negative && len < size) buffer[len++] = '-';
-	while (n > 0 && len < size) buffer[len++] = scratch[--n];
-	return len;
-}
-
 void restoreDefaultAndReraise(int sig)
 {
 	struct sigaction sa {};
@@ -124,6 +102,16 @@ void signalHandler(int sig)
 
 	// open/write/close, and backtrace_symbols_fd, are all on the POSIX
 	// async-signal-safe function list; nothing else is called here.
+	//
+	// Async-signal-safe is not the same as lock-free, which is why the
+	// order below matters. backtrace() unwinds through libgcc, which calls
+	// dl_iterate_phdr and takes the loader lock. Warming it in install()
+	// removes the allocation, not the lock -- so a crash that happens
+	// inside dlopen() (Qt plugin loading), or on a corrupted heap or
+	// stack, can leave this handler deadlocked or faulting a second time
+	// at the backtrace. Everything cheaper and more valuable is therefore
+	// written and flushed first: header, signal, then the log ring. If the
+	// backtrace never completes, the dump is still there and still useful.
 	const int fd = ::open(g_dump_path, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	if (fd >= 0) {
 		if (g_header_len > 0) {
@@ -140,16 +128,25 @@ void signalHandler(int sig)
 		for (unsigned i = 0 ; i < sizeof(kSignalLabel) - 1 ; ++i) {
 			line[len++] = kSignalLabel[i];
 		}
-		len += formatInt(line + len, static_cast<int>(sizeof(line)) - len - 1, sig);
+		len += CrashHandler::formatInt(line + len, static_cast<int>(sizeof(line)) - len - 1, sig);
 		line[len++] = '\n';
 		::write(fd, line, static_cast<size_t>(len));
 
+		// The ring first: it is the part that says what the program was
+		// doing, it costs one write, and it takes no lock.
+		const char kRingLabel[] = "--- log ---\n";
+		::write(fd, kRingLabel, sizeof(kRingLabel) - 1);
+		if (g_ring) {
+			g_ring->dumpToFd(fd);
+		}
+
 #ifdef QET_CRASH_BACKTRACE
-		// The log ring says what the program was doing; this says where it
-		// was when it died. backtrace() is warmed in install() so its
-		// first-call lazy resolution cannot allocate here, and
-		// backtrace_symbols_fd() writes to the fd without allocating --
-		// unlike backtrace_symbols(), which mallocs and must not be used.
+		// Then where it was when it died. Last, deliberately: see the
+		// note above about the loader lock. backtrace() is warmed in
+		// install() so its first-call lazy resolution cannot allocate
+		// here, and backtrace_symbols_fd() writes to the fd without
+		// allocating -- unlike backtrace_symbols(), which mallocs and
+		// must not be used.
 		const char kBacktraceLabel[] = "--- backtrace ---\n";
 		::write(fd, kBacktraceLabel, sizeof(kBacktraceLabel) - 1);
 		const int frames = ::backtrace(g_backtrace_frames,
@@ -158,13 +155,8 @@ void signalHandler(int sig)
 		if (frames > 0) {
 			::backtrace_symbols_fd(g_backtrace_frames, frames, fd);
 		}
-		const char kRingLabel[] = "--- log ---\n";
-		::write(fd, kRingLabel, sizeof(kRingLabel) - 1);
 #endif
 
-		if (g_ring) {
-			g_ring->dumpToFd(fd);
-		}
 		::close(fd);
 	}
 
@@ -203,6 +195,34 @@ LONG WINAPI windowsExceptionFilter(EXCEPTION_POINTERS *)
 #endif
 
 } // namespace
+
+// Async-signal-safe decimal formatting: write() takes a buffer, and there
+// is no snprintf on the POSIX async-signal-safe list. Writes into a
+// caller-owned buffer (stack, not heap) and returns the length used.
+//
+// Defined as CrashHandler::formatInt rather than a file-local helper only
+// so tst_crashhandler can reach it; it is not called anywhere else.
+int CrashHandler::formatInt(char *buffer, int size, int value)
+{
+	if (size <= 0) return 0;
+	if (value == 0) {
+		buffer[0] = '0';
+		return 1;
+	}
+	char scratch[16];
+	int n = 0;
+	bool negative = value < 0;
+	unsigned int v = negative ? static_cast<unsigned int>(-(value + 1)) + 1u
+				  : static_cast<unsigned int>(value);
+	while (v > 0 && n < static_cast<int>(sizeof(scratch))) {
+		scratch[n++] = static_cast<char>('0' + (v % 10));
+		v /= 10;
+	}
+	int len = 0;
+	if (negative && len < size) buffer[len++] = '-';
+	while (n > 0 && len < size) buffer[len++] = scratch[--n];
+	return len;
+}
 
 void CrashHandler::install(const LogRing *ring, const QString &dump_path)
 {
