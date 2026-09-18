@@ -110,6 +110,7 @@ add_executable(
   ${QET_DIR}/sources/qeticons.cpp
   ${QET_DIR}/sources/qeticons.h
   ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetstyle.cpp
   ${QET_DIR}/sources/qetpalette.h
   ${QET_DIR}/ico/icon-themes.qrc)
 add_test(NAME tst_qeticons COMMAND tst_qeticons)
