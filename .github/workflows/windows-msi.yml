@@ -292,9 +292,15 @@ jobs:
       # check: forks never have the SignPath secrets, and a fork-originated
       # PR/run must never attempt a signing request.
       # (cf. DieterMayerOSS:fix/msi-signing-fork-guard, d3f60c88)
+      # continue-on-error: SignPath's certificate is still pending validation
+      # (Sept 2026) — the signing request currently fails with a 500 on the
+      # SignPath side. Kept non-blocking so the nightly MSI still ships
+      # (unsigned) while the certificate is pending. Remove
+      # continue-on-error once the certificate is confirmed active.
       - name: Sign MSI via SignPath
         id: sign
         if: github.repository == 'qelectrotech/qelectrotech-source-mirror' && env.SIGNPATH_API_TOKEN != ''
+        continue-on-error: true
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -306,7 +312,22 @@ jobs:
           wait-for-completion: true
           output-artifact-directory: 'dist\'
 
+      # If signing succeeded, SignPath already overwrote dist\*.msi with the
+      # signed copy (output-artifact-directory above) — nothing to do here.
+      # If it failed/was skipped, dist\*.msi is still the unsigned MSI from
+      # the "Build MSI" step, so the rest of the pipeline just ships that.
+      - name: Report signing status
+        if: always()
+        shell: pwsh
+        run: |
+          if ("${{ steps.sign.outcome }}" -eq "success") {
+            Write-Host "MSI signed successfully via SignPath."
+          } else {
+            Write-Warning "MSI signing skipped or failed (outcome: ${{ steps.sign.outcome }}) — shipping UNSIGNED MSI. Likely cause: SignPath certificate still pending validation."
+          }
+
       - name: Upload signed MSI artifact
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-windows-msi-${{ matrix.flavor }}
@@ -315,6 +336,7 @@ jobs:
           if-no-files-found: error
 
       - name: Delete old nightly .msi asset
+        if: always()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -328,6 +350,7 @@ jobs:
         shell: pwsh
 
       - name: Upload MSI to nightly release
+        if: always()
         uses: softprops/action-gh-release@v3
         with:
           tag_name: nightly
