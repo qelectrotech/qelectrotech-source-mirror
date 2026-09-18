@@ -40,6 +40,7 @@
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
 #include <QDropEvent>
+#include <QPointer>
 
 /**
 	Constructeur
@@ -122,7 +123,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		ConductorProperties initial_properties = edited_conductor->properties();
 
 			// prepare a color dialog showing the initial conductor color
-		QColorDialog *color_dialog = new QColorDialog(this);
+		QPointer<QColorDialog> color_dialog = new QColorDialog(this);
 		color_dialog->setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
 #ifdef Q_OS_MACOS
 		color_dialog -> setWindowFlags(Qt::Sheet);
@@ -150,6 +151,8 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 				LastUsedStyle::setConductorColor(new_color);
 			}
 		}
+		if (color_dialog)
+			delete color_dialog;
 	});
 }
 

@@ -18,6 +18,7 @@
 #include "qetapp.h"
 
 #include "configdialog.h"
+#include "qet.h"
 #include "ui/configpage/configpages.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscollectioncache.h"
@@ -124,6 +125,7 @@ QETApp::QETApp() :
 	QET::Icons::initIcons();
 	initFonts();
 	initStyle();
+	QET::loadCustomColors();
 	initSplashScreen();
 	initSystemTray();
 
@@ -168,6 +170,7 @@ QETApp::QETApp() :
 */
 QETApp::~QETApp()
 {
+	QET::saveCustomColors();
 	m_elements_recent_files->save();
 	m_projects_recent_files->save();
 
