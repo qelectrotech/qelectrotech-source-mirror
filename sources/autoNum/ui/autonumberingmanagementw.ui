@@ -141,7 +141,6 @@
      </property>
      <property name="font">
       <font>
-       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
@@ -163,7 +162,6 @@
           <widget class="QLabel" name="label_2">
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -238,7 +236,6 @@
           <widget class="QLabel" name="label_3">
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -328,7 +325,6 @@
        <widget class="QWidget" name="folioWidget" native="true">
         <property name="font">
          <font>
-          <weight>50</weight>
           <bold>false</bold>
           <kerning>true</kerning>
          </font>
@@ -338,7 +334,6 @@
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>

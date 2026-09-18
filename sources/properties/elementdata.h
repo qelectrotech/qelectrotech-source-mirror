@@ -99,6 +99,19 @@ class ElementData : public PropertiesInterface
 			int terminalCount = 1;    ///< Number of terminals for this IO (1-4)
 			QStringList terminals;    ///< Terminal values T1, T2, ... (size = terminalCount)
 
+			/**
+			 * @brief Return terminal labels, generating defaults (T1, T2...) if empty
+			 */
+			QStringList effectiveTerminals() const {
+				if (!terminals.isEmpty())
+					return terminals;
+				int count = qMax(terminalCount, 1);
+				QStringList defaults;
+				for (int i = 0; i < count && i < 4; ++i)
+					defaults << QStringLiteral("T%1").arg(i + 1);
+				return defaults;
+			}
+
 			bool operator==(const PlcIO &other) const {
 				return type == other.type
 					&& address == other.address
@@ -129,6 +142,11 @@ class ElementData : public PropertiesInterface
 			QStringList columnNames;                ///< Custom column header names
 			QList<int> columnOrder;                 ///< Column display order (logical indices)
 			bool showHeaders = true;                ///< Show column headers on sheet
+
+			PlcMasterData() {
+				headerFont.setFamily(QString());
+				cellFont.setFamily(QString());
+			}
 
 			bool operator==(const PlcMasterData &other) const {
 				return ios == other.ios
@@ -201,6 +219,8 @@ class ElementData : public PropertiesInterface
 		QDomElement toXml(QDomDocument &xml_element) const override;
 		bool fromXml(const QDomElement &xml_element) override;
 		QDomElement kindInfoToXml(QDomDocument &document);
+	QDomElement plcMasterDataToXml(QDomDocument &document) const;
+	void plcMasterDataFromXml(const QDomElement &xml_plc);
 
 		void setTerminalType(ElementData::TerminalType t_type);
 		ElementData::TerminalType terminalType() const;

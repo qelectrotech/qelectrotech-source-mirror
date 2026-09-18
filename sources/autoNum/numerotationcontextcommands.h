@@ -38,6 +38,8 @@ class NumerotationContextCommands
 
 	private:
 	void setNumStrategy (const QString &);
+	static void carry(NumerotationContext &contextnum, int from_index);
+	static void borrow(NumerotationContext &contextnum, int from_index);
 
 	Diagram *diagram_;
 	NumerotationContext context_;
@@ -115,10 +117,45 @@ class HundredFNum: public NumStrategy
 	NumerotationContext previous (const NumerotationContext &, const int) const override;
 };
 
+/**
+	@brief The WrapNum class
+	A counter that wraps back to 0 (borrowing from initialvalue on the
+	way down) every `modulus` values, instead of counting up forever like
+	UnitNum/TenNum/HundredNum. Its own next()/previous() only computes its
+	own wrapped value; carrying into (or borrowing from) the preceding
+	numeric part is handled by NumerotationContextCommands::next()/
+	previous(), since only the composition loop can see adjacent parts.
+*/
+class WrapNum: public NumStrategy
+{
+	public:
+	WrapNum (Diagram *);
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
+};
+
 class StringNum: public NumStrategy
 {
 	public:
 	StringNum (Diagram *);
+	QString toRepresentedString(const QString) const override;
+	NumerotationContext next     (const NumerotationContext &, const int) const override;
+	NumerotationContext previous (const NumerotationContext &, const int) const override;
+};
+
+/**
+	@brief The AlphaNum class
+	Alphabetic auto-numbering (a, b, ... z, aa, ab, ...). Unlike StringNum
+	(a fixed, non-incrementing text segment), this is a real base-26
+	counter: next()/previous() carry/borrow entirely within this part's
+	own value, the same self-contained shape every other incrementing
+	NumStrategy already has.
+*/
+class AlphaNum: public NumStrategy
+{
+	public:
+	AlphaNum (Diagram *);
 	QString toRepresentedString(const QString) const override;
 	NumerotationContext next     (const NumerotationContext &, const int) const override;
 	NumerotationContext previous (const NumerotationContext &, const int) const override;

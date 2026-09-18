@@ -1,0 +1,240 @@
+#!/usr/bin/env python3
+# Copyright 2006-2026 The QElectroTech Team
+# This file is part of QElectroTech.
+#
+# QElectroTech is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# QElectroTech is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+"""Build QET's two icon themes from the PNG and SVG sources in ico/.
+
+Run from the repository root:
+
+    python3 misc/make_icon_themes.py
+
+It writes:
+
+    ico/themes/qet/index.theme           the light theme, all existing art
+    ico/themes/qet-dark/index.theme      the dark theme, inherits "qet"
+    ico/themes/qet-dark/<size>/*.png     light-ink copies of the line-art icons
+    ico/themes/qet-dark/scalable/*.svg   the same for the SVG icons
+    ico/icon-themes.qrc                  resource file listing both themes
+
+The light theme does not copy any file. The .qrc aliases the existing
+ico/<size>/<name>.png files into the theme layout Qt's icon loader
+expects, so QIcon::fromTheme("name") finds them. The dark theme only holds
+the icons that need a dark variant: black line art. Colored icons are not
+touched; the dark theme inherits them from the light one.
+
+An icon counts as line art when fewer than 20% of its visible pixels are
+saturated. Its dark copy keeps hue and alpha and inverts lightness, scaled
+so pure black becomes (220, 220, 220), the dark palette's text color.
+
+Requires Pillow. Idempotent: running it twice changes nothing.
+"""
+
+import colorsys
+import os
+import re
+import sys
+from pathlib import Path
+
+try:
+    from PIL import Image
+except ImportError:
+    sys.exit("Pillow is required: pip install Pillow")
+
+ROOT = Path(__file__).resolve().parent.parent
+ICO = ROOT / "ico"
+THEMES = ICO / "themes"
+QRC = ICO / "icon-themes.qrc"
+
+# Fixed-size folders that hold toolbar, menu and dialog icons. The 24x16
+# flags, the 22x22/color swatches and the application icons are not theme
+# icons and stay on their resource paths.
+SIZES = ["16x16", "22x22", "32x32", "48x48", "128x128"]
+
+# Table entries in sources/qeticons.cpp that pair a 16 pixel file with a
+# 22 pixel file of another name. The theme needs one name per icon, so
+# the 22 pixel file is exposed under the 16 pixel name as well.
+ALIASES = {
+    "22x22/conductor2.png": "conductor-reset",
+    "22x22/diagram_add.png": "folio-new",
+    "22x22/diagram_del.png": "folio-delete",
+    "22x22/dialog-information.png": "folio-properties",
+}
+
+# SVG icons referenced from sources/qeticons.cpp.
+SVGS = [
+    "breeze-icons/scalable/apps/hidef/edit-opacity.svg",
+    "breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg",
+    "breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg",
+    "breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg",
+    "breeze-icons/scalable/apps/hidef/transform-crop.svg",
+    "generated/ellipse-to-bezier.svg",
+    "generated/rect-to-bezier.svg",
+    "generated/rect-to-polyline.svg",
+]
+
+SATURATED_FRACTION = 0.20   # at or above this an icon is "colored"
+INK = 220 / 255.0           # lightness of pure black after inversion
+SVG_INK = "#dcdcdc"
+
+
+def visible_pixels(image):
+    src = image.load()
+    return [src[x, y] for y in range(image.height) for x in range(image.width)
+            if src[x, y][3] > 64]
+
+
+def is_line_art(image):
+    pixels = visible_pixels(image)
+    if not pixels:
+        return False
+    saturated = 0
+    for r, g, b, _ in pixels:
+        _, _, s = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+        if s > 0.25 and max(r, g, b) > 60:
+            saturated += 1
+    return saturated / len(pixels) < SATURATED_FRACTION
+
+
+def invert_lightness(image):
+    """Invert lightness, keeping hue, saturation and alpha.
+
+    The ink in these icons is dark grey rather than black, so a plain
+    inversion would leave it mid grey on a dark toolbar. The darkest
+    visible pixel is taken as the ink and mapped to INK; white maps to
+    black; everything between scales linearly.
+    """
+    src = image.load()
+    darkest = 1.0
+    for y in range(image.height):
+        for x in range(image.width):
+            r, g, b, a = src[x, y]
+            if a > 64:
+                darkest = min(darkest, colorsys.rgb_to_hls(r / 255, g / 255, b / 255)[1])
+    span = max(1.0 - darkest, 1e-6)
+    out = Image.new("RGBA", image.size)
+    dst = out.load()
+    for y in range(image.height):
+        for x in range(image.width):
+            r, g, b, a = src[x, y]
+            h, l, s = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+            l = INK * (1.0 - (l - darkest) / span)
+            l = min(max(l, 0.0), 1.0)
+            r2, g2, b2 = colorsys.hls_to_rgb(h, l, s)
+            dst[x, y] = (round(r2 * 255), round(g2 * 255), round(b2 * 255), a)
+    return out
+
+
+def write_if_changed(path, data):
+    """Write text or bytes only when the content differs, so git stays quiet."""
+    mode = "rb" if isinstance(data, bytes) else "r"
+    if path.exists():
+        with open(path, mode, **({} if mode == "rb" else {"encoding": "utf-8"})) as f:
+            if f.read() == data:
+                return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    mode = "wb" if isinstance(data, bytes) else "w"
+    with open(path, mode, **({} if mode == "wb" else {"encoding": "utf-8"})) as f:
+        f.write(data)
+    return True
+
+
+def png_bytes(image):
+    from io import BytesIO
+    buf = BytesIO()
+    image.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()
+
+
+def index_theme(name, comment, dirs, inherits=None):
+    lines = ["[Icon Theme]", f"Name={name}", f"Comment={comment}"]
+    if inherits:
+        lines.append(f"Inherits={inherits}")
+    lines.append("Directories=" + ",".join(dirs))
+    lines.append("")
+    for d in dirs:
+        lines.append(f"[{d}]")
+        if d == "scalable":
+            lines += ["Size=22", "Type=Scalable", "MinSize=8", "MaxSize=256"]
+        else:
+            lines += [f"Size={d.split('x')[0]}", "Type=Fixed"]
+        lines.append("")
+    return "\n".join(lines)
+
+
+def main():
+    light = []   # (alias, source) pairs, paths relative to ico/
+    dark = []    # paths relative to ico/, files exist on disk
+    changed = 0
+    line_art = colored = 0
+
+    for size in SIZES:
+        folder = ICO / size
+        for png in sorted(folder.glob("*.png")):
+            rel = f"{size}/{png.name}"
+            names = [png.stem]
+            if rel in ALIASES:
+                names.append(ALIASES[rel])
+            image = Image.open(png).convert("RGBA")
+            art = is_line_art(image)
+            if art:
+                line_art += 1
+                dark_image = None
+            else:
+                colored += 1
+            for name in names:
+                light.append((f"themes/qet/{size}/{name}.png", rel))
+                if art:
+                    if dark_image is None:
+                        dark_image = png_bytes(invert_lightness(image))
+                    target = THEMES / "qet-dark" / size / f"{name}.png"
+                    changed += write_if_changed(target, dark_image)
+                    dark.append(f"themes/qet-dark/{size}/{name}.png")
+
+    for rel in SVGS:
+        src = ICO / rel
+        name = src.name.replace("-symbolic", "")
+        light.append((f"themes/qet/scalable/{name}", rel))
+        text = src.read_text(encoding="utf-8")
+        text = re.sub(r"color:#[0-9a-fA-F]{6}", f"color:{SVG_INK}", text)
+        text = text.replace("currentColor", SVG_INK)
+        target = THEMES / "qet-dark" / "scalable" / name
+        changed += write_if_changed(target, text)
+        dark.append(f"themes/qet-dark/scalable/{name}")
+
+    dirs = SIZES + ["scalable"]
+    changed += write_if_changed(THEMES / "qet" / "index.theme",
+                                index_theme("qet", "QElectroTech icons", dirs))
+    changed += write_if_changed(THEMES / "qet-dark" / "index.theme",
+                                index_theme("qet-dark", "QElectroTech icons for dark palettes",
+                                            dirs, inherits="qet"))
+
+    qrc = ["<!DOCTYPE RCC>", "<!-- Generated by misc/make_icon_themes.py. Do not edit. -->",
+           '<RCC version="1.0">', '    <qresource prefix="/ico">',
+           "        <file>themes/qet/index.theme</file>",
+           "        <file>themes/qet-dark/index.theme</file>"]
+    for alias, source in light:
+        qrc.append(f'        <file alias="{alias}">{source}</file>')
+    for path in dark:
+        qrc.append(f"        <file>{path}</file>")
+    qrc += ["    </qresource>", "</RCC>", ""]
+    changed += write_if_changed(QRC, "\n".join(qrc))
+
+    print(f"{line_art} line-art icons, {colored} colored icons, {len(SVGS)} SVGs; "
+          f"{changed} files written")
+
+
+if __name__ == "__main__":
+    os.chdir(ROOT)
+    main()

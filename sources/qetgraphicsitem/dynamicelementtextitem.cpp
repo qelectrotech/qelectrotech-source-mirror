@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <QDomDocument>
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
 
 /**
@@ -102,7 +103,8 @@ QDomElement DynamicElementTextItem::toXml(QDomDocument &dom_doc) const
 	root_element.setAttribute("text_width", QString::number(m_text_width));
 	root_element.setAttribute("font", QETUtils::fontToString(font()));
 	root_element.setAttribute("keep_visual_rotation", m_keep_visual_rotation ? "true" : "false");
-	
+	root_element.setAttribute("rotation_point_center", m_rotation_point_center ? "true" : "false");
+
 	QMetaEnum me = textFromMetaEnum();
 	root_element.setAttribute("text_from", me.valueToKey(m_text_from));
 	
@@ -167,6 +169,7 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 	
 	QGraphicsTextItem::setRotation(dom_elmt.attribute("rotation", QString::number(0)).toDouble());
 	setKeepVisualRotation(dom_elmt.attribute("keep_visual_rotation", "true") == "true"? true : false);
+	setRotationPointCenter(dom_elmt.attribute("rotation_point_center", "false") == "true"? true : false);
 
 	if (dom_elmt.hasAttribute("font"))
 	{
@@ -222,8 +225,16 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		//Force the update of the displayed text
 	setTextFrom(m_text_from);
 	
-	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
-							  dom_elmt.attribute("y", QString::number(0)).toDouble());
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" as a successful
+		//conversion, so a corrupted or hand-edited file can hand this a
+		//non-finite position -- fall back to 0 the same way a missing
+		//attribute already does, rather than letting it reach the scene
+		//(see the matching comment in Element::valideXml(), the fromXml()
+		//gate a plain element's position goes through; this text item has
+		//no such gate to reject the whole item at, so it clamps instead).
+	double x = dom_elmt.attribute("x", QString::number(0)).toDouble();
+	double y = dom_elmt.attribute("y", QString::number(0)).toDouble();
+	QGraphicsTextItem::setPos(qIsFinite(x) ? x : 0, qIsFinite(y) ? y : 0);
 }
 
 /**
@@ -251,6 +262,29 @@ ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 	}
 	
 	return nullptr;
+}
+
+/**
+	@brief DynamicElementTextItem::masterElement
+	@return the master element for slave elements, or the parent element for others.
+	For PLC slaves, returns the actual master from linkedElements() instead of
+	m_master_element (which points to self because elementUseForInfo() returns
+	self for PLC slaves to resolve %{plc_*} variables).
+*/
+Element *DynamicElementTextItem::masterElement() const
+{
+	Element *elmt = parentElement();
+	if (!elmt)
+		return m_master_element.data();
+
+	if (elmt->linkType() == Element::Slave &&
+		elmt->elementData().m_slave_type == ElementData::PLCSlave &&
+		!elmt->linkedElements().isEmpty())
+	{
+		return elmt->linkedElements().first();
+	}
+
+	return m_master_element.data();
 }
 
 /**
@@ -554,7 +588,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
 		if(m_slave_Xref_item)
-			m_slave_Xref_item->setDefaultTextColor(Qt::black);
+			m_slave_Xref_item->setDefaultTextColor(color());
 	}
 
 	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
@@ -736,6 +770,8 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		if(m_parent_element.data()->linkType() == Element::Slave)
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
+			if(m_parent_element.data()->diagram())
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -825,7 +861,7 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneHoverLeave) {
-		m_slave_Xref_item->setDefaultTextColor(Qt::black);
+		m_slave_Xref_item->setDefaultTextColor(color());
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneMouseDoubleClick) {
@@ -1465,6 +1501,7 @@ void DynamicElementTextItem::parentElementRotationChanged()
 			//We temporally disconnect for not change m_visual_rotation value.
 			//We don't use block signal, because rotationChanged signal is used in other place.
 		disconnect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
+		setTransformOriginPoint(m_rotation_point_center ? boundingRect().center() : QPointF(0, 0));
 		this->setRotation(QET::correctAngle(m_visual_rotation_ref - m_parent_element->rotation(), true));
 		connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
 	}
@@ -1510,36 +1547,72 @@ void DynamicElementTextItem::updateXref()
 				!m_parent_element.data()->linkedElements().isEmpty())
 		{
 			Element *master_elmt = m_parent_element.data()->linkedElements().first();
-			if(master_elmt && !parentGroup() &&
-			   (
+			if(master_elmt && !parentGroup())
+			{
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+
+				//Champ de texte: store xref in element informations
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					if(m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "xref")
+					{
+						QString xref_label = xrp.slaveLabel();
+						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+						DiagramContext dc = m_parent_element->elementInformations();
+						if(dc.value("xref").toString() != xref_label)
+						{
+							dc.addValue("xref", xref_label);
+							m_parent_element->setElementInformations(dc);
+						}
+
+						//Set up connections for future updates
+						if(m_update_slave_Xref_connection.isEmpty())
+						{
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+						}
+						return;
+					}
+					//For label/composite text: fall through to cleanup (delete m_slave_Xref_item)
+				}
+				else if(
 				   (m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "label") ||
 				   (m_text_from == DynamicElementTextItem::CompositeText && m_composite_text.contains("%{label}"))
 			   )
-			  )
-			{
-				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-				QString xref_label = xrp.slaveLabel();
-				xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
-				
-				if(!m_slave_Xref_item)
 				{
-					m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
-					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
-					m_slave_Xref_item->setDefaultTextColor(Qt::black);
-					m_slave_Xref_item->installSceneEventFilter(this);
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
 					
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+					if(!m_slave_Xref_item)
+					{
+						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
+							// Match the parent text's user-configurable color instead of
+							// hardcoding black, which renders invisible under dark themes
+							// or stylesheets that do not affect this sub-item the same way
+							// they affect the parent (bugtracker #247).
+						m_slave_Xref_item->setDefaultTextColor(color());
+						m_slave_Xref_item->installSceneEventFilter(this);
+						
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+					}
+					else
+						m_slave_Xref_item->setPlainText(xref_label);
+					setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
+					return;
 				}
-				else
-					m_slave_Xref_item->setPlainText(xref_label);
-				setXref_item(xrp.getXrefPos());
-				return;
 			}
 		}
 	}
@@ -1551,11 +1624,48 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+	m_update_slave_Xref_connection.clear();
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
-		m_update_slave_Xref_connection.clear();
+
+		//If position changed to Champ de texte, store xref in element info
+		if(m_parent_element->linkType() == Element::Slave &&
+		   !m_parent_element->linkedElements().isEmpty())
+		{
+			Element *master_elmt = m_parent_element->linkedElements().first();
+			if(master_elmt && diagram())
+			{
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+					DiagramContext dc = m_parent_element->elementInformations();
+					if(dc.value("xref").toString() != xref_label)
+					{
+						dc.addValue("xref", xref_label);
+						m_parent_element->setElementInformations(dc);
+					}
+				}
+			}
+		}
+	}
+
+	//Remove stale "xref" from elementInformations when no longer needed
+	if(m_parent_element->linkType() == Element::Slave &&
+	   m_text_from == ElementInfo && m_info_name == "xref" &&
+	   !parentGroup())
+	{
+		DiagramContext dc = m_parent_element->elementInformations();
+		if(!dc.value("xref").toString().isEmpty())
+		{
+			dc.remove("xref");
+			m_parent_element->setElementInformations(dc);
+		}
 	}
 }
 
@@ -1604,7 +1714,7 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 			? nullptr : m_parent_element.data()->linkedElements().first();
 		if (master_elmt) {
 			XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-			setXref_item(xrp.getXrefPos());
+			setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
 		}
 	}
 }
@@ -1616,44 +1726,44 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	emit textWidthChanged(width);
 }
 
-void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
+void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)
 {
 	QRectF r = boundingRect();
 	QPointF pos;
 	//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
 	if (m_exHrefPos == Qt::AlignBottom)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignTop)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignLeft)  //
 	{
-		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignRight)  //
 	{
-		pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignBaseline)  //
 	{
 		if(this->alignment() &Qt::AlignBottom)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignTop)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignLeft)
 		{
-			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 		else if(this->alignment() &Qt::AlignRight)
 		{
-			pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 	}
 	m_slave_Xref_item->setPos(pos);
@@ -1667,6 +1777,7 @@ void DynamicElementTextItem::setKeepVisualRotation(bool set)
 	emit keepVisualRotationChanged(set);
 	if (set) {
 		m_visual_rotation_ref = this->rotation() + m_parent_element->rotation();
+		setTransformOriginPoint(m_rotation_point_center ? boundingRect().center() : QPointF(0,0));
 		connect(m_parent_element, &Element::rotationChanged, this, &DynamicElementTextItem::parentElementRotationChanged);
 		connect(this, &DynamicElementTextItem::rotationChanged, this, &DynamicElementTextItem::thisRotationChanged);
 	}
@@ -1680,3 +1791,15 @@ bool DynamicElementTextItem::keepVisualRotation() const {
 	return m_keep_visual_rotation;
 }
 
+void DynamicElementTextItem::setRotationPointCenter(bool center)
+{
+	if (m_rotation_point_center == center) return;
+	m_rotation_point_center = center;
+	if (m_keep_visual_rotation)
+		setTransformOriginPoint(center ? boundingRect().center() : QPointF(0,0));
+	emit rotationPointCenterChanged(center);
+}
+
+bool DynamicElementTextItem::rotationPointCenter() const {
+	return m_rotation_point_center;
+}

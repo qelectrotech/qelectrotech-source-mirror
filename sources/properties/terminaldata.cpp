@@ -17,6 +17,7 @@
 */
 #include "terminaldata.h"
 
+#include "../qetapp.h"
 #include "../utils/qetutils.h"
 
 #include <QGraphicsObject>
@@ -38,6 +39,7 @@ TerminalData::TerminalData(QGraphicsObject *parent):
 
 void TerminalData::init()
 {
+	m_label_font = QETApp::diagramTextsFont();
 }
 
 TerminalData::~TerminalData()

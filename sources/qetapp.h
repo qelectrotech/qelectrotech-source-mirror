@@ -31,6 +31,7 @@ class QSplashScreen;
 class QMenu;
 class QAction;
 class QMainWindow;
+class KAutoSaveFile;
 
 #define QETAPP_COMMON_TBT_PROTOCOL "commontbt"
 #define QETAPP_COMPANY_TBT_PROTOCOL "companytbt"
@@ -102,6 +103,8 @@ class QETApp : public QObject
 		static QString documentDir();
 		static QString pictureDir();
 		static QString languagesPath();
+		static QString loadedQetTranslationFile();
+		static QString loadedQtTranslationFile();
 		static QString realPath(const QString &);
 		static QString symbolicPath(const QString &);
 		static QStringList handledFileExtensions();
@@ -271,6 +274,7 @@ class QETApp : public QObject
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
 		void aboutQET();
+		void showDiagnosticsReport();
 		void receiveMessage(int instanceId, QByteArray message);
 	
 	private:
@@ -282,11 +286,15 @@ class QETApp : public QObject
 		void setSplashScreenStep(const QString & = QString());
 		void initLanguage();
 		void initFonts();
+		void initIconTheme();
+		static void applyIconTheme(const QPalette &);
 		void initStyle();
 		void initConfiguration();
 		void initSystemTray();
 		void buildSystemTrayMenu();
 		void checkBackupFiles();
+		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files);
+		void checkCrashDump();
 		void fetchWindowStats(
 			const QList<QETDiagramEditor *> &,
 			const QList<QETElementEditor *> &,

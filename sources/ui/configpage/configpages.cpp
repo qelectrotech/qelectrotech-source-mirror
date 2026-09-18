@@ -110,7 +110,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 		xrefpw -> setProperties (m_project -> defaultXRefProperties());
 	}
 
-	connect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
+	connect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
 
 	// main tab widget
 	QTabWidget *tab_widget      = new QTabWidget(this);
@@ -138,7 +138,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 */
 NewDiagramPage::~NewDiagramPage()
 {
-	disconnect(ipw,SIGNAL(openAutoNumFolioEditor(QString)),this,SLOT(changeToAutoFolioTab()));
+	disconnect(ipw, &TitleBlockPropertiesWidget::openAutoNumFolioEditor, this, &NewDiagramPage::changeToAutoFolioTab);
 }
 
 /**
@@ -214,7 +214,11 @@ void NewDiagramPage::applyConf()
 		rpw->toSettings(settings, "diagrameditor/defaultreport");
 
 		// default xref properties
-		QHash <QString, XRefProperties> hash_xrp = xrefpw -> properties();
+		const QHash<QString, XRefProperties> hash_xrp = xrefpw->properties();
+		for (auto it = hash_xrp.constBegin() ; it != hash_xrp.constEnd() ; ++it) {
+			it.value().toSettings(settings,
+						  QStringLiteral("diagrameditor/defaultxref") % it.key());
+		}
 
 		// Global in QSettings speichern
 		QList<Diagram::Guide> current_guides = m_gpw->guides();

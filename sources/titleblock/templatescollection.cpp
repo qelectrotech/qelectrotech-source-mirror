@@ -383,7 +383,7 @@ TitleBlockTemplatesFilesCollection::TitleBlockTemplatesFilesCollection(const QSt
 	if (dir_.exists()) {
 		watcher_.addPath(dir_.canonicalPath());
 	}
-	connect(&watcher_, SIGNAL(directoryChanged(const QString &)), this, SLOT(fileSystemChanged(const QString &)));
+	connect(&watcher_, &QFileSystemWatcher::directoryChanged, this, &TitleBlockTemplatesFilesCollection::fileSystemChanged);
 }
 
 /**

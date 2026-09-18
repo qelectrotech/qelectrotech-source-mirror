@@ -18,6 +18,7 @@
 #ifndef _QET_H
 #define _QET_H
 
+#include <QColor>
 #include <QDomElement>
 #include <QFile>
 #include <QObject>
@@ -185,6 +186,8 @@ namespace QET {
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);
 	bool eachStrIsEqual (const QStringList &qsl);
 	QActionGroup *depthActionGroup(QObject *parent = nullptr);
+	void saveCustomColors();
+	void loadCustomColors();
 }
 
 Q_DECLARE_METATYPE(QET::DepthOption)

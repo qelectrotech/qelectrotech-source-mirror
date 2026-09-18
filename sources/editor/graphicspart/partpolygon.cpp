@@ -307,10 +307,10 @@ qreal PartPolygon::rotation() const {
 	return qRound(m_rot * 100.0) / 100.0;
 }
 
-void PartPolygon::flip() {
+void PartPolygon::flip(qreal axis_y) {
 	for (auto &pt : m_polygon) {
 		pt = mapToScene(pt.x(), pt.y());
-		pt = QPointF(pt.x(), (-1) * pt.y());
+		pt = QPointF(pt.x(), 2 * axis_y - pt.y());
 		pt = mapFromScene(pt.x(), pt.y());
 	}
 	setPolygon(m_polygon);
@@ -319,10 +319,10 @@ void PartPolygon::flip() {
 	emit polygonChanged();
 }
 
-void PartPolygon::mirror() {
+void PartPolygon::mirror(qreal axis_x) {
 	for (auto &pt : m_polygon) {
 		pt = mapToScene(pt.x(), pt.y());
-		pt = QPointF((-1) * pt.x(), pt.y());
+		pt = QPointF(2 * axis_x - pt.x(), pt.y());
 		pt = mapFromScene(pt.x(), pt.y());
 	}
 	setPolygon(m_polygon);

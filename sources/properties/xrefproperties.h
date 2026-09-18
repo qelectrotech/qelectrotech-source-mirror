@@ -80,6 +80,9 @@ class XRefProperties : public PropertiesInterface
 	void setOffset(const int offset) {m_offset = offset;}
 	int offset() const				 {return m_offset;}
 
+	void setSlaveOffset(const int offset) {m_slave_offset = offset;}
+	int slaveOffset() const				 {return m_slave_offset;}
+
 	void setKey(QString& key) {m_key = key;}
 
 	private:
@@ -93,6 +96,7 @@ class XRefProperties : public PropertiesInterface
 	QString m_master_label;
 	QString m_slave_label;
 	int     m_offset;
+	int     m_slave_offset;
 	QString m_key;
 };
 

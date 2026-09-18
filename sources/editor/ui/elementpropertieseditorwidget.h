@@ -30,6 +30,7 @@ class QCheckBox;
 class QGroupBox;
 class QPushButton;
 class QLineEdit;
+class QScrollBar;
 
 namespace Ui {
 	class ElementPropertiesEditorWidget;
@@ -74,6 +75,7 @@ class ElementPropertiesEditorWidget : public QDialog
 		void plcTerminalCountChanged(int row, int count);
 		void plcSelectHeaderFont();
 		void plcSelectCellFont();
+		void plcSetCellFromValue(int row, int col, const QString &val);
 
 		//ATTRIBUTES
 	private:
@@ -92,9 +94,11 @@ class ElementPropertiesEditorWidget : public QDialog
 		QCheckBox   *m_plc_show_headers_cb = nullptr;
 		QFont m_plc_header_font;
 		QFont m_plc_cell_font;
-		QList<QCheckBox *> m_plc_col_visibility_checkboxes;
-		QList<QSpinBox *>  m_plc_col_width_spinboxes;
-		QList<QLineEdit *> m_plc_col_name_edits;
+	QList<QCheckBox *> m_plc_col_visibility_checkboxes;
+	QList<QSpinBox *>  m_plc_col_width_spinboxes;
+	QList<QLineEdit *> m_plc_col_name_edits;
+	QScrollBar *m_plc_shared_scrollbar = nullptr;
+	bool m_plc_scroll_sync = false;
 };
 
 #endif // ELEMENTPROPERTIESEDITORWIDGET_H

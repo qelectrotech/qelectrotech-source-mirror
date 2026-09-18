@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "diagramview.h"
+#include "lastusedstyle.h"
 #include "qetproject.h"
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagramcommands.h"
@@ -39,6 +40,7 @@
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
 #include <QDropEvent>
+#include <QPointer>
 
 /**
 	Constructeur
@@ -79,7 +81,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 	m_diagram->loadCndFolioSeq();
 
 	m_paste_here = new QAction(QET::Icons::EditPaste, tr("Coller ici", "context menu action"), this);
-	connect(m_paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
+	connect(m_paste_here, &QAction::triggered, this, &DiagramView::pasteHere);
 
 	m_multi_paste = new QAction(QET::Icons::EditPaste, tr("Collage multiple"), this);
 	connect(m_multi_paste, &QAction::triggered, [this]() {
@@ -89,7 +91,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 
 	// Setup the action to create a template
 	m_create_template = new QAction(tr("Créer un template", "context menu action"), this);
-	connect(m_create_template, SIGNAL(triggered()), this, SLOT(createTemplateFromSelection()));
+	connect(m_create_template, &QAction::triggered, this, &DiagramView::createTemplateFromSelection);
 
 		//setup three separators, to be use in context menu
 	for(int i=0 ; i<3 ; ++i)
@@ -98,10 +100,10 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		m_separators.last()->setSeparator(true);
 	}
 
-	connect(m_diagram, SIGNAL(showDiagram(Diagram*)), this, SIGNAL(showDiagram(Diagram*)));
-	connect(m_diagram, SIGNAL(sceneRectChanged(QRectF)), this, SLOT(adjustSceneRect()));
-	connect(&(m_diagram -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
-	connect(diagram, SIGNAL(findElementRequired(ElementsLocation)), this, SIGNAL(findElementRequired(ElementsLocation)));
+	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
+	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
+	connect(&(m_diagram -> border_and_titleblock), &BorderTitleBlock::informationChanged, this, &DiagramView::updateWindowTitle);
+	connect(diagram, &Diagram::findElementRequired, this, &DiagramView::findElementRequired);
 
 	QShortcut *edit_conductor_color_shortcut = new QShortcut(QKeySequence(Qt::Key_F2), this);
 	connect(edit_conductor_color_shortcut, &QShortcut::activated, [this]()
@@ -121,7 +123,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 		ConductorProperties initial_properties = edited_conductor->properties();
 
 			// prepare a color dialog showing the initial conductor color
-		QColorDialog *color_dialog = new QColorDialog(this);
+		QPointer<QColorDialog> color_dialog = new QColorDialog(this);
 		color_dialog->setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
 #ifdef Q_OS_MACOS
 		color_dialog -> setWindowFlags(Qt::Sheet);
@@ -143,8 +145,14 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 				QPropertyUndoCommand *undo = new QPropertyUndoCommand(edited_conductor, "properties", old_value, new_value);
 				undo->setText(tr("Modifier les propriétés d'un conducteur", "undo caption"));
 				m_diagram->undoStack().push(undo);
+
+					// remember it for the next conductor drawn this session,
+					// the way LastUsedStyle already does for shapes (#879)
+				LastUsedStyle::setConductorColor(new_color);
 			}
 		}
+		if (color_dialog)
+			delete color_dialog;
 	});
 }
 
@@ -211,11 +219,7 @@ void DiagramView::handleElementDrop(QDropEvent *event)
 	}
 
 	QPointF drop_pos;
-	#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	drop_pos = mapToScene(event->pos());
-	#else
-	drop_pos = event->position();
-	#endif
+	drop_pos = mapToScene(event->position().toPoint());
 
 	if (location.path().endsWith(".qetmak")) {
 		diagram()->setEventInterface(new DiagramEventAddMacro(location, diagram(), drop_pos));
@@ -290,17 +294,8 @@ void DiagramView::handleTextDrop(QDropEvent *e) {
 		iti -> setHtml (e -> mimeData() -> text());
 	}
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-
 	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
-									iti, m_diagram, mapToScene(e->pos())));
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-	m_diagram->undoStack().push(new AddGraphicsObjectCommand(
-									iti, m_diagram, e->position()));
-#endif
+									iti, m_diagram, mapToScene(e->position().toPoint())));
 }
 
 /**
@@ -334,6 +329,13 @@ void DiagramView::setSelectionMode()
 */
 void DiagramView::zoom(const qreal zoom_factor)
 {
+	// clamp the resulting scale so a repeated wheel-zoom cannot drive the view
+	// transform to floating-point overflow and crash the editor (issue #798)
+	const qreal target = transform().m11() * zoom_factor;
+	if (target < m_min_zoom || target > m_max_zoom) {
+		return;
+	}
+
 	if (zoom_factor >= 1){
 		scale(zoom_factor, zoom_factor);
 	}
@@ -458,14 +460,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mousePressEvent(e)) return;
 
 		//Start drag view when hold the middle button
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (e->button() == Qt::MidButton)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (e->button() == Qt::MiddleButton)
-#endif
 	{
 		m_drag_last_pos = e->pos();
 		viewport()->setCursor(Qt::ClosedHandCursor);
@@ -515,14 +510,7 @@ void DiagramView::mouseMoveEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseMoveEvent(e)) return;
 
 		// Drag the view
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (e->buttons() == Qt::MidButton)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (e->buttons() == Qt::MiddleButton)
-#endif
 	{
 		QScrollBar *h = horizontalScrollBar();
 		QScrollBar *v = verticalScrollBar();
@@ -583,14 +571,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 	if (m_event_interface && m_event_interface->mouseReleaseEvent(e)) return;
 
 		// Stop drag view
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 1) // ### Qt 6: remove
-	if (e->button() == Qt::MidButton)
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	if (e->button() == Qt::MiddleButton)
-#endif
 	{
 		viewport()->setCursor(Qt::ArrowCursor);
 	}
@@ -624,14 +605,7 @@ void DiagramView::mouseReleaseEvent(QMouseEvent *e)
 			QMenu *menu = new QMenu(this);
 			menu->addAction(act);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-			menu->popup(e->globalPos());
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-			menu->popup(e->pos());
-#endif
+			menu->popup(e->globalPosition().toPoint());
 		}
 
 		m_free_rubberbanding = false;
@@ -721,6 +695,27 @@ void DiagramView::focusInEvent(QFocusEvent *e) {
 }
 
 /**
+	@brief DiagramView::focusNextPrevChild
+	By default, QWidget intercepts Tab/Shift+Tab to move keyboard focus to
+	the next/previous widget before a key press event is ever generated,
+	which would silently swallow the diagram's Tab-based item-selection
+	cycling (see Diagram::event()). Returning false here disables that
+	automatic focus-chain traversal for this view, so Tab/Shift+Tab reach
+	keyPressEvent() (and from there, the scene) as ordinary key presses
+	instead.
+	@return always false
+*/
+bool DiagramView::focusNextPrevChild(bool next)
+{
+		//Escape asked for focus to leave; allow exactly this one traversal.
+	if (m_releasing_focus) {
+		m_releasing_focus = false;
+		return QGraphicsView::focusNextPrevChild(next);
+	}
+	return false;
+}
+
+/**
 	@brief DiagramView::keyPressEvent
 	Handles "key press" events. Reimplemented here to switch to visualisation
 	mode if needed.
@@ -735,6 +730,23 @@ void DiagramView::keyPressEvent(QKeyEvent *e)
 	DiagramContent dc(m_diagram);
 	switch(e -> key())
 	{
+		case Qt::Key_Escape:
+				//Tab cycles the folio's items rather than moving focus (see
+				//focusNextPrevChild above), so without this there would be no
+				//way off the canvas for someone working without a mouse.
+				//Escape steps back out: first it drops the selection, then it
+				//hands focus to the next widget.
+			if (m_diagram && m_diagram->eventInterfaceIsRunning()) {
+				QGraphicsView::keyPressEvent(e);  // let the active tool see it
+				return;
+			}
+			if (m_diagram && !m_diagram->selectedItems().isEmpty()) {
+				m_diagram->clearSelection();
+			} else {
+				m_releasing_focus = true;
+				focusNextChild();
+			}
+			return;
 		case Qt::Key_PageUp:
 			current_project->changeTabUp();
 			return;
@@ -1236,30 +1248,70 @@ QList<QAction *> DiagramView::contextMenuActions() const
 */
 void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 {
-	QGraphicsView::contextMenuEvent(e);
-	if(e->isAccepted())
-	return;
+	QPoint menu_pos = e->pos();
+	QPoint menu_global_pos = e->globalPos();
 
+		//A context menu raised from the keyboard (the Menu key, or
+		//Shift+F10) carries no useful position: Qt does not aim it at the
+		//selection. Two things then went wrong. QGraphicsView handed the
+		//event to whichever item held focus, which answered with its own
+		//generic Undo/Cut/Copy menu and accepted it, so the folio's real
+		//menu was never built; and had it got past that, itemAt() below
+		//would have looked up an unrelated point.
+		//
+		//So a keyboard-raised menu is built here directly rather than being
+		//offered to the items first, and aimed at the selection when there
+		//is one. The keyboard then gets the folio's menu, which is what a
+		//right-click gets.
+	const bool from_keyboard = e->reason() == QContextMenuEvent::Keyboard;
 
-	if (auto qgi = m_diagram->itemAt(mapToScene(e->pos()), transform()))
+	if (from_keyboard)
 	{
-		if (!qgi->isSelected()) {
-			m_diagram->clearSelection();
+			//Aim at the selection when there is one, so the menu appears
+			//beside what it acts on. With nothing selected there is nothing
+			//to aim at, so use the middle of the view -- the folio's own
+			//menu is still the right menu to show.
+		const auto selection = m_diagram->selectedItems();
+		if (!selection.isEmpty())
+		{
+			QRectF selection_rect;
+			for (auto *item : selection) {
+				selection_rect |= item->sceneBoundingRect();
+			}
+			menu_pos = mapFromScene(selection_rect.center());
 		}
+		else
+		{
+			menu_pos = viewport()->rect().center();
+		}
+		menu_global_pos = viewport()->mapToGlobal(menu_pos);
+	}
+	else
+	{
+		QGraphicsView::contextMenuEvent(e);
+		if(e->isAccepted())
+		return;
 
-			// At this step qgi can be deleted for example if qgi is a QetGraphicsHandlerItem.
-			// When we call clearSelection the parent item of the handler
-			// is deselected and so delete all handlers, in this case,
-			// qgi become a dangling pointer.
-			// we need to call again itemAt.
-		if (auto item_ = m_diagram->itemAt(mapToScene(e->pos()), transform())) {
-			item_->setSelected(true);
+		if (auto qgi = m_diagram->itemAt(mapToScene(menu_pos), transform()))
+		{
+			if (!qgi->isSelected()) {
+				m_diagram->clearSelection();
+			}
+
+				// At this step qgi can be deleted for example if qgi is a QetGraphicsHandlerItem.
+				// When we call clearSelection the parent item of the handler
+				// is deselected and so delete all handlers, in this case,
+				// qgi become a dangling pointer.
+				// we need to call again itemAt.
+			if (auto item_ = m_diagram->itemAt(mapToScene(menu_pos), transform())) {
+				item_->setSelected(true);
+			}
 		}
 	}
 
 	if (m_diagram->selectedItems().isEmpty())
 	{
-		m_paste_here_pos = e->pos();
+		m_paste_here_pos = menu_pos;
 		m_paste_here->setEnabled(Diagram::clipboardMayContainDiagram());
 	}
 
@@ -1268,7 +1320,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e)
 	{
 		QMenu *context_menu = new QMenu(this);
 		context_menu->addActions(list);
-		context_menu->popup(e->globalPos());
+		context_menu->popup(menu_global_pos);
 		e->accept();
 	}
 }
@@ -1355,9 +1407,6 @@ void DiagramView::createTemplateFromSelection()
 	QFile file(full_path);
 	if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-		out.setCodec("UTF-8");	// Qt6 QTextStream defaults to UTF-8
-#endif
 		out << macro_doc.toString(4);
 		file.close();
 		qDebug() << "Template successfully saved to:" << full_path;

@@ -36,7 +36,7 @@
         <string>Ajouter une ligne</string>
        </property>
        <property name="icon">
-        <iconset resource="../../../qelectrotech.qrc">
+        <iconset theme="list-add" resource="../../../qelectrotech.qrc">
          <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
        </property>
       </widget>
@@ -48,7 +48,7 @@
          <string>Copier dans le presse papier</string>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="edit-paste" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/edit-paste.png</normaloff>:/ico/16x16/edit-paste.png</iconset>
         </property>
        </item>

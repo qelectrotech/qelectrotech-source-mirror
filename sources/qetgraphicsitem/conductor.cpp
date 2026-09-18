@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/conductor.h"
+#include "../lastusedstyle.h"
 #include "../qetproject.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../autoNum/numerotationcontextcommands.h"
@@ -91,6 +92,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 		//set Zvalue at 11 to be upper than the DiagramImageItem and element
 	setZValue(11);
 	m_previous_z_value = zValue();
+	m_uuid = QUuid::createUuid();
 
 		//Add this conductor to the list of conductors of each of the two terminals
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -126,11 +128,17 @@ Conductor::Conductor(Terminal *p1, Terminal* p2) :
 	m_text_item = new ConductorTextItem(m_properties.text, this);
 	connect(m_text_item, &ConductorTextItem::textEdited, this, &Conductor::displayedTextChanged);
 
-		//Set the default conductor properties.
-	if (p1->diagram())
-		setProperties(p1->diagram()->defaultConductorProperties);
-	else if (p2->diagram())
-		setProperties(p2->diagram()->defaultConductorProperties);
+		//Set the default conductor properties. The color, specifically, is
+		//overridden by the last one applied via the F2 color editor this
+		//session (#879), the same way LastUsedStyle already does for shapes.
+	Diagram *dia = p1->diagram() ? p1->diagram() : p2->diagram();
+	if (dia)
+	{
+		ConductorProperties properties = dia->defaultConductorProperties;
+		if (LastUsedStyle::hasConductorColor())
+			properties.color = LastUsedStyle::conductorColor();
+		setProperties(properties);
+	}
 }
 
 /**
@@ -399,20 +407,48 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 
 	// commence le vrai trajet
 	// starts the real path
+	//
+	// Each cas "3"/"4" below inserts a two-point bridge along one axis, at a
+	// coordinate on the OTHER axis computed as a midpoint and then snapped
+	// to the grid by a loop that walks it strictly downward until it
+	// divides evenly. Whenever depart and arrivee already agree on the axis
+	// the bridge would run along, that bridge is unneeded -- the midpoint
+	// starts on the correct value already, but the snap can still walk it
+	// off, or, if it happens to already be on-grid, the two bridge points
+	// just duplicate depart and arrivee outright. Either way the result is
+	// a short out-and-back excursion, or a longer looping detour, at a join
+	// that needed no bridge in the first place (bugtracker #734). Skip the
+	// bridge in exactly that case; depart and arrivee already form the
+	// direct run. Which axis each cas guards on is noted at each site below
+	// -- descendant and montant are not mirror images of each other here.
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
 		if ((ori_depart == Qet::North && (ori_arrivee == Qet::South || ori_arrivee == Qet::West)) || (ori_depart == Qet::East && ori_arrivee == Qet::West)) {
-			// cas "3"
-			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
-			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
-			points << QPointF(ligne_inter_x, depart.y());
-			points << QPointF(ligne_inter_x, arrivee.y());
+			// cas "3": bridge is vertical, at a shared x between depart.y()
+			// and arrivee.y() -- unnecessary exactly when depart and
+			// arrivee already share an x. Compared qRound()ed, the same
+			// rounding the bridge coordinate itself is computed with below:
+			// an exact != would miss a pair that's already grid-equal after
+			// rounding but off by a sub-pixel remainder, and still route a
+			// degenerate bridge for it.
+			if (qRound(depart.x()) != qRound(arrivee.x())) {
+				int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
+				while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
+				points << QPointF(ligne_inter_x, depart.y());
+				points << QPointF(ligne_inter_x, arrivee.y());
+			}
 		} else if ((ori_depart == Qet::South && (ori_arrivee == Qet::North || ori_arrivee == Qet::East)) || (ori_depart == Qet::West && ori_arrivee == Qet::East)) {
-			// cas "4"
-			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
-			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
-			points << QPointF(depart.x(), ligne_inter_y);
-			points << QPointF(arrivee.x(), ligne_inter_y);
+			// cas "4": bridge is horizontal, at a shared y between
+			// depart.x() and arrivee.x() -- unnecessary exactly when depart
+			// and arrivee already share a y. (Always true in this branch,
+			// since "descendant" requires depart.y() < arrivee.y() strictly
+			// -- kept for symmetry with the "montant" branch below.)
+			if (qRound(depart.y()) != qRound(arrivee.y())) {
+				int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
+				while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
+				points << QPointF(depart.x(), ligne_inter_y);
+				points << QPointF(arrivee.x(), ligne_inter_y);
+			}
 		} else if ((ori_depart == Qet::North || ori_depart == Qet::East) && (ori_arrivee == Qet::North || ori_arrivee == Qet::East)) {
 			points << QPointF(arrivee.x(), depart.y()); // cas "2"
 		} else {
@@ -421,17 +457,28 @@ void Conductor::generateConductorPath(const QPointF &p1, Qet::Orientation o1, co
 	} else {
 		// trajet montant
 		if ((ori_depart == Qet::West && (ori_arrivee == Qet::East || ori_arrivee == Qet::South)) || (ori_depart == Qet::North && ori_arrivee == Qet::South)) {
-			// cas "3"
-			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
-			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
-			points << QPointF(depart.x(), ligne_inter_y);
-			points << QPointF(arrivee.x(), ligne_inter_y);
+			// cas "3": bridge is horizontal, at a shared y between
+			// depart.x() and arrivee.x() -- unnecessary exactly when depart
+			// and arrivee already share a y (the West->East case
+			// diagnosed for #734: two stubs extended onto the same y run
+			// straight into each other, no bridge needed). Compared
+			// qRound()ed, same as the other three guards.
+			if (qRound(depart.y()) != qRound(arrivee.y())) {
+				int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
+				while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
+				points << QPointF(depart.x(), ligne_inter_y);
+				points << QPointF(arrivee.x(), ligne_inter_y);
+			}
 		} else if ((ori_depart == Qet::East && (ori_arrivee == Qet::West || ori_arrivee == Qet::North)) || (ori_depart == Qet::South && ori_arrivee == Qet::North)) {
-			// cas "4"
-			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
-			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
-			points << QPointF(ligne_inter_x, depart.y());
-			points << QPointF(ligne_inter_x, arrivee.y());
+			// cas "4": bridge is vertical, at a shared x between depart.y()
+			// and arrivee.y() -- unnecessary exactly when depart and
+			// arrivee already share an x.
+			if (qRound(depart.x()) != qRound(arrivee.x())) {
+				int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
+				while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
+				points << QPointF(ligne_inter_x, depart.y());
+				points << QPointF(ligne_inter_x, arrivee.y());
+			}
 		} else if ((ori_depart == Qet::West || ori_depart == Qet::North) && (ori_arrivee == Qet::West || ori_arrivee == Qet::North)) {
 			points << QPointF(depart.x(), arrivee.y()); // cas "2"
 		} else {
@@ -573,8 +620,23 @@ void Conductor::paint(QPainter *painter, const QStyleOptionGraphicsItem *options
 		painter -> setPen(final_conductor_pen);
 		painter -> setBrush(junction_brush);
 		painter -> setRenderHint(QPainter::Antialiasing, true);
+			// The junction dot has to read as a dot on top of the conductor
+			// that carries it, so it scales with the conductor width instead
+			// of being a fixed 3.0 across: on a wide conductor a 3.0 dot is
+			// narrower than the line and simply disappears (bugtracker #108).
+			//
+			// Floored at the historic 3.0 so nothing changes for the default
+			// width of 1.0 or anything thinner -- only the wide conductors
+			// the report is about are affected. m_properties.cond_size is
+			// used rather than the pen, whose width is inflated by 4 while
+			// the mouse is over the conductor.
+		const qreal junction_diameter = qMax(3.0, 3.0 * m_properties.cond_size);
+		const qreal junction_radius = junction_diameter / 2.0;
 		foreach(QPointF point, junctions_list) {
-			painter -> drawEllipse(QRectF(point.x() - 1.5, point.y() - 1.5, 3.0, 3.0));
+			painter -> drawEllipse(QRectF(point.x() - junction_radius,
+						      point.y() - junction_radius,
+						      junction_diameter,
+						      junction_diameter));
 		}
 	}
 
@@ -1005,6 +1067,22 @@ void Conductor::pointsToSegments(const QList<QPointF>& points_list) {
 */
 bool Conductor::fromXml(QDomElement &dom_element)
 {
+		//Older project files have no conductor uuid attribute at all --
+		//generate one on load, same treatment terminal uuids got when
+		//that field was introduced (see terminal1/terminal2 handling in
+		//toXml() below).
+	m_uuid = QUuid(dom_element.attribute(QStringLiteral("uuid")));
+	m_persist_uuid = !m_uuid.isNull();
+	if (m_uuid.isNull()) {
+			//Absent, empty or malformed: mint one. A null uuid is not a usable
+			//identity -- every conductor carrying one would collide with every
+			//other on the conductor table's primary key. It's runtime-only,
+			//though: toXml() must not write it back out, or a legacy file
+			//with no conductor uuids gets a freshly different one on every
+			//single load-and-resave (see #754).
+		m_uuid = QUuid::createUuid();
+	}
+
 	setPos(dom_element.attribute("x", nullptr).toDouble(),
 		   dom_element.attribute("y", nullptr).toDouble());
 
@@ -1043,6 +1121,8 @@ QDomElement Conductor::toXml(QDomDocument &dom_document,
 {
 	QDomElement dom_element = dom_document.createElement("conductor");
 
+	if (m_persist_uuid)
+		dom_element.setAttribute("uuid", m_uuid.toString());
 	dom_element.setAttribute("x", QString::number(pos().x()));
 	dom_element.setAttribute("y", QString::number(pos().y()));
 	
@@ -1725,14 +1805,8 @@ QSet<Conductor *> Conductor::relatedPotentialConductors(const bool all_diagram, 
 			for (Conductor *c : other_conductors_list_t) {
 				other_conductors += c->relatedPotentialConductors(all_diagram, t_list);
 			}
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-			other_conductors += other_conductors_list_t.toSet();
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
+
 			other_conductors += QSet<Conductor*>(other_conductors_list_t.begin(),other_conductors_list_t.end());
-#endif
 		}
 	}
 

@@ -18,17 +18,22 @@
 #ifndef QETINFORMATION_H
 #define QETINFORMATION_H
 
-#include <QStringList>
 #include <QHash>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
+#include <QStringList>
 
 /**
  * Inside this namespace you will find all information used in QElectrotech for
  * element, conductor and diagram.
  * Each information have 3 values :
- * #1 the info key = the key of an information as a QString used in the code (example : label)
- * #2 the info key to variable = the key in form of a variable.
- * This is used by the user to replace a variable by the string of this variable (example : %{label})
- * #3 the info key translated to the current local (example label in dutch = Betriebsmittelkennzeichen)
+ * #1 the info key = the key of an information as a QString used in the code
+ * (example : label)
+ * #2 the info key to variable = the key in form of a variable. This is used
+ * by the user to replace a variable by the string of this variable
+ * (example : %{label})
+ * #3 the info key translated to the current local (example label in dutch =
+ * Betriebsmittelkennzeichen)
  */
 namespace QETInformation
 {
@@ -44,7 +49,15 @@ namespace QETInformation
 	static QString ELMT_MACHINE_MANUFACTURER_REF     = "machine_manufacturer_reference";
 	static QString ELMT_SUPPLIER                     = "supplier";
 	static QString ELMT_QUANTITY                     = "quantity";
+	static QString ELMT_MODEL                        = "model";
+	static QString ELMT_CATEGORY                     = "category";
+	static QString ELMT_VOLTAGE_RATING               = "voltage_rating";
+	static QString ELMT_CURRENT_RATING               = "current_rating";
+	static QString ELMT_NOTES                        = "notes";
 	static QString ELMT_UNITY                        = "unity";
+	static QString ELMT_WIDTH						 = "width";
+	static QString ELMT_HEIGHT                       = "height";
+	static QString ELMT_DEPTH                        = "depth";
 	static QString ELMT_PLANT                        = "plant";
 	static QString ELMT_LOCATION                     = "location";
 	static QString ELMT_AUX1                         = "auxiliary1";
@@ -83,6 +96,7 @@ namespace QETInformation
 	static QString ELMT_SUPPLIER_AUX4                     = "supplier_auxiliary4";
 	static QString ELMT_QUANTITY_AUX4                     = "quantity_auxiliary4";
 	static QString ELMT_UNITY_AUX4                        = "unity_auxiliary4";
+	static QString ELMT_XREF                         = "xref";
 
 
 	/** Default information related to conductor **/
@@ -130,6 +144,11 @@ namespace QETInformation
 	static QString ELMT_PLC_FUNCTION    = "plc_function";
 	static QString ELMT_PLC_COMMENT     = "plc_comment";
 	static QString ELMT_PLC_CROSSREF    = "plc_crossref";
+	static QString ELMT_PLC_TC          = "plc_tc";
+	static QString ELMT_PLC_T1          = "plc_t1";
+	static QString ELMT_PLC_T2          = "plc_t2";
+	static QString ELMT_PLC_T3          = "plc_t3";
+	static QString ELMT_PLC_T4          = "plc_t4";
 
 
 
@@ -149,6 +168,14 @@ namespace QETInformation
 	QStringList elementInfoKeys();
 	QStringList elementEditorElementInfoKeys();
 	QString elementInfoToVar(const QString &info);
+
+	QRegularExpression numericInfoPattern();
+	class NumericInfoValidator : public QRegularExpressionValidator
+	{
+	public:
+		explicit NumericInfoValidator(QObject *parent = nullptr);
+		State validate(QString &input, int &pos) const override;
+	};
 
 	QStringList terminalElementInfoKeys();
 

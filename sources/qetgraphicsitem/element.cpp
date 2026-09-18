@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
+#include "../qetapp.h"
 #include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
@@ -33,15 +34,26 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/setautonumcontextcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
 #include <QDebug>
 
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <utility>
 
 class ElementXmlRetroCompatibility
@@ -123,14 +135,29 @@ Element::Element(
 		 | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 
-	connect(this, &Element::rotationChanged, [this]()
-{
+	/* Keep docked conductors attached whenever this element's
+	 * rotation OR scene position changes. Ordinary single-item
+	 * dragging already refreshes conductors explicitly, via
+	 * ElementsMover::continueMovement() calling
+	 * Conductor::updatePath(). But other code paths change an
+	 * element's rotation/pos properties directly -- notably
+	 * RotateSelectionCommand's group-rotation mode, which moves
+	 * each element around a shared pivot via a "pos"
+	 * QPropertyUndoCommand instead of going through
+	 * ElementsMover -- and those need this hook or the
+	 * conductor's path is left stale, still drawn to the
+	 * terminal's old scene position. */
+	auto update_docked_conductors = [this]()
+	{
 		for(QGraphicsItem *qgi : childItems())
 		{
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
 				t->updateConductor();
 		}
-	});
+	};
+	connect(this, &Element::rotationChanged, update_docked_conductors);
+	connect(this, &Element::xChanged, update_docked_conductors);
+	connect(this, &Element::yChanged, update_docked_conductors);
 }
 
 /**
@@ -688,11 +715,16 @@ bool Element::valideXml(QDomElement &e)
 	}
 
 	bool conv_ok;
-	e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" and reports a
+		//successful conversion for them, so conv_ok alone doesn't reject a
+		//non-finite coordinate. A NaN position reaching the scene can hang
+		//QGraphicsScene::addItem() forever inside Qt's own polygon-clipping
+		//code when an existing conductor's collision test runs against it.
+	double x = e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(x)) return(false);
 
-	e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+	double y = e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(y)) return(false);
 
 	return(true);
 }
@@ -795,6 +827,7 @@ bool Element::fromXml(QDomElement &e,
 	setZValue(e.attribute(QStringLiteral("z"), QString::number(this->zValue())).toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable
 		 | QGraphicsItem::ItemIsSelectable);
+	is_movable_ = e.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt();
 
 	// orientation
 	bool conv_ok;
@@ -860,6 +893,15 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
+		//Load PLC master data override from diagram XML
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = e.firstChildElement(QStringLiteral("plcMasterData"));
+		if (!xml_plc.isNull())
+			m_data.plcMasterDataFromXml(xml_plc);
+	}
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -917,6 +959,7 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("y"), QString::number(pos().y()));
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 
 	/* get the first id to use for the bounds of this element
 	 * recupere le premier id a utiliser pour les bornes de cet element */
@@ -991,6 +1034,15 @@ QDomElement Element::toXml(
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
 	}
 
 	//Dynamic texts
@@ -1396,6 +1448,27 @@ void Element::setElementInformations(DiagramContext dc)
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
 	emit elementInfoChange(old_info, m_data.m_informations);
+
+	// Propagate label change to linked PLC slaves (label is changed via
+	// setElementInformations through the undo stack, not via setElementData)
+	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
+	{
+		if (!m_group_index_map.isEmpty())
+		{
+			const QString new_label = actualLabel();
+			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
+			{
+				Element *slave = it.key();
+				if (!slave)
+					continue;
+				if (slave->elementInformations().value(QETInformation::ELMT_LABEL).toString() == new_label)
+					continue;
+				DiagramContext ctx = slave->elementInformations();
+				ctx.addValue(QETInformation::ELMT_LABEL, new_label);
+				slave->setElementInformations(ctx);
+			}
+		}
+	}
 }
 
 /**
@@ -1433,7 +1506,9 @@ void Element::setElementData(ElementData data)
 	{
 		const auto &new_plc = m_data.plcMasterData();
 		bool plc_changed = (old_plc.ios != new_plc.ios);
-		if (plc_changed && !m_group_index_map.isEmpty())
+		bool label_changed = (old_info.value(QStringLiteral("label")) !=
+			m_data.m_informations.value(QStringLiteral("label")));
+		if (!m_group_index_map.isEmpty() && (plc_changed || label_changed))
 		{
 			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
 			{
@@ -1442,24 +1517,58 @@ void Element::setElementData(ElementData data)
 				if (!slave || io_idx < 0 || io_idx >= new_plc.ios.size())
 					continue;
 				const auto &io = new_plc.ios.at(io_idx);
-				DiagramContext ctx = slave->elementInformations();
-				ctx.addValue(QETInformation::ELMT_PLC_TYPE,
-					ElementData::translatedPlcIOType(io.type));
-				ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
-				ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
-				ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
-				ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
-					[&]() -> QString {
-						if (!diagram() || !diagram()->project())
-							return QString();
-						XRefProperties xrp = diagram()->project()
-							->defaultXRefProperties("plc");
-						autonum::sequentialNumbers seq;
-						return autonum::AssignVariables::formulaToLabel(
-							xrp.slaveLabel(), seq, diagram(), this);
-					}());
-				ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
-				slave->setElementInformations(ctx);
+
+				if (plc_changed)
+				{
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+						ElementData::translatedPlcIOType(io.type));
+					ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+					ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+					ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+					ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+						[&]() -> QString {
+							if (!diagram() || !diagram()->project())
+								return QString();
+							XRefProperties xrp = diagram()->project()
+								->defaultXRefProperties("plc");
+							autonum::sequentialNumbers seq;
+							return autonum::AssignVariables::formulaToLabel(
+								xrp.slaveLabel(), seq, diagram(), this);
+						}());
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					ctx.addValue(QETInformation::ELMT_PLC_TC,
+						QString::number(io.terminalCount));
+					for (int t = 0; t < io.terminalCount && t < 4; ++t)
+					{
+						QString val = (t < io.terminals.size())
+							? io.terminals.at(t) : QString();
+						ctx.addValue(plcTerminalKeys[t], val);
+					}
+					slave->setElementInformations(ctx);
+
+					// Update master labels on slave terminals
+					QList<Terminal *> slave_terms = slave->terminals();
+					for (int t = 0; t < slave_terms.size(); ++t)
+					{
+						if (t < io.terminals.size())
+						{
+							slave_terms.at(t)->setUseMasterLabel(true);
+							slave_terms.at(t)->setMasterLabelIndex(t);
+						}
+						else
+						{
+							slave_terms.at(t)->setUseMasterLabel(false);
+						}
+					}
+				}
+				if (label_changed)
+				{
+					// Only label changed, update the label on the slave
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					slave->setElementInformations(ctx);
+				}
 			}
 		}
 	}
@@ -1563,7 +1672,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 	(ex K for coil) with condition :
 	formula is empty, text tagged "label" is emptty or "_";
 */
-void Element::setUpFormula(bool code_letter)
+void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
@@ -1592,8 +1701,21 @@ void Element::setUpFormula(bool code_letter)
 					   nc,
 					   diagram(),
 					   element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum,
-							ncc.next());
+
+		NumerotationContext new_context = ncc.next();
+		QETProject *project = diagram()->project();
+		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);};
+
+		if (parent_undo)
+		{
+			new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context, parent_undo);
+		}
+		else
+		{
+			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
+			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			diagram()->undoStack().push(undo);
+		}
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
@@ -1675,6 +1797,139 @@ QString Element::name() const {
 ElementsLocation Element::location() const
 {
 	return m_location;
+}
+
+/**
+	@brief Element::reloadPicture
+	Re-fetch this element's drawing from its location and repaint.
+
+	A placed element is drawn once from its definition, at construction
+	(buildFromXml()), and nothing afterwards ever makes it look again --
+	editing and saving the definition leaves every already-placed instance
+	showing the old drawing until the project is closed and reopened
+	(bugtracker #802). This is the per-instance half of the fix.
+
+	Deliberately limited to the drawing. Terminals are what conductors are
+	attached to: if the new definition adds, removes or moves a terminal,
+	or changes the element size or hotspot, the new drawing would no longer
+	match the live terminals and bounding rect. Such an element is left
+	untouched and GeometryChanged is returned; it has to be removed and
+	re-inserted, which deletes the conductors already connected to it.
+
+	If the definition cannot be found or read, the current drawing is kept
+	and Unavailable is returned, so the element never goes blank.
+
+	Purely visual: nothing is pushed on the undo stack and the project is
+	not marked as modified.
+	@return what happened to this element
+*/
+Element::ReloadPictureResult Element::reloadPicture()
+{
+	if (!m_location.exist()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	const QDomElement definition = m_location.xml();
+	if (definition.isNull()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	if (!definitionGeometryMatches(definition)) {
+		return ReloadPictureResult::GeometryChanged;
+	}
+
+	QPicture picture;
+	QPicture low_zoom_picture;
+	ElementPictureFactory::instance()->getPictures(m_location,
+												   picture,
+												   low_zoom_picture);
+	if (picture.isNull()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	m_picture = picture;
+	m_low_zoom_picture = low_zoom_picture;
+	update();
+	return ReloadPictureResult::Reloaded;
+}
+
+/**
+	@brief Element::definitionGeometryMatches
+	Compare the geometry described by @p definition with this live element:
+	size and hotspot (normalized the same way setSize()/setHotspot() do it)
+	and the set of terminal positions (same parsing rules as
+	TerminalData::fromXml()).
+	@param definition : the <definition> root of the element
+	@return true if the new drawing can be applied without desynchronizing
+	the bounding rect or the terminals
+*/
+bool Element::definitionGeometryMatches(const QDomElement &definition) const
+{
+	int w = 0, h = 0, hot_x = 0, hot_y = 0;
+	if (!QET::attributeIsAnInteger(definition, QStringLiteral("width"), &w)         ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("height"), &h)        ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_x"), &hot_x) ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_y"), &hot_y)) {
+		return false;
+	}
+
+		//Same rounding as setSize()
+	while (w % 10) ++w;
+	while (h % 10) ++h;
+	if (QSize(w, h) != dimensions) {
+		return false;
+	}
+
+		//Same clamping as setHotspot()
+	const QPoint new_hotspot = dimensions.isNull()
+			? QPoint(0, 0)
+			: QPoint(qMin(hot_x, w), qMin(hot_y, h));
+	if (new_hotspot != hotspot_coord) {
+		return false;
+	}
+
+		//Terminal positions described by the new definition
+	QList<QPointF> new_terminals;
+	for (QDomElement description = definition.firstChildElement(QStringLiteral("description")) ;
+		 !description.isNull() ;
+		 description = description.nextSiblingElement(QStringLiteral("description")))
+	{
+		for (QDomElement terminal = description.firstChildElement(QStringLiteral("terminal")) ;
+			 !terminal.isNull() ;
+			 terminal = terminal.nextSiblingElement(QStringLiteral("terminal")))
+		{
+			qreal x = 0.0, y = 0.0;
+			if (QET::attributeIsAReal(terminal, QStringLiteral("x"), &x) &&
+				QET::attributeIsAReal(terminal, QStringLiteral("y"), &y)) {
+				new_terminals << QPointF(x, y);
+			}
+		}
+	}
+
+	if (new_terminals.size() != m_terminals.size()) {
+		return false;
+	}
+
+		//Every live terminal must still exist at the same place
+	for (const Terminal *terminal : m_terminals)
+	{
+		const QPointF live_pos = mapFromScene(terminal->dockConductor());
+		bool found = false;
+		for (int i = 0 ; i < new_terminals.size() ; ++i)
+		{
+			const QPointF delta = new_terminals.at(i) - live_pos;
+			if (qAbs(delta.x()) < 0.01 && qAbs(delta.y()) < 0.01) {
+				new_terminals.removeAt(i);
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 /**
@@ -1813,12 +2068,12 @@ void Element::drawPlcTable(QPainter *painter)
 	// Fonts
 	QFont header_font = plc_data.headerFont;
 	if (header_font.family().isEmpty()) {
-		header_font = painter->font();
+		header_font = QETApp::diagramTextsFont();
 		header_font.setBold(true);
 	}
 	QFont cell_font = plc_data.cellFont;
 	if (cell_font.family().isEmpty()) {
-		cell_font = painter->font();
+		cell_font = QETApp::diagramTextsFont();
 	}
 
 	for (const QPointF &pos : positions) {
@@ -1900,7 +2155,10 @@ void Element::drawPlcTable(QPainter *painter)
 					}
 
 					QRectF text_rect = cr.adjusted(1, 0, -1, 0);
-					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, cell_text);
+					painter->save();
+					painter->setClipRect(text_rect, Qt::IntersectClip);
+					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextWordWrap, cell_text);
+					painter->restore();
 
 					cx += col_widths[col];
 				}
