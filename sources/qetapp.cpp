@@ -2333,18 +2333,30 @@ void QETApp::initFonts()
 
 /**
 	@brief QETApp::initIconTheme
-	Register QET's icon theme "qet" (see misc/make_icon_themes.py and
-	ico/icon-themes.qrc) and make it the current theme, so
-	QIcon::fromTheme("name") resolves to QET's own icons on every
-	platform. Must run before QET::Icons::initIcons(), which looks icons
-	up by name.
+	Register QET's two icon themes ("qet" and "qet-dark", see
+	misc/make_icon_themes.py and ico/icon-themes.qrc) and pick the one
+	matching the current palette. Must run before QET::Icons::initIcons(),
+	which looks icons up by name.
 */
 void QETApp::initIconTheme()
 {
 	QStringList paths = QIcon::themeSearchPaths();
 	paths.prepend(QStringLiteral(":/ico/themes"));
 	QIcon::setThemeSearchPaths(paths);
-	QIcon::setThemeName(QStringLiteral("qet"));
+	applyIconTheme(qApp->palette());
+}
+
+/**
+	@brief QETApp::applyIconTheme
+	Select "qet-dark" for a dark palette, "qet" otherwise. Icons created
+	with QIcon::fromTheme() re-resolve on their next paint, so this can be
+	called again whenever the palette changes.
+*/
+void QETApp::applyIconTheme(const QPalette &palette)
+{
+	QIcon::setThemeName(QET::Palette::isDark(palette)
+	                    ? QStringLiteral("qet-dark")
+	                    : QStringLiteral("qet"));
 }
 
 /**
@@ -2371,6 +2383,7 @@ void QETApp::initStyle()
 	if (QET::Palette::styleIsFusion(qApp->style()))
 		initial_palette_ = QET::Palette::forFusion(initial_palette_);
 #endif
+	applyIconTheme(initial_palette_);
 
 	//Apply or not the system style
 	QSettings settings;
@@ -2389,6 +2402,7 @@ void QETApp::initStyle()
 		initial_palette_ = scheme == Qt::ColorScheme::Dark
 		                   ? QET::Palette::fusionDark()
 		                   : QET::Palette::fusionLight();
+		applyIconTheme(initial_palette_);
 		QSettings settings;
 		useSystemPalette(settings.value("usesystemcolors", true).toBool());
 	});

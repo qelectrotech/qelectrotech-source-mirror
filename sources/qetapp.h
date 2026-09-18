@@ -287,6 +287,7 @@ class QETApp : public QObject
 		void initLanguage();
 		void initFonts();
 		void initIconTheme();
+		static void applyIconTheme(const QPalette &);
 		void initStyle();
 		void initConfiguration();
 		void initSystemTray();
