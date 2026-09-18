@@ -59,9 +59,8 @@
 	if (movable.isEmpty()) return;
 
 		//Compute the top-left of all items' positions (not bounding
-		//rects) and snap to grid — used only for the initial cursor
-		//warp.  Items stay at their original XML positions;
-		//moveTo() handles grid-snapped movement via deltas.
+		//rects) and snap to grid: this is the point that gets placed
+		//under the cursor, and the baseline moveTo() measures from.
 	QPointF top_left;
 	bool first = true;
 	for (auto *item : movable) {
@@ -79,17 +78,42 @@
 					  Diagram::xGrid).toInt();
 	const int yGrid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
 					  Diagram::yGrid).toInt();
-	const QPointF grid_origin(
-		qRound(top_left.x() / xGrid) * xGrid,
-		qRound(top_left.y() / yGrid) * yGrid);
+	const auto snapGrid = [xGrid, yGrid](const QPointF &p) -> QPointF {
+		return QPointF(
+			qRound(p.x() / xGrid) * xGrid,
+			qRound(p.y() / yGrid) * yGrid);
+	};
+	const QPointF grid_origin = snapGrid(top_left);
 
-		//Store each item's position.  moveTo() applies a grid-snapped
-		//delta from the baseline, so items preserve their layout and
-		//move in whole grid steps.
+		//Move the group to the cursor, rather than the cursor to the
+		//group. Both put the copy under the pointer, but warping the
+		//pointer also drags it back to the original's position, so the
+		//copy appears exactly on top of what was copied until the mouse
+		//is moved -- which is the thing pasting under the cursor was
+		//meant to avoid (issue #913). Taking the pointer away from
+		//where the user put it is also its own surprise.
+	m_group_origin = snapGrid(start_pos);
+	const QPointF offset = m_group_origin - grid_origin;
+
+		//Store each item's position after the move. moveTo() applies a
+		//grid-snapped delta from the baseline to these, so items
+		//preserve their layout and move in whole grid steps.
 	for (auto *item : movable) {
+		item->setPos(item->pos() + offset);
 		m_relative_pos.insert(item, item->pos());
 	}
-	m_group_origin = grid_origin;
+
+		//The conductors were laid out against the old terminal
+		//positions, so re-route them before anything is drawn.
+	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
+	for (auto *conductor : conductors) {
+		conductor->updatePath();
+	}
+
+		//The baseline is known now, so moveTo() does not have to
+		//capture one from the first mouse movement.
+	m_initial_cursor = m_group_origin;
+	m_baseline_captured = true;
 
 	m_diagram->clearSelection();
 	for (auto *item : movable) {
@@ -101,11 +125,6 @@
 			if (const auto qde = QETApp::diagramEditorAncestorOf(view)) {
 				m_status_bar = qde->statusBar();
 			}
-				//Warp the cursor close to the group origin so the
-				//first mouseMoveEvent captures the correct baseline.
-			const QPoint view_pos = view->mapFromScene(m_group_origin);
-			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
-			QCursor::setPos(global_pos);
 		}
 	}
 	showHint();
@@ -128,6 +147,20 @@ DiagramEventAddPaste::~DiagramEventAddPaste()
 	}
 	if (m_status_bar) {
 		m_status_bar->clearMessage();
+	}
+
+		//Give the context menu back. init() turned it off so a right
+		//click would cancel the placement instead of opening a menu over
+		//it, and nothing turned it on again: one Ctrl+V left the folio's
+		//right-click menu dead for the rest of the session, taking
+		//"Coller ici", "Collage multiple" and the folio properties with
+		//it. Every other DiagramEvent* class restores it here; this one
+		//did not.
+	if (m_diagram) {
+		const auto views = m_diagram->views();
+		for (auto *view : views) {
+			view->setContextMenuPolicy(Qt::DefaultContextMenu);
+		}
 	}
 }
 
@@ -166,9 +199,10 @@ void DiagramEventAddPaste::showHint()
 /**
 	@brief DiagramEventAddPaste::moveTo
 	Compute a grid-snapped delta from the initial cursor position and
-	apply it to every item's grid-shifted position.  This keeps all
-	items exactly on grid points regardless of modifier keys or
-	sub-pixel cursor-warp rounding.
+	apply it to every item's stored position.  Working from a delta
+	against a fixed baseline, rather than from the previous position,
+	keeps all items exactly on grid points regardless of modifier keys
+	and stops rounding accumulating over a long drag.
 */
 void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 {
@@ -184,14 +218,15 @@ void DiagramEventAddPaste::moveTo(const QPointF &scene_pos)
 			qRound(p.y() / yGrid) * yGrid);
 	};
 
-		//On the very first call, record the actual grid-snapped
-		//cursor position as baseline.  The cursor warp in the
-		//constructor goes through integer rounding (mapFromScene →
-		//QPoint) so the real position may differ slightly from
-		//m_initial_cursor.  Using the actual scene position avoids
-		//a one-grid-unit jump on the first mouse movement.
-	if (m_initial_cursor.isNull()) {
+		//The constructor normally sets the baseline, having just put the
+		//group there. This covers the case where it could not -- no view
+		//to map through -- by taking the first cursor position instead.
+		//Tested with m_baseline_captured rather than
+		//m_initial_cursor.isNull(), which silently re-baselines when the
+		//baseline is legitimately scene (0,0).
+	if (!m_baseline_captured) {
 		m_initial_cursor = snapGrid(scene_pos);
+		m_baseline_captured = true;
 		return;
 	}
 

@@ -79,13 +79,18 @@ class DiagramEventAddPaste : public DiagramEventInterface
 		///Each movable item's position relative to the group's top left,
 		///taken once so repeated moves cannot accumulate rounding drift.
 	QHash<QGraphicsItem *, QPointF> m_relative_pos;
-		///Top-left corner of the bounding rect of all movable items,
-		///in scene coordinates, captured when the paste starts.
+		///Where the group's grid-snapped top left was put when the paste
+		///started, in scene coordinates -- the cursor, so the copy
+		///appears under the pointer rather than on top of what was
+		///copied.
 	QPointF m_group_origin;
-		///Cursor position (scene coords) at the moment the paste starts,
-		///so delta-based movement can compute offsets from the initial point.
+		///Cursor position (scene coords) the delta-based movement in
+		///moveTo() measures from. Equal to m_group_origin, since the
+		///group is placed at the cursor.
 	QPointF m_initial_cursor;
-		///Set to true once the first moveTo() captures the real cursor position.
+		///Whether m_initial_cursor holds a usable baseline. A flag rather
+		///than testing m_initial_cursor.isNull(), which cannot tell "not
+		///set yet" from a baseline that is legitimately scene (0,0).
 	bool m_baseline_captured{false};
 	QPointer<QStatusBar> m_status_bar;
 	bool m_finished{false};
