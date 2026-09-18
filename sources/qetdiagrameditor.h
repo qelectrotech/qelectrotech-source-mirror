@@ -32,6 +32,7 @@ class QMdiSubWindow;
 class QETProject;
 class QETResult;
 class ProjectView;
+class ConductorColorToolButton;
 class CustomElement;
 class Diagram;
 class DiagramView;
@@ -236,6 +237,9 @@ class QETDiagramEditor : public QETMainWindow
 		*m_save_file_as,		///< Save current project as a specific file
 		*m_find = nullptr,
 		*m_jump_to_element = nullptr;	///< Open the "jump to element" quick-open popup
+
+		///< One-click conductor colour, in the "Schéma" toolbar
+		ConductorColorToolButton *m_conductor_color_button = nullptr;
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 
