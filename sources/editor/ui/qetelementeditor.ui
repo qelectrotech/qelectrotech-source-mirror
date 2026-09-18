@@ -14,7 +14,7 @@
    <string>QElectroTech - Éditeur d'élément</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../qelectrotech.qrc">
+   <iconset theme="qet" resource="../../../qelectrotech.qrc">
     <normaloff>:/ico/16x16/qet.png</normaloff>:/ico/16x16/qet.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
@@ -55,7 +55,7 @@
       <string>Coller depuis...</string>
      </property>
      <property name="icon">
-      <iconset resource="../../../qelectrotech.qrc">
+      <iconset theme="edit-paste" resource="../../../qelectrotech.qrc">
        <normaloff>:/ico/16x16/edit-paste.png</normaloff>:/ico/16x16/edit-paste.png</iconset>
      </property>
      <addaction name="m_paste_from_file_action"/>
@@ -202,7 +202,7 @@
   </widget>
   <action name="m_select_all_act">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-select-all" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-select-all.png</normaloff>:/ico/16x16/edit-select-all.png</iconset>
    </property>
    <property name="text">
@@ -211,7 +211,7 @@
   </action>
   <action name="m_new_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="document-new" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/document-new.png</normaloff>:/ico/22x22/document-new.png</iconset>
    </property>
    <property name="text">
@@ -220,7 +220,7 @@
   </action>
   <action name="m_open_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="folder-open" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/folder-open.png</normaloff>:/ico/22x22/folder-open.png</iconset>
    </property>
    <property name="text">
@@ -229,7 +229,7 @@
   </action>
   <action name="m_open_from_file_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="folder-open" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/folder-open.png</normaloff>:/ico/22x22/folder-open.png</iconset>
    </property>
    <property name="text">
@@ -238,7 +238,7 @@
   </action>
   <action name="m_save_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="document-save" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/document-save.png</normaloff>:/ico/22x22/document-save.png</iconset>
    </property>
    <property name="text">
@@ -247,7 +247,7 @@
   </action>
   <action name="m_save_as_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="document-save-as" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/document-save-as.png</normaloff>:/ico/22x22/document-save-as.png</iconset>
    </property>
    <property name="text">
@@ -256,7 +256,7 @@
   </action>
   <action name="m_save_as_file_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="document-save" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/document-save.png</normaloff>:/ico/22x22/document-save.png</iconset>
    </property>
    <property name="text">
@@ -265,7 +265,7 @@
   </action>
   <action name="m_export_svg_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="document-export" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/document-export.png</normaloff>:/ico/22x22/document-export.png</iconset>
    </property>
    <property name="text">
@@ -274,7 +274,7 @@
   </action>
   <action name="m_reload_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/view-refresh.png</normaloff>:/ico/22x22/view-refresh.png</iconset>
    </property>
    <property name="text">
@@ -283,7 +283,7 @@
   </action>
   <action name="m_quit_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="application-exit" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/application-exit.png</normaloff>:/ico/16x16/application-exit.png</iconset>
    </property>
    <property name="text">
@@ -295,7 +295,7 @@
   </action>
   <action name="m_deselect_all_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-select-none" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-select-none.png</normaloff>:/ico/16x16/edit-select-none.png</iconset>
    </property>
    <property name="text">
@@ -304,7 +304,7 @@
   </action>
   <action name="m_cut_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-cut" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-cut.png</normaloff>:/ico/16x16/edit-cut.png</iconset>
    </property>
    <property name="text">
@@ -313,7 +313,7 @@
   </action>
   <action name="m_copy_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-copy" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-copy.png</normaloff>:/ico/16x16/edit-copy.png</iconset>
    </property>
    <property name="text">
@@ -322,7 +322,7 @@
   </action>
   <action name="m_paste_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-paste" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-paste.png</normaloff>:/ico/16x16/edit-paste.png</iconset>
    </property>
    <property name="text">
@@ -331,7 +331,7 @@
   </action>
   <action name="m_paste_in_area_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-paste" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-paste.png</normaloff>:/ico/16x16/edit-paste.png</iconset>
    </property>
    <property name="text">
@@ -340,7 +340,7 @@
   </action>
   <action name="m_paste_from_file_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="text-xml" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/text-xml.png</normaloff>:/ico/16x16/text-xml.png</iconset>
    </property>
    <property name="text">
@@ -349,7 +349,7 @@
   </action>
   <action name="m_paste_from_element_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="element" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/element.png</normaloff>:/ico/16x16/element.png</iconset>
    </property>
    <property name="text">
@@ -358,7 +358,7 @@
   </action>
   <action name="m_revert_selection_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-select-invert" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/edit-select-invert.png</normaloff>:/ico/16x16/edit-select-invert.png</iconset>
    </property>
    <property name="text">
@@ -367,7 +367,7 @@
   </action>
   <action name="m_delete_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="edit-delete" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/edit-delete.png</normaloff>:/ico/22x22/edit-delete.png</iconset>
    </property>
    <property name="text">
@@ -376,7 +376,7 @@
   </action>
   <action name="m_edit_names_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="names" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/names.png</normaloff>:/ico/22x22/names.png</iconset>
    </property>
    <property name="text">
@@ -385,7 +385,7 @@
   </action>
   <action name="m_edit_author_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="preferences-desktop-user" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/preferences-desktop-user.png</normaloff>:/ico/16x16/preferences-desktop-user.png</iconset>
    </property>
    <property name="text">
@@ -394,7 +394,7 @@
   </action>
   <action name="m_edit_element_properties_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="element-edit" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/element-edit.png</normaloff>:/ico/22x22/element-edit.png</iconset>
    </property>
    <property name="text">
@@ -403,7 +403,7 @@
   </action>
   <action name="m_zoom_in_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="zoom-in" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/zoom-in.png</normaloff>:/ico/22x22/zoom-in.png</iconset>
    </property>
    <property name="text">
@@ -412,7 +412,7 @@
   </action>
   <action name="m_zoom_out_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="zoom-out" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/zoom-out.png</normaloff>:/ico/22x22/zoom-out.png</iconset>
    </property>
    <property name="text">
@@ -421,7 +421,7 @@
   </action>
   <action name="m_zoom_fit_best_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="zoom-fit-best" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/zoom-fit-best.png</normaloff>:/ico/22x22/zoom-fit-best.png</iconset>
    </property>
    <property name="text">
@@ -430,7 +430,7 @@
   </action>
   <action name="m_zoom_original_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="zoom-original" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/zoom-original.png</normaloff>:/ico/22x22/zoom-original.png</iconset>
    </property>
    <property name="text">
@@ -439,7 +439,7 @@
   </action>
   <action name="m_about_qet_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="qet" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/qet.png</normaloff>:/ico/16x16/qet.png</iconset>
    </property>
    <property name="text">
@@ -451,7 +451,7 @@
   </action>
   <action name="m_online_manual">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="help-contents" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/help-contents.png</normaloff>:/ico/16x16/help-contents.png</iconset>
    </property>
    <property name="text">
@@ -463,7 +463,7 @@
   </action>
   <action name="m_youtube_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="kdenlive-show-video" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/kdenlive-show-video.png</normaloff>:/ico/16x16/kdenlive-show-video.png</iconset>
    </property>
    <property name="text">
@@ -475,7 +475,7 @@
   </action>
   <action name="m_donate_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="help-donate" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/help-donate.png</normaloff>:/ico/16x16/help-donate.png</iconset>
    </property>
    <property name="text">
@@ -487,7 +487,7 @@
   </action>
   <action name="m_about_qt_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="qt" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/qt.png</normaloff>:/ico/16x16/qt.png</iconset>
    </property>
    <property name="text">
@@ -499,7 +499,7 @@
   </action>
   <action name="m_rotate_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="orientations" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/orientations.png</normaloff>:/ico/16x16/orientations.png</iconset>
    </property>
    <property name="text">
@@ -508,7 +508,7 @@
   </action>
   <action name="m_rotateFine_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="orientations" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/orientations.png</normaloff>:/ico/16x16/orientations.png</iconset>
    </property>
    <property name="text">
@@ -517,7 +517,7 @@
   </action>
   <action name="m_mirror_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="mirror" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/mirror.png</normaloff>:/ico/16x16/mirror.png</iconset>
    </property>
    <property name="text">
@@ -526,7 +526,7 @@
   </action>
   <action name="m_flip_action">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="flip" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/flip.png</normaloff>:/ico/16x16/flip.png</iconset>
    </property>
    <property name="text">
@@ -535,7 +535,7 @@
   </action>
   <action name="m_import_dxf">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="run-dxf" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/16x16/run-dxf.png</normaloff>:/ico/16x16/run-dxf.png</iconset>
    </property>
    <property name="text">
@@ -544,7 +544,7 @@
   </action>
   <action name="m_import_scaled_element">
    <property name="icon">
-    <iconset resource="../../../qelectrotech.qrc">
+    <iconset theme="folder-open" resource="../../../qelectrotech.qrc">
      <normaloff>:/ico/22x22/folder-open.png</normaloff>:/ico/22x22/folder-open.png</iconset>
    </property>
    <property name="text">

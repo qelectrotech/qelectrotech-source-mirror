@@ -106,7 +106,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="go-bottom" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/go-bottom.png</normaloff>:/ico/16x16/go-bottom.png</iconset>
         </property>
         <property name="flat">
@@ -123,7 +123,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="go-top" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/go-top.png</normaloff>:/ico/16x16/go-top.png</iconset>
         </property>
         <property name="flat">
@@ -140,7 +140,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="view-refresh" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/view-refresh.png</normaloff>:/ico/16x16/view-refresh.png</iconset>
         </property>
         <property name="flat">
@@ -157,7 +157,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="configure-toolbars" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/configure-toolbars.png</normaloff>:/ico/16x16/configure-toolbars.png</iconset>
         </property>
         <property name="checkable">

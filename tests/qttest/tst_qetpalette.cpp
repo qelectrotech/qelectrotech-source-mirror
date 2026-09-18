@@ -28,9 +28,12 @@
 #include <QStyleFactory>
 #include <QToolBar>
 
+#include "inkcontrast.h"
 #include "qetpalette.h"
 
 using QET::Palette::contrastRatio;
+using QET::Test::grab;
+using QET::Test::inkContrast;
 
 /**
 	Contrast checks for the palettes QET installs under the Fusion style.
@@ -94,44 +97,6 @@ namespace {
 		{"Link/Window",               QPalette::Link,            QPalette::Window},
 	};
 
-	/**
-		Grab a widget for measuring. With QET_TEST_DUMP_DIR set, the image
-		is also written there as <row>-<name>.png so a failure can be
-		looked at.
-	*/
-	QImage grab(QWidget *widget, const char *name)
-	{
-		const QImage image = widget->grab().toImage();
-		const QByteArray dir = qgetenv("QET_TEST_DUMP_DIR");
-		if (!dir.isEmpty())
-			image.save(QString("%1/%2-%3.png").arg(QString::fromLocal8Bit(dir),
-			                                     QTest::currentDataTag(), name));
-		return image;
-	}
-
-	/**
-		Contrast between the background of a rendered widget (its most
-		frequent color) and the ink drawn on it (the pixel whose luminance
-		differs most from the background), inside rect.
-	*/
-	double inkContrast(const QImage &image, const QRect &rect)
-	{
-		QHash<QRgb, int> histogram;
-		for (int y = rect.top(); y <= rect.bottom(); ++y)
-			for (int x = rect.left(); x <= rect.right(); ++x)
-				++histogram[image.pixel(x, y)];
-
-		QRgb background = 0;
-		int best = -1;
-		for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
-			if (it.value() > best) { best = it.value(); background = it.key(); }
-
-		double contrast = 1.0;
-		for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
-			contrast = qMax(contrast, contrastRatio(QColor(background),
-			                                        QColor(it.key())));
-		return contrast;
-	}
 }
 
 void tst_qetpalette::addPaletteRows()

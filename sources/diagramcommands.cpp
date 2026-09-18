@@ -19,6 +19,7 @@
 
 #include "diagram.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 #include "qetinformation.h"
@@ -90,6 +91,62 @@ void PasteDiagramCommand::redo()
 			//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
 
+			// PLC slaves carry master-specific data (type, address,
+			// function, cross-ref, etc.) in their elementInformations.
+			// Always clear those on paste so the duplicate starts clean,
+			// regardless of the user's erase-label-on-copy preference.
+			const bool is_slave = (e->linkType() == Element::Slave);
+			if (is_slave) {
+				DiagramContext dc = e->elementInformations();
+				dc.remove(QETInformation::ELMT_PLC_TYPE);
+				dc.remove(QETInformation::ELMT_PLC_ADDRESS);
+				dc.remove(QETInformation::ELMT_PLC_FUNCTION);
+				dc.remove(QETInformation::ELMT_PLC_COMMENT);
+				dc.remove(QETInformation::ELMT_PLC_CROSSREF);
+				dc.remove(QETInformation::ELMT_LABEL);
+				dc.remove(QETInformation::ELMT_PLC_TC);
+				dc.remove(QETInformation::ELMT_PLC_T1);
+				dc.remove(QETInformation::ELMT_PLC_T2);
+				dc.remove(QETInformation::ELMT_PLC_T3);
+				dc.remove(QETInformation::ELMT_PLC_T4);
+				dc.remove(QStringLiteral("xref"));
+
+				// Block alignment before setElementInformations so
+				// that elementInfoChanged() resolves texts without
+				// finishAlignment() shifting right/center-aligned items.
+				for (DynamicElementTextItem *deti : e->dynamicTextItems())
+					deti->m_block_alignment = true;
+				for (auto *group : e->textGroups())
+					group->blockAlignmentUpdate(true);
+
+				e->setElementInformations(dc);
+
+				for (DynamicElementTextItem *deti : e->dynamicTextItems())
+					deti->m_block_alignment = false;
+				for (auto *group : e->textGroups())
+					group->blockAlignmentUpdate(false);
+
+				// After setElementInformations, elementInfoChanged()
+				// resolves composite text with cleaned dc.  Clear
+				// all non-UserText items directly as a safety net.
+				for (DynamicElementTextItem *deti : e->dynamicTextItems()) {
+					if (deti->textFrom() != DynamicElementTextItem::UserText) {
+						deti->m_block_alignment = true;
+						deti->setPlainText(QString());
+						deti->m_block_alignment = false;
+					}
+				}
+				for (auto *group : e->textGroups()) {
+					for (DynamicElementTextItem *deti : group->texts()) {
+						if (deti->textFrom() != DynamicElementTextItem::UserText) {
+							deti->m_block_alignment = true;
+							deti->setPlainText(QString());
+							deti->m_block_alignment = false;
+						}
+					}
+				}
+			}
+
 			if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
 			{
 				//Reset the information about the label, the comment and location
@@ -99,27 +156,21 @@ void PasteDiagramCommand::redo()
 				dc.addValue("comment", "");
 				dc.addValue("location", "");
 
-				// PLC slaves store master data (type, address, comment,
-				// cross-ref, etc.) in their own elementInformations.
-				// Remove them the same way MasterElement::unlinkElement()
-				// does, so pasted PLC slaves start clean like regular
-				// slaves.
-				if (e->linkType() == Element::Slave) {
-					dc.remove(QETInformation::ELMT_PLC_TYPE);
-					dc.remove(QETInformation::ELMT_PLC_ADDRESS);
-					dc.remove(QETInformation::ELMT_PLC_FUNCTION);
-					dc.remove(QETInformation::ELMT_PLC_COMMENT);
-					dc.remove(QETInformation::ELMT_PLC_CROSSREF);
-					dc.remove(QETInformation::ELMT_LABEL);
-					dc.remove(QETInformation::ELMT_PLC_TC);
-					dc.remove(QETInformation::ELMT_PLC_T1);
-					dc.remove(QETInformation::ELMT_PLC_T2);
-					dc.remove(QETInformation::ELMT_PLC_T3);
-					dc.remove(QETInformation::ELMT_PLC_T4);
-					dc.remove(QStringLiteral("xref"));
+				// Block alignment during setElementInformations
+				// for non-slaves, same as Element::fromXml() (line 890-896).
+				if (!is_slave) {
+					for (DynamicElementTextItem *deti : e->dynamicTextItems())
+						deti->m_block_alignment = true;
+					for (auto *group : e->textGroups())
+						group->blockAlignmentUpdate(true);
 				}
 
 				e->setElementInformations(dc);
+
+				for (DynamicElementTextItem *deti : e->dynamicTextItems())
+					deti->m_block_alignment = false;
+				for (auto *group : e->textGroups())
+					group->blockAlignmentUpdate(false);
 				
 				//Reset the text of conductors, the same way the label/comment/
 				//location above are reset to "" rather than to some other

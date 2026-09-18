@@ -63,7 +63,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../../qelectrotech.qrc">
+        <iconset theme="edit-delete" resource="../../../qelectrotech.qrc">
          <normaloff>:/ico/16x16/edit-delete.png</normaloff>:/ico/16x16/edit-delete.png</iconset>
        </property>
       </widget>
@@ -136,7 +136,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../../../qelectrotech.qrc">
+              <iconset theme="list-remove" resource="../../../qelectrotech.qrc">
                <normaloff>:/ico/22x22/list-remove.png</normaloff>:/ico/22x22/list-remove.png</iconset>
              </property>
              <property name="flat">
@@ -153,7 +153,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../../../qelectrotech.qrc">
+              <iconset theme="list-add" resource="../../../qelectrotech.qrc">
                <normaloff>:/ico/22x22/list-add.png</normaloff>:/ico/22x22/list-add.png</iconset>
              </property>
              <property name="flat">
@@ -170,7 +170,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../../../qelectrotech.qrc">
+              <iconset theme="arrow-left" resource="../../../qelectrotech.qrc">
                <normaloff>:/ico/16x16/arrow-left.png</normaloff>:/ico/16x16/arrow-left.png</iconset>
              </property>
             </widget>
@@ -184,7 +184,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../../../qelectrotech.qrc">
+              <iconset theme="arrow-right" resource="../../../qelectrotech.qrc">
                <normaloff>:/ico/16x16/arrow-right.png</normaloff>:/ico/16x16/arrow-right.png</iconset>
              </property>
             </widget>

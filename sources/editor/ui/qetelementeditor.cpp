@@ -575,9 +575,11 @@ void QETElementEditor::updateInformations()
 			|| selection_xml_name == "ellipse"
 			|| selection_xml_name == "arc")
 		{
-			clearToolsDock();
 			//We add the editor widget
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			if (m_tools_dock_stack -> widget(1) != editor) {
+				clearToolsDock();
+			}
 
 #if TODO_LIST
 #pragma message("@TODO Check if it takes longer than setting the parts again to the editor.")
@@ -610,11 +612,15 @@ void QETElementEditor::updateInformations()
 					success = editor -> setParts(cep_list);
 				}
 				if (success) {
-					m_tools_dock_stack -> insertWidget(1, editor);
+					if (m_tools_dock_stack -> widget(1) != editor) {
+						m_tools_dock_stack -> insertWidget(1, editor);
+					}
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -628,8 +634,10 @@ void QETElementEditor::updateInformations()
 			// multi edit for polygons makes no sense
 			// TODO: maybe allowing multipart edit when number of points is the same?
 			//We add the editor widget
-			clearToolsDock();
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			if (m_tools_dock_stack -> widget(1) != editor) {
+				clearToolsDock();
+			}
 			CustomElementPart* part = editor -> currentPart();
 			bool equal = part == cep_list.first();
 
@@ -639,11 +647,15 @@ void QETElementEditor::updateInformations()
 					success = editor -> setPart(cep_list.first());
 				}
 				if (success) {
-					m_tools_dock_stack -> insertWidget(1, editor);
+					if (m_tools_dock_stack -> widget(1) != editor) {
+						m_tools_dock_stack -> insertWidget(1, editor);
+					}
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -657,15 +669,21 @@ void QETElementEditor::updateInformations()
 
 	//There's several parts selecteds and all can be edited by style editor.
 	if (style_editable) {
-		clearToolsDock();
 		ElementItemEditor *selection_editor = m_editors["style"];
+		if (m_tools_dock_stack -> widget(1) != selection_editor) {
+			clearToolsDock();
+		}
 		if (selection_editor) {
 			if (selection_editor -> setParts(cep_list)) {
-				m_tools_dock_stack -> insertWidget(1, selection_editor);
+				if (m_tools_dock_stack -> widget(1) != selection_editor) {
+					m_tools_dock_stack -> insertWidget(1, selection_editor);
+				}
 				m_tools_dock_stack -> setCurrentIndex(1);
 			}
 			else {
 				qDebug() << "Editor refused part.";
+				clearToolsDock();
+				m_tools_dock_stack->setCurrentIndex(0);
 			}
 		}
 	}

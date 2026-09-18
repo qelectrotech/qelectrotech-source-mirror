@@ -216,6 +216,7 @@ class Diagram : public QGraphicsScene
 		// methods related to graphics items addition/removal on the diagram
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
+		bool eventInterfaceIsRunning() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);

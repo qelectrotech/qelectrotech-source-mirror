@@ -456,13 +456,13 @@ void FileElementCollectionItem::setUpIcon()
 		if (macrosPath.endsWith("/")) macrosPath.remove(macrosPath.length() - 1, 1);
 
 		if (m_path == QETApp::commonElementsDirN())
-			setIcon(QIcon(":/ico/16x16/qet.png"));
+			setIcon(QIcon::fromTheme("qet"));
 		else if (m_path == QETApp::companyElementsDirN())
-			setIcon(QIcon(":/ico/16x16/go-company.png"));
+			setIcon(QIcon::fromTheme("go-company"));
 		else if (m_path == macrosPath)
-			setIcon(QIcon(":/ico/16x16/go-home.png"));
+			setIcon(QIcon::fromTheme("go-home"));
 		else
-			setIcon(QIcon(":/ico/16x16/go-home.png"));
+			setIcon(QIcon::fromTheme("go-home"));
 	}
 	else
 	{

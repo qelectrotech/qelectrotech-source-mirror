@@ -26,6 +26,7 @@
 
 #include <QMessageBox>
 #include <QSqlError>
+#include <QSqlQueryModel>
 #include <QSqlRecord>
 
 /**
@@ -44,6 +45,9 @@ BOMExportDialog::BOMExportDialog(QETProject *project, QWidget *parent) :
 	ui->m_main_layout->insertWidget(0, m_query_widget);
 	m_query_widget->setQuery(BomExport::defaultQuery());
 	on_m_format_as_bom_clicked(false);
+
+	m_preview_model = new QSqlQueryModel(this);
+	ui->m_preview_table->setModel(m_preview_model);
 }
 
 /**
@@ -89,7 +93,15 @@ QByteArray BOMExportDialog::getBom(QString *error)
 		error->clear();
 	}
 	m_project->dataBase()->updateDB();
-	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr());
+	QString rejection;
+	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr(), &rejection);
+
+	if (!rejection.isEmpty()) {
+		if (error) {
+			*error = rejection;
+		}
+		return {};
+	}
 
 	if (!query_.exec()) {
 		qDebug() << "BOMExportDialog::getBom : query errir : " << query_.lastError();
@@ -129,4 +141,40 @@ QByteArray BOMExportDialog::getBom(QString *error)
 void BOMExportDialog::on_m_format_as_bom_clicked(bool checked) {
 	m_query_widget->setGroupBy("designation", checked);
 	m_query_widget->setCount("COUNT(*) AS designation_qty", checked);
+}
+
+/**
+	@brief BOMExportDialog::on_m_preview_pb_clicked
+	Run the current query and show its result live, without going through
+	the CSV round-trip -- lets a report be checked and adjusted before
+	committing to a file (qelectrotech-source-mirror#886).
+*/
+void BOMExportDialog::on_m_preview_pb_clicked()
+{
+	m_project->dataBase()->updateDB();
+	QString rejection;
+	auto query_ = m_project->dataBase()->newQuery(m_query_widget->queryStr(), &rejection);
+
+	if (!rejection.isEmpty()) {
+		QMessageBox::warning(this, tr("Requête refusée"), rejection);
+		return;
+	}
+
+	if (!query_.exec()) {
+		QMessageBox::warning(
+				this, tr("Erreur"),
+				tr("Erreur dans la requête :\n%1").arg(query_.lastError().text()));
+		return;
+	}
+
+	m_preview_model->setQuery(std::move(query_));
+	for (int i = 0; i < m_preview_model->columnCount(); ++i)
+	{
+		const auto field_name = m_preview_model->record().fieldName(i);
+		const auto translated = QETInformation::translatedInfoKey(field_name);
+		if (!translated.isEmpty()) {
+			m_preview_model->setHeaderData(i, Qt::Horizontal, translated);
+		}
+	}
+	ui->m_preview_table->resizeColumnsToContents();
 }
