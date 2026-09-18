@@ -82,11 +82,27 @@ target_link_libraries(tst_contactusage PRIVATE Qt::Test)
 add_executable(
   tst_qetpalette
   tst_qetpalette.cpp
+  inkcontrast.h
   ${QET_DIR}/sources/qetpalette.cpp
   ${QET_DIR}/sources/qetpalette.h)
 add_test(NAME tst_qetpalette COMMAND tst_qetpalette)
 target_include_directories(tst_qetpalette PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetpalette PRIVATE Qt::Test Qt::Widgets)
+
+# qeticons.cpp is compiled in so the test can check the table entries
+# themselves (icon sizes in the element panel), not only the theme files.
+add_executable(
+  tst_qeticons
+  tst_qeticons.cpp
+  inkcontrast.h
+  ${QET_DIR}/sources/qeticons.cpp
+  ${QET_DIR}/sources/qeticons.h
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetpalette.h
+  ${QET_DIR}/ico/icon-themes.qrc)
+add_test(NAME tst_qeticons COMMAND tst_qeticons)
+target_include_directories(tst_qeticons PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_qeticons PRIVATE Qt::Test Qt::Widgets Qt::Svg)
 
 add_executable(
   tst_smart_device

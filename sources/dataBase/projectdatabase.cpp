@@ -28,6 +28,7 @@
 #include "../qetproject.h"
 
 #include <QLocale>
+#include <QRegularExpression>
 #include <QSqlError>
 
 #include <QSqlDriver>
@@ -132,11 +133,88 @@ QETProject *projectDataBase::project() const
 }
 
 /**
-	@brief projectDataBase::newQuery
-	@return a QSqlquery with query as query
-	and the internal database of this class as database to use.
+	@brief projectDataBase::isReadOnlySelect
+	Every query that reaches newQuery() goes through this check first --
+	including one loaded from a saved nomenclature/summary table's <query>
+	element (ProjectDBModel::fromXml()), which makes this a defense against
+	a crafted project file, not just a careless custom-SQL edit
+	(qelectrotech-source-mirror#886 asked for read-only enforcement on the
+	custom SQL reports feature; this covers every path into newQuery(), not
+	just that one dialog).
+
+	Deliberately simple rather than a real SQL parser: reject more than one
+	statement (blocks stacking a write after a leading SELECT with `;`), and
+	require the query to start with SELECT or WITH. A determined attacker
+	with arbitrary SQL access to a local SQLite connection can still find
+	tricks a simple prefix check won't catch; this is meant to stop the
+	ordinary mistake and the obvious payload, not to be a security boundary
+	against a hostile file assumed to already run in some other trust
+	context.
+	@param query the raw SQL text to check
+	@param error set to a human-readable reason when this returns false
+	@return true if @p query looks like a single read-only SELECT/WITH
 */
-QSqlQuery projectDataBase::newQuery(const QString &query) {
+bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
+{
+	if (error) {
+		error->clear();
+	}
+
+	QString trimmed = query.trimmed();
+	if (trimmed.endsWith(QLatin1Char(';'))) {
+		trimmed.chop(1);
+		trimmed = trimmed.trimmed();
+	}
+
+	if (trimmed.isEmpty()) {
+		if (error) {
+			*error = projectDataBase::tr("La requête est vide.");
+		}
+		return false;
+	}
+
+	if (trimmed.contains(QLatin1Char(';'))) {
+		if (error) {
+			*error = projectDataBase::tr("Une seule requête SELECT est autorisée"
+								  " (le caractère ';' ne peut apparaître"
+								  " qu'à la toute fin).");
+		}
+		return false;
+	}
+
+	const int first_space = trimmed.indexOf(QRegularExpression(QStringLiteral("\\s")));
+	const QString first_word = (first_space == -1 ? trimmed : trimmed.left(first_space)).toUpper();
+	if (first_word != QLatin1String("SELECT") && first_word != QLatin1String("WITH")) {
+		if (error) {
+			*error = projectDataBase::tr("Seules les requêtes en lecture seule"
+								  " (SELECT ou WITH ... SELECT) sont"
+								  " autorisées.");
+		}
+		return false;
+	}
+
+	return true;
+}
+
+/**
+	@brief projectDataBase::newQuery
+	@param query the SQL text to run -- must be a single read-only
+	SELECT/WITH statement, see isReadOnlySelect()
+	@param error set to a human-readable reason when the query was rejected
+	before ever reaching the database
+	@return a QSqlQuery with query as query and the internal database of
+	this class as database to use, or an unexecuted, harmless QSqlQuery if
+	the query was rejected
+*/
+QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
+	QString reason;
+	if (!isReadOnlySelect(query, &reason)) {
+		qWarning().noquote() << "projectDataBase::newQuery: rejected query:" << reason << "--" << query;
+		if (error) {
+			*error = reason;
+		}
+		return QSqlQuery(m_data_base);
+	}
 	return QSqlQuery(query, m_data_base);
 }
 

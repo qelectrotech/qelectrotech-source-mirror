@@ -514,19 +514,19 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	// Bold, italic and underline buttons
 
 	m_bold_action = createCheckableAction(
-				QIcon(":/ico/32x32/format-text-bold.png"),
+				QIcon::fromTheme("format-text-bold"),
 				tr("Texte en gras"), editor, &RichTextEditor::setFontBold, this);
 	ShortcutManager::instance().registerAction(m_bold_action, "richtext.bold", tr("Éditeur de texte"), Qt::CTRL | Qt::Key_B);
 	addAction(m_bold_action);
 
 	m_italic_action = createCheckableAction(
-				QIcon(":/ico/32x32/format-text-italic.png"),
+				QIcon::fromTheme("format-text-italic"),
 				tr("Texte en italique"), editor, &RichTextEditor::setFontItalic, this);
 	ShortcutManager::instance().registerAction(m_italic_action, "richtext.italic", tr("Éditeur de texte"), Qt::CTRL | Qt::Key_I);
 	addAction(m_italic_action);
 
 	m_underline_action = createCheckableAction(
-				QIcon(":/ico/32x32/format-text-underline.png"),
+				QIcon::fromTheme("format-text-underline"),
 				tr("Texte souligé"), editor, &RichTextEditor::setFontUnderline, this);
 	ShortcutManager::instance().registerAction(m_underline_action, "richtext.underline", tr("Éditeur de texte"), Qt::CTRL | Qt::Key_U);
 	addAction(m_underline_action);
@@ -567,13 +567,13 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	// Superscript and subscript buttons
 
 	m_valign_sup_action = createCheckableAction(
-				QIcon(":/ico/22x22/format-text-superscript.png"),
+				QIcon::fromTheme("format-text-superscript"),
 				tr("Superscript"),
 				this, &RichTextEditorToolBar::setVAlignSuper, this);
 	addAction(m_valign_sup_action);
 
 	m_valign_sub_action = createCheckableAction(
-				QIcon(":/ico/22x22/format-text-subscript.png"),
+				QIcon::fromTheme("format-text-subscript"),
 				tr("Subscript"),
 				this, &RichTextEditorToolBar::setVAlignSub, this);
 	addAction(m_valign_sub_action);
@@ -601,7 +601,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
 	// Simplify rich text
 	m_simplify_richtext_action = createCheckableAction(
-				QIcon(":/ico/32x32/simplifyrichtext.png"),
+				QIcon::fromTheme("simplifyrichtext"),
 				tr("Simplify Rich Text"), editor, &RichTextEditor::setSimplifyRichText, this);
 	m_simplify_richtext_action->setChecked(editor->simplifyRichText());
 	connect(m_editor, &RichTextEditor::simplifyRichTextChanged, m_simplify_richtext_action, &QAction::setChecked);

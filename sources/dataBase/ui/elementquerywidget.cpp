@@ -20,7 +20,14 @@
 #include "../../properties/elementdata.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
+#include "../projectdatabase.h"
 #include "ui_elementquerywidget.h"
+
+#include <QFile>
+#include <QFileDialog>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QMessageBox>
 
 #include <QRegularExpression>
 
@@ -94,6 +101,9 @@ ElementQueryWidget::ElementQueryWidget(QWidget *parent) :
 
 	setUpItems();
 	fillSavedQuery();
+
+	connect(ui->m_sql_query, &QLineEdit::textChanged, this, &ElementQueryWidget::checkQueryValidity);
+	checkQueryValidity();
 }
 
 /**
@@ -599,6 +609,8 @@ void ElementQueryWidget::on_m_edit_sql_query_cb_clicked()
 		m_custom_query = ui->m_sql_query->text();
 		updateQueryLine();
 	}
+
+	checkQueryValidity();
 }
 
 /**
@@ -672,6 +684,10 @@ void ElementQueryWidget::on_m_load_pb_clicked()
 */
 void ElementQueryWidget::on_m_save_current_conf_pb_clicked()
 {
+	if (!projectDataBase::isReadOnlySelect(queryStr())) {
+		return;
+	}
+
 	QFile file_(QETApp::configDir() % "/nomenclature.json");
 
 	if (file_.open(QFile::ReadWrite))
@@ -698,7 +714,147 @@ void ElementQueryWidget::on_m_save_current_conf_pb_clicked()
 }
 
 void ElementQueryWidget::on_m_save_name_le_textChanged(const QString &arg1) {
-	ui->m_save_current_conf_pb->setDisabled(arg1.isEmpty());
+	Q_UNUSED(arg1)
+	checkQueryValidity();
+}
+
+/**
+	@brief ElementQueryWidget::checkQueryValidity
+	Live feedback for the custom-SQL box: only the free-text path can carry
+	anything other than a SELECT (the column/filter builder always produces
+	one), so this only actually restricts something once "Requête SQL
+	personnalisée" is checked. Same rule projectDataBase::isReadOnlySelect()
+	enforces at execution time -- this just tells the user *before* they hit
+	Preview/Export/OK instead of after (qelectrotech-source-mirror#886).
+*/
+void ElementQueryWidget::checkQueryValidity()
+{
+	if (!ui->m_edit_sql_query_cb->isChecked()) {
+		ui->m_query_warning_label->clear();
+		ui->m_save_current_conf_pb->setEnabled(!ui->m_save_name_le->text().isEmpty());
+		return;
+	}
+
+	QString reason;
+	const bool valid = projectDataBase::isReadOnlySelect(ui->m_sql_query->text(), &reason);
+	ui->m_query_warning_label->setText(valid ? QString() : reason);
+	ui->m_save_current_conf_pb->setEnabled(valid && !ui->m_save_name_le->text().isEmpty());
+}
+
+/**
+	@brief ElementQueryWidget::on_m_export_reports_pb_clicked
+	Write every saved report in nomenclature.json to a file the user picks,
+	so it can be handed to a colleague or another install
+	(qelectrotech-source-mirror#886's "import and export report definitions
+	for sharing between users or company installations").
+*/
+void ElementQueryWidget::on_m_export_reports_pb_clicked()
+{
+	QFile source(QETApp::configDir() % "/nomenclature.json");
+	if (!source.open(QFile::ReadOnly)) {
+		QMessageBox::information(this, tr("Exporter"), tr("Aucun rapport enregistré à exporter."));
+		return;
+	}
+	const auto content = source.readAll();
+	source.close();
+
+	if (QJsonDocument::fromJson(content).object().isEmpty()) {
+		QMessageBox::information(this, tr("Exporter"), tr("Aucun rapport enregistré à exporter."));
+		return;
+	}
+
+	const QString file_path = QFileDialog::getSaveFileName(
+			this, tr("Exporter les rapports"), QStringLiteral("rapports_qet.json"),
+			tr("Fichiers JSON (*.json)"));
+	if (file_path.isEmpty()) {
+		return;
+	}
+
+	QFile dest(file_path);
+	if (!dest.open(QFile::WriteOnly) || dest.write(content) == -1) {
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'écrire dans %1.").arg(file_path));
+	}
+}
+
+/**
+	@brief ElementQueryWidget::on_m_import_reports_pb_clicked
+	Merge a previously-exported reports file into this install's
+	nomenclature.json. A name already used locally is not overwritten
+	silently -- the user is asked, per report, whether to replace it.
+*/
+void ElementQueryWidget::on_m_import_reports_pb_clicked()
+{
+	const QString file_path = QFileDialog::getOpenFileName(
+			this, tr("Importer des rapports"), QString(), tr("Fichiers JSON (*.json)"));
+	if (file_path.isEmpty()) {
+		return;
+	}
+
+	QFile source(file_path);
+	if (!source.open(QFile::ReadOnly)) {
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible de lire %1.").arg(file_path));
+		return;
+	}
+
+	QJsonParseError parse_error;
+	const auto incoming_doc = QJsonDocument::fromJson(source.readAll(), &parse_error);
+	source.close();
+
+	if (parse_error.error != QJsonParseError::NoError || !incoming_doc.isObject()) {
+		QMessageBox::critical(
+				this, tr("Erreur"),
+				tr("%1 ne contient pas des rapports QElectroTech valides.").arg(file_path));
+		return;
+	}
+
+	const auto incoming = incoming_doc.object();
+	if (incoming.isEmpty()) {
+		QMessageBox::information(this, tr("Importer"), tr("Ce fichier ne contient aucun rapport."));
+		return;
+	}
+
+	QFile dest_file(QETApp::configDir() % "/nomenclature.json");
+	QJsonObject existing;
+	if (dest_file.open(QFile::ReadOnly)) {
+		existing = QJsonDocument::fromJson(dest_file.readAll()).object();
+		dest_file.close();
+	}
+
+	int imported = 0, skipped = 0;
+	for (auto it = incoming.begin(); it != incoming.end(); ++it)
+	{
+		if (existing.contains(it.key()))
+		{
+			const auto answer = QMessageBox::question(
+					this, tr("Rapport déjà existant"),
+					tr("Un rapport nommé « %1 » existe déjà. Le remplacer ?").arg(it.key()),
+					QMessageBox::Yes | QMessageBox::No);
+			if (answer != QMessageBox::Yes) {
+				++skipped;
+				continue;
+			}
+		}
+		existing[it.key()] = it.value();
+		++imported;
+	}
+
+	if (dest_file.open(QFile::WriteOnly | QFile::Truncate))
+	{
+		dest_file.write(QJsonDocument(existing).toJson());
+		dest_file.close();
+	}
+	else
+	{
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'écrire la configuration locale."));
+		return;
+	}
+
+	ui->m_conf_cb->clear();
+	fillSavedQuery();
+
+	QMessageBox::information(
+			this, tr("Importer"),
+			tr("%1 rapport(s) importé(s), %2 ignoré(s).").arg(imported).arg(skipped));
 }
 
 void ElementQueryWidget::on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous)

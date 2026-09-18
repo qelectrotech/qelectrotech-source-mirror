@@ -23,6 +23,7 @@
 
 class QETProject;
 class ElementQueryWidget;
+class QSqlQueryModel;
 
 namespace Ui {
 class BOMExportDialog;
@@ -44,11 +45,13 @@ class BOMExportDialog : public QDialog
 
 	private slots:
 		void on_m_format_as_bom_clicked(bool checked);
+		void on_m_preview_pb_clicked();
 
 		private:
 		Ui::BOMExportDialog *ui;
 		ElementQueryWidget *m_query_widget = nullptr;
 		QETProject *m_project = nullptr;
+		QSqlQueryModel *m_preview_model = nullptr;
 };
 
 #endif // BOMEXPORTDIALOG_H

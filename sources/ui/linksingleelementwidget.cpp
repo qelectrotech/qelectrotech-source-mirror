@@ -25,10 +25,14 @@
 #include "../undocommand/linkelementcommand.h"
 #include "../qetinformation.h"
 #include "../qetproject.h"
+#include "../qetgraphicsitem/masterelement.h"
 #include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>
 #include <QInputDialog>
+#include <QCheckBox>
+#include <QSettings>
+#include <QSignalBlocker>
 
 
 /**
@@ -52,6 +56,22 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
 	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
 	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
+
+	// Hide the full-masters checkbox for non-slave elements
+	const bool is_slave = (elmt && elmt->elementData().m_type == ElementData::Slave);
+	ui->m_hide_full_masters_cb->setVisible(is_slave);
+
+	// Restore persisted state before connecting to avoid toggled firing buildTree()
+	// while m_element is still null.
+	{
+		const QSignalBlocker blocker(ui->m_hide_full_masters_cb);
+		QSettings settings;
+		ui->m_hide_full_masters_cb->setChecked(
+			settings.value(QStringLiteral("link-element-widget/hideFullMasters"), false).toBool());
+	}
+
+	connect(ui->m_hide_full_masters_cb, &QCheckBox::toggled,
+		this, &LinkSingleElementWidget::hideFullMastersToggled);
 	
 	connect(m_show_qtwi, &QAction::triggered, this, [=]()
 	{
@@ -249,6 +269,7 @@ void LinkSingleElementWidget::buildTree()
 
 	if (m_element->elementData().m_type == ElementData::Slave)
 	{
+		m_full_masters.clear();
 		
 		for(const auto &elmt : elmt_vector)
 		{
@@ -288,6 +309,16 @@ void LinkSingleElementWidget::buildTree()
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
+
+			// Check if this master is full
+			if (elmt->linkType() == Element::Master) {
+				MasterElement *me = qobject_cast<MasterElement*>(elmt);
+				if (me && me->isFull()) {
+					m_full_masters.insert(qtwi);
+					if (ui->m_hide_full_masters_cb->isChecked())
+						qtwi->setHidden(true);
+				}
+			}
 		}
 		
 		
@@ -455,6 +486,8 @@ void LinkSingleElementWidget::setUpCompleter()
 */
 void LinkSingleElementWidget::clearTreeWidget()
 {
+	m_pending_qtwi = nullptr;
+
 	while(ui->m_tree_widget->topLevelItemCount())
 	{
 		QTreeWidgetItem *qtwi = ui->m_tree_widget->takeTopLevelItem(0);
@@ -467,6 +500,7 @@ void LinkSingleElementWidget::clearTreeWidget()
 	
 	m_qtwi_elmt_hash.clear();
 	m_qtwi_strl_hash.clear();
+	m_full_masters.clear();
 }
 
 void LinkSingleElementWidget::setUpHeaderLabels()
@@ -675,6 +709,7 @@ void LinkSingleElementWidget::hideButtons()
 	ui->m_show_linked_pb->hide();
 	ui->m_show_this_pb->hide();
 	ui->m_search_field->show();
+	ui->m_hide_full_masters_cb->show();
 }
 
 /**
@@ -688,6 +723,7 @@ void LinkSingleElementWidget::showButtons()
 	ui->m_show_linked_pb->show();
 	ui->m_show_this_pb->show();
 	ui->m_search_field->hide();
+	ui->m_hide_full_masters_cb->hide();
 }
 
 void LinkSingleElementWidget::headerCustomContextMenuRequested(
@@ -783,27 +819,35 @@ void LinkSingleElementWidget::on_m_show_this_pb_clicked()
 	If arg1 is empty, show all items.
 	@param arg1
 */
-void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
+void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &)
 {
-	//Show all items if arg1 is empty, if not hide all items
-	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
-		qtwi->setHidden(!arg1.isEmpty());
-	
-	QList <QTreeWidgetItem *> qtwi_list;
-	
-	foreach(QTreeWidgetItem *qtwi, m_qtwi_strl_hash.keys())
+	updateItemsVisibility();
+}
+
+void LinkSingleElementWidget::hideFullMastersToggled(bool checked)
+{
+	QSettings settings;
+	settings.setValue(QStringLiteral("link-element-widget/hideFullMasters"), checked);
+	updateItemsVisibility();
+}
+
+void LinkSingleElementWidget::updateItemsVisibility()
+{
+	const QString text = ui->m_search_field->text();
+	const bool hide_full = ui->m_hide_full_masters_cb->isChecked();
+
+	for (auto it = m_qtwi_strl_hash.cbegin(); it != m_qtwi_strl_hash.cend(); ++it)
 	{
-		foreach(QString str, m_qtwi_strl_hash.value(qtwi))
-		{
-			if(str.contains(arg1, Qt::CaseInsensitive))
-			{
-				qtwi_list << qtwi;
-				continue;
+		bool match = text.isEmpty();
+		if (!match) {
+			for (const QString &str : it.value()) {
+				if (str.contains(text, Qt::CaseInsensitive)) {
+					match = true;
+					break;
+				}
 			}
 		}
+		it.key()->setHidden(!match
+			|| (hide_full && m_full_masters.contains(it.key())));
 	}
-	
-	//Show items which match with arg1
-	foreach(QTreeWidgetItem *qtwi, qtwi_list)
-		qtwi->setHidden(false);
 }
