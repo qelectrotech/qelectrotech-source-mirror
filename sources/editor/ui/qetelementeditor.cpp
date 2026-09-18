@@ -23,6 +23,7 @@
 #include "../elementview.h"
 #include "../../qetmessagebox.h"
 #include "../../qetapp.h"
+#include "../../qetmainwindow.h"
 #include "../../recentfiles.h"
 #include "../graphicspart/customelementpart.h"
 #include "../elementitemeditor.h"
@@ -905,6 +906,13 @@ void QETElementEditor::openElement(const QString &filepath)
  */
 void QETElementEditor::closeEvent(QCloseEvent *qce)
 {
+		//This editor is a plain QMainWindow, not a QETMainWindow, so the
+		//guard QETMainWindow::event() applies to the other editors is
+		//applied here instead -- before canClose(), which itself opens a
+		//modal dialog.
+	if (QETMainWindow::refuseCloseWhileModal(qce)) {
+		return;
+	}
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
