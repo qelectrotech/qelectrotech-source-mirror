@@ -155,13 +155,21 @@ bt 20
 kill
 EOF
 
-gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
-    > "$SANDBOX/gdb.log" 2>&1 &
-GDB_PID=$!
-( sleep 120; kill -9 "$GDB_PID" 2>/dev/null ) &
-WATCHDOG_PID=$!
-wait "$GDB_PID"
-kill "$WATCHDOG_PID" 2>/dev/null
+# Bound the run with timeout(1) rather than a backgrounded watchdog subshell.
+# A "( sleep N; kill ) &" watchdog runs sleep as a child of the subshell, so
+# killing the subshell orphans the sleep -- and the orphan keeps this script's
+# stdout open. Read through a pipe, as CTest does, that makes every run last
+# the full watchdog period no matter how fast gdb finished: ten seconds of
+# work reported as two minutes, a stone's throw from the CTest timeout.
+GDB_TIMEOUT=120
+if command -v timeout >/dev/null; then
+    timeout --signal=KILL "$GDB_TIMEOUT" \
+        gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
+        > "$SANDBOX/gdb.log" 2>&1
+else
+    gdb -batch -x "$SANDBOX/scenario.gdb" --args "$TEST_BINARY" "$SANDBOX_PROJECT" \
+        > "$SANDBOX/gdb.log" 2>&1
+fi
 
 log="$SANDBOX/gdb.log"
 if ! grep -q "QET_TEST: dialog exec() entered" "$log"; then
