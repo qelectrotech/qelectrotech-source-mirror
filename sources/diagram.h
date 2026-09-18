@@ -136,6 +136,9 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+
+		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
+		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
 	
 	// METHODS
 	protected:
@@ -150,8 +153,11 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
+		bool event(QEvent *event) override;
 
-	
+	private:
+		void selectNextItem(bool forward);
+
 	public:
 		void correctTextPos(Element* elmt);
 		void restoreText(Element* elmt);
@@ -210,6 +216,7 @@ class Diagram : public QGraphicsScene
 		// methods related to graphics items addition/removal on the diagram
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
+		bool eventInterfaceIsRunning() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
@@ -287,6 +294,8 @@ class Diagram : public QGraphicsScene
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
+		void selectAllConductors();
+		void selectAllTextFields();
 
 	signals:
 		void showDiagram (Diagram *);

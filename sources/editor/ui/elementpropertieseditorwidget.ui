@@ -55,6 +55,16 @@
        </layout>
        </item>
        <item>
+        <widget class="QCheckBox" name="m_exclude_from_bom_cb">
+         <property name="styleSheet">
+          <string>margin: 5px; font-weight: bold;</string>
+         </property>
+         <property name="text">
+          <string>Exclure de la nomenclature</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QGroupBox" name="m_slave_gb">
          <property name="title">
           <string>Élément esclave</string>
@@ -228,6 +238,26 @@
           </item>
           <item row="1" column="1">
            <widget class="QComboBox" name="m_terminal_func_cb"/>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_auto_num_locked_cb">
+            <property name="styleSheet">
+             <string>margin: 5px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>Verrouiller la numérotation automatique</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_potential_isolating_cb">
+            <property name="styleSheet">
+             <string>margin: 5px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>Séparation de potentiel</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

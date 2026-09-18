@@ -21,10 +21,12 @@
 #include "../qetapp.h"
 #include "../qetversion.h"
 
+#include <QCoreApplication>
 #include <QDateTime>
 #include <QDir>
 #include <QFileInfo>
 #include <QSysInfo>
+#include <cctype>
 #include <cstdio>
 
 namespace {
@@ -104,12 +106,166 @@ void QetLogger::installCrashHandler()
 	if (m_disabled) {
 		return;
 	}
-	CrashHandler::install(&m_ring, crashDumpPath());
+		//Both run here, in normal startup context, before this run's own
+		//dump path is fixed: a dump left by a pre-#905 version is moved
+		//in so it can still be offered, and any backlog is trimmed.
+	migrateLegacyCrashDump();
+	pruneCrashDumps();
+
+		//Fixed for the life of the process: the handler copies it into a
+		//preallocated buffer, and pendingCrashDumpFiles() needs to know
+		//which file is this run's own so it doesn't offer it back.
+	m_crash_dump_path = buildCrashDumpPath();
+	CrashHandler::install(&m_ring, m_crash_dump_path);
 }
 
-QString QetLogger::crashDumpPath() const
+/**
+	@brief QetLogger::crashDumpDir
+	@return the directory holding crash dumps.
+
+	A directory rather than a single file, because dumps are per-run and
+	several can be waiting at once. Creates nothing: a getter that made a
+	directory as a side effect surprised a reviewer on #905, and the
+	readers here (listing, pruning) have no business creating it.
+*/
+QString QetLogger::crashDumpDir() const
 {
-	return m_log_dir % QStringLiteral("/crash_dump.log");
+	return m_log_dir % QStringLiteral("/crashes");
+}
+
+/**
+	@brief QetLogger::ensureCrashDumpDir
+	@return crashDumpDir(), created if missing.
+
+	For the callers that are about to write into it.
+*/
+QString QetLogger::ensureCrashDumpDir() const
+{
+	const QString dir = crashDumpDir();
+	QDir().mkpath(dir);
+	return dir;
+}
+
+/**
+	@brief QetLogger::migrateLegacyCrashDump
+
+	Before #905 the handler wrote to a single m_log_dir/crash_dump.log.
+	After upgrading, nothing looks at that path any more: the dump of the
+	crash that quite possibly prompted the upgrade would sit there unseen
+	and undeleted forever. Move it into crashes/ under a name the
+	crash_*.log filter matches, so it is offered exactly once like any
+	other. Named from its own mtime, so it sorts by when it was written
+	rather than when it was moved.
+*/
+void QetLogger::migrateLegacyCrashDump() const
+{
+	const QFileInfo legacy(m_log_dir % QStringLiteral("/crash_dump.log"));
+	if (!legacy.exists() || !legacy.isFile() || legacy.size() <= 0) {
+		return;
+	}
+
+	const QString target = ensureCrashDumpDir()
+		% QStringLiteral("/crash_")
+		% legacy.lastModified().toString(QStringLiteral("yyyyMMdd-hhmmss"))
+		% QStringLiteral("_legacy.log");
+
+	if (QFile::exists(target)) {
+			//Migrated already by an earlier run of this version.
+		QFile::remove(legacy.absoluteFilePath());
+		return;
+	}
+	QFile::rename(legacy.absoluteFilePath(), target);
+}
+
+/**
+	@brief QetLogger::pruneCrashDumps
+
+	A crash that repeats on startup would otherwise write one dump per
+	attempt without limit, since nothing is deleted until a dialog is
+	actually shown and answered. Keep the newest kMaxPendingCrashDumps --
+	enough to see a pattern, bounded however long the loop runs.
+*/
+void QetLogger::pruneCrashDumps() const
+{
+	QDir dir(crashDumpDir());
+	if (!dir.exists()) {
+		return;
+	}
+	dir.setNameFilters({QStringLiteral("crash_*.log")});
+	dir.setFilter(QDir::Files);
+	dir.setSorting(QDir::Time);
+
+	const QFileInfoList entries = dir.entryInfoList();
+	for (int i = kMaxPendingCrashDumps ; i < entries.size() ; ++i) {
+		QFile::remove(entries.at(i).absoluteFilePath());
+	}
+}
+
+/**
+	@brief QetLogger::buildCrashDumpPath
+	@return where this run would write a crash dump.
+
+	One file per run, rather than a single fixed crash_dump.log. That old
+	scheme opened one path with O_TRUNC, so a second crash overwrote the
+	first: someone who crashed ten times still ended up with exactly one
+	dump, the most recent. Reported on #898 -- "the report appeared only
+	once despite there being 10 or more crashes" -- where losing the
+	earlier dumps mattered as much as never being shown them.
+
+	Built here in normal context and handed to CrashHandler::install(),
+	which copies it into a preallocated buffer, so the handler still
+	writes to one fixed path and its no-allocation invariant is untouched.
+*/
+QString QetLogger::buildCrashDumpPath() const
+{
+	return ensureCrashDumpDir()
+		% QStringLiteral("/crash_")
+		% QDateTime::currentDateTime().toString(QStringLiteral("yyyyMMdd-hhmmss"))
+		% QStringLiteral("_")
+		% QString::number(QCoreApplication::applicationPid())
+		% QStringLiteral(".log");
+}
+
+/**
+	@brief QetLogger::pendingCrashDumpFiles
+	@return dumps left by previous runs, newest first, at most
+	kMaxPendingCrashDumps of them.
+
+	This run's own path is excluded: it does not exist yet unless this run
+	is itself crashing, and a handler mid-crash is in no position to be
+	offered a dialog.
+
+	Callers take this list once and pass it on to
+	pendingCrashDumpContents() and clearPendingCrashDump(), rather than
+	each of those re-reading the directory. See clearPendingCrashDump().
+*/
+QStringList QetLogger::pendingCrashDumpFiles() const
+{
+	QDir dir(crashDumpDir());
+	if (!dir.exists()) {
+		return QStringList();
+	}
+	dir.setNameFilters({QStringLiteral("crash_*.log")});
+	dir.setFilter(QDir::Files);
+	dir.setSorting(QDir::Time);
+
+	QStringList files;
+	const QFileInfoList entries = dir.entryInfoList();
+	for (const QFileInfo &info : entries)
+	{
+		if (info.size() <= 0) {
+			continue;
+		}
+		if (!m_crash_dump_path.isEmpty()
+				&& info.absoluteFilePath() == QFileInfo(m_crash_dump_path).absoluteFilePath()) {
+			continue;
+		}
+		files << info.absoluteFilePath();
+		if (files.size() >= kMaxPendingCrashDumps) {
+			break;
+		}
+	}
+	return files;
 }
 
 QString QetLogger::currentLogFilePath() const
@@ -362,22 +518,67 @@ bool QetLogger::hasPendingCrashDump() const
 	if (m_disabled) {
 		return false;
 	}
-	const QFileInfo info(crashDumpPath());
-	return info.exists() && info.isFile() && info.size() > 0;
+	return !pendingCrashDumpFiles().isEmpty();
 }
 
-QByteArray QetLogger::pendingCrashDumpContents() const
+/**
+	@brief QetLogger::pendingCrashDumpContents
+	@param files the list from pendingCrashDumpFiles()
+	@return those dumps, in the order given, concatenated.
+
+	All of them rather than only the latest: a crash that repeats is the
+	case where the earlier dumps are most worth having, since the
+	difference between them is the evidence. They are separated by a
+	banner so a reader can tell where one ends and the next begins, and
+	the whole thing is redacted as a single pass.
+*/
+QByteArray QetLogger::pendingCrashDumpContents(const QStringList &files) const
 {
-	QFile file(crashDumpPath());
-	if (!file.open(QIODevice::ReadOnly)) {
+	if (files.isEmpty()) {
 		return QByteArray();
 	}
-	return redact(file.readAll());
+
+	QByteArray all;
+	if (files.size() > 1) {
+		all += QByteArray("QET: ") + QByteArray::number(files.size())
+			+ " crash dumps pending, newest first.\n\n";
+	}
+
+	for (const QString &path : files)
+	{
+		QFile file(path);
+		if (!file.open(QIODevice::ReadOnly)) {
+			continue;
+		}
+		all += "===== " + QFileInfo(path).fileName().toUtf8() + " =====\n";
+		all += file.readAll();
+		if (!all.endsWith('\n')) {
+			all += '\n';
+		}
+		all += '\n';
+	}
+
+	return redact(all);
 }
 
-void QetLogger::clearPendingCrashDump()
+/**
+	@brief QetLogger::clearPendingCrashDump
+	@param files exactly the dumps that were offered
+
+	Deletes the list it is given rather than re-reading the directory.
+	The offer sits inside a modal dialog that can stay open for as long
+	as the user cares to read it, and dumps are per-run: a second
+	QElectroTech -- SingleApplication keys its socket on the binary path,
+	so a different build is a separate instance -- can crash and write a
+	new dump while that dialog is up. Re-listing at this point would
+	delete that fresh dump without anyone ever having seen it, which is
+	the failure this whole change is about.
+*/
+void QetLogger::clearPendingCrashDump(const QStringList &files)
 {
-	QFile::remove(crashDumpPath());
+	for (const QString &path : files) {
+		QFile::remove(path);
+	}
 }
 
 QByteArray QetLogger::buildDiagnosticsReport() const
@@ -421,11 +622,30 @@ QByteArray QetLogger::buildDiagnosticsReport() const
 */
 QByteArray QetLogger::redact(const QByteArray &input)
 {
-	const QByteArray home = QDir::homePath().toUtf8();
-	if (home.isEmpty()) {
-		return input;
-	}
 	QByteArray out = input;
-	out.replace(home, QByteArrayLiteral("~"));
+
+	const QByteArray home = QDir::homePath().toUtf8();
+	if (!home.isEmpty()) {
+		out.replace(home, QByteArrayLiteral("~"));
+	}
+
+		//backtrace_symbols_fd() writes the absolute path of each module,
+		//which for an AppImage is the per-run mount point
+		///tmp/.mount_QElectXXXXXX. Not identifying on its own, but it is
+		//noise in a bug report and it is a path the user never typed, so
+		//fold it to a stable name. Done after the home replacement above
+		//because the mount point is not under $HOME.
+	const QByteArray mount_prefix("/tmp/.mount_");
+	int at = out.indexOf(mount_prefix);
+	while (at >= 0)
+	{
+		int end = at + mount_prefix.size();
+		while (end < out.size() && out.at(end) != '/' && !isspace(static_cast<unsigned char>(out.at(end)))) {
+			++end;
+		}
+		out.replace(at, end - at, QByteArrayLiteral("<appimage>"));
+		at = out.indexOf(mount_prefix, at + 10);
+	}
+
 	return out;
 }

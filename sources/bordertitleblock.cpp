@@ -55,12 +55,6 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	m_titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
 	m_titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 
-	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
-#if QT_VERSION < QT_VERSION_CHECK(4, 8, 0)	// ### Qt 6: remove
-#else
-	m_titleblock_template_renderer -> setUseCache(false);
-#endif
-
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
 
@@ -410,12 +404,10 @@ QString BorderTitleBlock::titleBlockTemplateName() const
 	@brief BorderTitleBlock::titleBlockTemplateChanged
 	This slot may be used to inform this class that the given title block
 	template has changed.
-	The title block-dedicated rendering cache will thus be flushed.
 	@param template_name : Name of the title block template that has changed
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
-	m_titleblock_template_renderer -> invalidateRenderedTemplate();
 }
 
 /**

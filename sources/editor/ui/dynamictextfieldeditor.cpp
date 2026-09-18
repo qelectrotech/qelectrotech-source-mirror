@@ -31,6 +31,7 @@
 #include <QColorDialog>
 #include <QGraphicsItem>
 #include <QPointer>
+#include <QSignalBlocker>
 
 DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
 											   PartDynamicTextField *text_field,
@@ -141,9 +142,20 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
 		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
-		m_color_kpb -> setColor(m_text_field.data() -> color());
+			//Block signals while loading the colour into the button.
+			//KColorButton::changed fires on a programmatic setColor() as well
+			//as on user interaction, and m_color_kpb_changed() applies the new
+			//colour to *every* selected part -- so merely showing the first
+			//part's colour would overwrite the colour of all the others.
+			//The other widgets above are immune because they are wired to
+			//user-only signals (editingFinished, clicked), which setValue()
+			//and setChecked() do not emit.
+		{
+			const QSignalBlocker blocker(m_color_kpb);
+			m_color_kpb -> setColor(m_text_field.data() -> color());
+		}
 #endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
@@ -170,7 +182,7 @@ void DynamicTextFieldEditor::updateForm()
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
@@ -233,7 +245,8 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	else {
 		strl = QETInformation::elementInfoKeys();
 
-		bool is_plc_slave = (type == ElementData::Slave
+		bool is_slave = (type == ElementData::Slave);
+		bool is_plc_slave = (is_slave
 							 && ed.m_slave_type == ElementData::PLCSlave);
 
 		if (is_plc_slave) {
@@ -261,6 +274,10 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 			strl.removeAll(QETInformation::ELMT_PLC_T2);
 			strl.removeAll(QETInformation::ELMT_PLC_T3);
 			strl.removeAll(QETInformation::ELMT_PLC_T4);
+		}
+
+		if (is_slave) {
+			strl.prepend(QETInformation::ELMT_XREF);
 		}
 	}
 

@@ -17,12 +17,12 @@
 */
 #include "diagramcommands.h"
 
-#include "autobreakconductor.h"
 #include "diagram.h"
-#include "qetproject.h"
 #include "qetgraphicsitem/conductortextitem.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
+#include "qetinformation.h"
 #include "qgimanager.h"
 
 /**
@@ -50,7 +50,6 @@ PasteDiagramCommand::PasteDiagramCommand( Diagram *dia, const DiagramContent &c,
 PasteDiagramCommand::~PasteDiagramCommand()
 {
 	diagram -> qgiManager().release(content.items(filter));
-	delete m_break_cmd;
 }
 
 /**
@@ -60,10 +59,6 @@ PasteDiagramCommand::~PasteDiagramCommand()
 void PasteDiagramCommand::undo()
 {
 	diagram -> showMe();
-
-		//Undo auto-break before removing items, so terminals are still on scene
-	if (m_break_cmd)
-		m_break_cmd->undo();
 
 	foreach(QGraphicsItem *item, content.items(filter))
 		diagram->removeItem(item);
@@ -82,12 +77,75 @@ void PasteDiagramCommand::redo()
 	{
 		first_redo = false;
 
+		//make new uuid for every pasted conductor, because old uuid are
+		//the uuid of the copied conductor
+		const QList <Conductor *> all_pasted_conductors = content.conductors();
+		for (Conductor *c : all_pasted_conductors) {
+			c -> newUuid();
+		}
+
 		//this is the first paste, we do some actions for the new element
 		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list)
 		{
 			//make new uuid, because old uuid are the uuid of the copied element
 			e -> newUuid();
+
+			// PLC slaves carry master-specific data (type, address,
+			// function, cross-ref, etc.) in their elementInformations.
+			// Always clear those on paste so the duplicate starts clean,
+			// regardless of the user's erase-label-on-copy preference.
+			const bool is_slave = (e->linkType() == Element::Slave);
+			if (is_slave) {
+				DiagramContext dc = e->elementInformations();
+				dc.remove(QETInformation::ELMT_PLC_TYPE);
+				dc.remove(QETInformation::ELMT_PLC_ADDRESS);
+				dc.remove(QETInformation::ELMT_PLC_FUNCTION);
+				dc.remove(QETInformation::ELMT_PLC_COMMENT);
+				dc.remove(QETInformation::ELMT_PLC_CROSSREF);
+				dc.remove(QETInformation::ELMT_LABEL);
+				dc.remove(QETInformation::ELMT_PLC_TC);
+				dc.remove(QETInformation::ELMT_PLC_T1);
+				dc.remove(QETInformation::ELMT_PLC_T2);
+				dc.remove(QETInformation::ELMT_PLC_T3);
+				dc.remove(QETInformation::ELMT_PLC_T4);
+				dc.remove(QStringLiteral("xref"));
+
+				// Block alignment before setElementInformations so
+				// that elementInfoChanged() resolves texts without
+				// finishAlignment() shifting right/center-aligned items.
+				for (DynamicElementTextItem *deti : e->dynamicTextItems())
+					deti->m_block_alignment = true;
+				for (auto *group : e->textGroups())
+					group->blockAlignmentUpdate(true);
+
+				e->setElementInformations(dc);
+
+				for (DynamicElementTextItem *deti : e->dynamicTextItems())
+					deti->m_block_alignment = false;
+				for (auto *group : e->textGroups())
+					group->blockAlignmentUpdate(false);
+
+				// After setElementInformations, elementInfoChanged()
+				// resolves composite text with cleaned dc.  Clear
+				// all non-UserText items directly as a safety net.
+				for (DynamicElementTextItem *deti : e->dynamicTextItems()) {
+					if (deti->textFrom() != DynamicElementTextItem::UserText) {
+						deti->m_block_alignment = true;
+						deti->setPlainText(QString());
+						deti->m_block_alignment = false;
+					}
+				}
+				for (auto *group : e->textGroups()) {
+					for (DynamicElementTextItem *deti : group->texts()) {
+						if (deti->textFrom() != DynamicElementTextItem::UserText) {
+							deti->m_block_alignment = true;
+							deti->setPlainText(QString());
+							deti->m_block_alignment = false;
+						}
+					}
+				}
+			}
 
 			if (settings.value("diagramcommands/erase-label-on-copy", true).toBool())
 			{
@@ -97,37 +155,37 @@ void PasteDiagramCommand::redo()
 				dc.addValue("label", "");
 				dc.addValue("comment", "");
 				dc.addValue("location", "");
+
+				// Block alignment during setElementInformations
+				// for non-slaves, same as Element::fromXml() (line 890-896).
+				if (!is_slave) {
+					for (DynamicElementTextItem *deti : e->dynamicTextItems())
+						deti->m_block_alignment = true;
+					for (auto *group : e->textGroups())
+						group->blockAlignmentUpdate(true);
+				}
+
 				e->setElementInformations(dc);
+
+				for (DynamicElementTextItem *deti : e->dynamicTextItems())
+					deti->m_block_alignment = false;
+				for (auto *group : e->textGroups())
+					group->blockAlignmentUpdate(false);
 				
-				//Reset the text of conductors
+				//Reset the text of conductors, the same way the label/comment/
+				//location above are reset to "" rather than to some other
+				//value - "erase on copy" means erase, not "replace with the
+				//project's default new-conductor text" (which happens to
+				//default to a literal "_" character, unrelated to whether the
+				//user wanted this copy's old label kept or cleared; see
+				//issue #413).
 				const QList <Conductor *> conductors_list = content.m_conductors_to_move;
 				for (Conductor *c : conductors_list)
 				{
 					ConductorProperties cp = c -> properties();
-					cp.text = c->diagram() ? c -> diagram() -> defaultConductorProperties.text : "_";
+					cp.text = "";
 					c -> setProperties(cp);
 				}
-			}
-		}
-
-			//Auto-break conductors on first paste. Items are already on the
-			//scene at this point (added before this command was created).
-		if (diagram->project()->autoBreakConductor())
-		{
-			m_break_cmd = new QUndoCommand();
-			QList<Conductor *> conductors_handled;
-			QSet<Terminal *> used_terminals;
-			for (Element *e : content.m_elements) {
-				autoBreakConductors(diagram, e, m_break_cmd,
-						    conductors_handled, used_terminals);
-			}
-			if (m_break_cmd->childCount() == 0) {
-				delete m_break_cmd;
-				m_break_cmd = nullptr;
-			}
-			else
-			{
-				m_break_cmd->redo();
 			}
 		}
 	}
@@ -137,10 +195,6 @@ void PasteDiagramCommand::redo()
 		for (QGraphicsItem *item : qgis_list) {
 			diagram->addItem(item);
 		}
-
-			//Re-execute the stored break commands (items are back on scene)
-		if (m_break_cmd)
-			m_break_cmd->redo();
 	}
 
 	const QList<QGraphicsItem *> qgis_list = content.items();

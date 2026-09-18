@@ -23,6 +23,7 @@
 #include "../elementview.h"
 #include "../../qetmessagebox.h"
 #include "../../qetapp.h"
+#include "../../qetmainwindow.h"
 #include "../../recentfiles.h"
 #include "../graphicspart/customelementpart.h"
 #include "../elementitemeditor.h"
@@ -55,6 +56,7 @@
 #include <QActionGroup>
 #include <QFileDialog>
 #include <QSvgGenerator>
+#include <QHBoxLayout>
 
 /**
  * @brief QETElementEditor::QETElementEditor
@@ -77,8 +79,9 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	//ui->m_display_menu->insertMenu(ui->m_zoom_in_action, menu);
 
 	setWindowState(Qt::WindowMaximized);
-	readSettings();
+	readSettings();  // restoreGeometry before show()
 	show();
+	readSettingsState();  // restoreState() must be called after show() in Qt6
 }
 
 /**
@@ -573,9 +576,11 @@ void QETElementEditor::updateInformations()
 			|| selection_xml_name == "ellipse"
 			|| selection_xml_name == "arc")
 		{
-			clearToolsDock();
 			//We add the editor widget
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			if (m_tools_dock_stack -> widget(1) != editor) {
+				clearToolsDock();
+			}
 
 #if TODO_LIST
 #pragma message("@TODO Check if it takes longer than setting the parts again to the editor.")
@@ -608,11 +613,15 @@ void QETElementEditor::updateInformations()
 					success = editor -> setParts(cep_list);
 				}
 				if (success) {
-					m_tools_dock_stack -> insertWidget(1, editor);
+					if (m_tools_dock_stack -> widget(1) != editor) {
+						m_tools_dock_stack -> insertWidget(1, editor);
+					}
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -626,8 +635,10 @@ void QETElementEditor::updateInformations()
 			// multi edit for polygons makes no sense
 			// TODO: maybe allowing multipart edit when number of points is the same?
 			//We add the editor widget
-			clearToolsDock();
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			if (m_tools_dock_stack -> widget(1) != editor) {
+				clearToolsDock();
+			}
 			CustomElementPart* part = editor -> currentPart();
 			bool equal = part == cep_list.first();
 
@@ -637,11 +648,15 @@ void QETElementEditor::updateInformations()
 					success = editor -> setPart(cep_list.first());
 				}
 				if (success) {
-					m_tools_dock_stack -> insertWidget(1, editor);
+					if (m_tools_dock_stack -> widget(1) != editor) {
+						m_tools_dock_stack -> insertWidget(1, editor);
+					}
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -655,15 +670,21 @@ void QETElementEditor::updateInformations()
 
 	//There's several parts selecteds and all can be edited by style editor.
 	if (style_editable) {
-		clearToolsDock();
 		ElementItemEditor *selection_editor = m_editors["style"];
+		if (m_tools_dock_stack -> widget(1) != selection_editor) {
+			clearToolsDock();
+		}
 		if (selection_editor) {
 			if (selection_editor -> setParts(cep_list)) {
-				m_tools_dock_stack -> insertWidget(1, selection_editor);
+				if (m_tools_dock_stack -> widget(1) != selection_editor) {
+					m_tools_dock_stack -> insertWidget(1, selection_editor);
+				}
 				m_tools_dock_stack -> setCurrentIndex(1);
 			}
 			else {
 				qDebug() << "Editor refused part.";
+				clearToolsDock();
+				m_tools_dock_stack->setCurrentIndex(0);
 			}
 		}
 	}
@@ -885,6 +906,13 @@ void QETElementEditor::openElement(const QString &filepath)
  */
 void QETElementEditor::closeEvent(QCloseEvent *qce)
 {
+		//This editor is a plain QMainWindow, not a QETMainWindow, so the
+		//guard QETMainWindow::event() applies to the other editors is
+		//applied here instead -- before canClose(), which itself opens a
+		//modal dialog.
+	if (QETMainWindow::refuseCloseWhileModal(qce)) {
+		return;
+	}
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
@@ -950,14 +978,26 @@ void QETElementEditor::readSettings()
 		restoreGeometry(geometry.toByteArray());
 	}
 
-	QVariant state = settings.value("elementeditor/state");
-	if (state.isValid()) {
-		restoreState(state.toByteArray());
-	}
-
 	auto data = m_elmt_scene->elementData();
 	data.m_drawing_information = settings.value("elementeditor/default-informations", "").toString();
 	m_elmt_scene->setElementData(data);
+}
+
+/**
+ * @brief QETElementEditor::readSettingsState
+ * Restore the window state (docks, toolbars).
+ * Must be called AFTER show() in Qt6 for restoreState() to work correctly.
+ */
+void QETElementEditor::readSettingsState()
+{
+	QSettings settings;
+
+	QVariant state = settings.value("elementeditor/state");
+	if (state.isValid()) {
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("elementeditor/state");
+		}
+	}
 }
 
 /**
@@ -1088,28 +1128,38 @@ void QETElementEditor::updateAction()
 {
 		//Action disabled if read only
 	auto ro_list = m_add_part_action_grp->actions();
-	ro_list << ui->m_select_all_act
-			<< ui->m_revert_selection_action
-			<< ui->m_paste_from_file_action
+	ro_list << ui->m_paste_from_file_action
 			<< ui->m_paste_from_element_action;
 	for (auto action : std::as_const(ro_list)) {
 		action->setDisabled(m_read_only);
 	}
 
+		//Changing what is selected does not change the element, so these stay
+		//available when it is read only -- otherwise there is no way to pick
+		//out the primitive you want to copy out of it.
+	ui->m_select_all_act->setEnabled(true);
+	ui->m_revert_selection_action->setEnabled(true);
+
 		//Action enabled if a primitive is selected
 	auto select_list = m_depth_action_group->actions();
-	select_list << ui->m_deselect_all_action
-				<< ui->m_cut_action
-				<< ui->m_copy_action
+	select_list << ui->m_cut_action
 				<< ui->m_delete_action
 				<< ui->m_rotate_action
 				<< ui->m_rotateFine_action
 				<< ui->m_flip_action
 				<< ui->m_mirror_action;
-	auto items_selected = !m_read_only && m_elmt_scene->selectedItems().count();
+	const bool has_selection = m_elmt_scene->selectedItems().count() > 0;
+	auto items_selected = !m_read_only && has_selection;
 	for (auto action : std::as_const(select_list)) {
 		action->setEnabled(items_selected);
 	}
+
+		//Copying only reads the element -- ElementScene::copy() serialises the
+		//selection to the clipboard and touches nothing else -- so it is
+		//allowed on a read-only element too. Cut, paste and delete above stay
+		//disabled, so the element itself is still protected.
+	ui->m_copy_action->setEnabled(has_selection);
+	ui->m_deselect_all_action->setEnabled(has_selection);
 
 		//Action about clipboard
 	auto clipboard_contain_elmt = !m_read_only && ElementScene::clipboardMayContainElement();
@@ -1200,7 +1250,18 @@ void QETElementEditor::initGui()
 		//Live cursor position readout, in the same scene coordinates as the parts' X/Y properties
 	m_position_label = new QLabel(this);
 	m_position_label->setMinimumWidth(120);
-	statusBar()->addPermanentWidget(m_position_label);
+	
+	// Layout
+	QHBoxLayout *coordDisplayLayout = new QHBoxLayout();
+	coordDisplayLayout->setContentsMargins(0, 0, 0, 0);
+	coordDisplayLayout->addWidget(m_position_label);
+	coordDisplayLayout->addStretch();
+	// Widget
+	QWidget *coordDisplay = new QWidget;
+	coordDisplay->setLayout(coordDisplayLayout);
+	
+	statusBar()->addPermanentWidget(coordDisplay);
+	
 	connect(m_elmt_scene, &ElementScene::mouseMoved, this, [this](const QPointF &pos) {
 		m_position_label->setText(tr("X: %1  Y: %2")
 			.arg(pos.x(), 0, 'f', 1)

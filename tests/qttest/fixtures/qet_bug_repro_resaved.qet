@@ -1,0 +1,999 @@
+<project title="ENA006 E-101 QET TRIAL V2 - PILOT ARTIFACT" version="0.100.1">
+    <titleblocktemplates>
+        <titleblocktemplate name="ENA006_D">
+            <information>ENA006 SLD probe title block � generated.</information>
+            <logos/>
+            <grid cols="t5%;t9%;t44%;t6%;t12%;t12%;t6%;t6%;" rows="26;26;26;40;34;34;">
+                <field row="0" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="3" valign="center">
+                    <value>
+                        <translation lang="en">Z</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field row="0" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="4" valign="center">
+                    <value>
+                        <translation lang="en">2026-08-11</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="0" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="5" valign="center">
+                    <value>
+                        <translation lang="en">E-110: G4 CLOSED - LEVITON B3277-YB SIDE-MOUNT SPD + 3P 20 A CB-SPD</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="0" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="6" valign="center">
+                    <value>
+                        <translation lang="en">CC</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">BY</translation>
+                    </label>
+                </field>
+                <field row="0" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="7" valign="center">
+                    <value>
+                        <translation lang="en">PRELIMINARY</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="0" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="2" valign="center">
+                    <value>
+                        <translation lang="en">NOT FOR CONSTRUCTION</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="1" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="3" valign="center">
+                    <value>
+                        <translation lang="en">Y</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field row="1" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="4" valign="center">
+                    <value>
+                        <translation lang="en">2026-08-11</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="1" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="5" valign="center">
+                    <value>
+                        <translation lang="en">BREAKER AUX/POSITION DELETED - s60 GOVERNS; G6 CLOSED-DEL; A-5 RETIRED</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="1" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="6" valign="center">
+                    <value>
+                        <translation lang="en">CC</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">BY</translation>
+                    </label>
+                </field>
+                <field row="1" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="7" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field row="1" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="2" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field row="2" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="3" valign="center">
+                    <value>
+                        <translation lang="en">X</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field row="2" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="4" valign="center">
+                    <value>
+                        <translation lang="en">2026-08-11</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="2" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="5" valign="center">
+                    <value>
+                        <translation lang="en">COUNCIL REVIEW - WRAP/REFS/T3/TEE; KEY-2 PAWL; G14 ACCESS; H-OTD</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="2" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="6" valign="center">
+                    <value>
+                        <translation lang="en">CC</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">BY</translation>
+                    </label>
+                </field>
+                <field row="2" fontsize="8" hadjust="true" displaylabel="true" name="" align="left" col="7" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field row="2" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="2" valign="center">
+                    <value/>
+                    <label/>
+                </field>
+                <field row="3" fontsize="12" hadjust="true" displaylabel="true" name="" align="left" col="2" valign="center">
+                    <value>
+                        <translation lang="en">MEDIUM VOLTAGE POWER ELECTRONICS LABORATORY � UNIVERSITY OF CALGARY, SCHULICH SCHOOL OF ENGINEERING</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="3" fontsize="10" hadjust="true" displaylabel="true" name="" align="left" col="4" valign="center">
+                    <value>
+                        <translation lang="en">%plant</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">PROJECT NO.</translation>
+                    </label>
+                </field>
+                <field row="3" fontsize="10" hadjust="true" displaylabel="true" name="" align="left" col="5" valign="center">
+                    <value>
+                        <translation lang="en">%locmach</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">DRAWING NO.</translation>
+                    </label>
+                </field>
+                <field row="3" fontsize="10" hadjust="true" displaylabel="true" name="" align="left" col="6" valign="center">
+                    <value>
+                        <translation lang="en">%indexrev</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">REV</translation>
+                    </label>
+                </field>
+                <field row="3" fontsize="10" hadjust="true" displaylabel="true" name="" align="left" col="7" valign="center">
+                    <value>
+                        <translation lang="en">%folio</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">SHEET</translation>
+                    </label>
+                </field>
+                <field row="4" fontsize="11" hadjust="true" displaylabel="true" name="" align="left" col="2" valign="center">
+                    <value>
+                        <translation lang="en">%title</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">TITLE</translation>
+                    </label>
+                </field>
+                <field row="4" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="4" valign="center">
+                    <value>
+                        <translation lang="en">%author</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">DRAWN</translation>
+                    </label>
+                </field>
+                <field row="4" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="5" valign="center">
+                    <value>
+                        <translation lang="en">%date</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">DATE</translation>
+                    </label>
+                </field>
+                <field row="4" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="6" valign="center">
+                    <value>
+                        <translation lang="en">NTS</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">SCALE</translation>
+                    </label>
+                </field>
+                <field row="4" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="7" valign="center">
+                    <value>
+                        <translation lang="en">D</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">SIZE</translation>
+                    </label>
+                </field>
+                <field row="5" fontsize="11" hadjust="true" displaylabel="true" name="" align="left" col="2" valign="center">
+                    <value>
+                        <translation lang="en">ENA006 MV TEST FACILITY � ENG A 006</translation>
+                    </value>
+                    <label>
+                        <translation lang="en">PROJECT</translation>
+                    </label>
+                </field>
+                <field row="5" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="4" valign="center">
+                    <value>
+                        <translation lang="en">PILOT ARTIFACT</translation>
+                    </value>
+                    <label/>
+                </field>
+                <field row="5" fontsize="9" hadjust="true" displaylabel="true" name="" align="left" col="5" valign="center">
+                    <value>
+                        <translation lang="en">NOT A DELIVERABLE</translation>
+                    </value>
+                    <label/>
+                </field>
+            </grid>
+        </titleblocktemplate>
+    </titleblocktemplates>
+    <properties>
+        <property name="saveddate" show="1">8/12/2026</property>
+        <property name="saveddate-eu" show="1">12-08-2026</property>
+        <property name="saveddate-us" show="1">2026-08-12</property>
+        <property name="savedfilename" show="1">qet_bug_repro</property>
+        <property name="savedfilepath" show="1">C:/Users/phili/.claude/skills/cabinet-drawings/pilot_qet/out/qet_bug_repro.qet</property>
+        <property name="savedtime" show="1">19:09</property>
+    </properties>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="17" rows="8" displaycols="true" rowsize="80" colsize="60" displayrows="true"/>
+        <inset date="null" displayAt="bottom" title="" version="" locmach="" plant="" auto_page_num="" folio="%id/%total" filename="" author="" indexrev=""/>
+        <conductors text_color="#000000" bus="" type="multi" conductor_section="" color2="#000000" num="_" cable="" formula="" condsize="1" conductor_color="" displaytext="1" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" onetextperfolio="1" vertical-alignment="AlignRight" dash-size="1"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref offset="0" powerprefix="" type="commutator" slave_label="(%f-%l%c)" xrefpos="" delayprefix="" switchprefix="" showterminalname="true" master_label="%f-%l%c" displayhas="cross" showpowerctc="false" snapto="label"/>
+            <xref offset="0" powerprefix="" type="plc" slave_label="(%f-%l%c)" xrefpos="" delayprefix="" switchprefix="" showterminalname="true" master_label="%f-%l%c" displayhas="cross" showpowerctc="true" snapto="label"/>
+            <xref offset="0" powerprefix="" type="coil" slave_label="(%f-%l%c)" xrefpos="AlignBottom" delayprefix="" switchprefix="" showterminalname="true" master_label="%f-%l%c" displayhas="contacts" showpowerctc="false" snapto="bottom"/>
+            <xref offset="0" powerprefix="" type="protection" slave_label="(%f-%l%c)" xrefpos="AlignBottom" delayprefix="" switchprefix="" showterminalname="true" master_label="%f-%l%c" displayhas="contacts" showpowerctc="false" snapto="label"/>
+        </xrefs>
+        <conductors_autonums freeze_new_conductors="false" auto_break_conductors="false" current_autonum=""/>
+        <folio_autonums/>
+        <element_autonums freeze_new_elements="false" current_autonum=""/>
+        <guides/>
+    </newdiagrams>
+    <diagram freezeNewConductor="false" locmach="ENA006-E-101" titleblocktemplate="ENA006_D" cols="8" version="0.100.1-dev" colsize="405.333" freezeNewElement="false" title="SINGLE LINE DIAGRAM - QET TRIAL V2 LAYOUT ENGINE (PILOT ARTIFACT)" displaycols="true" rowsize="317.444" plant="ENA006" height="1924.66" order="1" displayAt="bottom" folio="%id OF %total" displayrows="true" indexrev="TRIAL2" rows="6" auto_page_num="" titleblocktemplateCollection="embedded" author="CC" date="null" filename="">
+        <defaultconductor text_color="#000000" bus="" type="multi" conductor_section="" color2="#000000" num="_" cable="" formula="" condsize="1" conductor_color="" displaytext="1" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" horizontal-alignment="AlignBottom" onetextperfolio="0" vertical-alignment="AlignRight" dash-size="1"/>
+        <elements>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_busstub_n.elmt" z="10" uuid="{5f92eb56-c4f7-58b0-9bab-214799bb6e7e}" prefix="" y="513" x="353">
+                <terminals>
+                    <terminal orientation="0" y="-12" x="0" id="0"/>
+                    <terminal orientation="3" y="-5" x="4" id="1"/>
+                    <terminal orientation="1" y="-5" x="-4" id="2"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{a29619d6-a146-5d01-bcde-c4a6a81b57b1}" y="-30.9" rotation="0" Valignment="AlignTop" x="9.3" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>PANEL A - 480Y/277 V, 3PH, 4W, 225 A BUS</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{7c64eaac-f664-5ae1-a721-928c337105fc}" y="7.5" rotation="0" Valignment="AlignTop" x="9.3" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,7.5,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>175 A MAIN</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_busstub_n.elmt" z="10" uuid="{dc1e8bdf-ce98-5f8e-8e72-8cbe654d0062}" prefix="" y="1131" x="652">
+                <terminals>
+                    <terminal orientation="0" y="-12" x="0" id="3"/>
+                    <terminal orientation="3" y="-5" x="4" id="4"/>
+                    <terminal orientation="1" y="-5" x="-4" id="5"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{56a90a13-8ed9-568b-83b7-27fc276992f0}" y="-30.4" rotation="0" Valignment="AlignTop" x="609.1" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>TRANSFER BUS - 200 A, 3W + PE  [CABINET C]</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{7f9d5ad8-a301-5d77-8768-2df60792821e}" y="8" rotation="0" Valignment="AlignTop" x="9.9" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,7.5,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>160 A CONT. TEST ENVELOPE</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_transformer_2w_primary-delta_secondary-wye_g.elmt" z="10" uuid="{3e82a25a-b2e8-554e-b726-14279f81ca38}" prefix="" y="383" x="353">
+                <terminals>
+                    <terminal orientation="0" y="-28.4" x="0" id="6"/>
+                    <terminal orientation="2" y="28.4" x="0" id="7"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{cceb7d8e-68a5-5609-a4cf-a327123cf7e3}" y="-29" rotation="0" Valignment="AlignTop" x="-79.7" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>T-MAIN</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{3d038d23-8843-5c24-8a54-e887be8e6492}" y="-16.1" rotation="0" Valignment="AlignTop" x="-159.9" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>112.5 kVA DRY-TYPE</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{fa675a16-6eee-5576-b864-0dc6d79724f8}" y="-3.1" rotation="0" Valignment="AlignTop" x="-147" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>600 V / 480Y-277 V</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{c08d8155-1d1f-5a40-99e0-dd62e15a57c7}" y="9.8" rotation="0" Valignment="AlignTop" x="-178.2" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>SEPARATELY DERIVED</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_circuit_breaker.elmt" z="10" uuid="{d723fac8-9c4d-50d5-9faf-f288341bac82}" prefix="" y="469" x="353">
+                <terminals>
+                    <terminal orientation="0" y="-17.6" x="0" id="8"/>
+                    <terminal orientation="2" y="17.6" x="0" id="9"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{612c44b6-fb6d-5a30-a2e5-5c90600c18d5}" y="-22.2" rotation="0" Valignment="AlignTop" x="-91.2" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>CB-MAIN</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{88aca51f-ce9b-5487-97fb-d8f4d8296ba5}" y="-9.2" rotation="0" Valignment="AlignTop" x="-107.8" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>175 A I-LINE</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{2575990d-7f9a-5b3e-bce3-7afed6143305}" y="3.8" rotation="0" Valignment="AlignTop" x="-89.9" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>MAIN  [A]</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_fuse.elmt" z="10" uuid="{38720887-d879-5b09-aa98-919009b0a730}" prefix="" y="886" x="652">
+                <terminals>
+                    <terminal orientation="0" y="-17.6" x="0" id="10"/>
+                    <terminal orientation="2" y="17.6" x="0" id="11"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{e377eab9-5ef0-54ac-906e-6779ea5d4ea6}" y="-22.3" rotation="0" Valignment="AlignTop" x="-73" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>F-VAR</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{07378af4-d36b-5eee-af3d-40786c613279}" y="-9.3" rotation="0" Valignment="AlignTop" x="-116.4" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>40 A OUTPUT</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{231acebe-5726-58e5-887d-cc9e8b84ebaf}" y="3.6" rotation="0" Valignment="AlignTop" x="-100.1" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>FUSES  [B]</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_tee_l.elmt" z="10" uuid="{7955ded1-b35b-5c90-b974-c18cb71d64c6}" prefix="" y="949" x="652">
+                <terminals>
+                    <terminal orientation="0" y="-6" x="0" id="12"/>
+                    <terminal orientation="3" y="0" x="-6" id="13"/>
+                    <terminal orientation="2" y="6" x="0" id="14"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_box_h-8_text-UV_w-10_tape.elmt" z="10" uuid="{c4bf7ba7-98c7-5102-95ee-1f13f9cb4a05}" prefix="" y="949" x="620">
+                <terminals>
+                    <terminal orientation="1" y="0" x="-4" id="15"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{b334fd8e-f0ee-5bb4-b252-0084b3768b85}" y="-10.5" rotation="0" Valignment="AlignTop" x="-30.3" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,7.5,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>UV</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{518e1dec-7575-5833-ad0e-557efd1d34af}" y="-28" rotation="0" Valignment="AlignTop" x="-84.4" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>R-UV</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{2e342bb8-ac55-5c62-9ebf-dd90208e1437}" y="-15.1" rotation="0" Valignment="AlignTop" x="-160.5" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>3x RM35UA13MW</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{f2e9069b-e9e4-5ca3-9312-eb3449397d5f}" y="-2.1" rotation="0" Valignment="AlignTop" x="-176.1" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>WIPER-UV L-L AT T3</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{edea9c4d-09de-5ccf-a93d-e3774155b95c}" y="10.8" rotation="0" Valignment="AlignTop" x="-160.1" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>FUSE LOAD SIDE</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{c0cd4483-629b-52b6-9e87-d9baa0122c4e}" y="23.8" rotation="0" Valignment="AlignTop" x="-142.3" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>(E-111/E-112-2)</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_overload.elmt" z="10" uuid="{4e742e7e-3ea9-5554-8d60-7a7e4b271b5d}" prefix="" y="1012" x="652">
+                <terminals>
+                    <terminal orientation="0" y="-17.6" x="0" id="16"/>
+                    <terminal orientation="2" y="17.6" x="0" id="17"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{9f36bc48-0f43-5daa-bb6e-3eac08431eaa}" y="-8.9" rotation="0" Valignment="AlignTop" x="-9.9" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,5.25,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>OL</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{50e7912e-5bf6-5db2-8ad3-bee08580c145}" y="-22.3" rotation="0" Valignment="AlignTop" x="-75.4" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>OL-BR</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{358d6c87-6730-51c8-9245-3e11b7aafe62}" y="-9.3" rotation="0" Valignment="AlignTop" x="-138.2" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>3RR2443 BRUSH</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{bed2dfb3-889f-5c3c-89f3-a06d90047855}" y="3.6" rotation="0" Valignment="AlignTop" x="-118.6" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>MONITOR  [C]</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+            <element orientation="0" freezeLabel="false" type="embed://import/probe/v2_no_contact.elmt" z="10" uuid="{15e1997c-4eb6-50df-8629-22efc1524f2f}" prefix="" y="1088" x="652">
+                <terminals>
+                    <terminal orientation="0" y="-17.6" x="0" id="18"/>
+                    <terminal orientation="2" y="17.6" x="0" id="19"/>
+                </terminals>
+                <inputs/>
+                <dynamic_texts>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{5b2149d4-31b6-5078-b88c-0f35725a2ae8}" y="-22.7" rotation="0" Valignment="AlignTop" x="-62.7" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,75,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>Kvar</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{4f702d8c-dba1-59d9-a882-79e637c82963}" y="-9.7" rotation="0" Valignment="AlignTop" x="-90.5" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>LC1D50A</text>
+                    </dynamic_elmt_text>
+                    <dynamic_elmt_text Halignment="AlignLeft" uuid="{2f7647d6-0815-56bc-9a1c-9dee9987bec2}" y="3.2" rotation="0" Valignment="AlignTop" x="-121.4" frame="false" text_width="-1" rotation_point_center="false" text_from="UserText" font="Arial,9.75,-1,5,50,0,0,0,0,0,Regular" keep_visual_rotation="true">
+                        <text>+ MIRROR  [C]</text>
+                    </dynamic_elmt_text>
+                </dynamic_texts>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors>
+            <conductor text_color="#000000" terminalname2="top" freezeLabel="false" terminalname1="bottom" bus="" type="multi" element2_label="" conductor_section="" element2="{d723fac8-9c4d-50d5-9faf-f288341bac82}" color2="#000000" element1="{3e82a25a-b2e8-554e-b726-14279f81ca38}" num="" x="0" cable="" element2_name="v2_circuit_breaker" formula="" conductor_color="" condsize="1" element1_name="v2_transformer_2w_primary-delta_secondary-wye_g" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{1a09bcec-0e22-5e69-a82d-85f20fd2944c}" terminal2="{67a1679e-e95b-581e-a26e-b47ce16e1ca2}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor text_color="#000000" terminalname2="tap" freezeLabel="false" terminalname1="bottom" bus="" type="multi" element2_label="" conductor_section="" element2="{5f92eb56-c4f7-58b0-9bab-214799bb6e7e}" color2="#000000" element1="{d723fac8-9c4d-50d5-9faf-f288341bac82}" num="" x="0" cable="" element2_name="v2_busstub_n" formula="" conductor_color="" condsize="1" element1_name="v2_circuit_breaker" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{b238d746-e1b0-5bc0-bdf6-690650239460}" terminal2="{515aaabf-a848-5922-8e0e-30b9442a6004}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor text_color="#000000" terminalname2="t" freezeLabel="false" terminalname1="bottom" bus="" type="multi" element2_label="" conductor_section="" element2="{7955ded1-b35b-5c90-b974-c18cb71d64c6}" color2="#000000" element1="{38720887-d879-5b09-aa98-919009b0a730}" num="" x="0" cable="" element2_name="v2_tee_l" formula="" conductor_color="" condsize="1" element1_name="v2_fuse" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{64651853-d240-5db8-88d9-6adb7340a161}" terminal2="{93dbb9de-6acb-50b2-b2bc-8dc78b7bd469}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor text_color="#000000" terminalname2="top" freezeLabel="false" terminalname1="l" bus="" type="multi" element2_label="" conductor_section="" element2="{c4bf7ba7-98c7-5102-95ee-1f13f9cb4a05}" color2="#000000" element1="{7955ded1-b35b-5c90-b974-c18cb71d64c6}" num="" x="0" cable="" element2_name="v2_box_h-8_text-UV_w-10_tape" formula="" conductor_color="" condsize="1" element1_name="v2_tee_l" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{be1f5b40-75e4-5797-a01a-0782e7979dde}" terminal2="{42c69da2-a77c-5fcf-92b4-88ae9fbc950b}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor text_color="#000000" terminalname2="top" freezeLabel="false" terminalname1="b" bus="" type="multi" element2_label="" conductor_section="" element2="{4e742e7e-3ea9-5554-8d60-7a7e4b271b5d}" color2="#000000" element1="{7955ded1-b35b-5c90-b974-c18cb71d64c6}" num="" x="0" cable="" element2_name="v2_overload" formula="" conductor_color="" condsize="1" element1_name="v2_tee_l" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{9d70e09e-c3a2-536f-876a-98bc14839f3d}" terminal2="{d548c004-98ea-5594-9621-ca07f35a11e9}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor text_color="#000000" terminalname2="top" freezeLabel="false" terminalname1="bottom" bus="" type="multi" element2_label="" conductor_section="" element2="{15e1997c-4eb6-50df-8629-22efc1524f2f}" color2="#000000" element1="{4e742e7e-3ea9-5554-8d60-7a7e4b271b5d}" num="" x="0" cable="" element2_name="v2_no_contact" formula="" conductor_color="" condsize="1" element1_name="v2_overload" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{b6645803-91cb-5b4e-8323-c6ebc88e20a7}" terminal2="{1b663411-841b-50df-94b6-25953716cb9f}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+            <conductor text_color="#000000" terminalname2="tap" freezeLabel="false" terminalname1="bottom" bus="" type="multi" element2_label="" conductor_section="" element2="{dc1e8bdf-ce98-5f8e-8e72-8cbe654d0062}" color2="#000000" element1="{15e1997c-4eb6-50df-8629-22efc1524f2f}" num="" x="0" cable="" element2_name="v2_busstub_n" formula="" conductor_color="" condsize="1" element1_name="v2_no_contact" displaytext="0" tension_protocol="" vertirotatetext="270" bicolor="false" numsize="7" function="" horizrotatetext="0" element1_label="" horizontal-alignment="AlignBottom" onetextperfolio="0" terminal1="{c9545907-50fe-500b-a6c7-7e0cd3936950}" terminal2="{515aaabf-a848-5922-8e0e-30b9442a6004}" vertical-alignment="AlignRight" dash-size="1" y="0">
+                <sequentialNumbers/>
+            </conductor>
+        </conductors>
+    </diagram>
+    <collection>
+        <category name="import">
+            <category name="probe">
+                <element name="v2_busstub_n.elmt">
+                    <definition width="30" hotspot_y="21" version="0.100.0" type="element" link_type="simple" hotspot_x="15" height="42">
+                        <uuid uuid="{df96c31a-3d4c-54eb-93b7-1acf2aef049e}"/>
+                        <names>
+                            <name lang="en">v2_busstub_n</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0" y2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-16" length1="1.5" length2="1.5"/>
+                            <circle diameter="6" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y="-3" x="-3"/>
+                            <terminal orientation="n" type="Generic" uuid="{515aaabf-a848-5922-8e0e-30b9442a6004}" name="tap" y="-16" x="0"/>
+                            <terminal orientation="w" type="Generic" uuid="{311e59cb-6c46-5771-adad-8a92536c7bc3}" name="l" y="-5" x="0"/>
+                            <terminal orientation="e" type="Generic" uuid="{a7f2014d-5dfa-531b-af05-b852a70fbbb1}" name="r" y="-5" x="0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_busstub_s.elmt">
+                    <definition width="30" hotspot_y="21" version="0.100.0" type="element" link_type="simple" hotspot_x="15" height="42">
+                        <uuid uuid="{912d25d2-aebf-5ca0-bf50-9369ce8450d0}"/>
+                        <names>
+                            <name lang="en">v2_busstub_s</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0" y2="0" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="16" length1="1.5" length2="1.5"/>
+                            <circle diameter="6" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y="-3" x="-3"/>
+                            <terminal orientation="s" type="Generic" uuid="{c857ddef-ca9e-592f-8e78-2e3d9bb81eb2}" name="tap" y="16" x="0"/>
+                            <terminal orientation="w" type="Generic" uuid="{824c3447-6b41-5e1a-ad28-152e9d929e32}" name="l" y="-5" x="0"/>
+                            <terminal orientation="e" type="Generic" uuid="{b0922151-dd45-5869-8ac9-c3e6be1627b3}" name="r" y="-5" x="0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_utility.elmt">
+                    <definition width="22" hotspot_y="34" version="0.100.0" type="element" link_type="simple" hotspot_x="11" height="39">
+                        <uuid uuid="{ebc54f89-5896-5c12-82a1-3c7da232dd83}"/>
+                        <names>
+                            <name lang="en">v2_utility</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-10.1" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-28.8" length1="1.5" length2="1.5"/>
+                            <polygon x3="5.8" x4="0.0" x2="-5.8" y2="-10.1" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="0.0" antialias="true" closed="true" y1="0.0" y3="-10.1"/>
+                            <terminal orientation="n" type="Generic" uuid="{d5db23a8-edae-5913-878b-fb6774275a6b}" name="top" y="-28.8" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{f6554699-2407-53b9-a55f-7058e13f61e6}" name="bottom" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_disconnect.elmt">
+                    <definition width="25" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="17" height="54">
+                        <uuid uuid="{942cc615-f1ff-59da-94aa-fcc1453762c4}"/>
+                        <names>
+                            <name lang="en">v2_disconnect</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-9.7" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="-9.7" x="-2.5"/>
+                            <line end2="none" x2="-11.5" y2="5.8" x1="-1.8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-5.4" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="4.7" x="-2.5"/>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="9.7" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{3bde8f44-4ba9-583c-8d2e-e2d33fbb8355}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{cea02d4e-770c-5661-bc06-58ed4e421587}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_transformer_2w_primary-delta_secondary-wye_g.elmt">
+                    <definition width="52" hotspot_y="38" version="0.100.0" type="element" link_type="simple" hotspot_x="18" height="76">
+                        <uuid uuid="{2326ecb2-de00-5fcd-93e7-2f1e68cf7a01}"/>
+                        <names>
+                            <name lang="en">v2_transformer_2w_primary-delta_secondary-wye_g</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <circle diameter="25.9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-21.3" x="-13.0"/>
+                            <circle diameter="25.9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-4.7" x="-13.0"/>
+                            <line end2="none" x2="0.0" y2="-21.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-32.4" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="0.0" y2="32.4" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="21.2" length1="1.5" length2="1.5"/>
+                            <polygon x3="4.7" x4="0.0" x2="-4.7" y2="-7.4" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-15.5" antialias="true" closed="true" y1="-15.5" y3="-7.4"/>
+                            <line end2="none" x2="0.0" y2="1.4" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="6.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="-4.7" y2="9.5" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="6.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="4.7" y2="9.5" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="6.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="23.0" y2="8.3" x1="13.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="8.3" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="23.0" y2="14.0" x1="23.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="8.3" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="28.4" y2="14.0" x1="17.6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="14.0" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="26.3" y2="16.6" x1="19.8" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="16.6" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="24.5" y2="19.1" x1="21.6" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="19.1" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{e2460619-0e0a-5db9-b5e3-1c3e04baeb55}" name="top" y="-32.4" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{1a09bcec-0e22-5e69-a82d-85f20fd2944c}" name="bottom" y="32.4" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_circuit_breaker.elmt">
+                    <definition width="26" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="13" height="54">
+                        <uuid uuid="{401afc3c-0271-519c-9515-d2d9287616f1}"/>
+                        <names>
+                            <name lang="en">v2_circuit_breaker</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-7.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="7.2" length1="1.5" length2="1.5"/>
+                            <arc width="14.4" start="270" angle="180" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-7.2" x="-7.2" height="14.4"/>
+                            <terminal orientation="n" type="Generic" uuid="{67a1679e-e95b-581e-a26e-b47ce16e1ca2}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{b238d746-e1b0-5bc0-bdf6-690650239460}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_tee_l.elmt">
+                    <definition width="30" hotspot_y="15" version="0.100.0" type="element" link_type="simple" hotspot_x="15" height="30">
+                        <uuid uuid="{286fe5c5-6217-51d3-811a-83060121dca4}"/>
+                        <names>
+                            <name lang="en">v2_tee_l</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <circle diameter="6" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y="-3" x="-3"/>
+                            <line end2="none" x2="0" y2="10" x1="0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-10" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{93dbb9de-6acb-50b2-b2bc-8dc78b7bd469}" name="t" y="-10" x="0"/>
+                            <terminal orientation="s" type="Generic" uuid="{9d70e09e-c3a2-536f-876a-98bc14839f3d}" name="b" y="10" x="0"/>
+                            <terminal orientation="w" type="Generic" uuid="{be1f5b40-75e4-5797-a01a-0782e7979dde}" name="l" y="0" x="-10"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_spd_lv_tape.elmt">
+                    <definition width="40" hotspot_y="5" version="0.100.0" type="element" link_type="simple" hotspot_x="20" height="53">
+                        <uuid uuid="{877441ae-9bef-5065-9d9d-1f599b72686c}"/>
+                        <names>
+                            <name lang="en">v2_spd_lv_tape</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="7.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="0.0" length1="1.5" length2="1.5"/>
+                            <polygon x3="14.4" x4="-14.4" x2="14.4" y2="28.8" y5="28.8" x1="-14.4" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="7.2" antialias="true" x5="-14.4" closed="true" y1="28.8" y3="7.2"/>
+                            <line end2="none" x2="0.0" y2="34.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="28.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="9.0" y2="34.6" x1="-9.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="34.6" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="5.8" y2="38.5" x1="-5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="38.5" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="2.5" y2="42.5" x1="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="42.5" length1="1.5" length2="1.5"/>
+                            <terminal orientation="e" type="Generic" uuid="{e19c76b6-5c57-53ff-a5b8-fa51a5adce05}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-8_text-LS_w-10.elmt">
+                    <definition width="46" hotspot_y="20" version="0.100.0" type="element" link_type="simple" hotspot_x="23" height="40">
+                        <uuid uuid="{2440327c-529e-55c8-8e69-ac8aab4395ca}"/>
+                        <names>
+                            <name lang="en">v2_box_h-8_text-LS_w-10</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="18.0" x4="-18.0" x2="18.0" y2="14.4" y5="14.4" x1="-18.0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-14.4" antialias="true" x5="-18.0" closed="true" y1="14.4" y3="-14.4"/>
+                            <terminal orientation="n" type="Generic" uuid="{78a377a5-1507-514d-aa70-83390dc5de01}" name="top" y="-14.4" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{e10499a4-3979-5cdb-8aa8-be9260e5454e}" name="bottom" y="14.4" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_variac.elmt">
+                    <definition width="44" hotspot_y="31" version="0.100.0" type="element" link_type="simple" hotspot_x="22" height="62">
+                        <uuid uuid="{ff2da9fb-a168-59fc-9e3f-d33f3ceb72bf}"/>
+                        <names>
+                            <name lang="en">v2_variac</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-16.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-25.2" length1="1.5" length2="1.5"/>
+                            <circle diameter="32.4" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-16.2" x="-16.2"/>
+                            <line end2="none" x2="9.4" y2="-9.4" x1="-12.2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="12.2" length1="1.5" length2="1.5"/>
+                            <polygon x3="10.1" x4="12.2" x2="4.3" y2="-10.1" x1="12.2" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="-12.2" antialias="true" closed="true" y1="-12.2" y3="-4.3"/>
+                            <line end2="none" x2="0.0" y2="25.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="16.2" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{b1ea261f-cf22-55fb-814d-e9fe9b7fdd2e}" name="top" y="-25.2" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{1c865d9a-c587-583f-8e62-82cbc705b697}" name="bottom" y="25.2" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_fuse.elmt">
+                    <definition width="22" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="11" height="54">
+                        <uuid uuid="{579e40bc-8ee5-53f4-a8e2-515e5c8d7f01}"/>
+                        <names>
+                            <name lang="en">v2_fuse</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <polygon x3="5.8" x4="-5.8" x2="5.8" y2="12.6" y5="12.6" x1="-5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-12.6" antialias="true" x5="-5.8" closed="true" y1="12.6" y3="-12.6"/>
+                            <terminal orientation="n" type="Generic" uuid="{312cffce-9a2d-52ad-9632-8147f6460507}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{64651853-d240-5db8-88d9-6adb7340a161}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-8_text-UV_w-10_tape.elmt">
+                    <definition width="46" hotspot_y="20" version="0.100.0" type="element" link_type="simple" hotspot_x="41" height="40">
+                        <uuid uuid="{b99557f0-f555-58bc-b009-b268d75e5ed5}"/>
+                        <names>
+                            <name lang="en">v2_box_h-8_text-UV_w-10_tape</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="0.0" x4="-36.0" x2="0.0" y2="14.4" y5="14.4" x1="-36.0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-14.4" antialias="true" x5="-36.0" closed="true" y1="14.4" y3="-14.4"/>
+                            <terminal orientation="e" type="Generic" uuid="{42c69da2-a77c-5fcf-92b4-88ae9fbc950b}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_overload.elmt">
+                    <definition width="28" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="14" height="54">
+                        <uuid uuid="{999b9a70-b5a7-59e9-8d3d-9068eff86fa2}"/>
+                        <names>
+                            <name lang="en">v2_overload</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-10.8" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <polygon x3="9.0" x4="-9.0" x2="9.0" y2="10.8" y5="10.8" x1="-9.0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-10.8" antialias="true" x5="-9.0" closed="true" y1="10.8" y3="-10.8"/>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="10.8" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{d548c004-98ea-5594-9621-ca07f35a11e9}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{b6645803-91cb-5b4e-8323-c6ebc88e20a7}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_no_contact.elmt">
+                    <definition width="21" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="16" height="54">
+                        <uuid uuid="{d32835d2-8cc4-57c9-a729-c3d3b51ddc35}"/>
+                        <names>
+                            <name lang="en">v2_no_contact</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-7.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="-10.1" y2="5.8" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-7.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="7.2" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{1b663411-841b-50df-94b6-25953716cb9f}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{c9545907-50fe-500b-a6c7-7e0cd3936950}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_resistor.elmt">
+                    <definition width="22" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="11" height="54">
+                        <uuid uuid="{2e9f77ec-9ae3-5532-b671-00e5afd1141c}"/>
+                        <names>
+                            <name lang="en">v2_resistor</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="-15.1" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <polygon x5="-5.0" closed="false" x1="0.0" x3="-5.0" y8="15.1" x6="5.0" y4="-2.5" x8="0.0" y6="7.6" y1="-15.1" x2="5.0" antialias="true" y2="-12.6" y7="12.6" x4="5.0" y5="2.5" y3="-7.6" x7="-5.0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="15.1" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{e859bac3-df77-5cd9-b4d7-f154517e3fca}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{298e3cbf-3348-5fc5-9e6e-202a511076c3}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-11_text-ITECH_w-18.elmt">
+                    <definition width="76" hotspot_y="25" version="0.100.0" type="element" link_type="simple" hotspot_x="38" height="50">
+                        <uuid uuid="{ddb30ced-f3d9-51ac-a311-463bacdeef79}"/>
+                        <names>
+                            <name lang="en">v2_box_h-11_text-ITECH_w-18</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="32.4" x4="-32.4" x2="32.4" y2="19.8" y5="19.8" x1="-32.4" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-19.8" antialias="true" x5="-32.4" closed="true" y1="19.8" y3="-19.8"/>
+                            <terminal orientation="n" type="Generic" uuid="{8fc34f12-ff87-5ef6-ae13-2aba4fa88cf3}" name="top" y="-19.8" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{648b75fb-363e-5683-9cfd-154ff31b8aac}" name="bottom" y="19.8" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_rectifier.elmt">
+                    <definition width="62" hotspot_y="31" version="0.100.0" type="element" link_type="simple" hotspot_x="31" height="62">
+                        <uuid uuid="{0bf53093-0ffd-57e3-8176-1ce40ff82dc8}"/>
+                        <names>
+                            <name lang="en">v2_rectifier</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="25.2" x4="-25.2" x2="25.2" y2="25.2" y5="25.2" x1="-25.2" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-25.2" antialias="true" x5="-25.2" closed="true" y1="25.2" y3="-25.2"/>
+                            <line end2="none" x2="-25.2" y2="25.2" x1="25.2" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="-25.2" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{f5eb6733-ca45-5c2a-b2fa-c894a4958a7c}" name="top" y="-25.2" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{2f2037de-cb82-5686-8995-63202aac686a}" name="bottom" y="25.2" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_load_arrow.elmt">
+                    <definition width="22" hotspot_y="5" version="0.100.0" type="element" link_type="simple" hotspot_x="11" height="39">
+                        <uuid uuid="{3f4716d9-e690-5e20-a12f-22ee04663e2e}"/>
+                        <names>
+                            <name lang="en">v2_load_arrow</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="18.7" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="0.0" length1="1.5" length2="1.5"/>
+                            <polygon x3="5.4" x4="0.0" x2="-5.4" y2="18.7" x1="0.0" style="line-style:normal;line-weight:normal;filling:black;color:black" y4="28.8" antialias="true" closed="true" y1="28.8" y3="18.7"/>
+                            <terminal orientation="n" type="Generic" uuid="{429c4d81-a73c-59e0-b403-6ed5a242eceb}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-9_text-s60_w-12.elmt">
+                    <definition width="54" hotspot_y="22" version="0.100.0" type="element" link_type="simple" hotspot_x="27" height="44">
+                        <uuid uuid="{a271cad0-2c9e-5e19-a32f-2aeb4fefc998}"/>
+                        <names>
+                            <name lang="en">v2_box_h-9_text-s60_w-12</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="21.6" x4="-21.6" x2="21.6" y2="16.2" y5="16.2" x1="-21.6" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-16.2" antialias="true" x5="-21.6" closed="true" y1="16.2" y3="-16.2"/>
+                            <terminal orientation="n" type="Generic" uuid="{a1a38578-8eee-59f9-8706-85f507594626}" name="top" y="-16.2" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{0c62b4ef-92b3-561d-9a19-14ae2cb3d253}" name="bottom" y="16.2" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_earth_switch_tape.elmt">
+                    <definition width="31" hotspot_y="5" version="0.100.0" type="element" link_type="simple" hotspot_x="17" height="49">
+                        <uuid uuid="{93598103-5108-5555-a4b6-f5d5f09ab28c}"/>
+                        <names>
+                            <name lang="en">v2_earth_switch_tape</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="4.7" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="0.0" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="4.7" x="-2.5"/>
+                            <line end2="none" x2="-11.5" y2="20.2" x1="-1.8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="9.0" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="20.2" x="-2.5"/>
+                            <line end2="none" x2="0.0" y2="30.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="25.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="9.0" y2="30.2" x1="-9.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="30.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="5.8" y2="34.2" x1="-5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="34.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="2.5" y2="38.2" x1="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="38.2" length1="1.5" length2="1.5"/>
+                            <terminal orientation="e" type="Generic" uuid="{7077f93d-13f7-55a5-b8d9-1a094d5a6849}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_transformer_2w_neutral-out_primary-delta_secondary-wye.elmt">
+                    <definition width="55" hotspot_y="38" version="0.100.0" type="element" link_type="simple" hotspot_x="18" height="76">
+                        <uuid uuid="{187f5a17-9334-518b-80f7-f38927279a93}"/>
+                        <names>
+                            <name lang="en">v2_transformer_2w_neutral-out_primary-delta_secondary-wye</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <circle diameter="25.9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-21.3" x="-13.0"/>
+                            <circle diameter="25.9" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-4.7" x="-13.0"/>
+                            <line end2="none" x2="0.0" y2="-21.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-32.4" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="0.0" y2="32.4" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="21.2" length1="1.5" length2="1.5"/>
+                            <polygon x3="4.7" x4="0.0" x2="-4.7" y2="-7.4" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" y4="-15.5" antialias="true" closed="true" y1="-15.5" y3="-7.4"/>
+                            <line end2="none" x2="0.0" y2="1.4" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="6.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="-4.7" y2="9.5" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="6.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="4.7" y2="9.5" x1="0.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="6.8" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="26.6" y2="8.3" x1="13.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="8.3" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="5.8" x="26.7"/>
+                            <terminal orientation="e" type="Generic" uuid="{4dfabc6c-a669-5279-9acf-f6230bd01778}" name="neutral" y="8.3" x="31.7"/>
+                            <terminal orientation="n" type="Generic" uuid="{69ea8a10-dd86-548f-a83d-a3e9194731f1}" name="top" y="-32.4" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{362a4c97-c89a-5d2b-954a-18cfd0d6b5bd}" name="bottom" y="32.4" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_relay_func-50G-51G.elmt">
+                    <definition width="58" hotspot_y="29" version="0.100.0" type="element" link_type="simple" hotspot_x="29" height="58">
+                        <uuid uuid="{4f677421-7f77-5214-8610-0847bc6eac85}"/>
+                        <names>
+                            <name lang="en">v2_relay_func-50G-51G</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <circle diameter="46.3" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-23.2" x="-23.2"/>
+                            <terminal orientation="n" type="Generic" uuid="{91149297-5666-5761-9d70-6cb816961f31}" name="top" y="-22.5" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{400d8d37-d581-5c84-b15e-5fa4354b3a62}" name="bottom" y="22.5" x="0.0"/>
+                            <terminal orientation="e" type="Generic" uuid="{5ae6572d-a2ce-5f5a-b6a0-1115a16e44d8}" name="left" y="0.0" x="-22.5"/>
+                            <terminal orientation="e" type="Generic" uuid="{29122bc9-05c3-5901-bd8b-a1e4fb037d0a}" name="right" y="0.0" x="22.5"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_dashed-True_h-9_text-MVGND_w-15.elmt">
+                    <definition width="64" hotspot_y="22" version="0.100.0" type="element" link_type="simple" hotspot_x="32" height="44">
+                        <uuid uuid="{65bfd39f-8716-584b-96be-d6afa60c0c4a}"/>
+                        <names>
+                            <name lang="en">v2_box_dashed-True_h-9_text-MVGND_w-15</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="27.0" x4="-27.0" x2="27.0" y2="16.2" y5="16.2" x1="-27.0" style="line-style:dashed;line-weight:thin;filling:none;color:black" y4="-16.2" antialias="true" x5="-27.0" closed="true" y1="16.2" y3="-16.2"/>
+                            <terminal orientation="n" type="Generic" uuid="{4ba9f9da-dd94-59df-85e1-3e73e87fe13e}" name="top" y="-16.2" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{5e39c327-6af7-59cb-a312-c164b98a1c31}" name="bottom" y="16.2" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-12_text-DUT_w-20.elmt">
+                    <definition width="82" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="41" height="54">
+                        <uuid uuid="{25121bf1-49d1-5667-b84d-9eae0cf16d2c}"/>
+                        <names>
+                            <name lang="en">v2_box_h-12_text-DUT_w-20</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="36.0" x4="-36.0" x2="36.0" y2="21.6" y5="21.6" x1="-36.0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-21.6" antialias="true" x5="-36.0" closed="true" y1="21.6" y3="-21.6"/>
+                            <terminal orientation="n" type="Generic" uuid="{f1d9e05b-632d-5639-be9e-84b059822dca}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{c2ab760f-9b43-5376-825c-dee311b74019}" name="bottom" y="21.6" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-8_text-TF_w-10_tape.elmt">
+                    <definition width="46" hotspot_y="20" version="0.100.0" type="element" link_type="simple" hotspot_x="41" height="40">
+                        <uuid uuid="{0f275246-d56b-559f-ae8a-153ae0dcb852}"/>
+                        <names>
+                            <name lang="en">v2_box_h-8_text-TF_w-10_tape</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="0.0" x4="-36.0" x2="0.0" y2="14.4" y5="14.4" x1="-36.0" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-14.4" antialias="true" x5="-36.0" closed="true" y1="14.4" y3="-14.4"/>
+                            <terminal orientation="e" type="Generic" uuid="{3fbc81a4-f120-5c14-b47b-92ea67e39d18}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_ct.elmt">
+                    <definition width="40" hotspot_y="27" version="0.100.0" type="element" link_type="simple" hotspot_x="15" height="54">
+                        <uuid uuid="{4bb6d5d3-6285-5f64-b67c-a1a425ae6f8e}"/>
+                        <names>
+                            <name lang="en">v2_ct</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="21.6" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="-21.6" length1="1.5" length2="1.5"/>
+                            <circle diameter="18.7" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-9.4" x="-9.4"/>
+                            <line end2="none" x2="19.8" y2="0.0" x1="9.4" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" end1="none" y1="0.0" length1="1.5" length2="1.5"/>
+                            <circle diameter="3.6" style="line-style:normal;line-weight:normal;filling:black;color:black" antialias="true" y="-12.6" x="-7.9"/>
+                            <terminal orientation="n" type="Generic" uuid="{dcd46bb2-a7a6-5354-b3cc-e2e435c7f2ef}" name="top" y="-21.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{f1b2e211-545d-5970-aeb7-385c9fd15317}" name="bottom" y="21.6" x="0.0"/>
+                            <terminal orientation="e" type="Generic" uuid="{1c0399b8-9331-5eb3-b768-8e7e04eb69a0}" name="sec" y="0.0" x="19.8"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_meter_letter-MFM.elmt">
+                    <definition width="40" hotspot_y="20" version="0.100.0" type="element" link_type="simple" hotspot_x="20" height="40">
+                        <uuid uuid="{b29bdb1d-8a5e-5631-8507-56b3b7f1fd5d}"/>
+                        <names>
+                            <name lang="en">v2_meter_letter-MFM</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <circle diameter="28.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" y="-14.3" x="-14.3"/>
+                            <terminal orientation="n" type="Generic" uuid="{fc97451c-aed9-5e30-9042-acd18402f128}" name="top" y="-12.6" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{f56989af-7ed7-54ef-9941-da5c4f216072}" name="bottom" y="12.6" x="0.0"/>
+                            <terminal orientation="e" type="Generic" uuid="{489fd3b1-eb92-5653-93bf-e2e35e9e9006}" name="left" y="0.0" x="-12.6"/>
+                            <terminal orientation="e" type="Generic" uuid="{fcc85842-e95a-5e76-95fc-ede8f83f6cf6}" name="right" y="0.0" x="12.6"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-10_text-RCPT_w-18.elmt">
+                    <definition width="76" hotspot_y="23" version="0.100.0" type="element" link_type="simple" hotspot_x="38" height="46">
+                        <uuid uuid="{fcd3f9a1-9c6c-51d7-93b2-deac226c423a}"/>
+                        <names>
+                            <name lang="en">v2_box_h-10_text-RCPT_w-18</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="32.4" x4="-32.4" x2="32.4" y2="18.0" y5="18.0" x1="-32.4" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-18.0" antialias="true" x5="-32.4" closed="true" y1="18.0" y3="-18.0"/>
+                            <terminal orientation="n" type="Generic" uuid="{eae7d899-17b3-5245-9f2a-cbb1a5919e23}" name="top" y="-18.0" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{35edf270-c9b7-5c66-a6b7-eed22f54f630}" name="bottom" y="18.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_earth_switch.elmt">
+                    <definition width="31" hotspot_y="5" version="0.100.0" type="element" link_type="simple" hotspot_x="17" height="49">
+                        <uuid uuid="{d0ce1034-213c-5a38-b921-62f51c7bdfdb}"/>
+                        <names>
+                            <name lang="en">v2_earth_switch</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <line end2="none" x2="0.0" y2="4.7" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="0.0" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="4.7" x="-2.5"/>
+                            <line end2="none" x2="-11.5" y2="20.2" x1="-1.8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="9.0" length1="1.5" length2="1.5"/>
+                            <circle diameter="5.0" style="line-style:normal;line-weight:thin;filling:none;color:black" antialias="true" y="20.2" x="-2.5"/>
+                            <line end2="none" x2="0.0" y2="30.2" x1="0.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="25.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="9.0" y2="30.2" x1="-9.0" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="30.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="5.8" y2="34.2" x1="-5.8" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="34.2" length1="1.5" length2="1.5"/>
+                            <line end2="none" x2="2.5" y2="38.2" x1="-2.5" style="line-style:normal;line-weight:normal;filling:none;color:black" antialias="true" end1="none" y1="38.2" length1="1.5" length2="1.5"/>
+                            <terminal orientation="n" type="Generic" uuid="{67fffc8f-7e79-59d0-97e3-0e6aefa527d5}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-10_text-LVPNL_w-18.elmt">
+                    <definition width="76" hotspot_y="23" version="0.100.0" type="element" link_type="simple" hotspot_x="38" height="46">
+                        <uuid uuid="{33d0e3bc-adaa-58c2-8176-4003444084d4}"/>
+                        <names>
+                            <name lang="en">v2_box_h-10_text-LVPNL_w-18</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="32.4" x4="-32.4" x2="32.4" y2="18.0" y5="18.0" x1="-32.4" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-18.0" antialias="true" x5="-32.4" closed="true" y1="18.0" y3="-18.0"/>
+                            <terminal orientation="n" type="Generic" uuid="{e8b0e37b-ae0c-59e1-a773-027b9af4e24d}" name="top" y="-18.0" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{83f1dd0e-48fc-5f4b-bcf0-a355902c6f73}" name="bottom" y="18.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_dashed-True_h-9_text-AVT_w-12_tape.elmt">
+                    <definition width="54" hotspot_y="22" version="0.100.0" type="element" link_type="simple" hotspot_x="49" height="44">
+                        <uuid uuid="{7f6386d4-07ed-501b-ab67-6060234bd3bb}"/>
+                        <names>
+                            <name lang="en">v2_box_dashed-True_h-9_text-AVT_w-12_tape</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="0.0" x4="-43.2" x2="0.0" y2="16.2" y5="16.2" x1="-43.2" style="line-style:dashed;line-weight:thin;filling:none;color:black" y4="-16.2" antialias="true" x5="-43.2" closed="true" y1="16.2" y3="-16.2"/>
+                            <terminal orientation="e" type="Generic" uuid="{87e8ccab-af69-57f9-a376-8aa611282d2f}" name="top" y="0.0" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="v2_box_h-11_text-DUT_w-18.elmt">
+                    <definition width="76" hotspot_y="25" version="0.100.0" type="element" link_type="simple" hotspot_x="38" height="50">
+                        <uuid uuid="{8268913e-3f82-5876-9766-27b136126ad8}"/>
+                        <names>
+                            <name lang="en">v2_box_h-11_text-DUT_w-18</name>
+                        </names>
+                        <kindInformations/>
+                        <informations>ENA006 SLD probe element � original NEMA/IEEE-styled geometry. PILOT ARTIFACT.</informations>
+                        <description>
+                            <polygon x3="32.4" x4="-32.4" x2="32.4" y2="19.8" y5="19.8" x1="-32.4" style="line-style:normal;line-weight:normal;filling:none;color:black" y4="-19.8" antialias="true" x5="-32.4" closed="true" y1="19.8" y3="-19.8"/>
+                            <terminal orientation="n" type="Generic" uuid="{b5f577a1-ac22-5d6e-b109-1d9ac351b5f8}" name="top" y="-19.8" x="0.0"/>
+                            <terminal orientation="s" type="Generic" uuid="{5b69e1c7-b417-5784-a874-5502eb581c22}" name="bottom" y="19.8" x="0.0"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+        </category>
+    </collection>
+</project>

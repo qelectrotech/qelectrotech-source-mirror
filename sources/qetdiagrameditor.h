@@ -127,6 +127,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setWindowedMode();
 		void setTabbedMode();
 		void readSettings();
+		void readSettingsState();
 		void writeSettings();
 		void activateProject(QETProject *);
 		void activateProject(ProjectView *);
@@ -135,6 +136,10 @@ class QETDiagramEditor : public QETMainWindow
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
 		void slot_terminalNumbering();
+		void slot_reloadElementDrawings();
+#ifdef QET_HAS_SCRIPTING
+		void slot_runScript();
+#endif
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
@@ -208,7 +213,12 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_project_export_wiring_list, ///< Action to export the wiring list
+		*m_project_wiring_list_view,   ///< Action to show the wiring list read from the project database
 		*m_terminal_numbering,         ///< Action to launch terminal numbering
+		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
+#ifdef QET_HAS_SCRIPTING
+		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
+#endif
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
 		*m_cascade_window,		///< Show MDI subwindows as cascade

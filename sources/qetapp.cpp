@@ -26,6 +26,7 @@
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
+#include "qetpalette.h"
 #include "utils/qetutils.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
@@ -50,7 +51,8 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
+#include <QStyleHints>
+#ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
@@ -118,17 +120,15 @@ QETApp::QETApp() :
 	}
 	initConfiguration();
 	initLanguage();
+	initIconTheme();
 	QET::Icons::initIcons();
 	initFonts();
 	initStyle();
 	initSplashScreen();
 	initSystemTray();
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0) // TODO Qt6 only: remove, mappedObject() always available
-	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
-#else
 	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
-#endif
+
 	qApp->setQuitOnLastWindowClosed(false);
 	connect(qApp, &QApplication::lastWindowClosed,
 		this, &QETApp::checkRemainingWindows);
@@ -201,6 +201,26 @@ QETApp *QETApp::instance()
 }
 
 /**
+	@brief QETApp::loadedQetTranslationFile
+	@return path of the QET .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQetTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qetTranslator.filePath() : QString();
+}
+
+/**
+	@brief QETApp::loadedQtTranslationFile
+	@return path of the Qt .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQtTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qtTranslator.filePath() : QString();
+}
+
+/**
 	@brief QETApp::setLanguage
 	Change the language used by the application.
 	\~French Change le langage utilise par l'application.
@@ -212,14 +232,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
 
 	// load Qt library translations
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	QString qt_l10n_path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
-#endif
 	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path))
 	{
 		qWarning() << "failed to load"
@@ -237,14 +250,21 @@ void QETApp::setLanguage(const QString &desired_language) {
 	// desired_language may be a full locale such as "pt_BR": try that exact
 	// translation, then the base language ("pt"), then fall back to English.
 	// French is the application's source language and needs no translation.
+	// A .qm compiled from an untranslated .ts (0% done) loads "successfully"
+	// but is empty: treat it as missing, so the user falls back to English
+	// instead of silently getting the French source strings.
 	const QString base_language = desired_language.section('_', 0, 0);
-	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	auto loadQet = [this, &languages_path](const QString &name) {
+		return qetTranslator.load(name, languages_path)
+			&& !qetTranslator.isEmpty();
+	};
+	bool loaded = loadQet("qet_" + desired_language);
 	if (!loaded && base_language != desired_language)
-		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+		loaded = loadQet("qet_" + base_language);
 	if (!loaded && base_language != "fr") {
 		// use of the English version by default
 		// utilisation de la version anglaise par defaut
-		if(!qetTranslator.load("qet_en", languages_path))
+		if(!loadQet("qet_en"))
 			qWarning() << "failed to load"
 					   << "qet_en" << languages_path << "(" << __FILE__
 					   << __LINE__ << __FUNCTION__ << ")";
@@ -270,7 +290,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
@@ -1426,7 +1446,7 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
@@ -1635,7 +1655,31 @@ void QETApp::receiveMessage(int instanceId, QByteArray message)
 	{
 		QString my_message(str.mid(20));
 		QStringList args_list = QET::splitWithSpaces(my_message);
-		openFiles(QETArguments(args_list));
+
+		// Deferred, not called directly.
+		//
+		// This slot runs inside SingleApplication's readyRead handling:
+		// SingleApplicationPrivate::slotDataAvailable() emits
+		// receivedMessage() synchronously from the socket's readyRead
+		// lambda. openFiles() then loads a project -- seconds of work on
+		// a large one -- and openAndAddProject() puts up a modal
+		// BackupDialog, whose exec() runs a nested event loop while the
+		// socket handler is still on the stack.
+		//
+		// During that nested loop the secondary instance exits, the
+		// connection closes and the QLocalSocket is deleted. When the
+		// dialog is dismissed and the stack unwinds, QMetaObject::
+		// activate() continues emitting on the freed sender and the
+		// process dies. Reported with a backtrace on PR #861;
+		// reproduced on Qt 6.10.2 by dismissing the dialog, which is the
+		// step that makes it fail -- leaving it open never unwinds.
+		//
+		// A zero-timer returns to the event loop first, so the socket
+		// stack is fully unwound before any of this runs.
+		const QETArguments deferred_args{args_list};
+		QTimer::singleShot(0, this, [this, deferred_args]() {
+			openFiles(deferred_args);
+		});
 	}
 }
 
@@ -1738,8 +1782,10 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	false pour utiliser celles du theme en cours
 */
 void QETApp::useSystemPalette(bool use) {
+	// The base palette is always initial_palette_ (see initStyle()); the
+	// setting only decides whether the user's style.css is layered on top.
+	qApp->setPalette(initial_palette_);
 	if (use) {
-		qApp->setPalette(initial_palette_);
 		// Drop any stylesheet previously loaded from style.css: with system
 		// colors requested, the palette set just above is what provides them.
 		//
@@ -1978,6 +2024,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1989,6 +2036,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -2284,6 +2332,22 @@ void QETApp::initFonts()
 }
 
 /**
+	@brief QETApp::initIconTheme
+	Register QET's icon theme "qet" (see misc/make_icon_themes.py and
+	ico/icon-themes.qrc) and make it the current theme, so
+	QIcon::fromTheme("name") resolves to QET's own icons on every
+	platform. Must run before QET::Icons::initIcons(), which looks icons
+	up by name.
+*/
+void QETApp::initIconTheme()
+{
+	QStringList paths = QIcon::themeSearchPaths();
+	paths.prepend(QStringLiteral(":/ico/themes"));
+	QIcon::setThemeSearchPaths(paths);
+	QIcon::setThemeName(QStringLiteral("qet"));
+}
+
+/**
 	@brief QETApp::initStyle
 	Setup the gui style
 */
@@ -2291,9 +2355,44 @@ void QETApp::initStyle()
 {
 	initial_palette_ = qApp->palette();
 
+#ifdef Q_OS_MACOS
+	// main.cpp forces the Fusion style on macOS, but the palette Qt hands
+	// us there is the one its platform theme builds for the native style:
+	// Window, Button and Base share one color, and in dark mode the
+	// Inactive ButtonText is black. Fusion draws its frames, gradients and
+	// combo box text from those roles, so controls lose their edges and
+	// combo text goes black once the window loses focus. Replace it with a
+	// palette laid out the way Fusion expects (see qetpalette.h).
+	//
+	// macOS only: on Linux, Fusion is Qt's default style on desktops
+	// without a platform theme, and the palette there carries the user's
+	// desktop colors, which must stay in effect. Making Fusion and this
+	// palette the default everywhere is discussed in #870.
+	if (QET::Palette::styleIsFusion(qApp->style()))
+		initial_palette_ = QET::Palette::forFusion(initial_palette_);
+#endif
+
 	//Apply or not the system style
 	QSettings settings;
 	useSystemPalette(settings.value("usesystemcolors", true).toBool());
+
+#if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	// Setting an application palette stops Qt from following the OS
+	// light/dark switch on its own, so follow it here. The platform accent
+	// color is not reachable any more at this point; the palette's own
+	// selection blue is used instead.
+	connect(qApp->styleHints(), &QStyleHints::colorSchemeChanged, this,
+	        [this](Qt::ColorScheme scheme)
+	{
+		if (!QET::Palette::styleIsFusion(qApp->style()))
+			return;
+		initial_palette_ = scheme == Qt::ColorScheme::Dark
+		                   ? QET::Palette::fusionDark()
+		                   : QET::Palette::fusionLight();
+		QSettings settings;
+		useSystemPalette(settings.value("usesystemcolors", true).toBool());
+	});
+#endif
 }
 
 /**
@@ -2578,14 +2677,28 @@ void QETApp::checkBackupFiles()
 		}
 	}
 
-	if (stale_files.isEmpty()) {
-		// Only offer an unretrieved crash dump when there's no project
-		// to recover this run -- discussion #644 step 5 is explicit
-		// that the two prompts must never both show at once.
-		checkCrashDump();
-		return;
+	if (!stale_files.isEmpty()) {
+		offerBackupFiles(stale_files);
 	}
 
+	// Discussion #644 step 5 asks that the recovery prompt and the crash
+	// report never show at the same time -- not that the report be dropped
+	// whenever there is something to recover. Offering it here, once the
+	// recovery prompt has been answered, keeps the two sequential without
+	// losing the report after the most common crash there is: one with a
+	// project open, which always leaves a stale file behind, so the report
+	// was unreachable in exactly the case it is most wanted (issue #901).
+	checkCrashDump();
+}
+
+/**
+	@brief QETApp::offerBackupFiles
+	Ask whether to reopen the recovery files left by a previous run, and
+	open or discard them accordingly.
+	@param stale_files : the recovery files to offer
+*/
+void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
+{
 	QString text;
 	if(stale_files.size() == 1) {
 		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
@@ -2646,11 +2759,16 @@ void QETApp::checkBackupFiles()
 void QETApp::checkCrashDump()
 {
 	QetLogger &logger = QetLogger::instance();
-	if (!logger.hasPendingCrashDump()) {
+
+	// Listed once, then used both to build the contents and to delete
+	// below. Re-listing after the dialog closes would delete a dump
+	// written while it was open, unseen -- see clearPendingCrashDump().
+	const QStringList offered = logger.pendingCrashDumpFiles();
+	if (offered.isEmpty()) {
 		return;
 	}
 
-	const QByteArray content = logger.pendingCrashDumpContents();
+	const QByteArray content = logger.pendingCrashDumpContents(offered);
 
 	DiagnosticsReportDialog dialog(
 			tr("Rapport de plantage"),
@@ -2662,7 +2780,7 @@ void QETApp::checkCrashDump()
 
 	// Offered once, then marked retrieved -- regardless of whether the
 	// user chose to save it -- so it is never offered a second time.
-	logger.clearPendingCrashDump();
+	logger.clearPendingCrashDump(offered);
 }
 
 /**

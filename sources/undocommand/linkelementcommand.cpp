@@ -31,6 +31,16 @@
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontextcommands.h"
 
+#include <algorithm>
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
+
 /**
 	@brief Get the cross-ref text for a slave element using XRefProperties formula
 	@param master the PLC master element
@@ -244,6 +254,7 @@ void LinkElementCommand::undo()
 			ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 			ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 			ctx.remove(QETInformation::ELMT_LABEL);
+			ctx.remove(QETInformation::ELMT_XREF);
 			m_element->setElementInformations(ctx);
 
 			foreach(Element *elmt, m_element->linkedElements())
@@ -281,6 +292,7 @@ void LinkElementCommand::undo()
 					ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 					ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 					ctx.remove(QETInformation::ELMT_LABEL);
+					ctx.remove(QETInformation::ELMT_XREF);
 					slave->setElementInformations(ctx);
 				}
 
@@ -408,15 +420,16 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 					// Set master labels on slave terminals
 					if (elmt->elementData().m_master_type == ElementData::PLC)
 					{
-						// For PLC masters, use io.terminals as labels
 						const auto &plc_data = elmt->elementData().plcMasterData();
 						if (group_idx < plc_data.ios.size())
 						{
-							const QStringList &labels = plc_data.ios.at(group_idx).terminals;
+							const QStringList labels = plc_data.ios.at(group_idx).effectiveTerminals();
 							QList<Terminal *> slave_terms = m_element->terminals();
+							QCollator collator;
+							collator.setNumericMode(true);
 							std::sort(slave_terms.begin(), slave_terms.end(),
-								[](Terminal *a, Terminal *b) {
-									return a->baseName() < b->baseName();
+								[&collator](Terminal *a, Terminal *b) {
+									return collator.compare(a->baseName(), b->baseName()) < 0;
 								});
 							for (int i = 0; i < slave_terms.size(); ++i)
 							{
@@ -426,6 +439,29 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 									slave_terms.at(i)->setMasterLabelIndex(i);
 								}
 							}
+
+							// Populate PLC variables on the slave
+							const auto &io = plc_data.ios.at(group_idx);
+							DiagramContext ctx = m_element->elementInformations();
+							ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+								ElementData::translatedPlcIOType(io.type));
+							ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+							ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+							ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+							ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+								plcCrossRefText(elmt, m_element));
+							ctx.addValue(QETInformation::ELMT_LABEL,
+								elmt->actualLabel());
+							ctx.addValue(QETInformation::ELMT_PLC_TC,
+								QString::number(io.terminalCount));
+							const QStringList eff_terms = io.effectiveTerminals();
+							for (int t = 0; t < io.terminalCount && t < 4; ++t)
+							{
+								QString val = (t < eff_terms.size())
+									? eff_terms.at(t) : QString();
+								ctx.addValue(plcTerminalKeys[t], val);
+							}
+							m_element->setElementInformations(ctx);
 						}
 					}
 					else
@@ -435,9 +471,11 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 						{
 							const QStringList &labels = groups.at(group_idx).labels;
 							QList<Terminal *> slave_terms = m_element->terminals();
+							QCollator collator;
+							collator.setNumericMode(true);
 							std::sort(slave_terms.begin(), slave_terms.end(),
-								[](Terminal *a, Terminal *b) {
-									return a->baseName() < b->baseName();
+								[&collator](Terminal *a, Terminal *b) {
+									return collator.compare(a->baseName(), b->baseName()) < 0;
 								});
 							for (int i = 0; i < slave_terms.size(); ++i)
 							{
@@ -447,41 +485,6 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 									slave_terms.at(i)->setMasterLabelIndex(i);
 								}
 							}
-						}
-					}
-
-					// Populate PLC variables on the slave if master is PLC type
-					if (elmt->elementData().m_master_type == ElementData::PLC)
-					{
-						const auto &plc_data = elmt->elementData().plcMasterData();
-						if (group_idx < plc_data.ios.size())
-						{
-						const auto &io = plc_data.ios.at(group_idx);
-						DiagramContext ctx = m_element->elementInformations();
-						ctx.addValue(QETInformation::ELMT_PLC_TYPE,
-							ElementData::translatedPlcIOType(io.type));
-						ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
-						ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
-						ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
-						ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
-							plcCrossRefText(elmt, m_element));
-						ctx.addValue(QETInformation::ELMT_LABEL,
-							elmt->actualLabel());
-						ctx.addValue(QETInformation::ELMT_PLC_TC,
-							QString::number(io.terminalCount));
-						for (int t = 0; t < io.terminalCount && t < 4; ++t)
-						{
-							QString val = (t < io.terminals.size())
-								? io.terminals.at(t) : QString();
-							ctx.addValue(
-								QStringList({
-									QETInformation::ELMT_PLC_T1,
-									QETInformation::ELMT_PLC_T2,
-									QETInformation::ELMT_PLC_T3,
-									QETInformation::ELMT_PLC_T4
-								}).at(t), val);
-						}
-						m_element->setElementInformations(ctx);
 						}
 					}
 
@@ -502,22 +505,49 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 				m_element->setGroupIndexForElement(slave, group_idx);
 
 				// Set master labels on slave terminals
-				const auto &groups = m_element->elementData().m_slave_contact_groups;
-				if (group_idx < groups.size())
+				if (m_element->elementData().m_master_type == ElementData::PLC)
 				{
-					const QStringList &labels = groups.at(group_idx).labels;
-					QList<Terminal *> slave_terms = slave->terminals();
-					// Sort terminals by name (T1, T2, T3...) to match label order
-					std::sort(slave_terms.begin(), slave_terms.end(),
-						[](Terminal *a, Terminal *b) {
-							return a->name() < b->name();
-						});
-					for (int i = 0; i < slave_terms.size(); ++i)
+					const auto &plc_data = m_element->elementData().plcMasterData();
+					if (group_idx < plc_data.ios.size())
 					{
-						if (i < labels.size())
+						const QStringList labels = plc_data.ios.at(group_idx).effectiveTerminals();
+						QList<Terminal *> slave_terms = slave->terminals();
+						QCollator collator;
+						collator.setNumericMode(true);
+						std::sort(slave_terms.begin(), slave_terms.end(),
+							[&collator](Terminal *a, Terminal *b) {
+								return collator.compare(a->baseName(), b->baseName()) < 0;
+							});
+						for (int i = 0; i < slave_terms.size(); ++i)
 						{
-							slave_terms.at(i)->setUseMasterLabel(true);
-							slave_terms.at(i)->setMasterLabelIndex(i);
+							if (i < labels.size())
+							{
+								slave_terms.at(i)->setUseMasterLabel(true);
+								slave_terms.at(i)->setMasterLabelIndex(i);
+							}
+						}
+					}
+				}
+				else
+				{
+					const auto &groups = m_element->elementData().m_slave_contact_groups;
+					if (group_idx < groups.size())
+					{
+						const QStringList &labels = groups.at(group_idx).labels;
+						QList<Terminal *> slave_terms = slave->terminals();
+						QCollator collator;
+						collator.setNumericMode(true);
+						std::sort(slave_terms.begin(), slave_terms.end(),
+							[&collator](Terminal *a, Terminal *b) {
+								return collator.compare(a->baseName(), b->baseName()) < 0;
+							});
+						for (int i = 0; i < slave_terms.size(); ++i)
+						{
+							if (i < labels.size())
+							{
+								slave_terms.at(i)->setUseMasterLabel(true);
+								slave_terms.at(i)->setMasterLabelIndex(i);
+							}
 						}
 					}
 				}
@@ -539,6 +569,15 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 							plcCrossRefText(m_element, slave));
 						ctx.addValue(QETInformation::ELMT_LABEL,
 							m_element->actualLabel());
+						ctx.addValue(QETInformation::ELMT_PLC_TC,
+							QString::number(io.terminalCount));
+						const QStringList eff_terms = io.effectiveTerminals();
+						for (int t = 0; t < io.terminalCount && t < 4; ++t)
+						{
+							QString val = (t < eff_terms.size())
+								? eff_terms.at(t) : QString();
+							ctx.addValue(plcTerminalKeys[t], val);
+						}
 						slave->setElementInformations(ctx);
 					}
 				}
@@ -585,6 +624,7 @@ void LinkElementCommand::makeLink(const QList<Element *> &element_list)
 				ctx.remove(QETInformation::ELMT_PLC_COMMENT);
 				ctx.remove(QETInformation::ELMT_PLC_CROSSREF);
 				ctx.remove(QETInformation::ELMT_LABEL);
+				ctx.remove(QETInformation::ELMT_XREF);
 				slave->setElementInformations(ctx);
 			}
 			m_element->unlinkElement(elmt);

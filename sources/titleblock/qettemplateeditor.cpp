@@ -358,6 +358,7 @@ void QETTitleBlockTemplateEditor::newTemplate()
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(TitleBlockTemplateLocation());
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -645,10 +646,25 @@ void QETTitleBlockTemplateEditor::readSettings()
 	// window size and position
 	QVariant geometry = settings.value("titleblocktemplateeditor/geometry");
 	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
+}
 
-	// window state (toolbars, docks...)
+/**
+	@brief QETTitleBlockTemplateEditor::readSettingsState
+	Restore the window state (docks, toolbars).
+	Must be called AFTER show() in Qt6 for restoreState() to work correctly
+	-- callers are responsible for calling this after show(), since this
+	window isn't shown by its own constructor.
+*/
+void QETTitleBlockTemplateEditor::readSettingsState()
+{
+	QSettings settings;
+
 	QVariant state = settings.value("titleblocktemplateeditor/state");
-	if (state.isValid()) restoreState(state.toByteArray());
+	if (state.isValid()) {
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("titleblocktemplateeditor/state");
+		}
+	}
 }
 
 /**
@@ -776,7 +792,20 @@ bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 	elmt.setAttribute("name", location.name());
 	doc.appendChild(elmt);
 
-	collection -> setTemplateXmlDescription(location.name(), elmt);
+	if (!collection -> setTemplateXmlDescription(location.name(), elmt)) {
+			// Report the failure instead of marking the template "saved"
+			// regardless (bugtracker #251) -- this return value used to
+			// be discarded here.
+		QET::QetMessageBox::critical(
+			this,
+			tr("Erreur", "message box title"),
+			tr(
+				"Impossible d'enregistrer le modèle « %1 ».",
+				"message box content - %1 is a title block template name"
+			).arg(location.name())
+		);
+		return(false);
+	}
 
 	opened_from_file_ = false;
 	location_ = location;
@@ -879,6 +908,21 @@ bool QETTitleBlockTemplateEditor::saveAs()
 	);
 	if (location.isValid()) {
 		return(saveAs(location));
+	}
+	if (!location.name().isEmpty()) {
+			// The name was rejected (e.g. contains a path separator or
+			// other filesystem-reserved character) rather than the user
+			// cancelling the dialog -- say so instead of silently doing
+			// nothing (bugtracker #251).
+		QET::QetMessageBox::critical(
+			this,
+			tr("Erreur", "message box title"),
+			tr(
+				"Le nom « %1 » n'est pas valide : il ne doit pas contenir "
+				"les caractères suivants : \\ / : * ? \" < > |",
+				"message box content - %1 is the rejected template name"
+			).arg(location.name())
+		);
 	}
 	return(false);
 }

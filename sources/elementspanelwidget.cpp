@@ -17,6 +17,7 @@
 */
 #include "elementspanelwidget.h"
 #include "diagram.h"
+#include "qetgraphicsitem/conductor.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscategoryeditor.h"
 #include "qetapp.h"
@@ -27,6 +28,8 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include "qetgraphicsitem/element.h"
+#include "qetgraphicsitem/dynamicelementtextitem.h"
+#include "qetinformation.h"
 
 /*
 	When the ENABLE_PANEL_WIDGET_DND_CHECKS flag is set, the panel
@@ -657,22 +660,19 @@ void ElementsPanelWidget::duplicateDiagram()
 		BorderProperties bp = source_diagram->border_and_titleblock.exportBorder();
 		new_diagram->border_and_titleblock.importBorder(bp);
 
-		for (QGraphicsItem *item : source_diagram->items()) {
-			if (Element *elmt = dynamic_cast<Element *>(item)) {
-				source_diagram->correctTextPos(elmt);
-			}
-		}
-
-		QDomDocument doc = source_diagram->toXml();
+		// Serialize the whole diagram with is_copy_command=true.
+		// This is the same mechanism as Ctrl+C: toXml(true, true)
+		// internally calls correctTextPos/restoreText for Slave and
+		// Report elements only — producing correct text positions
+		// in the XML. No manual correctTextPos/restoreText needed.
+		QDomDocument doc = source_diagram->toXml(true, true);
 		QDomElement diagram_elmt = doc.documentElement();
 
-		for (QGraphicsItem *item : source_diagram->items()) {
-			if (Element *elmt = dynamic_cast<Element *>(item)) {
-				source_diagram->restoreText(elmt);
-			}
-		}
-
 		new_diagram->fromXml(diagram_elmt, QPointF(0, 0), false, nullptr);
+
+		QSettings settings;
+		bool erase_labels = settings.value(
+			"diagramcommands/erase-label-on-copy", true).toBool();
 
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
@@ -682,7 +682,119 @@ void ElementsPanelWidget::duplicateDiagram()
 				// of the project database, so duplicates fail to insert and
 				// silently vanish from nomenclature/summary tables.
 				elmt->newUuid();
-				new_diagram->restoreText(elmt);
+
+				// toXml(true, true) applied correctTextPos to Slave and
+				// Report elements, which shifted their text positions to
+				// match the stripped composite text.  restoreText()
+				// recalculates the position for the actual resolved text.
+				// Only Slave and Report need this — other element types
+				// were not affected by correctTextPos.
+				if (elmt->linkType() == Element::Slave ||
+					elmt->linkType() & Element::AllReport)
+				{
+					new_diagram->restoreText(elmt);
+				}
+
+				// Clear pending links so copies don't link back to
+				// the source elements via stale UUIDs.
+				elmt->clearPendingLinks();
+
+				// Clean up copied element data:
+				// 1. Slaves always lose label/formula/comment/location
+				//    and PLC master data — their text comes from a
+				//    master element not available on the copy.
+				// 2. Non-slaves: honour "erase-label-on-copy".
+
+				DiagramContext dc = elmt->elementInformations();
+				bool changed = false;
+
+				// Slaves always lose their label/BMK and PLC data —
+				// their text comes from the master, which is not
+				// available on the copied element.
+				if (elmt->linkType() == Element::Slave) {
+					dc.addValue("formula", "");
+					dc.addValue("label", "");
+					dc.addValue("comment", "");
+					dc.addValue("location", "");
+					changed = true;
+
+					for (const QString &key : {
+							QETInformation::ELMT_PLC_TYPE,
+							QETInformation::ELMT_PLC_ADDRESS,
+							QETInformation::ELMT_PLC_FUNCTION,
+							QETInformation::ELMT_PLC_COMMENT,
+							QETInformation::ELMT_PLC_CROSSREF,
+							QETInformation::ELMT_PLC_TC,
+							QETInformation::ELMT_PLC_T1,
+							QETInformation::ELMT_PLC_T2,
+							QETInformation::ELMT_PLC_T3,
+							QETInformation::ELMT_PLC_T4,
+							QStringLiteral("xref")}) {
+						if (dc.contains(key)) {
+							dc.remove(key);
+							changed = true;
+						}
+					}
+				}
+				// Non-slaves: honour the "erase-label-on-copy" preference.
+				else if (erase_labels) {
+					dc.addValue("formula", "");
+					dc.addValue("label", "");
+					dc.addValue("comment", "");
+					dc.addValue("location", "");
+					changed = true;
+				}
+
+				if (changed) {
+					const bool is_slave = (elmt->linkType() == Element::Slave);
+
+					// Block alignment during setElementInformations
+					// for non-slaves, same as Element::fromXml() (line 890-896).
+					// For PLC slaves, don't block — elementInfoChanged()
+					// fires (elementUseForInfo returns self) and needs
+					// finishAlignment() to adjust positions for the
+					// new (empty) text.
+					if (!is_slave) {
+						for (auto deti : elmt->dynamicTextItems())
+							deti->m_block_alignment = true;
+					}
+					elmt->setElementInformations(dc);
+					for (auto deti : elmt->dynamicTextItems())
+						deti->m_block_alignment = false;
+
+					// For non-PLC slaves, elementInfoChanged() doesn't
+					// fire (no linked master), so the text items keep
+					// their original text.  Clear them directly.
+					// For PLC slaves, elementInfoChanged() already
+					// cleared the text above.  Skip UserText items
+					// (free text typed by the user) in both cases.
+					if (is_slave) {
+						for (auto deti : elmt->dynamicTextItems()) {
+							if (deti->textFrom() != DynamicElementTextItem::UserText) {
+								deti->m_block_alignment = true;
+								deti->setPlainText(QString());
+								deti->m_block_alignment = false;
+							}
+						}
+					}
+				}
+			}
+			else if (Conductor *cond = dynamic_cast<Conductor *>(item)) {
+				// Same reasoning for conductors: conductor.uuid is the PRIMARY
+				// KEY of the conductor table, and its insert is a plain INSERT,
+				// so a duplicated uuid fails and the wire silently disappears
+				// from the wiring list and the per-element wire count.
+				cond->newUuid();
+
+				// Reset conductor labels when "erase-label-on-copy" is
+				// active, matching PasteDiagramCommand::redo() —
+				// "erase on copy" means erase, not "replace with the
+				// project's default new-conductor text" (see issue #413).
+				if (erase_labels) {
+					ConductorProperties cp = cond->properties();
+					cp.text = "";
+					cond->setProperties(cp);
+				}
 			}
 		}
 	}

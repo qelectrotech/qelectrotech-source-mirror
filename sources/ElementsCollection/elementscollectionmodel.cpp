@@ -40,13 +40,18 @@ ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 
 /**
 	@brief ElementsCollectionModel::~ElementsCollectionModel
-	loadCollections() kicks off QtConcurrent::map() over this model's own
-	item tree without ever cancelling/waiting for it. If the model (and the
-	items it owns) get destroyed while that background pass is still
-	running -- e.g. the "Open Element" dialog is cancelled before loading
-	finishes -- worker threads keep dereferencing the freed items. Cancel
-	and wait here so no worker thread can still be touching an item once
-	QStandardItemModel's own destructor starts tearing down the tree.
+	Destructor. loadCollections() may still have background threads
+	(via QtConcurrent::map()) running setUpData() on this model's items
+	when the model is destroyed (e.g. the user cancels the dialog before
+	loading finishes). Wait for them here so QStandardItemModel's
+	destructor doesn't free items out from under them, which used to
+	crash the whole application (bugtracker #291).
+
+	cancel() before the wait so that waiting is short. Without it the
+	wait runs the whole queued map to completion, so cancelling the
+	dialog blocks until every remaining item has been processed -- on a
+	large collection that is a visible hang on a button the user pressed
+	precisely to stop the work.
 */
 ElementsCollectionModel::~ElementsCollectionModel()
 {
@@ -65,6 +70,7 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 {
 	if (role == Qt::DecorationRole) {
 		QStandardItem *item = itemFromIndex(index);
+		if (!item) return QStandardItemModel::data(index, role);
 
 		if (item->type() == FileElementCollectionItem::Type)
 			static_cast<FileElementCollectionItem*>(item)->setUpIcon();
@@ -332,7 +338,6 @@ void ElementsCollectionModel::loadMacrosCollection()
 void ElementsCollectionModel::addMacrosCollection(bool set_data)
 {
 	QString macrosPath = QETApp::userMacrosDir();
-	qDebug() << "=== MAKRO PFAD CHECK ===" << macrosPath;
 	if (macrosPath.endsWith("/")) {
 		macrosPath.remove(macrosPath.length() - 1, 1);
 	}

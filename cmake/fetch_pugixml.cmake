@@ -26,7 +26,7 @@ if(BUILD_PUGIXML)
     pugixml
     GIT_REPOSITORY https://github.com/zeux/pugixml.git
     GIT_TAG        v1.15)
-
+  set(PUGIXML_INSTALL OFF CACHE INTERNAL "")
   FetchContent_MakeAvailable(pugixml)
 else()
   find_package(pugixml REQUIRED)
