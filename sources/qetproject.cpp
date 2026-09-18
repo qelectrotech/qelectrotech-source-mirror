@@ -534,7 +534,9 @@ QString QETProject::pathNameTitle() const
 			)
 		).arg(final_title);
 	}
-	if (m_modified) {
+	// Same condition as projectWasModified(): project-options changeg (m_modified) OR the undo stack sitting away from
+	// its clean index. 
+	if (m_modified || !m_undo_stack->isClean()) {
 		final_title = QString(
 			tr(
 				"%1 [modifié]",

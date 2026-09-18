@@ -252,7 +252,26 @@ class QETProject : public QObject
 		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void usedTitleBlockTemplateChanged(const QString &);
-		void undoStackChanged (bool a) {if (!a) setModified(true);}
+		/* Deliberately does NOT touch m_modified: m_modified /
+		 * setModified() track project-OPTIONS changes only (see
+		 * projectOptionsWereModified()), which have no undo
+		 * entry and so must stay set until an explicit write().
+		 * Diagram-content changes are tracked by the undo
+		 * stack's own clean index instead, and projectWasModified()
+		 * already ORs the two together -- that combined value is
+		 * what actually answers "does this project have unsaved
+		 * changes", so re-derive and broadcast it here on every
+		 * clean/dirty transition (covering, in particular, an
+		 * Undo that walks the stack back to its clean index).
+		 * Latching m_modified itself to the undo stack's dirty
+		 * state, the way this slot did before, is a one-way trap:
+		 * cleanChanged(true) would never come back through here
+		 * to un-set it, so a plain content edit stayed marked as
+		 * unsaved even after being fully undone. */
+		void undoStackChanged (bool /*a*/) {
+			emit projectModified(this, projectWasModified());
+			emit projectInformationsChanged(this);
+		}
 
 	private:
 		void readProjectXml(QDomDocument &xml_project);

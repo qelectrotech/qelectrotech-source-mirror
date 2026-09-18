@@ -2840,7 +2840,7 @@ void QETDiagramEditor::updateWindowModifiedState()
 		setWindowTitle(QString("%1[*] - %2").arg(
 			project->pathNameTitle(),
 			tr("QElectroTech", "window title")));
-		setWindowModified(project->projectOptionsWereModified());
+		setWindowModified(project->projectWasModified());
 	} else {
 		setWindowTitle(tr("QElectroTech", "window title"));
 		setWindowModified(false);
