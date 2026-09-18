@@ -629,7 +629,13 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			int diffx = qRound(current_parent_pos.x() - button_down_parent_pos.x());
 			int diffy = qRound(current_parent_pos.y() - button_down_parent_pos.y());
 			QPointF new_pos = m_initial_position + QPointF(diffx, diffy);
-			setPos(new_pos);
+				//Snap to the grid, Ctrl to place freely -- the same line
+				//ElementTextItemGroup::mouseMoveEvent() and
+				//ElementTextsMover::continueMovement() already use, and
+				//DiagramTextItem::mouseMoveEvent() for independent texts.
+				//Without it this was the only text move in the editor that
+				//ignored the grid.
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
