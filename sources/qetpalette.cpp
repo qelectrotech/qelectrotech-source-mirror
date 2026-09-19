@@ -18,7 +18,9 @@
 #include "qetpalette.h"
 
 #include <QColor>
+#include <QImage>
 #include <QStyle>
+
 #include <cmath>
 
 namespace {
@@ -73,6 +75,48 @@ bool QET::Palette::styleIsFusion(const QStyle *style)
 bool QET::Palette::isDark(const QPalette &palette)
 {
 	return palette.color(QPalette::Active, QPalette::Window).lightness() < 128;
+}
+
+void QET::Palette::invertLightness(QImage &image, const QColor &sheet,
+                                   const QColor &ink)
+{
+	if (image.format() != QImage::Format_RGB32)
+		image.convertTo(QImage::Format_RGB32);
+
+	// One table per channel maps the inverted value (0 = was white,
+	// 255 = was black) onto the sheet..ink span.
+	uchar red_of[256], green_of[256], blue_of[256];
+	for (int v = 0; v < 256; ++v) {
+		red_of[v]   = uchar(sheet.red()   + (ink.red()   - sheet.red())   * v / 255);
+		green_of[v] = uchar(sheet.green() + (ink.green() - sheet.green()) * v / 255);
+		blue_of[v]  = uchar(sheet.blue()  + (ink.blue()  - sheet.blue())  * v / 255);
+	}
+
+	/* Inverting the lightness of an HSL color while keeping its hue and
+	   saturation leaves the distance between the highest and the lowest
+	   channel unchanged, so it comes down to one offset per pixel:
+	   c + 255 - max - min. The offset turns the highest channel into
+	   255 - min and the lowest into 255 - max, so no channel can leave
+	   the 0..255 range and no clamping is needed. The loop runs on every
+	   repaint of a folio, hence the plain integer arithmetic. */
+	for (int y = 0; y < image.height(); ++y) {
+		quint32 *line = reinterpret_cast<quint32 *>(image.scanLine(y));
+		for (int x = 0, width = image.width(); x < width; ++x) {
+			const quint32 pixel = line[x];
+			const int red   = (pixel >> 16) & 0xff;
+			const int green = (pixel >> 8) & 0xff;
+			const int blue  = pixel & 0xff;
+			int highest = red > green ? red : green;
+			int lowest  = red < green ? red : green;
+			if (blue > highest) highest = blue;
+			if (blue < lowest)  lowest  = blue;
+			const int offset = 255 - highest - lowest;
+			line[x] = 0xff000000u
+			        | (quint32(red_of[red + offset]) << 16)
+			        | (quint32(green_of[green + offset]) << 8)
+			        | quint32(blue_of[blue + offset]);
+		}
+	}
 }
 
 double QET::Palette::contrastRatio(const QColor &a, const QColor &b)

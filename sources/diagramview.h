@@ -30,6 +30,7 @@ class QETDiagramEditor;
 class DVEventInterface;
 class QInputEvent;
 class QGestureEvent;
+class QPainter;
 
 /**
 	This class provides a widget to render an electric diagram in an editable,
@@ -97,6 +98,9 @@ class DiagramView : public QGraphicsView
 		virtual bool selectedItemHasFocus();
 	
 	private:
+		bool canvasIsInverted() const;
+		void paintInverted(const QRect &area);
+		void drawRubberBand(QPainter &painter);
 		void handleElementDrop(QDropEvent *);
 		void handleTitleBlockDrop(QDropEvent *);
 		void handleTextDrop(QDropEvent *);

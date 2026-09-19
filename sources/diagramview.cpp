@@ -29,6 +29,7 @@
 #include "qetgraphicsitem/conductortextitem.h"
 #include "qetgraphicsitem/independenttextitem.h"
 #include "qeticons.h"
+#include "qetpalette.h"
 #include "titleblock/integrationmovetemplateshandler.h"
 #include "ui/diagrampropertiesdialog.h"
 #include "ui/multipastedialog.h"
@@ -39,8 +40,13 @@
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
+#include <QApplication>
 #include <QDropEvent>
+#include <QPainter>
 #include <QPointer>
+#include <QStyleHintReturnMask>
+#include <QStyleOptionRubberBand>
+#include <QtMath>
 
 /**
 	Constructeur
@@ -1082,13 +1088,87 @@ bool DiagramView::event(QEvent *e) {
 }
 
 /**
+	@brief DiagramView::canvasIsInverted
+	@return true when the folio must be drawn with its lightness inverted,
+	i.e. when the application palette is dark. The document keeps its own
+	colors; only the screen rendering changes, so printing and exporting
+	stay black on white.
+*/
+bool DiagramView::canvasIsInverted() const
+{
+	return QET::Palette::isDark(qApp->palette());
+}
+
+/**
+	@brief DiagramView::paintInverted
+	Render \a area of the viewport into an off-screen image, invert the
+	lightness of that image and blit it to the viewport. Inverting the
+	finished rendering turns the white sheet black and the black ink white
+	in one pass, and keeps the hue of colored conductors and elements.
+	@param area the part of the viewport to repaint, in viewport coordinates
+*/
+void DiagramView::paintInverted(const QRect &area)
+{
+	const QRect rect = area.intersected(viewport()->rect());
+	if (rect.isEmpty())
+		return;
+
+	const qreal ratio = viewport()->devicePixelRatioF();
+	QImage buffer(qCeil(rect.width() * ratio), qCeil(rect.height() * ratio),
+				  QImage::Format_RGB32);
+	buffer.setDevicePixelRatio(ratio);
+
+	QPainter buffer_painter(&buffer);
+	buffer_painter.setRenderHints(renderHints());
+	render(&buffer_painter, QRectF(QPointF(0, 0), QSizeF(rect.size())),
+		   rect, Qt::IgnoreAspectRatio);
+	buffer_painter.end();
+
+	QET::Palette::invertLightness(buffer, palette().color(QPalette::Base),
+	                              palette().color(QPalette::Text));
+
+	QPainter painter(viewport());
+	painter.drawImage(rect.topLeft(), buffer);
+	drawRubberBand(painter);
+}
+
+/**
+	@brief DiagramView::drawRubberBand
+	Draw the selection rubber band the way QGraphicsView::paintEvent does.
+	Rendering the view into an off-screen image skips it, so it is drawn
+	here instead, after the inversion, and keeps the palette colors.
+	@param painter a painter on the viewport
+*/
+void DiagramView::drawRubberBand(QPainter &painter)
+{
+	const QRect band = rubberBandRect();
+	if (band.isNull())
+		return;
+
+	QStyleOptionRubberBand option;
+	option.initFrom(viewport());
+	option.rect = band;
+	option.shape = QRubberBand::Rectangle;
+
+	QStyleHintReturnMask mask;
+	if (viewport()->style()->styleHint(QStyle::SH_RubberBand_Mask, &option,
+									   viewport(), &mask))
+		painter.setClipRegion(mask.region, Qt::IntersectClip);
+	viewport()->style()->drawControl(QStyle::CE_RubberBand, &option,
+									 &painter, viewport());
+}
+
+/**
 	@brief DiagramView::paintEvent
 	Reimplemented from QGraphicsView
 	@param event
 */
 void DiagramView::paintEvent(QPaintEvent *event)
 {
-	QGraphicsView::paintEvent(event);
+	if (canvasIsInverted())
+		paintInverted(event->rect());
+	else
+		QGraphicsView::paintEvent(event);
 
 	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
 	{

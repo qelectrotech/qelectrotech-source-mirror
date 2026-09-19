@@ -19,6 +19,8 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
@@ -70,6 +72,9 @@ class tst_qetpalette : public QObject
 		void invertedLightnessKeepsHueAndAlpha();
 		void elementPreviewReadsOnBothPalettes();
 		void previewDelegateAdaptsLineArtOnly();
+		void invertLightnessMapsSheetAndInk();
+		void invertedViewReadsOnDarkSheet();
+		void invertLightnessSpeed();
 
 	private:
 		static void addPaletteRows();
@@ -435,6 +440,107 @@ void tst_qetpalette::previewDelegateAdaptsLineArtOnly()
 			blue = c.hslSaturationF() > 0.5 && c.blue() > c.red() + 60;
 		}
 	QVERIFY2(blue, "the colored icon lost its color");
+}
+
+/**
+	The lightness inversion sends white to the sheet color and black to
+	the ink color, lands a mid gray between the two, and keeps the hue of
+	a colored line. Without sheet and ink it is a plain inversion.
+*/
+void tst_qetpalette::invertLightnessMapsSheetAndInk()
+{
+	const QColor sheet(30, 30, 30);
+	const QColor ink(220, 220, 220);
+	QImage image(4, 1, QImage::Format_ARGB32);
+	image.setPixelColor(0, 0, Qt::white);
+	image.setPixelColor(1, 0, Qt::black);
+	image.setPixelColor(2, 0, QColor(128, 128, 128));
+	image.setPixelColor(3, 0, QColor(200, 0, 0));
+	QImage plain = image;
+
+	QET::Palette::invertLightness(image, sheet, ink);
+	QCOMPARE(image.format(), QImage::Format_RGB32);
+	QCOMPARE(image.pixelColor(0, 0), sheet);
+	QCOMPARE(image.pixelColor(1, 0), ink);
+	const int middle = (sheet.red() + ink.red()) / 2;
+	QVERIFY(qAbs(image.pixelColor(2, 0).red() - middle) <= 2);
+	const QColor red = image.pixelColor(3, 0);
+	QCOMPARE(red.hslHue(), 0);
+	QVERIFY2(red.hslSaturationF() > 0.5, qPrintable(red.name()));
+	QVERIFY2(red.lightness() > QColor(200, 0, 0).lightness(), qPrintable(red.name()));
+
+	QET::Palette::invertLightness(plain);
+	QCOMPARE(plain.pixelColor(0, 0), QColor(Qt::black));
+	QCOMPARE(plain.pixelColor(1, 0), QColor(Qt::white));
+	QCOMPARE(plain.pixelColor(3, 0), QColor(255, 55, 55));
+}
+
+/**
+	A view rendered the way DiagramView does it on a dark palette: a part
+	of the viewport goes into an image, which is inverted between the
+	palette's Base and Text. The white sheet comes out as Base, black
+	lines read at text contrast, and a blue box is still blue.
+*/
+void tst_qetpalette::invertedViewReadsOnDarkSheet()
+{
+	QGraphicsScene scene(0, 0, 200, 120);
+	scene.setBackgroundBrush(Qt::white);
+	scene.addLine(10, 60, 190, 60, QPen(Qt::black, 2));
+	scene.addRect(20, 20, 40, 20, QPen(Qt::NoPen), QBrush(QColor(30, 96, 176)));
+
+	QGraphicsView view(&scene);
+	view.setFrameShape(QFrame::NoFrame);
+	view.setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	view.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	view.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	view.resize(200, 120);
+	view.show();
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+	// A part of the viewport that is not at its origin, as a partial
+	// repaint after a scroll would be.
+	const QRect area(10, 10, 100, 60);
+	QImage buffer(area.size(), QImage::Format_RGB32);
+	QPainter painter(&buffer);
+	view.render(&painter, QRectF(QPointF(0, 0), QSizeF(area.size())), area);
+	painter.end();
+
+	const QPalette dark = QET::Palette::fusionDark();
+	const QColor base = dark.color(QPalette::Active, QPalette::Base);
+	const QColor text = dark.color(QPalette::Active, QPalette::Text);
+	QET::Palette::invertLightness(buffer, base, text);
+
+	QHash<QRgb, int> histogram;
+	for (int y = 0; y < buffer.height(); ++y)
+		for (int x = 0; x < buffer.width(); ++x)
+			++histogram[buffer.pixel(x, y)];
+	QRgb dominant = 0;
+	for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
+		if (it.value() > histogram.value(dominant)) dominant = it.key();
+	QCOMPARE(QColor(dominant), base);
+
+	const double contrast = inkContrast(buffer, buffer.rect());
+	QVERIFY2(contrast >= QET::Palette::contrastRatio(base, text) - 0.5,
+	         qPrintable(QString("ink reads %1:1 on the dark sheet").arg(contrast)));
+
+	// The box at scene (20..60, 20..40) sits at (10..50, 10..30) in the buffer.
+	const QColor box = buffer.pixelColor(30, 20);
+	QVERIFY2(box.hslSaturationF() > 0.3 && box.blue() > box.red() + 60,
+	         qPrintable(QString("the blue box became %1").arg(box.name())));
+}
+
+/**
+	The inversion runs on every repaint of the folio, so a 4K viewport
+	has to cost a few milliseconds. Reported, not asserted: the bound
+	depends on the build box.
+*/
+void tst_qetpalette::invertLightnessSpeed()
+{
+	QImage image(3840, 2000, QImage::Format_RGB32);
+	image.fill(Qt::white);
+	QBENCHMARK {
+		QET::Palette::invertLightness(image, QColor(30, 30, 30), QColor(220, 220, 220));
+	}
 }
 
 int main(int argc, char **argv)
