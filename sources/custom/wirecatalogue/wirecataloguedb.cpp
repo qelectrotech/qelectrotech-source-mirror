@@ -275,6 +275,16 @@ bool WireCatalogueDb::removeWire(const QString &wireId)
 		setError(QStringLiteral("removeWire"), q);
 		return false;
 	}
+	// A DELETE that matched nothing is a successful statement, so q.exec()
+	// alone cannot tell "removed" from "was never there". Report the
+	// difference: addWire() refuses an id that already exists, so
+	// removeWire() owes the caller the same answer about one that does not,
+	// and the catalogueChanged() signal must not fire for a no-op.
+	if (q.numRowsAffected() == 0) {
+		m_last_error = QStringLiteral("removeWire: no wire with id \"%1\"")
+			.arg(wireId);
+		return false;
+	}
 	emit catalogueChanged();
 	return true;
 }
