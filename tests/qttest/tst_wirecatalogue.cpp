@@ -320,6 +320,34 @@ class tst_wirecatalogue : public QObject
 			QCOMPARE(again.wire(QStringLiteral("KEEP-1")).crossSectionMm2, 10.0);
 		}
 
+		/**
+			A note with a line break in it survives export and re-import.
+			csvEscape() already quotes such a field, so the exported file is
+			valid CSV; the importer has to read records rather than lines or
+			the record is torn in half and everything after it shifts.
+		*/
+		void csvRoundTripsEmbeddedNewline()
+		{
+			const QString csv = dbPath("multiline.csv");
+			const QString note = QStringLiteral("first line\nsecond line, with a comma\n\"quoted\"");
+			{
+				WireCatalogueDb db;
+				QVERIFY2(db.open(dbPath("ml1.sqlite")), qPrintable(db.lastError()));
+				WireSpec w = wire(QStringLiteral("ML-1"), 1.5);
+				w.notes = note;
+				QVERIFY(db.addWire(w));
+				WireSpec after = wire(QStringLiteral("ML-2"), 4.0);
+				QVERIFY(db.addWire(after));
+				QVERIFY(db.exportCsv(csv) >= 2);
+			}
+			WireCatalogueDb db2;
+			QVERIFY2(db2.open(dbPath("ml2.sqlite")), qPrintable(db2.lastError()));
+			QVERIFY(db2.importCsv(csv) > 0);
+			QCOMPARE(db2.wire(QStringLiteral("ML-1")).notes, note);
+			QVERIFY2(db2.contains(QStringLiteral("ML-2")),
+					 "the row after a multi-line note must still import");
+		}
+
 		/** Asking for a wire that is not there is empty, not a crash. */
 		void unknownWireIsEmpty()
 		{

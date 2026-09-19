@@ -441,11 +441,11 @@ void ConductorPropertiesWidget::assignSelectedWire()
 	if (sel == kShieldCore) {
 		// Connect the cable's shield (screen) — green-yellow, dashed line.
 		const QString colour = QStringLiteral("Green-Yellow");
-		if (ui->m_line_style_cb->count() > 1)
-			ui->m_line_style_cb->setCurrentIndex(1); // dashed
+		setLineStyle(Qt::DashLine);
 		applyWireAppearance(section, colour, w.wireId,
 							QStringLiteral("%1:SH  Shield").arg(w.wireId));
 	} else if (w.isCable()) {
+		setLineStyle(Qt::SolidLine);
 		const QStringList core = w.coreColors.value(sel);
 		const QString colour = core.value(0);
 		// Per-core section (falls back to the cable's nominal section).
@@ -455,12 +455,27 @@ void ConductorPropertiesWidget::assignSelectedWire()
 		applyWireAppearance(core_section, colour, w.wireId,
 							QStringLiteral("%1  %2  %3").arg(core_ref, core_section, colour));
 	} else {
+		setLineStyle(Qt::SolidLine);
 		const QString colour = w.effectiveColor();
 		applyWireAppearance(section, colour, QString(),
 							QStringLiteral("%1  %2").arg(section, colour));
 	}
 
 	emit wireAssigned();
+}
+
+/**
+	@brief Select a conductor line style by its pen, not by its position.
+	The combo is filled with QPen data (solid, dashed, dash-dot) and the
+	assignment must set the style in every branch: a shield is dashed, and
+	assigning an ordinary core afterwards has to put the line back to solid
+	rather than inherit the previous assignment's dashes.
+*/
+void ConductorPropertiesWidget::setLineStyle(Qt::PenStyle style)
+{
+	const int i = ui->m_line_style_cb->findData(QPen(style));
+	if (i != -1)
+		ui->m_line_style_cb->setCurrentIndex(i);
 }
 
 /**
@@ -496,10 +511,17 @@ void ConductorPropertiesWidget::applyWireAppearance(const QString &section,
 	ui->m_wire_color_le->setText(colour);
 	ui->m_cable_le->setText(cableId); // saved via properties().m_cable
 
-	// Displayed text driven by the formula (literal text shown verbatim);
-	// m_text_le is disabled while a formula is present.
-	ui->m_formula_le->setText(lineLabel);
-	ui->m_show_text_cb->setChecked(true);
+	// The label goes in the formula field -- but that field is also where
+	// conductor autonumbering stores the wire number
+	// (conductorautonumerotation.cpp:155). Overwriting it unconditionally
+	// replaced a numbered conductor's number with a wire description, which
+	// is the one thing on the line an electrician actually reads. Only fill
+	// it in when the conductor has no label of its own yet; otherwise set
+	// the physical properties and leave the identity alone.
+	if (ui->m_formula_le->text().isEmpty() && ui->m_text_le->text().isEmpty()) {
+		ui->m_formula_le->setText(lineLabel);
+		ui->m_show_text_cb->setChecked(true);
+	}
 	updatePreview();
 }
 

@@ -69,6 +69,7 @@ class ConductorPropertiesWidget : public QWidget
 		void initAssignWiresTab();
 		void populateFilters();
 		WireSpec selectedWire() const;
+		void setLineStyle(Qt::PenStyle style);
 		void applyWireAppearance(const QString &section,
 								 const QString &colour,
 								 const QString &cableId,

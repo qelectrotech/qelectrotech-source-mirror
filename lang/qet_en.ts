@@ -17561,6 +17561,14 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 <context>
     <name>WireCatalogueModel</name>
     <message>
+        <source>V</source>
+        <translation>V</translation>
+    </message>
+    <message>
+        <source>°C</source>
+        <translation>°C</translation>
+    </message>
+    <message>
         <source>Câble</source>
         <translation>Cable</translation>
     </message>
@@ -17622,6 +17630,10 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
 </context>
 <context>
     <name>WireSpecDialog</name>
+    <message>
+        <source>Identification</source>
+        <translation>Identification</translation>
+    </message>
     <message>
         <source>Fil / câble</source>
         <translation>Wire / cable</translation>

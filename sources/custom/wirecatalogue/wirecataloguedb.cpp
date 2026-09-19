@@ -436,6 +436,41 @@ namespace {
 	}
 
 	// Split one CSV line into fields, honouring "quoted, fields" with "" escapes.
+	// Split a whole CSV document into records. A quoted field may contain a
+	// line break -- csvEscape() emits exactly that for a multi-line note --
+	// so records cannot be recovered with readLine(): the record would be
+	// torn at the break and every field after it would shift by one.
+	QStringList csvRecords(const QString &text)
+	{
+		QStringList out;
+		QString cur;
+		bool in_quotes = false;
+		for (int i = 0; i < text.size(); ++i) {
+			const QChar c = text.at(i);
+			if (c == QLatin1Char('"')) {
+				// A doubled quote is an escaped quote, not a state change.
+				if (in_quotes && i + 1 < text.size()
+					&& text.at(i + 1) == QLatin1Char('"')) {
+					cur += QStringLiteral("\"\"");
+					++i;
+					continue;
+				}
+				in_quotes = !in_quotes;
+				cur += c;
+			} else if (!in_quotes
+					   && (c == QLatin1Char('\n') || c == QLatin1Char('\r'))) {
+				if (!cur.isEmpty())
+					out << cur;
+				cur.clear();
+			} else {
+				cur += c;
+			}
+		}
+		if (!cur.isEmpty())
+			out << cur;
+		return out;
+	}
+
 	QStringList csvSplit(const QString &line)
 	{
 		QStringList out;
@@ -517,10 +552,8 @@ int WireCatalogueDb::importCsv(const QString &filePath)
 	QStringList header;
 	int n = 0;
 	bool first = true;
-	while (!ts.atEnd()) {
-		const QString line = ts.readLine();
-		if (line.isEmpty())
-			continue;
+	const QStringList records = csvRecords(ts.readAll());
+	for (const QString &line : records) {
 		const QStringList fields = csvSplit(line);
 		if (first) {
 			header = fields;
