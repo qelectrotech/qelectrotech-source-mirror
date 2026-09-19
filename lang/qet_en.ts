@@ -1158,6 +1158,46 @@ Note: these options DO NOT allow or block auto numberings, only their update pol
         <source>Style :</source>
         <translation>Style:</translation>
     </message>
+    <message>
+        <source>Couleur :</source>
+        <translation>Colour:</translation>
+    </message>
+    <message>
+        <source>Section :</source>
+        <translation>Cross-section:</translation>
+    </message>
+    <message>
+        <source>Brin du câble :</source>
+        <translation>Cable core:</translation>
+    </message>
+    <message>
+        <source>Affecter à ce conducteur</source>
+        <translation>Assign to this conductor</translation>
+    </message>
+    <message>
+        <source>Affecter un fil</source>
+        <translation>Assign wires</translation>
+    </message>
+    <message>
+        <source>Toutes</source>
+        <translation>Any</translation>
+    </message>
+    <message>
+        <source>Brin %1 — %2</source>
+        <translation>Core %1 — %2</translation>
+    </message>
+    <message>
+        <source>(sans couleur)</source>
+        <translation>(no colour)</translation>
+    </message>
+    <message>
+        <source>blindage</source>
+        <translation>screen</translation>
+    </message>
+    <message>
+        <source>Blindage (%1)</source>
+        <translation>Shield (%1)</translation>
+    </message>
 </context>
 <context>
     <name>ConfigSaveLoaderWidget</name>
@@ -8522,6 +8562,14 @@ Unbridge and/or remove the levels from the affected terminals so that they can b
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Activates the previous project</translation>
+    </message>
+    <message>
+        <source>Catalogue de fils et câbles</source>
+        <translation>Wire / cable catalogue</translation>
+    </message>
+    <message>
+        <source>Affiche ou masque le panneau du catalogue de fils et câbles</source>
+        <translation>Show or hide the wire / cable catalogue panel</translation>
     </message>
 </context>
 <context>
@@ -17403,6 +17451,300 @@ associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{vol
         <location filename="../sources/SearchAndReplace/ui/replaceadvanceddialog.ui" line="92"/>
         <source>Quoi :</source>
         <translation>What:</translation>
+    </message>
+</context>
+<context>
+    <name>WireCatalogueWidget</name>
+    <message>
+        <source>Catalogue de fils et câbles</source>
+        <translation>Wire / cable catalogue</translation>
+    </message>
+    <message>
+        <source>Catalogue de fils</source>
+        <translation>Wire catalogue</translation>
+    </message>
+    <message>
+        <source>Impossible d'ouvrir la base de données du catalogue :
+%1</source>
+        <translation>Could not open the wire catalogue database:
+%1</translation>
+    </message>
+    <message>
+        <source>Ajouter</source>
+        <translation>Add</translation>
+    </message>
+    <message>
+        <source>Éditer</source>
+        <translation>Edit</translation>
+    </message>
+    <message>
+        <source>Supprimer</source>
+        <translation>Delete</translation>
+    </message>
+    <message>
+        <source>Actualiser</source>
+        <translation>Refresh</translation>
+    </message>
+    <message>
+        <source>Importer…</source>
+        <translation>Import…</translation>
+    </message>
+    <message>
+        <source>Exporter…</source>
+        <translation>Export…</translation>
+    </message>
+    <message>
+        <source>Rechercher un identifiant, un fabricant, un fournisseur, une couleur…</source>
+        <translation>Search id, manufacturer, supplier, colour…</translation>
+    </message>
+    <message>
+        <source>Un identifiant de fil est obligatoire.</source>
+        <translation>A wire ID is required.</translation>
+    </message>
+    <message>
+        <source>Un fil portant l'identifiant « %1 » existe déjà.</source>
+        <translation>A wire with ID "%1" already exists.</translation>
+    </message>
+    <message>
+        <source>Impossible d'ajouter le fil :
+%1</source>
+        <translation>Could not add the wire:
+%1</translation>
+    </message>
+    <message>
+        <source>Impossible de mettre à jour le fil :
+%1</source>
+        <translation>Could not update the wire:
+%1</translation>
+    </message>
+    <message>
+        <source>Supprimer le fil « %1 » du catalogue ?</source>
+        <translation>Delete wire "%1" from the catalogue?</translation>
+    </message>
+    <message>
+        <source>Impossible de supprimer le fil :
+%1</source>
+        <translation>Could not delete the wire:
+%1</translation>
+    </message>
+    <message>
+        <source>Exporter le catalogue de fils</source>
+        <translation>Export wire catalogue</translation>
+    </message>
+    <message>
+        <source>Fichiers CSV (*.csv)</source>
+        <translation>CSV files (*.csv)</translation>
+    </message>
+    <message>
+        <source>Exporter</source>
+        <translation>Export</translation>
+    </message>
+    <message>
+        <source>%1 fil(s) exporté(s) vers :
+%2</source>
+        <translation>Exported %1 wire(s) to:
+%2</translation>
+    </message>
+    <message>
+        <source>Importer un catalogue de fils</source>
+        <translation>Import wire catalogue</translation>
+    </message>
+    <message>
+        <source>Importer</source>
+        <translation>Import</translation>
+    </message>
+    <message>
+        <source>%1 fil(s) importé(s).</source>
+        <translation>Imported %1 wire(s).</translation>
+    </message>
+</context>
+<context>
+    <name>WireCatalogueModel</name>
+    <message>
+        <source>Câble</source>
+        <translation>Cable</translation>
+    </message>
+    <message>
+        <source>Fil</source>
+        <translation>Wire</translation>
+    </message>
+    <message>
+        <source>Identifiant</source>
+        <translation>Wire ID</translation>
+    </message>
+    <message>
+        <source>Fabricant</source>
+        <translation>Manufacturer</translation>
+    </message>
+    <message>
+        <source>Réf. fabricant</source>
+        <translation>Mfr part no.</translation>
+    </message>
+    <message>
+        <source>Section (mm²)</source>
+        <translation>Cross-sectional area (mm²)</translation>
+    </message>
+    <message>
+        <source>Brins</source>
+        <translation>Cores</translation>
+    </message>
+    <message>
+        <source>Couleurs</source>
+        <translation>Colours</translation>
+    </message>
+    <message>
+        <source>Blindage</source>
+        <translation>Shield</translation>
+    </message>
+</context>
+<context>
+    <name>CoreColorEditor</name>
+    <message>
+        <source>Brin</source>
+        <translation>Core</translation>
+    </message>
+    <message>
+        <source>Couleur 1</source>
+        <translation>Colour 1</translation>
+    </message>
+    <message>
+        <source>Couleur 2</source>
+        <translation>Colour 2</translation>
+    </message>
+    <message>
+        <source>Couleur 3</source>
+        <translation>Colour 3</translation>
+    </message>
+    <message>
+        <source>Section du brin (0 = section du câble)</source>
+        <translation>Core cross-section (0 = use cable default)</translation>
+    </message>
+</context>
+<context>
+    <name>WireSpecDialog</name>
+    <message>
+        <source>Fil / câble</source>
+        <translation>Wire / cable</translation>
+    </message>
+    <message>
+        <source>Référence de fil / câble</source>
+        <translation>Wire / cable reference</translation>
+    </message>
+    <message>
+        <source>Général</source>
+        <translation>General</translation>
+    </message>
+    <message>
+        <source>Brins du câble</source>
+        <translation>Cable cores</translation>
+    </message>
+    <message>
+        <source>ex. : CAN_Cable, H07V-K</source>
+        <translation>e.g. CAN_Cable, H07V-K</translation>
+    </message>
+    <message>
+        <source>Identifiant *</source>
+        <translation>Wire ID *</translation>
+    </message>
+    <message>
+        <source>Famille / type</source>
+        <translation>Family / type</translation>
+    </message>
+    <message>
+        <source>Fabricant</source>
+        <translation>Manufacturer</translation>
+    </message>
+    <message>
+        <source>Réf. fabricant</source>
+        <translation>Mfr part no.</translation>
+    </message>
+    <message>
+        <source>Fournisseur</source>
+        <translation>Supplier</translation>
+    </message>
+    <message>
+        <source>Nom du fournisseur</source>
+        <translation>Supplier name</translation>
+    </message>
+    <message>
+        <source>Référence de stock</source>
+        <translation>Stock number</translation>
+    </message>
+    <message>
+        <source>Blindé</source>
+        <translation>Shielded</translation>
+    </message>
+    <message>
+        <source>Tresse</source>
+        <translation>Braid</translation>
+    </message>
+    <message>
+        <source>Feuillard</source>
+        <translation>Foil</translation>
+    </message>
+    <message>
+        <source>Les deux</source>
+        <translation>Both</translation>
+    </message>
+    <message>
+        <source>Souple</source>
+        <translation>Flexible</translation>
+    </message>
+    <message>
+        <source>Caractéristiques</source>
+        <translation>Characteristics</translation>
+    </message>
+    <message>
+        <source>Section</source>
+        <translation>Cross-sectional area</translation>
+    </message>
+    <message>
+        <source>Diamètre extérieur</source>
+        <translation>Cable outer diameter</translation>
+    </message>
+    <message>
+        <source>Diamètre d'isolant</source>
+        <translation>Insulation diameter</translation>
+    </message>
+    <message>
+        <source>Couleur principale</source>
+        <translation>Primary colour</translation>
+    </message>
+    <message>
+        <source>Type de blindage</source>
+        <translation>Shield type</translation>
+    </message>
+    <message>
+        <source>Tension assignée</source>
+        <translation>Voltage rating</translation>
+    </message>
+    <message>
+        <source>Température assignée</source>
+        <translation>Temperature rating</translation>
+    </message>
+    <message>
+        <source>Ajouter un brin</source>
+        <translation>Add core</translation>
+    </message>
+    <message>
+        <source>Supprimer le brin</source>
+        <translation>Remove core</translation>
+    </message>
+    <message>
+        <source>Chaque brin : couleur 1 = fond, couleurs 2 et 3 = repères facultatifs.</source>
+        <translation>Each core: Colour 1 = base, Colours 2–3 = optional tracers.</translation>
+    </message>
+    <message>
+        <source>Brins : %1</source>
+        <translation>Cores: %1</translation>
+    </message>
+    <message>
+        <source>Modifier le fil / câble</source>
+        <translation>Edit wire / cable</translation>
+    </message>
+    <message>
+        <source>Nouveau fil / câble</source>
+        <translation>New wire / cable</translation>
     </message>
 </context>
 </TS>

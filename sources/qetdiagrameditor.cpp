@@ -1076,8 +1076,8 @@ void QETDiagramEditor::setUpMenu()
 	// Custom feature (Trovo Tech): show/hide the wire/cable catalogue panel
 	if (m_wire_catalogue_dock) {
 		QAction *wc_toggle = m_wire_catalogue_dock->toggleViewAction();
-		wc_toggle->setText(tr("Wire / cable catalogue"));
-		wc_toggle->setStatusTip(tr("Show or hide the wire / cable catalogue panel"));
+		wc_toggle->setText(tr("Catalogue de fils et câbles"));
+		wc_toggle->setStatusTip(tr("Affiche ou masque le panneau du catalogue de fils et câbles"));
 		menu_affichage->addSeparator();
 		menu_affichage->addAction(wc_toggle);
 	}
