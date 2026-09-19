@@ -42,7 +42,12 @@ namespace {
 			{ "Turquoise",    "TQ",   QColor(0x1b, 0xc9, 0xc9) },
 			{ "Gold",         "GD",   QColor(0xd4, 0xaf, 0x37) },
 			{ "Silver",       "SR",   QColor(0xc0, 0xc0, 0xc0) },
-			{ "Green-Yellow", "GNYE", QColor(0x00, 0xa6, 0x51) }
+			//Green-Yellow is a bicolour and cannot be one QColor. The swatch
+			//draws both stripes; this single value is what callers get when
+			//they need one colour, so it must not be the same value as plain
+			//Green -- it was, which made a protective conductor indistinguishable
+			//from a green one. Yellow-green reads as the pair at a glance.
+			{ "Green-Yellow", "GNYE", QColor(0x9a, 0xcd, 0x32) }
 		};
 		return t;
 	}

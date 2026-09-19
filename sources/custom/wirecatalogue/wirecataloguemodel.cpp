@@ -50,7 +50,7 @@ QVariant WireCatalogueModel::data(const QModelIndex &index, int role) const
 	if (role == Qt::DisplayRole || role == Qt::EditRole) {
 		switch (index.column()) {
 			case WireId:             return w.wireId;
-			case Type:               return w.isCable() ? tr("Cable") : tr("Wire");
+			case Type:               return w.isCable() ? tr("Câble") : tr("Fil");
 			case Manufacturer:       return w.manufacturerName;
 			case ManufacturerPartNo: return w.manufacturerPartNo;
 			case CrossSection:       return w.crossSectionMm2;
@@ -92,14 +92,14 @@ QVariant WireCatalogueModel::headerData(int section, Qt::Orientation orientation
 		return QAbstractTableModel::headerData(section, orientation, role);
 
 	switch (section) {
-		case WireId:             return tr("Wire ID");
+		case WireId:             return tr("Identifiant");
 		case Type:               return tr("Type");
-		case Manufacturer:       return tr("Manufacturer");
-		case ManufacturerPartNo: return tr("Mfr part no.");
-		case CrossSection:       return tr("Cross-sectional area (mm²)");
-		case Cores:              return tr("Cores");
-		case Colors:             return tr("Colours");
-		case Shield:             return tr("Shield");
+		case Manufacturer:       return tr("Fabricant");
+		case ManufacturerPartNo: return tr("Réf. fabricant");
+		case CrossSection:       return tr("Section (mm²)");
+		case Cores:              return tr("Brins");
+		case Colors:             return tr("Couleurs");
+		case Shield:             return tr("Blindage");
 		case Voltage:            return tr("V");
 		case Temp:               return tr("°C");
 		default:                 return QVariant();

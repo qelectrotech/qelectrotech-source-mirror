@@ -322,7 +322,13 @@ QVector<WireSpec> WireCatalogueDb::search(const QString &text) const
 		"  manufacturer_part_no LIKE :p OR "
 		"  supplier_name        LIKE :p OR "
 		"  supplier_part_no     LIKE :p OR "
-		"  color_primary        LIKE :p "
+		"  color_primary        LIKE :p OR "
+		//Numeric columns are matched as text on purpose: someone typing
+		//"2.5" into the search box is looking for 2.5 mm², and typing "4"
+		//for a four-core cable. Without these two the search only ever
+		//matched a section that happened to be spelled out in the wire id.
+		"  CAST(cross_section_mm2 AS TEXT) LIKE :p OR "
+		"  CAST(num_cores         AS TEXT) LIKE :p "
 		"ORDER BY wire_id").arg(kColumns));
 	q.bindValue(QStringLiteral(":p"), QStringLiteral("%%%1%%").arg(text.trimmed()));
 	if (q.exec()) {

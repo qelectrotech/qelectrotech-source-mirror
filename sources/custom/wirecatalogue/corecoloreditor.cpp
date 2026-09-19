@@ -71,10 +71,10 @@ CoreColorEditor::CoreColorEditor(QWidget *parent) :
 	outer->addStretch(1);
 
 	// Header row.
-	m_grid->addWidget(new QLabel(tr("Core"), this),       0, 0);
-	m_grid->addWidget(new QLabel(tr("Colour 1"), this),   0, 1);
-	m_grid->addWidget(new QLabel(tr("Colour 2"), this),   0, 2);
-	m_grid->addWidget(new QLabel(tr("Colour 3"), this),   0, 3);
+	m_grid->addWidget(new QLabel(tr("Brin"), this),       0, 0);
+	m_grid->addWidget(new QLabel(tr("Couleur 1"), this),   0, 1);
+	m_grid->addWidget(new QLabel(tr("Couleur 2"), this),   0, 2);
+	m_grid->addWidget(new QLabel(tr("Couleur 3"), this),   0, 3);
 	m_grid->addWidget(new QLabel(tr("Section (mm²)"), this), 0, 4);
 	m_grid->setColumnStretch(1, 1);
 	m_grid->setColumnStretch(2, 1);
@@ -95,7 +95,7 @@ void CoreColorEditor::addCore()
 	row.section = new QDoubleSpinBox(this);
 	row.section->setRange(0.0, 1000.0);
 	row.section->setDecimals(2);
-	row.section->setToolTip(tr("Core cross-section (0 = use cable default)"));
+	row.section->setToolTip(tr("Section du brin (0 = section du câble)"));
 
 	for (WireColorComboBox *c : {row.c1, row.c2, row.c3})
 		connect(c, &QComboBox::currentTextChanged, this, &CoreColorEditor::coresChanged);

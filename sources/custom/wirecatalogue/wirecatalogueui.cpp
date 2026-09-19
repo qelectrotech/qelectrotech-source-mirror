@@ -32,14 +32,14 @@
 #include <QFileDialog>
 
 WireCatalogueWidget::WireCatalogueWidget(QWidget *parent) :
-	QDockWidget(tr("Wire / cable catalogue"), parent)
+	QDockWidget(tr("Catalogue de fils et câbles"), parent)
 {
 	setObjectName(QStringLiteral("wire_catalogue_dock"));
 
 	m_db = new WireCatalogueDb(this);
 	if (!m_db->open(defaultCataloguePath())) {
-		QMessageBox::warning(this, tr("Wire catalogue"),
-			tr("Could not open the wire catalogue database:\n%1")
+		QMessageBox::warning(this, tr("Catalogue de fils"),
+			tr("Impossible d'ouvrir la base de données du catalogue :\n%1")
 				.arg(m_db->lastError()));
 	}
 
@@ -71,12 +71,12 @@ void WireCatalogueWidget::buildUi()
 		" border-radius: 3px; }"
 		"QToolButton:hover { background: #d0e3ff; }"
 		"QToolButton:disabled { color: #a0a0a0; }"));
-	m_add_action    = new QAction(tr("Add"),     this);
-	m_edit_action   = new QAction(tr("Edit"),    this);
-	m_remove_action = new QAction(tr("Delete"),  this);
-	auto *refresh_action = new QAction(tr("Refresh"), this);
-	auto *import_action  = new QAction(tr("Import…"), this);
-	auto *export_action  = new QAction(tr("Export…"), this);
+	m_add_action    = new QAction(tr("Ajouter"),     this);
+	m_edit_action   = new QAction(tr("Éditer"),    this);
+	m_remove_action = new QAction(tr("Supprimer"),  this);
+	auto *refresh_action = new QAction(tr("Actualiser"), this);
+	auto *import_action  = new QAction(tr("Importer…"), this);
+	auto *export_action  = new QAction(tr("Exporter…"), this);
 	toolbar->addAction(m_add_action);
 	toolbar->addAction(m_edit_action);
 	toolbar->addAction(m_remove_action);
@@ -95,7 +95,7 @@ void WireCatalogueWidget::buildUi()
 	// --- search ---
 	m_search = new QLineEdit(container);
 	m_search->setClearButtonEnabled(true);
-	m_search->setPlaceholderText(tr("Search id, manufacturer, supplier, colour…"));
+	m_search->setPlaceholderText(tr("Rechercher un identifiant, un fabricant, un fournisseur, une couleur…"));
 	connect(m_search, &QLineEdit::textChanged,
 			this, &WireCatalogueWidget::filterChanged);
 	layout->addWidget(m_search);
@@ -142,18 +142,18 @@ void WireCatalogueWidget::addWire()
 
 	const WireSpec spec = dlg.wireSpec();
 	if (!spec.isValid()) {
-		QMessageBox::warning(this, tr("Wire catalogue"),
-			tr("A wire ID is required."));
+		QMessageBox::warning(this, tr("Catalogue de fils"),
+			tr("Un identifiant de fil est obligatoire."));
 		return;
 	}
 	if (m_db->contains(spec.wireId)) {
-		QMessageBox::warning(this, tr("Wire catalogue"),
-			tr("A wire with ID \"%1\" already exists.").arg(spec.wireId));
+		QMessageBox::warning(this, tr("Catalogue de fils"),
+			tr("Un fil portant l'identifiant « %1 » existe déjà.").arg(spec.wireId));
 		return;
 	}
 	if (!m_db->addWire(spec)) {
-		QMessageBox::warning(this, tr("Wire catalogue"),
-			tr("Could not add the wire:\n%1").arg(m_db->lastError()));
+		QMessageBox::warning(this, tr("Catalogue de fils"),
+			tr("Impossible d'ajouter le fil :\n%1").arg(m_db->lastError()));
 		return;
 	}
 	m_model->refresh();
@@ -175,8 +175,8 @@ void WireCatalogueWidget::editWire()
 		return;
 
 	if (!m_db->updateWire(dlg.wireSpec())) {
-		QMessageBox::warning(this, tr("Wire catalogue"),
-			tr("Could not update the wire:\n%1").arg(m_db->lastError()));
+		QMessageBox::warning(this, tr("Catalogue de fils"),
+			tr("Impossible de mettre à jour le fil :\n%1").arg(m_db->lastError()));
 		return;
 	}
 	m_model->refresh();
@@ -192,14 +192,14 @@ void WireCatalogueWidget::removeWire()
 	if (!current.isValid())
 		return;
 
-	if (QMessageBox::question(this, tr("Wire catalogue"),
-			tr("Delete wire \"%1\" from the catalogue?").arg(current.wireId))
+	if (QMessageBox::question(this, tr("Catalogue de fils"),
+			tr("Supprimer le fil « %1 » du catalogue ?").arg(current.wireId))
 		!= QMessageBox::Yes)
 		return;
 
 	if (!m_db->removeWire(current.wireId)) {
-		QMessageBox::warning(this, tr("Wire catalogue"),
-			tr("Could not delete the wire:\n%1").arg(m_db->lastError()));
+		QMessageBox::warning(this, tr("Catalogue de fils"),
+			tr("Impossible de supprimer le fil :\n%1").arg(m_db->lastError()));
 		return;
 	}
 	m_model->refresh();
@@ -208,32 +208,32 @@ void WireCatalogueWidget::removeWire()
 void WireCatalogueWidget::exportCsv()
 {
 	const QString path = QFileDialog::getSaveFileName(this,
-		tr("Export wire catalogue"), QStringLiteral("wirecatalogue.csv"),
-		tr("CSV files (*.csv)"));
+		tr("Exporter le catalogue de fils"), QStringLiteral("wirecatalogue.csv"),
+		tr("Fichiers CSV (*.csv)"));
 	if (path.isEmpty())
 		return;
 
 	const int n = m_db->exportCsv(path);
 	if (n < 0)
-		QMessageBox::warning(this, tr("Export"), m_db->lastError());
+		QMessageBox::warning(this, tr("Exporter"), m_db->lastError());
 	else
-		QMessageBox::information(this, tr("Export"),
-			tr("Exported %1 wire(s) to:\n%2").arg(n).arg(path));
+		QMessageBox::information(this, tr("Exporter"),
+			tr("%1 fil(s) exporté(s) vers :\n%2").arg(n).arg(path));
 }
 
 void WireCatalogueWidget::importCsv()
 {
 	const QString path = QFileDialog::getOpenFileName(this,
-		tr("Import wire catalogue"), QString(), tr("CSV files (*.csv)"));
+		tr("Importer un catalogue de fils"), QString(), tr("Fichiers CSV (*.csv)"));
 	if (path.isEmpty())
 		return;
 
 	const int n = m_db->importCsv(path);
 	if (n < 0) {
-		QMessageBox::warning(this, tr("Import"), m_db->lastError());
+		QMessageBox::warning(this, tr("Importer"), m_db->lastError());
 		return;
 	}
 	m_model->refresh();
-	QMessageBox::information(this, tr("Import"),
-		tr("Imported %1 wire(s).").arg(n));
+	QMessageBox::information(this, tr("Importer"),
+		tr("%1 fil(s) importé(s).").arg(n));
 }

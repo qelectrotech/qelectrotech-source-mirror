@@ -28,13 +28,15 @@ WireFilterProxyModel::WireFilterProxyModel(QObject *parent) :
 void WireFilterProxyModel::setColourFilter(const QString &colour)
 {
 	m_colour = colour.trimmed();
-	invalidateFilter();
+	beginFilterChange();
+	endFilterChange();
 }
 
 void WireFilterProxyModel::setSectionFilter(double section)
 {
 	m_section = section;
-	invalidateFilter();
+	beginFilterChange();
+	endFilterChange();
 }
 
 bool WireFilterProxyModel::filterAcceptsRow(int source_row,

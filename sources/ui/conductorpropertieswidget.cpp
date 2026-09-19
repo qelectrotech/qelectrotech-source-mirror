@@ -291,10 +291,10 @@ void ConductorPropertiesWidget::initAssignWiresTab()
 	m_section_filter = new QComboBox(tab);
 	m_colour_filter->setIconSize(QSize(14, 14));
 	auto *filter_row = new QHBoxLayout;
-	filter_row->addWidget(new QLabel(tr("Colour:"), tab));
+	filter_row->addWidget(new QLabel(tr("Couleur :"), tab));
 	filter_row->addWidget(m_colour_filter);
 	filter_row->addSpacing(12);
-	filter_row->addWidget(new QLabel(tr("Cross-section:"), tab));
+	filter_row->addWidget(new QLabel(tr("Section :"), tab));
 	filter_row->addWidget(m_section_filter);
 	filter_row->addStretch(1);
 	layout->addLayout(filter_row);
@@ -315,12 +315,12 @@ void ConductorPropertiesWidget::initAssignWiresTab()
 	layout->addWidget(m_wire_table, 1);
 
 	// --- Core selector (cables) + Assign button ---
-	m_core_label = new QLabel(tr("Cable core:"), tab);
+	m_core_label = new QLabel(tr("Brin du câble :"), tab);
 	m_core_cb    = new QComboBox(tab);
 	m_core_cb->setIconSize(QSize(14, 14));
 	m_core_label->setVisible(false);
 	m_core_cb->setVisible(false);
-	m_assign_btn = new QPushButton(tr("Assign to this conductor"), tab);
+	m_assign_btn = new QPushButton(tr("Affecter à ce conducteur"), tab);
 	m_assign_btn->setEnabled(false);
 
 	auto *action_row = new QHBoxLayout;
@@ -330,7 +330,7 @@ void ConductorPropertiesWidget::initAssignWiresTab()
 	action_row->addWidget(m_assign_btn);
 	layout->addLayout(action_row);
 
-	ui->tabWidget->addTab(tab, tr("Assign wires"));
+	ui->tabWidget->addTab(tab, tr("Affecter un fil"));
 
 	populateFilters();
 
@@ -349,11 +349,11 @@ void ConductorPropertiesWidget::initAssignWiresTab()
 */
 void ConductorPropertiesWidget::populateFilters()
 {
-	m_colour_filter->addItem(tr("Any"), QString());
+	m_colour_filter->addItem(tr("Toutes"), QString());
 	for (const QString &name : Iec60757::standardNames())
 		m_colour_filter->addItem(Iec60757::icon(name, 14), name, name);
 
-	m_section_filter->addItem(tr("Any"), -1.0);
+	m_section_filter->addItem(tr("Toutes"), -1.0);
 	QList<double> sections;
 	for (const WireSpec &w : m_wire_db->allWires())
 		if (w.crossSectionMm2 > 0 && !sections.contains(w.crossSectionMm2))
@@ -405,14 +405,14 @@ void ConductorPropertiesWidget::wireSelectionChanged()
 	m_core_cb->clear();
 	for (int i = 0; i < w.coreColors.size(); ++i) {
 		const QStringList core = w.coreColors.at(i);
-		const QString text = tr("Core %1 — %2").arg(i + 1)
-				.arg(core.isEmpty() ? tr("(no colour)") : core.join(QStringLiteral("/")));
+		const QString text = tr("Brin %1 — %2").arg(i + 1)
+				.arg(core.isEmpty() ? tr("(sans couleur)") : core.join(QStringLiteral("/")));
 		m_core_cb->addItem(Iec60757::icon(core.value(0), 14), text, i);
 	}
 	if (w.hasShield) {
-		const QString sh = w.shieldType.isEmpty() ? tr("screen") : w.shieldType;
+		const QString sh = w.shieldType.isEmpty() ? tr("blindage") : w.shieldType;
 		m_core_cb->addItem(Iec60757::icon(QStringLiteral("Green-Yellow"), 14),
-						   tr("Shield (%1)").arg(sh), kShieldCore);
+						   tr("Blindage (%1)").arg(sh), kShieldCore);
 	}
 	m_core_cb->setCurrentIndex(0);
 	m_core_cb->blockSignals(false);
@@ -466,8 +466,11 @@ void ConductorPropertiesWidget::assignSelectedWire()
 /**
 	@brief ConductorPropertiesWidget::applyWireAppearance
 	Shared helper: set conductor colour, wire metadata and the on-line label.
-	@param cableId : when non-empty, recorded as the conductor's cable so the
-		terminal strip / BOM treat the bundle as one cable.
+	@param cableId : when non-empty, recorded in the conductor's "cable"
+		field. Nothing reads that field yet -- the terminal strip's Cable
+		column is a stub and no export includes it -- so this records the
+		intent for later rather than driving any existing report. See
+		upstream discussion #934.
 */
 void ConductorPropertiesWidget::applyWireAppearance(const QString &section,
 													const QString &colour,
@@ -477,6 +480,17 @@ void ConductorPropertiesWidget::applyWireAppearance(const QString &section,
 	const QColor c = Iec60757::colorForName(colour);
 	if (c.isValid())
 		ui->m_color_kpb->setColor(c);
+
+		//Green/yellow is the one colour with a regulatory meaning, and it is
+		//two colours. QET already draws bicolour conductors, so use that
+		//rather than approximating the pair with a single swatch: the
+		//protective conductor then looks like a protective conductor.
+	const bool green_yellow = (colour == QLatin1String("Green-Yellow"));
+	ui->m_color_2_gb->setChecked(green_yellow);
+	if (green_yellow) {
+		ui->m_color_kpb->setColor(QColor(0x00, 0xa6, 0x51));
+		ui->m_color_2_kpb->setColor(QColor(0xff, 0xd7, 0x00));
+	}
 
 	ui->m_wire_section_le->setText(section);
 	ui->m_wire_color_le->setText(colour);

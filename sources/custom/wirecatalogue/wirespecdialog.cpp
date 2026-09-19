@@ -37,19 +37,19 @@
 WireSpecDialog::WireSpecDialog(QWidget *parent) :
 	QDialog(parent)
 {
-	setWindowTitle(tr("Wire / cable"));
+	setWindowTitle(tr("Fil / câble"));
 	resize(560, 540);
 
 	// Colourful header strip.
-	auto *header = new QLabel(tr("Wire / cable reference"), this);
+	auto *header = new QLabel(tr("Référence de fil / câble"), this);
 	header->setStyleSheet(QStringLiteral(
 		"QLabel { background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
 		" stop:0 #0066cc, stop:1 #00a651); color: white; font-weight: bold;"
 		" padding: 6px 10px; border-radius: 4px; }"));
 
 	auto *tabs = new QTabWidget(this);
-	tabs->addTab(buildGeneralTab(), tr("General"));
-	tabs->addTab(buildCoresTab(),   tr("Cable cores"));
+	tabs->addTab(buildGeneralTab(), tr("Général"));
+	tabs->addTab(buildCoresTab(),   tr("Brins du câble"));
 
 	auto *buttons = new QDialogButtonBox(
 		QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
@@ -70,25 +70,25 @@ QWidget *WireSpecDialog::buildGeneralTab()
 	// --- Identification ---
 	m_wire_id      = new QLineEdit(tab);
 	m_family       = new QLineEdit(tab);
-	m_family->setPlaceholderText(tr("e.g. CAN_Cable, H07V-K"));
+	m_family->setPlaceholderText(tr("ex. : CAN_Cable, H07V-K"));
 	m_manufacturer = new QLineEdit(tab);
 	m_mfr_part_no  = new QLineEdit(tab);
 
 	auto *id_box = new QGroupBox(tr("Identification"), tab);
 	auto *id_form = new QFormLayout(id_box);
-	id_form->addRow(tr("Wire ID *"),     m_wire_id);
-	id_form->addRow(tr("Family / type"), m_family);
-	id_form->addRow(tr("Manufacturer"),  m_manufacturer);
-	id_form->addRow(tr("Mfr part no."),  m_mfr_part_no);
+	id_form->addRow(tr("Identifiant *"),     m_wire_id);
+	id_form->addRow(tr("Famille / type"), m_family);
+	id_form->addRow(tr("Fabricant"),  m_manufacturer);
+	id_form->addRow(tr("Réf. fabricant"),  m_mfr_part_no);
 
 	// --- Supplier ---
 	m_supplier         = new QLineEdit(tab);
 	m_supplier_part_no = new QLineEdit(tab);
 
-	auto *sup_box = new QGroupBox(tr("Supplier"), tab);
+	auto *sup_box = new QGroupBox(tr("Fournisseur"), tab);
 	auto *sup_form = new QFormLayout(sup_box);
-	sup_form->addRow(tr("Supplier name"), m_supplier);
-	sup_form->addRow(tr("Stock number"),  m_supplier_part_no);
+	sup_form->addRow(tr("Nom du fournisseur"), m_supplier);
+	sup_form->addRow(tr("Référence de stock"),  m_supplier_part_no);
 
 	// --- Characteristics ---
 	m_cross_section = new QDoubleSpinBox(tab);
@@ -108,9 +108,9 @@ QWidget *WireSpecDialog::buildGeneralTab()
 
 	m_color_primary = new WireColorComboBox(tab);
 
-	m_shield = new QCheckBox(tr("Shielded"), tab);
+	m_shield = new QCheckBox(tr("Blindé"), tab);
 	m_shield_type = new QComboBox(tab);
-	m_shield_type->addItems({tr("Braid"), tr("Foil"), tr("Both")});
+	m_shield_type->addItems({tr("Tresse"), tr("Feuillard"), tr("Les deux")});
 	m_shield_type->setEnabled(false);
 	connect(m_shield, &QCheckBox::toggled, m_shield_type, &QWidget::setEnabled);
 
@@ -122,18 +122,18 @@ QWidget *WireSpecDialog::buildGeneralTab()
 	m_temp->setRange(-100, 1000);
 	m_temp->setSuffix(QStringLiteral(" °C"));
 
-	m_flexible = new QCheckBox(tr("Flexible"), tab);
+	m_flexible = new QCheckBox(tr("Souple"), tab);
 
-	auto *ch_box = new QGroupBox(tr("Characteristics"), tab);
+	auto *ch_box = new QGroupBox(tr("Caractéristiques"), tab);
 	auto *ch_form = new QFormLayout(ch_box);
-	ch_form->addRow(tr("Cross-sectional area"), m_cross_section);
-	ch_form->addRow(tr("Cable outer diameter"), m_outer_dia);
-	ch_form->addRow(tr("Insulation diameter"),  m_insulation_dia);
-	ch_form->addRow(tr("Primary colour"),       m_color_primary);
+	ch_form->addRow(tr("Section"), m_cross_section);
+	ch_form->addRow(tr("Diamètre extérieur"), m_outer_dia);
+	ch_form->addRow(tr("Diamètre d'isolant"),  m_insulation_dia);
+	ch_form->addRow(tr("Couleur principale"),       m_color_primary);
 	ch_form->addRow(m_shield);
-	ch_form->addRow(tr("Shield type"),          m_shield_type);
-	ch_form->addRow(tr("Voltage rating"),       m_voltage);
-	ch_form->addRow(tr("Temperature rating"),   m_temp);
+	ch_form->addRow(tr("Type de blindage"),          m_shield_type);
+	ch_form->addRow(tr("Tension assignée"),       m_voltage);
+	ch_form->addRow(tr("Température assignée"),   m_temp);
 	ch_form->addRow(m_flexible);
 
 	// --- Notes ---
@@ -160,8 +160,8 @@ QWidget *WireSpecDialog::buildCoresTab()
 	m_cores = new CoreColorEditor(tab);
 
 	auto *bar = new QHBoxLayout;
-	auto *add_btn = new QPushButton(tr("Add core"), tab);
-	auto *del_btn = new QPushButton(tr("Remove core"), tab);
+	auto *add_btn = new QPushButton(tr("Ajouter un brin"), tab);
+	auto *del_btn = new QPushButton(tr("Supprimer le brin"), tab);
 	m_core_count_lbl = new QLabel(tab);
 	connect(add_btn, &QPushButton::clicked, m_cores, &CoreColorEditor::addCore);
 	connect(del_btn, &QPushButton::clicked, m_cores, &CoreColorEditor::removeSelectedCore);
@@ -177,7 +177,7 @@ QWidget *WireSpecDialog::buildCoresTab()
 	scroll->setWidget(m_cores);
 
 	auto *hint = new QLabel(
-		tr("Each core: Colour 1 = base, Colours 2–3 = optional tracers."), tab);
+		tr("Chaque brin : couleur 1 = fond, couleurs 2 et 3 = repères facultatifs."), tab);
 	hint->setStyleSheet(QStringLiteral("color: #666;"));
 
 	layout->addLayout(bar);
@@ -190,7 +190,7 @@ QWidget *WireSpecDialog::buildCoresTab()
 void WireSpecDialog::updateCoreCountLabel()
 {
 	if (m_core_count_lbl && m_cores)
-		m_core_count_lbl->setText(tr("Cores: %1").arg(m_cores->coreCount()));
+		m_core_count_lbl->setText(tr("Brins : %1").arg(m_cores->coreCount()));
 }
 
 void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
@@ -225,7 +225,7 @@ void WireSpecDialog::setWireSpec(const WireSpec &spec, bool editing)
 	m_cores->setCores(cores, spec.coreSections);
 	updateCoreCountLabel();
 
-	setWindowTitle(editing ? tr("Edit wire / cable") : tr("New wire / cable"));
+	setWindowTitle(editing ? tr("Modifier le fil / câble") : tr("Nouveau fil / câble"));
 }
 
 WireSpec WireSpecDialog::wireSpec() const
