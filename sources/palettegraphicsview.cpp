@@ -19,6 +19,7 @@
 
 #include "qetpalette.h"
 
+#include <QApplication>
 #include <QPainter>
 #include <QPaintEvent>
 #include <QStyleHintReturnMask>
@@ -50,11 +51,15 @@ void PaletteGraphicsView::setScene(QGraphicsScene *scene)
 /**
 	@brief PaletteGraphicsView::invertsLightness
 	@return true when the scene is shown with its lightness inverted,
-	i.e. when the view's palette is dark.
+	i.e. when the application palette is dark. The application palette,
+	not the view's own: a style sheet on an ancestor (the folio tab
+	widget has one) makes QStyleSheetStyle pin the palette of every
+	widget under it to the application palette in force when the sheet
+	was applied, so after a live light/dark switch palette() is stale.
 */
 bool PaletteGraphicsView::invertsLightness() const
 {
-	return QET::Palette::isDark(palette());
+	return QET::Palette::isDark(QApplication::palette());
 }
 
 void PaletteGraphicsView::paintingInverted(bool inverted)
@@ -113,8 +118,10 @@ void PaletteGraphicsView::paintInverted(const QRect &area)
 	paintingInverted(false);
 	buffer_painter.end();
 
-	QET::Palette::invertLightness(buffer, palette().color(QPalette::Base),
-	                              palette().color(QPalette::Text));
+	// The application palette, for the reason given in invertsLightness().
+	const QPalette application_palette = QApplication::palette();
+	QET::Palette::invertLightness(buffer, application_palette.color(QPalette::Base),
+	                              application_palette.color(QPalette::Text));
 
 	QPainter painter(viewport());
 	painter.drawImage(rect.topLeft(), buffer);

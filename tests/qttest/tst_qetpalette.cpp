@@ -32,6 +32,7 @@
 #include <QStandardItemModel>
 #include <QTreeView>
 #include <QStyleFactory>
+#include <QTabWidget>
 #include <QToolBar>
 
 #include "inkcontrast.h"
@@ -81,6 +82,7 @@ class tst_qetpalette : public QObject
 		void paletteViewFollowsThePalette();
 		void paletteViewKeepsSceneUpdatesFlowing();
 		void paletteViewDrawsTheRubberBand();
+		void paletteViewFollowsTheApplicationUnderAStyleSheet();
 
 	private:
 		static void addPaletteRows();
@@ -717,6 +719,43 @@ void tst_qetpalette::paletteViewDrawsTheRubberBand()
 	const QColor inside = view.viewport()->grab().toImage().pixelColor(170, 100);
 	QVERIFY2(inside != base, qPrintable(QString("no rubber band drawn, pixel is %1").arg(inside.name())));
 	QTest::mouseRelease(view.viewport(), Qt::LeftButton, Qt::NoModifier, QPoint(190, 115));
+}
+
+/**
+	A style sheet on an ancestor pins the palette of every widget under it
+	to the application palette in force when the sheet was applied
+	(QStyleSheetStyle keeps its own copy; the folio tab widget carries
+	such a sheet). The view's own palette() is therefore stale after a
+	live switch, and the view must follow the application palette
+	instead: inside a tab widget with a style sheet, switching the
+	application to dark and back still changes the sheet.
+*/
+void tst_qetpalette::paletteViewFollowsTheApplicationUnderAStyleSheet()
+{
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(QET::Palette::fusionLight());
+
+	QGraphicsScene scene;
+	fillSheet(scene);
+	QTabWidget tabs;
+	tabs.setStyleSheet("QTabBar::scroller {width: 0px;}");   // as sources/projectview.cpp
+	auto *view = new ProbeView(&scene);
+	view->setFrameShape(QFrame::NoFrame);
+	view->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	tabs.addTab(view, "folio");
+	tabs.resize(320, 240);
+	tabs.show();
+	QVERIFY(QTest::qWaitForWindowExposed(&tabs));
+	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), QColor(Qt::white));
+
+	QApplication::setPalette(QET::Palette::fusionDark());
+	QTRY_VERIFY(view->invertsLightness());
+	const QColor base = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Base);
+	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), base);
+
+	QApplication::setPalette(QET::Palette::fusionLight());
+	QTRY_VERIFY(!view->invertsLightness());
+	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), QColor(Qt::white));
 }
 
 /**
