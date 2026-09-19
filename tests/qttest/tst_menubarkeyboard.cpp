@@ -21,6 +21,12 @@
 #include <QMenuBar>
 #include <QShortcut>
 
+#ifdef Q_OS_MACOS
+// Exported from QtGui but declared in qkeysequence.h only for the
+// documentation build; Qt's own docs say to declare it like this.
+Q_GUI_EXPORT void qt_set_sequence_auto_mnemonic(bool b);
+#endif
+
 /*
 	F10 should open the menu bar, as it does in most applications and as
 	someone working without a mouse will expect. Qt provides this on Windows
@@ -38,6 +44,7 @@ class TstMenuBarKeyboard : public QObject
 	Q_OBJECT
 
 	private slots:
+		void initTestCase();
 		void altLetterOpensMenu();      // control -- must pass, or nothing below means anything
 		void plainF10DoesNothingInQt(); // the gap being filled
 		void shortcutOpensMenuBar();    // the mechanism QETMainWindow uses
@@ -48,6 +55,13 @@ namespace {
 QMainWindow *makeWindow(QMenu **file_menu)
 {
 	auto *w = new QMainWindow;
+#ifdef Q_OS_MACOS
+	// A QMenuBar is native on macOS: its menus live in the system menu
+	// bar, outside the Qt widget tree, where QTest key events never reach
+	// them and QMenu::isVisible() stays false. The in-window bar runs the
+	// same QMenuBar code the other platforms use.
+	w->menuBar()->setNativeMenuBar(false);
+#endif
 	*file_menu = w->menuBar()->addMenu(QStringLiteral("&File"));
 	(*file_menu)->addAction(QStringLiteral("Quit"));
 	w->menuBar()->addMenu(QStringLiteral("&Edit"))->addAction(QStringLiteral("Copy"));
@@ -58,6 +72,18 @@ QMainWindow *makeWindow(QMenu **file_menu)
 	return w;
 }
 
+}
+
+/*
+	macOS has no Alt+letter menu mnemonics, so Qt does not turn "&File"
+	into a shortcut there (qt_set_sequence_auto_mnemonic is off). The
+	control below needs one; switch mnemonics on for this process.
+*/
+void TstMenuBarKeyboard::initTestCase()
+{
+#ifdef Q_OS_MACOS
+	qt_set_sequence_auto_mnemonic(true);
+#endif
 }
 
 /*
