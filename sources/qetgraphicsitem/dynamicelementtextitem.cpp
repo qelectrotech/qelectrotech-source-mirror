@@ -857,7 +857,7 @@ void DynamicElementTextItem::elementInfoChanged()
 			setupFormulaConnection();
 
 			if (element) {
-				final_text = element->actualLabel();
+				final_text = labelOrPrefixPlaceholder(element, element->actualLabel());
 			}
 		}
 		else {
@@ -1111,6 +1111,37 @@ void DynamicElementTextItem::updateReportText()
 }
 
 /**
+	@brief DynamicElementTextItem::labelOrPrefixPlaceholder
+	When an element has no numbering formula and no manually-set label,
+	nothing distinguishes it on screen from an element nobody has looked
+	at yet. Fall back to displaying its resolved IEC 81346 prefix (the
+	same value %prefix already resolves once a formula is configured)
+	followed by "?", so the eventual real label is visible in advance.
+
+	Deliberately display-only: this is never written back into
+	m_data.m_informations, since actualLabel()'s result is persisted as
+	a real label at several call sites in element.cpp -- a placeholder
+	saved as if it were a real label would corrupt project data.
+	@param element The element whose actual label was just computed.
+	@param actual_label The value already returned by element->actualLabel().
+	@return actual_label unchanged if non-empty, otherwise "<prefix>?" if
+	the element has a resolved prefix, otherwise an empty string.
+*/
+QString DynamicElementTextItem::labelOrPrefixPlaceholder(Element *element, const QString &actual_label)
+{
+	if (!actual_label.isEmpty()) {
+		return actual_label;
+	}
+
+	const QString prefix = element->getPrefix();
+	if (prefix.isEmpty()) {
+		return actual_label;
+	}
+
+	return prefix + QStringLiteral("?");
+}
+
+/**
 	@brief DynamicElementTextItem::updateLabel
 	Update the displayed text, when this dynamic text is based on the label of the parent element.
 	This function is notably use when the label itself is based from a formula.
@@ -1129,7 +1160,7 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			setPlainText(labelOrPrefixPlaceholder(element, element->actualLabel()));
 		}
 		else if (m_text_from == CompositeText) {
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));

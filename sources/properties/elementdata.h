@@ -285,6 +285,16 @@ class ElementData : public PropertiesInterface
 		DiagramContext m_informations;
 		NamesList m_names_list;
 		QString m_drawing_information;
+		/**
+			Optional per-element IEC 81346 designation letter (e.g. "K", "RB"),
+			set once when the symbol is authored. When present, this overrides
+			the category-derived %prefix looked up via qet_labels.xml for every
+			placed instance of this element -- most specific wins, since a
+			category attribute can't express "this one element in a mixed
+			folder is different" but the element's own author can. Empty means
+			"use the category lookup", exactly as before this field existed.
+		*/
+		QString m_designation_letter;
 
 	private:
 		ElementData::TerminalType m_override_terminal_type = ElementData::TTGeneric;

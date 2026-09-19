@@ -128,7 +128,6 @@ Element::Element(
 		*state = 0;
 	}
 
-	setPrefix(autonum::elementPrefixForLocation(location));
 	m_uuid = QUuid::createUuid();
 	setZValue(10);
 	setFlags(QGraphicsItem::ItemIsMovable
@@ -472,6 +471,21 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 	}
 
 	m_data.fromXml(xml_def_elmt);
+
+	// Resolved here, not back in the constructor after buildFromXml()
+	// returns: the DynamicElementTextItem children built later in this
+	// same function read m_prefix on their very first paint (to show a
+	// "K?"-style placeholder before any label/formula is configured), so
+	// it must be set before they're constructed, not after. It also has
+	// to come after the fromXml() call just above, since the element's
+	// own designation_letter override -- which beats the category-derived
+	// lookup, most specific wins -- only exists once m_data is populated.
+	if (!m_data.m_designation_letter.isEmpty()) {
+		setPrefix(m_data.m_designation_letter);
+	} else {
+		setPrefix(autonum::elementPrefixForLocation(m_location));
+	}
+
 	setToolTip(name());
 
 	QString my_type_str = xml_def_elmt.attribute(QStringLiteral("link_type"), QStringLiteral("simple"));
@@ -804,7 +818,20 @@ bool Element::fromXml(QDomElement &e,
 	m_uuid = QUuid(e.attribute(QStringLiteral("uuid"), QUuid::createUuid().toString()));
 
 		//load prefix
-	m_prefix = e.attribute(QStringLiteral("prefix"));
+		//Only when the saved project actually carries one. An absent or
+		//empty attribute means nothing resolved when that project was
+		//saved, not that the user cleared it -- setPrefix() has no UI
+		//path, so a prefix is always derived, never hand-edited. Letting
+		//an empty value through would overwrite what buildFromXml() just
+		//resolved, so an element that has since gained a
+		//designation_letter (or whose category has since gained a prefix)
+		//would stay blank forever in any project that predates it.
+		//A non-empty saved prefix still wins, so existing drawings keep
+		//the designation they were saved with.
+	const QString saved_prefix = e.attribute(QStringLiteral("prefix"));
+	if (!saved_prefix.isEmpty()) {
+		m_prefix = saved_prefix;
+	}
 
 	QString fl = e.attribute(QStringLiteral("freezeLabel"), QStringLiteral("false"));
 	m_freeze_label = fl == QLatin1String("false") ? false : true;

@@ -50,6 +50,7 @@ bool ElementData::fromXml(const QDomElement &xml_element)
 		}
 
 	m_type = typeFromString(xml_element.attribute(QStringLiteral("link_type"), QStringLiteral("simple")));
+	m_designation_letter = xml_element.attribute(QStringLiteral("designation_letter"));
 
 	kindInfoFromXml(xml_element);
 	m_informations.fromXml(xml_element.firstChildElement(QStringLiteral("elementInformations")),
@@ -645,7 +646,14 @@ bool ElementData::operator==(const ElementData &data) const
 		return false;
 	}
 
-	if (m_drawing_information != m_drawing_information) {
+	// Pre-existing bug fixed in passing: this compared m_drawing_information
+	// to itself (always false), so an edit to the "Informations" field alone
+	// was never detected as a change and its undo command was never pushed.
+	if (data.m_drawing_information != m_drawing_information) {
+		return false;
+	}
+
+	if (data.m_designation_letter != m_designation_letter) {
 		return false;
 	}
 
