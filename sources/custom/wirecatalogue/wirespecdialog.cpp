@@ -30,6 +30,8 @@
 #include <QComboBox>
 #include <QPlainTextEdit>
 #include <QDialogButtonBox>
+#include <QPalette>
+#include <QFont>
 #include <QLabel>
 #include <QPushButton>
 #include <QScrollArea>
@@ -40,12 +42,13 @@ WireSpecDialog::WireSpecDialog(QWidget *parent) :
 	setWindowTitle(tr("Fil / câble"));
 	resize(560, 540);
 
-	// Colourful header strip.
+	// Heading. Bold via the font rather than a stylesheet, so it follows the
+	// application palette -- the previous blue/green gradient with white text
+	// ignored the theme entirely and was the only such styling in QET.
 	auto *header = new QLabel(tr("Référence de fil / câble"), this);
-	header->setStyleSheet(QStringLiteral(
-		"QLabel { background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-		" stop:0 #0066cc, stop:1 #00a651); color: white; font-weight: bold;"
-		" padding: 6px 10px; border-radius: 4px; }"));
+	QFont header_font = header->font();
+	header_font.setBold(true);
+	header->setFont(header_font);
 
 	auto *tabs = new QTabWidget(this);
 	tabs->addTab(buildGeneralTab(), tr("Général"));
@@ -178,7 +181,9 @@ QWidget *WireSpecDialog::buildCoresTab()
 
 	auto *hint = new QLabel(
 		tr("Chaque brin : couleur 1 = fond, couleurs 2 et 3 = repères facultatifs."), tab);
-	hint->setStyleSheet(QStringLiteral("color: #666;"));
+	// Muted via the palette's disabled text role, not a fixed grey that
+	// disappears against a dark background.
+	hint->setForegroundRole(QPalette::PlaceholderText);
 
 	layout->addLayout(bar);
 	layout->addWidget(scroll, 1);

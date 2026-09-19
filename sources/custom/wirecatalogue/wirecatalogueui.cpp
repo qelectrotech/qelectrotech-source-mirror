@@ -60,17 +60,13 @@ void WireCatalogueWidget::buildUi()
 	layout->setContentsMargins(2, 2, 2, 2);
 
 	// --- toolbar ---
-	// Note: actions are created and connected explicitly rather than via the
-	// addAction(text, receiver, &slot) convenience overloads, which only exist
-	// on QToolBar from Qt 6.3 onwards (this project targets Qt5).
+	// The actions are kept as members because the edit and delete ones are
+	// enabled and disabled with the table selection.
+	//
+	// No stylesheet: the toolbar takes the application palette like every
+	// other dock in QET. It used to hard-code a light gradient and a dark
+	// blue label colour, which is unreadable under a dark palette.
 	auto *toolbar = new QToolBar(container);
-	toolbar->setStyleSheet(QStringLiteral(
-		"QToolBar { background: qlineargradient(x1:0, y1:0, x2:1, y2:0,"
-		" stop:0 #e8f0fe, stop:1 #e6f7ee); border: none; spacing: 4px; }"
-		"QToolButton { color: #0a4a8f; font-weight: bold; padding: 3px 8px;"
-		" border-radius: 3px; }"
-		"QToolButton:hover { background: #d0e3ff; }"
-		"QToolButton:disabled { color: #a0a0a0; }"));
 	m_add_action    = new QAction(tr("Ajouter"),     this);
 	m_edit_action   = new QAction(tr("Éditer"),    this);
 	m_remove_action = new QAction(tr("Supprimer"),  this);
