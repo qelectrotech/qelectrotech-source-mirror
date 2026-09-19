@@ -51,8 +51,9 @@ find_package(
 # tst_crashhandler compiles crashhandler.cpp, which on a non-Windows build
 # may pull in backtrace(). Resolved the same way as in the top-level
 # CMakeLists so this directory also configures standalone -- on FreeBSD the
-# symbol lives in libexecinfo, not libc.
-if(NOT DEFINED Backtrace_FOUND)
+# symbol lives in libexecinfo, not libc. Windows uses a separate native
+# exception path and must not probe for the POSIX execinfo/backtrace API.
+if(NOT WIN32 AND NOT DEFINED Backtrace_FOUND)
   find_package(Backtrace QUIET)
   if(Backtrace_FOUND)
     include_directories(${Backtrace_INCLUDE_DIRS})
@@ -155,7 +156,12 @@ add_test(NAME tst_crashhandler COMMAND tst_crashhandler)
 target_include_directories(tst_crashhandler PRIVATE ${QET_DIR}/sources)
 # Qt::Xml because crashhandler.cpp includes qetversion.h for the header it
 # builds at install() time, and that pulls in QDomElement.
-target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml ${Backtrace_LIBRARIES})
+if(NOT WIN32 AND Backtrace_FOUND)
+  target_link_libraries(tst_crashhandler PRIVATE
+    Qt::Test Qt::Xml ${Backtrace_LIBRARIES})
+else()
+  target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml)
+endif()
 
 # The crash-dump bookkeeping from #905: which dumps get listed, offered and
 # deleted, and what redact() masks. qetlogger.cpp needs exactly one symbol
@@ -174,7 +180,12 @@ target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}/sources
   ${QET_DIR}/sources/NameList
   ${QET_DIR}/pugixml/src)
-target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml ${Backtrace_LIBRARIES})
+if(NOT WIN32 AND Backtrace_FOUND)
+  target_link_libraries(tst_crashdumps PRIVATE
+    Qt::Test Qt::Widgets Qt::Xml ${Backtrace_LIBRARIES})
+else()
+  target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+endif()
 
 add_executable(
   tst_menubarkeyboard
