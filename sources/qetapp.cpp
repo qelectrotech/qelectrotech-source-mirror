@@ -28,6 +28,7 @@
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
 #include "qetpalette.h"
+#include "qetstyle.h"
 #include "utils/qetutils.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
@@ -52,6 +53,7 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QStyleFactory>
 #include <QStyleHints>
 #ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
@@ -2368,6 +2370,12 @@ void QETApp::applyIconTheme(const QPalette &palette)
 */
 void QETApp::initStyle()
 {
+	// Wrap the running style so icons get a hover state (see qetstyle.h).
+	// The proxy keeps the base style's object name, so the Fusion checks
+	// below still see "fusion".
+	if (!qobject_cast<QETStyle *>(qApp->style()))
+		qApp->setStyle(new QETStyle(QStyleFactory::create(qApp->style()->objectName())));
+
 	initial_palette_ = qApp->palette();
 
 #ifdef Q_OS_MACOS
