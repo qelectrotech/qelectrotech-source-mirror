@@ -233,6 +233,8 @@ QString QETApp::loadedQtTranslationFile()
 */
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
+	
+	QLocale::setDefault(QLocale(desired_language));
 
 	// load Qt library translations
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);

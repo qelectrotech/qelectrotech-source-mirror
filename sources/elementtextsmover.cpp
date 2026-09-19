@@ -137,25 +137,14 @@ void ElementTextsMover::endMovement()
 
 QString ElementTextsMover::undoText() const
 {
-	QString undo_text;
-	
-	if(m_text_count == 1)
-		undo_text.append(QObject::tr("Déplacer un texte d'élément"));
-	else if(m_text_count > 1)
-		undo_text.append(QObject::tr("Déplacer %1 textes d'élément").arg(m_items_hash.size()));
-	
-	if(m_group_count >= 1)
-	{
-		if(undo_text.isEmpty())
-			undo_text.append(QObject::tr("Déplacer"));
-		else
-			undo_text.append(QObject::tr(" et"));
-		
-		if(m_group_count == 1)
-			undo_text.append(QObject::tr(" un groupe de texte"));
-		else
-			undo_text.append(QObject::tr((" %1 groupes de textes")).arg(m_group_count));
-	}
-	
-	return undo_text;
+	QStringList parts;
+	if (m_text_count)
+		parts << QObject::tr("%n texte(s) d'élément", "", m_text_count);
+	if (m_group_count)
+		parts << QObject::tr("%n groupe(s) de textes", "", m_group_count);
+
+	if (parts.isEmpty())
+		return QString(); // should never occur
+
+	return QObject::tr("Déplacer %1").arg(QLocale().createSeparatedList(parts));
 }

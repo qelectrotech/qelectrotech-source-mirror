@@ -55,21 +55,13 @@ m_diagram(diagram)
 	{
 		openDialog();
 		
-		QString text;
-		if(texts_list.count())
-			text.append(QObject::tr("Pivoter %1 textes").arg(texts_list.count()));
-		if(groups_list.count())
-		{
-			if(text.isEmpty())
-				text.append(QObject::tr("Pivoter"));
-			else
-				text.append(QObject::tr(" et"));
-			
-			text.append(QObject::tr(" %1 groupes de textes").arg(groups_list.count()));
-		}
-		if(!text.isNull())
-			setText(text);
-		
+		QStringList parts;
+		if (texts_list.count())
+			parts << QObject::tr("%n texte(s)", "", texts_list.count());
+		if (groups_list.count())
+			parts << QObject::tr("%n groupe(s) de textes", "", groups_list.count());
+		setText(QObject::tr("Pivoter %1").arg(QLocale().createSeparatedList(parts)));
+
 		for(DiagramTextItem *dti : texts_list)
 			setupAnimation(dti, "rotation", dti->rotation(), m_rotation);
 		for(ElementTextItemGroup *grp : groups_list)
@@ -77,7 +69,6 @@ m_diagram(diagram)
 	}
 	else
 		setObsolete(true);
-	
 }
 
 void RotateTextsCommand::undo()
