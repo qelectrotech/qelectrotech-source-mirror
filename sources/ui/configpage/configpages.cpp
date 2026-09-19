@@ -31,6 +31,8 @@
 #include "../titleblockpropertieswidget.h"
 #include "../xrefpropertieswidget.h"
 #include "guidespropertieswidget.h"
+#include "../autoNum/numerotationcontext.h"
+#include "../autoNum/ui/selectautonumw.h"
 #include <QFont>
 #include <QFontDialog>
 #include <QSizePolicy>
@@ -101,6 +103,32 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	}
 	m_gpw->setGuides(loaded_guides);
 
+	// global auto-numbering defaults (only when editing global settings, not a project)
+	if (!m_project) {
+		auto saw_conductor = new SelectAutonumW(1);
+		auto saw_element = new SelectAutonumW(0);
+		auto saw_folio = new SelectAutonumW(2);
+
+		initAutoNumTab(m_autonum_conductor, saw_conductor, QStringLiteral("autonum/conductor"));
+		initAutoNumTab(m_autonum_element, saw_element, QStringLiteral("autonum/element"));
+		initAutoNumTab(m_autonum_folio, saw_folio, QStringLiteral("autonum/folio"));
+
+		QSettings autonum_settings;
+		loadAutoNumTab(m_autonum_conductor, autonum_settings);
+		loadAutoNumTab(m_autonum_element, autonum_settings);
+		loadAutoNumTab(m_autonum_folio, autonum_settings);
+
+		// Intercept Return key in the combo line edits so it doesn't
+		// activate the dialog's default button (OK).
+		for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+			if (QComboBox *combo = tab->widget->contextComboBox()) {
+				if (combo->lineEdit()) {
+					combo->lineEdit()->installEventFilter(this);
+				}
+			}
+		}
+	}
+
 	//If there is a project, we edit his properties
 	if (m_project) {
 		bpw -> setProperties (m_project -> defaultBorderProperties());
@@ -114,6 +142,7 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 
 	// main tab widget
 	QTabWidget *tab_widget      = new QTabWidget(this);
+	m_tab_widget = tab_widget;
 	QWidget *diagram_widget     = new QWidget();
 	QVBoxLayout *diagram_layout = new QVBoxLayout(diagram_widget);
 
@@ -126,6 +155,19 @@ NewDiagramPage::NewDiagramPage(QETProject *project,
 	tab_widget -> addTab (rpw,            tr("Reports de folio"));
 	tab_widget -> addTab (xrefpw,         tr("Références croisées"));
 	tab_widget -> addTab (m_gpw,          tr("Guides"));
+
+	// add auto-numbering tab only for global settings (not per project)
+	if (!m_project) {
+		QWidget *autonum_widget = new QWidget();
+		QVBoxLayout *autonum_layout = new QVBoxLayout(autonum_widget);
+		autonum_layout->addWidget(new QLabel(tr("Définir les règles de numérotation automatique par défaut pour les nouveaux projets :")));
+		QTabWidget *autonum_inner_tab = new QTabWidget();
+		autonum_inner_tab->addTab(m_autonum_conductor.widget, tr("Conducteurs"));
+		autonum_inner_tab->addTab(m_autonum_element.widget, tr("Eléments"));
+		autonum_inner_tab->addTab(m_autonum_folio.widget, tr("Folios"));
+		autonum_layout->addWidget(autonum_inner_tab);
+		tab_widget -> addTab (autonum_widget, tr("Numérotation auto"));
+	}
 
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	vlayout1->addWidget(tab_widget);
@@ -230,6 +272,9 @@ void NewDiagramPage::applyConf()
 			settings.setValue(QStringLiteral("color"), current_guides[i].color.name());
 		}
 		settings.endArray();
+
+		// save global auto-numbering defaults
+		persistAutonumSettings();
 	}
 }
 
@@ -293,6 +338,134 @@ void NewDiagramPage::loadSavedTbp()
 {
 	ipw->setProperties(savedTbp);
 	applyConf();
+}
+
+/**
+	@brief NewDiagramPage::isPlaceholder
+	Return true if @a name matches the combo box's built-in placeholder text
+	(first item). This is locale-independent because it reads the actual item text.
+*/
+bool NewDiagramPage::isPlaceholder(QComboBox *combo, const QString &name)
+{
+	return !combo->count() || name == combo->itemText(0);
+}
+
+/**
+	@brief NewDiagramPage::initAutoNumTab
+	Initialise an AutoNumTab struct and connect its signals.
+*/
+void NewDiagramPage::initAutoNumTab(AutoNumTab &tab, SelectAutonumW *w, const QString &prefix)
+{
+	tab.widget = w;
+	tab.prefix = prefix;
+
+	connect(w, &SelectAutonumW::applyPressed, this, [this, &tab]() { saveAutoNumContext(tab); });
+	connect(w, &SelectAutonumW::removeClicked, this, [this, &tab]() { removeAutoNumContext(tab); });
+	connect(w->contextComboBox(), &QComboBox::activated, this, [this, &tab](int index) {
+		if (index >= 0) {
+			QString name = tab.widget->contextComboBox()->itemText(index);
+			if (tab.contexts.contains(name)) {
+				tab.widget->setContext(tab.contexts.value(name));
+			}
+		}
+	});
+}
+
+/**
+	@brief NewDiagramPage::loadAutoNumTab
+	Load saved rules from QSettings into an AutoNumTab.
+*/
+void NewDiagramPage::loadAutoNumTab(AutoNumTab &tab, QSettings &settings)
+{
+	auto data = NumerotationContext::loadFromSettings(settings, tab.prefix);
+	tab.contexts = data.first;
+	for (auto it = tab.contexts.constBegin(); it != tab.contexts.constEnd(); ++it) {
+		tab.widget->contextComboBox()->addItem(it.key());
+	}
+	if (!tab.contexts.isEmpty() && !data.second.isEmpty()
+	    && tab.contexts.contains(data.second)) {
+		tab.widget->contextComboBox()->setCurrentText(data.second);
+		tab.widget->setContext(tab.contexts.value(data.second));
+	}
+}
+
+/**
+	@brief NewDiagramPage::saveAutoNumContext
+	Save the current context from an AutoNumTab's widget into its hash and
+	persist to QSettings immediately.
+*/
+void NewDiagramPage::saveAutoNumContext(AutoNumTab &tab)
+{
+	QString name = tab.widget->contextComboBox()->currentText().trimmed();
+	if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
+		return;
+	}
+	tab.contexts.insert(name, tab.widget->toNumContext());
+	if (tab.widget->contextComboBox()->findText(name) == -1) {
+		tab.widget->contextComboBox()->addItem(name);
+	}
+	persistAutonumSettings();
+}
+
+/**
+	@brief NewDiagramPage::removeAutoNumContext
+	Remove the current context from an AutoNumTab's hash and persist.
+*/
+void NewDiagramPage::removeAutoNumContext(AutoNumTab &tab)
+{
+	QString name = tab.widget->contextComboBox()->currentText().trimmed();
+	if (name.isEmpty() || isPlaceholder(tab.widget->contextComboBox(), name)) {
+		return;
+	}
+	int idx = tab.widget->contextComboBox()->findText(name);
+	if (idx == -1) return;
+	tab.contexts.remove(name);
+	tab.widget->contextComboBox()->removeItem(idx);
+	tab.widget->contextComboBox()->setCurrentText(QString());
+	tab.widget->setContext(NumerotationContext());
+	persistAutonumSettings();
+}
+
+/**
+	@brief NewDiagramPage::persistAutonumSettings
+	Save all autonum contexts to QSettings immediately.
+*/
+void NewDiagramPage::persistAutonumSettings()
+{
+	QSettings settings;
+	for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+		QString current;
+		QComboBox *combo = tab->widget->contextComboBox();
+		if (!isPlaceholder(combo, combo->currentText().trimmed())
+		    && tab->contexts.contains(combo->currentText().trimmed())) {
+			current = combo->currentText().trimmed();
+		}
+		NumerotationContext::saveToSettings(tab->contexts, current,
+						   settings, tab->prefix);
+	}
+}
+
+/**
+	@brief NewDiagramPage::eventFilter
+	Intercept Return/Enter in combo box line edits so it doesn't close the
+	settings dialog.
+*/
+bool NewDiagramPage::eventFilter(QObject *obj, QEvent *event)
+{
+	if (event->type() == QEvent::KeyPress) {
+		auto *ke = static_cast<QKeyEvent *>(event);
+		if ((ke->key() == Qt::Key_Return || ke->key() == Qt::Key_Enter)) {
+			// Check if this is a line edit inside one of our autonum combos
+			for (auto *tab : {&m_autonum_conductor, &m_autonum_element, &m_autonum_folio}) {
+				if (QComboBox *combo = tab->widget->contextComboBox()) {
+					if (combo->lineEdit() && combo->lineEdit() == obj) {
+						return true; // eat the event
+					}
+				}
+			}
+		}
+	}
+	return ConfigPage::eventFilter(obj, event);
 }
 
 /**

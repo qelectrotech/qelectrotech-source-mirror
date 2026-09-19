@@ -275,3 +275,80 @@ QString NumerotationContext::formatValue(const QStringList &item)
 		return QString("%1").arg(value.toInt(), 3, 10, QChar('0'));
 	return QString::number(value.toInt());
 }
+
+/**
+	@brief NumerotationContext::saveToSettings
+	Save a hash of named NumerotationContexts to QSettings.
+	@param contexts : the named rules to save
+	@param currentRule : the name of the currently active rule
+	@param settings : QSettings instance
+	@param prefix : settings key prefix (e.g. "autonum/conductor")
+*/
+void NumerotationContext::saveToSettings(
+		const QHash<QString, NumerotationContext> &contexts,
+		const QString &currentRule,
+		QSettings &settings,
+		const QString &prefix)
+{
+	settings.setValue(prefix + "/current", currentRule);
+
+	// Clear stale array entries before writing (beginWriteArray does not
+	// remove entries beyond the new size).
+	settings.remove(prefix + "/rules");
+
+	QStringList names = contexts.keys();
+	settings.beginWriteArray(prefix + "/rules", names.size());
+	for (int i = 0; i < names.size(); ++i) {
+		settings.setArrayIndex(i);
+		const QString &name = names.at(i);
+		const NumerotationContext &nc = contexts.value(name);
+
+		settings.setValue("name", name);
+
+		// Serialize context to XML string
+		QDomDocument doc;
+		NumerotationContext nc_copy = nc;
+		QDomElement root = nc_copy.toXml(doc, "context");
+		doc.appendChild(root);
+		settings.setValue("xml", doc.toString());
+	}
+	settings.endArray();
+}
+
+/**
+	@brief NumerotationContext::loadFromSettings
+	Load named NumerotationContexts from QSettings.
+	@param settings : QSettings instance
+	@param prefix : settings key prefix (e.g. "autonum/conductor")
+	@return pair of (hash of named rules, name of current rule)
+*/
+QPair<QHash<QString, NumerotationContext>, QString> NumerotationContext::loadFromSettings(
+		QSettings &settings,
+		const QString &prefix)
+{
+	QPair<QHash<QString, NumerotationContext>, QString> result;
+	QHash<QString, NumerotationContext> &contexts = result.first;
+	QString &currentRule = result.second;
+
+	currentRule = settings.value(prefix + "/current").toString();
+
+	int size = settings.beginReadArray(prefix + "/rules");
+	for (int i = 0; i < size; ++i) {
+		settings.setArrayIndex(i);
+		QString name = settings.value("name").toString();
+		QString xmlStr = settings.value("xml").toString();
+
+		if (name.isEmpty() || xmlStr.isEmpty()) continue;
+
+		QDomDocument doc;
+		if (!doc.setContent(xmlStr)) continue;
+
+		QDomElement root = doc.documentElement();
+		NumerotationContext nc;
+		nc.fromXml(root);
+		contexts.insert(name, nc);
+	}
+	settings.endArray();
+
+	return result;
+}
