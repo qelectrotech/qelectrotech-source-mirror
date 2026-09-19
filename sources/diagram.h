@@ -360,8 +360,8 @@ inline void Diagram::setDisplayGrid(bool dg) {
 /**
 	@brief Diagram::setInvertedLightness
 	Tell the diagram whether the view painting it will show the result
-	with its lightness inverted (DiagramView::paintInverted on a dark
-	palette). drawBackground draws a softer grid in that case. Printing
+	with its lightness inverted (PaletteGraphicsView on a dark palette).
+	drawBackground draws a softer grid in that case. Printing
 	and export never set this.
 	@param inverted
 */

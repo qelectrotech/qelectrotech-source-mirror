@@ -68,6 +68,16 @@ namespace QET {
 		                     const QColor &ink = Qt::white);
 
 		/**
+			The color of the grid dots on a sheet of color \a sheet: black,
+			or white on a black sheet. With \a inverted the sheet is about to
+			be shown with its lightness inverted (PaletteGraphicsView), where
+			black dots would come out as bright as the ink; the dots are then
+			a third of the way from the sheet color to black, which shows as
+			a soft gray.
+		*/
+		QColor gridDotColor(const QColor &sheet, bool inverted);
+
+		/**
 			WCAG 2 contrast ratio between two opaque colors, from 1 (equal)
 			to 21 (black on white). Normal text needs at least 4.5, large
 			text and non-text controls at least 3.

@@ -36,6 +36,7 @@
 
 #include "inkcontrast.h"
 #include "ElementsCollection/elementpreviewdelegate.h"
+#include "palettegraphicsview.h"
 #include "qetpalette.h"
 
 using QET::Palette::contrastRatio;
@@ -76,7 +77,10 @@ class tst_qetpalette : public QObject
 		void invertLightnessMapsSheetAndInk();
 		void invertedViewReadsOnDarkSheet();
 		void invertLightnessSpeed();
-		void sceneUpdatesReachARenderedView();
+		void gridDotColorSoftensInvertedDots();
+		void paletteViewFollowsThePalette();
+		void paletteViewKeepsSceneUpdatesFlowing();
+		void paletteViewDrawsTheRubberBand();
 
 	private:
 		static void addPaletteRows();
@@ -533,52 +537,148 @@ void tst_qetpalette::invertedViewReadsOnDarkSheet()
 
 namespace {
 	/**
-		A view that paints the way DiagramView does on a dark palette:
-		the exposed rectangle goes through QGraphicsView::render() into an
-		image, which is then blitted, so Qt never paints the items straight
-		onto the viewport.
+		A PaletteGraphicsView that counts its paints and records the
+		paintingInverted() calls it receives.
 	*/
-	class RenderedView : public QGraphicsView
+	class ProbeView : public PaletteGraphicsView
 	{
 		public:
 			int paints = 0;
-			using QGraphicsView::QGraphicsView;
+			QList<bool> inverted_calls;
+			using PaletteGraphicsView::PaletteGraphicsView;
 		protected:
 			void paintEvent(QPaintEvent *event) override
 			{
 				++paints;
-				const QRect rect = event->rect().intersected(viewport()->rect());
-				QImage buffer(rect.size(), QImage::Format_RGB32);
-				QPainter buffer_painter(&buffer);
-				render(&buffer_painter, QRectF(QPointF(0, 0), QSizeF(rect.size())), rect);
-				buffer_painter.end();
-				QPainter painter(viewport());
-				painter.drawImage(rect.topLeft(), buffer);
+				PaletteGraphicsView::paintEvent(event);
+			}
+			void paintingInverted(bool inverted) override
+			{
+				inverted_calls << inverted;
 			}
 	};
+
+	/**
+		A small folio: a white sheet with a black line and a red box.
+		Returns the box, which is selectable.
+	*/
+	QGraphicsRectItem *fillSheet(QGraphicsScene &scene)
+	{
+		scene.setSceneRect(0, 0, 200, 120);
+		scene.setBackgroundBrush(Qt::white);
+		scene.addLine(10, 60, 190, 60, QPen(Qt::black, 2));
+		QGraphicsRectItem *box = scene.addRect(20, 20, 40, 20, QPen(Qt::NoPen), QBrush(QColor(200, 0, 0)));
+		box->setFlag(QGraphicsItem::ItemIsSelectable);
+		return box;
+	}
+
+	/// The view sized to its scene, without frame or scroll bars.
+	void showAsSheet(QGraphicsView &view)
+	{
+		view.setFrameShape(QFrame::NoFrame);
+		view.setAlignment(Qt::AlignLeft | Qt::AlignTop);
+		view.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		view.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		view.resize(200, 120);
+		view.show();
+	}
+
+	/// The most frequent color of an image: the sheet.
+	QColor sheetColor(const QImage &image)
+	{
+		QHash<QRgb, int> histogram;
+		for (int y = 0; y < image.height(); ++y)
+			for (int x = 0; x < image.width(); ++x)
+				++histogram[image.pixel(x, y)];
+		QRgb best = 0;
+		for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
+			if (it.value() > histogram.value(best)) best = it.key();
+		return QColor(best);
+	}
 }
 
 /**
-	QGraphicsView clears the scene's "update everything" flag only when
-	it paints the items straight onto its viewport, and while the flag is
-	set every further QGraphicsScene::update() and item update is dropped.
-	A view that paints through render() therefore needs a receiver on
-	QGraphicsScene::changed(), which makes the scene clear the flag before
-	it emits. This checks that with the receiver, three whole-scene
-	updates and a selection each repaint the view.
+	Grid dots are black, white on a black sheet, and a third of the way
+	from the sheet color to black when the sheet is about to be shown
+	inverted, so that they do not come out as bright as the ink.
 */
-void tst_qetpalette::sceneUpdatesReachARenderedView()
+void tst_qetpalette::gridDotColorSoftensInvertedDots()
 {
-	QGraphicsScene scene(0, 0, 100, 100);
-	QGraphicsRectItem *item = scene.addRect(10, 10, 30, 30, QPen(Qt::black), QBrush(Qt::white));
-	item->setFlag(QGraphicsItem::ItemIsSelectable);
-	QObject::connect(&scene, &QGraphicsScene::changed, &scene, [](const QList<QRectF> &) {});
+	QCOMPARE(QET::Palette::gridDotColor(Qt::white, false), QColor(Qt::black));
+	QCOMPARE(QET::Palette::gridDotColor(Qt::white, true), QColor(170, 170, 170));
+	QCOMPARE(QET::Palette::gridDotColor(Qt::darkGray, true), QColor(85, 85, 85));
+	QCOMPARE(QET::Palette::gridDotColor(Qt::black, false), QColor(Qt::white));
+	QCOMPARE(QET::Palette::gridDotColor(Qt::black, true), QColor(Qt::white));
+}
 
-	RenderedView view(&scene);
-	view.resize(120, 120);
-	view.show();
+/**
+	On a light palette the view shows the sheet as drawn and never tells
+	the scene it inverts. On a dark palette, set while the view is
+	showing, the sheet comes out as Base, the black line at text contrast,
+	the red box still red, and the scene hears paintingInverted(true)
+	before and (false) after. Back on a light palette the sheet is white
+	again.
+*/
+void tst_qetpalette::paletteViewFollowsThePalette()
+{
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(QET::Palette::fusionLight());
+
+	QGraphicsScene scene;
+	fillSheet(scene);
+	ProbeView view(&scene);
+	showAsSheet(view);
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+	const QImage light = view.viewport()->grab().toImage();
+	QCOMPARE(sheetColor(light), QColor(Qt::white));
+	QVERIFY(view.inverted_calls.isEmpty());
+
+	QApplication::setPalette(QET::Palette::fusionDark());
+	QTRY_VERIFY(view.invertsLightness());
+	const QImage dark = view.viewport()->grab().toImage();
+	const QColor base = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Base);
+	const QColor text = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Text);
+	QCOMPARE(sheetColor(dark), base);
+	const double contrast = inkContrast(dark, dark.rect());
+	QVERIFY2(contrast >= QET::Palette::contrastRatio(base, text) - 0.5,
+	         qPrintable(QString("ink reads %1:1 on the dark sheet").arg(contrast)));
+	const QColor box = dark.pixelColor(40, 30);
+	QVERIFY2(box.hslHue() == 0 && box.hslSaturationF() > 0.3 && box.red() > box.blue() + 60,
+	         qPrintable(QString("the red box became %1").arg(box.name())));
+	QVERIFY(!view.inverted_calls.isEmpty());
+	QCOMPARE(view.inverted_calls.first(), true);
+	QCOMPARE(view.inverted_calls.last(), false);
+	QCOMPARE(view.inverted_calls.count(true), view.inverted_calls.count(false));
+
+	QApplication::setPalette(QET::Palette::fusionLight());
+	QTRY_VERIFY(!view.invertsLightness());
+	QCOMPARE(sheetColor(view.viewport()->grab().toImage()), QColor(Qt::white));
+}
+
+/**
+	QGraphicsView clears the scene's "update everything" flag only when it
+	paints the items straight onto its viewport, and while the flag is set
+	every further QGraphicsScene::update() and item update is dropped. On
+	a dark palette the view paints through render() instead, so it listens
+	to the scene's changed() signal, which makes the scene clear the flag
+	before it emits. Three whole-scene updates and a selection must each
+	repaint the view, with the scene set after construction as
+	DiagramView does it.
+*/
+void tst_qetpalette::paletteViewKeepsSceneUpdatesFlowing()
+{
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(QET::Palette::fusionDark());
+
+	QGraphicsScene scene;
+	QGraphicsRectItem *box = fillSheet(scene);
+	ProbeView view;
+	view.setScene(&scene);
+	showAsSheet(view);
 	QVERIFY(QTest::qWaitForWindowExposed(&view));
 	QTRY_VERIFY(view.paints >= 1);
+	QVERIFY(view.invertsLightness());
 
 	for (int round = 1; round <= 3; ++round)
 	{
@@ -588,8 +688,35 @@ void tst_qetpalette::sceneUpdatesReachARenderedView()
 	}
 
 	const int before = view.paints;
-	item->setSelected(true);
+	box->setSelected(true);
 	QTRY_VERIFY2(view.paints > before, "the selection change was dropped");
+}
+
+/**
+	render() skips Qt's selection rubber band, so the view draws it after
+	the inversion: while a drag on the sheet is in progress, the dragged
+	area no longer shows the bare sheet.
+*/
+void tst_qetpalette::paletteViewDrawsTheRubberBand()
+{
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(QET::Palette::fusionDark());
+
+	QGraphicsScene scene;
+	fillSheet(scene);
+	ProbeView view(&scene);
+	view.setDragMode(QGraphicsView::RubberBandDrag);
+	showAsSheet(view);
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+	const QColor base = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Base);
+	QCOMPARE(view.viewport()->grab().toImage().pixelColor(170, 100), base);
+
+	QTest::mousePress(view.viewport(), Qt::LeftButton, Qt::NoModifier, QPoint(120, 80));
+	QTest::mouseMove(view.viewport(), QPoint(190, 115));
+	QTRY_VERIFY(!view.rubberBandRect().isNull());
+	const QColor inside = view.viewport()->grab().toImage().pixelColor(170, 100);
+	QVERIFY2(inside != base, qPrintable(QString("no rubber band drawn, pixel is %1").arg(inside.name())));
+	QTest::mouseRelease(view.viewport(), Qt::LeftButton, Qt::NoModifier, QPoint(190, 115));
 }
 
 /**

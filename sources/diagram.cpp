@@ -26,6 +26,7 @@
 #include "diagramposition.h"
 #include "factory/elementfactory.h"
 #include "qetapp.h"
+#include "qetpalette.h"
 #include "qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "qetgraphicsitem/conductor.h"
 #include "qetgraphicsitem/conductortextitem.h"
@@ -284,19 +285,10 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 			 * then grid spots shall be white,
 			 * else they shall be black in color.
 			 * A view that shows the sheet with its lightness inverted
-			 * would turn black dots as bright as the ink, so it gets
-			 * dots a third of the way from the sheet color to black,
-			 * which come out as a soft gray.
+			 * gets softer dots, see QET::Palette::gridDotColor.
 			 */
 		QPen pen;
-		if (Diagram::background_color == Qt::black)
-			pen.setColor(Qt::white);
-		else if (m_inverted_lightness)
-			pen.setColor(QColor(Diagram::background_color.red() * 2 / 3,
-			                    Diagram::background_color.green() * 2 / 3,
-			                    Diagram::background_color.blue() * 2 / 3));
-		else
-			pen.setColor(Qt::black);
+		pen.setColor(QET::Palette::gridDotColor(Diagram::background_color, m_inverted_lightness));
 		pen.setCosmetic(true);
 		p->setPen(pen);
 

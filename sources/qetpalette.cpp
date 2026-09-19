@@ -119,6 +119,15 @@ void QET::Palette::invertLightness(QImage &image, const QColor &sheet,
 	}
 }
 
+QColor QET::Palette::gridDotColor(const QColor &sheet, bool inverted)
+{
+	if (sheet == QColor(Qt::black))
+		return Qt::white;
+	if (inverted)
+		return QColor(sheet.red() * 2 / 3, sheet.green() * 2 / 3, sheet.blue() * 2 / 3);
+	return Qt::black;
+}
+
 double QET::Palette::contrastRatio(const QColor &a, const QColor &b)
 {
 	double lighter = relativeLuminance(a);
