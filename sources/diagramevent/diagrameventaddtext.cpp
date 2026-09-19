@@ -29,7 +29,14 @@
 */
 DiagramEventAddText::DiagramEventAddText(Diagram *diagram) :
 	DiagramEventInterface(diagram)
-{}
+{
+		//The tool is armed from the moment it is attached: the next left
+		//click places a text. DiagramView::keyPressEvent() asks
+		//Diagram::eventInterfaceIsRunning() -- which is isRunning(), i.e.
+		//m_running -- before letting Escape through to the tool, so without
+		//this the view swallows Escape and the tool cannot be cancelled.
+	m_running = true;
+}
 
 /**
 	@brief DiagramEventAddText::~DiagramEventAddText
@@ -52,6 +59,8 @@ void DiagramEventAddText::mousePressEvent(QGraphicsSceneMouseEvent *event)
 										event->scenePos()));
 		text->setTextInteractionFlags(Qt::TextEditorInteraction);
 		text->setFocus(Qt::MouseFocusReason);
+			//Placed: the tool is done before it announces it.
+		m_running = false;
 		emit finish();
 		event->setAccepted(true);
 	}
