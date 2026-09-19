@@ -546,12 +546,22 @@ namespace {
 	{
 		public:
 			int paints = 0;
+			QList<QRect> paint_rects;
 			QList<bool> inverted_calls;
 			using PaletteGraphicsView::PaletteGraphicsView;
+			/// True when a paint since index \a from covered the whole viewport.
+			bool fullyRepaintedSince(int from) const
+			{
+				for (int i = from; i < paint_rects.size(); ++i)
+					if (paint_rects.at(i).contains(viewport()->rect()))
+						return true;
+				return false;
+			}
 		protected:
 			void paintEvent(QPaintEvent *event) override
 			{
 				++paints;
+				paint_rects << event->rect();
 				PaletteGraphicsView::paintEvent(event);
 			}
 			void paintingInverted(bool inverted) override
@@ -728,7 +738,11 @@ void tst_qetpalette::paletteViewDrawsTheRubberBand()
 	such a sheet). The view's own palette() is therefore stale after a
 	live switch, and the view must follow the application palette
 	instead: inside a tab widget with a style sheet, switching the
-	application to dark and back still changes the sheet.
+	application to dark and back still changes the sheet. Qt also skips
+	the repaint of a widget whose palette did not change, so the view
+	has to repaint its whole viewport by itself on each switch, without
+	anyone asking for a rendering: otherwise the area around the sheet
+	keeps the old colors.
 */
 void tst_qetpalette::paletteViewFollowsTheApplicationUnderAStyleSheet()
 {
@@ -748,13 +762,17 @@ void tst_qetpalette::paletteViewFollowsTheApplicationUnderAStyleSheet()
 	QVERIFY(QTest::qWaitForWindowExposed(&tabs));
 	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), QColor(Qt::white));
 
+	int since = view->paint_rects.size();
 	QApplication::setPalette(QET::Palette::fusionDark());
 	QTRY_VERIFY(view->invertsLightness());
+	QTRY_VERIFY2(view->fullyRepaintedSince(since), "no full repaint after the switch to dark");
 	const QColor base = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Base);
 	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), base);
 
+	since = view->paint_rects.size();
 	QApplication::setPalette(QET::Palette::fusionLight());
 	QTRY_VERIFY(!view->invertsLightness());
+	QTRY_VERIFY2(view->fullyRepaintedSince(since), "no full repaint after the switch to light");
 	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), QColor(Qt::white));
 }
 

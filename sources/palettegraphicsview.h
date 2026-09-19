@@ -52,6 +52,7 @@ class PaletteGraphicsView : public QGraphicsView
 		bool invertsLightness() const;
 
 	protected:
+		bool eventFilter(QObject *watched, QEvent *event) override;
 		void paintEvent(QPaintEvent *event) override;
 		/**
 			Called with true right before the scene is rendered for an

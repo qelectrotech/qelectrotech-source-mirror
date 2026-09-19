@@ -20,6 +20,7 @@
 #include "qetpalette.h"
 
 #include <QApplication>
+#include <QEvent>
 #include <QPainter>
 #include <QPaintEvent>
 #include <QStyleHintReturnMask>
@@ -29,11 +30,13 @@
 PaletteGraphicsView::PaletteGraphicsView(QWidget *parent) :
 	QGraphicsView(parent)
 {
+	qApp->installEventFilter(this);
 }
 
 PaletteGraphicsView::PaletteGraphicsView(QGraphicsScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent)
 {
+	qApp->installEventFilter(this);
 	listenToScene(scene);
 }
 
@@ -76,6 +79,23 @@ void PaletteGraphicsView::listenToScene(QGraphicsScene *scene)
 {
 	if (scene)
 		connect(scene, &QGraphicsScene::changed, this, [](const QList<QRectF> &) {});
+}
+
+/**
+	@brief PaletteGraphicsView::eventFilter
+	Repaint the whole viewport when the application palette changes. Qt
+	sends that change to the application object and then repaints only
+	the widgets whose own palette changed with it, which under a style
+	sheet is not the case (see invertsLightness()): the scene would then
+	repaint only what it updates itself, and the viewport around the
+	sheet would keep the colors of the previous palette. The filter sits
+	on the application object, the one receiver Qt always notifies.
+*/
+bool PaletteGraphicsView::eventFilter(QObject *watched, QEvent *event)
+{
+	if (watched == qApp && event->type() == QEvent::ApplicationPaletteChange)
+		viewport()->update();
+	return QGraphicsView::eventFilter(watched, event);
 }
 
 /**
