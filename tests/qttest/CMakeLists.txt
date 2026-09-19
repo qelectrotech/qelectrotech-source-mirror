@@ -152,7 +152,12 @@ add_test(NAME tst_crashhandler COMMAND tst_crashhandler)
 target_include_directories(tst_crashhandler PRIVATE ${QET_DIR}/sources)
 # Qt::Xml because crashhandler.cpp includes qetversion.h for the header it
 # builds at install() time, and that pulls in QDomElement.
-target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml ${Backtrace_LIBRARIES})
+if(Backtrace_FOUND)
+  target_link_libraries(tst_crashhandler PRIVATE
+    Qt::Test Qt::Xml ${Backtrace_LIBRARIES})
+else()
+  target_link_libraries(tst_crashhandler PRIVATE Qt::Test Qt::Xml)
+endif()
 
 # The crash-dump bookkeeping from #905: which dumps get listed, offered and
 # deleted, and what redact() masks. qetlogger.cpp needs exactly one symbol
@@ -171,7 +176,12 @@ target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}/sources
   ${QET_DIR}/sources/NameList
   ${QET_DIR}/pugixml/src)
-target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml ${Backtrace_LIBRARIES})
+if(Backtrace_FOUND)
+  target_link_libraries(tst_crashdumps PRIVATE
+    Qt::Test Qt::Widgets Qt::Xml ${Backtrace_LIBRARIES})
+else()
+  target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+endif()
 
 add_executable(
   tst_menubarkeyboard
