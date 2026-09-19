@@ -85,13 +85,15 @@ class ElementPictureFactory
 		void getPictures(const ElementsLocation &location, QPicture &picture, QPicture &low_picture);
 		QPixmap pixmap(const ElementsLocation &location);
 		ElementPictureFactory::primitives getPrimitives(const ElementsLocation &location);
-		
+		void dropCache(const ElementsLocation &location);
+
 	private:
 		ElementPictureFactory() {}
 		ElementPictureFactory (const ElementPictureFactory &);
 		ElementPictureFactory operator= (const ElementPictureFactory &);
 		~ElementPictureFactory();
-		
+
+		static QUuid cacheKey(const ElementsLocation &location);
 		bool build(const ElementsLocation &location, QPicture *picture=nullptr, QPicture *low_picture=nullptr);
 		void parseElement(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseLine   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
@@ -101,6 +103,7 @@ class ElementPictureFactory
 		void parseArc    (const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parsePolygon(const QDomElement &dom, QPainter &painter, primitives &prim) const;
 		void parseText   (const QDomElement &dom, QPainter &painter, primitives &prim) const;
+		void parsePlcTable(const QDomElement &dom, const QDomElement &plc_data, QPainter &painter) const;
 		void setPainterStyle(const QDomElement &dom, QPainter &painter) const;
 		
 		QHash<QUuid, QPicture> m_pictures_H;

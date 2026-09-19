@@ -2,7 +2,7 @@ name: Windows Build
 
 on:
   schedule:
-    - cron: '0 2 * * 1'   # Every Monday at 2:00 UTC
+    - cron: '0 2 1 * *' #
   workflow_dispatch:       # Manual trigger available at any time
 
 concurrency:
@@ -10,11 +10,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-windows:
+  # =============================================================================
+  # Job 1: Windows build (Qt6/KF6 — sole track since the Qt5 track was removed)
+  #
+  # Version label: the C++ source (sources/qetversion.cpp) intentionally stays
+  # Qt-agnostic — QT_VERSION-based detection inside the binary proved unreliable
+  # (see commit e1aa65f, reverting 608ca984). Here the CI job itself knows with
+  # certainty which Qt major version it configured (-DQT_VERSION_MAJOR=6), so it
+  # is safe to label the *package* "0.200.1" at this level, without touching
+  # QetVersion::currentVersion() or making the binary self-detect its Qt build.
+  #
+  # Job id kept as "build-windows-qt6" (not renamed to "build-windows") in case
+  # branch protection / required status checks reference this exact job name.
+  # =============================================================================
+  build-windows-qt6:
     runs-on: windows-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
@@ -31,10 +44,11 @@ jobs:
             mingw-w64-ucrt-x86_64-gcc
             mingw-w64-ucrt-x86_64-cmake
             mingw-w64-ucrt-x86_64-ninja
-            mingw-w64-ucrt-x86_64-qt5-base
-            mingw-w64-ucrt-x86_64-qt5-svg
-            mingw-w64-ucrt-x86_64-qt5-tools
-            mingw-w64-ucrt-x86_64-qt5-translations
+            mingw-w64-ucrt-x86_64-qt6-base
+            mingw-w64-ucrt-x86_64-qt6-svg
+            mingw-w64-ucrt-x86_64-qt6-tools
+            mingw-w64-ucrt-x86_64-qt6-translations
+            mingw-w64-ucrt-x86_64-qt6-pdf
             mingw-w64-ucrt-x86_64-sqlite3
             mingw-w64-ucrt-x86_64-pkg-config
             mingw-w64-ucrt-x86_64-kwidgetsaddons
@@ -42,15 +56,16 @@ jobs:
             mingw-w64-ucrt-x86_64-extra-cmake-modules
             mingw-w64-ucrt-x86_64-nsis
             mingw-w64-ucrt-x86_64-angleproject
+            mingw-w64-ucrt-x86_64-qt6-declarative
 
       - name: Cache ccache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: C:\Users\runneradmin\AppData\Local\ccache
-          key: ccache-windows-${{ github.ref_name }}-${{ github.sha }}
+          key: ccache-windows-qt6-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: |
-            ccache-windows-${{ github.ref_name }}-
-            ccache-windows-
+            ccache-windows-qt6-${{ github.ref_name }}-
+            ccache-windows-qt6-
 
       - name: Configure ccache
         shell: msys2 {0}
@@ -85,15 +100,6 @@ jobs:
             echo "  OK font size patched to 10"
           fi
 
-      - name: Force Qt5 — remove Qt6 cmake + tools
-        shell: msys2 {0}
-        run: |
-          set -euo pipefail
-          rm -rf /ucrt64/lib/cmake/Qt6
-          pacman -R --noconfirm mingw-w64-ucrt-x86_64-qt6-tools 2>/dev/null || true
-          echo "=== windeployqt binaries ==="
-          ls /ucrt64/bin/windeployqt* || echo "NO windeployqt found!"
-
       - name: Build with cmake
         shell: msys2 {0}
         run: |
@@ -106,12 +112,14 @@ jobs:
           cmake -G Ninja \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_PREFIX_PATH=/ucrt64 \
-            -DQt5_DIR=/ucrt64/lib/cmake/Qt5 \
-            -DQT_VERSION_MAJOR=5 \
-            -DCMAKE_DISABLE_FIND_PACKAGE_Qt6=ON \
-            -DBUILD_TESTING=OFF \
+            -DQt6_DIR=/ucrt64/lib/cmake/Qt6 \
+            -DQT_VERSION_MAJOR=6 \
+            -DBUILD_WITH_KF=ON \
+            -DBUILD_KF=OFF \
+            -DPACKAGE_TESTS=OFF \
+            -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-            -DCMAKE_CXX_FLAGS="-DQET_EXPORT_PROJECT_DB" \
+            -DQET_EXPORT_PROJECT_DB=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
@@ -153,7 +161,7 @@ jobs:
           cp "$EXE" "$BIN/QElectroTech.exe"
 
           cd "$BIN"
-          /ucrt64/bin/windeployqt-qt5 \
+          /ucrt64/bin/windeployqt6 \
             --release \
             --no-translations \
             --no-compiler-runtime \
@@ -203,17 +211,78 @@ jobs:
           cp -r "$GITHUB_WORKSPACE/build-aux/windows/nsis_base/." "$NSIS_ROOT/"
 
           curl -fsSL \
-            "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/misc/Lancer%20QET.bat" \
-            -o "$FILES/Lancer QET.bat"
+            "https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/refs/heads/master/misc/Lancer%20QET_qt6.bat" \
+            -o "$FILES/Lancer QET_qt6.bat"
           cp -r "$GITHUB_WORKSPACE/elements"    "$FILES/elements"    || true
           cp -r "$GITHUB_WORKSPACE/titleblocks" "$FILES/titleblocks" || true
           cp -r "$GITHUB_WORKSPACE/examples"    "$FILES/examples"    || true
           cp -r "$GITHUB_WORKSPACE/fonts"       "$FILES/fonts"       || true
 
-          cp -r "$GITHUB_WORKSPACE/lang"        "$FILES/lang"        || true
-          find "$GITHUB_WORKSPACE/build" -name "*.qm" -exec cp {} "$FILES/lang/" \; 2>/dev/null || true
-          echo "=== .qm files in files/lang/ ==="
-          ls "$FILES/lang/"*.qm 2>/dev/null | wc -l || echo "0 .qm files"
+          # --- Translations ---
+          # Since PR #751 the .qm files are no longer tracked in git: lrelease
+          # generates them in build/lang/ (OUTPUT_LOCATION "lang", relative to
+          # the build dir). Expected set = the .ts listed in TS_FILES
+          # (cmake/qet_compilation_vars.cmake): a missing .qm fails the job
+          # instead of silently shipping an untranslated build; a .ts present
+          # in lang/ but not listed in TS_FILES only raises a warning.
+          # find/grep only, no shell glob: $GITHUB_WORKSPACE is a Windows path
+          # (D:\a\...) and its backslashes break glob patterns.
+          QM_SRC="$GITHUB_WORKSPACE/build/lang"
+          mkdir -p "$FILES/lang"
+          TS_LISTED=$(grep -o 'lang/qet_[A-Za-z_]*\.ts' "$GITHUB_WORKSPACE/cmake/qet_compilation_vars.cmake" \
+                        | sed -e 's#^lang/##' -e 's#\.ts$##' | LC_ALL=C sort -u || true)
+          [ -n "$TS_LISTED" ] || { echo "ERROR: cannot read TS_FILES from cmake/qet_compilation_vars.cmake"; exit 1; }
+          TS_PRESENT=$(find "$GITHUB_WORKSPACE/lang" -maxdepth 1 -name 'qet_*.ts' -exec basename {} .ts \; | LC_ALL=C sort)
+          UNLISTED=$(LC_ALL=C comm -13 <(echo "$TS_LISTED") <(echo "$TS_PRESENT"))
+          if [ -n "$UNLISTED" ]; then
+            echo "::warning::.ts files not in TS_FILES, no .qm built:" $UNLISTED
+          fi
+          find "$QM_SRC" -maxdepth 1 -name 'qet_*.qm' -exec cp {} "$FILES/lang/" \; 2>/dev/null || true
+          QM_PRESENT=$(find "$FILES/lang" -maxdepth 1 -name 'qet_*.qm' -exec basename {} .qm \; | LC_ALL=C sort)
+          MISSING=$(LC_ALL=C comm -23 <(echo "$TS_LISTED") <(echo "$QM_PRESENT"))
+          QM_COUNT=$(printf '%s\n' "$QM_PRESENT" | grep -c . || true)
+          TS_COUNT=$(printf '%s\n' "$TS_LISTED" | grep -c .)
+          echo "=== $QM_COUNT .qm files copied to files/lang/ (expected: $TS_COUNT) ==="
+          if [ -n "$MISSING" ]; then
+            echo "ERROR: missing translations:" $MISSING
+            find "$GITHUB_WORKSPACE/build" -name '*.qm' || true
+            exit 1
+          fi
+
+          # Qt's own translations (OK/Cancel buttons, standard dialogs...):
+          # they come from qtbase_XX.qm, not from QET's .ts, and windeployqt
+          # runs with --no-translations. QETApp::setLanguage() falls back to
+          # lang/qt_XX.qm, so copy each qtbase_XX.qm there under that name
+          # (qtbase_XX.qm is standalone, unlike Qt's qt_XX.qm meta catalogs).
+          QT_TR_DIR=/ucrt64/share/qt6/translations
+          if [ ! -d "$QT_TR_DIR" ]; then
+            QT_TR_DIR=$(cygpath -u "$(/ucrt64/bin/qtpaths6 --query QT_INSTALL_TRANSLATIONS 2>/dev/null)" 2>/dev/null || true)
+          fi
+          find "$QT_TR_DIR" -maxdepth 1 -name 'qtbase_*.qm' 2>/dev/null | while read -r f; do
+            l=$(basename "$f" .qm)
+            cp "$f" "$FILES/lang/qt_${l#qtbase_}.qm"
+          done
+          # QET languages Qt only ships with a region (pt -> pt_PT, zh -> zh_CN):
+          # QTranslator only shortens codes (fr_FR -> fr), it never extends them.
+          for q in $TS_LISTED; do
+            l=${q#qet_}
+            if [ ! -e "$FILES/lang/qt_$l.qm" ]; then
+              if [ -e "$QT_TR_DIR/qtbase_${l}_${l^^}.qm" ]; then
+                alt="$QT_TR_DIR/qtbase_${l}_${l^^}.qm"
+              else
+                alt=$(find "$QT_TR_DIR" -maxdepth 1 -name "qtbase_${l}_*.qm" 2>/dev/null | LC_ALL=C sort | head -1 || true)
+              fi
+              if [ -n "$alt" ]; then
+                cp "$alt" "$FILES/lang/qt_$l.qm"
+              fi
+            fi
+          done
+          QT_QM_COUNT=$(find "$FILES/lang" -maxdepth 1 -name 'qt_*.qm' | wc -l)
+          echo "=== $QT_QM_COUNT Qt translation files (qt_*.qm) copied from $QT_TR_DIR ==="
+          if [ "$QT_QM_COUNT" -eq 0 ]; then
+            echo "ERROR: no qtbase_*.qm found in '$QT_TR_DIR' (mingw-w64-ucrt-x86_64-qt6-translations installed?)"
+            exit 1
+          fi
 
           for f in LICENSE ChangeLog CREDIT README ELEMENTS.LICENSE; do
             cp "$GITHUB_WORKSPACE/$f" "$FILES/$f" 2>/dev/null || true
@@ -221,7 +290,7 @@ jobs:
 
           echo "=== Verification of key files in files/ ==="
           for f in LICENSE ChangeLog CREDIT README ELEMENTS.LICENSE \
-                   qet_uninstall_file_associations.reg register_filetypes.bat "Lancer QET.bat"; do
+                   qet_uninstall_file_associations.reg register_filetypes.bat "Lancer QET_qt6.bat"; do
             [ -f "$FILES/$f" ] \
               && echo "  OK      : $f" \
               || echo "  MISSING: $f"
@@ -232,7 +301,7 @@ jobs:
               || echo "  MISSING: $d/"
           done
 
-      - name: Extract version for installer name
+      - name: Extract version for installer name (Qt6 — labelled 0.200.1)
         shell: msys2 {0}
         id: qet_version
         run: |
@@ -243,16 +312,16 @@ jobs:
           A=$(git -C "$GITHUB_WORKSPACE" rev-list HEAD --count)
           HEAD=$(( A + 473 ))
 
-          VERSION=$(grep 'return QVersionNumber{' "$GITHUB_WORKSPACE/sources/qetversion.cpp" \
-            | head -1 \
-            | awk -F '{' '{ print $2 }' \
-            | awk -F '}' '{ print $1 }' \
-            | sed -e 's/,/./g' -e 's/ //g')
-          [ -z "$VERSION" ] && VERSION="dev"
+          # Deliberately NOT parsed from sources/qetversion.cpp: the CI job
+          # already knows for certain it configured Qt6 (-DQT_VERSION_MAJOR=6),
+          # so the "0.200.1" version label is set here explicitly rather than
+          # relying on in-binary Qt version detection.
+          VERSION="0.200.1"
 
-          FULL_VERSION="${VERSION}-r${HEAD}-${GITCOMMIT}_x86_64-win64"
+          FULL_VERSION="${VERSION}-qt6-r${HEAD}-${GITCOMMIT}_x86_64-win64"
+          BASE_VERSION="${VERSION}-qt6"
           echo "version=$FULL_VERSION"      >> "$GITHUB_OUTPUT"
-          echo "base_version=$VERSION"      >> "$GITHUB_OUTPUT"
+          echo "base_version=$BASE_VERSION" >> "$GITHUB_OUTPUT"
           echo "gitcommit=$GITCOMMIT"       >> "$GITHUB_OUTPUT"
           echo "head=$HEAD"                 >> "$GITHUB_OUTPUT"
           echo "VERSION    : $VERSION"
@@ -306,9 +375,9 @@ jobs:
 
       - name: Upload build logs on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: build-logs
+          name: build-logs-qt6
           path: |
             build/CMakeFiles/*.log
             nsis_root/files/bin/
@@ -334,75 +403,71 @@ jobs:
           "zip_name=$zipName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
 
       - name: Upload portable (files/ without installer)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qelectrotech-${{ steps.qet_version.outputs.base_version }}+git${{ steps.qet_version.outputs.head }}-x86-win64-readytouse
           path: dist/${{ steps.zip_portable.outputs.zip_name }}
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload NSIS installer
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-installer
+          name: qelectrotech-windows-installer-qt6
           path: dist/Installer_*.exe
-          retention-days: 14
+          retention-days: 40
 
       - name: Upload portable (nom fixe pour le workflow MSI)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: qelectrotech-windows-portable
+          name: qelectrotech-windows-portable-qt6
           path: nsis_root/files/
-          retention-days: 14
+          retention-days: 40
 
   # ---------------------------------------------------------------------------
-  # Job 2 : Publie une release nightly + page GitHub Pages
+  # Job 2 : Publie les assets nightly (exe + zip) sur la release
   # Ne tourne que sur push master (pas sur les PRs)
   # ---------------------------------------------------------------------------
-  deploy-pages:
-    needs: build-windows
+  publish-nightly-assets:
+    needs: [build-windows-qt6]
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
     permissions:
       contents: write
 
     steps:
-      - name: Checkout master (for build-aux scripts)
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          path: source
-          sparse-checkout: build-aux/generate-page.py
-          sparse-checkout-cone-mode: false
-
       - name: Download installer artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
-          name: qelectrotech-windows-installer
+          pattern: qelectrotech-windows-installer*
           path: downloaded/installer/
+          merge-multiple: true
 
       - name: Download portable artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: qelectrotech-*-readytouse
           path: downloaded/portable/
           merge-multiple: true
 
-      - name: Delete old nightly assets (.exe and .zip)
+      # Only Qt6-tagged assets are deleted/replaced here. Assets without "qt6"
+      # in the name are the frozen Qt5 legacy build (last one ever published,
+      # before the Qt5 CI job was removed) — deliberately left untouched so
+      # they stay downloadable indefinitely instead of disappearing.
+      - name: Delete old nightly Qt6 assets (.exe and .zip)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
-          # Fetch existing .exe and .zip asset names and delete them
           gh release view nightly --repo "$REPO" --json assets \
-            --jq '.assets[] | select(.name | test("\\.(exe|zip)$")) | .name' \
+            --jq '.assets[] | select(.name | test("qt6")) | select(.name | test("\\.(exe|zip)$")) | .name' \
           | while read -r name; do
-              echo "Deleting old asset: $name"
+              echo "Deleting old Qt6 asset: $name"
               gh release delete-asset nightly "$name" --repo "$REPO" --yes
             done
-          echo "Old .exe and .zip assets deleted."
+          echo "Old Qt6 .exe and .zip assets deleted (legacy Qt5 assets left untouched)."
 
       - name: Update nightly release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: nightly
           name: "Nightly Build – Windows"
@@ -417,6 +482,8 @@ jobs:
 
             > ⚠️ This is a development version; it introduces new features you want, but may cause bugs that have not yet been identified yet.
             > For stable releases, see the [Releases page](https://github.com/${{ github.repository }}/releases).
+
+            > 🗄️ Files without `-qt6-` in the name are the last Qt5 build ever published (frozen, unmaintained). Files tagged `-qt6-` are the actively maintained build.
           prerelease: true
           make_latest: false
           files: |
@@ -425,4 +492,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # GitHub Pages is generated and deployed by windows-msi.yml
-      # after the MSI upload, so that all 3 URLs (exe, zip, msi) are known.
+      # after the MSI upload, so that all URLs (exe/zip/msi) are known.

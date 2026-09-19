@@ -59,6 +59,9 @@ class ElementQueryWidget : public QWidget
 		void on_m_load_pb_clicked();
 		void on_m_save_current_conf_pb_clicked();
 		void on_m_save_name_le_textChanged(const QString &arg1);
+		void on_m_import_reports_pb_clicked();
+		void on_m_export_reports_pb_clicked();
+		void checkQueryValidity();
 		void on_m_choosen_list_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 		void on_m_var_list_itemDoubleClicked(QListWidgetItem *item);
 		void on_m_choosen_list_itemDoubleClicked(QListWidgetItem *item);

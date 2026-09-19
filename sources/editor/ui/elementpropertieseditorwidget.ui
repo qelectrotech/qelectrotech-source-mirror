@@ -39,7 +39,30 @@
          <item>
           <widget class="QComboBox" name="m_base_type_cb"/>
          </item>
-        </layout>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="m_exclude_from_bom_cb">
+         <property name="styleSheet">
+          <string>margin: 5px; font-weight: bold;</string>
+         </property>
+         <property name="text">
+          <string>Exclure de la nomenclature</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QGroupBox" name="m_slave_gb">
@@ -93,17 +116,34 @@
          <property name="title">
           <string>Élément maître</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Type concret</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="m_master_type_cb"/>
-          </item>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <item row="0" column="0" colspan="2">
+             <layout class="QHBoxLayout" name="type_concret_layout">
+              <item>
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Type concret</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="type_concret_spacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QComboBox" name="m_master_type_cb"/>
+              </item>
+             </layout>
+            </item>
           <item row="1" column="0">
            <widget class="QCheckBox" name="max_slaves_checkbox">
             <property name="text">
@@ -119,6 +159,55 @@
             <property name="minimum">
              <number>1</number>
             </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="m_slave_groups_checkbox">
+            <property name="text">
+             <string>Définir les éléments esclave</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QTableWidget" name="m_slave_groups_table">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="columnCount">
+             <number>4</number>
+            </property>
+            <column>
+             <property name="text">
+              <string>Type</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Contact</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Nb. contacts</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Nb. bornes</string>
+             </property>
+            </column>
            </widget>
           </item>
          </layout>
@@ -150,23 +239,30 @@
           <item row="1" column="1">
            <widget class="QComboBox" name="m_terminal_func_cb"/>
           </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_auto_num_locked_cb">
+            <property name="styleSheet">
+             <string>margin: 5px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>Verrouiller la numérotation automatique</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0" colspan="2">
+           <widget class="QCheckBox" name="m_potential_isolating_cb">
+            <property name="styleSheet">
+             <string>margin: 5px; font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>Séparation de potentiel</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+       </layout>
      </widget>
      <widget class="QWidget" name="Informations">
       <attribute name="title">

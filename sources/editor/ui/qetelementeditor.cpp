@@ -19,9 +19,11 @@
 #include "ui_qetelementeditor.h"
 #include "../elementscene.h"
 #include "../../qeticons.h"
+#include "../../shortcutmanager.h"
 #include "../elementview.h"
 #include "../../qetmessagebox.h"
 #include "../../qetapp.h"
+#include "../../qetmainwindow.h"
 #include "../../recentfiles.h"
 #include "../graphicspart/customelementpart.h"
 #include "../elementitemeditor.h"
@@ -52,6 +54,9 @@
 
 #include <QSettings>
 #include <QActionGroup>
+#include <QFileDialog>
+#include <QSvgGenerator>
+#include <QHBoxLayout>
 
 /**
  * @brief QETElementEditor::QETElementEditor
@@ -74,8 +79,9 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	//ui->m_display_menu->insertMenu(ui->m_zoom_in_action, menu);
 
 	setWindowState(Qt::WindowMaximized);
-	readSettings();
+	readSettings();  // restoreGeometry before show()
 	show();
+	readSettingsState();  // restoreState() must be called after show() in Qt6
 }
 
 /**
@@ -480,15 +486,11 @@ void QETElementEditor::fillPartsList()
 					}
 				}
 				QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
-				QVariant v;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-				v.setValue<QGraphicsItem *>(qgi);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-				qDebug()<<"Help code for QT 6 or later";
-#endif
+					// Qt declares the QGraphicsItem* metatype itself, so this
+					// works on Qt 5 and Qt 6 alike. Without the stored pointer
+					// the parts list loses its item association and selecting
+					// a part no longer selects it on the canvas.
+				QVariant v = QVariant::fromValue(qgi);
 				qlwi -> setData(42, v);
 				m_parts_list -> addItem(qlwi);
 				qlwi -> setSelected(qgi -> isSelected());
@@ -574,9 +576,11 @@ void QETElementEditor::updateInformations()
 			|| selection_xml_name == "ellipse"
 			|| selection_xml_name == "arc")
 		{
-			clearToolsDock();
 			//We add the editor widget
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			if (m_tools_dock_stack -> widget(1) != editor) {
+				clearToolsDock();
+			}
 
 #if TODO_LIST
 #pragma message("@TODO Check if it takes longer than setting the parts again to the editor.")
@@ -609,11 +613,15 @@ void QETElementEditor::updateInformations()
 					success = editor -> setParts(cep_list);
 				}
 				if (success) {
-					m_tools_dock_stack -> insertWidget(1, editor);
+					if (m_tools_dock_stack -> widget(1) != editor) {
+						m_tools_dock_stack -> insertWidget(1, editor);
+					}
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -627,8 +635,10 @@ void QETElementEditor::updateInformations()
 			// multi edit for polygons makes no sense
 			// TODO: maybe allowing multipart edit when number of points is the same?
 			//We add the editor widget
-			clearToolsDock();
 			ElementItemEditor *editor = static_cast<ElementItemEditor*>(m_editors[selection_xml_name]);
+			if (m_tools_dock_stack -> widget(1) != editor) {
+				clearToolsDock();
+			}
 			CustomElementPart* part = editor -> currentPart();
 			bool equal = part == cep_list.first();
 
@@ -638,11 +648,15 @@ void QETElementEditor::updateInformations()
 					success = editor -> setPart(cep_list.first());
 				}
 				if (success) {
-					m_tools_dock_stack -> insertWidget(1, editor);
+					if (m_tools_dock_stack -> widget(1) != editor) {
+						m_tools_dock_stack -> insertWidget(1, editor);
+					}
 					m_tools_dock_stack -> setCurrentIndex(1);
 				}
 				else {
 					qDebug() << "Editor refused part.";
+					clearToolsDock();
+					m_tools_dock_stack->setCurrentIndex(0);
 				}
 			}
 			return;
@@ -656,15 +670,21 @@ void QETElementEditor::updateInformations()
 
 	//There's several parts selecteds and all can be edited by style editor.
 	if (style_editable) {
-		clearToolsDock();
 		ElementItemEditor *selection_editor = m_editors["style"];
+		if (m_tools_dock_stack -> widget(1) != selection_editor) {
+			clearToolsDock();
+		}
 		if (selection_editor) {
 			if (selection_editor -> setParts(cep_list)) {
-				m_tools_dock_stack -> insertWidget(1, selection_editor);
+				if (m_tools_dock_stack -> widget(1) != selection_editor) {
+					m_tools_dock_stack -> insertWidget(1, selection_editor);
+				}
 				m_tools_dock_stack -> setCurrentIndex(1);
 			}
 			else {
 				qDebug() << "Editor refused part.";
+				clearToolsDock();
+				m_tools_dock_stack->setCurrentIndex(0);
 			}
 		}
 	}
@@ -849,7 +869,7 @@ bool QETElementEditor::event(QEvent *event)
 {
 	if (m_first_activation && event->type() == QEvent::WindowActivate) {
 		m_first_activation = false;
-		QTimer::singleShot(250, m_view, SLOT(zoomFit()));
+		QTimer::singleShot(250, m_view, &ElementView::zoomFit);
 	}
 
 	return QMainWindow::event(event);
@@ -886,6 +906,13 @@ void QETElementEditor::openElement(const QString &filepath)
  */
 void QETElementEditor::closeEvent(QCloseEvent *qce)
 {
+		//This editor is a plain QMainWindow, not a QETMainWindow, so the
+		//guard QETMainWindow::event() applies to the other editors is
+		//applied here instead -- before canClose(), which itself opens a
+		//modal dialog.
+	if (QETMainWindow::refuseCloseWhileModal(qce)) {
+		return;
+	}
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
@@ -951,14 +978,26 @@ void QETElementEditor::readSettings()
 		restoreGeometry(geometry.toByteArray());
 	}
 
-	QVariant state = settings.value("elementeditor/state");
-	if (state.isValid()) {
-		restoreState(state.toByteArray());
-	}
-
 	auto data = m_elmt_scene->elementData();
 	data.m_drawing_information = settings.value("elementeditor/default-informations", "").toString();
 	m_elmt_scene->setElementData(data);
+}
+
+/**
+ * @brief QETElementEditor::readSettingsState
+ * Restore the window state (docks, toolbars).
+ * Must be called AFTER show() in Qt6 for restoreState() to work correctly.
+ */
+void QETElementEditor::readSettingsState()
+{
+	QSettings settings;
+
+	QVariant state = settings.value("elementeditor/state");
+	if (state.isValid()) {
+		if (!restoreState(state.toByteArray())) {
+			settings.remove("elementeditor/state");
+		}
+	}
 }
 
 /**
@@ -982,32 +1021,32 @@ void QETElementEditor::setupActions()
 	m_redo_action = m_elmt_scene -> undoStack().createRedoAction(this, tr("Refaire"));
 	m_undo_action -> setIcon(QET::Icons::EditUndo);
 	m_redo_action -> setIcon(QET::Icons::EditRedo);
-	m_undo_action -> setShortcuts(QKeySequence::Undo);
-	m_redo_action -> setShortcuts(QKeySequence::Redo);
+	ShortcutManager::instance().registerAction(m_undo_action, "elementeditor.undo", tr("Éditeur d'élément"), QKeySequence::Undo);
+	ShortcutManager::instance().registerAction(m_redo_action, "elementeditor.redo", tr("Éditeur d'élément"), QKeySequence::Redo);
 	ui->m_undo_toolbar->addAction(m_undo_action);
 	ui->m_undo_toolbar->addAction(m_redo_action);
 
-	ui->m_new_action              -> setShortcut(QKeySequence::New);
-	ui->m_open_action             -> setShortcut(QKeySequence::Open);
-	ui->m_open_from_file_action   -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
-	ui->m_save_action             -> setShortcut(QKeySequence::Save);
-	ui->m_save_as_file_action     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
-	ui->m_select_all_act          -> setShortcut(QKeySequence::SelectAll);
-	ui->m_deselect_all_action     -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_A);
-	ui->m_revert_selection_action -> setShortcut(Qt::CTRL | Qt::Key_I);
-	ui->m_cut_action              -> setShortcut(QKeySequence::Cut);
-	ui->m_copy_action             -> setShortcut(QKeySequence::Copy);
-	ui->m_paste_action            -> setShortcut(QKeySequence::Paste);
-	ui->m_paste_in_area_action    -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_V);
-	ui->m_edit_names_action       -> setShortcut(Qt::CTRL | Qt::Key_E);
-	ui->m_edit_author_action      -> setShortcut(Qt::CTRL | Qt::Key_Y);
+	ShortcutManager::instance().registerAction(ui->m_new_action, "elementeditor.new", tr("Éditeur d'élément"), QKeySequence::New);
+	ShortcutManager::instance().registerAction(ui->m_open_action, "elementeditor.open", tr("Éditeur d'élément"), QKeySequence::Open);
+	ShortcutManager::instance().registerAction(ui->m_open_from_file_action, "elementeditor.open_from_file", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	ShortcutManager::instance().registerAction(ui->m_save_action, "elementeditor.save", tr("Éditeur d'élément"), QKeySequence::Save);
+	ShortcutManager::instance().registerAction(ui->m_save_as_file_action, "elementeditor.save_as_file", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	ShortcutManager::instance().registerAction(ui->m_select_all_act, "elementeditor.select_all", tr("Éditeur d'élément"), QKeySequence::SelectAll);
+	ShortcutManager::instance().registerAction(ui->m_deselect_all_action, "elementeditor.deselect_all", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_A);
+	ShortcutManager::instance().registerAction(ui->m_revert_selection_action, "elementeditor.revert_selection", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_I);
+	ShortcutManager::instance().registerAction(ui->m_cut_action, "elementeditor.cut", tr("Éditeur d'élément"), QKeySequence::Cut);
+	ShortcutManager::instance().registerAction(ui->m_copy_action, "elementeditor.copy", tr("Éditeur d'élément"), QKeySequence::Copy);
+	ShortcutManager::instance().registerAction(ui->m_paste_action, "elementeditor.paste", tr("Éditeur d'élément"), QKeySequence::Paste);
+	ShortcutManager::instance().registerAction(ui->m_paste_in_area_action, "elementeditor.paste_in_area", tr("Éditeur d'élément"), Qt::CTRL | Qt::SHIFT | Qt::Key_V);
+	ShortcutManager::instance().registerAction(ui->m_edit_names_action, "elementeditor.edit_names", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_E);
+	ShortcutManager::instance().registerAction(ui->m_edit_author_action, "elementeditor.edit_author", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Y);
 
 #ifdef Q_OS_MAC
-	ui->m_delete_action -> setShortcut(Qt::Key_Backspace);
-	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_W);
+	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Éditeur d'élément"), Qt::Key_Backspace);
+	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_W);
 #else
-	ui->m_delete_action -> setShortcut(Qt::Key_Delete);
-	ui->m_quit_action -> setShortcut(Qt::CTRL | Qt::Key_Q);
+	ShortcutManager::instance().registerAction(ui->m_delete_action, "elementeditor.delete", tr("Éditeur d'élément"), Qt::Key_Delete);
+	ShortcutManager::instance().registerAction(ui->m_quit_action, "elementeditor.quit", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Q);
 #endif
 
 		//Depth action
@@ -1023,27 +1062,27 @@ void QETElementEditor::setupActions()
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 
 		//Rotate action
-	ui->m_rotate_action -> setShortcut(Qt::Key_Space);
+	ShortcutManager::instance().registerAction(ui->m_rotate_action, "elementeditor.rotate", tr("Éditeur d'élément"), Qt::Key_Space);
 	connect(ui->m_rotate_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateElementsCommand(this->elementScene()));});
 
 		//Rotate Fine action = rotate with smaller inkrement
-	ui->m_rotateFine_action -> setShortcut(Qt::CTRL | Qt::Key_Space);
+	ShortcutManager::instance().registerAction(ui->m_rotateFine_action, "elementeditor.rotate_fine", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_Space);
 	connect(ui->m_rotateFine_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new RotateFineElementsCommand(this->elementScene()));});
 
 		//Flip action
-	ui->m_flip_action -> setShortcut(Qt::Key_F);
+	ShortcutManager::instance().registerAction(ui->m_flip_action, "elementeditor.flip", tr("Éditeur d'élément"), Qt::Key_F);
 	connect(ui->m_flip_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new FlipElementsCommand(this->elementScene()));});
 
 		//Mirror action
-	ui->m_mirror_action -> setShortcut(Qt::Key_M);
+	ShortcutManager::instance().registerAction(ui->m_mirror_action, "elementeditor.mirror", tr("Éditeur d'élément"), Qt::Key_M);
 	connect(ui->m_mirror_action, &QAction::triggered, [this]() {this -> elementScene() -> undoStack().push(new MirrorElementsCommand(this->elementScene()));});
 
 
 		//Zoom action
-	ui->m_zoom_in_action       -> setShortcut(QKeySequence::ZoomIn);
-	ui->m_zoom_out_action      -> setShortcut(QKeySequence::ZoomOut);
-	ui->m_zoom_fit_best_action -> setShortcut(Qt::CTRL | Qt::Key_9);
-	ui->m_zoom_original_action -> setShortcut(Qt::CTRL | Qt::Key_0);
+	ShortcutManager::instance().registerAction(ui->m_zoom_in_action, "elementeditor.zoom_in", tr("Éditeur d'élément"), QKeySequence::ZoomIn);
+	ShortcutManager::instance().registerAction(ui->m_zoom_out_action, "elementeditor.zoom_out", tr("Éditeur d'élément"), QKeySequence::ZoomOut);
+	ShortcutManager::instance().registerAction(ui->m_zoom_fit_best_action, "elementeditor.zoom_fit_best", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_9);
+	ShortcutManager::instance().registerAction(ui->m_zoom_original_action, "elementeditor.zoom_original", tr("Éditeur d'élément"), Qt::CTRL | Qt::Key_0);
 
 		//Add primitive actions
 	m_add_part_action_grp = new QActionGroup(this);
@@ -1089,28 +1128,38 @@ void QETElementEditor::updateAction()
 {
 		//Action disabled if read only
 	auto ro_list = m_add_part_action_grp->actions();
-	ro_list << ui->m_select_all_act
-			<< ui->m_revert_selection_action
-			<< ui->m_paste_from_file_action
+	ro_list << ui->m_paste_from_file_action
 			<< ui->m_paste_from_element_action;
-	for (auto action : qAsConst(ro_list)) {
+	for (auto action : std::as_const(ro_list)) {
 		action->setDisabled(m_read_only);
 	}
 
+		//Changing what is selected does not change the element, so these stay
+		//available when it is read only -- otherwise there is no way to pick
+		//out the primitive you want to copy out of it.
+	ui->m_select_all_act->setEnabled(true);
+	ui->m_revert_selection_action->setEnabled(true);
+
 		//Action enabled if a primitive is selected
 	auto select_list = m_depth_action_group->actions();
-	select_list << ui->m_deselect_all_action
-				<< ui->m_cut_action
-				<< ui->m_copy_action
+	select_list << ui->m_cut_action
 				<< ui->m_delete_action
 				<< ui->m_rotate_action
 				<< ui->m_rotateFine_action
 				<< ui->m_flip_action
 				<< ui->m_mirror_action;
-	auto items_selected = !m_read_only && m_elmt_scene->selectedItems().count();
-	for (auto action : qAsConst(select_list)) {
+	const bool has_selection = m_elmt_scene->selectedItems().count() > 0;
+	auto items_selected = !m_read_only && has_selection;
+	for (auto action : std::as_const(select_list)) {
 		action->setEnabled(items_selected);
 	}
+
+		//Copying only reads the element -- ElementScene::copy() serialises the
+		//selection to the clipboard and touches nothing else -- so it is
+		//allowed on a read-only element too. Cut, paste and delete above stay
+		//disabled, so the element itself is still protected.
+	ui->m_copy_action->setEnabled(has_selection);
+	ui->m_deselect_all_action->setEnabled(has_selection);
 
 		//Action about clipboard
 	auto clipboard_contain_elmt = !m_read_only && ElementScene::clipboardMayContainElement();
@@ -1191,6 +1240,33 @@ void QETElementEditor::initGui()
 
 	updateInformations();
 	fillPartsList();
+
+	// When the element type changes, update the terminal editor master label visibility
+	connect(m_elmt_scene, &ElementScene::elementTypeChanged, this, [this]() {
+		auto *te = static_cast<TerminalEditor *>(m_editors["terminal"]);
+		if (te) te->refreshMasterLabelVisibility();
+	});
+
+		//Live cursor position readout, in the same scene coordinates as the parts' X/Y properties
+	m_position_label = new QLabel(this);
+	m_position_label->setMinimumWidth(120);
+	
+	// Layout
+	QHBoxLayout *coordDisplayLayout = new QHBoxLayout();
+	coordDisplayLayout->setContentsMargins(0, 0, 0, 0);
+	coordDisplayLayout->addWidget(m_position_label);
+	coordDisplayLayout->addStretch();
+	// Widget
+	QWidget *coordDisplay = new QWidget;
+	coordDisplay->setLayout(coordDisplayLayout);
+	
+	statusBar()->addPermanentWidget(coordDisplay);
+	
+	connect(m_elmt_scene, &ElementScene::mouseMoved, this, [this](const QPointF &pos) {
+		m_position_label->setText(tr("X: %1  Y: %2")
+			.arg(pos.x(), 0, 'f', 1)
+			.arg(pos.y(), 0, 'f', 1));
+	});
 
 	statusBar()->showMessage(tr("Éditeur d'éléments", "status bar message"));
 }
@@ -1362,6 +1438,94 @@ bool QETElementEditor::on_m_save_as_file_action_triggered()
 	}
 	QMessageBox::critical(this, tr("Echec de l'enregistrement"), tr("L'enregistrement à échoué,\nles conditions requises ne sont pas valides"));
 	return false;
+}
+
+/**
+	@brief QETElementEditor::on_m_export_svg_action_triggered
+	Export the element currently open in this editor to a standalone SVG
+	file.
+
+	Renders the live ElementScene directly, the same way
+	ExportDialog::generateSvg() renders the live Diagram for the diagram
+	editor's own SVG export -- not ElementPictureFactory's cached picture.
+	That cache is keyed by the element's saved-to-disk uuid and is never
+	invalidated on edit (nothing in this editor ever tells it to), so it
+	would silently export stale content for any element already previewed
+	once in the elements panel, and nothing at all for one that has never
+	been saved. Rendering the scene directly has neither problem and
+	always reflects exactly what is currently on screen, saved or not.
+	@return true if the file was written
+*/
+bool QETElementEditor::on_m_export_svg_action_triggered()
+{
+		//Suggest the element's own filename (without its .elmt extension) as
+		//the default export name, per plc-user's review on #637 -- the
+		//directory-only default below is unchanged for an element that has
+		//never been saved, since there is no filename to derive one from.
+	QString suggested_path = QETApp::customElementsDir();
+	if (!m_file_name.isEmpty()) {
+		QFileInfo file_info(m_file_name);
+		suggested_path = QDir(file_info.absolutePath()).filePath(file_info.completeBaseName());
+	}
+
+	QString fn = QFileDialog::getSaveFileName(
+			this,
+			tr("Exporter en SVG", "dialog title"),
+			suggested_path,
+			tr("Image SVG (*.svg)", "filetypes allowed when exporting an element to SVG"));
+
+	if (fn.isEmpty()) {
+		return false;
+	}
+	if (!fn.endsWith(".svg", Qt::CaseInsensitive)) {
+		fn += ".svg";
+	}
+
+	QFile file(fn);
+	if (!file.open(QIODevice::WriteOnly)) {
+		QMessageBox::critical(this, tr("Échec de l'export"),
+				      tr("Impossible d'écrire dans le fichier « %1 ».").arg(fn));
+		return false;
+	}
+
+		//Margin-less bounding rect of the element's own drawn content
+		//(lines, rects, terminals, text...), excluding the origin cross
+		//and other editor-only decoration -- see
+		//ElementScene::elementSceneGeometricRect()'s own doc comment.
+		//Falls back to itemsBoundingRect() for the rare element made up
+		//only of item types that helper deliberately excludes.
+	QRectF source_rect = m_elmt_scene->elementSceneGeometricRect();
+	if (source_rect.isEmpty()) {
+		source_rect = m_elmt_scene->itemsBoundingRect();
+	}
+	constexpr qreal margin = 5.0;
+	source_rect.adjust(-margin, -margin, margin, margin);
+
+	QSize target_size = source_rect.size().toSize();
+	if (target_size.isEmpty()) {
+		target_size = QSize(1, 1);
+	}
+
+	QSvgGenerator svg_engine;
+	svg_engine.setSize(target_size);
+	svg_engine.setViewBox(QRect(QPoint(0, 0), target_size));
+	svg_engine.setOutputDevice(&file);
+
+	QPainter svg_painter(&svg_engine);
+	svg_painter.setRenderHint(QPainter::Antialiasing, true);
+	svg_painter.setRenderHint(QPainter::TextAntialiasing, true);
+
+		//The hotspot cross is ElementScene::drawForeground()'s editing aid,
+		//drawn unconditionally on every render() call including this one
+		//unless told not to -- it is not part of the element being
+		//exported.
+	m_elmt_scene->setHotspotVisible(false);
+	m_elmt_scene->render(&svg_painter, QRectF(QPointF(0, 0), target_size), source_rect);
+	m_elmt_scene->setHotspotVisible(true);
+
+	svg_painter.end();
+
+	return true;
 }
 
 void QETElementEditor::on_m_reload_action_triggered()

@@ -256,9 +256,9 @@ qreal PartEllipse::rotation() const {
 	return qRound(m_rot * 100.0) / 100.0;
 }
 
-void PartEllipse::flip() {
+void PartEllipse::flip(qreal axis_y) {
 	auto p1 = mapToScene(m_rect.x(), m_rect.y());
-	p1.setY(((-1.0) * p1.y()) - m_rect.height());
+	p1.setY(2 * axis_y - p1.y() - m_rect.height());
 	p1 = mapFromScene(p1.x(), p1.y());
 	m_rect = QRectF(p1.x(), p1.y(), m_rect.width(), m_rect.height());
 	prepareGeometryChange();
@@ -266,9 +266,9 @@ void PartEllipse::flip() {
 	emit rectChanged();
 }
 
-void PartEllipse::mirror() {
+void PartEllipse::mirror(qreal axis_x) {
 	auto p1 = mapToScene(m_rect.x(), m_rect.y());
-	p1.setX(((-1.0) * p1.x()) - m_rect.width());
+	p1.setX(2 * axis_x - p1.x() - m_rect.width());
 	p1 = mapFromScene(p1.x(), p1.y());
 	m_rect = QRectF(p1.x(), p1.y(), m_rect.width(), m_rect.height());
 	prepareGeometryChange();

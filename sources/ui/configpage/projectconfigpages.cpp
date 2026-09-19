@@ -22,6 +22,8 @@
 #include "../autoNum/ui/folioautonumbering.h"
 #include "../autoNum/ui/formulaautonumberingw.h"
 #include "../autoNum/ui/selectautonumw.h"
+#include "../project/projectpropertieshandler.h"
+#include "../qet.h"
 #include "../qeticons.h"
 #include "../qetproject.h"
 #include "../borderpropertieswidget.h"
@@ -161,6 +163,13 @@ void ProjectMainConfigPage::applyProjectConf()
 		m_project -> setProjectProperties(new_properties);
 		modified_project = true;
 	}
+
+	ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
+	if (usage_tracker.isEnabled() != usage_enabled_cb_ -> isChecked()) {
+		usage_tracker.setEnabled(usage_enabled_cb_ -> isChecked());
+		modified_project = true;
+	}
+
 	if (modified_project) {
 		m_project -> setModified(true);
 	}
@@ -191,6 +200,12 @@ void ProjectMainConfigPage::initWidgets()
 	project_variables_label_ -> setWordWrap(true);
 	project_variables_ = new DiagramContextWidget();
 	project_variables_ -> setContext(DiagramContext());
+
+	usage_label_ = new QLabel(tr("Temps passé sur ce projet :", "label when configuring"));
+	usage_value_ = new QLabel();
+	usage_enabled_cb_ = new QCheckBox(tr("Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)", "checkbox label"));
+	usage_reset_pb_ = new QPushButton(tr("Réinitialiser", "button label"));
+	connect(usage_reset_pb_, &QPushButton::clicked, this, &ProjectMainConfigPage::resetUsageTracker);
 }
 
 /**
@@ -207,6 +222,16 @@ void ProjectMainConfigPage::initLayout()
 	main_layout0 -> addSpacing(10);
 	main_layout0 -> addWidget(project_variables_label_);
 	main_layout0 -> addWidget(project_variables_);
+	main_layout0 -> addSpacing(10);
+
+	QHBoxLayout *usage_layout0 = new QHBoxLayout();
+	usage_layout0 -> addWidget(usage_label_);
+	usage_layout0 -> addWidget(usage_value_);
+	usage_layout0 -> addStretch();
+	usage_layout0 -> addWidget(usage_reset_pb_);
+	main_layout0 -> addLayout(usage_layout0);
+	main_layout0 -> addWidget(usage_enabled_cb_);
+
 	setLayout(main_layout0);
 	this -> setMinimumWidth(680);
 
@@ -219,6 +244,27 @@ void ProjectMainConfigPage::readValuesFromProject()
 {
 	title_value_ -> setText(m_project -> title());
 	project_variables_ -> setContext(m_project -> projectProperties());
+
+	const ProjectUsageTracker &usage_tracker = m_project -> projectPropertiesHandler().usageTracker();
+	const qint64 total_seconds = usage_tracker.secondsSpent();
+	usage_value_ -> setText(tr("%1 h %2 min", "hours and minutes of time spent on a project")
+							 .arg(total_seconds / 3600)
+							 .arg((total_seconds % 3600) / 60));
+	usage_enabled_cb_ -> setChecked(usage_tracker.isEnabled());
+}
+
+/**
+	@brief ProjectMainConfigPage::resetUsageTracker
+	Reset the accumulated "time spent on this project" counter to zero and
+	refresh its displayed value. Applies immediately (not staged behind
+	OK/Cancel like the other fields on this page), since it isn't
+	destructive to any actual project content.
+*/
+void ProjectMainConfigPage::resetUsageTracker()
+{
+	m_project -> projectPropertiesHandler().usageTracker().resetSecondsSpent();
+	m_project -> setModified(true);
+	usage_value_ -> setText(tr("%1 h %2 min", "hours and minutes of time spent on a project").arg(0).arg(0));
 }
 
 /**
@@ -229,6 +275,8 @@ void ProjectMainConfigPage::adjustReadOnly()
 {
 	bool is_read_only = m_project -> isReadOnly();
 	title_value_ -> setReadOnly(is_read_only);
+	usage_enabled_cb_ -> setDisabled(is_read_only);
+	usage_reset_pb_ -> setDisabled(is_read_only);
 }
 
 //######################################################################################//
@@ -243,9 +291,14 @@ ProjectAutoNumConfigPage::ProjectAutoNumConfigPage (QETProject *project,
 						    QWidget *parent) :
 	ProjectConfigPage(project, parent)
 {
-	initWidgets();
-	buildConnections();
-	readValuesFromProject();
+	// Follow the same contract ProjectMainConfigPage's constructor does --
+	// init() is documented to be the thing a subclass constructor calls
+	// (see ProjectConfigPage::init()'s doc comment). Calling the pieces
+	// individually here used to skip both initLayout() and adjustReadOnly(),
+	// and called readValuesFromProject() even when m_project was null.
+	// buildConnections() itself is invoked from the end of initWidgets()
+	// below, in the same relative position it held here.
+	init();
 }
 
 /**
@@ -302,9 +355,22 @@ void ProjectAutoNumConfigPage::initWidgets()
 	m_faw = new FolioAutonumberingW(project());
 	tab_widget->addTab(m_faw, tr("Numérotation auto des folios"));
 	
-	QHBoxLayout *main_layout = new QHBoxLayout();
+	m_import_pb = new QPushButton(
+				tr("Importer depuis un autre projet..."), this);
+	m_import_pb->setToolTip(
+				tr("Reprendre les numérotations automatiques "
+				   "enregistrées dans un autre projet"));
+
+	QHBoxLayout *button_layout = new QHBoxLayout();
+	button_layout->addStretch();
+	button_layout->addWidget(m_import_pb);
+
+	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout->addWidget(tab_widget);
+	main_layout->addLayout(button_layout);
 	setLayout(main_layout);
+
+	buildConnections();
 }
 
 /**
@@ -313,6 +379,12 @@ void ProjectAutoNumConfigPage::initWidgets()
 */
 void ProjectAutoNumConfigPage::readValuesFromProject()
 {
+		// This is called again after an import, so start from an empty
+		// combo box instead of appending a second copy of every name.
+	m_saw_conductor->contextComboBox()->clear();
+	m_saw_element->contextComboBox()->clear();
+	m_saw_folio->contextComboBox()->clear();
+
 		//Conductor Tab
 	const QStringList strlc(m_project->conductorAutoNum().keys());
 	m_saw_conductor->contextComboBox()->addItems(strlc);
@@ -335,6 +407,9 @@ void ProjectAutoNumConfigPage::readValuesFromProject()
 */
 void ProjectAutoNumConfigPage::adjustReadOnly()
 {
+	if (m_import_pb && m_project) {
+		m_import_pb->setDisabled(m_project->isReadOnly());
+	}
 }
 
 /**
@@ -344,25 +419,28 @@ void ProjectAutoNumConfigPage::adjustReadOnly()
 void ProjectAutoNumConfigPage::buildConnections()
 {
 		//Management Tab
-	connect (m_amw, SIGNAL(applyPressed()), this, SLOT(applyManagement()));
+	connect(m_amw, &AutoNumberingManagementW::applyPressed, this, &ProjectAutoNumConfigPage::applyManagement);
 
 		//Conductor Tab
 	connect(m_saw_conductor, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextConductor);
 	connect(m_saw_conductor, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextConductor);
-	connect(m_saw_conductor->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextConductor(QString)));
+	connect(m_saw_conductor->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextConductor);
 
 		//Element Tab
 	connect(m_saw_element, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextElement);
 	connect(m_saw_element, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextElement);
-	connect(m_saw_element->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextElement(QString)));
+	connect(m_saw_element->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextElement);
 
 		//Folio Tab
 	connect(m_saw_folio, &SelectAutonumW::applyPressed,  this, &ProjectAutoNumConfigPage::saveContextFolio);
 	connect(m_saw_folio, &SelectAutonumW::removeClicked, this, &ProjectAutoNumConfigPage::removeContextFolio);
-	connect(m_saw_folio->contextComboBox(), SIGNAL(currentIndexChanged(QString)), this, SLOT(updateContextFolio(QString)));
+	connect(m_saw_folio->contextComboBox(), &QComboBox::textActivated, this, &ProjectAutoNumConfigPage::updateContextFolio);
 
 		//	Auto Folio Numbering
-	connect (m_faw, SIGNAL (applyPressed()),				 this, SLOT (applyAutoNum()));
+	connect(m_faw, &FolioAutonumberingW::applyPressed, this, &ProjectAutoNumConfigPage::applyAutoNum);
+
+		//Import from another project
+	connect(m_import_pb, &QPushButton::clicked, this, &ProjectAutoNumConfigPage::importFromProject);
 }
 
 /**
@@ -419,7 +497,7 @@ void ProjectAutoNumConfigPage::saveContextElement()
 		m_saw_element->contextComboBox()->addItem(tr("Sans nom"));
 	}
 		// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> elementAutoNum().keys().contains( m_saw_element->contextComboBox()->currentText()))
+	else if ( !m_project -> elementAutoNum().contains( m_saw_element->contextComboBox()->currentText()))
 	{
 		m_project->addElementAutoNum(m_saw_element->contextComboBox()->currentText(), m_saw_element->toNumContext());
 		m_project->setCurrrentElementAutonum(m_saw_element->contextComboBox()->currentText());
@@ -434,6 +512,198 @@ void ProjectAutoNumConfigPage::saveContextElement()
 }
 
 /**
+	@brief ProjectAutoNumConfigPage::importFromProject
+	Read the automatic numbering rules stored in another .qet project and
+	copy the ones the user selects into this project.
+
+	The source file is parsed as plain XML rather than opened as a
+	QETProject: opening it would run the whole load path, including the
+	modal dialog raised when the file was written by a different version
+	of QElectroTech.
+*/
+void ProjectAutoNumConfigPage::importFromProject()
+{
+	if (!m_project || m_project->isReadOnly()) {
+		return;
+	}
+
+	const QString path = QFileDialog::getOpenFileName(
+				this,
+				tr("Importer les numérotations d'un projet"),
+				m_project->currentDir(),
+				tr("Projet QElectroTech (*.qet)"));
+	if (path.isEmpty()) {
+		return;
+	}
+
+	QFile file(path);
+	if (!file.open(QIODevice::ReadOnly)) {
+		QMessageBox::warning(this, tr("Import impossible"),
+					 tr("Impossible d'ouvrir %1").arg(path));
+		return;
+	}
+
+	QDomDocument doc;
+	if (!doc.setContent(&file)) {
+		QMessageBox::warning(this, tr("Import impossible"),
+					 tr("%1 n'est pas un projet QElectroTech valide.")
+					 .arg(QFileInfo(path).fileName()));
+		return;
+	}
+	file.close();
+
+	const QDomNodeList newdiagrams =
+			doc.elementsByTagName(QStringLiteral("newdiagrams"));
+	if (newdiagrams.isEmpty()) {
+		QMessageBox::information(this, tr("Aucune numérotation"),
+					 tr("Ce projet ne contient aucune numérotation automatique."));
+		return;
+	}
+	const QDomElement root = newdiagrams.at(0).toElement();
+
+		// tag of the group, tag of one entry, label shown to the user
+	struct Category {
+		QString group_tag;
+		QString item_tag;
+		QString label;
+	};
+	const QList<Category> categories {
+		{QStringLiteral("conductors_autonums"),
+		 QStringLiteral("conductor_autonum"), tr("Conducteurs")},
+		{QStringLiteral("element_autonums"),
+		 QStringLiteral("element_autonum"), tr("Eléments")},
+		{QStringLiteral("folio_autonums"),
+		 QStringLiteral("folio_autonum"), tr("Folios")}
+	};
+
+	QDialog dialog(this);
+	dialog.setWindowTitle(tr("Numérotations à importer"));
+	QVBoxLayout *layout = new QVBoxLayout(&dialog);
+	layout->addWidget(new QLabel(
+				  tr("Numérotations trouvées dans %1 :")
+				  .arg(QFileInfo(path).fileName()), &dialog));
+
+	QListWidget *list = new QListWidget(&dialog);
+	layout->addWidget(list);
+
+		// NumerotationContext is not a QVariant type, so the list item
+		// carries an index into this instead of the context itself.
+	QList<NumerotationContext> contexts;
+	for (int i = 0 ; i < categories.count() ; ++i)
+	{
+		const Category &category = categories.at(i);
+		QDomElement group;
+		for (QDomNode n = root.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+			if (n.toElement().tagName() == category.group_tag) {
+				group = n.toElement();
+				break;
+			}
+		}
+		if (group.isNull()) {
+			continue;
+		}
+
+		for (QDomElement entry : QET::findInDomElement(group, category.item_tag))
+		{
+			const QString title = entry.attribute(QStringLiteral("title"));
+			if (title.isEmpty()) {
+				continue;
+			}
+
+			bool exists = false;
+			switch (i) {
+				case 0: exists = m_project->conductorAutoNum().contains(title); break;
+				case 1: exists = m_project->elementAutoNum().contains(title); break;
+				default: exists = m_project->folioAutoNum().contains(title); break;
+			}
+
+			QListWidgetItem *item = new QListWidgetItem(
+						exists ? tr("%1 : %2 (existe déjà)")
+							 .arg(category.label, title)
+					       : QStringLiteral("%1 : %2")
+							 .arg(category.label, title),
+						list);
+			item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+			item->setCheckState(exists ? Qt::Unchecked : Qt::Checked);
+			item->setData(Qt::UserRole, i);
+			item->setData(Qt::UserRole + 1, title);
+
+			NumerotationContext nc;
+			nc.fromXml(entry);
+			item->setData(Qt::UserRole + 2, contexts.count());
+			contexts << nc;
+		}
+	}
+
+	if (contexts.isEmpty()) {
+		QMessageBox::information(this, tr("Aucune numérotation"),
+					 tr("Ce projet ne contient aucune numérotation automatique."));
+		return;
+	}
+
+	QCheckBox *overwrite_cb = new QCheckBox(
+				tr("Remplacer les numérotations de même nom"), &dialog);
+	layout->addWidget(overwrite_cb);
+
+	QDialogButtonBox *buttons = new QDialogButtonBox(
+				QDialogButtonBox::Ok | QDialogButtonBox::Cancel, &dialog);
+	layout->addWidget(buttons);
+	connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+	connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+	if (dialog.exec() != QDialog::Accepted) {
+		return;
+	}
+
+	int imported = 0, skipped = 0, conductors = 0;
+	for (int row = 0 ; row < list->count() ; ++row)
+	{
+		QListWidgetItem *item = list->item(row);
+		if (item->checkState() != Qt::Checked) {
+			continue;
+		}
+
+		const int category = item->data(Qt::UserRole).toInt();
+		const QString title = item->data(Qt::UserRole + 1).toString();
+
+		bool exists = false;
+		switch (category) {
+			case 0: exists = m_project->conductorAutoNum().contains(title); break;
+			case 1: exists = m_project->elementAutoNum().contains(title); break;
+			default: exists = m_project->folioAutoNum().contains(title); break;
+		}
+		if (exists && !overwrite_cb->isChecked()) {
+			++skipped;
+			continue;
+		}
+
+		const NumerotationContext &nc =
+				contexts.at(item->data(Qt::UserRole + 2).toInt());
+		switch (category) {
+			case 0:
+				m_project->addConductorAutoNum(title, nc);
+				++conductors;
+				break;
+			case 1: m_project->addElementAutoNum(title, nc); break;
+			default: m_project->addFolioAutoNum(title, nc); break;
+		}
+		++imported;
+	}
+
+	readValuesFromProject();
+	if (conductors) {
+		m_project->conductorAutoNumAdded();
+	}
+
+	QMessageBox::information(
+				this, tr("Import terminé"),
+				skipped ? tr("%1 numérotation(s) importée(s), "
+						 "%2 conservée(s) telles quelles.")
+					  .arg(imported).arg(skipped)
+					: tr("%1 numérotation(s) importée(s).").arg(imported));
+}
+
+/**
 	@brief ProjectAutoNumConfigPage::removeContextElement
 	Remove from project the current element numerotation context
 */
@@ -444,6 +714,10 @@ void ProjectAutoNumConfigPage::removeContextElement()
 		return;
 	m_project->removeElementAutoNum (m_saw_element->contextComboBox()->currentText());
 	m_saw_element->contextComboBox()->removeItem (m_saw_element->contextComboBox()->currentIndex());
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextElement(m_saw_element->contextComboBox()->currentText());
 }
 
 /**
@@ -461,7 +735,7 @@ void ProjectAutoNumConfigPage::saveContextConductor()
 		m_saw_conductor->contextComboBox()-> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> conductorAutoNum().keys().contains( m_saw_conductor->contextComboBox()->currentText()))
+	else if ( !m_project -> conductorAutoNum().contains( m_saw_conductor->contextComboBox()->currentText()))
 	{
 		project()->addConductorAutoNum(m_saw_conductor->contextComboBox()->currentText(), m_saw_conductor->toNumContext());
 		project()->setCurrentConductorAutoNum(m_saw_conductor->contextComboBox()->currentText());
@@ -489,7 +763,7 @@ void ProjectAutoNumConfigPage::saveContextFolio()
 		m_saw_folio->contextComboBox() -> addItem(tr("Sans nom"));
 	}
 	// If the text isn't yet to the autonum of the project, add this new item to the combo box.
-	else if ( !m_project -> folioAutoNum().keys().contains( m_saw_folio->contextComboBox()->currentText())) {
+	else if ( !m_project -> folioAutoNum().contains( m_saw_folio->contextComboBox()->currentText())) {
 		project()->addFolioAutoNum(m_saw_folio->contextComboBox()->currentText(), m_saw_folio->toNumContext());
 		m_saw_folio->contextComboBox() -> addItem(m_saw_folio->contextComboBox()->currentText());
 	}
@@ -631,6 +905,10 @@ void ProjectAutoNumConfigPage::removeContextConductor()
 	if ( m_saw_conductor->contextComboBox()-> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeConductorAutoNum (m_saw_conductor->contextComboBox()-> currentText() );
 	m_saw_conductor->contextComboBox()-> removeItem (m_saw_conductor->contextComboBox()-> currentIndex() );
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextConductor(m_saw_conductor->contextComboBox()->currentText());
 	project()->conductorAutoNumRemoved();
 }
 
@@ -644,6 +922,10 @@ void ProjectAutoNumConfigPage::removeContextFolio()
 	if ( m_saw_folio->contextComboBox() -> currentText() == tr("Nom de la nouvelle numérotation") ) return;
 	m_project -> removeFolioAutoNum (m_saw_folio->contextComboBox() -> currentText() );
 	m_saw_folio->contextComboBox() -> removeItem (m_saw_folio->contextComboBox() -> currentIndex() );
+	// removeItem() removes the current selection programmatically but
+	// textActivated() does not react to (by design, see buildConnections()).
+	// Refresh the displayed pattern explicitly so it matches the new selection.
+	updateContextFolio(m_saw_folio->contextComboBox()->currentText());
 	project()->folioAutoNumRemoved();
 }
 

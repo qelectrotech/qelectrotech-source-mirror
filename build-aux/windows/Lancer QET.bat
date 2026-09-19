@@ -10,5 +10,5 @@ rem "C:/Users/<USER>/AppData/Local/QElectroTech/QElectroTech"
 rem Sans l'option --data-dir, les données utilisateur (elements, titleblocks,
 rem log, ...) de QElectroTech sont stockées dans
 rem "C:/Users/<USER>/AppData/Roaming/QElectroTech/QElectroTech"
-set command=bin\qelectrotech.exe --common-elements-dir=elements/ --common-tbt-dir=titleblocks/ --lang-dir=lang/ -style windowsvista %*
+set command=bin\qelectrotech.exe --common-elements-dir=elements/ --common-tbt-dir=titleblocks/ --lang-dir=lang/ -platform windows:fontengine=freetype %*
 @start %command%

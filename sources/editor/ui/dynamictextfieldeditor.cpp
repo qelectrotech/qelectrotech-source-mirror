@@ -31,6 +31,7 @@
 #include <QColorDialog>
 #include <QGraphicsItem>
 #include <QPointer>
+#include <QSignalBlocker>
 
 DynamicTextFieldEditor::DynamicTextFieldEditor(QETElementEditor *editor,
 											   PartDynamicTextField *text_field,
@@ -140,9 +141,21 @@ void DynamicTextFieldEditor::updateForm()
 		ui -> m_user_text_le -> setText(m_text_field.data() -> text());
 		ui -> m_size_sb -> setValue(m_text_field.data() -> font().pointSize());
 		ui->m_keep_visual_rotation_cb->setChecked(m_text_field.data()->keepVisualRotation());
-#ifdef BUILD_WITHOUT_KF5
+		ui->m_rotation_point_center_cb->setChecked(m_text_field.data()->rotationPointCenter());
+#ifdef BUILD_WITHOUT_KF
 #else
-		m_color_kpb -> setColor(m_text_field.data() -> color());
+			//Block signals while loading the colour into the button.
+			//KColorButton::changed fires on a programmatic setColor() as well
+			//as on user interaction, and m_color_kpb_changed() applies the new
+			//colour to *every* selected part -- so merely showing the first
+			//part's colour would overwrite the colour of all the others.
+			//The other widgets above are immune because they are wired to
+			//user-only signals (editingFinished, clicked), which setValue()
+			//and setChecked() do not emit.
+		{
+			const QSignalBlocker blocker(m_color_kpb);
+			m_color_kpb -> setColor(m_text_field.data() -> color());
+		}
 #endif
 		ui -> m_width_sb -> setValue(m_text_field.data() -> textWidth());
 		ui -> m_font_pb -> setText(m_text_field -> font().family());
@@ -163,13 +176,13 @@ void DynamicTextFieldEditor::updateForm()
 			}
 		}
 
-		on_m_text_from_cb_activated(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
+		updateTextFromWidgetsEnabled(ui -> m_text_from_cb -> currentIndex()); //For enable the good widget
 	}
 }
 
 void DynamicTextFieldEditor::setupWidget()
 {
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #else
 	m_color_kpb = new KColorButton(this);
 	m_color_kpb->setObjectName(QString::fromUtf8("m_color_kpb"));
@@ -197,6 +210,11 @@ void DynamicTextFieldEditor::setUpConnections()
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::textWidthChanged, this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::compositeTextChanged,this, [=](){this -> updateForm();});
 	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::keepVisualRotationChanged, this, [=](){this -> updateForm();});
+	m_connection_list << connect(m_text_field.data(), &PartDynamicTextField::rotationPointCenterChanged, this, [=](){this -> updateForm();});
+
+	// Refresh info combo when element data changes (e.g. type switched to PLC-Slave)
+	m_connection_list << connect(elementEditor()->elementScene(), &ElementScene::elementInfoChanged,
+								 this, &DynamicTextFieldEditor::fillInfoComboBox);
 }
 
 void DynamicTextFieldEditor::disconnectConnections()
@@ -218,13 +236,49 @@ void DynamicTextFieldEditor::fillInfoComboBox()
 	ui -> m_elmt_info_cb -> clear();
 
 	QStringList strl;
-	auto type = elementEditor()->elementScene()->elementData().m_type;
+	auto ed = elementEditor()->elementScene()->elementData();
+	auto type = ed.m_type;
 
 	if((type & ElementData::AllReport) || (type == ElementData::ConductorDefinition)) {
 		strl = QETInformation::folioReportInfoKeys();
 	}
 	else {
 		strl = QETInformation::elementInfoKeys();
+
+		bool is_slave = (type == ElementData::Slave);
+		bool is_plc_slave = (is_slave
+							 && ed.m_slave_type == ElementData::PLCSlave);
+
+		if (is_plc_slave) {
+			QStringList plc_keys = {
+				QETInformation::ELMT_PLC_TYPE,
+				QETInformation::ELMT_PLC_ADDRESS,
+				QETInformation::ELMT_PLC_FUNCTION,
+				QETInformation::ELMT_PLC_COMMENT,
+				QETInformation::ELMT_PLC_CROSSREF,
+				QETInformation::ELMT_PLC_TC,
+				QETInformation::ELMT_PLC_T1,
+				QETInformation::ELMT_PLC_T2,
+				QETInformation::ELMT_PLC_T3,
+				QETInformation::ELMT_PLC_T4
+			};
+			strl = plc_keys + strl;
+		} else {
+			strl.removeAll(QETInformation::ELMT_PLC_TYPE);
+			strl.removeAll(QETInformation::ELMT_PLC_ADDRESS);
+			strl.removeAll(QETInformation::ELMT_PLC_FUNCTION);
+			strl.removeAll(QETInformation::ELMT_PLC_COMMENT);
+			strl.removeAll(QETInformation::ELMT_PLC_CROSSREF);
+			strl.removeAll(QETInformation::ELMT_PLC_TC);
+			strl.removeAll(QETInformation::ELMT_PLC_T1);
+			strl.removeAll(QETInformation::ELMT_PLC_T2);
+			strl.removeAll(QETInformation::ELMT_PLC_T3);
+			strl.removeAll(QETInformation::ELMT_PLC_T4);
+		}
+
+		if (is_slave) {
+			strl.prepend(QETInformation::ELMT_XREF);
+		}
 	}
 
 	for (int i=0; i<strl.size();++i) {
@@ -312,8 +366,8 @@ void DynamicTextFieldEditor::on_m_width_sb_editingFinished()
 	}
 }
 
-void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
-	Q_UNUSED(arg1)
+void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(int index) {
+	Q_UNUSED(index)
 
 	QString info = ui -> m_elmt_info_cb -> currentData().toString();
 	for (int i = 0; i < m_parts.length(); i++) {
@@ -327,7 +381,16 @@ void DynamicTextFieldEditor::on_m_elmt_info_cb_activated(const QString &arg1) {
 	}
 }
 
-void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
+/**
+	@brief DynamicTextFieldEditor::updateTextFromWidgetsEnabled
+	Enable the widget matching @p index (the "text from" combo box's current
+	index) and disable the other two. Purely cosmetic: called both from the
+	real user-activated slot below and from updateForm() when the form is
+	(re)filled for a part/selection, so it must never touch m_parts's data —
+	see on_m_text_from_cb_activated() for the part-mutating counterpart.
+*/
+void DynamicTextFieldEditor::updateTextFromWidgetsEnabled(int index)
+{
 	ui -> m_user_text_le -> setDisabled(true);
 	ui -> m_elmt_info_cb -> setDisabled(true);
 	ui -> m_composite_text_pb -> setDisabled(true);
@@ -341,6 +404,10 @@ void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
 	else {
 		ui->m_composite_text_pb->setEnabled(true);
 	}
+}
+
+void DynamicTextFieldEditor::on_m_text_from_cb_activated(int index) {
+	updateTextFromWidgetsEnabled(index);
 
 	DynamicElementTextItem::TextFrom tf;
 	if(index == 0) {
@@ -437,6 +504,19 @@ void DynamicTextFieldEditor::on_m_keep_visual_rotation_cb_clicked()
 		if(keep != m_parts[i] -> keepVisualRotation()) {
 			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "keepVisualRotation", m_parts[i] -> frame(), keep);
 			undo -> setText(tr("Modifier la conservation de l'angle"));
+			undoStack().push(undo);
+		}
+	}
+}
+
+void DynamicTextFieldEditor::on_m_rotation_point_center_cb_clicked()
+{
+	bool center = ui->m_rotation_point_center_cb->isChecked();
+
+	for (int i = 0; i < m_parts.length(); i++) {
+		if (center != m_parts[i]->rotationPointCenter()) {
+			QPropertyUndoCommand *undo = new QPropertyUndoCommand(m_parts[i], "rotationPointCenter", m_parts[i]->rotationPointCenter(), center);
+			undo->setText(tr("Modifier le point de rotation d'un champ texte"));
 			undoStack().push(undo);
 		}
 	}

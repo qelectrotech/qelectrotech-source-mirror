@@ -25,12 +25,8 @@
 #include "xmlelementcollection.h"
 #include "xmlprojectelementcollectionitem.h"
 
-#include <QFutureWatcher>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
+
 #include <QtConcurrentMap>
-#else
-#include <QtConcurrentRun>
-#endif
 
 /**
 	@brief ElementsCollectionModel::ElementsCollectionModel
@@ -40,6 +36,20 @@
 ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 	QStandardItemModel(parent)
 {
+}
+
+/**
+	@brief ElementsCollectionModel::~ElementsCollectionModel
+	Destructor. loadCollections() may still have background threads
+	(via QtConcurrent::map()) running setUpData() on this model's items
+	when the model is destroyed (e.g. the user cancels the dialog before
+	loading finishes). Wait for them here so QStandardItemModel's
+	destructor doesn't free items out from under them, which used to
+	crash the whole application (bugtracker #291).
+*/
+ElementsCollectionModel::~ElementsCollectionModel()
+{
+	m_future.waitForFinished();
 }
 
 /**
@@ -53,6 +63,7 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 {
 	if (role == Qt::DecorationRole) {
 		QStandardItem *item = itemFromIndex(index);
+		if (!item) return QStandardItemModel::data(index, role);
 
 		if (item->type() == FileElementCollectionItem::Type)
 			static_cast<FileElementCollectionItem*>(item)->setUpIcon();
@@ -297,11 +308,8 @@ void ElementsCollectionModel::loadCollections(bool common_collection,
 			this, &ElementsCollectionModel::loadingFinished);
 	connect(watcher, &QFutureWatcher<void>::finished, watcher, &QFutureWatcher<void>::deleteLater);
 
-	#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+
 	m_future = QtConcurrent::map(m_items_list_to_setUp, setUpData);
-	#else
-	qDebug() << "Help code for QT 6 or later";
-	#endif
 	watcher->setFuture(m_future);
 }
 
@@ -323,7 +331,6 @@ void ElementsCollectionModel::loadMacrosCollection()
 void ElementsCollectionModel::addMacrosCollection(bool set_data)
 {
 	QString macrosPath = QETApp::userMacrosDir();
-	qDebug() << "=== MAKRO PFAD CHECK ===" << macrosPath;
 	if (macrosPath.endsWith("/")) {
 		macrosPath.remove(macrosPath.length() - 1, 1);
 	}

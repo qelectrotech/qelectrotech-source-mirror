@@ -36,7 +36,12 @@ class NumerotationContext
 	bool addValue(const QString &,
 		      const QVariant & = QVariant(1),
 		      const int = 1,
-		      const int = 0);
+		      const int = 0,
+		      const int = 0,
+		      const QString & = QString());
+		/// Zero-padding mask of a part, e.g. "00"; empty means the type's
+		/// own natural width. See addValue().
+	static QString formatOf(const QStringList &item);
 	QString operator[] (const int &) const;
 	void operator << (const NumerotationContext &);
 	int size() const;
@@ -49,6 +54,11 @@ class NumerotationContext
 	QDomElement toXml(QDomDocument &, const QString&);
 	void fromXml(QDomElement &);
 	void replaceValue(int, QString);
+	void replaceIncrease(int, int);
+		/// Zero-pad a part's value the same way the real numbering engine
+		/// does (autonum::setSequentialToList in assignvariables.cpp), so a
+		/// UI preview of a part's value matches what actually gets rendered.
+	static QString formatValue(const QStringList &item);
 
 	private:
 	QStringList content_;

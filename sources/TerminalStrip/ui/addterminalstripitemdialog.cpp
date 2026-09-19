@@ -17,7 +17,7 @@
 */
 #include "addterminalstripitemdialog.h"
 #include "ui_addterminalstripitemdialog.h"
-
+#include "../../qetproject.h"
 #include "../../undocommand/addgraphicsobjectcommand.h"
 #include "../terminalstrip.h"
 #include "../GraphicsItem/terminalstripitem.h"

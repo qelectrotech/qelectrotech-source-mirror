@@ -86,7 +86,7 @@ DeleteQGraphicsItemCommand::DeleteQGraphicsItemCommand(
 	for (auto table : m_removed_contents.m_tables)
 	{
 			//Table is already managed, jump to next loop
-		if (m_table_scene_hash.keys().contains(table))
+		if (m_table_scene_hash.contains(table))
 			continue;
 
 		auto first_table  = table; //The first table if the table is linked to another
@@ -290,9 +290,9 @@ void DeleteQGraphicsItemCommand::undo()
 
 	for(DynamicElementTextItem *deti : m_removed_contents.m_element_texts)
 	{
-		if(m_elmt_text_hash.keys().contains(deti))
+		if(m_elmt_text_hash.contains(deti))
 			m_elmt_text_hash.value(deti)->addDynamicTextItem(deti);
-		else if (m_grp_texts_hash.keys().contains(deti))
+		else if (m_grp_texts_hash.contains(deti))
 		{
 			Element *elmt = m_grp_texts_hash.value(deti)->parentElement();
 			elmt->addDynamicTextItem(deti);

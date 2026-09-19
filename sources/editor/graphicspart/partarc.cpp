@@ -197,13 +197,13 @@ qreal PartArc::rotation() const {
 	return qRound(m_rot * 100.0) / 100.0;
 }
 
-void PartArc::flip() {
+void PartArc::flip(qreal axis_y) {
 	m_start_angle = (-1) * m_start_angle;
 	m_span_angle  = (-1) * m_span_angle;
 	while (m_start_angle < 0) { m_start_angle += (360*16); }
 	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }
 	auto p1 = mapToScene(m_rect.x(),m_rect.y());
-	p1.setY(((-1.0) * p1.y()) - m_rect.height());
+	p1.setY(2 * axis_y - p1.y() - m_rect.height());
 	p1 = mapFromScene(p1.x(),p1.y());
 	m_rect  = QRectF(m_rect.x(), p1.y(), m_rect.width(), m_rect.height());
 	prepareGeometryChange();
@@ -211,13 +211,13 @@ void PartArc::flip() {
 	emit rectChanged();
 }
 
-void PartArc::mirror() {
+void PartArc::mirror(qreal axis_x) {
 	m_start_angle = (180.0 * 16) - m_start_angle;
 	m_span_angle = (-1) * m_span_angle;
 	while (m_start_angle < 0) { m_start_angle += (360*16); }
 	while (m_start_angle >= (360*16)) { m_start_angle -= (360*16); }
 	auto p1 = mapToScene(m_rect.x(),m_rect.y());
-	p1.setX(((-1.0) * p1.x()) - m_rect.width());
+	p1.setX(2 * axis_x - p1.x() - m_rect.width());
 	p1 = mapFromScene(p1.x(), p1.y());
 	m_rect  = QRectF(p1.x(), m_rect.y(), m_rect.width(), m_rect.height());
 	prepareGeometryChange();

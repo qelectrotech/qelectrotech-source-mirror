@@ -51,7 +51,7 @@ class DynamicElementTextItem : public DiagramTextItem
 	Q_PROPERTY(bool frame READ frame WRITE setFrame NOTIFY frameChanged)
 	Q_PROPERTY(qreal textWidth READ textWidth WRITE setTextWidth NOTIFY textWidthChanged)
 	Q_PROPERTY(bool keepVisualRotation READ keepVisualRotation WRITE setKeepVisualRotation NOTIFY keepVisualRotationChanged)
-
+	Q_PROPERTY(bool rotationPointCenter READ rotationPointCenter WRITE setRotationPointCenter NOTIFY rotationPointCenterChanged)
 	public:
 
 		enum TextFrom {
@@ -72,6 +72,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		void plainTextChanged();
 		void textWidthChanged(qreal width);
 		void keepVisualRotationChanged(bool keep);
+		void rotationPointCenterChanged(bool center);
 
 	public:
 		DynamicElementTextItem(Element *parent_element);
@@ -88,7 +89,10 @@ class DynamicElementTextItem : public DiagramTextItem
 		Element *parentElement() const;
 		/// PDF export: slave cross-reference text item ("(folio-pos)") and its master target.
 		QGraphicsTextItem *slaveXrefItem() const { return m_slave_Xref_item; }
-		Element *masterElement() const { return m_master_element.data(); }
+		/// DXF export: the master-side cross-reference item (the table/cross
+		/// drawn next to a report/master element), if this text item has one.
+		CrossRefItem *masterXrefItem() const { return m_Xref_item; }
+		Element *masterElement() const;
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
@@ -108,10 +112,13 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
-		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
+		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;
+
+		void setRotationPointCenter(bool set);
+		bool rotationPointCenter() const;
 
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -172,6 +179,7 @@ class DynamicElementTextItem : public DiagramTextItem
 		qreal m_text_width = -1;
 		QPointF m_initial_position;
 		bool m_keep_visual_rotation = true;
+		bool m_rotation_point_center = false;
 		qreal m_visual_rotation_ref = 0;
 		bool m_move_parent = true;
 };

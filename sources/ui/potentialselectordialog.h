@@ -64,7 +64,11 @@ namespace Ui {
 
 	the static function chosenProperties,
 	open a dialog who ask user to make a choice between the given
-	properties
+	properties. If the dialog is cancelled (Cancel button, Escape, or the
+	window's close button) and @a cancelled is non-null, *cancelled is set
+	to true and an empty ConductorProperties() is returned; callers that
+	care about a real cancellation (as opposed to "no properties to choose
+	from") should check it rather than relying on the returned value alone.
 */
 class PotentialSelectorDialog : public QDialog
 {
@@ -73,7 +77,8 @@ class PotentialSelectorDialog : public QDialog
 	public:
 		static ConductorProperties chosenProperties(
 				QList<ConductorProperties> list,
-				QWidget *parent = nullptr);
+				QWidget *parent = nullptr,
+				bool *cancelled = nullptr);
 
 	public:
 		explicit PotentialSelectorDialog(

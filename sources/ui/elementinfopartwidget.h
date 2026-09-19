@@ -41,9 +41,9 @@ class ElementInfoPartWidget : public QWidget
 			QWidget *parent = nullptr);
 		~ElementInfoPartWidget() override;
 
-		QString key () const
-{return key_;}
+		QString key () const {return key_;}
 		QString text () const;
+		bool hasAcceptableInput() const;
 		void setText (const QString &);
 		void setPlaceHolderText (const QString &text);
 		void setFocusTolineEdit();

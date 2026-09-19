@@ -17,11 +17,14 @@
 */
 #include "projectdbmodel.h"
 
+#include <algorithm>
+
 #include "../../dataBase/projectdatabase.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "../../qetproject.h"
 #include "../../qetxml.h"
+#include "../../utils/qetutils.h"
 
 #include <QSqlError>
 #include <QSqlRecord>
@@ -145,7 +148,7 @@ bool ProjectDBModel::setData(const QModelIndex &index, const QVariant &value, in
 		return false;
 	}
 	m_index_0_0_data.insert(role, value);
-	emit dataChanged(index, index, QVector<int>(role));
+	emit dataChanged(index, index, {role});
 	return true;
 }
 
@@ -252,7 +255,7 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 	
 	//Add index 0,0 data
 	auto index_00 = document.createElement("index00");
-	index_00.setAttribute("font", m_index_0_0_data.value(Qt::FontRole).toString());
+	index_00.setAttribute("font", QETUtils::fontToString(m_index_0_0_data.value(Qt::FontRole).value<QFont>()));
 	auto me = QMetaEnum::fromType<Qt::Alignment>();
 	index_00.setAttribute("alignment", me.valueToKey(m_index_0_0_data.value(Qt::TextAlignmentRole).toInt()));
 	dom_element.appendChild(index_00);
@@ -265,7 +268,13 @@ QDomElement ProjectDBModel::toXml(QDomDocument &document) const
 		//We save all data except the display role, because he was generated in the fly
 		auto list = m_header_data.value(key).keys();
 		list.removeAll(Qt::DisplayRole);
-		
+			//Sorted: m_header_data's inner container is a QHash too, so its
+			//key order is randomised per process. modelHeaderDataToXml()
+			//writes the roles of a section in the order given here, so an
+			//unsorted list reordered the <data> children of that section on
+			//every save and kept the save irreproducible.
+		std::sort(list.begin(), list.end());
+
 		horizontal_.insert(key, list);
 	}
 	
@@ -290,7 +299,7 @@ void ProjectDBModel::fromXml(const QDomElement &element)
 	//Index 0,0
 	auto index_00 = element.firstChildElement("index00");
 	QFont font_;
-	font_.fromString(index_00.attribute("font"));
+	QETUtils::fontFromString(font_, index_00.attribute("font"));
 	m_index_0_0_data.insert(Qt::FontRole, font_);
 	auto me = QMetaEnum::fromType<Qt::Alignment>();
 	m_index_0_0_data.insert(Qt::TextAlignmentRole, me.keyToValue(index_00.attribute("alignment").toStdString().data()));
@@ -331,7 +340,7 @@ void ProjectDBModel::dataBaseUpdated()
 		auto row = m_record.size();
 		auto col = row ? m_record.first().count() : 1;
 		
-		emit dataChanged(this->index(0,0), this->index(row-1, col-1), QVector<int>(Qt::DisplayRole));
+		emit dataChanged(this->index(0,0), this->index(row-1, col-1), {Qt::DisplayRole});
 	}
 }
 

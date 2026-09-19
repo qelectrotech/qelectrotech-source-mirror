@@ -17,12 +17,16 @@
 */
 #include "qet.h"
 #include "qeticons.h"
+#include "shortcutmanager.h"
 
 #include <limits>
+#include <QBuffer>
+#include <QColorDialog>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
 #include <QFileInfo>
 #include <QSaveFile>
+#include <QSettings>
 #include <QTextStream>
 #include <QRegularExpression>
 #include <QActionGroup>
@@ -183,16 +187,8 @@ bool QET::orthogonalProjection(
 
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
-	QLineF::IntersectType it = line.
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-			intersect // ### Qt 6: remove
-#else
-			intersects
-#endif
-			(perpendicular_line, &intersection_point);
+
+	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
 
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
@@ -304,11 +300,19 @@ QString QET::ElementsAndConductorsSentence(
 
 	if (images_count) {
 		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n image(s)",
-			"part of a sentence listing the content of a diagram",
-			images_count
-		);
+		// Qt's %n only selects a grammatical singular/plural form (the
+		// "(s)" convention used by every other count here) -- it never
+		// spells the number out as a word, so getting "une image"
+		// instead of the literal "1 image" for the single-item case
+		// means handling that count outside %n entirely, with its own
+		// fixed string.
+		text += images_count == 1
+				? QObject::tr("une image", "part of a sentence listing the content of a diagram")
+				: QObject::tr(
+					"%n images",
+					"part of a sentence listing the content of a diagram",
+					images_count
+				);
 	}
 
 	if (shapes_count) {
@@ -545,20 +549,40 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 QStringList QET::splitWithSpaces(const QString &string) {
 	// les chaines sont separees par des espaces non echappes
 	// = avec un nombre nul ou pair de backslashes devant
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
-	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-						   QString
-#else
-						   Qt
-#endif
-						   ::SkipEmptyParts);
-
+	//
+	// This was a QRegularExpression("[^\\]?(?:\\\\)* ") split, which never
+	// worked: "[^\]" opens a character class whose "\]" is an escaped
+	// bracket, so the class is never closed and the pattern is invalid.
+	// QRegularExpression::isValid() was false, QString::split() warned
+	// "invalid QRegularExpression object" and returned an EMPTY list for
+	// every input -- so a second instance's file arguments were always
+	// dropped (bugtracker #248), not just ones containing spaces.
+	//
+	// A correct pattern is not expressible here either: the separator is a
+	// space preceded by an even-length run of backslashes, and PCRE2 has no
+	// variable-length lookbehind. Scanning explicitly is both correct and
+	// easier to read than the alternatives.
 	QStringList returned_list;
-	foreach(QString escaped_string, escaped_strings) {
-		returned_list << QET::unescapeSpaces(escaped_string);
+	QString current;
+	int backslashes = 0;
+	for (const QChar &c : string) {
+		if (c == QLatin1Char('\\')) {
+			++backslashes;
+			current += c;
+			continue;
+		}
+		if (c == QLatin1Char(' ') && backslashes % 2 == 0) {
+			if (!current.isEmpty()) {
+				returned_list << QET::unescapeSpaces(current);
+			}
+			current.clear();
+		} else {
+			current += c;
+		}
+		backslashes = 0;
+	}
+	if (!current.isEmpty()) {
+		returned_list << QET::unescapeSpaces(current);
 	}
 	return(returned_list);
 }
@@ -684,14 +708,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	}
 
 	QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if  (!file.commit())
@@ -785,10 +802,10 @@ QActionGroup *QET::depthActionGroup(QObject *parent)
 	edit_lower   ->setStatusTip(QObject::tr("Éloigne la ou les sélections"));
 	edit_backward->setStatusTip(QObject::tr("Envoie en arrière plan la ou les sélections"));
 
-	edit_raise   ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
-	edit_lower   ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
-	edit_backward->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_End);
-	edit_forward ->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
+	ShortcutManager::instance().registerAction(edit_raise, "depth.raise", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Up);
+	ShortcutManager::instance().registerAction(edit_lower, "depth.lower", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Down);
+	ShortcutManager::instance().registerAction(edit_backward, "depth.backward", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_End);
+	ShortcutManager::instance().registerAction(edit_forward, "depth.forward", QObject::tr("Profondeur"), Qt::CTRL | Qt::SHIFT | Qt::Key_Home);
 
 	edit_forward ->setData(QET::BringForward);
 	edit_raise   ->setData(QET::Raise);
@@ -822,14 +839,7 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 
 	QTextStream out(file);
 	out.seek(0);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if (opened_here) {
@@ -837,4 +847,56 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 	}
 
 	return(true);
+}
+
+/**
+	@brief QET::saveCustomColors
+	Save the 16 QColorDialog custom colors to QSettings so they persist
+	across application restarts.
+*/
+void QET::saveCustomColors()
+{
+	QByteArray ba;
+	QBuffer buf(&ba);
+	buf.open(QIODevice::WriteOnly);
+	QDataStream s(&buf);
+	s.setVersion(QDataStream::Qt_6_0);
+	for (int i = 0; i < 16; i++)
+		s << QColorDialog::customColor(i);
+	QSettings settings;
+	settings.setValue(QStringLiteral("color/customColors"), ba);
+}
+
+/**
+	@brief QET::loadCustomColors
+	Load the 16 QColorDialog custom colors from QSettings into Qt's
+	internal custom color array.  A short or corrupt buffer is ignored
+	so that unread slots keep their default rather than turning black.
+*/
+void QET::loadCustomColors()
+{
+	QSettings settings;
+	QByteArray ba = settings.value(QStringLiteral("color/customColors")).toByteArray();
+
+	// Fall back to the legacy ungrouped key used by earlier versions.
+	if (ba.isEmpty())
+		ba = settings.value(QStringLiteral("customColors")).toByteArray();
+
+	if (ba.isEmpty())
+		return;
+
+	QBuffer buf(&ba);
+	buf.open(QIODevice::ReadOnly);
+	QDataStream s(&buf);
+	s.setVersion(QDataStream::Qt_6_0);
+
+	QColor colors[16];
+	for (int i = 0; i < 16; i++)
+		s >> colors[i];
+
+	if (s.status() != QDataStream::Ok)
+		return;
+
+	for (int i = 0; i < 16; i++)
+		QColorDialog::setCustomColor(i, colors[i]);
 }

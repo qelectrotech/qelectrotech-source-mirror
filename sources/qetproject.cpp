@@ -34,7 +34,9 @@
 #include "TerminalStrip/terminalstrip.h"
 #include "qetxml.h"
 #include "qetversion.h"
+#include "undocommand/adddiagramcommand.h"
 
+#include <QElapsedTimer>
 #include <QHash>
 #include <QTimer>
 #include <QtConcurrentRun>
@@ -56,15 +58,31 @@ void QETProject::setBackupEnabled(bool enabled)
 	@param parent
 */
 QETProject::QETProject(QObject *parent) :
-	QObject              (parent),
-	m_titleblocks_collection(this),
-	m_data_base(this, this),
-	m_project_properties_handler{this}
+QObject              (parent),
+m_titleblocks_collection(this),
+m_data_base(this, this),
+m_project_properties_handler{this}
 {
 	setDefaultTitleBlockProperties(TitleBlockProperties::defaultProperties());
 
 	m_elements_collection = new XmlElementCollection(this);
 	init();
+
+	QSettings settings;
+
+		//Read auto break conductor default from global settings
+	m_auto_break_conductor = settings.value(QStringLiteral("diagrameditor/auto_break_conductor"), false).toBool();
+
+	int size = settings.beginReadArray(QStringLiteral("diagrameditor/defaultguides"));
+	for (int i = 0; i < size; ++i) {
+		settings.setArrayIndex(i);
+		GuideProperties g;
+		g.orientation = settings.value(QStringLiteral("orientation"), 0).toInt();
+		g.position = settings.value(QStringLiteral("position"), 0.0).toReal();
+		g.color = QColor(settings.value(QStringLiteral("color"), QStringLiteral("#ff0000")).toString());
+		m_default_guides.append(g);
+	}
+	settings.endArray();
 }
 
 ProjectPropertiesHandler &QETProject::projectPropertiesHandler()
@@ -93,8 +111,6 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	init();
 }
 
-#ifdef BUILD_WITHOUT_KF5
-#else
 /**
 	@brief QETProject::QETProject
 	@param backup : backup file to open, QETProject take ownership of backup.
@@ -129,7 +145,6 @@ QETProject::QETProject(KAutoSaveFile *backup, QObject *parent) :
 
 	init();
 }
-#endif
 
 /**
 	@brief QETProject::~QETProject
@@ -145,6 +160,11 @@ QETProject::~QETProject()
 		//We block database signal to avoid hundreds of unnecessary emitted signal
 		//due to deletion (diagram, item, etc...) and as much update made in the not yet deleted things.
 	m_data_base.blockSignals(true);
+		//Same reasoning for the rebuild itself : destroying a table relinks
+		//the tables that were chained to it, which re-queries the database,
+		//which rebuilds it completely -- for a project that is on its way out.
+		//Nothing can observe the result : the database is destroyed with it.
+	m_data_base.setUpdateBlocked(true);
 
 		//Each time a diagram is deleted we also remove it from m_diagram_list
 		//because a lot of thing append during the destructor of a diagram class
@@ -158,6 +178,30 @@ QETProject::~QETProject()
 	{
 		delete  diagram;
 		m_diagrams_list.removeOne(diagram);
+	}
+
+		//A diagram can be detached from this project (detachDiagram(), used by
+		//both removeDiagram() and RemoveDiagramCommand::redo()) and scheduled
+		//for deferred deletion via deleteLater(), without that deletion having
+		//actually run yet -- deleteLater() only fires on the next event-loop
+		//iteration, and nothing guarantees one runs before this destructor
+		//does. Such a diagram is no longer in m_diagrams_list (so the loop
+		//above never touches it) but is still a QObject child of this project
+		//(Diagram's constructor passes `project` straight to QGraphicsScene's
+		//parent argument). Left alone, it is destroyed later by QObject's own
+		//automatic child cleanup in ~QObject(), which runs AFTER m_data_base
+		//(a plain value member, destroyed by ordinary C++ member teardown)
+		//has already been destroyed -- and Diagram's destructor calls back
+		//into dataBase()->removeElement() for each of its elements, so that
+		//ordering is a use-after-free (confirmed by crash: SIGSEGV in
+		//QSqlResult::exec(), called from Diagram::~Diagram() by way of
+		//Diagram::removeItem(), by way of QObjectPrivate::deleteChildren()).
+		//Delete any such stragglers now, synchronously, while m_data_base is
+		//still alive. The deleteLater() event, if it is ever processed
+		//afterward, is a safe no-op on an already-deleted QObject.
+	const auto orphaned_diagrams = findChildren<Diagram *>(QString(), Qt::FindDirectChildrenOnly);
+	for (Diagram *diagram : orphaned_diagrams) {
+		delete diagram;
 	}
 }
 
@@ -188,7 +232,7 @@ void QETProject::init()
 	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, &QETProject::removeDiagramsTitleBlockTemplate);
 
 	m_undo_stack = new QUndoStack(this);
-	connect(m_undo_stack, SIGNAL(cleanChanged(bool)), this, SLOT(undoStackChanged(bool)));
+	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
@@ -208,6 +252,39 @@ void QETProject::init()
 		});
 		m_autosave_timer.start();
 	}
+
+}
+
+/**
+	@brief QETProject::derivedUuid
+	Name-based (version 5) uuid for a project file that has no uuid yet,
+	because it was written before the uuid was persisted.
+
+	A random uuid would do as an identity, but it would make saving an
+	unmodified legacy project non-reproducible : every load would invent a
+	different one and write it out (see #754). The uuid is therefore derived
+	from the content of the file, so the same file always yields the same
+	uuid, while two different projects practically never share one.
+	Carriage returns are dropped first, so that a checkout with CRLF line
+	endings (Windows, git autocrlf) gives the same uuid as one with LF.
+
+	It is computed once, when the file is loaded, and saved from then on :
+	editing, renaming or moving the project later does not change it.
+	@param content : the raw content of the project file
+	@return the derived uuid
+*/
+QUuid QETProject::derivedUuid(const QByteArray &content)
+{
+		//Fixed namespace for QElectroTech project uuids, never change it :
+		//doing so would change the uuid given to every legacy project.
+	static const QUuid project_namespace(
+				QStringLiteral("{c8c75719-0fea-4b1c-9f4b-2dd179fb2f0c}"));
+
+	QByteArray normalized(content);
+	normalized.replace('\r', QByteArray());
+	return QUuid::createUuidV5(project_namespace,
+							   QByteArrayLiteral("qet-project-legacy\n")
+							   + normalized);
 }
 
 /**
@@ -217,6 +294,9 @@ void QETProject::init()
 */
 QETProject::ProjectState QETProject::openFile(QFile *file)
 {
+	QElapsedTimer load_timer;
+	load_timer.start();
+
 	bool opened_here = file->isOpen() ? false : true;
 	if (!file->isOpen()
 			&& !file->open(QIODevice::ReadOnly
@@ -226,18 +306,40 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 	QFileInfo fi(*file);
 	setFilePath(fi.absoluteFilePath());
 
-		//Extract the content of the xml
+		//Extract the content of the xml. The raw bytes are kept : a project
+		//file without a persisted uuid derives its uuid from them.
+	const QByteArray content = file->readAll();
 	QDomDocument xml_project;
-	if (!xml_project.setContent(file))
+	if (!xml_project.setContent(content))
 	{
 		if(opened_here) {
 			file->close();
 		}
 		return XmlParsingFailed;
 	}
+	const qint64 xml_parse_ms = load_timer.elapsed();
+
+		//Restore the persisted project uuid before anything else is built
+		//from the file. The project database already got its connection name
+		//from the uuid created at construction, it does not depend on this.
+	const QDomElement root_elmt = xml_project.documentElement();
+	if (root_elmt.tagName() == QLatin1String("project"))
+	{
+		const QUuid persisted_uuid(root_elmt.attribute(QStringLiteral("uuid")));
+		m_uuid = persisted_uuid.isNull() ? derivedUuid(content)
+										 : persisted_uuid;
+	}
 
 		//Build the project from the xml
 	readProjectXml(xml_project);
+
+	const qint64 total_ms = load_timer.elapsed();
+	qInfo().nospace().noquote()
+			<< "Project \"" << fi.fileName() << "\" ("
+			<< fi.size() / 1024 << " KiB) opened in "
+			<< total_ms / 1000.0 << " seconds (xml parsing "
+			<< xml_parse_ms / 1000.0 << ", content "
+			<< (total_ms - xml_parse_ms) / 1000.0 << ")";
 
 	if (!fi.isWritable()) {
 		setReadOnly(true);
@@ -342,15 +444,12 @@ void QETProject::setFilePath(const QString &filepath)
 	if (filepath == m_file_path) {
 		return;
 	}
-#ifdef BUILD_WITHOUT_KF5
-#else
 		//Don't close/re-point the backup file while a backup is still writing it.
 	m_backup_future.waitForFinished();
 	if (m_backup_file.isOpen()) {
 		m_backup_file.close();
 	}
 	m_backup_file.setManagedFile(QUrl::fromLocalFile(filepath));
-#endif
 	m_file_path = filepath;
 
 	QFileInfo fi(m_file_path);
@@ -435,7 +534,9 @@ QString QETProject::pathNameTitle() const
 			)
 		).arg(final_title);
 	}
-	if (m_modified) {
+	// Same condition as projectWasModified(): project-options changeg (m_modified) OR the undo stack sitting away from
+	// its clean index. 
+	if (m_modified || !m_undo_stack->isClean()) {
 		final_title = QString(
 			tr(
 				"%1 [modifié]",
@@ -506,6 +607,23 @@ void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 TitleBlockProperties QETProject::defaultTitleBlockProperties() const
 {
 	return(default_titleblock_properties_);
+}
+
+QList<GuideProperties> QETProject::defaultGuides() const {
+	return m_default_guides;
+}
+
+void QETProject::setDefaultGuides(const QList<GuideProperties> &guides) {
+	if (m_default_guides != guides) {
+		m_default_guides = guides;
+		setModified(true);
+
+		for (Diagram *diagram : m_diagrams_list) {
+			if (diagram) {
+				diagram->updateProjectGuides(m_default_guides);
+			}
+		}
+	}
 }
 
 /**
@@ -688,6 +806,7 @@ QHash <QString, NumerotationContext> QETProject::folioAutoNum() const
 */
 void QETProject::addConductorAutoNum(const QString& key, const NumerotationContext& context) {
 	m_conductor_autonum.insert(key, context);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -701,6 +820,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 {
 	m_element_autonum.insert(key, context);
 	emit elementAutoNumAdded(key);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -712,6 +832,7 @@ void QETProject::addElementAutoNum(const QString& key, const NumerotationContext
 */
 void QETProject::addFolioAutoNum(const QString& key, const NumerotationContext& context) {
 	m_folio_autonum.insert(key, context);
+	emit autoNumContextUpdated();
 }
 
 /**
@@ -887,6 +1008,28 @@ void QETProject::setAutoConductor(bool ac)
 }
 
 /**
+	@brief QETProject::autoBreakConductor
+	@return true if use of auto break conductor is authorized.
+	See also Q_PROPERTY autoBreakConductor
+*/
+bool QETProject::autoBreakConductor() const
+{
+	return m_auto_break_conductor;
+}
+
+/**
+	@brief QETProject::setAutoBreakConductor
+	@param abc
+	Enable the use of auto break conductor if true
+	See also Q_PROPERTY autoBreakConductor
+*/
+void QETProject::setAutoBreakConductor(bool abc)
+{
+	if (abc != m_auto_break_conductor)
+		m_auto_break_conductor = abc;
+}
+
+/**
 	@brief QETProject::autoFolioNumberingNewFolios
 	emit Signal to add new Diagram with autonum
 	properties
@@ -942,12 +1085,24 @@ QDomDocument QETProject::toXml()
 		setTitle(QFileInfo(m_file_path).completeBaseName());
 	}
 	project_root.setAttribute("title", project_title_);
+		//Persist the project identity, so that the project keeps the same
+		//uuid across save/load. Without it every load invents a new one, and
+		//nothing outside the running instance (version control, a cloud or
+		//key-value store, a lock...) can tell which project a file belongs to.
+	project_root.setAttribute(QStringLiteral("uuid"), m_uuid.toString());
 	xml_doc.appendChild(project_root);
 
 	// titleblock templates, if any
 	if (m_titleblocks_collection.templates().count()) {
 		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
-		foreach (QString template_name, m_titleblocks_collection.templates()) {
+			//Sorted, because templates() returns QHash::keys() and Qt
+			//randomises hash order per process. Writing them unsorted put the
+			//<titleblocktemplate> children in a different order on every save,
+			//which is what made a project holding more than one template save
+			//irreproducibly.
+		QStringList template_names = m_titleblocks_collection.templates();
+		template_names.sort();
+		for (const QString &template_name : std::as_const(template_names)) {
 			QDomElement e = m_titleblocks_collection.getTemplateXmlDescription(template_name);
 			titleblocktemplates_elmt.appendChild(xml_doc.importNode(e, true));
 		}
@@ -958,6 +1113,9 @@ QDomDocument QETProject::toXml()
 	QDomElement project_properties = xml_doc.createElement("properties");
 	writeProjectPropertiesXml(project_properties);
 	project_root.appendChild(project_properties);
+
+	// local, non-transmitted usage tracking (time spent on this project)
+	writeUsageXml(project_root);
 
 	// Properties for news diagrams
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -1155,6 +1313,22 @@ ElementsLocation QETProject::importElement(ElementsLocation &location)
 			}
 			//Erase the existing element, and use the newer instead
 			else if (action == QET::Erase) {
+				// Warn if the new element introduces slave contact groups
+				QDomElement new_kind = location.xml().firstChildElement("kindInformations");
+				if (!new_kind.firstChildElement("slaveContactGroups").isNull()) {
+					QMessageBox::StandardButton answer = QET::QetMessageBox::warning(nullptr,
+						tr("Système de contacts modifié"),
+						tr("Le nouvel élément définit des groupes de contacts esclaves.\n"
+						   "Les éléments esclaves existants ne seront pas automatiquement "
+						   "assignés. Vous devrez relier manuellement les esclaves "
+						   "et assigner les groupes de contacts.\n\n"
+						   "Voulez-vous continuer ?"),
+						QMessageBox::Yes | QMessageBox::No,
+						QMessageBox::Yes);
+					if (answer == QMessageBox::No) {
+						return ElementsLocation();
+					}
+				}
 				ElementsLocation parent_loc = existing_location.parent();
 				return m_elements_collection->copy(location, parent_loc);
 			}
@@ -1292,6 +1466,8 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 /**
 	@brief QETProject::addNewDiagram
 	Add a new diagram in project at position pos.
+	This is pushed as an undoable AddDiagramCommand: use undoStack()->undo()
+	to remove it again.
 	@param pos
 	@return the new created diagram
 */
@@ -1307,14 +1483,15 @@ Diagram *QETProject::addNewDiagram(int pos)
 	diagram->border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram->defaultConductorProperties = defaultConductorProperties();
 
-	addDiagram(diagram, pos);
-	emit diagramAdded(this, diagram);
+	m_undo_stack->push(new AddDiagramCommand(this, diagram, pos));
 	return(diagram);
 }
 
 /**
 	@brief QETProject::removeDiagram
-	Remove diagram from project
+	Remove diagram from project immediately (not undoable). UI code should
+	generally go through ProjectView::removeDiagram() instead, which pushes
+	an undoable RemoveDiagramCommand.
 	@param diagram
 */
 void QETProject::removeDiagram(Diagram *diagram)
@@ -1324,13 +1501,8 @@ void QETProject::removeDiagram(Diagram *diagram)
 		return;
 	}
 
-	if (m_diagrams_list.removeAll(diagram))
-	{
-		emit diagramRemoved(this, diagram);
-		diagram->deleteLater();
-	}
-
-	updateDiagramsFolioData();
+	detachDiagram(diagram);
+	diagram->deleteLater();
 }
 
 /**
@@ -1439,9 +1611,17 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 	}
 
 	m_data_base.blockSignals(true);
+		//Blocking the signals is not enough : every table model built below
+		//re-queries the database, and each of those queries used to trigger a
+		//complete rebuild of it. The content being loaded is the same for all
+		//of them, so a single rebuild once everything is in place is enough.
+	m_data_base.setUpdateBlocked(true);
 
 		//Load the project-wide properties
 	readProjectPropertiesXml(xml_project);
+
+		//Load the local, non-transmitted usage tracking
+	readUsageXml(xml_project);
 
 		//Load the default properties for the new diagrams
 	readDefaultPropertiesXml(xml_project);
@@ -1449,21 +1629,45 @@ void QETProject::readProjectXml(QDomDocument &xml_project)
 		//load the embedded titleblock templates
 	m_titleblocks_collection.fromXml(xml_project.documentElement());
 
+		/* Timings of the phases below are logged so the cost of opening a
+		 * project can be attributed. Reading the XML and building the objects
+		 * is mostly independent of the Qt version, while refreshing the
+		 * diagrams is graphics-scene work -- keeping them apart is what makes
+		 * the numbers comparable between builds.
+		 */
+	QElapsedTimer phase_timer;
+	phase_timer.start();
+
 		//Load the embedded elements collection
 	readElementsCollectionXml(xml_project);
+	const qint64 elements_ms = phase_timer.restart();
 
 		//Load the diagrams
 	readDiagramsXml(xml_project);
+	const qint64 diagrams_ms = phase_timer.restart();
 
 		//Load the terminal strip
 	readTerminalStripXml(xml_project);
+	const qint64 strips_ms = phase_timer.restart();
 
 		//Now that all are loaded we refresh content of the project.
 	refresh();
-
+	const qint64 refresh_ms = phase_timer.restart();
 
 	m_data_base.blockSignals(false);
+	m_data_base.setUpdateBlocked(false);
 	m_data_base.updateDB();
+	const qint64 database_ms = phase_timer.elapsed();
+
+	qInfo().nospace()
+			<< "Project content built in "
+			<< (elements_ms + diagrams_ms + strips_ms
+				+ refresh_ms + database_ms) / 1000.0
+			<< " seconds (elements collection " << elements_ms / 1000.0
+			<< ", diagrams " << diagrams_ms / 1000.0
+			<< ", terminal strips " << strips_ms / 1000.0
+			<< ", refresh " << refresh_ms / 1000.0
+			<< ", database " << database_ms / 1000.0 << ")";
 
 	m_state = Ok;
 }
@@ -1574,6 +1778,17 @@ void QETProject::readProjectPropertiesXml(QDomDocument &xml_project)
 }
 
 /**
+	@brief QETProject::readUsageXml
+	Load the local, non-transmitted usage tracking (time spent on this
+	project) from the XML description of the project.
+	@param xml_project : the xml description of the project
+*/
+void QETProject::readUsageXml(QDomDocument &xml_project)
+{
+	m_project_properties_handler.usageTracker().fromXml(xml_project.documentElement());
+}
+
+/**
 	@brief QETProject::readDefaultPropertiesXml
 	load default properties for new diagram, found in the xml of this project
 	or by default find in the QElectroTech global conf
@@ -1595,7 +1810,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	m_default_xref_properties	   = XRefProperties::      defaultProperties();
 
 		//Read values indicate in project
-	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt, report_elmt, xref_elmt, conds_autonums, folio_autonums, element_autonums, guides_elmt;
 
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling())
 	{
@@ -1618,6 +1833,8 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			folio_autonums = child_elmt;
 		else if (child_elmt.tagName()== QLatin1String("element_autonums"))
 			element_autonums = child_elmt;
+		else if (child_elmt.tagName() == QLatin1String("guides"))
+			guides_elmt = child_elmt;
 	}
 
 		// size, titleblock, conductor, report, conductor autonum, folio autonum, element autonum
@@ -1638,6 +1855,7 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 	{
 		m_current_conductor_autonum = conds_autonums.attribute(QStringLiteral("current_autonum"));
 		m_freeze_new_conductors = conds_autonums.attribute(QStringLiteral("freeze_new_conductors")) == QLatin1String("true");
+		m_auto_break_conductor = conds_autonums.attribute(QStringLiteral("auto_break_conductors")) == QLatin1String("true");
 		for (auto elmt : QET::findInDomElement(conds_autonums, QStringLiteral("conductor_autonum")))
 		{
 			NumerotationContext nc;
@@ -1663,6 +1881,18 @@ void QETProject::readDefaultPropertiesXml(QDomDocument &xml_project)
 			NumerotationContext nc;
 			nc.fromXml(elmt);
 			m_element_autonum.insert(elmt.attribute(QStringLiteral("title")), nc);
+		}
+	}
+	// Read guides from XML (if missing, e.g. in old projects, list stays empty)
+	m_default_guides.clear();
+
+	if (!guides_elmt.isNull()) {
+		for (auto elmt : QET::findInDomElement(guides_elmt, QStringLiteral("guide"))) {
+			GuideProperties g;
+			g.orientation = elmt.attribute(QStringLiteral("orientation"), QStringLiteral("0")).toInt();
+			g.position = elmt.attribute(QStringLiteral("position"), QStringLiteral("0.0")).toDouble();
+			g.color = QColor(elmt.attribute(QStringLiteral("color"), QStringLiteral("#ff0000")));
+			m_default_guides.append(g);
 		}
 	}
 }
@@ -1692,6 +1922,15 @@ void QETProject::readTerminalStripXml(const QDomDocument &xml_project)
 */
 void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
 	m_project_properties.toXml(xml_element);
+}
+
+/**
+	@brief QETProject::writeUsageXml
+	Export the local, non-transmitted usage tracking (time spent on this
+	project) as a <usage> child of \a xml_element.
+*/
+void QETProject::writeUsageXml(QDomElement &xml_element) {
+	m_project_properties_handler.usageTracker().toXml(xml_element);
 }
 
 /**
@@ -1730,7 +1969,14 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 		// export default XRef properties
 	QDomElement xrefs_elmt = xml_document.createElement("xrefs");
-	for (QString key : defaultXRefProperties().keys())
+		//Sorted, because defaultXRefProperties() is a QHash and its key order
+		//is randomised per process. Writing it unsorted made two saves of an
+		//unchanged project differ only in the order of these <xref> children,
+		//so a save was not reproducible and diffing two saved files showed
+		//spurious changes.
+	QStringList xref_keys = defaultXRefProperties().keys();
+	xref_keys.sort();
+	for (QString &key : xref_keys)
 	{
 		auto xrp = defaultXRefProperties(key);
 		xrp.setKey(key);
@@ -1743,7 +1989,13 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement conductor_autonums = xml_document.createElement("conductors_autonums");
 	conductor_autonums.setAttribute("current_autonum", m_current_conductor_autonum);
 	conductor_autonums.setAttribute("freeze_new_conductors", m_freeze_new_conductors ? "true" : "false");
-	foreach (QString key, conductorAutoNum().keys()) {
+	conductor_autonums.setAttribute("auto_break_conductors", m_auto_break_conductor ? "true" : "false");
+		//Sorted for the same reason as the xrefs above: these three
+		//collections are QHash, whose key order is randomised per process,
+		//so an unsorted write reorders these children on every save.
+	QStringList conductor_autonum_keys = conductorAutoNum().keys();
+	conductor_autonum_keys.sort();
+	for (const QString &key : std::as_const(conductor_autonum_keys)) {
 	QDomElement conductor_autonum = conductorAutoNum(key).toXml(xml_document, "conductor_autonum");
 		if (key != "" && conductorAutoNumFormula(key) != "") {
 			conductor_autonum.setAttribute("title", key);
@@ -1755,7 +2007,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 
 	//Export Folio Autonums
 	QDomElement folio_autonums = xml_document.createElement("folio_autonums");
-	foreach (QString key, folioAutoNum().keys()) {
+	QStringList folio_autonum_keys = folioAutoNum().keys();
+	folio_autonum_keys.sort();
+	for (const QString &key : std::as_const(folio_autonum_keys)) {
 	QDomElement folio_autonum = folioAutoNum(key).toXml(xml_document, "folio_autonum");
 		folio_autonum.setAttribute("title", key);
 		folio_autonums.appendChild(folio_autonum);
@@ -1766,7 +2020,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 	QDomElement element_autonums = xml_document.createElement("element_autonums");
 	element_autonums.setAttribute("current_autonum", m_current_element_autonum);
 	element_autonums.setAttribute("freeze_new_elements", m_freeze_new_elements ? "true" : "false");
-	foreach (QString key, elementAutoNum().keys()) {
+	QStringList element_autonum_keys = elementAutoNum().keys();
+	element_autonum_keys.sort();
+	for (const QString &key : std::as_const(element_autonum_keys)) {
 	QDomElement element_autonum = elementAutoNum(key).toXml(xml_document, "element_autonum");
 		if (key != "" && elementAutoNumFormula(key) != "") {
 			element_autonum.setAttribute("title", key);
@@ -1775,6 +2031,17 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element)
 		}
 	}
 	xml_element.appendChild(element_autonums);
+
+	// Export default guides
+	QDomElement guides_elmt = xml_document.createElement("guides");
+	for (const auto &g : m_default_guides) {
+		QDomElement guide_elmt = xml_document.createElement("guide");
+		guide_elmt.setAttribute("orientation", static_cast<int>(g.orientation));
+		guide_elmt.setAttribute("position", g.position);
+		guide_elmt.setAttribute("color", g.color.name());
+		guides_elmt.appendChild(guide_elmt);
+	}
+	xml_element.appendChild(guides_elmt);
 }
 
 /**
@@ -1803,6 +2070,33 @@ void QETProject::addDiagram(Diagram *diagram, int pos)
 	}
 
 	updateDiagramsFolioData();
+	emit diagramAdded(this, diagram);
+}
+
+/**
+	@brief QETProject::detachDiagram
+	Inverse of addDiagram(): removes \p diagram from this project's diagram
+	list and disconnects the signals set up by addDiagram(), without
+	destroying it. Used by RemoveDiagramCommand (and removeDiagram()) so a
+	removed diagram can be parked and later reinserted by undo.
+	@param diagram
+*/
+void QETProject::detachDiagram(Diagram *diagram)
+{
+	if (!diagram || !m_diagrams_list.contains(diagram)) {
+		return;
+	}
+
+	disconnect(&diagram->border_and_titleblock,
+		&BorderTitleBlock::needFolioData,
+		this,
+		&QETProject::updateDiagramsFolioData);
+	disconnect(diagram, &Diagram::usedTitleBlockTemplateChanged,
+		this, &QETProject::usedTitleBlockTemplateChanged);
+
+	m_diagrams_list.removeAll(diagram);
+	updateDiagramsFolioData();
+	emit diagramRemoved(this, diagram);
 }
 
 /**
@@ -1813,24 +2107,17 @@ void QETProject::writeBackup()
 {
 	if (!m_backup_enabled)
 		return;
-#ifdef BUILD_WITHOUT_KF5
-#else
-#	if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
 		//Don't launch a new backup while the previous one is still writing:
 		//both would write through &m_backup_file on different threads.
 	if (m_backup_future.isRunning())
 		return;
+		//Capture the document by value (implicitly shared, so cheap): the
+		//Qt5-style QtConcurrent::run(function, reference-args) call did not
+		//survive the Qt6 API change, a lambda behaves identically on both.
 	QDomDocument xml_project(toXml());
-	m_backup_future = QtConcurrent::run(
-				QET::writeToFile,xml_project,&m_backup_file,nullptr);
-#	else
-#		if TODO_LIST
-#			pragma message("@TODO remove code for QT 6 or later")
-#		endif
-	qDebug() << "Help code for QT 6 or later"
-			 << "QtConcurrent::run its backwards now...function, object, args";
-#	endif
-#endif
+	m_backup_future = QtConcurrent::run([this, xml_project]() mutable {
+		return QET::writeToFile(xml_project, &m_backup_file, nullptr);
+	});
 }
 
 /**
@@ -1983,7 +2270,7 @@ void QETProject::updateDiagramsFolioData()
 		}
 	}
 
-	for (const auto &diagram_ : qAsConst(m_diagrams_list)) {
+	for (const auto &diagram_ : std::as_const(m_diagrams_list)) {
 		diagram_->update();
 	}
 }

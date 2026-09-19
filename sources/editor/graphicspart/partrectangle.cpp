@@ -187,11 +187,11 @@ qreal PartRectangle::rotation() const {
 	return qRound(m_rot * 100.0) / 100.0;
 }
 
-void PartRectangle::flip() {
+void PartRectangle::flip(qreal axis_y) {
 	auto height = m_rect.height();
 	auto p1 = mapToScene(m_rect.x(),m_rect.y());
 	qreal x = p1.x();
-	qreal y = ((-1.0) * p1.y()) - height;
+	qreal y = 2 * axis_y - p1.y() - height;
 	p1 = mapFromScene(x, y);
 	m_rect.setX(p1.x());
 	m_rect.setY(p1.y());
@@ -201,10 +201,10 @@ void PartRectangle::flip() {
 	emit rectChanged();
 }
 
-void PartRectangle::mirror() {
+void PartRectangle::mirror(qreal axis_x) {
 	auto width = m_rect.width();
 	auto p1 = mapToScene(m_rect.x(),m_rect.y());
-	qreal x = ((-1.0) * p1.x()) - width;
+	qreal x = 2 * axis_x - p1.x() - width;
 	qreal y = p1.y();
 	p1 = mapFromScene(x, y);
 	m_rect.setX(p1.x());

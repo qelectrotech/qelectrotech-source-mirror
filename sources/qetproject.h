@@ -28,8 +28,9 @@
 #include "properties/xrefproperties.h"
 #include "titleblock/templatescollection.h"
 #include "titleblockproperties.h"
-
-#ifdef BUILD_WITHOUT_KF5
+#include "diagram.h"
+#ifdef BUILD_WITHOUT_KF
+#	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -48,10 +49,23 @@ class XmlElementCollection;
 class QTimer;
 class TerminalStrip;
 
-#ifdef BUILD_WITHOUT_KF5
-#else
-class KAutoSaveFile;
-#endif
+
+#include <QColor>
+
+struct GuideProperties {
+	int orientation; // 0 = Horizontal, 1 = Vertical
+	qreal position;
+	QColor color;
+
+	bool operator==(const GuideProperties &other) const {
+		return orientation == other.orientation &&
+		position == other.position &&
+		color == other.color;
+	}
+	bool operator!=(const GuideProperties &other) const {
+		return !(*this == other);
+	}
+};
 
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
@@ -61,6 +75,8 @@ class KAutoSaveFile;
 */
 class QETProject : public QObject
 {
+		friend class AddDiagramCommand;
+		friend class RemoveDiagramCommand;
 		Q_OBJECT
 	public :
 		//This enum lists possible states for a particular project.
@@ -74,15 +90,13 @@ class QETProject : public QObject
 		};
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
+	Q_PROPERTY(bool autoBreakConductor READ autoBreakConductor WRITE setAutoBreakConductor)
 
 		// constructors, destructor
 	public:
 		QETProject (QObject *parent = nullptr);
 		QETProject (const QString &path, QObject * = nullptr);
-#ifdef BUILD_WITHOUT_KF5
-#else
 		QETProject (KAutoSaveFile *backup, QObject *parent=nullptr);
-#endif
 		~QETProject() override;
 
 	private:
@@ -115,6 +129,9 @@ class QETProject : public QObject
 			///DEFAULT PROPERTIES
 		BorderProperties defaultBorderProperties() const;
 		void             setDefaultBorderProperties(const BorderProperties &);
+
+		QList<GuideProperties> defaultGuides() const;
+		void setDefaultGuides(const QList<GuideProperties> &guides);
 
 		TitleBlockProperties defaultTitleBlockProperties() const;
 		void                 setDefaultTitleBlockProperties(const TitleBlockProperties &);
@@ -165,9 +182,11 @@ class QETProject : public QObject
 		void setFreezeNewConductors(bool);
 
 		bool autoConductor () const;
+		bool autoBreakConductor () const;
 		bool autoElement () const;
 		bool autoFolio () const;
 		void setAutoConductor (bool ac);
+		void setAutoBreakConductor (bool abc);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
@@ -218,8 +237,13 @@ class QETProject : public QObject
 		void conductorAutoNumAdded();
 		void conductorAutoNumRemoved();
 		void folioAutoNumAdded();
+			/// A numerotation context's *values* changed -- as happens every
+			/// time an element or conductor consumes the next number, not
+			/// only when a rule is added or removed. Deliberately separate
+			/// from the *Added/*Removed signals above, which make listeners
+			/// rebuild their rule lists; this one just says "re-read me".
+		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
-		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
 
@@ -228,7 +252,26 @@ class QETProject : public QObject
 		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void usedTitleBlockTemplateChanged(const QString &);
-		void undoStackChanged (bool a) {if (!a) setModified(true);}
+		/* Deliberately does NOT touch m_modified: m_modified /
+		 * setModified() track project-OPTIONS changes only (see
+		 * projectOptionsWereModified()), which have no undo
+		 * entry and so must stay set until an explicit write().
+		 * Diagram-content changes are tracked by the undo
+		 * stack's own clean index instead, and projectWasModified()
+		 * already ORs the two together -- that combined value is
+		 * what actually answers "does this project have unsaved
+		 * changes", so re-derive and broadcast it here on every
+		 * clean/dirty transition (covering, in particular, an
+		 * Undo that walks the stack back to its clean index).
+		 * Latching m_modified itself to the undo stack's dirty
+		 * state, the way this slot did before, is a one-way trap:
+		 * cleanChanged(true) would never come back through here
+		 * to un-set it, so a plain content edit stayed marked as
+		 * unsaved even after being fully undone. */
+		void undoStackChanged (bool /*a*/) {
+			emit projectModified(this, projectWasModified());
+			emit projectInformationsChanged(this);
+		}
 
 	private:
 		void readProjectXml(QDomDocument &xml_project);
@@ -237,13 +280,17 @@ class QETProject : public QObject
 		void readProjectPropertiesXml(QDomDocument &xml_project);
 		void readDefaultPropertiesXml(QDomDocument &xml_project);
 		void readTerminalStripXml(const QDomDocument &xml_project);
+		void readUsageXml(QDomDocument &xml_project);
 
 		void writeProjectPropertiesXml(QDomElement &);
 		void writeDefaultPropertiesXml(QDomElement &);
+		void writeUsageXml(QDomElement &);
 		void addDiagram(Diagram *diagram, int pos = -1);
+		void detachDiagram(Diagram *diagram);
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
+		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();
 
 	// attributes
@@ -268,6 +315,8 @@ class QETProject : public QObject
 		QString read_only_file_path_;
 			/// Default dimensions and properties for new diagrams created within the project
 		BorderProperties default_border_properties_ = BorderProperties::defaultProperties();
+			/// Default guides for new diagrams created within the project
+		QList<GuideProperties> m_default_guides;
 			/// Default conductor properties for new diagrams created within the project
 		ConductorProperties default_conductor_properties_ = ConductorProperties::defaultProperties();
 			/// Default title block properties for new diagrams created within the project
@@ -291,16 +340,14 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
 		bool m_auto_conductor = true;
+	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;
 		bool m_freeze_new_elements = false;
 		bool m_freeze_new_conductors = false;
 		QTimer m_save_backup_timer,
 			   m_autosave_timer;
 		QFuture<bool> m_backup_future;
-#ifdef BUILD_WITHOUT_KF5
-#else
 		KAutoSaveFile m_backup_file;
-#endif
 		QUuid m_uuid = QUuid::createUuid();
 		projectDataBase m_data_base;
 		QVector<TerminalStrip *> m_terminal_strip_vector;

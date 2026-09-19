@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "changeelementinformationcommand.h"
-
+#include "../qetproject.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/element.h"
 
@@ -61,7 +61,7 @@ bool ChangeElementInformationCommand::mergeWith(const QUndoCommand *other)
 	if (m_map.size() == other_undo->m_map.size())
 	{
 		for (auto key : other_undo->m_map.keys()) {
-			if (!m_map.keys().contains(key)) {
+			if (!m_map.contains(key)) {
 				return false;
 			}
 		}

@@ -16,8 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
-
+#include "../qetapp.h"
+#include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
+#include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontextcommands.h"
 #include "../diagram.h"
 #include "../diagramcommands.h"
@@ -26,19 +28,32 @@
 #include "../elementprovider.h"
 #include "../factory/elementpicturefactory.h"
 #include "../properties/terminaldata.h"
+#include "../properties/xrefproperties.h"
+#include "../qetinformation.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/setautonumcontextcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
 #include <QDebug>
 
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <utility>
 
 class ElementXmlRetroCompatibility
@@ -120,14 +135,29 @@ Element::Element(
 		 | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 
-	connect(this, &Element::rotationChanged, [this]()
-{
+	/* Keep docked conductors attached whenever this element's
+	 * rotation OR scene position changes. Ordinary single-item
+	 * dragging already refreshes conductors explicitly, via
+	 * ElementsMover::continueMovement() calling
+	 * Conductor::updatePath(). But other code paths change an
+	 * element's rotation/pos properties directly -- notably
+	 * RotateSelectionCommand's group-rotation mode, which moves
+	 * each element around a shared pivot via a "pos"
+	 * QPropertyUndoCommand instead of going through
+	 * ElementsMover -- and those need this hook or the
+	 * conductor's path is left stale, still drawn to the
+	 * terminal's old scene position. */
+	auto update_docked_conductors = [this]()
+	{
 		for(QGraphicsItem *qgi : childItems())
 		{
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
 				t->updateConductor();
 		}
-	});
+	};
+	connect(this, &Element::rotationChanged, update_docked_conductors);
+	connect(this, &Element::xChanged, update_docked_conductors);
+	connect(this, &Element::yChanged, update_docked_conductors);
 }
 
 /**
@@ -229,12 +259,24 @@ void Element::paint(
 	painter->setBrush(brush);
 	if (options && options->levelOfDetailFromTransform(painter->worldTransform()) < 0.5)
 	{
-		painter->drawPicture(0, 0, m_low_zoom_picture);
+		if (!m_low_zoom_picture.isNull())
+			painter->drawPicture(0, 0, m_low_zoom_picture);
 	} else {
-		painter->drawPicture(0, 0, m_picture);
+		if (!m_picture.isNull())
+			painter->drawPicture(0, 0, m_picture);
 	}
 
 	painter->restore(); //Restore the QPainter after use drawPicture
+
+	// Draw PLC table from in-memory data (overwrites the stale cached picture)
+	if (scene() && painter->isActive() &&
+		m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		const auto &plc_data = m_data.plcMasterData();
+		if (!plc_data.ios.isEmpty())
+			drawPlcTable(painter);
+	}
 
 		//Draw the selection rectangle
 	if ( isSelected() || m_mouse_over ) {
@@ -486,6 +528,13 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 				if (qde.isNull())
 					continue;
 
+				// Store plc_table positions for runtime rendering
+				if (qde.tagName() == QLatin1String("plc_table")) {
+					qreal x = qde.attribute("x", "0").toDouble();
+					qreal y = qde.attribute("y", "0").toDouble();
+					m_plc_table_positions.append(QPointF(x, y));
+				}
+
 				if (parseElement(qde)) {
 					++ parsed_elements_count;
 				}
@@ -502,8 +551,8 @@ bool Element::buildFromXml(const QDomElement &xml_def_elmt, int *state)
 
 	ElementPictureFactory *epf = ElementPictureFactory::instance();
 	epf->getPictures(m_location,
-			 const_cast<QPicture&>(m_picture),
-			 const_cast<QPicture&>(m_low_zoom_picture));
+			 m_picture,
+			 m_low_zoom_picture);
 
 	if(!m_picture.isNull())
 		++ parsed_elements_count;
@@ -666,11 +715,16 @@ bool Element::valideXml(QDomElement &e)
 	}
 
 	bool conv_ok;
-	e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" and reports a
+		//successful conversion for them, so conv_ok alone doesn't reject a
+		//non-finite coordinate. A NaN position reaching the scene can hang
+		//QGraphicsScene::addItem() forever inside Qt's own polygon-clipping
+		//code when an existing conductor's collision test runs against it.
+	double x = e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(x)) return(false);
 
-	e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+	double y = e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(y)) return(false);
 
 	return(true);
 }
@@ -741,7 +795,9 @@ bool Element::fromXml(QDomElement &e,
 														  QStringLiteral("links_uuids"),
 														  QStringLiteral("link_uuid"));
 	foreach (QDomElement qdo, uuid_list) {
-		tmp_uuids_link << QUuid(qdo.attribute(QStringLiteral("uuid")));
+		QUuid uuid(qdo.attribute(QStringLiteral("uuid")));
+		int group_index = qdo.attribute(QStringLiteral("group_index"), QStringLiteral("-1")).toInt();
+		tmp_uuids_link << LinkInfo(uuid, group_index);
 	}
 
 	//uuid of this element
@@ -771,6 +827,7 @@ bool Element::fromXml(QDomElement &e,
 	setZValue(e.attribute(QStringLiteral("z"), QString::number(this->zValue())).toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable
 		 | QGraphicsItem::ItemIsSelectable);
+	is_movable_ = e.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt();
 
 	// orientation
 	bool conv_ok;
@@ -836,6 +893,15 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
+		//Load PLC master data override from diagram XML
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = e.firstChildElement(QStringLiteral("plcMasterData"));
+		if (!xml_plc.isNull())
+			m_data.plcMasterDataFromXml(xml_plc);
+	}
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -893,6 +959,7 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("y"), QString::number(pos().y()));
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 
 	/* get the first id to use for the bounds of this element
 	 * recupere le premier id a utiliser pour les bornes de cet element */
@@ -932,6 +999,13 @@ QDomElement Element::toXml(
 			QDomElement link_uuid =
 					document.createElement(QStringLiteral("link_uuid"));
 			link_uuid.setAttribute(QStringLiteral("uuid"), elmt->uuid().toString());
+
+			// Save group index if assigned (for slave->master links)
+			int gi = m_group_index_map.value(elmt, -1);
+			if (gi >= 0) {
+				link_uuid.setAttribute(QStringLiteral("group_index"), gi);
+			}
+
 			links_uuids.appendChild(link_uuid);
 		}
 		element.appendChild(links_uuids);
@@ -960,6 +1034,15 @@ QDomElement Element::toXml(
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
 	}
 
 	//Dynamic texts
@@ -1267,8 +1350,21 @@ void Element::initLink(QETProject *prj)
 	if (tmp_uuids_link.isEmpty()) return;
 
 	ElementProvider ep(prj);
-	foreach (Element *elmt, ep.fromUuids(tmp_uuids_link)) {
-		elmt->linkToElement(this);
+	QList<QUuid> uuids;
+	for (const auto &linkInfo : tmp_uuids_link) {
+		uuids.append(linkInfo.uuid);
+	}
+	QList<Element *> elements = ep.fromUuids(uuids);
+	for (int i = 0; i < tmp_uuids_link.size(); ++i) {
+		for (Element *elmt : elements) {
+			if (elmt->uuid() == tmp_uuids_link[i].uuid) {
+				elmt->linkToElement(this);
+				if (tmp_uuids_link[i].group_index >= 0) {
+					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+				}
+				break;
+			}
+		}
 	}
 	tmp_uuids_link.clear();
 }
@@ -1305,6 +1401,34 @@ QString Element::linkTypeToString() const
 }
 
 /**
+ * @brief Element::groupIndexForElement
+ * Returns the group index assigned to the given linked element.
+ * For slave elements, this indicates which contact group of the master
+ * this slave is assigned to.
+ * @param elmt the linked element to query
+ * @return group index, or -1 if not assigned
+ */
+int Element::groupIndexForElement(Element *elmt) const
+{
+	return m_group_index_map.value(elmt, -1);
+}
+
+/**
+ * @brief Element::setGroupIndexForElement
+ * Sets the group index for a linked element.
+ * @param elmt the linked element
+ * @param index the group index to assign
+ */
+void Element::setGroupIndexForElement(Element *elmt, int index)
+{
+	if (index >= 0) {
+		m_group_index_map[elmt] = index;
+	} else {
+		m_group_index_map.remove(elmt);
+	}
+}
+
+/**
 	@brief Element::setElementInformations
 	Set new information for this element.
 	If new information is different of current infotmation emit elementInfoChange
@@ -1324,6 +1448,27 @@ void Element::setElementInformations(DiagramContext dc)
 		m_data.m_informations.addValue(QStringLiteral("label"), actual_label); //Update the label if there is a formula
 	}
 	emit elementInfoChange(old_info, m_data.m_informations);
+
+	// Propagate label change to linked PLC slaves (label is changed via
+	// setElementInformations through the undo stack, not via setElementData)
+	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
+	{
+		if (!m_group_index_map.isEmpty())
+		{
+			const QString new_label = actualLabel();
+			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
+			{
+				Element *slave = it.key();
+				if (!slave)
+					continue;
+				if (slave->elementInformations().value(QETInformation::ELMT_LABEL).toString() == new_label)
+					continue;
+				DiagramContext ctx = slave->elementInformations();
+				ctx.addValue(QETInformation::ELMT_LABEL, new_label);
+				slave->setElementInformations(ctx);
+			}
+		}
+	}
 }
 
 /**
@@ -1344,6 +1489,8 @@ ElementData Element::elementData() const
 void Element::setElementData(ElementData data)
 {
 	auto old_info = m_data.m_informations;
+	auto old_plc = m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC
+		? m_data.plcMasterData() : ElementData::PlcMasterData();
 	m_data = data;
 
 	if (old_info != m_data.m_informations) {
@@ -1352,6 +1499,78 @@ void Element::setElementData(ElementData data)
 			diagram()->project()->dataBase()->elementInfoChanged(this);
 		}
 		emit elementInfoChange(old_info, m_data.m_informations);
+	}
+
+	// Propagate PLC master data changes to linked slaves
+	if (m_data.m_type == ElementData::Master && m_data.m_master_type == ElementData::PLC)
+	{
+		const auto &new_plc = m_data.plcMasterData();
+		bool plc_changed = (old_plc.ios != new_plc.ios);
+		bool label_changed = (old_info.value(QStringLiteral("label")) !=
+			m_data.m_informations.value(QStringLiteral("label")));
+		if (!m_group_index_map.isEmpty() && (plc_changed || label_changed))
+		{
+			for (auto it = m_group_index_map.constBegin(); it != m_group_index_map.constEnd(); ++it)
+			{
+				Element *slave = it.key();
+				int io_idx = it.value();
+				if (!slave || io_idx < 0 || io_idx >= new_plc.ios.size())
+					continue;
+				const auto &io = new_plc.ios.at(io_idx);
+
+				if (plc_changed)
+				{
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_PLC_TYPE,
+						ElementData::translatedPlcIOType(io.type));
+					ctx.addValue(QETInformation::ELMT_PLC_ADDRESS, io.address);
+					ctx.addValue(QETInformation::ELMT_PLC_FUNCTION, io.functionText);
+					ctx.addValue(QETInformation::ELMT_PLC_COMMENT, io.comment);
+					ctx.addValue(QETInformation::ELMT_PLC_CROSSREF,
+						[&]() -> QString {
+							if (!diagram() || !diagram()->project())
+								return QString();
+							XRefProperties xrp = diagram()->project()
+								->defaultXRefProperties("plc");
+							autonum::sequentialNumbers seq;
+							return autonum::AssignVariables::formulaToLabel(
+								xrp.slaveLabel(), seq, diagram(), this);
+						}());
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					ctx.addValue(QETInformation::ELMT_PLC_TC,
+						QString::number(io.terminalCount));
+					for (int t = 0; t < io.terminalCount && t < 4; ++t)
+					{
+						QString val = (t < io.terminals.size())
+							? io.terminals.at(t) : QString();
+						ctx.addValue(plcTerminalKeys[t], val);
+					}
+					slave->setElementInformations(ctx);
+
+					// Update master labels on slave terminals
+					QList<Terminal *> slave_terms = slave->terminals();
+					for (int t = 0; t < slave_terms.size(); ++t)
+					{
+						if (t < io.terminals.size())
+						{
+							slave_terms.at(t)->setUseMasterLabel(true);
+							slave_terms.at(t)->setMasterLabelIndex(t);
+						}
+						else
+						{
+							slave_terms.at(t)->setUseMasterLabel(false);
+						}
+					}
+				}
+				if (label_changed)
+				{
+					// Only label changed, update the label on the slave
+					DiagramContext ctx = slave->elementInformations();
+					ctx.addValue(QETInformation::ELMT_LABEL, actualLabel());
+					slave->setElementInformations(ctx);
+				}
+			}
+		}
 	}
 }
 
@@ -1453,7 +1672,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 	(ex K for coil) with condition :
 	formula is empty, text tagged "label" is emptty or "_";
 */
-void Element::setUpFormula(bool code_letter)
+void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
@@ -1482,8 +1701,21 @@ void Element::setUpFormula(bool code_letter)
 					   nc,
 					   diagram(),
 					   element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum,
-							ncc.next());
+
+		NumerotationContext new_context = ncc.next();
+		QETProject *project = diagram()->project();
+		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);};
+
+		if (parent_undo)
+		{
+			new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context, parent_undo);
+		}
+		else
+		{
+			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
+			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			diagram()->undoStack().push(undo);
+		}
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
@@ -1568,6 +1800,139 @@ ElementsLocation Element::location() const
 }
 
 /**
+	@brief Element::reloadPicture
+	Re-fetch this element's drawing from its location and repaint.
+
+	A placed element is drawn once from its definition, at construction
+	(buildFromXml()), and nothing afterwards ever makes it look again --
+	editing and saving the definition leaves every already-placed instance
+	showing the old drawing until the project is closed and reopened
+	(bugtracker #802). This is the per-instance half of the fix.
+
+	Deliberately limited to the drawing. Terminals are what conductors are
+	attached to: if the new definition adds, removes or moves a terminal,
+	or changes the element size or hotspot, the new drawing would no longer
+	match the live terminals and bounding rect. Such an element is left
+	untouched and GeometryChanged is returned; it has to be removed and
+	re-inserted, which deletes the conductors already connected to it.
+
+	If the definition cannot be found or read, the current drawing is kept
+	and Unavailable is returned, so the element never goes blank.
+
+	Purely visual: nothing is pushed on the undo stack and the project is
+	not marked as modified.
+	@return what happened to this element
+*/
+Element::ReloadPictureResult Element::reloadPicture()
+{
+	if (!m_location.exist()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	const QDomElement definition = m_location.xml();
+	if (definition.isNull()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	if (!definitionGeometryMatches(definition)) {
+		return ReloadPictureResult::GeometryChanged;
+	}
+
+	QPicture picture;
+	QPicture low_zoom_picture;
+	ElementPictureFactory::instance()->getPictures(m_location,
+												   picture,
+												   low_zoom_picture);
+	if (picture.isNull()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	m_picture = picture;
+	m_low_zoom_picture = low_zoom_picture;
+	update();
+	return ReloadPictureResult::Reloaded;
+}
+
+/**
+	@brief Element::definitionGeometryMatches
+	Compare the geometry described by @p definition with this live element:
+	size and hotspot (normalized the same way setSize()/setHotspot() do it)
+	and the set of terminal positions (same parsing rules as
+	TerminalData::fromXml()).
+	@param definition : the <definition> root of the element
+	@return true if the new drawing can be applied without desynchronizing
+	the bounding rect or the terminals
+*/
+bool Element::definitionGeometryMatches(const QDomElement &definition) const
+{
+	int w = 0, h = 0, hot_x = 0, hot_y = 0;
+	if (!QET::attributeIsAnInteger(definition, QStringLiteral("width"), &w)         ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("height"), &h)        ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_x"), &hot_x) ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_y"), &hot_y)) {
+		return false;
+	}
+
+		//Same rounding as setSize()
+	while (w % 10) ++w;
+	while (h % 10) ++h;
+	if (QSize(w, h) != dimensions) {
+		return false;
+	}
+
+		//Same clamping as setHotspot()
+	const QPoint new_hotspot = dimensions.isNull()
+			? QPoint(0, 0)
+			: QPoint(qMin(hot_x, w), qMin(hot_y, h));
+	if (new_hotspot != hotspot_coord) {
+		return false;
+	}
+
+		//Terminal positions described by the new definition
+	QList<QPointF> new_terminals;
+	for (QDomElement description = definition.firstChildElement(QStringLiteral("description")) ;
+		 !description.isNull() ;
+		 description = description.nextSiblingElement(QStringLiteral("description")))
+	{
+		for (QDomElement terminal = description.firstChildElement(QStringLiteral("terminal")) ;
+			 !terminal.isNull() ;
+			 terminal = terminal.nextSiblingElement(QStringLiteral("terminal")))
+		{
+			qreal x = 0.0, y = 0.0;
+			if (QET::attributeIsAReal(terminal, QStringLiteral("x"), &x) &&
+				QET::attributeIsAReal(terminal, QStringLiteral("y"), &y)) {
+				new_terminals << QPointF(x, y);
+			}
+		}
+	}
+
+	if (new_terminals.size() != m_terminals.size()) {
+		return false;
+	}
+
+		//Every live terminal must still exist at the same place
+	for (const Terminal *terminal : m_terminals)
+	{
+		const QPointF live_pos = mapFromScene(terminal->dockConductor());
+		bool found = false;
+		for (int i = 0 ; i < new_terminals.size() ; ++i)
+		{
+			const QPointF delta = new_terminals.at(i) - live_pos;
+			if (qAbs(delta.x()) < 0.01 && qAbs(delta.y()) < 0.01) {
+				new_terminals.removeAt(i);
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
  * @brief Element::updateConductorTexts
  *Slot that is triggered when a cable is                           *
  *connected to or disconnected from a terminal on this component.
@@ -1585,6 +1950,219 @@ void Element::updateConductorTexts()
 		if (deti) {
 			deti->setPotentialConductor();
 			deti->updateLabel();
+		}
+	}
+}
+
+/**
+	@brief Element::drawPlcTable
+	Draw the PLC table directly from in-memory ElementData.
+	This overlays the stale picture from the .elmt file with current data.
+*/
+void Element::drawPlcTable(QPainter *painter)
+{
+	if (!painter || !painter->isActive() || !scene())
+		return;
+
+	if (m_data.m_type != ElementData::Master ||
+		m_data.m_master_type != ElementData::PLC)
+		return;
+
+	const auto &plc_data = m_data.plcMasterData();
+	if (plc_data.ios.isEmpty())
+		return;
+
+	// Use plc_table positions from the .elmt file, or default to (0,0)
+	QList<QPointF> positions = m_plc_table_positions;
+	if (positions.isEmpty())
+		positions.append(QPointF(0, 0));
+
+	const int COL_COUNT = 5;
+	const int COL_TYPE      = 0;
+	const int COL_ADDRESS   = 1;
+	const int COL_FUNCTION  = 2;
+	const int COL_COMMENT   = 3;
+	const int COL_CROSSREF  = 4;
+
+	// Build header labels
+	QMap<int, QString> headers;
+	headers[COL_TYPE]     = QObject::tr("Type");
+	headers[COL_ADDRESS]  = QObject::tr("Adresse");
+	headers[COL_FUNCTION] = QObject::tr("Fonction");
+	headers[COL_COMMENT]  = QObject::tr("Commentaire");
+	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
+
+	// Override with custom column names
+	if (!plc_data.columnNames.isEmpty()) {
+		QList<int> all_cols;
+		all_cols << COL_TYPE << COL_ADDRESS << COL_FUNCTION << COL_COMMENT << COL_CROSSREF;
+		for (int i = 0; i < qMin(plc_data.columnNames.size(), all_cols.size()); ++i) {
+			if (!plc_data.columnNames.at(i).isEmpty())
+				headers[all_cols.at(i)] = plc_data.columnNames.at(i);
+		}
+	}
+
+	// Build visible columns
+	QList<int> visible_cols;
+	if (!plc_data.columnOrder.isEmpty()) {
+		for (int logical : plc_data.columnOrder) {
+			if (logical >= 0 && logical < COL_COUNT
+				&& plc_data.colVisible.value(logical, true)
+				&& !visible_cols.contains(logical))
+				visible_cols.append(logical);
+		}
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true) && !visible_cols.contains(i))
+				visible_cols.append(i);
+		}
+	} else {
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true))
+				visible_cols.append(i);
+		}
+	}
+	if (visible_cols.isEmpty())
+		return;
+
+	// Column widths
+	QMap<int, qreal> col_widths;
+	for (int col : visible_cols) {
+		if (plc_data.colWidths.contains(col) && plc_data.colWidths[col] > 0)
+			col_widths[col] = plc_data.colWidths[col];
+		else {
+			switch (col) {
+				case COL_TYPE:     col_widths[col] = 35; break;
+				case COL_ADDRESS:  col_widths[col] = 25; break;
+				case COL_FUNCTION: col_widths[col] = 50; break;
+				case COL_COMMENT:  col_widths[col] = 40; break;
+				case COL_CROSSREF: col_widths[col] = 30; break;
+				default:           col_widths[col] = 30; break;
+			}
+		}
+	}
+
+	qreal row_h = plc_data.rowHeight > 0 ? plc_data.rowHeight : 8.0;
+	qreal header_h = plc_data.showHeaders ? (row_h + 2.0) : 0;
+	int total_ios = plc_data.ios.size();
+
+	// Parse break positions
+	QList<int> breaks;
+	for (int bp : plc_data.breakPositions) {
+		if (bp > 0 && bp < total_ios && !breaks.contains(bp))
+			breaks.append(bp);
+	}
+	std::sort(breaks.begin(), breaks.end());
+
+	QList<int> block_starts;
+	block_starts.append(0);
+	for (int bp : breaks)
+		block_starts.append(bp);
+	int block_count = block_starts.size();
+
+	qreal total_width = 0;
+	for (int col : visible_cols)
+		total_width += col_widths[col];
+
+	QPen border_pen(Qt::black, 0.5);
+
+	// Fonts
+	QFont header_font = plc_data.headerFont;
+	if (header_font.family().isEmpty()) {
+		header_font = QETApp::diagramTextsFont();
+		header_font.setBold(true);
+	}
+	QFont cell_font = plc_data.cellFont;
+	if (cell_font.family().isEmpty()) {
+		cell_font = QETApp::diagramTextsFont();
+	}
+
+	for (const QPointF &pos : positions) {
+		for (int block = 0; block < block_count; ++block) {
+			qreal bx = pos.x() + block * (total_width + 3);
+			qreal cx = bx;
+
+			// Draw header background
+			if (plc_data.showHeaders) {
+				painter->save();
+				painter->setPen(Qt::NoPen);
+				painter->setBrush(QColor(220, 220, 220));
+				painter->drawRect(QRectF(cx, pos.y(), total_width, header_h));
+				painter->restore();
+
+				painter->setFont(header_font);
+				painter->setPen(border_pen);
+				painter->setBrush(Qt::NoBrush);
+
+				for (int col : visible_cols) {
+					QRectF hr(cx, pos.y(), col_widths[col], header_h);
+					painter->drawRect(hr);
+					QRectF text_rect = hr.adjusted(1, 0, -1, 0);
+					painter->drawText(text_rect, Qt::AlignCenter, headers.value(col, QString()));
+					cx += col_widths[col];
+				}
+			}
+
+			// Draw IO rows
+			painter->setFont(cell_font);
+			int start_idx = block_starts.at(block);
+			int end_idx = (block + 1 < block_starts.size())
+				? block_starts.at(block + 1) : total_ios;
+
+			for (int row = 0; row < (end_idx - start_idx); ++row) {
+				int io_idx = start_idx + row;
+				if (io_idx >= plc_data.ios.size()) break;
+				const auto &io = plc_data.ios.at(io_idx);
+				qreal ry = pos.y() + header_h + row * row_h;
+				cx = bx;
+
+				for (int col : visible_cols) {
+					QRectF cr(cx, ry, col_widths[col], row_h);
+					painter->setPen(border_pen);
+					painter->setBrush(Qt::NoBrush);
+					painter->drawRect(cr);
+
+					QString cell_text;
+					switch (col) {
+						case COL_TYPE:     cell_text = ElementData::translatedPlcIOType(io.type); break;
+						case COL_ADDRESS:  cell_text = io.address; break;
+						case COL_FUNCTION: cell_text = io.functionText; break;
+						case COL_COMMENT:  cell_text = io.comment; break;
+						case COL_CROSSREF:
+						{
+							cell_text = io.crossRef;
+							for (auto it = m_group_index_map.constBegin();
+								 it != m_group_index_map.constEnd(); ++it) {
+								if (it.value() == io_idx) {
+									Element *slave = it.key();
+									if (slave && slave->diagram() && diagram()
+										&& diagram()->project())
+									{
+										XRefProperties xrp = diagram()->project()
+											->defaultXRefProperties("plc");
+										autonum::sequentialNumbers seq;
+										cell_text = autonum::AssignVariables
+											::formulaToLabel(
+												xrp.masterLabel(),
+												seq,
+												slave->diagram(),
+												slave);
+									}
+									break;
+								}
+							}
+							break;
+						}
+					}
+
+					QRectF text_rect = cr.adjusted(1, 0, -1, 0);
+					painter->save();
+					painter->setClipRect(text_rect, Qt::IntersectClip);
+					painter->drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter | Qt::TextWordWrap, cell_text);
+					painter->restore();
+
+					cx += col_widths[col];
+				}
+			}
 		}
 	}
 }

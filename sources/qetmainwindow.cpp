@@ -16,14 +16,17 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QAction>
+#include <QApplication>
 #include <QWhatsThis>
 #include <QMenu>
 #include <QMenuBar>
+#include <QShortcut>
 #include <QDragEnterEvent>
 #include <QDesktopServices>
 
 #include "qetmainwindow.h"
 #include "qeticons.h"
+#include "shortcutmanager.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "projectview.h"
@@ -40,6 +43,14 @@ QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 	initCommonMenus();
 
 	setAcceptDrops(true);
+		//A shortcut rather than a key handler: a key press goes to the
+		//focused child widget, so a keyPressEvent() here would never see F10
+		//while the canvas or a panel holds focus.
+	QShortcut *menu_bar_shortcut = new QShortcut(QKeySequence(Qt::Key_F10), this);
+	menu_bar_shortcut -> setContext(Qt::WindowShortcut);
+	connect(menu_bar_shortcut, &QShortcut::activated,
+		this, &QETMainWindow::activateMenuBar);
+
 }
 
 /**
@@ -82,13 +93,13 @@ void QETMainWindow::initCommonActions()
 
 	fullscreen_action_ = new QAction(this);
 	updateFullScreenAction();
-	connect(fullscreen_action_, SIGNAL(triggered()), this, SLOT(toggleFullScreen()));
+	connect(fullscreen_action_, &QAction::triggered, this, &QETMainWindow::toggleFullScreen);
 
 	whatsthis_action_ = QWhatsThis::createAction(this);
 
 	about_qet_ = new QAction(QET::Icons::QETLogo, tr("À &propos de QElectroTech"), this);
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
-	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
+	connect(about_qet_, &QAction::triggered, qet_app, &QETApp::aboutQET);
 
 	manual_online_ = new QAction(QET::Icons::QETManual, tr("Manuel en ligne"), this);
 	manual_online_ -> setStatusTip(tr("Lance le navigateur par défaut vers le manuel en ligne de QElectroTech", "status bar tip"));
@@ -98,7 +109,7 @@ void QETMainWindow::initCommonActions()
 	QDesktopServices::openUrl(QUrl(link));
 	});
 
-	manual_online_ -> setShortcut(Qt::Key_F1);
+	ShortcutManager::instance().registerAction(manual_online_, "mainwindow.manual_online", tr("Général"), Qt::Key_F1);
 
 	youtube_ = new QAction(QET::Icons::QETVideo, tr("Chaine Youtube"), this);
 	youtube_ -> setStatusTip(tr("Lance le navigateur par défaut vers la chaine Youtube de QElectroTech", "status bar tip"));
@@ -134,7 +145,13 @@ void QETMainWindow::initCommonActions()
 
 	about_qt_ = new QAction(QET::Icons::QtLogo,  tr("À propos de &Qt"), this);
 	about_qt_ -> setStatusTip(tr("Affiche des informations sur la bibliothèque Qt", "status bar tip"));
-	connect(about_qt_, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+	connect(about_qt_, &QAction::triggered, qApp, &QApplication::aboutQt);
+
+	diagnostics_action_ = new QAction(QET::Icons::DialogInformation, tr("Enregistrer un rapport de diagnostic..."), this);
+	diagnostics_action_ -> setStatusTip(tr("Génère un rapport avec les derniers messages de journalisation, pour l'inclure dans un rapport de bug", "status bar tip"));
+	connect(diagnostics_action_, &QAction::triggered, this, []() {
+		QETApp::instance()->showDiagnosticsReport();
+	});
 }
 
 /**
@@ -145,9 +162,11 @@ void QETMainWindow::initCommonMenus()
 	settings_menu_ = new QMenu(tr("&Configuration", "window menu"), this);
 	settings_menu_ -> addAction(fullscreen_action_);
 	settings_menu_ -> addAction(configure_action_);
-	connect(settings_menu_, SIGNAL(aboutToShow()), this, SLOT(checkToolbarsmenu()));
+	connect(settings_menu_, &QMenu::aboutToShow, this, &QETMainWindow::checkToolbarsmenu);
 
 	help_menu_ = new QMenu(tr("&Aide", "window menu"), this);
+	help_menu_ -> addAction(diagnostics_action_);
+	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(whatsthis_action_);
 	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(manual_online_);
@@ -220,7 +239,7 @@ void QETMainWindow::updateFullScreenAction()
 		fullscreen_action_ -> setIcon(QET::Icons::FullScreenEnter);
 		fullscreen_action_ -> setStatusTip(tr("Affiche QElectroTech en mode plein écran", "status bar tip"));
 	}
-	fullscreen_action_ -> setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_F);
+	ShortcutManager::instance().registerAction(fullscreen_action_, "mainwindow.fullscreen", tr("Général"), Qt::CTRL | Qt::SHIFT | Qt::Key_F);
 }
 
 /**
@@ -242,7 +261,39 @@ void QETMainWindow::checkToolbarsmenu()
 /**
 	Handle the \a e event.
 */
+/**
+	@brief QETMainWindow::activateMenuBar
+	Open the first usable menu, as pressing Alt and a menu's letter would.
+
+	F10 is what most applications use for this, and QMenuBar does not handle
+	it: given the key directly it leaves it unaccepted, and sent to the window
+	it never reaches the menu bar at all, because a key press goes to the
+	focused child widget. So the press fell through to whichever widget had
+	focus and looked like nothing happening.
+
+	This is convenience, not access. Qt already provides two keyboard routes
+	into the menus and both work: a bare Alt tap focuses the bar, and Alt with
+	a menu's letter opens it. This adds the key people reach for out of habit.
+
+	A shortcut rather than a keyPressEvent() override, for the reason above --
+	the window never sees the key while a child holds focus.
+*/
+void QETMainWindow::activateMenuBar() {
+	QMenuBar *bar = menuBar();
+	if (!bar) return;
+
+	for (QAction *action : bar -> actions()) {
+		if (action -> isVisible() && action -> isEnabled() && action -> menu()) {
+			bar -> setActiveAction(action);
+			return;
+		}
+	}
+}
+
 bool QETMainWindow::event(QEvent *e) {
+	if (e -> type() == QEvent::Close && refuseCloseWhileModal(e)) {
+		return(true);
+	}
 	if (e -> type() == QEvent::WindowStateChange) {
 		updateFullScreenAction();
 	} else if (first_activation_ && e -> type() == QEvent::WindowActivate) {
@@ -250,6 +301,44 @@ bool QETMainWindow::event(QEvent *e) {
 		first_activation_ = false;
 	}
 	return(QMainWindow::event(e));
+}
+
+/**
+	@brief QETMainWindow::refuseCloseWhileModal
+	Refuse to close an editor window while any modal dialog is running.
+
+	A modal dialog's exec() runs a nested event loop. If a window is closed
+	during it, the window's WA_DeleteOnClose turns into a deleteLater() that
+	the *nested* loop processes: the window is destroyed while code that
+	belongs to it -- often the very function that opened the dialog -- is
+	still on the stack. Most of QET's dialogs are stack objects parented to
+	the window (BackupDialog, and every QET::QetMessageBox), so ~QWidget()
+	then deletes a stack object and the process aborts (issue #904). Even a
+	dialog without a parent would only trade that abort for a silent
+	use-after-free in the caller.
+
+	Qt already ignores window-manager close requests for a window blocked by
+	a modal, so this is only reachable through close() called directly: the
+	File > Quit action, which macOS moves into the application menu where it
+	stays usable during a modal, and QETApp::quitQET() from the system tray.
+
+	Handled in event(), before closeEvent() runs, because the editors'
+	closeEvent() starts closing projects before it decides whether to accept.
+	The dialog is raised so a refused quit is not silent.
+
+	@param e : the QEvent::Close being delivered
+	@return true if the close was refused and must not be processed further
+*/
+bool QETMainWindow::refuseCloseWhileModal(QEvent *e)
+{
+	QWidget *modal = QApplication::activeModalWidget();
+	if (!modal) {
+		return(false);
+	}
+	modal -> raise();
+	modal -> activateWindow();
+	e -> ignore();
+	return(true);
 }
 
 /**

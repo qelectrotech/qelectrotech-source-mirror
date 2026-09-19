@@ -21,6 +21,7 @@
 #include <QPointer>
 
 #include "../TerminalStrip/GraphicsItem/properties/terminalstriplayoutshandler.h"
+#include "projectusagetracker.h"
 
 class QETProject;
 
@@ -43,11 +44,13 @@ class ProjectPropertiesHandler
 		ProjectPropertiesHandler(QETProject *project);
 
 		TerminalStripLayoutsHandler& terminalStripLayoutHandler();
+		ProjectUsageTracker& usageTracker();
 
 	private:
 		QPointer<QETProject> m_project;
 
 		TerminalStripLayoutsHandler m_terminal_strip_layout_handler;
+		ProjectUsageTracker m_usage_tracker;
 };
 
 #endif // PROJECTPROPERTIESHANDLER_H

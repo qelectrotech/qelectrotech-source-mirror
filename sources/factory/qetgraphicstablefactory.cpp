@@ -25,7 +25,7 @@
 #include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../utils/qetutils.h"
 #include "ui/addtabledialog.h"
-
+#include "../qetproject.h"
 #include <QDialog>
 
 QetGraphicsTableFactory::QetGraphicsTableFactory()

@@ -55,12 +55,6 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	m_titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
 	m_titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 
-	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
-#if QT_VERSION < QT_VERSION_CHECK(4, 8, 0)	// ### Qt 6: remove
-#else
-	m_titleblock_template_renderer -> setUseCache(false);
-#endif
-
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
 
@@ -410,12 +404,10 @@ QString BorderTitleBlock::titleBlockTemplateName() const
 	@brief BorderTitleBlock::titleBlockTemplateChanged
 	This slot may be used to inform this class that the given title block
 	template has changed.
-	The title block-dedicated rendering cache will thus be flushed.
 	@param template_name : Name of the title block template that has changed
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
-	m_titleblock_template_renderer -> invalidateRenderedTemplate();
 }
 
 /**
@@ -898,9 +890,13 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 		const DiagramContext &initial_context) {
 	// Our final DiagramContext is the initial one (which is supposed to bring
 	// project-wide properties), overridden by the "additional fields" one...
+	// An empty page-level value means the variable was auto-added to the
+	// folio's Custom tab (#495) but never actually set by the user, so it
+	// must not shadow a real project-level value of the same name (#531).
 	DiagramContext context = initial_context;
 	foreach (QString key, additional_fields_.keys()) {
-		context.addValue(key, additional_fields_[key]);
+		if (!additional_fields_[key].toString().isEmpty())
+			context.addValue(key, additional_fields_[key]);
 	}
 
 	// ... overridden by the historical and/or dynamically generated fields

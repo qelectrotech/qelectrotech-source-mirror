@@ -29,6 +29,7 @@ class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
 class ReportPropertieWidget;
 class XRefPropertiesWidget;
+class GuidesPropertiesWidget;
 class QETProject;
 class TitleBlockProperties;
 
@@ -69,6 +70,7 @@ public slots:
 	ConductorPropertiesWidget  *m_cpw;     ///< Widget to edit default conductor properties
 	ReportPropertieWidget      *rpw;       ///< Widget to edit default report label
 	XRefPropertiesWidget       *xrefpw;    ///< Widget to edit default xref properties
+	GuidesPropertiesWidget     *m_gpw;     ///< Widget to edit guides
 	TitleBlockProperties       savedTbp;   ///< Used to save current TBP and retrieve later
 
 };

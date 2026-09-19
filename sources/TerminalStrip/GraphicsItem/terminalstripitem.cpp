@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "terminalstripitem.h"
-
+#include "../../qetproject.h"
 
 #include "../diagram.h"
 #include "../../project/projectpropertieshandler.h"

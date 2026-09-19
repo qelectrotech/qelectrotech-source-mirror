@@ -18,6 +18,10 @@
 #include "numparteditorw.h"
 #include "ui_numparteditorw.h"
 
+#include "../numerotationcontext.h"
+
+#include <QRegularExpressionValidator>
+
 /**
 	@brief NumPartEditorW::NumPartEditorW
 	Constructor
@@ -28,10 +32,14 @@ NumPartEditorW::NumPartEditorW(int type, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
 	intValidator (new QIntValidator(0,99999,this)),
+	alphaValidator (new QRegularExpressionValidator(QRegularExpression("[A-Za-z]+"), this)),
 	m_edited_type(type)
 {
 	ui -> setupUi(this);
 	setVisibleItems();
+		//The mask is a run of zeros and nothing else, so it cannot be typed
+		//into a state the renderer would have to reject.
+	ui -> format_le -> setValidator(new QRegularExpressionValidator(QRegularExpression("0*"), this));
 	setType(NumPartEditorW::unit, true);
 }
 
@@ -51,6 +59,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 	QWidget(parent),
 	ui(new Ui::NumPartEditorW),
 	intValidator (new QIntValidator(0,99999,this)),
+	alphaValidator (new QRegularExpressionValidator(QRegularExpression("[A-Za-z]+"), this)),
 	m_edited_type(type)
 {
 	ui -> setupUi(this);
@@ -71,6 +80,10 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 			setType(NumPartEditorW::hundred, true);
 		else if (strl.at(0)=="hundredfolio")
 			setType(NumPartEditorW::hundredfolio, true);
+		else if (strl.at(0)=="wrap")
+			setType(NumPartEditorW::wrap, true);
+		else if (strl.at(0)=="alpha")
+			setType(NumPartEditorW::alpha);
 		else if (strl.at(0)=="string")
 			setType(NumPartEditorW::string);
 		else if (strl.at(0)=="idfolio")
@@ -89,6 +102,9 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 			setType(NumPartEditorW::elementprefix);
 		ui -> value_field -> setText(strl.at(1));
 		ui -> increase_spinBox -> setValue(strl.at(2).toInt());
+		if (strl.at(0)=="wrap" && strl.size() > 4)
+			ui -> modulus_spinBox -> setValue(strl.at(4).toInt());
+		ui -> format_le -> setText(NumerotationContext::formatOf(strl));
 	}
 }
 
@@ -98,6 +114,7 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context,
 NumPartEditorW::~NumPartEditorW()
 {
 	delete intValidator;
+	delete alphaValidator;
 	delete ui;
 }
 
@@ -110,6 +127,8 @@ void NumPartEditorW::setVisibleItems()
 		items	<< tr("Chiffre 1")
 			<< tr("Chiffre 01")
 			<< tr("Chiffre 001")
+			<< tr("Cyclique (modulo)")
+			<< tr("Alphabétique")
 			<< tr("Texte");
 	}
 	else if (m_edited_type == 1)
@@ -120,6 +139,8 @@ void NumPartEditorW::setVisibleItems()
 			<< tr("Chiffre 01 - Folio")
 			<< tr("Chiffre 001")
 			<< tr("Chiffre 001 - Folio")
+			<< tr("Cyclique (modulo)")
+			<< tr("Alphabétique")
 			<< tr("Texte")
 			<< tr("N° folio")
 			<< tr("Folio")
@@ -133,6 +154,8 @@ void NumPartEditorW::setVisibleItems()
 		      << tr("Chiffre 01 - Folio")
 		      << tr("Chiffre 001")
 		      << tr("Chiffre 001 - Folio")
+		      << tr("Cyclique (modulo)")
+		      << tr("Alphabétique")
 		      << tr("Texte")
 		      << tr("N° folio")
 		      << tr("Folio")
@@ -195,18 +218,37 @@ NumerotationContext NumPartEditorW::toNumContext()
 		case elementprefix:
 			type_str = "elementprefix";
 			break;
+		case wrap:
+			type_str = "wrap";
+			break;
+		case alpha:
+			type_str = "alpha";
+			break;
 	}
+	const QString number_format = ui -> format_le -> text();
 	if (type_str == "unitfolio"
 			|| type_str == "tenfolio"
 			|| type_str == "hundredfolio")
 		nc.addValue(type_str,
 			    ui -> value_field -> displayText(),
 			    ui -> increase_spinBox -> value(),
-			    ui->value_field->displayText().toInt());
+			    ui->value_field->displayText().toInt(),
+			    0,
+			    number_format);
+	else if (type_str == "wrap")
+		nc.addValue(type_str,
+			    ui -> value_field -> displayText(),
+			    ui -> increase_spinBox -> value(),
+			    0,
+			    ui -> modulus_spinBox -> value(),
+			    number_format);
 	else
 	nc.addValue(type_str,
 		    ui -> value_field -> displayText(),
-		    ui -> increase_spinBox -> value());
+		    ui -> increase_spinBox -> value(),
+		    0,
+		    0,
+		    number_format);
 	return nc;
 }
 
@@ -260,6 +302,10 @@ void NumPartEditorW::on_type_cb_activated(int) {
 		setType(elementcolumn);
 	else if (ui->type_cb->currentText() == tr("Element Prefix"))
 		setType(elementprefix);
+	else if (ui->type_cb->currentText() == tr("Cyclique (modulo)"))
+		setType(wrap);
+	else if (ui->type_cb->currentText() == tr("Alphabétique"))
+		setType(alpha);
 	emit changed();
 }
 
@@ -277,6 +323,22 @@ void NumPartEditorW::on_value_field_textEdited()
 	emit changed when increase_spinBox value changed
 */
 void NumPartEditorW::on_increase_spinBox_valueChanged(int) {
+	if (!ui -> value_field -> text().isEmpty()) emit changed();
+}
+
+/**
+	@brief NumPartEditorW::on_modulus_spinBox_valueChanged
+	emit changed when modulus_spinBox value changed
+*/
+/**
+	@brief NumPartEditorW::on_format_le_textEdited
+	emit changed when the display format is edited
+*/
+void NumPartEditorW::on_format_le_textEdited(const QString &) {
+	emit changed();
+}
+
+void NumPartEditorW::on_modulus_spinBox_valueChanged(int) {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
 
@@ -299,6 +361,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 				 || t==tenfolio
 				 || t==hundred
 				 || t==hundredfolio
+				 || t==wrap
 				 )
 				&& (type_==string
 				    || type_==folio
@@ -320,6 +383,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	}
 	//@t isn't a numeric type
 	else if (t == string
+		 || t == alpha
 		 || t == folio
 		 || t == idfolio
 		 || t == elementline
@@ -331,6 +395,13 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 		ui -> increase_spinBox -> setDisabled(true);
 		if (t==string) {
 			ui -> value_field -> setValidator(nullptr);
+			ui -> value_field -> setEnabled(true);
+		}
+		else if (t==alpha) {
+				//Alphabetic step is always exactly one letter (a, b, ...);
+				//there is no numeric "increase" to configure, unlike the
+				//digit-based part types.
+			ui -> value_field -> setValidator(alphaValidator);
 			ui -> value_field -> setEnabled(true);
 		}
 		else if (t==folio) {
@@ -362,6 +433,24 @@ void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 			ui -> increase_spinBox -> setDisabled(true);
 		}
 	}
+		//A modulus of 0 means "no cycle", which makes a Cyclique part behave
+		//exactly like a plain digit. Defaulting it used to live in the numeric
+		//behavior block above, which is skipped when the previous type was
+		//itself numeric -- so the ordinary path of turning the default
+		//"Chiffre 1" into a "Cyclique (modulo)" left the modulus at 0 and
+		//produced a wrap part that never wrapped. Kept out of that block so it
+		//applies whatever the part was before, and only when the current value
+		//is unusable, so a modulus the user chose on purpose is not clobbered.
+	if (t == wrap && ui -> modulus_spinBox -> value() <= 0)
+		ui -> modulus_spinBox -> setValue(8);
+	ui -> modulus_spinBox -> setEnabled(t == wrap);
+		//A padding mask only means anything for a part rendered as a number.
+	const bool numeric = (t == unit || t == unitfolio || t == ten
+			      || t == tenfolio || t == hundred || t == hundredfolio
+			      || t == wrap);
+	ui -> format_le -> setEnabled(numeric);
+	if (!numeric)
+		ui -> format_le -> clear();
 	type_= t;
 }
 
@@ -384,6 +473,8 @@ void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 		i = ui->type_cb->findText(tr("Chiffre 001"));
 	else if (t == hundredfolio)
 		i = ui->type_cb->findText(tr("Chiffre 001 - Folio"));
+	else if (t == alpha)
+		i = ui->type_cb->findText(tr("Alphabétique"));
 	else if (t == string)
 		i = ui->type_cb->findText(tr("Texte"));
 	else if (t == idfolio)
@@ -400,5 +491,7 @@ void NumPartEditorW::setCurrentIndex(NumPartEditorW::type t) {
 		i = ui->type_cb->findText(tr("Element Column"));
 	else if (t == elementprefix)
 		i = ui->type_cb->findText(tr("Element Prefix"));
+	else if (t == wrap)
+		i = ui->type_cb->findText(tr("Cyclique (modulo)"));
 	ui->type_cb->setCurrentIndex(i);
 }

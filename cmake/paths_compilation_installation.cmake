@@ -20,15 +20,15 @@ message(" - paths_compilation_installation")
 
 if(UNIX AND NOT APPLE)
   # for Linux, BSD, Solaris, Minix
-  set(COMPIL_PREFIX               "/usr/local/")
-  set(INSTALL_PREFIX              "/usr/local/")
+  set(COMPIL_PREFIX               "${CMAKE_INSTALL_PREFIX}/")
+  set(INSTALL_PREFIX              "${CMAKE_INSTALL_PREFIX}/")
   set(QET_BINARY_PATH             "bin/")
   set(QET_COMMON_COLLECTION_PATH  "share/qelectrotech/elements/")
   set(QET_COMMON_TBT_PATH         "share/qelectrotech/titleblocks/")
   set(QET_LANG_PATH               "share/qelectrotech/lang/")
   set(QET_EXAMPLES_PATH           "share/qelectrotech/examples/")
   set(QET_LICENSE_PATH            "doc/qelectrotech/")
-  set(QET_MIME_PACKAGE_PATH       "../share/mime/packages/")
+  set(QET_MIME_PACKAGE_PATH       "share/mime/packages/")
   set(QET_DESKTOP_PATH            "share/applications/")
   set(QET_ICONS_PATH              "share/icons/hicolor/")
   set(QET_MAN_PATH                "man/")
@@ -58,7 +58,10 @@ if(WIN32)
   set(QET_BINARY_PATH             "./")
   set(QET_COMMON_COLLECTION_PATH  "elements/")
   set(QET_COMMON_TBT_PATH         "titleblocks/")
-  set(QET_LANG_PATH               "l10n/")
+  # "lang/" and not "l10n/": that is where every Windows packaging actually
+  # puts the .qm files (see build-aux/windows/QElectroTech.wxs and the
+  # windows-build workflow), and what the shortcuts pass as --lang-dir.
+  set(QET_LANG_PATH               "lang/")
   set(QET_LICENSE_PATH            "./")
   # Liste des ressources Windows
 #RC_FILE = qelectrotech.rc

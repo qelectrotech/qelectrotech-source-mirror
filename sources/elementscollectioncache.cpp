@@ -45,18 +45,18 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		qDebug() << "Unable to open the SQLite database " << database_path << " as " << connection_name << ": " << cache_db_.lastError();
 	else
 	{
-		cache_db_.exec("PRAGMA temp_store = MEMORY");
-		cache_db_.exec("PRAGMA journal_mode = MEMORY");
-		cache_db_.exec("PRAGMA page_size = 4096");
-		cache_db_.exec("PRAGMA cache_size = 16384");
-		cache_db_.exec("PRAGMA locking_mode = EXCLUSIVE");
-		cache_db_.exec("PRAGMA synchronous = OFF");
+		QSqlQuery(cache_db_).exec("PRAGMA temp_store = MEMORY");
+		QSqlQuery(cache_db_).exec("PRAGMA journal_mode = MEMORY");
+		QSqlQuery(cache_db_).exec("PRAGMA page_size = 4096");
+		QSqlQuery(cache_db_).exec("PRAGMA cache_size = 16384");
+		QSqlQuery(cache_db_).exec("PRAGMA locking_mode = EXCLUSIVE");
+		QSqlQuery(cache_db_).exec("PRAGMA synchronous = OFF");
 
 #if TODO_LIST
 #pragma message("@TODO the tables could already exist, handle that case.")
 #endif
 			//@TODO the tables could already exist, handle that case.
-		cache_db_.exec("CREATE TABLE names"
+		QSqlQuery(cache_db_).exec("CREATE TABLE names"
 					   "("
 					   "path VARCHAR(512) NOT NULL,"
 					   "locale VARCHAR(2) NOT NULL,"
@@ -65,7 +65,7 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 					   "PRIMARY KEY(path, locale)"
 					   ");");
 
-		cache_db_.exec("CREATE TABLE pixmaps"
+		QSqlQuery(cache_db_).exec("CREATE TABLE pixmaps"
 					   "("
 					   "path VARCHAR(512) NOT NULL UNIQUE,"
 					   "uuid VARCHAR(512) NOT NULL,"

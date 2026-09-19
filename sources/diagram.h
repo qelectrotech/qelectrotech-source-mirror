@@ -24,7 +24,6 @@
 #include "elementtextsmover.h"
 #include "exportproperties.h"
 #include "properties/xrefproperties.h"
-#include "qetproject.h"
 #include "qgimanager.h"
 
 #include <QHash>
@@ -39,12 +38,11 @@ class DiagramPosition;
 class DiagramTextItem;
 class Element;
 class ElementsLocation;
-class QETProject;
-class Terminal;
 class DiagramImageItem;
 class DiagramEventInterface;
 class DiagramFolioList;
 class QETProject;
+struct GuideProperties;
 
 /**
 	@brief The Diagram class
@@ -67,6 +65,13 @@ class Diagram : public QGraphicsScene
 	
 	// ATTRIBUTES
 	public:
+		struct Guide {
+			enum Orientation { Horizontal, Vertical };
+			Orientation orientation;
+			qreal position;
+			QColor color;
+		};
+
 		/**
 			@brief The BorderOptions enum
 			Represents available options when rendering a particular diagram:
@@ -119,7 +124,10 @@ class Diagram : public QGraphicsScene
 
 		bool draw_grid_;
 		bool use_border_;
+		bool draw_guides_;
+		QList<Diagram::Guide> m_guides_list;
 		bool draw_terminals_;
+		bool draw_terminal_names_;
 		bool draw_colored_conductors_;
 
 		QString m_conductors_autonum_name;
@@ -128,6 +136,9 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+
+		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
+		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
 	
 	// METHODS
 	protected:
@@ -142,8 +153,11 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
+		bool event(QEvent *event) override;
 
-	
+	private:
+		void selectNextItem(bool forward);
+
 	public:
 		void correctTextPos(Element* elmt);
 		void restoreText(Element* elmt);
@@ -202,11 +216,15 @@ class Diagram : public QGraphicsScene
 		// methods related to graphics items addition/removal on the diagram
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
+		bool eventInterfaceIsRunning() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
 		bool displayGrid();
+		void setDisplayGuides(bool);
+		bool displayGuides();
+		void updateProjectGuides(const QList<GuideProperties> &guides);
 		void setUseBorder(bool);
 		bool useBorder();
 		void setBorderOptions(BorderOptions);
@@ -216,6 +234,8 @@ class Diagram : public QGraphicsScene
 	
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);
+		bool drawTerminalNames() const;
+		void setDrawTerminalNames(bool);
 		bool drawColoredConductors() const;
 		void setDrawColoredConductors(bool);
 	
@@ -274,6 +294,8 @@ class Diagram : public QGraphicsScene
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
+		void selectAllConductors();
+		void selectAllTextFields();
 
 	signals:
 		void showDiagram (Diagram *);
@@ -341,6 +363,16 @@ inline bool Diagram::displayGrid() {
 	return(draw_grid_);
 }
 
+inline void Diagram::setDisplayGuides(bool dg) {
+	if (draw_guides_ != dg) {
+		draw_guides_ = dg;
+		update();
+	}
+}
+
+inline bool Diagram::displayGuides() {
+	return(draw_guides_);
+}
 /**
 	@brief Diagram::setUseBorder
 	Set whether the diagram border (including rows/columns headers and the title
@@ -390,14 +422,6 @@ inline Diagram::BorderOptions Diagram::borderOptions() {
 }
 
 /**
-	@brief Diagram::undoStack
-	@return the diagram undo stack
-*/
-inline QUndoStack &Diagram::undoStack() {
-	return *(project()->undoStack());
-}
-
-/**
 	@brief Diagram::qgiManager
 	@return the diagram graphics item manager
 */
@@ -412,6 +436,15 @@ inline QGIManager &Diagram::qgiManager() {
 inline bool Diagram::drawTerminals() const
 {
 	return(draw_terminals_);
+}
+
+/**
+	@brief Diagram::drawTerminalNames
+	@return true if terminal names are rendered, false otherwise
+*/
+inline bool Diagram::drawTerminalNames() const
+{
+	return(draw_terminal_names_);
 }
 
 /**

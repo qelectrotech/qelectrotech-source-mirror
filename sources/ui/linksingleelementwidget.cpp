@@ -16,7 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "linksingleelementwidget.h"
-#include "../qetgraphicsitem/masterelement.h"
+#include "contactgroupselectiondialog.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../diagram.h"
 #include "../diagramposition.h"
@@ -24,10 +24,16 @@
 #include "../elementprovider.h"
 #include "../undocommand/linkelementcommand.h"
 #include "../qetinformation.h"
-
+#include "../qetproject.h"
+#include "../qetgraphicsitem/masterelement.h"
 #include "../ui_linksingleelementwidget.h"
 
 #include <QTreeWidgetItem>
+#include <QInputDialog>
+#include <QCheckBox>
+#include <QSettings>
+#include <QSignalBlocker>
+
 
 /**
 	@brief LinkSingleElementWidget::LinkSingleElementWidget
@@ -50,6 +56,22 @@ LinkSingleElementWidget::LinkSingleElementWidget(Element *elmt,
 	m_show_qtwi     = new QAction(tr("Montrer l'élément"), this);
 	m_show_element  = new QAction(tr("Montrer l'élément esclave"), this);
 	m_save_header_state = new QAction(tr("Enregistrer la disposition"), this);
+
+	// Hide the full-masters checkbox for non-slave elements
+	const bool is_slave = (elmt && elmt->elementData().m_type == ElementData::Slave);
+	ui->m_hide_full_masters_cb->setVisible(is_slave);
+
+	// Restore persisted state before connecting to avoid toggled firing buildTree()
+	// while m_element is still null.
+	{
+		const QSignalBlocker blocker(ui->m_hide_full_masters_cb);
+		QSettings settings;
+		ui->m_hide_full_masters_cb->setChecked(
+			settings.value(QStringLiteral("link-element-widget/hideFullMasters"), false).toBool());
+	}
+
+	connect(ui->m_hide_full_masters_cb, &QCheckBox::toggled,
+		this, &LinkSingleElementWidget::hideFullMastersToggled);
 	
 	connect(m_show_qtwi, &QAction::triggered, this, [=]()
 	{
@@ -175,6 +197,7 @@ void LinkSingleElementWidget::apply()
 	m_unlink = false;
 	m_element_to_link = nullptr;
 	m_pending_qtwi = nullptr;
+	m_pending_group_index = -1;
 }
 
 /**
@@ -188,8 +211,12 @@ QUndoCommand *LinkSingleElementWidget::associatedUndo() const
 
 	if (m_element_to_link || m_unlink)
 	{
-		if (m_element_to_link)
+		if (m_element_to_link) {
 			undo->setLink(m_element_to_link);
+			if (m_pending_group_index >= 0) {
+				undo->setGroupIndex(m_pending_group_index);
+			}
+		}
 		else if (m_unlink)
 			undo->unlinkAll();
 
@@ -242,6 +269,7 @@ void LinkSingleElementWidget::buildTree()
 
 	if (m_element->elementData().m_type == ElementData::Slave)
 	{
+		m_full_masters.clear();
 		
 		for(const auto &elmt : elmt_vector)
 		{
@@ -281,6 +309,16 @@ void LinkSingleElementWidget::buildTree()
 			QTreeWidgetItem *qtwi = new QTreeWidgetItem(ui->m_tree_widget, str_list);
 			m_qtwi_elmt_hash.insert(qtwi, elmt);
 			m_qtwi_strl_hash.insert(qtwi, search_list);
+
+			// Check if this master is full
+			if (elmt->linkType() == Element::Master) {
+				MasterElement *me = qobject_cast<MasterElement*>(elmt);
+				if (me && me->isFull()) {
+					m_full_masters.insert(qtwi);
+					if (ui->m_hide_full_masters_cb->isChecked())
+						qtwi->setHidden(true);
+				}
+			}
 		}
 		
 		
@@ -345,8 +383,16 @@ void LinkSingleElementWidget::buildTree()
 		
 		QSettings settings;
 		QVariant v = settings.value(QStringLiteral("link-element-widget/report-state"));
-		if(!v.isNull())
-			ui->m_tree_widget->header()->restoreState(v.toByteArray());
+		auto *header = ui->m_tree_widget->header();
+		if (v.isNull() || !header->restoreState(v.toByteArray()))
+		{
+			// Keep logical column IDs stable for saved layouts, but show the
+			// folio identity first even when the candidate has no conductor.
+			for (int column = 5; column < 8; ++column)
+				header->moveSection(header->visualIndex(column), column - 5);
+			ui->m_tree_widget->resizeColumnToContents(5);
+			ui->m_tree_widget->resizeColumnToContents(6);
+		}
 	}
 	
 	setUpCompleter();
@@ -386,20 +432,28 @@ QVector <QPointer<Element>> LinkSingleElementWidget::availableElements()
 	
 	//If element is linked, remove is parent from the list
 	if(!m_element->isFree()) elmt_vector.removeAll(m_element->linkedElements().first());
-	// Filter out all master elements from the list
+
+	// Filter out incompatible elements: PLC and non-PLC must not mix
+	const bool element_is_plc = (m_element->elementData().m_type == ElementData::Slave &&
+				     m_element->elementData().m_slave_type == ElementData::PLCSlave);
 	for (int i = elmt_vector.size() - 1; i >= 0; --i) {
 		Element *elmt = elmt_vector.at(i);
 
-		// If the item in the list is a master
 		if (elmt->linkType() == Element::Master) {
+			const bool master_is_plc = (elmt->elementData().m_master_type == ElementData::PLC);
 
-			// We convert the generic element pointer into a MasterElement pointer
-			MasterElement *master = static_cast<MasterElement*>(elmt);
-
-			// If the master is full, we'll remove it from the list!
-			if (master->isFull()) {
+			// PLC slave can only link to PLC master, and vice versa
+			if (element_is_plc != master_is_plc) {
 				elmt_vector.removeAt(i);
+				continue;
 			}
+
+				// A master at its declared limit stays in the list. Removing
+				// it made a full master indistinguishable from one that does
+				// not exist: the candidate simply was not there, with nothing
+				// to say why. The limit is advisory -- see the prompt in
+				// MasterPropertiesWidget::on_link_button_clicked() -- so the
+				// user decides, rather than the list deciding for them.
 		}
 	}
 	return elmt_vector;
@@ -432,6 +486,8 @@ void LinkSingleElementWidget::setUpCompleter()
 */
 void LinkSingleElementWidget::clearTreeWidget()
 {
+	m_pending_qtwi = nullptr;
+
 	while(ui->m_tree_widget->topLevelItemCount())
 	{
 		QTreeWidgetItem *qtwi = ui->m_tree_widget->takeTopLevelItem(0);
@@ -444,6 +500,7 @@ void LinkSingleElementWidget::clearTreeWidget()
 	
 	m_qtwi_elmt_hash.clear();
 	m_qtwi_strl_hash.clear();
+	m_full_masters.clear();
 }
 
 void LinkSingleElementWidget::setUpHeaderLabels()
@@ -513,7 +570,7 @@ void LinkSingleElementWidget::diagramWasRemovedFromProject()
 	// contains the master element linked to the edited element
 	// we must wait for this elements to be unlinked,
 	// or else the list of available master isn't up to date
-	QTimer::singleShot(10, this, SLOT(updateUi()));
+	QTimer::singleShot(10, this, &LinkSingleElementWidget::updateUi);
 }
 
 void LinkSingleElementWidget::showedElementWasDeleted()
@@ -529,9 +586,86 @@ void LinkSingleElementWidget::linkTriggered()
 {
 	if(!m_qtwi_at_context_menu)
 		return;
-	
+
 	m_element_to_link = m_qtwi_elmt_hash.value(m_qtwi_at_context_menu);
-	
+	m_pending_group_index = -1;
+
+	//If linking a slave to a master with contact groups, show group selection dialog
+	if (m_element->linkType() == Element::Slave
+		&& m_element_to_link
+		&& m_element_to_link->linkType() == Element::Master)
+	{
+		// Check if this is a PLC master
+		if (m_element_to_link->elementData().m_master_type == ElementData::PLC)
+		{
+			// Show PLC IO selection dialog
+			const auto &plc_data = m_element_to_link->elementData().plcMasterData();
+			if (!plc_data.ios.isEmpty())
+			{
+				// Collect already-used IO indices from the master
+				QSet<int> used_indices;
+				for (Element *linked : m_element_to_link->linkedElements()) {
+					int idx = m_element_to_link->groupIndexForElement(linked);
+					if (idx >= 0) {
+						used_indices.insert(idx);
+					}
+				}
+
+				// Build selection dialog
+				QStringList items;
+				for (int i = 0; i < plc_data.ios.size(); ++i) {
+					const auto &io = plc_data.ios.at(i);
+					QString label = QString("[%1] %2 - %3")
+						.arg(i + 1)
+						.arg(io.address)
+						.arg(io.functionText);
+					if (used_indices.contains(i))
+						label += tr(" (déjà utilisé)");
+					items << label;
+				}
+
+				bool ok = false;
+				int selected = QInputDialog::getInt(
+					this,
+					tr("Sélectionner un IO PLC"),
+					tr("IO disponible:"),
+					0, 0, plc_data.ios.size() - 1, 1, &ok);
+
+				if (ok && selected >= 0) {
+					m_pending_group_index = selected;
+				} else {
+					m_element_to_link = nullptr;
+					return;
+				}
+			}
+		}
+		else
+		{
+			// Normal contact group selection for non-PLC masters
+			const auto &groups = m_element_to_link->elementData().m_slave_contact_groups;
+			if (!groups.isEmpty())
+			{
+				// Collect already-used group indices from the master
+				QSet<int> used_indices;
+				for (Element *linked : m_element_to_link->linkedElements()) {
+					int idx = m_element_to_link->groupIndexForElement(linked);
+					if (idx >= 0) {
+						used_indices.insert(idx);
+					}
+				}
+
+				ContactGroupSelectionDialog dlg(groups, used_indices,
+					m_element->elementData(), this);
+				if (dlg.exec() == QDialog::Accepted && dlg.selectedIndex() >= 0) {
+					m_pending_group_index = dlg.selectedIndex();
+				} else {
+					m_element_to_link = nullptr;
+					return;
+				}
+			}
+		}
+	}
+
 	if(m_live_edit)
 	{
 		apply();
@@ -552,7 +686,7 @@ void LinkSingleElementWidget::linkTriggered()
 								      Qt::NoBrush));
 			}
 		}
-		
+
 		for (int i=0 ; i<6 ; i++)
 		{
 			m_qtwi_at_context_menu->setBackground(i,
@@ -561,7 +695,7 @@ void LinkSingleElementWidget::linkTriggered()
 		}
 		m_pending_qtwi = m_qtwi_at_context_menu;
 	}
-	
+
 }
 
 /**
@@ -575,6 +709,7 @@ void LinkSingleElementWidget::hideButtons()
 	ui->m_show_linked_pb->hide();
 	ui->m_show_this_pb->hide();
 	ui->m_search_field->show();
+	ui->m_hide_full_masters_cb->show();
 }
 
 /**
@@ -588,6 +723,7 @@ void LinkSingleElementWidget::showButtons()
 	ui->m_show_linked_pb->show();
 	ui->m_show_this_pb->show();
 	ui->m_search_field->hide();
+	ui->m_hide_full_masters_cb->hide();
 }
 
 void LinkSingleElementWidget::headerCustomContextMenuRequested(
@@ -625,8 +761,7 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(
 	
 	if (m_showed_element)
 	{
-		disconnect(m_showed_element, SIGNAL(destroyed()),
-			   this, SLOT(showedElementWasDeleted()));
+		disconnect(m_showed_element, &QObject::destroyed, this, &LinkSingleElementWidget::showedElementWasDeleted);
 		m_showed_element->setHighlighted(false);
 	}
 	
@@ -634,8 +769,7 @@ void LinkSingleElementWidget::on_m_tree_widget_itemDoubleClicked(
 	elmt->diagram()->showMe();
 	elmt->setHighlighted(true);
 	m_showed_element = elmt;
-	connect(m_showed_element, SIGNAL(destroyed()),
-		this, SLOT(showedElementWasDeleted()));
+	connect(m_showed_element, &QObject::destroyed, this, &LinkSingleElementWidget::showedElementWasDeleted);
 	
 }
 
@@ -685,27 +819,35 @@ void LinkSingleElementWidget::on_m_show_this_pb_clicked()
 	If arg1 is empty, show all items.
 	@param arg1
 */
-void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &arg1)
+void LinkSingleElementWidget::on_m_search_field_textEdited(const QString &)
 {
-	//Show all items if arg1 is empty, if not hide all items
-	foreach(QTreeWidgetItem *qtwi, m_qtwi_elmt_hash.keys())
-		qtwi->setHidden(!arg1.isEmpty());
-	
-	QList <QTreeWidgetItem *> qtwi_list;
-	
-	foreach(QTreeWidgetItem *qtwi, m_qtwi_strl_hash.keys())
+	updateItemsVisibility();
+}
+
+void LinkSingleElementWidget::hideFullMastersToggled(bool checked)
+{
+	QSettings settings;
+	settings.setValue(QStringLiteral("link-element-widget/hideFullMasters"), checked);
+	updateItemsVisibility();
+}
+
+void LinkSingleElementWidget::updateItemsVisibility()
+{
+	const QString text = ui->m_search_field->text();
+	const bool hide_full = ui->m_hide_full_masters_cb->isChecked();
+
+	for (auto it = m_qtwi_strl_hash.cbegin(); it != m_qtwi_strl_hash.cend(); ++it)
 	{
-		foreach(QString str, m_qtwi_strl_hash.value(qtwi))
-		{
-			if(str.contains(arg1, Qt::CaseInsensitive))
-			{
-				qtwi_list << qtwi;
-				continue;
+		bool match = text.isEmpty();
+		if (!match) {
+			for (const QString &str : it.value()) {
+				if (str.contains(text, Qt::CaseInsensitive)) {
+					match = true;
+					break;
+				}
 			}
 		}
+		it.key()->setHidden(!match
+			|| (hide_full && m_full_masters.contains(it.key())));
 	}
-	
-	//Show items which match with arg1
-	foreach(QTreeWidgetItem *qtwi, qtwi_list)
-		qtwi->setHidden(false);
 }

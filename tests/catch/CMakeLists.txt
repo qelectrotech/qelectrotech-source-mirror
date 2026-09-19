@@ -40,24 +40,13 @@ if(NOT DEFINED QET_COMPONENTS)
   message(".. QET_COMPONENTS is not set !!! I set them up !!!")
   include(../../cmake/qet_compilation_vars.cmake)
 endif()
-if(NOT DEFINED QT_VERSION_MAJOR)
-  find_package(
-    QT
-   NAMES
-    Qt6
-    Qt5
-   COMPONENTS
-    ${QET_COMPONENTS}
-   REQUIRED
-   )
-endif()
-message(".. QT_VERSION_MAJOR   :" ${QT_VERSION_MAJOR})
 
 find_package(
-  Qt${QT_VERSION_MAJOR}
+ Qt6
  COMPONENTS
  ${QET_COMPONENTS}
  REQUIRED)
+
 
 Include(FetchContent)
 
@@ -83,12 +72,26 @@ add_executable(
     ${QET_DIR}/sources/borderproperties.h
     )
 
+if(NOT BUILD_WITH_KF)
+    target_sources(
+        ${PROJECT_NAME}
+        PRIVATE
+        src/kautosavefile_test.cpp
+        ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
+        )
+    target_include_directories(
+        ${PROJECT_NAME}
+        PRIVATE
+        ${QET_DIR}/sources/ui/nokde
+        )
+endif()
+
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
     Catch2::Catch2
     PRIVATE
-    ${KF5_PRIVATE_LIBRARIES}
+    ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES})
 
 if (DEFINED ENV{CATCH_INCLUDE_DIR})

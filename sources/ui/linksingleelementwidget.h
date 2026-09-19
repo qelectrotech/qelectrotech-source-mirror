@@ -22,8 +22,11 @@
 #include "abstractelementpropertieseditorwidget.h"
 
 #include <QHash>
+#include <QDialog>
+#include <QComboBox>
 
 class QTreeWidgetItem;
+class QCheckBox;
 class Element;
 class QMenu;
 
@@ -69,6 +72,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void setUpCompleter();
 		void clearTreeWidget();
 		void setUpHeaderLabels();
+		void updateItemsVisibility();
 
 	private slots:
 		void diagramWasRemovedFromProject();
@@ -85,6 +89,7 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 		void on_m_show_this_pb_clicked();
 
 		void on_m_search_field_textEdited(const QString &arg1);
+		void hideFullMastersToggled(bool checked);
 
 	private:
 	Ui::LinkSingleElementWidget *ui;
@@ -100,6 +105,10 @@ class LinkSingleElementWidget : public AbstractElementPropertiesEditorWidget
 
 	Element *m_showed_element = nullptr,
 			*m_element_to_link = nullptr;
+
+	QSet<QTreeWidgetItem*> m_full_masters;
+
+	int m_pending_group_index = -1;
 
 	QMenu *m_context_menu{nullptr};
 	QAction *m_link_action{nullptr},

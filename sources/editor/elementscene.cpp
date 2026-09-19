@@ -31,6 +31,7 @@
 #include "graphicspart/partline.h"
 #include "graphicspart/partpolygon.h"
 #include "graphicspart/partrectangle.h"
+#include "graphicspart/partplctable.h"
 #include "graphicspart/partterminal.h"
 #include "graphicspart/parttext.h"
 #include "ui/qetelementeditor.h"
@@ -68,10 +69,8 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	initPasteArea();
 	m_undo_stack.setClean();
 	m_decorator_lock = new QMutex();
-	connect(&m_undo_stack, SIGNAL(indexChanged(int)),
-		this, SLOT(managePrimitivesGroups()));
-	connect(this, SIGNAL(selectionChanged()),
-			this, SLOT(managePrimitivesGroups()));
+	connect(&m_undo_stack, &QUndoStack::indexChanged, this, &ElementScene::managePrimitivesGroups);
+	connect(this, &ElementScene::selectionChanged, this, &ElementScene::managePrimitivesGroups);
 }
 
 /**
@@ -84,12 +83,15 @@ ElementData ElementScene::elementData() {
 
 void ElementScene::setElementData(ElementData data)
 {
-	bool emit_ = m_element_data.m_informations != data.m_informations;
+	bool emit_info = (m_element_data != data);
+	bool type_changed = m_element_data.m_type != data.m_type;
 
 	m_element_data = data;
 
-	if (emit_)
+	if (emit_info)
 		emit elementInfoChanged();
+	if (type_changed)
+		emit elementTypeChanged();
 }
 
 /**
@@ -98,8 +100,7 @@ void ElementScene::setElementData(ElementData data)
 ElementScene::~ElementScene()
 {
 	//Disconnect to avoid crash, see bug report N° 122.
-	disconnect(&m_undo_stack, SIGNAL(indexChanged(int)),
-		   this, SLOT(managePrimitivesGroups()));
+	disconnect(&m_undo_stack, &QUndoStack::indexChanged, this, &ElementScene::managePrimitivesGroups);
 	delete m_decorator_lock;
 
 	if (m_event_interface)
@@ -107,6 +108,9 @@ ElementScene::~ElementScene()
 
 	if (m_decorator)
 		delete m_decorator;
+
+	if (m_paste_area && !m_paste_area->scene())
+		delete m_paste_area;
 }
 
 /**
@@ -117,6 +121,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 {
 	if (m_event_interface) {
 		if (m_event_interface -> mouseMoveEvent(e)) {
+			emit mouseMoved(snapToGrid(e->scenePos()));
 			if (m_event_interface->isFinish()) {
 				delete m_event_interface;
 				m_event_interface = nullptr;
@@ -128,6 +133,8 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e)
 	QPointF event_pos = e -> scenePos();
 	if (!(e -> modifiers() & Qt::ControlModifier))
 		event_pos = snapToGrid(event_pos);
+
+	emit mouseMoved(event_pos);
 
 	if (m_behavior == PasteArea) {
 		QRectF current_rect(m_paste_area -> rect());
@@ -307,6 +314,10 @@ void ElementScene::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
 */
 void ElementScene::drawForeground(QPainter *p, const QRectF &)
 {
+	if (!m_hotspot_visible) {
+		return;
+	}
+
 	p -> save();
 
 	// desactive tout antialiasing, sauf pour le texte
@@ -468,8 +479,13 @@ const QDomDocument ElementScene::toXml(bool all_parts)
 		root.appendChild(m_element_data.kindInfoToXml(xml_document));
 	}
 
+		//Slave is in this list because the element editor offers the
+		//Informations tab for it, including the PLC-specific rows
+		//populateTree() adds for a PLC slave. Without it the editor would
+		//accept that data and silently drop it on save.
 	if (type_ == ElementData::Simple ||
 		type_ == ElementData::Master ||
+		type_ == ElementData::Slave ||
 		type_ == ElementData::Terminal ||
 		type_ == ElementData::Thumbnail)
 	{
@@ -748,7 +764,7 @@ void ElementScene::addItems(QVector<QGraphicsItem *> items)
  */
 void ElementScene::removeItems(QVector<QGraphicsItem *> items)
 {
-	const int previous_selected_count{selectedItems().size()};
+	const int previous_selected_count = static_cast<int>(selectedItems().size());
 
 		//block signal to avoid multiple emit of selection changed,
 		//we emit this signal only once at the end of this function.
@@ -893,8 +909,8 @@ void ElementScene::slot_editAuthorInformations()
 						   QDialogButtonBox::Ok
 						   | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
-	connect(dialog_buttons, SIGNAL(accepted()),&dialog_author, SLOT(accept()));
-	connect(dialog_buttons, SIGNAL(rejected()),&dialog_author, SLOT(reject()));
+	connect(dialog_buttons, &QDialogButtonBox::accepted, &dialog_author, &QDialog::accept);
+	connect(dialog_buttons, &QDialogButtonBox::rejected, &dialog_author, &QDialog::reject);
 
 	// start the dialogue
 	// lance le dialogue
@@ -920,9 +936,41 @@ void  ElementScene::slot_editProperties()
 
 	if (m_element_data != epew.editedData())
 	{
+		ElementData new_data = epew.editedData();
+
+		// Check PLC state BEFORE pushing (push calls redo which changes m_element_data)
+		bool old_plc = (m_element_data.m_type == ElementData::Master &&
+						m_element_data.m_master_type == ElementData::PLC);
+		bool new_plc = (new_data.m_type == ElementData::Master &&
+						new_data.m_master_type == ElementData::PLC);
+
 		undoStack().push(new changeElementDataCommand(this,
 													  m_element_data,
-													  epew.editedData()));
+													  new_data));
+
+		if (new_plc && !old_plc) {
+			// Switched TO PLC: create table if not present
+			bool has_plc = false;
+			for (QGraphicsItem *item : items()) {
+				if (dynamic_cast<PartPlcTable *>(item)) {
+					has_plc = true;
+					break;
+				}
+			}
+			if (!has_plc) {
+				PartPlcTable *pt = new PartPlcTable(m_element_editor);
+				addItem(pt);
+			}
+		} else if (!new_plc && old_plc) {
+			// Switched FROM PLC: remove table
+			for (QGraphicsItem *item : items()) {
+				if (PartPlcTable *pt = dynamic_cast<PartPlcTable *>(item)) {
+					removeItem(pt);
+					delete pt;
+					break;
+				}
+			}
+		}
 	}
 }
 
@@ -1166,15 +1214,16 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document)
 				CustomElementPart *cep = nullptr;
 				PartDynamicTextField *pdtf = nullptr;
 
-				if      (qde.tagName() == "line")     cep = new PartLine     (m_element_editor);
-				else if (qde.tagName() == "rect")     cep = new PartRectangle(m_element_editor);
-				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (m_element_editor);
-				else if (qde.tagName() == "circle")   cep = new PartEllipse  (m_element_editor);
-				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (m_element_editor);
-				else if (qde.tagName() == "terminal") cep = new PartTerminal (m_element_editor);
-				else if (qde.tagName() == "text")     cep = new PartText     (m_element_editor);
-				else if (qde.tagName() == "arc")      cep = new PartArc      (m_element_editor);
+				if      (qde.tagName() == "line")       cep = new PartLine      (m_element_editor);
+				else if (qde.tagName() == "rect")       cep = new PartRectangle (m_element_editor);
+				else if (qde.tagName() == "ellipse")    cep = new PartEllipse   (m_element_editor);
+				else if (qde.tagName() == "circle")     cep = new PartEllipse   (m_element_editor);
+				else if (qde.tagName() == "polygon")    cep = new PartPolygon   (m_element_editor);
+				else if (qde.tagName() == "terminal")   cep = new PartTerminal  (m_element_editor);
+				else if (qde.tagName() == "text")       cep = new PartText      (m_element_editor);
+				else if (qde.tagName() == "arc")        cep = new PartArc       (m_element_editor);
 				else if (qde.tagName() == "dynamic_text") cep = new PartDynamicTextField (m_element_editor);
+				else if (qde.tagName() == "plc_table")  cep = new PartPlcTable  (m_element_editor);
 				//For the input (aka the old text field) we try to convert it to the new partDynamicTextField
 				else if (qde.tagName() == "input") cep = pdtf = new PartDynamicTextField(m_element_editor);
 				else continue;
@@ -1352,9 +1401,7 @@ void ElementScene::managePrimitivesGroups()
 	if (!m_decorator)
 	{
 		m_decorator = new ElementPrimitiveDecorator();
-		connect(m_decorator,
-			SIGNAL(actionFinished(ElementEditionCommand*)),
-			this, SLOT(stackAction(ElementEditionCommand *)));
+		connect(m_decorator, &ElementPrimitiveDecorator::actionFinished, this, &ElementScene::stackAction);
 		addItem(m_decorator);
 		m_decorator -> hide();
 	}

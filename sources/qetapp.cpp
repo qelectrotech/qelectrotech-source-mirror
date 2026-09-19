@@ -18,6 +18,7 @@
 #include "qetapp.h"
 
 #include "configdialog.h"
+#include "qet.h"
 #include "ui/configpage/configpages.h"
 #include "editor/ui/qetelementeditor.h"
 #include "elementscollectioncache.h"
@@ -26,6 +27,8 @@
 #include "projectview.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
+#include "qetpalette.h"
+#include "utils/qetutils.h"
 #include "qetmessagebox.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -35,9 +38,12 @@
 #include "titleblocktemplate.h"
 #include "ui/aboutqetdialog.h"
 #include "ui/configpage/generalconfigurationpage.h"
+#include "ui/configpage/shortcutsconfigpage.h"
 #include "machine_info.h"
 #include "TerminalStrip/ui/terminalstripeditorwindow.h"
 #include "qetversion.h"
+#include "logging/qetlogger.h"
+#include "logging/ui/diagnosticsreportdialog.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -46,7 +52,9 @@
 #include <QFontDatabase>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
-#ifdef BUILD_WITHOUT_KF5
+#include <QStyleHints>
+#ifdef BUILD_WITHOUT_KF
+#	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
 #endif
@@ -113,14 +121,16 @@ QETApp::QETApp() :
 	}
 	initConfiguration();
 	initLanguage();
+	initIconTheme();
 	QET::Icons::initIcons();
 	initFonts();
 	initStyle();
+	QET::loadCustomColors();
 	initSplashScreen();
 	initSystemTray();
 
-	connect(&signal_map, SIGNAL(mapped(QWidget *)),
-		this, SLOT(invertMainWindowVisibility(QWidget *)));
+	connect(&signal_map, &QSignalMapper::mappedObject, this, [this](QObject *object) { invertMainWindowVisibility(qobject_cast<QWidget *>(object)); });
+
 	qApp->setQuitOnLastWindowClosed(false);
 	connect(qApp, &QApplication::lastWindowClosed,
 		this, &QETApp::checkRemainingWindows);
@@ -160,6 +170,7 @@ QETApp::QETApp() :
 */
 QETApp::~QETApp()
 {
+	QET::saveCustomColors();
 	m_elements_recent_files->save();
 	m_projects_recent_files->save();
 
@@ -193,6 +204,26 @@ QETApp *QETApp::instance()
 }
 
 /**
+	@brief QETApp::loadedQetTranslationFile
+	@return path of the QET .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQetTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qetTranslator.filePath() : QString();
+}
+
+/**
+	@brief QETApp::loadedQtTranslationFile
+	@return path of the Qt .qm file actually loaded, empty if none
+	(diagnostic helper for the startup log, see MachineInfo)
+*/
+QString QETApp::loadedQtTranslationFile()
+{
+	return m_qetapp ? m_qetapp->qtTranslator.filePath() : QString();
+}
+
+/**
 	@brief QETApp::setLanguage
 	Change the language used by the application.
 	\~French Change le langage utilise par l'application.
@@ -204,14 +235,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
 
 	// load Qt library translations
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	QString qt_l10n_path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
-#endif
 	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path))
 	{
 		qWarning() << "failed to load"
@@ -229,14 +253,21 @@ void QETApp::setLanguage(const QString &desired_language) {
 	// desired_language may be a full locale such as "pt_BR": try that exact
 	// translation, then the base language ("pt"), then fall back to English.
 	// French is the application's source language and needs no translation.
+	// A .qm compiled from an untranslated .ts (0% done) loads "successfully"
+	// but is empty: treat it as missing, so the user falls back to English
+	// instead of silently getting the French source strings.
 	const QString base_language = desired_language.section('_', 0, 0);
-	bool loaded = qetTranslator.load("qet_" + desired_language, languages_path);
+	auto loadQet = [this, &languages_path](const QString &name) {
+		return qetTranslator.load(name, languages_path)
+			&& !qetTranslator.isEmpty();
+	};
+	bool loaded = loadQet("qet_" + desired_language);
 	if (!loaded && base_language != desired_language)
-		loaded = qetTranslator.load("qet_" + base_language, languages_path);
+		loaded = loadQet("qet_" + base_language);
 	if (!loaded && base_language != "fr") {
 		// use of the English version by default
 		// utilisation de la version anglaise par defaut
-		if(!qetTranslator.load("qet_en", languages_path))
+		if(!loadQet("qet_en"))
 			qWarning() << "failed to load"
 					   << "qet_en" << languages_path << "(" << __FILE__
 					   << __LINE__ << __FUNCTION__ << ")";
@@ -262,7 +293,7 @@ QString QETApp::langFromSetting()
 	{
 		QSettings settings;
 		system_language = settings.value("lang", "system").toString();
-		if(system_language == "system") {
+		if ((system_language == "system") || (system_language == QString())) {
 			// Keep the full locale (e.g. "pt_BR"), not just the base language
 			// ("pt"): QET ships regional translations (pt_BR, nl_BE, nl_NL) and
 			// truncating here loaded the wrong one. setLanguage() falls back to
@@ -539,6 +570,48 @@ TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(
 }
 
 /**
+	@brief resolveConfiguredDataPath
+	Resolve a data directory baked in at compile time.
+
+	An absolute path is returned unchanged. A relative one used to be
+	interpreted against the process working directory, which is only correct
+	when QET is started from its own installation folder: opening a document
+	from a file manager sets the working directory to the document's folder,
+	so the data was not found there. Resolve it against the executable
+	instead, trying the folder next to the binary and then its parent -- some
+	packagings put the binary in a "bin" subfolder with the data beside it
+	(see issue #86).
+
+	The working-directory interpretation is still attempted first, so any
+	setup that relied on it keeps working.
+
+	\~French Resout un dossier de donnees fixe a la compilation.
+	@param configured : the compile-time path
+	@return an existing directory if one is found, @a configured otherwise
+*/
+static QString resolveConfiguredDataPath(const QString &configured)
+{
+	if (configured.isEmpty() || QDir::isAbsolutePath(configured)) {
+		return(configured);
+	}
+	if (QDir(configured).exists()) {
+		return(configured);
+	}
+
+	const QString bin_dir = QCoreApplication::applicationDirPath();
+	const QStringList candidates = {
+		QDir::cleanPath(bin_dir + "/" + configured) + "/",
+		QDir::cleanPath(bin_dir + "/../" + configured) + "/"
+	};
+	for (const QString &candidate : candidates) {
+		if (QDir(candidate).exists()) {
+			return(candidate);
+		}
+	}
+	return(configured);
+}
+
+/**
 	@brief QETApp::commonElementsDir
 	@return the dir path of the common elements collection.
 */
@@ -585,7 +658,8 @@ QString QETApp::commonElementsDir()
 		/* the compilation option represents a classic absolute
 		 *  or relative path
 		 */
-		m_common_element_dir = QUOTE(QET_COMMON_COLLECTION_PATH);
+		m_common_element_dir =
+				resolveConfiguredDataPath(QUOTE(QET_COMMON_COLLECTION_PATH));
 		return m_common_element_dir;
 #else
 		/* the compilation option represents a path
@@ -753,7 +827,7 @@ QString QETApp::commonTitleBlockTemplatesDir()
 	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
 		// the compile-time option represents a usual path
 		// (be it absolute or relative)
-		return(QUOTE(QET_COMMON_TBT_PATH));
+		return(resolveConfiguredDataPath(QUOTE(QET_COMMON_TBT_PATH)));
 	#else
 		/* the compile-time option represents a path relative
 		 * to the directory that contains the executable binary
@@ -1260,7 +1334,7 @@ QString QETApp::languagesPath()
 		 * l'option de compilation represente
 		 *  un chemin absolu ou relatif classique
 		 */
-		return(QUOTE(QET_LANG_PATH));
+		return(resolveConfiguredDataPath(QUOTE(QET_LANG_PATH)));
 	#else
 		/* the compilation option represents a path relative
 		 *  to the folder containing the executable binary
@@ -1375,13 +1449,13 @@ QFont QETApp::diagramTextsItemFont(qreal size)
 	@param size
 	@return dynamic text font with PointSizeF(size)
 */
- QFont QETApp::dynamicTextsItemFont(qreal size)
+QFont QETApp::dynamicTextsItemFont(qreal size)
 {
 	QSettings settings;
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/dynamic_text_font")) {
-		font_.fromString(settings.value(
+		QETUtils::fontFromString(font_, settings.value(
 					 "diagrameditor/dynamic_text_font"
 						).toString());
 	}
@@ -1405,7 +1479,7 @@ QFont QETApp::indiTextsItemFont(qreal size)
 	//Font to use
 	QFont font_ = diagramTextsItemFont();
 	if (settings.contains("diagrameditor/independent_text_font")) {
-		font_.fromString(settings.value(
+		QETUtils::fontFromString(font_, settings.value(
 					 "diagrameditor/independent_text_font"
 					 ).toString());
 	}
@@ -1584,7 +1658,31 @@ void QETApp::receiveMessage(int instanceId, QByteArray message)
 	{
 		QString my_message(str.mid(20));
 		QStringList args_list = QET::splitWithSpaces(my_message);
-		openFiles(QETArguments(args_list));
+
+		// Deferred, not called directly.
+		//
+		// This slot runs inside SingleApplication's readyRead handling:
+		// SingleApplicationPrivate::slotDataAvailable() emits
+		// receivedMessage() synchronously from the socket's readyRead
+		// lambda. openFiles() then loads a project -- seconds of work on
+		// a large one -- and openAndAddProject() puts up a modal
+		// BackupDialog, whose exec() runs a nested event loop while the
+		// socket handler is still on the stack.
+		//
+		// During that nested loop the secondary instance exits, the
+		// connection closes and the QLocalSocket is deleted. When the
+		// dialog is dismissed and the stack unwinds, QMetaObject::
+		// activate() continues emitting on the freed sender and the
+		// process dies. Reported with a backtrace on PR #861;
+		// reproduced on Qt 6.10.2 by dismissing the dialog, which is the
+		// step that makes it fail -- leaving it open never unwinds.
+		//
+		// A zero-timer returns to the event loop first, so the socket
+		// stack is fully unwound before any of this runs.
+		const QETArguments deferred_args{args_list};
+		QTimer::singleShot(0, this, [this, deferred_args]() {
+			openFiles(deferred_args);
+		});
 	}
 }
 
@@ -1687,19 +1785,26 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 	false pour utiliser celles du theme en cours
 */
 void QETApp::useSystemPalette(bool use) {
+	// The base palette is always initial_palette_ (see initStyle()); the
+	// setting only decides whether the user's style.css is layered on top.
+	qApp->setPalette(initial_palette_);
 	if (use) {
-		qApp->setPalette(initial_palette_);
-		qApp->setStyleSheet(
-				"QAbstractScrollArea#mdiarea {"
-				"background-color -> setPalette(initial_palette_);"
-				"}"
-				);
+		// Drop any stylesheet previously loaded from style.css: with system
+		// colors requested, the palette set just above is what provides them.
+		//
+		// This used to install a one-rule stylesheet whose only declaration
+		// was invalid CSS ("background-color -> setPalette(initial_palette_);",
+		// a note-to-self committed in e6c32bc0, 2014). It styled nothing, but
+		// a non-empty application stylesheet still wraps every widget in
+		// QStyleSheetStyle, which overrides per-widget QWidget::setStyle().
+		qApp->setStyleSheet(QString());
 	} else {
 		QFile file(configDir() + "/style.css");
-		file.open(QFile::ReadOnly);
-		QString styleSheet = QLatin1String(file.readAll());
-		qApp->setStyleSheet(styleSheet);
-		file.close();
+		if (file.open(QFile::ReadOnly)) {
+			QString styleSheet = QLatin1String(file.readAll());
+			qApp->setStyleSheet(styleSheet);
+			file.close();
+		}
 	}
 }
 
@@ -1740,7 +1845,7 @@ void QETApp::checkRemainingWindows()
 	*/
 	static bool sleep = true;
 	if (sleep) {
-		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
+		QTimer::singleShot(500, this, &QETApp::checkRemainingWindows);
 	} else {
 		if (!diagramEditors().count() && !elementEditors().count()) {
 			qApp->quit();
@@ -1922,6 +2027,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location,
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -1933,6 +2039,7 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> show();
+	qet_template_editor -> readSettingsState();  // must run after show() in Qt6
 }
 
 /**
@@ -2001,6 +2108,7 @@ void QETApp::configureQET()
 	cd.addPage(new NewDiagramPage());
 	cd.addPage(new ExportConfigPage());
 	cd.addPage(new PrintConfigPage());
+	cd.addPage(new ShortcutsConfigPage());
 
 	// associates the dialog with a possible parent widget
 	// associe le dialogue a un eventuel widget parent
@@ -2227,6 +2335,34 @@ void QETApp::initFonts()
 }
 
 /**
+	@brief QETApp::initIconTheme
+	Register QET's two icon themes ("qet" and "qet-dark", see
+	misc/make_icon_themes.py and ico/icon-themes.qrc) and pick the one
+	matching the current palette. Must run before QET::Icons::initIcons(),
+	which looks icons up by name.
+*/
+void QETApp::initIconTheme()
+{
+	QStringList paths = QIcon::themeSearchPaths();
+	paths.prepend(QStringLiteral(":/ico/themes"));
+	QIcon::setThemeSearchPaths(paths);
+	applyIconTheme(qApp->palette());
+}
+
+/**
+	@brief QETApp::applyIconTheme
+	Select "qet-dark" for a dark palette, "qet" otherwise. Icons created
+	with QIcon::fromTheme() re-resolve on their next paint, so this can be
+	called again whenever the palette changes.
+*/
+void QETApp::applyIconTheme(const QPalette &palette)
+{
+	QIcon::setThemeName(QET::Palette::isDark(palette)
+	                    ? QStringLiteral("qet-dark")
+	                    : QStringLiteral("qet"));
+}
+
+/**
 	@brief QETApp::initStyle
 	Setup the gui style
 */
@@ -2234,9 +2370,46 @@ void QETApp::initStyle()
 {
 	initial_palette_ = qApp->palette();
 
+#ifdef Q_OS_MACOS
+	// main.cpp forces the Fusion style on macOS, but the palette Qt hands
+	// us there is the one its platform theme builds for the native style:
+	// Window, Button and Base share one color, and in dark mode the
+	// Inactive ButtonText is black. Fusion draws its frames, gradients and
+	// combo box text from those roles, so controls lose their edges and
+	// combo text goes black once the window loses focus. Replace it with a
+	// palette laid out the way Fusion expects (see qetpalette.h).
+	//
+	// macOS only: on Linux, Fusion is Qt's default style on desktops
+	// without a platform theme, and the palette there carries the user's
+	// desktop colors, which must stay in effect. Making Fusion and this
+	// palette the default everywhere is discussed in #870.
+	if (QET::Palette::styleIsFusion(qApp->style()))
+		initial_palette_ = QET::Palette::forFusion(initial_palette_);
+#endif
+	applyIconTheme(initial_palette_);
+
 	//Apply or not the system style
 	QSettings settings;
 	useSystemPalette(settings.value("usesystemcolors", true).toBool());
+
+#if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+	// Setting an application palette stops Qt from following the OS
+	// light/dark switch on its own, so follow it here. The platform accent
+	// color is not reachable any more at this point; the palette's own
+	// selection blue is used instead.
+	connect(qApp->styleHints(), &QStyleHints::colorSchemeChanged, this,
+	        [this](Qt::ColorScheme scheme)
+	{
+		if (!QET::Palette::styleIsFusion(qApp->style()))
+			return;
+		initial_palette_ = scheme == Qt::ColorScheme::Dark
+		                   ? QET::Palette::fusionDark()
+		                   : QET::Palette::fusionLight();
+		applyIconTheme(initial_palette_);
+		QSettings settings;
+		useSystemPalette(settings.value("usesystemcolors", true).toBool());
+	});
+#endif
 }
 
 /**
@@ -2348,24 +2521,23 @@ void QETApp::initSystemTray()
 	reduce_appli  -> setToolTip(tr("Réduire QElectroTech dans le systray"));
 	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
 
-	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
-	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
-	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
-	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
-	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
-	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
-	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
-	connect(reduce_templates, SIGNAL(triggered()), this, SLOT(reduceTitleBlockTemplateEditors()));
-	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
-	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
-	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+	connect(quitter_qet, &QAction::triggered, this, &QETApp::quitQET);
+	connect(reduce_appli, &QAction::triggered, this, &QETApp::reduceEveryEditor);
+	connect(restore_appli, &QAction::triggered, this, &QETApp::restoreEveryEditor);
+	connect(reduce_diagrams, &QAction::triggered, this, &QETApp::reduceDiagramEditors);
+	connect(restore_diagrams, &QAction::triggered, this, &QETApp::restoreDiagramEditors);
+	connect(reduce_elements, &QAction::triggered, this, &QETApp::reduceElementEditors);
+	connect(restore_elements, &QAction::triggered, this, &QETApp::restoreElementEditors);
+	connect(reduce_templates, &QAction::triggered, this, &QETApp::reduceTitleBlockTemplateEditors);
+	connect(restore_templates, &QAction::triggered, this, &QETApp::restoreTitleBlockTemplateEditors);
+	connect(new_diagram, &QAction::triggered, this, &QETApp::newDiagramEditor);
+	connect(new_element, &QAction::triggered, this, &QETApp::newElementEditor);
 
 	// initialization of the systray icon
 	// initialisation de l'icone du systray
 	m_qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	m_qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
-	connect(m_qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-		this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	connect(m_qsti, &QSystemTrayIcon::activated, this, &QETApp::systray);
 	m_qsti -> setContextMenu(menu_systray);
 	m_qsti -> show();
 }
@@ -2385,7 +2557,7 @@ template <class T> void QETApp::addWindowsListToMenu(
 		QAction *current_menu = menu -> addAction(window -> windowTitle());
 		current_menu -> setCheckable(true);
 		current_menu -> setChecked(window -> isVisible());
-		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		connect(current_menu, &QAction::triggered, &signal_map, qOverload<>(&QSignalMapper::map));
 		signal_map.setMapping(current_menu, window);
 	}
 }
@@ -2500,9 +2672,6 @@ void QETApp::buildSystemTrayMenu()
 */
 void QETApp::checkBackupFiles()
 {
-#ifdef BUILD_WITHOUT_KF5
-	return;
-#else
 	QList<KAutoSaveFile *> stale_files = KAutoSaveFile::allStaleFiles();
 
 	//Remove from the list @stale_files, the stales file of opened project
@@ -2525,10 +2694,28 @@ void QETApp::checkBackupFiles()
 		}
 	}
 
-	if (stale_files.isEmpty()) {
-		return;
+	if (!stale_files.isEmpty()) {
+		offerBackupFiles(stale_files);
 	}
 
+	// Discussion #644 step 5 asks that the recovery prompt and the crash
+	// report never show at the same time -- not that the report be dropped
+	// whenever there is something to recover. Offering it here, once the
+	// recovery prompt has been answered, keeps the two sequential without
+	// losing the report after the most common crash there is: one with a
+	// project open, which always leaves a stale file behind, so the report
+	// was unreachable in exactly the case it is most wanted (issue #901).
+	checkCrashDump();
+}
+
+/**
+	@brief QETApp::offerBackupFiles
+	Ask whether to reopen the recovery files left by a previous run, and
+	open or discard them accordingly.
+	@param stale_files : the recovery files to offer
+*/
+void QETApp::offerBackupFiles(const QList<KAutoSaveFile *> &stale_files)
+{
 	QString text;
 	if(stale_files.size() == 1) {
 		text.append(tr("<b>Le fichier de restauration suivant a été trouvé,<br>"
@@ -2577,7 +2764,58 @@ void QETApp::checkBackupFiles()
 			delete stale;
 		}
 	}
-#endif
+}
+
+/**
+	@brief QETApp::checkCrashDump
+	Discussion #644, step 5: if the crash handler (step 4) left an
+	unretrieved dump from a previous run, offer it to the user. Only
+	called from checkBackupFiles() when there was no stale project file
+	to recover this run, so the two prompts never both show at once.
+*/
+void QETApp::checkCrashDump()
+{
+	QetLogger &logger = QetLogger::instance();
+
+	// Listed once, then used both to build the contents and to delete
+	// below. Re-listing after the dialog closes would delete a dump
+	// written while it was open, unseen -- see clearPendingCrashDump().
+	const QStringList offered = logger.pendingCrashDumpFiles();
+	if (offered.isEmpty()) {
+		return;
+	}
+
+	const QByteArray content = logger.pendingCrashDumpContents(offered);
+
+	DiagnosticsReportDialog dialog(
+			tr("Rapport de plantage"),
+			tr("QElectroTech ne s'est pas fermé correctement lors de sa dernière exécution.\n"
+			   "Voici les derniers messages enregistrés avant l'arrêt -- vous pouvez les "
+			   "enregistrer pour les joindre à un rapport de bug."),
+			content);
+	dialog.exec();
+
+	// Offered once, then marked retrieved -- regardless of whether the
+	// user chose to save it -- so it is never offered a second time.
+	logger.clearPendingCrashDump(offered);
+}
+
+/**
+	@brief QETApp::showDiagnosticsReport
+	Discussion #644, step 5: the manual "Help > Diagnostics > Save
+	report" action. Unlike checkCrashDump(), this is about the *current*,
+	still-running session, not a previous one.
+*/
+void QETApp::showDiagnosticsReport()
+{
+	const QByteArray content = QetLogger::instance().buildDiagnosticsReport();
+
+	DiagnosticsReportDialog dialog(
+			tr("Rapport de diagnostic"),
+			tr("Ceci contient les derniers messages de journalisation de cette session. "
+			   "Vérifiez le contenu avant de le joindre à un rapport de bug public."),
+			content);
+	dialog.exec();
 }
 
 /**
