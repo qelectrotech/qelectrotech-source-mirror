@@ -96,7 +96,9 @@ add_executable(
   tst_qetpalette.cpp
   inkcontrast.h
   ${QET_DIR}/sources/qetpalette.cpp
-  ${QET_DIR}/sources/qetpalette.h)
+  ${QET_DIR}/sources/qetpalette.h
+  ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.cpp
+  ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.h)
 add_test(NAME tst_qetpalette COMMAND tst_qetpalette)
 target_include_directories(tst_qetpalette PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetpalette PRIVATE Qt::Test Qt::Widgets)

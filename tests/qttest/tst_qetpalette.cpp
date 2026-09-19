@@ -24,11 +24,15 @@
 #include <QLineEdit>
 #include <QMainWindow>
 #include <QPushButton>
+#include <QPainter>
 #include <QRadioButton>
+#include <QStandardItemModel>
+#include <QTreeView>
 #include <QStyleFactory>
 #include <QToolBar>
 
 #include "inkcontrast.h"
+#include "ElementsCollection/elementpreviewdelegate.h"
 #include "qetpalette.h"
 
 using QET::Palette::contrastRatio;
@@ -62,6 +66,10 @@ class tst_qetpalette : public QObject
 		void styleIsFusionMatchesObjectName();
 		void renderedWidgetsAreReadable_data();
 		void renderedWidgetsAreReadable();
+		void lineArtRuleSeparatesInkFromColor();
+		void invertedLightnessKeepsHueAndAlpha();
+		void elementPreviewReadsOnBothPalettes();
+		void previewDelegateAdaptsLineArtOnly();
 
 	private:
 		static void addPaletteRows();
@@ -306,6 +314,127 @@ void tst_qetpalette::renderedWidgetsAreReadable()
 	const double edit_contrast = inkContrast(edit_image, edit->rect().adjusted(4, 3, -4, -3));
 	QVERIFY2(edit_contrast >= kTextRatio,
 	         qPrintable(QString("line edit text: %1").arg(edit_contrast)));
+}
+
+namespace {
+	/// A 40 x 40 transparent picture with a 3 px stroke square in color, as
+	/// an element preview is drawn for the white sheet.
+	QImage strokeSquare(const QColor &color)
+	{
+		QImage image(40, 40, QImage::Format_ARGB32);
+		image.fill(Qt::transparent);
+		QPainter painter(&image);
+		painter.setPen(QPen(color, 3));
+		painter.drawRect(6, 6, 27, 27);
+		return image;
+	}
+
+	/// The most frequent color of a rendering: its background.
+	QRgb dominant(const QImage &image)
+	{
+		QHash<QRgb, int> histogram;
+		for (int y = 0; y < image.height(); ++y)
+			for (int x = 0; x < image.width(); ++x)
+				++histogram[image.pixel(x, y)];
+		QRgb best = 0;
+		int count = -1;
+		for (auto it = histogram.cbegin(); it != histogram.cend(); ++it)
+			if (it.value() > count) { count = it.value(); best = it.key(); }
+		return best;
+	}
+}
+
+void tst_qetpalette::lineArtRuleSeparatesInkFromColor()
+{
+	QVERIFY(QET::Palette::isLineArt(strokeSquare(Qt::black)));
+	QVERIFY(QET::Palette::isLineArt(strokeSquare(QColor(80, 80, 80))));
+	QVERIFY(!QET::Palette::isLineArt(strokeSquare(Qt::red)));
+	QVERIFY(!QET::Palette::isLineArt(strokeSquare(QColor(30, 96, 176))));
+	QVERIFY(!QET::Palette::isLineArt(QImage()));
+}
+
+/**
+	Black ink becomes the dark palette's light gray, a colored stroke keeps
+	its hue, and transparency is untouched.
+*/
+void tst_qetpalette::invertedLightnessKeepsHueAndAlpha()
+{
+	const QImage black = QET::Palette::invertedLightness(strokeSquare(Qt::black));
+	QCOMPARE(black.pixelColor(6, 20).alpha(), 255);
+	QVERIFY2(black.pixelColor(6, 20).lightnessF() > 0.8, "black ink did not become light");
+	QCOMPARE(black.pixelColor(20, 20).alpha(), 0);
+
+	const QImage red = QET::Palette::invertedLightness(strokeSquare(Qt::red));
+	const QColor stroke = red.pixelColor(6, 20);
+	QVERIFY2(qAbs(stroke.hslHueF() - QColor(Qt::red).hslHueF()) < 0.02, "hue changed");
+	QVERIFY(stroke.hslSaturationF() > 0.9);
+}
+
+/**
+	An element preview drawn for the white sheet must read at 3:1 on the
+	Base color of both palettes: unchanged on the light one, inverted on
+	the dark one.
+*/
+void tst_qetpalette::elementPreviewReadsOnBothPalettes()
+{
+	const QPixmap preview = QPixmap::fromImage(strokeSquare(Qt::black));
+	for (const QPalette &palette : {QET::Palette::fusionLight(), QET::Palette::fusionDark()})
+	{
+		const QColor base = palette.color(QPalette::Active, QPalette::Base);
+		const QPixmap shown = QET::Palette::forPalette(preview, palette);
+		QImage row(shown.size(), QImage::Format_ARGB32);
+		row.fill(base);
+		QPainter painter(&row);
+		painter.drawPixmap(0, 0, shown);
+		painter.end();
+		const double contrast = QET::Test::inkContrast(row, row.rect());
+		QVERIFY2(contrast >= 3.0, qPrintable(QString("preview reads %1:1 on Base %2").arg(contrast).arg(base.name())));
+	}
+	// A light palette hands the picture back untouched.
+	QCOMPARE(QET::Palette::forPalette(preview, QET::Palette::fusionLight()).cacheKey(), preview.cacheKey());
+}
+
+/**
+	In a tree on the dark palette, the delegate inverts a line-art icon so
+	it reads on the row, and leaves a colored icon (a folder) as it is.
+*/
+void tst_qetpalette::previewDelegateAdaptsLineArtOnly()
+{
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(QET::Palette::fusionDark());
+
+	QStandardItemModel model;
+	auto *element = new QStandardItem(QIcon(QPixmap::fromImage(strokeSquare(Qt::black))), "element");
+	auto *folder = new QStandardItem(QIcon(QPixmap::fromImage(strokeSquare(QColor(30, 96, 176)))), "folder");
+	model.appendRow(element);
+	model.appendRow(folder);
+
+	QTreeView view;
+	view.setModel(&model);
+	view.setIconSize(QSize(40, 40));
+	view.setItemDelegate(new ElementPreviewDelegate(&view));
+	view.resize(300, 200);
+	view.show();
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+	const QImage image = view.viewport()->grab().toImage();
+	const QRect element_icon(view.visualRect(element->index()).topLeft(), QSize(40, 40));
+	const QRect folder_icon(view.visualRect(folder->index()).topLeft(), QSize(40, 40));
+	const QColor base = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Base);
+	QCOMPARE(QColor(dominant(image)), base);
+
+	const double element_contrast = QET::Test::inkContrast(image, element_icon);
+	QVERIFY2(element_contrast >= 3.0, qPrintable(QString("element preview reads %1:1 on the dark row").arg(element_contrast)));
+
+	// The folder icon keeps its blue: some pixel in its slot is still saturated blue.
+	bool blue = false;
+	for (int y = folder_icon.top(); y <= folder_icon.bottom() && !blue; ++y)
+		for (int x = folder_icon.left(); x <= folder_icon.right() && !blue; ++x)
+		{
+			const QColor c = image.pixelColor(x, y);
+			blue = c.hslSaturationF() > 0.5 && c.blue() > c.red() + 60;
+		}
+	QVERIFY2(blue, "the colored icon lost its color");
 }
 
 int main(int argc, char **argv)
