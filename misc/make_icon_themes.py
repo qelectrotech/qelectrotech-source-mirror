@@ -79,8 +79,10 @@ ALIASES = {
     "22x22/dialog-information.png": "folio-properties",
 }
 
-# SVG icons referenced from sources/qeticons.cpp.
+# SVG icons referenced from sources/qeticons.cpp. ico/scalable/ holds the
+# ones drawn for QET as vectors; one file serves every size.
 SVGS = [
+    "scalable/pdf-import.svg",
     "breeze-icons/scalable/apps/hidef/edit-opacity.svg",
     "breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg",
     "breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg",

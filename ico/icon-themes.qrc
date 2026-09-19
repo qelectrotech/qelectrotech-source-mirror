@@ -218,7 +218,6 @@
         <file alias="themes/qet/22x22/object-locked.png">22x22/object-locked.png</file>
         <file alias="themes/qet/22x22/object-rotate-right.png">22x22/object-rotate-right.png</file>
         <file alias="themes/qet/22x22/object-unlocked.png">22x22/object-unlocked.png</file>
-        <file alias="themes/qet/22x22/pdf-import.png">22x22/pdf-import.png</file>
         <file alias="themes/qet/22x22/polygon.png">22x22/polygon.png</file>
         <file alias="themes/qet/22x22/portrait.png">22x22/portrait.png</file>
         <file alias="themes/qet/22x22/preferences-desktop-user.png">22x22/preferences-desktop-user.png</file>
@@ -274,6 +273,7 @@
         <file alias="themes/qet/128x128/printer.png">128x128/printer.png</file>
         <file alias="themes/qet/128x128/project.png">128x128/project.png</file>
         <file alias="themes/qet/128x128/settings.png">128x128/settings.png</file>
+        <file alias="themes/qet/scalable/pdf-import.svg">scalable/pdf-import.svg</file>
         <file alias="themes/qet/scalable/edit-opacity.svg">breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>
         <file alias="themes/qet/scalable/image-flip-horizontal.svg">breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
         <file alias="themes/qet/scalable/image-flip-vertical.svg">breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg</file>
@@ -458,6 +458,7 @@
         <file>themes/qet-dark/48x48/view-pim-journal.png</file>
         <file>themes/qet-dark/128x128/plasmagik.png</file>
         <file>themes/qet-dark/128x128/settings.png</file>
+        <file>themes/qet-dark/scalable/pdf-import.svg</file>
         <file>themes/qet-dark/scalable/edit-opacity.svg</file>
         <file>themes/qet-dark/scalable/image-flip-horizontal.svg</file>
         <file>themes/qet-dark/scalable/image-flip-vertical.svg</file>

@@ -53,6 +53,7 @@ class tst_qeticons : public QObject
 		void everyIconResolvesInBothThemes();
 		void darkThemeFilesReadOnDarkPalette();
 		void lightIconsStayLightInDarkTheme();
+		void addPdfIconIsOneScalableFile();
 		void toolbarIconIsReadable_data();
 		void toolbarIconIsReadable();
 		void panelProjectIconStaysSmall();
@@ -163,7 +164,7 @@ void tst_qeticons::lightIconsStayLightInDarkTheme()
 {
 	const QColor window = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Window);
 	QIcon::setThemeName(QStringLiteral("qet-dark"));
-	for (const QString &name : {"pdf-import", "diagram", "label", "folio-new", "folio-delete",
+	for (const QString &name : {"diagram", "label", "folio-new", "folio-delete",
 	                            "folio-properties", "diagram_bg"})
 	{
 		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet-dark/22x22/%1.png").arg(name)),
@@ -175,6 +176,42 @@ void tst_qeticons::lightIconsStayLightInDarkTheme()
 		         qPrintable(QString("%1 comes out dark in the dark theme (lightness %2)")
 		                    .arg(name).arg(mean.lightnessF())));
 		QVERIFY2(QET::Palette::contrastRatio(mean, window) >= kIconRatio, qPrintable(name));
+	}
+}
+
+/**
+	The "Add PDF" icon is the first of QET's own icons drawn as an SVG:
+	ico/scalable/pdf-import.svg, one file for every size, with a
+	recolored copy in the dark theme. It must resolve in both themes at
+	the toolbar size and above, dark ink on light and light ink on dark.
+	Fusion's toolbar slot is 24 px, so the file is drawn on a 24 px
+	canvas and its one pixel lines land on whole pixels there.
+*/
+void tst_qeticons::addPdfIconIsOneScalableFile()
+{
+	QVERIFY(QFile::exists(":/ico/themes/qet/scalable/pdf-import.svg"));
+	QVERIFY(QFile::exists(":/ico/themes/qet-dark/scalable/pdf-import.svg"));
+	QVERIFY(!QFile::exists(":/ico/themes/qet/22x22/pdf-import.png"));
+
+	const QByteArray dump = qgetenv("QET_TEST_DUMP_DIR");
+	for (const QString &theme : {"qet", "qet-dark"})
+	{
+		QIcon::setThemeName(theme);
+		const QIcon icon = QIcon::fromTheme("pdf-import");
+		QVERIFY2(!icon.isNull(), qPrintable(theme));
+		for (int size : {16, 22, 24, 32, 64})
+		{
+			const QPixmap pixmap = icon.pixmap(size);
+			QCOMPARE(pixmap.width(), size);
+			if (!dump.isEmpty())
+				pixmap.save(QString("%1/pdf-import-%2-%3.png").arg(QString::fromLocal8Bit(dump), theme).arg(size));
+			const QColor mean = meanVisibleColor(pixmap.toImage());
+			QVERIFY2(mean.isValid(), qPrintable(QString("%1 at %2 px is empty").arg(theme).arg(size)));
+			if (theme == "qet")
+				QVERIFY2(mean.lightnessF() < 0.5, qPrintable(QString("light theme at %1 px: lightness %2").arg(size).arg(mean.lightnessF())));
+			else
+				QVERIFY2(mean.lightnessF() > 0.6, qPrintable(QString("dark theme at %1 px: lightness %2").arg(size).arg(mean.lightnessF())));
+		}
 	}
 }
 
