@@ -116,17 +116,7 @@ else()
     message(STATUS "backtrace() not available: crash dumps will carry the log ring without a backtrace")
 endif()
 
-find_package(SQLite3 REQUIRED)
-
-# CMake < 4.3 only creates the SQLite::SQLite3 target (no SQLite3::SQLite3
-# alias yet), while CMake >= 4.3's bundled FindSQLite3 creates SQLite3::SQLite3
-# and deprecates the old name. Add the missing alias ourselves so we can use
-# the modern target name everywhere regardless of the CMake version in use
-# (this project must keep building on CMake versions below 4.3, e.g. on most
-# current Linux distros).
-if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
-    add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
-endif()
+include(cmake/sqlite3.cmake)
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${QET_DIR}/sources/ui)
 
