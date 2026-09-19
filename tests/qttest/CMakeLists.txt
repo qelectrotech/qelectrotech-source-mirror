@@ -138,6 +138,20 @@ add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml)
 
+# The wire/cable catalogue's storage layer: CRUD, search, CSV round trip,
+# multi-core cables and the IEC 60757 colour table. Headless -- it opens
+# databases in a QTemporaryDir, never the user's real catalogue. Two of its
+# cases are regressions: searching by cross-section or core count, and
+# Green-Yellow resolving to a different colour than plain Green.
+add_executable(
+  tst_wirecatalogue
+  tst_wirecatalogue.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/wirecataloguedb.cpp
+  ${QET_DIR}/sources/custom/wirecatalogue/iec60757.cpp)
+add_test(NAME tst_wirecatalogue COMMAND tst_wirecatalogue)
+target_include_directories(tst_wirecatalogue PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_wirecatalogue PRIVATE Qt::Test Qt::Widgets Qt::Sql)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately

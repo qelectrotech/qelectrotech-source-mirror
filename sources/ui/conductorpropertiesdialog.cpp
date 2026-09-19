@@ -44,6 +44,13 @@ ConductorPropertiesDialog::ConductorPropertiesDialog(
 		m_cpw->setDisabledShowText();
 	}
 	ui -> main_layout -> insertWidget(0, m_cpw);
+
+	// Custom (Trovo Tech): assigning a catalogue wire is a per-conductor action
+	// (different conductors of one potential carry different cores), so it must
+	// not propagate to the whole potential — untick "apply to all" on assign.
+	connect(m_cpw, &ConductorPropertiesWidget::wireAssigned, this, [this]() {
+		ui->m_apply_all_cb->setChecked(false);
+	});
 }
 
 /**

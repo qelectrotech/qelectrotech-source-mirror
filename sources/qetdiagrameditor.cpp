@@ -36,6 +36,7 @@
 #include "diagramevent/diagrameventaddpaste.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
+#include "custom/wirecatalogue/wirecatalogueui.h"
 #include "factory/elementpicturefactory.h"
 #include "factory/qetgraphicstablefactory.h"
 #include "print/projectprintwindow.h"
@@ -126,6 +127,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
 
 	setUpElementsPanel();
+	setUpWireCatalogue();
 	setUpElementsCollectionWidget();
 	setUpUndoStack();
 	setUpSelectionPropertiesEditor();
@@ -202,6 +204,22 @@ void QETDiagramEditor::setUpElementsPanel()
 	connect(pa, &ElementsPanelWidget::requestForDiagramMoveDownx10, this, &QETDiagramEditor::moveDiagramDownx10);
 	connect(pa, &ElementsPanelWidget::requestForDiagramMoveUpx100, this, &QETDiagramEditor::moveDiagramUpx100);
 	connect(pa, &ElementsPanelWidget::requestForDiagramMoveDownx100, this, &QETDiagramEditor::moveDiagramDownx100);
+}
+
+/**
+	@brief QETDiagramEditor::setUpWireCatalogue
+	Custom feature (Trovo Tech): set up the wire / cable catalogue dock panel.
+*/
+void QETDiagramEditor::setUpWireCatalogue()
+{
+	m_wire_catalogue_dock = new WireCatalogueWidget(this);
+	m_wire_catalogue_dock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	m_wire_catalogue_dock->setFeatures(
+				QDockWidget::DockWidgetClosable
+				|QDockWidget::DockWidgetMovable
+				|QDockWidget::DockWidgetFloatable);
+	addDockWidget(Qt::RightDockWidgetArea, m_wire_catalogue_dock);
+	m_wire_catalogue_dock->hide(); // hidden by default; shown via the Display menu
 }
 
 /**
@@ -1054,6 +1072,15 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_grey_background);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
+
+	// Custom feature (Trovo Tech): show/hide the wire/cable catalogue panel
+	if (m_wire_catalogue_dock) {
+		QAction *wc_toggle = m_wire_catalogue_dock->toggleViewAction();
+		wc_toggle->setText(tr("Catalogue de fils et câbles"));
+		wc_toggle->setStatusTip(tr("Affiche ou masque le panneau du catalogue de fils et câbles"));
+		menu_affichage->addSeparator();
+		menu_affichage->addAction(wc_toggle);
+	}
 
 	// menu Fenetres
 	slot_updateWindowsMenu();

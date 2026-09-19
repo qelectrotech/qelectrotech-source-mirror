@@ -22,6 +22,24 @@
 #include "../qtextorientationspinboxwidget.h"
 #include "ui_conductorpropertieswidget.h"
 
+#include "../custom/wirecatalogue/wirecataloguedb.h"
+#include "../custom/wirecatalogue/wirecataloguemodel.h"
+#include "../custom/wirecatalogue/wirefilterproxymodel.h"
+#include "../custom/wirecatalogue/iec60757.h"
+
+#include <QComboBox>
+#include <QLabel>
+#include <QGridLayout>
+#include <QTableView>
+#include <QHeaderView>
+#include <QPushButton>
+#include <QTabWidget>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QFormLayout>
+
+#include <algorithm>
+
 /**
 	@brief ConductorPropertiesWidget::ConductorPropertiesWidget
 	Constructor
@@ -248,6 +266,263 @@ void ConductorPropertiesWidget::initWidget()
 	ui->m_cable_le->setDisabled(true);
 	ui->m_bus_le->setDisabled(true);
 #endif
+
+	initAssignWiresTab();
+}
+
+/**
+	@brief ConductorPropertiesWidget::initAssignWiresTab
+	Custom feature (Trovo Tech): a dedicated "Assign wires" tab (next to
+	Appearance), modelled on the SolidWorks Electrical "assign wires" workflow.
+	Filter the catalogue by colour / cross-section, pick a wire or cable core,
+	and assign it to THIS conductor only.
+*/
+void ConductorPropertiesWidget::initAssignWiresTab()
+{
+	m_wire_db = new WireCatalogueDb(this);
+	if (!m_wire_db->open(WireCatalogueDb::defaultPath()))
+		return; // catalogue unavailable: skip the tab
+
+	auto *tab = new QWidget(this);
+	auto *layout = new QVBoxLayout(tab);
+
+	// --- Filters ---
+	m_colour_filter  = new QComboBox(tab);
+	m_section_filter = new QComboBox(tab);
+	m_colour_filter->setIconSize(QSize(14, 14));
+	auto *filter_row = new QHBoxLayout;
+	filter_row->addWidget(new QLabel(tr("Couleur :"), tab));
+	filter_row->addWidget(m_colour_filter);
+	filter_row->addSpacing(12);
+	filter_row->addWidget(new QLabel(tr("Section :"), tab));
+	filter_row->addWidget(m_section_filter);
+	filter_row->addStretch(1);
+	layout->addLayout(filter_row);
+
+	// --- Catalogue table (filtered) ---
+	m_wire_model = new WireCatalogueModel(m_wire_db, this);
+	m_wire_proxy = new WireFilterProxyModel(this);
+	m_wire_proxy->setSourceModel(m_wire_model);
+
+	m_wire_table = new QTableView(tab);
+	m_wire_table->setModel(m_wire_proxy);
+	m_wire_table->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_wire_table->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_wire_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	m_wire_table->verticalHeader()->setVisible(false);
+	m_wire_table->setSortingEnabled(true);
+	m_wire_table->horizontalHeader()->setStretchLastSection(true);
+	layout->addWidget(m_wire_table, 1);
+
+	// --- Core selector (cables) + Assign button ---
+	m_core_label = new QLabel(tr("Brin du câble :"), tab);
+	m_core_cb    = new QComboBox(tab);
+	m_core_cb->setIconSize(QSize(14, 14));
+	m_core_label->setVisible(false);
+	m_core_cb->setVisible(false);
+	m_assign_btn = new QPushButton(tr("Affecter à ce conducteur"), tab);
+	m_assign_btn->setEnabled(false);
+
+	auto *action_row = new QHBoxLayout;
+	action_row->addWidget(m_core_label);
+	action_row->addWidget(m_core_cb);
+	action_row->addStretch(1);
+	action_row->addWidget(m_assign_btn);
+	layout->addLayout(action_row);
+
+	ui->tabWidget->addTab(tab, tr("Affecter un fil"));
+
+	populateFilters();
+
+	connect(m_colour_filter,  QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, &ConductorPropertiesWidget::filtersChanged);
+	connect(m_section_filter, QOverload<int>::of(&QComboBox::currentIndexChanged),
+			this, &ConductorPropertiesWidget::filtersChanged);
+	connect(m_wire_table->selectionModel(), &QItemSelectionModel::selectionChanged,
+			this, &ConductorPropertiesWidget::wireSelectionChanged);
+	connect(m_assign_btn, &QPushButton::clicked,
+			this, &ConductorPropertiesWidget::assignSelectedWire);
+}
+
+/**
+	@brief Fill the colour and cross-section filter combos from the catalogue.
+*/
+void ConductorPropertiesWidget::populateFilters()
+{
+	m_colour_filter->addItem(tr("Toutes"), QString());
+	for (const QString &name : Iec60757::standardNames())
+		m_colour_filter->addItem(Iec60757::icon(name, 14), name, name);
+
+	m_section_filter->addItem(tr("Toutes"), -1.0);
+	QList<double> sections;
+	for (const WireSpec &w : m_wire_db->allWires())
+		if (w.crossSectionMm2 > 0 && !sections.contains(w.crossSectionMm2))
+			sections << w.crossSectionMm2;
+	std::sort(sections.begin(), sections.end());
+	for (double s : sections)
+		m_section_filter->addItem(QStringLiteral("%1 mm²").arg(s), s);
+}
+
+void ConductorPropertiesWidget::filtersChanged()
+{
+	m_wire_proxy->setColourFilter(m_colour_filter->currentData().toString());
+	m_wire_proxy->setSectionFilter(m_section_filter->currentData().toDouble());
+}
+
+/**
+	@brief WireSpec for the currently selected table row (invalid if none).
+*/
+WireSpec ConductorPropertiesWidget::selectedWire() const
+{
+	const QModelIndexList sel = m_wire_table->selectionModel()->selectedRows();
+	if (sel.isEmpty())
+		return WireSpec();
+	const QModelIndex src = m_wire_proxy->mapToSource(sel.first());
+	return m_wire_model->wireAt(src.row());
+}
+
+// Sentinel core index used for "this conductor IS the cable shield".
+static const int kShieldCore = -1;
+
+/**
+	@brief Reveal/populate the core selector when the selection changes.
+	Shows one entry per cable core, plus a "Shield" entry for shielded
+	wires/cables so the shield can be connected (terminated) to a terminal.
+*/
+void ConductorPropertiesWidget::wireSelectionChanged()
+{
+	const WireSpec w = selectedWire();
+	m_assign_btn->setEnabled(w.isValid());
+
+	// A selector is needed for multi-core cables and for anything shielded.
+	if (!w.isValid() || (!w.isCable() && !w.hasShield)) {
+		m_core_label->setVisible(false);
+		m_core_cb->setVisible(false);
+		return;
+	}
+
+	m_core_cb->blockSignals(true);
+	m_core_cb->clear();
+	for (int i = 0; i < w.coreColors.size(); ++i) {
+		const QStringList core = w.coreColors.at(i);
+		const QString text = tr("Brin %1 — %2").arg(i + 1)
+				.arg(core.isEmpty() ? tr("(sans couleur)") : core.join(QStringLiteral("/")));
+		m_core_cb->addItem(Iec60757::icon(core.value(0), 14), text, i);
+	}
+	if (w.hasShield) {
+		const QString sh = w.shieldType.isEmpty() ? tr("blindage") : w.shieldType;
+		m_core_cb->addItem(Iec60757::icon(QStringLiteral("Green-Yellow"), 14),
+						   tr("Blindage (%1)").arg(sh), kShieldCore);
+	}
+	m_core_cb->setCurrentIndex(0);
+	m_core_cb->blockSignals(false);
+	m_core_label->setVisible(true);
+	m_core_cb->setVisible(true);
+}
+
+/**
+	@brief Assign the selected wire (or chosen cable core) to THIS conductor.
+	Emits wireAssigned() so the dialog scopes the change to this conductor only.
+*/
+void ConductorPropertiesWidget::assignSelectedWire()
+{
+	const WireSpec w = selectedWire();
+	if (!w.isValid())
+		return;
+
+	const QString section = QStringLiteral("%1mm²")
+			.arg(QString::number(w.crossSectionMm2));
+
+	// What is selected: a cable core (0..N-1), the shield (kShieldCore), or
+	// nothing special (plain single wire, selector hidden -> treat as the wire).
+	const int sel = (m_core_cb->isVisible())
+			? m_core_cb->currentData().toInt() : 0;
+
+	if (sel == kShieldCore) {
+		// Connect the cable's shield (screen) — green-yellow, dashed line.
+		const QString colour = QStringLiteral("Green-Yellow");
+		setLineStyle(Qt::DashLine);
+		applyWireAppearance(section, colour, w.wireId,
+							QStringLiteral("%1:SH  Shield").arg(w.wireId));
+	} else if (w.isCable()) {
+		setLineStyle(Qt::SolidLine);
+		const QStringList core = w.coreColors.value(sel);
+		const QString colour = core.value(0);
+		// Per-core section (falls back to the cable's nominal section).
+		const QString core_section = QStringLiteral("%1mm²")
+				.arg(QString::number(w.coreSection(sel)));
+		const QString core_ref = QStringLiteral("%1:%2").arg(w.wireId).arg(sel + 1);
+		applyWireAppearance(core_section, colour, w.wireId,
+							QStringLiteral("%1  %2  %3").arg(core_ref, core_section, colour));
+	} else {
+		setLineStyle(Qt::SolidLine);
+		const QString colour = w.effectiveColor();
+		applyWireAppearance(section, colour, QString(),
+							QStringLiteral("%1  %2").arg(section, colour));
+	}
+
+	emit wireAssigned();
+}
+
+/**
+	@brief Select a conductor line style by its pen, not by its position.
+	The combo is filled with QPen data (solid, dashed, dash-dot) and the
+	assignment must set the style in every branch: a shield is dashed, and
+	assigning an ordinary core afterwards has to put the line back to solid
+	rather than inherit the previous assignment's dashes.
+*/
+void ConductorPropertiesWidget::setLineStyle(Qt::PenStyle style)
+{
+	const int i = ui->m_line_style_cb->findData(QPen(style));
+	if (i != -1)
+		ui->m_line_style_cb->setCurrentIndex(i);
+}
+
+/**
+	@brief ConductorPropertiesWidget::applyWireAppearance
+	Shared helper: set conductor colour, wire metadata and the on-line label.
+	@param cableId : when non-empty, recorded in the conductor's "cable"
+		field. Nothing reads that field yet -- the terminal strip's Cable
+		column is a stub and no export includes it -- so this records the
+		intent for later rather than driving any existing report. See
+		upstream discussion #934.
+*/
+void ConductorPropertiesWidget::applyWireAppearance(const QString &section,
+													const QString &colour,
+													const QString &cableId,
+													const QString &lineLabel)
+{
+	const QColor c = Iec60757::colorForName(colour);
+	if (c.isValid())
+		ui->m_color_kpb->setColor(c);
+
+		//Green/yellow is the one colour with a regulatory meaning, and it is
+		//two colours. QET already draws bicolour conductors, so use that
+		//rather than approximating the pair with a single swatch: the
+		//protective conductor then looks like a protective conductor.
+	const bool green_yellow = (colour == QLatin1String("Green-Yellow"));
+	ui->m_color_2_gb->setChecked(green_yellow);
+	if (green_yellow) {
+		ui->m_color_kpb->setColor(QColor(0x00, 0xa6, 0x51));
+		ui->m_color_2_kpb->setColor(QColor(0xff, 0xd7, 0x00));
+	}
+
+	ui->m_wire_section_le->setText(section);
+	ui->m_wire_color_le->setText(colour);
+	ui->m_cable_le->setText(cableId); // saved via properties().m_cable
+
+	// The label goes in the formula field -- but that field is also where
+	// conductor autonumbering stores the wire number
+	// (conductorautonumerotation.cpp:155). Overwriting it unconditionally
+	// replaced a numbered conductor's number with a wire description, which
+	// is the one thing on the line an electrician actually reads. Only fill
+	// it in when the conductor has no label of its own yet; otherwise set
+	// the physical properties and leave the identity alone.
+	if (ui->m_formula_le->text().isEmpty() && ui->m_text_le->text().isEmpty()) {
+		ui->m_formula_le->setText(lineLabel);
+		ui->m_show_text_cb->setChecked(true);
+	}
+	updatePreview();
 }
 
 /**
