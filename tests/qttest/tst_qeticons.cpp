@@ -37,7 +37,8 @@
 	Every icon name must resolve in both themes. The dark theme's files
 	must read on the dark palette, and an icon drawn as a light object
 	(a page sheet, the PDF import icon of GitHub #919) must come through
-	the dark theme untouched rather than inverted into a black page. A
+	the dark theme untouched rather than inverted into a black page.
+	QET's own vector icons must serve every size in both themes. A
 	toolbar button painted with Fusion must show its icon at 3:1 (WCAG
 	1.4.11) in both themes, with the disabled state reading weaker than
 	the enabled one, which is what was reversed on macOS before (GitHub
@@ -53,7 +54,7 @@ class tst_qeticons : public QObject
 		void everyIconResolvesInBothThemes();
 		void darkThemeFilesReadOnDarkPalette();
 		void lightIconsStayLightInDarkTheme();
-		void addPdfIconIsOneScalableFile();
+		void scalableIconsServeEverySize();
 		void toolbarIconIsReadable_data();
 		void toolbarIconIsReadable();
 		void panelProjectIconStaysSmall();
@@ -164,12 +165,16 @@ void tst_qeticons::lightIconsStayLightInDarkTheme()
 {
 	const QColor window = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Window);
 	QIcon::setThemeName(QStringLiteral("qet-dark"));
-	for (const QString &name : {"diagram", "label", "folio-new", "folio-delete",
-	                            "folio-properties", "diagram_bg"})
+	// The folio family is an SVG from 22 px up; their 16 px files are
+	// still the light page art, as is the background swatch at 22 px.
+	const QList<QPair<QString, int>> icons = {
+		{"diagram", 16}, {"label", 16}, {"folio-new", 16}, {"folio-delete", 16},
+		{"folio-properties", 16}, {"diagram_bg", 22}};
+	for (const auto &[name, size] : icons)
 	{
-		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet-dark/22x22/%1.png").arg(name)),
+		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet-dark/%1x%1/%2.png").arg(size).arg(name)),
 		         qPrintable(QString("%1 has a dark copy; the generator inverted a light icon").arg(name)));
-		const QImage image = QIcon::fromTheme(name).pixmap(22).toImage();
+		const QImage image = QIcon::fromTheme(name).pixmap(size).toImage();
 		QVERIFY2(!image.isNull(), qPrintable(name));
 		const QColor mean = meanVisibleColor(image);
 		QVERIFY2(mean.lightnessF() > 0.6,
@@ -180,37 +185,46 @@ void tst_qeticons::lightIconsStayLightInDarkTheme()
 }
 
 /**
-	The "Add PDF" icon is the first of QET's own icons drawn as an SVG:
-	ico/scalable/pdf-import.svg, one file for every size, with a
-	recolored copy in the dark theme. It must resolve in both themes at
-	the toolbar size and above, dark ink on light and light ink on dark.
-	Fusion's toolbar slot is 24 px, so the file is drawn on a 24 px
-	canvas and its one pixel lines land on whole pixels there.
+	QET's own vector icons live in ico/scalable/: one file for every size
+	from the toolbar up, with a recolored copy in the dark theme. Each
+	must resolve in both themes at 22, 24, 32 and 64 px, dark ink on the
+	light theme and light ink on the dark one, with no 22 px PNG left
+	beside it. Fusion's toolbar slot is 24 px, so the files are drawn on
+	a 24 px canvas and their one pixel lines land on whole pixels there.
 */
-void tst_qeticons::addPdfIconIsOneScalableFile()
+void tst_qeticons::scalableIconsServeEverySize()
 {
-	QVERIFY(QFile::exists(":/ico/themes/qet/scalable/pdf-import.svg"));
-	QVERIFY(QFile::exists(":/ico/themes/qet-dark/scalable/pdf-import.svg"));
-	QVERIFY(!QFile::exists(":/ico/themes/qet/22x22/pdf-import.png"));
+	const QDir scalable(":/ico/themes/qet/scalable");
+	QStringList names;
+	for (const QString &file : scalable.entryList({"*.svg"}, QDir::Files))
+		names << file.section('.', 0, -2);
+	for (const QString &name : {"pdf-import", "folio-new", "folio-delete", "folio-properties", "diagram", "label"})
+		QVERIFY2(names.contains(name), qPrintable(name + " is not in the scalable folder"));
 
 	const QByteArray dump = qgetenv("QET_TEST_DUMP_DIR");
-	for (const QString &theme : {"qet", "qet-dark"})
+	for (const QString &name : names)
 	{
-		QIcon::setThemeName(theme);
-		const QIcon icon = QIcon::fromTheme("pdf-import");
-		QVERIFY2(!icon.isNull(), qPrintable(theme));
-		for (int size : {16, 22, 24, 32, 64})
+		QVERIFY2(QFile::exists(QString(":/ico/themes/qet-dark/scalable/%1.svg").arg(name)), qPrintable(name));
+		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet/22x22/%1.png").arg(name)),
+		         qPrintable(QString("%1 still has a 22 px PNG that hides the SVG").arg(name)));
+		for (const QString &theme : {"qet", "qet-dark"})
 		{
-			const QPixmap pixmap = icon.pixmap(size);
-			QCOMPARE(pixmap.width(), size);
-			if (!dump.isEmpty())
-				pixmap.save(QString("%1/pdf-import-%2-%3.png").arg(QString::fromLocal8Bit(dump), theme).arg(size));
-			const QColor mean = meanVisibleColor(pixmap.toImage());
-			QVERIFY2(mean.isValid(), qPrintable(QString("%1 at %2 px is empty").arg(theme).arg(size)));
-			if (theme == "qet")
-				QVERIFY2(mean.lightnessF() < 0.5, qPrintable(QString("light theme at %1 px: lightness %2").arg(size).arg(mean.lightnessF())));
-			else
-				QVERIFY2(mean.lightnessF() > 0.6, qPrintable(QString("dark theme at %1 px: lightness %2").arg(size).arg(mean.lightnessF())));
+			QIcon::setThemeName(theme);
+			const QIcon icon = QIcon::fromTheme(name);
+			QVERIFY2(!icon.isNull(), qPrintable(name));
+			for (int size : {22, 24, 32, 64})
+			{
+				const QPixmap pixmap = icon.pixmap(size);
+				QCOMPARE(pixmap.width(), size);
+				if (!dump.isEmpty())
+					pixmap.save(QString("%1/%2-%3-%4.png").arg(QString::fromLocal8Bit(dump), name, theme).arg(size));
+				const QColor mean = meanVisibleColor(pixmap.toImage());
+				QVERIFY2(mean.isValid(), qPrintable(QString("%1 in %2 at %3 px is empty").arg(name, theme).arg(size)));
+				if (theme == "qet")
+					QVERIFY2(mean.lightnessF() < 0.5, qPrintable(QString("%1 light theme at %2 px: lightness %3").arg(name).arg(size).arg(mean.lightnessF())));
+				else
+					QVERIFY2(mean.lightnessF() > 0.6, qPrintable(QString("%1 dark theme at %2 px: lightness %3").arg(name).arg(size).arg(mean.lightnessF())));
+			}
 		}
 	}
 }

@@ -71,17 +71,20 @@ SIZES = ["16x16", "22x22", "32x32", "48x48", "128x128"]
 
 # Table entries in sources/qeticons.cpp that pair a 16 pixel file with a
 # 22 pixel file of another name. The theme needs one name per icon, so
-# the 22 pixel file is exposed under the 16 pixel name as well.
+# the 22 pixel file is exposed under the 16 pixel name as well. The folio
+# icons that used to be listed here are SVGs now (ico/scalable/).
 ALIASES = {
     "22x22/conductor2.png": "conductor-reset",
-    "22x22/diagram_add.png": "folio-new",
-    "22x22/diagram_del.png": "folio-delete",
-    "22x22/dialog-information.png": "folio-properties",
 }
 
 # SVG icons referenced from sources/qeticons.cpp. ico/scalable/ holds the
 # ones drawn for QET as vectors; one file serves every size.
 SVGS = [
+    "scalable/diagram.svg",
+    "scalable/folio-delete.svg",
+    "scalable/folio-new.svg",
+    "scalable/folio-properties.svg",
+    "scalable/label.svg",
     "scalable/pdf-import.svg",
     "breeze-icons/scalable/apps/hidef/edit-opacity.svg",
     "breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg",

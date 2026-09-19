@@ -148,15 +148,8 @@
         <file alias="themes/qet/22x22/conductor-reset.png">22x22/conductor2.png</file>
         <file alias="themes/qet/22x22/configure-toolbars.png">22x22/configure-toolbars.png</file>
         <file alias="themes/qet/22x22/configure.png">22x22/configure.png</file>
-        <file alias="themes/qet/22x22/diagram.png">22x22/diagram.png</file>
-        <file alias="themes/qet/22x22/diagram_add.png">22x22/diagram_add.png</file>
-        <file alias="themes/qet/22x22/folio-new.png">22x22/diagram_add.png</file>
         <file alias="themes/qet/22x22/diagram_bg.png">22x22/diagram_bg.png</file>
-        <file alias="themes/qet/22x22/diagram_del.png">22x22/diagram_del.png</file>
-        <file alias="themes/qet/22x22/folio-delete.png">22x22/diagram_del.png</file>
         <file alias="themes/qet/22x22/dialog-cancel.png">22x22/dialog-cancel.png</file>
-        <file alias="themes/qet/22x22/dialog-information.png">22x22/dialog-information.png</file>
-        <file alias="themes/qet/22x22/folio-properties.png">22x22/dialog-information.png</file>
         <file alias="themes/qet/22x22/dialog-ok.png">22x22/dialog-ok.png</file>
         <file alias="themes/qet/22x22/document-close.png">22x22/document-close.png</file>
         <file alias="themes/qet/22x22/document-export.png">22x22/document-export.png</file>
@@ -207,7 +200,6 @@
         <file alias="themes/qet/22x22/guides.png">22x22/guides.png</file>
         <file alias="themes/qet/22x22/hotspot.png">22x22/hotspot.png</file>
         <file alias="themes/qet/22x22/insert-image.png">22x22/insert-image.png</file>
-        <file alias="themes/qet/22x22/label.png">22x22/label.png</file>
         <file alias="themes/qet/22x22/landscape.png">22x22/landscape.png</file>
         <file alias="themes/qet/22x22/line.png">22x22/line.png</file>
         <file alias="themes/qet/22x22/list-add.png">22x22/list-add.png</file>
@@ -273,6 +265,11 @@
         <file alias="themes/qet/128x128/printer.png">128x128/printer.png</file>
         <file alias="themes/qet/128x128/project.png">128x128/project.png</file>
         <file alias="themes/qet/128x128/settings.png">128x128/settings.png</file>
+        <file alias="themes/qet/scalable/diagram.svg">scalable/diagram.svg</file>
+        <file alias="themes/qet/scalable/folio-delete.svg">scalable/folio-delete.svg</file>
+        <file alias="themes/qet/scalable/folio-new.svg">scalable/folio-new.svg</file>
+        <file alias="themes/qet/scalable/folio-properties.svg">scalable/folio-properties.svg</file>
+        <file alias="themes/qet/scalable/label.svg">scalable/label.svg</file>
         <file alias="themes/qet/scalable/pdf-import.svg">scalable/pdf-import.svg</file>
         <file alias="themes/qet/scalable/edit-opacity.svg">breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>
         <file alias="themes/qet/scalable/image-flip-horizontal.svg">breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
@@ -458,6 +455,11 @@
         <file>themes/qet-dark/48x48/view-pim-journal.png</file>
         <file>themes/qet-dark/128x128/plasmagik.png</file>
         <file>themes/qet-dark/128x128/settings.png</file>
+        <file>themes/qet-dark/scalable/diagram.svg</file>
+        <file>themes/qet-dark/scalable/folio-delete.svg</file>
+        <file>themes/qet-dark/scalable/folio-new.svg</file>
+        <file>themes/qet-dark/scalable/folio-properties.svg</file>
+        <file>themes/qet-dark/scalable/label.svg</file>
         <file>themes/qet-dark/scalable/pdf-import.svg</file>
         <file>themes/qet-dark/scalable/edit-opacity.svg</file>
         <file>themes/qet-dark/scalable/image-flip-horizontal.svg</file>
