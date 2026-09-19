@@ -107,8 +107,6 @@ endif()
 # succeeds and the link fails. FindBacktrace resolves both the header and
 # whichever library actually provides the symbol, so gate on it instead - see
 # the QET_CRASH_BACKTRACE guard in sources/logging/crashhandler.cpp.
-# Windows uses a separate native exception path and must not probe for the
-# POSIX execinfo/backtrace API.
 if(NOT WIN32)
     find_package(Backtrace QUIET)
     if(Backtrace_FOUND)
