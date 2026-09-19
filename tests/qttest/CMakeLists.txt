@@ -51,8 +51,7 @@ find_package(
 # tst_crashhandler compiles crashhandler.cpp, which on a non-Windows build
 # may pull in backtrace(). Resolved the same way as in the top-level
 # CMakeLists so this directory also configures standalone -- on FreeBSD the
-# symbol lives in libexecinfo, not libc. Windows uses a separate native
-# exception path and must not probe for the POSIX execinfo/backtrace API.
+# symbol lives in libexecinfo, not libc.
 if(NOT DEFINED Backtrace_FOUND)
   find_package(Backtrace QUIET)
   if(Backtrace_FOUND)
