@@ -390,6 +390,13 @@ void QETDiagramEditor::setUpActions()
 		if (ProjectView *pv = currentProjectView())
 			pv->project()->setAutoConductor(ac);
 	});
+		//Registered with no default sequence on purpose. This is a
+		//setting some people toggle constantly and others never touch,
+		//so it earns a place in the Shortcuts page rather than a key of
+		//its own taken from the ones still free. Asked for on the forum
+		//(viewtopic.php?pid=23296): "est il possible dans les raccourcis
+		//d'ajouter un pour création automatique de conducteur ?"
+	ShortcutManager::instance().registerAction(m_auto_conductor, "diagrameditor.auto_conductor", tr("Éditeur de schémas"), QKeySequence());
 
 		//AutoBreakConductor
 	m_auto_break_conductor = new QAction   (QET::Icons::Conductor, tr("Coupure automatique de conducteur(s)","Tool tip of auto break conductor"), this);
