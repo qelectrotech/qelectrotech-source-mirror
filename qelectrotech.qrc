@@ -93,10 +93,7 @@
         <file>ico/22x22/conductor2.png</file>
         <file>ico/22x22/configure.png</file>
         <file>ico/22x22/configure-toolbars.png</file>
-        <file>ico/22x22/diagram_add.png</file>
-        <file>ico/22x22/diagram_del.png</file>
         <file>ico/22x22/dialog-cancel.png</file>
-        <file>ico/22x22/dialog-information.png</file>
         <file>ico/22x22/dialog-ok.png</file>
         <file>ico/22x22/document-close.png</file>
         <file>ico/22x22/document-export.png</file>
@@ -140,8 +137,6 @@
         <file>ico/22x22/go-up.png</file>
         <file>ico/22x22/hotspot.png</file>
         <file>ico/22x22/insert-image.png</file>
-        <file>ico/22x22/pdf-import.png</file>
-        <file>ico/22x22/label.png</file>
         <file>ico/22x22/landscape.png</file>
         <file>ico/22x22/line.png</file>
         <file>ico/22x22/list-add.png</file>
@@ -242,7 +237,6 @@
         <file>ico/16x16/project.png</file>
         <file>ico/16x16/qt.png</file>
         <file>ico/16x16/terminalstrip.png</file>
-        <file>ico/22x22/diagram.png</file>
         <file>ico/22x22/edit-clear-locationbar-rtl.png</file>
         <file>ico/22x22/export-csv.png</file>
         <file>ico/22x22/format-text-subscript.png</file>

@@ -18,6 +18,7 @@
 #include <QtTest>
 #include <QApplication>
 #include <QDir>
+#include <QFile>
 #include <QIcon>
 #include <QMainWindow>
 #include <QMenu>
@@ -38,11 +39,15 @@
 	table that uses them.
 
 	Every icon name must resolve in both themes. The dark theme's files
-	must be light ink. A toolbar button painted with Fusion must show its
-	icon at 3:1 (WCAG 1.4.11) in both themes, with the disabled state
-	reading weaker than the enabled one, which is what was reversed on
-	macOS before (GitHub #466, #870). And the icons the elements panel
-	draws in its 50 px slots must stay small.
+	must read on the dark palette, and an icon drawn as a light object
+	(a page sheet, the PDF import icon of GitHub #919) must come through
+	the dark theme untouched rather than inverted into a black page.
+	QET's own vector icons must serve every size in both themes. A
+	toolbar button painted with Fusion must show its icon at 3:1 (WCAG
+	1.4.11) in both themes, with the disabled state reading weaker than
+	the enabled one, which is what was reversed on macOS before (GitHub
+	#466, #870). And the icons the elements panel draws in its 50 px
+	slots must stay small.
 */
 class tst_qeticons : public QObject
 {
@@ -51,7 +56,9 @@ class tst_qeticons : public QObject
 	private slots:
 		void initTestCase();
 		void everyIconResolvesInBothThemes();
-		void darkThemeFilesAreLightInk();
+		void darkThemeFilesReadOnDarkPalette();
+		void lightIconsStayLightInDarkTheme();
+		void scalableIconsServeEverySize();
 		void toolbarIconIsReadable_data();
 		void toolbarIconIsReadable();
 		void hoverChangesTheIcon_data();
@@ -79,18 +86,26 @@ namespace {
 		return names;
 	}
 
-	/// Lightness of the lightest visible pixel: the ink, in a dark-theme file.
-	double maxLightness(const QImage &image)
+	/**
+		Mean color of the visible pixels: what the icon reads as, taken
+		as a whole, on the background behind it. A page-shaped icon whose
+		white body was inverted keeps a light border, so the lightest
+		pixel would pass it; the mean does not.
+	*/
+	QColor meanVisibleColor(const QImage &image)
 	{
-		double max = 0.0;
+		qint64 r = 0, g = 0, b = 0, n = 0;
 		for (int y = 0; y < image.height(); ++y)
 			for (int x = 0; x < image.width(); ++x)
 			{
 				const QColor c = image.pixelColor(x, y);
-				if (c.alpha() > 64) max = qMax(max, c.lightnessF());
+				if (c.alpha() <= 64) continue;
+				r += c.red(); g += c.green(); b += c.blue(); ++n;
 			}
-		return max;
+		return n ? QColor(r / n, g / n, b / n) : QColor();
 	}
+
+	const QStringList kSizes = {"16x16", "22x22", "32x32", "48x48", "128x128"};
 }
 
 void tst_qeticons::initTestCase()
@@ -120,25 +135,107 @@ void tst_qeticons::everyIconResolvesInBothThemes()
 		QVERIFY2(!QIcon::fromTheme(name).pixmap(22).isNull(), qPrintable(name));
 }
 
-void tst_qeticons::darkThemeFilesAreLightInk()
+/**
+	Every file the generator put in the dark theme, taken as a whole,
+	must reach 3:1 against the dark palette's window color. Inverted
+	line art passes by a wide margin; an inverted light object (a white
+	page turned black) sits below 2:1 and fails, which is the defect
+	misc/make_icon_themes.py now avoids by leaving such icons to the
+	light theme.
+*/
+void tst_qeticons::darkThemeFilesReadOnDarkPalette()
 {
+	const QColor window = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Window);
 	int checked = 0;
-	for (const QString &size : {"16x16", "22x22", "32x32"})
+	for (const QString &size : kSizes)
 	{
 		QDir dir(QString(":/ico/themes/qet-dark/%1").arg(size));
 		for (const QString &file : dir.entryList({"*.png"}, QDir::Files))
 		{
 			const QImage dark(dir.filePath(file));
-			const QImage light(QString(":/ico/themes/qet/%1/%2").arg(size, file));
-			QVERIFY2(!dark.isNull() && !light.isNull(), qPrintable(file));
-			// A page-shaped icon keeps its white fill dark after inversion,
-			// so the mean would mislead; what matters is that the ink is light.
-			QVERIFY2(maxLightness(dark) >= 0.8,
-			         qPrintable(QString("%1/%2 has no light ink").arg(size, file)));
+			QVERIFY2(!dark.isNull(), qPrintable(file));
+			const QColor mean = meanVisibleColor(dark);
+			QVERIFY2(mean.isValid(), qPrintable(file));
+			const double contrast = QET::Palette::contrastRatio(mean, window);
+			QVERIFY2(contrast >= kIconRatio,
+			         qPrintable(QString("%1/%2 reads %3:1 on the dark window").arg(size, file).arg(contrast)));
 			++checked;
 		}
 	}
 	QVERIFY(checked > 100);
+}
+
+/**
+	Icons drawn as a light object are not in the dark theme; the theme
+	inherits them from "qet". Asking the dark theme for them must return
+	the light art, not a dark page (GitHub #919, the PDF import icon).
+*/
+void tst_qeticons::lightIconsStayLightInDarkTheme()
+{
+	const QColor window = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Window);
+	QIcon::setThemeName(QStringLiteral("qet-dark"));
+	// The folio family is an SVG from 22 px up; their 16 px files are
+	// still the light page art, as is the background swatch at 22 px.
+	const QList<QPair<QString, int>> icons = {
+		{"diagram", 16}, {"label", 16}, {"folio-new", 16}, {"folio-delete", 16},
+		{"folio-properties", 16}, {"diagram_bg", 22}};
+	for (const auto &[name, size] : icons)
+	{
+		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet-dark/%1x%1/%2.png").arg(size).arg(name)),
+		         qPrintable(QString("%1 has a dark copy; the generator inverted a light icon").arg(name)));
+		const QImage image = QIcon::fromTheme(name).pixmap(size).toImage();
+		QVERIFY2(!image.isNull(), qPrintable(name));
+		const QColor mean = meanVisibleColor(image);
+		QVERIFY2(mean.lightnessF() > 0.6,
+		         qPrintable(QString("%1 comes out dark in the dark theme (lightness %2)")
+		                    .arg(name).arg(mean.lightnessF())));
+		QVERIFY2(QET::Palette::contrastRatio(mean, window) >= kIconRatio, qPrintable(name));
+	}
+}
+
+/**
+	QET's own vector icons live in ico/scalable/: one file for every size
+	from the toolbar up, with a recolored copy in the dark theme. Each
+	must resolve in both themes at 22, 24, 32 and 64 px, dark ink on the
+	light theme and light ink on the dark one, with no 22 px PNG left
+	beside it. Fusion's toolbar slot is 24 px, so the files are drawn on
+	a 24 px canvas and their one pixel lines land on whole pixels there.
+*/
+void tst_qeticons::scalableIconsServeEverySize()
+{
+	const QDir scalable(":/ico/themes/qet/scalable");
+	QStringList names;
+	for (const QString &file : scalable.entryList({"*.svg"}, QDir::Files))
+		names << file.section('.', 0, -2);
+	for (const QString &name : {"pdf-import", "folio-new", "folio-delete", "folio-properties", "diagram", "label"})
+		QVERIFY2(names.contains(name), qPrintable(name + " is not in the scalable folder"));
+
+	const QByteArray dump = qgetenv("QET_TEST_DUMP_DIR");
+	for (const QString &name : names)
+	{
+		QVERIFY2(QFile::exists(QString(":/ico/themes/qet-dark/scalable/%1.svg").arg(name)), qPrintable(name));
+		QVERIFY2(!QFile::exists(QString(":/ico/themes/qet/22x22/%1.png").arg(name)),
+		         qPrintable(QString("%1 still has a 22 px PNG that hides the SVG").arg(name)));
+		for (const QString &theme : {"qet", "qet-dark"})
+		{
+			QIcon::setThemeName(theme);
+			const QIcon icon = QIcon::fromTheme(name);
+			QVERIFY2(!icon.isNull(), qPrintable(name));
+			for (int size : {22, 24, 32, 64})
+			{
+				const QPixmap pixmap = icon.pixmap(size);
+				QCOMPARE(pixmap.width(), size);
+				if (!dump.isEmpty())
+					pixmap.save(QString("%1/%2-%3-%4.png").arg(QString::fromLocal8Bit(dump), name, theme).arg(size));
+				const QColor mean = meanVisibleColor(pixmap.toImage());
+				QVERIFY2(mean.isValid(), qPrintable(QString("%1 in %2 at %3 px is empty").arg(name, theme).arg(size)));
+				if (theme == "qet")
+					QVERIFY2(mean.lightnessF() < 0.5, qPrintable(QString("%1 light theme at %2 px: lightness %3").arg(name).arg(size).arg(mean.lightnessF())));
+				else
+					QVERIFY2(mean.lightnessF() > 0.6, qPrintable(QString("%1 dark theme at %2 px: lightness %3").arg(name).arg(size).arg(mean.lightnessF())));
+			}
+		}
+	}
 }
 
 void tst_qeticons::toolbarIconIsReadable_data()
