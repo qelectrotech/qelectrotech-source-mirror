@@ -271,6 +271,22 @@ mkdir build && cd build
 cmake .. -G Ninja -DBUILD_WITH_KF=OFF -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 ```
+
+If `libbacktrace` is installed in your MSYS2 environment, pass the following
+cached CMake variables when configuring. They are only necessary in that
+case, because `FindBacktrace` needs them to locate the library:
+
+```sh
+cmake .. -G Ninja -DBUILD_WITH_KF=OFF -DCMAKE_BUILD_TYPE=Release \
+    -DBacktrace_INCLUDE_DIR=/c/msys64/clang64/include \
+    -DBacktrace_LIBRARY=/c/msys64/clang64/lib/libbacktrace.a
+```
+
+`Backtrace_INCLUDE_DIR` must point to the directory containing `backtrace.h`,
+and `Backtrace_LIBRARY` to the `libbacktrace.a` file. The paths above are the
+usual locations for the MSYS2 `clang64` environment; adjust them if your
+installation uses a different prefix.
+
 (KF6 isn't packaged in MSYS2 either, hence `-DBUILD_WITH_KF=OFF` again.)
 
 Using the Qt Online Installer's bundled MinGW kit instead: point
