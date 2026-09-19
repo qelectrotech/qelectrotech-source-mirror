@@ -290,7 +290,6 @@
         <file>themes/qet-dark/16x16/conductor-edit.png</file>
         <file>themes/qet-dark/16x16/configure-toolbars.png</file>
         <file>themes/qet-dark/16x16/configure.png</file>
-        <file>themes/qet-dark/16x16/diagram.png</file>
         <file>themes/qet-dark/16x16/dialog-cancel.png</file>
         <file>themes/qet-dark/16x16/dialog-ok.png</file>
         <file>themes/qet-dark/16x16/document-export.png</file>
@@ -331,9 +330,6 @@
         <file>themes/qet-dark/16x16/folder-open.png</file>
         <file>themes/qet-dark/16x16/folder-show-all.png</file>
         <file>themes/qet-dark/16x16/folder.png</file>
-        <file>themes/qet-dark/16x16/folio-delete.png</file>
-        <file>themes/qet-dark/16x16/folio-new.png</file>
-        <file>themes/qet-dark/16x16/folio-properties.png</file>
         <file>themes/qet-dark/16x16/folio-ref-coming.png</file>
         <file>themes/qet-dark/16x16/go-company.png</file>
         <file>themes/qet-dark/16x16/go-down-double.png</file>
@@ -348,7 +344,6 @@
         <file>themes/qet-dark/16x16/item-copy.png</file>
         <file>themes/qet-dark/16x16/item-move.png</file>
         <file>themes/qet-dark/16x16/kdenlive-show-video.png</file>
-        <file>themes/qet-dark/16x16/label.png</file>
         <file>themes/qet-dark/16x16/list-add.png</file>
         <file>themes/qet-dark/16x16/list-remove.png</file>
         <file>themes/qet-dark/16x16/masquer.png</file>
@@ -381,15 +376,7 @@
         <file>themes/qet-dark/22x22/arrow-right.png</file>
         <file>themes/qet-dark/22x22/configure-toolbars.png</file>
         <file>themes/qet-dark/22x22/configure.png</file>
-        <file>themes/qet-dark/22x22/diagram.png</file>
-        <file>themes/qet-dark/22x22/diagram_add.png</file>
-        <file>themes/qet-dark/22x22/folio-new.png</file>
-        <file>themes/qet-dark/22x22/diagram_bg.png</file>
-        <file>themes/qet-dark/22x22/diagram_del.png</file>
-        <file>themes/qet-dark/22x22/folio-delete.png</file>
         <file>themes/qet-dark/22x22/dialog-cancel.png</file>
-        <file>themes/qet-dark/22x22/dialog-information.png</file>
-        <file>themes/qet-dark/22x22/folio-properties.png</file>
         <file>themes/qet-dark/22x22/dialog-ok.png</file>
         <file>themes/qet-dark/22x22/document-export.png</file>
         <file>themes/qet-dark/22x22/document-import.png</file>
@@ -425,7 +412,6 @@
         <file>themes/qet-dark/22x22/go-up.png</file>
         <file>themes/qet-dark/22x22/grid.png</file>
         <file>themes/qet-dark/22x22/insert-image.png</file>
-        <file>themes/qet-dark/22x22/label.png</file>
         <file>themes/qet-dark/22x22/landscape.png</file>
         <file>themes/qet-dark/22x22/line.png</file>
         <file>themes/qet-dark/22x22/list-add.png</file>
@@ -436,7 +422,6 @@
         <file>themes/qet-dark/22x22/object-locked.png</file>
         <file>themes/qet-dark/22x22/object-rotate-right.png</file>
         <file>themes/qet-dark/22x22/object-unlocked.png</file>
-        <file>themes/qet-dark/22x22/pdf-import.png</file>
         <file>themes/qet-dark/22x22/polygon.png</file>
         <file>themes/qet-dark/22x22/portrait.png</file>
         <file>themes/qet-dark/22x22/preferences-desktop-user.png</file>
@@ -472,7 +457,6 @@
         <file>themes/qet-dark/48x48/user-away.png</file>
         <file>themes/qet-dark/48x48/view-pim-journal.png</file>
         <file>themes/qet-dark/128x128/plasmagik.png</file>
-        <file>themes/qet-dark/128x128/printer.png</file>
         <file>themes/qet-dark/128x128/settings.png</file>
         <file>themes/qet-dark/scalable/edit-opacity.svg</file>
         <file>themes/qet-dark/scalable/image-flip-horizontal.svg</file>

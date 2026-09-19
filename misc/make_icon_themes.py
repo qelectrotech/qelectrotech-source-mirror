@@ -38,6 +38,13 @@ An icon counts as line art when fewer than 20% of its visible pixels are
 saturated. Its dark copy keeps hue and alpha and inverts lightness, scaled
 so pure black becomes (220, 220, 220), the dark palette's text color.
 
+An icon drawn as a light object is left alone even when it is not
+saturated: a page sheet, a printer body, the white half of the background
+swatch. Such art already reads on a dark toolbar, and inverting it would
+turn the white body black (the PDF import icon, GitHub #919). The test is
+the share of visible pixels that are near white: 30% or more and the icon
+inherits from the light theme untouched.
+
 Requires Pillow. Idempotent: running it twice changes nothing.
 """
 
@@ -85,6 +92,8 @@ SVGS = [
 ]
 
 SATURATED_FRACTION = 0.20   # at or above this an icon is "colored"
+WHITE_LIGHTNESS = 0.85      # a visible pixel this light counts as white
+WHITE_FRACTION = 0.30       # at or above this an icon is "light art"
 INK = 220 / 255.0           # lightness of pure black after inversion
 SVG_INK = "#dcdcdc"
 
@@ -105,6 +114,16 @@ def is_line_art(image):
         if s > 0.25 and max(r, g, b) > 60:
             saturated += 1
     return saturated / len(pixels) < SATURATED_FRACTION
+
+
+def has_light_fill(image):
+    """True when the icon is mostly white: a page, a sheet, a light body."""
+    pixels = visible_pixels(image)
+    if not pixels:
+        return False
+    white = sum(1 for r, g, b, _ in pixels
+                if colorsys.rgb_to_hls(r / 255, g / 255, b / 255)[1] > WHITE_LIGHTNESS)
+    return white / len(pixels) >= WHITE_FRACTION
 
 
 def invert_lightness(image):
@@ -177,7 +196,7 @@ def main():
     light = []   # (alias, source) pairs, paths relative to ico/
     dark = []    # paths relative to ico/, files exist on disk
     changed = 0
-    line_art = colored = 0
+    line_art = colored = light_art = 0
 
     for size in SIZES:
         folder = ICO / size
@@ -188,7 +207,10 @@ def main():
                 names.append(ALIASES[rel])
             image = Image.open(png).convert("RGBA")
             art = is_line_art(image)
-            if art:
+            if art and has_light_fill(image):
+                art = False
+                light_art += 1
+            elif art:
                 line_art += 1
                 dark_image = None
             else:
@@ -213,6 +235,15 @@ def main():
         changed += write_if_changed(target, text)
         dark.append(f"themes/qet-dark/scalable/{name}")
 
+    # Drop dark files from an earlier run that are no longer generated, so
+    # a reclassified icon falls back to the light theme instead of keeping
+    # a stale copy.
+    for stale in sorted((THEMES / "qet-dark").glob("*/*")):
+        if stale.is_file() and stale.name != "index.theme" \
+                and str(stale.relative_to(ICO)) not in dark:
+            stale.unlink()
+            changed += 1
+
     dirs = SIZES + ["scalable"]
     changed += write_if_changed(THEMES / "qet" / "index.theme",
                                 index_theme("qet", "QElectroTech icons", dirs))
@@ -231,8 +262,8 @@ def main():
     qrc += ["    </qresource>", "</RCC>", ""]
     changed += write_if_changed(QRC, "\n".join(qrc))
 
-    print(f"{line_art} line-art icons, {colored} colored icons, {len(SVGS)} SVGs; "
-          f"{changed} files written")
+    print(f"{line_art} line-art icons, {light_art} light icons, {colored} colored icons, "
+          f"{len(SVGS)} SVGs; {changed} files written or removed")
 
 
 if __name__ == "__main__":
