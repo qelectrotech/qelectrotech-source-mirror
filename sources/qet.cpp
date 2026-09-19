@@ -305,7 +305,7 @@ QString QET::ElementsAndConductorsSentence(
 	if (images_count) {
 		parts.append(
 			QObject::tr(
-				"%n images",
+				"%n image(s)",
 				"part of a enumerative partial sentence listing the content of a diagram",
 				images_count
 			)
