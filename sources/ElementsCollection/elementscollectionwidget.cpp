@@ -725,7 +725,10 @@ void ElementsCollectionWidget::showThisDir()
 		ElementCollectionItem *eci =
 				elementCollectionItemForIndex(m_showed_index);
 		if (eci)
+		{
 			eci->setBackground(QBrush());
+			eci->setForeground(QBrush());
+		}
 	}
 
 	m_showed_index = m_index_at_context_menu;
@@ -736,7 +739,11 @@ void ElementsCollectionWidget::showThisDir()
 		ElementCollectionItem *eci =
 				elementCollectionItemForIndex(m_showed_index);
 		if (eci)
+		{
+			// Amber under black, whatever the palette's text color.
 			eci->setBackground(QBrush(QColor(255, 204, 0, 255)));
+			eci->setForeground(QBrush(Qt::black));
+		}
 		search();
 	}
 	else
@@ -755,7 +762,10 @@ void ElementsCollectionWidget::resetShowThisDir()
 		ElementCollectionItem *eci = elementCollectionItemForIndex(
 					m_showed_index);
 		if (eci)
+		{
 			eci->setBackground(QBrush());
+			eci->setForeground(QBrush());
+		}
 	}
 
 	m_showed_index = QModelIndex();

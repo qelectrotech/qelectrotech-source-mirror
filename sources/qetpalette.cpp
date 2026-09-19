@@ -17,6 +17,7 @@
 */
 #include "qetpalette.h"
 
+#include <QColor>
 #include <QStyle>
 #include <cmath>
 
@@ -176,4 +177,69 @@ QPalette QET::Palette::forFusion(const QPalette &platform)
 {
 	return withPlatformAccent(isDark(platform) ? fusionDark() : fusionLight(),
 	                          platform);
+}
+
+bool QET::Palette::isLineArt(const QImage &image)
+{
+	const QImage source = image.convertToFormat(QImage::Format_ARGB32);
+	int visible = 0;
+	int saturated = 0;
+	for (int y = 0; y < source.height(); ++y)
+	{
+		const QRgb *line = reinterpret_cast<const QRgb *>(source.constScanLine(y));
+		for (int x = 0; x < source.width(); ++x)
+		{
+			if (qAlpha(line[x]) <= 64)
+				continue;
+			++visible;
+			const QColor color(line[x]);
+			if (color.hslSaturationF() > 0.25 && color.value() > 60)
+				++saturated;
+		}
+	}
+	return visible > 0 && saturated < visible * 0.20;
+}
+
+QImage QET::Palette::invertedLightness(const QImage &image)
+{
+	// Lightness of pure black after inversion: the dark palette's text.
+	const qreal ink = 220.0 / 255.0;
+	QImage result = image.convertToFormat(QImage::Format_ARGB32);
+	qreal darkest = 1.0;
+	for (int y = 0; y < result.height(); ++y)
+	{
+		const QRgb *line = reinterpret_cast<const QRgb *>(result.constScanLine(y));
+		for (int x = 0; x < result.width(); ++x)
+			if (qAlpha(line[x]) > 64)
+				darkest = qMin(darkest, QColor(line[x]).lightnessF());
+	}
+	const qreal span = qMax(1.0 - darkest, 1e-6);
+	for (int y = 0; y < result.height(); ++y)
+	{
+		QRgb *line = reinterpret_cast<QRgb *>(result.scanLine(y));
+		for (int x = 0; x < result.width(); ++x)
+		{
+			const int alpha = qAlpha(line[x]);
+			if (alpha == 0)
+				continue;
+			const QColor color(line[x]);
+			const qreal lightness = qBound(0.0, ink * (1.0 - (color.lightnessF() - darkest) / span), 1.0);
+			QColor out = QColor::fromHslF(qMax(color.hslHueF(), 0.0), color.hslSaturationF(), lightness);
+			out.setAlpha(alpha);
+			line[x] = out.rgba();
+		}
+	}
+	return result;
+}
+
+QPixmap QET::Palette::forPalette(const QPixmap &pixmap, const QPalette &palette)
+{
+	if (pixmap.isNull() || !isDark(palette))
+		return pixmap;
+	const QImage image = pixmap.toImage();
+	if (!isLineArt(image))
+		return pixmap;
+	QPixmap result = QPixmap::fromImage(invertedLightness(image));
+	result.setDevicePixelRatio(pixmap.devicePixelRatio());
+	return result;
 }

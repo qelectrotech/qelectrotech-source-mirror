@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementstreeview.h"
+#include "elementpreviewdelegate.h"
+#include "../qetpalette.h"
 
 #include "../factory/elementfactory.h"
 #include "../qetgraphicsitem/element.h"
@@ -41,24 +43,11 @@ static int MAX_DND_PIXMAP_HEIGHT = 375;
 ElementsTreeView::ElementsTreeView(QWidget *parent) :
 	QTreeView(parent)
 {
-	// force du noir sur une alternance de blanc (comme le schema) et de gris
-	// clair, avec du blanc sur bleu pas trop fonce pour la selection
-	//
-	// Element icons are rendered with colors read directly from each .elmt
-	// file (almost always black linework, matching printed-schematic
-	// convention) onto a transparent background -- so this view must keep
-	// a light background regardless of the OS/desktop theme, or the icons
-	// become invisible on dark themes. QAbstractItemView paints its rows
-	// using the viewport's palette, not the view's own, so the palette
-	// must be applied to both to actually take effect under every style.
-	QPalette qp = palette();
-	qp.setColor(QPalette::Text,            Qt::black);
-	qp.setColor(QPalette::Base,            Qt::white);
-	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
-	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
-	qp.setColor(QPalette::HighlightedText, Qt::black);
-	setPalette(qp);
-	viewport()->setPalette(qp);
+	// Rows follow the application palette. Element previews are black
+	// line art drawn for a white sheet; ElementPreviewDelegate adapts them
+	// to a dark palette, so this view no longer has to force a light one
+	// (bugtracker #335).
+	setItemDelegate(new ElementPreviewDelegate(this));
 }
 
 /**
@@ -220,7 +209,7 @@ void ElementsTreeView::startElementDrag(const ElementsLocation &location)
 			&elmt_creation_state));
 		if (elmt_creation_state) { return; }
 
-		QPixmap elmt_pixmap(temp_elmt->pixmap());
+		QPixmap elmt_pixmap(QET::Palette::forPalette(temp_elmt->pixmap(), palette()));
 		QPoint elmt_hotspot(temp_elmt->hotspot());
 
 			//Adjust the size of the pixmap if he is too big

@@ -146,12 +146,13 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		QPixmap pix(w, h);
 			//Element definitions almost always draw with a hardcoded black
 			//stroke color, on the assumption of the white diagram sheet they
-			//are normally placed on. A transparent background here makes
-			//that stroke disappear against a dark widget/tree-view background
-			//(bugtracker #335). Give it an opaque white background instead -
-			//exactly what the element already assumes visually, in every
-			//context this pixmap is used (tree icons, drag icon, previews).
-		pix.fill(Qt::white);
+			//are normally placed on. The pixmap is kept as drawn, on a
+			//transparent background: the places that show it (the
+			//collection tree through ElementPreviewDelegate, the drag icon)
+			//adapt it to the palette with QET::Palette::forPalette(), so a
+			//dark palette gets light ink instead of black on black
+			//(bugtracker #335).
+		pix.fill(Qt::transparent);
 
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
