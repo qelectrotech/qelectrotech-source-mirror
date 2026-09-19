@@ -22,9 +22,32 @@ option(BUILD_PUGIXML "Build pugixml library, use system one otherwise" YES)
 
 if(BUILD_PUGIXML)
 
-  # Pinned to the commit v1.15 points at, not to the tag itself: a tag is a
-  # mutable pointer that the upstream owner can move, so fetching by tag means
-  # a future build can silently get different code than this one did.
+  # Pinned to the commit v1.15 points at, not to the tag itself.
+  #
+  # A git tag is only a named pointer to a commit, and anyone with push access
+  # to the upstream repository can move it (git push --force) to any other
+  # commit. FetchContent fetches whatever the tag points at when the build
+  # runs, so if a maintainer account or CI token is compromised, the attacker
+  # can retarget a well-known release tag to malicious code: every fresh build
+  # of QElectroTech then compiles it, while nothing changes in this repository
+  # and the tag name still looks correct. A commit hash cannot be moved, because
+  # it is derived from the content: different code always has a different hash.
+  #
+  # This attack has been used in the wild:
+  # - March 2025, tj-actions/changed-files (CVE-2025-30066): tags v1 through
+  #   v45.0.7 were retargeted to a commit that dumped CI secrets into build
+  #   logs, affecting more than 23,000 repositories.
+  # - March 2026, aquasecurity/trivy-action (CVE-2026-33634): 76 of 77
+  #   version tags were force-pushed to a credential stealer and stayed
+  #   malicious for about 12 hours.
+  # Both were GitHub Actions rather than CMake dependencies, but the mechanism
+  # is the same one FetchContent relies on here: resolving a git tag at build
+  # time.
+  #
+  # To upgrade, look up the new tag's commit with git ls-remote <repo> <tag>
+  # (for an annotated tag, take the hash on the "<tag>^{}" line, which is the
+  # commit; the other line is the tag object), check that it is the release you
+  # expect, and update both the hash and the trailing tag comment.
   FetchContent_Declare(
     pugixml
     GIT_REPOSITORY https://github.com/zeux/pugixml.git
