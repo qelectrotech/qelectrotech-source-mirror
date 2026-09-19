@@ -283,10 +283,20 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 			 * if background color is black,
 			 * then grid spots shall be white,
 			 * else they shall be black in color.
+			 * A view that shows the sheet with its lightness inverted
+			 * would turn black dots as bright as the ink, so it gets
+			 * dots a third of the way from the sheet color to black,
+			 * which come out as a soft gray.
 			 */
 		QPen pen;
-		Diagram::background_color == Qt::black? pen.setColor(Qt::white)
-							  : pen.setColor(Qt::black);
+		if (Diagram::background_color == Qt::black)
+			pen.setColor(Qt::white);
+		else if (m_inverted_lightness)
+			pen.setColor(QColor(Diagram::background_color.red() * 2 / 3,
+			                    Diagram::background_color.green() * 2 / 3,
+			                    Diagram::background_color.blue() * 2 / 3));
+		else
+			pen.setColor(Qt::black);
 		pen.setCosmetic(true);
 		p->setPen(pen);
 

@@ -108,6 +108,17 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
 
 	connect(m_diagram, &Diagram::showDiagram, this, &DiagramView::showDiagram);
 	connect(m_diagram, &QGraphicsScene::sceneRectChanged, this, &DiagramView::adjustSceneRect);
+		/* On a dark palette this view paints the scene into an image (see
+		 * paintInverted). QGraphicsView delivers scene updates straight to
+		 * its viewport when nobody listens to QGraphicsScene::changed(),
+		 * and in that mode the scene clears its "update everything" flag
+		 * only when the items are painted straight onto the viewport,
+		 * which never happens here: from the second update on, grid and
+		 * background toggles and even a selection would wait for an
+		 * unrelated repaint. With a receiver connected the scene sends its
+		 * updates through the signal, and clears the flag before it
+		 * emits. Any receiver does; this one has nothing to do. */
+	connect(m_diagram, &QGraphicsScene::changed, this, [](const QList<QRectF> &) {});
 	connect(&(m_diagram -> border_and_titleblock), &BorderTitleBlock::informationChanged, this, &DiagramView::updateWindowTitle);
 	connect(diagram, &Diagram::findElementRequired, this, &DiagramView::findElementRequired);
 
@@ -1120,8 +1131,10 @@ void DiagramView::paintInverted(const QRect &area)
 
 	QPainter buffer_painter(&buffer);
 	buffer_painter.setRenderHints(renderHints());
+	m_diagram->setInvertedLightness(true);
 	render(&buffer_painter, QRectF(QPointF(0, 0), QSizeF(rect.size())),
 		   rect, Qt::IgnoreAspectRatio);
+	m_diagram->setInvertedLightness(false);
 	buffer_painter.end();
 
 	QET::Palette::invertLightness(buffer, palette().color(QPalette::Base),

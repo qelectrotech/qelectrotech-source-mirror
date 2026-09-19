@@ -19,6 +19,7 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QHBoxLayout>
@@ -75,6 +76,7 @@ class tst_qetpalette : public QObject
 		void invertLightnessMapsSheetAndInk();
 		void invertedViewReadsOnDarkSheet();
 		void invertLightnessSpeed();
+		void sceneUpdatesReachARenderedView();
 
 	private:
 		static void addPaletteRows();
@@ -527,6 +529,67 @@ void tst_qetpalette::invertedViewReadsOnDarkSheet()
 	const QColor box = buffer.pixelColor(30, 20);
 	QVERIFY2(box.hslSaturationF() > 0.3 && box.blue() > box.red() + 60,
 	         qPrintable(QString("the blue box became %1").arg(box.name())));
+}
+
+namespace {
+	/**
+		A view that paints the way DiagramView does on a dark palette:
+		the exposed rectangle goes through QGraphicsView::render() into an
+		image, which is then blitted, so Qt never paints the items straight
+		onto the viewport.
+	*/
+	class RenderedView : public QGraphicsView
+	{
+		public:
+			int paints = 0;
+			using QGraphicsView::QGraphicsView;
+		protected:
+			void paintEvent(QPaintEvent *event) override
+			{
+				++paints;
+				const QRect rect = event->rect().intersected(viewport()->rect());
+				QImage buffer(rect.size(), QImage::Format_RGB32);
+				QPainter buffer_painter(&buffer);
+				render(&buffer_painter, QRectF(QPointF(0, 0), QSizeF(rect.size())), rect);
+				buffer_painter.end();
+				QPainter painter(viewport());
+				painter.drawImage(rect.topLeft(), buffer);
+			}
+	};
+}
+
+/**
+	QGraphicsView clears the scene's "update everything" flag only when
+	it paints the items straight onto its viewport, and while the flag is
+	set every further QGraphicsScene::update() and item update is dropped.
+	A view that paints through render() therefore needs a receiver on
+	QGraphicsScene::changed(), which makes the scene clear the flag before
+	it emits. This checks that with the receiver, three whole-scene
+	updates and a selection each repaint the view.
+*/
+void tst_qetpalette::sceneUpdatesReachARenderedView()
+{
+	QGraphicsScene scene(0, 0, 100, 100);
+	QGraphicsRectItem *item = scene.addRect(10, 10, 30, 30, QPen(Qt::black), QBrush(Qt::white));
+	item->setFlag(QGraphicsItem::ItemIsSelectable);
+	QObject::connect(&scene, &QGraphicsScene::changed, &scene, [](const QList<QRectF> &) {});
+
+	RenderedView view(&scene);
+	view.resize(120, 120);
+	view.show();
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+	QTRY_VERIFY(view.paints >= 1);
+
+	for (int round = 1; round <= 3; ++round)
+	{
+		const int before = view.paints;
+		scene.update();
+		QTRY_VERIFY2(view.paints > before, qPrintable(QString("scene update %1 was dropped").arg(round)));
+	}
+
+	const int before = view.paints;
+	item->setSelected(true);
+	QTRY_VERIFY2(view.paints > before, "the selection change was dropped");
 }
 
 /**
