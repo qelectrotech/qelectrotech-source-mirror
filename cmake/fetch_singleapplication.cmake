@@ -31,9 +31,11 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/SingleApplication/CMakeLists.txt")
   set(FETCHCONTENT_SOURCE_DIR_SINGLEAPPLICATION "${CMAKE_SOURCE_DIR}/SingleApplication")
 endif()
 
+# Pinned to the commit v3.2.0 points at, not to the tag itself; see the note in
+# fetch_pugixml.cmake.
 FetchContent_Declare(
   SingleApplication
   GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git
-  GIT_TAG        v3.2.0)
+  GIT_TAG        aede311d28d20179216c5419b581087be2a8409f) # v3.2.0
 set(QT_DEFAULT_MAJOR_VERSION 6)
 FetchContent_MakeAvailable(SingleApplication)
