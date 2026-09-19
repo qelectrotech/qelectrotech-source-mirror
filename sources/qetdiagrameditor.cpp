@@ -50,6 +50,7 @@
 #include "recentfiles.h"
 #include "shortcutmanager.h"
 #include "ui/bomexportdialog.h"
+#include "ui/conductorcolortoolbutton.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
 #include "ui/backupdialog.h"
@@ -912,6 +913,10 @@ void QETDiagramEditor::setUpToolBar()
 	diagram_tool_bar -> addAction (m_conductor_reset);
 	diagram_tool_bar -> addAction (m_auto_conductor);
 	diagram_tool_bar -> addAction (m_auto_break_conductor);
+		//Sits with the conductor actions it works alongside: it colours
+		//the selected conductors and sets the colour of the next one drawn.
+	m_conductor_color_button = new ConductorColorToolButton(this, this);
+	diagram_tool_bar -> addWidget (m_conductor_color_button);
 
 	m_add_item_tool_bar = new QToolBar(tr("Ajouter"), this);
 	m_add_item_tool_bar->setObjectName("adding");
@@ -2109,6 +2114,10 @@ void QETDiagramEditor::slot_updateModeActions()
 	{
 		m_auto_conductor -> setDisabled(true);
 		m_auto_break_conductor -> setDisabled(true);
+	}
+
+	if (m_conductor_color_button) {
+		m_conductor_color_button->updateEnabledState();
 	}
 }
 
