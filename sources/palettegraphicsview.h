@@ -66,6 +66,8 @@ class PaletteGraphicsView : public QGraphicsView
 		void listenToScene(QGraphicsScene *scene);
 		void paintInverted(const QRect &area);
 		void drawRubberBand(QPainter &painter);
+
+		QMetaObject::Connection m_scene_connection;
 };
 
 #endif

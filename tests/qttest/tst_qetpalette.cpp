@@ -83,6 +83,7 @@ class tst_qetpalette : public QObject
 		void paletteViewKeepsSceneUpdatesFlowing();
 		void paletteViewDrawsTheRubberBand();
 		void paletteViewFollowsTheApplicationUnderAStyleSheet();
+		void paletteViewFillsWhatTheSceneLeavesBlank();
 
 	private:
 		static void addPaletteRows();
@@ -774,6 +775,30 @@ void tst_qetpalette::paletteViewFollowsTheApplicationUnderAStyleSheet()
 	QTRY_VERIFY(!view->invertsLightness());
 	QTRY_VERIFY2(view->fullyRepaintedSince(since), "no full repaint after the switch to light");
 	QCOMPARE(sheetColor(view->viewport()->grab().toImage()), QColor(Qt::white));
+}
+
+/**
+	render() paints only what the scene draws. A scene without a
+	background brush leaves the rest of the buffer untouched, so the view
+	fills it first: on the dark palette the blank area comes out as Base,
+	not as whatever the memory held.
+*/
+void tst_qetpalette::paletteViewFillsWhatTheSceneLeavesBlank()
+{
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(QET::Palette::fusionDark());
+
+	QGraphicsScene scene(0, 0, 200, 120);
+	scene.addLine(10, 60, 190, 60, QPen(Qt::black, 2));
+	ProbeView view(&scene);
+	showAsSheet(view);
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+
+	const QImage image = view.viewport()->grab().toImage();
+	const QColor base = QET::Palette::fusionDark().color(QPalette::Active, QPalette::Base);
+	QCOMPARE(sheetColor(image), base);
+	QCOMPARE(image.pixelColor(100, 20), base);
+	QCOMPARE(image.pixelColor(100, 100), base);
 }
 
 /**

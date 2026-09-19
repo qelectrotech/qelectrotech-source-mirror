@@ -72,13 +72,17 @@ void PaletteGraphicsView::paintingInverted(bool inverted)
 
 /**
 	@brief PaletteGraphicsView::listenToScene
-	Connect a receiver to the scene's changed() signal. Any receiver does;
-	this one has nothing to do. The connection dies with the view.
+	Connect a receiver to the scene's changed() signal, dropping the one
+	on the previous scene. Any receiver does; this one has nothing to do.
+	The connection dies with the view.
 */
 void PaletteGraphicsView::listenToScene(QGraphicsScene *scene)
 {
+	disconnect(m_scene_connection);
+	m_scene_connection = QMetaObject::Connection();
 	if (scene)
-		connect(scene, &QGraphicsScene::changed, this, [](const QList<QRectF> &) {});
+		m_scene_connection = connect(scene, &QGraphicsScene::changed,
+		                             this, [](const QList<QRectF> &) {});
 }
 
 /**
@@ -129,6 +133,9 @@ void PaletteGraphicsView::paintInverted(const QRect &area)
 	QImage buffer(qCeil(rect.width() * ratio), qCeil(rect.height() * ratio),
 	              QImage::Format_RGB32);
 	buffer.setDevicePixelRatio(ratio);
+	// render() paints only what the scene draws; what it leaves blank is
+	// the white sheet, which the inversion turns into the Base color.
+	buffer.fill(Qt::white);
 
 	QPainter buffer_painter(&buffer);
 	buffer_painter.setRenderHints(renderHints());
