@@ -8,3 +8,11 @@ doc/*
 QElectroTech.tag
 !doc/doc-utils
 lang/*.qm
+
+# -- IDE settings/intermediate files --
+# zed
+.zed
+.cache
+
+# VS Code
+.vscode
