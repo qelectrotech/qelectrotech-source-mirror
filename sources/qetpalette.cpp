@@ -17,10 +17,11 @@
 */
 #include "qetpalette.h"
 
+#include <QApplication>
 #include <QColor>
 #include <QImage>
 #include <QStyle>
-
+#include <QWidget>
 #include <cmath>
 
 namespace {
@@ -295,4 +296,15 @@ QPixmap QET::Palette::forPalette(const QPixmap &pixmap, const QPalette &palette)
 	QPixmap result = QPixmap::fromImage(invertedLightness(image));
 	result.setDevicePixelRatio(pixmap.devicePixelRatio());
 	return result;
+}
+
+void QET::Palette::refreshStyleSheets()
+{
+	// Setting the same sheet again is not a no-op: QWidget::setStyleSheet()
+	// asks QStyleSheetStyle to repolish the widget, which recomputes its
+	// palette from the application palette now in force.
+	const QWidgetList widgets = QApplication::allWidgets();
+	for (QWidget *widget : widgets)
+		if (!widget->styleSheet().isEmpty())
+			widget->setStyleSheet(widget->styleSheet());
 }
