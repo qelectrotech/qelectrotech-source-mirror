@@ -1,0 +1,36 @@
+SQLite bundled source provenance
+================================
+
+This directory contains the SQLite amalgamation bundled by QElectroTech for
+builds that enable QET_USE_BUNDLED_SQLITE3.
+
+Upstream project:
+  https://sqlite.org/
+  Release: 3.53.4
+  Fossil check-in: bf7c7f30031888f4e796e429ab3978879485
+  Source ID: 2026-07-24 19:02:57
+    bf7c7f30031888f4e796e429ab3978879485813aaca6f641c7b33e4e09459bcc
+
+The bundled SQLite source consists of:
+
+  include/sqlite3.h
+  src/sqlite3.c
+
+These files are the SQLite amalgamation: generated source combining the
+SQLite core and its public C API header into a form that can be compiled as a
+single translation unit. The files identify SQLite version 3.53.4 and the
+Fossil check-in listed above in their upstream headers.
+
+SQLite is released into the public domain. See the notices in the bundled
+SQLite files and the SQLite copyright page for the applicable dedication and
+license information:
+
+  https://sqlite.org/copyright.html
+
+The following file was added by QElectroTech and is not part of SQLite:
+
+  CMakeLists.txt
+
+It provides the local static-library target and include-path setup needed to
+build the bundled amalgamation. It is covered by the QElectroTech license
+notice in that file and is not part of the SQLite public-domain source.
