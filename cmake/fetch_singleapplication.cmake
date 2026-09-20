@@ -32,7 +32,11 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/SingleApplication/CMakeLists.txt")
 endif()
 
 # Pinned to the commit v3.2.0 points at, not to the tag itself; see the note in
-# fetch_pugixml.cmake.
+# fetch_pugixml.cmake. v3.2.0 is a lightweight tag, a ref pointing straight at
+# the commit, so "git ls-remote <repo> refs/tags/v3.2.0" prints that commit and
+# nothing else. An annotated tag, as KDE uses in fetch_kdeaddons.cmake, would
+# print the tag object under refs/tags/v3.2.0 as well, with the commit on the
+# refs/tags/v3.2.0^{} line.
 FetchContent_Declare(
   SingleApplication
   GIT_REPOSITORY https://github.com/itay-grudev/SingleApplication.git

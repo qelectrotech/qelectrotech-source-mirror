@@ -44,10 +44,25 @@ if(BUILD_PUGIXML)
   # is the same one FetchContent relies on here: resolving a git tag at build
   # time.
   #
-  # To upgrade, look up the new tag's commit with git ls-remote <repo> <tag>
-  # (for an annotated tag, take the hash on the "<tag>^{}" line, which is the
-  # commit; the other line is the tag object), check that it is the release you
+  # To upgrade, look up the commit the new tag points at with
+  # git ls-remote <repo> 'refs/tags/<tag>*', check that it is the release you
   # expect, and update both the hash and the trailing tag comment.
+  #
+  # How many lines that prints depends on which of the two kinds of tag
+  # upstream created:
+  # - A lightweight tag is nothing but a ref pointing straight at the commit,
+  #   so ls-remote prints a single line, "refs/tags/<tag>", and its hash is
+  #   the commit to pin. pugixml tags this way, which is why the v1.15 hash
+  #   below is what "git ls-remote ... refs/tags/v1.15" reports directly;
+  #   SingleApplication (v3.2.0) does the same.
+  # - An annotated tag is a git object in its own right, carrying a tagger,
+  #   a date, a message and optionally a GPG signature, and pointing at the
+  #   commit. ls-remote then prints two lines: "refs/tags/<tag>" is the tag
+  #   object and "refs/tags/<tag>^{}" is that object dereferenced, i.e. the
+  #   commit. The KDE Frameworks modules tag this way, so for them it is the
+  #   "^{}" hash that belongs in the pin; the other hash identifies the tag
+  #   object itself, which is not the source revision and changes whenever
+  #   upstream re-creates the tag, even over the very same commit.
   FetchContent_Declare(
     pugixml
     GIT_REPOSITORY https://github.com/zeux/pugixml.git
