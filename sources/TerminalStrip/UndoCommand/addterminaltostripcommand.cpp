@@ -171,20 +171,20 @@ MoveTerminalCommand::MoveTerminalCommand(QSharedPointer<PhysicalTerminal> termin
 	QString text;
 	if (t_label.isEmpty()) {
 		if (strip_name.isEmpty() && new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer une borne d'un groupe de bornes vers un groupe de bornes");
+			text = QObject::tr("Déplacer une borne d'un groupe de bornes vers un autre groupe de bornes");
 		else if (strip_name.isEmpty())
 			text = QObject::tr("Déplacer une borne d'un groupe de bornes vers le groupe de bornes %1").arg(new_strip_name);
 		else if (new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer une borne du groupe de bornes %1 vers un groupe de bornes").arg(strip_name);
+			text = QObject::tr("Déplacer une borne du groupe de bornes %1 vers un autre groupe de bornes").arg(strip_name);
 		else
 			text = QObject::tr("Déplacer une borne du groupe de bornes %1 vers le groupe de bornes %2").arg(strip_name, new_strip_name);
 	} else {
 		if (strip_name.isEmpty() && new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer la borne %1 d'un groupe de bornes vers un groupe de bornes").arg(t_label);
+			text = QObject::tr("Déplacer la borne %1 d'un groupe de bornes vers un autre groupe de bornes").arg(t_label);
 		else if (strip_name.isEmpty())
 			text = QObject::tr("Déplacer la borne %1 d'un groupe de bornes vers le groupe de bornes %2").arg(t_label, new_strip_name);
 		else if (new_strip_name.isEmpty())
-			text = QObject::tr("Déplacer la borne %1 du groupe de bornes %2 vers un groupe de bornes").arg(t_label, strip_name);
+			text = QObject::tr("Déplacer la borne %1 du groupe de bornes %2 vers un autre groupe de bornes").arg(t_label, strip_name);
 		else
 			text = QObject::tr("Déplacer la borne %1 du groupe de bornes %2 vers le groupe de bornes %3").arg(t_label, strip_name, new_strip_name);
 	}
@@ -205,11 +205,11 @@ MoveTerminalCommand::MoveTerminalCommand(QVector<QSharedPointer<PhysicalTerminal
 
 	QString text;
 	if (strip_name.isEmpty() && new_strip_name.isEmpty())
-		text = QObject::tr("Déplacer %n borne(s) d'un groupe de bornes vers un groupe de bornes", "", count);
+		text = QObject::tr("Déplacer %n borne(s) d'un groupe de bornes vers un autre groupe de bornes", "", count);
 	else if (strip_name.isEmpty())
 		text = QObject::tr("Déplacer %n borne(s) d'un groupe de bornes vers le groupe de bornes %1", "", count).arg(new_strip_name);
 	else if (new_strip_name.isEmpty())
-		text = QObject::tr("Déplacer %n borne(s) du groupe de bornes %1 vers un groupe de bornes", "", count).arg(strip_name);
+		text = QObject::tr("Déplacer %n borne(s) du groupe de bornes %1 vers un autre groupe de bornes", "", count).arg(strip_name);
 	else
 		text = QObject::tr("Déplacer %n borne(s) du groupe de bornes %1 vers le groupe de bornes %2", "", count).arg(strip_name, new_strip_name);
 	setText(text);
