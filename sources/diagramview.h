@@ -22,7 +22,7 @@
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
-#include "palettegraphicsview.h"
+#include <QGraphicsView>
 
 class Conductor;
 class Diagram;
@@ -35,7 +35,7 @@ class QGestureEvent;
 	This class provides a widget to render an electric diagram in an editable,
 	interactive way.
 */
-class DiagramView : public PaletteGraphicsView
+class DiagramView : public QGraphicsView
 {
 	Q_OBJECT
 	
@@ -84,7 +84,6 @@ class DiagramView : public PaletteGraphicsView
 		///Set for one call only, by the Escape handler, to let focus leave the view.
 		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
-		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
