@@ -39,6 +39,18 @@ class QPainter;
 	listens to changed() on every scene it is given, which makes the scene
 	clear the flag before it emits. Set the scene through this class, not
 	through a QGraphicsView pointer.
+
+	The constructor also forces QGraphicsView::FullViewportUpdate in place
+	of the default MinimalViewportUpdate. #954 shipped with the default
+	kept, and moving an item then left conductor-shaped ghosts behind on
+	both a light and a dark palette, so the cause is shared code, not
+	paintInverted(): most likely listening to changed() at all, above,
+	changes which of QGraphicsScene's two update paths a view is on, and
+	MinimalViewportUpdate's job of turning the scene's reported dirty
+	rects into the smallest correct viewport region is where that would
+	show up first. FullViewportUpdate removes the need to get that region
+	right by repainting the whole viewport on every update; the class's
+	own benchmark already shows that cost is small next to a frame budget.
 */
 class PaletteGraphicsView : public QGraphicsView
 {

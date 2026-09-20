@@ -31,12 +31,14 @@ PaletteGraphicsView::PaletteGraphicsView(QWidget *parent) :
 	QGraphicsView(parent)
 {
 	qApp->installEventFilter(this);
+	setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 }
 
 PaletteGraphicsView::PaletteGraphicsView(QGraphicsScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent)
 {
 	qApp->installEventFilter(this);
+	setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 	listenToScene(scene);
 }
 
