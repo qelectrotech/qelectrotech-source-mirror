@@ -29,6 +29,7 @@
 #include <QPushButton>
 #include <QPainter>
 #include <QRadioButton>
+#include <QScreen>
 #include <QStandardItemModel>
 #include <QTreeView>
 #include <QStyleFactory>
@@ -85,6 +86,10 @@ class tst_qetpalette : public QObject
 		void paletteViewDrawsTheRubberBand();
 		void paletteViewFollowsTheApplicationUnderAStyleSheet();
 		void paletteViewFillsWhatTheSceneLeavesBlank();
+		void paletteViewErasesMovedChildren_data();
+		void paletteViewErasesMovedChildren();
+		void paletteViewErasesChildrenMovedWhilePainting_data();
+		void paletteViewErasesChildrenMovedWhilePainting();
 		void styleSheetWidgetsFollowPaletteChange();
 
 	private:
@@ -574,6 +579,37 @@ namespace {
 	};
 
 	/**
+		A parent that, like a Terminal with its help lines, gives its child
+		line a new geometry from inside paint(): the line always runs
+		across the sheet at the parent's height, whatever the parent's
+		position. Where the child is painted is therefore only known once
+		the parent has been painted.
+	*/
+	class PaintTimeHelpLine : public QGraphicsRectItem
+	{
+		public:
+			explicit PaintTimeHelpLine(const QRectF &sheet) :
+				QGraphicsRectItem(0, 0, 20, 20),
+				m_sheet(sheet),
+				m_line(new QGraphicsLineItem(this))
+			{
+				setPen(Qt::NoPen);
+				setBrush(Qt::black);
+				m_line->setPen(QPen(Qt::black, 2));
+			}
+			void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override
+			{
+				QGraphicsRectItem::paint(painter, option, widget);
+				const qreal y = scenePos().y() + 10;
+				m_line->setLine(QLineF(m_line->mapFromScene(QPointF(m_sheet.left(), y)),
+				                       m_line->mapFromScene(QPointF(m_sheet.right(), y))));
+			}
+		private:
+			QRectF m_sheet;
+			QGraphicsLineItem *m_line;
+	};
+
+	/**
 		A small folio: a white sheet with a black line and a red box.
 		Returns the box, which is selectable.
 	*/
@@ -801,6 +837,112 @@ void tst_qetpalette::paletteViewFillsWhatTheSceneLeavesBlank()
 	QCOMPARE(sheetColor(image), base);
 	QCOMPARE(image.pixelColor(100, 20), base);
 	QCOMPARE(image.pixelColor(100, 100), base);
+}
+
+/**
+	Moving an item must erase it where it was, children included, even a
+	child far bigger than its parent: a terminal's help lines span the
+	whole sheet. QGraphicsView does that on its default update path by
+	remembering where each item was last painted. A receiver on
+	QGraphicsScene::changed() switches the scene to its Qt 4.4
+	compatibility path, which erases only the parent's own old rect and
+	leaves the children's trails behind (reported on #954). The check
+	reads the window's backing store, not a fresh rendering, and makes
+	sure the repaint after the move was a partial one: a full repaint of
+	the viewport would hide the bug, not fix it.
+*/
+void tst_qetpalette::paletteViewErasesMovedChildren_data()
+{
+	addPaletteRows();
+}
+
+void tst_qetpalette::paletteViewErasesMovedChildren()
+{
+	QFETCH(QPalette, palette);
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(palette);
+
+	QGraphicsScene scene(0, 0, 200, 120);
+	scene.setBackgroundBrush(Qt::white);
+	QGraphicsRectItem *parent = scene.addRect(0, 0, 20, 20, QPen(Qt::NoPen), QBrush(Qt::black));
+	parent->setPos(20, 20);
+	QGraphicsLineItem *line = new QGraphicsLineItem(-10, 10, 170, 10, parent);
+	line->setPen(QPen(Qt::black, 2));
+
+	ProbeView view(&scene);
+	showAsSheet(view);
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+	QTRY_VERIFY(view.paints >= 1);
+	QScreen *screen = view.screen();
+	const WId window = view.window()->winId();
+	const QImage before = screen->grabWindow(window, 0, 0, 200, 120).toImage();
+	const QColor sheet = sheetColor(before);
+	QVERIFY2(before.pixelColor(120, 30) != sheet, "the child line is not drawn");
+	QVERIFY2(before.pixelColor(30, 30) != sheet, "the parent is not drawn");
+
+	const int from = view.paint_rects.size();
+	parent->setPos(20, 70);
+	QTRY_VERIFY(view.paint_rects.size() > from);
+	QVERIFY2(!view.fullyRepaintedSince(from), "the move repainted the whole viewport");
+
+	const QImage after = screen->grabWindow(window, 0, 0, 200, 120).toImage();
+	QVERIFY2(after.pixelColor(120, 30) == sheet,
+	         qPrintable(QString("the child line left a trail: %1").arg(after.pixelColor(120, 30).name())));
+	QVERIFY2(after.pixelColor(30, 30) == sheet,
+	         qPrintable(QString("the parent left a trail: %1").arg(after.pixelColor(30, 30).name())));
+	QVERIFY2(after.pixelColor(120, 80) != sheet, "the child line is missing at its new place");
+	QVERIFY2(after.pixelColor(30, 80) != sheet, "the parent is missing at its new place");
+}
+
+/**
+	The same, for a child whose geometry is set while its parent is
+	painted, as a Terminal does with its help lines: the view must record
+	where the child was painted, not where it was before the paint, or
+	the next move erases the wrong place. Two moves, because the first
+	paint after a move is where the child gets its new geometry.
+*/
+void tst_qetpalette::paletteViewErasesChildrenMovedWhilePainting_data()
+{
+	addPaletteRows();
+}
+
+void tst_qetpalette::paletteViewErasesChildrenMovedWhilePainting()
+{
+	QFETCH(QPalette, palette);
+	QApplication::setStyle(QStyleFactory::create("Fusion"));
+	QApplication::setPalette(palette);
+
+	QGraphicsScene scene(0, 0, 200, 120);
+	scene.setBackgroundBrush(Qt::white);
+	PaintTimeHelpLine *parent = new PaintTimeHelpLine(scene.sceneRect());
+	scene.addItem(parent);
+	parent->setPos(20, 20);
+
+	ProbeView view(&scene);
+	showAsSheet(view);
+	QVERIFY(QTest::qWaitForWindowExposed(&view));
+	QTRY_VERIFY(view.paints >= 1);
+	QScreen *screen = view.screen();
+	const WId window = view.window()->winId();
+	const QColor sheet = sheetColor(screen->grabWindow(window, 0, 0, 200, 120).toImage());
+
+	int from = view.paint_rects.size();
+	parent->setPos(20, 50);
+	QTRY_VERIFY(view.paint_rects.size() > from);
+	QTRY_VERIFY2(screen->grabWindow(window, 0, 0, 200, 120).toImage().pixelColor(120, 60) != sheet,
+	             "the line did not follow the parent");
+
+	from = view.paint_rects.size();
+	parent->setPos(20, 80);
+	QTRY_VERIFY(view.paint_rects.size() > from);
+	QVERIFY2(!view.fullyRepaintedSince(from), "the move repainted the whole viewport");
+	QImage after;
+	QTRY_VERIFY2((after = screen->grabWindow(window, 0, 0, 200, 120).toImage()).pixelColor(120, 90) != sheet,
+	             "the line is missing at its new place");
+	QVERIFY2(after.pixelColor(120, 60) == sheet,
+	         qPrintable(QString("the line left a trail: %1").arg(after.pixelColor(120, 60).name())));
+	QVERIFY2(after.pixelColor(120, 30) == sheet,
+	         qPrintable(QString("the first line was never erased: %1").arg(after.pixelColor(120, 30).name())));
 }
 
 /**
