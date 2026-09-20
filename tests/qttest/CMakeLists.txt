@@ -95,6 +95,8 @@ add_executable(
   tst_qetpalette
   tst_qetpalette.cpp
   inkcontrast.h
+  ${QET_DIR}/sources/palettegraphicsview.cpp
+  ${QET_DIR}/sources/palettegraphicsview.h
   ${QET_DIR}/sources/qetpalette.cpp
   ${QET_DIR}/sources/qetpalette.h
   ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.cpp

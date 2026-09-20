@@ -248,6 +248,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qet.h
   ${QET_DIR}/sources/qeticons.cpp
   ${QET_DIR}/sources/qeticons.h
+  ${QET_DIR}/sources/palettegraphicsview.cpp
+  ${QET_DIR}/sources/palettegraphicsview.h
   ${QET_DIR}/sources/qetpalette.cpp
   ${QET_DIR}/sources/qetpalette.h
   ${QET_DIR}/sources/qetstyle.cpp
