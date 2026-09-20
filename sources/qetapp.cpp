@@ -1808,6 +1808,10 @@ void QETApp::useSystemPalette(bool use) {
 			file.close();
 		}
 	}
+	// Widgets with their own style sheet keep the palette they were
+	// polished with; after a live light/dark switch they would stay in
+	// the old colors (see QET::Palette::refreshStyleSheets).
+	QET::Palette::refreshStyleSheets();
 }
 
 /**
