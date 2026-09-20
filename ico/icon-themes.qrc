@@ -259,12 +259,14 @@
         <file alias="themes/qet/48x48/user-away-extended.png">48x48/user-away-extended.png</file>
         <file alias="themes/qet/48x48/user-away.png">48x48/user-away.png</file>
         <file alias="themes/qet/48x48/view-pim-journal.png">48x48/view-pim-journal.png</file>
+        <file alias="themes/qet/128x128/configure-shortcuts.png">128x128/configure-shortcuts.png</file>
         <file alias="themes/qet/128x128/diagram.png">128x128/diagram.png</file>
         <file alias="themes/qet/128x128/document-export.png">128x128/document-export.png</file>
         <file alias="themes/qet/128x128/plasmagik.png">128x128/plasmagik.png</file>
         <file alias="themes/qet/128x128/printer.png">128x128/printer.png</file>
         <file alias="themes/qet/128x128/project.png">128x128/project.png</file>
         <file alias="themes/qet/128x128/settings.png">128x128/settings.png</file>
+        <file alias="themes/qet/128x128/terminalstrip.png">128x128/terminalstrip.png</file>
         <file alias="themes/qet/scalable/diagram.svg">scalable/diagram.svg</file>
         <file alias="themes/qet/scalable/folio-delete.svg">scalable/folio-delete.svg</file>
         <file alias="themes/qet/scalable/folio-new.svg">scalable/folio-new.svg</file>
@@ -469,5 +471,7 @@
         <file>themes/qet-dark/scalable/ellipse-to-bezier.svg</file>
         <file>themes/qet-dark/scalable/rect-to-bezier.svg</file>
         <file>themes/qet-dark/scalable/rect-to-polyline.svg</file>
+        <file alias="themes/qet-dark/128x128/document-export.png">128x128/document-export.png</file>
+        <file alias="themes/qet-dark/128x128/printer.png">128x128/printer.png</file>
     </qresource>
 </RCC>

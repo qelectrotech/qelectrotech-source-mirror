@@ -381,5 +381,5 @@ QString ShortcutsConfigPage::title() const
 
 QIcon ShortcutsConfigPage::icon() const
 {
-	return QET::Icons::ConfigureToolbars;
+	return QET::Icons::ConfigureShortcuts;
 }

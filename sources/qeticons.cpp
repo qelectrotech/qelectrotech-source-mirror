@@ -37,6 +37,7 @@ namespace QET {
 		QIcon ConductorEdit;
 		QIcon ConductorSettings;
 		QIcon Configure;
+		QIcon ConfigureShortcuts;
 		QIcon ConfigureToolbars;
 		QIcon IC_CopyFile;
 		QIcon DefaultConductor;
@@ -408,6 +409,7 @@ void QET::Icons::initIcons()
 	ConductorEdit       = QIcon::fromTheme("conductor-edit");
 	ConductorSettings   = QIcon::fromTheme("conductor-reset");
 	Configure           = QIcon::fromTheme("configure");
+	ConfigureShortcuts  = QIcon::fromTheme("configure-shortcuts");
 	ConfigureToolbars   = QIcon::fromTheme("configure-toolbars");
 	IC_CopyFile         = QIcon::fromTheme("item-copy");
 	DiagramAdd          = QIcon::fromTheme("folio-new");

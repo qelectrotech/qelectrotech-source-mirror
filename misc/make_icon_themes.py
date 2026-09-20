@@ -34,6 +34,16 @@ expects, so QIcon::fromTheme("name") finds them. The dark theme only holds
 the icons that need a dark variant: black line art. Colored icons are not
 touched; the dark theme inherits them from the light one.
 
+Qt inherits by name, not by size: once a name has any file in the dark
+theme, the parent theme is never consulted for that name, and a size the
+dark theme lacks is served by scaling the nearest dark file. An icon that
+is line art at 22 pixels and colored at 128 (the printer) would then come
+out as the 22 pixel copy scaled up on a dark palette. So for every name
+the dark theme holds, the .qrc also aliases the light files of the sizes
+the dark theme does not have, when they read on the dark window (3:1,
+measured as tests/qttest/tst_qeticons.cpp does); a light file that does
+not is left out, and Qt scales the nearest dark copy as before.
+
 An icon counts as line art when fewer than 20% of its visible pixels are
 saturated. Its dark copy keeps hue and alpha and inverts lightness, scaled
 so pure black becomes (220, 220, 220), the dark palette's text color.
@@ -101,6 +111,8 @@ WHITE_LIGHTNESS = 0.85      # a visible pixel this light counts as white
 WHITE_FRACTION = 0.30       # at or above this an icon is "light art"
 INK = 220 / 255.0           # lightness of pure black after inversion
 SVG_INK = "#dcdcdc"
+DARK_WINDOW = (53, 53, 53)  # QET::Palette::fusionDark() window color
+DARK_RATIO = 3.0            # what tst_qeticons requires of a dark theme file
 
 
 def visible_pixels(image):
@@ -129,6 +141,28 @@ def has_light_fill(image):
     white = sum(1 for r, g, b, _ in pixels
                 if colorsys.rgb_to_hls(r / 255, g / 255, b / 255)[1] > WHITE_LIGHTNESS)
     return white / len(pixels) >= WHITE_FRACTION
+
+
+def relative_luminance(rgb):
+    def linear(c):
+        c /= 255.0
+        return c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    r, g, b = rgb
+    return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b)
+
+
+def reads_on_dark(image):
+    """True when the icon's mean visible color reaches DARK_RATIO against
+    the dark window, the test tst_qeticons applies to every dark file."""
+    pixels = visible_pixels(image)
+    if not pixels:
+        return False
+    n = len(pixels)
+    mean = (sum(p[0] for p in pixels) // n, sum(p[1] for p in pixels) // n,
+            sum(p[2] for p in pixels) // n)
+    lighter, darker = sorted((relative_luminance(mean), relative_luminance(DARK_WINDOW)),
+                             reverse=True)
+    return (lighter + 0.05) / (darker + 0.05) >= DARK_RATIO
 
 
 def invert_lightness(image):
@@ -240,6 +274,20 @@ def main():
         changed += write_if_changed(target, text)
         dark.append(f"themes/qet-dark/scalable/{name}")
 
+    # Complete each dark name with the light files of its other sizes
+    # that read on a dark window (see the module docstring): aliases, no
+    # copies.
+    dark_sizes = {}
+    for path in dark:
+        size, name = path.split("/")[2:]
+        dark_sizes.setdefault(name, set()).add(size)
+    dark_aliases = []
+    for alias, source in light:
+        size, name = alias.split("/")[2:]
+        if name in dark_sizes and size not in dark_sizes[name] \
+                and reads_on_dark(Image.open(ICO / source).convert("RGBA")):
+            dark_aliases.append((f"themes/qet-dark/{size}/{name}", source))
+
     # Drop dark files from an earlier run that are no longer generated, so
     # a reclassified icon falls back to the light theme instead of keeping
     # a stale copy.
@@ -264,6 +312,8 @@ def main():
         qrc.append(f'        <file alias="{alias}">{source}</file>')
     for path in dark:
         qrc.append(f"        <file>{path}</file>")
+    for alias, source in dark_aliases:
+        qrc.append(f'        <file alias="{alias}">{source}</file>')
     qrc += ["    </qresource>", "</RCC>", ""]
     changed += write_if_changed(QRC, "\n".join(qrc))
 
