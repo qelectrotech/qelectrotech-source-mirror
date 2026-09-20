@@ -100,7 +100,9 @@ void tst_CrashHandler::formatsTheHandledSignals()
 {
 	QCOMPARE(format(SIGSEGV), QByteArray::number(SIGSEGV));
 	QCOMPARE(format(SIGABRT), QByteArray::number(SIGABRT));
+#if defined(SIGBUS)
 	QCOMPARE(format(SIGBUS), QByteArray::number(SIGBUS));
+#endif
 	QCOMPARE(format(SIGFPE), QByteArray::number(SIGFPE));
 	QCOMPARE(format(SIGILL), QByteArray::number(SIGILL));
 }

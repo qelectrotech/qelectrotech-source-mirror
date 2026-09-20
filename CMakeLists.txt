@@ -113,7 +113,9 @@ if(Backtrace_FOUND)
     include_directories(${Backtrace_INCLUDE_DIRS})
     add_compile_definitions(QET_CRASH_BACKTRACE)
 else()
-    message(STATUS "backtrace() not available: crash dumps will carry the log ring without a backtrace")
+    message(STATUS
+        "backtrace() not available: crash dumps will carry the log ring "
+        "without a backtrace")
 endif()
 
 find_package(SQLite3 REQUIRED)
