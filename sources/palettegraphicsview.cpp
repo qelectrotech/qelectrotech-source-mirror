@@ -99,7 +99,7 @@ bool PaletteGraphicsView::eventFilter(QObject *watched, QEvent *event)
 */
 void PaletteGraphicsView::paintEvent(QPaintEvent *event)
 {
-	if (invertsLightness())
+	if (invertsLightness() && !customBackgroundColor())
 	{
 		paintInverted(event);
 		return;

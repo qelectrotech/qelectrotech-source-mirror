@@ -19,6 +19,7 @@
 
 #include "NameList/nameslist.h"
 #include "createdxf.h"
+#include "diagram.h"
 #include "qet.h"
 #include "qetapp.h"
 // uncomment the line below to get more debug information
@@ -1589,8 +1590,10 @@ void TitleBlockTemplate::render(QPainter &painter,
 	int titleblock_height = height();
 
 	painter.save();
-		//Setup the QPainter
-	QPen pen(Qt::black);
+		//Setup the QPainter - use a color that contrasts with the background
+	QColor ink = Diagram::background_color.lightness() < 128
+		    ? QColor(Qt::white) : QColor(Qt::black);
+	QPen pen(ink);
 	painter.setPen(pen);
 
 	// draw the titleblock border
@@ -1737,7 +1740,9 @@ void TitleBlockTemplate::renderCell(QPainter &painter,
 {
 	// draw the border rect of the current cell
 	QPen pen(QBrush(), 1, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
-	pen.setColor(Qt::black);
+	QColor ink = Diagram::background_color.lightness() < 128
+		    ? QColor(Qt::white) : QColor(Qt::black);
+	pen.setColor(ink);
 	painter.setPen(pen);
 	painter.drawRect(cell_rect);
 
