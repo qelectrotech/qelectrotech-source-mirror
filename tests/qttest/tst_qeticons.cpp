@@ -67,6 +67,7 @@ class tst_qeticons : public QObject
 		void menuIconReadsOnHighlight_data();
 		void menuIconReadsOnHighlight();
 		void panelProjectIconStaysSmall();
+		void configPageIconsComeAtPageSize();
 };
 
 namespace {
@@ -470,6 +471,35 @@ void tst_qeticons::panelProjectIconStaysSmall()
 	// The configuration dialog's page list still gets the large file.
 	QCOMPARE(QET::Icons::Projects.pixmap(QSize(128, 128), 1.0).width(), 128);
 #endif
+}
+
+
+/**
+	The configuration dialogs list their pages with 64 or 128 pixel icons
+	(ConfigDialog::ConfigDialog). A page whose icon exists at 22 pixels
+	only comes out as a 22 pixel stamp among 128 pixel neighbors, which
+	the terminal-strip page of the project dialog and the shortcuts page
+	of the settings dialog did.
+*/
+void tst_qeticons::configPageIconsComeAtPageSize()
+{
+	const QStringList pages = {"settings", "project", "diagram", "plasmagik", "printer",
+	                           "document-export", "terminalstrip", "configure-shortcuts"};
+	QStringList small;
+	for (const QString &theme : {"qet", "qet-dark"})
+	{
+		QIcon::setThemeName(theme);
+		for (const QString &name : pages)
+		{
+			const QIcon icon = QIcon::fromTheme(name);
+			QVERIFY2(!icon.isNull(), qPrintable(QString("%1 missing in theme %2").arg(name, theme)));
+			const QSize size = icon.actualSize(QSize(128, 128));
+			if (size.width() < 128 || size.height() < 128)
+				small << QString("%1 in %2 at %3x%4").arg(name, theme).arg(size.width()).arg(size.height());
+		}
+	}
+	QIcon::setThemeName("qet");
+	QVERIFY2(small.isEmpty(), qPrintable("page icons short of 128 pixels: " + small.join(", ")));
 }
 
 int main(int argc, char **argv)
