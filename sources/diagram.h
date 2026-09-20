@@ -123,7 +123,6 @@ class Diagram : public QGraphicsScene
 		qreal diagram_qet_version_;
 
 		bool draw_grid_;
-		bool m_inverted_lightness = false;
 		bool use_border_;
 		bool draw_guides_;
 		QList<Diagram::Guide> m_guides_list;
@@ -223,7 +222,6 @@ class Diagram : public QGraphicsScene
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
 		bool displayGrid();
-		void setInvertedLightness(bool);
 		void setDisplayGuides(bool);
 		bool displayGuides();
 		void updateProjectGuides(const QList<GuideProperties> &guides);
@@ -355,18 +353,6 @@ inline void Diagram::setConductorStop(QPointF end) {
 */
 inline void Diagram::setDisplayGrid(bool dg) {
 	draw_grid_ = dg;
-}
-
-/**
-	@brief Diagram::setInvertedLightness
-	Tell the diagram whether the view painting it will show the result
-	with its lightness inverted (PaletteGraphicsView on a dark palette).
-	drawBackground draws a softer grid in that case. Printing
-	and export never set this.
-	@param inverted
-*/
-inline void Diagram::setInvertedLightness(bool inverted) {
-	m_inverted_lightness = inverted;
 }
 
 /**

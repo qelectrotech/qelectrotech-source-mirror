@@ -39,9 +39,7 @@
 #include "ElementsCollection/xmlelementcollection.h"
 #include "NameList/nameslist.h"
 #include "elementdialog.h"
-#include <QApplication>
 #include <QDropEvent>
-#include <QPainter>
 #include <QPointer>
 
 /**
@@ -50,7 +48,7 @@
 	@param parent Le QWidget parent de cette vue de schema
 */
 DiagramView::DiagramView(Diagram *diagram, QWidget *parent) :
-	PaletteGraphicsView (parent),
+	QGraphicsView (parent),
 	m_diagram (diagram)
 {
 	grabGesture(Qt::PinchGesture);
@@ -1084,23 +1082,13 @@ bool DiagramView::event(QEvent *e) {
 }
 
 /**
-	@brief DiagramView::paintingInverted
-	Reimplemented from PaletteGraphicsView: tell the diagram it is being
-	drawn for an inverted display, so it softens its grid.
-*/
-void DiagramView::paintingInverted(bool inverted)
-{
-	m_diagram->setInvertedLightness(inverted);
-}
-
-/**
 	@brief DiagramView::paintEvent
 	Reimplemented from QGraphicsView
 	@param event
 */
 void DiagramView::paintEvent(QPaintEvent *event)
 {
-	PaletteGraphicsView::paintEvent(event);
+	QGraphicsView::paintEvent(event);
 
 	if (m_free_rubberbanding && m_free_rubberband.count() >= 3)
 	{
