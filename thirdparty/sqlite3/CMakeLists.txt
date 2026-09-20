@@ -28,6 +28,14 @@ target_include_directories(sqlite3
 )
 
 target_compile_features(sqlite3 PUBLIC c_std_99)
+
+target_compile_definitions(sqlite3 PRIVATE
+  SQLITE_THREADSAFE=1
+  SQLITE_DEFAULT_MEMSTATUS=0
+  SQLITE_LIKE_DOESNT_MATCH_BLOBS
+  SQLITE_OMIT_SHARED_CACHE
+)
+
 set_target_properties(sqlite3 PROPERTIES
   POSITION_INDEPENDENT_CODE ON
 )
