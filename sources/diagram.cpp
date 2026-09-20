@@ -1709,10 +1709,7 @@ bool Diagram::fromXml(QDomElement &document,
 		//Get the top left corner of the rectangle that contain all added items
 		QRectF items_rect;
 		for (auto item : added_items) {
-			items_rect = items_rect.united(
-						item->mapToScene(
-							item->boundingRect()
-							).boundingRect());
+			items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
 		}
 
 		QPointF point_ = items_rect.topLeft();
@@ -1720,8 +1717,12 @@ bool Diagram::fromXml(QDomElement &document,
 						position.y() - point_.y()));
 
 			//Translate all added items
-		for (auto qgi : added_items)
+		for (auto qgi : added_items) {
 			qgi->setPos(qgi->pos() += pos_);
+		}
+	}
+	else
+	{
 	}
 
 	  // Load conductor
