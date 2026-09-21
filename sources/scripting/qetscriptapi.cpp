@@ -2115,6 +2115,80 @@ bool QetScriptApi::deleteElementText(int folioIndex, const QString &elementUuid,
 	return true;
 }
 
+/**
+	@brief QetScriptApi::useElementAutoNum
+	Make an element numbering context the project's current one, as choosing
+	it in the auto-numbering panel does. An empty name clears the selection.
+*/
+bool QetScriptApi::useElementAutoNum(const QString &name)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.useElementAutoNum: project is read-only"));
+		return false;
+	}
+	if (!name.isEmpty() && !m_project->elementAutoNum().contains(name)) {
+		log(QStringLiteral("qet.useElementAutoNum: no element auto-numbering named '%1'").arg(name));
+		return false;
+	}
+	m_project->setCurrrentElementAutonum(name);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::numberElement
+	Give one element its label from the current element numbering context,
+	through Element::setUpFormula() -- the call the "add element" tool makes
+	right after placing one.
+
+	Refused where setUpFormula() would do nothing, rather than reporting
+	success: a slave or a report takes its label from its master, and with no
+	current context there is no formula to apply.
+*/
+bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("numberElement");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+	if (element->linkType() == Element::Slave || (element->linkType() & Element::AllReport)) {
+		log(QStringLiteral("qet.%1: a slave or a report takes its label from its master").arg(caller));
+		return false;
+	}
+	if (m_project->elementAutoNumCurrentFormula().isEmpty()) {
+		log(QStringLiteral("qet.%1: no element auto-numbering is selected (see useElementAutoNum)").arg(caller));
+		return false;
+	}
+
+	// setUpFormula() writes the label straight into the element's
+	// information and pushes only the counter's advance onto the undo stack.
+	// For a new element that is fine -- undoing the placement removes it --
+	// but for one already on the folio, one undo rolled the counter back and
+	// left the label behind (measured: c3 stayed "K3" while the counter went
+	// back to expecting K3), so the next numbering would repeat a label the
+	// counter had forgotten. So take the label it computed, put the
+	// information back, and push the change as a command of its own inside
+	// the same macro as the counter, making both one step.
+	const DiagramContext old_info = element->elementInformations();
+	QUndoStack *stack = m_project->undoStack();
+	stack->beginMacro(QObject::tr("Numéroter automatiquement un élément"));
+	element->setUpFormula(true);
+	const DiagramContext new_info = element->elementInformations();
+	if (new_info.value(QETInformation::ELMT_LABEL) == old_info.value(QETInformation::ELMT_LABEL)
+		&& new_info.value(QStringLiteral("formula")) == old_info.value(QStringLiteral("formula"))) {
+		stack->endMacro();
+		return false;
+	}
+	element->setElementInformations(old_info);
+	stack->push(new ChangeElementInformationCommand(element, old_info, new_info));
+	stack->endMacro();
+	return true;
+}
+
 int QetScriptApi::addFolio()
 {
 	if (!m_project) return -1;

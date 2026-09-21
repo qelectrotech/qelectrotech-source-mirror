@@ -177,6 +177,15 @@ class DynamicElementTextItem;
 	  because the application itself does it through direct project calls
 	  and only the counter advance is on the undo stack; the numbering
 	  actually applied to a conductor is.
+
+	  For elements, useElementAutoNum() selects the current context and
+	  numberElement() applies it to one element, as the "add element" tool
+	  does right after placing one. addElement() deliberately does not
+	  number what it places: doing it silently would change what an existing
+	  script produces the moment its project happens to have a context
+	  selected, so it is a separate, explicit call. Folio auto-numbering is
+	  not offered: in the application it spawns whole new folios from a
+	  context, which is a different operation from labelling.
 	- @b Images: place a picture from a file. The pixels are copied into
 	  the project, which stores them inline in the .qet -- the saved file
 	  does not refer to the original path, so it opens on another machine,
@@ -346,6 +355,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool addAutoNum(const QString &kind, const QString &name, const QStringList &parts);
 		Q_INVOKABLE bool removeAutoNum(const QString &kind, const QString &name);
 		Q_INVOKABLE bool useConductorAutoNum(int folioIndex, const QString &name);
+		Q_INVOKABLE bool useElementAutoNum(const QString &name);
+		Q_INVOKABLE bool numberElement(int folioIndex, const QString &elementUuid);
 
 		// -- images, embedded in the project --
 		Q_INVOKABLE QStringList images(int folioIndex) const;
