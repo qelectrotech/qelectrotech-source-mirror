@@ -41,6 +41,7 @@
 #include "../undocommand/changetitleblockcommand.h"
 #include "../undocommand/deleteqgraphicsitemcommand.h"
 #include "../undocommand/linkelementcommand.h"
+#include "../undocommand/removediagramcommand.h"
 #include "../utils/conductorcreator.h"
 
 #include <QSqlError>
@@ -1255,6 +1256,116 @@ QVariantList QetScriptApi::query(const QString &sql)
 QString QetScriptApi::queryError() const
 {
 	return m_query_error;
+}
+
+/**
+	@brief QetScriptApi::deleteConductor
+	Delete the single conductor attached to a terminal (same addressing as
+	setConductorProperty()). Unlike a property change this removes only that
+	conductor: DeleteQGraphicsItemCommand itself rebuilds the remaining
+	conductors of the potential so it stays connected, exactly as when a user
+	selects one conductor and presses Delete.
+*/
+bool QetScriptApi::deleteConductor(int folioIndex, const QString &elementUuid, int terminalIndex)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("deleteConductor");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex, caller);
+	if (!conductor) return false;
+	Diagram *diagram = m_project->diagrams().at(folioIndex);
+
+	DiagramContent content;
+	content.m_conductors_to_move << conductor;
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::removeFolio
+	Remove a folio through RemoveDiagramCommand, the command the GUI's
+	"delete folio" pushes (minus its confirmation box, which nobody could
+	answer headlessly). Undoable. Later folio indexes shift down by one.
+*/
+bool QetScriptApi::removeFolio(int folioIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.removeFolio: project is read-only"));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+	m_project->undoStack()->push(new RemoveDiagramCommand(m_project, diagrams.at(folioIndex)));
+	return m_project->diagrams().count() == diagrams.count() - 1;
+}
+
+namespace {
+QString *titleBlockField(TitleBlockProperties &p, const QString &name)
+{
+	if (name == QLatin1String("title"))     return &p.title;
+	if (name == QLatin1String("author"))    return &p.author;
+	if (name == QLatin1String("filename"))  return &p.filename;
+	if (name == QLatin1String("plant"))     return &p.plant;
+	if (name == QLatin1String("locmach"))   return &p.locmach;
+	if (name == QLatin1String("indexrev"))  return &p.indexrev;
+	if (name == QLatin1String("version"))   return &p.version;
+	if (name == QLatin1String("folio"))     return &p.folio;
+	return nullptr;
+}
+const QStringList &titleBlockFieldNames()
+{
+	static const QStringList n{QStringLiteral("title"), QStringLiteral("author"),
+		QStringLiteral("filename"), QStringLiteral("plant"), QStringLiteral("locmach"),
+		QStringLiteral("indexrev"), QStringLiteral("version"), QStringLiteral("folio")};
+	return n;
+}
+} // namespace
+
+QString QetScriptApi::folioProperty(int folioIndex, const QString &property) const
+{
+	if (!m_project) return QString();
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
+	TitleBlockProperties p = diagrams.at(folioIndex)->border_and_titleblock.exportTitleBlock();
+	QString *field = titleBlockField(p, property);
+	return field ? *field : QString();
+}
+
+/**
+	@brief QetScriptApi::setFolioProperty
+	Set one text field of a folio's title block (title, author, filename,
+	plant, locmach, indexrev, version, folio) via ChangeTitleBlockCommand,
+	like setFolioTitle() which this generalises. The date and the template are
+	not offered: the date has a use-current-date mode that a plain string
+	cannot express honestly.
+*/
+bool QetScriptApi::setFolioProperty(int folioIndex, const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setFolioProperty: project is read-only"));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+	Diagram *diagram = diagrams.at(folioIndex);
+
+	TitleBlockProperties old_p = diagram->border_and_titleblock.exportTitleBlock();
+	TitleBlockProperties new_p = old_p;
+	QString *field = titleBlockField(new_p, property);
+	if (!field) {
+		log(QStringLiteral("qet.setFolioProperty: unknown property '%1'; expected one of %2")
+			.arg(property, titleBlockFieldNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	if (*field == value) return true;
+	*field = value;
+	m_project->undoStack()->push(new ChangeTitleBlockCommand(diagram, old_p, new_p));
+	return true;
 }
 
 int QetScriptApi::addFolio()

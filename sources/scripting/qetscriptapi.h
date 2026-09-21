@@ -263,6 +263,12 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QVariantList query(const QString &sql);
 		Q_INVOKABLE QString queryError() const;
 
+		// -- removing a conductor or a folio; folio properties beyond the title --
+		Q_INVOKABLE bool deleteConductor(int folioIndex, const QString &elementUuid, int terminalIndex);
+		Q_INVOKABLE bool removeFolio(int folioIndex);
+		Q_INVOKABLE bool setFolioProperty(int folioIndex, const QString &property, const QString &value);
+		Q_INVOKABLE QString folioProperty(int folioIndex, const QString &property) const;
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
