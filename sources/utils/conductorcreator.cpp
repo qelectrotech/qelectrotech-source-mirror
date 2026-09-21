@@ -96,6 +96,29 @@ void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 }
 
 /**
+	@brief ConductorCreator::needsPotentialChoice
+	Whether creating a potential between these terminals would ask the user
+	to choose which of several existing potentials to inherit from -- that
+	is, whether the constructor would reach PotentialSelectorDialog.
+
+	This exists for callers with nobody there to answer: the dialog is a
+	plain QDialog::exec(), not routed through QET::QetMessageBox, so its
+	non-interactive mode does not cover it and a headless caller would hang
+	on it indefinitely. Such a caller can check this first and decline.
+	Exposed here, rather than reimplemented by the caller, so the condition
+	cannot drift away from the one setUpPropertieToUse() actually applies.
+	@param terminals_list the terminals a potential would be created between
+	@return true if the constructor would open the dialog
+*/
+bool ConductorCreator::needsPotentialChoice(const QList<Terminal *> &terminals_list)
+{
+	if (terminals_list.size() <= 1) {
+		return false;
+	}
+	return existingPotential(terminals_list).size() >= 2;
+}
+
+/**
 	@brief ConductorCreator::propertieToUse
 	@return true if the caller should proceed with conductor creation,
 	false if the user cancelled the potential-selection dialog (in which
@@ -104,7 +127,7 @@ void ConductorCreator::create(Diagram *d, const QPolygonF &polygon)
 */
 bool ConductorCreator::setUpPropertieToUse()
 {
-	QList<Conductor *> potentials = existingPotential();
+	QList<Conductor *> potentials = existingPotential(m_terminals_list);
 
 		//There is an existing potential
 		//we get one of them
@@ -145,14 +168,15 @@ bool ConductorCreator::setUpPropertieToUse()
 	@brief ConductorCreator::existingPotential
 	Return the list of existing potential of
 	the terminal list
+	@param terminals_list the terminals to inspect
 	@return c_list QList<Conductor *>
 */
-QList<Conductor *> ConductorCreator::existingPotential()
+QList<Conductor *> ConductorCreator::existingPotential(const QList<Terminal *> &terminals_list)
 {
 	QList<Conductor *> c_list;
 	QList<Terminal *> t_exclude;
 	
-	for (Terminal *t : m_terminals_list)
+	for (Terminal *t : terminals_list)
 	{
 		if (t_exclude.contains(t)) {
 			continue;
@@ -166,9 +190,9 @@ QList<Conductor *> ConductorCreator::existingPotential()
 				//in the same potential of c, and if true, exclude this terminal from the search.
 			for (Conductor *c : t->conductors().first()->relatedPotentialConductors(false))
 			{
-				if (m_terminals_list.contains(c->terminal1)) {
+				if (terminals_list.contains(c->terminal1)) {
 					t_exclude.append(c->terminal1);
-				} else if (m_terminals_list.contains(c->terminal2)) {
+				} else if (terminals_list.contains(c->terminal2)) {
 					t_exclude.append(c->terminal2);
 				}
 			}

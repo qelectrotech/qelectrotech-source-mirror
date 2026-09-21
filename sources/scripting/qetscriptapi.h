@@ -21,10 +21,15 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
+#include <QVariantList>
 
 class QETProject;
 class DiagramView;
 class Element;
+class Terminal;
+class Conductor;
+class IndependentTextItem;
+class QetShapeItem;
 
 /**
 	@brief The QetScriptApi class
@@ -65,12 +70,86 @@ class Element;
 	  QPropertyUndoCommand merges consecutive commands on the same
 	  object+property when their text() also matches
 	  (QPropertyUndoCommand::mergeWith(), pre-existing), and
-	  setElementPosition()/moveElement() always use the same text for a
-	  given element -- so several position changes to the same element in a
-	  row collapse into one undo step, the same way dragging an element
-	  does, not one step per call. Verified against exactly that: two
+	  setElementPosition()/moveElement()/rotateElement() always use the
+	  same text for a given element -- so several position changes, or
+	  several rotations, of the same element in a row collapse into one
+	  undo step, the same way dragging or repeatedly rotating an element
+	  does, not one step per call. setElementInfo()/setElementLabel()
+	  behave the same way for the same reason, through
+	  ChangeElementInformationCommand::mergeWith(). Verified against exactly that: two
 	  consecutive calls on one element, then undo/undo/redo/redo, land
 	  where a merge predicts, not where two independent steps would.
+	- @b Wiring, @b labelling and @b folios: create a conductor between two
+	  terminals (ConductorCreator, the same class the GUI's
+	  drag-a-rectangle-over-terminals path uses, so the result inherits an
+	  existing potential's properties and joins conductor auto-numbering),
+	  change an element's label or any other information key
+	  (ChangeElementInformationCommand, which also tells the project
+	  database what changed), add a folio (QETProject::addNewDiagram(),
+	  already undoable) and set its title (ChangeTitleBlockCommand). With
+	  addElement() these are what make a script able to draw rather than
+	  only rearrange: before them a script could place two symbols and had
+	  no way to connect them.
+
+	  Terminals are addressed by their @b index in Element::terminals(),
+	  not by uuid, and elementTerminals() prints that indexing so a script
+	  can see what it is about to wire. Terminal uuids look like the
+	  obvious key and are not one: Terminal::uuid() is a property of the
+	  catalog .elmt definition, empty for most of the installed base and,
+	  where present, identical across every instance of that element -- so
+	  it does not distinguish one placed coil's A1 from another's.
+	- @b Conductor properties and @b cross-references: set a conductor's
+	  number, formula, colour or section, and link a master to a slave or
+	  one report to another. Both follow the application's own rules rather
+	  than writing the field: a conductor property is applied to every
+	  conductor of the same electrical potential, which is what the GUI and
+	  search-and-replace both do -- a wire number belongs to a potential,
+	  not to one drawn segment -- and a link is refused unless
+	  LinkElementCommand::isLinkable() allows it, which is where the
+	  master/slave, PLC-pairing and report-direction rules already live.
+	  linkElements() takes a folio index for each end because a master and
+	  its slave are usually on different ones.
+
+	  A conductor is addressed as "the conductor on terminal i of element
+	  U", not by an identity of its own: conductors have no persisted uuid,
+	  and the folio-scoped integer ids the file uses for their ends are
+	  renumbered on every save, so there is nothing stable to name one by.
+	  Since the change is potential-wide anyway, any terminal of the
+	  potential names it equally well. A terminal carrying more than one
+	  conductor is ambiguous and is refused rather than guessed at -- which
+	  in practice means a potential is addressed from one of its leaf
+	  terminals, not from the hub several conductors meet at.
+	- @b Text and @b shapes: the drawing furniture a folio carries beside
+	  its circuit -- a free-standing note, a line, a rectangle, an ellipse
+	  -- added with the same AddGraphicsObjectCommand the corresponding GUI
+	  tools use, and changed through the plainText/color/rotation
+	  properties those items already publish.
+
+	  These are addressed by @b index into a listing sorted by position
+	  (top to bottom, then left to right), because unlike an element they
+	  carry no uuid and unlike a conductor they have no terminal to be
+	  named by. Position is the only identity they have, and it persists,
+	  so the ordering is the same after a save and reload -- verified
+	  against exactly that. What it is @b not stable against is adding or
+	  deleting one: indexes after the affected position shift, the way a
+	  list's do. Call texts() or shapes() again rather than holding an
+	  index across an edit that adds or removes one.
+	- @b Querying the project database: run a read-only SELECT against the
+	  SQLite database QElectroTech builds from the project, and get rows
+	  back as objects. This is not a new door. QET already ships a
+	  "Requête SQL personnalisée" box in the element-query dialog where a
+	  user types arbitrary SQL, and it is guarded by the same
+	  projectDataBase::isReadOnlySelect() this calls through
+	  projectDataBase::newQuery(). A script gets what a user already has,
+	  under the same rule, and neither can write.
+
+	  What is worth knowing is what the database @b is: a cache, rebuilt
+	  from the XML on every load and never written to disk. The three
+	  views -- element_nomenclature_view, project_summary_view and
+	  wiring_list_view -- exist to be queried and are the surface to
+	  depend on. The underlying tables are how the cache happens to be
+	  arranged today, and a column may move. tables() lists both so a
+	  script can see what it is querying rather than guess.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -87,7 +166,11 @@ class Element;
 	import-collision case that would otherwise reach
 	QETProject::importElement()'s own ImportElementDialog::exec() and
 	refuses instead, rather than let a plain QDialog (not routed through
-	QetMessageBox) block a script the same way.
+	QetMessageBox) block a script the same way. addConductor() declines the
+	same way, for the same reason, when the two terminals belong to two
+	different existing potentials and ConductorCreator would therefore ask
+	which one's properties to inherit -- measured: with that check removed,
+	exactly that call never returns.
 */
 class QetScriptApi : public QObject
 {
@@ -128,7 +211,62 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString addElement(int folioIndex, const QString &locationPath, double x, double y);
 		Q_INVOKABLE bool setElementPosition(int folioIndex, const QString &elementUuid, double x, double y);
 		Q_INVOKABLE bool moveElement(int folioIndex, const QString &elementUuid, double dx, double dy);
+		Q_INVOKABLE bool rotateElement(int folioIndex, const QString &elementUuid, double angle);
 		Q_INVOKABLE bool deleteElement(int folioIndex, const QString &elementUuid);
+
+		// -- address what is already there --
+		Q_INVOKABLE QStringList elementUuids(int folioIndex) const;
+		Q_INVOKABLE QString elementName(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE QStringList elementTerminals(int folioIndex, const QString &elementUuid) const;
+
+		// -- element information, through ChangeElementInformationCommand --
+		Q_INVOKABLE QString elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const;
+		Q_INVOKABLE bool setElementInfo(int folioIndex, const QString &elementUuid, const QString &key, const QString &value);
+		Q_INVOKABLE QString elementLabel(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE bool setElementLabel(int folioIndex, const QString &elementUuid, const QString &label);
+
+		// -- wire two terminals together --
+		Q_INVOKABLE bool addConductor(int folioIndex,
+									  const QString &elementUuidA, int terminalIndexA,
+									  const QString &elementUuidB, int terminalIndexB);
+
+		// -- conductor properties, applied to the whole potential --
+		Q_INVOKABLE QStringList conductors(int folioIndex) const;
+		Q_INVOKABLE QString conductorProperty(int folioIndex, const QString &elementUuid,
+											  int terminalIndex, const QString &property) const;
+		Q_INVOKABLE bool setConductorProperty(int folioIndex, const QString &elementUuid,
+											  int terminalIndex, const QString &property,
+											  const QString &value);
+
+		// -- cross-references: master/slave and report links --
+		Q_INVOKABLE QString elementLinkType(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE QStringList linkedElements(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE bool linkElements(int folioIndexA, const QString &elementUuidA,
+									  int folioIndexB, const QString &elementUuidB);
+		Q_INVOKABLE bool unlinkElement(int folioIndex, const QString &elementUuid);
+
+		// -- independent text and drawing shapes --
+		Q_INVOKABLE QStringList texts(int folioIndex) const;
+		Q_INVOKABLE int addText(int folioIndex, const QString &text, double x, double y);
+		Q_INVOKABLE bool setTextContent(int folioIndex, int textIndex, const QString &text);
+		Q_INVOKABLE bool setTextColor(int folioIndex, int textIndex, const QString &color);
+		Q_INVOKABLE bool setTextRotation(int folioIndex, int textIndex, double angle);
+		Q_INVOKABLE bool deleteText(int folioIndex, int textIndex);
+
+		Q_INVOKABLE QStringList shapes(int folioIndex) const;
+		Q_INVOKABLE int addShape(int folioIndex, const QString &type,
+								 double x1, double y1, double x2, double y2);
+		Q_INVOKABLE bool deleteShape(int folioIndex, int shapeIndex);
+
+		// -- query the project database --
+		Q_INVOKABLE QStringList tables() const;
+		Q_INVOKABLE QVariantList query(const QString &sql);
+		Q_INVOKABLE QString queryError() const;
+
+		// -- folios --
+		Q_INVOKABLE int addFolio();
+		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
+
 		Q_INVOKABLE bool undo();
 		Q_INVOKABLE bool redo();
 		Q_INVOKABLE bool canUndo() const;
@@ -148,9 +286,19 @@ class QetScriptApi : public QObject
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
+		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
+							   const QString &caller);
+		Conductor *findConductor(int folioIndex, const QString &elementUuid, int terminalIndex,
+								 const QString &caller);
+		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;
+		QList<QetShapeItem *> sortedShapes(int folioIndex) const;
+		IndependentTextItem *findText(int folioIndex, int textIndex, const QString &caller);
+		bool setInfoKey(int folioIndex, const QString &elementUuid,
+						const QString &key, const QString &value, const QString &caller);
 
 		QETProject *m_project;
 		DiagramView *m_view;
+		QString m_query_error;
 };
 
 #endif // QET_SCRIPT_API_H

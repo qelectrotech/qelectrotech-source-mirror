@@ -38,10 +38,11 @@ class ConductorCreator
 	public:
 		ConductorCreator(Diagram *d, QList<Terminal *> terminals_list);
 		static void create(Diagram *d, const QPolygonF &polygon);
-		
+		static bool needsPotentialChoice(const QList<Terminal *> &terminals_list);
+
 	private:
+		static QList<Conductor *> existingPotential(const QList<Terminal *> &terminals_list);
 		bool setUpPropertieToUse();
-		QList<Conductor *> existingPotential();
 		Terminal *hubTerminal();
 		
 		
