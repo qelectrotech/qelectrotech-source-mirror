@@ -31,6 +31,7 @@
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
 #include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
@@ -54,6 +55,9 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QFileInfo>
+#include <QImage>
+#include <QPixmap>
 #include <QTextStream>
 #include <QUndoCommand>
 
@@ -1732,6 +1736,144 @@ bool QetScriptApi::useConductorAutoNum(int folioIndex, const QString &name)
 	}
 	diagrams.at(folioIndex)->setConductorsAutonumName(name);
 	m_project->setCurrentConductorAutoNum(name);
+	return true;
+}
+
+QList<DiagramImageItem *> QetScriptApi::sortedImages(int folioIndex) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	DiagramContent content(diagrams.at(folioIndex), false);
+	return sortedByPosition(content.m_images);
+}
+
+QStringList QetScriptApi::images(int folioIndex) const
+{
+	QStringList out;
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	for (int i = 0 ; i < list.count() ; ++i)
+	{
+		DiagramImageItem *item = list.at(i);
+		const QPixmap px = item->pixmap();
+		const QPointF at = item->sceneBoundingRect().topLeft();
+		out << QStringLiteral("%1: %2x%3 px at (%4, %5) scale=%6 rotation=%7")
+				.arg(i).arg(px.width()).arg(px.height()).arg(at.x()).arg(at.y())
+				.arg(item->scaleFactorX()).arg(item->rotationAngle());
+	}
+	return out;
+}
+
+/**
+	@brief QetScriptApi::addImage
+	Place a picture from a file, as the "add image" tool does after its file
+	dialog. The pixels are copied into the project (DiagramImageItem::toXml
+	writes them inline), so the file need not exist afterwards.
+	@return the image's index in images(), or -1
+*/
+int QetScriptApi::addImage(int folioIndex, const QString &filePath, double x, double y)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addImage: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
+
+	const QFileInfo info(filePath);
+	if (!info.isFile()) {
+		log(QStringLiteral("qet.addImage: '%1' is not a file").arg(filePath));
+		return -1;
+	}
+	constexpr qint64 max_bytes = 10LL * 1024 * 1024;
+	if (info.size() > max_bytes) {
+		log(QStringLiteral("qet.addImage: '%1' is %2 bytes; images are embedded in the project, "
+						   "so files over 10 MB are refused").arg(filePath).arg(info.size()));
+		return -1;
+	}
+	const QImage image(filePath);
+	if (image.isNull()) {
+		log(QStringLiteral("qet.addImage: '%1' could not be read as an image").arg(filePath));
+		return -1;
+	}
+
+	Diagram *diagram = diagrams.at(folioIndex);
+	auto *item = new DiagramImageItem(QPixmap::fromImage(image));
+	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
+	return sortedImages(folioIndex).indexOf(item);
+}
+
+bool QetScriptApi::setImageScale(int folioIndex, int imageIndex, double factor)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setImageScale: project is read-only"));
+		return false;
+	}
+	if (factor <= 0) {
+		log(QStringLiteral("qet.setImageScale: the factor must be positive"));
+		return false;
+	}
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) {
+		log(QStringLiteral("qet.setImageScale: folio %1 has %2 image(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(imageIndex));
+		return false;
+	}
+	DiagramImageItem *item = list.at(imageIndex);
+	if (item->scaleFactorX() == factor && item->scaleFactorY() == factor) return true;
+
+	// Both axes, one undo step: a script that scales an image means the
+	// image, not one axis of it.
+	m_project->undoStack()->beginMacro(QObject::tr("Redimensionner une image"));
+	m_project->undoStack()->push(new QPropertyUndoCommand(item, "scaleFactorX",
+								 QVariant(item->scaleFactorX()), QVariant(factor)));
+	m_project->undoStack()->push(new QPropertyUndoCommand(item, "scaleFactorY",
+								 QVariant(item->scaleFactorY()), QVariant(factor)));
+	m_project->undoStack()->endMacro();
+	return true;
+}
+
+bool QetScriptApi::setImageRotation(int folioIndex, int imageIndex, double angle)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setImageRotation: project is read-only"));
+		return false;
+	}
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) {
+		log(QStringLiteral("qet.setImageRotation: folio %1 has %2 image(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(imageIndex));
+		return false;
+	}
+	DiagramImageItem *item = list.at(imageIndex);
+	if (item->rotationAngle() == angle) return true;
+	auto *cmd = new QPropertyUndoCommand(item, "rotationAngle",
+										 QVariant(item->rotationAngle()), QVariant(angle));
+	cmd->setText(QObject::tr("Pivoter une image"));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.deleteImage: project is read-only"));
+		return false;
+	}
+	const QList<DiagramImageItem *> list = sortedImages(folioIndex);
+	if (imageIndex < 0 || imageIndex >= list.count()) {
+		log(QStringLiteral("qet.deleteImage: folio %1 has %2 image(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(imageIndex));
+		return false;
+	}
+	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	DiagramContent content;
+	content.m_images << list.at(imageIndex);
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
 	return true;
 }
 

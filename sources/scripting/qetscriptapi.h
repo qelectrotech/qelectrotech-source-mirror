@@ -30,6 +30,7 @@ class Terminal;
 class Conductor;
 class IndependentTextItem;
 class QetShapeItem;
+class DiagramImageItem;
 
 /**
 	@brief The QetScriptApi class
@@ -173,6 +174,14 @@ class QetShapeItem;
 	  because the application itself does it through direct project calls
 	  and only the counter advance is on the undo stack; the numbering
 	  actually applied to a conductor is.
+	- @b Images: place a picture from a file. The pixels are copied into
+	  the project, which stores them inline in the .qet -- the saved file
+	  does not refer to the original path, so it opens on another machine,
+	  and it grows by roughly the size of the image, which is why files
+	  over 10 MB are refused. Images are addressed by index in a
+	  position-sorted listing, like texts and shapes -- by the on-screen
+	  bounding box, so scaling or rotating an image, which turns about its
+	  centre, can change where it sorts. Re-list after either.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -309,6 +318,13 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool removeAutoNum(const QString &kind, const QString &name);
 		Q_INVOKABLE bool useConductorAutoNum(int folioIndex, const QString &name);
 
+		// -- images, embedded in the project --
+		Q_INVOKABLE QStringList images(int folioIndex) const;
+		Q_INVOKABLE int addImage(int folioIndex, const QString &filePath, double x, double y);
+		Q_INVOKABLE bool setImageScale(int folioIndex, int imageIndex, double factor);
+		Q_INVOKABLE bool setImageRotation(int folioIndex, int imageIndex, double angle);
+		Q_INVOKABLE bool deleteImage(int folioIndex, int imageIndex);
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
@@ -338,6 +354,7 @@ class QetScriptApi : public QObject
 								 const QString &caller);
 		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;
 		QList<QetShapeItem *> sortedShapes(int folioIndex) const;
+		QList<DiagramImageItem *> sortedImages(int folioIndex) const;
 		IndependentTextItem *findText(int folioIndex, int textIndex, const QString &caller);
 		bool setInfoKey(int folioIndex, const QString &elementUuid,
 						const QString &key, const QString &value, const QString &caller);
