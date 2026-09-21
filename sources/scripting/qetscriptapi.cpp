@@ -41,6 +41,7 @@
 #include "../TerminalStrip/terminalstrip.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
+#include "../borderproperties.h"
 #include "../diagramcommands.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetgraphicsitem/terminalelement.h"
@@ -2281,6 +2282,100 @@ QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringLis
 		created << copies_sorted.at(sources_sorted.indexOf(source_element))->uuid().toString();
 	}
 	return created;
+}
+
+bool QetScriptApi::setProjectTitle(const QString &title)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setProjectTitle: project is read-only"));
+		return false;
+	}
+	m_project->setTitle(title);
+	return m_project->title() == title;
+}
+
+namespace {
+const QStringList &folioBorderNames()
+{
+	static const QStringList n{QStringLiteral("columns"), QStringLiteral("column-width"),
+		QStringLiteral("display-columns"), QStringLiteral("rows"), QStringLiteral("row-height"),
+		QStringLiteral("display-rows")};
+	return n;
+}
+} // namespace
+
+QString QetScriptApi::folioBorder(int folioIndex, const QString &property) const
+{
+	if (!m_project) return QString();
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
+	const BorderProperties b = diagrams.at(folioIndex)->border_and_titleblock.exportBorder();
+	if (property == QLatin1String("columns"))         return QString::number(b.columns_count);
+	if (property == QLatin1String("column-width"))    return QString::number(b.columns_width);
+	if (property == QLatin1String("display-columns")) return b.display_columns ? QStringLiteral("true") : QStringLiteral("false");
+	if (property == QLatin1String("rows"))            return QString::number(b.rows_count);
+	if (property == QLatin1String("row-height"))      return QString::number(b.rows_height);
+	if (property == QLatin1String("display-rows"))    return b.display_rows ? QStringLiteral("true") : QStringLiteral("false");
+	return QString();
+}
+
+/**
+	@brief QetScriptApi::setFolioBorder
+	Change one field of a folio's frame through ChangeBorderCommand, as the
+	folio properties panel does. Counts are whole numbers from 1 to 99 and
+	sizes are from 1 to 1000. The panel's own upper limits are 99 and 1000;
+	its lower limit is 0, which is deliberately not offered -- a grid with
+	no columns, or columns of no width, has no use here and 0 was not
+	tested, so it is left refused rather than assumed safe. The extremes
+	that are offered (99 x 99 cells, widths from 1 to 1000) were exported to
+	PNG and did not hang or crash.
+*/
+bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("setFolioBorder");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!folioBorderNames().contains(property)) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+			.arg(caller, property, folioBorderNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+	Diagram *diagram = diagrams.at(folioIndex);
+
+	const BorderProperties old_b = diagram->border_and_titleblock.exportBorder();
+	BorderProperties new_b = old_b;
+	bool ok = false;
+	if (property == QLatin1String("columns") || property == QLatin1String("rows")) {
+		const int n = value.toInt(&ok);
+		if (!ok || n < 1 || n > 99) {
+			log(QStringLiteral("qet.%1: %2 must be a whole number from 1 to 99, not '%3'").arg(caller, property, value));
+			return false;
+		}
+		(property == QLatin1String("columns") ? new_b.columns_count : new_b.rows_count) = n;
+	} else if (property == QLatin1String("column-width") || property == QLatin1String("row-height")) {
+		const double d = value.toDouble(&ok);
+		if (!ok || d < 1 || d > 1000) {
+			log(QStringLiteral("qet.%1: %2 must be a number from 1 to 1000, not '%3'").arg(caller, property, value));
+			return false;
+		}
+		(property == QLatin1String("column-width") ? new_b.columns_width : new_b.rows_height) = d;
+	} else {
+		const QString v = value.toLower();
+		if (v != QLatin1String("true") && v != QLatin1String("false")) {
+			log(QStringLiteral("qet.%1: %2 is true or false, not '%3'").arg(caller, property, value));
+			return false;
+		}
+		(property == QLatin1String("display-columns") ? new_b.display_columns : new_b.display_rows) = (v == QLatin1String("true"));
+	}
+	if (new_b == old_b) return true;
+	m_project->undoStack()->push(new ChangeBorderCommand(diagram, old_b, new_b));
+	return true;
 }
 
 int QetScriptApi::addFolio()

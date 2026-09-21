@@ -203,6 +203,13 @@ class DynamicElementTextItem;
 	  cannot be told apart. A conductor is copied
 	  only if both its ends are among the copied elements. The previous
 	  selection is put back afterwards, since copying works by selecting.
+	- @b Project title and folio frame: setProjectTitle(), and the grid that
+	  frames each folio -- columns and rows, their size, and whether the
+	  headers show (columns, column-width, display-columns, rows, row-height,
+	  display-rows) -- through ChangeBorderCommand. These are the six fields
+	  the folio properties panel offers; the title block's header sizes,
+	  which it does not, are left alone. Changing the project title is not
+	  undoable: the application sets it directly too.
 	- @b Images: place a picture from a file. The pixels are copied into
 	  the project, which stores them inline in the .qet -- the saved file
 	  does not refer to the original path, so it opens on another machine,
@@ -397,6 +404,11 @@ class QetScriptApi : public QObject
 		// -- copy elements (with the conductors between them) to a position --
 		Q_INVOKABLE QStringList duplicateElements(int fromFolioIndex, const QStringList &elementUuids,
 												  int toFolioIndex, double x, double y);
+
+		// -- the project title, and each folio's frame (grid of columns and rows) --
+		Q_INVOKABLE bool setProjectTitle(const QString &title);
+		Q_INVOKABLE QString folioBorder(int folioIndex, const QString &property) const;
+		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
 
 		// -- folios --
 		Q_INVOKABLE int addFolio();
