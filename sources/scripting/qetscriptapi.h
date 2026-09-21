@@ -94,7 +94,9 @@ class DiagramImageItem;
 
 	  Terminals are addressed by their @b index in Element::terminals(),
 	  not by uuid, and elementTerminals() prints that indexing so a script
-	  can see what it is about to wire. Terminal uuids look like the
+	  can see what it is about to wire. The index is the terminal's place
+	  in the element's own top-to-bottom, left-to-right ordering, not the
+	  order its definition file lists them. Terminal uuids look like the
 	  obvious key and are not one: Terminal::uuid() is a property of the
 	  catalog .elmt definition, empty for most of the installed base and,
 	  where present, identical across every instance of that element -- so

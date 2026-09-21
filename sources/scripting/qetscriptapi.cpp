@@ -680,9 +680,18 @@ QString QetScriptApi::elementName(int folioIndex, const QString &elementUuid) co
 	base, and where it is not, every instance of that same element carries
 	the same one -- two coils of one type placed side by side have
 	byte-identical terminal uuids, which is plainly visible in the saved
-	file of any project written through this API. The order of
-	Element::terminals() also comes from the definition, but it is at least
-	unambiguous within the element the caller has already named by uuid.
+	file of any project written through this API.
+
+	The index is the terminal's place in Element::terminals(), and that is
+	@b not the order the .elmt lists them in. Element::parseTerminal()
+	re-sorts the list on every insertion, top to bottom and then left to
+	right on each terminal's local position, so index 0 is the topmost
+	terminal. bobine_ka_a_remanence.elmt writes A2 (y=20) before A1 (y=-20)
+	and index 0 is A1. Of the 837 shipped elements whose terminals all have
+	distinct names, 619 list them in a different order than this. Two
+	terminals at the same point tie, and the sort is not stable, so which
+	of those is which is undefined -- read this listing rather than
+	assuming.
 */
 QStringList QetScriptApi::elementTerminals(int folioIndex, const QString &elementUuid) const
 {
