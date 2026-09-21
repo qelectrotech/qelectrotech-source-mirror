@@ -126,7 +126,11 @@ class QetShapeItem;
 	  its circuit -- a free-standing note, a line, a rectangle, an ellipse
 	  -- added with the same AddGraphicsObjectCommand the corresponding GUI
 	  tools use, and changed through the plainText/color/rotation
-	  properties those items already publish.
+	  properties those items already publish. A shape's look is set with
+	  setShapeProperty(): color and fill (a colour name, or "none" for no
+	  fill), width, line-style (solid, dashed, dotted, dashdot) and
+	  rotation, through the pen/brush/rotation properties the shape's own
+	  style editor changes.
 
 	  These are addressed by @b index into a listing sorted by position
 	  (top to bottom, then left to right), because unlike an element they
@@ -276,6 +280,9 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE int addShape(int folioIndex, const QString &type,
 								 double x1, double y1, double x2, double y2);
 		Q_INVOKABLE bool deleteShape(int folioIndex, int shapeIndex);
+		Q_INVOKABLE QString shapeProperty(int folioIndex, int shapeIndex, const QString &property) const;
+		Q_INVOKABLE bool setShapeProperty(int folioIndex, int shapeIndex,
+										  const QString &property, const QString &value);
 
 		// -- query the project database --
 		Q_INVOKABLE QStringList tables() const;

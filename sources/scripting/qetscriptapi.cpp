@@ -1204,6 +1204,119 @@ int QetScriptApi::addShape(int folioIndex, const QString &type,
 	return sortedShapes(folioIndex).indexOf(shape);
 }
 
+namespace {
+const QStringList &shapePropertyNames()
+{
+	static const QStringList n{QStringLiteral("color"), QStringLiteral("fill"),
+		QStringLiteral("width"), QStringLiteral("line-style"), QStringLiteral("rotation")};
+	return n;
+}
+} // namespace
+
+QString QetScriptApi::shapeProperty(int folioIndex, int shapeIndex, const QString &property) const
+{
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) return QString();
+	QetShapeItem *shape = list.at(shapeIndex);
+	if (property == QLatin1String("color"))  return shape->pen().color().name();
+	if (property == QLatin1String("width"))  return QString::number(shape->pen().widthF());
+	if (property == QLatin1String("fill"))
+		return shape->brush().style() == Qt::NoBrush ? QStringLiteral("none") : shape->brush().color().name();
+	if (property == QLatin1String("rotation")) return QString::number(shape->rotation());
+	if (property == QLatin1String("line-style")) {
+		switch (shape->pen().style()) {
+			case Qt::DashLine:    return QStringLiteral("dashed");
+			case Qt::DotLine:     return QStringLiteral("dotted");
+			case Qt::DashDotLine: return QStringLiteral("dashdot");
+			default:              return QStringLiteral("solid");
+		}
+	}
+	return QString();
+}
+
+/**
+	@brief QetScriptApi::setShapeProperty
+	Change one aspect of a shape's look through QPropertyUndoCommand on the
+	"pen", "brush" or "rotation" property, the properties the shape's own
+	style editor publishes. Values are validated and refused rather than
+	stored: a colour that does not parse, a non-positive width, a line
+	style outside solid/dashed/dotted/dashdot.
+*/
+bool QetScriptApi::setShapeProperty(int folioIndex, int shapeIndex,
+									const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("setShapeProperty");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!shapePropertyNames().contains(property)) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+			.arg(caller, property, shapePropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) {
+		log(QStringLiteral("qet.%1: folio %2 has %3 shape(s), no index %4")
+			.arg(caller).arg(folioIndex).arg(list.count()).arg(shapeIndex));
+		return false;
+	}
+	QetShapeItem *shape = list.at(shapeIndex);
+
+	QString what;
+	QVariant old_value, new_value;
+	const char *qt_property = nullptr;
+	if (property == QLatin1String("color") || property == QLatin1String("width")
+		|| property == QLatin1String("line-style"))
+	{
+		QPen pen = shape->pen();
+		if (property == QLatin1String("color")) {
+			const QColor c(value);
+			if (!c.isValid()) { log(QStringLiteral("qet.%1: '%2' is not a valid colour").arg(caller, value)); return false; }
+			pen.setColor(c);
+		} else if (property == QLatin1String("width")) {
+			bool ok = false;
+			const double w = value.toDouble(&ok);
+			if (!ok || w <= 0) { log(QStringLiteral("qet.%1: '%2' is not a positive width").arg(caller, value)); return false; }
+			pen.setWidthF(w);
+		} else {
+			if (value == QLatin1String("solid"))        pen.setStyle(Qt::SolidLine);
+			else if (value == QLatin1String("dashed"))  pen.setStyle(Qt::DashLine);
+			else if (value == QLatin1String("dotted"))  pen.setStyle(Qt::DotLine);
+			else if (value == QLatin1String("dashdot")) pen.setStyle(Qt::DashDotLine);
+			else { log(QStringLiteral("qet.%1: unknown line-style '%2'").arg(caller, value)); return false; }
+		}
+		if (pen == shape->pen()) return true;
+		old_value = shape->pen(); new_value = pen; qt_property = "pen"; what = QObject::tr("Modifier le trait d'une forme");
+	}
+	else if (property == QLatin1String("fill"))
+	{
+		QBrush brush = shape->brush();
+		if (value == QLatin1String("none")) brush.setStyle(Qt::NoBrush);
+		else {
+			const QColor c(value);
+			if (!c.isValid()) { log(QStringLiteral("qet.%1: '%2' is not a valid colour").arg(caller, value)); return false; }
+			brush.setStyle(Qt::SolidPattern); brush.setColor(c);
+		}
+		if (brush == shape->brush()) return true;
+		old_value = shape->brush(); new_value = brush; qt_property = "brush"; what = QObject::tr("Modifier le remplissage d'une forme");
+	}
+	else
+	{
+		bool ok = false;
+		const double angle = value.toDouble(&ok);
+		if (!ok) { log(QStringLiteral("qet.%1: '%2' is not an angle").arg(caller, value)); return false; }
+		if (angle == shape->rotation()) return true;
+		old_value = shape->rotation(); new_value = angle; qt_property = "rotation"; what = QObject::tr("Pivoter une forme");
+	}
+
+	auto *cmd = new QPropertyUndoCommand(shape, qt_property, old_value, new_value);
+	cmd->setText(what);
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
 bool QetScriptApi::deleteShape(int folioIndex, int shapeIndex)
 {
 	if (!m_project) return false;
