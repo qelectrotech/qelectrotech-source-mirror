@@ -1289,9 +1289,15 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			QString new_label = element->actualLabel();
+			if (toPlainText() != new_label) {
+				setPlainText(new_label);
+			}
 		}
 		else if (m_text_from == CompositeText) {
+			// Use actualLabel() to ensure %{label} reflects the current
+			// resolved label (e.g. after a folio/page-number change)
+			dc.addValue(QStringLiteral("label"), element->actualLabel());
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}
