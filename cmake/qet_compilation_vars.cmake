@@ -707,6 +707,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.h
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.cpp
   ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
+  ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
+  ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp

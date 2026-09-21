@@ -505,7 +505,10 @@ void BorderTitleBlock::draw(QPainter *painter)
 {
 	//Set the QPainter
 	painter -> save();
-	QPen pen(Qt::black);
+		//Use a pen color that contrasts with the background
+	QColor border_color = Diagram::background_color.lightness() < 128
+			       ? QColor(Qt::white) : QColor(Qt::black);
+	QPen pen(border_color);
 	painter -> setPen(pen);
 	painter -> setBrush(Qt::NoBrush);
 

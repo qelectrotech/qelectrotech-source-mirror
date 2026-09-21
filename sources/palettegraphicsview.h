@@ -63,6 +63,9 @@ class PaletteGraphicsView : public QGraphicsView
 
 		bool invertsLightness() const;
 
+		static void setCustomBackgroundColor(bool custom) { s_custom_bg = custom; }
+		static bool customBackgroundColor() { return s_custom_bg; }
+
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
 		void paintEvent(QPaintEvent *event) override;
@@ -90,6 +93,7 @@ class PaletteGraphicsView : public QGraphicsView
 		QPainter m_buffer_painter;
 		/// True while paintEvent() paints for an inverted display.
 		bool m_inverting = false;
+		static inline bool s_custom_bg = false;
 };
 
 #endif
