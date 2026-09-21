@@ -31,6 +31,7 @@ class Conductor;
 class IndependentTextItem;
 class QetShapeItem;
 class DiagramImageItem;
+class DynamicElementTextItem;
 
 /**
 	@brief The QetScriptApi class
@@ -184,6 +185,32 @@ class DiagramImageItem;
 	  position-sorted listing, like texts and shapes -- by the on-screen
 	  bounding box, so scaling or rotating an image, which turns about its
 	  centre, can change where it sorts. Re-list after either.
+	- @b Element @b texts: the text fields drawn on a symbol -- its label,
+	  the names beside its terminals, any value the definition placed there.
+	  A symbol arrives with the fields its definition gives it; setElementLabel()
+	  fills the value one of them shows, and these methods control the fields
+	  themselves: where each sits, its size, whether it draws a frame, what it
+	  shows, and adding or deleting one. Addressed by index in the element's
+	  own list, which follows the definition's order and shifts when one is
+	  deleted -- and undoing a deletion puts the field back at the end, so
+	  list again after either.
+
+	  Two things called text, which differ for a field bound to an
+	  information key: the @b "text" property is the field's stored string,
+	  which for an information-bound field is an unused placeholder (empty,
+	  or "Texte" once one has been added), and @b "shows" is what is drawn,
+	  which follows the element's information straight away -- compared
+	  against elementInfo() at seven points across relabel, rebinding,
+	  setting and undo, with no difference. Read "shows".
+
+	  Consecutive setElementInfo()/setElementLabel() calls on one element
+	  merge into a single undo step, as ChangeElementInformationCommand
+	  does, so one undo can revert several.
+
+	  A field's @b source is "text" (a fixed string), "info" (the value of one
+	  of the element's information keys, so it follows setElementInfo() and
+	  setElementLabel()) or "composite" (a formula over several). Position is in
+	  the element's own coordinates, not the folio's.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -327,6 +354,18 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setImageRotation(int folioIndex, int imageIndex, double angle);
 		Q_INVOKABLE bool deleteImage(int folioIndex, int imageIndex);
 
+		// -- the text fields shown on a symbol (label, terminal names, ...) --
+		Q_INVOKABLE QStringList elementTexts(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE int addElementText(int folioIndex, const QString &elementUuid,
+									   const QString &source, const QString &value,
+									   double x, double y);
+		Q_INVOKABLE bool setElementTextProperty(int folioIndex, const QString &elementUuid,
+												int textIndex, const QString &property,
+												const QString &value);
+		Q_INVOKABLE QString elementTextProperty(int folioIndex, const QString &elementUuid,
+												int textIndex, const QString &property) const;
+		Q_INVOKABLE bool deleteElementText(int folioIndex, const QString &elementUuid, int textIndex);
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
@@ -357,6 +396,8 @@ class QetScriptApi : public QObject
 		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;
 		QList<QetShapeItem *> sortedShapes(int folioIndex) const;
 		QList<DiagramImageItem *> sortedImages(int folioIndex) const;
+		DynamicElementTextItem *findElementText(int folioIndex, const QString &elementUuid,
+												int textIndex, const QString &caller) const;
 		IndependentTextItem *findText(int folioIndex, int textIndex, const QString &caller);
 		bool setInfoKey(int folioIndex, const QString &elementUuid,
 						const QString &key, const QString &value, const QString &caller);

@@ -32,6 +32,7 @@
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
+#include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
 #include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
@@ -45,6 +46,7 @@
 #include "../qetinformation.h"
 #include "../titleblockproperties.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
+#include "../undocommand/addelementtextcommand.h"
 #include "../undocommand/changeelementinformationcommand.h"
 #include "../undocommand/changetitleblockcommand.h"
 #include "../undocommand/deleteqgraphicsitemcommand.h"
@@ -56,6 +58,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QFileInfo>
+#include <QFont>
 #include <QImage>
 #include <QPixmap>
 #include <QTextStream>
@@ -1884,6 +1887,230 @@ bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 	Diagram *diagram = m_project->diagrams().at(folioIndex);
 	DiagramContent content;
 	content.m_images << list.at(imageIndex);
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
+}
+
+namespace {
+QString textSourceName(DynamicElementTextItem::TextFrom from)
+{
+	switch (from) {
+		case DynamicElementTextItem::ElementInfo:   return QStringLiteral("info");
+		case DynamicElementTextItem::CompositeText: return QStringLiteral("composite");
+		default:                                    return QStringLiteral("text");
+	}
+}
+
+const QStringList &elementTextPropertyNames()
+{
+	static const QStringList n{QStringLiteral("text"), QStringLiteral("source"), QStringLiteral("info"),
+		QStringLiteral("composite"), QStringLiteral("frame"), QStringLiteral("size"),
+		QStringLiteral("x"), QStringLiteral("y"), QStringLiteral("rotation"), QStringLiteral("width")};
+	return n;
+}
+} // namespace
+
+DynamicElementTextItem *QetScriptApi::findElementText(int folioIndex, const QString &elementUuid,
+													  int textIndex, const QString &caller) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return nullptr;
+	const QList<DynamicElementTextItem *> list = element->dynamicTextItems();
+	if (textIndex < 0 || textIndex >= list.count()) {
+		const_cast<QetScriptApi *>(this)->log(
+			QStringLiteral("qet.%1: %2 has %3 text field(s), no index %4")
+				.arg(caller, element->name()).arg(list.count()).arg(textIndex));
+		return nullptr;
+	}
+	return list.at(textIndex);
+}
+
+QStringList QetScriptApi::elementTexts(int folioIndex, const QString &elementUuid) const
+{
+	QStringList out;
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return out;
+	const QList<DynamicElementTextItem *> list = element->dynamicTextItems();
+	for (int i = 0 ; i < list.count() ; ++i)
+	{
+		DynamicElementTextItem *t = list.at(i);
+		const QString source = textSourceName(t->textFrom());
+		QString what;
+		if (t->textFrom() == DynamicElementTextItem::ElementInfo) what = QStringLiteral(" info='%1'").arg(t->infoName());
+		else if (t->textFrom() == DynamicElementTextItem::CompositeText) what = QStringLiteral(" composite='%1'").arg(t->compositeText());
+		out << QStringLiteral("%1: source=%2%3 shows='%4' at (%5, %6) size=%7")
+				.arg(i).arg(source, what, t->toPlainText())
+				.arg(t->pos().x()).arg(t->pos().y()).arg(t->font().pointSizeF());
+	}
+	return out;
+}
+
+QString QetScriptApi::elementTextProperty(int folioIndex, const QString &elementUuid,
+										  int textIndex, const QString &property) const
+{
+	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex,
+												QStringLiteral("elementTextProperty"));
+	if (!t) return QString();
+	if (property == QLatin1String("text"))      return t->text();
+	if (property == QLatin1String("shows"))     return t->toPlainText();
+	if (property == QLatin1String("source"))    return textSourceName(t->textFrom());
+	if (property == QLatin1String("info"))      return t->infoName();
+	if (property == QLatin1String("composite")) return t->compositeText();
+	if (property == QLatin1String("frame"))     return t->frame() ? QStringLiteral("true") : QStringLiteral("false");
+	if (property == QLatin1String("size"))      return QString::number(t->font().pointSizeF());
+	if (property == QLatin1String("x"))         return QString::number(t->pos().x());
+	if (property == QLatin1String("y"))         return QString::number(t->pos().y());
+	if (property == QLatin1String("rotation"))  return QString::number(t->rotation());
+	if (property == QLatin1String("width"))     return QString::number(t->textWidth());
+	return QString();
+}
+
+/**
+	@brief QetScriptApi::addElementText
+	Add a text field to a symbol, through AddElementTextCommand as the
+	element-texts editor does.
+	@param source "text" (value is the string shown), "info" (value is an
+	information key such as "label", and the field then follows that key) or
+	"composite" (value is a formula)
+	@return the field's index in elementTexts(), or -1
+*/
+int QetScriptApi::addElementText(int folioIndex, const QString &elementUuid,
+								 const QString &source, const QString &value,
+								 double x, double y)
+{
+	if (!m_project) return -1;
+	const QString caller = QStringLiteral("addElementText");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return -1;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return -1;
+
+	auto *item = new DynamicElementTextItem(element);
+	if (source == QLatin1String("text")) {
+		item->setTextFrom(DynamicElementTextItem::UserText);
+		item->setText(value);
+	} else if (source == QLatin1String("info")) {
+		if (!QETInformation::elementInfoKeys().contains(value)) {
+			log(QStringLiteral("qet.%1: '%2' is not an element information key").arg(caller, value));
+			delete item;
+			return -1;
+		}
+		item->setTextFrom(DynamicElementTextItem::ElementInfo);
+		item->setInfoName(value);
+	} else if (source == QLatin1String("composite")) {
+		item->setTextFrom(DynamicElementTextItem::CompositeText);
+		item->setCompositeText(value);
+	} else {
+		log(QStringLiteral("qet.%1: unknown source '%2'; expected text, info or composite").arg(caller, source));
+		delete item;
+		return -1;
+	}
+	item->setPos(x, y);
+	m_project->undoStack()->push(new AddElementTextCommand(element, item));
+	return element->dynamicTextItems().indexOf(item);
+}
+
+/**
+	@brief QetScriptApi::setElementTextProperty
+	Change one aspect of a symbol's text field through QPropertyUndoCommand on
+	the item's own properties, the way the element-texts editor does.
+	Properties: text, source (text|info|composite), info, composite, frame
+	(true|false), size (points), x, y (in the element's coordinates),
+	rotation, width.
+*/
+bool QetScriptApi::setElementTextProperty(int folioIndex, const QString &elementUuid,
+										  int textIndex, const QString &property,
+										  const QString &value)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("setElementTextProperty");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!elementTextPropertyNames().contains(property)) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+			.arg(caller, property, elementTextPropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex, caller);
+	if (!t) return false;
+
+	auto number = [&](double &out, bool positive) {
+		bool ok = false;
+		out = value.toDouble(&ok);
+		if (!ok || (positive && out <= 0)) {
+			log(QStringLiteral("qet.%1: '%2' is not a valid %3").arg(caller, value, property));
+			return false;
+		}
+		return true;
+	};
+
+	const char *qt_property = nullptr;
+	QVariant old_value, new_value;
+	double d = 0;
+
+	if (property == QLatin1String("text"))            { qt_property = "text"; old_value = t->text(); new_value = value; }
+	else if (property == QLatin1String("info")) {
+		if (!QETInformation::elementInfoKeys().contains(value)) {
+			log(QStringLiteral("qet.%1: '%2' is not an element information key").arg(caller, value));
+			return false;
+		}
+		qt_property = "infoName"; old_value = t->infoName(); new_value = value;
+	}
+	else if (property == QLatin1String("composite"))  { qt_property = "compositeText"; old_value = t->compositeText(); new_value = value; }
+	else if (property == QLatin1String("source")) {
+		DynamicElementTextItem::TextFrom from;
+		if (value == QLatin1String("text"))           from = DynamicElementTextItem::UserText;
+		else if (value == QLatin1String("info"))      from = DynamicElementTextItem::ElementInfo;
+		else if (value == QLatin1String("composite")) from = DynamicElementTextItem::CompositeText;
+		else { log(QStringLiteral("qet.%1: unknown source '%2'").arg(caller, value)); return false; }
+		qt_property = "textFrom"; old_value = QVariant::fromValue(t->textFrom()); new_value = QVariant::fromValue(from);
+	}
+	else if (property == QLatin1String("frame")) {
+		const QString v = value.toLower();
+		if (v != QLatin1String("true") && v != QLatin1String("false")) {
+			log(QStringLiteral("qet.%1: frame is true or false, not '%2'").arg(caller, value));
+			return false;
+		}
+		qt_property = "frame"; old_value = t->frame(); new_value = (v == QLatin1String("true"));
+	}
+	else if (property == QLatin1String("size")) {
+		if (!number(d, true)) return false;
+		QFont f = t->font(); f.setPointSizeF(d);
+		qt_property = "font"; old_value = t->font(); new_value = f;
+	}
+	else if (property == QLatin1String("x") || property == QLatin1String("y")) {
+		if (!number(d, false)) return false;
+		QPointF p = t->pos();
+		(property == QLatin1String("x") ? p.rx() : p.ry()) = d;
+		qt_property = "pos"; old_value = t->pos(); new_value = p;
+	}
+	else if (property == QLatin1String("rotation")) { if (!number(d, false)) return false; qt_property = "rotation"; old_value = t->rotation(); new_value = d; }
+	else { if (!number(d, false)) return false; qt_property = "textWidth"; old_value = t->textWidth(); new_value = d; }
+
+	if (old_value == new_value) return true;
+	auto *cmd = new QPropertyUndoCommand(t, qt_property, old_value, new_value);
+	cmd->setText(QObject::tr("Modifier un texte d'élément"));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+bool QetScriptApi::deleteElementText(int folioIndex, const QString &elementUuid, int textIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.deleteElementText: project is read-only"));
+		return false;
+	}
+	DynamicElementTextItem *t = findElementText(folioIndex, elementUuid, textIndex,
+												QStringLiteral("deleteElementText"));
+	if (!t) return false;
+	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	DiagramContent content;
+	content.m_element_texts << t;
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
 	return true;
 }
