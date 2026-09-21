@@ -1494,7 +1494,9 @@ QString *titleBlockField(TitleBlockProperties &p, const QString &name)
 	if (name == QLatin1String("plant"))     return &p.plant;
 	if (name == QLatin1String("locmach"))   return &p.locmach;
 	if (name == QLatin1String("indexrev"))  return &p.indexrev;
-	if (name == QLatin1String("version"))   return &p.version;
+	// Not "version": TitleBlockProperties::version is the file-format stamp
+	// QElectroTech writes on every save, so a value set here reports success
+	// and is overwritten -- measured: set "V9-USER", read back "0.200.1-dev".
 	if (name == QLatin1String("folio"))     return &p.folio;
 	return nullptr;
 }
@@ -1502,7 +1504,7 @@ const QStringList &titleBlockFieldNames()
 {
 	static const QStringList n{QStringLiteral("title"), QStringLiteral("author"),
 		QStringLiteral("filename"), QStringLiteral("plant"), QStringLiteral("locmach"),
-		QStringLiteral("indexrev"), QStringLiteral("version"), QStringLiteral("folio")};
+		QStringLiteral("indexrev"), QStringLiteral("folio")};
 	return n;
 }
 } // namespace
@@ -1520,7 +1522,7 @@ QString QetScriptApi::folioProperty(int folioIndex, const QString &property) con
 /**
 	@brief QetScriptApi::setFolioProperty
 	Set one text field of a folio's title block (title, author, filename,
-	plant, locmach, indexrev, version, folio) via ChangeTitleBlockCommand,
+	plant, locmach, indexrev, folio) via ChangeTitleBlockCommand,
 	like setFolioTitle() which this generalises. The date and the template are
 	not offered: the date has a use-current-date mode that a plain string
 	cannot express honestly.
