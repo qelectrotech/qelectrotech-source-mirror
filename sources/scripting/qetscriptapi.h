@@ -27,6 +27,8 @@ class DiagramView;
 class Element;
 class Terminal;
 class Conductor;
+class IndependentTextItem;
+class QetShapeItem;
 
 /**
 	@brief The QetScriptApi class
@@ -116,6 +118,21 @@ class Conductor;
 	  conductor is ambiguous and is refused rather than guessed at -- which
 	  in practice means a potential is addressed from one of its leaf
 	  terminals, not from the hub several conductors meet at.
+	- @b Text and @b shapes: the drawing furniture a folio carries beside
+	  its circuit -- a free-standing note, a line, a rectangle, an ellipse
+	  -- added with the same AddGraphicsObjectCommand the corresponding GUI
+	  tools use, and changed through the plainText/color/rotation
+	  properties those items already publish.
+
+	  These are addressed by @b index into a listing sorted by position
+	  (top to bottom, then left to right), because unlike an element they
+	  carry no uuid and unlike a conductor they have no terminal to be
+	  named by. Position is the only identity they have, and it persists,
+	  so the ordering is the same after a save and reload -- verified
+	  against exactly that. What it is @b not stable against is adding or
+	  deleting one: indexes after the affected position shift, the way a
+	  list's do. Call texts() or shapes() again rather than holding an
+	  index across an edit that adds or removes one.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -211,6 +228,19 @@ class QetScriptApi : public QObject
 									  int folioIndexB, const QString &elementUuidB);
 		Q_INVOKABLE bool unlinkElement(int folioIndex, const QString &elementUuid);
 
+		// -- independent text and drawing shapes --
+		Q_INVOKABLE QStringList texts(int folioIndex) const;
+		Q_INVOKABLE int addText(int folioIndex, const QString &text, double x, double y);
+		Q_INVOKABLE bool setTextContent(int folioIndex, int textIndex, const QString &text);
+		Q_INVOKABLE bool setTextColor(int folioIndex, int textIndex, const QString &color);
+		Q_INVOKABLE bool setTextRotation(int folioIndex, int textIndex, double angle);
+		Q_INVOKABLE bool deleteText(int folioIndex, int textIndex);
+
+		Q_INVOKABLE QStringList shapes(int folioIndex) const;
+		Q_INVOKABLE int addShape(int folioIndex, const QString &type,
+								 double x1, double y1, double x2, double y2);
+		Q_INVOKABLE bool deleteShape(int folioIndex, int shapeIndex);
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
@@ -238,6 +268,9 @@ class QetScriptApi : public QObject
 							   const QString &caller);
 		Conductor *findConductor(int folioIndex, const QString &elementUuid, int terminalIndex,
 								 const QString &caller);
+		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;
+		QList<QetShapeItem *> sortedShapes(int folioIndex) const;
+		IndependentTextItem *findText(int folioIndex, int textIndex, const QString &caller);
 		bool setInfoKey(int folioIndex, const QString &elementUuid,
 						const QString &key, const QString &value, const QString &caller);
 

@@ -30,6 +30,8 @@
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetgraphicsitem/independenttextitem.h"
+#include "../qetgraphicsitem/qetshapeitem.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../titleblockproperties.h"
@@ -911,6 +913,255 @@ bool QetScriptApi::unlinkElement(int folioIndex, const QString &elementUuid)
 	cmd->unlinkAll();
 	m_project->undoStack()->push(cmd);
 	return element->linkedElements().isEmpty();
+}
+
+namespace {
+
+/**
+	Reading order for items that have no identity but their position:
+	top to bottom, then left to right.
+
+	On sceneBoundingRect(), not pos(): a QetShapeItem keeps its geometry in
+	its line/rect/polygon, and its pos() stays at the origin, so three
+	shapes drawn in different places all sort as (0, 0) and the ordering
+	collapses -- which is exactly what the first version of this did, and
+	it made every shape index refer to whichever one the set happened to
+	yield first. The scene bounding rect reflects where the item actually
+	is for both kinds.
+*/
+template <typename T>
+QList<T *> sortedByPosition(const QSet<T *> &items)
+{
+	QList<T *> list(items.cbegin(), items.cend());
+	std::sort(list.begin(), list.end(), [](T *a, T *b) {
+		const QPointF pa = a->sceneBoundingRect().topLeft();
+		const QPointF pb = b->sceneBoundingRect().topLeft();
+		if (pa.y() != pb.y()) return pa.y() < pb.y();
+		if (pa.x() != pb.x()) return pa.x() < pb.x();
+		// Two items genuinely at the same point still need a total order,
+		// or std::sort's result depends on the set's iteration order.
+		return a < b;
+	});
+	return list;
+}
+
+} // namespace
+
+QList<IndependentTextItem *> QetScriptApi::sortedTexts(int folioIndex) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	DiagramContent content(diagrams.at(folioIndex), false);
+	return sortedByPosition(content.m_text_fields);
+}
+
+QList<QetShapeItem *> QetScriptApi::sortedShapes(int folioIndex) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	DiagramContent content(diagrams.at(folioIndex), false);
+	return sortedByPosition(content.m_shapes);
+}
+
+IndependentTextItem *QetScriptApi::findText(int folioIndex, int textIndex, const QString &caller)
+{
+	const QList<IndependentTextItem *> list = sortedTexts(folioIndex);
+	if (textIndex < 0 || textIndex >= list.count()) {
+		log(QStringLiteral("qet.%1: folio %2 has %3 independent text(s), no index %4")
+			.arg(caller).arg(folioIndex).arg(list.count()).arg(textIndex));
+		return nullptr;
+	}
+	return list.at(textIndex);
+}
+
+QStringList QetScriptApi::texts(int folioIndex) const
+{
+	QStringList out;
+	const QList<IndependentTextItem *> list = sortedTexts(folioIndex);
+	for (int i = 0 ; i < list.count() ; ++i)
+	{
+		IndependentTextItem *t = list.at(i);
+		const QPointF at = t->sceneBoundingRect().topLeft();
+		out << QStringLiteral("%1: '%2' at (%3, %4)")
+				.arg(i)
+				.arg(t->toPlainText())
+				.arg(at.x())
+				.arg(at.y());
+	}
+	return out;
+}
+
+/**
+	@brief QetScriptApi::addText
+	Place a free-standing text, as the "add text" tool does.
+	@return its index in texts(), or -1
+*/
+int QetScriptApi::addText(int folioIndex, const QString &text, double x, double y)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addText: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
+	Diagram *diagram = diagrams.at(folioIndex);
+
+	auto *item = new IndependentTextItem();
+	item->setPlainText(text);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
+	return sortedTexts(folioIndex).indexOf(item);
+}
+
+bool QetScriptApi::setTextContent(int folioIndex, int textIndex, const QString &text)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setTextContent: project is read-only"));
+		return false;
+	}
+	IndependentTextItem *item = findText(folioIndex, textIndex, QStringLiteral("setTextContent"));
+	if (!item) return false;
+	if (item->toPlainText() == text) return true;
+
+	auto *cmd = new QPropertyUndoCommand(item, "plainText",
+										 QVariant(item->toPlainText()), QVariant(text));
+	cmd->setText(QObject::tr("Modifier un texte"));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+bool QetScriptApi::setTextColor(int folioIndex, int textIndex, const QString &color)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setTextColor: project is read-only"));
+		return false;
+	}
+	const QColor new_color(color);
+	if (!new_color.isValid()) {
+		log(QStringLiteral("qet.setTextColor: '%1' is not a valid colour").arg(color));
+		return false;
+	}
+	IndependentTextItem *item = findText(folioIndex, textIndex, QStringLiteral("setTextColor"));
+	if (!item) return false;
+	if (item->color() == new_color) return true;
+
+	auto *cmd = new QPropertyUndoCommand(item, "color",
+										 QVariant(item->color()), QVariant(new_color));
+	cmd->setText(QObject::tr("Modifier la couleur d'un texte"));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+bool QetScriptApi::setTextRotation(int folioIndex, int textIndex, double angle)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setTextRotation: project is read-only"));
+		return false;
+	}
+	IndependentTextItem *item = findText(folioIndex, textIndex, QStringLiteral("setTextRotation"));
+	if (!item) return false;
+
+	auto *cmd = new QPropertyUndoCommand(item, "rotation",
+										 QVariant(item->rotation()),
+										 QVariant(item->rotation() + angle));
+	cmd->setText(QObject::tr("Pivoter un texte"));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+bool QetScriptApi::deleteText(int folioIndex, int textIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.deleteText: project is read-only"));
+		return false;
+	}
+	IndependentTextItem *item = findText(folioIndex, textIndex, QStringLiteral("deleteText"));
+	if (!item) return false;
+	Diagram *diagram = m_project->diagrams().at(folioIndex);
+
+	DiagramContent content;
+	content.m_text_fields << item;
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
+}
+
+QStringList QetScriptApi::shapes(int folioIndex) const
+{
+	QStringList out;
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	for (int i = 0 ; i < list.count() ; ++i)
+	{
+		QetShapeItem *shape = list.at(i);
+		const QRectF r = shape->sceneBoundingRect();
+		out << QStringLiteral("%1: %2 (%3, %4) to (%5, %6)")
+				.arg(i)
+				.arg(shape->name())
+				.arg(r.left()).arg(r.top()).arg(r.right()).arg(r.bottom());
+	}
+	return out;
+}
+
+/**
+	@brief QetScriptApi::addShape
+	Draw a line, rectangle, ellipse or polygon, as the shape tools do.
+	Path is deliberately absent: it is built by successive clicks and has
+	no two-point form to give here.
+	@return the shape's index in shapes(), or -1
+*/
+int QetScriptApi::addShape(int folioIndex, const QString &type,
+						   double x1, double y1, double x2, double y2)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addShape: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
+
+	QetShapeItem::ShapeType shape_type;
+	const QString t = type.toLower();
+	if (t == QLatin1String("line"))           shape_type = QetShapeItem::Line;
+	else if (t == QLatin1String("rectangle")) shape_type = QetShapeItem::Rectangle;
+	else if (t == QLatin1String("ellipse"))   shape_type = QetShapeItem::Ellipse;
+	else if (t == QLatin1String("polygon"))   shape_type = QetShapeItem::Polygon;
+	else {
+		log(QStringLiteral("qet.addShape: unknown shape '%1'; expected line, "
+						   "rectangle, ellipse or polygon").arg(type));
+		return -1;
+	}
+
+	Diagram *diagram = diagrams.at(folioIndex);
+	auto *shape = new QetShapeItem(QPointF(x1, y1), QPointF(x2, y2), shape_type);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(shape, diagram, QPointF(0, 0)));
+	return sortedShapes(folioIndex).indexOf(shape);
+}
+
+bool QetScriptApi::deleteShape(int folioIndex, int shapeIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.deleteShape: project is read-only"));
+		return false;
+	}
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) {
+		log(QStringLiteral("qet.deleteShape: folio %1 has %2 shape(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(shapeIndex));
+		return false;
+	}
+	Diagram *diagram = m_project->diagrams().at(folioIndex);
+
+	DiagramContent content;
+	content.m_shapes << list.at(shapeIndex);
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
 }
 
 int QetScriptApi::addFolio()
