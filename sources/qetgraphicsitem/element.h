@@ -255,6 +255,7 @@ class Element : public QetGraphicsItem
 				QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	protected:
 			//ATTRIBUTES related to linked element

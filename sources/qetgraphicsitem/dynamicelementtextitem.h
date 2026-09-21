@@ -121,6 +121,12 @@ class DynamicElementTextItem : public DiagramTextItem
 		void setRotationPointCenter(bool set);
 		bool rotationPointCenter() const;
 
+			//Called by Element::itemChange() when the PARENT's selection
+			//changes, so the parent can keep each of its texts' resize
+			//handles in sync with its own selection state. Public for that;
+			//see the .cpp for why it exists.
+		void refreshResizeHandlesVisibility();
+
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *event) override;

@@ -1665,6 +1665,31 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 }
 
 /**
+	@brief Element::itemChange
+	On ItemSelectedHasChanged, tell each of this element's own dynamic texts
+	to re-check whether its resize handles should be showing --
+	DynamicElementTextItem::refreshResizeHandlesVisibility() shows them when
+	either the text itself or its parent (this) is selected. An ordinary
+	click with no Shift selects the parent, not the text
+	(DynamicElementTextItem::mousePressEvent() forwards it), so without this
+	a plain click on a symbol never showed the resize handles this PR adds
+	to its texts (qelectrotech#591, reported by @arummler) -- only
+	Shift+click or a right-click's context menu did, since those are the
+	paths that leave the text itself selected.
+*/
+QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	if (change == QGraphicsItem::ItemSelectedHasChanged)
+	{
+		const QList<DynamicElementTextItem *> texts = dynamicTextItems();
+		for (DynamicElementTextItem *deti : texts) {
+			deti->refreshResizeHandlesVisibility();
+		}
+	}
+	return QetGraphicsItem::itemChange(change, value);
+}
+
+/**
 	@brief Element::setUpFormula
 	Set up the formula used to create the label of this element
 	@param code_letter : Q_UNUSED(code_letter)
