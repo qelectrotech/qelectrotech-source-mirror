@@ -21,6 +21,7 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
+#include <QVariantList>
 
 class QETProject;
 class DiagramView;
@@ -133,6 +134,22 @@ class QetShapeItem;
 	  deleting one: indexes after the affected position shift, the way a
 	  list's do. Call texts() or shapes() again rather than holding an
 	  index across an edit that adds or removes one.
+	- @b Querying the project database: run a read-only SELECT against the
+	  SQLite database QElectroTech builds from the project, and get rows
+	  back as objects. This is not a new door. QET already ships a
+	  "Requête SQL personnalisée" box in the element-query dialog where a
+	  user types arbitrary SQL, and it is guarded by the same
+	  projectDataBase::isReadOnlySelect() this calls through
+	  projectDataBase::newQuery(). A script gets what a user already has,
+	  under the same rule, and neither can write.
+
+	  What is worth knowing is what the database @b is: a cache, rebuilt
+	  from the XML on every load and never written to disk. The three
+	  views -- element_nomenclature_view, project_summary_view and
+	  wiring_list_view -- exist to be queried and are the surface to
+	  depend on. The underlying tables are how the cache happens to be
+	  arranged today, and a column may move. tables() lists both so a
+	  script can see what it is querying rather than guess.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -241,6 +258,11 @@ class QetScriptApi : public QObject
 								 double x1, double y1, double x2, double y2);
 		Q_INVOKABLE bool deleteShape(int folioIndex, int shapeIndex);
 
+		// -- query the project database --
+		Q_INVOKABLE QStringList tables() const;
+		Q_INVOKABLE QVariantList query(const QString &sql);
+		Q_INVOKABLE QString queryError() const;
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
@@ -276,6 +298,7 @@ class QetScriptApi : public QObject
 
 		QETProject *m_project;
 		DiagramView *m_view;
+		QString m_query_error;
 };
 
 #endif // QET_SCRIPT_API_H

@@ -27,6 +27,7 @@
 #include "../qet.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetmessagebox.h"
+#include "../dataBase/projectdatabase.h"
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
@@ -42,6 +43,9 @@
 #include "../undocommand/linkelementcommand.h"
 #include "../utils/conductorcreator.h"
 
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include <QTextStream>
 #include <QUndoCommand>
 
@@ -1162,6 +1166,95 @@ bool QetScriptApi::deleteShape(int folioIndex, int shapeIndex)
 	content.m_shapes << list.at(shapeIndex);
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
 	return true;
+}
+
+/**
+	@brief QetScriptApi::tables
+	The tables and views the project database holds, as "name (type)".
+
+	Worth reading before writing a query against them: the three *_view
+	entries are the queryable surface and are named for it; the tables are
+	how the cache is arranged today.
+*/
+QStringList QetScriptApi::tables() const
+{
+	QStringList list;
+	if (!m_project || !m_project->dataBase()) return list;
+
+	QSqlQuery q = m_project->dataBase()->newQuery(QStringLiteral(
+		"SELECT name, type FROM sqlite_master WHERE type IN ('table','view') "
+		"ORDER BY type, name"));
+	while (q.next()) {
+		list << QStringLiteral("%1 (%2)").arg(q.value(0).toString(), q.value(1).toString());
+	}
+	return list;
+}
+
+/**
+	@brief QetScriptApi::query
+	Run a read-only SELECT against the project database and return its rows
+	as objects, one property per column.
+
+	Goes through projectDataBase::newQuery(), which applies
+	isReadOnlySelect() itself -- the same rule, and the same rejection
+	message, that the "Requête SQL personnalisée" box in the element-query
+	dialog shows a user. Nothing here can write: a statement that is not a
+	single SELECT or WITH...SELECT is refused before it reaches SQLite.
+
+	No updateDB() first, deliberately. A script that has just edited
+	something is the expected caller, so querying a stale cache was the
+	obvious hazard -- but projectDataBase maintains itself incrementally
+	through addElement()/elementInfoChanged()/addConductor() and the rest,
+	which the undo commands behind every edit here already call. Tested
+	both ways on the cases most likely to be stale: an element added and
+	labelled, and a conductor property changed, each queried immediately
+	afterwards through both the table and the view. The counts are the
+	same with the rebuild and without it. Since updateDB() is a full
+	repopulation of every table, calling it per query would have been a
+	real cost for no observable benefit -- so it is not called, and this
+	note exists so it is not added back on the assumption that it must be
+	needed.
+
+	@return the rows; empty on refusal or SQL error, with queryError()
+	saying which. An empty result and a failure are not the same thing.
+*/
+QVariantList QetScriptApi::query(const QString &sql)
+{
+	m_query_error.clear();
+	QVariantList rows;
+	if (!m_project || !m_project->dataBase()) {
+		m_query_error = QStringLiteral("no project database");
+		return rows;
+	}
+
+	QString rejection;
+	QSqlQuery q = m_project->dataBase()->newQuery(sql, &rejection);
+	if (!rejection.isEmpty()) {
+		m_query_error = rejection;
+		log(QStringLiteral("qet.query: %1").arg(rejection));
+		return rows;
+	}
+	if (q.lastError().isValid()) {
+		m_query_error = q.lastError().text();
+		log(QStringLiteral("qet.query: %1").arg(m_query_error));
+		return rows;
+	}
+
+	const QSqlRecord record = q.record();
+	while (q.next())
+	{
+		QVariantMap row;
+		for (int i = 0 ; i < record.count() ; ++i) {
+			row.insert(record.fieldName(i), q.value(i));
+		}
+		rows << row;
+	}
+	return rows;
+}
+
+QString QetScriptApi::queryError() const
+{
+	return m_query_error;
 }
 
 int QetScriptApi::addFolio()
