@@ -25,6 +25,7 @@
 class QETProject;
 class DiagramView;
 class Element;
+class Terminal;
 
 /**
 	@brief The QetScriptApi class
@@ -65,12 +66,34 @@ class Element;
 	  QPropertyUndoCommand merges consecutive commands on the same
 	  object+property when their text() also matches
 	  (QPropertyUndoCommand::mergeWith(), pre-existing), and
-	  setElementPosition()/moveElement() always use the same text for a
-	  given element -- so several position changes to the same element in a
-	  row collapse into one undo step, the same way dragging an element
-	  does, not one step per call. Verified against exactly that: two
+	  setElementPosition()/moveElement()/rotateElement() always use the
+	  same text for a given element -- so several position changes, or
+	  several rotations, of the same element in a row collapse into one
+	  undo step, the same way dragging or repeatedly rotating an element
+	  does, not one step per call. setElementInfo()/setElementLabel()
+	  behave the same way for the same reason, through
+	  ChangeElementInformationCommand::mergeWith(). Verified against exactly that: two
 	  consecutive calls on one element, then undo/undo/redo/redo, land
 	  where a merge predicts, not where two independent steps would.
+	- @b Wiring, @b labelling and @b folios: create a conductor between two
+	  terminals (ConductorCreator, the same class the GUI's
+	  drag-a-rectangle-over-terminals path uses, so the result inherits an
+	  existing potential's properties and joins conductor auto-numbering),
+	  change an element's label or any other information key
+	  (ChangeElementInformationCommand, which also tells the project
+	  database what changed), add a folio (QETProject::addNewDiagram(),
+	  already undoable) and set its title (ChangeTitleBlockCommand). With
+	  addElement() these are what make a script able to draw rather than
+	  only rearrange: before them a script could place two symbols and had
+	  no way to connect them.
+
+	  Terminals are addressed by their @b index in Element::terminals(),
+	  not by uuid, and elementTerminals() prints that indexing so a script
+	  can see what it is about to wire. Terminal uuids look like the
+	  obvious key and are not one: Terminal::uuid() is a property of the
+	  catalog .elmt definition, empty for most of the installed base and,
+	  where present, identical across every instance of that element -- so
+	  it does not distinguish one placed coil's A1 from another's.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -87,7 +110,11 @@ class Element;
 	import-collision case that would otherwise reach
 	QETProject::importElement()'s own ImportElementDialog::exec() and
 	refuses instead, rather than let a plain QDialog (not routed through
-	QetMessageBox) block a script the same way.
+	QetMessageBox) block a script the same way. addConductor() declines the
+	same way, for the same reason, when the two terminals belong to two
+	different existing potentials and ConductorCreator would therefore ask
+	which one's properties to inherit -- measured: with that check removed,
+	exactly that call never returns.
 */
 class QetScriptApi : public QObject
 {
@@ -128,7 +155,29 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString addElement(int folioIndex, const QString &locationPath, double x, double y);
 		Q_INVOKABLE bool setElementPosition(int folioIndex, const QString &elementUuid, double x, double y);
 		Q_INVOKABLE bool moveElement(int folioIndex, const QString &elementUuid, double dx, double dy);
+		Q_INVOKABLE bool rotateElement(int folioIndex, const QString &elementUuid, double angle);
 		Q_INVOKABLE bool deleteElement(int folioIndex, const QString &elementUuid);
+
+		// -- address what is already there --
+		Q_INVOKABLE QStringList elementUuids(int folioIndex) const;
+		Q_INVOKABLE QString elementName(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE QStringList elementTerminals(int folioIndex, const QString &elementUuid) const;
+
+		// -- element information, through ChangeElementInformationCommand --
+		Q_INVOKABLE QString elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const;
+		Q_INVOKABLE bool setElementInfo(int folioIndex, const QString &elementUuid, const QString &key, const QString &value);
+		Q_INVOKABLE QString elementLabel(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE bool setElementLabel(int folioIndex, const QString &elementUuid, const QString &label);
+
+		// -- wire two terminals together --
+		Q_INVOKABLE bool addConductor(int folioIndex,
+									  const QString &elementUuidA, int terminalIndexA,
+									  const QString &elementUuidB, int terminalIndexB);
+
+		// -- folios --
+		Q_INVOKABLE int addFolio();
+		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
+
 		Q_INVOKABLE bool undo();
 		Q_INVOKABLE bool redo();
 		Q_INVOKABLE bool canUndo() const;
@@ -148,6 +197,10 @@ class QetScriptApi : public QObject
 	private:
 		bool runFlag(const QString &flag, const QStringList &args);
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
+		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
+							   const QString &caller);
+		bool setInfoKey(int folioIndex, const QString &elementUuid,
+						const QString &key, const QString &value, const QString &caller);
 
 		QETProject *m_project;
 		DiagramView *m_view;

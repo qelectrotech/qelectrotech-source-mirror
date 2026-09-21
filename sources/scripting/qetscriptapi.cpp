@@ -29,8 +29,14 @@
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
 #include "../qetresult.h"
+#include "../qetgraphicsitem/terminal.h"
+#include "../qetinformation.h"
+#include "../titleblockproperties.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
+#include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/changetitleblockcommand.h"
 #include "../undocommand/deleteqgraphicsitemcommand.h"
+#include "../utils/conductorcreator.h"
 
 #include <QTextStream>
 #include <QUndoCommand>
@@ -268,6 +274,48 @@ Element *QetScriptApi::findElement(int folioIndex, const QString &elementUuid) c
 	return nullptr;
 }
 
+Terminal *QetScriptApi::findTerminal(int folioIndex, const QString &elementUuid,
+									 int terminalIndex, const QString &caller)
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) {
+		log(QStringLiteral("qet.%1: no element %2 on folio %3").arg(caller, elementUuid).arg(folioIndex));
+		return nullptr;
+	}
+	const QList<Terminal *> terminals = element->terminals();
+	if (terminalIndex < 0 || terminalIndex >= terminals.count()) {
+		log(QStringLiteral("qet.%1: %2 has %3 terminal(s), no index %4")
+			.arg(caller, element->name()).arg(terminals.count()).arg(terminalIndex));
+		return nullptr;
+	}
+	return terminals.at(terminalIndex);
+}
+
+bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
+							  const QString &key, const QString &value, const QString &caller)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (key.isEmpty()) {
+		log(QStringLiteral("qet.%1: empty information key").arg(caller));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	const DiagramContext old_info = element->elementInformations();
+	if (old_info.value(key).toString() == value) return true; // nothing to push
+	DiagramContext new_info = old_info;
+	new_info.addValue(key, value);
+
+	auto *cmd = new ChangeElementInformationCommand(element, old_info, new_info);
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
 /**
 	@brief QetScriptApi::addElement
 	Place a new element on a folio, through the same AddGraphicsObjectCommand
@@ -414,6 +462,207 @@ bool QetScriptApi::deleteElement(int folioIndex, const QString &elementUuid)
 
 	auto *cmd = new DeleteQGraphicsItemCommand(diagram, content);
 	diagram->undoStack().push(cmd);
+	return true;
+}
+
+bool QetScriptApi::rotateElement(int folioIndex, const QString &elementUuid, double angle)
+{
+	if (m_project && m_project->isReadOnly()) {
+		log(QStringLiteral("qet.rotateElement: project is read-only"));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+
+	// The same property command RotateSelectionCommand pushes for an
+	// Element -- deliberately not RotateSelectionCommand itself, which
+	// works on diagram->selectedItems() and would mean quietly rewriting
+	// the user's selection to rotate one element by uuid. For a single
+	// element the two are mechanically identical: that class special-cases
+	// Element::Type to exactly this one command, and only adds a second,
+	// positional one when rotating a multi-item selection as a group.
+	auto *cmd = new QPropertyUndoCommand(element, "rotation",
+										 QVariant(element->rotation()),
+										 QVariant(element->rotation() + angle));
+	cmd->setText(QObject::tr("Pivoter %1").arg(element->name()));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+QStringList QetScriptApi::elementUuids(int folioIndex) const
+{
+	QStringList uuids;
+	if (!m_project) return uuids;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return uuids;
+	DiagramContent content(diagrams.at(folioIndex), false);
+	for (Element *elmt : std::as_const(content.m_elements)) {
+		uuids << elmt->uuid().toString();
+	}
+	return uuids;
+}
+
+QString QetScriptApi::elementName(int folioIndex, const QString &elementUuid) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	return element ? element->name() : QString();
+}
+
+/**
+	@brief QetScriptApi::elementTerminals
+	The element's terminals, in the order addConductor() indexes them: one
+	entry per terminal, "<index>: <name> (<n> conductor(s))". Descriptive
+	rather than structured because its only job is to let a script -- or a
+	human reading a script's output -- see which index is which before
+	wiring anything to it.
+
+	Indexes, not uuids, because a terminal uuid does not address a terminal
+	on a folio. Terminal::uuid() comes from the catalog .elmt definition
+	(see Terminal::stableUuid()), so it is empty for most of the installed
+	base, and where it is not, every instance of that same element carries
+	the same one -- two coils of one type placed side by side have
+	byte-identical terminal uuids, which is plainly visible in the saved
+	file of any project written through this API. The order of
+	Element::terminals() also comes from the definition, but it is at least
+	unambiguous within the element the caller has already named by uuid.
+*/
+QStringList QetScriptApi::elementTerminals(int folioIndex, const QString &elementUuid) const
+{
+	QStringList list;
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return list;
+	const QList<Terminal *> terminals = element->terminals();
+	for (int i = 0 ; i < terminals.count() ; ++i)
+	{
+		Terminal *t = terminals.at(i);
+		list << QStringLiteral("%1: %2 (%3 conductor(s))")
+				.arg(i)
+				.arg(t->name().isEmpty() ? QStringLiteral("-") : t->name())
+				.arg(t->conductorsCount());
+	}
+	return list;
+}
+
+QString QetScriptApi::elementInfo(int folioIndex, const QString &elementUuid, const QString &key) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return QString();
+	return element->elementInformations().value(key).toString();
+}
+
+bool QetScriptApi::setElementInfo(int folioIndex, const QString &elementUuid,
+								  const QString &key, const QString &value)
+{
+	return setInfoKey(folioIndex, elementUuid, key, value, QStringLiteral("setElementInfo"));
+}
+
+QString QetScriptApi::elementLabel(int folioIndex, const QString &elementUuid) const
+{
+	return elementInfo(folioIndex, elementUuid, QETInformation::ELMT_LABEL);
+}
+
+bool QetScriptApi::setElementLabel(int folioIndex, const QString &elementUuid, const QString &label)
+{
+	return setInfoKey(folioIndex, elementUuid, QETInformation::ELMT_LABEL, label,
+					  QStringLiteral("setElementLabel"));
+}
+
+/**
+	@brief QetScriptApi::addConductor
+	Wire terminal terminalIndexA of one element to terminalIndexB of
+	another, on the same folio, through ConductorCreator -- the same class
+	the "draw a selection rectangle over terminals" GUI path uses. Going
+	through it rather than constructing a Conductor directly is what makes
+	the new conductor inherit an existing potential's properties and take
+	part in conductor auto-numbering; a hand-built one would be silently
+	outside both.
+
+	Refuses, rather than creating anything, when the two terminals sit on
+	two different existing potentials: ConductorCreator then has to ask
+	which one's properties the new conductor should inherit, and it asks
+	with a plain modal QDialog that QET::QetMessageBox's non-interactive
+	mode does not cover -- so under headless --run there would be nobody to
+	answer it and the script would hang forever. Same reasoning, and the
+	same choice, as addElement() makes about the import-conflict dialog.
+	@return true if a conductor was created
+*/
+bool QetScriptApi::addConductor(int folioIndex,
+								const QString &elementUuidA, int terminalIndexA,
+								const QString &elementUuidB, int terminalIndexB)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addConductor: project is read-only"));
+		return false;
+	}
+	const QString caller = QStringLiteral("addConductor");
+	Terminal *t1 = findTerminal(folioIndex, elementUuidA, terminalIndexA, caller);
+	Terminal *t2 = findTerminal(folioIndex, elementUuidB, terminalIndexB, caller);
+	if (!t1 || !t2) return false;
+
+	if (t1 == t2) {
+		log(QStringLiteral("qet.addConductor: both ends are the same terminal"));
+		return false;
+	}
+	if (t1->isLinkedTo(t2)) {
+		log(QStringLiteral("qet.addConductor: those two terminals are already wired together"));
+		return false;
+	}
+	if (!t1->canBeLinkedTo(t2)) {
+		log(QStringLiteral("qet.addConductor: those two terminals cannot be linked"));
+		return false;
+	}
+
+	const QList<Terminal *> terminals {t1, t2};
+	if (ConductorCreator::needsPotentialChoice(terminals)) {
+		log(QStringLiteral("qet.addConductor: those terminals are on two different existing "
+						   "potentials, so creating a conductor would ask which one to inherit "
+						   "-- refusing rather than open a dialog no script can answer"));
+		return false;
+	}
+
+	Diagram *diagram = m_project->diagrams().at(folioIndex);
+	ConductorCreator creator(diagram, terminals);
+	Q_UNUSED(creator)
+
+	// ConductorCreator has no return value and several ways to decline
+	// quietly, so report what actually happened rather than that it ran.
+	return t1->isLinkedTo(t2);
+}
+
+int QetScriptApi::addFolio()
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addFolio: project is read-only"));
+		return -1;
+	}
+	Diagram *diagram = m_project->addNewDiagram();
+	if (!diagram) return -1;
+	return m_project->diagrams().indexOf(diagram);
+}
+
+bool QetScriptApi::setFolioTitle(int folioIndex, const QString &title)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setFolioTitle: project is read-only"));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+	Diagram *diagram = diagrams.at(folioIndex);
+
+	// The folio title is one field of the title block properties, so it
+	// changes the way the title block dialog changes it: read the whole
+	// struct, set one member, push the command with both versions.
+	const TitleBlockProperties old_properties = diagram->border_and_titleblock.exportTitleBlock();
+	if (old_properties.title == title) return true;
+	TitleBlockProperties new_properties = old_properties;
+	new_properties.title = title;
+
+	auto *cmd = new ChangeTitleBlockCommand(diagram, old_properties, new_properties);
+	m_project->undoStack()->push(cmd);
 	return true;
 }
 
