@@ -67,7 +67,19 @@ m_preview_item(nullptr)
 			dummy_diagram->setDisplayGrid(false);
 			dummy_diagram->fromXml(diagram_node, QPointF(0, 0), false, nullptr);
 
+			// Compute bounding rect of TOP-LEVEL items only (matching fromXml's added_items logic)
+			// Child items (DynamicElementTextItem, Terminal) are NOT included - they move with parents
+			QRectF top_level_rect;
+			for (auto *item : dummy_diagram->items()) {
+				if (!item->parentItem()) {
+					top_level_rect = top_level_rect.united(
+								item->mapToScene(item->boundingRect()).boundingRect());
+				}
+			}
+			m_items_top_left = top_level_rect.topLeft();
+
 			QRectF scene_rect = dummy_diagram->itemsBoundingRect();
+
 			if (!scene_rect.isEmpty()) {
 				QPixmap pixmap(scene_rect.toAlignedRect().size());
 				pixmap.fill(Qt::transparent);
@@ -80,10 +92,11 @@ m_preview_item(nullptr)
 			}
 		}
 
-		if (m_preview_item) {
-			m_preview_item->setPos(Diagram::snapToGrid(pos));
-			m_preview_item->setOpacity(0.6);
-			m_diagram->addItem(m_preview_item);
+	if (m_preview_item) {
+		QPointF snapped = Diagram::snapToGrid(pos);
+		m_preview_item->setPos(snapped);
+		m_preview_item->setOpacity(0.6);
+		m_diagram->addItem(m_preview_item);
 			m_running = true;
 		}
 
@@ -117,6 +130,7 @@ void DiagramEventAddMacro::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_preview_item) {
 		const auto pos_{Diagram::snapToGrid(event->scenePos())};
+
 		m_preview_item->setPos(pos_);
 
 		if (m_status_bar) {
@@ -141,7 +155,8 @@ void DiagramEventAddMacro::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 			emit finish();
 		}
 		else if (event->button() == Qt::LeftButton) {
-			addMacro(Diagram::snapToGrid(event->scenePos()));
+			QPointF snapped = Diagram::snapToGrid(event->scenePos());
+			addMacro(snapped);
 		}
 	}
 	event->setAccepted(true);
@@ -238,10 +253,9 @@ void DiagramEventAddMacro::addMacro(QPointF final_pos)
 
 	if (!diagram_node.isNull()) {
 		QDomElement cloned_node = diagram_node.cloneNode(true).toElement();
-
 		DiagramContent pasted_content;
 
-		m_diagram->fromXml(cloned_node, final_pos, false, &pasted_content);
+		m_diagram->fromXml(cloned_node, final_pos + m_items_top_left, false, &pasted_content);
 		m_diagram->refreshContents();
 
 			// Prevent PasteDiagramCommand from erasing labels (BMK)
