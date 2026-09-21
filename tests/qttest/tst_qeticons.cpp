@@ -63,10 +63,13 @@ class tst_qeticons : public QObject
 		void toolbarIconIsReadable();
 		void hoverChangesTheIcon_data();
 		void hoverChangesTheIcon();
+		void hoverInkReadsWithAnyAccent_data();
+		void hoverInkReadsWithAnyAccent();
 		void coloredIconKeepsItsColorsOnHover();
 		void menuIconReadsOnHighlight_data();
 		void menuIconReadsOnHighlight();
 		void panelProjectIconStaysSmall();
+		void configPageIconsComeAtPageSize();
 };
 
 namespace {
@@ -106,6 +109,17 @@ namespace {
 	}
 
 	const QStringList kSizes = {"16x16", "22x22", "32x32", "48x48", "128x128"};
+
+	/// palette with the given selection colors, as QET::Palette::withPlatformAccent leaves them.
+	QPalette withAccent(QPalette palette, const QColor &highlight, const QColor &highlighted_text)
+	{
+		for (QPalette::ColorGroup group : {QPalette::Active, QPalette::Inactive})
+		{
+			palette.setColor(group, QPalette::Highlight, highlight);
+			palette.setColor(group, QPalette::HighlightedText, highlighted_text);
+		}
+		return palette;
+	}
 }
 
 void tst_qeticons::initTestCase()
@@ -333,6 +347,12 @@ void tst_qeticons::hoverChangesTheIcon_data()
 	// nothing in the frame, so the icon is the only hover signal there.
 	QTest::newRow("light-checked") << "qet" << QET::Palette::fusionLight() << true;
 	QTest::newRow("dark-checked") << "qet-dark" << QET::Palette::fusionDark() << true;
+	// A platform accent QET keeps because its selection text reads on
+	// it: macOS's green selection color comes with black text. Lightening
+	// it toward 3:1 against a white face can only end at white, which
+	// made every hovered line-art icon vanish on a light palette.
+	QTest::newRow("light-pale-accent") << "qet" << withAccent(QET::Palette::fusionLight(), QColor(198, 231, 188), Qt::black) << false;
+	QTest::newRow("dark-pale-accent") << "qet-dark" << withAccent(QET::Palette::fusionDark(), QColor(198, 231, 188), Qt::black) << false;
 }
 
 /**
@@ -470,6 +490,65 @@ void tst_qeticons::panelProjectIconStaysSmall()
 	// The configuration dialog's page list still gets the large file.
 	QCOMPARE(QET::Icons::Projects.pixmap(QSize(128, 128), 1.0).width(), 128);
 #endif
+}
+
+
+/**
+	The configuration dialogs list their pages with 64 or 128 pixel icons
+	(ConfigDialog::ConfigDialog). A page whose icon exists at 22 pixels
+	only comes out as a 22 pixel stamp among 128 pixel neighbors, which
+	the terminal-strip page of the project dialog and the shortcuts page
+	of the settings dialog did.
+*/
+void tst_qeticons::configPageIconsComeAtPageSize()
+{
+	const QStringList pages = {"settings", "project", "diagram", "plasmagik", "printer",
+	                           "document-export", "terminalstrip", "configure-shortcuts"};
+	QStringList small;
+	for (const QString &theme : {"qet", "qet-dark"})
+	{
+		QIcon::setThemeName(theme);
+		for (const QString &name : pages)
+		{
+			const QIcon icon = QIcon::fromTheme(name);
+			QVERIFY2(!icon.isNull(), qPrintable(QString("%1 missing in theme %2").arg(name, theme)));
+			const QSize size = icon.actualSize(QSize(128, 128));
+			if (size.width() < 128 || size.height() < 128)
+				small << QString("%1 in %2 at %3x%4").arg(name, theme).arg(size.width()).arg(size.height());
+		}
+	}
+	QIcon::setThemeName("qet");
+	QVERIFY2(small.isEmpty(), qPrintable("page icons short of 128 pixels: " + small.join(", ")));
+}
+
+/**
+	Whatever accent the platform hands QET, the hover ink must read on the
+	hovered button face of both palettes: a sweep over hues at every
+	lightness, including the pale and the near-black ones.
+*/
+void tst_qeticons::hoverInkReadsWithAnyAccent_data()
+{
+	QTest::addColumn<QPalette>("palette");
+	for (int lightness = 10; lightness <= 250; lightness += 40)
+		for (int hue = 0; hue < 360; hue += 60)
+		{
+			const QColor accent = QColor::fromHsl(hue, 200, lightness);
+			const QColor text = QET::Palette::contrastRatio(accent, Qt::white) >= 4.5 ? Qt::white : Qt::black;
+			QTest::newRow(qPrintable(QString("light-%1").arg(accent.name())))
+				<< withAccent(QET::Palette::fusionLight(), accent, text);
+			QTest::newRow(qPrintable(QString("dark-%1").arg(accent.name())))
+				<< withAccent(QET::Palette::fusionDark(), accent, text);
+		}
+}
+
+void tst_qeticons::hoverInkReadsWithAnyAccent()
+{
+	QFETCH(QPalette, palette);
+	const QColor face = palette.color(QPalette::Active, QPalette::Light);
+	const QColor ink = QETStyle::hoverColor(palette);
+	const double contrast = QET::Palette::contrastRatio(ink, face);
+	QVERIFY2(contrast >= kIconRatio,
+	         qPrintable(QString("hover ink %1 reads %2:1 on the face %3").arg(ink.name()).arg(contrast).arg(face.name())));
 }
 
 int main(int argc, char **argv)

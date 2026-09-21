@@ -19,38 +19,39 @@
 #define PALETTE_GRAPHICS_VIEW_H
 
 #include <QGraphicsView>
-
-class QPainter;
+#include <QImage>
+#include <QPainter>
 
 /**
-	A QGraphicsView that shows its scene with inverted lightness while its
-	palette is dark: white becomes the palette's Base color, black its Text
-	color, and colored strokes keep their hue. The scene itself is left as
-	drawn, so printing and exporting it still give black on white. On a
-	light palette the view paints exactly as QGraphicsView does.
+	A QGraphicsView that shows its scene with inverted lightness while the
+	application palette is dark: white becomes the palette's Base color,
+	black its Text color, and colored strokes keep their hue. The scene
+	itself is left as drawn, so printing and exporting it still give black
+	on white. On a light palette the view paints exactly as QGraphicsView
+	does.
 
-	The view paints through QGraphicsView::render() into an image and blits
-	the inverted image. QGraphicsView delivers scene updates straight to
-	its viewport when nobody listens to QGraphicsScene::changed(), and in
-	that mode the scene clears its "update everything" flag only when the
-	items are painted straight onto the viewport, which never happens
-	here: from the second QGraphicsScene::update() on, every scene update
-	and every item update would wait for an unrelated repaint. So the view
-	listens to changed() on every scene it is given, which makes the scene
-	clear the flag before it emits. Set the scene through this class, not
-	through a QGraphicsView pointer.
+	On a dark palette the view still runs QGraphicsView::paintEvent(), with
+	the IndirectPainting flag set for the duration of that call, so that
+	the background, the items and the foreground come through the
+	drawBackground(), drawItems() and drawForeground() hooks. (That flag
+	selects Qt's older item-painting algorithm, which first builds a list
+	of the exposed items and their style options; it is set only while
+	the view paints inverted.) The hooks
+	paint into an off-screen image the size of the viewport, in viewport
+	coordinates; paintEvent() then inverts the lightness of the exposed
+	part of that image and blits it. Going through the real paint event,
+	and handing the scene the viewport when the items are drawn, keeps the
+	view on QGraphicsView's default update path, which erases a moved item
+	where it was last painted, children included, even a child whose
+	geometry is set while its parent is painted (a terminal's help lines).
+	The alternative, rendering with QGraphicsView::render(), needed a
+	receiver on QGraphicsScene::changed() to keep the scene's updates
+	flowing, and that receiver puts the scene on its Qt 4.4 compatibility
+	path, which erases only the moved item's own old rectangle: a moved
+	element then left its terminals' help lines, which span the whole
+	sheet, behind at every step (#954).
 
-	The constructor also forces QGraphicsView::FullViewportUpdate in place
-	of the default MinimalViewportUpdate. #954 shipped with the default
-	kept, and moving an item then left conductor-shaped ghosts behind on
-	both a light and a dark palette, so the cause is shared code, not
-	paintInverted(): most likely listening to changed() at all, above,
-	changes which of QGraphicsScene's two update paths a view is on, and
-	MinimalViewportUpdate's job of turning the scene's reported dirty
-	rects into the smallest correct viewport region is where that would
-	show up first. FullViewportUpdate removes the need to get that region
-	right by repainting the whole viewport on every update; the class's
-	own benchmark already shows that cost is small next to a frame budget.
+	The CacheBackground cache mode is not supported on the inverted path.
 */
 class PaletteGraphicsView : public QGraphicsView
 {
@@ -60,14 +61,17 @@ class PaletteGraphicsView : public QGraphicsView
 		explicit PaletteGraphicsView(QWidget *parent = nullptr);
 		explicit PaletteGraphicsView(QGraphicsScene *scene, QWidget *parent = nullptr);
 
-		void setScene(QGraphicsScene *scene);
 		bool invertsLightness() const;
 
 	protected:
 		bool eventFilter(QObject *watched, QEvent *event) override;
 		void paintEvent(QPaintEvent *event) override;
+		void drawBackground(QPainter *painter, const QRectF &rect) override;
+		void drawItems(QPainter *painter, int count, QGraphicsItem *items[],
+		               const QStyleOptionGraphicsItem options[]) override;
+		void drawForeground(QPainter *painter, const QRectF &rect) override;
 		/**
-			Called with true right before the scene is rendered for an
+			Called with true right before the scene is painted for an
 			inverted display and with false right after, so a scene can
 			adapt what it draws (a softer grid, for instance). Does
 			nothing by default.
@@ -75,11 +79,17 @@ class PaletteGraphicsView : public QGraphicsView
 		virtual void paintingInverted(bool inverted);
 
 	private:
-		void listenToScene(QGraphicsScene *scene);
-		void paintInverted(const QRect &area);
+		void paintInverted(QPaintEvent *event);
+		void blitInverted(const QRect &area);
 		void drawRubberBand(QPainter &painter);
 
-		QMetaObject::Connection m_scene_connection;
+		/// The off-screen image the hooks paint into while m_inverting:
+		/// the viewport's size, in its coordinates. Kept between paints,
+		/// dropped when the view paints on a light palette again.
+		QImage m_buffer;
+		QPainter m_buffer_painter;
+		/// True while paintEvent() paints for an inverted display.
+		bool m_inverting = false;
 };
 
 #endif

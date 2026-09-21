@@ -21,36 +21,40 @@
 
 #include <QApplication>
 #include <QEvent>
-#include <QPainter>
 #include <QPaintEvent>
 #include <QStyleHintReturnMask>
 #include <QStyleOptionRubberBand>
 #include <QtMath>
 
+namespace {
+	/**
+		QGraphicsScene::drawItems() is protected, and QGraphicsView::drawItems()
+		hands the scene the viewport only when the painter is on it. The
+		view paints into an image, and still needs the scene to get the
+		viewport: that is what makes the scene record where it painted
+		each item, which is where the item is erased from when it moves.
+		Naming the member through a derived class is the standard way to
+		a pointer to a protected member; a call through it dispatches to
+		the scene's own override, if any.
+	*/
+	struct SceneAccess : QGraphicsScene
+	{
+		using DrawItems = void (QGraphicsScene::*)(QPainter *, int, QGraphicsItem *[],
+		                                           const QStyleOptionGraphicsItem[], QWidget *);
+		static DrawItems drawItemsPointer() { return &SceneAccess::drawItems; }
+	};
+}
+
 PaletteGraphicsView::PaletteGraphicsView(QWidget *parent) :
 	QGraphicsView(parent)
 {
 	qApp->installEventFilter(this);
-	setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 }
 
 PaletteGraphicsView::PaletteGraphicsView(QGraphicsScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent)
 {
 	qApp->installEventFilter(this);
-	setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-	listenToScene(scene);
-}
-
-/**
-	@brief PaletteGraphicsView::setScene
-	Same as QGraphicsView::setScene, and keeps the scene's updates flowing
-	(see the class description).
-*/
-void PaletteGraphicsView::setScene(QGraphicsScene *scene)
-{
-	QGraphicsView::setScene(scene);
-	listenToScene(scene);
 }
 
 /**
@@ -70,21 +74,6 @@ bool PaletteGraphicsView::invertsLightness() const
 void PaletteGraphicsView::paintingInverted(bool inverted)
 {
 	Q_UNUSED(inverted)
-}
-
-/**
-	@brief PaletteGraphicsView::listenToScene
-	Connect a receiver to the scene's changed() signal, dropping the one
-	on the previous scene. Any receiver does; this one has nothing to do.
-	The connection dies with the view.
-*/
-void PaletteGraphicsView::listenToScene(QGraphicsScene *scene)
-{
-	disconnect(m_scene_connection);
-	m_scene_connection = QMetaObject::Connection();
-	if (scene)
-		m_scene_connection = connect(scene, &QGraphicsScene::changed,
-		                             this, [](const QList<QRectF> &) {});
 }
 
 /**
@@ -111,57 +100,121 @@ bool PaletteGraphicsView::eventFilter(QObject *watched, QEvent *event)
 void PaletteGraphicsView::paintEvent(QPaintEvent *event)
 {
 	if (invertsLightness())
-		paintInverted(event->rect());
-	else
-		QGraphicsView::paintEvent(event);
+	{
+		paintInverted(event);
+		return;
+	}
+	m_buffer = QImage();
+	QGraphicsView::paintEvent(event);
 }
 
 /**
 	@brief PaletteGraphicsView::paintInverted
-	Render \a area of the viewport into an off-screen image, invert the
-	lightness of that image between the palette's Base and Text colors and
-	blit it to the viewport. Inverting the finished rendering turns the
-	white sheet dark and the black ink light in one pass, and keeps the
-	hue of colored strokes.
-	@param area the part of the viewport to repaint, in viewport coordinates
+	Run QGraphicsView::paintEvent() with the drawing hooks redirected to
+	an off-screen image of the viewport, then invert the lightness of the
+	exposed part of that image between the palette's Base and Text colors
+	and blit it to the viewport. Inverting the finished rendering turns
+	the white sheet dark and the black ink light in one pass, and keeps
+	the hue of colored strokes. The image is in viewport coordinates, so
+	the hooks paint with the view's own transform and the scene records
+	the items' places in the viewport, as it does on a light palette.
+	@param event the paint event, for the exposed area
 */
-void PaletteGraphicsView::paintInverted(const QRect &area)
+void PaletteGraphicsView::paintInverted(QPaintEvent *event)
 {
-	const QRect rect = area.intersected(viewport()->rect());
-	if (rect.isEmpty())
+	const QRect exposed = event->rect().intersected(viewport()->rect());
+	if (exposed.isEmpty())
 		return;
 
 	const qreal ratio = viewport()->devicePixelRatioF();
-	QImage buffer(qCeil(rect.width() * ratio), qCeil(rect.height() * ratio),
-	              QImage::Format_RGB32);
-	buffer.setDevicePixelRatio(ratio);
-	// render() paints only what the scene draws; what it leaves blank is
+	const QSize size(qCeil(viewport()->width() * ratio), qCeil(viewport()->height() * ratio));
+	if (m_buffer.size() != size || m_buffer.devicePixelRatio() != ratio)
+	{
+		m_buffer = QImage(size, QImage::Format_RGB32);
+		m_buffer.setDevicePixelRatio(ratio);
+	}
+
+	m_buffer_painter.begin(&m_buffer);
+	// The hooks paint only what the scene draws; what they leave blank is
 	// the white sheet, which the inversion turns into the Base color.
-	buffer.fill(Qt::white);
+	m_buffer_painter.fillRect(exposed, Qt::white);
+	m_buffer_painter.setClipRect(exposed);
+	m_buffer_painter.setRenderHints(renderHints());
+	m_buffer_painter.setWorldTransform(viewportTransform());
 
-	QPainter buffer_painter(&buffer);
-	buffer_painter.setRenderHints(renderHints());
+	m_inverting = true;
 	paintingInverted(true);
-	render(&buffer_painter, QRectF(QPointF(0, 0), QSizeF(rect.size())),
-	       rect, Qt::IgnoreAspectRatio);
+	const OptimizationFlags flags = optimizationFlags();
+	setOptimizationFlag(QGraphicsView::IndirectPainting, true);
+	QGraphicsView::paintEvent(event);
+	setOptimizationFlags(flags);
 	paintingInverted(false);
-	buffer_painter.end();
+	m_inverting = false;
 
+	m_buffer_painter.end();
+	blitInverted(exposed);
+}
+
+/**
+	@brief PaletteGraphicsView::drawBackground
+	Into the off-screen image while painting inverted, else as
+	QGraphicsView.
+*/
+void PaletteGraphicsView::drawBackground(QPainter *painter, const QRectF &rect)
+{
+	QGraphicsView::drawBackground(m_inverting ? &m_buffer_painter : painter, rect);
+}
+
+/**
+	@brief PaletteGraphicsView::drawItems
+	Into the off-screen image while painting inverted, with the viewport
+	as the scene's widget (see SceneAccess), else as QGraphicsView.
+*/
+void PaletteGraphicsView::drawItems(QPainter *painter, int count, QGraphicsItem *items[],
+                                    const QStyleOptionGraphicsItem options[])
+{
+	if (m_inverting && scene())
+		(scene()->*SceneAccess::drawItemsPointer())(&m_buffer_painter, count, items, options, viewport());
+	else
+		QGraphicsView::drawItems(painter, count, items, options);
+}
+
+/**
+	@brief PaletteGraphicsView::drawForeground
+	Into the off-screen image while painting inverted, else as
+	QGraphicsView.
+*/
+void PaletteGraphicsView::drawForeground(QPainter *painter, const QRectF &rect)
+{
+	QGraphicsView::drawForeground(m_inverting ? &m_buffer_painter : painter, rect);
+}
+
+/**
+	@brief PaletteGraphicsView::blitInverted
+	Invert the lightness of \a area of the off-screen image and draw it on
+	the viewport, then the selection rubber band on top: the one
+	QGraphicsView::paintEvent() drew went under the blit.
+	@param area the part of the viewport to blit, in viewport coordinates
+*/
+void PaletteGraphicsView::blitInverted(const QRect &area)
+{
+	const qreal ratio = m_buffer.devicePixelRatio();
+	QImage part = m_buffer.copy(QRectF(area.topLeft() * ratio, area.size() * ratio).toAlignedRect());
+	part.setDevicePixelRatio(ratio);
 	// The application palette, for the reason given in invertsLightness().
 	const QPalette application_palette = QApplication::palette();
-	QET::Palette::invertLightness(buffer, application_palette.color(QPalette::Base),
+	QET::Palette::invertLightness(part, application_palette.color(QPalette::Base),
 	                              application_palette.color(QPalette::Text));
 
 	QPainter painter(viewport());
-	painter.drawImage(rect.topLeft(), buffer);
+	painter.drawImage(area.topLeft(), part);
 	drawRubberBand(painter);
 }
 
 /**
 	@brief PaletteGraphicsView::drawRubberBand
-	Draw the selection rubber band the way QGraphicsView::paintEvent does.
-	Rendering the view into an off-screen image skips it, so it is drawn
-	here instead, after the inversion, in the palette colors.
+	Draw the selection rubber band the way QGraphicsView::paintEvent does,
+	after the inversion, in the palette colors.
 	@param painter a painter on the viewport
 */
 void PaletteGraphicsView::drawRubberBand(QPainter &painter)

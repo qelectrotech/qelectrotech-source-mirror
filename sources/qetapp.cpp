@@ -235,6 +235,8 @@ QString QETApp::loadedQtTranslationFile()
 */
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
+	
+	QLocale::setDefault(QLocale(desired_language));
 
 	// load Qt library translations
 	QString qt_l10n_path = QLibraryInfo::path(QLibraryInfo::TranslationsPath);
@@ -1808,6 +1810,10 @@ void QETApp::useSystemPalette(bool use) {
 			file.close();
 		}
 	}
+	// Widgets with their own style sheet keep the palette they were
+	// polished with; after a live light/dark switch they would stay in
+	// the old colors (see QET::Palette::refreshStyleSheets).
+	QET::Palette::refreshStyleSheets();
 }
 
 /**

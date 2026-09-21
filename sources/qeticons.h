@@ -44,6 +44,7 @@ namespace QET {
 		extern QIcon ConductorEdit;
 		extern QIcon ConductorSettings;
 		extern QIcon Configure;
+		extern QIcon ConfigureShortcuts;
 		extern QIcon ConfigureToolbars;
 		extern QIcon IC_CopyFile;
 		extern QIcon DefaultConductor;

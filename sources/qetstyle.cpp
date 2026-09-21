@@ -67,20 +67,27 @@ bool QETStyle::isLineArt(const QImage &image)
 /**
 	@brief QETStyle::hoverColor
 	The palette's highlight color is the accent users already know from
-	selections. On a dark palette it is too dark to read on a hovered
-	button face, so it is lightened, a step at a time, until it reaches
+	selections, moved away from the hovered button face until it reaches
 	3:1 (WCAG 1.4.11) against the Light role: Fusion paints a hovered
 	auto-raise button with a gradient that runs from Button up to about
-	that color, and the icon has to read on the lightest part of it.
+	that color, and the icon has to read on the lightest part of it. On a
+	dark face the accent is lightened, a step at a time; on a light face it
+	is darkened, which keeps a pale accent (macOS's green or yellow
+	selection color, which comes with black selection text) from being
+	pushed to white. Should twenty steps not get there, the button text
+	color serves, which reads on the face by construction.
 */
 QColor QETStyle::hoverColor(const QPalette &palette)
 {
 	const QColor face = palette.color(QPalette::Active, QPalette::Light);
+	const bool light_face = face.lightnessF() > 0.5;
 	QColor ink = palette.color(QPalette::Active, QPalette::Highlight);
 	// 3.5 rather than 3.0: the top of Fusion's hover gradient is a shade
 	// lighter than the Light role, so the icon needs some headroom there.
 	for (int step = 0; step < 20 && QET::Palette::contrastRatio(ink, face) < 3.5; ++step)
-		ink = ink.lighter(110);
+		ink = light_face ? ink.darker(110) : ink.lighter(110);
+	if (QET::Palette::contrastRatio(ink, face) < 3.5)
+		ink = palette.color(QPalette::Active, QPalette::ButtonText);
 	return ink;
 }
 
