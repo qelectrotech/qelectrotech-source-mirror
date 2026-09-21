@@ -150,6 +150,12 @@ class QetShapeItem;
 	  depend on. The underlying tables are how the cache happens to be
 	  arranged today, and a column may move. tables() lists both so a
 	  script can see what it is querying rather than guess.
+	- @b Terminal @b strips: create a strip, put terminal-type elements on
+	  it, remove it. Strips are addressed by index into terminalStrips(),
+	  which is the project's own order (unlike texts and shapes it is not
+	  re-sorted) and does shift when one is removed. Only elements whose
+	  link type is "terminal" can be added, the same restriction the
+	  editor enforces by construction.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -268,6 +274,14 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool removeFolio(int folioIndex);
 		Q_INVOKABLE bool setFolioProperty(int folioIndex, const QString &property, const QString &value);
 		Q_INVOKABLE QString folioProperty(int folioIndex, const QString &property) const;
+
+		// -- terminal strips (borniers) --
+		Q_INVOKABLE QStringList terminalStrips() const;
+		Q_INVOKABLE int addTerminalStrip(const QString &installation, const QString &location,
+										 const QString &name);
+		Q_INVOKABLE bool removeTerminalStrip(int stripIndex);
+		Q_INVOKABLE bool addTerminalToStrip(int stripIndex, int folioIndex,
+											const QString &elementUuid);
 
 		// -- folios --
 		Q_INVOKABLE int addFolio();

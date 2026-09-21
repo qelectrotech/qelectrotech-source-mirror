@@ -33,7 +33,12 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
+#include "../TerminalStrip/UndoCommand/addterminaltostripcommand.h"
+#include "../TerminalStrip/realterminal.h"
+#include "../TerminalStrip/terminalstrip.h"
 #include "../qetgraphicsitem/terminal.h"
+#include "../qetgraphicsitem/terminalelement.h"
 #include "../qetinformation.h"
 #include "../titleblockproperties.h"
 #include "../undocommand/addgraphicsobjectcommand.h"
@@ -1366,6 +1371,86 @@ bool QetScriptApi::setFolioProperty(int folioIndex, const QString &property, con
 	*field = value;
 	m_project->undoStack()->push(new ChangeTitleBlockCommand(diagram, old_p, new_p));
 	return true;
+}
+
+QStringList QetScriptApi::terminalStrips() const
+{
+	QStringList list;
+	if (!m_project) return list;
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	for (int i = 0 ; i < strips.count() ; ++i)
+	{
+		TerminalStrip *t = strips.at(i);
+		list << QStringLiteral("%1: installation='%2' location='%3' name='%4' (%5 terminal(s))")
+				.arg(i).arg(t->installation(), t->location(), t->name())
+				.arg(t->realTerminals().count());
+	}
+	return list;
+}
+
+/**
+	@brief QetScriptApi::addTerminalStrip
+	Create an empty terminal strip through AddTerminalStripCommand, as the
+	editor's creation dialog does after it is accepted.
+	@return its index in terminalStrips(), or -1
+*/
+int QetScriptApi::addTerminalStrip(const QString &installation, const QString &location,
+								   const QString &name)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addTerminalStrip: project is read-only"));
+		return -1;
+	}
+	auto *strip = new TerminalStrip(installation, location, name, m_project);
+	m_project->undoStack()->push(new AddTerminalStripCommand(strip, m_project));
+	return m_project->terminalStrip().indexOf(strip);
+}
+
+bool QetScriptApi::removeTerminalStrip(int stripIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.removeTerminalStrip: project is read-only"));
+		return false;
+	}
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	if (stripIndex < 0 || stripIndex >= strips.count()) {
+		log(QStringLiteral("qet.removeTerminalStrip: no strip at index %1").arg(stripIndex));
+		return false;
+	}
+	m_project->undoStack()->push(new RemoveTerminalStripCommand(strips.at(stripIndex), m_project));
+	return m_project->terminalStrip().count() == strips.count() - 1;
+}
+
+bool QetScriptApi::addTerminalToStrip(int stripIndex, int folioIndex, const QString &elementUuid)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("addTerminalToStrip");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	if (stripIndex < 0 || stripIndex >= strips.count()) {
+		log(QStringLiteral("qet.%1: no strip at index %2").arg(caller).arg(stripIndex));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+	auto *terminal_element = qobject_cast<TerminalElement *>(element);
+	if (!terminal_element) {
+		log(QStringLiteral("qet.%1: %2 is not a terminal-type element").arg(caller, elementUuid));
+		return false;
+	}
+	QSharedPointer<RealTerminal> real = terminal_element->realTerminal();
+	if (!real) return false;
+	if (real->parentStrip()) {
+		log(QStringLiteral("qet.%1: %2 already belongs to a strip").arg(caller, elementUuid));
+		return false;
+	}
+	m_project->undoStack()->push(new AddTerminalToStripCommand(real, strips.at(stripIndex)));
+	return real->parentStrip() == strips.at(stripIndex);
 }
 
 int QetScriptApi::addFolio()
