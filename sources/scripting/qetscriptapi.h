@@ -22,6 +22,7 @@
 #include <QString>
 #include <QStringList>
 #include <QVariantList>
+#include <QVariantMap>
 
 class QETProject;
 class DiagramView;
@@ -210,6 +211,13 @@ class DynamicElementTextItem;
 	  the folio properties panel offers; the title block's header sizes,
 	  which it does not, are left alone. Changing the project title is not
 	  undoable: the application sets it directly too.
+	- @b Geometry and folio order: elementGeometry() reads where an element
+	  is -- x, y (its origin), rotation, and the box it occupies on the folio
+	  (left, top, right, bottom) -- so a script can lay one thing out relative
+	  to another instead of only setting absolute coordinates, and can check
+	  that a move landed. insertFolio() puts a new folio at a position
+	  instead of at the end, which is what reordering is mostly for while
+	  moving an existing folio still needs the application's project view.
 	- @b Images: place a picture from a file. The pixels are copied into
 	  the project, which stores them inline in the .qet -- the saved file
 	  does not refer to the original path, so it opens on another machine,
@@ -410,8 +418,12 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString folioBorder(int folioIndex, const QString &property) const;
 		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
 
+		// -- read an element's geometry --
+		Q_INVOKABLE QVariantMap elementGeometry(int folioIndex, const QString &elementUuid) const;
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
+		Q_INVOKABLE int insertFolio(int position);
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
 
 		Q_INVOKABLE bool undo();

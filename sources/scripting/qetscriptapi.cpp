@@ -2378,6 +2378,55 @@ bool QetScriptApi::setFolioBorder(int folioIndex, const QString &property, const
 	return true;
 }
 
+/**
+	@brief QetScriptApi::elementGeometry
+	Where an element is: x and y are its origin (what setElementPosition()
+	sets), rotation is in degrees, and left/top/right/bottom are the box it
+	occupies on the folio, its drawn extent rather than its origin -- which
+	differs from it by the hotspot and, for a rotated element, is the
+	rotated extent. Empty if the element is not found.
+*/
+QVariantMap QetScriptApi::elementGeometry(int folioIndex, const QString &elementUuid) const
+{
+	QVariantMap g;
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return g;
+	const QRectF box = element->sceneBoundingRect();
+	g.insert(QStringLiteral("x"), element->pos().x());
+	g.insert(QStringLiteral("y"), element->pos().y());
+	g.insert(QStringLiteral("rotation"), element->rotation());
+	g.insert(QStringLiteral("left"), box.left());
+	g.insert(QStringLiteral("top"), box.top());
+	g.insert(QStringLiteral("right"), box.right());
+	g.insert(QStringLiteral("bottom"), box.bottom());
+	return g;
+}
+
+/**
+	@brief QetScriptApi::insertFolio
+	Add a folio at a position (0 is first, folioCount() is last) through
+	QETProject::addNewDiagram(pos) -- undoable. The position is checked
+	here: QETProject::addDiagram() hands it straight to QList::insert(),
+	which is undefined past the end.
+	@return the new folio's index, or -1
+*/
+int QetScriptApi::insertFolio(int position)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.insertFolio: project is read-only"));
+		return -1;
+	}
+	if (position < 0 || position > m_project->diagrams().count()) {
+		log(QStringLiteral("qet.insertFolio: position %1 is outside 0..%2")
+			.arg(position).arg(m_project->diagrams().count()));
+		return -1;
+	}
+	Diagram *diagram = m_project->addNewDiagram(position);
+	if (!diagram) return -1;
+	return m_project->diagrams().indexOf(diagram);
+}
+
 int QetScriptApi::addFolio()
 {
 	if (!m_project) return -1;
