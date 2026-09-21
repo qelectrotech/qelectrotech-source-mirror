@@ -186,6 +186,23 @@ class DynamicElementTextItem;
 	  selected, so it is a separate, explicit call. Folio auto-numbering is
 	  not offered: in the application it spawns whole new folios from a
 	  context, which is a different operation from labelling.
+	- @b Duplicating: copy elements, together with the conductors that run
+	  between them, to a position on the same or another folio, through
+	  Diagram::toXml() and fromXml() and PasteDiagramCommand -- what Ctrl+C
+	  and Ctrl+V do, so a paste behaves as a paste does there: the copies
+	  come without their labels and without their conductors' wire numbers,
+	  which the application clears on paste (measured: '' on both).
+	  The position is the top left of the pasted group's bounding rectangle,
+	  so an element's own origin ends up offset from it by its hotspot
+	  (measured: +20, +30 for a coil); (0, 0) is not a position but means
+	  "keep the source coordinates", as Diagram::fromXml() treats it. The
+	  result lists the copies in the order the elements were named --
+	  the application's own list is in scene order, and a caller pairing by
+	  index would otherwise be wired to the wrong copies -- paired by
+	  position, which a paste preserves, so two elements at the same point
+	  cannot be told apart. A conductor is copied
+	  only if both its ends are among the copied elements. The previous
+	  selection is put back afterwards, since copying works by selecting.
 	- @b Images: place a picture from a file. The pixels are copied into
 	  the project, which stores them inline in the .qet -- the saved file
 	  does not refer to the original path, so it opens on another machine,
@@ -377,6 +394,10 @@ class QetScriptApi : public QObject
 												int textIndex, const QString &property) const;
 		Q_INVOKABLE bool deleteElementText(int folioIndex, const QString &elementUuid, int textIndex);
 
+		// -- copy elements (with the conductors between them) to a position --
+		Q_INVOKABLE QStringList duplicateElements(int fromFolioIndex, const QStringList &elementUuids,
+												  int toFolioIndex, double x, double y);
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
@@ -389,6 +410,7 @@ class QetScriptApi : public QObject
 		// -- navigate and message --
 		Q_INVOKABLE bool selectElement(const QString &elementUuid);
 		Q_INVOKABLE void deselectAll(int folioIndex);
+		Q_INVOKABLE QStringList selectedElements(int folioIndex) const;
 		Q_INVOKABLE bool zoomFit();
 		Q_INVOKABLE bool zoomToContent();
 		Q_INVOKABLE bool zoomReset();

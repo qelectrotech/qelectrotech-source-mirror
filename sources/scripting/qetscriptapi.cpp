@@ -41,6 +41,7 @@
 #include "../TerminalStrip/terminalstrip.h"
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
+#include "../diagramcommands.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../qetinformation.h"
@@ -57,6 +58,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
+#include <QDomDocument>
 #include <QFileInfo>
 #include <QFont>
 #include <QImage>
@@ -2189,6 +2191,98 @@ bool QetScriptApi::numberElement(int folioIndex, const QString &elementUuid)
 	return true;
 }
 
+/**
+	@brief QetScriptApi::duplicateElements
+	Copy elements, and the conductors between them, to another place.
+
+	Mirrors DiagramView::copy() and DiagramView::paste(): the copy is
+	Diagram::toXml(false, true) of the diagram's @em selection, so the named
+	elements are selected for the moment and the previous selection restored
+	before returning; the paste is Diagram::fromXml() at the position,
+	followed by one PasteDiagramCommand so it is a single undo step.
+	@return the uuids of the new elements, or an empty list on failure
+*/
+QStringList QetScriptApi::duplicateElements(int fromFolioIndex, const QStringList &elementUuids,
+											int toFolioIndex, double x, double y)
+{
+	QStringList created;
+	if (!m_project) return created;
+	const QString caller = QStringLiteral("duplicateElements");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return created;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (fromFolioIndex < 0 || fromFolioIndex >= diagrams.count()
+		|| toFolioIndex < 0 || toFolioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.%1: folio index out of range").arg(caller));
+		return created;
+	}
+	if (elementUuids.isEmpty()) {
+		log(QStringLiteral("qet.%1: no elements named").arg(caller));
+		return created;
+	}
+	Diagram *source = diagrams.at(fromFolioIndex);
+	Diagram *target = diagrams.at(toFolioIndex);
+
+	QList<Element *> chosen;
+	for (const QString &uuid : elementUuids) {
+		Element *e = findElement(fromFolioIndex, uuid);
+		if (!e) {
+			log(QStringLiteral("qet.%1: no element %2 on folio %3").arg(caller, uuid).arg(fromFolioIndex));
+			return created;
+		}
+		chosen << e;
+	}
+
+	// Copying works on the selection, so borrow it and give it back.
+	const QList<QGraphicsItem *> previous = source->selectedItems();
+	source->clearSelection();
+	for (Element *e : std::as_const(chosen)) e->setSelected(true);
+	const QDomDocument document = source->toXml(false, true);
+	source->clearSelection();
+	for (QGraphicsItem *item : previous) item->setSelected(true);
+
+	DiagramContent pasted;
+	QDomDocument copy = document;
+	target->fromXml(copy, QPointF(x, y), false, &pasted);
+	if (!pasted.count()) {
+		log(QStringLiteral("qet.%1: nothing was pasted").arg(caller));
+		return created;
+	}
+	target->clearSelection();
+	target->undoStack().push(new PasteDiagramCommand(target, pasted));
+
+	// The pasted list comes back in the scene's order, not the order the
+	// caller asked in: requesting the elements at x = 700, 100, 900 returned
+	// the copies of 100, 700, 900. A caller pairing copies with sources by
+	// index would be wired to the wrong ones with no error. A paste is a pure
+	// translation, so sorting sources and copies by position pairs them
+	// correctly, and the result can be returned in the request's order.
+	auto by_position = [](Element *a, Element *b) {
+		const QPointF pa = a->pos(), pb = b->pos();
+		if (pa.y() != pb.y()) return pa.y() < pb.y();
+		return pa.x() < pb.x();
+	};
+	QList<Element *> sources_sorted = chosen;
+	std::stable_sort(sources_sorted.begin(), sources_sorted.end(), by_position);
+	QList<Element *> copies_sorted = pasted.m_elements;
+	std::stable_sort(copies_sorted.begin(), copies_sorted.end(), by_position);
+	if (copies_sorted.count() != sources_sorted.count()) {
+		// A paste that produced a different number of elements than were
+		// copied cannot be paired, and a wrong pairing is worse than none.
+		log(QStringLiteral("qet.%1: %2 element(s) were copied but %3 pasted; "
+						   "cannot say which copy is which").arg(caller)
+			.arg(sources_sorted.count()).arg(copies_sorted.count()));
+		for (Element *e : std::as_const(copies_sorted)) created << e->uuid().toString();
+		return created;
+	}
+	for (Element *source_element : std::as_const(chosen)) {
+		created << copies_sorted.at(sources_sorted.indexOf(source_element))->uuid().toString();
+	}
+	return created;
+}
+
 int QetScriptApi::addFolio()
 {
 	if (!m_project) return -1;
@@ -2262,6 +2356,21 @@ bool QetScriptApi::selectElement(const QString &elementUuid)
 		}
 	}
 	return false;
+}
+
+QStringList QetScriptApi::selectedElements(int folioIndex) const
+{
+	QStringList list;
+	if (!m_project) return list;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
+	for (QGraphicsItem *item : diagrams.at(folioIndex)->selectedItems()) {
+		if (item->type() == Element::Type) {
+			list << static_cast<Element *>(item)->uuid().toString();
+		}
+	}
+	list.sort();
+	return list;
 }
 
 void QetScriptApi::deselectAll(int folioIndex)
