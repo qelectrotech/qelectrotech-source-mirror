@@ -211,6 +211,27 @@ class DynamicElementTextItem;
 	  the folio properties panel offers; the title block's header sizes,
 	  which it does not, are left alone. Changing the project title is not
 	  undoable: the application sets it directly too.
+
+	  A folio's title block @b template is a seventh, separate case:
+	  Diagram::setTitleBlockTemplate() resolves a name only against
+	  QETProject::embeddedTitleBlockTemplatesCollection() -- the same
+	  copy-into-the-project step addElement() already does for elements,
+	  and for the same reason (a project opened on another machine must not
+	  depend on files only this one has). titleBlockTemplates() lists what
+	  is embedded and what is available to embed from the common/company
+	  /custom collections, each name suffixed with its source;
+	  embedTitleBlockTemplate() does the copy (QDomElement in, unmodified,
+	  via *TemplatesCollection::get/setTemplateXmlDescription() -- neither
+	  side is scripting-specific code, both already exist for the template
+	  editor to call). setFolioProperty(folio, "template", name) then
+	  embeds it first if it is not already, refusing only if no collection
+	  has that name at all. Embedding is not undoable, the same as defining
+	  an auto-numbering context is not: the application does both through
+	  direct collection/project calls with no undo command of their own.
+	  A template literally named "default" reads back as folioProperty()
+	  "" afterwards, not "default": BorderTitleBlock::titleBlockTemplateName()
+	  treats the two as the same thing, since "no override" already renders
+	  with the template named "default".
 	- @b Geometry and folio order: elementGeometry() reads where an element
 	  is -- x, y (its origin), rotation, and the box it occupies on the folio
 	  (left, top, right, bottom) -- so a script can lay one thing out relative
@@ -417,6 +438,10 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setProjectTitle(const QString &title);
 		Q_INVOKABLE QString folioBorder(int folioIndex, const QString &property) const;
 		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
+
+		// -- title block templates: which exist, embedding one into the project --
+		Q_INVOKABLE QStringList titleBlockTemplates() const;
+		Q_INVOKABLE bool embedTitleBlockTemplate(const QString &name);
 
 		// -- read an element's geometry --
 		Q_INVOKABLE QVariantMap elementGeometry(int folioIndex, const QString &elementUuid) const;

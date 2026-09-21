@@ -28,6 +28,7 @@
 #include "../qetgraphicsitem/element.h"
 #include "../qetmessagebox.h"
 #include "../dataBase/projectdatabase.h"
+#include "../qetapp.h"
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
@@ -42,6 +43,7 @@
 #include "../autoNum/assignvariables.h"
 #include "../autoNum/numerotationcontext.h"
 #include "../borderproperties.h"
+#include "../titleblock/templatescollection.h"
 #include "../diagramcommands.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetgraphicsitem/terminalelement.h"
@@ -1504,13 +1506,17 @@ QString *titleBlockField(TitleBlockProperties &p, const QString &name)
 	// QElectroTech writes on every save, so a value set here reports success
 	// and is overwritten -- measured: set "V9-USER", read back "0.200.1-dev".
 	if (name == QLatin1String("folio"))     return &p.folio;
+	// Not "template" either: template_name resolves against the project's
+	// embedded collection, not free text, so it goes through
+	// setFolioProperty()'s own branch (embedTitleBlockTemplate() first)
+	// rather than this direct field lookup.
 	return nullptr;
 }
 const QStringList &titleBlockFieldNames()
 {
 	static const QStringList n{QStringLiteral("title"), QStringLiteral("author"),
 		QStringLiteral("filename"), QStringLiteral("plant"), QStringLiteral("locmach"),
-		QStringLiteral("indexrev"), QStringLiteral("folio")};
+		QStringLiteral("indexrev"), QStringLiteral("folio"), QStringLiteral("template")};
 	return n;
 }
 } // namespace
@@ -1520,7 +1526,10 @@ QString QetScriptApi::folioProperty(int folioIndex, const QString &property) con
 	if (!m_project) return QString();
 	const QList<Diagram *> diagrams = m_project->diagrams();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return QString();
-	TitleBlockProperties p = diagrams.at(folioIndex)->border_and_titleblock.exportTitleBlock();
+	Diagram *diagram = diagrams.at(folioIndex);
+	if (property == QLatin1String("template"))
+		return diagram->border_and_titleblock.titleBlockTemplateName();
+	TitleBlockProperties p = diagram->border_and_titleblock.exportTitleBlock();
 	QString *field = titleBlockField(p, property);
 	return field ? *field : QString();
 }
@@ -1543,6 +1552,27 @@ bool QetScriptApi::setFolioProperty(int folioIndex, const QString &property, con
 	const QList<Diagram *> diagrams = m_project->diagrams();
 	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
 	Diagram *diagram = diagrams.at(folioIndex);
+
+	// Not a TitleBlockProperties field like the others below: the template
+	// is named by whatever the project's embedded collection calls it, not
+	// by a value stored on this folio's own properties, so it has to be
+	// embedded (or already present) before Diagram::setTitleBlockTemplate()
+	// -- the same public slot BorderTitleBlock's own needTitleBlockTemplate
+	// signal calls -- can find it.
+	if (property == QLatin1String("template")) {
+		// BorderTitleBlock::titleBlockTemplateName() normalises a template
+		// literally named "default" back to "" -- indistinguishable, once
+		// set, from no override at all (a template named "default" ships
+		// in the common collection and is genuinely what "no override"
+		// renders with). Compare against that same normalised form, or a
+		// script setting "default" would see this report failure although
+		// the application applied it correctly -- measured: it did.
+		const QString normalised = (value == QLatin1String("default")) ? QString() : value;
+		if (diagram->border_and_titleblock.titleBlockTemplateName() == normalised) return true;
+		if (!embedTitleBlockTemplate(value)) return false;
+		diagram->setTitleBlockTemplate(value);
+		return diagram->border_and_titleblock.titleBlockTemplateName() == normalised;
+	}
 
 	TitleBlockProperties old_p = diagram->border_and_titleblock.exportTitleBlock();
 	TitleBlockProperties new_p = old_p;
@@ -2425,6 +2455,74 @@ int QetScriptApi::insertFolio(int position)
 	Diagram *diagram = m_project->addNewDiagram(position);
 	if (!diagram) return -1;
 	return m_project->diagrams().indexOf(diagram);
+}
+
+/**
+	@brief QetScriptApi::titleBlockTemplates
+	Every title block template this project can use right now (embedded)
+	or could embed and then use (common, company, custom), each name
+	suffixed with which. A name can appear more than once, under different
+	sources -- embedding does not remove it from where it came from, and a
+	project can have its own embedded copy of a name the common collection
+	also has, which then shadows it (Diagram::setTitleBlockTemplate() only
+	ever looks in the embedded one).
+*/
+QStringList QetScriptApi::titleBlockTemplates() const
+{
+	QStringList list;
+	if (!m_project) return list;
+	auto describe = [&list](TitleBlockTemplatesCollection *c, const QString &source) {
+		if (!c) return;
+		const QStringList names = c->templates();
+		for (const QString &n : names) {
+			list << QStringLiteral("%1 (%2)").arg(n, source);
+		}
+	};
+	describe(m_project->embeddedTitleBlockTemplatesCollection(), QStringLiteral("embedded"));
+	describe(QETApp::commonTitleBlockTemplatesCollection(), QStringLiteral("common"));
+	describe(QETApp::companyTitleBlockTemplatesCollection(), QStringLiteral("company"));
+	describe(QETApp::customTitleBlockTemplatesCollection(), QStringLiteral("custom"));
+	return list;
+}
+
+/**
+	@brief QetScriptApi::embedTitleBlockTemplate
+	Copy a template's XML into the project's own embedded collection, from
+	the first of common/company/custom that has it -- the same
+	get/setTemplateXmlDescription() round trip the template editor itself
+	uses to save one, not scripting-specific code. A no-op, reporting
+	success, if the project already has an embedded copy of that name: the
+	embedded one is what Diagram::setTitleBlockTemplate() will use either
+	way, so re-embedding would only discard a project-specific edit to it
+	for no reason.
+*/
+bool QetScriptApi::embedTitleBlockTemplate(const QString &name)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.embedTitleBlockTemplate: project is read-only"));
+		return false;
+	}
+	if (name.isEmpty()) {
+		log(QStringLiteral("qet.embedTitleBlockTemplate: empty name"));
+		return false;
+	}
+	auto *embedded = m_project->embeddedTitleBlockTemplatesCollection();
+	if (embedded->templates().contains(name)) return true;
+
+	const QList<TitleBlockTemplatesCollection *> sources{
+		QETApp::commonTitleBlockTemplatesCollection(),
+		QETApp::companyTitleBlockTemplatesCollection(),
+		QETApp::customTitleBlockTemplatesCollection()};
+	for (TitleBlockTemplatesCollection *source : sources)
+	{
+		if (!source || !source->templates().contains(name)) continue;
+		const QDomElement xml = source->getTemplateXmlDescription(name);
+		if (xml.isNull()) continue;
+		return embedded->setTemplateXmlDescription(name, xml);
+	}
+	log(QStringLiteral("qet.embedTitleBlockTemplate: no collection has a template named '%1'").arg(name));
+	return false;
 }
 
 int QetScriptApi::addFolio()
