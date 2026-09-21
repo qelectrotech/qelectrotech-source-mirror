@@ -26,6 +26,7 @@ class QETProject;
 class DiagramView;
 class Element;
 class Terminal;
+class Conductor;
 
 /**
 	@brief The QetScriptApi class
@@ -94,6 +95,27 @@ class Terminal;
 	  catalog .elmt definition, empty for most of the installed base and,
 	  where present, identical across every instance of that element -- so
 	  it does not distinguish one placed coil's A1 from another's.
+	- @b Conductor properties and @b cross-references: set a conductor's
+	  number, formula, colour or section, and link a master to a slave or
+	  one report to another. Both follow the application's own rules rather
+	  than writing the field: a conductor property is applied to every
+	  conductor of the same electrical potential, which is what the GUI and
+	  search-and-replace both do -- a wire number belongs to a potential,
+	  not to one drawn segment -- and a link is refused unless
+	  LinkElementCommand::isLinkable() allows it, which is where the
+	  master/slave, PLC-pairing and report-direction rules already live.
+	  linkElements() takes a folio index for each end because a master and
+	  its slave are usually on different ones.
+
+	  A conductor is addressed as "the conductor on terminal i of element
+	  U", not by an identity of its own: conductors have no persisted uuid,
+	  and the folio-scoped integer ids the file uses for their ends are
+	  renumbered on every save, so there is nothing stable to name one by.
+	  Since the change is potential-wide anyway, any terminal of the
+	  potential names it equally well. A terminal carrying more than one
+	  conductor is ambiguous and is refused rather than guessed at -- which
+	  in practice means a potential is addressed from one of its leaf
+	  terminals, not from the hub several conductors meet at.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -174,6 +196,21 @@ class QetScriptApi : public QObject
 									  const QString &elementUuidA, int terminalIndexA,
 									  const QString &elementUuidB, int terminalIndexB);
 
+		// -- conductor properties, applied to the whole potential --
+		Q_INVOKABLE QStringList conductors(int folioIndex) const;
+		Q_INVOKABLE QString conductorProperty(int folioIndex, const QString &elementUuid,
+											  int terminalIndex, const QString &property) const;
+		Q_INVOKABLE bool setConductorProperty(int folioIndex, const QString &elementUuid,
+											  int terminalIndex, const QString &property,
+											  const QString &value);
+
+		// -- cross-references: master/slave and report links --
+		Q_INVOKABLE QString elementLinkType(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE QStringList linkedElements(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE bool linkElements(int folioIndexA, const QString &elementUuidA,
+									  int folioIndexB, const QString &elementUuidB);
+		Q_INVOKABLE bool unlinkElement(int folioIndex, const QString &elementUuid);
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
@@ -199,6 +236,8 @@ class QetScriptApi : public QObject
 		Element *findElement(int folioIndex, const QString &elementUuid) const;
 		Terminal *findTerminal(int folioIndex, const QString &elementUuid, int terminalIndex,
 							   const QString &caller);
+		Conductor *findConductor(int folioIndex, const QString &elementUuid, int terminalIndex,
+								 const QString &caller);
 		bool setInfoKey(int folioIndex, const QString &elementUuid,
 						const QString &key, const QString &value, const QString &caller);
 

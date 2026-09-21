@@ -29,6 +29,7 @@
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
 #include "../qetresult.h"
+#include "../qetgraphicsitem/conductor.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../titleblockproperties.h"
@@ -36,6 +37,7 @@
 #include "../undocommand/changeelementinformationcommand.h"
 #include "../undocommand/changetitleblockcommand.h"
 #include "../undocommand/deleteqgraphicsitemcommand.h"
+#include "../undocommand/linkelementcommand.h"
 #include "../utils/conductorcreator.h"
 
 #include <QTextStream>
@@ -290,6 +292,95 @@ Terminal *QetScriptApi::findTerminal(int folioIndex, const QString &elementUuid,
 	}
 	return terminals.at(terminalIndex);
 }
+
+/**
+	@brief QetScriptApi::findConductor
+	The single conductor attached to a terminal, or nullptr.
+
+	Conductors carry no persisted uuid, and the terminal1/terminal2 ids the
+	file uses for their ends are folio-scoped integers QElectroTech
+	renumbers on every save, so a conductor has no name that survives a
+	save/load cycle. Naming one by a terminal it is attached to does, and
+	it reads the way the question is usually asked ("the wire on A1 of
+	KM1"). A terminal with several conductors on it does not name one, so
+	refuse rather than silently take the first.
+*/
+Conductor *QetScriptApi::findConductor(int folioIndex, const QString &elementUuid,
+									   int terminalIndex, const QString &caller)
+{
+	Terminal *terminal = findTerminal(folioIndex, elementUuid, terminalIndex, caller);
+	if (!terminal) return nullptr;
+	const QList<Conductor *> conductors = terminal->conductors();
+	if (conductors.isEmpty()) {
+		log(QStringLiteral("qet.%1: terminal %2 of %3 has no conductor on it")
+			.arg(caller).arg(terminalIndex).arg(elementUuid));
+		return nullptr;
+	}
+	if (conductors.count() > 1) {
+		log(QStringLiteral("qet.%1: terminal %2 of %3 carries %4 conductors, so it does "
+						   "not name one -- use a terminal with a single conductor")
+			.arg(caller).arg(terminalIndex).arg(elementUuid).arg(conductors.count()));
+		return nullptr;
+	}
+	return conductors.first();
+}
+
+namespace {
+
+/**
+	Read or write one named conductor property. The names are the ones the
+	project file uses for the same fields (ConductorProperties::toXml), so
+	that what a script sets is what a reader of the .qet sees, rather than
+	a third spelling invented here.
+*/
+QString conductorPropertyValue(const ConductorProperties &p, const QString &name)
+{
+	if (name == QLatin1String("num"))               return p.text;
+	if (name == QLatin1String("formula"))           return p.m_formula;
+	if (name == QLatin1String("function"))          return p.m_function;
+	if (name == QLatin1String("bus"))               return p.m_bus;
+	if (name == QLatin1String("cable"))             return p.m_cable;
+	if (name == QLatin1String("tension_protocol"))  return p.m_tension_protocol;
+	if (name == QLatin1String("conductor_color"))   return p.m_wire_color;
+	if (name == QLatin1String("conductor_section")) return p.m_wire_section;
+	if (name == QLatin1String("color"))             return p.color.name();
+	if (name == QLatin1String("text_color"))        return p.text_color.name();
+	return QString();
+}
+
+bool setConductorPropertyValue(ConductorProperties &p, const QString &name, const QString &value)
+{
+	if (name == QLatin1String("num"))               { p.text = value; return true; }
+	if (name == QLatin1String("formula"))           { p.m_formula = value; return true; }
+	if (name == QLatin1String("function"))          { p.m_function = value; return true; }
+	if (name == QLatin1String("bus"))               { p.m_bus = value; return true; }
+	if (name == QLatin1String("cable"))             { p.m_cable = value; return true; }
+	if (name == QLatin1String("tension_protocol"))  { p.m_tension_protocol = value; return true; }
+	if (name == QLatin1String("conductor_color"))   { p.m_wire_color = value; return true; }
+	if (name == QLatin1String("conductor_section")) { p.m_wire_section = value; return true; }
+	// The two real colours are QColor, not free text: an unparseable name
+	// would otherwise be stored as an invalid colour and drawn as black.
+	if (name == QLatin1String("color") || name == QLatin1String("text_color"))
+	{
+		const QColor c(value);
+		if (!c.isValid()) return false;
+		if (name == QLatin1String("color")) p.color = c; else p.text_color = c;
+		return true;
+	}
+	return false;
+}
+
+const QStringList &conductorPropertyNames()
+{
+	static const QStringList names {
+		QStringLiteral("num"), QStringLiteral("formula"), QStringLiteral("function"),
+		QStringLiteral("bus"), QStringLiteral("cable"), QStringLiteral("tension_protocol"),
+		QStringLiteral("conductor_color"), QStringLiteral("conductor_section"),
+		QStringLiteral("color"), QStringLiteral("text_color")};
+	return names;
+}
+
+} // namespace
 
 bool QetScriptApi::setInfoKey(int folioIndex, const QString &elementUuid,
 							  const QString &key, const QString &value, const QString &caller)
@@ -628,6 +719,198 @@ bool QetScriptApi::addConductor(int folioIndex,
 	// ConductorCreator has no return value and several ways to decline
 	// quietly, so report what actually happened rather than that it ran.
 	return t1->isLinkedTo(t2);
+}
+
+/**
+	@brief QetScriptApi::conductors
+	One line per conductor on the folio: which terminals it joins and its
+	number, in the form setConductorProperty() addresses them. Descriptive
+	rather than structured for the same reason elementTerminals() is -- it
+	exists so a script, or a person reading its output, can see what is
+	there before changing it.
+*/
+QStringList QetScriptApi::conductors(int folioIndex) const
+{
+	QStringList list;
+	if (!m_project) return list;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return list;
+
+	auto describe = [](Terminal *t) -> QString {
+		if (!t || !t->parentElement()) return QStringLiteral("?");
+		return QStringLiteral("%1 terminal %2")
+				.arg(t->parentElement()->uuid().toString())
+				.arg(t->parentElement()->terminals().indexOf(t));
+	};
+
+	DiagramContent content(diagrams.at(folioIndex), false);
+	const QList<Conductor *> all = content.conductors(DiagramContent::AnyConductor);
+	for (Conductor *c : all)
+	{
+		list << QStringLiteral("%1 -- %2 : num='%3'")
+				.arg(describe(c->terminal1), describe(c->terminal2), c->properties().text);
+	}
+	return list;
+}
+
+QString QetScriptApi::conductorProperty(int folioIndex, const QString &elementUuid,
+										int terminalIndex, const QString &property) const
+{
+	// const_cast: findConductor logs, and log() writes to stderr, which is
+	// not a const operation on this object. The lookup itself changes
+	// nothing.
+	auto *self = const_cast<QetScriptApi *>(this);
+	Conductor *conductor = self->findConductor(folioIndex, elementUuid, terminalIndex,
+											   QStringLiteral("conductorProperty"));
+	if (!conductor) return QString();
+	return conductorPropertyValue(conductor->properties(), property);
+}
+
+/**
+	@brief QetScriptApi::setConductorProperty
+	Set one property on the conductor attached to a terminal -- and on
+	every other conductor of the same electrical potential.
+
+	That is not a convenience, it is the rule the application already
+	follows: SearchAndReplaceWorker does exactly this, pushing one
+	QPropertyUndoCommand per conductor of relatedPotentialConductors()
+	inside a single macro, because a wire number, colour or section
+	describes a potential and not one drawn segment. Setting it on one
+	conductor and leaving the rest of the potential disagreeing would
+	produce a file no GUI action could have produced.
+	@return true if anything was changed, or if it already held that value
+*/
+bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUuid,
+										int terminalIndex, const QString &property,
+										const QString &value)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("setConductorProperty");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	if (!conductorPropertyNames().contains(property)) {
+		log(QStringLiteral("qet.%1: unknown property '%2'; expected one of %3")
+			.arg(caller, property, conductorPropertyNames().join(QStringLiteral(", "))));
+		return false;
+	}
+	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex, caller);
+	if (!conductor) return false;
+
+	ConductorProperties properties = conductor->properties();
+	if (!setConductorPropertyValue(properties, property, value)) {
+		log(QStringLiteral("qet.%1: '%2' is not a valid value for %3")
+			.arg(caller, value, property));
+		return false;
+	}
+	if (properties == conductor->properties()) return true; // already so
+
+	QSet<Conductor *> potential = conductor->relatedPotentialConductors(true);
+	potential << conductor;
+
+	m_project->undoStack()->beginMacro(QObject::tr("Modifier les propriétés du conducteur"));
+	for (Conductor *c : std::as_const(potential))
+	{
+		QVariant old_value, new_value;
+		old_value.setValue(c->properties());
+		new_value.setValue(properties);
+		m_project->undoStack()->push(new QPropertyUndoCommand(c, "properties", old_value, new_value));
+	}
+	m_project->undoStack()->endMacro();
+	return true;
+}
+
+QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return QString();
+	switch (element->linkType())
+	{
+		case Element::Simple:         return QStringLiteral("simple");
+		case Element::NextReport:     return QStringLiteral("next_report");
+		case Element::PreviousReport: return QStringLiteral("previous_report");
+		case Element::Master:         return QStringLiteral("master");
+		case Element::Slave:          return QStringLiteral("slave");
+		case Element::Terminale:      return QStringLiteral("terminal");
+		default:                      return QStringLiteral("unknown");
+	}
+}
+
+QStringList QetScriptApi::linkedElements(int folioIndex, const QString &elementUuid) const
+{
+	QStringList list;
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return list;
+	const QList<Element *> linked = element->linkedElements();
+	for (Element *e : linked) {
+		list << e->uuid().toString();
+	}
+	return list;
+}
+
+/**
+	@brief QetScriptApi::linkElements
+	Link two elements -- a master to a slave, or one report to its
+	counterpart. Two folio indices because a master and its slave normally
+	sit on different folios; that is the usual case, not the exception.
+
+	Whether a given pair may be linked is not decided here.
+	LinkElementCommand::isLinkable() already holds those rules -- that a
+	master takes a slave and not another master, that a PLC master pairs
+	only with a PLC slave, that a next-report pairs only with a
+	previous-report, and that the target is free -- and asking it rather
+	than re-deriving them is what keeps a script from producing a link the
+	GUI would refuse to make.
+*/
+bool QetScriptApi::linkElements(int folioIndexA, const QString &elementUuidA,
+								int folioIndexB, const QString &elementUuidB)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.linkElements: project is read-only"));
+		return false;
+	}
+	Element *a = findElement(folioIndexA, elementUuidA);
+	Element *b = findElement(folioIndexB, elementUuidB);
+	if (!a || !b) {
+		log(QStringLiteral("qet.linkElements: %1 does not resolve to an element")
+			.arg(a ? elementUuidB : elementUuidA));
+		return false;
+	}
+	if (a == b) {
+		log(QStringLiteral("qet.linkElements: an element cannot be linked to itself"));
+		return false;
+	}
+	if (!LinkElementCommand::isLinkable(a, b)) {
+		log(QStringLiteral("qet.linkElements: %1 (%2) cannot be linked to %3 (%4) -- "
+						   "check the two link types, and that the target is still free")
+			.arg(elementUuidA, elementLinkType(folioIndexA, elementUuidA),
+				 elementUuidB, elementLinkType(folioIndexB, elementUuidB)));
+		return false;
+	}
+
+	auto *cmd = new LinkElementCommand(a);
+	cmd->setLink(b);
+	m_project->undoStack()->push(cmd);
+	return a->linkedElements().contains(b);
+}
+
+bool QetScriptApi::unlinkElement(int folioIndex, const QString &elementUuid)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.unlinkElement: project is read-only"));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!element) return false;
+	if (element->linkedElements().isEmpty()) return true; // nothing to undo
+
+	auto *cmd = new LinkElementCommand(element);
+	cmd->unlinkAll();
+	m_project->undoStack()->push(cmd);
+	return element->linkedElements().isEmpty();
 }
 
 int QetScriptApi::addFolio()
