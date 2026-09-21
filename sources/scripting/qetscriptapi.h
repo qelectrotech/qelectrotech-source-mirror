@@ -156,6 +156,16 @@ class QetShapeItem;
 	  re-sorted) and does shift when one is removed. Only elements whose
 	  link type is "terminal" can be added, the same restriction the
 	  editor enforces by construction.
+	- @b Auto-numbering: define a named numbering context of kind
+	  "conductor", "element" or "folio", built from parts written
+	  "type[:value[:increase]]" -- types are the ones the auto-numbering
+	  dialog offers (string, unit, ten, hundred, alpha, idfolio, folio,
+	  plant, locmach, elementline, elementcolumn, elementprefix, wrap,
+	  unitfolio, tenfolio, hundredfolio) -- and select which one a folio's
+	  new conductors use. Defining or removing a context is not undoable,
+	  because the application itself does it through direct project calls
+	  and only the counter advance is on the undo stack; the numbering
+	  actually applied to a conductor is.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -282,6 +292,12 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool removeTerminalStrip(int stripIndex);
 		Q_INVOKABLE bool addTerminalToStrip(int stripIndex, int folioIndex,
 											const QString &elementUuid);
+
+		// -- auto-numbering contexts (conductor, element, folio) --
+		Q_INVOKABLE QStringList autoNums(const QString &kind) const;
+		Q_INVOKABLE bool addAutoNum(const QString &kind, const QString &name, const QStringList &parts);
+		Q_INVOKABLE bool removeAutoNum(const QString &kind, const QString &name);
+		Q_INVOKABLE bool useConductorAutoNum(int folioIndex, const QString &name);
 
 		// -- folios --
 		Q_INVOKABLE int addFolio();

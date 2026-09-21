@@ -37,6 +37,8 @@
 #include "../TerminalStrip/UndoCommand/addterminaltostripcommand.h"
 #include "../TerminalStrip/realterminal.h"
 #include "../TerminalStrip/terminalstrip.h"
+#include "../autoNum/assignvariables.h"
+#include "../autoNum/numerotationcontext.h"
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetgraphicsitem/terminalelement.h"
 #include "../qetinformation.h"
@@ -1451,6 +1453,124 @@ bool QetScriptApi::addTerminalToStrip(int stripIndex, int folioIndex, const QStr
 	}
 	m_project->undoStack()->push(new AddTerminalToStripCommand(real, strips.at(stripIndex)));
 	return real->parentStrip() == strips.at(stripIndex);
+}
+
+namespace {
+QHash<QString, NumerotationContext> autoNumTable(QETProject *project, const QString &kind, bool *ok)
+{
+	*ok = true;
+	if (kind == QLatin1String("conductor")) return project->conductorAutoNum();
+	if (kind == QLatin1String("element"))   return project->elementAutoNum();
+	if (kind == QLatin1String("folio"))     return project->folioAutoNum();
+	*ok = false;
+	return {};
+}
+} // namespace
+
+QStringList QetScriptApi::autoNums(const QString &kind) const
+{
+	QStringList list;
+	if (!m_project) return list;
+	bool ok;
+	const QHash<QString, NumerotationContext> table = autoNumTable(m_project, kind, &ok);
+	if (!ok) return list;
+	const QStringList names = table.keys();
+	for (const QString &name : names) {
+		list << QStringLiteral("%1: formula='%2'")
+				.arg(name, autonum::numerotationContextToFormula(table.value(name)));
+	}
+	list.sort();
+	return list;
+}
+
+/**
+	@brief QetScriptApi::addAutoNum
+	Define (or replace) a named numbering context. Each part is
+	"type[:value[:increase]]"; a numeric type takes its starting value and
+	how much it advances by, a text type its text. Anything the
+	NumerotationContext rejects -- an unknown type, a non-numeric value for
+	a numeric type -- is refused rather than dropped.
+*/
+bool QetScriptApi::addAutoNum(const QString &kind, const QString &name, const QStringList &parts)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addAutoNum: project is read-only"));
+		return false;
+	}
+	bool ok;
+	autoNumTable(m_project, kind, &ok);
+	if (!ok) {
+		log(QStringLiteral("qet.addAutoNum: unknown kind '%1'; expected conductor, element or folio").arg(kind));
+		return false;
+	}
+	if (name.isEmpty() || parts.isEmpty()) {
+		log(QStringLiteral("qet.addAutoNum: a name and at least one part are required"));
+		return false;
+	}
+
+	NumerotationContext context;
+	for (const QString &part : parts)
+	{
+		const QStringList f = part.split(QLatin1Char(':'));
+		const QString type = f.value(0);
+		const QVariant value = f.size() > 1 ? QVariant(f.at(1)) : QVariant(1);
+		bool inc_ok = true;
+		const int increase = f.size() > 2 ? f.at(2).toInt(&inc_ok) : 1;
+		if (!context.keyIsAcceptable(type) || !inc_ok || !context.addValue(type, value, increase)) {
+			log(QStringLiteral("qet.addAutoNum: cannot use part '%1'").arg(part));
+			return false;
+		}
+	}
+
+	if (kind == QLatin1String("conductor"))     m_project->addConductorAutoNum(name, context);
+	else if (kind == QLatin1String("element"))  m_project->addElementAutoNum(name, context);
+	else                                        m_project->addFolioAutoNum(name, context);
+	return true;
+}
+
+bool QetScriptApi::removeAutoNum(const QString &kind, const QString &name)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.removeAutoNum: project is read-only"));
+		return false;
+	}
+	bool ok;
+	const QHash<QString, NumerotationContext> table = autoNumTable(m_project, kind, &ok);
+	if (!ok || !table.contains(name)) {
+		log(QStringLiteral("qet.removeAutoNum: no %1 auto-numbering named '%2'").arg(kind, name));
+		return false;
+	}
+	if (kind == QLatin1String("conductor"))     m_project->removeConductorAutoNum(name);
+	else if (kind == QLatin1String("element"))  m_project->removeElementAutoNum(name);
+	else                                        m_project->removeFolioAutoNum(name);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::useConductorAutoNum
+	Make new conductors on a folio take their number from a named context.
+	Sets both what the folio reads and the project's current name, because
+	ConductorAutoNumerotation reads the context by the former and writes the
+	advanced counter back under the latter.
+*/
+bool QetScriptApi::useConductorAutoNum(int folioIndex, const QString &name)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.useConductorAutoNum: project is read-only"));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+	if (!name.isEmpty() && !m_project->conductorAutoNum().contains(name)) {
+		log(QStringLiteral("qet.useConductorAutoNum: no conductor auto-numbering named '%1'").arg(name));
+		return false;
+	}
+	diagrams.at(folioIndex)->setConductorsAutonumName(name);
+	m_project->setCurrentConductorAutoNum(name);
+	return true;
 }
 
 int QetScriptApi::addFolio()
