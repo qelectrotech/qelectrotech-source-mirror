@@ -38,6 +38,10 @@
 #include "../qetgraphicsitem/qetshapeitem.h"
 #include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
 #include "../TerminalStrip/UndoCommand/addterminaltostripcommand.h"
+#include "../TerminalStrip/UndoCommand/bridgeterminalscommand.h"
+#include "../TerminalStrip/UndoCommand/groupterminalscommand.h"
+#include "../TerminalStrip/UndoCommand/sortterminalstripcommand.h"
+#include "../TerminalStrip/physicalterminal.h"
 #include "../TerminalStrip/realterminal.h"
 #include "../TerminalStrip/terminalstrip.h"
 #include "../autoNum/assignvariables.h"
@@ -1666,6 +1670,177 @@ bool QetScriptApi::addTerminalToStrip(int stripIndex, int folioIndex, const QStr
 	}
 	m_project->undoStack()->push(new AddTerminalToStripCommand(real, strips.at(stripIndex)));
 	return real->parentStrip() == strips.at(stripIndex);
+}
+
+/**
+	@brief QetScriptApi::stripRealTerminals
+	The strip's real terminals -- the wire-ends added by addTerminalToStrip()
+	-- one line per index: the owning element's uuid, the terminal's own
+	name, and which physical position (clamp) it currently sits on, by that
+	position's own index (so several real terminals reporting the same
+	physical index are already grouped together).
+*/
+QStringList QetScriptApi::stripRealTerminals(int stripIndex) const
+{
+	QStringList list;
+	if (!m_project) return list;
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	if (stripIndex < 0 || stripIndex >= strips.count()) return list;
+	TerminalStrip *strip = strips.at(stripIndex);
+
+	const QVector<QSharedPointer<PhysicalTerminal>> physical = strip->physicalTerminal();
+	const QVector<QSharedPointer<RealTerminal>> real = strip->realTerminals();
+	for (int i = 0 ; i < real.count() ; ++i)
+	{
+		QSharedPointer<RealTerminal> rt = real.at(i);
+		QSharedPointer<PhysicalTerminal> pt = rt->physicalTerminal();
+		const int physical_index = pt ? physical.indexOf(pt) : -1;
+		list << QStringLiteral("%1: %2 terminal '%3', physical position %4 (%5 terminal(s) there)")
+				.arg(i)
+				.arg(rt->element() ? rt->element()->uuid().toString() : QStringLiteral("?"))
+				.arg(rt->label())
+				.arg(physical_index)
+				.arg(pt ? pt->realTerminalCount() : 0);
+	}
+	return list;
+}
+
+namespace {
+/**
+	Resolve a list of indices into stripRealTerminals() to the RealTerminal
+	objects groupTerminals()/bridgeTerminals() need, or an empty (and
+	therefore refusable) list if any index is out of range or the list has
+	fewer than the two terminals either operation requires.
+*/
+QVector<QSharedPointer<RealTerminal>> resolveRealTerminals(
+		TerminalStrip *strip, const QVariantList &indices, const QString &caller,
+		QetScriptApi *api)
+{
+	QVector<QSharedPointer<RealTerminal>> out;
+	const QVector<QSharedPointer<RealTerminal>> all = strip->realTerminals();
+	if (indices.count() < 2) {
+		api->log(QStringLiteral("qet.%1: at least two real terminals are required").arg(caller));
+		return {};
+	}
+	for (const QVariant &v : indices) {
+		bool ok = false;
+		const int i = v.toInt(&ok);
+		if (!ok || i < 0 || i >= all.count()) {
+			api->log(QStringLiteral("qet.%1: %2 is not a valid real terminal index (strip has %3)")
+				.arg(caller, v.toString()).arg(all.count()));
+			return {};
+		}
+		out << all.at(i);
+	}
+	return out;
+}
+} // namespace
+
+/**
+	@brief QetScriptApi::groupTerminals
+	Merge several real terminals onto one physical position, through
+	GroupTerminalsCommand exactly as the terminal strip editor's "group"
+	button does -- including which position receives the others: the one
+	among those named that already carries the most real terminals, the
+	same heuristic the editor applies, not necessarily the first one given.
+*/
+bool QetScriptApi::groupTerminals(int stripIndex, const QVariantList &realTerminalIndices)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("groupTerminals");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	if (stripIndex < 0 || stripIndex >= strips.count()) {
+		log(QStringLiteral("qet.%1: no strip at index %2").arg(caller).arg(stripIndex));
+		return false;
+	}
+	TerminalStrip *strip = strips.at(stripIndex);
+	const QVector<QSharedPointer<RealTerminal>> chosen = resolveRealTerminals(strip, realTerminalIndices, caller, this);
+	if (chosen.isEmpty()) return false;
+
+	QSharedPointer<PhysicalTerminal> receiver = chosen.first()->physicalTerminal();
+	int best_count = 0;
+	for (const QSharedPointer<RealTerminal> &rt : chosen) {
+		QSharedPointer<PhysicalTerminal> pt = rt->physicalTerminal();
+		const int count = pt ? pt->realTerminalCount() : 0;
+		if (count > 1 && count > best_count) {
+			best_count = count;
+			receiver = pt;
+		}
+	}
+	if (!receiver) {
+		log(QStringLiteral("qet.%1: no physical position to receive the group").arg(caller));
+		return false;
+	}
+
+	QVector<QSharedPointer<RealTerminal>> to_group = chosen;
+	for (const QSharedPointer<RealTerminal> &rt : receiver->realTerminals()) {
+		to_group.removeOne(rt);
+	}
+	if (to_group.isEmpty()) {
+		log(QStringLiteral("qet.%1: every named terminal is already on the receiving position").arg(caller));
+		return true;
+	}
+	const int before = strip->physicalTerminalCount();
+	m_project->undoStack()->push(new GroupTerminalsCommand(strip, receiver, to_group));
+	return strip->physicalTerminalCount() < before;
+}
+
+/**
+	@brief QetScriptApi::bridgeTerminals
+	Wire several real terminals together electrically, through
+	BridgeTerminalsCommand as the editor's "bridge" button does. Refused,
+	via TerminalStrip::isBridgeable(), when they are not all at the same
+	level -- the editor's own check, not a rule reimplemented here.
+*/
+bool QetScriptApi::bridgeTerminals(int stripIndex, const QVariantList &realTerminalIndices)
+{
+	if (!m_project) return false;
+	const QString caller = QStringLiteral("bridgeTerminals");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return false;
+	}
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	if (stripIndex < 0 || stripIndex >= strips.count()) {
+		log(QStringLiteral("qet.%1: no strip at index %2").arg(caller).arg(stripIndex));
+		return false;
+	}
+	TerminalStrip *strip = strips.at(stripIndex);
+	const QVector<QSharedPointer<RealTerminal>> chosen = resolveRealTerminals(strip, realTerminalIndices, caller, this);
+	if (chosen.isEmpty()) return false;
+
+	if (!strip->isBridgeable(chosen)) {
+		log(QStringLiteral("qet.%1: these terminals cannot be bridged -- they are not all at the same level")
+			.arg(caller));
+		return false;
+	}
+	m_project->undoStack()->push(new BridgeTerminalsCommand(strip, chosen));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::sortTerminalStrip
+	Reorder a strip's physical positions into the canonical order the
+	editor's own "sort" button computes, through SortTerminalStripCommand.
+*/
+bool QetScriptApi::sortTerminalStrip(int stripIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.sortTerminalStrip: project is read-only"));
+		return false;
+	}
+	const QVector<TerminalStrip *> strips = m_project->terminalStrip();
+	if (stripIndex < 0 || stripIndex >= strips.count()) {
+		log(QStringLiteral("qet.sortTerminalStrip: no strip at index %1").arg(stripIndex));
+		return false;
+	}
+	m_project->undoStack()->push(new SortTerminalStripCommand(strips.at(stripIndex)));
+	return true;
 }
 
 namespace {

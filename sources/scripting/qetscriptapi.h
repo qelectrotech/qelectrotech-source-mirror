@@ -168,6 +168,25 @@ class DynamicElementTextItem;
 	  re-sorted) and does shift when one is removed. Only elements whose
 	  link type is "terminal" can be added, the same restriction the
 	  editor enforces by construction.
+
+	  stripRealTerminals() lists the strip's real terminals -- the actual
+	  wire-ends added by addTerminalToStrip(), one per index -- which
+	  physical position (clamp) each currently sits on and how many
+	  neighbours share it, since that is what groupTerminals() and
+	  bridgeTerminals() address by index into.
+
+	  groupTerminals() merges several real terminals onto one physical
+	  position, choosing the receiving position the same way the terminal
+	  strip editor's own "group" button does: the position among the ones
+	  named that already carries the most real terminals, not necessarily
+	  the first one given -- a script asking to group indices [0, 1] is not
+	  guaranteed index 0's position is where they end up. bridgeTerminals()
+	  wires several real terminals together electrically without merging
+	  their positions, refused (TerminalStrip::isBridgeable()) when they
+	  are not all at the same level -- the same check the editor's bridge
+	  button applies, not a rule reimplemented here. sortTerminalStrip()
+	  reorders the strip's physical positions into the canonical order the
+	  editor's own sort button computes.
 	- @b Auto-numbering: define a named numbering context of kind
 	  "conductor", "element" or "folio", built from parts written
 	  "type[:value[:increase]]" -- types are the ones the auto-numbering
@@ -402,6 +421,10 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool removeTerminalStrip(int stripIndex);
 		Q_INVOKABLE bool addTerminalToStrip(int stripIndex, int folioIndex,
 											const QString &elementUuid);
+		Q_INVOKABLE QStringList stripRealTerminals(int stripIndex) const;
+		Q_INVOKABLE bool groupTerminals(int stripIndex, const QVariantList &realTerminalIndices);
+		Q_INVOKABLE bool bridgeTerminals(int stripIndex, const QVariantList &realTerminalIndices);
+		Q_INVOKABLE bool sortTerminalStrip(int stripIndex);
 
 		// -- auto-numbering contexts (conductor, element, folio) --
 		Q_INVOKABLE QStringList autoNums(const QString &kind) const;
