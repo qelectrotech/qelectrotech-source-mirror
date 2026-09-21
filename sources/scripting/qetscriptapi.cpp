@@ -359,6 +359,17 @@ QString conductorPropertyValue(const ConductorProperties &p, const QString &name
 	if (name == QLatin1String("conductor_section")) return p.m_wire_section;
 	if (name == QLatin1String("color"))             return p.color.name();
 	if (name == QLatin1String("text_color"))        return p.text_color.name();
+	if (name == QLatin1String("color2"))            return p.m_color_2.name();
+	if (name == QLatin1String("bicolor"))           return p.m_bicolor ? QStringLiteral("true") : QStringLiteral("false");
+	if (name == QLatin1String("dash-size"))         return QString::number(p.m_dash_size);
+	if (name == QLatin1String("condsize"))          return QString::number(p.cond_size);
+	if (name == QLatin1String("numsize"))           return QString::number(p.text_size);
+	if (name == QLatin1String("displaytext"))       return p.m_show_text ? QStringLiteral("true") : QStringLiteral("false");
+	if (name == QLatin1String("style")) {
+		if (p.style == Qt::DashLine)    return QStringLiteral("dashed");
+		if (p.style == Qt::DashDotLine) return QStringLiteral("dashdotted");
+		return QStringLiteral("normal");
+	}
 	return QString();
 }
 
@@ -374,11 +385,47 @@ bool setConductorPropertyValue(ConductorProperties &p, const QString &name, cons
 	if (name == QLatin1String("conductor_section")) { p.m_wire_section = value; return true; }
 	// The two real colours are QColor, not free text: an unparseable name
 	// would otherwise be stored as an invalid colour and drawn as black.
-	if (name == QLatin1String("color") || name == QLatin1String("text_color"))
+	if (name == QLatin1String("color") || name == QLatin1String("text_color")
+		|| name == QLatin1String("color2"))
 	{
 		const QColor c(value);
 		if (!c.isValid()) return false;
-		if (name == QLatin1String("color")) p.color = c; else p.text_color = c;
+		if (name == QLatin1String("color")) p.color = c;
+		else if (name == QLatin1String("color2")) p.m_color_2 = c;
+		else p.text_color = c;
+		return true;
+	}
+	if (name == QLatin1String("bicolor") || name == QLatin1String("displaytext"))
+	{
+		const QString v = value.toLower();
+		if (v != QLatin1String("true") && v != QLatin1String("false")) return false;
+		(name == QLatin1String("bicolor") ? p.m_bicolor : p.m_show_text) = (v == QLatin1String("true"));
+		return true;
+	}
+	if (name == QLatin1String("dash-size") || name == QLatin1String("numsize"))
+	{
+		bool ok = false;
+		const int n = value.toInt(&ok);
+		if (!ok || n < 1) return false;
+		(name == QLatin1String("dash-size") ? p.m_dash_size : p.text_size) = n;
+		return true;
+	}
+	if (name == QLatin1String("condsize"))
+	{
+		bool ok = false;
+		const double d = value.toDouble(&ok);
+		if (!ok || d <= 0) return false;
+		p.cond_size = d;
+		return true;
+	}
+	if (name == QLatin1String("style"))
+	{
+		// The three the file format can express (ConductorProperties::readStyle);
+		// any other Qt pen style would be written back as a solid line.
+		if (value == QLatin1String("normal"))          p.style = Qt::SolidLine;
+		else if (value == QLatin1String("dashed"))     p.style = Qt::DashLine;
+		else if (value == QLatin1String("dashdotted")) p.style = Qt::DashDotLine;
+		else return false;
 		return true;
 	}
 	return false;
@@ -390,7 +437,9 @@ const QStringList &conductorPropertyNames()
 		QStringLiteral("num"), QStringLiteral("formula"), QStringLiteral("function"),
 		QStringLiteral("bus"), QStringLiteral("cable"), QStringLiteral("tension_protocol"),
 		QStringLiteral("conductor_color"), QStringLiteral("conductor_section"),
-		QStringLiteral("color"), QStringLiteral("text_color")};
+		QStringLiteral("color"), QStringLiteral("text_color"), QStringLiteral("color2"),
+		QStringLiteral("bicolor"), QStringLiteral("style"), QStringLiteral("dash-size"),
+		QStringLiteral("condsize"), QStringLiteral("numsize"), QStringLiteral("displaytext")};
 	return names;
 }
 

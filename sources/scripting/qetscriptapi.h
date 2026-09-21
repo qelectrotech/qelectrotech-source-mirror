@@ -99,7 +99,10 @@ class QetShapeItem;
 	  where present, identical across every instance of that element -- so
 	  it does not distinguish one placed coil's A1 from another's.
 	- @b Conductor properties and @b cross-references: set a conductor's
-	  number, formula, colour or section, and link a master to a slave or
+	  number, formula, colour or section (and its look: style normal/
+	  dashed/dashdotted, two-colour mode and second colour, dash size,
+	  line width, text size, whether its number is shown -- all under the
+	  names the .qet file uses for them), and link a master to a slave or
 	  one report to another. Both follow the application's own rules rather
 	  than writing the field: a conductor property is applied to every
 	  conductor of the same electrical potential, which is what the GUI and
