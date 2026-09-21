@@ -1817,6 +1817,81 @@ void QETApp::useSystemPalette(bool use) {
 }
 
 /**
+	@brief QETApp::useCustomPalette
+	Apply a user-chosen color as the application-wide palette.
+	Builds a full QPalette from \a color, keeping the system palette
+	as a fallback for roles we don't touch.
+	@param color the user-chosen base color
+*/
+void QETApp::useCustomPalette(const QColor &color) {
+	if (!color.isValid())
+		return;
+
+	// Derive readable text colors from the chosen color.
+	const bool dark = color.lightness() < 128;
+	const QColor text = dark ? QColor(220, 220, 220) : QColor(30, 30, 30);
+	const QColor disabled_text = dark ? QColor(175, 175, 175) : QColor(128, 128, 128);
+
+	// Slightly lighter/darker for button and window shading.
+	QColor button = color;
+	button = QColor::fromHslF(color.hslHueF(),
+				  color.hslSaturationF(),
+				  dark ? qMin(color.lightnessF() + 0.08, 1.0)
+				       : qMax(color.lightnessF() - 0.08, 0.0));
+	QColor light = QColor::fromHslF(color.hslHueF(),
+					color.hslSaturationF(),
+					dark ? qMin(color.lightnessF() + 0.15, 1.0)
+					     : qMax(color.lightnessF() - 0.15, 0.0));
+	QColor mid = QColor::fromHslF(color.hslHueF(),
+				     color.hslSaturationF(),
+				     dark ? qMin(color.lightnessF() + 0.04, 1.0)
+				          : qMax(color.lightnessF() - 0.04, 0.0));
+	QColor dark_c = QColor::fromHslF(color.hslHueF(),
+					 color.hslSaturationF(),
+					 dark ? qMin(color.lightnessF() - 0.04, 1.0)
+					      : qMax(color.lightnessF() - 0.12, 0.0));
+	QColor shadow = QColor::fromHslF(color.hslHueF(),
+					 color.hslSaturationF(),
+					 dark ? qMin(color.lightnessF() - 0.10, 1.0)
+					      : qMax(color.lightnessF() - 0.20, 0.0));
+
+	QPalette p;
+	// Active and Inactive get the same colors; only Disabled differs.
+	for (auto group : {QPalette::Active, QPalette::Inactive}) {
+		p.setColor(group, QPalette::Window,          color);
+		p.setColor(group, QPalette::WindowText,      text);
+		p.setColor(group, QPalette::Base,            color);
+		p.setColor(group, QPalette::AlternateBase,   button);
+		p.setColor(group, QPalette::Text,            text);
+		p.setColor(group, QPalette::Button,          button);
+		p.setColor(group, QPalette::ButtonText,      text);
+		p.setColor(group, QPalette::BrightText,      dark ? QColor(255,90,90) : Qt::white);
+		p.setColor(group, QPalette::Highlight,       QColor(30, 96, 176));
+		p.setColor(group, QPalette::HighlightedText, Qt::white);
+		p.setColor(group, QPalette::ToolTipBase,     button);
+		p.setColor(group, QPalette::ToolTipText,     text);
+		p.setColor(group, QPalette::Light,           light);
+		p.setColor(group, QPalette::Midlight,        mid);
+		p.setColor(group, QPalette::Mid,             mid);
+		p.setColor(group, QPalette::Dark,            dark_c);
+		p.setColor(group, QPalette::Shadow,          shadow);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 6, 0)
+		p.setColor(group, QPalette::Accent,          QColor(30, 96, 176));
+#endif
+	}
+	p.setColor(QPalette::Disabled, QPalette::WindowText, disabled_text);
+	p.setColor(QPalette::Disabled, QPalette::Text,       disabled_text);
+	p.setColor(QPalette::Disabled, QPalette::ButtonText, disabled_text);
+
+	qApp->setPalette(p);
+	qApp->setStyleSheet(QString());
+
+	// Switch icon theme to match light/dark.
+	applyIconTheme(p);
+	QET::Palette::refreshStyleSheets();
+}
+
+/**
 	@brief QETApp::quitQET
 	Request the closing of all windows;
 	if the user accepts them, the application quits
@@ -2404,7 +2479,13 @@ void QETApp::initStyle()
 
 	//Apply or not the system style
 	QSettings settings;
-	useSystemPalette(settings.value("usesystemcolors", true).toBool());
+	if (settings.value("usesystemcolors", true).toBool()) {
+		useSystemPalette(true);
+	} else if (settings.contains("customapplicationcolor")) {
+		useCustomPalette(QColor(settings.value("customapplicationcolor").toString()));
+	} else {
+		useSystemPalette(false);
+	}
 
 #if defined(Q_OS_MACOS) && QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
 	// Setting an application palette stops Qt from following the OS

@@ -20,7 +20,9 @@
 #include <QApplication>
 #include <QColor>
 #include <QImage>
+#include <QMdiArea>
 #include <QStyle>
+#include <QTabBar>
 #include <QWidget>
 #include <cmath>
 
@@ -307,4 +309,10 @@ void QET::Palette::refreshStyleSheets()
 	for (QWidget *widget : widgets)
 		if (!widget->styleSheet().isEmpty())
 			widget->setStyleSheet(widget->styleSheet());
+
+	// Force an immediate repaint on tab bars and MDI areas so their text
+	// updates together with the rest of the UI, not one event loop later.
+	for (QWidget *widget : widgets)
+		if (qobject_cast<QTabBar *>(widget) || qobject_cast<QMdiArea *>(widget))
+			widget->update();
 }
