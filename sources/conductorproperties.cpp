@@ -499,6 +499,7 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 		horiz_rotate_text    = cp.horiz_rotate_text;
 		m_vertical_alignment = cp.m_vertical_alignment;
 		m_horizontal_alignment = cp.m_horizontal_alignment;
+		style                = cp.style;
 
 		return;
 	}
@@ -553,6 +554,18 @@ void ConductorProperties::applyForEqualAttributes(QList<ConductorProperties> lis
 	}
 	if (equal)
 		m_dash_size = i_value;
+	equal = true;
+
+		//style
+	Qt::PenStyle pen_style;
+	pen_style = clist.first().style;
+	for(ConductorProperties cp : clist)
+	{
+		if (cp.style != pen_style)
+			equal = false;
+	}
+	if (equal)
+		style = pen_style;
 	equal = true;
 
 		//text
