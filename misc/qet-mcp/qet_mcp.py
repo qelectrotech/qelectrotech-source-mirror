@@ -118,8 +118,9 @@ def _elements(root: ET.Element):
 
 def _conductors(root: ET.Element):
     for i, d in _folios(root):
+        index = _terminal_index(d)
         for c in d.iter("conductor"):
-            yield i, c
+            yield i, c, index
 
 
 def _element_row(folio: int, el: ET.Element) -> dict:
@@ -137,14 +138,88 @@ def _element_row(folio: int, el: ET.Element) -> dict:
     }
 
 
-def _conductor_row(folio: int, c: ET.Element) -> dict:
-    # A conductor has no uuid attribute in files written before the
-    # persisted-uuid change, so identify it by its terminal pair, which is
-    # stable within a folio.
+def _terminal_index(diagram: ET.Element) -> dict:
+    """Map a folio's terminal ids to an identity that survives a save.
+
+    A conductor names its ends with terminal1/terminal2, which are plain
+    integers scoped to the folio -- and QElectroTech reassigns them on every
+    write, in whatever order it happens to serialise the elements. The same
+    untouched conductor comes back as terminal1="1" terminal2="16" before a
+    save and terminal1="34" terminal2="15" after one. Keying a conductor on
+    that pair, which this tool used to do, made every conductor in the file
+    read as removed-and-re-added whenever the "after" side had been through
+    QElectroTech -- which is the common case for "what did that edit change",
+    so the conductor half of the diff was noise precisely when it was needed.
+
+    So resolve each id to (owning element uuid, terminal position and
+    orientation inside that element). Element uuids are persisted and
+    stable; the terminal's local geometry comes from the element definition
+    and does not move when the element moves. That pair is the same basis
+    QET's own Terminal::stableUuid() uses for terminals with no uuid of
+    their own, and it is stable for the same reasons.
+
+    Conductors in the corpus carry no element1/element2 attribute -- 0 of
+    47 in ArduinoLCD.qet, 0 of 67 in 741.qet -- so this mapping has to be
+    built from the elements rather than read off the conductor.
+    """
+    index = {}
+    for el in diagram.iter("element"):
+        uuid = el.get("uuid", "")
+        if not uuid:
+            # Old enough to predate persisted element uuids. Leaving these
+            # ids unresolved is deliberate: keyed on terminal geometry
+            # alone, every element of the same type collapses together --
+            # in schema_indus.qet that merged nine distinct conductors onto
+            # one key, which is worse than the instability it was meant to
+            # fix. An unresolved end keeps them apart and stays visibly
+            # marked with a "#" so the caller can see the diff is on the
+            # unstable footing that file forces.
+            continue
+        for t in el.iter("terminal"):
+            tid = t.get("id")
+            if tid is None:
+                continue
+            index[tid] = (f"{uuid}@{t.get('x','?')},{t.get('y','?')}"
+                          f",{t.get('orientation','?')}")
+    return index
+
+
+def _conductor_key(folio: int, c: ET.Element, index: dict) -> str:
+    """Identify a conductor by its two ends, in whichever scheme it uses.
+
+    The project format has two, and a file can hold both at once -- the
+    same folio, after an edit, carries legacy conductors and new ones:
+
+    - legacy: terminal1/terminal2 are the folio-scoped integer ids, and
+      there is no element1/element2. Resolve them through index.
+    - current: terminal1/terminal2 are terminal uuids from the element
+      *definition*, with element1/element2 naming the placed instances.
+      The terminal uuid alone is not an identity -- two coils of the same
+      type have the same one on both ends, so a conductor between them
+      would key as a self-loop -- so it is the (instance, terminal) pair
+      that identifies an end.
+    """
+    ends = []
+    for elem_attr, term_attr, name_attr in (("element1", "terminal1", "terminalname1"),
+                                            ("element2", "terminal2", "terminalname2")):
+        tid = c.get(term_attr, "?")
+        owner = c.get(elem_attr)
+        if owner:
+            ends.append(f"{owner}/{tid or c.get(name_attr, '?')}")
+        else:
+            # An id with no element behind it stays visible as itself
+            # rather than silently collapsing conductors onto one key.
+            ends.append(index.get(tid, f"#{tid}"))
+    # A conductor is undirected: whichever end QET happens to write first,
+    # it is the same connection.
+    return f"{folio}:" + "--".join(sorted(ends))
+
+
+def _conductor_row(folio: int, c: ET.Element, index: dict | None = None) -> dict:
     return {
         "folio": folio,
         "uuid": c.get("uuid", ""),
-        "key": f"{folio}:{c.get('terminal1','?')}-{c.get('terminal2','?')}",
+        "key": _conductor_key(folio, c, index or {}),
         "num": c.get("num", ""),
         "formula": c.get("formula", ""),
         "cable": c.get("cable", ""),
@@ -199,10 +274,10 @@ def tool_conductors(path: str, folio: int | None = None,
                     attribute: str | None = None,
                     non_empty: bool = False, limit: int = 200) -> dict:
     rows = []
-    for i, c in _conductors(_root(path)):
+    for i, c, ix in _conductors(_root(path)):
         if folio is not None and i != folio:
             continue
-        row = _conductor_row(i, c)
+        row = _conductor_row(i, c, ix)
         if attribute is not None:
             value = c.get(attribute, "")
             if non_empty and not value.strip():
@@ -249,10 +324,22 @@ def tool_diff(before: str, after: str) -> dict:
             changed_info.append({"uuid": k, "name": a["name"],
                                  "from": a["info"], "to": b["info"]})
 
-    a_co = {r["key"]: r for i, c in _conductors(_root(before))
-            for r in [_conductor_row(i, c)]}
-    b_co = {r["key"]: r for i, c in _conductors(_root(after))
-            for r in [_conductor_row(i, c)]}
+    a_co = {r["key"]: r for i, c, ix in _conductors(_root(before))
+            for r in [_conductor_row(i, c, ix)]}
+    b_co = {r["key"]: r for i, c, ix in _conductors(_root(after))
+            for r in [_conductor_row(i, c, ix)]}
+    # An end that could not be resolved to an element is keyed on the
+    # folio-scoped integer id, which QElectroTech reassigns on every write.
+    # Say so rather than presenting the result as if it were comparable:
+    # in such a file an untouched conductor can read as removed and re-added.
+    shaky = sum(1 for k in set(a_co) | set(b_co) if "#" in k)
+    unstable = {} if not shaky else {
+        "unstable_keys": shaky,
+        "warning": "some conductors sit on elements with no persisted uuid, so "
+                   "they are keyed on folio-scoped terminal ids that "
+                   "QElectroTech renumbers on save; added/removed entries "
+                   "marked with # may be the same conductor, not a change",
+    }
     conductor_changes = []
     for k, a in a_co.items():
         b = b_co.get(k)
@@ -283,6 +370,7 @@ def tool_diff(before: str, after: str) -> dict:
             "removed": sorted(set(a_co) - set(b_co))[:50],
             "changed": conductor_changes[:100],
             "changed_count": len(conductor_changes),
+            **unstable,
         },
     }
 

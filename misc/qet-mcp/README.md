@@ -111,8 +111,20 @@ Across the shipped examples: 3190 conductors, not one with a cable value.
   supported form; `--export-bom=out.csv` is not recognised as an export
   at all, so the application starts its interface instead and a headless
   run hangs. The tool uses the positional form.
-- **Conductors in older files have no uuid**, so `qet_diff` keys them by
-  their terminal pair. Elements written before persisted uuids fall back
-  to a positional key, which makes a move in such a file read as a remove
-  plus an add rather than as a move.
+- **Conductor identity is the hard part of `qet_diff`.** A conductor names
+  its ends with `terminal1`/`terminal2`, and the project format has two
+  schemes: folio-scoped integer ids in older files, terminal-definition
+  uuids plus `element1`/`element2` in newer ones. The integer ids are
+  **renumbered on every save**, so keying on them made all 47 conductors of
+  an untouched `ArduinoLCD.qet` read as 29 removed and 29 re-added the
+  moment the other side had been through QElectroTech. Ends are now keyed
+  by owning element uuid plus terminal, which is stable across a save:
+  measured at 0 colliding keys over 3190 conductors in the 24 shipped
+  examples, and 0 churn on a re-saved but otherwise untouched project.
+  Where an element predates persisted uuids the end cannot be resolved and
+  keeps a `#`-marked unstable key; the diff then reports `unstable_keys`
+  and says so rather than pretending to be comparable.
+- **Elements** written before persisted uuids fall back to a positional key,
+  which makes a move in such a file read as a remove plus an add rather
+  than as a move.
 - Read-only by design. Nothing here writes to a project.
