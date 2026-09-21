@@ -21,10 +21,15 @@
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../cli_export.h"
 #include "../diagram.h"
+#include "../dataBase/ui/elementquerywidget.h"
+#include "../dataBase/ui/summaryquerywidget.h"
 #include "../diagramcontent.h"
 #include "../diagramview.h"
 #include "../factory/elementfactory.h"
+#include "../factory/qetgraphicstablefactory.h"
+#include "../factory/ui/addtabledialog.h"
 #include "../qet.h"
+#include "../qetgraphicsitem/ViewItem/qetgraphicstableitem.h"
 #include "../qetgraphicsitem/element.h"
 #include "../qetmessagebox.h"
 #include "../dataBase/projectdatabase.h"
@@ -1016,9 +1021,9 @@ namespace {
 	is for both kinds.
 */
 template <typename T>
-QList<T *> sortedByPosition(const QSet<T *> &items)
+QList<T *> sortedByPosition(const QList<T *> &items_in)
 {
-	QList<T *> list(items.cbegin(), items.cend());
+	QList<T *> list = items_in;
 	std::sort(list.begin(), list.end(), [](T *a, T *b) {
 		const QPointF pa = a->sceneBoundingRect().topLeft();
 		const QPointF pb = b->sceneBoundingRect().topLeft();
@@ -1029,6 +1034,16 @@ QList<T *> sortedByPosition(const QSet<T *> &items)
 		return a < b;
 	});
 	return list;
+}
+
+template <typename T>
+QList<T *> sortedByPosition(const QSet<T *> &items)
+{
+	// Qt 6 makes QVector an alias of QList, so this one overload also
+	// serves m_tables (a QVector<QetGraphicsTableItem *>) without a
+	// separate one -- adding one was a redefinition error, not a second
+	// overload, on this Qt version.
+	return sortedByPosition(QList<T *>(items.cbegin(), items.cend()));
 }
 
 } // namespace
@@ -1840,6 +1855,179 @@ bool QetScriptApi::sortTerminalStrip(int stripIndex)
 		return false;
 	}
 	m_project->undoStack()->push(new SortTerminalStripCommand(strips.at(stripIndex)));
+	return true;
+}
+
+QList<QetGraphicsTableItem *> QetScriptApi::sortedTables(int folioIndex) const
+{
+	if (!m_project) return {};
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return {};
+	DiagramContent content(diagrams.at(folioIndex), false);
+	return sortedByPosition(content.m_tables);
+}
+
+QStringList QetScriptApi::tables(int folioIndex) const
+{
+	QStringList list;
+	const QList<QetGraphicsTableItem *> all = sortedTables(folioIndex);
+	for (int i = 0 ; i < all.count() ; ++i)
+	{
+		QetGraphicsTableItem *t = all.at(i);
+		list << QStringLiteral("%1: '%2' at (%3, %4), %5 row(s)")
+				.arg(i).arg(t->tableName()).arg(t->pos().x()).arg(t->pos().y())
+				.arg(t->model() ? t->model()->rowCount() : 0);
+	}
+	return list;
+}
+
+/**
+	@brief QetScriptApi::addTable
+	Place a BOM/nomenclature or summary (table of contents) table, through
+	QetGraphicsTableFactory::create() -- the same factory call the "add
+	table" menu action makes, minus the modal AddTableDialog it collects
+	its settings from first. That dialog is built here too, off-screen and
+	never shown or exec'd: create() reads the table's name and the query
+	widget's identifier/query string from it rather than taking them as
+	plain arguments, so the dialog exists only to be read from, and its two
+	checkboxes -- "adjust to folio" and "add a new folio if the table
+	overflows" -- are forced off despite defaulting to checked in the .ui
+	file, so one call creates exactly the one table asked for. A script
+	that wants either behaviour can resize the result or add a folio itself.
+
+	kind is "nomenclature" (an ElementQueryWidget, over placed elements) or
+	"summary" (a SummaryQueryWidget, over folios); query is required, since
+	both widgets otherwise build their own from a set of checkboxes that
+	default to none checked, and "SELECT with no columns" is not a useful
+	table -- query() against element_nomenclature_view or
+	project_summary_view is the way to find one that is.
+
+	Not undoable: newTable(), which create() calls, calls
+	Diagram::addItem() directly, with no undo command of its own, in the
+	stock action as much as here. Which of the (possibly several) tables
+	create() left in the diagram is the new one is found by set difference
+	against the folio's table listing taken just before the call, since
+	create()'s return type is void and newTable() itself is private.
+	@return the table's index in tables(), or -1
+*/
+int QetScriptApi::addTable(int folioIndex, const QString &kind, const QString &name,
+						   const QString &query)
+{
+	if (!m_project) return -1;
+	const QString caller = QStringLiteral("addTable");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.%1: no folio at index %2").arg(caller).arg(folioIndex));
+		return -1;
+	}
+	if (query.isEmpty()) {
+		// Both widgets build their query from a set of checkboxes that
+		// default to none checked, so "no query" is not "the sensible
+		// default" here the way it might look -- it is SELECT with no
+		// columns. Measured: a table left to that default reports 0 rows
+		// against a folio that plainly has some. A real SELECT is required
+		// instead, over query() -- the same project database and the same
+		// two views this project already exposes, element_nomenclature_view
+		// for a nomenclature table and project_summary_view for a summary.
+		log(QStringLiteral("qet.%1: a query is required -- try qet.query() against "
+						   "element_nomenclature_view or project_summary_view first "
+						   "to find one that returns what is wanted").arg(caller));
+		return -1;
+	}
+
+	QWidget *content = nullptr;
+	if (kind == QLatin1String("nomenclature")) {
+		auto *w = new ElementQueryWidget();
+		w->setQuery(query);
+		content = w;
+	} else if (kind == QLatin1String("summary")) {
+		auto *w = new SummaryQueryWidget();
+		w->setQuery(query);
+		content = w;
+	} else {
+		log(QStringLiteral("qet.%1: unknown kind '%2'; expected nomenclature or summary").arg(caller, kind));
+		return -1;
+	}
+
+	AddTableDialog dialog(content);
+	dialog.setTableName(name);
+	// QetGraphicsTableFactory::newTable() is private -- only create() (its
+	// own class) may call it -- and create()'s own two checkboxes both
+	// default to checked in the .ui file: "adjust to folio" and "add a new
+	// folio if the table overflows". Forced off here rather than left at
+	// that default, since a script calling addTable() once should create
+	// exactly the one table it asked for, not possibly several across
+	// folios it never asked to add.
+	dialog.setAdjustTableToFolio(false);
+	dialog.setAddNewTableToNewDiagram(false);
+
+	const QList<QetGraphicsTableItem *> before = sortedTables(folioIndex);
+	QetGraphicsTableFactory::create(diagrams.at(folioIndex), &dialog);
+	const QList<QetGraphicsTableItem *> after = sortedTables(folioIndex);
+	for (QetGraphicsTableItem *t : after) {
+		if (!before.contains(t)) return after.indexOf(t);
+	}
+	log(QStringLiteral("qet.%1: the table could not be created").arg(caller));
+	return -1;
+}
+
+bool QetScriptApi::deleteTable(int folioIndex, int tableIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.deleteTable: project is read-only"));
+		return false;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return false;
+	Diagram *diagram = diagrams.at(folioIndex);
+
+	const QList<QetGraphicsTableItem *> all = sortedTables(folioIndex);
+	if (tableIndex < 0 || tableIndex >= all.count()) {
+		log(QStringLiteral("qet.deleteTable: folio %1 has %2 table(s), no index %3")
+			.arg(folioIndex).arg(all.count()).arg(tableIndex));
+		return false;
+	}
+	DiagramContent to_remove;
+	to_remove.m_tables << all.at(tableIndex);
+	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, to_remove));
+	return true;
+}
+
+/**
+	@brief QetScriptApi::setTablePosition
+	Move a table on its folio through QPropertyUndoCommand, the same
+	mechanism setElementPosition() uses -- QetGraphicsTableFactory::newTable()
+	places every new table at a fixed (50, 50), so a script adding more than
+	one table must reposition all but the first itself or they stack exactly
+	on top of each other.
+*/
+bool QetScriptApi::setTablePosition(int folioIndex, int tableIndex, double x, double y)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setTablePosition: project is read-only"));
+		return false;
+	}
+	const QList<QetGraphicsTableItem *> all = sortedTables(folioIndex);
+	if (tableIndex < 0 || tableIndex >= all.count()) {
+		log(QStringLiteral("qet.setTablePosition: folio %1 has %2 table(s), no index %3")
+			.arg(folioIndex).arg(all.count()).arg(tableIndex));
+		return false;
+	}
+	QetGraphicsTableItem *table = all.at(tableIndex);
+
+	const QVariant old_value = table->pos();
+	const QVariant new_value = QPointF(x, y);
+	if (old_value == new_value) return true; // already there; nothing to push
+
+	auto *cmd = new QPropertyUndoCommand(table, "pos", old_value, new_value);
+	cmd->setText(QObject::tr("Déplacer %1").arg(table->tableName()));
+	m_project->undoStack()->push(cmd);
 	return true;
 }
 

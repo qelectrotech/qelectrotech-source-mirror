@@ -33,6 +33,7 @@ class IndependentTextItem;
 class QetShapeItem;
 class DiagramImageItem;
 class DynamicElementTextItem;
+class QetGraphicsTableItem;
 
 /**
 	@brief The QetScriptApi class
@@ -187,6 +188,27 @@ class DynamicElementTextItem;
 	  button applies, not a rule reimplemented here. sortTerminalStrip()
 	  reorders the strip's physical positions into the canonical order the
 	  editor's own sort button computes.
+	- @b Tables: a BOM/nomenclature or a summary (table of contents) placed
+	  on a folio, through QetGraphicsTableFactory::create() -- the same
+	  factory call the "add table" menu action makes, minus the modal
+	  AddTableDialog it collects its settings from first. That dialog is
+	  still built here, off-screen and never shown or exec'd: addTable()
+	  calls setTableName() and the query widget's setQuery() on it, the
+	  same as a user filling in the form, and forces its two checkboxes
+	  ("adjust table to folio" and "add a new folio if the table overflows"
+	  it) off regardless of their .ui-file default of checked -- a script
+	  calling addTable() once should create exactly the one table it asked
+	  for, not possibly several spread across folios it never asked to add.
+	  A script that wants either behaviour can resize the result itself or
+	  add its own folio.
+
+	  Neither creating nor deleting a table is undoable:
+	  QetGraphicsTableFactory::newTable(), which create() calls, calls
+	  Diagram::addItem() directly, with no undo command of its own, in the
+	  stock "add table" action as much as here -- a pre-existing gap in the
+	  application, not something introduced by this API. Tables are
+	  addressed by index in a position-sorted listing, like texts, shapes
+	  and images.
 	- @b Auto-numbering: define a named numbering context of kind
 	  "conductor", "element" or "folio", built from parts written
 	  "type[:value[:increase]]" -- types are the ones the auto-numbering
@@ -426,6 +448,13 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool bridgeTerminals(int stripIndex, const QVariantList &realTerminalIndices);
 		Q_INVOKABLE bool sortTerminalStrip(int stripIndex);
 
+		// -- a BOM/nomenclature or summary table placed on a folio --
+		Q_INVOKABLE QStringList tables(int folioIndex) const;
+		Q_INVOKABLE int addTable(int folioIndex, const QString &kind, const QString &name,
+								 const QString &query);
+		Q_INVOKABLE bool deleteTable(int folioIndex, int tableIndex);
+		Q_INVOKABLE bool setTablePosition(int folioIndex, int tableIndex, double x, double y);
+
 		// -- auto-numbering contexts (conductor, element, folio) --
 		Q_INVOKABLE QStringList autoNums(const QString &kind) const;
 		Q_INVOKABLE bool addAutoNum(const QString &kind, const QString &name, const QStringList &parts);
@@ -500,6 +529,7 @@ class QetScriptApi : public QObject
 								 const QString &caller);
 		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;
 		QList<QetShapeItem *> sortedShapes(int folioIndex) const;
+		QList<QetGraphicsTableItem *> sortedTables(int folioIndex) const;
 		QList<DiagramImageItem *> sortedImages(int folioIndex) const;
 		DynamicElementTextItem *findElementText(int folioIndex, const QString &elementUuid,
 												int textIndex, const QString &caller) const;
