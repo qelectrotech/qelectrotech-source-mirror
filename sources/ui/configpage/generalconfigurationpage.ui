@@ -23,15 +23,26 @@
       <attribute name="title">
        <string>Apparence</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QCheckBox" name="m_use_system_color_cb">
-         <property name="text">
-          <string>Utiliser les couleurs du système</string>
-         </property>
-        </widget>
-       </item>
-       <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="m_system_color_layout">
+          <item>
+           <widget class="QCheckBox" name="m_use_system_color_cb">
+            <property name="text">
+             <string>Utiliser les couleurs du système</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="KColorButton" name="m_custom_app_color_kpb">
+            <property name="toolTip">
+             <string>Couleur de l'application</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
         <widget class="Line" name="line">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -1161,4 +1172,11 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
  </tabstops>
  <resources/>
  <connections/>
+ <customwidgets>
+  <customwidget>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>nokde/kcolorbutton.h</header>
+  </customwidget>
+ </customwidgets>
 </ui>

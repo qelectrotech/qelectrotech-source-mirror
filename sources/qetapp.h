@@ -266,6 +266,7 @@ class QETApp : public QObject
 		void setMainWindowVisible(QMainWindow *, bool);
 		void invertMainWindowVisibility(QWidget *);
 		void useSystemPalette(bool);
+		void useCustomPalette(const QColor &color);
 		void quitQET();
 		void checkRemainingWindows();
 		void openFiles(const QETArguments &);

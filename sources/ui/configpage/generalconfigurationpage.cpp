@@ -23,6 +23,7 @@
 #include "../../utils/qetsettings.h"
 #include "../../utils/qetutils.h"
 #include "../../qetmessagebox.h"
+#include "../nokde/kcolorbutton.h"
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QSettings>
@@ -74,6 +75,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->DiagramEditor_Grid_PointSize_min_sb->setValue(settings.value("diagrameditor/grid_pointsize_min", 1).toInt());
 	ui->DiagramEditor_Grid_PointSize_max_sb->setValue(settings.value("diagrameditor/grid_pointsize_max", 1).toInt());
 	ui->m_use_system_color_cb->setChecked(settings.value("usesystemcolors", "true").toBool());
+	bool sysColors = ui->m_use_system_color_cb->isChecked();
+	ui->m_custom_app_color_kpb->setEnabled(!sysColors);
+	if (settings.contains("customapplicationcolor"))
+		ui->m_custom_app_color_kpb->setColor(QColor(settings.value("customapplicationcolor").toString()));
+	else
+		ui->m_custom_app_color_kpb->setColor(QApplication::palette().color(QPalette::Window));
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if(tabbed)
 		ui->m_use_tab_mode_rb->setChecked(true);
@@ -206,7 +213,17 @@ void GeneralConfigurationPage::applyConf()
 	bool must_use_system_colors  = ui->m_use_system_color_cb->isChecked();
 	settings.setValue("usesystemcolors", must_use_system_colors);
 	if (was_using_system_colors != must_use_system_colors) {
-		QETApp::instance()->useSystemPalette(must_use_system_colors);
+		if (must_use_system_colors) {
+			QETApp::instance()->useSystemPalette(true);
+		} else {
+			QColor custom_color = ui->m_custom_app_color_kpb->color();
+			settings.setValue("customapplicationcolor", custom_color.name());
+			QETApp::instance()->useCustomPalette(custom_color);
+		}
+	} else if (!must_use_system_colors) {
+		QColor custom_color = ui->m_custom_app_color_kpb->color();
+		settings.setValue("customapplicationcolor", custom_color.name());
+		QETApp::instance()->useCustomPalette(custom_color);
 	}
 	settings.setValue("border-columns_0",ui->m_border_0->isChecked());
 	settings.setValue("lang", ui->m_lang_cb->itemData(ui->m_lang_cb->currentIndex()).toString());
@@ -623,5 +640,16 @@ void GeneralConfigurationPage::on_m_hdpi_round_cb_clicked(bool checked)
 	}
 	ui->m_hdpi_round_label->setEnabled(checked);
 	ui->m_hdpi_round_policy_cb->setEnabled(checked);
+}
+
+/**
+	@brief GeneralConfigurationPage::on_m_use_system_color_cb_toggled
+	Enable/disable the custom color picker when the system color
+	checkbox is toggled.
+	@param checked
+*/
+void GeneralConfigurationPage::on_m_use_system_color_cb_toggled(bool checked)
+{
+	ui->m_custom_app_color_kpb->setEnabled(!checked);
 }
 
