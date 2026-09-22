@@ -29,14 +29,21 @@ class QETProject;
 
 struct PlcIoProjection
 {
+	enum Direction {
+		Input,
+		Output
+	};
+
 	QUuid master_uuid;
 	QString master_label;
 	int folio = -1;
 	int io_index = -1;
 	ElementData::PlcIOType type = ElementData::EntreeDigitale;
+	Direction direction = Input;
 	QString address;
 	QString function;
 	QString comment;
+	int terminal_count = 0;
 	QStringList terminal_labels;
 	QUuid linked_slave_uuid;
 	QString linked_slave_label;
@@ -44,6 +51,9 @@ struct PlcIoProjection
 	bool unlinked = false;
 	bool duplicate_group_index = false;
 	bool out_of_range_group_index = false;
+	bool empty_address = false;
+	bool terminal_label_count_mismatch = false;
+	QStringList warnings;
 };
 
 class PlcIoProjectionService

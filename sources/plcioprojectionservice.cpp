@@ -49,6 +49,45 @@ int folioOf(QETProject &project, Element *element)
 	return element && element->diagram() ? project.folioIndex(element->diagram()) : -1;
 }
 
+PlcIoProjection::Direction directionFor(ElementData::PlcIOType type)
+{
+	switch (type) {
+		case ElementData::EntreeDigitale:
+		case ElementData::EntreeAnalogique:
+		case ElementData::EntreeUniverselle:
+			return PlcIoProjection::Input;
+		case ElementData::SortieDigitale:
+		case ElementData::SortieAnalogique:
+		case ElementData::SortieUniverselle:
+			return PlcIoProjection::Output;
+	}
+	return PlcIoProjection::Input;
+}
+
+void addWarning(PlcIoProjection &projection, const QString &warning)
+{
+	if (!projection.warnings.contains(warning)) {
+		projection.warnings << warning;
+	}
+}
+
+void addIoWarnings(PlcIoProjection &projection, const ElementData::PlcIO &io)
+{
+	if (projection.address.trimmed().isEmpty()) {
+		projection.empty_address = true;
+		addWarning(projection, QStringLiteral("empty address"));
+	}
+
+	if (!io.terminals.isEmpty() && io.terminals.size() != io.terminalCount) {
+		projection.terminal_label_count_mismatch = true;
+		addWarning(
+			projection,
+			QStringLiteral("terminal label count %1 does not match terminal_count %2")
+				.arg(io.terminals.size())
+				.arg(io.terminalCount));
+	}
+}
+
 QList<Element *> plcMastersInProject(QETProject &project)
 {
 	QList<Element *> result;
@@ -98,10 +137,13 @@ PlcIoProjection projectionForChannel(
 	projection.folio = folioOf(project, master);
 	projection.io_index = index;
 	projection.type = io.type;
+	projection.direction = directionFor(io.type);
 	projection.address = io.address;
 	projection.function = io.functionText;
 	projection.comment = io.comment;
+	projection.terminal_count = io.terminalCount;
 	projection.terminal_labels = io.effectiveTerminals();
+	addIoWarnings(projection, io);
 	return projection;
 }
 
@@ -143,6 +185,7 @@ QList<PlcIoProjection> PlcIoProjectionService::channels(QETProject &project) con
 					plc_data.ios.at(index),
 					index);
 				projection.unlinked = true;
+				addWarning(projection, QStringLiteral("unlinked"));
 				result << projection;
 				continue;
 			}
@@ -157,6 +200,12 @@ QList<PlcIoProjection> PlcIoProjectionService::channels(QETProject &project) con
 				projection.linked_slave_label = elementLabel(slave);
 				projection.linked_slave_folio = folioOf(project, slave);
 				projection.duplicate_group_index = slaves.size() > 1;
+				if (projection.duplicate_group_index) {
+					addWarning(
+						projection,
+						QStringLiteral("duplicate group_index %1 assignment")
+							.arg(index));
+				}
 				result << projection;
 			}
 		}
@@ -180,6 +229,10 @@ QList<PlcIoProjection> PlcIoProjectionService::channels(QETProject &project) con
 			projection.linked_slave_label = elementLabel(slave);
 			projection.linked_slave_folio = folioOf(project, slave);
 			projection.out_of_range_group_index = true;
+			addWarning(
+				projection,
+				QStringLiteral("group_index %1 out of range")
+					.arg(projection.io_index));
 			result << projection;
 		}
 	}

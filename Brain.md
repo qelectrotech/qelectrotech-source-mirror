@@ -994,3 +994,18 @@ Target platforms from project documentation: Windows, GNU/Linux, macOS, and BSDs
 - Fix decision: add a minimal `Element::linkedElementsReadOnly() const` accessor returning a copy of the current `connected_elements` order without sorting, while preserving the existing `linkedElements()` behavior unchanged for all other callers.
 - Service boundary after fix: `ContactCrossRefProjectionService` now reads master/slave links through `linkedElementsReadOnly()` and still uses `groupIndexForElement()` for group assignment lookup. No `Element`, `MasterElement`, `SlaveElement`, `LinkElementCommand`, `CrossRefItem`, XML/persistence, UI/rendering, CLI/export, fixture, or Device/Function-Core behavior was otherwise changed.
 - Remaining review point: the new accessor exposes current internal order; the service already applies deterministic sorting for assignments and uses only counts/validation over the unsorted copy where order is irrelevant.
+
+## PLC IO Semantics Read-only Boundary
+- Minimal PLC semantics for the next CAE slice are IO direction from `ElementData::PlcIOType`, address, current signal kind/type, IO terminal labels/count, linked slave assignment via `group_index`, and terminal/potential evidence as context only.
+- Source of truth remains master `ElementData::PlcMasterData::ios` plus placed master/slave links and `Element::groupIndexForElement()`. Existing XML `links_uuids/link_uuid/@group_index` remains compatibility persistence for the assignment.
+- Slave `plc_type`, `plc_address`, `plc_function`, `plc_comment`, `plc_crossref`, `plc_tc`, and `plc_t1`..`plc_t4` are projection copies populated for display/formula behavior, not PLC truth.
+- Warning-only candidates: no IO rows, missing/out-of-range/duplicate `group_index`, empty address, invalid terminal count, terminal label/count mismatch, insufficient slave terminals, and stale slave `plc_*` copy values.
+- Explicitly out of scope: blocking link errors, schema migration, repairing assignments, writing slave projection fields, inferring address semantics, vendor-specific validation, PLC datatype/device core, terminal-strip ownership, potential-based auto-assignment, UI/rendering changes, and Default-KF/ECM behavior.
+- Next smallest implementation slice: extend `PlcIoProjectionService` with normalized direction, terminal count/labels, and deterministic warning messages, covered by one focused QtTest using existing temporary-fixture patterns.
+
+## PLC IO Projection Warning Slice
+- Implemented in `PlcIoProjectionService` as read-only projection fields only: `direction`, `terminal_count`, existing/effective `terminal_labels`, warning flags, and deterministic warning strings.
+- Current warning coverage: unlinked master IO row, out-of-range `group_index`, duplicate `group_index`, empty master IO address, and explicit terminal-label count mismatch against `terminalCount`.
+- Boundary preserved: no UI/rendering changes, no persistence/XML schema changes, no migration, no slave `plc_*` rewrite, no address-format inference, and no blocking link behavior.
+- Focused coverage is in `tests/qttest/tst_plcioprojectionservice.cpp` using the existing temporary fixture pattern.
+- Next smallest candidate: decide whether to add stale slave `plc_*` copy warnings or slave-terminal-count evidence warnings; both should remain warning-only and projection-derived.

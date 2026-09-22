@@ -69,10 +69,10 @@ QString plcMasterDataXml()
 		"<columnVisibility/>"
 		"<showHeaders>1</showHeaders>"
 		"<plcIOs>"
-		"<plcIO type=\"entree_digitale\" address=\"%I0.0\" functionText=\"Start\" comment=\"Panel button\" terminalCount=\"2\">"
+		"<plcIO type=\"entree_digitale\" address=\"%I0.0\" functionText=\"Start\" comment=\"Panel button\" terminalCount=\"3\">"
 		"<terminal>1</terminal><terminal>2</terminal>"
 		"</plcIO>"
-		"<plcIO type=\"sortie_digitale\" address=\"%Q0.1\" functionText=\"Run\" comment=\"Motor relay\" terminalCount=\"2\">"
+		"<plcIO type=\"sortie_digitale\" address=\"\" functionText=\"Run\" comment=\"Motor relay\" terminalCount=\"2\">"
 		"<terminal>3</terminal><terminal>4</terminal>"
 		"</plcIO>"
 		"<plcIO type=\"entree_analogique\" address=\"%IW64\" functionText=\"Pressure\" comment=\"Sensor\" terminalCount=\"1\">"
@@ -153,35 +153,53 @@ private slots:
 		QCOMPARE(start->master_label, QStringLiteral("KMS"));
 		QCOMPARE(start->folio, 0);
 		QCOMPARE(start->type, ElementData::EntreeDigitale);
+		QCOMPARE(start->direction, PlcIoProjection::Input);
 		QCOMPARE(start->address, QStringLiteral("%I0.0"));
 		QCOMPARE(start->function, QStringLiteral("Start"));
 		QCOMPARE(start->comment, QStringLiteral("Panel button"));
+		QCOMPARE(start->terminal_count, 3);
 		QCOMPARE(start->terminal_labels, QStringList({QStringLiteral("1"), QStringLiteral("2")}));
 		QCOMPARE(start->linked_slave_label, QStringLiteral("KMS-NO"));
 		QCOMPARE(start->linked_slave_folio, 0);
 		QVERIFY(!start->unlinked);
 		QVERIFY(start->duplicate_group_index);
 		QVERIFY(!start->out_of_range_group_index);
+		QVERIFY(!start->empty_address);
+		QVERIFY(start->terminal_label_count_mismatch);
+		QCOMPARE(
+			start->warnings,
+			QStringList({
+				QStringLiteral("terminal label count 2 does not match terminal_count 3"),
+				QStringLiteral("duplicate group_index 0 assignment")
+			}));
 
 		const PlcIoProjection *duplicate = projectionFor(projections, 0, kNcSlaveUuid);
 		QVERIFY(duplicate);
 		QCOMPARE(duplicate->linked_slave_label, QStringLiteral("KMS-NC"));
 		QVERIFY(duplicate->duplicate_group_index);
+		QVERIFY(duplicate->terminal_label_count_mismatch);
 
 		const PlcIoProjection *run = projectionFor(projections, 1);
 		QVERIFY(run);
 		QCOMPARE(run->type, ElementData::SortieDigitale);
-		QCOMPARE(run->address, QStringLiteral("%Q0.1"));
+		QCOMPARE(run->direction, PlcIoProjection::Output);
+		QCOMPARE(run->address, QString());
 		QCOMPARE(run->function, QStringLiteral("Run"));
+		QCOMPARE(run->terminal_count, 2);
 		QVERIFY(run->unlinked);
 		QVERIFY(!run->duplicate_group_index);
 		QVERIFY(!run->out_of_range_group_index);
+		QVERIFY(run->empty_address);
+		QVERIFY(!run->terminal_label_count_mismatch);
+		QCOMPARE(run->warnings, QStringList({QStringLiteral("empty address"), QStringLiteral("unlinked")}));
 
 		const PlcIoProjection *pressure = projectionFor(projections, 2);
 		QVERIFY(pressure);
 		QCOMPARE(pressure->type, ElementData::EntreeAnalogique);
+		QCOMPARE(pressure->direction, PlcIoProjection::Input);
 		QCOMPARE(pressure->terminal_labels, QStringList({QStringLiteral("5")}));
 		QVERIFY(pressure->unlinked);
+		QCOMPARE(pressure->warnings, QStringList({QStringLiteral("unlinked")}));
 	}
 
 	void outOfRangeGroupIndexIsProjected()
@@ -211,6 +229,7 @@ private slots:
 		QVERIFY(bad_link->out_of_range_group_index);
 		QVERIFY(!bad_link->unlinked);
 		QVERIFY(!bad_link->duplicate_group_index);
+		QCOMPARE(bad_link->warnings, QStringList({QStringLiteral("group_index 99 out of range")}));
 	}
 };
 
