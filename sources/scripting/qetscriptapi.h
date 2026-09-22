@@ -433,6 +433,7 @@ class QetScriptApi : public QObject
 		// -- independent text and drawing shapes --
 		Q_INVOKABLE QStringList texts(int folioIndex) const;
 		Q_INVOKABLE int addText(int folioIndex, const QString &text, double x, double y);
+		Q_INVOKABLE QString textContent(int folioIndex, int textIndex) const;
 		Q_INVOKABLE bool setTextContent(int folioIndex, int textIndex, const QString &text);
 		Q_INVOKABLE bool setTextColor(int folioIndex, int textIndex, const QString &color);
 		Q_INVOKABLE bool setTextRotation(int folioIndex, int textIndex, double angle);
@@ -539,6 +540,12 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool redo();
 		Q_INVOKABLE bool canUndo() const;
 		Q_INVOKABLE bool canRedo() const;
+
+		// -- project-wide text search & replace, one undo step for the
+		// whole run, in the same spirit as the "Search and replace" panel --
+		Q_INVOKABLE int searchAndReplace(const QString &kind, const QString &field,
+										 const QString &pattern, const QString &replacement,
+										 bool useRegex, bool caseSensitive);
 
 		// -- navigate and message --
 		Q_INVOKABLE bool selectElement(const QString &elementUuid);

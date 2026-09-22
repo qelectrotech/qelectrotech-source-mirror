@@ -17,6 +17,9 @@
 */
 #include "qetscriptapi.h"
 
+#include <QRegularExpression>
+#include <optional>
+
 #include "../ElementsCollection/elementslocation.h"
 #include "../QPropertyUndoCommand/qpropertyundocommand.h"
 #include "../cli_export.h"
@@ -1401,6 +1404,14 @@ int QetScriptApi::addText(int folioIndex, const QString &text, double x, double 
 	item->setPlainText(text);
 	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
 	return sortedTexts(folioIndex).indexOf(item);
+}
+
+QString QetScriptApi::textContent(int folioIndex, int textIndex) const
+{
+	auto *self = const_cast<QetScriptApi *>(this);
+	IndependentTextItem *item = self->findText(folioIndex, textIndex, QStringLiteral("textContent"));
+	if (!item) return QString();
+	return item->toPlainText();
 }
 
 bool QetScriptApi::setTextContent(int folioIndex, int textIndex, const QString &text)
@@ -3651,6 +3662,179 @@ bool QetScriptApi::canUndo() const
 bool QetScriptApi::canRedo() const
 {
 	return m_project && m_project->undoStack()->canRedo();
+}
+
+/**
+	@brief QetScriptApi::searchAndReplace
+	Find and replace a pattern within one text field, across every folio,
+	as a single undo step -- the project-wide, single-action counterpart
+	to reading a value with elementInfo()/conductorProperty()/
+	textContent(), computing a new one in the script itself, and writing
+	it back one item at a time (each of those pushes its own undo step; a
+	JS loop doing that across hundreds of items would leave hundreds of
+	entries on the undo stack instead of one).
+
+	This is NOT QET's own "Search and replace" panel, whose replace model
+	is a batch overwrite-with-sentinel template (each field left empty
+	keeps the original, a magic string clears it, anything else replaces
+	it outright) built for picking items from a tree interactively -- a
+	poor fit for a script, which can already express "which items"
+	precisely without a GUI tree. This does what the name plainly says
+	instead: an actual substring or regex replace within the field's
+	current value, changing only the items where the pattern is found.
+
+	@param kind "element_info" (field is an information key, e.g.
+	"label"), "conductor" (field is one of setConductorProperty()'s
+	property names -- replacing on one conductor of a potential updates
+	the whole potential, the same as setConductorProperty() always does),
+	or "text" (independent texts; field is ignored)
+	@param field the information key or conductor property; ignored for
+	"text"
+	@param pattern the text (or, if useRegex, the regular expression) to
+	search for; never matches an empty field, so nothing already blank
+	is ever touched
+	@param replacement the replacement text; with useRegex, \1 etc. in
+	it refer to pattern's capturing groups, the same as
+	QString::replace(QRegularExpression, QString)
+	@return the number of items actually changed, or -1 on a usage error
+	(nothing was touched)
+*/
+int QetScriptApi::searchAndReplace(const QString &kind, const QString &field,
+								   const QString &pattern, const QString &replacement,
+								   bool useRegex, bool caseSensitive)
+{
+	if (!m_project) return -1;
+	const QString caller = QStringLiteral("searchAndReplace");
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.%1: project is read-only").arg(caller));
+		return -1;
+	}
+	if (pattern.isEmpty()) {
+		log(QStringLiteral("qet.%1: pattern must not be empty").arg(caller));
+		return -1;
+	}
+	if (kind != QLatin1String("element_info") && kind != QLatin1String("conductor")
+		&& kind != QLatin1String("text"))
+	{
+		log(QStringLiteral("qet.%1: unknown kind '%2'; expected element_info, "
+						   "conductor or text").arg(caller, kind));
+		return -1;
+	}
+	if (kind == QLatin1String("element_info") && field.isEmpty()) {
+		log(QStringLiteral("qet.%1: element_info needs a field (information key)").arg(caller));
+		return -1;
+	}
+	if (kind == QLatin1String("conductor") && !conductorPropertyNames().contains(field)) {
+		log(QStringLiteral("qet.%1: unknown conductor property '%2'; expected one of %3")
+			.arg(caller, field, conductorPropertyNames().join(QStringLiteral(", "))));
+		return -1;
+	}
+
+	QRegularExpression re;
+	if (useRegex) {
+		const auto opts = caseSensitive ? QRegularExpression::NoPatternOption
+										: QRegularExpression::CaseInsensitiveOption;
+		re = QRegularExpression(pattern, opts);
+		if (!re.isValid()) {
+			log(QStringLiteral("qet.%1: '%2' is not a valid regular expression: %3")
+				.arg(caller, pattern, re.errorString()));
+			return -1;
+		}
+	}
+	const Qt::CaseSensitivity cs = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
+
+	// nullopt when the pattern is not found -- distinguishes "no match"
+	// from "matched but happened to produce the same text".
+	auto replaced = [&](const QString &current) -> std::optional<QString> {
+		if (current.isEmpty()) return std::nullopt;
+		if (useRegex) {
+			if (!current.contains(re)) return std::nullopt;
+			QString updated = current;
+			updated.replace(re, replacement);
+			return updated;
+		}
+		if (!current.contains(pattern, cs)) return std::nullopt;
+		QString updated = current;
+		updated.replace(pattern, replacement, cs);
+		return updated;
+	};
+
+	const QList<Diagram *> diagrams = m_project->diagrams();
+
+	// Applies the search across every folio, either just counting matches
+	// (dryRun) or actually writing them back. Run twice rather than
+	// tracked with a flag on every write call: QUndoStack::endMacro()
+	// still pushes an empty macro when nothing was added to it (it does
+	// not silently discard one the way an empty QUndoCommand child list
+	// might suggest), which would leave a no-op "Rechercher et remplacer"
+	// entry on the undo stack for a run that changed nothing -- easy to
+	// trigger (any search with zero matches) and confusing once there
+	// (undoing it visibly does nothing). Counting matches first, and
+	// never touching the undo stack at all when that count is zero, is
+	// simpler than adding an after-the-fact "was anything pushed" check.
+	auto apply = [&](bool dryRun) -> int {
+		int count = 0;
+		for (int f = 0; f < diagrams.count(); ++f) {
+			if (kind == QLatin1String("element_info")) {
+				DiagramContent content(diagrams.at(f), false);
+				for (Element *elmt : std::as_const(content.m_elements)) {
+					const QString current = elmt->elementInformations().value(field).toString();
+					const auto updated = replaced(current);
+					if (!updated) continue;
+					if (dryRun || setInfoKey(f, elmt->uuid().toString(), field, *updated, caller))
+						++count;
+				}
+			} else if (kind == QLatin1String("conductor")) {
+				DiagramContent content(diagrams.at(f), false);
+				const QList<Conductor *> all = content.conductors(DiagramContent::AnyConductor);
+				for (Conductor *c : all) {
+					const QString current = conductorPropertyValue(c->properties(), field);
+					const auto updated = replaced(current);
+					if (!updated) continue;
+					// setConductorProperty() applies to the whole potential, so a
+					// sibling conductor processed later in this same loop will
+					// already read the new value above and find no more match --
+					// each potential is touched once, not once per conductor in
+					// it. On the dry run nothing is written, so this dedup
+					// does not happen there; the dry run's count is only ever
+					// used as a nonzero/zero test, not compared to the real one.
+					// Prefer whichever terminal carries exactly this one
+					// conductor: a hub terminal (several conductors meeting
+					// at one point, as in a star topology) is ambiguous --
+					// findConductor() (via setConductorProperty()) refuses
+					// to address a conductor through it, the same as
+					// conductorProperty()/setConductorProperty() called
+					// directly would. Skip only if genuinely neither end is
+					// addressable; the rest of the potential is still
+					// covered by whichever other conductor in it has an
+					// unambiguous terminal.
+					Terminal *t = c->terminal1;
+					if (!t || t->conductors().count() != 1) t = c->terminal2;
+					if (!t || t->conductors().count() != 1 || !t->parentElement()) continue;
+					Element *elmt = t->parentElement();
+					const int terminal_index = elmt->terminals().indexOf(t);
+					if (dryRun || setConductorProperty(f, elmt->uuid().toString(),
+													   terminal_index, field, *updated))
+						++count;
+				}
+			} else {
+				const QList<IndependentTextItem *> list = sortedTexts(f);
+				for (int i = 0; i < list.count(); ++i) {
+					const auto updated = replaced(list.at(i)->toPlainText());
+					if (!updated) continue;
+					if (dryRun || setTextContent(f, i, *updated)) ++count;
+				}
+			}
+		}
+		return count;
+	};
+
+	if (apply(/*dryRun=*/true) == 0) return 0;
+
+	m_project->undoStack()->beginMacro(QObject::tr("Rechercher et remplacer"));
+	const int changed = apply(/*dryRun=*/false);
+	m_project->undoStack()->endMacro();
+	return changed;
 }
 
 bool QetScriptApi::selectElement(const QString &elementUuid)
