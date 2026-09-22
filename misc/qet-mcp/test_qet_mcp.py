@@ -953,6 +953,104 @@ class PathPolicy(unittest.TestCase):
                                   f"{name} has no {arg!r} argument to guard")
 
 
+class ScriptingDisabledHint(unittest.TestCase):
+    """QElectroTech may refuse to run scripts at all, and says so in French.
+
+    Scripting is off by default from qelectrotech-source-mirror#984 on, so
+    every tool here that drives QElectroTech through --run comes back empty
+    until somebody sets QET_ENABLE_SCRIPTING=1 in the environment this
+    server was started in. The refusal has to arrive as an instruction the
+    caller can act on, not as exit code 3 and a paragraph of French, and
+    not as one of the older guesses ("is it a build with --run support?")
+    that happen to fit the same symptom.
+
+    subprocess.run is faked, so these are about the reading of the result
+    and cost no launch.
+    """
+
+    REFUSAL = ("Les scripts sont désactivés.\n\nPour l'activer : Configurer "
+               "QElectroTech > Général > Projets, ou définir la variable "
+               "d'environnement QET_ENABLE_SCRIPTING=1 pour une exécution "
+               "sans interface (CI, traitement par lot).")
+
+    def fake_run(self, returncode, stderr="", stdout=""):
+        def run(argv, **kwargs):
+            return subprocess.CompletedProcess(argv, returncode, stdout, stderr)
+        return run
+
+    def call(self, returncode, stderr="", **kw):
+        saved = m.subprocess.run
+        m.subprocess.run = self.fake_run(returncode, stderr)
+        try:
+            # /bin/true only has to exist and be executable: it is copied
+            # into the sandbox and then never actually launched.
+            return m._run_qet("/bin/true", ["x.qet"], **kw)
+        finally:
+            m.subprocess.run = saved
+
+    def test_a_refused_script_says_which_variable_to_set(self):
+        r = self.call(3, self.REFUSAL, script="qet.log('hi')")
+        self.assertFalse(r["ok"])
+        self.assertIn("QET_ENABLE_SCRIPTING=1", r["hint"])
+        self.assertIn("env", r["hint"])
+
+    def test_the_hint_survives_a_reworded_refusal(self):
+        # Keyed on the variable name first, exit 3 as the fallback, so a
+        # future build that words this differently still gets read right.
+        r = self.call(3, "scripting is disabled", script="qet.log('hi')")
+        self.assertIn("QET_ENABLE_SCRIPTING=1", r["hint"])
+
+    def test_a_launch_with_no_script_is_not_blamed_on_scripting(self):
+        # qet_export uses a plain CLI flag and keeps working with scripting
+        # off, so its failures must never be explained this way.
+        r = self.call(3, "Project not found: x.qet")
+        self.assertNotIn("hint", r)
+
+    def test_a_successful_script_gets_no_hint(self):
+        r = self.call(0, "", script="qet.log('hi')")
+        self.assertTrue(r["ok"])
+        self.assertNotIn("hint", r)
+
+    def test_the_specific_hint_is_not_overwritten_by_a_generic_one(self):
+        """The two older guesses fit the same symptom and must yield to it.
+
+        Scripting being off produces no capability report either, so
+        tool_edit() and tool_project_new() would otherwise answer "is it a
+        build with --run support?" -- sending the reader to check the one
+        thing that is fine.
+        """
+        source = Path(m.__file__).read_text()
+        for marker in ("the binary never ran the script",
+                       "QElectroTech did not write the project"):
+            with self.subTest(hint=marker[:30]):
+                idx = source.index(marker)
+                before = source[max(0, idx - 400):idx]
+                self.assertIn('setdefault("hint"', before,
+                              "this hint would clobber a more specific one")
+
+    def test_every_script_driven_tool_is_named_in_the_hint(self):
+        """The hint lists which tools need the variable; keep it true.
+
+        A tool that starts driving QElectroTech through a script and is
+        missing from that list leaves its caller reading a message that
+        says the problem is somewhere else.
+        """
+        source = Path(m.__file__).read_text()
+        # Tool handlers that pass script= to _run_qet.
+        driven = set(re.findall(r"^def (tool_\w+)", source, re.M))
+        script_driven = set()
+        for name in driven:
+            body = source[source.index(f"def {name}("):]
+            body = body[:body.find("\ndef ") if "\ndef " in body else len(body)]
+            if "script=script" in body or "script=\"\\n\".join(script)" in body:
+                script_driven.add("qet_" + name[len("tool_"):])
+        self.assertTrue(script_driven, "found no script-driven tools to check")
+        hint = source[source.index("QET_ENABLE_SCRIPTING=1 to the"):][:900]
+        for tool in sorted(script_driven):
+            with self.subTest(tool=tool):
+                self.assertIn(tool, hint)
+
+
 class PathPolicyOverStdio(unittest.TestCase):
     """Proves the policy is actually wired into the dispatcher.
 

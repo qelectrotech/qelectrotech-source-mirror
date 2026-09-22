@@ -63,11 +63,38 @@ Register it with an MCP client, for example:
     "qet": {
       "command": "python3",
       "args": ["/path/to/qelectrotech/misc/qet-mcp/qet_mcp.py"],
-      "env": {"QET_MCP_WORKSPACE": "/home/you/drawings"}
+      "env": {
+        "QET_MCP_WORKSPACE": "/home/you/drawings",
+        "QET_ENABLE_SCRIPTING": "1"
+      }
     }
   }
 }
 ```
+
+## Five tools need scripting switched on
+
+A QElectroTech with JavaScript scripting switched off refuses `--run`, and
+off is the default from
+[#984](https://github.com/qelectrotech/qelectrotech-source-mirror/pull/984)
+onwards. Five tools here drive it that way and stop working until it is
+turned on:
+
+| | |
+|---|---|
+| need `QET_ENABLE_SCRIPTING=1` | `qet_query`, `qet_continuity`, `qet_check`, `qet_project_new`, `qet_edit` |
+| unaffected | everything else — they read the `.qet` directly, or, in `qet_export`'s case, use a plain CLI flag |
+
+The variable goes in the environment this server is started in, which for an
+MCP client is the `env` block above; the server passes its environment
+straight through to QElectroTech. It does not set the variable itself, on
+purpose — a switch a program turns on for itself is not a switch. Whoever
+configured this server and pointed it at a QElectroTech binary made that
+choice, and their interactive QElectroTech keeps whatever its own setting
+says.
+
+Without it, those five come back `"ok": false` with a `hint` naming the
+variable. Older builds, from before the setting existed, need nothing.
 
 ## What the server is allowed to touch
 
@@ -214,10 +241,16 @@ python3 test_qet_mcp.py                      # unit + protocol, no QElectroTech 
 QET_BINARY=/path/to/qelectrotech \
 QET_ELEMENTS=/path/to/qelectrotech/elements \
 QET_EXAMPLES=/path/to/qelectrotech/examples \
+QET_ENABLE_SCRIPTING=1 \
     python3 test_qet_mcp.py                  # everything
 ```
 
-115 tests in three layers: unit (validation, script generation, the terminal
+`QET_ENABLE_SCRIPTING=1` matters from #984 onwards: without it the
+integration tests that drive QElectroTech through a script all fail, and
+they fail as "the edit did nothing" rather than as "scripting is off", which
+reads like a regression in the thing under test.
+
+176 tests in three layers: unit (validation, script generation, the terminal
 order rule, the diff, the part schema), the real stdio transport, and
 integration against a built QElectroTech. Several exist because the
 behaviour they pin was once wrong and looked right, and say so in their

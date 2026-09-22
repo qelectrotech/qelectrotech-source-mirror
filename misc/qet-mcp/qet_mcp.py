@@ -643,6 +643,15 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
     It lives inside the temporary directory so it cannot collide with a
     concurrent call, and it is returned to the caller on failure, because a
     generated script nobody can see is not debuggable.
+
+    The environment is inherited, not rebuilt, so QET_ENABLE_SCRIPTING
+    reaches QElectroTech from wherever this server was started -- normally
+    the "env" block of the MCP client's own configuration. That is the
+    consent: whoever configured this server and pointed it at a
+    QElectroTech binary made the choice, and their interactive
+    QElectroTech keeps whatever its own setting says. This server does not
+    set the variable itself, because a switch a program turns on for
+    itself is not a switch.
     """
     src = Path(binary).expanduser()
     if not src.is_file() or not os.access(src, os.X_OK):
@@ -679,8 +688,26 @@ def _run_qet(binary: str, args: list[str], timeout: int = 180,
             return {"ok": False, "timed_out": True, "timeout_s": timeout,
                     "hint": "a modal dialog during load will hang a headless "
                             "run; check the project's format version"}
-        return {"ok": p.returncode == 0, "exit_code": p.returncode,
-                "stdout": p.stdout[-tail:], "stderr": p.stderr[-tail:]}
+        result = {"ok": p.returncode == 0, "exit_code": p.returncode,
+                  "stdout": p.stdout[-tail:], "stderr": p.stderr[-tail:]}
+        # QElectroTech refuses --run when scripting is switched off, which
+        # it is by default. Its own message is clear but French, and it
+        # names a settings dialog that nobody driving this server is
+        # looking at -- so say the thing that actually applies here. Keyed
+        # on QElectroTech naming the variable, with exit 3 as a fallback
+        # for a future build that words the refusal differently.
+        if script is not None and not result["ok"] and (
+                "QET_ENABLE_SCRIPTING" in p.stderr or p.returncode == 3):
+            result["hint"] = (
+                "this tool drives QElectroTech through a script, and this "
+                "QElectroTech has scripting switched off. Add "
+                "QET_ENABLE_SCRIPTING=1 to the environment this server is "
+                "started in -- in an MCP client that is the \"env\" block of "
+                "its entry in the client configuration. Only qet_query, "
+                "qet_continuity, qet_check, qet_project_new and qet_edit "
+                "need it; every other tool either reads the file directly "
+                "or uses a plain CLI flag.")
+        return result
 
 
 def tool_export(binary: str, project: str, format: str, output: str,
@@ -1774,12 +1801,21 @@ def tool_check(binary: str, project: str, checks: list | None = None,
 
     order = {"error": 0, "warning": 1, "info": 2}
     findings.sort(key=lambda f: (order[f["severity"]], f["check"]))
-    return {"ok": not errors and not any(f["severity"] == "error" for f in findings),
-            "summary": {"errors": sum(f["severity"] == "error" for f in findings),
-                        "warnings": sum(f["severity"] == "warning" for f in findings),
-                        "info": sum(f["severity"] == "info" for f in findings),
-                        "passed": len(passed), "check_failures": len(errors)},
-            "findings": findings, "passed": passed, "check_failures": errors}
+    answer = {"ok": not errors and not any(f["severity"] == "error" for f in findings),
+              "summary": {"errors": sum(f["severity"] == "error" for f in findings),
+                          "warnings": sum(f["severity"] == "warning" for f in findings),
+                          "info": sum(f["severity"] == "info" for f in findings),
+                          "passed": len(passed), "check_failures": len(errors)},
+              "findings": findings, "passed": passed, "check_failures": errors}
+    # This answer is built fresh rather than layered onto the launch result,
+    # so a reason the launch failed at all has to be carried across
+    # explicitly. Without it every check reads "no result came back", which
+    # is true and tells nobody why.
+    if result.get("hint"):
+        answer["ok"] = False
+        answer["hint"] = result["hint"]
+        answer["exit_code"] = result.get("exit_code")
+    return answer
 
 
 def tool_project_new(binary: str, output: str, title: str = "Untitled",
@@ -1849,7 +1885,12 @@ def tool_project_new(binary: str, output: str, title: str = "Untitled",
 
     if rec is None or not rec.get("saved") or not out.is_file():
         result["ok"] = False
-        result["hint"] = ("QElectroTech did not write the project; this build's scripting "
+            #setdefault: _run_qet() may already have said something more
+            #specific than this guess -- notably that scripting is switched
+            #off, in which case "your build is too old" sends the reader
+            #looking for the wrong thing entirely.
+        result.setdefault("hint",
+                          "QElectroTech did not write the project; this build's scripting "
                           "API may predate addFolio()/save()")
         return result
     if any(f < 0 for f in rec["folios"]):
@@ -1915,7 +1956,12 @@ def tool_edit(binary: str, project: str, operations: list, output: str,
         # that exited early, or the wrong executable -- and exit code 0 from
         # something that did nothing is not success.
         result["ok"] = False
-        result["hint"] = ("the binary never ran the script (no capability report came "
+            #setdefault, for the same reason as in tool_project_new(): a
+            #refusal to run scripts at all also produces no capability
+            #report, and "is it a build with --run support?" is then the
+            #wrong question.
+        result.setdefault("hint",
+                          "the binary never ran the script (no capability report came "
                           "back), so nothing was changed. Is it a QElectroTech build with "
                           "--run support?")
         result["script"] = script
