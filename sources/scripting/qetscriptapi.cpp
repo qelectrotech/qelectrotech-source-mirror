@@ -1076,6 +1076,26 @@ bool QetScriptApi::linkElements(int folioIndexA, const QString &elementUuidA,
 				 elementUuidB, elementLinkType(folioIndexB, elementUuidB)));
 		return false;
 	}
+	// Linking two report elements (next_report/previous_report) that each
+	// already carry a conductor with differing properties (colour, line
+	// style, text, function or tension protocol) makes
+	// LinkElementCommand::redo() open PotentialSelectorDialog -- a plain
+	// QDialog::exec(), not routed through QET::QetMessageBox, so headless
+	// --run has nobody to answer it and hangs until killed. Measured:
+	// confirmed hanging with the fix below NOT in place, confirmed clean
+	// (no hang, false returned) with it in place. Same reasoning and the
+	// same choice addConductor() already makes about ConductorCreator's
+	// own ambiguous-potential dialog.
+	if (LinkElementCommand::reportLinkNeedsPotentialChoice(a, b)) {
+		log(QStringLiteral("qet.linkElements: %1 and %2 already carry conductors whose "
+						   "colour, style, text, function or tension protocol disagree -- "
+						   "linking them would open a dialog asking which to keep, and "
+						   "nobody is there to answer it under --run. Use "
+						   "qet.checkContinuity() to see the mismatch, resolve it with "
+						   "setConductorProperty() on one side, then link")
+			.arg(elementUuidA, elementUuidB));
+		return false;
+	}
 	auto isPlcMaster = [](Element *e) {
 		return e->elementData().m_type == ElementData::Master
 			&& e->elementData().m_master_type == ElementData::PLC;
