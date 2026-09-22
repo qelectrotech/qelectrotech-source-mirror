@@ -1217,6 +1217,9 @@ QStringList QetScriptApi::tables() const
 
 	@return the rows; empty on refusal or SQL error, with queryError()
 	saying which. An empty result and a failure are not the same thing.
+	A result that ran past projectDataBase::MaxResultRows is cut there and
+	queryError() says so, so a truncated list is never mistaken for a
+	complete one.
 */
 QVariantList QetScriptApi::query(const QString &sql)
 {
@@ -1243,6 +1246,22 @@ QVariantList QetScriptApi::query(const QString &sql)
 	const QSqlRecord record = q.record();
 	while (q.next())
 	{
+		//SQLite produces rows lazily, so a query that never stops
+		//producing them makes this loop never stop either -- "WITH
+		//RECURSIVE c(n) AS (SELECT 1 UNION ALL SELECT n+1 FROM c) SELECT n
+		//FROM c" is one line and runs until memory is gone. The script
+		//engine's own 30 s interrupt does not reach here: that aborts
+		//JavaScript execution, and this is C++ inside a single call.
+		//@see projectDataBase::MaxResultRows.
+		if (rows.size() >= projectDataBase::MaxResultRows) {
+			m_query_error = QStringLiteral(
+						"result truncated at %1 rows; add a LIMIT or a "
+						"WHERE clause")
+					.arg(projectDataBase::MaxResultRows);
+			log(QStringLiteral("qet.query: %1").arg(m_query_error));
+			break;
+		}
+
 		QVariantMap row;
 		for (int i = 0 ; i < record.count() ; ++i) {
 			row.insert(record.fieldName(i), q.value(i));
