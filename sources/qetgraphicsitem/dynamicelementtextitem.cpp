@@ -732,6 +732,16 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 {
 	DiagramTextItem::paint(painter, option, widget);
 
+		//Only ever repositions already-existing sibling items here --
+		//never adds or removes one. paint() runs while QGraphicsScene is
+		//iterating its item list to draw it, and mutating that list mid
+		//-iteration (which addResizeHandles()/removeResizeHandles() do,
+		//through QGraphicsScene::addItem()/removeItem()) crashes. An
+		//earlier version of this fix called them from here and crashed
+		//qelectrotech reproducibly on deselecting a text (SIGABRT); see
+		//refreshResizeHandlesVisibility() for where that now happens
+		//instead -- itemChange(), Qt's own safe hook for exactly this,
+		//already used below for this item's own selection.
 	if (m_left_resize_handle || m_right_resize_handle)
 		updateResizeHandlesPos();
 
@@ -826,10 +836,7 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 	}
 	else if (change == QGraphicsItem::ItemSelectedHasChanged)
 	{
-		if (value.toBool())
-			addResizeHandles();
-		else
-			removeResizeHandles();
+		refreshResizeHandlesVisibility();
 	}
 	else if (change == QGraphicsItem::ItemSceneHasChanged && !scene())
 	{
@@ -879,6 +886,31 @@ bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *ev
 }
 
 /**
+	@brief DynamicElementTextItem::refreshResizeHandlesVisibility
+	Show the resize handles when this text is selected directly, OR when its
+	parent element is -- which is what an ordinary click without Shift
+	selects (DynamicElementTextItem::mousePressEvent() forwards a plain
+	click to the parent, so dragging a symbol by its label moves the whole
+	symbol; a pre-existing, unrelated behaviour, left untouched here).
+	Without this, the handles were reachable only via Shift+click or a
+	right-click's context menu, neither of which a user reaches for to
+	resize a text field (qelectrotech#591, reported by @arummler).
+
+	Called from itemChange() -- both this item's own ItemSelectedHasChanged,
+	below, and Element::itemChange() on the parent's, which calls this on
+	every one of its texts. Not from paint(): see the comment there for why
+	that crashed.
+*/
+void DynamicElementTextItem::refreshResizeHandlesVisibility()
+{
+	const bool handles_wanted = isSelected() || (m_parent_element && m_parent_element->isSelected());
+	if (handles_wanted && !m_left_resize_handle)
+		addResizeHandles();
+	else if (!handles_wanted && m_left_resize_handle)
+		removeResizeHandles();
+}
+
+/**
 	@brief DynamicElementTextItem::addResizeHandles
 	Create and show the two width-resize handles (left/right edge of
 	frameRect()), reusing QetGraphicsHandlerItem the same way QetShapeItem
@@ -917,20 +949,32 @@ void DynamicElementTextItem::removeResizeHandles()
 
 /**
 	@brief DynamicElementTextItem::updateResizeHandlesPos
-	Keep the two resize handles at the vertical middle of frameRect()'s left
-	and right edges, in scene coordinates -- called on every paint() so it
-	stays correct across every kind of change that can move this item or
+	Keep the two resize handles at the vertical middle of boundingRect()'s
+	left and right edges, in scene coordinates -- called on every paint() so
+	it stays correct across every kind of change that can move this item or
 	change its size (position, rotation, font, text, textWidth...) without
 	needing a dedicated hook for each one.
+
+	Deliberately boundingRect(), not frameRect(): frameRect() is a tight box
+	around the text's own natural (idealWidth()) size, re-centred inside
+	boundingRect() -- it does not grow with textWidth(). Once a text has
+	been widened, that leaves a growing gap between the tight frame and the
+	dashed selection outline QGraphicsView draws at boundingRect(), which is
+	the box a user actually sees and expects a resize handle to sit on
+	(qelectrotech#591, reported by @arummler: "the drag elements should be
+	on the border of the box"). boundingRect() reflects the full
+	textWidth() (it is QGraphicsTextItem's own, driven by the document's
+	laid-out size), so the handles now track the box that is visibly
+	resized rather than the text glyphs inside it.
 */
 void DynamicElementTextItem::updateResizeHandlesPos()
 {
 	if (!m_left_resize_handle || !m_right_resize_handle)
 		return;
 
-	QRectF fr = frameRect();
-	m_left_resize_handle->setPos(mapToScene(QPointF(fr.left(), fr.center().y())));
-	m_right_resize_handle->setPos(mapToScene(QPointF(fr.right(), fr.center().y())));
+	QRectF br = boundingRect();
+	m_left_resize_handle->setPos(mapToScene(QPointF(br.left(), br.center().y())));
+	m_right_resize_handle->setPos(mapToScene(QPointF(br.right(), br.center().y())));
 }
 
 /**
