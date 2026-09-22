@@ -3837,6 +3837,126 @@ int QetScriptApi::searchAndReplace(const QString &kind, const QString &field,
 	return changed;
 }
 
+/**
+	@brief QetScriptApi::checkContinuity
+	Structural electrical checks against the live scene graph -- Terminal/
+	Conductor/relatedPotentialConductors() -- rather than a heuristic read
+	of the saved XML the way qet_check's Python side works. Two checks:
+
+	1. unconnected_terminal (severity "info"): a terminal with no
+	   conductor at all. Reported at low confidence deliberately -- an
+	   unconnected terminal is routine (a spare relay contact, an unused
+	   optional pin), not necessarily a mistake, so this is a prompt to
+	   look, not a claim that something is wrong.
+
+	2. potential_mismatch (severity "error"): two conductors that
+	   electrically belong to the same potential (connected transitively
+	   through shared terminals, following bridged terminal strips and
+	   linked report elements the same way setConductorProperty() does)
+	   but disagree on num, conductor_color, conductor_section, function,
+	   bus or cable. QElectroTech's own setConductorProperty() always
+	   writes every member of a potential identically, so any divergence
+	   found here did not come from this API or the GUI's equivalent
+	   action -- it came from hand-edited XML, a legacy file, or an
+	   external tool, and it is a real defect: two wire numbers on what
+	   is electrically one node is exactly the kind of thing a human
+	   reading the schematic would get wrong from.
+
+	What this deliberately does NOT check, because QElectroTech's own
+	terminal data model does not carry the information a real check would
+	need: pin electrical direction/power conflicts (no terminal in this
+	model is marked input/output/power the way a KiCad pin is -- only
+	Generic/Inner/Outer/No/Nc/Common, which describe contact role within
+	one relay/switch, not signal direction), and short circuits between a
+	contact's No and Nc terminals sharing a Common (would need per-
+	contact-group semantics this does not attempt). Treat this as
+	continuity/consistency checking, not full ERC.
+
+	@param folioIndex a single folio, or -1 for the whole project
+	@return a list of {kind, severity, folio, message, ...} objects;
+	kind-specific keys: unconnected_terminal has element/elementLabel/
+	terminal/terminalName, potential_mismatch has property/values
+*/
+QVariantList QetScriptApi::checkContinuity(int folioIndex)
+{
+	QVariantList findings;
+	if (!m_project) return findings;
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex >= diagrams.count()) {
+		log(QStringLiteral("qet.checkContinuity: folio %1 does not exist (%2 folio(s))")
+			.arg(folioIndex).arg(diagrams.count()));
+		return findings;
+	}
+
+	for (int f = 0; f < diagrams.count(); ++f) {
+		if (folioIndex >= 0 && f != folioIndex) continue;
+		DiagramContent content(diagrams.at(f), false);
+		for (Element *elmt : std::as_const(content.m_elements)) {
+			const QList<Terminal *> terminals = elmt->terminals();
+			for (int ti = 0; ti < terminals.count(); ++ti) {
+				Terminal *t = terminals.at(ti);
+				if (!t->conductors().isEmpty()) continue;
+				QVariantMap finding;
+				finding.insert(QStringLiteral("kind"), QStringLiteral("unconnected_terminal"));
+				finding.insert(QStringLiteral("severity"), QStringLiteral("info"));
+				finding.insert(QStringLiteral("folio"), f);
+				finding.insert(QStringLiteral("element"), elmt->uuid().toString());
+				finding.insert(QStringLiteral("elementLabel"), elmt->actualLabel());
+				finding.insert(QStringLiteral("terminal"), ti);
+				finding.insert(QStringLiteral("terminalName"), t->name());
+				finding.insert(QStringLiteral("message"),
+					QStringLiteral("terminal %1 ('%2') of %3 has no conductor")
+						.arg(ti).arg(t->name(), elmt->actualLabel()));
+				findings << finding;
+			}
+		}
+	}
+
+	static const QStringList checked_properties = {
+		QStringLiteral("num"), QStringLiteral("conductor_color"),
+		QStringLiteral("conductor_section"), QStringLiteral("function"),
+		QStringLiteral("bus"), QStringLiteral("cable")};
+
+	QSet<Conductor *> visited;
+	for (int f = 0; f < diagrams.count(); ++f) {
+		if (folioIndex >= 0 && f != folioIndex) continue;
+		DiagramContent content(diagrams.at(f), false);
+		const QList<Conductor *> all = content.conductors(DiagramContent::AnyConductor);
+		for (Conductor *c : all) {
+			if (visited.contains(c)) continue;
+			QSet<Conductor *> potential = c->relatedPotentialConductors(true);
+			potential << c;
+			visited += potential;
+			if (potential.count() < 2) continue;
+
+			QHash<QString, QSet<QString>> distinct_values;
+			for (Conductor *pc : std::as_const(potential)) {
+				for (const QString &prop : checked_properties) {
+					distinct_values[prop].insert(conductorPropertyValue(pc->properties(), prop));
+				}
+			}
+			for (const QString &prop : checked_properties) {
+				if (distinct_values.value(prop).count() <= 1) continue;
+				QStringList values(distinct_values.value(prop).begin(),
+								   distinct_values.value(prop).end());
+				values.sort();
+				QVariantMap finding;
+				finding.insert(QStringLiteral("kind"), QStringLiteral("potential_mismatch"));
+				finding.insert(QStringLiteral("severity"), QStringLiteral("error"));
+				finding.insert(QStringLiteral("folio"), f);
+				finding.insert(QStringLiteral("property"), prop);
+				finding.insert(QStringLiteral("values"), values);
+				finding.insert(QStringLiteral("message"),
+					QStringLiteral("conductors on the same electrical potential disagree "
+								   "on %1: %2").arg(prop, values.join(QStringLiteral(", "))));
+				findings << finding;
+			}
+		}
+	}
+
+	return findings;
+}
+
 bool QetScriptApi::selectElement(const QString &elementUuid)
 {
 	if (!m_project) return false;

@@ -547,6 +547,11 @@ class QetScriptApi : public QObject
 										 const QString &pattern, const QString &replacement,
 										 bool useRegex, bool caseSensitive);
 
+		// -- electrical continuity / ERC: read-only, structural checks
+		// against the live object graph rather than the XML -- see the
+		// .cpp doc comment for exactly what is and is not covered --
+		Q_INVOKABLE QVariantList checkContinuity(int folioIndex);
+
 		// -- navigate and message --
 		Q_INVOKABLE bool selectElement(const QString &elementUuid);
 		Q_INVOKABLE void deselectAll(int folioIndex);
