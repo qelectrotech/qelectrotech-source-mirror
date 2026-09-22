@@ -98,6 +98,7 @@ if(BUILD_WITH_KF)
     qet_make_kf_available()
 
   elseif(BUILD_KF AND BUILD_KF_MINIMAL)
+    message(WARNING "BUILD_KF_MINIMAL is experimental and may not work as expected.")
     if(NOT TARGET KF6::CoreAddons)
       message(
         VERBOSE
