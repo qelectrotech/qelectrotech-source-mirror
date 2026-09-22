@@ -22,6 +22,7 @@
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetproject.h"
 
 #include <QSettings>
 
@@ -52,8 +53,25 @@
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
 
+		//Batch the database work the same way project loading does
+		//(QETProject::readProjectXml): without this, every addItem()
+		//below emits dataBaseUpdated(), which makes each connected
+		//table model re-run its full SQL query -- ~77 queries for a
+		//typical paste, i.e. the multi-second stall on Ctrl+V.
+	auto *db = m_diagram->project() ? m_diagram->project()->dataBase() : nullptr;
+	if (db) {
+		db->blockSignals(true);
+		db->setUpdateBlocked(true);
+	}
+
 		//Load items at their original XML coordinates.
 	m_diagram->fromXml(document_xml, QPointF(), false, &m_content);
+
+	if (db) {
+		db->blockSignals(false);
+		db->setUpdateBlocked(false);
+		db->updateDB();
+	}
 	if (!m_content.count()) return;
 
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
@@ -116,6 +134,14 @@
 			if (const auto qde = QETApp::diagramEditorAncestorOf(view)) {
 				m_status_bar = qde->statusBar();
 			}
+				//Warp the cursor to the group's grid-snapped origin so
+				//the actual cursor position matches m_initial_cursor.
+				//Without this the first mouseMoveEvent computes a large
+				//delta (cursor is still at the Ctrl+V press location)
+				//and the items jump on first touch.
+			const QPoint view_pos = view->mapFromScene(m_initial_cursor);
+			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
+			QCursor::setPos(global_pos);
 		}
 	}
 	showHint();
