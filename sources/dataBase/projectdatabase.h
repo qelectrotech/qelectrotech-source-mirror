@@ -137,7 +137,6 @@ class projectDataBase : public QObject
 
 #ifdef QET_EXPORT_PROJECT_DB
 	public:
-		static sqlite3 *sqliteHandle(QSqlDatabase *db);
 		static void exportDb(projectDataBase *db,
 				     QWidget *parent = nullptr,
 				     const QString &caption = QString(),

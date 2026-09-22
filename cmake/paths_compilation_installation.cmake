@@ -62,7 +62,9 @@ if(WIN32)
   # puts the .qm files (see build-aux/windows/QElectroTech.wxs and the
   # windows-build workflow), and what the shortcuts pass as --lang-dir.
   set(QET_LANG_PATH               "lang/")
+  set(QET_EXAMPLES_PATH           "examples/")
   set(QET_LICENSE_PATH            "./")
+  set(QET_ICONS_PATH              "icons/hicolor/")
   # Liste des ressources Windows
 #RC_FILE = qelectrotech.rc
 endif()

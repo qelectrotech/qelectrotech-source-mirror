@@ -27,18 +27,12 @@ git submodule update --init --recursive
 | C++17 compiler | required | GCC or Clang on Unix-like platforms; MSVC or MinGW-w64 g++ on Windows — see [Choosing a compiler](#3-choosing-a-compiler-unix) / [Building on Windows](#6-building-on-windows-msvc--mingw) |
 | Qt6 base + widgets | required | |
 | Qt6 **GuiPrivate** headers | required | needed for clickable PDF hyperlinks; **hard build failure** at CMake generate time if missing, see below |
-| SQLite3 | required | used by the nomenclature/summary database |
 | Qt Linguist tools (`lrelease`) | required | compiles the tracked `.ts` files into `.qm` as part of every normal build |
 | pugixml | handled automatically | fetched and built via CMake FetchContent if not already present on the system — see [pugixml](#8-pugixml) below |
 | Qt Test module | required if building tests | `PACKAGE_TESTS` is `ON` by default; QtTest ships as part of the base Qt6 dev packages listed below on every platform, no extra package needed |
 | KDE Frameworks (KF6) | optional | see [Building without KDE Frameworks](#9-building-without-kde-frameworks) |
 | QtPdf module | optional | see [PDF page import](#7-pdf-page-import-qtpdf) |
 
-A note on CMake versions: the project declares a minimum of 3.5 but is
-routinely built with much newer releases; if your CMake is older than 4.3 it
-simply won't have the newer `SQLite3::SQLite3` target name, which the build
-script compensates for automatically. There is nothing you need to do either
-way.
 
 ## 3. Building (out-of-source build)
 
@@ -106,7 +100,7 @@ the closest match.
 sudo apt install \
     build-essential cmake ninja-build git \
     qt6-base-dev qt6-base-private-dev qt6-tools-dev qt6-tools-dev-tools \
-    libsqlite3-dev \
+
     libkf6coreaddons-dev libkf6widgetsaddons-dev
 ```
 
@@ -138,7 +132,6 @@ sudo apt install libpugixml-dev
 sudo dnf install \
     cmake gcc-c++ git \
     qt6-qtbase-devel qt6-qtbase-private-devel qt6-qttools-devel \
-    sqlite-devel \
     kf6-kcoreaddons-devel kf6-kwidgetsaddons-devel
 ```
 
@@ -155,11 +148,10 @@ Optional, for a system pugixml: `sudo dnf install pugixml-devel`.
 pkg install \
     cmake git \
     qt6-base qt6-tools \
-    sqlite3 \
     kf6-kcoreaddons kf6-kwidgetsaddons
 ```
 
-(from ports: `devel/qt6-base`, `devel/qt6-tools`, `databases/sqlite3`,
+(from ports: `devel/qt6-base`, `devel/qt6-tools`,
 `devel/kf6-kcoreaddons`, `x11-toolkits/kf6-kwidgetsaddons`.) Qt6's
 `GuiPrivate` headers ship as part of `qt6-base` on FreeBSD, no separate
 package is needed. `QtPdf` is not packaged on FreeBSD at the time of writing
@@ -175,7 +167,7 @@ Optional, for a system pugixml: `pkg install pugixml` (`devel/pugixml`).
 Using [Homebrew](https://brew.sh):
 
 ```sh
-brew install cmake qt sqlite ninja
+brew install cmake qt ninja
 ```
 
 Homebrew's `qt` formula is Qt6 and includes the private headers, so no
@@ -193,7 +185,7 @@ Optional, for a system pugixml: `brew install pugixml`.
 
 See [Building on Windows](#6-building-on-windows-msvc--mingw) below — the
 package sources differ enough from the Unix-like platforms above (no system
-package manager, SQLite3 and Qt aren't provided the same way) that it gets
+package manager and Qt aren't provided the same way) that it gets
 its own section.
 
 ## 5. pugixml
@@ -215,7 +207,7 @@ on Debian/Ubuntu, `pugixml-devel` on Fedora).
 Both toolchains QET's CMake build targets on Windows are covered here:
 **MSVC** (Visual Studio 2019/2022) and **MinGW-w64** (gcc). Unlike the
 Unix-like platforms above, there's no single system package manager, so
-Qt, SQLite3 and (optionally) KDE Frameworks each need to be sourced
+Qt and (optionally) KDE Frameworks each need to be sourced
 separately per toolchain.
 
 One piece of good news either way: unlike Debian/Fedora, the official Qt
@@ -236,11 +228,7 @@ normally use `-DBUILD_WITH_KF=OFF` (see the
 1. Install Visual Studio with the "Desktop development with C++" workload,
    and install Qt6 for MSVC (e.g. the `msvc2019_64` or `msvc2022_64` kit)
    via the [Qt Online Installer](https://www.qt.io/download-qt-installer).
-2. Get SQLite3 — the simplest route is [vcpkg](https://vcpkg.io):
-   ```bat
-   vcpkg install sqlite3:x64-windows
-   ```
-3. Configure and build from an "x64 Native Tools Command Prompt for VS":
+2. Configure and build from an "x64 Native Tools Command Prompt for VS":
    ```bat
    mkdir build && cd build
    cmake .. -G "Visual Studio 17 2022" -A x64 ^
@@ -293,9 +281,7 @@ Using the Qt Online Installer's bundled MinGW kit instead: point
 `CMAKE_PREFIX_PATH` at that kit (e.g. `C:\Qt\6.x.x\mingw_64`) and make sure
 its bundled `g++.exe` comes first on `PATH`, or pass
 `-DCMAKE_C_COMPILER`/`-DCMAKE_CXX_COMPILER` explicitly so CMake doesn't pick
-up a different MinGW installation. SQLite3 still has to come from elsewhere
-in this path — vcpkg with a `mingw`-flavoured triplet, or MSYS2's package as
-above.
+up a different MinGW installation.
 
 ## 7. Qt6 private headers (mandatory)
 
