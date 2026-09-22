@@ -83,10 +83,10 @@ Next recommended task:
 - If explicitly approved, implement a narrow read-only projection prototype with direct QtTest coverage. Do not change XML persistence, CrossRef rendering, CLI/export behavior, or Device/Function ownership in that slice.
 
 ## Current Phase
-Duplicate Assignment read-only Projection/Validation slice ready for commit.
+PLC IO warning extension committed; stabilization regression pending.
 
 ## Current Objective
-Commit the Duplicate Assignment validation projection as its own narrow slice, then verify the focused Contact/CrossRef and PLC projection checks.
+Verify the affected Contact/PLC/XML/export regression set, then decide whether to prepare push/PR or inspect stale `plc_*` projection-copy behavior.
 
 ## Completed
 - Local repository inspected non-destructively on 2026-09-21.
@@ -157,13 +157,15 @@ Commit the Duplicate Assignment validation projection as its own narrow slice, t
 - Assertions compare stable wire numbers, exact expected live-net terminal sets, wiring endpoint terminal pairs, conductor count, element count, and wire-number export set.
 - Targeted build and CTest verification passed for `tst_terminal_potential_exports`.
 - Affected CLI-test regression verification passed for `tst_conductorselfretrace`, `tst_cli_roundtrip_xml`, `tst_cli_export_equivalence`, and `tst_terminal_potential_exports`.
+- Completed and committed the Contact Projection, PLC IO Projection, Duplicate Validation, and PLC Warning-Spec/-Extension slices through `86c5fc9076d295044c41f489e95162b095dfdc8a`.
+- PLC warnings remain read-only and do not change UI, persistence, XML schema, Device/Core ownership, or migration behavior.
 
 ## In Progress
-- Duplicate Assignment validation is implemented as read-only Contact/CrossRef Projection validation and prepared as its own commit slice.
+- Affected regression is being re-run after commit `86c5fc9076d295044c41f489e95162b095dfdc8a`.
 
 ## Pending
 - Decide later whether and how to mark the verified baseline.
-- Full interactive GUI smoke test, if desired, with the user present for any macOS permission prompts.
+- Full interactive GUI smoke test remains unverified and should only run with the user present for any macOS permission prompts.
 - Dedicated deep dives still pending for UI/domain coupling, project database lifecycle, export equivalence, terminal-strip/potential integration tests, and automated regression coverage design.
 - Tests for full master/slave XML round-trip, link undo/redo, group-index persistence, CrossRef click map/render behavior, and PLC link propagation remain unverified/missing in this pass.
 - High-priority future regression candidates identified, but not implemented: CLI fixture matrix, XML round-trip determinism, DB/export equivalence, terminal-strip round-trip, autonum undo/redo, and master/slave link persistence/render checks.
@@ -173,8 +175,7 @@ Commit the Duplicate Assignment validation projection as its own narrow slice, t
 - Phase 10 first-slice plan remains a specification only; no test harness, helpers, fixtures, CMake registrations, or documentation files were created.
 - Full P0 fixture matrix, export equivalence tests, master/slave tests, terminal-strip tests, autonum/undo tests, cable/conductor-field tests, PDF checks, and large smoke examples remain unimplemented.
 - Interactive GUI behavior remains unverified.
-- Full CTest suite has not been re-run after the Duplicate Assignment validation slice.
-- PLC semantics have not been deeply analyzed beyond the focused regression target.
+- Full CTest suite has not been re-run after the PLC warning extension.
 - Default KF/ECM build behavior remains open because the active baseline uses `-DBUILD_WITH_KF=OFF`.
 
 ## Blocked
@@ -268,7 +269,7 @@ Commit the Duplicate Assignment validation projection as its own narrow slice, t
 - Build warnings observed in unchanged upstream source: self-assignment warning in `elementsmover.cpp`, ignored `nodiscard` result in `qet.cpp`, and an existing TODO pragma message in `openelmtcommand.cpp`.
 
 ## Next Planned Step
-Recommended next task after this commit: deepen PLC semantics as an analysis/spec slice only, with no UI, persistence, XML schema, or Device/Core migration.
+After the affected regression passes, decide between preparing push/PR for the five local commits or starting a narrow stale-`plc_*` projection-copy analysis.
 
 ## Change Log
 - 2026-09-21: Created baseline progress record and documented repository/remotes.
