@@ -143,6 +143,22 @@ add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# QETSql::isSingleReadOnlyStatement() -- read-only enforcement for every
+# project-database query, including the ones a .qet file carries. Compiles
+# sqlreadonly.cpp alone against its own in-memory SQLite, so the security
+# property is checked without standing up a QETProject.
+find_package(SQLite3 REQUIRED)
+if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
+  add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
+endif()
+add_executable(
+  tst_sqlreadonly
+  tst_sqlreadonly.cpp
+  ${QET_DIR}/sources/dataBase/sqlreadonly.cpp)
+add_test(NAME tst_sqlreadonly COMMAND tst_sqlreadonly)
+target_include_directories(tst_sqlreadonly PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_sqlreadonly PRIVATE Qt::Test SQLite3::SQLite3)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately
