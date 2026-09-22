@@ -957,7 +957,8 @@ QStringList QetScriptApi::linkedElements(int folioIndex, const QString &elementU
 	GUI would refuse to make.
 */
 bool QetScriptApi::linkElements(int folioIndexA, const QString &elementUuidA,
-								int folioIndexB, const QString &elementUuidB)
+								int folioIndexB, const QString &elementUuidB,
+								int groupIndex)
 {
 	if (!m_project) return false;
 	if (m_project->isReadOnly()) {
@@ -982,11 +983,48 @@ bool QetScriptApi::linkElements(int folioIndexA, const QString &elementUuidA,
 				 elementUuidB, elementLinkType(folioIndexB, elementUuidB)));
 		return false;
 	}
+	auto isPlcMaster = [](Element *e) {
+		return e->elementData().m_type == ElementData::Master
+			&& e->elementData().m_master_type == ElementData::PLC;
+	};
+	if (groupIndex >= 0 && !isPlcMaster(a) && !isPlcMaster(b)) {
+		log(QStringLiteral("qet.linkElements: groupIndex only applies to a PLC "
+						   "master/slave pair -- neither %1 nor %2 is a PLC master")
+			.arg(elementUuidA, elementUuidB));
+		return false;
+	}
 
-	auto *cmd = new LinkElementCommand(a);
-	cmd->setLink(b);
+	// LinkElementCommand only reads m_group_index when the command's OWN
+	// element is the Slave -- when it is the Master it looks in a
+	// per-slave m_group_indices map this call never populates, and
+	// setGroupIndex() is silently a no-op. Build the command from the
+	// slave's side instead, exactly as PlcLinkWidget does (m_element is
+	// always the slave being edited there).
+	Element *slave = (groupIndex >= 0 && b->elementData().m_type == ElementData::Slave) ? b : a;
+	Element *master = (slave == a) ? b : a;
+
+	auto *cmd = new LinkElementCommand(slave);
+	cmd->setLink(master);
+	if (groupIndex >= 0)
+		cmd->setGroupIndex(groupIndex);
 	m_project->undoStack()->push(cmd);
 	return a->linkedElements().contains(b);
+}
+
+/**
+	@brief QetScriptApi::elementLinkGroupIndex
+	The PLC IO row a linked slave is attached to -- the index passed as
+	linkElements()'s groupIndex when the link was made, or -1 if the pair
+	is not linked or the link carries no group index (an ordinary
+	master/slave or report pair, not a PLC one).
+*/
+int QetScriptApi::elementLinkGroupIndex(int folioIndex, const QString &elementUuid,
+										int otherFolioIndex, const QString &otherElementUuid) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	Element *other = findElement(otherFolioIndex, otherElementUuid);
+	if (!element || !other) return -1;
+	return element->groupIndexForElement(other);
 }
 
 bool QetScriptApi::unlinkElement(int folioIndex, const QString &elementUuid)
@@ -1004,6 +1042,165 @@ bool QetScriptApi::unlinkElement(int folioIndex, const QString &elementUuid)
 	cmd->unlinkAll();
 	m_project->undoStack()->push(cmd);
 	return element->linkedElements().isEmpty();
+}
+
+namespace {
+bool isPlcMaster(Element *element)
+{
+	return element
+		&& element->elementData().m_type == ElementData::Master
+		&& element->elementData().m_master_type == ElementData::PLC;
+}
+}
+
+/**
+	@brief QetScriptApi::plcIOs
+	List a PLC master's IO table, one line per row: "index: type address
+	'functionText' 'comment' -> crossRef". crossRef is empty until a slave
+	is linked onto that row (linkElements()'s groupIndex).
+*/
+QStringList QetScriptApi::plcIOs(int folioIndex, const QString &elementUuid) const
+{
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!isPlcMaster(element)) return {};
+
+	QStringList result;
+	const auto ios = element->elementData().plcMasterData().ios;
+	for (int i = 0; i < ios.count(); ++i) {
+		const auto &io = ios.at(i);
+		result << QStringLiteral("%1: %2 %3 '%4' '%5' -> %6")
+			.arg(i)
+			.arg(ElementData::plcIOTypeToString(io.type), io.address,
+				 io.functionText, io.comment, io.crossRef);
+	}
+	return result;
+}
+
+/**
+	@brief QetScriptApi::addPlcIO
+	Append a row to a PLC master's IO table. type is one of
+	entree_digitale, sortie_digitale, entree_analogique, sortie_analogique,
+	entree_universelle, sortie_universelle. Returns the new row's index, or
+	-1 if elementUuid is not a PLC master.
+
+	This edits ElementData directly through setElementData(), the same as
+	MasterPropertiesWidget's own PLC IO table -- which, like it, is NOT
+	undoable: MasterPropertiesWidget::associatedUndo() deliberately returns
+	nullptr for PLC masters (their linking is managed through the IO table,
+	not the link-tree widget it would otherwise build an unlink-all command
+	from), so qet.undo() cannot revert an addPlcIO/setPlcIO/removePlcIO call
+	any more than the GUI's own PLC IO editor can.
+*/
+int QetScriptApi::addPlcIO(int folioIndex, const QString &elementUuid, const QString &type,
+						   const QString &address, const QString &functionText,
+						   const QString &comment)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addPlcIO: project is read-only"));
+		return -1;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!isPlcMaster(element)) {
+		log(QStringLiteral("qet.addPlcIO: %1 is not a PLC master").arg(elementUuid));
+		return -1;
+	}
+
+	ElementData ed = element->elementData();
+	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	ElementData::PlcIO io;
+	io.type = ElementData::plcIOTypeFromString(type);
+	io.address = address;
+	io.functionText = functionText;
+	io.comment = comment;
+	plc_data.ios.append(io);
+	ed.setPlcMasterData(plc_data);
+	element->setElementData(ed);
+	if (element->scene()) element->update();
+
+	return plc_data.ios.count() - 1;
+}
+
+/**
+	@brief QetScriptApi::setPlcIO
+	Change one field of a PLC master IO row: type, address, function
+	(functionText) or comment. See addPlcIO() for the undo caveat this
+	shares.
+*/
+bool QetScriptApi::setPlcIO(int folioIndex, const QString &elementUuid, int ioIndex,
+							const QString &property, const QString &value)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setPlcIO: project is read-only"));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!isPlcMaster(element)) {
+		log(QStringLiteral("qet.setPlcIO: %1 is not a PLC master").arg(elementUuid));
+		return false;
+	}
+
+	ElementData ed = element->elementData();
+	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	if (ioIndex < 0 || ioIndex >= plc_data.ios.count()) {
+		log(QStringLiteral("qet.setPlcIO: %1 has %2 IO row(s), no index %3")
+			.arg(elementUuid).arg(plc_data.ios.count()).arg(ioIndex));
+		return false;
+	}
+
+	ElementData::PlcIO &io = plc_data.ios[ioIndex];
+	if (property == QLatin1String("type")) {
+		io.type = ElementData::plcIOTypeFromString(value);
+	} else if (property == QLatin1String("address")) {
+		io.address = value;
+	} else if (property == QLatin1String("function")) {
+		io.functionText = value;
+	} else if (property == QLatin1String("comment")) {
+		io.comment = value;
+	} else {
+		log(QStringLiteral("qet.setPlcIO: unknown property '%1'; expected type, "
+						   "address, function or comment").arg(property));
+		return false;
+	}
+
+	ed.setPlcMasterData(plc_data);
+	element->setElementData(ed);
+	if (element->scene()) element->update();
+	return true;
+}
+
+/**
+	@brief QetScriptApi::removePlcIO
+	Remove one row from a PLC master's IO table. See addPlcIO() for the
+	undo caveat this shares. Indexes shift afterwards.
+*/
+bool QetScriptApi::removePlcIO(int folioIndex, const QString &elementUuid, int ioIndex)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.removePlcIO: project is read-only"));
+		return false;
+	}
+	Element *element = findElement(folioIndex, elementUuid);
+	if (!isPlcMaster(element)) {
+		log(QStringLiteral("qet.removePlcIO: %1 is not a PLC master").arg(elementUuid));
+		return false;
+	}
+
+	ElementData ed = element->elementData();
+	ElementData::PlcMasterData plc_data = ed.plcMasterData();
+	if (ioIndex < 0 || ioIndex >= plc_data.ios.count()) {
+		log(QStringLiteral("qet.removePlcIO: %1 has %2 IO row(s), no index %3")
+			.arg(elementUuid).arg(plc_data.ios.count()).arg(ioIndex));
+		return false;
+	}
+
+	plc_data.ios.removeAt(ioIndex);
+	ed.setPlcMasterData(plc_data);
+	element->setElementData(ed);
+	if (element->scene()) element->update();
+	return true;
 }
 
 namespace {

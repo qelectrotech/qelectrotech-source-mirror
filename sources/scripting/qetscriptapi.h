@@ -406,8 +406,21 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE QString elementLinkType(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE QStringList linkedElements(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE bool linkElements(int folioIndexA, const QString &elementUuidA,
-									  int folioIndexB, const QString &elementUuidB);
+									  int folioIndexB, const QString &elementUuidB,
+									  int groupIndex = -1);
 		Q_INVOKABLE bool unlinkElement(int folioIndex, const QString &elementUuid);
+		Q_INVOKABLE int elementLinkGroupIndex(int folioIndex, const QString &elementUuid,
+											  int otherFolioIndex, const QString &otherElementUuid) const;
+
+		// -- a PLC master's IO table: address/function/comment rows a PLC
+		// slave links onto via linkElements()'s groupIndex --
+		Q_INVOKABLE QStringList plcIOs(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE int addPlcIO(int folioIndex, const QString &elementUuid, const QString &type,
+								 const QString &address, const QString &functionText,
+								 const QString &comment);
+		Q_INVOKABLE bool setPlcIO(int folioIndex, const QString &elementUuid, int ioIndex,
+								  const QString &property, const QString &value);
+		Q_INVOKABLE bool removePlcIO(int folioIndex, const QString &elementUuid, int ioIndex);
 
 		// -- independent text and drawing shapes --
 		Q_INVOKABLE QStringList texts(int folioIndex) const;
