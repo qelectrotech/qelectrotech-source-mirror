@@ -2071,6 +2071,9 @@ TOOLS = [
                 "project": {"type": "string"},
                 "format": {"type": "string", "enum": sorted(EXPORT_FORMATS)},
                 "output": {"type": "string"},
+                "overwrite": {"type": "boolean", "default": False,
+                              "description": "replace \"output\" if it already exists; "
+                                             "without this an existing file is never clobbered"},
                 "timeout": {"type": "integer", "default": 180},
             },
             "required": ["binary", "project", "format", "output"],
@@ -2094,6 +2097,9 @@ TOOLS = [
                 "binary": {"type": "string", "description": "path to the qelectrotech executable"},
                 "project": {"type": "string", "description": "the .qet to start from; not modified"},
                 "output": {"type": "string", "description": "where to write the edited project"},
+                "overwrite": {"type": "boolean", "default": False,
+                              "description": "replace \"output\" if it already exists; "
+                                             "without this an existing file is never clobbered"},
                 "operations": {
                     "type": "array",
                     "minItems": 1,
@@ -2446,6 +2452,9 @@ TOOLS = [
             "type": "object",
             "properties": {
                 "output": {"type": "string", "description": "path to write, ending .elmt"},
+                "overwrite": {"type": "boolean", "default": False,
+                              "description": "replace \"output\" if it already exists; "
+                                             "without this an existing file is never clobbered"},
                 "names": {"type": "object",
                           "description": 'translated names by language code, e.g. '
                                          '{"en": "Coil", "fr": "Bobine"}. French is '
@@ -2492,6 +2501,143 @@ _BY_NAME = {t["name"]: t for t in TOOLS}
 
 
 # --------------------------------------------------------------------------
+# Filesystem policy
+# --------------------------------------------------------------------------
+#
+# Every path in a tool call arrives from the model, so without a policy this
+# server is a read/write primitive for anything the OS lets the process
+# touch: read any .qet or .elmt, export a project's contents somewhere else,
+# overwrite an unrelated file, embed an arbitrary local image or PDF. The
+# sandboxed HOME each QElectroTech launch gets isolates *settings*, not the
+# filesystem.
+#
+# So data paths are confined to a workspace. Two kinds of path are treated
+# differently, deliberately:
+#
+#   data          chosen by the client per call -- the projects, directories,
+#                 images and outputs below. Confined.
+#   configuration chosen once by whoever runs the server -- "binary" (the
+#                 qelectrotech executable) and "elements_dir" (the element
+#                 collection). Both normally live in /usr or a build tree,
+#                 i.e. outside any sane workspace, so confining them would
+#                 reject the ordinary case while stopping nothing: they are
+#                 not where a model gets to point the server at /etc.
+#
+# Enforced here, at the dispatcher, because this is the trust boundary --
+# the point where model-supplied arguments enter. Calling the tool_* helpers
+# directly from Python is not confined and is not meant to be: that is the
+# server's own code calling itself.
+_DATA_PATHS = {
+    "qet_project_info":   {"read": ("path",)},
+    "qet_elements":       {"read": ("path",)},
+    "qet_conductors":     {"read": ("path",)},
+    "qet_diff":           {"read": ("before", "after")},
+    "qet_scan":           {"read": ("directory",)},
+    "qet_element_info":   {"read": ("path",)},
+    "qet_element_search": {"read": ("directory",)},
+    "qet_export":         {"read": ("project",), "write": ("output",)},
+    "qet_edit":           {"read": ("project",), "write": ("output",)},
+    "qet_query":          {"read": ("project",)},
+    "qet_continuity":     {"read": ("project",)},
+    "qet_check":          {"read": ("project",)},
+    "qet_project_new":    {"write": ("output",)},
+    "qet_element_build":  {"write": ("output",)},
+}
+
+# qet_edit operations that name a file of their own.
+_DATA_PATH_OPS = {"add_image": "file", "add_pdf_page": "file"}
+
+
+def workspace_roots() -> list:
+    """The directories tool calls may read and write.
+
+    QET_MCP_WORKSPACE, os.pathsep-separated, or the process's working
+    directory when unset -- a real confinement either way, and the working
+    directory is what an MCP host normally starts the server in. Set
+    QET_MCP_ALLOW_ANY_PATH=1 to turn confinement off entirely, which is
+    equivalent to granting the client local filesystem access with this
+    process's privileges; it exists so that is a deliberate, visible choice
+    rather than the default.
+    """
+    if os.environ.get("QET_MCP_ALLOW_ANY_PATH") == "1":
+        return []
+    raw = os.environ.get("QET_MCP_WORKSPACE", "")
+    parts = [p for p in raw.split(os.pathsep) if p.strip()] or [os.getcwd()]
+    roots = []
+    for part in parts:
+        try:
+            roots.append(Path(part).expanduser().resolve())
+        except OSError:
+            continue
+    return roots
+
+
+def _within_workspace(path: Path, roots: list) -> bool:
+    for root in roots:
+        try:
+            if path == root or path.is_relative_to(root):
+                return True
+        except ValueError:
+            continue
+    return False
+
+
+def _check_path(raw, arg: str, mode: str, roots: list) -> Path:
+    """Resolve one path and refuse it if it leaves the workspace.
+
+    resolve() follows symlinks, so a link planted inside the workspace is
+    judged by where it actually points, not by where it sits. A path that
+    does not exist yet still resolves (its parents do), which is what makes
+    this usable for an output file.
+    """
+    if not isinstance(raw, str) or not raw:
+        raise ValueError(f"{arg!r} must be a non-empty path")
+    resolved = Path(raw).expanduser().resolve()
+    if roots and not _within_workspace(resolved, roots):
+        raise ValueError(
+            f"{arg!r} is outside the workspace: {resolved}. Allowed: "
+            + os.pathsep.join(str(r) for r in roots)
+            + ". Set QET_MCP_WORKSPACE to widen it, or "
+              "QET_MCP_ALLOW_ANY_PATH=1 to disable this check "
+              "(which grants this client local filesystem access)."
+        )
+    return resolved
+
+
+def enforce_path_policy(tool_name: str, arguments: dict) -> None:
+    """Apply the workspace and overwrite policy to one tool call."""
+    spec = _DATA_PATHS.get(tool_name)
+    if spec is None:
+        return
+    roots = workspace_roots()
+
+    for arg in spec.get("read", ()):
+        if arg in arguments:
+            _check_path(arguments[arg], arg, "read", roots)
+
+    for arg in spec.get("write", ()):
+        if arg not in arguments:
+            continue
+        out = _check_path(arguments[arg], arg, "write", roots)
+        # Writing over something that is already there is the one step this
+        # server cannot undo, so it is the one step it will not take on its
+        # own. qet_project_new already had this flag; the others now match it.
+        if out.exists() and not arguments.get("overwrite"):
+            raise ValueError(
+                f"{arg!r} already exists: {out}. Pass \"overwrite\": true to "
+                "replace it, or choose another name."
+            )
+
+    if tool_name == "qet_edit":
+        for i, op in enumerate(arguments.get("operations") or []):
+            if not isinstance(op, dict):
+                continue
+            key = _DATA_PATH_OPS.get(op.get("op"))
+            if key and key in op:
+                _check_path(op[key], f"operations[{i}].{key}", "read", roots)
+
+
+# --------------------------------------------------------------------------
 # JSON-RPC / MCP plumbing
 # --------------------------------------------------------------------------
 
@@ -2527,7 +2673,9 @@ def handle(msg: dict) -> dict | None:
         if tool is None:
             return _err(mid, -32602, f"unknown tool: {name}")
         try:
-            result = tool["handler"](params.get("arguments") or {})
+            arguments = params.get("arguments") or {}
+            enforce_path_policy(name, arguments)
+            result = tool["handler"](arguments)
             text = json.dumps(result, indent=2, ensure_ascii=False)
             return _ok(mid, {"content": [{"type": "text", "text": text}]})
         except Exception as exc:  # surfaced to the model, not the transport

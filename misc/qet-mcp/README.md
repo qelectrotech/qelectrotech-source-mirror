@@ -62,11 +62,52 @@ Register it with an MCP client, for example:
   "mcpServers": {
     "qet": {
       "command": "python3",
-      "args": ["/path/to/qelectrotech/misc/qet-mcp/qet_mcp.py"]
+      "args": ["/path/to/qelectrotech/misc/qet-mcp/qet_mcp.py"],
+      "env": {"QET_MCP_WORKSPACE": "/home/you/drawings"}
     }
   }
 }
 ```
+
+## What the server is allowed to touch
+
+Every path in a tool call is chosen by the model, so without a policy this
+server would be a read/write primitive for anything the operating system
+lets the process reach: read any project on the disk, export one somewhere
+else, overwrite an unrelated file, embed an arbitrary local image or PDF.
+
+So **data paths are confined to a workspace**:
+
+| | |
+|---|---|
+| `QET_MCP_WORKSPACE` | the directories tool calls may read and write, separated by `:` (`;` on Windows) |
+| unset | the directory the server was started in |
+| `QET_MCP_ALLOW_ANY_PATH=1` | turns the check off entirely |
+
+Set the workspace to the folder your drawings live in. A path outside it is
+refused with an error naming what was allowed; symlinks are resolved first,
+so a link planted inside the workspace is judged by where it points.
+
+Two arguments are deliberately **not** confined: `binary` (the
+`qelectrotech` executable) and `elements_dir` (the element collection).
+Those are configuration, chosen once by whoever runs the server, and both
+normally live in `/usr` or a build tree — outside any sensible workspace.
+Confining them would reject the ordinary case while stopping nothing.
+
+`QET_MCP_ALLOW_ANY_PATH=1` is equivalent to granting the client local
+filesystem access with this process's privileges. It exists so that is a
+deliberate choice rather than the default.
+
+**Nothing is overwritten unasked.** `qet_export`, `qet_edit`,
+`qet_project_new` and `qet_element_build` refuse an `output` that already
+exists unless the call passes `"overwrite": true`. Replacing a file is the
+one step this server cannot undo, so it is the one step it will not take on
+its own.
+
+The confinement is applied where tool arguments enter the server, not inside
+each tool. Importing `qet_mcp` and calling `tool_export()` from your own
+Python is not confined and is not meant to be — that is your code calling a
+library, and you already chose the paths.
 
 ## Worked examples
 

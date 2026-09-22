@@ -812,6 +812,199 @@ class ChecksDefinition(unittest.TestCase):
                 m.tool_check("/x", f.name, sample=-1)
 
 
+class PathPolicy(unittest.TestCase):
+    """The workspace confinement on model-supplied paths.
+
+    Both AI security reviews on PR #980 flagged unrestricted filesystem
+    reach as the headline MCP-side risk, one of them as the single blocker
+    before merge. These check the control itself rather than the tools
+    behind it, so they stay fast and hermetic.
+    """
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name) / "workspace"
+        self.root.mkdir()
+        self.outside = Path(self.tmp.name) / "outside"
+        self.outside.mkdir()
+        (self.outside / "secret.qet").write_text("<project/>")
+        (self.root / "ok.qet").write_text("<project/>")
+        self._saved = dict(os.environ)
+        os.environ["QET_MCP_WORKSPACE"] = str(self.root)
+        os.environ.pop("QET_MCP_ALLOW_ANY_PATH", None)
+
+    def tearDown(self):
+        os.environ.clear()
+        os.environ.update(self._saved)
+        self.tmp.cleanup()
+
+    def test_read_inside_the_workspace_is_allowed(self):
+        m.enforce_path_policy("qet_project_info", {"path": str(self.root / "ok.qet")})
+
+    def test_read_outside_the_workspace_is_refused(self):
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_project_info",
+                                  {"path": str(self.outside / "secret.qet")})
+
+    def test_traversal_out_of_the_workspace_is_refused(self):
+        sneaky = str(self.root / ".." / "outside" / "secret.qet")
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_project_info", {"path": sneaky})
+
+    def test_symlink_escape_is_refused(self):
+        """A link planted inside the workspace is judged by where it points.
+
+        This is the case a string-prefix check gets wrong, which is why the
+        policy resolves before comparing.
+        """
+        link = self.root / "innocent.qet"
+        link.symlink_to(self.outside / "secret.qet")
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_project_info", {"path": str(link)})
+
+    def test_write_outside_the_workspace_is_refused(self):
+        with self.assertRaisesRegex(ValueError, "outside the workspace"):
+            m.enforce_path_policy("qet_export", {
+                "binary": "/usr/bin/qelectrotech",
+                "project": str(self.root / "ok.qet"),
+                "format": "pdf",
+                "output": str(self.outside / "exfiltrated.pdf")})
+
+    def test_existing_output_is_not_clobbered_without_overwrite(self):
+        target = self.root / "existing.qet"
+        target.write_text("precious")
+        args = {"binary": "/usr/bin/qelectrotech", "output": str(target), "title": "T"}
+        with self.assertRaisesRegex(ValueError, "already exists"):
+            m.enforce_path_policy("qet_project_new", args)
+        # ... and goes through once the caller says so explicitly
+        m.enforce_path_policy("qet_project_new", dict(args, overwrite=True))
+        self.assertEqual(target.read_text(), "precious", "policy must not itself write")
+
+    def test_new_output_needs_no_overwrite_flag(self):
+        m.enforce_path_policy("qet_project_new", {
+            "binary": "/usr/bin/qelectrotech",
+            "output": str(self.root / "brand_new.qet"), "title": "T"})
+
+    def test_operation_level_file_paths_are_checked(self):
+        """add_image/add_pdf_page carry their own path, one level down."""
+        base = {"binary": "/usr/bin/qelectrotech",
+                "project": str(self.root / "ok.qet"),
+                "output": str(self.root / "out.qet")}
+        outside_png = str(self.outside / "anything.png")
+        for op in ({"op": "add_image", "folio": 0, "file": outside_png, "x": 0, "y": 0},
+                   {"op": "add_pdf_page", "folio": 0, "file": outside_png,
+                    "page": 1, "dpi": 150, "x": 0, "y": 0}):
+            with self.subTest(op=op["op"]):
+                with self.assertRaisesRegex(ValueError, "outside the workspace"):
+                    m.enforce_path_policy("qet_edit", dict(base, operations=[op]))
+
+    def test_configuration_paths_are_exempt(self):
+        """binary and elements_dir are the operator's choice, not the model's.
+
+        Both normally live in /usr or a build tree, so confining them would
+        reject the ordinary case while stopping nothing.
+        """
+        m.enforce_path_policy("qet_query", {
+            "binary": "/usr/bin/qelectrotech",
+            "project": str(self.root / "ok.qet"),
+            "elements_dir": "/usr/share/qelectrotech/elements"})
+
+    def test_several_roots_may_be_allowed(self):
+        os.environ["QET_MCP_WORKSPACE"] = os.pathsep.join(
+            [str(self.root), str(self.outside)])
+        m.enforce_path_policy("qet_project_info", {"path": str(self.outside / "secret.qet")})
+
+    def test_escape_hatch_disables_confinement(self):
+        os.environ["QET_MCP_ALLOW_ANY_PATH"] = "1"
+        self.assertEqual(m.workspace_roots(), [])
+        m.enforce_path_policy("qet_project_info", {"path": "/etc/passwd"})
+
+    def test_defaults_to_the_working_directory_not_to_everything(self):
+        os.environ.pop("QET_MCP_WORKSPACE", None)
+        roots = m.workspace_roots()
+        self.assertEqual(roots, [Path(os.getcwd()).resolve()],
+                         "an unset workspace must still confine, not open up")
+
+    def test_tools_without_data_paths_are_untouched(self):
+        m.enforce_path_policy("qet_diff", {})
+
+    def test_every_write_tool_offers_the_overwrite_flag(self):
+        """The policy and the schemas must not drift apart.
+
+        A tool whose output the policy guards but whose schema never
+        mentions "overwrite" is a tool no client can ever replace a file
+        with; a tool that advertises the flag but is not in the policy is a
+        tool that silently clobbers. Both are one forgotten line away, so
+        the two lists are compared rather than trusted.
+        """
+        guarded = {name for name, spec in m._DATA_PATHS.items() if spec.get("write")}
+        advertised = {t["name"] for t in m.TOOLS
+                      if "overwrite" in t["inputSchema"].get("properties", {})}
+        self.assertEqual(guarded, advertised)
+
+    def test_the_policy_names_only_real_tools_and_arguments(self):
+        by_name = {t["name"]: t for t in m.TOOLS}
+        for name, spec in m._DATA_PATHS.items():
+            with self.subTest(tool=name):
+                self.assertIn(name, by_name, "policy guards a tool that does not exist")
+                props = by_name[name]["inputSchema"].get("properties", {})
+                for arg in tuple(spec.get("read", ())) + tuple(spec.get("write", ())):
+                    self.assertIn(arg, props,
+                                  f"{name} has no {arg!r} argument to guard")
+
+
+class PathPolicyOverStdio(unittest.TestCase):
+    """Proves the policy is actually wired into the dispatcher.
+
+    The checks above call enforce_path_policy() directly; this one goes
+    through a real server process, which is the only thing that shows a
+    tool call is gated rather than merely gate-able.
+    """
+
+    def rpc(self, message, env_extra):
+        env = dict(os.environ, **env_extra)
+        proc = subprocess.run([sys.executable, str(HERE / "qet_mcp.py")],
+                              input=json.dumps(message) + "\n",
+                              capture_output=True, text=True, timeout=30, env=env)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        for line in proc.stdout.splitlines():
+            if line.strip():
+                obj = json.loads(line)
+                if obj.get("id") == message.get("id"):
+                    return obj
+        self.fail("no reply for the request")
+
+    def test_a_tool_call_reaching_outside_the_workspace_is_refused(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "ws"
+            root.mkdir()
+            victim = Path(tmp) / "elsewhere.qet"
+            victim.write_text('<project title="not yours"><diagram title="D"/></project>')
+
+            reply = self.rpc({"jsonrpc": "2.0", "id": 7, "method": "tools/call",
+                              "params": {"name": "qet_project_info",
+                                         "arguments": {"path": str(victim)}}},
+                             {"QET_MCP_WORKSPACE": str(root)})
+            result = reply["result"]
+            self.assertTrue(result.get("isError"), result)
+            self.assertIn("outside the workspace", result["content"][0]["text"])
+
+    def test_the_same_call_succeeds_inside_the_workspace(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / "ws"
+            root.mkdir()
+            proj = root / "mine.qet"
+            proj.write_text('<project title="mine"><diagram title="D"/></project>')
+
+            reply = self.rpc({"jsonrpc": "2.0", "id": 8, "method": "tools/call",
+                              "params": {"name": "qet_project_info",
+                                         "arguments": {"path": str(proj)}}},
+                             {"QET_MCP_WORKSPACE": str(root)})
+            result = reply["result"]
+            self.assertFalse(result.get("isError"), result)
+            self.assertIn("mine", result["content"][0]["text"])
+
+
 class QueryGuard(unittest.TestCase):
     def test_obvious_writes_are_refused_before_launch(self):
         with tempfile.NamedTemporaryFile(suffix=".qet") as f:
@@ -863,10 +1056,16 @@ class ReadTools(unittest.TestCase):
 # ==========================================================================
 
 class Protocol(unittest.TestCase):
-    def rpc(self, *messages):
+    def rpc(self, *messages, workspace=None):
+        # The server confines data paths to a workspace (see PathPolicy), so
+        # a test driving it over real stdio has to declare one, exactly as a
+        # real MCP host config does.
+        env = dict(os.environ)
+        if workspace is not None:
+            env["QET_MCP_WORKSPACE"] = str(workspace)
         proc = subprocess.run([sys.executable, str(HERE / "qet_mcp.py")],
                               input="\n".join(json.dumps(x) for x in messages) + "\n",
-                              capture_output=True, text=True, timeout=30)
+                              capture_output=True, text=True, timeout=30, env=env)
         self.assertEqual(proc.returncode, 0, proc.stderr)
         out = [json.loads(line) for line in proc.stdout.splitlines() if line.strip()]
         return {o["id"]: o for o in out if "id" in o}, proc
@@ -881,7 +1080,8 @@ class Protocol(unittest.TestCase):
                 {"jsonrpc": "2.0", "id": 2, "method": "tools/list"},
                 {"jsonrpc": "2.0", "id": 3, "method": "tools/call",
                  "params": {"name": "qet_project_info", "arguments": {"path": str(p)}}},
-                {"jsonrpc": "2.0", "id": 4, "method": "ping"})
+                {"jsonrpc": "2.0", "id": 4, "method": "ping"},
+                workspace=tmp)
         self.assertEqual(replies[1]["result"]["serverInfo"]["name"], "qet-mcp")
         self.assertEqual(len(replies[2]["result"]["tools"]), len(m.TOOLS))
         body = json.loads(replies[3]["result"]["content"][0]["text"])
