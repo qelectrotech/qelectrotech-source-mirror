@@ -83,10 +83,10 @@ Next recommended task:
 - If explicitly approved, implement a narrow read-only projection prototype with direct QtTest coverage. Do not change XML persistence, CrossRef rendering, CLI/export behavior, or Device/Function ownership in that slice.
 
 ## Current Phase
-Review-stopper cleanup before commit preparation.
+Duplicate Assignment read-only Projection/Validation slice ready for commit.
 
 ## Current Objective
-Review and correct accumulated documentation/code-test slices before any staging or commit. Current focus: Slice C read-only API boundary and documentation history consistency.
+Commit the Duplicate Assignment validation projection as its own narrow slice, then verify the focused Contact/CrossRef and PLC projection checks.
 
 ## Completed
 - Local repository inspected non-destructively on 2026-09-21.
@@ -159,7 +159,7 @@ Review and correct accumulated documentation/code-test slices before any staging
 - Affected CLI-test regression verification passed for `tst_conductorselfretrace`, `tst_cli_roundtrip_xml`, `tst_cli_export_equivalence`, and `tst_terminal_potential_exports`.
 
 ## In Progress
-- P0 Terminal/Potential export coverage implemented and targeted verification passed.
+- Duplicate Assignment validation is implemented as read-only Contact/CrossRef Projection validation and prepared as its own commit slice.
 
 ## Pending
 - Decide later whether and how to mark the verified baseline.
@@ -172,6 +172,10 @@ Review and correct accumulated documentation/code-test slices before any staging
 - Phase 9 backlog remains a specification only; no test files, fixtures, helpers, or CMake registrations were created.
 - Phase 10 first-slice plan remains a specification only; no test harness, helpers, fixtures, CMake registrations, or documentation files were created.
 - Full P0 fixture matrix, export equivalence tests, master/slave tests, terminal-strip tests, autonum/undo tests, cable/conductor-field tests, PDF checks, and large smoke examples remain unimplemented.
+- Interactive GUI behavior remains unverified.
+- Full CTest suite has not been re-run after the Duplicate Assignment validation slice.
+- PLC semantics have not been deeply analyzed beyond the focused regression target.
+- Default KF/ECM build behavior remains open because the active baseline uses `-DBUILD_WITH_KF=OFF`.
 
 ## Blocked
 - None.
@@ -264,7 +268,7 @@ Review and correct accumulated documentation/code-test slices before any staging
 - Build warnings observed in unchanged upstream source: self-assignment warning in `elementsmover.cpp`, ignored `nodiscard` result in `qet.cpp`, and an existing TODO pragma message in `openelmtcommand.cpp`.
 
 ## Next Planned Step
-Recommended next task: continue the remaining review-stopper queue, then re-check the proposed commit slices without staging or committing.
+Recommended next task after this commit: deepen PLC semantics as an analysis/spec slice only, with no UI, persistence, XML schema, or Device/Core migration.
 
 ## Change Log
 - 2026-09-21: Created baseline progress record and documented repository/remotes.
@@ -306,3 +310,5 @@ Recommended next task: continue the remaining review-stopper queue, then re-chec
 - 2026-09-22: Implemented Slice C P1 fix: added `Element::linkedElementsReadOnly() const` as a mutation-free link-list copy accessor, switched `ContactCrossRefProjectionService` away from mutating `linkedElements()`, and re-ran focused verification.
 - 2026-09-22: Reviewed Slice C P1 API fix; focused tests passed 6/6, then corrected documentation history/current-status wording without code/test/fixture changes.
 - 2026-09-22: Deduplicated byte-identical Slice B fixtures by renaming the shared export/terminal fixture to `workflow_exports_minimal.qet`, updating both CLI export tests, removing the duplicate test-only fixture, and re-running focused CLI tests.
+- 2026-09-22: Decided Duplicate Assignment belongs in read-only Contact/CrossRef Projection validation; added duplicate group-assignment diagnostics to the service/API and focused QtTest coverage without UI, persistence, XML schema, or Device/Core changes.
+- 2026-09-22: Prepared Duplicate Assignment validation projection as its own commit slice; roadmap remains PLC semantics analysis/spec next, with interactive GUI, full CTest, deeper PLC semantics, and default KF/ECM behavior still open.

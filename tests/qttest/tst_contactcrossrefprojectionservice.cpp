@@ -288,7 +288,8 @@ private slots:
 		QCOMPARE(master.capacity.no, 1);
 		QCOMPARE(master.capacity.nc, 1);
 		QCOMPARE(master.capacity.total(), 2);
-		QVERIFY2(master.validation_messages.isEmpty(), qPrintable(master.validation_messages.join(QStringLiteral("; "))));
+		QVERIFY(master.validation_messages.contains(
+			QStringLiteral("group_index 0 is assigned to 2 linked slaves")));
 
 		const QList<ContactAssignmentProjection> assignments = service.assignments(project);
 		QCOMPARE(assignments.size(), 2);
@@ -298,8 +299,9 @@ private slots:
 		QCOMPARE(no_assignment->group_index, 0);
 		QVERIFY(no_assignment->group_index_resolves);
 		QCOMPARE(no_assignment->slave_contact_type, ElementData::NO);
-		QVERIFY2(no_assignment->validation_messages.isEmpty(),
-				 qPrintable(no_assignment->validation_messages.join(QStringLiteral("; "))));
+		QVERIFY(no_assignment->duplicate_group_assignment);
+		QVERIFY(no_assignment->validation_messages.contains(
+			QStringLiteral("duplicate group_index 0 assignment")));
 
 		const ContactAssignmentProjection *duplicate_assignment = assignmentFor(assignments, kNcSlaveUuid);
 		QVERIFY(duplicate_assignment);
@@ -308,8 +310,9 @@ private slots:
 		QCOMPARE(duplicate_assignment->slave_contact_type, ElementData::NO);
 		QCOMPARE(duplicate_assignment->group.type, ElementData::NO);
 		QCOMPARE(duplicate_assignment->group.terminal_labels, QStringList({QStringLiteral("13"), QStringLiteral("14")}));
-		QVERIFY2(duplicate_assignment->validation_messages.isEmpty(),
-				 qPrintable(duplicate_assignment->validation_messages.join(QStringLiteral("; "))));
+		QVERIFY(duplicate_assignment->duplicate_group_assignment);
+		QVERIFY(duplicate_assignment->validation_messages.contains(
+			QStringLiteral("duplicate group_index 0 assignment")));
 	}
 };
 

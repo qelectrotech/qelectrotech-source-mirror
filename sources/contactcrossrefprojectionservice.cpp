@@ -23,6 +23,8 @@
 #include "qetgraphicsitem/element.h"
 #include "qetgraphicsitem/masterelement.h"
 
+#include <QHash>
+
 #include <algorithm>
 
 namespace {
@@ -115,6 +117,23 @@ ContactUsage::Type usageType(ElementData::SlaveState state)
 	return ContactUsage::Other;
 }
 
+QHash<int, int> resolvedGroupUsage(Element *master, int group_count)
+{
+	QHash<int, int> usage;
+	if (!master) {
+		return usage;
+	}
+
+	for (Element *slave : master->linkedElementsReadOnly()) {
+		const int group_index = master->groupIndexForElement(slave);
+		if (group_index >= 0 && group_index < group_count) {
+			++usage[group_index];
+		}
+	}
+
+	return usage;
+}
+
 } // namespace
 
 QList<ContactMasterProjection> ContactCrossRefProjectionService::masters(QETProject &project) const
@@ -145,6 +164,16 @@ QList<ContactMasterProjection> ContactCrossRefProjectionService::masters(QETProj
 			master.validation_messages << QStringLiteral("master declares no slave contact groups");
 		}
 
+		const QHash<int, int> group_usage = resolvedGroupUsage(element, master.groups.size());
+		for (auto it = group_usage.constBegin(); it != group_usage.constEnd(); ++it) {
+			if (it.value() > 1) {
+				master.validation_messages
+					<< QStringLiteral("group_index %1 is assigned to %2 linked slaves")
+						.arg(it.key())
+						.arg(it.value());
+			}
+		}
+
 		for (Element *slave : element->linkedElementsReadOnly()) {
 			const int group_index = element->groupIndexForElement(slave);
 			if (group_index < 0) {
@@ -169,6 +198,9 @@ QList<ContactAssignmentProjection> ContactCrossRefProjectionService::assignments
 
 	for (Element *master : mastersInProject(project)) {
 		const ElementData master_data = master->elementData();
+		const QHash<int, int> group_usage = resolvedGroupUsage(
+			master,
+			master_data.m_slave_contact_groups.size());
 		QList<Element *> linked = master->linkedElementsReadOnly();
 		std::sort(linked.begin(), linked.end(), [master](Element *left, Element *right) {
 			const int left_group = master->groupIndexForElement(left);
@@ -208,6 +240,13 @@ QList<ContactAssignmentProjection> ContactCrossRefProjectionService::assignments
 				assignment.group = groupProjection(
 					master_data.m_slave_contact_groups.at(assignment.group_index),
 					assignment.group_index);
+				assignment.duplicate_group_assignment =
+					group_usage.value(assignment.group_index) > 1;
+				if (assignment.duplicate_group_assignment) {
+					assignment.validation_messages
+						<< QStringLiteral("duplicate group_index %1 assignment")
+							.arg(assignment.group_index);
+				}
 				if (assignment.group.type != assignment.slave_contact_type) {
 					assignment.validation_messages
 						<< QStringLiteral("slave contact type %1 differs from group type %2")

@@ -5,6 +5,7 @@ Status: historical pre-implementation specification. No architecture decision is
 Outcome note, 2026-09-22:
 - A narrow read-only prototype was later implemented and reviewed as `sources/contactcrossrefprojectionservice.*` with direct QtTest coverage in `tests/qttest/tst_contactcrossrefprojectionservice.cpp`.
 - The implementation follows this document's intended boundary: read-only projection over loaded `QETProject` state, no persistence ownership, no XML schema change, no UI/rendering dependency, and no Device/Function-Core decision.
+- Duplicate assignment is implemented as a derived validation/diagnostic on the read-only projection, not as ownership, repair, persistence, UI behavior, or schema migration.
 - This document remains the rationale/specification record; it is not a claim that implementation is still unapproved or pending.
 
 ## Purpose

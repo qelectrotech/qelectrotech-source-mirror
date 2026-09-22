@@ -65,6 +65,7 @@ struct ContactAssignmentProjection
 	ElementData::SlaveType slave_contact_subtype = ElementData::SSimple;
 	int slave_contact_count = 1;
 	ContactGroupProjection group;
+	bool duplicate_group_assignment = false;
 	QStringList validation_messages;
 };
 

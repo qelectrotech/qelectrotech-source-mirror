@@ -947,6 +947,12 @@ Target platforms from project documentation: Windows, GNU/Linux, macOS, and BSDs
 - Verification on 2026-09-22: focused `ctest --test-dir build/baseline -R 'tst_cli_roundtrip_xml|tst_cli_export_equivalence|tst_terminal_potential_exports|tst_master_slave_links|tst_contactcrossrefprojectionservice|tst_contactusage' --output-on-failure` passed 6/6.
 - Next options: A discuss explicit Duplicate-Validation as a service/API extension; B prepare PLC boundary analysis; C prepare a report/commit-ready review of the accumulated branch. Technical recommendation: choose C first, because the branch now contains several connected test/support/prototype slices and should be audited as a coherent package before broadening semantics.
 
+## Contact/CrossRef Duplicate Validation Decision
+- Decision: duplicate assignment is a read-only Projection validation/diagnostic, not UI behavior, persistence state, XML schema migration, or Device/Core ownership.
+- Implementation shape: `ContactAssignmentProjection` exposes `duplicate_group_assignment`; affected assignments receive `duplicate group_index N assignment`, and the master projection receives `group_index N is assigned to M linked slaves`.
+- Boundary: the check is derived only from loaded `Element` links and resolving `group_index` values. It does not create, repair, delete, or rewrite assignments.
+- PLC remains handled by `PlcIoProjectionService`'s existing `duplicate_group_index` flag; no PLC semantic broadening was made in this slice.
+
 ## Commit-Readiness Review
 - Current branch remains `master` at baseline commit `d7052e396b42c2b7b14b6b2f7aecb5d0a0f54cd0`; no commit, push, branch switch, reset, or staging was performed.
 - Remotes remain `origin=https://github.com/WeltenbummlerKA/qelectrotech.git` and `upstream=https://github.com/qelectrotech/qelectrotech-source-mirror.git`.
