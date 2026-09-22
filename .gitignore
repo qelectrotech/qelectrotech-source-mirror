@@ -16,3 +16,7 @@ lang/*.qm
 
 # VS Code
 .vscode
+
+# Local workspace files
+.DS_Store
+Handout.md
