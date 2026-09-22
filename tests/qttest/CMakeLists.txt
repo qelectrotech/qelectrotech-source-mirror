@@ -141,7 +141,7 @@ add_executable(
   ${QET_DIR}/sources/shortcutmanager.cpp)
 add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
-target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
@@ -179,11 +179,10 @@ add_test(NAME tst_crashdumps COMMAND tst_crashdumps)
 target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}
   ${QET_DIR}/sources
-  ${QET_DIR}/sources/NameList
-  ${QET_DIR}/pugixml/src)
+  ${QET_DIR}/sources/NameList)
 if(Backtrace_FOUND)
   target_link_libraries(tst_crashdumps PRIVATE
-    Qt::Test Qt::Widgets Qt::Xml ${Backtrace_LIBRARIES})
+    Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml ${Backtrace_LIBRARIES})
 else()
   target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml)
 endif()

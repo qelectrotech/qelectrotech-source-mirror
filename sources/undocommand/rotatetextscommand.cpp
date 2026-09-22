@@ -60,7 +60,7 @@ m_diagram(diagram)
 			parts << QObject::tr("%n texte(s)", "", texts_list.count());
 		if (groups_list.count())
 			parts << QObject::tr("%n groupe(s) de textes", "", groups_list.count());
-		setText(QObject::tr("Pivoter %1").arg(QLocale().createSeparatedList(parts)));
+		setText(QObject::tr("Pivoter %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts)));
 
 		for(DiagramTextItem *dti : texts_list)
 			setupAnimation(dti, "rotation", dti->rotation(), m_rotation);

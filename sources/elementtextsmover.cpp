@@ -19,6 +19,7 @@
 
 #include "QPropertyUndoCommand/qpropertyundocommand.h"
 #include "diagram.h"
+#include "qetapp.h"
 #include "qetgraphicsitem/dynamicelementtextitem.h"
 #include "qetgraphicsitem/elementtextitemgroup.h"
 
@@ -146,5 +147,5 @@ QString ElementTextsMover::undoText() const
 	if (parts.isEmpty())
 		return QString(); // should never occur
 
-	return QObject::tr("Déplacer %1").arg(QLocale().createSeparatedList(parts));
+	return QObject::tr("Déplacer %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts));
 }

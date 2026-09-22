@@ -68,6 +68,7 @@ class QETApp : public QObject
 	public:
 		static QETApp *instance();
 		void setLanguage(const QString &);
+		static QString interfaceLanguage() { return m_interface_language; }
 		static QString langFromSetting ();
 		void switchLayout(Qt::LayoutDirection);
 		static void printHelp();
@@ -246,6 +247,8 @@ class QETApp : public QObject
 		static QString m_user_company_tbt_dir;
 		static QString m_user_custom_tbt_dir;
 		static QString m_user_macros_dir;
+		
+		static QString m_interface_language;
 	
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
