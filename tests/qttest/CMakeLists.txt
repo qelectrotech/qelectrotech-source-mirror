@@ -290,3 +290,7 @@ endfunction()
 add_qet_project_load_qtest(
   tst_contactcrossrefprojectionservice
   tst_contactcrossrefprojectionservice.cpp)
+
+add_qet_project_load_qtest(
+  tst_plcioprojectionservice
+  tst_plcioprojectionservice.cpp)
