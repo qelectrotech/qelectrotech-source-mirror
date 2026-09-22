@@ -83,10 +83,10 @@ Next recommended task:
 - If explicitly approved, implement a narrow read-only projection prototype with direct QtTest coverage. Do not change XML persistence, CrossRef rendering, CLI/export behavior, or Device/Function ownership in that slice.
 
 ## Current Phase
-PLC IO warning extension committed; stabilization regression pending.
+PLC/CAE feature work paused for documentation-only status correction.
 
 ## Current Objective
-Verify the affected Contact/PLC/XML/export regression set, then decide whether to prepare push/PR or inspect stale `plc_*` projection-copy behavior.
+Keep interactive GUI/runtime status separate from PLC/CAE feature work and document the next optional Runtime-QA/installation slice.
 
 ## Completed
 - Local repository inspected non-destructively on 2026-09-21.
@@ -161,11 +161,13 @@ Verify the affected Contact/PLC/XML/export regression set, then decide whether t
 - PLC warnings remain read-only and do not change UI, persistence, XML schema, Device/Core ownership, or migration behavior.
 
 ## In Progress
-- Affected regression is being re-run after commit `86c5fc9076d295044c41f489e95162b095dfdc8a`.
+- None.
 
 ## Pending
 - Decide later whether and how to mark the verified baseline.
 - Full interactive GUI smoke test remains unverified and should only run with the user present for any macOS permission prompts.
+- A later optional Runtime-QA/installation slice may verify startup interactively, but it must be handled separately from PLC/CAE feature work.
+- Runtime-QA/installation slice scope, if approved later: clarify the exact bundle path, perform a controlled local install or bundle launch test, let the user handle any macOS dialogs, and document the observed result.
 - Dedicated deep dives still pending for UI/domain coupling, project database lifecycle, export equivalence, terminal-strip/potential integration tests, and automated regression coverage design.
 - Tests for full master/slave XML round-trip, link undo/redo, group-index persistence, CrossRef click map/render behavior, and PLC link propagation remain unverified/missing in this pass.
 - High-priority future regression candidates identified, but not implemented: CLI fixture matrix, XML round-trip determinism, DB/export equivalence, terminal-strip round-trip, autonum undo/redo, and master/slave link persistence/render checks.
@@ -261,6 +263,8 @@ Verify the affected Contact/PLC/XML/export regression set, then decide whether t
 - Contact/CrossRef negative projection test-only slice: `tests/qttest/tst_contactcrossrefprojectionservice.cpp` now creates temporary XML variants from `master_slave_links_group_index_minimal.qet` in `QTemporaryDir` and verifies missing `group_index`, out-of-range `group_index`, and slave/group contact type mismatch validation. No new fixture file was added.
 
 ## Known Issues
+- A crash report from a Codex/ChatGPT launch context showed a very early Qt/Cocoa/AppKit startup abort before project, CAE, or PLC logic was reached. Treat this as a start-context/uninstalled-dev-bundle finding, not as evidence of a PLC/CAE defect.
+- The project is not installed yet; any GUI/runtime conclusion requires a controlled separate Runtime-QA/installation check.
 - `.gitignore` already has a local modification intentionally adding `.DS_Store` and `Handout.md`.
 - `Handout.md` is a local unversioned project instruction file and must remain ignored/unversioned unless the user later explicitly decides to version a redacted/project-safe equivalent.
 - CMake configure initialized/fetched project submodules as part of the existing project build flow.
@@ -269,7 +273,7 @@ Verify the affected Contact/PLC/XML/export regression set, then decide whether t
 - Build warnings observed in unchanged upstream source: self-assignment warning in `elementsmover.cpp`, ignored `nodiscard` result in `qet.cpp`, and an existing TODO pragma message in `openelmtcommand.cpp`.
 
 ## Next Planned Step
-After the affected regression passes, decide between preparing push/PR for the five local commits or starting a narrow stale-`plc_*` projection-copy analysis.
+If runtime confidence is needed, run a separate optional Runtime-QA/installation slice: clarify bundle path, test local install or bundle launch under user supervision, have the user answer any macOS dialogs, and document the result. Do not mix this with PLC/CAE feature work.
 
 ## Change Log
 - 2026-09-21: Created baseline progress record and documented repository/remotes.
@@ -315,3 +319,4 @@ After the affected regression passes, decide between preparing push/PR for the f
 - 2026-09-22: Prepared Duplicate Assignment validation projection as its own commit slice; roadmap remains PLC semantics analysis/spec next, with interactive GUI, full CTest, deeper PLC semantics, and default KF/ECM behavior still open.
 - 2026-09-22: Completed PLC IO semantics analysis/spec slice in `Spec_PLC_IO_Semantics_ReadOnly.md`. Boundary: PLC truth remains `ElementData::PlcIO` plus master/slave `group_index`; slave `plc_*` fields are projection copies only; next implementation should be a warning-only `PlcIoProjectionService` extension.
 - 2026-09-22: Implemented the smallest PLC IO read-only projection slice: normalized direction, terminal count/labels, and deterministic warning flags/messages for unlinked rows, out-of-range and duplicate `group_index`, empty addresses, and terminal-count/label mismatch; focused `tst_plcioprojectionservice` build/CTest passed.
+- 2026-09-22: Documented that GUI remains unverified; the early Qt/Cocoa/AppKit crash report is a start-context/uninstalled-dev-bundle finding before project/CAE/PLC logic, and any runtime check belongs in a separate controlled Runtime-QA/installation slice.
