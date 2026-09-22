@@ -336,7 +336,13 @@ jobs:
           if-no-files-found: error
 
       - name: Delete old nightly .msi asset
-        if: always()
+        # Only run if a new MSI actually exists in dist/ — otherwise the old
+        # (still working) nightly .msi would be deleted without anything to
+        # replace it, leaving the nightly release with no MSI at all until
+        # the next successful build (see windows-msi-pipeline notes,
+        # run 35694391567: an upstream artifact-download failure meant
+        # dist\*.msi never existed for that run).
+        if: always() && hashFiles('dist/*.msi') != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
