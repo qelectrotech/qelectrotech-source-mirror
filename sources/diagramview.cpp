@@ -446,6 +446,76 @@ void DiagramView::pasteHere()
 }
 
 /**
+	@brief DiagramView::duplicate
+	Copy the current selection and place the copy offset by exactly one
+	grid step right and down, landing immediately rather than following
+	the cursor like Ctrl+V does (bugtracker #991). Repeated presses walk
+	a diagonal line of copies, each offset from the last -- the point of
+	a duplicate shortcut is unattended, repeatable stamping (hold Ctrl,
+	tap D a few times to lay out a row), which an interactive placement
+	step would interrupt on every press.
+
+	The offset is applied by hand, deliberately not by calling paste()
+	with a target position: both paste() and the Diagram::fromXml() it
+	calls place pasted content by feeding a computed delta through
+	Diagram::snapToGrid(), which reads QApplication::keyboardModifiers()
+	and rounds to the nearest PIXEL instead of the grid whenever Ctrl is
+	held -- and Ctrl is always held here, this action's own shortcut
+	being Ctrl+D. Measured the hard way: routing through paste() first
+	produced copies off-grid on both axes, by an amount that changed
+	with the selection's own bounding-box geometry, not a fixed error.
+	fromXml() is instead called with no position at all, which leaves
+	every item at its source coordinates (landing the copy exactly on
+	top of the originals -- (0, 0) is not a position, this is "keep the
+	source coordinates", documented at the call site below), and the
+	one-grid-step offset is added directly with setPos(). A plain
+	addition cannot be off by a rounding rule that never runs.
+
+	Conductors are not in the translated set: fromXml() itself does not
+	reposition them either (see its own position-translation block,
+	sources/diagram.cpp) -- they are loaded from XML after elements are
+	already in their final place and take their geometry from their
+	terminals, which have already moved with the elements that own them.
+	Likewise dynamic element texts are not translated separately: they
+	are children of their element and move with it under Qt's normal
+	parent-child transform.
+*/
+void DiagramView::duplicate()
+{
+	if (!isInteractive() || m_diagram->isReadOnly()) return;
+
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	if (selection.isEmpty()) return;
+
+	QSettings settings;
+	const int x_grid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
+									  Diagram::xGrid).toInt();
+	const int y_grid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
+									  Diagram::yGrid).toInt();
+	const QPointF grid_step(x_grid, y_grid);
+
+	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D
+	// should not clobber whatever the user last copied with Ctrl+C.
+	QDomDocument document = m_diagram->toXml(false, true);
+
+	DiagramContent pasted;
+	// No position argument -- see the function comment above for why the
+	// offset is not passed here.
+	m_diagram->fromXml(document, QPointF(), false, &pasted);
+	if (!pasted.count()) return;
+
+	const int movable = DiagramContent::Elements | DiagramContent::TextFields
+					   | DiagramContent::Images | DiagramContent::Shapes
+					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
+	for (QGraphicsItem *item : pasted.items(movable))
+		item->setPos(item->pos() + grid_step);
+
+	m_diagram->clearSelection();
+	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted));
+	adjustSceneRect();
+}
+
+/**
 	Manage the events press click :
 	 *  click to add an independent text field
 */

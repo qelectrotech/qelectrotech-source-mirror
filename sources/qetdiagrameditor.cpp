@@ -374,6 +374,20 @@ void QETDiagramEditor::setUpActions()
 					new DiagramEventAddPaste(dv->diagram(), start_pos));
 	});
 
+		//Duplicate: copy the selection and place it at a fixed,
+		//grid-snapped offset immediately -- no interactive follow-the-
+		//cursor step, unlike Ctrl+V above. That is deliberate (#991):
+		//the point of a duplicate shortcut is repeatable, unattended
+		//stamping (hold Ctrl, tap D a few times to lay out a row), which
+		//an interactive placement would interrupt on every press.
+	m_duplicate = new QAction(QET::Icons::EditCopy, tr("Dupli&quer"), this);
+	ShortcutManager::instance().registerAction(m_duplicate, "diagrameditor.duplicate", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_D);
+	m_duplicate->setStatusTip(tr("Copie la sélection, décalée d'un pas de grille", "status bar tip"));
+	connect(m_duplicate, &QAction::triggered, [this]() {
+		if (currentDiagramView())
+			currentDiagramView()->duplicate();
+	});
+
 		//Reset conductor path
 	m_conductor_reset = new QAction(QET::Icons::ConductorSettings,     tr("Réinitialiser les conducteurs"),        this);
 	ShortcutManager::instance().registerAction(m_conductor_reset, "diagrameditor.conductor_reset", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_K);
@@ -894,6 +908,7 @@ void QETDiagramEditor::setUpToolBar()
 	main_tool_bar -> addAction(m_cut);
 	main_tool_bar -> addAction(m_copy);
 	main_tool_bar -> addAction(m_paste);
+	main_tool_bar -> addAction(m_duplicate);
 	main_tool_bar -> addSeparator();
 	main_tool_bar -> addAction(m_delete_selection);
 	main_tool_bar -> addAction(m_rotate_selection);
@@ -985,6 +1000,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
+	menu_edition -> addAction(m_duplicate);
 	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
 		//which left them unreachable for anyone working without a mouse: a
@@ -1947,6 +1963,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_find_element
 			    << m_cut
 			    << m_copy
+			    << m_duplicate
 			    << m_delete_selection
 			    << m_rotate_selection
 			    << m_rotate_group_selection
@@ -1976,6 +1993,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	bool deletable_items = dc.hasDeletableItems();
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
+	m_duplicate        -> setEnabled(!ro && copiable_items);
 	m_delete_selection -> setEnabled(!ro && deletable_items);
 	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
 	m_rotate_group_selection -> setEnabled(!ro && diagram_->canRotateSelection());
