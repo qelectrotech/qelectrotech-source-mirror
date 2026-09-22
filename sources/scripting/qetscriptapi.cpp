@@ -37,6 +37,7 @@
 #include "../qetproject.h"
 #include "../qetresult.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../conductorsegment.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
@@ -912,6 +913,84 @@ bool QetScriptApi::setConductorProperty(int folioIndex, const QString &elementUu
 	}
 	m_project->undoStack()->endMacro();
 	return true;
+}
+
+/**
+	@brief QetScriptApi::conductorSegments
+	List the drawn path of the conductor on a terminal, one line per
+	segment: "index: (x1,y1)-(x2,y2) horizontal|vertical static|movable".
+	static marks a segment anchored to a terminal (moveConductorSegment()
+	on it is a no-op, the same as dragging its handle would be -- there is
+	no handle on it in the GUI). Points are in scene coordinates, matching
+	element_geometry().
+*/
+QStringList QetScriptApi::conductorSegments(int folioIndex, const QString &elementUuid,
+											int terminalIndex) const
+{
+	// const_cast: findConductor logs, and log() writes to stderr, which is
+	// not a const operation on this object. The lookup itself changes
+	// nothing.
+	auto *self = const_cast<QetScriptApi *>(this);
+	Conductor *conductor = self->findConductor(folioIndex, elementUuid, terminalIndex,
+											   QStringLiteral("conductorSegments"));
+	if (!conductor) return {};
+
+	QStringList result;
+	const QList<ConductorSegment *> segs = conductor->segmentsList();
+	for (int i = 0; i < segs.count(); ++i) {
+		ConductorSegment *seg = segs.at(i);
+		const QPointF p1 = conductor->mapToScene(seg->firstPoint());
+		const QPointF p2 = conductor->mapToScene(seg->secondPoint());
+		result << QStringLiteral("%1: (%2,%3)-(%4,%5) %6 %7")
+			.arg(i)
+			.arg(p1.x()).arg(p1.y()).arg(p2.x()).arg(p2.y())
+			.arg(seg->isHorizontal() ? QStringLiteral("horizontal") : QStringLiteral("vertical"),
+				 seg->isStatic() ? QStringLiteral("static") : QStringLiteral("movable"));
+	}
+	return result;
+}
+
+/**
+	@brief QetScriptApi::moveConductorSegment
+	Move one segment of the conductor on a terminal by (dx, dy) and push
+	one undo step for the whole move -- Conductor::moveSegment(), the same
+	primitive a manual handle drag applies. A segment only moves
+	perpendicular to its own direction, the same as dragging its handle:
+	dx moves a vertical segment, dy moves a horizontal one, and the other
+	of the pair is ignored (ConductorSegment::moveX()/moveY() each silently
+	no-op on the wrong axis) -- check conductorSegments() for which one
+	applies before calling this. dx/dy are in scene coordinates; a
+	translation-only item (every conductor) makes a scene-space delta equal
+	to a local one, so no conversion is needed. A static segment or an
+	out-of-range index is refused.
+*/
+bool QetScriptApi::moveConductorSegment(int folioIndex, const QString &elementUuid,
+										int terminalIndex, int segmentIndex,
+										double dx, double dy)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.moveConductorSegment: project is read-only"));
+		return false;
+	}
+	Conductor *conductor = findConductor(folioIndex, elementUuid, terminalIndex,
+										 QStringLiteral("moveConductorSegment"));
+	if (!conductor) return false;
+
+	const QList<ConductorSegment *> segs = conductor->segmentsList();
+	if (segmentIndex < 0 || segmentIndex >= segs.count()) {
+		log(QStringLiteral("qet.moveConductorSegment: terminal %1 of %2 has %3 "
+						   "segment(s), no index %4")
+			.arg(terminalIndex).arg(elementUuid).arg(segs.count()).arg(segmentIndex));
+		return false;
+	}
+	if (segs.at(segmentIndex)->isStatic()) {
+		log(QStringLiteral("qet.moveConductorSegment: segment %1 is anchored to a "
+						   "terminal and cannot be moved").arg(segmentIndex));
+		return false;
+	}
+
+	return conductor->moveSegment(segmentIndex, dx, dy);
 }
 
 QString QetScriptApi::elementLinkType(int folioIndex, const QString &elementUuid) const

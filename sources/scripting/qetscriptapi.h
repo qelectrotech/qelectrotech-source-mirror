@@ -402,6 +402,14 @@ class QetScriptApi : public QObject
 											  int terminalIndex, const QString &property,
 											  const QString &value);
 
+		// -- a conductor's own drawn path, not the whole potential's
+		// properties above -- one conductor only, addressed the same way --
+		Q_INVOKABLE QStringList conductorSegments(int folioIndex, const QString &elementUuid,
+												  int terminalIndex) const;
+		Q_INVOKABLE bool moveConductorSegment(int folioIndex, const QString &elementUuid,
+											  int terminalIndex, int segmentIndex,
+											  double dx, double dy);
+
 		// -- cross-references: master/slave and report links --
 		Q_INVOKABLE QString elementLinkType(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE QStringList linkedElements(int folioIndex, const QString &elementUuid) const;
