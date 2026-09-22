@@ -42,6 +42,7 @@
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
+#include "../undocommand/promoteshapecommand.h"
 #include "../TerminalStrip/UndoCommand/addterminalstripcommand.h"
 #include "../TerminalStrip/UndoCommand/addterminaltostripcommand.h"
 #include "../TerminalStrip/UndoCommand/bridgeterminalscommand.h"
@@ -1651,6 +1652,338 @@ bool QetScriptApi::deleteShape(int folioIndex, int shapeIndex)
 	DiagramContent content;
 	content.m_shapes << list.at(shapeIndex);
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
+	return true;
+}
+
+namespace {
+
+bool variantToPointF(const QVariant &v, QPointF &out)
+{
+	const QVariantMap m = v.toMap();
+	if (!m.contains(QStringLiteral("x")) || !m.contains(QStringLiteral("y"))) return false;
+	bool okx = false, oky = false;
+	const double x = m.value(QStringLiteral("x")).toDouble(&okx);
+	const double y = m.value(QStringLiteral("y")).toDouble(&oky);
+	if (!okx || !oky) return false;
+	out = QPointF(x, y);
+	return true;
+}
+
+QPolygonF variantToPolygon(const QVariantList &points, bool *ok)
+{
+	QPolygonF poly;
+	for (const QVariant &v : points) {
+		QPointF p;
+		if (!variantToPointF(v, p)) { *ok = false; return {}; }
+		poly << p;
+	}
+	*ok = true;
+	return poly;
+}
+
+QVariantMap pointFToVariant(const QPointF &p)
+{
+	QVariantMap m;
+	m.insert(QStringLiteral("x"), p.x());
+	m.insert(QStringLiteral("y"), p.y());
+	return m;
+}
+
+QetShapeItem::NodeKind nodeKindFromString(const QString &s)
+{
+	if (s == QLatin1String("smooth")) return QetShapeItem::NodeKind::Smooth;
+	if (s == QLatin1String("symmetric")) return QetShapeItem::NodeKind::Symmetric;
+	return QetShapeItem::NodeKind::Corner;
+}
+
+QString nodeKindToString(QetShapeItem::NodeKind k)
+{
+	switch (k) {
+		case QetShapeItem::NodeKind::Smooth:    return QStringLiteral("smooth");
+		case QetShapeItem::NodeKind::Symmetric: return QStringLiteral("symmetric");
+		default:                                return QStringLiteral("corner");
+	}
+}
+
+// Node format: {x, y, kind: "corner"|"smooth"|"symmetric", inHandle:
+// {x,y}, outHandle: {x,y}} -- inHandle/outHandle are omitted (not merely
+// null) when a node has none, matching PathNode's std::optional.
+bool variantToPathNode(const QVariant &v, QetShapeItem::PathNode &out)
+{
+	const QVariantMap m = v.toMap();
+	QPointF anchor;
+	if (!variantToPointF(v, anchor)) return false;
+	out.anchor = anchor;
+	out.kind = nodeKindFromString(m.value(QStringLiteral("kind")).toString());
+	if (m.contains(QStringLiteral("inHandle"))) {
+		QPointF h;
+		if (!variantToPointF(m.value(QStringLiteral("inHandle")), h)) return false;
+		out.inHandle = h;
+	}
+	if (m.contains(QStringLiteral("outHandle"))) {
+		QPointF h;
+		if (!variantToPointF(m.value(QStringLiteral("outHandle")), h)) return false;
+		out.outHandle = h;
+	}
+	return true;
+}
+
+QVariantMap pathNodeToVariant(const QetShapeItem::PathNode &n)
+{
+	QVariantMap m = pointFToVariant(n.anchor);
+	m.insert(QStringLiteral("kind"), nodeKindToString(n.kind));
+	if (n.inHandle) m.insert(QStringLiteral("inHandle"), pointFToVariant(*n.inHandle));
+	if (n.outHandle) m.insert(QStringLiteral("outHandle"), pointFToVariant(*n.outHandle));
+	return m;
+}
+
+} // namespace
+
+/**
+	@brief QetScriptApi::addPolygon
+	Place a Polygon shape with as many points as given -- addShape()'s
+	"polygon" only ever produces the degenerate two-point form, since it
+	shares addShape()'s p1/p2 constructor and nothing else. Points are in
+	scene coordinates, as [{x,y}, ...]. Returns the new shape's index, or
+	-1 (at least 2 points are required).
+*/
+int QetScriptApi::addPolygon(int folioIndex, const QVariantList &points, bool closed)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addPolygon: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
+	if (points.count() < 2) {
+		log(QStringLiteral("qet.addPolygon: at least 2 points are required, got %1")
+			.arg(points.count()));
+		return -1;
+	}
+	bool ok = false;
+	const QPolygonF poly = variantToPolygon(points, &ok);
+	if (!ok) {
+		log(QStringLiteral("qet.addPolygon: every point must be an {x, y} object"));
+		return -1;
+	}
+
+	Diagram *diagram = diagrams.at(folioIndex);
+	auto *shape = new QetShapeItem(poly.first(), poly.last(), QetShapeItem::Polygon);
+	shape->setPolygon(poly);
+	shape->setClosed(closed);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(shape, diagram, QPointF(0, 0)));
+	return sortedShapes(folioIndex).indexOf(shape);
+}
+
+/**
+	@brief QetScriptApi::shapePolygon
+	A Polygon shape's own points, in scene coordinates, as [{x,y}, ...].
+	Empty for any other shape type or an out-of-range index.
+*/
+QVariantList QetScriptApi::shapePolygon(int folioIndex, int shapeIndex) const
+{
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) return {};
+	QetShapeItem *shape = list.at(shapeIndex);
+	if (shape->shapeType() != QetShapeItem::Polygon) return {};
+	QVariantList result;
+	for (const QPointF &p : shape->polygon())
+		result << pointFToVariant(shape->mapToScene(p));
+	return result;
+}
+
+/**
+	@brief QetScriptApi::setShapePolygon
+	Replace a Polygon shape's points through QPropertyUndoCommand on its
+	"polygon" Q_PROPERTY, the same as dragging one of its point handles.
+*/
+bool QetScriptApi::setShapePolygon(int folioIndex, int shapeIndex, const QVariantList &points)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setShapePolygon: project is read-only"));
+		return false;
+	}
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) {
+		log(QStringLiteral("qet.setShapePolygon: folio %1 has %2 shape(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(shapeIndex));
+		return false;
+	}
+	QetShapeItem *shape = list.at(shapeIndex);
+	if (shape->shapeType() != QetShapeItem::Polygon) {
+		log(QStringLiteral("qet.setShapePolygon: shape %1 is not a polygon").arg(shapeIndex));
+		return false;
+	}
+	if (points.count() < 2) {
+		log(QStringLiteral("qet.setShapePolygon: at least 2 points are required, got %1")
+			.arg(points.count()));
+		return false;
+	}
+	bool ok = false;
+	const QPolygonF poly = variantToPolygon(points, &ok);
+	if (!ok) {
+		log(QStringLiteral("qet.setShapePolygon: every point must be an {x, y} object"));
+		return false;
+	}
+
+	const QVariant old_value = QVariant::fromValue(shape->polygon());
+	const QVariant new_value = QVariant::fromValue(poly);
+	if (shape->polygon() == poly) return true;
+	auto *cmd = new QPropertyUndoCommand(shape, "polygon", old_value, new_value);
+	cmd->setText(QObject::tr("Modifier la forme d'%1").arg(shape->name()));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::addPath
+	Place a Path shape -- a Polygon's points plus, per node, a kind
+	(corner/smooth/symmetric) and optional bezier in/out handles, the same
+	model the pen tool and node-edit mode build. See variantToPathNode()
+	for the node format. Returns the new shape's index, or -1 (at least 2
+	nodes are required).
+*/
+int QetScriptApi::addPath(int folioIndex, const QVariantList &nodes, bool closed)
+{
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addPath: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
+	if (nodes.count() < 2) {
+		log(QStringLiteral("qet.addPath: at least 2 nodes are required, got %1").arg(nodes.count()));
+		return -1;
+	}
+	QVector<QetShapeItem::PathNode> path_nodes;
+	for (const QVariant &v : nodes) {
+		QetShapeItem::PathNode node;
+		if (!variantToPathNode(v, node)) {
+			log(QStringLiteral("qet.addPath: every node must be an {x, y} object, "
+							   "optionally with kind/inHandle/outHandle"));
+			return -1;
+		}
+		path_nodes << node;
+	}
+
+	Diagram *diagram = diagrams.at(folioIndex);
+	auto *shape = new QetShapeItem(path_nodes.first().anchor, path_nodes.last().anchor,
+								   QetShapeItem::Path);
+	shape->setPathNodes(path_nodes);
+	shape->setClosed(closed);
+	diagram->undoStack().push(new AddGraphicsObjectCommand(shape, diagram, QPointF(0, 0)));
+	return sortedShapes(folioIndex).indexOf(shape);
+}
+
+/**
+	@brief QetScriptApi::shapePathNodes
+	A Path shape's own nodes, in scene coordinates -- see
+	variantToPathNode()/pathNodeToVariant() for the format. Empty for any
+	other shape type or an out-of-range index.
+*/
+QVariantList QetScriptApi::shapePathNodes(int folioIndex, int shapeIndex) const
+{
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) return {};
+	QetShapeItem *shape = list.at(shapeIndex);
+	if (shape->shapeType() != QetShapeItem::Path) return {};
+	QVariantList result;
+	for (const QetShapeItem::PathNode &n : shape->pathNodes()) {
+		QetShapeItem::PathNode scene_node = n;
+		scene_node.anchor = shape->mapToScene(n.anchor);
+		if (n.inHandle) scene_node.inHandle = shape->mapToScene(*n.inHandle);
+		if (n.outHandle) scene_node.outHandle = shape->mapToScene(*n.outHandle);
+		result << pathNodeToVariant(scene_node);
+	}
+	return result;
+}
+
+/**
+	@brief QetScriptApi::setShapePathNodes
+	Replace a Path shape's nodes. PathNode/QVector<PathNode> is not a
+	Q_PROPERTY-friendly type (it holds std::optional<QPointF> members), so
+	this reuses PromoteShapeCommand's generic before/after XML snapshot
+	mechanism instead -- the same one the node-edit handle drag itself
+	falls back to, and for the identical reason (see the PathAnchor case
+	in QetShapeItem::associatedUndoCommand()).
+*/
+bool QetScriptApi::setShapePathNodes(int folioIndex, int shapeIndex, const QVariantList &nodes)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setShapePathNodes: project is read-only"));
+		return false;
+	}
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) {
+		log(QStringLiteral("qet.setShapePathNodes: folio %1 has %2 shape(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(shapeIndex));
+		return false;
+	}
+	QetShapeItem *shape = list.at(shapeIndex);
+	if (shape->shapeType() != QetShapeItem::Path) {
+		log(QStringLiteral("qet.setShapePathNodes: shape %1 is not a path").arg(shapeIndex));
+		return false;
+	}
+	if (nodes.count() < 2) {
+		log(QStringLiteral("qet.setShapePathNodes: at least 2 nodes are required, got %1")
+			.arg(nodes.count()));
+		return false;
+	}
+	QVector<QetShapeItem::PathNode> path_nodes;
+	for (const QVariant &v : nodes) {
+		QetShapeItem::PathNode node;
+		if (!variantToPathNode(v, node)) {
+			log(QStringLiteral("qet.setShapePathNodes: every node must be an {x, y} "
+							   "object, optionally with kind/inHandle/outHandle"));
+			return false;
+		}
+		path_nodes << node;
+	}
+	if (path_nodes == shape->pathNodes()) return true;
+
+	QDomDocument before_doc;
+	const QDomElement before = shape->toXml(before_doc);
+	before_doc.appendChild(before);
+	shape->setPathNodes(path_nodes);
+	QDomDocument after_doc;
+	const QDomElement after = shape->toXml(after_doc);
+	after_doc.appendChild(after);
+
+	auto *cmd = new PromoteShapeCommand(shape, before, after);
+	cmd->setText(QObject::tr("Modifier la forme d'%1").arg(shape->name()));
+	m_project->undoStack()->push(cmd);
+	return true;
+}
+
+/**
+	@brief QetScriptApi::setShapeClosed
+	Open or close a Polygon or Path shape through QPropertyUndoCommand on
+	its "close" Q_PROPERTY. A no-op (returns true) on any other shape type,
+	the same as QetShapeItem::setClosed() itself.
+*/
+bool QetScriptApi::setShapeClosed(int folioIndex, int shapeIndex, bool closed)
+{
+	if (!m_project) return false;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.setShapeClosed: project is read-only"));
+		return false;
+	}
+	const QList<QetShapeItem *> list = sortedShapes(folioIndex);
+	if (shapeIndex < 0 || shapeIndex >= list.count()) {
+		log(QStringLiteral("qet.setShapeClosed: folio %1 has %2 shape(s), no index %3")
+			.arg(folioIndex).arg(list.count()).arg(shapeIndex));
+		return false;
+	}
+	QetShapeItem *shape = list.at(shapeIndex);
+	if (shape->isClosed() == closed) return true;
+
+	auto *cmd = new QPropertyUndoCommand(shape, "close", shape->isClosed(), closed);
+	cmd->setText(QObject::tr("Fermer/Ouvrir %1").arg(shape->name()));
+	m_project->undoStack()->push(cmd);
 	return true;
 }
 

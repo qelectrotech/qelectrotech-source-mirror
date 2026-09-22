@@ -446,6 +446,15 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setShapeProperty(int folioIndex, int shapeIndex,
 										  const QString &property, const QString &value);
 
+		// -- polygon and path shapes: more than addShape()'s two-point box --
+		Q_INVOKABLE int addPolygon(int folioIndex, const QVariantList &points, bool closed);
+		Q_INVOKABLE QVariantList shapePolygon(int folioIndex, int shapeIndex) const;
+		Q_INVOKABLE bool setShapePolygon(int folioIndex, int shapeIndex, const QVariantList &points);
+		Q_INVOKABLE int addPath(int folioIndex, const QVariantList &nodes, bool closed);
+		Q_INVOKABLE QVariantList shapePathNodes(int folioIndex, int shapeIndex) const;
+		Q_INVOKABLE bool setShapePathNodes(int folioIndex, int shapeIndex, const QVariantList &nodes);
+		Q_INVOKABLE bool setShapeClosed(int folioIndex, int shapeIndex, bool closed);
+
 		// -- query the project database --
 		Q_INVOKABLE QStringList tables() const;
 		Q_INVOKABLE QVariantList query(const QString &sql);
