@@ -39,6 +39,16 @@
 #include "../qetgraphicsitem/conductor.h"
 #include "../conductorsegment.h"
 #include "../qetgraphicsitem/diagramimageitem.h"
+
+// See diagrameventaddpdf.h: a missing QtPdf module (or Qt < 6.4) is not
+// fatal at build time, so addPdfPage() is always declared -- a script
+// asking qet.addPdfPage exists must never get "not a function" for a
+// reason it has no way to discover -- and logs a clear refusal instead of
+// failing to compile.
+#ifdef QET_HAS_QTPDF
+#include <QPdfDocument>
+#include <QPainter>
+#endif
 #include "../qetgraphicsitem/dynamicelementtextitem.h"
 #include "../qetgraphicsitem/independenttextitem.h"
 #include "../qetgraphicsitem/qetshapeitem.h"
@@ -2894,6 +2904,92 @@ bool QetScriptApi::deleteImage(int folioIndex, int imageIndex)
 	content.m_images << list.at(imageIndex);
 	diagram->undoStack().push(new DeleteQGraphicsItemCommand(diagram, content));
 	return true;
+}
+
+/**
+	@brief QetScriptApi::addPdfPage
+	Render one page of a PDF file to an image and place it, as the "add
+	PDF" toolbar action does after its file and page-selection dialogs --
+	same QPdfDocument::render() call, same white-background compositing
+	for a transparent PDF, same DiagramImageItem/AddGraphicsObjectCommand
+	underneath addImage() itself. Only reachable in a build with the
+	QtPdf module (Qt >= 6.4); refused with a clear reason otherwise, since
+	a missing module or a too-old Qt is a real possibility this project
+	ships around (see diagrameventaddpdf.h) rather than something a script
+	should read as "no such method".
+	@param pageNumber 1-based, as PdfPagesDialog shows it
+	@param dpi resolution to render at; the GUI dialog defaults to 150
+	@return the new image's index in images(), or -1
+*/
+int QetScriptApi::addPdfPage(int folioIndex, const QString &pdfPath, int pageNumber,
+							 int dpi, double x, double y)
+{
+#ifndef QET_HAS_QTPDF
+	Q_UNUSED(folioIndex) Q_UNUSED(pdfPath) Q_UNUSED(pageNumber)
+	Q_UNUSED(dpi) Q_UNUSED(x) Q_UNUSED(y)
+	log(QStringLiteral("qet.addPdfPage: this build has no QtPdf module (or Qt < 6.4); "
+					   "PDF page import is unavailable"));
+	return -1;
+#else
+	if (!m_project) return -1;
+	if (m_project->isReadOnly()) {
+		log(QStringLiteral("qet.addPdfPage: project is read-only"));
+		return -1;
+	}
+	const QList<Diagram *> diagrams = m_project->diagrams();
+	if (folioIndex < 0 || folioIndex >= diagrams.count()) return -1;
+	if (dpi <= 0) {
+		log(QStringLiteral("qet.addPdfPage: dpi must be positive, got %1").arg(dpi));
+		return -1;
+	}
+	const QFileInfo info(pdfPath);
+	if (!info.isFile()) {
+		log(QStringLiteral("qet.addPdfPage: '%1' is not a file").arg(pdfPath));
+		return -1;
+	}
+
+	QPdfDocument document;
+	document.load(pdfPath);
+	if (document.status() != QPdfDocument::Status::Ready) {
+		log(QStringLiteral("qet.addPdfPage: '%1' could not be loaded as a PDF").arg(pdfPath));
+		return -1;
+	}
+	const int pageCount = document.pageCount();
+	if (pageNumber < 1 || pageNumber > pageCount) {
+		log(QStringLiteral("qet.addPdfPage: '%1' has %2 page(s), no page %3")
+			.arg(pdfPath).arg(pageCount).arg(pageNumber));
+		return -1;
+	}
+	const int pageIndex = pageNumber - 1;
+
+	// PDF point = 1/72 inch, same conversion PdfPagesDialog applies.
+	const QSizeF pageSize = document.pagePointSize(pageIndex);
+	const int pixelWidth = qRound((pageSize.width() / 72.0) * dpi);
+	const int pixelHeight = qRound((pageSize.height() / 72.0) * dpi);
+	if (pixelWidth <= 0 || pixelHeight <= 0) {
+		log(QStringLiteral("qet.addPdfPage: could not determine page %1's size").arg(pageNumber));
+		return -1;
+	}
+
+	const QImage rendered = document.render(pageIndex, QSize(pixelWidth, pixelHeight));
+	if (rendered.isNull()) {
+		log(QStringLiteral("qet.addPdfPage: page %1 could not be rendered").arg(pageNumber));
+		return -1;
+	}
+
+	// A transparent PDF page would otherwise composite onto whatever is
+	// under it on the folio, unlike every other placed image.
+	QImage background(rendered.size(), QImage::Format_ARGB32_Premultiplied);
+	background.fill(Qt::white);
+	QPainter painter(&background);
+	painter.drawImage(0, 0, rendered);
+	painter.end();
+
+	Diagram *diagram = diagrams.at(folioIndex);
+	auto *item = new DiagramImageItem(QPixmap::fromImage(background));
+	diagram->undoStack().push(new AddGraphicsObjectCommand(item, diagram, QPointF(x, y)));
+	return sortedImages(folioIndex).indexOf(item);
+#endif
 }
 
 namespace {

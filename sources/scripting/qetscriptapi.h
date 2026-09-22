@@ -499,6 +499,8 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool setImageScale(int folioIndex, int imageIndex, double factor);
 		Q_INVOKABLE bool setImageRotation(int folioIndex, int imageIndex, double angle);
 		Q_INVOKABLE bool deleteImage(int folioIndex, int imageIndex);
+		Q_INVOKABLE int addPdfPage(int folioIndex, const QString &pdfPath, int pageNumber,
+								   int dpi, double x, double y);
 
 		// -- the text fields shown on a symbol (label, terminal names, ...) --
 		Q_INVOKABLE QStringList elementTexts(int folioIndex, const QString &elementUuid) const;
