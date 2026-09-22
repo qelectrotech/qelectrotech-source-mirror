@@ -3912,10 +3912,18 @@ QVariantList QetScriptApi::checkContinuity(int folioIndex)
 		}
 	}
 
+	// "color"/"style" are the rendered pen -- what a person actually sees
+	// as "this wire is blue" -- distinct from "conductor_color"
+	// (ConductorProperties::m_wire_color), a separate free-text
+	// documentation field that is typically empty and says nothing about
+	// how the wire is drawn. A mismatch check that only covered the
+	// documentation field would miss exactly the visible kind of
+	// inconsistency a person would report (issue #974: the two halves of
+	// one folio-link conductor drawn in different colours).
 	static const QStringList checked_properties = {
-		QStringLiteral("num"), QStringLiteral("conductor_color"),
-		QStringLiteral("conductor_section"), QStringLiteral("function"),
-		QStringLiteral("bus"), QStringLiteral("cable")};
+		QStringLiteral("num"), QStringLiteral("color"), QStringLiteral("style"),
+		QStringLiteral("conductor_color"), QStringLiteral("conductor_section"),
+		QStringLiteral("function"), QStringLiteral("bus"), QStringLiteral("cable")};
 
 	QSet<Conductor *> visited;
 	for (int f = 0; f < diagrams.count(); ++f) {
@@ -3950,6 +3958,73 @@ QVariantList QetScriptApi::checkContinuity(int folioIndex)
 					QStringLiteral("conductors on the same electrical potential disagree "
 								   "on %1: %2").arg(prop, values.join(QStringLiteral(", "))));
 				findings << finding;
+			}
+		}
+	}
+
+	// report_link_mismatch (warning, not error): a next_report/
+	// previous_report pair -- QElectroTech's folio-jump-arrow links,
+	// e.g. "Folio suivant"/"Folio précédent" -- is meant to represent one
+	// wire continuing across a folio boundary, but LinkElementCommand::
+	// isLinkable() only ever checks type and freedom (see its own doc
+	// comment), never conductor properties. Nothing in QElectroTech
+	// copies one side's colour/style/num onto the other when the link is
+	// made, or keeps them in sync afterwards, so this is a real,
+	// unenforced gap rather than something a script or the GUI could
+	// have broken -- hence "warning", not "error" the way
+	// potential_mismatch is (which the app's own edits can never
+	// produce, so any occurrence there is definitely external tampering).
+	// Terminals are matched by index between the two linked elements: a
+	// report pair is authored as matching symbols carrying the same set
+	// of wires in the same declared order, the same convention terminal
+	// indexing already follows everywhere else in this API.
+	QSet<Element *> visited_report;
+	for (int f = 0; f < diagrams.count(); ++f) {
+		if (folioIndex >= 0 && f != folioIndex) continue;
+		DiagramContent content(diagrams.at(f), false);
+		for (Element *elmt : std::as_const(content.m_elements)) {
+			if (elmt->linkType() != Element::NextReport
+				&& elmt->linkType() != Element::PreviousReport) continue;
+			if (visited_report.contains(elmt)) continue;
+
+			const QList<Element *> linked = elmt->linkedElements();
+			for (Element *other : linked) {
+				if (visited_report.contains(other)) continue;
+				visited_report << elmt << other;
+
+				const QList<Terminal *> ta = elmt->terminals();
+				const QList<Terminal *> tb = other->terminals();
+				const int n = qMin(ta.count(), tb.count());
+				auto *other_diagram = qobject_cast<Diagram *>(other->scene());
+				const int other_folio = other_diagram ? diagrams.indexOf(other_diagram) : -1;
+
+				for (int i = 0; i < n; ++i) {
+					const QList<Conductor *> ca = ta.at(i)->conductors();
+					const QList<Conductor *> cb = tb.at(i)->conductors();
+					// ambiguous (>1) or unconnected (0) on either side:
+					// nothing to meaningfully compare
+					if (ca.count() != 1 || cb.count() != 1) continue;
+
+					for (const QString &prop : checked_properties) {
+						const QString va = conductorPropertyValue(ca.first()->properties(), prop);
+						const QString vb = conductorPropertyValue(cb.first()->properties(), prop);
+						if (va == vb) continue;
+						QVariantMap finding;
+						finding.insert(QStringLiteral("kind"), QStringLiteral("report_link_mismatch"));
+						finding.insert(QStringLiteral("severity"), QStringLiteral("warning"));
+						finding.insert(QStringLiteral("folio"), f);
+						finding.insert(QStringLiteral("element"), elmt->uuid().toString());
+						finding.insert(QStringLiteral("otherFolio"), other_folio);
+						finding.insert(QStringLiteral("otherElement"), other->uuid().toString());
+						finding.insert(QStringLiteral("terminal"), i);
+						finding.insert(QStringLiteral("property"), prop);
+						finding.insert(QStringLiteral("values"), QStringList{va, vb});
+						finding.insert(QStringLiteral("message"),
+							QStringLiteral("folio-link conductor disagrees on %1 across the "
+										   "link: '%2' vs '%3'").arg(prop, va, vb));
+						findings << finding;
+					}
+				}
 			}
 		}
 	}
