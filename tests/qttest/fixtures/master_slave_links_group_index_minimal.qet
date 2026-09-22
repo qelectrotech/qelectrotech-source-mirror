@@ -1,0 +1,158 @@
+<project title="Master Slave Group Index Fixture" version="0.100.1">
+    <properties/>
+    <usage enabled="true" time_spent="0"/>
+    <newdiagrams>
+        <border cols="4" colsize="80" displaycols="true" rows="4" rowsize="80" displayrows="true"/>
+        <inset title="" author="" date="null" filename="" folio="%id/%total" plant="" locmach="" indexrev="" version="" auto_page_num="" displayAt="bottom"/>
+        <conductors type="multi" num="_" displaytext="1" onetextperfolio="0"/>
+        <report label="%f-%l%c"/>
+        <xrefs>
+            <xref type="coil" snapto="bottom" displayhas="contacts" master_label="%f-%l%c" slave_label="(%f-%l%c)" showpowerctc="false" showterminalname="true" xrefpos="AlignBottom" offset="0" powerprefix="" delayprefix="" switchprefix=""/>
+        </xrefs>
+        <conductors_autonums freeze_new_conductors="false" auto_break_conductors="false" current_autonum=""/>
+        <folio_autonums/>
+        <element_autonums freeze_new_elements="false" current_autonum=""/>
+        <guides/>
+    </newdiagrams>
+    <diagram title="Master Slave Links" order="1" version="0.100.1-dev" cols="4" rows="4" colsize="80" rowsize="80" displaycols="true" displayrows="true" displayAt="bottom" folio="%id/%total" author="" date="null" filename="" plant="" locmach="" indexrev="" freezeNewElement="false" freezeNewConductor="false">
+        <defaultconductor type="multi" num="_" displaytext="1" onetextperfolio="0"/>
+        <elements>
+            <element type="embed://import/mam_test/master_grouped.elmt" uuid="{11111111-1111-4111-8111-111111111111}" prefix="K" x="120" y="120" z="10" orientation="0" freezeLabel="false">
+                <terminals>
+                    <terminal id="0" x="0" y="-20" orientation="0" name="A1" number="A1" nameHidden="0"/>
+                    <terminal id="1" x="0" y="20" orientation="2" name="A2" number="A2" nameHidden="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{22222222-2222-4222-8222-222222222222}" group_index="0"/>
+                    <link_uuid uuid="{33333333-3333-4333-8333-333333333333}" group_index="1"/>
+                </links_uuids>
+                <elementInformations>
+                    <elementInformation name="label" show="1">KMS</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element type="embed://import/mam_test/slave_no.elmt" uuid="{22222222-2222-4222-8222-222222222222}" prefix="K" x="220" y="100" z="10" orientation="0" freezeLabel="false">
+                <terminals>
+                    <terminal id="2" x="0" y="-20" orientation="0" name="13" number="13" nameHidden="0"/>
+                    <terminal id="3" x="0" y="20" orientation="2" name="14" number="14" nameHidden="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{11111111-1111-4111-8111-111111111111}"/>
+                </links_uuids>
+                <elementInformations>
+                    <elementInformation name="label" show="1">KMS-NO</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+            <element type="embed://import/mam_test/slave_nc.elmt" uuid="{33333333-3333-4333-8333-333333333333}" prefix="K" x="220" y="180" z="10" orientation="0" freezeLabel="false">
+                <terminals>
+                    <terminal id="4" x="0" y="-20" orientation="0" name="21" number="21" nameHidden="0"/>
+                    <terminal id="5" x="0" y="20" orientation="2" name="22" number="22" nameHidden="0"/>
+                </terminals>
+                <inputs/>
+                <links_uuids>
+                    <link_uuid uuid="{11111111-1111-4111-8111-111111111111}"/>
+                </links_uuids>
+                <elementInformations>
+                    <elementInformation name="label" show="1">KMS-NC</elementInformation>
+                </elementInformations>
+                <dynamic_texts/>
+                <texts_groups/>
+            </element>
+        </elements>
+        <conductors/>
+        <inputs/>
+        <shapes/>
+        <images/>
+        <conductors_autonums/>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="en">Import</name>
+            </names>
+            <category name="mam_test">
+                <names>
+                    <name lang="en">MAM Test</name>
+                </names>
+                <element name="master_grouped.elmt">
+                    <definition type="element" link_type="master" version="0.100.1" width="60" height="60" hotspot_x="30" hotspot_y="30">
+                        <uuid uuid="{aaaaaaa1-aaaa-4aaa-8aaa-aaaaaaaaaaa1}"/>
+                        <names>
+                            <name lang="en">Grouped master</name>
+                        </names>
+                        <kindInformations>
+                            <kindInformation name="type" show="1">coil</kindInformation>
+                            <slaveContactGroups>
+                                <group type="NO" subtype="simple" contactCount="1" terminalCount="2">
+                                    <label>13</label>
+                                    <label>14</label>
+                                </group>
+                                <group type="NC" subtype="simple" contactCount="1" terminalCount="2">
+                                    <label>21</label>
+                                    <label>22</label>
+                                </group>
+                            </slaveContactGroups>
+                        </kindInformations>
+                        <informations>Test-only fixture element. slaveContactGroups shape follows QET ElementData parser/writer.</informations>
+                        <description>
+                            <input x="10" y="0" tagg="label" size="9" text="_"/>
+                            <line x1="-15" y1="-10" x2="15" y2="-10" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <line x1="-15" y1="10" x2="15" y2="10" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <terminal x="0" y="-20" orientation="n" name="A1"/>
+                            <terminal x="0" y="20" orientation="s" name="A2"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="slave_no.elmt">
+                    <definition type="element" link_type="slave" version="0.100.1" width="40" height="50" hotspot_x="20" hotspot_y="25">
+                        <uuid uuid="{aaaaaaa2-aaaa-4aaa-8aaa-aaaaaaaaaaa2}"/>
+                        <names>
+                            <name lang="en">NO slave</name>
+                        </names>
+                        <kindInformations>
+                            <kindInformation name="type" show="1">simple</kindInformation>
+                            <kindInformation name="state" show="1">NO</kindInformation>
+                            <kindInformation name="number" show="1">1</kindInformation>
+                        </kindInformations>
+                        <informations>Test-only fixture element.</informations>
+                        <description>
+                            <input x="10" y="0" tagg="label" size="9" text="_"/>
+                            <line x1="0" y1="-15" x2="0" y2="-5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <line x1="0" y1="5" x2="0" y2="15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <line x1="0" y1="-5" x2="12" y2="8" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <terminal x="0" y="-20" orientation="n" name="13"/>
+                            <terminal x="0" y="20" orientation="s" name="14"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="slave_nc.elmt">
+                    <definition type="element" link_type="slave" version="0.100.1" width="40" height="50" hotspot_x="20" hotspot_y="25">
+                        <uuid uuid="{aaaaaaa3-aaaa-4aaa-8aaa-aaaaaaaaaaa3}"/>
+                        <names>
+                            <name lang="en">NC slave</name>
+                        </names>
+                        <kindInformations>
+                            <kindInformation name="type" show="1">simple</kindInformation>
+                            <kindInformation name="state" show="1">NC</kindInformation>
+                            <kindInformation name="number" show="1">1</kindInformation>
+                        </kindInformations>
+                        <informations>Test-only fixture element.</informations>
+                        <description>
+                            <input x="10" y="0" tagg="label" size="9" text="_"/>
+                            <line x1="0" y1="-15" x2="0" y2="-5" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <line x1="0" y1="5" x2="0" y2="15" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <line x1="-9" y1="-4" x2="9" y2="4" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" length1="1.5" length2="1.5" antialias="false"/>
+                            <terminal x="0" y="-20" orientation="n" name="21"/>
+                            <terminal x="0" y="20" orientation="s" name="22"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+        </category>
+    </collection>
+</project>

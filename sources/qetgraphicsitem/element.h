@@ -208,6 +208,7 @@ class Element : public QetGraphicsItem
 		virtual void unlinkElement(Element *) {}
 		virtual void initLink(QETProject *);
 		QList<Element *> linkedElements ();
+		QList<Element *> linkedElementsReadOnly() const;
 
 		int groupIndexForElement(Element *elmt) const;
 		void setGroupIndexForElement(Element *elmt, int index);
@@ -331,6 +332,15 @@ inline QList <Element *> Element::linkedElements()
 				 connected_elements.begin(),
 				 connected_elements.end(),
 				 comparPos);
+	return connected_elements;
+}
+
+/**
+	@brief Element::linkedElementsReadOnly
+	@return the list of linked elements in current internal order, without sorting
+*/
+inline QList <Element *> Element::linkedElementsReadOnly() const
+{
 	return connected_elements;
 }
 

@@ -211,3 +211,82 @@ target_include_directories(tst_conductorselfretrace PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_conductorselfretrace PRIVATE Qt::Test)
 target_compile_definitions(tst_conductorselfretrace PRIVATE
   "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+add_executable(
+  tst_cli_roundtrip_xml
+  tst_cli_roundtrip_xml.cpp)
+add_test(NAME tst_cli_roundtrip_xml COMMAND tst_cli_roundtrip_xml)
+add_dependencies(tst_cli_roundtrip_xml qelectrotech)
+target_include_directories(tst_cli_roundtrip_xml PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_cli_roundtrip_xml PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_cli_roundtrip_xml PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+add_executable(
+  tst_cli_export_equivalence
+  tst_cli_export_equivalence.cpp)
+add_test(NAME tst_cli_export_equivalence COMMAND tst_cli_export_equivalence)
+add_dependencies(tst_cli_export_equivalence qelectrotech)
+target_include_directories(tst_cli_export_equivalence PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_cli_export_equivalence PRIVATE Qt::Test Qt::Core)
+target_compile_definitions(tst_cli_export_equivalence PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+add_executable(
+  tst_terminal_potential_exports
+  tst_terminal_potential_exports.cpp)
+add_test(NAME tst_terminal_potential_exports COMMAND tst_terminal_potential_exports)
+add_dependencies(tst_terminal_potential_exports qelectrotech)
+target_include_directories(tst_terminal_potential_exports PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_terminal_potential_exports PRIVATE Qt::Test Qt::Core)
+target_compile_definitions(tst_terminal_potential_exports PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+add_executable(
+  tst_master_slave_links
+  tst_master_slave_links.cpp)
+add_test(NAME tst_master_slave_links COMMAND tst_master_slave_links)
+add_dependencies(tst_master_slave_links qelectrotech)
+target_include_directories(tst_master_slave_links PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_master_slave_links PRIVATE Qt::Test Qt::Xml)
+target_compile_definitions(tst_master_slave_links PRIVATE
+  "QET_TEST_BINARY_PATH=\"$<TARGET_FILE:qelectrotech>\"")
+
+set(QET_QTTEST_APP_SRC ${QET_SRC_FILES})
+list(FILTER QET_QTTEST_APP_SRC EXCLUDE REGEX "/sources/main\\.cpp$")
+file(GLOB_RECURSE QET_QTTEST_HEADERS CONFIGURE_DEPENDS ${QET_DIR}/sources/*.h)
+set(QET_QTTEST_INCLUDE_DIRS
+  ${QET_DIR}
+  ${QET_DIR}/sources
+  ${QET_DIR}/pugixml/src)
+foreach(QET_QTTEST_HEADER ${QET_QTTEST_HEADERS})
+  get_filename_component(QET_QTTEST_HEADER_DIR ${QET_QTTEST_HEADER} DIRECTORY)
+  list(APPEND QET_QTTEST_INCLUDE_DIRS ${QET_QTTEST_HEADER_DIR})
+endforeach()
+list(REMOVE_DUPLICATES QET_QTTEST_INCLUDE_DIRS)
+
+function(add_qet_project_load_qtest target_name)
+  add_executable(
+    ${target_name}
+    ${ARGN}
+    ${QET_QTTEST_APP_SRC}
+    ${QET_DIR}/qelectrotech.qrc
+    ${QET_DIR}/ico/icon-themes.qrc)
+  add_test(NAME ${target_name} COMMAND ${target_name})
+  target_include_directories(${target_name} PRIVATE
+    ${QET_QTTEST_INCLUDE_DIRS})
+  target_link_libraries(${target_name} PRIVATE
+    Qt::Test
+    pugixml::pugixml
+    SingleApplication::SingleApplication
+    SQLite3::SQLite3
+    ${KF_PRIVATE_LIBRARIES}
+    ${QET_PRIVATE_LIBRARIES})
+  if(NOT BUILD_WITH_KF)
+    target_compile_definitions(${target_name} PRIVATE BUILD_WITHOUT_KF)
+  endif()
+endfunction()
+
+add_qet_project_load_qtest(
+  tst_contactcrossrefprojectionservice
+  tst_contactcrossrefprojectionservice.cpp)
