@@ -1445,18 +1445,26 @@ def tool_continuity(binary: str, project: str, folio: int | None = None,
                     elements_dir: str | None = None, timeout: int = 180) -> dict:
     """Run qet.checkContinuity() and get its findings back.
 
-    Two checks, against the live Terminal/Conductor object graph rather
+    Three checks, against the live Terminal/Conductor object graph rather
     than a heuristic read of the XML (that is qet_check's job, and the two
     are complementary, not redundant -- qet_check looks at labels and
     numbering conventions, this looks at the electrical graph itself):
-    unconnected_terminal (info -- routine, not necessarily a mistake) and
+    unconnected_terminal (info -- routine, not necessarily a mistake),
     potential_mismatch (error -- two conductors QElectroTech's own
     setConductorProperty() would always keep identical, found disagreeing,
     which only happens from hand-edited XML, a legacy file, or an external
-    tool). See qet.checkContinuity()'s own doc comment (qetscriptapi.cpp)
-    for what this deliberately does not check: pin electrical direction/
-    power conflicts and No/Nc/Common contact shorts, since QElectroTech's
-    terminal data model does not carry the information either would need.
+    tool), and report_link_mismatch (warning -- a next_report/
+    previous_report folio-jump pair whose conductors disagree on colour,
+    style, num, etc.; unlike potential_mismatch this one CAN happen through
+    ordinary use, since LinkElementCommand::isLinkable() never checks
+    conductor properties, only type and freedom -- see
+    qelectrotech/qelectrotech-source-mirror#974, which this check
+    reproduces exactly: one folio-link conductor drawn in two different
+    colours on either side of the link). See qet.checkContinuity()'s own
+    doc comment (qetscriptapi.cpp) for what this deliberately does not
+    check: pin electrical direction/power conflicts and No/Nc/Common
+    contact shorts, since QElectroTech's terminal data model does not
+    carry the information either would need.
     """
     proj = Path(project).expanduser()
     if not proj.is_file():
@@ -2315,7 +2323,12 @@ TOOLS = [
                        "electrical potential disagreeing on num/colour/section/"
                        "function/bus/cable, which QElectroTech's own edits never "
                        "produce, so it means hand-edited XML, a legacy file, or an "
-                       "external tool). Does NOT check pin electrical direction/power "
+                       "external tool); and report_link_mismatch (warning -- a "
+                       "next_report/previous_report folio-jump pair whose conductors "
+                       "disagree, which CAN happen through ordinary use since linking "
+                       "two report elements never checks or syncs conductor "
+                       "properties -- reproduces qelectrotech/qelectrotech-source-"
+                       "mirror#974). Does NOT check pin electrical direction/power "
                        "conflicts or No/Nc/Common contact shorts -- QElectroTech's "
                        "terminal data model carries neither. One QElectroTech "
                        "launch; read-only.",

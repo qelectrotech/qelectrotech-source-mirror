@@ -54,6 +54,12 @@ needs_examples = unittest.skipUnless(have_binary and have_examples,
 COIL = "common://10_electric/10_allpole/310_relays_contactors_contacts/01_coils/bobine_ka_a_remanence.elmt"
 SLAVE = ("common://10_electric/10_allpole/310_relays_contactors_contacts/"
          "02_contacts_cross_referencing/15_protection_contacts/contact_relais_nf_esclave.elmt")
+# The shipped "going/coming arrow" pair -- a folio-jump link, next_report on
+# one folio linked to previous_report on the next, one terminal each. Same
+# category of element as issue #974's custom "naechste_folie_rechts.elmt" /
+# "vorherige_folie_links.elmt".
+NEXT_REPORT = "common://10_electric/10_allpole/100_folio_referencing/02going_arrow.elmt"
+PREVIOUS_REPORT = "common://10_electric/10_allpole/100_folio_referencing/01coming_arrow.elmt"
 TERMINAL = "common://10_electric/10_allpole/130_terminals_terminal_strips/borne_2.elmt"
 
 # No shipped element has masterType/slaveType "plc" -- these two minimal
@@ -1945,6 +1951,60 @@ class Integration(unittest.TestCase):
         only_1 = m.tool_continuity(BINARY, r["output"], folio=1, elements_dir=ELEMENTS)
         self.assertGreater(both["finding_count"], 0)
         self.assertEqual(only_1["finding_count"], 0, "folio 1 has no elements at all")
+
+    def test_continuity_finds_a_report_link_colour_mismatch(self):
+        """Reproduces qelectrotech/qelectrotech-source-mirror#974: a
+        folio-jump conductor drawn in two different colours on either side
+        of a next_report/previous_report link. LinkElementCommand never
+        synchronises conductor properties across the link (only type and
+        freedom are checked), so this is a real, reproducible gap, not
+        something only a hand-edited file could produce."""
+        base = self.sb.new(folios=2)
+        ops = [{"op": "add_element", "id": "a", "folio": 0, "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "next", "folio": 0, "path": NEXT_REPORT, "x": 300, "y": 100},
+               {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": 0,
+                "to": "$next", "to_terminal": 0},
+               {"op": "set_conductor", "folio": 0, "element": "$a", "terminal": 0,
+                "property": "color", "value": "#0000ff"},
+               {"op": "add_element", "id": "b", "folio": 1, "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "prev", "folio": 1, "path": PREVIOUS_REPORT, "x": 300, "y": 100},
+               {"op": "add_conductor", "folio": 1, "from": "$b", "from_terminal": 0,
+                "to": "$prev", "to_terminal": 0},
+               {"op": "set_conductor", "folio": 1, "element": "$b", "terminal": 0,
+                "property": "color", "value": "#55aa00"},
+               {"op": "link_elements", "folio": 0, "element": "$next",
+                "to_folio": 1, "to": "$prev"}]
+        r = self.ok(self.sb.edit(base, ops))
+        result = m.tool_continuity(BINARY, r["output"], elements_dir=ELEMENTS)
+        mismatches = [f for f in result["findings"] if f["kind"] == "report_link_mismatch"]
+        self.assertEqual(len(mismatches), 1)
+        self.assertEqual(mismatches[0]["property"], "color")
+        self.assertEqual(sorted(mismatches[0]["values"]), ["#0000ff", "#55aa00"])
+        self.assertEqual(mismatches[0]["severity"], "warning",
+                         "unenforced by the app -- a real gap, but not proof of external "
+                         "tampering the way potential_mismatch's \"error\" is")
+        self.assertEqual(result["warnings"], 1)
+
+    def test_continuity_no_false_positive_when_report_link_colours_match(self):
+        base = self.sb.new(folios=2)
+        ops = [{"op": "add_element", "id": "a", "folio": 0, "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "next", "folio": 0, "path": NEXT_REPORT, "x": 300, "y": 100},
+               {"op": "add_conductor", "folio": 0, "from": "$a", "from_terminal": 0,
+                "to": "$next", "to_terminal": 0},
+               {"op": "set_conductor", "folio": 0, "element": "$a", "terminal": 0,
+                "property": "color", "value": "#0000ff"},
+               {"op": "add_element", "id": "b", "folio": 1, "path": COIL, "x": 100, "y": 100},
+               {"op": "add_element", "id": "prev", "folio": 1, "path": PREVIOUS_REPORT, "x": 300, "y": 100},
+               {"op": "add_conductor", "folio": 1, "from": "$b", "from_terminal": 0,
+                "to": "$prev", "to_terminal": 0},
+               {"op": "set_conductor", "folio": 1, "element": "$b", "terminal": 0,
+                "property": "color", "value": "#0000ff"},
+               {"op": "link_elements", "folio": 0, "element": "$next",
+                "to_folio": 1, "to": "$prev"}]
+        r = self.ok(self.sb.edit(base, ops))
+        result = m.tool_continuity(BINARY, r["output"], elements_dir=ELEMENTS)
+        mismatches = [f for f in result["findings"] if f["kind"] == "report_link_mismatch"]
+        self.assertEqual(mismatches, [])
 
     def test_auto_numbered_conductor_text_reaches_the_database(self):
         """ConductorCreator inserted the database row before refreshText()
