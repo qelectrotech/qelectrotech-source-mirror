@@ -59,17 +59,41 @@ jobs:
 
       # ----------------------------------------------------------------
       # 2. Download the portable artifact for this flavor
+      #
+      #    Wrapped in nick-fields/retry: actions/download-artifact@v8 has
+      #    shown repeated "Artifact download failed after 5 retries"
+      #    failures on this cross-workflow download (via run-id) — not a
+      #    real content/digest problem, just flaky Azure blob delivery.
+      #    Two separate occurrences observed within days of each other
+      #    (different artifact IDs/digests, same failure signature), each
+      #    one enough to fail build-msi outright and block the rest of the
+      #    pipeline. Retrying the whole download 3x is cheap insurance.
+      #    Switched to `gh run download` here because nick-fields/retry
+      #    can only retry a shell command, not re-invoke a `uses:` step.
       # ----------------------------------------------------------------
       - name: Download portable artifact
-        uses: actions/download-artifact@v8
+        uses: nick-fields/retry@v3
         with:
-          name: ${{ matrix.portable_artifact }}
-          path: artifact\files
-          # workflow_run => use the triggering run's ID
-          # workflow_dispatch => use input run_id if provided, otherwise current run
-          run-id: ${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_wait_seconds: 30
+          shell: pwsh
+          command: |
+            if (Test-Path "artifact\files") { Remove-Item -Recurse -Force "artifact\files" }
+            New-Item -ItemType Directory -Force -Path "artifact\files" | Out-Null
+
+            $runId = "${{ github.event.workflow_run.id || github.event.inputs.run_id || github.run_id }}"
+            gh run download $runId `
+              --repo "${{ github.repository }}" `
+              --name "${{ matrix.portable_artifact }}" `
+              --dir "artifact\files"
+
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "gh run download failed (exit $LASTEXITCODE)"
+              exit $LASTEXITCODE
+            }
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # ----------------------------------------------------------------
       # 3. Extract version
