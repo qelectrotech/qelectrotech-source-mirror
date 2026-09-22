@@ -31,8 +31,22 @@ add_definitions(-DQT_MESSAGELOGCONTEXT)
 # In order to do so, uncomment the following line.
 #add_definitions(-DTODO_LIST)
 
-# Build with KF5
-option(BUILD_WITH_KF5 "Build with KF5" ON)
+# Build with KDE Frameworks.
+option(BUILD_WITH_KF "Build with KDE Frameworks" ON)
+
+# Precompiled headers for the Qt umbrella headers.
+#
+# Off by default and intended for local development only. Building QET is
+# dominated by re-parsing Qt's headers: a 214-line .cpp expands to ~198,000
+# preprocessed lines, and compiling one translation unit costs ~4.1 s of which
+# only ~0.35 s is optimisation (-O0 instead of -O3 saves 8%). A PCH caches the
+# parsed header state and takes that ~4.1 s down to ~1.2 s.
+#
+# It is deliberately NOT on by default: a PCH satisfies includes that a source
+# file forgot to make itself, so code written with it enabled can fail to
+# compile for everyone else. Leaving it off keeps CI and contributors on the
+# strict behaviour, and only developers who opt in trade that for the speed.
+option(QET_ENABLE_PCH "Use precompiled headers (developer build speed; may mask missing #includes)" OFF)
 
 # Phase 1 (Linux, libspnav) of discussion #599: 3Dconnexion SpaceMouse/
 # SpacePilot pan/zoom support. Off by default -- see cmake/find_spacemouse.cmake

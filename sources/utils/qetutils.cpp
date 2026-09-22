@@ -200,9 +200,6 @@ namespace
  */
 QString QETUtils::fontToString(const QFont &font)
 {
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-	return font.toString();
-#else
 	const int legacy_weight = legacyFontWeight(font.weight());
 
 	const QChar comma(QLatin1Char(','));
@@ -220,7 +217,6 @@ QString QETUtils::fontToString(const QFont &font)
 		description += QChar(',') + font.styleName();
 	}
 	return description;
-#endif
 }
 
 /**

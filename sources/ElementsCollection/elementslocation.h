@@ -20,7 +20,7 @@
 
 #include "../NameList/nameslist.h"
 #include "../diagramcontext.h"
-#include "pugixml/src/pugixml.hpp"
+#include "pugixml.hpp"
 
 #include <QIcon>
 #include <QString>

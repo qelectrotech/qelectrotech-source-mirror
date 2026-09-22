@@ -29,7 +29,7 @@
 #include "titleblock/templatescollection.h"
 #include "titleblockproperties.h"
 #include "diagram.h"
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #	include "ui/nokde/kautosavefile.h"
 #else
 #	include <KAutoSaveFile>
@@ -90,6 +90,7 @@ class QETProject : public QObject
 		};
 
 		Q_PROPERTY(bool autoConductor READ autoConductor WRITE setAutoConductor)
+	Q_PROPERTY(bool autoBreakConductor READ autoBreakConductor WRITE setAutoBreakConductor)
 
 		// constructors, destructor
 	public:
@@ -181,9 +182,11 @@ class QETProject : public QObject
 		void setFreezeNewConductors(bool);
 
 		bool autoConductor () const;
+		bool autoBreakConductor () const;
 		bool autoElement () const;
 		bool autoFolio () const;
 		void setAutoConductor (bool ac);
+		void setAutoBreakConductor (bool abc);
 		void setAutoElement (bool ae);
 		void autoFolioNumberingNewFolios ();
 		void autoFolioNumberingSelectedFolios(int, int, const QString&);
@@ -234,8 +237,13 @@ class QETProject : public QObject
 		void conductorAutoNumAdded();
 		void conductorAutoNumRemoved();
 		void folioAutoNumAdded();
+			/// A numerotation context's *values* changed -- as happens every
+			/// time an element or conductor consumes the next number, not
+			/// only when a rule is added or removed. Deliberately separate
+			/// from the *Added/*Removed signals above, which make listeners
+			/// rebuild their rule lists; this one just says "re-read me".
+		void autoNumContextUpdated();
 		void folioAutoNumRemoved();
-		void folioAutoNumChanged(QString);
 		void defaultTitleBlockPropertiesChanged();
 		void conductorAutoNumChanged();
 
@@ -244,7 +252,26 @@ class QETProject : public QObject
 		void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 		void usedTitleBlockTemplateChanged(const QString &);
-		void undoStackChanged (bool a) {if (!a) setModified(true);}
+		/* Deliberately does NOT touch m_modified: m_modified /
+		 * setModified() track project-OPTIONS changes only (see
+		 * projectOptionsWereModified()), which have no undo
+		 * entry and so must stay set until an explicit write().
+		 * Diagram-content changes are tracked by the undo
+		 * stack's own clean index instead, and projectWasModified()
+		 * already ORs the two together -- that combined value is
+		 * what actually answers "does this project have unsaved
+		 * changes", so re-derive and broadcast it here on every
+		 * clean/dirty transition (covering, in particular, an
+		 * Undo that walks the stack back to its clean index).
+		 * Latching m_modified itself to the undo stack's dirty
+		 * state, the way this slot did before, is a one-way trap:
+		 * cleanChanged(true) would never come back through here
+		 * to un-set it, so a plain content edit stayed marked as
+		 * unsaved even after being fully undone. */
+		void undoStackChanged (bool /*a*/) {
+			emit projectModified(this, projectWasModified());
+			emit projectInformationsChanged(this);
+		}
 
 	private:
 		void readProjectXml(QDomDocument &xml_project);
@@ -263,6 +290,7 @@ class QETProject : public QObject
 		void writeBackup();
 		void init();
 		ProjectState openFile(QFile *file);
+		static QUuid derivedUuid(const QByteArray &content);
 		void refresh();
 
 	// attributes
@@ -312,6 +340,7 @@ class QETProject : public QObject
 		QHash <QString, NumerotationContext> m_element_autonum; //Title and NumContext hash
 		QString m_current_element_autonum;
 		bool m_auto_conductor = true;
+	bool m_auto_break_conductor = false;
 		XmlElementCollection *m_elements_collection = nullptr;
 		bool m_freeze_new_elements = false;
 		bool m_freeze_new_conductors = false;

@@ -123,10 +123,12 @@ class Diagram : public QGraphicsScene
 		qreal diagram_qet_version_;
 
 		bool draw_grid_;
+		bool m_inverted_lightness = false;
 		bool use_border_;
 		bool draw_guides_;
 		QList<Diagram::Guide> m_guides_list;
 		bool draw_terminals_;
+		bool draw_terminal_names_;
 		bool draw_colored_conductors_;
 
 		QString m_conductors_autonum_name;
@@ -135,6 +137,9 @@ class Diagram : public QGraphicsScene
 		bool m_freeze_new_elements;
 		bool m_freeze_new_conductors_;
 		QUuid m_uuid = QUuid::createUuid();
+
+		bool uuidUsedByOtherDiagram(const QUuid &uuid) const;
+		QUuid derivedUuid(const QDomElement &root, const QString &reason) const;
 	
 	// METHODS
 	protected:
@@ -149,8 +154,11 @@ class Diagram : public QGraphicsScene
 		void wheelEvent (QGraphicsSceneWheelEvent *event) override;
 		void keyPressEvent (QKeyEvent *event) override;
 		void keyReleaseEvent (QKeyEvent *) override;
+		bool event(QEvent *event) override;
 
-	
+	private:
+		void selectNextItem(bool forward);
+
 	public:
 		void correctTextPos(Element* elmt);
 		void restoreText(Element* elmt);
@@ -209,11 +217,13 @@ class Diagram : public QGraphicsScene
 		// methods related to graphics items addition/removal on the diagram
 		virtual void addItem    (QGraphicsItem *item);
 		virtual void removeItem (QGraphicsItem *item);
+		bool eventInterfaceIsRunning() const;
 	
 		// methods related to graphics options
 		ExportProperties applyProperties(const ExportProperties &);
 		void setDisplayGrid(bool);
 		bool displayGrid();
+		void setInvertedLightness(bool);
 		void setDisplayGuides(bool);
 		bool displayGuides();
 		void updateProjectGuides(const QList<GuideProperties> &guides);
@@ -226,6 +236,8 @@ class Diagram : public QGraphicsScene
 	
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);
+		bool drawTerminalNames() const;
+		void setDrawTerminalNames(bool);
 		bool drawColoredConductors() const;
 		void setDrawColoredConductors(bool);
 	
@@ -284,6 +296,8 @@ class Diagram : public QGraphicsScene
 		void selectAll();
 		void deselectAll();
 		void invertSelection();
+		void selectAllConductors();
+		void selectAllTextFields();
 
 	signals:
 		void showDiagram (Diagram *);
@@ -341,6 +355,18 @@ inline void Diagram::setConductorStop(QPointF end) {
 */
 inline void Diagram::setDisplayGrid(bool dg) {
 	draw_grid_ = dg;
+}
+
+/**
+	@brief Diagram::setInvertedLightness
+	Tell the diagram whether the view painting it will show the result
+	with its lightness inverted (PaletteGraphicsView on a dark palette).
+	drawBackground draws a softer grid in that case. Printing
+	and export never set this.
+	@param inverted
+*/
+inline void Diagram::setInvertedLightness(bool inverted) {
+	m_inverted_lightness = inverted;
 }
 
 /**
@@ -424,6 +450,15 @@ inline QGIManager &Diagram::qgiManager() {
 inline bool Diagram::drawTerminals() const
 {
 	return(draw_terminals_);
+}
+
+/**
+	@brief Diagram::drawTerminalNames
+	@return true if terminal names are rendered, false otherwise
+*/
+inline bool Diagram::drawTerminalNames() const
+{
+	return(draw_terminal_names_);
 }
 
 /**

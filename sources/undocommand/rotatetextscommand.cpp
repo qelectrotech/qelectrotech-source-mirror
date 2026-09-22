@@ -55,21 +55,13 @@ m_diagram(diagram)
 	{
 		openDialog();
 		
-		QString text;
-		if(texts_list.count())
-			text.append(QObject::tr("Pivoter %1 textes").arg(texts_list.count()));
-		if(groups_list.count())
-		{
-			if(text.isEmpty())
-				text.append(QObject::tr("Pivoter"));
-			else
-				text.append(QObject::tr(" et"));
-			
-			text.append(QObject::tr(" %1 groupes de textes").arg(groups_list.count()));
-		}
-		if(!text.isNull())
-			setText(text);
-		
+		QStringList parts;
+		if (texts_list.count())
+			parts << QObject::tr("%n texte(s)", "", texts_list.count());
+		if (groups_list.count())
+			parts << QObject::tr("%n groupe(s) de textes", "", groups_list.count());
+		setText(QObject::tr("Pivoter %1").arg(QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts)));
+
 		for(DiagramTextItem *dti : texts_list)
 			setupAnimation(dti, "rotation", dti->rotation(), m_rotation);
 		for(ElementTextItemGroup *grp : groups_list)
@@ -77,7 +69,6 @@ m_diagram(diagram)
 	}
 	else
 		setObsolete(true);
-	
 }
 
 void RotateTextsCommand::undo()
@@ -89,7 +80,7 @@ void RotateTextsCommand::undo()
 	m_anim_group->start();
 	
 	for(ConductorTextItem *cti : m_cond_texts.keys())
-		cti->forceMovedByUser(m_cond_texts.value(cti));
+		cti->forceRotateByUser(m_cond_texts.value(cti));
 }
 
 void RotateTextsCommand::redo()
@@ -101,7 +92,7 @@ void RotateTextsCommand::redo()
 	m_anim_group->start();
 	
 	for(ConductorTextItem *cti : m_cond_texts.keys())
-		cti->forceMovedByUser(true);
+		cti->forceRotateByUser(true);
 }
 
 void RotateTextsCommand::openDialog()
@@ -120,8 +111,8 @@ void RotateTextsCommand::openDialog()
 	ori_widget->spinBox()->selectAll();
 	
 	QDialogButtonBox buttons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	QObject::connect(&buttons, SIGNAL(accepted()), &ori_text_dialog, SLOT(accept()));
-	QObject::connect(&buttons, SIGNAL(rejected()), &ori_text_dialog, SLOT(reject()));
+	QObject::connect(&buttons, &QDialogButtonBox::accepted, &ori_text_dialog, &QDialog::accept);
+	QObject::connect(&buttons, &QDialogButtonBox::rejected, &ori_text_dialog, &QDialog::reject);
 	
 	QVBoxLayout layout_v(&ori_text_dialog);
 	layout_v.setSizeConstraint(QLayout::SetFixedSize);

@@ -35,28 +35,28 @@ public:
 		: QTabWidget(parent)
 	{}
 
-	double temp_index = 0;
-
 	void wheelEvent(QWheelEvent *event) override
 	{
-		int index = currentIndex();
-		double delta = 0;
-		double scale_factor = 0.005; // Decrease or increase speed of mouse wheel (0.04 = decrease)
-			if (event->modifiers() & Qt::ControlModifier) {
-				if (index != -1) {
-					delta = event->delta() * scale_factor; // Read and scale the scroll value
-					if (delta > 0 && (temp_index > -1)) temp_index = temp_index - abs(delta);
-					if (delta < 0 && (temp_index < count())) temp_index = temp_index + abs(delta);
+		// Only intercept if Ctrl is held down
+		if (event->modifiers() & Qt::ControlModifier) {
+			int index = currentIndex();
+			if (index != -1) {
+				// angleDelta().y() is usually 120 per click.
+				// Dividing by 120 gives you exactly +1 (scroll up) or -1 (scroll down)
+				int steps = event->angleDelta().y() / 120;
 
-					index = int (temp_index);
-					qDebug() << "index" << index << "temp_index" << temp_index << "  " << event->delta() << delta;
+				if (steps != 0) {
+					int newIndex = index - steps;
 
-					if (index >= 0 && index < count())
-						setCurrentIndex(index);
-
-					//                qDebug() << currentIndex();
+					if (newIndex >= 0 && newIndex < count())
+						setCurrentIndex(newIndex);
 				}
 			}
+			event->accept(); // Mark event handled so parent widgets don't process it
+		} else {
+			// Allow the default QTabWidget wheel behavior to process if Ctrl isn't held
+			QTabWidget::wheelEvent(event);
+		}
 	}
 };
 #endif

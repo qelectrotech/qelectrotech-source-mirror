@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- DIN rail -->
+  <rect x="6" y="86" width="116" height="18" rx="3" fill="#7f8c8d"/>
+  <rect x="6" y="92" width="116" height="6" fill="#4d4d4d"/>
+  <!-- six terminal blocks: L, L, N, PE, L, spare -->
+  <g fill="#eff0f1">
+    <rect x="12" y="26" width="16" height="66" rx="2"/>
+    <rect x="30" y="26" width="16" height="66" rx="2"/>
+    <rect x="48" y="26" width="16" height="66" rx="2"/>
+    <rect x="66" y="26" width="16" height="66" rx="2"/>
+    <rect x="84" y="26" width="16" height="66" rx="2"/>
+    <rect x="102" y="26" width="16" height="66" rx="2"/>
+  </g>
+  <!-- right-hand shading of each block -->
+  <g fill="#bdc3c7">
+    <rect x="24" y="28" width="4" height="62"/>
+    <rect x="42" y="28" width="4" height="62"/>
+    <rect x="60" y="28" width="4" height="62"/>
+    <rect x="78" y="28" width="4" height="62"/>
+    <rect x="96" y="28" width="4" height="62"/>
+    <rect x="114" y="28" width="4" height="62"/>
+  </g>
+  <!-- colored marker bands -->
+  <rect x="12" y="26" width="16" height="10" rx="2" fill="#7f8c8d"/>
+  <rect x="30" y="26" width="16" height="10" rx="2" fill="#7f8c8d"/>
+  <rect x="48" y="26" width="16" height="10" rx="2" fill="#3daee9"/>
+  <rect x="66" y="26" width="16" height="10" rx="2" fill="#27ae60"/>
+  <rect x="70" y="26" width="8" height="10" fill="#fdbc4b"/>
+  <rect x="84" y="26" width="16" height="10" rx="2" fill="#7f8c8d"/>
+  <rect x="102" y="26" width="16" height="10" rx="2" fill="#da4453"/>
+  <!-- screws -->
+  <g fill="#31363b">
+    <circle cx="20" cy="50" r="4.5"/><circle cx="20" cy="74" r="4.5"/>
+    <circle cx="38" cy="50" r="4.5"/><circle cx="38" cy="74" r="4.5"/>
+    <circle cx="56" cy="50" r="4.5"/><circle cx="56" cy="74" r="4.5"/>
+    <circle cx="74" cy="50" r="4.5"/><circle cx="74" cy="74" r="4.5"/>
+    <circle cx="92" cy="50" r="4.5"/><circle cx="92" cy="74" r="4.5"/>
+    <circle cx="110" cy="50" r="4.5"/><circle cx="110" cy="74" r="4.5"/>
+  </g>
+  <g fill="#eff0f1">
+    <rect x="16" y="49" width="8" height="2"/><rect x="16" y="73" width="8" height="2"/>
+    <rect x="34" y="49" width="8" height="2"/><rect x="34" y="73" width="8" height="2"/>
+    <rect x="52" y="49" width="8" height="2"/><rect x="52" y="73" width="8" height="2"/>
+    <rect x="70" y="49" width="8" height="2"/><rect x="70" y="73" width="8" height="2"/>
+    <rect x="88" y="49" width="8" height="2"/><rect x="88" y="73" width="8" height="2"/>
+    <rect x="106" y="49" width="8" height="2"/><rect x="106" y="73" width="8" height="2"/>
+  </g>
+</svg>

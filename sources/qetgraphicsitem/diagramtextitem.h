@@ -79,8 +79,8 @@ class DiagramTextItem : public QGraphicsTextItem
 		bool m_block_alignment = false;
 		
 		QRectF frameRect() const;
-		
-		void setHtml(const QString &text);
+	
+	void setHtml(const QString &text);
 		void setPlainText(const QString &text);
 		bool isHtml() const;
 
@@ -110,7 +110,8 @@ class DiagramTextItem : public QGraphicsTextItem
 		m_mouse_hover = false,
 		m_first_move = true,
 		m_no_editable,
-		m_is_html = false;
+		m_is_html = false,
+		m_non_left_alignment = false;
 
 		QString
 		m_previous_html_text,

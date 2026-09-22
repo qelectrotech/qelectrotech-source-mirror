@@ -35,6 +35,7 @@ class Terminal;
 class Conductor;
 class DynamicElementTextItem;
 class ElementTextItemGroup;
+class QUndoCommand;
 
 /**
 	This is the base class for electrical elements.
@@ -82,6 +83,7 @@ class Element : public QetGraphicsItem
 			Element::kind link_type = Element::Simple);
 		~Element() override;
 	private:
+		bool definitionGeometryMatches(const QDomElement &definition) const;
 		Element(const Element &);
 
 		// attributes
@@ -118,6 +120,11 @@ class Element : public QetGraphicsItem
 		QList<Conductor *> conductors() const;
 		QList<QPair<Terminal *,Terminal *>> AlignedFreeTerminals() const;
 
+		void clearPendingLinks() {
+			tmp_uuids_link.clear();
+			m_group_index_map.clear();
+		}
+
 			//METHODS related to information
 		DiagramContext elementInformations()const
 		{return m_data.m_informations;}
@@ -142,7 +149,7 @@ class Element : public QetGraphicsItem
 		{return m_autoNum_seq;}
 		autonum::sequentialNumbers& rSequenceStruct()
 		{return m_autoNum_seq;}
-		void setUpFormula(bool code_letter = true);
+		void setUpFormula(bool code_letter = true, QUndoCommand *parent_undo = nullptr);
 		void setPrefix(QString);
 		QString getPrefix() const;
 		void freezeLabel(bool freeze);
@@ -152,6 +159,13 @@ class Element : public QetGraphicsItem
 
 		QString name() const override;
 		ElementsLocation location() const;
+		/// Result of Element::reloadPicture()
+		enum class ReloadPictureResult {
+			Reloaded,          ///< drawing replaced by the current definition
+			Unavailable,       ///< definition missing or unreadable, old drawing kept
+			GeometryChanged    ///< size, hotspot or terminals changed, old drawing kept
+		};
+		ReloadPictureResult reloadPicture();
 		virtual void setHighlighted(bool);
 		void displayHelpLine(bool b = true);
 		QSize size() const;
@@ -241,6 +255,7 @@ class Element : public QetGraphicsItem
 				QGraphicsSceneMouseEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *) override;
+		QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 	protected:
 			//ATTRIBUTES related to linked element
@@ -264,6 +279,10 @@ class Element : public QetGraphicsItem
 	QList<QPointF> m_plc_table_positions;  // Positions of plc_table parts in the element definition
 
 	void drawPlcTable(QPainter *painter);
+
+	public:
+		/// Positions where the PLC IO table is drawn (from the .elmt file).
+		QList<QPointF> plcTablePositions() const { return m_plc_table_positions; }
 
 	private:
 		bool m_must_highlight = false;

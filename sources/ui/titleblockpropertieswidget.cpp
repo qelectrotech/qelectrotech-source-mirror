@@ -194,7 +194,16 @@ TitleBlockProperties TitleBlockPropertiesWidget::properties() const
 		prop.useDate = TitleBlockProperties::UseDateValue;
 		prop.date = ui->m_date_edit->date();
 	}
-	else if (ui->m_current_date_rb->isVisible() && ui->m_current_date_rb->isChecked()) {
+	else if (!ui->m_current_date_rb->isHidden() && ui->m_current_date_rb->isChecked()) {
+			/* isVisible() (unlike isHidden()) also depends on the whole
+			 * ancestor chain being visible, not just this widget's own
+			 * state -- inside a QTabWidget page (both the New Project and
+			 * Project Properties dialogs embed this widget in one), it's
+			 * false whenever this isn't the active tab, silently dropping
+			 * "current date" back to the useDate/date default (no date)
+			 * even though the radio button is still checked underneath.
+			 * isHidden() mirrors the read side's own check in initDialog(),
+			 * and isn't affected by an ancestor tab switch. */
 		prop.useDate = TitleBlockProperties::CurrentDate;
 		prop.date = QDate::currentDate();
 	}
@@ -237,7 +246,16 @@ TitleBlockProperties TitleBlockPropertiesWidget::propertiesAutoNum(
 		prop.useDate = TitleBlockProperties::UseDateValue;
 		prop.date = ui->m_date_edit->date();
 	}
-	else if (ui->m_current_date_rb->isVisible() && ui->m_current_date_rb->isChecked()) {
+	else if (!ui->m_current_date_rb->isHidden() && ui->m_current_date_rb->isChecked()) {
+			/* isVisible() (unlike isHidden()) also depends on the whole
+			 * ancestor chain being visible, not just this widget's own
+			 * state -- inside a QTabWidget page (both the New Project and
+			 * Project Properties dialogs embed this widget in one), it's
+			 * false whenever this isn't the active tab, silently dropping
+			 * "current date" back to the useDate/date default (no date)
+			 * even though the radio button is still checked underneath.
+			 * isHidden() mirrors the read side's own check in initDialog(),
+			 * and isn't affected by an ancestor tab switch. */
 		prop.useDate = TitleBlockProperties::CurrentDate;
 		prop.date = QDate::currentDate();
 	}
@@ -335,23 +353,23 @@ void TitleBlockPropertiesWidget::initDialog(
 				      this);
 
 	connect(m_tbt_edit,
-		SIGNAL(triggered()),
+		&QAction::triggered,
 		this,
-		SLOT(editCurrentTitleBlockTemplate()));
+		&TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate);
 	connect(m_tbt_duplicate,
-		SIGNAL(triggered()),
+		&QAction::triggered,
 		this,
-		SLOT(duplicateCurrentTitleBlockTemplate()));
+		&TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate);
 
 	m_tbt_menu = new QMenu(tr("Title block templates actions"), ui->m_tbt_pb);
 	m_tbt_menu -> addAction(m_tbt_edit);
 	m_tbt_menu -> addAction(m_tbt_duplicate);
 	ui -> m_tbt_pb -> setMenu(m_tbt_menu);
 
-	connect(ui->m_tbt_cb,
-		SIGNAL(currentIndexChanged(int)),
-		this,
-		SLOT(changeCurrentTitleBlockTemplate(int)));
+	connect(ui->m_tbt_cb, 
+		qOverload<int>(&QComboBox::currentIndexChanged), 
+		this, 
+		&TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate);
 
 	if (project!= nullptr){
 		keys_2 = project -> folioAutoNum().keys();

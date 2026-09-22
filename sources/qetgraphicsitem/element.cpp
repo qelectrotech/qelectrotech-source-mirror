@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "element.h"
+#include "../qetapp.h"
 #include "../qetproject.h"
 #include "../PropertiesEditor/propertieseditordialog.h"
 #include "../autoNum/assignvariables.h"
@@ -33,15 +34,26 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../ui/elementpropertieswidget.h"
 #include "../undocommand/changeelementinformationcommand.h"
+#include "../undocommand/setautonumcontextcommand.h"
 #include "dynamicelementtextitem.h"
 #include "elementtextitemgroup.h"
 #include "iostream"
+
+#include <QCollator>
+
+static const QString plcTerminalKeys[] = {
+	QETInformation::ELMT_PLC_T1,
+	QETInformation::ELMT_PLC_T2,
+	QETInformation::ELMT_PLC_T3,
+	QETInformation::ELMT_PLC_T4
+};
 #include "../qetxml.h"
 #include "../qetversion.h"
 #include "qgraphicsitemutility.h"
 #include <QDebug>
 
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <utility>
 
 class ElementXmlRetroCompatibility
@@ -123,14 +135,29 @@ Element::Element(
 		 | QGraphicsItem::ItemIsSelectable);
 	setAcceptHoverEvents(true);
 
-	connect(this, &Element::rotationChanged, [this]()
-{
+	/* Keep docked conductors attached whenever this element's
+	 * rotation OR scene position changes. Ordinary single-item
+	 * dragging already refreshes conductors explicitly, via
+	 * ElementsMover::continueMovement() calling
+	 * Conductor::updatePath(). But other code paths change an
+	 * element's rotation/pos properties directly -- notably
+	 * RotateSelectionCommand's group-rotation mode, which moves
+	 * each element around a shared pivot via a "pos"
+	 * QPropertyUndoCommand instead of going through
+	 * ElementsMover -- and those need this hook or the
+	 * conductor's path is left stale, still drawn to the
+	 * terminal's old scene position. */
+	auto update_docked_conductors = [this]()
+	{
 		for(QGraphicsItem *qgi : childItems())
 		{
 			if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi))
 				t->updateConductor();
 		}
-	});
+	};
+	connect(this, &Element::rotationChanged, update_docked_conductors);
+	connect(this, &Element::xChanged, update_docked_conductors);
+	connect(this, &Element::yChanged, update_docked_conductors);
 }
 
 /**
@@ -688,11 +715,16 @@ bool Element::valideXml(QDomElement &e)
 	}
 
 	bool conv_ok;
-	e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" and reports a
+		//successful conversion for them, so conv_ok alone doesn't reject a
+		//non-finite coordinate. A NaN position reaching the scene can hang
+		//QGraphicsScene::addItem() forever inside Qt's own polygon-clipping
+		//code when an existing conductor's collision test runs against it.
+	double x = e.attribute(QStringLiteral("x")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(x)) return(false);
 
-	e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
-	if (!conv_ok) return(false);
+	double y = e.attribute(QStringLiteral("y")).toDouble(&conv_ok);
+	if (!conv_ok || !qIsFinite(y)) return(false);
 
 	return(true);
 }
@@ -795,6 +827,7 @@ bool Element::fromXml(QDomElement &e,
 	setZValue(e.attribute(QStringLiteral("z"), QString::number(this->zValue())).toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable
 		 | QGraphicsItem::ItemIsSelectable);
+	is_movable_ = e.attribute(QStringLiteral("is_movable"), QStringLiteral("1")).toInt();
 
 	// orientation
 	bool conv_ok;
@@ -860,6 +893,15 @@ bool Element::fromXml(QDomElement &e,
 		}
 	}
 
+		//Load PLC master data override from diagram XML
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = e.firstChildElement(QStringLiteral("plcMasterData"));
+		if (!xml_plc.isNull())
+			m_data.plcMasterDataFromXml(xml_plc);
+	}
+
 	//We must block the update of the alignment when loading the information
 	//otherwise the pos of the text will not be the same as it was at save time.
 	for(DynamicElementTextItem *deti : m_dynamic_text_list)
@@ -917,6 +959,7 @@ QDomElement Element::toXml(
 	element.setAttribute(QStringLiteral("y"), QString::number(pos().y()));
 	element.setAttribute(QStringLiteral("z"), QString::number(this->zValue()));
 	element.setAttribute(QStringLiteral("orientation"), QString::number(orientation()));
+	element.setAttribute(QStringLiteral("is_movable"), bool(is_movable_));
 
 	/* get the first id to use for the bounds of this element
 	 * recupere le premier id a utiliser pour les bornes de cet element */
@@ -991,6 +1034,15 @@ QDomElement Element::toXml(
 
 		properties.appendChild(element_type);
 		element.appendChild(properties);
+	}
+
+		//Save PLC master data override for elements on diagram
+	if (m_data.m_type == ElementData::Master &&
+		m_data.m_master_type == ElementData::PLC)
+	{
+		auto xml_plc = m_data.plcMasterDataToXml(document);
+		if (!xml_plc.isNull())
+			element.appendChild(xml_plc);
 	}
 
 	//Dynamic texts
@@ -1491,13 +1543,7 @@ void Element::setElementData(ElementData data)
 					{
 						QString val = (t < io.terminals.size())
 							? io.terminals.at(t) : QString();
-						ctx.addValue(
-							QStringList({
-								QETInformation::ELMT_PLC_T1,
-								QETInformation::ELMT_PLC_T2,
-								QETInformation::ELMT_PLC_T3,
-								QETInformation::ELMT_PLC_T4
-							}).at(t), val);
+						ctx.addValue(plcTerminalKeys[t], val);
 					}
 					slave->setElementInformations(ctx);
 
@@ -1619,6 +1665,31 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 }
 
 /**
+	@brief Element::itemChange
+	On ItemSelectedHasChanged, tell each of this element's own dynamic texts
+	to re-check whether its resize handles should be showing --
+	DynamicElementTextItem::refreshResizeHandlesVisibility() shows them when
+	either the text itself or its parent (this) is selected. An ordinary
+	click with no Shift selects the parent, not the text
+	(DynamicElementTextItem::mousePressEvent() forwards it), so without this
+	a plain click on a symbol never showed the resize handles this PR adds
+	to its texts (qelectrotech#591, reported by @arummler) -- only
+	Shift+click or a right-click's context menu did, since those are the
+	paths that leave the text itself selected.
+*/
+QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+	if (change == QGraphicsItem::ItemSelectedHasChanged)
+	{
+		const QList<DynamicElementTextItem *> texts = dynamicTextItems();
+		for (DynamicElementTextItem *deti : texts) {
+			deti->refreshResizeHandlesVisibility();
+		}
+	}
+	return QetGraphicsItem::itemChange(change, value);
+}
+
+/**
 	@brief Element::setUpFormula
 	Set up the formula used to create the label of this element
 	@param code_letter : Q_UNUSED(code_letter)
@@ -1626,7 +1697,7 @@ void Element::hoverLeaveEvent(QGraphicsSceneHoverEvent *e)
 	(ex K for coil) with condition :
 	formula is empty, text tagged "label" is emptty or "_";
 */
-void Element::setUpFormula(bool code_letter)
+void Element::setUpFormula(bool code_letter, QUndoCommand *parent_undo)
 {
 	Q_UNUSED(code_letter)
 
@@ -1655,8 +1726,21 @@ void Element::setUpFormula(bool code_letter)
 					   nc,
 					   diagram(),
 					   element_currentAutoNum);
-		diagram()->project()->addElementAutoNum(element_currentAutoNum,
-							ncc.next());
+
+		NumerotationContext new_context = ncc.next();
+		QETProject *project = diagram()->project();
+		auto setter = [project](const QString &k, const NumerotationContext &c) {project->addElementAutoNum(k, c);};
+
+		if (parent_undo)
+		{
+			new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context, parent_undo);
+		}
+		else
+		{
+			auto *undo = new SetAutoNumContextCommand(setter, element_currentAutoNum, nc, new_context);
+			undo->setText(tr("Numéroter automatiquement un élément", "undo caption"));
+			diagram()->undoStack().push(undo);
+		}
 
 		if(!m_freeze_label && !formula.isEmpty())
 		{
@@ -1738,6 +1822,139 @@ QString Element::name() const {
 ElementsLocation Element::location() const
 {
 	return m_location;
+}
+
+/**
+	@brief Element::reloadPicture
+	Re-fetch this element's drawing from its location and repaint.
+
+	A placed element is drawn once from its definition, at construction
+	(buildFromXml()), and nothing afterwards ever makes it look again --
+	editing and saving the definition leaves every already-placed instance
+	showing the old drawing until the project is closed and reopened
+	(bugtracker #802). This is the per-instance half of the fix.
+
+	Deliberately limited to the drawing. Terminals are what conductors are
+	attached to: if the new definition adds, removes or moves a terminal,
+	or changes the element size or hotspot, the new drawing would no longer
+	match the live terminals and bounding rect. Such an element is left
+	untouched and GeometryChanged is returned; it has to be removed and
+	re-inserted, which deletes the conductors already connected to it.
+
+	If the definition cannot be found or read, the current drawing is kept
+	and Unavailable is returned, so the element never goes blank.
+
+	Purely visual: nothing is pushed on the undo stack and the project is
+	not marked as modified.
+	@return what happened to this element
+*/
+Element::ReloadPictureResult Element::reloadPicture()
+{
+	if (!m_location.exist()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	const QDomElement definition = m_location.xml();
+	if (definition.isNull()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	if (!definitionGeometryMatches(definition)) {
+		return ReloadPictureResult::GeometryChanged;
+	}
+
+	QPicture picture;
+	QPicture low_zoom_picture;
+	ElementPictureFactory::instance()->getPictures(m_location,
+												   picture,
+												   low_zoom_picture);
+	if (picture.isNull()) {
+		return ReloadPictureResult::Unavailable;
+	}
+
+	m_picture = picture;
+	m_low_zoom_picture = low_zoom_picture;
+	update();
+	return ReloadPictureResult::Reloaded;
+}
+
+/**
+	@brief Element::definitionGeometryMatches
+	Compare the geometry described by @p definition with this live element:
+	size and hotspot (normalized the same way setSize()/setHotspot() do it)
+	and the set of terminal positions (same parsing rules as
+	TerminalData::fromXml()).
+	@param definition : the <definition> root of the element
+	@return true if the new drawing can be applied without desynchronizing
+	the bounding rect or the terminals
+*/
+bool Element::definitionGeometryMatches(const QDomElement &definition) const
+{
+	int w = 0, h = 0, hot_x = 0, hot_y = 0;
+	if (!QET::attributeIsAnInteger(definition, QStringLiteral("width"), &w)         ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("height"), &h)        ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_x"), &hot_x) ||
+		!QET::attributeIsAnInteger(definition, QStringLiteral("hotspot_y"), &hot_y)) {
+		return false;
+	}
+
+		//Same rounding as setSize()
+	while (w % 10) ++w;
+	while (h % 10) ++h;
+	if (QSize(w, h) != dimensions) {
+		return false;
+	}
+
+		//Same clamping as setHotspot()
+	const QPoint new_hotspot = dimensions.isNull()
+			? QPoint(0, 0)
+			: QPoint(qMin(hot_x, w), qMin(hot_y, h));
+	if (new_hotspot != hotspot_coord) {
+		return false;
+	}
+
+		//Terminal positions described by the new definition
+	QList<QPointF> new_terminals;
+	for (QDomElement description = definition.firstChildElement(QStringLiteral("description")) ;
+		 !description.isNull() ;
+		 description = description.nextSiblingElement(QStringLiteral("description")))
+	{
+		for (QDomElement terminal = description.firstChildElement(QStringLiteral("terminal")) ;
+			 !terminal.isNull() ;
+			 terminal = terminal.nextSiblingElement(QStringLiteral("terminal")))
+		{
+			qreal x = 0.0, y = 0.0;
+			if (QET::attributeIsAReal(terminal, QStringLiteral("x"), &x) &&
+				QET::attributeIsAReal(terminal, QStringLiteral("y"), &y)) {
+				new_terminals << QPointF(x, y);
+			}
+		}
+	}
+
+	if (new_terminals.size() != m_terminals.size()) {
+		return false;
+	}
+
+		//Every live terminal must still exist at the same place
+	for (const Terminal *terminal : m_terminals)
+	{
+		const QPointF live_pos = mapFromScene(terminal->dockConductor());
+		bool found = false;
+		for (int i = 0 ; i < new_terminals.size() ; ++i)
+		{
+			const QPointF delta = new_terminals.at(i) - live_pos;
+			if (qAbs(delta.x()) < 0.01 && qAbs(delta.y()) < 0.01) {
+				new_terminals.removeAt(i);
+				found = true;
+				break;
+			}
+		}
+		if (!found) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 /**
@@ -1876,12 +2093,12 @@ void Element::drawPlcTable(QPainter *painter)
 	// Fonts
 	QFont header_font = plc_data.headerFont;
 	if (header_font.family().isEmpty()) {
-		header_font = painter->font();
+		header_font = QETApp::diagramTextsFont();
 		header_font.setBold(true);
 	}
 	QFont cell_font = plc_data.cellFont;
 	if (cell_font.family().isEmpty()) {
-		cell_font = painter->font();
+		cell_font = QETApp::diagramTextsFont();
 	}
 
 	for (const QPointF &pos : positions) {

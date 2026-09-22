@@ -31,6 +31,7 @@ class QSplashScreen;
 class QMenu;
 class QAction;
 class QMainWindow;
+class KAutoSaveFile;
 
 #define QETAPP_COMMON_TBT_PROTOCOL "commontbt"
 #define QETAPP_COMPANY_TBT_PROTOCOL "companytbt"
@@ -70,6 +71,7 @@ class QETApp : public QObject
 	public:
 		static QETApp *instance();
 		void setLanguage(const QString &);
+		static QString interfaceLanguage() { return m_interface_language; }
 		static QString langFromSetting ();
 		void switchLayout(Qt::LayoutDirection);
 		static void printHelp();
@@ -105,6 +107,8 @@ class QETApp : public QObject
 		static QString documentDir();
 		static QString pictureDir();
 		static QString languagesPath();
+		static QString loadedQetTranslationFile();
+		static QString loadedQtTranslationFile();
 		static QString realPath(const QString &);
 		static QString symbolicPath(const QString &);
 		static QStringList handledFileExtensions();
@@ -253,6 +257,8 @@ class QETApp : public QObject
 		static QString m_user_company_tbt_dir;
 		static QString m_user_custom_tbt_dir;
 		static QString m_user_macros_dir;
+		
+		static QString m_interface_language;
 	
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
@@ -281,6 +287,7 @@ class QETApp : public QObject
 		void openTitleBlockTemplateFiles(const QStringList &);
 		void configureQET();
 		void aboutQET();
+		void showDiagnosticsReport();
 		void receiveMessage(int instanceId, QByteArray message);
 	
 	private:
@@ -292,11 +299,15 @@ class QETApp : public QObject
 		void setSplashScreenStep(const QString & = QString());
 		void initLanguage();
 		void initFonts();
+		void initIconTheme();
+		static void applyIconTheme(const QPalette &);
 		void initStyle();
 		void initConfiguration();
 		void initSystemTray();
 		void buildSystemTrayMenu();
 		void checkBackupFiles();
+		void offerBackupFiles(const QList<KAutoSaveFile *> &stale_files);
+		void checkCrashDump();
 		void fetchWindowStats(
 			const QList<QETDiagramEditor *> &,
 			const QList<QETElementEditor *> &,

@@ -22,7 +22,7 @@
 #include "titleblock/templatelocation.h"
 
 #include <QClipboard>
-#include <QGraphicsView>
+#include "palettegraphicsview.h"
 
 class Conductor;
 class Diagram;
@@ -35,7 +35,7 @@ class QGestureEvent;
 	This class provides a widget to render an electric diagram in an editable,
 	interactive way.
 */
-class DiagramView : public QGraphicsView
+class DiagramView : public PaletteGraphicsView
 {
 	Q_OBJECT
 	
@@ -80,7 +80,11 @@ class DiagramView : public QGraphicsView
 		void keyPressEvent(QKeyEvent *) override;
 		void keyReleaseEvent(QKeyEvent *) override;
 		bool event(QEvent *) override;
+		bool focusNextPrevChild(bool next) override;
+		///Set for one call only, by the Escape handler, to let focus leave the view.
+		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
+		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
 		void mouseReleaseEvent(QMouseEvent *) override;
@@ -102,6 +106,12 @@ class DiagramView : public QGraphicsView
 		QRectF viewedSceneRect() const;
 		bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 		bool gestures() const;
+
+		/// Lowest and highest allowed value of the view transform scale (m11).
+		/// Prevents wheel-zoom from driving the transform to overflow, which
+		/// crashes the editor (see GitHub issue #798, same class of bug).
+		static constexpr qreal m_min_zoom = 0.01;
+		static constexpr qreal m_max_zoom = 200.0;
 
 	signals:
 			/// Signal emitted after the selection mode changed

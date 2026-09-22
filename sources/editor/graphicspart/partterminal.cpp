@@ -293,9 +293,9 @@ qreal PartTerminal::rotation() const {
 	@brief PartTerminal::flip
 	turn part upside down
 */
-void PartTerminal::flip() {
+void PartTerminal::flip(qreal axis_y) {
 	d->m_pos.setX(         pos().x());
-	d->m_pos.setY((-1.0) * pos().y());
+	d->m_pos.setY(2 * axis_y - pos().y());
 	switch (d->m_orientation) {
 		case Qet::North : setOrientation(Qet::South);
 						  break;
@@ -314,8 +314,8 @@ void PartTerminal::flip() {
 	@brief PartTerminal::mirror
 	turn part from left to right
 */
-void PartTerminal::mirror() {
-	d->m_pos.setX((-1.0) * pos().x());
+void PartTerminal::mirror(qreal axis_x) {
+	d->m_pos.setX(2 * axis_x - pos().x());
 	d->m_pos.setY(         pos().y());
 	switch (d->m_orientation) {
 		case Qet::North : break;

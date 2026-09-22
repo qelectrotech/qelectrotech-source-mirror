@@ -16,14 +16,18 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qet.h"
+#include "qetapp.h"
 #include "qeticons.h"
 #include "shortcutmanager.h"
 
 #include <limits>
+#include <QBuffer>
+#include <QColorDialog>
 #include <QGraphicsSceneContextMenuEvent>
 #include <QAction>
 #include <QFileInfo>
 #include <QSaveFile>
+#include <QSettings>
 #include <QTextStream>
 #include <QRegularExpression>
 #include <QActionGroup>
@@ -184,16 +188,8 @@ bool QET::orthogonalProjection(
 
 	// determine le point d'intersection des deux droites = le projete orthogonal
 	QPointF intersection_point;
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
-	QLineF::IntersectType it = line.
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-			intersect // ### Qt 6: remove
-#else
-			intersects
-#endif
-			(perpendicular_line, &intersection_point);
+
+	QLineF::IntersectType it = line.intersects(perpendicular_line, &intersection_point);
 
 	// ne devrait pas arriver (mais bon...)
 	if (it == QLineF::NoIntersection) return(false);
@@ -276,76 +272,88 @@ QString QET::ElementsAndConductorsSentence(
 		int tables_count,
 		int terminal_strip_count)
 {
-	QString text;
+	QStringList parts;
 	if (elements_count) {
-		text += QObject::tr(
-			"%n élément(s)",
-			"part of a sentence listing the content of a diagram",
-			elements_count
+		parts.append(
+			QObject::tr(
+				"%n élément(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				elements_count
+			)
 		);
 	}
 
 	if (conductors_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n conducteur(s)",
-			"part of a sentence listing the content of a diagram",
-			conductors_count
+		parts.append(
+			QObject::tr(
+				"%n conducteur(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				conductors_count
+			)
 		);
 	}
 
 	if (texts_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n champ(s) de texte",
-			"part of a sentence listing the content of a diagram",
-			texts_count
+		parts.append(
+			QObject::tr(
+				"%n champ(s) de texte",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				texts_count
+			)
 		);
 	}
 
 	if (images_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n image(s)",
-			"part of a sentence listing the content of a diagram",
-			images_count
+		parts.append(
+			QObject::tr(
+				"%n image(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				images_count
+			)
 		);
 	}
 
 	if (shapes_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-			"%n forme(s)",
-			"part of a sentence listing the content of a diagram",
-			shapes_count
+		parts.append(
+			QObject::tr(
+				"%n forme(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				shapes_count
+			)
 		);
 	}
 
 	if (element_text_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n texte(s) d'élément",
-					"part of a sentence listing the content of a diagram",
-					element_text_count);
+		parts.append(
+			QObject::tr(
+				"%n texte(s) d'élément",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				element_text_count
+			)
+		);
 	}
 
 	if (tables_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n tableau(s)",
-					"part of a sentence listing the content of diagram",
-					tables_count);
+		parts.append(
+			QObject::tr(
+				"%n tableau(s)",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				tables_count
+			)
+		);
 	}
 
 	if (terminal_strip_count) {
-		if (!text.isEmpty()) text += ", ";
-		text += QObject::tr(
-					"%n plan de bornes",
-					"part of a sentence listing the content of a diagram",
-					terminal_strip_count);
+		parts.append(
+			QObject::tr(
+				"%n plan(s) de bornes",
+				"Sentence fragment used in an automatically generated list of different objects, e.g. objects moved at the same time, which will be combined into a sentence.",
+				terminal_strip_count
+			)
+		);
 	}
 
-	return(text);
+	return QLocale(QETApp::interfaceLanguage()).createSeparatedList(parts);
 }
 
 /**
@@ -546,20 +554,40 @@ QString QET::joinWithSpaces(const QStringList &string_list) {
 QStringList QET::splitWithSpaces(const QString &string) {
 	// les chaines sont separees par des espaces non echappes
 	// = avec un nombre nul ou pair de backslashes devant
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
-	QStringList escaped_strings = string.split(QRegularExpression("[^\\]?(?:\\\\)* "),
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-						   QString
-#else
-						   Qt
-#endif
-						   ::SkipEmptyParts);
-
+	//
+	// This was a QRegularExpression("[^\\]?(?:\\\\)* ") split, which never
+	// worked: "[^\]" opens a character class whose "\]" is an escaped
+	// bracket, so the class is never closed and the pattern is invalid.
+	// QRegularExpression::isValid() was false, QString::split() warned
+	// "invalid QRegularExpression object" and returned an EMPTY list for
+	// every input -- so a second instance's file arguments were always
+	// dropped (bugtracker #248), not just ones containing spaces.
+	//
+	// A correct pattern is not expressible here either: the separator is a
+	// space preceded by an even-length run of backslashes, and PCRE2 has no
+	// variable-length lookbehind. Scanning explicitly is both correct and
+	// easier to read than the alternatives.
 	QStringList returned_list;
-	foreach(QString escaped_string, escaped_strings) {
-		returned_list << QET::unescapeSpaces(escaped_string);
+	QString current;
+	int backslashes = 0;
+	for (const QChar &c : string) {
+		if (c == QLatin1Char('\\')) {
+			++backslashes;
+			current += c;
+			continue;
+		}
+		if (c == QLatin1Char(' ') && backslashes % 2 == 0) {
+			if (!current.isEmpty()) {
+				returned_list << QET::unescapeSpaces(current);
+			}
+			current.clear();
+		} else {
+			current += c;
+		}
+		backslashes = 0;
+	}
+	if (!current.isEmpty()) {
+		returned_list << QET::unescapeSpaces(current);
 	}
 	return(returned_list);
 }
@@ -685,14 +713,7 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	}
 
 	QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if  (!file.commit())
@@ -823,14 +844,7 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 
 	QTextStream out(file);
 	out.seek(0);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_doc.toString(4);
 	if (opened_here) {
@@ -838,4 +852,56 @@ bool QET::writeToFile(QDomDocument &xml_doc, QFile *file, QString *error_message
 	}
 
 	return(true);
+}
+
+/**
+	@brief QET::saveCustomColors
+	Save the 16 QColorDialog custom colors to QSettings so they persist
+	across application restarts.
+*/
+void QET::saveCustomColors()
+{
+	QByteArray ba;
+	QBuffer buf(&ba);
+	buf.open(QIODevice::WriteOnly);
+	QDataStream s(&buf);
+	s.setVersion(QDataStream::Qt_6_0);
+	for (int i = 0; i < 16; i++)
+		s << QColorDialog::customColor(i);
+	QSettings settings;
+	settings.setValue(QStringLiteral("color/customColors"), ba);
+}
+
+/**
+	@brief QET::loadCustomColors
+	Load the 16 QColorDialog custom colors from QSettings into Qt's
+	internal custom color array.  A short or corrupt buffer is ignored
+	so that unread slots keep their default rather than turning black.
+*/
+void QET::loadCustomColors()
+{
+	QSettings settings;
+	QByteArray ba = settings.value(QStringLiteral("color/customColors")).toByteArray();
+
+	// Fall back to the legacy ungrouped key used by earlier versions.
+	if (ba.isEmpty())
+		ba = settings.value(QStringLiteral("customColors")).toByteArray();
+
+	if (ba.isEmpty())
+		return;
+
+	QBuffer buf(&ba);
+	buf.open(QIODevice::ReadOnly);
+	QDataStream s(&buf);
+	s.setVersion(QDataStream::Qt_6_0);
+
+	QColor colors[16];
+	for (int i = 0; i < 16; i++)
+		s >> colors[i];
+
+	if (s.status() != QDataStream::Ok)
+		return;
+
+	for (int i = 0; i < 16; i++)
+		QColorDialog::setCustomColor(i, colors[i]);
 }

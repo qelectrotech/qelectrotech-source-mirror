@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "editorcommands.h"
+#include "../diagram.h"
 
 /**
 	@brief ElementEditionCommand::ElementEditionCommand
@@ -276,14 +277,7 @@ void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
 	for (int i = my_items_list.count() - 2 ; i >= 0 ; -- i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i +1] -> isSelected()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
-				my_items_list.swap(i, i + 1);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.13 or later")
-#endif
 				my_items_list.swapItemsAt(i, i + 1);
-#endif
 			}
 		}
 	}
@@ -301,14 +295,7 @@ void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
 	for (int i = 1 ; i < my_items_list.count() ; ++ i) {
 		if (my_items_list[i] -> isSelected()) {
 			if (!my_items_list[i - 1] -> isSelected()) {
-#if QT_VERSION < QT_VERSION_CHECK(5, 13, 0)	// ### Qt 6: remove
-				my_items_list.swap(i, i - 1);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.13 or later")
-#endif
 				my_items_list.swapItemsAt(i, i - 1);
-#endif
 			}
 		}
 	}
@@ -680,10 +667,32 @@ void RotateFineElementsCommand::redo()
 }
 
 
+/**
+	@brief selectionCenter
+	@param items
+	@return the center of the united scene bounding rect of items,
+	snapped to the nearest half of the diagram grid. Mirroring across a
+	half-grid line keeps points that were on the grid on the grid.
+*/
+static QPointF selectionCenter(const QList<QGraphicsItem *> &items)
+{
+	QRectF bounding;
+	for (auto *item : items) {
+		bounding = bounding.united(item->sceneBoundingRect());
+	}
+	QPointF center = bounding.center();
+	const qreal half_x = Diagram::xGrid / 2.0;
+	const qreal half_y = Diagram::yGrid / 2.0;
+	center.setX(qRound(center.x() / half_x) * half_x);
+	center.setY(qRound(center.y() / half_y) * half_y);
+	return center;
+}
+
 MirrorElementsCommand::MirrorElementsCommand(ElementScene *scene, QUndoCommand *parent) :
 ElementEditionCommand(QObject::tr("Miroir de sélection", "undo caption"), scene, nullptr, parent)
 {
 	m_items = scene->selectedItems();
+	m_axis_x = selectionCenter(m_items).x();
 }
 
 /**
@@ -694,28 +703,28 @@ void MirrorElementsCommand::redo()
 	foreach (auto *item, m_items) {
 		if (item->type() == PartText::Type) {
 			PartText* staticText = qgraphicsitem_cast<PartText*>(item);
-			staticText->mirror();
+			staticText->mirror(m_axis_x);
 		} else if (item->type() == PartDynamicTextField::Type)  {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
-			dyntext->mirror();
+			dyntext->mirror(m_axis_x);
 		} else if (item->type() == PartArc::Type) {
 			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
-			arc->mirror();
+			arc->mirror(m_axis_x);
 		} else if (item->type() == PartEllipse::Type) {
 			PartEllipse* ellipse = qgraphicsitem_cast<PartEllipse*>(item);
-			ellipse->mirror();
+			ellipse->mirror(m_axis_x);
 		} else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->mirror();
+			line->mirror(m_axis_x);
 		} else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->mirror();
+			poly->mirror(m_axis_x);
 		} else if (item->type() == PartRectangle::Type) {
 			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
-			rect->mirror();
+			rect->mirror(m_axis_x);
 		} else if (item->type() == PartTerminal::Type) {
 			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
-			term->mirror();
+			term->mirror(m_axis_x);
 		}
 	}
 }
@@ -732,6 +741,7 @@ FlipElementsCommand::FlipElementsCommand(ElementScene *scene, QUndoCommand *pare
 ElementEditionCommand(QObject::tr("Retourner la sélection", "undo caption"), scene, nullptr, parent)
 {
 	m_items = scene->selectedItems();
+	m_axis_y = selectionCenter(m_items).y();
 }
 
 /**
@@ -742,28 +752,28 @@ void FlipElementsCommand::redo()
 	foreach (auto *item, m_items) {
 		if (item->type() == PartText::Type) {
 			PartText* staticText = qgraphicsitem_cast<PartText*>(item);
-			staticText->flip();
+			staticText->flip(m_axis_y);
 		} else if (item->type() == PartDynamicTextField::Type) {
 			PartDynamicTextField* dyntext = qgraphicsitem_cast<PartDynamicTextField*>(item);
-			dyntext->flip();
+			dyntext->flip(m_axis_y);
 		} else if (item->type() == PartArc::Type) {
 			PartArc* arc = qgraphicsitem_cast<PartArc*>(item);
-			arc->flip();
+			arc->flip(m_axis_y);
 		} else if (item->type() == PartEllipse::Type) {
 			PartEllipse* ellipse = qgraphicsitem_cast<PartEllipse*>(item);
-			ellipse->flip();
+			ellipse->flip(m_axis_y);
 		} else if (item->type() == PartLine::Type) {
 			PartLine* line = qgraphicsitem_cast<PartLine*>(item);
-			line->flip();
+			line->flip(m_axis_y);
 		} else if (item->type() == PartPolygon::Type) {
 			PartPolygon* poly = qgraphicsitem_cast<PartPolygon*>(item);
-			poly->flip();
+			poly->flip(m_axis_y);
 		} else if (item->type() == PartRectangle::Type) {
 			PartRectangle* rect = qgraphicsitem_cast<PartRectangle*>(item);
-			rect->flip();
+			rect->flip(m_axis_y);
 		} else if (item->type() == PartTerminal::Type) {
 			PartTerminal* term = qgraphicsitem_cast<PartTerminal*>(item);
-			term->flip();
+			term->flip(m_axis_y);
 		}
 	}
 }
