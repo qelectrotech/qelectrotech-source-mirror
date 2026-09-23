@@ -1,5 +1,6 @@
 #include "terminalnumberingdialog.h"
 #include "ui_terminalnumberingdialog.h"
+#include "../qet.h"
 #include "../qetproject.h"
 #include "../diagram.h"
 #include "../qetgraphicsitem/element.h"
@@ -34,7 +35,7 @@ TerminalNumberingDialog::TerminalNumberingDialog(QWidget *parent, QETProject *pr
                     if (elmt->elementData().m_type == ElementData::Terminal) {
                         // Ignore locked terminals
                         DiagramContext info = elmt->elementInformations();
-                        if (info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true")) {
+                        if (QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString())) {
                             continue;
                         }
 
@@ -158,7 +159,7 @@ QUndoCommand* TerminalNumberingDialog::getUndoCommand(QETProject *project) const
                     DiagramContext info = elmt->elementInformations();
 
                     // Ignore locked terminals (if the user checked a 'lock' property)
-                    if (info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true")) {
+                    if (QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString())) {
                         continue;
                     }
 

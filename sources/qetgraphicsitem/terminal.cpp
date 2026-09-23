@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "../qetgraphicsitem/terminal.h"
+#include "../qet.h"
 #include "../qetproject.h"
 #include "../conductorautonumerotation.h"
 #include "../diagram.h"
@@ -986,7 +987,7 @@ QList<Terminal *> relatedPotentialTerminal (
 	else if (terminal -> parentElement() -> linkType() & Element::Terminale)
 	{
 		// English: Check if the user activated the potential isolation checkbox for this terminal
-		if (terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true")) {
+		if (QET::infoFlagIsTrue(terminal->parentElement()->elementInformations().value(QStringLiteral("potential_isolating")).toString())) {
 			// English: Potential is isolated. Return an empty list so it does not propagate to the other side.
 			return QList<Terminal *>();
 		}
