@@ -30,11 +30,13 @@
 #include "../qetproject.h"
 
 #include <QLocale>
+#include <QFile>
 #include <QRegularExpression>
-#include <QSqlError>
-
 #include <QSqlDriver>
+#include <QSqlError>
 #include <sqlite3.h>
+
+
 
 
 /**
@@ -1289,6 +1291,7 @@ sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 }
 
 #ifdef QET_EXPORT_PROJECT_DB
+
 /**
  * @brief projectDataBase::exportDb
  * Export the db, to a file.
@@ -1323,27 +1326,20 @@ void projectDataBase::exportDb(projectDataBase *db,
 		return;
 	}
 
-	QString connection_name("export_project_db_" % db->project()->uuid().toString());
-
-	if (true) //Enter in a scope only to nicely use QSqlDatabase::removeDatabase just after the end of the scope
-	{
-		auto file_db = QSqlDatabase::addDatabase("QSQLITE", connection_name);
-		file_db.setDatabaseName(path_);
-		if (!file_db.open()) {
-			return;
-		}
-
-		auto memory_db_handle = sqliteHandle(&db->m_data_base);
-		auto file_db_handle = sqliteHandle(&file_db);
-
-		auto sqlite_backup = sqlite3_backup_init(file_db_handle, "main", memory_db_handle, "main");
-		if (sqlite_backup)
-		{
-			sqlite3_backup_step(sqlite_backup, -1);
-			sqlite3_backup_finish(sqlite_backup);
-		}
-		file_db.close();
+	// VACUUM INTO requires the destination not to exist. QFileDialog may ask
+	// about overwriting, but it does not remove the existing file for us.
+	if (QFile::exists(path_) && !QFile::remove(path_)) {
+		qWarning() << "Unable to replace project database export:" << path_;
+		return;
 	}
-	QSqlDatabase::removeDatabase(connection_name);
+
+	// VACUUM INTO creates a standalone copy of the current database without
+	// requiring access to the SQLite driver's native connection handle.
+	QSqlQuery query(db->m_data_base);
+	query.prepare("VACUUM INTO ?");
+	query.bindValue(0, path_);
+	if (!query.exec()) {
+		qWarning() << "Unable to export project database:" << query.lastError().text();
+	}
 }
 #endif

@@ -159,6 +159,17 @@ add_test(NAME tst_sqlreadonly COMMAND tst_sqlreadonly)
 target_include_directories(tst_sqlreadonly PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_sqlreadonly PRIVATE Qt::Test SQLite3::SQLite3)
 
+# QetSettings::scriptingEnabled() -- whether QElectroTech may run a script.
+# Compiles qetsettings.cpp alone: the setting is deliberately a plain
+# QSettings read, so the test needs nothing else of QElectroTech.
+add_executable(
+  tst_scriptingsetting
+  tst_scriptingsetting.cpp
+  ${QET_DIR}/sources/utils/qetsettings.cpp)
+add_test(NAME tst_scriptingsetting COMMAND tst_scriptingsetting)
+target_include_directories(tst_scriptingsetting PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_scriptingsetting PRIVATE Qt::Test Qt::Gui)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately
@@ -196,11 +207,10 @@ target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}
   ${QET_DIR}/sources
   ${QET_DIR}/sources/NameList)
+target_link_libraries(tst_crashdumps PRIVATE
+  Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 if(Backtrace_FOUND)
-  target_link_libraries(tst_crashdumps PRIVATE
-    Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml ${Backtrace_LIBRARIES})
-else()
-  target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+  target_link_libraries(tst_crashdumps PRIVATE ${Backtrace_LIBRARIES})
 endif()
 
 add_executable(

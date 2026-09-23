@@ -44,9 +44,12 @@ class AddTableDialog : public QDialog
 
 		void setQueryWidget(QWidget *widget);
 		bool adjustTableToFolio() const;
+		void setAdjustTableToFolio(bool set);
 		bool addNewTableToNewDiagram() const;
+		void setAddNewTableToNewDiagram(bool set);
 
 		QString tableName() const;
+		void setTableName(const QString &name);
 
 		QMargins headerMargins() const;
 		Qt::Alignment headerAlignment() const;

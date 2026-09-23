@@ -19,6 +19,7 @@
 #include "qetsettings.h"
 #include <QSettings>
 #include <QVariant>
+#include <QByteArray>
 
 namespace QetSettings
 {
@@ -104,5 +105,51 @@ namespace QetSettings
 		} else {
 			return default_policy;
 		}
+	}
+
+	/**
+	* @brief scriptingForcedByEnvironment
+	* @return true if QET_ENABLE_SCRIPTING is set to 1 in the environment.
+	*
+	* The way to turn scripting on where there is nobody to tick a box:
+	* a headless run, a CI job, a build server. Those have no settings
+	* file worth writing to -- and on a machine whose HOME is created
+	* fresh for the run, writing one would not survive anyway.
+	*/
+	bool scriptingForcedByEnvironment()
+	{
+		return qgetenv("QET_ENABLE_SCRIPTING") == QByteArray("1");
+	}
+
+	/**
+	* @brief scriptingEnabled
+	* @return whether QElectroTech may run a JavaScript script.
+	*
+	* Off unless the user turned it on. A script reaches the whole project
+	* and the filesystem through the export calls, so it is capability the
+	* great majority of users never asked for; leaving it on by default
+	* would hand it to them anyway. @sa setScriptingEnabled
+	*
+	* The environment override wins over the stored value, and is checked
+	* first so that a machine with no settings at all still answers.
+	*/
+	bool scriptingEnabled()
+	{
+		if (scriptingForcedByEnvironment()) {
+			return true;
+		}
+		QSettings settings;
+		return settings.value("scripting/enabled", false).toBool();
+	}
+
+	/**
+	* @brief setScriptingEnabled
+	* Store whether scripting is allowed. @sa scriptingEnabled
+	* @param enabled
+	*/
+	void setScriptingEnabled(bool enabled)
+	{
+		QSettings settings;
+		settings.setValue("scripting/enabled", enabled);
 	}
 }

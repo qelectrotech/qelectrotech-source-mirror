@@ -52,11 +52,13 @@
 #include "ui/bomexportdialog.h"
 #include "ui/conductorcolortoolbutton.h"
 #include "ui/diagrambgcolorbutton.h"
+#include "ui/duplicateoffsetdialog.h"
 #include "ui/jumptoelementdialog.h"
 #include "ui/diagrampropertieseditordockwidget.h"
 #include "ui/backupdialog.h"
 #include "ui/dialogwaiting.h"
 #include "undocommand/addelementtextcommand.h"
+#include "utils/qetsettings.h"
 #include "utils/qetutils.h"
 #include "undocommand/rotateselectioncommand.h"
 #include "undocommand/rotatetextscommand.h"
@@ -372,6 +374,46 @@ void QETDiagramEditor::setUpActions()
 
 		dv->diagram()->setEventInterface(
 					new DiagramEventAddPaste(dv->diagram(), start_pos));
+	});
+
+		//Duplicate: copy the selection and place it at a configured,
+		//grid-step offset immediately -- no interactive follow-the-
+		//cursor step, unlike Ctrl+V above. That is deliberate (#991):
+		//the point of a duplicate shortcut is repeatable, unattended
+		//stamping (configure the offset once, then tap Ctrl+D to lay
+		//out a row), which an interactive placement would interrupt on
+		//every press.
+	m_duplicate = new QAction(QET::Icons::EditCopy, tr("Dupli&quer"), this);
+	ShortcutManager::instance().registerAction(m_duplicate, "diagrameditor.duplicate", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_D);
+	m_duplicate->setStatusTip(tr("Copie la sélection, décalée de l'espacement configuré", "status bar tip"));
+	connect(m_duplicate, &QAction::triggered, [this]() {
+		auto *dv = currentDiagramView();
+		if (!dv || !dv->diagram()) return;
+
+			//Ask the first time only -- every later press reuses whatever
+			//was confirmed then, so the shortcut can be tapped repeatedly
+			//without an interruption each time. m_configure_duplicate
+			//below is the deliberate way back into this dialog.
+		if (!DuplicateOffsetDialog::hasSavedStepOffset()) {
+			DuplicateOffsetDialog dialog(this);
+			if (dialog.exec() != QDialog::Accepted) return;
+			DuplicateOffsetDialog::saveStepOffset(dialog.stepOffset());
+		}
+		dv->duplicate(DuplicateOffsetDialog::savedStepOffset());
+	});
+
+		//Reopens the dialog above on demand, to change the spacing or
+		//direction a later Ctrl+D should use. Enabled unconditionally
+		//(see slot_updateComplexActions()): it only ever writes a
+		//setting, so it does not need a diagram open or anything
+		//selected the way m_duplicate itself does.
+	m_configure_duplicate = new QAction(tr("Configurer la duplication..."), this);
+	m_configure_duplicate->setStatusTip(tr("Choisir l'espacement et la direction utilisés par Dupliquer", "status bar tip"));
+	connect(m_configure_duplicate, &QAction::triggered, [this]() {
+		DuplicateOffsetDialog dialog(this);
+		if (dialog.exec() == QDialog::Accepted) {
+			DuplicateOffsetDialog::saveStepOffset(dialog.stepOffset());
+		}
 	});
 
 		//Reset conductor path
@@ -894,6 +936,7 @@ void QETDiagramEditor::setUpToolBar()
 	main_tool_bar -> addAction(m_cut);
 	main_tool_bar -> addAction(m_copy);
 	main_tool_bar -> addAction(m_paste);
+	main_tool_bar -> addAction(m_duplicate);
 	main_tool_bar -> addSeparator();
 	main_tool_bar -> addAction(m_delete_selection);
 	main_tool_bar -> addAction(m_rotate_selection);
@@ -985,6 +1028,8 @@ void QETDiagramEditor::setUpMenu()
 	menu_edition -> addAction(m_cut);
 	menu_edition -> addAction(m_copy);
 	menu_edition -> addAction(m_paste);
+	menu_edition -> addAction(m_duplicate);
+	menu_edition -> addAction(m_configure_duplicate);
 	menu_edition -> addSeparator();
 		//The same actions the "Ajouter" toolbar holds. They were toolbar-only,
 		//which left them unreachable for anyone working without a mouse: a
@@ -1947,6 +1992,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 			    << m_find_element
 			    << m_cut
 			    << m_copy
+			    << m_duplicate
 			    << m_delete_selection
 			    << m_rotate_selection
 			    << m_rotate_group_selection
@@ -1976,6 +2022,7 @@ void QETDiagramEditor::slot_updateComplexActions()
 	bool deletable_items = dc.hasDeletableItems();
 	m_cut              -> setEnabled(!ro && copiable_items);
 	m_copy             -> setEnabled(copiable_items);
+	m_duplicate        -> setEnabled(!ro && copiable_items);
 	m_delete_selection -> setEnabled(!ro && deletable_items);
 	m_rotate_selection -> setEnabled(!ro && diagram_->canRotateSelection());
 	m_rotate_group_selection -> setEnabled(!ro && diagram_->canRotateSelection());
@@ -3121,6 +3168,29 @@ void QETDiagramEditor::slot_reloadElementDrawings() {
 void QETDiagramEditor::slot_runScript() {
 	QETProject *project = currentProject();
 	if (!project) return;
+
+	// Scripting is off until somebody says otherwise, so the first use has
+	// to ask. Asking here rather than greying the action out keeps the
+	// feature discoverable: a disabled menu entry tells a user that
+	// something exists and nothing about how to have it.
+	if (!QetSettings::scriptingEnabled()) {
+		const QMessageBox::StandardButton answer = QET::QetMessageBox::question(
+			this,
+			tr("Exécuter un script"),
+			tr("Les scripts sont désactivés.\n\n"
+			   "Un script s'exécute avec vos droits : il peut lire et "
+			   "modifier le projet ouvert et écrire des fichiers. "
+			   "N'exécutez que des scripts dont vous connaissez "
+			   "l'origine.\n\n"
+			   "Activer les scripts ? Ce réglage est modifiable dans "
+			   "Configurer QElectroTech > Général > Projets."),
+			QMessageBox::Yes | QMessageBox::Cancel,
+			QMessageBox::Cancel);
+		if (answer != QMessageBox::Yes) {
+			return;
+		}
+		QetSettings::setScriptingEnabled(true);
+	}
 
 	const QString script_path = QFileDialog::getOpenFileName(
 		this,

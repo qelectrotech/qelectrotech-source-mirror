@@ -61,6 +61,26 @@ class projectDataBase : public QObject
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString(), QString *error = nullptr);
 		static bool isReadOnlySelect(const QString &query, QString *error = nullptr);
+
+			/**
+				The most rows any caller reads out of one query result.
+
+				A SELECT is not bounded by how much data the project holds:
+				SQLite produces rows lazily, so a query that never stops
+				producing them makes the loop that reads them never stop
+				either. A recursive CTE does exactly that in one line, and
+				a <graphics_table>'s <query> is stored in the .qet and run
+				on load -- so the text can arrive from a file rather than
+				from the person at the keyboard, and opening that file is
+				the whole attack.
+
+				100000 is far above any real result: the largest table in
+				the shipped examples is 396 rows. It is a backstop, not a
+				page size -- a caller that hits it has almost certainly
+				been handed something it should not run to completion, and
+				says so rather than truncating quietly.
+			*/
+		static constexpr int MaxResultRows = 100000;
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
