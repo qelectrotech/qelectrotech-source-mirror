@@ -17,6 +17,8 @@
 */
 #include "projectdatabase.h"
 
+#include "sqlreadonly.h"
+
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"
@@ -30,7 +32,9 @@
 #include <QLocale>
 #include <QFile>
 #include <QRegularExpression>
+#include <QSqlDriver>
 #include <QSqlError>
+#include <sqlite3.h>
 
 
 
@@ -208,6 +212,12 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 */
 QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	QString reason;
+
+	// First gate: which kind of statement is acceptable here at all. A
+	// textual check is the right tool for that and the wrong tool for
+	// anything else -- see isReadOnlySelect()'s own comment. It is what
+	// keeps ATTACH, BEGIN and PRAGMA out, none of which SQLite itself
+	// considers writes.
 	if (!isReadOnlySelect(query, &reason)) {
 		qWarning().noquote() << "projectDataBase::newQuery: rejected query:" << reason << "--" << query;
 		if (error) {
@@ -215,6 +225,24 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		}
 		return QSqlQuery(m_data_base);
 	}
+
+	// Second gate, and the one that actually enforces read-only: SQLite is
+	// asked about the statement it compiled, instead of the text being read
+	// for clues. The first gate cannot see through a CTE prefix --
+	// "WITH x AS (SELECT 1) DELETE FROM element" starts with WITH, contains
+	// no semicolon, and deletes every row. That matters beyond the
+	// custom-query box, because this path is reachable from a file: a
+	// <graphics_table>'s saved <query> is read straight out of the .qet by
+	// ProjectDBModel::fromXml() and executed by fillValue(), so opening or
+	// exporting a project someone else produced would have been enough.
+	if (!QETSql::isSingleReadOnlyStatement(sqliteHandle(&m_data_base), query, &reason)) {
+		qWarning().noquote() << "projectDataBase::newQuery: rejected query:" << reason << "--" << query;
+		if (error) {
+			*error = reason;
+		}
+		return QSqlQuery(m_data_base);
+	}
+
 	return QSqlQuery(query, m_data_base);
 }
 
@@ -1243,6 +1271,23 @@ void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
 			query.bindValue(bind, value);
 		}
 	}
+}
+
+/**
+	@brief projectDataBase::sqliteHandle
+	@param db
+	@return the sqlite3 handler class used internally by db
+*/
+sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
+{
+	sqlite3 *handle = nullptr;
+
+	QVariant v = db->driver()->handle();
+	if (v.isValid() && qstrcmp(v.typeName(), "sqlite3*") == 0) {
+		handle = *static_cast<sqlite3 **>(v.data());
+	}
+
+	return handle;
 }
 
 #ifdef QET_EXPORT_PROJECT_DB
