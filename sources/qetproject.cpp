@@ -334,7 +334,18 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
 	QDomDocument xml_project;
-	if (!xml_project.setContent(content))
+	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
+	// whitespace -- e.g. a title-block custom variable deliberately set to
+	// a single space, the only way to give it a value other than blank
+	// (bugtracker #973) -- is silently dropped by Qt's default parsing,
+	// and QDomElement::text() then returns "" for it exactly as if it had
+	// never been set. Confirmed in isolation: <a> </a> parses to text()=="",
+	// this option makes it text()==" ". Every place in this codebase that
+	// walks a QDomNode's children already filters on isElement() (see
+	// QET::findInDomElement()), so the extra whitespace-only text nodes
+	// this keeps around are inert everywhere but the two elements that
+	// call .text() on themselves -- which is exactly where the bug was.
+	if (!xml_project.setContent(content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes))
 	{
 		if(opened_here) {
 			file->close();

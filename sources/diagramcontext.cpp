@@ -151,8 +151,8 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const
 void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 {
 	foreach (QString key, keys()) {
-		if ((tag_name == "elementInformation") &&
-			(m_content[key].toString().trimmed().isEmpty())) {
+		const QString raw = m_content[key].toString();
+		if ((tag_name == "elementInformation") && raw.trimmed().isEmpty()) {
 			continue;
 		}
 		QDomElement property = e.ownerDocument().createElement(tag_name);
@@ -161,7 +161,15 @@ void DiagramContext::toXml(QDomElement &e, const QString &tag_name) const
 		property.removeAttribute("name");
 		property.setAttribute("show", m_content_show[key]);
 		property.setAttribute("name", key);
-		QDomText value = e.ownerDocument().createTextNode(m_content[key].toString().trimmed());
+		// Trim stray leading/trailing whitespace around real content, but
+		// not a value that IS whitespace: unconditionally trimming an
+		// all-whitespace string collapses it to "", which is silently
+		// indistinguishable from a value that was never set. A title-block
+		// custom variable set to a single space -- a workaround for #973,
+		// where an unset variable renders as its own literal placeholder --
+		// would otherwise vanish on the very next save.
+		const QString stored = raw.trimmed().isEmpty() ? raw : raw.trimmed();
+		QDomText value = e.ownerDocument().createTextNode(stored);
 		property.appendChild(value);
 		e.appendChild(property);
 	}
