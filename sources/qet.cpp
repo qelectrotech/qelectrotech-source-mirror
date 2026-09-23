@@ -20,6 +20,7 @@
 #include "qeticons.h"
 #include "shortcutmanager.h"
 
+#include <cmath>
 #include <limits>
 #include <QBuffer>
 #include <QColorDialog>
@@ -244,6 +245,12 @@ bool QET::attributeIsAReal(
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
+	// QString::toDouble() sets ok=true for "nan"/"inf"/"-inf" -- these
+	// parse successfully but are not usable coordinates. A non-finite
+	// element/terminal position reaches Conductor::shape() during load
+	// and hangs there at 100% CPU inside QPainterPathStroker::createStroke(),
+	// confirmed with gdb: not a blocked wait, genuine unbounded computation.
+	if (!std::isfinite(tmp)) return(false);
 	if (reel != nullptr) *reel = tmp;
 	return(true);
 }
