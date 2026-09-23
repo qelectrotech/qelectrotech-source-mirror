@@ -1290,9 +1290,10 @@ void projectDataBase::exportDb(projectDataBase *db,
 
 	// VACUUM INTO creates a standalone copy of the current database without
 	// requiring access to the SQLite driver's native connection handle.
-	const auto escaped_path = path_.replace("'", "''");
 	QSqlQuery query(db->m_data_base);
-	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
+	query.prepare("VACUUM INTO ?");
+	query.bindValue(0, path_);
+	if (!query.exec()) {
 		qWarning() << "Unable to export project database:" << query.lastError().text();
 	}
 }
