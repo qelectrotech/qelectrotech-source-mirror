@@ -896,10 +896,20 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// An empty page-level value means the variable was auto-added to the
 	// folio's Custom tab (#495) but never actually set by the user, so it
 	// must not shadow a real project-level value of the same name (#531).
+	//
+	// That guard has to stop short of removing the key outright, though
+	// (#973). TitleBlockTemplate::interpreteVariables() only replaces a
+	// "%name"/"%{name}" placeholder when "name" is a key in this context at
+	// all -- an unset variable that never makes it in is left as its own
+	// literal placeholder text in the rendered title block, not blank.
+	// So an empty page-level value is skipped only when a real project-level
+	// one is already there to show through; otherwise it still goes in
+	// empty, which is what makes the placeholder resolve to nothing.
 	DiagramContext context = initial_context;
 	foreach (QString key, additional_fields_.keys()) {
-		if (!additional_fields_[key].toString().isEmpty())
-			context.addValue(key, additional_fields_[key]);
+		const QVariant value = additional_fields_[key];
+		if (!value.toString().isEmpty() || !context.contains(key))
+			context.addValue(key, value);
 	}
 
 	// ... overridden by the historical and/or dynamically generated fields
