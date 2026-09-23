@@ -1387,6 +1387,33 @@ void Element::initLink(QETProject *prj)
 }
 
 /**
+	@brief Element::initLink
+	Overload resolving tmp_uuids_link against @p candidates instead of a
+	project-wide ElementProvider search -- see the header comment for
+	why the search has to be scoped this way right after a paste or
+	folio-duplication XML round-trip, before uuids are renewed.
+	@param candidates the elements to search for a link partner in
+*/
+void Element::initLink(const QList<Element *> &candidates)
+{
+		// if nothing to link return now
+	if (tmp_uuids_link.isEmpty()) return;
+
+	for (int i = 0; i < tmp_uuids_link.size(); ++i) {
+		for (Element *elmt : candidates) {
+			if (elmt->uuid() == tmp_uuids_link[i].uuid) {
+				elmt->linkToElement(this);
+				if (tmp_uuids_link[i].group_index >= 0) {
+					m_group_index_map[elmt] = tmp_uuids_link[i].group_index;
+				}
+				break;
+			}
+		}
+	}
+	tmp_uuids_link.clear();
+}
+
+/**
  * @brief Element::linkTypeToString
  * \deprecated use instead ElementData::typeToString
  * \todo remove this function
