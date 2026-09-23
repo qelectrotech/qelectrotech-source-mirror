@@ -1,0 +1,5001 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="tr">
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; taşımak için</target>
+</phrase>
+<phrase>
+    <source>
+Couleur du conducteur : %1</source>
+    <target>
+İletken rengi : %1</target>
+</phrase>
+<phrase>
+    <source>
+Section du conducteur : %1</source>
+    <target>
+İletken kesiti : %1</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Kontaklar: NO: %1, NC: %2, inversörler: %3, diğerleri: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Kontaklar: NO: %1/%2, NC: %3/%4, inversörler: %5/%6, diğerleri: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                Veri klasörünü tanımla
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(sürükleme sırasında Ctrl = serbest konum, ızgaraya yapışmaz)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(zaten kullanılıyor)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1 : %2 modu</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; kırmızı nokta: döndürme merkezini yeniden konumlandırmak için sürükleyin</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; turkuaz nokta: yay</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; bir kenar: eğme</target>
+</phrase>
+<phrase>
+    <source> d&apos;un groupe de bornes</source>
+    <target>bir terminal grubundan</target>
+</phrase>
+<phrase>
+    <source> du groupe de bornes %1</source>
+    <target>%1 terminal grubundan</target>
+</phrase>
+<phrase>
+    <source> Les développeurs de QElectroTech</source>
+    <target>QElectroTech geliştiricileri</target>
+    <definition>about tab, developers line</definition>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>mm</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Tıkla: %1 modu</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 sa %2 dk</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Aide</source>
+    <target>&amp;Yardım</target>
+</phrase>
+<phrase>
+    <source>&amp;Fermer cet éditeur</source>
+    <target>&amp;Bu düzenleyiciyi kapat</target>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(zaten atanmış)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(kontak sayısı uyuşmuyor)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(alt tür uyuşmuyor)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(durum uyuşmuyor)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = tutamaç oluştur</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = çoklu çizgi olarak ayır</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>.
+ Bu durumda bu belgenin tamamının veya bir kısmının açılması başarısız olabilir.
+Ne yapmak istersiniz?</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (ekran)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (baskı)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (yüksek kalite)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Hata&lt;/b&gt; :&lt;br&gt;İletken tanımlarının yalnızca bir terminali olabilir.&lt;br&gt;&lt;b&gt;Çözüm&lt;/b&gt; :&lt;br&gt;Öğenin yalnızca bir terminali olduğunu doğrulayın</target>
+</phrase>
+<phrase>
+    <source>&lt;center&gt;ATTENTION :&lt;/center&gt;
+ il manque %1 lignes afin d&apos;afficher l&apos;intégralité des informations</source>
+    <target>&lt;center&gt;DİKKAT:&lt;/center&gt;
+ tüm bilgileri görüntülemek için %1 satır eksik</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Abaisser ce folio x100</source>
+    <target>Bu sayfayı x100 aşağı taşı</target>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Eylem</target>
+</phrase>
+<phrase>
+    <source>Adapter le folio à la page</source>
+    <target>Sayfayı folioya sığdır</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Adres</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>PLC adresi</target>
+</phrase>
+<phrase>
+    <source>Affichage</source>
+    <target>Görünüm</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>Izgara görünümü</target>
+</phrase>
+<phrase>
+    <source>Affiche des informations sur la bibliothèque Qt</source>
+    <target>Qt kütüphanesi hakkında bilgi gösterir</target>
+</phrase>
+<phrase>
+    <source>Affiche des informations sur QElectroTech</source>
+    <target>QElectroTech hakkında bilgi gösterir</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Kılavuzları gösterir veya gizler</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>Göster</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Afficher deux pages</source>
+    <target>İki sayfa göster</target>
+</phrase>
+<phrase>
+    <source>Afficher l&apos;aide</source>
+    <target>Yardımı göster</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Varsayılan ızgarayı göster (sonraki başlatmada uygulanır)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Adı göster</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Başlıkları sayfada göster</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Kılavuzları göster</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Varsayılan kılavuzları göster (sonraki başlatmada uygulanır)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Çapraz referanslarda klemens numaralarını göster</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>PLC tablosunun sütun başlıklarını sayfada göster veya gizle</target>
+</phrase>
+<phrase>
+    <source>Afficher un aperçu de toutes les pages</source>
+    <target>Tüm sayfaların önizlemesini göster</target>
+</phrase>
+<phrase>
+    <source>Afficher une seule page</source>
+    <target>Tek sayfa göster</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Etiket çerçevesini göster/gizle</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Terminal adını göster/gizle</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>Tamamen uyumlu hale getirmek için lütfen aynı projeyi QElectroTech&apos;in 0.8 veya 0.80 sürümüyle açıp projeyi kaydedin ve bu sürümle yeniden açın.
+Ne yapmak istersiniz?</target>
+</phrase>
+<phrase>
+    <source>Ajoute un plan de bornier sur le folio actuel</source>
+    <target>Geçerli sayfaya bir klemens planı ekler</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Geçerli sayfaya bir Bézier eğrisi ekler</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Geçerli sayfaya bir PDF sayfası ekler</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter %1 bornes</source>
+    <target>%1 terminal ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter au bus: %1</source>
+    <target>Veri yoluna ekle: %1</target>
+</phrase>
+<phrase>
+    <source>Ajouter au câble: %1</source>
+    <target>Kabloya ekle: %1</target>
+</phrase>
+<phrase>
+    <source>Ajouter de nouveau folio et tableau si nécessaire.</source>
+    <target>Gerekirse yeni sayfa ve tablo ekle.</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>%1 terminalini ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter la sélection</source>
+    <target>Seçimi ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter le plan de bornes suivant :</source>
+    <target>Aşağıdaki klemens planını ekle:</target>
+</phrase>
+<phrase>
+    <source>Ajouter un bornier</source>
+    <target>Klemens ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un bornier au projet</source>
+    <target>Projeye klemens ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Bir sayfa ekle</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un groupe de bornes</source>
+    <target>Bir terminal grubu ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Bir PDF ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un plan de bornes</source>
+    <target>Bir klemens planı ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Bir eğriye nokta ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un sommaire</source>
+    <target>Bir özet ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter un tableau</source>
+    <target>Tablo ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter une borne</source>
+    <target>Bir terminal ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Bir eğri ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter une nomenclature</source>
+    <target>Bir parça listesi ekle</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Özel bir özellik ekle</target>
+</phrase>
+<phrase>
+    <source>Ajuster la largeur</source>
+    <target>Genişliği ayarla</target>
+</phrase>
+<phrase>
+    <source>Ajuster la page</source>
+    <target>Sayfayı ayarla</target>
+</phrase>
+<phrase>
+    <source>Ajuster la taille du tableau au folio</source>
+    <target>Tablo boyutunu sayfaya uydur</target>
+</phrase>
+<phrase>
+    <source>Ajuster le tableau au folio</source>
+    <target>Tablo sayfaya sığdır</target>
+</phrase>
+<phrase>
+    <source>Aligement :</source>
+    <target>Hizalama:</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Hizalama</target>
+</phrase>
+<phrase>
+    <source>Alignement :</source>
+    <target>Hizalama:</target>
+</phrase>
+<phrase>
+    <source>Aller à la fin du projet</source>
+    <target>Projenin sonuna git</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Alfabetik</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Alfanümerik (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Açı</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Köşeli</target>
+</phrase>
+<phrase>
+    <source>Annulation</source>
+    <target>İptal</target>
+</phrase>
+<phrase>
+    <source>Annulations</source>
+    <target>İptaller</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>İptal</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Önizleme</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Önizleme :</target>
+</phrase>
+<phrase>
+    <source>Appliquer la géometrie d&apos;un tableau aux tableau liée à celui-ci</source>
+    <target>Bir tablonun geometrisini buna bağlı tablolara uygula</target>
+</phrase>
+<phrase>
+    <source>Appliquer la géometrie à tous les tableaux liée à celui-ci</source>
+    <target>Geometriyi buna bağlı tüm tablolara uygula</target>
+</phrase>
+<phrase>
+    <source>Appliquer le déplacement</source>
+    <target>Taşımayı uygula</target>
+</phrase>
+<phrase>
+    <source>Arrondi supérieur pour 0.5 et plus</source>
+    <target>0.5 ve üzeri için yukarı yuvarla</target>
+</phrase>
+<phrase>
+    <source>Arrondi supérieur pour 0.75 et plus</source>
+    <target>0.75 ve üzeri için yukarı yuvarla</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>%1 öğesinin köşelerini yuvarlat</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Bir elemana ulaş</target>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Dikkat: sabit genişlikli sütunlar kalan genişliğe sığamıyor, bu başlık bloğu şablonu hiçbir genişlikle karşılanamaz.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Yalnızca atanmış</target>
+</phrase>
+<phrase>
+    <source>au groupe de bornes %1</source>
+    <target>%1 terminal grubuna</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Hiçbiri</target>
+</phrase>
+<phrase>
+    <source>Auteurs</source>
+    <target>Yazarlar</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>Otomat (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>Otomatlar (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Otomatik terminal numaralandırma</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Otomatik numaralandırma</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Diğer</target>
+</phrase>
+<phrase>
+    <source>Avec</source>
+    <target>Var</target>
+</phrase>
+<phrase>
+    <source>Avertissement</source>
+    <target>Uyarı</target>
+</phrase>
+<phrase>
+    <source>Avertissement </source>
+    <target>Uyarı</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>UYARI:
+&apos;Yuvarlama yok&apos; dışındaki tüm değerler, aşağıdakilere bağlı olarak projede görüntüleme hatalarına neden olabilir:
+
+1 - seçilen değer 
+2 - ekranın dpi değeri 
+3 - Projeyi 1 ve 2. maddelerdeki ayarları aynı olmayan başka bir bilgisayarda ve/veya ekranda değiştirmek.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Uyarı — EPLAN dosyası içe aktarma (.edz)</target>
+</phrase>
+<phrase>
+    <source>Bas :</source>
+    <target>Alt :</target>
+</phrase>
+<phrase>
+    <source>Bibliothèques</source>
+    <target>Kütüphaneler</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 1</source>
+    <target>Yardımcı blok 1</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 2</source>
+    <target>Yardımcı blok 2</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 3</source>
+    <target>Yardımcı blok 3</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 4</source>
+    <target>Yardımcı blok 4</target>
+</phrase>
+<phrase>
+    <source>Blue : Blue</source>
+    <target>Blue : Blue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : CornflowerBlue</source>
+    <target>Blue : CornflowerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DarkBlue</source>
+    <target>Blue : DarkBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DeepSkyBlue</source>
+    <target>Blue : DeepSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DodgerBlue</source>
+    <target>Blue : DodgerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightBlue</source>
+    <target>Blue : LightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSkyBlue</source>
+    <target>Blue : LightSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSteelBlue</source>
+    <target>Blue : LightSteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MediumBlue</source>
+    <target>Blue : MediumBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MidnightBlue</source>
+    <target>Blue : MidnightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : Navy</source>
+    <target>Blue : Navy</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : PowderBlue</source>
+    <target>Blue : PowderBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : RoyalBlue</source>
+    <target>Blue : RoyalBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SkyBlue</source>
+    <target>Blue : SkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SteelBlue</source>
+    <target>Blue : SteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Klemens 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Klemens 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne niveau 0 :</source>
+    <target>Klemens seviye 0:</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 1 :</source>
+    <target>Klemens seviye 1:</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 2 :</source>
+    <target>Klemens seviye 2:</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 3 :</source>
+    <target>Klemens seviye 3:</target>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Klemensler</target>
+</phrase>
+<phrase>
+    <source>Bornes indépendante</source>
+    <target>Bağımsız klemens</target>
+</phrase>
+<phrase>
+    <source>Bornes indépendantes</source>
+    <target>Bağımsız klemensler</target>
+</phrase>
+<phrase>
+    <source>Bornier extérieur</source>
+    <target>Dış terminal klemensi</target>
+</phrase>
+<phrase>
+    <source>Bornier intérieur</source>
+    <target>İç terminal klemensi</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Klemens grupları</target>
+</phrase>
+<phrase>
+    <source>Boutons et commutateurs</source>
+    <target>Butonlar ve anahtarlar</target>
+</phrase>
+<phrase>
+    <source>Brown : Bisque</source>
+    <target>Brown : Bisque</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : BlanchedAlmond</source>
+    <target>Brown : BlanchedAlmond</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Brown</source>
+    <target>Brown : Brown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Burlywood</source>
+    <target>Brown : Burlywood</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Chocolate</source>
+    <target>Brown : Chocolate</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Cornsilk</source>
+    <target>Brown : Cornsilk</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : DarkGoldenrod</source>
+    <target>Brown : DarkGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Goldenrod</source>
+    <target>Brown : Goldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Maroon</source>
+    <target>Brown : Maroon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : NavajoWhite</source>
+    <target>Brown : NavajoWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Peru</source>
+    <target>Brown : Peru</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : RosyBrown</source>
+    <target>Brown : RosyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SaddleBrown</source>
+    <target>Brown : SaddleBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SandyBrown</source>
+    <target>Brown : SandyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Sienna</source>
+    <target>Brown : Sienna</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Tan</source>
+    <target>Brown : Tan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Wheat</source>
+    <target>Brown : Wheat</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>bus</source>
+    <target>veri yolu</target>
+</phrase>
+<phrase>
+    <source>C&amp;oller dans la zone</source>
+    <target>&amp;Alan içine yapıştır</target>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>Yeni elemanların nasıl numaralandırılacağını burada tanımlayabilirsiniz.
+-Bir numaralandırma minimum bir değişkenden oluşur.
+-Numaralandırma değişkenlerini - ve + düğmeleriyle ekleyebilir veya silebilirsiniz.
+-Bir numaralandırma değişkeni şunları içerir: bir tür, bir değer ve bir artış.
+
+-"Rakam 1", "Rakam 01" ve "Rakam 001" türleri, "Değer" alanında tanımlanan ve her yeni iletkende "Artış" alanının değeri kadar artan sayısal bir türü temsil eder.
+-"Rakam 01" ve "Rakam 001", şemada sırasıyla en az iki ve üç basamakla gösterilir.
+Değer alanında tanımlanan rakam seçilen türden daha az basamağa sahipse, türüne uyması için başına bir veya iki 0 eklenir.
+
+-"Metin" türü sabit bir metni temsil eder.
+"Artış" alanı kullanılmaz.
+
+-"Sayfa no" türü geçerli sayfanın numarasını temsil eder.
+Diğer alanlar kullanılmaz.
+
+-"Sayfa" türü geçerli sayfanın adını temsil eder.
+Diğer alanlar kullanılmaz.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>kablo</target>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>%1 okunamıyor</target>
+</phrase>
+<phrase>
+    <source>Cartouches company</source>
+    <target>company antetleri</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Cartouches QET</source>
+    <target>QET antetleri</target>
+    <definition>title of the title block templates 					collection provided by QElectroTech</definition>
+</phrase>
+<phrase>
+    <source>Cartouches utilisateur</source>
+    <target>Kullanıcı antetleri</target>
+    <definition>title of the user&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Kategori</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>Bu belge, sürümünüzden daha yeni olan %1 sürümüyle
+ kaydedilmiş görünüyor! 
+Şu anda QElectroTech&apos;in %2 sürümünü kullanıyorsunuz</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Bu biçim saydamlığı desteklemiyor: görüntü, saydam renk uygulanmadan önceki haliyle kaydedilecek. Devam edilsin mi?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Bu kısayol şu tarafından da kullanılıyor: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Bu, bu oturumun son günlük mesajlarını içerir. Herkese açık bir hata raporuna eklemeden önce içeriği kontrol edin.</target>
+</phrase>
+<phrase>
+    <source>Ceci est la collection company de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+    <target>Bu, company kartuş koleksiyonudur -- kendi kartuşlarınızı oluşturmak, saklamak ve düzenlemek için kullanın.</target>
+    <definition>"What&apos;s this" tip</definition>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Orta</target>
+</phrase>
+<phrase>
+    <source>Centre :</source>
+    <target>Merkez:</target>
+</phrase>
+<phrase>
+    <source>Centré</source>
+    <target>Ortalı</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Bu eleman zaten bağlı</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Bu işlev, projedeki klemensleri konumlarına göre numaralandırır. Boş veya kilitli klemensler yok sayılır. Klemens işaretlemesi önceden şu şekilde yapılandırılmalıdır: &apos;-X:AB&apos;. İki nokta üst üste işaretinden önceki kısım (kleme) isteğe göre adlandırılabilir. &apos;AB&apos; rakamlardan veya harflerden oluşabilir."</target>
+</phrase>
+<phrase>
+    <source>Chaine Youtube</source>
+    <target>Youtube kanalı</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Metin alanı</target>
+</phrase>
+<phrase>
+    <source>Changer la police d&apos;un tableau</source>
+    <target>Bir tablonun yazı tipini değiştir</target>
+</phrase>
+<phrase>
+    <source>Chemin de la collection company</source>
+    <target>company koleksiyonu yolu</target>
+</phrase>
+<phrase>
+    <source>Chemin des cartouches company</source>
+    <target>company kartuşları yolu</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Kullanıcı makroları yolu</target>
+</phrase>
+<phrase>
+    <source>Chinois</source>
+    <target>Çince</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Şablonunuzu kaydetmek istediğiniz konumu seçin.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Tıklama: özgün boyutta konumlandır. Tıkla-sürükle: konumlandır ve yeniden boyutlandır. Sağ tıklama: 90° döndür. Ctrl+tekerlek: boyutu ayarla.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Sol tık: sonraki nokta; çift tık veya Enter: bitir; sağ tık: son noktayı iptal et</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Sol tık: karşı köşeyi yerleştir (Shift = kare, Ctrl = merkezden + serbest konum, Ctrl+Shift = merkezlenmiş kare); sağ tık: iptal</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Sol tık: karşı köşeyi yerleştir (Shift = daire, Ctrl = merkezden + serbest konum, Ctrl+Shift = merkezlenmiş daire); sağ tık: iptal</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Sol tıklama: başlangıç noktasını konumlandır (Ctrl = serbest konum)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Sol tık: son noktayı yerleştir (Ctrl = serbest konum); sağ tık: iptal</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Sol tıklama: ilk köşeyi konumlandır (Ctrl = merkez nokta, serbest konum)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Sol tıklama: ilk noktayı konumlandır (Ctrl = serbest konum)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Tıklama: köşeli nokta. Tıkla-sürükle: eğri nokta. İlk noktaya tıklama: kapat. Esc/Enter: bitir. Sağ tıklama: son noktayı iptal et.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Tıkla</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Tıkla: %1 modu</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Bir renk seçmek için tıklayın</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Renk eklemek için görüntüye tıklayın. Her rengin toleransını kaydırıcısıyla ayarlayın veya kaldırmak için × simgesine tıklayın.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Renk seçmek için görüntüye tıklayın</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Yuvarlatılmış köşeler</target>
+</phrase>
+<phrase>
+    <source>Collection</source>
+    <target>Koleksiyon</target>
+</phrase>
+<phrase>
+    <source>Collection Company</source>
+    <target>Collection Company</target>
+</phrase>
+<phrase>
+    <source>Collection d&apos;éléments</source>
+    <target>Öğe koleksiyonu</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Koleksiyonlar</target>
+</phrase>
+<phrase>
+    <source>Coller</source>
+    <target>Yapıştır</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Panodan yapıştır</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Yorum</target>
+</phrase>
+<phrase>
+    <source>Commentaire :</source>
+    <target>Yorum:</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>PLC açıklaması</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Ortak (SW kontağı)</target>
+</phrase>
+<phrase>
+    <source>Compilation : </source>
+    <target>Derleme :</target>
+</phrase>
+<phrase>
+    <source>Compilation :   </source>
+    <target>Derleme :</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Bileşen 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Bileşen 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>Yapılandırma</target>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>PLC yapılandırması</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Sütun başlıklarının yazı tipini yapılandır</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Hücrelerdeki metnin yazı tipini yapılandır</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Yalnızca çakışmalar</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>Bağla</target>
+</phrase>
+<phrase>
+    <source>Conserver la rotation visuel</source>
+    <target>Görsel döndürmeyi koru</target>
+</phrase>
+<phrase>
+    <source>Conserver les couleurs des conducteurs</source>
+    <target>İletken renklerini koru</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Kontak</target>
+</phrase>
+<phrase>
+    <source>Contact : &lt;a href="mailto:qet@lists.tuxfamily.org"&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
+    <target>İletişim: &lt;a href="mailto:qet@lists.tuxfamily.org"&gt;qet@lists.tuxfamily.org&lt;/a&gt;</target>
+    <definition>about tab, contact line</definition>
+</phrase>
+<phrase>
+    <source>Contacteurs et relais</source>
+    <target>Kontaktörler ve röleler</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Kontaklar</target>
+</phrase>
+<phrase>
+    <source>Contenu</source>
+    <target>İçerik</target>
+</phrase>
+<phrase>
+    <source>Contient</source>
+    <target>İçerir</target>
+</phrase>
+<phrase>
+    <source>Contributeurs</source>
+    <target>Katkıda Bulunanlar</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>%1 öğesini Bézier eğrisine dönüştür</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>%1 öğesini çoklu çizgiye dönüştür</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Bézier eğrisine dönüştür</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Çoklu çizgiye dönüştür</target>
+</phrase>
+<phrase>
+    <source>Convertisseur d&apos;élément DXF</source>
+    <target>DXF öğe dönüştürücü</target>
+    <definition>Dxf2elmt</definition>
+</phrase>
+<phrase>
+    <source>Convertisseur DXF</source>
+    <target>DXF dönüştürücü</target>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Kopyala ve yapıştır</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Korece</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>Geçici dizin oluşturulamadı: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Renk</target>
+</phrase>
+<phrase>
+    <source>Couleur / numéro de fil câble</source>
+    <target>Kablo rengi / tel numarası</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Renk :</target>
+</phrase>
+<phrase>
+    <source>Couleur du conducteur</source>
+    <target>İletken rengi</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Tel rengi</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur du texte:</source>
+    <target>Metin rengi:</target>
+</phrase>
+<phrase>
+    <source>Couleur pont :</source>
+    <target>Köprü rengi:</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Saydam renk</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Saydam renk...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Bir eleman yerleştirirken mevcut iletkenleri otomatik olarak kes</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Otomatik iletken kesme</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Nominal akım</target>
+</phrase>
+<phrase>
+    <source>Création groupe de bornes</source>
+    <target>Klemens grubu oluştur</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Bir şablon oluştur</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>Yedek kopya oluşturulsun mu?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aqua</source>
+    <target>Cyan : Aqua</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aquamarine</source>
+    <target>Cyan : Aquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : CadetBlue</source>
+    <target>Cyan : CadetBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Cyan</source>
+    <target>Cyan : Cyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkCyan</source>
+    <target>Cyan : DarkCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkTurquoise</source>
+    <target>Cyan : DarkTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightCyan</source>
+    <target>Cyan : LightCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>Cyan : LightSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>Cyan : MediumTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>Cyan : PaleTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>Cyan : Teal</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>Cyan : Turquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Döngüsel (modülo)</target>
+</phrase>
+<phrase>
+    <source>Câble</source>
+    <target>Kablo</target>
+</phrase>
+<phrase>
+    <source>d&apos;un groupe de bornes</source>
+    <target>bir terminal grubundan</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
+    <target>Dosya kayıt tarihi dd-MM-yyyy biçimi</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format local</source>
+    <target>Dosya kayıt tarihi yerel biçim</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
+    <target>Dosya kayıt tarihi yyyy-MM-dd biçimi</target>
+</phrase>
+<phrase>
+    <source>Degrouper les bornes</source>
+    <target>Klemensleri gruplama</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Döndürme merkezini taşı</target>
+</phrase>
+<phrase>
+    <source>Dernière page</source>
+    <target>Son sayfa</target>
+</phrase>
+<phrase>
+    <source>Descendre la sélection</source>
+    <target>Seçimi aşağı taşı</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>Açıklama</target>
+</phrase>
+<phrase>
+    <source>Description :</source>
+    <target>Açıklama:</target>
+</phrase>
+<phrase>
+    <source>Description textuelle</source>
+    <target>Metin açıklaması</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 1</source>
+    <target>Yardımcı metin açıklaması 1</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 2</source>
+    <target>Yardımcı metin açıklaması 2</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 3</source>
+    <target>Yardımcı metin açıklaması 3</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 4</source>
+    <target>Yardımcı metin açıklaması 4</target>
+</phrase>
+<phrase>
+    <source>Dessiner le cadre</source>
+    <target>Çerçeveyi çiz</target>
+</phrase>
+<phrase>
+    <source>Dessiner le cartouche</source>
+    <target>Anteti çiz</target>
+</phrase>
+<phrase>
+    <source>Dessiner les bornes</source>
+    <target>Terminalleri çiz</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Klemens adlarını çiz</target>
+</phrase>
+<phrase>
+    <source>Dialog</source>
+    <target>İletişim penceresi</target>
+</phrase>
+<phrase>
+    <source>Diamètres :</source>
+    <target>Çaplar:</target>
+</phrase>
+<phrase>
+    <source>Diode</source>
+    <target>Diyot</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>yön</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>Yerleşim</target>
+</phrase>
+<phrase>
+    <source>Disposition par défaut</source>
+    <target>Varsayılan yerleşim</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Etiket ile bağımlı çapraz referans arasındaki piksel cinsinden mesafe</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Etiket mesafesi - bağımlı:</target>
+</phrase>
+<phrase>
+    <source>Documentation</source>
+    <target>Belgeler</target>
+</phrase>
+<phrase>
+    <source>Dossier installation</source>
+    <target>Kurulum klasörü</target>
+</phrase>
+<phrase>
+    <source>Double-cliquez pour réduire ou développer la collection company de cartouches</source>
+    <target>company kartuş koleksiyonunu daraltmak veya genişletmek için çift tıklayın</target>
+    <definition>Status tip</definition>
+</phrase>
+<phrase>
+    <source>Droit :</source>
+    <target>Sağ :</target>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>Sağ</target>
+</phrase>
+<phrase>
+    <source>du groupe de bornes %1</source>
+    <target>%1 terminal grubundan</target>
+</phrase>
+<phrase>
+    <source>DXF (*.dxf)</source>
+    <target>DXF (*.dxf)</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Hata: %1 dosyasının geçerli bir .dxf dosyası olduğundan emin olun</target>
+</phrase>
+<phrase>
+    <source>Décalage vertical</source>
+    <target>Dikey kaydırma</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Numaralandırma dışında bırakılacak klemensleri işaretini kaldırın</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Maksimum esclave sayısını tanımla</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Esclave elemanlarını tanımla</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Saydam bir renk tanımla</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>İletken tanımı</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Bir eğriyi deforme et</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Bağlantıyı kaldır</target>
+</phrase>
+<phrase>
+    <source>Déplacer dans :</source>
+    <target>Şuraya taşı:</target>
+</phrase>
+<phrase>
+    <source>Déplacer des bornes</source>
+    <target>Terminalleri taşı</target>
+</phrase>
+<phrase>
+    <source>Déplacer la borne %1</source>
+    <target>%1 terminalini taşı</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Bir görüntünün dönme merkezini taşı</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Bir terminalin etiketini taşı</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Sayfaları taşı</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Bir sayfayı taşı</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déplacer un tableau</source>
+    <target>Bir tabloyu taşı</target>
+</phrase>
+<phrase>
+    <source>Déplacer une borne</source>
+    <target>Bir terminali taşı</target>
+</phrase>
+<phrase>
+    <source>Déponter les bornes</source>
+    <target>Klemens köprülerini kaldır</target>
+</phrase>
+<phrase>
+    <source>Développement</source>
+    <target>Geliştirme</target>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Kilidi açık: genişlik ve yükseklik bağımsız olarak değiştirilebilir. Kilitlemek için tıklayın.</target>
+</phrase>
+<phrase>
+    <source>Editer les marges</source>
+    <target>Kenar boşluklarını düzenle</target>
+</phrase>
+<phrase>
+    <source>Editor</source>
+    <target>Editor</target>
+</phrase>
+<phrase>
+    <source>Effectuer le déplacement</source>
+    <target>Taşımayı gerçekleştir</target>
+</phrase>
+<phrase>
+    <source>Element Autonumérotation</source>
+    <target>Otomatik numaralandırma elemanı</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>En tête</source>
+    <target>Başlık</target>
+</phrase>
+<phrase>
+    <source>En tête :</source>
+    <target>Başlık:</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Metni çerçevele</target>
+</phrase>
+<phrase>
+    <source>Enlever %1 bornes</source>
+    <target>%1 terminali kaldır</target>
+</phrase>
+<phrase>
+    <source>Enlever une borne</source>
+    <target>Bir terminal kaldır</target>
+</phrase>
+<phrase>
+    <source>Enregister sous... </source>
+    <target>Farklı kaydet...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Özgün görüntüyü farklı kaydet...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Görüntüyü farklı kaydet...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Tanılama raporunu kaydet</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Tanılama raporu kaydet...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Bir şablon kaydet</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Kaydet...</target>
+</phrase>
+<phrase>
+    <source>Entrer le facteur d&apos;échelle</source>
+    <target>Ölçek faktörünü girin</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Analog giriş</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Dijital giriş</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Evrensel giriş</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Hata</target>
+</phrase>
+<phrase>
+    <source>Error launching qet_tb_generator plugin</source>
+    <target>qet_tb_generator eklentisi başlatılırken hata</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>PLC esclave</target>
+</phrase>
+<phrase>
+    <source>Espace :</source>
+    <target>Boşluk:</target>
+</phrase>
+<phrase>
+    <source>Est vide</source>
+    <target>Boş</target>
+</phrase>
+<phrase>
+    <source>Est égal à</source>
+    <target>Eşittir</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>Örnek</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Nomenklatürden hariç tut</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Otomatik numaralandırmadan hariç tut</target>
+</phrase>
+<phrase>
+    <source>Explorateur de bornier</source>
+    <target>Klemens gezgini</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Dışa aktarma başarılı</target>
+</phrase>
+<phrase>
+    <source>Exporte un ou plusieurs folios du projet courant</source>
+    <target>Geçerli projenin bir veya daha fazla sayfasını dışa aktarır</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Exporter au format CSV</source>
+    <target>CSV biçiminde dışa aktar</target>
+</phrase>
+<phrase>
+    <source>Exporter en pdf</source>
+    <target>PDF olarak dışa aktar</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>SVG olarak dışa aktar</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter la base de donnée interne du projet</source>
+    <target>Projenin dahili veritabanını dışa aktar</target>
+</phrase>
+<phrase>
+    <source>Exporter la base de données interne du projet</source>
+    <target>Projenin dahili veritabanını dışa aktar</target>
+</phrase>
+<phrase>
+    <source>Exporter la liste des noms de conducteurs</source>
+    <target>İletken adları listesini dışa aktar</target>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Kablolama planını dışa aktar</target>
+</phrase>
+<phrase>
+    <source>Exporter sous : </source>
+    <target>Farklı kaydet :</target>
+</phrase>
+<phrase>
+    <source>Fabricant</source>
+    <target>Üretici</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 1</source>
+    <target>Yardımcı üretici 1</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 2</source>
+    <target>Yardımcı üretici 2</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 3</source>
+    <target>Yardımcı üretici 3</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 4</source>
+    <target>Yardımcı üretici 4</target>
+</phrase>
+<phrase>
+    <source>Facteur X:</source>
+    <target>X faktörü:</target>
+</phrase>
+<phrase>
+    <source>Facteur Y:</source>
+    <target>Y faktörü:</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>%1 öğesini döndür</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Bir görüntüyü döndür</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Korunacak alanı ayarlamak için tutamaçları veya çerçevenin içini sürükleyin.</target>
+</phrase>
+<phrase>
+    <source>Fermer cet éditeur</source>
+    <target>Bu düzenleyiciyi kapat</target>
+</phrase>
+<phrase>
+    <source>Fichier (*.pdf)</source>
+    <target>Dosya (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers csv (*.csv)</source>
+    <target>CSV dosyaları (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>PDF dosyaları (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Metin dosyaları (*.txt);;Tüm dosyalar (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Tel</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Dosya bulunamadı: %1</target>
+</phrase>
+<phrase>
+    <source>Filtre :</source>
+    <target>Filtre:</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Kısayolları filtrele…</target>
+</phrase>
+<phrase>
+    <source>Fin 1 :</source>
+    <target>Uç 1 :</target>
+</phrase>
+<phrase>
+    <source>Fin 2 :</source>
+    <target>Uç 2 :</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>İnce döndürme</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Ters çevir</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Sayfa</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Folio sans titre</source>
+    <target>Başlıksız sayfa</target>
+</phrase>
+<phrase>
+    <source>Folios à imprimer :</source>
+    <target>Yazdırılacak sayfalar :</target>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>İşlev</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction :</source>
+    <target>İşlev:</target>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>PLC işlevi</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Deneysel işlev</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Form</target>
+</phrase>
+<phrase>
+    <source>Format :</source>
+    <target>Biçim:</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Görüntüleme biçimi: bir dizi sıfır, minimum basamak sayısını verir (00 = 07, 000 = 007). Boş = türün doğal genişliği.</target>
+</phrase>
+<phrase>
+    <source>Formater en tant que liste de materiel</source>
+    <target>Malzeme listesi olarak biçimlendir</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Kapalı şekil</target>
+</phrase>
+<phrase>
+    <source>Formule du label</source>
+    <target>Etiket formülü</target>
+</phrase>
+<phrase>
+    <source>Formule du texte</source>
+    <target>Metin formülü</target>
+</phrase>
+<phrase>
+    <source>Fournisseur</source>
+    <target>Tedarikçi</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 1</source>
+    <target>Yardımcı tedarikçi 1</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 2</source>
+    <target>Yardımcı tedarikçi 2</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 3</source>
+    <target>Yardımcı tedarikçi 3</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 4</source>
+    <target>Yardımcı tedarikçi 4</target>
+</phrase>
+<phrase>
+    <source>Fusible</source>
+    <target>Sigorta</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>Sol</target>
+</phrase>
+<phrase>
+    <source>Gauche :</source>
+    <target>Sol :</target>
+</phrase>
+<phrase>
+    <source>Gestionnaire de borniers</source>
+    <target>Klemens yöneticisi</target>
+</phrase>
+<phrase>
+    <source>Gestionnaire de borniers (DEV)</source>
+    <target>Klemens yöneticisi (DEV)</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>%1 sürükleyin: döndürme (Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Sürükle: yayı ayarla (Ctrl = serbest konum, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Sürükle: köşeleri yuvarlat (Ctrl = serbest konum)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Sürükle: eğriyi deforme et (Ctrl = serbest konum, Alt = teğeti kır)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Sürükle: bu noktayı taşı</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Sürükle: dönme merkezini taşı</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Sürükle: noktayı taşı (Ctrl = serbest konum</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Sürükle: eğme (Ctrl = serbest konum, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Sürükle: eğ (Shift = 15° adımlarla)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Sürükle: döndür (Shift = 15° adımlarla)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Sürükle: yeniden boyutlandır (Ctrl = merkezden + serbest konum, Shift = oranlar</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Sürükle: yeniden boyutlandır (Shift = oranları koru, Ctrl = merkezden)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Sürükle: döndürme merkezini yeniden konumlandır (Ctrl = serbest konum)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Sürükle: döndürme (Ctrl = serbest konum, Shift = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Mor noktayı sürükleyin: köşeleri yuvarlat</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Bir köşeyi sürükle: döndür (Shift = 15° adımlarla); bir kenarı sürükle: eğ (Shift = 15° adımlarla); kırmızı nokta: dönme merkezini taşı</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Bir köşeyi/kenarı sürükle: yeniden boyutlandır (Ctrl = merkezden, Shift = oranları koru)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Bir köşeyi/kenarı sürükleyin: yeniden boyutlandır (Ctrl = merkezden, Shift = oranlar, Alt = çoklu çizgi olarak ayır)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Bir noktayı sürükleyin: taşı</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Bir ucu sürükleyin: taşı</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Bir tutamacı veya eğriyi sürükleyin: deforme et (Alt = teğeti kır) ; Alt+köşeli bir noktayı sürükle: tutamaç oluştur ; sağ tık: en yakın düğüm menüsü</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>bir sayfa sola git</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>bir sayfa sağa git</target>
+</phrase>
+<phrase>
+    <source>Gray : Black</source>
+    <target>Gray : Black</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>Gray : DarkGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>Gray : DarkSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>Gray : DimGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>Gray : Gainsboro</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>Gray : Gray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>Gray : LightGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>Gray : LightSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>Gray : Silver</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>Gray : SlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>Green : Chartreuse</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>Green : DarkGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>Green : DarkOliveGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>Green : DarkSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>Green : ForestGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>Green : Green</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>Green : GreenYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>Green : LawnGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>Green : LightGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>Green : Lime</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>Green : LimeGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>Green : MediumAquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>Green : MediumSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>Green : MediumSpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>Green : Olive</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>Green : OliveDrab</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>Green : PaleGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>Green : SeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>Green : SpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>Green : YellowGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>GroupBox</source>
+    <target>Grup kutusu</target>
+</phrase>
+<phrase>
+    <source>Grouper les bornes</source>
+    <target>Klemensleri grupla</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Kılavuzlar</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Hata raporuna eklemek için son günlük iletilerini içeren bir rapor oluşturur</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>Genel</target>
+</phrase>
+<phrase>
+    <source>Générateur d&apos;élément lambda</source>
+    <target>Lambda öğe oluşturucu</target>
+    <definition>Lambda element generator</definition>
+</phrase>
+<phrase>
+    <source>Générique</source>
+    <target>Genel</target>
+</phrase>
+<phrase>
+    <source>Géometrie et lignes</source>
+    <target>Geometri ve çizgiler</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Geometri</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>Y. satır:</target>
+</phrase>
+<phrase>
+    <source>Haut :</source>
+    <target>Üst :</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Yükseklik</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Yatay</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>yatay + dikey</target>
+</phrase>
+<phrase>
+    <source>Horizontal :</source>
+    <target>Yatay:</target>
+</phrase>
+<phrase>
+    <source>Icônes</source>
+    <target>Simgeler</target>
+</phrase>
+<phrase>
+    <source>Idée originale</source>
+    <target>Özgün fikir</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>BMP görüntüsü (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Görüntü Dosyaları (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>JPEG görüntüsü (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>PNG görüntüsü (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Kaynak görüntü</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>SVG görüntüsü (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Görüntüler DXF dışa aktarımına dahil edilmedi</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>EPLAN içe aktarma</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>İçe aktar</target>
+</phrase>
+<phrase>
+    <source>Importer un dxf</source>
+    <target>Bir dxf içe aktar</target>
+</phrase>
+<phrase>
+    <source>Importer un fichier dxf</source>
+    <target>Bir dxf dosyası içe aktar</target>
+</phrase>
+<phrase>
+    <source>importer un élément à redimensionner</source>
+    <target>yeniden boyutlandırılacak bir öğe içe aktar</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>EPLAN parçası içe aktar</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>EPLAN parçası içe aktar (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>Görüntü bu konuma kaydedilemiyor.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>Malzeme listesi %1 konumuna kaydedilemedi.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>« %1 » şablonu kaydedilemedi.</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>Bu parça içe aktarılamıyor:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>Dosya yazma için açılamıyor.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>« %1 » dosyasına yazılamıyor.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>Görüntü yüklenemedi.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>PDF dosyası yüklenemedi.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>PDF sayfasının boyutu belirlenemedi.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>Projenin bellek yapısı okunamıyor.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>PDF sayfası oluşturulamadı.</target>
+</phrase>
+<phrase>
+    <source>Imprimer</source>
+    <target>Yazdır</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>X eğimi</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Y eğimi</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>%1 öğesini eğ</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Bir görüntüyü eğ</target>
+</phrase>
+<phrase>
+    <source>inclure les en-têtes</source>
+    <target>başlıkları dahil et</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Bilinmiyor</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Artış</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Artış: her yeni numaralandırmada sayaca eklenen değer</target>
+</phrase>
+<phrase>
+    <source>Information à afficher</source>
+    <target>Görüntülenecek bilgi</target>
+</phrase>
+<phrase>
+    <source>Informations</source>
+    <target>Bilgiler</target>
+</phrase>
+<phrase>
+    <source>Informations disponibles</source>
+    <target>Kullanılabilir bilgiler</target>
+</phrase>
+<phrase>
+    <source>Informations à exporter</source>
+    <target>Dışa aktarılacak bilgiler</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Bileşen bilgilerini yaz</target>
+</phrase>
+<phrase>
+    <source>Installation :</source>
+    <target>Tesis:</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Yukarıya sayfa ekle</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Aşağıya sayfa ekle</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Değiştirici</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>Kullanılabilir G/Ç:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>Bu koşulları okudum ve kabul ediyorum.</target>
+</phrase>
+<phrase>
+    <source>Japonais</source>
+    <target>Japonca</target>
+</phrase>
+<phrase>
+    <source>JPEG (*.jpg)</source>
+    <target>JPEG (*.jpg)</target>
+</phrase>
+<phrase>
+    <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+    <target>Büyük bir dxf dosyasının içe aktarılması zaman alabilir 
+içe aktarma sırasında lütfen bekleyin...</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Dxf içe aktarma dxf2elmt yazılımını gerektirir.
+Lütfen aşağıdaki bağlantıdan indirin ve kurulum klasörüne çıkarın</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Bu ana eleman için belirlenen sınıra ulaşıldı (Sınır: %1).
+
+Yine de bu köle kontağı bağlamak istiyor musunuz?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>Seçimde köprülenmiş ve/veya çok katmanlı bir terminale ait bir veya daha fazla terminal olduğu için silme işlemi yapılamıyor.
+İlgili terminallerin köprüsünü kaldırın ve/veya katmanlarını silin, böylece bunları silebilirsiniz</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Etiket</target>
+</phrase>
+<phrase>
+    <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
+    <target>Varsayılan tarayıcıyı QElectroTech Youtube kanalına yönlendirir</target>
+</phrase>
+<phrase>
+    <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
+    <target>Varsayılan tarayıcıyı QElectroTech çevrimiçi kılavuzuna yönlendirir</target>
+</phrase>
+<phrase>
+    <source>Langues</source>
+    <target>Diller</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Genişlik</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>Dosya yazılamadı.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>PDF dosyası hiç sayfa içermiyor.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>« %1 » dosyası yok veya okunamıyor: bu klasörün çevrilmiş adı okunamadı, yerine klasör adı gösteriliyor.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>.edz biçimi iki farklı kaynaktan gelebilir:
+
+• EPLAN Data Portal (dataportal.eplan.com), EPLAN Cloud ortamının kullanım koşullarına tabidir;
+• .edz dosyalarını kendi koşullarıyla doğrudan sunan bir bileşen üreticisinin (veya distribütörünün) sitesi.
+
+QElectroTech, içe aktardığınız dosyanın kaynağını veya geçerli koşulları otomatik olarak belirleyemez.
+
+Bu dosyayı içe aktararak şunları onaylarsınız:
+
+• kaynağını biliyorsunuz ve bu kaynağa uygulanan koşullar çerçevesinde bu bağlamda kullanma yetkiniz var;
+• bu içe aktarma kendi riskiniz ve sorumluluğunuz altında yapılır;
+• QElectroTech, bakımcıları veya katkıda bulunanları bu verilerin uygun olmayan kullanımından sorumlu tutulamaz.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>Burada kullanılan DXF biçimi (AC1006) görüntü eklemeye izin vermez. Görüntüler yalnızca bir çerçeve dikdörtgeniyle temsil edilir (konum, boyut, döndürme ve eğim korunur), görüntü içeriği olmadan.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>Elemanları ölçeklemek için QET_ElementScaler yazılımı gereklidir.
+Lütfen aşağıdaki bağlantıdan indirin ve kurulum klasörüne çıkarın</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>Şablon başarıyla şu konuma kaydedildi:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>« %1 » adı geçerli değil: şu karakterleri içermemelidir: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>Yeni öğe, bağımlı kontak grupları tanımlar.
+Mevcut bağımlı öğeler otomatik olarak atanmayacaktır. Bağımlı öğeleri el ile bağlamanız ve kontak gruplarını atamanız gerekecektir.
+
+Devam etmek istiyor musunuz?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>Kablolama planı başarıyla dışa aktarıldı!</target>
+</phrase>
+<phrase>
+    <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
+</source>
+    <target>Açmaya çalıştığınız proje, QElectroTech&apos;in %1 sürümünüzle kısmen uyumludur.
+</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>Şablon zaten var. Üzerine yazmak istiyor musunuz?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>led</source>
+    <target>led</target>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>LED:</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
+Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>Görüntülenecek bilgiler tablonun görüntüleyebileceği maksimum miktardan fazladır.
+Bilgilerin tamamını görüntülemek için lütfen yeni bir tablo ekleyin veya mevcut tabloyu ayarlayın.</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
+Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>Görüntülenecek bilgiler tabloların görüntüleyebileceği maksimum miktardan fazladır.
+Bilgilerin tamamını görüntülemek için lütfen yeni bir tablo ekleyin veya mevcut tabloları ayarlayın.</target>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Yalnızca küçük harf, rakam, tire ve alt çizgi</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Lisanslar</target>
+</phrase>
+<phrase>
+    <source>Lignes à afficher :</source>
+    <target>Gösterilecek satırlar:</target>
+</phrase>
+<phrase>
+    <source>Limitation de tableau</source>
+    <target>Tablo sınırlaması</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Düz</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Kablolama listesi</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Kablolama listesi (veritabanı)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Bağlı olduğu: %1</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>Konum:</target>
+</phrase>
+<phrase>
+    <source>log</source>
+    <target>günlük</target>
+</phrase>
+<phrase>
+    <source>Logiciel tiers requis</source>
+    <target>Üçüncü taraf yazılım gerekli</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Uzunluk</target>
+</phrase>
+<phrase>
+    <source>Longueur :</source>
+    <target>Uzunluk :</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Maksimum uzunluk</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Maksimum uzunluk: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Uzunluk kısıtlanmamış.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>LTR</source>
+    <target>LTR</target>
+    <definition>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</definition>
+</phrase>
+<phrase>
+    <source>MainWindow</source>
+    <target>MainWindow</target>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Makros</target>
+</phrase>
+<phrase>
+    <source>Manuel en ligne</source>
+    <target>Çevrimiçi kılavuz</target>
+</phrase>
+<phrase>
+    <source>Marge</source>
+    <target>Kenar boşluğu</target>
+</phrase>
+<phrase>
+    <source>Marges :</source>
+    <target>Kenar boşlukları:</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Max. parts in Element Editor List</source>
+    <target>Eleman Düzenleyici Listesindeki maks. parça</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>maks:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Yalnızca bir sonraki döngüsel basamağın taşınmasıyla ilerleyen bir basamak için 0 girin (örn: "0.7"deki "0")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>min:</target>
+</phrase>
+<phrase>
+    <source>Miroir de sélection</source>
+    <target>Seçimi yansıt</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Yatay ayna</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Bir görüntünün yatay aynası</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>%1 öğesinin yatay aynası</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Aynalama imkansız: bu şekil için eğim çok aşırı</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Dikey ayna</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Bir görüntünün dikey aynası</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>%1 öğesinin dikey aynası</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Yansıt</target>
+</phrase>
+<phrase>
+    <source>Mise en page</source>
+    <target>Sayfa düzeni</target>
+</phrase>
+<phrase>
+    <source>Mise en page (non disponible sous Windows pour l&apos;export PDF)</source>
+    <target>Sayfa düzeni (PDF dışa aktarımı için Windows&apos;ta kullanılamaz)</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>mod.</target>
+</phrase>
+<phrase>
+    <source>Modifier des propriétés de borniers</source>
+    <target>Klemens grubu özelliklerini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Bir metin alanının hizalamasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;une en tête de tableau</source>
+    <target>Bir tablo başlığının hizalamasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement des textes d&apos;un tableau</source>
+    <target>Bir tablonun metinlerinin hizalamasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Etiket hizalamasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Bir yayın açısını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Bir şeklin açısını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Bir görüntünün açısını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Bir görüntünün eğimini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Ana öğe etiketi dizinini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Ana öğe etiketini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la conservation de l&apos;angle</source>
+    <target>Açı korumasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur d&apos;un pont de bornes</source>
+    <target>Bir terminal köprüsünün rengini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Etiket rengini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>%1 öğesinin eğriliğini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>%1 öğesinin şeklini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la géometrie d&apos;un tableau</source>
+    <target>Bir tablonun geometrisini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Bir görüntünün yüksekliğini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Bir görüntünün genişliğini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Bir çizginin uzunluğunu değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la police d&apos;une en tête de tableau</source>
+    <target>Bir tablo başlığının yazı tipini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Etiket yazı tipini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Etiket konumunu değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Etiket döndürmesini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Bir şeklin boyutunu değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Etiket yazı tipi boyutunu değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le maintient de la rotation d&apos;un texte d&apos;élément</source>
+    <target>Bir eleman metninin döndürme korumasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Terminal adını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom du terminal</source>
+    <target>Terminal adını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le nombre de ligne affiché par un tableau</source>
+    <target>Bir tablonun gösterdiği satır sayısını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Bir metin alanının dönme noktasını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Bir düğümün türünü değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;une borne</source>
+    <target>Bir terminalin türünü değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier les informations de plusieurs éléments</source>
+    <target>Birden fazla öğenin bilgilerini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier les marges d&apos;un tableau</source>
+    <target>Bir tablonun kenar boşluklarını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier les marges d&apos;une en tête de tableau</source>
+    <target>Bir tablo başlığının kenar boşluklarını değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier les propriétées de l&apos;élément</source>
+    <target>Öğenin özelliklerini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier les propriétés d&apos;un élement</source>
+    <target>Bir elemanın özelliklerini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier les proriétés d&apos;un groupe de bornes</source>
+    <target>Bir terminal grubunun özelliklerini değiştir</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Bir görüntüyü değiştir</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>PLC modülü</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Şablon</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Şablon kaydedildi</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Şablonlar</target>
+</phrase>
+<phrase>
+    <source>Mongol</source>
+    <target>Moğolca</target>
+</phrase>
+<phrase>
+    <source>Monter la sélection</source>
+    <target>Seçimi yukarı taşı</target>
+</phrase>
+<phrase>
+    <source>Méthode de mise à l&apos;echelle des écrans à haute densité de pixels (hdpi) (appliqué au prochain lancement de QElectroTech) :</source>
+    <target>Yüksek piksel yoğunluklu (hdpi) ekranlar için ölçekleme yöntemi (QElectroTech&apos;in sonraki başlatmasında uygulanır):</target>
+</phrase>
+<phrase>
+    <source>N&apos;est pas vide</source>
+    <target>Boş değil</target>
+</phrase>
+<phrase>
+    <source>N&apos;est pas égale à</source>
+    <target>Eşit değildir</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>Sayı</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>Terminal sayısı</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>Kontak sayısı</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (SW kontağı)</target>
+</phrase>
+<phrase>
+    <source>Ne contient pas</source>
+    <target>İçermez</target>
+</phrase>
+<phrase>
+    <source>Neutre</source>
+    <target>Nötr</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NO (SW kontağı)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>.edz içinde *.part.xml bulunamadı</target>
+</phrase>
+<phrase>
+    <source>Nom :</source>
+    <target>Ad :</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Elemanın dosya adı</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Elemanın dosya adı: yalnızca rakamlar, küçük harfler, « - », « _ » ve « . ».
+Elemanın görünen adı, eleman özelliklerinde ayrıca değiştirilir.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Terminal adı</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Yeni şablonun adı</target>
+</phrase>
+<phrase>
+    <source>Nom du tableau</source>
+    <target>Tablo adı</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Sütunun özel adı (boş = varsayılan)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Elemanın adı, etiketi veya bilgisi…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>özellik_adı</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Terminal sayısı hatalı</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Kullanılan esclave kontak sayısı: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Maksimum köle sayısına ulaşıldı.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Tanımlanan maksimum esclave kontak sayısı: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Tanımlanan maksimum esclave kontak sayısı: tanımlanmadı
+</target>
+</phrase>
+<phrase>
+    <source>nomenclature_</source>
+    <target>nomenclature_</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>Hayır</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Yalnızca atanmamış</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Normalde kapalı</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Normalde açık</target>
+</phrase>
+<phrase>
+    <source>Norvege</source>
+    <target>Norveççe</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>Geçerli bir .edz paketi değil (tanınmayan arşiv biçimi).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Notlar</target>
+</phrase>
+<phrase>
+    <source>numero_de_fileries_</source>
+    <target>numero_de_fileries_</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Yalnızca sayısal (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article</source>
+    <target>Ürün numarası</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 1</source>
+    <target>Yardımcı ürün numarası 1</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 2</source>
+    <target>Yardımcı ürün numarası 2</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 3</source>
+    <target>Yardımcı ürün numarası 3</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 4</source>
+    <target>Yardımcı ürün numarası 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande</source>
+    <target>Sipariş numarası</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 1</source>
+    <target>Yardımcı sipariş numarası 1</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 2</source>
+    <target>Yardımcı sipariş numarası 2</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 3</source>
+    <target>Yardımcı sipariş numarası 3</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 4</source>
+    <target>Yardımcı sipariş numarası 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de conducteur</source>
+    <target>İletken numarası</target>
+</phrase>
+<phrase>
+    <source>Numéro du folio</source>
+    <target>Sayfa numarası</target>
+</phrase>
+<phrase>
+    <source>Numéro interne</source>
+    <target>Dahili numara</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 1</source>
+    <target>Yardımcı dahili numara 1</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 2</source>
+    <target>Yardımcı dahili numara 2</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 3</source>
+    <target>Yardımcı dahili numara 3</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 4</source>
+    <target>Yardımcı dahili numara 4</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Terminallerin otomatik numaralandırılması</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Bir iletkeni otomatik numaralandır</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Bir elemanı otomatik numaralandır</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Harfleri de numaralandır</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>En yakın düğüm</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>Tamam</target>
+</phrase>
+<phrase>
+    <source>Option d&apos;impression</source>
+    <target>Yazdırma seçeneği</target>
+</phrase>
+<phrase>
+    <source>Option de rendu</source>
+    <target>Oluşturma seçeneği</target>
+</phrase>
+<phrase>
+    <source>Options d&apos;impression</source>
+    <target>Yazdırma seçenekleri</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>Turuncu : Coral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>Turuncu : DarkOrange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>Turuncu : Orange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>Turuncu : OrangeRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>Turuncu : Tomato</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Organes de protection</source>
+    <target>Koruma elemanları</target>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Yön</target>
+</phrase>
+<phrase>
+    <source>Orientation :</source>
+    <target>Yön :</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Dikey başlangıç</target>
+</phrase>
+<phrase>
+    <source>Other</source>
+    <target>Diğer</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Evet</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Outil de traduction d&apos;éléments</source>
+    <target>Öğe çeviri aracı</target>
+    <definition>Qet_translate</definition>
+</phrase>
+<phrase>
+    <source>Outils</source>
+    <target>Araçlar</target>
+</phrase>
+<phrase>
+    <source>Ouvrir la configuration sélectionné</source>
+    <target>Seçili yapılandırmayı aç</target>
+</phrase>
+<phrase>
+    <source>Ouvrir un element</source>
+    <target>Bir eleman aç</target>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Sayfa</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page précédente</source>
+    <target>Önceki sayfa</target>
+</phrase>
+<phrase>
+    <source>Page suivante</source>
+    <target>Sonraki sayfa</target>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>İçe aktarılacak sayfa :</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Eleman paneli</target>
+</phrase>
+<phrase>
+    <source>Paquets Archlinux AUR</source>
+    <target>Archlinux AUR paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets Debian</source>
+    <target>Debian paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets Fedora et Red Hat</source>
+    <target>Fedora ve Red Hat paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets FreeBSD</source>
+    <target>FreeBSD paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets Gentoo</source>
+    <target>Gentoo paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets MAC OS X</source>
+    <target>MAC OS X paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets Mageia</source>
+    <target>Mageia paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets OS/2</source>
+    <target>OS/2 paketleri</target>
+</phrase>
+<phrase>
+    <source>Paquets Snap</source>
+    <target>Snap paketleri</target>
+</phrase>
+<phrase>
+    <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>Varsayılan olarak aşağıdaki değişkenler kullanılabilir:&lt;ul&gt;&lt;li&gt;%{author} : sayfanın yazarı&lt;/li&gt;&lt;li&gt;%{date} : sayfanın tarihi&lt;/li&gt;&lt;li&gt;%{title} : sayfanın başlığı&lt;/li&gt;&lt;li&gt;%{filename} : projenin dosya adı&lt;/li&gt;&lt;li&gt;%{plant} : sayfanın bulunduğu tesisin (=) adı&lt;/li&gt;&lt;li&gt;%{locmach} : sayfanın bulunduğu konumun (+) adı&lt;/li&gt;&lt;li&gt;%{indexrev} : sayfanın revizyon indeksi&lt;/li&gt;&lt;li&gt;%{version} : yazılım sürümü&lt;/li&gt;&lt;li&gt;%{folio} : sayfa numarası&lt;/li&gt;&lt;li&gt;%{folio-id} : sayfanın projedeki konumu&lt;/li&gt;&lt;li&gt;%{folio-total} : projedeki toplam sayfa sayısı&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : önceki sayfanın numarası&lt;/li&gt;&lt;li&gt;%{next-folio-num} : sonraki sayfanın numarası&lt;/li&gt;&lt;li&gt;%{projecttitle} : projenin başlığı&lt;/li&gt;&lt;li&gt;%{projectpath} : projenin yolu&lt;/li&gt;&lt;li&gt;%{projectfilename} : dosya adı&lt;/li&gt;&lt;li&gt;%{saveddate} : dosyanın yerel biçimde kaydedilme tarihi&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : dosyanın dd-MM-yyyy biçiminde kaydedilme tarihi&lt;/li&gt;&lt;li&gt;%{saveddate-us} : dosyanın yyyy-MM-dd biçiminde kaydedilme tarihi&lt;/li&gt;&lt;li&gt;%{savedtime} : dosyanın kaydedilme saati&lt;/li&gt;&lt;li&gt;%{savedfilename} : kaydedilen dosyanın adı&lt;/li&gt;&lt;li&gt;%{savedfilepath} : kaydedilen dosyanın yolu&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Parties</source>
+    <target>Parçalar</target>
+</phrase>
+<phrase>
+    <source>Pas d&apos;arrondi</source>
+    <target>Yuvarlama yok</target>
+</phrase>
+<phrase>
+    <source>Pas de filtre</source>
+    <target>Filtre yok</target>
+</phrase>
+<phrase>
+    <source>Paysage</source>
+    <target>Yatay</target>
+</phrase>
+<phrase>
+    <source>Phase</source>
+    <target>Faz</target>
+</phrase>
+<phrase>
+    <source>Pink : DeepPink</source>
+    <target>Pembe : DeepPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : HotPink</source>
+    <target>Pembe : HotPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : LightPink</source>
+    <target>Pembe : LightPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>Pembe : MediumVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>Pembe : PaleVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : Pink</source>
+    <target>Pembe : Pink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Seçimi her elemanı yerinde değil, merkezi etrafında bir grup olarak döndürür</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter la selection</source>
+    <target>Seçimi döndür</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Grubu döndür</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>döndür/eğ</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>EPLAN parçaları (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan de bornes</source>
+    <target>klemens planı</target>
+</phrase>
+<phrase>
+    <source>Plugin Bornier</source>
+    <target>Klemens eklentisi</target>
+</phrase>
+<phrase>
+    <source>PNG (*.png)</source>
+    <target>PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Poignées :</source>
+    <target>Tutamaklar:</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Metin bağlantı noktası ve satırların birbirine göre hizalanması</target>
+</phrase>
+<phrase>
+    <source>Point de pont</source>
+    <target>Köprü noktası</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Yazı tipi</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Yazı tipi:</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Başlık yazı tipi</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Sütun başlıklarının yazı tipi</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Başlık yazı tipi: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Metin yazı tipi</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Hücrelerin metin yazı tipi</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Metin yazı tipi: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Proje yazı tipleri</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Ponter des bornes entre-elles</source>
+    <target>Terminaller arasında köprü kur</target>
+</phrase>
+<phrase>
+    <source>Ponter les bornes</source>
+    <target>Klemensleri köprüle</target>
+</phrase>
+<phrase>
+    <source>Portrait</source>
+    <target>Dikey</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Konum</target>
+</phrase>
+<phrase>
+    <source>Position automatique</source>
+    <target>Otomatik konum</target>
+</phrase>
+<phrase>
+    <source>Position du folio</source>
+    <target>Sayfanın konumu</target>
+</phrase>
+<phrase>
+    <source>Première page</source>
+    <target>İlk sayfa</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Eksen önceliği</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>X ekseni önceliği (yatay)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Y ekseni önceliği (dikey)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Bu artışla uygulanacak sonraki değer</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Derinlik</target>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>proje</target>
+    <definition>string used to generate a filename</definition>
+</phrase>
+<phrase>
+    <source>Projet annexe</source>
+    <target>Ek proje</target>
+</phrase>
+<phrase>
+    <source>Projet sans titre</source>
+    <target>Başlıksız proje</target>
+</phrase>
+<phrase>
+    <source>Propriétés</source>
+    <target>Özellikler</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Metin özellikleri</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>Önizleme:</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Güç</target>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>Purple : BlueViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>Purple : DarkMagenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>Purple : DarkOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>Purple : DarkSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>Purple : DarkViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>Purple : Fuchsia</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>Purple : Indigo</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>Purple : Lavender</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>Purple : Magenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>Purple : MediumOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>Purple : MediumPurple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>Purple : MediumSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>Purple : Orchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>Purple : Plum</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>Purple : Purple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>Purple : SlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>Purple : Thistle</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>Purple : Violet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>px</source>
+    <target>px</target>
+</phrase>
+<phrase>
+    <source>QElectroTech - Éditeur d&apos;élément</source>
+    <target>QElectroTech - Eleman düzenleyici</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech son çalıştırıldığında düzgün kapanmadı.
+Kapanmadan önce kaydedilen son mesajlar aşağıdadır -- bunları bir hata raporuna eklemek için kaydedebilirsiniz.</target>
+</phrase>
+<phrase>
+    <source>QElectroTech, une application de réalisation de schémas électriques.</source>
+    <target>QElectroTech, elektrik şemaları oluşturma uygulaması.</target>
+    <definition>about tab, description line</definition>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+%1 içe aktarma / ölçekleme hakkında ek bilgi</target>
+</phrase>
+<phrase>
+    <source>Quantité</source>
+    <target>Miktar</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 1</source>
+    <target>Yardımcı miktar 1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 2</source>
+    <target>Yardımcı miktar 2</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 3</source>
+    <target>Yardımcı miktar 3</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 4</source>
+    <target>Yardımcı miktar 4</target>
+</phrase>
+<phrase>
+    <source>Quantité numéro d&apos;article</source>
+    <target>Miktar parça numarası</target>
+    <definition>Special field with name : designation quantity</definition>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Kısayol</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Kısayollar</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Tanılama raporu</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Çökme raporu</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>X yarıçapı</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Y yarıçapı</target>
+</phrase>
+<phrase>
+    <source>Recharger</source>
+    <target>Yeniden yükle</target>
+</phrase>
+<phrase>
+    <source>Recharger les borniers</source>
+    <target>Klemensleri yeniden yükle</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Arama</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Sayfadaki bir elemanı hızlıca arar ve seçer</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Ara...</target>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>Kırmızı : Crimson</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>Kırmızı : DarkRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>Kırmızı : DarkSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>Kırmızı : Firebrick</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>Kırmızı : IndianRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>Kırmızı : LightCoral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>Kırmızı : LightSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Red</source>
+    <target>Kırmızı : Red</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>Kırmızı : Salmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>yeniden boyutlandır</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>%1 öğesini yeniden boyutlandır</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Bir görüntüyü yeniden boyutlandır</target>
+</phrase>
+<phrase>
+    <source>Redimensionneur d&apos;éléments</source>
+    <target>Öğe boyutlandırıcı</target>
+    <definition>Element scaler</definition>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Not: Maksimum köle sayısına ulaşan ana elemanlar gizlenir.</target>
+</phrase>
+<phrase>
+    <source>Remonter ce folio x100</source>
+    <target>Bu sayfayı x100 yukarı taşı</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Görüntüyü değiştir...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Bir görüntüyü değiştir</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Ana elemandan devral</target>
+</phrase>
+<phrase>
+    <source>Requête</source>
+    <target>İstek</target>
+</phrase>
+<phrase>
+    <source>Requête SQL :</source>
+    <target>SQL sorgusu:</target>
+</phrase>
+<phrase>
+    <source>Requête SQL personnalisée</source>
+    <target>Özel SQL sorgusu</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Oranları geri yükle</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Bir görüntünün oranlarını geri yükle</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Bu rengi kaldır</target>
+</phrase>
+<phrase>
+    <source>Retourner l&apos;élément :</source>
+    <target>Elemanı döndür:</target>
+</phrase>
+<phrase>
+    <source>Retourner la sélection</source>
+    <target>Seçimi ters çevir</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Revenir au debut du projet</source>
+    <target>Projenin başına dön</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Kırpma olmadan tam görüntüye dön</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Sağ</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Görüntüyü kırp</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Bir görüntüyü kırp</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Kırp...</target>
+</phrase>
+<phrase>
+    <source>Rotation</source>
+    <target>Döndürme</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Döndürme :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Döndürme/Eğme</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Ref.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Çapraz referans</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>PLC çapraz referansı</target>
+</phrase>
+<phrase>
+    <source>Référence croisé</source>
+    <target>Çapraz referans</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Çapraz referans</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Sıfırla</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Bu kısayolu sıfırla</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Başlangıç değerine sıfırla</target>
+</phrase>
+<phrase>
+    <source>Répertoire de la collection company</source>
+    <target>company koleksiyonu dizini</target>
+</phrase>
+<phrase>
+    <source>Répertoire des cartouches company</source>
+    <target>company kartuşları dizini</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Kullanıcı makroları dizini</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Çözünürlük :</target>
+</phrase>
+<phrase>
+    <source>Sans</source>
+    <target>Yok</target>
+</phrase>
+<phrase>
+    <source>sans_nom</source>
+    <target>adsız</target>
+</phrase>
+<phrase>
+    <source>sansnom</source>
+    <target>adsız</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>%1 sonrasında atla:</target>
+</phrase>
+<phrase>
+    <source>Sauvegarder la configuration actuelle</source>
+    <target>Geçerli yapılandırmayı kaydet</target>
+</phrase>
+<phrase>
+    <source>Section du conducteur</source>
+    <target>İletken kesiti</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Tel kesiti</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Ayırıcılı</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionnable</source>
+    <target>Ayrılabilir</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Ayrıntıları burada görün:</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Bir görüntü seç...</target>
+</phrase>
+<phrase>
+    <source>Si cette option est cochée, le folio sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page."</source>
+    <target>Bu seçenek işaretlenirse, sayfa tek bir sayfanın yazdırılabilir tüm yüzeyini dolduracak şekilde büyütülür veya küçültülür."</target>
+</phrase>
+<phrase>
+    <source>Si cette option est cochée, les marges de la feuille seront  ignorées et toute sa surface sera utilisée pour l&apos;impression.  Cela peut ne pas être supporté par votre imprimante.</source>
+    <target>Bu seçenek işaretlenirse, kağıdın kenar boşlukları yok sayılır ve tüm yüzeyi yazdırma için kullanılır. Bu, yazıcınız tarafından desteklenmeyebilir.</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Basit</target>
+</phrase>
+<phrase>
+    <source>Simples</source>
+    <target>Basit</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Analog çıkış</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Dijital çıkış</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Evrensel çıkış</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>Yedek kopya oluşturmak istiyor musunuz?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Alt tür</target>
+</phrase>
+<phrase>
+    <source>Sous-type : %1
+</source>
+    <target>Alt tür: %1
+</target>
+</phrase>
+<phrase>
+    <source>Soutenir le projet par un don</source>
+    <target>Projeyi bağışla destekleyin</target>
+</phrase>
+<phrase>
+    <source>Soutenir le projet QElectroTech par un don</source>
+    <target>QElectroTech projesini bağışla destekleyin</target>
+</phrase>
+<phrase>
+    <source>Style :</source>
+    <target>Stil :</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Sonraki</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Bu projede geçirilen süreyi takip et (yalnızca bu dosyada yerel olarak kaydedilir)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Terminal silinemiyor</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Kaldır</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>%1 sayfayı sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Bu özelliği sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer des ponts de bornes</source>
+    <target>Terminal köprülerini sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer la sélection</source>
+    <target>Seçimi sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer le bornier</source>
+    <target>Klemensi sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer le bornier du projet</source>
+    <target>Klemensi projeden sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>En yakın düğümü sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Sayfaları sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Bir sayfayı sil</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un groupe de bornes</source>
+    <target>Bir terminal grubunu sil</target>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Bir eğriden nokta sil</target>
+</phrase>
+<phrase>
+    <source>Suédois</source>
+    <target>İsveççe</target>
+</phrase>
+<phrase>
+    <source>SVG (*.svg)</source>
+    <target>SVG (*.svg)</target>
+</phrase>
+<phrase>
+    <source>SVG: fond transparent</source>
+    <target>SVG: saydam arka plan</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Simetrik</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Kontak sistemi değiştirildi</target>
+</phrase>
+<phrase>
+    <source>Séctionnable</source>
+    <target>Ayırıcılı</target>
+</phrase>
+<phrase>
+    <source>Sélectionner la police des cellules du tableau</source>
+    <target>Tablo hücrelerinin yazı tipini seç</target>
+</phrase>
+<phrase>
+    <source>Sélectionner la police des en tête du tableau</source>
+    <target>Tablo başlıklarının yazı tipini seç</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les conducteurs de ce folio</source>
+    <target>Bu sayfanın iletkenlerini seç</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les textes de ce folio</source>
+    <target>Bu sayfanın metinlerini seç</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les éléments de ce folio</source>
+    <target>Bu sayfanın elemanlarını seç</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Bir PDF dosyası seç...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Bir kontak grubu seçin</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Bir PLC G/Ç seçin</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Bir sayfa seç</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Bu bağımlı öğeye atanacak kontak grubunu seçin:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Potansiyel ayırma</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>PLC tablosu</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>PLC tablosu (boş)</target>
+</phrase>
+<phrase>
+    <source>Tableau</source>
+    <target>Tablo</target>
+</phrase>
+<phrase>
+    <source>Tableau précédent</source>
+    <target>Önceki tablo</target>
+</phrase>
+<phrase>
+    <source>Tableau précédent :</source>
+    <target>Önceki tablo:</target>
+</phrase>
+<phrase>
+    <source>Tableau suivant</source>
+    <target>Sonraki tablo</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Boyut</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Boyut:</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Diagram-Editor ızgara noktalarının boyutu: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>Eleman düzenleyici ızgara noktalarının boyutu: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>Gecikmeli bırakma</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>Gecikmeli çalışma</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>Gecikmeli çalışma ve bırakma</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Bu projede geçirilen süre :</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Gerilim / Protokol</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Nominal gerilim</target>
+</phrase>
+<phrase>
+    <source>Terre</source>
+    <target>Toprak</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Klemens metni</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Başlık metni</target>
+</phrase>
+<phrase>
+    <source>Texte des en-têtes</source>
+    <target>Başlık metni</target>
+</phrase>
+<phrase>
+    <source>Texte du tableau</source>
+    <target>Tablo metni</target>
+</phrase>
+<phrase>
+    <source>TextLabel</source>
+    <target>TextLabel</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Bu .edz bir zip biçimli pakettir ve henüz desteklenmiyor (yalnızca 7-Zip .edz dosyaları içe aktarılabilir).</target>
+</phrase>
+<phrase>
+    <source>this is an error in the code</source>
+    <target>this is an error in the code</target>
+</phrase>
+<phrase>
+    <source>Titre du folio</source>
+    <target>Sayfa başlığı</target>
+</phrase>
+<phrase>
+    <source>To high values might lead to crashes of the application.</source>
+    <target>Yüksek değerler uygulamanın çökmesine yol açabilir.</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>qet_tb_generator eklentisini kurmak için&lt;br&gt;Şu adresi ziyaret edin :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSX&apos;te ilk kurulum&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Gerekirse yalnızca python 3.11 paketini kurun, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2. Profile.command betiğini çalıştırın&lt;br&gt;çünkü program qet-tb-generator eklentisini bulmak için sabit kodlanmış PATH kullanır &lt;br&gt; Şu adresi ziyaret edin :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;nasıl yapılır&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; macOSX&apos;te güncelleme&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>qet_tb_generator eklentisini kurmak için&lt;br&gt;Şu adresi ziyaret edin :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Python 3.5 veya üzeri gerektirir.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux&apos;ta ilk kurulum&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. pip3&apos;ün kurulu olduğunu kontrol edin: pip3 --version&lt;br&gt;Kurulu değilse şununla kurun: sudo apt-get install python3-pip&lt;br&gt;2. Programı kurun: sudo pip3 install qet_tb_generator&lt;br&gt;3. Programı çalıştırın: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Linux&apos;ta güncelleme&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Bu renk için tolerans</target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target>toolBar</target>
+</phrase>
+<phrase>
+    <source>Toujours arrondi inférieur</source>
+    <target>Her zaman aşağı yuvarla</target>
+</phrase>
+<phrase>
+    <source>Toujours arrondi supérieur</source>
+    <target>Her zaman yukarı yuvarla</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Kendi merkezi etrafında döndür</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Tümü</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Tüm dosyalar (*)</target>
+</phrase>
+<phrase>
+    <source>Tout cocher</source>
+    <target>Tümünü işaretle</target>
+</phrase>
+<phrase>
+    <source>Tout décocher</source>
+    <target>Tümünün işaretini kaldır</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Tümünü sıfırla</target>
+</phrase>
+<phrase>
+    <source>Toutes</source>
+    <target>Tümü</target>
+</phrase>
+<phrase>
+    <source>Toutes les dates</source>
+    <target>Tüm tarihler</target>
+</phrase>
+<phrase>
+    <source>Traducteurs</source>
+    <target>Çevirmenler</target>
+</phrase>
+<phrase>
+    <source>Traduction en allemand</source>
+    <target>Almanca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en arabe</source>
+    <target>Arapça çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en brézilien</source>
+    <target>Brezilya Portekizcesi çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en catalan</source>
+    <target>Katalanca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Korece çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en croate</source>
+    <target>Hırvatça çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en danois</source>
+    <target>Danca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en espagnol</source>
+    <target>İspanyolca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en flamand</source>
+    <target>Flamanca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en grec</source>
+    <target>Yunanca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en hongrois</source>
+    <target>Macarca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en italien</source>
+    <target>İtalyanca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en japonais</source>
+    <target>Japonca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en mongol</source>
+    <target>Moğolca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en norvégien</source>
+    <target>Norveççe çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en néerlandais</source>
+    <target>Hollandaca çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en polonais</source>
+    <target>Lehçe çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en portugais</source>
+    <target>Portekizce çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en roumain</source>
+    <target>Romence çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en russe</source>
+    <target>Rusça çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en serbe</source>
+    <target>Sırpça çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en slovène</source>
+    <target>Slovence çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en tchèque</source>
+    <target>Çekçe çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en Turc</source>
+    <target>Türkçe çeviri</target>
+</phrase>
+<phrase>
+    <source>Traduction en ukrainien</source>
+    <target>Ukraynaca çeviri</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>%1 dönüştür</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Saydamlık korunmuyor</target>
+</phrase>
+<phrase>
+    <source>Trier le bornier %1</source>
+    <target>%1 terminal kutusunu sırala</target>
+</phrase>
+<phrase>
+    <source>Trop de primitives, liste non générée: %1</source>
+    <target>Çok fazla ilkel öğe, liste oluşturulmadı: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Tür</target>
+</phrase>
+<phrase>
+    <source>Type :</source>
+    <target>Tür:</target>
+</phrase>
+<phrase>
+    <source>Type : %1
+</source>
+    <target>Tür: %1
+</target>
+</phrase>
+<phrase>
+    <source>Type d&apos;éléments</source>
+    <target>Eleman türleri</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Numaralandırma türü</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>PLC türü</target>
+</phrase>
+<phrase>
+    <source>Télechargement</source>
+    <target>İndirme</target>
+</phrase>
+<phrase>
+    <source>Ukrainien</source>
+    <target>Ukraynaca</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>bir yay</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>bir köşe</target>
+</phrase>
+<phrase>
+    <source>un element graphique</source>
+    <target>bir grafik öğe</target>
+</phrase>
+<phrase>
+    <source>Un fichier</source>
+    <target>Bir dosya</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>bir nokta</target>
+</phrase>
+<phrase>
+    <source>Un élément</source>
+    <target>Bir öğe</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>bir eğri</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>bir uç</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>bir görüntü</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unité</source>
+    <target>Birim</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 1</source>
+    <target>Yardımcı birim 1</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 2</source>
+    <target>Yardımcı birim 2</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 3</source>
+    <target>Yardımcı birim 3</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 4</source>
+    <target>Yardımcı birim 4</target>
+</phrase>
+<phrase>
+    <source>Utiliser toute la feuille</source>
+    <target>Tüm kağıdı kullan</target>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Değer</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Sayaç değeri. Değiştirmek için yeni bir değer girip onaylayın.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Önceki basamağı artırırken bu basamağın 0&apos;a döndüğü değer (0 = döngü yok)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Otomatik numaralandırmayı kilitle</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Konumu kilitle</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Kilitli: genişliği veya yüksekliği değiştirmek, oranları korumak için diğerini ayarlar. Kilidi açmak için tıklayın.</target>
+</phrase>
+<phrase>
+    <source>vers le groupe de bornes %1</source>
+    <target>%1 terminal grubuna</target>
+</phrase>
+<phrase>
+    <source>vers un groupe de bornes</source>
+    <target>bir terminal grubuna</target>
+</phrase>
+<phrase>
+    <source>Version</source>
+    <target>Sürüm</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Dikey</target>
+</phrase>
+<phrase>
+    <source>Vertical :</source>
+    <target>Dikey:</target>
+</phrase>
+<phrase>
+    <source>Vignette</source>
+    <target>Küçük resim</target>
+</phrase>
+<phrase>
+    <source>Vignettes</source>
+    <target>Küçük resimler</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Görünür</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Bu elemanı gör</target>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>White : AliceBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>White : AntiqueWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>White : Azure</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>White : Beige</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>White : FloralWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>White : GhostWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>White : Honeydew</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>White : Ivory</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>White : LavenderBlush</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>White : Linen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>White : MintCream</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>White : MistyRose</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>White : OldLace</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>White : Seashell</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>White : Snow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>White : White</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>White : WhiteSmoke</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>X</source>
+    <target>X</target>
+</phrase>
+<phrase>
+    <source>x 1</source>
+    <target>x 1</target>
+</phrase>
+<phrase>
+    <source>x 2</source>
+    <target>x 2</target>
+</phrase>
+<phrase>
+    <source>x 3</source>
+    <target>x 3</target>
+</phrase>
+<phrase>
+    <source>X :</source>
+    <target>X:</target>
+</phrase>
+<phrase>
+    <source>X1 :</source>
+    <target>X1:</target>
+</phrase>
+<phrase>
+    <source>X2 :</source>
+    <target>X2 :</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>X: %1 Y: %2</source>
+    <target>X: %1 Y: %2</target>
+</phrase>
+<phrase>
+    <source>Y</source>
+    <target>Y</target>
+</phrase>
+<phrase>
+    <source>Y :</source>
+    <target>Y:</target>
+</phrase>
+<phrase>
+    <source>Y1 :</source>
+    <target>Y1 :</target>
+</phrase>
+<phrase>
+    <source>Y2 :</source>
+    <target>Y2 :</target>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>Yellow : DarkKhaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>Yellow : Gold</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>Yellow : Khaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>Yellow : LemonChiffon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>Yellow : LightGoldenrodYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>Sarı : LightYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>Yellow : Moccasin</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>Yellow : PaleGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>Yellow : PapayaWhip</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>Yellow : PeachPuff</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>Sarı : Yellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Zoom arrière</source>
+    <target>Uzaklaştır</target>
+</phrase>
+<phrase>
+    <source>Zoom avant</source>
+    <target>Yakınlaştır</target>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>À &amp;propos de QElectroTech</source>
+    <target>QElectroTech &amp;hakkında</target>
+</phrase>
+<phrase>
+    <source>À la date du  :</source>
+    <target>Şu tarihe kadar :</target>
+</phrase>
+<phrase>
+    <source>À partir de la date du :</source>
+    <target>Şu tarihten itibaren :</target>
+</phrase>
+<phrase>
+    <source>À propos</source>
+    <target>Hakkında</target>
+</phrase>
+<phrase>
+    <source>À propos de &amp;Qt</source>
+    <target>&amp;Qt hakkında</target>
+</phrase>
+<phrase>
+    <source>À propos de QElectrotech</source>
+    <target>QElectrotech Hakkında</target>
+</phrase>
+<phrase>
+    <source>à un groupe de bornes</source>
+    <target>bir terminal grubuna</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Kaydetme başarısız</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Dışa aktarma başarısız</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>Şablonun üzerine yazılsın mı?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditer</source>
+    <target>Düzenle</target>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Öğe düzenleyici</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Başlık bloğu düzenleyici</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Şema düzenleyici</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Metin düzenleyici</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Düğüm düzenleme</target>
+</phrase>
+<phrase>
+    <source>Élément</source>
+    <target>Eleman</target>
+</phrase>
+<phrase>
+    <source>Élément bornier</source>
+    <target>Bornier elemanı</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt)</source>
+    <target>QElectroTech öğeleri (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Épaisseur :</source>
+    <target>Kalınlık :</target>
+</phrase>
+<phrase>
+    <source>Étage</source>
+    <target>Kat</target>
+</phrase>
+<phrase>
+    <source>Étage :</source>
+    <target>Kat:</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Ana etiket</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>Bu sayfayı silmek istediğinizden emin misiniz ?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>Bu sayfayı projeden silmek istediğinizden emin misiniz ?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>Seçili %1 sayfayı silmek istediğinizden emin misiniz ?</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>Pano</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>Bobin</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>Klemens</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>Klemens kutusu</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>Anma değeri</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>Başlık bloğu</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>İletken</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>Kontaktör</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>Akım</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>Devre kesici</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>Klasör</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>Öğe</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>Yardımcı</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>Izgara</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>Anahtar</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>Ana</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>Şablon</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>Motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>Malzeme listesi</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>Numaralandırma</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>Potansiyel</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>Röle</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>Sayfa çapraz referansı</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>Tanımlama</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>Sayfa çapraz referansı</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>Şema</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>Kesit</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>İçindekiler</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>Gerilim</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>Metin</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>Transformatör</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>
