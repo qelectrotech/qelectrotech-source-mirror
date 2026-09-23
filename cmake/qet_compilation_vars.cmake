@@ -721,6 +721,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.cpp
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.h
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp

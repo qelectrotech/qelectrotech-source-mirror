@@ -199,6 +199,8 @@ class QETDiagramEditor : public QETMainWindow
 		*undo,				///< Cancel the latest action
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
+		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
+		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
 		*m_draw_grid,			///< Switch the background grid display or not
