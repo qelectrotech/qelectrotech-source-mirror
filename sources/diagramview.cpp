@@ -1477,7 +1477,7 @@ void DiagramView::createTemplateFromSelection()
 
 				collection_node.appendChild(collection_elmt);
 			} else {
-				qDebug() << "Warnung: Konnte XML-Definition für" << old_type << "nicht laden.";
+				qDebug() << "Warning: could not load XML definition for" << old_type;
 			}
 		}
 	}
