@@ -114,6 +114,7 @@ class Conductor : public QGraphicsObject
 	public:
 		QVector <QPointF> handlerPoints() const;
 		const QList<ConductorSegment *> segmentsList() const;
+		bool moveSegment(int index, qreal dx, qreal dy);
 
 		void setPropertyToPotential(
 				const ConductorProperties &property,

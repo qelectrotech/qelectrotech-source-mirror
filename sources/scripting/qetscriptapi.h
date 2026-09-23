@@ -22,6 +22,7 @@
 #include <QString>
 #include <QStringList>
 #include <QVariantList>
+#include <QVariantMap>
 
 class QETProject;
 class DiagramView;
@@ -30,6 +31,9 @@ class Terminal;
 class Conductor;
 class IndependentTextItem;
 class QetShapeItem;
+class DiagramImageItem;
+class DynamicElementTextItem;
+class QetGraphicsTableItem;
 
 /**
 	@brief The QetScriptApi class
@@ -93,13 +97,18 @@ class QetShapeItem;
 
 	  Terminals are addressed by their @b index in Element::terminals(),
 	  not by uuid, and elementTerminals() prints that indexing so a script
-	  can see what it is about to wire. Terminal uuids look like the
+	  can see what it is about to wire. The index is the terminal's place
+	  in the element's own top-to-bottom, left-to-right ordering, not the
+	  order its definition file lists them. Terminal uuids look like the
 	  obvious key and are not one: Terminal::uuid() is a property of the
 	  catalog .elmt definition, empty for most of the installed base and,
 	  where present, identical across every instance of that element -- so
 	  it does not distinguish one placed coil's A1 from another's.
 	- @b Conductor properties and @b cross-references: set a conductor's
-	  number, formula, colour or section, and link a master to a slave or
+	  number, formula, colour or section (and its look: style normal/
+	  dashed/dashdotted, two-colour mode and second colour, dash size,
+	  line width, text size, whether its number is shown -- all under the
+	  names the .qet file uses for them), and link a master to a slave or
 	  one report to another. Both follow the application's own rules rather
 	  than writing the field: a conductor property is applied to every
 	  conductor of the same electrical potential, which is what the GUI and
@@ -123,7 +132,11 @@ class QetShapeItem;
 	  its circuit -- a free-standing note, a line, a rectangle, an ellipse
 	  -- added with the same AddGraphicsObjectCommand the corresponding GUI
 	  tools use, and changed through the plainText/color/rotation
-	  properties those items already publish.
+	  properties those items already publish. A shape's look is set with
+	  setShapeProperty(): color and fill (a colour name, or "none" for no
+	  fill), width, line-style (solid, dashed, dotted, dashdot) and
+	  rotation, through the pen/brush/rotation properties the shape's own
+	  style editor changes.
 
 	  These are addressed by @b index into a listing sorted by position
 	  (top to bottom, then left to right), because unlike an element they
@@ -150,6 +163,157 @@ class QetShapeItem;
 	  depend on. The underlying tables are how the cache happens to be
 	  arranged today, and a column may move. tables() lists both so a
 	  script can see what it is querying rather than guess.
+	- @b Terminal @b strips: create a strip, put terminal-type elements on
+	  it, remove it. Strips are addressed by index into terminalStrips(),
+	  which is the project's own order (unlike texts and shapes it is not
+	  re-sorted) and does shift when one is removed. Only elements whose
+	  link type is "terminal" can be added, the same restriction the
+	  editor enforces by construction.
+
+	  stripRealTerminals() lists the strip's real terminals -- the actual
+	  wire-ends added by addTerminalToStrip(), one per index -- which
+	  physical position (clamp) each currently sits on and how many
+	  neighbours share it, since that is what groupTerminals() and
+	  bridgeTerminals() address by index into.
+
+	  groupTerminals() merges several real terminals onto one physical
+	  position, choosing the receiving position the same way the terminal
+	  strip editor's own "group" button does: the position among the ones
+	  named that already carries the most real terminals, not necessarily
+	  the first one given -- a script asking to group indices [0, 1] is not
+	  guaranteed index 0's position is where they end up. bridgeTerminals()
+	  wires several real terminals together electrically without merging
+	  their positions, refused (TerminalStrip::isBridgeable()) when they
+	  are not all at the same level -- the same check the editor's bridge
+	  button applies, not a rule reimplemented here. sortTerminalStrip()
+	  reorders the strip's physical positions into the canonical order the
+	  editor's own sort button computes.
+	- @b Tables: a BOM/nomenclature or a summary (table of contents) placed
+	  on a folio, through QetGraphicsTableFactory::create() -- the same
+	  factory call the "add table" menu action makes, minus the modal
+	  AddTableDialog it collects its settings from first. That dialog is
+	  still built here, off-screen and never shown or exec'd: addTable()
+	  calls setTableName() and the query widget's setQuery() on it, the
+	  same as a user filling in the form, and forces its two checkboxes
+	  ("adjust table to folio" and "add a new folio if the table overflows"
+	  it) off regardless of their .ui-file default of checked -- a script
+	  calling addTable() once should create exactly the one table it asked
+	  for, not possibly several spread across folios it never asked to add.
+	  A script that wants either behaviour can resize the result itself or
+	  add its own folio.
+
+	  Neither creating nor deleting a table is undoable:
+	  QetGraphicsTableFactory::newTable(), which create() calls, calls
+	  Diagram::addItem() directly, with no undo command of its own, in the
+	  stock "add table" action as much as here -- a pre-existing gap in the
+	  application, not something introduced by this API. Tables are
+	  addressed by index in a position-sorted listing, like texts, shapes
+	  and images.
+	- @b Auto-numbering: define a named numbering context of kind
+	  "conductor", "element" or "folio", built from parts written
+	  "type[:value[:increase]]" -- types are the ones the auto-numbering
+	  dialog offers (string, unit, ten, hundred, alpha, idfolio, folio,
+	  plant, locmach, elementline, elementcolumn, elementprefix, wrap,
+	  unitfolio, tenfolio, hundredfolio) -- and select which one a folio's
+	  new conductors use. Defining or removing a context is not undoable,
+	  because the application itself does it through direct project calls
+	  and only the counter advance is on the undo stack; the numbering
+	  actually applied to a conductor is.
+
+	  For elements, useElementAutoNum() selects the current context and
+	  numberElement() applies it to one element, as the "add element" tool
+	  does right after placing one. addElement() deliberately does not
+	  number what it places: doing it silently would change what an existing
+	  script produces the moment its project happens to have a context
+	  selected, so it is a separate, explicit call. Folio auto-numbering is
+	  not offered: in the application it spawns whole new folios from a
+	  context, which is a different operation from labelling.
+	- @b Duplicating: copy elements, together with the conductors that run
+	  between them, to a position on the same or another folio, through
+	  Diagram::toXml() and fromXml() and PasteDiagramCommand -- what Ctrl+C
+	  and Ctrl+V do, so a paste behaves as a paste does there: the copies
+	  come without their labels and without their conductors' wire numbers,
+	  which the application clears on paste (measured: '' on both).
+	  The position is the top left of the pasted group's bounding rectangle,
+	  so an element's own origin ends up offset from it by its hotspot
+	  (measured: +20, +30 for a coil); (0, 0) is not a position but means
+	  "keep the source coordinates", as Diagram::fromXml() treats it. The
+	  result lists the copies in the order the elements were named --
+	  the application's own list is in scene order, and a caller pairing by
+	  index would otherwise be wired to the wrong copies -- paired by
+	  position, which a paste preserves, so two elements at the same point
+	  cannot be told apart. A conductor is copied
+	  only if both its ends are among the copied elements. The previous
+	  selection is put back afterwards, since copying works by selecting.
+	- @b Project title and folio frame: setProjectTitle(), and the grid that
+	  frames each folio -- columns and rows, their size, and whether the
+	  headers show (columns, column-width, display-columns, rows, row-height,
+	  display-rows) -- through ChangeBorderCommand. These are the six fields
+	  the folio properties panel offers; the title block's header sizes,
+	  which it does not, are left alone. Changing the project title is not
+	  undoable: the application sets it directly too.
+
+	  A folio's title block @b template is a seventh, separate case:
+	  Diagram::setTitleBlockTemplate() resolves a name only against
+	  QETProject::embeddedTitleBlockTemplatesCollection() -- the same
+	  copy-into-the-project step addElement() already does for elements,
+	  and for the same reason (a project opened on another machine must not
+	  depend on files only this one has). titleBlockTemplates() lists what
+	  is embedded and what is available to embed from the common/company
+	  /custom collections, each name suffixed with its source;
+	  embedTitleBlockTemplate() does the copy (QDomElement in, unmodified,
+	  via *TemplatesCollection::get/setTemplateXmlDescription() -- neither
+	  side is scripting-specific code, both already exist for the template
+	  editor to call). setFolioProperty(folio, "template", name) then
+	  embeds it first if it is not already, refusing only if no collection
+	  has that name at all. Embedding is not undoable, the same as defining
+	  an auto-numbering context is not: the application does both through
+	  direct collection/project calls with no undo command of their own.
+	  A template literally named "default" reads back as folioProperty()
+	  "" afterwards, not "default": BorderTitleBlock::titleBlockTemplateName()
+	  treats the two as the same thing, since "no override" already renders
+	  with the template named "default".
+	- @b Geometry and folio order: elementGeometry() reads where an element
+	  is -- x, y (its origin), rotation, and the box it occupies on the folio
+	  (left, top, right, bottom) -- so a script can lay one thing out relative
+	  to another instead of only setting absolute coordinates, and can check
+	  that a move landed. insertFolio() puts a new folio at a position
+	  instead of at the end, which is what reordering is mostly for while
+	  moving an existing folio still needs the application's project view.
+	- @b Images: place a picture from a file. The pixels are copied into
+	  the project, which stores them inline in the .qet -- the saved file
+	  does not refer to the original path, so it opens on another machine,
+	  and it grows by roughly the size of the image, which is why files
+	  over 10 MB are refused. Images are addressed by index in a
+	  position-sorted listing, like texts and shapes -- by the on-screen
+	  bounding box, so scaling or rotating an image, which turns about its
+	  centre, can change where it sorts. Re-list after either.
+	- @b Element @b texts: the text fields drawn on a symbol -- its label,
+	  the names beside its terminals, any value the definition placed there.
+	  A symbol arrives with the fields its definition gives it; setElementLabel()
+	  fills the value one of them shows, and these methods control the fields
+	  themselves: where each sits, its size, whether it draws a frame, what it
+	  shows, and adding or deleting one. Addressed by index in the element's
+	  own list, which follows the definition's order and shifts when one is
+	  deleted -- and undoing a deletion puts the field back at the end, so
+	  list again after either.
+
+	  Two things called text, which differ for a field bound to an
+	  information key: the @b "text" property is the field's stored string,
+	  which for an information-bound field is an unused placeholder (empty,
+	  or "Texte" once one has been added), and @b "shows" is what is drawn,
+	  which follows the element's information straight away -- compared
+	  against elementInfo() at seven points across relabel, rebinding,
+	  setting and undo, with no difference. Read "shows".
+
+	  Consecutive setElementInfo()/setElementLabel() calls on one element
+	  merge into a single undo step, as ChangeElementInformationCommand
+	  does, so one undo can revert several.
+
+	  A field's @b source is "text" (a fixed string), "info" (the value of one
+	  of the element's information keys, so it follows setElementInfo() and
+	  setElementLabel()) or "composite" (a formula over several). Position is in
+	  the element's own coordinates, not the folio's.
 	- @b Navigating and @b messaging: select an element, zoom the active
 	  view, and show the user a message. Deliberately narrow: selection and
 	  messaging work with no view at all (headless `--run`); zoom is a no-op
@@ -238,16 +402,38 @@ class QetScriptApi : public QObject
 											  int terminalIndex, const QString &property,
 											  const QString &value);
 
+		// -- a conductor's own drawn path, not the whole potential's
+		// properties above -- one conductor only, addressed the same way --
+		Q_INVOKABLE QStringList conductorSegments(int folioIndex, const QString &elementUuid,
+												  int terminalIndex) const;
+		Q_INVOKABLE bool moveConductorSegment(int folioIndex, const QString &elementUuid,
+											  int terminalIndex, int segmentIndex,
+											  double dx, double dy);
+
 		// -- cross-references: master/slave and report links --
 		Q_INVOKABLE QString elementLinkType(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE QStringList linkedElements(int folioIndex, const QString &elementUuid) const;
 		Q_INVOKABLE bool linkElements(int folioIndexA, const QString &elementUuidA,
-									  int folioIndexB, const QString &elementUuidB);
+									  int folioIndexB, const QString &elementUuidB,
+									  int groupIndex = -1);
 		Q_INVOKABLE bool unlinkElement(int folioIndex, const QString &elementUuid);
+		Q_INVOKABLE int elementLinkGroupIndex(int folioIndex, const QString &elementUuid,
+											  int otherFolioIndex, const QString &otherElementUuid) const;
+
+		// -- a PLC master's IO table: address/function/comment rows a PLC
+		// slave links onto via linkElements()'s groupIndex --
+		Q_INVOKABLE QStringList plcIOs(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE int addPlcIO(int folioIndex, const QString &elementUuid, const QString &type,
+								 const QString &address, const QString &functionText,
+								 const QString &comment);
+		Q_INVOKABLE bool setPlcIO(int folioIndex, const QString &elementUuid, int ioIndex,
+								  const QString &property, const QString &value);
+		Q_INVOKABLE bool removePlcIO(int folioIndex, const QString &elementUuid, int ioIndex);
 
 		// -- independent text and drawing shapes --
 		Q_INVOKABLE QStringList texts(int folioIndex) const;
 		Q_INVOKABLE int addText(int folioIndex, const QString &text, double x, double y);
+		Q_INVOKABLE QString textContent(int folioIndex, int textIndex) const;
 		Q_INVOKABLE bool setTextContent(int folioIndex, int textIndex, const QString &text);
 		Q_INVOKABLE bool setTextColor(int folioIndex, int textIndex, const QString &color);
 		Q_INVOKABLE bool setTextRotation(int folioIndex, int textIndex, double angle);
@@ -257,14 +443,97 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE int addShape(int folioIndex, const QString &type,
 								 double x1, double y1, double x2, double y2);
 		Q_INVOKABLE bool deleteShape(int folioIndex, int shapeIndex);
+		Q_INVOKABLE QString shapeProperty(int folioIndex, int shapeIndex, const QString &property) const;
+		Q_INVOKABLE bool setShapeProperty(int folioIndex, int shapeIndex,
+										  const QString &property, const QString &value);
+
+		// -- polygon and path shapes: more than addShape()'s two-point box --
+		Q_INVOKABLE int addPolygon(int folioIndex, const QVariantList &points, bool closed);
+		Q_INVOKABLE QVariantList shapePolygon(int folioIndex, int shapeIndex) const;
+		Q_INVOKABLE bool setShapePolygon(int folioIndex, int shapeIndex, const QVariantList &points);
+		Q_INVOKABLE int addPath(int folioIndex, const QVariantList &nodes, bool closed);
+		Q_INVOKABLE QVariantList shapePathNodes(int folioIndex, int shapeIndex) const;
+		Q_INVOKABLE bool setShapePathNodes(int folioIndex, int shapeIndex, const QVariantList &nodes);
+		Q_INVOKABLE bool setShapeClosed(int folioIndex, int shapeIndex, bool closed);
 
 		// -- query the project database --
 		Q_INVOKABLE QStringList tables() const;
 		Q_INVOKABLE QVariantList query(const QString &sql);
 		Q_INVOKABLE QString queryError() const;
 
+		// -- removing a conductor or a folio; folio properties beyond the title --
+		Q_INVOKABLE bool deleteConductor(int folioIndex, const QString &elementUuid, int terminalIndex);
+		Q_INVOKABLE bool removeFolio(int folioIndex);
+		Q_INVOKABLE bool setFolioProperty(int folioIndex, const QString &property, const QString &value);
+		Q_INVOKABLE QString folioProperty(int folioIndex, const QString &property) const;
+
+		// -- terminal strips (borniers) --
+		Q_INVOKABLE QStringList terminalStrips() const;
+		Q_INVOKABLE int addTerminalStrip(const QString &installation, const QString &location,
+										 const QString &name);
+		Q_INVOKABLE bool removeTerminalStrip(int stripIndex);
+		Q_INVOKABLE bool addTerminalToStrip(int stripIndex, int folioIndex,
+											const QString &elementUuid);
+		Q_INVOKABLE QStringList stripRealTerminals(int stripIndex) const;
+		Q_INVOKABLE bool groupTerminals(int stripIndex, const QVariantList &realTerminalIndices);
+		Q_INVOKABLE bool bridgeTerminals(int stripIndex, const QVariantList &realTerminalIndices);
+		Q_INVOKABLE bool sortTerminalStrip(int stripIndex);
+
+		// -- a BOM/nomenclature or summary table placed on a folio --
+		Q_INVOKABLE QStringList tables(int folioIndex) const;
+		Q_INVOKABLE int addTable(int folioIndex, const QString &kind, const QString &name,
+								 const QString &query);
+		Q_INVOKABLE bool deleteTable(int folioIndex, int tableIndex);
+		Q_INVOKABLE bool setTablePosition(int folioIndex, int tableIndex, double x, double y);
+
+		// -- auto-numbering contexts (conductor, element, folio) --
+		Q_INVOKABLE QStringList autoNums(const QString &kind) const;
+		Q_INVOKABLE bool addAutoNum(const QString &kind, const QString &name, const QStringList &parts);
+		Q_INVOKABLE bool removeAutoNum(const QString &kind, const QString &name);
+		Q_INVOKABLE bool useConductorAutoNum(int folioIndex, const QString &name);
+		Q_INVOKABLE bool useElementAutoNum(const QString &name);
+		Q_INVOKABLE bool numberElement(int folioIndex, const QString &elementUuid);
+
+		// -- images, embedded in the project --
+		Q_INVOKABLE QStringList images(int folioIndex) const;
+		Q_INVOKABLE int addImage(int folioIndex, const QString &filePath, double x, double y);
+		Q_INVOKABLE bool setImageScale(int folioIndex, int imageIndex, double factor);
+		Q_INVOKABLE bool setImageRotation(int folioIndex, int imageIndex, double angle);
+		Q_INVOKABLE bool deleteImage(int folioIndex, int imageIndex);
+		Q_INVOKABLE int addPdfPage(int folioIndex, const QString &pdfPath, int pageNumber,
+								   int dpi, double x, double y);
+
+		// -- the text fields shown on a symbol (label, terminal names, ...) --
+		Q_INVOKABLE QStringList elementTexts(int folioIndex, const QString &elementUuid) const;
+		Q_INVOKABLE int addElementText(int folioIndex, const QString &elementUuid,
+									   const QString &source, const QString &value,
+									   double x, double y);
+		Q_INVOKABLE bool setElementTextProperty(int folioIndex, const QString &elementUuid,
+												int textIndex, const QString &property,
+												const QString &value);
+		Q_INVOKABLE QString elementTextProperty(int folioIndex, const QString &elementUuid,
+												int textIndex, const QString &property) const;
+		Q_INVOKABLE bool deleteElementText(int folioIndex, const QString &elementUuid, int textIndex);
+
+		// -- copy elements (with the conductors between them) to a position --
+		Q_INVOKABLE QStringList duplicateElements(int fromFolioIndex, const QStringList &elementUuids,
+												  int toFolioIndex, double x, double y);
+
+		// -- the project title, and each folio's frame (grid of columns and rows) --
+		Q_INVOKABLE bool setProjectTitle(const QString &title);
+		Q_INVOKABLE QString folioBorder(int folioIndex, const QString &property) const;
+		Q_INVOKABLE bool setFolioBorder(int folioIndex, const QString &property, const QString &value);
+
+		// -- title block templates: which exist, embedding one into the project --
+		Q_INVOKABLE QStringList titleBlockTemplates() const;
+		Q_INVOKABLE bool embedTitleBlockTemplate(const QString &name);
+
+		// -- read an element's geometry --
+		Q_INVOKABLE QVariantMap elementGeometry(int folioIndex, const QString &elementUuid) const;
+
 		// -- folios --
 		Q_INVOKABLE int addFolio();
+		Q_INVOKABLE int insertFolio(int position);
 		Q_INVOKABLE bool setFolioTitle(int folioIndex, const QString &title);
 
 		Q_INVOKABLE bool undo();
@@ -272,9 +541,21 @@ class QetScriptApi : public QObject
 		Q_INVOKABLE bool canUndo() const;
 		Q_INVOKABLE bool canRedo() const;
 
+		// -- project-wide text search & replace, one undo step for the
+		// whole run, in the same spirit as the "Search and replace" panel --
+		Q_INVOKABLE int searchAndReplace(const QString &kind, const QString &field,
+										 const QString &pattern, const QString &replacement,
+										 bool useRegex, bool caseSensitive);
+
+		// -- electrical continuity / ERC: read-only, structural checks
+		// against the live object graph rather than the XML -- see the
+		// .cpp doc comment for exactly what is and is not covered --
+		Q_INVOKABLE QVariantList checkContinuity(int folioIndex);
+
 		// -- navigate and message --
 		Q_INVOKABLE bool selectElement(const QString &elementUuid);
 		Q_INVOKABLE void deselectAll(int folioIndex);
+		Q_INVOKABLE QStringList selectedElements(int folioIndex) const;
 		Q_INVOKABLE bool zoomFit();
 		Q_INVOKABLE bool zoomToContent();
 		Q_INVOKABLE bool zoomReset();
@@ -292,6 +573,10 @@ class QetScriptApi : public QObject
 								 const QString &caller);
 		QList<IndependentTextItem *> sortedTexts(int folioIndex) const;
 		QList<QetShapeItem *> sortedShapes(int folioIndex) const;
+		QList<QetGraphicsTableItem *> sortedTables(int folioIndex) const;
+		QList<DiagramImageItem *> sortedImages(int folioIndex) const;
+		DynamicElementTextItem *findElementText(int folioIndex, const QString &elementUuid,
+												int textIndex, const QString &caller) const;
 		IndependentTextItem *findText(int folioIndex, int textIndex, const QString &caller);
 		bool setInfoKey(int folioIndex, const QString &elementUuid,
 						const QString &key, const QString &value, const QString &caller);
