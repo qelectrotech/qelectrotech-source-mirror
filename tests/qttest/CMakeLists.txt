@@ -180,11 +180,10 @@ target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}
   ${QET_DIR}/sources
   ${QET_DIR}/sources/NameList)
+target_link_libraries(tst_crashdumps PRIVATE
+  Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 if(Backtrace_FOUND)
-  target_link_libraries(tst_crashdumps PRIVATE
-    Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml ${Backtrace_LIBRARIES})
-else()
-  target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+  target_link_libraries(tst_crashdumps PRIVATE ${Backtrace_LIBRARIES})
 endif()
 
 add_executable(
