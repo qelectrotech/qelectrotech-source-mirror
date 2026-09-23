@@ -100,6 +100,7 @@ the closest match.
 sudo apt install \
     build-essential cmake ninja-build git \
     qt6-base-dev qt6-base-private-dev qt6-tools-dev qt6-tools-dev-tools \
+
     libkf6coreaddons-dev libkf6widgetsaddons-dev
 ```
 

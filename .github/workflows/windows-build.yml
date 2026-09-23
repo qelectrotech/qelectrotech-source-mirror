@@ -121,6 +121,7 @@ jobs:
             -DQET_EXPORT_PROJECT_DB=ON \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
+
             ..
           ninja -j"$NPROC"
 
