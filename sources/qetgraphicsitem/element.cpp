@@ -39,7 +39,9 @@
 #include "elementtextitemgroup.h"
 #include "iostream"
 
+#include <QApplication>
 #include <QCollator>
+#include <QScreen>
 
 static const QString plcTerminalKeys[] = {
 	QETInformation::ELMT_PLC_T1,
@@ -209,6 +211,21 @@ void Element::editProperty()
 		//with the "text" tab of ElementPropertiesWidget,
 		//the ui freeze, until user press escape key
 		dialog.setWindowModality(Qt::WindowModal);
+
+		// A PLC master carries a 6-column IO table: without an explicit
+		// size the dialog falls back to its (cramped) sizeHint, so open it
+		// at three times its natural width instead. The height stays at
+		// the natural one, and the width never exceeds the screen.
+		const ElementData data = elementData();
+		if (data.m_type == ElementData::Master
+			&& data.m_master_type == ElementData::PLC) {
+			const QSize natural = dialog.sizeHint();
+			int width = natural.width() * 3;
+			if (QScreen *screen = QApplication::primaryScreen())
+				width = qMin(width, screen->availableGeometry().width());
+			dialog.resize(width, natural.height());
+		}
+
 		dialog.exec();
 	}
 }
