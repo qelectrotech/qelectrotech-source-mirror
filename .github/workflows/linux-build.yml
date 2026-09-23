@@ -53,7 +53,9 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           cmake -B build -G Ninja \
             -DCMAKE_BUILD_TYPE=Debug \
-            -DQT_VERSION_MAJOR=6
+            -DQT_VERSION_MAJOR=6 \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+            -DQET_EXPORT_PROJECT_DB=ON 
 
       - name: Build
         run: cmake --build build --parallel $(nproc)
