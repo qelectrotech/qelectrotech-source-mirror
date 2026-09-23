@@ -143,6 +143,17 @@ add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# QetSettings::scriptingEnabled() -- whether QElectroTech may run a script.
+# Compiles qetsettings.cpp alone: the setting is deliberately a plain
+# QSettings read, so the test needs nothing else of QElectroTech.
+add_executable(
+  tst_scriptingsetting
+  tst_scriptingsetting.cpp
+  ${QET_DIR}/sources/utils/qetsettings.cpp)
+add_test(NAME tst_scriptingsetting COMMAND tst_scriptingsetting)
+target_include_directories(tst_scriptingsetting PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_scriptingsetting PRIVATE Qt::Test Qt::Gui)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately

@@ -89,6 +89,25 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) :
 	ui->m_zoom_out_beyond_folio->setChecked(settings.value("diagrameditor/zoom-out-beyond-of-folio", false).toBool());
 	ui->m_use_gesture_trackpad->setChecked(settings.value("diagramview/gestures", false).toBool());
 	ui->m_save_label_paste->setChecked(settings.value("diagramcommands/erase-label-on-copy", true).toBool());
+	ui->m_enable_scripting->setChecked(QetSettings::scriptingEnabled());
+#ifdef QET_HAS_SCRIPTING
+	if (QetSettings::scriptingForcedByEnvironment()) {
+			//QET_ENABLE_SCRIPTING wins over the stored value, so let the box
+			//say so rather than offer a tick that changes nothing.
+		ui->m_enable_scripting->setEnabled(false);
+		ui->m_enable_scripting->setToolTip(
+					tr("Activé par la variable d'environnement "
+					   "QET_ENABLE_SCRIPTING ; ce réglage est sans effet "
+					   "tant qu'elle est définie."));
+	}
+#else
+		//Built without Qt Qml: there is no scripting to allow. Disabled as
+		//well as hidden, so applyConf() leaves the stored value alone --
+		//a hidden box still reports its state, and writing it here would
+		//quietly clear a preference set on a build that does have Qml.
+	ui->m_enable_scripting->setVisible(false);
+	ui->m_enable_scripting->setEnabled(false);
+#endif
 	ui->m_use_folio_label->setChecked(settings.value("genericpanel/folio", true).toBool());
 	ui->m_border_0->setChecked(settings.value("border-columns_0", false).toBool());
 	ui->m_autosave_sb->setValue(settings.value("diagrameditor/autosave-interval", 0).toInt());
@@ -243,6 +262,14 @@ void GeneralConfigurationPage::applyConf()
 
 		//DIAGRAM COMMAND
 	settings.setValue("diagramcommands/erase-label-on-copy", ui->m_save_label_paste->isChecked());
+
+		//SCRIPTING
+		//Left alone while the environment forces it on: the box is disabled
+		//in that case and writing its state would silently clear the user's
+		//real preference the first time this dialog is accepted.
+	if (ui->m_enable_scripting->isEnabled()) {
+		QetSettings::setScriptingEnabled(ui->m_enable_scripting->isChecked());
+	}
 
 		//GENERIC PANEL
 	settings.setValue("genericpanel/folio",ui->m_use_folio_label->isChecked());

@@ -20,6 +20,7 @@
 #include "qetscriptapi.h"
 #include "../qetmessagebox.h"
 #include "../qetproject.h"
+#include "../utils/qetsettings.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -48,8 +49,33 @@ bool isRunRequest(const QStringList &args)
 
 #ifdef QET_HAS_SCRIPTING
 
+namespace {
+	/**
+		@brief refusalMessage
+		What to tell somebody whose script was not run, and how to change
+		that. Written once because the command line and the graphical
+		editor both need to say it, and an explanation that names only one
+		of the two ways out sends half the people down the wrong path.
+	*/
+	QString refusalMessage()
+	{
+		return QObject::tr(
+			"Les scripts sont désactivés.\n\n"
+			"Un script a accès à l'ensemble du projet et peut écrire des "
+			"fichiers, aussi cette fonction est-elle désactivée par défaut.\n\n"
+			"Pour l'activer : Configurer QElectroTech > Général > Projets, "
+			"ou définir la variable d'environnement QET_ENABLE_SCRIPTING=1 "
+			"pour une exécution sans interface (CI, traitement par lot).");
+	}
+}
+
 int run(const QStringList &args)
 {
+	if (!QetSettings::scriptingEnabled()) {
+		err << refusalMessage() << "\n";
+		return 3;
+	}
+
 	const int idx = args.indexOf(QStringLiteral("--run"));
 	const QString script_path = args.value(idx + 1);
 	const QString project_path = args.value(idx + 2);
@@ -88,6 +114,20 @@ namespace {
 
 bool runOnProject(const QString &scriptPath, QETProject *project, DiagramView *view)
 {
+	// Checked here as well as at each caller, deliberately: this is the
+	// one function that actually evaluates JavaScript, so it is the one
+	// place a future caller cannot forget to ask. The callers check first
+	// only to give a better answer than this one can -- a usable exit code
+	// on the command line, an offer to switch the setting on in the editor.
+	if (!QetSettings::scriptingEnabled()) {
+		err << refusalMessage() << "\n";
+		if (view) {
+			QET::QetMessageBox::warning(nullptr, QObject::tr("Script"),
+						    refusalMessage());
+		}
+		return false;
+	}
+
 	QFile file(scriptPath);
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		err << "Cannot open script: " << scriptPath << "\n";
