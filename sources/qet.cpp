@@ -249,6 +249,23 @@ bool QET::attributeIsAReal(
 }
 
 /**
+	@brief QET::infoFlagIsTrue
+	@see the header comment for why this exists rather than a bare
+	== "true" comparison.
+	@param value the raw elementInformations string to test
+	@return true if @p value, trimmed and case-folded, is one of the
+	truthy spellings this codebase already accepts elsewhere
+*/
+bool QET::infoFlagIsTrue(const QString &value)
+{
+	const QString v = value.trimmed().toLower();
+	return v == QLatin1String("true")
+		|| v == QLatin1String("1")
+		|| v == QLatin1String("yes")
+		|| v == QLatin1String("on");
+}
+
+/**
 	@brief QET::ElementsAndConductorsSentence
 	Permet de composer rapidement la proposition "x elements et y conducteurs"
 	ou encore "x elements, y conducteurs et z champs de texte".
