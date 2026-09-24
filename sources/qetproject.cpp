@@ -22,7 +22,9 @@
 #include "autoNum/assignvariables.h"
 #include "autoNum/numerotationcontext.h"
 #include "autoNum/numerotationcontextcommands.h"
+#include "autoNum/renumberelementscommand.h"
 #include "diagram.h"
+#include "qetgraphicsitem/element.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
 #include "qetresult.h"
@@ -40,7 +42,30 @@
 #include <QHash>
 #include <QTimer>
 #include <QtConcurrentRun>
+
+namespace {
+
+/**
+ * @brief Reset numeric fields of a NumerotationContext so renumbering starts at 1.
+ * Keeps non-numeric parts (string/idfolio/folio/plant/locmach/elementline/elementcolumn/elementprefix) unchanged.
+ */
+NumerotationContext resetContextForRenumber(const NumerotationContext &tmpl)
+{
+	NumerotationContext out = tmpl;
+	for (int i = 0; i < out.size(); ++i) {
+		const QStringList parts = out.itemAt(i);
+		if (parts.isEmpty()) continue;
+		const QString type = parts.at(0);
+		if (out.keyIsNumber(type)) {
+			out.replaceValue(i, QStringLiteral("1"));
+		}
+	}
+	return out;
+}
+
+} // namespace
 #include <QtDebug>
+#include <algorithm>
 #include <utility>
 
 static int BACKUP_INTERVAL = 1200000; //interval in ms of backup = 20min
@@ -132,6 +157,9 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 		return;
 	}
 
+		//The file just read already holds everything a crash could lose, so
+		//there is nothing to back up until the project is changed.
+	m_backup_needed = false;
 	init();
 }
 
@@ -258,6 +286,19 @@ void QETProject::init()
 	m_undo_stack = new QUndoStack(this);
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
 
+		//What counts as a change for writeBackup(): the undo stack moving,
+		//setModified(true), and the embedded collections, which can change
+		//without going through either.
+	const auto backup_needed = [this]() { m_backup_needed = true; };
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, backup_needed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
+
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
 	m_save_backup_timer.start();
@@ -334,7 +375,18 @@ QETProject::ProjectState QETProject::openFile(QFile *file)
 		//file without a persisted uuid derives its uuid from them.
 	const QByteArray content = file->readAll();
 	QDomDocument xml_project;
-	if (!xml_project.setContent(content))
+	// PreserveSpacingOnlyNodes: without it, a text node that is entirely
+	// whitespace -- e.g. a title-block custom variable deliberately set to
+	// a single space, the only way to give it a value other than blank
+	// (bugtracker #973) -- is silently dropped by Qt's default parsing,
+	// and QDomElement::text() then returns "" for it exactly as if it had
+	// never been set. Confirmed in isolation: <a> </a> parses to text()=="",
+	// this option makes it text()==" ". Every place in this codebase that
+	// walks a QDomNode's children already filters on isElement() (see
+	// QET::findInDomElement()), so the extra whitespace-only text nodes
+	// this keeps around are inert everywhere but the two elements that
+	// call .text() on themselves -- which is exactly where the bug was.
+	if (!xml_project.setContent(content, QDomDocument::ParseOption::PreserveSpacingOnlyNodes))
 	{
 		if(opened_here) {
 			file->close();
@@ -780,6 +832,109 @@ QString QETProject::elementCurrentAutoNum () const
 */
 void QETProject::setCurrrentElementAutonum(QString autoNum) {
 	m_current_element_autonum = std::move(autoNum);
+}
+
+/**
+	@brief QETProject::renumberElementsBySchemeTitle
+	Renumber existing elements by element autonumbering scheme title.
+
+	Elements do not store the scheme title; they store a "formula" (elementInformations["formula"]).
+	This method matches elements to schemes by comparing the stored formula with the formula derived
+	from each scheme's NumerotationContext.
+
+	If scheme_title is empty, all schemes are renumbered. Otherwise only that scheme is renumbered.
+	The operation is undoable.
+*/
+void QETProject::renumberElementsBySchemeTitle(const QString &scheme_title)
+{
+	if (!m_undo_stack) return;
+	if (isReadOnly()) return;
+
+	// Build map: scheme title -> canonical formula
+	QHash<QString, QString> scheme_formula;
+	for (const QString &k : m_element_autonum.keys()) {
+		if (!scheme_title.isEmpty() && k != scheme_title) continue;
+		scheme_formula.insert(k, autonum::numerotationContextToFormula(m_element_autonum.value(k)));
+	}
+	if (scheme_formula.isEmpty()) return;
+
+	// Collect elements per scheme by formula match
+	QHash<QString, QVector<Element*>> by_key;
+	for (Diagram *d : diagrams()) {
+		if (!d) continue;
+		const auto items = d->items();
+		for (QGraphicsItem *it : items) {
+			auto *el = qgraphicsitem_cast<Element*>(it);
+			if (!el) continue;
+			if (el->linkType() == Element::Slave || (el->linkType() & Element::AllReport))
+				continue;
+
+			const QString el_formula = el->elementInformations().value(QStringLiteral("formula")).toString();
+			if (el_formula.isEmpty()) continue;
+
+			QString matched_key;
+			for (auto itf = scheme_formula.constBegin(); itf != scheme_formula.constEnd(); ++itf) {
+				if (itf.value() == el_formula) { matched_key = itf.key(); break; }
+			}
+			if (matched_key.isEmpty()) continue;
+			by_key[matched_key].append(el);
+		}
+	}
+	if (by_key.isEmpty()) return;
+
+	QVector<RenumberElementsCommand::ElementChange> changes;
+	QHash<QString, NumerotationContext> old_ctx;
+	QHash<QString, NumerotationContext> new_ctx;
+
+	for (auto it = by_key.constBegin(); it != by_key.constEnd(); ++it) {
+		old_ctx.insert(it.key(), m_element_autonum.value(it.key()));
+	}
+
+	for (auto it = by_key.begin(); it != by_key.end(); ++it) {
+		const QString key = it.key();
+		auto &elements = it.value();
+		std::sort(elements.begin(), elements.end(), [](Element *a, Element *b){ return comparPos(a, b); });
+
+		NumerotationContext base_tmpl = m_element_autonum.value(key);
+		NumerotationContext nc = resetContextForRenumber(base_tmpl);
+		NumerotationContextCommands ncc(nc);
+
+		for (Element *el : elements) {
+			RenumberElementsCommand::ElementChange ch;
+			ch.element = el;
+			ch.old_infos = el->elementInformations();
+			ch.old_seq = el->sequenceStruct();
+			ch.old_frozen = el->isFreezeLabel();
+			ch.new_frozen = ch.old_frozen; // preserve frozen state
+
+			const QString formula = ch.old_infos.value(QStringLiteral("formula")).toString();
+			autonum::sequentialNumbers new_seq;
+			new_seq.clear();
+			autonum::setSequential(formula, new_seq, nc, el->diagram(), key);
+
+			DiagramContext new_infos = ch.old_infos;
+			new_infos.addValue(QStringLiteral("label"), autonum::AssignVariables::formulaToLabel(formula, new_seq, el->diagram(), el, nullptr));
+			ch.new_infos = new_infos;
+			ch.new_seq = new_seq;
+			changes.append(ch);
+
+			// advance
+			nc = ncc.next();
+			ncc = NumerotationContextCommands(nc);
+		}
+
+		new_ctx.insert(key, nc);
+	}
+
+	if (changes.isEmpty()) return;
+
+	auto *cmd = new RenumberElementsCommand(
+			this,
+			changes,
+			old_ctx,
+			new_ctx,
+			scheme_title.isEmpty() ? tr("Renumber elements") : tr("Renumber elements (%1)").arg(scheme_title));
+	m_undo_stack->push(cmd);
 }
 
 /**
@@ -1553,6 +1708,9 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	Mark this project as modified and emit the projectModified() signal.
 */
 void QETProject::setModified(bool modified) {
+	if (modified) {
+		m_backup_needed = true;
+	}
 	if (m_modified != modified) {
 		m_modified = modified;
 		emit projectModified(this, m_modified);
@@ -2135,6 +2293,12 @@ void QETProject::writeBackup()
 		//both would write through &m_backup_file on different threads.
 	if (m_backup_future.isRunning())
 		return;
+		//toXml() walks the whole project on the GUI thread, which freezes
+		//big projects for seconds (bugtracker #273, #329). A backup of an
+		//unchanged project would be identical to the last one, so skip it.
+	if (!m_backup_needed)
+		return;
+	m_backup_needed = false;
 		//Capture the document by value (implicitly shared, so cheap): the
 		//Qt5-style QtConcurrent::run(function, reference-args) call did not
 		//survive the Qt6 API change, a lambda behaves identically on both.

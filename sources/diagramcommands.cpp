@@ -77,6 +77,23 @@ void PasteDiagramCommand::redo()
 	{
 		first_redo = false;
 
+		//Resolve a linked master/slave pair pasted together (bugtracker
+		//#607) before anything below renews their uuids: at this exact
+		//moment a pasted element's tmp_uuids_link still holds its
+		//source's original partner uuid, which still equals the
+		//not-yet-renewed uuid of that partner's own pasted copy if it
+		//was carried along in the same batch. Scoped to this batch only
+		//(not a project-wide search), so a pair pasted together links to
+		//each other and not to an original element left elsewhere that
+		//happens to still carry that same soon-to-be-replaced uuid. If
+		//only one half of a linked group was pasted, its link entry
+		//simply finds no match here and is dropped -- same "leave it
+		//unlinked" outcome as always.
+		const QList <Element *> elmts_list = content.m_elements;
+		for (Element *e : elmts_list) {
+			e->initLink(elmts_list);
+		}
+
 		//make new uuid for every pasted conductor, because old uuid are
 		//the uuid of the copied conductor
 		const QList <Conductor *> all_pasted_conductors = content.conductors();
@@ -85,7 +102,6 @@ void PasteDiagramCommand::redo()
 		}
 
 		//this is the first paste, we do some actions for the new element
-		const QList <Element *> elmts_list = content.m_elements;
 		for (Element *e : elmts_list)
 		{
 			//make new uuid, because old uuid are the uuid of the copied element

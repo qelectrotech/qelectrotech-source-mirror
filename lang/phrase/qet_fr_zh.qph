@@ -1,0 +1,917 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="zh">
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>触点：常开：%1，常闭：%2，转换：%3，其他：%4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>触点：常开：%1/%2，常闭：%3/%4，转换：%5/%6，其他：%7/%8
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>（拖动时按 Ctrl = 自由位置，不吸附到网格）</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1：%2 模式</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>；红点：拖动以重新定位旋转中心</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>；青色点：圆弧</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>；边：倾斜</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— 单击：%1 模式</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>，Alt = 创建控制柄</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>，Alt = 分离为多段线</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>在当前图纸上添加贝塞尔曲线</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>向曲线添加点</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>添加曲线</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>角度</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>角点</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>预览</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>将%1的角变圆</target>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>端子1</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>端子2</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>类别</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>此格式不支持透明度：图像将按应用透明色之前的状态保存。是否继续？</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>文本字段</target>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>单击：按原始尺寸放置。单击拖动：放置并调整大小。右键：旋转 90°。Ctrl+滚轮：调整大小。</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>左键单击：下一个点；双击或 Enter：结束；右键单击：撤销上一个点</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>左键单击：放置对角（Shift = 正方形，Ctrl = 从中心 + 自由位置，Ctrl+Shift = 居中正方形）；右键单击：取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>左键单击：放置对角（Shift = 圆形，Ctrl = 从中心 + 自由位置，Ctrl+Shift = 居中圆形）；右键单击：取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>左键单击：放置起点（Ctrl = 自由位置）</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>左键单击：放置终点（Ctrl = 自由位置）；右键单击：取消</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>左键单击：放置第一个角（Ctrl = 中心点，自由位置）</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>左键单击：放置第一个点（Ctrl = 自由位置）</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>单击：角点。单击拖动：曲线点。单击第一个点：闭合。Esc/Enter：结束。右键：撤销上一个点。</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>单击</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>单击：%1 模式</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>点击选择颜色</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>单击图像以添加颜色。使用滑块调整每种颜色的容差，或单击 × 将其移除。</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>单击图像选择颜色</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>圆角</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>元件1</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>元件2</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>将 %1 转换为贝塞尔曲线</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>将 %1 转换为多段线</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>转换为贝塞尔曲线</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>转换为多段线</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>透明色</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>透明色...</target>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>额定电流</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>移动旋转中心</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>标签与从站交叉引用之间的像素距离</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>标签距离 - 从站：</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>设置透明色</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>变形曲线</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>移动图像的旋转中心</target>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>已解锁：宽度和高度可独立修改。单击锁定。</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>原始图像另存为...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>图像另存为...</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>错误</target>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>从物料清单中排除</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>旋转 %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>旋转图像</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>拖动控制柄或框内区域，调整要保留的区域。</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>导线</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>图页</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>闭合形状</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>拖动 %1：旋转（Shift = 15°）</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>拖动：调整圆弧（Ctrl = 自由位置，Shift = 15°）</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>拖动：圆角（Ctrl = 自由位置）</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>拖动：变形曲线（Ctrl = 自由位置，Alt = 断开切线）</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>拖动：移动此点</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>拖动：移动旋转中心</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>拖动：移动点（Ctrl = 自由位置</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>拖动：倾斜（Ctrl = 自由位置，Shift = 15°）</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>拖动：倾斜（Shift = 以 15° 为步长）</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>拖动：旋转（Shift = 以 15° 为步长）</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>拖动：调整大小（Ctrl = 从中心 + 自由位置，Shift = 比例</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>拖动：调整大小（Shift = 保持比例，Ctrl = 从中心）</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>拖动：重新定位旋转中心（Ctrl = 自由位置）</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>拖动：旋转（Ctrl = 自由位置，Shift = 15°）</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>拖动紫色点：圆角</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>拖动角：旋转（Shift = 以 15° 为步长）；拖动边：倾斜（Shift = 以 15° 为步长）；红点：移动旋转中心</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>拖动角/边：调整大小（Ctrl = 从中心，Shift = 保持比例）</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>拖动角/边：调整大小（Ctrl = 从中心，Shift = 比例，Alt = 分离为多段线）</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>拖动点：移动它</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>拖动端点：移动它</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>拖动控制柄或曲线：变形（Alt = 断开切线）；Alt+拖动角点：创建控制柄；右键单击：最近节点菜单</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>几何</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>高度</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>BMP 图像 (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>图像文件 (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>JPEG 图像 (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>PNG 图像 (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>源图像</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>SVG 图像 (*.svg)</target>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>图像未包含在 DXF 导出中</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>无法将图像保存到该位置。</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>无法将物料清单保存到 %1。
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>无法加载图像。</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>X 倾斜</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Y 倾斜</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>倾斜 %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>倾斜图像</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>已达到此主元件的限制（限制：%1）。
+
+是否仍要链接此从属触点？</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>宽度</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>此处使用的 DXF 格式 (AC1006) 无法包含图像。图像将仅以轮廓矩形表示（保留位置、大小、旋转和倾斜），不包含图像内容。</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>平滑</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>接线列表</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>接线列表（数据库）</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>长度</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>水平镜像</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>图像水平镜像</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>%1 的水平镜像</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>无法镜像：此形状的倾斜过于极端</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>垂直镜像</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>图像垂直镜像</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>%1 的垂直镜像</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>修改弧的角度</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>修改形状角度</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>修改图像角度</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>修改图像倾斜</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>修改%1的曲率</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>修改%1的形状</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>修改图像高度</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>修改图像宽度</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>修改线条长度</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>修改形状大小</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>修改节点类型</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>修改图像</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>型号</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>已定义的从属触点最大数量：未定义
+</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>备注</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>最近节点</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>旋转/倾斜</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>X半径</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Y半径</target>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>调整大小</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>调整 %1 大小</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>调整图像大小</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>替换图像...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>替换图像</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>恢复比例</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>恢复图像比例</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>移除此颜色</target>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>恢复为完整图像，不裁剪</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>裁剪图像</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>裁剪图像</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>裁剪...</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>旋转/倾斜</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>重置</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>选择图像...</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>删除最近节点</target>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>从曲线删除点</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>对称</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>电位分隔</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>大小</target>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>额定电压</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>此颜色的容差</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>所有文件 (*)</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>变换 %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>不保留透明度</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>一段弧</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>一个角</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>一个点</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>一条曲线</target>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>一个端点</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>一张图像</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>锁定自动编号</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>锁定位置</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>已锁定：修改宽度或高度会调整另一个以保持比例。单击解锁。</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>保存失败</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>节点编辑</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>机柜</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>线圈</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>端子</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>端子排</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>电缆</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>额定值</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>标题栏</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>符号库</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>导线</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contact</source>
+    <target>触点</target>
+    <definition>contact</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>接触器</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>电流</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>断路器</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>文件夹</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>元件</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>从</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>fusible</source>
+    <target>熔断器</target>
+    <definition>fuse</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>网格</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>开关</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>主</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>模板</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>电动机</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>neutre</source>
+    <target>中性线</target>
+    <definition>neutral</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>物料清单</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>编号</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>phase</source>
+    <target>相</target>
+    <definition>phase</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>电位</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>项目</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>puissance</source>
+    <target>功率</target>
+    <definition>power</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>继电器</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>图纸交叉引用</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>标识</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>图纸交叉引用</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>原理图</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>截面积</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>目录</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>电压</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>terre</source>
+    <target>接地</target>
+    <definition>earth / ground</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>文本</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>变压器</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

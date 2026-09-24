@@ -23,6 +23,7 @@
 #include "formulaautonumberingw.h"
 #include "numparteditorw.h"
 #include "qdebug.h"
+#include "renumberelementsdialog.h"
 #include "ui_autonumberingmanagementw.h"
 #include "ui_formulaautonumberingw.h"
 
@@ -48,6 +49,8 @@ AutoNumberingManagementW::AutoNumberingManagementW(QETProject *project,
 	ui->m_selected_folios_le->setDisabled(true);
 	ui->m_selected_folios_le->setReadOnly(true);
 	ui->m_apply_project_rb->setChecked(true);
+	// Enabled only when project is in "Under Development" status and not read-only.
+	ui->m_renumber_elements_pb->setEnabled(ui->m_status_cb->currentIndex() == 0 && project_ && !project_->isReadOnly());
 	setProjectContext();
 }
 
@@ -87,6 +90,7 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_both_conductor_rb->setChecked(true);
 		ui->m_both_element_rb->setChecked(true);
 		ui->m_both_folio_rb->setChecked(true);
+		ui->m_renumber_elements_pb->setEnabled(true);
 	}
 	//Installing
 	else if (index == 1) {
@@ -96,13 +100,29 @@ void AutoNumberingManagementW::on_m_status_cb_currentIndexChanged(int index)
 		ui->m_new_conductor_rb->setChecked(true);
 		ui->m_new_element_rb->setChecked(true);
 		ui->m_new_folio_rb->setChecked(true);
+		ui->m_renumber_elements_pb->setEnabled(true);
 	}
 	//Built
 	else if (index == 2) {
 		ui->m_disable_conductor_rb->setChecked(true);
 		ui->m_disable_element_rb->setChecked(true);
 		ui->m_disable_folio_rb->setChecked(true);
+        	ui->m_renumber_elements_pb->setEnabled(false);
 	}
+}
+
+void AutoNumberingManagementW::on_m_renumber_elements_pb_clicked()
+{
+	if (!project_ || project_->isReadOnly()) return;
+	// Only allowed during "Under Development"
+	// if (ui->m_status_cb->currentIndex() != 1) return;
+
+	QStringList titles = project_->elementAutoNum().keys();
+	titles.sort(Qt::CaseInsensitive);
+	RenumberElementsDialog dlg(titles, this);
+	if (dlg.exec() != QDialog::Accepted) return;
+
+	project_->renumberElementsBySchemeTitle(dlg.selectedSchemeTitle());
 }
 
 /**

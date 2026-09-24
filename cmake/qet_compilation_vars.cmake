@@ -297,6 +297,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/numerotationcontextcommands.h
   ${QET_DIR}/sources/autoNum/numerotationcontext.cpp
   ${QET_DIR}/sources/autoNum/numerotationcontext.h
+  ${QET_DIR}/sources/autoNum/renumberelementscommand.cpp
+  ${QET_DIR}/sources/autoNum/renumberelementscommand.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.cpp
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.h
   ${QET_DIR}/sources/autoNum/ui/autonumberingmanagementw.cpp
@@ -307,11 +309,15 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/autoNum/ui/formulaautonumberingw.h
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.cpp
   ${QET_DIR}/sources/autoNum/ui/numparteditorw.h
+  ${QET_DIR}/sources/autoNum/ui/renumberelementsdialog.cpp
+  ${QET_DIR}/sources/autoNum/ui/renumberelementsdialog.h
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.cpp
   ${QET_DIR}/sources/autoNum/ui/selectautonumw.h
 
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
+  ${QET_DIR}/sources/dataBase/sqlreadonly.cpp
+  ${QET_DIR}/sources/dataBase/sqlreadonly.h
 
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.h
@@ -721,6 +727,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.cpp
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.h
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp

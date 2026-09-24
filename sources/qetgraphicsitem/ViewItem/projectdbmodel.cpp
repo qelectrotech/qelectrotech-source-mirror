@@ -379,6 +379,21 @@ void ProjectDBModel::fillValue()
 	
 	while (query_.next())
 	{
+		//This query text comes out of the project file, so its result is
+		//not bounded by anything the project actually contains: a
+		//recursive CTE produces rows for as long as anyone reads them.
+		//Without this, opening such a file hangs QElectroTech at 100% CPU
+		//while m_record grows until memory runs out. @see
+		//projectDataBase::MaxResultRows.
+		if (m_record.size() >= projectDataBase::MaxResultRows) {
+			qWarning().noquote()
+				<< "ProjectDBModel: query stopped after"
+				<< projectDataBase::MaxResultRows
+				<< "rows, which is far more than a folio table can show."
+				<< "The table is incomplete. Query:" << m_query;
+			break;
+		}
+
 		QStringList record_;
 		auto i=0;
 		while (query_.value(i).isValid())

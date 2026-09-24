@@ -1,5 +1,7 @@
 *.snap
 .flatpak-builder
+__pycache__/
+*.pyc
 # Qt build output
 *.user
 # doxygen Doxyfile output
@@ -7,12 +9,4 @@ doc/*
 !doc/QElectroTech.qch
 QElectroTech.tag
 !doc/doc-utils
-lang/*.qm
-
-# -- IDE settings/intermediate files --
-# zed
-.zed
-.cache
-
-# VS Code
-.vscode
+ui_*.h

@@ -446,6 +446,82 @@ void DiagramView::pasteHere()
 }
 
 /**
+	@brief DiagramView::duplicate
+	Copy the current selection and place the copy at @p stepOffset grid
+	steps from it, landing immediately rather than following the cursor
+	like Ctrl+V does (bugtracker #991). @p stepOffset comes from
+	DuplicateOffsetDialog: (1, 0) is one grid step right, (0, -1) is one
+	grid step up, and so on -- QET's own scene axes, X right and Y down.
+
+	No interactive placement step on purpose: the point of a duplicate
+	shortcut is unattended, repeatable stamping (configure the offset
+	once, then tap Ctrl+D to lay out a row), which following the cursor
+	would interrupt on every press. QET already reselects whatever a
+	paste just added (see PasteDiagramCommand::redo()), so the next
+	Ctrl+D naturally continues from the copy just placed, not the
+	original -- a press-and-hold row falls out of that for free, with no
+	special-casing needed here for "keep going from the last one".
+
+	The offset is applied by hand rather than by asking paste()/
+	Diagram::fromXml() to place the copy at a target position. Both of
+	those feed the position through Diagram::snapToGrid(), which reads
+	QApplication::keyboardModifiers() and rounds to the nearest PIXEL
+	instead of the grid whenever Ctrl is held -- and Ctrl is always held
+	here, this action's own shortcut being Ctrl+D. Measured the hard way
+	before settling on this: routing the offset through paste() first
+	produced copies off-grid on both axes, by an amount that tracked the
+	selection's own bounding-box geometry rather than being a fixed
+	error. fromXml() is instead called with no position at all, which
+	leaves every item at its source coordinates (landing the copy
+	exactly on top of the originals -- (0, 0) is not a position, this is
+	"keep the source coordinates"), and the offset is added directly
+	with setPos(). A plain addition cannot be off by a rounding rule
+	that never runs.
+
+	Conductors are not in the translated set: fromXml() itself does not
+	reposition them either -- they are loaded from XML after elements
+	are already in their final place and take their geometry from their
+	terminals, which have already moved with the elements that own
+	them. Likewise dynamic element texts are not translated separately:
+	they are children of their element and move with it under Qt's
+	normal parent-child transform.
+*/
+void DiagramView::duplicate(const QPoint &stepOffset)
+{
+	if (!isInteractive() || m_diagram->isReadOnly()) return;
+
+	const QList<QGraphicsItem *> selection = m_diagram->selectedItems();
+	if (selection.isEmpty()) return;
+
+	QSettings settings;
+	const int x_grid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
+									  Diagram::xGrid).toInt();
+	const int y_grid = settings.value(QStringLiteral("diagrameditor/Ygrid"),
+									  Diagram::yGrid).toInt();
+	const QPointF offset(stepOffset.x() * x_grid, stepOffset.y() * y_grid);
+
+	// Mirrors copy(), but does not touch the system clipboard: Ctrl+D
+	// should not clobber whatever the user last copied with Ctrl+C.
+	QDomDocument document = m_diagram->toXml(false, true);
+
+	DiagramContent pasted;
+	// No position argument -- see the function comment above for why
+	// the offset is not passed here.
+	m_diagram->fromXml(document, QPointF(), false, &pasted);
+	if (!pasted.count()) return;
+
+	const int movable = DiagramContent::Elements | DiagramContent::TextFields
+					   | DiagramContent::Images | DiagramContent::Shapes
+					   | DiagramContent::Tables | DiagramContent::TerminalStrip;
+	for (QGraphicsItem *item : pasted.items(movable))
+		item->setPos(item->pos() + offset);
+
+	m_diagram->clearSelection();
+	m_diagram->undoStack().push(new PasteDiagramCommand(m_diagram, pasted));
+	adjustSceneRect();
+}
+
+/**
 	Manage the events press click :
 	 *  click to add an independent text field
 */
@@ -1401,7 +1477,7 @@ void DiagramView::createTemplateFromSelection()
 
 				collection_node.appendChild(collection_elmt);
 			} else {
-				qDebug() << "Warnung: Konnte XML-Definition für" << old_type << "nicht laden.";
+				qDebug() << "Warning: could not load XML definition for" << old_type;
 			}
 		}
 	}

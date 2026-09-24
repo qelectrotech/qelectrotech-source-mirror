@@ -31,6 +31,7 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPixmap>
+#include <QSet>
 
 namespace {
 	/**
@@ -167,9 +168,20 @@ void ConductorColorToolButton::applyColor(const QColor &color)
 	}
 
 	DiagramContent dc(diagram);
-	const auto conductors = dc.conductors(DiagramContent::AnyConductor);
-	if (conductors.isEmpty()) {
+	const auto selected_conductors = dc.conductors(DiagramContent::AnyConductor);
+	if (selected_conductors.isEmpty()) {
 		return;
+	}
+
+		//A wire drawn across a junction is several Conductor objects
+		//sharing one electrical potential; selecting one segment must
+		//still recolour the whole potential, the way the F2 dialog's
+		//"apply to all" already does.
+	QSet<Conductor *> conductors;
+	for (Conductor *conductor : selected_conductors)
+	{
+		conductors << conductor;
+		conductors += conductor->relatedPotentialConductors();
 	}
 
 	QUndoCommand *undo = new QUndoCommand(tr("Modifier la couleur de %n conducteur(s)",

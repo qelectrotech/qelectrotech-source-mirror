@@ -20,6 +20,7 @@
 #include "qeticons.h"
 #include "shortcutmanager.h"
 
+#include <cmath>
 #include <limits>
 #include <QBuffer>
 #include <QColorDialog>
@@ -244,8 +245,31 @@ bool QET::attributeIsAReal(
 	bool ok;
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
+	// QString::toDouble() sets ok=true for "nan"/"inf"/"-inf" -- these
+	// parse successfully but are not usable coordinates. A non-finite
+	// element/terminal position reaches Conductor::shape() during load
+	// and hangs there at 100% CPU inside QPainterPathStroker::createStroke(),
+	// confirmed with gdb: not a blocked wait, genuine unbounded computation.
+	if (!std::isfinite(tmp)) return(false);
 	if (reel != nullptr) *reel = tmp;
 	return(true);
+}
+
+/**
+	@brief QET::infoFlagIsTrue
+	@see the header comment for why this exists rather than a bare
+	== "true" comparison.
+	@param value the raw elementInformations string to test
+	@return true if @p value, trimmed and case-folded, is one of the
+	truthy spellings this codebase already accepts elsewhere
+*/
+bool QET::infoFlagIsTrue(const QString &value)
+{
+	const QString v = value.trimmed().toLower();
+	return v == QLatin1String("true")
+		|| v == QLatin1String("1")
+		|| v == QLatin1String("yes")
+		|| v == QLatin1String("on");
 }
 
 /**

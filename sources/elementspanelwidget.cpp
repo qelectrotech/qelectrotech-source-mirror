@@ -674,6 +674,27 @@ void ElementsPanelWidget::duplicateDiagram()
 		bool erase_labels = settings.value(
 			"diagramcommands/erase-label-on-copy", true).toBool();
 
+		// Resolve a linked pair duplicated together against each other
+		// (bugtracker #607) before the loop below renews their uuids or
+		// clears their pending links: at this exact moment a copy's
+		// tmp_uuids_link still holds its source's original partner
+		// uuid, which still equals the not-yet-renewed uuid of that
+		// partner's own copy if both were duplicated together. Scoped
+		// to this diagram's own copies, not a project-wide search, so
+		// this never links back to the source elements the copies were
+		// made from -- if only one half of a linked pair is here, its
+		// link entry simply finds no match and is dropped, same as
+		// clearPendingLinks() used to do unconditionally for every copy.
+		QList<Element *> new_elements;
+		for (QGraphicsItem *item : new_diagram->items()) {
+			if (Element *elmt = dynamic_cast<Element *>(item)) {
+				new_elements << elmt;
+			}
+		}
+		for (Element *elmt : new_elements) {
+			elmt->initLink(new_elements);
+		}
+
 		for (QGraphicsItem *item : new_diagram->items()) {
 			if (Element *elmt = dynamic_cast<Element *>(item)) {
 				// The XML round-trip kept the source elements' uuids. Give the
@@ -695,9 +716,9 @@ void ElementsPanelWidget::duplicateDiagram()
 					new_diagram->restoreText(elmt);
 				}
 
-				// Clear pending links so copies don't link back to
-				// the source elements via stale UUIDs.
-				elmt->clearPendingLinks();
+				// initLink() above already cleared tmp_uuids_link for
+				// every copy, matched or not -- nothing left here that
+				// could link back to a stale source uuid.
 
 				// Clean up copied element data:
 				// 1. Slaves always lose label/formula/comment/location

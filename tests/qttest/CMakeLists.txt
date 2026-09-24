@@ -143,6 +143,44 @@ add_test(NAME tst_qetstrings COMMAND tst_qetstrings)
 target_include_directories(tst_qetstrings PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_qetstrings PRIVATE Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 
+# QETSql::isSingleReadOnlyStatement() -- read-only enforcement for every
+# project-database query, including the ones a .qet file carries. Compiles
+# sqlreadonly.cpp alone against its own in-memory SQLite, so the security
+# property is checked without standing up a QETProject.
+find_package(SQLite3 REQUIRED)
+if(NOT TARGET SQLite3::SQLite3 AND TARGET SQLite::SQLite3)
+  add_library(SQLite3::SQLite3 ALIAS SQLite::SQLite3)
+endif()
+add_executable(
+  tst_sqlreadonly
+  tst_sqlreadonly.cpp
+  ${QET_DIR}/sources/dataBase/sqlreadonly.cpp)
+add_test(NAME tst_sqlreadonly COMMAND tst_sqlreadonly)
+target_include_directories(tst_sqlreadonly PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_sqlreadonly PRIVATE Qt::Test SQLite3::SQLite3)
+
+# QetSettings::scriptingEnabled() -- whether QElectroTech may run a script.
+# Compiles qetsettings.cpp alone: the setting is deliberately a plain
+# QSettings read, so the test needs nothing else of QElectroTech.
+add_executable(
+  tst_scriptingsetting
+  tst_scriptingsetting.cpp
+  ${QET_DIR}/sources/utils/qetsettings.cpp)
+add_test(NAME tst_scriptingsetting COMMAND tst_scriptingsetting)
+target_include_directories(tst_scriptingsetting PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_scriptingsetting PRIVATE Qt::Test Qt::Gui)
+
+# QetSettings::sheetBackground() -- the sheet (folio) background the diagram
+# editor remembers between runs. Compiles qetsettings.cpp alone for the same
+# reason as the test above; Qt::Gui because the pair carries a QColor.
+add_executable(
+  tst_sheetbackgroundsetting
+  tst_sheetbackgroundsetting.cpp
+  ${QET_DIR}/sources/utils/qetsettings.cpp)
+add_test(NAME tst_sheetbackgroundsetting COMMAND tst_sheetbackgroundsetting)
+target_include_directories(tst_sheetbackgroundsetting PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_sheetbackgroundsetting PRIVATE Qt::Test Qt::Gui)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately
@@ -180,11 +218,10 @@ target_include_directories(tst_crashdumps PRIVATE
   ${QET_DIR}
   ${QET_DIR}/sources
   ${QET_DIR}/sources/NameList)
+target_link_libraries(tst_crashdumps PRIVATE
+  Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml)
 if(Backtrace_FOUND)
-  target_link_libraries(tst_crashdumps PRIVATE
-    Qt::Test Qt::Widgets Qt::Xml pugixml::pugixml ${Backtrace_LIBRARIES})
-else()
-  target_link_libraries(tst_crashdumps PRIVATE Qt::Test Qt::Widgets Qt::Xml)
+  target_link_libraries(tst_crashdumps PRIVATE ${Backtrace_LIBRARIES})
 endif()
 
 add_executable(

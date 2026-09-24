@@ -22,6 +22,7 @@
 #include "../qetapp.h"
 #include "../qetdiagrameditor.h"
 #include "../qetgraphicsitem/conductor.h"
+#include "../qetproject.h"
 
 #include <QSettings>
 
@@ -40,6 +41,7 @@
 	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos) :
 	DiagramEventInterface(diagram)
 {
+	Q_UNUSED(start_pos);  // items stay at their original XML position
 		//DiagramEventInterface::init() is called by Diagram::setEventInterface
 		//only when it is replacing an earlier interface, so call it here as
 		//DiagramEventAddMacro does.
@@ -51,8 +53,25 @@
 	QDomDocument document_xml;
 	if (!document_xml.setContent(clipboard_text)) return;
 
+		//Batch the database work the same way project loading does
+		//(QETProject::readProjectXml): without this, every addItem()
+		//below emits dataBaseUpdated(), which makes each connected
+		//table model re-run its full SQL query -- ~77 queries for a
+		//typical paste, i.e. the multi-second stall on Ctrl+V.
+	auto *db = m_diagram->project() ? m_diagram->project()->dataBase() : nullptr;
+	if (db) {
+		db->blockSignals(true);
+		db->setUpdateBlocked(true);
+	}
+
 		//Load items at their original XML coordinates.
 	m_diagram->fromXml(document_xml, QPointF(), false, &m_content);
+
+	if (db) {
+		db->blockSignals(false);
+		db->setUpdateBlocked(false);
+		db->updateDB();
+	}
 	if (!m_content.count()) return;
 
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
@@ -85,33 +104,23 @@
 	};
 	const QPointF grid_origin = snapGrid(top_left);
 
-		//Move the group to the cursor, rather than the cursor to the
-		//group. Both put the copy under the pointer, but warping the
-		//pointer also drags it back to the original's position, so the
-		//copy appears exactly on top of what was copied until the mouse
-		//is moved -- which is the thing pasting under the cursor was
-		//meant to avoid (issue #913). Taking the pointer away from
-		//where the user put it is also its own surprise.
-	m_group_origin = snapGrid(start_pos);
-	const QPointF offset = m_group_origin - grid_origin;
-
-		//Store each item's position after the move. moveTo() applies a
+		//Store each item's original position.  moveTo() applies a
 		//grid-snapped delta from the baseline to these, so items
 		//preserve their layout and move in whole grid steps.
 	for (auto *item : movable) {
-		item->setPos(item->pos() + offset);
 		m_relative_pos.insert(item, item->pos());
 	}
+	m_group_origin = grid_origin;
 
-		//The conductors were laid out against the old terminal
+		//The conductors were laid out against the original terminal
 		//positions, so re-route them before anything is drawn.
 	const QList<Conductor *> conductors = m_content.conductors(DiagramContent::AnyConductor);
 	for (auto *conductor : conductors) {
 		conductor->updatePath();
 	}
 
-		//The baseline is known now, so moveTo() does not have to
-		//capture one from the first mouse movement.
+		//The baseline is the group's grid-snapped origin, so moveTo()
+		//does not have to capture one from the first mouse movement.
 	m_initial_cursor = m_group_origin;
 	m_baseline_captured = true;
 
@@ -125,6 +134,14 @@
 			if (const auto qde = QETApp::diagramEditorAncestorOf(view)) {
 				m_status_bar = qde->statusBar();
 			}
+				//Warp the cursor to the group's grid-snapped origin so
+				//the actual cursor position matches m_initial_cursor.
+				//Without this the first mouseMoveEvent computes a large
+				//delta (cursor is still at the Ctrl+V press location)
+				//and the items jump on first touch.
+			const QPoint view_pos = view->mapFromScene(m_initial_cursor);
+			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
+			QCursor::setPos(global_pos);
 		}
 	}
 	showHint();

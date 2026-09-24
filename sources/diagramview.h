@@ -137,6 +137,7 @@ class DiagramView : public PaletteGraphicsView
 		void copy();
 		void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
 		void pasteHere();
+		void duplicate(const QPoint &stepOffset);
 		void adjustSceneRect();
 		void updateWindowTitle();
 		void resetConductors();

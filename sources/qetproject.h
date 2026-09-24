@@ -169,6 +169,20 @@ class QETProject : public QObject
 		QString elementCurrentAutoNum() const;
 		void setCurrrentElementAutonum(QString autoNum);
 
+		/**
+		 * @brief Renumber existing elements by element autonumbering scheme.
+		 *
+		 * Elements do not store the scheme title but they store the corresponding formula.
+		 * This operation matches elements to schemes by comparing the stored formula
+		 * with the formula derived from the scheme's NumerotationContext.
+		 *
+		 * If @p scheme_title is empty, all schemes are renumbered.
+		 * If @p scheme_title is non-empty, only that scheme is renumbered.
+		 *
+		 * The operation is undoable.
+		 */
+		void renumberElementsBySchemeTitle(const QString &scheme_title = QString());
+
 			//Element
 		void freezeExistentElementLabel(bool freeze, int from, int to);
 		void freezeNewElementLabel(bool freeze, int from, int to);
@@ -297,6 +311,8 @@ class QETProject : public QObject
 	private:
 			/// When false, writeBackup() is a no-op (set by the headless CLI)
 		static bool m_backup_enabled;
+			/// Something changed since the last backup, see writeBackup()
+		bool m_backup_needed = true;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project

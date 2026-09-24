@@ -17,6 +17,8 @@
 */
 #include "projectdatabase.h"
 
+#include "sqlreadonly.h"
+
 #include "../diagram.h"
 #include "../diagramposition.h"
 #include "../elementprovider.h"
@@ -28,11 +30,13 @@
 #include "../qetproject.h"
 
 #include <QLocale>
+#include <QFile>
 #include <QRegularExpression>
-#include <QSqlError>
-
 #include <QSqlDriver>
+#include <QSqlError>
 #include <sqlite3.h>
+
+
 
 
 /**
@@ -208,6 +212,12 @@ bool projectDataBase::isReadOnlySelect(const QString &query, QString *error)
 */
 QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 	QString reason;
+
+	// First gate: which kind of statement is acceptable here at all. A
+	// textual check is the right tool for that and the wrong tool for
+	// anything else -- see isReadOnlySelect()'s own comment. It is what
+	// keeps ATTACH, BEGIN and PRAGMA out, none of which SQLite itself
+	// considers writes.
 	if (!isReadOnlySelect(query, &reason)) {
 		qWarning().noquote() << "projectDataBase::newQuery: rejected query:" << reason << "--" << query;
 		if (error) {
@@ -215,6 +225,24 @@ QSqlQuery projectDataBase::newQuery(const QString &query, QString *error) {
 		}
 		return QSqlQuery(m_data_base);
 	}
+
+	// Second gate, and the one that actually enforces read-only: SQLite is
+	// asked about the statement it compiled, instead of the text being read
+	// for clues. The first gate cannot see through a CTE prefix --
+	// "WITH x AS (SELECT 1) DELETE FROM element" starts with WITH, contains
+	// no semicolon, and deletes every row. That matters beyond the
+	// custom-query box, because this path is reachable from a file: a
+	// <graphics_table>'s saved <query> is read straight out of the .qet by
+	// ProjectDBModel::fromXml() and executed by fillValue(), so opening or
+	// exporting a project someone else produced would have been enough.
+	if (!QETSql::isSingleReadOnlyStatement(sqliteHandle(&m_data_base), query, &reason)) {
+		qWarning().noquote() << "projectDataBase::newQuery: rejected query:" << reason << "--" << query;
+		if (error) {
+			*error = reason;
+		}
+		return QSqlQuery(m_data_base);
+	}
+
 	return QSqlQuery(query, m_data_base);
 }
 
@@ -291,10 +319,23 @@ void projectDataBase::addElement(Element *element)
 void projectDataBase::removeElement(Element *element)
 {
 	m_content_changed = true;
+	bool changed = false;
+
 	m_remove_element_query.bindValue(":uuid", element->uuid().toString());
-	if(!m_remove_element_query.exec()) {
-		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	if (m_remove_element_query.exec()) {
+		changed = true;
 	} else {
+		qDebug() << "projectDataBase::removeElement remove error : " << m_remove_element_query.lastError();
+	}
+
+	m_remove_element_info_query.bindValue(":uuid", element->uuid().toString());
+	if (m_remove_element_info_query.exec()) {
+		changed = true;
+	} else {
+		qDebug() << "projectDataBase::removeElement remove element_info error : " << m_remove_element_info_query.lastError();
+	}
+
+	if (changed) {
 		emit dataBaseUpdated();
 	}
 }
@@ -1131,6 +1172,21 @@ void projectDataBase::prepareQuery()
 	m_remove_element_query = QSqlQuery(m_data_base);
 	m_remove_element_query.prepare(remove_element);
 
+		//REMOVE ELEMENT INFO
+		//element_info has no ON DELETE CASCADE (foreign keys aren't
+		//enforced by this connection), so removeElement() must clear it
+		//explicitly. Without this, the row is orphaned under the removed
+		//element's uuid, and re-adding an element with that same uuid
+		//later -- undo of this same removal, or a redo replaying it --
+		//hits element_info's PRIMARY KEY constraint on element_uuid: the
+		//element re-add succeeds, but its element_info insert silently
+		//fails and is lost. removeDiagram()'s cascade already clears this
+		//table when a whole folio goes, but that does not run for a
+		//single element removed on its own.
+	QString remove_element_info("DELETE FROM element_info WHERE element_uuid=:uuid");
+	m_remove_element_info_query = QSqlQuery(m_data_base);
+	m_remove_element_info_query.prepare(remove_element_info);
+
 		//UPDATE ELEMENT INFO
 	QString update_str("UPDATE element_info SET ");
 	for (auto string : QETInformation::elementInfoKeys()) {
@@ -1245,7 +1301,6 @@ void projectDataBase::bindDiagramInfoValues(QSqlQuery &query, Diagram *diagram)
 	}
 }
 
-#ifdef QET_EXPORT_PROJECT_DB
 /**
 	@brief projectDataBase::sqliteHandle
 	@param db
@@ -1263,6 +1318,7 @@ sqlite3 *projectDataBase::sqliteHandle(QSqlDatabase *db)
 	return handle;
 }
 
+#ifdef QET_EXPORT_PROJECT_DB
 
 /**
  * @brief projectDataBase::exportDb
@@ -1298,27 +1354,19 @@ void projectDataBase::exportDb(projectDataBase *db,
 		return;
 	}
 
-	QString connection_name("export_project_db_" % db->project()->uuid().toString());
-
-	if (true) //Enter in a scope only to nicely use QSqlDatabase::removeDatabase just after the end of the scope
-	{
-		auto file_db = QSqlDatabase::addDatabase("QSQLITE", connection_name);
-		file_db.setDatabaseName(path_);
-		if (!file_db.open()) {
-			return;
-		}
-
-		auto memory_db_handle = sqliteHandle(&db->m_data_base);
-		auto file_db_handle = sqliteHandle(&file_db);
-
-		auto sqlite_backup = sqlite3_backup_init(file_db_handle, "main", memory_db_handle, "main");
-		if (sqlite_backup)
-		{
-			sqlite3_backup_step(sqlite_backup, -1);
-			sqlite3_backup_finish(sqlite_backup);
-		}
-		file_db.close();
+	// VACUUM INTO requires the destination not to exist. QFileDialog may ask
+	// about overwriting, but it does not remove the existing file for us.
+	if (QFile::exists(path_) && !QFile::remove(path_)) {
+		qWarning() << "Unable to replace project database export:" << path_;
+		return;
 	}
-	QSqlDatabase::removeDatabase(connection_name);
+
+	// VACUUM INTO creates a standalone copy of the current database without
+	// requiring access to the SQLite driver's native connection handle.
+	const auto escaped_path = path_.replace("'", "''");
+	QSqlQuery query(db->m_data_base);
+	if (!query.exec("VACUUM INTO '" % escaped_path % "'")) {
+		qWarning() << "Unable to export project database:" << query.lastError().text();
+	}
 }
 #endif

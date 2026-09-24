@@ -52,6 +52,7 @@ class DiagramBgColorToolButton : public QToolButton
 		void applySystemColor();
 		void chooseOtherColor();
 		void rememberRecent(const QColor &color);
+		void persistRecent();
 		void setSwatch(const QColor &color);
 		static QIcon swatchIcon(const QColor &color);
 

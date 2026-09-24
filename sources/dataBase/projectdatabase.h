@@ -29,7 +29,7 @@ class QETProject;
 class Diagram;
 class Conductor;
 class Terminal;
-class sqlite3;
+struct sqlite3;
 
 /**
 	@brief The projectDataBase class
@@ -61,6 +61,26 @@ class projectDataBase : public QObject
 		QETProject *project() const;
 		QSqlQuery newQuery(const QString &query = QString(), QString *error = nullptr);
 		static bool isReadOnlySelect(const QString &query, QString *error = nullptr);
+
+			/**
+				The most rows any caller reads out of one query result.
+
+				A SELECT is not bounded by how much data the project holds:
+				SQLite produces rows lazily, so a query that never stops
+				producing them makes the loop that reads them never stop
+				either. A recursive CTE does exactly that in one line, and
+				a <graphics_table>'s <query> is stored in the .qet and run
+				on load -- so the text can arrive from a file rather than
+				from the person at the keyboard, and opening that file is
+				the whole attack.
+
+				100000 is far above any real result: the largest table in
+				the shipped examples is 396 rows. It is a backstop, not a
+				page size -- a caller that hits it has almost certainly
+				been handed something it should not run to completion, and
+				says so rather than truncating quietly.
+			*/
+		static constexpr int MaxResultRows = 100000;
 		QSqlDatabase database() const {return m_data_base;}
 		int excludedConductorCount() const;
 
@@ -119,6 +139,7 @@ class projectDataBase : public QObject
 		QSqlQuery m_insert_elements_query,
 				  m_insert_element_info_query,
 				  m_remove_element_query,
+				  m_remove_element_info_query,
 				  m_update_element_query,
 				  m_insert_diagram_query,
 				  m_remove_diagram_query,
@@ -135,9 +156,14 @@ class projectDataBase : public QObject
 				  m_cascade_remove_conductor_query,
 				  m_cascade_remove_element_query;
 
+	public:
+		// Deliberately outside the QET_EXPORT_PROJECT_DB guard below:
+		// newQuery() needs the raw connection to ask SQLite whether a
+		// query only reads, and that check runs in every build.
+		static sqlite3 *sqliteHandle(QSqlDatabase *db);
+
 #ifdef QET_EXPORT_PROJECT_DB
 	public:
-		static sqlite3 *sqliteHandle(QSqlDatabase *db);
 		static void exportDb(projectDataBase *db,
 				     QWidget *parent = nullptr,
 				     const QString &caption = QString(),

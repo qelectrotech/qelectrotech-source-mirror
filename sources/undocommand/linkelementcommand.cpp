@@ -314,31 +314,15 @@ void LinkElementCommand::redo()
 	if(m_element->diagram()) m_element->diagram()->showMe();
 	makeLink(m_linked_after);
 
-		//If the action is to link two reports together, we check if the conductors
-		//of the new potential have the same text, function, and protocol.
-		//if not, a dialog ask what do to.
+		//If the action is to link two reports together, and the conductors
+		//of the new potential disagree on a property that matters, a
+		//dialog asks what to do. See reportLinkNeedsPotentialChoice() for
+		//what "disagree" checks and the bug fixed there (bugtracker #974).
 	if (m_first_redo && (m_element->linkType() & Element::AllReport) \
 		&& m_element->conductors().size() \
 		&& m_linked_after.size() && m_linked_after.first()->conductors().size())
 	{
-			//fill list of potential
-		QSet <Conductor *> c_list = m_element->conductors().first()->relatedPotentialConductors();
-		c_list << m_element->conductors().first();
-			//fill list of text
-		QStringList str_txt;
-		QStringList str_funct;
-		QStringList str_tens;
-		for (const Conductor *c : c_list)
-		{
-			str_txt   << c->properties().text;
-			str_funct << c->properties().m_function;
-			str_tens  << c->properties().m_tension_protocol;
-			str_tens  << c->properties().m_wire_color;
-			str_tens  << c->properties().m_wire_section;
-		}
-
-			//check text list, isn't same in potential, ask user what to do
-		if (!QET::eachStrIsEqual(str_txt) || !QET::eachStrIsEqual(str_funct) || !QET::eachStrIsEqual(str_tens))
+		if (reportLinkNeedsPotentialChoice(m_element, m_linked_after.first()))
 		{
 			PotentialSelectorDialog psd(m_element, this);
 			psd.exec();
@@ -346,6 +330,64 @@ void LinkElementCommand::redo()
 		m_first_redo = false;
 	}
 	QUndoCommand::redo();
+}
+
+/**
+	@brief LinkElementCommand::reportLinkNeedsPotentialChoice
+	Whether linking these two report elements (next_report/previous_report)
+	would pop PotentialSelectorDialog -- i.e. whether their conductors (if
+	any exist yet, on either side) disagree on a property redo() cares
+	about. Exposed as its own static method, rather than left inline in
+	redo(), for the same reason ConductorCreator::needsPotentialChoice()
+	is: a caller with nobody there to answer a modal dialog (the scripting
+	API) can check first and decline, and the condition cannot drift away
+	from the one redo() actually applies.
+
+	Bug fixed here (bugtracker #974): the original check built ONE
+	combined list from three unrelated fields (tension_protocol,
+	wire_color, wire_section) and tested that whole list for equality --
+	comparing a tension-protocol string against a wire-colour string is
+	never equal even when each field individually matches across every
+	conductor, and wire_color/wire_section are ConductorProperties::
+	m_wire_color/m_wire_section, a separate free-text documentation pair
+	that says nothing about how the wire is actually drawn (that is
+	"color"/"style"). Net effect: the dialog could not reliably detect a
+	real mismatch, including the exact case #974 reported -- two
+	report-linked conductors drawn in different colours -- and could just
+	as easily fire on conductors that matched in every way that mattered.
+	Comparing each relevant field (text/num, function, tension protocol,
+	colour, line style) on its own fixes both.
+
+	@param element_a @param element_b the two elements about to be (or
+	already) linked; order does not matter
+	@return true if the dialog would (or does) open
+*/
+bool LinkElementCommand::reportLinkNeedsPotentialChoice(Element *element_a, Element *element_b)
+{
+	if (!element_a || !element_b) return false;
+	if (element_a->conductors().isEmpty() || element_b->conductors().isEmpty()) return false;
+
+	QSet<Conductor *> c_list;
+	for (Element *e : {element_a, element_b})
+	{
+		if (e->conductors().isEmpty()) continue;
+		c_list << e->conductors().first();
+		c_list += e->conductors().first()->relatedPotentialConductors();
+	}
+	if (c_list.size() < 2) return false;
+
+	QStringList str_txt, str_funct, str_tens, str_color, str_style;
+	for (const Conductor *c : std::as_const(c_list))
+	{
+		str_txt   << c->properties().text;
+		str_funct << c->properties().m_function;
+		str_tens  << c->properties().m_tension_protocol;
+		str_color << c->properties().color.name();
+		str_style << QString::number(int(c->properties().style));
+	}
+	return !QET::eachStrIsEqual(str_txt) || !QET::eachStrIsEqual(str_funct)
+		|| !QET::eachStrIsEqual(str_tens) || !QET::eachStrIsEqual(str_color)
+		|| !QET::eachStrIsEqual(str_style);
 }
 
 /**
