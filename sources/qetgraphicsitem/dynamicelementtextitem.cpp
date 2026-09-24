@@ -33,6 +33,7 @@
 #include <QDomElement>
 #include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
+#include <QAbstractTextDocumentLayout>
 
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
@@ -732,19 +733,6 @@ void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphics
 {
 	DiagramTextItem::paint(painter, option, widget);
 
-		//Only ever repositions already-existing sibling items here --
-		//never adds or removes one. paint() runs while QGraphicsScene is
-		//iterating its item list to draw it, and mutating that list mid
-		//-iteration (which addResizeHandles()/removeResizeHandles() do,
-		//through QGraphicsScene::addItem()/removeItem()) crashes. An
-		//earlier version of this fix called them from here and crashed
-		//qelectrotech reproducibly on deselecting a text (SIGABRT); see
-		//refreshResizeHandlesVisibility() for where that now happens
-		//instead -- itemChange(), Qt's own safe hook for exactly this,
-		//already used below for this item's own selection.
-	if (m_left_resize_handle || m_right_resize_handle)
-		updateResizeHandlesPos();
-
 	if (m_frame)
 	{
 		painter->save();
@@ -927,11 +915,17 @@ void DynamicElementTextItem::addResizeHandles()
 
 	for (QetGraphicsHandlerItem *handle : {m_left_resize_handle, m_right_resize_handle})
 	{
-		scene()->addItem(handle);
+			//Children of this text, not free scene items: Qt then carries
+			//them along when the parent element moves, rotates or is
+			//zoomed, and repaints their old and new area in the same
+			//update as this text. Moving free items from paint() instead
+			//left green fragments behind (qelectrotech#1002).
+		handle->setParentItem(this);
 		handle->setColor(Qt::darkGreen);
-		handle->setZValue(zValue() + 1);
 		handle->installSceneEventFilter(this);
 	}
+	m_resize_handles_con = connect(document()->documentLayout(), &QAbstractTextDocumentLayout::documentSizeChanged,
+								   this, &DynamicElementTextItem::updateResizeHandlesPos);
 
 	updateResizeHandlesPos();
 }
@@ -941,6 +935,7 @@ void DynamicElementTextItem::addResizeHandles()
 */
 void DynamicElementTextItem::removeResizeHandles()
 {
+	disconnect(m_resize_handles_con);
 	delete m_left_resize_handle;
 	delete m_right_resize_handle;
 	m_left_resize_handle = nullptr;
@@ -973,8 +968,8 @@ void DynamicElementTextItem::updateResizeHandlesPos()
 		return;
 
 	QRectF br = boundingRect();
-	m_left_resize_handle->setPos(mapToScene(QPointF(br.left(), br.center().y())));
-	m_right_resize_handle->setPos(mapToScene(QPointF(br.right(), br.center().y())));
+	m_left_resize_handle->setPos(br.left(), br.center().y());
+	m_right_resize_handle->setPos(br.right(), br.center().y());
 }
 
 /**
