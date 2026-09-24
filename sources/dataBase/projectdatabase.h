@@ -29,7 +29,7 @@ class QETProject;
 class Diagram;
 class Conductor;
 class Terminal;
-class sqlite3;
+struct sqlite3;
 
 /**
 	@brief The projectDataBase class
