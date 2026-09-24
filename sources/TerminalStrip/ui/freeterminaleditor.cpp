@@ -286,7 +286,7 @@ void FreeTerminalEditor::setDisabledMove(bool b)
 	ui->m_move_label->setDisabled(b);
 	ui->m_move_in_cb->setDisabled(b);
 	ui->m_move_pb->setDisabled(b);
-	ui->m_move_pb->setToolTip(b ? tr("Apply or discard pending edits before moving")
-								: tr("Move selected terminals to the chosen terminal strip"));
+	ui->m_move_pb->setToolTip(b ? tr("Appliquez ou annulez les modifications en cours avant de déplacer")
+								: tr("Déplacer les bornes sélectionnées vers le bornier choisi"));
 }
 
