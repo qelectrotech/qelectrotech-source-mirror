@@ -17,6 +17,7 @@
 */
 #include "elementpropertieseditorwidget.h"
 
+#include "../../qet.h"
 #include "../../qetapp.h"
 #include "../../qetinformation.h"
 #include "ui_elementpropertieseditorwidget.h"
@@ -185,13 +186,13 @@ void ElementPropertiesEditorWidget::upDateInterface()
 
 		const DiagramContext &info = m_data.m_informations;
 		ui->m_auto_num_locked_cb->setChecked(
-			info.value(QStringLiteral("auto_num_locked")).toString() == QLatin1String("true"));
+			QET::infoFlagIsTrue(info.value(QStringLiteral("auto_num_locked")).toString()));
 		ui->m_potential_isolating_cb->setChecked(
-			info.value(QStringLiteral("potential_isolating")).toString() == QLatin1String("true"));
+			QET::infoFlagIsTrue(info.value(QStringLiteral("potential_isolating")).toString()));
 	}
 
 	ui->m_exclude_from_bom_cb->setChecked(
-		m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString() == QLatin1String("true"));
+		QET::infoFlagIsTrue(m_data.m_informations.value(QStringLiteral("exclude_from_bom")).toString()));
 
 	on_m_base_type_cb_currentIndexChanged(ui->m_base_type_cb->currentIndex());
 }
