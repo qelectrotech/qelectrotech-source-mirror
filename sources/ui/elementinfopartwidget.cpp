@@ -20,7 +20,9 @@
 #include "../SearchAndReplace/searchandreplaceworker.h"
 #include "../qetinformation.h"
 #include "ui_elementinfopartwidget.h"
+#include <QCompleter>
 #include <QRegularExpressionValidator>
+#include <QStringListModel>
 
 #include <utility>
 
@@ -107,6 +109,30 @@ void ElementInfoPartWidget::setText(const QString &txt)
 void ElementInfoPartWidget::setPlaceHolderText(const QString &text)
 {
 	ui->line_edit->setPlaceholderText(text);
+}
+
+/**
+	@brief ElementInfoPartWidget::setSuggestions
+	Offer suggestions as a drop-down list while typing in the line edit,
+	matching anywhere in the text and ignoring case.
+	An empty list removes the drop-down.
+	@param suggestions
+*/
+void ElementInfoPartWidget::setSuggestions(const QStringList &suggestions)
+{
+	if (suggestions.isEmpty()) {
+		ui->line_edit->setCompleter(nullptr);
+		return;
+	}
+
+	if (!m_completer) {
+		m_suggestions_model = new QStringListModel(this);
+		m_completer = new QCompleter(m_suggestions_model, this);
+		m_completer->setCaseSensitivity(Qt::CaseInsensitive);
+		m_completer->setFilterMode(Qt::MatchContains);
+	}
+	m_suggestions_model->setStringList(suggestions);
+	ui->line_edit->setCompleter(m_completer);
 }
 
 /**
