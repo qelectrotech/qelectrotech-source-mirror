@@ -55,12 +55,6 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	m_titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
 	m_titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 
-	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
-#if QT_VERSION < QT_VERSION_CHECK(4, 8, 0)	// ### Qt 6: remove
-#else
-	m_titleblock_template_renderer -> setUseCache(false);
-#endif
-
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
 
@@ -410,12 +404,10 @@ QString BorderTitleBlock::titleBlockTemplateName() const
 	@brief BorderTitleBlock::titleBlockTemplateChanged
 	This slot may be used to inform this class that the given title block
 	template has changed.
-	The title block-dedicated rendering cache will thus be flushed.
 	@param template_name : Name of the title block template that has changed
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	if (titleBlockTemplateName() != template_name) return;
-	m_titleblock_template_renderer -> invalidateRenderedTemplate();
 }
 
 /**
@@ -513,7 +505,10 @@ void BorderTitleBlock::draw(QPainter *painter)
 {
 	//Set the QPainter
 	painter -> save();
-	QPen pen(Qt::black);
+		//Use a pen color that contrasts with the background
+	QColor border_color = Diagram::background_color.lightness() < 128
+			       ? QColor(Qt::white) : QColor(Qt::black);
+	QPen pen(border_color);
 	painter -> setPen(pen);
 	painter -> setBrush(Qt::NoBrush);
 
@@ -901,10 +896,20 @@ void BorderTitleBlock::updateDiagramContextForTitleBlock(
 	// An empty page-level value means the variable was auto-added to the
 	// folio's Custom tab (#495) but never actually set by the user, so it
 	// must not shadow a real project-level value of the same name (#531).
+	//
+	// That guard has to stop short of removing the key outright, though
+	// (#973). TitleBlockTemplate::interpreteVariables() only replaces a
+	// "%name"/"%{name}" placeholder when "name" is a key in this context at
+	// all -- an unset variable that never makes it in is left as its own
+	// literal placeholder text in the rendered title block, not blank.
+	// So an empty page-level value is skipped only when a real project-level
+	// one is already there to show through; otherwise it still goes in
+	// empty, which is what makes the placeholder resolve to nothing.
 	DiagramContext context = initial_context;
 	foreach (QString key, additional_fields_.keys()) {
-		if (!additional_fields_[key].toString().isEmpty())
-			context.addValue(key, additional_fields_[key]);
+		const QVariant value = additional_fields_[key];
+		if (!value.toString().isEmpty() || !context.contains(key))
+			context.addValue(key, value);
 	}
 
 	// ... overridden by the historical and/or dynamically generated fields

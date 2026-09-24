@@ -29,6 +29,7 @@ class Element;
 class Conductor;
 class ElementTextItemGroup;
 class CrossRefItem;
+class QetGraphicsHandlerItem;
 
 /**
 	@brief The DynamicElementTextItem class
@@ -89,7 +90,10 @@ class DynamicElementTextItem : public DiagramTextItem
 		Element *parentElement() const;
 		/// PDF export: slave cross-reference text item ("(folio-pos)") and its master target.
 		QGraphicsTextItem *slaveXrefItem() const { return m_slave_Xref_item; }
-		Element *masterElement() const { return m_master_element.data(); }
+		/// DXF export: the master-side cross-reference item (the table/cross
+		/// drawn next to a report/master element), if this text item has one.
+		CrossRefItem *masterXrefItem() const { return m_Xref_item; }
+		Element *masterElement() const;
 		ElementTextItemGroup *parentGroup() const;
 		Element *elementUseForInfo() const;
 		void refreshLabelConnection();
@@ -109,13 +113,19 @@ class DynamicElementTextItem : public DiagramTextItem
 		void updateXref();
 		void setPlainText(const QString &text);
 		void setTextWidth(qreal width);
-		void setXref_item(Qt::AlignmentFlag m_exHrefPos);
+		void setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset = 0);
 
 		void setKeepVisualRotation(bool set);
 		bool keepVisualRotation() const;
 
 		void setRotationPointCenter(bool set);
 		bool rotationPointCenter() const;
+
+			//Called by Element::itemChange() when the PARENT's selection
+			//changes, so the parent can keep each of its texts' resize
+			//handles in sync with its own selection state. Public for that;
+			//see the .cpp for why it exists.
+		void refreshResizeHandlesVisibility();
 
 	protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
@@ -148,6 +158,12 @@ class DynamicElementTextItem : public DiagramTextItem
 		void zoomToLinkedElement();
 		void parentElementRotationChanged();
 		void thisRotationChanged();
+		void addResizeHandles();
+		void removeResizeHandles();
+		void updateResizeHandlesPos();
+		void handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
+		void handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
+		void handlerMouseReleaseEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event);
 
 	private:
 		QPointer <Element>
@@ -179,6 +195,12 @@ class DynamicElementTextItem : public DiagramTextItem
 		bool m_rotation_point_center = false;
 		qreal m_visual_rotation_ref = 0;
 		bool m_move_parent = true;
+		QetGraphicsHandlerItem *m_left_resize_handle = nullptr;
+		QetGraphicsHandlerItem *m_right_resize_handle = nullptr;
+		qreal m_resize_original_width = -1;
+		qreal m_resize_baseline_width = -1;
+		qreal m_resize_start_local_x = 0;
+		QMetaObject::Connection m_resize_handles_con;
 };
 
 #endif // DYNAMICELEMENTTEXTITEM_H

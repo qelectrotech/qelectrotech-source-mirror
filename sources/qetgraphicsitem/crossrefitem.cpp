@@ -117,6 +117,10 @@ void CrossRefItem::setUpConnection()
 		m_update_connection << connect(m_element, &Element::rotationChanged, this, &CrossRefItem::autoPos);
 		set=true;
 	}
+	// For PLC masters, always set up connections for update notifications
+	// (page reorder, diagram removal, etc.)
+	if (!set && m_element->elementData().m_master_type == ElementData::PLC && !m_text && !m_group)
+		set = true;
 
 	if(set)
 	{
@@ -234,9 +238,24 @@ void CrossRefItem::updateLabel()
 	qp.setPen(pen_);
 	qp.setFont(QETApp::diagramTextsFont(5));
 
-	// PLC table is drawn by Element::drawPlcTable(), not by CrossRefItem
+	// PLC table is drawn and managed entirely by CrossRefItem
 	if (m_element->elementData().m_master_type == ElementData::PLC)
+	{
+		// Position at the PLC table position from the .elmt definition
+		QList<QPointF> positions = m_element->plcTablePositions();
+		QPointF pos = positions.isEmpty() ? QPointF(0, 0) : positions.first();
+		setPos(pos);
+
+		// Populate m_hovered_contacts_map using drawAsPlcTable on a
+		// dummy painter (m_update_map=true).
+		m_update_map = true;
+		drawAsPlcTable(qp);
+		m_update_map = false;
+
+		update();
+		QTimer::singleShot(0, this, [this]{ update(); });
 		return;
+	}
 	//Draw cross or contact, only if master element is linked.
 	else if (! m_element->linkedElements().isEmpty())
 	{
@@ -263,6 +282,11 @@ void CrossRefItem::updateLabel()
 */
 void CrossRefItem::autoPos()
 {
+	// For PLC masters, position is set by updateLabel() based on
+	// m_plc_table_positions - don't override it here.
+	if (m_element->elementData().m_master_type == ElementData::PLC)
+		return;
+
 	//We calculate the position according to the snapTo of the xrefproperties
 	if (m_properties.snapTo() == XRefProperties::Bottom)
 		QGIUtility::centerToBottomDiagram(this,
@@ -328,7 +352,9 @@ void CrossRefItem::paint(
 	// confirmed by analysis of 19+ coredumps.
 	// m_update_map=false: draw functions do not overwrite m_hovered_contacts_map.
 
-	// PLC table is drawn by Element::drawPlcTable(), not by CrossRefItem
+	// PLC: do not draw here (Element::drawPlcTable handles visual rendering).
+	// The m_hovered_contacts_map was populated in updateLabel() for
+	// click navigation and PDF hyperlink injection.
 	if (m_element->elementData().m_master_type == ElementData::PLC)
 		return;
 
@@ -1378,11 +1404,24 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 	headers[COL_COMMENT]  = QObject::tr("Commentaire");
 	headers[COL_CROSSREF] = QObject::tr("Réf. croisée");
 
-	// Build list of visible columns
+	// Build visible columns (must match Element::drawPlcTable logic)
 	QList<int> visible_cols;
-	for (int i = 0; i < COL_COUNT; ++i) {
-		if (plc_data.colVisible.value(i, true))
-			visible_cols.append(i);
+	if (!plc_data.columnOrder.isEmpty()) {
+		for (int logical : plc_data.columnOrder) {
+			if (logical >= 0 && logical < COL_COUNT
+				&& plc_data.colVisible.value(logical, true)
+				&& !visible_cols.contains(logical))
+				visible_cols.append(logical);
+		}
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true) && !visible_cols.contains(i))
+				visible_cols.append(i);
+		}
+	} else {
+		for (int i = 0; i < COL_COUNT; ++i) {
+			if (plc_data.colVisible.value(i, true))
+				visible_cols.append(i);
+		}
 	}
 	if (visible_cols.isEmpty())
 		return;
@@ -1405,7 +1444,7 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 	}
 
 	qreal row_h = plc_data.rowHeight > 0 ? plc_data.rowHeight : 8.0;
-	qreal header_h = row_h + 2.0;
+	qreal header_h = plc_data.showHeaders ? (row_h + 2.0) : 0;
 
 	// Calculate total width
 	qreal total_width = 0;
@@ -1431,6 +1470,7 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 
 	qreal total_height;
 	int block_count = block_starts.size();
+	qreal block_total_width = total_width; // width of one block, before multi-block scaling
 
 	if (block_count > 1) {
 		int max_rows = 0;
@@ -1455,7 +1495,7 @@ void CrossRefItem::drawAsPlcTable(QPainter &painter)
 	// Draw header row
 
 	for (int block = 0; block < block_count; ++block) {
-		qreal block_x = block * (col_widths.value(visible_cols.first(), 30) * visible_cols.size() + 3);
+		qreal block_x = block * (block_total_width + 3);
 		qreal cx = block_x;
 
 		// Draw column headers

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#4d4d4d;
+      }
+      </style>
+  </defs>
+  <g transform="translate(1,1)">
+  <path style="fill:currentColor;fill-opacity:1;stroke:none" d="M 3 3 h 16 v 1 h -16 Z M 3 4 h 1 v 15 h -1 Z M 4 18 h 10 v 1 h -10 Z M 18 4 h 1 v 8 h -1 Z M 16 14 h 1 v 5 h -1 Z M 14 16 h 5 v 1 h -5 Z" class="ColorScheme-Text"/>
+  <path style="fill:currentColor;fill-opacity:1;stroke:none" d="M 5 7 h 1 v 1 h -1 Z M 6 7 h 1 v 1 h -1 Z M 7 7 h 1 v 1 h -1 Z M 5 8 h 1 v 1 h -1 Z M 7 8 h 1 v 1 h -1 Z M 5 9 h 1 v 1 h -1 Z M 6 9 h 1 v 1 h -1 Z M 7 9 h 1 v 1 h -1 Z M 5 10 h 1 v 1 h -1 Z M 5 11 h 1 v 1 h -1 Z M 9 7 h 1 v 1 h -1 Z M 10 7 h 1 v 1 h -1 Z M 9 8 h 1 v 1 h -1 Z M 11 8 h 1 v 1 h -1 Z M 9 9 h 1 v 1 h -1 Z M 11 9 h 1 v 1 h -1 Z M 9 10 h 1 v 1 h -1 Z M 11 10 h 1 v 1 h -1 Z M 9 11 h 1 v 1 h -1 Z M 10 11 h 1 v 1 h -1 Z M 13 7 h 1 v 1 h -1 Z M 14 7 h 1 v 1 h -1 Z M 15 7 h 1 v 1 h -1 Z M 13 8 h 1 v 1 h -1 Z M 13 9 h 1 v 1 h -1 Z M 14 9 h 1 v 1 h -1 Z M 13 10 h 1 v 1 h -1 Z M 13 11 h 1 v 1 h -1 Z" class="ColorScheme-Text"/>
+  </g>
+</svg>

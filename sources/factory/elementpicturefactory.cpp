@@ -37,6 +37,33 @@
 ElementPictureFactory* ElementPictureFactory::m_factory = nullptr;
 
 /**
+	@brief ElementPictureFactory::cacheKey
+	@param location
+	@return the key under which the drawing of the element at location is
+	cached.
+
+	An element definition normally carries its own uuid, and that is used
+	directly. Definitions saved before uuids were written do not have one --
+	a good share of the shipped example projects are still in that state --
+	and they all presented the same null uuid as a key. The drawing of such
+	an element was therefore either rebuilt for every instance placed, or
+	stored under a key it shared with every other element lacking a uuid.
+	Derive a stable key from the location for those instead:
+	ElementsLocation::toString() qualifies an embedded path with the id of
+	the project that owns it, and project ids come from an ever-increasing
+	counter and are never reused, so the derived key cannot collide with an
+	element of another project.
+*/
+QUuid ElementPictureFactory::cacheKey(const ElementsLocation &location)
+{
+	const QUuid uuid = location.uuid();
+	if (!uuid.isNull()) {
+		return uuid;
+	}
+	return QUuid::createUuidV5(QUuid(), location.toString().toUtf8());
+}
+
+/**
 	@brief ElementPictureFactory::getPictures
 	Set the picture of the element at location.
 	Note, picture can be null
@@ -50,12 +77,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 		return;
 	}
 
-	QUuid uuid = location.uuid();
-	if(Q_UNLIKELY(uuid.isNull()))
-	{
-		build(location, &picture, &low_picture);
-		return;
-	}
+	const QUuid uuid = cacheKey(location);
 
 	if(m_pictures_H.contains(uuid))
 	{
@@ -73,6 +95,29 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 }
 
 /**
+	@brief ElementPictureFactory::dropCache
+	Forget the cached drawing of the element at @p location, so the next
+	getPictures()/pixmap()/getPrimitives() call rebuilds it from the
+	definition's current content instead of returning what was cached the
+	first time this location was drawn.
+
+	A placed Element keeps its own copy of the picture in m_picture /
+	m_low_zoom_picture (set once, in buildFromXml()), so dropping the shared
+	cache here does not by itself change what is on screen -- callers doing
+	a manual refresh (bugtracker #802) still need each Element to re-fetch
+	its picture afterwards.
+	@param location
+*/
+void ElementPictureFactory::dropCache(const ElementsLocation &location)
+{
+	const QUuid uuid = cacheKey(location);
+	m_pictures_H.remove(uuid);
+	m_low_pictures_H.remove(uuid);
+	m_pixmap_H.remove(uuid);
+	m_primitives_H.remove(uuid);
+}
+
+/**
 	@brief ElementPictureFactory::pixmap
 	@param location
 	@return the pixmap of the element at location
@@ -80,7 +125,7 @@ void ElementPictureFactory::getPictures(const ElementsLocation &location, QPictu
 */
 QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 {
-	QUuid uuid = location.uuid();
+	const QUuid uuid = cacheKey(location);
 
 	if (m_pixmap_H.contains(uuid)) {
 		return m_pixmap_H.value(uuid);
@@ -99,7 +144,15 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		int hsy = qMin(doc.document_element().attribute("hotspot_y").as_int(), h);
 
 		QPixmap pix(w, h);
-		pix.fill(QColor(255, 255, 255, 0));
+			//Element definitions almost always draw with a hardcoded black
+			//stroke color, on the assumption of the white diagram sheet they
+			//are normally placed on. The pixmap is kept as drawn, on a
+			//transparent background: the places that show it (the
+			//collection tree through ElementPreviewDelegate, the drag icon)
+			//adapt it to the palette with QET::Palette::forPalette(), so a
+			//dark palette gets light ink instead of black on black
+			//(bugtracker #335).
+		pix.fill(Qt::transparent);
 
 		QPainter painter(&pix);
 		painter.setRenderHint(QPainter::Antialiasing, true);
@@ -107,9 +160,7 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 		painter.translate(hsx, hsy);
 		painter.drawPicture(0, 0, m_pictures_H.value(uuid));
 
-		if (!uuid.isNull()) {
-			m_pixmap_H.insert(uuid, pix);
-		}
+		m_pixmap_H.insert(uuid, pix);
 		return pix;
 	}
 
@@ -125,10 +176,11 @@ QPixmap ElementPictureFactory::pixmap(const ElementsLocation &location)
 ElementPictureFactory::primitives ElementPictureFactory::getPrimitives(
 		const ElementsLocation &location)
 {
-	if(!m_primitives_H.contains(location.uuid()))
+	const QUuid uuid = cacheKey(location);
+	if(!m_primitives_H.contains(uuid))
 		build(location);
 
-	return m_primitives_H.value(location.uuid());
+	return m_primitives_H.value(uuid);
 }
 
 ElementPictureFactory::~ElementPictureFactory()
@@ -263,7 +315,7 @@ bool ElementPictureFactory::build(const ElementsLocation &location,
 	painter.end();
 	low_painter.end();
 
-	const auto uuid_ = location.uuid();
+	const auto uuid_ = cacheKey(location);
 	if (!picture) {
 		m_pictures_H.insert(uuid_, pic);
 		m_primitives_H.insert(uuid_, primitives_);
@@ -612,16 +664,13 @@ void ElementPictureFactory::setPainterStyle(const QDomElement &dom, QPainter &pa
 	pen.setCapStyle(Qt::SquareCap);
 
 		//Get the couples style/value
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	const QStringList styles = dom.attribute("style").split(";", QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	const QStringList styles = dom.attribute("style").split(";", Qt::SkipEmptyParts);
-#endif
 
-	QRegularExpression rx("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$");
+		//Built once : this runs for every primitive of every element
+		//instance a project places, and recompiling the pattern each time
+		//was the single largest cost of opening a project.
+	static const QRegularExpression rx(
+				QStringLiteral("^(?<name>[a-z-]+):(?<value>[a-zA-Z-]+)$"));
 	if (!rx.isValid())
 	{
 		qWarning() <<QObject::tr("this is an error in the code")

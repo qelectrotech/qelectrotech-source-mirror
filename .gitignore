@@ -1,5 +1,7 @@
 *.snap
 .flatpak-builder
+__pycache__/
+*.pyc
 # Qt build output
 *.user
 # doxygen Doxyfile output

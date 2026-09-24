@@ -725,7 +725,10 @@ void ElementsCollectionWidget::showThisDir()
 		ElementCollectionItem *eci =
 				elementCollectionItemForIndex(m_showed_index);
 		if (eci)
+		{
 			eci->setBackground(QBrush());
+			eci->setForeground(QBrush());
+		}
 	}
 
 	m_showed_index = m_index_at_context_menu;
@@ -736,7 +739,11 @@ void ElementsCollectionWidget::showThisDir()
 		ElementCollectionItem *eci =
 				elementCollectionItemForIndex(m_showed_index);
 		if (eci)
+		{
+			// Amber under black, whatever the palette's text color.
 			eci->setBackground(QBrush(QColor(255, 204, 0, 255)));
+			eci->setForeground(QBrush(Qt::black));
+		}
 		search();
 	}
 	else
@@ -755,7 +762,10 @@ void ElementsCollectionWidget::resetShowThisDir()
 		ElementCollectionItem *eci = elementCollectionItemForIndex(
 					m_showed_index);
 		if (eci)
+		{
 			eci->setBackground(QBrush());
+			eci->setForeground(QBrush());
+		}
 	}
 
 	m_showed_index = QModelIndex();
@@ -949,14 +959,7 @@ void ElementsCollectionWidget::search()
 	}
 
 	hideCollection(true);
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	const QStringList text_list = text.split("+", QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	const QStringList text_list = text.split("+", Qt::SkipEmptyParts);
-#endif
 	QModelIndexList match_index;
 	for (QString txt : text_list) {
 		match_index << m_model->match(m_showed_index.isValid()

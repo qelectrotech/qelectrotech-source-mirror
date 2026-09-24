@@ -17,6 +17,8 @@
 */
 #include "qetxml.h"
 
+#include <algorithm>
+
 #include "NameList/nameslist.h"
 #include "utils/qetutils.h"
 
@@ -277,14 +279,7 @@ bool QETXML::writeXmlFile(
 	}
 
 	QTextStream out(&file);
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)	// ### Qt 6: remove
-	out.setCodec("UTF-8");
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
 	out.setEncoding(QStringConverter::Utf8);
-#endif
 	out.setGenerateByteOrderMark(false);
 	out << xml_document.toString(4);
 	file.close();
@@ -454,7 +449,14 @@ QDomElement QETXML::modelHeaderDataToXml(
 		//Iterate twice, first for horizontal header and second to vertical header
 	while (true)
 	{
-		for (auto section : data_hash.keys())
+			//Sorted: data_hash is a QHash, whose key order is randomised per
+			//process, so writing the sections in hash order reordered these
+			//<data> children on every save and made the save irreproducible.
+			//The roles within a section keep their given order, which is a
+			//QList and therefore already stable.
+		QList<int> sections = data_hash.keys();
+		std::sort(sections.begin(), sections.end());
+		for (auto section : std::as_const(sections))
 		{
 			for (auto role : data_hash.value(section))
 			{

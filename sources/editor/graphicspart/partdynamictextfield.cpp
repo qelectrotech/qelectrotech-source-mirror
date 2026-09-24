@@ -74,19 +74,19 @@ void PartDynamicTextField::setRotation(qreal angle) {
 	setPos(QTransform().rotate(diffAngle).map(pos()));
 }
 
-void PartDynamicTextField::mirror() {
+void PartDynamicTextField::mirror(qreal axis_x) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle(360-rotation(), true));
 	// then see, where we need to re-position depending on the angle!
 	qreal rot = qRound(QET::correctAngle(rotation(), true));
 	qreal c = qCos(qDegreesToRadians(rot));
 	qreal s = qSin(qDegreesToRadians(rot));
-	qreal x = (-1) * pos().x() - c * boundingRect().width();
+	qreal x = 2 * axis_x - pos().x() - c * boundingRect().width();
 	qreal y = pos().y() - s * boundingRect().width();
 	setPos(x, y);
 }
 
-void PartDynamicTextField::flip() {
+void PartDynamicTextField::flip(qreal axis_y) {
 	// at first: rotate the text:
 	QGraphicsObject::setRotation(QET::correctAngle(360-rotation(), true));
 	// then see, where we need to re-position depending on the angle!
@@ -94,7 +94,7 @@ void PartDynamicTextField::flip() {
 	qreal c = qCos(qDegreesToRadians(rot));
 	qreal s = qSin(qDegreesToRadians(rot));
 	qreal x = pos().x() + s * boundingRect().height();
-	qreal y = (-1) * pos().y() - c * boundingRect().height();
+	qreal y = 2 * axis_y - pos().y() - c * boundingRect().height();
 	setPos(x, y);
 }
 

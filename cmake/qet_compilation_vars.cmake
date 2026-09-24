@@ -16,12 +16,11 @@
 
 message(" - qet_compilation_vars")
 
-# Note: GuiPrivate is intentionally NOT in this list. Qt6's CMake config only
-# creates the Qt::GuiPrivate target when "GuiPrivate" is explicitly requested
-# as a component, but Qt5 has no Qt5GuiPrivate package at all (the target is
-# created implicitly with Gui), so requesting it as a component breaks the
-# whole Qt5 configure. It is requested separately, guarded by
-# QT_VERSION_MAJOR, after the main find_package.
+# Note: GuiPrivate is intentionally NOT in this list. 
+# Qt >= 6.7 ships it as a proper find_package component, but some distro
+# packages (e.g. Ubuntu's qt6-base-private-dev) omit Qt6GuiPrivateConfig.cmake
+# and only provide the implicit Qt6::GuiPrivate target created alongside
+# Qt6::Gui. Checks are done in the main CMakeLists.txt
 # (Needed for QPdfEngine::drawHyperlink, the PDF internal links.)
 set(QET_COMPONENTS
   LinguistTools
@@ -32,6 +31,13 @@ set(QET_COMPONENTS
   Network
   Widgets
   Concurrent)
+
+# Note: Pdf is intentionally NOT in this list. Some Qt6 distributions
+# (notably the Flatpak org.kde.Platform runtime) don't ship the QtPdf
+# module at all - it lives in the qtwebengine source tree, not Qt6 core.
+# Requesting it here as a REQUIRED component would fail the whole
+# configure on those setups. It is probed separately, QUIET and
+# non-fatal, right after the main find_package() call below.
 
 set(QET_PRIVATE_LIBRARIES
   Qt::PrintSupport
@@ -44,6 +50,9 @@ set(QET_PRIVATE_LIBRARIES
   Qt::Widgets
   Qt::Concurrent
   )
+
+# Qt::Pdf is appended conditionally in CMakeLists.txt, once we know
+# whether the module was actually found (see QET_HAS_QTPDF).
 
 set(QET_RES_FILES
   ${QET_DIR}/sources/autoNum/ui/autonumberingdockwidget.ui
@@ -91,7 +100,6 @@ set(QET_RES_FILES
   ${QET_DIR}/sources/ui/configsaveloaderwidget.ui
   ${QET_DIR}/sources/ui/diagramcontextwidget.ui
   ${QET_DIR}/sources/ui/diagrameditorhandlersizewidget.ui
-  ${QET_DIR}/sources/ui/diagramselection.ui
   ${QET_DIR}/sources/ui/dialogwaiting.ui
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.ui
   ${QET_DIR}/sources/ui/elementinfopartwidget.ui
@@ -165,7 +173,11 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/conductornumexport.cpp
   ${QET_DIR}/sources/wiringlistexport.h
   ${QET_DIR}/sources/wiringlistexport.cpp
+  ${QET_DIR}/sources/ui/wiringlistdialog.h
+  ${QET_DIR}/sources/ui/wiringlistdialog.cpp
   ${QET_DIR}/sources/conductornumexport.h
+  ${QET_DIR}/sources/bomexport.cpp
+  ${QET_DIR}/sources/bomexport.h
   ${QET_DIR}/sources/conductorprofile.cpp
   ${QET_DIR}/sources/conductorprofile.h
   ${QET_DIR}/sources/conductorproperties.cpp
@@ -177,6 +189,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/configdialog.h
   ${QET_DIR}/sources/createdxf.cpp
   ${QET_DIR}/sources/createdxf.h
+  ${QET_DIR}/sources/dxfpaintdevice.cpp
+  ${QET_DIR}/sources/dxfpaintdevice.h
   ${QET_DIR}/sources/diagramcommands.cpp
   ${QET_DIR}/sources/diagramcommands.h
   ${QET_DIR}/sources/diagramcontent.cpp
@@ -234,6 +248,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qet.h
   ${QET_DIR}/sources/qeticons.cpp
   ${QET_DIR}/sources/qeticons.h
+  ${QET_DIR}/sources/palettegraphicsview.cpp
+  ${QET_DIR}/sources/palettegraphicsview.h
+  ${QET_DIR}/sources/qetpalette.cpp
+  ${QET_DIR}/sources/qetpalette.h
+  ${QET_DIR}/sources/qetstyle.cpp
+  ${QET_DIR}/sources/qetstyle.h
   ${QET_DIR}/sources/qetinformation.cpp
   ${QET_DIR}/sources/qetinformation.h
   ${QET_DIR}/sources/qetmainwindow.cpp
@@ -296,6 +316,8 @@ set(QET_SRC_FILES
 
   ${QET_DIR}/sources/dataBase/projectdatabase.cpp
   ${QET_DIR}/sources/dataBase/projectdatabase.h
+  ${QET_DIR}/sources/dataBase/sqlreadonly.cpp
+  ${QET_DIR}/sources/dataBase/sqlreadonly.h
 
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.cpp
   ${QET_DIR}/sources/dataBase/ui/elementquerywidget.h
@@ -311,12 +333,16 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/diagramevent/diagrameventaddimage.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddshape.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpath.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpath.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddtext.h
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventinterface.h
   ${QET_DIR}/sources/diagramevent/diagrameventaddmacro.cpp
   ${QET_DIR}/sources/diagramevent/diagrameventaddmacro.h
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpaste.cpp
+  ${QET_DIR}/sources/diagramevent/diagrameventaddpaste.h
 
   ${QET_DIR}/sources/dvevent/dveventinterface.cpp
   ${QET_DIR}/sources/dvevent/dveventinterface.h
@@ -418,6 +444,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ElementsCollection/elementcollectionhandler.h
   ${QET_DIR}/sources/ElementsCollection/elementcollectionitem.cpp
   ${QET_DIR}/sources/ElementsCollection/elementcollectionitem.h
+  ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.cpp
+  ${QET_DIR}/sources/ElementsCollection/elementpreviewdelegate.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.cpp
   ${QET_DIR}/sources/ElementsCollection/elementscollectionmodel.h
   ${QET_DIR}/sources/ElementsCollection/elementscollectionwidget.cpp
@@ -464,6 +492,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/project/projectusagetracker.cpp
   ${QET_DIR}/sources/project/projectusagetracker.h
 
+  ${QET_DIR}/sources/properties/deviceinformation.cpp
+  ${QET_DIR}/sources/properties/deviceinformation.h
   ${QET_DIR}/sources/properties/elementdata.cpp
   ${QET_DIR}/sources/properties/elementdata.h
   ${QET_DIR}/sources/properties/propertiesinterface.cpp
@@ -482,10 +512,6 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/PropertiesEditor/propertieseditordockwidget.h
   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.cpp
   ${QET_DIR}/sources/PropertiesEditor/propertieseditorwidget.h
-
-  ${QET_DIR}/pugixml/src/pugiconfig.hpp
-  ${QET_DIR}/pugixml/src/pugixml.cpp
-  ${QET_DIR}/pugixml/src/pugixml.hpp
 
   ${QET_DIR}/sources/qetgraphicsitem/conductor.cpp
   ${QET_DIR}/sources/qetgraphicsitem/conductor.h
@@ -511,6 +537,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/qetgraphicsitem/qetgraphicsitem.h
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qetshapeitem.h
+  ${QET_DIR}/sources/qetgraphicsitem/shapetransform.cpp
+  ${QET_DIR}/sources/qetgraphicsitem/shapetransform.h
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.cpp
   ${QET_DIR}/sources/qetgraphicsitem/qgraphicsitemutility.h
   ${QET_DIR}/sources/qetgraphicsitem/reportelement.cpp
@@ -679,6 +707,10 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/contactgroupselectiondialog.h
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.cpp
   ${QET_DIR}/sources/ui/conductorpropertiesdialog.h
+  ${QET_DIR}/sources/ui/conductorcolortoolbutton.cpp
+  ${QET_DIR}/sources/ui/conductorcolortoolbutton.h
+  ${QET_DIR}/sources/ui/diagrambgcolorbutton.cpp
+  ${QET_DIR}/sources/ui/diagrambgcolorbutton.h
   ${QET_DIR}/sources/ui/conductorpropertieswidget.cpp
   ${QET_DIR}/sources/ui/conductorpropertieswidget.h
   ${QET_DIR}/sources/ui/configsaveloaderwidget.cpp
@@ -691,12 +723,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/diagrampropertiesdialog.h
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.cpp
   ${QET_DIR}/sources/ui/diagrampropertieseditordockwidget.h
-  ${QET_DIR}/sources/ui/diagramselection.cpp
-  ${QET_DIR}/sources/ui/diagramselection.h
   ${QET_DIR}/sources/ui/backupdialog.cpp
   ${QET_DIR}/sources/ui/backupdialog.h
   ${QET_DIR}/sources/ui/dialogwaiting.cpp
   ${QET_DIR}/sources/ui/dialogwaiting.h
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.cpp
+  ${QET_DIR}/sources/ui/duplicateoffsetdialog.h
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.cpp
   ${QET_DIR}/sources/ui/dynamicelementtextitemeditor.h
   ${QET_DIR}/sources/ui/dynamicelementtextmodel.cpp
@@ -713,8 +745,12 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/ui/elementpropertieswidget.h
   ${QET_DIR}/sources/ui/formulaassistantdialog.cpp
   ${QET_DIR}/sources/ui/formulaassistantdialog.h
+  ${QET_DIR}/sources/ui/imagecropdialog.cpp
+  ${QET_DIR}/sources/ui/imagecropdialog.h
   ${QET_DIR}/sources/ui/imagepropertieswidget.cpp
   ${QET_DIR}/sources/ui/imagepropertieswidget.h
+  ${QET_DIR}/sources/ui/imagetransparentcolordialog.cpp
+  ${QET_DIR}/sources/ui/imagetransparentcolordialog.h
   ${QET_DIR}/sources/ui/importelementdialog.cpp
   ${QET_DIR}/sources/ui/importelementdialog.h
   ${QET_DIR}/sources/ui/importelementtextpatterndialog.cpp
@@ -785,6 +821,8 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/undocommand/setautonumcontextcommand.h
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.cpp
   ${QET_DIR}/sources/undocommand/rotateselectioncommand.h
+  ${QET_DIR}/sources/undocommand/promoteshapecommand.cpp
+  ${QET_DIR}/sources/undocommand/promoteshapecommand.h
   ${QET_DIR}/sources/undocommand/rotatetextscommand.cpp
   ${QET_DIR}/sources/undocommand/rotatetextscommand.h
   ${QET_DIR}/sources/undocommand/movegraphicsitemcommand.cpp
@@ -805,7 +843,7 @@ set(QET_SRC_FILES
   ${QET_DIR}/sources/xml/terminalstriplayoutpatternxml.h
   )
 
-if(NOT BUILD_WITH_KF5)
+if(NOT BUILD_WITH_KF)
   list(APPEND QET_SRC_FILES
     ${QET_DIR}/sources/ui/nokde/kautosavefile.cpp
     ${QET_DIR}/sources/ui/nokde/kautosavefile.h
@@ -815,6 +853,27 @@ if(NOT BUILD_WITH_KF5)
     ${QET_DIR}/sources/ui/nokde/kcolorcombo.h
   )
 endif()
+
+list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.cpp
+    ${QET_DIR}/sources/diagramevent/diagrameventaddpdf.h
+    ${QET_DIR}/sources/ui/pdfpagesdialog.cpp
+    ${QET_DIR}/sources/ui/pdfpagesdialog.h
+)
+
+# JavaScript scripting (bugtracker #162). Unconditionally in the source
+# list, like the QtPdf files above: this file is included before the
+# QET_HAS_SCRIPTING probe runs in the top-level CMakeLists.txt, so the
+# variable isn't set yet here. Same pattern as QtPdf: always compiled, the
+# actual Qt::Qml dependent code is behind #ifdef QET_HAS_SCRIPTING inside
+# qetscripting.cpp/qetscriptapi.cpp themselves, compiling to a harmless
+# stub when the module wasn't found.
+list(APPEND QET_SRC_FILES
+  ${QET_DIR}/sources/scripting/qetscriptapi.cpp
+  ${QET_DIR}/sources/scripting/qetscriptapi.h
+  ${QET_DIR}/sources/scripting/qetscripting.cpp
+  ${QET_DIR}/sources/scripting/qetscripting.h
+)
 
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
@@ -831,6 +890,7 @@ set(TS_FILES
   ${QET_DIR}/lang/qet_hu.ts
   ${QET_DIR}/lang/qet_it.ts
   ${QET_DIR}/lang/qet_ja.ts
+  ${QET_DIR}/lang/qet_ko.ts
   ${QET_DIR}/lang/qet_mn.ts
   ${QET_DIR}/lang/qet_nb.ts
   ${QET_DIR}/lang/qet_nl.ts

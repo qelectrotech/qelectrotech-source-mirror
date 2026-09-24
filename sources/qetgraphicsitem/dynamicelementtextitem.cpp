@@ -24,13 +24,16 @@
 #include "../qetgraphicsitem/terminal.h"
 #include "../qetinformation.h"
 #include "../utils/qetutils.h"
+#include "../QetGraphicsItemModeler/qetgraphicshandleritem.h"
 #include "crossrefitem.h"
 #include "element.h"
 #include "elementtextitemgroup.h"
 #include <QTimer>
 #include <QDomDocument>
 #include <QDomElement>
+#include <QtCore/qnumeric.h>
 #include <QGraphicsSceneMouseEvent>
+#include <QAbstractTextDocumentLayout>
 
 /**
 	@brief DynamicElementTextItem::DynamicElementTextItem
@@ -66,7 +69,9 @@ DynamicElementTextItem::DynamicElementTextItem(Element *parent_element) :
 }
 
 DynamicElementTextItem::~DynamicElementTextItem()
-{}
+{
+	removeResizeHandles();
+}
 
 /**
 	@brief DynamicElementTextItem::textFromMetaEnum
@@ -221,8 +226,16 @@ void DynamicElementTextItem::fromXml(const QDomElement &dom_elmt)
 		//Force the update of the displayed text
 	setTextFrom(m_text_from);
 	
-	QGraphicsTextItem::setPos(dom_elmt.attribute("x", QString::number(0)).toDouble(),
-							  dom_elmt.attribute("y", QString::number(0)).toDouble());
+		//QString::toDouble() accepts "nan"/"inf"/"-inf" as a successful
+		//conversion, so a corrupted or hand-edited file can hand this a
+		//non-finite position -- fall back to 0 the same way a missing
+		//attribute already does, rather than letting it reach the scene
+		//(see the matching comment in Element::valideXml(), the fromXml()
+		//gate a plain element's position goes through; this text item has
+		//no such gate to reject the whole item at, so it clamps instead).
+	double x = dom_elmt.attribute("x", QString::number(0)).toDouble();
+	double y = dom_elmt.attribute("y", QString::number(0)).toDouble();
+	QGraphicsTextItem::setPos(qIsFinite(x) ? x : 0, qIsFinite(y) ? y : 0);
 }
 
 /**
@@ -250,6 +263,29 @@ ElementTextItemGroup *DynamicElementTextItem::parentGroup() const
 	}
 	
 	return nullptr;
+}
+
+/**
+	@brief DynamicElementTextItem::masterElement
+	@return the master element for slave elements, or the parent element for others.
+	For PLC slaves, returns the actual master from linkedElements() instead of
+	m_master_element (which points to self because elementUseForInfo() returns
+	self for PLC slaves to resolve %{plc_*} variables).
+*/
+Element *DynamicElementTextItem::masterElement() const
+{
+	Element *elmt = parentElement();
+	if (!elmt)
+		return m_master_element.data();
+
+	if (elmt->linkType() == Element::Slave &&
+		elmt->elementData().m_slave_type == ElementData::PLCSlave &&
+		!elmt->linkedElements().isEmpty())
+	{
+		return elmt->linkedElements().first();
+	}
+
+	return m_master_element.data();
 }
 
 /**
@@ -553,7 +589,7 @@ void DynamicElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		setDefaultTextColor(m_user_color);
 		m_user_color = QColor(); //m_user_color is now invalid
 		if(m_slave_Xref_item)
-			m_slave_Xref_item->setDefaultTextColor(Qt::black);
+			m_slave_Xref_item->setDefaultTextColor(color());
 	}
 
 	// Shift or no parent initiates movement of dynamic text, otherwise movement of parent element
@@ -597,7 +633,13 @@ void DynamicElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 			int diffx = qRound(current_parent_pos.x() - button_down_parent_pos.x());
 			int diffy = qRound(current_parent_pos.y() - button_down_parent_pos.y());
 			QPointF new_pos = m_initial_position + QPointF(diffx, diffy);
-			setPos(new_pos);
+				//Snap to the grid, Ctrl to place freely -- the same line
+				//ElementTextItemGroup::mouseMoveEvent() and
+				//ElementTextsMover::continueMovement() already use, and
+				//DiagramTextItem::mouseMoveEvent() for independent texts.
+				//Without it this was the only text move in the editor that
+				//ignored the grid.
+			event->modifiers() == Qt::ControlModifier ? setPos(new_pos) : setPos(Diagram::snapToGrid(new_pos));
 
 			if(diagram())
 				diagram()->elementTextsMover().continueMovement(event);
@@ -690,7 +732,7 @@ void DynamicElementTextItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 void DynamicElementTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 	DiagramTextItem::paint(painter, option, widget);
-	
+
 	if (m_frame)
 	{
 		painter->save();
@@ -732,6 +774,8 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		if(m_parent_element.data()->linkType() == Element::Slave)
 		{
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::masterChanged);
+			if(m_parent_element.data()->diagram())
+				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
 				//The parent is already linked, wa call master changed for init the connection
 			if(!m_parent_element.data()->linkedElements().isEmpty())
 				masterChanged();
@@ -778,29 +822,218 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 		updateXref();
 		updateXref();
 	}
-	
+	else if (change == QGraphicsItem::ItemSelectedHasChanged)
+	{
+		refreshResizeHandlesVisibility();
+	}
+	else if (change == QGraphicsItem::ItemSceneHasChanged && !scene())
+	{
+		removeResizeHandles();
+	}
+
 	return QGraphicsObject::itemChange(change, value);
 }
 
 bool DynamicElementTextItem::sceneEventFilter(QGraphicsItem *watched, QEvent *event)
 {
+	if (watched == m_left_resize_handle || watched == m_right_resize_handle)
+	{
+		auto *handle = static_cast<QetGraphicsHandlerItem *>(watched);
+		if (event->type() == QEvent::GraphicsSceneMousePress) {
+			handlerMousePressEvent(handle, static_cast<QGraphicsSceneMouseEvent *>(event));
+			return true;
+		}
+		else if (event->type() == QEvent::GraphicsSceneMouseMove) {
+			handlerMouseMoveEvent(handle, static_cast<QGraphicsSceneMouseEvent *>(event));
+			return true;
+		}
+		else if (event->type() == QEvent::GraphicsSceneMouseRelease) {
+			handlerMouseReleaseEvent(handle, static_cast<QGraphicsSceneMouseEvent *>(event));
+			return true;
+		}
+		return false;
+	}
+
 	if(watched != m_slave_Xref_item)
 		return false;
-	
+
 	if(event->type() == QEvent::GraphicsSceneHoverEnter) {
 		m_slave_Xref_item->setDefaultTextColor(Qt::blue);
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneHoverLeave) {
-		m_slave_Xref_item->setDefaultTextColor(Qt::black);
+		m_slave_Xref_item->setDefaultTextColor(color());
 		return true;
 	}
 	else if(event->type() == QEvent::GraphicsSceneMouseDoubleClick) {
 		zoomToLinkedElement();
 		return true;
 	}
-	
+
 	return false;
+}
+
+/**
+	@brief DynamicElementTextItem::refreshResizeHandlesVisibility
+	Show the resize handles when this text is selected directly, OR when its
+	parent element is -- which is what an ordinary click without Shift
+	selects (DynamicElementTextItem::mousePressEvent() forwards a plain
+	click to the parent, so dragging a symbol by its label moves the whole
+	symbol; a pre-existing, unrelated behaviour, left untouched here).
+	Without this, the handles were reachable only via Shift+click or a
+	right-click's context menu, neither of which a user reaches for to
+	resize a text field (qelectrotech#591, reported by @arummler).
+
+	Called from itemChange() -- both this item's own ItemSelectedHasChanged,
+	below, and Element::itemChange() on the parent's, which calls this on
+	every one of its texts. Not from paint(): see the comment there for why
+	that crashed.
+*/
+void DynamicElementTextItem::refreshResizeHandlesVisibility()
+{
+	const bool handles_wanted = isSelected() || (m_parent_element && m_parent_element->isSelected());
+	if (handles_wanted && !m_left_resize_handle)
+		addResizeHandles();
+	else if (!handles_wanted && m_left_resize_handle)
+		removeResizeHandles();
+}
+
+/**
+	@brief DynamicElementTextItem::addResizeHandles
+	Create and show the two width-resize handles (left/right edge of
+	frameRect()), reusing QetGraphicsHandlerItem the same way QetShapeItem
+	does for its own resize handles.
+*/
+void DynamicElementTextItem::addResizeHandles()
+{
+	if (m_left_resize_handle || !scene())
+		return;
+
+	qreal size = QETUtils::graphicsHandlerSize(this);
+	m_left_resize_handle = new QetGraphicsHandlerItem(size);
+	m_right_resize_handle = new QetGraphicsHandlerItem(size);
+
+	for (QetGraphicsHandlerItem *handle : {m_left_resize_handle, m_right_resize_handle})
+	{
+			//Children of this text, not free scene items: Qt then carries
+			//them along when the parent element moves, rotates or is
+			//zoomed, and repaints their old and new area in the same
+			//update as this text. Moving free items from paint() instead
+			//left green fragments behind (qelectrotech#1002).
+		handle->setParentItem(this);
+		handle->setColor(Qt::darkGreen);
+		handle->installSceneEventFilter(this);
+	}
+	m_resize_handles_con = connect(document()->documentLayout(), &QAbstractTextDocumentLayout::documentSizeChanged,
+								   this, &DynamicElementTextItem::updateResizeHandlesPos);
+
+	updateResizeHandlesPos();
+}
+
+/**
+	@brief DynamicElementTextItem::removeResizeHandles
+*/
+void DynamicElementTextItem::removeResizeHandles()
+{
+	disconnect(m_resize_handles_con);
+	delete m_left_resize_handle;
+	delete m_right_resize_handle;
+	m_left_resize_handle = nullptr;
+	m_right_resize_handle = nullptr;
+}
+
+/**
+	@brief DynamicElementTextItem::updateResizeHandlesPos
+	Keep the two resize handles at the vertical middle of boundingRect()'s
+	left and right edges, in scene coordinates -- called on every paint() so
+	it stays correct across every kind of change that can move this item or
+	change its size (position, rotation, font, text, textWidth...) without
+	needing a dedicated hook for each one.
+
+	Deliberately boundingRect(), not frameRect(): frameRect() is a tight box
+	around the text's own natural (idealWidth()) size, re-centred inside
+	boundingRect() -- it does not grow with textWidth(). Once a text has
+	been widened, that leaves a growing gap between the tight frame and the
+	dashed selection outline QGraphicsView draws at boundingRect(), which is
+	the box a user actually sees and expects a resize handle to sit on
+	(qelectrotech#591, reported by @arummler: "the drag elements should be
+	on the border of the box"). boundingRect() reflects the full
+	textWidth() (it is QGraphicsTextItem's own, driven by the document's
+	laid-out size), so the handles now track the box that is visibly
+	resized rather than the text glyphs inside it.
+*/
+void DynamicElementTextItem::updateResizeHandlesPos()
+{
+	if (!m_left_resize_handle || !m_right_resize_handle)
+		return;
+
+	QRectF br = boundingRect();
+	m_left_resize_handle->setPos(br.left(), br.center().y());
+	m_right_resize_handle->setPos(br.right(), br.center().y());
+}
+
+/**
+	@brief DynamicElementTextItem::handlerMousePressEvent
+	@param handle
+	@param event
+*/
+void DynamicElementTextItem::handlerMousePressEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(handle)
+
+		//The actual property value, kept as-is (possibly -1, meaning "auto")
+		//so a later undo restores the exact original state rather than a
+		//synthesized fixed width.
+	m_resize_original_width = textWidth();
+		//A concrete baseline for the live drag's delta math, which can't
+		//start from -1.
+	m_resize_baseline_width = (m_resize_original_width < 0) ? frameRect().width() : m_resize_original_width;
+	m_resize_start_local_x = mapFromScene(event->scenePos()).x();
+}
+
+/**
+	@brief DynamicElementTextItem::handlerMouseMoveEvent
+	Live-resize the text while dragging, exactly like the element editor's
+	resize handles live-update geometry during a drag (undo is only pushed
+	on release). The drag delta is resolved in this item's own local
+	coordinates (not scene coordinates) so a rotated text box still resizes
+	along its own baseline.
+	@param handle
+	@param event
+*/
+void DynamicElementTextItem::handlerMouseMoveEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
+{
+	qreal local_x = mapFromScene(event->scenePos()).x();
+	qreal delta = local_x - m_resize_start_local_x;
+	if (handle == m_left_resize_handle)
+		delta = -delta;
+
+	qreal new_width = qMax(m_resize_baseline_width + delta, qreal(10));
+	setTextWidth(new_width);
+	updateResizeHandlesPos();
+}
+
+/**
+	@brief DynamicElementTextItem::handlerMouseReleaseEvent
+	Push the same QPropertyUndoCommand the properties-panel width spinbox
+	already pushes (sources/ui/dynamicelementtextmodel.cpp) -- the value is
+	already applied live from the drag, so this only makes it undoable.
+	@param handle
+	@param event
+*/
+void DynamicElementTextItem::handlerMouseReleaseEvent(QetGraphicsHandlerItem *handle, QGraphicsSceneMouseEvent *event)
+{
+	Q_UNUSED(handle)
+	Q_UNUSED(event)
+
+	qreal new_width = textWidth();
+	if (!qFuzzyCompare(m_resize_original_width, new_width) && m_parent_element && m_parent_element->diagram())
+	{
+		auto *undo = new QPropertyUndoCommand(this, "textWidth", QVariant(m_resize_original_width), QVariant(new_width));
+		undo->setAnimated(true, false);
+		undo->setText(tr("Redimensionner un texte d'élément"));
+		m_parent_element->diagram()->undoStack().push(undo);
+	}
 }
 
 void DynamicElementTextItem::elementInfoChanged()
@@ -1095,9 +1328,15 @@ void DynamicElementTextItem::updateLabel()
 		
 
 		if(m_text_from == ElementInfo && element) {
-			setPlainText(element->actualLabel());
+			QString new_label = element->actualLabel();
+			if (toPlainText() != new_label) {
+				setPlainText(new_label);
+			}
 		}
 		else if (m_text_from == CompositeText) {
+			// Use actualLabel() to ensure %{label} reflects the current
+			// resolved label (e.g. after a folio/page-number change)
+			dc.addValue(QStringLiteral("label"), element->actualLabel());
 			setPlainText(autonum::AssignVariables::replaceVariable(m_composite_text, dc));
 		}
 	}
@@ -1359,36 +1598,72 @@ void DynamicElementTextItem::updateXref()
 				!m_parent_element.data()->linkedElements().isEmpty())
 		{
 			Element *master_elmt = m_parent_element.data()->linkedElements().first();
-			if(master_elmt && !parentGroup() &&
-			   (
+			if(master_elmt && !parentGroup())
+			{
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+
+				//Champ de texte: store xref in element informations
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					if(m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "xref")
+					{
+						QString xref_label = xrp.slaveLabel();
+						xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+						DiagramContext dc = m_parent_element->elementInformations();
+						if(dc.value("xref").toString() != xref_label)
+						{
+							dc.addValue("xref", xref_label);
+							m_parent_element->setElementInformations(dc);
+						}
+
+						//Set up connections for future updates
+						if(m_update_slave_Xref_connection.isEmpty())
+						{
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+							m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+						}
+						return;
+					}
+					//For label/composite text: fall through to cleanup (delete m_slave_Xref_item)
+				}
+				else if(
 				   (m_text_from == DynamicElementTextItem::ElementInfo && m_info_name == "label") ||
 				   (m_text_from == DynamicElementTextItem::CompositeText && m_composite_text.contains("%{label}"))
 			   )
-			  )
-			{
-				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-				QString xref_label = xrp.slaveLabel();
-				xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
-				
-				if(!m_slave_Xref_item)
 				{
-					m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
-					m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
-					m_slave_Xref_item->setDefaultTextColor(Qt::black);
-					m_slave_Xref_item->installSceneEventFilter(this);
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
 					
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
-					m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+					if(!m_slave_Xref_item)
+					{
+						m_slave_Xref_item = new QGraphicsTextItem(xref_label, this);
+						m_slave_Xref_item->setFont(QETApp::diagramTextsFont(5));
+							// Match the parent text's user-configurable color instead of
+							// hardcoding black, which renders invisible under dark themes
+							// or stylesheets that do not affect this sub-item the same way
+							// they affect the parent (bugtracker #247).
+						m_slave_Xref_item->setDefaultTextColor(color());
+						m_slave_Xref_item->installSceneEventFilter(this);
+						
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::xChanged,                       this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::yChanged,                       this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(master_elmt, &Element::elementInfoChange,              this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram(), &Diagram::diagramInformationChanged,                    this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::projectDiagramsOrderChanged, this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::diagramRemoved,              this, &DynamicElementTextItem::updateXref);
+						m_update_slave_Xref_connection << connect(diagram()->project(),    &QETProject::XRefPropertiesChanged,       this, &DynamicElementTextItem::updateXref);
+					}
+					else
+						m_slave_Xref_item->setPlainText(xref_label);
+					setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
+					return;
 				}
-				else
-					m_slave_Xref_item->setPlainText(xref_label);
-				setXref_item(xrp.getXrefPos());
-				return;
 			}
 		}
 	}
@@ -1400,11 +1675,48 @@ void DynamicElementTextItem::updateXref()
 		m_Xref_item = nullptr;
 	}
 	
+	m_update_slave_Xref_connection.clear();
+
 	if(m_slave_Xref_item)
 	{
 		delete m_slave_Xref_item;
 		m_slave_Xref_item = nullptr;
-		m_update_slave_Xref_connection.clear();
+
+		//If position changed to Champ de texte, store xref in element info
+		if(m_parent_element->linkType() == Element::Slave &&
+		   !m_parent_element->linkedElements().isEmpty())
+		{
+			Element *master_elmt = m_parent_element->linkedElements().first();
+			if(master_elmt && diagram())
+			{
+				XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
+				if(xrp.getXrefPos() == Qt::AlignHCenter)
+				{
+					QString xref_label = xrp.slaveLabel();
+					xref_label = autonum::AssignVariables::formulaToLabel(xref_label, master_elmt->rSequenceStruct(), master_elmt->diagram(), master_elmt);
+
+					DiagramContext dc = m_parent_element->elementInformations();
+					if(dc.value("xref").toString() != xref_label)
+					{
+						dc.addValue("xref", xref_label);
+						m_parent_element->setElementInformations(dc);
+					}
+				}
+			}
+		}
+	}
+
+	//Remove stale "xref" from elementInformations when no longer needed
+	if(m_parent_element->linkType() == Element::Slave &&
+	   m_text_from == ElementInfo && m_info_name == "xref" &&
+	   !parentGroup())
+	{
+		DiagramContext dc = m_parent_element->elementInformations();
+		if(!dc.value("xref").toString().isEmpty())
+		{
+			dc.remove("xref");
+			m_parent_element->setElementInformations(dc);
+		}
 	}
 }
 
@@ -1453,7 +1765,7 @@ void DynamicElementTextItem::setPlainText(const QString &text)
 			? nullptr : m_parent_element.data()->linkedElements().first();
 		if (master_elmt) {
 			XRefProperties xrp = diagram()->project()->defaultXRefProperties(master_elmt->kindInformations()["type"].toString());
-			setXref_item(xrp.getXrefPos());
+			setXref_item(xrp.getXrefPos(), xrp.slaveOffset());
 		}
 	}
 }
@@ -1465,44 +1777,44 @@ void DynamicElementTextItem::setTextWidth(qreal width)
 	emit textWidthChanged(width);
 }
 
-void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos)
+void DynamicElementTextItem::setXref_item(Qt::AlignmentFlag m_exHrefPos, int slave_offset)
 {
 	QRectF r = boundingRect();
 	QPointF pos;
 	//QPointF pos(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top());
 	if (m_exHrefPos == Qt::AlignBottom)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignTop)
 	{
-		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+		pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 	}
 	else if (m_exHrefPos == Qt::AlignLeft)  //
 	{
-		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignRight)  //
 	{
-		pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+		pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 	}
 	else if (m_exHrefPos == Qt::AlignBaseline)  //
 	{
 		if(this->alignment() &Qt::AlignBottom)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.bottom() + slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignTop)
 		{
-			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height());
+			pos = QPointF(r.center().x() - m_slave_Xref_item->boundingRect().width()/2,r.top() - m_slave_Xref_item->boundingRect().height() - slave_offset);
 		}
 		else if(this->alignment() &Qt::AlignLeft)
 		{
-			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width(),r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.left() -  m_slave_Xref_item->boundingRect().width() - slave_offset,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 		else if(this->alignment() &Qt::AlignRight)
 		{
-			pos = QPointF(r.right() ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
+			pos = QPointF(r.right() + slave_offset ,r.center().y() - m_slave_Xref_item->boundingRect().height()/2);
 		}
 	}
 	m_slave_Xref_item->setPos(pos);

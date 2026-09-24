@@ -16,17 +16,24 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "cli_export.h"
+#ifdef QET_HAS_SCRIPTING
+#include "scripting/qetscripting.h"
+#endif
 #include "logging/eventloopwatchdog.h"
 #include "logging/qetlogger.h"
 #include "machine_info.h"
+#include "diagram.h"
+#include "palettegraphicsview.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "qetmessagebox.h"
 #include "qetproject.h"
 #include "singleapplication.h"
 #include "utils/qetsettings.h"
 
 #include <QApplication>
 #include <QDomImplementation>
+#include <QFont>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
@@ -101,26 +108,23 @@ int main(int argc, char **argv)
 	// from Qt 6.12 on; opt in explicitly for older Qt 5/6.
 	QDomImplementation::setInvalidDataPolicy(
 		QDomImplementation::ReturnNullNode);
+
+#ifdef Q_OS_WIN
+	// "MS Shell Dlg 2" is not a font but a Windows alias, and many projects
+	// and settings saved on Windows carry it. Qt 5's GDI font backend let
+	// Windows resolve it to Tahoma; Qt 6's DirectWrite backend does not know
+	// the alias and falls back to Arial, so those texts come out heavier on
+	// screen and in exported PDFs (bugtracker #340). Resolve both aliases
+	// the way Windows does. Done before any application object exists so
+	// that the headless export and scripting runs below get it too.
+	QFont::insertSubstitution("MS Shell Dlg 2", "Tahoma");
+	QFont::insertSubstitution("MS Shell Dlg", "Microsoft Sans Serif");
+#endif
+
 	//Creation and execution of the application
 	//HighDPI
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 6 or later")
-#endif
-#endif
-
-
-#if QT_VERSION > QT_VERSION_CHECK(5, 7, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0) // ### Qt 6: remove
-	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
-
-
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
-qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
-QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
-#endif
+	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFactorRoundingPolicy());
 
 
 	// Headless command-line export: render a project to PDF/PNG/SVG without
@@ -136,8 +140,40 @@ QGuiApplication::setHighDpiScaleFactorRoundingPolicy(QetSettings::hdpiScaleFacto
 			// runs on a background thread referencing the project and races the
 			// process exit (intermittent segfault in QET::writeToFile).
 			QETProject::setBackupEnabled(false);
+			// Answer message boxes instead of showing them: opening a project
+			// saved by an older QElectroTech raises a warning from
+			// QETProject::readProjectXml(), and with nobody able to dismiss it
+			// QDialog::exec() would spin its event loop forever.
+			QET::QetMessageBox::setNonInteractive(true);
 			return CLIExport::run(export_app.arguments());
 		}
+#ifdef QET_HAS_SCRIPTING
+		// Headless scripting: --run <script.js> <project.qet> (bugtracker
+		// #162). Same reasoning as the export branch above for running
+		// before SingleApplication and answering message boxes headlessly.
+		if (QetScripting::isRunRequest(raw_args)) {
+			QApplication script_app(argc, argv);
+			QETProject::setBackupEnabled(false);
+			QET::QetMessageBox::setNonInteractive(true);
+			return QetScripting::run(script_app.arguments());
+		}
+#endif
+	}
+
+	// Re-apply the sheet background last picked in the diagram editor, so
+	// every project opened from here on -- existing or new, whichever one
+	// it is -- draws that background instead of the built-in default that
+	// would otherwise force the user to pick it again after each start.
+	//
+	// Done here rather than in main()'s first lines on purpose: the
+	// headless export and scripting runs above return before reaching
+	// this point and must keep rendering on plain white. It also has to
+	// happen before QETApp is constructed below, since that constructor
+	// already loads the projects given on the command line.
+	{
+		const QetSettings::SheetBackground sheet_background = QetSettings::sheetBackground();
+		PaletteGraphicsView::setCustomBackgroundColor(sheet_background.custom);
+		Diagram::background_color = sheet_background.color;
 	}
 
 	// Resolve the logger's state (log directory, session filename, open

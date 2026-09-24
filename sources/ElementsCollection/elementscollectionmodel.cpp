@@ -39,6 +39,28 @@ ElementsCollectionModel::ElementsCollectionModel(QObject *parent) :
 }
 
 /**
+	@brief ElementsCollectionModel::~ElementsCollectionModel
+	Destructor. loadCollections() may still have background threads
+	(via QtConcurrent::map()) running setUpData() on this model's items
+	when the model is destroyed (e.g. the user cancels the dialog before
+	loading finishes). Wait for them here so QStandardItemModel's
+	destructor doesn't free items out from under them, which used to
+	crash the whole application (bugtracker #291).
+*/
+ElementsCollectionModel::~ElementsCollectionModel()
+{
+	// Without cancel(), the wait below runs the whole queued
+	// QtConcurrent::map() to completion, so closing this dialog on a
+	// large collection blocks until every remaining item has been
+	// processed -- a visible hang on the button pressed precisely to
+	// stop the work. cancel() drops the not-yet-started items so the
+	// wait that follows (still needed, so an in-flight item can't
+	// dereference this object after it's gone) is short.
+	m_future.cancel();
+	m_future.waitForFinished();
+}
+
+/**
 	@brief ElementsCollectionModel::data
 	Reimplemented from QStandardItemModel
 	@param index
@@ -49,6 +71,7 @@ QVariant ElementsCollectionModel::data(const QModelIndex &index, int role) const
 {
 	if (role == Qt::DecorationRole) {
 		QStandardItem *item = itemFromIndex(index);
+		if (!item) return QStandardItemModel::data(index, role);
 
 		if (item->type() == FileElementCollectionItem::Type)
 			static_cast<FileElementCollectionItem*>(item)->setUpIcon();
@@ -316,7 +339,6 @@ void ElementsCollectionModel::loadMacrosCollection()
 void ElementsCollectionModel::addMacrosCollection(bool set_data)
 {
 	QString macrosPath = QETApp::userMacrosDir();
-	qDebug() << "=== MAKRO PFAD CHECK ===" << macrosPath;
 	if (macrosPath.endsWith("/")) {
 		macrosPath.remove(macrosPath.length() - 1, 1);
 	}
@@ -417,7 +439,7 @@ void ElementsCollectionModel::addLocation(const ElementsLocation& location)
 											   collection_name);
 		}
 	}
-	// ANPASSUNG: Makros und Custom Collection werden hier behandelt!
+	// Macros and Custom Collection are handled here
 	else if (location.isCustomCollection() || location.isMacrosCollection()) {
 		QList <ElementCollectionItem *> child_list;
 
@@ -633,7 +655,7 @@ QModelIndex ElementsCollectionModel::indexFromLocation(
 		if (eci->type() == FileElementCollectionItem::Type) {
 			if (FileElementCollectionItem *feci = static_cast<FileElementCollectionItem *>(eci)) {
 
-				// ANPASSUNG: Makro-Prüfung hinzugefügt, damit das Modell den Pfad im Baum findet!
+				// Macro check added so the model finds the path in the tree
 				if ( (location.isCommonCollection() && feci->isCommonCollection()) ||
 					(location.isCompanyCollection() && feci->isCompanyCollection()) ||
 					(location.isMacrosCollection() && feci->isMacrosCollection()) ||

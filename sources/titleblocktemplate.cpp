@@ -19,6 +19,7 @@
 
 #include "NameList/nameslist.h"
 #include "createdxf.h"
+#include "diagram.h"
 #include "qet.h"
 #include "qetapp.h"
 // uncomment the line below to get more debug information
@@ -396,16 +397,8 @@ void TitleBlockTemplate::parseRows(const QString &rows_string) {
 			 QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList rows_descriptions =
-			rows_string.split(QChar(';'), QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
-#endif
 	QStringList rows_descriptions =
 			rows_string.split(QChar(';'), Qt::SkipEmptyParts);
-#endif
 	foreach (QString rows_description, rows_descriptions) {
 		QRegularExpressionMatch match;
 		match = row_size_format.match(rows_description);
@@ -436,18 +429,12 @@ void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	rel_col_size_format.setPattern("^([rt])([0-9]+)%$");
 	rel_col_size_format.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
 	bool conv_ok;
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() <<"is QRegularExpression ok?";
-
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)	// ### Qt 6: remove
-	QStringList cols_descriptions =
-			cols_string.split(QChar(';'), QString::SkipEmptyParts);
-#else
-#if TODO_LIST
-#pragma message("@TODO remove code for QT 5.14 or later")
 #endif
+
 	QStringList cols_descriptions =
 			cols_string.split(QChar(';'), Qt::SkipEmptyParts);
-#endif
 	foreach (QString cols_description, cols_descriptions) {
 		QRegularExpressionMatch match_abc,match_rel;
 		match_abc = abs_col_size_format.match(cols_description);
@@ -1603,8 +1590,10 @@ void TitleBlockTemplate::render(QPainter &painter,
 	int titleblock_height = height();
 
 	painter.save();
-		//Setup the QPainter
-	QPen pen(Qt::black);
+		//Setup the QPainter - use a color that contrasts with the background
+	QColor ink = Diagram::background_color.lightness() < 128
+		    ? QColor(Qt::white) : QColor(Qt::black);
+	QPen pen(ink);
 	painter.setPen(pen);
 
 	// draw the titleblock border
@@ -1751,7 +1740,9 @@ void TitleBlockTemplate::renderCell(QPainter &painter,
 {
 	// draw the border rect of the current cell
 	QPen pen(QBrush(), 1, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);
-	pen.setColor(Qt::black);
+	QColor ink = Diagram::background_color.lightness() < 128
+		    ? QColor(Qt::white) : QColor(Qt::black);
+	pen.setColor(ink);
 	painter.setPen(pen);
 	painter.drawRect(cell_rect);
 
@@ -1846,10 +1837,13 @@ QString TitleBlockTemplate::interpreteVariables(
 QStringList TitleBlockTemplate::listOfVariables()
 {
 	QStringList list;
-	// Match every "%{name}" placeholder. The bare "%name" form can't be
-	// extracted reliably without the variable list, and templates use the
-	// braced form, so only that is collected here.
-	static const QRegularExpression rx(QStringLiteral("%\\{([^}]+)\\}"));
+	// Match both the braced "%{name}" form and the bare "%name" form
+	// (bugtracker #245): a bare name is taken as the longest run of
+	// identifier characters right after the '%', which correctly stops at
+	// whitespace -- so "%name2 " and "%name2 %name3" are both detected,
+	// matching what previously only worked for the braced form.
+	static const QRegularExpression rx(
+		QStringLiteral("%\\{([^}]+)\\}|%([A-Za-z0-9_-]+)"));
 	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
@@ -1860,7 +1854,9 @@ QStringList TitleBlockTemplate::listOfVariables()
 			const QString cell_value = cells_[i][j] -> value.name();
 			auto it = rx.globalMatch(cell_value);
 			while (it.hasNext()) {
-				const QString name = it.next().captured(1);
+				const QRegularExpressionMatch m = it.next();
+				const QString name = m.captured(1).isEmpty()
+						? m.captured(2) : m.captured(1);
 				if (!name.isEmpty() && !list.contains(name))
 					list << name;
 			}

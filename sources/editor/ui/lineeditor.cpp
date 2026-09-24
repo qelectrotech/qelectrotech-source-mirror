@@ -156,6 +156,16 @@ bool LineEditor::setParts(QList<CustomElementPart *> parts)
 		return false;
 	}
 
+	// setPart() no-ops when parts.first() is already m_part (its own
+	// identity guard), which skips updateForm(). That is fine when this
+	// editor widget stayed on screen the whole time, but since PR #675
+	// keeps the same editor instance installed across selection changes
+	// instead of tearing it down, an already-shown single line can also be
+	// parts.first() of a later multi-selection -- and without this call
+	// the geometry spinboxes keep showing whatever was in them before,
+	// not this selection's actual first line.
+	updateForm();
+
 	return m_style->setParts(parts);
 }
 

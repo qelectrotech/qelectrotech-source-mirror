@@ -32,7 +32,9 @@ class QMdiSubWindow;
 class QETProject;
 class QETResult;
 class ProjectView;
+class ConductorColorToolButton;
 class CustomElement;
+class DiagramBgColorToolButton;
 class Diagram;
 class DiagramView;
 class Element;
@@ -127,6 +129,7 @@ class QETDiagramEditor : public QETMainWindow
 		void setWindowedMode();
 		void setTabbedMode();
 		void readSettings();
+		void readSettingsState();
 		void writeSettings();
 		void activateProject(QETProject *);
 		void activateProject(ProjectView *);
@@ -135,6 +138,10 @@ class QETDiagramEditor : public QETMainWindow
 		void editProjectProperties(ProjectView *);
 		void editProjectProperties(QETProject *);
 		void slot_terminalNumbering();
+		void slot_reloadElementDrawings();
+#ifdef QET_HAS_SCRIPTING
+		void slot_runScript();
+#endif
 		void editDiagramProperties(DiagramView *);
 		void editDiagramProperties(Diagram *);
 		void addDiagramToProject(QETProject *);
@@ -192,9 +199,10 @@ class QETDiagramEditor : public QETMainWindow
 		*undo,				///< Cancel the latest action
 		*redo,				///< Redo the latest cancelled operation
 		*m_paste,			///< Paste clipboard content on the current diagram
+		*m_duplicate,			///< Copy selection, offset by the configured step (#991)
+		*m_configure_duplicate,		///< Reopen the duplicate offset/direction dialog (#991)
 		*m_auto_conductor,		///< Enable/Disable the use of auto conductor
 		*m_auto_break_conductor,	///< Enable/Disable the use of auto break conductor
-		*m_grey_background,		///< Switch the background color in white or grey
 		*m_draw_grid,			///< Switch the background grid display or not
 		*m_draw_guides = nullptr,	///< Switch the custom guides display or not
 		*m_project_edit_properties,	///< Edit the properties of the current project.
@@ -208,7 +216,12 @@ class QETDiagramEditor : public QETMainWindow
 		*m_project_terminalBloc,	///< generate terminal block
 		*m_project_export_conductor_num,///<Export the wire num to csv
 		*m_project_export_wiring_list, ///< Action to export the wiring list
+		*m_project_wiring_list_view,   ///< Action to show the wiring list read from the project database
 		*m_terminal_numbering,         ///< Action to launch terminal numbering
+		*m_reload_element_drawings,    ///< Action to redraw every placed element from its current definition
+#ifdef QET_HAS_SCRIPTING
+		*m_run_script,                 ///< Action to run a JavaScript macro against the current project
+#endif
 		*m_export_project_db,		///Export to file the internal database of the current project
 		*m_tile_window,			///< Show MDI subwindows as tile
 		*m_cascade_window,		///< Show MDI subwindows as cascade
@@ -226,6 +239,11 @@ class QETDiagramEditor : public QETMainWindow
 		*m_save_file_as,		///< Save current project as a specific file
 		*m_find = nullptr,
 		*m_jump_to_element = nullptr;	///< Open the "jump to element" quick-open popup
+
+		///< One-click conductor colour, in the "Schéma" toolbar
+		ConductorColorToolButton *m_conductor_color_button = nullptr;
+		///< Diagram background color picker, in the "Affichage" toolbar
+		DiagramBgColorToolButton *m_background_color_button = nullptr;
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

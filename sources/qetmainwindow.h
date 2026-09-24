@@ -30,6 +30,8 @@ class QETMainWindow : public QMainWindow {
 	public:
 	QETMainWindow(QWidget * = nullptr, Qt::WindowFlags = Qt::Widget);
 	~QETMainWindow() override;
+
+	static bool refuseCloseWhileModal(QEvent *e);
 	
 	// methods
 	protected:
@@ -39,6 +41,7 @@ class QETMainWindow : public QMainWindow {
 	QAction *actionForMenu(QMenu *);
 	
 	protected:
+	void activateMenuBar();
 	bool event(QEvent *) override;
 	void dragEnterEvent(QDragEnterEvent *e) override;
 	void dropEvent(QDropEvent *e) override;

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- keyboard body with a lighter top edge -->
+  <rect x="6" y="30" width="116" height="68" rx="8" fill="#31363b"/>
+  <rect x="6" y="30" width="116" height="34" rx="8" fill="#4d4d4d"/>
+  <rect x="6" y="46" width="116" height="18" fill="#31363b"/>
+  <!-- key rows -->
+  <g fill="#eff0f1">
+    <rect x="14" y="38" width="8" height="8" rx="1.5"/><rect x="24" y="38" width="8" height="8" rx="1.5"/>
+    <rect x="34" y="38" width="8" height="8" rx="1.5"/><rect x="44" y="38" width="8" height="8" rx="1.5"/>
+    <rect x="54" y="38" width="8" height="8" rx="1.5"/><rect x="64" y="38" width="8" height="8" rx="1.5"/>
+    <rect x="74" y="38" width="8" height="8" rx="1.5"/><rect x="84" y="38" width="8" height="8" rx="1.5"/>
+    <rect x="94" y="38" width="8" height="8" rx="1.5"/><rect x="104" y="38" width="10" height="8" rx="1.5"/>
+    <rect x="14" y="50" width="12" height="8" rx="1.5"/><rect x="28" y="50" width="8" height="8" rx="1.5"/>
+    <rect x="38" y="50" width="8" height="8" rx="1.5"/><rect x="48" y="50" width="8" height="8" rx="1.5"/>
+    <rect x="58" y="50" width="8" height="8" rx="1.5"/><rect x="68" y="50" width="8" height="8" rx="1.5"/>
+    <rect x="78" y="50" width="8" height="8" rx="1.5"/><rect x="88" y="50" width="8" height="8" rx="1.5"/>
+    <rect x="98" y="50" width="16" height="8" rx="1.5"/>
+    <rect x="14" y="62" width="16" height="8" rx="1.5"/><rect x="32" y="62" width="8" height="8" rx="1.5"/>
+    <rect x="42" y="62" width="8" height="8" rx="1.5"/><rect x="52" y="62" width="8" height="8" rx="1.5"/>
+    <rect x="62" y="62" width="8" height="8" rx="1.5"/><rect x="72" y="62" width="8" height="8" rx="1.5"/>
+    <rect x="82" y="62" width="8" height="8" rx="1.5"/><rect x="92" y="62" width="22" height="8" rx="1.5"/>
+    <rect x="14" y="74" width="10" height="8" rx="1.5"/><rect x="26" y="74" width="10" height="8" rx="1.5"/>
+    <rect x="38" y="74" width="52" height="8" rx="1.5"/>
+    <rect x="92" y="74" width="10" height="8" rx="1.5"/><rect x="104" y="74" width="10" height="8" rx="1.5"/>
+  </g>
+  <!-- the two keys of a shortcut, pressed -->
+  <rect x="14" y="62" width="16" height="8" rx="1.5" fill="#3daee9"/>
+  <rect x="42" y="62" width="8" height="8" rx="1.5" fill="#3daee9"/>
+</svg>

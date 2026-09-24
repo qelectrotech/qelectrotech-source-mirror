@@ -88,7 +88,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../../qelectrotech.qrc">
+           <iconset theme="go-up" resource="../../../qelectrotech.qrc">
             <normaloff>:/ico/16x16/go-up.png</normaloff>:/ico/16x16/go-up.png</iconset>
           </property>
           <property name="checkable">
@@ -105,7 +105,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../../qelectrotech.qrc">
+           <iconset theme="list-add" resource="../../../qelectrotech.qrc">
             <normaloff>:/ico/16x16/list-add.png</normaloff>:/ico/16x16/list-add.png</iconset>
           </property>
          </widget>
@@ -119,7 +119,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../../qelectrotech.qrc">
+           <iconset theme="list-remove" resource="../../../qelectrotech.qrc">
             <normaloff>:/ico/16x16/list-remove.png</normaloff>:/ico/16x16/list-remove.png</iconset>
           </property>
          </widget>
@@ -133,7 +133,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../../../qelectrotech.qrc">
+           <iconset theme="go-down" resource="../../../qelectrotech.qrc">
             <normaloff>:/ico/16x16/go-down.png</normaloff>:/ico/16x16/go-down.png</iconset>
           </property>
          </widget>
@@ -353,7 +353,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="folder-open" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/folder-open.png</normaloff>:/ico/16x16/folder-open.png</iconset>
         </property>
        </widget>
@@ -380,11 +380,31 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="../../../qelectrotech.qrc">
+         <iconset theme="document-save" resource="../../../qelectrotech.qrc">
           <normaloff>:/ico/16x16/document-save.png</normaloff>:/ico/16x16/document-save.png</iconset>
         </property>
         <property name="flat">
          <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="m_import_reports_pb">
+        <property name="toolTip">
+         <string>Importer des rapports depuis un fichier</string>
+        </property>
+        <property name="text">
+         <string>Importer...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="m_export_reports_pb">
+        <property name="toolTip">
+         <string>Exporter tous les rapports enregistrés vers un fichier</string>
+        </property>
+        <property name="text">
+         <string>Exporter...</string>
         </property>
        </widget>
       </item>
@@ -428,6 +448,19 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_query_warning_label">
+     <property name="styleSheet">
+      <string notr="true">color: red;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

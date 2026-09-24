@@ -18,6 +18,7 @@
 #ifndef _QET_H
 #define _QET_H
 
+#include <QColor>
 #include <QDomElement>
 #include <QFile>
 #include <QObject>
@@ -160,6 +161,22 @@ namespace QET {
 	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = nullptr);
 	bool attributeIsAnInteger(const QDomElement &, const QString& , int * = nullptr);
 	bool attributeIsAReal(const QDomElement &, const QString& , qreal * = nullptr);
+		/**
+			Whether an elementInformations flag (auto_num_locked,
+			potential_isolating, exclude_from_bom, ...) counts as "on".
+			Case-insensitive and tolerant of surrounding whitespace, and
+			accepts the same set of truthy spellings ("true", "1", "yes",
+			"on") that element_nomenclature_view's SQL predicate for
+			exclude_from_bom already does -- see
+			projectDataBase::createElementNomenclatureView(). These flags
+			are only ever written by this app's own checkboxes as literal
+			"true"/"false" today, but a bare == "true" comparison silently
+			treats anything else -- "True", "TRUE", a trailing space from
+			a hand-edited file, a value some other tool wrote -- as off,
+			with no error and no visible difference from the checkbox
+			being genuinely unticked (discussion #785).
+		*/
+	bool infoFlagIsTrue(const QString &value);
 	QString ElementsAndConductorsSentence(int elements=0,
 										  int conductors=0,
 										  int indi_texts=0,
@@ -185,6 +202,8 @@ namespace QET {
 	bool writeToFile (QDomDocument &xml_doc, QFile *file, QString *error_message = nullptr);
 	bool eachStrIsEqual (const QStringList &qsl);
 	QActionGroup *depthActionGroup(QObject *parent = nullptr);
+	void saveCustomColors();
+	void loadCustomColors();
 }
 
 Q_DECLARE_METATYPE(QET::DepthOption)

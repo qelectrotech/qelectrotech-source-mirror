@@ -33,11 +33,15 @@ class LogRing;
 	discussion's own words: "lands last, behind its own switch"), so its
 	invariants are worth restating plainly:
 
-	1. The handler must never block. It takes no locks -- LogRing itself
-	   is lock-free for exactly this reason (see logring.h). A handler
-	   that can hang is worse than no handler: it turns a clean crash
-	   (which at least produces a core dump) into a hung process that has
-	   to be force-killed, producing neither a core dump nor a ring dump.
+	1. The handler must never block. It takes no locks of its own --
+	   LogRing is lock-free for exactly this reason (see logring.h). A
+	   handler that can hang is worse than no handler: it turns a clean
+	   crash (which at least produces a core dump) into a hung process
+	   that has to be force-killed, producing neither a core dump nor a
+	   ring dump. The one exception is deliberate and comes last:
+	   backtrace() unwinds through libgcc, which takes the loader lock,
+	   so it is written after the ring rather than before it. A crash
+	   inside dlopen() then costs the backtrace, not the whole dump.
 	2. The handler must never allocate. Under heap corruption -- a
 	   plausible *cause* of the very crash being handled -- malloc may
 	   itself deadlock or fault. Every buffer this code touches at crash
@@ -77,6 +81,19 @@ class CrashHandler
 		/// buffer here; nothing under the actual signal/exception path
 		/// touches QString.
 		static void install(const LogRing *ring, const QString &dump_path);
+
+			/// Writes `value` as decimal into `buffer`, at most `size`
+			/// bytes, and returns how many were written. The handler
+			/// needs this because write() takes a buffer and snprintf()
+			/// is not on the async-signal-safe list; `buffer` is caller-
+			/// owned (the handler's stack), so nothing is allocated.
+			/// Truncates rather than overflowing when `size` is too
+			/// small, and writes nothing for `size <= 0`.
+			///
+			/// Public only so tests can reach it -- see
+			/// tests/qttest/tst_crashhandler.cpp. Nothing else in the
+			/// application calls it.
+		static int formatInt(char *buffer, int size, int value);
 
 	private:
 		CrashHandler() = delete;

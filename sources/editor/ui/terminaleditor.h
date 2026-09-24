@@ -21,7 +21,7 @@
 #include <QWidget>
 #include "../elementitemeditor.h"
 
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 #include <QPushButton>
 #else
 #include <KColorButton>
@@ -78,7 +78,7 @@ class TerminalEditor : public ElementItemEditor
 										 m_change_connections;
 		PartTerminal *m_part = nullptr;
 		bool m_locked = false;
-#ifdef BUILD_WITHOUT_KF5
+#ifdef BUILD_WITHOUT_KF
 		QPushButton *m_color_pb;
 #else
 		KColorButton *m_color_pb;

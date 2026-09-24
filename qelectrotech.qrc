@@ -93,10 +93,7 @@
         <file>ico/22x22/conductor2.png</file>
         <file>ico/22x22/configure.png</file>
         <file>ico/22x22/configure-toolbars.png</file>
-        <file>ico/22x22/diagram_add.png</file>
-        <file>ico/22x22/diagram_del.png</file>
         <file>ico/22x22/dialog-cancel.png</file>
-        <file>ico/22x22/dialog-information.png</file>
         <file>ico/22x22/dialog-ok.png</file>
         <file>ico/22x22/document-close.png</file>
         <file>ico/22x22/document-export.png</file>
@@ -140,7 +137,6 @@
         <file>ico/22x22/go-up.png</file>
         <file>ico/22x22/hotspot.png</file>
         <file>ico/22x22/insert-image.png</file>
-        <file>ico/22x22/label.png</file>
         <file>ico/22x22/landscape.png</file>
         <file>ico/22x22/line.png</file>
         <file>ico/22x22/list-add.png</file>
@@ -241,7 +237,6 @@
         <file>ico/16x16/project.png</file>
         <file>ico/16x16/qt.png</file>
         <file>ico/16x16/terminalstrip.png</file>
-        <file>ico/22x22/diagram.png</file>
         <file>ico/22x22/edit-clear-locationbar-rtl.png</file>
         <file>ico/22x22/export-csv.png</file>
         <file>ico/22x22/format-text-subscript.png</file>
@@ -547,6 +542,14 @@
         <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-element.svgz</file>
         <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-project.svgz</file>
         <file>ico/breeze-icons/scalable/mimetypes/small/48x48/application-x-qet-titleblock.svgz</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/draw-bezier-curves.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/transform-crop.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/image-flip-horizontal-symbolic.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/image-flip-vertical-symbolic.svg</file>
+        <file>ico/breeze-icons/scalable/apps/hidef/edit-opacity.svg</file>        
+        <file>ico/generated/rect-to-polyline.svg</file>
+        <file>ico/generated/rect-to-bezier.svg</file>
+        <file>ico/generated/ellipse-to-bezier.svg</file>                
         <file>ico/16x16/object-group.png</file>
         <file>ico/mac_icon/elmt.icns</file>
         <file>ico/mac_icon/qelectrotech.icns</file>

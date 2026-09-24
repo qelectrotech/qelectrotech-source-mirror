@@ -1,0 +1,4118 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="es">
+<phrase>
+    <source>
+&lt;Shift&gt; to move</source>
+    <target>
+&lt;Shift&gt; para mover</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1, NC : %2, inverseurs : %3, autres : %4
+</source>
+    <target>Contactos: NA: %1, NC: %2, conmutadores: %3, otros: %4
+</target>
+</phrase>
+<phrase>
+    <source>    Contacts : NO : %1/%2, NC : %3/%4, inverseurs : %5/%6, autres : %7/%8
+</source>
+    <target>Contactos: NA: %1/%2, NC: %3/%4, conmutadores: %5/%6, otros: %7/%8
+</target>
+</phrase>
+<phrase>
+    <source>  --data-dir=DIR                Definir le dossier de data
+</source>
+    <target>--data-dir=DIR                Definir la carpeta de datos
+</target>
+</phrase>
+<phrase>
+    <source> %</source>
+    <target>%</target>
+</phrase>
+<phrase>
+    <source> (Ctrl pendant le glissement = position libre, sans accrochage à la grille)</source>
+    <target>(Ctrl durante el arrastre = posición libre, sin ajuste a la cuadrícula)</target>
+</phrase>
+<phrase>
+    <source> (déjà utilisé)</source>
+    <target>(ya utilizado)</target>
+</phrase>
+<phrase>
+    <source> -- %1 : mode %2</source>
+    <target>-- %1: modo %2</target>
+</phrase>
+<phrase>
+    <source> ; point rouge : glisser pour repositionner le centre de rotation</source>
+    <target>; punto rojo: arrastrar para reposicionar el centro de rotación</target>
+</phrase>
+<phrase>
+    <source> ; point turquoise : arc</source>
+    <target>; punto turquesa: arco</target>
+</phrase>
+<phrase>
+    <source> ; un bord : inclinaison</source>
+    <target>; un borde: inclinación</target>
+</phrase>
+<phrase>
+    <source> d&apos;un groupe de bornes</source>
+    <target>de un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source> du groupe de bornes %1</source>
+    <target>del grupo de bornes %1</target>
+</phrase>
+<phrase>
+    <source> mm</source>
+    <target>mm</target>
+</phrase>
+<phrase>
+    <source> °</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source> — Cliquer : mode %1</source>
+    <target>— Clic: modo %1</target>
+</phrase>
+<phrase>
+    <source>#</source>
+    <target>#</target>
+</phrase>
+<phrase>
+    <source>%1 h %2 min</source>
+    <target>%1 h %2 min</target>
+    <definition>hours and minutes of time spent on a project</definition>
+</phrase>
+<phrase>
+    <source>&amp;Aide</source>
+    <target>&amp;ayuda</target>
+</phrase>
+<phrase>
+    <source>&amp;Fermer cet éditeur</source>
+    <target>&amp;cerrar este editor</target>
+</phrase>
+<phrase>
+    <source>(déjà assigné)</source>
+    <target>(ya asignado)</target>
+</phrase>
+<phrase>
+    <source>(nombre de contacts ne correspond pas)</source>
+    <target>(el número de contactos no coincide)</target>
+</phrase>
+<phrase>
+    <source>(sous-type ne correspond pas)</source>
+    <target>(el subtipo no coincide)</target>
+</phrase>
+<phrase>
+    <source>(état ne correspond pas)</source>
+    <target>(el estado no coincide)</target>
+</phrase>
+<phrase>
+    <source>+</source>
+    <target>+</target>
+</phrase>
+<phrase>
+    <source>, Alt = créer des poignées</source>
+    <target>, Alt = crear tiradores</target>
+</phrase>
+<phrase>
+    <source>, Alt = détacher en polyligne</source>
+    <target>, Alt = separar en polilínea</target>
+</phrase>
+<phrase>
+    <source>-</source>
+    <target>-</target>
+</phrase>
+<phrase>
+    <source>.
+ Il est alors possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+    <target>.
+ En tal caso, es posible que la apertura de todo o parte de este documento falle.
+¿Qué desea hacer?</target>
+</phrase>
+<phrase>
+    <source>0</source>
+    <target>0</target>
+</phrase>
+<phrase>
+    <source>150 DPI (écran)</source>
+    <target>150 DPI (pantalla)</target>
+</phrase>
+<phrase>
+    <source>300 DPI (impression)</source>
+    <target>300 DPI (impresión)</target>
+</phrase>
+<phrase>
+    <source>600 DPI (haute qualité)</source>
+    <target>600 DPI (alta calidad)</target>
+</phrase>
+<phrase>
+    <source>&lt;br&gt;&lt;b&gt;Erreur&lt;/b&gt; :&lt;br&gt;Les définitions de conducteur ne peuvent posséder qu&apos;une seule borne.&lt;br&gt;&lt;b&gt;Solution&lt;/b&gt; :&lt;br&gt;Vérifier que l&apos;élément ne possède qu&apos;une seule borne</source>
+    <target>&lt;br&gt;&lt;b&gt;Error&lt;/b&gt;:&lt;br&gt;Las definiciones de conductor solo pueden poseer un único borne.&lt;br&gt;&lt;b&gt;Solución&lt;/b&gt;:&lt;br&gt;Verificar que el elemento solo posee un único borne</target>
+</phrase>
+<phrase>
+    <source>[%1px]</source>
+    <target>[%1px]</target>
+    <definition>content of the extra helper cell added when the total width of cells is greater than the preview width</definition>
+</phrase>
+<phrase>
+    <source>Action</source>
+    <target>Acción</target>
+</phrase>
+<phrase>
+    <source>Adresse</source>
+    <target>Dirección</target>
+</phrase>
+<phrase>
+    <source>Adresse PLC</source>
+    <target>Dirección PLC</target>
+</phrase>
+<phrase>
+    <source>Affichage</source>
+    <target>Visualización</target>
+</phrase>
+<phrase>
+    <source>Affichage Grille</source>
+    <target>Visualización Cuadrícula</target>
+</phrase>
+<phrase>
+    <source>Affiche des informations sur la bibliothèque Qt</source>
+    <target>Muestra información sobre la biblioteca Qt</target>
+</phrase>
+<phrase>
+    <source>Affiche des informations sur QElectroTech</source>
+    <target>Muestra información sobre QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Affiche ou masque les guides</source>
+    <target>Muestra u oculta las guías</target>
+</phrase>
+<phrase>
+    <source>Afficher</source>
+    <target>Mostrar</target>
+    <definition>menu entry</definition>
+</phrase>
+<phrase>
+    <source>Afficher l&apos;aide</source>
+    <target>Mostrar la ayuda</target>
+</phrase>
+<phrase>
+    <source>Afficher la grille par défaut (appliqué au prochain lancement)</source>
+    <target>Mostrar la cuadrícula por defecto (aplicado en el próximo inicio)</target>
+</phrase>
+<phrase>
+    <source>Afficher le nom</source>
+    <target>Mostrar el nombre</target>
+</phrase>
+<phrase>
+    <source>Afficher les en-têtes sur la feuille</source>
+    <target>Mostrar los encabezados en la hoja</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides</source>
+    <target>Mostrar las guías</target>
+</phrase>
+<phrase>
+    <source>Afficher les guides par défaut (appliqué au prochain lancement)</source>
+    <target>Mostrar las guías por defecto (aplicado en el próximo inicio)</target>
+</phrase>
+<phrase>
+    <source>Afficher les numéros de bornes dans les Xrefs</source>
+    <target>Mostrar los números de bornes en las Xrefs</target>
+</phrase>
+<phrase>
+    <source>Afficher ou masquer les en-têtes de colonnes du tableau PLC sur la feuille</source>
+    <target>Mostrar u ocultar los encabezados de columna de la tabla PLC en la hoja</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le cadre du label</source>
+    <target>Mostrar/ocultar el marco de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Afficher/cacher le nom du terminal</source>
+    <target>Mostrar/ocultar el nombre del terminal</target>
+</phrase>
+<phrase>
+    <source>Afin de le rendre totalement compatible veuillez ouvrir ce même projet avec la version 0.8, ou 0.80 de QElectroTech et sauvegarder le projet et l&apos;ouvrir à  nouveau avec cette version.
+Que désirez vous faire ?</source>
+    <target>Para hacerlo totalmente compatible, abra este mismo proyecto con la versión 0.8 o 0.80 de QElectroTech, guarde el proyecto y vuelva a abrirlo con esta versión.
+¿Qué desea hacer?</target>
+</phrase>
+<phrase>
+    <source>Ajoute un plan de bornier sur le folio actuel</source>
+    <target>Añade un plano de regletas de bornes en el folio actual</target>
+</phrase>
+<phrase>
+    <source>Ajoute une courbe de Bézier sur le folio actuel</source>
+    <target>Añade una curva de Bézier en el folio actual</target>
+</phrase>
+<phrase>
+    <source>Ajoute une page PDF sur le folio actuel</source>
+    <target>Añade una página PDF en el folio actual</target>
+</phrase>
+<phrase>
+    <source>Ajouter</source>
+    <target>Añadir</target>
+</phrase>
+<phrase>
+    <source>Ajouter %1 bornes</source>
+    <target>Añadir %1 bornes</target>
+</phrase>
+<phrase>
+    <source>Ajouter la borne %1</source>
+    <target>Añadir el borne %1</target>
+</phrase>
+<phrase>
+    <source>Ajouter un bornier</source>
+    <target>Añadir un bomer</target>
+</phrase>
+<phrase>
+    <source>Ajouter un bornier au projet</source>
+    <target>Añadir un bomer al proyecto</target>
+</phrase>
+<phrase>
+    <source>Ajouter un folio</source>
+    <target>Añadir un folio</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Ajouter un groupe de bornes</source>
+    <target>Añadir un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Ajouter un PDF</source>
+    <target>Añadir un PDF</target>
+</phrase>
+<phrase>
+    <source>Ajouter un plan de bornes</source>
+    <target>Añadir un plano de bornes</target>
+</phrase>
+<phrase>
+    <source>Ajouter un point à une courbe</source>
+    <target>Añadir un punto a una curva</target>
+</phrase>
+<phrase>
+    <source>Ajouter un sommaire</source>
+    <target>Añadir un índice</target>
+</phrase>
+<phrase>
+    <source>Ajouter une borne</source>
+    <target>Añadir un borne</target>
+</phrase>
+<phrase>
+    <source>Ajouter une courbe</source>
+    <target>Añadir una curva</target>
+</phrase>
+<phrase>
+    <source>Ajouter une nomenclature</source>
+    <target>Añadir una lista de materiales</target>
+</phrase>
+<phrase>
+    <source>Ajouter une propriété personnalisée</source>
+    <target>Añadir una propiedad personalizada</target>
+</phrase>
+<phrase>
+    <source>Alignement</source>
+    <target>Alineación</target>
+</phrase>
+<phrase>
+    <source>Alphabétique</source>
+    <target>Alfabético</target>
+</phrase>
+<phrase>
+    <source>Alphanumérique (A, B, C... 1, 2...)</source>
+    <target>Alfanumérico (A, B, C... 1, 2...)</target>
+</phrase>
+<phrase>
+    <source>Angle</source>
+    <target>Ángulo</target>
+</phrase>
+<phrase>
+    <source>Anguleux</source>
+    <target>Anguloso</target>
+</phrase>
+<phrase>
+    <source>Annulation</source>
+    <target>Cancelación</target>
+</phrase>
+<phrase>
+    <source>Annulations</source>
+    <target>Cancelaciones</target>
+</phrase>
+<phrase>
+    <source>Annuler</source>
+    <target>Cancelar</target>
+</phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Vista previa</target>
+</phrase>
+<phrase>
+    <source>Aperçu :</source>
+    <target>Vista previa:</target>
+</phrase>
+<phrase>
+    <source>Arrondir les coins d&apos;%1</source>
+    <target>Redondear las esquinas de %1</target>
+</phrase>
+<phrase>
+    <source>Atteindre un élément</source>
+    <target>Ir a un elemento</target>
+</phrase>
+<phrase>
+    <source>Attention : la somme des largeurs relatives dépasse 100%% de la largeur totale, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Atención: la suma de los anchos relativos supera el 100%% del ancho total, ninguna anchura puede satisfacer este modelo de cartucho.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns alone already exceed 100%% of the total width</definition>
+</phrase>
+<phrase>
+    <source>Attention : les colonnes de largeur fixe ne peuvent pas tenir dans la largeur restante, ce modèle de cartouche ne peut être satisfait par aucune largeur.
+</source>
+    <target>Atención: las columnas de ancho fijo no caben en el ancho restante, ninguna anchura puede satisfacer este modelo de cartucho.
+</target>
+    <definition>tooltip warning shown when a template&apos;s relative-to-total-length columns already consume all available width, leaving no room for its fixed-width columns</definition>
+</phrase>
+<phrase>
+    <source>Attribués uniquement</source>
+    <target>Solo asignados</target>
+</phrase>
+<phrase>
+    <source>au groupe de bornes %1</source>
+    <target>al grupo de bornes %1</target>
+</phrase>
+<phrase>
+    <source>Aucun</source>
+    <target>Aucun</target>
+</phrase>
+<phrase>
+    <source>Automate (PLC)</source>
+    <target>Autómata (PLC)</target>
+</phrase>
+<phrase>
+    <source>Automates (MAE/SPS)</source>
+    <target>Autómatas (MAE/SPS)</target>
+</phrase>
+<phrase>
+    <source>Automatic terminal numbering</source>
+    <target>Numeración automática de bornes</target>
+</phrase>
+<phrase>
+    <source>Autonumérotation</source>
+    <target>Autonumeración</target>
+</phrase>
+<phrase>
+    <source>Autre</source>
+    <target>Otro</target>
+</phrase>
+<phrase>
+    <source>Avec</source>
+    <target>Con</target>
+</phrase>
+<phrase>
+    <source>Avertissement</source>
+    <target>Advertencia</target>
+</phrase>
+<phrase>
+    <source>Avertissement </source>
+    <target>Advertencia</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>AVERTISSEMENT :
+Toutes valeurs autre que ‘Pas d’arrondi’ peut causer des erreurs de rendu du projet en fonction de :
+
+1 - la valeur sélectionnée 
+2 - du dpi de l&apos;écran 
+3 - Modifier le projet sur un autre ordinateur et/ou écran n&apos;ayant pas les mêmes paramètres des points 1 et 2.</source>
+    <target>ADVERTENCIA:
+Cualquier valor distinto de ‘Sin redondeo’ puede causar errores de representación del proyecto en función de:
+
+1 - el valor seleccionado 
+2 - los dpi de la pantalla 
+3 - Modificar el proyecto en otro ordenador y/o pantalla que no tenga los mismos parámetros de los puntos 1 y 2.</target>
+</phrase>
+<phrase>
+    <source>Avertissement — Importation d&apos;un fichier EPLAN (.edz)</source>
+    <target>Advertencia — Importación de un archivo EPLAN (.edz)</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 1</source>
+    <target>Bloque auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 2</source>
+    <target>Bloque auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 3</source>
+    <target>Bloque auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Bloc auxiliaire 4</source>
+    <target>Bloque auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Blue : Blue</source>
+    <target>Azul : Blue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : CornflowerBlue</source>
+    <target>Azul : CornflowerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DarkBlue</source>
+    <target>Azul : DarkBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DeepSkyBlue</source>
+    <target>Azul : DeepSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : DodgerBlue</source>
+    <target>Azul : DodgerBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightBlue</source>
+    <target>Azul : LightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSkyBlue</source>
+    <target>Azul : LightSkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : LightSteelBlue</source>
+    <target>Azul : LightSteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MediumBlue</source>
+    <target>Azul : MediumBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : MidnightBlue</source>
+    <target>Azul : MidnightBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : Navy</source>
+    <target>Azul : Navy</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : PowderBlue</source>
+    <target>Azul : PowderBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : RoyalBlue</source>
+    <target>Azul : RoyalBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SkyBlue</source>
+    <target>Azul : SkyBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Blue : SteelBlue</source>
+    <target>Azul : SteelBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Borne 1</source>
+    <target>Borne 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne 2</source>
+    <target>Borne 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Borne niveau 0 :</source>
+    <target>Borne nivel 0 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 1 :</source>
+    <target>Borne nivel 1 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 2 :</source>
+    <target>Borne nivel 2 :</target>
+</phrase>
+<phrase>
+    <source>Borne niveau 3 :</source>
+    <target>Borne nivel 3 :</target>
+</phrase>
+<phrase>
+    <source>Bornes</source>
+    <target>Bornes</target>
+</phrase>
+<phrase>
+    <source>Bornes indépendante</source>
+    <target>Bornes independientes</target>
+</phrase>
+<phrase>
+    <source>Bornes indépendantes</source>
+    <target>Bornes independientes</target>
+</phrase>
+<phrase>
+    <source>Bornier extérieur</source>
+    <target>Bomer exterior</target>
+</phrase>
+<phrase>
+    <source>Bornier intérieur</source>
+    <target>Bomer interior</target>
+</phrase>
+<phrase>
+    <source>Borniers</source>
+    <target>Borneros</target>
+</phrase>
+<phrase>
+    <source>Bottom</source>
+    <target>Abajo</target>
+</phrase>
+<phrase>
+    <source>Brown : Bisque</source>
+    <target>Marrón : Bisque</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : BlanchedAlmond</source>
+    <target>Marrón : BlanchedAlmond</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Brown</source>
+    <target>Marrón : Brown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Burlywood</source>
+    <target>Marrón : Burlywood</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Chocolate</source>
+    <target>Marrón : Chocolate</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Cornsilk</source>
+    <target>Marrón : Cornsilk</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : DarkGoldenrod</source>
+    <target>Marrón : DarkGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Goldenrod</source>
+    <target>Marrón : Goldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Maroon</source>
+    <target>Marrón : Maroon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : NavajoWhite</source>
+    <target>Marrón : NavajoWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Peru</source>
+    <target>Marrón : Peru</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : RosyBrown</source>
+    <target>Marrón : RosyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SaddleBrown</source>
+    <target>Marrón : SaddleBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : SandyBrown</source>
+    <target>Marrón : SandyBrown</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Sienna</source>
+    <target>Marrón : Sienna</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Tan</source>
+    <target>Marrón : Tan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Brown : Wheat</source>
+    <target>Marrón : Wheat</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>C&amp;oller dans la zone</source>
+    <target>P&amp;egar en la zona</target>
+</phrase>
+<phrase>
+    <source>C&apos;est ici que vous pouvez définir la manière dont seront numérotés les nouveaux elements.
+-Une numérotation est composée d&apos;une variable minimum.
+-Vous pouvez ajouter ou supprimer une variable de numérotation par le biais des boutons - et +.
+-Une variable de numérotation comprend : un type, une valeur et une incrémentation.
+
+-les types "Chiffre 1", "Chiffre 01" et "Chiffre 001", représentent un type numérique défini dans le champ "Valeur", qui s&apos;incrémente à chaque nouveau conducteur de la valeur du champ "Incrémentation".
+-"Chiffre 01" et "Chiffre 001", sont respectivement représentés sur le schéma par deux et trois digits minimum.
+Si le chiffre défini dans le champ Valeur possède moins de digits que le type choisi,celui-ci sera précédé par un ou deux 0 afin de respecter son type.
+
+-Le type "Texte", représente un texte fixe.
+Le champ "Incrémentation" n&apos;est pas utilisé.
+
+-Le type "N° folio" représente le n° du folio en cours.
+Les autres champs ne sont pas utilisés.
+
+-Le type "Folio" représente le nom du folio en cours.
+Les autres champs ne sont pas utilisés.</source>
+    <target>Aquí puede definir cómo se numerarán los nuevos elementos.
+-Una numeración se compone de una variable como mínimo.
+-Puede añadir o eliminar una variable de numeración mediante los botones - y +.
+-Una variable de numeración comprende: un tipo, un valor y un incremento.
+
+-Los tipos "Cifra 1", "Cifra 01" y "Cifra 001" representan un tipo numérico definido en el campo "Valor", que se incrementa con cada nuevo conductor según el valor del campo "Incremento".
+-"Cifra 01" y "Cifra 001" se representan respectivamente en el esquema con dos y tres dígitos como mínimo.
+Si la cifra definida en el campo Valor tiene menos dígitos que el tipo elegido, se antepondrá uno o dos 0 para respetar su tipo.
+
+-El tipo "Texto" representa un texto fijo.
+El campo "Incremento" no se utiliza.
+
+-El tipo "N° folio" representa el n° del folio en curso.
+Los demás campos no se utilizan.
+
+-El tipo "Folio" representa el nombre del folio en curso.
+Los demás campos no se utilizan.</target>
+    <definition>help dialog about the element autonumerotation</definition>
+</phrase>
+<phrase>
+    <source>Cannot read %1</source>
+    <target>No se puede leer %1</target>
+</phrase>
+<phrase>
+    <source>Cartouches company</source>
+    <target>Cartuchos company</target>
+    <definition>title of the company&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Cartouches QET</source>
+    <target>Cartuchos QET</target>
+    <definition>title of the title block templates 					collection provided by QElectroTech</definition>
+</phrase>
+<phrase>
+    <source>Cartouches utilisateur</source>
+    <target>Cartuchos de usuario</target>
+    <definition>title of the user&apos;s 					title block templates collection</definition>
+</phrase>
+<phrase>
+    <source>Catégorie</source>
+    <target>Categoría</target>
+</phrase>
+<phrase>
+    <source>Ce document semble avoir été enregistré avec une version %1
+ qui est ultérieure à votre version ! 
+Vous utilisez actuellement QElectroTech en version %2</source>
+    <target>Este documento parece haber sido guardado con una versión %1
+ ¡que es posterior a su versión! 
+Actualmente utiliza QElectroTech en versión %2</target>
+</phrase>
+<phrase>
+    <source>Ce format ne prend pas en charge la transparence : l&apos;image sera enregistrée telle qu&apos;elle était avant l&apos;application de la couleur transparente. Continuer ?</source>
+    <target>Este formato no admite la transparencia: la imagen se guardará tal como estaba antes de aplicar el color transparente. ¿Continuar?</target>
+</phrase>
+<phrase>
+    <source>Ce raccourci est aussi utilisé par : %1</source>
+    <target>Este atajo también lo utiliza: %1</target>
+</phrase>
+<phrase>
+    <source>Ceci contient les derniers messages de journalisation de cette session. Vérifiez le contenu avant de le joindre à un rapport de bug public.</source>
+    <target>Esto contiene los últimos mensajes de registro de esta sesión. Verifique el contenido antes de adjuntarlo a un informe de error público.</target>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Centro</target>
+</phrase>
+<phrase>
+    <source>Cet élément est déjà lié</source>
+    <target>Este elemento ya está vinculado</target>
+</phrase>
+<phrase>
+    <source>Cette fonction numérote les bornes du projet selon leur position. Les bornes vides ou verrouillées sont ignorées.Le marquage des bornes doit être configuré au préalable comme suit : &apos;-X:AB&apos;. La partie avant les deux-points (le bornier) peut être nommée au choix. &apos;AB&apos; peut être composé de chiffres ou de lettres."</source>
+    <target>Esta función numera las bornes del proyecto según su posición. Las bornes vacías o bloqueadas se ignoran. El marcado de las bornes debe configurarse previamente como sigue: &apos;-X:AB&apos;. La parte anterior a los dos puntos (el bomer) puede nombrarse a elección. &apos;AB&apos; puede estar compuesto por cifras o letras.</target>
+</phrase>
+<phrase>
+    <source>Chaine Youtube</source>
+    <target>Canal de Youtube</target>
+</phrase>
+<phrase>
+    <source>Champ de texte</source>
+    <target>Campo de texto</target>
+</phrase>
+<phrase>
+    <source>Chemin des macros utilisateur</source>
+    <target>Ruta de las macros de usuario</target>
+</phrase>
+<phrase>
+    <source>Choisissez l&apos;emplacement dans lequel vous souhaitez enregistrer votre template.</source>
+    <target>Elija la ubicación en la que desea guardar su plantilla.</target>
+    <definition>dialog content</definition>
+</phrase>
+<phrase>
+    <source>Clic : positionner à la taille d&apos;origine. Cliquer-glisser : positionner et redimensionner. Clic droit : pivoter de 90°. Ctrl+molette : ajuster la taille.</source>
+    <target>Clic: posicionar al tamaño original. Clic y arrastrar: posicionar y redimensionar. Clic derecho: girar 90°. Ctrl+rueda: ajustar el tamaño.</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : point suivant ; double-clic ou Entrée : terminer ; clic droit : annuler le dernier point</source>
+    <target>Clic izquierdo: punto siguiente; doble clic o Intro: terminar; clic derecho: anular el último punto</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = carré, Ctrl = depuis le centre + position libre, Ctrl+Maj = carré centré) ; clic droit : annuler</source>
+    <target>Clic izquierdo: posicionar la esquina opuesta (Mayús = cuadrado, Ctrl = desde el centro + posición libre, Ctrl+Mayús = cuadrado centrado); clic derecho: anular</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le coin opposé (Maj = cercle, Ctrl = depuis le centre + position libre, Ctrl+Maj = cercle centré) ; clic droit : annuler</source>
+    <target>Clic izquierdo: posicionar la esquina opuesta (Mayús = círculo, Ctrl = desde el centro + posición libre, Ctrl+Mayús = círculo centrado); clic derecho: anular</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point de départ (Ctrl = position libre)</source>
+    <target>Clic izquierdo: posicionar el punto de inicio (Ctrl = posición libre)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le point final (Ctrl = position libre) ; clic droit : annuler</source>
+    <target>Clic izquierdo: posicionar el punto final (Ctrl = posición libre); clic derecho: anular</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier coin (Ctrl = point central, position libre)</source>
+    <target>Clic izquierdo: posicionar la primera esquina (Ctrl = punto central, posición libre)</target>
+</phrase>
+<phrase>
+    <source>Clic gauche : positionner le premier point (Ctrl = position libre)</source>
+    <target>Clic izquierdo: posicionar el primer punto (Ctrl = posición libre)</target>
+</phrase>
+<phrase>
+    <source>Clic: point anguleux. Cliquer-glisser: point courbe. Clic sur le premier point: fermer. Échap/Entrée: terminer. Clic droit: annuler le dernier point.</source>
+    <target>Clic: punto angular. Clic y arrastrar: punto curvo. Clic en el primer punto: cerrar. Esc/Intro: terminar. Clic derecho: anular el último punto.</target>
+</phrase>
+<phrase>
+    <source>Cliquer</source>
+    <target>Clic</target>
+</phrase>
+<phrase>
+    <source>Cliquer : mode %1</source>
+    <target>Clic: modo %1</target>
+</phrase>
+<phrase>
+    <source>Cliquez pour choisir une couleur</source>
+    <target>Haga clic para elegir un color</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour ajouter une couleur. Ajustez la tolérance de chaque couleur avec son curseur, ou cliquez sur × pour la retirer.</source>
+    <target>Haga clic en la imagen para añadir un color. Ajuste la tolerancia de cada color con su control deslizante, o haga clic en × para quitarlo.</target>
+</phrase>
+<phrase>
+    <source>Cliquez sur l&apos;image pour choisir une couleur</source>
+    <target>Haga clic en la imagen para elegir un color</target>
+</phrase>
+<phrase>
+    <source>Coins arrondis</source>
+    <target>Esquinas redondeadas</target>
+</phrase>
+<phrase>
+    <source>Collection Company</source>
+    <target>Colección Company</target>
+</phrase>
+<phrase>
+    <source>Collections</source>
+    <target>Colecciones</target>
+</phrase>
+<phrase>
+    <source>Coller</source>
+    <target>Pegar</target>
+</phrase>
+<phrase>
+    <source>Coller depuis le presse-papiers</source>
+    <target>Pegar desde el portapapeles</target>
+</phrase>
+<phrase>
+    <source>Commentaire</source>
+    <target>Comentario</target>
+</phrase>
+<phrase>
+    <source>Commentaire :</source>
+    <target>Comentario :</target>
+</phrase>
+<phrase>
+    <source>Commentaire PLC</source>
+    <target>Comentario PLC</target>
+</phrase>
+<phrase>
+    <source>Commun (contact SW)</source>
+    <target>Común (contacto SW)</target>
+</phrase>
+<phrase>
+    <source>Compilation : </source>
+    <target>Compilación:</target>
+</phrase>
+<phrase>
+    <source>Compilation :   </source>
+    <target>Compilación:</target>
+</phrase>
+<phrase>
+    <source>Composant 1</source>
+    <target>Componente 1</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Composant 2</source>
+    <target>Componente 2</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>Configuración</target>
+</phrase>
+<phrase>
+    <source>Configuration PLC</source>
+    <target>Configuración PLC</target>
+</phrase>
+<phrase>
+    <source>Configurer la police des en-têtes de colonnes</source>
+    <target>Configurar la fuente de los encabezados de columna</target>
+</phrase>
+<phrase>
+    <source>Configurer la police du texte dans les cellules</source>
+    <target>Configurar la fuente del texto en las celdas</target>
+</phrase>
+<phrase>
+    <source>Conflits uniquement</source>
+    <target>Solo conflictos</target>
+</phrase>
+<phrase>
+    <source>Connecter</source>
+    <target>Conectar</target>
+</phrase>
+<phrase>
+    <source>Contact</source>
+    <target>Contacto</target>
+</phrase>
+<phrase>
+    <source>Contacts</source>
+    <target>Contactos</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en courbe de Bézier</source>
+    <target>Convertir %1 en curva de Bézier</target>
+</phrase>
+<phrase>
+    <source>Convertir %1 en polyligne</source>
+    <target>Convertir %1 en polilínea</target>
+</phrase>
+<phrase>
+    <source>Convertir en courbe de Bézier</source>
+    <target>Convertir en curva de Bézier</target>
+</phrase>
+<phrase>
+    <source>Convertir en polyligne</source>
+    <target>Convertir en polilínea</target>
+</phrase>
+<phrase>
+    <source>Copier et coller</source>
+    <target>Copiar y pegar</target>
+</phrase>
+<phrase>
+    <source>Coréen</source>
+    <target>Coreano</target>
+</phrase>
+<phrase>
+    <source>Could not create a temporary directory: %1</source>
+    <target>No se ha podido crear un directorio temporal: %1</target>
+</phrase>
+<phrase>
+    <source>Couleur</source>
+    <target>Color</target>
+</phrase>
+<phrase>
+    <source>Couleur / numéro de fil câble</source>
+    <target>Color / número de hilo de cable</target>
+</phrase>
+<phrase>
+    <source>Couleur :</source>
+    <target>Color :</target>
+</phrase>
+<phrase>
+    <source>Couleur du conducteur</source>
+    <target>Color del conductor</target>
+</phrase>
+<phrase>
+    <source>Couleur du fil</source>
+    <target>Color del hilo</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Couleur pont :</source>
+    <target>Color del puente :</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente</source>
+    <target>Color transparente</target>
+</phrase>
+<phrase>
+    <source>Couleur transparente...</source>
+    <target>Color transparente...</target>
+</phrase>
+<phrase>
+    <source>Couper automatiquement les conducteurs existants lors du placement d&apos;un élément</source>
+    <target>Cortar automáticamente los conductores existentes al colocar un elemento</target>
+    <definition>Status tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Coupure automatique de conducteur(s)</source>
+    <target>Corte automático de conductor(es)</target>
+    <definition>Tool tip of auto break conductor</definition>
+</phrase>
+<phrase>
+    <source>Courant nominal</source>
+    <target>Corriente nominal</target>
+</phrase>
+<phrase>
+    <source>Création groupe de bornes</source>
+    <target>Creación de grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Créer un template</source>
+    <target>Crear una plantilla</target>
+    <definition>context menu action</definition>
+</phrase>
+<phrase>
+    <source>Créer une copie de sauvegarde ?</source>
+    <target>¿Crear una copia de seguridad?</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aqua</source>
+    <target>Cian : Aqua</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Aquamarine</source>
+    <target>Cian : Aquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : CadetBlue</source>
+    <target>Cian : CadetBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Cyan</source>
+    <target>Cian : Cyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkCyan</source>
+    <target>Cian : DarkCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : DarkTurquoise</source>
+    <target>Cian : DarkTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightCyan</source>
+    <target>Cian : LightCyan</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : LightSeaGreen</source>
+    <target>Cian : LightSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : MediumTurquoise</source>
+    <target>Cian : MediumTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : PaleTurquoise</source>
+    <target>Cian : PaleTurquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Teal</source>
+    <target>Cian : Teal</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyan : Turquoise</source>
+    <target>Cian : Turquoise</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Cyclique (modulo)</source>
+    <target>Cíclico (módulo)</target>
+</phrase>
+<phrase>
+    <source>Câble</source>
+    <target>Cable</target>
+</phrase>
+<phrase>
+    <source>d&apos;un groupe de bornes</source>
+    <target>de un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format dd-MM-yyyy</source>
+    <target>Fecha de guardado del archivo formato dd-MM-yyyy</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format local</source>
+    <target>Fecha de guardado del archivo formato local</target>
+</phrase>
+<phrase>
+    <source>Date d&apos;enregistrement du fichier format yyyy-MM-dd</source>
+    <target>Fecha de guardado del archivo formato yyyy-MM-dd</target>
+</phrase>
+<phrase>
+    <source>Degrouper les bornes</source>
+    <target>Desagrupar las bornes</target>
+</phrase>
+<phrase>
+    <source>Deplacer le centre de rotation</source>
+    <target>Mover el centro de rotación</target>
+</phrase>
+<phrase>
+    <source>Description</source>
+    <target>Descripción</target>
+</phrase>
+<phrase>
+    <source>Description :</source>
+    <target>Descripción :</target>
+</phrase>
+<phrase>
+    <source>Description textuelle</source>
+    <target>Descripción textual</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 1</source>
+    <target>Descripción textual auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 2</source>
+    <target>Descripción textual auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 3</source>
+    <target>Descripción textual auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Description textuelle auxiliaire 4</source>
+    <target>Descripción textual auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Dessiner les noms des bornes</source>
+    <target>Dibujar los nombres de las bornas</target>
+</phrase>
+<phrase>
+    <source>Diode</source>
+    <target>Diodo</target>
+</phrase>
+<phrase>
+    <source>direction</source>
+    <target>dirección</target>
+</phrase>
+<phrase>
+    <source>Disposition</source>
+    <target>Disposición</target>
+</phrase>
+<phrase>
+    <source>Disposition par défaut</source>
+    <target>Disposición por defecto</target>
+</phrase>
+<phrase>
+    <source>Distance in pixels between the label and the slave cross reference</source>
+    <target>Distancia en píxeles entre la etiqueta y la referencia cruzada del esclavo</target>
+</phrase>
+<phrase>
+    <source>Distance label - slave :</source>
+    <target>Etiqueta de distancia - esclavo:</target>
+</phrase>
+<phrase>
+    <source>Dossier installation</source>
+    <target>Carpeta de instalación</target>
+</phrase>
+<phrase>
+    <source>Droite</source>
+    <target>Derecha</target>
+</phrase>
+<phrase>
+    <source>du groupe de bornes %1</source>
+    <target>del grupo de bornes %1</target>
+</phrase>
+<phrase>
+    <source>Dxf2elmt: 
+Error: Make sure the file %1 is a valid .dxf file</source>
+    <target>Dxf2elmt: 
+Error: Asegúrese de que el archivo %1 es un archivo .dxf válido</target>
+</phrase>
+<phrase>
+    <source>Décalage vertical</source>
+    <target>Desplazamiento vertical</target>
+</phrase>
+<phrase>
+    <source>Décochez les borniers dont la numérotation doit être exclue</source>
+    <target>Desmarque los borneros cuya numeración deba excluirse</target>
+</phrase>
+<phrase>
+    <source>Définir le nombre maximal d&apos;esclaves</source>
+    <target>Definir el número máximo de esclavos</target>
+</phrase>
+<phrase>
+    <source>Définir les éléments esclave</source>
+    <target>Definir los elementos esclavos</target>
+</phrase>
+<phrase>
+    <source>Définir une couleur transparente</source>
+    <target>Definir un color transparente</target>
+</phrase>
+<phrase>
+    <source>Définition de conducteur</source>
+    <target>Definición de conductor</target>
+</phrase>
+<phrase>
+    <source>Déformer une courbe</source>
+    <target>Deformar una curva</target>
+</phrase>
+<phrase>
+    <source>Délier</source>
+    <target>Desvincular</target>
+</phrase>
+<phrase>
+    <source>Déplacer dans :</source>
+    <target>Desplazar a :</target>
+</phrase>
+<phrase>
+    <source>Déplacer des bornes</source>
+    <target>Mover bornes</target>
+</phrase>
+<phrase>
+    <source>Déplacer la borne %1</source>
+    <target>Mover el borne %1</target>
+</phrase>
+<phrase>
+    <source>Déplacer le centre de rotation d&apos;une image</source>
+    <target>Desplazar el centro de rotación de una imagen</target>
+</phrase>
+<phrase>
+    <source>Déplacer le label d&apos;une borne</source>
+    <target>Desplazar la etiqueta de una borna</target>
+</phrase>
+<phrase>
+    <source>Déplacer les folios</source>
+    <target>Mover los folios</target>
+</phrase>
+<phrase>
+    <source>Déplacer un folio</source>
+    <target>Mover un folio</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Déplacer une borne</source>
+    <target>Mover un borne</target>
+</phrase>
+<phrase>
+    <source>Déponter les bornes</source>
+    <target>Despuentear las bornes</target>
+</phrase>
+<phrase>
+    <source>Déverrouillé : largeur et hauteur peuvent être modifiées indépendamment. Cliquer pour verrouiller.</source>
+    <target>Desbloqueado: la anchura y la altura pueden modificarse independientemente. Haga clic para bloquear.</target>
+</phrase>
+<phrase>
+    <source>Effectuer le déplacement</source>
+    <target>Efectuar el desplazamiento</target>
+</phrase>
+<phrase>
+    <source>Element Autonumérotation</source>
+    <target>Elemento autonumeración</target>
+    <definition>title window</definition>
+</phrase>
+<phrase>
+    <source>En tête :</source>
+    <target>Encabezado :</target>
+</phrase>
+<phrase>
+    <source>Encadrer le texte</source>
+    <target>Enmarcar el texto</target>
+</phrase>
+<phrase>
+    <source>Enlever %1 bornes</source>
+    <target>Quitar %1 bornes</target>
+</phrase>
+<phrase>
+    <source>Enlever une borne</source>
+    <target>Quitar un borne</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image d&apos;origine sous...</source>
+    <target>Guardar la imagen original como...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer l&apos;image sous...</source>
+    <target>Guardar la imagen como...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer le rapport de diagnostic</source>
+    <target>Guardar el informe de diagnóstico</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un rapport de diagnostic...</source>
+    <target>Guardar un informe de diagnóstico...</target>
+</phrase>
+<phrase>
+    <source>Enregistrer un template</source>
+    <target>Guardar una plantilla</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Enregistrer...</source>
+    <target>Guardar...</target>
+</phrase>
+<phrase>
+    <source>Entrer le facteur d&apos;échelle</source>
+    <target>Introducir el factor de escala</target>
+</phrase>
+<phrase>
+    <source>Entrée analogique</source>
+    <target>Entrada analógica</target>
+</phrase>
+<phrase>
+    <source>Entrée digitale</source>
+    <target>Entrada digital</target>
+</phrase>
+<phrase>
+    <source>Entrée universelle</source>
+    <target>Entrada universal</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Error</target>
+</phrase>
+<phrase>
+    <source>Error launching qet_tb_generator plugin</source>
+    <target>Error al iniciar el complemento qet_tb_generator</target>
+</phrase>
+<phrase>
+    <source>Esclave PLC</source>
+    <target>Esclavo PLC</target>
+</phrase>
+<phrase>
+    <source>Espace :</source>
+    <target>Espacio :</target>
+</phrase>
+<phrase>
+    <source>Example</source>
+    <target>Ejemplo</target>
+    <definition>Longer example string</definition>
+</phrase>
+<phrase>
+    <source>Exclure de la nomenclature</source>
+    <target>Excluir de la lista de materiales</target>
+</phrase>
+<phrase>
+    <source>Exclure de la numérotation auto</source>
+    <target>Excluir de la numeración automática</target>
+</phrase>
+<phrase>
+    <source>Explorateur de bornier</source>
+    <target>Explorador de borneros</target>
+</phrase>
+<phrase>
+    <source>Export réussi</source>
+    <target>Exportación correcta</target>
+</phrase>
+<phrase>
+    <source>Exporte un ou plusieurs folios du projet courant</source>
+    <target>Exporta uno o varios folios del proyecto actual</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Exporter au format CSV</source>
+    <target>Exportar a formato CSV</target>
+</phrase>
+<phrase>
+    <source>Exporter en pdf</source>
+    <target>Exportar a pdf</target>
+</phrase>
+<phrase>
+    <source>Exporter en SVG</source>
+    <target>Exportar a SVG</target>
+    <definition>dialog title</definition>
+</phrase>
+<phrase>
+    <source>Exporter la base de donnée interne du projet</source>
+    <target>Exportar la base de datos interna del proyecto</target>
+</phrase>
+<phrase>
+    <source>Exporter la base de données interne du projet</source>
+    <target>Exportar la base de datos interna del proyecto</target>
+</phrase>
+<phrase>
+    <source>Exporter la liste des noms de conducteurs</source>
+    <target>Exportar la lista de nombres de conductores</target>
+</phrase>
+<phrase>
+    <source>Exporter le plan de câblage</source>
+    <target>Exportar el plano de cableado</target>
+</phrase>
+<phrase>
+    <source>Fabricant</source>
+    <target>Fabricante</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 1</source>
+    <target>Fabricante auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 2</source>
+    <target>Fabricante auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 3</source>
+    <target>Fabricante auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Fabricant auxiliaire 4</source>
+    <target>Fabricante auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Facteur X:</source>
+    <target>Factor X:</target>
+</phrase>
+<phrase>
+    <source>Facteur Y:</source>
+    <target>Factor Y:</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter %1</source>
+    <target>Rotar %1</target>
+</phrase>
+<phrase>
+    <source>Faire pivoter une image</source>
+    <target>Girar una imagen</target>
+</phrase>
+<phrase>
+    <source>Faites glisser les poignées, ou l&apos;intérieur du cadre, pour ajuster la zone à conserver.</source>
+    <target>Arrastre los tiradores, o el interior del marco, para ajustar la zona que se debe conservar.</target>
+</phrase>
+<phrase>
+    <source>Fermer cet éditeur</source>
+    <target>Cerrar este editor</target>
+</phrase>
+<phrase>
+    <source>Fichiers CSV (*.csv)</source>
+    <target>Archivos CSV (*.csv)</target>
+</phrase>
+<phrase>
+    <source>Fichiers PDF (*.pdf)</source>
+    <target>Archivos PDF (*.pdf)</target>
+</phrase>
+<phrase>
+    <source>Fichiers texte (*.txt);;Tous les fichiers (*)</source>
+    <target>Archivos de texto (*.txt);;Todos los archivos (*)</target>
+</phrase>
+<phrase>
+    <source>Fil</source>
+    <target>Hilo</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>File not found: %1</source>
+    <target>Archivo no encontrado: %1</target>
+</phrase>
+<phrase>
+    <source>Filtrer les raccourcis…</source>
+    <target>Filtrar los atajos…</target>
+</phrase>
+<phrase>
+    <source>Fin 1 :</source>
+    <target>Fin 1:</target>
+</phrase>
+<phrase>
+    <source>Fin 2 :</source>
+    <target>Fin 2:</target>
+</phrase>
+<phrase>
+    <source>Fine-Rotation</source>
+    <target>Rotación fina</target>
+</phrase>
+<phrase>
+    <source>Flip</source>
+    <target>Voltear</target>
+</phrase>
+<phrase>
+    <source>Folio</source>
+    <target>Folio</target>
+    <definition>column title</definition>
+</phrase>
+<phrase>
+    <source>Fonction</source>
+    <target>Función</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Fonction :</source>
+    <target>Función :</target>
+</phrase>
+<phrase>
+    <source>Fonction PLC</source>
+    <target>Función PLC</target>
+</phrase>
+<phrase>
+    <source>Fonctionnalité expérimental</source>
+    <target>Funcionalidad experimental</target>
+</phrase>
+<phrase>
+    <source>Form</source>
+    <target>Forma</target>
+</phrase>
+<phrase>
+    <source>Format d&apos;affichage : une suite de zéros donne le nombre minimum de chiffres (00 = 07, 000 = 007). Vide = largeur naturelle du type.</source>
+    <target>Formato de visualización: una serie de ceros da el número mínimo de dígitos (00 = 07, 000 = 007). Vacío = anchura natural del tipo.</target>
+</phrase>
+<phrase>
+    <source>Forme fermée</source>
+    <target>Forma cerrada</target>
+</phrase>
+<phrase>
+    <source>Formule du label</source>
+    <target>Fórmula de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Formule du texte</source>
+    <target>Fórmula del texto</target>
+</phrase>
+<phrase>
+    <source>Fournisseur</source>
+    <target>Proveedor</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 1</source>
+    <target>Proveedor auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 2</source>
+    <target>Proveedor auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 3</source>
+    <target>Proveedor auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Fournisseur auxiliaire 4</source>
+    <target>Proveedor auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Fusible</source>
+    <target>Fusible</target>
+</phrase>
+<phrase>
+    <source>Gauche</source>
+    <target>Izquierda</target>
+</phrase>
+<phrase>
+    <source>Gestionnaire de borniers</source>
+    <target>Gestor de borneros</target>
+</phrase>
+<phrase>
+    <source>Gestionnaire de borniers (DEV)</source>
+    <target>Gestor de regletas de bornes (DEV)</target>
+</phrase>
+<phrase>
+    <source>Glisser %1 : rotation (Maj = 15°)</source>
+    <target>Arrastrar %1: rotación (Mayús = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : ajuster l&apos;arc (Ctrl = position libre, Maj = 15°)</source>
+    <target>Arrastrar: ajustar el arco (Ctrl = posición libre, Mayús = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : arrondir les coins (Ctrl = position libre)</source>
+    <target>Arrastrar: redondear las esquinas (Ctrl = posición libre)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déformer la courbe (Ctrl = position libre, Alt = briser la tangente)</source>
+    <target>Arrastrar: deformar la curva (Ctrl = posición libre, Alt = romper la tangente)</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer ce point</source>
+    <target>Arrastrar: mover este punto</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le centre de rotation</source>
+    <target>Arrastrar: desplazar el centro de rotación</target>
+</phrase>
+<phrase>
+    <source>Glisser : déplacer le point (Ctrl = position libre</source>
+    <target>Arrastrar: mover el punto (Ctrl = posición libre</target>
+</phrase>
+<phrase>
+    <source>Glisser : inclinaison (Ctrl = position libre, Maj = 15°)</source>
+    <target>Arrastrar: inclinación (Ctrl = posición libre, Mayús = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : incliner (Maj = par pas de 15°)</source>
+    <target>Arrastrar: inclinar (Mayús = en pasos de 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : pivoter (Maj = par pas de 15°)</source>
+    <target>Arrastrar: girar (Mayús = en pasos de 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Ctrl = depuis le centre + position libre, Maj = proportions</source>
+    <target>Arrastrar: redimensionar (Ctrl = desde el centro + posición libre, Mayús = proporciones</target>
+</phrase>
+<phrase>
+    <source>Glisser : redimensionner (Maj = conserver les proportions, Ctrl = depuis le centre)</source>
+    <target>Arrastrar: redimensionar (Mayús = mantener las proporciones, Ctrl = desde el centro)</target>
+</phrase>
+<phrase>
+    <source>Glisser : repositionner le centre de rotation (Ctrl = position libre)</source>
+    <target>Arrastrar: reposicionar el centro de rotación (Ctrl = posición libre)</target>
+</phrase>
+<phrase>
+    <source>Glisser : rotation (Ctrl = position libre, Maj = 15°)</source>
+    <target>Arrastrar: rotación (Ctrl = posición libre, Mayús = 15°)</target>
+</phrase>
+<phrase>
+    <source>Glisser le point violet : arrondir les coins</source>
+    <target>Arrastrar el punto violeta: redondear las esquinas</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin : pivoter (Maj = par pas de 15°) ; glisser un bord : incliner (Maj = par pas de 15°) ; point rouge : déplacer le centre de rotation</source>
+    <target>Arrastrar una esquina: girar (Mayús = en pasos de 15°); arrastrar un borde: inclinar (Mayús = en pasos de 15°); punto rojo: desplazar el centro de rotación</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = conserver les proportions)</source>
+    <target>Arrastrar una esquina/borde: redimensionar (Ctrl = desde el centro, Mayús = mantener las proporciones)</target>
+</phrase>
+<phrase>
+    <source>Glisser un coin/bord : redimensionner (Ctrl = depuis le centre, Maj = proportions, Alt = détacher en polyligne)</source>
+    <target>Arrastrar una esquina/borde: redimensionar (Ctrl = desde el centro, Mayús = proporciones, Alt = separar en polilínea)</target>
+</phrase>
+<phrase>
+    <source>Glisser un point : le déplacer</source>
+    <target>Arrastrar un punto: moverlo</target>
+</phrase>
+<phrase>
+    <source>Glisser une extrémité : la déplacer</source>
+    <target>Arrastrar un extremo: moverlo</target>
+</phrase>
+<phrase>
+    <source>Glisser une poignée ou la courbe : déformer (Alt = briser la tangente) ; Alt+glisser un point anguleux : créer des poignées ; clic droit : menu du nœud le plus proche</source>
+    <target>Arrastrar un tirador o la curva: deformar (Alt = romper la tangente) ; Alt+arrastrar un punto anguloso: crear tiradores ; clic derecho: menú del nodo más cercano</target>
+</phrase>
+<phrase>
+    <source>go one page left</source>
+    <target>go one page left</target>
+</phrase>
+<phrase>
+    <source>go one page right</source>
+    <target>go one page right</target>
+</phrase>
+<phrase>
+    <source>Gray : Black</source>
+    <target>Gray : Black</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkGray</source>
+    <target>Gray : DarkGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DarkSlateGray</source>
+    <target>Gray : DarkSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : DimGray</source>
+    <target>Gray : DimGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gainsboro</source>
+    <target>Gris : Gainsboro</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Gray</source>
+    <target>Gray : Gray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightGray</source>
+    <target>Gray : LightGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : LightSlateGray</source>
+    <target>Gray : LightSlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : Silver</source>
+    <target>Gray : Silver</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Gray : SlateGray</source>
+    <target>Gray : SlateGray</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Chartreuse</source>
+    <target>Verde : Chartreuse</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkGreen</source>
+    <target>Verde : DarkGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkOliveGreen</source>
+    <target>Verde : DarkOliveGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : DarkSeaGreen</source>
+    <target>Verde : DarkSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : ForestGreen</source>
+    <target>Verde : ForestGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Green</source>
+    <target>Verde : Green</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : GreenYellow</source>
+    <target>Verde : GreenYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LawnGreen</source>
+    <target>Verde : LawnGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LightGreen</source>
+    <target>Verde : LightGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Lime</source>
+    <target>Verde : Lime</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : LimeGreen</source>
+    <target>Verde : LimeGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumAquamarine</source>
+    <target>Verde : MediumAquamarine</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSeaGreen</source>
+    <target>Verde : MediumSeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : MediumSpringGreen</source>
+    <target>Verde : MediumSpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : Olive</source>
+    <target>Verde : Olive</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : OliveDrab</source>
+    <target>Verde : OliveDrab</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : PaleGreen</source>
+    <target>Verde : PaleGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SeaGreen</source>
+    <target>Verde : SeaGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : SpringGreen</source>
+    <target>Verde : SpringGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Green : YellowGreen</source>
+    <target>Verde : YellowGreen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Grouper les bornes</source>
+    <target>Agrupar las bornes</target>
+</phrase>
+<phrase>
+    <source>Guides</source>
+    <target>Guías</target>
+</phrase>
+<phrase>
+    <source>Génère un rapport avec les derniers messages de journalisation, pour l&apos;inclure dans un rapport de bug</source>
+    <target>Genera un informe con los últimos mensajes de registro, para incluirlo en un informe de error</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Général</source>
+    <target>General</target>
+</phrase>
+<phrase>
+    <source>Générique</source>
+    <target>Genérico</target>
+</phrase>
+<phrase>
+    <source>Géométrie</source>
+    <target>Geometría</target>
+</phrase>
+<phrase>
+    <source>H. ligne:</source>
+    <target>H. ligne:</target>
+</phrase>
+<phrase>
+    <source>Haut :</source>
+    <target>Arriba:</target>
+</phrase>
+<phrase>
+    <source>Hauteur</source>
+    <target>Altura</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horizontal</target>
+</phrase>
+<phrase>
+    <source>horizontal + vertical</source>
+    <target>horizontal + vertical</target>
+</phrase>
+<phrase>
+    <source>Image BMP (*.bmp)</source>
+    <target>Imagen BMP (*.bmp)</target>
+</phrase>
+<phrase>
+    <source>Image Files (*.png *.jpg *.jpeg *.bmp *.svg)</source>
+    <target>Archivos de imagen (*.png *.jpg *.jpeg *.bmp *.svg)</target>
+</phrase>
+<phrase>
+    <source>Image JPEG (*.jpg *.jpeg)</source>
+    <target>Imagen JPEG (*.jpg *.jpeg)</target>
+</phrase>
+<phrase>
+    <source>Image PNG (*.png)</source>
+    <target>Imagen PNG (*.png)</target>
+</phrase>
+<phrase>
+    <source>Image source</source>
+    <target>Imagen de origen</target>
+</phrase>
+<phrase>
+    <source>Image SVG (*.svg)</source>
+    <target>Imagen SVG (*.svg)</target>
+    <definition>filetypes allowed when exporting an element to SVG</definition>
+</phrase>
+<phrase>
+    <source>Images non incluses dans l&apos;export DXF</source>
+    <target>Imágenes no incluidas en la exportación DXF</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Import EPLAN</source>
+    <target>Importación EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer</source>
+    <target>Importar</target>
+</phrase>
+<phrase>
+    <source>Importer un dxf</source>
+    <target>Importar un dxf</target>
+</phrase>
+<phrase>
+    <source>Importer un fichier dxf</source>
+    <target>Importar un archivo dxf</target>
+</phrase>
+<phrase>
+    <source>importer un élément à redimensionner</source>
+    <target>importar un elemento para redimensionar</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN</source>
+    <target>Importar una pieza EPLAN</target>
+</phrase>
+<phrase>
+    <source>Importer une pièce EPLAN (.edz)…</source>
+    <target>Importar una pieza EPLAN (.edz)…</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer l&apos;image à cet emplacement.</source>
+    <target>No se puede guardar la imagen en esta ubicación.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer la nomenclature dans %1.
+%2</source>
+    <target>No se puede guardar la lista de materiales en %1.
+%2</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;enregistrer le modèle « %1 ».</source>
+    <target>No se puede guardar la plantilla «%1».</target>
+    <definition>message box content - %1 is a title block template name</definition>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;importer cette pièce :
+%1</source>
+    <target>No se puede importar esta pieza:
+%1</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;ouvrir le fichier pour l&apos;écriture.</source>
+    <target>No se puede abrir el archivo para escritura.</target>
+</phrase>
+<phrase>
+    <source>Impossible d&apos;écrire dans le fichier « %1 ».</source>
+    <target>No se puede escribir en el archivo «%1».</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger l&apos;image.</source>
+    <target>No se puede cargar la imagen.</target>
+</phrase>
+<phrase>
+    <source>Impossible de charger le fichier PDF.</source>
+    <target>No se puede cargar el archivo PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de déterminer la taille de la page PDF.</source>
+    <target>No se puede determinar el tamaño de la página PDF.</target>
+</phrase>
+<phrase>
+    <source>Impossible de lire la structure en mémoire du projet.</source>
+    <target>No se puede leer la estructura en memoria del proyecto.</target>
+</phrase>
+<phrase>
+    <source>Impossible de rendre la page PDF.</source>
+    <target>No se puede renderizar la página PDF.</target>
+</phrase>
+<phrase>
+    <source>Inclinaison X</source>
+    <target>Inclinación X</target>
+</phrase>
+<phrase>
+    <source>Inclinaison Y</source>
+    <target>Inclinación Y</target>
+</phrase>
+<phrase>
+    <source>Incliner %1</source>
+    <target>Inclinar %1</target>
+</phrase>
+<phrase>
+    <source>Incliner une image</source>
+    <target>Inclinar una imagen</target>
+</phrase>
+<phrase>
+    <source>Inconnu</source>
+    <target>Desconocido</target>
+</phrase>
+<phrase>
+    <source>Incrément</source>
+    <target>Incremento</target>
+</phrase>
+<phrase>
+    <source>Incrément : valeur ajoutée au compteur à chaque nouvelle numérotation</source>
+    <target>Incremento: valor añadido al contador en cada nueva numeración</target>
+</phrase>
+<phrase>
+    <source>Information à afficher</source>
+    <target>Información a mostrar</target>
+</phrase>
+<phrase>
+    <source>Informations</source>
+    <target>Información</target>
+</phrase>
+<phrase>
+    <source>Informations disponibles</source>
+    <target>Información disponible</target>
+</phrase>
+<phrase>
+    <source>Inscrire les informations des composants</source>
+    <target>Inscribir la información de los componentes</target>
+</phrase>
+<phrase>
+    <source>Installation :</source>
+    <target>Instalación :</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio au-dessus</source>
+    <target>Insertar un folio encima</target>
+</phrase>
+<phrase>
+    <source>Insérer un folio en dessous</source>
+    <target>Insertar un folio debajo</target>
+</phrase>
+<phrase>
+    <source>Inverseur</source>
+    <target>Conmutador</target>
+</phrase>
+<phrase>
+    <source>IO disponible:</source>
+    <target>E/S disponibles:</target>
+</phrase>
+<phrase>
+    <source>J&apos;ai lu et j&apos;accepte ces conditions.</source>
+    <target>He leído y acepto estas condiciones.</target>
+</phrase>
+<phrase>
+    <source>L&apos;import d&apos;un dxf volumineux peut prendre du temps 
+veuillez patienter durant l&apos;import...</source>
+    <target>La importación de un dxf voluminoso puede tardar 
+por favor, espere durante la importación...</target>
+</phrase>
+<phrase>
+    <source>L&apos;import dxf nécessite le logiciel dxf2elmt.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>La importación dxf requiere el programa dxf2elmt.
+Descárguelo siguiendo el enlace de abajo y descomprímalo en la carpeta de instalación</target>
+</phrase>
+<phrase>
+    <source>La limite fixée pour cet élément maître est atteinte (Limite: %1).
+
+Voulez-vous tout de même lier ce contact esclave ?</source>
+    <target>Se ha alcanzado el límite fijado para este elemento maestro (Límite: %1).
+
+¿Desea vincular de todos modos este contacto esclavo?</target>
+</phrase>
+<phrase>
+    <source>La suppression ne peut être effectué car la selection possède une ou plusieurs bornes ponté et/ou appartenant à une borne à niveau multiple.
+Déponter et/ou supprimer les niveaux des bornes concerné afin de pouvoir les supprimer</source>
+    <target>No se puede realizar la supresión porque la selección posee uno o varios bornes puenteados y/o pertenecientes a un borne de varios niveles.
+Despuentear y/o suprimir los niveles de los bornes afectados para poder suprimirlos</target>
+</phrase>
+<phrase>
+    <source>Label</source>
+    <target>Etiqueta</target>
+</phrase>
+<phrase>
+    <source>Lance le navigateur par défaut vers la chaine Youtube de QElectroTech</source>
+    <target>Abre el navegador por defecto en el canal de Youtube de QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Lance le navigateur par défaut vers le manuel en ligne de QElectroTech</source>
+    <target>Abre el navegador por defecto en el manual en línea de QElectroTech</target>
+</phrase>
+<phrase>
+    <source>Largeur</source>
+    <target>Anchura</target>
+</phrase>
+<phrase>
+    <source>Le fichier n&apos;a pas pu être écrit.</source>
+    <target>No se ha podido escribir el archivo.</target>
+</phrase>
+<phrase>
+    <source>Le fichier PDF ne contient aucune page.</source>
+    <target>El archivo PDF no contiene ninguna página.</target>
+</phrase>
+<phrase>
+    <source>Le fichier « %1 » est absent ou illisible : le nom traduit de ce dossier n&apos;a pas pu être lu, son nom de dossier est affiché à la place.</source>
+    <target>El archivo «%1» no existe o es ilegible: no se ha podido leer el nombre traducido de esta carpeta, se muestra su nombre de carpeta en su lugar.</target>
+</phrase>
+<phrase>
+    <source>Le format .edz peut provenir de deux sources différentes :
+
+• Le portail EPLAN Data Portal (dataportal.eplan.com), soumis aux conditions d&apos;utilisation de l&apos;environnement EPLAN Cloud ;
+• Le site d&apos;un fabricant de composants (ou d&apos;un distributeur) qui met ses fichiers .edz à disposition directement, selon ses propres conditions.
+
+QElectroTech ne peut pas déterminer automatiquement l&apos;origine du fichier que vous importez, ni les conditions qui s&apos;y appliquent.
+
+En important ce fichier, vous confirmez que :
+
+• vous connaissez son origine et êtes autorisé à l&apos;utiliser dans ce contexte, au regard des conditions applicables à cette source ;
+• cette importation est effectuée à vos propres risques et responsabilité ;
+• ni QElectroTech, ni ses mainteneurs, ni ses contributeurs ne peuvent être tenus responsables d&apos;une utilisation non conforme de ces données.</source>
+    <target>El formato .edz puede provenir de dos fuentes diferentes:
+
+• El portal EPLAN Data Portal (dataportal.eplan.com), sujeto a las condiciones de uso del entorno EPLAN Cloud;
+• El sitio de un fabricante de componentes (o de un distribuidor) que pone sus archivos .edz a disposición directamente, según sus propias condiciones.
+
+QElectroTech no puede determinar automáticamente el origen del archivo que importa, ni las condiciones que se le aplican.
+
+Al importar este archivo, usted confirma que:
+
+• conoce su origen y está autorizado a utilizarlo en este contexto, con respecto a las condiciones aplicables a dicha fuente;
+• esta importación se realiza bajo su propio riesgo y responsabilidad;
+• ni QElectroTech, ni sus mantenedores, ni sus colaboradores pueden ser considerados responsables de un uso no conforme de estos datos.</target>
+</phrase>
+<phrase>
+    <source>Le format DXF utilisé ici (AC1006) ne permet pas d&apos;inclure d&apos;image. Les images seront représentées uniquement par un rectangle de contour (position, taille, rotation et inclinaison conservées), sans le contenu de l&apos;image.</source>
+    <target>El formato DXF utilizado aquí (AC1006) no permite incluir imágenes. Las imágenes se representarán únicamente mediante un rectángulo de contorno (posición, tamaño, rotación e inclinación conservados), sin el contenido de la imagen.</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Le logiciel QET_ElementScaler est nécessaire pour mettre les éléments à l&apos;échelle.
+Veuillez télécharger celui-ci en suivant le lien ci dessous et le dézipper dans le dossier d&apos;installation</source>
+    <target>El programa QET_ElementScaler es necesario para escalar los elementos.
+Descárguelo siguiendo el enlace de abajo y descomprímalo en la carpeta de instalación</target>
+</phrase>
+<phrase>
+    <source>Le modèle a été enregistré avec succès sous :
+%1</source>
+    <target>La plantilla se ha guardado correctamente en:
+%1</target>
+</phrase>
+<phrase>
+    <source>Le nom « %1 » n&apos;est pas valide : il ne doit pas contenir les caractères suivants : \ / : * ? " &lt; &gt; |</source>
+    <target>El nombre «%1» no es válido: no debe contener los siguientes caracteres: \ / : * ? " &lt; &gt; |</target>
+    <definition>message box content - %1 is the rejected template name</definition>
+</phrase>
+<phrase>
+    <source>Le nouvel élément définit des groupes de contacts esclaves.
+Les éléments esclaves existants ne seront pas automatiquement assignés. Vous devrez relier manuellement les esclaves et assigner les groupes de contacts.
+
+Voulez-vous continuer ?</source>
+    <target>El nuevo elemento define grupos de contactos esclavos.
+Los elementos esclavos existentes no se asignarán automáticamente. Deberá enlazar manualmente los esclavos y asignar los grupos de contactos.
+
+¿Desea continuar?</target>
+</phrase>
+<phrase>
+    <source>Le plan de câblage a été exporté avec succès !</source>
+    <target>¡El plano de cableado se ha exportado correctamente!</target>
+</phrase>
+<phrase>
+    <source>Le projet que vous tentez d&apos;ouvrir est partiellement compatible avec votre version %1 de QElectroTech.
+</source>
+    <target>El proyecto que intenta abrir es parcialmente compatible con su versión %1 de QElectroTech.
+</target>
+</phrase>
+<phrase>
+    <source>Le template existe déjà. Voulez-vous l&apos;écraser ?</source>
+    <target>La plantilla ya existe. ¿Desea sobrescribirla?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>led</source>
+    <target>led</target>
+</phrase>
+<phrase>
+    <source>LED :</source>
+    <target>LED :</target>
+</phrase>
+<phrase>
+    <source>Left</source>
+    <target>Izquierda</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par le tableau.
+Veuillez ajouter un nouveau tableau ou regler le tableau existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>La información a mostrar supera la cantidad máxima que puede mostrar la tabla.
+Añada una nueva tabla o ajuste la tabla existente para mostrar toda la información.</target>
+</phrase>
+<phrase>
+    <source>Les information à afficher sont supérieurs à la quantité maximal pouvant être affiché par les tableaux.
+Veuillez ajouter un nouveau tableau ou regler les tableaux existant afin d&apos;afficher l&apos;integralité des informations.</source>
+    <target>La información a mostrar supera la cantidad máxima que pueden mostrar las tablas.
+Añada una nueva tabla o ajuste las tablas existentes para mostrar toda la información.</target>
+</phrase>
+<phrase>
+    <source>Lettres minuscules, chiffres, tiret et underscore uniquement</source>
+    <target>Solo letras minúsculas, cifras, guion y guion bajo</target>
+</phrase>
+<phrase>
+    <source>Licenses</source>
+    <target>Licencias</target>
+</phrase>
+<phrase>
+    <source>Limitation de tableau</source>
+    <target>Limitación de tabla</target>
+</phrase>
+<phrase>
+    <source>Lisse</source>
+    <target>Suave</target>
+</phrase>
+<phrase>
+    <source>Liste de câblage</source>
+    <target>Lista de cableado</target>
+    <definition>window title</definition>
+</phrase>
+<phrase>
+    <source>Liste de câblage (base de données)</source>
+    <target>Lista de cableado (base de datos)</target>
+</phrase>
+<phrase>
+    <source>Lié à: %1</source>
+    <target>Vinculado a: %1</target>
+</phrase>
+<phrase>
+    <source>Localisation :</source>
+    <target>Localización :</target>
+</phrase>
+<phrase>
+    <source>Logiciel tiers requis</source>
+    <target>Software de terceros requerido</target>
+</phrase>
+<phrase>
+    <source>Longueur</source>
+    <target>Longitud</target>
+</phrase>
+<phrase>
+    <source>Longueur maximal</source>
+    <target>Longitud máxima</target>
+</phrase>
+<phrase>
+    <source>Longueur maximale : %1px
+</source>
+    <target>Longitud máxima: %1px
+</target>
+    <definition>tooltip showing the maximum width of the edited template</definition>
+</phrase>
+<phrase>
+    <source>Longueur non contrainte.
+</source>
+    <target>Longitud no restringida.
+</target>
+    <definition>tooltip shown when the edited template has neither a minimum nor a maximum width constraint</definition>
+</phrase>
+<phrase>
+    <source>LTR</source>
+    <target>LTR</target>
+    <definition>Translate this string to RTL if you are translating 		 to a Right-to-Left language, else translate to LTR</definition>
+</phrase>
+<phrase>
+    <source>Makros</source>
+    <target>Makros</target>
+</phrase>
+<phrase>
+    <source>Manuel en ligne</source>
+    <target>Manual en línea</target>
+</phrase>
+<phrase>
+    <source>Marges :</source>
+    <target>Márgenes:</target>
+</phrase>
+<phrase>
+    <source>margin: 5px; font-weight: bold;</source>
+    <target>margin: 5px; font-weight: bold;</target>
+</phrase>
+<phrase>
+    <source>max:</source>
+    <target>máx.:</target>
+</phrase>
+<phrase>
+    <source>Mettre à 0 pour un chiffre qui n&apos;avance que par le report d&apos;un chiffre cyclique suivant (ex: le "0" de "0.7")</source>
+    <target>Poner a 0 para un dígito que solo avanza por el acarreo de un dígito cíclico siguiente (ej.: el "0" de "0.7")</target>
+</phrase>
+<phrase>
+    <source>min:</source>
+    <target>mín.:</target>
+</phrase>
+<phrase>
+    <source>Miroir de sélection</source>
+    <target>Espejo de selección</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Miroir horizontal</source>
+    <target>Espejo horizontal</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal d&apos;une image</source>
+    <target>Espejo horizontal de una imagen</target>
+</phrase>
+<phrase>
+    <source>Miroir horizontal de %1</source>
+    <target>Espejo horizontal de %1</target>
+</phrase>
+<phrase>
+    <source>Miroir impossible : inclinaison trop extrême pour cette forme</source>
+    <target>Espejo imposible: inclinación demasiado extrema para esta forma</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical</source>
+    <target>Espejo vertical</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical d&apos;une image</source>
+    <target>Espejo vertical de una imagen</target>
+</phrase>
+<phrase>
+    <source>Miroir vertical de %1</source>
+    <target>Espejo vertical de %1</target>
+</phrase>
+<phrase>
+    <source>Mirror</source>
+    <target>Espejo</target>
+</phrase>
+<phrase>
+    <source>mod. </source>
+    <target>mod.</target>
+</phrase>
+<phrase>
+    <source>Modifier des propriétés de borniers</source>
+    <target>Modificar propiedades de borneros</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement d&apos;un champ texte</source>
+    <target>Modificar la alineación de un campo de texto</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;alignement du label</source>
+    <target>Modificar la alineación de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;un arc</source>
+    <target>Modificar el ángulo de un arco</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une forme</source>
+    <target>Modificar el ángulo de una forma</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;angle d&apos;une image</source>
+    <target>Modificar el ángulo de una imagen</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;inclinaison d&apos;une image</source>
+    <target>Modificar la inclinación de una imagen</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;index de l&apos;étiquette du maître</source>
+    <target>Modificar el índice de la etiqueta del maestro</target>
+</phrase>
+<phrase>
+    <source>Modifier l&apos;étiquette du maître</source>
+    <target>Modificar la etiqueta del maestro</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur d&apos;un pont de bornes</source>
+    <target>Modificar el color de un puente de bornes</target>
+</phrase>
+<phrase>
+    <source>Modifier la couleur du label</source>
+    <target>Modificar el color de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Modifier la courbure d&apos;%1</source>
+    <target>Modificar la curvatura de %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la forme d&apos;%1</source>
+    <target>Modificar la forma de %1</target>
+</phrase>
+<phrase>
+    <source>Modifier la géometrie d&apos;un tableau</source>
+    <target>Modificar la geometría de una tabla</target>
+</phrase>
+<phrase>
+    <source>Modifier la hauteur d&apos;une image</source>
+    <target>Modificar la altura de una imagen</target>
+</phrase>
+<phrase>
+    <source>Modifier la largeur d&apos;une image</source>
+    <target>Modificar la anchura de una imagen</target>
+</phrase>
+<phrase>
+    <source>Modifier la longueur d&apos;une ligne</source>
+    <target>Modificar la longitud de una línea</target>
+</phrase>
+<phrase>
+    <source>Modifier la police du label</source>
+    <target>Modificar la fuente de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Modifier la position du label</source>
+    <target>Modificar la posición de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Modifier la rotation du label</source>
+    <target>Modificar la rotación de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille d&apos;une forme</source>
+    <target>Modificar el tamaño de una forma</target>
+</phrase>
+<phrase>
+    <source>Modifier la taille de police du label</source>
+    <target>Modificar el tamaño de fuente de la etiqueta</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom de la borne</source>
+    <target>Modificar el nombre de la borne</target>
+</phrase>
+<phrase>
+    <source>Modifier le nom du terminal</source>
+    <target>Modificar el nombre del terminal</target>
+</phrase>
+<phrase>
+    <source>Modifier le point de rotation d&apos;un champ texte</source>
+    <target>Modificar el punto de rotación de un campo de texto</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;un nœud</source>
+    <target>Modificar el tipo de un nodo</target>
+</phrase>
+<phrase>
+    <source>Modifier le type d&apos;une borne</source>
+    <target>Modificar el tipo de una borne</target>
+</phrase>
+<phrase>
+    <source>Modifier les informations de plusieurs éléments</source>
+    <target>Modificar la información de varios elementos</target>
+</phrase>
+<phrase>
+    <source>Modifier les propriétées de l&apos;élément</source>
+    <target>Modificar las propiedades del elemento</target>
+</phrase>
+<phrase>
+    <source>Modifier les propriétés d&apos;un élement</source>
+    <target>Modificar las propiedades de un elemento</target>
+</phrase>
+<phrase>
+    <source>Modifier les proriétés d&apos;un groupe de bornes</source>
+    <target>Modificar las propiedades de un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Modifier une image</source>
+    <target>Modificar una imagen</target>
+</phrase>
+<phrase>
+    <source>Module PLC</source>
+    <target>Módulo PLC</target>
+</phrase>
+<phrase>
+    <source>Modèle</source>
+    <target>Modelo</target>
+</phrase>
+<phrase>
+    <source>Modèle enregistré</source>
+    <target>Plantilla guardada</target>
+</phrase>
+<phrase>
+    <source>Modèles</source>
+    <target>Plantillas</target>
+</phrase>
+<phrase>
+    <source>Nb.</source>
+    <target>N.º</target>
+</phrase>
+<phrase>
+    <source>Nb. bornes</source>
+    <target>N.º de bornes</target>
+</phrase>
+<phrase>
+    <source>Nb. contacts</source>
+    <target>N.º de contactos</target>
+</phrase>
+<phrase>
+    <source>NC (contact SW)</source>
+    <target>NC (contacto SW)</target>
+</phrase>
+<phrase>
+    <source>Neutre</source>
+    <target>Neutro</target>
+</phrase>
+<phrase>
+    <source>NO (contact SW)</source>
+    <target>NA (contacto SW)</target>
+</phrase>
+<phrase>
+    <source>No *.part.xml found inside the .edz</source>
+    <target>No se ha encontrado ningún *.part.xml dentro del .edz</target>
+</phrase>
+<phrase>
+    <source>Nom :</source>
+    <target>Nombre :</target>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément</source>
+    <target>Nombre de archivo del elemento</target>
+    <definition>placeholder: the element&apos;s file name, not its display name</definition>
+</phrase>
+<phrase>
+    <source>Nom de fichier de l&apos;élément : chiffres, minuscules, « - », « _ » et « . » uniquement.
+Le nom affiché de l&apos;élément se modifie séparément dans les propriétés de l&apos;élément.</source>
+    <target>Nombre de archivo del elemento: solo cifras, minúsculas, «-», «_» y «.».
+El nombre mostrado del elemento se modifica por separado en las propiedades del elemento.</target>
+    <definition>tooltip for the element file-name field</definition>
+</phrase>
+<phrase>
+    <source>Nom de la borne</source>
+    <target>Nombre de la borne</target>
+</phrase>
+<phrase>
+    <source>Nom du nouveau template</source>
+    <target>Nombre de la nueva plantilla</target>
+</phrase>
+<phrase>
+    <source>Nom personnalisé de la colonne (vide = par défaut)</source>
+    <target>Nombre personalizado de la columna (vacío = por defecto)</target>
+</phrase>
+<phrase>
+    <source>Nom, label ou information de l&apos;élément…</source>
+    <target>Nombre, etiqueta o información del elemento…</target>
+</phrase>
+<phrase>
+    <source>nom_de_la_propriete</source>
+    <target>nombre_de_la_propiedad</target>
+</phrase>
+<phrase>
+    <source>Nombre de bornes incorrect</source>
+    <target>Número de bornes incorrecto</target>
+</phrase>
+<phrase>
+    <source>Nombre de contacts esclaves utilisés : %1
+</source>
+    <target>Número de contactos esclavos utilizados: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximal d&apos;esclaves atteint.</source>
+    <target>Número máximo de esclavos alcanzado.</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : %1
+</source>
+    <target>Número máximo de contactos esclavos definidos: %1
+</target>
+</phrase>
+<phrase>
+    <source>Nombre maximum de contacts esclaves définis : non défini
+</source>
+    <target>Número máximo de contactos esclavos definidos: no definido
+</target>
+</phrase>
+<phrase>
+    <source>Non</source>
+    <target>No</target>
+    <definition>no button</definition>
+</phrase>
+<phrase>
+    <source>Non attribués uniquement</source>
+    <target>Solo no asignados</target>
+</phrase>
+<phrase>
+    <source>Normalement fermé</source>
+    <target>Normalmente cerrado</target>
+</phrase>
+<phrase>
+    <source>Normalement ouvert</source>
+    <target>Normalmente abierto</target>
+</phrase>
+<phrase>
+    <source>Not a valid .edz package (unrecognised archive format).</source>
+    <target>No es un paquete .edz válido (formato de archivo no reconocido).</target>
+</phrase>
+<phrase>
+    <source>Notes</source>
+    <target>Notas</target>
+</phrase>
+<phrase>
+    <source>numero_de_fileries_</source>
+    <target>numero_de_filerias_</target>
+</phrase>
+<phrase>
+    <source>Numérique uniquement (1, 2, 3...)</source>
+    <target>Solo numérico (1, 2, 3...)</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article</source>
+    <target>Número de artículo</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 1</source>
+    <target>Número de artículo auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 2</source>
+    <target>Número de artículo auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 3</source>
+    <target>Número de artículo auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Numéro d&apos;article auxiliaire 4</source>
+    <target>Número de artículo auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande</source>
+    <target>Número de pedido</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 1</source>
+    <target>Número de pedido auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 2</source>
+    <target>Número de pedido auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 3</source>
+    <target>Número de pedido auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Numéro de commande auxiliaire 4</source>
+    <target>Número de pedido auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Numéro de conducteur</source>
+    <target>Número de conductor</target>
+</phrase>
+<phrase>
+    <source>Numéro du folio</source>
+    <target>Número del folio</target>
+</phrase>
+<phrase>
+    <source>Numéro interne</source>
+    <target>Número interno</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 1</source>
+    <target>Número interno auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 2</source>
+    <target>Número interno auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 3</source>
+    <target>Número interno auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Numéro interne auxiliaire 4</source>
+    <target>Número interno auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Numérotation automatique des bornes</source>
+    <target>Numeración automática de bornes</target>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un conducteur</source>
+    <target>Numerar automáticamente un conductor</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter automatiquement un élément</source>
+    <target>Numerar automáticamente un elemento</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Numéroter également les lettres</source>
+    <target>Numerar también las letras</target>
+</phrase>
+<phrase>
+    <source>Nœud le plus proche</source>
+    <target>Nodo más cercano</target>
+</phrase>
+<phrase>
+    <source>OK</source>
+    <target>Aceptar</target>
+</phrase>
+<phrase>
+    <source>Orange : Coral</source>
+    <target>Naranja : Coral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : DarkOrange</source>
+    <target>Naranja : DarkOrange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Orange</source>
+    <target>Naranja : Orange</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : OrangeRed</source>
+    <target>Naranja : OrangeRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orange : Tomato</source>
+    <target>Naranja : Tomato</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Orientation</source>
+    <target>Orientación</target>
+</phrase>
+<phrase>
+    <source>Orientation :</source>
+    <target>Orientación :</target>
+</phrase>
+<phrase>
+    <source>Origine vertical</source>
+    <target>Origen vertical</target>
+</phrase>
+<phrase>
+    <source>Oui</source>
+    <target>Sí</target>
+    <definition>yes button</definition>
+</phrase>
+<phrase>
+    <source>Outils</source>
+    <target>Herramientas</target>
+</phrase>
+<phrase>
+    <source>Ouvrir un element</source>
+    <target>Abrir un elemento</target>
+</phrase>
+<phrase>
+    <source>Page</source>
+    <target>Página</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Page à importer :</source>
+    <target>Página que importar:</target>
+</phrase>
+<phrase>
+    <source>Panneau des éléments</source>
+    <target>Panel de elementos</target>
+</phrase>
+<phrase>
+    <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{plant} : nom de l&apos;installation (=) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{locmach} : nom de la localisation (+) dans laquelle se trouve le folio&lt;/li&gt;&lt;li&gt;%{indexrev} : indice de révision du folio&lt;/li&gt;&lt;li&gt;%{version} : version du logiciel&lt;/li&gt;&lt;li&gt;%{folio} : numéro du folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : numéro du folio précédent&lt;/li&gt;&lt;li&gt;%{next-folio-num} : numéro du folio suivant&lt;/li&gt;&lt;li&gt;%{projecttitle} : titre du projet&lt;/li&gt;&lt;li&gt;%{projectpath} : chemin du projet&lt;/li&gt;&lt;li&gt;%{projectfilename} : nom du fichier&lt;/li&gt;&lt;li&gt;%{saveddate} : date d&apos;enregistrement du fichier format local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : date d&apos;enregistrement du fichier format dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : date d&apos;enregistrement du fichier format yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : heure d&apos;enregistrement du fichier&lt;/li&gt;&lt;li&gt;%{savedfilename} : nom du fichier enregistré&lt;/li&gt;&lt;li&gt;%{savedfilepath} : chemin du fichier enregistré&lt;/li&gt;&lt;/ul&gt;</source>
+    <target>Por defecto, las siguientes variables están disponibles:&lt;ul&gt;&lt;li&gt;%{author} : autor del folio&lt;/li&gt;&lt;li&gt;%{date} : fecha del folio&lt;/li&gt;&lt;li&gt;%{title} : título del folio&lt;/li&gt;&lt;li&gt;%{filename} : nombre de archivo del proyecto&lt;/li&gt;&lt;li&gt;%{plant} : nombre de la instalación (=) en la que se encuentra el folio&lt;/li&gt;&lt;li&gt;%{locmach} : nombre de la localización (+) en la que se encuentra el folio&lt;/li&gt;&lt;li&gt;%{indexrev} : índice de revisión del folio&lt;/li&gt;&lt;li&gt;%{version} : versión del software&lt;/li&gt;&lt;li&gt;%{folio} : número del folio&lt;/li&gt;&lt;li&gt;%{folio-id} : posición del folio en el proyecto&lt;/li&gt;&lt;li&gt;%{folio-total} : número total de folios en el proyecto&lt;/li&gt;&lt;li&gt;%{previous-folio-num} : número del folio anterior&lt;/li&gt;&lt;li&gt;%{next-folio-num} : número del folio siguiente&lt;/li&gt;&lt;li&gt;%{projecttitle} : título del proyecto&lt;/li&gt;&lt;li&gt;%{projectpath} : ruta del proyecto&lt;/li&gt;&lt;li&gt;%{projectfilename} : nombre del archivo&lt;/li&gt;&lt;li&gt;%{saveddate} : fecha de guardado del archivo en formato local&lt;/li&gt;&lt;li&gt;%{saveddate-eu} : fecha de guardado del archivo en formato dd-MM-yyyy&lt;/li&gt;&lt;li&gt;%{saveddate-us} : fecha de guardado del archivo en formato yyyy-MM-dd&lt;/li&gt;&lt;li&gt;%{savedtime} : hora de guardado del archivo&lt;/li&gt;&lt;li&gt;%{savedfilename} : nombre del archivo guardado&lt;/li&gt;&lt;li&gt;%{savedfilepath} : ruta del archivo guardado&lt;/li&gt;&lt;/ul&gt;</target>
+</phrase>
+<phrase>
+    <source>Parties</source>
+    <target>Partes</target>
+</phrase>
+<phrase>
+    <source>Paysage</source>
+    <target>Horizontal</target>
+</phrase>
+<phrase>
+    <source>Phase</source>
+    <target>Fase</target>
+</phrase>
+<phrase>
+    <source>Pink : DeepPink</source>
+    <target>Rosa : DeepPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : HotPink</source>
+    <target>Rosa : HotPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : LightPink</source>
+    <target>Rosa : LightPink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : MediumVioletRed</source>
+    <target>Rosa : MediumVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : PaleVioletRed</source>
+    <target>Rosa : PaleVioletRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pink : Pink</source>
+    <target>Rosa : Pink</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Pivote la sélection comme un groupe autour de son centre, au lieu de chaque élément sur place</source>
+    <target>Rota la selección como un grupo alrededor de su centro, en lugar de cada elemento en su sitio</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Pivoter la selection</source>
+    <target>Rotar la selección</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Pivoter le groupe</source>
+    <target>Rotar el grupo</target>
+</phrase>
+<phrase>
+    <source>pivoter/incliner</source>
+    <target>girar/inclinar</target>
+</phrase>
+<phrase>
+    <source>Pièces EPLAN (*.edz)</source>
+    <target>Piezas EPLAN (*.edz)</target>
+</phrase>
+<phrase>
+    <source>plan de bornes</source>
+    <target>plano de bornes</target>
+</phrase>
+<phrase>
+    <source>Point d&apos;ancrage du texte et alignement des lignes entre elles</source>
+    <target>Punto de anclaje del texto y alineación de las líneas entre sí</target>
+</phrase>
+<phrase>
+    <source>Point de pont</source>
+    <target>Punto de puente</target>
+</phrase>
+<phrase>
+    <source>Police</source>
+    <target>Fuente</target>
+</phrase>
+<phrase>
+    <source>Police :</source>
+    <target>Fuente :</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes</source>
+    <target>Fuente de los encabezados</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes de colonnes</source>
+    <target>Fuente de los encabezados de columna</target>
+</phrase>
+<phrase>
+    <source>Police des en-têtes: %1 %2pt</source>
+    <target>Fuente de los encabezados: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Police du texte</source>
+    <target>Fuente del texto</target>
+</phrase>
+<phrase>
+    <source>Police du texte des cellules</source>
+    <target>Fuente del texto de las celdas</target>
+</phrase>
+<phrase>
+    <source>Police du texte: %1 %2pt</source>
+    <target>Fuente del texto: %1 %2pt</target>
+</phrase>
+<phrase>
+    <source>Polices du projet</source>
+    <target>Fuentes del proyecto</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Ponter des bornes entre-elles</source>
+    <target>Puentes entre bornes</target>
+</phrase>
+<phrase>
+    <source>Ponter les bornes</source>
+    <target>Puentear las bornes</target>
+</phrase>
+<phrase>
+    <source>Position</source>
+    <target>Posición</target>
+</phrase>
+<phrase>
+    <source>Position automatique</source>
+    <target>Posición automática</target>
+</phrase>
+<phrase>
+    <source>Priorité des axes</source>
+    <target>Prioridad de los ejes</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe X (horizontal)</source>
+    <target>Prioridad al eje X (horizontal)</target>
+</phrase>
+<phrase>
+    <source>Priorité à l&apos;axe Y (vertical)</source>
+    <target>Prioridad al eje Y (vertical)</target>
+</phrase>
+<phrase>
+    <source>Prochaine valeur qui sera appliquée avec cet incrément</source>
+    <target>Próximo valor que se aplicará con este incremento</target>
+</phrase>
+<phrase>
+    <source>Profondeur</source>
+    <target>Profundidad</target>
+</phrase>
+<phrase>
+    <source>Projet sans titre</source>
+    <target>Proyecto sin título</target>
+</phrase>
+<phrase>
+    <source>Propriétés</source>
+    <target>Propiedades</target>
+</phrase>
+<phrase>
+    <source>Propriétés du texte</source>
+    <target>Propiedades del texto</target>
+</phrase>
+<phrase>
+    <source>Prévisualisation :</source>
+    <target>Vista previa :</target>
+</phrase>
+<phrase>
+    <source>Puissance</source>
+    <target>Potencia</target>
+</phrase>
+<phrase>
+    <source>Purple : BlueViolet</source>
+    <target>Púrpura : BlueViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkMagenta</source>
+    <target>Púrpura : DarkMagenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkOrchid</source>
+    <target>Púrpura : DarkOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkSlateBlue</source>
+    <target>Púrpura : DarkSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : DarkViolet</source>
+    <target>Púrpura : DarkViolet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Fuchsia</source>
+    <target>Púrpura : Fuchsia</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Indigo</source>
+    <target>Púrpura : Indigo</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Lavender</source>
+    <target>Púrpura : Lavender</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Magenta</source>
+    <target>Púrpura : Magenta</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumOrchid</source>
+    <target>Púrpura : MediumOrchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumPurple</source>
+    <target>Púrpura : MediumPurple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : MediumSlateBlue</source>
+    <target>Púrpura : MediumSlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Orchid</source>
+    <target>Púrpura : Orchid</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Plum</source>
+    <target>Púrpura : Plum</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Purple</source>
+    <target>Púrpura : Purple</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : SlateBlue</source>
+    <target>Púrpura : SlateBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Thistle</source>
+    <target>Púrpura : Thistle</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Purple : Violet</source>
+    <target>Púrpura : Violet</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>QElectroTech - Éditeur d&apos;élément</source>
+    <target>QElectroTech - Editor de elementos</target>
+</phrase>
+<phrase>
+    <source>QElectroTech ne s&apos;est pas fermé correctement lors de sa dernière exécution.
+Voici les derniers messages enregistrés avant l&apos;arrêt -- vous pouvez les enregistrer pour les joindre à un rapport de bug.</source>
+    <target>QElectroTech no se cerró correctamente durante su última ejecución.
+Estos son los últimos mensajes registrados antes del cierre; puede guardarlos para adjuntarlos a un informe de error.</target>
+</phrase>
+<phrase>
+    <source>QET_ElementScaler: 
+additional information about %1 import / scaling</source>
+    <target>QET_ElementScaler: 
+información adicional sobre la importación / escala de %1</target>
+</phrase>
+<phrase>
+    <source>Quantité</source>
+    <target>Cantidad</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 1</source>
+    <target>Cantidad auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 2</source>
+    <target>Cantidad auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 3</source>
+    <target>Cantidad auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Quantité auxiliaire 4</source>
+    <target>Cantidad auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Raccourci</source>
+    <target>Atajo</target>
+</phrase>
+<phrase>
+    <source>Raccourcis</source>
+    <target>Atajos</target>
+    <definition>configuration page title</definition>
+</phrase>
+<phrase>
+    <source>Rapport de diagnostic</source>
+    <target>Informe de diagnóstico</target>
+</phrase>
+<phrase>
+    <source>Rapport de plantage</source>
+    <target>Informe de fallo</target>
+</phrase>
+<phrase>
+    <source>Rayon X</source>
+    <target>Radio X</target>
+</phrase>
+<phrase>
+    <source>Rayon Y</source>
+    <target>Radio Y</target>
+</phrase>
+<phrase>
+    <source>Recharger</source>
+    <target>Recargar</target>
+</phrase>
+<phrase>
+    <source>Recharger les borniers</source>
+    <target>Recargar los borneros</target>
+</phrase>
+<phrase>
+    <source>Recherche</source>
+    <target>Búsqueda</target>
+</phrase>
+<phrase>
+    <source>Recherche et sélectionne rapidement un élément du folio</source>
+    <target>Busca y selecciona rápidamente un elemento del folio</target>
+    <definition>status bar tip</definition>
+</phrase>
+<phrase>
+    <source>Rechercher...</source>
+    <target>Buscar...</target>
+</phrase>
+<phrase>
+    <source>Red : Crimson</source>
+    <target>Rojo : Crimson</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkRed</source>
+    <target>Rojo : DarkRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : DarkSalmon</source>
+    <target>Rojo : DarkSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Firebrick</source>
+    <target>Rojo : Firebrick</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : IndianRed</source>
+    <target>Rojo : IndianRed</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightCoral</source>
+    <target>Rojo : LightCoral</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : LightSalmon</source>
+    <target>Rojo : LightSalmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Red</source>
+    <target>Rojo : Red</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Red : Salmon</source>
+    <target>Rojo : Salmon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>redimensionner</source>
+    <target>redimensionar</target>
+</phrase>
+<phrase>
+    <source>Redimensionner %1</source>
+    <target>Redimensionar %1</target>
+</phrase>
+<phrase>
+    <source>Redimensionner une image</source>
+    <target>Redimensionar una imagen</target>
+</phrase>
+<phrase>
+    <source>Remarque : les éléments maîtres ayant atteint leur nombre maximal d&apos;esclaves sont masqués.</source>
+    <target>Nota: los elementos maestros que han alcanzado su número máximo de esclavos están ocultos.</target>
+</phrase>
+<phrase>
+    <source>Remplacer l&apos;image...</source>
+    <target>Reemplazar la imagen...</target>
+</phrase>
+<phrase>
+    <source>Remplacer une image</source>
+    <target>Reemplazar una imagen</target>
+</phrase>
+<phrase>
+    <source>Reprendre du maître</source>
+    <target>Tomar del maestro</target>
+</phrase>
+<phrase>
+    <source>Requête</source>
+    <target>Consulta</target>
+</phrase>
+<phrase>
+    <source>Requête SQL :</source>
+    <target>Consulta SQL :</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions</source>
+    <target>Restaurar las proporciones</target>
+</phrase>
+<phrase>
+    <source>Restaurer les proportions d&apos;une image</source>
+    <target>Restaurar las proporciones de una imagen</target>
+</phrase>
+<phrase>
+    <source>Retirer cette couleur</source>
+    <target>Quitar este color</target>
+</phrase>
+<phrase>
+    <source>Retourner l&apos;élément :</source>
+    <target>Voltear el elemento:</target>
+</phrase>
+<phrase>
+    <source>Retourner la sélection</source>
+    <target>Voltear la selección</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Revenir à l&apos;image complète, sans rognage</source>
+    <target>Volver a la imagen completa, sin recorte</target>
+</phrase>
+<phrase>
+    <source>rgb(%1, %2, %3)</source>
+    <target>rgb(%1, %2, %3)</target>
+</phrase>
+<phrase>
+    <source>Right</source>
+    <target>Derecha</target>
+</phrase>
+<phrase>
+    <source>Rogner l&apos;image</source>
+    <target>Recortar la imagen</target>
+</phrase>
+<phrase>
+    <source>Rogner une image</source>
+    <target>Recortar una imagen</target>
+</phrase>
+<phrase>
+    <source>Rogner...</source>
+    <target>Recortar...</target>
+</phrase>
+<phrase>
+    <source>Rotation</source>
+    <target>Rotación</target>
+</phrase>
+<phrase>
+    <source>Rotation :</source>
+    <target>Rotación :</target>
+</phrase>
+<phrase>
+    <source>Rotation/Inclinaison</source>
+    <target>Rotación/Inclinación</target>
+</phrase>
+<phrase>
+    <source>Réf.</source>
+    <target>Ref.</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée</source>
+    <target>Referencia cruzada</target>
+</phrase>
+<phrase>
+    <source>Réf. croisée PLC</source>
+    <target>Ref. cruzada PLC</target>
+</phrase>
+<phrase>
+    <source>Référence croisé</source>
+    <target>Referencia cruzada</target>
+</phrase>
+<phrase>
+    <source>Référence croisée</source>
+    <target>Referencia cruzada</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser</source>
+    <target>Restablecer</target>
+    <definition>button label</definition>
+</phrase>
+<phrase>
+    <source>Réinitialiser ce raccourci</source>
+    <target>Restablecer este atajo</target>
+</phrase>
+<phrase>
+    <source>Réinitialiser à la valeur de départ</source>
+    <target>Restablecer al valor inicial</target>
+</phrase>
+<phrase>
+    <source>Répertoire des Macros utilisateur</source>
+    <target>Directorio de las macros de usuario</target>
+</phrase>
+<phrase>
+    <source>Résolution :</source>
+    <target>Resolución:</target>
+</phrase>
+<phrase>
+    <source>sans</source>
+    <target>sin</target>
+</phrase>
+<phrase>
+    <source>sans_nom</source>
+    <target>sin_nombre</target>
+</phrase>
+<phrase>
+    <source>Saut %1 après:</source>
+    <target>Salto %1 después de:</target>
+</phrase>
+<phrase>
+    <source>Section du conducteur</source>
+    <target>Sección del conductor</target>
+</phrase>
+<phrase>
+    <source>Section du fil</source>
+    <target>Sección del hilo</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Sectionable</source>
+    <target>Seccionable</target>
+    <definition>sectional terminal element type</definition>
+</phrase>
+<phrase>
+    <source>Sectionnable</source>
+    <target>Seccionable</target>
+</phrase>
+<phrase>
+    <source>See details here:</source>
+    <target>Ver detalles aquí:</target>
+</phrase>
+<phrase>
+    <source>Selectionner une image...</source>
+    <target>Seleccionar una imagen...</target>
+</phrase>
+<phrase>
+    <source>Simple</source>
+    <target>Simple</target>
+</phrase>
+<phrase>
+    <source>Sortie analogique</source>
+    <target>Salida analógica</target>
+</phrase>
+<phrase>
+    <source>Sortie digitale</source>
+    <target>Salida digital</target>
+</phrase>
+<phrase>
+    <source>Sortie universelle</source>
+    <target>Salida universal</target>
+</phrase>
+<phrase>
+    <source>Souhaitez-vous créer une copie de sauvegarde ?</source>
+    <target>¿Desea crear una copia de seguridad?</target>
+    <definition>dialog message</definition>
+</phrase>
+<phrase>
+    <source>Sous-type</source>
+    <target>Subtipo</target>
+</phrase>
+<phrase>
+    <source>Soutenir le projet par un don</source>
+    <target>Apoyar el proyecto con una donación</target>
+</phrase>
+<phrase>
+    <source>Soutenir le projet QElectroTech par un don</source>
+    <target>Apoyar el proyecto QElectroTech con una donación</target>
+</phrase>
+<phrase>
+    <source>Style :</source>
+    <target>Estilo :</target>
+</phrase>
+<phrase>
+    <source>Suivant</source>
+    <target>Siguiente</target>
+</phrase>
+<phrase>
+    <source>Suivre le temps passé sur ce projet (uniquement enregistré localement dans ce fichier)</source>
+    <target>Registrar el tiempo dedicado a este proyecto (solo se guarda localmente en este archivo)</target>
+    <definition>checkbox label</definition>
+</phrase>
+<phrase>
+    <source>Suppression de borne impossible</source>
+    <target>Supresión de borne imposible</target>
+</phrase>
+<phrase>
+    <source>Supprimer</source>
+    <target>Eliminar</target>
+</phrase>
+<phrase>
+    <source>Supprimer %1 folios</source>
+    <target>Suprimir %1 folios</target>
+</phrase>
+<phrase>
+    <source>Supprimer cette propriété</source>
+    <target>Eliminar esta propiedad</target>
+</phrase>
+<phrase>
+    <source>Supprimer des ponts de bornes</source>
+    <target>Eliminar los puentes de bornes</target>
+</phrase>
+<phrase>
+    <source>Supprimer le bornier</source>
+    <target>Eliminar el bomer</target>
+</phrase>
+<phrase>
+    <source>Supprimer le bornier du projet</source>
+    <target>Eliminar el bomer del proyecto</target>
+</phrase>
+<phrase>
+    <source>Supprimer le nœud le plus proche</source>
+    <target>Eliminar el nodo más cercano</target>
+</phrase>
+<phrase>
+    <source>Supprimer les folios</source>
+    <target>Suprimir los folios</target>
+</phrase>
+<phrase>
+    <source>Supprimer un folio</source>
+    <target>Eliminar un folio</target>
+    <definition>undo command text</definition>
+</phrase>
+<phrase>
+    <source>Supprimer un groupe de bornes</source>
+    <target>Eliminar un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Supprimer un point d&apos;une courbe</source>
+    <target>Eliminar un punto de una curva</target>
+</phrase>
+<phrase>
+    <source>Suédois</source>
+    <target>Sueco</target>
+</phrase>
+<phrase>
+    <source>Symétrique</source>
+    <target>Simétrico</target>
+</phrase>
+<phrase>
+    <source>Système de contacts modifié</source>
+    <target>Sistema de contactos modificado</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les conducteurs de ce folio</source>
+    <target>Seleccionar los conductores de este folio</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les textes de ce folio</source>
+    <target>Seleccionar los textos de este folio</target>
+</phrase>
+<phrase>
+    <source>Sélectionner les éléments de ce folio</source>
+    <target>Seleccionar los elementos de este folio</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un fichier PDF...</source>
+    <target>Seleccionar un archivo PDF...</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un groupe de contacts</source>
+    <target>Seleccionar un grupo de contactos</target>
+</phrase>
+<phrase>
+    <source>Sélectionner un IO PLC</source>
+    <target>Seleccionar una E/S de PLC</target>
+</phrase>
+<phrase>
+    <source>Sélectionner une page</source>
+    <target>Seleccionar una página</target>
+</phrase>
+<phrase>
+    <source>Sélectionnez le groupe de contacts à assigner à cet élément esclave :</source>
+    <target>Seleccione el grupo de contactos que se asignará a este elemento esclavo:</target>
+</phrase>
+<phrase>
+    <source>Séparation de potentiel</source>
+    <target>Separación de potencial</target>
+</phrase>
+<phrase>
+    <source>T%1</source>
+    <target>T%1</target>
+</phrase>
+<phrase>
+    <source>T1</source>
+    <target>T1</target>
+</phrase>
+<phrase>
+    <source>Table PLC</source>
+    <target>Tabla PLC</target>
+</phrase>
+<phrase>
+    <source>Table PLC (vide)</source>
+    <target>Tabla PLC (vacía)</target>
+</phrase>
+<phrase>
+    <source>Taille</source>
+    <target>Tamaño</target>
+</phrase>
+<phrase>
+    <source>Taille :</source>
+    <target>Tamaño :</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de Diagram-Editor : 1 - 5</source>
+    <target>Tamaño de los puntos de la cuadrícula del editor de esquemas: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Taille des points de la grille de l&apos;éditeur d&apos;éléments : 1 - 5</source>
+    <target>Tamaño de los puntos de la cuadrícula del editor de elementos: 1 - 5</target>
+</phrase>
+<phrase>
+    <source>Temporisé repos</source>
+    <target>Temporizado al reposo</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail</source>
+    <target>Temporizado al trabajo</target>
+</phrase>
+<phrase>
+    <source>Temporisé travail &amp; repos</source>
+    <target>Temporizado trabajo y reposo</target>
+</phrase>
+<phrase>
+    <source>Temps passé sur ce projet :</source>
+    <target>Tiempo dedicado a este proyecto:</target>
+    <definition>label when configuring</definition>
+</phrase>
+<phrase>
+    <source>Tension / Protocole</source>
+    <target>Tensión / Protocolo</target>
+    <definition>Wiring list CSV header</definition>
+</phrase>
+<phrase>
+    <source>Tension nominale</source>
+    <target>Tensión nominal</target>
+</phrase>
+<phrase>
+    <source>Terre</source>
+    <target>Tierra</target>
+</phrase>
+<phrase>
+    <source>Text alignment</source>
+    <target>Alineación del texto</target>
+</phrase>
+<phrase>
+    <source>Texte borne</source>
+    <target>Texto de borne</target>
+</phrase>
+<phrase>
+    <source>Texte d&apos;en tête</source>
+    <target>Texto de encabezado</target>
+</phrase>
+<phrase>
+    <source>This .edz is a zip-format package, which is not yet supported (only 7-Zip .edz files can be imported).</source>
+    <target>Este .edz es un paquete en formato zip, que aún no es compatible (solo se pueden importar archivos .edz de 7-Zip).</target>
+</phrase>
+<phrase>
+    <source>this is an error in the code</source>
+    <target>esto es un error en el código</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit  :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Install, if required, python 3.11 bundle only, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Run Profile.command script&lt;br&gt;because program use hardcoded PATH for localise qet-tb-generator plugin &lt;br&gt; Visit :&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>Para instalar el complemento qet_tb_generator&lt;br&gt;Visite:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Primera instalación en macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. Instale, si es necesario, solo el paquete de python 3.11, &lt;a href=&apos;https://www.python.org/ftp/python/3.11.2/python-3.11.2-macos11.pkg&apos;&gt;python-3.11.2-macos11.pkg&lt;/a&gt;&lt;br&gt;2 Ejecute el script Profile.command&lt;br&gt;porque el programa usa una PATH codificada para localizar el complemento qet-tb-generator &lt;br&gt; Visite:&lt;br&gt;&lt;a href=&apos;https://qelectrotech.org/forum/viewtopic.php?pid=5674#p5674&apos;&gt;howto&lt;/a&gt;&lt;br&gt;2. pip3 install qet_tb_generator&lt;br&gt;&lt;B&gt;&lt;U&gt; Actualización en macOSX&lt;/B&gt;&lt;/U&gt;&lt;br&gt; pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>To install the plugin qet_tb_generator&lt;br&gt;Visit :&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requires python 3.5 or above.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; First install on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. check you have pip3 installed: pip3 --version&lt;br&gt;If not install with: sudo apt-get install python3-pip&lt;br&gt;2. Install the program: sudo pip3 install qet_tb_generator&lt;br&gt;3. Run the program: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Update on Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</source>
+    <target>Para instalar el complemento qet_tb_generator&lt;br&gt;Visite:&lt;br&gt;&lt;a href=&apos;https://pypi.python.org/pypi/qet-tb-generator&apos;&gt;qet-tb-generator&lt;/a&gt;&lt;br&gt;&lt;br&gt;Requiere python 3.5 o superior.&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Primera instalación en Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;1. compruebe que tiene pip3 instalado: pip3 --version&lt;br&gt;Si no, instálelo con: sudo apt-get install python3-pip&lt;br&gt;2. Instale el programa: sudo pip3 install qet_tb_generator&lt;br&gt;3. Ejecute el programa: qet_tb_generator&lt;br&gt;&lt;br&gt;&lt;B&gt;&lt;U&gt; Actualización en Linux&lt;/B&gt;&lt;/U&gt;&lt;br&gt;sudo pip3 install --upgrade qet_tb_generator&lt;br&gt;</target>
+</phrase>
+<phrase>
+    <source>Tolérance pour cette couleur</source>
+    <target>Tolerancia para este color</target>
+</phrase>
+<phrase>
+    <source>toolBar</source>
+    <target>toolBar</target>
+</phrase>
+<phrase>
+    <source>Top</source>
+    <target>Arriba</target>
+</phrase>
+<phrase>
+    <source>Tourner autour de son propre centre</source>
+    <target>Girar alrededor de su propio centro</target>
+</phrase>
+<phrase>
+    <source>Tous</source>
+    <target>Todos</target>
+</phrase>
+<phrase>
+    <source>Tous les fichiers (*)</source>
+    <target>Todos los archivos (*)</target>
+</phrase>
+<phrase>
+    <source>Tout réinitialiser</source>
+    <target>Restablecer todo</target>
+</phrase>
+<phrase>
+    <source>Traduction en coréen</source>
+    <target>Traducción al coreano</target>
+</phrase>
+<phrase>
+    <source>Transformer %1</source>
+    <target>Transformar %1</target>
+</phrase>
+<phrase>
+    <source>Transparence non conservée</source>
+    <target>Transparencia no conservada</target>
+</phrase>
+<phrase>
+    <source>Trier le bornier %1</source>
+    <target>Ordenar el bornier %1</target>
+</phrase>
+<phrase>
+    <source>Trop de primitives, liste non générée: %1</source>
+    <target>Demasiadas primitivas, lista no generada: %1</target>
+</phrase>
+<phrase>
+    <source>Type</source>
+    <target>Tipo</target>
+</phrase>
+<phrase>
+    <source>Type :</source>
+    <target>Tipo :</target>
+</phrase>
+<phrase>
+    <source>Type de numérotation</source>
+    <target>Tipo de numeración</target>
+</phrase>
+<phrase>
+    <source>Type PLC</source>
+    <target>Tipo PLC</target>
+</phrase>
+<phrase>
+    <source>Télechargement</source>
+    <target>Descarga</target>
+</phrase>
+<phrase>
+    <source>un arc</source>
+    <target>un arco</target>
+</phrase>
+<phrase>
+    <source>un coin</source>
+    <target>una esquina</target>
+</phrase>
+<phrase>
+    <source>un element graphique</source>
+    <target>un elemento gráfico</target>
+</phrase>
+<phrase>
+    <source>Un fichier</source>
+    <target>Un archivo</target>
+</phrase>
+<phrase>
+    <source>un point</source>
+    <target>un punto</target>
+</phrase>
+<phrase>
+    <source>Un élément</source>
+    <target>Un elemento</target>
+</phrase>
+<phrase>
+    <source>une courbe</source>
+    <target>una curva</target>
+</phrase>
+<phrase>
+    <source>Une erreur est survenue lors de l&apos;écriture du fichier %1, erreur %2 rencontrée.</source>
+    <target>Se ha producido un error al escribir el archivo %1, error %2 encontrado.</target>
+    <definition>error message when attempting to write an XML file</definition>
+</phrase>
+<phrase>
+    <source>une extrémité</source>
+    <target>un extremo</target>
+</phrase>
+<phrase>
+    <source>une image</source>
+    <target>una imagen</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Unité</source>
+    <target>Unidad</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 1</source>
+    <target>Unidad auxiliar 1</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 2</source>
+    <target>Unidad auxiliar 2</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 3</source>
+    <target>Unidad auxiliar 3</target>
+</phrase>
+<phrase>
+    <source>Unité auxiliaire 4</source>
+    <target>Unidad auxiliar 4</target>
+</phrase>
+<phrase>
+    <source>Valeur</source>
+    <target>Valor</target>
+</phrase>
+<phrase>
+    <source>Valeur actuelle du compteur. Saisir une nouvelle valeur et valider pour la modifier.</source>
+    <target>Valor actual del contador. Introduzca un nuevo valor y valide para modificarlo.</target>
+</phrase>
+<phrase>
+    <source>Valeur à laquelle ce chiffre revient à 0 en incrémentant le chiffre précédent (0 = pas de cycle)</source>
+    <target>Valor al que este dígito vuelve a 0 al incrementar el dígito anterior (0 = sin ciclo)</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la numérotation automatique</source>
+    <target>Bloquear la numeración automática</target>
+</phrase>
+<phrase>
+    <source>Verrouiller la position</source>
+    <target>Bloquear la posición</target>
+</phrase>
+<phrase>
+    <source>Verrouillé : modifier la largeur ou la hauteur ajuste l&apos;autre pour conserver les proportions. Cliquer pour déverrouiller.</source>
+    <target>Bloqueado: modificar la anchura o la altura ajusta la otra para conservar las proporciones. Haga clic para desbloquear.</target>
+</phrase>
+<phrase>
+    <source>vers le groupe de bornes %1</source>
+    <target>al grupo de bornes %1</target>
+</phrase>
+<phrase>
+    <source>vers un groupe de bornes</source>
+    <target>a un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Vertical</source>
+    <target>Vertical</target>
+</phrase>
+<phrase>
+    <source>Visible</source>
+    <target>Visible</target>
+</phrase>
+<phrase>
+    <source>Voir cet élément</source>
+    <target>Ver este elemento</target>
+</phrase>
+<phrase>
+    <source>White : AliceBlue</source>
+    <target>Blanco : AliceBlue</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : AntiqueWhite</source>
+    <target>Blanco : AntiqueWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Azure</source>
+    <target>Blanco : Azure</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Beige</source>
+    <target>Blanco : Beige</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : FloralWhite</source>
+    <target>Blanco : FloralWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : GhostWhite</source>
+    <target>Blanco : GhostWhite</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Honeydew</source>
+    <target>Blanco : Honeydew</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Ivory</source>
+    <target>Blanco : Ivory</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : LavenderBlush</source>
+    <target>Blanco : LavenderBlush</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Linen</source>
+    <target>Blanco : Linen</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MintCream</source>
+    <target>Blanco : MintCream</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : MistyRose</source>
+    <target>Blanco : MistyRose</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : OldLace</source>
+    <target>Blanco : OldLace</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Seashell</source>
+    <target>Blanco : Seashell</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : Snow</source>
+    <target>Blanco : Snow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : White</source>
+    <target>Blanco : White</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>White : WhiteSmoke</source>
+    <target>Blanco : WhiteSmoke</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>x :</source>
+    <target>x :</target>
+</phrase>
+<phrase>
+    <source>X1 :</source>
+    <target>X1:</target>
+</phrase>
+<phrase>
+    <source>X2 :</source>
+    <target>X2:</target>
+</phrase>
+<phrase>
+    <source>X: %1  Y: %2</source>
+    <target>X: %1  Y: %2</target>
+</phrase>
+<phrase>
+    <source>XRef slave position</source>
+    <target>Posición del esclavo XRef</target>
+</phrase>
+<phrase>
+    <source>y :</source>
+    <target>y :</target>
+</phrase>
+<phrase>
+    <source>Y1 :</source>
+    <target>Y1:</target>
+</phrase>
+<phrase>
+    <source>Y2 :</source>
+    <target>Y2:</target>
+</phrase>
+<phrase>
+    <source>Yellow : DarkKhaki</source>
+    <target>Amarillo : DarkKhaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Gold</source>
+    <target>Amarillo : Gold</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Khaki</source>
+    <target>Amarillo : Khaki</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LemonChiffon</source>
+    <target>Amarillo : LemonChiffon</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightGoldenrodYellow</source>
+    <target>Amarillo : LightGoldenrodYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : LightYellow</source>
+    <target>Amarillo : LightYellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Moccasin</source>
+    <target>Amarillo : Moccasin</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PaleGoldenrod</source>
+    <target>Amarillo : PaleGoldenrod</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PapayaWhip</source>
+    <target>Amarillo : PapayaWhip</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : PeachPuff</source>
+    <target>Amarillo : PeachPuff</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>Yellow : Yellow</source>
+    <target>Amarillo : Yellow</target>
+    <definition>element part filling</definition>
+</phrase>
+<phrase>
+    <source>°</source>
+    <target>°</target>
+</phrase>
+<phrase>
+    <source>À &amp;propos de QElectroTech</source>
+    <target>Acerca &amp;de QElectroTech</target>
+</phrase>
+<phrase>
+    <source>À propos de &amp;Qt</source>
+    <target>Acerca de &amp;Qt</target>
+</phrase>
+<phrase>
+    <source>à un groupe de bornes</source>
+    <target>a un grupo de bornes</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;enregistrement</source>
+    <target>Error al guardar</target>
+</phrase>
+<phrase>
+    <source>Échec de l&apos;export</source>
+    <target>Fallo en la exportación</target>
+</phrase>
+<phrase>
+    <source>Écraser le template ?</source>
+    <target>¿Sobrescribir la plantilla?</target>
+    <definition>message box title</definition>
+</phrase>
+<phrase>
+    <source>Éditeur d&apos;élément</source>
+    <target>Editor de elementos</target>
+</phrase>
+<phrase>
+    <source>Éditeur de cartouche</source>
+    <target>Editor de cartucho</target>
+</phrase>
+<phrase>
+    <source>Éditeur de schémas</source>
+    <target>Editor de esquemas</target>
+</phrase>
+<phrase>
+    <source>Éditeur de texte</source>
+    <target>Editor de texto</target>
+</phrase>
+<phrase>
+    <source>Édition des nœuds</source>
+    <target>Edición de nodos</target>
+</phrase>
+<phrase>
+    <source>Élément</source>
+    <target>Elemento</target>
+</phrase>
+<phrase>
+    <source>Éléments QElectroTech (*.elmt)</source>
+    <target>Elementos QElectroTech (*.elmt)</target>
+</phrase>
+<phrase>
+    <source>Épaisseur :</source>
+    <target>Espesor :</target>
+</phrase>
+<phrase>
+    <source>Étage</source>
+    <target>Piso</target>
+</phrase>
+<phrase>
+    <source>Étage :</source>
+    <target>Piso :</target>
+</phrase>
+<phrase>
+    <source>Étiquette du maître</source>
+    <target>Etiqueta del maestro</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio ?</source>
+    <target>¿Está seguro de que desea suprimir este folio?</target>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer ce folio du projet ?</source>
+    <target>¿Está seguro de que desea eliminar este folio del proyecto?</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>Êtes-vous sûr de vouloir supprimer les %1 folios sélectionnés ?</source>
+    <target>¿Está seguro de que desea suprimir los %1 folios seleccionados?</target>
+</phrase>
+<phrase>
+    <source>armoire</source>
+    <target>armario</target>
+    <definition>cabinet / enclosure</definition>
+</phrase>
+<phrase>
+    <source>bobine</source>
+    <target>bobina</target>
+    <definition>coil</definition>
+</phrase>
+<phrase>
+    <source>borne</source>
+    <target>borne</target>
+    <definition>terminal - a connection point on a symbol</definition>
+</phrase>
+<phrase>
+    <source>bornier</source>
+    <target>regleta de bornes</target>
+    <definition>terminal strip</definition>
+</phrase>
+<phrase>
+    <source>cable</source>
+    <target>cable</target>
+    <definition>cable</definition>
+</phrase>
+<phrase>
+    <source>calibre</source>
+    <target>calibre</target>
+    <definition>rating - the current rating of a device</definition>
+</phrase>
+<phrase>
+    <source>cartouche</source>
+    <target>cajetín</target>
+    <definition>title block - the framed information panel</definition>
+</phrase>
+<phrase>
+    <source>collection</source>
+    <target>colección</target>
+    <definition>collection - the symbol library</definition>
+</phrase>
+<phrase>
+    <source>conducteur</source>
+    <target>conductor</target>
+    <definition>conductor - the drawn wire between terminals</definition>
+</phrase>
+<phrase>
+    <source>contacteur</source>
+    <target>contactor</target>
+    <definition>contactor</definition>
+</phrase>
+<phrase>
+    <source>courant</source>
+    <target>corriente</target>
+    <definition>current</definition>
+</phrase>
+<phrase>
+    <source>disjoncteur</source>
+    <target>disyuntor</target>
+    <definition>circuit breaker</definition>
+</phrase>
+<phrase>
+    <source>dossier</source>
+    <target>carpeta</target>
+    <definition>folder</definition>
+</phrase>
+<phrase>
+    <source>element</source>
+    <target>elemento</target>
+    <definition>element - a symbol placed on a sheet</definition>
+</phrase>
+<phrase>
+    <source>esclave</source>
+    <target>esclavo</target>
+    <definition>slave - the contact block belonging to a master</definition>
+</phrase>
+<phrase>
+    <source>grille</source>
+    <target>cuadrícula</target>
+    <definition>grid</definition>
+</phrase>
+<phrase>
+    <source>interrupteur</source>
+    <target>interruptor</target>
+    <definition>switch</definition>
+</phrase>
+<phrase>
+    <source>maitre</source>
+    <target>maestro</target>
+    <definition>master - the element a cross-reference points from</definition>
+</phrase>
+<phrase>
+    <source>modele</source>
+    <target>plantilla</target>
+    <definition>template</definition>
+</phrase>
+<phrase>
+    <source>moteur</source>
+    <target>motor</target>
+    <definition>motor</definition>
+</phrase>
+<phrase>
+    <source>nomenclature</source>
+    <target>lista de materiales</target>
+    <definition>parts list / bill of materials</definition>
+</phrase>
+<phrase>
+    <source>numerotation</source>
+    <target>numeración</target>
+    <definition>numbering - automatic wire and part numbering</definition>
+</phrase>
+<phrase>
+    <source>potentiel</source>
+    <target>potencial</target>
+    <definition>potential - conductors electrically joined as one node</definition>
+</phrase>
+<phrase>
+    <source>projet</source>
+    <target>proyecto</target>
+    <definition>project - the .qet file holding the sheets</definition>
+</phrase>
+<phrase>
+    <source>relais</source>
+    <target>relé</target>
+    <definition>relay</definition>
+</phrase>
+<phrase>
+    <source>renvoi de folio</source>
+    <target>referencia de plano</target>
+    <definition>sheet cross-reference</definition>
+</phrase>
+<phrase>
+    <source>repere</source>
+    <target>designación</target>
+    <definition>designation - the identifying mark on a part</definition>
+</phrase>
+<phrase>
+    <source>report de folio</source>
+    <target>referencia de plano</target>
+    <definition>sheet cross-reference (the arrow symbol)</definition>
+</phrase>
+<phrase>
+    <source>schema</source>
+    <target>esquema</target>
+    <definition>diagram</definition>
+</phrase>
+<phrase>
+    <source>section</source>
+    <target>sección</target>
+    <definition>cross-section - conductor size in mm2</definition>
+</phrase>
+<phrase>
+    <source>sommaire</source>
+    <target>índice</target>
+    <definition>summary / table of contents</definition>
+</phrase>
+<phrase>
+    <source>tension</source>
+    <target>tensión</target>
+    <definition>voltage</definition>
+</phrase>
+<phrase>
+    <source>texte</source>
+    <target>texto</target>
+    <definition>text</definition>
+</phrase>
+<phrase>
+    <source>transformateur</source>
+    <target>transformador</target>
+    <definition>transformer</definition>
+</phrase>
+</QPH>

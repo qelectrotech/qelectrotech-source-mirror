@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementinfowidget.h"
+#include "../qet.h"
 #include <QCheckBox>
 #include <QPushButton>
 #include "../diagram.h"
@@ -204,6 +205,14 @@ void ElementInfoWidget::buildInterface()
 		keys = QETInformation::elementInfoKeys();
 	}
 
+		//"exclude_from_bom" is part of elementInfoKeys() because the project
+		//database builds the element_info table from that list, but it is not
+		//a free-text property: it already has its own check box below. Without
+		//this it also gets a generic edit row, and since translatedInfoKey()
+		//has no entry for it that row carries no label at all - an anonymous
+		//line that currentInfo() then fills with "true"/"false".
+	keys.removeAll(QStringLiteral("exclude_from_bom"));
+
 	for (auto str : keys)
 	{
 		ElementInfoPartWidget *eipw = new ElementInfoPartWidget(str, QETInformation::translatedInfoKey(str), this);
@@ -358,18 +367,18 @@ void ElementInfoWidget::updateUi()
 	// Load the lock status for auto numbering
 	if (m_element->elementData().m_type == ElementData::Terminal) {
 		QString lock_value = element_info.value(QStringLiteral("auto_num_locked")).toString();
-		ui->m_auto_num_locked_cb->setChecked(lock_value == QLatin1String("true"));
+		ui->m_auto_num_locked_cb->setChecked(QET::infoFlagIsTrue(lock_value));
 
 		// English: Load the potential isolating status from the element information mapping
 		if (m_potential_isolating_cb) {
 			QString isolating_value = element_info.value(QStringLiteral("potential_isolating")).toString();
-			m_potential_isolating_cb->setChecked(isolating_value == QLatin1String("true"));
+			m_potential_isolating_cb->setChecked(QET::infoFlagIsTrue(isolating_value));
 		}
 	}
 	// English: Load the BOM exclusion status from the element information mapping
 	if (m_exclude_from_bom_cb) {
 		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
-		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
+		m_exclude_from_bom_cb->setChecked(QET::infoFlagIsTrue(exclude_bom_value));
 	}
 
 	if (m_live_edit) {
@@ -387,6 +396,9 @@ DiagramContext ElementInfoWidget::currentInfo() const
 
 	for (const auto &eipw : std::as_const(m_eipw_list))
 	{
+		if (!eipw->hasAcceptableInput())
+			continue;
+
 		//add value only if they're something to store
 		if (!eipw->text().isEmpty())
 		{
