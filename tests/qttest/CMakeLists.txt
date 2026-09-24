@@ -170,6 +170,17 @@ add_test(NAME tst_scriptingsetting COMMAND tst_scriptingsetting)
 target_include_directories(tst_scriptingsetting PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_scriptingsetting PRIVATE Qt::Test Qt::Gui)
 
+# QetSettings::sheetBackground() -- the sheet (folio) background the diagram
+# editor remembers between runs. Compiles qetsettings.cpp alone for the same
+# reason as the test above; Qt::Gui because the pair carries a QColor.
+add_executable(
+  tst_sheetbackgroundsetting
+  tst_sheetbackgroundsetting.cpp
+  ${QET_DIR}/sources/utils/qetsettings.cpp)
+add_test(NAME tst_sheetbackgroundsetting COMMAND tst_sheetbackgroundsetting)
+target_include_directories(tst_sheetbackgroundsetting PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_sheetbackgroundsetting PRIVATE Qt::Test Qt::Gui)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately

@@ -22,6 +22,8 @@
 #include "logging/eventloopwatchdog.h"
 #include "logging/qetlogger.h"
 #include "machine_info.h"
+#include "diagram.h"
+#include "palettegraphicsview.h"
 #include "qet.h"
 #include "qetapp.h"
 #include "qetmessagebox.h"
@@ -142,6 +144,22 @@ int main(int argc, char **argv)
 			return QetScripting::run(script_app.arguments());
 		}
 #endif
+	}
+
+	// Re-apply the sheet background last picked in the diagram editor, so
+	// every project opened from here on -- existing or new, whichever one
+	// it is -- draws that background instead of the built-in default that
+	// would otherwise force the user to pick it again after each start.
+	//
+	// Done here rather than in main()'s first lines on purpose: the
+	// headless export and scripting runs above return before reaching
+	// this point and must keep rendering on plain white. It also has to
+	// happen before QETApp is constructed below, since that constructor
+	// already loads the projects given on the command line.
+	{
+		const QetSettings::SheetBackground sheet_background = QetSettings::sheetBackground();
+		PaletteGraphicsView::setCustomBackgroundColor(sheet_background.custom);
+		Diagram::background_color = sheet_background.color;
 	}
 
 	// Resolve the logger's state (log directory, session filename, open

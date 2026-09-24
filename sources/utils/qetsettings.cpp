@@ -152,4 +152,67 @@ namespace QetSettings
 		QSettings settings;
 		settings.setValue("scripting/enabled", enabled);
 	}
+
+	/**
+	* @brief setSheetBackground
+	* Store the sheet background last picked in the diagram editor, so the
+	* next start opens on it for every project, old or new. @sa sheetBackground
+	* @param background
+	*/
+	void setSheetBackground(const SheetBackground &background)
+	{
+		QSettings settings;
+		//HexRgb, not HexArgb, on purpose: Diagram::background_color is
+		//temporarily given an alpha of 0 by the SVG export to make the
+		//background transparent, and that transient value must never end
+		//up here as a stored transparent sheet.
+		settings.setValue(QStringLiteral("diagrameditor/sheet_background_color"),
+				  background.color.name(QColor::HexRgb));
+		settings.setValue(QStringLiteral("diagrameditor/sheet_background_custom"),
+				  background.custom);
+	}
+
+	/**
+	* @brief sheetBackground
+	* @return the sheet background stored by setSheetBackground(), or the
+	* built-in default (white, following the system) when there is none.
+	* @sa setSheetBackground
+	*/
+	SheetBackground sheetBackground()
+	{
+		QSettings settings;
+		SheetBackground background;
+		background.custom = settings.value(
+				QStringLiteral("diagrameditor/sheet_background_custom"),
+				false).toBool();
+		const QColor stored(settings.value(
+				QStringLiteral("diagrameditor/sheet_background_color"),
+				QStringLiteral("#ffffff")).toString());
+		background.color = stored.isValid() ? stored : QColor(Qt::white);
+		return background;
+	}
+
+	/**
+	* @brief sheetBackgroundRecentColors
+	* @return the "recently used" sheet background colours, most recent
+	* first. Empty until the user has picked a non-preset colour.
+	* @sa setSheetBackgroundRecentColors
+	*/
+	QStringList sheetBackgroundRecentColors()
+	{
+		QSettings settings;
+		return settings.value(QStringLiteral("diagrameditor/sheet_background_recent")).toStringList();
+	}
+
+	/**
+	* @brief setSheetBackgroundRecentColors
+	* Store the "recently used" sheet background colours, most recent first.
+	* @sa sheetBackgroundRecentColors
+	* @param colors
+	*/
+	void setSheetBackgroundRecentColors(const QStringList &colors)
+	{
+		QSettings settings;
+		settings.setValue(QStringLiteral("diagrameditor/sheet_background_recent"), colors);
+	}
 }

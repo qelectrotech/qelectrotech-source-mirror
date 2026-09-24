@@ -19,6 +19,8 @@
 #define QETSETTINGS_H
 
 #include <Qt>
+#include <QColor>
+#include <QStringList>
 
 /**
  *Interface to use QSettings in QElectroTech
@@ -36,6 +38,28 @@ namespace QetSettings
 	bool scriptingEnabled();
 	void setScriptingEnabled(bool enabled);
 	bool scriptingForcedByEnvironment();
+
+	/**
+		@brief The sheet (folio) background the diagram editors draw.
+
+		Both halves are needed, not just the colour: with custom == false
+		the sheet follows the system ("Couleur systeme") and the views are
+		free to invert the lightness on a dark palette, while the very same
+		#ffffff with custom == true is an explicit "always white" that
+		must not be inverted. Storing only the colour would collapse the
+		two on the next start.
+	*/
+	struct SheetBackground
+	{
+		QColor color;
+		bool custom = false;
+	};
+
+	SheetBackground sheetBackground();
+	void setSheetBackground(const SheetBackground &background);
+
+	QStringList sheetBackgroundRecentColors();
+	void setSheetBackgroundRecentColors(const QStringList &colors);
 }
 
 #endif // QETSETTINGS_H
