@@ -36,6 +36,7 @@ include(cmake/git_update_submodules.cmake)
 include(cmake/git_last_commit_sha.cmake)
 include(cmake/fetch_singleapplication.cmake)
 include(cmake/fetch_pugixml.cmake)
+include(cmake/find_spacemouse.cmake)
 include(cmake/qet_compilation_vars.cmake)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -169,6 +170,12 @@ else()
     )
 endif()
 
+if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
+    list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::SPNAV)
+endif()
+# A future Windows/macOS (3DxWare) backend would list.APPEND its own SDK
+# libraries here, behind its own *_ENABLED guard, alongside this one.
+
 if(APPLE)
     # CFBundleIdentifier must not be empty. CMake's default Info.plist
     # template fills it from MACOSX_BUNDLE_GUI_IDENTIFIER; with that unset
@@ -287,6 +294,7 @@ target_link_libraries(
     SQLite3::SQLite3
     ${KF_PRIVATE_LIBRARIES}
     ${QET_PRIVATE_LIBRARIES}
+    ${QET_SPACEMOUSE_LIBRARIES}
 )
 
 target_include_directories(
