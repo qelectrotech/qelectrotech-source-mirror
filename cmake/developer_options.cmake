@@ -48,7 +48,7 @@ option(BUILD_WITH_KF "Build with KDE Frameworks" ON)
 # strict behaviour, and only developers who opt in trade that for the speed.
 option(QET_ENABLE_PCH "Use precompiled headers (developer build speed; may mask missing #includes)" OFF)
 
-# Phase 1 (Linux, libspnav) of discussion #599: 3Dconnexion SpaceMouse/
-# SpacePilot pan/zoom support. Off by default -- see cmake/find_spacemouse.cmake
-# for what happens when it is on but libspnav isn't found.
-option(QET_ENABLE_SPACEMOUSE "Build with 3Dconnexion/libspnav 3D mouse support for pan/zoom (Linux, requires libspnav-dev and spacenavd)" OFF)
+# Discussion #599: 3Dconnexion SpaceMouse/SpacePilot pan/zoom support. Off by
+# default -- see cmake/find_spacemouse.cmake for the backends and what happens
+# when it is on but no library is found.
+option(QET_ENABLE_SPACEMOUSE "Build with 3D mouse (3Dconnexion SpaceMouse) support for pan/zoom; needs libspnav or hidapi, see QET_SPACEMOUSE_BACKEND" OFF)

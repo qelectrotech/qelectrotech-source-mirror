@@ -91,7 +91,7 @@ bool SpaceMouseSettings::operator==(const SpaceMouseSettings &other) const
 */
 qreal SpaceMouseMotion::stepFor(qint64 elapsed_ms)
 {
-	if (elapsed_ms <= 0 || elapsed_ms > MAX_PERIOD_MS) {
+	if (elapsed_ms < 0 || elapsed_ms > MAX_PERIOD_MS) {
 		return 1.0;
 	}
 	return elapsed_ms / NOMINAL_PERIOD_MS;

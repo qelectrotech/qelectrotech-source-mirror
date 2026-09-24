@@ -27,23 +27,16 @@
 	Platform seam for discussion #599's 3D mouse support. A backend owns
 	one platform's connection to the actual 6-DOF device driver -- opening
 	it, pumping whatever event source that platform uses, closing it -- and
-	reports motion through the one signal below. Everything platform-
-	independent (which DiagramView to apply motion to, the pan/zoom
-	primitives to call, the Z-to-zoom-factor mapping) lives in
-	SpaceMouseListener instead, once, so it does not have to be duplicated
+	reports motion through the signals below. Everything platform-
+	independent (which view to apply motion to, the pan/zoom primitives to
+	call, the sample-to-motion mapping) lives in SpaceMouseListener and
+	SpaceMouseMotion instead, once, so it does not have to be duplicated
 	or re-verified per backend.
 
-	SpnavBackend (Linux, spacenavd/libspnav) is the only implementation so
-	far -- built, linked, and its "no daemon/device present" path actually
-	run in the environment this was written in. A Windows/macOS backend
-	(3Dconnexion's proprietary 3DxWare SDK) would implement this same
-	interface and be selected in SpaceMouseListener's constructor, without
-	changing SpnavBackend or anything downstream of the motion signal.
-	Deliberately not attempted here: this was written on Linux with no
-	3DxWare SDK and no Windows/macOS toolchain available to compile,
-	link, or run a single line of it against, and shipping platform code
-	that has never even built would be a materially different, weaker
-	thing than everything else in this feature.
+	Two implementations, chosen at build time (cmake/find_spacemouse.cmake):
+	SpnavBackend (Linux, through spacenavd/libspnav) and HidBackend (any
+	platform, directly over USB through hidapi, with no 3Dconnexion driver
+	or SDK). Both report the same values for the same movement.
 */
 class SpaceMouseBackend : public QObject
 {

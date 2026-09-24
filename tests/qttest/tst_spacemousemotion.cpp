@@ -86,7 +86,7 @@ void TstSpaceMouseMotion::stepFollowsElapsedTime_data()
 	QTest::addColumn<qint64>("elapsed");
 	QTest::addColumn<qreal>("step");
 	QTest::newRow("first sample") << qint64(-1) << 1.0;
-	QTest::newRow("same millisecond") << qint64(0) << 1.0;
+	QTest::newRow("same millisecond: covers no time") << qint64(0) << 0.0;
 	QTest::newRow("twice as fast") << qint64(8) << 0.5;
 	QTest::newRow("nominal") << NOMINAL << 1.0;
 	QTest::newRow("twice as slow") << qint64(32) << 2.0;

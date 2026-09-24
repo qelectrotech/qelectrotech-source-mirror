@@ -192,6 +192,17 @@ add_test(NAME tst_spacemousemotion COMMAND tst_spacemousemotion)
 target_include_directories(tst_spacemousemotion PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_spacemousemotion PRIVATE Qt::Test Qt::Core)
 
+# SpaceMouseHid -- decoding a 3D mouse's raw USB reports. Pure code, built
+# whether or not QET_ENABLE_SPACEMOUSE is on; recordings from real devices
+# go in fixtures/spacemouse/.
+add_executable(
+  tst_spacemousehid
+  tst_spacemousehid.cpp
+  ${QET_DIR}/sources/spacemouse/spacemousehid.cpp)
+add_test(NAME tst_spacemousehid COMMAND tst_spacemousehid)
+target_include_directories(tst_spacemousehid PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_spacemousehid PRIVATE Qt::Test Qt::Core)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately

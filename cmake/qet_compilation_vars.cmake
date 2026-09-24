@@ -896,6 +896,15 @@ if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
   )
 endif()
 
+if(QET_SPACEMOUSE_BACKEND_HID_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/hidbackend.cpp
+    ${QET_DIR}/sources/spacemouse/hidbackend.h
+    ${QET_DIR}/sources/spacemouse/spacemousehid.cpp
+    ${QET_DIR}/sources/spacemouse/spacemousehid.h
+  )
+endif()
+
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
   ${QET_DIR}/lang/qet_ca.ts
