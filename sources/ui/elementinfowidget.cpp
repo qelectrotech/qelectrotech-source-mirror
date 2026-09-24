@@ -378,7 +378,7 @@ void ElementInfoWidget::updateUi()
 	// English: Load the BOM exclusion status from the element information mapping
 	if (m_exclude_from_bom_cb) {
 		QString exclude_bom_value = element_info.value(QStringLiteral("exclude_from_bom")).toString();
-		m_exclude_from_bom_cb->setChecked(exclude_bom_value == QLatin1String("true"));
+		m_exclude_from_bom_cb->setChecked(QET::infoFlagIsTrue(exclude_bom_value));
 	}
 
 	if (m_live_edit) {
