@@ -66,6 +66,7 @@ class ElementInfoWidget : public AbstractElementPropertiesEditorWidget
 		void buildInterface();
 		ElementInfoPartWidget *infoPartWidgetForKey(const QString &key) const;
 		QStringList predefinedKeys() const;
+		void updateSuggestions();
 
 	private slots:
 		void firstActivated();
