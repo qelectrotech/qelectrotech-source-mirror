@@ -653,9 +653,16 @@ QDomElement ElementsLocation::xml() const
 	if (!m_project)
 	{
 		QFile file (m_file_system_path);
+		if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+			return QDomElement();
+
 		QDomDocument docu;
 		if (docu.setContent(&file))
+		{
+			file.close();
 			return docu.documentElement();
+		}
+		file.close();
 	}
 	else
 	{
