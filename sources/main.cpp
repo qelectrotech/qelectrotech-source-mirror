@@ -33,6 +33,7 @@
 
 #include <QApplication>
 #include <QDomImplementation>
+#include <QFont>
 
 #include <QStyleFactory>
 #include <QtConcurrentRun>
@@ -107,6 +108,19 @@ int main(int argc, char **argv)
 	// from Qt 6.12 on; opt in explicitly for older Qt 5/6.
 	QDomImplementation::setInvalidDataPolicy(
 		QDomImplementation::ReturnNullNode);
+
+#ifdef Q_OS_WIN
+	// "MS Shell Dlg 2" is not a font but a Windows alias, and many projects
+	// and settings saved on Windows carry it. Qt 5's GDI font backend let
+	// Windows resolve it to Tahoma; Qt 6's DirectWrite backend does not know
+	// the alias and falls back to Arial, so those texts come out heavier on
+	// screen and in exported PDFs (bugtracker #340). Resolve both aliases
+	// the way Windows does. Done before any application object exists so
+	// that the headless export and scripting runs below get it too.
+	QFont::insertSubstitution("MS Shell Dlg 2", "Tahoma");
+	QFont::insertSubstitution("MS Shell Dlg", "Microsoft Sans Serif");
+#endif
+
 	//Creation and execution of the application
 	//HighDPI
 	qputenv("QT_ENABLE_HIGHDPI_SCALING", "1");
