@@ -118,6 +118,18 @@ void ElementView::scaleClamped(qreal factor)
 }
 
 /**
+	@brief ElementView::zoom
+	Zoom by an arbitrary factor, for a continuous input such as a 3D mouse.
+	Same clamping as the wheel zoom.
+	@param zoom_factor : > 1 zooms in, < 1 zooms out
+*/
+void ElementView::zoom(qreal zoom_factor)
+{
+	adjustSceneRect();
+	scaleClamped(zoom_factor);
+}
+
+/**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
 void ElementView::zoomIn()

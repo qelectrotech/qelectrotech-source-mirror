@@ -25,16 +25,16 @@ class SpaceMouseBackend;
 /**
 	@brief The SpaceMouseListener class
 	https://github.com/qelectrotech/qelectrotech-source-mirror/discussions/599 :
-	bridges a 3Dconnexion SpaceMouse/SpacePilot 6-DOF device to
-	DiagramView's existing pan/zoom primitives (the same
-	horizontalScrollBar()/verticalScrollBar()/zoom() calls
-	DiagramView::wheelEvent() already uses for a physical wheel), and its
+	bridges a 3Dconnexion SpaceMouse/SpacePilot 6-DOF device to the
+	existing pan/zoom primitives of DiagramView and ElementView (the same
+	horizontalScrollBar()/verticalScrollBar()/zoom() calls their
+	wheelEvent() already uses for a physical wheel), and its
 	buttons to named QET actions via ShortcutManager -- the same registry
 	keyboard shortcuts already use, so a device button can trigger anything
 	in that registry (undo, redo, rotate selection, ...) without QET having
 	a second, device-specific action list.
 
-	Everything here is platform-independent: which DiagramView to apply
+	Everything here is platform-independent: which view to apply
 	motion to, the pan/zoom calls, the Z-to-zoom-factor mapping, and button
 	dispatch via SpaceMouseButtonMap + ShortcutManager. Talking to the
 	actual device driver is a SpaceMouseBackend's job (see its class
@@ -73,7 +73,7 @@ class SpaceMouseListener : public QObject
 
 	private slots:
 			/// Apply one motion sample -- from whichever backend is in use
-			/// -- to whichever DiagramView is currently active.
+			/// -- to the view of the active diagram or element editor.
 		void applyMotion(int dx, int dy, int dz);
 
 			/// Look up which action id, if any, SpaceMouseButtonMap binds
