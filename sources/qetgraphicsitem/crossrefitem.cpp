@@ -852,9 +852,13 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 				QStringList labels = groups.at(i).labels;
 
 				//A single pole simple contact (NO or NC) reads its two
-				//numbers the other way round; changeover contacts and
-				//groups with several poles keep the order the master
-				//defines, they are already right.
+				//numbers the other way round (checked against the
+				//diagram). Changeover contacts are not handled here:
+				//their labels are rotated one step counter-clockwise
+				//inside drawContact(), per pole, so multi pole
+				//changeovers work too. Groups with several NO/NC poles
+				//keep the order the master defines: a 3 pole power
+				//contact already reads correctly that way.
 				if (poles == 1 && (option & NOC))
 					std::reverse(labels.begin(), labels.end());
 
@@ -951,8 +955,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 	// For SW contacts with typed terminals (No/Nc/Common), filter by role.
 	QStringList terminal_names;
 	const bool is_power_ctc =
-		(flags & Power)
-		|| (elmt && elmt->kindInformations()["type"].toString() == "power");
+		elmt && elmt->kindInformations()["type"].toString() == "power";
 	const bool is_sw = (flags & SW) && !(flags & NOC);
 
 	// Check if SW terminals have explicit No/Nc/Common types
@@ -1146,15 +1149,19 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 			}
 		}
 
+		//The hit rect is registered even when the position text is
+		//empty: a linked contact had (and keeps) its hover/click entry
+		//in that case too, only the drawing is skipped. Free slots
+		//(elmt == nullptr) have nothing to click and stay out of the map.
+		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
 		if (!str.isEmpty())
 		{
-			QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
 			painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
 			bounding_rect = bounding_rect.united(text_rect);
-
-			if (m_update_map)
-				m_hovered_contacts_map.insert(elmt, text_rect);
 		}
+
+		if (m_update_map && elmt)
+			m_hovered_contacts_map.insert(elmt, text_rect);
 
 		++m_drawed_contacts;
 	}
@@ -1227,20 +1234,21 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		}
 
 			//Draw position text
+		QRectF text_rect = painter.boundingRect(
+					QRectF(30, offset+4, 5, 10),
+					Qt::AlignLeft | Qt::AlignVCenter,
+					str);
 		if (!str.isEmpty())
 		{
-			QRectF text_rect = painter.boundingRect(
-						QRectF(30, offset+4, 5, 10),
-						Qt::AlignLeft | Qt::AlignVCenter,
-						str);
 			painter.drawText(text_rect,
 					 Qt::AlignLeft | Qt::AlignVCenter,
 					 str);
 			bounding_rect = bounding_rect.united(text_rect);
-
-			if (m_update_map)
-				m_hovered_contacts_map.insert(elmt, text_rect);
 		}
+		//Hit rect kept even for an empty position text (as before),
+		//free slots are not clickable.
+		if (m_update_map && elmt)
+			m_hovered_contacts_map.insert(elmt, text_rect);
 
 			//a switch contact take place of two normal contact
 		m_drawed_contacts += 2;
@@ -1262,20 +1270,21 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 				painter.drawArc(r2, 160*16, 300*16);
 
 			//Draw position text
-		if (!str.isEmpty())
-		{
-			QRectF text_rect = painter.boundingRect(
+		QRectF text_rect = painter.boundingRect(
 						QRectF(30, offset, 5, 10), 
 						Qt::AlignLeft | Qt::AlignVCenter, 
 						str);
+		if (!str.isEmpty())
+		{
 			painter.drawText(text_rect,
 						Qt::AlignLeft | Qt::AlignVCenter, 
 						str);
 			bounding_rect = bounding_rect.united(text_rect);
-
-			if (m_update_map)
-				m_hovered_contacts_map.insert(elmt, text_rect);
 		}
+		//Hit rect kept even for an empty position text (as before),
+		//free slots are not clickable.
+		if (m_update_map && elmt)
+			m_hovered_contacts_map.insert(elmt, text_rect);
 		++m_drawed_contacts;
 	}
 		return bounding_rect;

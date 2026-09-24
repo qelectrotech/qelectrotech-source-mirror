@@ -173,6 +173,7 @@ QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, con
 		else if (!m_Xref_item && mustShowXrefWithoutSlave())
 		{
 			m_Xref_item = new CrossRefItem(this);
+			m_Xref_item->updateLabel();
 		}
 	}
 	return Element::itemChange(change, value);
