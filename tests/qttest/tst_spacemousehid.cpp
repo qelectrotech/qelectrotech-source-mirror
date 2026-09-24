@@ -23,7 +23,7 @@
 
 	The descriptors below are written by hand from the HID specification,
 	in the shape 3Dconnexion devices use. Recordings from real devices,
-	made with spacemouse-capture.py, go in fixtures/spacemouse/ and are
+	made with misc/spacemouse-capture.py, go in fixtures/spacemouse/ and are
 	checked by recordedDevices(): each step says what the user did, so the
 	decoded motion must point the right way.
 */
