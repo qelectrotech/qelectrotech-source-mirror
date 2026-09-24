@@ -132,6 +132,9 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 		return;
 	}
 
+		//The file just read already holds everything a crash could lose, so
+		//there is nothing to back up until the project is changed.
+	m_backup_needed = false;
 	init();
 }
 
@@ -257,6 +260,19 @@ void QETProject::init()
 
 	m_undo_stack = new QUndoStack(this);
 	connect(m_undo_stack, &QUndoStack::cleanChanged, this, &QETProject::undoStackChanged);
+
+		//What counts as a change for writeBackup(): the undo stack moving,
+		//setModified(true), and the embedded collections, which can change
+		//without going through either.
+	const auto backup_needed = [this]() { m_backup_needed = true; };
+	connect(m_undo_stack, &QUndoStack::indexChanged, this, backup_needed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::changed, this, backup_needed);
+	connect(&m_titleblocks_collection, &TitleBlockTemplatesCollection::aboutToRemove, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementAdded, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementChanged, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::elementRemoved, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::directorieAdded, this, backup_needed);
+	connect(m_elements_collection, &XmlElementCollection::directoryRemoved, this, backup_needed);
 
 	m_save_backup_timer.setInterval(BACKUP_INTERVAL);
 	connect(&m_save_backup_timer, &QTimer::timeout, this, &QETProject::writeBackup);
@@ -1564,6 +1580,9 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	Mark this project as modified and emit the projectModified() signal.
 */
 void QETProject::setModified(bool modified) {
+	if (modified) {
+		m_backup_needed = true;
+	}
 	if (m_modified != modified) {
 		m_modified = modified;
 		emit projectModified(this, m_modified);
@@ -2146,6 +2165,12 @@ void QETProject::writeBackup()
 		//both would write through &m_backup_file on different threads.
 	if (m_backup_future.isRunning())
 		return;
+		//toXml() walks the whole project on the GUI thread, which freezes
+		//big projects for seconds (bugtracker #273, #329). A backup of an
+		//unchanged project would be identical to the last one, so skip it.
+	if (!m_backup_needed)
+		return;
+	m_backup_needed = false;
 		//Capture the document by value (implicitly shared, so cheap): the
 		//Qt5-style QtConcurrent::run(function, reference-args) call did not
 		//survive the Qt6 API change, a lambda behaves identically on both.
