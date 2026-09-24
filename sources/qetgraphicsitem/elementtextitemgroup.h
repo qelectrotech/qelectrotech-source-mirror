@@ -101,6 +101,8 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		void keyPressEvent(QKeyEvent *event) override;
 		void hoverEnterEvent(QGraphicsSceneHoverEvent *event) override;
 		void hoverLeaveEvent(QGraphicsSceneHoverEvent *event) override;
+		QVariant itemChange(GraphicsItemChange change,
+				    const QVariant &value) override;
 		
 	private:
 		void updateXref();
@@ -120,6 +122,7 @@ class ElementTextItemGroup : public QObject, public  QGraphicsItemGroup
 		Element *m_parent_element = nullptr;
 		QList<QMetaObject::Connection> m_update_slave_Xref_connection;
 		QGraphicsTextItem *m_slave_Xref_item = nullptr;
+		QMetaObject::Connection m_project_xref_connection;
 		QMetaObject::Connection m_XrefChanged_timer,
 		m_linked_changed_timer;
 };

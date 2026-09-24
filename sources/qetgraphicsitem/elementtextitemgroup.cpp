@@ -60,10 +60,46 @@ ElementTextItemGroup::ElementTextItemGroup(const QString &name,
 		this,
 		&ElementTextItemGroup::updateXref);
 	if(parent->diagram())
-		connect(parent->diagram()->project(),
+		m_project_xref_connection = connect(
+			parent->diagram()->project(),
 			&QETProject::XRefPropertiesChanged,
 			this,
 			&ElementTextItemGroup::updateXref);
+}
+
+/**
+	@brief ElementTextItemGroup::itemChange
+	The group is very often built while its element is not on a scene yet
+	(project or element loading): the connection to the project was then
+	impossible and the first updateXref() ran without a diagram, so the
+	cross ref of a master waiting for its slaves stayed invisible until an
+	unrelated settings change happened to refresh it. Do both here, the
+	moment the group really reaches the scene.
+	@param change
+	@param value
+	@return
+*/
+QVariant ElementTextItemGroup::itemChange(
+		QGraphicsItem::GraphicsItemChange change,
+		const QVariant &value)
+{
+	if (change == QGraphicsItem::ItemSceneHasChanged)
+	{
+		if (m_parent_element
+		    && m_parent_element->diagram()
+		    && m_parent_element->diagram()->project())
+		{
+			QETProject *project = m_parent_element->diagram()->project();
+			if (!m_project_xref_connection)
+				m_project_xref_connection = connect(
+						project,
+						&QETProject::XRefPropertiesChanged,
+						this,
+						&ElementTextItemGroup::updateXref);
+			updateXref();
+		}
+	}
+	return QGraphicsItemGroup::itemChange(change, value);
 }
 
 ElementTextItemGroup::~ElementTextItemGroup()
@@ -772,13 +808,13 @@ void ElementTextItemGroup::updateXref()
 	{
 		QETProject *project = m_parent_element->diagram()->project();
 		
-		if(m_parent_element->linkType() == Element::Master &&
-		   !m_parent_element->linkedElements().isEmpty())
+		if(m_parent_element->linkType() == Element::Master)
 		{
-			
 			XRefProperties xrp = project->defaultXRefProperties(m_parent_element->kindInformations()["type"].toString());
-			
-			if(xrp.snapTo() == XRefProperties::Label)
+
+			if(xrp.snapTo() == XRefProperties::Label &&
+			   (!m_parent_element->linkedElements().isEmpty()
+			    || CrossRefItem::showAllConfiguredSlaves(m_parent_element, xrp)))
 			{
 					//At least one text owned by this group must be set with
 					//textFrom -> element info and element info name -> label

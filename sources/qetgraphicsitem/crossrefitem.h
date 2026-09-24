@@ -63,6 +63,13 @@ class CrossRefItem : public QGraphicsObject
 		enum { Type = UserType + 1009 };
 		int type() const override { return Type; }
 
+		/// Returns true when \a xrp asks the contact comb of \a elmt to show
+		/// every slave contact the master defines, even the ones no slave is
+		/// linked to yet. \a elmt must be a master element.
+		static bool showAllConfiguredSlaves(
+				const Element *elmt,
+				const XRefProperties &xrp);
+
 		/**
 			@brief The CONTACTS enum
 		*/
@@ -121,7 +128,13 @@ class CrossRefItem : public QGraphicsObject
 		void drawAsCross(QPainter &painter);
 		void drawAsContacts(QPainter &painter);
 		void drawAsPlcTable(QPainter &painter);
-		QRectF drawContact(QPainter &painter, int flags, Element *elmt, int pole_index = 0);
+		bool mustDrawAllConfiguredSlaves() const;
+		QRectF drawLinkedSlaveContacts(QPainter &painter, Element *elmt);
+		QRectF drawContact(QPainter &painter,
+				   int flags,
+				   Element *elmt,
+				   int pole_index = 0,
+				   const QStringList &master_labels = QStringList());
 		void fillCrossRef(QPainter &painter);
 		void AddExtraInfo(QPainter &painter, const QString&);
 		QList<Element *> NOElements() const;

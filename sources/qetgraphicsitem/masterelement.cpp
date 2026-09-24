@@ -167,6 +167,13 @@ QVariant MasterElement::itemChange(QGraphicsItem::GraphicsItemChange change, con
 			m_Xref_item = new CrossRefItem(this);
 			m_Xref_item->updateLabel();
 		}
+		// Same idea for a master whose contact comb must show every
+		// contact group it defines: the cross ref is expected even
+		// before any slave is linked to it.
+		else if (!m_Xref_item && mustShowXrefWithoutSlave())
+		{
+			m_Xref_item = new CrossRefItem(this);
+		}
 	}
 	return Element::itemChange(change, value);
 }
@@ -191,6 +198,26 @@ void MasterElement::xrefPropertiesChanged()
 			m_Xref_item = new CrossRefItem(this);
 	}
 	aboutDeleteXref();
+}
+
+/**
+	@brief MasterElement::mustShowXrefWithoutSlave
+	@return true when the cross ref of this master has to be shown even
+	though no slave is linked to it yet: the user asks the contact comb to
+	display every contact group the master defines, the comb (contacts)
+	display is the one in use, and the cross ref is owned by the element
+	itself (snap to bottom).
+*/
+bool MasterElement::mustShowXrefWithoutSlave() const
+{
+	if (!diagram() || !diagram()->project())
+		return false;
+
+	const XRefProperties xrp = diagram()->project()->defaultXRefProperties(
+				kindInformations()["type"].toString());
+
+	return xrp.snapTo() == XRefProperties::Bottom
+			&& CrossRefItem::showAllConfiguredSlaves(this, xrp);
 }
 
 /**
@@ -219,6 +246,11 @@ void MasterElement::aboutDeleteXref()
 		m_Xref_item = nullptr;
 		return;
 	}
+
+	// The contact comb shows the contact groups the master defines, linked
+	// or not: keep the item even when it draws nothing so far.
+	if (mustShowXrefWithoutSlave())
+		return;
 
 	if (m_Xref_item->boundingRect().isNull())
 	{
