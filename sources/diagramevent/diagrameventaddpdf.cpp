@@ -84,7 +84,10 @@ void DiagramEventAddPdf::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 	else if (m_image && event->button() == Qt::RightButton)
 	{
-		m_image->setRotation(m_image->rotation() + 90);
+		// rotationAngle()/setRotationAngle(), not QGraphicsItem's own
+		// rotation()/setRotation(): see DiagramEventAddImage's identical
+		// fix (mousePressEvent) for why -- same class, same reasoning.
+		m_image->setRotationAngle(m_image->rotationAngle() + 90);
 		event->setAccepted(true);
 	}
 }
@@ -136,10 +139,17 @@ void DiagramEventAddPdf::wheelEvent(QGraphicsSceneWheelEvent *event)
 		return;
 	}
 
-	qreal scaling = m_image->scale();
+	// scaleFactorX(), not QGraphicsItem's own scale(): see
+	// DiagramEventAddImage's identical fix for why. No drag-to-resize
+	// exists here, and the pivot is never touched elsewhere in this
+	// class, so it stays at its default boundingRect().center() and this
+	// scales the page in place around its own middle, exactly like
+	// before.
+	qreal scaling = m_image->scaleFactorX();
 	event->delta() > 1 ? scaling += 0.01 : scaling -= 0.01;
 	if (scaling > 0.01 && scaling <= 2) {
-		m_image->setScale(scaling);
+		m_image->setScaleFactorX(scaling);
+		m_image->setScaleFactorY(scaling);
 	}
 
 	event->setAccepted(true);

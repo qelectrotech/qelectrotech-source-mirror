@@ -117,7 +117,16 @@ void DiagramEventAddImage::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 	else if (m_image && !m_pressed && event->button() == Qt::RightButton)
 	{
-		m_image->setRotation(m_image->rotation() + 90);
+		// rotationAngle()/setRotationAngle(), not QGraphicsItem's own
+		// rotation()/setRotation(): DiagramImageItem's whole handle/undo/
+		// XML-save machinery reads exclusively from its own m_transform
+		// (see diagramimageitem.cpp's toXml() comment) and never looks at
+		// QGraphicsItem's built-in convenience property at all -- using
+		// it here left a rotation that displayed correctly in this tool
+		// but silently vanished the moment the item was saved and
+		// reloaded, and additionally desynced the rotate-handle's pivot
+		// math once the image was later selected for editing.
+		m_image->setRotationAngle(m_image->rotationAngle() + 90);
 		event->setAccepted(true);
 	}
 }
@@ -167,6 +176,22 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 		}
 		else
 		{
+			// setPivot(QPointF(0, 0)), not left at its default
+			// boundingRect().center(): DiagramImageItem's own m_transform
+			// is pivot-centered, so with the default center pivot the
+			// setPos(qMin(...)) below would no longer land on the image's
+			// actual top-left corner the moment scale != 1 (the corner
+			// only coincides with pos() when the pivot is the local
+			// origin). Anchoring here to (0, 0) -- exactly the same
+			// temporary-anchor trick DiagramImageItem::handlerMousePressEvent()
+			// already uses for its own Resize handles -- makes pos()
+			// keep meaning "scene position of the top-left corner"
+			// regardless of scale, so the qMin(...) line below still
+			// needs no change at all. setPivot() itself is a no-op past
+			// the first call (same pivot value), and compensates pos()
+			// automatically so nothing visibly jumps at the switch.
+			m_image->setPivot(QPointF(0, 0));
+
 			const QSizeF naturalSize = m_image->boundingRect().size();
 			if (naturalSize.width() > 0 && naturalSize.height() > 0)
 			{
@@ -179,7 +204,12 @@ void DiagramEventAddImage::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 				// free-form one -- breaking aspect ratio on purpose is
 				// its own, separate, larger piece of work.
 				const qreal newScale = qBound(0.01, qMax(scaleX, scaleY), 50.0);
-				m_image->setScale(newScale);
+				// scaleFactorX()/scaleFactorY(), not QGraphicsItem's own
+				// scale(): see the mousePressEvent right-click rotate
+				// comment above for why -- identical reasoning, identical
+				// fix.
+				m_image->setScaleFactorX(newScale);
+				m_image->setScaleFactorY(newScale);
 			}
 			m_image->setPos(qMin(m_press_pos.x(), pos.x()), qMin(m_press_pos.y(), pos.y()));
 		}
@@ -206,6 +236,17 @@ void DiagramEventAddImage::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
 	if (m_image && m_pressed && event->button() == Qt::LeftButton)
 	{
+		// Undo whatever temporary origin-anchoring mouseMoveEvent's
+		// resize-drag branch did (a no-op if it never engaged): every
+		// other DiagramImageItem code path -- handles, undo, XML save --
+		// expects an image's pivot to be its bounding-rect center unless
+		// the user deliberately customized it, exactly like a completed
+		// handle-resize already resets it via resetPivotToBoundingRectCenter().
+		// Doing this before reading pos() below is what makes the pushed
+		// command capture the final, center-pivot position rather than
+		// the drag's temporary corner-anchored one.
+		m_image->setPivot(m_image->boundingRect().center());
+
 		m_diagram->undoStack().push(new AddGraphicsObjectCommand(m_image, m_diagram, m_image->pos()));
 
 		for (QGraphicsView *view : m_diagram->views()) {
@@ -246,10 +287,18 @@ void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 		return;
 	}
 	
-	qreal scaling = m_image->scale();
+	// scaleFactorX(), not QGraphicsItem's own scale(): see the right-click
+	// rotate comment in mousePressEvent for why. Wheel-scaling only ever
+	// runs while !m_pressed (guarded above), i.e. before any drag-resize
+	// has anchored the pivot to the origin (see mouseMoveEvent), so the
+	// pivot here is still the default boundingRect().center() and this
+	// scales the image in place around its own middle, exactly like
+	// before.
+	qreal scaling = m_image->scaleFactorX();
 	event->delta() > 1? scaling += 0.01 : scaling -= 0.01;
 	if (scaling>0.01 && scaling <= 2) {
-		m_image->setScale(scaling);
+		m_image->setScaleFactorX(scaling);
+		m_image->setScaleFactorY(scaling);
 	}
 	
 	event->setAccepted(true);
