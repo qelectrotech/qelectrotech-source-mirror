@@ -57,6 +57,7 @@ jobs:
             mingw-w64-ucrt-x86_64-nsis
             mingw-w64-ucrt-x86_64-angleproject
             mingw-w64-ucrt-x86_64-qt6-declarative
+            mingw-w64-ucrt-x86_64-hidapi
 
       - name: Cache ccache
         uses: actions/cache@v5
@@ -120,6 +121,8 @@ jobs:
             -DCMAKE_POLICY_DEFAULT_CMP0077=NEW \
             -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DQET_EXPORT_PROJECT_DB=ON \
+            -DQET_ENABLE_SPACEMOUSE=ON \
+            -DQET_SPACEMOUSE_BACKEND=hid \
             -DCMAKE_C_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DCMAKE_CXX_COMPILER_LAUNCHER=/ucrt64/bin/ccache \
             -DSQLite3_INCLUDE_DIR=/ucrt64/include \
@@ -146,6 +149,11 @@ jobs:
           SIZE=$(stat -c%s "$EXE")
           echo "Exe found: $EXE ($SIZE bytes)"
           [ "$SIZE" -gt 100000 ] || { echo "ERROR: exe too small"; exit 1; }
+          # 3D mouse support (discussion #599): CMake only warns when hidapi
+          # is missing, which would ship a package without it -- fail here.
+          ldd "$EXE" | grep -qi 'libhidapi' \
+            || { echo "ERROR: exe not linked against hidapi -- 3D mouse support missing"; exit 1; }
+          echo "3D mouse support: linked against $(ldd "$EXE" | grep -io 'libhidapi[^ ]*' | head -1)"
 
       - name: Deploy — copy exe + windeployqt + DLLs
         shell: msys2 {0}
@@ -191,6 +199,8 @@ jobs:
           echo "=== $DLL_COUNT DLLs present after scan ==="
           ls -lh "$BIN/QElectroTech.exe" || { echo "ERROR: exe missing from bin/"; exit 1; }
           [ "$DLL_COUNT" -gt 5 ] || { echo "ERROR: too few DLLs"; exit 1; }
+          # Without it QElectroTech.exe would not start at all.
+          [ -f "$BIN/libhidapi-0.dll" ] || { echo "ERROR: libhidapi-0.dll not deployed"; exit 1; }
           cd "$GITHUB_WORKSPACE"
 
           cp /ucrt64/bin/libgcc_s_seh-1.dll  "$BIN/"
