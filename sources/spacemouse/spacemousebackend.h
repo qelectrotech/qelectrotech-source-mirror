@@ -18,6 +18,8 @@
 #ifndef SPACEMOUSEBACKEND_H
 #define SPACEMOUSEBACKEND_H
 
+#include "spacemousemotion.h"
+
 #include <QObject>
 
 /**
@@ -59,13 +61,11 @@ class SpaceMouseBackend : public QObject
 		virtual bool isAvailable() const = 0;
 
 	signals:
-			/// One raw device sample. dx/dy are the two axes
-			/// SpaceMouseListener maps to horizontal/vertical pan, dz the
-			/// one it maps to zoom. Units and range are whatever the
-			/// backend's own driver reports -- SpaceMouseListener's own
-			/// scale/divisor constants are what turn them into pixels and a
-			/// zoom factor, not this signal.
-		void motion(int dx, int dy, int dz);
+			/// One raw device sample, all six axes. Units and range are
+			/// whatever the backend's own driver reports --
+			/// SpaceMouseMotion::map() and the user's settings are what
+			/// turn them into pixels and a zoom factor, not this signal.
+		void motion(const SpaceMouseSample &sample);
 
 			/// One device button was pressed. \a button is whatever index
 			/// the backend's own driver numbers it as -- there is no

@@ -20,12 +20,19 @@
 
 #include "configpage.h"
 
+class QCheckBox;
+class QComboBox;
+class QGroupBox;
+class QSpinBox;
 class QTableWidget;
 
 /**
 	@brief The SpaceMouseConfigPage class
-	Configuration page listing every device-button-to-action binding
-	(SpaceMouseButtonMap), letting the user add, edit and remove them.
+	Configuration page for the 3D mouse: how motion pans and zooms the view
+	(SpaceMouseSettings: speeds, dead zone, which axes are inverted, and
+	whether zoom follows push/pull or twist), then every
+	device-button-to-action binding (SpaceMouseButtonMap), letting the
+	user add, edit and remove them.
 	Modelled directly on ShortcutsConfigPage, one row per binding instead
 	of one row per shortcut, since the two are close cousins: both end in
 	the same place -- ShortcutManager::trigger()/registerAction() -- just
@@ -60,9 +67,17 @@ class SpaceMouseConfigPage : public ConfigPage
 		void removeSelectedRow();
 
 	private:
+		QGroupBox *buildMotionGroup();
 		void populateTable();
 		void appendRow(int button, const QString &action_id);
 
+		QSpinBox *m_pan_speed;
+		QSpinBox *m_zoom_speed;
+		QSpinBox *m_dead_zone;
+		QComboBox *m_zoom_axis;
+		QCheckBox *m_invert_pan_x;
+		QCheckBox *m_invert_pan_y;
+		QCheckBox *m_invert_zoom;
 		QTableWidget *m_table;
 };
 

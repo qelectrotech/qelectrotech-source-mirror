@@ -882,6 +882,8 @@ if(QET_SPACEMOUSE_ENABLED)
     ${QET_DIR}/sources/spacemouse/spacemousebuttonmap.h
     ${QET_DIR}/sources/spacemouse/spacemouselistener.cpp
     ${QET_DIR}/sources/spacemouse/spacemouselistener.h
+    ${QET_DIR}/sources/spacemouse/spacemousemotion.cpp
+    ${QET_DIR}/sources/spacemouse/spacemousemotion.h
     ${QET_DIR}/sources/ui/configpage/spacemouseconfigpage.cpp
     ${QET_DIR}/sources/ui/configpage/spacemouseconfigpage.h
   )

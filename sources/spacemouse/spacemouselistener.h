@@ -18,8 +18,13 @@
 #ifndef SPACEMOUSELISTENER_H
 #define SPACEMOUSELISTENER_H
 
-#include <QObject>
+#include "spacemousemotion.h"
 
+#include <QElapsedTimer>
+#include <QObject>
+#include <QPointF>
+
+class QGraphicsView;
 class SpaceMouseBackend;
 
 /**
@@ -35,7 +40,8 @@ class SpaceMouseBackend;
 	a second, device-specific action list.
 
 	Everything here is platform-independent: which view to apply
-	motion to, the pan/zoom calls, the Z-to-zoom-factor mapping, and button
+	motion to, the pan/zoom calls, the sample-to-motion mapping
+	(SpaceMouseMotion, tuned by the user's SpaceMouseSettings), and button
 	dispatch via SpaceMouseButtonMap + ShortcutManager. Talking to the
 	actual device driver is a SpaceMouseBackend's job (see its class
 	comment) -- this class owns one and applies whatever it reports,
@@ -65,16 +71,14 @@ class SpaceMouseListener : public QObject
 			/// when this is false.
 		bool isAvailable() const;
 
-			/// Pure translation from a device Z-axis delta to the
-			/// multiplicative factor DiagramView::zoom() expects. A free
-			/// function so the mapping can be unit-tested without a live
-			/// backend connection or a real device.
-		static qreal zoomFactorForZAxis(int z);
+			/// Re-read SpaceMouseSettings, after the configuration page
+			/// saved new ones.
+		void reloadSettings();
 
 	private slots:
 			/// Apply one motion sample -- from whichever backend is in use
 			/// -- to the view of the active diagram or element editor.
-		void applyMotion(int dx, int dy, int dz);
+		void applyMotion(const SpaceMouseSample &sample);
 
 			/// Look up which action id, if any, SpaceMouseButtonMap binds
 			/// \a button to, and trigger it via ShortcutManager. Does
@@ -83,7 +87,17 @@ class SpaceMouseListener : public QObject
 		void applyButton(int button);
 
 	private:
+		void scrollView(QGraphicsView *view, qreal dx, qreal dy);
+
 		SpaceMouseBackend *m_backend = nullptr;
+		SpaceMouseSettings m_settings;
+			/// Time since the previous motion sample -- see
+			/// SpaceMouseMotion::stepFor().
+		QElapsedTimer m_since_last_sample;
+			/// Fractions of a pixel not yet scrolled. Scrollbars only take
+			/// whole pixels; without this a slow push that maps to under
+			/// half a pixel per sample would never move the view at all.
+		QPointF m_scroll_remainder;
 };
 
 #endif // SPACEMOUSELISTENER_H
