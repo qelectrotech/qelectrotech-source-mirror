@@ -297,6 +297,8 @@ class QETProject : public QObject
 	private:
 			/// When false, writeBackup() is a no-op (set by the headless CLI)
 		static bool m_backup_enabled;
+			/// Something changed since the last backup, see writeBackup()
+		bool m_backup_needed = true;
 			/// File path this project is saved to
 		QString m_file_path;
 			/// Current state of the project
