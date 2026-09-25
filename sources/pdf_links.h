@@ -74,6 +74,15 @@ namespace PdfLinks {
 	*/
 	void convertUriToGoTo(const QString &pdfPath);
 
+	/**
+		Post-process a Qt-generated PDF file: blank out the PDF/X namespace
+		declaration Qt 6 writes into the XMP metadata of every PDF.  Adobe
+		Acrobat draws small text too bold when it is present (bugtracker #340).
+		Replaced in place with spaces, so no offset changes.  No-op for a real
+		PDF/X file or when the declaration is absent.
+	*/
+	void removeUnusedPdfxNamespace(const QString &pdfPath);
+
 	struct ComponentInfo {
 		QString contents;
 	};

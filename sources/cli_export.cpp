@@ -227,6 +227,7 @@ int exportPdf(QETProject &project, const QString &output,
 	// Rewrite the URI link annotations into native internal GoTo actions, so
 	// the cross-references jump inside the document in any PDF viewer.
 	PdfLinks::convertUriToGoTo(output);
+	PdfLinks::removeUnusedPdfxNamespace(output);
 
 	out << "Exported " << diagrams.size() << " page(s) -> " << output << "\n";
 	return 0;

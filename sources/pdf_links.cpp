@@ -388,6 +388,29 @@ void convertUriToGoTo(const QString &pdfPath)
 	out.close();
 }
 
+void removeUnusedPdfxNamespace(const QString &pdfPath)
+{
+	QFile f(pdfPath);
+	if (!f.open(QIODevice::ReadOnly)) return;
+	QByteArray data = f.readAll();
+	f.close();
+
+	// Qt only fills the pdfxid namespace in when it writes PDF/X-4.
+	if (data.contains("pdfxid:GTS_PDFXVersion")) return;
+
+	static const QByteArray decl =
+		" xmlns:pdfxid=\"http://www.npes.org/pdfx/ns/id/\"";
+	const int pos = data.indexOf(decl);
+	if (pos == -1) return;
+
+	// Same length, so the stream /Length and the xref offsets stay valid.
+	data.replace(pos, decl.size(), QByteArray(decl.size(), ' '));
+
+	if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+	f.write(data);
+	f.close();
+}
+
 void convertComponentInfoAnnotations(const QString &pdfPath,
 									const QList<ComponentInfo> &annotations)
 {
