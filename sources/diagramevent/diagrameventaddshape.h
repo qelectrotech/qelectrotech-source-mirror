@@ -59,7 +59,7 @@ class DiagramEventAddShape : public DiagramEventInterface
 		QGraphicsLineItem       *m_help_horiz, *m_help_verti;
 		QPointF                  m_anchor_point;   // the shape's first-click point -- meaningful once m_shape_item exists
 		QGraphicsEllipseItem    *m_center_marker = nullptr;   // shown only while Ctrl-anchoring is actually in effect, so it doubles as confirmation that it is
-		bool                     m_center_anchored = false;   // decided once, at the first click -- see applyPosition()'s doc comment for why
+		bool                     m_center_anchored = false;   // re-decided live on every applyPosition() call, from current Ctrl state
 		QPointF                  m_last_mouse_scene_pos;      // raw, unsnapped -- lets a modifier-only change re-snap correctly when reapplied
 };
 

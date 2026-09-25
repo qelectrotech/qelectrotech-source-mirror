@@ -55,6 +55,7 @@ class DiagramView : public PaletteGraphicsView
 		QAction			 *m_multi_paste = nullptr;
 		QAction          *m_create_template = nullptr;
 		QPoint            m_paste_here_pos;
+		QPoint            m_last_mouse_pos = QPoint(-1, -1);
 		QPointF           m_drag_last_pos;
 		bool              m_fresh_focus_in,
 						  m_first_activation = true;
@@ -71,6 +72,12 @@ class DiagramView : public PaletteGraphicsView
 		void editSelection();
 		void setEventInterface (DVEventInterface *event_interface);
 		QList<QAction *> contextMenuActions() const;
+		/// Last mouse position seen by mouseMoveEvent(), in viewport
+		/// coordinates -- (-1, -1) if the mouse hasn't moved over this
+		/// view yet. Filled from ordinary Qt mouse events, not a global
+		/// cursor query (QCursor::pos()/setPos() are silently ignored by
+		/// several window managers and compositors, Wayland included).
+		QPoint lastMousePos() const { return m_last_mouse_pos; }
 	
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;

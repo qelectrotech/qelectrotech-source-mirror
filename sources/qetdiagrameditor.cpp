@@ -367,10 +367,18 @@ void QETDiagramEditor::setUpActions()
 			//original, where it was easy to miss entirely; now it appears
 			//under the cursor and follows it until a click, Return, or Escape
 			//to cancel -- the same interaction as placing a new element.
-		const QPoint view_pos = dv->viewport()->mapFromGlobal(QCursor::pos());
-		const QPointF start_pos = dv->viewport()->rect().contains(view_pos)
-				? dv->mapToScene(view_pos)
-				: dv->mapToScene(dv->viewport()->rect().center());
+			//
+			//dv->lastMousePos() (an ordinary Qt mouse-move position), not
+			//QCursor::pos() (a global, OS-level cursor query): several
+			//window managers and compositors -- Wayland in particular --
+			//silently refuse that query, returning a stale or wrong
+			//position, which is exactly what made the pasted content land
+			//far from the cursor instead of under it.
+		const QPoint last_pos = dv->lastMousePos();
+		const QPoint view_pos = (last_pos.x() >= 0 && dv->viewport()->rect().contains(last_pos))
+				? last_pos
+				: dv->viewport()->rect().center();
+		const QPointF start_pos = dv->mapToScene(view_pos);
 
 		dv->diagram()->setEventInterface(
 					new DiagramEventAddPaste(dv->diagram(), start_pos));

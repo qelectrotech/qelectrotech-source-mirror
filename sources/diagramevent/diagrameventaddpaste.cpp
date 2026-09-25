@@ -41,7 +41,6 @@
 	DiagramEventAddPaste::DiagramEventAddPaste(Diagram *diagram, const QPointF &start_pos) :
 	DiagramEventInterface(diagram)
 {
-	Q_UNUSED(start_pos);  // items stay at their original XML position
 		//DiagramEventInterface::init() is called by Diagram::setEventInterface
 		//only when it is replacing an earlier interface, so call it here as
 		//DiagramEventAddMacro does.
@@ -77,21 +76,26 @@
 	const QList<QGraphicsItem *> movable = m_content.items(MovableItems);
 	if (movable.isEmpty()) return;
 
-		//Compute the top-left of all items' positions (not bounding
-		//rects) and snap to grid: this is the point that gets placed
-		//under the cursor, and the baseline moveTo() measures from.
-	QPointF top_left;
-	bool first = true;
+		//Compute the top-left of all items' actual on-screen bounding
+		//boxes (not their raw pos()) and snap to grid: this is the point
+		//that gets placed under the cursor, and the baseline moveTo()
+		//measures from. mapToScene(boundingRect()) matters here, not
+		//pos() alone: pos() is the scene location of an item's local
+		//origin, but for anything with a pivot-centered transform (a
+		//scaled or rotated image, in particular) that origin can sit far
+		//from where the item is actually drawn -- pivot + scale*(0 -
+		//pivot) is nowhere near (0, 0) once scale is well under 1. Using
+		//pos() here silently pasted content at the right *delta* from a
+		//point that wasn't actually where the content visually was,
+		//producing a constant, scale-dependent offset between the cursor
+		//and the pasted picture. Diagram::fromXml()'s own position
+		//parameter already gets this right the same way, for the same
+		//reason.
+	QRectF items_rect;
 	for (auto *item : movable) {
-		const QPointF p = item->pos();
-		if (first) {
-			top_left = p;
-			first = false;
-		} else {
-			if (p.x() < top_left.x()) top_left.setX(p.x());
-			if (p.y() < top_left.y()) top_left.setY(p.y());
-		}
+		items_rect = items_rect.united(item->mapToScene(item->boundingRect()).boundingRect());
 	}
+	const QPointF top_left = items_rect.topLeft();
 	QSettings settings;
 	const int xGrid = settings.value(QStringLiteral("diagrameditor/Xgrid"),
 					  Diagram::xGrid).toInt();
@@ -102,9 +106,24 @@
 			qRound(p.x() / xGrid) * xGrid,
 			qRound(p.y() / yGrid) * yGrid);
 	};
-	const QPointF grid_origin = snapGrid(top_left);
+	const QPointF grid_origin = snapGrid(start_pos);
 
-		//Store each item's original position.  moveTo() applies a
+		//Land the pasted content under the cursor immediately, rather than
+		//leaving it at the copied source's own coordinates: fromXml() above
+		//loads items at their original position purely because it doesn't
+		//know the target yet, not because that is where a paste should end
+		//up. The previous approach instead left items there and warped the
+		//OS cursor to match -- QCursor::setPos() is silently ignored by
+		//many window managers and compositors (Wayland in particular), so
+		//on any of those the warp simply never happened and the paste was
+		//left wherever it had originally been copied from, which could be
+		//anywhere on the folio -- exactly the "far from the cursor" bug.
+	const QPointF initial_delta = grid_origin - snapGrid(top_left);
+	for (auto *item : movable) {
+		item->setPos(item->pos() + initial_delta);
+	}
+
+		//Store each item's now-placed position.  moveTo() applies a
 		//grid-snapped delta from the baseline to these, so items
 		//preserve their layout and move in whole grid steps.
 	for (auto *item : movable) {
@@ -134,14 +153,6 @@
 			if (const auto qde = QETApp::diagramEditorAncestorOf(view)) {
 				m_status_bar = qde->statusBar();
 			}
-				//Warp the cursor to the group's grid-snapped origin so
-				//the actual cursor position matches m_initial_cursor.
-				//Without this the first mouseMoveEvent computes a large
-				//delta (cursor is still at the Ctrl+V press location)
-				//and the items jump on first touch.
-			const QPoint view_pos = view->mapFromScene(m_initial_cursor);
-			const QPoint global_pos = view->viewport()->mapToGlobal(view_pos);
-			QCursor::setPos(global_pos);
 		}
 	}
 	showHint();

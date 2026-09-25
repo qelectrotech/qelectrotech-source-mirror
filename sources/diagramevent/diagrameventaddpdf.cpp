@@ -84,7 +84,10 @@ void DiagramEventAddPdf::mousePressEvent(QGraphicsSceneMouseEvent *event)
 	}
 	else if (m_image && event->button() == Qt::RightButton)
 	{
-		m_image->setRotation(m_image->rotation() + 90);
+		// rotationAngle()/setRotationAngle(), not QGraphicsItem's own
+		// rotation()/setRotation(): see DiagramEventAddImage's identical
+		// fix (mousePressEvent) for why -- same class, same reasoning.
+		m_image->setRotationAngle(m_image->rotationAngle() + 90);
 		event->setAccepted(true);
 	}
 }
@@ -132,14 +135,35 @@ void DiagramEventAddPdf::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) 
 */
 void DiagramEventAddPdf::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-	if (!m_is_added || !m_image || event->modifiers() != Qt::CTRL) {
+	// event->modifiers() & Qt::ControlModifier, not != Qt::CTRL: the same
+	// exact-equality bug already found and fixed elsewhere this session --
+	// Ctrl held together with any other modifier would silently fail to
+	// register as Ctrl at all.
+	if (!m_is_added || !m_image || !(event->modifiers() & Qt::ControlModifier)) {
 		return;
 	}
 
-	qreal scaling = m_image->scale();
-	event->delta() > 1 ? scaling += 0.01 : scaling -= 0.01;
-	if (scaling > 0.01 && scaling <= 2) {
-		m_image->setScale(scaling);
+	// scaleFactorX()/scaleFactorY(), not QGraphicsItem's own scale(): see
+	// DiagramEventAddImage's identical fix for why. No drag-to-resize
+	// exists here, and the pivot is never touched elsewhere in this
+	// class, so it stays at its default boundingRect().center() and this
+	// scales the page in place around its own middle, exactly like
+	// before.
+	//
+	// Step each axis from its own current value rather than reading X and
+	// writing it back to both: scaleFactorX and scaleFactorY cannot
+	// actually differ here today (nothing in this class ever sets them to
+	// different values, and there is no drag-resize at all), but stepping
+	// both independently costs nothing and removes the trap if that ever
+	// changes.
+	qreal scalingX = m_image->scaleFactorX();
+	qreal scalingY = m_image->scaleFactorY();
+	const qreal step = event->delta() > 1 ? 0.01 : -0.01;
+	scalingX += step;
+	scalingY += step;
+	if (scalingX > 0.01 && scalingX <= 2 && scalingY > 0.01 && scalingY <= 2) {
+		m_image->setScaleFactorX(scalingX);
+		m_image->setScaleFactorY(scalingY);
 	}
 
 	event->setAccepted(true);
