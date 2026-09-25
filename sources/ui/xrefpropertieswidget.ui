@@ -152,6 +152,16 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="m_show_all_slaves_cb">
+            <property name="toolTip">
+             <string>Afficher dans le peigne de contacts tous les contacts esclaves définis par le maître, même ceux qui ne sont pas encore reliés, dans l'ordre défini par le maître</string>
+            </property>
+            <property name="text">
+             <string>Afficher tous les esclaves définis par le maître</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QRadioButton" name="m_display_has_contacts_rb">
             <property name="text">
              <string>Affiche&amp;r en contacts</string>
@@ -327,6 +337,7 @@
   <tabstop>m_slave_le</tabstop>
   <tabstop>m_show_power_cb</tabstop>
   <tabstop>m_show_terminal_name_cb</tabstop>
+  <tabstop>m_show_all_slaves_cb</tabstop>
   <tabstop>m_power_prefix_le</tabstop>
   <tabstop>m_delay_prefix_le</tabstop>
   <tabstop>m_switch_prefix_le</tabstop>

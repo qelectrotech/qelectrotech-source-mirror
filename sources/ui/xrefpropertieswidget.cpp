@@ -38,6 +38,7 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 	ui->setupUi(this);
 	buildUi();
 	connect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
+	connect(ui->m_display_has_contacts_rb, &QRadioButton::toggled, ui->m_show_all_slaves_cb, &QWidget::setEnabled);
 	connect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
 	connect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);
 	updateDisplay();
@@ -50,6 +51,7 @@ XRefPropertiesWidget::XRefPropertiesWidget(QHash <QString, XRefProperties> prope
 XRefPropertiesWidget::~XRefPropertiesWidget()
 {
 	disconnect(ui->m_display_has_cross_rb, &QRadioButton::toggled, ui->m_cross_properties_gb, &QWidget::setEnabled);
+	disconnect(ui->m_display_has_contacts_rb, &QRadioButton::toggled, ui->m_show_all_slaves_cb, &QWidget::setEnabled);
 	disconnect(ui->m_type_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::typeChanged);
 	disconnect(ui->m_snap_to_cb, qOverload<int>(&QComboBox::currentIndexChanged), this, &XRefPropertiesWidget::enableOffsetSB);	
 	delete ui;
@@ -143,6 +145,7 @@ void XRefPropertiesWidget::saveProperties(int index) {
 	else if(ui->m_xrefpos_cb->itemData(ui->m_xrefpos_cb->currentIndex()).toString() == "text_field") xrp.setXrefPos(Qt::AlignHCenter);
 	xrp.setShowPowerContac(ui->m_show_power_cb->isChecked());
 	xrp.setShowTerminalName(ui->m_show_terminal_name_cb->isChecked());
+	xrp.setShowAllConfiguredSlaves(ui->m_show_all_slaves_cb->isChecked());
 	xrp.setPrefix("power",  ui->m_power_prefix_le->text());
 	xrp.setPrefix("delay",  ui->m_delay_prefix_le->text());
 	xrp.setPrefix("switch", ui->m_switch_prefix_le->text());
@@ -200,10 +203,30 @@ void XRefPropertiesWidget::updateDisplay()
 	else if(xrp.getXrefPos() == Qt::AlignHCenter) ui->m_xrefpos_cb->setCurrentIndex(ui->m_xrefpos_cb->findData("text_field"));
 	ui->m_show_power_cb->setChecked(xrp.showPowerContact());
 	ui->m_show_terminal_name_cb->setChecked(xrp.showTerminalName());
+	ui->m_show_all_slaves_cb->setChecked(xrp.showAllConfiguredSlaves());
+	//The radio button only emits toggled() when it really changes: loading
+	//a type whose display did not change left the checkbox with the enabled
+	//state of the previously displayed type (it stayed clickable although
+	//the cross display was selected). Set the state explicitly here.
+	ui->m_show_all_slaves_cb->setEnabled(
+				ui->m_display_has_contacts_rb->isChecked());
 	ui->m_power_prefix_le-> setText(xrp.prefix("power"));
 	ui->m_delay_prefix_le-> setText(xrp.prefix("delay"));
 	ui->m_switch_prefix_le->setText(xrp.prefix("switch"));
 	ui->m_cross_properties_gb->setDisabled(!ui->m_display_has_cross_rb->isChecked());
+
+	//The cross ref of a PLC master is always drawn as its IO table, and
+	//the slaves are referenced directly into that table: the contacts/
+	//cross choice, the two display checkboxes and the cross options below
+	//have no effect at all for this type, so they are hidden instead of
+	//being offered for nothing. The positioning settings and the labels
+	//(the table really uses them) stay available.
+	const bool is_plc = type == QLatin1String("plc");
+	ui->m_display_has_contacts_rb->setVisible(!is_plc);
+	ui->m_display_has_cross_rb->setVisible(!is_plc);
+	ui->m_show_terminal_name_cb->setVisible(!is_plc);
+	ui->m_show_all_slaves_cb->setVisible(!is_plc);
+	ui->m_cross_properties_gb->setVisible(!is_plc);
 }
 
 /**

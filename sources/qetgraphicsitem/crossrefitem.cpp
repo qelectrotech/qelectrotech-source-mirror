@@ -30,6 +30,8 @@
 #include "terminal.h"
 #include "../properties/elementdata.h"
 
+#include <algorithm>
+
 //define the height of the header.
 static int header = 5;
 //define the minimal height of the cross (without header)
@@ -195,6 +197,37 @@ QString CrossRefItem::elementPositionText(
 }
 
 /**
+	@brief CrossRefItem::showAllConfiguredSlaves
+	@param elmt : the element displaying the cross reference
+	@param xrp : xref properties of that element
+	@return true when the contact comb must show every slave contact the
+	master defines, even those no slave is linked to yet. That is the case
+	when the user asked for it, when the comb (contacts) display is the
+	one in use, and when the master really declares contact groups --
+	an element which declares none behaves exactly as before.
+*/
+bool CrossRefItem::showAllConfiguredSlaves(
+		const Element *elmt,
+		const XRefProperties &xrp)
+{
+	if (!elmt) return false;
+	if (!xrp.showAllConfiguredSlaves()) return false;
+	if (xrp.displayHas() != XRefProperties::Contacts) return false;
+
+	return !elmt->elementData().m_slave_contact_groups.isEmpty();
+}
+
+/**
+	@brief CrossRefItem::mustDrawAllConfiguredSlaves
+	@return showAllConfiguredSlaves for the element of this item and the
+	current properties.
+*/
+bool CrossRefItem::mustDrawAllConfiguredSlaves() const
+{
+	return showAllConfiguredSlaves(m_element, m_properties);
+}
+
+/**
 	@brief CrossRefItem::updateProperties
 	update the current properties
 */
@@ -256,8 +289,11 @@ void CrossRefItem::updateLabel()
 		QTimer::singleShot(0, this, [this]{ update(); });
 		return;
 	}
-	//Draw cross or contact, only if master element is linked.
-	else if (! m_element->linkedElements().isEmpty())
+	//Draw cross or contact, if master element is linked, or if the user
+	//asks for the contact comb to show the contact groups of the master
+	//even before they get a slave.
+	else if (! m_element->linkedElements().isEmpty()
+		 || mustDrawAllConfiguredSlaves())
 	{
 		m_update_map = true;
 		XRefProperties::DisplayHas dh = m_properties.displayHas();
@@ -358,7 +394,8 @@ void CrossRefItem::paint(
 	if (m_element->elementData().m_master_type == ElementData::PLC)
 		return;
 
-	if (m_element->linkedElements().isEmpty()) return;
+	if (m_element->linkedElements().isEmpty()
+	    && !mustDrawAllConfiguredSlaves()) return;
 
 	QPen pen_;
 	pen_.setWidthF(0.5);
@@ -727,6 +764,41 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 	fillCrossRef(painter);
 }
 
+namespace {
+	/**
+		@brief contactOption
+		Map the contact group declared by a master onto the CONTACTS flags
+		used by CrossRefItem::drawContact, so a group no slave is linked to
+		yet is drawn like the slave it waits for.
+		@param group : the contact group of the master
+		@return the flags describing the contact to draw
+	*/
+	int contactOption(const ElementData::SlaveContactGroup &group)
+	{
+		int option = 0;
+
+		switch (group.type)
+		{
+			case ElementData::NO:    option  = CrossRefItem::NO;    break;
+			case ElementData::NC:    option  = CrossRefItem::NC;    break;
+			case ElementData::SW:    option  = CrossRefItem::SW;    break;
+			case ElementData::Other: option  = CrossRefItem::Other; break;
+		}
+
+		switch (group.subtype)
+		{
+			case ElementData::Power:      option += CrossRefItem::Power;      break;
+			case ElementData::DelayOn:    option += CrossRefItem::DelayOn;    break;
+			case ElementData::DelayOff:   option += CrossRefItem::DelayOff;   break;
+			case ElementData::delayOnOff: option += CrossRefItem::DelayOnOff; break;
+			case ElementData::SSimple:
+			case ElementData::PLCSlave:   break;
+		}
+
+		return option;
+	}
+}
+
 /**
 	@brief CrossRefItem::drawAsContacts
 	Draw this crossref with symbolic contacts
@@ -734,37 +806,99 @@ void CrossRefItem::drawAsCross(QPainter &painter)
 */
 void CrossRefItem::drawAsContacts(QPainter &painter)
 {
-	if (m_element -> isFree())
+	if (m_element -> isFree() && !mustDrawAllConfiguredSlaves())
 		return;
 
 	m_drawed_contacts = 0;
 	if (m_update_map) m_hovered_contacts_map.clear();
 	QRectF bounding_rect;
 
-	//Draw each linked contact
-	foreach (Element *elmt,  m_element->linkedElements())
+	//Draw every contact group of the master, in the order the master
+	//defines them, when the user asked for it and the master declares
+	//contact groups. Otherwise the comb keeps its historical behavior:
+	//linked slaves only, in position order.
+	if (mustDrawAllConfiguredSlaves())
 	{
-		DiagramContext info = elmt->kindInformations();
+		const QVector<ElementData::SlaveContactGroup> groups =
+				m_element->elementData().m_slave_contact_groups;
 
-		for (int i=0; i<info["number"].toInt(); i++)
+		//A contact group waits for exactly one slave: a slave assigned to
+		//a group is drawn where the master puts it, whatever its position
+		//on the diagram.
+		QHash<int, Element *> slotted;
+		QList<Element *> unassigned;
+		foreach (Element *elmt, m_element->linkedElements()) //position order
 		{
-			int option = 0;
-
-			QString state = info["state"].toString();
-				 if (state == "NO") option = NO;
-			else if (state == "NC") option = NC;
-			else if (state == "SW") option = SW;
-			else if (state == "Other") option = Other;
-
-			QString type = info["type"].toString();
-				 if (type == "power")    option += Power;
-			else if (type == "delayOn")  option += DelayOn;
-			else if (type == "delayOff") option += DelayOff;
-			else if (type == "delayOnOff") option += DelayOnOff;
-
-			QRectF br = drawContact(painter, option, elmt, i);
-			bounding_rect = bounding_rect.united(br);
+			const int index = m_element->groupIndexForElement(elmt);
+			if (index >= 0 && index < groups.size() && !slotted.contains(index))
+				slotted.insert(index, elmt);
+			else
+				unassigned << elmt;
 		}
+
+		for (int i = 0; i < groups.size(); ++i)
+		{
+			if (Element *slave = slotted.value(i, nullptr))
+				bounding_rect = bounding_rect.united(
+							drawLinkedSlaveContacts(painter, slave));
+			else
+			{
+				//No slave is linked to this group yet: the contact
+				//symbol of the group is drawn with the terminal names
+				//the master defines for it, there is no cross reference
+				//to show for it.
+				const int option = contactOption(groups.at(i));
+				const int poles = qMax(1, groups.at(i).contactCount);
+				QStringList labels = groups.at(i).labels;
+
+				//A single pole simple contact (NO or NC) reads its two
+				//numbers the other way round (checked against the
+				//diagram). Changeover contacts are not handled here:
+				//their labels are mapped to the right contact half in
+				//drawContact(), per pole, so multi pole changeovers work
+				//too. Groups with several NO/NC poles keep the order the
+				//master defines: a 3 pole power contact already reads
+				//correctly that way.
+				if (poles == 1 && (option & NOC))
+					std::reverse(labels.begin(), labels.end());
+
+				//The declared terminals are distributed over the declared
+				//poles. terminalCount and contactCount are edited
+				//independently in the element editor, so the list can be
+				//shorter than two entries per pole (three for a switch):
+				//every pole then gets its share of what exists, instead
+				//of a fixed 2/3 stride starving all but the first poles.
+				const int per_pole = labels.size() / poles;
+				const int extra = labels.size() % poles;
+				int begin = 0;
+				for (int pole = 0; pole < poles; ++pole)
+				{
+					const int count = per_pole + (pole < extra ? 1 : 0);
+					const QStringList pole_labels = labels.mid(begin, count);
+					begin += count;
+					bounding_rect = bounding_rect.united(
+								drawContact(painter,
+									    option,
+									    nullptr,
+									    pole,
+									    pole_labels));
+				}
+			}
+		}
+
+		//Slaves the master doesn't assign to one of its groups (a link
+		//made before the master declared groups, for example) keep their
+		//usual place: the end of the comb, in position order.
+		foreach (Element *elmt, unassigned)
+			bounding_rect = bounding_rect.united(
+						drawLinkedSlaveContacts(painter, elmt));
+	}
+	else
+	{
+		//Draw each linked contact, in position order
+		foreach (Element *elmt,  m_element->linkedElements())
+			bounding_rect = bounding_rect.united(
+						drawLinkedSlaveContacts(painter, elmt));
 	}
 
 	bounding_rect.adjust(-30, -4, 4, 4);
@@ -774,16 +908,60 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 }
 
 /**
+	@brief CrossRefItem::drawLinkedSlaveContacts
+	Draw the contact symbols of one slave linked to this master.
+	@param painter : painter to use
+	@param elmt : the slave element to draw
+	@return the bounding rect of the draw
+*/
+QRectF CrossRefItem::drawLinkedSlaveContacts(QPainter &painter, Element *elmt)
+{
+	QRectF bounding_rect;
+	DiagramContext info = elmt->kindInformations();
+
+	for (int i=0; i<info["number"].toInt(); i++)
+	{
+		int option = 0;
+
+		QString state = info["state"].toString();
+			 if (state == "NO") option = NO;
+		else if (state == "NC") option = NC;
+		else if (state == "SW") option = SW;
+		else if (state == "Other") option = Other;
+
+		QString type = info["type"].toString();
+			 if (type == "power")    option += Power;
+		else if (type == "delayOn")  option += DelayOn;
+		else if (type == "delayOff") option += DelayOff;
+		else if (type == "delayOnOff") option += DelayOnOff;
+
+		bounding_rect = bounding_rect.united(
+					drawContact(painter, option, elmt, i));
+	}
+
+	return bounding_rect;
+}
+
+/**
 	@brief CrossRefItem::drawContact
 	Draw one contact, the type of contact to draw is define in flags.
 	@param painter : painter to use
 	@param flags : define how to draw the contact (see enul CONTACTS)
-	@param elmt : the element to display text (the position of the contact)
+	@param elmt : the element to display text (the position of the contact).
+	It may be nullptr when the contact comes from a contact group the master
+	defines but no slave is linked to yet: no position text, no hover/click
+	support, and the terminal names then come from master_labels.
+	@param pole_index : which contact of the group is drawn (0 based), used
+	to pick the right pair of terminal names of a linked multi-pole contact.
+	@param master_labels : the terminal names the master declares for this
+	pole (sliced from ElementData::SlaveContactGroup::labels by the caller),
+	used when elmt is nullptr so an empty slot shows the numbers the master
+	declares, the same way a linked slave would show them.
 	@return The bounding rect of the draw (contact + text)
 */
-QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, int pole_index)
+QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, int pole_index, const QStringList &master_labels)
 {
-	QString str = elementPositionText(elmt);
+	QString str = elmt ? elementPositionText(elmt) : QString();
 
 	// Collect terminal names from the element definition (.elmt)
 	// e.g. name="13" and name="14" on each terminal
@@ -791,12 +969,12 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 	// For SW contacts with typed terminals (No/Nc/Common), filter by role.
 	QStringList terminal_names;
 	const bool is_power_ctc =
-		elmt->kindInformations()["type"].toString() == "power";
+		elmt && elmt->kindInformations()["type"].toString() == "power";
 	const bool is_sw = (flags & SW) && !(flags & NOC);
 
 	// Check if SW terminals have explicit No/Nc/Common types
 	bool sw_has_typed_terminals = false;
-	if (is_sw) {
+	if (is_sw && elmt) {
 		for (Terminal *t : elmt->terminals()) {
 			if (!t) continue;
 			if (t->terminalType() == TerminalData::No ||
@@ -808,11 +986,34 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		}
 	}
 
-	for (Terminal *t : elmt->terminals()) {
-		if (!t) continue;
-		const QString tname = t->name();
-		if (!tname.isEmpty())
-			terminal_names << tname;
+	if (elmt) {
+		for (Terminal *t : elmt->terminals()) {
+			if (!t) continue;
+			const QString tname = t->name();
+			if (!tname.isEmpty())
+				terminal_names << tname;
+		}
+	} else if (!master_labels.isEmpty()) {
+		//Empty slot of the contact comb: the slave is missing but the
+		//master already declares the terminal names, so the slot shows
+		//them instead of staying mute. master_labels contains exactly
+		//the terminals of this pole (the caller slices the declared
+		//terminal list over the declared poles), in the order a linked
+		//slave would receive them.
+		if (is_sw) {
+			//The labels are stored in terminal order (for a typical
+			//changeover contact: common, NC, NO, i.e. 11, 12, 14), while
+			//the symbol draws NC bottom-left, NO top-left and the common
+			//on the right: every stored entry goes to its own position.
+			//Entries the master doesn't declare (terminal count lower
+			//than three) simply stay empty instead of landing on the
+			//wrong contact half like the raw stored order would.
+			terminal_names << master_labels.value(1)
+			               << master_labels.value(2)
+			               << master_labels.value(0);
+		} else {
+			terminal_names = master_labels;
+		}
 	}
 
 	if (is_power_ctc) {
@@ -860,7 +1061,7 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 	QRectF bounding_rect = QRectF(0, offset, 24, 10);
 	
 	QPen pen = painter.pen();
-	m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
+	elmt && m_hovered_contact == elmt ? pen.setColor(Qt::blue) :pen.setColor(Qt::black);
 	painter.setPen(pen);
 
 	//Draw NO or NC contact
@@ -956,11 +1157,18 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 			}
 		}
 
+		//The hit rect is registered even when the position text is
+		//empty: a linked contact had (and keeps) its hover/click entry
+		//in that case too, only the drawing is skipped. Free slots
+		//(elmt == nullptr) have nothing to click and stay out of the map.
 		QRectF text_rect = painter.boundingRect(QRectF(30, offset, 5, 10), Qt::AlignLeft | Qt::AlignVCenter, str);
-		painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
-		bounding_rect = bounding_rect.united(text_rect);
+		if (!str.isEmpty())
+		{
+			painter.drawText(text_rect, Qt::AlignLeft | Qt::AlignVCenter, str);
+			bounding_rect = bounding_rect.united(text_rect);
+		}
 
-		if (m_update_map)
+		if (m_update_map && elmt)
 			m_hovered_contacts_map.insert(elmt, text_rect);
 
 		++m_drawed_contacts;
@@ -1038,12 +1246,16 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 					QRectF(30, offset+4, 5, 10),
 					Qt::AlignLeft | Qt::AlignVCenter,
 					str);
-		painter.drawText(text_rect,
-				 Qt::AlignLeft | Qt::AlignVCenter,
-				 str);
-		bounding_rect = bounding_rect.united(text_rect);
-
-		if (m_update_map)
+		if (!str.isEmpty())
+		{
+			painter.drawText(text_rect,
+					 Qt::AlignLeft | Qt::AlignVCenter,
+					 str);
+			bounding_rect = bounding_rect.united(text_rect);
+		}
+		//Hit rect kept even for an empty position text (as before),
+		//free slots are not clickable.
+		if (m_update_map && elmt)
 			m_hovered_contacts_map.insert(elmt, text_rect);
 
 			//a switch contact take place of two normal contact
@@ -1067,15 +1279,19 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 
 			//Draw position text
 		QRectF text_rect = painter.boundingRect(
-					QRectF(30, offset, 5, 10), 
-					Qt::AlignLeft | Qt::AlignVCenter, 
-					str);
-		painter.drawText(text_rect,
-					Qt::AlignLeft | Qt::AlignVCenter, 
-					str);
-		bounding_rect = bounding_rect.united(text_rect);
-
-		if (m_update_map)
+						QRectF(30, offset, 5, 10), 
+						Qt::AlignLeft | Qt::AlignVCenter, 
+						str);
+		if (!str.isEmpty())
+		{
+			painter.drawText(text_rect,
+						Qt::AlignLeft | Qt::AlignVCenter, 
+						str);
+			bounding_rect = bounding_rect.united(text_rect);
+		}
+		//Hit rect kept even for an empty position text (as before),
+		//free slots are not clickable.
+		if (m_update_map && elmt)
 			m_hovered_contacts_map.insert(elmt, text_rect);
 		++m_drawed_contacts;
 	}

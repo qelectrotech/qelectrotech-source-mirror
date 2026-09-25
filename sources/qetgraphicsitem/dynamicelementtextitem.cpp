@@ -810,8 +810,12 @@ QVariant DynamicElementTextItem::itemChange(QGraphicsItem::GraphicsItemChange ch
 			connect(m_parent_element.data(), &Element::linkedElementChanged, this, &DynamicElementTextItem::updateXref);
 			if(m_parent_element.data()->diagram())
 				connect(m_parent_element.data()->diagram()->project(), &QETProject::XRefPropertiesChanged, this, &DynamicElementTextItem::updateXref);
-			if(!m_parent_element.data()->linkedElements().isEmpty())
-				updateXref();
+			//Also call updateXref for a master without any linked slave:
+			//when the contact comb must show every contact group the master
+			//defines, the cross ref is expected the moment the element lands
+			//on the diagram, not only after the first link or the first
+			//settings change.
+			updateXref();
 		}
 		
 		m_first_scene_change = false;
@@ -1582,8 +1586,10 @@ void DynamicElementTextItem::updateXref()
 			
 			if(m_text_from == DynamicElementTextItem::ElementInfo &&
 			   m_info_name == "label" &&
-			   !m_parent_element.data()->linkedElements().isEmpty() &&
-			   xrp.snapTo() == XRefProperties::Label)
+			   xrp.snapTo() == XRefProperties::Label &&
+			   (!m_parent_element.data()->linkedElements().isEmpty()
+			    || CrossRefItem::showAllConfiguredSlaves(
+				    m_parent_element.data(), xrp)))
 			{
 				//For add a Xref, this text must not be in a group
 				if(!parentGroup())

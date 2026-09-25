@@ -60,6 +60,9 @@ class XRefProperties : public PropertiesInterface
 	void setShowTerminalName (const bool a) {m_show_terminal_name = a;}
 	bool showTerminalName	 () const		{return m_show_terminal_name;}
 
+	void setShowAllConfiguredSlaves (const bool a) {m_show_all_configured_slaves = a;}
+	bool showAllConfiguredSlaves	 () const	   {return m_show_all_configured_slaves;}
+
 	void setDisplayHas	  (const DisplayHas dh) {m_display = dh;}
 	DisplayHas displayHas () const				{return m_display;}
 
@@ -88,6 +91,7 @@ class XRefProperties : public PropertiesInterface
 	private:
 	bool m_show_power_ctc;
 	bool m_show_terminal_name;
+	bool m_show_all_configured_slaves;
 	DisplayHas m_display;
 	SnapTo m_snap_to;
 	Qt::AlignmentFlag m_xref_pos;
