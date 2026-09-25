@@ -25,14 +25,15 @@ class Diagram;
 class Element;
 class QLineEdit;
 class QListWidget;
+class QListWidgetItem;
 
 /**
 	@brief The JumpToElementDialog class
 	A lightweight, transient "quick open" popup: type part of an element's
 	label or other information to live-filter the elements on a diagram,
 	then Enter to select the chosen element on the diagram and scroll it
-	into view. Typing a cell of the border instead (ex : B13) offers to
-	zoom on that cell. Up/Down move through the filtered list, Escape cancels
+	into view. Typing a cell of the border instead (ex : B13, or 3-B13 for
+	the third folio of the project) offers to zoom on that cell. Up/Down move through the filtered list, Escape cancels
 	without changing the current selection.
 */
 class JumpToElementDialog : public QDialog
@@ -52,7 +53,8 @@ class JumpToElementDialog : public QDialog
 
 	private:
 		void buildCandidates();
-		void zoomToCell(const QRectF &cell_rect);
+		QListWidgetItem *cellItem(const QString &needle) const;
+		void zoomToCell(Diagram *diagram, const QRectF &cell_rect);
 
 		struct Candidate {
 			QPointer<Element> element;
