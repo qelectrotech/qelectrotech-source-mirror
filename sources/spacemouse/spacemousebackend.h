@@ -36,7 +36,9 @@
 	Two implementations, chosen at build time (cmake/find_spacemouse.cmake):
 	SpnavBackend (Linux, through spacenavd/libspnav) and HidBackend (any
 	platform, directly over USB through hidapi, with no 3Dconnexion driver
-	or SDK). Both report the same values for the same movement.
+	or SDK). On macOS a third, ConnexionBackend, reads through 3DxWare and
+	is tried first at run time. All report the same values for the same
+	movement.
 */
 class SpaceMouseBackend : public QObject
 {
