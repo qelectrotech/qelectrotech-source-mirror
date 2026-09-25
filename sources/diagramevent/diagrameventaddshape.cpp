@@ -87,9 +87,9 @@ DiagramEventAddShape::~DiagramEventAddShape()
 	Applies a drag/click position to the in-progress shape, honouring two
 	modifiers that mirror how the very same shape can already be edited
 	afterward, once placed:
-	  - Ctrl, for Rectangle/Ellipse only: the first click becomes the
-	    shape's *center* rather than a corner, growing symmetrically as
-	    the cursor moves away from it -- the same meaning Ctrl already
+	  - Ctrl, for Rectangle/Ellipse only: the first click's point acts as
+	    the shape's *center* rather than a corner, growing symmetrically
+	    as the cursor moves away from it -- the same meaning Ctrl already
 	    has on a Resize handle (anchor at center). Deliberately not
 	    offered for Line: unlike the Rectangle/Ellipse case, there's no
 	    established convention for "a line grows symmetrically from its
@@ -100,12 +100,18 @@ DiagramEventAddShape::~DiagramEventAddShape()
 	    dragged dimensions is currently larger and mirroring that onto
 	    the other, preserving the direction the user is actually
 	    dragging in.
-	Both can combine (Ctrl+Shift: a centered square/circle). Whether or
-	not Ctrl is currently held, the non-anchored branch always rebuilds
-	from m_anchor_point rather than nudging the existing rect/line --
-	otherwise, if Ctrl had been held earlier in the same drag (moving the
-	shape's own first point to a mirrored position), releasing it would
-	leave that point stuck there instead of actually restoring it.
+	Both can combine (Ctrl+Shift: a centered square/circle). Whether Ctrl
+	currently anchors from the center is re-decided on every call, from
+	the live modifiers passed in here -- not frozen at whatever was held
+	on the first click. Every comparable tool (Illustrator, Photoshop,
+	Figma, Inkscape...) lets you press or release the center-origin
+	modifier at any point mid-drag, with the shape immediately jumping to
+	match; that jump is the expected feedback for changing which point is
+	anchored, not a glitch. Freezing the choice at the first click instead
+	meant holding Ctrl anywhere other than the initial mouse-down did
+	nothing visible -- which, tried the more natural way (drag first,
+	then reach for Ctrl once you decide you want it centered), read as
+	"Ctrl doesn't work" rather than as a deliberate one-shot decision.
 */
 void DiagramEventAddShape::applyPosition(const QPointF &pos, Qt::KeyboardModifiers mods)
 {
@@ -125,14 +131,13 @@ void DiagramEventAddShape::applyPosition(const QPointF &pos, Qt::KeyboardModifie
 		return;
 	}
 
-	// m_center_anchored is decided once, in mousePressEvent, not
-	// re-checked here on every call -- re-checking it live meant
-	// releasing Ctrl mid-drag (something you'd naturally do the moment
-	// your hand gets tired holding it, long before you're done resizing)
-	// silently snapped the shape back to corner-anchored, discarding
-	// what felt like an already-made decision. Deciding it once at the
-	// first click matches "I held Ctrl when I clicked, so this shape is
-	// centered" -- a single, predictable rule instead of a live toggle.
+	m_center_anchored = (mods & Qt::ControlModifier)
+			&& (m_shape_type == QetShapeItem::Rectangle || m_shape_type == QetShapeItem::Ellipse);
+	if (m_center_anchored)
+		showCenterMarker(m_anchor_point);
+	else
+		hideCenterMarker();
+
 	QPointF target = pos;
 
 	if ((mods & Qt::ShiftModifier)
@@ -218,10 +223,9 @@ void DiagramEventAddShape::mousePressEvent(QGraphicsSceneMouseEvent *event)
 		{
 			m_shape_item = new QetShapeItem(pos, pos, m_shape_type);
 			m_anchor_point = pos;
-			// Decided once, here, rather than re-checked on every mouse
-			// move for the rest of the drag -- see applyPosition()'s doc
-			// comment for why continuous re-checking made releasing Ctrl
-			// mid-drag feel like a bug rather than a deliberate choice.
+			// Initial feedback only -- applyPosition() re-decides this
+			// live on every subsequent move, from whatever Ctrl state is
+			// held at the time.
 			m_center_anchored = (event->modifiers() & Qt::ControlModifier)
 					&& (m_shape_type == QetShapeItem::Rectangle || m_shape_type == QetShapeItem::Ellipse);
 			if (m_center_anchored)

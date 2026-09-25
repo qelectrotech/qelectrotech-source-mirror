@@ -2385,7 +2385,7 @@ void QetShapeItem::dragResize(int index, const QPointF &localPos, Qt::KeyboardMo
 			: QetGraphicsHandlerUtility::rectForPosAtIndex(localRect(), localPos, index);
 
 	if (mods & Qt::ShiftModifier)
-		newRect = lockAspectRatio(localRect(), newRect, index, mirrored);
+		newRect = lockAspectRatio(QRectF(m_old_P1, m_old_P2).normalized(), newRect, index, mirrored);
 
 	setRect(newRect.normalized());
 }
