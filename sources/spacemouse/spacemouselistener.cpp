@@ -22,6 +22,9 @@
 #ifdef QET_SPACEMOUSE_BACKEND_SPNAV
 #	include "spnavbackend.h"
 #endif
+#ifdef QET_SPACEMOUSE_BACKEND_HID
+#	include "hidbackend.h"
+#endif
 
 #include "../diagramview.h"
 #include "../editor/elementview.h"
@@ -45,12 +48,11 @@ SpaceMouseListener::SpaceMouseListener(QObject *parent) :
 	QObject(parent),
 	m_settings(SpaceMouseSettings::load())
 {
-#ifdef QET_SPACEMOUSE_BACKEND_SPNAV
+#if defined(QET_SPACEMOUSE_BACKEND_SPNAV)
 	m_backend = new SpnavBackend(this);
+#elif defined(QET_SPACEMOUSE_BACKEND_HID)
+	m_backend = new HidBackend(this);
 #endif
-		//A future Windows/macOS backend (3Dconnexion's proprietary 3DxWare
-		//SDK) slots in here behind its own QET_SPACEMOUSE_BACKEND_3DXWARE
-		//guard, without changing anything below this constructor.
 
 	if (m_backend) {
 		connect(m_backend, &SpaceMouseBackend::motion,

@@ -20,44 +20,64 @@ message(" - find_spacemouse")
 # so none of this runs, and the default build is entirely unaffected: no new
 # dependency, no new source files, no new symbols.
 #
-# When it is on, the platform decides which backend (if any) is available --
-# see sources/spacemouse/spacemousebackend.h for what a backend is. Only one
-# exists today: SpnavBackend, Linux, via libspnav. A Windows/macOS backend
-# would need 3Dconnexion's proprietary 3DxWare SDK and is not implemented
-# (see discussion #599's own phase split); until it is, turning this option
-# on there downgrades cleanly with a warning rather than failing configure.
+# When it is on, QET_SPACEMOUSE_BACKEND picks how the device is read -- see
+# sources/spacemouse/spacemousebackend.h for what a backend is:
+#   spnav  Linux, through the spacenavd daemon (libspnav)
+#   hid    any platform, directly over USB (hidapi), no 3Dconnexion driver
+#   auto   spnav on Linux when libspnav is found, hid otherwise
+# A backend whose library is not found downgrades the option to off with a
+# warning, rather than failing configure for an opt-in feature.
+set(QET_SPACEMOUSE_BACKEND "auto" CACHE STRING "3D mouse backend: auto, spnav or hid")
+set_property(CACHE QET_SPACEMOUSE_BACKEND PROPERTY STRINGS auto spnav hid)
+
 set(QET_SPACEMOUSE_ENABLED FALSE)
 set(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED FALSE)
+set(QET_SPACEMOUSE_BACKEND_HID_ENABLED FALSE)
 
 if(QET_ENABLE_SPACEMOUSE)
-    if(UNIX AND NOT APPLE)
-        # libspnav is looked for via its pkg-config file (present on every
-        # distro package of it this was checked against: Debian/Ubuntu's
-        # libspnav-dev ships /usr/share/pkgconfig/spnav.pc). Not found does
-        # not hard-fail the whole configure -- it downgrades the option back
-        # to off with a clear message, so a developer who doesn't have the
-        # library installed still gets a normal build instead of a configure
-        # error for an opt-in feature they didn't ask to block on.
-        find_package(PkgConfig)
-        if(PkgConfig_FOUND)
-            pkg_check_modules(SPNAV IMPORTED_TARGET spnav)
-        endif()
+    find_package(PkgConfig)
 
+    set(_qet_spacemouse_try_spnav FALSE)
+    set(_qet_spacemouse_try_hid FALSE)
+    if(QET_SPACEMOUSE_BACKEND STREQUAL "spnav")
+        set(_qet_spacemouse_try_spnav TRUE)
+    elseif(QET_SPACEMOUSE_BACKEND STREQUAL "hid")
+        set(_qet_spacemouse_try_hid TRUE)
+    else()
+        if(UNIX AND NOT APPLE)
+            set(_qet_spacemouse_try_spnav TRUE)
+        endif()
+        set(_qet_spacemouse_try_hid TRUE)
+    endif()
+
+    # libspnav: Debian/Ubuntu's libspnav-dev ships spnav.pc.
+    if(_qet_spacemouse_try_spnav AND PkgConfig_FOUND)
+        pkg_check_modules(SPNAV IMPORTED_TARGET spnav)
         if(SPNAV_FOUND)
             set(QET_SPACEMOUSE_ENABLED TRUE)
             set(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED TRUE)
-            add_definitions(-DQET_SPACEMOUSE_SUPPORT)
             add_definitions(-DQET_SPACEMOUSE_BACKEND_SPNAV)
             message("QET_ENABLE_SPACEMOUSE      ON  (backend: libspnav ${SPNAV_VERSION})")
-        else()
-            message(WARNING "QET_ENABLE_SPACEMOUSE is ON but libspnav was not found via pkg-config "
-                             "(install libspnav-dev, or the equivalent for your distribution) -- "
-                             "building WITHOUT 3D mouse support.")
         endif()
+    endif()
+
+    # hidapi: hidapi-hidraw.pc on Linux (libhidapi-dev), hidapi.pc from
+    # MSYS2 (mingw-w64-ucrt-x86_64-hidapi) and Homebrew (hidapi).
+    if(NOT QET_SPACEMOUSE_ENABLED AND _qet_spacemouse_try_hid AND PkgConfig_FOUND)
+        pkg_search_module(HIDAPI IMPORTED_TARGET hidapi-hidraw hidapi)
+        if(HIDAPI_FOUND)
+            set(QET_SPACEMOUSE_ENABLED TRUE)
+            set(QET_SPACEMOUSE_BACKEND_HID_ENABLED TRUE)
+            add_definitions(-DQET_SPACEMOUSE_BACKEND_HID)
+            message("QET_ENABLE_SPACEMOUSE      ON  (backend: hidapi ${HIDAPI_VERSION})")
+        endif()
+    endif()
+
+    if(QET_SPACEMOUSE_ENABLED)
+        add_definitions(-DQET_SPACEMOUSE_SUPPORT)
     else()
-        message(WARNING "QET_ENABLE_SPACEMOUSE is ON but no 3D mouse backend is implemented yet "
-                         "for this platform (only Linux/libspnav exists today -- see "
-                         "https://github.com/qelectrotech/qelectrotech-source-mirror/discussions/599) "
-                         "-- building WITHOUT 3D mouse support.")
+        message(WARNING "QET_ENABLE_SPACEMOUSE is ON but no library was found for the "
+                         "'${QET_SPACEMOUSE_BACKEND}' backend (libspnav-dev for spnav, "
+                         "hidapi for hid, via pkg-config) -- building WITHOUT 3D mouse support.")
     endif()
 endif()

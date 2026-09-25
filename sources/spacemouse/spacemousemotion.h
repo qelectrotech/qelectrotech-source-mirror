@@ -85,7 +85,9 @@ namespace SpaceMouseMotion
 	constexpr qint64 MAX_PERIOD_MS = 100;
 
 		/// @return how many nominal periods a sample covers, given the
-		/// milliseconds since the previous one (negative = no previous one)
+		/// milliseconds since the previous one: none for a sample in the
+		/// same millisecond (it covers no time), one for the first sample
+		/// or the first after a rest (elapsed negative or over the maximum)
 	qreal stepFor(qint64 elapsed_ms);
 
 		/// @return \a value with \a dead_zone removed: 0 inside it, and

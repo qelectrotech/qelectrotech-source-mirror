@@ -173,8 +173,9 @@ endif()
 if(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED)
     list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::SPNAV)
 endif()
-# A future Windows/macOS (3DxWare) backend would list.APPEND its own SDK
-# libraries here, behind its own *_ENABLED guard, alongside this one.
+if(QET_SPACEMOUSE_BACKEND_HID_ENABLED)
+    list(APPEND QET_SPACEMOUSE_LIBRARIES PkgConfig::HIDAPI)
+endif()
 
 if(APPLE)
     # CFBundleIdentifier must not be empty. CMake's default Info.plist
