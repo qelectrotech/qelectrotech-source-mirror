@@ -21,6 +21,8 @@
 #include <QSet>
 #include <QPointF>
 #include <QHash>
+#include <QPointer>
+#include <QStatusBar>
 
 class QGraphicsItem;
 class DiagramTextItem;
@@ -55,6 +57,7 @@ class ElementTextsMover
 		QHash <DiagramTextItem *, QPointF> m_texts_hash;
 		QHash <QGraphicsItemGroup *, QPointF> m_grps_hash;
 		QHash <QGraphicsItem *, QPointF> m_items_hash;
+		QPointer<QStatusBar> m_status_bar;
 		int m_text_count = 0,
 			m_group_count = 0;
 };

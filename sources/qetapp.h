@@ -260,6 +260,10 @@ class QETApp : public QObject
 		
 		static QString m_interface_language;
 	
+	signals:
+			/// The text grid setting changed, see TextGrid.
+		void textGridChanged();
+
 	public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
 		void reduceEveryEditor();

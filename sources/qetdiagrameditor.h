@@ -166,6 +166,7 @@ class QETDiagramEditor : public QETMainWindow
 		void subWindowActivated(QMdiSubWindow *subWindows);
 
 	private slots:
+		void updateTextGridButton();
 		void selectionChanged();
 
 	public:

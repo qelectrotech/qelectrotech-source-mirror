@@ -784,6 +784,26 @@ Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments
             </property>
            </spacer>
           </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="Label_Diagram_textGrid">
+            <property name="text">
+             <string>Grille des textes déplacés à la souris</string>
+            </property>
+            <property name="toolTip">
+             <string>Fraction de la grille des folios. Maintenir Ctrl pendant le déplacement pour placer librement.</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QComboBox" name="DiagramEditor_textGrid_cb">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
