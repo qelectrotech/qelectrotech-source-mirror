@@ -33,34 +33,6 @@
 #include <QApplication>
 #include <QScrollBar>
 
-namespace {
-		//A device motion delta is an integer on roughly the same order of
-		//magnitude as a QWheelEvent::angleDelta() tick (about +-120 per
-		//detent, more under a hard push/twist -- exact range depends on the
-		//backend and the user's own driver-level sensitivity setting, which
-		//is configured outside QET and out of scope here).
-		//DiagramView::wheelEvent() already turns such a tick into a small
-		//per-event zoom step via zoom(1 + value/1000); reused as a starting
-		//point.
-		//
-		//Neither this divisor nor PAN_SCALE below has been calibrated
-		//against real hardware -- there is none in the environment this was
-		//built in. Both are named constants specifically so that is a
-		//one-line fix once someone with a device tries it.
-	constexpr qreal ZOOM_DIVISOR = 1000.0;
-	constexpr qreal PAN_SCALE = 1.0;
-
-		//Pan a view by one motion sample, through its scrollbars -- the same
-		//way both editors' own middle-button drag pans them.
-	void panView(QGraphicsView *view, int dx, int dy)
-	{
-		view->horizontalScrollBar()->setValue(
-			view->horizontalScrollBar()->value() - qRound(dx * PAN_SCALE));
-		view->verticalScrollBar()->setValue(
-			view->verticalScrollBar()->value() - qRound(dy * PAN_SCALE));
-	}
-}
-
 /**
 	@brief SpaceMouseListener::SpaceMouseListener
 	Construct whichever backend is available for this platform and connect
@@ -70,7 +42,8 @@ namespace {
 	@param parent
 */
 SpaceMouseListener::SpaceMouseListener(QObject *parent) :
-	QObject(parent)
+	QObject(parent),
+	m_settings(SpaceMouseSettings::load())
 {
 #ifdef QET_SPACEMOUSE_BACKEND_SPNAV
 	m_backend = new SpnavBackend(this);
@@ -97,34 +70,40 @@ bool SpaceMouseListener::isAvailable() const
 }
 
 /**
-	@brief SpaceMouseListener::zoomFactorForZAxis
-	@param z : raw Z-axis (push/pull) delta from a device motion sample
-	@return the multiplicative factor DiagramView::zoom() expects
+	@brief SpaceMouseListener::reloadSettings
 */
-qreal SpaceMouseListener::zoomFactorForZAxis(int z)
+void SpaceMouseListener::reloadSettings()
 {
-	return 1.0 + (static_cast<qreal>(z) / ZOOM_DIVISOR);
+	m_settings = SpaceMouseSettings::load();
 }
 
 /**
 	@brief SpaceMouseListener::applyMotion
 	Apply one motion sample to the view of the active window: the current
 	folio of a diagram editor, or the drawing of an element editor.
-	X/Y translation pans it, Z translation zooms it -- the same two
-	primitives (scrollbars, zoom()) each view's wheelEvent() already drives
-	from a physical wheel, so there is no new navigation logic here, only a
-	new input source feeding the existing one.
-
-	Which of a device's three translation axes is "left/right" vs
-	"forward/back" vs "up/down", and their sign, is a hardware convention
-	this could not be checked against real hardware while writing it -- see
-	the PR description.
-	@param dx
-	@param dy
-	@param dz
+	Translation pans it and push/pull (or twist, per the user's settings)
+	zooms it -- the same two primitives (scrollbars, zoom()) each view's
+	wheelEvent() already drives from a physical wheel, so there is no new
+	navigation logic here, only a new input source feeding the existing one.
+	@param sample
 */
-void SpaceMouseListener::applyMotion(int dx, int dy, int dz)
+void SpaceMouseListener::applyMotion(const SpaceMouseSample &sample)
 {
+	const qint64 elapsed_ms = m_since_last_sample.isValid()
+			? m_since_last_sample.restart()
+			: -1;
+	if (!m_since_last_sample.isValid()) {
+		m_since_last_sample.start();
+	}
+	if (elapsed_ms < 0 || elapsed_ms > SpaceMouseMotion::MAX_PERIOD_MS) {
+			//the device was at rest: nothing left over to carry on with
+		m_scroll_remainder = QPointF();
+	}
+
+	const SpaceMouseViewMotion motion =
+			SpaceMouseMotion::map(sample, elapsed_ms, m_settings);
+	const bool pans = motion.scroll_x != 0 || motion.scroll_y != 0;
+	const bool zooms = motion.zoom_factor != 1.0;
 	QWidget *window = qApp->activeWindow();
 
 	if (auto *editor = qobject_cast<QETDiagramEditor *>(window))
@@ -139,11 +118,11 @@ void SpaceMouseListener::applyMotion(int dx, int dy, int dz)
 			return;
 		}
 
-		if (dx || dy) {
-			panView(view, dx, dy);
+		if (pans) {
+			scrollView(view, motion.scroll_x, motion.scroll_y);
 		}
-		if (dz) {
-			view->zoom(zoomFactorForZAxis(dz));
+		if (zooms) {
+			view->zoom(motion.zoom_factor);
 		}
 	}
 	else if (auto *element_editor = qobject_cast<QETElementEditor *>(window))
@@ -153,19 +132,39 @@ void SpaceMouseListener::applyMotion(int dx, int dy, int dz)
 			return;
 		}
 
-		if (dx || dy)
+		if (pans)
 		{
 				//The element editor's scene rect only just covers what is
 				//on screen, so grow it before each sample, as its own
 				//middle-button pan does on release -- otherwise the
 				//scrollbars have no range and the pan does nothing.
 			view->adjustSceneRect();
-			panView(view, dx, dy);
+			scrollView(view, motion.scroll_x, motion.scroll_y);
 		}
-		if (dz) {
-			view->zoom(zoomFactorForZAxis(dz));
+		if (zooms) {
+			view->zoom(motion.zoom_factor);
 		}
 	}
+}
+
+/**
+	@brief SpaceMouseListener::scrollView
+	Move a view's scrollbars by (\a dx, \a dy) pixels -- the same way both
+	editors' own middle-button drag pans them -- keeping the fractional part
+	for the next sample.
+	@param view
+	@param dx
+	@param dy
+*/
+void SpaceMouseListener::scrollView(QGraphicsView *view, qreal dx, qreal dy)
+{
+	m_scroll_remainder += QPointF(dx, dy);
+	const int whole_x = qRound(m_scroll_remainder.x());
+	const int whole_y = qRound(m_scroll_remainder.y());
+	m_scroll_remainder -= QPointF(whole_x, whole_y);
+
+	view->horizontalScrollBar()->setValue(view->horizontalScrollBar()->value() + whole_x);
+	view->verticalScrollBar()->setValue(view->verticalScrollBar()->value() + whole_y);
 }
 
 /**

@@ -20,9 +20,13 @@
 #include "../../qeticons.h"
 #include "../../shortcutmanager.h"
 #include "../../spacemouse/spacemousebuttonmap.h"
+#include "../../spacemouse/spacemousemotion.h"
 
+#include <QCheckBox>
 #include <QComboBox>
+#include <QFormLayout>
 #include <QFrame>
+#include <QGroupBox>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QLabel>
@@ -61,6 +65,8 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	horiz_line->setFrameShape(QFrame::HLine);
 	vlayout->addWidget(horiz_line);
 
+	vlayout->addWidget(buildMotionGroup());
+
 	auto *intro_label = new QLabel(
 		tr("Associez un numéro de bouton de votre souris 3D (SpaceMouse, SpacePilot...) "
 		   "à une action de QElectroTech. Le numéro de bouton dépend de votre appareil "
@@ -68,7 +74,9 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 		   "les valeurs à partir de 0.",
 		   "spacemouse config page intro"));
 	intro_label->setWordWrap(true);
-	vlayout->addWidget(intro_label);
+
+	auto *buttons_layout = new QVBoxLayout();
+	buttons_layout->addWidget(intro_label);
 
 	m_table = new QTableWidget(0, 3, this);
 	m_table->setHorizontalHeaderLabels({tr("N° bouton"), tr("Action"), QString()});
@@ -78,7 +86,7 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	m_table->verticalHeader()->setVisible(false);
 	m_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 	m_table->setSelectionMode(QAbstractItemView::NoSelection);
-	vlayout->addWidget(m_table);
+	buttons_layout->addWidget(m_table);
 
 	auto *add_button = new QPushButton(QET::Icons::Add, tr("Ajouter une association"), this);
 	connect(add_button, &QPushButton::clicked, this, &SpaceMouseConfigPage::addRow);
@@ -86,7 +94,11 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 	auto *bottom_layout = new QHBoxLayout();
 	bottom_layout->addWidget(add_button);
 	bottom_layout->addStretch();
-	vlayout->addLayout(bottom_layout);
+	buttons_layout->addLayout(bottom_layout);
+
+	auto *buttons_group = new QGroupBox(tr("Boutons"), this);
+	buttons_group->setLayout(buttons_layout);
+	vlayout->addWidget(buttons_group);
 
 	setLayout(vlayout);
 
@@ -95,6 +107,61 @@ SpaceMouseConfigPage::SpaceMouseConfigPage(QWidget *parent) :
 
 SpaceMouseConfigPage::~SpaceMouseConfigPage()
 {
+}
+
+/**
+	@brief SpaceMouseConfigPage::buildMotionGroup
+	@return the "motion" part of the page, filled from the saved
+	SpaceMouseSettings
+*/
+QGroupBox *SpaceMouseConfigPage::buildMotionGroup()
+{
+	const SpaceMouseSettings settings = SpaceMouseSettings::load();
+
+	auto speed_box = [this](int value) {
+		auto *spin = new QSpinBox(this);
+		spin->setRange(10, 400);
+		spin->setSingleStep(10);
+		spin->setSuffix(QStringLiteral(" %"));
+		spin->setValue(value);
+		return spin;
+	};
+	m_pan_speed = speed_box(settings.pan_speed);
+	m_zoom_speed = speed_box(settings.zoom_speed);
+
+	m_dead_zone = new QSpinBox(this);
+	m_dead_zone->setRange(0, 200);
+	m_dead_zone->setValue(settings.dead_zone);
+	m_dead_zone->setToolTip(tr("Les petits mouvements en dessous de ce seuil sont ignorés. "
+				   "Augmentez-le si la vue dérive quand vous ne touchez pas la souris."));
+
+	m_zoom_axis = new QComboBox(this);
+	m_zoom_axis->addItem(tr("Pousser / tirer le capuchon"),
+			     static_cast<int>(SpaceMouseSettings::ZoomAxis::PushPull));
+	m_zoom_axis->addItem(tr("Tourner le capuchon"),
+			     static_cast<int>(SpaceMouseSettings::ZoomAxis::Twist));
+	m_zoom_axis->setCurrentIndex(
+		m_zoom_axis->findData(static_cast<int>(settings.zoom_axis)));
+
+	m_invert_pan_x = new QCheckBox(tr("Inverser le déplacement horizontal"), this);
+	m_invert_pan_x->setChecked(settings.invert_pan_x);
+	m_invert_pan_y = new QCheckBox(tr("Inverser le déplacement vertical"), this);
+	m_invert_pan_y->setChecked(settings.invert_pan_y);
+	m_invert_zoom = new QCheckBox(tr("Inverser le zoom"), this);
+	m_invert_zoom->setChecked(settings.invert_zoom);
+
+	auto *form = new QFormLayout();
+	form->addRow(tr("Vitesse de déplacement :"), m_pan_speed);
+	form->addRow(tr("Vitesse du zoom :"), m_zoom_speed);
+	form->addRow(tr("Zoomer en :"), m_zoom_axis);
+	form->addRow(tr("Zone morte :"), m_dead_zone);
+	form->addRow(m_invert_pan_x);
+	form->addRow(m_invert_pan_y);
+	form->addRow(m_invert_zoom);
+
+	auto *group = new QGroupBox(tr("Mouvement"), this);
+	group->setLayout(form);
+	return group;
 }
 
 /**
@@ -187,8 +254,9 @@ void SpaceMouseConfigPage::removeSelectedRow()
 
 /**
 	@brief SpaceMouseConfigPage::applyConf
-	Persist exactly what the table currently shows: every previously saved
-	binding is cleared first, then every row still in the table (after any
+	Save the motion settings, then persist exactly what the table
+	currently shows: every previously saved binding is cleared first,
+	then every row still in the table (after any
 	adds/edits/removals) is written back. Simpler and less error-prone than
 	tracking which individual rows changed, and cheap -- this runs once,
 	when the user validates the surrounding ConfigDialog, not on every
@@ -196,6 +264,17 @@ void SpaceMouseConfigPage::removeSelectedRow()
 */
 void SpaceMouseConfigPage::applyConf()
 {
+	SpaceMouseSettings settings;
+	settings.pan_speed = m_pan_speed->value();
+	settings.zoom_speed = m_zoom_speed->value();
+	settings.dead_zone = m_dead_zone->value();
+	settings.zoom_axis = static_cast<SpaceMouseSettings::ZoomAxis>(
+		m_zoom_axis->currentData().toInt());
+	settings.invert_pan_x = m_invert_pan_x->isChecked();
+	settings.invert_pan_y = m_invert_pan_y->isChecked();
+	settings.invert_zoom = m_invert_zoom->isChecked();
+	settings.save();
+
 	const QMap<int, QString> previous = SpaceMouseButtonMap::allBindings();
 	for (auto it = previous.constBegin(); it != previous.constEnd(); ++it) {
 		SpaceMouseButtonMap::setActionId(it.key(), QString());

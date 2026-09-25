@@ -65,10 +65,14 @@ void SpnavBackend::readEvents()
 	while (spnav_poll_event(&event))
 	{
 		if (event.type == SPNAV_EVENT_MOTION) {
-				//A 6-DOF device also reports rotation (rx, ry, rz); QET's
-				//view has nothing rotation maps to, so those three axes are
-				//read by nothing here.
-			emit motion(event.motion.x, event.motion.y, event.motion.z);
+			SpaceMouseSample sample;
+			sample.x = event.motion.x;
+			sample.y = event.motion.y;
+			sample.z = event.motion.z;
+			sample.rx = event.motion.rx;
+			sample.ry = event.motion.ry;
+			sample.rz = event.motion.rz;
+			emit motion(sample);
 		}
 		else if (event.type == SPNAV_EVENT_BUTTON && event.button.press) {
 				//Release (press == 0) is not reported -- SpaceMouseListener

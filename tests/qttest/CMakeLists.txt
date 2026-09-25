@@ -181,6 +181,17 @@ add_test(NAME tst_sheetbackgroundsetting COMMAND tst_sheetbackgroundsetting)
 target_include_directories(tst_sheetbackgroundsetting PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_sheetbackgroundsetting PRIVATE Qt::Test Qt::Gui)
 
+# SpaceMouseMotion::map() -- how a 3D mouse sample pans and zooms a view.
+# Pure code with no device or widget behind it, so it is built and run
+# whether or not QET_ENABLE_SPACEMOUSE is on.
+add_executable(
+  tst_spacemousemotion
+  tst_spacemousemotion.cpp
+  ${QET_DIR}/sources/spacemouse/spacemousemotion.cpp)
+add_test(NAME tst_spacemousemotion COMMAND tst_spacemousemotion)
+target_include_directories(tst_spacemousemotion PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_spacemousemotion PRIVATE Qt::Test Qt::Core)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately
