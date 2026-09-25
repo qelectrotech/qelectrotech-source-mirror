@@ -24,6 +24,7 @@ Nothing is sent anywhere.
 
     sudo python3 spacemouse-capture.py            # finds the device itself
     sudo python3 spacemouse-capture.py --list     # just show what it finds
+    sudo python3 spacemouse-capture.py --seconds 3  # 3x the time per step
 
 sudo is needed because /dev/hidraw* is usually readable by root only.
 spacenavd can keep running. If the recording comes out empty, stop it
@@ -121,6 +122,8 @@ def main():
     ap.add_argument('--descriptor', help=argparse.SUPPRESS)  # testing without a device
     ap.add_argument('--yes', action='store_true', help=argparse.SUPPRESS)  # no Enter prompts
     ap.add_argument('-o', '--output', help='output file (default: spacemouse-capture-<product>.json)')
+    ap.add_argument('--seconds', type=float, default=1.0,
+                     help='multiply each step\'s recording time (default: 1.0, e.g. 3 triples it)')
     args = ap.parse_args()
 
     devices = find_devices()
@@ -168,9 +171,10 @@ def main():
     }
     try:
         for i, (key, text, seconds) in enumerate(STEPS, 1):
+            seconds = seconds * args.seconds
             print('[%d/%d] %s' % (i, len(STEPS), text))
             if not args.yes:
-                input('      Press Enter to start (%d s)... ' % seconds)
+                input('      Press Enter to start (%.0f s)... ' % seconds)
             reports = record(fd, seconds)
             print('      %d reports recorded.\n' % len(reports))
             result['steps'].append({'step': key, 'instruction': text, 'reports': reports})
