@@ -24,6 +24,8 @@
 #endif
 
 #include "../diagramview.h"
+#include "../editor/elementview.h"
+#include "../editor/ui/qetelementeditor.h"
 #include "../projectview.h"
 #include "../qetdiagrameditor.h"
 #include "../shortcutmanager.h"
@@ -47,6 +49,16 @@ namespace {
 		//one-line fix once someone with a device tries it.
 	constexpr qreal ZOOM_DIVISOR = 1000.0;
 	constexpr qreal PAN_SCALE = 1.0;
+
+		//Pan a view by one motion sample, through its scrollbars -- the same
+		//way both editors' own middle-button drag pans them.
+	void panView(QGraphicsView *view, int dx, int dy)
+	{
+		view->horizontalScrollBar()->setValue(
+			view->horizontalScrollBar()->value() - qRound(dx * PAN_SCALE));
+		view->verticalScrollBar()->setValue(
+			view->verticalScrollBar()->value() - qRound(dy * PAN_SCALE));
+	}
 }
 
 /**
@@ -96,11 +108,12 @@ qreal SpaceMouseListener::zoomFactorForZAxis(int z)
 
 /**
 	@brief SpaceMouseListener::applyMotion
-	Apply one motion sample to whichever DiagramView is currently active.
+	Apply one motion sample to the view of the active window: the current
+	folio of a diagram editor, or the drawing of an element editor.
 	X/Y translation pans it, Z translation zooms it -- the same two
-	primitives (scrollbars, DiagramView::zoom()) DiagramView::wheelEvent()
-	already drives from a physical wheel, so there is no new navigation
-	logic here, only a new input source feeding the existing one.
+	primitives (scrollbars, zoom()) each view's wheelEvent() already drives
+	from a physical wheel, so there is no new navigation logic here, only a
+	new input source feeding the existing one.
 
 	Which of a device's three translation axes is "left/right" vs
 	"forward/back" vs "up/down", and their sign, is a hardware convention
@@ -112,31 +125,46 @@ qreal SpaceMouseListener::zoomFactorForZAxis(int z)
 */
 void SpaceMouseListener::applyMotion(int dx, int dy, int dz)
 {
-	auto *editor = qobject_cast<QETDiagramEditor *>(qApp->activeWindow());
-	if (!editor) {
-		return;
-	}
+	QWidget *window = qApp->activeWindow();
 
-	ProjectView *project_view = editor->currentProjectView();
-	if (!project_view) {
-		return;
-	}
-
-	DiagramView *view = project_view->currentDiagram();
-	if (!view) {
-		return;
-	}
-
-	if (dx || dy)
+	if (auto *editor = qobject_cast<QETDiagramEditor *>(window))
 	{
-		view->horizontalScrollBar()->setValue(
-			view->horizontalScrollBar()->value() - qRound(dx * PAN_SCALE));
-		view->verticalScrollBar()->setValue(
-			view->verticalScrollBar()->value() - qRound(dy * PAN_SCALE));
-	}
+		ProjectView *project_view = editor->currentProjectView();
+		if (!project_view) {
+			return;
+		}
 
-	if (dz) {
-		view->zoom(zoomFactorForZAxis(dz));
+		DiagramView *view = project_view->currentDiagram();
+		if (!view) {
+			return;
+		}
+
+		if (dx || dy) {
+			panView(view, dx, dy);
+		}
+		if (dz) {
+			view->zoom(zoomFactorForZAxis(dz));
+		}
+	}
+	else if (auto *element_editor = qobject_cast<QETElementEditor *>(window))
+	{
+		ElementView *view = element_editor->elementView();
+		if (!view) {
+			return;
+		}
+
+		if (dx || dy)
+		{
+				//The element editor's scene rect only just covers what is
+				//on screen, so grow it before each sample, as its own
+				//middle-button pan does on release -- otherwise the
+				//scrollbars have no range and the pan does nothing.
+			view->adjustSceneRect();
+			panView(view, dx, dy);
+		}
+		if (dz) {
+			view->zoom(zoomFactorForZAxis(dz));
+		}
 	}
 }
 
