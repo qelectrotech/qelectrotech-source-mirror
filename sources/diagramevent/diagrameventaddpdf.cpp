@@ -135,21 +135,35 @@ void DiagramEventAddPdf::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) 
 */
 void DiagramEventAddPdf::wheelEvent(QGraphicsSceneWheelEvent *event)
 {
-	if (!m_is_added || !m_image || event->modifiers() != Qt::CTRL) {
+	// event->modifiers() & Qt::ControlModifier, not != Qt::CTRL: the same
+	// exact-equality bug already found and fixed elsewhere this session --
+	// Ctrl held together with any other modifier would silently fail to
+	// register as Ctrl at all.
+	if (!m_is_added || !m_image || !(event->modifiers() & Qt::ControlModifier)) {
 		return;
 	}
 
-	// scaleFactorX(), not QGraphicsItem's own scale(): see
+	// scaleFactorX()/scaleFactorY(), not QGraphicsItem's own scale(): see
 	// DiagramEventAddImage's identical fix for why. No drag-to-resize
 	// exists here, and the pivot is never touched elsewhere in this
 	// class, so it stays at its default boundingRect().center() and this
 	// scales the page in place around its own middle, exactly like
 	// before.
-	qreal scaling = m_image->scaleFactorX();
-	event->delta() > 1 ? scaling += 0.01 : scaling -= 0.01;
-	if (scaling > 0.01 && scaling <= 2) {
-		m_image->setScaleFactorX(scaling);
-		m_image->setScaleFactorY(scaling);
+	//
+	// Step each axis from its own current value rather than reading X and
+	// writing it back to both: scaleFactorX and scaleFactorY cannot
+	// actually differ here today (nothing in this class ever sets them to
+	// different values, and there is no drag-resize at all), but stepping
+	// both independently costs nothing and removes the trap if that ever
+	// changes.
+	qreal scalingX = m_image->scaleFactorX();
+	qreal scalingY = m_image->scaleFactorY();
+	const qreal step = event->delta() > 1 ? 0.01 : -0.01;
+	scalingX += step;
+	scalingY += step;
+	if (scalingX > 0.01 && scalingX <= 2 && scalingY > 0.01 && scalingY <= 2) {
+		m_image->setScaleFactorX(scalingX);
+		m_image->setScaleFactorY(scalingY);
 	}
 
 	event->setAccepted(true);

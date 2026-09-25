@@ -287,18 +287,32 @@ void DiagramEventAddImage::wheelEvent(QGraphicsSceneWheelEvent *event)
 		return;
 	}
 	
-	// scaleFactorX(), not QGraphicsItem's own scale(): see the right-click
-	// rotate comment in mousePressEvent for why. Wheel-scaling only ever
-	// runs while !m_pressed (guarded above), i.e. before any drag-resize
-	// has anchored the pivot to the origin (see mouseMoveEvent), so the
-	// pivot here is still the default boundingRect().center() and this
-	// scales the image in place around its own middle, exactly like
-	// before.
-	qreal scaling = m_image->scaleFactorX();
-	event->delta() > 1? scaling += 0.01 : scaling -= 0.01;
-	if (scaling>0.01 && scaling <= 2) {
-		m_image->setScaleFactorX(scaling);
-		m_image->setScaleFactorY(scaling);
+	// scaleFactorX()/scaleFactorY(), not QGraphicsItem's own scale(): see
+	// the right-click rotate comment in mousePressEvent for why. Wheel-
+	// scaling only ever runs while !m_pressed (guarded above), i.e. before
+	// any drag-resize has anchored the pivot to the origin (see
+	// mouseMoveEvent), so the pivot here is still the default
+	// boundingRect().center() and this scales the image in place around
+	// its own middle, exactly like before.
+	//
+	// Step each axis from its own current value rather than reading X and
+	// writing it back to both: scaleFactorX and scaleFactorY cannot
+	// actually differ at this point today (every other mutator in this
+	// class -- the drag-resize branch above, and this same wheelEvent --
+	// only ever sets them to the same value, and mouseReleaseEvent commits
+	// and ends this tool on any left-button release, so a handle-based
+	// non-uniform resize can never happen first and leave this instance
+	// still alive). Stepping both from their own value rather than
+	// collapsing Y to X costs nothing today and removes the trap if that
+	// invariant ever stops holding.
+	qreal scalingX = m_image->scaleFactorX();
+	qreal scalingY = m_image->scaleFactorY();
+	const qreal step = event->delta() > 1 ? 0.01 : -0.01;
+	scalingX += step;
+	scalingY += step;
+	if (scalingX > 0.01 && scalingX <= 2 && scalingY > 0.01 && scalingY <= 2) {
+		m_image->setScaleFactorX(scalingX);
+		m_image->setScaleFactorY(scalingY);
 	}
 	
 	event->setAccepted(true);
