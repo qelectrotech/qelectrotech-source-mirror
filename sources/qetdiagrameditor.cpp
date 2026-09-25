@@ -2330,6 +2330,8 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 			//Create the project
 		DialogWaiting::instance(this);
 
+			//QETProject takes ownership of file and deletes it, whether or not it opens
+		const QString file_name = file->managedFile().fileName();
 		QETProject *project = new QETProject(file, this);
 		if (project->state() != QETProject::Ok)
 		{
@@ -2340,7 +2342,7 @@ void QETDiagramEditor::openBackupFiles(QList<KAutoSaveFile *> backup_files)
 					tr("Échec de l'ouverture du projet", "message box title"),
 					QString(tr(
 						"Une erreur est survenue lors de l'ouverture du fichier %1.",
-						"message box content")).arg(file->managedFile().fileName()));
+						"message box content")).arg(file_name));
 			}
 			delete project;
 			DialogWaiting::dropInstance();
