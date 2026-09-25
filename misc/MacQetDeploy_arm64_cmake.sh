@@ -398,10 +398,12 @@ done
 
 echo "-- Signing main executable..."
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$BUNDLE/Contents/MacOS/$APPNAME"
 
 echo "-- Signing bundle..."
-codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$BUNDLE"
+codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" "$BUNDLE"
 
 echo
 echo "Verifying bundle signature..."
@@ -502,8 +504,10 @@ find "$MOUNT_POINT/$BUNDLE/Contents/PlugIns" \( -name "*.dylib" -o -name "*.so" 
     codesign --force --sign "$IDENTITY" --timestamp --options=runtime "$lib"
 done
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$MOUNT_POINT/$BUNDLE/Contents/MacOS/$APPNAME"
 codesign --force --sign "$IDENTITY" --timestamp --options=runtime \
+    --entitlements "${current_dir}/misc/qelectrotech.entitlements" \
     "$MOUNT_POINT/$BUNDLE"
 
 echo "Verifying bundle signature inside DMG..."

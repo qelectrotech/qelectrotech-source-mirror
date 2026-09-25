@@ -25,6 +25,9 @@
 #ifdef QET_SPACEMOUSE_BACKEND_HID
 #	include "hidbackend.h"
 #endif
+#ifdef QET_SPACEMOUSE_BACKEND_CONNEXION
+#	include "connexionbackend.h"
+#endif
 
 #include "../diagramview.h"
 #include "../editor/elementview.h"
@@ -48,10 +51,24 @@ SpaceMouseListener::SpaceMouseListener(QObject *parent) :
 	QObject(parent),
 	m_settings(SpaceMouseSettings::load())
 {
+#if defined(QET_SPACEMOUSE_BACKEND_CONNEXION)
+		//When 3DxWare is installed and running it has the device to
+		//itself, so ask it first; otherwise read the device directly.
+	auto *connexion = new ConnexionBackend(this);
+	if (connexion->isAvailable()) {
+		m_backend = connexion;
+	} else {
+		delete connexion;
+	}
+#endif
 #if defined(QET_SPACEMOUSE_BACKEND_SPNAV)
-	m_backend = new SpnavBackend(this);
+	if (!m_backend) {
+		m_backend = new SpnavBackend(this);
+	}
 #elif defined(QET_SPACEMOUSE_BACKEND_HID)
-	m_backend = new HidBackend(this);
+	if (!m_backend) {
+		m_backend = new HidBackend(this);
+	}
 #endif
 
 	if (m_backend) {

@@ -905,6 +905,13 @@ if(QET_SPACEMOUSE_BACKEND_HID_ENABLED)
   )
 endif()
 
+if(QET_SPACEMOUSE_BACKEND_CONNEXION_ENABLED)
+  list(APPEND QET_SRC_FILES
+    ${QET_DIR}/sources/spacemouse/connexionbackend.cpp
+    ${QET_DIR}/sources/spacemouse/connexionbackend.h
+  )
+endif()
+
 set(TS_FILES
   ${QET_DIR}/lang/qet_ar.ts
   ${QET_DIR}/lang/qet_ca.ts

@@ -25,6 +25,7 @@ message(" - find_spacemouse")
 #   spnav  Linux, through the spacenavd daemon (libspnav)
 #   hid    any platform, directly over USB (hidapi), no 3Dconnexion driver
 #   auto   spnav on Linux when libspnav is found, hid otherwise
+# On macOS the 3DxWare backend is added to whichever of these is chosen.
 # A backend whose library is not found downgrades the option to off with a
 # warning, rather than failing configure for an opt-in feature.
 set(QET_SPACEMOUSE_BACKEND "auto" CACHE STRING "3D mouse backend: auto, spnav or hid")
@@ -33,6 +34,7 @@ set_property(CACHE QET_SPACEMOUSE_BACKEND PROPERTY STRINGS auto spnav hid)
 set(QET_SPACEMOUSE_ENABLED FALSE)
 set(QET_SPACEMOUSE_BACKEND_SPNAV_ENABLED FALSE)
 set(QET_SPACEMOUSE_BACKEND_HID_ENABLED FALSE)
+set(QET_SPACEMOUSE_BACKEND_CONNEXION_ENABLED FALSE)
 
 if(QET_ENABLE_SPACEMOUSE)
     find_package(PkgConfig)
@@ -71,6 +73,16 @@ if(QET_ENABLE_SPACEMOUSE)
             add_definitions(-DQET_SPACEMOUSE_BACKEND_HID)
             message("QET_ENABLE_SPACEMOUSE      ON  (backend: hidapi ${HIDAPI_VERSION})")
         endif()
+    endif()
+
+    # macOS: with 3DxWare installed the device can only be read through
+    # 3DxWare, so its backend comes too, whichever backend was asked for.
+    # It loads 3DxWare's library at run time and needs nothing to build.
+    if(APPLE)
+        set(QET_SPACEMOUSE_ENABLED TRUE)
+        set(QET_SPACEMOUSE_BACKEND_CONNEXION_ENABLED TRUE)
+        add_definitions(-DQET_SPACEMOUSE_BACKEND_CONNEXION)
+        message("QET_ENABLE_SPACEMOUSE      ON  (backend: 3DxWare when installed)")
     endif()
 
     if(QET_SPACEMOUSE_ENABLED)
