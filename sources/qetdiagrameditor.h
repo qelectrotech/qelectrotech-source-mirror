@@ -177,6 +177,10 @@ class QETDiagramEditor : public QETMainWindow
 		m_row_column_actions_group, /// Action related to add/remove rows/column in diagram
 		m_selection_actions_group,  ///Action related to edit a selected item
 		*m_depth_action_group = nullptr;
+
+		QMenu
+		*m_add_item_menu = nullptr,   ///< Submenu of m_add_item_actions_group
+		*m_row_column_menu = nullptr; ///< Submenu of m_row_column_actions_group
 	
 	private:
 		QActionGroup
