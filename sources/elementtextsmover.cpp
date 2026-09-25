@@ -118,7 +118,10 @@ void ElementTextsMover::endMovement()
 		//Movement is null
 	QGraphicsItem *qgi = m_items_hash.keys().first();
 	if(qgi->pos() == m_items_hash.value(qgi))
+	{
+		m_movement_running = false;
 		return;
+	}
 					 
 	QUndoCommand *undo = new QUndoCommand(undoText());
 	
