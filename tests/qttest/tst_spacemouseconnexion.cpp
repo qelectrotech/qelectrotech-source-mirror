@@ -244,10 +244,10 @@ void TstSpaceMouseConnexion::oneClientPerProcess()
 }
 
 /// On a Mac with 3DxWare installed: this process can load 3DxWare's real
-/// library. Under the hardened runtime that takes the entitlement in
-/// misc/qelectrotech.entitlements, so signing this test with and without it
-/// checks the entitlement is what makes the difference. Whether 3DxWare's
-/// driver then answers depends on the machine, so it is not checked.
+/// library. A Developer ID build with the hardened runtime needs
+/// misc/qelectrotech.entitlements for that; an ad-hoc signature does not
+/// enforce library validation, so CI cannot show the difference. Whether
+/// 3DxWare's driver then answers depends on the machine, so it is not checked.
 void TstSpaceMouseConnexion::realLibrary()
 {
 	QLibrary library(QString::fromLatin1(ConnexionBackend::DEFAULT_LIBRARY));
