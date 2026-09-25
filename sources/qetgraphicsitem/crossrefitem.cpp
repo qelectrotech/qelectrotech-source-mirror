@@ -854,21 +854,35 @@ void CrossRefItem::drawAsContacts(QPainter &painter)
 				//A single pole simple contact (NO or NC) reads its two
 				//numbers the other way round (checked against the
 				//diagram). Changeover contacts are not handled here:
-				//their labels are rotated one step counter-clockwise
-				//inside drawContact(), per pole, so multi pole
-				//changeovers work too. Groups with several NO/NC poles
-				//keep the order the master defines: a 3 pole power
-				//contact already reads correctly that way.
+				//their labels are mapped to the right contact half in
+				//drawContact(), per pole, so multi pole changeovers work
+				//too. Groups with several NO/NC poles keep the order the
+				//master defines: a 3 pole power contact already reads
+				//correctly that way.
 				if (poles == 1 && (option & NOC))
 					std::reverse(labels.begin(), labels.end());
 
+				//The declared terminals are distributed over the declared
+				//poles. terminalCount and contactCount are edited
+				//independently in the element editor, so the list can be
+				//shorter than two entries per pole (three for a switch):
+				//every pole then gets its share of what exists, instead
+				//of a fixed 2/3 stride starving all but the first poles.
+				const int per_pole = labels.size() / poles;
+				const int extra = labels.size() % poles;
+				int begin = 0;
 				for (int pole = 0; pole < poles; ++pole)
+				{
+					const int count = per_pole + (pole < extra ? 1 : 0);
+					const QStringList pole_labels = labels.mid(begin, count);
+					begin += count;
 					bounding_rect = bounding_rect.united(
 								drawContact(painter,
 									    option,
 									    nullptr,
 									    pole,
-									    labels));
+									    pole_labels));
+				}
 			}
 		}
 
@@ -938,11 +952,11 @@ QRectF CrossRefItem::drawLinkedSlaveContacts(QPainter &painter, Element *elmt)
 	defines but no slave is linked to yet: no position text, no hover/click
 	support, and the terminal names then come from master_labels.
 	@param pole_index : which contact of the group is drawn (0 based), used
-	to pick the right pair/triplet of terminal names.
-	@param master_labels : the terminal names the master defines for this
-	contact group (ElementData::SlaveContactGroup::labels), used when elmt
-	is nullptr so an empty slot shows the numbers the master declares, the
-	same way a linked slave would show them.
+	to pick the right pair of terminal names of a linked multi-pole contact.
+	@param master_labels : the terminal names the master declares for this
+	pole (sliced from ElementData::SlaveContactGroup::labels by the caller),
+	used when elmt is nullptr so an empty slot shows the numbers the master
+	declares, the same way a linked slave would show them.
 	@return The bounding rect of the draw (contact + text)
 */
 QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, int pole_index, const QStringList &master_labels)
@@ -981,34 +995,28 @@ QRectF CrossRefItem::drawContact(QPainter &painter, int flags, Element *elmt, in
 		}
 	} else if (!master_labels.isEmpty()) {
 		//Empty slot of the contact comb: the slave is missing but the
-		//master already declares the terminal names of the group, so the
-		//slot shows them instead of staying mute. The labels are a flat
-		//list covering every terminal of the group, in the order a linked
-		//slave would receive them: two per contact (or three for a switch).
+		//master already declares the terminal names, so the slot shows
+		//them instead of staying mute. master_labels contains exactly
+		//the terminals of this pole (the caller slices the declared
+		//terminal list over the declared poles), in the order a linked
+		//slave would receive them.
 		if (is_sw) {
 			//The labels are stored in terminal order (for a typical
 			//changeover contact: common, NC, NO, i.e. 11, 12, 14), while
 			//the symbol draws NC bottom-left, NO top-left and the common
-			//on the right: one step counter-clockwise puts every number
-			//beside its own contact.
-			const int base = pole_index * 3;
-			QStringList trio;
-			for (int k = 0; k < 3; ++k)
-				if (base + k < master_labels.size())
-					trio << master_labels.at(base + k);
-			if (trio.size() == 3)
-				terminal_names << trio.at(1) << trio.at(2) << trio.at(0);
-			else
-				terminal_names << trio; //incomplete set: keep stored order
+			//on the right: every stored entry goes to its own position.
+			//Entries the master doesn't declare (terminal count lower
+			//than three) simply stay empty instead of landing on the
+			//wrong contact half like the raw stored order would.
+			terminal_names << master_labels.value(1)
+			               << master_labels.value(2)
+			               << master_labels.value(0);
 		} else {
-			const int base = pole_index * 2;
-			for (int k = 0; k < 2; ++k)
-				if (base + k < master_labels.size())
-					terminal_names << master_labels.at(base + k);
+			terminal_names = master_labels;
 		}
 	}
 
-	if (elmt && is_power_ctc) {
+	if (is_power_ctc) {
 		// Sort terminals alphanumerically so names like "R1","R2"... or "1","2"...
 		// are ordered correctly. Extract trailing digits for numeric comparison;
 		// fall back to full string comparison when no digits are found.
