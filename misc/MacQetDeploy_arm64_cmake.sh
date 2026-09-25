@@ -103,7 +103,9 @@ cmake -S . -B "$BUILD_DIR" -G Ninja \
     -DBUILD_WITH_KF=$BUILD_WITH_KF \
     -DBUILD_KF=OFF \
     -DQET_EXPORT_PROJECT_DB=ON \
-    -DPACKAGE_TESTS=OFF
+    -DPACKAGE_TESTS=OFF \
+    -DQET_ENABLE_SPACEMOUSE=ON \
+    -DQET_SPACEMOUSE_BACKEND=hid 
 
 if [ $? -ne 0 ]; then
     echo "ERROR: cmake configure failed."
