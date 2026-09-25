@@ -17,6 +17,7 @@
 */
 #include "bordertitleblock.h"
 
+#include "bordercelllabels.h"
 #include "createdxf.h"
 #include "diagram.h"
 #include "diagramposition.h"
@@ -533,6 +534,8 @@ void BorderTitleBlock::draw(QPainter *painter)
 
 		//Draw the nums of columns
 	if (display_border_ && display_columns_) {
+		const bool columns_start_at_zero =
+				settings.value("border-columns_0", true).toBool();
 		for (int i = 1 ; i <= columns_count_ ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
 				diagram_rect_.topLeft().x()
@@ -543,23 +546,15 @@ void BorderTitleBlock::draw(QPainter *painter)
 				columns_header_height_
 			);
 			painter -> drawRect(numbered_rectangle);
-			if (settings.value("border-columns_0", true).toBool()){
 			painter -> drawText(numbered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    QString("%1").arg(i - 1));
-			}else{
-			painter -> drawText(numbered_rectangle,
-					    Qt::AlignVCenter
-					    | Qt::AlignCenter,
-					    QString("%1").arg(i));
-			}
+					    BorderCellLabels::columnLabel(i, columns_start_at_zero));
 		}
 	}
 
 		//Draw the nums of rows
 	if (display_border_ && display_rows_) {
-		QString row_string("A");
 		for (int i = 1 ; i <= rows_count_ ; ++ i) {
 			QRectF lettered_rectangle = QRectF(
 				diagram_rect_.topLeft().x(),
@@ -575,8 +570,7 @@ void BorderTitleBlock::draw(QPainter *painter)
 			painter -> drawText(lettered_rectangle,
 					    Qt::AlignVCenter
 					    | Qt::AlignCenter,
-					    row_string);
-			row_string = incrementLetters(row_string);
+					    BorderCellLabels::rowLabel(i));
 		}
 	}
 

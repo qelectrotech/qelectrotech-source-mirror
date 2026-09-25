@@ -24,6 +24,7 @@
 #include <QClipboard>
 #include "palettegraphicsview.h"
 
+class CellRuler;
 class Conductor;
 class Diagram;
 class QETDiagramEditor;
@@ -62,6 +63,11 @@ class DiagramView : public PaletteGraphicsView
 		QList<QAction *>  m_separators;
 		QPolygonF m_free_rubberband;
 		bool m_free_rubberbanding = false;
+		CellRuler *m_top_ruler = nullptr;
+		CellRuler *m_side_ruler = nullptr;
+		bool m_cell_rulers_shown = false;
+		/// Last viewport transform the rulers were painted for
+		QTransform m_rulers_transform;
 		
 		
 	public:
@@ -78,6 +84,7 @@ class DiagramView : public PaletteGraphicsView
 		/// cursor query (QCursor::pos()/setPos() are silently ignored by
 		/// several window managers and compositors, Wayland included).
 		QPoint lastMousePos() const { return m_last_mouse_pos; }
+		void setCellRulersShown(bool shown);
 	
 	protected:
 		void mouseDoubleClickEvent(QMouseEvent *) override;
@@ -91,6 +98,7 @@ class DiagramView : public PaletteGraphicsView
 		///Set for one call only, by the Escape handler, to let focus leave the view.
 		bool m_releasing_focus = false;
 		void paintEvent(QPaintEvent *event) override;
+		bool viewportEvent(QEvent *event) override;
 		void paintingInverted(bool inverted) override;
 		void mousePressEvent(QMouseEvent *) override;
 		void mouseMoveEvent(QMouseEvent *) override;
@@ -113,6 +121,8 @@ class DiagramView : public PaletteGraphicsView
 		QRectF viewedSceneRect() const;
 		bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 		bool gestures() const;
+		void updateCellRulers();
+		void placeCellRulers();
 
 		/// Lowest and highest allowed value of the view transform scale (m11).
 		/// Prevents wheel-zoom from driving the transform to overflow, which

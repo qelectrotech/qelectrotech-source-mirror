@@ -493,6 +493,18 @@ void QETDiagramEditor::setUpActions()
 			}
 	});
 
+		//Keep the column numbers and row letters of the folio in sight
+	m_cell_rulers = new QAction(tr("Garder les en-têtes visibles"), this);
+	m_cell_rulers->setStatusTip(tr("Garde les numéros de colonne et les lettres de ligne du folio visibles au bord de la vue"));
+	m_cell_rulers->setCheckable(true);
+	m_cell_rulers->setChecked(settings.value("diagrameditor/cell_rulers", false).toBool());
+	connect(m_cell_rulers, &QAction::triggered, [this](bool checked) {
+		QSettings().setValue("diagrameditor/cell_rulers", checked);
+		foreach (ProjectView *prjv, this->openedProjects())
+			foreach (DiagramView *dv, prjv->diagram_views())
+				dv->setCellRulersShown(checked);
+	});
+
 		//Edit current diagram properties
 	m_edit_diagram_properties = new QAction(QET::Icons::DialogInformation, tr("Propriétés du folio"), this);
 	ShortcutManager::instance().registerAction(m_edit_diagram_properties, "diagrameditor.edit_diagram_properties", tr("Éditeur de schémas"), Qt::CTRL | Qt::Key_L);
@@ -1110,6 +1122,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
 	menu_affichage -> addAction(m_draw_guides);
+	menu_affichage -> addAction(m_cell_rulers);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();
 	menu_affichage -> addActions(m_zoom_actions_group.actions());
@@ -1941,6 +1954,7 @@ void QETDiagramEditor::slot_updateActions()
 	m_background_color_button->    setEnabled(opened_diagram);
 	m_draw_grid->                   setEnabled(opened_diagram);
 	m_draw_guides->                 setEnabled(opened_diagram);
+	m_cell_rulers->                 setEnabled(opened_diagram);
 
 		//Project menu
 	m_project_edit_properties     -> setEnabled(opened_project);
