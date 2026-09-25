@@ -18,6 +18,7 @@
 #include "jumptoelementdialog.h"
 
 #include "../diagram.h"
+#include "../diagramview.h"
 #include "../qetgraphicsitem/element.h"
 
 #include <QEvent>
@@ -38,7 +39,7 @@ JumpToElementDialog::JumpToElementDialog(Diagram *diagram, QWidget *parent) :
 	setWindowTitle(tr("Atteindre un élément", "window title"));
 
 	m_filter_edit = new QLineEdit(this);
-	m_filter_edit->setPlaceholderText(tr("Nom, label ou information de l'élément…"));
+	m_filter_edit->setPlaceholderText(tr("Nom, label ou information de l'élément, ou case (ex. B13)…"));
 	m_filter_edit->installEventFilter(this);
 
 	m_result_list = new QListWidget(this);
@@ -86,6 +87,7 @@ void JumpToElementDialog::buildCandidates()
 
 		Candidate candidate;
 		candidate.element = element;
+		candidate.label = label;
 		candidate.display_text = label.isEmpty() ? name : (label + QStringLiteral(" — ") + name);
 
 		QStringList search_parts;
@@ -111,6 +113,7 @@ void JumpToElementDialog::updateFilteredList(const QString &filter_text)
 	m_result_list->clear();
 
 	const QString needle = filter_text.trimmed().toLower();
+	bool exact_label_match = false;
 	for (int i = 0; i < m_candidates.size(); ++i) {
 		const Candidate &candidate = m_candidates.at(i);
 		if (!candidate.element) {
@@ -121,6 +124,23 @@ void JumpToElementDialog::updateFilteredList(const QString &filter_text)
 		}
 		auto *list_item = new QListWidgetItem(candidate.display_text, m_result_list);
 		list_item->setData(Qt::UserRole, i);
+		if (candidate.label.compare(needle, Qt::CaseInsensitive) == 0) {
+			exact_label_match = true;
+		}
+	}
+
+		//A cell of the border (ex : B13) comes first, unless an element
+		//is labelled exactly like it: Enter keeps jumping to that element.
+	if (m_diagram) {
+		const QRectF cell_rect = m_diagram->border_and_titleblock.cellRect(needle);
+		if (!cell_rect.isNull()) {
+			auto *cell_item = new QListWidgetItem(
+				tr("Case %1").arg(QString(needle).remove(QLatin1Char(' ')).toUpper()));
+			cell_item->setData(Qt::UserRole, -1);
+			cell_item->setData(Qt::UserRole + 1, cell_rect);
+			m_result_list->insertItem(exact_label_match ? m_result_list->count() : 0,
+						  cell_item);
+		}
 	}
 
 	if (m_result_list->count() > 0) {
@@ -142,6 +162,11 @@ void JumpToElementDialog::activateCurrentItem()
 	}
 
 	const int index = current->data(Qt::UserRole).toInt();
+	if (index == -1) {
+		zoomToCell(current->data(Qt::UserRole + 1).toRectF());
+		accept();
+		return;
+	}
 	if (index < 0 || index >= m_candidates.size()) {
 		reject();
 		return;
@@ -157,6 +182,27 @@ void JumpToElementDialog::activateCurrentItem()
 	element->setSelected(true);
 	element->ensureVisible();
 	accept();
+}
+
+/**
+	@brief JumpToElementDialog::zoomToCell
+	Zoom the view of m_diagram on \a cell_rect with one cell of context
+	around it.
+	@param cell_rect : the cell, in scene coordinate
+*/
+void JumpToElementDialog::zoomToCell(const QRectF &cell_rect)
+{
+	if (!m_diagram) {
+		return;
+	}
+	for (QGraphicsView *view : m_diagram->views()) {
+		if (auto *diagram_view = qobject_cast<DiagramView *>(view)) {
+			diagram_view->zoomToRect(cell_rect.adjusted(
+				-cell_rect.width(), -cell_rect.height(),
+				cell_rect.width(), cell_rect.height()));
+			return;
+		}
+	}
 }
 
 /**

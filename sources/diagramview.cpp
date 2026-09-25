@@ -386,6 +386,23 @@ void DiagramView::zoomReset()
 }
 
 /**
+	@brief DiagramView::zoomToRect
+	Adjust zoom to fit \a rect, in scene coordinate, in the view.
+	@param rect
+*/
+void DiagramView::zoomToRect(const QRectF &rect)
+{
+	fitInView(rect, Qt::KeepAspectRatio);
+		//Zooming in makes the scroll bars appear, which resizes the viewport
+		//from a queued call; that resize is anchored under the mouse and
+		//would scroll away from rect, so center again once it has run.
+	QMetaObject::invokeMethod(this, [this, rect]() {
+		centerOn(rect.center());
+	}, Qt::QueuedConnection);
+	adjustGridToZoom();
+}
+
+/**
 	Copie les elements selectionnes du schema dans le presse-papier puis les supprime
 	Copies the selected elements from the diagram to the clipboard and then deletes them
 */
