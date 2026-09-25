@@ -203,6 +203,23 @@ add_test(NAME tst_spacemousehid COMMAND tst_spacemousehid)
 target_include_directories(tst_spacemousehid PRIVATE ${QET_DIR}/sources)
 target_link_libraries(tst_spacemousehid PRIVATE Qt::Test Qt::Core)
 
+# ConnexionBackend -- the macOS 3DxWare backend. Built on every platform and
+# run against fakeconnexion, a stand-in for 3DxWare's client library that
+# exports the same calls and answers from a thread of its own.
+add_library(fakeconnexion MODULE fakeconnexion.cpp)
+target_link_libraries(fakeconnexion PRIVATE Qt::Core)
+add_executable(
+  tst_spacemouseconnexion
+  tst_spacemouseconnexion.cpp
+  ${QET_DIR}/sources/spacemouse/connexionbackend.cpp
+  ${QET_DIR}/sources/spacemouse/spacemousebackend.h)
+add_dependencies(tst_spacemouseconnexion fakeconnexion)
+add_test(NAME tst_spacemouseconnexion COMMAND tst_spacemouseconnexion)
+target_compile_definitions(tst_spacemouseconnexion PRIVATE
+  FAKE_CONNEXION="$<TARGET_FILE:fakeconnexion>")
+target_include_directories(tst_spacemouseconnexion PRIVATE ${QET_DIR}/sources)
+target_link_libraries(tst_spacemouseconnexion PRIVATE Qt::Test Qt::Core)
+
 # CrashHandler::formatInt() -- the async-signal-safe decimal formatter the
 # signal handler uses for the "Signal: N" line of a crash dump. Compiles
 # crashhandler.cpp and logring.cpp alongside; the handler deliberately
