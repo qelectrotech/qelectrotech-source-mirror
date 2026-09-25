@@ -20,6 +20,9 @@
 #include <QTimer>
 
 #include <hidapi.h>
+#if defined(Q_OS_MACOS) && HID_API_VERSION >= HID_API_MAKE_VERSION(0, 12, 0)
+#	include <hidapi_darwin.h>
+#endif
 
 namespace {
 	constexpr int SCAN_INTERVAL_MS = 3000;
@@ -42,6 +45,11 @@ HidBackend::HidBackend(QObject *parent) :
 		return;
 	}
 	m_hid_initialised = true;
+#if defined(Q_OS_MACOS) && HID_API_VERSION >= HID_API_MAKE_VERSION(0, 12, 0)
+		//hidapi opens devices exclusively on macOS by default, which fails
+		//while 3DxWare has the device open (discussion #599).
+	hid_darwin_set_open_exclusive(0);
+#endif
 
 	m_read_timer = new QTimer(this);
 	connect(m_read_timer, &QTimer::timeout, this, &HidBackend::readReports);
