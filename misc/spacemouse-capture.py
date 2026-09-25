@@ -14,33 +14,59 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
-"""Record raw USB reports from a 3Dconnexion 3D mouse, for QElectroTech.
+r"""Record raw USB reports from a 3Dconnexion 3D mouse, for QElectroTech.
 
 QElectroTech's Windows/macOS 3D mouse support reads the device directly
 over USB, so it has to decode each device model's raw reports itself.
 This records what your device sends while you make a few guided
-movements, and saves it to one file you can attach to the discussion.
-Nothing is sent anywhere.
+movements, and saves it to one file you can attach to discussion #599.
+Nothing is sent anywhere. One recording per device model is enough, from
+any of the three systems: the device sends the same reports on all of them.
 
-Linux:
-    sudo python3 spacemouse-capture.py            # finds the device itself
-    sudo python3 spacemouse-capture.py --list     # just show what it finds
-    sudo python3 spacemouse-capture.py --seconds 3  # 3x the time per step
+It takes about two minutes. Each step says what to do: press Enter, make
+the movement and hold it until the next prompt. Push firmly.
 
-    sudo is needed because /dev/hidraw* is usually readable by root only.
-    spacenavd can keep running. If the recording comes out empty, stop it
-    (`sudo systemctl stop spacenavd`) and try again.
+Linux
+    Python 3 is already installed.
+    1. Download:  curl -LO https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/master/misc/spacemouse-capture.py
+    2. List:      sudo python3 spacemouse-capture.py --list
+    3. Record:    sudo python3 spacemouse-capture.py --seconds 3
+       If --list shows several devices (a Logitech receiver shows up as
+       several), add --device /dev/hidrawN with the 3D mouse's line.
+    sudo is needed because /dev/hidraw* is readable by root only.
+    spacenavd can keep running; if the recording comes out empty, stop it
+    (sudo systemctl stop spacenavd) and try again.
 
-macOS:
-    python3 spacemouse-capture.py
-    python3 spacemouse-capture.py --list
+macOS
+    Python 3 comes with the Xcode command line tools; if "python3" asks
+    to install them, accept. Open Terminal, then:
+    1. Download:  curl -LO https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/master/misc/spacemouse-capture.py
+    2. Record:    python3 spacemouse-capture.py --seconds 3
+    No sudo. If it says another program holds the device, quit 3DxWare
+    (or uninstall it) and try again. If it says macOS refused access,
+    allow Terminal in System Settings > Privacy & Security > Input
+    Monitoring, and try again. (Rather not use Terminal? The SpaceMouse
+    Check app does the same with a window: see discussion #599.)
 
-    No sudo. It reads the device the same way QElectroTech does (IOKit,
-    shared, as hidapi does). If the recording comes out empty, quit
-    3DxWare, or allow Terminal under System Settings > Privacy & Security
-    > Input Monitoring, and try again.
+Windows
+    Install Python 3 from https://www.python.org/downloads/ (tick "Add
+    python.exe to PATH") or from the Microsoft Store. Open a Command
+    Prompt (Windows key, type cmd, Enter), then:
+    1. cd %USERPROFILE%\Downloads
+    2. Download:  curl -LO https://raw.githubusercontent.com/qelectrotech/qelectrotech-source-mirror/master/misc/spacemouse-capture.py
+    3. Record:    python spacemouse-capture.py --seconds 3
+    No administrator rights needed, and 3DxWare can keep running.
+    Windows does not give out the device's report descriptor, so a
+    recording made on Linux or macOS is a little more complete.
 
-Only the standard library is used.
+Every system
+    --list          only show the 3D mice found
+    --device PATH   pick one, if several are found (a path from --list)
+    --seconds N     multiply the time per step (3 triples it)
+    -o FILE         where to save (default: spacemouse-capture-<id>.json)
+
+The file is saved in the current folder: attach it to discussion #599.
+Only Python's standard library is used.
 """
 import argparse
 import datetime
@@ -75,6 +101,14 @@ OTHER_READERS = ('3dconnexion', '3dx', 'spacenavd')  # 3DxWare: 3DconnexionHelpe
 
 
 def other_readers():
+    if sys.platform == 'win32':
+        try:
+            out = subprocess.run(['tasklist', '/fo', 'csv', '/nh'], capture_output=True,
+                                 text=True, timeout=10).stdout
+        except (OSError, subprocess.SubprocessError):
+            return ['unknown']
+        names = {line.split('","')[0].strip('"') for line in out.splitlines() if line}
+        return sorted(n for n in names if any(r in n.lower() for r in OTHER_READERS))
     try:
         out = subprocess.run(['ps', '-A', '-o', 'comm='], capture_output=True,
                              text=True, timeout=5).stdout
@@ -327,8 +361,218 @@ class MacDevice:
                 'Privacy & Security > Input Monitoring, and try again.')
 
 
+# --- Windows: hid.dll, the same calls hidapi's Windows backend makes ---------
+
+class WinHid:
+    """ctypes bindings to the SetupAPI/HID/kernel32 calls needed."""
+
+    def __init__(self):
+        import ctypes as c
+        from ctypes import wintypes as w
+        self.c, self.w = c, w
+        self.hid = c.WinDLL('hid')
+        self.setupapi = c.WinDLL('setupapi')
+        self.k32 = c.WinDLL('kernel32', use_last_error=True)
+        k, sa = self.k32, self.setupapi
+
+        class GUID(c.Structure):
+            _fields_ = [('Data1', w.DWORD), ('Data2', w.WORD), ('Data3', w.WORD),
+                        ('Data4', c.c_ubyte * 8)]
+
+        class InterfaceData(c.Structure):
+            _fields_ = [('cbSize', w.DWORD), ('InterfaceClassGuid', GUID),
+                        ('Flags', w.DWORD), ('Reserved', c.c_void_p)]
+
+        class Attributes(c.Structure):
+            _fields_ = [('Size', w.ULONG), ('VendorID', w.USHORT), ('ProductID', w.USHORT),
+                        ('VersionNumber', w.USHORT)]
+
+        class Caps(c.Structure):
+            _fields_ = [('Usage', w.USHORT), ('UsagePage', w.USHORT),
+                        ('InputReportByteLength', w.USHORT), ('OutputReportByteLength', w.USHORT),
+                        ('FeatureReportByteLength', w.USHORT), ('Reserved', w.USHORT * 17),
+                        ('rest', w.USHORT * 10)]
+
+        class Overlapped(c.Structure):
+            _fields_ = [('Internal', c.c_void_p), ('InternalHigh', c.c_void_p),
+                        ('Offset', w.DWORD), ('OffsetHigh', w.DWORD), ('hEvent', w.HANDLE)]
+
+        self.GUID, self.InterfaceData, self.Attributes = GUID, InterfaceData, Attributes
+        self.Caps, self.Overlapped = Caps, Overlapped
+
+        k.CreateFileW.restype = w.HANDLE
+        k.CreateFileW.argtypes = [w.LPCWSTR, w.DWORD, w.DWORD, c.c_void_p, w.DWORD, w.DWORD, w.HANDLE]
+        k.CreateEventW.restype = w.HANDLE
+        k.CreateEventW.argtypes = [c.c_void_p, w.BOOL, w.BOOL, w.LPCWSTR]
+        k.ReadFile.argtypes = [w.HANDLE, c.c_void_p, w.DWORD, c.c_void_p, c.c_void_p]
+        k.GetOverlappedResult.argtypes = [w.HANDLE, c.c_void_p, c.POINTER(w.DWORD), w.BOOL]
+        k.WaitForSingleObject.argtypes = [w.HANDLE, w.DWORD]
+        k.WaitForSingleObject.restype = w.DWORD
+        k.CancelIo.argtypes = [w.HANDLE]
+        k.CloseHandle.argtypes = [w.HANDLE]
+        sa.SetupDiGetClassDevsW.restype = w.HANDLE
+        sa.SetupDiGetClassDevsW.argtypes = [c.c_void_p, w.LPCWSTR, w.HWND, w.DWORD]
+        sa.SetupDiEnumDeviceInterfaces.argtypes = [w.HANDLE, c.c_void_p, c.c_void_p, w.DWORD, c.c_void_p]
+        sa.SetupDiGetDeviceInterfaceDetailW.argtypes = [w.HANDLE, c.c_void_p, c.c_void_p, w.DWORD,
+                                                         c.POINTER(w.DWORD), c.c_void_p]
+        sa.SetupDiDestroyDeviceInfoList.argtypes = [w.HANDLE]
+        self.hid.HidD_GetHidGuid.argtypes = [c.c_void_p]
+        self.hid.HidD_GetAttributes.argtypes = [w.HANDLE, c.c_void_p]
+        self.hid.HidD_GetPreparsedData.argtypes = [w.HANDLE, c.POINTER(c.c_void_p)]
+        self.hid.HidD_FreePreparsedData.argtypes = [c.c_void_p]
+        self.hid.HidP_GetCaps.argtypes = [c.c_void_p, c.c_void_p]
+        self.hid.HidD_GetProductString.argtypes = [w.HANDLE, c.c_void_p, w.ULONG]
+
+    INVALID = (2 ** 64 - 1, 2 ** 32 - 1, -1)   # INVALID_HANDLE_VALUE, 64/32-bit
+
+    def paths(self):
+        """Every HID interface path on the system."""
+        c, w = self.c, self.w
+        guid = self.GUID()
+        self.hid.HidD_GetHidGuid(c.byref(guid))
+        info = self.setupapi.SetupDiGetClassDevsW(c.byref(guid), None, None, 0x12)  # PRESENT|INTERFACE
+        paths = []
+        i = 0
+        while True:
+            data = self.InterfaceData()
+            data.cbSize = c.sizeof(data)
+            if not self.setupapi.SetupDiEnumDeviceInterfaces(info, None, c.byref(guid), i, c.byref(data)):
+                break
+            i += 1
+            needed = w.DWORD()
+            self.setupapi.SetupDiGetDeviceInterfaceDetailW(info, c.byref(data), None, 0, c.byref(needed), None)
+            buf = c.create_string_buffer(needed.value)
+            # SP_DEVICE_INTERFACE_DETAIL_DATA_W: DWORD cbSize, then the path.
+            c.cast(buf, c.POINTER(w.DWORD))[0] = 8 if c.sizeof(c.c_void_p) == 8 else 6
+            if self.setupapi.SetupDiGetDeviceInterfaceDetailW(info, c.byref(data), buf, needed, None, None):
+                paths.append(c.wstring_at(c.addressof(buf) + 4))
+        self.setupapi.SetupDiDestroyDeviceInfoList(info)
+        return paths
+
+    def open(self, path, access):
+        # FILE_SHARE_READ|WRITE, OPEN_EXISTING, FILE_FLAG_OVERLAPPED
+        h = self.k32.CreateFileW(path, access, 3, None, 3, 0x40000000, None)
+        return None if h is None or h in self.INVALID else h
+
+    def describe(self, h):
+        """(vendor, product, usage_page, usage, input_length, name) of an open handle."""
+        c = self.c
+        attrs = self.Attributes()
+        attrs.Size = c.sizeof(attrs)
+        if not self.hid.HidD_GetAttributes(h, c.byref(attrs)):
+            return None
+        page = usage = length = 0
+        pre = c.c_void_p()
+        if self.hid.HidD_GetPreparsedData(h, c.byref(pre)):
+            caps = self.Caps()
+            self.hid.HidP_GetCaps(pre, c.byref(caps))
+            page, usage, length = caps.UsagePage, caps.Usage, caps.InputReportByteLength
+            self.hid.HidD_FreePreparsedData(pre)
+        name = c.create_unicode_buffer(128)
+        if not self.hid.HidD_GetProductString(h, name, c.sizeof(name)):
+            name.value = '?'
+        return attrs.VendorID, attrs.ProductID, page, usage, length, name.value
+
+
+class WinDevice:
+    backend = 'windows-hid'
+    _hid = None
+
+    def __init__(self, path, name, vendor, product, length):
+        self.path, self.name, self.vendor, self.product = path, name, vendor, product
+        self.length = length or 64
+        self.handle = None
+
+    @classmethod
+    def hid(cls):
+        if cls._hid is None:
+            cls._hid = WinHid()
+        return cls._hid
+
+    @classmethod
+    def find(cls):
+        h = cls.hid()
+        found = []
+        for path in h.paths():
+            handle = h.open(path, 0)    # no access: enough to read attributes
+            if handle is None:
+                continue
+            try:
+                d = h.describe(handle)
+            finally:
+                h.k32.CloseHandle(handle)
+            if not d:
+                continue
+            vendor, product, page, usage, length, name = d
+            # The same test as QET's SpaceMouseHid::isSpaceMouse().
+            if vendor not in VENDORS or (page, usage) not in ((1, 8), (0, 0)):
+                continue
+            found.append(cls(path, name, '%04x' % vendor, '%04x' % product, length))
+        return found
+
+    def descriptor(self):
+        # Windows only gives out a parsed form of it.
+        return ''
+
+    def open(self):
+        h = self.hid()
+        self.handle = h.open(self.path, 0x80000000)     # GENERIC_READ
+        if self.handle is None:
+            sys.exit('Could not open the device (error %d).' % h.c.get_last_error())
+        self.event = h.k32.CreateEventW(None, True, False, None)
+        self.buf = h.c.create_string_buffer(self.length)
+        self.pending = False
+        self.start = time.monotonic()
+
+    def _read(self, wait_ms):
+        """One report if it arrives within wait_ms, else None."""
+        h = self.hid()
+        c, w = h.c, h.w
+        if not self.pending:
+            self.ov = h.Overlapped()
+            self.ov.hEvent = self.event
+            h.k32.ReadFile(self.handle, self.buf, self.length, None, c.byref(self.ov))
+            self.pending = True
+        if h.k32.WaitForSingleObject(self.event, max(0, int(wait_ms))) != 0:
+            return None
+        self.pending = False
+        n = w.DWORD()
+        if not h.k32.GetOverlappedResult(self.handle, c.byref(self.ov), c.byref(n), False):
+            return None
+        data = self.buf.raw[:n.value]
+        # Windows puts a report ID in front even when the device has none;
+        # hidapi drops that 0, so QET never sees it.
+        return data[1:] if data[:1] == b'\0' else data
+
+    def record(self, seconds):
+        reports = []
+        start = time.monotonic()
+        while True:
+            left = seconds - (time.monotonic() - start)
+            if left <= 0:
+                return reports
+            data = self._read(left * 1000)
+            if data:
+                reports.append([round((time.monotonic() - start) * 1000, 1), data.hex()])
+
+    def drain(self):
+        while self._read(0):
+            pass
+
+    def close(self):
+        h = self.hid()
+        if self.pending:
+            h.k32.CancelIo(self.handle)
+        h.k32.CloseHandle(self.event)
+        h.k32.CloseHandle(self.handle)
+
+    def empty_hint(self):
+        return 'Check the cable, push the cap firmly, and try again.'
+
+
 def main():
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--list', action='store_true', help='only list matching devices')
     ap.add_argument('--device', help='device path from --list, if more than one is found')
     ap.add_argument('--descriptor', help=argparse.SUPPRESS)  # testing without a device
@@ -338,7 +582,7 @@ def main():
                     help='multiply each step\'s recording time (default: 1.0, e.g. 3 triples it)')
     args = ap.parse_args()
 
-    Device = MacDevice if sys.platform == 'darwin' else HidrawDevice
+    Device = {'darwin': MacDevice, 'win32': WinDevice}.get(sys.platform, HidrawDevice)
     devices = Device.find()
     if args.list:
         for d in devices:
