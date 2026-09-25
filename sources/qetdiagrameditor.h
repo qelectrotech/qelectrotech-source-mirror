@@ -28,6 +28,8 @@
 #include <QSignalMapper>
 #include <QUndoGroup>
 
+class QToolButton;
+
 class QMdiSubWindow;
 class QETProject;
 class QETResult;
@@ -244,6 +246,8 @@ class QETDiagramEditor : public QETMainWindow
 		ConductorColorToolButton *m_conductor_color_button = nullptr;
 		///< Diagram background color picker, in the "Affichage" toolbar
 		DiagramBgColorToolButton *m_background_color_button = nullptr;
+		QMenu *m_text_grid_menu = nullptr;		///< Snap step used when dragging texts
+		QToolButton *m_text_grid_button = nullptr;
 
 		QList <QAction *> m_zoom_action_toolBar; ///Only zoom action must displayed in the toolbar
 

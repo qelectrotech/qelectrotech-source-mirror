@@ -233,6 +233,7 @@ class Diagram : public QGraphicsScene
 		BorderOptions borderOptions();
 		DiagramPosition convertPosition(const QPointF &);
 		static QPointF snapToGrid(const QPointF &p);
+		static QPointF snapToTextGrid(const QPointF &p);
 	
 		bool drawTerminals() const;
 		void setDrawTerminals(bool);

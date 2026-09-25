@@ -2684,6 +2684,36 @@ QPointF Diagram::snapToGrid(const QPointF &p)
 	return (QPointF(p_x, p_y));
 }
 
+/**
+	@brief Diagram::snapToTextGrid
+	Return the nearest point of p on the text grid.
+	The text grid is the folio grid divided by the
+	"diagrameditor/text_grid_divisor" setting (1 = same as the folio grid,
+	0 = no grid). Because it divides the folio grid, texts snapped to it
+	still line up with every element and with each other.
+	Ctrl held, or a divisor of 0, rounds to the nearest pixel instead.
+	@param p point to find the nearest snapped point
+	@return
+*/
+QPointF Diagram::snapToTextGrid(const QPointF &p)
+{
+	QSettings settings;
+	const qreal divisor = settings.value(
+				QStringLiteral("diagrameditor/text_grid_divisor"),
+				1).toReal();
+
+	if (divisor <= 0
+		|| QApplication::keyboardModifiers().testFlag(Qt::ControlModifier))
+		return QPointF(qRound(p.x()), qRound(p.y()));
+
+	const qreal x_step = settings.value(QStringLiteral("diagrameditor/Xgrid"),
+										Diagram::xGrid).toInt() / divisor;
+	const qreal y_step = settings.value(QStringLiteral("diagrameditor/Ygrid"),
+										Diagram::yGrid).toInt() / divisor;
+	return QPointF(qRound(p.x() / x_step) * x_step,
+				   qRound(p.y() / y_step) * y_step);
+}
+
 
 
 /**

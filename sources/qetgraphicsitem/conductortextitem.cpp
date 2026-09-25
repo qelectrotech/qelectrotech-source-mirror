@@ -185,7 +185,7 @@ void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 		if (parent_conductor_) {
 			if (parent_conductor_->nearShape().contains(intended_pos)) {
-				event->modifiers() == Qt::ControlModifier ? setPos(intended_pos) : setPos(Diagram::snapToGrid(intended_pos));
+				event->modifiers() == Qt::ControlModifier ? setPos(intended_pos) : setPos(Diagram::snapToTextGrid(intended_pos));
 				parent_conductor_ -> setHighlighted(Conductor::Normal);
 			} else {
 				parent_conductor_ -> setHighlighted(Conductor::Alert);

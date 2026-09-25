@@ -20,6 +20,7 @@
 #include "scripting/qetscripting.h"
 #endif
 #include <QCoreApplication>
+#include <QToolButton>
 #include "ElementsCollection/elementscollectionwidget.h"
 #include "QWidgetAnimation/qwidgetanimation.h"
 #include "autoNum/ui/autonumberingdockwidget.h"
@@ -479,6 +480,41 @@ void QETDiagramEditor::setUpActions()
 				d->setDisplayGrid(checked);
 				d->update();
 			}
+	});
+
+		//Snap step for dragged texts, as a fraction of the folio grid
+	m_text_grid_menu = new QMenu(tr("Grille des textes"), this);
+	m_text_grid_menu->setIcon(QET::Icons::Grid);
+	m_text_grid_menu->setToolTipsVisible(true);
+	m_text_grid_button = new QToolButton(this);
+	m_text_grid_button->setMenu(m_text_grid_menu);
+	m_text_grid_button->setPopupMode(QToolButton::InstantPopup);
+	m_text_grid_button->setToolButtonStyle(Qt::ToolButtonTextOnly);
+	m_text_grid_button->setToolTip(tr("Grille d'accrochage des textes déplacés à la souris.\n"
+									  "Maintenir Ctrl pendant le déplacement pour placer librement."));
+	auto text_grid_group = new QActionGroup(this);
+	const qreal current_divisor = settings.value("diagrameditor/text_grid_divisor", 1).toReal();
+	const QList<QPair<QString, qreal>> text_grids {
+		{tr("Désactivée"), 0},
+		{QStringLiteral("1:1"), 1},
+		{QStringLiteral("1:2"), 2},
+		{QStringLiteral("1:2.5"), 2.5},
+		{QStringLiteral("1:5"), 5},
+		{QStringLiteral("1:10"), 10}};
+	for (const auto &grid : text_grids)
+	{
+		QAction *action = m_text_grid_menu->addAction(grid.first);
+		action->setCheckable(true);
+		action->setData(grid.second);
+		text_grid_group->addAction(action);
+		if (qFuzzyCompare(grid.second + 1, current_divisor + 1)) {
+			action->setChecked(true);
+			m_text_grid_button->setText(tr("Textes %1").arg(grid.first));
+		}
+	}
+	connect(text_grid_group, &QActionGroup::triggered, this, [this](QAction *action) {
+		QSettings().setValue("diagrameditor/text_grid_divisor", action->data());
+		m_text_grid_button->setText(tr("Textes %1").arg(action->text()));
 	});
 
 	// Draw or not the custom guides
@@ -956,6 +992,7 @@ void QETDiagramEditor::setUpToolBar()
 	view_tool_bar -> addWidget(new DiagramEditorHandlerSizeWidget(this));
 	view_tool_bar -> addSeparator();
 	view_tool_bar -> addAction(m_draw_grid);
+	view_tool_bar -> addWidget(m_text_grid_button);
 	view_tool_bar -> addAction(m_draw_guides);
 	view_tool_bar -> addWidget(m_background_color_button);
 	view_tool_bar -> addSeparator();
@@ -1109,6 +1146,7 @@ void QETDiagramEditor::setUpMenu()
 	menu_affichage -> addAction(m_mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(m_draw_grid);
+	menu_affichage -> addMenu(m_text_grid_menu);
 	menu_affichage -> addAction(m_draw_guides);
 	menu_affichage -> addMenu(m_background_color_button->menu());
 	menu_affichage -> addSeparator();

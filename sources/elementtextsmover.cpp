@@ -101,7 +101,7 @@ void ElementTextsMover::continueMovement(QGraphicsSceneMouseEvent *event)
 		button_down_parent_pos = qgi->mapToParent(qgi->mapFromScene(event->buttonDownScenePos(Qt::LeftButton)));
 		
 		QPointF new_pos = m_items_hash.value(qgi) + current_parent_pos - button_down_parent_pos;
-		event->modifiers() == Qt::ControlModifier ? qgi->setPos(new_pos) : qgi->setPos(Diagram::snapToGrid(new_pos));
+		event->modifiers() == Qt::ControlModifier ? qgi->setPos(new_pos) : qgi->setPos(Diagram::snapToTextGrid(new_pos));
 	}
 }
 
